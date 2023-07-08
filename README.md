@@ -20,19 +20,19 @@
 
 ## About The Project
 
-Mantine 6 with CSS-in-JS allowed for styles to be adjecent to the component it was styling. However with Mantine 7 styling has switched to CSS Modules. Many in the industry see CSS Modules as a step backwards and I (the fork author) share this sentiment. Therefore forking the project to support tailwind was the obvious choice.
+Mantine 6 with CSS-in-JS allowed for styles to be adjacent to the component it was styling. However with Mantine 7 styling has switched to CSS Modules. Many in the industry see CSS Modules as a step backwards and I (the fork author) share this sentiment. Therefore forking the project to support tailwind was the obvious choice.
 
-The project was concieved with these 3 long-term goals:
+The project was conceived with these 3 long-term goals:
 
 1. To allow for components to behave as server components. (TBD, waiting for vercel to fully flesh this out)
 2. To ensure proper tree-shaking for components and purging of unused css. (TBD, waiting for vercel to resolve the client bundle to be tree-shakable)
 3. To switch the theme from react context (state) to the tailwind theme. Thereby negating the need to keep the color mode (light/dark) and text direction (left/right) in state. Both of these to be kept in a cookie. Thereby allowing some components to be server based. (TBD, waiting for the new lightningCSS supported tailwind)
-4. When using the ClassNames api, to ensure that there were no clashes between the bootstrap CSS of the component and tailwind styles provided. This has been made possible with tailwind boostraping the styles via a plugin architecture. See for <a href="https://tailwindcss.com/docs/plugins#css-in-js-syntax">more information</a>.
+4. When using the ClassNames api, to ensure that there were no clashes between the bootstrap CSS of the component and tailwind styles provided. This has been made possible with tailwind bootstrapping the styles via a plugin architecture. See for <a href="https://tailwindcss.com/docs/plugins#css-in-js-syntax">more information</a>.
 
 ## Project Caveats
 
-1. Remix, Svelte, Solid, Astro and any other frameworks are not supported. There are no intentions of supporting anything else other than NextJS.
-2. There may be design decisions implemented that will diverge from Mantine. For example the Styles API layer may disappear because it has been superceeded by the Classes API and Styles API is <a href="https://v7.mantine.dev/styles/styles-performance#inline-styles">very slow</a>.
+1. Remix, Svelte, Solid, Astro and any other frameworks are not supported. There are no intentions of supporting anything other than NextJS.
+2. There may be design decisions implemented that will diverge from Mantine. For example the Styles API layer may disappear because it has been superseded by the Classes API and Styles API is <a href="https://v7.mantine.dev/styles/styles-performance#inline-styles">very slow</a>.
 3. Issues may be closed due to the fork author not having free time. If an issue is very important, please consider implementing a PR.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -67,7 +67,7 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    content: ["./node_modules/@raikou/core/dist/*", "./app/**/*.tsx"],
    ```
-3. Add a preset param in the tailwind config, to pickup the component styles
+3. Add a preset param in the tailwind config, to pick up the component styles
    ```sh
    presets: [require("./node_modules/@raikou/core/dist/plugin")],
    ```
@@ -88,7 +88,7 @@ Change appPath to where the tsx files for your project reside.
 
 ## Server Components
 
-At the moment, react server components are not avaialble due to the build process. All components are presented under a single "use client" statement in the index.js. Unfortunately this is not ideal. To give an example of what happens when server components are available without "use client".
+At the moment, react server components are not available due to the build process. All components are presented under a single "use client" statement in the index.js. Unfortunately this is not ideal. To give an example of what happens when server components are available without "use client".
 
 <img src="./images/serverComponents.png" alt="Logo">
 
