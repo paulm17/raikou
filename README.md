@@ -22,11 +22,11 @@
 
 Mantine 6 with CSS-in-JS allowed for styles to be adjacent to the component it was styling. However with Mantine 7 styling has switched to CSS Modules. Many in the industry see CSS Modules as a step backwards and I (the fork author) share this sentiment. Therefore forking the project to support tailwind was the obvious choice.
 
-The project was conceived with these 3 long-term goals:
+The project was conceived with these 4 long-term goals:
 
 1. To allow for components to behave as server components. (TBD, waiting for vercel to fully flesh this out)
 2. To ensure proper tree-shaking for components and purging of unused css. (TBD, waiting for vercel to resolve the client bundle to be tree-shakable)
-3. To switch the theme from react context (state) to the tailwind theme. Thereby negating the need to keep the color mode (light/dark) and text direction (left/right) in state. Both of these to be kept in a cookie. Thereby allowing some components to be server based. (TBD, waiting for the new lightningCSS supported tailwind)
+3. To switch the theme from react context (state) to the tailwind theme. Thereby negating the need to keep the color mode (light/dark) and text direction (left/right) in state. Both of these to be kept in a cookie or read from theme / server setting. Thereby allowing some components to be server based. (TBD, waiting for the new lightningCSS supported tailwind)
 4. When using the ClassNames api, to ensure that there were no clashes between the bootstrap CSS of the component and tailwind styles provided. This has been made possible with tailwind bootstrapping the styles via a plugin architecture. See for <a href="https://tailwindcss.com/docs/plugins#css-in-js-syntax">more information</a>.
 
 ## Project Caveats
@@ -47,10 +47,11 @@ The project was conceived with these 3 long-term goals:
 
 ## Getting Started
 
+Note: (the following is a placeholder, no packages have been published to npm).
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Installation
+### Installation to an application
 
 1. Install the required packages. Same as Mantine.
 
@@ -84,6 +85,30 @@ Change appPath to where the tsx files for your project reside.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Cloning the repo
+
+1. Run the following command:
+
+- git
+  ```sh
+  git clone https://github.com/paulm17/raikou
+  ```
+
+2. Install all the package prerequisites
+   ```sh
+   pnpm i
+   ```
+3. To run the nextjs website
+   ```sh
+   pnpm run dev
+   ```
+4. To run storybook
+   ```sh
+   pnpm run storybook
+   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- USAGE EXAMPLES -->
 
 ## Server Components
@@ -111,6 +136,7 @@ At the moment, react server components are not available due to the build proces
 - [ ] Tree-shaking for client build
 - [ ] Use Tailwind Theme
 - [ ] Create a <a href="https://daisyui.com/docs/themes/">theme switcher</a>
+- [ ] Fix the Storybook demos to work under version 7
 
 See the [open issues](https://github.com/paulm17/raikou/issues) for a full list of proposed features (and known issues).
 
