@@ -1,0 +1,57 @@
+{
+  "name": "@raikou/core",
+  "version": "0.0.1",
+  "main": "index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./plugin.js": {
+      "types": "./dist/plugin.d.ts",
+      "import": "./dist/plugin.mjs",
+      "require": "./dist/plugin.js"
+    },
+    "./styles.css": "./dist/index.css"
+  },
+  "files": [
+    "dist/**"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup src/index.ts src/plugin.ts --dts --format esm,cjs --clean",
+    "lint": "eslint \"**/*.ts*\""
+  },
+  "peerDependencies": {
+    "@raikou/hooks": "workspace:*"
+  },
+  "dependencies": {
+    "@floating-ui/react": "^0.19.1",
+    "@tabler/icons-react": "^2.23.0",
+    "clsx": "^1.2.1",
+    "type-fest": "^3.6.1",
+    "tslib": "^2.5.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/node": "^20.3.3",
+    "eslint": "^8.43.0",
+    "eslint-config-custom": "workspace:*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-remove-scroll": "^2.5.5",
+    "react-textarea-autosize": "8.3.4",
+    "react-virtuoso": "^4.3.10",
+    "tsconfig": "workspace:*",
+    "tsup": "^7.1.0",
+    "tailwind-merge": "^1.13.2",
+    "typescript": "^4.5.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

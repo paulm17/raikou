@@ -1,0 +1,59 @@
+:root {
+  color-scheme: var(--raikou-color-scheme);
+}
+
+body {
+  font-family: var(--raikou-font-family);
+  font-size: var(--raikou-font-size-md);
+  line-height: var(--raikou-line-height);
+  background-color: var(--raikou-color-body);
+  color: var(--raikou-color-text);
+
+  -webkit-font-smoothing: var(--raikou-webkit-font-smoothing);
+  -moz-osx-font-smoothing: var(--raikou-moz-font-smoothing);
+
+  @media screen and (max-device-width: 500px) {
+    -webkit-text-size-adjust: 100%;
+  }
+}
+
+[data-respect-reduced-motion] {
+  @media (prefers-reduced-motion: reduce) {
+    [data-reduce-motion] {
+      transition: none;
+      animation: none;
+    }
+  }
+}
+
+.raikou-focus-auto {
+  &:focus-visible {
+    outline: rem(2px) solid var(--raikou-color-primary);
+    outline-offset: rem(2px);
+  }
+}
+
+.raikou-focus-always {
+  &:focus {
+    outline: rem(2px) solid var(--raikou-color-primary);
+    outline-offset: rem(2px);
+  }
+}
+
+.raikou-focus-never {
+  &:focus {
+    outline: none;
+  }
+}
+
+.raikou-active {
+  &:active {
+    transform: translateY(rem(1px));
+  }
+}
+
+.raikou-rotate-rtl {
+  @mixin rtl {
+    transform: rotate(180deg);
+  }
+}

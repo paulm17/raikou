@@ -1,0 +1,9 @@
+import { renderHook } from "@testing-library/react";
+import { useRandomClassName } from "./use-random-classname";
+
+describe("@raikou/core/Box/use-random-classname", () => {
+  it("returns random classname", () => {
+    const { result } = renderHook(() => useRandomClassName());
+    expect(result.current).toMatch(/^raikou-[a-z0-9]+$/);
+  });
+});

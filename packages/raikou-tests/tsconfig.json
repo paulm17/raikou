@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig/raikou.json",
+  "include": ["./src", "./types", "../../configuration/types"],
+  "compilerOptions": {
+    "rootDir": "src",
+    "baseUrl": ".",
+    "outDir": "lib",
+    "declaration": true,
+    "declarationDir": "lib",
+    "composite": true
+  }
+}

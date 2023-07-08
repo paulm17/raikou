@@ -1,0 +1,14 @@
+{
+  "name": "@raikou/tests",
+  "private": true,
+  "version": "0.0.1",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./esm/index.js",
+      "require": "./cjs/index.js"
+    }
+  },
+  "license": "MIT",
+  "author": "Vitaly Rtishchev <rtivital@gmail.com>"
+}
