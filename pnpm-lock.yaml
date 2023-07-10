@@ -178,6 +178,7 @@ importers:
   packages/raikou-core:
     specifiers:
       '@floating-ui/react': ^0.19.1
+      '@raikou/hooks': workspace:*
       '@tabler/icons-react': ^2.23.0
       '@types/node': ^20.3.3
       '@types/react': ^18.2.0
@@ -185,8 +186,6 @@ importers:
       clsx: ^1.2.1
       eslint: ^8.43.0
       eslint-config-custom: workspace:*
-      react: ^18.2.0
-      react-dom: ^18.2.0
       react-remove-scroll: ^2.5.5
       react-textarea-autosize: 8.3.4
       react-virtuoso: ^4.3.10
@@ -198,6 +197,7 @@ importers:
       typescript: ^4.5.3
     dependencies:
       '@floating-ui/react': 0.19.2_biqbaboplfbrettd7655fr4n2y
+      '@raikou/hooks': link:../raikou-hooks
       '@tabler/icons-react': 2.23.0_react@18.2.0
       clsx: 1.2.1
       tslib: 2.6.0
@@ -208,8 +208,6 @@ importers:
       '@types/react-dom': 18.2.3
       eslint: 8.44.0
       eslint-config-custom: link:../eslint-config-custom
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
       react-remove-scroll: 2.5.6_3pi6y6cylzraaxxtldk4o6b3zi
       react-textarea-autosize: 8.3.4_3pi6y6cylzraaxxtldk4o6b3zi
       react-virtuoso: 4.3.11_biqbaboplfbrettd7655fr4n2y
@@ -225,7 +223,6 @@ importers:
       '@types/react-dom': ^18.2.0
       eslint: ^8.43.0
       eslint-config-custom: workspace:*
-      react: ^18.2.0
       tsconfig: workspace:*
       tsup: ^7.1.0
       typescript: ^4.5.3
@@ -236,7 +233,6 @@ importers:
       '@types/react-dom': 18.2.3
       eslint: 8.44.0
       eslint-config-custom: link:../eslint-config-custom
-      react: 18.2.0
       tsconfig: link:../tsconfig
       tsup: 7.1.0_typescript@4.9.5
       typescript: 4.9.5
