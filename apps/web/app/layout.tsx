@@ -1,20 +1,24 @@
-import { Bootstrap } from "@raikou/core";
+import { Bootstrap, ColorSchemeScript } from "@raikou/system";
+import resolveConfig from "tailwindcss/resolveConfig";
+import tailwindConfig from "../tailwind.config.js";
 import "../global.css";
-import ThemeProvider from "./themeProvider";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const fullConfig = resolveConfig(tailwindConfig);
+
   return (
     <html lang="en" suppressHydrationWarning={true}>
+      <head>
+        <ColorSchemeScript />
+      </head>
       <body>
-        <ThemeProvider>
-          <Bootstrap>
-            <body>{children}</body>
-          </Bootstrap>
-        </ThemeProvider>
+        <Bootstrap theme={fullConfig.theme.custom as any}>
+          <body>{children}</body>
+        </Bootstrap>
       </body>
     </html>
   );

@@ -8,7 +8,7 @@
 <h3 align="center">RAIKOU</h3>
 
   <p align="center">
-    Raikou is a mantine fork which replaces modules.css to use tailwind.
+    Raikou is a raikou fork which replaces modules.css to use tailwind.
     <br />
     <a href="https://github.com/paulm17/raikou/issues">Report Bug</a>
     ·
@@ -20,7 +20,7 @@
 
 ## About The Project
 
-Mantine 6 with CSS-in-JS allowed for styles to be adjacent to the component it was styling. However with Mantine 7 styling has switched to CSS Modules. Many in the industry see CSS Modules as a step backwards and I (the fork author) share this sentiment. Therefore forking the project to support tailwind was the obvious choice.
+Raikou 6 with CSS-in-JS allowed for styles to be adjacent to the component it was styling. However with Raikou 7 styling has switched to CSS Modules. Many in the industry see CSS Modules as a step backwards and I (the fork author) share this sentiment. Therefore forking the project to support tailwind was the obvious choice.
 
 The project was conceived with these 4 long-term goals:
 
@@ -32,7 +32,7 @@ The project was conceived with these 4 long-term goals:
 ## Project Caveats
 
 1. Remix, Svelte, Solid, Astro and any other frameworks are not supported. There are no intentions of supporting anything other than NextJS.
-2. There may be design decisions implemented that will diverge from Mantine. For example the Styles API layer may disappear because it has been superseded by the Classes API and Styles API is <a href="https://v7.mantine.dev/styles/styles-performance#inline-styles">very slow</a>.
+2. There may be design decisions implemented that will diverge from Raikou. For example the Styles API layer may disappear because it has been superseded by the Classes API and Styles API is <a href="https://v7.raikou.dev/styles/styles-performance#inline-styles">very slow</a>.
 3. Issues may be closed due to the fork author not having free time. If an issue is very important, please consider implementing a PR.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -53,7 +53,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Installation to an application
 
-1. Install the required packages. Same as Mantine.
+1. Install the required packages. Same as Raikou.
 
 - npm
   ```sh
@@ -181,7 +181,7 @@ Project Link: [https://github.com/paulm17/raikou](https://github.com/paulm17/rai
 
 ## Acknowledgments
 
-Vitaly and the Mantine community.
+Vitaly and the Raikou community.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

@@ -20,6 +20,7 @@ importers:
     specifiers:
       '@raikou/core': workspace:*
       '@raikou/hooks': workspace:*
+      '@raikou/system': workspace:*
       '@storybook/addon-essentials': ^7.0.26
       '@storybook/addon-interactions': ^7.0.26
       '@storybook/addon-links': ^7.0.26
@@ -28,6 +29,7 @@ importers:
       '@storybook/react': ^7.0.26
       '@storybook/react-vite': ^7.0.26
       '@storybook/testing-library': ^0.0.14-next.2
+      '@tabler/icons-react': ^2.23.0
       '@types/react': ^18.0.37
       '@types/react-dom': ^18.0.11
       '@vitejs/plugin-react': ^1.3.2
@@ -52,8 +54,10 @@ importers:
       vite: ^4.0.0
       vite-tsconfig-paths: ^4.2.0
     dependencies:
-      '@raikou/core': link:../../packages/raikou-core
-      '@raikou/hooks': link:../../packages/raikou-hooks
+      '@raikou/core': link:../../packages/raikou/core
+      '@raikou/hooks': link:../../packages/raikou/hooks
+      '@raikou/system': link:../../packages/raikou/system
+      '@tabler/icons-react': 2.23.0_react@18.2.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
@@ -89,17 +93,17 @@ importers:
 
   apps/web:
     specifiers:
-      '@raikou/core': workspace:*
-      '@raikou/hooks': workspace:*
-      '@tabler/icons-react': ^2.23.0
+      '@raikou/client': workspace:*
+      '@raikou/server': workspace:*
+      '@raikou/system': workspace:*
+      '@tabler/icons-react': ^2.25.0
       '@types/node': ^17.0.12
       '@types/react': ^18.0.37
       '@types/react-dom': ^18.0.11
       autoprefixer: ^10.4.14
       concurrently: ^8.2.0
       eslint-config-custom: workspace:*
-      next: ^13.4.1
-      next-themes: ^0.2.1
+      next: ^13.4.9
       postcss: ^8.4.24
       postcss-import: ^15.1.0
       postcss-remove-dumbcss: workspace:*
@@ -109,11 +113,11 @@ importers:
       tsconfig: workspace:*
       typescript: ^4.5.3
     dependencies:
-      '@raikou/core': link:../../packages/raikou-core
-      '@raikou/hooks': link:../../packages/raikou-hooks
-      '@tabler/icons-react': 2.23.0_react@18.2.0
-      next: 13.4.7_biqbaboplfbrettd7655fr4n2y
-      next-themes: 0.2.1_5v7kwk6wz2hvmegftnptprfjvm
+      '@raikou/client': link:../../packages/raikou/client
+      '@raikou/server': link:../../packages/raikou/server
+      '@raikou/system': link:../../packages/raikou/system
+      '@tabler/icons-react': 2.25.0_react@18.2.0
+      next: 13.4.9_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
@@ -175,31 +179,57 @@ importers:
       tsup: 7.1.0_7ipdbfbwoebef6vqazro5y4muq
       typescript: 5.1.6
 
-  packages/raikou-core:
+  packages/raikou/client:
     specifiers:
-      '@floating-ui/react': ^0.19.1
-      '@raikou/hooks': workspace:*
-      '@tabler/icons-react': ^2.23.0
+      '@raikou/avatar': workspace:*
+      '@raikou/checkbox': workspace:*
+      '@raikou/color-picker': workspace:*
+      '@raikou/combobox': workspace:*
+      '@raikou/drawer': workspace:*
+      '@raikou/input': workspace:*
+      '@raikou/input-base': workspace:*
+      '@raikou/modal': workspace:*
+      '@raikou/modal-base': workspace:*
+      '@raikou/native-select': workspace:*
+      '@raikou/popover': workspace:*
+      '@raikou/portal': workspace:*
+      '@raikou/scroll-area': workspace:*
+      '@raikou/slider': workspace:*
+      '@raikou/switch': workspace:*
+      '@raikou/table': workspace:*
+      '@raikou/tabs': workspace:*
+      '@raikou/text-input': workspace:*
+      '@raikou/tooltip': workspace:*
       '@types/node': ^20.3.3
       '@types/react': ^18.2.0
       '@types/react-dom': ^18.2.0
-      clsx: ^1.2.1
       eslint: ^8.43.0
       eslint-config-custom: workspace:*
-      react-remove-scroll: ^2.5.5
-      react-textarea-autosize: 8.3.4
-      react-virtuoso: ^4.3.10
-      tailwind-merge: ^1.13.2
       tsconfig: workspace:*
       tslib: ^2.5.2
       tsup: ^7.1.0
       type-fest: ^3.6.1
       typescript: ^4.5.3
     dependencies:
-      '@floating-ui/react': 0.19.2_biqbaboplfbrettd7655fr4n2y
-      '@raikou/hooks': link:../raikou-hooks
-      '@tabler/icons-react': 2.23.0_react@18.2.0
-      clsx: 1.2.1
+      '@raikou/avatar': link:../components/Avatar
+      '@raikou/checkbox': link:../components/Checkbox
+      '@raikou/color-picker': link:../components/ColorPicker
+      '@raikou/combobox': link:../components/Combobox
+      '@raikou/drawer': link:../components/Drawer
+      '@raikou/input': link:../components/Input
+      '@raikou/input-base': link:../components/InputBase
+      '@raikou/modal': link:../components/Modal
+      '@raikou/modal-base': link:../components/ModalBase
+      '@raikou/native-select': link:../components/NativeSelect
+      '@raikou/popover': link:../components/Popover
+      '@raikou/portal': link:../components/Portal
+      '@raikou/scroll-area': link:../components/ScrollArea
+      '@raikou/slider': link:../components/Slider
+      '@raikou/switch': link:../components/Switch
+      '@raikou/table': link:../components/Table
+      '@raikou/tabs': link:../components/Tabs
+      '@raikou/text-input': link:../components/TextInput
+      '@raikou/tooltip': link:../components/Tooltip
       tslib: 2.6.0
       type-fest: 3.12.0
     devDependencies:
@@ -207,16 +237,1486 @@ importers:
       '@types/react': 18.2.5
       '@types/react-dom': 18.2.3
       eslint: 8.44.0
-      eslint-config-custom: link:../eslint-config-custom
-      react-remove-scroll: 2.5.6_3pi6y6cylzraaxxtldk4o6b3zi
-      react-textarea-autosize: 8.3.4_3pi6y6cylzraaxxtldk4o6b3zi
-      react-virtuoso: 4.3.11_biqbaboplfbrettd7655fr4n2y
-      tailwind-merge: 1.13.2
-      tsconfig: link:../tsconfig
+      eslint-config-custom: link:../../eslint-config-custom
+      tsconfig: link:../../tsconfig
       tsup: 7.1.0_typescript@4.9.5
       typescript: 4.9.5
 
-  packages/raikou-hooks:
+  packages/raikou/components/ActionIcon:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tslib: ^2.5.2
+      tsup: ^7.1.0
+      type-fest: ^3.6.1
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      tslib: 2.6.0
+      type-fest: 3.12.0
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Affix:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Alert:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Anchor:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      clsx: 1.1.1
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      clsx: 1.1.1
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/AspectRatio:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Avatar:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tslib: ^2.5.2
+      tsup: ^7.1.0
+      type-fest: ^3.6.1
+      typescript: ^4.5.3
+    dependencies:
+      tslib: 2.6.0
+      type-fest: 3.12.0
+    devDependencies:
+      '@raikou/core': link:../../core
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/BackgroundImage:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tslib: ^2.5.2
+      tsup: ^7.1.0
+      type-fest: ^3.6.1
+      typescript: ^4.5.3
+    dependencies:
+      tslib: 2.6.0
+      type-fest: 3.12.0
+    devDependencies:
+      '@raikou/core': link:../../core
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Badge:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Blockquote:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Breadcrumbs:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Burger:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Button:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Center:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Checkbox:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@raikou/hooks': link:../../hooks
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/CloseButton:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Code:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Collapse:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/ColorPicker:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/ColorSwatch:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Combobox:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Container:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/CopyButton:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Divider:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tslib: ^2.5.2
+      tsup: ^7.1.0
+      type-fest: ^3.6.1
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      tslib: 2.6.0
+      type-fest: 3.12.0
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Drawer:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Fieldset:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/FileButton:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Flex:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Floating:
+    specifiers:
+      '@floating-ui/react': ^0.19.1
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@floating-ui/react': 0.19.2_biqbaboplfbrettd7655fr4n2y
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/FocusTrap:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Group:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Highlight:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/InlineInput:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Input:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/InputBase:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Kbd:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Loader:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      clsx: 1.1.1
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      clsx: 1.1.1
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Mark:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Modal:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/ModalBase:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      clsx: 1.1.1
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      react-remove-scroll: ^2.5.5
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+      clsx: 1.1.1
+      react-remove-scroll: 2.5.6_3pi6y6cylzraaxxtldk4o6b3zi
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/NativeSelect:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Notification:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Overlay:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Paper:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Popover:
+    specifiers:
+      '@floating-ui/react': ^0.19.1
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      clsx: 1.1.1
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@floating-ui/react': 0.19.2_biqbaboplfbrettd7655fr4n2y
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+      clsx: 1.1.1
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Portal:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/ScrollArea:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/SegmentedControl:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Slider:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Stack:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Switch:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Table:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Tabs:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Text:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/TextInput:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Title:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Tooltip:
+    specifiers:
+      '@floating-ui/react': ^0.19.1
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      clsx: 1.1.1
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@floating-ui/react': 0.19.2_biqbaboplfbrettd7655fr4n2y
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+      clsx: 1.1.1
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/Transition:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tslib: ^2.5.2
+      tsup: ^7.1.0
+      type-fest: ^3.6.1
+      typescript: ^4.5.3
+    dependencies:
+      tslib: 2.6.0
+      type-fest: 3.12.0
+    devDependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/UnstyledButton:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/components/VisuallyHidden:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      clsx: 1.1.1
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tsup: ^7.1.0
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/core': link:../../core
+      clsx: 1.1.1
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../../eslint-config-custom
+      tsconfig: link:../../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/core:
+    specifiers:
+      '@raikou/hooks': workspace:*
+      '@types/deep-equal': ^1.0.1
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      clsx: ^1.1.1
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tslib: ^2.5.2
+      tsup: ^7.1.0
+      type-fest: ^3.6.1
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/hooks': link:../hooks
+      clsx: 1.2.1
+      tslib: 2.6.0
+      type-fest: 3.12.0
+    devDependencies:
+      '@types/deep-equal': 1.0.1
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../eslint-config-custom
+      tsconfig: link:../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/hooks:
     specifiers:
       '@types/node': ^20.3.3
       '@types/react': ^18.2.0
@@ -226,19 +1726,125 @@ importers:
       tsconfig: workspace:*
       tsup: ^7.1.0
       typescript: ^4.5.3
-      unbuild: ^1.2.1
     dependencies:
       '@types/node': 20.3.3
       '@types/react': 18.2.5
       '@types/react-dom': 18.2.3
       eslint: 8.44.0
-      eslint-config-custom: link:../eslint-config-custom
-      tsconfig: link:../tsconfig
+      eslint-config-custom: link:../../eslint-config-custom
+      tsconfig: link:../../tsconfig
       tsup: 7.1.0_typescript@4.9.5
       typescript: 4.9.5
-      unbuild: 1.2.1
 
-  packages/raikou-tests:
+  packages/raikou/server:
+    specifiers:
+      '@raikou/action-icon': workspace:*
+      '@raikou/alert': workspace:*
+      '@raikou/anchor': workspace:*
+      '@raikou/aspect-ratio': workspace:*
+      '@raikou/background-image': workspace:*
+      '@raikou/badge': workspace:*
+      '@raikou/blockquote': workspace:*
+      '@raikou/breadcrumbs': workspace:*
+      '@raikou/button': workspace:*
+      '@raikou/center': workspace:*
+      '@raikou/close-button': workspace:*
+      '@raikou/code': workspace:*
+      '@raikou/color-swatch': workspace:*
+      '@raikou/container': workspace:*
+      '@raikou/divider': workspace:*
+      '@raikou/fieldset': workspace:*
+      '@raikou/flex': workspace:*
+      '@raikou/group': workspace:*
+      '@raikou/highlight': workspace:*
+      '@raikou/kbd': workspace:*
+      '@raikou/loader': workspace:*
+      '@raikou/mark': workspace:*
+      '@raikou/paper': workspace:*
+      '@raikou/stack': workspace:*
+      '@raikou/text': workspace:*
+      '@raikou/title': workspace:*
+      '@raikou/unstyled-button': workspace:*
+      '@raikou/visually-hidden': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tslib: ^2.5.2
+      tsup: ^7.1.0
+      type-fest: ^3.6.1
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/action-icon': link:../components/ActionIcon
+      '@raikou/alert': link:../components/Alert
+      '@raikou/anchor': link:../components/Anchor
+      '@raikou/aspect-ratio': link:../components/AspectRatio
+      '@raikou/background-image': link:../components/BackgroundImage
+      '@raikou/badge': link:../components/Badge
+      '@raikou/blockquote': link:../components/Blockquote
+      '@raikou/breadcrumbs': link:../components/Breadcrumbs
+      '@raikou/button': link:../components/Button
+      '@raikou/center': link:../components/Center
+      '@raikou/close-button': link:../components/CloseButton
+      '@raikou/code': link:../components/Code
+      '@raikou/color-swatch': link:../components/ColorSwatch
+      '@raikou/container': link:../components/Container
+      '@raikou/divider': link:../components/Divider
+      '@raikou/fieldset': link:../components/Fieldset
+      '@raikou/flex': link:../components/Flex
+      '@raikou/group': link:../components/Group
+      '@raikou/highlight': link:../components/Highlight
+      '@raikou/kbd': link:../components/Kbd
+      '@raikou/loader': link:../components/Loader
+      '@raikou/mark': link:../components/Mark
+      '@raikou/paper': link:../components/Paper
+      '@raikou/stack': link:../components/Stack
+      '@raikou/text': link:../components/Text
+      '@raikou/title': link:../components/Title
+      '@raikou/unstyled-button': link:../components/UnstyledButton
+      '@raikou/visually-hidden': link:../components/VisuallyHidden
+      tslib: 2.6.0
+      type-fest: 3.12.0
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../eslint-config-custom
+      tsconfig: link:../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/system:
+    specifiers:
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      eslint: ^8.43.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      tslib: ^2.5.2
+      tsup: ^7.1.0
+      type-fest: ^3.6.1
+      typescript: ^4.5.3
+    dependencies:
+      '@raikou/hooks': link:../hooks
+      tslib: 2.6.0
+      type-fest: 3.12.0
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.5
+      '@types/react-dom': 18.2.3
+      eslint: 8.44.0
+      eslint-config-custom: link:../../eslint-config-custom
+      tsconfig: link:../../tsconfig
+      tsup: 7.1.0_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/raikou/tests:
     specifiers: {}
 
   packages/tsconfig:
@@ -261,6 +1867,7 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.9
+    dev: true
 
   /@aw-web-design/x-default-browser/1.4.88:
     resolution: {integrity: sha512-AkEmF0wcwYC2QkhK703Y83fxWARttIWXDmQN8+cof8FmFZ5BRhnNXGymeb1S73bOCLfWjYELxtujL56idCN/XA==}
@@ -280,10 +1887,12 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/highlight': 7.22.5
+    dev: true
 
   /@babel/compat-data/7.22.5:
     resolution: {integrity: sha512-4Jc/YuIaYqKnDDz892kPIledykKg12Aw1PYX5i/TY28anJtacvM1Rrr8wbieB9GfEJwlzqT0hUEao0CxEebiDA==}
     engines: {node: '>=6.9.0'}
+    dev: true
 
   /@babel/core/7.21.8:
     resolution: {integrity: sha512-YeM22Sondbo523Sz0+CirSPnbj9bG3P0CdHcBZdqUuaeOaYEFbOLoGU7lebvGP6P5J/WE9wOn7u7C4J9HvS1xQ==}
@@ -329,6 +1938,7 @@ packages:
       semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
+    dev: true
 
   /@babel/generator/7.21.9:
     resolution: {integrity: sha512-F3fZga2uv09wFdEjEQIJxXALXfz0+JaOb7SabvVMmjHxeVTuGW8wgE8Vp1Hd7O+zMTYtcfEISGRzPkeiaPPsvg==}
@@ -348,6 +1958,7 @@ packages:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.18
       jsesc: 2.5.2
+    dev: true
 
   /@babel/helper-annotate-as-pure/7.22.5:
     resolution: {integrity: sha512-LvBTxu8bQSQkcyKOU+a1btnNFQ1dMAd0R6PyW3arXes06F6QLWLIrd681bxRPIXlrMGR3XYnW9JyML7dP3qgxg==}
@@ -389,6 +2000,7 @@ packages:
       browserslist: 4.21.9
       lru-cache: 5.1.1
       semver: 6.3.0
+    dev: true
 
   /@babel/helper-create-class-features-plugin/7.22.6_@babel+core@7.21.8:
     resolution: {integrity: sha512-iwdzgtSiBxF6ni6mzVnZCF3xt5qE6cEA0J7nFt8QOAWZ0zjCFceEgpn3vtb2V7WFR6QzP2jmIFOHMTRo7eNJjQ==}
@@ -489,6 +2101,7 @@ packages:
   /@babel/helper-environment-visitor/7.22.5:
     resolution: {integrity: sha512-XGmhECfVA/5sAt+H+xpSg0mfrHq6FzNr9Oxh7PSEBBRUb/mL7Kz3NICXb194rCqAEdxkhPT1a88teizAFyvk8Q==}
     engines: {node: '>=6.9.0'}
+    dev: true
 
   /@babel/helper-function-name/7.22.5:
     resolution: {integrity: sha512-wtHSq6jMRE3uF2otvfuD3DIvVhOsSNshQl0Qrd7qC9oQJzHvOL4qQXlQn2916+CXGywIjpGuIkoyZRRxHPiNQQ==}
@@ -496,12 +2109,14 @@ packages:
     dependencies:
       '@babel/template': 7.22.5
       '@babel/types': 7.22.5
+    dev: true
 
   /@babel/helper-hoist-variables/7.22.5:
     resolution: {integrity: sha512-wGjk9QZVzvknA6yKIUURb8zY3grXCcOZt+/7Wcy8O2uctxhplmUPkOdlgoNhmdVee2c92JXbf1xpMtVNbfoxRw==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/types': 7.22.5
+    dev: true
 
   /@babel/helper-member-expression-to-functions/7.22.5:
     resolution: {integrity: sha512-aBiH1NKMG0H2cGZqspNvsaBe6wNGjbJjuLy29aU+eDZjSbbN53BaxlpB02xm9v34pLTZ1nIQPFYn2qMZoa5BQQ==}
@@ -515,6 +2130,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/types': 7.22.5
+    dev: true
 
   /@babel/helper-module-transforms/7.22.5:
     resolution: {integrity: sha512-+hGKDt/Ze8GFExiVHno/2dvG5IdstpzCq0y4Qc9OJ25D4q3pKfiIP/4Vp3/JvhDkLKsDK2api3q3fpIgiIF5bw==}
@@ -530,6 +2146,7 @@ packages:
       '@babel/types': 7.22.5
     transitivePeerDependencies:
       - supports-color
+    dev: true
 
   /@babel/helper-optimise-call-expression/7.22.5:
     resolution: {integrity: sha512-HBwaojN0xFRx4yIvpwGqxiV2tUfl7401jlok564NgB9EHS1y6QT17FmKWm4ztqjeVdXLuC4fSvHc5ePpQjoTbw==}
@@ -592,6 +2209,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/types': 7.22.5
+    dev: true
 
   /@babel/helper-skip-transparent-expression-wrappers/7.22.5:
     resolution: {integrity: sha512-tK14r66JZKiC43p8Ki33yLBVJKlQDFoA8GYN67lWCDCqoL6EMMSuM9b+Iff2jHaM/RRFYl7K+iiru7hbRqNx8Q==}
@@ -605,6 +2223,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/types': 7.22.5
+    dev: true
 
   /@babel/helper-split-export-declaration/7.22.6:
     resolution: {integrity: sha512-AsUnxuLhRYsisFiaJwvp1QF+I3KjD5FOxut14q/GzovUe6orHLesW2C7d754kRm53h5gqrz6sFl6sxc4BVtE/g==}
@@ -616,6 +2235,7 @@ packages:
   /@babel/helper-string-parser/7.22.5:
     resolution: {integrity: sha512-mM4COjgZox8U+JcXQwPijIZLElkgEpO5rsERVDJTc2qfCDfERyob6k5WegS14SX18IIjv+XD+GrqNumY5JRCDw==}
     engines: {node: '>=6.9.0'}
+    dev: true
 
   /@babel/helper-validator-identifier/7.19.1:
     resolution: {integrity: sha512-awrNfaMtnHUr653GgGEs++LlAvW6w+DcPrOliSMXWCKo597CwL5Acf/wWdNkf/tfEQE3mjkeD1YOVZOUV/od1w==}
@@ -625,10 +2245,12 @@ packages:
   /@babel/helper-validator-identifier/7.22.5:
     resolution: {integrity: sha512-aJXu+6lErq8ltp+JhkJUfk1MTGyuA4v7f3pA+BJ5HLfNC6nAQ0Cpi9uOquUj8Hehg0aUiHzWQbOVJGao6ztBAQ==}
     engines: {node: '>=6.9.0'}
+    dev: true
 
   /@babel/helper-validator-option/7.22.5:
     resolution: {integrity: sha512-R3oB6xlIVKUnxNUxbmgq7pKjxpru24zlimpE8WK47fACIlM0II/Hm1RS8IaOI7NgCr6LNS+jl5l75m20npAziw==}
     engines: {node: '>=6.9.0'}
+    dev: true
 
   /@babel/helper-wrap-function/7.22.5:
     resolution: {integrity: sha512-bYqLIBSEshYcYQyfks8ewYA8S30yaGSeRslcvKMvoUk6HHPySbxHq9YRi6ghhzEU+yhQv9bP/jXnygkStOcqZw==}
@@ -651,6 +2273,7 @@ packages:
       '@babel/types': 7.22.5
     transitivePeerDependencies:
       - supports-color
+    dev: true
 
   /@babel/highlight/7.18.6:
     resolution: {integrity: sha512-u7stbOuYjaPezCuLj29hNW1v64M2Md2qupEKP1fHc7WdOA3DgLh37suiSrZYY7haUB7iBeQZ9P1uiRF359do3g==}
@@ -668,6 +2291,7 @@ packages:
       '@babel/helper-validator-identifier': 7.22.5
       chalk: 2.4.2
       js-tokens: 4.0.0
+    dev: true
 
   /@babel/parser/7.21.9:
     resolution: {integrity: sha512-q5PNg/Bi1OpGgx5jYlvWZwAorZepEudDMCLtj967aeS7WMont7dUZI46M2XwcIQqvUlMxWfdLFu4S/qSxeUu5g==}
@@ -683,6 +2307,7 @@ packages:
     hasBin: true
     dependencies:
       '@babel/types': 7.22.5
+    dev: true
 
   /@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression/7.22.5_@babel+core@7.21.8:
     resolution: {integrity: sha512-NP1M5Rf+u2Gw9qfSO4ihjcTGW5zXTi36ITLd4/EoAcEhIZ0yjMqmftDNl3QC19CX7olhrjpyU454g/2W7X0jvQ==}
@@ -2587,11 +4212,6 @@ packages:
     dependencies:
       regenerator-runtime: 0.13.11
 
-  /@babel/standalone/7.22.8:
-    resolution: {integrity: sha512-Bm9Sn+FfDqcvxYo/lz5BFo/PWBcjhxD6rtifkchFes/rU8/u4FacCFY/WdqwPtycH54THlXqMYMjaWigQaMpYA==}
-    engines: {node: '>=6.9.0'}
-    dev: false
-
   /@babel/template/7.22.5:
     resolution: {integrity: sha512-X7yV7eiwAxdj9k94NEylvbVHLiVG1nvzCV2EAowhxLTwODV1jl9UzZ48leOC0sH7OnuHrIkllaBgneUykIcZaw==}
     engines: {node: '>=6.9.0'}
@@ -2599,6 +4219,7 @@ packages:
       '@babel/code-frame': 7.22.5
       '@babel/parser': 7.22.5
       '@babel/types': 7.22.5
+    dev: true
 
   /@babel/traverse/7.21.5:
     resolution: {integrity: sha512-AhQoI3YjWi6u/y/ntv7k48mcrCXmus0t79J9qPNlk/lAsFlCiJ047RmbfMOawySTHtywXhbXgpx/8nXMYd+oFw==}
@@ -2634,6 +4255,7 @@ packages:
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
+    dev: true
 
   /@babel/types/7.21.5:
     resolution: {integrity: sha512-m4AfNvVF2mVC/F7fDEdH2El3HzUg9It/XsCxZiOTTA3m3qYfcSVSbTfM6Q9xG+hYDniZssYhlXKKUMD5m8tF4Q==}
@@ -2651,6 +4273,7 @@ packages:
       '@babel/helper-string-parser': 7.22.5
       '@babel/helper-validator-identifier': 7.22.5
       to-fast-properties: 2.0.0
+    dev: true
 
   /@base2/pretty-print-object/1.0.1:
     resolution: {integrity: sha512-4iri8i1AqYHJE2DstZYkyEprg6Pq6sKx3xn5FpySk9sNhH7qN2LLlHJCfDTZRILNwQNPD7mATWM0TBui7uC1pA==}
@@ -2693,6 +4316,7 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/android-arm/0.18.11:
@@ -2709,6 +4333,7 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/android-arm64/0.18.11:
@@ -2725,6 +4350,7 @@ packages:
     cpu: [x64]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/android-x64/0.18.11:
@@ -2741,6 +4367,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/darwin-arm64/0.18.11:
@@ -2757,6 +4384,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/darwin-x64/0.18.11:
@@ -2773,6 +4401,7 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/freebsd-arm64/0.18.11:
@@ -2789,6 +4418,7 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/freebsd-x64/0.18.11:
@@ -2805,6 +4435,7 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-arm/0.18.11:
@@ -2821,6 +4452,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-arm64/0.18.11:
@@ -2837,6 +4469,7 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-ia32/0.18.11:
@@ -2853,6 +4486,7 @@ packages:
     cpu: [loong64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-loong64/0.18.11:
@@ -2869,6 +4503,7 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-mips64el/0.18.11:
@@ -2885,6 +4520,7 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-ppc64/0.18.11:
@@ -2901,6 +4537,7 @@ packages:
     cpu: [riscv64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-riscv64/0.18.11:
@@ -2917,6 +4554,7 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-s390x/0.18.11:
@@ -2933,6 +4571,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-x64/0.18.11:
@@ -2949,6 +4588,7 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/netbsd-x64/0.18.11:
@@ -2965,6 +4605,7 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/openbsd-x64/0.18.11:
@@ -2981,6 +4622,7 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/sunos-x64/0.18.11:
@@ -2997,6 +4639,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/win32-arm64/0.18.11:
@@ -3013,6 +4656,7 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/win32-ia32/0.18.11:
@@ -3029,6 +4673,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/win32-x64/0.18.11:
@@ -3470,6 +5115,7 @@ packages:
   /@jridgewell/resolve-uri/3.1.1:
     resolution: {integrity: sha512-dSYZh7HhCDtCKm4QakX0xFpsRDqjjtZf/kjI/v3T3Nwt5r8/qz/M19F9ySyOqU94SXBmeG9ttTul+YnR4LOxFA==}
     engines: {node: '>=6.0.0'}
+    dev: true
 
   /@jridgewell/set-array/1.1.2:
     resolution: {integrity: sha512-xnkseuNADM0gt2bs+BvhO0p78Mk762YnZdsuzFV018NoG1Sj1SCQvpSqa7XUaTam5vAGasABV9qXASMKnFMwMw==}
@@ -3497,6 +5143,7 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
+    dev: true
 
   /@juggle/resize-observer/3.4.0:
     resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
@@ -3520,8 +5167,8 @@ packages:
       tar-fs: 2.1.1
     dev: true
 
-  /@next/env/13.4.7:
-    resolution: {integrity: sha512-ZlbiFulnwiFsW9UV1ku1OvX/oyIPLtMk9p/nnvDSwI0s7vSoZdRtxXNsaO+ZXrLv/pMbXVGq4lL8TbY9iuGmVw==}
+  /@next/env/13.4.9:
+    resolution: {integrity: sha512-vuDRK05BOKfmoBYLNi2cujG2jrYbEod/ubSSyqgmEx9n/W3eZaJQdRNhTfumO+qmq/QTzLurW487n/PM/fHOkw==}
     dev: false
 
   /@next/eslint-plugin-next/13.4.1:
@@ -3530,8 +5177,8 @@ packages:
       glob: 7.1.7
     dev: false
 
-  /@next/swc-darwin-arm64/13.4.7:
-    resolution: {integrity: sha512-VZTxPv1b59KGiv/pZHTO5Gbsdeoxcj2rU2cqJu03btMhHpn3vwzEK0gUSVC/XW96aeGO67X+cMahhwHzef24/w==}
+  /@next/swc-darwin-arm64/13.4.9:
+    resolution: {integrity: sha512-TVzGHpZoVBk3iDsTOQA/R6MGmFp0+17SWXMEWd6zG30AfuELmSSMe2SdPqxwXU0gbpWkJL1KgfLzy5ReN0crqQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
@@ -3539,8 +5186,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-darwin-x64/13.4.7:
-    resolution: {integrity: sha512-gO2bw+2Ymmga+QYujjvDz9955xvYGrWofmxTq7m70b9pDPvl7aDFABJOZ2a8SRCuSNB5mXU8eTOmVVwyp/nAew==}
+  /@next/swc-darwin-x64/13.4.9:
+    resolution: {integrity: sha512-aSfF1fhv28N2e7vrDZ6zOQ+IIthocfaxuMWGReB5GDriF0caTqtHttAvzOMgJgXQtQx6XhyaJMozLTSEXeNN+A==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
@@ -3548,8 +5195,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-arm64-gnu/13.4.7:
-    resolution: {integrity: sha512-6cqp3vf1eHxjIDhEOc7Mh/s8z1cwc/l5B6ZNkOofmZVyu1zsbEM5Hmx64s12Rd9AYgGoiCz4OJ4M/oRnkE16/Q==}
+  /@next/swc-linux-arm64-gnu/13.4.9:
+    resolution: {integrity: sha512-JhKoX5ECzYoTVyIy/7KykeO4Z2lVKq7HGQqvAH+Ip9UFn1MOJkOnkPRB7v4nmzqAoY+Je05Aj5wNABR1N18DMg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -3557,8 +5204,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-arm64-musl/13.4.7:
-    resolution: {integrity: sha512-T1kD2FWOEy5WPidOn1si0rYmWORNch4a/NR52Ghyp4q7KyxOCuiOfZzyhVC5tsLIBDH3+cNdB5DkD9afpNDaOw==}
+  /@next/swc-linux-arm64-musl/13.4.9:
+    resolution: {integrity: sha512-OOn6zZBIVkm/4j5gkPdGn4yqQt+gmXaLaSjRSO434WplV8vo2YaBNbSHaTM9wJpZTHVDYyjzuIYVEzy9/5RVZw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -3566,8 +5213,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-x64-gnu/13.4.7:
-    resolution: {integrity: sha512-zaEC+iEiAHNdhl6fuwl0H0shnTzQoAoJiDYBUze8QTntE/GNPfTYpYboxF5LRYIjBwETUatvE0T64W6SKDipvg==}
+  /@next/swc-linux-x64-gnu/13.4.9:
+    resolution: {integrity: sha512-iA+fJXFPpW0SwGmx/pivVU+2t4zQHNOOAr5T378PfxPHY6JtjV6/0s1vlAJUdIHeVpX98CLp9k5VuKgxiRHUpg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -3575,8 +5222,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-x64-musl/13.4.7:
-    resolution: {integrity: sha512-X6r12F8d8SKAtYJqLZBBMIwEqcTRvUdVm+xIq+l6pJqlgT2tNsLLf2i5Cl88xSsIytBICGsCNNHd+siD2fbWBA==}
+  /@next/swc-linux-x64-musl/13.4.9:
+    resolution: {integrity: sha512-rlNf2WUtMM+GAQrZ9gMNdSapkVi3koSW3a+dmBVp42lfugWVvnyzca/xJlN48/7AGx8qu62WyO0ya1ikgOxh6A==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -3584,8 +5231,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-win32-arm64-msvc/13.4.7:
-    resolution: {integrity: sha512-NPnmnV+vEIxnu6SUvjnuaWRglZzw4ox5n/MQTxeUhb5iwVWFedolPFebMNwgrWu4AELwvTdGtWjqof53AiWHcw==}
+  /@next/swc-win32-arm64-msvc/13.4.9:
+    resolution: {integrity: sha512-5T9ybSugXP77nw03vlgKZxD99AFTHaX8eT1ayKYYnGO9nmYhJjRPxcjU5FyYI+TdkQgEpIcH7p/guPLPR0EbKA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
@@ -3593,8 +5240,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-win32-ia32-msvc/13.4.7:
-    resolution: {integrity: sha512-6Hxijm6/a8XqLQpOOf/XuwWRhcuc/g4rBB2oxjgCMuV9Xlr2bLs5+lXyh8w9YbAUMYR3iC9mgOlXbHa79elmXw==}
+  /@next/swc-win32-ia32-msvc/13.4.9:
+    resolution: {integrity: sha512-ojZTCt1lP2ucgpoiFgrFj07uq4CZsq4crVXpLGgQfoFq00jPKRPgesuGPaz8lg1yLfvafkU3Jd1i8snKwYR3LA==}
     engines: {node: '>= 10'}
     cpu: [ia32]
     os: [win32]
@@ -3602,8 +5249,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-win32-x64-msvc/13.4.7:
-    resolution: {integrity: sha512-sW9Yt36Db1nXJL+mTr2Wo0y+VkPWeYhygvcHj1FF0srVtV+VoDjxleKtny21QHaG05zdeZnw2fCtf2+dEqgwqA==}
+  /@next/swc-win32-x64-msvc/13.4.9:
+    resolution: {integrity: sha512-QbT03FXRNdpuL+e9pLnu+XajZdm/TtIXVYY4lA9t+9l0fLZbHXDYEKitAqxrOj37o3Vx5ufxiRAniaIebYDCgw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -3646,82 +5293,6 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@rollup/plugin-alias/5.0.0_rollup@3.26.0:
-    resolution: {integrity: sha512-l9hY5chSCjuFRPsnRm16twWBiSApl2uYFLsepQYwtBuAxNMQ/1dJqADld40P0Jkqm65GRTLy/AC6hnpVebtLsA==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      rollup: ^1.20.0||^2.0.0||^3.0.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-    dependencies:
-      rollup: 3.26.0
-      slash: 4.0.0
-    dev: false
-
-  /@rollup/plugin-commonjs/24.1.0_rollup@3.26.0:
-    resolution: {integrity: sha512-eSL45hjhCWI0jCCXcNtLVqM5N1JlBGvlFfY0m6oOYnLCJ6N0qEXoZql4sY2MOUArzhH4SA/qBpTxvvZp2Sc+DQ==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      rollup: ^2.68.0||^3.0.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-    dependencies:
-      '@rollup/pluginutils': 5.0.2_rollup@3.26.0
-      commondir: 1.0.1
-      estree-walker: 2.0.2
-      glob: 8.1.0
-      is-reference: 1.2.1
-      magic-string: 0.27.0
-      rollup: 3.26.0
-    dev: false
-
-  /@rollup/plugin-json/6.0.0_rollup@3.26.0:
-    resolution: {integrity: sha512-i/4C5Jrdr1XUarRhVu27EEwjt4GObltD7c+MkCIpO2QIbojw8MUs+CCTqOphQi3Qtg1FLmYt+l+6YeoIf51J7w==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      rollup: ^1.20.0||^2.0.0||^3.0.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-    dependencies:
-      '@rollup/pluginutils': 5.0.2_rollup@3.26.0
-      rollup: 3.26.0
-    dev: false
-
-  /@rollup/plugin-node-resolve/15.1.0_rollup@3.26.0:
-    resolution: {integrity: sha512-xeZHCgsiZ9pzYVgAo9580eCGqwh/XCEUM9q6iQfGNocjgkufHAqC3exA+45URvhiYV8sBF9RlBai650eNs7AsA==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      rollup: ^2.78.0||^3.0.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-    dependencies:
-      '@rollup/pluginutils': 5.0.2_rollup@3.26.0
-      '@types/resolve': 1.20.2
-      deepmerge: 4.3.1
-      is-builtin-module: 3.2.1
-      is-module: 1.0.0
-      resolve: 1.22.2
-      rollup: 3.26.0
-    dev: false
-
-  /@rollup/plugin-replace/5.0.2_rollup@3.26.0:
-    resolution: {integrity: sha512-M9YXNekv/C/iHHK+cvORzfRYfPbq0RDD8r0G+bMiTXjNGKulPnCT9O3Ss46WfhI6ZOCgApOP7xAdmCQJ+U2LAA==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      rollup: ^1.20.0||^2.0.0||^3.0.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-    dependencies:
-      '@rollup/pluginutils': 5.0.2_rollup@3.26.0
-      magic-string: 0.27.0
-      rollup: 3.26.0
-    dev: false
-
   /@rollup/pluginutils/4.2.1:
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
     engines: {node: '>= 8.0.0'}
@@ -3729,21 +5300,6 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.1
     dev: true
-
-  /@rollup/pluginutils/5.0.2_rollup@3.26.0:
-    resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      rollup: ^1.20.0||^2.0.0||^3.0.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-    dependencies:
-      '@types/estree': 1.0.1
-      estree-walker: 2.0.2
-      picomatch: 2.3.1
-      rollup: 3.26.0
-    dev: false
 
   /@rushstack/eslint-patch/1.2.0:
     resolution: {integrity: sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==}
@@ -4729,8 +6285,22 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@tabler/icons-react/2.25.0_react@18.2.0:
+    resolution: {integrity: sha512-so/amZZcvuZBBTMinReI219ek1MwlZfccGfRu7IwXEhgHftFTfyBOvTK9Kgf4vM+9+i0CcuVRoxyfQiuUwYUWg==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@tabler/icons': 2.25.0
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
+
   /@tabler/icons/2.23.0:
     resolution: {integrity: sha512-dU54aBwaxG0H+jQ4BdrqtYFN5L7PZevvlnzyL6XeOZgfDS3+sVNCtuG3JmpTEqQSwGLYC1IEwogPGA/Iit2bOA==}
+    dev: false
+
+  /@tabler/icons/2.25.0:
+    resolution: {integrity: sha512-Z+FtSZoG/CM1TMCgg7elUew2m0+qMdh5gutMhvxiIY77KIIsE6L/6fUBy+rPXWE9v7MV296fsnCvbpfgwpXupQ==}
     dev: false
 
   /@testing-library/dom/8.20.1:
@@ -4839,6 +6409,10 @@ packages:
       '@types/node': 20.3.3
     dev: true
 
+  /@types/deep-equal/1.0.1:
+    resolution: {integrity: sha512-mMUu4nWHLBlHtxXY17Fg6+ucS/MnndyOWyOe7MmwkoMYxvfQU2ajtRaEvqSUv+aVkMqH/C0NCI8UoVfRNQ10yg==}
+    dev: true
+
   /@types/detect-port/1.3.3:
     resolution: {integrity: sha512-bV/jQlAJ/nPY3XqSatkGpu+nGzou+uSwrH1cROhn+jBFg47yaNH+blW4C7p9KhopC7QxCv/6M86s37k8dMk0Yg==}
     dev: true
@@ -4875,6 +6449,7 @@ packages:
 
   /@types/estree/1.0.1:
     resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
+    dev: true
 
   /@types/express-serve-static-core/4.17.35:
     resolution: {integrity: sha512-wALWQwrgiB2AWTT91CB62b6Yt0sNHpznUXeZEcnPU3DRdlDIz74x8Qg1UUYKSVFi+va5vKOLYRBI1bRKiLLKIg==}
@@ -5046,10 +6621,6 @@ packages:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
       csstype: 3.1.2
-
-  /@types/resolve/1.20.2:
-    resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
-    dev: false
 
   /@types/scheduler/0.16.3:
     resolution: {integrity: sha512-5cJ8CB4yAx7BH1oMvdU0Jh9lrEXyPkar6F9G/ERswkCuvP4KQZfZkSjcMbAICCpQTN4OuZn8tz0HiKv9TGZgrQ==}
@@ -5658,6 +7229,7 @@ packages:
     engines: {node: '>=4'}
     dependencies:
       color-convert: 1.9.3
+    dev: true
 
   /ansi-styles/4.3.0:
     resolution: {integrity: sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==}
@@ -6106,6 +7678,7 @@ packages:
     resolution: {integrity: sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA==}
     dependencies:
       balanced-match: 1.0.2
+    dev: true
 
   /braces/3.0.2:
     resolution: {integrity: sha512-b8um+L1RzM3WDSzvhm6gIz1yfTbBt6YTlcEKAvsmqCZZFw46z626lVj9j1yEPW33H5H+lBQpZMP1k8l+78Ha0A==}
@@ -6132,6 +7705,7 @@ packages:
       electron-to-chromium: 1.4.447
       node-releases: 2.0.12
       update-browserslist-db: 1.0.11_browserslist@4.21.9
+    dev: true
 
   /bs-logger/0.2.6:
     resolution: {integrity: sha512-pd8DCoxmbgc7hyPKOvxtqNcjYoOsABPQdcCUjGp3d42VR2CX1ORhk2A87oqqu5R1kk+76nsxZupkmyd+MVtCog==}
@@ -6160,11 +7734,6 @@ packages:
       base64-js: 1.5.1
       ieee754: 1.2.1
     dev: true
-
-  /builtin-modules/3.3.0:
-    resolution: {integrity: sha512-zhaCDicdLuWN5UbN5IMnFqNMhNfo919sH85y2/ea+5Yg9TsTkeZxpL+JLbp6cgYFS4sRLp3YV4S6yDuqVWHYOw==}
-    engines: {node: '>=6'}
-    dev: false
 
   /builtins/5.0.1:
     resolution: {integrity: sha512-qwVpFEHNfhYJIzNRBvd2C1kyo6jz3ZSMPyyuR47OPdiKWlbYnZNyDWuyR175qDnAJLiCo5fBBqPb3RiXgWlkOQ==}
@@ -6232,7 +7801,7 @@ packages:
     resolution: {integrity: sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==}
     dependencies:
       function-bind: 1.1.1
-      get-intrinsic: 1.2.0
+      get-intrinsic: 1.2.1
 
   /callsites/3.1.0:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
@@ -6290,6 +7859,7 @@ packages:
       ansi-styles: 3.2.1
       escape-string-regexp: 1.0.5
       supports-color: 5.5.0
+    dev: true
 
   /chalk/4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
@@ -6297,11 +7867,6 @@ packages:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
-
-  /chalk/5.3.0:
-    resolution: {integrity: sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==}
-    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
-    dev: false
 
   /change-case/3.1.0:
     resolution: {integrity: sha512-2AZp7uJZbYEzRPsFoa+ijKdvp9zsrnnt6+yFokfwEpeJm0xuJDVoxiRCAaTzyJND8GJkofo2IcKWaUZ/OECVzw==}
@@ -6452,6 +8017,11 @@ packages:
     engines: {node: '>=0.8'}
     dev: true
 
+  /clsx/1.1.1:
+    resolution: {integrity: sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==}
+    engines: {node: '>=6'}
+    dev: false
+
   /clsx/1.2.1:
     resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
     engines: {node: '>=6'}
@@ -6470,6 +8040,7 @@ packages:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
     dependencies:
       color-name: 1.1.3
+    dev: true
 
   /color-convert/2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
@@ -6479,6 +8050,7 @@ packages:
 
   /color-name/1.1.3:
     resolution: {integrity: sha512-72fSenhMw2HZMTVHeCA9KCmpEIbzWiQsjN+BHcBbS9vr1mtt+vJjPdksIBNUmKAW8TFUDPJK5SUU3QhE9NEXDw==}
+    dev: true
 
   /color-name/1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
@@ -6519,6 +8091,7 @@ packages:
 
   /commondir/1.0.1:
     resolution: {integrity: sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==}
+    dev: true
 
   /compressible/2.0.18:
     resolution: {integrity: sha512-AF3r7P5dWxL8MxyITRMlORQNaOA2IkAFaTr4k7BUumjPtRpGDTZpl0Pb1XCO6JeDCBdp126Cgs9sMxqSjgYyRg==}
@@ -6586,11 +8159,6 @@ packages:
       yargs: 17.7.2
     dev: true
 
-  /consola/3.2.3:
-    resolution: {integrity: sha512-I5qxpzLv+sJhTVEoLYNcTW+bThDCPsit0vLNKShZx6rLtpilNpmmeTPaeqJb9ZE9dV3DGaeby6Vuhrw38WjeyQ==}
-    engines: {node: ^14.18.0 || >=16.10.0}
-    dev: false
-
   /console-control-strings/1.1.0:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
@@ -6621,6 +8189,7 @@ packages:
 
   /convert-source-map/1.9.0:
     resolution: {integrity: sha512-ASFBup0Mz1uyiIjANan1jzLQami9z1PoYSZCiiYW2FczPbenXc45FZdBZLzOT+r6+iciuEModtmCti+hjaAk0A==}
+    dev: true
 
   /convert-source-map/2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
@@ -6799,6 +8368,7 @@ packages:
   /deepmerge/4.3.1:
     resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
     engines: {node: '>=0.10.0'}
+    dev: true
 
   /default-browser-id/3.0.0:
     resolution: {integrity: sha512-OZ1y3y0SqSICtE8DE4S8YOE9UZOJ8wO16fKWVP5J1Qz42kV9jcnMVFrEE/noXb/ss3Q4pZIH79kxofzyNNtUNA==}
@@ -6842,6 +8412,7 @@ packages:
 
   /defu/6.1.2:
     resolution: {integrity: sha512-+uO4+qr7msjNNWKYPHqN/3+Dx3NFkmIzayk2L1MyZQlvgZb/J1A0fo410dpKrN2SnqFjt8n4JL8fDJE0wIgjFQ==}
+    dev: true
 
   /del/5.1.0:
     resolution: {integrity: sha512-wH9xOVHnczo9jN2IW68BabcecVPxacIA3g/7z6vhSU/4stOKQzeCRK0yD0A24WiAAUJmmVpWqrERcTxnLo3AnA==}
@@ -6907,7 +8478,7 @@ packages:
 
   /detect-node-es/1.1.0:
     resolution: {integrity: sha512-ypdmJU/TbBby2Dxibuv7ZLW3Bs1QEmM7nHjEANfohJLvE0XVujisn1qPJcZxg+qDucsr+bP6fLD1rPS3AhJ7EQ==}
-    dev: true
+    dev: false
 
   /detect-package-manager/2.0.1:
     resolution: {integrity: sha512-j/lJHyoLlWi6G1LDdLgvUtz60Zo5GEj+sVYtTVXnYLDPuzgC3llMxonXym9zIwhhUII8vjdw0LXxavpLqTbl1A==}
@@ -7006,6 +8577,7 @@ packages:
 
   /electron-to-chromium/1.4.447:
     resolution: {integrity: sha512-sxX0LXh+uL41hSJsujAN86PjhrV/6c79XmpY0TvjZStV6VxIgarf8SRkUoUTuYmFcZQTemsoqo8qXOGw5npWfw==}
+    dev: true
 
   /emittery/0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
@@ -7124,7 +8696,7 @@ packages:
     resolution: {integrity: sha512-sPZmqHBe6JIiTfN5q2pEi//TwxmAFHwj/XEuYjTuse78i8KxaqMTTzxPoFKuzRpDpTJ+0NAbpfenkmH2rePtuw==}
     dependencies:
       call-bind: 1.0.2
-      get-intrinsic: 1.2.0
+      get-intrinsic: 1.2.1
       has-symbols: 1.0.3
       is-arguments: 1.1.1
       is-map: 2.0.2
@@ -7212,6 +8784,7 @@ packages:
       '@esbuild/win32-arm64': 0.17.19
       '@esbuild/win32-ia32': 0.17.19
       '@esbuild/win32-x64': 0.17.19
+    dev: true
 
   /esbuild/0.18.11:
     resolution: {integrity: sha512-i8u6mQF0JKJUlGR3OdFLKldJQMMs8OqM9Cc3UCi9XXziJ9WERM5bfkHaEAy0YAvPRMgqSW55W7xYn84XtEFTtA==}
@@ -7245,6 +8818,7 @@ packages:
   /escalade/3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
     engines: {node: '>=6'}
+    dev: true
 
   /escape-html/1.0.3:
     resolution: {integrity: sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow==}
@@ -7253,6 +8827,7 @@ packages:
   /escape-string-regexp/1.0.5:
     resolution: {integrity: sha512-vbRorB5FUQWvla16U8R/qgaFIya2qGzwDrNmCZuYKrbdSUMG6I1ZCGQRefkRVhuOkIGVne7BQ35DSfo1qvJqFg==}
     engines: {node: '>=0.8.0'}
+    dev: true
 
   /escape-string-regexp/2.0.0:
     resolution: {integrity: sha512-UpzcLCXolUWcNu5HtVMHYdXJjArjsF9C0aNnquZYY4uW/Vu0miy5YoWvbV345HauVvcAUnpRuhMMcqTcGOY2+w==}
@@ -7769,6 +9344,7 @@ packages:
 
   /estree-walker/2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
+    dev: true
 
   /esutils/2.0.3:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
@@ -8111,6 +9687,7 @@ packages:
       graceful-fs: 4.2.11
       jsonfile: 6.1.0
       universalify: 2.0.0
+    dev: true
 
   /fs-minipass/2.1.0:
     resolution: {integrity: sha512-V/JgOLFCS+R6Vcq0slCuaeWEdNC3ouDlJMNIsacH2VtALiu9mV4LPrHc5cDl8k5aw6J8jwgWWpiTo5RYhmIzvg==}
@@ -8167,6 +9744,7 @@ packages:
   /gensync/1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
     engines: {node: '>=6.9.0'}
+    dev: true
 
   /get-caller-file/2.0.5:
     resolution: {integrity: sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==}
@@ -8180,10 +9758,18 @@ packages:
       has: 1.0.3
       has-symbols: 1.0.3
 
+  /get-intrinsic/1.2.1:
+    resolution: {integrity: sha512-2DcsyfABl+gVHEfCOaTrWgyt+tb6MSEGmKq+kI5HwLbIYgjgmMcV8KQ41uaKz1xxUcn9tJtgFbQUEVcEbd0FYw==}
+    dependencies:
+      function-bind: 1.1.1
+      has: 1.0.3
+      has-proto: 1.0.1
+      has-symbols: 1.0.3
+
   /get-nonce/1.0.1:
     resolution: {integrity: sha512-FJhYRoDaiatfEkUK8HKlicmu/3SGFD51q3itKDGoSTysQJBnfOcxU5GxnhE1E6soB76MbT0MBtnKJuXyAx+96Q==}
     engines: {node: '>=6'}
-    dev: true
+    dev: false
 
   /get-npm-tarball-url/2.0.3:
     resolution: {integrity: sha512-R/PW6RqyaBQNWYaSyfrh54/qtcnOp22FHCCiRhSSZj0FP3KQWCsxxt0DzIdVTbwTqe9CtQfvl/FPD4UIPt4pqw==}
@@ -8317,10 +9903,12 @@ packages:
       inherits: 2.0.4
       minimatch: 5.1.6
       once: 1.4.0
+    dev: true
 
   /globals/11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
     engines: {node: '>=4'}
+    dev: true
 
   /globals/13.20.0:
     resolution: {integrity: sha512-Qg5QtVkCy/kv3FUSlu4ukeZDVf9ee0iXLAUYX13gbR17bnejFTzr4iS9bY7kwCf1NztRNm1t91fjOiyx4CSwPQ==}
@@ -8378,7 +9966,7 @@ packages:
   /gopd/1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
     dependencies:
-      get-intrinsic: 1.2.0
+      get-intrinsic: 1.2.1
 
   /graceful-fs/4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
@@ -8432,6 +10020,7 @@ packages:
   /has-flag/3.0.0:
     resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==}
     engines: {node: '>=4'}
+    dev: true
 
   /has-flag/4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
@@ -8440,12 +10029,11 @@ packages:
   /has-property-descriptors/1.0.0:
     resolution: {integrity: sha512-62DVLZGoiEBDHQyqG4w9xCuZ7eJEwNmJRWw2VY84Oedb7WFcA27fiEVe8oUQx9hAUJ4ekurquucTGwsyO1XGdQ==}
     dependencies:
-      get-intrinsic: 1.2.0
+      get-intrinsic: 1.2.1
 
   /has-proto/1.0.1:
     resolution: {integrity: sha512-7qE+iP+O+bgF9clE5+UoBFzE65mlBiVj3tKCrlNQ0Ogwm0BjpT/gK4SlLYDMybDh5I3TCTKnPPa0oMG7JDYrhg==}
     engines: {node: '>= 0.4'}
-    dev: false
 
   /has-symbols/1.0.3:
     resolution: {integrity: sha512-l3LCuF6MgDNwTDKkdYGEihYjt5pRPbEg46rtlmnSPlUbgmB8LOIrKJbYYFBSbnPaJexMKtiPO8hmeRjRz2Td+A==}
@@ -8473,10 +10061,6 @@ packages:
       no-case: 2.3.2
       upper-case: 1.1.3
     dev: true
-
-  /hookable/5.5.3:
-    resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
-    dev: false
 
   /hosted-git-info/2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
@@ -8658,7 +10242,7 @@ packages:
     resolution: {integrity: sha512-Y+R5hJrzs52QCG2laLn4udYVnxsfny9CpOhNhUvk/SSSVyF6T27FzRbF0sroPidSu3X8oEAkOn2K804mjpt6UQ==}
     engines: {node: '>= 0.4'}
     dependencies:
-      get-intrinsic: 1.2.0
+      get-intrinsic: 1.2.1
       has: 1.0.3
       side-channel: 1.0.4
 
@@ -8671,7 +10255,7 @@ packages:
     resolution: {integrity: sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==}
     dependencies:
       loose-envify: 1.4.0
-    dev: true
+    dev: false
 
   /ip/2.0.0:
     resolution: {integrity: sha512-WKa+XuLG1A1R0UWhl2+1XQSi+fZWMsYKffMZTTYsiZaUD8k2yDAj5atimTUD2TZkyCkNEeYE5NhFZmupOGtjYQ==}
@@ -8698,7 +10282,7 @@ packages:
     resolution: {integrity: sha512-y+FyyR/w8vfIRq4eQcM1EYgSTnmHXPqaF+IgzgraytCFq5Xh8lllDVmAZolPJiZttZLeFSINPYMaEJ7/vWUa1w==}
     dependencies:
       call-bind: 1.0.2
-      get-intrinsic: 1.2.0
+      get-intrinsic: 1.2.1
       is-typed-array: 1.1.10
 
   /is-arrayish/0.2.1:
@@ -8722,13 +10306,6 @@ packages:
     dependencies:
       call-bind: 1.0.2
       has-tostringtag: 1.0.0
-
-  /is-builtin-module/3.2.1:
-    resolution: {integrity: sha512-BSLE3HnV2syZ0FK0iMA/yUGplUeMmNz4AW5fnTunbCIqZi4vG3WjJT9FHMy5D69xmAYBHXQhJdALdpwVxV501A==}
-    engines: {node: '>=6'}
-    dependencies:
-      builtin-modules: 3.3.0
-    dev: false
 
   /is-callable/1.2.7:
     resolution: {integrity: sha512-1BC0BVFhS/p0qtw6enp8e+8OD0UrK0oFLztSjNzhcKA3WDuJxxAPXzPuPtKkjEY9UUoEWlX/8fgKeu2S8i9JTA==}
@@ -8812,10 +10389,6 @@ packages:
   /is-map/2.0.2:
     resolution: {integrity: sha512-cOZFQQozTha1f4MxLFzlgKYPTyj26picdZTx82hbc/Xf4K/tZOOXSCkMvU4pKioRXGDLJRn0GM7Upe7kR721yg==}
 
-  /is-module/1.0.0:
-    resolution: {integrity: sha512-51ypPSPCoTEIN9dy5Oy+h4pShgJmPCygKfyRCISBI+JoWT/2oJvK8QPxmwv7b/p239jXrm9M1mlQbyKJ5A152g==}
-    dev: false
-
   /is-nan/1.3.2:
     resolution: {integrity: sha512-E+zBKpQ2t6MEo1VsonYmluk9NxGrbzpeeLC2xIViuO2EjU2xsXsBPwTr3Ykv9l08UYEVEdWeRZNouaZqF6RN0w==}
     engines: {node: '>= 0.4'}
@@ -8859,12 +10432,6 @@ packages:
     resolution: {integrity: sha512-VRSzKkbMm5jMDoKLbltAkFQ5Qr7VDiTFGXxYFXXowVj387GeGNOCsOH6Msy00SGZ3Fp84b1Naa1psqgcCIEP5Q==}
     engines: {node: '>=0.10.0'}
     dev: true
-
-  /is-reference/1.2.1:
-    resolution: {integrity: sha512-U82MsXXiFIrjCK4otLT+o2NA2Cd2g5MLoOVXUZjIOhLurrRxpEXzI8O0KZHr3IjLvlAH1kTPYSuqer5T9ZVBKQ==}
-    dependencies:
-      '@types/estree': 1.0.1
-    dev: false
 
   /is-regex/1.1.4:
     resolution: {integrity: sha512-kvRdxDsxZjhzUX07ZnLydzS1TU/TJlTUHHY4YLL87e37oUA49DfkLqgy+VjFocowy29cKvcSiu+kIv728jTTVg==}
@@ -8941,7 +10508,7 @@ packages:
     resolution: {integrity: sha512-t2yVvttHkQktwnNNmBQ98AhENLdPUTDTE21uPqAQ0ARwQfGeQKRVS0NNurH7bTf7RrvcVn1OOge45CnBeHCSmg==}
     dependencies:
       call-bind: 1.0.2
-      get-intrinsic: 1.2.0
+      get-intrinsic: 1.2.1
 
   /is-what/3.14.1:
     resolution: {integrity: sha512-sNxgpk9793nzSs7bA6JQJGeIuRBQhAaNGG77kzYQgMkrID+lS6SlK07K5LaptscDlSaIgH+GPFzf+d75FVxozA==}
@@ -9466,6 +11033,7 @@ packages:
   /jiti/1.18.2:
     resolution: {integrity: sha512-QAdOptna2NYiSSpv0O/BwoHBSmz4YhpzJHyi+fnMRTXFjp7B8i/YG5Z8IfusxB1ufjcD2Sre1F3R+nX3fvy7gg==}
     hasBin: true
+    dev: true
 
   /joycon/3.1.1:
     resolution: {integrity: sha512-34wB/Y7MW7bzjKRjUKTa46I2Z7eV62Rkhva+KkopW7Qvv/OSWBqvkSY7vusOPrNuZcUG3tApvdVgNB8POj3SPw==}
@@ -9563,6 +11131,7 @@ packages:
     resolution: {integrity: sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==}
     engines: {node: '>=4'}
     hasBin: true
+    dev: true
 
   /json-parse-even-better-errors/2.3.1:
     resolution: {integrity: sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==}
@@ -9589,10 +11158,7 @@ packages:
     resolution: {integrity: sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==}
     engines: {node: '>=6'}
     hasBin: true
-
-  /jsonc-parser/3.2.0:
-    resolution: {integrity: sha512-gfFQZrcTc8CnKXp6Y4/CBT3fTc0OVuDofpre4aEeEpSBPV5X5v4+Vmx+8snU7RLPrNHPKSgLxGo9YuQzz20o+w==}
-    dev: false
+    dev: true
 
   /jsonfile/6.1.0:
     resolution: {integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==}
@@ -9600,6 +11166,7 @@ packages:
       universalify: 2.0.0
     optionalDependencies:
       graceful-fs: 4.2.11
+    dev: true
 
   /jsx-ast-utils/3.3.3:
     resolution: {integrity: sha512-fYQHZTZ8jSfmWZ0iyzfwiU4WDX4HpHbMCZ3gPlWYiCl3BoeOTsqKBqnTVfH2rYT7eP5c3sVbeSPHnnJOaTrWiw==}
@@ -9781,6 +11348,7 @@ packages:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
     dependencies:
       yallist: 3.1.1
+    dev: true
 
   /lru-cache/6.0.0:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
@@ -9798,13 +11366,7 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.15
-
-  /magic-string/0.30.1:
-    resolution: {integrity: sha512-mbVKXPmS0z0G4XqFDCTllmDQ6coZzn94aMlb0o/A4HEHJCKcanlDZwYJgwnkmgD3jyWhUgj9VsPrfd972yPffA==}
-    engines: {node: '>=12'}
-    dependencies:
-      '@jridgewell/sourcemap-codec': 1.4.15
-    dev: false
+    dev: true
 
   /make-dir/2.1.0:
     resolution: {integrity: sha512-LS9X+dc8KLxXCb8dni79fLIIUA5VyZoyjSMCwTluaXA0o27cCK0bhXkpgw+sTXVpPy/lSO57ilRixqk0vDmtRA==}
@@ -9954,6 +11516,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       brace-expansion: 2.0.1
+    dev: true
 
   /minimatch/9.0.0:
     resolution: {integrity: sha512-0jJj8AvgKqWN05mrwuqi8QYKx1WmYSUoKSxu5Qhs9prezTz10sxAHGNZe9J9cqIJzta8DWsleh2KaVaLl6Ru2w==}
@@ -10001,41 +11564,10 @@ packages:
     hasBin: true
     dev: true
 
-  /mkdist/1.2.0_typescript@5.1.6:
-    resolution: {integrity: sha512-UTqu/bXmIk/+VKNVgufAeMyjUcNy1dn9Bl7wL1zZlCKVrpDgj/VllmZBeh3ZCC/2HWqUrt6frNFTKt9TRZbNvQ==}
-    hasBin: true
-    peerDependencies:
-      sass: ^1.60.0
-      typescript: '>=4.9.5'
-    peerDependenciesMeta:
-      sass:
-        optional: true
-      typescript:
-        optional: true
-    dependencies:
-      defu: 6.1.2
-      esbuild: 0.17.19
-      fs-extra: 11.1.1
-      globby: 13.1.4
-      jiti: 1.18.2
-      mlly: 1.4.0
-      mri: 1.2.0
-      pathe: 1.1.1
-      typescript: 5.1.6
-    dev: false
-
-  /mlly/1.4.0:
-    resolution: {integrity: sha512-ua8PAThnTwpprIaU47EPeZ/bPUVp2QYBbWMphUQpVdBI3Lgqzm5KZQ45Agm3YJedHXaIHl6pBGabaLSUPPSptg==}
-    dependencies:
-      acorn: 8.9.0
-      pathe: 1.1.1
-      pkg-types: 1.0.3
-      ufo: 1.1.2
-    dev: false
-
   /mri/1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
     engines: {node: '>=4'}
+    dev: true
 
   /ms/2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
@@ -10097,20 +11629,8 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
-  /next-themes/0.2.1_5v7kwk6wz2hvmegftnptprfjvm:
-    resolution: {integrity: sha512-B+AKNfYNIzh0vqQQKqQItTS8evEouKD7H5Hj3kmuPERwddR2TxvDSFZuTj6T7Jfn1oyeUyJMydPl1Bkxkh0W7A==}
-    peerDependencies:
-      next: '*'
-      react: '*'
-      react-dom: '*'
-    dependencies:
-      next: 13.4.7_biqbaboplfbrettd7655fr4n2y
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    dev: false
-
-  /next/13.4.7_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-M8z3k9VmG51SRT6v5uDKdJXcAqLzP3C+vaKfLIAM0Mhx1um1G7MDnO63+m52qPdZfrTFzMZNzfsgvm3ghuVHIQ==}
+  /next/13.4.9_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-vtefFm/BWIi/eWOqf1GsmKG3cjKw1k3LjuefKRcL3iiLl3zWzFdPG3as6xtxrGO6gwTzzaO1ktL4oiHt/uvTjA==}
     engines: {node: '>=16.8.0'}
     hasBin: true
     peerDependencies:
@@ -10127,7 +11647,7 @@ packages:
       sass:
         optional: true
     dependencies:
-      '@next/env': 13.4.7
+      '@next/env': 13.4.9
       '@swc/helpers': 0.5.1
       busboy: 1.6.0
       caniuse-lite: 1.0.30001509
@@ -10138,15 +11658,15 @@ packages:
       watchpack: 2.4.0
       zod: 3.21.4
     optionalDependencies:
-      '@next/swc-darwin-arm64': 13.4.7
-      '@next/swc-darwin-x64': 13.4.7
-      '@next/swc-linux-arm64-gnu': 13.4.7
-      '@next/swc-linux-arm64-musl': 13.4.7
-      '@next/swc-linux-x64-gnu': 13.4.7
-      '@next/swc-linux-x64-musl': 13.4.7
-      '@next/swc-win32-arm64-msvc': 13.4.7
-      '@next/swc-win32-ia32-msvc': 13.4.7
-      '@next/swc-win32-x64-msvc': 13.4.7
+      '@next/swc-darwin-arm64': 13.4.9
+      '@next/swc-darwin-x64': 13.4.9
+      '@next/swc-linux-arm64-gnu': 13.4.9
+      '@next/swc-linux-arm64-musl': 13.4.9
+      '@next/swc-linux-x64-gnu': 13.4.9
+      '@next/swc-linux-x64-musl': 13.4.9
+      '@next/swc-win32-arm64-msvc': 13.4.9
+      '@next/swc-win32-ia32-msvc': 13.4.9
+      '@next/swc-win32-x64-msvc': 13.4.9
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
@@ -10208,6 +11728,7 @@ packages:
 
   /node-releases/2.0.12:
     resolution: {integrity: sha512-QzsYKWhXTWx8h1kIvqfnC++o0pEmpRQA/aenALsL2F4pqNVr7YzcdMlDij5WBnwftRbJCNJL/O7zdKaxKPHqgQ==}
+    dev: true
 
   /normalize-package-data/2.5.0:
     resolution: {integrity: sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==}
@@ -10575,6 +12096,7 @@ packages:
 
   /pathe/1.1.1:
     resolution: {integrity: sha512-d+RQGp0MAYTIaDBIMmOfMwz3E+LOZnxx1HZd5R18mmCZY0QBlK0LDZfPc8FW8Ed2DlvsuE6PRjroDY+wg4+j/Q==}
+    dev: true
 
   /peek-stream/1.1.3:
     resolution: {integrity: sha512-FhJ+YbOSBb9/rIl2ZeE/QHEsWn7PqNYt8ARAY3kIgNGOk13g9FGyIY6JIl/xB/3TFRVoTv5as0l11weORrTekA==}
@@ -10629,14 +12151,6 @@ packages:
     dependencies:
       find-up: 5.0.0
     dev: true
-
-  /pkg-types/1.0.3:
-    resolution: {integrity: sha512-nN7pYi0AQqJnoLPC9eHFQ8AcyaixBUOwvqc5TDnIKCMEE6I0y8P7OKA7fPexsXGCGxQDl/cmrLAp26LhcwxZ4A==}
-    dependencies:
-      jsonc-parser: 3.2.0
-      mlly: 1.4.0
-      pathe: 1.1.1
-    dev: false
 
   /polished/4.2.2:
     resolution: {integrity: sha512-Sz2Lkdxz6F2Pgnpi9U5Ng/WdWAUZxmHrNPoVlm3aAemxoy2Qy7LGjQg4uf8qKelDAUW94F4np3iH2YPf2qefcQ==}
@@ -10857,11 +12371,6 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
-
-  /pretty-bytes/6.1.0:
-    resolution: {integrity: sha512-Rk753HI8f4uivXi4ZCIYdhmG1V+WKzvRMg/X+M42a6t7D07RcmopXJMDNk6N++7Bl75URRGsb40ruvg7Hcp2wQ==}
-    engines: {node: ^14.13.1 || >=16.0.0}
-    dev: false
 
   /pretty-format/27.5.1:
     resolution: {integrity: sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==}
@@ -11144,7 +12653,7 @@ packages:
       react: 18.2.0
       react-style-singleton: 2.2.1_3pi6y6cylzraaxxtldk4o6b3zi
       tslib: 2.6.0
-    dev: true
+    dev: false
 
   /react-remove-scroll/2.5.6_3pi6y6cylzraaxxtldk4o6b3zi:
     resolution: {integrity: sha512-bO856ad1uDYLefgArk559IzUNeQ6SWH4QnrevIUjH+GczV56giDfl3h0Idptf2oIKxQmd1p9BN25jleKodTALg==}
@@ -11163,7 +12672,7 @@ packages:
       tslib: 2.6.0
       use-callback-ref: 1.3.0_3pi6y6cylzraaxxtldk4o6b3zi
       use-sidecar: 1.1.2_3pi6y6cylzraaxxtldk4o6b3zi
-    dev: true
+    dev: false
 
   /react-style-singleton/2.2.1_3pi6y6cylzraaxxtldk4o6b3zi:
     resolution: {integrity: sha512-ZWj0fHEMyWkHzKYUr2Bs/4zU6XLmq9HsgBURm7g5pAVfyn49DgUiNgY2d4lXRlYSiCif9YBGpQleewkcqddc7g==}
@@ -11180,32 +12689,7 @@ packages:
       invariant: 2.2.4
       react: 18.2.0
       tslib: 2.6.0
-    dev: true
-
-  /react-textarea-autosize/8.3.4_3pi6y6cylzraaxxtldk4o6b3zi:
-    resolution: {integrity: sha512-CdtmP8Dc19xL8/R6sWvtknD/eCXkQr30dtvC4VmGInhRsfF8X/ihXCq6+9l9qbxmKRiq407/7z5fxE7cVWQNgQ==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      '@babel/runtime': 7.21.5
-      react: 18.2.0
-      use-composed-ref: 1.3.0_react@18.2.0
-      use-latest: 1.2.1_3pi6y6cylzraaxxtldk4o6b3zi
-    transitivePeerDependencies:
-      - '@types/react'
-    dev: true
-
-  /react-virtuoso/4.3.11_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-0YrCvQ5GsIKRcN34GxrzhSJGuMNI+hGxWci5cTVuPQ8QWTEsrKfCyqm7YNBMmV3pu7onG1YVUBo86CyCXdejXg==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      react: '>=16 || >=17 || >= 18'
-      react-dom: '>=16 || >=17 || >= 18'
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    dev: true
+    dev: false
 
   /react/18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
@@ -11473,20 +12957,6 @@ packages:
     dependencies:
       glob: 7.2.3
 
-  /rollup-plugin-dts/5.3.0_ojpbajy3tb2wxdybswm4cbirya:
-    resolution: {integrity: sha512-8FXp0ZkyZj1iU5klkIJYLjIq/YZSwBoERu33QBDxm/1yw5UU4txrEtcmMkrq+ZiKu3Q4qvPCNqc3ovX6rjqzbQ==}
-    engines: {node: '>=v14'}
-    peerDependencies:
-      rollup: ^3.0.0
-      typescript: ^4.1 || ^5.0
-    dependencies:
-      magic-string: 0.30.1
-      rollup: 3.26.0
-      typescript: 5.1.6
-    optionalDependencies:
-      '@babel/code-frame': 7.22.5
-    dev: false
-
   /rollup/3.26.0:
     resolution: {integrity: sha512-YzJH0eunH2hr3knvF3i6IkLO/jTjAEwU4HoMUbQl4//Tnl3ou0e7P5SjxdDr8HQJdeUJShlbEHXrrnEHy1l7Yg==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
@@ -11589,10 +13059,6 @@ packages:
       ajv: 6.12.6
       ajv-keywords: 3.5.2_ajv@6.12.6
     dev: true
-
-  /scule/1.0.0:
-    resolution: {integrity: sha512-4AsO/FrViE/iDNEPaAQlb77tf0csuq27EsVpy6ett584EcRTp6pTDLoGWVxCD77y5iU5FauOvhsI4o1APwPoSQ==}
-    dev: false
 
   /semver/5.7.1:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}
@@ -11763,7 +13229,7 @@ packages:
     resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==}
     dependencies:
       call-bind: 1.0.2
-      get-intrinsic: 1.2.0
+      get-intrinsic: 1.2.1
       object-inspect: 1.12.3
 
   /signal-exit/3.0.7:
@@ -12100,6 +13566,7 @@ packages:
     engines: {node: '>=4'}
     dependencies:
       has-flag: 3.0.0
+    dev: true
 
   /supports-color/7.2.0:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
@@ -12150,10 +13617,6 @@ packages:
       slice-ansi: 4.0.0
       string-width: 4.2.3
       strip-ansi: 6.0.1
-    dev: true
-
-  /tailwind-merge/1.13.2:
-    resolution: {integrity: sha512-R2/nULkdg1VR/EL4RXg4dEohdoxNUJGLMnWIQnPKL+O9Twu7Cn3Rxi4dlXkDzZrEGtR+G+psSXFouWlpTyLhCQ==}
     dev: true
 
   /tailwindcss/3.3.2:
@@ -12349,6 +13812,7 @@ packages:
   /to-fast-properties/2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
     engines: {node: '>=4'}
+    dev: true
 
   /to-regex-range/5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
@@ -12712,10 +14176,6 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  /ufo/1.1.2:
-    resolution: {integrity: sha512-TrY6DsjTQQgyS3E3dBaOXf0TpPD8u9FVrVYmKVegJuFw51n/YB9XPt+U6ydzFG5ZIN7+DIjPbNmXoBj9esYhgQ==}
-    dev: false
-
   /uglify-js/3.17.4:
     resolution: {integrity: sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==}
     engines: {node: '>=0.8.0'}
@@ -12730,40 +14190,6 @@ packages:
       has-bigints: 1.0.2
       has-symbols: 1.0.3
       which-boxed-primitive: 1.0.2
-    dev: false
-
-  /unbuild/1.2.1:
-    resolution: {integrity: sha512-J4efk69Aye43tWcBPCsLK7TIRppGrEN4pAlDzRKo3HSE6MgTSTBxSEuE3ccx7ixc62JvGQ/CoFXYqqF2AHozow==}
-    hasBin: true
-    dependencies:
-      '@rollup/plugin-alias': 5.0.0_rollup@3.26.0
-      '@rollup/plugin-commonjs': 24.1.0_rollup@3.26.0
-      '@rollup/plugin-json': 6.0.0_rollup@3.26.0
-      '@rollup/plugin-node-resolve': 15.1.0_rollup@3.26.0
-      '@rollup/plugin-replace': 5.0.2_rollup@3.26.0
-      '@rollup/pluginutils': 5.0.2_rollup@3.26.0
-      chalk: 5.3.0
-      consola: 3.2.3
-      defu: 6.1.2
-      esbuild: 0.17.19
-      globby: 13.1.4
-      hookable: 5.5.3
-      jiti: 1.18.2
-      magic-string: 0.30.1
-      mkdist: 1.2.0_typescript@5.1.6
-      mlly: 1.4.0
-      mri: 1.2.0
-      pathe: 1.1.1
-      pkg-types: 1.0.3
-      pretty-bytes: 6.1.0
-      rollup: 3.26.0
-      rollup-plugin-dts: 5.3.0_ojpbajy3tb2wxdybswm4cbirya
-      scule: 1.0.0
-      typescript: 5.1.6
-      untyped: 1.3.2
-    transitivePeerDependencies:
-      - sass
-      - supports-color
     dev: false
 
   /unfetch/4.2.0:
@@ -12822,6 +14248,7 @@ packages:
   /universalify/2.0.0:
     resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}
     engines: {node: '>= 10.0.0'}
+    dev: true
 
   /unpipe/1.0.0:
     resolution: {integrity: sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==}
@@ -12841,21 +14268,6 @@ packages:
     resolution: {integrity: sha512-KK8xQ1mkzZeg9inewmFVDNkg3l5LUhoq9kN6iWYB/CC9YMG8HA+c1Q8HwDe6dEX7kErrEVNVBO3fWsVq5iDgtw==}
     engines: {node: '>=8'}
 
-  /untyped/1.3.2:
-    resolution: {integrity: sha512-z219Z65rOGD6jXIvIhpZFfwWdqQckB8sdZec2NO+TkcH1Bph7gL0hwLzRJs1KsOo4Jz4mF9guBXhsEnyEBGVfw==}
-    hasBin: true
-    dependencies:
-      '@babel/core': 7.22.5
-      '@babel/standalone': 7.22.8
-      '@babel/types': 7.22.5
-      defu: 6.1.2
-      jiti: 1.18.2
-      mri: 1.2.0
-      scule: 1.0.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
   /update-browserslist-db/1.0.11_browserslist@4.21.9:
     resolution: {integrity: sha512-dCwEFf0/oT85M1fHBg4F0jtLwJrutGoHSQXCh7u4o2t1drG+c0a9Flnqww6XUKSfQMPpJBRjU8d4RXB09qtvaA==}
     hasBin: true
@@ -12865,6 +14277,7 @@ packages:
       browserslist: 4.21.9
       escalade: 3.1.1
       picocolors: 1.0.0
+    dev: true
 
   /update-check/1.5.2:
     resolution: {integrity: sha512-1TrmYLuLj/5ZovwUS7fFd1jMH3NnFDN1y1A8dboedIDt7zs/zJMo6TwwlhYKkSeEwzleeiSBV5/3c9ufAQWDaQ==}
@@ -12908,42 +14321,7 @@ packages:
       '@types/react': 18.2.5
       react: 18.2.0
       tslib: 2.6.0
-    dev: true
-
-  /use-composed-ref/1.3.0_react@18.2.0:
-    resolution: {integrity: sha512-GLMG0Jc/jiKov/3Ulid1wbv3r54K9HlMW29IWcDFPEqFkSO2nS0MuefWgMJpeHQ9YJeXDL3ZUF+P3jdXlZX/cQ==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      react: 18.2.0
-    dev: true
-
-  /use-isomorphic-layout-effect/1.1.2_3pi6y6cylzraaxxtldk4o6b3zi:
-    resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
-    peerDependencies:
-      '@types/react': '*'
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-    dependencies:
-      '@types/react': 18.2.5
-      react: 18.2.0
-    dev: true
-
-  /use-latest/1.2.1_3pi6y6cylzraaxxtldk4o6b3zi:
-    resolution: {integrity: sha512-xA+AVm/Wlg3e2P/JiItTziwS7FK92LWrDB0p+hgXloIMuVCeJJ8v6f0eeHyPZaJrM+usM1FkFfbNCrJGs8A/zw==}
-    peerDependencies:
-      '@types/react': '*'
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-    dependencies:
-      '@types/react': 18.2.5
-      react: 18.2.0
-      use-isomorphic-layout-effect: 1.1.2_3pi6y6cylzraaxxtldk4o6b3zi
-    dev: true
+    dev: false
 
   /use-resize-observer/9.1.0_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-R25VqO9Wb3asSD4eqtcxk8sJalvIOYBqS8MNZlpDSQ4l4xMQxC/J7Id9HoTqPq8FwULIn0PVW+OAqF2dyYbjow==}
@@ -12970,7 +14348,7 @@ packages:
       detect-node-es: 1.1.0
       react: 18.2.0
       tslib: 2.6.0
-    dev: true
+    dev: false
 
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
@@ -13302,6 +14680,7 @@ packages:
 
   /yallist/3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
+    dev: true
 
   /yallist/4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}

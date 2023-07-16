@@ -1,5 +1,5 @@
 "use client";
-import { Avatar } from "@raikou/core";
+import { Avatar } from "@raikou/client";
 
 function AvatarC() {
   return (

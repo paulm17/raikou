@@ -1,0 +1,9 @@
+{
+  "extends": "../../../../packages/tsconfig/chakraui.json",
+  "compilerOptions": {
+    "paths": {
+      "@raikou/close-button": ["../CloseButton/src"]
+    }
+  },
+  "include": ["src", "../../configuration/types"]
+}

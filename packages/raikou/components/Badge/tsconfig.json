@@ -1,0 +1,9 @@
+{
+  "extends": "../../../../packages/tsconfig/chakraui.json",
+  "compilerOptions": {
+    "paths": {
+      "@raikou/group": ["../Group/src"]
+    }
+  },
+  "include": ["src", "../../configuration/types"]
+}

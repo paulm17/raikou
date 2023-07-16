@@ -8,8 +8,10 @@
     "clean": "rm -rf .turbo && rm -rf node_modules"
   },
   "dependencies": {
+    "@tabler/icons-react": "^2.23.0",
     "@raikou/core": "workspace:*",
     "@raikou/hooks": "workspace:*",
+    "@raikou/system": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
