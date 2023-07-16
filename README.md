@@ -63,9 +63,17 @@ To get a local copy up and running follow these simple example steps.
   ```
 
 2. Change the content param in tailwind config, to pick up the component Library
+
    ```sh
-   content: ["./node_modules/@raikou/core/dist/*", "./app/**/*.tsx"],
+   content: [
+      "./node_modules/@raikou/server/node_modules/@raikou/**/dist/*",
+      "./node_modules/@raikou/client/node_modules/@raikou/**/dist/*",
+      "./app/**/*.tsx"
+   ],
    ```
+
+   Note: this currently breaks NextJS on refresh, suspect it's on the tailwind side. Will test with the new release of tailwind.
+
 3. Add a preset param in the tailwind config, to pick up the component styles
    ```sh
    presets: [require("./node_modules/@raikou/system/dist/plugin")],
@@ -111,7 +119,7 @@ Change appPath to where the tsx files for your project reside.
 
 ## Server Components
 
-There are 29 server components available without the need for "use client" in either the component library entry point nor in the page itself. They are: action-icon, alert, anchor, aspect-ratio, background-image, badge, blockquote, box, breadcrumbs, button, center, close-button, code, color-swatch, container, divider, fieldset, flex, group, highlight, kbd, loader, mark, paper, stack, text, title, unstyled-button, visually-hidden.
+There are 28 server components available without the need for "use client" in either the component library entry point nor in the page itself. They are: action-icon, anchor, aspect-ratio, background-image, badge, blockquote, box, breadcrumbs, button, center, close-button, code, color-swatch, container, divider, fieldset, flex, group, highlight, kbd, loader, mark, paper, stack, text, title, unstyled-button, visually-hidden.
 
 To use a server component do the following:
 
