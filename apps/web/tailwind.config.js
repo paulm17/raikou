@@ -2,7 +2,6 @@
 module.exports = {
   content: [
     "./node_modules/@raikou/server/node_modules/@raikou/action-icon/dist/*",
-    "./node_modules/@raikou/server/node_modules/@raikou/alert/dist/*",
     "./node_modules/@raikou/server/node_modules/@raikou/anchor/dist/*",
     "./node_modules/@raikou/server/node_modules/@raikou/aspect-ratio/dist/*",
     "./node_modules/@raikou/server/node_modules/@raikou/badge/dist/*",
@@ -29,6 +28,7 @@ module.exports = {
     "./node_modules/@raikou/server/node_modules/@raikou/title/dist/*",
     "./node_modules/@raikou/server/node_modules/@raikou/unstyled-button/dist/*",
     "./node_modules/@raikou/server/node_modules/@raikou/visually-hidden/dist/*",
+    "./node_modules/@raikou/client/node_modules/@raikou/alert/dist/*",
     "./node_modules/@raikou/client/node_modules/@raikou/avatar/dist/*",
     "./node_modules/@raikou/client/node_modules/@raikou/checkbox/dist/*",
     "./node_modules/@raikou/client/node_modules/@raikou/color-picker/dist/*",

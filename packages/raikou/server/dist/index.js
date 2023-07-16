@@ -18,7 +18,6 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var src_exports = {};
 module.exports = __toCommonJS(src_exports);
 __reExport(src_exports, require("@raikou/action-icon"), module.exports);
-__reExport(src_exports, require("@raikou/alert"), module.exports);
 __reExport(src_exports, require("@raikou/anchor"), module.exports);
 __reExport(src_exports, require("@raikou/aspect-ratio"), module.exports);
 __reExport(src_exports, require("@raikou/background-image"), module.exports);
@@ -49,7 +48,6 @@ __reExport(src_exports, require("@raikou/visually-hidden"), module.exports);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   ...require("@raikou/action-icon"),
-  ...require("@raikou/alert"),
   ...require("@raikou/anchor"),
   ...require("@raikou/aspect-ratio"),
   ...require("@raikou/background-image"),

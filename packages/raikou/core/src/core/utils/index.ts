@@ -21,4 +21,3 @@ export {
   getFontSize,
   getLineHeight,
 } from "./get-size/get-size";
-export { useId } from "./useId/useId";

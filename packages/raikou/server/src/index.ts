@@ -1,5 +1,4 @@
 export * from "@raikou/action-icon";
-export * from "@raikou/alert";
 export * from "@raikou/anchor";
 export * from "@raikou/aspect-ratio";
 export * from "@raikou/background-image";

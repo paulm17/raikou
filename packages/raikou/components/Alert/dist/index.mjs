@@ -38,9 +38,9 @@ import {
   useProps as useProps6,
   useStyles as useStyles5,
   createVarsResolver as createVarsResolver4,
-  getRadius as getRadius2,
-  useId
+  getRadius as getRadius2
 } from "@raikou/core";
+import { useId } from "@raikou/hooks";
 
 // ../CloseButton/src/CloseIcon.tsx
 import React, { forwardRef } from "react";
@@ -615,7 +615,7 @@ var Alert = factory3((_props, ref) => {
     vars,
     varsResolver: varsResolver4
   });
-  const rootId = `${useId()}-${id}`;
+  const rootId = useId(id);
   const titleId = title && `${rootId}-title` || void 0;
   const bodyId = `${rootId}-body`;
   return /* @__PURE__ */ React10.createElement(

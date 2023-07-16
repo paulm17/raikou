@@ -24,6 +24,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
+    "@raikou/alert": "workspace:*",
     "@raikou/avatar": "workspace:*",
     "@raikou/checkbox": "workspace:*",
     "@raikou/color-picker": "workspace:*",

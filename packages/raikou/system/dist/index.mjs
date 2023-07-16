@@ -1156,7 +1156,6 @@ function Bootstrap({
     manager: colorSchemeManager,
     getRootElement
   });
-  console.log(colorScheme);
   let mergedTheme = mergeRaikouTheme(DEFAULT_THEME, theme);
   if (typeof window !== "undefined") {
     const storage = localStorage.getItem("raikou-theme");

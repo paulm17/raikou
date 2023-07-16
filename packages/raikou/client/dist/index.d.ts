@@ -1,3 +1,4 @@
+export * from '@raikou/alert';
 export * from '@raikou/avatar';
 export * from '@raikou/checkbox';
 export * from '@raikou/color-picker';

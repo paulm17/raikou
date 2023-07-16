@@ -12,8 +12,8 @@ import {
   getRadius,
   RaikouRadius,
   RaikouColor,
-  useId,
 } from "@raikou/core";
+import { useId } from "@raikou/hooks";
 import { CloseButton } from "@raikou/close-button";
 
 export type AlertStylesNames =
@@ -137,7 +137,7 @@ export const Alert = factory<AlertFactory>((_props, ref) => {
     varsResolver,
   });
 
-  const rootId = `${useId()}-${id}`;
+  const rootId = useId(id);
   const titleId = (title && `${rootId}-title`) || undefined;
   const bodyId = `${rootId}-body`;
 

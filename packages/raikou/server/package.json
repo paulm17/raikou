@@ -25,7 +25,6 @@
   },
   "dependencies": {
     "@raikou/action-icon": "workspace:*",
-    "@raikou/alert": "workspace:*",
     "@raikou/anchor": "workspace:*",
     "@raikou/aspect-ratio": "workspace:*",
     "@raikou/background-image": "workspace:*",

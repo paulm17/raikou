@@ -326,17 +326,6 @@ function getShadow(size) {
   return getSize(size, "raikou-shadow");
 }
 
-// src/core/utils/useId/useId.ts
-function useId(length = 8) {
-  const c = "abcdefghijklmnopqrstuvwxyz";
-  const s = [...Array(1)].map((_) => c[~~(Math.random() * c.length)]).join("");
-  const id = Array.from(
-    { length },
-    () => Math.random().toString(36)[2]
-  ).join("");
-  return `raikou-${s}${id}`;
-}
-
 // src/core/styles-api/create-vars-resolver/create-vars-resolver.ts
 function createVarsResolver(resolver) {
   return resolver;
@@ -1125,7 +1114,7 @@ function getTheme() {
 // src/core/Bootstrap/use-props/use-props.ts
 function useProps(component, defaultProps, props) {
   var _a;
-  const theme = DEFAULT_THEME;
+  const theme = getTheme();
   const contextPropsPayload = (_a = theme.components[component]) == null ? void 0 : _a.defaultProps;
   const contextProps = typeof contextPropsPayload === "function" ? contextPropsPayload(theme) : contextPropsPayload;
   return { ...defaultProps, ...contextProps, ...filterProps(props) };
@@ -1957,7 +1946,6 @@ export {
   stylesToString,
   toRgba,
   useDirection,
-  useId,
   useProps,
   useRandomClassName,
   useStyles,

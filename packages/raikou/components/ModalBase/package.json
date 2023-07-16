@@ -27,7 +27,8 @@
     "@raikou/core": "workspace:*",
     "@raikou/hooks": "workspace:*",
     "clsx": "1.1.1",
-    "react-remove-scroll": "^2.5.5"
+    "react-remove-scroll": "^2.5.5",
+    "tslib": "^2.6.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",

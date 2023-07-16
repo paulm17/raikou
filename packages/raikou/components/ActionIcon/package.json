@@ -24,9 +24,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@raikou/core": "workspace:*",
-    "type-fest": "^3.6.1",
-    "tslib": "^2.5.2"
+    "@raikou/core": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",

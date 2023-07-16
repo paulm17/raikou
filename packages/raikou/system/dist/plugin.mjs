@@ -3,7 +3,7 @@ import {
   __esm
 } from "./chunk-IJRF4PCO.mjs";
 
-// ../raikou-core/src/core/utils/units-converters/rem.ts
+// ../core/src/core/utils/units-converters/rem.ts
 function scaleRem(remValue) {
   return `calc(${remValue} * var(--raikou-scale))`;
 }
@@ -34,138 +34,138 @@ function createConverter(units, { shouldScale = false } = {}) {
 }
 var rem, em;
 var init_rem = __esm({
-  "../raikou-core/src/core/utils/units-converters/rem.ts"() {
+  "../core/src/core/utils/units-converters/rem.ts"() {
     "use strict";
     rem = createConverter("rem", { shouldScale: true });
     em = createConverter("em");
   }
 });
 
-// ../raikou-core/src/core/utils/units-converters/index.ts
+// ../core/src/core/utils/units-converters/index.ts
 var init_units_converters = __esm({
-  "../raikou-core/src/core/utils/units-converters/index.ts"() {
+  "../core/src/core/utils/units-converters/index.ts"() {
     "use strict";
     init_rem();
   }
 });
 
-// ../raikou-core/src/core/utils/index.ts
+// ../core/src/core/utils/index.ts
 var init_utils = __esm({
-  "../raikou-core/src/core/utils/index.ts"() {
+  "../core/src/core/utils/index.ts"() {
     "use strict";
     init_units_converters();
   }
 });
 
-// ../raikou-core/src/core/styles-api/styles-api.types.ts
+// ../core/src/core/styles-api/styles-api.types.ts
 var init_styles_api_types = __esm({
-  "../raikou-core/src/core/styles-api/styles-api.types.ts"() {
+  "../core/src/core/styles-api/styles-api.types.ts"() {
     "use strict";
   }
 });
 
-// ../raikou-core/src/core/Bootstrap/theme.types.ts
+// ../core/src/core/Bootstrap/theme.types.ts
 var init_theme_types = __esm({
-  "../raikou-core/src/core/Bootstrap/theme.types.ts"() {
+  "../core/src/core/Bootstrap/theme.types.ts"() {
     "use strict";
   }
 });
 
-// ../raikou-core/src/core/Bootstrap/color-functions/index.ts
+// ../core/src/core/Bootstrap/color-functions/index.ts
 var init_color_functions = __esm({
-  "../raikou-core/src/core/Bootstrap/color-functions/index.ts"() {
+  "../core/src/core/Bootstrap/color-functions/index.ts"() {
     "use strict";
   }
 });
 
-// ../raikou-core/src/core/Bootstrap/index.ts
+// ../core/src/core/Bootstrap/index.ts
 var init_Bootstrap = __esm({
-  "../raikou-core/src/core/Bootstrap/index.ts"() {
+  "../core/src/core/Bootstrap/index.ts"() {
     "use strict";
     init_theme_types();
     init_color_functions();
   }
 });
 
-// ../raikou-core/src/core/styles-api/use-styles/use-styles.ts
+// ../core/src/core/styles-api/use-styles/use-styles.ts
 var init_use_styles = __esm({
-  "../raikou-core/src/core/styles-api/use-styles/use-styles.ts"() {
+  "../core/src/core/styles-api/use-styles/use-styles.ts"() {
     "use strict";
   }
 });
 
-// ../raikou-core/src/core/styles-api/index.ts
+// ../core/src/core/styles-api/index.ts
 var init_styles_api = __esm({
-  "../raikou-core/src/core/styles-api/index.ts"() {
+  "../core/src/core/styles-api/index.ts"() {
     "use strict";
     init_styles_api_types();
     init_use_styles();
   }
 });
 
-// ../raikou-core/src/core/InlineStyles/index.ts
+// ../core/src/core/InlineStyles/index.ts
 var init_InlineStyles = __esm({
-  "../raikou-core/src/core/InlineStyles/index.ts"() {
+  "../core/src/core/InlineStyles/index.ts"() {
     "use strict";
   }
 });
 
-// ../raikou-core/src/core/Box/Box.types.ts
+// ../core/src/core/Box/Box.types.ts
 var init_Box_types = __esm({
-  "../raikou-core/src/core/Box/Box.types.ts"() {
+  "../core/src/core/Box/Box.types.ts"() {
     "use strict";
   }
 });
 
-// ../raikou-core/src/core/Box/style-props/style-props.types.ts
+// ../core/src/core/Box/style-props/style-props.types.ts
 var init_style_props_types = __esm({
-  "../raikou-core/src/core/Box/style-props/style-props.types.ts"() {
+  "../core/src/core/Box/style-props/style-props.types.ts"() {
     "use strict";
   }
 });
 
-// ../raikou-core/src/core/Box/style-props/index.ts
+// ../core/src/core/Box/style-props/index.ts
 var init_style_props = __esm({
-  "../raikou-core/src/core/Box/style-props/index.ts"() {
+  "../core/src/core/Box/style-props/index.ts"() {
     "use strict";
     init_style_props_types();
   }
 });
 
-// ../raikou-core/src/core/factory/index.ts
+// ../core/src/core/factory/index.ts
 var init_factory = __esm({
-  "../raikou-core/src/core/factory/index.ts"() {
+  "../core/src/core/factory/index.ts"() {
     "use strict";
   }
 });
 
-// ../raikou-core/src/core/Box/index.ts
+// ../core/src/core/Box/index.ts
 var init_Box = __esm({
-  "../raikou-core/src/core/Box/index.ts"() {
+  "../core/src/core/Box/index.ts"() {
     "use strict";
     init_Box_types();
     init_style_props();
   }
 });
 
-// ../raikou-core/src/core/DirectionProvider/DirectionProvider.tsx
+// ../core/src/core/DirectionProvider/DirectionProvider.tsx
 var init_DirectionProvider = __esm({
-  "../raikou-core/src/core/DirectionProvider/DirectionProvider.tsx"() {
+  "../core/src/core/DirectionProvider/DirectionProvider.tsx"() {
     "use strict";
   }
 });
 
-// ../raikou-core/src/core/DirectionProvider/index.ts
+// ../core/src/core/DirectionProvider/index.ts
 var init_DirectionProvider2 = __esm({
-  "../raikou-core/src/core/DirectionProvider/index.ts"() {
+  "../core/src/core/DirectionProvider/index.ts"() {
     "use strict";
     init_DirectionProvider();
   }
 });
 
-// ../raikou-core/src/core/index.ts
+// ../core/src/core/index.ts
 var init_core = __esm({
-  "../raikou-core/src/core/index.ts"() {
+  "../core/src/core/index.ts"() {
     "use strict";
     init_utils();
     init_styles_api();
@@ -177,17 +177,17 @@ var init_core = __esm({
   }
 });
 
-// ../raikou-core/src/index.ts
+// ../core/src/index.ts
 var init_src = __esm({
-  "../raikou-core/src/index.ts"() {
+  "../core/src/index.ts"() {
     "use strict";
     init_core();
   }
 });
 
-// ../../components/ActionIcon/src/ActionIcon.plugin.ts
+// ../components/ActionIcon/src/ActionIcon.plugin.ts
 var require_ActionIcon_plugin = __commonJS({
-  "../../components/ActionIcon/src/ActionIcon.plugin.ts"(exports, module) {
+  "../components/ActionIcon/src/ActionIcon.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -307,9 +307,9 @@ var require_ActionIcon_plugin = __commonJS({
   }
 });
 
-// ../../components/Alert/src/Alert.plugin.ts
+// ../components/Alert/src/Alert.plugin.ts
 var require_Alert_plugin = __commonJS({
-  "../../components/Alert/src/Alert.plugin.ts"(exports, module) {
+  "../components/Alert/src/Alert.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -385,9 +385,9 @@ var require_Alert_plugin = __commonJS({
   }
 });
 
-// ../../components/Anchor/src/Anchor.plugin.ts
+// ../components/Anchor/src/Anchor.plugin.ts
 var require_Anchor_plugin = __commonJS({
-  "../../components/Anchor/src/Anchor.plugin.ts"(exports, module) {
+  "../components/Anchor/src/Anchor.plugin.ts"(exports, module) {
     "use strict";
     module.exports = function({ addComponents, theme }) {
       addComponents({
@@ -422,9 +422,9 @@ var require_Anchor_plugin = __commonJS({
   }
 });
 
-// ../../components/AspectRatio/src/AspectRatio.plugin.ts
+// ../components/AspectRatio/src/AspectRatio.plugin.ts
 var require_AspectRatio_plugin = __commonJS({
-  "../../components/AspectRatio/src/AspectRatio.plugin.ts"(exports, module) {
+  "../components/AspectRatio/src/AspectRatio.plugin.ts"(exports, module) {
     "use strict";
     module.exports = function({ addComponents, theme }) {
       addComponents({
@@ -460,9 +460,9 @@ var require_AspectRatio_plugin = __commonJS({
   }
 });
 
-// ../../components/Avatar/src/Avatar.plugin.ts
+// ../components/Avatar/src/Avatar.plugin.ts
 var require_Avatar_plugin = __commonJS({
-  "../../components/Avatar/src/Avatar.plugin.ts"(exports, module) {
+  "../components/Avatar/src/Avatar.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -535,9 +535,9 @@ var require_Avatar_plugin = __commonJS({
   }
 });
 
-// ../../components/BackgroundImage/src/BackgroundImage.plugin.ts
+// ../components/BackgroundImage/src/BackgroundImage.plugin.ts
 var require_BackgroundImage_plugin = __commonJS({
-  "../../components/BackgroundImage/src/BackgroundImage.plugin.ts"(exports, module) {
+  "../components/BackgroundImage/src/BackgroundImage.plugin.ts"(exports, module) {
     "use strict";
     module.exports = function({ addComponents, theme }) {
       addComponents({
@@ -555,9 +555,9 @@ var require_BackgroundImage_plugin = __commonJS({
   }
 });
 
-// ../../components/Badge/src/Badge.plugin.ts
+// ../components/Badge/src/Badge.plugin.ts
 var require_Badge_plugin = __commonJS({
-  "../../components/Badge/src/Badge.plugin.ts"(exports, module) {
+  "../components/Badge/src/Badge.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents }) {
@@ -652,9 +652,9 @@ var require_Badge_plugin = __commonJS({
   }
 });
 
-// ../../components/Blockquote/src/Blockquote.plugin.ts
+// ../components/Blockquote/src/Blockquote.plugin.ts
 var require_Blockquote_plugin = __commonJS({
-  "../../components/Blockquote/src/Blockquote.plugin.ts"(exports, module) {
+  "../components/Blockquote/src/Blockquote.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -714,9 +714,9 @@ var require_Blockquote_plugin = __commonJS({
   }
 });
 
-// ../../components/Breadcrumbs/src/Breadcrumbs.plugin.ts
+// ../components/Breadcrumbs/src/Breadcrumbs.plugin.ts
 var require_Breadcrumbs_plugin = __commonJS({
-  "../../components/Breadcrumbs/src/Breadcrumbs.plugin.ts"(exports, module) {
+  "../components/Breadcrumbs/src/Breadcrumbs.plugin.ts"(exports, module) {
     "use strict";
     module.exports = function({ addComponents, theme }) {
       addComponents({
@@ -749,9 +749,9 @@ var require_Breadcrumbs_plugin = __commonJS({
   }
 });
 
-// ../../components/Burger/src/Burger.plugin.ts
+// ../components/Burger/src/Burger.plugin.ts
 var require_Burger_plugin = __commonJS({
-  "../../components/Burger/src/Burger.plugin.ts"(exports, module) {
+  "../components/Burger/src/Burger.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -813,9 +813,9 @@ var require_Burger_plugin = __commonJS({
   }
 });
 
-// ../../components/Button/src/Button.plugin.ts
+// ../components/Button/src/Button.plugin.ts
 var require_Button_plugin = __commonJS({
-  "../../components/Button/src/Button.plugin.ts"(exports, module) {
+  "../components/Button/src/Button.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -1009,9 +1009,9 @@ var require_Button_plugin = __commonJS({
   }
 });
 
-// ../../components/Center/src/Center.plugin.ts
+// ../components/Center/src/Center.plugin.ts
 var require_Center_plugin = __commonJS({
-  "../../components/Center/src/Center.plugin.ts"(exports, module) {
+  "../components/Center/src/Center.plugin.ts"(exports, module) {
     "use strict";
     module.exports = function({ addComponents, theme }) {
       addComponents({
@@ -1025,9 +1025,9 @@ var require_Center_plugin = __commonJS({
   }
 });
 
-// ../../components/Checkbox/src/Checkbox.plugin.ts
+// ../components/Checkbox/src/Checkbox.plugin.ts
 var require_Checkbox_plugin = __commonJS({
-  "../../components/Checkbox/src/Checkbox.plugin.ts"(exports, module) {
+  "../components/Checkbox/src/Checkbox.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -1120,9 +1120,9 @@ var require_Checkbox_plugin = __commonJS({
   }
 });
 
-// ../../components/Code/src/Code.plugin.ts
+// ../components/Code/src/Code.plugin.ts
 var require_Code_plugin = __commonJS({
-  "../../components/Code/src/Code.plugin.ts"(exports, module) {
+  "../components/Code/src/Code.plugin.ts"(exports, module) {
     "use strict";
     module.exports = function({ addComponents, theme }) {
       addComponents({
@@ -1153,9 +1153,9 @@ var require_Code_plugin = __commonJS({
   }
 });
 
-// ../../components/ColorPicker/src/ColorPicker.plugin.ts
+// ../components/ColorPicker/src/ColorPicker.plugin.ts
 var require_ColorPicker_plugin = __commonJS({
-  "../../components/ColorPicker/src/ColorPicker.plugin.ts"(exports, module) {
+  "../components/ColorPicker/src/ColorPicker.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -1295,9 +1295,9 @@ var require_ColorPicker_plugin = __commonJS({
   }
 });
 
-// ../../components/ColorSwatch/src/ColorSwatch.plugin.ts
+// ../components/ColorSwatch/src/ColorSwatch.plugin.ts
 var require_ColorSwatch_plugin = __commonJS({
-  "../../components/ColorSwatch/src/ColorSwatch.plugin.ts"(exports, module) {
+  "../components/ColorSwatch/src/ColorSwatch.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -1374,9 +1374,9 @@ var require_ColorSwatch_plugin = __commonJS({
   }
 });
 
-// ../../components/Combobox/src/Combobox.plugin.ts
+// ../components/Combobox/src/Combobox.plugin.ts
 var require_Combobox_plugin = __commonJS({
-  "../../components/Combobox/src/Combobox.plugin.ts"(exports, module) {
+  "../components/Combobox/src/Combobox.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -1547,9 +1547,9 @@ var require_Combobox_plugin = __commonJS({
   }
 });
 
-// ../../components/Container/src/Container.plugin.ts
+// ../components/Container/src/Container.plugin.ts
 var require_Container_plugin = __commonJS({
-  "../../components/Container/src/Container.plugin.ts"(exports, module) {
+  "../components/Container/src/Container.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -1571,9 +1571,9 @@ var require_Container_plugin = __commonJS({
   }
 });
 
-// ../../components/Divider/src/Divider.plugin.ts
+// ../components/Divider/src/Divider.plugin.ts
 var require_Divider_plugin = __commonJS({
-  "../../components/Divider/src/Divider.plugin.ts"(exports, module) {
+  "../components/Divider/src/Divider.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -1646,9 +1646,9 @@ var require_Divider_plugin = __commonJS({
   }
 });
 
-// ../../components/Drawer/src/Drawer.plugin.ts
+// ../components/Drawer/src/Drawer.plugin.ts
 var require_Drawer_plugin = __commonJS({
-  "../../components/Drawer/src/Drawer.plugin.ts"(exports, module) {
+  "../components/Drawer/src/Drawer.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -1682,9 +1682,9 @@ var require_Drawer_plugin = __commonJS({
   }
 });
 
-// ../../components/Fieldset/src/Fieldset.plugin.ts
+// ../components/Fieldset/src/Fieldset.plugin.ts
 var require_Fieldset_plugin = __commonJS({
-  "../../components/Fieldset/src/Fieldset.plugin.ts"(exports, module) {
+  "../components/Fieldset/src/Fieldset.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -1735,9 +1735,9 @@ var require_Fieldset_plugin = __commonJS({
   }
 });
 
-// ../../components/Flex/src/Flex.plugin.ts
+// ../components/Flex/src/Flex.plugin.ts
 var require_Flex_plugin = __commonJS({
-  "../../components/Flex/src/Flex.plugin.ts"(exports, module) {
+  "../components/Flex/src/Flex.plugin.ts"(exports, module) {
     "use strict";
     module.exports = function({ addComponents, theme }) {
       addComponents({
@@ -1753,9 +1753,9 @@ var require_Flex_plugin = __commonJS({
   }
 });
 
-// ../../components/Group/src/Group.plugin.ts
+// ../components/Group/src/Group.plugin.ts
 var require_Group_plugin = __commonJS({
-  "../../components/Group/src/Group.plugin.ts"(exports, module) {
+  "../components/Group/src/Group.plugin.ts"(exports, module) {
     "use strict";
     module.exports = function({ addComponents, theme }) {
       addComponents({
@@ -1778,9 +1778,9 @@ var require_Group_plugin = __commonJS({
   }
 });
 
-// ../../components/InlineInput/src/InlineInput.plugin.ts
+// ../components/InlineInput/src/InlineInput.plugin.ts
 var require_InlineInput_plugin = __commonJS({
-  "../../components/InlineInput/src/InlineInput.plugin.ts"(exports, module) {
+  "../components/InlineInput/src/InlineInput.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -1851,9 +1851,9 @@ var require_InlineInput_plugin = __commonJS({
   }
 });
 
-// ../../components/Input/src/Input.plugin.ts
+// ../components/Input/src/Input.plugin.ts
 var require_Input_plugin = __commonJS({
-  "../../components/Input/src/Input.plugin.ts"(exports, module) {
+  "../components/Input/src/Input.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -2076,9 +2076,9 @@ var require_Input_plugin = __commonJS({
   }
 });
 
-// ../../components/Kbd/src/Kbd.plugin.ts
+// ../components/Kbd/src/Kbd.plugin.ts
 var require_Kbd_plugin = __commonJS({
-  "../../components/Kbd/src/Kbd.plugin.ts"(exports, module) {
+  "../components/Kbd/src/Kbd.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -2120,9 +2120,9 @@ var require_Kbd_plugin = __commonJS({
   }
 });
 
-// ../../components/Loader/src/Loader.plugin.ts
+// ../components/Loader/src/Loader.plugin.ts
 var require_Loader_plugin = __commonJS({
-  "../../components/Loader/src/Loader.plugin.ts"(exports, module) {
+  "../components/Loader/src/Loader.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     var group = function({ addComponents }) {
@@ -2232,9 +2232,9 @@ var require_Loader_plugin = __commonJS({
   }
 });
 
-// ../../components/Mark/src/Mark.plugin.ts
+// ../components/Mark/src/Mark.plugin.ts
 var require_Mark_plugin = __commonJS({
-  "../../components/Mark/src/Mark.plugin.ts"(exports, module) {
+  "../components/Mark/src/Mark.plugin.ts"(exports, module) {
     "use strict";
     module.exports = function({ addComponents, theme }) {
       addComponents({
@@ -2253,9 +2253,9 @@ var require_Mark_plugin = __commonJS({
   }
 });
 
-// ../../components/Modal/src/Modal.plugin.ts
+// ../components/Modal/src/Modal.plugin.ts
 var require_Modal_plugin = __commonJS({
-  "../../components/Modal/src/Modal.plugin.ts"(exports, module) {
+  "../components/Modal/src/Modal.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -2309,9 +2309,9 @@ var require_Modal_plugin = __commonJS({
   }
 });
 
-// ../../components/ModalBase/src/ModalBase.plugin.ts
+// ../components/ModalBase/src/ModalBase.plugin.ts
 var require_ModalBase_plugin = __commonJS({
-  "../../components/ModalBase/src/ModalBase.plugin.ts"(exports, module) {
+  "../components/ModalBase/src/ModalBase.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -2371,9 +2371,9 @@ var require_ModalBase_plugin = __commonJS({
   }
 });
 
-// ../../components/Notification/src/Notification.plugin.ts
+// ../components/Notification/src/Notification.plugin.ts
 var require_Notification_plugin = __commonJS({
-  "../../components/Notification/src/Notification.plugin.ts"(exports, module) {
+  "../components/Notification/src/Notification.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -2514,9 +2514,9 @@ var require_Notification_plugin = __commonJS({
   }
 });
 
-// ../../components/Overlay/src/Overlay.plugin.ts
+// ../components/Overlay/src/Overlay.plugin.ts
 var require_Overlay_plugin = __commonJS({
-  "../../components/Overlay/src/Overlay.plugin.ts"(exports, module) {
+  "../components/Overlay/src/Overlay.plugin.ts"(exports, module) {
     "use strict";
     module.exports = function({ addComponents, theme }) {
       addComponents({
@@ -2541,9 +2541,9 @@ var require_Overlay_plugin = __commonJS({
   }
 });
 
-// ../../components/Paper/src/Paper.plugin.ts
+// ../components/Paper/src/Paper.plugin.ts
 var require_Paper_plugin = __commonJS({
-  "../../components/Paper/src/Paper.plugin.ts"(exports, module) {
+  "../components/Paper/src/Paper.plugin.ts"(exports, module) {
     "use strict";
     module.exports = function({ addComponents, theme }) {
       addComponents({
@@ -2572,9 +2572,9 @@ var require_Paper_plugin = __commonJS({
   }
 });
 
-// ../../components/Popover/src/Popover.plugin.ts
+// ../components/Popover/src/Popover.plugin.ts
 var require_Popover_plugin = __commonJS({
-  "../../components/Popover/src/Popover.plugin.ts"(exports, module) {
+  "../components/Popover/src/Popover.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -2608,9 +2608,9 @@ var require_Popover_plugin = __commonJS({
   }
 });
 
-// ../../components/ScrollArea/src/ScrollArea.plugin.ts
+// ../components/ScrollArea/src/ScrollArea.plugin.ts
 var require_ScrollArea_plugin = __commonJS({
-  "../../components/ScrollArea/src/ScrollArea.plugin.ts"(exports, module) {
+  "../components/ScrollArea/src/ScrollArea.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -2764,9 +2764,9 @@ var require_ScrollArea_plugin = __commonJS({
   }
 });
 
-// ../../components/SegmentedControl/src/SegmentedControl.plugin.ts
+// ../components/SegmentedControl/src/SegmentedControl.plugin.ts
 var require_SegmentedControl_plugin = __commonJS({
-  "../../components/SegmentedControl/src/SegmentedControl.plugin.ts"(exports, module) {
+  "../components/SegmentedControl/src/SegmentedControl.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -2985,9 +2985,9 @@ var require_SegmentedControl_plugin = __commonJS({
   }
 });
 
-// ../../components/Slider/src/Slider.plugin.ts
+// ../components/Slider/src/Slider.plugin.ts
 var require_Slider_plugin = __commonJS({
-  "../../components/Slider/src/Slider.plugin.ts"(exports, module) {
+  "../components/Slider/src/Slider.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -3194,9 +3194,9 @@ var require_Slider_plugin = __commonJS({
   }
 });
 
-// ../../components/Stack/src/Stack.plugin.ts
+// ../components/Stack/src/Stack.plugin.ts
 var require_Stack_plugin = __commonJS({
-  "../../components/Stack/src/Stack.plugin.ts"(exports, module) {
+  "../components/Stack/src/Stack.plugin.ts"(exports, module) {
     "use strict";
     module.exports = function({ addComponents, theme }) {
       addComponents({
@@ -3212,9 +3212,9 @@ var require_Stack_plugin = __commonJS({
   }
 });
 
-// ../../components/Switch/src/Switch.plugin.ts
+// ../components/Switch/src/Switch.plugin.ts
 var require_Switch_plugin = __commonJS({
-  "../../components/Switch/src/Switch.plugin.ts"(exports, module) {
+  "../components/Switch/src/Switch.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -3360,9 +3360,9 @@ var require_Switch_plugin = __commonJS({
   }
 });
 
-// ../../components/Table/src/Table.plugin.ts
+// ../components/Table/src/Table.plugin.ts
 var require_Table_plugin = __commonJS({
-  "../../components/Table/src/Table.plugin.ts"(exports, module) {
+  "../components/Table/src/Table.plugin.ts"(exports, module) {
     "use strict";
     module.exports = function({ addComponents, theme }) {
       addComponents({
@@ -3459,9 +3459,9 @@ var require_Table_plugin = __commonJS({
   }
 });
 
-// ../../components/Tabs/src/Tabs.plugin.ts
+// ../components/Tabs/src/Tabs.plugin.ts
 var require_Tabs_plugin = __commonJS({
-  "../../components/Tabs/src/Tabs.plugin.ts"(exports, module) {
+  "../components/Tabs/src/Tabs.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents, theme }) {
@@ -3768,9 +3768,9 @@ var require_Tabs_plugin = __commonJS({
   }
 });
 
-// ../../components/Text/src/Text.plugin.ts
+// ../components/Text/src/Text.plugin.ts
 var require_Text_plugin = __commonJS({
-  "../../components/Text/src/Text.plugin.ts"(exports, module) {
+  "../components/Text/src/Text.plugin.ts"(exports, module) {
     "use strict";
     module.exports = function({ addComponents }) {
       addComponents({
@@ -3822,9 +3822,9 @@ var require_Text_plugin = __commonJS({
   }
 });
 
-// ../../components/Title/src/Title.plugin.ts
+// ../components/Title/src/Title.plugin.ts
 var require_Title_plugin = __commonJS({
-  "../../components/Title/src/Title.plugin.ts"(exports, module) {
+  "../components/Title/src/Title.plugin.ts"(exports, module) {
     "use strict";
     module.exports = function({ addComponents, theme }) {
       addComponents({
@@ -3840,9 +3840,9 @@ var require_Title_plugin = __commonJS({
   }
 });
 
-// ../../components/Tooltip/src/Tooltip.plugin.ts
+// ../components/Tooltip/src/Tooltip.plugin.ts
 var require_Tooltip_plugin = __commonJS({
-  "../../components/Tooltip/src/Tooltip.plugin.ts"(exports, module) {
+  "../components/Tooltip/src/Tooltip.plugin.ts"(exports, module) {
     "use strict";
     module.exports = function({ addComponents, theme }) {
       addComponents({
@@ -3877,9 +3877,9 @@ var require_Tooltip_plugin = __commonJS({
   }
 });
 
-// ../../components/UnstyledButton/src/UnstyledButton.plugin.ts
+// ../components/UnstyledButton/src/UnstyledButton.plugin.ts
 var require_UnstyledButton_plugin = __commonJS({
-  "../../components/UnstyledButton/src/UnstyledButton.plugin.ts"(exports, module) {
+  "../components/UnstyledButton/src/UnstyledButton.plugin.ts"(exports, module) {
     "use strict";
     module.exports = function({ addComponents, theme }) {
       addComponents({
@@ -3901,9 +3901,9 @@ var require_UnstyledButton_plugin = __commonJS({
   }
 });
 
-// ../../components/VisuallyHidden/src/VisuallyHidden.plugin.ts
+// ../components/VisuallyHidden/src/VisuallyHidden.plugin.ts
 var require_VisuallyHidden_plugin = __commonJS({
-  "../../components/VisuallyHidden/src/VisuallyHidden.plugin.ts"(exports, module) {
+  "../components/VisuallyHidden/src/VisuallyHidden.plugin.ts"(exports, module) {
     "use strict";
     module.exports = function({ addComponents, theme }) {
       addComponents({

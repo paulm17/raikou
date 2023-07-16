@@ -1,14 +1,13 @@
 "use client";
 
+// import { div } from "@raikou/core";
 import {
   ActionIcon,
-  Alert,
   Anchor,
   AspectRatio,
   BackgroundImage,
   Badge,
   Blockquote,
-  Box,
   Breadcrumbs,
   Button,
   Center,
@@ -29,7 +28,7 @@ import {
   Text,
   Title,
 } from "@raikou/server";
-// import { Avatar, Switch } from "@raikou/client";
+import { Alert } from "@raikou/client";
 // import { AvatarC } from "./avatarC";
 import { IconInfoCircle } from "@tabler/icons-react";
 import { IconHeart } from "@tabler/icons-react";
@@ -74,46 +73,46 @@ export default function Page() {
         }}
       >
         <Title order={3}>Code</Title>
-        <Box style={{ padding: 40 }}>
+        <div style={{ padding: 40 }}>
           <Code>Some code</Code>
           <Code color="blue.4">Code with color</Code>
-        </Box>
+        </div>
         <Title order={3}>Group</Title>
         <Group grow>
           <Badge>Group Badge 1</Badge>
           <Badge>Group Badge 2</Badge>
         </Group>
         <Title order={3}>Kbd</Title>
-        <Box style={{ padding: 40 }}>
+        <div style={{ padding: 40 }}>
           <Kbd>⌘</Kbd> + <Kbd>Shift</Kbd> + <Kbd>M</Kbd>
-        </Box>
+        </div>
         <Title order={3}>Highlight</Title>
-        <Box style={{ padding: 40 }}>
+        <div style={{ padding: 40 }}>
           <Highlight highlight={["this", "that"]}>
             Highlight this and also that, oh and this should be highlighted as
             well
           </Highlight>
-        </Box>
+        </div>
         <Title order={3}>Mark</Title>
-        <Box>
+        <div>
           <Mark color="orange.9">Theme color mark</Mark>
-        </Box>
+        </div>
         <Title order={3}>Divider</Title>
-        <Box style={{ padding: 40 }}>
-          <Box>First</Box>
+        <div style={{ padding: 40 }}>
+          <div>First</div>
           <Divider label="Divider label" labelPosition="right" />
-          <Box>Second</Box>
-        </Box>
+          <div>Second</div>
+        </div>
         <Title order={3}>Text</Title>
-        <Box style={{ padding: 40 }}>
+        <div style={{ padding: 40 }}>
           <Text size="xl">Just text</Text>
-        </Box>
+        </div>
       </Stack>
       <Stack>
         <Title order={3}>Loader</Title>
-        <Box style={{ padding: 40 }}>
+        <div style={{ padding: 40 }}>
           <Loader type="bars" mt="xl" />
-        </Box>
+        </div>
         <Title order={3}>Flex</Title>
         <Flex gap="xl" direction="row" wrap="nowrap">
           <button type="button">First</button>
@@ -125,16 +124,16 @@ export default function Page() {
           Container
         </Container>
         <Title order={3}>Paper</Title>
-        <Box style={{ padding: 40, maxWidth: 600 }}>
+        <div style={{ padding: 40, maxWidth: 600 }}>
           <Paper radius="md" shadow="md" withBorder p="xl">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
             et illo? Dolores mollitia, maiores est totam ab libero itaque fuga,
             dolorum hic nesciunt quibusdam, esse amet magni quia voluptatibus
             molestias!
           </Paper>
-        </Box>
+        </div>
         <Title order={3}>Fieldset</Title>
-        <Box style={{ padding: 40 }}>
+        <div style={{ padding: 40 }}>
           <Fieldset
             legend="Filled fieldset"
             variant="filled"
@@ -143,9 +142,9 @@ export default function Page() {
           >
             <Badge>Fieldset Badge 1</Badge>
           </Fieldset>
-        </Box>
+        </div>
         <Title order={3}>Color Swatch</Title>
-        <Box style={{ padding: 40 }}>
+        <div style={{ padding: 40 }}>
           <Group>
             <ColorSwatch color="#ff00ff" />
             <ColorSwatch color="rgba(0, 56, 13, 0.2)" />
@@ -154,12 +153,12 @@ export default function Page() {
               $$
             </ColorSwatch>
           </Group>
-        </Box>
+        </div>
       </Stack>
       <Stack>
         <Title order={3}>Center</Title>
         <Center maw={400} h={100} bg="var(--raikou-color-gray-light)">
-          <Box>Should be Center</Box>
+          <div>Should be Center</div>
         </Center>
         <Title order={3}>Button</Title>
         <Button variant="filled">Button</Button>
@@ -172,13 +171,13 @@ export default function Page() {
           Underline always
         </Anchor>
         <Title order={3}>Breadcrumbs</Title>
-        <Box style={{ padding: 40 }}>
+        <div style={{ padding: 40 }}>
           <Breadcrumbs>
             <Anchor>Link 1</Anchor>
             <Anchor>Link 2</Anchor>
             <Anchor>Link 3</Anchor>
           </Breadcrumbs>
-        </Box>
+        </div>
         <Title order={3}>Action Icon</Title>
         <ActionIcon
           variant="filled"
@@ -199,7 +198,7 @@ export default function Page() {
         <Title order={3}>Closebutton</Title>
         <CloseButton variant="filled" size={30} />
         <Title order={3}>Alert</Title>
-        <Box className="w-[400px]">
+        <div className="w-[400px]">
           <Alert
             variant="light"
             color="blue"
@@ -210,7 +209,7 @@ export default function Page() {
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. At
             officiis, quae tempore necessitatibus placeat saepe.
           </Alert>
-        </Box>
+        </div>
         {/* <Title order={3}>Switch</Title>
         <Switch label="I agree to sell my privacy" />
         <Title order={3}>Avatar</Title>

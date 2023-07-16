@@ -4,9 +4,7 @@
   <a href="https://github.com/paulm17/raikou">
     <img src="./images/logo.png" alt="Logo">
   </a>
-
-<h3 align="center">RAIKOU</h3>
-
+  <h3 align="center">RAIKOU</h3>
   <p align="center">
     Raikou is a raikou fork which replaces modules.css to use tailwind.
     <br />
@@ -24,9 +22,9 @@ Raikou 6 with CSS-in-JS allowed for styles to be adjacent to the component it wa
 
 The project was conceived with these 4 long-term goals:
 
-1. To allow for components to behave as server components. (TBD, waiting for vercel to fully flesh this out)
+1. To allow for components to behave as server components.
 2. To ensure proper tree-shaking for components and purging of unused css. (TBD, waiting for vercel to resolve the client bundle to be tree-shakable)
-3. To switch the theme from react context (state) to the tailwind theme. Thereby negating the need to keep the color mode (light/dark) and text direction (left/right) in state. Both of these to be kept in a cookie or read from theme / server setting. Thereby allowing some components to be server based. (TBD, waiting for the new lightningCSS supported tailwind)
+3. To switch the theme from react context (state) to the tailwind theme. Thereby negating the need to keep the color mode (light/dark) and text direction (left/right) in state.
 4. When using the ClassNames api, to ensure that there were no clashes between the bootstrap CSS of the component and tailwind styles provided. This has been made possible with tailwind bootstrapping the styles via a plugin architecture. See for <a href="https://tailwindcss.com/docs/plugins#css-in-js-syntax">more information</a>.
 
 ## Project Caveats
@@ -57,11 +55,11 @@ To get a local copy up and running follow these simple example steps.
 
 - npm
   ```sh
-  npm install @raikou/core @raikou/hooks
+  npm install @raikou/client @raikou/hooks @raikou/server @raikou/system
   ```
 - yarn
   ```sh
-  yarn add @raikou/core @raikou/hooks
+  yarn add @raikou/client @raikou/hooks @raikou/server @raikou/system
   ```
 
 2. Change the content param in tailwind config, to pick up the component Library
@@ -70,7 +68,7 @@ To get a local copy up and running follow these simple example steps.
    ```
 3. Add a preset param in the tailwind config, to pick up the component styles
    ```sh
-   presets: [require("./node_modules/@raikou/core/dist/plugin")],
+   presets: [require("./node_modules/@raikou/system/dist/plugin")],
    ```
 4. Add a new plugin to the postcss.config.js to purge unused component library styles
    ```js
@@ -113,16 +111,39 @@ Change appPath to where the tsx files for your project reside.
 
 ## Server Components
 
-At the moment, react server components are not available due to the build process. All components are presented under a single "use client" statement in the index.js. Unfortunately this is not ideal. To give an example of what happens when server components are available without "use client".
+There are 29 server components available without the need for "use client" in either the component library entry point nor in the page itself. They are: action-icon, alert, anchor, aspect-ratio, background-image, badge, blockquote, box, breadcrumbs, button, center, close-button, code, color-swatch, container, divider, fieldset, flex, group, highlight, kbd, loader, mark, paper, stack, text, title, unstyled-button, visually-hidden.
+
+To use a server component do the following:
+
+```js
+import { Badge } from "@raikou/server";
+
+return <Badge>Hello</Badge>;
+```
+
+No client payload will be sent to the server. However to use as a client component, just include "use client"
+
+```js
+"use client";
+import { Badge } from "@raikou/server";
+
+return <Badge>Hello</Badge>;
+```
+
+And the page will include all the neccessary client payload for the Badge and the page.
+
+Here is an example of all the components on a page.
 
 <img src="./images/serverComponents.png" alt="Logo">
 
-##### Some stats vs "use client":
+##### Some stats for server vs "use client":
 
-- 11 vs 10 requests
-- 2.8MB transferred vs 1.6MB transferred
-- 13.0MB resources vs 6.7MB resources
-- Finished 1.15s vs 659ms
+- 10 vs 11 requests
+- 1.9MB transferred vs 1.7MB transferred
+- 8.2MB resources vs 7.1MB resources
+- Finished 1.01s vs 1.01s
+- Layout.js 108kb
+- Page.js 264kb vs 0kb (doesn't exist)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -130,11 +151,13 @@ At the moment, react server components are not available due to the build proces
 
 ## Roadmap
 
+- [x] Create a postcss script to purge unused CSS
+- [x] Enable react server components and split packages to server and client
+- [x] Tree-shaking for client build
+- [x] Use Tailwind Theme, instead of keeping it in state
 - [ ] Upgrade tailwind to the new release supporting LightningCSS
-- [ ] Create a new purge process using LightningCSS transformers
-- [ ] Enable react server components
-- [ ] Tree-shaking for client build
-- [ ] Use Tailwind Theme
+- [ ] With the new tailwind release, migrate the postcss script to a LightningCSS transformer. Investigate a Rust port.
+- [ ] With the new tailwind release, possibly port the current plugin based css to css files
 - [ ] Create a <a href="https://daisyui.com/docs/themes/">theme switcher</a>
 - [ ] Fix the Storybook demos to work under version 7
 
@@ -149,6 +172,7 @@ See the [open issues](https://github.com/paulm17/raikou/issues) for a full list 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
