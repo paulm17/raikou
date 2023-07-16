@@ -3,10 +3,9 @@ import { useReducedMotion } from "@raikou/hooks";
 import {
   BoxProps,
   useProps,
-  // useRaikouTheme,
   Box,
   getStyleObject,
-  DEFAULT_THEME,
+  getTheme,
 } from "@raikou/core";
 import { useCollapse } from "./use-collapse";
 
@@ -48,7 +47,7 @@ export const Collapse = forwardRef<HTMLDivElement, CollapseProps>(
       ...others
     } = useProps("Collapse", defaultProps, props);
 
-    const theme = DEFAULT_THEME; //useRaikouTheme();
+    const theme = getTheme();
     const shouldReduceMotion = useReducedMotion();
     const reduceMotion = theme.respectReducedMotion
       ? shouldReduceMotion

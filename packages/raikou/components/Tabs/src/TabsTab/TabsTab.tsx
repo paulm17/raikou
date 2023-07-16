@@ -6,11 +6,10 @@ import {
   RaikouColor,
   createScopedKeydownHandler,
   useDirection,
-  // useRaikouTheme,
   getThemeColor,
   StylesApiProps,
   Factory,
-  DEFAULT_THEME,
+  getTheme,
 } from "@raikou/core";
 import {
   UnstyledButton,
@@ -68,7 +67,7 @@ export const TabsTab = factory<TabsTabFactory>((_props, ref) => {
     ...others
   } = props;
 
-  const theme = DEFAULT_THEME; //useRaikouTheme();
+  const theme = getTheme();
   const { dir } = useDirection();
   const ctx = useTabsContext();
   const active = value === ctx.value;

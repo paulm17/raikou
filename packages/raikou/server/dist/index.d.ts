@@ -5,6 +5,7 @@ export * from '@raikou/aspect-ratio';
 export * from '@raikou/background-image';
 export * from '@raikou/badge';
 export * from '@raikou/blockquote';
+export * from '@raikou/box';
 export * from '@raikou/breadcrumbs';
 export * from '@raikou/button';
 export * from '@raikou/center';

@@ -6,14 +6,7 @@ import {
   useMergedRef,
   useMove,
 } from "@raikou/hooks";
-import {
-  Box,
-  DEFAULT_THEME,
-  ElementProps,
-  RaikouSize,
-  // useRaikouTheme,
-  rem,
-} from "@raikou/core";
+import { Box, ElementProps, RaikouSize, getTheme, rem } from "@raikou/core";
 import { Thumb } from "../Thumb/Thumb";
 import { useColorPickerContext } from "../ColorPicker.context";
 
@@ -54,7 +47,7 @@ export const ColorSlider = forwardRef<HTMLDivElement, ColorSliderProps>(
 
     const { getStyles } = useColorPickerContext();
 
-    const theme = DEFAULT_THEME; //useRaikouTheme();
+    const theme = getTheme();
     const [position, setPosition] = useState({ y: 0, x: value / maxValue });
     const positionRef = useRef(position);
     const getChangeValue = (val: number) =>

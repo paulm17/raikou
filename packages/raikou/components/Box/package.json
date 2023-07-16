@@ -1,5 +1,5 @@
 {
-  "name": "@raikou/tabs",
+  "name": "@raikou/box",
   "version": "0.0.1",
   "main": "index.js",
   "types": "./dist/index.d.ts",
@@ -24,9 +24,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@raikou/core": "workspace:*",
-    "@raikou/hooks": "workspace:*",
-    "tslib": "^2.6.0"
+    "@raikou/core": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",

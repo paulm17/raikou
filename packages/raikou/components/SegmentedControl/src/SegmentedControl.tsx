@@ -16,7 +16,6 @@ import {
   RaikouColor,
   RaikouSize,
   RaikouRadius,
-  // useRaikouTheme,
   getRadius,
   getThemeColor,
   getSize,
@@ -24,7 +23,7 @@ import {
   useDirection,
   createVarsResolver,
   Factory,
-  DEFAULT_THEME,
+  getTheme,
 } from "@raikou/core";
 
 const WRAPPER_PADDING = 4;
@@ -178,7 +177,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>(
     });
 
     const { dir } = useDirection();
-    const theme = DEFAULT_THEME; //useRaikouTheme();
+    const theme = getTheme();
 
     const _data = data.map((item) =>
       typeof item === "string" ? { label: item, value: item } : item

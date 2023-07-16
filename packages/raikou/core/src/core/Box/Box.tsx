@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import cx from "clsx";
-// import { useRaikouTheme } from '../Bootstrap';
+import { getTheme } from "../Bootstrap";
 import { InlineStyles } from "../InlineStyles";
 import { createPolymorphicComponent } from "../factory";
 import type { RaikouStyleProp, CssVarsProp } from "./Box.types";
@@ -14,7 +14,6 @@ import {
 } from "./style-props";
 import { getBoxMod } from "./get-box-mod/get-box-mod";
 import { isNumberLike } from "../utils";
-import { DEFAULT_THEME, getTheme } from "../Bootstrap";
 
 export type Mod = Record<string, any> | string;
 export type BoxMod = Mod | Mod[] | BoxMod[];

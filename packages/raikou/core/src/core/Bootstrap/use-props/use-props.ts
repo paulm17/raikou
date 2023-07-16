@@ -1,5 +1,5 @@
 import { filterProps } from "../../utils";
-import { DEFAULT_THEME } from "../default-theme";
+import { getTheme } from "../get-theme/get-theme";
 
 export function useProps<
   T extends Record<string, any>,
@@ -11,7 +11,7 @@ export function useProps<
 ): T & {
   [Key in Extract<keyof T, keyof U>]-?: U[Key] | NonNullable<T[Key]>;
 } {
-  const theme = DEFAULT_THEME; //useRaikouTheme();
+  const theme = getTheme();
   const contextPropsPayload = theme.components[component]?.defaultProps;
   const contextProps =
     typeof contextPropsPayload === "function"

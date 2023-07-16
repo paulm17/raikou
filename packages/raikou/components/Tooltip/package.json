@@ -27,7 +27,8 @@
     "@floating-ui/react": "^0.19.1",
     "@raikou/core": "workspace:*",
     "@raikou/hooks": "workspace:*",
-    "clsx": "1.1.1"
+    "clsx": "1.1.1",
+    "tslib": "^2.6.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",

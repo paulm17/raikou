@@ -8,12 +8,11 @@ import {
   useProps,
   useStyles,
   getStyleObject,
-  // useRaikouTheme,
   Factory,
   createVarsResolver,
   getRadius,
   getThemeColor,
-  DEFAULT_THEME,
+  getTheme,
 } from "@raikou/core";
 import { OptionalPortal } from "../../../Portal/src";
 import {
@@ -78,7 +77,7 @@ export const TooltipFloating = factory<TooltipFloatingFactory>(
       ...others
     } = props;
 
-    const theme = DEFAULT_THEME; // useRaikouTheme();
+    const theme = getTheme();
     const getStyles = useStyles<TooltipFloatingFactory>({
       name: "TooltipFloating",
       props,

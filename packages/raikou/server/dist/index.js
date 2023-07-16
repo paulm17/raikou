@@ -24,6 +24,7 @@ __reExport(src_exports, require("@raikou/aspect-ratio"), module.exports);
 __reExport(src_exports, require("@raikou/background-image"), module.exports);
 __reExport(src_exports, require("@raikou/badge"), module.exports);
 __reExport(src_exports, require("@raikou/blockquote"), module.exports);
+__reExport(src_exports, require("@raikou/box"), module.exports);
 __reExport(src_exports, require("@raikou/breadcrumbs"), module.exports);
 __reExport(src_exports, require("@raikou/button"), module.exports);
 __reExport(src_exports, require("@raikou/center"), module.exports);
@@ -54,6 +55,7 @@ __reExport(src_exports, require("@raikou/visually-hidden"), module.exports);
   ...require("@raikou/background-image"),
   ...require("@raikou/badge"),
   ...require("@raikou/blockquote"),
+  ...require("@raikou/box"),
   ...require("@raikou/breadcrumbs"),
   ...require("@raikou/button"),
   ...require("@raikou/center"),
