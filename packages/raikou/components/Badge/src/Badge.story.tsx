@@ -1,6 +1,6 @@
 import React from "react";
+import { Group } from "../../Group/src";
 import { Badge } from "./Badge";
-import { Group } from "@raikou/group";
 
 export default { title: "Badge" };
 
@@ -40,24 +40,10 @@ export function Unstyled() {
   );
 }
 
-export function Tailwind() {
-  return (
-    <div style={{ padding: 40 }}>
-      <Badge
-        classNames={{
-          root: "bg-red-900 border-2 border-blue-200 border-dashed",
-        }}
-      >
-        Tailwind badge
-      </Badge>
-    </div>
-  );
-}
-
 export function CustomComponent() {
   return (
     <div style={{ padding: 40 }}>
-      <Badge component="a" href="https://raikou.dev/">
+      <Badge component="a" href="https://mantine.dev/">
         Anchor
       </Badge>
 

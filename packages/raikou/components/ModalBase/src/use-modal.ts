@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useId, useWindowEvent, useFocusReturn } from "@raikou/hooks";
 import { useLockScroll } from "./use-lock-scroll";
-import { TransitionOverride } from "../Transition";
+import { TransitionOverride } from "../Transition/src";
 
 interface UseModalInput {
   opened: boolean;

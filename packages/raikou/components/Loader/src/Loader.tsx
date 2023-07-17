@@ -17,7 +17,6 @@ import { Bars } from "./loaders/Bars";
 import { Oval } from "./loaders/Oval";
 import { Dots } from "./loaders/Dots";
 import type { RaikouLoader, RaikouLoadersRecord } from "./Loader.types";
-// import classes from "./Loader.module.css";
 
 export type LoaderStylesNames = "root";
 export type LoaderVariant = string;

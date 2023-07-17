@@ -65,7 +65,11 @@ export const ComboboxEventsTarget = factory<ComboboxEventsTargetFactory>(
     return cloneElement(children, {
       ...targetProps,
       ...others,
-      [refProp!]: useMergedRef(ref, ctx.store.targetRef),
+      [refProp!]: useMergedRef(
+        ref,
+        ctx.store.targetRef,
+        (children as any)?.ref
+      ),
     });
   }
 );

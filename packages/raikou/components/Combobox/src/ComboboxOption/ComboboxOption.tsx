@@ -98,5 +98,4 @@ export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
   );
 });
 
-// ComboboxOption.classes = classes;
 ComboboxOption.displayName = "@raikou/core/ComboboxOption";

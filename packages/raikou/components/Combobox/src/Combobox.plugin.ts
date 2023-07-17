@@ -12,11 +12,11 @@ module.exports = function ({ addComponents, theme }: any) {
 
     /* Variables must be both on dropdown and options to support usage of Combobox.Options without Combobox.Dropdown */
     ".comboBox-dropdown, .comboBox-options": {
-      "--combobox-option-padding-xs": `rem(4px) rem(8px)`,
-      "--combobox-option-padding-sm": `rem(6px) rem(10px)`,
-      "--combobox-option-padding-md": `rem(8px) rem(12px)`,
-      "--combobox-option-padding-lg": `rem(10px) rem(16px)`,
-      "--combobox-option-padding-xl": `rem(14px) rem(20px)`,
+      "--combobox-option-padding-xs": `${rem("4px")} ${rem("8px")}`,
+      "--combobox-option-padding-sm": `${rem("6px")} ${rem("10px")}`,
+      "--combobox-option-padding-md": `${rem("8px")} ${rem("12px")}`,
+      "--combobox-option-padding-lg": `${rem("10px")} ${rem("16px")}`,
+      "--combobox-option-padding-xl": `${rem("14px")} ${rem("20px")}`,
     },
 
     ".comboBox-option": {
@@ -27,6 +27,7 @@ module.exports = function ({ addComponents, theme }: any) {
       color: "var(--_option-color, inherit)",
       opacity: "var(--_option-opacity, 1)",
       cursor: "var(--_option-cursor, pointer)",
+      wordBreak: "break-word",
 
       "&[data-combobox-selected]": {
         "--_option-bg": "var(--raikou-color-primary)",
@@ -190,6 +191,36 @@ module.exports = function ({ addComponents, theme }: any) {
 
       "&[data-error]": {
         "--_color": "var(--raikou-color-error)",
+      },
+    },
+
+    ".comboBox-optionsDropdownScrollArea": {
+      "margin-right": "calc(var(--combobox-padding) * -1)",
+
+      '[dir="rtl"] &': {
+        marginLeft: "calc(var(--combobox-padding) * -1)",
+        marginRight: 0,
+      },
+    },
+
+    ".comboBox-optionsDropdownOption": {
+      display: "flex",
+      alignItems: "center",
+      flexDirection: "var(--_flex-direction, row)",
+      gap: rem("8px"),
+
+      "&[data-reverse]": {
+        justifyContent: "space-between",
+      },
+    },
+
+    ".comboBox-optionsDropdownCheckIcon": {
+      opacity: 0.4,
+      width: "0.8em",
+      height: "0.8em",
+
+      "[data-combobox-selected] &": {
+        opacity: 1,
       },
     },
   });

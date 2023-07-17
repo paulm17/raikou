@@ -134,7 +134,7 @@ export function GradientVariant() {
 export function AsLink() {
   return (
     <div style={{ padding: 40 }}>
-      <ActionIcon size="xl" component="a" href="https://raikou.dev">
+      <ActionIcon size="xl" component="a" href="https://mantine.dev">
         $$
       </ActionIcon>
     </div>
@@ -210,7 +210,7 @@ export function ActionIconGroup() {
           size="lg"
           variant="default"
           component="a"
-          href="https://raikou.dev"
+          href="https://mantine.dev"
         >
           2
         </ActionIcon>

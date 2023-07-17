@@ -41,5 +41,4 @@ export const ComboboxFooter = factory<ComboboxFooterFactory>((props, ref) => {
   );
 });
 
-// ComboboxFooter.classes = classes;
 ComboboxFooter.displayName = "@raikou/core/ComboboxFooter";

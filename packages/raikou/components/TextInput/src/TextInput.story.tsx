@@ -25,3 +25,25 @@ export function Usage() {
     </div>
   );
 }
+
+export function WithoutErrorStyles() {
+  return (
+    <div style={{ padding: 40 }}>
+      <TextInput
+        label="Text input without error styles"
+        description="Description"
+        withErrorStyles={false}
+        error="Error"
+      />
+    </div>
+  );
+}
+
+export function Breakpoints() {
+  return (
+    <div style={{ padding: 40 }}>
+      <TextInput label="Text input without error styles" bg="red" hiddenFrom="sm" />
+      <TextInput label="Text input without error styles" bg="blue" visibleFrom="md" />
+    </div>
+  );
+}

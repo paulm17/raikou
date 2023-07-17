@@ -22,7 +22,7 @@ interface ScrollAreaProps extends BoxProps, StylesApiProps<ScrollAreaFactory>, E
     /** Scroll hide delay in ms, applicable only when type is set to `hover` or `scroll`, `1000` by default */
     scrollHideDelay?: number;
     /** Determines whether scrollbars should be offset with padding, `false` by default */
-    offsetScrollbars?: boolean;
+    offsetScrollbars?: boolean | "x" | "y";
     /** Assigns viewport element (scrollable container) ref */
     viewportRef?: React.ForwardedRef<HTMLDivElement>;
     /** Props passed down to the viewport element */

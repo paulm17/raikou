@@ -1,6 +1,6 @@
 import React from "react";
 import { Fieldset } from "./Fieldset";
-import { TextInput } from "../TextInput";
+import { TextInput } from "../../TextInput/src";
 
 export default { title: "Fieldset" };
 

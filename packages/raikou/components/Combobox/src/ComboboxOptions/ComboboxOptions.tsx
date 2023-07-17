@@ -63,5 +63,4 @@ export const ComboboxOptions = factory<ComboboxOptionsFactory>(
   }
 );
 
-// ComboboxOptions.classes = classes;
 ComboboxOptions.displayName = "@raikou/core/ComboboxOptions";

@@ -70,6 +70,8 @@ interface __InputProps {
     size?: RaikouSize | (string & {});
     /** Determines whether the input should have `cursor: pointer` style, `false` by default */
     pointer?: boolean;
+    /** Determines whether the input should have red border and text color when `error` prop is set, `true` by default */
+    withErrorStyles?: boolean;
 }
 
 // NOTE: Users of the `experimental` builds of React should add a reference
@@ -3403,6 +3405,7 @@ declare global {
 
 interface InputBaseProps extends BoxProps, __BaseInputProps, StylesApiProps<InputBaseFactory> {
     __staticSelector?: string;
+    __stylesApiProps?: Record<string, any>;
     /** Props passed to the root element (`Input.Wrapper` component) */
     wrapperProps?: Record<string, any>;
     /** Determines whether the input can have multiple lines, for example when `component="textarea"`, `false` by default */

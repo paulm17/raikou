@@ -1,5 +1,5 @@
 import React from "react";
-// import { RaikouThemeProvider } from "@raikou/core";;
+// import { MantineThemeProvider } from "@raikou/core";
 import { Checkbox } from "./Checkbox";
 import { Stack } from "../../Stack/src";
 
@@ -38,9 +38,9 @@ export function CheckboxGroup() {
 
 // export function CursorPointer() {
 //   return (
-//     <RaikouThemeProvider theme={{ cursorType: "pointer" }}>
+//     <MantineThemeProvider theme={{ cursorType: "pointer" }}>
 //       <Checkbox label="Hello" value="1" />
-//     </RaikouThemeProvider>
+//     </MantineThemeProvider>
 //   );
 // }
 

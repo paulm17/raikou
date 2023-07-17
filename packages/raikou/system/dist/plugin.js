@@ -61,13 +61,6 @@ var init_utils = __esm({
   }
 });
 
-// ../core/src/core/styles-api/styles-api.types.ts
-var init_styles_api_types = __esm({
-  "../core/src/core/styles-api/styles-api.types.ts"() {
-    "use strict";
-  }
-});
-
 // ../core/src/core/Bootstrap/theme.types.ts
 var init_theme_types = __esm({
   "../core/src/core/Bootstrap/theme.types.ts"() {
@@ -88,6 +81,13 @@ var init_Bootstrap = __esm({
     "use strict";
     init_theme_types();
     init_color_functions();
+  }
+});
+
+// ../core/src/core/styles-api/styles-api.types.ts
+var init_styles_api_types = __esm({
+  "../core/src/core/styles-api/styles-api.types.ts"() {
+    "use strict";
   }
 });
 

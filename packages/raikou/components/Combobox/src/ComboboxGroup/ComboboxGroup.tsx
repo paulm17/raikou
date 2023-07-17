@@ -60,5 +60,4 @@ export const ComboboxGroup = factory<ComboboxGroupFactory>((props, ref) => {
   );
 });
 
-// ComboboxGroup.classes = classes;
 ComboboxGroup.displayName = "@raikou/core/ComboboxGroup";

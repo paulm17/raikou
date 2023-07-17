@@ -1,5 +1,5 @@
 {
-  "extends": "../tsconfig/raikou.json",
+  "extends": "../../tsconfig/raikou.json",
   "include": ["./src", "./types", "../../configuration/types"],
   "compilerOptions": {
     "rootDir": "src",

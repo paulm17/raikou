@@ -19,7 +19,7 @@ describe("@raikou/core/ComboboxChevron", () => {
       classes: true,
       refType: SVGSVGElement,
       displayName: "@raikou/core/ComboboxChevron",
-      stylesApiSelectors: ["root"],
+      stylesApiSelectors: ["chevron"],
     }
   );
 });

@@ -24,6 +24,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
+    "@tabler/icons-react": "^2.25.0",
     "@raikou/core": "workspace:*",
     "@raikou/hooks": "workspace:*",
     "tslib": "^2.6.0"

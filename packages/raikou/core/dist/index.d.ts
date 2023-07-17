@@ -69,6 +69,9 @@ declare function getFontSize(size: unknown): string;
 declare function getLineHeight(size: unknown): string;
 declare function getShadow(size: unknown): string;
 
+type EventHandler<Event> = ((event?: Event) => void) | undefined;
+declare function createEventHandler<Event>(parentEventHandler: EventHandler<Event>, eventHandler: EventHandler<Event>): (event?: Event) => void;
+
 declare function getPrimaryShade(theme: RaikouTheme, colorScheme: RaikouColorScheme): RaikouColorShade;
 
 interface ParseThemeColorOptions {
@@ -434,6 +437,10 @@ interface BoxProps extends RaikouStyleProps {
     style?: RaikouStyleProp;
     /** CSS variables defined on root component element */
     __vars?: CssVarsProp;
+    /** Breakpoint above which the component is hidden with `display: none` */
+    hiddenFrom?: RaikouBreakpoint;
+    /** Breakpoint below which the component is hidden with `display: none` */
+    visibleFrom?: RaikouBreakpoint;
 }
 type ElementProps<ElementType extends React__default.ElementType, PropsToOmit extends string = never> = Omit<React__default.ComponentPropsWithoutRef<ElementType>, "style" | PropsToOmit>;
 interface BoxComponentProps extends BoxProps {
@@ -558,6 +565,17 @@ interface ResolveStylesInput {
 }
 declare function resolveStyles({ theme, styles, props, stylesCtx }: ResolveStylesInput): Record<string, any>;
 
+interface UseResolvedStylesApiInput<Payload extends FactoryPayload> {
+    classNames: ClassNames<Payload> | undefined;
+    styles: Styles<Payload> | undefined;
+    props: Record<string, any>;
+    stylesCtx?: Record<string, any>;
+}
+declare function useResolvedStylesApi<Payload extends FactoryPayload>({ classNames, styles, props, stylesCtx, }: UseResolvedStylesApiInput<Payload>): {
+    resolvedClassNames: Partial<Record<string, string>>;
+    resolvedStyles: Record<string, any>;
+};
+
 declare const FOCUS_CLASS_NAMES: {
     readonly always: "raikou-focus-always";
     readonly auto: "raikou-focus-auto";
@@ -591,4 +609,4 @@ declare function useDirection(): {
     setDirection: () => void;
 };
 
-export { Box, BoxComponentProps, BoxMod, BoxProps, ClassNames, ClassNamesArray, CssVariable, CssVariables, CssVars, CssVarsProp, DEFAULT_THEME, DefaultRaikouColor, Direction, ElementProps, ExtendComponent, ExtendsRootComponent, FOCUS_CLASS_NAMES, Factory, FactoryPayload, GetStylesApi, GetStylesApiOptions, HeadingStyle, InlineStyles, InlineStylesInput, InlineStylesMediaQuery, InlineStylesProps, PartialTransformVars, PartialVarsResolver, PolymorphicFactory, RGBA, RaikouBreakpoint, RaikouBreakpointsValues, RaikouColor, RaikouColorScheme, RaikouColorShade, RaikouColorsTuple, RaikouComponent, RaikouFontSize, RaikouFontSizesValues, RaikouGradient, RaikouLineHeight, RaikouLineHeightValues, RaikouPrimaryShade, RaikouRadius, RaikouRadiusValues, RaikouShadow, RaikouShadowsValues, RaikouSize, RaikouSpacing, RaikouSpacingValues, RaikouStyleProp, RaikouStyleProps, RaikouStylesRecord, RaikouTheme, RaikouThemeColors, RaikouThemeColorsOverride, RaikouThemeComponent, RaikouThemeComponents, RaikouThemeOther, RaikouThemeOverride, STYlE_PROPS_DATA, StyleProp, StylePropSpacingValue, Styles, StylesApiProps, StylesApiRecord, StylesRecord, ThemeExtend, TransformVars, UseStylesInput, VariantColorResolverResult, VariantColorsResolver, VariantColorsResolverInput, VarsResolver, camelToKebabCase, closeOnEscape, createPolymorphicComponent, createScopedKeydownHandler, createVarsResolver, darken, deepMerge, defaultVariantColorsResolver, em, extractStyleProps, factory, filterProps, findElementAncestor, getDefaultZIndex, getFontSize, getGradient, getLineHeight, getPrimaryShade, getRadius, getSafeId, getShadow, getSize, getSpacing, getStyleObject, getTheme, getThemeColor, isElement, isLightColor, isNumberLike, keys, lighten, mergeRaikouTheme, noop, parseStyleProps, parseThemeColor, polymorphicFactory, px, rem, resolveClassNames, resolveStyles, rgba, stylesToString, toRgba, useDirection, useProps, useRandomClassName, useStyles, validateRaikouTheme };
+export { Box, BoxComponentProps, BoxMod, BoxProps, ClassNames, ClassNamesArray, CssVariable, CssVariables, CssVars, CssVarsProp, DEFAULT_THEME, DefaultRaikouColor, Direction, ElementProps, ExtendComponent, ExtendsRootComponent, FOCUS_CLASS_NAMES, Factory, FactoryPayload, GetStylesApi, GetStylesApiOptions, HeadingStyle, InlineStyles, InlineStylesInput, InlineStylesMediaQuery, InlineStylesProps, PartialTransformVars, PartialVarsResolver, PolymorphicFactory, RGBA, RaikouBreakpoint, RaikouBreakpointsValues, RaikouColor, RaikouColorScheme, RaikouColorShade, RaikouColorsTuple, RaikouComponent, RaikouFontSize, RaikouFontSizesValues, RaikouGradient, RaikouLineHeight, RaikouLineHeightValues, RaikouPrimaryShade, RaikouRadius, RaikouRadiusValues, RaikouShadow, RaikouShadowsValues, RaikouSize, RaikouSpacing, RaikouSpacingValues, RaikouStyleProp, RaikouStyleProps, RaikouStylesRecord, RaikouTheme, RaikouThemeColors, RaikouThemeColorsOverride, RaikouThemeComponent, RaikouThemeComponents, RaikouThemeOther, RaikouThemeOverride, STYlE_PROPS_DATA, StyleProp, StylePropSpacingValue, Styles, StylesApiProps, StylesApiRecord, StylesRecord, ThemeExtend, TransformVars, UseStylesInput, VariantColorResolverResult, VariantColorsResolver, VariantColorsResolverInput, VarsResolver, camelToKebabCase, closeOnEscape, createEventHandler, createPolymorphicComponent, createScopedKeydownHandler, createVarsResolver, darken, deepMerge, defaultVariantColorsResolver, em, extractStyleProps, factory, filterProps, findElementAncestor, getDefaultZIndex, getFontSize, getGradient, getLineHeight, getPrimaryShade, getRadius, getSafeId, getShadow, getSize, getSpacing, getStyleObject, getTheme, getThemeColor, isElement, isLightColor, isNumberLike, keys, lighten, mergeRaikouTheme, noop, parseStyleProps, parseThemeColor, polymorphicFactory, px, rem, resolveClassNames, resolveStyles, rgba, stylesToString, toRgba, useDirection, useProps, useRandomClassName, useResolvedStylesApi, useStyles, validateRaikouTheme };

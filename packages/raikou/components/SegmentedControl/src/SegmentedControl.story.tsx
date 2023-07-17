@@ -1,6 +1,6 @@
 import React from "react";
 import { SegmentedControl } from "./SegmentedControl";
-// import { RaikouThemeProvider } from "@raikou/core";;
+// import { MantineThemeProvider } from '../../core';
 
 export default { title: "SegmentedControl" };
 
@@ -76,9 +76,9 @@ export function Disabled() {
 // export function FocusRingAlways() {
 //   return (
 //     <div style={{ padding: 40 }}>
-//       <RaikouThemeProvider theme={{ focusRing: "always" }} inherit>
-//         <SegmentedControl data={["React", "Angular", "Svelte", "Vue"]} />
-//       </RaikouThemeProvider>
+//       <MantineThemeProvider theme={{ focusRing: 'always' }} inherit>
+//         <SegmentedControl data={['React', 'Angular', 'Svelte', 'Vue']} />
+//       </MantineThemeProvider>
 //     </div>
 //   );
 // }

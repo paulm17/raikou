@@ -15,7 +15,7 @@ import { OptionalPortal } from "../../../Portal/src";
 import { Transition } from "../../../Transition/src";
 import { FocusTrap } from "../../../FocusTrap/src";
 import { FloatingArrow } from "../../../Floating/src";
-import type { PopoverStylesNames } from "../../../Popover/src";
+import type { PopoverStylesNames } from "../Popover";
 import { usePopoverContext } from "../Popover.context";
 
 export interface PopoverDropdownProps

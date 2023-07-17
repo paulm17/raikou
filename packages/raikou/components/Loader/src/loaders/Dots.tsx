@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import cx from "clsx";
 import { Box } from "@raikou/core";
-import { RaikouLoaderComponent } from "../../Loader.types";
+import { RaikouLoaderComponent } from "../Loader.types";
 
 export const Dots: RaikouLoaderComponent = forwardRef(
   ({ className, ...others }, ref) => (

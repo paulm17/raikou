@@ -1,7 +1,7 @@
 import React from "react";
 import { useDisclosure } from "@raikou/hooks";
-import { Button } from "../Button";
-import { ScrollArea } from "../ScrollArea";
+import { Button } from "../../Button/src";
+import { ScrollArea } from "../../ScrollArea/src";
 import { Drawer } from "./Drawer";
 
 export default { title: "Drawer" };

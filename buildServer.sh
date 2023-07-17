@@ -22,6 +22,7 @@ pnpm --filter @raikou/kbd run build
 pnpm --filter @raikou/loader run build
 pnpm --filter @raikou/mark run build
 pnpm --filter @raikou/paper run build
+pnpm --filter @raikou/skeleton run build
 pnpm --filter @raikou/stack run build
 pnpm --filter @raikou/text run build
 pnpm --filter @raikou/title run build

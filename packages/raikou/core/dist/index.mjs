@@ -326,6 +326,14 @@ function getShadow(size) {
   return getSize(size, "raikou-shadow");
 }
 
+// src/core/utils/create-event-handler/create-event-handler.ts
+function createEventHandler(parentEventHandler, eventHandler) {
+  return (event) => {
+    parentEventHandler == null ? void 0 : parentEventHandler(event);
+    eventHandler == null ? void 0 : eventHandler(event);
+  };
+}
+
 // src/core/styles-api/create-vars-resolver/create-vars-resolver.ts
 function createVarsResolver(resolver) {
   return resolver;
@@ -364,24 +372,6 @@ function resolveStyles({ theme, styles, props, stylesCtx }) {
     }
     return { ...acc, ...style };
   }, {});
-}
-
-// src/core/styles-api/use-styles/get-class-name/get-global-class-names/get-global-class-names.ts
-import cx2 from "clsx";
-var FOCUS_CLASS_NAMES = {
-  always: "raikou-focus-always",
-  auto: "raikou-focus-auto",
-  never: "raikou-focus-never"
-};
-function getGlobalClassNames({
-  theme,
-  options,
-  unstyled
-}) {
-  return cx2(
-    (options == null ? void 0 : options.focusable) && !unstyled && (theme.focusClassName || FOCUS_CLASS_NAMES[theme.focusRing]),
-    (options == null ? void 0 : options.active) && !unstyled && theme.activeClassName
-  );
 }
 
 // src/core/Bootstrap/color-functions/get-primary-shade/get-primary-shade.ts
@@ -1120,6 +1110,48 @@ function useProps(component, defaultProps, props) {
   return { ...defaultProps, ...contextProps, ...filterProps(props) };
 }
 
+// src/core/styles-api/use-resolved-styles-api/use-resolved-styles-api.ts
+function useResolvedStylesApi({
+  classNames,
+  styles,
+  props,
+  stylesCtx
+}) {
+  const theme = getTheme();
+  return {
+    resolvedClassNames: resolveClassNames({
+      theme,
+      classNames,
+      props,
+      stylesCtx: stylesCtx || void 0
+    }),
+    resolvedStyles: resolveStyles({
+      theme,
+      styles,
+      props,
+      stylesCtx: stylesCtx || void 0
+    })
+  };
+}
+
+// src/core/styles-api/use-styles/get-class-name/get-global-class-names/get-global-class-names.ts
+import cx2 from "clsx";
+var FOCUS_CLASS_NAMES = {
+  always: "raikou-focus-always",
+  auto: "raikou-focus-auto",
+  never: "raikou-focus-never"
+};
+function getGlobalClassNames({
+  theme,
+  options,
+  unstyled
+}) {
+  return cx2(
+    (options == null ? void 0 : options.focusable) && !unstyled && (theme.focusClassName || FOCUS_CLASS_NAMES[theme.focusRing]),
+    (options == null ? void 0 : options.active) && !unstyled && theme.activeClassName
+  );
+}
+
 // src/core/styles-api/use-styles/get-class-name/get-class-name.ts
 import cx3 from "clsx";
 
@@ -1845,7 +1877,18 @@ function getBoxMod(mod) {
 
 // src/core/Box/Box.tsx
 var _Box = forwardRef3(
-  ({ component, style, __vars, className, variant, mod, size, ...others }, ref) => {
+  ({
+    component,
+    style,
+    __vars,
+    className,
+    variant,
+    mod,
+    size,
+    hiddenFrom,
+    visibleFrom,
+    ...others
+  }, ref) => {
     const theme = getTheme();
     const Element = component || "div";
     const { styleProps, rest } = extractStyleProps(others);
@@ -1873,7 +1916,9 @@ var _Box = forwardRef3(
           styleProps: parsedStyleProps.inlineStyles
         }),
         className: cx4(className, {
-          [responsiveClassName]: parsedStyleProps.hasResponsiveStyles
+          [responsiveClassName]: parsedStyleProps.hasResponsiveStyles,
+          [`raikou-hidden-from-${hiddenFrom}`]: hiddenFrom,
+          [`raikou-visible-from-${visibleFrom}`]: visibleFrom
         }),
         "data-variant": variant,
         "data-size": isNumberLike(size) ? void 0 : size || void 0,
@@ -1904,6 +1949,7 @@ export {
   STYlE_PROPS_DATA,
   camelToKebabCase,
   closeOnEscape,
+  createEventHandler,
   createPolymorphicComponent,
   createScopedKeydownHandler,
   createVarsResolver,
@@ -1948,6 +1994,7 @@ export {
   useDirection,
   useProps,
   useRandomClassName,
+  useResolvedStylesApi,
   useStyles,
   validateRaikouTheme
 };

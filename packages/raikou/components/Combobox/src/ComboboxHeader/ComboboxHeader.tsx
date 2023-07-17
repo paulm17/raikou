@@ -41,5 +41,4 @@ export const ComboboxHeader = factory<ComboboxHeaderFactory>((props, ref) => {
   );
 });
 
-// ComboboxHeader.classes = classes;
 ComboboxHeader.displayName = "@raikou/core/ComboboxHeader";

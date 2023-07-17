@@ -1,9 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["../../components/**/src/**/*.tsx"],
+  content: ["../../packages/raikou/components/**/*.tsx"],
   theme: {
     extend: {},
   },
-  presets: [require("../../packages/raikou-system/src/plugin")],
+  presets: [require("../../packages/raikou/system/src/plugin")],
   plugins: [],
 };

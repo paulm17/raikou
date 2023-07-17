@@ -7,7 +7,7 @@ import { ModalBaseContent } from "./ModalBaseContent";
 import { ModalBaseHeader } from "./ModalBaseHeader";
 import { ModalBaseOverlay } from "./ModalBaseOverlay";
 import { ModalBaseTitle } from "./ModalBaseTitle";
-import { Button } from "../Button";
+import { Button } from "../../Button/src";
 
 export default { title: "ModalBase" };
 

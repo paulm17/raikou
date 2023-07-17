@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import React from 'react';
-import { Virtuoso } from 'react-virtuoso';
-import { Combobox } from './Combobox';
-import { TextInput } from '../TextInput';
-import { ScrollArea } from '../ScrollArea';
-import { useVirtualizedCombobox } from './use-combobox/use-virtualized-combobox';
+import React from "react";
+import { Virtuoso } from "react-virtuoso";
+import { Combobox } from "./Combobox";
+import { TextInput } from "../../TextInput/src";
+import { ScrollArea } from "../../ScrollArea/src";
+import { useVirtualizedCombobox } from "./use-combobox/use-virtualized-combobox";
 
-export default { title: 'Combobox' };
+export default { title: "Combobox" };
 
 const largeData = Array(10000)
   .fill(0)
@@ -20,7 +20,7 @@ const largeData = Array(10000)
 export function Virtualized() {
   const [opened, setOpened] = React.useState(false);
   const [selectedOptionIndex, setSelectedOptionIndex] = React.useState(0);
-  const [value, setValue] = React.useState('');
+  const [value, setValue] = React.useState("");
   const virtuoso = React.useRef<any>(null);
   const viewportRef = React.useRef<HTMLDivElement>(null);
 
@@ -34,7 +34,7 @@ export function Virtualized() {
     setSelectedOptionIndex: (index) => {
       setSelectedOptionIndex(index);
       if (index !== -1) {
-        virtuoso.current.scrollToIndex({ index, align: 'end' });
+        virtuoso.current.scrollToIndex({ index, align: "end" });
       }
     },
     onSelectedOptionSubmit: onOptionSubmit,
@@ -49,7 +49,11 @@ export function Virtualized() {
 
   return (
     <div style={{ padding: 40 }}>
-      <Combobox store={store} withinPortal={false} resetSelectionOnOptionHover={false}>
+      <Combobox
+        store={store}
+        withinPortal={false}
+        resetSelectionOnOptionHover={false}
+      >
         <Combobox.Target>
           <TextInput
             placeholder="Pick a value"

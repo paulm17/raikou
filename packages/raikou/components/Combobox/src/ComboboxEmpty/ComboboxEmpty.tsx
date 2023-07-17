@@ -41,5 +41,4 @@ export const ComboboxEmpty = factory<ComboboxEmptyFactory>((props, ref) => {
   );
 });
 
-// ComboboxEmpty.classes = classes;
 ComboboxEmpty.displayName = "@raikou/core/ComboboxEmpty";

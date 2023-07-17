@@ -13,9 +13,9 @@ import {
   useStyles,
 } from "@raikou/core";
 
-export type ComboboxChevronStylesNames = "root";
+export type ComboboxChevronStylesNames = "chevron";
 export type ComboboxChevronCSSVariables = {
-  root: "--combobox-chevron-size";
+  chevron: "--combobox-chevron-size";
 };
 
 export interface ComboboxChevronProps
@@ -40,7 +40,7 @@ const defaultProps: Partial<ComboboxChevronProps> = {
 
 const varsResolver = createVarsResolver<ComboboxChevronFactory>(
   (_, { size }) => ({
-    root: {
+    chevron: {
       "--combobox-chevron-size": getSize(size, "combobox-chevron-size"),
     },
   })
@@ -64,7 +64,7 @@ export const ComboboxChevron = factory<ComboboxChevronFactory>(
     const getStyles = useStyles<ComboboxChevronFactory>({
       name: "ComboboxChevron",
       classes: {
-        root: "comboBox-chevron",
+        chevron: "combobox-chevron",
       },
       props,
       style,
@@ -74,13 +74,14 @@ export const ComboboxChevron = factory<ComboboxChevronFactory>(
       unstyled,
       vars,
       varsResolver,
+      rootSelector: "chevron",
     });
 
     return (
       <Box
         component="svg"
         {...others}
-        {...getStyles("root")}
+        {...getStyles("chevron")}
         size={size}
         viewBox="0 0 15 15"
         fill="none"

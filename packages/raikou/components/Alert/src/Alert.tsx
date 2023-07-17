@@ -14,7 +14,7 @@ import {
   RaikouColor,
 } from "@raikou/core";
 import { useId } from "@raikou/hooks";
-import { CloseButton } from "@raikou/close-button";
+import { CloseButton } from "../../CloseButton/src";
 
 export type AlertStylesNames =
   | "root"

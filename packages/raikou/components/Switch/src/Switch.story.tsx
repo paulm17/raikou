@@ -1,7 +1,7 @@
 import React from "react";
-// import { IconBadge } from "@tabler/icons-react";
+import { IconBadge } from "@tabler/icons-react";
 import { Group } from "../../Group/src";
-import { Switch } from "../../Switch/src";
+import { Switch } from "./Switch";
 import { Stack } from "../../Stack/src";
 
 export default { title: "Switch" };
@@ -40,15 +40,15 @@ export function WithLabels() {
   );
 }
 
-// export function IconInsideThumb() {
-//   return (
-//     <Switch
-//       size="lg"
-//       thumbIcon={<IconBadge color="black" size={12} />}
-//       label="Hello"
-//     />
-//   );
-// }
+export function IconInsideThumb() {
+  return (
+    <Switch
+      size="lg"
+      thumbIcon={<IconBadge color="black" size={12} />}
+      label="Hello"
+    />
+  );
+}
 
 export function SwitchGroup() {
   return (

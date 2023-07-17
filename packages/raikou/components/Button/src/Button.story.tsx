@@ -171,7 +171,7 @@ export function AsLink() {
       <Button
         size="xl"
         component="a"
-        href="https://raikou.dev"
+        href="https://mantine.dev"
         onClick={(event) => event.preventDefault()}
       >
         $$
@@ -282,7 +282,7 @@ export function ButtonGroup() {
           size="lg"
           variant="default"
           component="a"
-          href="https://raikou.dev"
+          href="https://mantine.dev"
         >
           2
         </Button>

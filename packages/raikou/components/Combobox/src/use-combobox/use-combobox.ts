@@ -110,7 +110,7 @@ export function useCombobox({
   onDropdownClose,
   onDropdownOpen,
   loop = true,
-  scrollBehavior,
+  scrollBehavior = "auto",
 }: UseComboboxOptions = {}): ComboboxStore {
   const [dropdownOpened, setDropdownOpened] = useUncontrolled({
     value: opened,

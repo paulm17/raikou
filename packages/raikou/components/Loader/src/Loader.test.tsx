@@ -5,8 +5,8 @@ import {
   LoaderProps,
   LoaderStylesNames,
   defaultLoaders,
-} from "./Loader";
-import { RaikouLoaderComponent } from "./Loader.types";
+} from "./Loader/src";
+import { RaikouLoaderComponent } from "./Loader/src.types";
 
 const customLoader: RaikouLoaderComponent = forwardRef(() => (
   <div data-custom-loader />

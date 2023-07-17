@@ -1,6 +1,6 @@
 import React from "react";
 import { wait, render, screen, userEvent } from "@raikou/tests";
-import { FocusTrap } from "./FocusTrap";
+import { FocusTrap } from "./FocusTrap/src";
 
 describe("@raikou/core/FocusTrap", () => {
   it("traps focus at given node", async () => {

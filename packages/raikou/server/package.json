@@ -47,6 +47,7 @@
     "@raikou/loader": "workspace:*",
     "@raikou/mark": "workspace:*",
     "@raikou/paper": "workspace:*",
+    "@raikou/skeleton": "workspace:*",
     "@raikou/stack": "workspace:*",
     "@raikou/text": "workspace:*",
     "@raikou/title": "workspace:*",

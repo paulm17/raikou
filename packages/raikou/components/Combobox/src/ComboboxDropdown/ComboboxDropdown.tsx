@@ -38,5 +38,4 @@ export const ComboboxDropdown = factory<ComboboxDropdownFactory>(
   }
 );
 
-// ComboboxDropdown.classes = classes;
 ComboboxDropdown.displayName = "@raikou/core/ComboboxDropdown";

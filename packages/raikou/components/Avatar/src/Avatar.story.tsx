@@ -1,10 +1,10 @@
 import React from "react";
-import { Tooltip } from "../Tooltip";
-import { Center } from "../Center";
-import { Group } from "../Group";
-import { Stack } from "../Stack";
-import { Box } from "@raikou/core";
-import { Text } from "../Text";
+import { Tooltip } from "../../Tooltip/src";
+import { Center } from "../../Center/src";
+import { Group } from "../../Group/src";
+import { Stack } from "../../Stack/src";
+import { Box } from "../../Box";
+import { Text } from "../../Text/src";
 import { Avatar } from "./Avatar";
 
 export default { title: "Avatar" };
@@ -12,7 +12,7 @@ export default { title: "Avatar" };
 export function CustomComponent() {
   return (
     <div style={{ padding: 40 }}>
-      <Avatar component="a" href="https://raikou.dev">
+      <Avatar component="a" href="https://mantine.dev">
         AN
       </Avatar>
       <Avatar component="button" type="button">

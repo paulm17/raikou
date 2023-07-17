@@ -189,6 +189,8 @@ interface __InputProps {
     size?: RaikouSize | (string & {});
     /** Determines whether the input should have `cursor: pointer` style, `false` by default */
     pointer?: boolean;
+    /** Determines whether the input should have red border and text color when `error` prop is set, `true` by default */
+    withErrorStyles?: boolean;
 }
 interface InputProps extends BoxProps, __InputProps, StylesApiProps<InputFactory> {
     __staticSelector?: string;

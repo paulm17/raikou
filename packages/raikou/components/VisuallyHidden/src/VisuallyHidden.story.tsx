@@ -1,5 +1,5 @@
 import React from "react";
-import { ActionIcon } from "../ActionIcon";
+import { ActionIcon } from "../../ActionIcon/src";
 import { VisuallyHidden } from "./VisuallyHidden";
 
 export default { title: "VisuallyHidden" };

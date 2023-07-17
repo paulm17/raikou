@@ -1,7 +1,7 @@
 import React from "react";
 import { useMergedRef } from "@raikou/hooks";
 import { factory, ElementProps, useProps, Factory } from "@raikou/core";
-import { Input, InputProps, InputStylesNames } from "@raikou/input";
+import { Input, InputProps, InputStylesNames } from "../../../Input/src";
 import { useComboboxContext } from "../Combobox.context";
 import { useComboboxTargetProps } from "../use-combobox-target-props/use-combobox-target-props";
 
@@ -65,5 +65,4 @@ export const ComboboxSearch = factory<ComboboxSearchFactory>((_props, ref) => {
   );
 });
 
-// ComboboxSearch.classes = classes;
 ComboboxSearch.displayName = "@raikou/core/ComboboxSearch";

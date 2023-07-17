@@ -1,6 +1,6 @@
 import React from "react";
 import { render, tests } from "@raikou/tests";
-import { Portal } from "./Portal";
+import { Portal } from "./Portal/src";
 
 describe("@raikou/core/Portal", () => {
   tests.itSupportsRef({

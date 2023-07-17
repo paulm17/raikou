@@ -24,7 +24,8 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@raikou/core": "workspace:*"
+    "@raikou/core": "workspace:*",
+    "tslib": "^2.6.0"
   },
   "devDependencies": {
     "@raikou/hooks": "workspace:*",

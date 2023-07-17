@@ -50,7 +50,7 @@ export interface ScrollAreaProps
   scrollHideDelay?: number;
 
   /** Determines whether scrollbars should be offset with padding, `false` by default */
-  offsetScrollbars?: boolean;
+  offsetScrollbars?: boolean | "x" | "y";
 
   /** Assigns viewport element (scrollable container) ref */
   viewportRef?: React.ForwardedRef<HTMLDivElement>;

@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import cx from "clsx";
-import { getTheme } from "../Bootstrap";
+import { getTheme, RaikouBreakpoint } from "../Bootstrap";
 import { InlineStyles } from "../InlineStyles";
 import { createPolymorphicComponent } from "../factory";
 import type { RaikouStyleProp, CssVarsProp } from "./Box.types";
@@ -27,6 +27,12 @@ export interface BoxProps extends RaikouStyleProps {
 
   /** CSS variables defined on root component element */
   __vars?: CssVarsProp;
+
+  /** Breakpoint above which the component is hidden with `display: none` */
+  hiddenFrom?: RaikouBreakpoint;
+
+  /** Breakpoint below which the component is hidden with `display: none` */
+  visibleFrom?: RaikouBreakpoint;
 }
 
 export type ElementProps<
@@ -50,7 +56,18 @@ const _Box = forwardRef<
   BoxComponentProps & { component: any; className: string }
 >(
   (
-    { component, style, __vars, className, variant, mod, size, ...others },
+    {
+      component,
+      style,
+      __vars,
+      className,
+      variant,
+      mod,
+      size,
+      hiddenFrom,
+      visibleFrom,
+      ...others
+    },
     ref
   ) => {
     const theme = getTheme();
@@ -82,6 +99,8 @@ const _Box = forwardRef<
           })}
           className={cx(className, {
             [responsiveClassName]: parsedStyleProps.hasResponsiveStyles,
+            [`raikou-hidden-from-${hiddenFrom}`]: hiddenFrom,
+            [`raikou-visible-from-${visibleFrom}`]: visibleFrom,
           })}
           data-variant={variant}
           data-size={isNumberLike(size) ? undefined : size || undefined}
