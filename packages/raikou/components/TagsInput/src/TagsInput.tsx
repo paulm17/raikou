@@ -23,7 +23,6 @@ import {
 import { __BaseInputProps, __InputStylesNames } from "../../Input/src";
 import { PillsInput } from "../../PillsInput/src";
 import { Pill } from "../../Pill/src";
-import { InputBase } from "../../InputBase/src";
 import { getSplittedTags } from "./get-splitted-tags";
 import { filterPickedTags } from "./filter-picked-tags";
 
@@ -364,5 +363,4 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
   );
 });
 
-// TagsInput.classes = { ...InputBase.classes, ...Combobox.classes };
 TagsInput.displayName = "@raikou/core/TagsInput";

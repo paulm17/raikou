@@ -17,14 +17,14 @@ module.exports = function ({ addComponents, theme }: any) {
       order: "var(--_checkbox-inner-order, 1)",
 
       "&[data-label-position='left']": {
-        "--_checkbox-inner-order": 2,
+        "--_checkbox-inner-order": "2",
       },
     },
 
     ".checkbox-input": {
       appearance: "none",
       backgroundColor: "var(--_checkbox-bg)",
-      border: `rem(1px) solid var(--_checkbox-bd-color)`,
+      border: `${rem("1px")} solid var(--_checkbox-bd-color)`,
       width: "var(--checkbox-size)",
       height: "var(--checkbox-size)",
       borderRadius: "var(--checkbox-radius)",
@@ -53,8 +53,8 @@ module.exports = function ({ addComponents, theme }: any) {
           "--_checkbox-bg": "var(--checkbox-color)",
           "--_checkbox-bd-color": "var(--checkbox-color)",
 
-          "& + .icon": {
-            "--_checkbox-icon-opacity": 1,
+          "& + .checkbox-icon": {
+            "--_checkbox-icon-opacity": "1",
             "--_checkbox-icon-transform": "none",
           },
         },
@@ -73,7 +73,7 @@ module.exports = function ({ addComponents, theme }: any) {
           "--_checkbox-bd-color": "var(--raikou-color-dark-6)",
         },
 
-        "& + .icon": {
+        "& + .checkbox-icon": {
           '[data-raikou-color-scheme="light"] &': {
             "--_checkbox-icon-color": "var(--raikou-color-gray-5)",
           },
@@ -95,8 +95,9 @@ module.exports = function ({ addComponents, theme }: any) {
       margin: "auto",
       color: "var(--_checkbox-icon-color, var(--raikou-color-white))",
       pointerEvents: "none",
-      transform:
-        "var(--_checkbox-icon-transform, translateY(rem(5px)) scale(0.5))",
+      transform: `var(--_checkbox-icon-transform, translateY(${rem(
+        "5px"
+      )}) scale(0.5))`,
       opacity: "var(--_checkbox-icon-opacity, 0)",
       transition: "transform 100ms ease, opacity 100ms ease",
     },

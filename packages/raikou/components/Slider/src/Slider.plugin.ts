@@ -59,7 +59,7 @@ module.exports = function ({ addComponents, theme }: any) {
       height: "var(--slider-thumb-size)",
       width: "var(--slider-thumb-size)",
       backgroundColor: "var(--_thumb-bg)",
-      border: `rem(4px) solid var(--_thumb-bd)`,
+      border: `${rem("4px")} solid var(--_thumb-bd)`,
       color: "var(--_thumb-bd)",
       transform: "var(--_thumb-transform, translate(-50%, -50%))",
       top: "50%",
@@ -126,7 +126,7 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       "&::before": {
-        content: "",
+        content: '""',
         position: "absolute",
         top: 0,
         bottom: 0,

@@ -5481,6 +5481,7 @@ function CheckIcon(_a) {
   return /* @__PURE__ */ import_react51.default.createElement(
     "svg",
     __spreadValues({
+      className: "icon",
       viewBox: "0 0 10 7",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",

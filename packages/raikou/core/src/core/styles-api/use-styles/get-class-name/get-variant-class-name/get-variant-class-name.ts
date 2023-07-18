@@ -1,4 +1,4 @@
-import { GetStylesApiOptions } from '../../../styles-api.types';
+import { GetStylesApiOptions } from "../../../styles-api.types";
 
 interface GetVariantClassNameInput {
   options: GetStylesApiOptions | undefined;
@@ -14,5 +14,7 @@ export function getVariantClassName({
   selector,
   unstyled,
 }: GetVariantClassNameInput) {
-  return options?.variant && !unstyled ? classes[`${selector}--${options.variant}`] : undefined;
+  return options?.variant && !unstyled
+    ? classes[`${selector}--${options.variant}`]
+    : undefined;
 }

@@ -5,5 +5,5 @@
       "@raikou/action-icon": ["../ActionIcon/src"]
     }
   },
-  "include": ["src", "../../configuration/types"]
+  "include": ["src", "../../../../configuration/types"]
 }

@@ -31,11 +31,11 @@ var __objRest = (source, exclude) => {
 };
 
 // src/Drawer.tsx
-import React40 from "react";
+import React39 from "react";
 import { factory as factory10, useProps as useProps16, getDefaultZIndex as getDefaultZIndex4 } from "@raikou/core";
 
 // src/DrawerRoot.tsx
-import React33 from "react";
+import React32 from "react";
 import {
   factory as factory3,
   useProps as useProps9,
@@ -46,7 +46,7 @@ import {
 } from "@raikou/core";
 
 // ../ModalBase/src/ModalBase.tsx
-import React12, { forwardRef as forwardRef4 } from "react";
+import React11, { forwardRef as forwardRef4 } from "react";
 
 // ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_3pi6y6cylzraaxxtldk4o6b3zi/node_modules/react-remove-scroll/dist/es2015/Combination.js
 import { __assign as __assign4 } from "tslib";
@@ -684,373 +684,9 @@ import {
 } from "@raikou/core";
 
 // ../Portal/src/Portal.tsx
-import React8, { useRef as useRef26, useState as useState33, forwardRef as forwardRef3 } from "react";
+import React7, { useRef as useRef3, useState as useState4, forwardRef as forwardRef3 } from "react";
 import { createPortal } from "react-dom";
-
-// ../../hooks/dist/index.mjs
-import { useRef as useRef3, useEffect as useEffect3, useMemo as useMemo2 } from "react";
-import { useRef as useRef22, useEffect as useEffect22, useCallback as useCallback2 } from "react";
-import { useEffect as useEffect32, useRef as useRef32 } from "react";
-import { useState as useState4 } from "react";
-import { useState as useState22, useEffect as useEffect4, useRef as useRef4 } from "react";
-import { useState as useState32 } from "react";
-import { useEffect as useEffect5, useRef as useRef5, useState as useState42 } from "react";
-import { useEffect as useEffect6, useState as useState5, useRef as useRef6 } from "react";
-import { useEffect as useEffect7, useLayoutEffect } from "react";
-import { useEffect as useEffect8, useState as useState6 } from "react";
-import { useRef as useRef8 } from "react";
-import { useEffect as useEffect9, useRef as useRef7 } from "react";
-import { useCallback as useCallback22, useEffect as useEffect10, useRef as useRef9 } from "react";
-import { useReducer } from "react";
-import { useState as useState7 } from "react";
-import React7 from "react";
-import { useState as useState8, useEffect as useEffect11, useRef as useRef10 } from "react";
-import { useEffect as useEffect12, useRef as useRef11, useState as useState9 } from "react";
-import { useState as useState10 } from "react";
-import { useState as useState11, useCallback as useCallback3, useEffect as useEffect14 } from "react";
-import { useEffect as useEffect13 } from "react";
-import { useCallback as useCallback4 } from "react";
-import { useEffect as useEffect15, useRef as useRef12, useState as useState12 } from "react";
-import { useEffect as useEffect16, useState as useState13, useRef as useRef13 } from "react";
-import { useMemo as useMemo22 } from "react";
-import { useState as useState14 } from "react";
-import { useState as useState15 } from "react";
-import { useEffect as useEffect17 } from "react";
-import { useCallback as useCallback5, useRef as useRef14, useEffect as useEffect18 } from "react";
-import { useEffect as useEffect19, useMemo as useMemo3, useRef as useRef15, useState as useState16 } from "react";
-import { useEffect as useEffect20, useRef as useRef16 } from "react";
-import { useReducer as useReducer2 } from "react";
-import { useCallback as useCallback6, useState as useState17, useEffect as useEffect21 } from "react";
-import { useState as useState18, useEffect as useEffect222 } from "react";
-import { useCallback as useCallback7, useRef as useRef17, useState as useState19 } from "react";
-import { useState as useState20, useEffect as useEffect23 } from "react";
-import { useEffect as useEffect24 } from "react";
-import { useCallback as useCallback8, useRef as useRef18, useState as useState21, useEffect as useEffect25 } from "react";
-import { useEffect as useEffect26 } from "react";
-import { useState as useState222, useEffect as useEffect27, useRef as useRef19, useCallback as useCallback9 } from "react";
-import { useState as useState23 } from "react";
-import { useState as useState24 } from "react";
-import { useState as useState25, useCallback as useCallback10 } from "react";
-import { useState as useState26 } from "react";
-import { useRef as useRef20, useEffect as useEffect28 } from "react";
-import { useState as useState27, useCallback as useCallback11 } from "react";
-import { useRef as useRef21, useState as useState28, useEffect as useEffect29 } from "react";
-import { useState as useState29, useEffect as useEffect30, useCallback as useCallback12 } from "react";
-import { useRef as useRef222, useEffect as useEffect31 } from "react";
-import { useState as useState30, useEffect as useEffect322 } from "react";
-import { useEffect as useEffect33, useRef as useRef23 } from "react";
-import { useRef as useRef24 } from "react";
-import { useRef as useRef25 } from "react";
-import { useCallback as useCallback13, useState as useState31 } from "react";
-function randomId() {
-  return `raikou-${Math.random().toString(36).slice(2, 11)}`;
-}
-function attachMediaListener(query, callback) {
-  try {
-    query.addEventListener("change", callback);
-    return () => query.removeEventListener("change", callback);
-  } catch (e) {
-    query.addListener(callback);
-    return () => query.removeListener(callback);
-  }
-}
-function getInitialValue(query, initialValue) {
-  if (typeof initialValue === "boolean") {
-    return initialValue;
-  }
-  if (typeof window !== "undefined" && "matchMedia" in window) {
-    return window.matchMedia(query).matches;
-  }
-  return false;
-}
-function useMediaQuery(query, initialValue, { getInitialValueInEffect } = {
-  getInitialValueInEffect: true
-}) {
-  const [matches, setMatches] = useState22(
-    getInitialValueInEffect ? initialValue : getInitialValue(query, initialValue)
-  );
-  const queryRef = useRef4();
-  useEffect4(() => {
-    if ("matchMedia" in window) {
-      queryRef.current = window.matchMedia(query);
-      setMatches(queryRef.current.matches);
-      return attachMediaListener(queryRef.current, (event) => setMatches(event.matches));
-    }
-    return void 0;
-  }, [query]);
-  return matches;
-}
-var useIsomorphicEffect = typeof document !== "undefined" ? useLayoutEffect : useEffect7;
-function useDidUpdate(fn, dependencies) {
-  const mounted = useRef7(false);
-  useEffect9(
-    () => () => {
-      mounted.current = false;
-    },
-    []
-  );
-  useEffect9(() => {
-    if (mounted.current) {
-      return fn();
-    }
-    mounted.current = true;
-    return void 0;
-  }, dependencies);
-}
-function useFocusReturn({ opened, shouldReturnFocus = true }) {
-  const lastActiveElement = useRef8();
-  const returnFocus = () => {
-    var _a;
-    if (lastActiveElement.current && "focus" in lastActiveElement.current && typeof lastActiveElement.current.focus === "function") {
-      (_a = lastActiveElement.current) == null ? void 0 : _a.focus({ preventScroll: true });
-    }
-  };
-  useDidUpdate(() => {
-    let timeout = -1;
-    const clearFocusTimeout = (event) => {
-      if (event.key === "Tab") {
-        window.clearTimeout(timeout);
-      }
-    };
-    document.addEventListener("keydown", clearFocusTimeout);
-    if (opened) {
-      lastActiveElement.current = document.activeElement;
-    } else if (shouldReturnFocus) {
-      timeout = window.setTimeout(returnFocus, 10);
-    }
-    return () => {
-      window.clearTimeout(timeout);
-      document.removeEventListener("keydown", clearFocusTimeout);
-    };
-  }, [opened, shouldReturnFocus]);
-  return returnFocus;
-}
-var TABBABLE_NODES = /input|select|textarea|button|object/;
-var FOCUS_SELECTOR = "a, input, select, textarea, button, object, [tabindex]";
-function hidden(element) {
-  if (process.env.NODE_ENV === "test") {
-    return false;
-  }
-  return element.style.display === "none";
-}
-function visible(element) {
-  const isHidden = element.getAttribute("aria-hidden") || element.getAttribute("hidden") || element.getAttribute("type") === "hidden";
-  if (isHidden) {
-    return false;
-  }
-  let parentElement = element;
-  while (parentElement) {
-    if (parentElement === document.body || parentElement.nodeType === 11) {
-      break;
-    }
-    if (hidden(parentElement)) {
-      return false;
-    }
-    parentElement = parentElement.parentNode;
-  }
-  return true;
-}
-function getElementTabIndex(element) {
-  let tabIndex = element.getAttribute("tabindex");
-  if (tabIndex === null) {
-    tabIndex = void 0;
-  }
-  return parseInt(tabIndex, 10);
-}
-function focusable(element) {
-  const nodeName = element.nodeName.toLowerCase();
-  const isTabIndexNotNaN = !Number.isNaN(getElementTabIndex(element));
-  const res = (
-    // @ts-ignore
-    TABBABLE_NODES.test(nodeName) && !element.disabled || (element instanceof HTMLAnchorElement ? element.href || isTabIndexNotNaN : isTabIndexNotNaN)
-  );
-  return res && visible(element);
-}
-function tabbable(element) {
-  const tabIndex = getElementTabIndex(element);
-  const isTabIndexNaN = Number.isNaN(tabIndex);
-  return (isTabIndexNaN || tabIndex >= 0) && focusable(element);
-}
-function findTabbableDescendants(element) {
-  return Array.from(element.querySelectorAll(FOCUS_SELECTOR)).filter(tabbable);
-}
-function scopeTab(node, event) {
-  const tabbable2 = findTabbableDescendants(node);
-  if (!tabbable2.length) {
-    event.preventDefault();
-    return;
-  }
-  const finalTabbable = tabbable2[event.shiftKey ? 0 : tabbable2.length - 1];
-  const root = node.getRootNode();
-  const leavingFinalTabbable = finalTabbable === root.activeElement || node === root.activeElement;
-  if (!leavingFinalTabbable) {
-    return;
-  }
-  event.preventDefault();
-  const target = tabbable2[event.shiftKey ? tabbable2.length - 1 : 0];
-  if (target) {
-    target.focus();
-  }
-}
-function createAriaHider(containerNode, selector = "body > :not(script)") {
-  const id = randomId();
-  const rootNodes = Array.from(
-    document.querySelectorAll(selector)
-  ).map((node) => {
-    var _a;
-    if (((_a = node == null ? void 0 : node.shadowRoot) == null ? void 0 : _a.contains(containerNode)) || node.contains(containerNode)) {
-      return void 0;
-    }
-    const ariaHidden = node.getAttribute("aria-hidden");
-    const prevAriaHidden = node.getAttribute("data-hidden");
-    const prevFocusId = node.getAttribute("data-focus-id");
-    node.setAttribute("data-focus-id", id);
-    if (ariaHidden === null || ariaHidden === "false") {
-      node.setAttribute("aria-hidden", "true");
-    } else if (!prevAriaHidden && !prevFocusId) {
-      node.setAttribute("data-hidden", ariaHidden);
-    }
-    return {
-      node,
-      ariaHidden: prevAriaHidden || null
-    };
-  });
-  return () => {
-    rootNodes.forEach((item) => {
-      if (!item || id !== item.node.getAttribute("data-focus-id")) {
-        return;
-      }
-      if (item.ariaHidden === null) {
-        item.node.removeAttribute("aria-hidden");
-      } else {
-        item.node.setAttribute("aria-hidden", item.ariaHidden);
-      }
-      item.node.removeAttribute("data-focus-id");
-      item.node.removeAttribute("data-hidden");
-    });
-  };
-}
-function useFocusTrap(active = true) {
-  const ref = useRef9();
-  const restoreAria = useRef9(null);
-  const focusNode = (node) => {
-    let focusElement = node.querySelector("[data-autofocus]");
-    if (!focusElement) {
-      const children = Array.from(
-        node.querySelectorAll(FOCUS_SELECTOR)
-      );
-      focusElement = children.find(tabbable) || children.find(focusable) || null;
-      if (!focusElement && focusable(node))
-        focusElement = node;
-    }
-    if (focusElement) {
-      focusElement.focus({ preventScroll: true });
-    } else if (process.env.NODE_ENV === "development") {
-      console.warn(
-        "[@raikou/hooks/use-focus-trap] Failed to find focusable element within provided node",
-        node
-      );
-    }
-  };
-  const setRef = useCallback22(
-    (node) => {
-      if (!active) {
-        return;
-      }
-      if (node === null) {
-        if (restoreAria.current) {
-          restoreAria.current();
-          restoreAria.current = null;
-        }
-        return;
-      }
-      restoreAria.current = createAriaHider(node);
-      if (ref.current === node) {
-        return;
-      }
-      if (node) {
-        setTimeout(() => {
-          if (node.getRootNode()) {
-            focusNode(node);
-          } else if (process.env.NODE_ENV === "development") {
-            console.warn(
-              "[@raikou/hooks/use-focus-trap] Ref node is not part of the dom",
-              node
-            );
-          }
-        });
-        ref.current = node;
-      } else {
-        ref.current = null;
-      }
-    },
-    [active]
-  );
-  useEffect10(() => {
-    if (!active) {
-      return void 0;
-    }
-    ref.current && setTimeout(() => focusNode(ref.current));
-    const handleKeyDown = (event) => {
-      if (event.key === "Tab" && ref.current) {
-        scopeTab(ref.current, event);
-      }
-    };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      if (restoreAria.current) {
-        restoreAria.current();
-      }
-    };
-  }, [active]);
-  return setRef;
-}
-var __useId = React7["useId".toString()] || (() => void 0);
-function useReactId() {
-  const id = __useId();
-  return id ? `raikou-${id.replace(/:/g, "")}` : "";
-}
-function useId(staticId) {
-  const reactId = useReactId();
-  const [uuid, setUuid] = useState7(reactId);
-  useIsomorphicEffect(() => {
-    setUuid(randomId());
-  }, []);
-  if (typeof staticId === "string") {
-    return staticId;
-  }
-  if (typeof window === "undefined") {
-    return reactId;
-  }
-  return uuid;
-}
-function useWindowEvent(type, listener, options) {
-  useEffect13(() => {
-    window.addEventListener(type, listener, options);
-    return () => window.removeEventListener(type, listener, options);
-  }, [type, listener]);
-}
-function assignRef2(ref, value) {
-  if (typeof ref === "function") {
-    ref(value);
-  } else if (typeof ref === "object" && ref !== null && "current" in ref) {
-    ref.current = value;
-  }
-}
-function mergeRefs(...refs) {
-  return (node) => {
-    refs.forEach((ref) => assignRef2(ref, node));
-  };
-}
-function useMergedRef(...refs) {
-  return useCallback4(mergeRefs(...refs), refs);
-}
-function useReducedMotion(initialValue, options) {
-  return useMediaQuery("(prefers-reduced-motion: reduce)", initialValue, options);
-}
-
-// ../Portal/src/Portal.tsx
+import { useIsomorphicEffect } from "@raikou/hooks";
 import { useProps } from "@raikou/core";
 var defaultProps = {};
 var Portal = forwardRef3((props, ref) => {
@@ -1059,8 +695,8 @@ var Portal = forwardRef3((props, ref) => {
     defaultProps,
     props
   ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
-  const [mounted, setMounted] = useState33(false);
-  const nodeRef = useRef26(null);
+  const [mounted, setMounted] = useState4(false);
+  const nodeRef = useRef3(null);
   useIsomorphicEffect(() => {
     setMounted(true);
     nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
@@ -1077,14 +713,14 @@ var Portal = forwardRef3((props, ref) => {
     return null;
   }
   return createPortal(
-    /* @__PURE__ */ React8.createElement("div", __spreadValues({ className, ref }, others), children),
+    /* @__PURE__ */ React7.createElement("div", __spreadValues({ className, ref }, others), children),
     nodeRef.current
   );
 });
 Portal.displayName = "@raikou/core/Portal";
 
 // ../Portal/src/OptionalPortal.tsx
-import React9 from "react";
+import React8 from "react";
 function OptionalPortal(_a) {
   var _b = _a, {
     withinPortal = true,
@@ -1094,14 +730,14 @@ function OptionalPortal(_a) {
     "children"
   ]);
   if (withinPortal) {
-    return /* @__PURE__ */ React9.createElement(Portal, __spreadValues({}, others), children);
+    return /* @__PURE__ */ React8.createElement(Portal, __spreadValues({}, others), children);
   }
-  return /* @__PURE__ */ React9.createElement(React9.Fragment, null, children);
+  return /* @__PURE__ */ React8.createElement(React8.Fragment, null, children);
 }
 OptionalPortal.displayName = "@raikou/core/OptionalPortal";
 
 // ../utils/create-safe-context/create-safe-context.tsx
-import React10, { createContext, useContext } from "react";
+import React9, { createContext, useContext } from "react";
 function createSafeContext(errorMessage) {
   const Context = createContext(null);
   const useSafeContext = () => {
@@ -1111,12 +747,12 @@ function createSafeContext(errorMessage) {
     }
     return ctx;
   };
-  const Provider = ({ children, value }) => /* @__PURE__ */ React10.createElement(Context.Provider, { value }, children);
+  const Provider = ({ children, value }) => /* @__PURE__ */ React9.createElement(Context.Provider, { value }, children);
   return [Provider, useSafeContext];
 }
 
 // ../utils/create-optional-context/create-optional-context.tsx
-import React11, { createContext as createContext2, useContext as useContext2 } from "react";
+import React10, { createContext as createContext2, useContext as useContext2 } from "react";
 
 // ../ModalBase/src/ModalBase.context.ts
 var [ModalBaseProvider, useModalBaseContext] = createSafeContext(
@@ -1124,16 +760,18 @@ var [ModalBaseProvider, useModalBaseContext] = createSafeContext(
 );
 
 // ../ModalBase/src/use-modal.ts
-import { useState as useState35 } from "react";
+import { useState as useState6 } from "react";
+import { useId, useWindowEvent, useFocusReturn } from "@raikou/hooks";
 
 // ../ModalBase/src/use-lock-scroll.ts
-import { useState as useState34, useEffect as useEffect34, useRef as useRef27 } from "react";
+import { useState as useState5, useEffect as useEffect3, useRef as useRef4 } from "react";
+import { useReducedMotion } from "@raikou/hooks";
 function useLockScroll({ opened, transitionDuration }) {
-  const [shouldLockScroll, setShouldLockScroll] = useState34(opened);
-  const timeout = useRef27();
+  const [shouldLockScroll, setShouldLockScroll] = useState5(opened);
+  const timeout = useRef4();
   const reduceMotion = useReducedMotion();
   const _transitionDuration = reduceMotion ? 0 : transitionDuration;
-  useEffect34(() => {
+  useEffect3(() => {
     if (opened) {
       setShouldLockScroll(true);
       window.clearTimeout(timeout.current);
@@ -1161,8 +799,8 @@ function useModal({
   returnFocus
 }) {
   const _id = useId(id);
-  const [titleMounted, setTitleMounted] = useState35(false);
-  const [bodyMounted, setBodyMounted] = useState35(false);
+  const [titleMounted, setTitleMounted] = useState6(false);
+  const [bodyMounted, setBodyMounted] = useState6(false);
   const transitionDuration = typeof (transitionProps == null ? void 0 : transitionProps.duration) === "number" ? transitionProps == null ? void 0 : transitionProps.duration : 200;
   const shouldLockScroll = useLockScroll({ opened, transitionDuration });
   useWindowEvent("keydown", (event) => {
@@ -1237,7 +875,7 @@ var ModalBase = forwardRef4(
       onClose,
       returnFocus
     });
-    return /* @__PURE__ */ React12.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ React12.createElement(
+    return /* @__PURE__ */ React11.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ React11.createElement(
       ModalBaseProvider,
       {
         value: {
@@ -1256,7 +894,7 @@ var ModalBase = forwardRef4(
           zIndex
         }
       },
-      /* @__PURE__ */ React12.createElement(Combination_default, { enabled: shouldLockScroll && lockScroll }, /* @__PURE__ */ React12.createElement(
+      /* @__PURE__ */ React11.createElement(Combination_default, { enabled: shouldLockScroll && lockScroll }, /* @__PURE__ */ React11.createElement(
         Box,
         __spreadProps(__spreadValues({
           ref
@@ -1274,7 +912,7 @@ var ModalBase = forwardRef4(
 );
 
 // ../ModalBase/src/ModalBaseBody.tsx
-import React13, { forwardRef as forwardRef5 } from "react";
+import React12, { forwardRef as forwardRef5 } from "react";
 
 // ../../../../node_modules/.pnpm/clsx@1.1.1/node_modules/clsx/dist/clsx.m.js
 function toVal(mix) {
@@ -1319,10 +957,10 @@ function clsx_m_default() {
 import { Box as Box2 } from "@raikou/core";
 
 // ../ModalBase/src/use-modal-body-id.ts
-import { useEffect as useEffect35 } from "react";
+import { useEffect as useEffect4 } from "react";
 function useModalBodyId() {
   const ctx = useModalBaseContext();
-  useEffect35(() => {
+  useEffect4(() => {
     ctx.setBodyMounted(true);
     return () => ctx.setBodyMounted(false);
   }, []);
@@ -1334,7 +972,7 @@ var ModalBaseBody = forwardRef5(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     const bodyId = useModalBodyId();
-    return /* @__PURE__ */ React13.createElement(
+    return /* @__PURE__ */ React12.createElement(
       Box2,
       __spreadProps(__spreadValues({
         ref
@@ -1348,14 +986,14 @@ var ModalBaseBody = forwardRef5(
 ModalBaseBody.displayName = "@raikou/core/ModalBaseBody";
 
 // ../ModalBase/src/ModalBaseCloseButton.tsx
-import React23, { forwardRef as forwardRef10 } from "react";
+import React22, { forwardRef as forwardRef10 } from "react";
 
 // ../CloseButton/src/CloseIcon.tsx
-import React14, { forwardRef as forwardRef6 } from "react";
+import React13, { forwardRef as forwardRef6 } from "react";
 var CloseIcon = forwardRef6(
   (_a, ref) => {
     var _b = _a, { size = "var(--cb-icon-size)", style } = _b, others = __objRest(_b, ["size", "style"]);
-    return /* @__PURE__ */ React14.createElement(
+    return /* @__PURE__ */ React13.createElement(
       "svg",
       __spreadValues({
         viewBox: "0 0 15 15",
@@ -1364,7 +1002,7 @@ var CloseIcon = forwardRef6(
         style: __spreadProps(__spreadValues({}, style), { width: size, height: size }),
         ref
       }, others),
-      /* @__PURE__ */ React14.createElement(
+      /* @__PURE__ */ React13.createElement(
         "path",
         {
           d: "M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z",
@@ -1379,7 +1017,7 @@ var CloseIcon = forwardRef6(
 CloseIcon.displayName = "@raikou/core/CloseIcon";
 
 // ../CloseButton/src/CloseButton.tsx
-import React22 from "react";
+import React21 from "react";
 import {
   polymorphicFactory as polymorphicFactory3,
   useProps as useProps6,
@@ -1387,7 +1025,7 @@ import {
 } from "@raikou/core";
 
 // ../ActionIcon/src/ActionIcon.tsx
-import React21 from "react";
+import React20 from "react";
 import {
   useProps as useProps5,
   useStyles as useStyles4,
@@ -1398,7 +1036,7 @@ import {
 } from "@raikou/core";
 
 // ../UnstyledButton/src/UnstyledButton.tsx
-import React15 from "react";
+import React14 from "react";
 import {
   Box as Box3,
   useProps as useProps2,
@@ -1440,7 +1078,7 @@ var UnstyledButton = polymorphicFactory(
       styles,
       unstyled
     });
-    return /* @__PURE__ */ React15.createElement(
+    return /* @__PURE__ */ React14.createElement(
       Box3,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles2("root", { focusable: true })), {
         component,
@@ -1453,7 +1091,7 @@ var UnstyledButton = polymorphicFactory(
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
 // ../Loader/src/Loader.tsx
-import React19 from "react";
+import React18 from "react";
 import {
   Box as Box7,
   useProps as useProps3,
@@ -1465,12 +1103,12 @@ import {
 } from "@raikou/core";
 
 // ../Loader/src/loaders/Bars.tsx
-import React16, { forwardRef as forwardRef7 } from "react";
+import React15, { forwardRef as forwardRef7 } from "react";
 import { Box as Box4 } from "@raikou/core";
 var Bars = forwardRef7(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React16.createElement(
+    return /* @__PURE__ */ React15.createElement(
       Box4,
       __spreadProps(__spreadValues({
         component: "span",
@@ -1478,20 +1116,20 @@ var Bars = forwardRef7(
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React16.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ React16.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ React16.createElement("span", { className: "bar" })
+      /* @__PURE__ */ React15.createElement("span", { className: "bar" }),
+      /* @__PURE__ */ React15.createElement("span", { className: "bar" }),
+      /* @__PURE__ */ React15.createElement("span", { className: "bar" })
     );
   }
 );
 
 // ../Loader/src/loaders/Oval.tsx
-import React17, { forwardRef as forwardRef8 } from "react";
+import React16, { forwardRef as forwardRef8 } from "react";
 import { Box as Box5 } from "@raikou/core";
 var Oval = forwardRef8(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React17.createElement(
+    return /* @__PURE__ */ React16.createElement(
       Box5,
       __spreadProps(__spreadValues({
         component: "span",
@@ -1504,12 +1142,12 @@ var Oval = forwardRef8(
 );
 
 // ../Loader/src/loaders/Dots.tsx
-import React18, { forwardRef as forwardRef9 } from "react";
+import React17, { forwardRef as forwardRef9 } from "react";
 import { Box as Box6 } from "@raikou/core";
 var Dots = forwardRef9(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React18.createElement(
+    return /* @__PURE__ */ React17.createElement(
       Box6,
       __spreadProps(__spreadValues({
         component: "span",
@@ -1517,15 +1155,15 @@ var Dots = forwardRef9(
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" })
+      /* @__PURE__ */ React17.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React17.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React17.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React17.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React17.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React17.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React17.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React17.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React17.createElement("span", { className: "dot" })
     );
   }
 );
@@ -1590,7 +1228,7 @@ var Loader = factory((_props, ref) => {
     vars,
     varsResolver
   });
-  return /* @__PURE__ */ React19.createElement(
+  return /* @__PURE__ */ React18.createElement(
     Box7,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles2("root")), {
       ref,
@@ -1603,7 +1241,7 @@ var Loader = factory((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-import React20 from "react";
+import React19 from "react";
 import {
   factory as factory2,
   Box as Box8,
@@ -1659,7 +1297,7 @@ var ActionIconGroup = factory2(
       vars,
       varsResolver: varsResolver2
     });
-    return /* @__PURE__ */ React20.createElement(
+    return /* @__PURE__ */ React19.createElement(
       Box8,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles2("root")), {
         ref,
@@ -1752,7 +1390,7 @@ var ActionIcon = polymorphicFactory2(
       vars,
       varsResolver: varsResolver3
     });
-    return /* @__PURE__ */ React21.createElement(
+    return /* @__PURE__ */ React20.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues(__spreadValues({}, getStyles2("root", {
         active: !disabled && !loading && !dataDisabled
@@ -1764,7 +1402,7 @@ var ActionIcon = polymorphicFactory2(
         ref,
         mod: ["action-icon", { loading, disabled: disabled || dataDisabled }]
       }),
-      loading ? /* @__PURE__ */ React21.createElement(
+      loading ? /* @__PURE__ */ React20.createElement(
         Loader,
         __spreadValues(__spreadProps(__spreadValues({}, getStyles2("loader")), {
           color: "var(--ai-color)",
@@ -1787,7 +1425,7 @@ var CloseButton = polymorphicFactory3(
   (_props, ref) => {
     const props = useProps6("CloseButton", defaultProps6, _props);
     const _a = props, { iconSize, children, vars } = _a, others = __objRest(_a, ["iconSize", "children", "vars"]);
-    return /* @__PURE__ */ React22.createElement(
+    return /* @__PURE__ */ React21.createElement(
       ActionIcon,
       __spreadProps(__spreadValues({
         ref
@@ -1795,7 +1433,7 @@ var CloseButton = polymorphicFactory3(
         __vars: { "--cb-icon-size": rem2(iconSize) },
         __staticSelector: "CloseButton"
       }),
-      /* @__PURE__ */ React22.createElement(CloseIcon, null),
+      /* @__PURE__ */ React21.createElement(CloseIcon, null),
       children
     );
   }
@@ -1807,7 +1445,7 @@ CloseButton.displayName = "@raikou/core/CloseButton";
 var ModalBaseCloseButton = forwardRef10((_a, ref) => {
   var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
   const ctx = useModalBaseContext();
-  return /* @__PURE__ */ React23.createElement(
+  return /* @__PURE__ */ React22.createElement(
     CloseButton,
     __spreadProps(__spreadValues({
       ref
@@ -1820,7 +1458,7 @@ var ModalBaseCloseButton = forwardRef10((_a, ref) => {
 ModalBaseCloseButton.displayName = "@raikou/core/ModalBaseCloseButton";
 
 // ../ModalBase/src/ModalBaseContent.tsx
-import React27, { forwardRef as forwardRef11 } from "react";
+import React26, { forwardRef as forwardRef11 } from "react";
 
 // ../Transition/src/transitions.ts
 import { rem as rem3 } from "@raikou/core";
@@ -1925,7 +1563,7 @@ var transitions = {
 };
 
 // ../Transition/src/Transition.tsx
-import React24 from "react";
+import React23 from "react";
 
 // ../Transition/src/get-transition-styles/get-transition-styles.ts
 var transitionStatuses = {
@@ -1960,7 +1598,8 @@ function getTransitionStyles({
 }
 
 // ../Transition/src/use-transition.ts
-import { useState as useState36, useEffect as useEffect36, useRef as useRef28 } from "react";
+import { useState as useState7, useEffect as useEffect5, useRef as useRef5 } from "react";
+import { useReducedMotion as useReducedMotion2, useDidUpdate } from "@raikou/hooks";
 import { getTheme } from "@raikou/core";
 function useTransition({
   duration,
@@ -1973,15 +1612,15 @@ function useTransition({
   onExited
 }) {
   const theme = getTheme();
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useReducedMotion2();
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
-  const [transitionDuration, setTransitionDuration] = useState36(
+  const [transitionDuration, setTransitionDuration] = useState7(
     reduceMotion ? 0 : duration
   );
-  const [transitionStatus, setStatus] = useState36(
+  const [transitionStatus, setStatus] = useState7(
     mounted ? "entered" : "exited"
   );
-  const timeoutRef = useRef28(-1);
+  const timeoutRef = useRef5(-1);
   const handleStateChange = (shouldMount) => {
     const preHandler = shouldMount ? onEnter : onExit;
     const handler = shouldMount ? onEntered : onExited;
@@ -2008,7 +1647,7 @@ function useTransition({
   useDidUpdate(() => {
     handleStateChange(mounted);
   }, [mounted]);
-  useEffect36(() => () => window.clearTimeout(timeoutRef.current), []);
+  useEffect5(() => () => window.clearTimeout(timeoutRef.current), []);
   return {
     transitionDuration,
     transitionStatus,
@@ -2041,9 +1680,9 @@ function Transition({
     onExited
   });
   if (transitionDuration === 0) {
-    return mounted ? /* @__PURE__ */ React24.createElement(React24.Fragment, null, children({})) : keepMounted ? children({ display: "none" }) : null;
+    return mounted ? /* @__PURE__ */ React23.createElement(React23.Fragment, null, children({})) : keepMounted ? children({ display: "none" }) : null;
   }
-  return transitionStatus === "exited" ? keepMounted ? children({ display: "none" }) : null : /* @__PURE__ */ React24.createElement(React24.Fragment, null, children(
+  return transitionStatus === "exited" ? keepMounted ? children({ display: "none" }) : null : /* @__PURE__ */ React23.createElement(React23.Fragment, null, children(
     getTransitionStyles({
       transition,
       duration: transitionDuration,
@@ -2056,6 +1695,7 @@ Transition.displayName = "@raikou/core/Transition";
 
 // ../FocusTrap/src/FocusTrap.tsx
 import { cloneElement as cloneElement2 } from "react";
+import { useFocusTrap, useMergedRef } from "@raikou/hooks";
 import { isElement } from "@raikou/core";
 function FocusTrap({
   children,
@@ -2072,7 +1712,7 @@ function FocusTrap({
 FocusTrap.displayName = "@raikou/core/FocusTrap";
 
 // ../Paper/src/Paper.tsx
-import React26 from "react";
+import React25 from "react";
 import {
   Box as Box9,
   polymorphicFactory as polymorphicFactory4,
@@ -2130,7 +1770,7 @@ var Paper = polymorphicFactory4((_props, ref) => {
     vars,
     varsResolver: varsResolver4
   });
-  return /* @__PURE__ */ React26.createElement(
+  return /* @__PURE__ */ React25.createElement(
     Box9,
     __spreadValues(__spreadProps(__spreadValues({
       ref,
@@ -2155,18 +1795,18 @@ var ModalBaseContent = forwardRef11(
       shouldTrigger && event.key === "Escape" && ctx.closeOnEscape && ctx.onClose();
       onKeyDown == null ? void 0 : onKeyDown(event);
     };
-    return /* @__PURE__ */ React27.createElement(
+    return /* @__PURE__ */ React26.createElement(
       Transition,
       __spreadValues(__spreadValues({
         mounted: ctx.opened,
         transition: "pop"
       }, ctx.transitionProps), transitionProps),
-      (transitionStyles) => /* @__PURE__ */ React27.createElement(
+      (transitionStyles) => /* @__PURE__ */ React26.createElement(
         "div",
         __spreadProps(__spreadValues({}, innerProps), {
           className: clsx_m_default("modalBase-inner", innerProps.className)
         }),
-        /* @__PURE__ */ React27.createElement(FocusTrap, { active: ctx.opened && ctx.trapFocus }, /* @__PURE__ */ React27.createElement(
+        /* @__PURE__ */ React26.createElement(FocusTrap, { active: ctx.opened && ctx.trapFocus }, /* @__PURE__ */ React26.createElement(
           Paper,
           __spreadProps(__spreadValues({}, others), {
             component: "section",
@@ -2188,21 +1828,21 @@ var ModalBaseContent = forwardRef11(
 );
 
 // ../ModalBase/src/ModalBaseHeader.tsx
-import React28, { forwardRef as forwardRef12 } from "react";
+import React27, { forwardRef as forwardRef12 } from "react";
 import { Box as Box10 } from "@raikou/core";
 var ModalBaseHeader = forwardRef12(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React28.createElement(Box10, __spreadValues({ ref, className: clsx_m_default("modalBase-header", className) }, others));
+    return /* @__PURE__ */ React27.createElement(Box10, __spreadValues({ ref, className: clsx_m_default("modalBase-header", className) }, others));
   }
 );
 ModalBaseHeader.displayName = "@raikou/core/ModalBaseHeader";
 
 // ../ModalBase/src/ModalBaseOverlay.tsx
-import React30, { forwardRef as forwardRef13 } from "react";
+import React29, { forwardRef as forwardRef13 } from "react";
 
 // ../Overlay/src/Overlay.tsx
-import React29 from "react";
+import React28 from "react";
 import {
   Box as Box11,
   polymorphicFactory as polymorphicFactory5,
@@ -2279,7 +1919,7 @@ var Overlay = polymorphicFactory5((_props, ref) => {
     vars,
     varsResolver: varsResolver5
   });
-  return /* @__PURE__ */ React29.createElement(Box11, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles2("root")), { mod: { center, fixed } }), others), children);
+  return /* @__PURE__ */ React28.createElement(Box11, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles2("root")), { mod: { center, fixed } }), others), children);
 });
 Overlay.displayName = "@raikou/core/Overlay";
 
@@ -2299,7 +1939,7 @@ var ModalBaseOverlay = forwardRef13((_a, ref) => {
   var _b = _a, { onClick, transitionProps, style } = _b, others = __objRest(_b, ["onClick", "transitionProps", "style"]);
   const ctx = useModalBaseContext();
   const transition = useModalTransition(transitionProps);
-  return /* @__PURE__ */ React30.createElement(Transition, __spreadProps(__spreadValues({ mounted: ctx.opened }, transition), { transition: "fade" }), (transitionStyles) => /* @__PURE__ */ React30.createElement(
+  return /* @__PURE__ */ React29.createElement(Transition, __spreadProps(__spreadValues({ mounted: ctx.opened }, transition), { transition: "fade" }), (transitionStyles) => /* @__PURE__ */ React29.createElement(
     Overlay,
     __spreadValues({
       ref,
@@ -2317,14 +1957,14 @@ var ModalBaseOverlay = forwardRef13((_a, ref) => {
 ModalBaseOverlay.displayName = "@raikou/core/ModalBaseOverlay";
 
 // ../ModalBase/src/ModalBaseTitle.tsx
-import React31, { forwardRef as forwardRef14 } from "react";
+import React30, { forwardRef as forwardRef14 } from "react";
 import { Box as Box12 } from "@raikou/core";
 
 // ../ModalBase/src/use-modal-title-id.ts
-import { useEffect as useEffect37 } from "react";
+import { useEffect as useEffect6 } from "react";
 function useModalTitle() {
   const ctx = useModalBaseContext();
-  useEffect37(() => {
+  useEffect6(() => {
     ctx.setTitleMounted(true);
     return () => ctx.setTitleMounted(false);
   }, []);
@@ -2335,7 +1975,7 @@ function useModalTitle() {
 var ModalBaseTitle = forwardRef14((_a, ref) => {
   var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
   const id = useModalTitle();
-  return /* @__PURE__ */ React31.createElement(
+  return /* @__PURE__ */ React30.createElement(
     Box12,
     __spreadProps(__spreadValues({
       component: "h2",
@@ -2349,9 +1989,9 @@ var ModalBaseTitle = forwardRef14((_a, ref) => {
 ModalBaseTitle.displayName = "@raikou/core/ModalBaseTitle";
 
 // ../ModalBase/src/NativeScrollArea.tsx
-import React32 from "react";
+import React31 from "react";
 function NativeScrollArea({ children }) {
-  return /* @__PURE__ */ React32.createElement(React32.Fragment, null, children);
+  return /* @__PURE__ */ React31.createElement(React31.Fragment, null, children);
 }
 
 // src/Drawer.context.ts
@@ -2433,7 +2073,7 @@ var DrawerRoot = factory3((_props, ref) => {
     vars,
     varsResolver: varsResolver6
   });
-  return /* @__PURE__ */ React33.createElement(DrawerProvider, { value: { scrollAreaComponent, getStyles: getStyles2 } }, /* @__PURE__ */ React33.createElement(
+  return /* @__PURE__ */ React32.createElement(DrawerProvider, { value: { scrollAreaComponent, getStyles: getStyles2 } }, /* @__PURE__ */ React32.createElement(
     ModalBase,
     __spreadValues(__spreadProps(__spreadValues({
       ref
@@ -2447,14 +2087,14 @@ var DrawerRoot = factory3((_props, ref) => {
 DrawerRoot.displayName = "@raikou/core/DrawerRoot";
 
 // src/DrawerBody.tsx
-import React34 from "react";
+import React33 from "react";
 import { factory as factory4, useProps as useProps10 } from "@raikou/core";
 var defaultProps10 = {};
 var DrawerBody = factory4((_props, ref) => {
   const props = useProps10("DrawerBody", defaultProps10, _props);
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
   const ctx = useDrawerContext();
-  return /* @__PURE__ */ React34.createElement(
+  return /* @__PURE__ */ React33.createElement(
     ModalBaseBody,
     __spreadValues(__spreadValues({
       ref
@@ -2464,7 +2104,7 @@ var DrawerBody = factory4((_props, ref) => {
 DrawerBody.displayName = "@raikou/core/DrawerBody";
 
 // src/DrawerCloseButton.tsx
-import React35 from "react";
+import React34 from "react";
 import { factory as factory5, useProps as useProps11 } from "@raikou/core";
 var defaultProps11 = {};
 var DrawerCloseButton = factory5(
@@ -2472,7 +2112,7 @@ var DrawerCloseButton = factory5(
     const props = useProps11("DrawerCloseButton", defaultProps11, _props);
     const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
     const ctx = useDrawerContext();
-    return /* @__PURE__ */ React35.createElement(
+    return /* @__PURE__ */ React34.createElement(
       ModalBaseCloseButton,
       __spreadValues(__spreadValues({
         ref
@@ -2483,14 +2123,14 @@ var DrawerCloseButton = factory5(
 DrawerCloseButton.displayName = "@raikou/core/DrawerCloseButton";
 
 // src/DrawerOverlay.tsx
-import React36 from "react";
+import React35 from "react";
 import { factory as factory6, useProps as useProps12 } from "@raikou/core";
 var defaultProps12 = {};
 var DrawerOverlay = factory6((_props, ref) => {
   const props = useProps12("DrawerOverlay", defaultProps12, _props);
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
   const ctx = useDrawerContext();
-  return /* @__PURE__ */ React36.createElement(
+  return /* @__PURE__ */ React35.createElement(
     ModalBaseOverlay,
     __spreadValues(__spreadValues({
       ref
@@ -2500,7 +2140,7 @@ var DrawerOverlay = factory6((_props, ref) => {
 DrawerOverlay.displayName = "@raikou/core/DrawerOverlay";
 
 // src/DrawerContent.tsx
-import React37 from "react";
+import React36 from "react";
 import { factory as factory7, useProps as useProps13 } from "@raikou/core";
 var defaultProps13 = {};
 var DrawerContent = factory7((_props, ref) => {
@@ -2508,7 +2148,7 @@ var DrawerContent = factory7((_props, ref) => {
   const _a = props, { classNames, className, style, styles, vars, children } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars", "children"]);
   const ctx = useDrawerContext();
   const Scroll = ctx.scrollAreaComponent || NativeScrollArea;
-  return /* @__PURE__ */ React37.createElement(
+  return /* @__PURE__ */ React36.createElement(
     ModalBaseContent,
     __spreadValues(__spreadProps(__spreadValues({}, ctx.getStyles("content", { className, style, styles, classNames })), {
       innerProps: ctx.getStyles("inner", {
@@ -2519,20 +2159,20 @@ var DrawerContent = factory7((_props, ref) => {
       }),
       ref
     }), others),
-    /* @__PURE__ */ React37.createElement(Scroll, { style: { height: "100vh" } }, children)
+    /* @__PURE__ */ React36.createElement(Scroll, { style: { height: "100vh" } }, children)
   );
 });
 DrawerContent.displayName = "@raikou/core/DrawerContent";
 
 // src/DrawerTitle.tsx
-import React38 from "react";
+import React37 from "react";
 import { factory as factory8, useProps as useProps14 } from "@raikou/core";
 var defaultProps14 = {};
 var DrawerTitle = factory8((_props, ref) => {
   const props = useProps14("DrawerTitle", defaultProps14, _props);
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
   const ctx = useDrawerContext();
-  return /* @__PURE__ */ React38.createElement(
+  return /* @__PURE__ */ React37.createElement(
     ModalBaseTitle,
     __spreadValues(__spreadValues({
       ref
@@ -2542,14 +2182,14 @@ var DrawerTitle = factory8((_props, ref) => {
 DrawerTitle.displayName = "@raikou/core/DrawerTitle";
 
 // src/DrawerHeader.tsx
-import React39 from "react";
+import React38 from "react";
 import { factory as factory9, useProps as useProps15 } from "@raikou/core";
 var defaultProps15 = {};
 var DrawerHeader = factory9((_props, ref) => {
   const props = useProps15("DrawerHeader", defaultProps15, _props);
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
   const ctx = useDrawerContext();
-  return /* @__PURE__ */ React39.createElement(
+  return /* @__PURE__ */ React38.createElement(
     ModalBaseHeader,
     __spreadValues(__spreadValues({
       ref
@@ -2591,7 +2231,7 @@ var Drawer = factory10((_props, ref) => {
     "children"
   ]);
   const hasHeader = !!title || withCloseButton;
-  return /* @__PURE__ */ React40.createElement(DrawerRoot, __spreadValues({ ref }, others), withOverlay && /* @__PURE__ */ React40.createElement(DrawerOverlay, __spreadValues({}, overlayProps)), /* @__PURE__ */ React40.createElement(DrawerContent, null, hasHeader && /* @__PURE__ */ React40.createElement(DrawerHeader, null, title && /* @__PURE__ */ React40.createElement(DrawerTitle, null, title), withCloseButton && /* @__PURE__ */ React40.createElement(DrawerCloseButton, __spreadValues({}, closeButtonProps))), /* @__PURE__ */ React40.createElement(DrawerBody, null, children)));
+  return /* @__PURE__ */ React39.createElement(DrawerRoot, __spreadValues({ ref }, others), withOverlay && /* @__PURE__ */ React39.createElement(DrawerOverlay, __spreadValues({}, overlayProps)), /* @__PURE__ */ React39.createElement(DrawerContent, null, hasHeader && /* @__PURE__ */ React39.createElement(DrawerHeader, null, title && /* @__PURE__ */ React39.createElement(DrawerTitle, null, title), withCloseButton && /* @__PURE__ */ React39.createElement(DrawerCloseButton, __spreadValues({}, closeButtonProps))), /* @__PURE__ */ React39.createElement(DrawerBody, null, children)));
 });
 Drawer.displayName = "@raikou/core/Drawer";
 Drawer.Root = DrawerRoot;

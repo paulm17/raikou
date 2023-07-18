@@ -15,40 +15,40 @@ module.exports = function ({ addComponents, theme }: any) {
       "--_list-border-size": "0 0 var(--_list-border-width) 0",
       "--_list-gap": "unset",
 
-      "--_list-line-bottom": 0,
+      "--_list-line-bottom": "0",
       "--_list-line-top": "unset",
-      "--_list-line-left": 0,
-      "--_list-line-right": 0,
+      "--_list-line-left": "0",
+      "--_list-line-right": "0",
 
       "--_tab-radius": "var(--tabs-radius) var(--tabs-radius) 0 0",
       "--_tab-border-width": "0 0 var(--_list-border-width) 0",
 
       "&[data-inverted]": {
         "--_list-line-bottom": "unset",
-        "--_list-line-top": 0,
+        "--_list-line-top": "0",
         "--_tab-radius": "0 0 var(--tabs-radius) var(--tabs-radius)",
         "--_tab-border-width": "var(--_list-border-width) 0 0 0",
 
         "& .list--default::before": {
-          top: 0,
+          top: "0",
           bottom: "unset",
         },
       },
 
       "&[data-orientation='vertical']": {
         "--_list-line-left": "unset",
-        "--_list-line-right": 0,
-        "--_list-line-top": 0,
-        "--_list-line-bottom": 0,
+        "--_list-line-right": "0",
+        "--_list-line-top": "0",
+        "--_list-line-bottom": "0",
         "--_list-border-size": "0 var(--_list-border-width) 0 0",
         "--_tab-border-width": "0 var(--_list-border-width) 0 0",
         "--_tab-radius": "var(--tabs-radius) 0 0 var(--tabs-radius)",
         "--_list-direction": "column",
-        "--_panel-grow": 1,
+        "--_panel-grow": "1",
         "--_tabs-display": "flex",
 
         '[dir="rtl"] &': {
-          "--_list-line-left": 0,
+          "--_list-line-left": "0",
           "--_list-line-right": "unset",
           "--_list-border-size": "0 0 0 var(--_list-border-width)",
           "--_tab-border-width": "0 0 0 var(--_list-border-width)",
@@ -57,7 +57,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
         "&[data-placement='right']": {
           "--_tabs-flex-direction": "row-reverse",
-          "--_list-line-left": 0,
+          "--_list-line-left": "0",
           "--_list-line-right": "unset",
           "--_list-border-size": "0 0 0 var(--_list-border-width)",
           "--_tab-border-width": "0 0 0 var(--_list-border-width)",
@@ -65,7 +65,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
           '[dir="rtl"] &': {
             "--_list-line-left": "unset",
-            "--_list-line-right": 0,
+            "--_list-line-right": "0",
             "--_list-border-size": "0 var(--_list-border-width) 0 0",
             "--_tab-border-width": "0 var(--_list-border-width) 0 0",
             "--_tab-radius": "var(--tabs-radius) 0 0 var(--tabs-radius)",
@@ -124,7 +124,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--_tab-grow": "unset",
 
       "&[data-grow]": {
-        "--_tab-grow": 1,
+        "--_tab-grow": "1",
       },
     },
 
@@ -137,10 +137,10 @@ module.exports = function ({ addComponents, theme }: any) {
       padding: "var(--raikou-spacing-xs) var(--raikou-spacing-md)",
       fontSize: "var(--raikou-font-size-sm)",
       whiteSpace: "nowrap",
-      zIndex: 0,
+      zIndex: "0",
       display: "flex",
       alignItems: "center",
-      lineHeight: 1,
+      lineHeight: "1",
       userSelect: "none",
       flexGrow: "var(--_tab-grow)",
       justifyContent: "var(--_tab-justify)",
@@ -151,7 +151,7 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       "&:focus": {
-        zIndex: 1,
+        zIndex: "1",
       },
     },
 
@@ -186,7 +186,7 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     /*************************************** default variant ***************************************/
-    ".tabs-list--default": {
+    ".tabs-list[data-variant='default']": {
       position: "relative",
 
       "&::before": {
@@ -202,7 +202,7 @@ module.exports = function ({ addComponents, theme }: any) {
       },
     },
 
-    ".tabs-tab--default": {
+    ".tabs-tab[data-variant='default']": {
       borderRadius: "var(--_tab-radius)",
       borderWidth: "var(--_tab-border-width)",
       borderStyle: "solid",
@@ -250,7 +250,7 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     /*************************************** outline variant ***************************************/
-    ".tabs-list--outline": {
+    ".tabs-list[data-variant='outline']": {
       position: "relative",
 
       "&::before": {
@@ -266,7 +266,7 @@ module.exports = function ({ addComponents, theme }: any) {
       },
     },
 
-    ".tabs-tab--outline": {
+    ".tabs-tab[data-variant='outline']": {
       border: `${rem("1px")} solid transparent`,
       borderTopColor: "var(--_tab-border-top-color)",
       borderBottomColor: "var(--_tab-border-bottom-color)",
@@ -317,7 +317,7 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     /*************************************** pills variant ***************************************/
-    ".tabs-tab--pills": {
+    ".tabs-tab[data-variant='pills']": {
       borderRadius: "var(--tabs-radius)",
       backgroundColor: "var(--_tab-bg)",
       color: "var(--_tab-color)",

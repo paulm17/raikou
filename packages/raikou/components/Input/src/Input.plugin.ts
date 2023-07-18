@@ -21,14 +21,18 @@ module.exports = function ({ addComponents, theme }: any) {
 
       "--_input-cursor": "text",
       "--_input-text-align": "left",
-      "--_input-line-height": `calc(var(--input-height) - rem(2px))`,
+      "--_input-line-height": `calc(var(--input-height) - ${rem("2px")})`,
       "--_input-padding": "calc(var(--input-height) / 3)",
       "--_input-padding-left": "var(--_input-padding)",
       "--_input-padding-right": "var(--_input-padding)",
       "--_input-placeholder-color": "var(--raikou-color-placeholder)",
       "--_input-color": "inherit",
-      "--_input-left-section-size": `var(--input-left-section-width, calc(var(--input-height) - rem(2px)))`,
-      "--_input-right-section-size": `var(--input-right-section-width, calc(var(--input-height) - rem(2px)))`,
+      "--_input-left-section-size": `var(--input-left-section-width, calc(var(--input-height) - ${rem(
+        "2px"
+      )}))`,
+      "--_input-right-section-size": `var(--input-right-section-width, calc(var(--input-height) - ${rem(
+        "2px"
+      )}))`,
       "--_input-size": "var(--input-height)",
 
       "--_section-y": rem("1px"),
@@ -54,6 +58,8 @@ module.exports = function ({ addComponents, theme }: any) {
       "&[data-variant='unstyled']": {
         "--input-padding": 0,
         "--input-padding-y": 0,
+        "--_input-padding-left": 0,
+        "--_input-padding-right": 0,
       },
 
       "&[data-with-left-section]": {
@@ -76,7 +82,7 @@ module.exports = function ({ addComponents, theme }: any) {
         "--_input-disabled-bg": "var(--raikou-color-gray-1)",
         "--_input-disabled-color": "var(--raikou-color-gray-6)",
 
-        "&[data-variant='default']": {
+        '&[data-variant="default"]': {
           "--_input-bd": "var(--raikou-color-gray-4)",
           "--_input-bg": "var(--raikou-color-white)",
           "--_input-bd-focus": "var(--raikou-color-primary)",
@@ -148,7 +154,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
       textAlign: "var(--_input-text-align)",
       color: "var(--_input-color)",
-      border: `rem(1px) solid var(--_input-bd)`,
+      border: `${rem("1px")} solid var(--_input-bd)`,
       backgroundColor: "var(--_input-bg)",
       fontFamily: "var(--raikou-font-family)",
       height: "var(--_input-size)",

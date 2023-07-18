@@ -8,7 +8,7 @@ module.exports = function ({ addComponents, theme }: any) {
       borderRadius: "var(--fieldset-radius)",
     },
 
-    ".fieldset-root--default": {
+    ".fieldset-root[data-variant='default']": {
       backgroundColor: "var(--_bg)",
       border: `${rem("1px")} solid var(--_bd)`,
 
@@ -23,7 +23,7 @@ module.exports = function ({ addComponents, theme }: any) {
       },
     },
 
-    ".fieldset-root--filled": {
+    ".fieldset-root[data-variant='filled']": {
       backgroundColor: "var(--_bg)",
       border: `${rem("1px")} solid var(--_bd)`,
 
@@ -38,7 +38,7 @@ module.exports = function ({ addComponents, theme }: any) {
       },
     },
 
-    ".fieldset-root--unstyled": {
+    ".fieldset-root[data-variant='unstyled']": {
       padding: 0,
       border: 0,
       borderRadius: 0,
@@ -48,7 +48,7 @@ module.exports = function ({ addComponents, theme }: any) {
       fontSize: "var(--raikou-font-size-sm)",
     },
 
-    ".fieldset-legend--unstyled": {
+    "[data-variant='unstyled'] .fieldset-legend": {
       padding: 0,
       marginBottom: "var(--raikou-spacing-sm)",
     },

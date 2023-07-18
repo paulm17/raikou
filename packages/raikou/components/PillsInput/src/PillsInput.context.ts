@@ -1,6 +1,7 @@
 import React from "react";
-import { RaikouSize, createOptionalContext } from "@raikou/core";
-import { InputVariant } from "../Input";
+import { RaikouSize } from "@raikou/core";
+import { createOptionalContext } from "../../utils";
+import { InputVariant } from "../../Input/src";
 
 export interface PillsInputContextValue {
   fieldRef: React.MutableRefObject<HTMLInputElement | undefined>;

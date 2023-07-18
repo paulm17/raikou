@@ -21,6 +21,7 @@ export * from '@raikou/kbd';
 export * from '@raikou/loader';
 export * from '@raikou/mark';
 export * from '@raikou/paper';
+export * from '@raikou/skeleton';
 export * from '@raikou/stack';
 export * from '@raikou/text';
 export * from '@raikou/title';

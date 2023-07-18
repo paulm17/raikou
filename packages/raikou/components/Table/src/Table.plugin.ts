@@ -30,7 +30,7 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       "&[data-with-table-border]": {
-        "--_table-border": `rem(1px) solid var(--_table-border-color)`,
+        "--_table-border": `${rem("1px")} solid var(--_table-border-color)`,
       },
     },
 
@@ -58,7 +58,7 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       "&[data-with-row-border]": {
-        "--_tr-border-bottom": `rem(1px) solid var(--_table-border-color)`,
+        "--_tr-border-bottom": `${rem("1px")} solid var(--_table-border-color)`,
       },
     },
 
@@ -71,17 +71,17 @@ module.exports = function ({ addComponents, theme }: any) {
       "--_border-left": "none",
 
       "&[data-with-column-border]:not(:last-of-type)": {
-        "--_border-right": `rem(1px) solid var(--_table-border-color)`,
+        "--_border-right": `${rem("1px")} solid var(--_table-border-color)`,
 
         '[dir="rtl"] &': {
-          "--_border-left": `rem(1px) solid var(--_table-border-color)`,
+          "--_border-left": `${rem("1px")} solid var(--_table-border-color)`,
           "--_border-right": "none",
         },
       },
     },
 
     ".table-tbody": {
-      "& > .tr": {
+      "& > .table-tr": {
         "&:last-of-type": {
           "&[data-with-row-border]": {
             "--_tr-border-bottom": "none",

@@ -54,7 +54,7 @@ module.exports = function ({ addComponents, theme }: any) {
       position: "relative",
       borderRadius: "var(--switch-radius)",
       backgroundColor: "var(--_switch-bg)",
-      border: `rem(1px) solid var(--_switch-bd)`,
+      border: `${rem("1px")} solid var(--_switch-bd)`,
       height: "var(--switch-height)",
       minWidth: "var(--switch-width)",
       margin: 0,
@@ -70,18 +70,18 @@ module.exports = function ({ addComponents, theme }: any) {
       lineHeight: 0,
       color: "var(--_switch-color)",
 
-      ".input:focus-visible + &": {
-        outline: `rem(2px) solid var(--raikou-color-primary)`,
+      ".switch-input:focus-visible + &": {
+        outline: `${rem("2px")} solid var(--raikou-color-primary)`,
         outlineOffset: rem("2px"),
       },
 
-      ".input:checked + &": {
+      ".switch-input:checked + &": {
         "--_switch-bg": "var(--switch-color)",
         "--_switch-bd": "var(--switch-color)",
         "--_switch-color": "var(--raikou-color-white)",
       },
 
-      ".input:disabled + &, .input[data-disabled] + &": {
+      ".switch-input:disabled + &, .switch-input[data-disabled] + &": {
         "--_switch-bg": "var(--_switch-disabled-color)",
         "--_switch-bd": "var(--_switch-disabled-color)",
         "--_switch-cursor": "not-allowed",
@@ -118,7 +118,7 @@ module.exports = function ({ addComponents, theme }: any) {
       backgroundColor: "var(--_switch-thumb-bg, var(--raikou-color-white))",
       height: "var(--switch-thumb-size)",
       width: "var(--switch-thumb-size)",
-      border: `rem(1px) solid var(--_switch-thumb-bd)`,
+      border: `${rem("1px")} solid var(--_switch-thumb-bd)`,
       left: "var(--_switch-thumb-left, var(--switch-track-label-padding))",
       transition: "left 150ms ease",
 
@@ -126,13 +126,13 @@ module.exports = function ({ addComponents, theme }: any) {
         margin: "auto",
       },
 
-      ".input:checked + * > &": {
+      ".switch-input:checked + * > &": {
         "--_switch-thumb-left":
           "calc(100% - var(--switch-thumb-size) - var(--switch-track-label-padding))",
         "--_switch-thumb-bd": "var(--raikou-color-white)",
       },
 
-      ".input:disabled + * > &, .input[data-disabled] + * > &": {
+      ".switch-input:disabled + * > &, .switch-input[data-disabled] + * > &": {
         "--_switch-thumb-bd": "var(--_switch-thumb-bg-disabled)",
         "--_switch-thumb-bg": "var(--_switch-thumb-bg-disabled)",
       },
@@ -158,7 +158,7 @@ module.exports = function ({ addComponents, theme }: any) {
         "0 0 0 calc(var(--switch-thumb-size) + var(--switch-track-label-padding))",
       transition: "margin 150ms ease",
 
-      ".input:checked + * > &": {
+      ".switch-input:checked + * > &": {
         margin:
           "0 calc(var(--switch-thumb-size) + var(--switch-track-label-padding)) 0 0",
       },

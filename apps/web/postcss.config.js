@@ -1,9 +1,8 @@
 module.exports = {
   plugins: {
-    "postcss-import": {},
+    "postcss-preset-raikou": {},
     "tailwindcss/nesting": {},
     tailwindcss: {},
-    autoprefixer: {},
     // "postcss-remove-dumbcss": {
     //   appPath: "./app",
     //   libPath: "./node_modules/@raikou/core/src/**/*.ts",

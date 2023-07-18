@@ -142,7 +142,7 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".appshell-header": {
-      top: 0,
+      top: "0",
       height: "var(--app-shell-header-height)",
       backgroundColor: "var(--raikou-color-body)",
       borderBottom: "var(--_header-border-bottom)",
@@ -157,7 +157,7 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".appshell-footer": {
-      bottom: 0,
+      bottom: "0",
       height: "var(--app-shell-footer-height)",
       borderTop: "var(--_footer-border-top)",
       transform: "var(--app-shell-footer-transform)",
@@ -174,7 +174,7 @@ module.exports = function ({ addComponents, theme }: any) {
       flexGrow: "var(--_section-grow, 0)",
 
       "&[data-grow]": {
-        "--_section-grow": 1,
+        "--_section-grow": "1",
       },
     },
   });

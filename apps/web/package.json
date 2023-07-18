@@ -24,10 +24,9 @@
     "autoprefixer": "^10.4.14",
     "concurrently": "^8.2.0",
     "eslint-config-custom": "workspace:*",
-    "postcss-import": "^15.1.0",
+    "postcss-preset-raikou": "workspace:*",
     "postcss-remove-dumbcss": "workspace:*",
-    "postcss": "^8.4.24",
-    "tailwindcss": "^3.3.2",
+    "tailwindcss": "insiders",
     "tsconfig": "workspace:*",
     "typescript": "^4.5.3"
   }

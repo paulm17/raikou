@@ -1,4 +1,5 @@
-import { createOptionalContext, RaikouSize } from "@raikou/core";
+import { RaikouSize } from "@raikou/core";
+import { createOptionalContext } from "../../utils";
 
 export interface PillGroupContextValue {
   size: RaikouSize | (string & {}) | undefined;

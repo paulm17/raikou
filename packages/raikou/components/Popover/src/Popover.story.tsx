@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 // import { Box, RaikouThemeProvider } from "@raikou/core";;
 import { Box } from "@raikou/core";
-import { Popover } from "./Popover";
-import { Tooltip } from "../Tooltip";
-import { Group } from "../Group";
+import { Popover } from "./../../Popover/src";
+import { Tooltip } from "../../Tooltip/src";
+import { Group } from "../../Group/src";
 
 export default { title: "Popover" };
 

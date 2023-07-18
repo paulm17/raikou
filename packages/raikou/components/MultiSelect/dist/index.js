@@ -86,7 +86,7 @@ module.exports = __toCommonJS(src_exports);
 // src/MultiSelect.tsx
 var import_react67 = __toESM(require("react"));
 var import_hooks25 = require("@raikou/hooks");
-var import_core52 = require("@raikou/core");
+var import_core50 = require("@raikou/core");
 
 // ../Combobox/src/get-parsed-combobox-data/get-parsed-combobox-data.ts
 function parseItem(item) {
@@ -5548,6 +5548,7 @@ function CheckIcon(_a) {
   return /* @__PURE__ */ import_react51.default.createElement(
     "svg",
     __spreadValues({
+      className: "icon",
       viewBox: "0 0 10 7",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
@@ -5722,7 +5723,7 @@ function OptionsDropdown({
 
 // ../PillsInput/src/PillsInput.tsx
 var import_react55 = __toESM(require("react"));
-var import_core40 = require("@raikou/core");
+var import_core39 = require("@raikou/core");
 
 // ../InputBase/src/InputBase.tsx
 var import_react53 = __toESM(require("react"));
@@ -5744,19 +5745,18 @@ InputBase.classes = __spreadValues(__spreadValues({}, Input.classes), Input.Wrap
 InputBase.displayName = "@raikou/core/InputBase";
 
 // ../PillsInput/src/PillsInput.context.ts
-var import_core38 = require("@raikou/core");
-var [PillsInputProvider, usePillsInputContext] = (0, import_core38.createOptionalContext)();
+var [PillsInputProvider, usePillsInputContext] = createOptionalContext();
 
 // ../PillsInput/src/PillsInputField/PillsInputField.tsx
 var import_react54 = __toESM(require("react"));
 var import_hooks24 = require("@raikou/hooks");
-var import_core39 = require("@raikou/core");
+var import_core38 = require("@raikou/core");
 var defaultProps27 = {
   type: "visible"
 };
-var PillsInputField = (0, import_core39.factory)(
+var PillsInputField = (0, import_core38.factory)(
   (_props, ref) => {
-    const props = (0, import_core39.useProps)("PillsInputField", defaultProps27, _props);
+    const props = (0, import_core38.useProps)("PillsInputField", defaultProps27, _props);
     const _a = props, {
       classNames,
       className,
@@ -5782,7 +5782,7 @@ var PillsInputField = (0, import_core39.factory)(
     ]);
     const ctx = usePillsInputContext();
     const inputWrapperCtx = useInputWrapperContext();
-    const getStyles = (0, import_core39.useStyles)({
+    const getStyles = (0, import_core38.useStyles)({
       name: "PillsInputField",
       classes: {
         field: "field"
@@ -5797,7 +5797,7 @@ var PillsInputField = (0, import_core39.factory)(
     });
     const _disabled = disabled || (ctx == null ? void 0 : ctx.disabled);
     return /* @__PURE__ */ import_react54.default.createElement(
-      import_core39.Box,
+      import_core38.Box,
       __spreadProps(__spreadValues(__spreadValues({
         component: "input",
         ref: (0, import_hooks24.useMergedRef)(ref, ctx == null ? void 0 : ctx.fieldRef),
@@ -5818,8 +5818,8 @@ PillsInputField.displayName = "@raikou/core/PillsInputField";
 var defaultProps28 = {
   size: "sm"
 };
-var PillsInput = (0, import_core40.factory)((_props, ref) => {
-  const props = (0, import_core40.useProps)("PillsInput", defaultProps28, _props);
+var PillsInput = (0, import_core39.factory)((_props, ref) => {
+  const props = (0, import_core39.useProps)("PillsInput", defaultProps28, _props);
   const _a = props, {
     children,
     onMouseDown,
@@ -5880,7 +5880,7 @@ PillsInput.Field = PillsInputField;
 
 // ../Pill/src/Pill.tsx
 var import_react66 = __toESM(require("react"));
-var import_core51 = require("@raikou/core");
+var import_core49 = require("@raikou/core");
 
 // ../CloseButton/src/CloseIcon.tsx
 var import_react56 = __toESM(require("react"));
@@ -5912,21 +5912,21 @@ CloseIcon.displayName = "@raikou/core/CloseIcon";
 
 // ../CloseButton/src/CloseButton.tsx
 var import_react64 = __toESM(require("react"));
-var import_core48 = require("@raikou/core");
+var import_core47 = require("@raikou/core");
 
 // ../ActionIcon/src/ActionIcon.tsx
 var import_react63 = __toESM(require("react"));
-var import_core47 = require("@raikou/core");
+var import_core46 = require("@raikou/core");
 
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react57 = __toESM(require("react"));
-var import_core41 = require("@raikou/core");
+var import_core40 = require("@raikou/core");
 var defaultProps29 = {
   __staticSelector: "UnstyledButton"
 };
-var UnstyledButton = (0, import_core41.polymorphicFactory)(
+var UnstyledButton = (0, import_core40.polymorphicFactory)(
   (_props, ref) => {
-    const props = (0, import_core41.useProps)("UnstyledButton", defaultProps29, _props);
+    const props = (0, import_core40.useProps)("UnstyledButton", defaultProps29, _props);
     const _a = props, {
       className,
       component = "button",
@@ -5944,7 +5944,7 @@ var UnstyledButton = (0, import_core41.polymorphicFactory)(
       "styles",
       "style"
     ]);
-    const getStyles = (0, import_core41.useStyles)({
+    const getStyles = (0, import_core40.useStyles)({
       name: __staticSelector,
       props,
       classes: {
@@ -5957,7 +5957,7 @@ var UnstyledButton = (0, import_core41.polymorphicFactory)(
       unstyled
     });
     return /* @__PURE__ */ import_react57.default.createElement(
-      import_core41.Box,
+      import_core40.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { focusable: true })), {
         component,
         ref,
@@ -5970,16 +5970,16 @@ UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
 // ../Loader/src/Loader.tsx
 var import_react61 = __toESM(require("react"));
-var import_core45 = require("@raikou/core");
+var import_core44 = require("@raikou/core");
 
 // ../Loader/src/loaders/Bars.tsx
 var import_react58 = __toESM(require("react"));
-var import_core42 = require("@raikou/core");
+var import_core41 = require("@raikou/core");
 var Bars = (0, import_react58.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ import_react58.default.createElement(
-      import_core42.Box,
+      import_core41.Box,
       __spreadProps(__spreadValues({
         component: "span",
         className: clsx_m_default("bars-loader", className)
@@ -5995,12 +5995,12 @@ var Bars = (0, import_react58.forwardRef)(
 
 // ../Loader/src/loaders/Oval.tsx
 var import_react59 = __toESM(require("react"));
-var import_core43 = require("@raikou/core");
+var import_core42 = require("@raikou/core");
 var Oval = (0, import_react59.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ import_react59.default.createElement(
-      import_core43.Box,
+      import_core42.Box,
       __spreadProps(__spreadValues({
         component: "span",
         className: clsx_m_default("oval-loader", className)
@@ -6013,12 +6013,12 @@ var Oval = (0, import_react59.forwardRef)(
 
 // ../Loader/src/loaders/Dots.tsx
 var import_react60 = __toESM(require("react"));
-var import_core44 = require("@raikou/core");
+var import_core43 = require("@raikou/core");
 var Dots = (0, import_react60.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ import_react60.default.createElement(
-      import_core44.Box,
+      import_core43.Box,
       __spreadProps(__spreadValues({
         component: "span",
         className: clsx_m_default("dots-loader", className)
@@ -6049,16 +6049,16 @@ var defaultProps30 = {
   loaders: defaultLoaders,
   type: "oval"
 };
-var varsResolver10 = (0, import_core45.createVarsResolver)(
+var varsResolver10 = (0, import_core44.createVarsResolver)(
   (theme, { size: size2, color }) => ({
     root: {
-      "--loader-size": (0, import_core45.getSize)(size2, "loader-size"),
-      "--loader-color": (0, import_core45.getThemeColor)(color, theme)
+      "--loader-size": (0, import_core44.getSize)(size2, "loader-size"),
+      "--loader-color": (0, import_core44.getThemeColor)(color, theme)
     }
   })
 );
-var Loader = (0, import_core45.factory)((_props, ref) => {
-  const props = (0, import_core45.useProps)("Loader", defaultProps30, _props);
+var Loader = (0, import_core44.factory)((_props, ref) => {
+  const props = (0, import_core44.useProps)("Loader", defaultProps30, _props);
   const _a = props, {
     size: size2,
     color,
@@ -6084,7 +6084,7 @@ var Loader = (0, import_core45.factory)((_props, ref) => {
     "loaders",
     "variant"
   ]);
-  const getStyles = (0, import_core45.useStyles)({
+  const getStyles = (0, import_core44.useStyles)({
     name: "Loader",
     props,
     classes: {
@@ -6099,7 +6099,7 @@ var Loader = (0, import_core45.factory)((_props, ref) => {
     varsResolver: varsResolver10
   });
   return /* @__PURE__ */ import_react61.default.createElement(
-    import_core45.Box,
+    import_core44.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -6112,20 +6112,20 @@ Loader.displayName = "@raikou/core/Loader";
 
 // ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
 var import_react62 = __toESM(require("react"));
-var import_core46 = require("@raikou/core");
+var import_core45 = require("@raikou/core");
 var defaultProps31 = {
   orientation: "horizontal",
   borderWidth: 1
 };
-var varsResolver11 = (0, import_core46.createVarsResolver)(
+var varsResolver11 = (0, import_core45.createVarsResolver)(
   (_, { borderWidth }) => ({
-    root: { "--ai-border-width": (0, import_core46.rem)(borderWidth) }
+    root: { "--ai-border-width": (0, import_core45.rem)(borderWidth) }
   })
 );
-var ActionIconGroup = (0, import_core46.factory)(
+var ActionIconGroup = (0, import_core45.factory)(
   (_props, ref) => {
-    const props = (0, import_core46.useProps)("ActionIconGroup", defaultProps31, _props);
-    const _a = (0, import_core46.useProps)("ActionIconGroup", defaultProps31, _props), {
+    const props = (0, import_core45.useProps)("ActionIconGroup", defaultProps31, _props);
+    const _a = (0, import_core45.useProps)("ActionIconGroup", defaultProps31, _props), {
       className,
       style,
       classNames,
@@ -6146,7 +6146,7 @@ var ActionIconGroup = (0, import_core46.factory)(
       "borderWidth",
       "variant"
     ]);
-    const getStyles = (0, import_core46.useStyles)({
+    const getStyles = (0, import_core45.useStyles)({
       name: "ActionIconGroup",
       props,
       classes: {
@@ -6161,7 +6161,7 @@ var ActionIconGroup = (0, import_core46.factory)(
       varsResolver: varsResolver11
     });
     return /* @__PURE__ */ import_react62.default.createElement(
-      import_core46.Box,
+      import_core45.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
         ref,
         variant,
@@ -6178,7 +6178,7 @@ var defaultProps32 = {
   variant: "filled",
   size: "md"
 };
-var varsResolver12 = (0, import_core47.createVarsResolver)(
+var varsResolver12 = (0, import_core46.createVarsResolver)(
   (theme, { size: size2, radius, variant, gradient, color }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
@@ -6188,8 +6188,8 @@ var varsResolver12 = (0, import_core47.createVarsResolver)(
     });
     return {
       root: {
-        "--ai-size": (0, import_core47.getSize)(size2, "ai-size"),
-        "--ai-radius": (0, import_core47.getRadius)(radius),
+        "--ai-size": (0, import_core46.getSize)(size2, "ai-size"),
+        "--ai-radius": (0, import_core46.getRadius)(radius),
         "--ai-bg": colors.background,
         "--ai-hover": colors.hover,
         "--ai-color": colors.color,
@@ -6198,9 +6198,9 @@ var varsResolver12 = (0, import_core47.createVarsResolver)(
     };
   }
 );
-var ActionIcon = (0, import_core47.polymorphicFactory)(
+var ActionIcon = (0, import_core46.polymorphicFactory)(
   (_props, ref) => {
-    const props = (0, import_core47.useProps)("ActionIcon", defaultProps32, _props);
+    const props = (0, import_core46.useProps)("ActionIcon", defaultProps32, _props);
     const _a = props, {
       className,
       unstyled,
@@ -6238,7 +6238,7 @@ var ActionIcon = (0, import_core47.polymorphicFactory)(
       "disabled",
       "data-disabled"
     ]);
-    const getStyles = (0, import_core47.useStyles)({
+    const getStyles = (0, import_core46.useStyles)({
       name: ["ActionIcon", __staticSelector],
       props,
       className,
@@ -6284,16 +6284,16 @@ var defaultProps33 = {
   variant: "subtle",
   color: "gray"
 };
-var CloseButton = (0, import_core48.polymorphicFactory)(
+var CloseButton = (0, import_core47.polymorphicFactory)(
   (_props, ref) => {
-    const props = (0, import_core48.useProps)("CloseButton", defaultProps33, _props);
+    const props = (0, import_core47.useProps)("CloseButton", defaultProps33, _props);
     const _a = props, { iconSize, children, vars } = _a, others = __objRest(_a, ["iconSize", "children", "vars"]);
     return /* @__PURE__ */ import_react64.default.createElement(
       ActionIcon,
       __spreadProps(__spreadValues({
         ref
       }, others), {
-        __vars: { "--cb-icon-size": (0, import_core48.rem)(iconSize) },
+        __vars: { "--cb-icon-size": (0, import_core47.rem)(iconSize) },
         __staticSelector: "CloseButton"
       }),
       /* @__PURE__ */ import_react64.default.createElement(CloseIcon, null),
@@ -6306,23 +6306,22 @@ CloseButton.displayName = "@raikou/core/CloseButton";
 
 // ../Pill/src/PillGroup/PillGroup.tsx
 var import_react65 = __toESM(require("react"));
-var import_core50 = require("@raikou/core");
+var import_core48 = require("@raikou/core");
 
 // ../Pill/src/PillGroup.context.ts
-var import_core49 = require("@raikou/core");
-var [PillGroupProvider, usePillGroupContext] = (0, import_core49.createOptionalContext)();
+var [PillGroupProvider, usePillGroupContext] = createOptionalContext();
 
 // ../Pill/src/PillGroup/PillGroup.tsx
 var defaultProps34 = {};
-var varsResolver13 = (0, import_core50.createVarsResolver)(
+var varsResolver13 = (0, import_core48.createVarsResolver)(
   (_, { gap }, { size: size2 }) => ({
     group: {
-      "--pg-gap": typeof gap !== "undefined" ? (0, import_core50.getSize)(gap) : (0, import_core50.getSize)(size2, "pg-gap")
+      "--pg-gap": typeof gap !== "undefined" ? (0, import_core48.getSize)(gap) : (0, import_core48.getSize)(size2, "pg-gap")
     }
   })
 );
-var PillGroup = (0, import_core50.factory)((_props, ref) => {
-  const props = (0, import_core50.useProps)("PillGroup", defaultProps34, _props);
+var PillGroup = (0, import_core48.factory)((_props, ref) => {
+  const props = (0, import_core48.useProps)("PillGroup", defaultProps34, _props);
   const _a = props, {
     classNames,
     className,
@@ -6344,7 +6343,7 @@ var PillGroup = (0, import_core50.factory)((_props, ref) => {
   ]);
   const pillsInputCtx = usePillsInputContext();
   const _size = (pillsInputCtx == null ? void 0 : pillsInputCtx.size) || size2 || "sm";
-  const getStyles = (0, import_core50.useStyles)({
+  const getStyles = (0, import_core48.useStyles)({
     name: "PillGroup",
     classes: {
       group: "pill-group"
@@ -6360,7 +6359,7 @@ var PillGroup = (0, import_core50.factory)((_props, ref) => {
     stylesCtx: { size: _size },
     rootSelector: "group"
   });
-  return /* @__PURE__ */ import_react65.default.createElement(PillGroupProvider, { value: { size: _size, disabled } }, /* @__PURE__ */ import_react65.default.createElement(import_core50.Box, __spreadValues(__spreadValues({ ref, size: _size }, getStyles("group")), others)));
+  return /* @__PURE__ */ import_react65.default.createElement(PillGroupProvider, { value: { size: _size, disabled } }, /* @__PURE__ */ import_react65.default.createElement(import_core48.Box, __spreadValues(__spreadValues({ ref, size: _size }, getStyles("group")), others)));
 });
 PillGroup.displayName = "@raikou/core/PillGroup";
 
@@ -6369,17 +6368,17 @@ var defaultProps35 = {
   radius: "xl",
   variant: "default"
 };
-var varsResolver14 = (0, import_core51.createVarsResolver)(
+var varsResolver14 = (0, import_core49.createVarsResolver)(
   (_, { radius }, { size: size2 }) => ({
     root: {
-      "--pill-fz": (0, import_core51.getSize)(size2, "pill-fz"),
-      "--pill-height": (0, import_core51.getSize)(size2, "pill-height"),
-      "--pill-radius": (0, import_core51.getRadius)(radius)
+      "--pill-fz": (0, import_core49.getSize)(size2, "pill-fz"),
+      "--pill-height": (0, import_core49.getSize)(size2, "pill-height"),
+      "--pill-radius": (0, import_core49.getRadius)(radius)
     }
   })
 );
-var Pill = (0, import_core51.factory)((_props, ref) => {
-  const props = (0, import_core51.useProps)("Pill", defaultProps35, _props);
+var Pill = (0, import_core49.factory)((_props, ref) => {
+  const props = (0, import_core49.useProps)("Pill", defaultProps35, _props);
   const _a = props, {
     classNames,
     className,
@@ -6415,7 +6414,7 @@ var Pill = (0, import_core51.factory)((_props, ref) => {
   const pillsInputCtx = usePillsInputContext();
   const _size = size2 || (ctx == null ? void 0 : ctx.size) || "sm";
   const _variant = (pillsInputCtx == null ? void 0 : pillsInputCtx.variant) === "filled" ? "contrast" : variant || "default";
-  const getStyles = (0, import_core51.useStyles)({
+  const getStyles = (0, import_core49.useStyles)({
     name: "Pill",
     classes: {
       root: "pill-root",
@@ -6433,7 +6432,7 @@ var Pill = (0, import_core51.factory)((_props, ref) => {
     stylesCtx: { size: _size }
   });
   return /* @__PURE__ */ import_react66.default.createElement(
-    import_core51.Box,
+    import_core49.Box,
     __spreadValues(__spreadProps(__spreadValues({
       component: "span",
       ref,
@@ -6503,8 +6502,8 @@ var defaultProps36 = {
   withCheckIcon: true,
   checkIconPosition: "left"
 };
-var MultiSelect = (0, import_core52.factory)((_props, ref) => {
-  const props = (0, import_core52.useProps)("MultiSelect", defaultProps36, _props);
+var MultiSelect = (0, import_core50.factory)((_props, ref) => {
+  const props = (0, import_core50.useProps)("MultiSelect", defaultProps36, _props);
   const _a = props, {
     classNames,
     className,
@@ -6638,7 +6637,7 @@ var MultiSelect = (0, import_core52.factory)((_props, ref) => {
   const {
     styleProps,
     rest: _b
-  } = (0, import_core52.extractStyleProps)(others), _c = _b, { type } = _c, rest = __objRest(_c, ["type"]);
+  } = (0, import_core50.extractStyleProps)(others), _c = _b, { type } = _c, rest = __objRest(_c, ["type"]);
   const [_value, setValue] = (0, import_hooks25.useUncontrolled)({
     value,
     defaultValue,
@@ -6651,7 +6650,7 @@ var MultiSelect = (0, import_core52.factory)((_props, ref) => {
     finalValue: "",
     onChange: onSearchChange
   });
-  const getStyles = (0, import_core52.useStyles)({
+  const getStyles = (0, import_core50.useStyles)({
     name: "MultiSelect",
     classes: {},
     props,
@@ -6659,7 +6658,7 @@ var MultiSelect = (0, import_core52.factory)((_props, ref) => {
     styles,
     unstyled
   });
-  const { resolvedClassNames, resolvedStyles } = (0, import_core52.useResolvedStylesApi)({
+  const { resolvedClassNames, resolvedStyles } = (0, import_core50.useResolvedStylesApi)({
     props,
     styles,
     classNames

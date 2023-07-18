@@ -62,7 +62,8 @@ module.exports = function ({ addComponents, theme }: any) {
       top: "calc(var(--_thumb-y-offset) - var(--cp-thumb-size) / 2)",
     },
 
-    ".colorPicker-swatch": {
+    /* Duplicate class to increase specificity */
+    ".colorPicker-swatch.colorPicker-swatch": {
       height: 0,
       margin: rem("2px"),
       cursor: "pointer",

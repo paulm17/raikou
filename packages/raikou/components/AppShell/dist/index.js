@@ -82,11 +82,11 @@ var import_react = __toESM(require("react"));
 function createSafeContext(errorMessage) {
   const Context = (0, import_react.createContext)(null);
   const useSafeContext = () => {
-    const ctx2 = (0, import_react.useContext)(Context);
-    if (ctx2 === null) {
+    const ctx = (0, import_react.useContext)(Context);
+    if (ctx === null) {
       throw new Error(errorMessage);
     }
-    return ctx2;
+    return ctx;
   };
   const Provider = ({ children, value }) => /* @__PURE__ */ import_react.default.createElement(Context.Provider, { value }, children);
   return [Provider, useSafeContext];
@@ -121,8 +121,8 @@ var AppShellNavbar = (0, import_core.factory)((_props, ref) => {
     "withBorder",
     "zIndex"
   ]);
-  const ctx2 = useAppShellContext();
-  if (ctx2.disabled) {
+  const ctx = useAppShellContext();
+  if (ctx.disabled) {
     return null;
   }
   return /* @__PURE__ */ import_react3.default.createElement(
@@ -130,10 +130,10 @@ var AppShellNavbar = (0, import_core.factory)((_props, ref) => {
     __spreadProps(__spreadValues(__spreadValues({
       component: "nav",
       ref,
-      mod: { "with-border": withBorder != null ? withBorder : ctx2.withBorder }
-    }, ctx2.getStyles("navbar", { className, classNames, styles, style })), others), {
+      mod: { "with-border": withBorder != null ? withBorder : ctx.withBorder }
+    }, ctx.getStyles("navbar", { className, classNames, styles, style })), others), {
       __vars: {
-        "--app-shell-navbar-z-index": `calc(${zIndex != null ? zIndex : ctx2.zIndex} + 1)`
+        "--app-shell-navbar-z-index": `calc(${zIndex != null ? zIndex : ctx.zIndex} + 1)`
       }
     })
   );
@@ -166,8 +166,8 @@ var AppShellHeader = (0, import_core2.factory)((_props, ref) => {
     "withBorder",
     "zIndex"
   ]);
-  const ctx2 = useAppShellContext();
-  if (ctx2.disabled) {
+  const ctx = useAppShellContext();
+  if (ctx.disabled) {
     return null;
   }
   return /* @__PURE__ */ import_react4.default.createElement(
@@ -175,10 +175,10 @@ var AppShellHeader = (0, import_core2.factory)((_props, ref) => {
     __spreadProps(__spreadValues(__spreadValues({
       component: "header",
       ref,
-      mod: { "with-border": withBorder != null ? withBorder : ctx2.withBorder }
-    }, ctx2.getStyles("header", { className, classNames, styles, style })), others), {
+      mod: { "with-border": withBorder != null ? withBorder : ctx.withBorder }
+    }, ctx.getStyles("header", { className, classNames, styles, style })), others), {
       __vars: {
-        "--app-shell-header-z-index": (_b = zIndex != null ? zIndex : ctx2.zIndex) == null ? void 0 : _b.toString()
+        "--app-shell-header-z-index": (_b = zIndex != null ? zIndex : ctx.zIndex) == null ? void 0 : _b.toString()
       }
     })
   );
@@ -211,8 +211,8 @@ var AppShellFooter = (0, import_core3.factory)((_props, ref) => {
     "withBorder",
     "zIndex"
   ]);
-  const ctx2 = useAppShellContext();
-  if (ctx2.disabled) {
+  const ctx = useAppShellContext();
+  if (ctx.disabled) {
     return null;
   }
   return /* @__PURE__ */ import_react5.default.createElement(
@@ -220,10 +220,10 @@ var AppShellFooter = (0, import_core3.factory)((_props, ref) => {
     __spreadProps(__spreadValues(__spreadValues({
       component: "footer",
       ref,
-      mod: { "with-border": withBorder != null ? withBorder : ctx2.withBorder }
-    }, ctx2.getStyles("footer", { className, classNames, styles, style })), others), {
+      mod: { "with-border": withBorder != null ? withBorder : ctx.withBorder }
+    }, ctx.getStyles("footer", { className, classNames, styles, style })), others), {
       __vars: {
-        "--app-shell-footer-z-index": (_b = zIndex != null ? zIndex : ctx2.zIndex) == null ? void 0 : _b.toString()
+        "--app-shell-footer-z-index": (_b = zIndex != null ? zIndex : ctx.zIndex) == null ? void 0 : _b.toString()
       }
     })
   );
@@ -255,8 +255,8 @@ var AppShellAside = (0, import_core4.factory)((_props, ref) => {
     "withBorder",
     "zIndex"
   ]);
-  const ctx2 = useAppShellContext();
-  if (ctx2.disabled) {
+  const ctx = useAppShellContext();
+  if (ctx.disabled) {
     return null;
   }
   return /* @__PURE__ */ import_react6.default.createElement(
@@ -264,10 +264,10 @@ var AppShellAside = (0, import_core4.factory)((_props, ref) => {
     __spreadProps(__spreadValues(__spreadValues({
       component: "aside",
       ref,
-      mod: { "with-border": withBorder != null ? withBorder : ctx2.withBorder }
-    }, ctx2.getStyles("aside", { className, classNames, styles, style })), others), {
+      mod: { "with-border": withBorder != null ? withBorder : ctx.withBorder }
+    }, ctx.getStyles("aside", { className, classNames, styles, style })), others), {
       __vars: {
-        "--app-shell-aside-z-index": `calc(${zIndex != null ? zIndex : ctx2.zIndex} + 1)`
+        "--app-shell-aside-z-index": `calc(${zIndex != null ? zIndex : ctx.zIndex} + 1)`
       }
     })
   );
@@ -281,13 +281,13 @@ var defaultProps5 = {};
 var AppShellMain = (0, import_core5.factory)((_props, ref) => {
   const props = (0, import_core5.useProps)("AppShellMain", defaultProps5, _props);
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
-  const ctx2 = useAppShellContext();
+  const ctx = useAppShellContext();
   return /* @__PURE__ */ import_react7.default.createElement(
     import_core5.Box,
     __spreadValues(__spreadValues({
       component: "main",
       ref
-    }, ctx2.getStyles("main", { className, style, classNames, styles })), others)
+    }, ctx.getStyles("main", { className, style, classNames, styles })), others)
   );
 });
 AppShellMain.displayName = "@raikou/core/AppShellMain";
@@ -316,13 +316,13 @@ var AppShellSection = (0, import_core6.polymorphicFactory)(
       "vars",
       "grow"
     ]);
-    const ctx2 = useAppShellContext();
+    const ctx = useAppShellContext();
     return /* @__PURE__ */ import_react8.default.createElement(
       import_core6.Box,
       __spreadValues(__spreadValues({
         ref,
         mod: { grow }
-      }, ctx2.getStyles("section", { className, style, classNames, styles })), others)
+      }, ctx.getStyles("section", { className, style, classNames, styles })), others)
     );
   }
 );
@@ -682,14 +682,7 @@ function AppShellMediaStyles({
     padding,
     theme
   });
-  return /* @__PURE__ */ import_react9.default.createElement(
-    import_core15.InlineStyles,
-    {
-      media,
-      styles: baseStyles,
-      selector: ctx.cssVariablesSelector
-    }
-  );
+  return /* @__PURE__ */ import_react9.default.createElement(import_core15.InlineStyles, { media, styles: baseStyles, selector: ":root" });
 }
 
 // src/use-resizing/use-resizing.tsx

@@ -44,7 +44,7 @@ module.exports = function ({ addComponents, theme }: any) {
     ".segmentedControl-indicator": {
       position: "absolute",
       display: "block",
-      zIndex: 1,
+      zIndex: "1",
       borderRadius: "var(--sc-radius)",
       boxShadow: "var(--_box-shadow)",
       width: "var(--sc-indicator-width)",
@@ -67,7 +67,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".segmentedControl-label": {
       "-webkit-tap-highlight-color": "transparent",
-      fontWeight: 500,
+      fontWeight: "500",
       display: "block",
       textAlign: "center",
       whiteSpace: "nowrap",
@@ -193,13 +193,13 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".segmentedControl-control": {
       position: "relative",
-      flex: 1,
-      zIndex: 2,
+      flex: "1",
+      zIndex: "2",
       transition:
         "border-color var(--sc-transition-duration) var(--sc-transition-timing-function)",
 
       "&::before": {
-        content: "",
+        content: '""',
         position: "absolute",
         top: 0,
         bottom: 0,
@@ -242,7 +242,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
       "&[data-active]": {
         "[data-raikou-color-scheme] &": {
-          "&, & + .control": {
+          "&, & + .segmentedControl-control": {
             "&::before": {
               "--_separator-color": "transparent",
             },

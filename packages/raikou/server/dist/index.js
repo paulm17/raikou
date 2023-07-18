@@ -40,6 +40,7 @@ __reExport(src_exports, require("@raikou/kbd"), module.exports);
 __reExport(src_exports, require("@raikou/loader"), module.exports);
 __reExport(src_exports, require("@raikou/mark"), module.exports);
 __reExport(src_exports, require("@raikou/paper"), module.exports);
+__reExport(src_exports, require("@raikou/skeleton"), module.exports);
 __reExport(src_exports, require("@raikou/stack"), module.exports);
 __reExport(src_exports, require("@raikou/text"), module.exports);
 __reExport(src_exports, require("@raikou/title"), module.exports);
@@ -70,6 +71,7 @@ __reExport(src_exports, require("@raikou/visually-hidden"), module.exports);
   ...require("@raikou/loader"),
   ...require("@raikou/mark"),
   ...require("@raikou/paper"),
+  ...require("@raikou/skeleton"),
   ...require("@raikou/stack"),
   ...require("@raikou/text"),
   ...require("@raikou/title"),

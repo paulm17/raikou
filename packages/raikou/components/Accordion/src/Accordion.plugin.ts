@@ -54,32 +54,33 @@ module.exports = function ({ addComponents, theme }: any) {
       },
     },
 
-    ".accordion-control--default, .accordion-control--contained": {
-      "&:not(:disabled, [data-disabled])": {
-        "@media (hover: hover)": {
-          "&:hover": {
-            '[data-raikou-color-scheme="light"] &': {
-              "--_control-background-color": "var(--raikou-color-gray-0)",
-            },
+    ".accordion-root[data-variant='default'] .accordion-control, .accordion-root[data-variant='contained'] .accordion-control":
+      {
+        "&:not(:disabled, [data-disabled])": {
+          "@media (hover: hover)": {
+            "&:hover": {
+              '[data-raikou-color-scheme="light"] &': {
+                "--_control-background-color": "var(--raikou-color-gray-0)",
+              },
 
-            '[data-raikou-color-scheme="dark"] &': {
-              "--_control-background-color": "var(--raikou-color-dark-6)",
+              '[data-raikou-color-scheme="dark"] &': {
+                "--_control-background-color": "var(--raikou-color-dark-6)",
+              },
             },
           },
-        },
-        "@media (hover: none)": {
-          "&:active": {
-            '[data-raikou-color-scheme="light"] &': {
-              "--_control-background-color": "var(--raikou-color-gray-0)",
-            },
+          "@media (hover: none)": {
+            "&:active": {
+              '[data-raikou-color-scheme="light"] &': {
+                "--_control-background-color": "var(--raikou-color-gray-0)",
+              },
 
-            '[data-raikou-color-scheme="dark"] &': {
-              "--_control-background-color": "var(--raikou-color-dark-6)",
+              '[data-raikou-color-scheme="dark"] &': {
+                "--_control-background-color": "var(--raikou-color-dark-6)",
+              },
             },
           },
         },
       },
-    },
 
     ".accordion-label": {
       color: "inherit",
@@ -167,11 +168,11 @@ module.exports = function ({ addComponents, theme }: any) {
       },
     },
 
-    ".accordion-item--default": {
+    ".accordion-root[data-variant='default'] .accordion-item": {
       borderBottom: `${rem("1px")} solid var(--_item-border-color)`,
     },
 
-    ".accordion-item--contained": {
+    ".accordion-root[data-variant='contained'] .accordion-item": {
       border: `${rem("1px")} solid var(--_item-border-color)`,
       transition: "background-color 150ms ease",
 
@@ -204,7 +205,7 @@ module.exports = function ({ addComponents, theme }: any) {
       },
     },
 
-    ".accordion-item--filled": {
+    ".accordion-root[data-variant='filled'] .accordion-item": {
       borderRadius: "var(--accordion-radius)",
 
       "&[data-active]": {
@@ -212,7 +213,7 @@ module.exports = function ({ addComponents, theme }: any) {
       },
     },
 
-    ".accordion-item--separated": {
+    ".accordion-root[data-variant='separated'] .accordion-item": {
       "--_item-bg": "var(--_item-filled-color)",
 
       borderRadius: "var(--accordion-radius)",

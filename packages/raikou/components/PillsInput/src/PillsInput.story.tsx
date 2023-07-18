@@ -1,10 +1,10 @@
-import React from 'react';
-import { TextInput } from '../TextInput';
-import { Group } from '../Group';
-import { PillsInput } from './PillsInput';
-import { Pill } from '../Pill';
+import React from "react";
+import { TextInput } from "../../TextInput/src";
+import { Group } from "../../Group/src";
+import { PillsInput } from "./PillsInput";
+import { Pill } from "../../Pill/src";
 
-export default { title: 'PillsInput' };
+export default { title: "PillsInput" };
 
 const getPills = (props: any) => (
   <>
@@ -50,7 +50,7 @@ export function Usage() {
 }
 
 export function Sizes() {
-  const items = ['xs', 'sm', 'md', 'lg', 'xl'].map((size) => (
+  const items = ["xs", "sm", "md", "lg", "xl"].map((size) => (
     <PillsInput size={size} key={size} mt="xl">
       <Pill.Group size={size}>
         {getPills({})}
@@ -106,7 +106,10 @@ export function WithinDisabledFieldset() {
 export function WithLabel() {
   return (
     <div style={{ padding: 40, maxWidth: 600 }}>
-      <PillsInput label="Pills input label" description="Pills input description">
+      <PillsInput
+        label="Pills input label"
+        description="Pills input description"
+      >
         <Pill.Group>
           {getPills({})}
           <PillsInput.Field placeholder="Pills input" />
@@ -130,7 +133,7 @@ export function WithError() {
 }
 
 export function Alignment() {
-  const sizes = ['xs', 'sm', 'md', 'lg', 'xl'].map((size) => (
+  const sizes = ["xs", "sm", "md", "lg", "xl"].map((size) => (
     <Group align="flex-start" key={size} mt="xl">
       <PillsInput size={size}>
         <Pill.Group size={size}>

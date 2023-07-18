@@ -54,11 +54,11 @@ import React, { createContext, useContext } from "react";
 function createSafeContext(errorMessage) {
   const Context = createContext(null);
   const useSafeContext = () => {
-    const ctx2 = useContext(Context);
-    if (ctx2 === null) {
+    const ctx = useContext(Context);
+    if (ctx === null) {
       throw new Error(errorMessage);
     }
-    return ctx2;
+    return ctx;
   };
   const Provider = ({ children, value }) => /* @__PURE__ */ React.createElement(Context.Provider, { value }, children);
   return [Provider, useSafeContext];
@@ -93,8 +93,8 @@ var AppShellNavbar = factory((_props, ref) => {
     "withBorder",
     "zIndex"
   ]);
-  const ctx2 = useAppShellContext();
-  if (ctx2.disabled) {
+  const ctx = useAppShellContext();
+  if (ctx.disabled) {
     return null;
   }
   return /* @__PURE__ */ React3.createElement(
@@ -102,10 +102,10 @@ var AppShellNavbar = factory((_props, ref) => {
     __spreadProps(__spreadValues(__spreadValues({
       component: "nav",
       ref,
-      mod: { "with-border": withBorder != null ? withBorder : ctx2.withBorder }
-    }, ctx2.getStyles("navbar", { className, classNames, styles, style })), others), {
+      mod: { "with-border": withBorder != null ? withBorder : ctx.withBorder }
+    }, ctx.getStyles("navbar", { className, classNames, styles, style })), others), {
       __vars: {
-        "--app-shell-navbar-z-index": `calc(${zIndex != null ? zIndex : ctx2.zIndex} + 1)`
+        "--app-shell-navbar-z-index": `calc(${zIndex != null ? zIndex : ctx.zIndex} + 1)`
       }
     })
   );
@@ -142,8 +142,8 @@ var AppShellHeader = factory2((_props, ref) => {
     "withBorder",
     "zIndex"
   ]);
-  const ctx2 = useAppShellContext();
-  if (ctx2.disabled) {
+  const ctx = useAppShellContext();
+  if (ctx.disabled) {
     return null;
   }
   return /* @__PURE__ */ React4.createElement(
@@ -151,10 +151,10 @@ var AppShellHeader = factory2((_props, ref) => {
     __spreadProps(__spreadValues(__spreadValues({
       component: "header",
       ref,
-      mod: { "with-border": withBorder != null ? withBorder : ctx2.withBorder }
-    }, ctx2.getStyles("header", { className, classNames, styles, style })), others), {
+      mod: { "with-border": withBorder != null ? withBorder : ctx.withBorder }
+    }, ctx.getStyles("header", { className, classNames, styles, style })), others), {
       __vars: {
-        "--app-shell-header-z-index": (_b = zIndex != null ? zIndex : ctx2.zIndex) == null ? void 0 : _b.toString()
+        "--app-shell-header-z-index": (_b = zIndex != null ? zIndex : ctx.zIndex) == null ? void 0 : _b.toString()
       }
     })
   );
@@ -191,8 +191,8 @@ var AppShellFooter = factory3((_props, ref) => {
     "withBorder",
     "zIndex"
   ]);
-  const ctx2 = useAppShellContext();
-  if (ctx2.disabled) {
+  const ctx = useAppShellContext();
+  if (ctx.disabled) {
     return null;
   }
   return /* @__PURE__ */ React5.createElement(
@@ -200,10 +200,10 @@ var AppShellFooter = factory3((_props, ref) => {
     __spreadProps(__spreadValues(__spreadValues({
       component: "footer",
       ref,
-      mod: { "with-border": withBorder != null ? withBorder : ctx2.withBorder }
-    }, ctx2.getStyles("footer", { className, classNames, styles, style })), others), {
+      mod: { "with-border": withBorder != null ? withBorder : ctx.withBorder }
+    }, ctx.getStyles("footer", { className, classNames, styles, style })), others), {
       __vars: {
-        "--app-shell-footer-z-index": (_b = zIndex != null ? zIndex : ctx2.zIndex) == null ? void 0 : _b.toString()
+        "--app-shell-footer-z-index": (_b = zIndex != null ? zIndex : ctx.zIndex) == null ? void 0 : _b.toString()
       }
     })
   );
@@ -239,8 +239,8 @@ var AppShellAside = factory4((_props, ref) => {
     "withBorder",
     "zIndex"
   ]);
-  const ctx2 = useAppShellContext();
-  if (ctx2.disabled) {
+  const ctx = useAppShellContext();
+  if (ctx.disabled) {
     return null;
   }
   return /* @__PURE__ */ React6.createElement(
@@ -248,10 +248,10 @@ var AppShellAside = factory4((_props, ref) => {
     __spreadProps(__spreadValues(__spreadValues({
       component: "aside",
       ref,
-      mod: { "with-border": withBorder != null ? withBorder : ctx2.withBorder }
-    }, ctx2.getStyles("aside", { className, classNames, styles, style })), others), {
+      mod: { "with-border": withBorder != null ? withBorder : ctx.withBorder }
+    }, ctx.getStyles("aside", { className, classNames, styles, style })), others), {
       __vars: {
-        "--app-shell-aside-z-index": `calc(${zIndex != null ? zIndex : ctx2.zIndex} + 1)`
+        "--app-shell-aside-z-index": `calc(${zIndex != null ? zIndex : ctx.zIndex} + 1)`
       }
     })
   );
@@ -269,13 +269,13 @@ var defaultProps5 = {};
 var AppShellMain = factory5((_props, ref) => {
   const props = useProps5("AppShellMain", defaultProps5, _props);
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
-  const ctx2 = useAppShellContext();
+  const ctx = useAppShellContext();
   return /* @__PURE__ */ React7.createElement(
     Box5,
     __spreadValues(__spreadValues({
       component: "main",
       ref
-    }, ctx2.getStyles("main", { className, style, classNames, styles })), others)
+    }, ctx.getStyles("main", { className, style, classNames, styles })), others)
   );
 });
 AppShellMain.displayName = "@raikou/core/AppShellMain";
@@ -308,13 +308,13 @@ var AppShellSection = polymorphicFactory(
       "vars",
       "grow"
     ]);
-    const ctx2 = useAppShellContext();
+    const ctx = useAppShellContext();
     return /* @__PURE__ */ React8.createElement(
       Box6,
       __spreadValues(__spreadValues({
         ref,
         mod: { grow }
-      }, ctx2.getStyles("section", { className, style, classNames, styles })), others)
+      }, ctx.getStyles("section", { className, style, classNames, styles })), others)
     );
   }
 );
@@ -674,14 +674,7 @@ function AppShellMediaStyles({
     padding,
     theme
   });
-  return /* @__PURE__ */ React9.createElement(
-    InlineStyles,
-    {
-      media,
-      styles: baseStyles,
-      selector: ctx.cssVariablesSelector
-    }
-  );
+  return /* @__PURE__ */ React9.createElement(InlineStyles, { media, styles: baseStyles, selector: ":root" });
 }
 
 // src/use-resizing/use-resizing.tsx

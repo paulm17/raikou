@@ -65,8 +65,8 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Pill.tsx
-var import_react11 = __toESM(require("react"));
-var import_core12 = require("@raikou/core");
+var import_react13 = __toESM(require("react"));
+var import_core10 = require("@raikou/core");
 
 // ../CloseButton/src/CloseIcon.tsx
 var import_react = __toESM(require("react"));
@@ -532,28 +532,38 @@ CloseButton.classes = ActionIcon.classes;
 CloseButton.displayName = "@raikou/core/CloseButton";
 
 // src/PillGroup/PillGroup.tsx
+var import_react12 = __toESM(require("react"));
+var import_core9 = require("@raikou/core");
+
+// ../utils/create-safe-context/create-safe-context.tsx
 var import_react10 = __toESM(require("react"));
-var import_core11 = require("@raikou/core");
+
+// ../utils/create-optional-context/create-optional-context.tsx
+var import_react11 = __toESM(require("react"));
+function createOptionalContext(initialValue = null) {
+  const Context = (0, import_react11.createContext)(initialValue);
+  const useOptionalContext = () => (0, import_react11.useContext)(Context);
+  const Provider = ({ children, value }) => /* @__PURE__ */ import_react11.default.createElement(Context.Provider, { value }, children);
+  return [Provider, useOptionalContext];
+}
 
 // src/PillGroup.context.ts
-var import_core9 = require("@raikou/core");
-var [PillGroupProvider, usePillGroupContext] = (0, import_core9.createOptionalContext)();
+var [PillGroupProvider, usePillGroupContext] = createOptionalContext();
 
 // ../PillsInput/src/PillsInput.context.ts
-var import_core10 = require("@raikou/core");
-var [PillsInputProvider, usePillsInputContext] = (0, import_core10.createOptionalContext)();
+var [PillsInputProvider, usePillsInputContext] = createOptionalContext();
 
 // src/PillGroup/PillGroup.tsx
 var defaultProps6 = {};
-var varsResolver4 = (0, import_core11.createVarsResolver)(
+var varsResolver4 = (0, import_core9.createVarsResolver)(
   (_, { gap }, { size }) => ({
     group: {
-      "--pg-gap": typeof gap !== "undefined" ? (0, import_core11.getSize)(gap) : (0, import_core11.getSize)(size, "pg-gap")
+      "--pg-gap": typeof gap !== "undefined" ? (0, import_core9.getSize)(gap) : (0, import_core9.getSize)(size, "pg-gap")
     }
   })
 );
-var PillGroup = (0, import_core11.factory)((_props, ref) => {
-  const props = (0, import_core11.useProps)("PillGroup", defaultProps6, _props);
+var PillGroup = (0, import_core9.factory)((_props, ref) => {
+  const props = (0, import_core9.useProps)("PillGroup", defaultProps6, _props);
   const _a = props, {
     classNames,
     className,
@@ -575,7 +585,7 @@ var PillGroup = (0, import_core11.factory)((_props, ref) => {
   ]);
   const pillsInputCtx = usePillsInputContext();
   const _size = (pillsInputCtx == null ? void 0 : pillsInputCtx.size) || size || "sm";
-  const getStyles = (0, import_core11.useStyles)({
+  const getStyles = (0, import_core9.useStyles)({
     name: "PillGroup",
     classes: {
       group: "pill-group"
@@ -591,7 +601,7 @@ var PillGroup = (0, import_core11.factory)((_props, ref) => {
     stylesCtx: { size: _size },
     rootSelector: "group"
   });
-  return /* @__PURE__ */ import_react10.default.createElement(PillGroupProvider, { value: { size: _size, disabled } }, /* @__PURE__ */ import_react10.default.createElement(import_core11.Box, __spreadValues(__spreadValues({ ref, size: _size }, getStyles("group")), others)));
+  return /* @__PURE__ */ import_react12.default.createElement(PillGroupProvider, { value: { size: _size, disabled } }, /* @__PURE__ */ import_react12.default.createElement(import_core9.Box, __spreadValues(__spreadValues({ ref, size: _size }, getStyles("group")), others)));
 });
 PillGroup.displayName = "@raikou/core/PillGroup";
 
@@ -600,17 +610,17 @@ var defaultProps7 = {
   radius: "xl",
   variant: "default"
 };
-var varsResolver5 = (0, import_core12.createVarsResolver)(
+var varsResolver5 = (0, import_core10.createVarsResolver)(
   (_, { radius }, { size }) => ({
     root: {
-      "--pill-fz": (0, import_core12.getSize)(size, "pill-fz"),
-      "--pill-height": (0, import_core12.getSize)(size, "pill-height"),
-      "--pill-radius": (0, import_core12.getRadius)(radius)
+      "--pill-fz": (0, import_core10.getSize)(size, "pill-fz"),
+      "--pill-height": (0, import_core10.getSize)(size, "pill-height"),
+      "--pill-radius": (0, import_core10.getRadius)(radius)
     }
   })
 );
-var Pill = (0, import_core12.factory)((_props, ref) => {
-  const props = (0, import_core12.useProps)("Pill", defaultProps7, _props);
+var Pill = (0, import_core10.factory)((_props, ref) => {
+  const props = (0, import_core10.useProps)("Pill", defaultProps7, _props);
   const _a = props, {
     classNames,
     className,
@@ -646,7 +656,7 @@ var Pill = (0, import_core12.factory)((_props, ref) => {
   const pillsInputCtx = usePillsInputContext();
   const _size = size || (ctx == null ? void 0 : ctx.size) || "sm";
   const _variant = (pillsInputCtx == null ? void 0 : pillsInputCtx.variant) === "filled" ? "contrast" : variant || "default";
-  const getStyles = (0, import_core12.useStyles)({
+  const getStyles = (0, import_core10.useStyles)({
     name: "Pill",
     classes: {
       root: "pill-root",
@@ -663,8 +673,8 @@ var Pill = (0, import_core12.factory)((_props, ref) => {
     varsResolver: varsResolver5,
     stylesCtx: { size: _size }
   });
-  return /* @__PURE__ */ import_react11.default.createElement(
-    import_core12.Box,
+  return /* @__PURE__ */ import_react13.default.createElement(
+    import_core10.Box,
     __spreadValues(__spreadProps(__spreadValues({
       component: "span",
       ref,
@@ -676,8 +686,8 @@ var Pill = (0, import_core12.factory)((_props, ref) => {
         disabled: disabled || (ctx == null ? void 0 : ctx.disabled)
       }
     }), others),
-    /* @__PURE__ */ import_react11.default.createElement("span", __spreadValues({}, getStyles("label")), children),
-    withRemoveButton && /* @__PURE__ */ import_react11.default.createElement(
+    /* @__PURE__ */ import_react13.default.createElement("span", __spreadValues({}, getStyles("label")), children),
+    withRemoveButton && /* @__PURE__ */ import_react13.default.createElement(
       CloseButton,
       __spreadProps(__spreadValues(__spreadValues({
         iconSize: "70%",

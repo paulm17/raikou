@@ -5634,6 +5634,7 @@ function CheckIcon(_a) {
   return /* @__PURE__ */ React45.createElement(
     "svg",
     __spreadValues({
+      className: "icon",
       viewBox: "0 0 10 7",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
@@ -5832,8 +5833,7 @@ InputBase.classes = __spreadValues(__spreadValues({}, Input.classes), Input.Wrap
 InputBase.displayName = "@raikou/core/InputBase";
 
 // ../PillsInput/src/PillsInput.context.ts
-import { createOptionalContext as createOptionalContext2 } from "@raikou/core";
-var [PillsInputProvider, usePillsInputContext] = createOptionalContext2();
+var [PillsInputProvider, usePillsInputContext] = createOptionalContext();
 
 // ../PillsInput/src/PillsInputField/PillsInputField.tsx
 import React48 from "react";
@@ -6448,8 +6448,7 @@ import {
 } from "@raikou/core";
 
 // ../Pill/src/PillGroup.context.ts
-import { createOptionalContext as createOptionalContext3 } from "@raikou/core";
-var [PillGroupProvider, usePillGroupContext] = createOptionalContext3();
+var [PillGroupProvider, usePillGroupContext] = createOptionalContext();
 
 // ../Pill/src/PillGroup/PillGroup.tsx
 var defaultProps34 = {};

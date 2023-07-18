@@ -1852,7 +1852,7 @@ function useRandomClassName(length = 8) {
     { length },
     () => Math.random().toString(36)[2]
   ).join("");
-  return `raikou-${s}${id}`;
+  return `raikou-`;
 }
 
 // src/core/Box/get-style-object/get-style-object.ts

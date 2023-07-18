@@ -10,24 +10,24 @@ module.exports = function ({ addComponents, theme }: any) {
       "--label-lh-xl": rem("36px"),
 
       "&[data-label-position='left']": {
-        "--_label-order": 1,
+        "--_label-order": "1",
         "--_offset-right": "var(--raikou-spacing-sm)",
-        "--_offset-left": 0,
+        "--_offset-left": "0",
 
         '[dir="rtl"] &': {
-          "--_offset-right": 0,
+          "--_offset-right": "0",
           "--_offset-left": "var(--raikou-spacing-sm)",
         },
       },
 
       "&[data-label-position='right']": {
-        "--_label-order": 2,
-        "--_offset-right": 0,
+        "--_label-order": "2",
+        "--_offset-right": "0",
         "--_offset-left": "var(--raikou-spacing-sm)",
 
         '[dir="rtl"] &': {
           "--_offset-right": "var(--raikou-spacing-sm)",
-          "--_offset-left": 0,
+          "--_offset-left": "0",
         },
       },
     },
@@ -63,13 +63,15 @@ module.exports = function ({ addComponents, theme }: any) {
       },
     },
 
-    ".inlineInput-description": {
+    /* Duplicate class to increase specificity */
+    ".inlineInput-description.inlineInput-description": {
       marginTop: "calc(var(--raikou-spacing-xs) / 2)",
       paddingLeft: "var(--_offset-left)",
       paddingRight: "var(--_offset-right)",
     },
 
-    ".inlineInput-error": {
+    /* Duplicate class to increase specificity */
+    ".inlineInput-error.inlineInput-error": {
       marginTop: "calc(var(--raikou-spacing-xs) / 2)",
       paddingLeft: "var(--_offset-left)",
       paddingRight: "var(--_offset-right)",

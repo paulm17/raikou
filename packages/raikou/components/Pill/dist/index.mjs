@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/Pill.tsx
-import React11 from "react";
+import React13 from "react";
 import {
   Box as Box8,
   factory as factory4,
@@ -537,7 +537,7 @@ CloseButton.classes = ActionIcon.classes;
 CloseButton.displayName = "@raikou/core/CloseButton";
 
 // src/PillGroup/PillGroup.tsx
-import React10 from "react";
+import React12 from "react";
 import {
   Box as Box7,
   factory as factory3,
@@ -547,13 +547,23 @@ import {
   getSize as getSize3
 } from "@raikou/core";
 
+// ../utils/create-safe-context/create-safe-context.tsx
+import React10, { createContext, useContext } from "react";
+
+// ../utils/create-optional-context/create-optional-context.tsx
+import React11, { createContext as createContext2, useContext as useContext2 } from "react";
+function createOptionalContext(initialValue = null) {
+  const Context = createContext2(initialValue);
+  const useOptionalContext = () => useContext2(Context);
+  const Provider = ({ children, value }) => /* @__PURE__ */ React11.createElement(Context.Provider, { value }, children);
+  return [Provider, useOptionalContext];
+}
+
 // src/PillGroup.context.ts
-import { createOptionalContext } from "@raikou/core";
 var [PillGroupProvider, usePillGroupContext] = createOptionalContext();
 
 // ../PillsInput/src/PillsInput.context.ts
-import { createOptionalContext as createOptionalContext2 } from "@raikou/core";
-var [PillsInputProvider, usePillsInputContext] = createOptionalContext2();
+var [PillsInputProvider, usePillsInputContext] = createOptionalContext();
 
 // src/PillGroup/PillGroup.tsx
 var defaultProps6 = {};
@@ -603,7 +613,7 @@ var PillGroup = factory3((_props, ref) => {
     stylesCtx: { size: _size },
     rootSelector: "group"
   });
-  return /* @__PURE__ */ React10.createElement(PillGroupProvider, { value: { size: _size, disabled } }, /* @__PURE__ */ React10.createElement(Box7, __spreadValues(__spreadValues({ ref, size: _size }, getStyles("group")), others)));
+  return /* @__PURE__ */ React12.createElement(PillGroupProvider, { value: { size: _size, disabled } }, /* @__PURE__ */ React12.createElement(Box7, __spreadValues(__spreadValues({ ref, size: _size }, getStyles("group")), others)));
 });
 PillGroup.displayName = "@raikou/core/PillGroup";
 
@@ -675,7 +685,7 @@ var Pill = factory4((_props, ref) => {
     varsResolver: varsResolver5,
     stylesCtx: { size: _size }
   });
-  return /* @__PURE__ */ React11.createElement(
+  return /* @__PURE__ */ React13.createElement(
     Box8,
     __spreadValues(__spreadProps(__spreadValues({
       component: "span",
@@ -688,8 +698,8 @@ var Pill = factory4((_props, ref) => {
         disabled: disabled || (ctx == null ? void 0 : ctx.disabled)
       }
     }), others),
-    /* @__PURE__ */ React11.createElement("span", __spreadValues({}, getStyles("label")), children),
-    withRemoveButton && /* @__PURE__ */ React11.createElement(
+    /* @__PURE__ */ React13.createElement("span", __spreadValues({}, getStyles("label")), children),
+    withRemoveButton && /* @__PURE__ */ React13.createElement(
       CloseButton,
       __spreadProps(__spreadValues(__spreadValues({
         iconSize: "70%",

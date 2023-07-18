@@ -6,7 +6,7 @@
   </a>
   <h3 align="center">RAIKOU</h3>
   <p align="center">
-    Raikou is a raikou fork which replaces modules.css to use tailwind.
+    Raikou is a mantine fork which replaces modules.css to use tailwind.
     <br />
     <a href="https://github.com/paulm17/raikou/issues">Report Bug</a>
     ·
@@ -18,7 +18,7 @@
 
 ## About The Project
 
-Raikou 6 with CSS-in-JS allowed for styles to be adjacent to the component it was styling. However with Raikou 7 styling has switched to CSS Modules. Many in the industry see CSS Modules as a step backwards and I (the fork author) share this sentiment. Therefore forking the project to support tailwind was the obvious choice.
+Mantine 6 with CSS-in-JS allowed for styles to be adjacent to the component it was styling. However with Mantine 7 styling has switched to CSS Modules. Many in the industry see CSS Modules as a step backwards and I (the fork author) share this sentiment. Therefore forking the project to support tailwind was the obvious choice.
 
 The project was conceived with these 4 long-term goals:
 
@@ -30,7 +30,7 @@ The project was conceived with these 4 long-term goals:
 ## Project Caveats
 
 1. Remix, Svelte, Solid, Astro and any other frameworks are not supported. There are no intentions of supporting anything other than NextJS.
-2. There may be design decisions implemented that will diverge from Raikou. For example the Styles API layer may disappear because it has been superseded by the Classes API and Styles API is <a href="https://v7.raikou.dev/styles/styles-performance#inline-styles">very slow</a>.
+2. There may be design decisions implemented that will diverge from Mantine. For example the Styles API layer may disappear because it has been superseded by the Classes API and Styles API is <a href="https://v7.mantine.dev/styles/styles-performance#inline-styles">very slow</a>.
 3. Issues may be closed due to the fork author not having free time. If an issue is very important, please consider implementing a PR.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -51,7 +51,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Installation to an application
 
-1. Install the required packages. Same as Raikou.
+1. Install the required packages. Same as Mantine.
 
 - npm
   ```sh
@@ -62,23 +62,85 @@ To get a local copy up and running follow these simple example steps.
   yarn add @raikou/client @raikou/hooks @raikou/server @raikou/system
   ```
 
-2. Change the content param in tailwind config, to pick up the component Library
+2. Disable the preflight in tailwind config
+
+   ```sh
+   corePlugins: {
+      preflight: false,
+   },
+   ```
+
+3. Change the content param in tailwind config, to pick up the component Library
 
    ```sh
    content: [
-      "./node_modules/@raikou/server/node_modules/@raikou/**/dist/*",
-      "./node_modules/@raikou/client/node_modules/@raikou/**/dist/*",
+      "./node_modules/@raikou/server/node_modules/@raikou/action-icon/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/anchor/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/aspect-ratio/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/badge/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/background-image/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/blockquote/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/breadcrumbs/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/button/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/center/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/close-button/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/code/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/color-swatch/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/container/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/divider/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/fieldset/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/flex/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/group/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/highlight/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/kbd/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/loader/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/mark/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/paper/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/skeleton/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/stack/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/text/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/title/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/unstyled-button/dist/*.js",
+      "./node_modules/@raikou/server/node_modules/@raikou/visually-hidden/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/accordion/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/alert/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/appshell/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/avatar/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/checkbox/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/color-picker/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/combobox/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/drawer/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/inline-input/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/input/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/input-base/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/modal/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/modal-base/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/multi-select/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/native-select/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/notification/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/overlay/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/pill/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/pills-input/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/popover/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/portal/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/scroll-area/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/slider/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/switch/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/tabs/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/table/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/text-input/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/tooltip/dist/*.js",
       "./app/**/*.tsx"
    ],
    ```
 
-   Note: this currently breaks NextJS on refresh, suspect it's on the tailwind side. Will test with the new release of tailwind.
+   Note: Using glob on the component library breaks NextJS HMR.
 
-3. Add a preset param in the tailwind config, to pick up the component styles
+4. Add a preset param in the tailwind config, to pick up the component styles
    ```sh
    presets: [require("./node_modules/@raikou/system/dist/plugin")],
    ```
-4. Add a new plugin to the postcss.config.js to purge unused component library styles
+5. Add a new plugin to the postcss.config.js to purge unused component library styles
    ```js
    "postcss-remove-dumbcss": {
       appPath: "./app",
@@ -119,7 +181,7 @@ Change appPath to where the tsx files for your project reside.
 
 ## Server Components
 
-There are 28 server components available without the need for "use client" in either the component library entry point nor in the page itself. They are: action-icon, anchor, aspect-ratio, background-image, badge, blockquote, box, breadcrumbs, button, center, close-button, code, color-swatch, container, divider, fieldset, flex, group, highlight, kbd, loader, mark, paper, stack, text, title, unstyled-button, visually-hidden.
+There are 28 server components available without the need for "use client" in either the component library entry point nor in the page itself. They are: action-icon, anchor, aspect-ratio, background-image, badge, blockquote, box, breadcrumbs, button, center, close-button, code, color-swatch, container, divider, fieldset, flex, group, highlight, kbd, loader, mark, paper, skeleton, stack, text, title, unstyled-button, visually-hidden.
 
 To use a server component do the following:
 
@@ -213,7 +275,7 @@ Project Link: [https://github.com/paulm17/raikou](https://github.com/paulm17/rai
 
 ## Acknowledgments
 
-Vitaly and the Raikou community.
+Vitaly and the Mantine community.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

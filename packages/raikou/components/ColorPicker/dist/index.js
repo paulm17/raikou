@@ -839,10 +839,10 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
       body: "colorPicker-body",
       sliders: "colorPicker-sliders",
       slider: "colorPicker-slider",
-      sliderOverlay: "colorPicker-slider-overlay",
+      sliderOverlay: "colorPicker-sliderOverlay",
       thumb: "colorPicker-thumb",
       saturation: "colorPicker-saturation",
-      saturationOverlay: "colorPicker-saturation-overlay",
+      saturationOverlay: "colorPicker-saturationOverlay",
       swatches: "colorPicker-swatches",
       swatch: "colorPicker-swatch"
     },
