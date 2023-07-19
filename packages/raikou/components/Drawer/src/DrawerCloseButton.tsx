@@ -5,7 +5,6 @@ import {
   ModalBaseCloseButtonProps,
 } from "../../ModalBase/src";
 import { useDrawerContext } from "./Drawer.context";
-// import classes from './Drawer.module.css';
 
 export type DrawerCloseButtonStylesNames = "close";
 
@@ -40,5 +39,4 @@ export const DrawerCloseButton = factory<DrawerCloseButtonFactory>(
   }
 );
 
-// DrawerCloseButton.classes = classes;
 DrawerCloseButton.displayName = "@raikou/core/DrawerCloseButton";

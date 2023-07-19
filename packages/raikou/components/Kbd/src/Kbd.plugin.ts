@@ -17,7 +17,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
       fontFamily: "var(--raikou-font-family-monospace)",
       lineHeight: "var(--raikou-line-height)",
-      fontWeight: 700,
+      fontWeight: "700",
       padding: "var(--kbd-padding)",
       fontSize: "var(--kbd-fz)",
       borderRadius: "var(--raikou-radius-sm)",

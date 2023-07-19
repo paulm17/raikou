@@ -9,7 +9,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--ai-size-lg": rem("34px"),
       "--ai-size-xl": rem("44px"),
 
-      lineHeight: 1,
+      lineHeight: "1",
       display: "inline-flex",
       alignItems: "center",
       justifyContent: "center",
@@ -76,7 +76,7 @@ module.exports = function ({ addComponents, theme }: any) {
       },
     },
     ".actionIcon-loader": {
-      zIndex: 1,
+      zIndex: "1",
     },
     ".actionIconGroup-root": {
       display: "flex",
@@ -86,19 +86,19 @@ module.exports = function ({ addComponents, theme }: any) {
 
         "& [data-action-icon]": {
           "&:not(:only-child):first-child": {
-            borderBottomRightRadius: 0,
-            borderTopRightRadius: 0,
+            borderBottomRightRadius: "0",
+            borderTopRightRadius: "0",
             borderRightWidth: "calc(var(--ai-border-width) / 2)",
           },
 
           "&:not(:only-child):last-child": {
-            borderBottomLeftRadius: 0,
-            borderTopLeftRadius: 0,
+            borderBottomLeftRadius: "0",
+            borderTopLeftRadius: "0",
             borderLeftWidth: "calc(var(--ai-border-width) / 2)",
           },
 
           "&:not(:only-child):not(:first-child):not(:last-child)": {
-            borderRadius: 0,
+            borderRadius: "0",
             borderRightWidth: "calc(var(--ai-border-width) / 2)",
             borderLeftWidth: "calc(var(--ai-border-width) / 2)",
           },
@@ -110,19 +110,19 @@ module.exports = function ({ addComponents, theme }: any) {
 
         "& [data-action-icon]": {
           "&:not(:only-child):first-child": {
-            borderBottomLeftRadius: 0,
-            borderBottomRightRadius: 0,
+            borderBottomLeftRadius: "0",
+            borderBottomRightRadius: "0",
             borderBottomWidth: "calc(var(--ai-border-width) / 2)",
           },
 
           "&:not(:only-child):last-child": {
-            borderTopLeftRadius: 0,
-            borderTopRightRadius: 0,
+            borderTopLeftRadius: "0",
+            borderTopRightRadius: "0",
             borderTopWidth: "calc(var(--ai-border-width) / 2)",
           },
 
           "&:not(:only-child):not(:first-child):not(:last-child)": {
-            borderRadius: 0,
+            borderRadius: "0",
             borderBottomWidth: "calc(var(--ai-border-width) / 2)",
             borderTopWidth: "calc(var(--ai-border-width) / 2)",
           },

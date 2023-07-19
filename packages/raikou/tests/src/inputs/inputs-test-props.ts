@@ -1,4 +1,4 @@
-import type { __BaseInputProps, __InputStylesNames } from "@raikou/core";
+import type { __BaseInputProps, __InputStylesNames } from "@raikou/input";
 
 export const inputDefaultProps: __BaseInputProps = {
   label: "test-label",

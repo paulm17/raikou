@@ -11,7 +11,7 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".drawer-header": {
-      zIndex: 1000,
+      zIndex: "1000",
     },
 
     ".drawer-content": {
@@ -20,7 +20,7 @@ module.exports = function ({ addComponents, theme }: any) {
       height: "var(--drawer-height)",
       maxWidth: "100%",
       maxHeight: "100%",
-      borderRadius: 0,
+      borderRadius: "0",
       overflowY: "auto",
     },
 

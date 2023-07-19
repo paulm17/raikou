@@ -1,4 +1,4 @@
-import { createSafeContext } from "../../utils";
+import { createSafeContext } from "../../_utils";
 
 export interface ScrollAreaContextValue {
   type: "auto" | "always" | "scroll" | "hover" | "never";

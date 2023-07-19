@@ -4,27 +4,23 @@ import {
   act,
   RenderResult,
 } from "@testing-library/react";
-import {
-  RaikouProvider,
-  RaikouThemeOverride,
-  RaikouProviderProps,
-} from "@raikou/core";
+import { RaikouThemeOverride } from "@raikou/core";
+import { Bootstrap } from "@raikou/system";
 
 export function render(
   ui: React.ReactNode,
-  themeOverride?: RaikouThemeOverride,
-  providerProps?: Omit<RaikouProviderProps, "theme">
-) {
+  themeOverride?: RaikouThemeOverride
+): RenderResult {
   return testingLibraryRender(<>{ui}</>, {
     wrapper: ({ children }: { children: React.ReactNode }) => (
-      <RaikouProvider theme={themeOverride} {...providerProps}>
-        {children}
-      </RaikouProvider>
+      <Bootstrap theme={themeOverride}>{children}</Bootstrap>
     ),
   });
 }
 
-export async function renderWithAct(ui: React.ReactNode) {
+export async function renderWithAct(
+  ui: React.ReactNode
+): Promise<RenderResult> {
   let result: RenderResult | null = null;
   await act(async () => {
     result = render(ui);

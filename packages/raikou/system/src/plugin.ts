@@ -514,7 +514,7 @@ module.exports = {
     require("../../components/Accordion/src/Accordion.plugin"),
     require("../../components/ActionIcon/src/ActionIcon.plugin"),
     require("../../components/Alert/src/Alert.plugin"),
-    require("../../components/Appshell/src/Appshell.plugin"),
+    require("../../components/AppShell/src/AppShell.plugin"),
     require("../../components/Anchor/src/Anchor.plugin"),
     require("../../components/AspectRatio/src/AspectRatio.plugin"),
     require("../../components/Avatar/src/Avatar.plugin"),

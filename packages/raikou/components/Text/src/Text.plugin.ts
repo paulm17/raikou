@@ -8,8 +8,8 @@ module.exports = function ({ addComponents }: any) {
       fontSize: "var(--text-fz)",
       lineHeight: "var(--text-lh)",
       fontWeight: "normal",
-      margin: 0,
-      padding: 0,
+      margin: "0",
+      padding: "0",
 
       "&[data-truncate]": {
         overflow: "hidden",
@@ -49,7 +49,7 @@ module.exports = function ({ addComponents }: any) {
       },
 
       "&[data-inline]": {
-        "--_text-line-height": 1,
+        "--_text-line-height": "1",
       },
     },
   });

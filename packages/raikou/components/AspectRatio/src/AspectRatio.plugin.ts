@@ -6,7 +6,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
       "&::before": {
         content: '""',
-        height: 0,
+        height: "0",
         display: "block",
         paddingBottom: "calc((1 / var(--ar-ratio)) * 100%)",
       },
@@ -19,7 +19,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
       "& > *:not(style)": {
         position: "absolute",
-        inset: 0,
+        inset: "0",
         width: "100%",
         height: "100%",
         display: "flex",

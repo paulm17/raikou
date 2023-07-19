@@ -1,5 +1,5 @@
 import { GetStylesApi, RaikouSize } from "@raikou/core";
-import { createSafeContext } from "../../utils";
+import { createSafeContext } from "../../_utils";
 import type { ComboboxFactory } from "./Combobox";
 import type { ComboboxOptionProps } from "./ComboboxOption/ComboboxOption";
 import type { ComboboxStore } from "./use-combobox/use-combobox";

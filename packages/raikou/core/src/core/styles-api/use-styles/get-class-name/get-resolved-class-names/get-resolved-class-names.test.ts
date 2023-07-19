@@ -1,57 +1,57 @@
-import { DEFAULT_THEME } from '../../../../RaikouProvider';
-import { getResolvedClassNames } from './get-resolved-class-names';
+import { DEFAULT_THEME } from "../../../../Bootstrap";
+import { getResolvedClassNames } from "./get-resolved-class-names";
 
 const testObjectClassNames = {
-  root: 'test-object',
+  root: "test-object",
 };
 
 const testFunctionClassNames = () => ({
-  root: 'test-function',
+  root: "test-function",
 });
 
-describe('@raikou/core/get-resolved-class-names', () => {
-  it('returns className at given selector (object)', () => {
+describe("@raikou/core/get-resolved-class-names", () => {
+  it("returns className at given selector (object)", () => {
     expect(
       getResolvedClassNames({
         theme: DEFAULT_THEME,
         classNames: testObjectClassNames,
-        selector: 'root',
+        selector: "root",
         props: {},
         stylesCtx: undefined,
       })
-    ).toBe('test-object');
+    ).toBe("test-object");
   });
 
-  it('returns className at given selector (function)', () => {
+  it("returns className at given selector (function)", () => {
     expect(
       getResolvedClassNames({
         theme: DEFAULT_THEME,
         classNames: testFunctionClassNames,
-        selector: 'root',
+        selector: "root",
         props: {},
         stylesCtx: undefined,
       })
-    ).toBe('test-function');
+    ).toBe("test-function");
   });
 
-  it('returns undefined if selector is not in classNames', () => {
+  it("returns undefined if selector is not in classNames", () => {
     expect(
       getResolvedClassNames({
         theme: DEFAULT_THEME,
         classNames: testObjectClassNames,
-        selector: 'test',
+        selector: "test",
         props: {},
         stylesCtx: undefined,
       })
     ).toBeUndefined();
   });
 
-  it('returns undefined if classNames is undefined', () => {
+  it("returns undefined if classNames is undefined", () => {
     expect(
       getResolvedClassNames({
         theme: DEFAULT_THEME,
         classNames: undefined,
-        selector: 'root',
+        selector: "root",
         props: {},
         stylesCtx: undefined,
       })

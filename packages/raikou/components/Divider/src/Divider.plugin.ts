@@ -30,7 +30,7 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       "&[data-with-label]": {
-        border: 0,
+        border: "0",
       },
     },
 
@@ -55,28 +55,28 @@ module.exports = function ({ addComponents, theme }: any) {
 
       "&::before": {
         content: '""',
-        flex: 1,
+        flex: "1",
         height: rem("1px"),
         borderTop:
           "var(--divider-size) var(--divider-border-style, solid) var(--divider-color, var(--_divider-color))",
         marginRight: "var(--raikou-spacing-xs)",
 
         '[dir="rtl"] &': {
-          marginRight: 0,
+          marginRight: "0",
           marginLeft: "var(--raikou-spacing-xs)",
         },
       },
 
       "&::after": {
         content: '""',
-        flex: 1,
+        flex: "1",
         height: rem("1px"),
         borderTop:
           "var(--divider-size) var(--divider-border-style, solid) var(--divider-color, var(--_divider-color))",
         marginLeft: "var(--raikou-spacing-xs)",
 
         '[dir="rtl"] &': {
-          marginLeft: 0,
+          marginLeft: "0",
           marginRight: "var(--raikou-spacing-xs)",
         },
       },

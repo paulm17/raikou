@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`light-dark does not process the function when name does not match exactly 1`] = `
+"
+.button {
+  color: highlight-dark(red);
+}
+"
+`;
+
+exports[`light-dark works inside media query 1`] = `
+"
+@media screen and (min-width: 400px) {
+  .button {
+    background: var(--raikou-color-green-5);
+  }
+    [data-raikou-color-scheme='dark'] .button {
+    background: var(--raikou-color-yellow-9);
+  }
+}
+"
+`;
+
+exports[`light-dark works when light-dark is inside the class name 1`] = `
+"
+.button-light-dark {
+  color: red;
+}
+
+.button-light-dark:hover {
+  color: var(--raikou-color-red-5);
+}
+
+[data-raikou-color-scheme='dark'] .button-light-dark:hover {
+  color: var(--raikou-color-blue-9);
+}
+"
+`;
+
+exports[`light-dark works when there are commas in the value 1`] = `
+"
+.button {
+  color: rgba(0, 0, 0, 0.2);
+}
+  [data-raikou-color-scheme='dark'] .button {
+  color: rgba(142 142 142 / 0.2);
+}
+"
+`;
+
+exports[`light-dark works with base input 1`] = `
+"
+.button {
+  background: var(--raikou-color-red-5);
+}
+  [data-raikou-color-scheme='dark'] .button {
+  background: var(--raikou-color-blue-9);
+}
+"
+`;

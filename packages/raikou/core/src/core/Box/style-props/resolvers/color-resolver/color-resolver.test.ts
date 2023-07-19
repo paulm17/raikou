@@ -1,5 +1,5 @@
 import { colorResolver } from "./color-resolver";
-import { DEFAULT_THEME } from "../../../../RaikouProvider";
+import { DEFAULT_THEME } from "../../../../Bootstrap";
 
 describe("@raikou/core/Box/color-resolver", () => {
   it("resolves theme color", () => {

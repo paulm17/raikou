@@ -29,8 +29,8 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".tooltip-arrow": {
       backgroundColor: "inherit",
-      border: 0,
-      zIndex: 1,
+      border: "0",
+      zIndex: "1",
     },
   });
 };

@@ -6,8 +6,8 @@ module.exports = function ({ addComponents, theme }: any) {
       appearance: "none",
       border: "none",
       display: "inline",
-      padding: 0,
-      margin: 0,
+      padding: "0",
+      margin: "0",
       backgroundColor: "transparent",
       cursor: "pointer",
 

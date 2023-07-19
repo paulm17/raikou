@@ -9,8 +9,7 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
-    },
-    "./styles.css": "./dist/index.css"
+    }
   },
   "files": [
     "dist/**"
@@ -28,6 +27,7 @@
   },
   "dependencies": {
     "@raikou/core": "workspace:*",
+    "@raikou/hooks": "workspace:*",
     "tslib": "^2.6.0"
   },
   "devDependencies": {

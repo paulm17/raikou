@@ -1,18 +1,21 @@
-import { DEFAULT_THEME } from '../../../../RaikouProvider';
-import { getGlobalClassNames, FOCUS_CLASS_NAMES } from './get-global-class-names';
+import { DEFAULT_THEME } from "../../../../Bootstrap";
+import {
+  getGlobalClassNames,
+  FOCUS_CLASS_NAMES,
+} from "./get-global-class-names";
 
-describe('@raikou/core/get-global-class-names', () => {
-  it('returns empty string if both focusable and active options are false', () => {
+describe("@raikou/core/get-global-class-names", () => {
+  it("returns empty string if both focusable and active options are false", () => {
     expect(
       getGlobalClassNames({
         theme: DEFAULT_THEME,
         options: { focusable: false, active: false },
         unstyled: false,
       })
-    ).toBe('');
+    ).toBe("");
   });
 
-  it('returns correct class names if focusable is true', () => {
+  it("returns correct class names if focusable is true", () => {
     expect(
       getGlobalClassNames({
         theme: DEFAULT_THEME,
@@ -22,7 +25,7 @@ describe('@raikou/core/get-global-class-names', () => {
     ).toBe(FOCUS_CLASS_NAMES[DEFAULT_THEME.focusRing]);
   });
 
-  it('returns correct class names if active is true', () => {
+  it("returns correct class names if active is true", () => {
     expect(
       getGlobalClassNames({
         theme: DEFAULT_THEME,
@@ -32,33 +35,37 @@ describe('@raikou/core/get-global-class-names', () => {
     ).toBe(DEFAULT_THEME.activeClassName);
   });
 
-  it('returns correct class names if both focusable and active are true', () => {
+  it("returns correct class names if both focusable and active are true", () => {
     expect(
       getGlobalClassNames({
         theme: DEFAULT_THEME,
         options: { focusable: true, active: true },
         unstyled: false,
       })
-    ).toBe(`${FOCUS_CLASS_NAMES[DEFAULT_THEME.focusRing]} ${DEFAULT_THEME.activeClassName}`);
+    ).toBe(
+      `${FOCUS_CLASS_NAMES[DEFAULT_THEME.focusRing]} ${
+        DEFAULT_THEME.activeClassName
+      }`
+    );
   });
 
-  it('returns empty string if unstyled is true', () => {
+  it("returns empty string if unstyled is true", () => {
     expect(
       getGlobalClassNames({
         theme: DEFAULT_THEME,
         options: { focusable: true, active: true },
         unstyled: true,
       })
-    ).toBe('');
+    ).toBe("");
   });
 
-  it('returns empty string if options are undefined', () => {
+  it("returns empty string if options are undefined", () => {
     expect(
       getGlobalClassNames({
         theme: DEFAULT_THEME,
         options: undefined,
         unstyled: false,
       })
-    ).toBe('');
+    ).toBe("");
   });
 });

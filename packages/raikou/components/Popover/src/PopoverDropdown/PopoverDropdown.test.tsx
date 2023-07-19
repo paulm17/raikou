@@ -1,6 +1,6 @@
 import { tests, createContextContainer } from "@raikou/tests";
 import { PopoverDropdown, PopoverDropdownProps } from "./PopoverDropdown";
-import { Popover } from "../../Popover";
+import { Popover } from "../../../Popover/src";
 
 const defaultProps: PopoverDropdownProps = {};
 

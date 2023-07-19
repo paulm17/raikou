@@ -19,8 +19,8 @@ module.exports = function ({ addComponents, theme }: any) {
         },
 
         ".inner": {
-          "--_inner-y-offset": 0,
-          "--_inner-x-offset": 0,
+          "--_inner-y-offset": "0",
+          "--_inner-x-offset": "0",
         },
       },
 

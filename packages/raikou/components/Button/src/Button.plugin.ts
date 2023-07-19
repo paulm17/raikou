@@ -28,9 +28,9 @@ module.exports = function ({ addComponents, theme }: any) {
       "--button-padding-x-compact-xl": rem("14px"),
 
       userSelect: "none",
-      fontWeight: 600,
+      fontWeight: "600",
       position: "relative",
-      lineHeight: 1,
+      lineHeight: "1",
       textAlign: "center",
 
       width: "var(--_button-width, auto)",
@@ -147,7 +147,7 @@ module.exports = function ({ addComponents, theme }: any) {
         "--_button-section-margin-right": "var(--raikou-spacing-xs)",
 
         '[dir="rtl"] &': {
-          "--_button-section-margin-right": 0,
+          "--_button-section-margin-right": "0",
           "--_button-section-margin-left": "var(--raikou-spacing-xs)",
         },
       },
@@ -156,7 +156,7 @@ module.exports = function ({ addComponents, theme }: any) {
         "--_button-section-margin-left": "var(--raikou-spacing-xs)",
 
         '[dir="rtl"] &': {
-          "--_button-section-margin-left": 0,
+          "--_button-section-margin-left": "0",
           "--_button-section-margin-right": "var(--raikou-spacing-xs)",
         },
       },
@@ -177,19 +177,19 @@ module.exports = function ({ addComponents, theme }: any) {
 
         "& [data-button]": {
           "&:not(:only-child):first-child": {
-            borderBottomRightRadius: 0,
-            borderTopRightRadius: 0,
+            borderBottomRightRadius: "0",
+            borderTopRightRadius: "0",
             borderRightWidth: "calc(var(--button-border-width) / 2)",
           },
 
           "&:not(:only-child):last-child": {
-            borderBottomLeftRadius: 0,
-            borderTopLeftRadius: 0,
+            borderBottomLeftRadius: "0",
+            borderTopLeftRadius: "0",
             borderLeftWidth: "calc(var(--button-border-width) / 2)",
           },
 
           "&:not(:only-child):not(:first-child):not(:last-child)": {
-            borderRadius: 0,
+            borderRadius: "0",
             borderRightWidth: "calc(var(--button-border-width) / 2)",
             borderLeftWidth: "calc(var(--button-border-width) / 2)",
           },
@@ -201,19 +201,19 @@ module.exports = function ({ addComponents, theme }: any) {
 
         "& [data-button]": {
           "&:not(:only-child):first-child": {
-            borderBottomLeftRadius: 0,
-            borderBottomRightRadius: 0,
+            borderBottomLeftRadius: "0",
+            borderBottomRightRadius: "0",
             borderBottomWidth: "calc(var(--button-border-width) / 2)",
           },
 
           "&:not(:only-child):last-child": {
-            borderTopLeftRadius: 0,
-            borderTopRightRadius: 0,
+            borderTopLeftRadius: "0",
+            borderTopRightRadius: "0",
             borderTopWidth: "calc(var(--button-border-width) / 2)",
           },
 
           "&:not(:only-child):not(:first-child):not(:last-child)": {
-            borderRadius: 0,
+            borderRadius: "0",
             borderBottomWidth: "calc(var(--button-border-width) / 2)",
             borderTopWidth: "calc(var(--button-border-width) / 2)",
           },

@@ -3,7 +3,7 @@ const reset = require('./postcss-reset');
 
 module.exports = (opts: any = {}) => {
   return {
-    postcssPlugin: 'postcss-remove-dumbcss',
+    postcssPlugin: 'postcss-removecss-raikou',
     plugins: [nested(), reset(opts)],
   };
 };

@@ -3,8 +3,8 @@ module.exports = function ({ addComponents, theme }: any) {
     ".unstyledButton-root": {
       backgroundColor: "transparent",
       cursor: "pointer",
-      border: 0,
-      padding: 0,
+      border: "0",
+      padding: "0",
       appearance: "none",
       fontSize: "var(--raikou-font-size-md)",
       textAlign: "left",

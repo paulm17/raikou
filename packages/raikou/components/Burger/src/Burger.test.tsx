@@ -1,6 +1,6 @@
 import React from "react";
 import { render, tests, screen } from "@raikou/tests";
-import { VisuallyHidden } from "../VisuallyHidden";
+import { VisuallyHidden } from "../../VisuallyHidden/src";
 import { Burger, BurgerProps, BurgerStylesNames } from "./Burger";
 
 const defaultProps: BurgerProps = {};

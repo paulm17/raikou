@@ -185,6 +185,210 @@ var init_src = __esm({
   }
 });
 
+// ../components/Accordion/src/Accordion.plugin.ts
+var require_Accordion_plugin = __commonJS({
+  "../components/Accordion/src/Accordion.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".accordion-panel": {
+          wordBreak: "break-word"
+        },
+        ".accordion-content": {
+          padding: "var(--raikou-spacing-md)",
+          paddingTop: "calc(var(--raikou-spacing-xs) / 2)"
+        },
+        ".accordion-itemTitle": {
+          margin: "0",
+          padding: "0"
+        },
+        ".accordion-control": {
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "var(--_control-flex-direction, row-reverse)",
+          paddingRight: "var(--_control-padding-right, var(--raikou-spacing-md))",
+          paddingLeft: "var(--_control-padding-left, var(--raikou-spacing-md))",
+          textAlign: "left",
+          color: "var(--_control-color)",
+          opacity: "var(--_control-opacity, 1)",
+          cursor: "var(--_control-cursor, pointer)",
+          backgroundColor: "var(--_control-background-color, transparent)",
+          '&[data-chevron-position="left"]': {
+            "--_control-flex-direction": "row",
+            "--_control-padding-left": "0"
+          },
+          '[dir="rtl"] &': {
+            '&[data-chevron-position="left"]': {
+              "--_control-padding-left": "var(--raikou-spacing-md)"
+            }
+          },
+          '[data-raikou-color-scheme="light"] &': {
+            "--_control-color": "var(--raikou-color-black)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_control-color": "var(--raikou-color-dark-0)"
+          },
+          "&:disabled, &[data-disabled]": {
+            "--_control-opacity": "0.4",
+            "--_control-cursor": "not-allowed"
+          }
+        },
+        ".accordion-root[data-variant='default'] .accordion-control, .accordion-root[data-variant='contained'] .accordion-control": {
+          "&:not(:disabled, [data-disabled])": {
+            "@media (hover: hover)": {
+              "&:hover": {
+                '[data-raikou-color-scheme="light"] &': {
+                  "--_control-background-color": "var(--raikou-color-gray-0)"
+                },
+                '[data-raikou-color-scheme="dark"] &': {
+                  "--_control-background-color": "var(--raikou-color-dark-6)"
+                }
+              }
+            },
+            "@media (hover: none)": {
+              "&:active": {
+                '[data-raikou-color-scheme="light"] &': {
+                  "--_control-background-color": "var(--raikou-color-gray-0)"
+                },
+                '[data-raikou-color-scheme="dark"] &': {
+                  "--_control-background-color": "var(--raikou-color-dark-6)"
+                }
+              }
+            }
+          }
+        },
+        ".accordion-label": {
+          color: "inherit",
+          fontWeight: "400",
+          flex: "1",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          paddingTop: "var(--raikou-spacing-sm)",
+          paddingBottom: "var(--raikou-spacing-sm)"
+        },
+        ".accordion-chevron": {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          transition: "transform var(--accordion-transition-duration) ease",
+          marginRight: "var(--_chevron-margin-right)",
+          marginLeft: "var(--_chevron-margin-left)",
+          width: "var(--accordion-chevron-size)",
+          minWidth: "var(--accordion-chevron-size)",
+          transform: "var(--_chevron-transform, rotate(0deg))",
+          "&[data-rotate]": {
+            "--_chevron-transform": "rotate(180deg)"
+          },
+          '&[data-position="left"]': {
+            "--_chevron-margin-right": "var(--raikou-spacing-md)",
+            "--_chevron-margin-left": "var(--raikou-spacing-md)"
+          },
+          '&[data-position="right"]': {
+            "--_chevron-margin-left": "0"
+          },
+          '[dir="rtl"] &': {
+            '&[data-position="left"]': {
+              "--_chevron-margin-right": "0",
+              "--_chevron-margin-left": "var(--raikou-spacing-md)"
+            },
+            '&[data-position="right"]': {
+              "--_chevron-margin-right": "var(--raikou-spacing-md)",
+              "--_chevron-margin-left": "0"
+            }
+          }
+        },
+        ".accordion-icon": {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginRight: "var(--_icon-margin-right, var(--raikou-spacing-sm))",
+          marginLeft: "var(--_icon-margin-left, 0)",
+          '&[data-chevron-position="left"]': {
+            "--_icon-margin-right": "0",
+            "--_icon-margin-left": "var(--raikou-spacing-lg)"
+          },
+          '[dir="rtl"] &': {
+            '&[data-chevron-position="left"]': {
+              "--_icon-margin-right": "var(--raikou-spacing-lg)",
+              "--_icon-margin-left": "0"
+            },
+            '&[data-chevron-position="right"]': {
+              "--_icon-margin-right": "0",
+              "--_icon-margin-left": "var(--raikou-spacing-sm)"
+            }
+          }
+        },
+        ".accordion-item": {
+          backgroundColor: "var(--_item-bg)",
+          '[data-raikou-color-scheme="light"] &': {
+            "--_item-border-color": "var(--raikou-color-gray-3)",
+            "--_item-filled-color": "var(--raikou-color-gray-0)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_item-border-color": "var(--raikou-color-dark-4)",
+            "--_item-filled-color": "var(--raikou-color-dark-6)"
+          }
+        },
+        ".accordion-root[data-variant='default'] .accordion-item": {
+          borderBottom: `${rem("1px")} solid var(--_item-border-color)`
+        },
+        ".accordion-root[data-variant='contained'] .accordion-item": {
+          border: `${rem("1px")} solid var(--_item-border-color)`,
+          transition: "background-color 150ms ease",
+          "&[data-active]": {
+            "--_item-bg": "var(--_item-filled-color)"
+          },
+          "&:first-of-type": {
+            borderTopLeftRadius: "var(--accordion-radius)",
+            borderTopRightRadius: "var(--accordion-radius)",
+            "& > [data-accordion-control]": {
+              borderTopLeftRadius: "var(--accordion-radius)",
+              borderTopRightRadius: "var(--accordion-radius)"
+            }
+          },
+          "&:last-of-type": {
+            borderBottomLeftRadius: "var(--accordion-radius)",
+            borderBottomRightRadius: "var(--accordion-radius)",
+            "& > [data-accordion-control]": {
+              borderBottomLeftRadius: "var(--accordion-radius)",
+              borderBottomRightRadius: "var(--accordion-radius)"
+            }
+          },
+          "& + &": {
+            borderTop: "0"
+          }
+        },
+        ".accordion-root[data-variant='filled'] .accordion-item": {
+          borderRadius: "var(--accordion-radius)",
+          "&[data-active]": {
+            "--_item-bg": "var(--_item-filled-color)"
+          }
+        },
+        ".accordion-root[data-variant='separated'] .accordion-item": {
+          "--_item-bg": "var(--_item-filled-color)",
+          borderRadius: "var(--accordion-radius)",
+          border: `${rem("1px")} solid var(--__item-border-color, transparent)`,
+          transition: "background-color 150ms ease",
+          "&[data-active]": {
+            "--__item-border-color": "var(--_item-border-color)",
+            '[data-raikou-color-scheme="light"] &': {
+              "--_item-bg": "var(--raikou-color-white)"
+            },
+            '[data-raikou-color-scheme="dark"] &': {
+              "--_item-bg": "var(--raikou-color-dark-7)"
+            }
+          },
+          "& + &": {
+            marginTop: "var(--raikou-spacing-md)"
+          }
+        }
+      });
+    };
+  }
+});
+
 // ../components/ActionIcon/src/ActionIcon.plugin.ts
 var require_ActionIcon_plugin = __commonJS({
   "../components/ActionIcon/src/ActionIcon.plugin.ts"(exports, module) {
@@ -198,7 +402,7 @@ var require_ActionIcon_plugin = __commonJS({
           "--ai-size-md": rem("28px"),
           "--ai-size-lg": rem("34px"),
           "--ai-size-xl": rem("44px"),
-          lineHeight: 1,
+          lineHeight: "1",
           display: "inline-flex",
           alignItems: "center",
           justifyContent: "center",
@@ -257,7 +461,7 @@ var require_ActionIcon_plugin = __commonJS({
           }
         },
         ".actionIcon-loader": {
-          zIndex: 1
+          zIndex: "1"
         },
         ".actionIconGroup-root": {
           display: "flex",
@@ -265,17 +469,17 @@ var require_ActionIcon_plugin = __commonJS({
             flexDirection: "row",
             "& [data-action-icon]": {
               "&:not(:only-child):first-child": {
-                borderBottomRightRadius: 0,
-                borderTopRightRadius: 0,
+                borderBottomRightRadius: "0",
+                borderTopRightRadius: "0",
                 borderRightWidth: "calc(var(--ai-border-width) / 2)"
               },
               "&:not(:only-child):last-child": {
-                borderBottomLeftRadius: 0,
-                borderTopLeftRadius: 0,
+                borderBottomLeftRadius: "0",
+                borderTopLeftRadius: "0",
                 borderLeftWidth: "calc(var(--ai-border-width) / 2)"
               },
               "&:not(:only-child):not(:first-child):not(:last-child)": {
-                borderRadius: 0,
+                borderRadius: "0",
                 borderRightWidth: "calc(var(--ai-border-width) / 2)",
                 borderLeftWidth: "calc(var(--ai-border-width) / 2)"
               }
@@ -285,17 +489,17 @@ var require_ActionIcon_plugin = __commonJS({
             flexDirection: "column",
             "& [data-action-icon]": {
               "&:not(:only-child):first-child": {
-                borderBottomLeftRadius: 0,
-                borderBottomRightRadius: 0,
+                borderBottomLeftRadius: "0",
+                borderBottomRightRadius: "0",
                 borderBottomWidth: "calc(var(--ai-border-width) / 2)"
               },
               "&:not(:only-child):last-child": {
-                borderTopLeftRadius: 0,
-                borderTopRightRadius: 0,
+                borderTopLeftRadius: "0",
+                borderTopRightRadius: "0",
                 borderTopWidth: "calc(var(--ai-border-width) / 2)"
               },
               "&:not(:only-child):not(:first-child):not(:last-child)": {
-                borderRadius: 0,
+                borderRadius: "0",
                 borderBottomWidth: "calc(var(--ai-border-width) / 2)",
                 borderTopWidth: "calc(var(--ai-border-width) / 2)"
               }
@@ -333,7 +537,7 @@ var require_Alert_plugin = __commonJS({
           display: "flex"
         },
         ".alert-body": {
-          flex: 1
+          flex: "1"
         },
         ".alert-title": {
           marginBottom: "var(--raikou-spacing-xs)",
@@ -341,7 +545,7 @@ var require_Alert_plugin = __commonJS({
           alignItems: "center",
           justifyContent: "space-between",
           fontSize: "var(--raikou-font-size-sm)",
-          fontWeight: 700,
+          fontWeight: "700",
           "&[data-with-close-button]": {
             paddingRight: "var(--raikou-spacing-md)"
           }
@@ -352,7 +556,7 @@ var require_Alert_plugin = __commonJS({
           textOverflow: "ellipsis"
         },
         ".alert-icon": {
-          lineHeight: 1,
+          lineHeight: "1",
           width: rem("20px"),
           height: rem("20px"),
           display: "flex",
@@ -385,6 +589,158 @@ var require_Alert_plugin = __commonJS({
   }
 });
 
+// ../components/AppShell/src/AppShell.plugin.ts
+var require_AppShell_plugin = __commonJS({
+  "../components/AppShell/src/AppShell.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".appshell-root": {
+          "&[data-resizing]": {
+            "--app-shell-transition-duration": "0ms !important"
+          },
+          "&[data-disabled]": {
+            "--app-shell-header-offset": "0px !important",
+            "--app-shell-navbar-offset": "0px !important"
+          },
+          '[data-raikou-color-scheme="light"] &': {
+            "--_app-shell-border-color": "var(--raikou-color-gray-3)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_app-shell-border-color": "var(--raikou-color-dark-4)"
+          }
+        },
+        ".appshell-navbar, .appshell-aside, .appshell-header, .appshell-main, .appshell-footer": {
+          "transition-duration": "var(--app-shell-transition-duration)",
+          "transition-timing-function": "var(--app-shell-transition-timing-function)"
+        },
+        ".appshell-navbar, .appshell-aside": {
+          position: "fixed",
+          display: "flex",
+          flexDirection: "column",
+          top: "var(--_section-top, var(--app-shell-header-offset, 0px))",
+          height: "var(--_section-height, calc(100dvh - var(--app-shell-header-offset, 0px) - var(--app-shell-footer-offset, 0px)))",
+          backgroundColor: "var(--raikou-color-body)",
+          transitionProperty: "transform, top, height",
+          '[data-layout="alt"] &': {
+            "--_section-top": "0px",
+            "--_section-height": "100dvh"
+          }
+        },
+        ".appshell-navbar": {
+          left: "var(--_navbar-left, 0px)",
+          right: "var(--_navbar-right)",
+          width: "var(--app-shell-navbar-width)",
+          borderRight: "var(--_navbar-border-right)",
+          borderLeft: "var(--_navbar-border-left)",
+          transitionProperty: "transform, top, height",
+          transform: "var(--_navbar-transform, var(--app-shell-navbar-transform))",
+          zIndex: "var(--app-shell-navbar-z-index)",
+          "&[data-with-border]": {
+            "--_navbar-border-right": `${rem(
+              "1px"
+            )} solid var(--_app-shell-border-color)`,
+            '[dir="rtl"] &': {
+              "--_navbar-border-right": "none",
+              "--_navbar-border-left": `${rem(
+                "1px"
+              )} solid var(--_app-shell-border-color)`
+            }
+          },
+          '[dir="rtl"] &': {
+            "--_navbar-left": "auto",
+            "--_navbar-right": "0px",
+            "--_navbar-transform": "var(--app-shell-navbar-transform-rtl)"
+          }
+        },
+        ".appshell-aside": {
+          left: "var(--_aside-left)",
+          right: "var(--_aside-right, 0px)",
+          width: "var(--app-shell-aside-width)",
+          borderRight: "var(--_aside-border-right)",
+          borderLeft: "var(--_aside-border-left)",
+          transform: "var(--_aside-transform, var(--app-shell-aside-transform))",
+          zIndex: "var(--app-shell-aside-z-index)",
+          "&[data-with-border]": {
+            "--_aside-border-left": `${rem(
+              "1px"
+            )} solid var(--_app-shell-border-color)`,
+            '[dir="rtl"] &': {
+              "--_aside-border-left": "none",
+              "--_aside-border-right": `${rem(
+                "1px"
+              )} solid var(--_app-shell-border-color)`
+            }
+          },
+          '[dir="rtl"] &': {
+            "--_aside-left": "0px",
+            "--_aside-right": "auto",
+            "--_aside-transform": "var(--app-shell-aside-transform-rtl)"
+          }
+        },
+        ".appshell-main": {
+          paddingLeft: "var(--_main-padding-left, calc(var(--app-shell-navbar-offset, 0px) + var(--app-shell-padding)))",
+          paddingRight: "var(--_main-padding-right, calc(var(--app-shell-aside-offset, 0px) + var(--app-shell-padding)))",
+          paddingTop: "calc(var(--app-shell-header-offset, 0px) + var(--app-shell-padding))",
+          paddingBottom: "calc(var(--app-shell-footer-offset, 0px) + var(--app-shell-padding))",
+          minHeight: "calc(100dvh - var(--app-shell-header-offset, 0px) - var(--app-shell-footer-offset, 0px))",
+          transitionProperty: "padding",
+          '[dir="rtl"] &': {
+            "--_main-padding-left": "calc(var(--app-shell-aside-offset, 0px) + var(--app-shell-padding))",
+            "--_main-padding-right": "calc(var(--app-shell-navbar-offset, 0px) + var(--app-shell-padding))"
+          }
+        },
+        ".appshell-header, .appshell-footer": {
+          position: "fixed",
+          left: "var(--_section-left, 0px)",
+          right: "var(--_section-right, 0px)",
+          transitionProperty: "transform, left, right",
+          backgroundColor: "var(--raikou-color-body)",
+          '[data-layout="alt"] &': {
+            "--_section-left": "var(--app-shell-navbar-offset, 0px)",
+            '[dir="rtl"] &': {
+              "--_section-right": "var(--app-shell-navbar-offset, 0px)",
+              "--_section-left": "0px"
+            }
+          }
+        },
+        ".appshell-header": {
+          top: "0",
+          height: "var(--app-shell-header-height)",
+          backgroundColor: "var(--raikou-color-body)",
+          borderBottom: "var(--_header-border-bottom)",
+          transform: "var(--app-shell-header-transform)",
+          zIndex: "var(--app-shell-header-z-index)",
+          "&[data-with-border]": {
+            "--_header-border-bottom": `${rem(
+              "1px"
+            )} solid var(--_app-shell-border-color)`
+          }
+        },
+        ".appshell-footer": {
+          bottom: "0",
+          height: "var(--app-shell-footer-height)",
+          borderTop: "var(--_footer-border-top)",
+          transform: "var(--app-shell-footer-transform)",
+          zIndex: "var(--app-shell-footer-z-index)",
+          "&[data-with-border]": {
+            "--_footer-border-top": `${rem(
+              "1px"
+            )} solid var(--_app-shell-border-color)`
+          }
+        },
+        ".appshell-section": {
+          flexGrow: "var(--_section-grow, 0)",
+          "&[data-grow]": {
+            "--_section-grow": "1"
+          }
+        }
+      });
+    };
+  }
+});
+
 // ../components/Anchor/src/Anchor.plugin.ts
 var require_Anchor_plugin = __commonJS({
   "../components/Anchor/src/Anchor.plugin.ts"(exports, module) {
@@ -397,8 +753,8 @@ var require_Anchor_plugin = __commonJS({
           appearance: "none",
           border: "none",
           display: "inline",
-          padding: 0,
-          margin: 0,
+          padding: "0",
+          margin: "0",
           backgroundColor: "transparent",
           cursor: "pointer",
           '&[data-underline="hover"]': {
@@ -433,7 +789,7 @@ var require_AspectRatio_plugin = __commonJS({
           maxWidth: "100%",
           "&::before": {
             content: '""',
-            height: 0,
+            height: "0",
             display: "block",
             paddingBottom: "calc((1 / var(--ar-ratio)) * 100%)"
           },
@@ -444,7 +800,7 @@ var require_AspectRatio_plugin = __commonJS({
           },
           "& > *:not(style)": {
             position: "absolute",
-            inset: 0,
+            inset: "0",
             width: "100%",
             height: "100%",
             display: "flex",
@@ -482,7 +838,7 @@ var require_Avatar_plugin = __commonJS({
           textDecoration: "none",
           border: "var(--_avatar-border, none)",
           backgroundColor: "var(--_avatar-bg, transparent)",
-          padding: 0,
+          padding: "0",
           width: "var(--avatar-size)",
           height: "var(--avatar-size)",
           minWidth: "var(--avatar-size)",
@@ -505,7 +861,7 @@ var require_Avatar_plugin = __commonJS({
           display: "block"
         },
         ".avatar-placeholder": {
-          fontWeight: 700,
+          fontWeight: "700",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -526,7 +882,7 @@ var require_Avatar_plugin = __commonJS({
           display: "flex",
           paddingLeft: "var(--ag-spacing)",
           '[dir="rtl"] &': {
-            paddingLeft: 0,
+            paddingLeft: "0",
             paddingRight: "var(--ag-spacing)"
           }
         }
@@ -546,7 +902,7 @@ var require_BackgroundImage_plugin = __commonJS({
           backgroundPosition: "center",
           display: "block",
           width: "100%",
-          border: 0,
+          border: "0",
           textDecoration: "none",
           borderRadius: "var(--bi-radius)"
         }
@@ -623,7 +979,7 @@ var require_Badge_plugin = __commonJS({
             backgroundColor: "var(--badge-dot-color)",
             marginRight: "var(--badge-dot-size)",
             '[dir="rtl"] &': {
-              marginRight: 0,
+              marginRight: "0",
               marginLeft: "var(--badge-dot-size)"
             }
           }
@@ -662,7 +1018,7 @@ var require_Blockquote_plugin = __commonJS({
         ".blockquote-root": {
           "--_bq-border": `${rem("3px")} solid var(--bq-bd)`,
           position: "relative",
-          margin: 0,
+          margin: "0",
           backgroundColor: "var(--_bq-bg)",
           borderLeft: "var(--_bq-border-left, var(--_bq-border))",
           borderRight: "var(--_bq-border-right, 0)",
@@ -674,8 +1030,8 @@ var require_Blockquote_plugin = __commonJS({
           padding: `var(--raikou-spacing-xl) ${rem("38px")}`,
           '[dir="rtl"] &': {
             "--_bq-radius-left": "var(--bq-radius)",
-            "--_bq-radius-right": 0,
-            "--_bq-border-left": 0,
+            "--_bq-radius-right": "0",
+            "--_bq-border-left": "0",
             "--_bq-border-right": "var(--_bq-border)"
           },
           '[data-raikou-color-scheme="light"] &': {
@@ -699,14 +1055,14 @@ var require_Blockquote_plugin = __commonJS({
           height: "var(--bq-icon-size)",
           borderRadius: "var(--bq-icon-size)",
           '[dir="rtl"] &': {
-            "--_bq-icon-left": 0,
+            "--_bq-icon-left": "0",
             "--_bq-icon-right": "calc(var(--bq-icon-size) / -2)"
           }
         },
         ".blockquote-cite": {
           display: "block",
           marginTop: "var(--raikou-spacing-md)",
-          opacity: 0.6,
+          opacity: "0.6",
           fontSize: "85%"
         }
       });
@@ -725,7 +1081,7 @@ var require_Breadcrumbs_plugin = __commonJS({
           alignItems: "center"
         },
         ".breadcrumbs-breadcrumb": {
-          lineHeight: 1,
+          lineHeight: "1",
           whiteSpace: "nowrap",
           "-webkit-tap-highlight-color": "transparent"
         },
@@ -733,7 +1089,7 @@ var require_Breadcrumbs_plugin = __commonJS({
           marginLeft: "var(--bc-separator-margin)",
           marginRight: "var(--bc-separator-margin)",
           color: "var(--_separator-color)",
-          lineHeight: 1,
+          lineHeight: "1",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -790,7 +1146,7 @@ var require_Burger_plugin = __commonJS({
           "&::before, &::after": {
             position: "absolute",
             content: '""',
-            left: 0
+            left: "0"
           },
           "&::before": {
             top: "calc(var(--burger-size) / -3)"
@@ -842,9 +1198,9 @@ var require_Button_plugin = __commonJS({
           "--button-padding-x-compact-lg": rem("12px"),
           "--button-padding-x-compact-xl": rem("14px"),
           userSelect: "none",
-          fontWeight: 600,
+          fontWeight: "600",
           position: "relative",
-          lineHeight: 1,
+          lineHeight: "1",
           textAlign: "center",
           width: "var(--_button-width, auto)",
           cursor: "var(--_button-cursor, pointer)",
@@ -943,14 +1299,14 @@ var require_Button_plugin = __commonJS({
           '&[data-position="left"]': {
             "--_button-section-margin-right": "var(--raikou-spacing-xs)",
             '[dir="rtl"] &': {
-              "--_button-section-margin-right": 0,
+              "--_button-section-margin-right": "0",
               "--_button-section-margin-left": "var(--raikou-spacing-xs)"
             }
           },
           '&[data-position="right"]': {
             "--_button-section-margin-left": "var(--raikou-spacing-xs)",
             '[dir="rtl"] &': {
-              "--_button-section-margin-left": 0,
+              "--_button-section-margin-left": "0",
               "--_button-section-margin-right": "var(--raikou-spacing-xs)"
             }
           }
@@ -967,17 +1323,17 @@ var require_Button_plugin = __commonJS({
             flexDirection: "row",
             "& [data-button]": {
               "&:not(:only-child):first-child": {
-                borderBottomRightRadius: 0,
-                borderTopRightRadius: 0,
+                borderBottomRightRadius: "0",
+                borderTopRightRadius: "0",
                 borderRightWidth: "calc(var(--button-border-width) / 2)"
               },
               "&:not(:only-child):last-child": {
-                borderBottomLeftRadius: 0,
-                borderTopLeftRadius: 0,
+                borderBottomLeftRadius: "0",
+                borderTopLeftRadius: "0",
                 borderLeftWidth: "calc(var(--button-border-width) / 2)"
               },
               "&:not(:only-child):not(:first-child):not(:last-child)": {
-                borderRadius: 0,
+                borderRadius: "0",
                 borderRightWidth: "calc(var(--button-border-width) / 2)",
                 borderLeftWidth: "calc(var(--button-border-width) / 2)"
               }
@@ -987,17 +1343,17 @@ var require_Button_plugin = __commonJS({
             flexDirection: "column",
             "& [data-button]": {
               "&:not(:only-child):first-child": {
-                borderBottomLeftRadius: 0,
-                borderBottomRightRadius: 0,
+                borderBottomLeftRadius: "0",
+                borderBottomRightRadius: "0",
                 borderBottomWidth: "calc(var(--button-border-width) / 2)"
               },
               "&:not(:only-child):last-child": {
-                borderTopLeftRadius: 0,
-                borderTopRightRadius: 0,
+                borderTopLeftRadius: "0",
+                borderTopRightRadius: "0",
                 borderTopWidth: "calc(var(--button-border-width) / 2)"
               },
               "&:not(:only-child):not(:first-child):not(:last-child)": {
-                borderRadius: 0,
+                borderRadius: "0",
                 borderBottomWidth: "calc(var(--button-border-width) / 2)",
                 borderTopWidth: "calc(var(--button-border-width) / 2)"
               }
@@ -1045,19 +1401,19 @@ var require_Checkbox_plugin = __commonJS({
           height: "var(--checkbox-size)",
           order: "var(--_checkbox-inner-order, 1)",
           "&[data-label-position='left']": {
-            "--_checkbox-inner-order": 2
+            "--_checkbox-inner-order": "2"
           }
         },
         ".checkbox-input": {
           appearance: "none",
           backgroundColor: "var(--_checkbox-bg)",
-          border: `rem(1px) solid var(--_checkbox-bd-color)`,
+          border: `${rem("1px")} solid var(--_checkbox-bd-color)`,
           width: "var(--checkbox-size)",
           height: "var(--checkbox-size)",
           borderRadius: "var(--checkbox-radius)",
-          padding: 0,
+          padding: "0",
           display: "block",
-          margin: 0,
+          margin: "0",
           transition: "border-color 100ms ease, background-color 100ms ease",
           cursor: "var(--_checkbox-cursor, var(--raikou-cursor-type))",
           '[data-raikou-color-scheme="light"] &': {
@@ -1075,8 +1431,8 @@ var require_Checkbox_plugin = __commonJS({
             "[data-raikou-color-scheme] &": {
               "--_checkbox-bg": "var(--checkbox-color)",
               "--_checkbox-bd-color": "var(--checkbox-color)",
-              "& + .icon": {
-                "--_checkbox-icon-opacity": 1,
+              "& + .checkbox-icon": {
+                "--_checkbox-icon-opacity": "1",
                 "--_checkbox-icon-transform": "none"
               }
             }
@@ -1091,7 +1447,7 @@ var require_Checkbox_plugin = __commonJS({
               "--_checkbox-bg": "var(--raikou-color-dark-6)",
               "--_checkbox-bd-color": "var(--raikou-color-dark-6)"
             },
-            "& + .icon": {
+            "& + .checkbox-icon": {
               '[data-raikou-color-scheme="light"] &': {
                 "--_checkbox-icon-color": "var(--raikou-color-gray-5)"
               },
@@ -1103,15 +1459,17 @@ var require_Checkbox_plugin = __commonJS({
         },
         ".checkbox-icon": {
           position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
+          top: "0",
+          left: "0",
+          right: "0",
+          bottom: "0",
           width: "60%",
           margin: "auto",
           color: "var(--_checkbox-icon-color, var(--raikou-color-white))",
           pointerEvents: "none",
-          transform: "var(--_checkbox-icon-transform, translateY(rem(5px)) scale(0.5))",
+          transform: `var(--_checkbox-icon-transform, translateY(${rem(
+            "5px"
+          )}) scale(0.5))`,
           opacity: "var(--_checkbox-icon-opacity, 0)",
           transition: "transform 100ms ease, opacity 100ms ease"
         }
@@ -1134,7 +1492,7 @@ var require_Code_plugin = __commonJS({
           fontSize: "var(--raikou-font-size-xs)",
           backgroundColor: "var(--_code-bg)",
           color: "var(--_code-color)",
-          margin: 0,
+          margin: "0",
           overflow: "auto",
           '[data-raikou-color-scheme="light"] &': {
             "--_code-bg": "var(--code-bg, var(--raikou-color-gray-1))",
@@ -1193,7 +1551,7 @@ var require_ColorPicker_plugin = __commonJS({
           paddingTop: "calc(var(--cp-body-spacing) / 2)"
         },
         ".colorPicker-sliders": {
-          flex: 1,
+          flex: "1",
           "&:not(:only-child)": {
             marginRight: "var(--raikou-spacing-xs)"
           }
@@ -1210,14 +1568,15 @@ var require_ColorPicker_plugin = __commonJS({
           left: "calc(var(--_thumb-x-offset) - var(--cp-thumb-size) / 2)",
           top: "calc(var(--_thumb-y-offset) - var(--cp-thumb-size) / 2)"
         },
-        ".colorPicker-swatch": {
-          height: 0,
+        /* Duplicate class to increase specificity */
+        ".colorPicker-swatch.colorPicker-swatch": {
+          height: "0",
           margin: rem("2px"),
           cursor: "pointer",
           width: `calc(var(--cp-swatch-size) - ${rem("4px")})`,
           paddingBottom: `calc(var(--cp-swatch-size) - ${rem("4px")})`,
-          minWidth: 0,
-          minHeight: 0
+          minWidth: "0",
+          minHeight: "0"
         },
         ".colorPicker-swatches": {
           marginTop: rem("5px"),
@@ -1284,8 +1643,8 @@ var require_ColorPicker_plugin = __commonJS({
         },
         ".colorPicker-sliderOverlay": {
           position: "absolute",
-          top: 0,
-          bottom: 0,
+          top: "0",
+          bottom: "0",
           left: `calc(var(--cp-thumb-size) * -1 / 2 - ${rem("1px")})`,
           right: `calc(var(--cp-thumb-size) * -1 / 2 - ${rem("1px")})`,
           borderRadius: "10000rem"
@@ -1307,7 +1666,7 @@ var require_ColorSwatch_plugin = __commonJS({
           border: "none",
           appearance: "none",
           display: "block",
-          lineHeight: 1,
+          lineHeight: "1",
           position: "relative",
           width: "var(--cs-size)",
           height: "var(--cs-size)",
@@ -1327,21 +1686,21 @@ var require_ColorSwatch_plugin = __commonJS({
         },
         ".colorswatch-colorOverlay": {
           position: "absolute",
-          inset: 0,
+          inset: "0",
           borderRadius: "var(--cs-radius)"
         },
         ".colorswatch-shadowOverlay": {
           position: "absolute",
-          inset: 0,
+          inset: "0",
           borderRadius: "var(--cs-radius)",
-          zIndex: 1,
+          zIndex: "1",
           boxShadow: `rgba(0, 0, 0, 0.1) 0 0 0 ${rem(
             "1px"
           )} inset, rgb(0, 0, 0, 0.15) 0 0 ${rem("4px")} inset`
         },
         ".colorswatch-alphaOverlay": {
           position: "absolute",
-          inset: 0,
+          inset: "0",
           borderRadius: "var(--cs-radius)",
           backgroundSize: `${rem("8px")} ${rem("8px")}`,
           backgroundPosition: `0 0, 0 ${rem("4px")}, ${rem("4px")} ${rem(
@@ -1362,9 +1721,9 @@ var require_ColorSwatch_plugin = __commonJS({
         },
         ".colorswatch-childrenOverlay": {
           position: "absolute",
-          inset: 0,
+          inset: "0",
           borderRadius: "var(--cs-radius)",
-          zIndex: 2,
+          zIndex: "2",
           display: "flex",
           alignItems: "center",
           justifyContent: "center"
@@ -1389,11 +1748,11 @@ var require_Combobox_plugin = __commonJS({
         },
         /* Variables must be both on dropdown and options to support usage of Combobox.Options without Combobox.Dropdown */
         ".comboBox-dropdown, .comboBox-options": {
-          "--combobox-option-padding-xs": `rem(4px) rem(8px)`,
-          "--combobox-option-padding-sm": `rem(6px) rem(10px)`,
-          "--combobox-option-padding-md": `rem(8px) rem(12px)`,
-          "--combobox-option-padding-lg": `rem(10px) rem(16px)`,
-          "--combobox-option-padding-xl": `rem(14px) rem(20px)`
+          "--combobox-option-padding-xs": `${rem("4px")} ${rem("8px")}`,
+          "--combobox-option-padding-sm": `${rem("6px")} ${rem("10px")}`,
+          "--combobox-option-padding-md": `${rem("8px")} ${rem("12px")}`,
+          "--combobox-option-padding-lg": `${rem("10px")} ${rem("16px")}`,
+          "--combobox-option-padding-xl": `${rem("14px")} ${rem("20px")}`
         },
         ".comboBox-option": {
           padding: "var(--combobox-option-padding)",
@@ -1403,13 +1762,14 @@ var require_Combobox_plugin = __commonJS({
           color: "var(--_option-color, inherit)",
           opacity: "var(--_option-opacity, 1)",
           cursor: "var(--_option-cursor, pointer)",
+          wordBreak: "break-word",
           "&[data-combobox-selected]": {
             "--_option-bg": "var(--raikou-color-primary)",
             "--_option-color": "var(--raikou-color-white)"
           },
           "&[data-combobox-disabled]": {
             "--_option-cursor": "not-allowed",
-            "--_option-opacity": 0.35
+            "--_option-opacity": "0.35"
           },
           "@media (hover: hover)": {
             "&:hover": {
@@ -1441,15 +1801,15 @@ var require_Combobox_plugin = __commonJS({
           marginRight: "calc(var(--combobox-padding) * -1)",
           marginTop: "calc(var(--combobox-padding) * -1)",
           width: "calc(100% + var(--combobox-padding) * 2)",
-          borderTopWidth: 0,
-          borderRightWidth: 0,
-          borderLeftWidth: 0,
-          borderBottomLeftRadius: 0,
-          borderBottomRightRadius: 0,
+          borderTopWidth: "0",
+          borderRightWidth: "0",
+          borderLeftWidth: "0",
+          borderBottomLeftRadius: "0",
+          borderBottomRightRadius: "0",
           marginBottom: "var(--combobox-padding)",
           backgroundColor: "var(--_search_background)",
           position: "relative",
-          zIndex: 1e3,
+          zIndex: "1000",
           "&, &:focus": {
             "border-color": "var(--_search-border-color)"
           },
@@ -1500,15 +1860,15 @@ var require_Combobox_plugin = __commonJS({
           color: "var(--raikou-color-dimmed)",
           fontSize: "calc(var(--combobox-option-fz) * 0.85)",
           padding: "var(--combobox-option-padding)",
-          fontWeight: 500,
+          fontWeight: "500",
           position: "relative",
           display: "flex",
           alignItems: "center",
           "&::after": {
             content: '""',
-            flex: 1,
-            left: 0,
-            right: 0,
+            flex: "1",
+            left: "0",
+            right: "0",
             height: rem("1px"),
             marginLeft: "var(--raikou-spacing-xs)",
             backgroundColor: "var(--_divider-bg)",
@@ -1540,6 +1900,30 @@ var require_Combobox_plugin = __commonJS({
           },
           "&[data-error]": {
             "--_color": "var(--raikou-color-error)"
+          }
+        },
+        ".comboBox-optionsDropdownScrollArea": {
+          "margin-right": "calc(var(--combobox-padding) * -1)",
+          '[dir="rtl"] &': {
+            marginLeft: "calc(var(--combobox-padding) * -1)",
+            marginRight: "0"
+          }
+        },
+        ".comboBox-optionsDropdownOption": {
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "var(--_flex-direction, row)",
+          gap: rem("8px"),
+          "&[data-reverse]": {
+            justifyContent: "space-between"
+          }
+        },
+        ".comboBox-optionsDropdownCheckIcon": {
+          opacity: "0.4",
+          width: "0.8em",
+          height: "0.8em",
+          "[data-combobox-selected] &": {
+            opacity: "1"
           }
         }
       });
@@ -1599,7 +1983,7 @@ var require_Divider_plugin = __commonJS({
             alignSelf: "stretch"
           },
           "&[data-with-label]": {
-            border: 0
+            border: "0"
           }
         },
         ".divider-label": {
@@ -1620,23 +2004,23 @@ var require_Divider_plugin = __commonJS({
           },
           "&::before": {
             content: '""',
-            flex: 1,
+            flex: "1",
             height: rem("1px"),
             borderTop: "var(--divider-size) var(--divider-border-style, solid) var(--divider-color, var(--_divider-color))",
             marginRight: "var(--raikou-spacing-xs)",
             '[dir="rtl"] &': {
-              marginRight: 0,
+              marginRight: "0",
               marginLeft: "var(--raikou-spacing-xs)"
             }
           },
           "&::after": {
             content: '""',
-            flex: 1,
+            flex: "1",
             height: rem("1px"),
             borderTop: "var(--divider-size) var(--divider-border-style, solid) var(--divider-color, var(--_divider-color))",
             marginLeft: "var(--raikou-spacing-xs)",
             '[dir="rtl"] &': {
-              marginLeft: 0,
+              marginLeft: "0",
               marginRight: "var(--raikou-spacing-xs)"
             }
           }
@@ -1661,7 +2045,7 @@ var require_Drawer_plugin = __commonJS({
           "--drawer-size-xl": rem("780px")
         },
         ".drawer-header": {
-          zIndex: 1e3
+          zIndex: "1000"
         },
         ".drawer-content": {
           "--paper-radius": "0 !important",
@@ -1669,7 +2053,7 @@ var require_Drawer_plugin = __commonJS({
           height: "var(--drawer-height)",
           maxWidth: "100%",
           maxHeight: "100%",
-          borderRadius: 0,
+          borderRadius: "0",
           overflowY: "auto"
         },
         ".drawer-inner": {
@@ -1694,7 +2078,7 @@ var require_Fieldset_plugin = __commonJS({
           paddingTop: "var(--raikou-spacing-xs)",
           borderRadius: "var(--fieldset-radius)"
         },
-        ".fieldset-root--default": {
+        ".fieldset-root[data-variant='default']": {
           backgroundColor: "var(--_bg)",
           border: `${rem("1px")} solid var(--_bd)`,
           '[data-raikou-color-scheme="light"] &': {
@@ -1706,7 +2090,7 @@ var require_Fieldset_plugin = __commonJS({
             "--_bg": "var(--raikou-color-dark-7)"
           }
         },
-        ".fieldset-root--filled": {
+        ".fieldset-root[data-variant='filled']": {
           backgroundColor: "var(--_bg)",
           border: `${rem("1px")} solid var(--_bd)`,
           '[data-raikou-color-scheme="light"] &': {
@@ -1718,16 +2102,16 @@ var require_Fieldset_plugin = __commonJS({
             "--_bg": "var(--raikou-color-dark-6)"
           }
         },
-        ".fieldset-root--unstyled": {
-          padding: 0,
-          border: 0,
-          borderRadius: 0
+        ".fieldset-root[data-variant='unstyled']": {
+          padding: "0",
+          border: "0",
+          borderRadius: "0"
         },
         ".fieldset-legend": {
           fontSize: "var(--raikou-font-size-sm)"
         },
-        ".fieldset-legend--unstyled": {
-          padding: 0,
+        "[data-variant='unstyled'] .fieldset-legend": {
+          padding: "0",
           marginBottom: "var(--raikou-spacing-sm)"
         }
       });
@@ -1792,21 +2176,21 @@ var require_InlineInput_plugin = __commonJS({
           "--label-lh-lg": rem("30px"),
           "--label-lh-xl": rem("36px"),
           "&[data-label-position='left']": {
-            "--_label-order": 1,
+            "--_label-order": "1",
             "--_offset-right": "var(--raikou-spacing-sm)",
-            "--_offset-left": 0,
+            "--_offset-left": "0",
             '[dir="rtl"] &': {
-              "--_offset-right": 0,
+              "--_offset-right": "0",
               "--_offset-left": "var(--raikou-spacing-sm)"
             }
           },
           "&[data-label-position='right']": {
-            "--_label-order": 2,
-            "--_offset-right": 0,
+            "--_label-order": "2",
+            "--_offset-right": "0",
             "--_offset-left": "var(--raikou-spacing-sm)",
             '[dir="rtl"] &': {
               "--_offset-right": "var(--raikou-spacing-sm)",
-              "--_offset-left": 0
+              "--_offset-left": "0"
             }
           }
         },
@@ -1836,12 +2220,14 @@ var require_InlineInput_plugin = __commonJS({
             }
           }
         },
-        ".inlineInput-description": {
+        /* Duplicate class to increase specificity */
+        ".inlineInput-description.inlineInput-description": {
           marginTop: "calc(var(--raikou-spacing-xs) / 2)",
           paddingLeft: "var(--_offset-left)",
           paddingRight: "var(--_offset-right)"
         },
-        ".inlineInput-error": {
+        /* Duplicate class to increase specificity */
+        ".inlineInput-error.inlineInput-error": {
           marginTop: "calc(var(--raikou-spacing-xs) / 2)",
           paddingLeft: "var(--_offset-left)",
           paddingRight: "var(--_offset-right)"
@@ -1874,14 +2260,18 @@ var require_Input_plugin = __commonJS({
           "--input-padding-y-xl": rem("13px"),
           "--_input-cursor": "text",
           "--_input-text-align": "left",
-          "--_input-line-height": `calc(var(--input-height) - rem(2px))`,
+          "--_input-line-height": `calc(var(--input-height) - ${rem("2px")})`,
           "--_input-padding": "calc(var(--input-height) / 3)",
           "--_input-padding-left": "var(--_input-padding)",
           "--_input-padding-right": "var(--_input-padding)",
           "--_input-placeholder-color": "var(--raikou-color-placeholder)",
           "--_input-color": "inherit",
-          "--_input-left-section-size": `var(--input-left-section-width, calc(var(--input-height) - rem(2px)))`,
-          "--_input-right-section-size": `var(--input-right-section-width, calc(var(--input-height) - rem(2px)))`,
+          "--_input-left-section-size": `var(--input-left-section-width, calc(var(--input-height) - ${rem(
+            "2px"
+          )}))`,
+          "--_input-right-section-size": `var(--input-right-section-width, calc(var(--input-height) - ${rem(
+            "2px"
+          )}))`,
           "--_input-size": "var(--input-height)",
           "--_section-y": rem("1px"),
           "--_left-section-left": rem("1px"),
@@ -1898,8 +2288,10 @@ var require_Input_plugin = __commonJS({
             "--_input-line-height": "var(--raikou-line-height)"
           },
           "&[data-variant='unstyled']": {
-            "--input-padding": 0,
-            "--input-padding-y": 0
+            "--input-padding": "0",
+            "--input-padding-y": "0",
+            "--_input-padding-left": "0",
+            "--_input-padding-right": "0"
           },
           "&[data-with-left-section]": {
             "--_input-padding-left": "var(--_input-left-section-size)",
@@ -1916,7 +2308,7 @@ var require_Input_plugin = __commonJS({
           '[data-raikou-color-scheme="light"] &': {
             "--_input-disabled-bg": "var(--raikou-color-gray-1)",
             "--_input-disabled-color": "var(--raikou-color-gray-6)",
-            "&[data-variant='default']": {
+            '&[data-variant="default"]': {
               "--_input-bd": "var(--raikou-color-gray-4)",
               "--_input-bg": "var(--raikou-color-white)",
               "--_input-bd-focus": "var(--raikou-color-primary)"
@@ -1976,7 +2368,7 @@ var require_Input_plugin = __commonJS({
           transition: "border-color 100ms ease",
           textAlign: "var(--_input-text-align)",
           color: "var(--_input-color)",
-          border: `rem(1px) solid var(--_input-bd)`,
+          border: `${rem("1px")} solid var(--_input-bd)`,
           backgroundColor: "var(--_input-bg)",
           fontFamily: "var(--raikou-font-family)",
           height: "var(--_input-size)",
@@ -1995,7 +2387,7 @@ var require_Input_plugin = __commonJS({
           },
           "&::placeholder": {
             color: "var(--_input-placeholder-color)",
-            opacity: 1
+            opacity: "1"
           },
           "&::-webkit-inner-spin-button, &::-webkit-outer-spin-button, &::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration": {
             appearance: "none"
@@ -2013,7 +2405,7 @@ var require_Input_plugin = __commonJS({
         ".input-section": {
           pointerEvents: "var(--_section-pointer-events)",
           position: "absolute",
-          zIndex: 1,
+          zIndex: "1",
           left: "var(--_section-left)",
           right: "var(--_section-right)",
           bottom: "var(--_section-y)",
@@ -2047,7 +2439,7 @@ var require_Input_plugin = __commonJS({
         },
         ".inputWrapper-label": {
           display: "inline-block",
-          fontWeight: 500,
+          fontWeight: "500",
           wordBreak: "break-word",
           cursor: "default",
           "-webkit-tap-highlight-color": "transparent",
@@ -2060,8 +2452,8 @@ var require_Input_plugin = __commonJS({
           wordWrap: "break-word",
           lineHeight: "1.2",
           display: "block",
-          margin: 0,
-          padding: 0
+          margin: "0",
+          padding: "0"
         },
         ".inputWrapper-error": {
           color: "var(--raikou-color-error)",
@@ -2096,7 +2488,7 @@ var require_Kbd_plugin = __commonJS({
           "--kbd-padding-xl": `${rem("8px")} ${rem("14px")}`,
           fontFamily: "var(--raikou-font-family-monospace)",
           lineHeight: "var(--raikou-line-height)",
-          fontWeight: 700,
+          fontWeight: "700",
           padding: "var(--kbd-padding)",
           fontSize: "var(--kbd-fz)",
           borderRadius: "var(--raikou-radius-sm)",
@@ -2137,7 +2529,7 @@ var require_Loader_plugin = __commonJS({
         "@keyframes bars-loader-animation": {
           "0%": {
             transform: "scale(0.6)",
-            opacity: 0
+            opacity: "0"
           },
           "50%, 100%": {
             transform: "scale(1)"
@@ -2151,7 +2543,7 @@ var require_Loader_plugin = __commonJS({
           gap: "calc(var(--loader-size) / 5)"
         },
         ".bar": {
-          flex: 1,
+          flex: "1",
           background: "var(--loader-color)",
           animation: "bars-loader-animation 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite",
           borderRadius: "rem(2px)",
@@ -2162,15 +2554,15 @@ var require_Loader_plugin = __commonJS({
             animationDelay: "-120ms"
           },
           "&:nth-of-type(3)": {
-            animationDelay: 0
+            animationDelay: "0"
           }
         },
         "@keyframes loader-dots-animation": {
           "0%, 100%": {
-            opacity: 1
+            opacity: "1"
           },
           "50%": {
-            opacity: 0.5
+            opacity: "0.5"
           }
         },
         ".dots-loader": {
@@ -2274,8 +2666,8 @@ var require_Modal_plugin = __commonJS({
               "--_content-height": "100vh"
             },
             ".inner": {
-              "--_inner-y-offset": 0,
-              "--_inner-x-offset": 0
+              "--_inner-y-offset": "0",
+              "--_inner-x-offset": "0"
             }
           },
           "&[data-centered]": {
@@ -2317,10 +2709,10 @@ var require_ModalBase_plugin = __commonJS({
     module.exports = function({ addComponents, theme }) {
       addComponents({
         ".modalBase-title": {
-          lineHeight: 1,
-          padding: 0,
-          margin: 0,
-          fontWeight: 400,
+          lineHeight: "1",
+          padding: "0",
+          margin: "0",
+          fontWeight: "400",
           fontSize: "var(--raikou-font-size-md)"
         },
         ".modalBase-header": {
@@ -2331,9 +2723,9 @@ var require_ModalBase_plugin = __commonJS({
           paddingRight: `var(--_pr, calc(var(--mb-padding) - ${rem("5px")}))`,
           paddingLeft: "var(--_pl, var(--mb-padding))",
           position: "sticky",
-          top: 0,
+          top: "0",
           backgroundColor: "var(--raikou-color-body)",
-          zIndex: 1e3,
+          zIndex: "1000",
           '[dir="rtl"] &': {
             "--_pr": "var(--mb-padding)",
             "--_pl": `calc(var(--mb-padding) - ${rem("5px")})`
@@ -2342,8 +2734,8 @@ var require_ModalBase_plugin = __commonJS({
         ".modalBase-inner": {
           position: "fixed",
           width: "100%",
-          top: 0,
-          bottom: 0,
+          top: "0",
+          bottom: "0",
           zIndex: "calc(var(--mb-z-index) + 1)",
           pointerEvents: "none"
         },
@@ -2355,7 +2747,7 @@ var require_ModalBase_plugin = __commonJS({
           marginLeft: "var(--_close-ml, auto)",
           marginRight: "var(--_close-mr, 0)",
           '[dir="rtl"] &': {
-            "--_close-ml": 0,
+            "--_close-ml": "0",
             "--_close-mr": "auto"
           }
         },
@@ -2363,7 +2755,7 @@ var require_ModalBase_plugin = __commonJS({
           padding: "var(--mb-padding)",
           paddingTop: "var(--_pt, var(--mb-padding))",
           "&:not(:only-child)": {
-            "--_pt": 0
+            "--_pt": "0"
           }
         }
       });
@@ -2445,7 +2837,7 @@ var require_Notification_plugin = __commonJS({
           backgroundColor: "var(--notification-color)",
           color: "var(--raikou-color-white)",
           '[dir="rtl"] &': {
-            "--_icon-margin-right": 0,
+            "--_icon-margin-right": "0",
             "--_icon-margin-left": "var(--raikou-spacing-md)"
           }
         },
@@ -2453,22 +2845,22 @@ var require_Notification_plugin = __commonJS({
           marginRight: "var(--_icon-margin-right, var(--raikou-spacing-md))",
           marginLeft: "var(--_icon-margin-left, 0)",
           '[dir="rtl"] &': {
-            "--_icon-margin-right": 0,
+            "--_icon-margin-right": "0",
             "--_icon-margin-left": "var(--raikou-spacing-md)"
           }
         },
         ".notification-body": {
-          flex: 1,
+          flex: "1",
           overflow: "hidden",
           marginRight: "var(--_body-margin-right, var(--raikou-spacing-xs))",
           marginLeft: "var(--_body-margin-left, 0)",
           '[dir="rtl"] &': {
-            "--_body-margin-right": 0,
+            "--_body-margin-right": "0",
             "--_body-margin-left": "var(--raikou-spacing-xs)"
           }
         },
         ".notification-title": {
-          lineHeight: 1.4,
+          lineHeight: "1.4",
           marginBottom: rem("2px"),
           overflow: "hidden",
           textOverflow: "ellipsis",
@@ -2482,7 +2874,7 @@ var require_Notification_plugin = __commonJS({
         },
         ".notification-description": {
           color: "var(--_description-color)",
-          lineHeight: 1.4,
+          lineHeight: "1.4",
           overflow: "hidden",
           textOverflow: "ellipsis",
           "&[data-with-title]": {
@@ -2521,7 +2913,7 @@ var require_Overlay_plugin = __commonJS({
     module.exports = function({ addComponents, theme }) {
       addComponents({
         ".overlay-root": {
-          inset: 0,
+          inset: "0",
           position: "var(--_overlay-position, absolute)",
           background: "var(--overlay-bg)",
           backdropFilter: "var(--overlay-filter)",
@@ -2548,7 +2940,7 @@ var require_Paper_plugin = __commonJS({
     module.exports = function({ addComponents, theme }) {
       addComponents({
         ".paper-root": {
-          outline: 0,
+          outline: "0",
           "-webkit-tap-highlight-color": "transparent",
           display: "block",
           touchAction: "manipulation",
@@ -2565,6 +2957,252 @@ var require_Paper_plugin = __commonJS({
             '[data-raikou-color-scheme="dark"] &': {
               "--_paper-border-color": "var(--raikou-color-dark-4)"
             }
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../components/Pagination/src/Pagination.plugin.ts
+var require_Pagination_plugin = __commonJS({
+  "../components/Pagination/src/Pagination.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".pagination-root": {
+          "--pagination-control-size-xs": rem("22px"),
+          "--pagination-control-size-sm": rem("26px"),
+          "--pagination-control-size-md": rem("32px"),
+          "--pagination-control-size-lg": rem("38px"),
+          "--pagination-control-size-xl": rem("44px")
+        },
+        ".pagination-control": {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          border: `${rem("1px")} solid var(--_control-border-color)`,
+          cursor: "var(--_control-cursor, pointer)",
+          color: "var(--_control-color, var(--raikou-color-text))",
+          height: "var(--pagination-control-size)",
+          minWidth: "var(--pagination-control-size)",
+          fontSize: "var(--pagination-control-fz)",
+          padding: "var(--_control-padding, 0)",
+          lineHeight: "1",
+          backgroundColor: "var(--_control-bg-color)",
+          borderRadius: "var(--pagination-control-radius)",
+          opacity: "var(--_control-opacity, 1)",
+          "&[data-with-padding]": {
+            "--_control-padding": "calc(var(--pagination-control-size) / 4)"
+          },
+          "&:disabled, &[data-disabled]": {
+            "--_control-cursor": "not-allowed",
+            "--_control-opacity": "0.4"
+          },
+          "&[data-active]": {
+            "--_control-bg-color": "var(--pagination-active-bg) !important",
+            "--_control-border-color": "var(--pagination-active-bg) !important",
+            "--_control-color": "var(--raikou-color-white)"
+          },
+          '[data-raikou-color-scheme="light"] &': {
+            "--_control-border-color": "var(--raikou-color-gray-4)",
+            "--_control-bg-color": "var(--raikou-color-white)",
+            "--_control-bg-hover": "var(--raikou-color-gray-0)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_control-border-color": "var(--raikou-color-dark-4)",
+            "--_control-bg-color": "var(--raikou-color-dark-6)",
+            "--_control-bg-hover": "var(--raikou-color-dark-5)"
+          },
+          "@media (hover: hover)": {
+            "&:hover": {
+              "&:not(:disabled, [data-disabled])": {
+                "--_control-bg-color": "var(--_control-bg-hover)"
+              }
+            }
+          },
+          "@media (hover: none)": {
+            "&:active": {
+              "&:not(:disabled, [data-disabled])": {
+                "--_control-bg-color": "var(--_control-bg-hover)"
+              }
+            }
+          },
+          '[dir="rtl"] &': {
+            "& > svg": {
+              transform: "rotate(180deg)"
+            }
+          }
+        },
+        ".pagination-dots": {
+          height: "var(--pagination-control-size)",
+          minWidth: "var(--pagination-control-size)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          pointerEvents: "none"
+        }
+      });
+    };
+  }
+});
+
+// ../components/Pill/src/Pill.plugin.ts
+var require_Pill_plugin = __commonJS({
+  "../components/Pill/src/Pill.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".pill-root": {
+          "--pill-fz-xs": rem("10px"),
+          "--pill-fz-sm": rem("12px"),
+          "--pill-fz-md": rem("14px"),
+          "--pill-fz-lg": rem("16px"),
+          "--pill-fz-xl": rem("18px"),
+          "--pill-height-xs": rem("18px"),
+          "--pill-height-sm": rem("22px"),
+          "--pill-height-md": rem("25px"),
+          "--pill-height-lg": rem("28px"),
+          "--pill-height-xl": rem("32px"),
+          fontSize: "var(--pill-fz)",
+          flex: "0",
+          height: "var(--pill-height)",
+          paddingLeft: "0.8em",
+          paddingRight: "var(--_pill-padding-right, 0.8em)",
+          display: "inline-flex",
+          alignItems: "center",
+          borderRadius: "var(--pill-radius)",
+          backgroundColor: "var(--_pill-bg)",
+          lineHeight: "1",
+          whiteSpace: "nowrap",
+          userSelect: "none",
+          "-webkit-user-select": "none",
+          maxWidth: "100%",
+          color: "var(--_pill-color)",
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_pill-bg": "var(--raikou-color-dark-7)",
+            "--_pill-color": "var(--raikou-color-dark-0)"
+          },
+          '[data-raikou-color-scheme="light"] &': {
+            "--_pill-color": "var(--raikou-color-black)"
+          },
+          "&[data-with-remove]": {
+            "--_pill-padding-right": "0"
+          },
+          "&[data-disabled], &:has(button:disabled)": {
+            "--_pill-cursor": "not-allowed"
+          }
+        },
+        ".pill-root--default": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--_pill-bg": "var(--raikou-color-gray-1)",
+            "&[data-disabled], &:has(button:disabled)": {
+              "--_pill-bg": "var(--raikou-color-gray-3)"
+            }
+          }
+        },
+        ".pill-root--contrast": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--_pill-bg": "var(--raikou-color-white)",
+            "&[data-disabled], &:has(button:disabled)": {
+              "--_pill-bg": "var(--raikou-color-gray-3)"
+            }
+          }
+        },
+        ".pill-label": {
+          cursor: "var(--_pill-cursor, default)",
+          overflow: "hidden",
+          height: "100%",
+          lineHeight: "var(--pill-height)",
+          textOverflow: "ellipsis"
+        },
+        ".pill-remove": {
+          color: "inherit",
+          fontSize: "inherit",
+          height: "100%",
+          minHeight: "unset",
+          minWidth: "2em",
+          width: "unset",
+          borderRadius: "0",
+          paddingLeft: "0.1em",
+          paddingRight: "0.3em",
+          flex: "0",
+          ".root[data-disabled] > &, &:disabled": {
+            backgroundColor: "transparent",
+            width: "0.8em",
+            minWidth: "0.8em",
+            padding: "0",
+            cursor: "not-allowed",
+            "& > svg": {
+              display: "none"
+            }
+          },
+          "& > svg": {
+            pointerEvents: "none"
+          }
+        },
+        ".pill-group": {
+          "--pg-gap-xs": rem("6px"),
+          "--pg-gap-sm": rem("8px"),
+          "--pg-gap-md": rem("10px"),
+          "--pg-gap-lg": rem("12px"),
+          "--pg-gap-xl": rem("12px"),
+          display: "flex",
+          alignItems: "center",
+          gap: "var(--pg-gap)",
+          flexWrap: "wrap"
+        }
+      });
+    };
+  }
+});
+
+// ../components/PillsInput/src/PillsInput.plugin.ts
+var require_PillsInput_plugin = __commonJS({
+  "../components/PillsInput/src/PillsInput.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".field": {
+          backgroundColor: "transparent",
+          appearance: "none",
+          minWidth: rem("100px"),
+          flex: "1",
+          border: "0",
+          fontSize: "inherit",
+          height: "1.6em",
+          color: "inherit",
+          padding: "0",
+          "&::placeholder": {
+            color: "var(--_input-placeholder-color)",
+            opacity: "1"
+          },
+          "&[data-type='hidden'], &[data-type='auto']": {
+            height: rem("1px"),
+            width: rem("1px"),
+            top: "0",
+            left: "0",
+            pointerEvents: "none",
+            position: "absolute",
+            opacity: "0"
+          },
+          "&:focus": {
+            outline: "none"
+          },
+          "&[data-type='auto']:focus": {
+            height: "1.6em",
+            visibility: "visible",
+            opacity: "1",
+            position: "static"
+          },
+          "&[data-pointer]:not([data-disabled], :disabled)": {
+            cursor: "pointer"
+          },
+          "&[data-disabled], &:disabled": {
+            cursor: "not-allowed"
           }
         }
       });
@@ -2601,7 +3239,7 @@ var require_Popover_plugin = __commonJS({
         ".popover-arrow": {
           backgroundColor: "inherit",
           border: `${rem("1px")} solid var(--_popover-bd)`,
-          zIndex: 1
+          zIndex: "1"
         }
       });
     };
@@ -2688,28 +3326,28 @@ var require_ScrollArea_plugin = __commonJS({
           },
           "&[data-orientation='vertical']": {
             "--_scrollbar-width": "var(--scrollarea-scrollbar-size)",
-            top: 0,
+            top: "0",
             bottom: "var(--sa-corner-width)",
-            right: 0,
+            right: "0",
             '[dir="rtl"] &': {
               right: "unset",
-              left: 0
+              left: "0"
             }
           },
           "&[data-orientation='horizontal']": {
             "--_scrollbar-height": "var(--scrollarea-scrollbar-size)",
             "--_scrollbar-direction": "column",
-            bottom: 0,
-            left: 0,
+            bottom: "0",
+            left: "0",
             right: "var(--sa-corner-height)",
             '[dir="rtl"] &': {
-              right: 0,
+              right: "0",
               left: "var(--sa-corner-height)"
             }
           }
         },
         ".scrollArea-thumb": {
-          flex: 1,
+          flex: "1",
           borderRadius: "var(--scrollarea-scrollbar-size)",
           position: "relative",
           transition: "background-color 150ms ease",
@@ -2739,12 +3377,12 @@ var require_ScrollArea_plugin = __commonJS({
           transition: "opacity 150ms ease",
           backgroundColor: "var(--_corner-bg)",
           display: "var(--_corner-display, block)",
-          right: 0,
-          bottom: 0,
+          right: "0",
+          bottom: "0",
           '[dir="rtl"] &': {
             right: "unset",
-            left: 0,
-            bottom: 0
+            left: "0",
+            bottom: "0"
           },
           '[data-raikou-color-scheme="light"] &': {
             "--_corner-bg": "var(--raikou-color-gray-0)"
@@ -2753,7 +3391,7 @@ var require_ScrollArea_plugin = __commonJS({
             "--_corner-bg": "var(--raikou-color-dark-8)"
           },
           "&[data-hovered]": {
-            "--_corner-opacity": 1
+            "--_corner-opacity": "1"
           },
           "&[data-hidden]": {
             "--_corner-display": "none"
@@ -2806,7 +3444,7 @@ var require_SegmentedControl_plugin = __commonJS({
         ".segmentedControl-indicator": {
           position: "absolute",
           display: "block",
-          zIndex: 1,
+          zIndex: "1",
           borderRadius: "var(--sc-radius)",
           boxShadow: "var(--_box-shadow)",
           width: "var(--sc-indicator-width)",
@@ -2825,7 +3463,7 @@ var require_SegmentedControl_plugin = __commonJS({
         },
         ".segmentedControl-label": {
           "-webkit-tap-highlight-color": "transparent",
-          fontWeight: 500,
+          fontWeight: "500",
           display: "block",
           textAlign: "center",
           whiteSpace: "nowrap",
@@ -2909,12 +3547,12 @@ var require_SegmentedControl_plugin = __commonJS({
           }
         },
         ".segmentedControl-input": {
-          height: 0,
-          width: 0,
+          height: "0",
+          width: "0",
           position: "absolute",
           overflow: "hidden",
           whiteSpace: "nowrap",
-          opacity: 0,
+          opacity: "0",
           "&[data-focus-ring='auto']": {
             "&:focus:focus-visible": {
               "& + .label": {
@@ -2932,28 +3570,28 @@ var require_SegmentedControl_plugin = __commonJS({
         },
         ".segmentedControl-control": {
           position: "relative",
-          flex: 1,
-          zIndex: 2,
+          flex: "1",
+          zIndex: "2",
           transition: "border-color var(--sc-transition-duration) var(--sc-transition-timing-function)",
           "&::before": {
-            content: "",
+            content: '""',
             position: "absolute",
-            top: 0,
-            bottom: 0,
-            left: 0,
+            top: "0",
+            bottom: "0",
+            left: "0",
             backgroundColor: "var(--_separator-color)",
             width: rem("1px"),
             transition: "background-color var(--sc-transition-duration) var(--sc-transition-timing-function)",
             '[dir="rtl"] &': {
-              right: 0,
+              right: "0",
               left: "auto"
             }
           },
           "&[data-orientation='vertical']": {
             "&::before": {
-              top: 0,
-              left: 0,
-              right: 0,
+              top: "0",
+              left: "0",
+              right: "0",
               bottom: "auto",
               height: rem("1px"),
               width: "auto"
@@ -2972,10 +3610,62 @@ var require_SegmentedControl_plugin = __commonJS({
           },
           "&[data-active]": {
             "[data-raikou-color-scheme] &": {
-              "&, & + .control": {
+              "&, & + .segmentedControl-control": {
                 "&::before": {
                   "--_separator-color": "transparent"
                 }
+              }
+            }
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../components/Skeleton/src/Skeleton.plugin.ts
+var require_Skeleton_plugin = __commonJS({
+  "../components/Skeleton/src/Skeleton.plugin.ts"(exports, module) {
+    "use strict";
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        "@keyframes skeleton-fade": {
+          "0%, 100%": {
+            opacity: "0.4"
+          },
+          "50%": {
+            opacity: "1"
+          }
+        },
+        ".skeleton-root": {
+          height: "var(--skeleton-height)",
+          width: "var(--skeleton-width)",
+          borderRadius: "var(--skeleton-radius)",
+          position: "relative",
+          transform: "translateZ(0)",
+          "-webkit-transform": "translateZ(0)",
+          "&[data-animate]::after": {
+            animation: "skeleton-fade 1500ms linear infinite"
+          },
+          "&[data-visible]": {
+            overflow: "hidden",
+            "&::before": {
+              position: "absolute",
+              content: '""',
+              inset: "0",
+              zIndex: "10",
+              backgroundColor: "var(--raikou-color-body)"
+            },
+            "&::after": {
+              position: "absolute",
+              content: '""',
+              inset: "0",
+              zIndex: "11",
+              '[data-raikou-color-scheme="light"] &': {
+                backgroundColor: "var(--raikou-color-gray-3)"
+              },
+              '[data-raikou-color-scheme="dark"] &': {
+                backgroundColor: "var(--raikou-color-dark-4)"
               }
             }
           }
@@ -3042,7 +3732,7 @@ var require_Slider_plugin = __commonJS({
           height: "var(--slider-thumb-size)",
           width: "var(--slider-thumb-size)",
           backgroundColor: "var(--_thumb-bg)",
-          border: `rem(4px) solid var(--_thumb-bd)`,
+          border: `${rem("4px")} solid var(--_thumb-bd)`,
           color: "var(--_thumb-bd)",
           transform: "var(--_thumb-transform, translate(-50%, -50%))",
           top: "50%",
@@ -3051,7 +3741,7 @@ var require_Slider_plugin = __commonJS({
           alignItems: "center",
           justifyContent: "center",
           transition: "box-shadow 100ms ease, transform 100ms ease",
-          zIndex: 3,
+          zIndex: "3",
           userSelect: "none",
           touchAction: "none",
           boxShadow: "var(--_thumb-box-shadow, none)",
@@ -3098,22 +3788,22 @@ var require_Slider_plugin = __commonJS({
             "--_track-bg": "var(--slider-track-disabled-bg)"
           },
           "&::before": {
-            content: "",
+            content: '""',
             position: "absolute",
-            top: 0,
-            bottom: 0,
+            top: "0",
+            bottom: "0",
             borderRadius: "var(--slider-radius)",
             right: "calc(var(--slider-size) * -1)",
             left: "calc(var(--slider-size) * -1)",
             backgroundColor: "var(--_track-bg, var(--slider-track-bg))",
-            zIndex: 0
+            zIndex: "0"
           }
         },
         ".slider-bar": {
           position: "absolute",
-          zIndex: 1,
-          top: 0,
-          bottom: 0,
+          zIndex: "1",
+          top: "0",
+          bottom: "0",
           backgroundColor: "var(--_bar-bg, var(--slider-color))",
           borderRadius: "var(--slider-radius)",
           width: "var(--slider-bar-width)",
@@ -3138,9 +3828,9 @@ var require_Slider_plugin = __commonJS({
         ".slider-markWrapper": {
           position: "absolute",
           left: "calc(var(--mark-offset) - var(--slider-size) / 2)",
-          top: 0,
-          zIndex: 2,
-          height: 0,
+          top: "0",
+          zIndex: "2",
+          height: "0",
           pointerEvents: "none",
           '[dir="rtl"] &': {
             left: "unset",
@@ -3248,11 +3938,11 @@ var require_Switch_plugin = __commonJS({
           position: "relative"
         },
         ".switch-input": {
-          height: 0,
-          width: 0,
-          opacity: 0,
-          margin: 0,
-          padding: 0,
+          height: "0",
+          width: "0",
+          opacity: "0",
+          margin: "0",
+          padding: "0",
           position: "absolute",
           overflow: "hidden",
           whiteSpace: "nowrap"
@@ -3264,31 +3954,31 @@ var require_Switch_plugin = __commonJS({
           position: "relative",
           borderRadius: "var(--switch-radius)",
           backgroundColor: "var(--_switch-bg)",
-          border: `rem(1px) solid var(--_switch-bd)`,
+          border: `${rem("1px")} solid var(--_switch-bd)`,
           height: "var(--switch-height)",
           minWidth: "var(--switch-width)",
-          margin: 0,
+          margin: "0",
           transition: "background-color 150ms ease, border-color 150ms ease",
           appearance: "none",
           display: "flex",
           alignItems: "center",
           fontSize: "var(--switch-label-font-size)",
-          fontWeight: 600,
+          fontWeight: "600",
           order: "var(--_switch-order, 1)",
           userSelect: "none",
-          zIndex: 0,
-          lineHeight: 0,
+          zIndex: "0",
+          lineHeight: "0",
           color: "var(--_switch-color)",
-          ".input:focus-visible + &": {
-            outline: `rem(2px) solid var(--raikou-color-primary)`,
+          ".switch-input:focus-visible + &": {
+            outline: `${rem("2px")} solid var(--raikou-color-primary)`,
             outlineOffset: rem("2px")
           },
-          ".input:checked + &": {
+          ".switch-input:checked + &": {
             "--_switch-bg": "var(--switch-color)",
             "--_switch-bd": "var(--switch-color)",
             "--_switch-color": "var(--raikou-color-white)"
           },
-          ".input:disabled + &, .input[data-disabled] + &": {
+          ".switch-input:disabled + &, .switch-input[data-disabled] + &": {
             "--_switch-bg": "var(--_switch-disabled-color)",
             "--_switch-bd": "var(--_switch-disabled-color)",
             "--_switch-cursor": "not-allowed"
@@ -3309,28 +3999,28 @@ var require_Switch_plugin = __commonJS({
             "--_switch-bd": "var(--raikou-color-error)"
           },
           "&[data-label-position='left']": {
-            "--_switch-order": 2
+            "--_switch-order": "2"
           }
         },
         ".switch-thumb": {
           position: "absolute",
-          zIndex: 1,
+          zIndex: "1",
           borderRadius: "var(--switch-radius)",
           display: "flex",
           backgroundColor: "var(--_switch-thumb-bg, var(--raikou-color-white))",
           height: "var(--switch-thumb-size)",
           width: "var(--switch-thumb-size)",
-          border: `rem(1px) solid var(--_switch-thumb-bd)`,
+          border: `${rem("1px")} solid var(--_switch-thumb-bd)`,
           left: "var(--_switch-thumb-left, var(--switch-track-label-padding))",
           transition: "left 150ms ease",
           "& > *": {
             margin: "auto"
           },
-          ".input:checked + * > &": {
+          ".switch-input:checked + * > &": {
             "--_switch-thumb-left": "calc(100% - var(--switch-thumb-size) - var(--switch-track-label-padding))",
             "--_switch-thumb-bd": "var(--raikou-color-white)"
           },
-          ".input:disabled + * > &, .input[data-disabled] + * > &": {
+          ".switch-input:disabled + * > &, .switch-input[data-disabled] + * > &": {
             "--_switch-thumb-bd": "var(--_switch-thumb-bg-disabled)",
             "--_switch-thumb-bg": "var(--_switch-thumb-bg-disabled)"
           },
@@ -3351,7 +4041,7 @@ var require_Switch_plugin = __commonJS({
           paddingInline: "var(--switch-track-label-padding)",
           margin: "0 0 0 calc(var(--switch-thumb-size) + var(--switch-track-label-padding))",
           transition: "margin 150ms ease",
-          ".input:checked + * > &": {
+          ".switch-input:checked + * > &": {
             margin: "0 calc(var(--switch-thumb-size) + var(--switch-track-label-padding)) 0 0"
           }
         }
@@ -3364,6 +4054,7 @@ var require_Switch_plugin = __commonJS({
 var require_Table_plugin = __commonJS({
   "../components/Table/src/Table.plugin.ts"(exports, module) {
     "use strict";
+    init_src();
     module.exports = function({ addComponents, theme }) {
       addComponents({
         ".table-root": {
@@ -3385,7 +4076,7 @@ var require_Table_plugin = __commonJS({
             "--_table-border-color": "var(--table-border-color, var(--raikou-color-dark-4))"
           },
           "&[data-with-table-border]": {
-            "--_table-border": `rem(1px) solid var(--_table-border-color)`
+            "--_table-border": `${rem("1px")} solid var(--_table-border-color)`
           }
         },
         ".table-th": {
@@ -3408,7 +4099,7 @@ var require_Table_plugin = __commonJS({
             }
           },
           "&[data-with-row-border]": {
-            "--_tr-border-bottom": `rem(1px) solid var(--_table-border-color)`
+            "--_tr-border-bottom": `${rem("1px")} solid var(--_table-border-color)`
           }
         },
         ".table-td, .table-th": {
@@ -3418,15 +4109,15 @@ var require_Table_plugin = __commonJS({
           "--_border-right": "none",
           "--_border-left": "none",
           "&[data-with-column-border]:not(:last-of-type)": {
-            "--_border-right": `rem(1px) solid var(--_table-border-color)`,
+            "--_border-right": `${rem("1px")} solid var(--_table-border-color)`,
             '[dir="rtl"] &': {
-              "--_border-left": `rem(1px) solid var(--_table-border-color)`,
+              "--_border-left": `${rem("1px")} solid var(--_table-border-color)`,
               "--_border-right": "none"
             }
           }
         },
         ".table-tbody": {
-          "& > .tr": {
+          "& > .table-tr": {
             "&:last-of-type": {
               "&[data-with-row-border]": {
                 "--_tr-border-bottom": "none"
@@ -3477,35 +4168,35 @@ var require_Tabs_plugin = __commonJS({
           "--_list-border-width": rem(0),
           "--_list-border-size": "0 0 var(--_list-border-width) 0",
           "--_list-gap": "unset",
-          "--_list-line-bottom": 0,
+          "--_list-line-bottom": "0",
           "--_list-line-top": "unset",
-          "--_list-line-left": 0,
-          "--_list-line-right": 0,
+          "--_list-line-left": "0",
+          "--_list-line-right": "0",
           "--_tab-radius": "var(--tabs-radius) var(--tabs-radius) 0 0",
           "--_tab-border-width": "0 0 var(--_list-border-width) 0",
           "&[data-inverted]": {
             "--_list-line-bottom": "unset",
-            "--_list-line-top": 0,
+            "--_list-line-top": "0",
             "--_tab-radius": "0 0 var(--tabs-radius) var(--tabs-radius)",
             "--_tab-border-width": "var(--_list-border-width) 0 0 0",
             "& .list--default::before": {
-              top: 0,
+              top: "0",
               bottom: "unset"
             }
           },
           "&[data-orientation='vertical']": {
             "--_list-line-left": "unset",
-            "--_list-line-right": 0,
-            "--_list-line-top": 0,
-            "--_list-line-bottom": 0,
+            "--_list-line-right": "0",
+            "--_list-line-top": "0",
+            "--_list-line-bottom": "0",
             "--_list-border-size": "0 var(--_list-border-width) 0 0",
             "--_tab-border-width": "0 var(--_list-border-width) 0 0",
             "--_tab-radius": "var(--tabs-radius) 0 0 var(--tabs-radius)",
             "--_list-direction": "column",
-            "--_panel-grow": 1,
+            "--_panel-grow": "1",
             "--_tabs-display": "flex",
             '[dir="rtl"] &': {
-              "--_list-line-left": 0,
+              "--_list-line-left": "0",
               "--_list-line-right": "unset",
               "--_list-border-size": "0 0 0 var(--_list-border-width)",
               "--_tab-border-width": "0 0 0 var(--_list-border-width)",
@@ -3513,14 +4204,14 @@ var require_Tabs_plugin = __commonJS({
             },
             "&[data-placement='right']": {
               "--_tabs-flex-direction": "row-reverse",
-              "--_list-line-left": 0,
+              "--_list-line-left": "0",
               "--_list-line-right": "unset",
               "--_list-border-size": "0 0 0 var(--_list-border-width)",
               "--_tab-border-width": "0 0 0 var(--_list-border-width)",
               "--_tab-radius": "0 var(--tabs-radius) var(--tabs-radius) 0",
               '[dir="rtl"] &': {
                 "--_list-line-left": "unset",
-                "--_list-line-right": 0,
+                "--_list-line-right": "0",
                 "--_list-border-size": "0 var(--_list-border-width) 0 0",
                 "--_tab-border-width": "0 var(--_list-border-width) 0 0",
                 "--_tab-radius": "var(--tabs-radius) 0 0 var(--tabs-radius)"
@@ -3566,7 +4257,7 @@ var require_Tabs_plugin = __commonJS({
           gap: "var(--_list-gap)",
           "--_tab-grow": "unset",
           "&[data-grow]": {
-            "--_tab-grow": 1
+            "--_tab-grow": "1"
           }
         },
         ".tabs-panel": {
@@ -3577,10 +4268,10 @@ var require_Tabs_plugin = __commonJS({
           padding: "var(--raikou-spacing-xs) var(--raikou-spacing-md)",
           fontSize: "var(--raikou-font-size-sm)",
           whiteSpace: "nowrap",
-          zIndex: 0,
+          zIndex: "0",
           display: "flex",
           alignItems: "center",
-          lineHeight: 1,
+          lineHeight: "1",
           userSelect: "none",
           flexGrow: "var(--_tab-grow)",
           justifyContent: "var(--_tab-justify)",
@@ -3589,7 +4280,7 @@ var require_Tabs_plugin = __commonJS({
             cursor: "not-allowed"
           },
           "&:focus": {
-            zIndex: 1
+            zIndex: "1"
           }
         },
         ".tabs-tabSection": {
@@ -3618,7 +4309,7 @@ var require_Tabs_plugin = __commonJS({
           }
         },
         /*************************************** default variant ***************************************/
-        ".tabs-list--default": {
+        ".tabs-list[data-variant='default']": {
           position: "relative",
           "&::before": {
             content: '""',
@@ -3632,7 +4323,7 @@ var require_Tabs_plugin = __commonJS({
             top: "var(--_list-line-top)"
           }
         },
-        ".tabs-tab--default": {
+        ".tabs-tab[data-variant='default']": {
           borderRadius: "var(--_tab-radius)",
           borderWidth: "var(--_tab-border-width)",
           borderStyle: "solid",
@@ -3673,7 +4364,7 @@ var require_Tabs_plugin = __commonJS({
           }
         },
         /*************************************** outline variant ***************************************/
-        ".tabs-list--outline": {
+        ".tabs-list[data-variant='outline']": {
           position: "relative",
           "&::before": {
             content: '""',
@@ -3687,7 +4378,7 @@ var require_Tabs_plugin = __commonJS({
             top: "var(--_list-line-top)"
           }
         },
-        ".tabs-tab--outline": {
+        ".tabs-tab[data-variant='outline']": {
           border: `${rem("1px")} solid transparent`,
           borderTopColor: "var(--_tab-border-top-color)",
           borderBottomColor: "var(--_tab-border-bottom-color)",
@@ -3730,7 +4421,7 @@ var require_Tabs_plugin = __commonJS({
           }
         },
         /*************************************** pills variant ***************************************/
-        ".tabs-tab--pills": {
+        ".tabs-tab[data-variant='pills']": {
           borderRadius: "var(--tabs-radius)",
           backgroundColor: "var(--_tab-bg)",
           color: "var(--_tab-color)",
@@ -3780,8 +4471,8 @@ var require_Text_plugin = __commonJS({
           fontSize: "var(--text-fz)",
           lineHeight: "var(--text-lh)",
           fontWeight: "normal",
-          margin: 0,
-          padding: 0,
+          margin: "0",
+          padding: "0",
           "&[data-truncate]": {
             overflow: "hidden",
             textOverflow: "ellipsis",
@@ -3814,7 +4505,7 @@ var require_Text_plugin = __commonJS({
             fontSize: "inherit"
           },
           "&[data-inline]": {
-            "--_text-line-height": 1
+            "--_text-line-height": "1"
           }
         }
       });
@@ -3829,7 +4520,7 @@ var require_Title_plugin = __commonJS({
     module.exports = function({ addComponents, theme }) {
       addComponents({
         ".title-root": {
-          margin: 0,
+          margin: "0",
           fontWeight: "var(--title-fw)",
           fontSize: "var(--title-fz)",
           lineHeight: "var(--title-lh)",
@@ -3869,8 +4560,8 @@ var require_Tooltip_plugin = __commonJS({
         },
         ".tooltip-arrow": {
           backgroundColor: "inherit",
-          border: 0,
-          zIndex: 1
+          border: "0",
+          zIndex: "1"
         }
       });
     };
@@ -3886,8 +4577,8 @@ var require_UnstyledButton_plugin = __commonJS({
         ".unstyledButton-root": {
           backgroundColor: "transparent",
           cursor: "pointer",
-          border: 0,
-          padding: 0,
+          border: "0",
+          padding: "0",
           appearance: "none",
           fontSize: "var(--raikou-font-size-md)",
           textAlign: "left",
@@ -3908,13 +4599,13 @@ var require_VisuallyHidden_plugin = __commonJS({
     module.exports = function({ addComponents, theme }) {
       addComponents({
         ".visuallyHidden-root": {
-          border: 0,
+          border: "0",
           clip: "rect(0 0 0 0)",
           height: "1px",
           width: "1px",
           margin: "-1px",
           overflow: "hidden",
-          padding: 0,
+          padding: "0",
           position: "absolute",
           whiteSpace: "nowrap"
         }
@@ -4424,8 +5115,10 @@ var require_plugin = __commonJS({
         }
       },
       plugins: [
+        require_Accordion_plugin(),
         require_ActionIcon_plugin(),
         require_Alert_plugin(),
+        require_AppShell_plugin(),
         require_Anchor_plugin(),
         require_AspectRatio_plugin(),
         require_Avatar_plugin(),
@@ -4457,9 +5150,13 @@ var require_plugin = __commonJS({
         require_Notification_plugin(),
         require_Overlay_plugin(),
         require_Paper_plugin(),
+        require_Pagination_plugin(),
+        require_Pill_plugin(),
+        require_PillsInput_plugin(),
         require_Popover_plugin(),
         require_ScrollArea_plugin(),
         require_SegmentedControl_plugin(),
+        require_Skeleton_plugin(),
         require_Slider_plugin(),
         require_Stack_plugin(),
         require_Switch_plugin(),

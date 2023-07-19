@@ -24,9 +24,11 @@ __reExport(src_exports, require("@raikou/appshell"), module.exports);
 __reExport(src_exports, require("@raikou/autocomplete"), module.exports);
 __reExport(src_exports, require("@raikou/avatar"), module.exports);
 __reExport(src_exports, require("@raikou/checkbox"), module.exports);
+__reExport(src_exports, require("@raikou/collapse"), module.exports);
 __reExport(src_exports, require("@raikou/color-picker"), module.exports);
 __reExport(src_exports, require("@raikou/combobox"), module.exports);
 __reExport(src_exports, require("@raikou/drawer"), module.exports);
+__reExport(src_exports, require("@raikou/inline-input"), module.exports);
 __reExport(src_exports, require("@raikou/input"), module.exports);
 __reExport(src_exports, require("@raikou/input-base"), module.exports);
 __reExport(src_exports, require("@raikou/modal"), module.exports);
@@ -54,9 +56,11 @@ __reExport(src_exports, require("@raikou/tooltip"), module.exports);
   ...require("@raikou/autocomplete"),
   ...require("@raikou/avatar"),
   ...require("@raikou/checkbox"),
+  ...require("@raikou/collapse"),
   ...require("@raikou/color-picker"),
   ...require("@raikou/combobox"),
   ...require("@raikou/drawer"),
+  ...require("@raikou/inline-input"),
   ...require("@raikou/input"),
   ...require("@raikou/input-base"),
   ...require("@raikou/modal"),

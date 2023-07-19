@@ -12,7 +12,7 @@ const group = function ({ addComponents }: any) {
     "@keyframes bars-loader-animation": {
       "0%": {
         transform: "scale(0.6)",
-        opacity: 0,
+        opacity: "0",
       },
       "50%, 100%": {
         transform: "scale(1)",
@@ -26,7 +26,7 @@ const group = function ({ addComponents }: any) {
       gap: "calc(var(--loader-size) / 5)",
     },
     ".bar": {
-      flex: 1,
+      flex: "1",
       background: "var(--loader-color)",
       animation:
         "bars-loader-animation 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite",
@@ -41,15 +41,15 @@ const group = function ({ addComponents }: any) {
       },
 
       "&:nth-of-type(3)": {
-        animationDelay: 0,
+        animationDelay: "0",
       },
     },
     "@keyframes loader-dots-animation": {
       "0%, 100%": {
-        opacity: 1,
+        opacity: "1",
       },
       "50%": {
-        opacity: 0.5,
+        opacity: "0.5",
       },
     },
     ".dots-loader": {

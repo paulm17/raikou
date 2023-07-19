@@ -89,13 +89,13 @@ module.exports = function ({ addComponents, theme }: any) {
       "&[data-orientation='vertical']": {
         "--_scrollbar-width": "var(--scrollarea-scrollbar-size)",
 
-        top: 0,
+        top: "0",
         bottom: "var(--sa-corner-width)",
-        right: 0,
+        right: "0",
 
         '[dir="rtl"] &': {
           right: "unset",
-          left: 0,
+          left: "0",
         },
       },
 
@@ -103,19 +103,19 @@ module.exports = function ({ addComponents, theme }: any) {
         "--_scrollbar-height": "var(--scrollarea-scrollbar-size)",
         "--_scrollbar-direction": "column",
 
-        bottom: 0,
-        left: 0,
+        bottom: "0",
+        left: "0",
         right: "var(--sa-corner-height)",
 
         '[dir="rtl"] &': {
-          right: 0,
+          right: "0",
           left: "var(--sa-corner-height)",
         },
       },
     },
 
     ".scrollArea-thumb": {
-      flex: 1,
+      flex: "1",
       borderRadius: "var(--scrollarea-scrollbar-size)",
       position: "relative",
       transition: "background-color 150ms ease",
@@ -149,13 +149,13 @@ module.exports = function ({ addComponents, theme }: any) {
       transition: "opacity 150ms ease",
       backgroundColor: "var(--_corner-bg)",
       display: "var(--_corner-display, block)",
-      right: 0,
-      bottom: 0,
+      right: "0",
+      bottom: "0",
 
       '[dir="rtl"] &': {
         right: "unset",
-        left: 0,
-        bottom: 0,
+        left: "0",
+        bottom: "0",
       },
 
       '[data-raikou-color-scheme="light"] &': {
@@ -167,7 +167,7 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       "&[data-hovered]": {
-        "--_corner-opacity": 1,
+        "--_corner-opacity": "1",
       },
 
       "&[data-hidden]": {

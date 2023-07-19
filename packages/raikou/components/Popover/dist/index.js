@@ -334,7 +334,7 @@ function usePopover(options) {
   };
 }
 
-// ../utils/create-safe-context/create-safe-context.tsx
+// ../_utils/create-safe-context/create-safe-context.tsx
 var import_react5 = __toESM(require("react"));
 function createSafeContext(errorMessage) {
   const Context = (0, import_react5.createContext)(null);
@@ -349,7 +349,7 @@ function createSafeContext(errorMessage) {
   return [Provider, useSafeContext];
 }
 
-// ../utils/create-optional-context/create-optional-context.tsx
+// ../_utils/create-optional-context/create-optional-context.tsx
 var import_react6 = __toESM(require("react"));
 
 // src/Popover.context.ts

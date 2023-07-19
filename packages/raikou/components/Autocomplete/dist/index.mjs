@@ -80,7 +80,7 @@ import {
   createVarsResolver as createVarsResolver5
 } from "@raikou/core";
 
-// ../utils/create-safe-context/create-safe-context.tsx
+// ../_utils/create-safe-context/create-safe-context.tsx
 import React, { createContext, useContext } from "react";
 function createSafeContext(errorMessage) {
   const Context = createContext(null);
@@ -95,7 +95,7 @@ function createSafeContext(errorMessage) {
   return [Provider, useSafeContext];
 }
 
-// ../utils/create-optional-context/create-optional-context.tsx
+// ../_utils/create-optional-context/create-optional-context.tsx
 import React2, { createContext as createContext2, useContext as useContext2 } from "react";
 function createOptionalContext(initialValue = null) {
   const Context = createContext2(initialValue);
@@ -1891,7 +1891,7 @@ var size = function(options) {
   };
 };
 
-// ../../../../node_modules/.pnpm/@floating-ui+dom@1.4.4/node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs
+// ../../../../node_modules/.pnpm/@floating-ui+dom@1.4.5/node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs
 function getWindow(node) {
   var _node$ownerDocument;
   return (node == null ? void 0 : (_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.defaultView) || window;
@@ -1909,7 +1909,7 @@ function getNodeName(node) {
   return "#document";
 }
 function isHTMLElement(value) {
-  return value instanceof getWindow(value).HTMLElement;
+  return value instanceof HTMLElement || value instanceof getWindow(value).HTMLElement;
 }
 function isShadowRoot(node) {
   if (typeof ShadowRoot === "undefined") {
@@ -1969,7 +1969,7 @@ function getCssDimensions(element) {
   };
 }
 function isElement(value) {
-  return value instanceof getWindow(value).Element;
+  return value instanceof Element || value instanceof getWindow(value).Element;
 }
 function unwrapElement(element) {
   return !isElement(element) ? element.contextElement : element;
@@ -2081,7 +2081,8 @@ function getNodeScroll(element) {
   };
 }
 function getDocumentElement(node) {
-  return ((isNode(node) ? node.ownerDocument : node.document) || window.document).documentElement;
+  var _ref;
+  return (_ref = (isNode(node) ? node.ownerDocument : node.document) || window.document) == null ? void 0 : _ref.documentElement;
 }
 function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
   let {

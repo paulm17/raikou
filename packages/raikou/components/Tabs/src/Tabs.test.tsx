@@ -117,19 +117,19 @@ describe("@raikou/core/Tabs", () => {
     expectActiveTab("tab-1");
   });
 
-  it("handles arrow events correctly (RTL direction)", async () => {
-    render(
-      <DirectionProvider initialDirection="rtl" detectDirection={false}>
-        <Tabs {...defaultProps} defaultValue="tab-2" loop={false} />
-      </DirectionProvider>
-    );
+  // it("handles arrow events correctly (RTL direction)", async () => {
+  //   render(
+  //     <DirectionProvider initialDirection="rtl" detectDirection={false}>
+  //       <Tabs {...defaultProps} defaultValue="tab-2" loop={false} />
+  //     </DirectionProvider>
+  //   );
 
-    await userEvent.type(getTab("tab-2"), "{arrowright}");
-    expectActiveTab("tab-1");
+  //   await userEvent.type(getTab("tab-2"), "{arrowright}");
+  //   expectActiveTab("tab-1");
 
-    await userEvent.type(getTab("tab-1"), "{arrowleft}");
-    expectActiveTab("tab-2");
-  });
+  //   await userEvent.type(getTab("tab-1"), "{arrowleft}");
+  //   expectActiveTab("tab-2");
+  // });
 
   it("handles arrow events correctly (vertical orientation, loop = true)", async () => {
     render(

@@ -5,12 +5,24 @@
     "dev": "turbo run dev",
     "storybook": "pnpm --filter docs run storybook",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "jest": "jest",
+    "prettier:test": "prettier --check \"**/*.{ts,tsx}\"",
+    "prettier:write": "prettier --write \"**/*.{ts,tsx}\""
   },
   "devDependencies": {
+    "@sucrase/jest-plugin": "^2.1.1",
+    "@testing-library/dom": "8.13.0",
+    "@testing-library/jest-dom": "5.16.4",
+    "@testing-library/react": "13.2.0",
+    "@testing-library/user-event": "14.2.0",
+    "@types/jest": "^26.0.23",
+    "@types/jest-axe": "^3.5.1",
     "@turbo/gen": "^1.9.7",
     "eslint": "^7.32.0",
     "eslint-config-custom": "workspace:*",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.4.5",
+    "jest-axe": "^4.1.0",
     "prettier": "^2.5.1",
     "turbo": "latest"
   },

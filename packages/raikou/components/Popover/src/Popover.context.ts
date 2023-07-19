@@ -5,7 +5,7 @@ import {
   RaikouRadius,
   GetStylesApi,
 } from "@raikou/core";
-import { createSafeContext } from "../../utils";
+import { createSafeContext } from "../../_utils";
 import { FloatingPosition, ArrowPosition } from "../../Floating/src";
 import { TransitionOverride } from "../../Transition/src";
 import { PortalProps } from "../../Portal/src";

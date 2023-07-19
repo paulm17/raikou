@@ -1,6 +1,6 @@
 import React from "react";
 import { tests } from "@raikou/tests";
-import { TextInput } from "../TextInput";
+import { TextInput } from "../../TextInput/src";
 import { Combobox } from "./Combobox";
 import { useCombobox } from "./use-combobox/use-combobox";
 

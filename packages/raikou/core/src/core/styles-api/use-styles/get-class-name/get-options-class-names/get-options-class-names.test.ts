@@ -1,44 +1,44 @@
-import { DEFAULT_THEME } from '../../../../RaikouProvider';
-import { getOptionsClassNames } from './get-options-class-names';
+import { DEFAULT_THEME } from "../../../../Bootstrap";
+import { getOptionsClassNames } from "./get-options-class-names";
 
 const testObjectClassNames = {
-  root: 'test-object',
+  root: "test-object",
 };
 
 const testFunctionClassNames = () => ({
-  root: 'test-function',
+  root: "test-function",
 });
 
-describe('@raikou/core/get-options-class-names', () => {
-  it('returns className at given selector (object)', () => {
+describe("@raikou/core/get-options-class-names", () => {
+  it("returns className at given selector (object)", () => {
     expect(
       getOptionsClassNames({
         theme: DEFAULT_THEME,
-        selector: 'root',
+        selector: "root",
         props: {},
         stylesCtx: undefined,
         options: { classNames: testObjectClassNames },
       })
-    ).toBe('test-object');
+    ).toBe("test-object");
   });
 
-  it('returns className at given selector (function)', () => {
+  it("returns className at given selector (function)", () => {
     expect(
       getOptionsClassNames({
         theme: DEFAULT_THEME,
-        selector: 'root',
+        selector: "root",
         props: {},
         stylesCtx: undefined,
         options: { classNames: testFunctionClassNames },
       })
-    ).toBe('test-function');
+    ).toBe("test-function");
   });
 
-  it('returns undefined if classNames are not defined in options', () => {
+  it("returns undefined if classNames are not defined in options", () => {
     expect(
       getOptionsClassNames({
         theme: DEFAULT_THEME,
-        selector: 'root',
+        selector: "root",
         props: {},
         stylesCtx: undefined,
         options: {},
@@ -46,11 +46,11 @@ describe('@raikou/core/get-options-class-names', () => {
     ).toBe(undefined);
   });
 
-  it('returns undefined if options are not defined', () => {
+  it("returns undefined if options are not defined", () => {
     expect(
       getOptionsClassNames({
         theme: DEFAULT_THEME,
-        selector: 'root',
+        selector: "root",
         props: {},
         stylesCtx: undefined,
         options: undefined,
@@ -58,30 +58,30 @@ describe('@raikou/core/get-options-class-names', () => {
     ).toBe(undefined);
   });
 
-  it('resolves classNames with options.props if it is defined', () => {
+  it("resolves classNames with options.props if it is defined", () => {
     expect(
       getOptionsClassNames({
         theme: DEFAULT_THEME,
-        selector: 'root',
-        props: { 'data-test': '__test-component-props' },
+        selector: "root",
+        props: { "data-test": "__test-component-props" },
         stylesCtx: undefined,
         options: {
-          classNames: (_, props) => ({ root: props['data-test'] }),
-          props: { 'data-test': '__test-options' },
+          classNames: (_, props) => ({ root: props["data-test"] }),
+          props: { "data-test": "__test-options" },
         },
       })
-    ).toBe('__test-options');
+    ).toBe("__test-options");
   });
 
-  it('resolves classNames with props if options.props is not defined', () => {
+  it("resolves classNames with props if options.props is not defined", () => {
     expect(
       getOptionsClassNames({
         theme: DEFAULT_THEME,
-        selector: 'root',
-        props: { 'data-test': '__test-component-props' },
+        selector: "root",
+        props: { "data-test": "__test-component-props" },
         stylesCtx: undefined,
-        options: { classNames: (_, props) => ({ root: props['data-test'] }) },
+        options: { classNames: (_, props) => ({ root: props["data-test"] }) },
       })
-    ).toBe('__test-component-props');
+    ).toBe("__test-component-props");
   });
 });

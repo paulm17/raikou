@@ -7,7 +7,7 @@ module.exports = function ({ addComponents, theme }: any) {
       border: "none",
       appearance: "none",
       display: "block",
-      lineHeight: 1,
+      lineHeight: "1",
       position: "relative",
       width: "var(--cs-size)",
       height: "var(--cs-size)",
@@ -30,15 +30,15 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".colorswatch-colorOverlay": {
       position: "absolute",
-      inset: 0,
+      inset: "0",
       borderRadius: "var(--cs-radius)",
     },
 
     ".colorswatch-shadowOverlay": {
       position: "absolute",
-      inset: 0,
+      inset: "0",
       borderRadius: "var(--cs-radius)",
-      zIndex: 1,
+      zIndex: "1",
       boxShadow: `rgba(0, 0, 0, 0.1) 0 0 0 ${rem(
         "1px"
       )} inset, rgb(0, 0, 0, 0.15) 0 0 ${rem("4px")} inset`,
@@ -46,7 +46,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".colorswatch-alphaOverlay": {
       position: "absolute",
-      inset: 0,
+      inset: "0",
       borderRadius: "var(--cs-radius)",
       backgroundSize: `${rem("8px")} ${rem("8px")}`,
       backgroundPosition: `0 0, 0 ${rem("4px")}, ${rem("4px")} ${rem(
@@ -68,9 +68,9 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".colorswatch-childrenOverlay": {
       position: "absolute",
-      inset: 0,
+      inset: "0",
       borderRadius: "var(--cs-radius)",
-      zIndex: 2,
+      zIndex: "2",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",

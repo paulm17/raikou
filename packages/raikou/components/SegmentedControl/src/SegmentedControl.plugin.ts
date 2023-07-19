@@ -167,12 +167,12 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".segmentedControl-input": {
-      height: 0,
-      width: 0,
+      height: "0",
+      width: "0",
       position: "absolute",
       overflow: "hidden",
       whiteSpace: "nowrap",
-      opacity: 0,
+      opacity: "0",
 
       "&[data-focus-ring='auto']": {
         "&:focus:focus-visible": {
@@ -201,25 +201,25 @@ module.exports = function ({ addComponents, theme }: any) {
       "&::before": {
         content: '""',
         position: "absolute",
-        top: 0,
-        bottom: 0,
-        left: 0,
+        top: "0",
+        bottom: "0",
+        left: "0",
         backgroundColor: "var(--_separator-color)",
         width: rem("1px"),
         transition:
           "background-color var(--sc-transition-duration) var(--sc-transition-timing-function)",
 
         '[dir="rtl"] &': {
-          right: 0,
+          right: "0",
           left: "auto",
         },
       },
 
       "&[data-orientation='vertical']": {
         "&::before": {
-          top: 0,
-          left: 0,
-          right: 0,
+          top: "0",
+          left: "0",
+          right: "0",
           bottom: "auto",
           height: rem("1px"),
           width: "auto",

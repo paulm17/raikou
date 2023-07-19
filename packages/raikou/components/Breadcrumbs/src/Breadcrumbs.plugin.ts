@@ -6,7 +6,7 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".breadcrumbs-breadcrumb": {
-      lineHeight: 1,
+      lineHeight: "1",
       whiteSpace: "nowrap",
       "-webkit-tap-highlight-color": "transparent",
     },
@@ -15,7 +15,7 @@ module.exports = function ({ addComponents, theme }: any) {
       marginLeft: "var(--bc-separator-margin)",
       marginRight: "var(--bc-separator-margin)",
       color: "var(--_separator-color)",
-      lineHeight: 1,
+      lineHeight: "1",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",

@@ -71,10 +71,10 @@ var import_core7 = require("@raikou/core");
 var import_react62 = __toESM(require("react"));
 var import_core6 = require("@raikou/core");
 
-// ../utils/create-safe-context/create-safe-context.tsx
+// ../_utils/create-safe-context/create-safe-context.tsx
 var import_react = __toESM(require("react"));
 
-// ../utils/create-optional-context/create-optional-context.tsx
+// ../_utils/create-optional-context/create-optional-context.tsx
 var import_react2 = __toESM(require("react"));
 function createOptionalContext(initialValue = null) {
   const Context = (0, import_react2.createContext)(initialValue);
@@ -629,7 +629,8 @@ var defaultProps6 = {
   variant: "default",
   leftSectionPointerEvents: "none",
   rightSectionPointerEvents: "none",
-  withAria: true
+  withAria: true,
+  withErrorStyles: true
 };
 var varsResolver5 = (0, import_core6.createVarsResolver)((_, props, ctx) => ({
   wrapper: {
@@ -674,7 +675,8 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
     multiline,
     radius,
     id,
-    withAria
+    withAria,
+    withErrorStyles
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -702,7 +704,8 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
     "multiline",
     "radius",
     "id",
-    "withAria"
+    "withAria",
+    "withErrorStyles"
   ]);
   const { styleProps, rest } = (0, import_core6.extractStyleProps)(others);
   const ctx = useInputWrapperContext();
@@ -739,7 +742,7 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
     import_core6.Box,
     __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, getStyles("wrapper")), styleProps), wrapperProps), {
       mod: {
-        error: !!error,
+        error: !!error && withErrorStyles,
         pointer,
         disabled,
         multiline,
@@ -766,7 +769,7 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
       }, rest), ariaAttributes), {
         ref,
         required,
-        mod: { disabled, error: !!error },
+        mod: { disabled, error: !!error && withErrorStyles },
         variant
       }), getStyles("input"))
     ),

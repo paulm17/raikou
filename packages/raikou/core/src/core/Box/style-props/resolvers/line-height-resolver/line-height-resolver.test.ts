@@ -1,5 +1,5 @@
 import { lineHeightResolver } from "./line-height-resolver";
-import { DEFAULT_THEME } from "../../../../RaikouProvider";
+import { DEFAULT_THEME } from "../../../../Bootstrap";
 
 describe("@raikou/core/Box/line-height-resolver", () => {
   it("resolves theme line height", () => {

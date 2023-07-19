@@ -1,4 +1,4 @@
-import { DEFAULT_THEME, RaikouTheme } from "../../../RaikouProvider";
+import { DEFAULT_THEME, RaikouTheme } from "../../../Bootstrap";
 import { FOCUS_CLASS_NAMES } from "./get-global-class-names/get-global-class-names";
 import { getClassName, GetClassNameOptions } from "./get-class-name";
 

@@ -43,7 +43,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "&::before, &::after": {
         position: "absolute",
         content: '""',
-        left: 0,
+        left: "0",
       },
 
       "&::before": {

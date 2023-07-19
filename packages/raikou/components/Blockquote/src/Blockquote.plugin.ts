@@ -6,7 +6,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--_bq-border": `${rem("3px")} solid var(--bq-bd)`,
 
       position: "relative",
-      margin: 0,
+      margin: "0",
       backgroundColor: "var(--_bq-bg)",
       borderLeft: "var(--_bq-border-left, var(--_bq-border))",
       borderRight: "var(--_bq-border-right, 0)",
@@ -19,8 +19,8 @@ module.exports = function ({ addComponents, theme }: any) {
 
       '[dir="rtl"] &': {
         "--_bq-radius-left": "var(--bq-radius)",
-        "--_bq-radius-right": 0,
-        "--_bq-border-left": 0,
+        "--_bq-radius-right": "0",
+        "--_bq-border-left": "0",
         "--_bq-border-right": "var(--_bq-border)",
       },
 
@@ -48,7 +48,7 @@ module.exports = function ({ addComponents, theme }: any) {
       borderRadius: "var(--bq-icon-size)",
 
       '[dir="rtl"] &': {
-        "--_bq-icon-left": 0,
+        "--_bq-icon-left": "0",
         "--_bq-icon-right": "calc(var(--bq-icon-size) / -2)",
       },
     },
@@ -56,7 +56,7 @@ module.exports = function ({ addComponents, theme }: any) {
     ".blockquote-cite": {
       display: "block",
       marginTop: "var(--raikou-spacing-md)",
-      opacity: 0.6,
+      opacity: "0.6",
       fontSize: "85%",
     },
   });

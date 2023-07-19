@@ -39,9 +39,9 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".fieldset-root[data-variant='unstyled']": {
-      padding: 0,
-      border: 0,
-      borderRadius: 0,
+      padding: "0",
+      border: "0",
+      borderRadius: "0",
     },
 
     ".fieldset-legend": {
@@ -49,7 +49,7 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     "[data-variant='unstyled'] .fieldset-legend": {
-      padding: 0,
+      padding: "0",
       marginBottom: "var(--raikou-spacing-sm)",
     },
   });

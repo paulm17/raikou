@@ -16,7 +16,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--pill-height-xl": rem("32px"),
 
       fontSize: "var(--pill-fz)",
-      flex: 0,
+      flex: "0",
       height: "var(--pill-height)",
       paddingLeft: "0.8em",
       paddingRight: "var(--_pill-padding-right, 0.8em)",
@@ -24,7 +24,7 @@ module.exports = function ({ addComponents, theme }: any) {
       alignItems: "center",
       borderRadius: "var(--pill-radius)",
       backgroundColor: "var(--_pill-bg)",
-      lineHeight: 1,
+      lineHeight: "1",
       whiteSpace: "nowrap",
       userSelect: "none",
       "-webkit-user-select": "none",
@@ -41,7 +41,7 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       "&[data-with-remove]": {
-        "--_pill-padding-right": 0,
+        "--_pill-padding-right": "0",
       },
 
       "&[data-disabled], &:has(button:disabled)": {
@@ -84,16 +84,16 @@ module.exports = function ({ addComponents, theme }: any) {
       minHeight: "unset",
       minWidth: "2em",
       width: "unset",
-      borderRadius: 0,
+      borderRadius: "0",
       paddingLeft: "0.1em",
       paddingRight: "0.3em",
-      flex: 0,
+      flex: "0",
 
       ".root[data-disabled] > &, &:disabled": {
         backgroundColor: "transparent",
         width: "0.8em",
         minWidth: "0.8em",
-        padding: 0,
+        padding: "0",
         cursor: "not-allowed",
 
         "& > svg": {

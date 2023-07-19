@@ -14,14 +14,14 @@ module.exports = function ({ addComponents, theme }: any) {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      border: `rem(1px) solid var(--_control-border-color)`,
+      border: `${rem("1px")} solid var(--_control-border-color)`,
       cursor: "var(--_control-cursor, pointer)",
       color: "var(--_control-color, var(--raikou-color-text))",
       height: "var(--pagination-control-size)",
       minWidth: "var(--pagination-control-size)",
       fontSize: "var(--pagination-control-fz)",
       padding: "var(--_control-padding, 0)",
-      lineHeight: 1,
+      lineHeight: "1",
       backgroundColor: "var(--_control-bg-color)",
       borderRadius: "var(--pagination-control-radius)",
       opacity: "var(--_control-opacity, 1)",
@@ -32,7 +32,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
       "&:disabled, &[data-disabled]": {
         "--_control-cursor": "not-allowed",
-        "--_control-opacity": 0.4,
+        "--_control-opacity": "0.4",
       },
 
       "&[data-active]": {

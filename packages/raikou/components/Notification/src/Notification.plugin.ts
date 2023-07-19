@@ -80,7 +80,7 @@ module.exports = function ({ addComponents, theme }: any) {
       color: "var(--raikou-color-white)",
 
       '[dir="rtl"] &': {
-        "--_icon-margin-right": 0,
+        "--_icon-margin-right": "0",
         "--_icon-margin-left": "var(--raikou-spacing-md)",
       },
     },
@@ -90,25 +90,25 @@ module.exports = function ({ addComponents, theme }: any) {
       marginLeft: "var(--_icon-margin-left, 0)",
 
       '[dir="rtl"] &': {
-        "--_icon-margin-right": 0,
+        "--_icon-margin-right": "0",
         "--_icon-margin-left": "var(--raikou-spacing-md)",
       },
     },
 
     ".notification-body": {
-      flex: 1,
+      flex: "1",
       overflow: "hidden",
       marginRight: "var(--_body-margin-right, var(--raikou-spacing-xs))",
       marginLeft: "var(--_body-margin-left, 0)",
 
       '[dir="rtl"] &': {
-        "--_body-margin-right": 0,
+        "--_body-margin-right": "0",
         "--_body-margin-left": "var(--raikou-spacing-xs)",
       },
     },
 
     ".notification-title": {
-      lineHeight: 1.4,
+      lineHeight: "1.4",
       marginBottom: rem("2px"),
       overflow: "hidden",
       textOverflow: "ellipsis",
@@ -125,7 +125,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".notification-description": {
       color: "var(--_description-color)",
-      lineHeight: 1.4,
+      lineHeight: "1.4",
       overflow: "hidden",
       textOverflow: "ellipsis",
 

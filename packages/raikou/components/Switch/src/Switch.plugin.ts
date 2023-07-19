@@ -37,11 +37,11 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".switch-input": {
-      height: 0,
-      width: 0,
-      opacity: 0,
-      margin: 0,
-      padding: 0,
+      height: "0",
+      width: "0",
+      opacity: "0",
+      margin: "0",
+      padding: "0",
       position: "absolute",
       overflow: "hidden",
       whiteSpace: "nowrap",
@@ -57,17 +57,17 @@ module.exports = function ({ addComponents, theme }: any) {
       border: `${rem("1px")} solid var(--_switch-bd)`,
       height: "var(--switch-height)",
       minWidth: "var(--switch-width)",
-      margin: 0,
+      margin: "0",
       transition: "background-color 150ms ease, border-color 150ms ease",
       appearance: "none",
       display: "flex",
       alignItems: "center",
       fontSize: "var(--switch-label-font-size)",
-      fontWeight: 600,
+      fontWeight: "600",
       order: "var(--_switch-order, 1)",
       userSelect: "none",
-      zIndex: 0,
-      lineHeight: 0,
+      zIndex: "0",
+      lineHeight: "0",
       color: "var(--_switch-color)",
 
       ".switch-input:focus-visible + &": {
@@ -106,13 +106,13 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       "&[data-label-position='left']": {
-        "--_switch-order": 2,
+        "--_switch-order": "2",
       },
     },
 
     ".switch-thumb": {
       position: "absolute",
-      zIndex: 1,
+      zIndex: "1",
       borderRadius: "var(--switch-radius)",
       display: "flex",
       backgroundColor: "var(--_switch-thumb-bg, var(--raikou-color-white))",

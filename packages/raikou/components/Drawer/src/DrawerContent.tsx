@@ -6,7 +6,6 @@ import {
   NativeScrollArea,
 } from "../../ModalBase/src";
 import { useDrawerContext } from "./Drawer.context";
-// import classes from './Drawer.module.css';
 
 export type DrawerContentStylesNames = "content" | "inner";
 
@@ -48,5 +47,4 @@ export const DrawerContent = factory<DrawerContentFactory>((_props, ref) => {
   );
 });
 
-// DrawerContent.classes = classes;
 DrawerContent.displayName = "@raikou/core/DrawerContent";

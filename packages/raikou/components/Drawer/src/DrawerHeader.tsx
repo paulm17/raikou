@@ -2,7 +2,6 @@ import React from "react";
 import { StylesApiProps, factory, useProps, Factory } from "@raikou/core";
 import { ModalBaseHeader, ModalBaseHeaderProps } from "../../ModalBase/src";
 import { useDrawerContext } from "./Drawer.context";
-// import classes from './Drawer.module.css';
 
 export type DrawerHeaderStylesNames = "header";
 
@@ -35,5 +34,4 @@ export const DrawerHeader = factory<DrawerHeaderFactory>((_props, ref) => {
   );
 });
 
-// DrawerHeader.classes = classes;
 DrawerHeader.displayName = "@raikou/core/DrawerHeader";

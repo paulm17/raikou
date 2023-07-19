@@ -1,12 +1,12 @@
-import { DEFAULT_THEME, RaikouTheme } from '../../../../RaikouProvider';
-import { getThemeClassNames } from './get-theme-class-names';
+import { DEFAULT_THEME, RaikouTheme } from "../../../../Bootstrap";
+import { getThemeClassNames } from "./get-theme-class-names";
 
 const testTheme: RaikouTheme = {
   ...DEFAULT_THEME,
   components: {
     TestComponentObject: {
       classNames: {
-        root: 'test-object',
+        root: "test-object",
       },
     },
 
@@ -18,49 +18,49 @@ const testTheme: RaikouTheme = {
   },
 };
 
-describe('@raikou/core/get-theme-class-names', () => {
-  it('returns empty array if themeName is empty', () => {
+describe("@raikou/core/get-theme-class-names", () => {
+  it("returns empty array if themeName is empty", () => {
     expect(
       getThemeClassNames({
         themeName: [],
         theme: testTheme,
-        selector: 'root',
+        selector: "root",
         props: {},
         stylesCtx: undefined,
       })
     ).toStrictEqual([]);
   });
 
-  it('returns correct classes for object classNames on theme', () => {
+  it("returns correct classes for object classNames on theme", () => {
     expect(
       getThemeClassNames({
-        themeName: ['TestComponentObject'],
+        themeName: ["TestComponentObject"],
         theme: testTheme,
-        selector: 'root',
+        selector: "root",
         props: {},
         stylesCtx: undefined,
       })
-    ).toStrictEqual(['test-object']);
+    ).toStrictEqual(["test-object"]);
   });
 
-  it('returns correct classes for function classNames on theme', () => {
+  it("returns correct classes for function classNames on theme", () => {
     expect(
       getThemeClassNames({
-        themeName: ['TestComponentFunction'],
+        themeName: ["TestComponentFunction"],
         theme: testTheme,
-        selector: 'root',
-        props: { test: '__test' },
+        selector: "root",
+        props: { test: "__test" },
         stylesCtx: undefined,
       })
-    ).toStrictEqual(['test-function-__test']);
+    ).toStrictEqual(["test-function-__test"]);
   });
 
-  it('returns array of undefined if component is not defined on theme', () => {
+  it("returns array of undefined if component is not defined on theme", () => {
     expect(
       getThemeClassNames({
-        themeName: ['TestComponentNotDefined'],
+        themeName: ["TestComponentNotDefined"],
         theme: testTheme,
-        selector: 'root',
+        selector: "root",
         props: {},
         stylesCtx: undefined,
       })

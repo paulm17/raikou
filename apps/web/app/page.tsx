@@ -1,14 +1,12 @@
 "use client";
 
-import { Badge } from "@raikou/server";
-
 export default function Page() {
   return (
-    <>
-      <Badge>hello</Badge>
-      <Badge>hello2</Badge>
-      <Badge>hello4</Badge>
-      <Badge>hello5</Badge>
-    </>
+    <p>
+      <a href="/server">Server Components</a>
+      <br />
+      <br />
+      <a href="/client">Client Components</a>
+    </p>
   );
 }

@@ -69,10 +69,10 @@ import {
   createVarsResolver as createVarsResolver5
 } from "@raikou/core";
 
-// ../utils/create-safe-context/create-safe-context.tsx
+// ../_utils/create-safe-context/create-safe-context.tsx
 import React, { createContext, useContext } from "react";
 
-// ../utils/create-optional-context/create-optional-context.tsx
+// ../_utils/create-optional-context/create-optional-context.tsx
 import React2, { createContext as createContext2, useContext as useContext2 } from "react";
 function createOptionalContext(initialValue = null) {
   const Context = createContext2(initialValue);

@@ -25,7 +25,7 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".alert-body": {
-      flex: 1,
+      flex: "1",
     },
 
     ".alert-title": {
@@ -34,7 +34,7 @@ module.exports = function ({ addComponents, theme }: any) {
       alignItems: "center",
       justifyContent: "space-between",
       fontSize: "var(--raikou-font-size-sm)",
-      fontWeight: 700,
+      fontWeight: "700",
 
       "&[data-with-close-button]": {
         paddingRight: "var(--raikou-spacing-md)",
@@ -48,7 +48,7 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".alert-icon": {
-      lineHeight: 1,
+      lineHeight: "1",
       width: rem("20px"),
       height: rem("20px"),
       display: "flex",

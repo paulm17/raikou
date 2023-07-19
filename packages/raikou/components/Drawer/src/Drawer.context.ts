@@ -1,5 +1,5 @@
 import { GetStylesApi } from "@raikou/core";
-import { createSafeContext } from "../../utils";
+import { createSafeContext } from "../../_utils";
 import type { DrawerRootFactory } from "./DrawerRoot";
 
 export type ScrollAreaComponent = React.FC<any>;

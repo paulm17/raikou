@@ -1,5 +1,5 @@
 import { fontSizeResolver } from "./font-size-resolver";
-import { DEFAULT_THEME } from "../../../../RaikouProvider";
+import { DEFAULT_THEME } from "../../../../Bootstrap";
 import { rem } from "../../../../utils";
 
 describe("@raikou/core/Box/font-size-resolver", () => {

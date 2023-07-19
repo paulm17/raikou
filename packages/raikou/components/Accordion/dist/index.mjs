@@ -88,7 +88,7 @@ import {
   useProps
 } from "@raikou/core";
 
-// ../utils/create-safe-context/create-safe-context.tsx
+// ../_utils/create-safe-context/create-safe-context.tsx
 import React2, { createContext, useContext } from "react";
 function createSafeContext(errorMessage) {
   const Context = createContext(null);
@@ -103,7 +103,7 @@ function createSafeContext(errorMessage) {
   return [Provider, useSafeContext];
 }
 
-// ../utils/create-optional-context/create-optional-context.tsx
+// ../_utils/create-optional-context/create-optional-context.tsx
 import React3, { createContext as createContext2, useContext as useContext2 } from "react";
 
 // src/Accordion.context.ts

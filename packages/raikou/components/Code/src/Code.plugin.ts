@@ -9,7 +9,7 @@ module.exports = function ({ addComponents, theme }: any) {
       fontSize: "var(--raikou-font-size-xs)",
       backgroundColor: "var(--_code-bg)",
       color: "var(--_code-color)",
-      margin: 0,
+      margin: "0",
       overflow: "auto",
 
       '[data-raikou-color-scheme="light"] &': {

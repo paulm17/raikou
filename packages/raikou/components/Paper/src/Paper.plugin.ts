@@ -1,7 +1,7 @@
 module.exports = function ({ addComponents, theme }: any) {
   addComponents({
     ".paper-root": {
-      outline: 0,
+      outline: "0",
       "-webkit-tap-highlight-color": "transparent",
       display: "block",
       touchAction: "manipulation",

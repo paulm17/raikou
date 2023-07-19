@@ -5,7 +5,7 @@ import {
   AppShellAsideProps,
   AppShellAsideStylesNames,
 } from "./AppShellAside";
-import { AppShell } from "../../AppShell";
+import { AppShell } from "../../../AppShell/src";
 
 const TestContainer = createContextContainer(AppShellAside, AppShell, {});
 

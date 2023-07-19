@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   corePlugins: {
-    preflight: false,
+    preflight: true,
   },
   content: [
     "./node_modules/@raikou/server/node_modules/@raikou/action-icon/dist/*.js",
@@ -49,6 +49,7 @@ module.exports = {
     "./node_modules/@raikou/client/node_modules/@raikou/native-select/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/notification/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/overlay/dist/*.js",
+    "./node_modules/@raikou/client/node_modules/@raikou/pagination/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/pill/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/pills-input/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/popover/dist/*.js",

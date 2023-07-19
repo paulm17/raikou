@@ -2,7 +2,6 @@ import React from "react";
 import { StylesApiProps, factory, useProps, Factory } from "@raikou/core";
 import { ModalBaseBody, ModalBaseBodyProps } from "../../ModalBase/src";
 import { useDrawerContext } from "./Drawer.context";
-// import classes from './Drawer.module.css';
 
 export type DrawerBodyStylesNames = "body";
 
@@ -35,5 +34,4 @@ export const DrawerBody = factory<DrawerBodyFactory>((_props, ref) => {
   );
 });
 
-// DrawerBody.classes = classes;
 DrawerBody.displayName = "@raikou/core/DrawerBody";

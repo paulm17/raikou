@@ -1,5 +1,5 @@
 import { spacingResolver } from "./spacing-resolver";
-import { DEFAULT_THEME } from "../../../../RaikouProvider";
+import { DEFAULT_THEME } from "../../../../Bootstrap";
 import { rem } from "../../../../utils";
 
 describe("@raikou/core/Box/spacing-resolver", () => {

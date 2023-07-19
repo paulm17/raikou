@@ -2,7 +2,6 @@ import React from "react";
 import { StylesApiProps, factory, useProps, Factory } from "@raikou/core";
 import { ModalBaseTitle, ModalBaseTitleProps } from "../../ModalBase/src";
 import { useDrawerContext } from "./Drawer.context";
-// import classes from './Drawer.module.css';
 
 export type DrawerTitleStylesNames = "title";
 
@@ -35,5 +34,4 @@ export const DrawerTitle = factory<DrawerTitleFactory>((_props, ref) => {
   );
 });
 
-// DrawerTitle.classes = classes;
 DrawerTitle.displayName = "@raikou/core/DrawerTitle";

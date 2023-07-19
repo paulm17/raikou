@@ -66,7 +66,7 @@ module.exports = __toCommonJS(src_exports);
 
 // src/PillsInput.tsx
 var import_react11 = __toESM(require("react"));
-var import_core11 = require("@raikou/core");
+var import_core10 = require("@raikou/core");
 
 // ../InputBase/src/InputBase.tsx
 var import_react9 = __toESM(require("react"));
@@ -76,10 +76,10 @@ var import_core8 = require("@raikou/core");
 var import_react8 = __toESM(require("react"));
 var import_core6 = require("@raikou/core");
 
-// ../utils/create-safe-context/create-safe-context.tsx
+// ../_utils/create-safe-context/create-safe-context.tsx
 var import_react = __toESM(require("react"));
 
-// ../utils/create-optional-context/create-optional-context.tsx
+// ../_utils/create-optional-context/create-optional-context.tsx
 var import_react2 = __toESM(require("react"));
 function createOptionalContext(initialValue = null) {
   const Context = (0, import_react2.createContext)(initialValue);
@@ -554,7 +554,8 @@ var defaultProps6 = {
   variant: "default",
   leftSectionPointerEvents: "none",
   rightSectionPointerEvents: "none",
-  withAria: true
+  withAria: true,
+  withErrorStyles: true
 };
 var varsResolver5 = (0, import_core6.createVarsResolver)((_, props, ctx) => ({
   wrapper: {
@@ -599,7 +600,8 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
     multiline,
     radius,
     id,
-    withAria
+    withAria,
+    withErrorStyles
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -627,7 +629,8 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
     "multiline",
     "radius",
     "id",
-    "withAria"
+    "withAria",
+    "withErrorStyles"
   ]);
   const { styleProps, rest } = (0, import_core6.extractStyleProps)(others);
   const ctx = useInputWrapperContext();
@@ -664,7 +667,7 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
     import_core6.Box,
     __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, getStyles("wrapper")), styleProps), wrapperProps), {
       mod: {
-        error: !!error,
+        error: !!error && withErrorStyles,
         pointer,
         disabled,
         multiline,
@@ -691,7 +694,7 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
       }, rest), ariaAttributes), {
         ref,
         required,
-        mod: { disabled, error: !!error },
+        mod: { disabled, error: !!error && withErrorStyles },
         variant
       }), getStyles("input"))
     ),
@@ -824,19 +827,18 @@ InputBase.classes = __spreadValues(__spreadValues({}, Input.classes), Input.Wrap
 InputBase.displayName = "@raikou/core/InputBase";
 
 // src/PillsInput.context.ts
-var import_core9 = require("@raikou/core");
-var [PillsInputProvider, usePillsInputContext] = (0, import_core9.createOptionalContext)();
+var [PillsInputProvider, usePillsInputContext] = createOptionalContext();
 
 // src/PillsInputField/PillsInputField.tsx
 var import_react10 = __toESM(require("react"));
 var import_hooks2 = require("@raikou/hooks");
-var import_core10 = require("@raikou/core");
+var import_core9 = require("@raikou/core");
 var defaultProps8 = {
   type: "visible"
 };
-var PillsInputField = (0, import_core10.factory)(
+var PillsInputField = (0, import_core9.factory)(
   (_props, ref) => {
-    const props = (0, import_core10.useProps)("PillsInputField", defaultProps8, _props);
+    const props = (0, import_core9.useProps)("PillsInputField", defaultProps8, _props);
     const _a = props, {
       classNames,
       className,
@@ -862,7 +864,7 @@ var PillsInputField = (0, import_core10.factory)(
     ]);
     const ctx = usePillsInputContext();
     const inputWrapperCtx = useInputWrapperContext();
-    const getStyles = (0, import_core10.useStyles)({
+    const getStyles = (0, import_core9.useStyles)({
       name: "PillsInputField",
       classes: {
         field: "field"
@@ -877,7 +879,7 @@ var PillsInputField = (0, import_core10.factory)(
     });
     const _disabled = disabled || (ctx == null ? void 0 : ctx.disabled);
     return /* @__PURE__ */ import_react10.default.createElement(
-      import_core10.Box,
+      import_core9.Box,
       __spreadProps(__spreadValues(__spreadValues({
         component: "input",
         ref: (0, import_hooks2.useMergedRef)(ref, ctx == null ? void 0 : ctx.fieldRef),
@@ -898,8 +900,8 @@ PillsInputField.displayName = "@raikou/core/PillsInputField";
 var defaultProps9 = {
   size: "sm"
 };
-var PillsInput = (0, import_core11.factory)((_props, ref) => {
-  const props = (0, import_core11.useProps)("PillsInput", defaultProps9, _props);
+var PillsInput = (0, import_core10.factory)((_props, ref) => {
+  const props = (0, import_core10.useProps)("PillsInput", defaultProps9, _props);
   const _a = props, {
     children,
     onMouseDown,

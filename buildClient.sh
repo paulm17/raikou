@@ -1,12 +1,15 @@
 # build client
 pnpm --filter @raikou/accordion run build
+pnpm --filter @raikou/alert run build
 pnpm --filter @raikou/appshell run build
 pnpm --filter @raikou/autocomplete run build
 pnpm --filter @raikou/avatar run build
 pnpm --filter @raikou/checkbox run build
 pnpm --filter @raikou/color-picker run build
+pnpm --filter @raikou/collapse run build
 pnpm --filter @raikou/combobox run build
 pnpm --filter @raikou/drawer run build
+pnpm --filter @raikou/inlineInput run build
 pnpm --filter @raikou/input run build
 pnpm --filter @raikou/input-base run build
 pnpm --filter @raikou/modal run build

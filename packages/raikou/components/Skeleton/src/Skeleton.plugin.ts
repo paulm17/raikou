@@ -2,11 +2,11 @@ module.exports = function ({ addComponents, theme }: any) {
   addComponents({
     "@keyframes skeleton-fade": {
       "0%, 100%": {
-        opacity: 0.4,
+        opacity: "0.4",
       },
 
       "50%": {
-        opacity: 1,
+        opacity: "1",
       },
     },
 
@@ -28,16 +28,16 @@ module.exports = function ({ addComponents, theme }: any) {
         "&::before": {
           position: "absolute",
           content: '""',
-          inset: 0,
-          zIndex: 10,
+          inset: "0",
+          zIndex: "10",
           backgroundColor: "var(--raikou-color-body)",
         },
 
         "&::after": {
           position: "absolute",
           content: '""',
-          inset: 0,
-          zIndex: 11,
+          inset: "0",
+          zIndex: "11",
 
           '[data-raikou-color-scheme="light"] &': {
             backgroundColor: "var(--raikou-color-gray-3)",

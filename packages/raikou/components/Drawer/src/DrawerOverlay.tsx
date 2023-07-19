@@ -2,7 +2,6 @@ import React from "react";
 import { StylesApiProps, factory, useProps, Factory } from "@raikou/core";
 import { ModalBaseOverlay, ModalBaseOverlayProps } from "../../ModalBase/src";
 import { useDrawerContext } from "./Drawer.context";
-// import classes from './Drawer.module.css';
 
 export type DrawerOverlayStylesNames = "overlay";
 
@@ -35,5 +34,4 @@ export const DrawerOverlay = factory<DrawerOverlayFactory>((_props, ref) => {
   );
 });
 
-// DrawerOverlay.classes = classes;
 DrawerOverlay.displayName = "@raikou/core/DrawerOverlay";

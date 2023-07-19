@@ -4,7 +4,7 @@ import {
   UnstyledButton,
   UnstyledButtonProps,
   UnstyledButtonStylesNames,
-} from "./UnstyledButton/src";
+} from "./UnstyledButton";
 
 const defaultProps: UnstyledButtonProps = {};
 

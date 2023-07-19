@@ -172,7 +172,7 @@ var import_react5 = __toESM(require("react"));
 var import_hooks = require("@raikou/hooks");
 var import_core2 = require("@raikou/core");
 
-// ../utils/create-safe-context/create-safe-context.tsx
+// ../_utils/create-safe-context/create-safe-context.tsx
 var import_react3 = __toESM(require("react"));
 function createSafeContext(errorMessage) {
   const Context = (0, import_react3.createContext)(null);
@@ -187,7 +187,7 @@ function createSafeContext(errorMessage) {
   return [Provider, useSafeContext];
 }
 
-// ../utils/create-optional-context/create-optional-context.tsx
+// ../_utils/create-optional-context/create-optional-context.tsx
 var import_react4 = __toESM(require("react"));
 
 // src/Pagination.context.ts

@@ -42,7 +42,7 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".colorPicker-sliders": {
-      flex: 1,
+      flex: "1",
 
       "&:not(:only-child)": {
         marginRight: "var(--raikou-spacing-xs)",
@@ -64,13 +64,13 @@ module.exports = function ({ addComponents, theme }: any) {
 
     /* Duplicate class to increase specificity */
     ".colorPicker-swatch.colorPicker-swatch": {
-      height: 0,
+      height: "0",
       margin: rem("2px"),
       cursor: "pointer",
       width: `calc(var(--cp-swatch-size) - ${rem("4px")})`,
       paddingBottom: `calc(var(--cp-swatch-size) - ${rem("4px")})`,
-      minWidth: 0,
-      minHeight: 0,
+      minWidth: "0",
+      minHeight: "0",
     },
 
     ".colorPicker-swatches": {
@@ -149,8 +149,8 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".colorPicker-sliderOverlay": {
       position: "absolute",
-      top: 0,
-      bottom: 0,
+      top: "0",
+      bottom: "0",
       left: `calc(var(--cp-thumb-size) * -1 / 2 - ${rem("1px")})`,
       right: `calc(var(--cp-thumb-size) * -1 / 2 - ${rem("1px")})`,
       borderRadius: "10000rem",

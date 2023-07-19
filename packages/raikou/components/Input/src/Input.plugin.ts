@@ -56,10 +56,10 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       "&[data-variant='unstyled']": {
-        "--input-padding": 0,
-        "--input-padding-y": 0,
-        "--_input-padding-left": 0,
-        "--_input-padding-right": 0,
+        "--input-padding": "0",
+        "--input-padding-y": "0",
+        "--_input-padding-left": "0",
+        "--_input-padding-right": "0",
       },
 
       "&[data-with-left-section]": {
@@ -175,7 +175,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
       "&::placeholder": {
         color: "var(--_input-placeholder-color)",
-        opacity: 1,
+        opacity: "1",
       },
 
       "&::-webkit-inner-spin-button, &::-webkit-outer-spin-button, &::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration":
@@ -198,7 +198,7 @@ module.exports = function ({ addComponents, theme }: any) {
     ".input-section": {
       pointerEvents: "var(--_section-pointer-events)",
       position: "absolute",
-      zIndex: 1,
+      zIndex: "1",
       left: "var(--_section-left)",
       right: "var(--_section-right)",
       bottom: "var(--_section-y)",
@@ -238,7 +238,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".inputWrapper-label": {
       display: "inline-block",
-      fontWeight: 500,
+      fontWeight: "500",
       wordBreak: "break-word",
       cursor: "default",
       "-webkit-tap-highlight-color": "transparent",
@@ -254,8 +254,8 @@ module.exports = function ({ addComponents, theme }: any) {
       wordWrap: "break-word",
       lineHeight: "1.2",
       display: "block",
-      margin: 0,
-      padding: 0,
+      margin: "0",
+      padding: "0",
     },
 
     ".inputWrapper-error": {

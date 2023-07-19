@@ -28,9 +28,9 @@ module.exports = function ({ addComponents, theme }: any) {
       width: "var(--checkbox-size)",
       height: "var(--checkbox-size)",
       borderRadius: "var(--checkbox-radius)",
-      padding: 0,
+      padding: "0",
       display: "block",
-      margin: 0,
+      margin: "0",
       transition: "border-color 100ms ease, background-color 100ms ease",
       cursor: "var(--_checkbox-cursor, var(--raikou-cursor-type))",
 
@@ -87,10 +87,10 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".checkbox-icon": {
       position: "absolute",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
+      top: "0",
+      left: "0",
+      right: "0",
+      bottom: "0",
       width: "60%",
       margin: "auto",
       color: "var(--_checkbox-icon-color, var(--raikou-color-white))",

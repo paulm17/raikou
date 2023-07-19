@@ -1,11 +1,10 @@
-const glob = require('glob');
 const fs = require('fs');
 const path = require('path');
 import type { Rule } from 'postcss';
 
 const DEFAULT_OPTIONS = {
   appPath: './src/tests',
-  libPath: '../raikou-server/src/**/index.ts',
+  libPath: ['../raikou/server/src/index.ts', '../raikou/client/src/index.ts'],
   exts: ['.tsx'],
 };
 
@@ -27,21 +26,24 @@ const findMatches = (regex: RegExp, str: string, matches: any[] = []) => {
   return matches;
 };
 
-const getImportedModules = (libPath: string) => {
+const getImportedModules = (libPath: string[]) => {
   // Make sure it's a list with unique items
   const imports = new Set();
-  // The components are always declared in an index.ts, so we just have to look through those
-  glob.sync(libPath, { nodir: true }).forEach((file: string) => {
-    const fileContents = fs.readFileSync(file);
 
+  libPath.forEach((path) => {
+    const fileContents = fs.readFileSync(path, 'utf8');
     const matches = findMatches(/export \* from "([^"]+)";/g, fileContents);
 
     for (const match of matches) {
       const newMatch = match[1].replace('./', '');
 
-      if (/^[A-Z]/.test(newMatch)) {
-        imports.add(newMatch.toLowerCase());
-      }
+      // Convert kebab-case to camelCase
+      const camelCaseMatch = newMatch
+        .toLowerCase()
+        .replace(/-(\w)/g, (_: boolean, letter: string) => letter.toUpperCase())
+        .replace('@raikou/', '');
+
+      imports.add(camelCaseMatch);
     }
   });
 
@@ -51,22 +53,25 @@ const getImportedModules = (libPath: string) => {
 const getContent = (files: string[]) => files.map((f) => fs.readFileSync(f, 'utf8')).join();
 
 module.exports = (opts: any) => {
+  const { appPath, libPath, exts } = Object.assign(DEFAULT_OPTIONS, opts);
+  const content = getContent(getFiles(appPath, exts));
+
+  // Get all library components
+  const importedModules = getImportedModules(libPath) as string[];
+
+  // Get components being used
+  const regex = /<([a-zA-Z]+)[^>]*>/g;
+  const matches = content.match(regex);
+  const componentNames = matches?.map((match) => match.replace(/<|>|\/>/g, ''));
+  const lowerCaseComponentNames = componentNames?.map((c) => c.toLowerCase()) || [];
+
+  console.log(importedModules);
+  console.log(lowerCaseComponentNames);
+
   return {
     postcssPlugin: 'postcss-reset',
 
     Rule(rule: Rule) {
-      const { appPath, libPath, exts } = Object.assign(DEFAULT_OPTIONS, opts);
-      const content = getContent(getFiles(appPath, exts));
-
-      // Get all library components
-      const importedModules = getImportedModules(libPath) as string[];
-
-      // Get components being used
-      const regex = /<([a-zA-Z]+)[^>]*>/g;
-      const matches = content.match(regex);
-      const componentNames = matches?.map((match) => match.replace(/<|>|\/>/g, ''));
-      const lowerCaseComponentNames = componentNames?.map((c) => c.toLowerCase()) || [];
-
       // Loop through all modules
       importedModules.forEach((module: string) => {
         // A rule contains a module
@@ -82,6 +87,8 @@ module.exports = (opts: any) => {
 
           // The rule does not match any component, remove it
           if (!hasMatch) {
+            console.log(`removing ${rule.selector} from ${module}`);
+
             rule.remove();
           }
         }

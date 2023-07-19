@@ -1,6 +1,6 @@
 import React from "react";
 import { RaikouSize } from "@raikou/core";
-import { createOptionalContext } from "../../utils";
+import { createOptionalContext } from "../../_utils";
 import { InputVariant } from "../../Input/src";
 
 export interface PillsInputContextValue {

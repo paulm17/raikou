@@ -1,23 +1,23 @@
-import { DEFAULT_THEME } from '../../../../RaikouProvider';
-import { resolveStyles } from './resolve-styles';
+import { DEFAULT_THEME } from "../../../../Bootstrap";
+import { resolveStyles } from "./resolve-styles";
 
-describe('@raikou/core/resolve-styles', () => {
-  it('resolves styles from object', () => {
+describe("@raikou/core/resolve-styles", () => {
+  it("resolves styles from object", () => {
     expect(
       resolveStyles({
         theme: DEFAULT_THEME,
         styles: {
           root: {
-            color: 'red',
+            color: "red",
           },
         },
         props: {},
         stylesCtx: undefined,
       })
-    ).toStrictEqual({ root: { color: 'red' } });
+    ).toStrictEqual({ root: { color: "red" } });
   });
 
-  it('resolves styles from function', () => {
+  it("resolves styles from function", () => {
     expect(
       resolveStyles({
         theme: DEFAULT_THEME,
@@ -28,14 +28,14 @@ describe('@raikou/core/resolve-styles', () => {
             ...stylesCtx,
           },
         }),
-        props: { outline: 'cyan' },
-        stylesCtx: { textDecoration: 'underline' },
+        props: { outline: "cyan" },
+        stylesCtx: { textDecoration: "underline" },
       })
     ).toStrictEqual({
       root: {
         color: DEFAULT_THEME.colors.blue[1],
-        outlineColor: 'cyan',
-        textDecoration: 'underline',
+        outlineColor: "cyan",
+        textDecoration: "underline",
       },
     });
   });

@@ -1,5 +1,5 @@
 import { GetStylesApi } from "@raikou/core";
-import { createSafeContext } from "../../utils";
+import { createSafeContext } from "../../_utils";
 import {
   AccordionChevronPosition,
   AccordionHeadingOrder,

@@ -36,7 +36,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
       "&[data-combobox-disabled]": {
         "--_option-cursor": "not-allowed",
-        "--_option-opacity": 0.35,
+        "--_option-opacity": "0.35",
       },
 
       "@media (hover: hover)": {
@@ -72,15 +72,15 @@ module.exports = function ({ addComponents, theme }: any) {
       marginRight: "calc(var(--combobox-padding) * -1)",
       marginTop: "calc(var(--combobox-padding) * -1)",
       width: "calc(100% + var(--combobox-padding) * 2)",
-      borderTopWidth: 0,
-      borderRightWidth: 0,
-      borderLeftWidth: 0,
-      borderBottomLeftRadius: 0,
-      borderBottomRightRadius: 0,
+      borderTopWidth: "0",
+      borderRightWidth: "0",
+      borderLeftWidth: "0",
+      borderBottomLeftRadius: "0",
+      borderBottomRightRadius: "0",
       marginBottom: "var(--combobox-padding)",
       backgroundColor: "var(--_search_background)",
       position: "relative",
-      zIndex: 1000,
+      zIndex: "1000",
 
       "&, &:focus": {
         "border-color": "var(--_search-border-color)",
@@ -142,16 +142,16 @@ module.exports = function ({ addComponents, theme }: any) {
       color: "var(--raikou-color-dimmed)",
       fontSize: "calc(var(--combobox-option-fz) * 0.85)",
       padding: "var(--combobox-option-padding)",
-      fontWeight: 500,
+      fontWeight: "500",
       position: "relative",
       display: "flex",
       alignItems: "center",
 
       "&::after": {
         content: '""',
-        flex: 1,
-        left: 0,
-        right: 0,
+        flex: "1",
+        left: "0",
+        right: "0",
         height: rem("1px"),
         marginLeft: "var(--raikou-spacing-xs)",
         backgroundColor: "var(--_divider-bg)",
@@ -199,7 +199,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
       '[dir="rtl"] &': {
         marginLeft: "calc(var(--combobox-padding) * -1)",
-        marginRight: 0,
+        marginRight: "0",
       },
     },
 
@@ -215,12 +215,12 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".comboBox-optionsDropdownCheckIcon": {
-      opacity: 0.4,
+      opacity: "0.4",
       width: "0.8em",
       height: "0.8em",
 
       "[data-combobox-selected] &": {
-        opacity: 1,
+        opacity: "1",
       },
     },
   });

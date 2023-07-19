@@ -1,18 +1,21 @@
-import { DEFAULT_THEME, RaikouTheme } from '../../../RaikouProvider';
-import { getStyle, GetStyleInput } from './get-style';
+import { DEFAULT_THEME, RaikouTheme } from "../../../Bootstrap";
+import { getStyle, GetStyleInput } from "./get-style";
 
 const THEME_WITH_STYLES: RaikouTheme = {
   ...DEFAULT_THEME,
   components: {
     TestComponentObject: {
       styles: {
-        root: { color: 'red' },
+        root: { color: "red" },
       },
     },
 
     TestComponentFunction: {
       styles: (theme: RaikouTheme, props: Record<string, any>) => ({
-        root: { background: props['data-color'], outlineColor: theme.colors.red[0] },
+        root: {
+          background: props["data-color"],
+          outlineColor: theme.colors.red[0],
+        },
       }),
     },
   },
@@ -21,8 +24,8 @@ const THEME_WITH_STYLES: RaikouTheme = {
 const defaultOptions: GetStyleInput = {
   theme: DEFAULT_THEME,
   themeName: [],
-  selector: 'root',
-  rootSelector: 'root',
+  selector: "root",
+  rootSelector: "root",
   options: undefined,
   props: {},
   stylesCtx: undefined,
@@ -32,62 +35,77 @@ const defaultOptions: GetStyleInput = {
   varsResolver: undefined,
 };
 
-describe('@raikou/core/get-style', () => {
-  it('resolves style prop', () => {
-    expect(getStyle({ ...defaultOptions, style: { color: 'red' } })).toStrictEqual({
-      color: 'red',
+describe("@raikou/core/get-style", () => {
+  it("resolves style prop", () => {
+    expect(
+      getStyle({ ...defaultOptions, style: { color: "red" } })
+    ).toStrictEqual({
+      color: "red",
     });
 
     expect(
-      getStyle({ ...defaultOptions, style: [{ color: 'red' }, { background: 'blue' }] })
-    ).toStrictEqual({ color: 'red', background: 'blue' });
+      getStyle({
+        ...defaultOptions,
+        style: [{ color: "red" }, { background: "blue" }],
+      })
+    ).toStrictEqual({ color: "red", background: "blue" });
 
     expect(
       getStyle({
         ...defaultOptions,
-        style: [(theme) => ({ color: theme.colors.red[0] }), { background: 'blue' }],
+        style: [
+          (theme) => ({ color: theme.colors.red[0] }),
+          { background: "blue" },
+        ],
       })
-    ).toStrictEqual({ color: DEFAULT_THEME.colors.red[0], background: 'blue' });
+    ).toStrictEqual({ color: DEFAULT_THEME.colors.red[0], background: "blue" });
   });
 
-  it('does not resolve style if selector is not rootSelector', () => {
+  it("does not resolve style if selector is not rootSelector", () => {
     expect(
       getStyle({
         ...defaultOptions,
-        rootSelector: 'root',
-        selector: 'child',
-        style: { color: 'red' },
+        rootSelector: "root",
+        selector: "child",
+        style: { color: "red" },
       })
     ).toStrictEqual({});
   });
 
-  it('resolves options.style', () => {
-    expect(getStyle({ ...defaultOptions, options: { style: { color: 'red' } } })).toStrictEqual({
-      color: 'red',
+  it("resolves options.style", () => {
+    expect(
+      getStyle({ ...defaultOptions, options: { style: { color: "red" } } })
+    ).toStrictEqual({
+      color: "red",
     });
 
     expect(
       getStyle({
         ...defaultOptions,
-        options: { style: [{ color: 'red' }, { background: 'blue' }] },
+        options: { style: [{ color: "red" }, { background: "blue" }] },
       })
-    ).toStrictEqual({ color: 'red', background: 'blue' });
+    ).toStrictEqual({ color: "red", background: "blue" });
 
     expect(
       getStyle({
         ...defaultOptions,
-        options: { style: [(theme) => ({ color: theme.colors.red[0] }), { background: 'blue' }] },
+        options: {
+          style: [
+            (theme) => ({ color: theme.colors.red[0] }),
+            { background: "blue" },
+          ],
+        },
       })
-    ).toStrictEqual({ color: DEFAULT_THEME.colors.red[0], background: 'blue' });
+    ).toStrictEqual({ color: DEFAULT_THEME.colors.red[0], background: "blue" });
   });
 
-  it('resolves styles', () => {
+  it("resolves styles", () => {
     expect(
       getStyle({
         ...defaultOptions,
-        styles: { root: { color: 'red' } },
+        styles: { root: { color: "red" } },
       })
-    ).toStrictEqual({ color: 'red' });
+    ).toStrictEqual({ color: "red" });
 
     expect(
       getStyle({
@@ -97,60 +115,62 @@ describe('@raikou/core/get-style', () => {
     ).toStrictEqual({ color: DEFAULT_THEME.colors.red[0] });
   });
 
-  it('resolves options.styles', () => {
+  it("resolves options.styles", () => {
     expect(
       getStyle({
         ...defaultOptions,
-        options: { styles: { root: { color: 'red' } } },
+        options: { styles: { root: { color: "red" } } },
       })
-    ).toStrictEqual({ color: 'red' });
+    ).toStrictEqual({ color: "red" });
 
     expect(
       getStyle({
         ...defaultOptions,
-        options: { styles: (theme) => ({ root: { color: theme.colors.red[0] } }) },
+        options: {
+          styles: (theme) => ({ root: { color: theme.colors.red[0] } }),
+        },
       })
     ).toStrictEqual({ color: DEFAULT_THEME.colors.red[0] });
   });
 
-  it('resolves theme styles', () => {
+  it("resolves theme styles", () => {
     expect(
       getStyle({
         ...defaultOptions,
         theme: THEME_WITH_STYLES,
-        themeName: ['TestComponentObject'],
+        themeName: ["TestComponentObject"],
       })
-    ).toStrictEqual({ color: 'red' });
+    ).toStrictEqual({ color: "red" });
 
     expect(
       getStyle({
         ...defaultOptions,
         theme: THEME_WITH_STYLES,
-        props: { 'data-color': 'blue' },
-        themeName: ['TestComponentObject', 'TestComponentFunction'],
+        props: { "data-color": "blue" },
+        themeName: ["TestComponentObject", "TestComponentFunction"],
       })
     ).toStrictEqual({
-      color: 'red',
-      background: 'blue',
+      color: "red",
+      background: "blue",
       outlineColor: DEFAULT_THEME.colors.red[0],
     });
   });
 
-  it('resolves vars', () => {
+  it("resolves vars", () => {
     expect(
       getStyle({
         ...defaultOptions,
-        vars: (theme) => ({ root: { '--color': theme.colors.red[0] } }),
+        vars: (theme) => ({ root: { "--color": theme.colors.red[0] } }),
       })
-    ).toStrictEqual({ '--color': DEFAULT_THEME.colors.red[0] });
+    ).toStrictEqual({ "--color": DEFAULT_THEME.colors.red[0] });
   });
 
-  it('resolves varsResolver', () => {
+  it("resolves varsResolver", () => {
     expect(
       getStyle({
         ...defaultOptions,
-        varsResolver: (theme) => ({ root: { '--color': theme.colors.red[0] } }),
+        varsResolver: (theme) => ({ root: { "--color": theme.colors.red[0] } }),
       })
-    ).toStrictEqual({ '--color': DEFAULT_THEME.colors.red[0] });
+    ).toStrictEqual({ "--color": DEFAULT_THEME.colors.red[0] });
   });
 });

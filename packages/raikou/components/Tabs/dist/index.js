@@ -71,7 +71,7 @@ var import_react7 = __toESM(require("react"));
 var import_hooks = require("@raikou/hooks");
 var import_core5 = require("@raikou/core");
 
-// ../utils/create-safe-context/create-safe-context.tsx
+// ../_utils/create-safe-context/create-safe-context.tsx
 var import_react = __toESM(require("react"));
 function createSafeContext(errorMessage) {
   const Context = (0, import_react.createContext)(null);
@@ -86,7 +86,7 @@ function createSafeContext(errorMessage) {
   return [Provider, useSafeContext];
 }
 
-// ../utils/create-optional-context/create-optional-context.tsx
+// ../_utils/create-optional-context/create-optional-context.tsx
 var import_react2 = __toESM(require("react"));
 
 // src/Tabs.context.ts

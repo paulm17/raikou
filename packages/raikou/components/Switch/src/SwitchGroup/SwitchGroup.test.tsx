@@ -1,6 +1,6 @@
 import React from "react";
 import { render, tests, userEvent, screen } from "@raikou/tests";
-import { Switch } from "../../Switch";
+import { Switch } from "../../../Switch/src";
 import {
   SwitchGroup,
   SwitchGroupProps,

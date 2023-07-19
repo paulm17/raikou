@@ -16,7 +16,6 @@ import {
   ModalBaseStylesNames,
 } from "../../ModalBase/src";
 import { DrawerProvider, ScrollAreaComponent } from "./Drawer.context";
-// import classes from "./Drawer.module.css";
 
 type DrawerPosition = "bottom" | "left" | "right" | "top";
 
@@ -142,5 +141,4 @@ export const DrawerRoot = factory<DrawerRootFactory>((_props, ref) => {
   );
 });
 
-// DrawerRoot.classes = classes;
 DrawerRoot.displayName = "@raikou/core/DrawerRoot";

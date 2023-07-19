@@ -1,4 +1,4 @@
-import { createSafeContext } from "../../utils";
+import { createSafeContext } from "../../_utils";
 import { TransitionOverride } from "../../Transition/src";
 
 interface ModalBaseContextValue {

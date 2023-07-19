@@ -18,7 +18,7 @@ module.exports = function ({ addComponents, theme }: any) {
       textDecoration: "none",
       border: "var(--_avatar-border, none)",
       backgroundColor: "var(--_avatar-bg, transparent)",
-      padding: 0,
+      padding: "0",
       width: "var(--avatar-size)",
       height: "var(--avatar-size)",
       minWidth: "var(--avatar-size)",
@@ -45,7 +45,7 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".avatar-placeholder": {
-      fontWeight: 700,
+      fontWeight: "700",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -69,7 +69,7 @@ module.exports = function ({ addComponents, theme }: any) {
       paddingLeft: "var(--ag-spacing)",
 
       '[dir="rtl"] &': {
-        paddingLeft: 0,
+        paddingLeft: "0",
         paddingRight: "var(--ag-spacing)",
       },
     },

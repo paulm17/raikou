@@ -72,7 +72,7 @@ module.exports = function ({ addComponents }: any) {
         marginRight: "var(--badge-dot-size)",
 
         '[dir="rtl"] &': {
-          marginRight: 0,
+          marginRight: "0",
           marginLeft: "var(--badge-dot-size)",
         },
       },

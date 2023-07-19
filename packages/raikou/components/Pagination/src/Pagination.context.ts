@@ -1,5 +1,5 @@
 import { GetStylesApi } from "@raikou/core";
-import { createSafeContext } from "../../utils";
+import { createSafeContext } from "../../_utils";
 import type { PaginationRootFactory } from "./PaginationRoot/PaginationRoot";
 
 interface PaginationContext {

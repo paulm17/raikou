@@ -1,5 +1,5 @@
 import { GetStylesApi } from "@raikou/core";
-import { createOptionalContext } from "../../utils";
+import { createOptionalContext } from "../../_utils";
 import type { InputWrapperFactory } from "./InputWrapper/InputWrapper";
 
 interface InputWrapperContextValue {

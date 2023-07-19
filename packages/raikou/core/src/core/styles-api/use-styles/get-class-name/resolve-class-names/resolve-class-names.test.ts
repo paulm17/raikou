@@ -1,8 +1,8 @@
-import { DEFAULT_THEME } from '../../../../RaikouProvider';
-import { resolveClassNames } from './resolve-class-names';
+import { DEFAULT_THEME } from "../../../../Bootstrap";
+import { resolveClassNames } from "./resolve-class-names";
 
-describe('@raikou/core/resolve-class-names', () => {
-  it('returns empty object if classNames is undefined', () => {
+describe("@raikou/core/resolve-class-names", () => {
+  it("returns empty object if classNames is undefined", () => {
     expect(
       resolveClassNames({
         theme: DEFAULT_THEME,
@@ -13,7 +13,7 @@ describe('@raikou/core/resolve-class-names', () => {
     ).toStrictEqual({});
   });
 
-  it('correctly resolves classNames function (theme)', () => {
+  it("correctly resolves classNames function (theme)", () => {
     expect(
       resolveClassNames({
         theme: DEFAULT_THEME,
@@ -24,65 +24,65 @@ describe('@raikou/core/resolve-class-names', () => {
     ).toStrictEqual({ test: DEFAULT_THEME.activeClassName });
   });
 
-  it('correctly resolves classNames function (props)', () => {
+  it("correctly resolves classNames function (props)", () => {
     expect(
       resolveClassNames({
         theme: DEFAULT_THEME,
         classNames: (_, props) => ({ test: props.test }),
-        props: { test: 'test' },
+        props: { test: "test" },
         stylesCtx: undefined,
       })
-    ).toStrictEqual({ test: 'test' });
+    ).toStrictEqual({ test: "test" });
   });
 
-  it('correctly resolves classNames function (stylesCtx)', () => {
+  it("correctly resolves classNames function (stylesCtx)", () => {
     expect(
       resolveClassNames({
         theme: DEFAULT_THEME,
         classNames: (_, __, stylesCtx) => ({ test: stylesCtx?.test }),
         props: {},
-        stylesCtx: { test: 'test' },
+        stylesCtx: { test: "test" },
       })
-    ).toStrictEqual({ test: 'test' });
+    ).toStrictEqual({ test: "test" });
   });
 
-  it('correctly resolves classNames object', () => {
+  it("correctly resolves classNames object", () => {
     expect(
       resolveClassNames({
         theme: DEFAULT_THEME,
-        classNames: { test1: 'test1', test2: 'test2' },
+        classNames: { test1: "test1", test2: "test2" },
         props: {},
         stylesCtx: undefined,
       })
-    ).toStrictEqual({ test1: 'test1', test2: 'test2' });
+    ).toStrictEqual({ test1: "test1", test2: "test2" });
   });
 
-  it('correctly resolves classNames array', () => {
+  it("correctly resolves classNames array", () => {
     expect(
       resolveClassNames({
         theme: DEFAULT_THEME,
-        classNames: [{ test: 'test-1' }, { test: 'test-2' }],
+        classNames: [{ test: "test-1" }, { test: "test-2" }],
         props: {},
         stylesCtx: undefined,
       })
-    ).toStrictEqual({ test: 'test-1 test-2' });
+    ).toStrictEqual({ test: "test-1 test-2" });
 
     expect(
       resolveClassNames({
         theme: DEFAULT_THEME,
-        classNames: [{ test: 'test-1' }, undefined],
+        classNames: [{ test: "test-1" }, undefined],
         props: {},
         stylesCtx: undefined,
       })
-    ).toStrictEqual({ test: 'test-1' });
+    ).toStrictEqual({ test: "test-1" });
 
     expect(
       resolveClassNames({
         theme: DEFAULT_THEME,
-        classNames: [{ test1: 'test1' }, (_, props) => ({ test1: props.test })],
-        props: { test: 'test' },
+        classNames: [{ test1: "test1" }, (_, props) => ({ test1: props.test })],
+        props: { test: "test" },
         stylesCtx: undefined,
       })
-    ).toStrictEqual({ test1: 'test1 test' });
+    ).toStrictEqual({ test1: "test1 test" });
   });
 });

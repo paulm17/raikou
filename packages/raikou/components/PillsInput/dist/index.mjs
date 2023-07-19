@@ -55,10 +55,10 @@ import {
   createVarsResolver as createVarsResolver5
 } from "@raikou/core";
 
-// ../utils/create-safe-context/create-safe-context.tsx
+// ../_utils/create-safe-context/create-safe-context.tsx
 import React, { createContext, useContext } from "react";
 
-// ../utils/create-optional-context/create-optional-context.tsx
+// ../_utils/create-optional-context/create-optional-context.tsx
 import React2, { createContext as createContext2, useContext as useContext2 } from "react";
 function createOptionalContext(initialValue = null) {
   const Context = createContext2(initialValue);
@@ -569,7 +569,8 @@ var defaultProps6 = {
   variant: "default",
   leftSectionPointerEvents: "none",
   rightSectionPointerEvents: "none",
-  withAria: true
+  withAria: true,
+  withErrorStyles: true
 };
 var varsResolver5 = createVarsResolver5((_, props, ctx) => ({
   wrapper: {
@@ -614,7 +615,8 @@ var Input = polymorphicFactory((_props, ref) => {
     multiline,
     radius,
     id,
-    withAria
+    withAria,
+    withErrorStyles
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -642,7 +644,8 @@ var Input = polymorphicFactory((_props, ref) => {
     "multiline",
     "radius",
     "id",
-    "withAria"
+    "withAria",
+    "withErrorStyles"
   ]);
   const { styleProps, rest } = extractStyleProps(others);
   const ctx = useInputWrapperContext();
@@ -679,7 +682,7 @@ var Input = polymorphicFactory((_props, ref) => {
     Box6,
     __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, getStyles("wrapper")), styleProps), wrapperProps), {
       mod: {
-        error: !!error,
+        error: !!error && withErrorStyles,
         pointer,
         disabled,
         multiline,
@@ -706,7 +709,7 @@ var Input = polymorphicFactory((_props, ref) => {
       }, rest), ariaAttributes), {
         ref,
         required,
-        mod: { disabled, error: !!error },
+        mod: { disabled, error: !!error && withErrorStyles },
         variant
       }), getStyles("input"))
     ),
@@ -842,8 +845,7 @@ InputBase.classes = __spreadValues(__spreadValues({}, Input.classes), Input.Wrap
 InputBase.displayName = "@raikou/core/InputBase";
 
 // src/PillsInput.context.ts
-import { createOptionalContext as createOptionalContext2 } from "@raikou/core";
-var [PillsInputProvider, usePillsInputContext] = createOptionalContext2();
+var [PillsInputProvider, usePillsInputContext] = createOptionalContext();
 
 // src/PillsInputField/PillsInputField.tsx
 import React10 from "react";

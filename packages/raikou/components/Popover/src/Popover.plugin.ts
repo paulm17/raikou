@@ -28,7 +28,7 @@ module.exports = function ({ addComponents, theme }: any) {
     ".popover-arrow": {
       backgroundColor: "inherit",
       border: `${rem("1px")} solid var(--_popover-bd)`,
-      zIndex: 1,
+      zIndex: "1",
     },
   });
 };

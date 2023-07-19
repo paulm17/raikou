@@ -6,26 +6,26 @@ module.exports = function ({ addComponents, theme }: any) {
       backgroundColor: "transparent",
       appearance: "none",
       minWidth: rem("100px"),
-      flex: 1,
-      border: 0,
+      flex: "1",
+      border: "0",
       fontSize: "inherit",
       height: "1.6em",
       color: "inherit",
-      padding: 0,
+      padding: "0",
 
       "&::placeholder": {
         color: "var(--_input-placeholder-color)",
-        opacity: 1,
+        opacity: "1",
       },
 
       "&[data-type='hidden'], &[data-type='auto']": {
         height: rem("1px"),
         width: rem("1px"),
-        top: 0,
-        left: 0,
+        top: "0",
+        left: "0",
         pointerEvents: "none",
         position: "absolute",
-        opacity: 0,
+        opacity: "0",
       },
 
       "&:focus": {
@@ -35,7 +35,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "&[data-type='auto']:focus": {
         height: "1.6em",
         visibility: "visible",
-        opacity: 1,
+        opacity: "1",
         position: "static",
       },
 

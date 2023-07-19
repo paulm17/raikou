@@ -1,24 +1,26 @@
-import React from 'react';
-import { renderHook } from '@testing-library/react';
-import { patchConsoleError } from '@mantine/tests';
-import { createSafeContext } from './create-safe-context';
+import React from "react";
+import { renderHook } from "@testing-library/react";
+import { patchConsoleError } from "@raikou/tests";
+import { createSafeContext } from "./create-safe-context";
 
 interface ContextType {
   value: number;
   onChange(value: number): void;
 }
 
-describe('@mantine/core/create-safe-context', () => {
-  it('throws error if useSafeContext hook was called without Provider', () => {
+describe("@raikou/core/create-safe-context", () => {
+  it("throws error if useSafeContext hook was called without Provider", () => {
     patchConsoleError();
-    const [, useContext] = createSafeContext<ContextType>('test-error');
-    expect(() => renderHook(() => useContext())).toThrow(new Error('test-error'));
+    const [, useContext] = createSafeContext<ContextType>("test-error");
+    expect(() => renderHook(() => useContext())).toThrow(
+      new Error("test-error")
+    );
     patchConsoleError.release();
   });
 
-  it('returns context value when useSafeContext hook was called within Provider', () => {
+  it("returns context value when useSafeContext hook was called within Provider", () => {
     const fn = jest.fn();
-    const [Provider, useContext] = createSafeContext<ContextType>('test-error');
+    const [Provider, useContext] = createSafeContext<ContextType>("test-error");
     const wrapper = ({ children }: { children: React.ReactNode }) => (
       <Provider value={{ value: 100, onChange: fn }}>{children}</Provider>
     );

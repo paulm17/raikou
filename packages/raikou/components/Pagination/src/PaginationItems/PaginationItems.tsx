@@ -12,7 +12,7 @@ export interface PaginationItemsProps {
 export function PaginationItems({ dotsIcon }: PaginationItemsProps) {
   const ctx = usePaginationContext();
 
-  const items = ctx.range.map((page: string, index: number) => {
+  const items = ctx.range.map((page: number | "dots", index: number) => {
     if (page === "dots") {
       return <PaginationDots icon={dotsIcon} key={index} />;
     }

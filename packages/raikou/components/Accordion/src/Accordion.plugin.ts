@@ -12,8 +12,8 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".accordion-itemTitle": {
-      margin: 0,
-      padding: 0,
+      margin: "0",
+      padding: "0",
     },
 
     ".accordion-control": {
@@ -31,7 +31,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
       '&[data-chevron-position="left"]': {
         "--_control-flex-direction": "row",
-        "--_control-padding-left": 0,
+        "--_control-padding-left": "0",
       },
 
       '[dir="rtl"] &': {
@@ -49,7 +49,7 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       "&:disabled, &[data-disabled]": {
-        "--_control-opacity": 0.4,
+        "--_control-opacity": "0.4",
         "--_control-cursor": "not-allowed",
       },
     },
@@ -84,8 +84,8 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".accordion-label": {
       color: "inherit",
-      fontWeight: 400,
-      flex: 1,
+      fontWeight: "400",
+      flex: "1",
       overflow: "hidden",
       textOverflow: "ellipsis",
       paddingTop: "var(--raikou-spacing-sm)",
@@ -113,18 +113,18 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       '&[data-position="right"]': {
-        "--_chevron-margin-left": 0,
+        "--_chevron-margin-left": "0",
       },
 
       '[dir="rtl"] &': {
         '&[data-position="left"]': {
-          "--_chevron-margin-right": 0,
+          "--_chevron-margin-right": "0",
           "--_chevron-margin-left": "var(--raikou-spacing-md)",
         },
 
         '&[data-position="right"]': {
           "--_chevron-margin-right": "var(--raikou-spacing-md)",
-          "--_chevron-margin-left": 0,
+          "--_chevron-margin-left": "0",
         },
       },
     },
@@ -137,18 +137,18 @@ module.exports = function ({ addComponents, theme }: any) {
       marginLeft: "var(--_icon-margin-left, 0)",
 
       '&[data-chevron-position="left"]': {
-        "--_icon-margin-right": 0,
+        "--_icon-margin-right": "0",
         "--_icon-margin-left": "var(--raikou-spacing-lg)",
       },
 
       '[dir="rtl"] &': {
         '&[data-chevron-position="left"]': {
           "--_icon-margin-right": "var(--raikou-spacing-lg)",
-          "--_icon-margin-left": 0,
+          "--_icon-margin-left": "0",
         },
 
         '&[data-chevron-position="right"]': {
-          "--_icon-margin-right": 0,
+          "--_icon-margin-right": "0",
           "--_icon-margin-left": "var(--raikou-spacing-sm)",
         },
       },
@@ -201,7 +201,7 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       "& + &": {
-        borderTop: 0,
+        borderTop: "0",
       },
     },
 

@@ -1,8 +1,8 @@
-import { renderHook, act } from '@testing-library/react';
-import { useCombobox } from './use-combobox';
+import { renderHook, act } from "@testing-library/react";
+import { useCombobox } from "./use-combobox";
 
-describe('@mantine/core/Combobox/use-combobox', () => {
-  it('supports uncontrolled opened state', () => {
+describe("@raikou/core/Combobox/use-combobox", () => {
+  it("supports uncontrolled opened state", () => {
     const hook = renderHook(() => useCombobox({ defaultOpened: true }));
     expect(hook.result.current.dropdownOpened).toBe(true);
 
@@ -16,9 +16,11 @@ describe('@mantine/core/Combobox/use-combobox', () => {
     expect(hook.result.current.dropdownOpened).toBe(false);
   });
 
-  it('supports controlled opened state', () => {
+  it("supports controlled opened state", () => {
     const spy = jest.fn();
-    const hook = renderHook(() => useCombobox({ opened: true, onOpenedChange: spy }));
+    const hook = renderHook(() =>
+      useCombobox({ opened: true, onOpenedChange: spy })
+    );
     expect(hook.result.current.dropdownOpened).toBe(true);
 
     act(hook.result.current.closeDropdown);
@@ -30,7 +32,7 @@ describe('@mantine/core/Combobox/use-combobox', () => {
     expect(spy).toHaveBeenCalledWith(false);
   });
 
-  it('calls onDropdownOpen when dropdown is opened', () => {
+  it("calls onDropdownOpen when dropdown is opened", () => {
     const spy = jest.fn();
     const hook = renderHook(() => useCombobox({ onDropdownOpen: spy }));
     expect(spy).not.toHaveBeenCalled();
@@ -42,7 +44,7 @@ describe('@mantine/core/Combobox/use-combobox', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  it('calls onDropdownClose when dropdown is closed', () => {
+  it("calls onDropdownClose when dropdown is closed", () => {
     const spy = jest.fn();
     const hook = renderHook(() => useCombobox({ onDropdownClose: spy }));
     expect(spy).not.toHaveBeenCalled();
