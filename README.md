@@ -55,18 +55,18 @@ To get a local copy up and running follow these simple example steps.
 
 - npm
   ```sh
-  npm install @raikou/client @raikou/hooks @raikou/server @raikou/system
+  npm install @raikou/client @raikou/hooks @raikou/server @raikou/system postcss-removecss-raikou
   ```
 - yarn
   ```sh
-  yarn add @raikou/client @raikou/hooks @raikou/server @raikou/system
+  yarn add @raikou/client @raikou/hooks @raikou/server @raikou/system postcss-removecss-raikou
   ```
 
 2. Disable the preflight in tailwind config
 
    ```sh
    corePlugins: {
-      preflight: false,
+      preflight: true,
    },
    ```
 
@@ -119,6 +119,7 @@ To get a local copy up and running follow these simple example steps.
       "./node_modules/@raikou/client/node_modules/@raikou/native-select/dist/*.js",
       "./node_modules/@raikou/client/node_modules/@raikou/notification/dist/*.js",
       "./node_modules/@raikou/client/node_modules/@raikou/overlay/dist/*.js",
+      "./node_modules/@raikou/client/node_modules/@raikou/pagination/dist/*.js",
       "./node_modules/@raikou/client/node_modules/@raikou/pill/dist/*.js",
       "./node_modules/@raikou/client/node_modules/@raikou/pills-input/dist/*.js",
       "./node_modules/@raikou/client/node_modules/@raikou/popover/dist/*.js",
@@ -142,9 +143,12 @@ To get a local copy up and running follow these simple example steps.
    ```
 5. Add a new plugin to the postcss.config.js to purge unused component library styles
    ```js
-   "postcss-remove-dumbcss": {
+   "postcss-removecss-raikou": {
       appPath: "./app",
-      libPath: "./node_modules/@raikou/core/src/**/*.ts",
+      libPath: [
+        "./node_modules/@raikou/client/src/index.ts",
+        "./node_modules/@raikou/server/src/index.ts",
+      ],
       exts: [".tsx"],
    },
    ```
