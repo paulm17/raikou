@@ -1,9 +1,8 @@
 {
   "name": "@raikou/tests",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.1",
   "license": "MIT",
-  "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "dependencies": {
     "@raikou/input": "workspace:*"
   },

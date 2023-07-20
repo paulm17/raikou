@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`nested it transforms nested rules correctly 1`] = `
-"
-.a .b {
-        color: black;
-    }
-"
-`;
