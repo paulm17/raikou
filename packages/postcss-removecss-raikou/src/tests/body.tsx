@@ -4,7 +4,7 @@ import { Badge, ColorSwatch } from 'react';
 function Body() {
   return (
     <>
-      <Badge>hello</Badge>
+      <Badge color="blue">hello</Badge>
       <ColorSwatch>hello</ColorSwatch>
     </>
   );

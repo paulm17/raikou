@@ -58,15 +58,20 @@ module.exports = (opts: any) => {
 
   // Get all library components
   const importedModules = getImportedModules(libPath) as string[];
+  const capitaliseImportedModules = importedModules.map(
+    (m) => m.charAt(0).toUpperCase() + m.slice(1)
+  );
 
   // Get components being used
   const regex = /<([a-zA-Z]+)[^>]*>/g;
   const matches = content.match(regex);
   const componentNames = matches?.map((match) => match.replace(/<|>|\/>/g, ''));
-  const lowerCaseComponentNames = componentNames?.map((c) => c.toLowerCase()) || [];
 
-  console.log(importedModules);
-  console.log(lowerCaseComponentNames);
+  // const lowerCaseComponentNames = componentNames?.map((c) => c.toLowerCase()) || [];
+
+  // console.log(componentNames);
+  // console.log('importedModules', importedModules);
+  // console.log('lowerCaseComponentNames', lowerCaseComponentNames);
 
   return {
     postcssPlugin: 'postcss-reset',
@@ -76,13 +81,27 @@ module.exports = (opts: any) => {
       importedModules.forEach((module: string) => {
         // A rule contains a module
         if (rule.selector.toLowerCase().includes(module)) {
-          let hasMatch = false;
+          const hasMatch = false;
 
           // Loop through all components being used in the app
-          lowerCaseComponentNames.forEach((componentName) => {
-            if (rule.selector.toLowerCase().includes(componentName)) {
-              hasMatch = true;
+          // lowerCaseComponentNames.forEach((componentName) => {
+          //   if (rule.selector.toLowerCase().includes(componentName)) {
+          //     hasMatch = true;
+          //   }
+          // });
+
+          const regex = /^\w+/;
+
+          componentNames?.forEach((componentName) => {
+            const match = componentName.match(regex);
+
+            if (match) {
+              console.log(match[0]);
             }
+
+            //   if (capitaliseImportedModules.includes(componentName)) {
+            //     console.log(componentName);
+            //   }
           });
 
           // The rule does not match any component, remove it
