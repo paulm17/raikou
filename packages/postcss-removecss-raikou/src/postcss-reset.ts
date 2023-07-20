@@ -41,7 +41,8 @@ const getImportedModules = (libPath: string[]) => {
       const camelCaseMatch = newMatch
         .toLowerCase()
         .replace(/-(\w)/g, (_: boolean, letter: string) => letter.toUpperCase())
-        .replace('@raikou/', '');
+        .replace('@raikou/', '')
+        .replace(/^(\w)/, (firstLetter: string) => firstLetter.toUpperCase());
 
       imports.add(camelCaseMatch);
     }
@@ -52,66 +53,67 @@ const getImportedModules = (libPath: string[]) => {
 
 const getContent = (files: string[]) => files.map((f) => fs.readFileSync(f, 'utf8')).join();
 
+const extractClassName = (selector: string) => {
+  // Regular expression to match class name
+  const regex = /(?:\.|\s)([a-zA-Z0-9]+)(-|\.|\[)/g;
+
+  // Extract class names
+  const match = regex.exec(selector);
+
+  regex.lastIndex = 0; // reset regex state
+  return match ? match[1] : null; // return class name or null if no match
+};
+
 module.exports = (opts: any) => {
   const { appPath, libPath, exts } = Object.assign(DEFAULT_OPTIONS, opts);
-  const content = getContent(getFiles(appPath, exts));
+  let content = getContent(getFiles(appPath, exts));
+
+  // Remove comments
+  content = content.replace(/\/\*[\s\S]*?\*\/|(?<=[^:])\/\/.*|^\/\/.*/g, '');
 
   // Get all library components
   const importedModules = getImportedModules(libPath) as string[];
-  const capitaliseImportedModules = importedModules.map(
-    (m) => m.charAt(0).toUpperCase() + m.slice(1)
-  );
 
   // Get components being used
   const regex = /<([a-zA-Z]+)[^>]*>/g;
   const matches = content.match(regex);
-  const componentNames = matches?.map((match) => match.replace(/<|>|\/>/g, ''));
+  const componentNames = matches
+    ?.map((match) => match.replace(/<|>|\/>/g, ''))
+    .map((item) => {
+      const match = item.match(/^\w+/);
 
-  // const lowerCaseComponentNames = componentNames?.map((c) => c.toLowerCase()) || [];
+      if (match) {
+        return match[0];
+      }
 
-  // console.log(componentNames);
-  // console.log('importedModules', importedModules);
-  // console.log('lowerCaseComponentNames', lowerCaseComponentNames);
+      return null;
+    })
+    .map((item) => {
+      if (item !== null) {
+        if (importedModules.includes(item)) {
+          return item.toLowerCase();
+        }
+      }
+    })
+    .filter((item) => !!item);
+  const uniqComponentNames = [...new Set(componentNames)];
 
   return {
     postcssPlugin: 'postcss-reset',
 
     Rule(rule: Rule) {
-      // Loop through all modules
-      importedModules.forEach((module: string) => {
-        // A rule contains a module
-        if (rule.selector.toLowerCase().includes(module)) {
-          const hasMatch = false;
+      const lcRule = extractClassName(rule.selector.toLowerCase());
+      let hasMatch = false;
 
-          // Loop through all components being used in the app
-          // lowerCaseComponentNames.forEach((componentName) => {
-          //   if (rule.selector.toLowerCase().includes(componentName)) {
-          //     hasMatch = true;
-          //   }
-          // });
-
-          const regex = /^\w+/;
-
-          componentNames?.forEach((componentName) => {
-            const match = componentName.match(regex);
-
-            if (match) {
-              console.log(match[0]);
-            }
-
-            //   if (capitaliseImportedModules.includes(componentName)) {
-            //     console.log(componentName);
-            //   }
-          });
-
-          // The rule does not match any component, remove it
-          if (!hasMatch) {
-            console.log(`removing ${rule.selector} from ${module}`);
-
-            rule.remove();
-          }
+      if (lcRule) {
+        if (uniqComponentNames?.includes(lcRule)) {
+          hasMatch = true;
         }
-      });
+
+        if (!hasMatch) {
+          rule.remove();
+        }
+      }
     },
   };
 };

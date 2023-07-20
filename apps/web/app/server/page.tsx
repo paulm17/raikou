@@ -42,7 +42,7 @@ export default function Page() {
       <Title order={2} ml={15}>
         Server Components
       </Title>
-      <Group p={20} grow>
+      <Group p={20}>
         <Stack
           classNames={{
             root: "w-[500px]",

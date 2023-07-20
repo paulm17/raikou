@@ -1,6 +1,9 @@
 import { testTransform } from './utils';
 
 const baseInput = `
+.actionIcon-root {
+  line-height: 1;
+}
 .actionIconGroup-root[data-orientation='horizontal'] {
   flex-direction: row;
 }
@@ -9,6 +12,11 @@ const baseInput = `
   background-color: var(--_badge-bg);
   border: calc(0.0625rem * var(--raikou-scale)) solid var(--_badge-border-color);
   color: var(--_badge-color);
+}
+.badgeIconGroup-root[data-orientation='vertical'] [data-badge-icon]:not(:only-child):first-child {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-width: calc(var(--ai-border-width) / 2);
 }
 .breadcrumbs-root {
   display: flex;
@@ -34,6 +42,9 @@ const baseInput = `
 `;
 
 const baseOutput = `
+.actionIcon-root {
+  line-height: 1;
+}
 .badge-root--dot {
   --badge-dot-size: calc(var(--badge-height) / 3.4);
   background-color: var(--_badge-bg);
