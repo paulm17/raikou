@@ -55,11 +55,11 @@ To get a local copy up and running follow these simple example steps.
 
 - npm
   ```sh
-  npm install @raikou/client @raikou/hooks @raikou/server @raikou/system postcss-removecss-raikou
+  npm install @raikou/client @raikou/hooks @raikou/server @raikou/system postcss-preset-raikou postcss-removecss-raikou
   ```
 - yarn
   ```sh
-  yarn add @raikou/client @raikou/hooks @raikou/server @raikou/system postcss-removecss-raikou
+  yarn add @raikou/client @raikou/hooks @raikou/server @raikou/system postcss-preset-raikou postcss-removecss-raikou
   ```
 
 2. Disable the preflight in tailwind config
