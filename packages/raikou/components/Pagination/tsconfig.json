@@ -1,4 +1,4 @@
 {
-  "extends": "../../../../packages/tsconfig/chakraui.json",
+  "extends": "../../../../tsconfig.json",
   "include": ["src", "../../../../configuration/types"]
 }

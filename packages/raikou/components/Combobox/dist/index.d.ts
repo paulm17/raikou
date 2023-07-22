@@ -4197,8 +4197,8 @@ interface UseComboboxTargetPropsInput {
 declare function useComboboxTargetProps({ onKeyDown, withKeyboardNavigation, withAriaAttributes, targetType, }: UseComboboxTargetPropsInput): {
     onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
     'aria-haspopup': string;
-    'aria-expanded': any;
-    'aria-controls': any;
+    'aria-expanded': boolean | undefined;
+    'aria-controls': string | null;
     'aria-activedescendant': string | undefined;
     autoComplete: string;
     'data-expanded': boolean | undefined;

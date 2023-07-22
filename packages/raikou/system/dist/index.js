@@ -2,10 +2,40 @@
 "use client";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __pow = Math.pow;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __objRest = (source, exclude) => {
+  var target = {};
+  for (var prop in source)
+    if (__hasOwnProp.call(source, prop) && exclude.indexOf(prop) < 0)
+      target[prop] = source[prop];
+  if (source != null && __getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(source)) {
+      if (exclude.indexOf(prop) < 0 && __propIsEnum.call(source, prop))
+        target[prop] = source[prop];
+    }
+  return target;
+};
 var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
@@ -63,7 +93,7 @@ function isObject(item) {
   return item && typeof item === "object" && !Array.isArray(item);
 }
 function deepMerge(target, source) {
-  const result = { ...target };
+  const result = __spreadValues({}, target);
   const _source = source;
   if (isObject(target) && isObject(source)) {
     Object.keys(source).forEach((key) => {
@@ -166,7 +196,7 @@ function localStorageColorSchemeManager({
       }
       try {
         return window.localStorage.getItem(key) || defaultValue;
-      } catch {
+      } catch (e) {
         return defaultValue;
       }
     },
@@ -587,7 +617,7 @@ function lighten(color, alpha) {
 // src/core/Bootstrap/color-functions/is-light-color/is-light-color.ts
 function getPartLuminance(value) {
   const x = value / 255;
-  return x <= 0.03928 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4;
+  return x <= 0.03928 ? x / 12.92 : __pow((x + 0.055) / 1.055, 2.4);
 }
 function getLuminance(input) {
   const r = getPartLuminance(input.r);
@@ -611,20 +641,22 @@ var getScript = ({
     document.documentElement.setAttribute('data-raikou-color-scheme', computedColorScheme);
   } catch (e) {}
 `;
-function ColorSchemeScript({
-  defaultColorScheme = "auto",
-  localStorageKey = "raikou-color-scheme",
-  ...others
-}) {
+function ColorSchemeScript(_a) {
+  var _b = _a, {
+    defaultColorScheme = "auto",
+    localStorageKey = "raikou-color-scheme"
+  } = _b, others = __objRest(_b, [
+    "defaultColorScheme",
+    "localStorageKey"
+  ]);
   return /* @__PURE__ */ import_react.default.createElement(
     "script",
-    {
-      ...others,
+    __spreadProps(__spreadValues({}, others), {
       "data-raikou-script": true,
       dangerouslySetInnerHTML: {
         __html: getScript({ defaultColorScheme, localStorageKey })
       }
-    }
+    })
   );
 }
 

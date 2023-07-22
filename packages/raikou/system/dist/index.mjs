@@ -1,12 +1,17 @@
 "use client";
-import "./chunk-IJRF4PCO.mjs";
+import {
+  __objRest,
+  __pow,
+  __spreadProps,
+  __spreadValues
+} from "./chunk-ENVHTCIC.mjs";
 
 // src/core/utils/deep-merge/deep-merge.ts
 function isObject(item) {
   return item && typeof item === "object" && !Array.isArray(item);
 }
 function deepMerge(target, source) {
-  const result = { ...target };
+  const result = __spreadValues({}, target);
   const _source = source;
   if (isObject(target) && isObject(source)) {
     Object.keys(source).forEach((key) => {
@@ -109,7 +114,7 @@ function localStorageColorSchemeManager({
       }
       try {
         return window.localStorage.getItem(key) || defaultValue;
-      } catch {
+      } catch (e) {
         return defaultValue;
       }
     },
@@ -530,7 +535,7 @@ function lighten(color, alpha) {
 // src/core/Bootstrap/color-functions/is-light-color/is-light-color.ts
 function getPartLuminance(value) {
   const x = value / 255;
-  return x <= 0.03928 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4;
+  return x <= 0.03928 ? x / 12.92 : __pow((x + 0.055) / 1.055, 2.4);
 }
 function getLuminance(input) {
   const r = getPartLuminance(input.r);
@@ -554,20 +559,22 @@ var getScript = ({
     document.documentElement.setAttribute('data-raikou-color-scheme', computedColorScheme);
   } catch (e) {}
 `;
-function ColorSchemeScript({
-  defaultColorScheme = "auto",
-  localStorageKey = "raikou-color-scheme",
-  ...others
-}) {
+function ColorSchemeScript(_a) {
+  var _b = _a, {
+    defaultColorScheme = "auto",
+    localStorageKey = "raikou-color-scheme"
+  } = _b, others = __objRest(_b, [
+    "defaultColorScheme",
+    "localStorageKey"
+  ]);
   return /* @__PURE__ */ React.createElement(
     "script",
-    {
-      ...others,
+    __spreadProps(__spreadValues({}, others), {
       "data-raikou-script": true,
       dangerouslySetInnerHTML: {
         __html: getScript({ defaultColorScheme, localStorageKey })
       }
-    }
+    })
   );
 }
 

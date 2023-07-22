@@ -1,6 +1,6 @@
 {
   "name": "postcss-preset-raikou",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "description": "PostCSS preset for Raikou (7.0+) applications",
   "main": "dist/preset.js",
   "types": "dist/types/preset.d.ts",

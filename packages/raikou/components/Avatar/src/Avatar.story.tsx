@@ -1,13 +1,13 @@
-import React from "react";
-import { Tooltip } from "../../Tooltip/src";
-import { Center } from "../../Center/src";
-import { Group } from "../../Group/src";
-import { Stack } from "../../Stack/src";
-import { Box } from "../../Box";
-import { Text } from "../../Text/src";
-import { Avatar } from "./Avatar";
+import React from "react"
+import { Tooltip } from "../../Tooltip/src"
+import { Center } from "../../Center/src"
+import { Group } from "../../Group/src"
+import { Stack } from "../../Stack/src"
+import { Box } from "../../Box/src"
+import { Text } from "../../Text/src"
+import { Avatar } from "./Avatar"
 
-export default { title: "Avatar" };
+export default { title: "Avatar" }
 
 export function CustomComponent() {
   return (
@@ -19,7 +19,7 @@ export function CustomComponent() {
         BU
       </Avatar>
     </div>
-  );
+  )
 }
 
 export function AvatarGroup() {
@@ -39,7 +39,7 @@ export function AvatarGroup() {
         <Avatar radius="xl">+3</Avatar>
       </Avatar.Group>
     </div>
-  );
+  )
 }
 
 export function Variants() {
@@ -52,7 +52,7 @@ export function Variants() {
               <Avatar key={variant} variant={variant} color="blue" radius="md">
                 ZH
               </Avatar>
-            )
+            ),
           )}
         </Group>
 
@@ -65,7 +65,7 @@ export function Variants() {
                 color="blue"
                 radius="xl"
               />
-            )
+            ),
           )}
         </Group>
 
@@ -79,12 +79,12 @@ export function Variants() {
                 radius="xl"
                 src="https://avatars.githubusercontent.com/u/10353856?s=460&u=88394dfd67727327c1f7670a1764dc38a8a24831&v=4"
               />
-            )
+            ),
           )}
         </Group>
       </Stack>
     </div>
-  );
+  )
 }
 
 export function Gradient() {
@@ -114,5 +114,5 @@ export function Gradient() {
         </Box>
       </Group>
     </div>
-  );
+  )
 }

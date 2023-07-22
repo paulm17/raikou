@@ -1,6 +1,5 @@
 module.exports = {
   plugins: {
-    "postcss-import": {},
     "postcss-preset-raikou": {},
     "tailwindcss/nesting": {},
     tailwindcss: {},

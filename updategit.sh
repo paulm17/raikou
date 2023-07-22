@@ -1,3 +1,3 @@
 git add -A
-git commit -m "another commit"
+git commit -am "build: another commit"
 git push origin

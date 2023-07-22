@@ -1,19 +1,4 @@
 {
-  "compilerOptions": {
-    // "baseUrl": "./",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "moduleResolution": "node",
-    "preserveWatchOutput": true,
-    "skipLibCheck": true,
-    "noEmit": true,
-    "strict": true,
-    "jsx": "react",
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "downlevelIteration": true
-  },
-  "include": ["src", "index.ts"],
-  "exclude": ["node_modules"]
+  "extends": "../../../tsconfig.json",
+  "include": ["src", "index.ts"]
 }

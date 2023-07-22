@@ -1,5 +1,5 @@
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, RaikouSize, Factory, RaikouRadius, PolymorphicFactory } from '@raikou/core';
+import { BoxProps, StylesApiProps, ElementProps, RaikouSize, Factory, RaikouRadius, PolymorphicFactory, GetStylesApi } from '@raikou/core';
 import * as react from 'react';
 import react__default from 'react';
 
@@ -320,7 +320,7 @@ declare function useInputProps<T extends BaseProps, U extends Partial<T>>(compon
         results?: number | undefined;
         security?: string | undefined;
         unselectable?: "on" | "off" | undefined;
-        inputMode?: "text" | "none" | "search" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
+        inputMode?: "search" | "text" | "none" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
         is?: string | undefined;
         'aria-activedescendant'?: string | undefined;
         'aria-atomic'?: (boolean | "true" | "false") | undefined;
@@ -566,6 +566,13 @@ declare function useInputProps<T extends BaseProps, U extends Partial<T>>(compon
     };
 };
 
-declare const useInputWrapperContext: () => any;
+interface InputWrapperContextValue {
+    offsetTop: boolean;
+    offsetBottom: boolean;
+    describedBy: string | undefined;
+    inputId: string | undefined;
+    getStyles: GetStylesApi<InputWrapperFactory> | null;
+}
+declare const useInputWrapperContext: () => InputWrapperContextValue | null;
 
 export { Input, InputCssVariables, InputDescription, InputDescriptionCssVariables, InputDescriptionFactory, InputDescriptionProps, InputDescriptionStylesNames, InputDescriptionVariant, InputError, InputErrorCssVariables, InputErrorFactory, InputErrorProps, InputErrorStylesNames, InputErrorVariant, InputFactory, InputLabel, InputLabelCssVariables, InputLabelFactory, InputLabelProps, InputLabelStylesNames, InputLabelVariant, InputPlaceholder, InputPlaceholderFactory, InputPlaceholderProps, InputPlaceholderStylesNames, InputPlaceholderVariant, InputProps, InputStylesNames, InputVariant, InputWrapper, InputWrapperFactory, InputWrapperProps, InputWrapperStylesNames, __BaseInputProps, __InputProps, __InputStylesNames, __InputWrapperProps, useInputProps, useInputWrapperContext };

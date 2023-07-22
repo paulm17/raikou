@@ -17,5 +17,6 @@
     "allowSyntheticDefaultImports": true,
     "downlevelIteration": true
   },
-  "exclude": ["node_modules", "*.story.tsx"]
+  "include": ["packages", "scripts", "tooling"],
+  "exclude": ["**/node_modules", "**/template*", "*.story.tsx"]
 }
