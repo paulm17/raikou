@@ -23,14 +23,8 @@
   "sideEffects": false,
   "scripts": {
     "build": "tsup src/index.ts src/plugin.ts --dts --format esm,cjs --clean",
-    "lint": "eslint \"**/*.ts*\"",
-    "clean": "rimraf dist .turbo",
-    "typecheck": "tsc --noEmit",
-    "build:fast": "tsup src",
-    "prepack": "clean-package",
-    "postpack": "clean-package restore"
+    "lint": "eslint \"**/*.ts*\""
   },
-  "clean-package": "../../../clean-package.config.json",
   "peerDependencies": {
     "@raikou/hooks": ">=0.0.1-alpha.1",
     "react": "^18.2.0",
@@ -46,7 +40,6 @@
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@types/node": "^20.3.3",
-    "clean-package": "2.2.0",
     "tsup": "^7.1.0",
     "typescript": "^5.1.3"
   },
