@@ -1,7 +1,6 @@
 import React from 'react';
 import { ActionIcon, Badge, ColorSwatch } from 'react';
 
-/* eslint-disable no-console, no-control-regex*/
 function Body() {
   return (
     <>

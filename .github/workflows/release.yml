@@ -23,7 +23,7 @@ jobs:
 
       - name: Install
         uses: ./.github/composite-actions/install
-        
+
       - name: Build
         run: pnpm build
 
@@ -37,7 +37,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUBB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create @dev release
         if: steps.changesets.outputs.published != 'true'
@@ -47,6 +47,4 @@ jobs:
           pnpm release:dev
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUBB_TOKEN }}
-
-      
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
