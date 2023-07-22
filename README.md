@@ -133,6 +133,8 @@ Change appPath to where the tsx files for your project reside.
 7. Amend layout.tsx to resemble the following. Bootstrap must encapsulate the
    children and ColorSchemeScript manages the global colorscheme.
 
+   Ensure that suppressHydrationWarning is added to the head.
+
    ```js
    import { Bootstrap, ColorSchemeScript } from '@raikou/system'
 
@@ -142,7 +144,7 @@ Change appPath to where the tsx files for your project reside.
       children: React.ReactNode
    }) {
       return (
-         <html lang="en">
+         <html lang="en" suppressHydrationWarning>
             <head>
                <ColorSchemeScript />
             </head>
