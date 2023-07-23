@@ -174,7 +174,7 @@ var SegmentedControl = factory(
           ]
         });
       }
-    }, [_value, containerRect, dir]);
+    }, [_value, containerRect, dir, observerRef]);
     const controls = _data.map((item) => /* @__PURE__ */ React.createElement(
       Box,
       __spreadProps(__spreadValues({}, getStyles("control")), {

@@ -274,10 +274,12 @@ importers:
       '@raikou/autocomplete': workspace:*
       '@raikou/avatar': workspace:*
       '@raikou/checkbox': workspace:*
+      '@raikou/chip': workspace:*
       '@raikou/collapse': workspace:*
       '@raikou/color-picker': workspace:*
       '@raikou/combobox': workspace:*
       '@raikou/drawer': workspace:*
+      '@raikou/hover-card': workspace:*
       '@raikou/inline-input': workspace:*
       '@raikou/input': workspace:*
       '@raikou/input-base': workspace:*
@@ -290,6 +292,8 @@ importers:
       '@raikou/pills-input': workspace:*
       '@raikou/popover': workspace:*
       '@raikou/portal': workspace:*
+      '@raikou/progress': workspace:*
+      '@raikou/rating': workspace:*
       '@raikou/scroll-area': workspace:*
       '@raikou/slider': workspace:*
       '@raikou/switch': workspace:*
@@ -313,10 +317,12 @@ importers:
       '@raikou/autocomplete': link:../components/Autocomplete
       '@raikou/avatar': link:../components/Avatar
       '@raikou/checkbox': link:../components/Checkbox
+      '@raikou/chip': link:../components/Chip
       '@raikou/collapse': link:../components/Collapse
       '@raikou/color-picker': link:../components/ColorPicker
       '@raikou/combobox': link:../components/Combobox
       '@raikou/drawer': link:../components/Drawer
+      '@raikou/hover-card': link:../components/HoverCard
       '@raikou/inline-input': link:../components/InlineInput
       '@raikou/input': link:../components/Input
       '@raikou/input-base': link:../components/InputBase
@@ -329,6 +335,8 @@ importers:
       '@raikou/pills-input': link:../components/PillsInput
       '@raikou/popover': link:../components/Popover
       '@raikou/portal': link:../components/Portal
+      '@raikou/progress': link:../components/Progress
+      '@raikou/rating': link:../components/Rating
       '@raikou/scroll-area': link:../components/ScrollArea
       '@raikou/slider': link:../components/Slider
       '@raikou/switch': link:../components/Switch
@@ -2182,13 +2190,17 @@ importers:
       '@raikou/divider': workspace:*
       '@raikou/fieldset': workspace:*
       '@raikou/flex': workspace:*
+      '@raikou/grid': workspace:*
       '@raikou/group': workspace:*
       '@raikou/highlight': workspace:*
       '@raikou/kbd': workspace:*
       '@raikou/loader': workspace:*
       '@raikou/mark': workspace:*
       '@raikou/paper': workspace:*
+      '@raikou/ring-progress': workspace:*
+      '@raikou/simple-grid': workspace:*
       '@raikou/skeleton': workspace:*
+      '@raikou/space': workspace:*
       '@raikou/stack': workspace:*
       '@raikou/text': workspace:*
       '@raikou/title': workspace:*
@@ -2220,13 +2232,17 @@ importers:
       '@raikou/divider': link:../components/Divider
       '@raikou/fieldset': link:../components/Fieldset
       '@raikou/flex': link:../components/Flex
+      '@raikou/grid': link:../components/Grid
       '@raikou/group': link:../components/Group
       '@raikou/highlight': link:../components/Highlight
       '@raikou/kbd': link:../components/Kbd
       '@raikou/loader': link:../components/Loader
       '@raikou/mark': link:../components/Mark
       '@raikou/paper': link:../components/Paper
+      '@raikou/ring-progress': link:../components/RingProgress
+      '@raikou/simple-grid': link:../components/SimpleGrid
       '@raikou/skeleton': link:../components/Skeleton
+      '@raikou/space': link:../components/Space
       '@raikou/stack': link:../components/Stack
       '@raikou/text': link:../components/Text
       '@raikou/title': link:../components/Title

@@ -190,7 +190,7 @@ var SegmentedControl = (0, import_core.factory)(
           ]
         });
       }
-    }, [_value, containerRect, dir]);
+    }, [_value, containerRect, dir, observerRef]);
     const controls = _data.map((item) => /* @__PURE__ */ import_react.default.createElement(
       import_core.Box,
       __spreadProps(__spreadValues({}, getStyles("control")), {

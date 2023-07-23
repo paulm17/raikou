@@ -24,10 +24,12 @@ __reExport(src_exports, require("@raikou/appshell"), module.exports);
 __reExport(src_exports, require("@raikou/autocomplete"), module.exports);
 __reExport(src_exports, require("@raikou/avatar"), module.exports);
 __reExport(src_exports, require("@raikou/checkbox"), module.exports);
+__reExport(src_exports, require("@raikou/chip"), module.exports);
 __reExport(src_exports, require("@raikou/collapse"), module.exports);
 __reExport(src_exports, require("@raikou/color-picker"), module.exports);
 __reExport(src_exports, require("@raikou/combobox"), module.exports);
 __reExport(src_exports, require("@raikou/drawer"), module.exports);
+__reExport(src_exports, require("@raikou/hover-card"), module.exports);
 __reExport(src_exports, require("@raikou/inline-input"), module.exports);
 __reExport(src_exports, require("@raikou/input"), module.exports);
 __reExport(src_exports, require("@raikou/input-base"), module.exports);
@@ -40,6 +42,8 @@ __reExport(src_exports, require("@raikou/pill"), module.exports);
 __reExport(src_exports, require("@raikou/pills-input"), module.exports);
 __reExport(src_exports, require("@raikou/popover"), module.exports);
 __reExport(src_exports, require("@raikou/portal"), module.exports);
+__reExport(src_exports, require("@raikou/progress"), module.exports);
+__reExport(src_exports, require("@raikou/rating"), module.exports);
 __reExport(src_exports, require("@raikou/scroll-area"), module.exports);
 __reExport(src_exports, require("@raikou/slider"), module.exports);
 __reExport(src_exports, require("@raikou/switch"), module.exports);
@@ -56,10 +60,12 @@ __reExport(src_exports, require("@raikou/tooltip"), module.exports);
   ...require("@raikou/autocomplete"),
   ...require("@raikou/avatar"),
   ...require("@raikou/checkbox"),
+  ...require("@raikou/chip"),
   ...require("@raikou/collapse"),
   ...require("@raikou/color-picker"),
   ...require("@raikou/combobox"),
   ...require("@raikou/drawer"),
+  ...require("@raikou/hover-card"),
   ...require("@raikou/inline-input"),
   ...require("@raikou/input"),
   ...require("@raikou/input-base"),
@@ -72,6 +78,8 @@ __reExport(src_exports, require("@raikou/tooltip"), module.exports);
   ...require("@raikou/pills-input"),
   ...require("@raikou/popover"),
   ...require("@raikou/portal"),
+  ...require("@raikou/progress"),
+  ...require("@raikou/rating"),
   ...require("@raikou/scroll-area"),
   ...require("@raikou/slider"),
   ...require("@raikou/switch"),
