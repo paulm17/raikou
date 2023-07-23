@@ -1,6 +1,6 @@
 {
   "name": "@raikou/client",
-  "version": "0.0.1-alpha.6",
+  "version": "0.0.1-alpha.7",
   "main": "index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -41,6 +41,7 @@
     "@raikou/color-picker": "workspace:*",
     "@raikou/combobox": "workspace:*",
     "@raikou/drawer": "workspace:*",
+    "@raikou/grid": "workspace:*",
     "@raikou/hover-card": "workspace:*",
     "@raikou/inline-input": "workspace:*",
     "@raikou/input": "workspace:*",
@@ -56,6 +57,7 @@
     "@raikou/portal": "workspace:*",
     "@raikou/progress": "workspace:*",
     "@raikou/rating": "workspace:*",
+    "@raikou/ring-progress": "workspace:*",
     "@raikou/scroll-area": "workspace:*",
     "@raikou/slider": "workspace:*",
     "@raikou/switch": "workspace:*",

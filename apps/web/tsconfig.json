@@ -1,7 +1,16 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "plugins": [{ "name": "next" }]
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "jsx": "preserve"
   },
   "include": [
     "next-env.d.ts",
@@ -10,5 +19,7 @@
     ".next/types/**/*.ts",
     "app/page.tsx.old"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -22,6 +22,9 @@ import {
   Highlight,
   Mark,
   Paper,
+  SimpleGrid,
+  Skeleton,
+  Space,
   Stack,
   Text,
   Title,
@@ -202,6 +205,28 @@ export default function Page() {
         <Stack>
           <Title order={3}>Closebutton</Title>
           <CloseButton variant="filled" size={30} />
+          <Title order={3}>Simple Grid</Title>
+          <Box style={{ maxWidth: 400 }}>
+            <SimpleGrid>
+              <Badge color="blue" mr="xs">
+                Grid 1
+              </Badge>
+              <Badge color="red" mr="xs">
+                Grid 2
+              </Badge>
+              <Badge color="orange" mr="xs">
+                Grid 3
+              </Badge>
+            </SimpleGrid>
+          </Box>
+          <Title order={3}>Space</Title>
+          <>
+            <Text>First line</Text>
+            <Space h="md" />
+            <Text>Second line</Text>
+          </>
+          <Title order={3}>Skeleton</Title>
+          <Skeleton height={50} circle mb="xl" />
         </Stack>
       </Group>
     </>

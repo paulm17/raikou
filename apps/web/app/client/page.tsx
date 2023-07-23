@@ -7,7 +7,9 @@ import {
   Alert,
   Accordion,
   Checkbox,
+  Chip,
   ColorPicker,
+  Grid,
   Input,
   MultiSelect,
   NativeSelect,
@@ -15,6 +17,9 @@ import {
   Pill,
   PillsInput,
   Popover,
+  Progress,
+  Rating,
+  RingProgress,
   Slider,
   Switch,
   Table,
@@ -313,6 +318,29 @@ export default function Page() {
               <button type="button">target</button>
             </Tooltip>
           </div>
+          <Title order={3}>Chip</Title>
+          <Chip defaultChecked>Awesome chip</Chip>
+          <Title order={3}>Progress</Title>
+          <Progress value={50} />
+        </Stack>
+        <Stack>
+          <Title order={3}>Rating</Title>
+          <Rating defaultValue={2} />
+          <Title order={3}>Ring Progress</Title>
+          <RingProgress
+            label={<>data usage</>}
+            sections={[
+              { value: 40, color: "cyan" },
+              { value: 15, color: "orange" },
+              { value: 15, color: "grape" },
+            ]}
+          />
+          <Title order={3}>Grid</Title>
+          <Grid>
+            <Grid.Col span={4}>1</Grid.Col>
+            <Grid.Col span={4}>2</Grid.Col>
+            <Grid.Col span={4}>3</Grid.Col>
+          </Grid>
         </Stack>
       </Group>
     </>
