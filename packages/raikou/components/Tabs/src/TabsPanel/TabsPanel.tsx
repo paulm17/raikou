@@ -63,5 +63,4 @@ export const TabsPanel = factory<TabsPanelFactory>((_props, ref) => {
   );
 });
 
-// TabsPanel.classes = classes;
 TabsPanel.displayName = "@raikou/core/TabsPanel";

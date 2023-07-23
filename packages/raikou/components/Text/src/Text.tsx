@@ -148,5 +148,4 @@ export const Text = polymorphicFactory<TextFactory>((_props, ref) => {
   );
 });
 
-// Text.classes = classes;
 Text.displayName = "@raikou/core/Text";

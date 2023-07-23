@@ -1073,7 +1073,6 @@ var NativeSelect = factory7((props, ref) => {
     children || options
   );
 });
-NativeSelect.classes = InputBase.classes;
 NativeSelect.displayName = "@raikou/core/NativeSelect";
 export {
   NativeSelect

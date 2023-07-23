@@ -34,5 +34,4 @@ export const ModalBody = factory<ModalBodyFactory>((_props, ref) => {
   );
 });
 
-// ModalBody.classes = classes;
 ModalBody.displayName = "@raikou/core/ModalBody";

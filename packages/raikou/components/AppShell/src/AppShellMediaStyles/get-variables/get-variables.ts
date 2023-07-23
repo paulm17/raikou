@@ -1,11 +1,10 @@
-import { RaikouTheme, em, keys } from "@raikou/core";
+import { RaikouTheme, em, keys, getSortedBreakpoints } from "@raikou/core";
 import type { AppShellProps } from "../../AppShell";
 import { assignAsideVariables } from "../assign-aside-variables/assign-aside-variables";
 import { assignFooterVariables } from "../assign-footer-variables/assign-footer-variables";
 import { assignHeaderVariables } from "../assign-header-variables/assign-header-variables";
 import { assignNavbarVariables } from "../assign-navbar-variables/assign-navbar-variables";
 import { assignPaddingVariables } from "../assign-padding-variables/assign-padding-variables";
-import { getSortedBreakpoints } from "../get-sorted-breakpoints/get-sorted-breakpoints";
 
 export type CSSVariables = Record<`--${string}`, string>;
 export type MediaQueryVariables = Record<string, Record<`--${string}`, string>>;

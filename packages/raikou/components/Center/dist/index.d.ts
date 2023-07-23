@@ -3,7 +3,6 @@ import { BoxProps, StylesApiProps, PolymorphicFactory } from '@raikou/core';
 import React from 'react';
 
 type CenterStylesNames = "root";
-type CenterVariant = string;
 type CenterCssVariables = {
     root: "--center-display";
 };
@@ -19,7 +18,6 @@ type CenterFactory = PolymorphicFactory<{
     defaultComponent: "div";
     stylesNames: CenterStylesNames;
     vars: CenterCssVariables;
-    variant: CenterVariant;
 }>;
 declare const Center: (<C = "div">(props: C extends React.ElementType<any> ? CenterProps & {
     component?: C | undefined;
@@ -39,9 +37,8 @@ declare const Center: (<C = "div">(props: C extends React.ElementType<any> ? Cen
     defaultComponent: "div";
     stylesNames: CenterStylesNames;
     vars: CenterCssVariables;
-    variant: CenterVariant;
 }> & {
     classes: Record<"root", string>;
 } & Record<string, never>;
 
-export { Center, CenterCssVariables, CenterFactory, CenterProps, CenterStylesNames, CenterVariant };
+export { Center, CenterCssVariables, CenterFactory, CenterProps, CenterStylesNames };

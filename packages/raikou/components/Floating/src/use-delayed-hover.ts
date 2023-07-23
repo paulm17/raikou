@@ -1,13 +1,18 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect } from "react";
 
 interface UseDelayedHoverInput {
   open(): void;
   close(): void;
-  openDelay: number;
-  closeDelay: number;
+  openDelay: number | undefined;
+  closeDelay: number | undefined;
 }
 
-export function useDelayedHover({ open, close, openDelay, closeDelay }: UseDelayedHoverInput) {
+export function useDelayedHover({
+  open,
+  close,
+  openDelay,
+  closeDelay,
+}: UseDelayedHoverInput) {
   const openTimeout = useRef(-1);
   const closeTimeout = useRef(-1);
 

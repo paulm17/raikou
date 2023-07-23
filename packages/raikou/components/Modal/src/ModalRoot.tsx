@@ -20,7 +20,6 @@ import {
 import { ModalProvider, ScrollAreaComponent } from "./Modal.context";
 
 export type ModalRootStylesNames = ModalBaseStylesNames;
-export type ModalRootVariant = string;
 export type ModalRootCssVariables = {
   root:
     | "--modal-radius"
@@ -58,7 +57,6 @@ export type ModalRootFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: ModalRootStylesNames;
   vars: ModalRootCssVariables;
-  variant: ModalRootVariant;
   compound: true;
 }>;
 
@@ -145,5 +143,4 @@ export const ModalRoot = factory<ModalRootFactory>((_props, ref) => {
   );
 });
 
-// ModalRoot.classes = classes;
 ModalRoot.displayName = "@raikou/core/ModalRoot";

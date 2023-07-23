@@ -71,7 +71,7 @@ module.exports = __toCommonJS(src_exports);
 
 // src/AppShell.tsx
 var import_react11 = __toESM(require("react"));
-var import_core16 = require("@raikou/core");
+var import_core15 = require("@raikou/core");
 
 // src/AppShellNavbar/AppShellNavbar.tsx
 var import_react3 = __toESM(require("react"));
@@ -330,13 +330,13 @@ AppShellSection.displayName = "@raikou/core/AppShellSection";
 
 // src/AppShellMediaStyles/AppShellMediaStyles.tsx
 var import_react9 = __toESM(require("react"));
-var import_core15 = require("@raikou/core");
-
-// src/AppShellMediaStyles/get-variables/get-variables.ts
 var import_core14 = require("@raikou/core");
 
+// src/AppShellMediaStyles/get-variables/get-variables.ts
+var import_core13 = require("@raikou/core");
+
 // src/AppShellMediaStyles/assign-aside-variables/assign-aside-variables.ts
-var import_core8 = require("@raikou/core");
+var import_core7 = require("@raikou/core");
 
 // src/AppShellMediaStyles/is-responsive-size/is-responsive-size.ts
 function isResponsiveSize(size) {
@@ -353,21 +353,6 @@ function isResponsiveSize(size) {
 function isPrimitiveSize(size) {
   const isBaseSize = typeof size === "object" && size !== null && typeof size.base !== "undefined" && Object.keys(size).length === 1;
   return typeof size === "number" || typeof size === "string" || isBaseSize;
-}
-
-// src/AppShellMediaStyles/get-breakpoint-value/get-breakpoint-value.ts
-var import_core7 = require("@raikou/core");
-function getBreakpointValue(breakpoint, theme) {
-  if (breakpoint in theme.breakpoints) {
-    return (0, import_core7.px)(theme.breakpoints[breakpoint]);
-  }
-  const convertedValue = (0, import_core7.px)(breakpoint);
-  if (typeof convertedValue !== "number" || Number.isNaN(convertedValue)) {
-    throw new Error(
-      `[@raikou/core] AppShell: failed to parse breakpoint value "${breakpoint}"`
-    );
-  }
-  return convertedValue;
 }
 
 // src/AppShellMediaStyles/get-base-size/get-base-size.ts
@@ -396,20 +381,20 @@ function assignAsideVariables({
     maxMediaStyles[aside == null ? void 0 : aside.breakpoint]["--app-shell-aside-offset"] = "0px";
   }
   if (isPrimitiveSize(asideWidth)) {
-    const baseSize = (0, import_core8.rem)(getBaseSize(asideWidth));
+    const baseSize = (0, import_core7.rem)(getBaseSize(asideWidth));
     baseStyles["--app-shell-aside-width"] = baseSize;
     baseStyles["--app-shell-aside-offset"] = baseSize;
   }
   if (isResponsiveSize(asideWidth)) {
     if (typeof asideWidth.base !== "undefined") {
-      baseStyles["--app-shell-aside-width"] = (0, import_core8.rem)(asideWidth.base);
-      baseStyles["--app-shell-aside-offset"] = (0, import_core8.rem)(asideWidth.base);
+      baseStyles["--app-shell-aside-width"] = (0, import_core7.rem)(asideWidth.base);
+      baseStyles["--app-shell-aside-offset"] = (0, import_core7.rem)(asideWidth.base);
     }
-    (0, import_core8.keys)(asideWidth).forEach((key) => {
+    (0, import_core7.keys)(asideWidth).forEach((key) => {
       if (key !== "base") {
         minMediaStyles[key] = minMediaStyles[key] || {};
-        minMediaStyles[key]["--app-shell-aside-width"] = (0, import_core8.rem)(asideWidth[key]);
-        minMediaStyles[key]["--app-shell-aside-offset"] = (0, import_core8.rem)(asideWidth[key]);
+        minMediaStyles[key]["--app-shell-aside-width"] = (0, import_core7.rem)(asideWidth[key]);
+        minMediaStyles[key]["--app-shell-aside-offset"] = (0, import_core7.rem)(asideWidth[key]);
       }
     });
   }
@@ -421,7 +406,7 @@ function assignAsideVariables({
     minMediaStyles[breakpointValue]["--app-shell-aside-offset"] = "0px !important";
   }
   if ((_c = aside == null ? void 0 : aside.collapsed) == null ? void 0 : _c.mobile) {
-    const breakpointValue = getBreakpointValue(aside.breakpoint, theme) - 0.1;
+    const breakpointValue = (0, import_core7.getBreakpointValue)(aside.breakpoint, theme) - 0.1;
     maxMediaStyles[breakpointValue] = maxMediaStyles[breakpointValue] || {};
     maxMediaStyles[breakpointValue]["--app-shell-aside-width"] = "100%";
     maxMediaStyles[breakpointValue]["--app-shell-aside-offset"] = "0px";
@@ -431,7 +416,7 @@ function assignAsideVariables({
 }
 
 // src/AppShellMediaStyles/assign-footer-variables/assign-footer-variables.ts
-var import_core9 = require("@raikou/core");
+var import_core8 = require("@raikou/core");
 function assignFooterVariables({
   baseStyles,
   minMediaStyles,
@@ -442,7 +427,7 @@ function assignFooterVariables({
   const collapsedFooterTransform = "translateY(var(--app-shell-footer-height))";
   const shouldOffset = (_a = footer == null ? void 0 : footer.offset) != null ? _a : true;
   if (isPrimitiveSize(footerHeight)) {
-    const baseSize = (0, import_core9.rem)(getBaseSize(footerHeight));
+    const baseSize = (0, import_core8.rem)(getBaseSize(footerHeight));
     baseStyles["--app-shell-footer-height"] = baseSize;
     if (shouldOffset) {
       baseStyles["--app-shell-footer-offset"] = baseSize;
@@ -450,19 +435,19 @@ function assignFooterVariables({
   }
   if (isResponsiveSize(footerHeight)) {
     if (typeof footerHeight.base !== "undefined") {
-      baseStyles["--app-shell-footer-height"] = (0, import_core9.rem)(footerHeight.base);
+      baseStyles["--app-shell-footer-height"] = (0, import_core8.rem)(footerHeight.base);
       if (shouldOffset) {
-        baseStyles["--app-shell-footer-offset"] = (0, import_core9.rem)(footerHeight.base);
+        baseStyles["--app-shell-footer-offset"] = (0, import_core8.rem)(footerHeight.base);
       }
     }
-    (0, import_core9.keys)(footerHeight).forEach((key) => {
+    (0, import_core8.keys)(footerHeight).forEach((key) => {
       if (key !== "base") {
         minMediaStyles[key] = minMediaStyles[key] || {};
-        minMediaStyles[key]["--app-shell-footer-height"] = (0, import_core9.rem)(
+        minMediaStyles[key]["--app-shell-footer-height"] = (0, import_core8.rem)(
           footerHeight[key]
         );
         if (shouldOffset) {
-          minMediaStyles[key]["--app-shell-footer-offset"] = (0, import_core9.rem)(
+          minMediaStyles[key]["--app-shell-footer-offset"] = (0, import_core8.rem)(
             footerHeight[key]
           );
         }
@@ -476,7 +461,7 @@ function assignFooterVariables({
 }
 
 // src/AppShellMediaStyles/assign-header-variables/assign-header-variables.ts
-var import_core10 = require("@raikou/core");
+var import_core9 = require("@raikou/core");
 function assignHeaderVariables({
   baseStyles,
   minMediaStyles,
@@ -487,7 +472,7 @@ function assignHeaderVariables({
   const collapsedHeaderTransform = "translateY(calc(var(--app-shell-header-height) * -1))";
   const shouldOffset = (_a = header == null ? void 0 : header.offset) != null ? _a : true;
   if (isPrimitiveSize(headerHeight)) {
-    const baseSize = (0, import_core10.rem)(getBaseSize(headerHeight));
+    const baseSize = (0, import_core9.rem)(getBaseSize(headerHeight));
     baseStyles["--app-shell-header-height"] = baseSize;
     if (shouldOffset) {
       baseStyles["--app-shell-header-offset"] = baseSize;
@@ -495,19 +480,19 @@ function assignHeaderVariables({
   }
   if (isResponsiveSize(headerHeight)) {
     if (typeof headerHeight.base !== "undefined") {
-      baseStyles["--app-shell-header-height"] = (0, import_core10.rem)(headerHeight.base);
+      baseStyles["--app-shell-header-height"] = (0, import_core9.rem)(headerHeight.base);
       if (shouldOffset) {
-        baseStyles["--app-shell-header-offset"] = (0, import_core10.rem)(headerHeight.base);
+        baseStyles["--app-shell-header-offset"] = (0, import_core9.rem)(headerHeight.base);
       }
     }
-    (0, import_core10.keys)(headerHeight).forEach((key) => {
+    (0, import_core9.keys)(headerHeight).forEach((key) => {
       if (key !== "base") {
         minMediaStyles[key] = minMediaStyles[key] || {};
-        minMediaStyles[key]["--app-shell-header-height"] = (0, import_core10.rem)(
+        minMediaStyles[key]["--app-shell-header-height"] = (0, import_core9.rem)(
           headerHeight[key]
         );
         if (shouldOffset) {
-          minMediaStyles[key]["--app-shell-header-offset"] = (0, import_core10.rem)(
+          minMediaStyles[key]["--app-shell-header-offset"] = (0, import_core9.rem)(
             headerHeight[key]
           );
         }
@@ -521,7 +506,7 @@ function assignHeaderVariables({
 }
 
 // src/AppShellMediaStyles/assign-navbar-variables/assign-navbar-variables.ts
-var import_core11 = require("@raikou/core");
+var import_core10 = require("@raikou/core");
 function assignNavbarVariables({
   baseStyles,
   minMediaStyles,
@@ -539,22 +524,22 @@ function assignNavbarVariables({
     maxMediaStyles[navbar == null ? void 0 : navbar.breakpoint]["--app-shell-navbar-offset"] = "0px";
   }
   if (isPrimitiveSize(navbarWidth)) {
-    const baseSize = (0, import_core11.rem)(getBaseSize(navbarWidth));
+    const baseSize = (0, import_core10.rem)(getBaseSize(navbarWidth));
     baseStyles["--app-shell-navbar-width"] = baseSize;
     baseStyles["--app-shell-navbar-offset"] = baseSize;
   }
   if (isResponsiveSize(navbarWidth)) {
     if (typeof navbarWidth.base !== "undefined") {
-      baseStyles["--app-shell-navbar-width"] = (0, import_core11.rem)(navbarWidth.base);
-      baseStyles["--app-shell-navbar-offset"] = (0, import_core11.rem)(navbarWidth.base);
+      baseStyles["--app-shell-navbar-width"] = (0, import_core10.rem)(navbarWidth.base);
+      baseStyles["--app-shell-navbar-offset"] = (0, import_core10.rem)(navbarWidth.base);
     }
-    (0, import_core11.keys)(navbarWidth).forEach((key) => {
+    (0, import_core10.keys)(navbarWidth).forEach((key) => {
       if (key !== "base") {
         minMediaStyles[key] = minMediaStyles[key] || {};
-        minMediaStyles[key]["--app-shell-navbar-width"] = (0, import_core11.rem)(
+        minMediaStyles[key]["--app-shell-navbar-width"] = (0, import_core10.rem)(
           navbarWidth[key]
         );
-        minMediaStyles[key]["--app-shell-navbar-offset"] = (0, import_core11.rem)(
+        minMediaStyles[key]["--app-shell-navbar-offset"] = (0, import_core10.rem)(
           navbarWidth[key]
         );
       }
@@ -568,7 +553,7 @@ function assignNavbarVariables({
     minMediaStyles[breakpointValue]["--app-shell-navbar-offset"] = "0px !important";
   }
   if ((_c = navbar == null ? void 0 : navbar.collapsed) == null ? void 0 : _c.mobile) {
-    const breakpointValue = getBreakpointValue(navbar.breakpoint, theme) - 0.1;
+    const breakpointValue = (0, import_core10.getBreakpointValue)(navbar.breakpoint, theme) - 0.1;
     maxMediaStyles[breakpointValue] = maxMediaStyles[breakpointValue] || {};
     maxMediaStyles[breakpointValue]["--app-shell-navbar-width"] = "100%";
     maxMediaStyles[breakpointValue]["--app-shell-navbar-offset"] = "0px";
@@ -578,12 +563,12 @@ function assignNavbarVariables({
 }
 
 // src/AppShellMediaStyles/assign-padding-variables/assign-padding-variables.ts
-var import_core13 = require("@raikou/core");
+var import_core12 = require("@raikou/core");
 
 // src/AppShellMediaStyles/get-padding-value/get-padding-value.ts
-var import_core12 = require("@raikou/core");
+var import_core11 = require("@raikou/core");
 function getPaddingValue(padding) {
-  return Number(padding) === 0 ? "0px" : (0, import_core12.getSpacing)(padding);
+  return Number(padding) === 0 ? "0px" : (0, import_core11.getSpacing)(padding);
 }
 
 // src/AppShellMediaStyles/assign-padding-variables/assign-padding-variables.ts
@@ -599,7 +584,7 @@ function assignPaddingVariables({
     if (padding.base) {
       baseStyles["--app-shell-padding"] = getPaddingValue(padding.base);
     }
-    (0, import_core13.keys)(padding).forEach((key) => {
+    (0, import_core12.keys)(padding).forEach((key) => {
       if (key !== "base") {
         minMediaStyles[key] = minMediaStyles[key] || {};
         minMediaStyles[key]["--app-shell-padding"] = getPaddingValue(
@@ -608,16 +593,6 @@ function assignPaddingVariables({
       }
     });
   }
-}
-
-// src/AppShellMediaStyles/get-sorted-breakpoints/get-sorted-breakpoints.ts
-function getSortedBreakpoints(breakpoints, theme) {
-  const convertedBreakpoints = breakpoints.map((breakpoint) => ({
-    value: breakpoint,
-    px: getBreakpointValue(breakpoint, theme)
-  }));
-  convertedBreakpoints.sort((a, b) => a.px - b.px);
-  return convertedBreakpoints;
 }
 
 // src/AppShellMediaStyles/get-variables/get-variables.ts
@@ -649,15 +624,15 @@ function getVariables({
   assignHeaderVariables({ baseStyles, minMediaStyles, header });
   assignFooterVariables({ baseStyles, minMediaStyles, footer });
   assignPaddingVariables({ baseStyles, minMediaStyles, padding });
-  const minMedia = getSortedBreakpoints((0, import_core14.keys)(minMediaStyles), theme).map(
+  const minMedia = (0, import_core13.getSortedBreakpoints)((0, import_core13.keys)(minMediaStyles), theme).map(
     (breakpoint) => ({
-      query: `(min-width: ${(0, import_core14.em)(breakpoint.px)})`,
+      query: `(min-width: ${(0, import_core13.em)(breakpoint.px)})`,
       styles: minMediaStyles[breakpoint.value]
     })
   );
-  const maxMedia = getSortedBreakpoints((0, import_core14.keys)(maxMediaStyles), theme).map(
+  const maxMedia = (0, import_core13.getSortedBreakpoints)((0, import_core13.keys)(maxMediaStyles), theme).map(
     (breakpoint) => ({
-      query: `(max-width: ${(0, import_core14.em)(breakpoint.px)})`,
+      query: `(max-width: ${(0, import_core13.em)(breakpoint.px)})`,
       styles: maxMediaStyles[breakpoint.value]
     })
   );
@@ -673,7 +648,7 @@ function AppShellMediaStyles({
   footer,
   padding
 }) {
-  const theme = (0, import_core15.getTheme)();
+  const theme = (0, import_core14.getTheme)();
   const { media, baseStyles } = getVariables({
     navbar,
     header,
@@ -682,7 +657,7 @@ function AppShellMediaStyles({
     padding,
     theme
   });
-  return /* @__PURE__ */ import_react9.default.createElement(import_core15.InlineStyles, { media, styles: baseStyles, selector: ":root" });
+  return /* @__PURE__ */ import_react9.default.createElement(import_core14.InlineStyles, { media, styles: baseStyles, selector: ":root" });
 }
 
 // src/use-resizing/use-resizing.tsx
@@ -717,9 +692,9 @@ var defaultProps7 = {
   padding: 0,
   transitionDuration: 200,
   transitionTimingFunction: "ease",
-  zIndex: (0, import_core16.getDefaultZIndex)("app")
+  zIndex: (0, import_core15.getDefaultZIndex)("app")
 };
-var varsResolver = (0, import_core16.createVarsResolver)(
+var varsResolver = (0, import_core15.createVarsResolver)(
   (_, { transitionDuration, transitionTimingFunction }) => ({
     root: {
       "--app-shell-transition-duration": `${transitionDuration}ms`,
@@ -727,8 +702,8 @@ var varsResolver = (0, import_core16.createVarsResolver)(
     }
   })
 );
-var AppShell = (0, import_core16.factory)((_props, ref) => {
-  const props = (0, import_core16.useProps)("AppShell", defaultProps7, _props);
+var AppShell = (0, import_core15.factory)((_props, ref) => {
+  const props = (0, import_core15.useProps)("AppShell", defaultProps7, _props);
   const _a = props, {
     classNames,
     className,
@@ -766,7 +741,7 @@ var AppShell = (0, import_core16.factory)((_props, ref) => {
     "aside",
     "footer"
   ]);
-  const getStyles = (0, import_core16.useStyles)({
+  const getStyles = (0, import_core15.useStyles)({
     name: "AppShell",
     classes: {
       root: "appshell-root",
@@ -797,7 +772,7 @@ var AppShell = (0, import_core16.factory)((_props, ref) => {
       padding
     }
   ), /* @__PURE__ */ import_react11.default.createElement(
-    import_core16.Box,
+    import_core15.Box,
     __spreadValues(__spreadProps(__spreadValues({
       ref
     }, getStyles("root")), {

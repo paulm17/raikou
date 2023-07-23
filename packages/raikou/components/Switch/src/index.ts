@@ -5,11 +5,9 @@ export type {
   SwitchFactory,
   SwitchProps,
   SwitchStylesNames,
-  SwitchVariant,
 } from './Switch';
 export type {
   SwitchGroupFactory,
   SwitchGroupProps,
   SwitchGroupStylesNames,
-  SwitchGroupVariant,
 } from './SwitchGroup/SwitchGroup';

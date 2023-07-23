@@ -3,7 +3,6 @@ import { BoxProps, StylesApiProps, ElementProps, RaikouColor, RaikouSize, Raikou
 import React from 'react';
 
 type SegmentedControlStylesNames = "root" | "input" | "label" | "control" | "indicator";
-type SegmentedControlVariant = string;
 type SegmentedControlCssVariables = {
     root: "--sc-radius" | "--sc-color" | "--sc-font-size" | "--sc-padding" | "--sc-shadow" | "--sc-transition-duration" | "--sc-transition-timing-function";
 };
@@ -55,4 +54,4 @@ declare const SegmentedControl: _raikou_core.RaikouComponent<{
     vars: SegmentedControlCssVariables;
 }>;
 
-export { SegmentedControl, SegmentedControlCssVariables, SegmentedControlFactory, SegmentedControlItem, SegmentedControlProps, SegmentedControlStylesNames, SegmentedControlVariant };
+export { SegmentedControl, SegmentedControlCssVariables, SegmentedControlFactory, SegmentedControlItem, SegmentedControlProps, SegmentedControlStylesNames };

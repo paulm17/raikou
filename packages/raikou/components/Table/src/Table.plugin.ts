@@ -115,5 +115,13 @@ module.exports = function ({ addComponents, theme }: any) {
         "--_margin-top": "var(--raikou-spacing-xs)",
       },
     },
+
+    ".table-scrollContainer": {
+      "overflow-x": "var(--table-overflow)",
+    },
+
+    ".table-scrollContainerInner": {
+      "min-width": "var(--table-min-width)",
+    },
   });
 };

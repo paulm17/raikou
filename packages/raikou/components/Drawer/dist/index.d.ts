@@ -96,7 +96,6 @@ interface ModalBaseHeaderProps extends BoxProps, ElementProps<"div"> {
 }
 
 type OverlayStylesNames = "root";
-type OverlayVariant = string;
 type OverlayCssVariables = {
     root: "--overlay-bg" | "--overlay-filter" | "--overlay-radius" | "--overlay-z-index";
 };
@@ -126,7 +125,6 @@ type OverlayFactory = PolymorphicFactory<{
     defaultComponent: "div";
     stylesNames: OverlayStylesNames;
     vars: OverlayCssVariables;
-    variant: OverlayVariant;
 }>;
 
 interface ModalBaseOverlayProps extends Omit<OverlayProps, "styles" | "classNames" | "variant" | "vars">, ElementProps<"div", "color"> {
@@ -143,7 +141,6 @@ type ScrollAreaComponent = React.FC<any>;
 
 type DrawerPosition = "bottom" | "left" | "right" | "top";
 type DrawerRootStylesNames = ModalBaseStylesNames;
-type DrawerRootVariant = string;
 type DrawerRootCssVariables = {
     root: "--drawer-size" | "--drawer-flex" | "--drawer-height" | "--drawer-align" | "--drawer-justify";
 };
@@ -158,7 +155,6 @@ type DrawerRootFactory = Factory<{
     ref: HTMLDivElement;
     stylesNames: DrawerRootStylesNames;
     vars: DrawerRootCssVariables;
-    variant: DrawerRootVariant;
     compound: true;
 }>;
 declare const DrawerRoot: _raikou_core.RaikouComponent<{
@@ -166,7 +162,6 @@ declare const DrawerRoot: _raikou_core.RaikouComponent<{
     ref: HTMLDivElement;
     stylesNames: DrawerRootStylesNames;
     vars: DrawerRootCssVariables;
-    variant: DrawerRootVariant;
     compound: true;
 }>;
 
@@ -267,7 +262,6 @@ declare const DrawerHeader: _raikou_core.RaikouComponent<{
 }>;
 
 type DrawerStylesNames = DrawerRootStylesNames;
-type DrawerVariant = string;
 type DrawerCssVariables = DrawerRootCssVariables;
 interface DrawerProps extends DrawerRootProps {
     /** Drawer title */
@@ -288,7 +282,6 @@ type DrawerFactory = Factory<{
     ref: HTMLDivElement;
     stylesNames: DrawerStylesNames;
     vars: DrawerCssVariables;
-    variant: DrawerVariant;
     staticComponents: {
         Root: typeof DrawerRoot;
         Overlay: typeof DrawerOverlay;
@@ -304,7 +297,6 @@ declare const Drawer: _raikou_core.RaikouComponent<{
     ref: HTMLDivElement;
     stylesNames: DrawerStylesNames;
     vars: DrawerCssVariables;
-    variant: DrawerVariant;
     staticComponents: {
         Root: typeof DrawerRoot;
         Overlay: typeof DrawerOverlay;
@@ -316,4 +308,4 @@ declare const Drawer: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { Drawer, DrawerBody, DrawerBodyProps, DrawerCloseButton, DrawerCloseButtonProps, DrawerContent, DrawerContentProps, DrawerCssVariables, DrawerFactory, DrawerHeader, DrawerHeaderProps, DrawerOverlay, DrawerOverlayProps, DrawerProps, DrawerRoot, DrawerRootProps, DrawerStylesNames, DrawerTitle, DrawerTitleProps, DrawerVariant };
+export { Drawer, DrawerBody, DrawerBodyProps, DrawerCloseButton, DrawerCloseButtonProps, DrawerContent, DrawerContentProps, DrawerCssVariables, DrawerFactory, DrawerHeader, DrawerHeaderProps, DrawerOverlay, DrawerOverlayProps, DrawerProps, DrawerRoot, DrawerRootProps, DrawerStylesNames, DrawerTitle, DrawerTitleProps };

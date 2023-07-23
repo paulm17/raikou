@@ -16,7 +16,6 @@ import {
 import { useInputWrapperContext } from "../InputWrapper.context";
 
 export type InputErrorStylesNames = "error";
-export type InputErrorVariant = string;
 export type InputErrorCssVariables = {
   error: "--input-error-size";
 };
@@ -36,7 +35,6 @@ export type InputErrorFactory = Factory<{
   ref: HTMLParagraphElement;
   stylesNames: InputErrorStylesNames;
   vars: InputErrorCssVariables;
-  variant: InputErrorVariant;
 }>;
 
 const defaultProps: Partial<InputErrorProps> = {

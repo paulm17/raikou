@@ -581,7 +581,7 @@ var defaultProps4 = {
 };
 var varsResolver2 = (0, import_core9.createVarsResolver)(
   (_, { borderWidth }) => ({
-    root: { "--ai-border-width": (0, import_core9.rem)(borderWidth) }
+    group: { "--ai-border-width": (0, import_core9.rem)(borderWidth) }
   })
 );
 var ActionIconGroup = (0, import_core9.factory)(
@@ -612,7 +612,7 @@ var ActionIconGroup = (0, import_core9.factory)(
       name: "ActionIconGroup",
       props,
       classes: {
-        root: "actionIconGroup-root"
+        group: "actionIconGroup-root"
       },
       className,
       style,
@@ -620,11 +620,12 @@ var ActionIconGroup = (0, import_core9.factory)(
       styles,
       unstyled,
       vars,
-      varsResolver: varsResolver2
+      varsResolver: varsResolver2,
+      rootSelector: "group"
     });
     return /* @__PURE__ */ import_react16.default.createElement(
       import_core9.Box,
-      __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
+      __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
         ref,
         variant,
         mod: { "data-orientation": orientation },
@@ -725,7 +726,7 @@ var ActionIcon = (0, import_core10.polymorphicFactory)(
         size,
         disabled: disabled || loading,
         ref,
-        mod: ["action-icon", { loading, disabled: disabled || dataDisabled }]
+        mod: { loading, disabled: disabled || dataDisabled }
       }),
       loading ? /* @__PURE__ */ import_react17.default.createElement(
         Loader,
@@ -763,7 +764,6 @@ var CloseButton = (0, import_core11.polymorphicFactory)(
     );
   }
 );
-CloseButton.classes = ActionIcon.classes;
 CloseButton.displayName = "@raikou/core/CloseButton";
 
 // src/ModalBaseCloseButton.tsx

@@ -152,5 +152,4 @@ export const TooltipFloating = factory<TooltipFloatingFactory>(
   }
 );
 
-// TooltipFloating.classes = classes;
 TooltipFloating.displayName = "@raikou/core/TooltipFloating";

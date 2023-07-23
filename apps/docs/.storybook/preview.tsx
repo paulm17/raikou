@@ -1,9 +1,9 @@
-import { React } from "react"
-import { withThemeByDataAttribute } from "@storybook/addon-styling"
-import type { Preview } from "@storybook/react"
-import { Bootstrap } from "@raikou/system"
-import "@raikou/system/styles.css"
-import "../tailwind.css"
+import { React } from "react";
+import { withThemeByDataAttribute } from "@storybook/addon-styling";
+import type { Preview } from "@storybook/react";
+import { Bootstrap } from "@raikou/system";
+import "@raikou/system/styles.css";
+import "../tailwind.css";
 
 const preview: Preview = {
   decorators: [
@@ -23,6 +23,9 @@ const preview: Preview = {
   ],
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
+    options: {
+      showPanel: false,
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -30,6 +33,6 @@ const preview: Preview = {
       },
     },
   },
-}
+};
 
-export default preview
+export default preview;

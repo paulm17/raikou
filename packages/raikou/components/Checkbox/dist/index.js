@@ -957,8 +957,6 @@ var CheckboxGroup = (0, import_core8.factory)((props, ref) => {
     )
   );
 });
-CheckboxGroup.classes = Input.Wrapper.classes;
-CheckboxGroup.displayName = "@raikou/core/CheckboxGroup";
 
 // src/CheckIcon.tsx
 var import_react66 = __toESM(require("react"));

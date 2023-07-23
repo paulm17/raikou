@@ -325,10 +325,10 @@ import React9 from "react";
 import { InlineStyles, getTheme } from "@raikou/core";
 
 // src/AppShellMediaStyles/get-variables/get-variables.ts
-import { em, keys as keys6 } from "@raikou/core";
+import { em, keys as keys6, getSortedBreakpoints } from "@raikou/core";
 
 // src/AppShellMediaStyles/assign-aside-variables/assign-aside-variables.ts
-import { keys, rem } from "@raikou/core";
+import { keys, rem, getBreakpointValue } from "@raikou/core";
 
 // src/AppShellMediaStyles/is-responsive-size/is-responsive-size.ts
 function isResponsiveSize(size) {
@@ -345,21 +345,6 @@ function isResponsiveSize(size) {
 function isPrimitiveSize(size) {
   const isBaseSize = typeof size === "object" && size !== null && typeof size.base !== "undefined" && Object.keys(size).length === 1;
   return typeof size === "number" || typeof size === "string" || isBaseSize;
-}
-
-// src/AppShellMediaStyles/get-breakpoint-value/get-breakpoint-value.ts
-import { px } from "@raikou/core";
-function getBreakpointValue(breakpoint, theme) {
-  if (breakpoint in theme.breakpoints) {
-    return px(theme.breakpoints[breakpoint]);
-  }
-  const convertedValue = px(breakpoint);
-  if (typeof convertedValue !== "number" || Number.isNaN(convertedValue)) {
-    throw new Error(
-      `[@raikou/core] AppShell: failed to parse breakpoint value "${breakpoint}"`
-    );
-  }
-  return convertedValue;
 }
 
 // src/AppShellMediaStyles/get-base-size/get-base-size.ts
@@ -513,7 +498,7 @@ function assignHeaderVariables({
 }
 
 // src/AppShellMediaStyles/assign-navbar-variables/assign-navbar-variables.ts
-import { keys as keys4, rem as rem4 } from "@raikou/core";
+import { keys as keys4, rem as rem4, getBreakpointValue as getBreakpointValue2 } from "@raikou/core";
 function assignNavbarVariables({
   baseStyles,
   minMediaStyles,
@@ -560,7 +545,7 @@ function assignNavbarVariables({
     minMediaStyles[breakpointValue]["--app-shell-navbar-offset"] = "0px !important";
   }
   if ((_c = navbar == null ? void 0 : navbar.collapsed) == null ? void 0 : _c.mobile) {
-    const breakpointValue = getBreakpointValue(navbar.breakpoint, theme) - 0.1;
+    const breakpointValue = getBreakpointValue2(navbar.breakpoint, theme) - 0.1;
     maxMediaStyles[breakpointValue] = maxMediaStyles[breakpointValue] || {};
     maxMediaStyles[breakpointValue]["--app-shell-navbar-width"] = "100%";
     maxMediaStyles[breakpointValue]["--app-shell-navbar-offset"] = "0px";
@@ -600,16 +585,6 @@ function assignPaddingVariables({
       }
     });
   }
-}
-
-// src/AppShellMediaStyles/get-sorted-breakpoints/get-sorted-breakpoints.ts
-function getSortedBreakpoints(breakpoints, theme) {
-  const convertedBreakpoints = breakpoints.map((breakpoint) => ({
-    value: breakpoint,
-    px: getBreakpointValue(breakpoint, theme)
-  }));
-  convertedBreakpoints.sort((a, b) => a.px - b.px);
-  return convertedBreakpoints;
 }
 
 // src/AppShellMediaStyles/get-variables/get-variables.ts

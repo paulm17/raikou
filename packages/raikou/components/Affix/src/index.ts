@@ -3,6 +3,5 @@ export type {
   AffixCssVariables,
   AffixFactory,
   AffixProps,
-  AffixStylesNames,
-  AffixVariant,
+  AffixStylesNames
 } from './Affix';

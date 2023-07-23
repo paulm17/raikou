@@ -23,6 +23,7 @@ import {
   TableTr,
   TableThead,
 } from "./Table.components";
+import { TableScrollContainer } from './TableScrollContainer';
 import { TableProvider } from "./Table.context";
 
 export type TableStylesNames =
@@ -35,7 +36,6 @@ export type TableStylesNames =
   | "td"
   | "caption";
 
-export type TableVariant = string;
 export type TableCssVariables = {
   table:
     | "--table-layout"
@@ -101,6 +101,7 @@ export type TableFactory = Factory<{
     Th: typeof TableTh;
     Tr: typeof TableTr;
     Caption: typeof TableCaption;
+    ScrollContainer: typeof TableScrollContainer;
   };
 }>;
 
@@ -226,3 +227,4 @@ Table.Thead = TableThead;
 Table.Tbody = TableTbody;
 Table.Tfoot = TableTfoot;
 Table.Caption = TableCaption;
+Table.ScrollContainer = TableScrollContainer;

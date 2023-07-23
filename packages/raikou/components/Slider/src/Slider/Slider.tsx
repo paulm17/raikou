@@ -22,13 +22,14 @@ import { TransitionOverride } from "../../../Transition/src";
 import { SliderRoot } from "../SliderRoot/SliderRoot";
 import { Track } from "../Track/Track";
 import { Thumb } from "../Thumb/Thumb";
-import { getPosition } from "../utils/get-position/get-position";
-import { getChangeValue } from "../utils/get-change-value/get-change-value";
+import { getPosition } from '../utils/get-position/get-position';
+import { getChangeValue } from '../utils/get-change-value/get-change-value';
+import { getFloatingValue } from '../utils/get-floating-value/get-gloating-value';
+import { getPrecision } from '../utils/get-precision/get-precision';
 import {
   SliderCssVariables,
   SliderProvider,
   SliderStylesNames,
-  SliderVariant,
 } from "../Slider.context";
 
 export interface SliderProps
@@ -110,7 +111,6 @@ export type SliderFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: SliderStylesNames;
   vars: SliderCssVariables;
-  variant: SliderVariant;
 }>;
 
 const defaultProps: Partial<SliderProps> = {
@@ -155,7 +155,7 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
     min,
     max,
     step,
-    precision,
+    precision: _precision,
     defaultValue,
     name,
     marks,
@@ -215,6 +215,7 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
   const position = getPosition({ value: _value, min: min!, max: max! });
   const scaledValue = scale!(_value);
   const _label = typeof label === "function" ? label(scaledValue) : label;
+  const precision = _precision ?? getPrecision(step!);
 
   const handleChange = useCallback(
     ({ x }: { x: number }) => {
@@ -230,7 +231,7 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
         valueRef.current = nextValue;
       }
     },
-    [disabled, min, max, step, precision]
+    [disabled, min, max, step, precision, setValue]
   );
 
   const { ref: container, active } = useMove(
@@ -247,7 +248,10 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
         case "ArrowUp": {
           event.preventDefault();
           thumb.current?.focus();
-          const nextValue = Math.min(Math.max(_value + step!, min!), max!);
+          const nextValue = getFloatingValue(
+            Math.min(Math.max(_value + step!, min!), max!),
+            precision
+          );
           onChangeEnd?.(nextValue);
           setValue(nextValue);
           break;
@@ -256,9 +260,9 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
         case "ArrowRight": {
           event.preventDefault();
           thumb.current?.focus();
-          const nextValue = Math.min(
-            Math.max(dir === "rtl" ? _value - step! : _value + step!, min!),
-            max!
+          const nextValue = getFloatingValue(
+            Math.min(Math.max(dir === 'rtl' ? _value - step! : _value + step!, min!), max!),
+            precision
           );
           onChangeEnd?.(nextValue);
           setValue(nextValue);
@@ -268,7 +272,10 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
         case "ArrowDown": {
           event.preventDefault();
           thumb.current?.focus();
-          const nextValue = Math.min(Math.max(_value - step!, min!), max!);
+          const nextValue = getFloatingValue(
+            Math.min(Math.max(_value - step!, min!), max!),
+            precision
+          );
           onChangeEnd?.(nextValue);
           setValue(nextValue);
           break;
@@ -277,9 +284,9 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
         case "ArrowLeft": {
           event.preventDefault();
           thumb.current?.focus();
-          const nextValue = Math.min(
-            Math.max(dir === "rtl" ? _value + step! : _value - step!, min!),
-            max!
+          const nextValue = getFloatingValue(
+            Math.min(Math.max(dir === 'rtl' ? _value + step! : _value - step!, min!), max!),
+            precision
           );
           onChangeEnd?.(nextValue);
           setValue(nextValue);
@@ -361,5 +368,4 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
   );
 });
 
-// Slider.classes = classes;
 Slider.displayName = "@raikou/core/Slider";

@@ -28,8 +28,8 @@ export type CheckboxStylesNames =
   | "inner"
   | "input"
   | InlineInputStylesNames;
-export type CheckboxVariant = string;
-export type CheckboxCssVariables = {
+
+  export type CheckboxCssVariables = {
   root: "--checkbox-size" | "--checkbox-radius" | "--checkbox-color";
 };
 
@@ -76,7 +76,6 @@ export type CheckboxFactory = Factory<{
   ref: HTMLInputElement;
   stylesNames: CheckboxStylesNames;
   vars: CheckboxCssVariables;
-  variant: CheckboxVariant;
   staticComponents: {
     Group: typeof CheckboxGroup;
   };

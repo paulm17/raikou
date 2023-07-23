@@ -1478,6 +1478,187 @@ var require_Checkbox_plugin = __commonJS({
   }
 });
 
+// ../components/Chip/src/Chip.plugin.ts
+var require_Chip_plugin = __commonJS({
+  "../components/Chip/src/Chip.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents }) {
+      addComponents({
+        ".chip-root": {
+          "--chip-size-xs": rem("23px"),
+          "--chip-size-sm": rem("28px"),
+          "--chip-size-md": rem("32px"),
+          "--chip-size-lg": rem("36px"),
+          "--chip-size-xl": rem("40px"),
+          "--chip-icon-size-xs": rem("10px"),
+          "--chip-icon-size-sm": rem("12px"),
+          "--chip-icon-size-md": rem("14px"),
+          "--chip-icon-size-lg": rem("16px"),
+          "--chip-icon-size-xl": rem("18px"),
+          "--chip-padding-xs": rem("16px"),
+          "--chip-padding-sm": rem("20px"),
+          "--chip-padding-md": rem("24px"),
+          "--chip-padding-lg": rem("28px"),
+          "--chip-padding-xl": rem("32px"),
+          "--chip-checked-padding-xs": rem("7.5px"),
+          "--chip-checked-padding-sm": rem("10px"),
+          "--chip-checked-padding-md": rem("11.7px"),
+          "--chip-checked-padding-lg": rem("13.5px"),
+          "--chip-checked-padding-xl": rem("12.5px"),
+          "--chip-spacing-xs": rem("10px"),
+          "--chip-spacing-sm": rem("12px"),
+          "--chip-spacing-md": rem("16px"),
+          "--chip-spacing-lg": rem("20px"),
+          "--chip-spacing-xl": rem("22px")
+        },
+        ".chip-label": {
+          display: "inline-flex",
+          alignItems: "center",
+          userSelect: "none",
+          borderRadius: "var(--chip-radius)",
+          height: "var(--chip-size)",
+          fontSize: "var(--chip-fz)",
+          lineHeight: `calc(var(--chip-size) - ${rem("2px")})`,
+          paddingLeft: "var(--_chip-padding, var(--chip-padding))",
+          paddingRight: "var(--_chip-padding, var(--chip-padding))",
+          cursor: "var(--_chip-cursor, pointer)",
+          whiteSpace: "nowrap",
+          "-webkit-tap-highlight-color": "transparent",
+          border: `${rem("1px")} solid transparent`,
+          backgroundColor: "var(--_chip-bg)",
+          color: "var(--_chip-color, var(--raikou-color-text))",
+          "&[data-checked]": {
+            "--_chip-padding": "var(--chip-checked-padding)"
+          },
+          "&[data-disabled]": {
+            "--_chip-bg": "var(--raikou-color-gray-2)",
+            "--_chip-color": "var(--raikou-color-gray-5)",
+            "--_chip-cursor": "not-allowed"
+          }
+        },
+        ".chip-root[data-variant='outline'] .chip-label:not([data-disabled])": {
+          backgroundColor: "var(--_chip-bg)",
+          border: "var(--_chip-bd)",
+          "@media (hover: hover)": {
+            "&:hover": {
+              '[data-raikou-color-scheme="light"] &': {
+                "--_chip-bg": "var(--raikou-color-gray-0)"
+              },
+              '[data-raikou-color-scheme="dark"] &': {
+                "--_chip-bg": "var(--raikou-color-dark-5)"
+              }
+            }
+          },
+          "@media (hover: none)": {
+            "&:active": {
+              '[data-raikou-color-scheme="light"] &': {
+                "--_chip-bg": "var(--raikou-color-gray-0)"
+              },
+              '[data-raikou-color-scheme="dark"] &': {
+                "--_chip-bg": "var(--raikou-color-dark-5)"
+              }
+            }
+          },
+          '[data-raikou-color-scheme="light"] &': {
+            "--_chip-bg": "var(--raikou-color-white)",
+            "--_chip-bd": `${rem("1px")} solid var(--raikou-color-gray-3)`
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_chip-bg": "var(--raikou-color-dark-6)",
+            "--_chip-bd": `${rem("1px")} solid var(--raikou-color-dark-4)`
+          },
+          "[data-raikou-color-scheme] &[data-checked]": {
+            "--_chip-bd": "var(--chip-bd)",
+            "--_chip-icon-color": "var(--chip-color)",
+            "@media (hover: hover)": {
+              "&:hover": {
+                "--_chip-bg": "var(--chip-hover)"
+              }
+            },
+            "@media (hover: none)": {
+              "&:active": {
+                "--_chip-bg": "var(--chip-hover)"
+              }
+            }
+          }
+        },
+        ".chip-root[data-variant='filled'] .chip-label:not([data-disabled]), .chip-root[data-variant='light'] .chip-label:not([data-disabled])": {
+          backgroundColor: "var(--_chip-bg)",
+          border: `${rem("1px")} solid transparent`,
+          color: "var(--_chip-color, var(--raikou-color-text))",
+          "@media (hover: hover)": {
+            "&:hover": {
+              '[data-raikou-color-scheme="light"] &': {
+                "--_chip-bg": "var(--raikou-color-gray-1)"
+              },
+              '[data-raikou-color-scheme="dark"] &': {
+                "--_chip-bg": "var(--raikou-color-dark-5)"
+              }
+            }
+          },
+          "@media (hover: none)": {
+            "&:active": {
+              '[data-raikou-color-scheme="light"] &': {
+                "--_chip-bg": "var(--raikou-color-gray-1)"
+              },
+              '[data-raikou-color-scheme="dark"] &': {
+                "--_chip-bg": "var(--raikou-color-dark-5)"
+              }
+            }
+          },
+          '[data-raikou-color-scheme="light"] &': {
+            "--_chip-bg": "var(--raikou-color-gray-0)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_chip-bg": "var(--raikou-color-dark-6)"
+          },
+          "[data-raikou-color-scheme] &[data-checked]": {
+            "--_chip-icon-color": "var(--chip-color)",
+            "--_chip-color": "var(--chip-color)",
+            "--_chip-bg": "var(--chip-bg)",
+            "@media (hover: hover)": {
+              "&:hover": {
+                "--_chip-bg": "var(--chip-hover)"
+              }
+            },
+            "@media (hover: none)": {
+              "&:active": {
+                "--_chip-bg": "var(--chip-hover)"
+              }
+            }
+          }
+        },
+        ".chip-iconWrapper": {
+          width: "calc(var(--chip-icon-size) + (var(--chip-spacing) / 1.5))",
+          maxWidth: "calc(var(--chip-icon-size) + (var(--chip-spacing) / 1.5))",
+          height: "var(--chip-icon-size)",
+          display: "flex",
+          alignItems: "center",
+          overflow: "hidden"
+        },
+        ".chip-checkIcon": {
+          width: "var(--chip-icon-size)",
+          height: "var(--chip-icon-size)",
+          display: "block",
+          color: "var(--_chip-icon-color, inherit)"
+        },
+        ".chip-input": {
+          width: "0",
+          height: "0",
+          padding: "0",
+          opacity: "0",
+          margin: "0",
+          "&:focus-visible + .label": {
+            outline: `${rem("2px")} solid var(--raikou-color-primary)`,
+            outlineOffset: rem("2px")
+          }
+        }
+      });
+    };
+  }
+});
+
 // ../components/Code/src/Code.plugin.ts
 var require_Code_plugin = __commonJS({
   "../components/Code/src/Code.plugin.ts"(exports, module) {
@@ -2131,6 +2312,43 @@ var require_Flex_plugin = __commonJS({
           alignItems: "var(--flex-align)",
           justifyContent: "var(--flex-justify)",
           flexFlow: "var(--flex-direction) var(--flex-wrap)"
+        }
+      });
+    };
+  }
+});
+
+// ../components/Grid/src/Grid.plugin.ts
+var require_Grid_plugin = __commonJS({
+  "../components/Grid/src/Grid.plugin.ts"(exports, module) {
+    "use strict";
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".grid-root": {
+          overflow: "hidden"
+        },
+        ".grid-inner": {
+          width: "calc(100% + var(--grid-gutter))",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "var(--grid-justify)",
+          alignItems: "var(--grid-align)",
+          margin: "calc(var(--grid-gutter) / -2)"
+        },
+        ".grid-col": {
+          flexShrink: "0",
+          order: "var(--col-order)",
+          flexBasis: "var(--col-flex-basis)",
+          width: "var(--col-width)",
+          maxWidth: "var(--col-max-width)",
+          flexGrow: "var(--col-flex-grow, 0)",
+          marginLeft: "var(--_col-ml, var(--col-offset, 0))",
+          marginRight: "var(--_col-mr, 0)",
+          padding: "calc(var(--grid-gutter) / 2)",
+          '[dir="rtl"] &': {
+            "--_col-ml": "0",
+            "--_col-mr": "var(--col-offset, 0)"
+          }
         }
       });
     };
@@ -3246,6 +3464,218 @@ var require_Popover_plugin = __commonJS({
   }
 });
 
+// ../components/Progress/src/Progress.plugin.ts
+var require_Progress_plugin = __commonJS({
+  "../components/Progress/src/Progress.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        "@keyframes stripes-animation": {
+          "0%": {
+            backgroundPosition: "0 0"
+          },
+          "100%": {
+            backgroundPosition: `${rem("40px")} 0`
+          }
+        },
+        ".progress-root": {
+          "--progress-size-xs": rem("3px"),
+          "--progress-size-sm": rem("5px"),
+          "--progress-size-md": rem("8px"),
+          "--progress-size-lg": rem("12px"),
+          "--progress-size-xl": rem("16px"),
+          position: "relative",
+          height: "var(--progress-size)",
+          borderRadius: "var(--progress-radius)",
+          overflow: "hidden",
+          backgroundColor: "var(--_track-bg)",
+          display: "flex",
+          '[data-raikou-color-scheme="light"] &': {
+            "--_track-bg": "var(--mantine-color-gray-2)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_track-bg": "var(--mantine-color-dark-4)"
+          }
+        },
+        ".progress-section": {
+          backgroundColor: "var(--progress-section-color)",
+          height: "100%",
+          width: "var(--progress-section-width)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+          borderRadius: "var(--_section-radius)",
+          backgroundSize: `${rem("20px")} ${rem("20px")}`,
+          backgroundImage: "var(--_section-gradient)",
+          animation: "var(--_section-animation)",
+          "&[data-striped]": {
+            "--_section-gradient": `linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.15) 25%,
+          transparent 25%,
+          transparent 50%,
+          rgba(255, 255, 255, 0.15) 50%,
+          rgba(255, 255, 255, 0.15) 75%,
+          transparent 75%,
+          transparent
+        )`
+          },
+          "&[data-animated]": {
+            "--_section-animation": "stripes-animation 1s linear infinite"
+          },
+          "&:last-of-type": {
+            "--_section-radius": "0 var(--progress-radius) var(--progress-radius) 0",
+            '[dir="rtl"] &': {
+              "--_section-radius": "var(--progress-radius) 0 0 var(--progress-radius)"
+            }
+          },
+          "&:first-of-type": {
+            "--_section-radius": "var(--progress-radius) 0 0 var(--progress-radius)",
+            '[dir="rtl"] &': {
+              "--_section-radius": "0 var(--progress-radius) var(--progress-radius) 0"
+            }
+          }
+        },
+        ".progress-label": {
+          color: "var(--mantine-color-white)",
+          fontWeight: "bold",
+          userSelect: "none",
+          overflow: "hidden",
+          whiteSpace: "nowrap",
+          textOverflow: "ellipsis",
+          fontSize: `min(calc(var(--progress-size) * 0.65), ${rem("18px")})`,
+          lineHeight: "1",
+          paddingLeft: rem("4px"),
+          paddingRight: rem("4px")
+        }
+      });
+    };
+  }
+});
+
+// ../components/Rating/src/Rating.plugin.ts
+var require_Rating_plugin = __commonJS({
+  "../components/Rating/src/Rating.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".rating-root": {
+          "--rating-size-xs": rem("14px"),
+          "--rating-size-sm": rem("18px"),
+          "--rating-size-md": rem("20px"),
+          "--rating-size-lg": rem("28px"),
+          "--rating-size-xl": rem("32px"),
+          display: "flex",
+          width: "max-content",
+          pointerEvents: "var(--_pointer-events)",
+          "&:has(input:disabled)": {
+            "--_pointer-events": "none"
+          }
+        },
+        ".rating-symbolGroup": {
+          position: "relative",
+          transition: "transform 100ms ease",
+          zIndex: "var(--_z-index)",
+          transform: "var(--_transform)",
+          "&[data-active]": {
+            "--_z-index": "1",
+            "--_transform": "scale(1.1)"
+          }
+        },
+        ".rating-starSymbol": {
+          width: "var(--rating-size)",
+          height: "var(--rating-size)",
+          stroke: "var(--_star-color)",
+          fill: "var(--_star-color)",
+          display: "block",
+          '[data-raikou-color-scheme="light"] &': {
+            "--_star-color": "var(--raikou-color-gray-3)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_star-color": "var(--raikou-color-dark-4)"
+          },
+          "[data-raikou-color-scheme] &[data-filled]": {
+            "--_star-color": "var(--rating-color)"
+          }
+        },
+        ".rating-input": {
+          height: "0",
+          width: "0",
+          position: "absolute",
+          overflow: "hidden",
+          whiteSpace: "nowrap",
+          opacity: "0",
+          "&:focus-visible + label": {
+            outline: `${rem("2px")} solid var(--raikou-color-primary)`,
+            outlineOffset: rem("2px")
+          }
+        },
+        ".rating-label": {
+          display: "block",
+          cursor: "pointer",
+          position: "absolute",
+          top: "0",
+          left: "0",
+          zIndex: "var(--rating-item-z-index, 0)",
+          "&[data-read-only]": {
+            cursor: "default"
+          },
+          "&:last-of-type": {
+            position: "relative"
+          }
+        },
+        ".rating-symbolBody": {
+          clipPath: "var(--rating-symbol-clip-path)"
+        }
+      });
+    };
+  }
+});
+
+// ../components/RingProgress/src/RingProgress.plugin.ts
+var require_RingProgress_plugin = __commonJS({
+  "../components/RingProgress/src/RingProgress.plugin.ts"(exports, module) {
+    "use strict";
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".ringProgress-root": {
+          position: "relative",
+          width: "var(--rp-size)",
+          height: "var(--rp-size)",
+          minWidth: "var(--rp-size)",
+          minHeight: "var(--rp-size)"
+        },
+        ".ringProgress-svg": {
+          width: "var(--rp-size)",
+          height: "var(--rp-size)",
+          minWidth: "var(--rp-size)",
+          minHeight: "var(--rp-size)",
+          transform: "rotate(-90deg)"
+        },
+        ".ringProgress-curve": {
+          stroke: "var(--curve-color, var(--_curve-root-color))",
+          '[data-raikou-color-scheme="light"] &': {
+            "--_curve-root-color": "var(--raikou-color-gray-2)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_curve-root-color": "var(--raikou-color-dark-4)"
+          }
+        },
+        ".ringProgress-label": {
+          position: "absolute",
+          top: "50%",
+          transform: "translateY(-50%)",
+          right: "var(--rp-label-offset)",
+          left: "var(--rp-label-offset)"
+        }
+      });
+    };
+  }
+});
+
 // ../components/ScrollArea/src/ScrollArea.plugin.ts
 var require_ScrollArea_plugin = __commonJS({
   "../components/ScrollArea/src/ScrollArea.plugin.ts"(exports, module) {
@@ -3617,6 +4047,22 @@ var require_SegmentedControl_plugin = __commonJS({
               }
             }
           }
+        }
+      });
+    };
+  }
+});
+
+// ../components/SimpleGrid/src/SimpleGrid.plugin.ts
+var require_SimpleGrid_plugin = __commonJS({
+  "../components/SimpleGrid/src/SimpleGrid.plugin.ts"(exports, module) {
+    "use strict";
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".simpleGrid-root": {
+          display: "grid",
+          "grid-template-columns": "repeat(var(--sg-cols), minmax(0, 1fr))",
+          gap: "var(--sg-spacing-y) var(--sg-spacing-x)"
         }
       });
     };
@@ -4144,6 +4590,12 @@ var require_Table_plugin = __commonJS({
           "&[data-side='bottom']": {
             "--_margin-top": "var(--raikou-spacing-xs)"
           }
+        },
+        ".table-scrollContainer": {
+          "overflow-x": "var(--table-overflow)"
+        },
+        ".table-scrollContainerInner": {
+          "min-width": "var(--table-min-width)"
         }
       });
     };
@@ -5130,6 +5582,7 @@ var require_plugin = __commonJS({
         require_Button_plugin(),
         require_Center_plugin(),
         require_Checkbox_plugin(),
+        require_Chip_plugin(),
         require_Code_plugin(),
         require_ColorPicker_plugin(),
         require_ColorSwatch_plugin(),
@@ -5139,6 +5592,7 @@ var require_plugin = __commonJS({
         require_Drawer_plugin(),
         require_Fieldset_plugin(),
         require_Flex_plugin(),
+        require_Grid_plugin(),
         require_Group_plugin(),
         require_InlineInput_plugin(),
         require_Input_plugin(),
@@ -5154,8 +5608,12 @@ var require_plugin = __commonJS({
         require_Pill_plugin(),
         require_PillsInput_plugin(),
         require_Popover_plugin(),
+        require_Progress_plugin(),
+        require_Rating_plugin(),
+        require_RingProgress_plugin(),
         require_ScrollArea_plugin(),
         require_SegmentedControl_plugin(),
+        require_SimpleGrid_plugin(),
         require_Skeleton_plugin(),
         require_Slider_plugin(),
         require_Stack_plugin(),

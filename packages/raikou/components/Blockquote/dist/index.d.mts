@@ -3,7 +3,6 @@ import { BoxProps, StylesApiProps, ElementProps, RaikouColor, RaikouRadius, Fact
 import React from 'react';
 
 type BlockquoteStylesNames = "root" | "icon" | "cite";
-type BlockquoteVariant = string;
 type BlockquoteCssVariables = {
     root: "--bq-bg-light" | "--bq-bg-dark" | "--bq-bd" | "--bq-icon-size" | "--bq-radius";
 };
@@ -24,14 +23,12 @@ type BlockquoteFactory = Factory<{
     ref: HTMLQuoteElement;
     stylesNames: BlockquoteStylesNames;
     vars: BlockquoteCssVariables;
-    variant: BlockquoteVariant;
 }>;
 declare const Blockquote: _raikou_core.RaikouComponent<{
     props: BlockquoteProps;
     ref: HTMLQuoteElement;
     stylesNames: BlockquoteStylesNames;
     vars: BlockquoteCssVariables;
-    variant: BlockquoteVariant;
 }>;
 
-export { Blockquote, BlockquoteCssVariables, BlockquoteFactory, BlockquoteProps, BlockquoteStylesNames, BlockquoteVariant };
+export { Blockquote, BlockquoteCssVariables, BlockquoteFactory, BlockquoteProps, BlockquoteStylesNames };

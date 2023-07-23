@@ -15,7 +15,7 @@ import {
 } from "@raikou/core";
 
 export type BreadcrumbsStylesNames = "root" | "separator" | "breadcrumb";
-export type BreadcrumbsVariant = string;
+
 export type BreadcrumbsCssVariables = {
   root: "--bc-separator-margin";
 };
@@ -39,7 +39,6 @@ export type BreadcrumbsFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: BreadcrumbsStylesNames;
   vars: BreadcrumbsCssVariables;
-  variant: BreadcrumbsVariant;
 }>;
 
 const defaultProps: Partial<BreadcrumbsProps> = {
@@ -122,5 +121,4 @@ export const Breadcrumbs = factory<BreadcrumbsFactory>((_props, ref) => {
   );
 });
 
-// Breadcrumbs.classes = classes;
 Breadcrumbs.displayName = "@raikou/core/Breadcrumbs";

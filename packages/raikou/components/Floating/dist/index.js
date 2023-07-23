@@ -68,7 +68,12 @@ module.exports = __toCommonJS(src_exports);
 
 // src/use-delayed-hover.ts
 var import_react = require("react");
-function useDelayedHover({ open, close, openDelay, closeDelay }) {
+function useDelayedHover({
+  open,
+  close,
+  openDelay,
+  closeDelay
+}) {
   const openTimeout = (0, import_react.useRef)(-1);
   const closeTimeout = (0, import_react.useRef)(-1);
   const clearTimeouts = () => {

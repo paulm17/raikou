@@ -34,5 +34,4 @@ export const ModalTitle = factory<ModalTitleFactory>((_props, ref) => {
   );
 });
 
-// ModalTitle.classes = classes;
 ModalTitle.displayName = "@raikou/core/ModalTitle";

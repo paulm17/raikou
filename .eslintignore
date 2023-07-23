@@ -1,1 +1,3 @@
 packages/postcss-removecss-raikou/*
+packages/raikou/**/dist/index.d.ts
+packages/raikou/components/**/*.plugin.ts

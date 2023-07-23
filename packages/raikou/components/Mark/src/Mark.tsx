@@ -14,7 +14,6 @@ import {
 import { getMarkColor } from "./get-mark-color";
 
 export type MarkStylesNames = "root";
-export type MarkVariant = string;
 export type MarkCssVariables = {
   root: "--mark-bg-dark" | "--mark-bg-light";
 };
@@ -85,5 +84,4 @@ export const Mark = factory<MarkFactory>((_props, ref) => {
   );
 });
 
-// Mark.classes = classes;
 Mark.displayName = "@raikou/core/Mark";

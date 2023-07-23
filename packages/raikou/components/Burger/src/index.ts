@@ -3,6 +3,5 @@ export type {
   BurgerCssVariables,
   BurgerFactory,
   BurgerProps,
-  BurgerStylesNames,
-  BurgerVariant,
+  BurgerStylesNames
 } from './Burger';

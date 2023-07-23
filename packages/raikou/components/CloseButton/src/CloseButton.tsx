@@ -53,5 +53,4 @@ export const CloseButton = polymorphicFactory<CloseButtonFactory>(
   }
 );
 
-CloseButton.classes = ActionIcon.classes;
 CloseButton.displayName = "@raikou/core/CloseButton";

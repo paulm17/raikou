@@ -4,5 +4,4 @@ export type {
   PaperStylesNames,
   PaperCssVariables,
   PaperFactory,
-  PaperVariant,
 } from './Paper';

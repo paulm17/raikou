@@ -29,7 +29,6 @@ export type SwitchStylesNames =
   | "thumb"
   | "input"
   | InlineInputStylesNames;
-export type SwitchVariant = string;
 export type SwitchCssVariables = {
   root:
     | "--switch-radius"
@@ -87,7 +86,6 @@ export type SwitchFactory = Factory<{
   ref: HTMLInputElement;
   stylesNames: SwitchStylesNames;
   vars: SwitchCssVariables;
-  variant: SwitchVariant;
   staticComponents: {
     Group: typeof SwitchGroup;
   };

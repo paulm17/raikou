@@ -109,7 +109,6 @@ export type ColorPickerFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: ColorPickerStylesNames;
   vars: ColorPickerCssVariables;
-  variant: ColorPickerVariant;
 }>;
 
 const defaultProps: Partial<ColorPickerProps> = {
@@ -324,5 +323,4 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
   );
 });
 
-// ColorPicker.classes = classes;
 ColorPicker.displayName = "@raikou/core/ColorPicker";

@@ -4,7 +4,6 @@ import * as react from 'react';
 import react__default from 'react';
 
 type InputLabelStylesNames = "label" | "required";
-type InputLabelVariant = string;
 type InputLabelCssVariables = {
     label: "--input-asterisk-color" | "--input-label-size";
 };
@@ -22,18 +21,15 @@ type InputLabelFactory = Factory<{
     ref: HTMLLabelElement;
     stylesNames: InputLabelStylesNames;
     vars: InputLabelCssVariables;
-    variant: InputLabelVariant;
 }>;
 declare const InputLabel: _raikou_core.RaikouComponent<{
     props: InputLabelProps;
     ref: HTMLLabelElement;
     stylesNames: InputLabelStylesNames;
     vars: InputLabelCssVariables;
-    variant: InputLabelVariant;
 }>;
 
 type InputErrorStylesNames = "error";
-type InputErrorVariant = string;
 type InputErrorCssVariables = {
     error: "--input-error-size";
 };
@@ -47,18 +43,15 @@ type InputErrorFactory = Factory<{
     ref: HTMLParagraphElement;
     stylesNames: InputErrorStylesNames;
     vars: InputErrorCssVariables;
-    variant: InputErrorVariant;
 }>;
 declare const InputError: _raikou_core.RaikouComponent<{
     props: InputErrorProps;
     ref: HTMLParagraphElement;
     stylesNames: InputErrorStylesNames;
     vars: InputErrorCssVariables;
-    variant: InputErrorVariant;
 }>;
 
 type InputDescriptionStylesNames = "description";
-type InputDescriptionVariant = string;
 type InputDescriptionCssVariables = {
     description: "--input-description-size";
 };
@@ -72,14 +65,12 @@ type InputDescriptionFactory = Factory<{
     ref: HTMLParagraphElement;
     stylesNames: InputDescriptionStylesNames;
     vars: InputDescriptionCssVariables;
-    variant: InputDescriptionVariant;
 }>;
 declare const InputDescription: _raikou_core.RaikouComponent<{
     props: InputDescriptionProps;
     ref: HTMLParagraphElement;
     stylesNames: InputDescriptionStylesNames;
     vars: InputDescriptionCssVariables;
-    variant: InputDescriptionVariant;
 }>;
 
 type InputPlaceholderStylesNames = "placeholder";
@@ -575,4 +566,4 @@ interface InputWrapperContextValue {
 }
 declare const useInputWrapperContext: () => InputWrapperContextValue | null;
 
-export { Input, InputCssVariables, InputDescription, InputDescriptionCssVariables, InputDescriptionFactory, InputDescriptionProps, InputDescriptionStylesNames, InputDescriptionVariant, InputError, InputErrorCssVariables, InputErrorFactory, InputErrorProps, InputErrorStylesNames, InputErrorVariant, InputFactory, InputLabel, InputLabelCssVariables, InputLabelFactory, InputLabelProps, InputLabelStylesNames, InputLabelVariant, InputPlaceholder, InputPlaceholderFactory, InputPlaceholderProps, InputPlaceholderStylesNames, InputPlaceholderVariant, InputProps, InputStylesNames, InputVariant, InputWrapper, InputWrapperFactory, InputWrapperProps, InputWrapperStylesNames, __BaseInputProps, __InputProps, __InputStylesNames, __InputWrapperProps, useInputProps, useInputWrapperContext };
+export { Input, InputCssVariables, InputDescription, InputDescriptionCssVariables, InputDescriptionFactory, InputDescriptionProps, InputDescriptionStylesNames, InputError, InputErrorCssVariables, InputErrorFactory, InputErrorProps, InputErrorStylesNames, InputFactory, InputLabel, InputLabelCssVariables, InputLabelFactory, InputLabelProps, InputLabelStylesNames, InputPlaceholder, InputPlaceholderFactory, InputPlaceholderProps, InputPlaceholderStylesNames, InputProps, InputStylesNames, InputVariant, InputWrapper, InputWrapperFactory, InputWrapperProps, InputWrapperStylesNames, __BaseInputProps, __InputProps, __InputStylesNames, __InputWrapperProps, useInputProps, useInputWrapperContext };

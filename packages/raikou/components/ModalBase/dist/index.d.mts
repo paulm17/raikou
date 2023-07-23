@@ -103,7 +103,6 @@ interface ModalBaseHeaderProps extends BoxProps, ElementProps<"div"> {
 declare const ModalBaseHeader: React.ForwardRefExoticComponent<ModalBaseHeaderProps & React.RefAttributes<HTMLDivElement>>;
 
 type OverlayStylesNames = "root";
-type OverlayVariant = string;
 type OverlayCssVariables = {
     root: "--overlay-bg" | "--overlay-filter" | "--overlay-radius" | "--overlay-z-index";
 };
@@ -133,7 +132,6 @@ type OverlayFactory = PolymorphicFactory<{
     defaultComponent: "div";
     stylesNames: OverlayStylesNames;
     vars: OverlayCssVariables;
-    variant: OverlayVariant;
 }>;
 
 interface ModalBaseOverlayProps extends Omit<OverlayProps, "styles" | "classNames" | "variant" | "vars">, ElementProps<"div", "color"> {

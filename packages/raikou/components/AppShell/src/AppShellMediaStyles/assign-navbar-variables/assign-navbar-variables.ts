@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { RaikouTheme, keys, rem } from "@raikou/core";
+import { RaikouTheme, keys, rem, getBreakpointValue } from "@raikou/core";
 import type {
   CSSVariables,
   MediaQueryVariables,
@@ -7,7 +7,6 @@ import type {
 import type { AppShellProps } from "../../AppShell";
 import { isResponsiveSize } from "../is-responsive-size/is-responsive-size";
 import { isPrimitiveSize } from "../is-primitive-size/is-primitive-size";
-import { getBreakpointValue } from "../get-breakpoint-value/get-breakpoint-value";
 import { getBaseSize } from "../get-base-size/get-base-size";
 
 interface AssignNavbarVariablesInput {
@@ -54,10 +53,10 @@ export function assignNavbarVariables({
       if (key !== "base") {
         minMediaStyles[key] = minMediaStyles[key] || {};
         minMediaStyles[key]["--app-shell-navbar-width"] = rem(
-          navbarWidth![key]
+          navbarWidth![key],
         );
         minMediaStyles[key]["--app-shell-navbar-offset"] = rem(
-          navbarWidth![key]
+          navbarWidth![key],
         );
       }
     });

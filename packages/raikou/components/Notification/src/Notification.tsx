@@ -26,7 +26,6 @@ export type NotificationStylesNames =
   | "title"
   | "description"
   | "closeButton";
-export type NotificationVariant = string;
 export type NotificationCssVariables = {
   root: "--notification-radius" | "--notification-color";
 };
@@ -73,7 +72,6 @@ export type NotificationFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: NotificationStylesNames;
   vars: NotificationCssVariables;
-  variant: NotificationVariant;
 }>;
 
 const defaultProps: Partial<NotificationProps> = {
@@ -180,5 +178,4 @@ export const Notification = factory<NotificationFactory>((_props, ref) => {
   );
 });
 
-// Notification.classes = classes;
 Notification.displayName = "@raikou/core/Notification";

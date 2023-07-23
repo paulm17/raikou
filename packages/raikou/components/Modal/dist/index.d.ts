@@ -96,7 +96,6 @@ interface ModalBaseHeaderProps extends BoxProps, ElementProps<"div"> {
 }
 
 type OverlayStylesNames = "root";
-type OverlayVariant = string;
 type OverlayCssVariables = {
     root: "--overlay-bg" | "--overlay-filter" | "--overlay-radius" | "--overlay-z-index";
 };
@@ -126,7 +125,6 @@ type OverlayFactory = PolymorphicFactory<{
     defaultComponent: "div";
     stylesNames: OverlayStylesNames;
     vars: OverlayCssVariables;
-    variant: OverlayVariant;
 }>;
 
 interface ModalBaseOverlayProps extends Omit<OverlayProps, "styles" | "classNames" | "variant" | "vars">, ElementProps<"div", "color"> {
@@ -142,7 +140,6 @@ type ModalBaseStylesNames = 'body' | 'header' | 'title' | 'overlay' | 'root' | '
 type ScrollAreaComponent = React.FC<any>;
 
 type ModalRootStylesNames = ModalBaseStylesNames;
-type ModalRootVariant = string;
 type ModalRootCssVariables = {
     root: "--modal-radius" | "--modal-size" | "--modal-y-offset" | "--modal-x-offset";
 };
@@ -166,7 +163,6 @@ type ModalRootFactory = Factory<{
     ref: HTMLDivElement;
     stylesNames: ModalRootStylesNames;
     vars: ModalRootCssVariables;
-    variant: ModalRootVariant;
     compound: true;
 }>;
 declare const ModalRoot: _raikou_core.RaikouComponent<{
@@ -174,7 +170,6 @@ declare const ModalRoot: _raikou_core.RaikouComponent<{
     ref: HTMLDivElement;
     stylesNames: ModalRootStylesNames;
     vars: ModalRootCssVariables;
-    variant: ModalRootVariant;
     compound: true;
 }>;
 
@@ -275,7 +270,6 @@ declare const ModalHeader: _raikou_core.RaikouComponent<{
 }>;
 
 type ModalStylesNames = ModalRootStylesNames;
-type ModalVariant = string;
 type ModalCssVariables = ModalRootCssVariables;
 interface ModalProps extends ModalRootProps {
     __staticSelector?: string;
@@ -297,7 +291,6 @@ type ModalFactory = Factory<{
     ref: HTMLDivElement;
     stylesNames: ModalStylesNames;
     vars: ModalCssVariables;
-    variant: ModalVariant;
     staticComponents: {
         Root: typeof ModalRoot;
         Overlay: typeof ModalOverlay;
@@ -313,7 +306,6 @@ declare const Modal: _raikou_core.RaikouComponent<{
     ref: HTMLDivElement;
     stylesNames: ModalStylesNames;
     vars: ModalCssVariables;
-    variant: ModalVariant;
     staticComponents: {
         Root: typeof ModalRoot;
         Overlay: typeof ModalOverlay;
@@ -325,4 +317,4 @@ declare const Modal: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { Modal, ModalBody, ModalBodyProps, ModalCloseButton, ModalCloseButtonProps, ModalContent, ModalContentProps, ModalCssVariables, ModalFactory, ModalHeader, ModalHeaderProps, ModalOverlay, ModalOverlayProps, ModalProps, ModalRoot, ModalRootProps, ModalStylesNames, ModalTitle, ModalTitleProps, ModalVariant };
+export { Modal, ModalBody, ModalBodyProps, ModalCloseButton, ModalCloseButtonProps, ModalContent, ModalContentProps, ModalCssVariables, ModalFactory, ModalHeader, ModalHeaderProps, ModalOverlay, ModalOverlayProps, ModalProps, ModalRoot, ModalRootProps, ModalStylesNames, ModalTitle, ModalTitleProps };

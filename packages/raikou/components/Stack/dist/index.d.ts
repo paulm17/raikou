@@ -3,7 +3,6 @@ import { BoxProps, StylesApiProps, ElementProps, RaikouSpacing, Factory } from '
 import React from 'react';
 
 type StackStylesNames = "root";
-type StackVariant = string;
 type StackCssVariables = {
     root: "--stack-gap" | "--stack-align" | "--stack-justify";
 };
@@ -20,14 +19,12 @@ type StackFactory = Factory<{
     ref: HTMLDivElement;
     stylesNames: StackStylesNames;
     vars: StackCssVariables;
-    variant: StackVariant;
 }>;
 declare const Stack: _raikou_core.RaikouComponent<{
     props: StackProps;
     ref: HTMLDivElement;
     stylesNames: StackStylesNames;
     vars: StackCssVariables;
-    variant: StackVariant;
 }>;
 
-export { Stack, StackCssVariables, StackFactory, StackProps, StackStylesNames, StackVariant };
+export { Stack, StackCssVariables, StackFactory, StackProps, StackStylesNames };

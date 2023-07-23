@@ -78,10 +78,7 @@ var require_postcss_rem_em = __commonJS({
             atRule.params = atRule.params.replace(
               remRegExp,
               (value) => remNoScale(value.replace(/rem\((.*?)\)/g, "$1"))
-            ).replace(
-              emRegExp,
-              (value) => em(value.replace(/em\((.*?)\)/g, "$1"))
-            );
+            ).replace(emRegExp, (value) => em(value.replace(/em\((.*?)\)/g, "$1")));
           }
         }
       };

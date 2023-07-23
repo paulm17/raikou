@@ -22,10 +22,9 @@
       "version": "999.999.999"
     }
   },
-  "ignorePatterns": ["index.d.ts"],
   "plugins": ["@typescript-eslint/eslint-plugin", "testing-library"],
   "rules": {
-    "@typescript-eslint/prefer-nullish-coalescing": "error",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/ban-ts-comment": "off",
@@ -78,7 +77,8 @@
     "import/no-named-as-default": "off",
     "prefer-object-spread": "off",
     "arrow-body-style": "off",
-    "react/sort-comp": "off"
+    "react/sort-comp": "off",
+    "semi": [2, "always"]
   },
   "overrides": [
     {

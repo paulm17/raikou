@@ -15,7 +15,6 @@ import {
 import { OptionalPortal, PortalProps } from "../../Portal/src";
 
 export type AffixStylesNames = "root";
-export type AffixVariant = string;
 export type AffixCssVariables = {
   root:
     | "--affix-z-index"
@@ -52,7 +51,6 @@ export type AffixFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: AffixStylesNames;
   vars: AffixCssVariables;
-  variant: AffixVariant;
 }>;
 
 const defaultProps: Partial<AffixProps> = {
@@ -110,5 +108,4 @@ export const Affix = factory<AffixFactory>((_props, ref) => {
   );
 });
 
-// Affix.classes = classes;
 Affix.displayName = "@raikou/core/Affix";

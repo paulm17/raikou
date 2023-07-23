@@ -7,7 +7,6 @@ import * as PropTypes from 'prop-types';
 import { Interaction } from 'scheduler/tracing';
 
 type InputLabelStylesNames = "label" | "required";
-type InputLabelVariant = string;
 type InputLabelCssVariables = {
     label: "--input-asterisk-color" | "--input-label-size";
 };
@@ -25,18 +24,15 @@ type InputLabelFactory = Factory<{
     ref: HTMLLabelElement;
     stylesNames: InputLabelStylesNames;
     vars: InputLabelCssVariables;
-    variant: InputLabelVariant;
 }>;
 declare const InputLabel: _raikou_core.RaikouComponent<{
     props: InputLabelProps;
     ref: HTMLLabelElement;
     stylesNames: InputLabelStylesNames;
     vars: InputLabelCssVariables;
-    variant: InputLabelVariant;
 }>;
 
 type InputErrorStylesNames = "error";
-type InputErrorVariant = string;
 type InputErrorCssVariables = {
     error: "--input-error-size";
 };
@@ -50,18 +46,15 @@ type InputErrorFactory = Factory<{
     ref: HTMLParagraphElement;
     stylesNames: InputErrorStylesNames;
     vars: InputErrorCssVariables;
-    variant: InputErrorVariant;
 }>;
 declare const InputError: _raikou_core.RaikouComponent<{
     props: InputErrorProps;
     ref: HTMLParagraphElement;
     stylesNames: InputErrorStylesNames;
     vars: InputErrorCssVariables;
-    variant: InputErrorVariant;
 }>;
 
 type InputDescriptionStylesNames = "description";
-type InputDescriptionVariant = string;
 type InputDescriptionCssVariables = {
     description: "--input-description-size";
 };
@@ -75,14 +68,12 @@ type InputDescriptionFactory = Factory<{
     ref: HTMLParagraphElement;
     stylesNames: InputDescriptionStylesNames;
     vars: InputDescriptionCssVariables;
-    variant: InputDescriptionVariant;
 }>;
 declare const InputDescription: _raikou_core.RaikouComponent<{
     props: InputDescriptionProps;
     ref: HTMLParagraphElement;
     stylesNames: InputDescriptionStylesNames;
     vars: InputDescriptionCssVariables;
-    variant: InputDescriptionVariant;
 }>;
 
 type InputPlaceholderStylesNames = "placeholder";

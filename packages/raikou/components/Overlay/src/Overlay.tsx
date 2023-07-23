@@ -16,7 +16,6 @@ import {
 } from "@raikou/core";
 
 export type OverlayStylesNames = "root";
-export type OverlayVariant = string;
 export type OverlayCssVariables = {
   root:
     | "--overlay-bg"
@@ -60,7 +59,6 @@ export type OverlayFactory = PolymorphicFactory<{
   defaultComponent: "div";
   stylesNames: OverlayStylesNames;
   vars: OverlayCssVariables;
-  variant: OverlayVariant;
 }>;
 
 const defaultProps: Partial<OverlayProps> = {
@@ -125,5 +123,4 @@ export const Overlay = polymorphicFactory<OverlayFactory>((_props, ref) => {
   );
 });
 
-// Overlay.classes = classes;
 Overlay.displayName = "@raikou/core/Overlay";

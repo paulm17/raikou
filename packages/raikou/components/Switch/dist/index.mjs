@@ -885,7 +885,6 @@ var SwitchGroup = factory6((props, ref) => {
     )
   );
 });
-SwitchGroup.classes = Input.Wrapper.classes;
 SwitchGroup.displayName = "@raikou/core/SwitchGroup";
 
 // src/Switch.tsx

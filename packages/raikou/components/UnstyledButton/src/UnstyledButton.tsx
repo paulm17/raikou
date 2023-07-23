@@ -67,5 +67,4 @@ export const UnstyledButton = polymorphicFactory<UnstyledButtonFactory>(
   }
 );
 
-// UnstyledButton.classes = classes;
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";

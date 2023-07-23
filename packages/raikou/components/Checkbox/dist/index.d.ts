@@ -3423,7 +3423,6 @@ declare global {
 }
 
 type CheckboxGroupStylesNames = InputWrapperStylesNames;
-type CheckboxGroupVariant = string;
 interface CheckboxGroupProps extends Omit<InputWrapperProps, "onChange"> {
     /** `Checkbox` components */
     children: React$1.ReactNode;
@@ -3450,7 +3449,6 @@ declare const CheckboxGroup: _raikou_core.RaikouComponent<{
 }>;
 
 type CheckboxStylesNames = "icon" | "inner" | "input" | InlineInputStylesNames;
-type CheckboxVariant = string;
 type CheckboxCssVariables = {
     root: "--checkbox-size" | "--checkbox-radius" | "--checkbox-color";
 };
@@ -3486,7 +3484,6 @@ type CheckboxFactory = Factory<{
     ref: HTMLInputElement;
     stylesNames: CheckboxStylesNames;
     vars: CheckboxCssVariables;
-    variant: CheckboxVariant;
     staticComponents: {
         Group: typeof CheckboxGroup;
     };
@@ -3496,7 +3493,6 @@ declare const Checkbox: _raikou_core.RaikouComponent<{
     ref: HTMLInputElement;
     stylesNames: CheckboxStylesNames;
     vars: CheckboxCssVariables;
-    variant: CheckboxVariant;
     staticComponents: {
         Group: typeof CheckboxGroup;
     };
@@ -3510,4 +3506,4 @@ interface CheckIconProps extends React$1.ComponentPropsWithoutRef<"svg"> {
 }
 declare function CheckIcon({ size, style, ...others }: CheckIconProps): JSX.Element;
 
-export { CheckIcon, CheckIconProps, Checkbox, CheckboxCssVariables, CheckboxFactory, CheckboxGroup, CheckboxGroupFactory, CheckboxGroupProps, CheckboxGroupStylesNames, CheckboxGroupVariant, CheckboxIconProps, CheckboxProps, CheckboxStylesNames, CheckboxVariant };
+export { CheckIcon, CheckIconProps, Checkbox, CheckboxCssVariables, CheckboxFactory, CheckboxGroup, CheckboxGroupFactory, CheckboxGroupProps, CheckboxGroupStylesNames, CheckboxIconProps, CheckboxProps, CheckboxStylesNames };

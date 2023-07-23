@@ -21,7 +21,7 @@ describe("@raikou/core/ActionIconGroup", () => {
       classes: true,
       refType: HTMLDivElement,
       displayName: "@raikou/core/ActionIconGroup",
-      stylesApiSelectors: ["root"],
+      stylesApiSelectors: ["group"],
     }
   );
 

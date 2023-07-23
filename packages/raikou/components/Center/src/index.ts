@@ -4,5 +4,4 @@ export type {
   CenterCssVariables,
   CenterFactory,
   CenterStylesNames,
-  CenterVariant,
 } from './Center';

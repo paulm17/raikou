@@ -34,7 +34,6 @@ export type SegmentedControlStylesNames =
   | "label"
   | "control"
   | "indicator";
-export type SegmentedControlVariant = string;
 export type SegmentedControlCssVariables = {
   root:
     | "--sc-radius"
@@ -115,7 +114,7 @@ const defaultProps: Partial<SegmentedControlProps> = {
 const varsResolver = createVarsResolver<SegmentedControlFactory>(
   (
     theme,
-    { radius, color, transitionDuration, size, transitionTimingFunction }
+    { radius, color, transitionDuration, size, transitionTimingFunction },
   ) => ({
     root: {
       "--sc-radius": getRadius(radius),
@@ -126,7 +125,7 @@ const varsResolver = createVarsResolver<SegmentedControlFactory>(
       "--sc-padding": getSize(size, "sc-padding"),
       "--sc-font-size": getFontSize(size),
     },
-  })
+  }),
 );
 
 export const SegmentedControl = factory<SegmentedControlFactory>(
@@ -180,7 +179,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>(
     const theme = getTheme();
 
     const _data = data.map((item) =>
-      typeof item === "string" ? { label: item, value: item } : item
+      typeof item === "string" ? { label: item, value: item } : item,
     );
 
     const [_value, handleValueChange] = useUncontrolled({
@@ -227,7 +226,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>(
           ],
         });
       }
-    }, [_value, containerRect, dir]);
+    }, [_value, containerRect, dir, observerRef]);
 
     const controls = _data.map((item) => (
       <Box
@@ -299,8 +298,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>(
         {controls}
       </Box>
     );
-  }
+  },
 );
 
-// SegmentedControl.classes = classes;
 SegmentedControl.displayName = "@raikou/core/SegmentedControl";

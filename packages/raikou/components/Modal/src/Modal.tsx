@@ -18,7 +18,6 @@ import { ModalTitle } from "./ModalTitle";
 import { ModalHeader } from "./ModalHeader";
 
 export type ModalStylesNames = ModalRootStylesNames;
-export type ModalVariant = string;
 export type ModalCssVariables = ModalRootCssVariables;
 
 export interface ModalProps extends ModalRootProps {
@@ -48,7 +47,6 @@ export type ModalFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: ModalStylesNames;
   vars: ModalCssVariables;
-  variant: ModalVariant;
   staticComponents: {
     Root: typeof ModalRoot;
     Overlay: typeof ModalOverlay;
@@ -107,7 +105,6 @@ export const Modal = factory<ModalFactory>((_props, ref) => {
   );
 });
 
-// Modal.classes = classes;
 Modal.displayName = "@raikou/core/Modal";
 Modal.Root = ModalRoot;
 Modal.Overlay = ModalOverlay;

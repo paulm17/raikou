@@ -1047,7 +1047,6 @@ var NativeSelect = (0, import_core10.factory)((props, ref) => {
     children || options
   );
 });
-NativeSelect.classes = InputBase.classes;
 NativeSelect.displayName = "@raikou/core/NativeSelect";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

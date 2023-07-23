@@ -11,10 +11,9 @@ import {
   Factory,
 } from "@raikou/core";
 
-export type ActionIconGroupStylesNames = "root";
-export type ActionIconGroupVariant = string;
+export type ActionIconGroupStylesNames = "group";
 export type ActionIconGroupCssVariables = {
-  root: "--ai-border-width";
+  group: "--ai-border-width";
 };
 
 export interface ActionIconGroupProps
@@ -33,7 +32,6 @@ export interface ActionIconGroupProps
 export type ActionIconGroupFactory = Factory<{
   props: ActionIconGroupProps;
   ref: HTMLDivElement;
-  variant: ActionIconGroupVariant;
   stylesNames: ActionIconGroupStylesNames;
   vars: ActionIconGroupCssVariables;
 }>;
@@ -45,8 +43,8 @@ const defaultProps: Partial<ActionIconGroupProps> = {
 
 const varsResolver = createVarsResolver<ActionIconGroupFactory>(
   (_, { borderWidth }) => ({
-    root: { "--ai-border-width": rem(borderWidth) },
-  })
+    group: { "--ai-border-width": rem(borderWidth) },
+  }),
 );
 
 export const ActionIconGroup = factory<ActionIconGroupFactory>(
@@ -69,7 +67,7 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>(
       name: "ActionIconGroup",
       props,
       classes: {
-        root: "actionIconGroup-root",
+        group: "actionIconGroup-root",
       },
       className,
       style,
@@ -78,11 +76,12 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>(
       unstyled,
       vars,
       varsResolver,
+      rootSelector: "group",
     });
 
     return (
       <Box
-        {...getStyles("root")}
+        {...getStyles("group")}
         ref={ref}
         variant={variant}
         mod={{ "data-orientation": orientation }}
@@ -90,7 +89,7 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>(
         {...others}
       />
     );
-  }
+  },
 );
 
 // ActionIconGroup.classes = classes;

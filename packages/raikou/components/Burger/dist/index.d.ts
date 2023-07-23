@@ -2,7 +2,6 @@ import * as _raikou_core from '@raikou/core';
 import { BoxProps, StylesApiProps, ElementProps, RaikouSize, RaikouColor, Factory } from '@raikou/core';
 
 type BurgerStylesNames = "root" | "burger";
-type BurgerVariant = string;
 type BurgerCssVariables = {
     root: "--burger-color" | "--burger-size" | "--burger-transition-duration" | "--burger-transition-timing-function";
 };
@@ -23,14 +22,12 @@ type BurgerFactory = Factory<{
     ref: HTMLButtonElement;
     stylesNames: BurgerStylesNames;
     vars: BurgerCssVariables;
-    variant: BurgerVariant;
 }>;
 declare const Burger: _raikou_core.RaikouComponent<{
     props: BurgerProps;
     ref: HTMLButtonElement;
     stylesNames: BurgerStylesNames;
     vars: BurgerCssVariables;
-    variant: BurgerVariant;
 }>;
 
-export { Burger, BurgerCssVariables, BurgerFactory, BurgerProps, BurgerStylesNames, BurgerVariant };
+export { Burger, BurgerCssVariables, BurgerFactory, BurgerProps, BurgerStylesNames };

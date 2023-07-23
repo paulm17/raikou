@@ -334,6 +334,35 @@ function createEventHandler(parentEventHandler, eventHandler) {
   };
 }
 
+// src/core/utils/get-breakpoint-value/get-breakpoint-value.ts
+function getBreakpointValue(breakpoint, theme) {
+  if (breakpoint in theme.breakpoints) {
+    return px(theme.breakpoints[breakpoint]);
+  }
+  return px(breakpoint);
+}
+
+// src/core/utils/get-sorted-breakpoints/get-sorted-breakpoints.ts
+function getSortedBreakpoints(breakpoints, theme) {
+  const convertedBreakpoints = breakpoints.map((breakpoint) => ({
+    value: breakpoint,
+    px: getBreakpointValue(breakpoint, theme)
+  }));
+  convertedBreakpoints.sort((a, b) => a.px - b.px);
+  return convertedBreakpoints;
+}
+
+// src/core/utils/get-base-value/get-base-value.ts
+function getBaseValue(value) {
+  if (typeof value === "object" && value !== null) {
+    if ("base" in value) {
+      return value.base;
+    }
+    return void 0;
+  }
+  return value;
+}
+
 // src/core/styles-api/create-vars-resolver/create-vars-resolver.ts
 function createVarsResolver(resolver) {
   return resolver;
@@ -1695,7 +1724,7 @@ function hasResponsiveStyles(styleProp) {
   }
   return true;
 }
-function getBaseValue(value) {
+function getBaseValue2(value) {
   if (typeof value === "object" && value !== null) {
     if ("base" in value) {
       return value.base;
@@ -1710,7 +1739,7 @@ function getBreakpointKeys(value) {
   }
   return [];
 }
-function getBreakpointValue(value, breakpoint) {
+function getBreakpointValue2(value, breakpoint) {
   if (typeof value === "object" && value !== null && breakpoint in value) {
     return value[breakpoint];
   }
@@ -1726,7 +1755,7 @@ function parseStyleProps({
       (acc, styleProp) => {
         const propertyData = data[styleProp];
         const properties = Array.isArray(propertyData.property) ? propertyData.property : [propertyData.property];
-        const baseValue = getBaseValue(styleProps[styleProp]);
+        const baseValue = getBaseValue2(styleProps[styleProp]);
         if (!hasResponsiveStyles(styleProps[styleProp])) {
           properties.forEach((property) => {
             acc.inlineStyles[property] = resolvers[propertyData.type](baseValue, theme);
@@ -1744,7 +1773,7 @@ function parseStyleProps({
             acc.media[bp] = {
               ...acc.media[bp],
               [property]: resolvers[propertyData.type](
-                getBreakpointValue(styleProps[styleProp], breakpoint),
+                getBreakpointValue2(styleProps[styleProp], breakpoint),
                 theme
               )
             };
@@ -1961,6 +1990,8 @@ export {
   factory,
   filterProps,
   findElementAncestor,
+  getBaseValue,
+  getBreakpointValue,
   getDefaultZIndex,
   getFontSize,
   getGradient,
@@ -1970,6 +2001,7 @@ export {
   getSafeId,
   getShadow,
   getSize,
+  getSortedBreakpoints,
   getSpacing,
   getStyleObject,
   getTheme,

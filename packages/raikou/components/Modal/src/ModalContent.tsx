@@ -49,5 +49,4 @@ export const ModalContent = factory<ModalContentFactory>((_props, ref) => {
   );
 });
 
-// ModalContent.classes = classes;
 ModalContent.displayName = "@raikou/core/ModalContent";

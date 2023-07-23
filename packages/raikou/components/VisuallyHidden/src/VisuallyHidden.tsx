@@ -10,5 +10,4 @@ export function VisuallyHidden({ className, ...others }: VisuallyHiddenProps) {
   );
 }
 
-// VisuallyHidden.classes = classes;
 VisuallyHidden.displayName = "@raikou/core/VisuallyHidden";

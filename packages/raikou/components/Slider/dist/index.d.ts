@@ -41,7 +41,6 @@ type SliderStylesNames = "root" | "label" | "thumb" | "trackContainer" | "track"
 type SliderCssVariables = {
     root: "--slider-size" | "--slider-color" | "--slider-thumb-size" | "--slider-radius";
 };
-type SliderVariant = string;
 
 interface SliderProps extends BoxProps, StylesApiProps<SliderFactory>, ElementProps<"div", "onChange"> {
     /** Key of `theme.colors` or any valid CSS color, controls color of track and thumb, `theme.primaryColor` by default */
@@ -99,14 +98,12 @@ type SliderFactory = Factory<{
     ref: HTMLDivElement;
     stylesNames: SliderStylesNames;
     vars: SliderCssVariables;
-    variant: SliderVariant;
 }>;
 declare const Slider: _raikou_core.RaikouComponent<{
     props: SliderProps;
     ref: HTMLDivElement;
     stylesNames: SliderStylesNames;
     vars: SliderCssVariables;
-    variant: SliderVariant;
 }>;
 
 type RangeSliderValue = [number, number];
@@ -172,14 +169,12 @@ type RangeSliderFactory = Factory<{
     ref: HTMLDivElement;
     stylesNames: SliderStylesNames;
     vars: SliderCssVariables;
-    variant: SliderVariant;
 }>;
 declare const RangeSlider: _raikou_core.RaikouComponent<{
     props: RangeSliderProps;
     ref: HTMLDivElement;
     stylesNames: SliderStylesNames;
     vars: SliderCssVariables;
-    variant: SliderVariant;
 }>;
 
-export { RangeSlider, RangeSliderFactory, RangeSliderProps, RangeSliderValue, Slider, SliderCssVariables, SliderFactory, SliderProps, SliderStylesNames, SliderVariant };
+export { RangeSlider, RangeSliderFactory, RangeSliderProps, RangeSliderValue, Slider, SliderCssVariables, SliderFactory, SliderProps, SliderStylesNames };

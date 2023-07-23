@@ -12,7 +12,6 @@ export type {
   DrawerFactory,
   DrawerProps,
   DrawerStylesNames,
-  DrawerVariant,
 } from './Drawer';
 export type { DrawerRootProps } from './DrawerRoot';
 export type { DrawerBodyProps } from './DrawerBody';

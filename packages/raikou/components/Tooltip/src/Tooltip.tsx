@@ -272,7 +272,6 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
   );
 });
 
-// Tooltip.classes = classes;
 Tooltip.displayName = "@raikou/core/Tooltip";
 Tooltip.Floating = TooltipFloating;
 Tooltip.Group = TooltipGroup;

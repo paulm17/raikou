@@ -3,7 +3,6 @@ import { BoxProps, StylesApiProps, RaikouShadow, RaikouRadius, PolymorphicFactor
 import React from 'react';
 
 type PaperStylesNames = "root";
-type PaperVariant = string;
 type PaperCssVariables = {
     root: "--paper-radius" | "--paper-shadow";
 };
@@ -44,4 +43,4 @@ declare const Paper: (<C = "div">(props: C extends React.ElementType<any> ? Pape
     classes: Record<"root", string>;
 } & Record<string, never>;
 
-export { Paper, PaperCssVariables, PaperFactory, PaperProps, PaperStylesNames, PaperVariant };
+export { Paper, PaperCssVariables, PaperFactory, PaperProps, PaperStylesNames };

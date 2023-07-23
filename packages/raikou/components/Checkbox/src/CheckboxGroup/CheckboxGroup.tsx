@@ -9,7 +9,6 @@ import {
 import { CheckboxGroupProvider } from "../CheckboxGroup.context";
 
 export type CheckboxGroupStylesNames = InputWrapperStylesNames;
-export type CheckboxGroupVariant = string;
 
 export interface CheckboxGroupProps
   extends Omit<InputWrapperProps, "onChange"> {
@@ -85,5 +84,3 @@ export const CheckboxGroup = factory<CheckboxGroupFactory>((props, ref) => {
   );
 });
 
-CheckboxGroup.classes = Input.Wrapper.classes;
-CheckboxGroup.displayName = "@raikou/core/CheckboxGroup";

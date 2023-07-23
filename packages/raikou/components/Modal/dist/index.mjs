@@ -1258,7 +1258,7 @@ var defaultProps4 = {
 };
 var varsResolver2 = createVarsResolver2(
   (_, { borderWidth }) => ({
-    root: { "--ai-border-width": rem(borderWidth) }
+    group: { "--ai-border-width": rem(borderWidth) }
   })
 );
 var ActionIconGroup = factory2(
@@ -1289,7 +1289,7 @@ var ActionIconGroup = factory2(
       name: "ActionIconGroup",
       props,
       classes: {
-        root: "actionIconGroup-root"
+        group: "actionIconGroup-root"
       },
       className,
       style,
@@ -1297,11 +1297,12 @@ var ActionIconGroup = factory2(
       styles,
       unstyled,
       vars,
-      varsResolver: varsResolver2
+      varsResolver: varsResolver2,
+      rootSelector: "group"
     });
     return /* @__PURE__ */ React19.createElement(
       Box8,
-      __spreadValues(__spreadProps(__spreadValues({}, getStyles2("root")), {
+      __spreadValues(__spreadProps(__spreadValues({}, getStyles2("group")), {
         ref,
         variant,
         mod: { "data-orientation": orientation },
@@ -1402,7 +1403,7 @@ var ActionIcon = polymorphicFactory2(
         size,
         disabled: disabled || loading,
         ref,
-        mod: ["action-icon", { loading, disabled: disabled || dataDisabled }]
+        mod: { loading, disabled: disabled || dataDisabled }
       }),
       loading ? /* @__PURE__ */ React20.createElement(
         Loader,
@@ -1440,7 +1441,6 @@ var CloseButton = polymorphicFactory3(
     );
   }
 );
-CloseButton.classes = ActionIcon.classes;
 CloseButton.displayName = "@raikou/core/CloseButton";
 
 // ../ModalBase/src/ModalBaseCloseButton.tsx

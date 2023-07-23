@@ -34,5 +34,4 @@ export const ModalHeader = factory<ModalHeaderFactory>((_props, ref) => {
   );
 });
 
-// ModalHeader.classes = classes;
 ModalHeader.displayName = "@raikou/core/ModalHeader";

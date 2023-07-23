@@ -32,7 +32,12 @@ var __objRest = (source, exclude) => {
 
 // src/use-delayed-hover.ts
 import { useRef, useEffect } from "react";
-function useDelayedHover({ open, close, openDelay, closeDelay }) {
+function useDelayedHover({
+  open,
+  close,
+  openDelay,
+  closeDelay
+}) {
   const openTimeout = useRef(-1);
   const closeTimeout = useRef(-1);
   const clearTimeouts = () => {

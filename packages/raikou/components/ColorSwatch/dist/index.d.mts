@@ -3,7 +3,6 @@ import { BoxProps, StylesApiProps, RaikouRadius, PolymorphicFactory } from '@rai
 import React from 'react';
 
 type ColorSwatchStylesNames = "root" | "alphaOverlay" | "shadowOverlay" | "colorOverlay" | "childrenOverlay";
-type ColorSwatchVariant = string;
 type ColorSwatchCssVariables = {
     root: "--cs-radius" | "--cs-size";
 };
@@ -25,7 +24,6 @@ type ColorSwatchFactory = PolymorphicFactory<{
     defaultComponent: "div";
     stylesNames: ColorSwatchStylesNames;
     vars: ColorSwatchCssVariables;
-    variant: ColorSwatchVariant;
 }>;
 declare const ColorSwatch: (<C = "div">(props: C extends React.ElementType<any> ? ColorSwatchProps & {
     component?: C | undefined;
@@ -45,9 +43,8 @@ declare const ColorSwatch: (<C = "div">(props: C extends React.ElementType<any> 
     defaultComponent: "div";
     stylesNames: ColorSwatchStylesNames;
     vars: ColorSwatchCssVariables;
-    variant: ColorSwatchVariant;
 }> & {
     classes: Record<ColorSwatchStylesNames, string>;
 } & Record<string, never>;
 
-export { ColorSwatch, ColorSwatchCssVariables, ColorSwatchFactory, ColorSwatchProps, ColorSwatchStylesNames, ColorSwatchVariant };
+export { ColorSwatch, ColorSwatchCssVariables, ColorSwatchFactory, ColorSwatchProps, ColorSwatchStylesNames };

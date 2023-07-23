@@ -5,7 +5,6 @@ import React from 'react';
 type TitleOrder = 1 | 2 | 3 | 4 | 5 | 6;
 type TitleSize = `h${TitleOrder}` | React.CSSProperties["fontSize"];
 type TitleStylesNames = "root";
-type TitleVariant = string;
 type TitleCssVariables = {
     root: "--title-fw" | "--title-lh" | "--title-fz";
 };
@@ -20,14 +19,12 @@ type TitleFactory = Factory<{
     ref: HTMLHeadingElement;
     stylesNames: TitleStylesNames;
     vars: TitleCssVariables;
-    variant: TitleVariant;
 }>;
 declare const Title: _raikou_core.RaikouComponent<{
     props: TitleProps;
     ref: HTMLHeadingElement;
     stylesNames: TitleStylesNames;
     vars: TitleCssVariables;
-    variant: TitleVariant;
 }>;
 
-export { Title, TitleCssVariables, TitleFactory, TitleOrder, TitleProps, TitleSize, TitleStylesNames, TitleVariant };
+export { Title, TitleCssVariables, TitleFactory, TitleOrder, TitleProps, TitleSize, TitleStylesNames };

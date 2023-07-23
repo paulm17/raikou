@@ -3,7 +3,6 @@ import { BoxProps, StylesApiProps, ElementProps, RaikouSpacing, Factory } from '
 import React from 'react';
 
 type BreadcrumbsStylesNames = "root" | "separator" | "breadcrumb";
-type BreadcrumbsVariant = string;
 type BreadcrumbsCssVariables = {
     root: "--bc-separator-margin";
 };
@@ -20,14 +19,12 @@ type BreadcrumbsFactory = Factory<{
     ref: HTMLDivElement;
     stylesNames: BreadcrumbsStylesNames;
     vars: BreadcrumbsCssVariables;
-    variant: BreadcrumbsVariant;
 }>;
 declare const Breadcrumbs: _raikou_core.RaikouComponent<{
     props: BreadcrumbsProps;
     ref: HTMLDivElement;
     stylesNames: BreadcrumbsStylesNames;
     vars: BreadcrumbsCssVariables;
-    variant: BreadcrumbsVariant;
 }>;
 
-export { Breadcrumbs, BreadcrumbsCssVariables, BreadcrumbsFactory, BreadcrumbsProps, BreadcrumbsStylesNames, BreadcrumbsVariant };
+export { Breadcrumbs, BreadcrumbsCssVariables, BreadcrumbsFactory, BreadcrumbsProps, BreadcrumbsStylesNames };

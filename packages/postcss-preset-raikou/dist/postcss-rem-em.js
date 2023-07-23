@@ -45,10 +45,7 @@ module.exports = () => {
         atRule.params = atRule.params.replace(
           remRegExp,
           (value) => remNoScale(value.replace(/rem\((.*?)\)/g, "$1"))
-        ).replace(
-          emRegExp,
-          (value) => em(value.replace(/em\((.*?)\)/g, "$1"))
-        );
+        ).replace(emRegExp, (value) => em(value.replace(/em\((.*?)\)/g, "$1")));
       }
     }
   };

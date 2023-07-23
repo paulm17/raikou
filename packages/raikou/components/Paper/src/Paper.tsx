@@ -15,7 +15,6 @@ import {
 } from "@raikou/core";
 
 export type PaperStylesNames = "root";
-export type PaperVariant = string;
 export type PaperCssVariables = {
   root: "--paper-radius" | "--paper-shadow";
 };
@@ -92,5 +91,4 @@ export const Paper = polymorphicFactory<PaperFactory>((_props, ref) => {
   );
 });
 
-// Paper.classes = classes;
 Paper.displayName = "@raikou/core/Paper";

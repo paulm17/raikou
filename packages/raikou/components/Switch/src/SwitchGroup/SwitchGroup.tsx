@@ -9,7 +9,6 @@ import {
 import { SwitchGroupProvider } from "../SwitchGroup.context";
 
 export type SwitchGroupStylesNames = InputWrapperStylesNames;
-export type SwitchGroupVariant = string;
 
 export interface SwitchGroupProps extends Omit<InputWrapperProps, "onChange"> {
   /** `Switch` components */
@@ -84,5 +83,4 @@ export const SwitchGroup = factory<SwitchGroupFactory>((props, ref) => {
   );
 });
 
-SwitchGroup.classes = Input.Wrapper.classes;
 SwitchGroup.displayName = "@raikou/core/SwitchGroup";

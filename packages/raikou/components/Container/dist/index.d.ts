@@ -2,7 +2,6 @@ import * as _raikou_core from '@raikou/core';
 import { BoxProps, StylesApiProps, ElementProps, RaikouSize, Factory } from '@raikou/core';
 
 type ContainerStylesNames = "root";
-type ContainerVariant = string;
 type ContainerCssVariables = {
     root: "--container-size";
 };
@@ -17,14 +16,12 @@ type ContainerFactory = Factory<{
     ref: HTMLDivElement;
     stylesNames: ContainerStylesNames;
     vars: ContainerCssVariables;
-    variant: ContainerVariant;
 }>;
 declare const Container: _raikou_core.RaikouComponent<{
     props: ContainerProps;
     ref: HTMLDivElement;
     stylesNames: ContainerStylesNames;
     vars: ContainerCssVariables;
-    variant: ContainerVariant;
 }>;
 
-export { Container, ContainerCssVariables, ContainerFactory, ContainerProps, ContainerStylesNames, ContainerVariant };
+export { Container, ContainerCssVariables, ContainerFactory, ContainerProps, ContainerStylesNames };

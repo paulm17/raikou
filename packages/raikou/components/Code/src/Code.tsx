@@ -14,7 +14,7 @@ import {
 } from "@raikou/core";
 
 export type CodeStylesNames = "root";
-export type CodeVariant = string;
+
 export type CodeCssVariables = {
   root: "--code-bg";
 };
@@ -35,7 +35,6 @@ export type CodeFactory = Factory<{
   ref: HTMLElement;
   stylesNames: CodeStylesNames;
   vars: CodeCssVariables;
-  variant: CodeVariant;
 }>;
 
 const defaultProps: Partial<CodeProps> = {};
@@ -89,5 +88,4 @@ export const Code = factory<CodeFactory>((_props, ref) => {
   );
 });
 
-// Code.classes = classes;
 Code.displayName = "@raikou/core/Code";

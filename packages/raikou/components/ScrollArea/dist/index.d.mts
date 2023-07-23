@@ -3,7 +3,6 @@ import { BoxProps, StylesApiProps, ElementProps, Factory } from '@raikou/core';
 import React from 'react';
 
 type ScrollAreaStylesNames = "root" | "viewport" | "viewportInner" | "scrollbar" | "thumb" | "corner";
-type ScrollAreaVariant = string;
 type ScrollAreaCssVariables = {
     root: "--scrollarea-scrollbar-size";
 };
@@ -63,4 +62,4 @@ declare const ScrollAreaAutosize: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { ScrollArea, ScrollAreaAutosize, ScrollAreaAutosizeProps, ScrollAreaCssVariables, ScrollAreaFactory, ScrollAreaProps, ScrollAreaStylesNames, ScrollAreaVariant };
+export { ScrollArea, ScrollAreaAutosize, ScrollAreaAutosizeProps, ScrollAreaCssVariables, ScrollAreaFactory, ScrollAreaProps, ScrollAreaStylesNames };

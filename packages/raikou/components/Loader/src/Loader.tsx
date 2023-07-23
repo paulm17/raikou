@@ -19,7 +19,6 @@ import { Dots } from "./loaders/Dots";
 import type { RaikouLoader, RaikouLoadersRecord } from "./Loader.types";
 
 export type LoaderStylesNames = "root";
-export type LoaderVariant = string;
 export type LoaderCssVariables = {
   root: "--loader-size" | "--loader-color";
 };
@@ -116,5 +115,4 @@ export const Loader = factory<LoaderFactory>((_props, ref) => {
   );
 });
 
-// Loader.classes = classes;
 Loader.displayName = "@raikou/core/Loader";

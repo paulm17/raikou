@@ -14,7 +14,6 @@ import {
 } from "@raikou/core";
 
 export type ContainerStylesNames = "root";
-export type ContainerVariant = string;
 export type ContainerCssVariables = {
   root: "--container-size";
 };
@@ -35,7 +34,6 @@ export type ContainerFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: ContainerStylesNames;
   vars: ContainerCssVariables;
-  variant: ContainerVariant;
 }>;
 
 const defaultProps: Partial<ContainerProps> = {};
@@ -71,5 +69,4 @@ export const Container = factory<ContainerFactory>((_props, ref) => {
   return <Box ref={ref} {...getStyles("root")} {...others} />;
 });
 
-// Container.classes = classes;
 Container.displayName = "@raikou/core/Container";

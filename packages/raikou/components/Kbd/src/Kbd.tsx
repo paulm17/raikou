@@ -14,7 +14,6 @@ import {
 } from "@raikou/core";
 
 export type KbdStylesNames = "root";
-export type KbdVariant = string;
 export type KbdCssVariables = {
   root: "--kbd-padding" | "--kbd-fz";
 };
@@ -32,7 +31,6 @@ export type KbdFactory = Factory<{
   ref: HTMLElement;
   stylesNames: KbdStylesNames;
   vars: KbdCssVariables;
-  variant: KbdVariant;
 }>;
 
 const defaultProps: Partial<KbdProps> = {

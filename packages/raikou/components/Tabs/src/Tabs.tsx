@@ -212,7 +212,6 @@ export const Tabs = factory<TabsFactory>((_props, ref) => {
   );
 });
 
-// Tabs.classes = classes;
 Tabs.displayName = "@raikou/core/Tabs";
 Tabs.Tab = TabsTab;
 Tabs.Panel = TabsPanel;

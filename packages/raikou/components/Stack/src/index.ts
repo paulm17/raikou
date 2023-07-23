@@ -4,5 +4,4 @@ export type {
   StackFactory,
   StackStylesNames,
   StackProps,
-  StackVariant,
 } from './Stack';

@@ -19,8 +19,8 @@ export type ColorSwatchStylesNames =
   | "shadowOverlay"
   | "colorOverlay"
   | "childrenOverlay";
-export type ColorSwatchVariant = string;
-export type ColorSwatchCssVariables = {
+
+  export type ColorSwatchCssVariables = {
   root: "--cs-radius" | "--cs-size";
 };
 
@@ -49,7 +49,6 @@ export type ColorSwatchFactory = PolymorphicFactory<{
   defaultComponent: "div";
   stylesNames: ColorSwatchStylesNames;
   vars: ColorSwatchCssVariables;
-  variant: ColorSwatchVariant;
 }>;
 
 const defaultProps: Partial<ColorSwatchProps> = {
@@ -124,5 +123,4 @@ export const ColorSwatch = polymorphicFactory<ColorSwatchFactory>(
   }
 );
 
-// ColorSwatch.classes = classes;
 ColorSwatch.displayName = "@raikou/core/ColorSwatch";

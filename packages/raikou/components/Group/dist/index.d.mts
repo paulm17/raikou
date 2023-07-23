@@ -3,7 +3,6 @@ import { BoxProps, StylesApiProps, ElementProps, RaikouSpacing, Factory } from '
 import React from 'react';
 
 type GroupStylesNames = "root";
-type GroupVariant = string;
 type GroupCssVariables = {
     root: "--group-gap" | "--group-align" | "--group-justify" | "--group-wrap" | "--group-child-width";
 };
@@ -30,7 +29,6 @@ type GroupFactory = Factory<{
     stylesNames: GroupStylesNames;
     vars: GroupCssVariables;
     ctx: GroupStylesCtx;
-    variant: GroupVariant;
 }>;
 declare const Group: _raikou_core.RaikouComponent<{
     props: GroupProps;
@@ -38,7 +36,6 @@ declare const Group: _raikou_core.RaikouComponent<{
     stylesNames: GroupStylesNames;
     vars: GroupCssVariables;
     ctx: GroupStylesCtx;
-    variant: GroupVariant;
 }>;
 
-export { Group, GroupCssVariables, GroupFactory, GroupProps, GroupStylesCtx, GroupStylesNames, GroupVariant };
+export { Group, GroupCssVariables, GroupFactory, GroupProps, GroupStylesCtx, GroupStylesNames };

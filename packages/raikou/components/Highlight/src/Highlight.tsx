@@ -68,5 +68,4 @@ export const Highlight = polymorphicFactory<HighlightFactory>((props, ref) => {
   );
 });
 
-// Highlight.classes = Text.classes;
 Highlight.displayName = "@raikou/core/Highlight";

@@ -984,8 +984,6 @@ var CheckboxGroup = factory6((props, ref) => {
     )
   );
 });
-CheckboxGroup.classes = Input.Wrapper.classes;
-CheckboxGroup.displayName = "@raikou/core/CheckboxGroup";
 
 // src/CheckIcon.tsx
 import React12 from "react";

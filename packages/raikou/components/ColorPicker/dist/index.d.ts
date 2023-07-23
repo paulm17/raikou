@@ -4,7 +4,6 @@ import { BoxProps, StylesApiProps, ElementProps, Factory, RaikouSize } from '@ra
 type ColorFormat = 'hex' | 'hexa' | 'rgba' | 'rgb' | 'hsl' | 'hsla';
 
 type ColorPickerStylesNames = "wrapper" | "preview" | "body" | "sliders" | "slider" | "sliderOverlay" | "thumb" | "saturation" | "thumb" | "saturationOverlay" | "thumb" | "swatches" | "swatch";
-type ColorPickerVariant = string;
 type ColorPickerCssVariables = {
     wrapper: "--cp-preview-size" | "--cp-width" | "--cp-body-spacing" | "--cp-swatch-size" | "--cp-thumb-size" | "--cp-saturation-height";
 };
@@ -48,14 +47,12 @@ type ColorPickerFactory = Factory<{
     ref: HTMLDivElement;
     stylesNames: ColorPickerStylesNames;
     vars: ColorPickerCssVariables;
-    variant: ColorPickerVariant;
 }>;
 declare const ColorPicker: _raikou_core.RaikouComponent<{
     props: ColorPickerProps;
     ref: HTMLDivElement;
     stylesNames: ColorPickerStylesNames;
     vars: ColorPickerCssVariables;
-    variant: ColorPickerVariant;
 }>;
 
-export { ColorPicker, ColorPickerCssVariables, ColorPickerFactory, ColorPickerProps, ColorPickerStylesNames, ColorPickerVariant };
+export { ColorPicker, ColorPickerCssVariables, ColorPickerFactory, ColorPickerProps, ColorPickerStylesNames };

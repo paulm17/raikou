@@ -24,7 +24,6 @@ export type ScrollAreaStylesNames =
   | "scrollbar"
   | "thumb"
   | "corner";
-export type ScrollAreaVariant = string;
 export type ScrollAreaCssVariables = {
   root: "--scrollarea-scrollbar-size";
 };
@@ -231,7 +230,5 @@ export const ScrollAreaAutosize = factory<ScrollAreaFactory>((props, ref) => {
   );
 });
 
-// ScrollArea.classes = classes;
 ScrollAreaAutosize.displayName = "@raikou/core/ScrollAreaAutosize";
-// ScrollAreaAutosize.classes = classes;
 ScrollArea.Autosize = ScrollAreaAutosize;

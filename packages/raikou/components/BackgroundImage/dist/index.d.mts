@@ -3,7 +3,6 @@ import { BoxProps, StylesApiProps, RaikouRadius, PolymorphicFactory } from '@rai
 import React from 'react';
 
 type BackgroundImageStylesNames = "root";
-type BackgroundImageVariant = string;
 type BackgroundImageCssVariables = {
     root: "--bi-radius";
 };
@@ -17,7 +16,6 @@ type BackgroundImageFactory = PolymorphicFactory<{
     props: BackgroundImageProps;
     defaultRef: HTMLDivElement;
     defaultComponent: "div";
-    variant: BackgroundImageVariant;
     stylesNames: BackgroundImageStylesNames;
     vars: BackgroundImageCssVariables;
 }>;
@@ -37,11 +35,10 @@ declare const BackgroundImage: (<C = "div">(props: C extends React.ElementType<a
     props: BackgroundImageProps;
     defaultRef: HTMLDivElement;
     defaultComponent: "div";
-    variant: BackgroundImageVariant;
     stylesNames: BackgroundImageStylesNames;
     vars: BackgroundImageCssVariables;
 }> & {
     classes: Record<"root", string>;
 } & Record<string, never>;
 
-export { BackgroundImage, BackgroundImageCssVariables, BackgroundImageFactory, BackgroundImageProps, BackgroundImageStylesNames, BackgroundImageVariant };
+export { BackgroundImage, BackgroundImageCssVariables, BackgroundImageFactory, BackgroundImageProps, BackgroundImageStylesNames };

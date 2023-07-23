@@ -2,7 +2,6 @@ import * as _raikou_core from '@raikou/core';
 import { BoxProps, StylesApiProps, ElementProps, RaikouSize, Factory } from '@raikou/core';
 
 type KbdStylesNames = "root";
-type KbdVariant = string;
 type KbdCssVariables = {
     root: "--kbd-padding" | "--kbd-fz";
 };
@@ -15,14 +14,12 @@ type KbdFactory = Factory<{
     ref: HTMLElement;
     stylesNames: KbdStylesNames;
     vars: KbdCssVariables;
-    variant: KbdVariant;
 }>;
 declare const Kbd: _raikou_core.RaikouComponent<{
     props: KbdProps;
     ref: HTMLElement;
     stylesNames: KbdStylesNames;
     vars: KbdCssVariables;
-    variant: KbdVariant;
 }>;
 
-export { Kbd, KbdCssVariables, KbdFactory, KbdProps, KbdStylesNames, KbdVariant };
+export { Kbd, KbdCssVariables, KbdFactory, KbdProps, KbdStylesNames };

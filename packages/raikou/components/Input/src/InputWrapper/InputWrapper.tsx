@@ -270,5 +270,4 @@ export const InputWrapper = factory<InputWrapperFactory>((_props, ref) => {
   );
 });
 
-// InputWrapper.classes = classes;
 InputWrapper.displayName = "@raikou/core/InputWrapper";

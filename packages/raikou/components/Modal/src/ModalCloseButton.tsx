@@ -39,5 +39,4 @@ export const ModalCloseButton = factory<ModalCloseButtonFactory>(
   }
 );
 
-// ModalCloseButton.classes = classes;
 ModalCloseButton.displayName = "@raikou/core/ModalCloseButton";

@@ -3,10 +3,10 @@ import React$1 from 'react';
 interface UseDelayedHoverInput {
     open(): void;
     close(): void;
-    openDelay: number;
-    closeDelay: number;
+    openDelay: number | undefined;
+    closeDelay: number | undefined;
 }
-declare function useDelayedHover({ open, close, openDelay, closeDelay }: UseDelayedHoverInput): {
+declare function useDelayedHover({ open, close, openDelay, closeDelay, }: UseDelayedHoverInput): {
     openDropdown: () => void;
     closeDropdown: () => void;
 };

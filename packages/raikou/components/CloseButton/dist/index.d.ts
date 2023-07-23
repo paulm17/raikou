@@ -37,10 +37,9 @@ type LoaderFactory = Factory<{
 }>;
 declare const defaultLoaders: RaikouLoadersRecord;
 
-type ActionIconGroupStylesNames = "root";
-type ActionIconGroupVariant = string;
+type ActionIconGroupStylesNames = "group";
 type ActionIconGroupCssVariables = {
-    root: "--ai-border-width";
+    group: "--ai-border-width";
 };
 interface ActionIconGroupProps extends BoxProps, StylesApiProps<ActionIconGroupFactory> {
     /** `ActionIcon` components only */
@@ -53,14 +52,12 @@ interface ActionIconGroupProps extends BoxProps, StylesApiProps<ActionIconGroupF
 type ActionIconGroupFactory = Factory<{
     props: ActionIconGroupProps;
     ref: HTMLDivElement;
-    variant: ActionIconGroupVariant;
     stylesNames: ActionIconGroupStylesNames;
     vars: ActionIconGroupCssVariables;
 }>;
 declare const ActionIconGroup: _raikou_core.RaikouComponent<{
     props: ActionIconGroupProps;
     ref: HTMLDivElement;
-    variant: ActionIconGroupVariant;
     stylesNames: ActionIconGroupStylesNames;
     vars: ActionIconGroupCssVariables;
 }>;

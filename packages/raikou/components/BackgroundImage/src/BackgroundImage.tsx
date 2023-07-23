@@ -32,7 +32,6 @@ export type BackgroundImageFactory = PolymorphicFactory<{
   props: BackgroundImageProps;
   defaultRef: HTMLDivElement;
   defaultComponent: "div";
-  variant: BackgroundImageVariant;
   stylesNames: BackgroundImageStylesNames;
   vars: BackgroundImageCssVariables;
 }>;
@@ -89,5 +88,4 @@ export const BackgroundImage = polymorphicFactory<BackgroundImageFactory>(
   }
 );
 
-// BackgroundImage.classes = classes;
 BackgroundImage.displayName = "@raikou/core/BackgroundImage";

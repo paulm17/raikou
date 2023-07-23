@@ -1,6 +1,6 @@
 {
   "name": "postcss-removecss-raikou",
-  "private": "true",
+  "private": true,
   "version": "0.0.1-alpha.3",
   "description": "PostCSS removal for Raikou (7.0+) applications",
   "main": "dist/index.js",

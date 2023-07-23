@@ -10,7 +10,6 @@ interface PortalProps extends React.ComponentPropsWithoutRef<"div"> {
 }
 
 type AffixStylesNames = "root";
-type AffixVariant = string;
 type AffixCssVariables = {
     root: "--affix-z-index" | "--affix-top" | "--affix-left" | "--affix-bottom" | "--affix-right";
 };
@@ -34,14 +33,12 @@ type AffixFactory = Factory<{
     ref: HTMLDivElement;
     stylesNames: AffixStylesNames;
     vars: AffixCssVariables;
-    variant: AffixVariant;
 }>;
 declare const Affix: _raikou_core.RaikouComponent<{
     props: AffixProps;
     ref: HTMLDivElement;
     stylesNames: AffixStylesNames;
     vars: AffixCssVariables;
-    variant: AffixVariant;
 }>;
 
-export { Affix, AffixCssVariables, AffixFactory, AffixProps, AffixStylesNames, AffixVariant };
+export { Affix, AffixCssVariables, AffixFactory, AffixProps, AffixStylesNames };

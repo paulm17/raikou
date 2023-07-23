@@ -142,5 +142,4 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>(
   }
 );
 
-// PopoverDropdown.classes = classes;
 PopoverDropdown.displayName = "@raikou/core/PopoverDropdown";

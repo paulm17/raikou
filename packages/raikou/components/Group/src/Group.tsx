@@ -15,7 +15,6 @@ import {
 import { filterFalsyChildren } from "./filter-falsy-children/filter-falsy-children";
 
 export type GroupStylesNames = "root";
-export type GroupVariant = string;
 export type GroupCssVariables = {
   root:
     | "--group-gap"
@@ -58,7 +57,6 @@ export type GroupFactory = Factory<{
   stylesNames: GroupStylesNames;
   vars: GroupCssVariables;
   ctx: GroupStylesCtx;
-  variant: GroupVariant;
 }>;
 
 const defaultProps: Partial<GroupProps> = {

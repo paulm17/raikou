@@ -3,7 +3,6 @@ import { BoxProps, StylesApiProps, RaikouRadius, PolymorphicFactory } from '@rai
 import React from 'react';
 
 type OverlayStylesNames = "root";
-type OverlayVariant = string;
 type OverlayCssVariables = {
     root: "--overlay-bg" | "--overlay-filter" | "--overlay-radius" | "--overlay-z-index";
 };
@@ -33,7 +32,6 @@ type OverlayFactory = PolymorphicFactory<{
     defaultComponent: "div";
     stylesNames: OverlayStylesNames;
     vars: OverlayCssVariables;
-    variant: OverlayVariant;
 }>;
 declare const Overlay: (<C = "div">(props: C extends React.ElementType<any> ? OverlayProps & {
     component?: C | undefined;
@@ -53,9 +51,8 @@ declare const Overlay: (<C = "div">(props: C extends React.ElementType<any> ? Ov
     defaultComponent: "div";
     stylesNames: OverlayStylesNames;
     vars: OverlayCssVariables;
-    variant: OverlayVariant;
 }> & {
     classes: Record<"root", string>;
 } & Record<string, never>;
 
-export { Overlay, OverlayCssVariables, OverlayFactory, OverlayProps, OverlayStylesNames, OverlayVariant };
+export { Overlay, OverlayCssVariables, OverlayFactory, OverlayProps, OverlayStylesNames };

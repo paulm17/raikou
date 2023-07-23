@@ -3,7 +3,6 @@ import { BoxProps, StylesApiProps, ElementProps, RaikouColor, RaikouRadius, Fact
 import React from 'react';
 
 type NotificationStylesNames = "root" | "icon" | "loader" | "body" | "title" | "description" | "closeButton";
-type NotificationVariant = string;
 type NotificationCssVariables = {
     root: "--notification-radius" | "--notification-color";
 };
@@ -35,14 +34,12 @@ type NotificationFactory = Factory<{
     ref: HTMLDivElement;
     stylesNames: NotificationStylesNames;
     vars: NotificationCssVariables;
-    variant: NotificationVariant;
 }>;
 declare const Notification: _raikou_core.RaikouComponent<{
     props: NotificationProps;
     ref: HTMLDivElement;
     stylesNames: NotificationStylesNames;
     vars: NotificationCssVariables;
-    variant: NotificationVariant;
 }>;
 
-export { Notification, NotificationCssVariables, NotificationFactory, NotificationProps, NotificationStylesNames, NotificationVariant };
+export { Notification, NotificationCssVariables, NotificationFactory, NotificationProps, NotificationStylesNames };

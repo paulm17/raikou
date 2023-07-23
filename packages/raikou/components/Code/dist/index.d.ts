@@ -2,7 +2,6 @@ import * as _raikou_core from '@raikou/core';
 import { BoxProps, StylesApiProps, ElementProps, RaikouColor, Factory } from '@raikou/core';
 
 type CodeStylesNames = "root";
-type CodeVariant = string;
 type CodeCssVariables = {
     root: "--code-bg";
 };
@@ -17,14 +16,12 @@ type CodeFactory = Factory<{
     ref: HTMLElement;
     stylesNames: CodeStylesNames;
     vars: CodeCssVariables;
-    variant: CodeVariant;
 }>;
 declare const Code: _raikou_core.RaikouComponent<{
     props: CodeProps;
     ref: HTMLElement;
     stylesNames: CodeStylesNames;
     vars: CodeCssVariables;
-    variant: CodeVariant;
 }>;
 
-export { Code, CodeCssVariables, CodeFactory, CodeProps, CodeStylesNames, CodeVariant };
+export { Code, CodeCssVariables, CodeFactory, CodeProps, CodeStylesNames };

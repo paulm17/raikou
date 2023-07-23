@@ -3423,7 +3423,6 @@ declare global {
 }
 
 type SwitchGroupStylesNames = InputWrapperStylesNames;
-type SwitchGroupVariant = string;
 interface SwitchGroupProps extends Omit<InputWrapperProps, "onChange"> {
     /** `Switch` components */
     children: React$1.ReactNode;
@@ -3450,7 +3449,6 @@ declare const SwitchGroup: _raikou_core.RaikouComponent<{
 }>;
 
 type SwitchStylesNames = "root" | "track" | "trackLabel" | "thumb" | "input" | InlineInputStylesNames;
-type SwitchVariant = string;
 type SwitchCssVariables = {
     root: "--switch-radius" | "--switch-height" | "--switch-width" | "--switch-thumb-size" | "--switch-label-font-size" | "--switch-track-label-padding" | "--switch-color";
 };
@@ -3485,7 +3483,6 @@ type SwitchFactory = Factory<{
     ref: HTMLInputElement;
     stylesNames: SwitchStylesNames;
     vars: SwitchCssVariables;
-    variant: SwitchVariant;
     staticComponents: {
         Group: typeof SwitchGroup;
     };
@@ -3495,10 +3492,9 @@ declare const Switch: _raikou_core.RaikouComponent<{
     ref: HTMLInputElement;
     stylesNames: SwitchStylesNames;
     vars: SwitchCssVariables;
-    variant: SwitchVariant;
     staticComponents: {
         Group: typeof SwitchGroup;
     };
 }>;
 
-export { Switch, SwitchCssVariables, SwitchFactory, SwitchGroup, SwitchGroupFactory, SwitchGroupProps, SwitchGroupStylesNames, SwitchGroupVariant, SwitchProps, SwitchStylesNames, SwitchVariant };
+export { Switch, SwitchCssVariables, SwitchFactory, SwitchGroup, SwitchGroupFactory, SwitchGroupProps, SwitchGroupStylesNames, SwitchProps, SwitchStylesNames };

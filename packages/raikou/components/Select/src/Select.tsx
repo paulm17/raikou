@@ -225,5 +225,4 @@ export const Select = factory<SelectFactory>((_props, ref) => {
   );
 });
 
-// Select.classes = { ...InputBase.classes, ...Combobox.classes };
 Select.displayName = "@raikou/core/Select";

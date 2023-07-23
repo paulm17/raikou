@@ -2,7 +2,8 @@
   "extends": "../../../../tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "@raikou/action-icon": ["../ActionIcon/src"]
+      "@raikou/action-icon": ["../ActionIcon/src"],
+      "@raikou/tests": ["../../tests/src"]
     }
   },
   "include": ["src", "../../../../configuration/types"]

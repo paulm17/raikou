@@ -20,7 +20,6 @@ import { DrawerProvider, ScrollAreaComponent } from "./Drawer.context";
 type DrawerPosition = "bottom" | "left" | "right" | "top";
 
 export type DrawerRootStylesNames = ModalBaseStylesNames;
-export type DrawerRootVariant = string;
 export type DrawerRootCssVariables = {
   root:
     | "--drawer-size"
@@ -45,7 +44,6 @@ export type DrawerRootFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: DrawerRootStylesNames;
   vars: DrawerRootCssVariables;
-  variant: DrawerRootVariant;
   compound: true;
 }>;
 

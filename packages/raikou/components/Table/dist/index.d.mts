@@ -1,5 +1,5 @@
 import * as _raikou_core from '@raikou/core';
-import { ElementProps, BoxProps, StylesApiProps, RaikouColor, RaikouSpacing, Factory } from '@raikou/core';
+import { ElementProps, BoxProps, StylesApiProps, Factory, RaikouColor, RaikouSpacing } from '@raikou/core';
 import React from 'react';
 
 interface TableElementProps<Selector extends string> extends BoxProps, StylesApiProps<Omit<TableFactory, "stylesNames"> & {
@@ -63,8 +63,30 @@ declare const TableCaption: _raikou_core.RaikouComponent<{
     compound: true;
 }>;
 
+type TableScrollContainerStylesNames = "scrollContainer" | "scrollContainerInner";
+type TableScrollContainerCssVariables = {
+    scrollContainer: "--table-min-width" | "--table-overflow";
+};
+interface TableScrollContainerProps extends BoxProps, StylesApiProps<TableScrollContainerFactory>, ElementProps<"div"> {
+    /** `min-width` of the `Table` at which it should become scrollable */
+    minWidth: React.CSSProperties["minWidth"];
+    /** Type of the scroll container, `native` to use native scrollbars, `scrollarea` to use `ScrollArea` component, `scrollarea` by default */
+    type?: "native" | "scrollarea";
+}
+type TableScrollContainerFactory = Factory<{
+    props: TableScrollContainerProps;
+    ref: HTMLDivElement;
+    stylesNames: TableScrollContainerStylesNames;
+    vars: TableScrollContainerCssVariables;
+}>;
+declare const TableScrollContainer: _raikou_core.RaikouComponent<{
+    props: TableScrollContainerProps;
+    ref: HTMLDivElement;
+    stylesNames: TableScrollContainerStylesNames;
+    vars: TableScrollContainerCssVariables;
+}>;
+
 type TableStylesNames = "table" | "thead" | "tbody" | "tfoot" | "tr" | "th" | "td" | "caption";
-type TableVariant = string;
 type TableCssVariables = {
     table: "--table-layout" | "--table-border-color" | "--table-caption-side" | "--table-horizontal-spacing" | "--table-vertical-spacing" | "--table-striped-color" | "--table-highlight-on-hover-color";
 };
@@ -107,6 +129,7 @@ type TableFactory = Factory<{
         Th: typeof TableTh;
         Tr: typeof TableTr;
         Caption: typeof TableCaption;
+        ScrollContainer: typeof TableScrollContainer;
     };
 }>;
 declare const Table: _raikou_core.RaikouComponent<{
@@ -122,7 +145,8 @@ declare const Table: _raikou_core.RaikouComponent<{
         Th: typeof TableTh;
         Tr: typeof TableTr;
         Caption: typeof TableCaption;
+        ScrollContainer: typeof TableScrollContainer;
     };
 }>;
 
-export { Table, TableCaption, TableCaptionProps, TableCssVariables, TableFactory, TableProps, TableStylesNames, TableTbody, TableTbodyProps, TableTd, TableTdProps, TableTfoot, TableTfootProps, TableTh, TableThProps, TableThead, TableTheadProps, TableTr, TableTrProps, TableVariant };
+export { Table, TableCaption, TableCaptionProps, TableCssVariables, TableFactory, TableProps, TableStylesNames, TableTbody, TableTbodyProps, TableTd, TableTdProps, TableTfoot, TableTfootProps, TableTh, TableThProps, TableThead, TableTheadProps, TableTr, TableTrProps };
