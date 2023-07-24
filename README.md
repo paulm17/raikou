@@ -186,29 +186,29 @@ Change appPath to where the tsx files for your project reside.
 
 ## Server Components
 
-There are 28 server components available without the need for "use client" in
+There are 32 server components available without the need for "use client" in
 either the component library entry point nor in the page itself. They are:
 action-icon, anchor, aspect-ratio, background-image, badge, blockquote, box,
 breadcrumbs, button, center, close-button, code, color-swatch, container,
 divider, fieldset, flex, group, highlight, kbd, loader, mark, paper, skeleton,
-stack, text, title, unstyled-button, visually-hidden.
+simple-grid, space, stack, text, title, unstyled-button, visually-hidden.
 
 To use a server component do the following:
 
 ```js
-import { Badge } from "@raikou/server"
+import { Badge } from "@raikou/server";
 
-return <Badge>Hello</Badge>
+return <Badge>Hello</Badge>;
 ```
 
 No client payload will be sent to the server. However to use as a client
 component, just include "use client"
 
 ```js
-"use client"
-import { Badge } from "@raikou/server"
+"use client";
+import { Badge } from "@raikou/server";
 
-return <Badge>Hello</Badge>
+return <Badge>Hello</Badge>;
 ```
 
 And the page will include all the neccessary client payload for the Badge and

@@ -1110,12 +1110,34 @@ function mergeRaikouTheme(currentTheme, themeOverride) {
 }
 
 // src/core/Bootstrap/get-theme/get-theme.ts
+import fs from "fs";
+function fileExists(path) {
+  if (fs.existsSync(path)) {
+    return true;
+  }
+  return false;
+}
+function getTailwindConfig() {
+  const appPath = __require("path").resolve("./");
+  const exts = ["js", "ts", "cjs"];
+  let found = false;
+  exts.forEach((ext) => {
+    if (fileExists(`${appPath}/tailwind.config.${ext}`)) {
+      found = `${appPath}/tailwind.config.${ext}`;
+    }
+  });
+  return found;
+}
 function getTheme() {
   if (typeof window === "undefined") {
-    const appPath = __require("path").resolve("./");
     const resolveConfig = __require("tailwindcss/resolveConfig");
-    const tailwindConfig = __require(appPath + "/tailwind.config.js");
-    const fullConfig = resolveConfig(tailwindConfig);
+    const tailwindConfigFile = getTailwindConfig();
+    if (!tailwindConfigFile) {
+      throw new Error(
+        "tailwind config not found (at root) or extension must be js, ts or cjs"
+      );
+    }
+    const fullConfig = resolveConfig(__require(`${tailwindConfigFile}`));
     const theme = mergeRaikouTheme(DEFAULT_THEME, fullConfig.theme.custom);
     theme.variantColorResolver = defaultVariantColorsResolver;
     return theme;
@@ -1513,7 +1535,7 @@ function extractStyleProps(others) {
     lts,
     ta,
     lh,
-    fs,
+    fs: fs2,
     tt,
     td,
     w,
@@ -1559,7 +1581,7 @@ function extractStyleProps(others) {
     lts,
     ta,
     lh,
-    fs,
+    fs: fs2,
     tt,
     td,
     w,
