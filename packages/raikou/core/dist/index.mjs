@@ -1110,37 +1110,36 @@ function mergeRaikouTheme(currentTheme, themeOverride) {
 }
 
 // src/core/Bootstrap/get-theme/get-theme.ts
-import fs from "fs";
-function fileExists(path) {
-  if (fs.existsSync(path)) {
-    return true;
-  }
-  return false;
-}
-function getTailwindConfig() {
+var extensions = ["js", "cjs", "ts"];
+var tailwindConfig;
+var loadConfig = async () => {
   const appPath = __require("path").resolve("./");
-  const exts = ["js", "ts", "cjs"];
-  let found = false;
-  exts.forEach((ext) => {
-    if (fileExists(`${appPath}/tailwind.config.${ext}`)) {
-      found = `${appPath}/tailwind.config.${ext}`;
+  for (let ext of extensions) {
+    try {
+      tailwindConfig = __require(`${appPath}/tailwind.config.${ext}`);
+      break;
+    } catch (error) {
+      if (error.code !== "MODULE_NOT_FOUND") {
+        throw error;
+      }
     }
-  });
-  return found;
-}
+  }
+  if (!tailwindConfig) {
+    throw new Error("No valid tailwind config file found.");
+  }
+  return tailwindConfig;
+};
 function getTheme() {
   if (typeof window === "undefined") {
-    const resolveConfig = __require("tailwindcss/resolveConfig");
-    const tailwindConfigFile = getTailwindConfig();
-    if (!tailwindConfigFile) {
-      throw new Error(
-        "tailwind config not found (at root) or extension must be js, ts or cjs"
-      );
-    }
-    const fullConfig = resolveConfig(__require(`${tailwindConfigFile}`));
-    const theme = mergeRaikouTheme(DEFAULT_THEME, fullConfig.theme.custom);
-    theme.variantColorResolver = defaultVariantColorsResolver;
-    return theme;
+    loadConfig().then((tailwindConfig2) => {
+      const resolveConfig = __require("tailwindcss/resolveConfig");
+      const fullConfig = resolveConfig(tailwindConfig2);
+      const theme = mergeRaikouTheme(DEFAULT_THEME, fullConfig.theme.custom);
+      theme.variantColorResolver = defaultVariantColorsResolver;
+      return theme;
+    }).catch((error) => {
+      console.error(error);
+    });
   } else if (typeof window !== "undefined") {
     const res = localStorage.getItem("raikou-theme");
     if (res !== null) {
@@ -1535,7 +1534,7 @@ function extractStyleProps(others) {
     lts,
     ta,
     lh,
-    fs: fs2,
+    fs,
     tt,
     td,
     w,
@@ -1581,7 +1580,7 @@ function extractStyleProps(others) {
     lts,
     ta,
     lh,
-    fs: fs2,
+    fs,
     tt,
     td,
     w,
@@ -1814,14 +1813,10 @@ function parseStyleProps({
 }
 
 // src/core/Box/use-random-classname/use-random-classname.ts
-function useRandomClassName(length = 8) {
-  const c = "abcdefghijklmnopqrstuvwxyz";
-  const s = [...Array(1)].map((_) => c[~~(Math.random() * c.length)]).join("");
-  const id = Array.from(
-    { length },
-    () => Math.random().toString(36)[2]
-  ).join("");
-  return `raikou-${s}${id}`;
+import { useId } from "react";
+function useRandomClassName() {
+  const id = useId().replace(/:/g, "");
+  return `__m__-${id}`;
 }
 
 // src/core/Box/get-style-object/get-style-object.ts

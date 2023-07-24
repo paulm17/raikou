@@ -1195,37 +1195,36 @@ function mergeRaikouTheme(currentTheme, themeOverride) {
 }
 
 // src/core/Bootstrap/get-theme/get-theme.ts
-var import_fs = __toESM(require("fs"));
-function fileExists(path) {
-  if (import_fs.default.existsSync(path)) {
-    return true;
-  }
-  return false;
-}
-function getTailwindConfig() {
+var extensions = ["js", "cjs", "ts"];
+var tailwindConfig;
+var loadConfig = async () => {
   const appPath = require("path").resolve("./");
-  const exts = ["js", "ts", "cjs"];
-  let found = false;
-  exts.forEach((ext) => {
-    if (fileExists(`${appPath}/tailwind.config.${ext}`)) {
-      found = `${appPath}/tailwind.config.${ext}`;
+  for (let ext of extensions) {
+    try {
+      tailwindConfig = require(`${appPath}/tailwind.config.${ext}`);
+      break;
+    } catch (error) {
+      if (error.code !== "MODULE_NOT_FOUND") {
+        throw error;
+      }
     }
-  });
-  return found;
-}
+  }
+  if (!tailwindConfig) {
+    throw new Error("No valid tailwind config file found.");
+  }
+  return tailwindConfig;
+};
 function getTheme() {
   if (typeof window === "undefined") {
-    const resolveConfig = require("tailwindcss/resolveConfig");
-    const tailwindConfigFile = getTailwindConfig();
-    if (!tailwindConfigFile) {
-      throw new Error(
-        "tailwind config not found (at root) or extension must be js, ts or cjs"
-      );
-    }
-    const fullConfig = resolveConfig(require(`${tailwindConfigFile}`));
-    const theme = mergeRaikouTheme(DEFAULT_THEME, fullConfig.theme.custom);
-    theme.variantColorResolver = defaultVariantColorsResolver;
-    return theme;
+    loadConfig().then((tailwindConfig2) => {
+      const resolveConfig = require("tailwindcss/resolveConfig");
+      const fullConfig = resolveConfig(tailwindConfig2);
+      const theme = mergeRaikouTheme(DEFAULT_THEME, fullConfig.theme.custom);
+      theme.variantColorResolver = defaultVariantColorsResolver;
+      return theme;
+    }).catch((error) => {
+      console.error(error);
+    });
   } else if (typeof window !== "undefined") {
     const res = localStorage.getItem("raikou-theme");
     if (res !== null) {
@@ -1620,7 +1619,7 @@ function extractStyleProps(others) {
     lts,
     ta,
     lh,
-    fs: fs2,
+    fs,
     tt,
     td,
     w,
@@ -1666,7 +1665,7 @@ function extractStyleProps(others) {
     lts,
     ta,
     lh,
-    fs: fs2,
+    fs,
     tt,
     td,
     w,
@@ -1899,14 +1898,10 @@ function parseStyleProps({
 }
 
 // src/core/Box/use-random-classname/use-random-classname.ts
-function useRandomClassName(length = 8) {
-  const c = "abcdefghijklmnopqrstuvwxyz";
-  const s = [...Array(1)].map((_) => c[~~(Math.random() * c.length)]).join("");
-  const id = Array.from(
-    { length },
-    () => Math.random().toString(36)[2]
-  ).join("");
-  return `raikou-${s}${id}`;
+var import_react3 = require("react");
+function useRandomClassName() {
+  const id = (0, import_react3.useId)().replace(/:/g, "");
+  return `__m__-${id}`;
 }
 
 // src/core/Box/get-style-object/get-style-object.ts
@@ -1927,24 +1922,24 @@ function getStyleObject(style, theme) {
 }
 
 // src/core/Box/Box.tsx
-var import_react5 = __toESM(require("react"));
+var import_react6 = __toESM(require("react"));
 var import_clsx4 = __toESM(require("clsx"));
 
 // src/core/factory/factory.ts
-var import_react3 = require("react");
+var import_react4 = require("react");
 function identity(value) {
   return value;
 }
 function factory(ui) {
-  const Component = (0, import_react3.forwardRef)(ui);
+  const Component = (0, import_react4.forwardRef)(ui);
   Component.extend = identity;
   return Component;
 }
 
 // src/core/factory/polymorphic-factory.ts
-var import_react4 = require("react");
+var import_react5 = require("react");
 function polymorphicFactory(ui) {
-  const Component = (0, import_react4.forwardRef)(ui);
+  const Component = (0, import_react5.forwardRef)(ui);
   Component.extend = identity;
   return Component;
 }
@@ -2012,7 +2007,7 @@ function getBoxMod(mod) {
 }
 
 // src/core/Box/Box.tsx
-var _Box = (0, import_react5.forwardRef)(
+var _Box = (0, import_react6.forwardRef)(
   ({
     component,
     style,
@@ -2034,14 +2029,14 @@ var _Box = (0, import_react5.forwardRef)(
       theme,
       data: STYlE_PROPS_DATA
     });
-    return /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, parsedStyleProps.hasResponsiveStyles && /* @__PURE__ */ import_react5.default.createElement(
+    return /* @__PURE__ */ import_react6.default.createElement(import_react6.default.Fragment, null, parsedStyleProps.hasResponsiveStyles && /* @__PURE__ */ import_react6.default.createElement(
       InlineStyles,
       {
         selector: `.${responsiveClassName}`,
         styles: parsedStyleProps.styles,
         media: parsedStyleProps.media
       }
-    ), /* @__PURE__ */ import_react5.default.createElement(
+    ), /* @__PURE__ */ import_react6.default.createElement(
       Element,
       {
         ref,

@@ -75,6 +75,6 @@ module.exports = {
       },
     },
   },
-  presets: [require("./node_modules/@raikou/system/dist/plugin")],
+  presets: [require("@raikou/system/plugin.js")],
   plugins: [],
 };

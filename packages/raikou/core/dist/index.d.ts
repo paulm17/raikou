@@ -194,7 +194,7 @@ interface ParseStylePropsResult {
 }
 declare function parseStyleProps({ styleProps, data, theme, }: ParseStylePropsOptions): SortMediaQueriesResult;
 
-declare function useRandomClassName(length?: number): string;
+declare function useRandomClassName(): string;
 
 declare function getStyleObject(style: RaikouStyleProp | undefined, theme: RaikouTheme): React.CSSProperties;
 
