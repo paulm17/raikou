@@ -71,7 +71,7 @@ module.exports = {
   theme: {
     extend: {
       custom: {
-        scale: 1,
+        // scale: 2,
       },
     },
   },

@@ -16,7 +16,7 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body>
-        <RaikouProvider theme={fullConfig.theme.custom as any}>
+        <RaikouProvider theme={(fullConfig.theme as any).custom}>
           <body>{children}</body>
         </RaikouProvider>
       </body>

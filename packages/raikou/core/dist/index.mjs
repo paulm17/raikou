@@ -1153,7 +1153,8 @@ function useRaikouTheme() {
   } else if (typeof window !== "undefined") {
     const res = localStorage.getItem("raikou-theme");
     if (res !== null) {
-      const theme = JSON.parse(res);
+      const lsTheme = JSON.parse(res);
+      const theme = mergeRaikouTheme(DEFAULT_THEME, lsTheme);
       theme.variantColorResolver = defaultVariantColorsResolver;
       return theme;
     }

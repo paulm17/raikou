@@ -62,29 +62,24 @@ export function RaikouProvider({
   let mergedTheme = mergeRaikouTheme(DEFAULT_THEME, theme);
 
   if (typeof window !== "undefined") {
-    if (!Object.keys(theme as any).length) {
+    if (theme && Object.keys(theme as any).length) {
       const storage = localStorage.getItem("raikou-theme");
 
-      if (storage !== null) {
-        localStorage.removeItem("raikou-theme");
+      if (storage === null) {
+        localStorage.setItem("raikou-theme", JSON.stringify(theme));
+      } else {
+        const res = localStorage.getItem("raikou-theme");
+        const themeStr = JSON.stringify(theme);
+
+        if (themeStr !== res) {
+          localStorage.setItem("raikou-theme", JSON.stringify(themeStr));
+        }
       }
     } else {
       const storage = localStorage.getItem("raikou-theme");
 
-      if (storage === null) {
-        localStorage.setItem("raikou-theme", JSON.stringify(mergedTheme));
-      } else {
-        const res = localStorage.getItem("raikou-theme");
-        const lsTheme = JSON.parse(res!);
-
-        mergedTheme = mergeRaikouTheme(lsTheme, theme);
-
-        const mergeThemeStr = JSON.stringify(mergedTheme);
-        const lsThemeStr = JSON.stringify(lsTheme);
-
-        if (mergeThemeStr !== lsThemeStr) {
-          localStorage.setItem("raikou-theme", JSON.stringify(mergedTheme));
-        }
+      if (storage !== null) {
+        localStorage.removeItem("raikou-theme");
       }
     }
   }

@@ -97,7 +97,22 @@ locally. To get a local copy up and running follow these simple example steps.
    presets: [require("@raikou/system/plugin.js")],
    ```
 
-4. Add a new plugin to the postcss.config.js to purge unused component library
+4. Server components derive theme overrides from the tailwind config file. To
+   change the scaling, create a new custom param in the extends param. Client
+   components will derive from a new entry in local storage. It will only
+   include the values in the custom param.
+
+   ```js
+   theme: {
+    extend: {
+      custom: {
+        scale: 2,
+      },
+    },
+   },
+   ```
+
+5. Add a new plugin to the postcss.config.js to purge unused component library
    styles
 
    ```js
@@ -113,14 +128,14 @@ locally. To get a local copy up and running follow these simple example steps.
 
 Change appPath to where the tsx files for your project reside.
 
-5. Change the postcss.config.js to include the following:
+6. Change the postcss.config.js to include the following:
 
    ```js
    'postcss-preset-raikou': {},
    'tailwindcss/nesting': {},
    ```
 
-6. Change the css file that exists in layout.tsx to:
+7. Change the css file that exists in layout.tsx to:
 
    ```css
    @tailwind base;
@@ -130,24 +145,30 @@ Change appPath to where the tsx files for your project reside.
    @import "@raikou/system/styles.css";
    ```
 
-7. Amend layout.tsx to resemble the following. RaikouProvider must encapsulate
+8. Amend layout.tsx to resemble the following. RaikouProvider must encapsulate
    the children and ColorSchemeScript manages the global colorscheme.
 
+   Additionally include the tailwind configuration for the server components.
+
    ```js
-   import { RaikouProvider, ColorSchemeScript } from '@raikou/system'
+   import { RaikouProvider, ColorSchemeScript } from '@raikou/system';
+   import resolveConfig from "tailwindcss/resolveConfig";
+   import tailwindConfig from "../tailwind.config.js";
 
    export default function RootLayout({
       children,
    }: {
       children: React.ReactNode
    }) {
+      const fullConfig = resolveConfig(tailwindConfig);
+
       return (
          <html lang="en">
             <head>
                <ColorSchemeScript />
             </head>
             <body className={inter.className}>
-               <RaikouProvider>{children}</RaikouProvider>
+               <RaikouProvider theme={(fullConfig.theme as any).custom}>{children}</RaikouProvider>
             </body>
          </html>
       )
