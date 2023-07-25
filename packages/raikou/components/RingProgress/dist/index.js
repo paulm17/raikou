@@ -3104,7 +3104,7 @@ function useTransition({
   onEntered,
   onExited
 }) {
-  const theme = (0, import_core6.getTheme)();
+  const theme = (0, import_core6.useRaikouTheme)();
   const shouldReduceMotion = (0, import_hooks2.useReducedMotion)();
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
   const [transitionDuration, setTransitionDuration] = (0, import_react6.useState)(
@@ -3373,7 +3373,7 @@ var TooltipFloating = (0, import_core8.factory)(
       "vars",
       "portalProps"
     ]);
-    const theme = (0, import_core8.getTheme)();
+    const theme = (0, import_core8.useRaikouTheme)();
     const getStyles = (0, import_core8.useStyles)({
       name: "TooltipFloating",
       props,
@@ -3782,7 +3782,7 @@ function Curve(_a) {
     "getStyles",
     "display"
   ]);
-  const theme = (0, import_core11.getTheme)();
+  const theme = (0, import_core11.useRaikouTheme)();
   return /* @__PURE__ */ import_react19.default.createElement(Tooltip.Floating, { disabled: !tooltip, label: tooltip }, /* @__PURE__ */ import_react19.default.createElement(
     import_core11.Box,
     __spreadValues(__spreadProps(__spreadValues(__spreadValues({

@@ -1,4 +1,4 @@
-import { DEFAULT_THEME, RaikouTheme } from "../../../../Bootstrap";
+import { DEFAULT_THEME, RaikouTheme } from "../../../../RaikouProvider";
 import { resolveVars } from "./resolve-vars";
 
 const themeWithVars: RaikouTheme = {
@@ -33,7 +33,7 @@ describe("@raikou/core/resolve-vars", () => {
         theme: DEFAULT_THEME,
         props: { "data-prop": "red" },
         stylesCtx: { "data-ctx": "pink" },
-      })
+      }),
     ).toStrictEqual({
       "--theme": DEFAULT_THEME.colors.red[0],
       "--prop": "red",
@@ -57,7 +57,7 @@ describe("@raikou/core/resolve-vars", () => {
         theme: DEFAULT_THEME,
         props: { "data-prop": "red" },
         stylesCtx: { "data-ctx": "pink" },
-      })
+      }),
     ).toStrictEqual({
       "--theme": DEFAULT_THEME.colors.red[0],
       "--prop": "red",
@@ -75,7 +75,7 @@ describe("@raikou/core/resolve-vars", () => {
         theme: themeWithVars,
         props: { "data-prop": "red" },
         stylesCtx: { "data-ctx": "pink" },
-      })
+      }),
     ).toStrictEqual({
       "--theme": themeWithVars.colors.red[0],
       "--prop": "red",

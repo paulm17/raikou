@@ -61,9 +61,9 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
-  Bootstrap: () => Bootstrap,
   ColorSchemeScript: () => ColorSchemeScript,
   DEFAULT_THEME: () => DEFAULT_THEME,
+  RaikouProvider: () => RaikouProvider,
   convertCssVariables: () => convertCssVariables,
   darken: () => darken,
   deepMerge: () => deepMerge,
@@ -179,12 +179,12 @@ function createConverter(units, { shouldScale = false } = {}) {
 var rem = createConverter("rem", { shouldScale: true });
 var em = createConverter("em");
 
-// src/core/Bootstrap/color-scheme-managers/is-raikou-color-scheme.ts
+// src/core/RaikouProvider/color-scheme-managers/is-raikou-color-scheme.ts
 function isRaikouColorScheme(value) {
   return value === "auto" || value === "dark" || value === "light";
 }
 
-// src/core/Bootstrap/color-scheme-managers/local-storage-manager.ts
+// src/core/RaikouProvider/color-scheme-managers/local-storage-manager.ts
 function localStorageColorSchemeManager({
   key = "raikou-color-scheme"
 } = {}) {
@@ -227,7 +227,7 @@ function localStorageColorSchemeManager({
   };
 }
 
-// src/core/Bootstrap/color-functions/get-primary-shade/get-primary-shade.ts
+// src/core/RaikouProvider/color-functions/get-primary-shade/get-primary-shade.ts
 function getPrimaryShade(theme, colorScheme) {
   if (typeof theme.primaryShade === "number") {
     return theme.primaryShade;
@@ -238,7 +238,7 @@ function getPrimaryShade(theme, colorScheme) {
   return theme.primaryShade.light;
 }
 
-// src/core/Bootstrap/color-functions/parse-theme-color/parse-theme-color.ts
+// src/core/RaikouProvider/color-functions/parse-theme-color/parse-theme-color.ts
 function parseThemeColor({
   color,
   theme,
@@ -279,13 +279,13 @@ function parseThemeColor({
   };
 }
 
-// src/core/Bootstrap/color-functions/get-theme-color/get-theme-color.ts
+// src/core/RaikouProvider/color-functions/get-theme-color/get-theme-color.ts
 function getThemeColor(color, theme) {
   const parsed = parseThemeColor({ color: color || theme.primaryColor, theme });
   return parsed.variable ? `var(${parsed.variable})` : color;
 }
 
-// src/core/Bootstrap/color-functions/get-gradient/get-gradient.ts
+// src/core/RaikouProvider/color-functions/get-gradient/get-gradient.ts
 function getGradient(gradient, theme) {
   const merged = {
     from: (gradient == null ? void 0 : gradient.from) || theme.defaultGradient.from,
@@ -297,7 +297,7 @@ function getGradient(gradient, theme) {
   return `linear-gradient(${merged.deg}deg, ${fromColor} 0%, ${toColor} 100%)`;
 }
 
-// src/core/Bootstrap/color-functions/to-rgba/to-rgba.ts
+// src/core/RaikouProvider/color-functions/to-rgba/to-rgba.ts
 function isHexColor(hex) {
   const HEX_REGEXP = /^#?([0-9A-F]{3}){1,2}$/i;
   return HEX_REGEXP.test(hex);
@@ -402,7 +402,7 @@ function toRgba(color) {
   };
 }
 
-// src/core/Bootstrap/color-functions/darken/darken.ts
+// src/core/RaikouProvider/color-functions/darken/darken.ts
 function darken(color, alpha) {
   if (color.startsWith("var(")) {
     return color;
@@ -413,7 +413,7 @@ function darken(color, alpha) {
   return `rgba(${dark(r)}, ${dark(g)}, ${dark(b)}, ${a})`;
 }
 
-// src/core/Bootstrap/color-functions/rgba/rgba.ts
+// src/core/RaikouProvider/color-functions/rgba/rgba.ts
 function rgba(color, alpha) {
   if (typeof color !== "string" || alpha > 1 || alpha < 0) {
     return "rgba(0, 0, 0, 1)";
@@ -422,7 +422,7 @@ function rgba(color, alpha) {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-// src/core/Bootstrap/color-functions/default-variant-colors-resolver/default-variant-colors-resolver.ts
+// src/core/RaikouProvider/color-functions/default-variant-colors-resolver/default-variant-colors-resolver.ts
 var defaultVariantColorsResolver = ({
   color,
   theme,
@@ -604,7 +604,7 @@ var defaultVariantColorsResolver = ({
   return {};
 };
 
-// src/core/Bootstrap/color-functions/lighten/lighten.ts
+// src/core/RaikouProvider/color-functions/lighten/lighten.ts
 function lighten(color, alpha) {
   if (color.startsWith("var(")) {
     return color;
@@ -614,7 +614,7 @@ function lighten(color, alpha) {
   return `rgba(${light(r)}, ${light(g)}, ${light(b)}, ${a})`;
 }
 
-// src/core/Bootstrap/color-functions/is-light-color/is-light-color.ts
+// src/core/RaikouProvider/color-functions/is-light-color/is-light-color.ts
 function getPartLuminance(value) {
   const x = value / 255;
   return x <= 0.03928 ? x / 12.92 : __pow((x + 0.055) / 1.055, 2.4);
@@ -629,7 +629,7 @@ function isLightColor(color, luminanceThreshold = 0.179) {
   return getLuminance(toRgba(color)) > luminanceThreshold;
 }
 
-// src/core/Bootstrap/ColorSchemeScript/ColorSchemeScript.tsx
+// src/core/RaikouProvider/ColorSchemeScript/ColorSchemeScript.tsx
 var import_react = __toESM(require("react"));
 var getScript = ({
   defaultColorScheme,
@@ -660,7 +660,7 @@ function ColorSchemeScript(_a) {
   );
 }
 
-// src/core/Bootstrap/default-colors.ts
+// src/core/RaikouProvider/default-colors.ts
 var DEFAULT_COLORS = {
   dark: [
     "#C1C2C5",
@@ -832,7 +832,7 @@ var DEFAULT_COLORS = {
   ]
 };
 
-// src/core/Bootstrap/default-theme.ts
+// src/core/RaikouProvider/default-theme.ts
 var DEFAULT_FONT_FAMILY = "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji";
 var DEFAULT_THEME = {
   scale: 1,
@@ -928,7 +928,7 @@ var DEFAULT_THEME = {
   components: {}
 };
 
-// src/core/Bootstrap/merge-raikou-theme/merge-raikou-theme.ts
+// src/core/RaikouProvider/merge-raikou-theme/merge-raikou-theme.ts
 var INVALID_PRIMARY_COLOR_ERROR = "[@raikou/core] RaikouProvider: Invalid theme.primaryColor, it accepts only key of theme.colors, learn more \u2013 https://raikou.dev/theming/colors/#primary-color";
 var INVALID_PRIMARY_SHADE_ERROR = "[@raikou/core] RaikouProvider: Invalid theme.primaryShade, it accepts only 0-9 integers or an object { light: 0-9, dark: 0-9 }";
 function isValidPrimaryShade(shade) {
@@ -964,24 +964,35 @@ function mergeRaikouTheme(currentTheme, themeOverride) {
   return result;
 }
 
-// src/core/Bootstrap/Bootstrap.tsx
+// src/core/RaikouProvider/RaikouProvider.tsx
 var import_react4 = __toESM(require("react"));
 
-// src/core/Bootstrap/RaikouCssVariables/RaikouCssVariables.tsx
+// src/core/RaikouProvider/suppress-nextjs-warning.ts
+function suppressNextjsWarning() {
+  const originalError = console.error;
+  console.error = (...args) => {
+    if (args.length > 1 && typeof args[0] === "string" && args[0].toLowerCase().includes("extra attributes from the server") && typeof args[1] === "string" && args[1].toLowerCase().includes("data-raikou-color-scheme")) {
+    } else {
+      originalError(...args);
+    }
+  };
+}
+
+// src/core/RaikouProvider/RaikouCssVariables/RaikouCssVariables.tsx
 var import_react2 = __toESM(require("react"));
 
-// src/core/Bootstrap/convert-css-variables/css-variables-object-to-string.ts
+// src/core/RaikouProvider/convert-css-variables/css-variables-object-to-string.ts
 function cssVariablesObjectToString(variables) {
   return Object.entries(variables).map(([name, value]) => `${name}: ${value};`).join("");
 }
 
-// src/core/Bootstrap/convert-css-variables/wrap-with-selector.ts
+// src/core/RaikouProvider/convert-css-variables/wrap-with-selector.ts
 function wrapWithSelector(selectors, code) {
   const _selectors = Array.isArray(selectors) ? selectors : [selectors];
   return _selectors.reduce((acc, selector) => `${selector}{${acc}}`, code);
 }
 
-// src/core/Bootstrap/convert-css-variables/convert-css-variables.ts
+// src/core/RaikouProvider/convert-css-variables/convert-css-variables.ts
 function convertCssVariables(input, selector) {
   const sharedVariables = cssVariablesObjectToString(input.variables);
   const shared = sharedVariables ? wrapWithSelector(selector, sharedVariables) : "";
@@ -992,7 +1003,7 @@ function convertCssVariables(input, selector) {
   return `${shared}${darkForced}${lightForced}`;
 }
 
-// src/core/Bootstrap/RaikouCssVariables/default-css-variables-resolver.ts
+// src/core/RaikouProvider/RaikouCssVariables/default-css-variables-resolver.ts
 function assignSizeVariables(variables, sizes, name) {
   keys(sizes).forEach(
     (size) => Object.assign(variables, { [`--raikou-${name}-${size}`]: sizes[size] })
@@ -1100,7 +1111,7 @@ var defaultCssVariablesResolver = (theme) => {
   return result;
 };
 
-// src/core/Bootstrap/RaikouCssVariables/get-merged-variables.ts
+// src/core/RaikouProvider/RaikouCssVariables/get-merged-variables.ts
 function getMergedVariables({
   theme,
   generator
@@ -1110,7 +1121,7 @@ function getMergedVariables({
   return providerGenerator ? deepMerge(defaultResolver, providerGenerator) : defaultResolver;
 }
 
-// src/core/Bootstrap/RaikouCssVariables/remove-default-variables.ts
+// src/core/RaikouProvider/RaikouCssVariables/remove-default-variables.ts
 var defaultCssVariables = defaultCssVariablesResolver(DEFAULT_THEME);
 function removeDefaultVariables(input) {
   const cleaned = {
@@ -1136,7 +1147,7 @@ function removeDefaultVariables(input) {
   return cleaned;
 }
 
-// src/core/Bootstrap/RaikouCssVariables/RaikouCssVariables.tsx
+// src/core/RaikouProvider/RaikouCssVariables/RaikouCssVariables.tsx
 function getColorSchemeCssVariables(selector) {
   return `
   ${selector}[data-raikou-color-scheme="dark"] { --raikou-color-scheme: dark; }
@@ -1169,7 +1180,7 @@ function RaikouCssVariables({
 }
 RaikouCssVariables.displayName = "@raikou/CssVariables";
 
-// src/core/Bootstrap/use-raikou-color-scheme/use-provider-color-scheme.ts
+// src/core/RaikouProvider/use-raikou-color-scheme/use-provider-color-scheme.ts
 var import_react3 = require("react");
 var import_hooks = require("@raikou/hooks");
 function setColorSchemeAttribute(colorScheme, getRootElement) {
@@ -1227,37 +1238,44 @@ function useProviderColorScheme({
   return { colorScheme: value, setColorScheme, clearColorScheme };
 }
 
-// src/core/Bootstrap/Bootstrap.tsx
-function Bootstrap({
+// src/core/RaikouProvider/RaikouProvider.tsx
+suppressNextjsWarning();
+function RaikouProvider({
   theme,
   children,
   getStyleNonce,
   withCssVariables = true,
   cssVariablesSelector = ":root",
-  classNamesPrefix = "raikou",
   colorSchemeManager = localStorageColorSchemeManager(),
   defaultColorScheme = "auto",
   getRootElement = () => document.documentElement,
   cssVariablesResolver
 }) {
-  const { colorScheme, setColorScheme, clearColorScheme } = useProviderColorScheme({
+  useProviderColorScheme({
     defaultColorScheme,
     manager: colorSchemeManager,
     getRootElement
   });
   let mergedTheme = mergeRaikouTheme(DEFAULT_THEME, theme);
   if (typeof window !== "undefined") {
-    const storage = localStorage.getItem("raikou-theme");
-    if (storage === null) {
-      localStorage.setItem("raikou-theme", JSON.stringify(mergedTheme));
+    if (!Object.keys(theme).length) {
+      const storage = localStorage.getItem("raikou-theme");
+      if (storage !== null) {
+        localStorage.removeItem("raikou-theme");
+      }
     } else {
-      const res = localStorage.getItem("raikou-theme");
-      const lsTheme = JSON.parse(res);
-      mergedTheme = mergeRaikouTheme(lsTheme, theme);
-      const mergeThemeStr = JSON.stringify(mergedTheme);
-      const lsThemeStr = JSON.stringify(lsTheme);
-      if (mergeThemeStr !== lsThemeStr) {
+      const storage = localStorage.getItem("raikou-theme");
+      if (storage === null) {
         localStorage.setItem("raikou-theme", JSON.stringify(mergedTheme));
+      } else {
+        const res = localStorage.getItem("raikou-theme");
+        const lsTheme = JSON.parse(res);
+        mergedTheme = mergeRaikouTheme(lsTheme, theme);
+        const mergeThemeStr = JSON.stringify(mergedTheme);
+        const lsThemeStr = JSON.stringify(lsTheme);
+        if (mergeThemeStr !== lsThemeStr) {
+          localStorage.setItem("raikou-theme", JSON.stringify(mergedTheme));
+        }
       }
     }
   }
@@ -1273,9 +1291,9 @@ function Bootstrap({
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  Bootstrap,
   ColorSchemeScript,
   DEFAULT_THEME,
+  RaikouProvider,
   convertCssVariables,
   darken,
   deepMerge,

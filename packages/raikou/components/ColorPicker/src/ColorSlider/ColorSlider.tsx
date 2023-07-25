@@ -6,7 +6,13 @@ import {
   useMergedRef,
   useMove,
 } from "@raikou/hooks";
-import { Box, ElementProps, RaikouSize, getTheme, rem } from "@raikou/core";
+import {
+  Box,
+  ElementProps,
+  RaikouSize,
+  useRaikouTheme,
+  rem,
+} from "@raikou/core";
 import { Thumb } from "../Thumb/Thumb";
 import { useColorPickerContext } from "../ColorPicker.context";
 
@@ -47,7 +53,7 @@ export const ColorSlider = forwardRef<HTMLDivElement, ColorSliderProps>(
 
     const { getStyles } = useColorPickerContext();
 
-    const theme = getTheme();
+    const theme = useRaikouTheme();
     const [position, setPosition] = useState({ y: 0, x: value / maxValue });
     const positionRef = useRef(position);
     const getChangeValue = (val: number) =>
@@ -64,7 +70,7 @@ export const ColorSlider = forwardRef<HTMLDivElement, ColorSliderProps>(
           onScrubEnd?.();
         },
         onScrubStart,
-      }
+      },
     );
 
     useDidUpdate(() => {
@@ -73,7 +79,7 @@ export const ColorSlider = forwardRef<HTMLDivElement, ColorSliderProps>(
 
     const handleArrow = (
       event: React.KeyboardEvent<HTMLDivElement>,
-      pos: UseMovePosition
+      pos: UseMovePosition,
     ) => {
       event.preventDefault();
       const _position = clampUseMovePosition(pos);
@@ -123,7 +129,7 @@ export const ColorSlider = forwardRef<HTMLDivElement, ColorSliderProps>(
         />
       </Box>
     );
-  }
+  },
 );
 
 ColorSlider.displayName = "@raikou/core/ColorSlider";

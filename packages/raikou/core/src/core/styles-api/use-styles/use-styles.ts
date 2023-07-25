@@ -1,7 +1,6 @@
 import { CSSProperties } from "react";
-// import { useRaikouTheme, useRaikouClassNamesPrefix } from '../../Bootstrap';
-// import { useRaikouClassNamesPrefix } from "../../Bootstrap"
-import { getTheme } from "../../Bootstrap";
+import { useRaikouTheme } from "../../RaikouProvider";
+// import { useRaikouClassNamesPrefix } from "../../RaikouProvider"
 import type { RaikouStyleProp } from "../../Box";
 import { FactoryPayload } from "../../factory";
 import {
@@ -36,7 +35,7 @@ export interface UseStylesInput<Payload extends FactoryPayload> {
 
 export type GetStylesApi<Payload extends FactoryPayload> = (
   selector: NonNullable<Payload["stylesNames"]>,
-  options?: GetStylesApiOptions
+  options?: GetStylesApiOptions,
 ) => {
   className: string;
   style: CSSProperties;
@@ -56,10 +55,10 @@ export function useStyles<Payload extends FactoryPayload>({
   vars,
   varsResolver,
 }: UseStylesInput<Payload>): GetStylesApi<Payload> {
-  const theme = getTheme();
+  const theme = useRaikouTheme();
   const classNamesPrefix = "raikou"; //useRaikouClassNamesPrefix();
   const themeName = (Array.isArray(name) ? name : [name]).filter(
-    (n) => n
+    (n) => n,
   ) as string[];
 
   return (selector, options) => ({

@@ -384,7 +384,12 @@ function mergeClassNames(objects) {
   });
   return merged;
 }
-function resolveClassNames({ theme, classNames, props, stylesCtx }) {
+function resolveClassNames({
+  theme,
+  classNames,
+  props,
+  stylesCtx
+}) {
   const arrayClassNames = Array.isArray(classNames) ? classNames : [classNames];
   const resolvedClassNames = arrayClassNames.map(
     (item) => typeof item === "function" ? item(theme, props, stylesCtx) : item || EMPTY_CLASS_NAMES
@@ -393,7 +398,12 @@ function resolveClassNames({ theme, classNames, props, stylesCtx }) {
 }
 
 // src/core/styles-api/use-styles/get-style/resolve-styles/resolve-styles.ts
-function resolveStyles({ theme, styles, props, stylesCtx }) {
+function resolveStyles({
+  theme,
+  styles,
+  props,
+  stylesCtx
+}) {
   const arrayStyles = Array.isArray(styles) ? styles : [styles];
   return arrayStyles.reduce((acc, style) => {
     if (typeof style === "function") {
@@ -403,7 +413,7 @@ function resolveStyles({ theme, styles, props, stylesCtx }) {
   }, {});
 }
 
-// src/core/Bootstrap/color-functions/get-primary-shade/get-primary-shade.ts
+// src/core/RaikouProvider/color-functions/get-primary-shade/get-primary-shade.ts
 function getPrimaryShade(theme, colorScheme) {
   if (typeof theme.primaryShade === "number") {
     return theme.primaryShade;
@@ -414,7 +424,7 @@ function getPrimaryShade(theme, colorScheme) {
   return theme.primaryShade.light;
 }
 
-// src/core/Bootstrap/color-functions/parse-theme-color/parse-theme-color.ts
+// src/core/RaikouProvider/color-functions/parse-theme-color/parse-theme-color.ts
 function parseThemeColor({
   color,
   theme,
@@ -455,13 +465,13 @@ function parseThemeColor({
   };
 }
 
-// src/core/Bootstrap/color-functions/get-theme-color/get-theme-color.ts
+// src/core/RaikouProvider/color-functions/get-theme-color/get-theme-color.ts
 function getThemeColor(color, theme) {
   const parsed = parseThemeColor({ color: color || theme.primaryColor, theme });
   return parsed.variable ? `var(${parsed.variable})` : color;
 }
 
-// src/core/Bootstrap/color-functions/get-gradient/get-gradient.ts
+// src/core/RaikouProvider/color-functions/get-gradient/get-gradient.ts
 function getGradient(gradient, theme) {
   const merged = {
     from: (gradient == null ? void 0 : gradient.from) || theme.defaultGradient.from,
@@ -473,7 +483,7 @@ function getGradient(gradient, theme) {
   return `linear-gradient(${merged.deg}deg, ${fromColor} 0%, ${toColor} 100%)`;
 }
 
-// src/core/Bootstrap/color-functions/to-rgba/to-rgba.ts
+// src/core/RaikouProvider/color-functions/to-rgba/to-rgba.ts
 function isHexColor(hex) {
   const HEX_REGEXP = /^#?([0-9A-F]{3}){1,2}$/i;
   return HEX_REGEXP.test(hex);
@@ -578,7 +588,7 @@ function toRgba(color) {
   };
 }
 
-// src/core/Bootstrap/color-functions/darken/darken.ts
+// src/core/RaikouProvider/color-functions/darken/darken.ts
 function darken(color, alpha) {
   if (color.startsWith("var(")) {
     return color;
@@ -589,7 +599,7 @@ function darken(color, alpha) {
   return `rgba(${dark(r)}, ${dark(g)}, ${dark(b)}, ${a})`;
 }
 
-// src/core/Bootstrap/color-functions/rgba/rgba.ts
+// src/core/RaikouProvider/color-functions/rgba/rgba.ts
 function rgba(color, alpha) {
   if (typeof color !== "string" || alpha > 1 || alpha < 0) {
     return "rgba(0, 0, 0, 1)";
@@ -598,7 +608,7 @@ function rgba(color, alpha) {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-// src/core/Bootstrap/color-functions/default-variant-colors-resolver/default-variant-colors-resolver.ts
+// src/core/RaikouProvider/color-functions/default-variant-colors-resolver/default-variant-colors-resolver.ts
 var defaultVariantColorsResolver = ({
   color,
   theme,
@@ -780,7 +790,7 @@ var defaultVariantColorsResolver = ({
   return {};
 };
 
-// src/core/Bootstrap/color-functions/lighten/lighten.ts
+// src/core/RaikouProvider/color-functions/lighten/lighten.ts
 function lighten(color, alpha) {
   if (color.startsWith("var(")) {
     return color;
@@ -790,7 +800,7 @@ function lighten(color, alpha) {
   return `rgba(${light(r)}, ${light(g)}, ${light(b)}, ${a})`;
 }
 
-// src/core/Bootstrap/color-functions/is-light-color/is-light-color.ts
+// src/core/RaikouProvider/color-functions/is-light-color/is-light-color.ts
 function getPartLuminance(value) {
   const x = value / 255;
   return x <= 0.03928 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4;
@@ -805,7 +815,7 @@ function isLightColor(color, luminanceThreshold = 0.179) {
   return getLuminance(toRgba(color)) > luminanceThreshold;
 }
 
-// src/core/Bootstrap/default-colors.ts
+// src/core/RaikouProvider/default-colors.ts
 var DEFAULT_COLORS = {
   dark: [
     "#C1C2C5",
@@ -977,7 +987,7 @@ var DEFAULT_COLORS = {
   ]
 };
 
-// src/core/Bootstrap/default-theme.ts
+// src/core/RaikouProvider/default-theme.ts
 var DEFAULT_FONT_FAMILY = "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji";
 var DEFAULT_THEME = {
   scale: 1,
@@ -1073,7 +1083,7 @@ var DEFAULT_THEME = {
   components: {}
 };
 
-// src/core/Bootstrap/merge-raikou-theme/merge-raikou-theme.ts
+// src/core/RaikouProvider/merge-raikou-theme/merge-raikou-theme.ts
 var INVALID_PRIMARY_COLOR_ERROR = "[@raikou/core] RaikouProvider: Invalid theme.primaryColor, it accepts only key of theme.colors, learn more \u2013 https://raikou.dev/theming/colors/#primary-color";
 var INVALID_PRIMARY_SHADE_ERROR = "[@raikou/core] RaikouProvider: Invalid theme.primaryShade, it accepts only 0-9 integers or an object { light: 0-9, dark: 0-9 }";
 function isValidPrimaryShade(shade) {
@@ -1109,7 +1119,7 @@ function mergeRaikouTheme(currentTheme, themeOverride) {
   return result;
 }
 
-// src/core/Bootstrap/get-theme/get-theme.ts
+// src/core/RaikouProvider/useRaikouTheme/useRaikouTheme.ts
 var extensions = ["js", "cjs", "ts"];
 var tailwindConfig;
 var loadConfig = async () => {
@@ -1129,7 +1139,7 @@ var loadConfig = async () => {
   }
   return tailwindConfig;
 };
-function getTheme() {
+function useRaikouTheme() {
   if (typeof window === "undefined") {
     loadConfig().then((tailwindConfig2) => {
       const resolveConfig = __require("tailwindcss/resolveConfig");
@@ -1151,10 +1161,10 @@ function getTheme() {
   return DEFAULT_THEME;
 }
 
-// src/core/Bootstrap/use-props/use-props.ts
+// src/core/RaikouProvider/use-props/use-props.ts
 function useProps(component, defaultProps, props) {
   var _a;
-  const theme = getTheme();
+  const theme = useRaikouTheme();
   const contextPropsPayload = (_a = theme.components[component]) == null ? void 0 : _a.defaultProps;
   const contextProps = typeof contextPropsPayload === "function" ? contextPropsPayload(theme) : contextPropsPayload;
   return { ...defaultProps, ...contextProps, ...filterProps(props) };
@@ -1167,7 +1177,7 @@ function useResolvedStylesApi({
   props,
   stylesCtx
 }) {
-  const theme = getTheme();
+  const theme = useRaikouTheme();
   return {
     resolvedClassNames: resolveClassNames({
       theme,
@@ -1332,7 +1342,10 @@ function getThemeStyles({
 }
 
 // src/core/styles-api/use-styles/get-style/resolve-style/resolve-style.ts
-function resolveStyle({ style, theme }) {
+function resolveStyle({
+  style,
+  theme
+}) {
   if (Array.isArray(style)) {
     return [...style].reduce(
       (acc, item) => ({ ...acc, ...resolveStyle({ style: item, theme }) }),
@@ -1373,10 +1386,12 @@ function resolveVars({
   var _a;
   return (_a = mergeVars([
     varsResolver == null ? void 0 : varsResolver(theme, props, stylesCtx),
-    ...themeName.map((name) => {
-      var _a2, _b, _c;
-      return (_c = (_b = (_a2 = theme.components) == null ? void 0 : _a2[name]) == null ? void 0 : _b.vars) == null ? void 0 : _c.call(_b, theme, props, stylesCtx);
-    }),
+    ...themeName.map(
+      (name) => {
+        var _a2, _b, _c;
+        return (_c = (_b = (_a2 = theme.components) == null ? void 0 : _a2[name]) == null ? void 0 : _b.vars) == null ? void 0 : _c.call(_b, theme, props, stylesCtx);
+      }
+    ),
     vars == null ? void 0 : vars(theme, props, stylesCtx)
   ])) == null ? void 0 : _a[selector];
 }
@@ -1398,8 +1413,21 @@ function getStyle({
   return {
     ...getThemeStyles({ theme, themeName, props, stylesCtx, selector }),
     ...resolveStyles({ theme, styles, props, stylesCtx })[selector],
-    ...resolveStyles({ theme, styles: options == null ? void 0 : options.styles, props: (options == null ? void 0 : options.props) || props, stylesCtx })[selector],
-    ...resolveVars({ theme, props, stylesCtx, vars, varsResolver, selector, themeName }),
+    ...resolveStyles({
+      theme,
+      styles: options == null ? void 0 : options.styles,
+      props: (options == null ? void 0 : options.props) || props,
+      stylesCtx
+    })[selector],
+    ...resolveVars({
+      theme,
+      props,
+      stylesCtx,
+      vars,
+      varsResolver,
+      selector,
+      themeName
+    }),
     ...rootSelector === selector ? resolveStyle({ style, theme }) : null,
     ...resolveStyle({ style: options == null ? void 0 : options.style, theme })
   };
@@ -1420,7 +1448,7 @@ function useStyles({
   vars,
   varsResolver
 }) {
-  const theme = getTheme();
+  const theme = useRaikouTheme();
   const classNamesPrefix = "raikou";
   const themeName = (Array.isArray(name) ? name : [name]).filter(
     (n) => n
@@ -1779,7 +1807,10 @@ function parseStyleProps({
         const baseValue = getBaseValue2(styleProps[styleProp]);
         if (!hasResponsiveStyles(styleProps[styleProp])) {
           properties.forEach((property) => {
-            acc.inlineStyles[property] = resolvers[propertyData.type](baseValue, theme);
+            acc.inlineStyles[property] = resolvers[propertyData.type](
+              baseValue,
+              theme
+            );
           });
           return acc;
         }
@@ -1787,7 +1818,10 @@ function parseStyleProps({
         const breakpoints = getBreakpointKeys(styleProps[styleProp]);
         properties.forEach((property) => {
           if (baseValue) {
-            acc.styles[property] = resolvers[propertyData.type](baseValue, theme);
+            acc.styles[property] = resolvers[propertyData.type](
+              baseValue,
+              theme
+            );
           }
           breakpoints.forEach((breakpoint) => {
             const bp = `(min-width: ${theme.breakpoints[breakpoint]})`;
@@ -1935,7 +1969,7 @@ var _Box = forwardRef3(
     visibleFrom,
     ...others
   }, ref) => {
-    const theme = getTheme();
+    const theme = useRaikouTheme();
     const Element = component || "div";
     const { styleProps, rest } = extractStyleProps(others);
     const responsiveClassName = useRandomClassName();
@@ -2021,7 +2055,6 @@ export {
   getSortedBreakpoints,
   getSpacing,
   getStyleObject,
-  getTheme,
   getThemeColor,
   isElement,
   isLightColor,
@@ -2042,6 +2075,7 @@ export {
   toRgba,
   useDirection,
   useProps,
+  useRaikouTheme,
   useRandomClassName,
   useResolvedStylesApi,
   useStyles,

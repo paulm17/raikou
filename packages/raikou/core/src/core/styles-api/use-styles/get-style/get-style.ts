@@ -1,11 +1,11 @@
-import { CSSProperties } from 'react';
-import { RaikouTheme } from '../../../Bootstrap';
-import { RaikouStyleProp } from '../../../Box';
-import { GetStylesApiOptions } from '../../styles-api.types';
-import { getThemeStyles } from './get-theme-styles/get-theme-styles';
-import { resolveStyles } from './resolve-styles/resolve-styles';
-import { resolveStyle } from './resolve-style/resolve-style';
-import { resolveVars, VarsResolver } from './resolve-vars/resolve-vars';
+import { CSSProperties } from "react";
+import { RaikouTheme } from "../../../RaikouProvider";
+import { RaikouStyleProp } from "../../../Box";
+import { GetStylesApiOptions } from "../../styles-api.types";
+import { getThemeStyles } from "./get-theme-styles/get-theme-styles";
+import { resolveStyles } from "./resolve-styles/resolve-styles";
+import { resolveStyle } from "./resolve-style/resolve-style";
+import { resolveVars, VarsResolver } from "./resolve-vars/resolve-vars";
 
 export type _Styles =
   | undefined
@@ -13,7 +13,7 @@ export type _Styles =
   | ((
       theme: RaikouTheme,
       props: Record<string, any>,
-      ctx: Record<string, any> | undefined
+      ctx: Record<string, any> | undefined,
     ) => Partial<Record<string, CSSProperties>>);
 
 export interface GetStyleInput {
@@ -46,10 +46,21 @@ export function getStyle({
   return {
     ...getThemeStyles({ theme, themeName, props, stylesCtx, selector }),
     ...resolveStyles({ theme, styles, props, stylesCtx })[selector],
-    ...resolveStyles({ theme, styles: options?.styles, props: options?.props || props, stylesCtx })[
-      selector
-    ],
-    ...resolveVars({ theme, props, stylesCtx, vars, varsResolver, selector, themeName }),
+    ...resolveStyles({
+      theme,
+      styles: options?.styles,
+      props: options?.props || props,
+      stylesCtx,
+    })[selector],
+    ...resolveVars({
+      theme,
+      props,
+      stylesCtx,
+      vars,
+      varsResolver,
+      selector,
+      themeName,
+    }),
     ...(rootSelector === selector ? resolveStyle({ style, theme }) : null),
     ...resolveStyle({ style: options?.style, theme }),
   };

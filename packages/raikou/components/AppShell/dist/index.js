@@ -648,7 +648,7 @@ function AppShellMediaStyles({
   footer,
   padding
 }) {
-  const theme = (0, import_core14.getTheme)();
+  const theme = (0, import_core14.useRaikouTheme)();
   const { media, baseStyles } = getVariables({
     navbar,
     header,

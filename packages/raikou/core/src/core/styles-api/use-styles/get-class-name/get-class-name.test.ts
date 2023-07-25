@@ -1,4 +1,4 @@
-import { DEFAULT_THEME, RaikouTheme } from "../../../Bootstrap";
+import { DEFAULT_THEME, RaikouTheme } from "../../../RaikouProvider";
 import { FOCUS_CLASS_NAMES } from "./get-global-class-names/get-global-class-names";
 import { getClassName, GetClassNameOptions } from "./get-class-name";
 
@@ -40,28 +40,28 @@ describe("@raikou/core/get-class-name", () => {
       getClassName({
         ...defaultOptions,
         options: { focusable: true },
-      }).includes(FOCUS_CLASS_NAMES[DEFAULT_THEME.focusRing])
+      }).includes(FOCUS_CLASS_NAMES[DEFAULT_THEME.focusRing]),
     ).toBe(true);
 
     expect(
       getClassName({
         ...defaultOptions,
         options: { focusable: false },
-      }).includes(FOCUS_CLASS_NAMES[DEFAULT_THEME.focusRing])
+      }).includes(FOCUS_CLASS_NAMES[DEFAULT_THEME.focusRing]),
     ).toBe(false);
   });
 
   it("resolves active className", () => {
     expect(
       getClassName({ ...defaultOptions, options: { active: true } }).includes(
-        DEFAULT_THEME.activeClassName
-      )
+        DEFAULT_THEME.activeClassName,
+      ),
     ).toBe(true);
 
     expect(
       getClassName({ ...defaultOptions, options: { active: false } }).includes(
-        DEFAULT_THEME.activeClassName
-      )
+        DEFAULT_THEME.activeClassName,
+      ),
     ).toBe(false);
   });
 
@@ -70,7 +70,7 @@ describe("@raikou/core/get-class-name", () => {
       getClassName({
         ...defaultOptions,
         className: "__test-className",
-      }).includes("__test-className")
+      }).includes("__test-className"),
     ).toBe(true);
   });
 
@@ -79,7 +79,7 @@ describe("@raikou/core/get-class-name", () => {
       getClassName({
         ...defaultOptions,
         options: { className: "__test-options-className" },
-      }).includes("__test-options-className")
+      }).includes("__test-options-className"),
     ).toBe(true);
   });
 
@@ -88,7 +88,7 @@ describe("@raikou/core/get-class-name", () => {
       getClassName({
         ...defaultOptions,
         classNames: { root: "__test-root" },
-      }).includes("__test-root")
+      }).includes("__test-root"),
     ).toBe(true);
   });
 
@@ -97,7 +97,7 @@ describe("@raikou/core/get-class-name", () => {
       getClassName({
         ...defaultOptions,
         classNames: (theme) => ({ root: theme.activeClassName }),
-      }).includes(DEFAULT_THEME.activeClassName)
+      }).includes(DEFAULT_THEME.activeClassName),
     ).toBe(true);
   });
 
@@ -107,7 +107,7 @@ describe("@raikou/core/get-class-name", () => {
         ...defaultOptions,
         props: { "data-test": "__test-props" },
         classNames: (_, props) => ({ root: props["data-test"] }),
-      }).includes("__test-props")
+      }).includes("__test-props"),
     ).toBe(true);
   });
 
@@ -117,7 +117,7 @@ describe("@raikou/core/get-class-name", () => {
         ...defaultOptions,
         stylesCtx: { "data-test": "__test-stylesCtx" },
         classNames: (_, __, stylesCtx) => ({ root: stylesCtx!["data-test"] }),
-      }).includes("__test-stylesCtx")
+      }).includes("__test-stylesCtx"),
     ).toBe(true);
   });
 
@@ -133,8 +133,8 @@ describe("@raikou/core/get-class-name", () => {
           }`,
         }),
       }).includes(
-        `${DEFAULT_THEME.activeClassName} __test-props __test-stylesCtx`
-      )
+        `${DEFAULT_THEME.activeClassName} __test-props __test-stylesCtx`,
+      ),
     ).toBe(true);
   });
 
@@ -143,7 +143,7 @@ describe("@raikou/core/get-class-name", () => {
       getClassName({
         ...defaultOptions,
         options: { classNames: { root: "__test-root" } },
-      }).includes("__test-root")
+      }).includes("__test-root"),
     ).toBe(true);
   });
 
@@ -152,7 +152,7 @@ describe("@raikou/core/get-class-name", () => {
       getClassName({
         ...defaultOptions,
         options: { classNames: (theme) => ({ root: theme.activeClassName }) },
-      }).includes(DEFAULT_THEME.activeClassName)
+      }).includes(DEFAULT_THEME.activeClassName),
     ).toBe(true);
   });
 
@@ -162,7 +162,7 @@ describe("@raikou/core/get-class-name", () => {
         ...defaultOptions,
         props: { "data-test": "__test-props" },
         options: { classNames: (_, props) => ({ root: props["data-test"] }) },
-      }).includes("__test-props")
+      }).includes("__test-props"),
     ).toBe(true);
   });
 
@@ -174,7 +174,7 @@ describe("@raikou/core/get-class-name", () => {
           classNames: (_, props) => ({ root: props["data-test"] }),
           props: { "data-test": "__test-props" },
         },
-      }).includes("__test-props")
+      }).includes("__test-props"),
     ).toBe(true);
   });
 
@@ -188,7 +188,7 @@ describe("@raikou/core/get-class-name", () => {
             root: (stylesCtx as any)["data-test"],
           }),
         },
-      }).includes("__test-stylesCtx")
+      }).includes("__test-stylesCtx"),
     ).toBe(true);
   });
 
@@ -206,8 +206,8 @@ describe("@raikou/core/get-class-name", () => {
           }),
         },
       }).includes(
-        `${DEFAULT_THEME.activeClassName} __test-props __test-stylesCtx`
-      )
+        `${DEFAULT_THEME.activeClassName} __test-props __test-stylesCtx`,
+      ),
     ).toBe(true);
   });
 
@@ -217,7 +217,7 @@ describe("@raikou/core/get-class-name", () => {
         ...defaultOptions,
         themeName: ["TestComponentObject"],
         theme: THEME_WITH_CLASSNAMES,
-      }).includes("__test-object")
+      }).includes("__test-object"),
     ).toBe(true);
   });
 
@@ -228,7 +228,7 @@ describe("@raikou/core/get-class-name", () => {
         props: { test: "test" },
         themeName: ["TestComponentFunction"],
         theme: THEME_WITH_CLASSNAMES,
-      }).includes("__test-function-test")
+      }).includes("__test-function-test"),
     ).toBe(true);
   });
 

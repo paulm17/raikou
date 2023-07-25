@@ -66,7 +66,6 @@ module.exports = __toCommonJS(src_exports);
 // src/Alert.tsx
 var import_react10 = __toESM(require("react"));
 var import_core9 = require("@raikou/core");
-var import_hooks = require("@raikou/hooks");
 
 // ../CloseButton/src/CloseIcon.tsx
 var import_react = __toESM(require("react"));
@@ -610,7 +609,7 @@ var Alert = (0, import_core9.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver4
   });
-  const rootId = (0, import_hooks.useId)(id);
+  const rootId = `${id}-${(0, import_core9.useRandomClassName)()}`;
   const titleId = title && `${rootId}-title` || void 0;
   const bodyId = `${rootId}-body`;
   return /* @__PURE__ */ import_react10.default.createElement(

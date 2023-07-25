@@ -167,7 +167,7 @@ import {
   useProps as useProps2,
   Box as Box2,
   getStyleObject,
-  getTheme
+  useRaikouTheme
 } from "@raikou/core";
 
 // ../Collapse/src/use-collapse.ts
@@ -304,7 +304,7 @@ var Collapse = forwardRef(
       "onTransitionEnd",
       "animateOpacity"
     ]);
-    const theme = getTheme();
+    const theme = useRaikouTheme();
     const shouldReduceMotion = useReducedMotion();
     const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
     const duration = reduceMotion ? 0 : transitionDuration;

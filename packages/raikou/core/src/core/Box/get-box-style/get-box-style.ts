@@ -1,5 +1,5 @@
-import type { RaikouTheme } from '../../Bootstrap';
-import type { RaikouStyleProp, CssVarsProp } from '../Box.types';
+import type { RaikouTheme } from "../../RaikouProvider";
+import type { RaikouStyleProp, CssVarsProp } from "../Box.types";
 
 interface GetBoxStyleOptions {
   theme: RaikouTheme;
@@ -10,16 +10,16 @@ interface GetBoxStyleOptions {
 
 function mergeStyles(
   styles: RaikouStyleProp | CssVarsProp | undefined,
-  theme: RaikouTheme
+  theme: RaikouTheme,
 ): React.CSSProperties {
   if (Array.isArray(styles)) {
     return [...styles].reduce<Record<string, any>>(
       (acc, item) => ({ ...acc, ...mergeStyles(item, theme) }),
-      {}
+      {},
     );
   }
 
-  if (typeof styles === 'function') {
+  if (typeof styles === "function") {
     return styles(theme);
   }
 

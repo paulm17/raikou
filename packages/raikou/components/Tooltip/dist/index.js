@@ -401,7 +401,7 @@ function useTransition({
   onEntered,
   onExited
 }) {
-  const theme = (0, import_core4.getTheme)();
+  const theme = (0, import_core4.useRaikouTheme)();
   const shouldReduceMotion = (0, import_hooks2.useReducedMotion)();
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
   const [transitionDuration, setTransitionDuration] = (0, import_react4.useState)(
@@ -671,7 +671,7 @@ var TooltipFloating = (0, import_core6.factory)(
       "vars",
       "portalProps"
     ]);
-    const theme = (0, import_core6.getTheme)();
+    const theme = (0, import_core6.useRaikouTheme)();
     const getStyles = (0, import_core6.useStyles)({
       name: "TooltipFloating",
       props,

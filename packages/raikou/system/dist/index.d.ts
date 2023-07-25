@@ -3622,7 +3622,7 @@ declare function convertCssVariables(input: ConvertCSSVariablesInput, selector: 
 type CSSVariablesResolver = (theme: RaikouTheme) => ConvertCSSVariablesInput;
 declare const defaultCssVariablesResolver: CSSVariablesResolver;
 
-interface BootstrapProps {
+interface RaikouProviderProps {
     /** Theme override object */
     theme?: RaikouThemeOverride;
     /** Used to retrieve/set color scheme value in external storage, by default uses `window.localStorage` */
@@ -3635,8 +3635,6 @@ interface BootstrapProps {
     withCssVariables?: boolean;
     /** Function to resolve root element to set `data-raikou-color-scheme` attribute, must return undefined on server, `() => document.documentElement` by default */
     getRootElement?(): HTMLElement | undefined;
-    /** A prefix for components static classes (for example {selector}-Text-root), `raikou` by default */
-    classNamesPrefix?: string;
     /** Function to generate nonce attribute added to all generated `<style />` tags */
     getStyleNonce?(): string;
     /** Function to generate CSS variables based on theme object */
@@ -3644,6 +3642,6 @@ interface BootstrapProps {
     /** Your application */
     children?: React$2.ReactNode;
 }
-declare function Bootstrap({ theme, children, getStyleNonce, withCssVariables, cssVariablesSelector, classNamesPrefix, colorSchemeManager, defaultColorScheme, getRootElement, cssVariablesResolver, }: BootstrapProps): JSX.Element;
+declare function RaikouProvider({ theme, children, getStyleNonce, withCssVariables, cssVariablesSelector, colorSchemeManager, defaultColorScheme, getRootElement, cssVariablesResolver, }: RaikouProviderProps): JSX.Element;
 
-export { Bootstrap, CSSVariablesResolver, ColorSchemeScript, ColorSchemeScriptProps, ConvertCSSVariablesInput, DEFAULT_THEME, DefaultRaikouColor, HeadingStyle, LocalStorageColorSchemeManagerOptions, RGBA, RaikouBreakpoint, RaikouBreakpointsValues, RaikouColor, RaikouColorScheme, RaikouColorSchemeManager, RaikouColorShade, RaikouColorsTuple, RaikouFontSize, RaikouFontSizesValues, RaikouGradient, RaikouLineHeight, RaikouLineHeightValues, RaikouPrimaryShade, RaikouRadius, RaikouRadiusValues, RaikouShadow, RaikouShadowsValues, RaikouSize, RaikouSpacing, RaikouSpacingValues, RaikouStylesRecord, RaikouTheme, RaikouThemeColors, RaikouThemeColorsOverride, RaikouThemeComponent, RaikouThemeComponents, RaikouThemeOther, RaikouThemeOverride, VariantColorResolverResult, VariantColorsResolver, VariantColorsResolverInput, convertCssVariables, darken, deepMerge, defaultCssVariablesResolver, defaultVariantColorsResolver, em, getGradient, getPrimaryShade, getThemeColor, isLightColor, isRaikouColorScheme, keys, lighten, localStorageColorSchemeManager, mergeRaikouTheme, parseThemeColor, px, rem, rgba, toRgba, validateRaikouTheme };
+export { CSSVariablesResolver, ColorSchemeScript, ColorSchemeScriptProps, ConvertCSSVariablesInput, DEFAULT_THEME, DefaultRaikouColor, HeadingStyle, LocalStorageColorSchemeManagerOptions, RGBA, RaikouBreakpoint, RaikouBreakpointsValues, RaikouColor, RaikouColorScheme, RaikouColorSchemeManager, RaikouColorShade, RaikouColorsTuple, RaikouFontSize, RaikouFontSizesValues, RaikouGradient, RaikouLineHeight, RaikouLineHeightValues, RaikouPrimaryShade, RaikouProvider, RaikouRadius, RaikouRadiusValues, RaikouShadow, RaikouShadowsValues, RaikouSize, RaikouSpacing, RaikouSpacingValues, RaikouStylesRecord, RaikouTheme, RaikouThemeColors, RaikouThemeColorsOverride, RaikouThemeComponent, RaikouThemeComponents, RaikouThemeOther, RaikouThemeOverride, VariantColorResolverResult, VariantColorsResolver, VariantColorsResolverInput, convertCssVariables, darken, deepMerge, defaultCssVariablesResolver, defaultVariantColorsResolver, em, getGradient, getPrimaryShade, getThemeColor, isLightColor, isRaikouColorScheme, keys, lighten, localStorageColorSchemeManager, mergeRaikouTheme, parseThemeColor, px, rem, rgba, toRgba, validateRaikouTheme };

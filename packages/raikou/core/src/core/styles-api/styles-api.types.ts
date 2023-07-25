@@ -1,8 +1,8 @@
-import type { CSSProperties } from 'react';
-import type { RaikouTheme } from '../Bootstrap';
-import type { RaikouStyleProp } from '../Box';
-import type { FactoryPayload } from '../factory';
-import { PartialVarsResolver } from './create-vars-resolver/create-vars-resolver';
+import type { CSSProperties } from "react";
+import type { RaikouTheme } from "../RaikouProvider";
+import type { RaikouStyleProp } from "../Box";
+import type { FactoryPayload } from "../factory";
+import { PartialVarsResolver } from "./create-vars-resolver/create-vars-resolver";
 
 export interface GetStylesApiOptions {
   className?: string;
@@ -17,19 +17,25 @@ export interface GetStylesApiOptions {
 
 export type StylesApiRecord<
   Payload extends FactoryPayload,
-  DataType
-> = Payload['stylesNames'] extends string
+  DataType,
+> = Payload["stylesNames"] extends string
   ?
-      | StylesRecord<Payload['stylesNames'], DataType>
+      | StylesRecord<Payload["stylesNames"], DataType>
       | ((
           theme: RaikouTheme,
-          props: Payload['props'],
-          ctx: Payload['ctx']
-        ) => StylesRecord<Payload['stylesNames'], DataType>)
+          props: Payload["props"],
+          ctx: Payload["ctx"],
+        ) => StylesRecord<Payload["stylesNames"], DataType>)
   : never;
 
-export type Styles<Payload extends FactoryPayload> = StylesApiRecord<Payload, CSSProperties>;
-export type ClassNames<Payload extends FactoryPayload> = StylesApiRecord<Payload, string>;
+export type Styles<Payload extends FactoryPayload> = StylesApiRecord<
+  Payload,
+  CSSProperties
+>;
+export type ClassNames<Payload extends FactoryPayload> = StylesApiRecord<
+  Payload,
+  string
+>;
 export type ClassNamesArray<Payload extends FactoryPayload> = (
   | StylesApiRecord<Payload, string>
   | undefined
@@ -41,7 +47,9 @@ export type StylesRecord<StylesNames extends string, Payload> = Partial<
 
 export interface StylesApiProps<Payload extends FactoryPayload> {
   unstyled?: boolean;
-  variant?: Payload['variant'] extends string ? Payload['variant'] | (string & {}) : string;
+  variant?: Payload["variant"] extends string
+    ? Payload["variant"] | (string & {})
+    : string;
   classNames?: ClassNames<Payload>;
   styles?: Styles<Payload>;
   vars?: PartialVarsResolver<Payload>;

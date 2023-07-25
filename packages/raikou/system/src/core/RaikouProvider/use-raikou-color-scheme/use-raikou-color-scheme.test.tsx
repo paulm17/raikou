@@ -1,10 +1,10 @@
 import React from "react";
 import { renderHook } from "@testing-library/react";
-import { Bootstrap } from "../Bootstrap";
+import { RaikouProvider } from "../RaikouProvider";
 import { useRaikouColorScheme } from "./use-raikou-color-scheme";
 
 function Wrapper({ children }: { children: React.ReactNode }) {
-  return <Bootstrap defaultColorScheme="dark">{children}</Bootstrap>;
+  return <RaikouProvider defaultColorScheme="dark">{children}</RaikouProvider>;
 }
 
 describe("@raikou/core/RaikouProvider/use-raikou-color-scheme", () => {

@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from "../../../../Bootstrap";
+import { DEFAULT_THEME } from "../../../../RaikouProvider";
 import { getResolvedClassNames } from "./get-resolved-class-names";
 
 const testObjectClassNames = {
@@ -18,7 +18,7 @@ describe("@raikou/core/get-resolved-class-names", () => {
         selector: "root",
         props: {},
         stylesCtx: undefined,
-      })
+      }),
     ).toBe("test-object");
   });
 
@@ -30,7 +30,7 @@ describe("@raikou/core/get-resolved-class-names", () => {
         selector: "root",
         props: {},
         stylesCtx: undefined,
-      })
+      }),
     ).toBe("test-function");
   });
 
@@ -42,7 +42,7 @@ describe("@raikou/core/get-resolved-class-names", () => {
         selector: "test",
         props: {},
         stylesCtx: undefined,
-      })
+      }),
     ).toBeUndefined();
   });
 
@@ -54,7 +54,7 @@ describe("@raikou/core/get-resolved-class-names", () => {
         selector: "root",
         props: {},
         stylesCtx: undefined,
-      })
+      }),
     ).toBeUndefined();
   });
 });

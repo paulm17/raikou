@@ -19,7 +19,6 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var src_exports = {};
 module.exports = __toCommonJS(src_exports);
 __reExport(src_exports, require("@raikou/accordion"), module.exports);
-__reExport(src_exports, require("@raikou/alert"), module.exports);
 __reExport(src_exports, require("@raikou/appshell"), module.exports);
 __reExport(src_exports, require("@raikou/autocomplete"), module.exports);
 __reExport(src_exports, require("@raikou/avatar"), module.exports);
@@ -57,7 +56,6 @@ __reExport(src_exports, require("@raikou/tooltip"), module.exports);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   ...require("@raikou/accordion"),
-  ...require("@raikou/alert"),
   ...require("@raikou/appshell"),
   ...require("@raikou/autocomplete"),
   ...require("@raikou/avatar"),

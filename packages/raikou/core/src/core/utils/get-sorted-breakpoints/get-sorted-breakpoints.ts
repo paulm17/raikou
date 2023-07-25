@@ -1,4 +1,4 @@
-import type { RaikouTheme } from "../../Bootstrap";
+import type { RaikouTheme } from "../../RaikouProvider";
 import { getBreakpointValue } from "../get-breakpoint-value/get-breakpoint-value";
 
 export function getSortedBreakpoints(

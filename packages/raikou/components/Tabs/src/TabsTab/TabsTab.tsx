@@ -9,7 +9,7 @@ import {
   getThemeColor,
   StylesApiProps,
   Factory,
-  getTheme,
+  useRaikouTheme,
 } from "@raikou/core";
 import {
   UnstyledButton,
@@ -67,15 +67,15 @@ export const TabsTab = factory<TabsTabFactory>((_props, ref) => {
     ...others
   } = props;
 
-  const theme = getTheme();
+  const theme = useRaikouTheme();
   const { dir } = useDirection();
   const ctx = useTabsContext();
   const active = value === ctx.value;
   const activateTab = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     ctx.onChange(
-      ctx.allowTabDeactivation ? (value === ctx.value ? null : value) : value
+      ctx.allowTabDeactivation ? (value === ctx.value ? null : value) : value,
     );
     onClick?.(event);
   };

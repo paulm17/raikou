@@ -1,4 +1,4 @@
-import { DEFAULT_THEME, RaikouTheme } from "../../../../Bootstrap";
+import { DEFAULT_THEME, RaikouTheme } from "../../../../RaikouProvider";
 import { getThemeClassNames } from "./get-theme-class-names";
 
 const testTheme: RaikouTheme = {
@@ -27,7 +27,7 @@ describe("@raikou/core/get-theme-class-names", () => {
         selector: "root",
         props: {},
         stylesCtx: undefined,
-      })
+      }),
     ).toStrictEqual([]);
   });
 
@@ -39,7 +39,7 @@ describe("@raikou/core/get-theme-class-names", () => {
         selector: "root",
         props: {},
         stylesCtx: undefined,
-      })
+      }),
     ).toStrictEqual(["test-object"]);
   });
 
@@ -51,7 +51,7 @@ describe("@raikou/core/get-theme-class-names", () => {
         selector: "root",
         props: { test: "__test" },
         stylesCtx: undefined,
-      })
+      }),
     ).toStrictEqual(["test-function-__test"]);
   });
 
@@ -63,7 +63,7 @@ describe("@raikou/core/get-theme-class-names", () => {
         selector: "root",
         props: {},
         stylesCtx: undefined,
-      })
+      }),
     ).toStrictEqual([undefined]);
   });
 });

@@ -1,14 +1,14 @@
-import { CSSProperties } from 'react';
-import { CssVariable } from '../../../../Box';
-import { RaikouTheme } from '../../../../Bootstrap';
-import { mergeVars } from './merge-vars';
+import { CSSProperties } from "react";
+import { CssVariable } from "../../../../Box";
+import { RaikouTheme } from "../../../../RaikouProvider";
+import { mergeVars } from "./merge-vars";
 
 type ResolvedVars = Partial<Record<string, Record<CssVariable, string>>>;
 
 export type VarsResolver = (
   theme: RaikouTheme,
   props: Record<string, any>,
-  stylesCtx: Record<string, any> | undefined
+  stylesCtx: Record<string, any> | undefined,
 ) => ResolvedVars;
 
 interface ResolveVarsInput {
@@ -32,7 +32,9 @@ export function resolveVars({
 }: ResolveVarsInput) {
   return mergeVars([
     varsResolver?.(theme, props, stylesCtx),
-    ...themeName.map((name) => theme.components?.[name]?.vars?.(theme, props, stylesCtx)),
+    ...themeName.map(
+      (name) => theme.components?.[name]?.vars?.(theme, props, stylesCtx),
+    ),
     vars?.(theme, props, stylesCtx),
   ])?.[selector] as CSSProperties;
 }

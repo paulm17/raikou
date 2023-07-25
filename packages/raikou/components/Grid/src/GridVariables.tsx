@@ -1,7 +1,7 @@
 import React from "react";
 import {
   getSortedBreakpoints,
-  getTheme,
+  useRaikouTheme,
   keys,
   getSpacing,
   RaikouBreakpoint,
@@ -16,7 +16,7 @@ interface GridVariablesProps extends GridProps {
 }
 
 export function GridVariables({ gutter, selector }: GridVariablesProps) {
-  const theme = getTheme();
+  const theme = useRaikouTheme();
 
   const baseStyles: Record<string, string> = filterProps({
     "--grid-gutter": getSpacing(getBaseValue(gutter)),

@@ -2,6 +2,7 @@
 
 import {
   ActionIcon,
+  Alert,
   Anchor,
   AspectRatio,
   BackgroundImage,
@@ -229,6 +230,19 @@ export default function Page() {
           </>
           <Title order={3}>Skeleton</Title>
           <Skeleton height={50} circle mb="xl" />
+          <Title order={3}>Alert</Title>
+          <div className="w-[400px]">
+            <Alert
+              variant="light"
+              color="blue"
+              withCloseButton
+              title="Alert title"
+              icon={icon}
+            >
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. At
+              officiis, quae tempore necessitatibus placeat saepe.
+            </Alert>
+          </div>
         </Stack>
       </Group>
     </>

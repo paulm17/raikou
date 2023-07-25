@@ -1,4 +1,4 @@
-import { DEFAULT_THEME, RaikouTheme } from "../../../Bootstrap";
+import { DEFAULT_THEME, RaikouTheme } from "../../../RaikouProvider";
 import { getStyle, GetStyleInput } from "./get-style";
 
 const THEME_WITH_STYLES: RaikouTheme = {
@@ -38,7 +38,7 @@ const defaultOptions: GetStyleInput = {
 describe("@raikou/core/get-style", () => {
   it("resolves style prop", () => {
     expect(
-      getStyle({ ...defaultOptions, style: { color: "red" } })
+      getStyle({ ...defaultOptions, style: { color: "red" } }),
     ).toStrictEqual({
       color: "red",
     });
@@ -47,7 +47,7 @@ describe("@raikou/core/get-style", () => {
       getStyle({
         ...defaultOptions,
         style: [{ color: "red" }, { background: "blue" }],
-      })
+      }),
     ).toStrictEqual({ color: "red", background: "blue" });
 
     expect(
@@ -57,7 +57,7 @@ describe("@raikou/core/get-style", () => {
           (theme) => ({ color: theme.colors.red[0] }),
           { background: "blue" },
         ],
-      })
+      }),
     ).toStrictEqual({ color: DEFAULT_THEME.colors.red[0], background: "blue" });
   });
 
@@ -68,13 +68,13 @@ describe("@raikou/core/get-style", () => {
         rootSelector: "root",
         selector: "child",
         style: { color: "red" },
-      })
+      }),
     ).toStrictEqual({});
   });
 
   it("resolves options.style", () => {
     expect(
-      getStyle({ ...defaultOptions, options: { style: { color: "red" } } })
+      getStyle({ ...defaultOptions, options: { style: { color: "red" } } }),
     ).toStrictEqual({
       color: "red",
     });
@@ -83,7 +83,7 @@ describe("@raikou/core/get-style", () => {
       getStyle({
         ...defaultOptions,
         options: { style: [{ color: "red" }, { background: "blue" }] },
-      })
+      }),
     ).toStrictEqual({ color: "red", background: "blue" });
 
     expect(
@@ -95,7 +95,7 @@ describe("@raikou/core/get-style", () => {
             { background: "blue" },
           ],
         },
-      })
+      }),
     ).toStrictEqual({ color: DEFAULT_THEME.colors.red[0], background: "blue" });
   });
 
@@ -104,14 +104,14 @@ describe("@raikou/core/get-style", () => {
       getStyle({
         ...defaultOptions,
         styles: { root: { color: "red" } },
-      })
+      }),
     ).toStrictEqual({ color: "red" });
 
     expect(
       getStyle({
         ...defaultOptions,
         styles: (theme) => ({ root: { color: theme.colors.red[0] } }),
-      })
+      }),
     ).toStrictEqual({ color: DEFAULT_THEME.colors.red[0] });
   });
 
@@ -120,7 +120,7 @@ describe("@raikou/core/get-style", () => {
       getStyle({
         ...defaultOptions,
         options: { styles: { root: { color: "red" } } },
-      })
+      }),
     ).toStrictEqual({ color: "red" });
 
     expect(
@@ -129,7 +129,7 @@ describe("@raikou/core/get-style", () => {
         options: {
           styles: (theme) => ({ root: { color: theme.colors.red[0] } }),
         },
-      })
+      }),
     ).toStrictEqual({ color: DEFAULT_THEME.colors.red[0] });
   });
 
@@ -139,7 +139,7 @@ describe("@raikou/core/get-style", () => {
         ...defaultOptions,
         theme: THEME_WITH_STYLES,
         themeName: ["TestComponentObject"],
-      })
+      }),
     ).toStrictEqual({ color: "red" });
 
     expect(
@@ -148,7 +148,7 @@ describe("@raikou/core/get-style", () => {
         theme: THEME_WITH_STYLES,
         props: { "data-color": "blue" },
         themeName: ["TestComponentObject", "TestComponentFunction"],
-      })
+      }),
     ).toStrictEqual({
       color: "red",
       background: "blue",
@@ -161,7 +161,7 @@ describe("@raikou/core/get-style", () => {
       getStyle({
         ...defaultOptions,
         vars: (theme) => ({ root: { "--color": theme.colors.red[0] } }),
-      })
+      }),
     ).toStrictEqual({ "--color": DEFAULT_THEME.colors.red[0] });
   });
 
@@ -170,7 +170,7 @@ describe("@raikou/core/get-style", () => {
       getStyle({
         ...defaultOptions,
         varsResolver: (theme) => ({ root: { "--color": theme.colors.red[0] } }),
-      })
+      }),
     ).toStrictEqual({ "--color": DEFAULT_THEME.colors.red[0] });
   });
 });

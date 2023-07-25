@@ -1,4 +1,4 @@
-import { RaikouTheme, parseThemeColor } from "../../../../Bootstrap";
+import { RaikouTheme, parseThemeColor } from "../../../../RaikouProvider";
 
 export function colorResolver(color: unknown, theme: RaikouTheme) {
   const parsedColor = parseThemeColor({ color, theme });

@@ -1,6 +1,6 @@
 import cx from "clsx";
 import { GetStylesApiOptions } from "../../../styles-api.types";
-import { RaikouTheme } from "../../../../Bootstrap";
+import { RaikouTheme } from "../../../../RaikouProvider";
 
 interface GetGlobalClassNamesOptions {
   theme: RaikouTheme;
@@ -24,6 +24,6 @@ export function getGlobalClassNames({
     options?.focusable &&
       !unstyled &&
       (theme.focusClassName || FOCUS_CLASS_NAMES[theme.focusRing]),
-    options?.active && !unstyled && theme.activeClassName
+    options?.active && !unstyled && theme.activeClassName,
   );
 }

@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import cx from "clsx";
-import { getTheme, RaikouBreakpoint } from "../Bootstrap";
+import { useRaikouTheme, RaikouBreakpoint } from "../RaikouProvider";
 import { InlineStyles } from "../InlineStyles";
 import { createPolymorphicComponent } from "../factory";
 import type { RaikouStyleProp, CssVarsProp } from "./Box.types";
@@ -37,7 +37,7 @@ export interface BoxProps extends RaikouStyleProps {
 
 export type ElementProps<
   ElementType extends React.ElementType,
-  PropsToOmit extends string = never
+  PropsToOmit extends string = never,
 > = Omit<React.ComponentPropsWithoutRef<ElementType>, "style" | PropsToOmit>;
 
 export interface BoxComponentProps extends BoxProps {
@@ -68,9 +68,9 @@ const _Box = forwardRef<
       visibleFrom,
       ...others
     },
-    ref
+    ref,
   ) => {
-    const theme = getTheme();
+    const theme = useRaikouTheme();
     const Element = component || "div";
     const { styleProps, rest } = extractStyleProps(others);
     const responsiveClassName = useRandomClassName();
@@ -109,7 +109,7 @@ const _Box = forwardRef<
         />
       </>
     );
-  }
+  },
 );
 
 _Box.displayName = "@raikou/core/Box";

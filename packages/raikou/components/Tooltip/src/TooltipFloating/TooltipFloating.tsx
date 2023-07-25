@@ -12,7 +12,7 @@ import {
   createVarsResolver,
   getRadius,
   getThemeColor,
-  getTheme,
+  useRaikouTheme,
 } from "@raikou/core";
 import { OptionalPortal } from "../../../Portal/src";
 import {
@@ -48,7 +48,7 @@ const varsResolver = createVarsResolver<TooltipFloatingFactory>(
       "--tooltip-radius": getRadius(radius),
       "--tooltip-bg": color ? getThemeColor(color, theme) : undefined,
     },
-  })
+  }),
 );
 
 export const TooltipFloating = factory<TooltipFloatingFactory>(
@@ -77,7 +77,7 @@ export const TooltipFloating = factory<TooltipFloatingFactory>(
       ...others
     } = props;
 
-    const theme = getTheme();
+    const theme = useRaikouTheme();
     const getStyles = useStyles<TooltipFloatingFactory>({
       name: "TooltipFloating",
       props,
@@ -103,7 +103,7 @@ export const TooltipFloating = factory<TooltipFloatingFactory>(
 
     if (!isElement(children)) {
       throw new Error(
-        "[@raikou/core] Tooltip.Floating component children should be an element or a component that accepts ref, fragments, strings, numbers and other primitive values are not supported"
+        "[@raikou/core] Tooltip.Floating component children should be an element or a component that accepts ref, fragments, strings, numbers and other primitive values are not supported",
       );
     }
 
@@ -149,7 +149,7 @@ export const TooltipFloating = factory<TooltipFloatingFactory>(
         })}
       </>
     );
-  }
+  },
 );
 
 TooltipFloating.displayName = "@raikou/core/TooltipFloating";

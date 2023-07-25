@@ -92,5 +92,4 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>(
   },
 );
 
-// ActionIconGroup.classes = classes;
 ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";

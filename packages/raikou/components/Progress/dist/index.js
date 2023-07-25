@@ -163,7 +163,7 @@ var ProgressSection = (0, import_core2.factory)((props, ref) => {
     "animated"
   ]);
   const ctx = useProgressContext();
-  const theme = (0, import_core2.getTheme)();
+  const theme = (0, import_core2.useRaikouTheme)();
   const ariaAttributes = withAria ? {
     role: "progressbar",
     "aria-valuemax": 100,

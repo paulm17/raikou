@@ -2640,7 +2640,7 @@ function useTransition({
   onEntered,
   onExited
 }) {
-  const theme = (0, import_core9.getTheme)();
+  const theme = (0, import_core9.useRaikouTheme)();
   const shouldReduceMotion = (0, import_hooks5.useReducedMotion)();
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
   const [transitionDuration, setTransitionDuration] = (0, import_react13.useState)(

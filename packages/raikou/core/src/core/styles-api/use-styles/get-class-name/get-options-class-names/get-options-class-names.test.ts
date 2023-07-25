@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from "../../../../Bootstrap";
+import { DEFAULT_THEME } from "../../../../RaikouProvider";
 import { getOptionsClassNames } from "./get-options-class-names";
 
 const testObjectClassNames = {
@@ -18,7 +18,7 @@ describe("@raikou/core/get-options-class-names", () => {
         props: {},
         stylesCtx: undefined,
         options: { classNames: testObjectClassNames },
-      })
+      }),
     ).toBe("test-object");
   });
 
@@ -30,7 +30,7 @@ describe("@raikou/core/get-options-class-names", () => {
         props: {},
         stylesCtx: undefined,
         options: { classNames: testFunctionClassNames },
-      })
+      }),
     ).toBe("test-function");
   });
 
@@ -42,7 +42,7 @@ describe("@raikou/core/get-options-class-names", () => {
         props: {},
         stylesCtx: undefined,
         options: {},
-      })
+      }),
     ).toBe(undefined);
   });
 
@@ -54,7 +54,7 @@ describe("@raikou/core/get-options-class-names", () => {
         props: {},
         stylesCtx: undefined,
         options: undefined,
-      })
+      }),
     ).toBe(undefined);
   });
 
@@ -69,7 +69,7 @@ describe("@raikou/core/get-options-class-names", () => {
           classNames: (_, props) => ({ root: props["data-test"] }),
           props: { "data-test": "__test-options" },
         },
-      })
+      }),
     ).toBe("__test-options");
   });
 
@@ -81,7 +81,7 @@ describe("@raikou/core/get-options-class-names", () => {
         props: { "data-test": "__test-component-props" },
         stylesCtx: undefined,
         options: { classNames: (_, props) => ({ root: props["data-test"] }) },
-      })
+      }),
     ).toBe("__test-component-props");
   });
 });

@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from "../../../Bootstrap";
+import { DEFAULT_THEME } from "../../../RaikouProvider";
 import { sortMediaQueries } from "./sort-media-queries";
 
 describe("@raikou/core/Box/sort-media-queries", () => {
@@ -39,7 +39,7 @@ describe("@raikou/core/Box/sort-media-queries", () => {
             opacity: 0.85,
           },
         },
-      })
+      }),
     ).toStrictEqual({
       hasResponsiveStyles: true,
       inlineStyles: {},

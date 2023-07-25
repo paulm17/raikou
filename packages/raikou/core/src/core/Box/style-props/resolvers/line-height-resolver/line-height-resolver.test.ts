@@ -1,22 +1,22 @@
 import { lineHeightResolver } from "./line-height-resolver";
-import { DEFAULT_THEME } from "../../../../Bootstrap";
+import { DEFAULT_THEME } from "../../../../RaikouProvider";
 
 describe("@raikou/core/Box/line-height-resolver", () => {
   it("resolves theme line height", () => {
     expect(lineHeightResolver("xs", DEFAULT_THEME)).toBe(
-      "var(--raikou-line-height-xs)"
+      "var(--raikou-line-height-xs)",
     );
     expect(lineHeightResolver("sm", DEFAULT_THEME)).toBe(
-      "var(--raikou-line-height-sm)"
+      "var(--raikou-line-height-sm)",
     );
     expect(lineHeightResolver("md", DEFAULT_THEME)).toBe(
-      "var(--raikou-line-height-md)"
+      "var(--raikou-line-height-md)",
     );
     expect(lineHeightResolver("lg", DEFAULT_THEME)).toBe(
-      "var(--raikou-line-height-lg)"
+      "var(--raikou-line-height-lg)",
     );
     expect(lineHeightResolver("xl", DEFAULT_THEME)).toBe(
-      "var(--raikou-line-height-xl)"
+      "var(--raikou-line-height-xl)",
     );
   });
 

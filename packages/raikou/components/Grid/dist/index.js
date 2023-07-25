@@ -123,7 +123,7 @@ function GridColVariables({
   selector
 }) {
   var _a;
-  const theme = (0, import_core.getTheme)();
+  const theme = (0, import_core.useRaikouTheme)();
   const ctx = useGridContext();
   const baseSpan = (0, import_core.getBaseValue)(span);
   const baseStyles = (0, import_core.filterProps)({
@@ -203,7 +203,7 @@ GridCol.displayName = "@raikou/core/GridCol";
 var import_react5 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
 function GridVariables({ gutter, selector }) {
-  const theme = (0, import_core3.getTheme)();
+  const theme = (0, import_core3.useRaikouTheme)();
   const baseStyles = (0, import_core3.filterProps)({
     "--grid-gutter": (0, import_core3.getSpacing)((0, import_core3.getBaseValue)(gutter))
   });

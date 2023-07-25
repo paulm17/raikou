@@ -1,5 +1,5 @@
 import React from "react";
-import { InlineStyles, getTheme } from "@raikou/core";
+import { InlineStyles, useRaikouTheme } from "@raikou/core";
 import type { AppShellProps } from "../AppShell";
 import { getVariables } from "./get-variables/get-variables";
 
@@ -18,7 +18,7 @@ export function AppShellMediaStyles({
   footer,
   padding,
 }: AppShellMediaStylesProps) {
-  const theme = getTheme();
+  const theme = useRaikouTheme();
   // const ctx = useRaikouContext();
   const { media, baseStyles } = getVariables({
     navbar,

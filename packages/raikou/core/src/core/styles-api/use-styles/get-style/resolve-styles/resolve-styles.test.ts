@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from "../../../../Bootstrap";
+import { DEFAULT_THEME } from "../../../../RaikouProvider";
 import { resolveStyles } from "./resolve-styles";
 
 describe("@raikou/core/resolve-styles", () => {
@@ -13,7 +13,7 @@ describe("@raikou/core/resolve-styles", () => {
         },
         props: {},
         stylesCtx: undefined,
-      })
+      }),
     ).toStrictEqual({ root: { color: "red" } });
   });
 
@@ -30,7 +30,7 @@ describe("@raikou/core/resolve-styles", () => {
         }),
         props: { outline: "cyan" },
         stylesCtx: { textDecoration: "underline" },
-      })
+      }),
     ).toStrictEqual({
       root: {
         color: DEFAULT_THEME.colors.blue[1],

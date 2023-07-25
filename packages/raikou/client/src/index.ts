@@ -1,7 +1,6 @@
 "use client";
 
 export * from "@raikou/accordion";
-export * from "@raikou/alert";
 export * from "@raikou/appshell";
 export * from "@raikou/autocomplete";
 export * from "@raikou/avatar";

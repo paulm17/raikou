@@ -3,7 +3,7 @@ import {
   InlineStylesInput,
   stylesToString,
 } from "./styles-to-string/styles-to-string";
-// import { useRaikouStyleNonce } from '../Bootstrap';
+// import { useRaikouStyleNonce } from '../RaikouProvider';
 
 export interface InlineStylesProps
   extends InlineStylesInput,

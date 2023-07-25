@@ -1,5 +1,5 @@
 import { CssVariable } from "../../Box";
-import { RaikouTheme } from "../../Bootstrap";
+import { RaikouTheme } from "../../RaikouProvider";
 import { FactoryPayload } from "../../factory";
 
 export type TransformVars<V> = {
@@ -17,17 +17,17 @@ export type PartialTransformVars<V> = {
 export type VarsResolver<Payload extends FactoryPayload> = (
   theme: RaikouTheme,
   props: Payload["props"],
-  ctx: Payload["ctx"]
+  ctx: Payload["ctx"],
 ) => TransformVars<Payload["vars"]>;
 
 export type PartialVarsResolver<Payload extends FactoryPayload> = (
   theme: RaikouTheme,
   props: Payload["props"],
-  ctx: Payload["ctx"]
+  ctx: Payload["ctx"],
 ) => PartialTransformVars<Payload["vars"]>;
 
 export function createVarsResolver<Payload extends FactoryPayload>(
-  resolver: VarsResolver<Payload>
+  resolver: VarsResolver<Payload>,
 ) {
   return resolver;
 }

@@ -1,19 +1,24 @@
 import { getBoxStyle } from "./get-box-style";
-import { DEFAULT_THEME } from "../../Bootstrap";
+import { DEFAULT_THEME } from "../../RaikouProvider";
 
 describe("@raikou/core/Box/get-box-style", () => {
   it("returns empty object if no style or vars provided", () => {
     expect(getBoxStyle({ theme: DEFAULT_THEME, styleProps: {} })).toStrictEqual(
-      {}
+      {},
     );
     expect(
-      getBoxStyle({ theme: DEFAULT_THEME, style: {}, styleProps: {} })
+      getBoxStyle({ theme: DEFAULT_THEME, style: {}, styleProps: {} }),
     ).toStrictEqual({});
     expect(
-      getBoxStyle({ theme: DEFAULT_THEME, vars: {}, styleProps: {} })
+      getBoxStyle({ theme: DEFAULT_THEME, vars: {}, styleProps: {} }),
     ).toStrictEqual({});
     expect(
-      getBoxStyle({ theme: DEFAULT_THEME, vars: {}, style: {}, styleProps: {} })
+      getBoxStyle({
+        theme: DEFAULT_THEME,
+        vars: {},
+        style: {},
+        styleProps: {},
+      }),
     ).toStrictEqual({});
     expect(
       getBoxStyle({
@@ -21,7 +26,7 @@ describe("@raikou/core/Box/get-box-style", () => {
         vars: () => ({}),
         style: () => ({}),
         styleProps: {},
-      })
+      }),
     ).toStrictEqual({});
   });
 
@@ -32,7 +37,7 @@ describe("@raikou/core/Box/get-box-style", () => {
         style: { color: "red" },
         vars: { "--test": "red" },
         styleProps: {},
-      })
+      }),
     ).toStrictEqual({
       color: "red",
       "--test": "red",
@@ -44,7 +49,7 @@ describe("@raikou/core/Box/get-box-style", () => {
         style: (theme) => ({ color: theme.colors.blue[7] }),
         vars: (theme) => ({ "--test": theme.spacing.md }),
         styleProps: {},
-      })
+      }),
     ).toStrictEqual({
       color: DEFAULT_THEME.colors.blue[7],
       "--test": DEFAULT_THEME.spacing.md,
@@ -58,7 +63,7 @@ describe("@raikou/core/Box/get-box-style", () => {
         style: [{ color: "red" }, { backgroundColor: "blue" }],
         vars: [{ "--test": "red" }, { "--test2": "blue" }],
         styleProps: {},
-      })
+      }),
     ).toStrictEqual({
       color: "red",
       backgroundColor: "blue",
@@ -78,7 +83,7 @@ describe("@raikou/core/Box/get-box-style", () => {
           (theme) => ({ "--test2": theme.spacing.md }),
         ],
         styleProps: {},
-      })
+      }),
     ).toStrictEqual({
       color: "red",
       backgroundColor: DEFAULT_THEME.colors.blue[7],
@@ -94,7 +99,7 @@ describe("@raikou/core/Box/get-box-style", () => {
         style: [{ color: "red" }, [{ backgroundColor: "blue" }]],
         vars: [{ "--test": "red" }, [{ "--test2": "blue" }]],
         styleProps: {},
-      })
+      }),
     ).toStrictEqual({
       color: "red",
       backgroundColor: "blue",
@@ -114,7 +119,7 @@ describe("@raikou/core/Box/get-box-style", () => {
           [(theme) => ({ "--test2": theme.spacing.md })],
         ],
         styleProps: {},
-      })
+      }),
     ).toStrictEqual({
       color: "red",
       backgroundColor: DEFAULT_THEME.colors.blue[7],

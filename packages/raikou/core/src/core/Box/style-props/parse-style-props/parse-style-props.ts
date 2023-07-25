@@ -1,19 +1,19 @@
-import { keys } from '../../../utils';
-import type { RaikouStyleProps, StyleProp } from '../style-props.types';
-import type { SystemPropData } from '../style-props-data';
-import { resolvers } from '../resolvers';
-import { RaikouTheme } from '../../../Bootstrap';
-import type { SortMediaQueriesResult } from './sort-media-queries';
-import { sortMediaQueries } from './sort-media-queries';
+import { keys } from "../../../utils";
+import type { RaikouStyleProps, StyleProp } from "../style-props.types";
+import type { SystemPropData } from "../style-props-data";
+import { resolvers } from "../resolvers";
+import { RaikouTheme } from "../../../RaikouProvider";
+import type { SortMediaQueriesResult } from "./sort-media-queries";
+import { sortMediaQueries } from "./sort-media-queries";
 
 function hasResponsiveStyles(styleProp: StyleProp<unknown>) {
-  if (typeof styleProp !== 'object' || styleProp === null) {
+  if (typeof styleProp !== "object" || styleProp === null) {
     return false;
   }
 
   const breakpoints = Object.keys(styleProp);
 
-  if (breakpoints.length === 1 && breakpoints[0] === 'base') {
+  if (breakpoints.length === 1 && breakpoints[0] === "base") {
     return false;
   }
 
@@ -21,8 +21,8 @@ function hasResponsiveStyles(styleProp: StyleProp<unknown>) {
 }
 
 function getBaseValue(value: StyleProp<unknown>) {
-  if (typeof value === 'object' && value !== null) {
-    if ('base' in value) {
+  if (typeof value === "object" && value !== null) {
+    if ("base" in value) {
       return value.base;
     }
 
@@ -33,15 +33,15 @@ function getBaseValue(value: StyleProp<unknown>) {
 }
 
 function getBreakpointKeys(value: StyleProp<unknown>) {
-  if (typeof value === 'object' && value !== null) {
-    return keys(value).filter((key) => key !== 'base');
+  if (typeof value === "object" && value !== null) {
+    return keys(value).filter((key) => key !== "base");
   }
 
   return [];
 }
 
 function getBreakpointValue(value: StyleProp<unknown>, breakpoint: string) {
-  if (typeof value === 'object' && value !== null && breakpoint in value) {
+  if (typeof value === "object" && value !== null && breakpoint in value) {
     return value[breakpoint as keyof typeof value];
   }
 
@@ -82,7 +82,10 @@ export function parseStyleProps({
 
         if (!hasResponsiveStyles(styleProps[styleProp])) {
           properties.forEach((property) => {
-            acc.inlineStyles[property] = resolvers[propertyData.type](baseValue, theme);
+            acc.inlineStyles[property] = resolvers[propertyData.type](
+              baseValue,
+              theme,
+            );
           });
 
           return acc;
@@ -94,7 +97,10 @@ export function parseStyleProps({
 
         properties.forEach((property) => {
           if (baseValue) {
-            acc.styles[property] = resolvers[propertyData.type](baseValue, theme);
+            acc.styles[property] = resolvers[propertyData.type](
+              baseValue,
+              theme,
+            );
           }
 
           breakpoints.forEach((breakpoint) => {
@@ -103,7 +109,7 @@ export function parseStyleProps({
               ...acc.media[bp],
               [property]: resolvers[propertyData.type](
                 getBreakpointValue(styleProps[styleProp], breakpoint),
-                theme
+                theme,
               ),
             };
           });
@@ -116,7 +122,7 @@ export function parseStyleProps({
         styles: {},
         inlineStyles: {},
         media: {},
-      }
-    )
+      },
+    ),
   );
 }

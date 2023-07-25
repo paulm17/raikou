@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useReducedMotion, useDidUpdate } from "@raikou/hooks";
-import { getTheme } from "@raikou/core";
+import { useRaikouTheme } from "@raikou/core";
 
 export type TransitionStatus =
   | "entered"
@@ -31,14 +31,14 @@ export function useTransition({
   onEntered,
   onExited,
 }: UseTransition) {
-  const theme = getTheme();
+  const theme = useRaikouTheme();
   const shouldReduceMotion = useReducedMotion();
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
   const [transitionDuration, setTransitionDuration] = useState(
-    reduceMotion ? 0 : duration
+    reduceMotion ? 0 : duration,
   );
   const [transitionStatus, setStatus] = useState<TransitionStatus>(
-    mounted ? "entered" : "exited"
+    mounted ? "entered" : "exited",
   );
   const timeoutRef = useRef<number>(-1);
 

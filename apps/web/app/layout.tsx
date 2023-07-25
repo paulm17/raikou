@@ -1,4 +1,4 @@
-import { Bootstrap, ColorSchemeScript } from "@raikou/system";
+import { RaikouProvider, ColorSchemeScript } from "@raikou/system";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "../tailwind.config.js";
 import "../global.css";
@@ -11,14 +11,14 @@ export default function RootLayout({
   const fullConfig = resolveConfig(tailwindConfig);
 
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html lang="en">
       <head>
         <ColorSchemeScript />
       </head>
       <body>
-        <Bootstrap theme={fullConfig.theme.custom as any}>
+        <RaikouProvider theme={fullConfig.theme.custom as any}>
           <body>{children}</body>
-        </Bootstrap>
+        </RaikouProvider>
       </body>
     </html>
   );

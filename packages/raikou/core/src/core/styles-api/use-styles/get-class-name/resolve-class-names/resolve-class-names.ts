@@ -1,6 +1,6 @@
-import cx from 'clsx';
-import { RaikouTheme } from '../../../../Bootstrap';
-import type { _ClassNames } from '../get-class-name';
+import cx from "clsx";
+import { RaikouTheme } from "../../../../RaikouProvider";
+import type { _ClassNames } from "../get-class-name";
 
 export interface ResolveClassNamesInput {
   theme: RaikouTheme;
@@ -27,10 +27,17 @@ function mergeClassNames(objects: Partial<Record<string, string>>[]) {
   return merged;
 }
 
-export function resolveClassNames({ theme, classNames, props, stylesCtx }: ResolveClassNamesInput) {
+export function resolveClassNames({
+  theme,
+  classNames,
+  props,
+  stylesCtx,
+}: ResolveClassNamesInput) {
   const arrayClassNames = Array.isArray(classNames) ? classNames : [classNames];
   const resolvedClassNames = arrayClassNames.map((item) =>
-    typeof item === 'function' ? item(theme, props, stylesCtx) : item || EMPTY_CLASS_NAMES
+    typeof item === "function"
+      ? item(theme, props, stylesCtx)
+      : item || EMPTY_CLASS_NAMES,
   );
 
   return mergeClassNames(resolvedClassNames);

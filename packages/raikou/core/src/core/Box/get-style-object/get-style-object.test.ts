@@ -1,5 +1,5 @@
 import { getStyleObject } from "./get-style-object";
-import { DEFAULT_THEME } from "../../Bootstrap";
+import { DEFAULT_THEME } from "../../RaikouProvider";
 
 describe("@raikou/core/Box/get-style-object", () => {
   it("returns empty object if style is undefined", () => {
@@ -16,8 +16,8 @@ describe("@raikou/core/Box/get-style-object", () => {
     expect(
       getStyleObject(
         (theme) => ({ color: theme.colors.orange[5] }),
-        DEFAULT_THEME
-      )
+        DEFAULT_THEME,
+      ),
     ).toStrictEqual({
       color: DEFAULT_THEME.colors.orange[5],
     });
@@ -27,8 +27,8 @@ describe("@raikou/core/Box/get-style-object", () => {
     expect(
       getStyleObject(
         [{ color: "red" }, (theme) => ({ color: theme.colors.orange[5] })],
-        DEFAULT_THEME
-      )
+        DEFAULT_THEME,
+      ),
     ).toStrictEqual({ color: DEFAULT_THEME.colors.orange[5] });
   });
 });

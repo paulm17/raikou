@@ -164,7 +164,7 @@ import {
   createScopedKeydownHandler,
   useDirection,
   getThemeColor,
-  getTheme
+  useRaikouTheme
 } from "@raikou/core";
 
 // ../UnstyledButton/src/UnstyledButton.tsx
@@ -255,7 +255,7 @@ var TabsTab = factory3((_props, ref) => {
     "styles",
     "vars"
   ]);
-  const theme = getTheme();
+  const theme = useRaikouTheme();
   const { dir } = useDirection();
   const ctx = useTabsContext();
   const active = value === ctx.value;

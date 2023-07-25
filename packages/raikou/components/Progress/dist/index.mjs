@@ -112,7 +112,7 @@ import {
   Box as Box2,
   factory as factory2,
   useProps as useProps2,
-  getTheme,
+  useRaikouTheme,
   getThemeColor
 } from "@raikou/core";
 var defaultProps2 = {
@@ -145,7 +145,7 @@ var ProgressSection = factory2((props, ref) => {
     "animated"
   ]);
   const ctx = useProgressContext();
-  const theme = getTheme();
+  const theme = useRaikouTheme();
   const ariaAttributes = withAria ? {
     role: "progressbar",
     "aria-valuemax": 100,

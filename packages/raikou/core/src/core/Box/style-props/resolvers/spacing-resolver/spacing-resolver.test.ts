@@ -1,5 +1,5 @@
 import { spacingResolver } from "./spacing-resolver";
-import { DEFAULT_THEME } from "../../../../Bootstrap";
+import { DEFAULT_THEME } from "../../../../RaikouProvider";
 import { rem } from "../../../../utils";
 
 describe("@raikou/core/Box/spacing-resolver", () => {
@@ -12,10 +12,10 @@ describe("@raikou/core/Box/spacing-resolver", () => {
 
   it("resolves theme value correctly", () => {
     expect(spacingResolver("xs", DEFAULT_THEME)).toBe(
-      "var(--raikou-spacing-xs)"
+      "var(--raikou-spacing-xs)",
     );
     expect(spacingResolver("-md", DEFAULT_THEME)).toBe(
-      "calc(var(--raikou-spacing-md) * -1)"
+      "calc(var(--raikou-spacing-md) * -1)",
     );
   });
 

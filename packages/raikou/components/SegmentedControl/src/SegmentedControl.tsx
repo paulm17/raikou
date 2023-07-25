@@ -23,7 +23,7 @@ import {
   useDirection,
   createVarsResolver,
   Factory,
-  getTheme,
+  useRaikouTheme,
 } from "@raikou/core";
 
 const WRAPPER_PADDING = 4;
@@ -176,7 +176,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>(
     });
 
     const { dir } = useDirection();
-    const theme = getTheme();
+    const theme = useRaikouTheme();
 
     const _data = data.map((item) =>
       typeof item === "string" ? { label: item, value: item } : item,

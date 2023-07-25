@@ -33,9 +33,9 @@ The project was conceived with these 4 long-term goals:
    negating the need to keep the color mode (light/dark) and text direction
    (left/right) in state.
 4. When using the ClassNames api, to ensure that there were no clashes between
-   the bootstrap CSS of the component and tailwind styles provided. This has
-   been made possible with tailwind bootstrapping the styles via a plugin
-   architecture. See for
+   the RaikouProvider CSS of the component and tailwind styles provided. This
+   has been made possible with tailwind RaikouProviderping the styles via a
+   plugin architecture. See for
    <a href="https://tailwindcss.com/docs/plugins#css-in-js-syntax">more
    information</a>.
 
@@ -130,13 +130,11 @@ Change appPath to where the tsx files for your project reside.
    @import "@raikou/system/styles.css";
    ```
 
-7. Amend layout.tsx to resemble the following. Bootstrap must encapsulate the
-   children and ColorSchemeScript manages the global colorscheme.
-
-   Ensure that suppressHydrationWarning is added to the head.
+7. Amend layout.tsx to resemble the following. RaikouProvider must encapsulate
+   the children and ColorSchemeScript manages the global colorscheme.
 
    ```js
-   import { Bootstrap, ColorSchemeScript } from '@raikou/system'
+   import { RaikouProvider, ColorSchemeScript } from '@raikou/system'
 
    export default function RootLayout({
       children,
@@ -144,12 +142,12 @@ Change appPath to where the tsx files for your project reside.
       children: React.ReactNode
    }) {
       return (
-         <html lang="en" suppressHydrationWarning>
+         <html lang="en">
             <head>
                <ColorSchemeScript />
             </head>
             <body className={inter.className}>
-               <Bootstrap>{children}</Bootstrap>
+               <RaikouProvider>{children}</RaikouProvider>
             </body>
          </html>
       )
@@ -186,10 +184,10 @@ Change appPath to where the tsx files for your project reside.
 
 ## Server Components
 
-There are 32 server components available without the need for "use client" in
+There are 33 server components available without the need for "use client" in
 either the component library entry point nor in the page itself. They are:
-action-icon, anchor, aspect-ratio, background-image, badge, blockquote, box,
-breadcrumbs, button, center, close-button, code, color-swatch, container,
+action-icon, alert, anchor, aspect-ratio, background-image, badge, blockquote,
+box, breadcrumbs, button, center, close-button, code, color-swatch, container,
 divider, fieldset, flex, group, highlight, kbd, loader, mark, paper, skeleton,
 simple-grid, space, stack, text, title, unstyled-button, visually-hidden.
 

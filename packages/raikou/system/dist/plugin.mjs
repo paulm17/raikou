@@ -57,23 +57,23 @@ var init_utils = __esm({
   }
 });
 
-// ../core/src/core/Bootstrap/theme.types.ts
+// ../core/src/core/RaikouProvider/theme.types.ts
 var init_theme_types = __esm({
-  "../core/src/core/Bootstrap/theme.types.ts"() {
+  "../core/src/core/RaikouProvider/theme.types.ts"() {
     "use strict";
   }
 });
 
-// ../core/src/core/Bootstrap/color-functions/index.ts
+// ../core/src/core/RaikouProvider/color-functions/index.ts
 var init_color_functions = __esm({
-  "../core/src/core/Bootstrap/color-functions/index.ts"() {
+  "../core/src/core/RaikouProvider/color-functions/index.ts"() {
     "use strict";
   }
 });
 
-// ../core/src/core/Bootstrap/index.ts
-var init_Bootstrap = __esm({
-  "../core/src/core/Bootstrap/index.ts"() {
+// ../core/src/core/RaikouProvider/index.ts
+var init_RaikouProvider = __esm({
+  "../core/src/core/RaikouProvider/index.ts"() {
     "use strict";
     init_theme_types();
     init_color_functions();
@@ -169,7 +169,7 @@ var init_core = __esm({
     "use strict";
     init_utils();
     init_styles_api();
-    init_Bootstrap();
+    init_RaikouProvider();
     init_InlineStyles();
     init_Box();
     init_factory();

@@ -1,16 +1,16 @@
 import { React } from "react";
 import { withThemeByDataAttribute } from "@storybook/addon-styling";
 import type { Preview } from "@storybook/react";
-import { Bootstrap } from "@raikou/system";
+import { RaikouProvider } from "@raikou/system";
 import "@raikou/system/styles.css";
 import "../tailwind.css";
 
 const preview: Preview = {
   decorators: [
     (Story) => (
-      <Bootstrap theme={undefined}>
+      <RaikouProvider theme={undefined}>
         <Story />
-      </Bootstrap>
+      </RaikouProvider>
     ),
     withThemeByDataAttribute({
       themes: {

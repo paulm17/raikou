@@ -1,4 +1,4 @@
-import type { RaikouTheme, RaikouBreakpoint } from "../../Bootstrap";
+import type { RaikouTheme, RaikouBreakpoint } from "../../RaikouProvider";
 import { px } from "../units-converters";
 
 export function getBreakpointValue(

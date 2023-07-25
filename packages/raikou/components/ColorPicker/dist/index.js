@@ -156,7 +156,7 @@ var ColorSlider = (0, import_react4.forwardRef)(
       "onScrubEnd"
     ]);
     const { getStyles } = useColorPickerContext();
-    const theme = (0, import_core2.getTheme)();
+    const theme = (0, import_core2.useRaikouTheme)();
     const [position, setPosition] = (0, import_react4.useState)({ y: 0, x: value / maxValue });
     const positionRef = (0, import_react4.useRef)(position);
     const getChangeValue = (val) => round2 ? Math.round(val * maxValue) : val * maxValue;

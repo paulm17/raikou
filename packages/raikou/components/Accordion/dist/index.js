@@ -321,7 +321,7 @@ var Collapse = (0, import_react6.forwardRef)(
       "onTransitionEnd",
       "animateOpacity"
     ]);
-    const theme = (0, import_core3.getTheme)();
+    const theme = (0, import_core3.useRaikouTheme)();
     const shouldReduceMotion = (0, import_hooks2.useReducedMotion)();
     const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
     const duration = reduceMotion ? 0 : transitionDuration;

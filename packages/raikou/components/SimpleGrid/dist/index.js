@@ -77,7 +77,7 @@ function SimpleGridVariables({
   selector
 }) {
   var _a;
-  const theme = (0, import_core.getTheme)();
+  const theme = (0, import_core.useRaikouTheme)();
   const baseStyles = (0, import_core.filterProps)({
     "--sg-spacing-x": (0, import_core.getSpacing)((0, import_core.getBaseValue)(spacing)),
     "--sg-spacing-y": (0, import_core.getSpacing)((0, import_core.getBaseValue)(verticalSpacing)),

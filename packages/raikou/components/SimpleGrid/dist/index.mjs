@@ -44,7 +44,7 @@ import {
 import React from "react";
 import {
   getSortedBreakpoints,
-  getTheme,
+  useRaikouTheme,
   keys,
   getSpacing,
   filterProps,
@@ -58,7 +58,7 @@ function SimpleGridVariables({
   selector
 }) {
   var _a;
-  const theme = getTheme();
+  const theme = useRaikouTheme();
   const baseStyles = filterProps({
     "--sg-spacing-x": getSpacing(getBaseValue(spacing)),
     "--sg-spacing-y": getSpacing(getBaseValue(verticalSpacing)),

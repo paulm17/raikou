@@ -1,11 +1,19 @@
-import type { RaikouTheme } from '../Bootstrap';
+import type { RaikouTheme } from "../RaikouProvider";
 
-type RaikouStyle = React.CSSProperties | ((theme: RaikouTheme) => React.CSSProperties);
-export type RaikouStyleProp = RaikouStyle | RaikouStyle[] | RaikouStyleProp[] | undefined;
+type RaikouStyle =
+  | React.CSSProperties
+  | ((theme: RaikouTheme) => React.CSSProperties);
+export type RaikouStyleProp =
+  | RaikouStyle
+  | RaikouStyle[]
+  | RaikouStyleProp[]
+  | undefined;
 
 export type CssVariable = `--${string}`;
 
-export type CssVariables<Variable extends string = CssVariable> = Partial<Record<Variable, string>>;
+export type CssVariables<Variable extends string = CssVariable> = Partial<
+  Record<Variable, string>
+>;
 
 export type CssVars<Variable extends string = CssVariable> =
   | CssVariables<Variable>

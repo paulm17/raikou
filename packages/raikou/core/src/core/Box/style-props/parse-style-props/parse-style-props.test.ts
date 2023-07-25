@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from "../../../Bootstrap";
+import { DEFAULT_THEME } from "../../../RaikouProvider";
 import { parseStyleProps } from "./parse-style-props";
 import { STYlE_PROPS_DATA } from "../style-props-data";
 
@@ -9,7 +9,7 @@ describe("@raikou/core/Box/parse-style-props", () => {
         data: STYlE_PROPS_DATA,
         styleProps: { p: "1.5rem", mx: 32, c: "red.5", opacity: 0.65 },
         theme: DEFAULT_THEME,
-      })
+      }),
     ).toStrictEqual({
       hasResponsiveStyles: false,
       inlineStyles: {
@@ -35,7 +35,7 @@ describe("@raikou/core/Box/parse-style-props", () => {
           opacity: { base: 0.65, xs: 0.85 },
         },
         theme: DEFAULT_THEME,
-      })
+      }),
     ).toStrictEqual({
       hasResponsiveStyles: true,
       inlineStyles: {},
@@ -72,7 +72,7 @@ describe("@raikou/core/Box/parse-style-props", () => {
           opacity: { base: 0.65, xs: 0.85 },
         },
         theme: DEFAULT_THEME,
-      })
+      }),
     ).toStrictEqual({
       hasResponsiveStyles: true,
       inlineStyles: {
@@ -107,7 +107,7 @@ describe("@raikou/core/Box/parse-style-props", () => {
           opacity: { base: 0.65, xs: 0.85, md: 1 },
         },
         theme: DEFAULT_THEME,
-      })
+      }),
     ).toStrictEqual({
       hasResponsiveStyles: true,
       inlineStyles: {},

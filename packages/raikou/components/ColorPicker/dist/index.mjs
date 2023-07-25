@@ -56,7 +56,11 @@ import {
   useMergedRef,
   useMove
 } from "@raikou/hooks";
-import { Box as Box2, getTheme, rem } from "@raikou/core";
+import {
+  Box as Box2,
+  useRaikouTheme,
+  rem
+} from "@raikou/core";
 
 // src/Thumb/Thumb.tsx
 import React3, { forwardRef } from "react";
@@ -136,7 +140,7 @@ var ColorSlider = forwardRef2(
       "onScrubEnd"
     ]);
     const { getStyles } = useColorPickerContext();
-    const theme = getTheme();
+    const theme = useRaikouTheme();
     const [position, setPosition] = useState({ y: 0, x: value / maxValue });
     const positionRef = useRef(position);
     const getChangeValue = (val) => round2 ? Math.round(val * maxValue) : val * maxValue;

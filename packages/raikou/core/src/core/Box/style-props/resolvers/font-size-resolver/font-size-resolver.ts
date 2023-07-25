@@ -1,4 +1,4 @@
-import { RaikouTheme } from "../../../../Bootstrap";
+import { RaikouTheme } from "../../../../RaikouProvider";
 import { rem } from "../../../../utils";
 
 export function fontSizeResolver(value: unknown, theme: RaikouTheme) {

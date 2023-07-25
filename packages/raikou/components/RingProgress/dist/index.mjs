@@ -97,7 +97,7 @@ function getCurves({
 // src/Curve/Curve.tsx
 import React10 from "react";
 import {
-  getTheme as getTheme3,
+  useRaikouTheme as useRaikouTheme3,
   getThemeColor as getThemeColor3,
   Box as Box3
 } from "@raikou/core";
@@ -3082,7 +3082,7 @@ function getTransitionStyles({
 // ../Transition/src/use-transition.ts
 import { useState as useState4, useEffect as useEffect5, useRef as useRef4 } from "react";
 import { useReducedMotion, useDidUpdate as useDidUpdate2 } from "@raikou/hooks";
-import { getTheme } from "@raikou/core";
+import { useRaikouTheme } from "@raikou/core";
 function useTransition({
   duration,
   exitDuration,
@@ -3093,7 +3093,7 @@ function useTransition({
   onEntered,
   onExited
 }) {
-  const theme = getTheme();
+  const theme = useRaikouTheme();
   const shouldReduceMotion = useReducedMotion();
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
   const [transitionDuration, setTransitionDuration] = useState4(
@@ -3251,7 +3251,7 @@ import {
   createVarsResolver,
   getRadius,
   getThemeColor,
-  getTheme as getTheme2
+  useRaikouTheme as useRaikouTheme2
 } from "@raikou/core";
 
 // ../Tooltip/src/TooltipFloating/use-floating-tooltip.ts
@@ -3374,7 +3374,7 @@ var TooltipFloating = factory(
       "vars",
       "portalProps"
     ]);
-    const theme = getTheme2();
+    const theme = useRaikouTheme2();
     const getStyles = useStyles({
       name: "TooltipFloating",
       props,
@@ -3783,7 +3783,7 @@ function Curve(_a) {
     "getStyles",
     "display"
   ]);
-  const theme = getTheme3();
+  const theme = useRaikouTheme3();
   return /* @__PURE__ */ React10.createElement(Tooltip.Floating, { disabled: !tooltip, label: tooltip }, /* @__PURE__ */ React10.createElement(
     Box3,
     __spreadValues(__spreadProps(__spreadValues(__spreadValues({

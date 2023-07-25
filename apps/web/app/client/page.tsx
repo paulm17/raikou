@@ -4,7 +4,6 @@ import { Group, Stack, Title } from "@raikou/server";
 import {
   Autocomplete,
   Avatar,
-  Alert,
   Accordion,
   Checkbox,
   Chip,
@@ -182,19 +181,6 @@ export default function Page() {
       </Title>
       <Group p={20} grow>
         <Stack>
-          <Title order={3}>Alert</Title>
-          <div className="w-[400px]">
-            <Alert
-              variant="light"
-              color="blue"
-              withCloseButton
-              title="Alert title"
-              icon={icon}
-            >
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. At
-              officiis, quae tempore necessitatibus placeat saepe.
-            </Alert>
-          </div>
           <Title order={3}>Accordion</Title>
           <div className="w-[400px]">
             <Accordion defaultValue="Apples">{items}</Accordion>

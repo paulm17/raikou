@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  getTheme,
+  useRaikouTheme,
   RaikouColor,
   getThemeColor,
   GetStylesApi,
@@ -37,7 +37,7 @@ export function Curve({
   display,
   ...others
 }: CurveProps) {
-  const theme = getTheme();
+  const theme = useRaikouTheme();
   // const stroke = theme.fn.themeColor(
   //   color || (theme.colorScheme === 'dark' ? 'dark' : 'gray'),
   //   color ? theme.fn.primaryShade() : theme.colorScheme === 'dark' ? 4 : 1,

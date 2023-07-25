@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from "../../../../Bootstrap";
+import { DEFAULT_THEME } from "../../../../RaikouProvider";
 import { resolveStyle } from "./resolve-style";
 
 describe("@raikou/core/resolve-style", () => {
@@ -7,7 +7,7 @@ describe("@raikou/core/resolve-style", () => {
       resolveStyle({
         theme: DEFAULT_THEME,
         style: { color: "red" },
-      })
+      }),
     ).toStrictEqual({ color: "red" });
   });
 
@@ -16,13 +16,13 @@ describe("@raikou/core/resolve-style", () => {
       resolveStyle({
         theme: DEFAULT_THEME,
         style: (theme) => ({ color: theme.colors.blue[1] }),
-      })
+      }),
     ).toStrictEqual({ color: DEFAULT_THEME.colors.blue[1] });
   });
 
   it("returns empty object if style is not defined", () => {
     expect(
-      resolveStyle({ theme: DEFAULT_THEME, style: undefined })
+      resolveStyle({ theme: DEFAULT_THEME, style: undefined }),
     ).toStrictEqual({});
   });
 
@@ -35,7 +35,7 @@ describe("@raikou/core/resolve-style", () => {
       resolveStyle({
         theme: DEFAULT_THEME,
         style: [{ color: "red" }, { backgroundColor: "blue" }],
-      })
+      }),
     ).toStrictEqual({ color: "red", backgroundColor: "blue" });
   });
 
@@ -47,7 +47,7 @@ describe("@raikou/core/resolve-style", () => {
           (theme) => ({ color: theme.colors.blue[1] }),
           { backgroundColor: "blue" },
         ],
-      })
+      }),
     ).toStrictEqual({
       color: DEFAULT_THEME.colors.blue[1],
       backgroundColor: "blue",

@@ -1,4 +1,4 @@
-import { RaikouTheme } from "../../../../Bootstrap";
+import { RaikouTheme } from "../../../../RaikouProvider";
 import { rem } from "../../../../utils";
 
 export function spacingResolver(value: unknown, theme: RaikouTheme) {

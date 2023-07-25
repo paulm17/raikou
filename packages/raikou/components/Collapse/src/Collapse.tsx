@@ -5,7 +5,7 @@ import {
   useProps,
   Box,
   getStyleObject,
-  getTheme,
+  useRaikouTheme,
 } from "@raikou/core";
 import { useCollapse } from "./use-collapse";
 
@@ -47,7 +47,7 @@ export const Collapse = forwardRef<HTMLDivElement, CollapseProps>(
       ...others
     } = useProps("Collapse", defaultProps, props);
 
-    const theme = getTheme();
+    const theme = useRaikouTheme();
     const shouldReduceMotion = useReducedMotion();
     const reduceMotion = theme.respectReducedMotion
       ? shouldReduceMotion
@@ -85,7 +85,7 @@ export const Collapse = forwardRef<HTMLDivElement, CollapseProps>(
         </div>
       </Box>
     );
-  }
+  },
 );
 
 Collapse.displayName = "@raikou/core/Collapse";

@@ -29,7 +29,7 @@ const loadConfig = async () => {
   return tailwindConfig;
 };
 
-export function getTheme() {
+export function useRaikouTheme() {
   // Server
   if (typeof window === "undefined") {
     loadConfig()

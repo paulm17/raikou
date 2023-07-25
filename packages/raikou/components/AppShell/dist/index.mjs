@@ -322,7 +322,7 @@ AppShellSection.displayName = "@raikou/core/AppShellSection";
 
 // src/AppShellMediaStyles/AppShellMediaStyles.tsx
 import React9 from "react";
-import { InlineStyles, getTheme } from "@raikou/core";
+import { InlineStyles, useRaikouTheme } from "@raikou/core";
 
 // src/AppShellMediaStyles/get-variables/get-variables.ts
 import { em, keys as keys6, getSortedBreakpoints } from "@raikou/core";
@@ -640,7 +640,7 @@ function AppShellMediaStyles({
   footer,
   padding
 }) {
-  const theme = getTheme();
+  const theme = useRaikouTheme();
   const { media, baseStyles } = getVariables({
     navbar,
     header,

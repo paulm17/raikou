@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from "../../../../Bootstrap";
+import { DEFAULT_THEME } from "../../../../RaikouProvider";
 import {
   getGlobalClassNames,
   FOCUS_CLASS_NAMES,
@@ -11,7 +11,7 @@ describe("@raikou/core/get-global-class-names", () => {
         theme: DEFAULT_THEME,
         options: { focusable: false, active: false },
         unstyled: false,
-      })
+      }),
     ).toBe("");
   });
 
@@ -21,7 +21,7 @@ describe("@raikou/core/get-global-class-names", () => {
         theme: DEFAULT_THEME,
         options: { focusable: true, active: false },
         unstyled: false,
-      })
+      }),
     ).toBe(FOCUS_CLASS_NAMES[DEFAULT_THEME.focusRing]);
   });
 
@@ -31,7 +31,7 @@ describe("@raikou/core/get-global-class-names", () => {
         theme: DEFAULT_THEME,
         options: { focusable: false, active: true },
         unstyled: false,
-      })
+      }),
     ).toBe(DEFAULT_THEME.activeClassName);
   });
 
@@ -41,11 +41,11 @@ describe("@raikou/core/get-global-class-names", () => {
         theme: DEFAULT_THEME,
         options: { focusable: true, active: true },
         unstyled: false,
-      })
+      }),
     ).toBe(
       `${FOCUS_CLASS_NAMES[DEFAULT_THEME.focusRing]} ${
         DEFAULT_THEME.activeClassName
-      }`
+      }`,
     );
   });
 
@@ -55,7 +55,7 @@ describe("@raikou/core/get-global-class-names", () => {
         theme: DEFAULT_THEME,
         options: { focusable: true, active: true },
         unstyled: true,
-      })
+      }),
     ).toBe("");
   });
 
@@ -65,7 +65,7 @@ describe("@raikou/core/get-global-class-names", () => {
         theme: DEFAULT_THEME,
         options: undefined,
         unstyled: false,
-      })
+      }),
     ).toBe("");
   });
 });

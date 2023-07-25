@@ -154,7 +154,7 @@ var SegmentedControl = (0, import_core.factory)(
       varsResolver
     });
     const { dir } = (0, import_core.useDirection)();
-    const theme = (0, import_core.getTheme)();
+    const theme = (0, import_core.useRaikouTheme)();
     const _data = data.map(
       (item) => typeof item === "string" ? { label: item, value: item } : item
     );

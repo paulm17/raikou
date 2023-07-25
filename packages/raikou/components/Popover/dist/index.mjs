@@ -583,7 +583,7 @@ function getTransitionStyles({
 // ../Transition/src/use-transition.ts
 import { useState as useState3, useEffect as useEffect2, useRef as useRef2 } from "react";
 import { useReducedMotion, useDidUpdate as useDidUpdate3 } from "@raikou/hooks";
-import { getTheme } from "@raikou/core";
+import { useRaikouTheme } from "@raikou/core";
 function useTransition({
   duration,
   exitDuration,
@@ -594,7 +594,7 @@ function useTransition({
   onEntered,
   onExited
 }) {
-  const theme = getTheme();
+  const theme = useRaikouTheme();
   const shouldReduceMotion = useReducedMotion();
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
   const [transitionDuration, setTransitionDuration] = useState3(

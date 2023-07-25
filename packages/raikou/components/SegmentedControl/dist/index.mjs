@@ -49,7 +49,7 @@ import {
   getFontSize,
   useDirection,
   createVarsResolver,
-  getTheme
+  useRaikouTheme
 } from "@raikou/core";
 var WRAPPER_PADDING = 4;
 var defaultProps = {
@@ -138,7 +138,7 @@ var SegmentedControl = factory(
       varsResolver
     });
     const { dir } = useDirection();
-    const theme = getTheme();
+    const theme = useRaikouTheme();
     const _data = data.map(
       (item) => typeof item === "string" ? { label: item, value: item } : item
     );

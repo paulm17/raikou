@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from "../../../../Bootstrap";
+import { DEFAULT_THEME } from "../../../../RaikouProvider";
 import { resolveClassNames } from "./resolve-class-names";
 
 describe("@raikou/core/resolve-class-names", () => {
@@ -9,7 +9,7 @@ describe("@raikou/core/resolve-class-names", () => {
         classNames: undefined,
         props: {},
         stylesCtx: undefined,
-      })
+      }),
     ).toStrictEqual({});
   });
 
@@ -20,7 +20,7 @@ describe("@raikou/core/resolve-class-names", () => {
         classNames: (theme) => ({ test: theme.activeClassName }),
         props: {},
         stylesCtx: undefined,
-      })
+      }),
     ).toStrictEqual({ test: DEFAULT_THEME.activeClassName });
   });
 
@@ -31,7 +31,7 @@ describe("@raikou/core/resolve-class-names", () => {
         classNames: (_, props) => ({ test: props.test }),
         props: { test: "test" },
         stylesCtx: undefined,
-      })
+      }),
     ).toStrictEqual({ test: "test" });
   });
 
@@ -42,7 +42,7 @@ describe("@raikou/core/resolve-class-names", () => {
         classNames: (_, __, stylesCtx) => ({ test: stylesCtx?.test }),
         props: {},
         stylesCtx: { test: "test" },
-      })
+      }),
     ).toStrictEqual({ test: "test" });
   });
 
@@ -53,7 +53,7 @@ describe("@raikou/core/resolve-class-names", () => {
         classNames: { test1: "test1", test2: "test2" },
         props: {},
         stylesCtx: undefined,
-      })
+      }),
     ).toStrictEqual({ test1: "test1", test2: "test2" });
   });
 
@@ -64,7 +64,7 @@ describe("@raikou/core/resolve-class-names", () => {
         classNames: [{ test: "test-1" }, { test: "test-2" }],
         props: {},
         stylesCtx: undefined,
-      })
+      }),
     ).toStrictEqual({ test: "test-1 test-2" });
 
     expect(
@@ -73,7 +73,7 @@ describe("@raikou/core/resolve-class-names", () => {
         classNames: [{ test: "test-1" }, undefined],
         props: {},
         stylesCtx: undefined,
-      })
+      }),
     ).toStrictEqual({ test: "test-1" });
 
     expect(
@@ -82,7 +82,7 @@ describe("@raikou/core/resolve-class-names", () => {
         classNames: [{ test1: "test1" }, (_, props) => ({ test1: props.test })],
         props: { test: "test" },
         stylesCtx: undefined,
-      })
+      }),
     ).toStrictEqual({ test1: "test1 test" });
   });
 });

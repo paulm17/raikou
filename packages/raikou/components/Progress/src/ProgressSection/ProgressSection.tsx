@@ -8,7 +8,7 @@ import {
   useProps,
   Factory,
   RaikouColor,
-  getTheme,
+  useRaikouTheme,
   getThemeColor,
 } from "@raikou/core";
 import { useProgressContext } from "../Progress.context";
@@ -63,7 +63,7 @@ export const ProgressSection = factory<ProgressSectionFactory>((props, ref) => {
   } = useProps("ProgressSection", defaultProps, props);
 
   const ctx = useProgressContext();
-  const theme = getTheme();
+  const theme = useRaikouTheme();
 
   const ariaAttributes = withAria
     ? {

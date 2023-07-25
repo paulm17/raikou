@@ -262,7 +262,7 @@ var TabsTab = (0, import_core4.factory)((_props, ref) => {
     "styles",
     "vars"
   ]);
-  const theme = (0, import_core4.getTheme)();
+  const theme = (0, import_core4.useRaikouTheme)();
   const { dir } = (0, import_core4.useDirection)();
   const ctx = useTabsContext();
   const active = value === ctx.value;

@@ -1,6 +1,6 @@
 import "./global.css";
 import React from "react";
-// import { suppressNextjsWarning } from "./suppress-nextjs-warning";
+import { suppressNextjsWarning } from "./suppress-nextjs-warning";
 import { RaikouCssVariables, CSSVariablesResolver } from "./RaikouCssVariables";
 import type { RaikouColorScheme, RaikouThemeOverride } from "./theme.types";
 import {
@@ -11,7 +11,7 @@ import { useProviderColorScheme } from "./use-raikou-color-scheme";
 import { mergeRaikouTheme } from "./merge-raikou-theme";
 import { DEFAULT_THEME } from "./default-theme";
 
-export interface BootstrapProps {
+export interface RaikouProviderProps {
   /** Theme override object */
   theme?: RaikouThemeOverride;
 
@@ -30,9 +30,6 @@ export interface BootstrapProps {
   /** Function to resolve root element to set `data-raikou-color-scheme` attribute, must return undefined on server, `() => document.documentElement` by default */
   getRootElement?(): HTMLElement | undefined;
 
-  /** A prefix for components static classes (for example {selector}-Text-root), `raikou` by default */
-  classNamesPrefix?: string;
-
   /** Function to generate nonce attribute added to all generated `<style />` tags */
   getStyleNonce?(): string;
 
@@ -43,43 +40,51 @@ export interface BootstrapProps {
   children?: React.ReactNode;
 }
 
-export function Bootstrap({
+suppressNextjsWarning();
+
+export function RaikouProvider({
   theme,
   children,
   getStyleNonce,
   withCssVariables = true,
   cssVariablesSelector = ":root",
-  classNamesPrefix = "raikou",
   colorSchemeManager = localStorageColorSchemeManager(),
   defaultColorScheme = "auto",
   getRootElement = () => document.documentElement,
   cssVariablesResolver,
-}: BootstrapProps) {
-  const { colorScheme, setColorScheme, clearColorScheme } =
-    useProviderColorScheme({
-      defaultColorScheme,
-      manager: colorSchemeManager,
-      getRootElement,
-    });
+}: RaikouProviderProps) {
+  useProviderColorScheme({
+    defaultColorScheme,
+    manager: colorSchemeManager,
+    getRootElement,
+  });
 
   let mergedTheme = mergeRaikouTheme(DEFAULT_THEME, theme);
 
   if (typeof window !== "undefined") {
-    const storage = localStorage.getItem("raikou-theme");
+    if (!Object.keys(theme as any).length) {
+      const storage = localStorage.getItem("raikou-theme");
 
-    if (storage === null) {
-      localStorage.setItem("raikou-theme", JSON.stringify(mergedTheme));
+      if (storage !== null) {
+        localStorage.removeItem("raikou-theme");
+      }
     } else {
-      const res = localStorage.getItem("raikou-theme");
-      const lsTheme = JSON.parse(res!);
+      const storage = localStorage.getItem("raikou-theme");
 
-      mergedTheme = mergeRaikouTheme(lsTheme, theme);
-
-      const mergeThemeStr = JSON.stringify(mergedTheme);
-      const lsThemeStr = JSON.stringify(lsTheme);
-
-      if (mergeThemeStr !== lsThemeStr) {
+      if (storage === null) {
         localStorage.setItem("raikou-theme", JSON.stringify(mergedTheme));
+      } else {
+        const res = localStorage.getItem("raikou-theme");
+        const lsTheme = JSON.parse(res!);
+
+        mergedTheme = mergeRaikouTheme(lsTheme, theme);
+
+        const mergeThemeStr = JSON.stringify(mergedTheme);
+        const lsThemeStr = JSON.stringify(lsTheme);
+
+        if (mergeThemeStr !== lsThemeStr) {
+          localStorage.setItem("raikou-theme", JSON.stringify(mergedTheme));
+        }
       }
     }
   }

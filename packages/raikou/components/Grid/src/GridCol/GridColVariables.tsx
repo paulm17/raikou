@@ -1,7 +1,7 @@
 import React from "react";
 import {
   getSortedBreakpoints,
-  getTheme,
+  useRaikouTheme,
   keys,
   RaikouBreakpoint,
   filterProps,
@@ -59,7 +59,7 @@ export function GridColVariables({
   offset,
   selector,
 }: GridColVariablesProps) {
-  const theme = getTheme();
+  const theme = useRaikouTheme();
   const ctx = useGridContext();
 
   const baseSpan = getBaseValue(span);

@@ -12,8 +12,9 @@ import {
   getRadius,
   RaikouRadius,
   RaikouColor,
+  useRandomClassName,
 } from "@raikou/core";
-import { useId } from "@raikou/hooks";
+// import { useId } from "@raikou/hooks";
 import { CloseButton } from "../../CloseButton/src";
 
 export type AlertStylesNames =
@@ -90,7 +91,7 @@ const varsResolver = createVarsResolver<AlertFactory>(
         "--alert-bd": colors.border,
       },
     };
-  }
+  },
 );
 
 export const Alert = factory<AlertFactory>((_props, ref) => {
@@ -137,7 +138,7 @@ export const Alert = factory<AlertFactory>((_props, ref) => {
     varsResolver,
   });
 
-  const rootId = useId(id);
+  const rootId = `${id}-${useRandomClassName()}`; //useId(id);
   const titleId = (title && `${rootId}-title`) || undefined;
   const bodyId = `${rootId}-body`;
 

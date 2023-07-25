@@ -73,7 +73,7 @@ var [GridProvider, useGridContext] = createSafeContext("Grid component was not f
 import React3 from "react";
 import {
   getSortedBreakpoints,
-  getTheme,
+  useRaikouTheme,
   keys,
   filterProps,
   InlineStyles,
@@ -108,7 +108,7 @@ function GridColVariables({
   selector
 }) {
   var _a;
-  const theme = getTheme();
+  const theme = useRaikouTheme();
   const ctx = useGridContext();
   const baseSpan = getBaseValue(span);
   const baseStyles = filterProps({
@@ -188,7 +188,7 @@ GridCol.displayName = "@raikou/core/GridCol";
 import React5 from "react";
 import {
   getSortedBreakpoints as getSortedBreakpoints2,
-  getTheme as getTheme2,
+  useRaikouTheme as useRaikouTheme2,
   keys as keys2,
   getSpacing,
   filterProps as filterProps2,
@@ -196,7 +196,7 @@ import {
   getBaseValue as getBaseValue2
 } from "@raikou/core";
 function GridVariables({ gutter, selector }) {
-  const theme = getTheme2();
+  const theme = useRaikouTheme2();
   const baseStyles = filterProps2({
     "--grid-gutter": getSpacing(getBaseValue2(gutter))
   });

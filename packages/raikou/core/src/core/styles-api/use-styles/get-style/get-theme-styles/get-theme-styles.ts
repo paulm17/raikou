@@ -1,5 +1,5 @@
-import { RaikouTheme } from '../../../../Bootstrap';
-import { resolveStyles } from '../resolve-styles/resolve-styles';
+import { RaikouTheme } from "../../../../RaikouProvider";
+import { resolveStyles } from "../resolve-styles/resolve-styles";
 
 interface GetThemeStylesOptions {
   theme: RaikouTheme;
@@ -24,7 +24,7 @@ export function getThemeStyles({
           styles: theme.components[n]?.styles,
           props,
           stylesCtx,
-        })[selector]
+        })[selector],
     )
     .reduce((acc, val) => ({ ...acc, ...val }), {});
 }
