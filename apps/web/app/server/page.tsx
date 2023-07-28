@@ -178,7 +178,11 @@ export default function Page() {
             A title is here
           </Title>
           <Title order={3}>Anchor</Title>
-          <Anchor href="https://raikou.dev/" target="_blank" underline="always">
+          <Anchor
+            href="https://mantine.dev/"
+            target="_blank"
+            underline="always"
+          >
             Underline always
           </Anchor>
           <Title order={3}>Breadcrumbs</Title>

@@ -1084,7 +1084,7 @@ var DEFAULT_THEME = {
 };
 
 // src/core/RaikouProvider/merge-raikou-theme/merge-raikou-theme.ts
-var INVALID_PRIMARY_COLOR_ERROR = "[@raikou/core] RaikouProvider: Invalid theme.primaryColor, it accepts only key of theme.colors, learn more \u2013 https://raikou.dev/theming/colors/#primary-color";
+var INVALID_PRIMARY_COLOR_ERROR = "[@raikou/core] RaikouProvider: Invalid theme.primaryColor, it accepts only key of theme.colors, learn more \u2013 https://mantine.dev/theming/colors/#primary-color";
 var INVALID_PRIMARY_SHADE_ERROR = "[@raikou/core] RaikouProvider: Invalid theme.primaryShade, it accepts only 0-9 integers or an object { light: 0-9, dark: 0-9 }";
 function isValidPrimaryShade(shade) {
   if (shade < 0 || shade > 9) {
@@ -1121,44 +1121,44 @@ function mergeRaikouTheme(currentTheme, themeOverride) {
 
 // src/core/RaikouProvider/useRaikouTheme/useRaikouTheme.ts
 var extensions = ["js", "cjs", "ts"];
-var tailwindConfig;
-var loadConfig = async () => {
+var loadConfig = () => {
   const appPath = __require("path").resolve("./");
-  for (let ext of extensions) {
+  let tailwindConfig;
+  const found = extensions.some((ext) => {
     try {
       tailwindConfig = __require(`${appPath}/tailwind.config.${ext}`);
-      break;
+      return true;
     } catch (error) {
       if (error.code !== "MODULE_NOT_FOUND") {
         throw error;
       }
     }
-  }
-  if (!tailwindConfig) {
+    return false;
+  });
+  if (!found) {
     throw new Error("No valid tailwind config file found.");
   }
   return tailwindConfig;
 };
 function useRaikouTheme() {
-  if (typeof window === "undefined") {
-    loadConfig().then((tailwindConfig2) => {
+  if (typeof window !== "undefined") {
+    const windowTheme = window["raikou_theme"];
+    const theme = mergeRaikouTheme(DEFAULT_THEME, windowTheme);
+    theme.variantColorResolver = defaultVariantColorsResolver;
+    return theme;
+  } else {
+    try {
+      const tailwindConfig = loadConfig();
       const resolveConfig = __require("tailwindcss/resolveConfig");
-      const fullConfig = resolveConfig(tailwindConfig2);
+      const fullConfig = resolveConfig(tailwindConfig);
       const theme = mergeRaikouTheme(DEFAULT_THEME, fullConfig.theme.custom);
       theme.variantColorResolver = defaultVariantColorsResolver;
       return theme;
-    }).catch((error) => {
-      console.error(error);
-    });
-  } else if (typeof window !== "undefined") {
-    const res = localStorage.getItem("raikou-theme");
-    if (res !== null) {
-      const lsTheme = JSON.parse(res);
-      const theme = mergeRaikouTheme(DEFAULT_THEME, lsTheme);
-      theme.variantColorResolver = defaultVariantColorsResolver;
-      return theme;
+    } catch (error) {
+      console.error("error", error);
     }
   }
+  console.log("warning - using default theme, should not happen");
   return DEFAULT_THEME;
 }
 

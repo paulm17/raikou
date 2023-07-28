@@ -134,7 +134,7 @@ var SimpleGrid = factory((_props, ref) => {
     vars
   });
   const responsiveClassName = useRandomClassName();
-  return /* @__PURE__ */ React2.createElement(React2.Fragment, null, /* @__PURE__ */ React2.createElement(SimpleGridVariables, __spreadProps(__spreadValues({}, props), { selector: `.${responsiveClassName}` })), /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ React2.createElement(React2.Fragment, null, /* @__PURE__ */ React2.createElement("div", null, /* @__PURE__ */ React2.createElement(SimpleGridVariables, __spreadProps(__spreadValues({}, props), { selector: `.${responsiveClassName}` }))), /* @__PURE__ */ React2.createElement(
     Box,
     __spreadValues(__spreadValues({
       ref

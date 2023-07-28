@@ -8,7 +8,7 @@ import "../tailwind.css";
 const preview: Preview = {
   decorators: [
     (Story) => (
-      <RaikouProvider theme={undefined}>
+      <RaikouProvider>
         <Story />
       </RaikouProvider>
     ),
@@ -16,8 +16,9 @@ const preview: Preview = {
       themes: {
         light: "light",
         dark: "dark",
+        mantine: "mantine",
       },
-      defaultTheme: "dark",
+      defaultTheme: "mantine",
       attributeName: "data-raikou-color-scheme",
     }),
   ],

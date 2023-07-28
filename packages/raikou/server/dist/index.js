@@ -40,6 +40,7 @@ __reExport(src_exports, require("@raikou/highlight"), module.exports);
 __reExport(src_exports, require("@raikou/kbd"), module.exports);
 __reExport(src_exports, require("@raikou/loader"), module.exports);
 __reExport(src_exports, require("@raikou/mark"), module.exports);
+__reExport(src_exports, require("@raikou/notification"), module.exports);
 __reExport(src_exports, require("@raikou/paper"), module.exports);
 __reExport(src_exports, require("@raikou/skeleton"), module.exports);
 __reExport(src_exports, require("@raikou/simple-grid"), module.exports);
@@ -74,6 +75,7 @@ __reExport(src_exports, require("@raikou/visually-hidden"), module.exports);
   ...require("@raikou/kbd"),
   ...require("@raikou/loader"),
   ...require("@raikou/mark"),
+  ...require("@raikou/notification"),
   ...require("@raikou/paper"),
   ...require("@raikou/skeleton"),
   ...require("@raikou/simple-grid"),

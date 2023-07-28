@@ -1,28 +1,26 @@
 import { DEFAULT_THEME } from "../default-theme";
 import { defaultVariantColorsResolver } from "../color-functions";
 import { mergeRaikouTheme } from "../merge-raikou-theme";
-import { RaikouTheme } from "../theme.types";
 
 const extensions = ["js", "cjs", "ts"];
-let tailwindConfig: any;
 
-const loadConfig = async () => {
+const loadConfig = () => {
   const appPath = require("path").resolve("./");
+  let tailwindConfig;
 
-  for (let ext of extensions) {
+  const found = extensions.some((ext) => {
     try {
       tailwindConfig = require(`${appPath}/tailwind.config.${ext}`);
-      break;
+      return true;
     } catch (error: any) {
-      // If the file doesn't exist, move on to the next one
       if (error.code !== "MODULE_NOT_FOUND") {
-        // If the error is something else, rethrow it
         throw error;
       }
     }
-  }
+    return false;
+  });
 
-  if (!tailwindConfig) {
+  if (!found) {
     throw new Error("No valid tailwind config file found.");
   }
 
@@ -30,31 +28,30 @@ const loadConfig = async () => {
 };
 
 export function useRaikouTheme() {
-  // Server
-  if (typeof window === "undefined") {
-    loadConfig()
-      .then((tailwindConfig) => {
-        const resolveConfig = require("tailwindcss/resolveConfig");
-        const fullConfig = resolveConfig(tailwindConfig);
+  if (typeof window !== "undefined") {
+    // Client
+    const windowTheme = (window as any)["raikou_theme"];
+    const theme = mergeRaikouTheme(DEFAULT_THEME, windowTheme);
+    theme.variantColorResolver = defaultVariantColorsResolver;
 
-        const theme = mergeRaikouTheme(DEFAULT_THEME, fullConfig.theme.custom);
-        theme.variantColorResolver = defaultVariantColorsResolver;
+    return theme;
+  } else {
+    // Server
+    try {
+      const tailwindConfig = loadConfig();
+      const resolveConfig = require("tailwindcss/resolveConfig");
+      const fullConfig = resolveConfig(tailwindConfig);
+      const theme = mergeRaikouTheme(DEFAULT_THEME, fullConfig.theme.custom);
 
-        return theme;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  } else if (typeof window !== "undefined") {
-    const res = localStorage.getItem("raikou-theme");
-
-    if (res !== null) {
-      const lsTheme = JSON.parse(res!) as RaikouTheme;
-      const theme = mergeRaikouTheme(DEFAULT_THEME, lsTheme);
       theme.variantColorResolver = defaultVariantColorsResolver;
-      return theme;
+
+      return theme; // Return the theme if you need it for something
+    } catch (error) {
+      console.error("error", error);
     }
   }
+
+  console.log("warning - using default theme, should not happen");
 
   return DEFAULT_THEME;
 }

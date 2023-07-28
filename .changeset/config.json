@@ -1,9 +1,6 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@1.4.0/schema.json",
-  "changelog": [
-    "@changesets/changelog-github",
-    { "repo": "paulm17/charizardxx" }
-  ],
+  "changelog": ["@changesets/changelog-github", { "repo": "paulm17/raikou" }],
   "commit": false,
   "linked": [],
   "access": "public",
@@ -12,6 +9,5 @@
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
     "onlyUpdatePeerDependentsWhenOutOfRange": true
   },
-  "ignore": [
-  ]
+  "ignore": []
 }

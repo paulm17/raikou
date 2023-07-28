@@ -1,6 +1,6 @@
 {
   "name": "@raikou/server",
-  "version": "0.0.1-alpha.11",
+  "version": "0.0.1-alpha.12",
   "main": "index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -53,6 +53,7 @@
     "@raikou/kbd": "workspace:*",
     "@raikou/loader": "workspace:*",
     "@raikou/mark": "workspace:*",
+    "@raikou/notification": "workspace:*",
     "@raikou/paper": "workspace:*",
     "@raikou/simple-grid": "workspace:*",
     "@raikou/space": "workspace:*",

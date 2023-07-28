@@ -27,6 +27,7 @@ module.exports = {
     "./node_modules/@raikou/server/node_modules/@raikou/kbd/dist/*.js",
     "./node_modules/@raikou/server/node_modules/@raikou/loader/dist/*.js",
     "./node_modules/@raikou/server/node_modules/@raikou/mark/dist/*.js",
+    "./node_modules/@raikou/server/node_modules/@raikou/notification/dist/*.js",
     "./node_modules/@raikou/server/node_modules/@raikou/paper/dist/*.js",
     "./node_modules/@raikou/server/node_modules/@raikou/skeleton/dist/*.js",
     "./node_modules/@raikou/server/node_modules/@raikou/stack/dist/*.js",
@@ -59,6 +60,7 @@ module.exports = {
     "./node_modules/@raikou/client/node_modules/@raikou/progress/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/rating/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/ring-progress/dist/*.js",
+    "./node_modules/@raikou/client/node_modules/@raikou/segmented-control/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/scroll-area/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/slider/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/switch/dist/*.js",
@@ -71,7 +73,21 @@ module.exports = {
   theme: {
     extend: {
       custom: {
-        // scale: 2,
+        primaryColor: "bright-pink",
+        colors: {
+          "bright-pink": [
+            "#F0BBDD",
+            "#ED9BCF",
+            "#EC7CC3",
+            "#ED5DB8",
+            "#F13EAF",
+            "#F71FA7",
+            "#FF00A1",
+            "#E00890",
+            "#C50E82",
+            "#AD1374",
+          ],
+        },
       },
     },
   },

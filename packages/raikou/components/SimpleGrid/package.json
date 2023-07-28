@@ -1,6 +1,6 @@
 {
   "name": "@raikou/simple-grid",
-  "version": "0.0.1-alpha.11",
+  "version": "0.0.1-alpha.12",
   "main": "index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",

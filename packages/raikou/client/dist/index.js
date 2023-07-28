@@ -45,6 +45,8 @@ __reExport(src_exports, require("@raikou/portal"), module.exports);
 __reExport(src_exports, require("@raikou/progress"), module.exports);
 __reExport(src_exports, require("@raikou/rating"), module.exports);
 __reExport(src_exports, require("@raikou/ring-progress"), module.exports);
+__reExport(src_exports, require("@raikou/segmented-control"), module.exports);
+__reExport(src_exports, require("@raikou/select"), module.exports);
 __reExport(src_exports, require("@raikou/scroll-area"), module.exports);
 __reExport(src_exports, require("@raikou/slider"), module.exports);
 __reExport(src_exports, require("@raikou/switch"), module.exports);
@@ -82,6 +84,8 @@ __reExport(src_exports, require("@raikou/tooltip"), module.exports);
   ...require("@raikou/progress"),
   ...require("@raikou/rating"),
   ...require("@raikou/ring-progress"),
+  ...require("@raikou/segmented-control"),
+  ...require("@raikou/select"),
   ...require("@raikou/scroll-area"),
   ...require("@raikou/slider"),
   ...require("@raikou/switch"),

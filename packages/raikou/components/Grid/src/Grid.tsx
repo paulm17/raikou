@@ -104,9 +104,14 @@ export const Grid = factory<GridFactory>((_props, ref) => {
 
   const responsiveClassName = useRandomClassName();
 
+  // encapsulate GridVariables in a div due to it nerfing
+  // data-raikou-styles="system"
+
   return (
     <GridProvider value={{ getStyles, grow, columns: columns! }}>
-      <GridVariables selector={`.${responsiveClassName}`} {...props} />
+      <div>
+        <GridVariables selector={`.${responsiveClassName}`} {...props} />
+      </div>
       <Box
         ref={ref}
         {...getStyles("root", { className: responsiveClassName })}

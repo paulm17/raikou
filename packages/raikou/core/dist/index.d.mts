@@ -520,8 +520,8 @@ type TransformVars<V> = {
 type PartialTransformVars<V> = {
     [Key in keyof V]: V[Key] extends CssVariable ? Partial<Record<V[Key], string | undefined>> : never;
 };
-type VarsResolver<Payload extends FactoryPayload> = (theme: RaikouTheme, props: Payload["props"], ctx: Payload["ctx"]) => TransformVars<Payload["vars"]>;
-type PartialVarsResolver<Payload extends FactoryPayload> = (theme: RaikouTheme, props: Payload["props"], ctx: Payload["ctx"]) => PartialTransformVars<Payload["vars"]>;
+type VarsResolver<Payload extends FactoryPayload> = (theme: RaikouTheme, props: Payload["props"]) => TransformVars<Payload["vars"]>;
+type PartialVarsResolver<Payload extends FactoryPayload> = (theme: RaikouTheme, props: Payload["props"]) => PartialTransformVars<Payload["vars"]>;
 declare function createVarsResolver<Payload extends FactoryPayload>(resolver: VarsResolver<Payload>): VarsResolver<Payload>;
 
 interface GetStylesApiOptions {

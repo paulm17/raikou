@@ -153,7 +153,7 @@ var SimpleGrid = (0, import_core2.factory)((_props, ref) => {
     vars
   });
   const responsiveClassName = (0, import_core2.useRandomClassName)();
-  return /* @__PURE__ */ import_react2.default.createElement(import_react2.default.Fragment, null, /* @__PURE__ */ import_react2.default.createElement(SimpleGridVariables, __spreadProps(__spreadValues({}, props), { selector: `.${responsiveClassName}` })), /* @__PURE__ */ import_react2.default.createElement(
+  return /* @__PURE__ */ import_react2.default.createElement(import_react2.default.Fragment, null, /* @__PURE__ */ import_react2.default.createElement("div", null, /* @__PURE__ */ import_react2.default.createElement(SimpleGridVariables, __spreadProps(__spreadValues({}, props), { selector: `.${responsiveClassName}` }))), /* @__PURE__ */ import_react2.default.createElement(
     import_core2.Box,
     __spreadValues(__spreadValues({
       ref

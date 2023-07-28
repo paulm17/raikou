@@ -103,7 +103,7 @@ const varsResolver = createVarsResolver<BadgeFactory>(
           variant === "dot" ? getThemeColor(color, theme) : undefined,
       },
     };
-  }
+  },
 );
 
 export const Badge = polymorphicFactory<BadgeFactory>((_props, ref) => {

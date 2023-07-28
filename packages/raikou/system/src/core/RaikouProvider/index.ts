@@ -1,7 +1,6 @@
 export * from "./theme.types";
-export * from "./color-scheme-managers";
 export * from "./color-functions";
-export * from "./ColorSchemeScript";
+export * from "./color-scheme-management/color-scheme-management";
 export { DEFAULT_THEME } from "./default-theme";
 export { validateRaikouTheme, mergeRaikouTheme } from "./merge-raikou-theme";
 export { RaikouProvider } from "./RaikouProvider";

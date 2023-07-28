@@ -546,3 +546,110 @@ body {
   --raikou-color-orange-outline: #fd7e14;
   --raikou-color-orange-outline-hover: rgba(253, 126, 20, 0.05);
 }
+
+:root[data-raikou-color-scheme="acid"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="aqua"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="autumn"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="black"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="bumblebee"] {
+  --__badge-bg: #f9d72f;
+  --__badge-border-color: transparent;
+  --__badge-color: var(--raikou-color-black);
+}
+:root[data-raikou-color-scheme="business"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="coffee"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="corporate"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="cmyk"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="cupcake"] {
+  --__badge-bg: #65c3c8;
+  --__badge-border-color: transparent;
+  --__badge-color: var(--raikou-color-black);
+}
+:root[data-raikou-color-scheme="cyberpunk"] {
+  --__badge-bg: #d600ff;
+  --__badge-border-color: transparent;
+  --__badge-color: var(--raikou-color-white);
+}
+:root[data-raikou-color-scheme="dark"] {
+  --__badge-bg: #373a40;
+  --__badge-border-color: transparent;
+  --__badge-color: var(--raikou-color-white);
+}
+:root[data-raikou-color-scheme="dracula"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="emerald"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="fantasy"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="forest"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="garden"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="halloween"] {
+  --__badge-bg: #f28c18;
+  --__badge-border-color: transparent;
+  --__badge-color: var(--raikou-color-gray-5);
+}
+:root[data-raikou-color-scheme="lemonade"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="light"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="lofi"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="luxury"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="mantine"] {
+  --__badge-bg: #1971c2;
+  --__badge-border-color: transparent;
+  --__badge-color: var(--raikou-color-white);
+}
+:root[data-raikou-color-scheme="night"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="pastel"] {
+  --__badge-bg: #d1c1d7;
+  --__badge-border-color: transparent;
+  --__badge-color: var(--raikou-color-black);
+}
+:root[data-raikou-color-scheme="retro"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="synthwave"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="valentine"] {
+  --__badge-bg: #e96d7b;
+  --__badge-border-color: transparent;
+  --__badge-color: var(--raikou-color-white);
+}
+:root[data-raikou-color-scheme="winter"] {
+  --raikou-h6-font-weight: 700;
+}
+:root[data-raikou-color-scheme="wireframe"] {
+  --raikou-h6-font-weight: 700;
+}

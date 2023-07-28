@@ -286,7 +286,7 @@ var Grid = (0, import_core4.factory)((_props, ref) => {
     varsResolver
   });
   const responsiveClassName = (0, import_core4.useRandomClassName)();
-  return /* @__PURE__ */ import_react6.default.createElement(GridProvider, { value: { getStyles, grow, columns } }, /* @__PURE__ */ import_react6.default.createElement(GridVariables, __spreadValues({ selector: `.${responsiveClassName}` }, props)), /* @__PURE__ */ import_react6.default.createElement(
+  return /* @__PURE__ */ import_react6.default.createElement(GridProvider, { value: { getStyles, grow, columns } }, /* @__PURE__ */ import_react6.default.createElement("div", null, /* @__PURE__ */ import_react6.default.createElement(GridVariables, __spreadValues({ selector: `.${responsiveClassName}` }, props))), /* @__PURE__ */ import_react6.default.createElement(
     import_core4.Box,
     __spreadValues(__spreadValues({
       ref

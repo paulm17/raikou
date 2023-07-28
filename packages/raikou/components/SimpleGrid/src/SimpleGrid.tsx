@@ -73,9 +73,14 @@ export const SimpleGrid = factory<SimpleGridFactory>((_props, ref) => {
 
   const responsiveClassName = useRandomClassName();
 
+  // encapsulate GridVariables in a div due to it nerfing
+  // data-raikou-styles="system"
+
   return (
     <>
-      <SimpleGridVariables {...props} selector={`.${responsiveClassName}`} />
+      <div>
+        <SimpleGridVariables {...props} selector={`.${responsiveClassName}`} />
+      </div>
       <Box
         ref={ref}
         {...getStyles("root", { className: responsiveClassName })}

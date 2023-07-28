@@ -1,6 +1,6 @@
 # postcss-preset-mantine
 
-[Documentation](http://raikou.dev/styles/postcss-preset)
+[Documentation](http://mantine.dev/styles/postcss-preset)
 
 ## Installation
 

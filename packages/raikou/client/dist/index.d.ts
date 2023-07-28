@@ -25,6 +25,8 @@ export * from '@raikou/portal';
 export * from '@raikou/progress';
 export * from '@raikou/rating';
 export * from '@raikou/ring-progress';
+export * from '@raikou/segmented-control';
+export * from '@raikou/select';
 export * from '@raikou/scroll-area';
 export * from '@raikou/slider';
 export * from '@raikou/switch';

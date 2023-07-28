@@ -98,6 +98,7 @@ export type ButtonFactory = PolymorphicFactory<{
   staticComponents: {
     Group: typeof ButtonGroup;
   };
+  variant: ButtonVariant;
 }>;
 
 const defaultProps: Partial<ButtonProps> = {
@@ -129,7 +130,7 @@ const varsResolver = createVarsResolver<ButtonFactory>(
         "--button-bd": colors.border,
       },
     };
-  }
+  },
 );
 
 export const Button = polymorphicFactory<ButtonFactory>((_props, ref) => {

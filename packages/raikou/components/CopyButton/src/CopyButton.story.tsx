@@ -5,7 +5,7 @@ export default { title: "CopyButton" };
 
 export function Usage() {
   return (
-    <CopyButton value="raikou.dev" timeout={1000}>
+    <CopyButton value="mantine.dev" timeout={1000}>
       {({ copied, copy }) => (
         <button
           type="button"

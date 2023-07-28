@@ -279,7 +279,7 @@ var Grid = factory2((_props, ref) => {
     varsResolver
   });
   const responsiveClassName = useRandomClassName2();
-  return /* @__PURE__ */ React6.createElement(GridProvider, { value: { getStyles, grow, columns } }, /* @__PURE__ */ React6.createElement(GridVariables, __spreadValues({ selector: `.${responsiveClassName}` }, props)), /* @__PURE__ */ React6.createElement(
+  return /* @__PURE__ */ React6.createElement(GridProvider, { value: { getStyles, grow, columns } }, /* @__PURE__ */ React6.createElement("div", null, /* @__PURE__ */ React6.createElement(GridVariables, __spreadValues({ selector: `.${responsiveClassName}` }, props))), /* @__PURE__ */ React6.createElement(
     Box2,
     __spreadValues(__spreadValues({
       ref

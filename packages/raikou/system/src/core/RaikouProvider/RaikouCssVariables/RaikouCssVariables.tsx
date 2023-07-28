@@ -33,7 +33,7 @@ export function RaikouCssVariables({
   if (css) {
     return (
       <style
-        data-raikou-styles
+        data-raikou-styles="system"
         nonce={nonce?.()}
         dangerouslySetInnerHTML={{
           __html: `${css}${
