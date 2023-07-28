@@ -228,6 +228,8 @@ return <Badge>Hello</Badge>;
 And the page will include all the neccessary client payload for the Badge and
 the page.
 
+##### Server Components - Raikou vs Mantine
+
 Here is an example of all the server components on a page (with Raikou using
 "use client").
 
