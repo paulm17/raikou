@@ -247,8 +247,8 @@ Here is an example of all the server components on a page (with Raikou using
 ##### Network tabs (Raikou vs Mantine)
 
 <p float="left">
-  <img src="./images/raikou.png" width="250" alt="Raikou Network Tab">
-  <img src="./images/mantine.png" width="250" alt="Raikou Network Tab">
+  <img src="./images/raikou.png" width="300" alt="Raikou Network Tab">
+  <img src="./images/mantine.png" width="300" alt="Raikou Network Tab">
 </p>
 
 ##### Raikou server vs client
