@@ -244,13 +244,12 @@ Here is an example of all the server components on a page (with Raikou using
 - Layout.js 37.3 kB vs 809 kB
 - Page.js 195 kb (for both)
 
-##### Raikou network tab
+##### Network tabs (Raikou vs Mantine)
 
-<img src="./images/raikou.png" alt="Raikou Network Tab">
-
-##### Mantine network tab
-
-<img src="./images/mantine.png" alt="Mantine Network Tab">
+<p float="left">
+  <img src="./images/raikou.png" width="250" alt="Raikou Network Tab">
+  <img src="./images/mantine.png" width="250" alt="Raikou Network Tab">
+</p>
 
 ##### Raikou server vs client
 
