@@ -100,6 +100,7 @@ type ButtonFactory = PolymorphicFactory<{
     staticComponents: {
         Group: typeof ButtonGroup;
     };
+    variant: ButtonVariant;
 }>;
 declare const Button: (<C = "button">(props: C extends React.ElementType<any> ? ButtonProps & {
     component?: C | undefined;
@@ -122,6 +123,7 @@ declare const Button: (<C = "button">(props: C extends React.ElementType<any> ? 
     staticComponents: {
         Group: typeof ButtonGroup;
     };
+    variant: ButtonVariant;
 }> & {
     classes: Record<ButtonStylesNames, string>;
 } & {

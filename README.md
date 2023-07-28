@@ -48,7 +48,10 @@ The project was conceived with these 4 long-term goals:
    the Classes API and Styles API is
    <a href="https://v7.mantine.dev/styles/styles-performance#inline-styles">very
    slow</a>.
-3. Issues may be closed due to the fork author not having free time. If an issue
+3. Mantine keeps the theme in state via context. Due to how server components
+   work, the theme is derived from tailwind. On the client side it is stored in
+   a window variable.
+4. Issues may be closed due to the fork author not having free time. If an issue
    is very important, please consider implementing a PR.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -63,9 +66,7 @@ The project was conceived with these 4 long-term goals:
 
 ## Getting Started
 
-Note: (the following is a placeholder, no packages have been published to npm).
-This is an example of how you may give instructions on setting up your project
-locally. To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple example steps.
 
 ### Installation to a NextJS 13 application
 
@@ -97,10 +98,8 @@ locally. To get a local copy up and running follow these simple example steps.
    presets: [require("@raikou/system/plugin.js")],
    ```
 
-4. Server components derive theme overrides from the tailwind config file. To
-   change the scaling, create a new custom param in the extends param. Client
-   components will derive from a new entry in local storage. It will only
-   include the values in the custom param.
+4. Components derive theme overrides from the tailwind config file. To change
+   the scaling, create a new custom param in the extends param.
 
    ```js
    theme: {
@@ -146,9 +145,8 @@ Change appPath to where the tsx files for your project reside.
    ```
 
 8. Amend layout.tsx to resemble the following. RaikouProvider must encapsulate
-   the children and ColorSchemeScript manages the global colorscheme.
-
-   Additionally include the tailwind configuration for the server components.
+   the children and ColorSchemeScript manages the global colorscheme. Also
+   include the tailwind configuration for the server components.
 
    ```js
    import { RaikouProvider, ColorSchemeScript } from '@raikou/system';
@@ -256,6 +254,7 @@ Here is an example of all the components on a page.
 - [x] Enable react server components and split packages to server and client
 - [x] Tree-shaking for client build
 - [x] Use Tailwind Theme, instead of keeping it in state
+- [x] Replace Mantine ColorScheme code with Next-Themes
 - [ ] Upgrade tailwind to the new release supporting LightningCSS
 - [ ] With the new tailwind release, migrate the postcss script to a
       LightningCSS transformer. Investigate a Rust port.
