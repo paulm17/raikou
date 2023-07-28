@@ -145,11 +145,11 @@ Change appPath to where the tsx files for your project reside.
    ```
 
 8. Amend layout.tsx to resemble the following. RaikouProvider must encapsulate
-   the children and ColorSchemeScript manages the global colorscheme. Also
-   include the tailwind configuration for the server components.
+   the children and include the tailwind configuration for the server
+   components.
 
    ```js
-   import { RaikouProvider, ColorSchemeScript } from '@raikou/system';
+   import { RaikouProvider } from '@raikou/system';
    import resolveConfig from "tailwindcss/resolveConfig";
    import tailwindConfig from "../tailwind.config.js";
 
@@ -162,9 +162,6 @@ Change appPath to where the tsx files for your project reside.
 
       return (
          <html lang="en">
-            <head>
-               <ColorSchemeScript />
-            </head>
             <body className={inter.className}>
                <RaikouProvider theme={(fullConfig.theme as any).custom}>{children}</RaikouProvider>
             </body>
@@ -231,18 +228,31 @@ return <Badge>Hello</Badge>;
 And the page will include all the neccessary client payload for the Badge and
 the page.
 
-Here is an example of all the components on a page.
+Here is an example of all the server components on a page (with Raikou using
+"use client").
 
-<img src="./images/serverComponents.png" alt="Logo">
+<img src="./images/serverComponents.png" alt="Server Components picture">
 
-##### Some stats for server vs "use client":
+##### Some stats for raikou vs mantine:
 
-- 10 vs 11 requests
-- 1.9MB transferred vs 1.7MB transferred
-- 8.2MB resources vs 7.1MB resources
-- Finished 1.01s vs 1.01s
-- Layout.js 108kb
-- Page.js 264kb vs 0kb (doesn't exist)
+- 12 requests each (remove favicon from mantine)
+- 1.8MB transferred vs 2.6MB transferred
+- 7.8MB resources vs 12.4MB resources
+- Finished 3.81s vs 5.51s
+- Layout.js 37.3 kB vs 809 kB
+- Page.js 195 kb (for both)
+
+##### Raikou network tab
+
+<img src="./images/raikou.png" alt="Raikou Network Tab">
+
+##### Mantine network tab
+
+<img src="./images/mantine.png" alt="Mantine Network Tab">
+
+##### Raikou server vs client
+
+When omitting "use client" this results in Page.js not being requested.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
