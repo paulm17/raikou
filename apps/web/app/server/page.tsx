@@ -48,7 +48,7 @@ export default function Page() {
       <Title order={2} ml={15}>
         Server Components
       </Title>
-      <Group p={20}>
+      <Group p={20} grow>
         <Stack
           classNames={{
             root: "w-[500px]",
@@ -174,9 +174,7 @@ export default function Page() {
           <Title order={3}>Button</Title>
           <Button variant="filled">Button</Button>
           <Title order={3}>Title</Title>
-          <Title order={1} className="text-blue-200">
-            A title is here
-          </Title>
+          <Title order={1}>A title is here</Title>
           <Title order={3}>Anchor</Title>
           <Anchor
             href="https://mantine.dev/"

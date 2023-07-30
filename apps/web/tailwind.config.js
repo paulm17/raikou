@@ -30,6 +30,7 @@ module.exports = {
     "./node_modules/@raikou/server/node_modules/@raikou/notification/dist/*.js",
     "./node_modules/@raikou/server/node_modules/@raikou/paper/dist/*.js",
     "./node_modules/@raikou/server/node_modules/@raikou/skeleton/dist/*.js",
+    "./node_modules/@raikou/server/node_modules/@raikou/simple-grid/dist/*.js",
     "./node_modules/@raikou/server/node_modules/@raikou/stack/dist/*.js",
     "./node_modules/@raikou/server/node_modules/@raikou/text/dist/*.js",
     "./node_modules/@raikou/server/node_modules/@raikou/title/dist/*.js",
@@ -72,23 +73,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      custom: {
-        primaryColor: "bright-pink",
-        colors: {
-          "bright-pink": [
-            "#F0BBDD",
-            "#ED9BCF",
-            "#EC7CC3",
-            "#ED5DB8",
-            "#F13EAF",
-            "#F71FA7",
-            "#FF00A1",
-            "#E00890",
-            "#C50E82",
-            "#AD1374",
-          ],
-        },
-      },
+      custom: {},
     },
   },
   presets: [require("@raikou/system/plugin.js")],

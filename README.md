@@ -6,7 +6,7 @@
   </a>
   <h3 align="center">RAIKOU</h3>
   <p align="center">
-    Raikou is a mantine fork which replaces modules.css to use tailwind.
+    Raikou is a mantine fork which replaces css modules to use tailwind.
     <br />
     <a href="https://github.com/paulm17/raikou/issues">Report Bug</a>
     ·
@@ -26,16 +26,18 @@ obvious choice.
 
 The project was conceived with these 4 long-term goals:
 
-1. To allow for components to behave as server components.
+1. To allow for components without hooks to behave as server components and
+   should state be introduced on the server side, make all components server
+   aware.
 2. To ensure proper tree-shaking for components and purging of unused css. (TBD,
    waiting for vercel to resolve the client bundle to be tree-shakable)
 3. To switch the theme from react context (state) to the tailwind theme. Thereby
    negating the need to keep the color mode (light/dark) and text direction
    (left/right) in state.
 4. When using the ClassNames api, to ensure that there were no clashes between
-   the RaikouProvider CSS of the component and tailwind styles provided. This
-   has been made possible with tailwind RaikouProviderping the styles via a
-   plugin architecture. See for
+   the bootstrapped CSS of the component and tailwind styles provided. This has
+   been made possible with tailwind loading the styles via a plugin
+   architecture. See for
    <a href="https://tailwindcss.com/docs/plugins#css-in-js-syntax">more
    information</a>.
 
@@ -43,15 +45,20 @@ The project was conceived with these 4 long-term goals:
 
 1. Remix, Svelte, Solid, Astro and any other frameworks are not supported. There
    are no intentions of supporting anything other than NextJS.
-2. There may be design decisions implemented that will diverge from Mantine. For
-   example the Styles API layer may disappear because it has been superseded by
-   the Classes API and Styles API is
-   <a href="https://v7.mantine.dev/styles/styles-performance#inline-styles">very
-   slow</a>.
-3. Mantine keeps the theme in state via context. Due to how server components
-   work, the theme is derived from tailwind. On the client side it is stored in
-   a window variable.
-4. Issues may be closed due to the fork author not having free time. If an issue
+2. There may be design decisions implemented that will diverge from Mantine.
+   - Styles API layer may disappear because it has been superseded by the
+     Classes API and Styles API is
+     <a href="https://v7.mantine.dev/styles/styles-performance#inline-styles">very
+     slow</a>.
+   - Mantine keeps the theme in state via context. Raikou handles this
+     differently. On the server side, the theme is loaded from the file each
+     time it is requested. On the client side it is loaded once and then stored
+     in a window variable. Each time it is requested, it is taken from that.
+   - There are no createTheme function. The tailwind theme is responsible for
+     any changes.
+   - The code responsible for the ColorScheme has been removed and a more
+     lightweight version using Next Themes has been used.
+3. Issues may be closed due to the fork author not having free time. If an issue
    is very important, please consider implementing a PR.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -145,8 +152,7 @@ Change appPath to where the tsx files for your project reside.
    ```
 
 8. Amend layout.tsx to resemble the following. RaikouProvider must encapsulate
-   the children and include the tailwind configuration for the server
-   components.
+   the children and include the tailwind configuration for the theme.
 
    ```js
    import { RaikouProvider } from '@raikou/system';
@@ -244,6 +250,8 @@ Here is an example of all the server components on a page (with Raikou using
 - Layout.js 37.3 kB vs 809 kB
 - Page.js 195 kb (for both)
 
+Stats are taken from the very first initial load.
+
 ##### Network tabs (Raikou vs Mantine)
 
 <p float="left">
@@ -264,14 +272,17 @@ When omitting "use client" this results in Page.js not being requested.
 - [x] Create a postcss script to purge unused CSS
 - [x] Enable react server components and split packages to server and client
 - [x] Tree-shaking for client build
-- [x] Use Tailwind Theme, instead of keeping it in state
+- [x] Replace the context provider that components use for state, with the
+      tailwind theme
 - [x] Replace Mantine ColorScheme code with Next-Themes
 - [ ] Upgrade tailwind to the new release supporting LightningCSS
 - [ ] With the new tailwind release, migrate the postcss script to a
       LightningCSS transformer. Investigate a Rust port.
-- [ ] With the new tailwind release, possibly port the current plugin based css
-      to css files
+- [ ] With the new tailwind release, investigate whether it's possible to port
+      the current plugins to css files and whether components can access the
+      theme
 - [ ] Create a <a href="https://daisyui.com/docs/themes/">theme switcher</a>
+      similar to Daisy UI
 - [ ] Fix the Storybook demos to work under version 7
 
 See the [open issues](https://github.com/paulm17/raikou/issues) for a full list
