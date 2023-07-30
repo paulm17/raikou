@@ -56,8 +56,9 @@ The project was conceived with these 4 long-term goals:
      in a window variable. Each time it is requested, it is taken from that.
    - There are no createTheme function. The tailwind theme is responsible for
      any changes.
-   - The code responsible for the ColorScheme has been removed and a more
-     lightweight version using Next Themes has been used.
+   - The code responsible for the ColorScheme has been replaced with a more
+     lightweight version using
+     <a href="https://github.com/pacocoursey/next-themes">Next Themes</a>.
 3. Issues may be closed due to the fork author not having free time. If an issue
    is very important, please consider implementing a PR.
 
