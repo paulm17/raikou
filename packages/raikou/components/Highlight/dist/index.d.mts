@@ -71,7 +71,7 @@ declare const Highlight: (<C = "div">(props: C extends React.ElementType<any> ? 
     stylesNames: TextStylesNames;
     variant: TextVariant;
 }> & {
-    classes: Record<"root", string>;
+    classes: Record<string, string>;
 } & Record<string, never>;
 
 export { Highlight, HighlightFactory, HighlightProps };

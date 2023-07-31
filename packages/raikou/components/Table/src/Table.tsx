@@ -23,7 +23,7 @@ import {
   TableTr,
   TableThead,
 } from "./Table.components";
-import { TableScrollContainer } from './TableScrollContainer';
+import { TableScrollContainer } from "./TableScrollContainer";
 import { TableProvider } from "./Table.context";
 
 export type TableStylesNames =
@@ -125,7 +125,7 @@ const varsResolver = createVarsResolver<TableFactory>(
       highlightOnHoverColor,
       striped,
       highlightOnHover,
-    }
+    },
   ) => ({
     table: {
       "--table-layout": layout,
@@ -144,7 +144,7 @@ const varsResolver = createVarsResolver<TableFactory>(
           ? getThemeColor(highlightOnHoverColor, theme)
           : undefined,
     },
-  })
+  }),
 );
 
 export const Table = factory<TableFactory>((_props, ref) => {
@@ -218,7 +218,6 @@ export const Table = factory<TableFactory>((_props, ref) => {
   );
 });
 
-// Table.classes = classes;
 Table.displayName = "@raikou/core/Table";
 Table.Td = TableTd;
 Table.Th = TableTh;

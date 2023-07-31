@@ -623,7 +623,7 @@ body {
 :root[data-raikou-color-scheme="luxury"] {
   --raikou-h6-font-weight: 700;
 }
-:root[data-raikou-color-scheme="mantine"] {
+:root[data-raikou-color-scheme="raikou"] {
   --__badge-bg: #1971c2;
   --__badge-border-color: transparent;
   --__badge-color: var(--raikou-color-white);

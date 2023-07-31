@@ -10,6 +10,7 @@ interface GroupStylesCtx {
     childWidth: string;
 }
 interface GroupProps extends BoxProps, StylesApiProps<GroupFactory>, ElementProps<"div"> {
+    __size?: any;
     /** Controls `justify-content` CSS property, `'flex-start'` by default */
     justify?: React.CSSProperties["justifyContent"];
     /** Controls `align-items` CSS property, `'center'` by default */

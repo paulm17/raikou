@@ -46,7 +46,7 @@ const defaultProps: Partial<ButtonGroupProps> = {
 const varsResolver = createVarsResolver<ButtonGroupFactory>(
   (_, { borderWidth }) => ({
     root: { "--button-border-width": rem(borderWidth) },
-  })
+  }),
 );
 
 export const ButtonGroup = factory<ButtonGroupFactory>((_props, ref) => {
@@ -91,5 +91,4 @@ export const ButtonGroup = factory<ButtonGroupFactory>((_props, ref) => {
   );
 });
 
-// ButtonGroup.classes = classes;
 ButtonGroup.displayName = "@raikou/core/ButtonGroup";

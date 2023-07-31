@@ -1365,6 +1365,72 @@ var require_Button_plugin = __commonJS({
   }
 });
 
+// ../components/Card/src/Card.plugin.ts
+var require_Card_plugin = __commonJS({
+  "../components/Card/src/Card.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents }) {
+      addComponents({
+        ".card-root.card-root": {
+          position: "relative",
+          overflow: "hidden",
+          display: "flex",
+          flexDirection: "column",
+          backgroundColor: "var(--_card-bg)",
+          padding: "var(--card-padding)",
+          color: "var(--raikou-color-text)",
+          '[data-raikou-color-scheme="light"] &': {
+            "--_card-bg": "var(--raikou-color-white)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_card-bg": "var(--raikou-color-dark-6)"
+          }
+        },
+        ".card-section.card-section": {
+          display: "block",
+          marginLeft: "calc(var(--card-padding) * -1)",
+          marginRight: "calc(var(--card-padding) * -1)",
+          paddingLeft: "var(--_card-section-padding, 0)",
+          paddingRight: "var(--_card-section-padding, 0)",
+          borderTop: "var(--_card-section-border-top, unset)",
+          borderBottom: "var(--_card-section-border-bottom, unset)",
+          marginTop: "var(--_card-section-mt)",
+          marginBottom: "var(--_card-section-mb)",
+          "&[data-first-section]": {
+            "--_card-section-mt": "calc(var(--card-padding) * -1)",
+            "--_card-section-border-top": "none !important"
+          },
+          "&[data-last-section]": {
+            "--_card-section-mb": "calc(var(--card-padding) * -1)",
+            "--_card-section-border-bottom": "none !important"
+          },
+          "&[data-inherit-padding]": {
+            "--_card-section-padding": "var(--card-padding)"
+          },
+          "&[data-with-border]": {
+            "--_card-section-border-top": `${rem(
+              "1px"
+            )} solid var(--_card-section-border-color)`,
+            "--_card-section-border-bottom": `${rem(
+              "1px"
+            )} solid var(--_card-section-border-color)`
+          },
+          "& + &": {
+            "--_card-section-border-top": "none !important"
+          },
+          '[data-raikou-color-scheme="light"] &': {
+            "--_card-section-border-color": "var(--raikou-color-gray-3)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_card-section-border-color": "var(--raikou-color-dark-4)"
+          }
+        }
+      });
+    };
+  }
+});
+
 // ../components/Center/src/Center.plugin.ts
 var require_Center_plugin = __commonJS({
   "../components/Center/src/Center.plugin.ts"(exports, module) {
@@ -2380,6 +2446,93 @@ var require_Group_plugin = __commonJS({
   }
 });
 
+// ../components/Image/src/Image.plugin.ts
+var require_Image_plugin = __commonJS({
+  "../components/Image/src/Image.plugin.ts"(exports, module) {
+    "use strict";
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".image-root": {
+          display: "block",
+          objectFit: "var(--image-object-fit, cover)",
+          width: "100%",
+          borderRadius: "var(--image-radius, 0)"
+        }
+      });
+    };
+  }
+});
+
+// ../components/Indicator/src/Indicator.plugin.ts
+var require_Indicator_plugin = __commonJS({
+  "../components/Indicator/src/Indicator.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        "@keyframes indicator-pulse": {
+          "0%": {
+            opacity: "0.6",
+            boxShadow: `0 0 ${rem("0.5px")} 0 var(--indicator-color)`
+          },
+          "100%": {
+            opacity: "0",
+            boxShadow: `0 0 ${rem("0.5px")} ${rem("4.4px")} var(--indicator-color)`
+          }
+        },
+        ".indicator-root": {
+          position: "relative",
+          display: "var(--_indicator-display, block)",
+          "&[data-inline]": {
+            "--_indicator-display": "inline-block"
+          }
+        },
+        ".indicator-indicator": {
+          position: "absolute",
+          top: "var(--indicator-top)",
+          left: "var(--indicator-left)",
+          right: "var(--indicator-right)",
+          bottom: "var(--indicator-bottom)",
+          transform: "translate(var(--indicator-translate-x), var(--indicator-translate-y))",
+          minWidth: "var(--indicator-size)",
+          height: "var(--indicator-size)",
+          borderRadius: `var(--indicator-radius, ${rem("1000px")})`,
+          zIndex: "var(--indicator-z-index, 200)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: "var(--raikou-font-size-xs)",
+          paddingLeft: "var(--_indicator-padding, 0)",
+          paddingRight: "var(--_indicator-padding, 0)",
+          backgroundColor: "var(--indicator-color)",
+          border: "var(--_indicator-border)",
+          color: "var(--raikou-color-white)",
+          whiteSpace: "nowrap",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            inset: "0",
+            backgroundColor: "var(--indicator-color)",
+            borderRadius: `var(--indicator-radius, ${rem("1000px")})`,
+            zIndex: "-1"
+          },
+          "&[data-with-label]": {
+            "--_indicator-padding": "calc(var(--raikou-spacing-xs) / 2)"
+          },
+          "&[data-with-border]": {
+            "--_indicator-border": `${rem("2px")} solid var(--raikou-color-body)`
+          },
+          "&[data-processing]": {
+            "&::before": {
+              animation: "indicator-pulse 1000ms linear infinite"
+            }
+          }
+        }
+      });
+    };
+  }
+});
+
 // ../components/InlineInput/src/InlineInput.plugin.ts
 var require_InlineInput_plugin = __commonJS({
   "../components/InlineInput/src/InlineInput.plugin.ts"(exports, module) {
@@ -2599,6 +2752,16 @@ var require_Input_plugin = __commonJS({
           paddingTop: `var(--input-padding-y, 0rem)`,
           paddingBottom: `var(--input-padding-y, 0rem)`,
           cursor: "var(--_input-cursor)",
+          overflow: "var(--_input-overflow)",
+          /* Used as data attribute in Textarea component, does not have associated prop on the Input component */
+          "&[data-no-overflow]": {
+            "--_input-overflow": "hidden"
+          },
+          /* Used as data attribute in JsonInput component, does not have associated prop on the Input component */
+          "&[data-monospace]": {
+            "--_input-font-family": "var(--raikou-font-family-monospace)",
+            "--_input-fz": `calc(var(--input-fz) - ${rem("2px")})`
+          },
           "&:focus, &:focus-within": {
             outline: "none",
             borderColor: "var(--_input-bd-focus)"
@@ -2881,7 +3044,7 @@ var require_Modal_plugin = __commonJS({
             ".content": {
               "--_content-flex": "0 0 100%",
               "--_content-max-height": "auto",
-              "--_content-height": "100vh"
+              "--_content-height": "100dvh"
             },
             ".inner": {
               "--_inner-y-offset": "0",
@@ -2901,7 +3064,7 @@ var require_Modal_plugin = __commonJS({
         ".modal-content": {
           flex: "var(--_content-flex, 0 0 var(--modal-size))",
           maxWidth: "100%",
-          maxHeight: "var(--_content-max-height, calc(100vh - var(--modal-y-offset) * 2))",
+          maxHeight: "var(--_content-max-height, calc(100dvh - var(--modal-y-offset) * 2))",
           height: "var(--_content-height, auto)",
           overflowY: "auto"
         },
@@ -3151,37 +3314,6 @@ var require_Overlay_plugin = __commonJS({
   }
 });
 
-// ../components/Paper/src/Paper.plugin.ts
-var require_Paper_plugin = __commonJS({
-  "../components/Paper/src/Paper.plugin.ts"(exports, module) {
-    "use strict";
-    module.exports = function({ addComponents, theme }) {
-      addComponents({
-        ".paper-root": {
-          outline: "0",
-          "-webkit-tap-highlight-color": "transparent",
-          display: "block",
-          touchAction: "manipulation",
-          textDecoration: "none",
-          borderRadius: "var(--paper-radius)",
-          boxShadow: "var(--paper-shadow)",
-          backgroundColor: "var(--raikou-color-body)",
-          border: "var(--_paper-border-width, 0) solid var(--_paper-border-color, transparent)",
-          "&[data-with-border]": {
-            "--_paper-border-width": "1px",
-            '[data-raikou-color-scheme="light"] &': {
-              "--_paper-border-color": "var(--raikou-color-gray-3)"
-            },
-            '[data-raikou-color-scheme="dark"] &': {
-              "--_paper-border-color": "var(--raikou-color-dark-4)"
-            }
-          }
-        }
-      });
-    };
-  }
-});
-
 // ../components/Pagination/src/Pagination.plugin.ts
 var require_Pagination_plugin = __commonJS({
   "../components/Pagination/src/Pagination.plugin.ts"(exports, module) {
@@ -3260,6 +3392,88 @@ var require_Pagination_plugin = __commonJS({
           alignItems: "center",
           justifyContent: "center",
           pointerEvents: "none"
+        }
+      });
+    };
+  }
+});
+
+// ../components/Paper/src/Paper.plugin.ts
+var require_Paper_plugin = __commonJS({
+  "../components/Paper/src/Paper.plugin.ts"(exports, module) {
+    "use strict";
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".paper-root": {
+          outline: "0",
+          "-webkit-tap-highlight-color": "transparent",
+          display: "block",
+          touchAction: "manipulation",
+          textDecoration: "none",
+          borderRadius: "var(--paper-radius)",
+          boxShadow: "var(--paper-shadow)",
+          backgroundColor: "var(--raikou-color-body)",
+          border: "var(--_paper-border-width, 0) solid var(--_paper-border-color, transparent)",
+          "&[data-with-border]": {
+            "--_paper-border-width": "1px",
+            '[data-raikou-color-scheme="light"] &': {
+              "--_paper-border-color": "var(--raikou-color-gray-3)"
+            },
+            '[data-raikou-color-scheme="dark"] &': {
+              "--_paper-border-color": "var(--raikou-color-dark-4)"
+            }
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../components/PasswordInput/src/PasswordInput.plugin.ts
+var require_PasswordInput_plugin = __commonJS({
+  "../components/PasswordInput/src/PasswordInput.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".passwordInput-root": {
+          "--psi-button-size-xs": rem("22px"),
+          "--psi-button-size-sm": rem("26px"),
+          "--psi-button-size-md": rem("28px"),
+          "--psi-button-size-lg": rem("32px"),
+          "--psi-button-size-xl": rem("40px"),
+          "--psi-icon-size-xs": rem("12px"),
+          "--psi-icon-size-sm": rem("15px"),
+          "--psi-icon-size-md": rem("17px"),
+          "--psi-icon-size-lg": rem("19px"),
+          "--psi-icon-size-xl": rem("21px")
+        },
+        ".passwordInput-input": {
+          position: "relative",
+          overflow: "hidden"
+        },
+        ".passwordInput-innerInput": {
+          fontFamily: "var(--raikou-font-family)",
+          backgroundColor: "transparent",
+          border: "0",
+          paddingRight: "var(--_input-padding-right)",
+          paddingLeft: "var(--_input-padding-left)",
+          position: "absolute",
+          inset: "0",
+          outline: "0",
+          fontSize: "inherit",
+          "[data-disabled] &, &:disabled": {
+            cursor: "not-allowed"
+          },
+          "&::placeholder": {
+            color: "var(--_input-placeholder-color)"
+          }
+        },
+        ".passwordInput-visibilityToggle": {
+          width: "var(--psi-button-size)",
+          height: "var(--psi-button-size)",
+          minwidth: "var(--psi-button-size)",
+          minHeight: "var(--psi-button-size)"
         }
       });
     };
@@ -3428,6 +3642,29 @@ var require_PillsInput_plugin = __commonJS({
   }
 });
 
+// ../components/PinInput/src/PinInput.plugin.ts
+var require_PinInput_plugin = __commonJS({
+  "../components/PinInput/src/PinInput.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".pinInput-root": {
+          "--pin-input-size-xs": rem("30px"),
+          "--pin-input-size-sm": rem("36px"),
+          "--pin-input-size-md": rem("42px"),
+          "--pin-input-size-lg": rem("50px"),
+          "--pin-input-size-xl": rem("60px")
+        },
+        ".pinInput-pinInput": {
+          width: "var(--pin-input-size)",
+          height: "var(--pin-input-size)"
+        }
+      });
+    };
+  }
+});
+
 // ../components/Popover/src/Popover.plugin.ts
 var require_Popover_plugin = __commonJS({
   "../components/Popover/src/Popover.plugin.ts"(exports, module) {
@@ -3492,10 +3729,10 @@ var require_Progress_plugin = __commonJS({
           backgroundColor: "var(--_track-bg)",
           display: "flex",
           '[data-raikou-color-scheme="light"] &': {
-            "--_track-bg": "var(--mantine-color-gray-2)"
+            "--_track-bg": "var(--raikou-color-gray-2)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_track-bg": "var(--mantine-color-dark-4)"
+            "--_track-bg": "var(--raikou-color-dark-4)"
           }
         },
         ".progress-section": {
@@ -3539,7 +3776,7 @@ var require_Progress_plugin = __commonJS({
           }
         },
         ".progress-label": {
-          color: "var(--mantine-color-white)",
+          color: "var(--raikou-color-white)",
           fontWeight: "bold",
           userSelect: "none",
           overflow: "hidden",
@@ -5580,6 +5817,7 @@ var require_plugin = __commonJS({
         require_Breadcrumbs_plugin(),
         require_Burger_plugin(),
         require_Button_plugin(),
+        require_Card_plugin(),
         require_Center_plugin(),
         require_Checkbox_plugin(),
         require_Chip_plugin(),
@@ -5594,6 +5832,8 @@ var require_plugin = __commonJS({
         require_Flex_plugin(),
         require_Grid_plugin(),
         require_Group_plugin(),
+        require_Image_plugin(),
+        require_Indicator_plugin(),
         require_InlineInput_plugin(),
         require_Input_plugin(),
         require_Kbd_plugin(),
@@ -5603,10 +5843,12 @@ var require_plugin = __commonJS({
         require_ModalBase_plugin(),
         require_Notification_plugin(),
         require_Overlay_plugin(),
-        require_Paper_plugin(),
         require_Pagination_plugin(),
+        require_Paper_plugin(),
+        require_PasswordInput_plugin(),
         require_Pill_plugin(),
         require_PillsInput_plugin(),
+        require_PinInput_plugin(),
         require_Popover_plugin(),
         require_Progress_plugin(),
         require_Rating_plugin(),

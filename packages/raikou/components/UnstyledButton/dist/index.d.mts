@@ -30,7 +30,7 @@ declare const UnstyledButton: (<C = "button">(props: C extends React.ElementType
     defaultComponent: "button";
     defaultRef: HTMLButtonElement;
 }> & {
-    classes: Record<"root", string>;
+    classes: Record<string, string>;
 } & Record<string, never>;
 
 export { UnstyledButton, UnstyledButtonFactory, UnstyledButtonProps, UnstyledButtonStylesNames };

@@ -83,7 +83,7 @@ declare const Avatar: (<C = "div">(props: C extends React.ElementType<any> ? Ava
         Group: typeof AvatarGroup;
     };
 }> & {
-    classes: Record<AvatarStylesNames, string>;
+    classes: Record<string, string>;
 } & {
     Group: typeof AvatarGroup;
 };

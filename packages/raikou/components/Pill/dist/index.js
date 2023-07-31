@@ -161,44 +161,26 @@ var import_core5 = require("@raikou/core");
 // ../Loader/src/loaders/Bars.tsx
 var import_react3 = __toESM(require("react"));
 
-// ../../../../node_modules/.pnpm/clsx@1.1.1/node_modules/clsx/dist/clsx.m.js
-function toVal(mix) {
-  var k, y, str = "";
-  if (typeof mix === "string" || typeof mix === "number") {
-    str += mix;
-  } else if (typeof mix === "object") {
-    if (Array.isArray(mix)) {
-      for (k = 0; k < mix.length; k++) {
-        if (mix[k]) {
-          if (y = toVal(mix[k])) {
-            str && (str += " ");
-            str += y;
-          }
-        }
-      }
-    } else {
-      for (k in mix) {
-        if (mix[k]) {
-          str && (str += " ");
-          str += k;
-        }
-      }
-    }
-  }
-  return str;
+// ../../../../node_modules/.pnpm/clsx@2.0.0/node_modules/clsx/dist/clsx.mjs
+function r(e) {
+  var t, f, n = "";
+  if ("string" == typeof e || "number" == typeof e)
+    n += e;
+  else if ("object" == typeof e)
+    if (Array.isArray(e))
+      for (t = 0; t < e.length; t++)
+        e[t] && (f = r(e[t])) && (n && (n += " "), n += f);
+    else
+      for (t in e)
+        e[t] && (n && (n += " "), n += t);
+  return n;
 }
-function clsx_m_default() {
-  var i = 0, tmp, x, str = "";
-  while (i < arguments.length) {
-    if (tmp = arguments[i++]) {
-      if (x = toVal(tmp)) {
-        str && (str += " ");
-        str += x;
-      }
-    }
-  }
-  return str;
+function clsx() {
+  for (var e, t, f = 0, n = ""; f < arguments.length; )
+    (e = arguments[f++]) && (t = r(e)) && (n && (n += " "), n += t);
+  return n;
 }
+var clsx_default = clsx;
 
 // ../Loader/src/loaders/Bars.tsx
 var import_core2 = require("@raikou/core");
@@ -209,7 +191,7 @@ var Bars = (0, import_react3.forwardRef)(
       import_core2.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_m_default("bars-loader", className)
+        className: clsx_default("bars-loader", className)
       }, others), {
         ref
       }),
@@ -230,7 +212,7 @@ var Oval = (0, import_react4.forwardRef)(
       import_core3.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_m_default("oval-loader", className)
+        className: clsx_default("oval-loader", className)
       }, others), {
         ref
       })
@@ -248,7 +230,7 @@ var Dots = (0, import_react5.forwardRef)(
       import_core4.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_m_default("dots-loader", className)
+        className: clsx_default("dots-loader", className)
       }, others), {
         ref
       }),

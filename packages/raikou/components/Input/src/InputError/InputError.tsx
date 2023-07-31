@@ -93,5 +93,4 @@ export const InputError = factory<InputErrorFactory>((_props, ref) => {
   );
 });
 
-// InputError.classes = classes;
 InputError.displayName = "@raikou/core/InputError";

@@ -5,7 +5,7 @@ export default { title: "UnstyledButton" };
 
 export function Usage() {
   return (
-    // <MantineThemeProvider
+    // <RaikouThemeProvider
     //   inherit
     //   theme={{
     //     components: {
@@ -22,7 +22,7 @@ export function Usage() {
         Button
       </UnstyledButton>
     </div>
-    // </MantineThemeProvider>
+    // </RaikouThemeProvider>
   );
 }
 

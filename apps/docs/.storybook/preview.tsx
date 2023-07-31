@@ -16,9 +16,8 @@ const preview: Preview = {
       themes: {
         light: "light",
         dark: "dark",
-        mantine: "mantine",
       },
-      defaultTheme: "mantine",
+      defaultTheme: "dark",
       attributeName: "data-raikou-color-scheme",
     }),
   ],

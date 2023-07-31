@@ -29,10 +29,10 @@ export default { title: "Container" };
 
 export function Usage() {
   return (
-    // <MantineThemeProvider theme={theme}>
+    // <RaikouThemeProvider theme={theme}>
     <Container size="xxs" h={50} bg="blue">
       Container
     </Container>
-    // </MantineThemeProvider>
+    // </RaikouThemeProvider>
   );
 }

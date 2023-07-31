@@ -40,7 +40,7 @@ declare const Paper: (<C = "div">(props: C extends React.ElementType<any> ? Pape
     stylesNames: PaperStylesNames;
     vars: PaperCssVariables;
 }> & {
-    classes: Record<"root", string>;
+    classes: Record<string, string>;
 } & Record<string, never>;
 
 export { Paper, PaperCssVariables, PaperFactory, PaperProps, PaperStylesNames };

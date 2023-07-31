@@ -299,7 +299,6 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
   );
 });
 
-// Input.classes = classes;
 Input.Wrapper = InputWrapper;
 Input.Label = InputLabel;
 Input.Error = InputError;

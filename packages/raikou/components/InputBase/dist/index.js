@@ -818,7 +818,6 @@ var InputBase = (0, import_core8.polymorphicFactory)((props, ref) => {
   ), { inputProps, wrapperProps } = _a, others = __objRest(_a, ["inputProps", "wrapperProps"]);
   return /* @__PURE__ */ import_react9.default.createElement(Input.Wrapper, __spreadValues({}, wrapperProps), /* @__PURE__ */ import_react9.default.createElement(Input, __spreadProps(__spreadValues(__spreadValues({}, inputProps), others), { ref })));
 });
-InputBase.classes = __spreadValues(__spreadValues({}, Input.classes), Input.Wrapper.classes);
 InputBase.displayName = "@raikou/core/InputBase";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

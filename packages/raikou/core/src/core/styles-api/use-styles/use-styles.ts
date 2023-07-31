@@ -18,7 +18,7 @@ import {
 export interface UseStylesInput<Payload extends FactoryPayload> {
   name: string | (string | undefined)[];
   classes: Payload["stylesNames"] extends string
-    ? Record<Payload["stylesNames"], string>
+    ? Record<string, string>
     : never;
   props: Payload["props"];
   stylesCtx?: Payload["ctx"];

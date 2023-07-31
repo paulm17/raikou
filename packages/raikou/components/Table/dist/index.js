@@ -1270,7 +1270,7 @@ var TableScrollContainer = (0, import_core6.factory)(
     );
   }
 );
-TableScrollContainer.displayName = "@mantine/core/TableScrollContainer";
+TableScrollContainer.displayName = "@raikou/core/TableScrollContainer";
 
 // src/Table.tsx
 var defaultProps4 = {

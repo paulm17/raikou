@@ -207,12 +207,13 @@ Change appPath to where the tsx files for your project reside.
 
 ## Server Components
 
-There are 33 server components available without the need for "use client" in
+There are 34 server components available without the need for "use client" in
 either the component library entry point nor in the page itself. They are:
 action-icon, alert, anchor, aspect-ratio, background-image, badge, blockquote,
 box, breadcrumbs, button, center, close-button, code, color-swatch, container,
-divider, fieldset, flex, group, highlight, kbd, loader, mark, paper, skeleton,
-simple-grid, space, stack, text, title, unstyled-button, visually-hidden.
+divider, fieldset, flex, group, highlight, indicator, kbd, loader, mark, paper,
+skeleton, simple-grid, space, stack, text, title, unstyled-button,
+visually-hidden.
 
 To use a server component do the following:
 

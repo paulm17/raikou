@@ -48,7 +48,7 @@ export const InputBase = polymorphicFactory<InputBaseFactory>((props, ref) => {
   const { inputProps, wrapperProps, ...others } = useInputProps(
     "InputBase",
     defaultProps,
-    props
+    props,
   );
   return (
     <Input.Wrapper {...wrapperProps}>
@@ -57,5 +57,4 @@ export const InputBase = polymorphicFactory<InputBaseFactory>((props, ref) => {
   );
 });
 
-InputBase.classes = { ...Input.classes, ...Input.Wrapper.classes };
 InputBase.displayName = "@raikou/core/InputBase";

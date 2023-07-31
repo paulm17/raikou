@@ -70,7 +70,7 @@ declare const Anchor: (<C = "a">(props: C extends React.ElementType<any> ? Ancho
     vars: AnchorCssVariables;
     variant: AnchorVariant;
 }> & {
-    classes: Record<"root", string>;
+    classes: Record<string, string>;
 } & Record<string, never>;
 
 export { Anchor, AnchorCssVariables, AnchorFactory, AnchorProps, AnchorStylesNames, AnchorVariant };

@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import cx from "clsx";
-import { BoxProps, ElementProps } from "@raikou/core";
+import { BoxProps, ElementProps, RaikouRadius, RaikouShadow } from "@raikou/core";
 import { Transition, TransitionOverride } from "../../Transition/src";
 import { FocusTrap } from "../../FocusTrap/src";
 import { Paper } from "../../Paper/src";
@@ -9,6 +9,12 @@ import { useModalBaseContext } from "./ModalBase.context";
 export interface ModalBaseContentProps extends BoxProps, ElementProps<"div"> {
   /** Props passed down to the `Transition` component */
   transitionProps?: TransitionOverride;
+
+  /** Key of `theme.shadows` or any valid CSS value to set `box-shadow`, `none` by default */
+  shadow?: RaikouShadow | (string & {});
+
+  /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `theme.defaultRadius` by default */
+  radius?: RaikouRadius | number | (string & {});
 }
 
 interface _ModalBaseContentProps extends ModalBaseContentProps {

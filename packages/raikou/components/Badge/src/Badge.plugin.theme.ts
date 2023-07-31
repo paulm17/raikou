@@ -43,7 +43,7 @@ module.exports = function ({ addComponents }: any) {
       background: "var(--_badge-bg, --badge-bg)",
       border: "var(--_badge-border-color, --badge-bd)",
 
-      '[data-raikou-color-scheme="bumblebee"] &, [data-raikou-color-scheme="cupcake"] &, [data-raikou-color-scheme="cyberpunk"] &, [data-raikou-color-scheme="dark"] &, [data-raikou-color-scheme="halloween"] &, [data-raikou-color-scheme="mantine"] &, [data-raikou-color-scheme="pastel"] &, [data-raikou-color-scheme="valentine"] &':
+      '[data-raikou-color-scheme="bumblebee"] &, [data-raikou-color-scheme="cupcake"] &, [data-raikou-color-scheme="cyberpunk"] &, [data-raikou-color-scheme="dark"] &, [data-raikou-color-scheme="halloween"] &, [data-raikou-color-scheme="raikou"] &, [data-raikou-color-scheme="pastel"] &, [data-raikou-color-scheme="valentine"] &':
         {
           "--_badge-bg": "var(--__badge-bg)",
           "--_badge-border-color": "var(--__badge-border-color)",

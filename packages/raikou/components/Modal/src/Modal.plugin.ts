@@ -15,7 +15,7 @@ module.exports = function ({ addComponents, theme }: any) {
         ".content": {
           "--_content-flex": "0 0 100%",
           "--_content-max-height": "auto",
-          "--_content-height": "100vh",
+          "--_content-height": "100dvh",
         },
 
         ".inner": {
@@ -40,7 +40,7 @@ module.exports = function ({ addComponents, theme }: any) {
       flex: "var(--_content-flex, 0 0 var(--modal-size))",
       maxWidth: "100%",
       maxHeight:
-        "var(--_content-max-height, calc(100vh - var(--modal-y-offset) * 2))",
+        "var(--_content-max-height, calc(100dvh - var(--modal-y-offset) * 2))",
       height: "var(--_content-height, auto)",
       overflowY: "auto",
     },

@@ -3467,7 +3467,7 @@ declare const InputBase: (<C = "input">(props: C extends React$1.ElementType<any
     stylesNames: __InputStylesNames;
     variant: InputVariant;
 }> & {
-    classes: Record<__InputStylesNames, string>;
+    classes: Record<string, string>;
 } & Record<string, never>;
 
 export { InputBase, InputBaseFactory, InputBaseProps };

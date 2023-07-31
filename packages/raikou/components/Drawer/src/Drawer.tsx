@@ -102,7 +102,6 @@ export const Drawer = factory<DrawerFactory>((_props, ref) => {
   );
 });
 
-// Drawer.classes = classes;
 Drawer.displayName = "@raikou/core/Drawer";
 Drawer.Root = DrawerRoot;
 Drawer.Overlay = DrawerOverlay;

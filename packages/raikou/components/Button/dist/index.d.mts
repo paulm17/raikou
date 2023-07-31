@@ -125,7 +125,7 @@ declare const Button: (<C = "button">(props: C extends React.ElementType<any> ? 
     };
     variant: ButtonVariant;
 }> & {
-    classes: Record<ButtonStylesNames, string>;
+    classes: Record<string, string>;
 } & {
     Group: typeof ButtonGroup;
 };

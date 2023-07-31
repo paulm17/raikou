@@ -106,7 +106,7 @@ const varsResolver = createVarsResolver<ActionIconFactory>(
         "--ai-bd": colors.border,
       },
     };
-  }
+  },
 );
 
 export const ActionIcon = polymorphicFactory<ActionIconFactory>(
@@ -174,9 +174,8 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>(
         )}
       </UnstyledButton>
     );
-  }
+  },
 );
 
-// ActionIcon.classes = classes;
 ActionIcon.displayName = "@raikou/core/ActionIcon";
 ActionIcon.Group = ActionIconGroup;

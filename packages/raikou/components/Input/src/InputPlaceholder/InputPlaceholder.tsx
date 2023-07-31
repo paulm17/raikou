@@ -67,8 +67,7 @@ export const InputPlaceholder = factory<InputPlaceholderFactory>(
         {...others}
       />
     );
-  }
+  },
 );
 
-// InputPlaceholder.classes = classes;
 InputPlaceholder.displayName = "@raikou/core/InputPlaceholder";

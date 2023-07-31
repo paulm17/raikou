@@ -28,10 +28,10 @@ module.exports = function ({ addComponents, theme }: any) {
       "--_input-placeholder-color": "var(--raikou-color-placeholder)",
       "--_input-color": "inherit",
       "--_input-left-section-size": `var(--input-left-section-width, calc(var(--input-height) - ${rem(
-        "2px"
+        "2px",
       )}))`,
       "--_input-right-section-size": `var(--input-right-section-width, calc(var(--input-height) - ${rem(
-        "2px"
+        "2px",
       )}))`,
       "--_input-size": "var(--input-height)",
 
@@ -167,6 +167,18 @@ module.exports = function ({ addComponents, theme }: any) {
       paddingTop: `var(--input-padding-y, 0rem)`,
       paddingBottom: `var(--input-padding-y, 0rem)`,
       cursor: "var(--_input-cursor)",
+      overflow: "var(--_input-overflow)",
+
+      /* Used as data attribute in Textarea component, does not have associated prop on the Input component */
+      "&[data-no-overflow]": {
+        "--_input-overflow": "hidden",
+      },
+
+      /* Used as data attribute in JsonInput component, does not have associated prop on the Input component */
+      "&[data-monospace]": {
+        "--_input-font-family": "var(--raikou-font-family-monospace)",
+        "--_input-fz": `calc(var(--input-fz) - ${rem("2px")})`,
+      },
 
       "&:focus, &:focus-within": {
         outline: "none",

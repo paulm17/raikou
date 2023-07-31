@@ -837,7 +837,6 @@ var InputBase = polymorphicFactory2((props, ref) => {
   ), { inputProps, wrapperProps } = _a, others = __objRest(_a, ["inputProps", "wrapperProps"]);
   return /* @__PURE__ */ React9.createElement(Input.Wrapper, __spreadValues({}, wrapperProps), /* @__PURE__ */ React9.createElement(Input, __spreadProps(__spreadValues(__spreadValues({}, inputProps), others), { ref })));
 });
-InputBase.classes = __spreadValues(__spreadValues({}, Input.classes), Input.Wrapper.classes);
 InputBase.displayName = "@raikou/core/InputBase";
 export {
   InputBase

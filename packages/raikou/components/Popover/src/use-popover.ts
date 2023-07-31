@@ -49,7 +49,7 @@ function getPopoverMiddlewares(options: UsePopoverOptions) {
   }
 
   middlewares.push(
-    arrow({ element: options.arrowRef, padding: options.arrowOffset })
+    arrow({ element: options.arrowRef, padding: options.arrowOffset }),
   );
 
   return middlewares;

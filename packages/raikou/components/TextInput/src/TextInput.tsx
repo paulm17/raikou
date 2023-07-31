@@ -28,5 +28,4 @@ export const TextInput = factory<TextInputFactory>((props, ref) => {
   );
 });
 
-TextInput.classes = InputBase.classes;
 TextInput.displayName = "@raikou/core/TextInput";

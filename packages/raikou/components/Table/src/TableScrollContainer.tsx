@@ -98,4 +98,4 @@ export const TableScrollContainer = factory<TableScrollContainerFactory>(
   },
 );
 
-TableScrollContainer.displayName = "@mantine/core/TableScrollContainer";
+TableScrollContainer.displayName = "@raikou/core/TableScrollContainer";

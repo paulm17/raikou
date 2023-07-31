@@ -9,7 +9,7 @@ const defaultProps: TableScrollContainerProps = {
   minWidth: 300,
 };
 
-describe("@mantine/core/TableScrollContainer", () => {
+describe("@raikou/core/TableScrollContainer", () => {
   tests.itSupportsSystemProps<
     TableScrollContainerProps,
     TableScrollContainerStylesNames
@@ -23,7 +23,7 @@ describe("@mantine/core/TableScrollContainer", () => {
     size: true,
     classes: true,
     refType: HTMLDivElement,
-    displayName: "@mantine/core/TableScrollContainer",
+    displayName: "@raikou/core/TableScrollContainer",
     stylesApiSelectors: ["scrollContainer", "scrollContainerInner"],
   });
 });

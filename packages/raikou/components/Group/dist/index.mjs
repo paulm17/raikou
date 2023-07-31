@@ -81,7 +81,8 @@ var Group = factory((_props, ref) => {
     grow,
     preventGrowOverflow,
     vars,
-    variant
+    variant,
+    __size
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -96,7 +97,8 @@ var Group = factory((_props, ref) => {
     "grow",
     "preventGrowOverflow",
     "vars",
-    "variant"
+    "variant",
+    "__size"
   ]);
   const filteredChildren = filterFalsyChildren(children);
   const childrenCount = filteredChildren.length;
@@ -122,7 +124,8 @@ var Group = factory((_props, ref) => {
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       variant,
-      mod: { grow }
+      mod: { grow },
+      size: __size
     }), others),
     filteredChildren
   );

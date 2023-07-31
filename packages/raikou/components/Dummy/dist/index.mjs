@@ -1,6 +1,6 @@
 // src/index.ts
 function Hello() {
-  console.log("hello - A12345-3");
+  console.log("hello - B67890-4");
 }
 export {
   Hello

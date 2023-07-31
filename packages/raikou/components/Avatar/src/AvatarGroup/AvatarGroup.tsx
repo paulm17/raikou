@@ -45,7 +45,7 @@ const varsResolver = createVarsResolver<AvatarGroupFactory>(
     root: {
       "--ag-spacing": getSpacing(spacing),
     },
-  })
+  }),
 );
 
 export const AvatarGroup = factory<AvatarGroupFactory>((_props, ref) => {
@@ -83,5 +83,4 @@ export const AvatarGroup = factory<AvatarGroupFactory>((_props, ref) => {
   );
 });
 
-// AvatarGroup.classes = classes;
 AvatarGroup.displayName = "@raikou/core/AvatarGroup";

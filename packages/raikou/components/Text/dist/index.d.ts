@@ -54,7 +54,7 @@ declare const Text: (<C = "div">(props: C extends React.ElementType<any> ? TextP
     vars: TextCssVariables;
     variant: TextVariant;
 }> & {
-    classes: Record<"root", string>;
+    classes: Record<string, string>;
 } & Record<string, never>;
 
 export { Text, TextCssVariables, TextFactory, TextProps, TextStylesNames, TextVariant };

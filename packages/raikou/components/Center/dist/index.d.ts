@@ -38,7 +38,7 @@ declare const Center: (<C = "div">(props: C extends React.ElementType<any> ? Cen
     stylesNames: CenterStylesNames;
     vars: CenterCssVariables;
 }> & {
-    classes: Record<"root", string>;
+    classes: Record<string, string>;
 } & Record<string, never>;
 
 export { Center, CenterCssVariables, CenterFactory, CenterProps, CenterStylesNames };

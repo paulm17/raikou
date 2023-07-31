@@ -52,7 +52,7 @@ declare const Overlay: (<C = "div">(props: C extends React.ElementType<any> ? Ov
     stylesNames: OverlayStylesNames;
     vars: OverlayCssVariables;
 }> & {
-    classes: Record<"root", string>;
+    classes: Record<string, string>;
 } & Record<string, never>;
 
 export { Overlay, OverlayCssVariables, OverlayFactory, OverlayProps, OverlayStylesNames };

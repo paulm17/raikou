@@ -240,7 +240,7 @@ declare const Input: (<C = "input">(props: C extends react__default.ElementType<
         Wrapper: typeof InputWrapper;
     };
 }> & {
-    classes: Record<InputStylesNames, string>;
+    classes: Record<string, string>;
 } & {
     Label: typeof InputLabel;
     Error: typeof InputError;

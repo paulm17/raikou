@@ -53,7 +53,7 @@ declare const Badge: (<C = "div">(props: C extends React.ElementType<any> ? Badg
     vars: BadgeCssVariables;
     variant: BadgeVariant;
 }> & {
-    classes: Record<BadgeStylesNames, string>;
+    classes: Record<string, string>;
 } & Record<string, never>;
 
 export { Badge, BadgeCssVariables, BadgeFactory, BadgeProps, BadgeStylesNames, BadgeVariant };

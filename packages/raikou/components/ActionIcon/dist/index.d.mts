@@ -115,7 +115,7 @@ declare const ActionIcon: (<C = "button">(props: C extends React.ElementType<any
         Group: typeof ActionIconGroup;
     };
 }> & {
-    classes: Record<ActionIconStylesNames, string>;
+    classes: Record<string, string>;
 } & {
     Group: typeof ActionIconGroup;
 };

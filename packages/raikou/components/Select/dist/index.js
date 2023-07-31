@@ -855,7 +855,6 @@ var InputBase = (0, import_core8.polymorphicFactory)((props, ref) => {
   ), { inputProps, wrapperProps } = _a, others = __objRest(_a, ["inputProps", "wrapperProps"]);
   return /* @__PURE__ */ import_react9.default.createElement(Input.Wrapper, __spreadValues({}, wrapperProps), /* @__PURE__ */ import_react9.default.createElement(Input, __spreadProps(__spreadValues(__spreadValues({}, inputProps), others), { ref })));
 });
-InputBase.classes = __spreadValues(__spreadValues({}, Input.classes), Input.Wrapper.classes);
 InputBase.displayName = "@raikou/core/InputBase";
 
 // ../Combobox/src/get-parsed-combobox-data/get-parsed-combobox-data.ts
@@ -980,11 +979,6 @@ var import_core20 = require("@raikou/core");
 
 // ../Floating/src/use-floating-auto-update.ts
 var import_react13 = require("react");
-
-// ../../../../node_modules/.pnpm/@floating-ui+react@0.19.2_biqbaboplfbrettd7655fr4n2y/node_modules/@floating-ui/react/dist/floating-ui.react.esm.js
-var React12 = __toESM(require("react"));
-var import_react12 = require("react");
-var import_react_dom = require("react-dom");
 
 // ../../../../node_modules/.pnpm/@floating-ui+core@1.3.1/node_modules/@floating-ui/core/dist/floating-ui.core.mjs
 function getAlignment(placement) {
@@ -2693,9 +2687,30 @@ function useFloating(options) {
   }), [data, update, refs, elements, setReference, setFloating]);
 }
 
-// ../../../../node_modules/.pnpm/@floating-ui+react@0.19.2_biqbaboplfbrettd7655fr4n2y/node_modules/@floating-ui/react/dist/floating-ui.react.esm.js
+// ../../../../node_modules/.pnpm/@floating-ui+react@0.23.1_biqbaboplfbrettd7655fr4n2y/node_modules/@floating-ui/react/dist/floating-ui.react.esm.js
+var React12 = __toESM(require("react"));
+var import_react12 = require("react");
+var import_react_dom3 = require("react-dom");
 var index2 = typeof document !== "undefined" ? import_react12.useLayoutEffect : import_react12.useEffect;
+var serverHandoffComplete = false;
+var count = 0;
+var genId = () => "floating-ui-" + count++;
+function useFloatingId() {
+  const [id, setId] = React12.useState(() => serverHandoffComplete ? genId() : void 0);
+  index2(() => {
+    if (id == null) {
+      setId(genId());
+    }
+  }, []);
+  React12.useEffect(() => {
+    if (!serverHandoffComplete) {
+      serverHandoffComplete = true;
+    }
+  }, []);
+  return id;
+}
 var useReactId = React12[/* @__PURE__ */ "useId".toString()];
+var useId2 = useReactId || useFloatingId;
 function createPubSub() {
   const map = /* @__PURE__ */ new Map();
   return {
@@ -2707,7 +2722,8 @@ function createPubSub() {
       map.set(event, [...map.get(event) || [], listener]);
     },
     off(event, listener) {
-      map.set(event, (map.get(event) || []).filter((l) => l !== listener));
+      var _map$get2;
+      map.set(event, ((_map$get2 = map.get(event)) == null ? void 0 : _map$get2.filter((l) => l !== listener)) || []);
     }
   };
 }
@@ -2754,6 +2770,7 @@ function useFloating2(options) {
   const domReferenceRef = React12.useRef(null);
   const dataRef = React12.useRef({});
   const events = React12.useState(() => createPubSub())[0];
+  const floatingId = useId2();
   const [domReference, setDomReference] = React12.useState(null);
   const setPositionReference = React12.useCallback((node) => {
     const positionReference = isElement2(node) ? {
@@ -2788,10 +2805,11 @@ function useFloating2(options) {
     elements,
     dataRef,
     nodeId,
+    floatingId,
     events,
     open,
     onOpenChange
-  }), [position, nodeId, events, open, onOpenChange, refs, elements]);
+  }), [position, nodeId, floatingId, events, open, onOpenChange, refs, elements]);
   index2(() => {
     const node = tree == null ? void 0 : tree.nodesRef.current.find((node2) => node2.id === nodeId);
     if (node) {
@@ -2801,9 +2819,10 @@ function useFloating2(options) {
   return React12.useMemo(() => __spreadProps(__spreadValues({}, position), {
     context,
     refs,
+    elements,
     reference: setReference,
     positionReference: setPositionReference
-  }), [position, refs, context, setReference, setPositionReference]);
+  }), [position, refs, elements, context, setReference, setPositionReference]);
 }
 
 // ../Floating/src/use-floating-auto-update.ts
@@ -3075,44 +3094,26 @@ var [PopoverContextProvider, usePopoverContext] = createSafeContext(
 // ../Popover/src/PopoverTarget/PopoverTarget.tsx
 var import_react17 = require("react");
 
-// ../../../../node_modules/.pnpm/clsx@1.1.1/node_modules/clsx/dist/clsx.m.js
-function toVal(mix) {
-  var k, y, str = "";
-  if (typeof mix === "string" || typeof mix === "number") {
-    str += mix;
-  } else if (typeof mix === "object") {
-    if (Array.isArray(mix)) {
-      for (k = 0; k < mix.length; k++) {
-        if (mix[k]) {
-          if (y = toVal(mix[k])) {
-            str && (str += " ");
-            str += y;
-          }
-        }
-      }
-    } else {
-      for (k in mix) {
-        if (mix[k]) {
-          str && (str += " ");
-          str += k;
-        }
-      }
-    }
-  }
-  return str;
+// ../../../../node_modules/.pnpm/clsx@2.0.0/node_modules/clsx/dist/clsx.mjs
+function r(e) {
+  var t, f, n = "";
+  if ("string" == typeof e || "number" == typeof e)
+    n += e;
+  else if ("object" == typeof e)
+    if (Array.isArray(e))
+      for (t = 0; t < e.length; t++)
+        e[t] && (f = r(e[t])) && (n && (n += " "), n += f);
+    else
+      for (t in e)
+        e[t] && (n && (n += " "), n += t);
+  return n;
 }
-function clsx_m_default() {
-  var i = 0, tmp, x, str = "";
-  while (i < arguments.length) {
-    if (tmp = arguments[i++]) {
-      if (x = toVal(tmp)) {
-        str && (str += " ");
-        str += x;
-      }
-    }
-  }
-  return str;
+function clsx() {
+  for (var e, t, f = 0, n = ""; f < arguments.length; )
+    (e = arguments[f++]) && (t = r(e)) && (n && (n += " "), n += t);
+  return n;
 }
+var clsx_default = clsx;
 
 // ../Popover/src/PopoverTarget/PopoverTarget.tsx
 var import_hooks4 = require("@raikou/hooks");
@@ -3142,7 +3143,7 @@ var PopoverTarget = (0, import_core14.factory)((props, ref) => {
     id: ctx.getTargetId()
   } : {};
   return (0, import_react17.cloneElement)(children, __spreadValues(__spreadProps(__spreadValues(__spreadValues(__spreadValues({}, forwardedProps), accessibleProps), ctx.targetProps), {
-    className: clsx_m_default(
+    className: clsx_default(
       ctx.targetProps.className,
       forwardedProps.className,
       children.props.className

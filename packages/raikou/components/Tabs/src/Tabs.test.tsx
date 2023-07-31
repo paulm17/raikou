@@ -133,7 +133,7 @@ describe("@raikou/core/Tabs", () => {
 
   it("handles arrow events correctly (vertical orientation, loop = true)", async () => {
     render(
-      <Tabs {...defaultProps} defaultValue="tab-2" orientation="vertical" />
+      <Tabs {...defaultProps} defaultValue="tab-2" orientation="vertical" />,
     );
 
     await userEvent.type(getTab("tab-2"), "{arrowup}");
@@ -156,7 +156,7 @@ describe("@raikou/core/Tabs", () => {
         defaultValue="tab-2"
         orientation="vertical"
         loop={false}
-      />
+      />,
     );
 
     await userEvent.type(getTab("tab-1"), "{arrowup}");
@@ -178,7 +178,7 @@ describe("@raikou/core/Tabs", () => {
         {...defaultProps}
         defaultValue="tab-2"
         activateTabWithKeyboard={false}
-      />
+      />,
     );
 
     await userEvent.type(getTab("tab-2"), "{arrowright}");
@@ -202,7 +202,7 @@ describe("@raikou/core/Tabs", () => {
         <Tabs.Panel value="tab-1">tab-1 panel</Tabs.Panel>
         <Tabs.Panel value="tab-2">tab-2 panel</Tabs.Panel>
         <Tabs.Panel value="tab-3">tab-3 panel</Tabs.Panel>
-      </Tabs>
+      </Tabs>,
     );
 
     await userEvent.type(getTab("tab-1"), "{arrowright}");
@@ -227,7 +227,7 @@ describe("@raikou/core/Tabs", () => {
 
   it("allows to deactivate tab when allowTabDeactivation is true", async () => {
     render(
-      <Tabs {...defaultProps} defaultValue="tab-1" allowTabDeactivation />
+      <Tabs {...defaultProps} defaultValue="tab-1" allowTabDeactivation />,
     );
     expectActiveTab("tab-1");
     await clickTab("tab-1");
@@ -236,7 +236,7 @@ describe("@raikou/core/Tabs", () => {
 
   it("allows to set root element id", () => {
     const view = render(
-      <Tabs {...defaultProps} defaultValue="tab-1" id="test-id" />
+      <Tabs {...defaultProps} defaultValue="tab-1" id="test-id" />,
     );
     expect(view.container.querySelector("#test-id")).toBeInTheDocument();
   });
@@ -271,10 +271,10 @@ describe("@raikou/core/Tabs", () => {
 
   it("unmounts Tab.Panel content if keepMounted is set to false", () => {
     const { container } = render(
-      <Tabs {...defaultProps} keepMounted={false} defaultValue="tab-1" />
+      <Tabs {...defaultProps} keepMounted={false} defaultValue="tab-1" />,
     );
     expect(
-      container.querySelectorAll(".raikou-Tabs-panel")[1].textContent
+      container.querySelectorAll(".raikou-Tabs-panel")[1].textContent,
     ).toBe("");
   });
 

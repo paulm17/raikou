@@ -27,11 +27,11 @@ module.exports = function ({ addComponents, theme }: any) {
       display: "flex",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_track-bg": "var(--mantine-color-gray-2)",
+        "--_track-bg": "var(--raikou-color-gray-2)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_track-bg": "var(--mantine-color-dark-4)",
+        "--_track-bg": "var(--raikou-color-dark-4)",
       },
     },
 
@@ -87,7 +87,7 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".progress-label": {
-      color: "var(--mantine-color-white)",
+      color: "var(--raikou-color-white)",
       fontWeight: "bold",
       userSelect: "none",
       overflow: "hidden",

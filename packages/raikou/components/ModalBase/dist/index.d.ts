@@ -1,5 +1,5 @@
 import React from 'react';
-import { BoxProps, ElementProps, RaikouShadow, RaikouSpacing, RaikouSize, StylesApiProps, RaikouRadius, PolymorphicFactory } from '@raikou/core';
+import { BoxProps, ElementProps, RaikouShadow, RaikouSpacing, RaikouSize, RaikouRadius, StylesApiProps, PolymorphicFactory } from '@raikou/core';
 
 interface PortalProps extends React.ComponentPropsWithoutRef<"div"> {
     /** Portal children, for example, custom modal or popover */
@@ -92,6 +92,10 @@ declare const ModalBaseCloseButton: React.ForwardRefExoticComponent<ModalBaseClo
 interface ModalBaseContentProps extends BoxProps, ElementProps<"div"> {
     /** Props passed down to the `Transition` component */
     transitionProps?: TransitionOverride;
+    /** Key of `theme.shadows` or any valid CSS value to set `box-shadow`, `none` by default */
+    shadow?: RaikouShadow | (string & {});
+    /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `theme.defaultRadius` by default */
+    radius?: RaikouRadius | number | (string & {});
 }
 interface _ModalBaseContentProps extends ModalBaseContentProps {
     innerProps: React.ComponentPropsWithoutRef<"div">;

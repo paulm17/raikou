@@ -494,7 +494,7 @@ interface ThemeExtend<Payload extends FactoryPayload> {
     extend: (input: ExtendComponent<Payload>) => RaikouThemeComponent;
 }
 type ComponentClasses<Payload extends FactoryPayload> = {
-    classes: Payload["stylesNames"] extends string ? Record<Payload["stylesNames"], string> : never;
+    classes: Payload["stylesNames"] extends string ? Record<string, string> : never;
 };
 type RaikouComponent<Payload extends FactoryPayload> = React.ForwardRefExoticComponent<Payload["props"] & React.RefAttributes<Payload["ref"]>> & ThemeExtend<Payload> & ComponentClasses<Payload> & StaticComponents<Payload["staticComponents"]>;
 declare function factory<Payload extends FactoryPayload>(ui: React.ForwardRefRenderFunction<Payload["ref"], Payload["props"]>): RaikouComponent<Payload>;
@@ -593,7 +593,7 @@ declare const FOCUS_CLASS_NAMES: {
 
 interface UseStylesInput<Payload extends FactoryPayload> {
     name: string | (string | undefined)[];
-    classes: Payload["stylesNames"] extends string ? Record<Payload["stylesNames"], string> : never;
+    classes: Payload["stylesNames"] extends string ? Record<string, string> : never;
     props: Payload["props"];
     stylesCtx?: Payload["ctx"];
     className?: string;

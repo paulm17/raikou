@@ -18,6 +18,7 @@ export * from '@raikou/fieldset';
 export * from '@raikou/flex';
 export * from '@raikou/group';
 export * from '@raikou/highlight';
+export * from '@raikou/indicator';
 export * from '@raikou/kbd';
 export * from '@raikou/loader';
 export * from '@raikou/mark';

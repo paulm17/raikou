@@ -42,7 +42,7 @@ export interface ThemeExtend<Payload extends FactoryPayload> {
 
 export type ComponentClasses<Payload extends FactoryPayload> = {
   classes: Payload["stylesNames"] extends string
-    ? Record<Payload["stylesNames"], string>
+    ? Record<string, string>
     : never;
 };
 

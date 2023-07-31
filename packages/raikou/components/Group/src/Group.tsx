@@ -32,6 +32,8 @@ export interface GroupProps
   extends BoxProps,
     StylesApiProps<GroupFactory>,
     ElementProps<"div"> {
+  __size?: any;
+
   /** Controls `justify-content` CSS property, `'flex-start'` by default */
   justify?: React.CSSProperties["justifyContent"];
 
@@ -70,7 +72,7 @@ const varsResolver = createVarsResolver<GroupFactory>(
   (
     _,
     { grow, preventGrowOverflow, gap, align, justify, wrap },
-    { childWidth }
+    { childWidth },
   ) => ({
     root: {
       "--group-child-width":
@@ -80,7 +82,7 @@ const varsResolver = createVarsResolver<GroupFactory>(
       "--group-justify": justify,
       "--group-wrap": wrap,
     },
-  })
+  }),
 );
 
 export const Group = factory<GroupFactory>((_props, ref) => {
@@ -100,13 +102,14 @@ export const Group = factory<GroupFactory>((_props, ref) => {
     preventGrowOverflow,
     vars,
     variant,
+    __size,
     ...others
   } = props;
 
   const filteredChildren = filterFalsyChildren(children);
   const childrenCount = filteredChildren.length;
   const childWidth = `calc(${100 / childrenCount}% - (${getSpacing(
-    gap
+    gap,
   )} - ${getSpacing(gap)} / ${childrenCount}))`;
 
   const stylesCtx: GroupStylesCtx = { childWidth };
@@ -131,6 +134,7 @@ export const Group = factory<GroupFactory>((_props, ref) => {
       ref={ref}
       variant={variant}
       mod={{ grow }}
+      size={__size}
       {...others}
     >
       {filteredChildren}

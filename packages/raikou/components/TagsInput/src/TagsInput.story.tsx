@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TagsInput } from "./TagsInput";
-// import { MantineThemeProvider } from '../../core';
+// import { RaikouThemeProvider } from '../../core';
 import { Button } from "../../Button/src";
 
 export default { title: "TagsInput" };
@@ -8,7 +8,7 @@ export default { title: "TagsInput" };
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      {/* <MantineThemeProvider
+      {/* <RaikouThemeProvider
         theme={{
           components: {
             TagsInput: TagsInput.extend({
@@ -28,7 +28,7 @@ export function Usage() {
         rightSection="kg"
         data-test="orange"
       />
-      {/* </MantineThemeProvider> */}
+      {/* </RaikouThemeProvider> */}
     </div>
   );
 }

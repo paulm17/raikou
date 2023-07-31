@@ -192,7 +192,7 @@ import {
 
 // ../Popover/src/Popover.tsx
 import React13, { useRef as useRef6, useState as useState6, useCallback as useCallback3 } from "react";
-import { useId, useClickOutside } from "@raikou/hooks";
+import { useId as useId2, useClickOutside } from "@raikou/hooks";
 import {
   getDefaultZIndex,
   useProps as useProps5,
@@ -205,11 +205,6 @@ import {
 
 // ../Floating/src/use-floating-auto-update.ts
 import { useState as useState3, useEffect as useEffect4 } from "react";
-
-// ../../../../node_modules/.pnpm/@floating-ui+react@0.19.2_biqbaboplfbrettd7655fr4n2y/node_modules/@floating-ui/react/dist/floating-ui.react.esm.js
-import * as React3 from "react";
-import { useLayoutEffect as useLayoutEffect2, useEffect as useEffect3, useRef as useRef3 } from "react";
-import { createPortal, flushSync as flushSync2 } from "react-dom";
 
 // ../../../../node_modules/.pnpm/@floating-ui+core@1.3.1/node_modules/@floating-ui/core/dist/floating-ui.core.mjs
 function getAlignment(placement) {
@@ -1918,9 +1913,30 @@ function useFloating(options) {
   }), [data, update, refs, elements, setReference, setFloating]);
 }
 
-// ../../../../node_modules/.pnpm/@floating-ui+react@0.19.2_biqbaboplfbrettd7655fr4n2y/node_modules/@floating-ui/react/dist/floating-ui.react.esm.js
+// ../../../../node_modules/.pnpm/@floating-ui+react@0.23.1_biqbaboplfbrettd7655fr4n2y/node_modules/@floating-ui/react/dist/floating-ui.react.esm.js
+import * as React3 from "react";
+import { useLayoutEffect as useLayoutEffect2, useEffect as useEffect3, useRef as useRef3 } from "react";
+import { createPortal, flushSync as flushSync2 } from "react-dom";
 var index2 = typeof document !== "undefined" ? useLayoutEffect2 : useEffect3;
+var serverHandoffComplete = false;
+var count = 0;
+var genId = () => "floating-ui-" + count++;
+function useFloatingId() {
+  const [id, setId] = React3.useState(() => serverHandoffComplete ? genId() : void 0);
+  index2(() => {
+    if (id == null) {
+      setId(genId());
+    }
+  }, []);
+  React3.useEffect(() => {
+    if (!serverHandoffComplete) {
+      serverHandoffComplete = true;
+    }
+  }, []);
+  return id;
+}
 var useReactId = React3[/* @__PURE__ */ "useId".toString()];
+var useId = useReactId || useFloatingId;
 function createPubSub() {
   const map = /* @__PURE__ */ new Map();
   return {
@@ -1932,7 +1948,8 @@ function createPubSub() {
       map.set(event, [...map.get(event) || [], listener]);
     },
     off(event, listener) {
-      map.set(event, (map.get(event) || []).filter((l) => l !== listener));
+      var _map$get2;
+      map.set(event, ((_map$get2 = map.get(event)) == null ? void 0 : _map$get2.filter((l) => l !== listener)) || []);
     }
   };
 }
@@ -1979,6 +1996,7 @@ function useFloating2(options) {
   const domReferenceRef = React3.useRef(null);
   const dataRef = React3.useRef({});
   const events = React3.useState(() => createPubSub())[0];
+  const floatingId = useId();
   const [domReference, setDomReference] = React3.useState(null);
   const setPositionReference = React3.useCallback((node) => {
     const positionReference = isElement2(node) ? {
@@ -2013,10 +2031,11 @@ function useFloating2(options) {
     elements,
     dataRef,
     nodeId,
+    floatingId,
     events,
     open,
     onOpenChange
-  }), [position, nodeId, events, open, onOpenChange, refs, elements]);
+  }), [position, nodeId, floatingId, events, open, onOpenChange, refs, elements]);
   index2(() => {
     const node = tree == null ? void 0 : tree.nodesRef.current.find((node2) => node2.id === nodeId);
     if (node) {
@@ -2026,9 +2045,10 @@ function useFloating2(options) {
   return React3.useMemo(() => __spreadProps(__spreadValues({}, position), {
     context,
     refs,
+    elements,
     reference: setReference,
     positionReference: setPositionReference
-  }), [position, refs, context, setReference, setPositionReference]);
+  }), [position, refs, elements, context, setReference, setPositionReference]);
 }
 
 // ../Floating/src/use-floating-auto-update.ts
@@ -2324,44 +2344,26 @@ var [PopoverContextProvider, usePopoverContext] = createSafeContext(
 // ../Popover/src/PopoverTarget/PopoverTarget.tsx
 import { cloneElement as cloneElement2 } from "react";
 
-// ../../../../node_modules/.pnpm/clsx@1.1.1/node_modules/clsx/dist/clsx.m.js
-function toVal(mix) {
-  var k, y, str = "";
-  if (typeof mix === "string" || typeof mix === "number") {
-    str += mix;
-  } else if (typeof mix === "object") {
-    if (Array.isArray(mix)) {
-      for (k = 0; k < mix.length; k++) {
-        if (mix[k]) {
-          if (y = toVal(mix[k])) {
-            str && (str += " ");
-            str += y;
-          }
-        }
-      }
-    } else {
-      for (k in mix) {
-        if (mix[k]) {
-          str && (str += " ");
-          str += k;
-        }
-      }
-    }
-  }
-  return str;
+// ../../../../node_modules/.pnpm/clsx@2.0.0/node_modules/clsx/dist/clsx.mjs
+function r(e) {
+  var t, f, n = "";
+  if ("string" == typeof e || "number" == typeof e)
+    n += e;
+  else if ("object" == typeof e)
+    if (Array.isArray(e))
+      for (t = 0; t < e.length; t++)
+        e[t] && (f = r(e[t])) && (n && (n += " "), n += f);
+    else
+      for (t in e)
+        e[t] && (n && (n += " "), n += t);
+  return n;
 }
-function clsx_m_default() {
-  var i = 0, tmp, x, str = "";
-  while (i < arguments.length) {
-    if (tmp = arguments[i++]) {
-      if (x = toVal(tmp)) {
-        str && (str += " ");
-        str += x;
-      }
-    }
-  }
-  return str;
+function clsx() {
+  for (var e, t, f = 0, n = ""; f < arguments.length; )
+    (e = arguments[f++]) && (t = r(e)) && (n && (n += " "), n += t);
+  return n;
 }
+var clsx_default = clsx;
 
 // ../Popover/src/PopoverTarget/PopoverTarget.tsx
 import { useMergedRef } from "@raikou/hooks";
@@ -2391,7 +2393,7 @@ var PopoverTarget = factory2((props, ref) => {
     id: ctx.getTargetId()
   } : {};
   return cloneElement2(children, __spreadValues(__spreadProps(__spreadValues(__spreadValues(__spreadValues({}, forwardedProps), accessibleProps), ctx.targetProps), {
-    className: clsx_m_default(
+    className: clsx_default(
       ctx.targetProps.className,
       forwardedProps.className,
       children.props.className
@@ -2952,7 +2954,7 @@ function Popover(_props) {
   const [targetNode, setTargetNode] = useState6(null);
   const [dropdownNode, setDropdownNode] = useState6(null);
   const { dir } = useDirection2();
-  const uid = useId(id);
+  const uid = useId2(id);
   const popover = usePopover({
     middlewares,
     width,
@@ -3419,7 +3421,7 @@ ComboboxDropdown.displayName = "@raikou/core/ComboboxDropdown";
 
 // ../Combobox/src/ComboboxOptions/ComboboxOptions.tsx
 import React16, { useEffect as useEffect7 } from "react";
-import { useId as useId2 } from "@raikou/hooks";
+import { useId as useId3 } from "@raikou/hooks";
 import {
   Box as Box3,
   factory as factory6,
@@ -3447,7 +3449,7 @@ var ComboboxOptions = factory6(
       "onMouseDown"
     ]);
     const ctx = useComboboxContext();
-    const _id = useId2(id);
+    const _id = useId3(id);
     useEffect7(() => {
       ctx.store.setListId(_id);
     }, [_id]);
@@ -3469,7 +3471,7 @@ var ComboboxOptions = factory6(
 ComboboxOptions.displayName = "@raikou/core/ComboboxOptions";
 
 // ../Combobox/src/ComboboxOption/ComboboxOption.tsx
-import React17, { useId as useId3 } from "react";
+import React17, { useId as useId4 } from "react";
 import {
   Box as Box4,
   factory as factory7,
@@ -3508,7 +3510,7 @@ var ComboboxOption = factory7((_props, ref) => {
     "selected"
   ]);
   const ctx = useComboboxContext();
-  const uuid = useId3();
+  const uuid = useId4();
   const _id = id || uuid;
   return /* @__PURE__ */ React17.createElement(
     Box4,
@@ -3874,7 +3876,7 @@ InputPlaceholder.displayName = "@raikou/core/InputPlaceholder";
 
 // ../Input/src/InputWrapper/InputWrapper.tsx
 import React22 from "react";
-import { useId as useId4 } from "@raikou/hooks";
+import { useId as useId5 } from "@raikou/hooks";
 import {
   Box as Box9,
   factory as factory12,
@@ -3988,7 +3990,7 @@ var InputWrapper = factory12((_props, ref) => {
     variant,
     __staticSelector
   };
-  const idBase = useId4(id);
+  const idBase = useId5(id);
   const isRequired = typeof withAsterisk === "boolean" ? withAsterisk : required;
   const errorId = (errorProps == null ? void 0 : errorProps.id) || `${idBase}-error`;
   const descriptionId = (descriptionProps == null ? void 0 : descriptionProps.id) || `${idBase}-description`;
@@ -6108,7 +6110,7 @@ var Bars = forwardRef15(
       Box20,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_m_default("bars-loader", className)
+        className: clsx_default("bars-loader", className)
       }, others), {
         ref
       }),
@@ -6129,7 +6131,7 @@ var Oval = forwardRef16(
       Box21,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_m_default("oval-loader", className)
+        className: clsx_default("oval-loader", className)
       }, others), {
         ref
       })
@@ -6147,7 +6149,7 @@ var Dots = forwardRef17(
       Box22,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_m_default("dots-loader", className)
+        className: clsx_default("dots-loader", className)
       }, others), {
         ref
       }),

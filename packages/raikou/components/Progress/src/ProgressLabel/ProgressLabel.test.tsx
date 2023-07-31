@@ -24,7 +24,7 @@ describe("@raikou/core/ProgressLabel", () => {
     displayName: "@raikou/core/ProgressLabel",
     stylesApiSelectors: ["label"],
     stylesApiName: "Progress",
-    selector: ".mantine-Progress-label",
+    selector: ".raikou-Progress-label",
     compound: true,
     providerStylesApi: false,
   });

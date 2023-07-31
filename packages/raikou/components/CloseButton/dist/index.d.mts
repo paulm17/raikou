@@ -131,7 +131,7 @@ declare const CloseButton: (<C = "button">(props: C extends React.ElementType<an
     stylesNames: CloseButtonStylesNames;
     variant: CloseButtonVariant;
 }> & {
-    classes: Record<ActionIconStylesNames, string>;
+    classes: Record<string, string>;
 } & Record<string, never>;
 
 export { CloseButton, CloseButtonFactory, CloseButtonProps, CloseButtonStylesNames, CloseButtonVariant, CloseIcon, CloseIconProps };

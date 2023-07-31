@@ -20,6 +20,7 @@ import {
   Flex,
   Fieldset,
   Group,
+  Indicator,
   Kbd,
   Loader,
   Highlight,
@@ -245,6 +246,12 @@ export default function Page() {
               officiis, quae tempore necessitatibus placeat saepe.
             </Alert>
           </div>
+          <Title order={3}>Indicator</Title>
+          <Box className="w-[75px]">
+            <Indicator inline processing size={12}>
+              <Badge>hello</Badge>
+            </Indicator>
+          </Box>
         </Stack>
       </Group>
     </>

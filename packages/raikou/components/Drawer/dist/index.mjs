@@ -914,44 +914,26 @@ var ModalBase = forwardRef4(
 // ../ModalBase/src/ModalBaseBody.tsx
 import React12, { forwardRef as forwardRef5 } from "react";
 
-// ../../../../node_modules/.pnpm/clsx@1.1.1/node_modules/clsx/dist/clsx.m.js
-function toVal(mix) {
-  var k, y, str = "";
-  if (typeof mix === "string" || typeof mix === "number") {
-    str += mix;
-  } else if (typeof mix === "object") {
-    if (Array.isArray(mix)) {
-      for (k = 0; k < mix.length; k++) {
-        if (mix[k]) {
-          if (y = toVal(mix[k])) {
-            str && (str += " ");
-            str += y;
-          }
-        }
-      }
-    } else {
-      for (k in mix) {
-        if (mix[k]) {
-          str && (str += " ");
-          str += k;
-        }
-      }
-    }
-  }
-  return str;
+// ../../../../node_modules/.pnpm/clsx@2.0.0/node_modules/clsx/dist/clsx.mjs
+function r(e) {
+  var t, f, n = "";
+  if ("string" == typeof e || "number" == typeof e)
+    n += e;
+  else if ("object" == typeof e)
+    if (Array.isArray(e))
+      for (t = 0; t < e.length; t++)
+        e[t] && (f = r(e[t])) && (n && (n += " "), n += f);
+    else
+      for (t in e)
+        e[t] && (n && (n += " "), n += t);
+  return n;
 }
-function clsx_m_default() {
-  var i = 0, tmp, x, str = "";
-  while (i < arguments.length) {
-    if (tmp = arguments[i++]) {
-      if (x = toVal(tmp)) {
-        str && (str += " ");
-        str += x;
-      }
-    }
-  }
-  return str;
+function clsx() {
+  for (var e, t, f = 0, n = ""; f < arguments.length; )
+    (e = arguments[f++]) && (t = r(e)) && (n && (n += " "), n += t);
+  return n;
 }
+var clsx_default = clsx;
 
 // ../ModalBase/src/ModalBaseBody.tsx
 import { Box as Box2 } from "@raikou/core";
@@ -978,7 +960,7 @@ var ModalBaseBody = forwardRef5(
         ref
       }, others), {
         id: bodyId,
-        className: clsx_m_default("modalBase-body", className)
+        className: clsx_default("modalBase-body", className)
       })
     );
   }
@@ -1112,7 +1094,7 @@ var Bars = forwardRef7(
       Box4,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_m_default("bars-loader", className)
+        className: clsx_default("bars-loader", className)
       }, others), {
         ref
       }),
@@ -1133,7 +1115,7 @@ var Oval = forwardRef8(
       Box5,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_m_default("oval-loader", className)
+        className: clsx_default("oval-loader", className)
       }, others), {
         ref
       })
@@ -1151,7 +1133,7 @@ var Dots = forwardRef9(
       Box6,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_m_default("dots-loader", className)
+        className: clsx_default("dots-loader", className)
       }, others), {
         ref
       }),
@@ -1451,7 +1433,7 @@ var ModalBaseCloseButton = forwardRef10((_a, ref) => {
       ref
     }, others), {
       onClick: ctx.onClose,
-      className: clsx_m_default("modalBase-close", className)
+      className: clsx_default("modalBase-close", className)
     })
   );
 });
@@ -1804,7 +1786,7 @@ var ModalBaseContent = forwardRef11(
       (transitionStyles) => /* @__PURE__ */ React26.createElement(
         "div",
         __spreadProps(__spreadValues({}, innerProps), {
-          className: clsx_m_default("modalBase-inner", innerProps.className)
+          className: clsx_default("modalBase-inner", innerProps.className)
         }),
         /* @__PURE__ */ React26.createElement(FocusTrap, { active: ctx.opened && ctx.trapFocus }, /* @__PURE__ */ React26.createElement(
           Paper,
@@ -1818,7 +1800,7 @@ var ModalBaseContent = forwardRef11(
             onKeyDown: handleKeyDown,
             ref,
             style: [style, transitionStyles],
-            className: clsx_m_default("modalBase-content", className)
+            className: clsx_default("modalBase-content", className)
           }),
           others.children
         ))
@@ -1833,7 +1815,7 @@ import { Box as Box10 } from "@raikou/core";
 var ModalBaseHeader = forwardRef12(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React27.createElement(Box10, __spreadValues({ ref, className: clsx_m_default("modalBase-header", className) }, others));
+    return /* @__PURE__ */ React27.createElement(Box10, __spreadValues({ ref, className: clsx_default("modalBase-header", className) }, others));
   }
 );
 ModalBaseHeader.displayName = "@raikou/core/ModalBaseHeader";
@@ -1980,7 +1962,7 @@ var ModalBaseTitle = forwardRef14((_a, ref) => {
     __spreadProps(__spreadValues({
       component: "h2",
       ref,
-      className: clsx_m_default("modalBase-title", className)
+      className: clsx_default("modalBase-title", className)
     }, others), {
       id
     })

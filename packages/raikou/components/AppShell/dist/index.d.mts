@@ -137,7 +137,7 @@ declare const AppShellSection: (<C = "div">(props: C extends React.ElementType<a
     stylesNames: AppShellSectionStylesNames;
     compound: true;
 }> & {
-    classes: Record<"section", string>;
+    classes: Record<string, string>;
 } & Record<string, never>;
 
 type AppShellStylesNames = "root" | "navbar" | "main" | "header" | "footer" | "aside" | "section";

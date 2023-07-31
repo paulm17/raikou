@@ -1,5 +1,5 @@
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, ElementProps, RaikouShadow, RaikouSpacing, RaikouSize, StylesApiProps, RaikouRadius, PolymorphicFactory, Factory } from '@raikou/core';
+import { BoxProps, ElementProps, RaikouShadow, RaikouSpacing, RaikouSize, RaikouRadius, StylesApiProps, PolymorphicFactory, Factory } from '@raikou/core';
 import React$1 from 'react';
 
 interface PortalProps extends React$1.ComponentPropsWithoutRef<"div"> {
@@ -90,6 +90,10 @@ interface ModalBaseCloseButtonProps extends BoxProps, ElementProps<"button"> {
 interface ModalBaseContentProps extends BoxProps, ElementProps<"div"> {
     /** Props passed down to the `Transition` component */
     transitionProps?: TransitionOverride;
+    /** Key of `theme.shadows` or any valid CSS value to set `box-shadow`, `none` by default */
+    shadow?: RaikouShadow | (string & {});
+    /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `theme.defaultRadius` by default */
+    radius?: RaikouRadius | number | (string & {});
 }
 
 interface ModalBaseHeaderProps extends BoxProps, ElementProps<"div"> {

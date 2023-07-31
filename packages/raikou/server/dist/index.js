@@ -37,6 +37,7 @@ __reExport(src_exports, require("@raikou/fieldset"), module.exports);
 __reExport(src_exports, require("@raikou/flex"), module.exports);
 __reExport(src_exports, require("@raikou/group"), module.exports);
 __reExport(src_exports, require("@raikou/highlight"), module.exports);
+__reExport(src_exports, require("@raikou/indicator"), module.exports);
 __reExport(src_exports, require("@raikou/kbd"), module.exports);
 __reExport(src_exports, require("@raikou/loader"), module.exports);
 __reExport(src_exports, require("@raikou/mark"), module.exports);
@@ -72,6 +73,7 @@ __reExport(src_exports, require("@raikou/visually-hidden"), module.exports);
   ...require("@raikou/flex"),
   ...require("@raikou/group"),
   ...require("@raikou/highlight"),
+  ...require("@raikou/indicator"),
   ...require("@raikou/kbd"),
   ...require("@raikou/loader"),
   ...require("@raikou/mark"),

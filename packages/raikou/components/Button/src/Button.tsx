@@ -237,6 +237,5 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, ref) => {
   );
 });
 
-// Button.classes = classes;
 Button.displayName = "@raikou/core/Button";
 Button.Group = ButtonGroup;
