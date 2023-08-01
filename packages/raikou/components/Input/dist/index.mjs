@@ -57,6 +57,9 @@ function createOptionalContext(initialValue = null) {
   return [Provider, useOptionalContext];
 }
 
+// ../_utils/use-hovered/use-hovered.ts
+import { useState } from "react";
+
 // src/InputWrapper.context.ts
 var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetBottom: false,

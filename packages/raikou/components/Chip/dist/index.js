@@ -65,7 +65,7 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Chip.tsx
-var import_react5 = __toESM(require("react"));
+var import_react6 = __toESM(require("react"));
 var import_hooks2 = require("@raikou/hooks");
 var import_core3 = require("@raikou/core");
 
@@ -81,13 +81,16 @@ function createOptionalContext(initialValue = null) {
   return [Provider, useOptionalContext];
 }
 
+// ../_utils/use-hovered/use-hovered.ts
+var import_react3 = require("react");
+
 // ../Checkbox/src/CheckIcon.tsx
-var import_react3 = __toESM(require("react"));
+var import_react4 = __toESM(require("react"));
 var import_core = require("@raikou/core");
 function CheckIcon(_a) {
   var _b = _a, { size, style } = _b, others = __objRest(_b, ["size", "style"]);
   const _style = size !== void 0 ? __spreadValues({ width: (0, import_core.rem)(size), height: (0, import_core.rem)(size) }, style) : style;
-  return /* @__PURE__ */ import_react3.default.createElement(
+  return /* @__PURE__ */ import_react4.default.createElement(
     "svg",
     __spreadValues({
       className: "icon",
@@ -96,7 +99,7 @@ function CheckIcon(_a) {
       xmlns: "http://www.w3.org/2000/svg",
       style: _style
     }, others),
-    /* @__PURE__ */ import_react3.default.createElement(
+    /* @__PURE__ */ import_react4.default.createElement(
       "path",
       {
         d: "M4 4.586L1.707 2.293A1 1 0 1 0 .293 3.707l3 3a.997.997 0 0 0 1.414 0l5-5A1 1 0 1 0 8.293.293L4 4.586z",
@@ -112,7 +115,7 @@ function CheckIcon(_a) {
 var [ChipGroupProvider, useChipGroupContext] = createOptionalContext();
 
 // src/ChipGroup/ChipGroup.tsx
-var import_react4 = __toESM(require("react"));
+var import_react5 = __toESM(require("react"));
 var import_hooks = require("@raikou/hooks");
 var import_core2 = require("@raikou/core");
 var defaultProps = {};
@@ -139,7 +142,7 @@ function ChipGroup(props) {
       setValue(val);
     }
   };
-  return /* @__PURE__ */ import_react4.default.createElement(
+  return /* @__PURE__ */ import_react5.default.createElement(
     ChipGroupProvider,
     {
       value: { isChipSelected, onChange: handleChange, multiple }
@@ -254,13 +257,13 @@ var Chip = (0, import_core3.factory)((_props, ref) => {
     type: ctx.multiple ? "checkbox" : "radio"
   } : {};
   const _checked = contextProps.checked || _value;
-  return /* @__PURE__ */ import_react5.default.createElement(
+  return /* @__PURE__ */ import_react6.default.createElement(
     import_core3.Box,
     __spreadValues(__spreadValues(__spreadValues({
       size,
       variant
     }, getStyles("root")), styleProps), wrapperProps),
-    /* @__PURE__ */ import_react5.default.createElement(
+    /* @__PURE__ */ import_react6.default.createElement(
       "input",
       __spreadValues(__spreadValues(__spreadProps(__spreadValues({
         type
@@ -273,14 +276,14 @@ var Chip = (0, import_core3.factory)((_props, ref) => {
         value
       }), contextProps), rest)
     ),
-    /* @__PURE__ */ import_react5.default.createElement(
+    /* @__PURE__ */ import_react6.default.createElement(
       "label",
       __spreadValues({
         htmlFor: uuid,
         "data-checked": _checked || void 0,
         "data-disabled": disabled || void 0
       }, getStyles("label", { variant })),
-      _checked && /* @__PURE__ */ import_react5.default.createElement("span", __spreadValues({}, getStyles("iconWrapper")), icon || /* @__PURE__ */ import_react5.default.createElement(CheckIcon, __spreadValues({}, getStyles("checkIcon")))),
+      _checked && /* @__PURE__ */ import_react6.default.createElement("span", __spreadValues({}, getStyles("iconWrapper")), icon || /* @__PURE__ */ import_react6.default.createElement(CheckIcon, __spreadValues({}, getStyles("checkIcon")))),
       children
     )
   );

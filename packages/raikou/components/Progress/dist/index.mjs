@@ -68,6 +68,9 @@ function createSafeContext(errorMessage) {
 // ../_utils/create-optional-context/create-optional-context.tsx
 import React2, { createContext as createContext2, useContext as useContext2 } from "react";
 
+// ../_utils/use-hovered/use-hovered.ts
+import { useState } from "react";
+
 // src/Progress.context.ts
 var [ProgressProvider, useProgressContext] = createSafeContext(
   "Progress.Root component was not found in tree"

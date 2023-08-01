@@ -50,6 +50,7 @@ module.exports = {
     "./node_modules/@raikou/client/node_modules/@raikou/inline-input/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/input/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/input-base/dist/*.js",
+    "./node_modules/@raikou/client/node_modules/@raikou/menu/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/modal/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/modal-base/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/multi-select/dist/*.js",

@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/JsonInput.tsx
-import React12, { useState } from "react";
+import React12, { useState as useState2 } from "react";
 import { useUncontrolled } from "@raikou/hooks";
 import { factory as factory7, useProps as useProps9 } from "@raikou/core";
 
@@ -156,6 +156,9 @@ function createOptionalContext(initialValue = null) {
   const Provider = ({ children, value }) => /* @__PURE__ */ React3.createElement(Context.Provider, { value }, children);
   return [Provider, useOptionalContext];
 }
+
+// ../_utils/use-hovered/use-hovered.ts
+import { useState } from "react";
 
 // ../Input/src/InputWrapper.context.ts
 var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
@@ -931,7 +934,6 @@ var InputBase = polymorphicFactory2((props, ref) => {
   ), { inputProps, wrapperProps } = _a, others = __objRest(_a, ["inputProps", "wrapperProps"]);
   return /* @__PURE__ */ React10.createElement(Input.Wrapper, __spreadValues({}, wrapperProps), /* @__PURE__ */ React10.createElement(Input, __spreadProps(__spreadValues(__spreadValues({}, inputProps), others), { ref })));
 });
-InputBase.classes = __spreadValues(__spreadValues({}, Input.classes), Input.Wrapper.classes);
 InputBase.displayName = "@raikou/core/InputBase";
 
 // ../Textarea/src/Textarea.tsx
@@ -957,7 +959,6 @@ var Textarea = factory6((props, ref) => {
     }), autosizeProps)
   );
 });
-Textarea.classes = InputBase.classes;
 Textarea.displayName = "@raikou/core/Textarea";
 
 // src/validate-json/validate-json.ts
@@ -1011,7 +1012,7 @@ var JsonInput = factory7((props, ref) => {
     finalValue: "",
     onChange
   });
-  const [valid, setValid] = useState(validateJson(_value, deserialize));
+  const [valid, setValid] = useState2(validateJson(_value, deserialize));
   const handleFocus = (event) => {
     onFocus == null ? void 0 : onFocus(event);
     setValid(true);

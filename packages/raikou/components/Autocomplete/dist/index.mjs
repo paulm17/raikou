@@ -104,6 +104,9 @@ function createOptionalContext(initialValue = null) {
   return [Provider, useOptionalContext];
 }
 
+// ../_utils/use-hovered/use-hovered.ts
+import { useState } from "react";
+
 // ../Input/src/InputWrapper.context.ts
 var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetBottom: false,
@@ -878,7 +881,6 @@ var InputBase = polymorphicFactory2((props, ref) => {
   ), { inputProps, wrapperProps } = _a, others = __objRest(_a, ["inputProps", "wrapperProps"]);
   return /* @__PURE__ */ React9.createElement(Input.Wrapper, __spreadValues({}, wrapperProps), /* @__PURE__ */ React9.createElement(Input, __spreadProps(__spreadValues(__spreadValues({}, inputProps), others), { ref })));
 });
-InputBase.classes = __spreadValues(__spreadValues({}, Input.classes), Input.Wrapper.classes);
 InputBase.displayName = "@raikou/core/InputBase";
 
 // ../Combobox/src/get-parsed-combobox-data/get-parsed-combobox-data.ts
@@ -1011,7 +1013,7 @@ import {
 } from "@raikou/core";
 
 // ../Popover/src/Popover.tsx
-import React20, { useRef as useRef6, useState as useState6, useCallback as useCallback3 } from "react";
+import React20, { useRef as useRef6, useState as useState7, useCallback as useCallback3 } from "react";
 import { useId as useId3, useClickOutside } from "@raikou/hooks";
 import {
   getDefaultZIndex,
@@ -1024,7 +1026,7 @@ import {
 } from "@raikou/core";
 
 // ../Floating/src/use-floating-auto-update.ts
-import { useState as useState3, useEffect as useEffect4 } from "react";
+import { useState as useState4, useEffect as useEffect4 } from "react";
 
 // ../../../../node_modules/.pnpm/@floating-ui+core@1.3.1/node_modules/@floating-ui/core/dist/floating-ui.core.mjs
 function getAlignment(placement) {
@@ -2879,7 +2881,7 @@ function useFloatingAutoUpdate({
   position,
   positionDependencies
 }) {
-  const [delayedUpdate, setDelayedUpdate] = useState3(0);
+  const [delayedUpdate, setDelayedUpdate] = useState4(0);
   useEffect4(() => {
     if (floating.refs.reference.current && floating.refs.floating.current) {
       return autoUpdate(
@@ -3211,7 +3213,7 @@ import {
 } from "@raikou/core";
 
 // ../Portal/src/Portal.tsx
-import React15, { useRef as useRef4, useState as useState4, forwardRef as forwardRef3 } from "react";
+import React15, { useRef as useRef4, useState as useState5, forwardRef as forwardRef3 } from "react";
 import { createPortal as createPortal2 } from "react-dom";
 import { useIsomorphicEffect } from "@raikou/hooks";
 import { useProps as useProps10 } from "@raikou/core";
@@ -3222,7 +3224,7 @@ var Portal = forwardRef3((props, ref) => {
     defaultProps10,
     props
   ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
-  const [mounted, setMounted] = useState4(false);
+  const [mounted, setMounted] = useState5(false);
   const nodeRef = useRef4(null);
   useIsomorphicEffect(() => {
     setMounted(true);
@@ -3401,7 +3403,7 @@ function getTransitionStyles({
 }
 
 // ../Transition/src/use-transition.ts
-import { useState as useState5, useEffect as useEffect5, useRef as useRef5 } from "react";
+import { useState as useState6, useEffect as useEffect5, useRef as useRef5 } from "react";
 import { useReducedMotion, useDidUpdate as useDidUpdate3 } from "@raikou/hooks";
 import { useRaikouTheme } from "@raikou/core";
 function useTransition({
@@ -3417,10 +3419,10 @@ function useTransition({
   const theme = useRaikouTheme();
   const shouldReduceMotion = useReducedMotion();
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
-  const [transitionDuration, setTransitionDuration] = useState5(
+  const [transitionDuration, setTransitionDuration] = useState6(
     reduceMotion ? 0 : duration
   );
-  const [transitionStatus, setStatus] = useState5(
+  const [transitionStatus, setStatus] = useState6(
     mounted ? "entered" : "exited"
   );
   const timeoutRef = useRef5(-1);
@@ -3747,8 +3749,8 @@ function Popover(_props) {
     varsResolver: varsResolver7
   });
   const arrowRef = useRef6(null);
-  const [targetNode, setTargetNode] = useState6(null);
-  const [dropdownNode, setDropdownNode] = useState6(null);
+  const [targetNode, setTargetNode] = useState7(null);
+  const [dropdownNode, setDropdownNode] = useState7(null);
   const { dir } = useDirection2();
   const uid = useId3(id);
   const popover = usePopover({
@@ -4094,7 +4096,7 @@ import { useMergedRef as useMergedRef4 } from "@raikou/hooks";
 import { isElement as isElement5, useProps as useProps13, factory as factory9 } from "@raikou/core";
 
 // ../Combobox/src/use-combobox-target-props/use-combobox-target-props.ts
-import { useState as useState7 } from "react";
+import { useState as useState8 } from "react";
 function useComboboxTargetProps({
   onKeyDown,
   withKeyboardNavigation,
@@ -4102,7 +4104,7 @@ function useComboboxTargetProps({
   targetType
 }) {
   const ctx = useComboboxContext();
-  const [selectedOptionId, setSelectedOptionId] = useState7(null);
+  const [selectedOptionId, setSelectedOptionId] = useState8(null);
   const handleKeyDown = (event) => {
     onKeyDown == null ? void 0 : onKeyDown(event);
     if (withKeyboardNavigation) {
@@ -4682,7 +4684,7 @@ Combobox.Group = ComboboxGroup;
 import React47 from "react";
 
 // ../ScrollArea/src/ScrollArea.tsx
-import React45, { useState as useState14 } from "react";
+import React45, { useState as useState15 } from "react";
 import {
   Box as Box17,
   factory as factory20,
@@ -4701,11 +4703,11 @@ var [ScrollAreaProvider, useScrollAreaContext] = createSafeContext(
 );
 
 // ../ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarVisible.tsx
-import React36, { useRef as useRef10, useState as useState9, forwardRef as forwardRef7 } from "react";
+import React36, { useRef as useRef10, useState as useState10, forwardRef as forwardRef7 } from "react";
 import { useDirection as useDirection3 } from "@raikou/core";
 
 // ../ScrollArea/src/ScrollAreaScrollbar/ScrollbarX.tsx
-import React34, { forwardRef as forwardRef5, useRef as useRef8, useState as useState8, useEffect as useEffect9 } from "react";
+import React34, { forwardRef as forwardRef5, useRef as useRef8, useState as useState9, useEffect as useEffect9 } from "react";
 import { useMergedRef as useMergedRef8 } from "@raikou/hooks";
 
 // ../ScrollArea/src/ScrollAreaScrollbar/Scrollbar.tsx
@@ -4944,7 +4946,7 @@ var Scrollbar = forwardRef4(
 var ScrollAreaScrollbarX = forwardRef5((props, forwardedRef) => {
   const _a = props, { sizes, onSizesChange, style } = _a, others = __objRest(_a, ["sizes", "onSizesChange", "style"]);
   const ctx = useScrollAreaContext();
-  const [computedStyle, setComputedStyle] = useState8();
+  const [computedStyle, setComputedStyle] = useState9();
   const ref = useRef8(null);
   const composeRefs = useMergedRef8(forwardedRef, ref, ctx.onScrollbarXChange);
   useEffect9(() => {
@@ -5050,7 +5052,7 @@ var ScrollAreaScrollbarVisible = forwardRef7((props, forwardedRef) => {
   const context = useScrollAreaContext();
   const thumbRef = useRef10(null);
   const pointerOffsetRef = useRef10(0);
-  const [sizes, setSizes] = useState9({
+  const [sizes, setSizes] = useState10({
     content: 0,
     viewport: 0,
     scrollbar: { size: 0, paddingStart: 0, paddingEnd: 0 }
@@ -5127,15 +5129,15 @@ var ScrollAreaScrollbarVisible = forwardRef7((props, forwardedRef) => {
 });
 
 // ../ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarHover.tsx
-import React38, { forwardRef as forwardRef9, useEffect as useEffect11, useState as useState11 } from "react";
+import React38, { forwardRef as forwardRef9, useEffect as useEffect11, useState as useState12 } from "react";
 
 // ../ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarAuto.tsx
-import React37, { forwardRef as forwardRef8, useState as useState10 } from "react";
+import React37, { forwardRef as forwardRef8, useState as useState11 } from "react";
 import { useDebounceCallback as useDebounceCallback2 } from "@raikou/hooks";
 var ScrollAreaScrollbarAuto = forwardRef8((props, ref) => {
   const context = useScrollAreaContext();
   const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
-  const [visible, setVisible] = useState10(false);
+  const [visible, setVisible] = useState11(false);
   const isHorizontal = props.orientation === "horizontal";
   const handleResize = useDebounceCallback2(() => {
     if (context.viewport) {
@@ -5164,7 +5166,7 @@ var ScrollAreaScrollbarHover = forwardRef9(
   (props, ref) => {
     const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
     const context = useScrollAreaContext();
-    const [visible, setVisible] = useState11(false);
+    const [visible, setVisible] = useState12(false);
     useEffect11(() => {
       const { scrollArea } = context;
       let hideTimer = 0;
@@ -5201,13 +5203,13 @@ var ScrollAreaScrollbarHover = forwardRef9(
 );
 
 // ../ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarScroll.tsx
-import React39, { forwardRef as forwardRef10, useEffect as useEffect12, useState as useState12 } from "react";
+import React39, { forwardRef as forwardRef10, useEffect as useEffect12, useState as useState13 } from "react";
 import { useDebounceCallback as useDebounceCallback3 } from "@raikou/hooks";
 var ScrollAreaScrollbarScroll = forwardRef10((props, red) => {
   const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
   const context = useScrollAreaContext();
   const isHorizontal = props.orientation === "horizontal";
-  const [state, setState] = useState12("hidden");
+  const [state, setState] = useState13("hidden");
   const debounceScrollEnd = useDebounceCallback3(() => setState("idle"), 100);
   useEffect12(() => {
     if (state === "idle") {
@@ -5308,7 +5310,7 @@ var ScrollAreaCorner = React41.forwardRef((props, ref) => {
 });
 
 // ../ScrollArea/src/ScrollAreaRoot/ScrollAreaRoot.tsx
-import React42, { useState as useState13, forwardRef as forwardRef11 } from "react";
+import React42, { useState as useState14, forwardRef as forwardRef11 } from "react";
 import { useMergedRef as useMergedRef10 } from "@raikou/hooks";
 import { Box as Box15, useProps as useProps25 } from "@raikou/core";
 var defaultProps25 = {
@@ -5319,15 +5321,15 @@ var ScrollAreaRoot = forwardRef11(
   (_props, ref) => {
     const props = useProps25("ScrollAreaRoot", defaultProps25, _props);
     const _a = props, { type, scrollHideDelay } = _a, others = __objRest(_a, ["type", "scrollHideDelay"]);
-    const [scrollArea, setScrollArea] = useState13(null);
-    const [viewport, setViewport] = useState13(null);
-    const [content, setContent] = useState13(null);
-    const [scrollbarX, setScrollbarX] = useState13(null);
-    const [scrollbarY, setScrollbarY] = useState13(null);
-    const [cornerWidth, setCornerWidth] = useState13(0);
-    const [cornerHeight, setCornerHeight] = useState13(0);
-    const [scrollbarXEnabled, setScrollbarXEnabled] = useState13(false);
-    const [scrollbarYEnabled, setScrollbarYEnabled] = useState13(false);
+    const [scrollArea, setScrollArea] = useState14(null);
+    const [viewport, setViewport] = useState14(null);
+    const [content, setContent] = useState14(null);
+    const [scrollbarX, setScrollbarX] = useState14(null);
+    const [scrollbarY, setScrollbarY] = useState14(null);
+    const [cornerWidth, setCornerWidth] = useState14(0);
+    const [cornerHeight, setCornerHeight] = useState14(0);
+    const [scrollbarXEnabled, setScrollbarXEnabled] = useState14(false);
+    const [scrollbarYEnabled, setScrollbarYEnabled] = useState14(false);
     const rootRef = useMergedRef10(ref, (node) => setScrollArea(node));
     return /* @__PURE__ */ React42.createElement(
       ScrollAreaProvider,
@@ -5519,7 +5521,7 @@ var ScrollArea = factory20((_props, ref) => {
     "children",
     "offsetScrollbars"
   ]);
-  const [scrollbarHovered, setScrollbarHovered] = useState14(false);
+  const [scrollbarHovered, setScrollbarHovered] = useState15(false);
   const getStyles = useStyles10({
     name: "ScrollArea",
     props,

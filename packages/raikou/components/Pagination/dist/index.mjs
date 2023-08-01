@@ -170,6 +170,9 @@ function createSafeContext(errorMessage) {
 // ../_utils/create-optional-context/create-optional-context.tsx
 import React3, { createContext as createContext2, useContext as useContext2 } from "react";
 
+// ../_utils/use-hovered/use-hovered.ts
+import { useState } from "react";
+
 // src/Pagination.context.ts
 var [PaginationProvider, usePaginationContext] = createSafeContext(
   "Pagination.Root component was not found in tree"

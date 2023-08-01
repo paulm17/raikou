@@ -137,6 +137,9 @@ function createSafeContext(errorMessage) {
 // ../_utils/create-optional-context/create-optional-context.tsx
 import React3, { createContext as createContext2, useContext as useContext2 } from "react";
 
+// ../_utils/use-hovered/use-hovered.ts
+import { useState } from "react";
+
 // src/Card.context.ts
 var [CardProvider, useCardContext] = createSafeContext("Card component was not found in tree");
 

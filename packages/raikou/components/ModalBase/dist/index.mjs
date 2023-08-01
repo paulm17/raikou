@@ -111,20 +111,23 @@ function createSafeContext(errorMessage) {
 // ../_utils/create-optional-context/create-optional-context.tsx
 import React4, { createContext as createContext2, useContext as useContext2 } from "react";
 
+// ../_utils/use-hovered/use-hovered.ts
+import { useState as useState2 } from "react";
+
 // src/ModalBase.context.ts
 var [ModalBaseProvider, useModalBaseContext] = createSafeContext(
   "ModalBase component was not found in tree"
 );
 
 // src/use-modal.ts
-import { useState as useState3 } from "react";
+import { useState as useState4 } from "react";
 import { useId, useWindowEvent, useFocusReturn } from "@raikou/hooks";
 
 // src/use-lock-scroll.ts
-import { useState as useState2, useEffect, useRef as useRef2 } from "react";
+import { useState as useState3, useEffect, useRef as useRef2 } from "react";
 import { useReducedMotion } from "@raikou/hooks";
 function useLockScroll({ opened, transitionDuration }) {
-  const [shouldLockScroll, setShouldLockScroll] = useState2(opened);
+  const [shouldLockScroll, setShouldLockScroll] = useState3(opened);
   const timeout = useRef2();
   const reduceMotion = useReducedMotion();
   const _transitionDuration = reduceMotion ? 0 : transitionDuration;
@@ -156,8 +159,8 @@ function useModal({
   returnFocus
 }) {
   const _id = useId(id);
-  const [titleMounted, setTitleMounted] = useState3(false);
-  const [bodyMounted, setBodyMounted] = useState3(false);
+  const [titleMounted, setTitleMounted] = useState4(false);
+  const [bodyMounted, setBodyMounted] = useState4(false);
   const transitionDuration = typeof (transitionProps == null ? void 0 : transitionProps.duration) === "number" ? transitionProps == null ? void 0 : transitionProps.duration : 200;
   const shouldLockScroll = useLockScroll({ opened, transitionDuration });
   useWindowEvent("keydown", (event) => {
@@ -920,7 +923,7 @@ function getTransitionStyles({
 }
 
 // ../Transition/src/use-transition.ts
-import { useState as useState4, useEffect as useEffect3, useRef as useRef3 } from "react";
+import { useState as useState5, useEffect as useEffect3, useRef as useRef3 } from "react";
 import { useReducedMotion as useReducedMotion2, useDidUpdate } from "@raikou/hooks";
 import { useRaikouTheme } from "@raikou/core";
 function useTransition({
@@ -936,10 +939,10 @@ function useTransition({
   const theme = useRaikouTheme();
   const shouldReduceMotion = useReducedMotion2();
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
-  const [transitionDuration, setTransitionDuration] = useState4(
+  const [transitionDuration, setTransitionDuration] = useState5(
     reduceMotion ? 0 : duration
   );
-  const [transitionStatus, setStatus] = useState4(
+  const [transitionStatus, setStatus] = useState5(
     mounted ? "entered" : "exited"
   );
   const timeoutRef = useRef3(-1);

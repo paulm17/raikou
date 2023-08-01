@@ -65,12 +65,12 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Slider/Slider.tsx
-var import_react9 = __toESM(require("react"));
+var import_react10 = __toESM(require("react"));
 var import_hooks2 = require("@raikou/hooks");
 var import_core7 = require("@raikou/core");
 
 // src/SliderRoot/SliderRoot.tsx
-var import_react3 = __toESM(require("react"));
+var import_react4 = __toESM(require("react"));
 var import_core = require("@raikou/core");
 
 // ../_utils/create-safe-context/create-safe-context.tsx
@@ -91,11 +91,14 @@ function createSafeContext(errorMessage) {
 // ../_utils/create-optional-context/create-optional-context.tsx
 var import_react2 = __toESM(require("react"));
 
+// ../_utils/use-hovered/use-hovered.ts
+var import_react3 = require("react");
+
 // src/Slider.context.ts
 var [SliderProvider, useSliderContext] = createSafeContext("SliderProvider was not found in tree");
 
 // src/SliderRoot/SliderRoot.tsx
-var SliderRoot = (0, import_react3.forwardRef)(
+var SliderRoot = (0, import_react4.forwardRef)(
   (_a, ref) => {
     var _b = _a, {
       size,
@@ -113,7 +116,7 @@ var SliderRoot = (0, import_react3.forwardRef)(
       "radius"
     ]);
     const { getStyles } = useSliderContext();
-    return /* @__PURE__ */ import_react3.default.createElement(
+    return /* @__PURE__ */ import_react4.default.createElement(
       import_core.Box,
       __spreadValues(__spreadValues({
         tabIndex: -1,
@@ -127,11 +130,11 @@ var SliderRoot = (0, import_react3.forwardRef)(
 SliderRoot.displayName = "@raikou/core/SliderRoot";
 
 // src/Track/Track.tsx
-var import_react5 = __toESM(require("react"));
+var import_react6 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
 
 // src/Marks/Marks.tsx
-var import_react4 = __toESM(require("react"));
+var import_react5 = __toESM(require("react"));
 var import_core2 = require("@raikou/core");
 
 // src/utils/get-position/get-position.ts
@@ -159,7 +162,7 @@ function Marks({
   if (!marks) {
     return null;
   }
-  const items = marks.map((mark, index) => /* @__PURE__ */ import_react4.default.createElement(
+  const items = marks.map((mark, index) => /* @__PURE__ */ import_react5.default.createElement(
     import_core2.Box,
     __spreadProps(__spreadValues({}, getStyles("markWrapper")), {
       __vars: {
@@ -167,7 +170,7 @@ function Marks({
       },
       key: index
     }),
-    /* @__PURE__ */ import_react4.default.createElement(
+    /* @__PURE__ */ import_react5.default.createElement(
       import_core2.Box,
       __spreadProps(__spreadValues({}, getStyles("mark")), {
         mod: {
@@ -176,9 +179,9 @@ function Marks({
         }
       })
     ),
-    mark.label && /* @__PURE__ */ import_react4.default.createElement("div", __spreadValues({}, getStyles("markLabel")), mark.label)
+    mark.label && /* @__PURE__ */ import_react5.default.createElement("div", __spreadValues({}, getStyles("markLabel")), mark.label)
   ));
-  return /* @__PURE__ */ import_react4.default.createElement("div", null, items);
+  return /* @__PURE__ */ import_react5.default.createElement("div", null, items);
 }
 Marks.displayName = "@raikou/core/SliderMarks";
 
@@ -202,12 +205,12 @@ function Track(_a) {
     "containerProps"
   ]);
   const { getStyles } = useSliderContext();
-  return /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(
+  return /* @__PURE__ */ import_react6.default.createElement(import_react6.default.Fragment, null, /* @__PURE__ */ import_react6.default.createElement(
     import_core3.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("trackContainer")), {
       mod: { disabled }
     }), containerProps),
-    /* @__PURE__ */ import_react5.default.createElement(import_core3.Box, __spreadProps(__spreadValues({}, getStyles("track")), { mod: { inverted, disabled } }), /* @__PURE__ */ import_react5.default.createElement(
+    /* @__PURE__ */ import_react6.default.createElement(import_core3.Box, __spreadProps(__spreadValues({}, getStyles("track")), { mod: { inverted, disabled } }), /* @__PURE__ */ import_react6.default.createElement(
       import_core3.Box,
       __spreadValues({
         mod: { inverted, disabled },
@@ -216,7 +219,7 @@ function Track(_a) {
           "--slider-bar-offset": `calc(${offset}% - var(--slider-size))`
         }
       }, getStyles("bar"))
-    ), children, /* @__PURE__ */ import_react5.default.createElement(
+    ), children, /* @__PURE__ */ import_react6.default.createElement(
       Marks,
       __spreadProps(__spreadValues({}, others), {
         offset: marksOffset,
@@ -229,7 +232,7 @@ function Track(_a) {
 Track.displayName = "@raikou/core/SliderTrack";
 
 // src/Thumb/Thumb.tsx
-var import_react8 = __toESM(require("react"));
+var import_react9 = __toESM(require("react"));
 var import_core6 = require("@raikou/core");
 
 // ../Transition/src/transitions.ts
@@ -335,7 +338,7 @@ var transitions = {
 };
 
 // ../Transition/src/Transition.tsx
-var import_react7 = __toESM(require("react"));
+var import_react8 = __toESM(require("react"));
 
 // ../Transition/src/get-transition-styles/get-transition-styles.ts
 var transitionStatuses = {
@@ -370,7 +373,7 @@ function getTransitionStyles({
 }
 
 // ../Transition/src/use-transition.ts
-var import_react6 = require("react");
+var import_react7 = require("react");
 var import_hooks = require("@raikou/hooks");
 var import_core5 = require("@raikou/core");
 function useTransition({
@@ -386,13 +389,13 @@ function useTransition({
   const theme = (0, import_core5.useRaikouTheme)();
   const shouldReduceMotion = (0, import_hooks.useReducedMotion)();
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
-  const [transitionDuration, setTransitionDuration] = (0, import_react6.useState)(
+  const [transitionDuration, setTransitionDuration] = (0, import_react7.useState)(
     reduceMotion ? 0 : duration
   );
-  const [transitionStatus, setStatus] = (0, import_react6.useState)(
+  const [transitionStatus, setStatus] = (0, import_react7.useState)(
     mounted ? "entered" : "exited"
   );
-  const timeoutRef = (0, import_react6.useRef)(-1);
+  const timeoutRef = (0, import_react7.useRef)(-1);
   const handleStateChange = (shouldMount) => {
     const preHandler = shouldMount ? onEnter : onExit;
     const handler = shouldMount ? onEntered : onExited;
@@ -419,7 +422,7 @@ function useTransition({
   (0, import_hooks.useDidUpdate)(() => {
     handleStateChange(mounted);
   }, [mounted]);
-  (0, import_react6.useEffect)(() => () => window.clearTimeout(timeoutRef.current), []);
+  (0, import_react7.useEffect)(() => () => window.clearTimeout(timeoutRef.current), []);
   return {
     transitionDuration,
     transitionStatus,
@@ -452,9 +455,9 @@ function Transition({
     onExited
   });
   if (transitionDuration === 0) {
-    return mounted ? /* @__PURE__ */ import_react7.default.createElement(import_react7.default.Fragment, null, children({})) : keepMounted ? children({ display: "none" }) : null;
+    return mounted ? /* @__PURE__ */ import_react8.default.createElement(import_react8.default.Fragment, null, children({})) : keepMounted ? children({ display: "none" }) : null;
   }
-  return transitionStatus === "exited" ? keepMounted ? children({ display: "none" }) : null : /* @__PURE__ */ import_react7.default.createElement(import_react7.default.Fragment, null, children(
+  return transitionStatus === "exited" ? keepMounted ? children({ display: "none" }) : null : /* @__PURE__ */ import_react8.default.createElement(import_react8.default.Fragment, null, children(
     getTransitionStyles({
       transition,
       duration: transitionDuration,
@@ -466,7 +469,7 @@ function Transition({
 Transition.displayName = "@raikou/core/Transition";
 
 // src/Thumb/Thumb.tsx
-var Thumb = (0, import_react8.forwardRef)(
+var Thumb = (0, import_react9.forwardRef)(
   ({
     max,
     min,
@@ -487,9 +490,9 @@ var Thumb = (0, import_react8.forwardRef)(
     disabled
   }, ref) => {
     const { getStyles } = useSliderContext();
-    const [focused, setFocused] = (0, import_react8.useState)(false);
+    const [focused, setFocused] = (0, import_react9.useState)(false);
     const isVisible = labelAlwaysOn || dragging || focused || showLabelOnHover && isHovered;
-    return /* @__PURE__ */ import_react8.default.createElement(
+    return /* @__PURE__ */ import_react9.default.createElement(
       import_core6.Box,
       __spreadProps(__spreadValues({
         tabIndex: 0,
@@ -516,14 +519,14 @@ var Thumb = (0, import_react8.forwardRef)(
         onClick: (event) => event.stopPropagation()
       }),
       children,
-      /* @__PURE__ */ import_react8.default.createElement(
+      /* @__PURE__ */ import_react9.default.createElement(
         Transition,
         __spreadValues({
           mounted: label != null && !!isVisible,
           transition: "fade",
           duration: 0
         }, labelTransitionProps),
-        (transitionStyles) => /* @__PURE__ */ import_react8.default.createElement("div", __spreadValues({}, getStyles("label", { style: transitionStyles })), label)
+        (transitionStyles) => /* @__PURE__ */ import_react9.default.createElement("div", __spreadValues({}, getStyles("label", { style: transitionStyles })), label)
       )
     );
   }
@@ -667,21 +670,21 @@ var Slider = (0, import_core7.factory)((_props, ref) => {
     varsResolver
   });
   const { dir } = (0, import_core7.useDirection)();
-  const [hovered, setHovered] = (0, import_react9.useState)(false);
+  const [hovered, setHovered] = (0, import_react10.useState)(false);
   const [_value, setValue] = (0, import_hooks2.useUncontrolled)({
     value: typeof value === "number" ? (0, import_hooks2.clamp)(value, min, max) : value,
     defaultValue: typeof defaultValue === "number" ? (0, import_hooks2.clamp)(defaultValue, min, max) : defaultValue,
     finalValue: (0, import_hooks2.clamp)(0, min, max),
     onChange
   });
-  const valueRef = (0, import_react9.useRef)(_value);
-  const root = (0, import_react9.useRef)();
-  const thumb = (0, import_react9.useRef)();
+  const valueRef = (0, import_react10.useRef)(_value);
+  const root = (0, import_react10.useRef)();
+  const thumb = (0, import_react10.useRef)();
   const position = getPosition({ value: _value, min, max });
   const scaledValue = scale(_value);
   const _label = typeof label === "function" ? label(scaledValue) : label;
   const precision = _precision != null ? _precision : getPrecision(step);
-  const handleChange = (0, import_react9.useCallback)(
+  const handleChange = (0, import_react10.useCallback)(
     ({ x }) => {
       if (!disabled) {
         const nextValue = getChangeValue({
@@ -770,7 +773,7 @@ var Slider = (0, import_core7.factory)((_props, ref) => {
       }
     }
   };
-  return /* @__PURE__ */ import_react9.default.createElement(SliderProvider, { value: { getStyles } }, /* @__PURE__ */ import_react9.default.createElement(
+  return /* @__PURE__ */ import_react10.default.createElement(SliderProvider, { value: { getStyles } }, /* @__PURE__ */ import_react10.default.createElement(
     SliderRoot,
     __spreadProps(__spreadValues({}, others), {
       ref: (0, import_hooks2.useMergedRef)(ref, root),
@@ -782,7 +785,7 @@ var Slider = (0, import_core7.factory)((_props, ref) => {
       size,
       disabled
     }),
-    /* @__PURE__ */ import_react9.default.createElement(
+    /* @__PURE__ */ import_react10.default.createElement(
       Track,
       {
         inverted,
@@ -799,7 +802,7 @@ var Slider = (0, import_core7.factory)((_props, ref) => {
           onMouseLeave: showLabelOnHover ? () => setHovered(false) : void 0
         }
       },
-      /* @__PURE__ */ import_react9.default.createElement(
+      /* @__PURE__ */ import_react10.default.createElement(
         Thumb,
         {
           max,
@@ -819,13 +822,13 @@ var Slider = (0, import_core7.factory)((_props, ref) => {
         thumbChildren
       )
     ),
-    /* @__PURE__ */ import_react9.default.createElement("input", { type: "hidden", name, value: scaledValue })
+    /* @__PURE__ */ import_react10.default.createElement("input", { type: "hidden", name, value: scaledValue })
   ));
 });
 Slider.displayName = "@raikou/core/Slider";
 
 // src/RangeSlider/RangeSlider.tsx
-var import_react10 = __toESM(require("react"));
+var import_react11 = __toESM(require("react"));
 var import_hooks3 = require("@raikou/hooks");
 var import_core8 = require("@raikou/core");
 
@@ -949,17 +952,17 @@ var RangeSlider = (0, import_core8.factory)((_props, ref) => {
     varsResolver: varsResolver2
   });
   const { dir } = (0, import_core8.useDirection)();
-  const [focused, setFocused] = (0, import_react10.useState)(-1);
-  const [hovered, setHovered] = (0, import_react10.useState)(false);
+  const [focused, setFocused] = (0, import_react11.useState)(-1);
+  const [hovered, setHovered] = (0, import_react11.useState)(false);
   const [_value, setValue] = (0, import_hooks3.useUncontrolled)({
     value,
     defaultValue,
     finalValue: [min, max],
     onChange
   });
-  const valueRef = (0, import_react10.useRef)(_value);
-  const thumbs = (0, import_react10.useRef)([]);
-  const thumbIndex = (0, import_react10.useRef)(void 0);
+  const valueRef = (0, import_react11.useRef)(_value);
+  const thumbs = (0, import_react11.useRef)([]);
+  const thumbIndex = (0, import_react11.useRef)(void 0);
   const positions = [
     getPosition({ value: _value[0], min, max }),
     getPosition({ value: _value[1], min, max })
@@ -969,7 +972,7 @@ var RangeSlider = (0, import_core8.factory)((_props, ref) => {
     setValue(val);
     valueRef.current = val;
   };
-  (0, import_react10.useEffect)(
+  (0, import_react11.useEffect)(
     () => {
       if (Array.isArray(value)) {
         valueRef.current = value;
@@ -1135,7 +1138,7 @@ var RangeSlider = (0, import_core8.factory)((_props, ref) => {
     onBlur: () => setFocused(-1)
   };
   const hasArrayThumbChildren = Array.isArray(thumbChildren);
-  return /* @__PURE__ */ import_react10.default.createElement(SliderProvider, { value: { getStyles } }, /* @__PURE__ */ import_react10.default.createElement(SliderRoot, __spreadProps(__spreadValues({}, others), { size, ref, disabled }), /* @__PURE__ */ import_react10.default.createElement(
+  return /* @__PURE__ */ import_react11.default.createElement(SliderProvider, { value: { getStyles } }, /* @__PURE__ */ import_react11.default.createElement(SliderRoot, __spreadProps(__spreadValues({}, others), { size, ref, disabled }), /* @__PURE__ */ import_react11.default.createElement(
     Track,
     {
       offset: positions[0],
@@ -1162,7 +1165,7 @@ var RangeSlider = (0, import_core8.factory)((_props, ref) => {
         onKeyDownCapture: handleTrackKeydownCapture
       }
     },
-    /* @__PURE__ */ import_react10.default.createElement(
+    /* @__PURE__ */ import_react11.default.createElement(
       Thumb,
       __spreadProps(__spreadValues({}, sharedThumbProps), {
         value: scale(_value[0]),
@@ -1181,7 +1184,7 @@ var RangeSlider = (0, import_core8.factory)((_props, ref) => {
       }),
       hasArrayThumbChildren ? thumbChildren[0] : thumbChildren
     ),
-    /* @__PURE__ */ import_react10.default.createElement(
+    /* @__PURE__ */ import_react11.default.createElement(
       Thumb,
       __spreadProps(__spreadValues({}, sharedThumbProps), {
         thumbLabel: thumbToLabel,
@@ -1200,7 +1203,7 @@ var RangeSlider = (0, import_core8.factory)((_props, ref) => {
       }),
       hasArrayThumbChildren ? thumbChildren[1] : thumbChildren
     )
-  ), /* @__PURE__ */ import_react10.default.createElement("input", { type: "hidden", name: `${name}_from`, value: _value[0] }), /* @__PURE__ */ import_react10.default.createElement("input", { type: "hidden", name: `${name}_to`, value: _value[1] })));
+  ), /* @__PURE__ */ import_react11.default.createElement("input", { type: "hidden", name: `${name}_from`, value: _value[0] }), /* @__PURE__ */ import_react11.default.createElement("input", { type: "hidden", name: `${name}_to`, value: _value[1] })));
 });
 RangeSlider.displayName = "@raikou/core/RangeSlider";
 // Annotate the CommonJS export names for ESM import in node:

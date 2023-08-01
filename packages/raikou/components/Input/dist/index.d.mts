@@ -266,6 +266,7 @@ declare function useInputProps<T extends BaseProps, U extends Partial<T>>(compon
         slot?: string | undefined;
         style: _raikou_core.RaikouStyleProp;
         title?: string | undefined;
+        dir?: string | undefined;
         key?: react.Key | null | undefined;
         defaultChecked?: boolean | undefined;
         defaultValue?: string | number | readonly string[] | undefined;
@@ -276,7 +277,6 @@ declare function useInputProps<T extends BaseProps, U extends Partial<T>>(compon
         className: string | undefined;
         contentEditable?: "inherit" | (boolean | "true" | "false") | undefined;
         contextMenu?: string | undefined;
-        dir?: string | undefined;
         draggable?: (boolean | "true" | "false") | undefined;
         hidden?: boolean | undefined;
         id?: string | undefined;

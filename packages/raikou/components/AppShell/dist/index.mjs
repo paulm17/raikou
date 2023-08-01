@@ -67,6 +67,9 @@ function createSafeContext(errorMessage) {
 // ../_utils/create-optional-context/create-optional-context.tsx
 import React2, { createContext as createContext2, useContext as useContext2 } from "react";
 
+// ../_utils/use-hovered/use-hovered.ts
+import { useState } from "react";
+
 // src/AppShell.context.ts
 var [AppShellProvider, useAppShellContext] = createSafeContext("AppShell was not found in tree");
 
@@ -653,13 +656,13 @@ function AppShellMediaStyles({
 }
 
 // src/use-resizing/use-resizing.tsx
-import { useState, useRef } from "react";
+import { useState as useState2, useRef } from "react";
 import { useWindowEvent, useIsomorphicEffect } from "@raikou/hooks";
 function useResizing({
   transitionDuration,
   disabled
 }) {
-  const [resizing, setResizing] = useState(false);
+  const [resizing, setResizing] = useState2(false);
   const resizingTimeout = useRef();
   const disabledTimeout = useRef();
   useWindowEvent("resize", () => {

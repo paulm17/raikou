@@ -754,20 +754,23 @@ function createSafeContext(errorMessage) {
 // ../_utils/create-optional-context/create-optional-context.tsx
 import React10, { createContext as createContext2, useContext as useContext2 } from "react";
 
+// ../_utils/use-hovered/use-hovered.ts
+import { useState as useState5 } from "react";
+
 // ../ModalBase/src/ModalBase.context.ts
 var [ModalBaseProvider, useModalBaseContext] = createSafeContext(
   "ModalBase component was not found in tree"
 );
 
 // ../ModalBase/src/use-modal.ts
-import { useState as useState6 } from "react";
+import { useState as useState7 } from "react";
 import { useId, useWindowEvent, useFocusReturn } from "@raikou/hooks";
 
 // ../ModalBase/src/use-lock-scroll.ts
-import { useState as useState5, useEffect as useEffect3, useRef as useRef4 } from "react";
+import { useState as useState6, useEffect as useEffect3, useRef as useRef4 } from "react";
 import { useReducedMotion } from "@raikou/hooks";
 function useLockScroll({ opened, transitionDuration }) {
-  const [shouldLockScroll, setShouldLockScroll] = useState5(opened);
+  const [shouldLockScroll, setShouldLockScroll] = useState6(opened);
   const timeout = useRef4();
   const reduceMotion = useReducedMotion();
   const _transitionDuration = reduceMotion ? 0 : transitionDuration;
@@ -799,8 +802,8 @@ function useModal({
   returnFocus
 }) {
   const _id = useId(id);
-  const [titleMounted, setTitleMounted] = useState6(false);
-  const [bodyMounted, setBodyMounted] = useState6(false);
+  const [titleMounted, setTitleMounted] = useState7(false);
+  const [bodyMounted, setBodyMounted] = useState7(false);
   const transitionDuration = typeof (transitionProps == null ? void 0 : transitionProps.duration) === "number" ? transitionProps == null ? void 0 : transitionProps.duration : 200;
   const shouldLockScroll = useLockScroll({ opened, transitionDuration });
   useWindowEvent("keydown", (event) => {
@@ -1580,7 +1583,7 @@ function getTransitionStyles({
 }
 
 // ../Transition/src/use-transition.ts
-import { useState as useState7, useEffect as useEffect5, useRef as useRef5 } from "react";
+import { useState as useState8, useEffect as useEffect5, useRef as useRef5 } from "react";
 import { useReducedMotion as useReducedMotion2, useDidUpdate } from "@raikou/hooks";
 import { useRaikouTheme } from "@raikou/core";
 function useTransition({
@@ -1596,10 +1599,10 @@ function useTransition({
   const theme = useRaikouTheme();
   const shouldReduceMotion = useReducedMotion2();
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
-  const [transitionDuration, setTransitionDuration] = useState7(
+  const [transitionDuration, setTransitionDuration] = useState8(
     reduceMotion ? 0 : duration
   );
-  const [transitionStatus, setStatus] = useState7(
+  const [transitionStatus, setStatus] = useState8(
     mounted ? "entered" : "exited"
   );
   const timeoutRef = useRef5(-1);

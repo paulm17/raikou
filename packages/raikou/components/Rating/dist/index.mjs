@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/Rating.tsx
-import React6, { useRef, useState } from "react";
+import React6, { useRef, useState as useState2 } from "react";
 import { clamp, useId, useMergedRef, useUncontrolled } from "@raikou/hooks";
 import {
   Box as Box2,
@@ -61,6 +61,9 @@ function createSafeContext(errorMessage) {
 
 // ../_utils/create-optional-context/create-optional-context.tsx
 import React2, { createContext as createContext2, useContext as useContext2 } from "react";
+
+// ../_utils/use-hovered/use-hovered.ts
+import { useState } from "react";
 
 // src/Rating.context.ts
 var [RatingProvider, useRatingContext] = createSafeContext("Rating was not found in tree");
@@ -280,8 +283,8 @@ var Rating = factory((_props, ref) => {
     finalValue: 0,
     onChange
   });
-  const [hovered, setHovered] = useState(-1);
-  const [isOutside, setOutside] = useState(true);
+  const [hovered, setHovered] = useState2(-1);
+  const [isOutside, setOutside] = useState2(true);
   const _fractions = Math.floor(fractions);
   const _count = Math.floor(count);
   const decimalUnit = 1 / _fractions;

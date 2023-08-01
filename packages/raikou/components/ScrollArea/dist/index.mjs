@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/ScrollArea.tsx
-import React15, { useState as useState7 } from "react";
+import React15, { useState as useState8 } from "react";
 import {
   Box as Box3,
   factory,
@@ -62,17 +62,20 @@ function createSafeContext(errorMessage) {
 // ../_utils/create-optional-context/create-optional-context.tsx
 import React2, { createContext as createContext2, useContext as useContext2 } from "react";
 
+// ../_utils/use-hovered/use-hovered.ts
+import { useState } from "react";
+
 // src/ScrollArea.context.ts
 var [ScrollAreaProvider, useScrollAreaContext] = createSafeContext(
   "ScrollArea.Root component was not found in tree"
 );
 
 // src/ScrollAreaScrollbar/ScrollAreaScrollbarVisible.tsx
-import React6, { useRef as useRef3, useState as useState2, forwardRef as forwardRef4 } from "react";
+import React6, { useRef as useRef3, useState as useState3, forwardRef as forwardRef4 } from "react";
 import { useDirection } from "@raikou/core";
 
 // src/ScrollAreaScrollbar/ScrollbarX.tsx
-import React4, { forwardRef as forwardRef2, useRef, useState, useEffect as useEffect2 } from "react";
+import React4, { forwardRef as forwardRef2, useRef, useState as useState2, useEffect as useEffect2 } from "react";
 import { useMergedRef as useMergedRef2 } from "@raikou/hooks";
 
 // src/ScrollAreaScrollbar/Scrollbar.tsx
@@ -311,7 +314,7 @@ var Scrollbar = forwardRef(
 var ScrollAreaScrollbarX = forwardRef2((props, forwardedRef) => {
   const _a = props, { sizes, onSizesChange, style } = _a, others = __objRest(_a, ["sizes", "onSizesChange", "style"]);
   const ctx = useScrollAreaContext();
-  const [computedStyle, setComputedStyle] = useState();
+  const [computedStyle, setComputedStyle] = useState2();
   const ref = useRef(null);
   const composeRefs = useMergedRef2(forwardedRef, ref, ctx.onScrollbarXChange);
   useEffect2(() => {
@@ -417,7 +420,7 @@ var ScrollAreaScrollbarVisible = forwardRef4((props, forwardedRef) => {
   const context = useScrollAreaContext();
   const thumbRef = useRef3(null);
   const pointerOffsetRef = useRef3(0);
-  const [sizes, setSizes] = useState2({
+  const [sizes, setSizes] = useState3({
     content: 0,
     viewport: 0,
     scrollbar: { size: 0, paddingStart: 0, paddingEnd: 0 }
@@ -494,15 +497,15 @@ var ScrollAreaScrollbarVisible = forwardRef4((props, forwardedRef) => {
 });
 
 // src/ScrollAreaScrollbar/ScrollAreaScrollbarHover.tsx
-import React8, { forwardRef as forwardRef6, useEffect as useEffect4, useState as useState4 } from "react";
+import React8, { forwardRef as forwardRef6, useEffect as useEffect4, useState as useState5 } from "react";
 
 // src/ScrollAreaScrollbar/ScrollAreaScrollbarAuto.tsx
-import React7, { forwardRef as forwardRef5, useState as useState3 } from "react";
+import React7, { forwardRef as forwardRef5, useState as useState4 } from "react";
 import { useDebounceCallback as useDebounceCallback2 } from "@raikou/hooks";
 var ScrollAreaScrollbarAuto = forwardRef5((props, ref) => {
   const context = useScrollAreaContext();
   const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
-  const [visible, setVisible] = useState3(false);
+  const [visible, setVisible] = useState4(false);
   const isHorizontal = props.orientation === "horizontal";
   const handleResize = useDebounceCallback2(() => {
     if (context.viewport) {
@@ -531,7 +534,7 @@ var ScrollAreaScrollbarHover = forwardRef6(
   (props, ref) => {
     const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
     const context = useScrollAreaContext();
-    const [visible, setVisible] = useState4(false);
+    const [visible, setVisible] = useState5(false);
     useEffect4(() => {
       const { scrollArea } = context;
       let hideTimer = 0;
@@ -568,13 +571,13 @@ var ScrollAreaScrollbarHover = forwardRef6(
 );
 
 // src/ScrollAreaScrollbar/ScrollAreaScrollbarScroll.tsx
-import React9, { forwardRef as forwardRef7, useEffect as useEffect5, useState as useState5 } from "react";
+import React9, { forwardRef as forwardRef7, useEffect as useEffect5, useState as useState6 } from "react";
 import { useDebounceCallback as useDebounceCallback3 } from "@raikou/hooks";
 var ScrollAreaScrollbarScroll = forwardRef7((props, red) => {
   const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
   const context = useScrollAreaContext();
   const isHorizontal = props.orientation === "horizontal";
-  const [state, setState] = useState5("hidden");
+  const [state, setState] = useState6("hidden");
   const debounceScrollEnd = useDebounceCallback3(() => setState("idle"), 100);
   useEffect5(() => {
     if (state === "idle") {
@@ -675,7 +678,7 @@ var ScrollAreaCorner = React11.forwardRef((props, ref) => {
 });
 
 // src/ScrollAreaRoot/ScrollAreaRoot.tsx
-import React12, { useState as useState6, forwardRef as forwardRef8 } from "react";
+import React12, { useState as useState7, forwardRef as forwardRef8 } from "react";
 import { useMergedRef as useMergedRef4 } from "@raikou/hooks";
 import { Box, useProps } from "@raikou/core";
 var defaultProps = {
@@ -686,15 +689,15 @@ var ScrollAreaRoot = forwardRef8(
   (_props, ref) => {
     const props = useProps("ScrollAreaRoot", defaultProps, _props);
     const _a = props, { type, scrollHideDelay } = _a, others = __objRest(_a, ["type", "scrollHideDelay"]);
-    const [scrollArea, setScrollArea] = useState6(null);
-    const [viewport, setViewport] = useState6(null);
-    const [content, setContent] = useState6(null);
-    const [scrollbarX, setScrollbarX] = useState6(null);
-    const [scrollbarY, setScrollbarY] = useState6(null);
-    const [cornerWidth, setCornerWidth] = useState6(0);
-    const [cornerHeight, setCornerHeight] = useState6(0);
-    const [scrollbarXEnabled, setScrollbarXEnabled] = useState6(false);
-    const [scrollbarYEnabled, setScrollbarYEnabled] = useState6(false);
+    const [scrollArea, setScrollArea] = useState7(null);
+    const [viewport, setViewport] = useState7(null);
+    const [content, setContent] = useState7(null);
+    const [scrollbarX, setScrollbarX] = useState7(null);
+    const [scrollbarY, setScrollbarY] = useState7(null);
+    const [cornerWidth, setCornerWidth] = useState7(0);
+    const [cornerHeight, setCornerHeight] = useState7(0);
+    const [scrollbarXEnabled, setScrollbarXEnabled] = useState7(false);
+    const [scrollbarYEnabled, setScrollbarYEnabled] = useState7(false);
     const rootRef = useMergedRef4(ref, (node) => setScrollArea(node));
     return /* @__PURE__ */ React12.createElement(
       ScrollAreaProvider,
@@ -886,7 +889,7 @@ var ScrollArea = factory((_props, ref) => {
     "children",
     "offsetScrollbars"
   ]);
-  const [scrollbarHovered, setScrollbarHovered] = useState7(false);
+  const [scrollbarHovered, setScrollbarHovered] = useState8(false);
   const getStyles = useStyles({
     name: "ScrollArea",
     props,

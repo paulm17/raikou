@@ -18,6 +18,7 @@ export * from "@raikou/input";
 export * from "@raikou/input-base";
 export * from "@raikou/image";
 export * from "@raikou/json-input";
+export * from "@raikou/menu";
 export * from "@raikou/modal";
 export * from "@raikou/modal-base";
 export * from "@raikou/multi-select";

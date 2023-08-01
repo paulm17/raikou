@@ -53,7 +53,7 @@ export function useTooltip(settings: UseTooltip) {
         setCurrentId(uid);
       }
     },
-    [setCurrentId, uid]
+    [setCurrentId, uid],
   );
 
   const {

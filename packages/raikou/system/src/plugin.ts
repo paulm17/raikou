@@ -546,6 +546,7 @@ module.exports = {
     require("../../components/Kbd/src/Kbd.plugin"),
     require("../../components/Loader/src/Loader.plugin"),
     require("../../components/Mark/src/Mark.plugin"),
+    require("../../components/Menu/src/Menu.plugin"),
     require("../../components/Modal/src/Modal.plugin"),
     require("../../components/ModalBase/src/ModalBase.plugin"),
     require("../../components/Notification/src/Notification.plugin"),

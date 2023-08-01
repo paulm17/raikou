@@ -16,6 +16,7 @@ importers:
       '@commitlint/config-conventional': 14.1.0
       '@octokit/rest': ^19.0.4
       '@sucrase/jest-plugin': ^2.1.1
+      '@tabler/icons-react': ^2.30.0
       '@testing-library/dom': 8.13.0
       '@testing-library/jest-dom': 5.16.4
       '@testing-library/react': 13.2.0
@@ -57,6 +58,8 @@ importers:
       tsx: ^3.8.1
       turbo: latest
       typescript: ^5.1.6
+    dependencies:
+      '@tabler/icons-react': 2.30.0_react@18.2.0
     devDependencies:
       '@changesets/changelog-github': 0.4.8
       '@changesets/cli': 2.26.2
@@ -160,7 +163,7 @@ importers:
       prop-types: 15.8.1
       serve: 13.0.4
       storybook: 7.1.0
-      tailwindcss: 0.0.0-insiders.86fb660
+      tailwindcss: 0.0.0-insiders.a93c61f
       typescript: 5.1.6
       vite: 4.4.6_less@4.1.3
       vite-tsconfig-paths: 4.2.0_vo5v3br6wlr4kltkl57idshlza
@@ -292,6 +295,7 @@ importers:
       '@raikou/input': workspace:*
       '@raikou/input-base': workspace:*
       '@raikou/json-input': workspace:*
+      '@raikou/menu': workspace:*
       '@raikou/modal': workspace:*
       '@raikou/modal-base': workspace:*
       '@raikou/multi-select': workspace:*
@@ -344,6 +348,7 @@ importers:
       '@raikou/input': link:../components/Input
       '@raikou/input-base': link:../components/InputBase
       '@raikou/json-input': link:../components/JsonInput
+      '@raikou/menu': link:../components/Menu
       '@raikou/modal': link:../components/Modal
       '@raikou/modal-base': link:../components/ModalBase
       '@raikou/multi-select': link:../components/MultiSelect
@@ -383,7 +388,6 @@ importers:
     specifiers:
       '@raikou/core': workspace:*
       '@raikou/hooks': workspace:*
-      '@tabler/icons-react': ^2.25.0
       '@types/node': ^20.3.3
       '@types/react': ^18.2.0
       '@types/react-dom': ^18.2.0
@@ -394,7 +398,6 @@ importers:
     dependencies:
       '@raikou/core': link:../../core
       '@raikou/hooks': link:../../hooks
-      '@tabler/icons-react': 2.25.0_react@18.2.0
       tslib: 2.6.0
     devDependencies:
       '@types/node': 20.3.3
@@ -627,7 +630,6 @@ importers:
   packages/raikou/components/Blockquote:
     specifiers:
       '@raikou/core': workspace:*
-      '@tabler/icons-react': ^2.25.0
       '@types/node': ^20.3.3
       '@types/react': ^18.2.0
       '@types/react-dom': ^18.2.0
@@ -637,7 +639,6 @@ importers:
       typescript: ^5.1.6
     dependencies:
       '@raikou/core': link:../../core
-      '@tabler/icons-react': 2.25.0_react@18.2.0
       tslib: 2.6.0
     devDependencies:
       '@types/node': 20.3.3
@@ -798,7 +799,6 @@ importers:
     specifiers:
       '@raikou/core': workspace:*
       '@raikou/hooks': workspace:*
-      '@tabler/icons-react': ^2.28.0
       '@types/node': ^20.3.3
       '@types/react': ^18.2.0
       '@types/react-dom': ^18.2.0
@@ -809,7 +809,6 @@ importers:
     dependencies:
       '@raikou/core': link:../../core
       '@raikou/hooks': link:../../hooks
-      '@tabler/icons-react': 2.28.0_react@18.2.0
       tslib: 2.6.0
     devDependencies:
       '@types/node': 20.3.3
@@ -1462,6 +1461,29 @@ importers:
       tsup: 7.1.0_typescript@5.1.6
       typescript: 5.1.6
 
+  packages/raikou/components/Menu:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      clean-package: 2.2.0
+      tslib: ^2.6.0
+      tsup: ^7.1.0
+      typescript: ^5.1.6
+    dependencies:
+      '@raikou/core': link:../../core
+      '@raikou/hooks': link:../../hooks
+      tslib: 2.6.0
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.17
+      '@types/react-dom': 18.2.3
+      clean-package: 2.2.0
+      tsup: 7.1.0_typescript@5.1.6
+      typescript: 5.1.6
+
   packages/raikou/components/Modal:
     specifiers:
       '@raikou/core': workspace:*
@@ -1559,7 +1581,6 @@ importers:
   packages/raikou/components/Notification:
     specifiers:
       '@raikou/core': workspace:*
-      '@tabler/icons-react': ^2.25.0
       '@types/node': ^20.3.3
       '@types/react': ^18.2.0
       '@types/react-dom': ^18.2.0
@@ -1569,7 +1590,6 @@ importers:
       typescript: ^5.1.6
     dependencies:
       '@raikou/core': link:../../core
-      '@tabler/icons-react': 2.25.0_react@18.2.0
       tslib: 2.6.0
     devDependencies:
       '@types/node': 20.3.3
@@ -1743,6 +1763,7 @@ importers:
   packages/raikou/components/Popover:
     specifiers:
       '@floating-ui/react': ^0.23.1
+      '@floating-ui/react-dom': ^2.0.1
       '@raikou/core': workspace:*
       '@raikou/hooks': workspace:*
       '@types/node': ^20.3.3
@@ -1755,6 +1776,7 @@ importers:
       typescript: ^5.1.6
     dependencies:
       '@floating-ui/react': 0.23.1_biqbaboplfbrettd7655fr4n2y
+      '@floating-ui/react-dom': 2.0.1_biqbaboplfbrettd7655fr4n2y
       '@raikou/core': link:../../core
       '@raikou/hooks': link:../../hooks
       clsx: 2.0.0
@@ -1794,7 +1816,6 @@ importers:
     specifiers:
       '@raikou/core': workspace:*
       '@raikou/hooks': workspace:*
-      '@tabler/icons-react': ^2.28.0
       '@types/node': ^20.3.3
       '@types/react': ^18.2.0
       '@types/react-dom': ^18.2.0
@@ -1805,7 +1826,6 @@ importers:
     dependencies:
       '@raikou/core': link:../../core
       '@raikou/hooks': link:../../hooks
-      '@tabler/icons-react': 2.28.0_react@18.2.0
       tslib: 2.6.0
     devDependencies:
       '@types/node': 20.3.3
@@ -1819,7 +1839,6 @@ importers:
     specifiers:
       '@raikou/core': workspace:*
       '@raikou/hooks': workspace:*
-      '@tabler/icons-react': ^2.28.0
       '@types/node': ^20.3.3
       '@types/react': ^18.2.0
       '@types/react-dom': ^18.2.0
@@ -1830,7 +1849,6 @@ importers:
     dependencies:
       '@raikou/core': link:../../core
       '@raikou/hooks': link:../../hooks
-      '@tabler/icons-react': 2.28.0_react@18.2.0
       tslib: 2.6.0
     devDependencies:
       '@types/node': 20.3.3
@@ -2045,7 +2063,6 @@ importers:
     specifiers:
       '@raikou/core': workspace:*
       '@raikou/hooks': workspace:*
-      '@tabler/icons-react': ^2.25.0
       '@types/node': ^20.3.3
       '@types/react': ^18.2.0
       '@types/react-dom': ^18.2.0
@@ -2056,7 +2073,6 @@ importers:
     dependencies:
       '@raikou/core': link:../../core
       '@raikou/hooks': link:../../hooks
-      '@tabler/icons-react': 2.25.0_react@18.2.0
       tslib: 2.6.0
     devDependencies:
       '@types/node': 20.3.3
@@ -2091,7 +2107,6 @@ importers:
     specifiers:
       '@raikou/core': workspace:*
       '@raikou/hooks': workspace:*
-      '@tabler/icons-react': ^2.25.0
       '@types/node': ^20.3.3
       '@types/react': ^18.2.0
       '@types/react-dom': ^18.2.0
@@ -2102,7 +2117,6 @@ importers:
     dependencies:
       '@raikou/core': link:../../core
       '@raikou/hooks': link:../../hooks
-      '@tabler/icons-react': 2.25.0_react@18.2.0
       tslib: 2.6.0
     devDependencies:
       '@types/node': 20.3.3
@@ -4793,6 +4807,17 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
+  /@floating-ui/react-dom/2.0.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-rZtAmSht4Lry6gdhAJDrCp/6rKN7++JnL1/Anbr/DdeyYXQPxvg/ivrbYvJulbRf4vL8b212suwMM2lxbv+RQA==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      '@floating-ui/dom': 1.4.5
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
   /@floating-ui/react/0.23.1_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-OCc2ViQOBUKOGcE9NLAbpyqB+8Zz92IKIhxgz7XAkynKkVzcVSKtkWOcgyvO4SAzB2OybgRwk3WdzdzDRdh2QQ==}
     peerDependencies:
@@ -6521,12 +6546,12 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@tabler/icons-react/2.28.0_react@18.2.0:
-    resolution: {integrity: sha512-AuUd2hdK/4pa/DIIqCHZ32Dh9bIbbzo/2zEm2jr6cPARh81hJHScf/901ABYLNljWULCLSyz7YDOjnh+G1RGUw==}
+  /@tabler/icons-react/2.30.0_react@18.2.0:
+    resolution: {integrity: sha512-aYggXusHW133L4KujJkVf4GIIrjg7tIRHgNf/n37mnoHqMjwNP+PjmVdrBM1Z8Ywx9PKFRlrwM0eUMDcG+I4HA==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@tabler/icons': 2.28.0
+      '@tabler/icons': 2.30.0
       prop-types: 15.8.1
       react: 18.2.0
     dev: false
@@ -6535,12 +6560,12 @@ packages:
     resolution: {integrity: sha512-Z+FtSZoG/CM1TMCgg7elUew2m0+qMdh5gutMhvxiIY77KIIsE6L/6fUBy+rPXWE9v7MV296fsnCvbpfgwpXupQ==}
     dev: false
 
-  /@tabler/icons/2.28.0:
-    resolution: {integrity: sha512-JgqeXzS2Cik0Bed+dn3AYh/N2OqLv7FzoOqIzAWnywJyVOBNxB47pzW4Zc0hidDVCk2dt1ekeC2jHaXSheT+BQ==}
+  /@tabler/icons/2.30.0:
+    resolution: {integrity: sha512-tvtmkI4ALjKThVVORh++sB9JnkFY7eGInKxNy+Df7WVQiF7T85tlvGADzlgX4Ic+CK5MIUzZ0jhOlQ/RRlgXpg==}
     dev: false
 
-  /@tailwindcss/oxide-darwin-arm64/0.0.0-insiders.86fb660:
-    resolution: {integrity: sha512-Gz0cFD5v/SXMvoOfN5W5reFHWKnjJ2pzblqd5BBOduutt5sVmzn4nCmPYBtvG8sIGLrHlwcHH+J2n6n2zY651g==}
+  /@tailwindcss/oxide-darwin-arm64/0.0.0-insiders.a93c61f:
+    resolution: {integrity: sha512-UbeXgDLAlwah4HckCSO+fxLTKfSJPibqDwFEwWEU/4YCGd5BCbhsuz3bPHlDM7t3hwxGE0meDQBMgOtLvSzi7w==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
@@ -6548,8 +6573,8 @@ packages:
     dev: true
     optional: true
 
-  /@tailwindcss/oxide-darwin-x64/0.0.0-insiders.86fb660:
-    resolution: {integrity: sha512-cz3Q1tMrYdZWRLk1IEQtVF5Ct1PgkywEE8TXOUg7pbe6e/nIfRMbun5WH57UPY8tBInzc5IcMGAxBEj6Ip3JGg==}
+  /@tailwindcss/oxide-darwin-x64/0.0.0-insiders.a93c61f:
+    resolution: {integrity: sha512-JiTdJs+CQXkBWIkGyBHiUIcEPtjmPflZ+M1NjBO1WJR8KTmh0pi5e9VGfEY6FWASb1EDWouODaO7pzx/eltfTw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
@@ -6557,8 +6582,8 @@ packages:
     dev: true
     optional: true
 
-  /@tailwindcss/oxide-freebsd-x64/0.0.0-insiders.86fb660:
-    resolution: {integrity: sha512-EYxuadkFHtCg06bwBjdaSjImkyLp+HtqxgDlZ/ISQ1g5n8HcquttiLO7GWl4PQkxIQGOuEpRTygywSIpl2LWcw==}
+  /@tailwindcss/oxide-freebsd-x64/0.0.0-insiders.a93c61f:
+    resolution: {integrity: sha512-SMY5vKTD+DwQE0Yh8MSV85dbaiX9IR5VhpBdXbmv4iTzb988RW/Vq8B29CwHqxQDO486Ikvx7iBxnK5iQ20miA==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [freebsd]
@@ -6566,8 +6591,8 @@ packages:
     dev: true
     optional: true
 
-  /@tailwindcss/oxide-linux-arm-gnueabihf/0.0.0-insiders.86fb660:
-    resolution: {integrity: sha512-ysn6jcjdzgrHEQzcxa0U13hjDb2wT5MdzJqXdsLxRXr/xwoIM2w+Fp0NBa3PERk+8OD86lenswIgyhJO7Xu50A==}
+  /@tailwindcss/oxide-linux-arm-gnueabihf/0.0.0-insiders.a93c61f:
+    resolution: {integrity: sha512-B33LnCoWughdcg4WYngsYT/imZ4Ct4tuLNx0PvSV5KNRmkAFbuoATMT1jVkm4fphy3H3SJMawvvAbpGmBlLCaw==}
     engines: {node: '>= 10'}
     cpu: [arm]
     os: [linux]
@@ -6575,8 +6600,8 @@ packages:
     dev: true
     optional: true
 
-  /@tailwindcss/oxide-linux-arm64-gnu/0.0.0-insiders.86fb660:
-    resolution: {integrity: sha512-7YEBKt5SOXD2DdiSdPK9pmV4u+z4o/qwY2WEzZRzsg7TNdk90eeQDcQRtruFS/VVNLURHrNEI1/PJ53XDI96Bw==}
+  /@tailwindcss/oxide-linux-arm64-gnu/0.0.0-insiders.a93c61f:
+    resolution: {integrity: sha512-zk1rP3Z5mkHGNOESFxhCeVwOfeslE8p5TTrRjQ91898RKV+6+vkVgwu7phxMYY9cEOmLuS2SJBOGo/smSiXCuA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -6584,8 +6609,8 @@ packages:
     dev: true
     optional: true
 
-  /@tailwindcss/oxide-linux-arm64-musl/0.0.0-insiders.86fb660:
-    resolution: {integrity: sha512-oX2X1FzrHg4K8eXzzEncHB7aEXwBdL3Uu/DLS2WCwJD1/IQauMNJJY+ZMdlK3OHPuCy9dUPgPJRc5n1a0MbCug==}
+  /@tailwindcss/oxide-linux-arm64-musl/0.0.0-insiders.a93c61f:
+    resolution: {integrity: sha512-Oc+EhFFsoft/GMWGbTM53slCmnP5BHvZGlOeaJGXCdqlMEH1HsvejNixQ38YR+esZlDafTQmKQfaRFJ6E9SigQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -6593,8 +6618,8 @@ packages:
     dev: true
     optional: true
 
-  /@tailwindcss/oxide-linux-x64-gnu/0.0.0-insiders.86fb660:
-    resolution: {integrity: sha512-iXVvCML5BIBDcJ8QPlB+TJkOS6wngEGsLFf49UEVHD3GmGqGdPHq5jZp5Rb2YVTJBQPsb3rBAZr30C5icIy70g==}
+  /@tailwindcss/oxide-linux-x64-gnu/0.0.0-insiders.a93c61f:
+    resolution: {integrity: sha512-bjaORYolGrHEgeF97tlkAYBr76DWyE93DnZbVfb0dQDbd2Wd+4k/4xLUOfn/YcA2upN+p6NcZwEYJy9Vluds0g==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -6602,8 +6627,8 @@ packages:
     dev: true
     optional: true
 
-  /@tailwindcss/oxide-linux-x64-musl/0.0.0-insiders.86fb660:
-    resolution: {integrity: sha512-Z+2HaxCkNkve54xoNVygltRBb64awHwt+ajcBriDHLf/72xtFpX4EzR2O1eZybFtJjh2TQDqTdfk4XiCOrQQ0A==}
+  /@tailwindcss/oxide-linux-x64-musl/0.0.0-insiders.a93c61f:
+    resolution: {integrity: sha512-vOL4VuoxOdppzDa6KkwbJuw6CgS6tsNjTtZw6F8rRXpqiAiGn6EJrSoNxIfZoWU7THWrmNVct6M4JxaRaEC4dg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -6611,8 +6636,8 @@ packages:
     dev: true
     optional: true
 
-  /@tailwindcss/oxide-win32-x64-msvc/0.0.0-insiders.86fb660:
-    resolution: {integrity: sha512-5cXYwSLkzTqNUMriITZK/kZQjTHhWQVcPmH656G0uSOZDLy0G1m1Go+cGg1jIgMjhav7vOh/z6TbZ7WMTgwsqA==}
+  /@tailwindcss/oxide-win32-x64-msvc/0.0.0-insiders.a93c61f:
+    resolution: {integrity: sha512-8CkIdDaKadEtw4IEiEcXLy5uSrKIv/goKQVVmbroCqyDB60ZM/cLKGLgn6e+CITQNkbs+PDB2eBBS5BaUojaJw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -6620,19 +6645,19 @@ packages:
     dev: true
     optional: true
 
-  /@tailwindcss/oxide/0.0.0-insiders.86fb660:
-    resolution: {integrity: sha512-ixdW6yvwyD76Kbjrhp1b4lqj8APnWqooYQE90JSxTwiEbPbDKmlR63dlEq9Ta6sNpdVyHLmz/B806xohdlkpSg==}
+  /@tailwindcss/oxide/0.0.0-insiders.a93c61f:
+    resolution: {integrity: sha512-03/o7hprz+6pWfrdb31jQ8S7jVH6y1XWNYYRBZEGaI+IS2DpQtZsvDJAtxYSf/Uf6kqYRTDS7/zJeDl0tuG1Dg==}
     engines: {node: '>= 10'}
     optionalDependencies:
-      '@tailwindcss/oxide-darwin-arm64': 0.0.0-insiders.86fb660
-      '@tailwindcss/oxide-darwin-x64': 0.0.0-insiders.86fb660
-      '@tailwindcss/oxide-freebsd-x64': 0.0.0-insiders.86fb660
-      '@tailwindcss/oxide-linux-arm-gnueabihf': 0.0.0-insiders.86fb660
-      '@tailwindcss/oxide-linux-arm64-gnu': 0.0.0-insiders.86fb660
-      '@tailwindcss/oxide-linux-arm64-musl': 0.0.0-insiders.86fb660
-      '@tailwindcss/oxide-linux-x64-gnu': 0.0.0-insiders.86fb660
-      '@tailwindcss/oxide-linux-x64-musl': 0.0.0-insiders.86fb660
-      '@tailwindcss/oxide-win32-x64-msvc': 0.0.0-insiders.86fb660
+      '@tailwindcss/oxide-darwin-arm64': 0.0.0-insiders.a93c61f
+      '@tailwindcss/oxide-darwin-x64': 0.0.0-insiders.a93c61f
+      '@tailwindcss/oxide-freebsd-x64': 0.0.0-insiders.a93c61f
+      '@tailwindcss/oxide-linux-arm-gnueabihf': 0.0.0-insiders.a93c61f
+      '@tailwindcss/oxide-linux-arm64-gnu': 0.0.0-insiders.a93c61f
+      '@tailwindcss/oxide-linux-arm64-musl': 0.0.0-insiders.a93c61f
+      '@tailwindcss/oxide-linux-x64-gnu': 0.0.0-insiders.a93c61f
+      '@tailwindcss/oxide-linux-x64-musl': 0.0.0-insiders.a93c61f
+      '@tailwindcss/oxide-win32-x64-msvc': 0.0.0-insiders.a93c61f
     dev: true
 
   /@testing-library/dom/8.13.0:
@@ -15414,13 +15439,13 @@ packages:
     resolution: {integrity: sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==}
     dev: false
 
-  /tailwindcss/0.0.0-insiders.86fb660:
-    resolution: {integrity: sha512-Y+cO2uHGh77X9Q8KEHbg/g/UKved+qHgyGJrKvszVn5D0qx/d/Pa0lToHQ0zu/VJK6DQg2FqRWnD7y+MPzv+qg==}
+  /tailwindcss/0.0.0-insiders.a93c61f:
+    resolution: {integrity: sha512-yJxxOydxLmL61GnP2sX5ATHj5d17qx+xdg6ZvnWQBwMIzBbDleuC9tG4fuZXj5VPsKGNBEdu4Xw3nKJ0I2t3tg==}
     engines: {node: '>=16.0.0'}
     hasBin: true
     dependencies:
       '@alloc/quick-lru': 5.2.0
-      '@tailwindcss/oxide': 0.0.0-insiders.86fb660
+      '@tailwindcss/oxide': 0.0.0-insiders.a93c61f
       arg: 5.0.2
       browserslist: 4.21.9
       chokidar: 3.5.3

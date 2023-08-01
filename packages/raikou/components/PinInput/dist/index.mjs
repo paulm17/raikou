@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/PinInput.tsx
-import React10, { useRef, useState, useEffect } from "react";
+import React10, { useRef, useState as useState2, useEffect } from "react";
 import { useUncontrolled, useId as useId2 } from "@raikou/hooks";
 import {
   createVarsResolver as createVarsResolver7,
@@ -170,6 +170,9 @@ function createOptionalContext(initialValue = null) {
   const Provider = ({ children, value }) => /* @__PURE__ */ React3.createElement(Context.Provider, { value }, children);
   return [Provider, useOptionalContext];
 }
+
+// ../_utils/use-hovered/use-hovered.ts
+import { useState } from "react";
 
 // ../Input/src/InputWrapper.context.ts
 var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
@@ -955,7 +958,7 @@ var PinInput = factory7((props, ref) => {
     styles,
     props
   });
-  const [focusedIndex, setFocusedIndex] = useState(-1);
+  const [focusedIndex, setFocusedIndex] = useState2(-1);
   const [_value, setValues] = useUncontrolled({
     value,
     defaultValue,

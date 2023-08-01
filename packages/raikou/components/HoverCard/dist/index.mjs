@@ -2115,7 +2115,7 @@ var FloatingArrow = forwardRef2(
 FloatingArrow.displayName = "@raikou/core/FloatingArrow";
 
 // ../Popover/src/Popover.tsx
-import React12, { useRef as useRef7, useState as useState6, useCallback as useCallback3 } from "react";
+import React12, { useRef as useRef7, useState as useState7, useCallback as useCallback3 } from "react";
 import { useId as useId2, useClickOutside } from "@raikou/hooks";
 import {
   getDefaultZIndex,
@@ -2229,6 +2229,9 @@ function createSafeContext(errorMessage) {
 // ../_utils/create-optional-context/create-optional-context.tsx
 import React5, { createContext as createContext3, useContext as useContext3 } from "react";
 
+// ../_utils/use-hovered/use-hovered.ts
+import { useState as useState4 } from "react";
+
 // ../Popover/src/Popover.context.ts
 var [PopoverContextProvider, usePopoverContext] = createSafeContext(
   "Popover component was not found in the tree"
@@ -2308,7 +2311,7 @@ import {
 } from "@raikou/core";
 
 // ../Portal/src/Portal.tsx
-import React7, { useRef as useRef5, useState as useState4, forwardRef as forwardRef3 } from "react";
+import React7, { useRef as useRef5, useState as useState5, forwardRef as forwardRef3 } from "react";
 import { createPortal as createPortal2 } from "react-dom";
 import { useIsomorphicEffect } from "@raikou/hooks";
 import { useProps as useProps2 } from "@raikou/core";
@@ -2319,7 +2322,7 @@ var Portal = forwardRef3((props, ref) => {
     defaultProps2,
     props
   ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
-  const [mounted, setMounted] = useState4(false);
+  const [mounted, setMounted] = useState5(false);
   const nodeRef = useRef5(null);
   useIsomorphicEffect(() => {
     setMounted(true);
@@ -2498,7 +2501,7 @@ function getTransitionStyles({
 }
 
 // ../Transition/src/use-transition.ts
-import { useState as useState5, useEffect as useEffect6, useRef as useRef6 } from "react";
+import { useState as useState6, useEffect as useEffect6, useRef as useRef6 } from "react";
 import { useReducedMotion, useDidUpdate as useDidUpdate3 } from "@raikou/hooks";
 import { useRaikouTheme } from "@raikou/core";
 function useTransition({
@@ -2514,10 +2517,10 @@ function useTransition({
   const theme = useRaikouTheme();
   const shouldReduceMotion = useReducedMotion();
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
-  const [transitionDuration, setTransitionDuration] = useState5(
+  const [transitionDuration, setTransitionDuration] = useState6(
     reduceMotion ? 0 : duration
   );
-  const [transitionStatus, setStatus] = useState5(
+  const [transitionStatus, setStatus] = useState6(
     mounted ? "entered" : "exited"
   );
   const timeoutRef = useRef6(-1);
@@ -2844,8 +2847,8 @@ function Popover(_props) {
     varsResolver
   });
   const arrowRef = useRef7(null);
-  const [targetNode, setTargetNode] = useState6(null);
-  const [dropdownNode, setDropdownNode] = useState6(null);
+  const [targetNode, setTargetNode] = useState7(null);
+  const [dropdownNode, setDropdownNode] = useState7(null);
   const { dir } = useDirection2();
   const uid = useId2(id);
   const popover = usePopover({

@@ -57,6 +57,9 @@ function createOptionalContext(initialValue = null) {
   return [Provider, useOptionalContext];
 }
 
+// ../_utils/use-hovered/use-hovered.ts
+import { useState } from "react";
+
 // ../Checkbox/src/CheckIcon.tsx
 import React3 from "react";
 import { rem } from "@raikou/core";

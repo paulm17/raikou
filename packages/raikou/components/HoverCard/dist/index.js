@@ -86,7 +86,7 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/HoverCard.tsx
-var import_react20 = __toESM(require("react"));
+var import_react21 = __toESM(require("react"));
 var import_hooks9 = require("@raikou/hooks");
 var import_core14 = require("@raikou/core");
 
@@ -2150,7 +2150,7 @@ var FloatingArrow = (0, import_react6.forwardRef)(
 FloatingArrow.displayName = "@raikou/core/FloatingArrow";
 
 // ../Popover/src/Popover.tsx
-var import_react17 = __toESM(require("react"));
+var import_react18 = __toESM(require("react"));
 var import_hooks8 = require("@raikou/hooks");
 var import_core11 = require("@raikou/core");
 
@@ -2256,13 +2256,16 @@ function createSafeContext(errorMessage) {
 // ../_utils/create-optional-context/create-optional-context.tsx
 var import_react9 = __toESM(require("react"));
 
+// ../_utils/use-hovered/use-hovered.ts
+var import_react10 = require("react");
+
 // ../Popover/src/Popover.context.ts
 var [PopoverContextProvider, usePopoverContext] = createSafeContext(
   "Popover component was not found in the tree"
 );
 
 // ../Popover/src/PopoverTarget/PopoverTarget.tsx
-var import_react10 = require("react");
+var import_react11 = require("react");
 
 // ../../../../node_modules/.pnpm/clsx@2.0.0/node_modules/clsx/dist/clsx.mjs
 function r(e) {
@@ -2312,7 +2315,7 @@ var PopoverTarget = (0, import_core5.factory)((props, ref) => {
     "aria-controls": ctx.getDropdownId(),
     id: ctx.getTargetId()
   } : {};
-  return (0, import_react10.cloneElement)(children, __spreadValues(__spreadProps(__spreadValues(__spreadValues(__spreadValues({}, forwardedProps), accessibleProps), ctx.targetProps), {
+  return (0, import_react11.cloneElement)(children, __spreadValues(__spreadProps(__spreadValues(__spreadValues(__spreadValues({}, forwardedProps), accessibleProps), ctx.targetProps), {
     className: clsx_default(
       ctx.targetProps.className,
       forwardedProps.className,
@@ -2324,24 +2327,24 @@ var PopoverTarget = (0, import_core5.factory)((props, ref) => {
 PopoverTarget.displayName = "@raikou/core/PopoverTarget";
 
 // ../Popover/src/PopoverDropdown/PopoverDropdown.tsx
-var import_react16 = __toESM(require("react"));
+var import_react17 = __toESM(require("react"));
 var import_hooks7 = require("@raikou/hooks");
 var import_core10 = require("@raikou/core");
 
 // ../Portal/src/Portal.tsx
-var import_react11 = __toESM(require("react"));
+var import_react12 = __toESM(require("react"));
 var import_react_dom4 = require("react-dom");
 var import_hooks4 = require("@raikou/hooks");
 var import_core6 = require("@raikou/core");
 var defaultProps2 = {};
-var Portal = (0, import_react11.forwardRef)((props, ref) => {
+var Portal = (0, import_react12.forwardRef)((props, ref) => {
   const _a = (0, import_core6.useProps)(
     "Portal",
     defaultProps2,
     props
   ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
-  const [mounted, setMounted] = (0, import_react11.useState)(false);
-  const nodeRef = (0, import_react11.useRef)(null);
+  const [mounted, setMounted] = (0, import_react12.useState)(false);
+  const nodeRef = (0, import_react12.useRef)(null);
   (0, import_hooks4.useIsomorphicEffect)(() => {
     setMounted(true);
     nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
@@ -2358,14 +2361,14 @@ var Portal = (0, import_react11.forwardRef)((props, ref) => {
     return null;
   }
   return (0, import_react_dom4.createPortal)(
-    /* @__PURE__ */ import_react11.default.createElement("div", __spreadValues({ className, ref }, others), children),
+    /* @__PURE__ */ import_react12.default.createElement("div", __spreadValues({ className, ref }, others), children),
     nodeRef.current
   );
 });
 Portal.displayName = "@raikou/core/Portal";
 
 // ../Portal/src/OptionalPortal.tsx
-var import_react12 = __toESM(require("react"));
+var import_react13 = __toESM(require("react"));
 function OptionalPortal(_a) {
   var _b = _a, {
     withinPortal = true,
@@ -2375,9 +2378,9 @@ function OptionalPortal(_a) {
     "children"
   ]);
   if (withinPortal) {
-    return /* @__PURE__ */ import_react12.default.createElement(Portal, __spreadValues({}, others), children);
+    return /* @__PURE__ */ import_react13.default.createElement(Portal, __spreadValues({}, others), children);
   }
-  return /* @__PURE__ */ import_react12.default.createElement(import_react12.default.Fragment, null, children);
+  return /* @__PURE__ */ import_react13.default.createElement(import_react13.default.Fragment, null, children);
 }
 OptionalPortal.displayName = "@raikou/core/OptionalPortal";
 
@@ -2484,7 +2487,7 @@ var transitions = {
 };
 
 // ../Transition/src/Transition.tsx
-var import_react14 = __toESM(require("react"));
+var import_react15 = __toESM(require("react"));
 
 // ../Transition/src/get-transition-styles/get-transition-styles.ts
 var transitionStatuses = {
@@ -2519,7 +2522,7 @@ function getTransitionStyles({
 }
 
 // ../Transition/src/use-transition.ts
-var import_react13 = require("react");
+var import_react14 = require("react");
 var import_hooks5 = require("@raikou/hooks");
 var import_core8 = require("@raikou/core");
 function useTransition({
@@ -2535,13 +2538,13 @@ function useTransition({
   const theme = (0, import_core8.useRaikouTheme)();
   const shouldReduceMotion = (0, import_hooks5.useReducedMotion)();
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
-  const [transitionDuration, setTransitionDuration] = (0, import_react13.useState)(
+  const [transitionDuration, setTransitionDuration] = (0, import_react14.useState)(
     reduceMotion ? 0 : duration
   );
-  const [transitionStatus, setStatus] = (0, import_react13.useState)(
+  const [transitionStatus, setStatus] = (0, import_react14.useState)(
     mounted ? "entered" : "exited"
   );
-  const timeoutRef = (0, import_react13.useRef)(-1);
+  const timeoutRef = (0, import_react14.useRef)(-1);
   const handleStateChange = (shouldMount) => {
     const preHandler = shouldMount ? onEnter : onExit;
     const handler = shouldMount ? onEntered : onExited;
@@ -2568,7 +2571,7 @@ function useTransition({
   (0, import_hooks5.useDidUpdate)(() => {
     handleStateChange(mounted);
   }, [mounted]);
-  (0, import_react13.useEffect)(() => () => window.clearTimeout(timeoutRef.current), []);
+  (0, import_react14.useEffect)(() => () => window.clearTimeout(timeoutRef.current), []);
   return {
     transitionDuration,
     transitionStatus,
@@ -2601,9 +2604,9 @@ function Transition({
     onExited
   });
   if (transitionDuration === 0) {
-    return mounted ? /* @__PURE__ */ import_react14.default.createElement(import_react14.default.Fragment, null, children({})) : keepMounted ? children({ display: "none" }) : null;
+    return mounted ? /* @__PURE__ */ import_react15.default.createElement(import_react15.default.Fragment, null, children({})) : keepMounted ? children({ display: "none" }) : null;
   }
-  return transitionStatus === "exited" ? keepMounted ? children({ display: "none" }) : null : /* @__PURE__ */ import_react14.default.createElement(import_react14.default.Fragment, null, children(
+  return transitionStatus === "exited" ? keepMounted ? children({ display: "none" }) : null : /* @__PURE__ */ import_react15.default.createElement(import_react15.default.Fragment, null, children(
     getTransitionStyles({
       transition,
       duration: transitionDuration,
@@ -2615,7 +2618,7 @@ function Transition({
 Transition.displayName = "@raikou/core/Transition";
 
 // ../FocusTrap/src/FocusTrap.tsx
-var import_react15 = require("react");
+var import_react16 = require("react");
 var import_hooks6 = require("@raikou/hooks");
 var import_core9 = require("@raikou/core");
 function FocusTrap({
@@ -2628,7 +2631,7 @@ function FocusTrap({
   if (!(0, import_core9.isElement)(children)) {
     return children;
   }
-  return (0, import_react15.cloneElement)(children, { [refProp]: ref });
+  return (0, import_react16.cloneElement)(children, { [refProp]: ref });
 }
 FocusTrap.displayName = "@raikou/core/FocusTrap";
 
@@ -2674,7 +2677,7 @@ var PopoverDropdown = (0, import_core10.factory)(
     if (ctx.disabled) {
       return null;
     }
-    return /* @__PURE__ */ import_react16.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, ctx.portalProps), { withinPortal: ctx.withinPortal }), /* @__PURE__ */ import_react16.default.createElement(
+    return /* @__PURE__ */ import_react17.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, ctx.portalProps), { withinPortal: ctx.withinPortal }), /* @__PURE__ */ import_react17.default.createElement(
       Transition,
       __spreadProps(__spreadValues({
         mounted: ctx.opened
@@ -2686,7 +2689,7 @@ var PopoverDropdown = (0, import_core10.factory)(
       }),
       (transitionStyles) => {
         var _a2, _b2;
-        return /* @__PURE__ */ import_react16.default.createElement(FocusTrap, { active: ctx.trapFocus }, /* @__PURE__ */ import_react16.default.createElement(
+        return /* @__PURE__ */ import_react17.default.createElement(FocusTrap, { active: ctx.trapFocus }, /* @__PURE__ */ import_react17.default.createElement(
           import_core10.Box,
           __spreadValues(__spreadProps(__spreadValues(__spreadValues({}, accessibleProps), others), {
             variant,
@@ -2713,7 +2716,7 @@ var PopoverDropdown = (0, import_core10.factory)(
             ]
           })),
           children,
-          /* @__PURE__ */ import_react16.default.createElement(
+          /* @__PURE__ */ import_react17.default.createElement(
             FloatingArrow,
             __spreadValues({
               ref: ctx.arrowRef,
@@ -2864,9 +2867,9 @@ function Popover(_props) {
     vars,
     varsResolver
   });
-  const arrowRef = (0, import_react17.useRef)(null);
-  const [targetNode, setTargetNode] = (0, import_react17.useState)(null);
-  const [dropdownNode, setDropdownNode] = (0, import_react17.useState)(null);
+  const arrowRef = (0, import_react18.useRef)(null);
+  const [targetNode, setTargetNode] = (0, import_react18.useState)(null);
+  const [dropdownNode, setDropdownNode] = (0, import_react18.useState)(null);
   const { dir } = (0, import_core11.useDirection)();
   const uid = (0, import_hooks8.useId)(id);
   const popover = usePopover({
@@ -2889,21 +2892,21 @@ function Popover(_props) {
     clickOutsideEvents,
     [targetNode, dropdownNode]
   );
-  const reference = (0, import_react17.useCallback)(
+  const reference = (0, import_react18.useCallback)(
     (node) => {
       setTargetNode(node);
       popover.floating.reference(node);
     },
     [popover.floating.reference]
   );
-  const floating = (0, import_react17.useCallback)(
+  const floating = (0, import_react18.useCallback)(
     (node) => {
       setDropdownNode(node);
       popover.floating.floating(node);
     },
     [popover.floating.floating]
   );
-  return /* @__PURE__ */ import_react17.default.createElement(
+  return /* @__PURE__ */ import_react18.default.createElement(
     PopoverContextProvider,
     {
       value: {
@@ -2962,7 +2965,7 @@ var [HoverCardContextProvider, useHoverCardContext] = createSafeContext(
 );
 
 // src/HoverCardDropdown/HoverCardDropdown.tsx
-var import_react18 = __toESM(require("react"));
+var import_react19 = __toESM(require("react"));
 var import_core12 = require("@raikou/core");
 var defaultProps5 = {};
 function HoverCardDropdown(props) {
@@ -2980,7 +2983,7 @@ function HoverCardDropdown(props) {
     onMouseLeave,
     ctx.closeDropdown
   );
-  return /* @__PURE__ */ import_react18.default.createElement(
+  return /* @__PURE__ */ import_react19.default.createElement(
     Popover.Dropdown,
     __spreadValues({
       onMouseEnter: handleMouseEnter,
@@ -2992,12 +2995,12 @@ function HoverCardDropdown(props) {
 HoverCardDropdown.displayName = "@raikou/core/HoverCardDropdown";
 
 // src/HoverCardTarget/HoverCardTarget.tsx
-var import_react19 = __toESM(require("react"));
+var import_react20 = __toESM(require("react"));
 var import_core13 = require("@raikou/core");
 var defaultProps6 = {
   refProp: "ref"
 };
-var HoverCardTarget = (0, import_react19.forwardRef)(
+var HoverCardTarget = (0, import_react20.forwardRef)(
   (props, ref) => {
     const _a = (0, import_core13.useProps)(
       "HoverCardTarget",
@@ -3018,7 +3021,7 @@ var HoverCardTarget = (0, import_react19.forwardRef)(
       children.props.onMouseLeave,
       ctx.closeDropdown
     );
-    return /* @__PURE__ */ import_react19.default.createElement(Popover.Target, __spreadValues({ refProp, ref }, others), (0, import_react19.cloneElement)(children, {
+    return /* @__PURE__ */ import_react20.default.createElement(Popover.Target, __spreadValues({ refProp, ref }, others), (0, import_react20.cloneElement)(children, {
       onMouseEnter,
       onMouseLeave
     }));
@@ -3058,7 +3061,7 @@ function HoverCard(props) {
     openDelay,
     closeDelay
   });
-  return /* @__PURE__ */ import_react20.default.createElement(HoverCardContextProvider, { value: { openDropdown, closeDropdown } }, /* @__PURE__ */ import_react20.default.createElement(Popover, __spreadProps(__spreadValues({}, others), { opened, __staticSelector: "HoverCard" }), children));
+  return /* @__PURE__ */ import_react21.default.createElement(HoverCardContextProvider, { value: { openDropdown, closeDropdown } }, /* @__PURE__ */ import_react21.default.createElement(Popover, __spreadProps(__spreadValues({}, others), { opened, __staticSelector: "HoverCard" }), children));
 }
 HoverCard.displayName = "@raikou/core/HoverCard";
 HoverCard.Target = HoverCardTarget;

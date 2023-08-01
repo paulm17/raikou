@@ -541,6 +541,9 @@ function createOptionalContext(initialValue = null) {
   return [Provider, useOptionalContext];
 }
 
+// ../_utils/use-hovered/use-hovered.ts
+import { useState } from "react";
+
 // src/PillGroup.context.ts
 var [PillGroupProvider, usePillGroupContext] = createOptionalContext();
 

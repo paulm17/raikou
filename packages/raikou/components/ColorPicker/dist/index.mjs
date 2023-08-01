@@ -32,7 +32,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/ColorPicker.tsx
-import React10, { useRef as useRef3, useState as useState3 } from "react";
+import React10, { useRef as useRef3, useState as useState4 } from "react";
 import { useDidUpdate as useDidUpdate2, useUncontrolled } from "@raikou/hooks";
 import {
   Box as Box6,
@@ -49,7 +49,7 @@ import React5, { forwardRef as forwardRef3 } from "react";
 import { useProps, rem as rem2 } from "@raikou/core";
 
 // src/ColorSlider/ColorSlider.tsx
-import React4, { useRef, useState, forwardRef as forwardRef2 } from "react";
+import React4, { useRef, useState as useState2, forwardRef as forwardRef2 } from "react";
 import {
   clampUseMovePosition,
   useDidUpdate,
@@ -83,6 +83,9 @@ function createSafeContext(errorMessage) {
 
 // ../_utils/create-optional-context/create-optional-context.tsx
 import React2, { createContext as createContext2, useContext as useContext2 } from "react";
+
+// ../_utils/use-hovered/use-hovered.ts
+import { useState } from "react";
 
 // src/ColorPicker.context.ts
 var [ColorPickerProvider, useColorPickerContext] = createSafeContext(
@@ -141,7 +144,7 @@ var ColorSlider = forwardRef2(
     ]);
     const { getStyles } = useColorPickerContext();
     const theme = useRaikouTheme();
-    const [position, setPosition] = useState({ y: 0, x: value / maxValue });
+    const [position, setPosition] = useState2({ y: 0, x: value / maxValue });
     const positionRef = useRef(position);
     const getChangeValue = (val) => round2 ? Math.round(val * maxValue) : val * maxValue;
     const { ref: sliderRef } = useMove(
@@ -418,7 +421,7 @@ var HueSlider = forwardRef4(
 HueSlider.displayName = "@raikou/core/HueSlider";
 
 // src/Saturation/Saturation.tsx
-import React7, { useEffect, useRef as useRef2, useState as useState2 } from "react";
+import React7, { useEffect, useRef as useRef2, useState as useState3 } from "react";
 import { clampUseMovePosition as clampUseMovePosition2, useMove as useMove2 } from "@raikou/hooks";
 import { Box as Box3 } from "@raikou/core";
 
@@ -514,7 +517,7 @@ function Saturation(_a) {
     "onScrubEnd"
   ]);
   const { getStyles } = useColorPickerContext();
-  const [position, setPosition] = useState2({
+  const [position, setPosition] = useState3({
     x: value.s / 100,
     y: 1 - value.v / 100
   });
@@ -858,7 +861,7 @@ var ColorPicker = factory((_props, ref) => {
     finalValue: "#FFFFFF",
     onChange
   });
-  const [parsed, setParsed] = useState3(parseColor(_value));
+  const [parsed, setParsed] = useState4(parseColor(_value));
   const startScrubbing = () => {
     window.clearTimeout(scrubTimeoutRef.current);
     isScrubbingRef.current = true;

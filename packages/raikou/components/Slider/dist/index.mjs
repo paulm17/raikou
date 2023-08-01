@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/Slider/Slider.tsx
-import React8, { useCallback, useRef as useRef2, useState as useState3 } from "react";
+import React8, { useCallback, useRef as useRef2, useState as useState4 } from "react";
 import { clamp, useMergedRef, useMove, useUncontrolled } from "@raikou/hooks";
 import {
   factory,
@@ -68,6 +68,9 @@ function createSafeContext(errorMessage) {
 
 // ../_utils/create-optional-context/create-optional-context.tsx
 import React2, { createContext as createContext2, useContext as useContext2 } from "react";
+
+// ../_utils/use-hovered/use-hovered.ts
+import { useState } from "react";
 
 // src/Slider.context.ts
 var [SliderProvider, useSliderContext] = createSafeContext("SliderProvider was not found in tree");
@@ -207,7 +210,7 @@ function Track(_a) {
 Track.displayName = "@raikou/core/SliderTrack";
 
 // src/Thumb/Thumb.tsx
-import React7, { useState as useState2, forwardRef as forwardRef2 } from "react";
+import React7, { useState as useState3, forwardRef as forwardRef2 } from "react";
 import { Box as Box4 } from "@raikou/core";
 
 // ../Transition/src/transitions.ts
@@ -348,7 +351,7 @@ function getTransitionStyles({
 }
 
 // ../Transition/src/use-transition.ts
-import { useState, useEffect, useRef } from "react";
+import { useState as useState2, useEffect, useRef } from "react";
 import { useReducedMotion, useDidUpdate } from "@raikou/hooks";
 import { useRaikouTheme } from "@raikou/core";
 function useTransition({
@@ -364,10 +367,10 @@ function useTransition({
   const theme = useRaikouTheme();
   const shouldReduceMotion = useReducedMotion();
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
-  const [transitionDuration, setTransitionDuration] = useState(
+  const [transitionDuration, setTransitionDuration] = useState2(
     reduceMotion ? 0 : duration
   );
-  const [transitionStatus, setStatus] = useState(
+  const [transitionStatus, setStatus] = useState2(
     mounted ? "entered" : "exited"
   );
   const timeoutRef = useRef(-1);
@@ -465,7 +468,7 @@ var Thumb = forwardRef2(
     disabled
   }, ref) => {
     const { getStyles } = useSliderContext();
-    const [focused, setFocused] = useState2(false);
+    const [focused, setFocused] = useState3(false);
     const isVisible = labelAlwaysOn || dragging || focused || showLabelOnHover && isHovered;
     return /* @__PURE__ */ React7.createElement(
       Box4,
@@ -645,7 +648,7 @@ var Slider = factory((_props, ref) => {
     varsResolver
   });
   const { dir } = useDirection();
-  const [hovered, setHovered] = useState3(false);
+  const [hovered, setHovered] = useState4(false);
   const [_value, setValue] = useUncontrolled({
     value: typeof value === "number" ? clamp(value, min, max) : value,
     defaultValue: typeof defaultValue === "number" ? clamp(defaultValue, min, max) : defaultValue,
@@ -803,7 +806,7 @@ var Slider = factory((_props, ref) => {
 Slider.displayName = "@raikou/core/Slider";
 
 // src/RangeSlider/RangeSlider.tsx
-import React9, { useEffect as useEffect2, useRef as useRef3, useState as useState4 } from "react";
+import React9, { useEffect as useEffect2, useRef as useRef3, useState as useState5 } from "react";
 import { useMove as useMove2, useUncontrolled as useUncontrolled2 } from "@raikou/hooks";
 import {
   factory as factory2,
@@ -937,8 +940,8 @@ var RangeSlider = factory2((_props, ref) => {
     varsResolver: varsResolver2
   });
   const { dir } = useDirection2();
-  const [focused, setFocused] = useState4(-1);
-  const [hovered, setHovered] = useState4(false);
+  const [focused, setFocused] = useState5(-1);
+  const [hovered, setHovered] = useState5(false);
   const [_value, setValue] = useUncontrolled2({
     value,
     defaultValue,

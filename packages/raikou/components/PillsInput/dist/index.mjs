@@ -67,6 +67,9 @@ function createOptionalContext(initialValue = null) {
   return [Provider, useOptionalContext];
 }
 
+// ../_utils/use-hovered/use-hovered.ts
+import { useState } from "react";
+
 // ../Input/src/InputWrapper.context.ts
 var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetBottom: false,
@@ -841,7 +844,6 @@ var InputBase = polymorphicFactory2((props, ref) => {
   ), { inputProps, wrapperProps } = _a, others = __objRest(_a, ["inputProps", "wrapperProps"]);
   return /* @__PURE__ */ React9.createElement(Input.Wrapper, __spreadValues({}, wrapperProps), /* @__PURE__ */ React9.createElement(Input, __spreadProps(__spreadValues(__spreadValues({}, inputProps), others), { ref })));
 });
-InputBase.classes = __spreadValues(__spreadValues({}, Input.classes), Input.Wrapper.classes);
 InputBase.displayName = "@raikou/core/InputBase";
 
 // src/PillsInput.context.ts

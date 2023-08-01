@@ -106,6 +106,9 @@ function createSafeContext(errorMessage) {
 // ../_utils/create-optional-context/create-optional-context.tsx
 import React3, { createContext as createContext2, useContext as useContext2 } from "react";
 
+// ../_utils/use-hovered/use-hovered.ts
+import { useState } from "react";
+
 // src/Accordion.context.ts
 var [AccordionProvider, useAccordionContext] = createSafeContext(
   "Accordion component was not found in the tree"
@@ -171,7 +174,7 @@ import {
 } from "@raikou/core";
 
 // ../Collapse/src/use-collapse.ts
-import { useState, useRef } from "react";
+import { useState as useState2, useRef } from "react";
 import { flushSync } from "react-dom";
 import { useDidUpdate, mergeRefs } from "@raikou/hooks";
 function getAutoHeightDuration(height) {
@@ -199,7 +202,7 @@ function useCollapse({
     height: 0,
     overflow: "hidden"
   };
-  const [styles, setStylesRaw] = useState(
+  const [styles, setStylesRaw] = useState2(
     opened ? {} : collapsedStyles
   );
   const setStyles = (newStyles) => {

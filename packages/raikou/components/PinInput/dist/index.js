@@ -64,7 +64,7 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/PinInput.tsx
-var import_react11 = __toESM(require("react"));
+var import_react12 = __toESM(require("react"));
 var import_hooks2 = require("@raikou/hooks");
 var import_core8 = require("@raikou/core");
 
@@ -164,7 +164,7 @@ var Group = (0, import_core.factory)((_props, ref) => {
 Group.displayName = "@raikou/core/Group";
 
 // ../Input/src/Input.tsx
-var import_react10 = __toESM(require("react"));
+var import_react11 = __toESM(require("react"));
 var import_core7 = require("@raikou/core");
 
 // ../_utils/create-safe-context/create-safe-context.tsx
@@ -179,6 +179,9 @@ function createOptionalContext(initialValue = null) {
   return [Provider, useOptionalContext];
 }
 
+// ../_utils/use-hovered/use-hovered.ts
+var import_react5 = require("react");
+
 // ../Input/src/InputWrapper.context.ts
 var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetBottom: false,
@@ -189,7 +192,7 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
 });
 
 // ../Input/src/InputLabel/InputLabel.tsx
-var import_react5 = __toESM(require("react"));
+var import_react6 = __toESM(require("react"));
 var import_core2 = require("@raikou/core");
 var defaultProps2 = {
   size: "sm",
@@ -252,7 +255,7 @@ var InputLabel = (0, import_core2.factory)((_props, ref) => {
   });
   const ctx = useInputWrapperContext();
   const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-  return /* @__PURE__ */ import_react5.default.createElement(
+  return /* @__PURE__ */ import_react6.default.createElement(
     import_core2.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("label")), {
       component: labelElement,
@@ -269,13 +272,13 @@ var InputLabel = (0, import_core2.factory)((_props, ref) => {
       }
     }), others),
     children,
-    required && /* @__PURE__ */ import_react5.default.createElement("span", __spreadProps(__spreadValues({}, getStyles("required")), { "aria-hidden": true }), " *")
+    required && /* @__PURE__ */ import_react6.default.createElement("span", __spreadProps(__spreadValues({}, getStyles("required")), { "aria-hidden": true }), " *")
   );
 });
 InputLabel.displayName = "@raikou/core/InputLabel";
 
 // ../Input/src/InputError/InputError.tsx
-var import_react6 = __toESM(require("react"));
+var import_react7 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
 var defaultProps3 = {
   size: "sm"
@@ -325,7 +328,7 @@ var InputError = (0, import_core3.factory)((_props, ref) => {
   });
   const ctx = useInputWrapperContext();
   const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-  return /* @__PURE__ */ import_react6.default.createElement(
+  return /* @__PURE__ */ import_react7.default.createElement(
     import_core3.Box,
     __spreadValues(__spreadValues({
       component: "p",
@@ -338,7 +341,7 @@ var InputError = (0, import_core3.factory)((_props, ref) => {
 InputError.displayName = "@raikou/core/InputError";
 
 // ../Input/src/InputDescription/InputDescription.tsx
-var import_react7 = __toESM(require("react"));
+var import_react8 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
 var defaultProps4 = {
   size: "sm"
@@ -391,7 +394,7 @@ var InputDescription = (0, import_core4.factory)(
       varsResolver: varsResolver4
     });
     const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-    return /* @__PURE__ */ import_react7.default.createElement(
+    return /* @__PURE__ */ import_react8.default.createElement(
       import_core4.Box,
       __spreadValues(__spreadValues({
         component: "p",
@@ -405,7 +408,7 @@ var InputDescription = (0, import_core4.factory)(
 InputDescription.displayName = "@raikou/core/InputDescription";
 
 // ../Input/src/InputPlaceholder/InputPlaceholder.tsx
-var import_react8 = __toESM(require("react"));
+var import_react9 = __toESM(require("react"));
 var import_core5 = require("@raikou/core");
 var defaultProps5 = {};
 var InputPlaceholder = (0, import_core5.factory)(
@@ -443,7 +446,7 @@ var InputPlaceholder = (0, import_core5.factory)(
       unstyled,
       rootSelector: "placeholder"
     });
-    return /* @__PURE__ */ import_react8.default.createElement(
+    return /* @__PURE__ */ import_react9.default.createElement(
       import_core5.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("placeholder")), {
         component: "span",
@@ -456,7 +459,7 @@ var InputPlaceholder = (0, import_core5.factory)(
 InputPlaceholder.displayName = "@raikou/core/InputPlaceholder";
 
 // ../Input/src/InputWrapper/InputWrapper.tsx
-var import_react9 = __toESM(require("react"));
+var import_react10 = __toESM(require("react"));
 var import_hooks = require("@raikou/hooks");
 var import_core6 = require("@raikou/core");
 
@@ -572,7 +575,7 @@ var InputWrapper = (0, import_core6.factory)((_props, ref) => {
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
-  const _label = label && /* @__PURE__ */ import_react9.default.createElement(
+  const _label = label && /* @__PURE__ */ import_react10.default.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
@@ -583,7 +586,7 @@ var InputWrapper = (0, import_core6.factory)((_props, ref) => {
     }, sharedProps), labelProps),
     label
   );
-  const _description = hasDescription && /* @__PURE__ */ import_react9.default.createElement(
+  const _description = hasDescription && /* @__PURE__ */ import_react10.default.createElement(
     InputDescription,
     __spreadProps(__spreadValues(__spreadValues({
       key: "description"
@@ -593,8 +596,8 @@ var InputWrapper = (0, import_core6.factory)((_props, ref) => {
     }),
     description
   );
-  const _input = /* @__PURE__ */ import_react9.default.createElement(import_react9.default.Fragment, { key: "input" }, inputContainer(children));
-  const _error = hasError && /* @__PURE__ */ import_react9.default.createElement(
+  const _input = /* @__PURE__ */ import_react10.default.createElement(import_react10.default.Fragment, { key: "input" }, inputContainer(children));
+  const _error = hasError && /* @__PURE__ */ import_react10.default.createElement(
     InputError,
     __spreadProps(__spreadValues(__spreadValues({}, errorProps), sharedProps), {
       size: (errorProps == null ? void 0 : errorProps.size) || sharedProps.size,
@@ -617,7 +620,7 @@ var InputWrapper = (0, import_core6.factory)((_props, ref) => {
         return null;
     }
   });
-  return /* @__PURE__ */ import_react9.default.createElement(
+  return /* @__PURE__ */ import_react10.default.createElement(
     InputWrapperProvider,
     {
       value: __spreadValues({
@@ -626,7 +629,7 @@ var InputWrapper = (0, import_core6.factory)((_props, ref) => {
         inputId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
-    /* @__PURE__ */ import_react9.default.createElement(
+    /* @__PURE__ */ import_react10.default.createElement(
       import_core6.Box,
       __spreadValues(__spreadValues({
         ref,
@@ -754,7 +757,7 @@ var Input = (0, import_core7.polymorphicFactory)((_props, ref) => {
     "aria-describedby": ctx == null ? void 0 : ctx.describedBy,
     id: (ctx == null ? void 0 : ctx.inputId) || id
   } : {};
-  return /* @__PURE__ */ import_react10.default.createElement(
+  return /* @__PURE__ */ import_react11.default.createElement(
     import_core7.Box,
     __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, getStyles("wrapper")), styleProps), wrapperProps), {
       mod: {
@@ -768,7 +771,7 @@ var Input = (0, import_core7.polymorphicFactory)((_props, ref) => {
       variant,
       size
     }),
-    leftSection && /* @__PURE__ */ import_react10.default.createElement(
+    leftSection && /* @__PURE__ */ import_react11.default.createElement(
       "div",
       __spreadValues(__spreadProps(__spreadValues({}, leftSectionProps), {
         "data-position": "left"
@@ -778,7 +781,7 @@ var Input = (0, import_core7.polymorphicFactory)((_props, ref) => {
       })),
       leftSection
     ),
-    /* @__PURE__ */ import_react10.default.createElement(
+    /* @__PURE__ */ import_react11.default.createElement(
       import_core7.Box,
       __spreadValues(__spreadProps(__spreadValues(__spreadValues({
         component: "input"
@@ -789,7 +792,7 @@ var Input = (0, import_core7.polymorphicFactory)((_props, ref) => {
         variant
       }), getStyles("input"))
     ),
-    rightSection && /* @__PURE__ */ import_react10.default.createElement(
+    rightSection && /* @__PURE__ */ import_react11.default.createElement(
       "div",
       __spreadValues(__spreadProps(__spreadValues({}, rightSectionProps), {
         "data-position": "right"
@@ -927,14 +930,14 @@ var PinInput = (0, import_core8.factory)((props, ref) => {
     styles,
     props
   });
-  const [focusedIndex, setFocusedIndex] = (0, import_react11.useState)(-1);
+  const [focusedIndex, setFocusedIndex] = (0, import_react12.useState)(-1);
   const [_value, setValues] = (0, import_hooks2.useUncontrolled)({
     value,
     defaultValue,
     finalValue: "",
     onChange
   });
-  const inputsRef = (0, import_react11.useRef)([]);
+  const inputsRef = (0, import_react12.useRef)([]);
   const validate = (code) => {
     const re = type instanceof RegExp ? type : type && type in regex ? regex[type] : null;
     return re == null ? void 0 : re.test(code);
@@ -1004,12 +1007,12 @@ var PinInput = (0, import_core8.factory)((props, ref) => {
       setValues(copyValue);
     }
   };
-  (0, import_react11.useEffect)(() => {
+  (0, import_react12.useEffect)(() => {
     if (_value.length !== length)
       return;
     onComplete == null ? void 0 : onComplete(_value);
   }, [_value]);
-  return /* @__PURE__ */ import_react11.default.createElement(import_react11.default.Fragment, null, /* @__PURE__ */ import_react11.default.createElement(
+  return /* @__PURE__ */ import_react12.default.createElement(import_react12.default.Fragment, null, /* @__PURE__ */ import_react12.default.createElement(
     Group,
     __spreadProps(__spreadValues(__spreadValues({}, others), getStyles("root")), {
       role: "group",
@@ -1021,7 +1024,7 @@ var PinInput = (0, import_core8.factory)((props, ref) => {
       variant,
       __size: size
     }),
-    createPinArray(length != null ? length : 0, _value).map((char, index) => /* @__PURE__ */ import_react11.default.createElement(
+    createPinArray(length != null ? length : 0, _value).map((char, index) => /* @__PURE__ */ import_react12.default.createElement(
       Input,
       __spreadProps(__spreadValues({
         component: "input"
@@ -1060,7 +1063,7 @@ var PinInput = (0, import_core8.factory)((props, ref) => {
         readOnly
       })
     ))
-  ), /* @__PURE__ */ import_react11.default.createElement("input", { type: "hidden", name, form, value: _value }));
+  ), /* @__PURE__ */ import_react12.default.createElement("input", { type: "hidden", name, form, value: _value }));
 });
 PinInput.displayName = "@raikou/core/PinInput";
 // Annotate the CommonJS export names for ESM import in node:
