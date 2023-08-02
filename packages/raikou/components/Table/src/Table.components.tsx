@@ -9,8 +9,8 @@ import {
   FactoryPayload,
   Factory,
 } from "@raikou/core";
-import { useTableContext, TableContextValue } from "./Table.context";
 import type { TableFactory } from "./Table";
+import { TableContextValue, useStore } from "./store";
 
 export interface TableElementProps<Selector extends string>
   extends BoxProps,
@@ -99,7 +99,7 @@ interface TableElementOptions {
 
 function getDataAttributes(
   ctx: TableContextValue,
-  options?: TableElementOptions
+  options?: TableElementOptions,
 ) {
   if (!options) {
     return undefined;
@@ -132,14 +132,14 @@ function getDataAttributes(
 
 export function tableElement<Factory extends FactoryPayload>(
   element: "th" | "td" | "tr" | "thead" | "tbody" | "tfoot" | "caption",
-  options?: TableElementOptions
+  options?: TableElementOptions,
 ) {
   const name = `Table${element.charAt(0).toUpperCase()}${element.slice(1)}`;
   const Component = factory<Factory>((_props, ref) => {
     const props = useProps(name, {}, _props);
     const { classNames, className, style, styles, unstyled, ...others } = props;
 
-    const ctx = useTableContext();
+    const ctx = useStore.getState();
 
     return (
       <Box

@@ -8,7 +8,7 @@ import {
   useProps,
   Factory,
 } from "@raikou/core";
-import { useAppShellContext } from "../AppShell.context";
+import { useStore } from "../store";
 
 export type AppShellHeaderStylesNames = "header";
 export type AppShellHeaderVariant = string;
@@ -50,7 +50,7 @@ export const AppShellHeader = factory<AppShellHeaderFactory>((_props, ref) => {
     zIndex,
     ...others
   } = props;
-  const ctx = useAppShellContext();
+  const ctx = useStore.getState();
 
   if (ctx.disabled) {
     return null;

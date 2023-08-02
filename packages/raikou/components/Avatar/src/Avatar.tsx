@@ -101,7 +101,7 @@ const varsResolver = createVarsResolver<AvatarFactory>(
         "--avatar-bd": colors.border,
       },
     };
-  }
+  },
 );
 
 export const Avatar = polymorphicFactory<AvatarFactory>((_props, ref) => {
@@ -162,6 +162,7 @@ export const Avatar = polymorphicFactory<AvatarFactory>((_props, ref) => {
           src={src!}
           alt={alt}
           onError={(event) => {
+            console.log(event);
             setError(true);
             imageProps?.onError?.(event);
           }}

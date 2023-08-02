@@ -11,8 +11,8 @@ import {
   StyleProp,
   useRandomClassName,
 } from "@raikou/core";
-import { useGridContext } from "../Grid.context";
 import { GridColVariables } from "./GridColVariables";
+import { useStore } from "../store";
 
 export type GridColStylesNames = "col";
 export type ColSpan = number | "auto" | "content";
@@ -46,14 +46,14 @@ export const GridCol = factory<GridColFactory>((_props, ref) => {
   const props = useProps("GridCol", defaultProps, _props);
   const { classNames, className, style, styles, unstyled, vars, ...others } =
     props;
-  const ctx = useGridContext();
   const responsiveClassName = useRandomClassName();
+
   return (
     <>
       <GridColVariables selector={`.${responsiveClassName}`} {...props} />
       <Box
         ref={ref}
-        {...ctx.getStyles("col", {
+        {...useStore.getState().getStyles("col", {
           className: cx(className, responsiveClassName),
           style,
           classNames,

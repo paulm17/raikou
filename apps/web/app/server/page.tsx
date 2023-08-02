@@ -19,7 +19,9 @@ import {
   Divider,
   Flex,
   Fieldset,
+  Grid,
   Group,
+  Image,
   Indicator,
   Kbd,
   Loader,
@@ -30,6 +32,7 @@ import {
   Skeleton,
   Space,
   Stack,
+  Table,
   Text,
   Title,
 } from "@raikou/server";
@@ -38,6 +41,23 @@ import { IconHeart } from "@tabler/icons-react";
 
 export default function Page() {
   const icon = <IconInfoCircle />;
+
+  const elements = [
+    { position: 6, mass: 12.011, symbol: "C", name: "Carbon" },
+    { position: 7, mass: 14.007, symbol: "N", name: "Nitrogen" },
+    { position: 39, mass: 88.906, symbol: "Y", name: "Yttrium" },
+    { position: 56, mass: 137.33, symbol: "Ba", name: "Barium" },
+    { position: 58, mass: 140.12, symbol: "Ce", name: "Cerium" },
+  ];
+
+  const rows = elements.map((element) => (
+    <Table.Tr key={element.name}>
+      <Table.Td>{element.position}</Table.Td>
+      <Table.Td>{element.name}</Table.Td>
+      <Table.Td>{element.symbol}</Table.Td>
+      <Table.Td>{element.mass}</Table.Td>
+    </Table.Tr>
+  ));
 
   return (
     <>
@@ -252,6 +272,36 @@ export default function Page() {
               <Badge>hello</Badge>
             </Indicator>
           </Box>
+        </Stack>
+        <Stack>
+          <Title order={3}>Image</Title>
+          <Image src="https://images.unsplash.com/photo-1690736159167-b00621eba9f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=250&q=80" />
+          <Title order={3}>Grid</Title>
+          <Grid>
+            <Grid.Col span={4}>1</Grid.Col>
+            <Grid.Col span={4}>2</Grid.Col>
+            <Grid.Col span={4}>3</Grid.Col>
+          </Grid>
+          <Title order={3}>Table</Title>
+          <div style={{ paddingTop: 10, paddingBottom: 10 }}>
+            <Table
+              withColumnBorders
+              withRowBorders
+              withTableBorder
+              borderColor="cyan"
+            >
+              <Table.Thead>
+                <Table.Tr>
+                  <Table.Th>Element position</Table.Th>
+                  <Table.Th>Element name</Table.Th>
+                  <Table.Th>Symbol</Table.Th>
+                  <Table.Th>Atomic mass</Table.Th>
+                </Table.Tr>
+              </Table.Thead>
+              <Table.Tbody>{rows}</Table.Tbody>
+              <Table.Caption>Test caption</Table.Caption>
+            </Table>
+          </div>
         </Stack>
       </Group>
     </>

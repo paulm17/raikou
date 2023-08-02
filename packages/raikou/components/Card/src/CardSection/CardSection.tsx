@@ -7,7 +7,7 @@ import {
   useProps,
   PolymorphicFactory,
 } from "@raikou/core";
-import { useCardContext } from "../Card.context";
+import { useStore } from "../store";
 
 export type CardSectionStylesNames = "section";
 
@@ -45,7 +45,7 @@ export const CardSection = polymorphicFactory<CardSectionFactory>(
       inheritPadding,
       ...others
     } = props;
-    const ctx = useCardContext();
+    const ctx = useStore.getState();
 
     return (
       <Box

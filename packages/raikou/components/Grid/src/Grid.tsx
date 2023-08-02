@@ -14,8 +14,8 @@ import {
   useRandomClassName,
 } from "@raikou/core";
 import { GridCol } from "./GridCol/GridCol";
-import { GridProvider } from "./Grid.context";
 import { GridVariables } from "./GridVariables";
+import { useStore } from "./store";
 
 export type GridStylesNames = "root" | "col" | "inner";
 export type GridCssVariables = {
@@ -107,8 +107,10 @@ export const Grid = factory<GridFactory>((_props, ref) => {
   // encapsulate GridVariables in a div due to it nerfing
   // data-raikou-styles="system"
 
+  useStore.setState({ getStyles, grow, columns: columns! });
+
   return (
-    <GridProvider value={{ getStyles, grow, columns: columns! }}>
+    <>
       <div>
         <GridVariables selector={`.${responsiveClassName}`} {...props} />
       </div>
@@ -119,7 +121,7 @@ export const Grid = factory<GridFactory>((_props, ref) => {
       >
         <div {...getStyles("inner")}>{children}</div>
       </Box>
-    </GridProvider>
+    </>
   );
 });
 

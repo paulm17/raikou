@@ -70,36 +70,21 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/AppShell.tsx
-var import_react12 = __toESM(require("react"));
+var import_react8 = __toESM(require("react"));
 var import_core15 = require("@raikou/core");
 
 // src/AppShellNavbar/AppShellNavbar.tsx
-var import_react4 = __toESM(require("react"));
+var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
 
-// ../_utils/create-safe-context/create-safe-context.tsx
-var import_react = __toESM(require("react"));
-function createSafeContext(errorMessage) {
-  const Context = (0, import_react.createContext)(null);
-  const useSafeContext = () => {
-    const ctx = (0, import_react.useContext)(Context);
-    if (ctx === null) {
-      throw new Error(errorMessage);
-    }
-    return ctx;
-  };
-  const Provider = ({ children, value }) => /* @__PURE__ */ import_react.default.createElement(Context.Provider, { value }, children);
-  return [Provider, useSafeContext];
-}
-
-// ../_utils/create-optional-context/create-optional-context.tsx
-var import_react2 = __toESM(require("react"));
-
-// ../_utils/use-hovered/use-hovered.ts
-var import_react3 = require("react");
-
-// src/AppShell.context.ts
-var [AppShellProvider, useAppShellContext] = createSafeContext("AppShell was not found in tree");
+// src/store.ts
+var import_zustand = require("zustand");
+var useStore = (0, import_zustand.create)(() => ({
+  getStyles: void 0,
+  withBorder: void 0,
+  zIndex: 1,
+  disabled: void 0
+}));
 
 // src/AppShellNavbar/AppShellNavbar.tsx
 var defaultProps = {};
@@ -124,11 +109,11 @@ var AppShellNavbar = (0, import_core.factory)((_props, ref) => {
     "withBorder",
     "zIndex"
   ]);
-  const ctx = useAppShellContext();
+  const ctx = useStore.getState();
   if (ctx.disabled) {
     return null;
   }
-  return /* @__PURE__ */ import_react4.default.createElement(
+  return /* @__PURE__ */ import_react.default.createElement(
     import_core.Box,
     __spreadProps(__spreadValues(__spreadValues({
       component: "nav",
@@ -144,7 +129,7 @@ var AppShellNavbar = (0, import_core.factory)((_props, ref) => {
 AppShellNavbar.displayName = "@raikou/core/AppShellNavbar";
 
 // src/AppShellHeader/AppShellHeader.tsx
-var import_react5 = __toESM(require("react"));
+var import_react2 = __toESM(require("react"));
 var import_core2 = require("@raikou/core");
 var defaultProps2 = {};
 var AppShellHeader = (0, import_core2.factory)((_props, ref) => {
@@ -169,11 +154,11 @@ var AppShellHeader = (0, import_core2.factory)((_props, ref) => {
     "withBorder",
     "zIndex"
   ]);
-  const ctx = useAppShellContext();
+  const ctx = useStore.getState();
   if (ctx.disabled) {
     return null;
   }
-  return /* @__PURE__ */ import_react5.default.createElement(
+  return /* @__PURE__ */ import_react2.default.createElement(
     import_core2.Box,
     __spreadProps(__spreadValues(__spreadValues({
       component: "header",
@@ -189,7 +174,7 @@ var AppShellHeader = (0, import_core2.factory)((_props, ref) => {
 AppShellHeader.displayName = "@raikou/core/AppShellHeader";
 
 // src/AppShellFooter/AppShellFooter.tsx
-var import_react6 = __toESM(require("react"));
+var import_react3 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
 var defaultProps3 = {};
 var AppShellFooter = (0, import_core3.factory)((_props, ref) => {
@@ -214,11 +199,11 @@ var AppShellFooter = (0, import_core3.factory)((_props, ref) => {
     "withBorder",
     "zIndex"
   ]);
-  const ctx = useAppShellContext();
+  const ctx = useStore.getState();
   if (ctx.disabled) {
     return null;
   }
-  return /* @__PURE__ */ import_react6.default.createElement(
+  return /* @__PURE__ */ import_react3.default.createElement(
     import_core3.Box,
     __spreadProps(__spreadValues(__spreadValues({
       component: "footer",
@@ -234,7 +219,7 @@ var AppShellFooter = (0, import_core3.factory)((_props, ref) => {
 AppShellFooter.displayName = "@raikou/core/AppShellFooter";
 
 // src/AppShellAside/AppShellAside.tsx
-var import_react7 = __toESM(require("react"));
+var import_react4 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
 var defaultProps4 = {};
 var AppShellAside = (0, import_core4.factory)((_props, ref) => {
@@ -258,11 +243,11 @@ var AppShellAside = (0, import_core4.factory)((_props, ref) => {
     "withBorder",
     "zIndex"
   ]);
-  const ctx = useAppShellContext();
+  const ctx = useStore.getState();
   if (ctx.disabled) {
     return null;
   }
-  return /* @__PURE__ */ import_react7.default.createElement(
+  return /* @__PURE__ */ import_react4.default.createElement(
     import_core4.Box,
     __spreadProps(__spreadValues(__spreadValues({
       component: "aside",
@@ -278,14 +263,14 @@ var AppShellAside = (0, import_core4.factory)((_props, ref) => {
 AppShellAside.displayName = "@raikou/core/AppShellAside";
 
 // src/AppShellMain/AppShellMain.tsx
-var import_react8 = __toESM(require("react"));
+var import_react5 = __toESM(require("react"));
 var import_core5 = require("@raikou/core");
 var defaultProps5 = {};
 var AppShellMain = (0, import_core5.factory)((_props, ref) => {
   const props = (0, import_core5.useProps)("AppShellMain", defaultProps5, _props);
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
-  const ctx = useAppShellContext();
-  return /* @__PURE__ */ import_react8.default.createElement(
+  const ctx = useStore.getState();
+  return /* @__PURE__ */ import_react5.default.createElement(
     import_core5.Box,
     __spreadValues(__spreadValues({
       component: "main",
@@ -296,7 +281,7 @@ var AppShellMain = (0, import_core5.factory)((_props, ref) => {
 AppShellMain.displayName = "@raikou/core/AppShellMain";
 
 // src/AppShellSection/AppShellSection.tsx
-var import_react9 = __toESM(require("react"));
+var import_react6 = __toESM(require("react"));
 var import_core6 = require("@raikou/core");
 var defaultProps6 = {};
 var AppShellSection = (0, import_core6.polymorphicFactory)(
@@ -319,8 +304,8 @@ var AppShellSection = (0, import_core6.polymorphicFactory)(
       "vars",
       "grow"
     ]);
-    const ctx = useAppShellContext();
-    return /* @__PURE__ */ import_react9.default.createElement(
+    const ctx = useStore.getState();
+    return /* @__PURE__ */ import_react6.default.createElement(
       import_core6.Box,
       __spreadValues(__spreadValues({
         ref,
@@ -332,7 +317,7 @@ var AppShellSection = (0, import_core6.polymorphicFactory)(
 AppShellSection.displayName = "@raikou/core/AppShellSection";
 
 // src/AppShellMediaStyles/AppShellMediaStyles.tsx
-var import_react10 = __toESM(require("react"));
+var import_react7 = __toESM(require("react"));
 var import_core14 = require("@raikou/core");
 
 // src/AppShellMediaStyles/get-variables/get-variables.ts
@@ -660,33 +645,7 @@ function AppShellMediaStyles({
     padding,
     theme
   });
-  return /* @__PURE__ */ import_react10.default.createElement(import_core14.InlineStyles, { media, styles: baseStyles, selector: ":root" });
-}
-
-// src/use-resizing/use-resizing.tsx
-var import_react11 = require("react");
-var import_hooks = require("@raikou/hooks");
-function useResizing({
-  transitionDuration,
-  disabled
-}) {
-  const [resizing, setResizing] = (0, import_react11.useState)(false);
-  const resizingTimeout = (0, import_react11.useRef)();
-  const disabledTimeout = (0, import_react11.useRef)();
-  (0, import_hooks.useWindowEvent)("resize", () => {
-    setResizing(true);
-    clearTimeout(resizingTimeout.current);
-    resizingTimeout.current = window.setTimeout(() => setResizing(false), 200);
-  });
-  (0, import_hooks.useIsomorphicEffect)(() => {
-    setResizing(true);
-    clearTimeout(disabledTimeout.current);
-    disabledTimeout.current = window.setTimeout(
-      () => setResizing(false),
-      transitionDuration || 0
-    );
-  }, [disabled, transitionDuration]);
-  return resizing;
+  return /* @__PURE__ */ import_react7.default.createElement(import_core14.InlineStyles, { media, styles: baseStyles, selector: ":root" });
 }
 
 // src/AppShell.tsx
@@ -764,8 +723,8 @@ var AppShell = (0, import_core15.factory)((_props, ref) => {
     vars,
     varsResolver
   });
-  const resizing = useResizing({ disabled, transitionDuration });
-  return /* @__PURE__ */ import_react12.default.createElement(AppShellProvider, { value: { getStyles, withBorder, zIndex, disabled } }, /* @__PURE__ */ import_react12.default.createElement(
+  useStore.setState({ getStyles, withBorder, zIndex, disabled });
+  return /* @__PURE__ */ import_react8.default.createElement(import_react8.default.Fragment, null, /* @__PURE__ */ import_react8.default.createElement(
     AppShellMediaStyles,
     {
       navbar,
@@ -774,12 +733,12 @@ var AppShell = (0, import_core15.factory)((_props, ref) => {
       footer,
       padding
     }
-  ), /* @__PURE__ */ import_react12.default.createElement(
+  ), /* @__PURE__ */ import_react8.default.createElement(
     import_core15.Box,
     __spreadValues(__spreadProps(__spreadValues({
       ref
     }, getStyles("root")), {
-      mod: { resizing, layout, disabled }
+      mod: { layout, disabled }
     }), others)
   ));
 });

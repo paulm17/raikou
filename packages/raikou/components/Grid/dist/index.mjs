@@ -28,7 +28,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/Grid.tsx
-import React6 from "react";
+import React4 from "react";
 import {
   Box as Box2,
   factory as factory2,
@@ -39,7 +39,7 @@ import {
 } from "@raikou/core";
 
 // src/GridCol/GridCol.tsx
-import React4 from "react";
+import React2 from "react";
 import cx from "clsx";
 import {
   Box,
@@ -48,32 +48,8 @@ import {
   useRandomClassName
 } from "@raikou/core";
 
-// ../_utils/create-safe-context/create-safe-context.tsx
-import React, { createContext, useContext } from "react";
-function createSafeContext(errorMessage) {
-  const Context = createContext(null);
-  const useSafeContext = () => {
-    const ctx = useContext(Context);
-    if (ctx === null) {
-      throw new Error(errorMessage);
-    }
-    return ctx;
-  };
-  const Provider = ({ children, value }) => /* @__PURE__ */ React.createElement(Context.Provider, { value }, children);
-  return [Provider, useSafeContext];
-}
-
-// ../_utils/create-optional-context/create-optional-context.tsx
-import React2, { createContext as createContext2, useContext as useContext2 } from "react";
-
-// ../_utils/use-hovered/use-hovered.ts
-import { useState } from "react";
-
-// src/Grid.context.ts
-var [GridProvider, useGridContext] = createSafeContext("Grid component was not found in tree");
-
 // src/GridCol/GridColVariables.tsx
-import React3 from "react";
+import React from "react";
 import {
   getSortedBreakpoints,
   useRaikouTheme,
@@ -82,6 +58,16 @@ import {
   InlineStyles,
   getBaseValue
 } from "@raikou/core";
+
+// src/store.ts
+import { create } from "zustand";
+var useStore = create(() => ({
+  getStyles: void 0,
+  grow: false,
+  columns: 12
+}));
+
+// src/GridCol/GridColVariables.tsx
 var getColumnFlexBasis = (colSpan, columns) => {
   if (colSpan === "content") {
     return "auto";
@@ -112,7 +98,7 @@ function GridColVariables({
 }) {
   var _a;
   const theme = useRaikouTheme();
-  const ctx = useGridContext();
+  const ctx = useStore.getState();
   const baseSpan = getBaseValue(span);
   const baseStyles = filterProps({
     "--col-order": (_a = getBaseValue(order)) == null ? void 0 : _a.toString(),
@@ -161,7 +147,7 @@ function GridColVariables({
     query: `(min-width: ${theme.breakpoints[breakpoint.value]})`,
     styles: queries[breakpoint.value]
   }));
-  return /* @__PURE__ */ React3.createElement(InlineStyles, { styles: baseStyles, media, selector });
+  return /* @__PURE__ */ React.createElement(InlineStyles, { styles: baseStyles, media, selector });
 }
 
 // src/GridCol/GridCol.tsx
@@ -171,13 +157,12 @@ var defaultProps = {
 var GridCol = factory((_props, ref) => {
   const props = useProps("GridCol", defaultProps, _props);
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
-  const ctx = useGridContext();
   const responsiveClassName = useRandomClassName();
-  return /* @__PURE__ */ React4.createElement(React4.Fragment, null, /* @__PURE__ */ React4.createElement(GridColVariables, __spreadValues({ selector: `.${responsiveClassName}` }, props)), /* @__PURE__ */ React4.createElement(
+  return /* @__PURE__ */ React2.createElement(React2.Fragment, null, /* @__PURE__ */ React2.createElement(GridColVariables, __spreadValues({ selector: `.${responsiveClassName}` }, props)), /* @__PURE__ */ React2.createElement(
     Box,
     __spreadValues(__spreadValues({
       ref
-    }, ctx.getStyles("col", {
+    }, useStore.getState().getStyles("col", {
       className: cx(className, responsiveClassName),
       style,
       classNames,
@@ -188,7 +173,7 @@ var GridCol = factory((_props, ref) => {
 GridCol.displayName = "@raikou/core/GridCol";
 
 // src/GridVariables.tsx
-import React5 from "react";
+import React3 from "react";
 import {
   getSortedBreakpoints as getSortedBreakpoints2,
   useRaikouTheme as useRaikouTheme2,
@@ -219,7 +204,7 @@ function GridVariables({ gutter, selector }) {
     query: `(min-width: ${theme.breakpoints[breakpoint.value]})`,
     styles: queries[breakpoint.value]
   }));
-  return /* @__PURE__ */ React5.createElement(InlineStyles2, { styles: baseStyles, media, selector });
+  return /* @__PURE__ */ React3.createElement(InlineStyles2, { styles: baseStyles, media, selector });
 }
 
 // src/Grid.tsx
@@ -282,12 +267,13 @@ var Grid = factory2((_props, ref) => {
     varsResolver
   });
   const responsiveClassName = useRandomClassName2();
-  return /* @__PURE__ */ React6.createElement(GridProvider, { value: { getStyles, grow, columns } }, /* @__PURE__ */ React6.createElement("div", null, /* @__PURE__ */ React6.createElement(GridVariables, __spreadValues({ selector: `.${responsiveClassName}` }, props))), /* @__PURE__ */ React6.createElement(
+  useStore.setState({ getStyles, grow, columns });
+  return /* @__PURE__ */ React4.createElement(React4.Fragment, null, /* @__PURE__ */ React4.createElement("div", null, /* @__PURE__ */ React4.createElement(GridVariables, __spreadValues({ selector: `.${responsiveClassName}` }, props))), /* @__PURE__ */ React4.createElement(
     Box2,
     __spreadValues(__spreadValues({
       ref
     }, getStyles("root", { className: responsiveClassName })), others),
-    /* @__PURE__ */ React6.createElement("div", __spreadValues({}, getStyles("inner")), children)
+    /* @__PURE__ */ React4.createElement("div", __spreadValues({}, getStyles("inner")), children)
   ));
 });
 Grid.displayName = "@raikou/core/Grid";

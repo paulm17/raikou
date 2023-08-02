@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Box,
   BoxProps,
@@ -11,6 +11,7 @@ import {
   RaikouRadius,
   getRadius,
 } from "@raikou/core";
+import { useStore } from "./store";
 
 export type ImageStylesNames = "root";
 export type ImageCssVariables = {
@@ -70,10 +71,6 @@ export const Image = polymorphicFactory<ImageFactory>((_props, ref) => {
     ...others
   } = props;
 
-  const [error, setError] = useState(!src);
-
-  useEffect(() => setError(!src), [src]);
-
   const getStyles = useStyles<ImageFactory>({
     name: "Image",
     classes: {
@@ -89,17 +86,16 @@ export const Image = polymorphicFactory<ImageFactory>((_props, ref) => {
     varsResolver,
   });
 
-  if (error && fallbackSrc) {
-    return (
-      <Box
-        component="img"
-        src={fallbackSrc}
-        {...getStyles("root")}
-        onError={onError}
-        mod="fallback"
-        {...others}
-      />
-    );
+  if (typeof window === "undefined") {
+    var request = require("request").defaults({ encoding: null });
+
+    request.get(src, function (error: any, response: any) {
+      if (response === undefined) {
+        useStore.getState().error = true;
+      } else if (response.statusCode !== 200) {
+        useStore.getState().error = true;
+      }
+    });
   }
 
   return (
@@ -107,11 +103,7 @@ export const Image = polymorphicFactory<ImageFactory>((_props, ref) => {
       component="img"
       ref={ref}
       {...getStyles("root")}
-      src={src}
-      onError={(event) => {
-        onError?.(event);
-        setError(true);
-      }}
+      src={useStore.getState().error ? fallbackSrc : src}
       {...others}
     />
   );

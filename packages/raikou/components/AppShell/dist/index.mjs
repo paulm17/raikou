@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/AppShell.tsx
-import React10 from "react";
+import React8 from "react";
 import {
   Box as Box7,
   factory as factory6,
@@ -42,36 +42,21 @@ import {
 } from "@raikou/core";
 
 // src/AppShellNavbar/AppShellNavbar.tsx
-import React3 from "react";
+import React from "react";
 import {
   Box,
   factory,
   useProps
 } from "@raikou/core";
 
-// ../_utils/create-safe-context/create-safe-context.tsx
-import React, { createContext, useContext } from "react";
-function createSafeContext(errorMessage) {
-  const Context = createContext(null);
-  const useSafeContext = () => {
-    const ctx = useContext(Context);
-    if (ctx === null) {
-      throw new Error(errorMessage);
-    }
-    return ctx;
-  };
-  const Provider = ({ children, value }) => /* @__PURE__ */ React.createElement(Context.Provider, { value }, children);
-  return [Provider, useSafeContext];
-}
-
-// ../_utils/create-optional-context/create-optional-context.tsx
-import React2, { createContext as createContext2, useContext as useContext2 } from "react";
-
-// ../_utils/use-hovered/use-hovered.ts
-import { useState } from "react";
-
-// src/AppShell.context.ts
-var [AppShellProvider, useAppShellContext] = createSafeContext("AppShell was not found in tree");
+// src/store.ts
+import { create } from "zustand";
+var useStore = create(() => ({
+  getStyles: void 0,
+  withBorder: void 0,
+  zIndex: 1,
+  disabled: void 0
+}));
 
 // src/AppShellNavbar/AppShellNavbar.tsx
 var defaultProps = {};
@@ -96,11 +81,11 @@ var AppShellNavbar = factory((_props, ref) => {
     "withBorder",
     "zIndex"
   ]);
-  const ctx = useAppShellContext();
+  const ctx = useStore.getState();
   if (ctx.disabled) {
     return null;
   }
-  return /* @__PURE__ */ React3.createElement(
+  return /* @__PURE__ */ React.createElement(
     Box,
     __spreadProps(__spreadValues(__spreadValues({
       component: "nav",
@@ -116,7 +101,7 @@ var AppShellNavbar = factory((_props, ref) => {
 AppShellNavbar.displayName = "@raikou/core/AppShellNavbar";
 
 // src/AppShellHeader/AppShellHeader.tsx
-import React4 from "react";
+import React2 from "react";
 import {
   Box as Box2,
   factory as factory2,
@@ -145,11 +130,11 @@ var AppShellHeader = factory2((_props, ref) => {
     "withBorder",
     "zIndex"
   ]);
-  const ctx = useAppShellContext();
+  const ctx = useStore.getState();
   if (ctx.disabled) {
     return null;
   }
-  return /* @__PURE__ */ React4.createElement(
+  return /* @__PURE__ */ React2.createElement(
     Box2,
     __spreadProps(__spreadValues(__spreadValues({
       component: "header",
@@ -165,7 +150,7 @@ var AppShellHeader = factory2((_props, ref) => {
 AppShellHeader.displayName = "@raikou/core/AppShellHeader";
 
 // src/AppShellFooter/AppShellFooter.tsx
-import React5 from "react";
+import React3 from "react";
 import {
   Box as Box3,
   factory as factory3,
@@ -194,11 +179,11 @@ var AppShellFooter = factory3((_props, ref) => {
     "withBorder",
     "zIndex"
   ]);
-  const ctx = useAppShellContext();
+  const ctx = useStore.getState();
   if (ctx.disabled) {
     return null;
   }
-  return /* @__PURE__ */ React5.createElement(
+  return /* @__PURE__ */ React3.createElement(
     Box3,
     __spreadProps(__spreadValues(__spreadValues({
       component: "footer",
@@ -214,7 +199,7 @@ var AppShellFooter = factory3((_props, ref) => {
 AppShellFooter.displayName = "@raikou/core/AppShellFooter";
 
 // src/AppShellAside/AppShellAside.tsx
-import React6 from "react";
+import React4 from "react";
 import {
   Box as Box4,
   factory as factory4,
@@ -242,11 +227,11 @@ var AppShellAside = factory4((_props, ref) => {
     "withBorder",
     "zIndex"
   ]);
-  const ctx = useAppShellContext();
+  const ctx = useStore.getState();
   if (ctx.disabled) {
     return null;
   }
-  return /* @__PURE__ */ React6.createElement(
+  return /* @__PURE__ */ React4.createElement(
     Box4,
     __spreadProps(__spreadValues(__spreadValues({
       component: "aside",
@@ -262,7 +247,7 @@ var AppShellAside = factory4((_props, ref) => {
 AppShellAside.displayName = "@raikou/core/AppShellAside";
 
 // src/AppShellMain/AppShellMain.tsx
-import React7 from "react";
+import React5 from "react";
 import {
   Box as Box5,
   factory as factory5,
@@ -272,8 +257,8 @@ var defaultProps5 = {};
 var AppShellMain = factory5((_props, ref) => {
   const props = useProps5("AppShellMain", defaultProps5, _props);
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
-  const ctx = useAppShellContext();
-  return /* @__PURE__ */ React7.createElement(
+  const ctx = useStore.getState();
+  return /* @__PURE__ */ React5.createElement(
     Box5,
     __spreadValues(__spreadValues({
       component: "main",
@@ -284,7 +269,7 @@ var AppShellMain = factory5((_props, ref) => {
 AppShellMain.displayName = "@raikou/core/AppShellMain";
 
 // src/AppShellSection/AppShellSection.tsx
-import React8 from "react";
+import React6 from "react";
 import {
   Box as Box6,
   polymorphicFactory,
@@ -311,8 +296,8 @@ var AppShellSection = polymorphicFactory(
       "vars",
       "grow"
     ]);
-    const ctx = useAppShellContext();
-    return /* @__PURE__ */ React8.createElement(
+    const ctx = useStore.getState();
+    return /* @__PURE__ */ React6.createElement(
       Box6,
       __spreadValues(__spreadValues({
         ref,
@@ -324,7 +309,7 @@ var AppShellSection = polymorphicFactory(
 AppShellSection.displayName = "@raikou/core/AppShellSection";
 
 // src/AppShellMediaStyles/AppShellMediaStyles.tsx
-import React9 from "react";
+import React7 from "react";
 import { InlineStyles, useRaikouTheme } from "@raikou/core";
 
 // src/AppShellMediaStyles/get-variables/get-variables.ts
@@ -652,33 +637,7 @@ function AppShellMediaStyles({
     padding,
     theme
   });
-  return /* @__PURE__ */ React9.createElement(InlineStyles, { media, styles: baseStyles, selector: ":root" });
-}
-
-// src/use-resizing/use-resizing.tsx
-import { useState as useState2, useRef } from "react";
-import { useWindowEvent, useIsomorphicEffect } from "@raikou/hooks";
-function useResizing({
-  transitionDuration,
-  disabled
-}) {
-  const [resizing, setResizing] = useState2(false);
-  const resizingTimeout = useRef();
-  const disabledTimeout = useRef();
-  useWindowEvent("resize", () => {
-    setResizing(true);
-    clearTimeout(resizingTimeout.current);
-    resizingTimeout.current = window.setTimeout(() => setResizing(false), 200);
-  });
-  useIsomorphicEffect(() => {
-    setResizing(true);
-    clearTimeout(disabledTimeout.current);
-    disabledTimeout.current = window.setTimeout(
-      () => setResizing(false),
-      transitionDuration || 0
-    );
-  }, [disabled, transitionDuration]);
-  return resizing;
+  return /* @__PURE__ */ React7.createElement(InlineStyles, { media, styles: baseStyles, selector: ":root" });
 }
 
 // src/AppShell.tsx
@@ -756,8 +715,8 @@ var AppShell = factory6((_props, ref) => {
     vars,
     varsResolver
   });
-  const resizing = useResizing({ disabled, transitionDuration });
-  return /* @__PURE__ */ React10.createElement(AppShellProvider, { value: { getStyles, withBorder, zIndex, disabled } }, /* @__PURE__ */ React10.createElement(
+  useStore.setState({ getStyles, withBorder, zIndex, disabled });
+  return /* @__PURE__ */ React8.createElement(React8.Fragment, null, /* @__PURE__ */ React8.createElement(
     AppShellMediaStyles,
     {
       navbar,
@@ -766,12 +725,12 @@ var AppShell = factory6((_props, ref) => {
       footer,
       padding
     }
-  ), /* @__PURE__ */ React10.createElement(
+  ), /* @__PURE__ */ React8.createElement(
     Box7,
     __spreadValues(__spreadProps(__spreadValues({
       ref
     }, getStyles("root")), {
-      mod: { resizing, layout, disabled }
+      mod: { layout, disabled }
     }), others)
   ));
 });

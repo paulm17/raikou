@@ -23,8 +23,7 @@ import {
   TableTr,
   TableThead,
 } from "./Table.components";
-import { TableScrollContainer } from "./TableScrollContainer";
-import { TableProvider } from "./Table.context";
+import { useStore } from "./store";
 
 export type TableStylesNames =
   | "table"
@@ -101,7 +100,6 @@ export type TableFactory = Factory<{
     Th: typeof TableTh;
     Tr: typeof TableTr;
     Caption: typeof TableCaption;
-    ScrollContainer: typeof TableScrollContainer;
   };
 }>;
 
@@ -195,26 +193,24 @@ export const Table = factory<TableFactory>((_props, ref) => {
     varsResolver,
   });
 
+  useStore.setState({
+    getStyles,
+    striped: striped === true ? "odd" : striped || undefined,
+    highlightOnHover,
+    withColumnBorders,
+    withRowBorders,
+    captionSide: captionSide || "bottom",
+  });
+
   return (
-    <TableProvider
-      value={{
-        getStyles,
-        striped: striped === true ? "odd" : striped || undefined,
-        highlightOnHover,
-        withColumnBorders,
-        withRowBorders,
-        captionSide: captionSide || "bottom",
-      }}
-    >
-      <Box
-        component="table"
-        variant={variant}
-        ref={ref}
-        mod={{ "data-with-table-border": withTableBorder }}
-        {...getStyles("table")}
-        {...others}
-      />
-    </TableProvider>
+    <Box
+      component="table"
+      variant={variant}
+      ref={ref}
+      mod={{ "data-with-table-border": withTableBorder }}
+      {...getStyles("table")}
+      {...others}
+    />
   );
 });
 
@@ -226,4 +222,3 @@ Table.Thead = TableThead;
 Table.Tbody = TableTbody;
 Table.Tfoot = TableTfoot;
 Table.Caption = TableCaption;
-Table.ScrollContainer = TableScrollContainer;

@@ -66,6 +66,14 @@ module.exports = __toCommonJS(src_exports);
 // src/Image.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// src/store.ts
+var import_zustand = require("zustand");
+var useStore = (0, import_zustand.create)(() => ({
+  error: false
+}));
+
+// src/Image.tsx
 var defaultProps = {
   radius: 0
 };
@@ -102,8 +110,6 @@ var Image = (0, import_core.polymorphicFactory)((_props, ref) => {
     "fit",
     "fallbackSrc"
   ]);
-  const [error, setError] = (0, import_react.useState)(!src);
-  (0, import_react.useEffect)(() => setError(!src), [src]);
   const getStyles = (0, import_core.useStyles)({
     name: "Image",
     classes: {
@@ -118,17 +124,15 @@ var Image = (0, import_core.polymorphicFactory)((_props, ref) => {
     vars,
     varsResolver
   });
-  if (error && fallbackSrc) {
-    return /* @__PURE__ */ import_react.default.createElement(
-      import_core.Box,
-      __spreadValues(__spreadProps(__spreadValues({
-        component: "img",
-        src: fallbackSrc
-      }, getStyles("root")), {
-        onError,
-        mod: "fallback"
-      }), others)
-    );
+  if (typeof window === "undefined") {
+    var request = require("request").defaults({ encoding: null });
+    request.get(src, function(error, response) {
+      if (response === void 0) {
+        useStore.getState().error = true;
+      } else if (response.statusCode !== 200) {
+        useStore.getState().error = true;
+      }
+    });
   }
   return /* @__PURE__ */ import_react.default.createElement(
     import_core.Box,
@@ -136,11 +140,7 @@ var Image = (0, import_core.polymorphicFactory)((_props, ref) => {
       component: "img",
       ref
     }, getStyles("root")), {
-      src,
-      onError: (event) => {
-        onError == null ? void 0 : onError(event);
-        setError(true);
-      }
+      src: useStore.getState().error ? fallbackSrc : src
     }), others)
   );
 });

@@ -9,7 +9,7 @@ import {
   getBaseValue,
 } from "@raikou/core";
 import type { GridColProps, ColSpan } from "./GridCol";
-import { useGridContext } from "../Grid.context";
+import { useStore } from "../store";
 
 interface GridColVariablesProps extends GridColProps {
   selector: string;
@@ -60,7 +60,7 @@ export function GridColVariables({
   selector,
 }: GridColVariablesProps) {
   const theme = useRaikouTheme();
-  const ctx = useGridContext();
+  const ctx = useStore.getState();
 
   const baseSpan = getBaseValue(span);
 

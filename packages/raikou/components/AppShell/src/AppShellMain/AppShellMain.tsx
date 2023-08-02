@@ -8,7 +8,7 @@ import {
   useProps,
   Factory,
 } from "@raikou/core";
-import { useAppShellContext } from "../AppShell.context";
+import { useStore } from "../store";
 
 export type AppShellMainStylesNames = "main";
 
@@ -30,7 +30,7 @@ export const AppShellMain = factory<AppShellMainFactory>((_props, ref) => {
   const props = useProps("AppShellMain", defaultProps, _props);
   const { classNames, className, style, styles, unstyled, vars, ...others } =
     props;
-  const ctx = useAppShellContext();
+  const ctx = useStore.getState();
 
   return (
     <Box

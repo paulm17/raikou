@@ -17,6 +17,13 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
+  get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
+}) : x)(function(x) {
+  if (typeof require !== "undefined")
+    return require.apply(this, arguments);
+  throw Error('Dynamic require of "' + x + '" is not supported');
+});
 var __objRest = (source, exclude) => {
   var target = {};
   for (var prop in source)
@@ -31,7 +38,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/Image.tsx
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Box,
   polymorphicFactory,
@@ -40,6 +47,14 @@ import {
   createVarsResolver,
   getRadius
 } from "@raikou/core";
+
+// src/store.ts
+import { create } from "zustand";
+var useStore = create(() => ({
+  error: false
+}));
+
+// src/Image.tsx
 var defaultProps = {
   radius: 0
 };
@@ -76,8 +91,6 @@ var Image = polymorphicFactory((_props, ref) => {
     "fit",
     "fallbackSrc"
   ]);
-  const [error, setError] = useState(!src);
-  useEffect(() => setError(!src), [src]);
   const getStyles = useStyles({
     name: "Image",
     classes: {
@@ -92,17 +105,15 @@ var Image = polymorphicFactory((_props, ref) => {
     vars,
     varsResolver
   });
-  if (error && fallbackSrc) {
-    return /* @__PURE__ */ React.createElement(
-      Box,
-      __spreadValues(__spreadProps(__spreadValues({
-        component: "img",
-        src: fallbackSrc
-      }, getStyles("root")), {
-        onError,
-        mod: "fallback"
-      }), others)
-    );
+  if (typeof window === "undefined") {
+    var request = __require("request").defaults({ encoding: null });
+    request.get(src, function(error, response) {
+      if (response === void 0) {
+        useStore.getState().error = true;
+      } else if (response.statusCode !== 200) {
+        useStore.getState().error = true;
+      }
+    });
   }
   return /* @__PURE__ */ React.createElement(
     Box,
@@ -110,11 +121,7 @@ var Image = polymorphicFactory((_props, ref) => {
       component: "img",
       ref
     }, getStyles("root")), {
-      src,
-      onError: (event) => {
-        onError == null ? void 0 : onError(event);
-        setError(true);
-      }
+      src: useStore.getState().error ? fallbackSrc : src
     }), others)
   );
 });

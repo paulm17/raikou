@@ -27,7 +27,7 @@ obvious choice.
 The project was conceived with these 4 long-term goals:
 
 1. To allow for components without hooks to behave as server components and
-   should state be introduced on the server side, make all components server
+   should state be introduced on the server side, make as many components server
    aware.
 2. To ensure proper tree-shaking for components and purging of unused css. (TBD,
    waiting for vercel to resolve the client bundle to be tree-shakable)
@@ -43,8 +43,8 @@ The project was conceived with these 4 long-term goals:
 
 ## Project Caveats
 
-1. Remix, Svelte, Solid, Astro and any other frameworks are not supported. There
-   are no intentions of supporting anything other than NextJS.
+1. Remix, Svelte, Solid, Astro, Qwik and any other javascript frameworks are not
+   supported. There are no intentions of supporting anything other than NextJS.
 2. There may be design decisions implemented that will diverge from Mantine.
    - Styles API layer may disappear because it has been superseded by the
      Classes API and Styles API is
@@ -59,7 +59,9 @@ The project was conceived with these 4 long-term goals:
    - The code responsible for the ColorScheme has been replaced with a more
      lightweight version using
      <a href="https://github.com/pacocoursey/next-themes">Next Themes</a>.
-3. Issues may be closed due to the fork author not having free time. If an issue
+3. Some components have had their javascript removed to make them server
+   components primarily.
+4. Issues may be closed due to the fork author not having free time. If an issue
    is very important, please consider implementing a PR.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -98,7 +100,8 @@ To get a local copy up and running follow these simple example steps.
    ],
    ```
 
-   Note: Using glob on the component library breaks NextJS HMR.
+   Note: If cloning the repo. The webapp will have a more extensive content
+   listing. This is due to glob breaking NextJS HMR.
 
 3. Add a preset param in the tailwind config, to pick up the component styles
 
@@ -181,13 +184,10 @@ Change appPath to where the tsx files for your project reside.
 
 ### Cloning the repo
 
-1. Run the following command:
-
-- git
-  ```sh
-  git clone https://github.com/paulm17/raikou
-  ```
-
+1. Run the following command
+   ```sh
+   git clone https://github.com/paulm17/raikou
+   ```
 2. Install all the package prerequisites
    ```sh
    pnpm i
@@ -207,13 +207,39 @@ Change appPath to where the tsx files for your project reside.
 
 ## Server Components
 
-There are 34 server components available without the need for "use client" in
+There are 39 server components available without the need for "use client" in
 either the component library entry point nor in the page itself. They are:
-action-icon, alert, anchor, aspect-ratio, background-image, badge, blockquote,
-box, breadcrumbs, button, center, close-button, code, color-swatch, container,
-divider, fieldset, flex, group, highlight, indicator, kbd, loader, mark, paper,
-skeleton, simple-grid, space, stack, text, title, unstyled-button,
-visually-hidden.
+action-icon, alert, anchor, \*app-shell, aspect-ratio, background-image, badge,
+blockquote, box, breadcrumbs, button, card, center, close-button, code,
+color-swatch, container, divider, fieldset, flex, grid, group, highlight,
+\*image, indicator, kbd, loader, mark, paper, skeleton, simple-grid, space,
+stack, \*table, text, title, unstyled-button, visually-hidden.
+
+### Changes to components
+
+The following components have been altered from the original mantine spec:
+
+1. App Shell
+
+Used javascript for prettier resizing of the components. This has been removed.
+
+2. Image
+
+Used javascript to replace the image with a fallback, should the source fail to
+load. As this is a server component. If the fallback prop is used, the server
+does a request to see if the source exists. If it does not then the fallback is
+shown. Ensure the fallback is an image you know is dependable.
+
+Should the component be marked as a client component, it is currently out of
+scope to determine whether the image has failed to load on the client. At a
+future date this maybe resolved.
+
+3. Table
+
+Used javascript for allowing the body to be scrollable. In future, will look how
+to inject back this functionality should the table be a client component.
+
+## Server component usage
 
 To use a server component do the following:
 
@@ -236,7 +262,7 @@ return <Badge>Hello</Badge>;
 And the page will include all the neccessary client payload for the Badge and
 the page.
 
-##### Server Components - Raikou vs Mantine
+## Server Components - Raikou vs Mantine
 
 Here is an example of all the server components on a page (with Raikou using
 "use client").
@@ -257,8 +283,8 @@ Stats are taken from the very first initial load.
 ##### Network tabs (Raikou vs Mantine)
 
 <p float="left">
-  <img src="./images/raikou.png" width="410" alt="Raikou Network Tab">
-  <img src="./images/mantine.png" width="410" alt="Raikou Network Tab">
+  <img src="./images/raikou.png" width="200" alt="Raikou Network Tab">
+  <img src="./images/mantine.png" width="200" alt="Raikou Network Tab">
 </p>
 
 ##### Raikou server vs client

@@ -7,7 +7,7 @@ import {
   useProps,
   PolymorphicFactory,
 } from "@raikou/core";
-import { useAppShellContext } from "../AppShell.context";
+import { useStore } from "../store";
 
 export type AppShellSectionStylesNames = "section";
 
@@ -41,7 +41,7 @@ export const AppShellSection = polymorphicFactory<AppShellSectionFactory>(
       grow,
       ...others
     } = props;
-    const ctx = useAppShellContext();
+    const ctx = useStore.getState();
 
     return (
       <Box
@@ -51,7 +51,7 @@ export const AppShellSection = polymorphicFactory<AppShellSectionFactory>(
         {...others}
       />
     );
-  }
+  },
 );
 
 AppShellSection.displayName = "@raikou/core/AppShellSection";

@@ -65,7 +65,7 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Card.tsx
-var import_react6 = __toESM(require("react"));
+var import_react3 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
 
 // ../Paper/src/Paper.tsx
@@ -132,32 +132,14 @@ var Paper = (0, import_core.polymorphicFactory)((_props, ref) => {
 Paper.displayName = "@raikou/core/Paper";
 
 // src/CardSection/CardSection.tsx
-var import_react5 = __toESM(require("react"));
+var import_react2 = __toESM(require("react"));
 var import_core2 = require("@raikou/core");
 
-// ../_utils/create-safe-context/create-safe-context.tsx
-var import_react2 = __toESM(require("react"));
-function createSafeContext(errorMessage) {
-  const Context = (0, import_react2.createContext)(null);
-  const useSafeContext = () => {
-    const ctx = (0, import_react2.useContext)(Context);
-    if (ctx === null) {
-      throw new Error(errorMessage);
-    }
-    return ctx;
-  };
-  const Provider = ({ children, value }) => /* @__PURE__ */ import_react2.default.createElement(Context.Provider, { value }, children);
-  return [Provider, useSafeContext];
-}
-
-// ../_utils/create-optional-context/create-optional-context.tsx
-var import_react3 = __toESM(require("react"));
-
-// ../_utils/use-hovered/use-hovered.ts
-var import_react4 = require("react");
-
-// src/Card.context.ts
-var [CardProvider, useCardContext] = createSafeContext("Card component was not found in tree");
+// src/store.ts
+var import_zustand = require("zustand");
+var useStore = (0, import_zustand.create)(() => ({
+  getStyles: void 0
+}));
 
 // src/CardSection/CardSection.tsx
 var defaultProps2 = {};
@@ -183,8 +165,8 @@ var CardSection = (0, import_core2.polymorphicFactory)(
       "withBorder",
       "inheritPadding"
     ]);
-    const ctx = useCardContext();
-    return /* @__PURE__ */ import_react5.default.createElement(
+    const ctx = useStore.getState();
+    return /* @__PURE__ */ import_react2.default.createElement(
       import_core2.Box,
       __spreadValues(__spreadValues({
         ref,
@@ -240,17 +222,18 @@ var Card = (0, import_core3.polymorphicFactory)((_props, ref) => {
     vars,
     varsResolver: varsResolver2
   });
-  const _children = import_react6.Children.toArray(children);
+  useStore.setState({ getStyles });
+  const _children = import_react3.Children.toArray(children);
   const content = _children.map((child, index) => {
     if (typeof child === "object" && child && "type" in child && child.type === CardSection) {
-      return (0, import_react6.cloneElement)(child, {
+      return (0, import_react3.cloneElement)(child, {
         "data-first-section": index === 0 || void 0,
         "data-last-section": index === _children.length - 1 || void 0
       });
     }
     return child;
   });
-  return /* @__PURE__ */ import_react6.default.createElement(CardProvider, { value: { getStyles } }, /* @__PURE__ */ import_react6.default.createElement(Paper, __spreadValues(__spreadValues({ ref }, getStyles("root")), others), content));
+  return /* @__PURE__ */ import_react3.default.createElement(Paper, __spreadValues(__spreadValues({ ref }, getStyles("root")), others), content);
 });
 Card.displayName = "@raikou/core/Card";
 Card.Section = CardSection;

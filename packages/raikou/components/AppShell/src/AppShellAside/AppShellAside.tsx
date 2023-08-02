@@ -8,7 +8,7 @@ import {
   useProps,
   Factory,
 } from "@raikou/core";
-import { useAppShellContext } from "../AppShell.context";
+import { useStore } from "../store";
 
 export type AppShellAsideStylesNames = "aside";
 
@@ -44,7 +44,7 @@ export const AppShellAside = factory<AppShellAsideFactory>((_props, ref) => {
     zIndex,
     ...others
   } = props;
-  const ctx = useAppShellContext();
+  const ctx = useStore.getState();
 
   if (ctx.disabled) {
     return null;

@@ -14,7 +14,7 @@ import {
 } from "@raikou/core";
 import { Paper } from "../../Paper/src";
 import { CardSection } from "./CardSection/CardSection";
-import { CardProvider } from "./Card.context";
+import { useStore } from "./store";
 
 export type CardStylesNames = "root" | "section";
 export type CardCssVariables = {
@@ -89,6 +89,7 @@ export const Card = polymorphicFactory<CardFactory>((_props, ref) => {
     varsResolver,
   });
 
+  useStore.setState({ getStyles });
   const _children = Children.toArray(children);
   const content = _children.map((child, index) => {
     if (
@@ -107,11 +108,9 @@ export const Card = polymorphicFactory<CardFactory>((_props, ref) => {
   });
 
   return (
-    <CardProvider value={{ getStyles }}>
-      <Paper ref={ref} {...getStyles("root")} {...others}>
-        {content}
-      </Paper>
-    </CardProvider>
+    <Paper ref={ref} {...getStyles("root")} {...others}>
+      {content}
+    </Paper>
   );
 });
 

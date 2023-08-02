@@ -62,41 +62,27 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Grid.tsx
-var import_react7 = __toESM(require("react"));
+var import_react4 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
 
 // src/GridCol/GridCol.tsx
-var import_react5 = __toESM(require("react"));
+var import_react2 = __toESM(require("react"));
 var import_clsx = __toESM(require("clsx"));
 var import_core2 = require("@raikou/core");
 
-// ../_utils/create-safe-context/create-safe-context.tsx
+// src/GridCol/GridColVariables.tsx
 var import_react = __toESM(require("react"));
-function createSafeContext(errorMessage) {
-  const Context = (0, import_react.createContext)(null);
-  const useSafeContext = () => {
-    const ctx = (0, import_react.useContext)(Context);
-    if (ctx === null) {
-      throw new Error(errorMessage);
-    }
-    return ctx;
-  };
-  const Provider = ({ children, value }) => /* @__PURE__ */ import_react.default.createElement(Context.Provider, { value }, children);
-  return [Provider, useSafeContext];
-}
+var import_core = require("@raikou/core");
 
-// ../_utils/create-optional-context/create-optional-context.tsx
-var import_react2 = __toESM(require("react"));
-
-// ../_utils/use-hovered/use-hovered.ts
-var import_react3 = require("react");
-
-// src/Grid.context.ts
-var [GridProvider, useGridContext] = createSafeContext("Grid component was not found in tree");
+// src/store.ts
+var import_zustand = require("zustand");
+var useStore = (0, import_zustand.create)(() => ({
+  getStyles: void 0,
+  grow: false,
+  columns: 12
+}));
 
 // src/GridCol/GridColVariables.tsx
-var import_react4 = __toESM(require("react"));
-var import_core = require("@raikou/core");
 var getColumnFlexBasis = (colSpan, columns) => {
   if (colSpan === "content") {
     return "auto";
@@ -127,7 +113,7 @@ function GridColVariables({
 }) {
   var _a;
   const theme = (0, import_core.useRaikouTheme)();
-  const ctx = useGridContext();
+  const ctx = useStore.getState();
   const baseSpan = (0, import_core.getBaseValue)(span);
   const baseStyles = (0, import_core.filterProps)({
     "--col-order": (_a = (0, import_core.getBaseValue)(order)) == null ? void 0 : _a.toString(),
@@ -176,7 +162,7 @@ function GridColVariables({
     query: `(min-width: ${theme.breakpoints[breakpoint.value]})`,
     styles: queries[breakpoint.value]
   }));
-  return /* @__PURE__ */ import_react4.default.createElement(import_core.InlineStyles, { styles: baseStyles, media, selector });
+  return /* @__PURE__ */ import_react.default.createElement(import_core.InlineStyles, { styles: baseStyles, media, selector });
 }
 
 // src/GridCol/GridCol.tsx
@@ -186,13 +172,12 @@ var defaultProps = {
 var GridCol = (0, import_core2.factory)((_props, ref) => {
   const props = (0, import_core2.useProps)("GridCol", defaultProps, _props);
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
-  const ctx = useGridContext();
   const responsiveClassName = (0, import_core2.useRandomClassName)();
-  return /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(GridColVariables, __spreadValues({ selector: `.${responsiveClassName}` }, props)), /* @__PURE__ */ import_react5.default.createElement(
+  return /* @__PURE__ */ import_react2.default.createElement(import_react2.default.Fragment, null, /* @__PURE__ */ import_react2.default.createElement(GridColVariables, __spreadValues({ selector: `.${responsiveClassName}` }, props)), /* @__PURE__ */ import_react2.default.createElement(
     import_core2.Box,
     __spreadValues(__spreadValues({
       ref
-    }, ctx.getStyles("col", {
+    }, useStore.getState().getStyles("col", {
       className: (0, import_clsx.default)(className, responsiveClassName),
       style,
       classNames,
@@ -203,7 +188,7 @@ var GridCol = (0, import_core2.factory)((_props, ref) => {
 GridCol.displayName = "@raikou/core/GridCol";
 
 // src/GridVariables.tsx
-var import_react6 = __toESM(require("react"));
+var import_react3 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
 function GridVariables({ gutter, selector }) {
   const theme = (0, import_core3.useRaikouTheme)();
@@ -226,7 +211,7 @@ function GridVariables({ gutter, selector }) {
     query: `(min-width: ${theme.breakpoints[breakpoint.value]})`,
     styles: queries[breakpoint.value]
   }));
-  return /* @__PURE__ */ import_react6.default.createElement(import_core3.InlineStyles, { styles: baseStyles, media, selector });
+  return /* @__PURE__ */ import_react3.default.createElement(import_core3.InlineStyles, { styles: baseStyles, media, selector });
 }
 
 // src/Grid.tsx
@@ -289,12 +274,13 @@ var Grid = (0, import_core4.factory)((_props, ref) => {
     varsResolver
   });
   const responsiveClassName = (0, import_core4.useRandomClassName)();
-  return /* @__PURE__ */ import_react7.default.createElement(GridProvider, { value: { getStyles, grow, columns } }, /* @__PURE__ */ import_react7.default.createElement("div", null, /* @__PURE__ */ import_react7.default.createElement(GridVariables, __spreadValues({ selector: `.${responsiveClassName}` }, props))), /* @__PURE__ */ import_react7.default.createElement(
+  useStore.setState({ getStyles, grow, columns });
+  return /* @__PURE__ */ import_react4.default.createElement(import_react4.default.Fragment, null, /* @__PURE__ */ import_react4.default.createElement("div", null, /* @__PURE__ */ import_react4.default.createElement(GridVariables, __spreadValues({ selector: `.${responsiveClassName}` }, props))), /* @__PURE__ */ import_react4.default.createElement(
     import_core4.Box,
     __spreadValues(__spreadValues({
       ref
     }, getStyles("root", { className: responsiveClassName })), others),
-    /* @__PURE__ */ import_react7.default.createElement("div", __spreadValues({}, getStyles("inner")), children)
+    /* @__PURE__ */ import_react4.default.createElement("div", __spreadValues({}, getStyles("inner")), children)
   ));
 });
 Grid.displayName = "@raikou/core/Grid";

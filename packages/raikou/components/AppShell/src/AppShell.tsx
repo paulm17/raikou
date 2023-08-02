@@ -20,8 +20,7 @@ import { AppShellAside } from "./AppShellAside/AppShellAside";
 import { AppShellMain } from "./AppShellMain/AppShellMain";
 import { AppShellSection } from "./AppShellSection/AppShellSection";
 import { AppShellMediaStyles } from "./AppShellMediaStyles/AppShellMediaStyles";
-import { AppShellProvider } from "./AppShell.context";
-import { useResizing } from "./use-resizing/use-resizing";
+import { useStore } from "./store";
 
 export type AppShellStylesNames =
   | "root"
@@ -132,7 +131,7 @@ const varsResolver = createVarsResolver<AppShellFactory>(
       "--app-shell-transition-duration": `${transitionDuration}ms`,
       "--app-shell-transition-timing-function": transitionTimingFunction,
     },
-  })
+  }),
 );
 
 export const AppShell = factory<AppShellFactory>((_props, ref) => {
@@ -179,10 +178,10 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
     varsResolver,
   });
 
-  const resizing = useResizing({ disabled, transitionDuration });
+  useStore.setState({ getStyles, withBorder, zIndex, disabled });
 
   return (
-    <AppShellProvider value={{ getStyles, withBorder, zIndex, disabled }}>
+    <>
       <AppShellMediaStyles
         navbar={navbar}
         header={header}
@@ -193,10 +192,10 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
       <Box
         ref={ref}
         {...getStyles("root")}
-        mod={{ resizing, layout, disabled }}
+        mod={{ layout, disabled }}
         {...others}
       />
-    </AppShellProvider>
+    </>
   );
 });
 

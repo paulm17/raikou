@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/Card.tsx
-import React5, { Children, cloneElement } from "react";
+import React3, { Children, cloneElement } from "react";
 import {
   polymorphicFactory as polymorphicFactory3,
   useProps as useProps3,
@@ -112,36 +112,18 @@ var Paper = polymorphicFactory((_props, ref) => {
 Paper.displayName = "@raikou/core/Paper";
 
 // src/CardSection/CardSection.tsx
-import React4 from "react";
+import React2 from "react";
 import {
   Box as Box2,
   polymorphicFactory as polymorphicFactory2,
   useProps as useProps2
 } from "@raikou/core";
 
-// ../_utils/create-safe-context/create-safe-context.tsx
-import React2, { createContext, useContext } from "react";
-function createSafeContext(errorMessage) {
-  const Context = createContext(null);
-  const useSafeContext = () => {
-    const ctx = useContext(Context);
-    if (ctx === null) {
-      throw new Error(errorMessage);
-    }
-    return ctx;
-  };
-  const Provider = ({ children, value }) => /* @__PURE__ */ React2.createElement(Context.Provider, { value }, children);
-  return [Provider, useSafeContext];
-}
-
-// ../_utils/create-optional-context/create-optional-context.tsx
-import React3, { createContext as createContext2, useContext as useContext2 } from "react";
-
-// ../_utils/use-hovered/use-hovered.ts
-import { useState } from "react";
-
-// src/Card.context.ts
-var [CardProvider, useCardContext] = createSafeContext("Card component was not found in tree");
+// src/store.ts
+import { create } from "zustand";
+var useStore = create(() => ({
+  getStyles: void 0
+}));
 
 // src/CardSection/CardSection.tsx
 var defaultProps2 = {};
@@ -167,8 +149,8 @@ var CardSection = polymorphicFactory2(
       "withBorder",
       "inheritPadding"
     ]);
-    const ctx = useCardContext();
-    return /* @__PURE__ */ React4.createElement(
+    const ctx = useStore.getState();
+    return /* @__PURE__ */ React2.createElement(
       Box2,
       __spreadValues(__spreadValues({
         ref,
@@ -224,6 +206,7 @@ var Card = polymorphicFactory3((_props, ref) => {
     vars,
     varsResolver: varsResolver2
   });
+  useStore.setState({ getStyles });
   const _children = Children.toArray(children);
   const content = _children.map((child, index) => {
     if (typeof child === "object" && child && "type" in child && child.type === CardSection) {
@@ -234,7 +217,7 @@ var Card = polymorphicFactory3((_props, ref) => {
     }
     return child;
   });
-  return /* @__PURE__ */ React5.createElement(CardProvider, { value: { getStyles } }, /* @__PURE__ */ React5.createElement(Paper, __spreadValues(__spreadValues({ ref }, getStyles("root")), others), content));
+  return /* @__PURE__ */ React3.createElement(Paper, __spreadValues(__spreadValues({ ref }, getStyles("root")), others), content);
 });
 Card.displayName = "@raikou/core/Card";
 Card.Section = CardSection;
