@@ -1119,6 +1119,10 @@ function mergeRaikouTheme(currentTheme, themeOverride) {
   return result;
 }
 
+// src/core/store.ts
+import { create } from "zustand";
+var useStore = create(() => null);
+
 // src/core/RaikouProvider/useRaikouTheme/useRaikouTheme.ts
 var extensions = ["js", "cjs", "ts"];
 var loadConfig = () => {
@@ -1142,20 +1146,34 @@ var loadConfig = () => {
 };
 function useRaikouTheme() {
   if (typeof window !== "undefined") {
-    const windowTheme = window["raikou_theme"];
-    const theme = mergeRaikouTheme(DEFAULT_THEME, windowTheme);
-    theme.variantColorResolver = defaultVariantColorsResolver;
-    return theme;
-  } else {
-    try {
-      const tailwindConfig = loadConfig();
-      const resolveConfig = __require("tailwindcss/resolveConfig");
-      const fullConfig = resolveConfig(tailwindConfig);
-      const theme = mergeRaikouTheme(DEFAULT_THEME, fullConfig.theme.custom);
+    if (useStore.getState() === null) {
+      const windowTheme = window["raikou_theme"];
+      const theme = mergeRaikouTheme(DEFAULT_THEME, windowTheme);
+      theme.variantColorResolver = defaultVariantColorsResolver;
+      useStore.setState(theme);
+      return theme;
+    } else {
+      const theme = useStore.getState();
       theme.variantColorResolver = defaultVariantColorsResolver;
       return theme;
-    } catch (error) {
-      console.error("error", error);
+    }
+  } else {
+    if (useStore.getState() === null) {
+      try {
+        const tailwindConfig = loadConfig();
+        const resolveConfig = __require("tailwindcss/resolveConfig");
+        const fullConfig = resolveConfig(tailwindConfig);
+        const theme = mergeRaikouTheme(DEFAULT_THEME, fullConfig.theme.custom);
+        theme.variantColorResolver = defaultVariantColorsResolver;
+        useStore.setState(theme);
+        return theme;
+      } catch (error) {
+        console.error("error", error);
+      }
+    } else {
+      const theme = useStore.getState();
+      theme.variantColorResolver = defaultVariantColorsResolver;
+      return theme;
     }
   }
   console.log("warning - using default theme, should not happen");

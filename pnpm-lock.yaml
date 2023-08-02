@@ -2351,11 +2351,13 @@ importers:
       tsup: ^7.1.0
       type-fest: ^4.0.0
       typescript: ^5.1.6
+      zustand: ^4.4.0
     dependencies:
       '@raikou/hooks': link:../hooks
       clsx: 1.2.1
       tslib: 2.6.0
       type-fest: 4.0.0
+      zustand: 4.4.0_@types+react@18.2.5
     devDependencies:
       '@types/node': 20.3.3
       '@types/react': 18.2.5
@@ -16564,6 +16566,12 @@ packages:
       tslib: 2.6.0
     dev: false
 
+  /use-sync-external-store/1.2.0:
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dev: false
+
   /use-sync-external-store/1.2.0_react@18.2.0:
     resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
     peerDependencies:
@@ -17135,4 +17143,23 @@ packages:
       '@types/react': 18.2.5
       react: 18.2.0
       use-sync-external-store: 1.2.0_react@18.2.0
+    dev: false
+
+  /zustand/4.4.0_@types+react@18.2.5:
+    resolution: {integrity: sha512-2dq6wq4dSxbiPTamGar0NlIG/av0wpyWZJGeQYtUOLegIUvhM2Bf86ekPlmgpUtS5uR7HyetSiktYrGsdsyZgQ==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      '@types/react': '>=16.8'
+      immer: '>=9.0'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      '@types/react': 18.2.5
+      use-sync-external-store: 1.2.0
     dev: false

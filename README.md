@@ -43,26 +43,34 @@ The project was conceived with these 4 long-term goals:
 
 ## Project Caveats
 
-1. Remix, Svelte, Solid, Astro, Qwik and any other javascript frameworks are not
-   supported. There are no intentions of supporting anything other than NextJS.
-2. There may be design decisions implemented that will diverge from Mantine.
-   - Styles API layer may disappear because it has been superseded by the
-     Classes API and Styles API is
-     <a href="https://v7.mantine.dev/styles/styles-performance#inline-styles">very
-     slow</a>.
-   - Mantine keeps the theme in state via context. Raikou handles this
-     differently. On the server side, the theme is loaded from the file each
-     time it is requested. On the client side it is loaded once and then stored
-     in a window variable. Each time it is requested, it is taken from that.
-   - There are no createTheme function. The tailwind theme is responsible for
-     any changes.
-   - The code responsible for the ColorScheme has been replaced with a more
-     lightweight version using
-     <a href="https://github.com/pacocoursey/next-themes">Next Themes</a>.
-3. Some components have had their javascript removed to make them server
-   components primarily.
-4. Issues may be closed due to the fork author not having free time. If an issue
-   is very important, please consider implementing a PR.
+1.  Remix, Svelte, Solid, Astro, Qwik and any other javascript frameworks are
+    not supported. There are no intentions of supporting anything other than
+    NextJS.
+2.  There may be design decisions implemented that will diverge from Mantine.
+
+    - Styles API layer may disappear because it has been superseded by the
+      Classes API and Styles API is
+      <a href="https://v7.mantine.dev/styles/styles-performance#inline-styles">very
+      slow</a>.
+    - Mantine and Raikou employ different approaches to manage the theme. While
+      Mantine uses context to maintain the theme, Raikou utilizes a global
+      Zustand state for both server and client-side theme storage.
+
+      On the server side, Raikou loads the theme from the tailwind config when
+      an initial theme request is made. As for the client side, the theme is
+      first stored in a window variable and then transferred to Zustand during
+      the initial theme request.
+
+    - There are no createTheme function. The tailwind theme is responsible for
+      any changes.
+    - The code responsible for the ColorScheme has been replaced with a more
+      lightweight version using
+      <a href="https://github.com/pacocoursey/next-themes">Next Themes</a>.
+
+3.  Some components have had their javascript removed to make them server
+    components primarily.
+4.  Issues may be closed due to the fork author not having free time. If an
+    issue is very important, please consider implementing a PR.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
