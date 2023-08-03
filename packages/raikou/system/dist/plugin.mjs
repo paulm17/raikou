@@ -5395,7 +5395,7 @@ var require_Notifications_plugin = __commonJS({
     "use strict";
     module.exports = function({ addComponents }) {
       addComponents({
-        ".notification-root": {
+        ".notifications-root": {
           width: "calc(100% - var(--raikou-spacing-md) * 2)",
           position: "fixed",
           zIndex: "var(--notifications-z-index)",
@@ -5406,7 +5406,7 @@ var require_Notifications_plugin = __commonJS({
           transform: "var(--notifications-transform)",
           maxWidth: "var(--notifications-container-width)"
         },
-        ".notification-notification": {
+        ".notifications-notification": {
           "& + &": {
             marginTop: "var(--raikou-spacing-md)"
           }

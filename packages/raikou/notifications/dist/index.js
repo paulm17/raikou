@@ -75,14 +75,52 @@ module.exports = __toCommonJS(src_exports);
 
 // src/notifications.store.ts
 var import_hooks = require("@raikou/hooks");
-var import_store = require("@raikou/store");
-var createNotificationsStore = () => (0, import_store.createStore)({
+
+// ../store/src/store.ts
+var import_react = require("react");
+function createStore(initialState) {
+  let state = initialState;
+  let initialized = false;
+  const listeners = /* @__PURE__ */ new Set();
+  return {
+    getState() {
+      return state;
+    },
+    updateState(value) {
+      state = typeof value === "function" ? value(state) : value;
+    },
+    setState(value) {
+      this.updateState(value);
+      listeners.forEach((listener) => listener(state));
+    },
+    initialize(value) {
+      if (!initialized) {
+        state = value;
+        initialized = true;
+      }
+    },
+    subscribe(callback) {
+      listeners.add(callback);
+      return () => listeners.delete(callback);
+    }
+  };
+}
+function useStore(store) {
+  return (0, import_react.useSyncExternalStore)(
+    store.subscribe,
+    () => store.getState(),
+    () => store.getState()
+  );
+}
+
+// src/notifications.store.ts
+var createNotificationsStore = () => createStore({
   notifications: [],
   queue: [],
   limit: 5
 });
 var notificationsStore = createNotificationsStore();
-var useNotifications = (store = notificationsStore) => (0, import_store.useStore)(store);
+var useNotifications = (store = notificationsStore) => useStore(store);
 function updateNotificationsState(store, update) {
   const state = store.getState();
   const notifications2 = update([...state.notifications, ...state.queue]);
@@ -147,25 +185,25 @@ var notifications = {
 };
 
 // src/Notifications.tsx
-var import_react15 = __toESM(require("react"));
+var import_react16 = __toESM(require("react"));
 var import_react_transition_group = require("react-transition-group");
 var import_hooks3 = require("@raikou/hooks");
 var import_core12 = require("@raikou/core");
 
 // ../components/Portal/src/Portal.tsx
-var import_react = __toESM(require("react"));
+var import_react2 = __toESM(require("react"));
 var import_react_dom = require("react-dom");
 var import_hooks2 = require("@raikou/hooks");
 var import_core = require("@raikou/core");
 var defaultProps = {};
-var Portal = (0, import_react.forwardRef)((props, ref) => {
+var Portal = (0, import_react2.forwardRef)((props, ref) => {
   const _a = (0, import_core.useProps)(
     "Portal",
     defaultProps,
     props
   ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
-  const [mounted, setMounted] = (0, import_react.useState)(false);
-  const nodeRef = (0, import_react.useRef)(null);
+  const [mounted, setMounted] = (0, import_react2.useState)(false);
+  const nodeRef = (0, import_react2.useRef)(null);
   (0, import_hooks2.useIsomorphicEffect)(() => {
     setMounted(true);
     nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
@@ -182,14 +220,14 @@ var Portal = (0, import_react.forwardRef)((props, ref) => {
     return null;
   }
   return (0, import_react_dom.createPortal)(
-    /* @__PURE__ */ import_react.default.createElement("div", __spreadValues({ className, ref }, others), children),
+    /* @__PURE__ */ import_react2.default.createElement("div", __spreadValues({ className, ref }, others), children),
     nodeRef.current
   );
 });
 Portal.displayName = "@raikou/core/Portal";
 
 // ../components/Portal/src/OptionalPortal.tsx
-var import_react2 = __toESM(require("react"));
+var import_react3 = __toESM(require("react"));
 function OptionalPortal(_a) {
   var _b = _a, {
     withinPortal = true,
@@ -199,25 +237,25 @@ function OptionalPortal(_a) {
     "children"
   ]);
   if (withinPortal) {
-    return /* @__PURE__ */ import_react2.default.createElement(Portal, __spreadValues({}, others), children);
+    return /* @__PURE__ */ import_react3.default.createElement(Portal, __spreadValues({}, others), children);
   }
-  return /* @__PURE__ */ import_react2.default.createElement(import_react2.default.Fragment, null, children);
+  return /* @__PURE__ */ import_react3.default.createElement(import_react3.default.Fragment, null, children);
 }
 OptionalPortal.displayName = "@raikou/core/OptionalPortal";
 
 // src/NotificationContainer.tsx
-var import_react14 = __toESM(require("react"));
+var import_react15 = __toESM(require("react"));
 
 // ../components/Notification/src/Notification.tsx
-var import_react13 = __toESM(require("react"));
+var import_react14 = __toESM(require("react"));
 var import_core11 = require("@raikou/core");
 
 // ../components/Loader/src/Loader.tsx
-var import_react6 = __toESM(require("react"));
+var import_react7 = __toESM(require("react"));
 var import_core5 = require("@raikou/core");
 
 // ../components/Loader/src/loaders/Bars.tsx
-var import_react3 = __toESM(require("react"));
+var import_react4 = __toESM(require("react"));
 
 // ../../../node_modules/.pnpm/clsx@2.0.0/node_modules/clsx/dist/clsx.mjs
 function r(e) {
@@ -242,10 +280,10 @@ var clsx_default = clsx;
 
 // ../components/Loader/src/loaders/Bars.tsx
 var import_core2 = require("@raikou/core");
-var Bars = (0, import_react3.forwardRef)(
+var Bars = (0, import_react4.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react3.default.createElement(
+    return /* @__PURE__ */ import_react4.default.createElement(
       import_core2.Box,
       __spreadProps(__spreadValues({
         component: "span",
@@ -253,20 +291,20 @@ var Bars = (0, import_react3.forwardRef)(
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react3.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react3.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react3.default.createElement("span", { className: "bar" })
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "bar" }),
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "bar" }),
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "bar" })
     );
   }
 );
 
 // ../components/Loader/src/loaders/Oval.tsx
-var import_react4 = __toESM(require("react"));
+var import_react5 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
-var Oval = (0, import_react4.forwardRef)(
+var Oval = (0, import_react5.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react4.default.createElement(
+    return /* @__PURE__ */ import_react5.default.createElement(
       import_core3.Box,
       __spreadProps(__spreadValues({
         component: "span",
@@ -279,12 +317,12 @@ var Oval = (0, import_react4.forwardRef)(
 );
 
 // ../components/Loader/src/loaders/Dots.tsx
-var import_react5 = __toESM(require("react"));
+var import_react6 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
-var Dots = (0, import_react5.forwardRef)(
+var Dots = (0, import_react6.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react5.default.createElement(
+    return /* @__PURE__ */ import_react6.default.createElement(
       import_core4.Box,
       __spreadProps(__spreadValues({
         component: "span",
@@ -292,15 +330,15 @@ var Dots = (0, import_react5.forwardRef)(
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" })
+      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" })
     );
   }
 );
@@ -365,7 +403,7 @@ var Loader = (0, import_core5.factory)((_props, ref) => {
     vars,
     varsResolver
   });
-  return /* @__PURE__ */ import_react6.default.createElement(
+  return /* @__PURE__ */ import_react7.default.createElement(
     import_core5.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
@@ -378,7 +416,7 @@ var Loader = (0, import_core5.factory)((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../components/Text/src/Text.tsx
-var import_react7 = __toESM(require("react"));
+var import_react8 = __toESM(require("react"));
 var import_core6 = require("@raikou/core");
 function getTextTruncate(truncate) {
   if (truncate === "start") {
@@ -455,7 +493,7 @@ var Text = (0, import_core6.polymorphicFactory)((_props, ref) => {
     vars,
     varsResolver: varsResolver2
   });
-  return /* @__PURE__ */ import_react7.default.createElement(
+  return /* @__PURE__ */ import_react8.default.createElement(
     import_core6.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { focusable: true })), {
       ref,
@@ -477,11 +515,11 @@ var Text = (0, import_core6.polymorphicFactory)((_props, ref) => {
 Text.displayName = "@raikou/core/Text";
 
 // ../components/CloseButton/src/CloseIcon.tsx
-var import_react8 = __toESM(require("react"));
-var CloseIcon = (0, import_react8.forwardRef)(
+var import_react9 = __toESM(require("react"));
+var CloseIcon = (0, import_react9.forwardRef)(
   (_a, ref) => {
     var _b = _a, { size = "var(--cb-icon-size)", style } = _b, others = __objRest(_b, ["size", "style"]);
-    return /* @__PURE__ */ import_react8.default.createElement(
+    return /* @__PURE__ */ import_react9.default.createElement(
       "svg",
       __spreadValues({
         viewBox: "0 0 15 15",
@@ -490,7 +528,7 @@ var CloseIcon = (0, import_react8.forwardRef)(
         style: __spreadProps(__spreadValues({}, style), { width: size, height: size }),
         ref
       }, others),
-      /* @__PURE__ */ import_react8.default.createElement(
+      /* @__PURE__ */ import_react9.default.createElement(
         "path",
         {
           d: "M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z",
@@ -505,15 +543,15 @@ var CloseIcon = (0, import_react8.forwardRef)(
 CloseIcon.displayName = "@raikou/core/CloseIcon";
 
 // ../components/CloseButton/src/CloseButton.tsx
-var import_react12 = __toESM(require("react"));
+var import_react13 = __toESM(require("react"));
 var import_core10 = require("@raikou/core");
 
 // ../components/ActionIcon/src/ActionIcon.tsx
-var import_react11 = __toESM(require("react"));
+var import_react12 = __toESM(require("react"));
 var import_core9 = require("@raikou/core");
 
 // ../components/UnstyledButton/src/UnstyledButton.tsx
-var import_react9 = __toESM(require("react"));
+var import_react10 = __toESM(require("react"));
 var import_core7 = require("@raikou/core");
 var defaultProps4 = {
   __staticSelector: "UnstyledButton"
@@ -550,7 +588,7 @@ var UnstyledButton = (0, import_core7.polymorphicFactory)(
       styles,
       unstyled
     });
-    return /* @__PURE__ */ import_react9.default.createElement(
+    return /* @__PURE__ */ import_react10.default.createElement(
       import_core7.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { focusable: true })), {
         component,
@@ -563,7 +601,7 @@ var UnstyledButton = (0, import_core7.polymorphicFactory)(
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
 // ../components/ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-var import_react10 = __toESM(require("react"));
+var import_react11 = __toESM(require("react"));
 var import_core8 = require("@raikou/core");
 var defaultProps5 = {
   orientation: "horizontal",
@@ -613,7 +651,7 @@ var ActionIconGroup = (0, import_core8.factory)(
       varsResolver: varsResolver3,
       rootSelector: "group"
     });
-    return /* @__PURE__ */ import_react10.default.createElement(
+    return /* @__PURE__ */ import_react11.default.createElement(
       import_core8.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
         ref,
@@ -706,7 +744,7 @@ var ActionIcon = (0, import_core9.polymorphicFactory)(
       vars,
       varsResolver: varsResolver4
     });
-    return /* @__PURE__ */ import_react11.default.createElement(
+    return /* @__PURE__ */ import_react12.default.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues(__spreadValues({}, getStyles("root", {
         active: !disabled && !loading && !dataDisabled
@@ -718,7 +756,7 @@ var ActionIcon = (0, import_core9.polymorphicFactory)(
         ref,
         mod: { loading, disabled: disabled || dataDisabled }
       }),
-      loading ? /* @__PURE__ */ import_react11.default.createElement(
+      loading ? /* @__PURE__ */ import_react12.default.createElement(
         Loader,
         __spreadValues(__spreadProps(__spreadValues({}, getStyles("loader")), {
           color: "var(--ai-color)",
@@ -741,7 +779,7 @@ var CloseButton = (0, import_core10.polymorphicFactory)(
   (_props, ref) => {
     const props = (0, import_core10.useProps)("CloseButton", defaultProps7, _props);
     const _a = props, { iconSize, children, vars } = _a, others = __objRest(_a, ["iconSize", "children", "vars"]);
-    return /* @__PURE__ */ import_react12.default.createElement(
+    return /* @__PURE__ */ import_react13.default.createElement(
       ActionIcon,
       __spreadProps(__spreadValues({
         ref
@@ -749,7 +787,7 @@ var CloseButton = (0, import_core10.polymorphicFactory)(
         __vars: { "--cb-icon-size": (0, import_core10.rem)(iconSize) },
         __staticSelector: "CloseButton"
       }),
-      /* @__PURE__ */ import_react12.default.createElement(CloseIcon, null),
+      /* @__PURE__ */ import_react13.default.createElement(CloseIcon, null),
       children
     );
   }
@@ -827,7 +865,7 @@ var Notification = (0, import_core11.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver5
   });
-  return /* @__PURE__ */ import_react13.default.createElement(
+  return /* @__PURE__ */ import_react14.default.createElement(
     import_core11.Box,
     __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       mod: {
@@ -839,9 +877,9 @@ var Notification = (0, import_core11.factory)((_props, ref) => {
     }), others), {
       role: "alert"
     }),
-    icon && !loading && /* @__PURE__ */ import_react13.default.createElement("div", __spreadValues({}, getStyles("icon")), icon),
-    loading && /* @__PURE__ */ import_react13.default.createElement(Loader, __spreadValues({ size: 28, color }, getStyles("loader"))),
-    /* @__PURE__ */ import_react13.default.createElement("div", __spreadValues({}, getStyles("body")), title && /* @__PURE__ */ import_react13.default.createElement(Text, __spreadProps(__spreadValues({}, getStyles("title")), { size: "sm", fw: 500 }), title), /* @__PURE__ */ import_react13.default.createElement(
+    icon && !loading && /* @__PURE__ */ import_react14.default.createElement("div", __spreadValues({}, getStyles("icon")), icon),
+    loading && /* @__PURE__ */ import_react14.default.createElement(Loader, __spreadValues({ size: 28, color }, getStyles("loader"))),
+    /* @__PURE__ */ import_react14.default.createElement("div", __spreadValues({}, getStyles("body")), title && /* @__PURE__ */ import_react14.default.createElement(Text, __spreadProps(__spreadValues({}, getStyles("title")), { size: "sm", fw: 500 }), title), /* @__PURE__ */ import_react14.default.createElement(
       Text,
       __spreadProps(__spreadValues({}, getStyles("description")), {
         color: "dimmed",
@@ -852,7 +890,7 @@ var Notification = (0, import_core11.factory)((_props, ref) => {
       }),
       children
     )),
-    withCloseButton && /* @__PURE__ */ import_react13.default.createElement(
+    withCloseButton && /* @__PURE__ */ import_react14.default.createElement(
       CloseButton,
       __spreadValues(__spreadProps(__spreadValues({
         iconSize: 16,
@@ -877,11 +915,11 @@ function getAutoClose(autoClose, notificationAutoClose) {
 }
 
 // src/NotificationContainer.tsx
-var NotificationContainer = (0, import_react14.forwardRef)((_a, ref) => {
+var NotificationContainer = (0, import_react15.forwardRef)((_a, ref) => {
   var _b = _a, { data, onHide, autoClose } = _b, others = __objRest(_b, ["data", "onHide", "autoClose"]);
   const _a2 = data, { autoClose: _autoClose, message } = _a2, notificationProps = __objRest(_a2, ["autoClose", "message"]);
   const autoCloseDuration = getAutoClose(autoClose, data.autoClose);
-  const autoCloseTimeout = (0, import_react14.useRef)();
+  const autoCloseTimeout = (0, import_react15.useRef)();
   const cancelAutoClose = () => window.clearTimeout(autoCloseTimeout.current);
   const handleHide = () => {
     onHide(data.id);
@@ -895,15 +933,15 @@ var NotificationContainer = (0, import_react14.forwardRef)((_a, ref) => {
       );
     }
   };
-  (0, import_react14.useEffect)(() => {
+  (0, import_react15.useEffect)(() => {
     var _a3;
     (_a3 = data.onOpen) == null ? void 0 : _a3.call(data, data);
   }, []);
-  (0, import_react14.useEffect)(() => {
+  (0, import_react15.useEffect)(() => {
     handleAutoClose();
     return cancelAutoClose;
   }, [autoCloseDuration]);
-  return /* @__PURE__ */ import_react14.default.createElement(
+  return /* @__PURE__ */ import_react15.default.createElement(
     Notification,
     __spreadProps(__spreadValues(__spreadValues({}, others), notificationProps), {
       onClose: handleHide,
@@ -1033,8 +1071,8 @@ var Notifications = (0, import_core12.factory)((_props, ref) => {
   const data = useNotifications(store);
   const forceUpdate = (0, import_hooks3.useForceUpdate)();
   const shouldReduceMotion = (0, import_hooks3.useReducedMotion)();
-  const refs = (0, import_react15.useRef)({});
-  const previousLength = (0, import_react15.useRef)(0);
+  const refs = (0, import_react16.useRef)({});
+  const previousLength = (0, import_react16.useRef)(0);
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
   const duration = reduceMotion ? 1 : transitionDuration;
   const getStyles = (0, import_core12.useStyles)({
@@ -1058,7 +1096,7 @@ var Notifications = (0, import_core12.factory)((_props, ref) => {
     }
     previousLength.current = data.notifications.length;
   }, [notifications]);
-  const items = data.notifications.map((notification) => /* @__PURE__ */ import_react15.default.createElement(
+  const items = data.notifications.map((notification) => /* @__PURE__ */ import_react16.default.createElement(
     Transition,
     {
       key: notification.id,
@@ -1066,7 +1104,7 @@ var Notifications = (0, import_core12.factory)((_props, ref) => {
       onEnter: () => refs.current[notification.id].offsetHeight,
       nodeRef: { current: refs.current[notification.id] }
     },
-    (state) => /* @__PURE__ */ import_react15.default.createElement(
+    (state) => /* @__PURE__ */ import_react16.default.createElement(
       NotificationContainer,
       __spreadProps(__spreadValues({}, getStyles("notification", {
         style: getNotificationStateStyles({
@@ -1085,7 +1123,7 @@ var Notifications = (0, import_core12.factory)((_props, ref) => {
       })
     )
   ));
-  return /* @__PURE__ */ import_react15.default.createElement(OptionalPortal, __spreadValues({ withinPortal }, portalProps), /* @__PURE__ */ import_react15.default.createElement(import_core12.Box, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref }), others), /* @__PURE__ */ import_react15.default.createElement(import_react_transition_group.TransitionGroup, null, items)));
+  return /* @__PURE__ */ import_react16.default.createElement(OptionalPortal, __spreadValues({ withinPortal }, portalProps), /* @__PURE__ */ import_react16.default.createElement(import_core12.Box, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref }), others), /* @__PURE__ */ import_react16.default.createElement(import_react_transition_group.TransitionGroup, null, items)));
 });
 Notifications.displayName = "@raikou/notifications/Notifications";
 Notifications.show = notifications.show;

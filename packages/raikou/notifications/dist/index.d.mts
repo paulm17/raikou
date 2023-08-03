@@ -1,7 +1,6 @@
 import * as _raikou_core from '@raikou/core';
 import { BoxProps, StylesApiProps, ElementProps, RaikouColor, RaikouRadius, Factory } from '@raikou/core';
 import React$1 from 'react';
-import { RaikouStore } from '@raikou/store';
 
 type NotificationStylesNames = "root" | "icon" | "loader" | "body" | "title" | "description" | "closeButton";
 type NotificationCssVariables = {
@@ -36,6 +35,16 @@ type NotificationFactory = Factory<{
     stylesNames: NotificationStylesNames;
     vars: NotificationCssVariables;
 }>;
+
+type RaikouStoreSubscriber<Value> = (value: Value) => void;
+type SetStateCallback<Value> = (value: Value) => Value;
+interface RaikouStore<Value> {
+    getState(): Value;
+    setState(value: Value | SetStateCallback<Value>): void;
+    updateState(value: Value | SetStateCallback<Value>): void;
+    initialize(value: Value): void;
+    subscribe(callback: RaikouStoreSubscriber<Value>): () => void;
+}
 
 interface NotificationData extends Omit<NotificationProps, "onClose"> {
     /** Notification id, can be used to close or update notification */

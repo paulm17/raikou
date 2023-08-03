@@ -1,20 +1,11 @@
 /// <reference path="global.d.ts" />
+import { RaikouStore } from '@raikou/store';
 import * as _raikou_core from '@raikou/core';
 import { BoxProps, StylesApiProps, ElementProps, RaikouSize, Factory, PolymorphicFactory, RaikouRadius, RaikouColor, RaikouShadow, RaikouSpacing } from '@raikou/core';
 import react from 'react';
 import * as CSS from 'csstype';
 import * as PropTypes from 'prop-types';
 import { Interaction } from 'scheduler/tracing';
-
-type RaikouStoreSubscriber<Value> = (value: Value) => void;
-type SetStateCallback<Value> = (value: Value) => Value;
-interface RaikouStore<Value> {
-    getState(): Value;
-    setState(value: Value | SetStateCallback<Value>): void;
-    updateState(value: Value | SetStateCallback<Value>): void;
-    initialize(value: Value): void;
-    subscribe(callback: RaikouStoreSubscriber<Value>): () => void;
-}
 
 interface SpotlightState {
     opened: boolean;
