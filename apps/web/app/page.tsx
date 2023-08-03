@@ -10,6 +10,9 @@ export default function Page() {
       <a href="/themer">Themer</a>
       <br />
       <br />
+      <a href="/direction">Direction</a>
+      <br />
+      <br />
       <a href="/testing">Testing</a>
     </p>
   );

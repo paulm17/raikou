@@ -1,8 +1,9 @@
-import type { StorybookConfig } from "@storybook/react-vite"
+import type { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {
   stories: [
     "../../../packages/raikou/components/**/src/*.story.@(js|jsx|ts|tsx)",
+    "../../../packages/raikou/@(notifications|spotlight)/**/src/*.story.@(js|jsx|ts|tsx)",
   ],
   addons: [
     "@storybook/addon-links",
@@ -21,5 +22,5 @@ const config: StorybookConfig = {
   typescript: {
     reactDocgen: false, // 👈 react-docgen configured here.
   },
-}
-export default config
+};
+export default config;

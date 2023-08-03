@@ -1,6 +1,6 @@
 {
   "name": "@raikou/client",
-  "version": "0.0.1-alpha.16",
+  "version": "0.0.1-alpha.17",
   "main": "index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -33,6 +33,7 @@
     "@raikou/accordion": "workspace:*",
     "@raikou/autocomplete": "workspace:*",
     "@raikou/avatar": "workspace:*",
+    "@raikou/burger": "workspace:*",
     "@raikou/checkbox": "workspace:*",
     "@raikou/chip": "workspace:*",
     "@raikou/collapse": "workspace:*",
@@ -49,6 +50,7 @@
     "@raikou/modal-base": "workspace:*",
     "@raikou/multi-select": "workspace:*",
     "@raikou/native-select": "workspace:*",
+    "@raikou/notifications": "workspace:*",
     "@raikou/pagination": "workspace:*",
     "@raikou/password-input": "workspace:*",
     "@raikou/pill": "workspace:*",
@@ -59,10 +61,11 @@
     "@raikou/progress": "workspace:*",
     "@raikou/rating": "workspace:*",
     "@raikou/ring-progress": "workspace:*",
+    "@raikou/scroll-area": "workspace:*",
     "@raikou/segmented-control": "workspace:*",
     "@raikou/select": "workspace:*",
-    "@raikou/scroll-area": "workspace:*",
     "@raikou/slider": "workspace:*",
+    "@raikou/spotlight": "workspace:*",
     "@raikou/switch": "workspace:*",
     "@raikou/tabs": "workspace:*",
     "@raikou/tags-input": "workspace:*",
@@ -70,7 +73,7 @@
     "@raikou/text-input": "workspace:*",
     "@raikou/tooltip": "workspace:*",
     "type-fest": "^4.0.0",
-    "tslib": "^2.5.2"
+    "tslib": "^2.6.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",

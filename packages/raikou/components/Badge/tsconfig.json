@@ -2,7 +2,6 @@
   "extends": "../../../../tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "@raikou/group": ["../Group/src"],
       "@raikou/tests": ["../../tests/src"]
     }
   },

@@ -1,5 +1,5 @@
-import type { PartialDeep } from 'type-fest';
-import type { VariantColorsResolver } from './color-functions';
+import type { PartialDeep } from "type-fest";
+import type { VariantColorsResolver } from "./color-functions";
 
 export interface RaikouTheme {
   /** Controls focus ring styles. Supports the following options:
@@ -7,7 +7,7 @@ export interface RaikouTheme {
    *  - `always` – focus ring is displayed when the user navigates with keyboard and mouse
    *  - `never` – focus ring is always hidden (not recommended)
    */
-  focusRing: 'auto' | 'always' | 'never';
+  focusRing: "auto" | "always" | "never";
 
   /** rem units scale, change if you customize font-size of `<html />` element
    *  default value is `1` (for `100%`/`16px` font-size on `<html />`)
@@ -99,7 +99,7 @@ export interface RaikouTheme {
    * - `default` – cursor that is used by native HTML elements, for example, `input[type="checkbox"]` has `cursor: default` styles
    * - `pointer` – sets `cursor: pointer` on interactive elements that do not have these styles by default
    */
-  cursorType: 'default' | 'pointer';
+  cursorType: "default" | "pointer";
 
   /** Default gradient configuration for components that support `variant="gradient"` */
   defaultGradient: RaikouGradient;
@@ -119,7 +119,7 @@ export interface RaikouTheme {
   other: RaikouThemeOther;
 }
 
-export type RaikouColorScheme = 'light' | 'dark' | 'auto';
+export type RaikouColorScheme = "light" | "dark" | "auto";
 
 export type RaikouThemeOverride = PartialDeep<RaikouTheme>;
 
@@ -140,7 +140,7 @@ export interface HeadingStyle {
   lineHeight: string;
 }
 
-export type RaikouSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type RaikouSize = "xs" | "sm" | "md" | "lg" | "xl";
 export type RaikouBreakpointsValues = Record<RaikouSize, string>;
 export type RaikouFontSizesValues = Record<RaikouSize, string>;
 export type RaikouRadiusValues = Record<RaikouSize, string>;
@@ -174,7 +174,7 @@ export type RaikouColorsTuple = readonly [
   string,
   string,
   string,
-  ...string[]
+  ...string[],
 ];
 
 export type RaikouColorShade = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
@@ -185,20 +185,20 @@ export interface RaikouPrimaryShade {
 }
 
 export type DefaultRaikouColor =
-  | 'dark'
-  | 'gray'
-  | 'red'
-  | 'pink'
-  | 'grape'
-  | 'violet'
-  | 'indigo'
-  | 'blue'
-  | 'cyan'
-  | 'green'
-  | 'lime'
-  | 'yellow'
-  | 'orange'
-  | 'teal'
+  | "dark"
+  | "gray"
+  | "red"
+  | "pink"
+  | "grape"
+  | "violet"
+  | "indigo"
+  | "blue"
+  | "cyan"
+  | "green"
+  | "lime"
+  | "yellow"
+  | "orange"
+  | "teal"
   | (string & {});
 
 export type RaikouThemeColorsOverride = {};

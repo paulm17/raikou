@@ -4,8 +4,9 @@
     "isolatedModules": false,
     "paths": {
       "@raikou/core": ["../core/src"],
-      "@raikou/hooks": ["../hooks/src"]
+      "@raikou/hooks": ["../hooks/src"],
+      "@raikou/global-store": ["../globalstore/src"]
     }
   },
-  "include": ["src", "index.ts"]
+  "include": ["src", "index.ts", "../../../configuration/types"]
 }

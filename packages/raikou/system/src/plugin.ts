@@ -575,5 +575,7 @@ module.exports = {
     require("../../components/Tooltip/src/Tooltip.plugin"),
     require("../../components/UnstyledButton/src/UnstyledButton.plugin"),
     require("../../components/VisuallyHidden/src/VisuallyHidden.plugin"),
+    require("../../notifications/src/Notifications.plugin"),
+    require("../../spotlight/src/Spotlight.plugin"),
   ],
 };

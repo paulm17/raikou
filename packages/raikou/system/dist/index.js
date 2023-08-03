@@ -47,6 +47,8 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var src_exports = {};
 __export(src_exports, {
   DEFAULT_THEME: () => DEFAULT_THEME,
+  DirectionContext: () => DirectionContext,
+  DirectionProvider: () => DirectionProvider,
   RaikouProvider: () => RaikouProvider,
   convertCssVariables: () => convertCssVariables,
   darken: () => darken,
@@ -67,6 +69,7 @@ __export(src_exports, {
   rgba: () => rgba,
   toRgba: () => toRgba,
   useColorScheme: () => useColorScheme,
+  useDirection: () => useDirection,
   validateRaikouTheme: () => validateRaikouTheme
 });
 module.exports = __toCommonJS(src_exports);
@@ -1161,9 +1164,46 @@ function RaikouProvider({
     children
   );
 }
+
+// src/core/DirectionProvider/DirectionProvider.tsx
+var import_react4 = __toESM(require("react"));
+var import_hooks = require("@raikou/hooks");
+var DirectionContext = (0, import_react4.createContext)({
+  dir: "ltr",
+  toggleDirection: () => {
+  },
+  setDirection: () => {
+  }
+});
+function useDirection() {
+  return (0, import_react4.useContext)(DirectionContext);
+}
+function DirectionProvider({
+  children,
+  initialDirection = "ltr",
+  detectDirection = true
+}) {
+  const [dir, setDir] = (0, import_react4.useState)(initialDirection);
+  const setDirection = (direction) => {
+    setDir(direction);
+    document.documentElement.setAttribute("dir", direction);
+  };
+  const toggleDirection = () => setDirection(dir === "ltr" ? "rtl" : "ltr");
+  (0, import_hooks.useIsomorphicEffect)(() => {
+    if (detectDirection) {
+      const direction = document.documentElement.getAttribute("dir");
+      if (direction === "rtl" || direction === "ltr") {
+        setDirection(direction);
+      }
+    }
+  }, []);
+  return /* @__PURE__ */ import_react4.default.createElement(DirectionContext.Provider, { value: { dir, toggleDirection, setDirection } }, children);
+}
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   DEFAULT_THEME,
+  DirectionContext,
+  DirectionProvider,
   RaikouProvider,
   convertCssVariables,
   darken,
@@ -1184,5 +1224,6 @@ function RaikouProvider({
   rgba,
   toRgba,
   useColorScheme,
+  useDirection,
   validateRaikouTheme
 });

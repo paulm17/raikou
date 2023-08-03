@@ -286,6 +286,7 @@ importers:
       '@raikou/accordion': workspace:*
       '@raikou/autocomplete': workspace:*
       '@raikou/avatar': workspace:*
+      '@raikou/burger': workspace:*
       '@raikou/checkbox': workspace:*
       '@raikou/chip': workspace:*
       '@raikou/collapse': workspace:*
@@ -302,6 +303,7 @@ importers:
       '@raikou/modal-base': workspace:*
       '@raikou/multi-select': workspace:*
       '@raikou/native-select': workspace:*
+      '@raikou/notifications': workspace:*
       '@raikou/pagination': workspace:*
       '@raikou/password-input': workspace:*
       '@raikou/pill': workspace:*
@@ -316,6 +318,7 @@ importers:
       '@raikou/segmented-control': workspace:*
       '@raikou/select': workspace:*
       '@raikou/slider': workspace:*
+      '@raikou/spotlight': workspace:*
       '@raikou/switch': workspace:*
       '@raikou/tabs': workspace:*
       '@raikou/tags-input': workspace:*
@@ -326,7 +329,7 @@ importers:
       '@types/react': ^18.2.0
       '@types/react-dom': ^18.2.0
       clean-package: 2.2.0
-      tslib: ^2.5.2
+      tslib: ^2.6.0
       tsup: ^7.1.0
       type-fest: ^4.0.0
       typescript: ^5.1.6
@@ -334,6 +337,7 @@ importers:
       '@raikou/accordion': link:../components/Accordion
       '@raikou/autocomplete': link:../components/Autocomplete
       '@raikou/avatar': link:../components/Avatar
+      '@raikou/burger': link:../components/Burger
       '@raikou/checkbox': link:../components/Checkbox
       '@raikou/chip': link:../components/Chip
       '@raikou/collapse': link:../components/Collapse
@@ -350,6 +354,7 @@ importers:
       '@raikou/modal-base': link:../components/ModalBase
       '@raikou/multi-select': link:../components/MultiSelect
       '@raikou/native-select': link:../components/NativeSelect
+      '@raikou/notifications': link:../notifications
       '@raikou/pagination': link:../components/Pagination
       '@raikou/password-input': link:../components/PasswordInput
       '@raikou/pill': link:../components/Pill
@@ -364,6 +369,7 @@ importers:
       '@raikou/segmented-control': link:../components/SegmentedControl
       '@raikou/select': link:../components/Select
       '@raikou/slider': link:../components/Slider
+      '@raikou/spotlight': link:../spotlight
       '@raikou/switch': link:../components/Switch
       '@raikou/tabs': link:../components/Tabs
       '@raikou/tags-input': link:../components/TagsInput
@@ -605,7 +611,6 @@ importers:
   packages/raikou/components/Badge:
     specifiers:
       '@raikou/core': workspace:*
-      '@raikou/hooks': workspace:*
       '@types/node': ^20.3.3
       '@types/react': ^18.2.0
       '@types/react-dom': ^18.2.0
@@ -615,7 +620,6 @@ importers:
       typescript: ^5.1.6
     dependencies:
       '@raikou/core': link:../../core
-      '@raikou/hooks': link:../../hooks
       tslib: 2.6.0
     devDependencies:
       '@types/node': 20.3.3
@@ -2347,7 +2351,7 @@ importers:
       '@types/react-dom': ^18.2.0
       clean-package: 2.2.0
       clsx: ^1.1.1
-      tslib: ^2.5.2
+      tslib: ^2.6.0
       tsup: ^7.1.0
       type-fest: ^4.0.0
       typescript: ^5.1.6
@@ -2357,7 +2361,7 @@ importers:
       clsx: 1.2.1
       tslib: 2.6.0
       type-fest: 4.0.0
-      zustand: 4.4.0_@types+react@18.2.5
+      zustand: 4.4.0_3pi6y6cylzraaxxtldk4o6b3zi
     devDependencies:
       '@types/node': 20.3.3
       '@types/react': 18.2.5
@@ -2377,6 +2381,27 @@ importers:
       '@types/node': 20.3.3
       '@types/react': 18.2.5
       '@types/react-dom': 18.2.3
+      tsup: 7.1.0_typescript@5.1.6
+      typescript: 5.1.6
+
+  packages/raikou/notifications:
+    specifiers:
+      '@raikou/store': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      clean-package: 2.2.0
+      tslib: ^2.6.0
+      tsup: ^7.1.0
+      typescript: ^5.1.6
+    dependencies:
+      '@raikou/store': link:../store
+      tslib: 2.6.0
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.17
+      '@types/react-dom': 18.2.3
+      clean-package: 2.2.0
       tsup: 7.1.0_typescript@5.1.6
       typescript: 5.1.6
 
@@ -2425,7 +2450,7 @@ importers:
       '@types/react': ^18.2.0
       '@types/react-dom': ^18.2.0
       clean-package: 2.2.0
-      tslib: ^2.5.2
+      tslib: ^2.6.0
       tsup: ^7.1.0
       type-fest: ^4.0.0
       typescript: ^5.1.6
@@ -2479,6 +2504,41 @@ importers:
       tsup: 7.1.0_typescript@5.1.6
       typescript: 5.1.6
 
+  packages/raikou/spotlight:
+    specifiers:
+      '@raikou/core': workspace:*
+      '@raikou/hooks': workspace:*
+      '@types/node': ^20.3.3
+      '@types/react': ^18.2.0
+      '@types/react-dom': ^18.2.0
+      '@types/react-transition-group': ^4.4.6
+      clean-package: 2.2.0
+      react-transition-group: 4.4.5
+      tslib: ^2.6.0
+      tsup: ^7.1.0
+      typescript: ^5.1.6
+    dependencies:
+      '@raikou/core': link:../core
+      '@raikou/hooks': link:../hooks
+      react-transition-group: 4.4.5_biqbaboplfbrettd7655fr4n2y
+      tslib: 2.6.0
+    devDependencies:
+      '@types/node': 20.3.3
+      '@types/react': 18.2.17
+      '@types/react-dom': 18.2.3
+      '@types/react-transition-group': 4.4.6
+      clean-package: 2.2.0
+      tsup: 7.1.0_typescript@5.1.6
+      typescript: 5.1.6
+
+  packages/raikou/store:
+    specifiers:
+      clean-package: 2.2.0
+      tsup: ^7.1.0
+    devDependencies:
+      clean-package: 2.2.0
+      tsup: 7.1.0
+
   packages/raikou/system:
     specifiers:
       '@raikou/hooks': workspace:*
@@ -2486,15 +2546,19 @@ importers:
       '@types/react': ^18.2.0
       '@types/react-dom': ^18.2.0
       next-themes: ^0.2.1
-      tslib: ^2.5.2
+      tslib: ^2.6.0
       tsup: ^7.1.0
       type-fest: ^4.0.0
       typescript: ^5.1.6
+      valtio: ^1.11.1
+      zustand: ^4.4.0
     dependencies:
       '@raikou/hooks': link:../hooks
       next-themes: 0.2.1_hyjx7svporfhadhuakm5xolhha
       tslib: 2.6.0
       type-fest: 4.0.0
+      valtio: 1.11.1_react@18.2.0
+      zustand: 4.4.0_3pi6y6cylzraaxxtldk4o6b3zi
     devDependencies:
       '@types/node': 20.3.3
       '@types/react': 18.2.5
@@ -7109,6 +7173,12 @@ packages:
     dependencies:
       '@types/react': 18.2.5
 
+  /@types/react-transition-group/4.4.6:
+    resolution: {integrity: sha512-VnCdSxfcm08KjsJVQcfBmhEQAPnLB8G08hAxn39azX1qYBQ/5RVQuoHuKIcfKOdncuaUvEpFKFzEvbtIMsfVew==}
+    dependencies:
+      '@types/react': 18.2.17
+    dev: true
+
   /@types/react/18.2.17:
     resolution: {integrity: sha512-u+e7OlgPPh+aryjOm5UJMX32OvB2E3QASOAqVMY6Ahs90djagxwv2ya0IctglNbNTexC12qCSMZG47KPfy1hAA==}
     dependencies:
@@ -9406,6 +9476,13 @@ packages:
   /dom-accessibility-api/0.5.16:
     resolution: {integrity: sha512-X7BJ2yElsnOJ30pZF4uIIDfBEVgF4XEBxL9Bxhy6dnrm5hkzqmsWHGTiHqRiITNhMyFLyAiWndIJP7Z1NTteDg==}
     dev: true
+
+  /dom-helpers/5.2.1:
+    resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
+    dependencies:
+      '@babel/runtime': 7.21.5
+      csstype: 3.1.2
+    dev: false
 
   /domexception/4.0.0:
     resolution: {integrity: sha512-A2is4PLG+eeSfoTMA95/s4pvAoSo2mKtiM5jlHkAVewmiO8ISFTFKZjH7UAM1Atli/OT/7JHOrJRJiMKUZKYBw==}
@@ -12871,6 +12948,7 @@ packages:
 
   /loose-envify/1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
+    hasBin: true
     dependencies:
       js-tokens: 4.0.0
 
@@ -14189,6 +14267,10 @@ packages:
       ipaddr.js: 1.9.1
     dev: true
 
+  /proxy-compare/2.5.1:
+    resolution: {integrity: sha512-oyfc0Tx87Cpwva5ZXezSp5V9vht1c7dZBhvuV/y3ctkgMVUmiAGDVeeB0dKhGSyT0v1ZTEQYpe/RXlBVBNuCLA==}
+    dev: false
+
   /proxy-from-env/1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
     dev: true
@@ -14486,6 +14568,20 @@ packages:
       use-latest: 1.2.1_3pi6y6cylzraaxxtldk4o6b3zi
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
+
+  /react-transition-group/4.4.5_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
+    peerDependencies:
+      react: '>=16.6.0'
+      react-dom: '>=16.6.0'
+    dependencies:
+      '@babel/runtime': 7.21.5
+      dom-helpers: 5.2.1
+      loose-envify: 1.4.0
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react-virtuoso/4.4.1_biqbaboplfbrettd7655fr4n2y:
@@ -16065,6 +16161,41 @@ packages:
   /tslib/2.6.0:
     resolution: {integrity: sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA==}
 
+  /tsup/7.1.0:
+    resolution: {integrity: sha512-mazl/GRAk70j8S43/AbSYXGgvRP54oQeX8Un4iZxzATHt0roW0t6HYDVZIXMw0ZQIpvr1nFMniIVnN5186lW7w==}
+    engines: {node: '>=16.14'}
+    hasBin: true
+    peerDependencies:
+      '@swc/core': ^1
+      postcss: ^8.4.12
+      typescript: '>=4.1.0'
+    peerDependenciesMeta:
+      '@swc/core':
+        optional: true
+      postcss:
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      bundle-require: 4.0.1_esbuild@0.18.11
+      cac: 6.7.14
+      chokidar: 3.5.3
+      debug: 4.3.4
+      esbuild: 0.18.11
+      execa: 5.1.1
+      globby: 11.1.0
+      joycon: 3.1.1
+      postcss-load-config: 4.0.1
+      resolve-from: 5.0.0
+      rollup: 3.26.0
+      source-map: 0.8.0-beta.0
+      sucrase: 3.32.0
+      tree-kill: 1.2.2
+    transitivePeerDependencies:
+      - supports-color
+      - ts-node
+    dev: true
+
   /tsup/7.1.0_rzq3jdc7vbankz33o426riyx7q:
     resolution: {integrity: sha512-mazl/GRAk70j8S43/AbSYXGgvRP54oQeX8Un4iZxzATHt0roW0t6HYDVZIXMw0ZQIpvr1nFMniIVnN5186lW7w==}
     engines: {node: '>=16.14'}
@@ -16566,12 +16697,6 @@ packages:
       tslib: 2.6.0
     dev: false
 
-  /use-sync-external-store/1.2.0:
-    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dev: false
-
   /use-sync-external-store/1.2.0_react@18.2.0:
     resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
     peerDependencies:
@@ -16639,6 +16764,20 @@ packages:
     dependencies:
       builtins: 5.0.1
     dev: true
+
+  /valtio/1.11.1_react@18.2.0:
+    resolution: {integrity: sha512-sTKWY1e1AVUu4sY9CimoSZpufAsAXO+fzZrw0X5xtijEmDDQaPPLHZxlpONUpTLtvxPjpQURCSdUuUyBszoEOg==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      react: '>=16.8'
+    peerDependenciesMeta:
+      react:
+        optional: true
+    dependencies:
+      proxy-compare: 2.5.1
+      react: 18.2.0
+      use-sync-external-store: 1.2.0_react@18.2.0
+    dev: false
 
   /vary/1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
@@ -17143,23 +17282,4 @@ packages:
       '@types/react': 18.2.5
       react: 18.2.0
       use-sync-external-store: 1.2.0_react@18.2.0
-    dev: false
-
-  /zustand/4.4.0_@types+react@18.2.5:
-    resolution: {integrity: sha512-2dq6wq4dSxbiPTamGar0NlIG/av0wpyWZJGeQYtUOLegIUvhM2Bf86ekPlmgpUtS5uR7HyetSiktYrGsdsyZgQ==}
-    engines: {node: '>=12.7.0'}
-    peerDependencies:
-      '@types/react': '>=16.8'
-      immer: '>=9.0'
-      react: '>=16.8'
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      immer:
-        optional: true
-      react:
-        optional: true
-    dependencies:
-      '@types/react': 18.2.5
-      use-sync-external-store: 1.2.0
     dev: false

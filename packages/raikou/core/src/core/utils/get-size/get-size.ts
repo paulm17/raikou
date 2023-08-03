@@ -4,7 +4,7 @@ import { rem } from "../units-converters";
 export function getSize(
   size: unknown,
   prefix = "size",
-  convertToRem = true
+  convertToRem = true,
 ): string {
   return isNumberLike(size)
     ? convertToRem

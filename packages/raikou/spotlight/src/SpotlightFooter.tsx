@@ -1,0 +1,45 @@
+import React from "react";
+import {
+  Box,
+  BoxProps,
+  StylesApiProps,
+  factory,
+  ElementProps,
+  useProps,
+  Factory,
+} from "@raikou/core";
+import { useSpotlightContext } from "./Spotlight.context";
+
+export type SpotlightFooterStylesNames = "footer";
+
+export interface SpotlightFooterProps
+  extends BoxProps,
+    StylesApiProps<SpotlightFooterFactory>,
+    ElementProps<"div"> {}
+
+export type SpotlightFooterFactory = Factory<{
+  props: SpotlightFooterProps;
+  ref: HTMLDivElement;
+  stylesNames: SpotlightFooterStylesNames;
+  compound: true;
+}>;
+
+const defaultProps: Partial<SpotlightFooterProps> = {};
+
+export const SpotlightFooter = factory<SpotlightFooterFactory>((props, ref) => {
+  const { className, style, classNames, styles, ...others } = useProps(
+    "SpotlightFooter",
+    defaultProps,
+    props,
+  );
+  const ctx = useSpotlightContext();
+  return (
+    <Box
+      ref={ref}
+      {...ctx.getStyles("footer", { className, classNames, style, styles })}
+      {...others}
+    />
+  );
+});
+
+SpotlightFooter.displayName = "@raikou/spotlight/SpotlightFooter";

@@ -1,0 +1,12 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@raikou/core": ["../core/src"],
+      "@raikou/hooks": ["../hooks/src"],
+      "@raikou/store": ["../store/src"],
+      "@raikou/tests": ["../tests/src"]
+    }
+  },
+  "include": ["src", "index.ts"]
+}

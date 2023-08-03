@@ -92,7 +92,7 @@ export const Modal = factory<ModalFactory>((_props, ref) => {
   return (
     <ModalRoot ref={ref} {...others}>
       {withOverlay && <ModalOverlay {...overlayProps} />}
-      <ModalContent radius="radius">
+      <ModalContent radius={radius}>
         {hasHeader && (
           <ModalHeader>
             {title && <ModalTitle>{title}</ModalTitle>}

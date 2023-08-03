@@ -29,35 +29,6 @@ const loadConfig = () => {
   return tailwindConfig;
 };
 
-// export function useRaikouTheme() {
-//   if (typeof window !== "undefined") {
-//     // Client
-//     const windowTheme = (window as any)["raikou_theme"];
-//     const theme = mergeRaikouTheme(DEFAULT_THEME, windowTheme);
-//     theme.variantColorResolver = defaultVariantColorsResolver;
-
-//     return theme;
-//   } else {
-//     // Server
-//     try {
-//       const tailwindConfig = loadConfig();
-//       const resolveConfig = require("tailwindcss/resolveConfig");
-//       const fullConfig = resolveConfig(tailwindConfig);
-//       const theme = mergeRaikouTheme(DEFAULT_THEME, fullConfig.theme.custom);
-
-//       theme.variantColorResolver = defaultVariantColorsResolver;
-
-//       return theme; // Return the theme if you need it for something
-//     } catch (error) {
-//       console.error("error", error);
-//     }
-//   }
-
-//   console.log("warning - using default theme, should not happen");
-
-//   return DEFAULT_THEME;
-// }
-
 export function useRaikouTheme() {
   if (typeof window !== "undefined") {
     // Client

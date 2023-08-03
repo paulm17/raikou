@@ -1,4 +1,4 @@
-import { RaikouProvider } from "@raikou/system";
+import { RaikouProvider, DirectionProvider } from "@raikou/system";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "../tailwind.config.js";
 import "../global.css";
@@ -11,14 +11,16 @@ export default function RootLayout({
   const fullConfig = resolveConfig(tailwindConfig);
 
   return (
-    <html lang="en">
+    <html lang="en" dir="ltr">
       <body>
-        <RaikouProvider
-          theme={(fullConfig.theme as any).custom}
-          defaultColorScheme="dark"
-        >
-          <body>{children}</body>
-        </RaikouProvider>
+        <DirectionProvider>
+          <RaikouProvider
+            theme={(fullConfig.theme as any).custom}
+            defaultColorScheme="dark"
+          >
+            <body>{children}</body>
+          </RaikouProvider>
+        </DirectionProvider>
       </body>
     </html>
   );

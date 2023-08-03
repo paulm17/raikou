@@ -2226,7 +2226,7 @@ var Modal = factory10((_props, ref) => {
     "radius"
   ]);
   const hasHeader = !!title || withCloseButton;
-  return /* @__PURE__ */ React39.createElement(ModalRoot, __spreadValues({ ref }, others), withOverlay && /* @__PURE__ */ React39.createElement(ModalOverlay, __spreadValues({}, overlayProps)), /* @__PURE__ */ React39.createElement(ModalContent, { radius: "radius" }, hasHeader && /* @__PURE__ */ React39.createElement(ModalHeader, null, title && /* @__PURE__ */ React39.createElement(ModalTitle, null, title), withCloseButton && /* @__PURE__ */ React39.createElement(ModalCloseButton, __spreadValues({}, closeButtonProps))), /* @__PURE__ */ React39.createElement(ModalBody, null, children)));
+  return /* @__PURE__ */ React39.createElement(ModalRoot, __spreadValues({ ref }, others), withOverlay && /* @__PURE__ */ React39.createElement(ModalOverlay, __spreadValues({}, overlayProps)), /* @__PURE__ */ React39.createElement(ModalContent, { radius }, hasHeader && /* @__PURE__ */ React39.createElement(ModalHeader, null, title && /* @__PURE__ */ React39.createElement(ModalTitle, null, title), withCloseButton && /* @__PURE__ */ React39.createElement(ModalCloseButton, __spreadValues({}, closeButtonProps))), /* @__PURE__ */ React39.createElement(ModalBody, null, children)));
 });
 Modal.displayName = "@raikou/core/Modal";
 Modal.Root = ModalRoot;

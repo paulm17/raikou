@@ -3,7 +3,10 @@ module.exports = {
   corePlugins: {
     preflight: true,
   },
-  content: ["../../packages/raikou/components/**/*.tsx"],
+  content: [
+    "../../packages/raikou/components/**/*.tsx",
+    "../../packages/raikou/{notifications,spotlight}/**/*.tsx",
+  ],
   theme: {
     extend: {},
   },

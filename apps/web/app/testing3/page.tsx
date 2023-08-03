@@ -1,3 +1,4 @@
+"use client";
 import { Box, Card, Text, Badge, Button, Group, Image } from "@raikou/server";
 
 function Testing3() {
