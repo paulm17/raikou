@@ -24,7 +24,7 @@
     "prepack": "clean-package",
     "postpack": "clean-package restore"
   },
-  "clean-package": "../../../../clean-package.config.json",
+  "clean-package": "../../../clean-package.config.json",
   "peerDependencies": {
     "@raikou/core": ">=0.0.1-alpha.1",
     "@raikou/hooks": ">=0.0.1-alpha.1",
