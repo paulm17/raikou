@@ -687,6 +687,7 @@ var DEFAULT_COLORS = {
 // src/core/RaikouProvider/default-theme.ts
 var DEFAULT_FONT_FAMILY = "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji";
 var DEFAULT_THEME = {
+  colorScheme: "light",
   scale: 1,
   fontSmoothing: true,
   focusRing: "auto",
@@ -1079,7 +1080,8 @@ function RaikouProvider({
       storageKey: themeStorageKey,
       themes: allThemeNames,
       attribute: "data-raikou-color-scheme",
-      enableColorScheme: false
+      enableColorScheme: false,
+      forcedTheme: (theme == null ? void 0 : theme.colorScheme) ? theme.colorScheme : void 0
     },
     withCssVariables && /* @__PURE__ */ React3.createElement(
       RaikouCssVariables,

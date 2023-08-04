@@ -152,7 +152,7 @@ export default function Page() {
             <button type="button">Third</button>
           </Flex>
           <Title order={3}>Container</Title>
-          <Container size="xxs" h={50} bg="blue">
+          <Container size="xxs" h={50}>
             Container
           </Container>
           <Title order={3}>Paper</Title>
@@ -189,7 +189,7 @@ export default function Page() {
         </Stack>
         <Stack>
           <Title order={3}>Center</Title>
-          <Center maw={400} h={100} bg="var(--raikou-color-gray-light)">
+          <Center maw={400} h={100} bg="var(--raikou-color-primary)">
             <Box>Should be Center</Box>
           </Center>
           <Title order={3}>Button</Title>
@@ -216,7 +216,6 @@ export default function Page() {
           <ActionIcon
             variant="filled"
             size="xl"
-            color="blue"
             aria-label="Gradient action icon"
           >
             <IconHeart />
@@ -234,9 +233,7 @@ export default function Page() {
           <Title order={3}>Simple Grid</Title>
           <Box style={{ maxWidth: 400 }}>
             <SimpleGrid>
-              <Badge color="blue" mr="xs">
-                Grid 1
-              </Badge>
+              <Badge mr="xs">Grid 1</Badge>
               <Badge color="red" mr="xs">
                 Grid 2
               </Badge>

@@ -3425,6 +3425,7 @@ declare function lighten(color: string, alpha: number): string;
 declare function isLightColor(color: string, luminanceThreshold?: number): boolean;
 
 interface RaikouTheme {
+    colorScheme: "light" | "dark";
     /** Controls focus ring styles. Supports the following options:
      *  - `auto` – focus ring is displayed only when the user navigates with keyboard (default value)
      *  - `always` – focus ring is displayed when the user navigates with keyboard and mouse

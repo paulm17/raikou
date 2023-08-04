@@ -79,9 +79,16 @@ module.exports = {
   ],
   theme: {
     extend: {
-      custom: {},
+      custom: {
+        colorScheme: "light",
+      },
     },
   },
   presets: [require("@raikou/system/plugin.js")],
-  plugins: [],
+  plugins: [
+    // require("@tailwindcss/typography"),
+    require("./tailwind/plugin/multi-theme-plugin")({
+      themes: require("./app/themer/themes.js"),
+    }),
+  ],
 };

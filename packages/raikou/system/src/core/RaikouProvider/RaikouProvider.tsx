@@ -66,6 +66,7 @@ export function RaikouProvider({
       themes={allThemeNames}
       attribute="data-raikou-color-scheme"
       enableColorScheme={false}
+      forcedTheme={theme?.colorScheme ? theme.colorScheme : undefined}
     >
       {withCssVariables && (
         <RaikouCssVariables

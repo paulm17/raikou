@@ -146,11 +146,17 @@ To get a local copy up and running follow these simple example steps.
 
 Change appPath to where the tsx files for your project reside.
 
-6. Change the postcss.config.js to include the following:
+6. Change the postcss.config.js to:
 
    ```js
-   'postcss-preset-raikou': {},
-   'tailwindcss/nesting': {},
+   module.exports = {
+     plugins: {
+       "postcss-preset-raikou": {},
+       "tailwindcss/nesting": {},
+       tailwindcss: {},
+       autoprefixer: {},
+     },
+   };
    ```
 
 7. Change the css file that exists in layout.tsx to:
