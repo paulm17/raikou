@@ -73,7 +73,7 @@ module.exports = {
     require("../../dates/src/components/Month/Month.plugin"),
     require("../../dropzone/src/Dropzone.plugin"),
     require("../../notifications/src/Notifications.plugin"),
-    require("../../nProgress/src/NavigationProgress.plugin"),
+    require("../../nprogress/src/NavigationProgress.plugin"),
     require("../../spotlight/src/Spotlight.plugin"),
   ],
 };
