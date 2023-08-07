@@ -54,6 +54,7 @@ __reExport(src_exports, require("@raikou/stack"), module.exports);
 __reExport(src_exports, require("@raikou/table"), module.exports);
 __reExport(src_exports, require("@raikou/text"), module.exports);
 __reExport(src_exports, require("@raikou/title"), module.exports);
+__reExport(src_exports, require("@raikou/theme-icon"), module.exports);
 __reExport(src_exports, require("@raikou/unstyled-button"), module.exports);
 __reExport(src_exports, require("@raikou/visually-hidden"), module.exports);
 // Annotate the CommonJS export names for ESM import in node:
@@ -95,6 +96,7 @@ __reExport(src_exports, require("@raikou/visually-hidden"), module.exports);
   ...require("@raikou/table"),
   ...require("@raikou/text"),
   ...require("@raikou/title"),
+  ...require("@raikou/theme-icon"),
   ...require("@raikou/unstyled-button"),
   ...require("@raikou/visually-hidden")
 });

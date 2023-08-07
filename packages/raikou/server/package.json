@@ -66,6 +66,7 @@
     "@raikou/stack": "workspace:*",
     "@raikou/table": "workspace:*",
     "@raikou/text": "workspace:*",
+    "@raikou/theme-icon": "workspace:*",
     "@raikou/title": "workspace:*",
     "@raikou/unstyled-button": "workspace:*",
     "@raikou/visually-hidden": "workspace:*",

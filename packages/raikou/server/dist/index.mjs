@@ -36,5 +36,6 @@ export * from "@raikou/stack";
 export * from "@raikou/table";
 export * from "@raikou/text";
 export * from "@raikou/title";
+export * from "@raikou/theme-icon";
 export * from "@raikou/unstyled-button";
 export * from "@raikou/visually-hidden";
