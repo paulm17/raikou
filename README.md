@@ -6,7 +6,7 @@
   </a>
   <h3 align="center">RAIKOU</h3>
   <p align="center">
-    Raikou is a mantine fork which replaces css modules to use tailwind.
+    Raikou is a raikou fork which replaces css modules to use tailwind.
     <br />
     <a href="https://github.com/paulm17/raikou/issues">Report Bug</a>
     ·
@@ -18,8 +18,8 @@
 
 ## About The Project
 
-Mantine 6 with CSS-in-JS allowed for styles to be adjacent to the component it
-was styling. However with Mantine 7 styling has switched to CSS Modules. Many in
+Raikou 6 with CSS-in-JS allowed for styles to be adjacent to the component it
+was styling. However with Raikou 7 styling has switched to CSS Modules. Many in
 the industry see CSS Modules as a step backwards and I (the fork author) share
 this sentiment. Therefore forking the project to support tailwind was the
 obvious choice.
@@ -46,14 +46,14 @@ The project was conceived with these 4 long-term goals:
 1.  Remix, Svelte, Solid, Astro, Qwik and any other javascript frameworks are
     not supported. There are no intentions of supporting anything other than
     NextJS.
-2.  There may be design decisions implemented that will diverge from Mantine.
+2.  There may be design decisions implemented that will diverge from Raikou.
 
     - Styles API layer may disappear because it has been superseded by the
       Classes API and Styles API is
       <a href="https://v7.mantine.dev/styles/styles-performance#inline-styles">very
       slow</a>.
-    - Mantine and Raikou employ different approaches to manage the theme. While
-      Mantine uses context to maintain the theme, Raikou utilizes a global
+    - Raikou and Raikou employ different approaches to manage the theme. While
+      Raikou uses context to maintain the theme, Raikou utilizes a global
       Zustand state for both server and client-side theme storage.
 
       On the server side, Raikou loads the theme from the tailwind config when
@@ -88,7 +88,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Installation to a NextJS 13 application
 
-1. Install the required packages. Same as Mantine.
+1. Install the required packages. Same as Raikou.
 
 - npm
   ```sh
@@ -231,7 +231,7 @@ stack, \*table, text, title, unstyled-button, visually-hidden.
 
 ### Changes to components
 
-The following components have been altered from the original mantine spec:
+The following components have been altered from the original raikou spec:
 
 1. App Shell
 
@@ -276,16 +276,16 @@ return <Badge>Hello</Badge>;
 And the page will include all the neccessary client payload for the Badge and
 the page.
 
-## Server Components - Raikou vs Mantine
+## Server Components - Raikou vs Raikou
 
 Here is an example of all the server components on a page (with Raikou using
 "use client").
 
 <img src="./images/serverComponents.png" alt="Server Components picture">
 
-##### Some stats for raikou vs mantine:
+##### Some stats for raikou vs raikou:
 
-- 12 requests each (remove favicon from mantine)
+- 12 requests each (remove favicon from raikou)
 - 1.8MB transferred vs 2.6MB transferred
 - 7.8MB resources vs 12.4MB resources
 - Finished 3.81s vs 5.51s
@@ -294,11 +294,11 @@ Here is an example of all the server components on a page (with Raikou using
 
 Stats are taken from the very first initial load.
 
-##### Network tabs (Raikou vs Mantine)
+##### Network tabs (Raikou vs Raikou)
 
 <p float="left">
   <img src="./images/raikou.png" width="200" alt="Raikou Network Tab">
-  <img src="./images/mantine.png" width="200" alt="Raikou Network Tab">
+  <img src="./images/raikou.png" width="200" alt="Raikou Network Tab">
 </p>
 
 ##### Raikou server vs client
@@ -316,7 +316,7 @@ When omitting "use client" this results in Page.js not being requested.
 - [x] Tree-shaking for client build
 - [x] Replace the context provider that components use for state, with the
       tailwind theme
-- [x] Replace Mantine ColorScheme code with Next-Themes
+- [x] Replace Raikou ColorScheme code with Next-Themes
 - [ ] Upgrade tailwind to the new release supporting LightningCSS
 - [ ] With the new tailwind release, migrate the postcss script to a
       LightningCSS transformer. Investigate a Rust port.
@@ -377,7 +377,7 @@ Project Link:
 
 ## Acknowledgments
 
-Vitaly and the Mantine community.
+Vitaly and the Raikou community.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

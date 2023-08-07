@@ -5,7 +5,7 @@ module.exports = {
   },
   content: [
     "../../packages/raikou/components/**/*.tsx",
-    "../../packages/raikou/{notifications,spotlight}/**/*.tsx",
+    "../../packages/raikou/{carousel,dates,dropzone,notifications,nprogress,spotlight}/**/*.tsx",
   ],
   theme: {
     extend: {},

@@ -11,12 +11,12 @@ export default function RootLayout({
   const fullConfig = resolveConfig(tailwindConfig);
 
   return (
-    <html lang="en" dir="ltr">
+    <html lang="en" dir="ltr" data-raikou-theme="default">
       <body>
         <DirectionProvider>
           <RaikouProvider
             theme={(fullConfig.theme as any).custom}
-            defaultColorScheme="dark"
+            defaultColorScheme="light"
           >
             <body>{children}</body>
           </RaikouProvider>

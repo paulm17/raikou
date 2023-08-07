@@ -94,7 +94,7 @@ export default function Page() {
           <Title order={3}>Badge</Title>
           <Badge>Unstyled badge 1</Badge>
           <Title order={3}>Blockquote</Title>
-          <Blockquote color="blue" cite="– Forrest Gump" icon={icon} mt="xl">
+          <Blockquote cite="– Forrest Gump" icon={icon} mt="xl">
             Life is like an npm install – you never know what you are going to
             get.
           </Blockquote>
@@ -107,7 +107,7 @@ export default function Page() {
           <Title order={3}>Code</Title>
           <Box style={{ padding: 40 }}>
             <Code>Some code</Code>
-            <Code color="blue.4">Code with color</Code>
+            <Code>Code with color</Code>
           </Box>
           <Title order={3}>Group</Title>
           <Group grow>
@@ -127,7 +127,7 @@ export default function Page() {
           </Box>
           <Title order={3}>Mark</Title>
           <Box>
-            <Mark color="orange.9">Theme color mark</Mark>
+            <Mark>Theme color mark</Mark>
           </Box>
           <Title order={3}>Boxider</Title>
           <Box style={{ padding: 40 }}>
@@ -234,12 +234,8 @@ export default function Page() {
           <Box style={{ maxWidth: 400 }}>
             <SimpleGrid>
               <Badge mr="xs">Grid 1</Badge>
-              <Badge color="red" mr="xs">
-                Grid 2
-              </Badge>
-              <Badge color="orange" mr="xs">
-                Grid 3
-              </Badge>
+              <Badge mr="xs">Grid 2</Badge>
+              <Badge mr="xs">Grid 3</Badge>
             </SimpleGrid>
           </Box>
           <Title order={3}>Space</Title>
@@ -254,7 +250,6 @@ export default function Page() {
           <div className="w-[400px]">
             <Alert
               variant="light"
-              color="blue"
               withCloseButton
               title="Alert title"
               icon={icon}

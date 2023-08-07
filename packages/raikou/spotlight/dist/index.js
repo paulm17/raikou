@@ -4629,7 +4629,7 @@ var SpotlightRoot = (0, import_core47.factory)((_props, ref) => {
     )
   );
 });
-SpotlightRoot.displayName = "@mantine/spotlight/SpotlightRoot";
+SpotlightRoot.displayName = "@raikou/spotlight/SpotlightRoot";
 
 // src/default-spotlight-filter.ts
 function getKeywords(keywords) {

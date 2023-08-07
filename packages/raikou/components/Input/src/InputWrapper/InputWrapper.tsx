@@ -218,7 +218,9 @@ export const InputWrapper = factory<InputWrapperFactory>((_props, ref) => {
   );
 
   const _input = (
-    <React.Fragment key="input">{inputContainer!(children)}</React.Fragment>
+    <React.Fragment key="input">
+      {inputContainer!(children as any)}
+    </React.Fragment>
   );
 
   const _error = hasError && (

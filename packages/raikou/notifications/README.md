@@ -4,7 +4,7 @@
 
 Notifications system
 
-[View documentation](https://raikou.dev/)
+[View documentation](https://mantine.dev/)
 
 ## Installation
 

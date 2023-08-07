@@ -80,15 +80,15 @@ module.exports = {
   theme: {
     extend: {
       custom: {
-        colorScheme: "light",
+        primaryColor: "lime",
       },
     },
   },
   presets: [require("@raikou/system/plugin.js")],
   plugins: [
     // require("@tailwindcss/typography"),
-    require("./tailwind/plugin/multi-theme-plugin")({
-      themes: require("./app/themer/themes.js"),
-    }),
+    // require("./tailwind/plugin/multi-theme-plugin")({
+    //   themes: require("./app/themer/themes.js"),
+    // }),
   ],
 };

@@ -1,7 +1,7 @@
 import * as react from 'react';
 import react__default, { EffectCallback, DependencyList, useEffect, Ref } from 'react';
 
-declare function clamp(value: number, min: number, max: number): number;
+declare function clamp(value: number, min: number | undefined, max: number | undefined): number;
 
 declare function lowerFirst(value: string): string;
 

@@ -60,7 +60,10 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
-  ColorPicker: () => ColorPicker
+  ColorPicker: () => ColorPicker,
+  convertHsvaTo: () => convertHsvaTo,
+  isColorValid: () => isColorValid,
+  parseColor: () => parseColor
 });
 module.exports = __toCommonJS(src_exports);
 
@@ -970,5 +973,8 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
 ColorPicker.displayName = "@raikou/core/ColorPicker";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  ColorPicker
+  ColorPicker,
+  convertHsvaTo,
+  isColorValid,
+  parseColor
 });

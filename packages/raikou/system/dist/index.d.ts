@@ -3617,12 +3617,10 @@ interface RaikouProviderProps {
     cssVariablesResolver?: CSSVariablesResolver;
     /** Store theme in local storage */
     themeStorageKey?: string;
-    /** All the available themes */
-    themeNames?: string[];
     /** Your application */
     children?: React$2.ReactNode;
 }
-declare function RaikouProvider({ theme, children, getStyleNonce, withCssVariables, cssVariablesSelector, cssVariablesResolver, themeStorageKey, themeNames, }: RaikouProviderProps): JSX.Element;
+declare function RaikouProvider({ theme, defaultColorScheme, cssVariablesSelector, withCssVariables, getStyleNonce, cssVariablesResolver, themeStorageKey, children, }: RaikouProviderProps): JSX.Element;
 
 type Direction = "ltr" | "rtl";
 interface DirectionContextValue {

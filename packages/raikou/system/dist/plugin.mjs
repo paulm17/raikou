@@ -1729,12 +1729,15 @@ var require_Chip_plugin = __commonJS({
 var require_Code_plugin = __commonJS({
   "../components/Code/src/Code.plugin.ts"(exports, module) {
     "use strict";
+    init_src();
     module.exports = function({ addComponents, theme }) {
       addComponents({
         ".code-root": {
           fontFamily: "var(--raikou-font-family-monospace)",
           lineHeight: "var(--raikou-line-height)",
-          padding: "var(--_code-padding, rem(2px) calc(var(--raikou-spacing-xs) / 2))",
+          padding: `var(--_code-padding, ${rem(
+            "2px"
+          )} calc(var(--raikou-spacing-xs) / 2))`,
           borderRadius: "var(--raikou-radius-sm)",
           fontSize: "var(--raikou-font-size-xs)",
           backgroundColor: "var(--_code-bg)",
@@ -1752,6 +1755,32 @@ var require_Code_plugin = __commonJS({
           "&[data-block]": {
             "--_code-padding": "var(--raikou-spacing-xs)"
           }
+        }
+      });
+    };
+  }
+});
+
+// ../components/ColorInput/src/ColorInput.plugin.ts
+var require_ColorInput_plugin = __commonJS({
+  "../components/ColorInput/src/ColorInput.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".colorInput-eyeDropperIcon": {
+          "--ci-eye-dropper-icon-size-xs": rem("14px"),
+          "--ci-eye-dropper-icon-size-sm": rem("16px"),
+          "--ci-eye-dropper-icon-size-md": rem("18px"),
+          "--ci-eye-dropper-icon-size-lg": rem("20px"),
+          "--ci-eye-dropper-icon-size-xl": rem("22px")
+        },
+        ".colorInput-colorPreview": {
+          "--ci-preview-size-xs": rem("16px"),
+          "--ci-preview-size-sm": rem("18px"),
+          "--ci-preview-size-md": rem("22px"),
+          "--ci-preview-size-lg": rem("28px"),
+          "--ci-preview-size-xl": rem("36px")
         }
       });
     };
@@ -3005,6 +3034,43 @@ var require_Loader_plugin = __commonJS({
   }
 });
 
+// ../components/LoadingOverlay/src/LoadingOverlay.plugin.ts
+var require_LoadingOverlay_plugin = __commonJS({
+  "../components/LoadingOverlay/src/LoadingOverlay.plugin.ts"(exports, module) {
+    "use strict";
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".loadingOverlay-root": {
+          position: "absolute",
+          inset: "0",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+          zIndex: "var(--lo-z-index)"
+        },
+        ".loadingOverlay-loader": {
+          position: "relative",
+          zIndex: "calc(var(--lo-z-index) + 1)"
+        },
+        ".loadingOverlay-overlay": {
+          zIndex: "var(--lo-z-index)",
+          "&[data-dark]": {
+            '[data-raikou-color-scheme="light"] &': {
+              display: "none"
+            }
+          },
+          "&[data-light]": {
+            '[data-raikou-color-scheme="dark"] &': {
+              display: "none"
+            }
+          }
+        }
+      });
+    };
+  }
+});
+
 // ../components/Mark/src/Mark.plugin.ts
 var require_Mark_plugin = __commonJS({
   "../components/Mark/src/Mark.plugin.ts"(exports, module) {
@@ -3127,18 +3193,18 @@ var require_Modal_plugin = __commonJS({
           "--modal-size-xl": rem("780px"),
           "&[data-full-screen]": {
             "--modal-border-radius": "0 !important",
-            ".content": {
+            ".modal-content": {
               "--_content-flex": "0 0 100%",
               "--_content-max-height": "auto",
               "--_content-height": "100dvh"
             },
-            ".inner": {
+            ".modal-inner": {
               "--_inner-y-offset": "0",
               "--_inner-x-offset": "0"
             }
           },
           "&[data-centered]": {
-            ".inner": {
+            ".modal-inner": {
               "--_inner-align": "center"
             }
           }
@@ -3203,7 +3269,7 @@ var require_ModalBase_plugin = __commonJS({
           width: "100%",
           top: "0",
           bottom: "0",
-          zIndex: "calc(var(--mb-z-index) + 1)",
+          zIndex: "var(--mb-z-index)",
           pointerEvents: "none"
         },
         ".modalBase-content": {
@@ -3366,6 +3432,95 @@ var require_Notification_plugin = __commonJS({
           },
           '[data-raikou-color-scheme="dark"] &': {
             "--_close-button-hover-bg": "var(--raikou-color-dark-8)"
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../components/NumberInput/src/NumberInput.plugin.ts
+var require_NumberInput_plugin = __commonJS({
+  "../components/NumberInput/src/NumberInput.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".numberInput-controls": {
+          "--ni-chevron-size-xs": rem("10px"),
+          "--ni-chevron-size-sm": rem("14px"),
+          "--ni-chevron-size-md": rem("16px"),
+          "--ni-chevron-size-lg": rem("18px"),
+          "--ni-chevron-size-xl": rem("20px"),
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+          height: `calc(var(--input-height) - rem(2px))`,
+          maxWidth: "calc(var(--ni-chevron-size) * 1.7)",
+          marginLeft: "var(--_controls-ml, auto)",
+          marginRight: "var(--_controls-mr, 0)",
+          '[dir="rtl"] &': {
+            "--_controls-ml": "0",
+            "--_controls-mr": "auto"
+          }
+        },
+        ".numberInput-control": {
+          "--_control-bd": `rem(1px) solid var(--_input-bd)`,
+          "--_control-radius": `calc(var(--input-radius) - rem(1px))`,
+          flex: "0 0 50%",
+          width: "100%",
+          padding: "0",
+          height: `calc(var(--input-height) / 2 - rem(1px))`,
+          borderLeft: "var(--_control-bdl, var(--_control-bd))",
+          borderRight: "var(--_control-bdr, none)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "var(--raikou-color-text)",
+          backgroundColor: "var(--_control-bg, transparent)",
+          pointerEvents: "var(--_control-pointer-events, auto)",
+          opacity: "var(--_control-opacity, 1)",
+          "&:disabled": {
+            "--_control-pointer-events": "none",
+            "--_control-opacity": "0.4"
+          },
+          '[dir="rtl"] &': {
+            "--_control-bdl": "none",
+            "--_control-bdr": "var(--_control-bd)"
+          },
+          "@media (hover: hover)": {
+            "&:hover": {
+              '[data-raikou-color-scheme="light"] &': {
+                "--_control-bg": "var(--raikou-color-gray-0)"
+              },
+              '[data-raikou-color-scheme="dark"] &': {
+                "--_control-bg": "var(--raikou-color-dark-4)"
+              }
+            }
+          },
+          "@media (hover: none)": {
+            "&:active": {
+              '[data-raikou-color-scheme="light"] &': {
+                "--_control-bg": "var(--raikou-color-gray-0)"
+              },
+              '[data-raikou-color-scheme="dark"] &': {
+                "--_control-bg": "var(--raikou-color-dark-4)"
+              }
+            }
+          },
+          "&:first-of-type": {
+            borderBottom: `rem(0.5px) solid var(--_input-bd)`,
+            borderRadius: "0 var(--_control-radius) 0 0",
+            '[dir="rtl"] &': {
+              borderRadius: "var(--_control-radius) 0 0 0"
+            }
+          },
+          "&:last-of-type": {
+            borderTop: `rem(0.5px) solid var(--_input-bd)`,
+            borderRadius: "0 0 var(--_control-radius) 0",
+            '[dir="rtl"] &': {
+              borderRadius: "0 0 0 var(--_control-radius)"
+            }
           }
         }
       });
@@ -4671,6 +4826,230 @@ var require_Stack_plugin = __commonJS({
   }
 });
 
+// ../components/Stepper/src/Stepper.plugin.ts
+var require_Stepper_plugin = __commonJS({
+  "../components/Stepper/src/Stepper.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".stepper-root": {
+          "--stepper-icon-size-xs": rem("34px"),
+          "--stepper-icon-size-sm": rem("36px"),
+          "--stepper-icon-size-md": rem("42px"),
+          "--stepper-icon-size-lg": rem("48px"),
+          "--stepper-icon-size-xl": rem("52px")
+        },
+        ".stepper-steps": {
+          display: "flex",
+          flexWrap: "var(--_steps-wrap, nowrap)",
+          gap: "var(--_steps-gap)",
+          alignItems: "var(--_steps-align-items, center)",
+          flexDirection: "var(--_steps-direction)",
+          "&[data-wrap]": {
+            "--_steps-wrap": "wrap",
+            "--_steps-gap": "var(--raikou-spacing-md) 0"
+          },
+          '&[data-orientation="vertical"]': {
+            "--_steps-direction": "column",
+            '&[data-icon-position="left"]': {
+              "--_steps-align-items": "flex-start"
+            },
+            '&[data-icon-position="right"]': {
+              "--_steps-align-items": "flex-end"
+            }
+          },
+          '&[data-orientation="horizontal"]': {
+            "--_steps-direction": "row"
+          }
+        },
+        ".stepper-separator": {
+          "--_separator-offset": "calc(var(--stepper-icon-size) / 2 - rem(1px))",
+          transition: "background-color 150ms ease",
+          flex: "1",
+          height: "var(--_separator-height)",
+          width: "var(--_separator-width)",
+          marginLeft: "var(--_separator-ml)",
+          marginRight: "var(--_separator-mr)",
+          marginTop: "var(--_separator-mt)",
+          marginBottom: "var(--_separator-mb)",
+          backgroundColor: "var(--_separator-bg)",
+          '[data-raikou-color-scheme="light"] &': {
+            "--_separator-bg": "var(--raikou-color-gray-2)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_separator-bg": "var(--raikou-color-dark-2)"
+          },
+          "&[data-active]": {
+            "--_separator-bg": "var(--stepper-color)"
+          },
+          '&[data-orientation="horizontal"]': {
+            "--_separator-height": rem("2px"),
+            "--_separator-ml": "var(--raikou-spacing-md)",
+            "--_separator-mr": "var(--raikou-spacing-md)"
+          },
+          '&[data-orientation="vertical"]': {
+            "--_separator-width": rem("2px"),
+            "--_separator-mt": "calc(var(--raikou-spacing-xs) / 2)",
+            "--_separator-mb": `calc(var(--raikou-spacing-xs) - ${rem("2px")})`,
+            '&[data-icon-position="left"]': {
+              "--_separator-ml": "var(--_separator-offset)",
+              "--_separator-mr": "0",
+              '[dir="rtl"] &': {
+                "--_separator-ml": "0",
+                "--_separator-mr": "var(--_separator-offset)"
+              }
+            },
+            '&[data-icon-position="right"]': {
+              "--_separator-ml": "0",
+              "--_separator-mr": "var(--_separator-offset)",
+              '[dir="rtl"] &': {
+                "--_separator-ml": "var(--_separator-offset)",
+                "--_separator-mr": "0"
+              }
+            }
+          }
+        },
+        ".stepper-content": {
+          paddingTop: "var(--stepper-content-padding)"
+        },
+        ".stepper-step": {
+          "--_step-color": "var(--step-color, var(--stepper-color))",
+          display: "flex",
+          flexDirection: "var(--_step-direction)",
+          cursor: "var(--_step-cursor, default)",
+          "&[data-allow-click]": {
+            "--_step-cursor": "pointer"
+          },
+          '&[data-icon-position="left"]': {
+            "--_step-direction": "row"
+          },
+          '&[data-icon-position="right"]': {
+            "--_step-direction": "row-reverse"
+          }
+        },
+        '[data-orientation="horizontal"] .stepper-step': {
+          flexDirection: "var(--_step-direction)",
+          alignItems: "center"
+        },
+        '[data-orientation="vertical"] .stepper-step': {
+          "--_separator-spacing": "calc(var(--raikou-spacing-xs) / 2)",
+          justifyContent: "flex-start",
+          minHeight: "calc(var(--stepper-icon-size) + var(--raikou-spacing-xl) + var(--_separator-spacing))",
+          marginTop: "var(--_step-mt, var(--_separator-spacing))",
+          overflow: "hidden",
+          "&:first-of-type": {
+            "--_step-mt": "0"
+          },
+          "&:last-of-type .stepper-verticalSeparator": {
+            display: "none"
+          }
+        },
+        ".stepper-stepWrapper": {
+          position: "relative"
+        },
+        ".stepper-verticalSeparator": {
+          top: "calc(var(--stepper-icon-size) + var(--_separator-spacing))",
+          left: "calc(var(--stepper-icon-size) / 2)",
+          height: "100vh",
+          position: "absolute",
+          borderLeft: `${rem("2px")} solid var(--_separator-border-color)`,
+          '[data-raikou-color-scheme="light"] &': {
+            "--_separator-border-color": "var(--raikou-color-gray-1)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_separator-border-color": "var(--raikou-color-dark-5)"
+          },
+          "[data-raikou-color-scheme] &[data-active]": {
+            "--_separator-border-color": "var(--stepper-color)"
+          }
+        },
+        ".stepper-stepIcon": {
+          height: "var(--stepper-icon-size)",
+          width: "var(--stepper-icon-size)",
+          minHeight: "var(--stepper-icon-size)",
+          minWidth: "var(--stepper-icon-size)",
+          borderRadius: "var(--stepper-radius)",
+          fontSize: "var(--stepper-fz)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          position: "relative",
+          fontWeight: "bold",
+          transition: "background-color 150ms ease, border-color 150ms ease",
+          backgroundColor: "var(--_step-icon-bg)",
+          border: `${rem("2px")} solid var(--_step-icon-border-color)`,
+          color: "var(--_step-icon-color)",
+          '[data-raikou-color-scheme="light"] &': {
+            "--_step-icon-bg": "var(--raikou-color-gray-1)",
+            "--_step-icon-border-color": "var(--raikou-color-gray-1)",
+            "--_step-icon-color": "var(--raikou-color-gray-7)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_step-icon-bg": "var(--raikou-color-dark-5)",
+            "--_step-icon-border-color": "var(--raikou-color-dark-5)",
+            "--_step-icon-color": "var(--raikou-color-dark-1)"
+          },
+          "[data-raikou-color-scheme] &[data-progress]": {
+            "--_step-icon-border-color": "var(--_step-color)"
+          },
+          "[data-raikou-color-scheme] &[data-completed]": {
+            "--_step-icon-color": "var(--raikou-color-white)",
+            "--_step-icon-bg": "var(--_step-color)",
+            "--_step-icon-border-color": "var(--_step-color)"
+          }
+        },
+        ".stepper-stepCompletedIcon": {
+          position: "absolute",
+          inset: "0",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "var(--raikou-color-white)"
+        },
+        ".stepper-stepBody": {
+          display: "flex",
+          flexDirection: "column",
+          marginLeft: "var(--_step-body-ml)",
+          marginRight: "var(--_step-body-mr)",
+          marginTop: "var(--_step-body-mt)",
+          textAlign: "var(--_step-body-ta)",
+          '&[data-icon-position="left"]': {
+            "--_step-body-ta": "left",
+            "--_step-body-ml": "var(--raikou-spacing-sm)",
+            '[dir="rtl"] &': {
+              "--_step-body-ta": "right",
+              "--_step-body-ml": "0",
+              "--_step-body-mr": "var(--raikou-spacing-sm)"
+            }
+          },
+          '&[data-icon-position="right"]': {
+            "--_step-body-ta": "right",
+            "--_step-body-mr": "var(--raikou-spacing-sm)",
+            '[dir="rtl"] &': {
+              "--_step-body-ta": "left",
+              "--_step-body-ml": "var(--raikou-spacing-sm)",
+              "--_step-body-mr": "0"
+            }
+          }
+        },
+        ".stepper-stepLabel": {
+          fontWeight: "500",
+          fontSize: "var(--stepper-fz)",
+          lineHeight: "1"
+        },
+        ".stepper-stepDescription": {
+          marginTop: "calc(var(--stepper-spacing) / 3)",
+          marginBottom: "calc(var(--stepper-spacing) / 3)",
+          fontSize: "calc(var(--stepper-fz) - rem(2px))",
+          lineHeight: "1",
+          color: "var(--raikou-color-dimmed)"
+        }
+      });
+    };
+  }
+});
+
 // ../components/Switch/src/Switch.plugin.ts
 var require_Switch_plugin = __commonJS({
   "../components/Switch/src/Switch.plugin.ts"(exports, module) {
@@ -5288,6 +5667,39 @@ var require_Text_plugin = __commonJS({
   }
 });
 
+// ../components/ThemeIcon/src/ThemeIcon.plugin.ts
+var require_ThemeIcon_plugin = __commonJS({
+  "../components/ThemeIcon/src/ThemeIcon.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".themeIcon-root": {
+          "--ti-size-xs": rem("18px"),
+          "--ti-size-sm": rem("22px"),
+          "--ti-size-md": rem("28px"),
+          "--ti-size-lg": rem("34px"),
+          "--ti-size-xl": rem("44px"),
+          lineHeight: "1",
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          position: "relative",
+          userSelect: "none",
+          width: "var(--ti-size)",
+          height: "var(--ti-size)",
+          minWidth: "var(--ti-size)",
+          minHeight: "var(--ti-size)",
+          borderRadius: "var(--ti-radius)",
+          background: "var(--_ti-bg, var(--ti-bg))",
+          color: "var(--_ti-color, var(--ti-color))",
+          border: "var(--ti-bd)"
+        }
+      });
+    };
+  }
+});
+
 // ../components/Title/src/Title.plugin.ts
 var require_Title_plugin = __commonJS({
   "../components/Title/src/Title.plugin.ts"(exports, module) {
@@ -5389,6 +5801,416 @@ var require_VisuallyHidden_plugin = __commonJS({
   }
 });
 
+// ../carousel/src/Carousel.plugin.ts
+var require_Carousel_plugin = __commonJS({
+  "../carousel/src/Carousel.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents }) {
+      addComponents({
+        ".carousel-root": {
+          position: "relative"
+        },
+        ".carousel-viewport": {
+          height: "var(--carousel-height, auto)",
+          overflow: "hidden"
+        },
+        ".carousel-container": {
+          display: "flex",
+          flexDirection: "var(--_container-direction, row)",
+          height: "var(--carousel-height, auto)",
+          marginRight: "var(--_container-mr)",
+          marginLeft: "var(--_container-ml)",
+          marginBottom: "var(--_container-mb)",
+          "[data-include-gap-in-size] &": {
+            '&[data-orientation="vertical"]': {
+              "--_container-mb": "calc(var(--carousel-slide-gap) * -1)"
+            },
+            '&[data-orientation="horizontal"]': {
+              "--_container-mr": "calc(var(--carousel-slide-gap) * -1)",
+              '[dir="rtl"] &': {
+                "--_container-ml": "calc(var(--carousel-slide-gap) * -1)",
+                "--_container-mr": "0"
+              }
+            }
+          },
+          '&[data-orientation="vertical"]': {
+            "--_container-direction": "column"
+          }
+        },
+        ".carousel-controls": {
+          position: "absolute",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          zIndex: "1",
+          pointerEvents: "none",
+          flexDirection: "var(--_controls-direction)",
+          left: "var(--_controls-left)",
+          right: "var(--_controls-right)",
+          top: "var(--_controls-top)",
+          bottom: "var(--_controls-bottom)",
+          padding: "var(--_controls-padding)",
+          '.carousel-root[data-orientation="vertical"] &': {
+            "--_controls-left": "calc(50% - var(--carousel-control-size) / 2)",
+            "--_controls-top": "0",
+            "--_controls-bottom": "0",
+            "--_controls-direction": "column",
+            "--_controls-padding": "var(--carousel-controls-offset) 0"
+          },
+          '.carousel-root[data-orientation="horizontal"] &': {
+            "--_controls-left": "0",
+            "--_controls-right": "0",
+            "--_controls-top": "calc(50% - var(--carousel-control-size) / 2)",
+            "--_controls-direction": "row",
+            "--_controls-padding": "0 var(--carousel-controls-offset)"
+          }
+        },
+        ".carousel-control": {
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minWidth: "var(--carousel-control-size)",
+          minHeight: "var(--carousel-control-size)",
+          borderRadius: "var(--carousel-control-size)",
+          pointerEvents: "all",
+          backgroundColor: "var(--raikou-color-white)",
+          color: "var(--raikou-color-black)",
+          boxShadow: "var(--raikou-shadow-md)",
+          opacity: "var(--_control-opacity)",
+          border: `${rem("1px")} solid var(--raikou-color-gray-3)`,
+          transition: "opacity 100ms ease",
+          '[data-raikou-color-scheme="light"] &': {
+            "--_control-opacity": "0.85"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_control-opacity": "0.65"
+          },
+          "@media (hover: hover)": {
+            "&:hover": {
+              "--_control-opacity": "1"
+            }
+          },
+          "@media (hover: none)": {
+            "&:active": {
+              "--_control-opacity": "1"
+            }
+          }
+        },
+        ".carousel-indicators": {
+          position: "absolute",
+          display: "flex",
+          justifyContent: "center",
+          gap: rem("8px"),
+          pointerEvents: "none",
+          flexDirection: "var(--_indicators-direction)",
+          bottom: "var(--_indicators-bottom)",
+          left: "var(--_indicators-left)",
+          right: "var(--_indicators-right)",
+          top: "var(--_indicators-top)",
+          '.carousel-root[data-orientation="vertical"] &': {
+            "--_indicators-bottom": "0",
+            "--_indicators-top": "0",
+            "--_indicators-right": "var(--raikou-spacing-md)",
+            "--_indicators-direction": "column"
+          },
+          '.carousel-root[data-orientation="horizontal"] &': {
+            "--_indicators-bottom": "var(--raikou-spacing-md)",
+            "--_indicators-left": "0",
+            "--_indicators-right": "0",
+            "--_indicators-direction": "row"
+          }
+        },
+        ".carousel-indicator": {
+          pointerEvents: "all",
+          width: "var(--_indicator-width)",
+          height: "var(--_indicator-height)",
+          borderRadius: "var(--raikou-radius-xl)",
+          boxShadow: "var(--raikou-shadow-sm)",
+          opacity: "var(--_indicator-opacity, 0.6)",
+          backgroundColor: "var(--raikou-color-white)",
+          "@media (hover: hover)": {
+            "&:hover": {
+              "--_text-decoration": "underline",
+              "--_indicator-opacity": "1"
+            }
+          },
+          "@media (hover: none)": {
+            "&:active": {
+              "--_text-decoration": "underline",
+              "--_indicator-opacity": "1"
+            }
+          },
+          "&[data-active]": {
+            "--_indicator-opacity": "1"
+          },
+          '.carousel-root[data-orientation="vertical"] &': {
+            "--_indicator-width": rem("5px"),
+            "--_indicator-height": rem("25px")
+          },
+          '.carousel-root[data-orientation="horizontal"] &': {
+            "--_indicator-width": rem("25px"),
+            "--_indicator-height": rem("5px")
+          }
+        },
+        ".carousel-slide": {
+          position: "relative",
+          flex: "0 0 var(--carousel-slide-size)",
+          paddingRight: "var(--_slide-pr, 0)",
+          paddingLeft: "var(--_slide-pl, 0)",
+          paddingBottom: "var(--_slide-pb, 0)",
+          marginRight: "var(--_slide-mr, 0)",
+          marginLeft: "var(--_slide-ml, 0)",
+          marginBottom: "var(--_slide-mb, 0)",
+          ".carousel-root[data-include-gap-in-size] &": {
+            '&[data-orientation="vertical"]': {
+              "--_slide-pb": "var(--carousel-slide-gap)"
+            },
+            '&[data-orientation="horizontal"]': {
+              "--_slide-pr": "var(--carousel-slide-gap)",
+              '[dir="rtl"] &': {
+                "--_slide-pl": "var(--carousel-slide-gap)",
+                "--_slide-pr": "0"
+              }
+            }
+          },
+          ".carousel-root:not([data-include-gap-in-size]) &": {
+            '&[data-orientation="vertical"]': {
+              "--_slide-mb": "var(--carousel-slide-gap)"
+            },
+            '&[data-orientation="horizontal"]': {
+              "--_slide-mr": "var(--carousel-slide-gap)",
+              '[dir="rtl"] &': {
+                "--_slide-ml": "var(--carousel-slide-gap)",
+                "--_slide-mr": "0"
+              }
+            }
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../dates/src/components/Month/Month.plugin.ts
+var require_Month_plugin = __commonJS({
+  "../dates/src/components/Month/Month.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents }) {
+      addComponents({
+        ".month-month": {
+          "border-collapse": "collapse",
+          "table-layout": "fixed"
+        },
+        ".month-monthCell": {
+          padding: "var(--_month-cell-padding, 0)",
+          "&[data-with-spacing]": {
+            "--_month-cell-padding": rem("0.5px")
+          }
+        },
+        ".month-weekday": {
+          color: "var(--raikou-color-dimmed)",
+          fontWeight: "normal",
+          fontSize: "var(--month-fz)",
+          textTransform: "capitalize",
+          paddingBottom: "calc(var(--month-spacing) / 2)"
+        },
+        ".month-day": {
+          width: `var(--day-size, ${rem("36px")})`,
+          height: `var(--day-size, ${rem("36px")})`,
+          fontSize: "var(--day-fz, var(--raikou-font-size-sm))",
+          display: "var(--_day-display, inline-flex)",
+          justifyContent: "center",
+          alignItems: "center",
+          userSelect: "var(--_day-user-select, none)",
+          cursor: "var(--_day-cursor, pointer)",
+          backgroundColor: "var(--_day-bg, transparent)",
+          borderRadius: "var(--_day-radius, var(--raikou-radius-default))",
+          color: "var(--_day-color, var(--raikou-color-text))",
+          opacity: "var(--_day-opacity, 1)",
+          "@media (hover: hover)": {
+            "&:hover": {
+              "&:not([data-static], [data-disabled])": {
+                '[data-raikou-color-scheme="light"] &': {
+                  "--_day-bg": "var(--raikou-color-gray-0)"
+                },
+                '[data-raikou-color-scheme="dark"] &': {
+                  "--_day-bg": "var(--raikou-color-dark-5)"
+                }
+              }
+            }
+          },
+          "@media (hover: none)": {
+            "&:active": {
+              "&:not([data-static], [data-disabled])": {
+                '[data-raikou-color-scheme="light"] &': {
+                  "--_day-bg": "var(--raikou-color-gray-0)"
+                },
+                '[data-raikou-color-scheme="dark"] &': {
+                  "--_day-bg": "var(--raikou-color-dark-5)"
+                }
+              }
+            }
+          },
+          "&[data-static]": {
+            "--_day-user-select": "auto",
+            "--_day-cursor": "default"
+          },
+          "&[data-weekend]": {
+            "--_day-color": "var(--raikou-color-red-6)"
+          },
+          "&[data-outside]": {
+            "--_day-color": "var(--raikou-color-dimmed)",
+            "--_day-opacity": "0.5"
+          },
+          "&:disabled, &[data-disabled]": {
+            "--_day-color": "var(--raikou-color-dimmed)",
+            "--_day-cursor": "not-allowed"
+          },
+          "&[data-hidden]": {
+            "--_day-display": "none"
+          },
+          "&[data-selected]": {
+            "--_day-bg": "var(--day-selected-bg)",
+            "--_day-color": "var(--day-selected-color)",
+            "@media (hover: hover)": {
+              "&:hover": {
+                "[data-raikou-color-scheme] &": {
+                  "--_day-bg": "var(--day-selected-bg-hover)"
+                }
+              }
+            },
+            "@media (hover: none)": {
+              "&:active": {
+                "[data-raikou-color-scheme] &": {
+                  "--_day-bg": "var(--day-selected-bg-hover)"
+                }
+              }
+            }
+          },
+          "&[data-in-range]": {
+            "--_day-bg": "var(--day-range-bg)",
+            "--_day-radius": "0",
+            "@media (hover: hover)": {
+              "&:hover": {
+                "[data-raikou-color-scheme] &": {
+                  "--_day-bg": "var(--day-range-bg-hover)"
+                }
+              }
+            },
+            "@media (hover: none)": {
+              "&:active": {
+                "[data-raikou-color-scheme] &": {
+                  "--_day-bg": "var(--day-range-bg-hover)"
+                }
+              }
+            }
+          },
+          "&[data-first-in-range]": {
+            "--_day-radius": "var(--raikou-radius-default) 0 0 var(--raikou-radius-default)",
+            '[dir="rtl"] &': {
+              "--_day-radius": "0 var(--raikou-radius-default) var(--raikou-radius-default) 0"
+            }
+          },
+          "&[data-last-in-range]": {
+            "--_day-radius": "0 var(--raikou-radius-default) var(--raikou-radius-default) 0",
+            '[dir="rtl"] &': {
+              "--_day-radius": "var(--raikou-radius-default) 0 0 var(--raikou-radius-default)"
+            }
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../dropzone/src/Dropzone.plugin.ts
+var require_Dropzone_plugin = __commonJS({
+  "../dropzone/src/Dropzone.plugin.ts"(exports, module) {
+    "use strict";
+    module.exports = function({ addComponents }) {
+      addComponents({
+        ".dropZone-root": {
+          position: "relative",
+          backgroundColor: "var(--_dropzone-bg)",
+          border: `rem(1px) dashed var(--_dropzone-border-color)`,
+          color: "var(--_dropzone-color, var(--raikou-color-text))",
+          padding: "var(--raikou-spacing-md)",
+          borderRadius: "var(--dropzone-radius)",
+          cursor: "var(--_dropzone-cursor, pointer)",
+          userSelect: "none",
+          transition: "background-color 100ms ease, border-color 100ms ease",
+          "&[data-loading], &:not([data-activate-on-click])": {
+            "--_dropzone-cursor": "default"
+          },
+          '[data-raikou-color-scheme="light"] &': {
+            "--_dropzone-bg": "var(--raikou-color-white)",
+            "--_dropzone-border-color": "var(--raikou-color-gray-4)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_dropzone-bg": "var(--raikou-color-dark-6)",
+            "--_dropzone-border-color": "var(--raikou-color-dark-4)"
+          },
+          "@media (hover: hover)": {
+            "&:hover": {
+              "&[data-activate-on-click]:not([data-loading])": {
+                '[data-raikou-color-scheme="light"] &': {
+                  "--_dropzone-bg": "var(--raikou-color-gray-0)"
+                },
+                '[data-raikou-color-scheme="dark"] &': {
+                  "--_dropzone-bg": "var(--raikou-color-dark-5)"
+                }
+              }
+            }
+          },
+          "@media (hover: none)": {
+            "&:active": {
+              "&[data-activate-on-click]:not([data-loading])": {
+                '[data-raikou-color-scheme="light"] &': {
+                  "--_dropzone-bg": "var(--raikou-color-gray-0)"
+                },
+                '[data-raikou-color-scheme="dark"] &': {
+                  "--_dropzone-bg": "var(--raikou-color-dark-5)"
+                }
+              }
+            }
+          },
+          "&[data-accept]": {
+            "--_dropzone-bg": "var(--dropzone-accept-bg)",
+            "--_dropzone-border-color": "var(--dropzone-accept-bg)",
+            "--_dropzone-color": "var(--dropzone-accept-color)"
+          },
+          "&[data-reject]": {
+            "--_dropzone-bg": "var(--dropzone-reject-bg)",
+            "--_dropzone-border-color": "var(--dropzone-reject-bg)",
+            "--_dropzone-color": "var(--dropzone-reject-color)"
+          }
+        },
+        ".dropZone-inner": {
+          pointerEvents: "var(--_dropzone-inner-pointer-events, all)",
+          userSelect: "none",
+          "&[data-disable-pointer-events]": {
+            "--_dropzone-inner-pointer-events": "none"
+          }
+        },
+        ".dropZone-fullScreen": {
+          position: "fixed",
+          inset: "0",
+          backgroundColor: "var(--raikou-color-body)",
+          display: "flex",
+          flexDirection: "column",
+          padding: "var(--raikou-spacing-xs)",
+          transition: "opacity 100ms ease",
+          "& .dropzone": {
+            flex: "1"
+          }
+        }
+      });
+    };
+  }
+});
+
 // ../notifications/src/Notifications.plugin.ts
 var require_Notifications_plugin = __commonJS({
   "../notifications/src/Notifications.plugin.ts"(exports, module) {
@@ -5409,6 +6231,48 @@ var require_Notifications_plugin = __commonJS({
         ".notifications-notification": {
           "& + &": {
             marginTop: "var(--raikou-spacing-md)"
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../nProgress/src/NavigationProgress.plugin.ts
+var require_NavigationProgress_plugin = __commonJS({
+  "../nProgress/src/NavigationProgress.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents }) {
+      addComponents({
+        ".nProgress-root": {
+          position: "fixed",
+          top: "0",
+          right: "0",
+          left: "0",
+          zIndex: "var(--nprogress-z-index)",
+          backgroundColor: "transparent",
+          transition: "opacity 150ms ease",
+          transitionDelay: "50ms",
+          opacity: "var(--_nprogress-opacity, 0)",
+          overflow: "visible",
+          "&[data-mounted]": {
+            "--_nprogress-opacity": "1"
+          }
+        },
+        ".nProgress-section": {
+          position: "relative",
+          transition: "width 150ms ease",
+          overflow: "visible",
+          "&::before": {
+            content: "''",
+            position: "absolute",
+            width: rem("100px"),
+            height: "var(--progress-size)",
+            top: "0",
+            right: "1px",
+            transform: "rotate(4deg) translateY(-4px)",
+            boxShadow: "0 0 10px var(--progress-section-color), 0 0 5px var(--progress-section-color)"
           }
         }
       });
@@ -5578,502 +6442,6 @@ var require_Spotlight_plugin = __commonJS({
 var require_plugin = __commonJS({
   "src/plugin.ts"(exports, module) {
     module.exports = {
-      theme: {
-        colors: {
-          transparent: "transparent",
-          current: "currentColor",
-          black: "#000",
-          white: "#fff",
-          slate: {
-            50: "#f8fafc",
-            100: "#f1f5f9",
-            200: "#e2e8f0",
-            300: "#cbd5e1",
-            400: "#94a3b8",
-            500: "#64748b",
-            600: "#475569",
-            700: "#334155",
-            800: "#1e293b",
-            900: "#0f172a",
-            950: "#020617"
-          },
-          gray: {
-            50: "#f9fafb",
-            100: "#f3f4f6",
-            200: "#e5e7eb",
-            300: "#d1d5db",
-            400: "#9ca3af",
-            500: "#6b7280",
-            600: "#4b5563",
-            700: "#374151",
-            800: "#1f2937",
-            900: "#111827",
-            950: "#030712"
-          },
-          zinc: {
-            50: "#fafafa",
-            100: "#f4f4f5",
-            200: "#e4e4e7",
-            300: "#d4d4d8",
-            400: "#a1a1aa",
-            500: "#71717a",
-            600: "#52525b",
-            700: "#3f3f46",
-            800: "#27272a",
-            900: "#18181b",
-            950: "#09090b"
-          },
-          neutral: {
-            50: "#fafafa",
-            100: "#f5f5f5",
-            200: "#e5e5e5",
-            300: "#d4d4d4",
-            400: "#a3a3a3",
-            500: "#737373",
-            600: "#525252",
-            700: "#404040",
-            800: "#262626",
-            900: "#171717",
-            950: "#0a0a0a"
-          },
-          stone: {
-            50: "#fafaf9",
-            100: "#f5f5f4",
-            200: "#e7e5e4",
-            300: "#d6d3d1",
-            400: "#a8a29e",
-            500: "#78716c",
-            600: "#57534e",
-            700: "#44403c",
-            800: "#292524",
-            900: "#1c1917",
-            950: "#0c0a09"
-          },
-          red: {
-            50: "#fef2f2",
-            100: "#fee2e2",
-            200: "#fecaca",
-            300: "#fca5a5",
-            400: "#f87171",
-            500: "#ef4444",
-            600: "#dc2626",
-            700: "#b91c1c",
-            800: "#991b1b",
-            900: "#7f1d1d",
-            950: "#450a0a"
-          },
-          orange: {
-            50: "#fff7ed",
-            100: "#ffedd5",
-            200: "#fed7aa",
-            300: "#fdba74",
-            400: "#fb923c",
-            500: "#f97316",
-            600: "#ea580c",
-            700: "#c2410c",
-            800: "#9a3412",
-            900: "#7c2d12",
-            950: "#431407"
-          },
-          amber: {
-            50: "#fffbeb",
-            100: "#fef3c7",
-            200: "#fde68a",
-            300: "#fcd34d",
-            400: "#fbbf24",
-            500: "#f59e0b",
-            600: "#d97706",
-            700: "#b45309",
-            800: "#92400e",
-            900: "#78350f",
-            950: "#451a03"
-          },
-          yellow: {
-            50: "#fefce8",
-            100: "#fef9c3",
-            200: "#fef08a",
-            300: "#fde047",
-            400: "#facc15",
-            500: "#eab308",
-            600: "#ca8a04",
-            700: "#a16207",
-            800: "#854d0e",
-            900: "#713f12",
-            950: "#422006"
-          },
-          lime: {
-            50: "#f7fee7",
-            100: "#ecfccb",
-            200: "#d9f99d",
-            300: "#bef264",
-            400: "#a3e635",
-            500: "#84cc16",
-            600: "#65a30d",
-            700: "#4d7c0f",
-            800: "#3f6212",
-            900: "#365314",
-            950: "#1a2e05"
-          },
-          green: {
-            50: "#f0fdf4",
-            100: "#dcfce7",
-            200: "#bbf7d0",
-            300: "#86efac",
-            400: "#4ade80",
-            500: "#22c55e",
-            600: "#16a34a",
-            700: "#15803d",
-            800: "#166534",
-            900: "#14532d",
-            950: "#052e16"
-          },
-          emerald: {
-            50: "#ecfdf5",
-            100: "#d1fae5",
-            200: "#a7f3d0",
-            300: "#6ee7b7",
-            400: "#34d399",
-            500: "#10b981",
-            600: "#059669",
-            700: "#047857",
-            800: "#065f46",
-            900: "#064e3b",
-            950: "#022c22"
-          },
-          teal: {
-            50: "#f0fdfa",
-            100: "#ccfbf1",
-            200: "#99f6e4",
-            300: "#5eead4",
-            400: "#2dd4bf",
-            500: "#14b8a6",
-            600: "#0d9488",
-            700: "#0f766e",
-            800: "#115e59",
-            900: "#134e4a",
-            950: "#042f2e"
-          },
-          cyan: {
-            50: "#ecfeff",
-            100: "#cffafe",
-            200: "#a5f3fc",
-            300: "#67e8f9",
-            400: "#22d3ee",
-            500: "#06b6d4",
-            600: "#0891b2",
-            700: "#0e7490",
-            800: "#155e75",
-            900: "#164e63",
-            950: "#083344"
-          },
-          sky: {
-            50: "#f0f9ff",
-            100: "#e0f2fe",
-            200: "#bae6fd",
-            300: "#7dd3fc",
-            400: "#38bdf8",
-            500: "#0ea5e9",
-            600: "#0284c7",
-            700: "#0369a1",
-            800: "#075985",
-            900: "#0c4a6e",
-            950: "#082f49"
-          },
-          blue: {
-            50: "#eff6ff",
-            100: "#dbeafe",
-            200: "#bfdbfe",
-            300: "#93c5fd",
-            400: "#60a5fa",
-            500: "#3b82f6",
-            600: "#2563eb",
-            700: "#1d4ed8",
-            800: "#1e40af",
-            900: "#1e3a8a",
-            950: "#172554"
-          },
-          indigo: {
-            50: "#eef2ff",
-            100: "#e0e7ff",
-            200: "#c7d2fe",
-            300: "#a5b4fc",
-            400: "#818cf8",
-            500: "#6366f1",
-            600: "#4f46e5",
-            700: "#4338ca",
-            800: "#3730a3",
-            900: "#312e81",
-            950: "#1e1b4b"
-          },
-          violet: {
-            50: "#f5f3ff",
-            100: "#ede9fe",
-            200: "#ddd6fe",
-            300: "#c4b5fd",
-            400: "#a78bfa",
-            500: "#8b5cf6",
-            600: "#7c3aed",
-            700: "#6d28d9",
-            800: "#5b21b6",
-            900: "#4c1d95",
-            950: "#2e1065"
-          },
-          purple: {
-            50: "#faf5ff",
-            100: "#f3e8ff",
-            200: "#e9d5ff",
-            300: "#d8b4fe",
-            400: "#c084fc",
-            500: "#a855f7",
-            600: "#9333ea",
-            700: "#7e22ce",
-            800: "#6b21a8",
-            900: "#581c87",
-            950: "#3b0764"
-          },
-          fuchsia: {
-            50: "#fdf4ff",
-            100: "#fae8ff",
-            200: "#f5d0fe",
-            300: "#f0abfc",
-            400: "#e879f9",
-            500: "#d946ef",
-            600: "#c026d3",
-            700: "#a21caf",
-            800: "#86198f",
-            900: "#701a75",
-            950: "#4a044e"
-          },
-          pink: {
-            50: "#fdf2f8",
-            100: "#fce7f3",
-            200: "#fbcfe8",
-            300: "#f9a8d4",
-            400: "#f472b6",
-            500: "#ec4899",
-            600: "#db2777",
-            700: "#be185d",
-            800: "#9d174d",
-            900: "#831843",
-            950: "#500724"
-          },
-          rose: {
-            50: "#fff1f2",
-            100: "#ffe4e6",
-            200: "#fecdd3",
-            300: "#fda4af",
-            400: "#fb7185",
-            500: "#f43f5e",
-            600: "#e11d48",
-            700: "#be123c",
-            800: "#9f1239",
-            900: "#881337",
-            950: "#4c0519"
-          }
-        },
-        extend: {
-          colors: {
-            // overwrite tailwind colors with mantyke defaults
-            gray: {
-              50: "#f8f9fa",
-              100: "#f1f3f5",
-              200: "#e9ecef",
-              300: "#dee2e6",
-              400: "#ced4da",
-              500: "#adb5bd",
-              600: "#868e96",
-              700: "#495057",
-              800: "#343a40",
-              900: "#212529",
-              950: "#0f1e23"
-            },
-            red: {
-              50: "#fff5f5",
-              100: "#ffe3e3",
-              200: "#ffc9c9",
-              300: "#ffa8a8",
-              400: "#ff8787",
-              500: "#ff6b6b",
-              600: "#fa5252",
-              700: "#f03e3e",
-              800: "#e03131",
-              900: "#c92a2a",
-              950: "#b32121"
-            },
-            pink: {
-              50: "#fff0f6",
-              100: "#ffdeeb",
-              200: "#fcc2d7",
-              300: "#faa2c1",
-              400: "#f783ac",
-              500: "#f06595",
-              600: "#e64980",
-              700: "#d6336c",
-              800: "#c2255c",
-              900: "#a61e4d",
-              950: "#82143f"
-            },
-            yellow: {
-              50: "#fff9db",
-              100: "#fff3bf",
-              200: "#ffec99",
-              300: "#ffe066",
-              400: "#ffd43b",
-              500: "#fcc419",
-              600: "#fab005",
-              700: "#f59f00",
-              800: "#f08c00",
-              900: "#e67700",
-              950: "#a85300"
-            },
-            green: {
-              50: "#ebfbee",
-              100: "#d3f9d8",
-              200: "#b2f2bb",
-              300: "#8ce99a",
-              400: "#69db7c",
-              500: "#51cf66",
-              600: "#40c057",
-              700: "#37b24d",
-              800: "#2f9e44",
-              900: "#2b8a3e",
-              950: "#175500"
-            },
-            blue: {
-              50: "#e7f5ff",
-              100: "#d0ebff",
-              200: "#a5d8ff",
-              300: "#74c0fc",
-              400: "#4dabf7",
-              500: "#339af0",
-              600: "#228be6",
-              700: "#1c7ed6",
-              800: "#1971c2",
-              900: "#1864ab",
-              950: "#0c2cfd"
-            },
-            indigo: {
-              50: "#edf2ff",
-              100: "#dbe4ff",
-              200: "#bac8ff",
-              300: "#91a7ff",
-              400: "#748ffc",
-              500: "#5c7cfa",
-              600: "#4c6ef5",
-              700: "#4263eb",
-              800: "#3b5bdb",
-              900: "#364fc7",
-              950: "#2f2d6d"
-            },
-            // Tailwind original color
-            purple: {
-              50: "#f6f5ff",
-              100: "#edebfe",
-              200: "#dcd7fe",
-              300: "#cabffd",
-              400: "#ac94fa",
-              500: "#9061f9",
-              600: "#7e3af2",
-              700: "#6c2bd9",
-              800: "#5521b5",
-              900: "#4a1d96",
-              950: "#381d75"
-            },
-            // Mantyke original colors
-            dark: {
-              50: "#c1c2c5",
-              100: "#a6a7ab",
-              200: "#909296",
-              300: "#5c5f66",
-              400: "#373a40",
-              500: "#2c2e33",
-              600: "#25262b",
-              700: "#1a1b1e",
-              800: "#141517",
-              900: "#101113",
-              950: "#101113"
-            },
-            grape: {
-              50: "#f8f0fc",
-              100: "#f3d9fa",
-              200: "#eebefa",
-              300: "#e599f7",
-              400: "#da77f2",
-              500: "#cc5de8",
-              600: "#be4bdb",
-              700: "#ae3ec9",
-              800: "#9c36b5",
-              900: "#862e9c",
-              950: "#7c2791"
-            },
-            violet: {
-              50: "#f3f0ff",
-              100: "#e5dbff",
-              200: "#d0bfff",
-              300: "#b197fc",
-              400: "#9775fa",
-              500: "#845ef7",
-              600: "#7950f2",
-              700: "#7048e8",
-              800: "#6741d9",
-              900: "#5f3dc4",
-              950: "#5936b8"
-            },
-            cyan: {
-              50: "#e3fafc",
-              100: "#c5f6fa",
-              200: "#99e9f2",
-              300: "#66d9e8",
-              400: "#3bc9db",
-              500: "#22b8cf",
-              600: "#15aabf",
-              700: "#1098ad",
-              800: "#0c8599",
-              900: "#0b7285",
-              950: "#086f7f"
-            },
-            teal: {
-              50: "#e6fcf5",
-              100: "#c3fae8",
-              200: "#96f2d7",
-              300: "#63e6be",
-              400: "#38d9a9",
-              500: "#20c997",
-              600: "#12b886",
-              700: "#0ca678",
-              800: "#099268",
-              900: "#087f5b",
-              950: "#066c4c"
-            },
-            lime: {
-              50: "#f4fce3",
-              100: "#e9fac8",
-              200: "#d8f5a2",
-              300: "#c0eb75",
-              400: "#a9e34b",
-              500: "#94d82d",
-              600: "#82c91e",
-              700: "#74b816",
-              800: "#66a80f",
-              900: "#5c940d",
-              950: "#4a7c0e"
-            },
-            orange: {
-              50: "#fff4e6",
-              100: "#ffe8cc",
-              200: "#ffd8a8",
-              300: "#ffc078",
-              400: "#ffa94d",
-              500: "#ff922b",
-              600: "#fd7e14",
-              700: "#f76707",
-              800: "#e8590c",
-              900: "#d9480f",
-              950: "#c83712"
-            }
-          }
-        }
-      },
       plugins: [
         require_Accordion_plugin(),
         require_ActionIcon_plugin(),
@@ -6093,6 +6461,7 @@ var require_plugin = __commonJS({
         require_Checkbox_plugin(),
         require_Chip_plugin(),
         require_Code_plugin(),
+        require_ColorInput_plugin(),
         require_ColorPicker_plugin(),
         require_ColorSwatch_plugin(),
         require_Combobox_plugin(),
@@ -6109,11 +6478,13 @@ var require_plugin = __commonJS({
         require_Input_plugin(),
         require_Kbd_plugin(),
         require_Loader_plugin(),
+        require_LoadingOverlay_plugin(),
         require_Mark_plugin(),
         require_Menu_plugin(),
         require_Modal_plugin(),
         require_ModalBase_plugin(),
         require_Notification_plugin(),
+        require_NumberInput_plugin(),
         require_Overlay_plugin(),
         require_Pagination_plugin(),
         require_Paper_plugin(),
@@ -6131,15 +6502,21 @@ var require_plugin = __commonJS({
         require_Skeleton_plugin(),
         require_Slider_plugin(),
         require_Stack_plugin(),
+        require_Stepper_plugin(),
         require_Switch_plugin(),
         require_Table_plugin(),
         require_Tabs_plugin(),
         require_Text_plugin(),
+        require_ThemeIcon_plugin(),
         require_Title_plugin(),
         require_Tooltip_plugin(),
         require_UnstyledButton_plugin(),
         require_VisuallyHidden_plugin(),
+        require_Carousel_plugin(),
+        require_Month_plugin(),
+        require_Dropzone_plugin(),
         require_Notifications_plugin(),
+        require_NavigationProgress_plugin(),
         require_Spotlight_plugin()
       ]
     };

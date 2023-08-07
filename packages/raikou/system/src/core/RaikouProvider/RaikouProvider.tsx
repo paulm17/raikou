@@ -30,9 +30,6 @@ export interface RaikouProviderProps {
   /** Store theme in local storage */
   themeStorageKey?: string;
 
-  /** All the available themes */
-  themeNames?: string[];
-
   /** Your application */
   children?: React.ReactNode;
 }
@@ -41,13 +38,13 @@ suppressNextjsWarning();
 
 export function RaikouProvider({
   theme,
-  children,
-  getStyleNonce,
-  withCssVariables = true,
+  defaultColorScheme,
   cssVariablesSelector = ":root",
+  withCssVariables = true,
+  getStyleNonce,
   cssVariablesResolver,
   themeStorageKey = "raikou-color-scheme",
-  themeNames = ["light", "dark"],
+  children,
 }: RaikouProviderProps) {
   let mergedTheme = mergeRaikouTheme(DEFAULT_THEME, theme);
 
@@ -55,17 +52,13 @@ export function RaikouProvider({
     (window as any)["raikou_theme"] = theme;
   }
 
-  // don't include system, next-theme already includes it
-  const defaultThemes = ["light", "dark"];
-  const mergeThemes = [...themeNames, ...defaultThemes];
-  const allThemeNames = Array.from(new Set(mergeThemes));
-
   return (
     <ThemeProvider
       storageKey={themeStorageKey}
-      themes={allThemeNames}
-      attribute="data-raikou-color-scheme"
+      themes={["light", "dark"]}
+      attribute={`data-${themeStorageKey}`}
       enableColorScheme={false}
+      defaultTheme={defaultColorScheme}
       forcedTheme={theme?.colorScheme ? theme.colorScheme : undefined}
     >
       {withCssVariables && (

@@ -33,7 +33,7 @@ module.exports = function ({ addComponents, theme }: any) {
       width: "100%",
       top: "0",
       bottom: "0",
-      zIndex: "calc(var(--mb-z-index) + 1)",
+      zIndex: "var(--mb-z-index)",
       pointerEvents: "none",
     },
 

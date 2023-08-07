@@ -1,0 +1,42 @@
+{
+  "name": "@raikou/dropzone",
+  "description": "Dropzone component built with Raikou theme and components",
+  "version": "0.0.1-alpha.19",
+  "main": "index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format esm,cjs --clean",
+    "lint": "eslint \"**/*.ts*\"",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "build:fast": "tsup src",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "clean-package": "../../../clean-package.config.json",
+  "peerDependencies": {
+    "@raikou/core": ">=0.0.1-alpha.1",
+    "@raikou/hooks": ">=0.0.1-alpha.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@raikou/core": "workspace:*",
+    "@raikou/hooks": "workspace:*",
+    "react-dropzone": "14.2.3",
+    "tslib": "^2.6.0"
+  },
+  "devDependencies": {
+    "clean-package": "2.2.0",
+    "tsup": "^7.1.0"
+  }
+}

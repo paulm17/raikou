@@ -1,8 +1,10 @@
-export { ColorPicker } from './ColorPicker';
+export { ColorPicker } from "./ColorPicker";
+export * from "./converters";
 
 export type {
   ColorPickerCssVariables,
   ColorPickerFactory,
   ColorPickerProps,
   ColorPickerStylesNames,
-} from './ColorPicker';
+  __ColorPickerProps,
+} from "./ColorPicker";

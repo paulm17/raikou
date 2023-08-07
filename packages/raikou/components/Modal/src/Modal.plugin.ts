@@ -12,20 +12,20 @@ module.exports = function ({ addComponents, theme }: any) {
       "&[data-full-screen]": {
         "--modal-border-radius": "0 !important",
 
-        ".content": {
+        ".modal-content": {
           "--_content-flex": "0 0 100%",
           "--_content-max-height": "auto",
           "--_content-height": "100dvh",
         },
 
-        ".inner": {
+        ".modal-inner": {
           "--_inner-y-offset": "0",
           "--_inner-x-offset": "0",
         },
       },
 
       "&[data-centered]": {
-        ".inner": {
+        ".modal-inner": {
           "--_inner-align": "center",
         },
       },

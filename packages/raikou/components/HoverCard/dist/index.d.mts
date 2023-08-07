@@ -131,7 +131,7 @@ interface __PopoverProps {
 interface PopoverProps extends __PopoverProps, StylesApiProps<PopoverFactory> {
     __staticSelector?: string;
     /** `Popover.Target` and `Popover.Dropdown` components */
-    children: React$1.ReactNode;
+    children?: React$1.ReactNode;
     /** Initial opened state for uncontrolled component */
     defaultOpened?: boolean;
     /** Controlled dropdown opened state */

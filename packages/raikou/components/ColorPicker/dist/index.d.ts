@@ -1,7 +1,13 @@
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, Factory, RaikouSize } from '@raikou/core';
+import { RaikouSize, BoxProps, StylesApiProps, ElementProps, Factory } from '@raikou/core';
 
 type ColorFormat = 'hex' | 'hexa' | 'rgba' | 'rgb' | 'hsl' | 'hsla';
+interface HsvaColor {
+    h: number;
+    s: number;
+    v: number;
+    a: number;
+}
 
 type ColorPickerStylesNames = "wrapper" | "preview" | "body" | "sliders" | "slider" | "sliderOverlay" | "thumb" | "saturation" | "thumb" | "saturationOverlay" | "thumb" | "swatches" | "swatch";
 type ColorPickerCssVariables = {
@@ -55,4 +61,9 @@ declare const ColorPicker: _raikou_core.RaikouComponent<{
     vars: ColorPickerCssVariables;
 }>;
 
-export { ColorPicker, ColorPickerCssVariables, ColorPickerFactory, ColorPickerProps, ColorPickerStylesNames };
+declare function convertHsvaTo(format: ColorFormat, color: HsvaColor): string;
+
+declare function isColorValid(color: string): boolean;
+declare function parseColor(color: string): HsvaColor;
+
+export { ColorPicker, ColorPickerCssVariables, ColorPickerFactory, ColorPickerProps, ColorPickerStylesNames, __ColorPickerProps, convertHsvaTo, isColorValid, parseColor };

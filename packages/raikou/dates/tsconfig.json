@@ -1,0 +1,10 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@raikou/unstyled-button": ["../components/UnstyledButton/src"],
+      "@raikou/tests": ["../tests/src"]
+    }
+  },
+  "include": ["src", "index.ts"]
+}

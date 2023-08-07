@@ -13,11 +13,12 @@ export interface PortalProps extends React.ComponentPropsWithoutRef<"div"> {
 
 const defaultProps: Partial<PortalProps> = {};
 
+// @ts-ignore
 export const Portal = forwardRef<HTMLDivElement, PortalProps>((props, ref) => {
   const { children, target, className, ...others } = useProps(
     "Portal",
     defaultProps,
-    props
+    props,
   );
 
   const [mounted, setMounted] = useState(false);
@@ -50,7 +51,7 @@ export const Portal = forwardRef<HTMLDivElement, PortalProps>((props, ref) => {
     <div className={className} ref={ref} {...others}>
       {children}
     </div>,
-    nodeRef.current
+    nodeRef.current,
   );
 });
 

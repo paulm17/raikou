@@ -257,4 +257,4 @@ export const SpotlightRoot = factory<SpotlightRootFactory>((_props, ref) => {
   );
 });
 
-SpotlightRoot.displayName = "@mantine/spotlight/SpotlightRoot";
+SpotlightRoot.displayName = "@raikou/spotlight/SpotlightRoot";

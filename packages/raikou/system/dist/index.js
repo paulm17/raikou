@@ -1129,28 +1129,26 @@ function RaikouClasses({ theme, nonce }) {
 suppressNextjsWarning();
 function RaikouProvider({
   theme,
-  children,
-  getStyleNonce,
-  withCssVariables = true,
+  defaultColorScheme,
   cssVariablesSelector = ":root",
+  withCssVariables = true,
+  getStyleNonce,
   cssVariablesResolver,
   themeStorageKey = "raikou-color-scheme",
-  themeNames = ["light", "dark"]
+  children
 }) {
   let mergedTheme = mergeRaikouTheme(DEFAULT_THEME, theme);
   if (typeof window !== "undefined") {
     window["raikou_theme"] = theme;
   }
-  const defaultThemes = ["light", "dark"];
-  const mergeThemes = [...themeNames, ...defaultThemes];
-  const allThemeNames = Array.from(new Set(mergeThemes));
   return /* @__PURE__ */ import_react3.default.createElement(
     import_next_themes2.ThemeProvider,
     {
       storageKey: themeStorageKey,
-      themes: allThemeNames,
-      attribute: "data-raikou-color-scheme",
+      themes: ["light", "dark"],
+      attribute: `data-${themeStorageKey}`,
       enableColorScheme: false,
+      defaultTheme: defaultColorScheme,
       forcedTheme: (theme == null ? void 0 : theme.colorScheme) ? theme.colorScheme : void 0
     },
     withCssVariables && /* @__PURE__ */ import_react3.default.createElement(

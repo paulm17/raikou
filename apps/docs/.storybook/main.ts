@@ -3,7 +3,8 @@ import type { StorybookConfig } from "@storybook/react-vite";
 const config: StorybookConfig = {
   stories: [
     "../../../packages/raikou/components/**/src/*.story.@(js|jsx|ts|tsx)",
-    "../../../packages/raikou/@(notifications|spotlight)/**/src/*.story.@(js|jsx|ts|tsx)",
+    "../../../packages/raikou/@(carousel|dropzone|form|notifications|nprogress|spotlight)/**/src/*.story.@(js|jsx|ts|tsx)",
+    "../../../packages/raikou/dates/**/src/**/*.story.@(js|jsx|ts|tsx)",
   ],
   addons: [
     "@storybook/addon-links",

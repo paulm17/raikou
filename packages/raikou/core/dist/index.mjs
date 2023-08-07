@@ -1148,12 +1148,13 @@ function useRaikouTheme() {
   if (typeof window !== "undefined") {
     if (useStore.getState() === null) {
       const windowTheme = window["raikou_theme"];
+      useStore.setState(windowTheme);
       const theme = mergeRaikouTheme(DEFAULT_THEME, windowTheme);
       theme.variantColorResolver = defaultVariantColorsResolver;
-      useStore.setState(theme);
       return theme;
     } else {
-      const theme = useStore.getState();
+      const stateTheme = useStore.getState();
+      const theme = mergeRaikouTheme(DEFAULT_THEME, stateTheme);
       theme.variantColorResolver = defaultVariantColorsResolver;
       return theme;
     }
@@ -1163,15 +1164,16 @@ function useRaikouTheme() {
         const tailwindConfig = loadConfig();
         const resolveConfig = __require("tailwindcss/resolveConfig");
         const fullConfig = resolveConfig(tailwindConfig);
+        useStore.setState(fullConfig.theme.custom);
         const theme = mergeRaikouTheme(DEFAULT_THEME, fullConfig.theme.custom);
         theme.variantColorResolver = defaultVariantColorsResolver;
-        useStore.setState(theme);
         return theme;
       } catch (error) {
         console.error("error", error);
       }
     } else {
-      const theme = useStore.getState();
+      const stateTheme = useStore.getState();
+      const theme = mergeRaikouTheme(DEFAULT_THEME, stateTheme);
       theme.variantColorResolver = defaultVariantColorsResolver;
       return theme;
     }

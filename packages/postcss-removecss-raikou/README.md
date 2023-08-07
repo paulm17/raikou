@@ -1,21 +1,21 @@
-# postcss-preset-mantine
+# postcss-preset-raikou
 
 [Documentation](http://mantine.dev/styles/postcss-preset)
 
 ## Installation
 
 ```sh
-yarn add --dev postcss postcss-preset-mantine postcss-simple-vars
+yarn add --dev postcss postcss-preset-raikou postcss-simple-vars
 ```
 
 ## Usage
 
-Add `postcss-preset-mantine` to your `postcss.config.js` config:
+Add `postcss-preset-raikou` to your `postcss.config.js` config:
 
 ```js
 module.exports = {
   plugins: {
-    'postcss-preset-mantine': {},
+    'postcss-preset-raikou': {},
     'postcss-simple-vars': {
       variables: {
         'raikou-breakpoint-xs': '36em',

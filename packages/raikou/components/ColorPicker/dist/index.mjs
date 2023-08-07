@@ -961,5 +961,8 @@ var ColorPicker = factory((_props, ref) => {
 });
 ColorPicker.displayName = "@raikou/core/ColorPicker";
 export {
-  ColorPicker
+  ColorPicker,
+  convertHsvaTo,
+  isColorValid,
+  parseColor
 };

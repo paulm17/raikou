@@ -34,14 +34,16 @@ export function useRaikouTheme() {
     // Client
     if (useStore.getState() === null) {
       const windowTheme = (window as any)["raikou_theme"];
+
+      useStore.setState(windowTheme);
+
       const theme = mergeRaikouTheme(DEFAULT_THEME, windowTheme);
       theme.variantColorResolver = defaultVariantColorsResolver;
 
-      useStore.setState(theme);
-
       return theme;
     } else {
-      const theme = useStore.getState() as RaikouTheme;
+      const stateTheme = useStore.getState() as RaikouTheme;
+      const theme = mergeRaikouTheme(DEFAULT_THEME, stateTheme);
       theme.variantColorResolver = defaultVariantColorsResolver;
 
       return theme;
@@ -53,18 +55,19 @@ export function useRaikouTheme() {
         const tailwindConfig = loadConfig();
         const resolveConfig = require("tailwindcss/resolveConfig");
         const fullConfig = resolveConfig(tailwindConfig);
+
+        useStore.setState(fullConfig.theme.custom);
+
         const theme = mergeRaikouTheme(DEFAULT_THEME, fullConfig.theme.custom);
-
         theme.variantColorResolver = defaultVariantColorsResolver;
-
-        useStore.setState(theme);
 
         return theme;
       } catch (error) {
         console.error("error", error);
       }
     } else {
-      const theme = useStore.getState() as RaikouTheme;
+      const stateTheme = useStore.getState() as RaikouTheme;
+      const theme = mergeRaikouTheme(DEFAULT_THEME, stateTheme);
       theme.variantColorResolver = defaultVariantColorsResolver;
 
       return theme;

@@ -108,7 +108,7 @@ export interface PopoverProps
   __staticSelector?: string;
 
   /** `Popover.Target` and `Popover.Dropdown` components */
-  children: React.ReactNode;
+  children?: React.ReactNode;
 
   /** Initial opened state for uncontrolled component */
   defaultOpened?: boolean;
@@ -172,7 +172,7 @@ const varsResolver = createVarsResolver<PopoverFactory>(
       "--popover-radius": getRadius(radius),
       "--popover-shadow": getShadow(shadow),
     },
-  })
+  }),
 );
 
 export function Popover(_props: PopoverProps) {
@@ -262,7 +262,7 @@ export function Popover(_props: PopoverProps) {
   useClickOutside(
     () => closeOnClickOutside && popover.onClose(),
     clickOutsideEvents,
-    [targetNode, dropdownNode]
+    [targetNode, dropdownNode],
   );
 
   const reference = useCallback(
@@ -270,7 +270,7 @@ export function Popover(_props: PopoverProps) {
       setTargetNode(node);
       popover.floating.reference(node);
     },
-    [popover.floating.reference]
+    [popover.floating.reference],
   );
 
   const floating = useCallback(
@@ -278,7 +278,7 @@ export function Popover(_props: PopoverProps) {
       setDropdownNode(node);
       popover.floating.floating(node);
     },
-    [popover.floating.floating]
+    [popover.floating.floating],
   );
 
   return (
