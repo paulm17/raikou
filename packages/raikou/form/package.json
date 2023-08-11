@@ -1,7 +1,7 @@
 {
   "name": "@raikou/form",
   "description": "Raikou form management library",
-  "version": "0.0.1-alpha.20",
+  "version": "0.0.1-alpha.21",
   "main": "index.js",
   "types": "./dist/index.d.ts",
   "exports": {
