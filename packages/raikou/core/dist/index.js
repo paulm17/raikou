@@ -1209,27 +1209,6 @@ var import_zustand = require("zustand");
 var useStore = (0, import_zustand.create)(() => null);
 
 // src/core/RaikouProvider/useRaikouTheme/useRaikouTheme.ts
-var import_path = __toESM(require("path"));
-var extensions = ["js", "cjs", "ts"];
-var loadConfig = () => {
-  const appPath = import_path.default.resolve("./");
-  let tailwindConfig;
-  const found = extensions.some((ext) => {
-    try {
-      tailwindConfig = require(`${appPath}/tailwind.config.${ext}`);
-      return true;
-    } catch (error) {
-      if (error.code !== "MODULE_NOT_FOUND") {
-        throw error;
-      }
-    }
-    return false;
-  });
-  if (!found) {
-    throw new Error("No valid tailwind config file found.");
-  }
-  return tailwindConfig;
-};
 function useRaikouTheme() {
   if (typeof window !== "undefined") {
     if (useStore.getState() === null) {
@@ -1238,25 +1217,6 @@ function useRaikouTheme() {
       const theme = mergeRaikouTheme(DEFAULT_THEME, windowTheme);
       theme.variantColorResolver = defaultVariantColorsResolver;
       return theme;
-    } else {
-      const stateTheme = useStore.getState();
-      const theme = mergeRaikouTheme(DEFAULT_THEME, stateTheme);
-      theme.variantColorResolver = defaultVariantColorsResolver;
-      return theme;
-    }
-  } else {
-    if (useStore.getState() === null) {
-      try {
-        const tailwindConfig = loadConfig();
-        const resolveConfig = require("tailwindcss/resolveConfig");
-        const fullConfig = resolveConfig(tailwindConfig);
-        useStore.setState(fullConfig.theme.custom);
-        const theme = mergeRaikouTheme(DEFAULT_THEME, fullConfig.theme.custom);
-        theme.variantColorResolver = defaultVariantColorsResolver;
-        return theme;
-      } catch (error) {
-        console.error("error", error);
-      }
     } else {
       const stateTheme = useStore.getState();
       const theme = mergeRaikouTheme(DEFAULT_THEME, stateTheme);
