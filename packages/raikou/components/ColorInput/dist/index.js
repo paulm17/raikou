@@ -3242,7 +3242,7 @@ var computePosition2 = (reference, floating, options) => {
   }));
 };
 
-// ../../../../node_modules/.pnpm/@floating-ui+react-dom@1.3.0_biqbaboplfbrettd7655fr4n2y/node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.esm.js
+// ../../../../node_modules/.pnpm/@floating-ui+react-dom@1.3.0_react-dom@18.2.0_react@18.2.0/node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.esm.js
 var React17 = __toESM(require("react"));
 var import_react18 = require("react");
 var ReactDOM = __toESM(require("react-dom"));
@@ -3440,7 +3440,7 @@ function useFloating(options) {
   }), [data, update, refs, elements, setReference, setFloating]);
 }
 
-// ../../../../node_modules/.pnpm/@floating-ui+react@0.23.1_biqbaboplfbrettd7655fr4n2y/node_modules/@floating-ui/react/dist/floating-ui.react.esm.js
+// ../../../../node_modules/.pnpm/@floating-ui+react@0.23.1_react-dom@18.2.0_react@18.2.0/node_modules/@floating-ui/react/dist/floating-ui.react.esm.js
 var React18 = __toESM(require("react"));
 var import_react19 = require("react");
 var import_react_dom3 = require("react-dom");

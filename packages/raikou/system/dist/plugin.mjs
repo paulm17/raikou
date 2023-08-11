@@ -6238,9 +6238,9 @@ var require_Notifications_plugin = __commonJS({
   }
 });
 
-// ../nProgress/src/NavigationProgress.plugin.ts
+// ../nprogress/src/NavigationProgress.plugin.ts
 var require_NavigationProgress_plugin = __commonJS({
-  "../nProgress/src/NavigationProgress.plugin.ts"(exports, module) {
+  "../nprogress/src/NavigationProgress.plugin.ts"(exports, module) {
     "use strict";
     init_src();
     module.exports = function({ addComponents }) {

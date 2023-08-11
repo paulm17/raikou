@@ -3,11 +3,12 @@ import { defaultVariantColorsResolver } from "../color-functions";
 import { mergeRaikouTheme } from "../merge-raikou-theme";
 import { useStore } from "../../store";
 import { RaikouTheme } from "../theme.types";
+import path from "path";
 
 const extensions = ["js", "cjs", "ts"];
 
 const loadConfig = () => {
-  const appPath = require("path").resolve("./");
+  const appPath = path.resolve("./");
   let tailwindConfig;
 
   const found = extensions.some((ext) => {

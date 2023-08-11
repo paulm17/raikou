@@ -1124,9 +1124,10 @@ import { create } from "zustand";
 var useStore = create(() => null);
 
 // src/core/RaikouProvider/useRaikouTheme/useRaikouTheme.ts
+import path from "path";
 var extensions = ["js", "cjs", "ts"];
 var loadConfig = () => {
-  const appPath = __require("path").resolve("./");
+  const appPath = path.resolve("./");
   let tailwindConfig;
   const found = extensions.some((ext) => {
     try {

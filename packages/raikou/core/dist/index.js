@@ -1209,9 +1209,10 @@ var import_zustand = require("zustand");
 var useStore = (0, import_zustand.create)(() => null);
 
 // src/core/RaikouProvider/useRaikouTheme/useRaikouTheme.ts
+var import_path = __toESM(require("path"));
 var extensions = ["js", "cjs", "ts"];
 var loadConfig = () => {
-  const appPath = require("path").resolve("./");
+  const appPath = import_path.default.resolve("./");
   let tailwindConfig;
   const found = extensions.some((ext) => {
     try {

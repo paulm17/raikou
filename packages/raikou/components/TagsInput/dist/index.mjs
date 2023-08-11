@@ -1715,7 +1715,7 @@ var computePosition2 = (reference, floating, options) => {
   }));
 };
 
-// ../../../../node_modules/.pnpm/@floating-ui+react-dom@1.3.0_biqbaboplfbrettd7655fr4n2y/node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.esm.js
+// ../../../../node_modules/.pnpm/@floating-ui+react-dom@1.3.0_react-dom@18.2.0_react@18.2.0/node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.esm.js
 import * as React2 from "react";
 import { useLayoutEffect, useEffect } from "react";
 import * as ReactDOM from "react-dom";
@@ -1913,7 +1913,7 @@ function useFloating(options) {
   }), [data, update, refs, elements, setReference, setFloating]);
 }
 
-// ../../../../node_modules/.pnpm/@floating-ui+react@0.23.1_biqbaboplfbrettd7655fr4n2y/node_modules/@floating-ui/react/dist/floating-ui.react.esm.js
+// ../../../../node_modules/.pnpm/@floating-ui+react@0.23.1_react-dom@18.2.0_react@18.2.0/node_modules/@floating-ui/react/dist/floating-ui.react.esm.js
 import * as React3 from "react";
 import { useLayoutEffect as useLayoutEffect2, useEffect as useEffect3, useRef as useRef3 } from "react";
 import { createPortal, flushSync as flushSync2 } from "react-dom";
