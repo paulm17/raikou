@@ -1,6 +1,6 @@
 {
   "name": "@raikou/dummy",
-  "version": "0.0.1-alpha.22",
+  "version": "0.0.1-alpha.23",
   "private": true,
   "main": "index.js",
   "types": "./dist/index.d.ts",

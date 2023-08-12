@@ -30,11 +30,21 @@ export function resolveVars({
   selector,
   themeName,
 }: ResolveVarsInput) {
+  const rem = require("../../../../utils/units-converters").rem;
+
   return mergeVars([
     varsResolver?.(theme, props, stylesCtx),
-    ...themeName.map(
-      (name) => theme.components?.[name]?.vars?.(theme, props, stylesCtx),
-    ),
+    ...themeName.map((name) => {
+      const vars2 = new Function(
+        "theme",
+        "props",
+        "stylesCtx",
+        "rem",
+        theme.components?.[name]?.vars,
+      );
+
+      return vars2?.(theme, props, stylesCtx, rem);
+    }),
     vars?.(theme, props, stylesCtx),
   ])?.[selector] as CSSProperties;
 }

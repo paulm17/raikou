@@ -7,6 +7,7 @@ import type { RaikouColorScheme, RaikouThemeOverride } from "./theme.types";
 import { RaikouClasses } from "./RaikouClasses";
 import { mergeRaikouTheme } from "./merge-raikou-theme";
 import { DEFAULT_THEME } from "./default-theme";
+import useStore from "@raikou/global-store";
 
 export interface RaikouProviderProps {
   /** Theme override object */
@@ -50,6 +51,8 @@ export function RaikouProvider({
 
   if (typeof window !== "undefined") {
     (window as any)["raikou_theme"] = theme;
+  } else {
+    useStore.setState(theme!);
   }
 
   return (

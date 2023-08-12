@@ -1,3 +1,113 @@
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __esm = (fn, res) => function __init() {
+  return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
+};
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+// src/core/utils/units-converters/px.ts
+function getTransformedScaledValue(value) {
+  var _a;
+  if (typeof value !== "string" || !value.includes("var(--raikou-scale)")) {
+    return value;
+  }
+  return (_a = value.match(/^calc\((.*?)\)$/)) == null ? void 0 : _a[1].split("*")[0].trim();
+}
+function px(value) {
+  const transformedValue = getTransformedScaledValue(value);
+  if (typeof transformedValue === "number") {
+    return transformedValue;
+  }
+  if (typeof transformedValue === "string") {
+    if (transformedValue.includes("calc") || transformedValue.includes("var")) {
+      return transformedValue;
+    }
+    if (transformedValue.includes("px")) {
+      return Number(transformedValue.replace("px", ""));
+    }
+    if (transformedValue.includes("rem")) {
+      return Number(transformedValue.replace("rem", "")) * 16;
+    }
+    if (transformedValue.includes("em")) {
+      return Number(transformedValue.replace("em", "")) * 16;
+    }
+    return Number(transformedValue);
+  }
+  return NaN;
+}
+var init_px = __esm({
+  "src/core/utils/units-converters/px.ts"() {
+    "use strict";
+  }
+});
+
+// src/core/utils/units-converters/rem.ts
+function scaleRem(remValue) {
+  return `calc(${remValue} * var(--raikou-scale))`;
+}
+function createConverter(units, { shouldScale = false } = {}) {
+  return (value) => {
+    if (value === 0 || value === "0") {
+      return "0";
+    }
+    if (typeof value === "number") {
+      const val = `${value / 16}${units}`;
+      return shouldScale ? scaleRem(val) : val;
+    }
+    if (typeof value === "string") {
+      if (value.includes("calc(") || value.includes("var(")) {
+        return value;
+      }
+      if (value.includes(units)) {
+        return shouldScale ? scaleRem(value) : value;
+      }
+      const replaced = value.replace("px", "");
+      if (!Number.isNaN(Number(replaced))) {
+        const val = `${Number(replaced) / 16}${units}`;
+        return shouldScale ? scaleRem(val) : val;
+      }
+    }
+    return value;
+  };
+}
+var rem, em;
+var init_rem = __esm({
+  "src/core/utils/units-converters/rem.ts"() {
+    "use strict";
+    rem = createConverter("rem", { shouldScale: true });
+    em = createConverter("em");
+  }
+});
+
+// src/core/utils/units-converters/index.ts
+var units_converters_exports = {};
+__export(units_converters_exports, {
+  em: () => em,
+  px: () => px,
+  rem: () => rem
+});
+var init_units_converters = __esm({
+  "src/core/utils/units-converters/index.ts"() {
+    "use strict";
+    init_px();
+    init_rem();
+  }
+});
+
 // src/core/utils/keys/keys.ts
 function keys(object) {
   return Object.keys(object);
@@ -31,68 +141,8 @@ function camelToKebabCase(value) {
   return value.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
 }
 
-// src/core/utils/units-converters/px.ts
-function getTransformedScaledValue(value) {
-  var _a;
-  if (typeof value !== "string" || !value.includes("var(--raikou-scale)")) {
-    return value;
-  }
-  return (_a = value.match(/^calc\((.*?)\)$/)) == null ? void 0 : _a[1].split("*")[0].trim();
-}
-function px(value) {
-  const transformedValue = getTransformedScaledValue(value);
-  if (typeof transformedValue === "number") {
-    return transformedValue;
-  }
-  if (typeof transformedValue === "string") {
-    if (transformedValue.includes("calc") || transformedValue.includes("var")) {
-      return transformedValue;
-    }
-    if (transformedValue.includes("px")) {
-      return Number(transformedValue.replace("px", ""));
-    }
-    if (transformedValue.includes("rem")) {
-      return Number(transformedValue.replace("rem", "")) * 16;
-    }
-    if (transformedValue.includes("em")) {
-      return Number(transformedValue.replace("em", "")) * 16;
-    }
-    return Number(transformedValue);
-  }
-  return NaN;
-}
-
-// src/core/utils/units-converters/rem.ts
-function scaleRem(remValue) {
-  return `calc(${remValue} * var(--raikou-scale))`;
-}
-function createConverter(units, { shouldScale = false } = {}) {
-  return (value) => {
-    if (value === 0 || value === "0") {
-      return "0";
-    }
-    if (typeof value === "number") {
-      const val = `${value / 16}${units}`;
-      return shouldScale ? scaleRem(val) : val;
-    }
-    if (typeof value === "string") {
-      if (value.includes("calc(") || value.includes("var(")) {
-        return value;
-      }
-      if (value.includes(units)) {
-        return shouldScale ? scaleRem(value) : value;
-      }
-      const replaced = value.replace("px", "");
-      if (!Number.isNaN(Number(replaced))) {
-        const val = `${Number(replaced) / 16}${units}`;
-        return shouldScale ? scaleRem(val) : val;
-      }
-    }
-    return value;
-  };
-}
-var rem = createConverter("rem", { shouldScale: true });
-var em = createConverter("em");
+// src/core/utils/index.ts
+init_units_converters();
 
 // src/core/utils/filter-props/filter-props.ts
 function filterProps(props) {
@@ -293,6 +343,7 @@ function closeOnEscape(callback, options = { active: true }) {
 }
 
 // src/core/utils/get-size/get-size.ts
+init_units_converters();
 function getSize(size, prefix = "size", convertToRem = true) {
   return isNumberLike(size) ? convertToRem ? rem(size) : size : `var(--${prefix}-${size})`;
 }
@@ -327,6 +378,7 @@ function createEventHandler(parentEventHandler, eventHandler) {
 }
 
 // src/core/utils/get-breakpoint-value/get-breakpoint-value.ts
+init_units_converters();
 function getBreakpointValue(breakpoint, theme) {
   if (breakpoint in theme.breakpoints) {
     return px(theme.breakpoints[breakpoint]);
@@ -1111,25 +1163,19 @@ function mergeRaikouTheme(currentTheme, themeOverride) {
   return result;
 }
 
-// src/core/store.ts
-import { create } from "zustand";
-var useStore = create(() => null);
-
 // src/core/RaikouProvider/useRaikouTheme/useRaikouTheme.ts
+import useStore from "@raikou/global-store";
 function useRaikouTheme() {
   if (typeof window !== "undefined") {
-    if (useStore.getState() === null) {
-      const windowTheme = window["raikou_theme"];
-      useStore.setState(windowTheme);
-      const theme = mergeRaikouTheme(DEFAULT_THEME, windowTheme);
-      theme.variantColorResolver = defaultVariantColorsResolver;
-      return theme;
-    } else {
-      const stateTheme = useStore.getState();
-      const theme = mergeRaikouTheme(DEFAULT_THEME, stateTheme);
-      theme.variantColorResolver = defaultVariantColorsResolver;
-      return theme;
-    }
+    const windowTheme = window["raikou_theme"];
+    const theme = mergeRaikouTheme(DEFAULT_THEME, windowTheme);
+    theme.variantColorResolver = defaultVariantColorsResolver;
+    return theme;
+  } else {
+    const createTheme = useStore.getState();
+    const theme = mergeRaikouTheme(DEFAULT_THEME, createTheme);
+    theme.variantColorResolver = defaultVariantColorsResolver;
+    return theme;
   }
   console.log("warning - using default theme, should not happen");
   return DEFAULT_THEME;
@@ -1358,14 +1404,20 @@ function resolveVars({
   themeName
 }) {
   var _a;
+  const rem2 = (init_units_converters(), __toCommonJS(units_converters_exports)).rem;
   return (_a = mergeVars([
     varsResolver == null ? void 0 : varsResolver(theme, props, stylesCtx),
-    ...themeName.map(
-      (name) => {
-        var _a2, _b, _c;
-        return (_c = (_b = (_a2 = theme.components) == null ? void 0 : _a2[name]) == null ? void 0 : _b.vars) == null ? void 0 : _c.call(_b, theme, props, stylesCtx);
-      }
-    ),
+    ...themeName.map((name) => {
+      var _a2, _b;
+      const vars2 = new Function(
+        "theme",
+        "props",
+        "stylesCtx",
+        "rem",
+        (_b = (_a2 = theme.components) == null ? void 0 : _a2[name]) == null ? void 0 : _b.vars
+      );
+      return vars2 == null ? void 0 : vars2(theme, props, stylesCtx, rem2);
+    }),
     vars == null ? void 0 : vars(theme, props, stylesCtx)
   ])) == null ? void 0 : _a[selector];
 }

@@ -1126,6 +1126,7 @@ function RaikouClasses({ theme, nonce }) {
 }
 
 // src/core/RaikouProvider/RaikouProvider.tsx
+var import_global_store = __toESM(require("@raikou/global-store"));
 suppressNextjsWarning();
 function RaikouProvider({
   theme,
@@ -1140,6 +1141,8 @@ function RaikouProvider({
   let mergedTheme = mergeRaikouTheme(DEFAULT_THEME, theme);
   if (typeof window !== "undefined") {
     window["raikou_theme"] = theme;
+  } else {
+    import_global_store.default.setState(theme);
   }
   return /* @__PURE__ */ import_react3.default.createElement(
     import_next_themes2.ThemeProvider,

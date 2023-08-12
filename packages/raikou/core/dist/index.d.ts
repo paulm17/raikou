@@ -303,7 +303,7 @@ interface RaikouTheme {
      *  - `always` – focus ring is displayed when the user navigates with keyboard and mouse
      *  - `never` – focus ring is always hidden (not recommended)
      */
-    focusRing: 'auto' | 'always' | 'never';
+    focusRing: "auto" | "always" | "never";
     /** rem units scale, change if you customize font-size of `<html />` element
      *  default value is `1` (for `100%`/`16px` font-size on `<html />`)
      */
@@ -375,7 +375,7 @@ interface RaikouTheme {
      * - `default` – cursor that is used by native HTML elements, for example, `input[type="checkbox"]` has `cursor: default` styles
      * - `pointer` – sets `cursor: pointer` on interactive elements that do not have these styles by default
      */
-    cursorType: 'default' | 'pointer';
+    cursorType: "default" | "pointer";
     /** Default gradient configuration for components that support `variant="gradient"` */
     defaultGradient: RaikouGradient;
     /** Class added to the elements that have active styles, for example, `Button` and `ActionIcon` */
@@ -389,7 +389,7 @@ interface RaikouTheme {
     /** Any other properties that you want to access with the theme objects */
     other: RaikouThemeOther;
 }
-type RaikouColorScheme = 'light' | 'dark' | 'auto';
+type RaikouColorScheme = "light" | "dark" | "auto";
 type RaikouThemeOverride = PartialDeep<RaikouTheme>;
 type RaikouStylesRecord = Record<string, React.CSSProperties>;
 interface RaikouThemeComponent {
@@ -404,7 +404,7 @@ interface HeadingStyle {
     fontWeight?: string;
     lineHeight: string;
 }
-type RaikouSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+type RaikouSize = "xs" | "sm" | "md" | "lg" | "xl";
 type RaikouBreakpointsValues = Record<RaikouSize, string>;
 type RaikouFontSizesValues = Record<RaikouSize, string>;
 type RaikouRadiusValues = Record<RaikouSize, string>;
@@ -441,7 +441,7 @@ interface RaikouPrimaryShade {
     light: RaikouColorShade;
     dark: RaikouColorShade;
 }
-type DefaultRaikouColor = 'dark' | 'gray' | 'red' | 'pink' | 'grape' | 'violet' | 'indigo' | 'blue' | 'cyan' | 'green' | 'lime' | 'yellow' | 'orange' | 'teal' | (string & {});
+type DefaultRaikouColor = "dark" | "gray" | "red" | "pink" | "grape" | "violet" | "indigo" | "blue" | "cyan" | "green" | "lime" | "yellow" | "orange" | "teal" | (string & {});
 type RaikouThemeColorsOverride = {};
 type RaikouThemeColors = RaikouThemeColorsOverride extends {
     colors: Record<infer CustomColors, RaikouColorsTuple>;

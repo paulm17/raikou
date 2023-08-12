@@ -1056,6 +1056,7 @@ function RaikouClasses({ theme, nonce }) {
 }
 
 // src/core/RaikouProvider/RaikouProvider.tsx
+import useStore from "@raikou/global-store";
 suppressNextjsWarning();
 function RaikouProvider({
   theme,
@@ -1070,6 +1071,8 @@ function RaikouProvider({
   let mergedTheme = mergeRaikouTheme(DEFAULT_THEME, theme);
   if (typeof window !== "undefined") {
     window["raikou_theme"] = theme;
+  } else {
+    useStore.setState(theme);
   }
   return /* @__PURE__ */ React3.createElement(
     ThemeProvider,

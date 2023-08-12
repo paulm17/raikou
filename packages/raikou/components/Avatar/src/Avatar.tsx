@@ -162,7 +162,6 @@ export const Avatar = polymorphicFactory<AvatarFactory>((_props, ref) => {
           src={src!}
           alt={alt}
           onError={(event) => {
-            console.log(event);
             setError(true);
             imageProps?.onError?.(event);
           }}

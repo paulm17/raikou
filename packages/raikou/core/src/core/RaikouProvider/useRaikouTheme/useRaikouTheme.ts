@@ -1,28 +1,24 @@
 import { DEFAULT_THEME } from "../default-theme";
 import { defaultVariantColorsResolver } from "../color-functions";
 import { mergeRaikouTheme } from "../merge-raikou-theme";
-import { useStore } from "../../store";
 import { RaikouTheme } from "../theme.types";
+import useStore from "@raikou/global-store";
 
 export function useRaikouTheme() {
   if (typeof window !== "undefined") {
     // Client
-    if (useStore.getState() === null) {
-      const windowTheme = (window as any)["raikou_theme"];
+    const windowTheme = (window as any)["raikou_theme"];
+    const theme = mergeRaikouTheme(DEFAULT_THEME, windowTheme);
+    theme.variantColorResolver = defaultVariantColorsResolver;
 
-      useStore.setState(windowTheme);
+    return theme;
+  } else {
+    // Server
+    const createTheme = useStore.getState() as unknown;
+    const theme = mergeRaikouTheme(DEFAULT_THEME, createTheme as any);
+    theme.variantColorResolver = defaultVariantColorsResolver;
 
-      const theme = mergeRaikouTheme(DEFAULT_THEME, windowTheme);
-      theme.variantColorResolver = defaultVariantColorsResolver;
-
-      return theme;
-    } else {
-      const stateTheme = useStore.getState() as RaikouTheme;
-      const theme = mergeRaikouTheme(DEFAULT_THEME, stateTheme);
-      theme.variantColorResolver = defaultVariantColorsResolver;
-
-      return theme;
-    }
+    return theme as RaikouTheme;
   }
 
   console.log("warning - using default theme, should not happen");
