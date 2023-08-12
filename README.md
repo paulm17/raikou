@@ -6,7 +6,7 @@
   </a>
   <h3 align="center">RAIKOU</h3>
   <p align="center">
-    Raikou is a raikou fork which replaces css modules to use tailwind.
+    Raikou is a mantine fork which replaces css modules to use tailwind.
     <br />
     <a href="https://github.com/paulm17/raikou/issues">Report Bug</a>
     ·
@@ -18,8 +18,8 @@
 
 ## About The Project
 
-Raikou 6 with CSS-in-JS allowed for styles to be adjacent to the component it
-was styling. However with Raikou 7 styling has switched to CSS Modules. Many in
+Mantine 6 with CSS-in-JS allowed for styles to be adjacent to the component it
+was styling. However with Mantine 7 styling has switched to CSS Modules. Many in
 the industry see CSS Modules as a step backwards and I (the fork author) share
 this sentiment. Therefore forking the project to support tailwind was the
 obvious choice.
@@ -27,8 +27,9 @@ obvious choice.
 The project was conceived with these 4 long-term goals:
 
 1. To allow for components without hooks to behave as server components and
-   should state be introduced on the server side, make as many components server
-   aware.
+   should state be introduced on the server side, make as many components
+   <a href="https://nextjs.org/_next/image?url=%2Fdocs%2Fdark%2Fthinking-in-server-components.png&w=3840&q=75">server
+   aware</a>.
 2. To ensure proper tree-shaking for components and purging of unused css. (TBD,
    waiting for vercel to resolve the client bundle to be tree-shakable)
 3. To switch the theme from react context (state) to the tailwind theme. Thereby
@@ -46,30 +47,26 @@ The project was conceived with these 4 long-term goals:
 1.  Remix, Svelte, Solid, Astro, Qwik and any other javascript frameworks are
     not supported. There are no intentions of supporting anything other than
     NextJS.
-2.  There may be design decisions implemented that will diverge from Raikou.
+2.  There may be design decisions implemented that will diverge from Mantine.
 
-    - Styles API layer may disappear because it has been superseded by the
+    - Styles API layer has been removed because it has been superseded by the
       Classes API and Styles API is
       <a href="https://v7.mantine.dev/styles/styles-performance#inline-styles">very
       slow</a>.
-    - Raikou and Raikou employ different approaches to manage the theme. While
-      Raikou uses context to maintain the theme, Raikou utilizes a global
-      Zustand state for both server and client-side theme storage.
-
-      On the server side, Raikou loads the theme from the tailwind config when
-      an initial theme request is made. As for the client side, the theme is
-      first stored in a window variable and then transferred to Zustand during
-      the initial theme request.
-
-    - There are no createTheme function. The tailwind theme is responsible for
-      any changes.
+    - Mantine and Raikou employ different approaches to manage the theme. While
+      Mantine uses context to maintain the theme, Raikou utilizes a global
+      Zustand state for server rendering and a window variable for client
+      rendering.
     - The code responsible for the ColorScheme has been replaced with a more
       lightweight version using
       <a href="https://github.com/pacocoursey/next-themes">Next Themes</a>.
+    - When customising a theme, some functionality is encapsulated in a string
+      so that the theme can be passed from a server component to a client
+      component.
+    - Some components have had their javascript removed to make them server
+      components primarily.
 
-3.  Some components have had their javascript removed to make them server
-    components primarily.
-4.  Issues may be closed due to the fork author not having free time. If an
+3.  Issues may be closed due to the fork author not having free time. If an
     issue is very important, please consider implementing a PR.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -88,65 +85,50 @@ To get a local copy up and running follow these simple example steps.
 
 ### Installation to a NextJS 13 application
 
-1. Install the required packages. Same as Raikou.
+1. Install the required packages. Same as Mantine.
 
 - npm
   ```sh
-  npm install @raikou/client @raikou/hooks @raikou/server @raikou/system postcss-preset-raikou postcss-removecss-raikou
+  npm install @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/global-store postcss-preset-raikou postcss-removecss-raikou
   ```
 - yarn
   ```sh
-  yarn add @raikou/client @raikou/hooks @raikou/server @raikou/system postcss-preset-raikou postcss-removecss-raikou
+  yarn add @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/global-store postcss-preset-raikou postcss-removecss-raikou
   ```
 
-2. Change the content param in tailwind config, to pick up the component Library
+2. Change the css file - globals.css that exists in layout.tsx to:
 
-   ```sh
-   content: [
-      "./node_modules/@raikou/**/*.js",
-      "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-   ],
+   ```css
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
+
+   @import "@raikou/system/styles.css";
    ```
 
-   Note: If cloning the repo. The webapp will have a more extensive content
-   listing. This is due to glob breaking NextJS HMR.
-
-3. Add a preset param in the tailwind config, to pick up the component styles
-
-   ```sh
-   presets: [require("@raikou/system/plugin.js")],
-   ```
-
-4. Components derive theme overrides from the tailwind config file. To change
-   the scaling, create a new custom param in the extends param.
+3. Amend layout.tsx to resemble the following. RaikouProvider must encapsulate
+   the children. It should resemble something like the following:
 
    ```js
-   theme: {
-    extend: {
-      custom: {
-        scale: 2,
-      },
-    },
-   },
+   import { RaikouProvider } from '@raikou/system';
+   import "../global.css";
+
+   export default function RootLayout({
+      children,
+   }: {
+      children: React.ReactNode
+   }) {
+      return (
+         <html lang="en">
+            <body className={inter.className}>
+               <RaikouProvider>{children}</RaikouProvider>
+            </body>
+         </html>
+      )
+   }
    ```
 
-5. Add a new plugin to the postcss.config.js to purge unused component library
-   styles
-
-   ```js
-   "postcss-removecss-raikou": {
-      appPath: "./app",
-      libPath: [
-        "./node_modules/@raikou/client/dist/index.mjs",
-        "./node_modules/@raikou/server/dist/index.mjs",
-      ],
-      exts: [".tsx"],
-   },
-   ```
-
-Change appPath to where the tsx files for your project reside.
-
-6. Change the postcss.config.js to:
+4. Change the postcss.config.js to:
 
    ```js
    module.exports = {
@@ -159,39 +141,95 @@ Change appPath to where the tsx files for your project reside.
    };
    ```
 
-7. Change the css file that exists in layout.tsx to:
+Note: There will be complaints in the log about tailwind nesting issues. These
+are not prevalent with the next release of tailwind.
 
-   ```css
-   @tailwind base;
-   @tailwind components;
-   @tailwind utilities;
+5. Add a new plugin to the postcss.config.js to purge unused component library
+   styles
 
-   @import "@raikou/system/styles.css";
+   ```js
+   "postcss-removecss-raikou": {
+      appPath: "./app",
+      libPath: [
+      "./node_modules/@raikou/client/dist/index.mjs",
+      "./node_modules/@raikou/server/dist/index.mjs",
+      ],
+      exts: [".tsx"],
+   },
    ```
 
-8. Amend layout.tsx to resemble the following. RaikouProvider must encapsulate
-   the children and include the tailwind configuration for the theme.
+Change appPath to where the tsx files for your project reside.
+
+6. Change the content param in tailwind config, to pick up the component Library
+
+   ```js
+   content: [
+      "./node_modules/@raikou/**/*.js",
+      "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+   ],
+   ```
+
+   Note: If cloning the repo. The webapp will have a more extensive content
+   listing. This is due to glob breaking NextJS HMR.
+
+7. Add a preset param in the tailwind config, to pick up the component styles
+
+   ```js
+   presets: [require("@raikou/system/plugin.js")],
+   ```
+
+8. If there is a requirement to modify the theme, update layout.tsx as follows:
 
    ```js
    import { RaikouProvider } from '@raikou/system';
-   import resolveConfig from "tailwindcss/resolveConfig";
-   import tailwindConfig from "../tailwind.config.js";
+   import { setState, createTheme } from "@raikou/global-store";
+   import "../global.css";
 
    export default function RootLayout({
       children,
    }: {
       children: React.ReactNode
    }) {
-      const fullConfig = resolveConfig(tailwindConfig);
+      const theme = createTheme({
+         primaryColor: "green",
+      });
+
+      setState(theme);
 
       return (
          <html lang="en">
             <body className={inter.className}>
-               <RaikouProvider theme={(fullConfig.theme as any).custom}>{children}</RaikouProvider>
+               <RaikouProvider theme={theme}>{children}</RaikouProvider>
             </body>
          </html>
       )
    }
+   ```
+
+   Note, remove the primaryColor and change to suit your requirements.
+
+9. The theme components api has changed from the
+   <a href="https://v7.mantine.dev/styles/variants-sizes#sizes-with-components-css-variables">original
+   documentation</a>:
+
+   ```js
+   components: {
+     Button: {
+       vars: `
+         if (props.size === "xxl") {
+           return {
+             root: {
+               "--button-height": rem(60),
+               "--button-padding-x": rem(30),
+               "--button-fz": rem(30),
+             },
+           };
+         }
+
+         return { root: {} };
+       `,
+     },
+   },
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -231,7 +269,7 @@ stack, \*table, text, title, unstyled-button, visually-hidden.
 
 ### Changes to components
 
-The following components have been altered from the original raikou spec:
+The following components have been altered from the original mantine spec:
 
 1. App Shell
 
@@ -276,14 +314,14 @@ return <Badge>Hello</Badge>;
 And the page will include all the neccessary client payload for the Badge and
 the page.
 
-## Server Components - Raikou vs Raikou
+## Server Components - Mantine vs Raikou
 
 Here is an example of all the server components on a page (with Raikou using
 "use client").
 
 <img src="./images/serverComponents.png" alt="Server Components picture">
 
-##### Some stats for raikou vs raikou:
+##### Some stats for mantine vs raikou:
 
 - 12 requests each (remove favicon from raikou)
 - 1.8MB transferred vs 2.6MB transferred
@@ -294,7 +332,7 @@ Here is an example of all the server components on a page (with Raikou using
 
 Stats are taken from the very first initial load.
 
-##### Network tabs (Raikou vs Raikou)
+##### Network tabs (Mantine vs Raikou)
 
 <p float="left">
   <img src="./images/raikou.png" width="200" alt="Raikou Network Tab">
@@ -314,10 +352,11 @@ When omitting "use client" this results in Page.js not being requested.
 - [x] Create a postcss script to purge unused CSS
 - [x] Enable react server components and split packages to server and client
 - [x] Tree-shaking for client build
-- [x] Replace the context provider that components use for state, with the
-      tailwind theme
-- [x] Replace Raikou ColorScheme code with Next-Themes
-- [ ] Upgrade tailwind to the new release supporting LightningCSS
+- [x] Replace the context provider that components use for state
+- [x] Match or significantly improve the amount of data that is sent on each
+      full request
+- [x] Replace Mantine ColorScheme code with Next-Themes
+- [ ] Upgrade tailwind to the new release supporting LightningCSS (tailwind v4?)
 - [ ] With the new tailwind release, migrate the postcss script to a
       LightningCSS transformer. Investigate a Rust port.
 - [ ] With the new tailwind release, investigate whether it's possible to port
@@ -377,7 +416,7 @@ Project Link:
 
 ## Acknowledgments
 
-Vitaly and the Raikou community.
+Vitaly and the Mantine community.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
