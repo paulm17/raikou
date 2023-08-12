@@ -26,21 +26,23 @@ obvious choice.
 
 The project was conceived with these 4 long-term goals:
 
-1. To allow for components without hooks to behave as server components and
-   should state be introduced on the server side, make as many components
+1. To make as many components
    <a href="https://nextjs.org/_next/image?url=%2Fdocs%2Fdark%2Fthinking-in-server-components.png&w=3840&q=75">server
    aware</a>.
 2. To ensure proper tree-shaking for components and purging of unused css. (TBD,
    waiting for vercel to resolve the client bundle to be tree-shakable)
-3. To switch the theme from react context (state) to the tailwind theme. Thereby
-   negating the need to keep the color mode (light/dark) and text direction
-   (left/right) in state.
-4. When using the ClassNames api, to ensure that there were no clashes between
-   the bootstrapped CSS of the component and tailwind styles provided. This has
-   been made possible with tailwind loading the styles via a plugin
+3. To ensure that there were no clashes between the bootstrapped CSS of the
+   component and tailwind styles provided, when using the ClassNames API. This
+   has been made possible with tailwind loading the styles via a plugin
    architecture. See for
    <a href="https://tailwindcss.com/docs/plugins#css-in-js-syntax">more
    information</a>.
+4. To improve the amount of data sent over each full request:
+   - By leveraging the new server paradigm. All the layout components would be
+     server based, thus omitting them from the client payload. Thus, the leaf
+     components being a mixture of server and client based.
+   - Using a css purging strategy. CSS for only the modules used would be
+     shipped.
 
 ## Project Caveats
 
