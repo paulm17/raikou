@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { RaikouThemeOverride } from "../../system/src";
+import { RaikouThemeOverride } from "../../core";
 
 const useStore = create<RaikouThemeOverride>(() => ({}) as any);
 

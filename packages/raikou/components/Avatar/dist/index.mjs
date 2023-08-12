@@ -222,7 +222,6 @@ var Avatar = polymorphicFactory((_props, ref) => {
         alt,
         onError: (event) => {
           var _a2;
-          console.log(event);
           setError(true);
           (_a2 = imageProps == null ? void 0 : imageProps.onError) == null ? void 0 : _a2.call(imageProps, event);
         }

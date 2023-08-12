@@ -2,7 +2,7 @@
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "types": ["../system/node_modules/type-fest/source/partial-deep"]
+      "types": ["../core/node_modules/type-fest/source/partial-deep"]
     }
   },
   "include": ["src", "index.ts", "../../../configuration/types"]

@@ -52,7 +52,7 @@ export function RaikouProvider({
   if (typeof window !== "undefined") {
     (window as any)["raikou_theme"] = theme;
   } else {
-    useStore.setState(theme!);
+    useStore.setState(theme as any);
   }
 
   return (
