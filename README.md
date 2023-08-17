@@ -67,10 +67,14 @@ The project was conceived with these 4 long-term goals:
       component.
     - Some components have had their javascript removed to make them server
       components primarily.
-    - The entirity of the base 10 colors have been removed, as tailwind comes
-      with it's own color system. That said, due to how Mantine has been created
-      it relies on a primary color. To override this, override the primaryColor
-      theme setting.
+    - All 10 colors have been removed, as tailwind comes with it's own color
+      system. Raikou comes with a default color. Should there exist a
+      requirement to add your own colors. Supply them in a theme object.
+      Additionally, Raikou has the ability to change many aspects of the theme.
+      See
+      <a href="https://github.com/paulm17/raikou/blob/main/packages/raikou/system/src/core/RaikouProvider/css-variables.plugin.ts">the
+      options available to each component</a>. Change these settings using
+      cssVariablesResolver and example is below.
 
 3.  Issues may be closed due to the fork author not having free time. If an
     issue is very important, please consider implementing a PR.
@@ -145,7 +149,8 @@ Change appPath to where the tsx files for your project reside.
    Note: If cloning the repo. The webapp will have a more extensive content
    listing. This is due to glob breaking NextJS HMR.
 
-5. Add a preset param in the tailwind config, to pick up the component styles
+5. Add this preset param in the tailwind config. Without this, css styling does
+   not work.
 
    ```js
    presets: [require("@raikou/system/plugin.js")],
@@ -172,7 +177,10 @@ Change appPath to where the tsx files for your project reside.
    }
    ```
 
-7. If there is a requirement to modify the theme, update layout.tsx as follows:
+   Note, the default primary color is blue: #5474B4.
+
+7. If there is a requirement to modify the theme. For example changing the
+   primary color to orange. Update layout.tsx as follows:
 
    ```js
    import { RaikouProvider } from '@raikou/system';
@@ -182,6 +190,14 @@ Change appPath to where the tsx files for your project reside.
    }: {
       children: React.ReactNode
    }) {
+      const theme = createTheme({
+      primaryColor: "orange",
+      colors: {
+        orange: generateColors("#FF8000"),
+      },
+    });
+
+    setState(theme);
       return (
          <html lang="en">
             <body className={inter.className}>
@@ -192,7 +208,8 @@ Change appPath to where the tsx files for your project reside.
    }
    ```
 
-   Note, remove the primaryColor and change to suit your requirements.
+Note: The 10 colors for the primary color will then be generated at the :root
+pseudo-class.
 
 8. The theme components api has changed from the
    <a href="https://v7.mantine.dev/styles/variants-sizes#sizes-with-components-css-variables">original
@@ -244,30 +261,6 @@ Then update the RaikouProvider.
 
 The second option is to simply add the css variables to globals.css. Include the
 variables at the end of the file.
-
-10. Should you wish to change the primary color, do so as follows:
-
-    ```js
-    const theme = createTheme({
-      primaryColor: "primary",
-      colors: {
-        primary: generateColors("#F0185C"),
-      },
-    });
-
-    setState(theme);
-
-    return (
-      <html lang="en">
-        <body className={inter.className}>
-          <RaikouProvider theme={theme}>{children}</RaikouProvider>
-        </body>
-      </html>
-    );
-    ```
-
-The 10 colors for the primary color will then be generated at the :root
-pseudo-class.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
