@@ -253,11 +253,11 @@ pseudo-class.
 
 Then update the RaikouProvider.
 
-    ```js
-    <RaikouProvider theme={theme} cssVariablesResolver={resolver}>
+      ```js
+      <RaikouProvider theme={theme} cssVariablesResolver={resolver}>
       {children}
-    </RaikouProvider>
-    ```
+      </RaikouProvider>
+      ```
 
 The second option is to simply add the css variables to globals.css. Include the
 variables at the end of the file.
