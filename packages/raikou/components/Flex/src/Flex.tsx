@@ -7,70 +7,52 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  RaikouSpacing,
-  getSpacing,
-  createVarsResolver,
   Factory,
+  InlineStyles,
+  useRandomClassName,
+  parseStyleProps,
+  StyleProp,
+  RaikouSize,
+  useRaikouTheme,
+  filterProps,
 } from "@raikou/core";
+import { FLEX_STYLE_PROPS_DATA } from "./flex-props";
 
 export type FlexStylesNames = "root";
-export type FlexVariant = string;
-export type FlexCssVariables = {
-  root:
-    | "--flex-gap"
-    | "--flex-align"
-    | "--flex-justify"
-    | "--flex-wrap"
-    | "--flex-direction";
-};
 
 export interface FlexProps
   extends BoxProps,
     StylesApiProps<FlexFactory>,
     ElementProps<"div"> {
-  /** Key of `theme.spacing` or any valid CSS value to set `gap` property, numbers are converted to rem, `'md'` by default */
-  gap?: RaikouSpacing | (string & {}) | number;
+  /** `gap` CSS property */
+  gap?: StyleProp<RaikouSize | (string & {}) | number>;
 
-  /** Controls `align-items` CSS property, `'stretch'` by default */
-  align?: React.CSSProperties["alignItems"];
+  /** `row-gap` CSS property */
+  rowGap?: StyleProp<RaikouSize | (string & {}) | number>;
 
-  /** Controls `justify-content` CSS property, `'flex-start'` by default */
-  justify?: React.CSSProperties["justifyContent"];
+  /** `column-gap` CSS property */
+  columnGap?: StyleProp<RaikouSize | (string & {}) | number>;
 
-  /** Controls `flex-wrap` CSS property, `'wrap'` by default */
-  wrap?: React.CSSProperties["flexWrap"];
+  /** `align-items` CSS property */
+  align?: StyleProp<React.CSSProperties["alignItems"]>;
 
-  /** Controls `direction` CSS property, `'row'` by default */
-  direction?: React.CSSProperties["flexDirection"];
+  /** justify-content CSS property */
+  justify?: StyleProp<React.CSSProperties["justifyContent"]>;
+
+  /** flex-wrap CSS property */
+  wrap?: StyleProp<React.CSSProperties["flexWrap"]>;
+
+  /** flex-direction CSS property */
+  direction?: StyleProp<React.CSSProperties["flexDirection"]>;
 }
 
 export type FlexFactory = Factory<{
   props: FlexProps;
   ref: HTMLDivElement;
   stylesNames: FlexStylesNames;
-  vars: FlexCssVariables;
-  variant: FlexVariant;
 }>;
 
-const defaultProps: Partial<FlexProps> = {
-  gap: "md",
-  align: "flex-start",
-  justify: "flex-start",
-  direction: "row",
-  wrap: "wrap",
-};
-
-const varsResolver = createVarsResolver<FlexFactory>(
-  (_, { gap, align, justify, wrap, direction }) => ({
-    root: {
-      "--flex-gap": getSpacing(gap),
-      "--flex-align": align,
-      "--flex-justify": justify,
-      "--flex-wrap": wrap,
-      "--flex-direction": direction,
-    },
-  })
-);
+const defaultProps: Partial<FlexProps> = {};
 
 export const Flex = factory<FlexFactory>((_props, ref) => {
   const props = useProps("Flex", defaultProps, _props);
@@ -81,29 +63,58 @@ export const Flex = factory<FlexFactory>((_props, ref) => {
     styles,
     unstyled,
     vars,
+    gap,
+    rowGap,
+    columnGap,
     align,
     justify,
-    gap,
-    direction,
     wrap,
-    variant,
+    direction,
     ...others
   } = props;
 
   const getStyles = useStyles<FlexFactory>({
     name: "Flex",
+    classes: {
+      root: "flex-root",
+    },
     props,
-    classes: { root: "flex-root" },
     className,
     style,
     classNames,
     styles,
     unstyled,
     vars,
-    varsResolver,
   });
 
-  return <Box ref={ref} {...getStyles("root")} variant={variant} {...others} />;
+  const theme = useRaikouTheme();
+  const responsiveClassName = useRandomClassName();
+  const parsedStyleProps = parseStyleProps({
+    // @ts-ignore
+    styleProps: { gap, rowGap, columnGap, align, justify, wrap, direction },
+    theme,
+    data: FLEX_STYLE_PROPS_DATA,
+  });
+
+  return (
+    <>
+      {parsedStyleProps.hasResponsiveStyles && (
+        <InlineStyles
+          selector={`.${responsiveClassName}`}
+          styles={parsedStyleProps.styles}
+          media={parsedStyleProps.media}
+        />
+      )}
+      <Box
+        ref={ref}
+        {...getStyles("root", {
+          className: responsiveClassName,
+          style: filterProps(parsedStyleProps.inlineStyles),
+        })}
+        {...others}
+      />
+    </>
+  );
 });
 
 Flex.displayName = "@raikou/core/Flex";

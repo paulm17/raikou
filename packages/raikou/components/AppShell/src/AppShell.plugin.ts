@@ -13,11 +13,11 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_app-shell-border-color": "var(--raikou-color-gray-3)",
+        "--_app-shell-border-color": "var(--raikou-app-shell-border-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_app-shell-border-color": "var(--raikou-color-dark-4)",
+        "--_app-shell-border-color": "var(--raikou-app-shell-border-color)",
       },
     },
 
@@ -56,13 +56,13 @@ module.exports = function ({ addComponents, theme }: any) {
 
       "&[data-with-border]": {
         "--_navbar-border-right": `${rem(
-          "1px"
+          "1px",
         )} solid var(--_app-shell-border-color)`,
 
         '[dir="rtl"] &': {
           "--_navbar-border-right": "none",
           "--_navbar-border-left": `${rem(
-            "1px"
+            "1px",
           )} solid var(--_app-shell-border-color)`,
         },
       },
@@ -85,13 +85,13 @@ module.exports = function ({ addComponents, theme }: any) {
 
       "&[data-with-border]": {
         "--_aside-border-left": `${rem(
-          "1px"
+          "1px",
         )} solid var(--_app-shell-border-color)`,
 
         '[dir="rtl"] &': {
           "--_aside-border-left": "none",
           "--_aside-border-right": `${rem(
-            "1px"
+            "1px",
           )} solid var(--_app-shell-border-color)`,
         },
       },
@@ -151,7 +151,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
       "&[data-with-border]": {
         "--_header-border-bottom": `${rem(
-          "1px"
+          "1px",
         )} solid var(--_app-shell-border-color)`,
       },
     },
@@ -165,7 +165,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
       "&[data-with-border]": {
         "--_footer-border-top": `${rem(
-          "1px"
+          "1px",
         )} solid var(--_app-shell-border-color)`,
       },
     },

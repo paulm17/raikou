@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/Carousel.tsx
-import React7, { Children, useCallback, useEffect, useState as useState2 } from "react";
+import React7, { Children, useCallback, useEffect as useEffect2, useState as useState2 } from "react";
 import {
   Box as Box3,
   factory as factory2,
@@ -155,6 +155,9 @@ import React4, { createContext as createContext2, useContext as useContext2 } fr
 
 // ../components/_utils/use-hovered/use-hovered.ts
 import { useState } from "react";
+
+// ../components/_utils/create-use-external-events/create-use-external-events.ts
+import { useEffect, useLayoutEffect } from "react";
 
 // src/Carousel.tsx
 import { clamp } from "@raikou/hooks";
@@ -426,7 +429,7 @@ var Carousel = factory2((_props, ref) => {
     },
     [embla]
   );
-  useEffect(() => {
+  useEffect2(() => {
     if (embla) {
       getEmblaApi == null ? void 0 : getEmblaApi(embla);
       handleSelect();
@@ -438,7 +441,7 @@ var Carousel = factory2((_props, ref) => {
     }
     return void 0;
   }, [embla, slidesToScroll]);
-  useEffect(() => {
+  useEffect2(() => {
     if (embla) {
       embla.reInit();
       setSlidesCount(embla.scrollSnapList().length);
@@ -515,9 +518,9 @@ Carousel.displayName = "@raikou/core/Carousel";
 Carousel.Slide = CarouselSlide;
 
 // src/use-animation-offset-effect.ts
-import { useEffect as useEffect2 } from "react";
+import { useEffect as useEffect3 } from "react";
 function useAnimationOffsetEffect(embla, transitionDuration) {
-  useEffect2(() => {
+  useEffect3(() => {
     if (embla) {
       window.setTimeout(() => {
         embla.reInit();

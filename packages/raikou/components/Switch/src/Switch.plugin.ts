@@ -88,17 +88,17 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_switch-bg": "var(--raikou-color-gray-2)",
-        "--_switch-bd": "var(--raikou-color-gray-3)",
-        "--_switch-color": "var(--raikou-color-gray-6)",
-        "--_switch-disabled-color": "var(--raikou-color-gray-2)",
+        "--_switch-bg": "var(--raikou-switch-bg)",
+        "--_switch-bd": "var(--raikou-switch-bd)",
+        "--_switch-color": "var(--raikou-switch-color)",
+        "--_switch-disabled-color": "var(--raikou-switch-disabled-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_switch-bg": "var(--raikou-color-dark-6)",
-        "--_switch-bd": "var(--raikou-color-dark-4)",
-        "--_switch-color": "var(--raikou-color-dark-1)",
-        "--_switch-disabled-color": "var(--raikou-color-dark-4)",
+        "--_switch-bg": "var(--raikou-switch-bg)",
+        "--_switch-bd": "var(--raikou-switch-bd)",
+        "--_switch-color": "var(--raikou-switch-color)",
+        "--_switch-disabled-color": "var(--raikou-switch-disabled-color)",
       },
 
       "&[data-error]": {
@@ -138,13 +138,13 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_switch-thumb-bd": "var(--raikou-color-gray-3)",
-        "--_switch-thumb-bg-disabled": "var(--raikou-color-gray-0)",
+        "--_switch-thumb-bd": "var(--raikou-switch-thumb-bd)",
+        "--_switch-thumb-bg-disabled": "var(--raikou-switch-thumb-bg-disabled)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_switch-thumb-bd": "var(--raikou-color-white)",
-        "--_switch-thumb-bg-disabled": "var(--raikou-color-dark-3)",
+        "--_switch-thumb-bd": "var(--raikou-switch-thumb-bd)",
+        "--_switch-thumb-bg-disabled": "var(--raikou-switch-thumb-bg-disabled)",
       },
     },
 

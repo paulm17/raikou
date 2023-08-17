@@ -32,12 +32,12 @@ module.exports = function ({ addComponents, theme }: any) {
       color: "var(--_pill-color)",
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_pill-bg": "var(--raikou-color-dark-7)",
-        "--_pill-color": "var(--raikou-color-dark-0)",
+        "--_pill-bg": "var(--raikou-pill-bg)",
+        "--_pill-color": "var(--raikou-pill-color)",
       },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_pill-color": "var(--raikou-color-black)",
+        "--_pill-color": "var(--raikou-pill-color)",
       },
 
       "&[data-with-remove]": {
@@ -49,22 +49,22 @@ module.exports = function ({ addComponents, theme }: any) {
       },
     },
 
-    ".pill-root--default": {
+    '.pill-root[data-variant="default"]': {
       '[data-raikou-color-scheme="light"] &': {
-        "--_pill-bg": "var(--raikou-color-gray-1)",
+        "--_pill-bg": "var(--raikou-pill-default-bg)",
 
         "&[data-disabled], &:has(button:disabled)": {
-          "--_pill-bg": "var(--raikou-color-gray-3)",
+          "--_pill-bg": "var(--raikou-pill-default-disabled-bg)",
         },
       },
     },
 
-    ".pill-root--contrast": {
+    '.pill-root[data-variant="contrast"]': {
       '[data-raikou-color-scheme="light"] &': {
-        "--_pill-bg": "var(--raikou-color-white)",
+        "--_pill-bg": "var(--raikou-pill-contrast-bg)",
 
         "&[data-disabled], &:has(button:disabled)": {
-          "--_pill-bg": "var(--raikou-color-gray-3)",
+          "--_pill-bg": "var(--raikou-pill-contrast-disabled-bg)",
         },
       },
     },

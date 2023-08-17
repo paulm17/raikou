@@ -72,7 +72,7 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Pagination.tsx
-var import_react13 = __toESM(require("react"));
+var import_react14 = __toESM(require("react"));
 var import_core7 = require("@raikou/core");
 
 // ../Group/src/Group.tsx
@@ -171,7 +171,7 @@ var Group = (0, import_core.factory)((_props, ref) => {
 Group.displayName = "@raikou/core/Group";
 
 // src/PaginationRoot/PaginationRoot.tsx
-var import_react6 = __toESM(require("react"));
+var import_react7 = __toESM(require("react"));
 var import_hooks = require("@raikou/hooks");
 var import_core2 = require("@raikou/core");
 
@@ -195,6 +195,9 @@ var import_react4 = __toESM(require("react"));
 
 // ../_utils/use-hovered/use-hovered.ts
 var import_react5 = require("react");
+
+// ../_utils/create-use-external-events/create-use-external-events.ts
+var import_react6 = require("react");
 
 // src/Pagination.context.ts
 var [PaginationProvider, usePaginationContext] = createSafeContext(
@@ -292,7 +295,7 @@ var PaginationRoot = (0, import_core2.factory)((_props, ref) => {
   const handlePreviousPage = (0, import_core2.createEventHandler)(onPreviousPage, previous);
   const handleFirstPage = (0, import_core2.createEventHandler)(onFirstPage, first);
   const handleLastPage = (0, import_core2.createEventHandler)(onLastPage, last);
-  return /* @__PURE__ */ import_react6.default.createElement(
+  return /* @__PURE__ */ import_react7.default.createElement(
     PaginationProvider,
     {
       value: {
@@ -309,17 +312,17 @@ var PaginationRoot = (0, import_core2.factory)((_props, ref) => {
         getStyles
       }
     },
-    /* @__PURE__ */ import_react6.default.createElement(import_core2.Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others))
+    /* @__PURE__ */ import_react7.default.createElement(import_core2.Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others))
   );
 });
 PaginationRoot.displayName = "@raikou/core/PaginationRoot";
 
 // src/PaginationControl/PaginationControl.tsx
-var import_react8 = __toESM(require("react"));
+var import_react9 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
 
 // ../UnstyledButton/src/UnstyledButton.tsx
-var import_react7 = __toESM(require("react"));
+var import_react8 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
 var defaultProps3 = {
   __staticSelector: "UnstyledButton"
@@ -356,7 +359,7 @@ var UnstyledButton = (0, import_core3.polymorphicFactory)(
       styles,
       unstyled
     });
-    return /* @__PURE__ */ import_react7.default.createElement(
+    return /* @__PURE__ */ import_react8.default.createElement(
       import_core3.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { focusable: true })), {
         component,
@@ -398,7 +401,7 @@ var PaginationControl = (0, import_core4.factory)(
     ]);
     const ctx = usePaginationContext();
     const _disabled = disabled || ctx.disabled;
-    return /* @__PURE__ */ import_react8.default.createElement(
+    return /* @__PURE__ */ import_react9.default.createElement(
       UnstyledButton,
       __spreadValues(__spreadValues({
         ref,
@@ -417,14 +420,14 @@ var PaginationControl = (0, import_core4.factory)(
 PaginationControl.displayName = "@raikou/core/PaginationControl";
 
 // src/PaginationDots/PaginationDots.tsx
-var import_react10 = __toESM(require("react"));
+var import_react11 = __toESM(require("react"));
 var import_core5 = require("@raikou/core");
 
 // src/Pagination.icons.tsx
-var import_react9 = __toESM(require("react"));
+var import_react10 = __toESM(require("react"));
 function PaginationIcon(_a) {
   var _b = _a, { style, children, path } = _b, others = __objRest(_b, ["style", "children", "path"]);
-  return /* @__PURE__ */ import_react9.default.createElement(
+  return /* @__PURE__ */ import_react10.default.createElement(
     "svg",
     __spreadValues({
       viewBox: "0 0 16 16",
@@ -434,34 +437,34 @@ function PaginationIcon(_a) {
         height: "calc(var(--pagination-control-size) / 1.8)"
       }, style)
     }, others),
-    /* @__PURE__ */ import_react9.default.createElement("path", { d: path, fill: "currentColor" })
+    /* @__PURE__ */ import_react10.default.createElement("path", { d: path, fill: "currentColor" })
   );
 }
-var PaginationNextIcon = (props) => /* @__PURE__ */ import_react9.default.createElement(
+var PaginationNextIcon = (props) => /* @__PURE__ */ import_react10.default.createElement(
   PaginationIcon,
   __spreadProps(__spreadValues({}, props), {
     path: "M8.781 8l-3.3-3.3.943-.943L10.667 8l-4.243 4.243-.943-.943 3.3-3.3z"
   })
 );
-var PaginationPreviousIcon = (props) => /* @__PURE__ */ import_react9.default.createElement(
+var PaginationPreviousIcon = (props) => /* @__PURE__ */ import_react10.default.createElement(
   PaginationIcon,
   __spreadProps(__spreadValues({}, props), {
     path: "M7.219 8l3.3 3.3-.943.943L5.333 8l4.243-4.243.943.943-3.3 3.3z"
   })
 );
-var PaginationFirstIcon = (props) => /* @__PURE__ */ import_react9.default.createElement(
+var PaginationFirstIcon = (props) => /* @__PURE__ */ import_react10.default.createElement(
   PaginationIcon,
   __spreadProps(__spreadValues({}, props), {
     path: "M6.85355 3.85355C7.04882 3.65829 7.04882 3.34171 6.85355 3.14645C6.65829 2.95118 6.34171 2.95118 6.14645 3.14645L2.14645 7.14645C1.95118 7.34171 1.95118 7.65829 2.14645 7.85355L6.14645 11.8536C6.34171 12.0488 6.65829 12.0488 6.85355 11.8536C7.04882 11.6583 7.04882 11.3417 6.85355 11.1464L3.20711 7.5L6.85355 3.85355ZM12.8536 3.85355C13.0488 3.65829 13.0488 3.34171 12.8536 3.14645C12.6583 2.95118 12.3417 2.95118 12.1464 3.14645L8.14645 7.14645C7.95118 7.34171 7.95118 7.65829 8.14645 7.85355L12.1464 11.8536C12.3417 12.0488 12.6583 12.0488 12.8536 11.8536C13.0488 11.6583 13.0488 11.3417 12.8536 11.1464L9.20711 7.5L12.8536 3.85355Z"
   })
 );
-var PaginationLastIcon = (props) => /* @__PURE__ */ import_react9.default.createElement(
+var PaginationLastIcon = (props) => /* @__PURE__ */ import_react10.default.createElement(
   PaginationIcon,
   __spreadProps(__spreadValues({}, props), {
     path: "M2.14645 11.1464C1.95118 11.3417 1.95118 11.6583 2.14645 11.8536C2.34171 12.0488 2.65829 12.0488 2.85355 11.8536L6.85355 7.85355C7.04882 7.65829 7.04882 7.34171 6.85355 7.14645L2.85355 3.14645C2.65829 2.95118 2.34171 2.95118 2.14645 3.14645C1.95118 3.34171 1.95118 3.65829 2.14645 3.85355L5.79289 7.5L2.14645 11.1464ZM8.14645 11.1464C7.95118 11.3417 7.95118 11.6583 8.14645 11.8536C8.34171 12.0488 8.65829 12.0488 8.85355 11.8536L12.8536 7.85355C13.0488 7.65829 13.0488 7.34171 12.8536 7.14645L8.85355 3.14645C8.65829 2.95118 8.34171 2.95118 8.14645 3.14645C7.95118 3.34171 7.95118 3.65829 8.14645 3.85355L11.7929 7.5L8.14645 11.1464Z"
   })
 );
-var PaginationDotsIcon = (props) => /* @__PURE__ */ import_react9.default.createElement(
+var PaginationDotsIcon = (props) => /* @__PURE__ */ import_react10.default.createElement(
   PaginationIcon,
   __spreadProps(__spreadValues({}, props), {
     path: "M2 8c0-.733.6-1.333 1.333-1.333.734 0 1.334.6 1.334 1.333s-.6 1.333-1.334 1.333C2.6 9.333 2 8.733 2 8zm9.333 0c0-.733.6-1.333 1.334-1.333C13.4 6.667 14 7.267 14 8s-.6 1.333-1.333 1.333c-.734 0-1.334-.6-1.334-1.333zM6.667 8c0-.733.6-1.333 1.333-1.333s1.333.6 1.333 1.333S8.733 9.333 8 9.333 6.667 8.733 6.667 8z"
@@ -493,12 +496,12 @@ var PaginationDots = (0, import_core5.factory)((_props, ref) => {
   ]);
   const ctx = usePaginationContext();
   const Icon = icon;
-  return /* @__PURE__ */ import_react10.default.createElement(
+  return /* @__PURE__ */ import_react11.default.createElement(
     import_core5.Box,
     __spreadValues(__spreadValues({
       ref
     }, ctx.getStyles("dots", { className, style, styles, classNames })), others),
-    /* @__PURE__ */ import_react10.default.createElement(
+    /* @__PURE__ */ import_react11.default.createElement(
       Icon,
       {
         style: {
@@ -512,7 +515,7 @@ var PaginationDots = (0, import_core5.factory)((_props, ref) => {
 PaginationDots.displayName = "@raikou/core/PaginationDots";
 
 // src/PaginationEdges/PaginationEdges.tsx
-var import_react11 = __toESM(require("react"));
+var import_react12 = __toESM(require("react"));
 var import_core6 = require("@raikou/core");
 function createEdgeComponent({
   icon,
@@ -521,13 +524,13 @@ function createEdgeComponent({
   type
 }) {
   const defaultProps7 = { icon };
-  const Component = (0, import_react11.forwardRef)(
+  const Component = (0, import_react12.forwardRef)(
     (props, ref) => {
       const _a = (0, import_core6.useProps)(name, defaultProps7, props), { icon: _icon } = _a, others = __objRest(_a, ["icon"]);
       const Icon = _icon;
       const ctx = usePaginationContext();
       const disabled = type === "next" ? ctx.active === ctx.total : ctx.active === 1;
-      return /* @__PURE__ */ import_react11.default.createElement(
+      return /* @__PURE__ */ import_react12.default.createElement(
         PaginationControl,
         __spreadValues({
           disabled: ctx.disabled || disabled,
@@ -535,7 +538,7 @@ function createEdgeComponent({
           onClick: ctx[action],
           withPadding: false
         }, others),
-        /* @__PURE__ */ import_react11.default.createElement(
+        /* @__PURE__ */ import_react12.default.createElement(
           Icon,
           {
             style: {
@@ -576,15 +579,15 @@ var PaginationLast = createEdgeComponent({
 });
 
 // src/PaginationItems/PaginationItems.tsx
-var import_react12 = __toESM(require("react"));
+var import_react13 = __toESM(require("react"));
 function PaginationItems({ dotsIcon }) {
   const ctx = usePaginationContext();
   const items = ctx.range.map((page, index) => {
     var _a;
     if (page === "dots") {
-      return /* @__PURE__ */ import_react12.default.createElement(PaginationDots, { icon: dotsIcon, key: index });
+      return /* @__PURE__ */ import_react13.default.createElement(PaginationDots, { icon: dotsIcon, key: index });
     }
-    return /* @__PURE__ */ import_react12.default.createElement(
+    return /* @__PURE__ */ import_react13.default.createElement(
       PaginationControl,
       __spreadValues({
         key: index,
@@ -596,7 +599,7 @@ function PaginationItems({ dotsIcon }) {
       page
     );
   });
-  return /* @__PURE__ */ import_react12.default.createElement(import_react12.default.Fragment, null, items);
+  return /* @__PURE__ */ import_react13.default.createElement(import_react13.default.Fragment, null, items);
 }
 PaginationItems.displayName = "@raikou/core/PaginationItems";
 
@@ -635,12 +638,12 @@ var Pagination = (0, import_core7.factory)((_props, ref) => {
   if (total <= 0) {
     return null;
   }
-  return /* @__PURE__ */ import_react13.default.createElement(PaginationRoot, __spreadValues({ ref, total }, others), /* @__PURE__ */ import_react13.default.createElement(Group, { gap }, withEdges && /* @__PURE__ */ import_react13.default.createElement(PaginationFirst, __spreadValues({ icon: firstIcon }, getControlProps == null ? void 0 : getControlProps("first"))), withControls && /* @__PURE__ */ import_react13.default.createElement(
+  return /* @__PURE__ */ import_react14.default.createElement(PaginationRoot, __spreadValues({ ref, total }, others), /* @__PURE__ */ import_react14.default.createElement(Group, { gap }, withEdges && /* @__PURE__ */ import_react14.default.createElement(PaginationFirst, __spreadValues({ icon: firstIcon }, getControlProps == null ? void 0 : getControlProps("first"))), withControls && /* @__PURE__ */ import_react14.default.createElement(
     PaginationPrevious,
     __spreadValues({
       icon: previousIcon
     }, getControlProps == null ? void 0 : getControlProps("previous"))
-  ), /* @__PURE__ */ import_react13.default.createElement(PaginationItems, { dotsIcon }), withControls && /* @__PURE__ */ import_react13.default.createElement(PaginationNext, __spreadValues({ icon: nextIcon }, getControlProps == null ? void 0 : getControlProps("next"))), withEdges && /* @__PURE__ */ import_react13.default.createElement(PaginationLast, __spreadValues({ icon: lastIcon }, getControlProps == null ? void 0 : getControlProps("last")))));
+  ), /* @__PURE__ */ import_react14.default.createElement(PaginationItems, { dotsIcon }), withControls && /* @__PURE__ */ import_react14.default.createElement(PaginationNext, __spreadValues({ icon: nextIcon }, getControlProps == null ? void 0 : getControlProps("next"))), withEdges && /* @__PURE__ */ import_react14.default.createElement(PaginationLast, __spreadValues({ icon: lastIcon }, getControlProps == null ? void 0 : getControlProps("last")))));
 });
 Pagination.displayName = "@raikou/core/Pagination";
 Pagination.Root = PaginationRoot;

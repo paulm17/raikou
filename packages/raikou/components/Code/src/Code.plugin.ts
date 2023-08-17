@@ -16,13 +16,13 @@ module.exports = function ({ addComponents, theme }: any) {
       overflow: "auto",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_code-bg": "var(--code-bg, var(--raikou-color-gray-1))",
-        "--_code-color": "var(--raikou-color-black)",
+        "--_code-bg": "var(--code-bg, var(--raikou-code-bg))",
+        "--_code-color": "var(--raikou-code-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_code-bg": "var(--code-bg, var(--raikou-color-dark-5))",
-        "--_code-color": "var(--raikou-color-white)",
+        "--_code-bg": "var(--code-bg, var(--raikou-code-bg))",
+        "--_code-color": "var(--raikou-code-color)",
       },
 
       "&[data-block]": {

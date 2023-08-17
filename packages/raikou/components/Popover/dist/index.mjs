@@ -337,6 +337,9 @@ import React3, { createContext as createContext2, useContext as useContext2 } fr
 // ../_utils/use-hovered/use-hovered.ts
 import { useState as useState2 } from "react";
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+import { useEffect as useEffect2, useLayoutEffect } from "react";
+
 // src/Popover.context.ts
 var [PopoverContextProvider, usePopoverContext] = createSafeContext(
   "Popover component was not found in the tree"
@@ -584,7 +587,7 @@ function getTransitionStyles({
 }
 
 // ../Transition/src/use-transition.ts
-import { useState as useState4, useEffect as useEffect2, useRef as useRef2 } from "react";
+import { useState as useState4, useEffect as useEffect3, useRef as useRef2 } from "react";
 import { useReducedMotion, useDidUpdate as useDidUpdate3 } from "@raikou/hooks";
 import { useRaikouTheme } from "@raikou/core";
 function useTransition({
@@ -633,7 +636,7 @@ function useTransition({
   useDidUpdate3(() => {
     handleStateChange(mounted);
   }, [mounted]);
-  useEffect2(() => () => window.clearTimeout(timeoutRef.current), []);
+  useEffect3(() => () => window.clearTimeout(timeoutRef.current), []);
   return {
     transitionDuration,
     transitionStatus,
@@ -644,7 +647,7 @@ function useTransition({
 // ../Transition/src/Transition.tsx
 function Transition({
   keepMounted,
-  transition,
+  transition = "fade",
   duration = 250,
   exitDuration = duration,
   mounted,

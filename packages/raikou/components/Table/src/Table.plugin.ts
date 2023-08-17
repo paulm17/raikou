@@ -12,21 +12,15 @@ module.exports = function ({ addComponents, theme }: any) {
       border: "var(--_table-border, none)",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_table-hover-color":
-          "var(--table-highlight-on-hover-color, var(--raikou-color-gray-1))",
-        "--_table-striped-color":
-          "var(--table-striped-color, var(--raikou-color-gray-0))",
-        "--_table-border-color":
-          "var(--table-border-color, var(--raikou-color-gray-3))",
+        "--_table-hover-color": "var(--raikou-table-hover-color)",
+        "--_table-striped-color": "var(--raikou-table-striped-color)",
+        "--_table-border-color": "var(--raikou-table-border-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_table-hover-color":
-          "var(--table-highlight-on-hover-color, var(--raikou-color-dark-5))",
-        "--_table-striped-color":
-          "var(--table-striped-color, var(--raikou-color-dark-6))",
-        "--_table-border-color":
-          "var(--table-border-color, var(--raikou-color-dark-4))",
+        "--_table-hover-color": "var(--raikou-table-hover-color)",
+        "--_table-striped-color": "var(--raikou-table-striped-color)",
+        "--_table-border-color": "var(--raikou-table-border-color)",
       },
 
       "&[data-with-table-border]": {

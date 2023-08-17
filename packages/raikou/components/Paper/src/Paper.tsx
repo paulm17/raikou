@@ -19,6 +19,17 @@ export type PaperCssVariables = {
   root: "--paper-radius" | "--paper-shadow";
 };
 
+export interface PaperBaseProps {
+  /** Key of `theme.shadows` or any valid CSS value to set `box-shadow`, `none` by default */
+  shadow?: RaikouShadow | (string & {});
+
+  /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `theme.defaultRadius` by default */
+  radius?: RaikouRadius | number | (string & {});
+
+  /** Determines whether the paper should have border, border color depends on color scheme, `false` by default */
+  withBorder?: boolean;
+}
+
 export interface PaperProps extends BoxProps, StylesApiProps<PaperFactory> {
   /** Key of `theme.shadows` or any valid CSS value to set `box-shadow`, `none` by default */
   shadow?: RaikouShadow | (string & {});
@@ -46,7 +57,7 @@ const varsResolver = createVarsResolver<PaperFactory>(
       "--paper-radius": getRadius(radius),
       "--paper-shadow": getShadow(shadow),
     },
-  })
+  }),
 );
 
 export const Paper = polymorphicFactory<PaperFactory>((_props, ref) => {

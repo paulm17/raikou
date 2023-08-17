@@ -7,7 +7,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 
-// ../core/src/core/utils/units-converters/rem.ts
+// src/core/utils/units-converters/rem.ts
 function scaleRem(remValue) {
   return `calc(${remValue} * var(--raikou-scale))`;
 }
@@ -38,18 +38,795 @@ function createConverter(units, { shouldScale = false } = {}) {
 }
 var rem, em;
 var init_rem = __esm({
-  "../core/src/core/utils/units-converters/rem.ts"() {
+  "src/core/utils/units-converters/rem.ts"() {
     "use strict";
     rem = createConverter("rem", { shouldScale: true });
     em = createConverter("em");
   }
 });
 
-// ../core/src/core/utils/units-converters/index.ts
+// src/core/utils/units-converters/index.ts
 var init_units_converters = __esm({
-  "../core/src/core/utils/units-converters/index.ts"() {
+  "src/core/utils/units-converters/index.ts"() {
     "use strict";
     init_rem();
+  }
+});
+
+// src/core/RaikouProvider/global.plugin.ts
+var require_global_plugin = __commonJS({
+  "src/core/RaikouProvider/global.plugin.ts"(exports2, module2) {
+    "use strict";
+    init_units_converters();
+    module2.exports = function({ addBase }) {
+      addBase({
+        /* ----- CSS reset ----- */
+        "html, body": {
+          height: "100%"
+        },
+        "*, *::before, *::after": {
+          boxSizing: "border-box"
+        },
+        "input, button, textarea, select": {
+          font: "inherit"
+        },
+        "button, select": {
+          textTransform: "none"
+        },
+        /* ----- Global styles ----- */
+        body: {
+          margin: "0",
+          fontFamily: "var(--raikou-font-family)",
+          fontSize: "var(--raikou-font-size-md)",
+          lineHeight: "var(--raikou-line-height)",
+          backgroundColor: "var(--raikou-color-body)",
+          color: "var(--raikou-color-text)",
+          "-webkit-font-smoothing": "var(--raikou-webkit-font-smoothing)",
+          "-moz-osx-font-smoothing": "var(--raikou-moz-font-smoothing)",
+          "@media screen and (max-device-width: 500px)": {
+            "-webkit-text-size-adjust": "100%"
+          }
+        },
+        "[data-respect-reduced-motion]": {
+          "@media (prefers-reduced-motion: reduce)": {
+            "[data-reduce-motion]": {
+              transition: "none",
+              animation: "none"
+            }
+          }
+        },
+        ".raikou-focus-auto": {
+          "&:focus-visible": {
+            outline: `${rem("2px")} solid var(--raikou-color-primary)`,
+            outlineOffset: rem("2px")
+          }
+        },
+        ".raikou-focus-always": {
+          "&:focus": {
+            outline: `${rem("2px")} solid var(--raikou-color-primary)`,
+            outlineOffset: rem("2px")
+          }
+        },
+        ".raikou-focus-never": {
+          "&:focus": {
+            outline: "none"
+          }
+        },
+        ".raikou-active": {
+          "&:active": {
+            transform: `translateY(${rem("1px")})`
+          }
+        },
+        ".raikou-rotate-rtl": {
+          '[dir="rtl"] &': {
+            transform: "rotate(180deg)"
+          }
+        },
+        /* ----- Default CSS variables ----- */
+        ":root": {
+          "color-scheme": "var(--raikou-color-scheme)",
+          "--raikou-scale": "1",
+          "--raikou-cursor-type": "default",
+          "--raikou-webkit-font-smoothing": "antialiased",
+          "--raikou-color-scheme": "light dark",
+          "--raikou-moz-font-smoothing": "grayscale",
+          "--raikou-color-white": "#fff",
+          "--raikou-color-black": "#000",
+          "--raikou-line-height": "1.55",
+          "--raikou-font-family": `-apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+        Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji`,
+          "--raikou-font-family-monospace": `ui-monospace, SFMono-Regular, Menlo, Monaco,
+        Consolas, Liberation Mono, Courier New, monospace`,
+          "--raikou-font-family-headings": `-apple-system, BlinkMacSystemFont, Segoe UI,
+        Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji`,
+          "--raikou-heading-font-weight": "700",
+          "--raikou-radius-default": "calc(0.25rem * var(--raikou-scale))",
+          "--raikou-breakpoint-xs": "36em",
+          "--raikou-breakpoint-sm": "48em",
+          "--raikou-breakpoint-md": "62em",
+          "--raikou-breakpoint-lg": "75em",
+          "--raikou-breakpoint-xl": "88em",
+          "--raikou-spacing-xs": "calc(0.625rem * var(--raikou-scale))",
+          "--raikou-spacing-sm": "calc(0.75rem * var(--raikou-scale))",
+          "--raikou-spacing-md": "calc(1rem * var(--raikou-scale))",
+          "--raikou-spacing-lg": "calc(1.25rem * var(--raikou-scale))",
+          "--raikou-spacing-xl": "calc(2rem * var(--raikou-scale))",
+          "--raikou-font-size-xs": "calc(0.75rem * var(--raikou-scale))",
+          "--raikou-font-size-sm": "calc(0.875rem * var(--raikou-scale))",
+          "--raikou-font-size-md": "calc(1rem * var(--raikou-scale))",
+          "--raikou-font-size-lg": "calc(1.125rem * var(--raikou-scale))",
+          "--raikou-font-size-xl": "calc(1.25rem * var(--raikou-scale))",
+          "--raikou-line-height-xs": "1.4",
+          "--raikou-line-height-sm": "1.45",
+          "--raikou-line-height-md": "1.55",
+          "--raikou-line-height-lg": "1.6",
+          "--raikou-line-height-xl": "1.65",
+          "--raikou-shadow-xs": `0 calc(0.0625rem * var(--raikou-scale))
+          calc(0.1875rem * var(--raikou-scale)) rgba(0, 0, 0, 0.05),
+        0 calc(0.0625rem * var(--raikou-scale)) calc(0.125rem * var(--raikou-scale))
+          rgba(0, 0, 0, 0.1)`,
+          "--raikou-shadow-sm": `0 calc(0.0625rem * var(--raikou-scale))
+          calc(0.1875rem * var(--raikou-scale)) rgba(0, 0, 0, 0.05),
+        rgba(0, 0, 0, 0.05) 0 calc(0.625rem * var(--raikou-scale))
+          calc(0.9375rem * var(--raikou-scale))
+          calc(-0.3125rem * var(--raikou-scale)),
+        rgba(0, 0, 0, 0.04) 0 calc(0.4375rem * var(--raikou-scale))
+          calc(0.4375rem * var(--raikou-scale))
+          calc(-0.3125rem * var(--raikou-scale))`,
+          "--raikou-shadow-md": `0 calc(0.0625rem * var(--raikou-scale))
+          calc(0.1875rem * var(--raikou-scale)) rgba(0, 0, 0, 0.05),
+        rgba(0, 0, 0, 0.05) 0 calc(1.25rem * var(--raikou-scale))
+          calc(1.5625rem * var(--raikou-scale))
+          calc(-0.3125rem * var(--raikou-scale)),
+        rgba(0, 0, 0, 0.04) 0 calc(0.625rem * var(--raikou-scale))
+          calc(0.625rem * var(--raikou-scale))
+          calc(-0.3125rem * var(--raikou-scale))`,
+          "--raikou-shadow-lg": `0 calc(0.0625rem * var(--raikou-scale))
+          calc(0.1875rem * var(--raikou-scale)) rgba(0, 0, 0, 0.05),
+        rgba(0, 0, 0, 0.05) 0 calc(1.75rem * var(--raikou-scale))
+          calc(1.4375rem * var(--raikou-scale))
+          calc(-0.4375rem * var(--raikou-scale)),
+        rgba(0, 0, 0, 0.04) 0 calc(0.75rem * var(--raikou-scale))
+          calc(0.75rem * var(--raikou-scale)) calc(-0.4375rem * var(--raikou-scale))`,
+          "--raikou-shadow-xl": `0 calc(0.0625rem * var(--raikou-scale))
+          calc(0.1875rem * var(--raikou-scale)) rgba(0, 0, 0, 0.05),
+        rgba(0, 0, 0, 0.05) 0 calc(2.25rem * var(--raikou-scale))
+          calc(1.75rem * var(--raikou-scale)) calc(-0.4375rem * var(--raikou-scale)),
+        rgba(0, 0, 0, 0.04) 0 calc(1.0625rem * var(--raikou-scale))
+          calc(1.0625rem * var(--raikou-scale))
+          calc(-0.4375rem * var(--raikou-scale))`,
+          "--raikou-radius-xs": "calc(0.125rem * var(--raikou-scale))",
+          "--raikou-radius-sm": "calc(0.25rem * var(--raikou-scale))",
+          "--raikou-radius-md": "calc(0.5rem * var(--raikou-scale))",
+          "--raikou-radius-lg": "calc(1rem * var(--raikou-scale))",
+          "--raikou-radius-xl": "calc(2rem * var(--raikou-scale))",
+          "--raikou-h1-font-size": "calc(2.125rem * var(--raikou-scale))",
+          "--raikou-h1-line-height": "1.3",
+          "--raikou-h1-font-weight": "700",
+          "--raikou-h2-font-size": "calc(1.625rem * var(--raikou-scale))",
+          "--raikou-h2-line-height": "1.35",
+          "--raikou-h2-font-weight": "700",
+          "--raikou-h3-font-size": "calc(1.375rem * var(--raikou-scale))",
+          "--raikou-h3-line-height": "1.4",
+          "--raikou-h3-font-weight": "700",
+          "--raikou-h4-font-size": "calc(1.125rem * var(--raikou-scale))",
+          "--raikou-h4-line-height": "1.45",
+          "--raikou-h4-font-weight": "700",
+          "--raikou-h5-font-size": "calc(1rem * var(--raikou-scale))",
+          "--raikou-h5-line-height": "1.5",
+          "--raikou-h5-font-weight": "700",
+          "--raikou-h6-font-size": "calc(0.875rem * var(--raikou-scale))",
+          "--raikou-h6-line-height": "1.5",
+          "--raikou-h6-font-weight": "700"
+        },
+        ':root[data-raikou-color-scheme="light"]': {
+          "--raikou-color-scheme": "light",
+          "--raikou-color-text": "#000",
+          "--raikou-color-body": "#fff",
+          "--raikou-color-error": "#fa5252",
+          "--raikou-color-placeholder": "#adb5bd",
+          "--raikou-color-anchor": "#228be6",
+          "--raikou-color-default": "#fff",
+          "--raikou-color-default-hover": "#f8f9fa",
+          "--raikou-color-default-color": "#000",
+          "--raikou-color-default-border": "#ced4da",
+          "--raikou-color-dimmed": "#868e96"
+        },
+        ':root[data-raikou-color-scheme="dark"]': {
+          "--raikou-color-scheme": "dark",
+          "--raikou-color-text": "#c1c2c5",
+          "--raikou-color-body": "#1a1b1e",
+          "--raikou-color-error": "#c92a2a",
+          "--raikou-color-placeholder": "#5c5f66",
+          "--raikou-color-anchor": "#4dabf7",
+          "--raikou-color-default": "#25262b",
+          "--raikou-color-default-hover": "#2c2e33",
+          "--raikou-color-default-color": "#fff",
+          "--raikou-color-default-border": "#373a40",
+          "--raikou-color-dimmed": "#909296"
+        }
+      });
+    };
+  }
+});
+
+// src/core/RaikouProvider/css-variables.plugin.ts
+var require_css_variables_plugin = __commonJS({
+  "src/core/RaikouProvider/css-variables.plugin.ts"(exports2, module2) {
+    "use strict";
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".accordion-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-accordion-control-color": "#000",
+            "--raikou-accordion-control-background-color": "#f8f9fa",
+            "--raikou-accordion-item-border-color": "#dee2e6",
+            "--raikou-accordion-item-filled-color": "#f8f9fa",
+            "--raikou-accordion-item-item-bg": "#fff"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-accordion-control-color": "#c1c2c5",
+            "--raikou-accordion-control-background-color": "#25262b",
+            "--raikou-accordion-item-border-color": "#373a40",
+            "--raikou-accordion-item-filled-color": "#25262b",
+            "--raikou-accordion-item-item-bg": "#1a1b1e"
+          }
+        },
+        ".actionIcon-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-actionicon-loading-overlay-bg": "rgba(255, 255, 255, 0.35)",
+            "--raikou-actionicon-disabled-bg": "#f1f3f5",
+            "--raikou-actionicon-disabled-color": "#adb5bd"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-actionicon-loading-overlay-bg": "rgba(0, 0, 0, 0.35)",
+            "--raikou-actionicon-disabled-bg": "#868e96",
+            "--raikou-actionicon-disabled-color": "#dee2e6"
+          }
+        },
+        ".alert-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-alert-message-color": "#000"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-alert-message-color": "#fff"
+          }
+        },
+        ".appshell-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-app-shell-border-color": "#dee2e6"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-app-shell-border-color": "#373a40"
+          }
+        },
+        ".badge-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-badge-bg": "#fff",
+            "--raikou-badge-border-color": "#ced4da",
+            "--raikou-badge-color": "#000"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-badge-bg": "#2c2e33",
+            "--raikou-badge-border-color": "#2c2e33",
+            "--raikou-badge-color": "#fff"
+          }
+        },
+        ".breadcrumbs-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-breadcrumbs-separator-color": "#495057"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-breadcrumbs-separator-color": "#909296"
+          }
+        },
+        ".button-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-button-disabled-color": "#adb5bd",
+            "--raikou-button-disabled-bg": "#f1f3f5",
+            "--raikou-button-loading-overlay-bg": "rgba(255, 255, 255, 0.35)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-button-disabled-color": "#5c5f66",
+            "--raikou-button-disabled-bg": "#25262b",
+            "--raikou-button-loading-overlay-bg": "rgba(0, 0, 0, 0.35)"
+          }
+        },
+        ".burger-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-burger-color": "#000"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-burger-color": "#fff"
+          }
+        },
+        ".card-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-card-bg": "#fff",
+            "--raikou-card-section-border-color": "#dee2e6"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-card-bg": "#25262b",
+            "--raikou-card-section-border-color": "#373a40"
+          }
+        },
+        ".checkbox-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-checkbox-bg": "#fff",
+            "--raikou-checkbox-bd-color": "#ced4da",
+            "--raikou-checkbox-disabled-bg": "#e9ecef",
+            "--raikou-checkbox-disabled-bd-color": "#dee2e6",
+            "--raikou-checkbox-disabled-icon-color": "#adb5bd",
+            "--raikou-checkbox-icon-color": "#fff"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-checkbox-bg": "#25262b",
+            "--raikou-checkbox-bd-color": "#373a40",
+            "--raikou-checkbox-disabled-bg": "#25262b",
+            "--raikou-checkbox-disabled-bd-color": "#1a1b1e",
+            "--raikou-checkbox-disabled-icon-color": "#5c5f66",
+            "--raikou-checkbox-icon-color": "#fff"
+          }
+        },
+        ".chip-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-chip-bg-disabled": "#e9ecef",
+            "--raikou-chip-color-disabled": "#adb5bd",
+            "--raikou-chip-outline-hover-bg": "#f8f9fa",
+            "--raikou-chip-outline-active-bg": "#f8f9fa",
+            "--raikou-chip-outline-bg": "#fff",
+            "--raikou-chip-outline-bd": "#dee2e6",
+            "--raikou-chip-filled-hover-bg": "#f1f3f5",
+            "--raikou-chip-filled-active-bg": "#e9ecef",
+            "--raikou-chip-filled-bg": "#f8f9fa",
+            "--raikou-chip-light-hover-bg": "#f1f3f5",
+            "--raikou-chip-light-active-bg": "#e9ecef",
+            "--raikou-chip-light-bg": "#f8f9fa"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-chip-bg-disabled": "#e9ecef",
+            "--raikou-chip-color-disabled": "#adb5bd",
+            "--raikou-chip-outline-hover-bg": "#2c2e33",
+            "--raikou-chip-outline-active-bg": "#2c2e33",
+            "--raikou-chip-outline-bg": "#25262b",
+            "--raikou-chip-outline-bd": "#373a40",
+            "--raikou-chip-filled-hover-bg": "#2c2e33",
+            "--raikou-chip-filled-active-bg": "#25262b",
+            "--raikou-chip-filled-bg": "#25262b",
+            "--raikou-chip-light-hover-bg": "#2c2e33",
+            "--raikou-chip-light-active-bg": "#25262b",
+            "--raikou-chip-light-bg": "#25262b"
+          }
+        },
+        ".code-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-code-bg": "#f1f3f5",
+            "--raikou-code-color": "#000"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-code-bg": "#2c2e33",
+            "--raikou-code-color": "#fff"
+          }
+        },
+        ".colorPicker-wrapper": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-colorpicker-slider-checkers": "#dee2e6"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-colorpicker-slider-checkers": "#373a40"
+          }
+        },
+        ".colorswatch-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-colorswatch-alpha-overlay-color": "#dee2e6",
+            "--raikou-colorswatch-alpha-overlay-bg": "#fff"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-colorswatch-alpha-overlay-color": "#373a40",
+            "--raikou-colorswatch-alpha-overlay-bg": "#1a1b1e"
+          }
+        },
+        ".comboBox-dropdown": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-combobox-option-hover-bg": "#f8f9fa",
+            "--raikou-combobox-option-active-bg": "#f8f9fa",
+            "--raikou-combobox-search-border-color": "#e9ecef",
+            "--raikou-combobox-search_background": "#000",
+            "--raikou-combobox-footer-border-color": "#e9ecef",
+            "--raikou-combobox-divider-bg": "#e9ecef",
+            "--raikou-combobox-chevron-color": "#868e96"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-combobox-option-hover-bg": "#1a1b1e",
+            "--raikou-combobox-option-active-bg": "#1a1b1e",
+            "--raikou-combobox-search-border-color": "#373a40",
+            "--raikou-combobox-search_background": "#1a1b1e",
+            "--raikou-combobox-footer-border-color": "#373a40",
+            "--raikou-combobox-divider-bg": "#373a40",
+            "--raikou-combobox-chevron-color": "#5c5f66"
+          }
+        },
+        ".divider-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-divider-color": "#ced4da"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-divider-color": "#373a40"
+          }
+        },
+        ".fieldset-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-fieldset-default-bd": "#dee2e6",
+            "--raikou-fieldset-default-bg": "#fff",
+            "--raikou-fieldset-filled-bd": "#dee2e6",
+            "--raikou-fieldset-filled-bg": "#f8f9fa"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-fieldset-default-bd": "#373a40",
+            "--raikou-fieldset-default-bg": "#1a1b1e",
+            "--raikou-fieldset-filled-bd": "#373a40",
+            "--raikou-fieldset-filled-bg": "#25262b"
+          }
+        },
+        ".inlineInput-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-inlineinput-disabled-label-color": "#adb5bd"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-inlineinput-disabled-label-color": "#5c5f66"
+          }
+        },
+        ".input-wrapper": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-input-disabled-bg": "#f1f3f5",
+            "--raikou-input-disabled-color": "#868e96",
+            "--raikou-input-default-bd": "#ced4da",
+            "--raikou-input-default-bg": "#fff",
+            "--raikou-input-filled-bd": "transparent",
+            "--raikou-input-filled-bg": "#fff"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-input-disabled-bg": "#25262b",
+            "--raikou-input-disabled-color": "#909296",
+            "--raikou-input-default-bd": "#373a40",
+            "--raikou-input-default-bg": "#25262b",
+            "--raikou-input-filled-bd": "transparent",
+            "--raikou-input-filled-bg": "#2c2e33"
+          }
+        },
+        ".kbd-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-kbd-border-color": "#dee2e6",
+            "--raikou-kbd-color": "#495057",
+            "--raikou-kbd-bg": "#f8f9fa"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-kbd-border-color": "#373a40",
+            "--raikou-kbd-color": "#c1c2c5",
+            "--raikou-kbd-bg": "#2c2e33"
+          }
+        },
+        ".menu-dropdown": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-menu-divider-color": "#e9ecef",
+            "--raikou-menu-divider-item-hover-bg": "#f1f3f5"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-menu-divider-color": "#373a40",
+            "--raikou-menu-divider-item-hover-bg": "#2c2e33"
+          }
+        },
+        ".notification-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-notification-border-color": "#dee2e6",
+            "--raikou-notification-bg": "#fff",
+            "--raikou-notification-title-color": "#212529",
+            "--raikou-notification-title-description-color": "#868e96",
+            "--raikou-notification-description-color": "#000",
+            "--raikou-notification-close-button-hover-bg": "#f8f9fa"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-notification-border-color": "#373a40",
+            "--raikou-notification-bg": "#25262b",
+            "--raikou-notification-title-color": "#fff",
+            "--raikou-notification-title-description-color": "#909296",
+            "--raikou-notification-description-color": "#c1c2c5",
+            "--raikou-notification-close-button-hover-bg": "#141517"
+          }
+        },
+        ".numberInput-controls": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-numberinput-control-hover-bg": "#f8f9fa",
+            "--raikou-numberinput-control-active-bg": "#f8f9fa"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-numberinput-control-hover-bg": "#373a40",
+            "--raikou-numberinput-control-active-bg": "#373a40"
+          }
+        },
+        ".pagination-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-pagination-control-border-color": "#ced4da",
+            "--raikou-pagination-control-bg-color": "#fff",
+            "--raikou-pagination-control-bg-hover": "#f8f9fa"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-pagination-control-border-color": "#373a40",
+            "--raikou-pagination-control-bg-color": "#25262b",
+            "--raikou-pagination-control-bg-hover": "#2c2e33"
+          }
+        },
+        ".paper-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-paper-border-color": "#dee2e6"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-paper-border-color": "#373a40"
+          }
+        },
+        ".pill-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-pill-color": "#000",
+            "--raikou-pill-default-bg": "#f1f3f5",
+            "--raikou-pill-default-disabled-bg": "#dee2e6",
+            "--raikou-pill-contrast-bg": "#fff",
+            "--raikou-pill-contrast-disabled-bg": "#dee2e6"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-pill-color": "#c1c2c5",
+            "--raikou-pill-bg": "#1a1b1e"
+          }
+        },
+        ".popover-dropdown": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-popover-bg": "#fff",
+            "--raikou-popover-bd": "#e9ecef"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-popover-bg": "#25262b",
+            "--raikou-popover-bd": "#373a40"
+          }
+        },
+        ".progress-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-progress-track-bg": "#e9ecef"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-progress-track-bg": "#373a40"
+          }
+        },
+        ".radio-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-radio-bg": "#fff",
+            "--raikou-radio-bd-color": "#ced4da",
+            "--raikou-radio-bg-disabled": "#f1f3f5",
+            "--raikou-radio-bd-disabled-color": "#e9ecef",
+            "--raikou-radio-icon-disabled-color": "#dee2e6"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-radio-bg": "#25262b",
+            "--raikou-radio-bd-color": "#373a40",
+            "--raikou-radio-bg-disabled": "#2c2e33",
+            "--raikou-radio-bd-disabled-color": "#373a40",
+            "--raikou-radio-icon-disabled-color": "#1a1b1e"
+          }
+        },
+        ".rating-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-rating-star-color": "#dee2e6"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-rating-star-color": "#373a40"
+          }
+        },
+        ".ringProgress-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-ringprogress-curve-root-color": "#e9ecef"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-ringprogress-curve-root-color": "#373a40"
+          }
+        },
+        ".scrollArea-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-scrollarea-scrollbar-hover-bg": "#f8f9fa",
+            "--raikou-scrollarea-thumb-hover-bg": "rgba(0, 0, 0, 0.5)",
+            "--raikou-scrollarea-scrollbar-active-bg": "#f8f9fa",
+            "--raikou-scrollarea-thumb-active-bg": "rgba(0, 0, 0, 0.5)",
+            "--raikou-scrollarea-thumb-bg": "rgba(0, 0, 0, 0.4)",
+            "--raikou-scrollarea-corner-bg": "#f8f9fa"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-scrollarea-scrollbar-hover-bg": "#141517",
+            "--raikou-scrollarea-thumb-hover-bg": "rgba(255, 255, 255, 0.5)",
+            "--raikou-scrollarea-scrollbar-active-bg": "#f8f9fa",
+            "--raikou-scrollarea-thumb-active-bg": "rgba(0, 0, 0, 0.5)",
+            "--raikou-scrollarea-thumb-bg": "rgba(255, 255, 255, 0.4)",
+            "--raikou-scrollarea-corner-bg": "#141517"
+          }
+        },
+        ".segmentedControl-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-segmentedcontrol-bg": "#f1f3f5",
+            "--raikou-segmentedcontrol-indicator-bg": "#fff",
+            "--raikou-segmentedcontrol-disabled-color": "#adb5bd",
+            "--raikou-segmentedcontrol-active-color": "#000",
+            "--raikou-segmentedcontrol-hover-color": "#000",
+            "--raikou-segmentedcontrol-color": "#495057",
+            "--raikou-segmentedcontrol-separator-color": "#dee2e6",
+            "--raikou-segmentedcontrol-ring-outline": "#1971c2"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-segmentedcontrol-bg": "#141517",
+            "--raikou-segmentedcontrol-indicator-bg": "#2c2e33",
+            "--raikou-segmentedcontrol-disabled-color": "#5c5f66",
+            "--raikou-segmentedcontrol-active-color": "#fff",
+            "--raikou-segmentedcontrol-hover-color": "#fff",
+            "--raikou-segmentedcontrol-color": "#a6a7ab",
+            "--raikou-segmentedcontrol-separator-color": "#373a40",
+            "--raikou-segmentedcontrol-ring-outline": "#1971c2"
+          }
+        },
+        ".skeleton-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-skeleton-bg": "#5c5f66"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-skeleton-bg": "#373a40"
+          }
+        },
+        ".slider-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-slider-track-bg": "#e9ecef",
+            "--raikou-slider-track-disabled-bg": "#ced4da",
+            "--raikou-slider-label-bg": "#212529",
+            "--raikou-slider-thumb-bd": "var(--slider-color)",
+            "--raikou-slider-thumb-bg": "#fff",
+            "--raikou-slider-bar-disabled-bg": "#ced4da",
+            "--raikou-slider-mark-disabled-bd": "#ced4da",
+            "--raikou-slider-mark-bd": "#e9ecef",
+            "--raikou-slider-mark-label-color": "#868e96"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-slider-track-bg": "#373a40",
+            "--raikou-slider-track-disabled-bg": "#5c5f66",
+            "--raikou-slider-label-bg": "#373a40",
+            "--raikou-slider-thumb-bd": "#fff",
+            "--raikou-slider-thumb-bg": "var(--slider-color)",
+            "--raikou-slider-bar-disabled-bg": "#5c5f66",
+            "--raikou-slider-mark-disabled-bd": "#5c5f66",
+            "--raikou-slider-mark-bd": "#373a40",
+            "--raikou-slider-mark-label-color": "#909296"
+          }
+        },
+        ".stepper-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-stepper-separator-bg": "#e9ecef",
+            "--raikou-stepper-separator-border-color": "#f1f3f5",
+            "--raikou-stepper-step-icon-bg": "#f1f3f5",
+            "--raikou-stepper-step-icon-border-color": "#f1f3f5",
+            "--raikou-stepper-step-icon-color": "#495057"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-stepper-separator-bg": "#909296",
+            "--raikou-stepper-separator-border-color": "#2c2e33",
+            "--raikou-stepper-step-icon-bg": "#2c2e33",
+            "--raikou-stepper-step-icon-border-color": "#2c2e33",
+            "--raikou-stepper-step-icon-color": "#a6a7ab"
+          }
+        },
+        ".switch-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-switch-bg": "#e9ecef",
+            "--raikou-switch-bd": "#dee2e6",
+            "--raikou-switch-color": "#868e96",
+            "--raikou-switch-disabled-color": "#e9ecef",
+            "--raikou-switch-thumb-bd": "#dee2e6",
+            "--raikou-switch-thumb-bg-disabled": "#f8f9fa"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-switch-bg": "#25262b",
+            "--raikou-switch-bd": "#373a40",
+            "--raikou-switch-color": "#a6a7ab",
+            "--raikou-switch-disabled-color": "#373a40",
+            "--raikou-switch-thumb-bd": "#fff",
+            "--raikou-switch-thumb-bg-disabled": "#5c5f66"
+          }
+        },
+        ".table-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-table-hover-color": "#f1f3f5",
+            "--raikou-table-striped-color": "#f8f9fa",
+            "--raikou-table-border-color": "#dee2e6"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-table-hover-color": "#2c2e33",
+            "--raikou-table-striped-color": "#25262b",
+            "--raikou-table-border-color": "#373a40"
+          }
+        },
+        ".tabs-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-tabs-tab-border-color": "#dee2e6",
+            "--raikou-tabs-tab-default-hover-color": "#f8f9fa",
+            "--raikou-tabs-tab-pills-hover-color": "#f8f9fa"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-tabs-tab-border-color": "#373a40",
+            "--raikou-tabs-tab-default-hover-color": "#f8f9fa",
+            "--raikou-tabs-tab-pills-hover-color": "#25262b"
+          }
+        },
+        ".timeline-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-timeline-item-border-color": "#dee2e6",
+            "--raikou-timeline-bullet-border-color": "#dee2e6",
+            "--raikou-timeline-bullet-bg-color": "#dee2e6"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-timeline-item-border-color": "#373a40",
+            "--raikou-timeline-bullet-border-color": "#373a40",
+            "--raikou-timeline-bullet-bg-color": "#373a40"
+          }
+        },
+        ".tooltip-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-tooltip-bg": "#212529",
+            "--raikou-tooltip-color": "#fff"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-tooltip-bg": "#e9ecef",
+            "--raikou-tooltip-color": "#000"
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../core/src/core/utils/units-converters/rem.ts
+function scaleRem2(remValue) {
+  return `calc(${remValue} * var(--raikou-scale))`;
+}
+function createConverter2(units, { shouldScale = false } = {}) {
+  return (value) => {
+    if (value === 0 || value === "0") {
+      return "0";
+    }
+    if (typeof value === "number") {
+      const val = `${value / 16}${units}`;
+      return shouldScale ? scaleRem2(val) : val;
+    }
+    if (typeof value === "string") {
+      if (value.includes("calc(") || value.includes("var(")) {
+        return value;
+      }
+      if (value.includes(units)) {
+        return shouldScale ? scaleRem2(value) : value;
+      }
+      const replaced = value.replace("px", "");
+      if (!Number.isNaN(Number(replaced))) {
+        const val = `${Number(replaced) / 16}${units}`;
+        return shouldScale ? scaleRem2(val) : val;
+      }
+    }
+    return value;
+  };
+}
+var rem2, em2;
+var init_rem2 = __esm({
+  "../core/src/core/utils/units-converters/rem.ts"() {
+    "use strict";
+    rem2 = createConverter2("rem", { shouldScale: true });
+    em2 = createConverter2("em");
+  }
+});
+
+// ../core/src/core/utils/units-converters/index.ts
+var init_units_converters2 = __esm({
+  "../core/src/core/utils/units-converters/index.ts"() {
+    "use strict";
+    init_rem2();
   }
 });
 
@@ -57,7 +834,7 @@ var init_units_converters = __esm({
 var init_utils = __esm({
   "../core/src/core/utils/index.ts"() {
     "use strict";
-    init_units_converters();
+    init_units_converters2();
   }
 });
 
@@ -229,10 +1006,10 @@ var require_Accordion_plugin = __commonJS({
             }
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_control-color": "var(--raikou-color-black)"
+            "--_control-color": "var(--raikou-accordion-control-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_control-color": "var(--raikou-color-dark-0)"
+            "--_control-color": "var(--raikou-accordion-control-color)"
           },
           "&:disabled, &[data-disabled]": {
             "--_control-opacity": "0.4",
@@ -244,20 +1021,20 @@ var require_Accordion_plugin = __commonJS({
             "@media (hover: hover)": {
               "&:hover": {
                 '[data-raikou-color-scheme="light"] &': {
-                  "--_control-background-color": "var(--raikou-color-gray-0)"
+                  "--_control-background-color": "var(--raikou-accordion-control-background-color)"
                 },
                 '[data-raikou-color-scheme="dark"] &': {
-                  "--_control-background-color": "var(--raikou-color-dark-6)"
+                  "--_control-background-color": "var(--raikou-accordion-control-background-color)"
                 }
               }
             },
             "@media (hover: none)": {
               "&:active": {
                 '[data-raikou-color-scheme="light"] &': {
-                  "--_control-background-color": "var(--raikou-color-gray-0)"
+                  "--_control-background-color": "var(--raikou-accordion-control-background-color)"
                 },
                 '[data-raikou-color-scheme="dark"] &': {
-                  "--_control-background-color": "var(--raikou-color-dark-6)"
+                  "--_control-background-color": "var(--raikou-accordion-control-background-color)"
                 }
               }
             }
@@ -327,19 +1104,19 @@ var require_Accordion_plugin = __commonJS({
         ".accordion-item": {
           backgroundColor: "var(--_item-bg)",
           '[data-raikou-color-scheme="light"] &': {
-            "--_item-border-color": "var(--raikou-color-gray-3)",
-            "--_item-filled-color": "var(--raikou-color-gray-0)"
+            "--_item-border-color": "var(--raikou-accordion-item-border-color)",
+            "--_item-filled-color": "var(--raikou-accordion-item-filled-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_item-border-color": "var(--raikou-color-dark-4)",
-            "--_item-filled-color": "var(--raikou-color-dark-6)"
+            "--_item-border-color": "var(--raikou-accordion-item-border-color)",
+            "--_item-filled-color": "var(--raikou-accordion-item-filled-color)"
           }
         },
         ".accordion-root[data-variant='default'] .accordion-item": {
-          borderBottom: `${rem("1px")} solid var(--_item-border-color)`
+          borderBottom: `${rem2("1px")} solid var(--_item-border-color)`
         },
         ".accordion-root[data-variant='contained'] .accordion-item": {
-          border: `${rem("1px")} solid var(--_item-border-color)`,
+          border: `${rem2("1px")} solid var(--_item-border-color)`,
           transition: "background-color 150ms ease",
           "&[data-active]": {
             "--_item-bg": "var(--_item-filled-color)"
@@ -373,18 +1150,18 @@ var require_Accordion_plugin = __commonJS({
         ".accordion-root[data-variant='separated'] .accordion-item": {
           "--_item-bg": "var(--_item-filled-color)",
           borderRadius: "var(--accordion-radius)",
-          border: `${rem("1px")} solid var(--__item-border-color, transparent)`,
+          border: `${rem2("1px")} solid var(--__item-border-color, transparent)`,
           transition: "background-color 150ms ease",
           "&[data-active]": {
             "--__item-border-color": "var(--_item-border-color)",
             '[data-raikou-color-scheme="light"] &': {
-              "--_item-bg": "var(--raikou-color-white)"
+              "--_item-bg": "var(--raikou-accordion-item-item-bg)"
             },
             '[data-raikou-color-scheme="dark"] &': {
-              "--_item-bg": "var(--raikou-color-dark-7)"
+              "--_item-bg": "var(--raikou-accordion-item-item-bg)"
             }
           },
-          "& + &": {
+          "+ .accordion-item": {
             marginTop: "var(--raikou-spacing-md)"
           }
         }
@@ -401,11 +1178,11 @@ var require_ActionIcon_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".actionIcon-root": {
-          "--ai-size-xs": rem("18px"),
-          "--ai-size-sm": rem("22px"),
-          "--ai-size-md": rem("28px"),
-          "--ai-size-lg": rem("34px"),
-          "--ai-size-xl": rem("44px"),
+          "--ai-size-xs": rem2("18px"),
+          "--ai-size-sm": rem2("22px"),
+          "--ai-size-md": rem2("28px"),
+          "--ai-size-lg": rem2("34px"),
+          "--ai-size-xl": rem2("44px"),
           lineHeight: "1",
           display: "inline-flex",
           alignItems: "center",
@@ -436,21 +1213,21 @@ var require_ActionIcon_plugin = __commonJS({
             }
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_ai-loading-overlay-bg": "rgba(255, 255, 255, 0.35)",
-            "--_ai-disabled-bg": "var(--raikou-color-gray-1)",
-            "--_ai-disabled-color": "var(--raikou-color-gray-5)"
+            "--_ai-loading-overlay-bg": "var(--raikou-actionicon-loading-overlay-bg)",
+            "--_ai-disabled-bg": "var(--raikou-actionicon-disabled-bg)",
+            "--_ai-disabled-color": "var(--raikou-actionicon-disabled-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_ai-loading-overlay-bg": "rgba(0, 0, 0, 0.35)",
-            "--_ai-disabled-bg": "var(--raikou-color-dark-6)",
-            "--_ai-disabled-color": "var(--raikou-color-dark-3)"
+            "--_ai-loading-overlay-bg": "var(--raikou-actionicon-loading-overlay-bg)",
+            "--_ai-disabled-bg": "var(--raikou-actionicon-disabled-bg)",
+            "--_ai-disabled-color": "var(--raikou-actionicon-disabled-color)"
           },
           "&[data-loading]": {
             "--_ai-cursor": "not-allowed",
             "&::before": {
               content: '""',
               position: "absolute",
-              inset: rem("-1px"),
+              inset: rem2("-1px"),
               borderRadius: "var(--ai-radius)",
               backgroundColor: "var(--_ai-loading-overlay-bg)"
             }
@@ -561,13 +1338,13 @@ var require_Alert_plugin = __commonJS({
         },
         ".alert-icon": {
           lineHeight: "1",
-          width: rem("20px"),
-          height: rem("20px"),
+          width: rem2("20px"),
+          height: rem2("20px"),
           display: "flex",
           alignItems: "center",
           justifyContent: "flex-start",
           marginRight: "var(--raikou-spacing-md)",
-          marginTop: rem("1px")
+          marginTop: rem2("1px")
         },
         ".alert-message": {
           textOverflow: "ellipsis",
@@ -575,15 +1352,15 @@ var require_Alert_plugin = __commonJS({
           fontSize: "var(--raikou-font-size-sm)",
           color: "var(--_message-color, var(--__message-color))",
           '[data-raikou-color-scheme="light"] &': {
-            "--__message-color": "var(--raikou-color-black)"
+            "--__message-color": "var(--raikou-alert-message-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--__message-color": "var(--raikou-color-white)"
+            "--__message-color": "var(--raikou-alert-message-color)"
           }
         },
         ".alert-closeButton": {
-          width: rem("20px"),
-          height: rem("20px"),
+          width: rem2("20px"),
+          height: rem2("20px"),
           marginRight: "calc(var(--raikou-spacing-md) * -1)",
           marginTop: "calc(var(--raikou-spacing-sm) * -0.5)",
           color: "var(--alert-color)"
@@ -609,10 +1386,10 @@ var require_AppShell_plugin = __commonJS({
             "--app-shell-navbar-offset": "0px !important"
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_app-shell-border-color": "var(--raikou-color-gray-3)"
+            "--_app-shell-border-color": "var(--raikou-app-shell-border-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_app-shell-border-color": "var(--raikou-color-dark-4)"
+            "--_app-shell-border-color": "var(--raikou-app-shell-border-color)"
           }
         },
         ".appshell-navbar, .appshell-aside, .appshell-header, .appshell-main, .appshell-footer": {
@@ -642,12 +1419,12 @@ var require_AppShell_plugin = __commonJS({
           transform: "var(--_navbar-transform, var(--app-shell-navbar-transform))",
           zIndex: "var(--app-shell-navbar-z-index)",
           "&[data-with-border]": {
-            "--_navbar-border-right": `${rem(
+            "--_navbar-border-right": `${rem2(
               "1px"
             )} solid var(--_app-shell-border-color)`,
             '[dir="rtl"] &': {
               "--_navbar-border-right": "none",
-              "--_navbar-border-left": `${rem(
+              "--_navbar-border-left": `${rem2(
                 "1px"
               )} solid var(--_app-shell-border-color)`
             }
@@ -667,12 +1444,12 @@ var require_AppShell_plugin = __commonJS({
           transform: "var(--_aside-transform, var(--app-shell-aside-transform))",
           zIndex: "var(--app-shell-aside-z-index)",
           "&[data-with-border]": {
-            "--_aside-border-left": `${rem(
+            "--_aside-border-left": `${rem2(
               "1px"
             )} solid var(--_app-shell-border-color)`,
             '[dir="rtl"] &': {
               "--_aside-border-left": "none",
-              "--_aside-border-right": `${rem(
+              "--_aside-border-right": `${rem2(
                 "1px"
               )} solid var(--_app-shell-border-color)`
             }
@@ -717,7 +1494,7 @@ var require_AppShell_plugin = __commonJS({
           transform: "var(--app-shell-header-transform)",
           zIndex: "var(--app-shell-header-z-index)",
           "&[data-with-border]": {
-            "--_header-border-bottom": `${rem(
+            "--_header-border-bottom": `${rem2(
               "1px"
             )} solid var(--_app-shell-border-color)`
           }
@@ -729,7 +1506,7 @@ var require_AppShell_plugin = __commonJS({
           transform: "var(--app-shell-footer-transform)",
           zIndex: "var(--app-shell-footer-z-index)",
           "&[data-with-border]": {
-            "--_footer-border-top": `${rem(
+            "--_footer-border-top": `${rem2(
               "1px"
             )} solid var(--_app-shell-border-color)`
           }
@@ -828,11 +1605,11 @@ var require_Avatar_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".avatar-root": {
-          "--avatar-size-xs": rem("16px"),
-          "--avatar-size-sm": rem("26px"),
-          "--avatar-size-md": rem("38px"),
-          "--avatar-size-lg": rem("56px"),
-          "--avatar-size-xl": rem("84px"),
+          "--avatar-size-xs": rem2("16px"),
+          "--avatar-size-sm": rem2("26px"),
+          "--avatar-size-md": rem2("38px"),
+          "--avatar-size-lg": rem2("56px"),
+          "--avatar-size-xl": rem2("84px"),
           "-webkit-tap-highlight-color": "transparent",
           position: "relative",
           display: "block",
@@ -850,7 +1627,7 @@ var require_Avatar_plugin = __commonJS({
           marginRight: "var(--_avatar-mr, unset)",
           "&[data-within-group]": {
             "--_avatar-ml": "calc(var(--ag-spacing) * -1)",
-            "--_avatar-border": `${rem("2px")} solid var(--raikou-color-body)`,
+            "--_avatar-border": `${rem2("2px")} solid var(--raikou-color-body)`,
             "--_avatar-bg": "var(--raikou-color-body)",
             '[dir="rtl"] &': {
               "--_avatar-mr": "calc(var(--ag-spacing) * -1)",
@@ -923,26 +1700,26 @@ var require_Badge_plugin = __commonJS({
     module2.exports = function({ addComponents }) {
       addComponents({
         ".badge-root": {
-          "--badge-height-xs": rem("16px"),
-          "--badge-height-sm": rem("18px"),
-          "--badge-height-md": rem("20px"),
-          "--badge-height-lg": rem("26px"),
-          "--badge-height-xl": rem("32px"),
-          "--badge-fz-xs": rem("9px"),
-          "--badge-fz-sm": rem("10px"),
-          "--badge-fz-md": rem("11px"),
-          "--badge-fz-lg": rem("13px"),
-          "--badge-fz-xl": rem("16px"),
-          "--badge-padding-x-xs": rem("6px"),
-          "--badge-padding-x-sm": rem("8px"),
-          "--badge-padding-x-md": rem("10px"),
-          "--badge-padding-x-lg": rem("12px"),
-          "--badge-padding-x-xl": rem("16px"),
+          "--badge-height-xs": rem2("16px"),
+          "--badge-height-sm": rem2("18px"),
+          "--badge-height-md": rem2("20px"),
+          "--badge-height-lg": rem2("26px"),
+          "--badge-height-xl": rem2("32px"),
+          "--badge-fz-xs": rem2("9px"),
+          "--badge-fz-sm": rem2("10px"),
+          "--badge-fz-md": rem2("11px"),
+          "--badge-fz-lg": rem2("13px"),
+          "--badge-fz-xl": rem2("16px"),
+          "--badge-padding-x-xs": rem2("6px"),
+          "--badge-padding-x-sm": rem2("8px"),
+          "--badge-padding-x-md": rem2("10px"),
+          "--badge-padding-x-lg": rem2("12px"),
+          "--badge-padding-x-xl": rem2("16px"),
           fontSize: "var(--badge-fz)",
           borderRadius: "var(--badge-radius)",
           height: "var(--badge-height)",
           "-webkit-tap-highlight-color": "transparent",
-          lineHeight: `calc(var(--badge-height) - ${rem("2px")})`,
+          lineHeight: `calc(var(--badge-height) - ${rem2("2px")})`,
           textDecoration: "none",
           padding: "0 var(--badge-padding-x)",
           display: "var(--_badge-display, inline-flex)",
@@ -951,7 +1728,7 @@ var require_Badge_plugin = __commonJS({
           width: "var(--_badge-width, auto)",
           textTransform: "uppercase",
           fontWeight: "700",
-          letterSpacing: rem("0.25px"),
+          letterSpacing: rem2("0.25px"),
           cursor: "inherit",
           textOverflow: "ellipsis",
           overflow: "hidden",
@@ -962,17 +1739,17 @@ var require_Badge_plugin = __commonJS({
         ".badge-root--dot": {
           "--badge-dot-size": "calc(var(--badge-height) / 3.4)",
           backgroundColor: "var(--_badge-bg)",
-          border: `${rem("1px")} solid var(--_badge-border-color)`,
+          border: `${rem2("1px")} solid var(--_badge-border-color)`,
           color: "var(--_badge-color)",
           '[data-raikou-color-scheme="light"] &': {
-            "--_badge-bg": "var(--raikou-color-white)",
-            "--_badge-border-color": "var(--raikou-color-gray-4)",
-            "--_badge-color": "var(--raikou-color-black)"
+            "--_badge-bg": "var(--raikou-badge-bg)",
+            "--_badge-border-color": "var(--raikou-badge-border-color)",
+            "--_badge-color": "var(--raikou-badge-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_badge-bg": "var(--raikou-color-dark-5)",
-            "--_badge-border-color": "var(--raikou-color-dark-5)",
-            "--_badge-color": "var(--raikou-color-white)"
+            "--_badge-bg": "var(--raikou-badge-bg)",
+            "--_badge-border-color": "var(--raikou-badge-border-color)",
+            "--_badge-color": "var(--raikou-badge-color)"
           },
           "&::before": {
             content: "''",
@@ -1020,7 +1797,7 @@ var require_Blockquote_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".blockquote-root": {
-          "--_bq-border": `${rem("3px")} solid var(--bq-bd)`,
+          "--_bq-border": `${rem2("3px")} solid var(--bq-bd)`,
           position: "relative",
           margin: "0",
           backgroundColor: "var(--_bq-bg)",
@@ -1031,7 +1808,7 @@ var require_Blockquote_plugin = __commonJS({
           borderTopRightRadius: "var(--_bq-radius-right, var(--bq-radius))",
           borderBottomLeftRadius: "var(--_bq-radius-left, 0)",
           borderBottomRightRadius: "var(--_bq-radius-right, var(--bq-radius))",
-          padding: `var(--raikou-spacing-xl) ${rem("38px")}`,
+          padding: `var(--raikou-spacing-xl) ${rem2("38px")}`,
           '[dir="rtl"] &': {
             "--_bq-radius-left": "var(--bq-radius)",
             "--_bq-radius-right": "0",
@@ -1098,10 +1875,10 @@ var require_Breadcrumbs_plugin = __commonJS({
           alignItems: "center",
           justifyContent: "center",
           '[data-raikou-color-scheme="light"] &': {
-            "--_separator-color": "var(--raikou-color-gray-7)"
+            "--_separator-color": "var(--raikou-breadcrumbs-separator-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_separator-color": "var(--raikou-color-dark-2)"
+            "--_separator-color": "var(--raikou-breadcrumbs-separator-color)"
           }
         }
       });
@@ -1117,21 +1894,21 @@ var require_Burger_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".burger-root": {
-          "--burger-size-xs": rem("12px"),
-          "--burger-size-sm": rem("18px"),
-          "--burger-size-md": rem("24px"),
-          "--burger-size-lg": rem("34px"),
-          "--burger-size-xl": rem("42px"),
+          "--burger-size-xs": rem2("12px"),
+          "--burger-size-sm": rem2("18px"),
+          "--burger-size-md": rem2("24px"),
+          "--burger-size-lg": rem2("34px"),
+          "--burger-size-xl": rem2("42px"),
           width: "calc(var(--burger-size) + var(--raikou-spacing-xs))",
           height: "calc(var(--burger-size) + var(--raikou-spacing-xs))",
           padding: "calc(var(--raikou-spacing-xs) / 2)",
           cursor: "pointer",
           "--_burger-color": "var(--burger-color, var(--__burger-color))",
           '[data-raikou-color-scheme="light"] &': {
-            "--__burger-color": "var(--raikou-color-black)"
+            "--__burger-color": "var(--raikou-burger-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--__burger-color": "var(--raikou-color-white)"
+            "--__burger-color": "var(--raikou-burger-color)"
           }
         },
         ".burger-burger": {
@@ -1142,7 +1919,7 @@ var require_Burger_plugin = __commonJS({
             width: "var(--burger-size)",
             height: "calc(var(--burger-size) / 12)",
             backgroundColor: "var(--_burger-color)",
-            outline: `${rem("1px")} solid transparent`,
+            outline: `${rem2("1px")} solid transparent`,
             transitionProperty: "background-color, transform",
             transitionDuration: "var(--burger-transition-duration)",
             transitionTimingFunction: "var(--burger-transition-timing-function)"
@@ -1180,27 +1957,27 @@ var require_Button_plugin = __commonJS({
     init_src();
     module2.exports = function({ addComponents, theme }) {
       addComponents({
-        ".button-root": {
-          "--button-height-xs": rem("30px"),
-          "--button-height-sm": rem("36px"),
-          "--button-height-md": rem("42px"),
-          "--button-height-lg": rem("50px"),
-          "--button-height-xl": rem("60px"),
-          "--button-height-compact-xs": rem("22px"),
-          "--button-height-compact-sm": rem("26px"),
-          "--button-height-compact-md": rem("30px"),
-          "--button-height-compact-lg": rem("34px"),
-          "--button-height-compact-xl": rem("40px"),
-          "--button-padding-x-xs": rem("14px"),
-          "--button-padding-x-sm": rem("18px"),
-          "--button-padding-x-md": rem("22px"),
-          "--button-padding-x-lg": rem("26px"),
-          "--button-padding-x-xl": rem("32px"),
-          "--button-padding-x-compact-xs": rem("7px"),
-          "--button-padding-x-compact-sm": rem("8px"),
-          "--button-padding-x-compact-md": rem("10px"),
-          "--button-padding-x-compact-lg": rem("12px"),
-          "--button-padding-x-compact-xl": rem("14px"),
+        ".button-root.button-root": {
+          "--button-height-xs": rem2("30px"),
+          "--button-height-sm": rem2("36px"),
+          "--button-height-md": rem2("42px"),
+          "--button-height-lg": rem2("50px"),
+          "--button-height-xl": rem2("60px"),
+          "--button-height-compact-xs": rem2("22px"),
+          "--button-height-compact-sm": rem2("26px"),
+          "--button-height-compact-md": rem2("30px"),
+          "--button-height-compact-lg": rem2("34px"),
+          "--button-height-compact-xl": rem2("40px"),
+          "--button-padding-x-xs": rem2("14px"),
+          "--button-padding-x-sm": rem2("18px"),
+          "--button-padding-x-md": rem2("22px"),
+          "--button-padding-x-lg": rem2("26px"),
+          "--button-padding-x-xl": rem2("32px"),
+          "--button-padding-x-compact-xs": rem2("7px"),
+          "--button-padding-x-compact-sm": rem2("8px"),
+          "--button-padding-x-compact-md": rem2("10px"),
+          "--button-padding-x-compact-lg": rem2("12px"),
+          "--button-padding-x-compact-xl": rem2("14px"),
           userSelect: "none",
           fontWeight: "600",
           position: "relative",
@@ -1247,7 +2024,7 @@ var require_Button_plugin = __commonJS({
             "&::before": {
               content: '""',
               position: "absolute",
-              inset: rem("-1px"),
+              inset: rem2("-1px"),
               borderRadius: "var(--button-radius)",
               backgroundColor: "var(--_button-loading-overlay-bg)"
             }
@@ -1267,14 +2044,14 @@ var require_Button_plugin = __commonJS({
             }
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_disabled-color": "var(--raikou-color-gray-5)",
-            "--_disabled-bg": "var(--raikou-color-gray-1)",
-            "--_button-loading-overlay-bg": "rgba(255, 255, 255, 0.35)"
+            "--_disabled-color": "var(--raikou-button-disabled-color)",
+            "--_disabled-bg": "var(--raikou-button-disabled-bg)",
+            "--_button-loading-overlay-bg": "var(--raikou-button-loading-overlay-bg)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_disabled-color": "var(--raikou-color-dark-3)",
-            "--_disabled-bg": "var(--raikou-color-dark-6)",
-            "--_button-loading-overlay-bg": "rgba(0, 0, 0, 0.35)"
+            "--_disabled-color": "var(--raikou-button-disabled-color)",
+            "--_disabled-bg": "var(--raikou-button-disabled-bg)",
+            "--_button-loading-overlay-bg": "var(--raikou-button-loading-overlay-bg)"
           }
         },
         ".button-inner": {
@@ -1413,10 +2190,10 @@ var require_Card_plugin = __commonJS({
             "--_card-section-padding": "var(--card-padding)"
           },
           "&[data-with-border]": {
-            "--_card-section-border-top": `${rem(
+            "--_card-section-border-top": `${rem2(
               "1px"
             )} solid var(--_card-section-border-color)`,
-            "--_card-section-border-bottom": `${rem(
+            "--_card-section-border-bottom": `${rem2(
               "1px"
             )} solid var(--_card-section-border-color)`
           },
@@ -1424,10 +2201,10 @@ var require_Card_plugin = __commonJS({
             "--_card-section-border-top": "none !important"
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_card-section-border-color": "var(--raikou-color-gray-3)"
+            "--_card-section-border-color": "var(--raikou-card-section-border-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_card-section-border-color": "var(--raikou-color-dark-4)"
+            "--_card-section-border-color": "var(--raikou-card-section-border-color)"
           }
         }
       });
@@ -1459,11 +2236,11 @@ var require_Checkbox_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".checkbox-root": {
-          "--checkbox-size-xs": rem("16px"),
-          "--checkbox-size-sm": rem("20px"),
-          "--checkbox-size-md": rem("24px"),
-          "--checkbox-size-lg": rem("30px"),
-          "--checkbox-size-xl": rem("36px")
+          "--checkbox-size-xs": rem2("16px"),
+          "--checkbox-size-sm": rem2("20px"),
+          "--checkbox-size-md": rem2("24px"),
+          "--checkbox-size-lg": rem2("30px"),
+          "--checkbox-size-xl": rem2("36px")
         },
         ".checkbox-inner": {
           position: "relative",
@@ -1477,7 +2254,7 @@ var require_Checkbox_plugin = __commonJS({
         ".checkbox-input": {
           appearance: "none",
           backgroundColor: "var(--_checkbox-bg)",
-          border: `${rem("1px")} solid var(--_checkbox-bd-color)`,
+          border: `${rem2("1px")} solid var(--_checkbox-bd-color)`,
           width: "var(--checkbox-size)",
           height: "var(--checkbox-size)",
           borderRadius: "var(--checkbox-radius)",
@@ -1487,12 +2264,12 @@ var require_Checkbox_plugin = __commonJS({
           transition: "border-color 100ms ease, background-color 100ms ease",
           cursor: "var(--_checkbox-cursor, var(--raikou-cursor-type))",
           '[data-raikou-color-scheme="light"] &': {
-            "--_checkbox-bg": "var(--raikou-color-white)",
-            "--_checkbox-bd-color": "var(--raikou-color-gray-4)"
+            "--_checkbox-bg": "var(--raikou-checkbox-bg)",
+            "--_checkbox-bd-color": "var(--raikou-checkbox-bd-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_checkbox-bg": "var(--raikou-color-dark-6)",
-            "--_checkbox-bd-color": "var(--raikou-color-dark-4)"
+            "--_checkbox-bg": "var(--raikou-checkbox-bg)",
+            "--_checkbox-bd-color": "var(--raikou-checkbox-bd-color)"
           },
           "&[data-error]": {
             "--_checkbox-bd-color": "var(--raikou-color-error)"
@@ -1510,19 +2287,19 @@ var require_Checkbox_plugin = __commonJS({
           "&:disabled": {
             "--_checkbox-cursor": "not-allowed",
             '[data-raikou-color-scheme="light"] &': {
-              "--_checkbox-bg": "var(--raikou-color-gray-2)",
-              "--_checkbox-bd-color": "var(--raikou-color-gray-3)"
+              "--_checkbox-bg": "var(--raikou-checkbox-disabled-bg)",
+              "--_checkbox-bd-color": "var(--raikou-checkbox-disabled-bd-color)"
             },
             '[data-raikou-color-scheme="dark"] &': {
-              "--_checkbox-bg": "var(--raikou-color-dark-6)",
-              "--_checkbox-bd-color": "var(--raikou-color-dark-6)"
+              "--_checkbox-bg": "var(--raikou-checkbox-disabled-bg)",
+              "--_checkbox-bd-color": "var(--raikou-checkbox-disabled-bd-color)"
             },
             "& + .checkbox-icon": {
               '[data-raikou-color-scheme="light"] &': {
-                "--_checkbox-icon-color": "var(--raikou-color-gray-5)"
+                "--_checkbox-icon-color": "var(--raikou-checkbox-disabled-icon-color)"
               },
               '[data-raikou-color-scheme="dark"] &': {
-                "--_checkbox-icon-color": "var(--raikou-color-dark-3)"
+                "--_checkbox-icon-color": "var(--raikou-checkbox-disabled-icon-color)"
               }
             }
           }
@@ -1535,9 +2312,9 @@ var require_Checkbox_plugin = __commonJS({
           bottom: "0",
           width: "60%",
           margin: "auto",
-          color: "var(--_checkbox-icon-color, var(--raikou-color-white))",
+          color: "var(--_checkbox-icon-color, var(--raikou-checkbox-icon-color))",
           pointerEvents: "none",
-          transform: `var(--_checkbox-icon-transform, translateY(${rem(
+          transform: `var(--_checkbox-icon-transform, translateY(${rem2(
             "5px"
           )}) scale(0.5))`,
           opacity: "var(--_checkbox-icon-opacity, 0)",
@@ -1556,31 +2333,31 @@ var require_Chip_plugin = __commonJS({
     module2.exports = function({ addComponents }) {
       addComponents({
         ".chip-root": {
-          "--chip-size-xs": rem("23px"),
-          "--chip-size-sm": rem("28px"),
-          "--chip-size-md": rem("32px"),
-          "--chip-size-lg": rem("36px"),
-          "--chip-size-xl": rem("40px"),
-          "--chip-icon-size-xs": rem("10px"),
-          "--chip-icon-size-sm": rem("12px"),
-          "--chip-icon-size-md": rem("14px"),
-          "--chip-icon-size-lg": rem("16px"),
-          "--chip-icon-size-xl": rem("18px"),
-          "--chip-padding-xs": rem("16px"),
-          "--chip-padding-sm": rem("20px"),
-          "--chip-padding-md": rem("24px"),
-          "--chip-padding-lg": rem("28px"),
-          "--chip-padding-xl": rem("32px"),
-          "--chip-checked-padding-xs": rem("7.5px"),
-          "--chip-checked-padding-sm": rem("10px"),
-          "--chip-checked-padding-md": rem("11.7px"),
-          "--chip-checked-padding-lg": rem("13.5px"),
-          "--chip-checked-padding-xl": rem("12.5px"),
-          "--chip-spacing-xs": rem("10px"),
-          "--chip-spacing-sm": rem("12px"),
-          "--chip-spacing-md": rem("16px"),
-          "--chip-spacing-lg": rem("20px"),
-          "--chip-spacing-xl": rem("22px")
+          "--chip-size-xs": rem2("23px"),
+          "--chip-size-sm": rem2("28px"),
+          "--chip-size-md": rem2("32px"),
+          "--chip-size-lg": rem2("36px"),
+          "--chip-size-xl": rem2("40px"),
+          "--chip-icon-size-xs": rem2("10px"),
+          "--chip-icon-size-sm": rem2("12px"),
+          "--chip-icon-size-md": rem2("14px"),
+          "--chip-icon-size-lg": rem2("16px"),
+          "--chip-icon-size-xl": rem2("18px"),
+          "--chip-padding-xs": rem2("16px"),
+          "--chip-padding-sm": rem2("20px"),
+          "--chip-padding-md": rem2("24px"),
+          "--chip-padding-lg": rem2("28px"),
+          "--chip-padding-xl": rem2("32px"),
+          "--chip-checked-padding-xs": rem2("7.5px"),
+          "--chip-checked-padding-sm": rem2("10px"),
+          "--chip-checked-padding-md": rem2("11.7px"),
+          "--chip-checked-padding-lg": rem2("13.5px"),
+          "--chip-checked-padding-xl": rem2("12.5px"),
+          "--chip-spacing-xs": rem2("10px"),
+          "--chip-spacing-sm": rem2("12px"),
+          "--chip-spacing-md": rem2("16px"),
+          "--chip-spacing-lg": rem2("20px"),
+          "--chip-spacing-xl": rem2("22px")
         },
         ".chip-label": {
           display: "inline-flex",
@@ -1589,21 +2366,21 @@ var require_Chip_plugin = __commonJS({
           borderRadius: "var(--chip-radius)",
           height: "var(--chip-size)",
           fontSize: "var(--chip-fz)",
-          lineHeight: `calc(var(--chip-size) - ${rem("2px")})`,
+          lineHeight: `calc(var(--chip-size) - ${rem2("2px")})`,
           paddingLeft: "var(--_chip-padding, var(--chip-padding))",
           paddingRight: "var(--_chip-padding, var(--chip-padding))",
           cursor: "var(--_chip-cursor, pointer)",
           whiteSpace: "nowrap",
           "-webkit-tap-highlight-color": "transparent",
-          border: `${rem("1px")} solid transparent`,
+          border: `${rem2("1px")} solid transparent`,
           backgroundColor: "var(--_chip-bg)",
           color: "var(--_chip-color, var(--raikou-color-text))",
           "&[data-checked]": {
             "--_chip-padding": "var(--chip-checked-padding)"
           },
           "&[data-disabled]": {
-            "--_chip-bg": "var(--raikou-color-gray-2)",
-            "--_chip-color": "var(--raikou-color-gray-5)",
+            "--_chip-bg": "var(--raikou-chip-bg-disabled)",
+            "--_chip-color": "var(--raikou-chip-color-disabled)",
             "--_chip-cursor": "not-allowed"
           }
         },
@@ -1613,30 +2390,30 @@ var require_Chip_plugin = __commonJS({
           "@media (hover: hover)": {
             "&:hover": {
               '[data-raikou-color-scheme="light"] &': {
-                "--_chip-bg": "var(--raikou-color-gray-0)"
+                "--_chip-bg": "var(--raikou-chip-outline-hover-bg)"
               },
               '[data-raikou-color-scheme="dark"] &': {
-                "--_chip-bg": "var(--raikou-color-dark-5)"
+                "--_chip-bg": "var(--raikou-chip-outline-hover-bg)"
               }
             }
           },
           "@media (hover: none)": {
             "&:active": {
               '[data-raikou-color-scheme="light"] &': {
-                "--_chip-bg": "var(--raikou-color-gray-0)"
+                "--_chip-bg": "var(--raikou-chip-outline-active-bg)"
               },
               '[data-raikou-color-scheme="dark"] &': {
-                "--_chip-bg": "var(--raikou-color-dark-5)"
+                "--_chip-bg": "var(--raikou-chip-outline-active-bg)"
               }
             }
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_chip-bg": "var(--raikou-color-white)",
-            "--_chip-bd": `${rem("1px")} solid var(--raikou-color-gray-3)`
+            "--_chip-bg": "var(--raikou-chip-outline-bg)",
+            "--_chip-bd": `${rem2("1px")} solid var(--raikou-chip-outline-bd)`
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_chip-bg": "var(--raikou-color-dark-6)",
-            "--_chip-bd": `${rem("1px")} solid var(--raikou-color-dark-4)`
+            "--_chip-bg": "var(--raikou-chip-outline-bg)",
+            "--_chip-bd": `${rem2("1px")} solid var(--raikou-chip-outline-bd)`
           },
           "[data-raikou-color-scheme] &[data-checked]": {
             "--_chip-bd": "var(--chip-bd)",
@@ -1653,35 +2430,81 @@ var require_Chip_plugin = __commonJS({
             }
           }
         },
-        ".chip-root[data-variant='filled'] .chip-label:not([data-disabled]), .chip-root[data-variant='light'] .chip-label:not([data-disabled])": {
+        ".chip-root[data-variant='filled'] .chip-label:not([data-disabled])": {
           backgroundColor: "var(--_chip-bg)",
-          border: `${rem("1px")} solid transparent`,
+          border: `${rem2("1px")} solid transparent`,
           color: "var(--_chip-color, var(--raikou-color-text))",
           "@media (hover: hover)": {
             "&:hover": {
               '[data-raikou-color-scheme="light"] &': {
-                "--_chip-bg": "var(--raikou-color-gray-1)"
+                "--_chip-bg": "var(--raikou-chip-filled-hover-bg)"
               },
               '[data-raikou-color-scheme="dark"] &': {
-                "--_chip-bg": "var(--raikou-color-dark-5)"
+                "--_chip-bg": "var(--raikou-chip-filled-hover-bg)"
               }
             }
           },
           "@media (hover: none)": {
             "&:active": {
               '[data-raikou-color-scheme="light"] &': {
-                "--_chip-bg": "var(--raikou-color-gray-1)"
+                "--_chip-bg": "var(--raikou-chip-filled-active-bg)"
               },
               '[data-raikou-color-scheme="dark"] &': {
-                "--_chip-bg": "var(--raikou-color-dark-5)"
+                "--_chip-bg": "var(--raikou-chip-filled-active-bg)"
               }
             }
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_chip-bg": "var(--raikou-color-gray-0)"
+            "--_chip-bg": "var(--raikou-chip-filled-bg)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_chip-bg": "var(--raikou-color-dark-6)"
+            "--_chip-bg": "var(--raikou-chip-filled-bg)"
+          },
+          "[data-raikou-color-scheme] &[data-checked]": {
+            "--_chip-icon-color": "var(--chip-color)",
+            "--_chip-color": "var(--chip-color)",
+            "--_chip-bg": "var(--chip-bg)",
+            "@media (hover: hover)": {
+              "&:hover": {
+                "--_chip-bg": "var(--chip-hover)"
+              }
+            },
+            "@media (hover: none)": {
+              "&:active": {
+                "--_chip-bg": "var(--chip-hover)"
+              }
+            }
+          }
+        },
+        ".chip-root[data-variant='light'] .chip-label:not([data-disabled])": {
+          backgroundColor: "var(--_chip-bg)",
+          border: `${rem2("1px")} solid transparent`,
+          color: "var(--_chip-color, var(--raikou-color-text))",
+          "@media (hover: hover)": {
+            "&:hover": {
+              '[data-raikou-color-scheme="light"] &': {
+                "--_chip-bg": "var(--raikou-chip-light-hover-bg)"
+              },
+              '[data-raikou-color-scheme="dark"] &': {
+                "--_chip-bg": "var(--raikou-chip-light-hover-bg)"
+              }
+            }
+          },
+          "@media (hover: none)": {
+            "&:active": {
+              '[data-raikou-color-scheme="light"] &': {
+                "--_chip-bg": "var(--raikou-chip-filled-active-bg)"
+              },
+              '[data-raikou-color-scheme="dark"] &': {
+                "--_chip-bg": "var(--raikou-chip-light-active-bg)"
+              }
+            }
+          },
+          '[data-raikou-color-scheme="light"] &': {
+            "--_chip-bg": "var(--raikou-chip-light-bg)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_chip-bg": "var(--raikou-chip-light-bg)"
           },
           "[data-raikou-color-scheme] &[data-checked]": {
             "--_chip-icon-color": "var(--chip-color)",
@@ -1720,8 +2543,8 @@ var require_Chip_plugin = __commonJS({
           opacity: "0",
           margin: "0",
           "&:focus-visible + .label": {
-            outline: `${rem("2px")} solid var(--raikou-color-primary)`,
-            outlineOffset: rem("2px")
+            outline: `${rem2("2px")} solid var(--raikou-color-primary)`,
+            outlineOffset: rem2("2px")
           }
         }
       });
@@ -1739,7 +2562,7 @@ var require_Code_plugin = __commonJS({
         ".code-root": {
           fontFamily: "var(--raikou-font-family-monospace)",
           lineHeight: "var(--raikou-line-height)",
-          padding: `var(--_code-padding, ${rem(
+          padding: `var(--_code-padding, ${rem2(
             "2px"
           )} calc(var(--raikou-spacing-xs) / 2))`,
           borderRadius: "var(--raikou-radius-sm)",
@@ -1749,12 +2572,12 @@ var require_Code_plugin = __commonJS({
           margin: "0",
           overflow: "auto",
           '[data-raikou-color-scheme="light"] &': {
-            "--_code-bg": "var(--code-bg, var(--raikou-color-gray-1))",
-            "--_code-color": "var(--raikou-color-black)"
+            "--_code-bg": "var(--code-bg, var(--raikou-code-bg))",
+            "--_code-color": "var(--raikou-code-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_code-bg": "var(--code-bg, var(--raikou-color-dark-5))",
-            "--_code-color": "var(--raikou-color-white)"
+            "--_code-bg": "var(--code-bg, var(--raikou-code-bg))",
+            "--_code-color": "var(--raikou-code-color)"
           },
           "&[data-block]": {
             "--_code-padding": "var(--raikou-spacing-xs)"
@@ -1773,18 +2596,18 @@ var require_ColorInput_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".colorInput-eyeDropperIcon": {
-          "--ci-eye-dropper-icon-size-xs": rem("14px"),
-          "--ci-eye-dropper-icon-size-sm": rem("16px"),
-          "--ci-eye-dropper-icon-size-md": rem("18px"),
-          "--ci-eye-dropper-icon-size-lg": rem("20px"),
-          "--ci-eye-dropper-icon-size-xl": rem("22px")
+          "--ci-eye-dropper-icon-size-xs": rem2("14px"),
+          "--ci-eye-dropper-icon-size-sm": rem2("16px"),
+          "--ci-eye-dropper-icon-size-md": rem2("18px"),
+          "--ci-eye-dropper-icon-size-lg": rem2("20px"),
+          "--ci-eye-dropper-icon-size-xl": rem2("22px")
         },
         ".colorInput-colorPreview": {
-          "--ci-preview-size-xs": rem("16px"),
-          "--ci-preview-size-sm": rem("18px"),
-          "--ci-preview-size-md": rem("22px"),
-          "--ci-preview-size-lg": rem("28px"),
-          "--ci-preview-size-xl": rem("36px")
+          "--ci-preview-size-xs": rem2("16px"),
+          "--ci-preview-size-sm": rem2("18px"),
+          "--ci-preview-size-md": rem2("22px"),
+          "--ci-preview-size-lg": rem2("28px"),
+          "--ci-preview-size-xl": rem2("36px")
         }
       });
     };
@@ -1799,28 +2622,28 @@ var require_ColorPicker_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".colorPicker-wrapper": {
-          "--cp-width-xs": rem("180px"),
-          "--cp-width-sm": rem("200px"),
-          "--cp-width-md": rem("240px"),
-          "--cp-width-lg": rem("280px"),
-          "--cp-width-xl": rem("320px"),
-          "--cp-preview-size-xs": rem("26px"),
-          "--cp-preview-size-sm": rem("34px"),
-          "--cp-preview-size-md": rem("42px"),
-          "--cp-preview-size-lg": rem("50px"),
-          "--cp-preview-size-xl": rem("54px"),
-          "--cp-thumb-size-xs": rem("8px"),
-          "--cp-thumb-size-sm": rem("12px"),
-          "--cp-thumb-size-md": rem("16px"),
-          "--cp-thumb-size-lg": rem("20px"),
-          "--cp-thumb-size-xl": rem("22px"),
-          "--cp-saturation-height-xs": rem("100px"),
-          "--cp-saturation-height-sm": rem("110px"),
-          "--cp-saturation-height-md": rem("120px"),
-          "--cp-saturation-height-lg": rem("140px"),
-          "--cp-saturation-height-xl": rem("160px"),
+          "--cp-width-xs": rem2("180px"),
+          "--cp-width-sm": rem2("200px"),
+          "--cp-width-md": rem2("240px"),
+          "--cp-width-lg": rem2("280px"),
+          "--cp-width-xl": rem2("320px"),
+          "--cp-preview-size-xs": rem2("26px"),
+          "--cp-preview-size-sm": rem2("34px"),
+          "--cp-preview-size-md": rem2("42px"),
+          "--cp-preview-size-lg": rem2("50px"),
+          "--cp-preview-size-xl": rem2("54px"),
+          "--cp-thumb-size-xs": rem2("8px"),
+          "--cp-thumb-size-sm": rem2("12px"),
+          "--cp-thumb-size-md": rem2("16px"),
+          "--cp-thumb-size-lg": rem2("20px"),
+          "--cp-thumb-size-xl": rem2("22px"),
+          "--cp-saturation-height-xs": rem2("100px"),
+          "--cp-saturation-height-sm": rem2("110px"),
+          "--cp-saturation-height-md": rem2("120px"),
+          "--cp-saturation-height-lg": rem2("140px"),
+          "--cp-saturation-height-xl": rem2("160px"),
           width: "var(--cp-width)",
-          padding: rem("1px")
+          padding: rem2("1px")
         },
         ".colorPicker-preview": {
           width: "var(--cp-preview-size)",
@@ -1839,8 +2662,8 @@ var require_ColorPicker_plugin = __commonJS({
         ".colorPicker-thumb": {
           overflow: "hidden",
           position: "absolute",
-          boxShadow: `0 0 ${rem("1px")} rgba(0, 0, 0, 0.6)`,
-          border: `${rem("2px")} solid var(--raikou-color-white)`,
+          boxShadow: `0 0 ${rem2("1px")} rgba(0, 0, 0, 0.6)`,
+          border: `${rem2("2px")} solid var(--raikou-color-white)`,
           width: "var(--cp-thumb-size)",
           height: "var(--cp-thumb-size)",
           borderRadius: "var(--cp-thumb-size)",
@@ -1851,17 +2674,17 @@ var require_ColorPicker_plugin = __commonJS({
         /* Duplicate class to increase specificity */
         ".colorPicker-swatch.colorPicker-swatch": {
           height: "0",
-          margin: rem("2px"),
+          margin: rem2("2px"),
           cursor: "pointer",
-          width: `calc(var(--cp-swatch-size) - ${rem("4px")})`,
-          paddingBottom: `calc(var(--cp-swatch-size) - ${rem("4px")})`,
+          width: `calc(var(--cp-swatch-size) - ${rem2("4px")})`,
+          paddingBottom: `calc(var(--cp-swatch-size) - ${rem2("4px")})`,
           minWidth: "0",
           minHeight: "0"
         },
         ".colorPicker-swatches": {
-          marginTop: rem("5px"),
-          marginLeft: rem("-2px"),
-          marginRight: rem("-2px"),
+          marginTop: rem2("5px"),
+          marginLeft: rem2("-2px"),
+          marginRight: rem2("-2px"),
           display: "flex",
           flexWrap: "wrap"
         },
@@ -1874,14 +2697,14 @@ var require_ColorPicker_plugin = __commonJS({
           "&[data-focus-ring='auto']": {
             "&:focus:focus-visible": {
               "& .thumb": {
-                "--_outline": `${rem("2px")} solid var(--raikou-color-blue-filled)`
+                "--_outline": `${rem2("2px")} solid var(--raikou-color-blue-filled)`
               }
             }
           },
           "&[data-focus-ring='always']": {
             "&:focus": {
               "& .thumb": {
-                "--_outline": `${rem("2px")} solid var(--raikou-color-blue-filled)`
+                "--_outline": `${rem2("2px")} solid var(--raikou-color-blue-filled)`
               }
             }
           }
@@ -1889,44 +2712,44 @@ var require_ColorPicker_plugin = __commonJS({
         ".colorPicker-saturationOverlay": {
           position: "absolute",
           borderRadius: "var(--raikou-radius-sm)",
-          inset: `calc(var(--cp-thumb-size) * -1 / 2 - ${rem("1px")})`
+          inset: `calc(var(--cp-thumb-size) * -1 / 2 - ${rem2("1px")})`
         },
         ".colorPicker-slider": {
           position: "relative",
-          height: ` calc(var(--cp-thumb-size) + ${rem("2px")})`,
+          height: ` calc(var(--cp-thumb-size) + ${rem2("2px")})`,
           marginLeft: "calc(var(--cp-thumb-size) / 2)",
           marginRight: "calc(var(--cp-thumb-size) / 2)",
           outline: "none",
           "& + &": {
-            marginTop: rem("6px")
+            marginTop: rem2("6px")
           },
           "&[data-focus-ring='auto']": {
             "&:focus:focus-visible": {
               "& .thumb": {
-                "--_outline": `${rem("2px")} solid var(--raikou-color-blue-filled)`
+                "--_outline": `${rem2("2px")} solid var(--raikou-color-blue-filled)`
               }
             }
           },
           "&[data-focus-ring='always']": {
             "&:focus": {
               "& .thumb": {
-                "--_outline": `${rem("2px")} solid var(--raikou-color-blue-filled)`
+                "--_outline": `${rem2("2px")} solid var(--raikou-color-blue-filled)`
               }
             }
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_slider-checkers": "var(--raikou-color-gray-3)"
+            "--_slider-checkers": "var(--raikou-colorpicker-slider-checkers)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_slider-checkers": "var(--raikou-color-dark-4)"
+            "--_slider-checkers": "var(--raikou-colorpicker-slider-checkers)"
           }
         },
         ".colorPicker-sliderOverlay": {
           position: "absolute",
           top: "0",
           bottom: "0",
-          left: `calc(var(--cp-thumb-size) * -1 / 2 - ${rem("1px")})`,
-          right: `calc(var(--cp-thumb-size) * -1 / 2 - ${rem("1px")})`,
+          left: `calc(var(--cp-thumb-size) * -1 / 2 - ${rem2("1px")})`,
+          right: `calc(var(--cp-thumb-size) * -1 / 2 - ${rem2("1px")})`,
           borderRadius: "10000rem"
         }
       });
@@ -1956,12 +2779,12 @@ var require_ColorSwatch_plugin = __commonJS({
           color: "inherit",
           textDecoration: "none",
           '[data-raikou-color-scheme="light"] &': {
-            "--_alpha-overlay-color": "var(--raikou-color-gray-3)",
-            "--_alpha-overlay-bg": "var(--raikou-color-white)"
+            "--_alpha-overlay-color": "var(--raikou-colorswatch-alpha-overlay-color)",
+            "--_alpha-overlay-bg": "var(--raikou-colorswatch-alpha-overlay-bg)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_alpha-overlay-color": "var(--raikou-color-dark-4)",
-            "--_alpha-overlay-bg": "var(--raikou-color-dark-7)"
+            "--_alpha-overlay-color": "var(--raikou-colorswatch-alpha-overlay-color)",
+            "--_alpha-overlay-bg": "var(--raikou-colorswatch-alpha-overlay-bg)"
           }
         },
         ".colorswatch-colorOverlay": {
@@ -1974,18 +2797,18 @@ var require_ColorSwatch_plugin = __commonJS({
           inset: "0",
           borderRadius: "var(--cs-radius)",
           zIndex: "1",
-          boxShadow: `rgba(0, 0, 0, 0.1) 0 0 0 ${rem(
+          boxShadow: `rgba(0, 0, 0, 0.1) 0 0 0 ${rem2(
             "1px"
-          )} inset, rgb(0, 0, 0, 0.15) 0 0 ${rem("4px")} inset`
+          )} inset, rgb(0, 0, 0, 0.15) 0 0 ${rem2("4px")} inset`
         },
         ".colorswatch-alphaOverlay": {
           position: "absolute",
           inset: "0",
           borderRadius: "var(--cs-radius)",
-          backgroundSize: `${rem("8px")} ${rem("8px")}`,
-          backgroundPosition: `0 0, 0 ${rem("4px")}, ${rem("4px")} ${rem(
+          backgroundSize: `${rem2("8px")} ${rem2("8px")}`,
+          backgroundPosition: `0 0, 0 ${rem2("4px")}, ${rem2("4px")} ${rem2(
             "-4px"
-          )}, ${rem("-4px")} 0`,
+          )}, ${rem2("-4px")} 0`,
           backgroundImage: `linear-gradient(
           45deg,
           var(--_alpha-overlay-color) 25%,
@@ -2020,7 +2843,7 @@ var require_Combobox_plugin = __commonJS({
     init_src();
     module2.exports = function({ addComponents, theme }) {
       addComponents({
-        ".comboBox-dropdown": {
+        ".comboBox-dropdown.comboBox-dropdown": {
           padding: "var(--combobox-padding)",
           "&[data-hidden]": {
             display: "none"
@@ -2028,11 +2851,11 @@ var require_Combobox_plugin = __commonJS({
         },
         /* Variables must be both on dropdown and options to support usage of Combobox.Options without Combobox.Dropdown */
         ".comboBox-dropdown, .comboBox-options": {
-          "--combobox-option-padding-xs": `${rem("4px")} ${rem("8px")}`,
-          "--combobox-option-padding-sm": `${rem("6px")} ${rem("10px")}`,
-          "--combobox-option-padding-md": `${rem("8px")} ${rem("12px")}`,
-          "--combobox-option-padding-lg": `${rem("10px")} ${rem("16px")}`,
-          "--combobox-option-padding-xl": `${rem("14px")} ${rem("20px")}`
+          "--combobox-option-padding-xs": `${rem2("4px")} ${rem2("8px")}`,
+          "--combobox-option-padding-sm": `${rem2("6px")} ${rem2("10px")}`,
+          "--combobox-option-padding-md": `${rem2("8px")} ${rem2("12px")}`,
+          "--combobox-option-padding-lg": `${rem2("10px")} ${rem2("16px")}`,
+          "--combobox-option-padding-xl": `${rem2("14px")} ${rem2("20px")}`
         },
         ".comboBox-option": {
           padding: "var(--combobox-option-padding)",
@@ -2055,10 +2878,10 @@ var require_Combobox_plugin = __commonJS({
             "&:hover": {
               "&:not([data-combobox-selected], [data-combobox-disabled])": {
                 '[data-raikou-color-scheme="light"] &': {
-                  "--_option-bg": "var(--raikou-color-gray-0)"
+                  "--_option-bg": "var(--raikou-combobox-option-hover-bg)"
                 },
                 '[data-raikou-color-scheme="dark"] &': {
-                  "--_option-bg": "var(--raikou-color-dark-7)"
+                  "--_option-bg": "var(--raikou-combobox-option-hover-bg)"
                 }
               }
             }
@@ -2067,10 +2890,10 @@ var require_Combobox_plugin = __commonJS({
             "&:active": {
               "&:not([data-combobox-selected], [data-combobox-disabled])": {
                 '[data-raikou-color-scheme="light"] &': {
-                  "--_option-bg": "var(--raikou-color-gray-0)"
+                  "--_option-bg": "var(--raikou-combobox-option-active-bg)"
                 },
                 '[data-raikou-color-scheme="dark"] &': {
-                  "--_option-bg": "var(--raikou-color-dark-7)"
+                  "--_option-bg": "var(--raikou-combobox-option-active-bg)"
                 }
               }
             }
@@ -2094,12 +2917,12 @@ var require_Combobox_plugin = __commonJS({
             "border-color": "var(--_search-border-color)"
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_search-border-color": "var(--raikou-color-gray-2)",
-            "--_search_background": "var(--raikou-color-white)"
+            "--_search-border-color": "var(--raikou-combobox-search-border-color)",
+            "--_search_background": "var(--raikou-combobox-search_background)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_search-border-color": "var(--raikou-color-dark-4)",
-            "--_search_background": "var(--raikou-color-dark-7)"
+            "--_search-border-color": "var(--raikou-combobox-search-border-color)",
+            "--_search_background": "var(--raikou-combobox-search_background)"
           }
         },
         ".comboBox-empty": {
@@ -2115,19 +2938,19 @@ var require_Combobox_plugin = __commonJS({
           marginRight: "calc(var(--combobox-padding) * -1)",
           padding: "var(--combobox-option-padding)",
           '[data-raikou-color-scheme="light"] &': {
-            "--_footer-border-color": "var(--raikou-color-gray-2)"
+            "--_footer-border-color": "var(--raikou-combobox-footer-border-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_footer-border-color": "var(--raikou-color-dark-4)"
+            "--_footer-border-color": "var(--raikou-combobox-footer-border-color)"
           }
         },
         ".comboBox-footer": {
-          borderTopWidth: rem("1px"),
+          borderTopWidth: rem2("1px"),
           marginTop: "var(--combobox-padding)",
           marginBottom: "calc(var(--combobox-padding) * -1)"
         },
         ".comboBox-header": {
-          borderBottomWidth: rem("1px"),
+          borderBottomWidth: rem2("1px"),
           marginBottom: "var(--combobox-padding)",
           marginTop: "calc(var(--combobox-padding) * -1)"
         },
@@ -2149,14 +2972,14 @@ var require_Combobox_plugin = __commonJS({
             flex: "1",
             left: "0",
             right: "0",
-            height: rem("1px"),
+            height: rem2("1px"),
             marginLeft: "var(--raikou-spacing-xs)",
             backgroundColor: "var(--_divider-bg)",
             '[data-raikou-color-scheme="light"] &': {
-              "--_divider-bg": "var(--raikou-color-gray-2)"
+              "--_divider-bg": "var(--raikou-combobox-divider-bg)"
             },
             '[data-raikou-color-scheme="dark"] &': {
-              "--_divider-bg": "var(--raikou-color-dark-4)"
+              "--_divider-bg": "var(--raikou-combobox-divider-bg)"
             }
           },
           "&:only-child": {
@@ -2164,19 +2987,19 @@ var require_Combobox_plugin = __commonJS({
           }
         },
         ".comboBox-chevron": {
-          "--combobox-chevron-size-xs": rem("14px"),
-          "--combobox-chevron-size-sm": rem("18px"),
-          "--combobox-chevron-size-md": rem("20px"),
-          "--combobox-chevron-size-lg": rem("24px"),
-          "--combobox-chevron-size-xl": rem("28px"),
+          "--combobox-chevron-size-xs": rem2("14px"),
+          "--combobox-chevron-size-sm": rem2("18px"),
+          "--combobox-chevron-size-md": rem2("20px"),
+          "--combobox-chevron-size-lg": rem2("24px"),
+          "--combobox-chevron-size-xl": rem2("28px"),
           width: "var(--combobox-chevron-size)",
           height: "var(--combobox-chevron-size)",
           color: "var(--_color)",
           '[data-raikou-color-scheme="light"] &': {
-            "--_color": "var(--raikou-color-gray-6)"
+            "--_color": "var(--raikou-combobox-chevron-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_color": "var(--raikou-color-dark-3)"
+            "--_color": "var(--raikou-combobox-chevron-color)"
           },
           "&[data-error]": {
             "--_color": "var(--raikou-color-error)"
@@ -2193,7 +3016,7 @@ var require_Combobox_plugin = __commonJS({
           display: "flex",
           alignItems: "center",
           flexDirection: "var(--_flex-direction, row)",
-          gap: rem("8px"),
+          gap: rem2("8px"),
           "&[data-reverse]": {
             justifyContent: "space-between"
           }
@@ -2219,16 +3042,49 @@ var require_Container_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".container-root": {
-          "--container-size-xs": rem("540px"),
-          "--container-size-sm": rem("720px"),
-          "--container-size-md": rem("960px"),
-          "--container-size-lg": rem("1140px"),
-          "--container-size-xl": rem("1320px"),
+          "--container-size-xs": rem2("540px"),
+          "--container-size-sm": rem2("720px"),
+          "--container-size-md": rem2("960px"),
+          "--container-size-lg": rem2("1140px"),
+          "--container-size-xl": rem2("1320px"),
           paddingLeft: "var(--raikou-spacing-md)",
           paddingRight: "var(--raikou-spacing-md)",
           maxWidth: "var(--container-size)",
           marginLeft: "auto",
           marginRight: "auto"
+        }
+      });
+    };
+  }
+});
+
+// ../components/Dialog/src/Dialog.plugin.ts
+var require_Dialog_plugin = __commonJS({
+  "../components/Dialog/src/Dialog.plugin.ts"(exports2, module2) {
+    "use strict";
+    init_src();
+    module2.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".dialog-root": {
+          "--dialog-size-xs": rem2("160px"),
+          "--dialog-size-sm": rem2("200px"),
+          "--dialog-size-md": rem2("340px"),
+          "--dialog-size-lg": rem2("400px"),
+          "--dialog-size-xl": rem2("500px"),
+          position: "relative",
+          width: "var(--dialog-size)",
+          maxwidth: "calc(100vw - var(--raikou-spacing-xl) * 2)",
+          minHeight: rem2("50px")
+        },
+        ".dialog-closeButton": {
+          position: "absolute",
+          top: "calc(var(--raikou-spacing-md) / 2)",
+          right: "var(--_close-button-right, calc(var(--raikou-spacing-md) / 2))",
+          left: "var(--_close-button-left, auto)",
+          '[dir="rtl"] &': {
+            "--_close-button-right": "auto",
+            "--_close-button-left": "calc(var(--raikou-spacing-md) / 2)"
+          }
         }
       });
     };
@@ -2243,16 +3099,16 @@ var require_Divider_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".divider-root": {
-          "--divider-size-xs": rem("1px"),
-          "--divider-size-sm": rem("2px"),
-          "--divider-size-md": rem("3px"),
-          "--divider-size-lg": rem("4px"),
-          "--divider-size-xl": rem("5px"),
+          "--divider-size-xs": rem2("1px"),
+          "--divider-size-sm": rem2("2px"),
+          "--divider-size-md": rem2("3px"),
+          "--divider-size-lg": rem2("4px"),
+          "--divider-size-xl": rem2("5px"),
           '[data-raikou-color-scheme="light"] &': {
-            "--_divider-color": "var(--raikou-color-gray-4)"
+            "--_divider-color": "var(--raikou-divider-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_divider-color": "var(--raikou-color-dark-4)"
+            "--_divider-color": "var(--raikou-divider-color)"
           },
           '&[data-orientation="horizontal"]': {
             borderTop: "var(--divider-size) var(--divider-border-style, solid) var(--divider-color, var(--_divider-color))"
@@ -2285,7 +3141,7 @@ var require_Divider_plugin = __commonJS({
           "&::before": {
             content: '""',
             flex: "1",
-            height: rem("1px"),
+            height: rem2("1px"),
             borderTop: "var(--divider-size) var(--divider-border-style, solid) var(--divider-color, var(--_divider-color))",
             marginRight: "var(--raikou-spacing-xs)",
             '[dir="rtl"] &': {
@@ -2296,7 +3152,7 @@ var require_Divider_plugin = __commonJS({
           "&::after": {
             content: '""',
             flex: "1",
-            height: rem("1px"),
+            height: rem2("1px"),
             borderTop: "var(--divider-size) var(--divider-border-style, solid) var(--divider-color, var(--_divider-color))",
             marginLeft: "var(--raikou-spacing-xs)",
             '[dir="rtl"] &': {
@@ -2318,11 +3174,11 @@ var require_Drawer_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".drawer-root": {
-          "--drawer-size-xs": rem("320px"),
-          "--drawer-size-sm": rem("380px"),
-          "--drawer-size-md": rem("440px"),
-          "--drawer-size-lg": rem("620px"),
-          "--drawer-size-xl": rem("780px")
+          "--drawer-size-xs": rem2("320px"),
+          "--drawer-size-sm": rem2("380px"),
+          "--drawer-size-md": rem2("440px"),
+          "--drawer-size-lg": rem2("620px"),
+          "--drawer-size-xl": rem2("780px")
         },
         ".drawer-header": {
           zIndex: "1000"
@@ -2360,26 +3216,26 @@ var require_Fieldset_plugin = __commonJS({
         },
         ".fieldset-root[data-variant='default']": {
           backgroundColor: "var(--_bg)",
-          border: `${rem("1px")} solid var(--_bd)`,
+          border: `${rem2("1px")} solid var(--_bd)`,
           '[data-raikou-color-scheme="light"] &': {
-            "--_bd": "var(--raikou-color-gray-3)",
-            "--_bg": "var(--raikou-color-white)"
+            "--_bd": "var(--raikou-fieldset-default-bd)",
+            "--_bg": "var(--raikou-fieldset-default-bg)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_bd": "var(--raikou-color-dark-4)",
-            "--_bg": "var(--raikou-color-dark-7)"
+            "--_bd": "var(--raikou-fieldset-default-bd)",
+            "--_bg": "var(--raikou-fieldset-default-bg)"
           }
         },
         ".fieldset-root[data-variant='filled']": {
           backgroundColor: "var(--_bg)",
-          border: `${rem("1px")} solid var(--_bd)`,
+          border: `${rem2("1px")} solid var(--_bd)`,
           '[data-raikou-color-scheme="light"] &': {
-            "--_bd": "var(--raikou-color-gray-3)",
-            "--_bg": "var(--raikou-color-gray-0)"
+            "--_bd": "var(--raikou-fieldset-filled-bd)",
+            "--_bg": "var(--raikou-fieldset-filled-bg)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_bd": "var(--raikou-color-dark-4)",
-            "--_bg": "var(--raikou-color-dark-6)"
+            "--_bd": "var(--raikou-fieldset-filled-bd)",
+            "--_bg": "var(--raikou-fieldset-filled-bg)"
           }
         },
         ".fieldset-root[data-variant='unstyled']": {
@@ -2406,11 +3262,7 @@ var require_Flex_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".flex-root": {
-          display: "flex",
-          gap: "var(--flex-gap)",
-          alignItems: "var(--flex-align)",
-          justifyContent: "var(--flex-justify)",
-          flexFlow: "var(--flex-direction) var(--flex-wrap)"
+          display: "flex"
         }
       });
     };
@@ -2506,11 +3358,11 @@ var require_Indicator_plugin = __commonJS({
         "@keyframes indicator-pulse": {
           "0%": {
             opacity: "0.6",
-            boxShadow: `0 0 ${rem("0.5px")} 0 var(--indicator-color)`
+            boxShadow: `0 0 ${rem2("0.5px")} 0 var(--indicator-color)`
           },
           "100%": {
             opacity: "0",
-            boxShadow: `0 0 ${rem("0.5px")} ${rem("4.4px")} var(--indicator-color)`
+            boxShadow: `0 0 ${rem2("0.5px")} ${rem2("4.4px")} var(--indicator-color)`
           }
         },
         ".indicator-root": {
@@ -2529,7 +3381,7 @@ var require_Indicator_plugin = __commonJS({
           transform: "translate(var(--indicator-translate-x), var(--indicator-translate-y))",
           minWidth: "var(--indicator-size)",
           height: "var(--indicator-size)",
-          borderRadius: `var(--indicator-radius, ${rem("1000px")})`,
+          borderRadius: `var(--indicator-radius, ${rem2("1000px")})`,
           zIndex: "var(--indicator-z-index, 200)",
           display: "flex",
           alignItems: "center",
@@ -2546,14 +3398,14 @@ var require_Indicator_plugin = __commonJS({
             position: "absolute",
             inset: "0",
             backgroundColor: "var(--indicator-color)",
-            borderRadius: `var(--indicator-radius, ${rem("1000px")})`,
+            borderRadius: `var(--indicator-radius, ${rem2("1000px")})`,
             zIndex: "-1"
           },
           "&[data-with-label]": {
             "--_indicator-padding": "calc(var(--raikou-spacing-xs) / 2)"
           },
           "&[data-with-border]": {
-            "--_indicator-border": `${rem("2px")} solid var(--raikou-color-body)`
+            "--_indicator-border": `${rem2("2px")} solid var(--raikou-color-body)`
           },
           "&[data-processing]": {
             "&::before": {
@@ -2574,11 +3426,11 @@ var require_InlineInput_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".inlineInput-root": {
-          "--label-lh-xs": rem("16px"),
-          "--label-lh-sm": rem("20px"),
-          "--label-lh-md": rem("24px"),
-          "--label-lh-lg": rem("30px"),
-          "--label-lh-xl": rem("36px"),
+          "--label-lh-xs": rem2("16px"),
+          "--label-lh-sm": rem2("20px"),
+          "--label-lh-md": rem2("24px"),
+          "--label-lh-lg": rem2("30px"),
+          "--label-lh-xl": rem2("36px"),
           "&[data-label-position='left']": {
             "--_label-order": "1",
             "--_offset-right": "var(--raikou-spacing-sm)",
@@ -2617,10 +3469,10 @@ var require_InlineInput_plugin = __commonJS({
           paddingRight: "var(--_offset-right)",
           "fieldset:disabled &, &[data-disabled]": {
             '[data-raikou-color-scheme="light"] &': {
-              "--_label-color": "var(--raikou-color-gray-5)"
+              "--_label-color": "var(--raikou-inlineinput-disabled-label-color)"
             },
             '[data-raikou-color-scheme="dark"] &': {
-              "--_label-color": "var(--raikou-color-dark-3)"
+              "--_label-color": "var(--raikou-inlineinput-disabled-label-color)"
             }
           }
         },
@@ -2652,37 +3504,37 @@ var require_Input_plugin = __commonJS({
           position: "relative",
           marginTop: "var(--input-margin-top, 0rem)",
           marginBottom: "var(--input-margin-bottom, 0rem)",
-          "--input-height-xs": rem("30px"),
-          "--input-height-sm": rem("36px"),
-          "--input-height-md": rem("42px"),
-          "--input-height-lg": rem("50px"),
-          "--input-height-xl": rem("60px"),
-          "--input-padding-y-xs": rem("5px"),
-          "--input-padding-y-sm": rem("6px"),
-          "--input-padding-y-md": rem("8px"),
-          "--input-padding-y-lg": rem("10px"),
-          "--input-padding-y-xl": rem("13px"),
+          "--input-height-xs": rem2("30px"),
+          "--input-height-sm": rem2("36px"),
+          "--input-height-md": rem2("42px"),
+          "--input-height-lg": rem2("50px"),
+          "--input-height-xl": rem2("60px"),
+          "--input-padding-y-xs": rem2("5px"),
+          "--input-padding-y-sm": rem2("6px"),
+          "--input-padding-y-md": rem2("8px"),
+          "--input-padding-y-lg": rem2("10px"),
+          "--input-padding-y-xl": rem2("13px"),
           "--_input-cursor": "text",
           "--_input-text-align": "left",
-          "--_input-line-height": `calc(var(--input-height) - ${rem("2px")})`,
+          "--_input-line-height": `calc(var(--input-height) - ${rem2("2px")})`,
           "--_input-padding": "calc(var(--input-height) / 3)",
           "--_input-padding-left": "var(--_input-padding)",
           "--_input-padding-right": "var(--_input-padding)",
           "--_input-placeholder-color": "var(--raikou-color-placeholder)",
           "--_input-color": "inherit",
-          "--_input-left-section-size": `var(--input-left-section-width, calc(var(--input-height) - ${rem(
+          "--_input-left-section-size": `var(--input-left-section-width, calc(var(--input-height) - ${rem2(
             "2px"
           )}))`,
-          "--_input-right-section-size": `var(--input-right-section-width, calc(var(--input-height) - ${rem(
+          "--_input-right-section-size": `var(--input-right-section-width, calc(var(--input-height) - ${rem2(
             "2px"
           )}))`,
           "--_input-size": "var(--input-height)",
-          "--_section-y": rem("1px"),
-          "--_left-section-left": rem("1px"),
+          "--_section-y": rem2("1px"),
+          "--_left-section-left": rem2("1px"),
           "--_left-section-right": "unset",
           "--_left-section-border-radius": "var(--input-radius) 0 0 var(--input-radius)",
           "--_right-section-left": "unset",
-          "--_right-section-right": rem("1px"),
+          "--_right-section-right": rem2("1px"),
           "--_right-section-border-radius": "0 var(--input-radius) var(--input-radius) 0",
           "&[data-pointer]": {
             "--_input-cursor": "pointer"
@@ -2710,16 +3562,16 @@ var require_Input_plugin = __commonJS({
             }
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_input-disabled-bg": "var(--raikou-color-gray-1)",
-            "--_input-disabled-color": "var(--raikou-color-gray-6)",
+            "--_input-disabled-bg": "var(--raikou-input-disabled-bg)",
+            "--_input-disabled-color": "var(--raikou-input-disabled-color)",
             '&[data-variant="default"]': {
-              "--_input-bd": "var(--raikou-color-gray-4)",
-              "--_input-bg": "var(--raikou-color-white)",
+              "--_input-bd": "var(--raikou-input-default-bd)",
+              "--_input-bg": "var(--raikou-input-default-bg)",
               "--_input-bd-focus": "var(--raikou-color-primary)"
             },
             "&[data-variant='filled']": {
-              "--_input-bd": "transparent",
-              "--_input-bg": "var(--raikou-color-gray-1)",
+              "--_input-bd": "var(--raikou-input-filled-bd)",
+              "--_input-bg": "var(--raikou-input-filled-bg)",
               "--_input-bd-focus": "var(--raikou-color-primary)"
             },
             "&[data-variant='unstyled']": {
@@ -2729,16 +3581,16 @@ var require_Input_plugin = __commonJS({
             }
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_input-disabled-bg": "var(--raikou-color-dark-6)",
-            "--_input-disabled-color": "var(--raikou-color-dark-2)",
+            "--_input-disabled-bg": "var(--raikou-input-disabled-bg)",
+            "--_input-disabled-color": "var(--raikou-input-disabled-color)",
             "&[data-variant='default']": {
-              "--_input-bd": "var(--raikou-color-dark-4)",
-              "--_input-bg": "var(--raikou-color-dark-6)",
+              "--_input-bd": "var(--raikou-input-default-bd)",
+              "--_input-bg": "var(--raikou-input-default-bg)",
               "--_input-bd-focus": "var(--raikou-color-primary)"
             },
             "&[data-variant='filled']": {
-              "--_input-bd": "transparent",
-              "--_input-bg": "var(--raikou-color-dark-5)",
+              "--_input-bd": "var(--raikou-input-filled-bd)",
+              "--_input-bg": "var(--raikou-input-filled-bg)",
               "--_input-bd-focus": "var(--raikou-color-primary)"
             },
             "&[data-variant='unstyled']": {
@@ -2756,9 +3608,9 @@ var require_Input_plugin = __commonJS({
           '[dir="rtl"] &': {
             "--_input-text-align": "right",
             "--_left-section-left": "unset",
-            "--_left-section-right": rem("1px"),
+            "--_left-section-right": rem2("1px"),
             "--_left-section-border-radius": "0 var(--input-radius) var(--input-radius) 0",
-            "--_right-section-left": rem("1px"),
+            "--_right-section-left": rem2("1px"),
             "--_right-section-right": "unset",
             "--_right-section-border-radius": "var(--input-radius) 0 0 var(--input-radius)"
           }
@@ -2772,7 +3624,7 @@ var require_Input_plugin = __commonJS({
           transition: "border-color 100ms ease",
           textAlign: "var(--_input-text-align)",
           color: "var(--_input-color)",
-          border: `${rem("1px")} solid var(--_input-bd)`,
+          border: `${rem2("1px")} solid var(--_input-bd)`,
           backgroundColor: "var(--_input-bg)",
           fontFamily: "var(--raikou-font-family)",
           height: "var(--_input-size)",
@@ -2793,7 +3645,7 @@ var require_Input_plugin = __commonJS({
           /* Used as data attribute in JsonInput component, does not have associated prop on the Input component */
           "&[data-monospace]": {
             "--_input-font-family": "var(--raikou-font-family-monospace)",
-            "--_input-fz": `calc(var(--input-fz) - ${rem("2px")})`
+            "--_input-fz": `calc(var(--input-fz) - ${rem2("2px")})`
           },
           "&:focus, &:focus-within": {
             outline: "none",
@@ -2890,35 +3742,97 @@ var require_Kbd_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".kbd-root": {
-          "--kbd-fz-xs": rem("10px"),
-          "--kbd-fz-sm": rem("12px"),
-          "--kbd-fz-md": rem("14px"),
-          "--kbd-fz-lg": rem("16px"),
-          "--kbd-fz-xl": rem("20px"),
-          "--kbd-padding-xs": `${rem("2px")} ${rem("4px")}`,
-          "--kbd-padding-sm": `${rem("3px")} ${rem("5px")}`,
-          "--kbd-padding-md": `${rem("4px")} ${rem("7px")}`,
-          "--kbd-padding-lg": `${rem("5px")} ${rem("9px")}`,
-          "--kbd-padding-xl": `${rem("8px")} ${rem("14px")}`,
+          "--kbd-fz-xs": rem2("10px"),
+          "--kbd-fz-sm": rem2("12px"),
+          "--kbd-fz-md": rem2("14px"),
+          "--kbd-fz-lg": rem2("16px"),
+          "--kbd-fz-xl": rem2("20px"),
+          "--kbd-padding-xs": `${rem2("2px")} ${rem2("4px")}`,
+          "--kbd-padding-sm": `${rem2("3px")} ${rem2("5px")}`,
+          "--kbd-padding-md": `${rem2("4px")} ${rem2("7px")}`,
+          "--kbd-padding-lg": `${rem2("5px")} ${rem2("9px")}`,
+          "--kbd-padding-xl": `${rem2("8px")} ${rem2("14px")}`,
           fontFamily: "var(--raikou-font-family-monospace)",
           lineHeight: "var(--raikou-line-height)",
           fontWeight: "700",
           padding: "var(--kbd-padding)",
           fontSize: "var(--kbd-fz)",
           borderRadius: "var(--raikou-radius-sm)",
-          border: `${rem("1px")} solid var(--_kbd-border-color)`,
-          borderBottomWidth: rem("3px"),
+          border: `${rem2("1px")} solid var(--_kbd-border-color)`,
+          borderBottomWidth: rem2("3px"),
           backgroundColor: "var(--_kbd-bg)",
           color: "var(--_kbd-color)",
           '[data-raikou-color-scheme="light"] &': {
-            "--_kbd-border-color": "var(--raikou-color-gray-3)",
-            "--_kbd-color": "var(--raikou-color-gray-7)",
-            "--_kbd-bg": "var(--raikou-color-gray-0)"
+            "--_kbd-border-color": "var(--raikou-kbd-border-color)",
+            "--_kbd-color": "var(--raikou-kbd-color)",
+            "--_kbd-bg": "var(--raikou-kbd-bg)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_kbd-border-color": "var(--raikou-color-dark-4)",
-            "--_kbd-color": "var(--raikou-color-dark-0)",
-            "--_kbd-bg": "var(--raikou-color-dark-5)"
+            "--_kbd-border-color": "var(--raikou-kbd-border-color)",
+            "--_kbd-color": "var(--raikou-kbd-color)",
+            "--_kbd-bg": "var(--raikou-kbd-bg)"
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../components/List/src/List.plugin.ts
+var require_List_plugin = __commonJS({
+  "../components/List/src/List.plugin.ts"(exports2, module2) {
+    "use strict";
+    module2.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".list-root": {
+          listStylePosition: "inside",
+          fontSize: "var(--list-fz)",
+          lineHeight: "var(--list-lh)",
+          margin: "0",
+          padding: "0",
+          paddingLeft: "var(--_list-pl, 0)",
+          paddingRight: "var(--_list-pr, 0)",
+          "&[data-with-padding]": {
+            "--_list-pl": "var(--raikou-spacing-md)",
+            '[dir="rtl"] &': {
+              "--_list-pl": "0",
+              "--_list-pr": "var(--raikou-spacing-md)"
+            }
+          }
+        },
+        ".list-item": {
+          whiteSpace: "nowrap",
+          lineHeight: "var(--_item-lh, var(--list-lh))",
+          marginTop: "var(--_item-mt, 0)",
+          listStyle: "var(--_item-list-style)",
+          "&[data-with-icon]": {
+            "--_item-list-style": "none",
+            "& .list-itemWrapper": {
+              "--_item-wrapper-direction": "row",
+              "--_item-wrapper-align": "center"
+            }
+          },
+          "&:not(:first-of-type)": {
+            "--_item-mt": "var(--list-spacing)"
+          },
+          "&[data-centered]": {
+            "--_item-lh": "1"
+          }
+        },
+        ".list-itemWrapper": {
+          display: "inline-flex",
+          flexDirection: "var(--_item-wrapper-direction, column)",
+          alignItems: "var(--_item-wrapper-align, flex-start)",
+          whiteSpace: "normal"
+        },
+        ".list-itemIcon": {
+          display: "inline-block",
+          verticalAlign: "middle",
+          marginRight: "var(--_item-icon-mr, var(--raikou-spacing-sm))",
+          marginLeft: "var(--_item-icon-ml, 0)",
+          '[dir="rtl"] &': {
+            "--_item-icon-mr": "0",
+            "--_item-icon-ml": "var(--raikou-spacing-sm)"
           }
         }
       });
@@ -2934,11 +3848,11 @@ var require_Loader_plugin = __commonJS({
     var group = function({ addComponents }) {
       addComponents({
         ".loader-root": {
-          "--loader-size-xs": rem("18px"),
-          "--loader-size-sm": rem("22px"),
-          "--loader-size-md": rem("36px"),
-          "--loader-size-lg": rem("44px"),
-          "--loader-size-xl": rem("58px")
+          "--loader-size-xs": rem2("18px"),
+          "--loader-size-sm": rem2("22px"),
+          "--loader-size-md": rem2("36px"),
+          "--loader-size-lg": rem2("44px"),
+          "--loader-size-xl": rem2("58px")
         },
         "@keyframes bars-loader-animation": {
           "0%": {
@@ -3025,7 +3939,7 @@ var require_Loader_plugin = __commonJS({
             display: "block",
             width: "var(--loader-size)",
             height: "var(--loader-size)",
-            borderRadius: rem("10000px"),
+            borderRadius: rem2("10000px"),
             borderWidth: "calc(var(--loader-size) / 8)",
             borderStyle: "solid",
             borderColor: "var(--loader-color) var(--loader-color) var(--loader-color) transparent",
@@ -3103,8 +4017,8 @@ var require_Menu_plugin = __commonJS({
     init_src();
     module2.exports = function({ addComponents, theme }) {
       addComponents({
-        ".menu-dropdown": {
-          padding: rem("4px")
+        ".menu-dropdown.menu-dropdown": {
+          padding: rem2("4px")
         },
         ".menu-label": {
           color: "var(--raikou-color-dimmed)",
@@ -3114,17 +4028,17 @@ var require_Menu_plugin = __commonJS({
           cursor: "default"
         },
         ".menu-divider": {
-          marginTop: rem("4px"),
-          marginBottom: rem("4px"),
-          borderTop: `${rem("1px")} solid var(--_divider-color)`,
+          marginTop: rem2("4px"),
+          marginBottom: rem2("4px"),
+          borderTop: `${rem2("1px")} solid var(--_divider-color)`,
           '[data-raikou-color-scheme="light"] &': {
-            "--_divider-color": "var(--raikou-color-gray-2)"
+            "--_divider-color": "var(--raikou-menu-divider-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_divider-color": "var(--raikou-color-dark-4)"
+            "--_divider-color": "var(--raikou-menu-divider-color)"
           }
         },
-        ".menu-item": {
+        ".menu-item.menu-item": {
           fontSize: "var(--raikou-font-size-sm)",
           width: "100%",
           padding: "calc(var(--raikou-spacing-xs) / 1.5) var(--raikou-spacing-sm)",
@@ -3144,15 +4058,15 @@ var require_Menu_plugin = __commonJS({
           "&[data-hovered]": {
             "--_item-bg": "var(--menu-item-hover, var(--_item-bg-hover))",
             '[data-raikou-color-scheme="light"] &': {
-              "--_item-bg-hover": "var(--raikou-color-gray-1)"
+              "--_item-bg-hover": "var(--raikou-menu-divider-item-hover-bg)"
             },
             '[data-raikou-color-scheme="dark"] &': {
-              "--_item-bg-hover": "var(--raikou-color-dark-4)"
+              "--_item-bg-hover": "var(--raikou-menu-divider-item-hover-bg)"
             }
           }
         },
         ".menu-itemLabel": {
-          flex: 1
+          flex: "1"
         },
         ".menu-itemSection": {
           display: "flex",
@@ -3190,11 +4104,11 @@ var require_Modal_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".modal-root": {
-          "--modal-size-xs": rem("320px"),
-          "--modal-size-sm": rem("380px"),
-          "--modal-size-md": rem("440px"),
-          "--modal-size-lg": rem("620px"),
-          "--modal-size-xl": rem("780px"),
+          "--modal-size-xs": rem2("320px"),
+          "--modal-size-sm": rem2("380px"),
+          "--modal-size-md": rem2("440px"),
+          "--modal-size-lg": rem2("620px"),
+          "--modal-size-xl": rem2("780px"),
           "&[data-full-screen]": {
             "--modal-border-radius": "0 !important",
             ".modal-content": {
@@ -3257,7 +4171,7 @@ var require_ModalBase_plugin = __commonJS({
           justifyContent: "space-between",
           alignItems: "center",
           padding: "var(--mb-padding)",
-          paddingRight: `var(--_pr, calc(var(--mb-padding) - ${rem("5px")}))`,
+          paddingRight: `var(--_pr, calc(var(--mb-padding) - ${rem2("5px")}))`,
           paddingLeft: "var(--_pl, var(--mb-padding))",
           position: "sticky",
           top: "0",
@@ -3265,7 +4179,7 @@ var require_ModalBase_plugin = __commonJS({
           zIndex: "1000",
           '[dir="rtl"] &': {
             "--_pr": "var(--mb-padding)",
-            "--_pl": `calc(var(--mb-padding) - ${rem("5px")})`
+            "--_pl": `calc(var(--mb-padding) - ${rem2("5px")})`
           }
         },
         ".modalBase-inner": {
@@ -3300,6 +4214,134 @@ var require_ModalBase_plugin = __commonJS({
   }
 });
 
+// ../components/NavLink/src/NavLink.plugin.ts
+var require_NavLink_plugin = __commonJS({
+  "../components/NavLink/src/NavLink.plugin.ts"(exports2, module2) {
+    "use strict";
+    init_src();
+    module2.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".navLink-root": {
+          display: "flex",
+          alignItems: "center",
+          width: "100%",
+          padding: `${rem2("8px")} var(--mantine-spacing-sm)`,
+          userSelect: "none",
+          background: "var(--_nav-link-bg)",
+          color: "var(--_nav-link-color)",
+          opacity: "var(--_nav-link-opacity, 1)",
+          pointerEvents: "var(--_nav-link-pointer-events, auto)",
+          "@media (hover: hover)": {
+            "&:hover": {
+              '[data-raikou-color-scheme="light"] &': {
+                "--_nav-link-bg": "var(--mantine-color-gray-0)"
+              },
+              '[data-raikou-color-scheme="dark"] &': {
+                "--_nav-link-bg": "var(--mantine-color-dark-6)"
+              }
+            }
+          },
+          "@media (hover: none)": {
+            "&:active": {
+              '[data-raikou-color-scheme="light"] &': {
+                "--_nav-link-bg": "var(--mantine-color-gray-0)"
+              },
+              '[data-raikou-color-scheme="dark"] &': {
+                "--_nav-link-bg": "var(--mantine-color-dark-6)"
+              }
+            }
+          },
+          "&[data-disabled]": {
+            "--_nav-link-opacity": "0.4",
+            "--_nav-link-pointer-events": "none"
+          },
+          "&[data-active]": {
+            "--_nav-link-bg": "var(--nl-bg)",
+            "--_nav-link-color": "var(--nl-color)",
+            "@media (hover: hover)": {
+              "&:hover": {
+                "--_nav-link-bg": "var(--nl-hover)"
+              }
+            },
+            "@media (hover: none)": {
+              "&:active": {
+                "--_nav-link-bg": "var(--nl-hover)"
+              }
+            },
+            ".description": {
+              "--_description-opacity": "0.9",
+              "--_description-color": "var(--nl-color)"
+            }
+          }
+        },
+        ".navLink-section": {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginLeft: "var(--_section-ml)",
+          marginRight: "var(--_section-mr)",
+          transition: "transform 150ms ease",
+          transform: "var(--_section-transform, none)",
+          "& > svg": {
+            display: "block"
+          },
+          "&[data-position='left']": {
+            "--_section-ml": "0",
+            "--_section-mr": "var(--mantine-spacing-sm)",
+            '[dir="rtl"] &': {
+              "--_section-ml": "var(--mantine-spacing-sm)",
+              "--_section-mr": "0"
+            }
+          },
+          "&[data-position='right']": {
+            "--_section-ml": "var(--mantine-spacing-sm)",
+            "--_section-mr": "0",
+            '[dir="rtl"] &': {
+              "--_section-ml": "0",
+              "--_section-mr": "var(--mantine-spacing-sm)"
+            }
+          },
+          "&[data-rotate]": {
+            "--_section-transform": "rotate(90deg)"
+          }
+        },
+        ".navLink-label": {
+          fontSize: "var(--mantine-font-size-sm)"
+        },
+        ".navLink-body": {
+          flex: "1",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "var(--_body-white-space, auto)",
+          "&[data-no-wrap]": {
+            "--_body-white-space": "nowrap"
+          }
+        },
+        ".navLink-description": {
+          display: "block",
+          fontSize: "var(--mantine-font-size-xs)",
+          opacity: "var(--_description-opacity, 1)",
+          color: "var(--_description-color, var(--mantine-color-dimmed))",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "var(--_body-white-space, auto)"
+        },
+        ".navLink-children": {
+          paddingLeft: "var(--_children-pl, var(--nl-offset))",
+          paddingRight: "var(--_children-pr, 0)",
+          '[dir="rtl"] &': {
+            "--_children-pl": "0",
+            "--_children-pr": "var(--nl-offset)"
+          }
+        },
+        ".navLink-chevron": {
+          transform: "rotate(-90deg)"
+        }
+      });
+    };
+  }
+});
+
 // ../components/Notification/src/Notification.plugin.ts
 var require_Notification_plugin = __commonJS({
   "../components/Notification/src/Notification.plugin.ts"(exports2, module2) {
@@ -3313,7 +4355,7 @@ var require_Notification_plugin = __commonJS({
           position: "relative",
           display: "flex",
           alignItems: "center",
-          paddingLeft: `var(--_root-padding-left, ${rem("22px")})`,
+          paddingLeft: `var(--_root-padding-left, ${rem2("22px")})`,
           paddingRight: "var(--_root-padding-right, var(--raikou-spacing-xs))",
           paddingTop: "var(--raikou-spacing-xs)",
           paddingBottom: "var(--raikou-spacing-xs)",
@@ -3325,14 +4367,14 @@ var require_Notification_plugin = __commonJS({
             content: '""',
             display: "block",
             position: "absolute",
-            width: rem("6px"),
+            width: rem2("6px"),
             top: "var(--notification-radius)",
             bottom: "var(--notification-radius)",
-            left: rem("4px"),
+            left: rem2("4px"),
             borderRadius: "var(--notification-radius)",
             backgroundColor: "var(--notification-color)",
             '[dir="rtl"] &': {
-              right: rem("4px"),
+              right: rem2("4px"),
               left: "auto"
             }
           },
@@ -3346,28 +4388,28 @@ var require_Notification_plugin = __commonJS({
             }
           },
           "&[data-with-border]": {
-            "--_border": `${rem("1px")} solid var(--_border-color)`
+            "--_border": `${rem2("1px")} solid var(--_border-color)`
           },
           '[dir="rtl"] &': {
-            "--_root-padding-right": rem("22px"),
+            "--_root-padding-right": rem2("22px"),
             "--_root-padding-left": "var(--raikou-spacing-xs)"
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_border-color": "var(--raikou-color-gray-3)",
-            "--_bg": "var(--raikou-color-white)"
+            "--_border-color": "var(--raikou-notification-border-color)",
+            "--_bg": "var(--raikou-notification-bg)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_border-color": "var(--raikou-color-dark-4)",
-            "--_bg": "var(--raikou-color-dark-6)"
+            "--_border-color": "var(--raikou-notification-border-color)",
+            "--_bg": "var(--raikou-notification-bg)"
           }
         },
         ".notification-icon": {
           boxSizing: "border-box",
           marginRight: "var(--_icon-margin-right, var(--raikou-spacing-md))",
           marginLeft: "var(--_icon-margin-left, 0)",
-          width: rem("28px"),
-          height: rem("28px"),
-          borderRadius: rem("28px"),
+          width: rem2("28px"),
+          height: rem2("28px"),
+          borderRadius: rem2("28px"),
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -3398,15 +4440,15 @@ var require_Notification_plugin = __commonJS({
         },
         ".notification-title": {
           lineHeight: "1.4",
-          marginBottom: rem("2px"),
+          marginBottom: rem2("2px"),
           overflow: "hidden",
           textOverflow: "ellipsis",
           color: "var(--_title-color)",
           '[data-raikou-color-scheme="light"] &': {
-            "--_title-color": "var(--raikou-color-gray-9)"
+            "--_title-color": "var(--raikou-notification-title-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_title-color": "var(--raikou-color-white)"
+            "--_title-color": "var(--raikou-notification-title-color)"
           }
         },
         ".notification-description": {
@@ -3416,26 +4458,26 @@ var require_Notification_plugin = __commonJS({
           textOverflow: "ellipsis",
           "&[data-with-title]": {
             '[data-raikou-color-scheme="light"] &': {
-              "--_description-color": "var(--raikou-color-gray-6)"
+              "--_description-color": "var(--raikou-notification-title-description-color)"
             },
             '[data-raikou-color-scheme="dark"] &': {
-              "--_description-color": "var(--raikou-color-dark-2)"
+              "--_description-color": "var(--raikou-notification-title-description-color)"
             }
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_description-color": "var(--raikou-color-black)"
+            "--_description-color": "var(--raikou-notification-description-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_description-color": "var(--raikou-color-dark-0)"
+            "--_description-color": "var(--raikou-notification-description-color)"
           }
         },
         ".notification-closeButton:hover": {
           backgroundColor: "var(--_close-button-hover-bg)",
           '[data-raikou-color-scheme="light"] &': {
-            "--_close-button-hover-bg": "var(--raikou-color-gray-0)"
+            "--_close-button-hover-bg": "var(--raikou-notification-close-button-hover-bg)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_close-button-hover-bg": "var(--raikou-color-dark-8)"
+            "--_close-button-hover-bg": "var(--raikou-notification-close-button-hover-bg)"
           }
         }
       });
@@ -3451,15 +4493,15 @@ var require_NumberInput_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".numberInput-controls": {
-          "--ni-chevron-size-xs": rem("10px"),
-          "--ni-chevron-size-sm": rem("14px"),
-          "--ni-chevron-size-md": rem("16px"),
-          "--ni-chevron-size-lg": rem("18px"),
-          "--ni-chevron-size-xl": rem("20px"),
+          "--ni-chevron-size-xs": rem2("10px"),
+          "--ni-chevron-size-sm": rem2("14px"),
+          "--ni-chevron-size-md": rem2("16px"),
+          "--ni-chevron-size-lg": rem2("18px"),
+          "--ni-chevron-size-xl": rem2("20px"),
           display: "flex",
           flexDirection: "column",
           width: "100%",
-          height: `calc(var(--input-height) - rem(2px))`,
+          height: `calc(var(--input-height) - ${rem2("2px")})`,
           maxWidth: "calc(var(--ni-chevron-size) * 1.7)",
           marginLeft: "var(--_controls-ml, auto)",
           marginRight: "var(--_controls-mr, 0)",
@@ -3468,13 +4510,13 @@ var require_NumberInput_plugin = __commonJS({
             "--_controls-mr": "auto"
           }
         },
-        ".numberInput-control": {
-          "--_control-bd": `rem(1px) solid var(--_input-bd)`,
-          "--_control-radius": `calc(var(--input-radius) - rem(1px))`,
+        ".numberInput-control.numberInput-control": {
+          "--_control-bd": `${rem2("1px")} solid var(--_input-bd)`,
+          "--_control-radius": `calc(var(--input-radius) - ${rem2("1px")})`,
           flex: "0 0 50%",
           width: "100%",
           padding: "0",
-          height: `calc(var(--input-height) / 2 - rem(1px))`,
+          height: `calc(var(--input-height) / 2 - ${rem2("1px")})`,
           borderLeft: "var(--_control-bdl, var(--_control-bd))",
           borderRight: "var(--_control-bdr, none)",
           display: "flex",
@@ -3495,32 +4537,32 @@ var require_NumberInput_plugin = __commonJS({
           "@media (hover: hover)": {
             "&:hover": {
               '[data-raikou-color-scheme="light"] &': {
-                "--_control-bg": "var(--raikou-color-gray-0)"
+                "--_control-bg": "var(--raikou-numberinput-control-hover-bg)"
               },
               '[data-raikou-color-scheme="dark"] &': {
-                "--_control-bg": "var(--raikou-color-dark-4)"
+                "--_control-bg": "var(--raikou-numberinput-control-hover-bg)"
               }
             }
           },
           "@media (hover: none)": {
             "&:active": {
               '[data-raikou-color-scheme="light"] &': {
-                "--_control-bg": "var(--raikou-color-gray-0)"
+                "--_control-bg": "var(--raikou-numberinput-control-active-bg)"
               },
               '[data-raikou-color-scheme="dark"] &': {
-                "--_control-bg": "var(--raikou-color-dark-4)"
+                "--_control-bg": "var(--raikou-numberinput-control-active-bg)"
               }
             }
           },
           "&:first-of-type": {
-            borderBottom: `rem(0.5px) solid var(--_input-bd)`,
+            borderBottom: `${rem2("0.5px")} solid var(--_input-bd)`,
             borderRadius: "0 var(--_control-radius) 0 0",
             '[dir="rtl"] &': {
               borderRadius: "var(--_control-radius) 0 0 0"
             }
           },
           "&:last-of-type": {
-            borderTop: `rem(0.5px) solid var(--_input-bd)`,
+            borderTop: `${rem2("0.5px")} solid var(--_input-bd)`,
             borderRadius: "0 0 var(--_control-radius) 0",
             '[dir="rtl"] &': {
               borderRadius: "0 0 0 var(--_control-radius)"
@@ -3567,17 +4609,17 @@ var require_Pagination_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".pagination-root": {
-          "--pagination-control-size-xs": rem("22px"),
-          "--pagination-control-size-sm": rem("26px"),
-          "--pagination-control-size-md": rem("32px"),
-          "--pagination-control-size-lg": rem("38px"),
-          "--pagination-control-size-xl": rem("44px")
+          "--pagination-control-size-xs": rem2("22px"),
+          "--pagination-control-size-sm": rem2("26px"),
+          "--pagination-control-size-md": rem2("32px"),
+          "--pagination-control-size-lg": rem2("38px"),
+          "--pagination-control-size-xl": rem2("44px")
         },
-        ".pagination-control": {
+        ".pagination-control.pagination-control": {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          border: `${rem("1px")} solid var(--_control-border-color)`,
+          border: `${rem2("1px")} solid var(--_control-border-color)`,
           cursor: "var(--_control-cursor, pointer)",
           color: "var(--_control-color, var(--raikou-color-text))",
           height: "var(--pagination-control-size)",
@@ -3601,14 +4643,14 @@ var require_Pagination_plugin = __commonJS({
             "--_control-color": "var(--raikou-color-white)"
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_control-border-color": "var(--raikou-color-gray-4)",
-            "--_control-bg-color": "var(--raikou-color-white)",
-            "--_control-bg-hover": "var(--raikou-color-gray-0)"
+            "--_control-border-color": "var(--raikou-pagination-control-border-color)",
+            "--_control-bg-color": "var(--raikou-pagination-control-bg-color)",
+            "--_control-bg-hover": "var(--raikou-pagination-control-bg-hover)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_control-border-color": "var(--raikou-color-dark-4)",
-            "--_control-bg-color": "var(--raikou-color-dark-6)",
-            "--_control-bg-hover": "var(--raikou-color-dark-5)"
+            "--_control-border-color": "var(--raikou-pagination-control-border-color)",
+            "--_control-bg-color": "var(--raikou-pagination-control-bg-color)",
+            "--_control-bg-hover": "var(--raikou-pagination-control-bg-hover)"
           },
           "@media (hover: hover)": {
             "&:hover": {
@@ -3662,10 +4704,10 @@ var require_Paper_plugin = __commonJS({
           "&[data-with-border]": {
             "--_paper-border-width": "1px",
             '[data-raikou-color-scheme="light"] &': {
-              "--_paper-border-color": "var(--raikou-color-gray-3)"
+              "--_paper-border-color": "var(--raikou-paper-border-color)"
             },
             '[data-raikou-color-scheme="dark"] &': {
-              "--_paper-border-color": "var(--raikou-color-dark-4)"
+              "--_paper-border-color": "var(--raikou-paper-border-color)"
             }
           }
         }
@@ -3682,16 +4724,16 @@ var require_PasswordInput_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".passwordInput-root": {
-          "--psi-button-size-xs": rem("22px"),
-          "--psi-button-size-sm": rem("26px"),
-          "--psi-button-size-md": rem("28px"),
-          "--psi-button-size-lg": rem("32px"),
-          "--psi-button-size-xl": rem("40px"),
-          "--psi-icon-size-xs": rem("12px"),
-          "--psi-icon-size-sm": rem("15px"),
-          "--psi-icon-size-md": rem("17px"),
-          "--psi-icon-size-lg": rem("19px"),
-          "--psi-icon-size-xl": rem("21px")
+          "--psi-button-size-xs": rem2("22px"),
+          "--psi-button-size-sm": rem2("26px"),
+          "--psi-button-size-md": rem2("28px"),
+          "--psi-button-size-lg": rem2("32px"),
+          "--psi-button-size-xl": rem2("40px"),
+          "--psi-icon-size-xs": rem2("12px"),
+          "--psi-icon-size-sm": rem2("15px"),
+          "--psi-icon-size-md": rem2("17px"),
+          "--psi-icon-size-lg": rem2("19px"),
+          "--psi-icon-size-xl": rem2("21px")
         },
         ".passwordInput-input": {
           position: "relative",
@@ -3733,16 +4775,16 @@ var require_Pill_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".pill-root": {
-          "--pill-fz-xs": rem("10px"),
-          "--pill-fz-sm": rem("12px"),
-          "--pill-fz-md": rem("14px"),
-          "--pill-fz-lg": rem("16px"),
-          "--pill-fz-xl": rem("18px"),
-          "--pill-height-xs": rem("18px"),
-          "--pill-height-sm": rem("22px"),
-          "--pill-height-md": rem("25px"),
-          "--pill-height-lg": rem("28px"),
-          "--pill-height-xl": rem("32px"),
+          "--pill-fz-xs": rem2("10px"),
+          "--pill-fz-sm": rem2("12px"),
+          "--pill-fz-md": rem2("14px"),
+          "--pill-fz-lg": rem2("16px"),
+          "--pill-fz-xl": rem2("18px"),
+          "--pill-height-xs": rem2("18px"),
+          "--pill-height-sm": rem2("22px"),
+          "--pill-height-md": rem2("25px"),
+          "--pill-height-lg": rem2("28px"),
+          "--pill-height-xl": rem2("32px"),
           fontSize: "var(--pill-fz)",
           flex: "0",
           height: "var(--pill-height)",
@@ -3759,11 +4801,11 @@ var require_Pill_plugin = __commonJS({
           maxWidth: "100%",
           color: "var(--_pill-color)",
           '[data-raikou-color-scheme="dark"] &': {
-            "--_pill-bg": "var(--raikou-color-dark-7)",
-            "--_pill-color": "var(--raikou-color-dark-0)"
+            "--_pill-bg": "var(--raikou-pill-bg)",
+            "--_pill-color": "var(--raikou-pill-color)"
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_pill-color": "var(--raikou-color-black)"
+            "--_pill-color": "var(--raikou-pill-color)"
           },
           "&[data-with-remove]": {
             "--_pill-padding-right": "0"
@@ -3772,19 +4814,19 @@ var require_Pill_plugin = __commonJS({
             "--_pill-cursor": "not-allowed"
           }
         },
-        ".pill-root--default": {
+        '.pill-root[data-variant="default"]': {
           '[data-raikou-color-scheme="light"] &': {
-            "--_pill-bg": "var(--raikou-color-gray-1)",
+            "--_pill-bg": "var(--raikou-pill-default-bg)",
             "&[data-disabled], &:has(button:disabled)": {
-              "--_pill-bg": "var(--raikou-color-gray-3)"
+              "--_pill-bg": "var(--raikou-pill-default-disabled-bg)"
             }
           }
         },
-        ".pill-root--contrast": {
+        '.pill-root[data-variant="contrast"]': {
           '[data-raikou-color-scheme="light"] &': {
-            "--_pill-bg": "var(--raikou-color-white)",
+            "--_pill-bg": "var(--raikou-pill-contrast-bg)",
             "&[data-disabled], &:has(button:disabled)": {
-              "--_pill-bg": "var(--raikou-color-gray-3)"
+              "--_pill-bg": "var(--raikou-pill-contrast-disabled-bg)"
             }
           }
         },
@@ -3821,11 +4863,11 @@ var require_Pill_plugin = __commonJS({
           }
         },
         ".pill-group": {
-          "--pg-gap-xs": rem("6px"),
-          "--pg-gap-sm": rem("8px"),
-          "--pg-gap-md": rem("10px"),
-          "--pg-gap-lg": rem("12px"),
-          "--pg-gap-xl": rem("12px"),
+          "--pg-gap-xs": rem2("6px"),
+          "--pg-gap-sm": rem2("8px"),
+          "--pg-gap-md": rem2("10px"),
+          "--pg-gap-lg": rem2("12px"),
+          "--pg-gap-xl": rem2("12px"),
           display: "flex",
           alignItems: "center",
           gap: "var(--pg-gap)",
@@ -3846,7 +4888,7 @@ var require_PillsInput_plugin = __commonJS({
         ".field": {
           backgroundColor: "transparent",
           appearance: "none",
-          minWidth: rem("100px"),
+          minWidth: rem2("100px"),
           flex: "1",
           border: "0",
           fontSize: "inherit",
@@ -3858,8 +4900,8 @@ var require_PillsInput_plugin = __commonJS({
             opacity: "1"
           },
           "&[data-type='hidden'], &[data-type='auto']": {
-            height: rem("1px"),
-            width: rem("1px"),
+            height: rem2("1px"),
+            width: rem2("1px"),
             top: "0",
             left: "0",
             pointerEvents: "none",
@@ -3895,11 +4937,11 @@ var require_PinInput_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".pinInput-root": {
-          "--pin-input-size-xs": rem("30px"),
-          "--pin-input-size-sm": rem("36px"),
-          "--pin-input-size-md": rem("42px"),
-          "--pin-input-size-lg": rem("50px"),
-          "--pin-input-size-xl": rem("60px")
+          "--pin-input-size-xs": rem2("30px"),
+          "--pin-input-size-sm": rem2("36px"),
+          "--pin-input-size-md": rem2("42px"),
+          "--pin-input-size-lg": rem2("50px"),
+          "--pin-input-size-xl": rem2("60px")
         },
         ".pinInput-pinInput": {
           width: "var(--pin-input-size)",
@@ -3920,7 +4962,7 @@ var require_Popover_plugin = __commonJS({
         ".popover-dropdown": {
           position: "absolute",
           backgroundColor: "var(--_popover-bg)",
-          border: `rem(1px) solid var(--_popover-bd)`,
+          border: `${rem2("1px")} solid var(--_popover-bd)`,
           padding: "var(--raikou-spacing-sm) var(--raikou-spacing-md)",
           boxShadow: "var(--popover-shadow, none)",
           borderRadius: "var(--popover-radius)",
@@ -3928,17 +4970,17 @@ var require_Popover_plugin = __commonJS({
             outline: "none"
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_popover-bg": "var(--raikou-color-white)",
-            "--_popover-bd": "var(--raikou-color-gray-2)"
+            "--_popover-bg": "var(--raikou-popover-bg)",
+            "--_popover-bd": "var(--raikou-popover-bd)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_popover-bg": "var(--raikou-color-dark-6)",
-            "--_popover-bd": "var(--raikou-color-dark-4)"
+            "--_popover-bg": "var(--raikou-popover-bg)",
+            "--_popover-bd": "var(--raikou-popover-bd)"
           }
         },
         ".popover-arrow": {
           backgroundColor: "inherit",
-          border: `${rem("1px")} solid var(--_popover-bd)`,
+          border: `${rem2("1px")} solid var(--_popover-bd)`,
           zIndex: "1"
         }
       });
@@ -3958,15 +5000,15 @@ var require_Progress_plugin = __commonJS({
             backgroundPosition: "0 0"
           },
           "100%": {
-            backgroundPosition: `${rem("40px")} 0`
+            backgroundPosition: `${rem2("40px")} 0`
           }
         },
         ".progress-root": {
-          "--progress-size-xs": rem("3px"),
-          "--progress-size-sm": rem("5px"),
-          "--progress-size-md": rem("8px"),
-          "--progress-size-lg": rem("12px"),
-          "--progress-size-xl": rem("16px"),
+          "--progress-size-xs": rem2("3px"),
+          "--progress-size-sm": rem2("5px"),
+          "--progress-size-md": rem2("8px"),
+          "--progress-size-lg": rem2("12px"),
+          "--progress-size-xl": rem2("16px"),
           position: "relative",
           height: "var(--progress-size)",
           borderRadius: "var(--progress-radius)",
@@ -3974,10 +5016,10 @@ var require_Progress_plugin = __commonJS({
           backgroundColor: "var(--_track-bg)",
           display: "flex",
           '[data-raikou-color-scheme="light"] &': {
-            "--_track-bg": "var(--raikou-color-gray-2)"
+            "--_track-bg": "var(--raikou-progress-track-bg)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_track-bg": "var(--raikou-color-dark-4)"
+            "--_track-bg": "var(--raikou-progress-track-bg)"
           }
         },
         ".progress-section": {
@@ -3989,7 +5031,7 @@ var require_Progress_plugin = __commonJS({
           justifyContent: "center",
           overflow: "hidden",
           borderRadius: "var(--_section-radius)",
-          backgroundSize: `${rem("20px")} ${rem("20px")}`,
+          backgroundSize: `${rem2("20px")} ${rem2("20px")}`,
           backgroundImage: "var(--_section-gradient)",
           animation: "var(--_section-animation)",
           "&[data-striped]": {
@@ -4027,10 +5069,106 @@ var require_Progress_plugin = __commonJS({
           overflow: "hidden",
           whiteSpace: "nowrap",
           textOverflow: "ellipsis",
-          fontSize: `min(calc(var(--progress-size) * 0.65), ${rem("18px")})`,
+          fontSize: `min(calc(var(--progress-size) * 0.65), ${rem2("18px")})`,
           lineHeight: "1",
-          paddingLeft: rem("4px"),
-          paddingRight: rem("4px")
+          paddingLeft: rem2("4px"),
+          paddingRight: rem2("4px")
+        }
+      });
+    };
+  }
+});
+
+// ../components/Radio/src/Radio.plugin.ts
+var require_Radio_plugin = __commonJS({
+  "../components/Radio/src/Radio.plugin.ts"(exports2, module2) {
+    "use strict";
+    init_src();
+    module2.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".radio-root": {
+          "--radio-size-xs": rem2("16px"),
+          "--radio-size-sm": rem2("20px"),
+          "--radio-size-md": rem2("24px"),
+          "--radio-size-lg": rem2("30px"),
+          "--radio-size-xl": rem2("36px"),
+          "--radio-icon-size": "calc(var(--radio-size) / 2.25)"
+        },
+        ".radio-inner": {
+          position: "relative",
+          width: "var(--radio-size)",
+          height: "var(--radio-size)",
+          order: "var(--_radio-order, 1)",
+          "&[data-label-position='left']": {
+            "--_radio-order": "2"
+          }
+        },
+        ".radio-icon": {
+          color: "var(--_radio-icon-color, var(--raikou-color-white))",
+          opacity: "var(--_radio-icon-opacity, 0)",
+          transform: `var(--_radio-icon-transform, scale(0.2) translateY(${rem2(
+            "10px"
+          )}))`,
+          transition: "opacity 100ms ease, transform 200ms ease",
+          pointerEvents: "none",
+          width: "var(--radio-icon-size)",
+          height: "var(--radio-icon-size)",
+          position: "absolute",
+          top: "calc(50% - var(--radio-icon-size) / 2)",
+          left: "calc(50% - var(--radio-icon-size) / 2)"
+        },
+        ".radio-radio": {
+          backgroundColor: "var(--_radio-bg)",
+          border: `${rem2("1px")} solid var(--_radio-bd-color)`,
+          position: "relative",
+          appearance: "none",
+          width: "var(--radio-size)",
+          height: "var(--radio-size)",
+          borderRadius: "var(--radio-radius)",
+          margin: "0",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          transitionProperty: "background-color, border-color",
+          transitionTimingFunction: "ease",
+          transitionDuration: "100ms",
+          cursor: "var(--_cursor, var(--raikou-cursor-type))",
+          '[data-raikou-color-scheme="light"] &': {
+            "--_radio-bg": "var(--raikou-radio-bg)",
+            "--_radio-bd-color": "var(--raikou-radio-bd-color)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_radio-bg": "var(--raikou-radio-bg)",
+            "--_radio-bd-color": "var(--raikou-radio-bd-color)"
+          },
+          "&:checked": {
+            "--_radio-bg": "var(--radio-color)",
+            "--_radio-bd-color": "var(--radio-color)",
+            "& + .radio-icon": {
+              "--_radio-icon-opacity": "1",
+              "--_radio-icon-transform": "scale(1)"
+            }
+          },
+          "&:disabled": {
+            "--_cursor": "not-allowed",
+            '[data-raikou-color-scheme="light"] &': {
+              "--_radio-bg": "var(--raikou-radio-bg-disabled)",
+              "--_radio-bd-color": "var(--raikou-radio-bd-disabled-color)",
+              "& + .radio-icon": {
+                "--_radio-icon-color": "var(--raikou-radio-icon-disabled-color)"
+              }
+            },
+            '[data-raikou-color-scheme="dark"] &': {
+              "--_radio-bg": "var(--raikou-radio-bg-disabled)",
+              "--_radio-bd-color": "var(--raikou-radio-bd-disabled-color)",
+              "& + .icon": {
+                "--_radio-icon-color": "var(--raikou-radio-icon-disabled-color)"
+              }
+            }
+          },
+          "&[data-error]": {
+            "--_radio-bd-color": "var(--raikou-color-error)"
+          }
         }
       });
     };
@@ -4045,11 +5183,11 @@ var require_Rating_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".rating-root": {
-          "--rating-size-xs": rem("14px"),
-          "--rating-size-sm": rem("18px"),
-          "--rating-size-md": rem("20px"),
-          "--rating-size-lg": rem("28px"),
-          "--rating-size-xl": rem("32px"),
+          "--rating-size-xs": rem2("14px"),
+          "--rating-size-sm": rem2("18px"),
+          "--rating-size-md": rem2("20px"),
+          "--rating-size-lg": rem2("28px"),
+          "--rating-size-xl": rem2("32px"),
           display: "flex",
           width: "max-content",
           pointerEvents: "var(--_pointer-events)",
@@ -4074,10 +5212,10 @@ var require_Rating_plugin = __commonJS({
           fill: "var(--_star-color)",
           display: "block",
           '[data-raikou-color-scheme="light"] &': {
-            "--_star-color": "var(--raikou-color-gray-3)"
+            "--_star-color": "var(--raikou-rating-star-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_star-color": "var(--raikou-color-dark-4)"
+            "--_star-color": "var(--raikou-rating-star-color)"
           },
           "[data-raikou-color-scheme] &[data-filled]": {
             "--_star-color": "var(--rating-color)"
@@ -4091,8 +5229,8 @@ var require_Rating_plugin = __commonJS({
           whiteSpace: "nowrap",
           opacity: "0",
           "&:focus-visible + label": {
-            outline: `${rem("2px")} solid var(--raikou-color-primary)`,
-            outlineOffset: rem("2px")
+            outline: `${rem2("2px")} solid var(--raikou-color-primary)`,
+            outlineOffset: rem2("2px")
           }
         },
         ".rating-label": {
@@ -4140,10 +5278,10 @@ var require_RingProgress_plugin = __commonJS({
         ".ringProgress-curve": {
           stroke: "var(--curve-color, var(--_curve-root-color))",
           '[data-raikou-color-scheme="light"] &': {
-            "--_curve-root-color": "var(--raikou-color-gray-2)"
+            "--_curve-root-color": "var(--raikou-ringprogress-curve-root-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_curve-root-color": "var(--raikou-color-dark-4)"
+            "--_curve-root-color": "var(--raikou-ringprogress-curve-root-color)"
           }
         },
         ".ringProgress-label": {
@@ -4212,24 +5350,24 @@ var require_ScrollArea_plugin = __commonJS({
           "@media (hover: hover)": {
             "&:hover": {
               '[data-raikou-color-scheme="light"] &': {
-                "--_scrollbar-bg": "var(--raikou-color-gray-0)",
-                "--_thumb-bg": "rgba(0, 0, 0, 0.5)"
+                "--_scrollbar-bg": "var(--raikou-scrollarea-scrollbar-hover-bg)",
+                "--_thumb-bg": "var(--raikou-scrollarea-thumb-hover-bg)"
               },
               '[data-raikou-color-scheme="dark"] &': {
-                "--_scrollbar-bg": "var(--raikou-color-dark-8)",
-                "--_thumb-bg": "rgba(255, 255, 255, 0.5)"
+                "--_scrollbar-bg": "var(--raikou-scrollarea-scrollbar-hover-bg)",
+                "--_thumb-bg": "var(--raikou-scrollarea-thumb-hover-bg)"
               }
             }
           },
           "@media (hover: none)": {
             "&:active": {
               '[data-raikou-color-scheme="light"] &': {
-                "--_scrollbar-bg": "var(--raikou-color-gray-0)",
-                "--_thumb-bg": "rgba(0, 0, 0, 0.5)"
+                "--_scrollbar-bg": "var(--raikou-scrollarea-scrollbar-active-bg)",
+                "--_thumb-bg": "var(--raikou-scrollarea-thumb-active-bg)"
               },
               '[data-raikou-color-scheme="dark"] &': {
-                "--_scrollbar-bg": "var(--raikou-color-dark-8)",
-                "--_thumb-bg": "rgba(255, 255, 255, 0.5)"
+                "--_scrollbar-bg": "var(--raikou-scrollarea-scrollbar-active-bg)",
+                "--_thumb-bg": "var(--raikou-scrollarea-thumb-active-bg)"
               }
             }
           },
@@ -4273,14 +5411,14 @@ var require_ScrollArea_plugin = __commonJS({
             transform: "translate(-50%, -50%)",
             width: "100%",
             height: "100%",
-            minWidth: rem("44px"),
-            minHeight: rem("44px")
+            minWidth: rem2("44px"),
+            minHeight: rem2("44px")
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_thumb-bg": "rgba(0, 0, 0, 0.4)"
+            "--_thumb-bg": "var(--raikou-scrollarea-thumb-bg)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_thumb-bg": "rgba(255, 255, 255, 0.4)"
+            "--_thumb-bg": "var(--raikou-scrollarea-thumb-bg)"
           }
         },
         ".scrollArea-corner": {
@@ -4322,11 +5460,11 @@ var require_SegmentedControl_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".segmentedControl-root": {
-          "--sc-padding-xs": `${rem("3px")} ${rem("6px")}`,
-          "--sc-padding-sm": `${rem("5px")} ${rem("10px")}`,
-          "--sc-padding-md": `${rem("7px")} ${rem("14px")}`,
-          "--sc-padding-lg": `${rem("9px")} ${rem("16px")}`,
-          "--sc-padding-xl": `${rem("12px")} ${rem("20px")}`,
+          "--sc-padding-xs": `${rem2("3px")} ${rem2("6px")}`,
+          "--sc-padding-sm": `${rem2("5px")} ${rem2("10px")}`,
+          "--sc-padding-md": `${rem2("7px")} ${rem2("14px")}`,
+          "--sc-padding-lg": `${rem2("9px")} ${rem2("16px")}`,
+          "--sc-padding-xl": `${rem2("12px")} ${rem2("20px")}`,
           position: "relative",
           display: "var(--_display, inline-flex)",
           flexDirection: "var(--_flex-direction, row)",
@@ -4347,10 +5485,10 @@ var require_SegmentedControl_plugin = __commonJS({
             }
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_bg": "var(--raikou-color-gray-1)"
+            "--_bg": "var(--raikou-segmentedcontrol-bg)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_bg": "var(--raikou-color-dark-8)"
+            "--_bg": "var(--raikou-segmentedcontrol-bg)"
           }
         },
         ".segmentedControl-indicator": {
@@ -4366,11 +5504,11 @@ var require_SegmentedControl_plugin = __commonJS({
           backgroundColor: "var(--_bg)",
           '[data-raikou-color-scheme="light"] &': {
             "--_box-shadow": "var(--sc-shadow, none)",
-            "--_bg": "var(--sc-color, var(--raikou-color-white))"
+            "--_bg": "var(--sc-color, var(--raikou-segmentedcontrol-indicator-bg))"
           },
           '[data-raikou-color-scheme="dark"] &': {
             "--_box-shadow": "none",
-            "--_bg": "var(--sc-color, var(--raikou-color-dark-5))"
+            "--_bg": "var(--sc-color, var(--raikou-segmentedcontrol-indicator-bg))"
           }
         },
         ".segmentedControl-label": {
@@ -4393,38 +5531,38 @@ var require_SegmentedControl_plugin = __commonJS({
           "fieldset:disabled &, &[data-disabled]": {
             "--_cursor": "not-allowed",
             '[data-raikou-color-scheme="light"] &': {
-              "--_color": "var(--raikou-color-gray-5)"
+              "--_color": "var(--raikou-segmentedcontrol-disabled-color)"
             },
             '[data-raikou-color-scheme="dark"] &': {
-              "--_color": "var(--raikou-color-dark-3)"
+              "--_color": "var(--raikou-segmentedcontrol-disabled-color)"
             }
           },
           "&[data-active]": {
             '[data-raikou-color-scheme="light"] &': {
-              "--_color": "var(--sc-label-color, var(--raikou-color-black))"
+              "--_color": "var(--sc-label-color, var(--raikou-segmentedcontrol-active-color))"
             },
             '[data-raikou-color-scheme="dark"] &': {
-              "--_color": "var(--sc-label-color, var(--raikou-color-white))"
+              "--_color": "var(--sc-label-color, var(--raikou-segmentedcontrol-active-color))"
             }
           },
           "&:not([data-disabled]):not([data-active])": {
             "@media (hover: hover)": {
               "&:hover": {
                 '[data-raikou-color-scheme="light"] &': {
-                  "--_color": "var(--raikou-color-black)"
+                  "--_color": "var(--raikou-segmentedcontrol-hover-color)"
                 },
                 '[data-raikou-color-scheme="dark"] &': {
-                  "--_color": "var(--raikou-color-white)"
+                  "--_color": "var(--raikou-segmentedcontrol-hover-color)"
                 }
               }
             },
             "@media (hover: none)": {
               "&:active": {
                 '[data-raikou-color-scheme="light"] &': {
-                  "--_color": "var(--raikou-color-black)"
+                  "--_color": "var(--raikou-segmentedcontrol-active-color)"
                 },
                 '[data-raikou-color-scheme="dark"] &': {
-                  "--_color": "var(--raikou-color-white)"
+                  "--_color": "var(--raikou-segmentedcontrol-active-color)"
                 }
               }
             }
@@ -4433,29 +5571,29 @@ var require_SegmentedControl_plugin = __commonJS({
             "@media (hover: hover)": {
               "&:hover": {
                 '[data-raikou-color-scheme="light"] &': {
-                  "--_color": "var(--raikou-color-gray-5) !important"
+                  "--_color": "var(--raikou-segmentedcontrol-disabled-color) !important"
                 },
                 '[data-raikou-color-scheme="dark"] &': {
-                  "--_color": "var(--raikou-color-dark-3) !important"
+                  "--_color": "var(--raikou-segmentedcontrol-disabled-color) !important"
                 }
               }
             },
             "@media (hover: none)": {
               "&:active": {
                 '[data-raikou-color-scheme="light"] &': {
-                  "--_color": "var(--raikou-color-gray-5) !important"
+                  "--_color": "var(--raikou-segmentedcontrol-disabled-color) !important"
                 },
                 '[data-raikou-color-scheme="dark"] &': {
-                  "--_color": "var(--raikou-color-dark-3) !important"
+                  "--_color": "var(--raikou-segmentedcontrol-disabled-color) !important"
                 }
               }
             }
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_color": "var(--raikou-color-gray-7)"
+            "--_color": "var(--raikou-segmentedcontrol-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_color": "var(--raikou-color-dark-1)"
+            "--_color": "var(--raikou-segmentedcontrol-color)"
           }
         },
         ".segmentedControl-input": {
@@ -4468,14 +5606,18 @@ var require_SegmentedControl_plugin = __commonJS({
           "&[data-focus-ring='auto']": {
             "&:focus:focus-visible": {
               "& + .label": {
-                "--_outline": `${rem("2px")} solid var(--raikou-color-blue-filled)`
+                "--_outline": `${rem2(
+                  "2px"
+                )} solid var(--raikou-segmentedcontrol-ring-outline)`
               }
             }
           },
           "&[data-focus-ring='always']": {
             "&:focus": {
               "& + .label": {
-                "--_outline": `${rem("2px")} solid var(--raikou-color-blue-filled)`
+                "--_outline": `${rem2(
+                  "2px"
+                )} solid var(--raikou-segmentedcontrol-ring-outline)`
               }
             }
           }
@@ -4492,7 +5634,7 @@ var require_SegmentedControl_plugin = __commonJS({
             bottom: "0",
             left: "0",
             backgroundColor: "var(--_separator-color)",
-            width: rem("1px"),
+            width: rem2("1px"),
             transition: "background-color var(--sc-transition-duration) var(--sc-transition-timing-function)",
             '[dir="rtl"] &': {
               right: "0",
@@ -4505,15 +5647,15 @@ var require_SegmentedControl_plugin = __commonJS({
               left: "0",
               right: "0",
               bottom: "auto",
-              height: rem("1px"),
+              height: rem2("1px"),
               width: "auto"
             }
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_separator-color": "var(--raikou-color-gray-3)"
+            "--_separator-color": "var(--raikou-segmentedcontrol-separator-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_separator-color": "var(--raikou-color-dark-4)"
+            "--_separator-color": "var(--raikou-segmentedcontrol-separator-color)"
           },
           "&:first-of-type": {
             "&::before": {
@@ -4590,10 +5732,10 @@ var require_Skeleton_plugin = __commonJS({
               inset: "0",
               zIndex: "11",
               '[data-raikou-color-scheme="light"] &': {
-                backgroundColor: "var(--raikou-color-gray-3)"
+                backgroundColor: "var(--raikou-skeleton-bg)"
               },
               '[data-raikou-color-scheme="dark"] &': {
-                backgroundColor: "var(--raikou-color-dark-4)"
+                backgroundColor: "var(--raikou-skeleton-bg)"
               }
             }
           }
@@ -4611,11 +5753,11 @@ var require_Slider_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".slider-root": {
-          "--slider-size-xs": rem("4px"),
-          "--slider-size-sm": rem("6px"),
-          "--slider-size-md": rem("8px"),
-          "--slider-size-lg": rem("10px"),
-          "--slider-size-xl": rem("12px"),
+          "--slider-size-xs": rem2("4px"),
+          "--slider-size-sm": rem2("6px"),
+          "--slider-size-md": rem2("8px"),
+          "--slider-size-lg": rem2("10px"),
+          "--slider-size-xl": rem2("12px"),
           "-webkit-tap-highlight-color": "transparent",
           outline: "none",
           height: "calc(var(--slider-size) * 2)",
@@ -4627,17 +5769,17 @@ var require_Slider_plugin = __commonJS({
           touchAction: "none",
           position: "relative",
           '[data-raikou-color-scheme="light"] &': {
-            "--slider-track-bg": "var(--raikou-color-gray-2)",
-            "--slider-track-disabled-bg": "var(--raikou-color-gray-4)"
+            "--slider-track-bg": "var(--raikou-slider-track-bg)",
+            "--slider-track-disabled-bg": "var(--raikou-slider-track-disabled-bg)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--slider-track-bg": "var(--raikou-color-dark-4)",
-            "--slider-track-disabled-bg": "var(--raikou-color-dark-3)"
+            "--slider-track-bg": "var(--raikou-slider-track-bg)",
+            "--slider-track-disabled-bg": "var(--raikou-slider-track-disabled-bg)"
           }
         },
         ".slider-label": {
           position: "absolute",
-          top: rem("-36px"),
+          top: rem2("-36px"),
           backgroundColor: "var(--_label-bg)",
           fontSize: "var(--raikou-font-size-xs)",
           color: "var(--raikou-color-white)",
@@ -4648,10 +5790,10 @@ var require_Slider_plugin = __commonJS({
           userSelect: "none",
           touchAction: "none",
           '[data-raikou-color-scheme="light"] &': {
-            "--_label-bg": "var(--raikou-color-gray-9)"
+            "--_label-bg": "var(--raikou-slider-label-bg)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_label-bg": "var(--raikou-color-dark-4)"
+            "--_label-bg": "var(--raikou-slider-label-bg)"
           }
         },
         ".slider-thumb": {
@@ -4660,7 +5802,7 @@ var require_Slider_plugin = __commonJS({
           height: "var(--slider-thumb-size)",
           width: "var(--slider-thumb-size)",
           backgroundColor: "var(--_thumb-bg)",
-          border: `${rem("4px")} solid var(--_thumb-bd)`,
+          border: `${rem2("4px")} solid var(--_thumb-bd)`,
           color: "var(--_thumb-bd)",
           transform: "var(--_thumb-transform, translate(-50%, -50%))",
           top: "50%",
@@ -4673,7 +5815,7 @@ var require_Slider_plugin = __commonJS({
           userSelect: "none",
           touchAction: "none",
           boxShadow: "var(--_thumb-box-shadow, none)",
-          outlineOffset: rem("2px"),
+          outlineOffset: rem2("2px"),
           left: "var(--slider-thumb-offset)",
           '[dir="rtl"] &': {
             left: "auto",
@@ -4687,12 +5829,12 @@ var require_Slider_plugin = __commonJS({
             "--_thumb-box-shadow": "var(--raikou-shadow-sm)"
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_thumb-bd": "var(--slider-color)",
-            "--_thumb-bg": "var(--raikou-color-white)"
+            "--_thumb-bd": "var(--raikou-slider-thumb-bd)",
+            "--_thumb-bg": "var(--raikou-slider-thumb-bg)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_thumb-bd": "var(--raikou-color-white)",
-            "--_thumb-bg": "var(--slider-color)"
+            "--_thumb-bd": "var(--raikou-slider-thumb-bd)",
+            "--_thumb-bg": "var(--raikou-slider-thumb-bg)"
           }
         },
         ".slider-trackContainer": {
@@ -4747,10 +5889,10 @@ var require_Slider_plugin = __commonJS({
             "--_bar-bg": "var(--_bar-disabled-bg)"
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_bar-disabled-bg": "var(--raikou-color-gray-4)"
+            "--_bar-disabled-bg": "var(--raikou-slider-bar-disabled-bg)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_bar-disabled-bg": "var(--raikou-color-dark-3)"
+            "--_bar-disabled-bg": "var(--raikou-slider-bar-disabled-bg)"
           }
         },
         ".slider-markWrapper": {
@@ -4766,10 +5908,10 @@ var require_Slider_plugin = __commonJS({
           }
         },
         ".slider-mark": {
-          border: `${rem("2px")} solid var(--_mark-bd)`,
+          border: `${rem2("2px")} solid var(--_mark-bd)`,
           height: "var(--slider-size)",
           width: "var(--slider-size)",
-          borderRadius: rem("1000px"),
+          borderRadius: rem2("1000px"),
           transform: "translateX((calc(var(--slider-size) / -2)))",
           backgroundColor: "var(--_mark-bg, var(--raikou-color-white))",
           pointerEvents: "none",
@@ -4779,18 +5921,18 @@ var require_Slider_plugin = __commonJS({
             },
             "&[data-disabled]": {
               '[data-raikou-color-scheme="light"] &': {
-                "--_mark-bd": "var(--raikou-color-gray-4)"
+                "--_mark-bd": "var(--raikou-slider-mark-disabled-bd)"
               },
               '[data-raikou-color-scheme="dark"] &': {
-                "--_mark-bd": "var(--raikou-color-dark-3)"
+                "--_mark-bd": "var(--raikou-slider-mark-disabled-bd)"
               }
             }
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_mark-bd": "var(--raikou-color-gray-2)"
+            "--_mark-bd": "var(--raikou-slider-mark-bd)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_mark-bd": "var(--raikou-color-dark-4)"
+            "--_mark-bd": "var(--raikou-slider-mark-bd)"
           }
         },
         ".slider-markLabel": {
@@ -4801,11 +5943,31 @@ var require_Slider_plugin = __commonJS({
           cursor: "pointer",
           userSelect: "none",
           '[data-raikou-color-scheme="light"] &': {
-            "--_mark-label-color": "var(--raikou-color-gray-6)"
+            "--_mark-label-color": "var(--raikou-slider-mark-label-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_mark-label-color": "var(--raikou-color-dark-2)"
+            "--_mark-label-color": "var(--raikou-slider-mark-label-color)"
           }
+        }
+      });
+    };
+  }
+});
+
+// ../components/Spoiler/src/Spoiler.plugin.ts
+var require_Spoiler_plugin = __commonJS({
+  "../components/Spoiler/src/Spoiler.plugin.ts"(exports2, module2) {
+    "use strict";
+    module2.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".spoiler-root": {
+          position: "relative"
+        },
+        ".spoiler-content": {
+          display: "flex",
+          flexDirection: "column",
+          overflow: "hidden",
+          transition: "max-height var(--spoiler-transition-duration, 200ms) ease"
         }
       });
     };
@@ -4838,11 +6000,11 @@ var require_Stepper_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".stepper-root": {
-          "--stepper-icon-size-xs": rem("34px"),
-          "--stepper-icon-size-sm": rem("36px"),
-          "--stepper-icon-size-md": rem("42px"),
-          "--stepper-icon-size-lg": rem("48px"),
-          "--stepper-icon-size-xl": rem("52px")
+          "--stepper-icon-size-xs": rem2("34px"),
+          "--stepper-icon-size-sm": rem2("36px"),
+          "--stepper-icon-size-md": rem2("42px"),
+          "--stepper-icon-size-lg": rem2("48px"),
+          "--stepper-icon-size-xl": rem2("52px")
         },
         ".stepper-steps": {
           display: "flex",
@@ -4879,23 +6041,23 @@ var require_Stepper_plugin = __commonJS({
           marginBottom: "var(--_separator-mb)",
           backgroundColor: "var(--_separator-bg)",
           '[data-raikou-color-scheme="light"] &': {
-            "--_separator-bg": "var(--raikou-color-gray-2)"
+            "--_separator-bg": "var(--raikou-stepper-separator-bg)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_separator-bg": "var(--raikou-color-dark-2)"
+            "--_separator-bg": "var(--raikou-stepper-separator-bg)"
           },
           "&[data-active]": {
             "--_separator-bg": "var(--stepper-color)"
           },
           '&[data-orientation="horizontal"]': {
-            "--_separator-height": rem("2px"),
+            "--_separator-height": rem2("2px"),
             "--_separator-ml": "var(--raikou-spacing-md)",
             "--_separator-mr": "var(--raikou-spacing-md)"
           },
           '&[data-orientation="vertical"]': {
-            "--_separator-width": rem("2px"),
+            "--_separator-width": rem2("2px"),
             "--_separator-mt": "calc(var(--raikou-spacing-xs) / 2)",
-            "--_separator-mb": `calc(var(--raikou-spacing-xs) - ${rem("2px")})`,
+            "--_separator-mb": `calc(var(--raikou-spacing-xs) - ${rem2("2px")})`,
             '&[data-icon-position="left"]': {
               "--_separator-ml": "var(--_separator-offset)",
               "--_separator-mr": "0",
@@ -4957,12 +6119,12 @@ var require_Stepper_plugin = __commonJS({
           left: "calc(var(--stepper-icon-size) / 2)",
           height: "100vh",
           position: "absolute",
-          borderLeft: `${rem("2px")} solid var(--_separator-border-color)`,
+          borderLeft: `${rem2("2px")} solid var(--_separator-border-color)`,
           '[data-raikou-color-scheme="light"] &': {
-            "--_separator-border-color": "var(--raikou-color-gray-1)"
+            "--_separator-border-color": "var(--raikou-stepper-separator-border-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_separator-border-color": "var(--raikou-color-dark-5)"
+            "--_separator-border-color": "var(--raikou-stepper-separator-border-color)"
           },
           "[data-raikou-color-scheme] &[data-active]": {
             "--_separator-border-color": "var(--stepper-color)"
@@ -4982,17 +6144,17 @@ var require_Stepper_plugin = __commonJS({
           fontWeight: "bold",
           transition: "background-color 150ms ease, border-color 150ms ease",
           backgroundColor: "var(--_step-icon-bg)",
-          border: `${rem("2px")} solid var(--_step-icon-border-color)`,
+          border: `${rem2("2px")} solid var(--_step-icon-border-color)`,
           color: "var(--_step-icon-color)",
           '[data-raikou-color-scheme="light"] &': {
-            "--_step-icon-bg": "var(--raikou-color-gray-1)",
-            "--_step-icon-border-color": "var(--raikou-color-gray-1)",
-            "--_step-icon-color": "var(--raikou-color-gray-7)"
+            "--_step-icon-bg": "var(--raikou-stepper-step-icon-bg)",
+            "--_step-icon-border-color": "var(--raikou-stepper-step-icon-border-color)",
+            "--_step-icon-color": "var(--raikou-stepper-step-icon-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_step-icon-bg": "var(--raikou-color-dark-5)",
-            "--_step-icon-border-color": "var(--raikou-color-dark-5)",
-            "--_step-icon-color": "var(--raikou-color-dark-1)"
+            "--_step-icon-bg": "var(--raikou-stepper-step-icon-bg)",
+            "--_step-icon-border-color": "var(--raikou-stepper-step-icon-border-color)",
+            "--_step-icon-color": "var(--raikou-stepper-step-icon-color)"
           },
           "[data-raikou-color-scheme] &[data-progress]": {
             "--_step-icon-border-color": "var(--_step-color)"
@@ -5062,31 +6224,31 @@ var require_Switch_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".switch-root": {
-          "--switch-height-xs": rem("16px"),
-          "--switch-height-sm": rem("20px"),
-          "--switch-height-md": rem("24px"),
-          "--switch-height-lg": rem("30px"),
-          "--switch-height-xl": rem("36px"),
-          "--switch-width-xs": rem("32px"),
-          "--switch-width-sm": rem("38px"),
-          "--switch-width-md": rem("46px"),
-          "--switch-width-lg": rem("56px"),
-          "--switch-width-xl": rem("72px"),
-          "--switch-thumb-size-xs": rem("12px"),
-          "--switch-thumb-size-sm": rem("14px"),
-          "--switch-thumb-size-md": rem("18px"),
-          "--switch-thumb-size-lg": rem("22px"),
-          "--switch-thumb-size-xl": rem("28px"),
-          "--switch-label-font-size-xs": rem("5px"),
-          "--switch-label-font-size-sm": rem("6px"),
-          "--switch-label-font-size-md": rem("7px"),
-          "--switch-label-font-size-lg": rem("9px"),
-          "--switch-label-font-size-xl": rem("11px"),
-          "--switch-track-label-padding-xs": rem("1px"),
-          "--switch-track-label-padding-sm": rem("2px"),
-          "--switch-track-label-padding-md": rem("2px"),
-          "--switch-track-label-padding-lg": rem("3px"),
-          "--switch-track-label-padding-xl": rem("3px"),
+          "--switch-height-xs": rem2("16px"),
+          "--switch-height-sm": rem2("20px"),
+          "--switch-height-md": rem2("24px"),
+          "--switch-height-lg": rem2("30px"),
+          "--switch-height-xl": rem2("36px"),
+          "--switch-width-xs": rem2("32px"),
+          "--switch-width-sm": rem2("38px"),
+          "--switch-width-md": rem2("46px"),
+          "--switch-width-lg": rem2("56px"),
+          "--switch-width-xl": rem2("72px"),
+          "--switch-thumb-size-xs": rem2("12px"),
+          "--switch-thumb-size-sm": rem2("14px"),
+          "--switch-thumb-size-md": rem2("18px"),
+          "--switch-thumb-size-lg": rem2("22px"),
+          "--switch-thumb-size-xl": rem2("28px"),
+          "--switch-label-font-size-xs": rem2("5px"),
+          "--switch-label-font-size-sm": rem2("6px"),
+          "--switch-label-font-size-md": rem2("7px"),
+          "--switch-label-font-size-lg": rem2("9px"),
+          "--switch-label-font-size-xl": rem2("11px"),
+          "--switch-track-label-padding-xs": rem2("1px"),
+          "--switch-track-label-padding-sm": rem2("2px"),
+          "--switch-track-label-padding-md": rem2("2px"),
+          "--switch-track-label-padding-lg": rem2("3px"),
+          "--switch-track-label-padding-xl": rem2("3px"),
           position: "relative"
         },
         ".switch-input": {
@@ -5106,7 +6268,7 @@ var require_Switch_plugin = __commonJS({
           position: "relative",
           borderRadius: "var(--switch-radius)",
           backgroundColor: "var(--_switch-bg)",
-          border: `${rem("1px")} solid var(--_switch-bd)`,
+          border: `${rem2("1px")} solid var(--_switch-bd)`,
           height: "var(--switch-height)",
           minWidth: "var(--switch-width)",
           margin: "0",
@@ -5122,8 +6284,8 @@ var require_Switch_plugin = __commonJS({
           lineHeight: "0",
           color: "var(--_switch-color)",
           ".switch-input:focus-visible + &": {
-            outline: `${rem("2px")} solid var(--raikou-color-primary)`,
-            outlineOffset: rem("2px")
+            outline: `${rem2("2px")} solid var(--raikou-color-primary)`,
+            outlineOffset: rem2("2px")
           },
           ".switch-input:checked + &": {
             "--_switch-bg": "var(--switch-color)",
@@ -5136,16 +6298,16 @@ var require_Switch_plugin = __commonJS({
             "--_switch-cursor": "not-allowed"
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_switch-bg": "var(--raikou-color-gray-2)",
-            "--_switch-bd": "var(--raikou-color-gray-3)",
-            "--_switch-color": "var(--raikou-color-gray-6)",
-            "--_switch-disabled-color": "var(--raikou-color-gray-2)"
+            "--_switch-bg": "var(--raikou-switch-bg)",
+            "--_switch-bd": "var(--raikou-switch-bd)",
+            "--_switch-color": "var(--raikou-switch-color)",
+            "--_switch-disabled-color": "var(--raikou-switch-disabled-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_switch-bg": "var(--raikou-color-dark-6)",
-            "--_switch-bd": "var(--raikou-color-dark-4)",
-            "--_switch-color": "var(--raikou-color-dark-1)",
-            "--_switch-disabled-color": "var(--raikou-color-dark-4)"
+            "--_switch-bg": "var(--raikou-switch-bg)",
+            "--_switch-bd": "var(--raikou-switch-bd)",
+            "--_switch-color": "var(--raikou-switch-color)",
+            "--_switch-disabled-color": "var(--raikou-switch-disabled-color)"
           },
           "&[data-error]": {
             "--_switch-bd": "var(--raikou-color-error)"
@@ -5162,7 +6324,7 @@ var require_Switch_plugin = __commonJS({
           backgroundColor: "var(--_switch-thumb-bg, var(--raikou-color-white))",
           height: "var(--switch-thumb-size)",
           width: "var(--switch-thumb-size)",
-          border: `${rem("1px")} solid var(--_switch-thumb-bd)`,
+          border: `${rem2("1px")} solid var(--_switch-thumb-bd)`,
           left: "var(--_switch-thumb-left, var(--switch-track-label-padding))",
           transition: "left 150ms ease",
           "& > *": {
@@ -5177,12 +6339,12 @@ var require_Switch_plugin = __commonJS({
             "--_switch-thumb-bg": "var(--_switch-thumb-bg-disabled)"
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_switch-thumb-bd": "var(--raikou-color-gray-3)",
-            "--_switch-thumb-bg-disabled": "var(--raikou-color-gray-0)"
+            "--_switch-thumb-bd": "var(--raikou-switch-thumb-bd)",
+            "--_switch-thumb-bg-disabled": "var(--raikou-switch-thumb-bg-disabled)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_switch-thumb-bd": "var(--raikou-color-white)",
-            "--_switch-thumb-bg-disabled": "var(--raikou-color-dark-3)"
+            "--_switch-thumb-bd": "var(--raikou-switch-thumb-bd)",
+            "--_switch-thumb-bg-disabled": "var(--raikou-switch-thumb-bg-disabled)"
           }
         },
         ".switch-trackLabel": {
@@ -5218,17 +6380,17 @@ var require_Table_plugin = __commonJS({
           captionSide: "var(--table-caption-side)",
           border: "var(--_table-border, none)",
           '[data-raikou-color-scheme="light"] &': {
-            "--_table-hover-color": "var(--table-highlight-on-hover-color, var(--raikou-color-gray-1))",
-            "--_table-striped-color": "var(--table-striped-color, var(--raikou-color-gray-0))",
-            "--_table-border-color": "var(--table-border-color, var(--raikou-color-gray-3))"
+            "--_table-hover-color": "var(--raikou-table-hover-color)",
+            "--_table-striped-color": "var(--raikou-table-striped-color)",
+            "--_table-border-color": "var(--raikou-table-border-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_table-hover-color": "var(--table-highlight-on-hover-color, var(--raikou-color-dark-5))",
-            "--_table-striped-color": "var(--table-striped-color, var(--raikou-color-dark-6))",
-            "--_table-border-color": "var(--table-border-color, var(--raikou-color-dark-4))"
+            "--_table-hover-color": "var(--raikou-table-hover-color)",
+            "--_table-striped-color": "var(--raikou-table-striped-color)",
+            "--_table-border-color": "var(--raikou-table-border-color)"
           },
           "&[data-with-table-border]": {
-            "--_table-border": `${rem("1px")} solid var(--_table-border-color)`
+            "--_table-border": `${rem2("1px")} solid var(--_table-border-color)`
           }
         },
         ".table-th": {
@@ -5251,7 +6413,7 @@ var require_Table_plugin = __commonJS({
             }
           },
           "&[data-with-row-border]": {
-            "--_tr-border-bottom": `${rem("1px")} solid var(--_table-border-color)`
+            "--_tr-border-bottom": `${rem2("1px")} solid var(--_table-border-color)`
           }
         },
         ".table-td, .table-th": {
@@ -5261,9 +6423,9 @@ var require_Table_plugin = __commonJS({
           "--_border-right": "none",
           "--_border-left": "none",
           "&[data-with-column-border]:not(:last-of-type)": {
-            "--_border-right": `${rem("1px")} solid var(--_table-border-color)`,
+            "--_border-right": `${rem2("1px")} solid var(--_table-border-color)`,
             '[dir="rtl"] &': {
-              "--_border-left": `${rem("1px")} solid var(--_table-border-color)`,
+              "--_border-left": `${rem2("1px")} solid var(--_table-border-color)`,
               "--_border-right": "none"
             }
           }
@@ -5323,7 +6485,7 @@ var require_Tabs_plugin = __commonJS({
           "--_panel-grow": "unset",
           "--_tabs-display": "block",
           "--_tabs-flex-direction": "row",
-          "--_list-border-width": rem(0),
+          "--_list-border-width": rem2(0),
           "--_list-border-size": "0 0 var(--_list-border-width) 0",
           "--_list-gap": "unset",
           "--_list-line-bottom": "0",
@@ -5377,33 +6539,33 @@ var require_Tabs_plugin = __commonJS({
             }
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_tab-border-color": "var(--raikou-color-gray-3)"
+            "--_tab-border-color": "var(--raikou-tabs-tab-border-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_tab-border-color": "var(--raikou-color-dark-4)"
+            "--_tab-border-color": "var(--raikou-tabs-tab-border-color)"
           },
           "&[data-orientation='horizontal']": {
             "--_tab-justify": "center"
           },
           "&[data-variant='default']": {
-            " --_list-border-width": rem("2px"),
+            " --_list-border-width": rem2("2px"),
             '[data-raikou-color-scheme="light"] &': {
-              "--_tab-hover-color": "var(--raikou-color-gray-0)"
+              "--_tab-hover-color": "var(--raikou-tabs-tab-default-hover-color)"
             },
             '[data-raikou-color-scheme="dark"] &': {
-              "--_tab-hover-color": "var(--raikou-color-dark-6)"
+              "--_tab-hover-color": "var(--raikou-tabs-tab-default-hover-color)"
             }
           },
           "&[data-variant='outline']": {
-            "--_list-border-width": rem("1px")
+            "--_list-border-width": rem2("1px")
           },
           "&[data-variant='pills']": {
             "--_list-gap": "calc(var(--raikou-spacing-sm) / 2)",
             '[data-raikou-color-scheme="light"] &': {
-              "--_tab-hover-color": "var(--raikou-color-gray-0)"
+              "--_tab-hover-color": "var(--raikou-tabs-tab-pills-hover-color)"
             },
             '[data-raikou-color-scheme="dark"] &': {
-              "--_tab-hover-color": "var(--raikou-color-dark-6)"
+              "--_tab-hover-color": "var(--raikou-tabs-tab-pills-hover-color)"
             }
           }
         },
@@ -5421,7 +6583,7 @@ var require_Tabs_plugin = __commonJS({
         ".tabs-panel": {
           flexGrow: "var(--_panel-grow)"
         },
-        ".tabs-tab": {
+        ".tabs-tab.tabs-tab": {
           position: "relative",
           padding: "var(--raikou-spacing-xs) var(--raikou-spacing-md)",
           fontSize: "var(--raikou-font-size-sm)",
@@ -5537,7 +6699,7 @@ var require_Tabs_plugin = __commonJS({
           }
         },
         ".tabs-tab[data-variant='outline']": {
-          border: `${rem("1px")} solid transparent`,
+          border: `${rem2("1px")} solid transparent`,
           borderTopColor: "var(--_tab-border-top-color)",
           borderBottomColor: "var(--_tab-border-bottom-color)",
           borderLeftColor: "var(--_tab-border-left-color)",
@@ -5631,6 +6793,7 @@ var require_Text_plugin = __commonJS({
           fontWeight: "normal",
           margin: "0",
           padding: "0",
+          color: "var(--text-color)",
           "&[data-truncate]": {
             overflow: "hidden",
             textOverflow: "ellipsis",
@@ -5671,6 +6834,193 @@ var require_Text_plugin = __commonJS({
   }
 });
 
+// ../components/Timeline/src/Timeline.plugin.ts
+var require_Timeline_plugin = __commonJS({
+  "../components/Timeline/src/Timeline.plugin.ts"(exports2, module2) {
+    "use strict";
+    module2.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".timeline-root": {
+          "--offset": "calc(var(--tl-bullet-size) / 2 + var(--tl-line-width) / 2)",
+          "padding-left": "var(--_tl-pl, 0)",
+          "padding-right": "var(--_tl-pr, 0)",
+          '&[data-align="left"]': {
+            "--_tl-pl": "var(--offset)",
+            "@mixin rtl": {
+              "--_tl-pl": "0",
+              "--_tl-pr": "var(--offset)"
+            }
+          },
+          '&[data-align="right"]': {
+            "--_tl-pr": "var(--offset)",
+            '[dir="rtl"] &': {
+              "--_tl-pl": "var(--offset)",
+              "--_tl-pr": "0"
+            }
+          }
+        },
+        ".timeline-itemTitle": {
+          fontWeight: "500",
+          lineHeight: "1",
+          marginBottom: "calc(var(--raikou-spacing-xs) / 2)"
+        },
+        ".timeline-item": {
+          "--item-border": "var(--tl-line-width) var(--tli-border-style, solid) var(--_item-border-color)",
+          position: "relative",
+          color: "var(--raikou-color-text)",
+          paddingLeft: "var(--_item-pl, 0)",
+          paddingRight: "var(--_item-pr, 0)",
+          textAlign: "var(--_item-ta)",
+          marginTop: "var(--_item-mt)",
+          "&::before": {
+            content: '""',
+            pointerEvents: "none",
+            position: "absolute",
+            top: "0",
+            left: "var(--_line-left, 0)",
+            right: "var(--_line-right, 0)",
+            bottom: "calc(var(--raikou-spacing-xl) * -1)",
+            borderLeft: "var(--_line-border-left, var(--item-border))",
+            borderRight: "var(--_line-border-right, 0)",
+            display: "var(--_line-display, none)",
+            '[dir="rtl"] &': {
+              "--_line-border-left": 0,
+              "--_line-border-right": "var(--item-border)"
+            },
+            '.timeline-root[data-align="left"] &': {
+              "--_line-left": "calc(var(--tl-line-width) * -1)",
+              "--_line-right": "auto",
+              '[dir="rtl"] &': {
+                "--_line-left": "auto",
+                "--_line-right": "calc(var(--tl-line-width) * -1)"
+              }
+            },
+            '.timeline-root[data-align="right"] &': {
+              "--_line-left": "auto",
+              "--_line-right": "calc(var(--tl-line-width) * -1)",
+              '[dir="rtl"] &': {
+                "--_line-left": "calc(var(--tl-line-width) * -1)",
+                "--_line-right": "auto"
+              }
+            }
+          },
+          '.timeline-root[data-align="left"] &': {
+            "--_item-pl": "var(--offset)",
+            "--_item-ta": "left",
+            '[dir="rtl"] &': {
+              "--_item-pl": "0",
+              "--_item-pr": "var(--offset)"
+            }
+          },
+          '.timeline-root[data-align="right"] &': {
+            "--_item-pr": "var(--offset)",
+            "--_item-ta": "right",
+            '[dir="rtl"] &': {
+              "--_item-pl": "var(--offset)",
+              "--_item-pr": "0"
+            }
+          },
+          '[data-raikou-color-scheme="light"] &': {
+            "--_item-border-color": "var(--raikou-timeline-item-border-color)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_item-border-color": "var(--raikou-timeline-item-border-color)"
+          },
+          "[data-raikou-color-scheme] &[data-line-active]": {
+            "&::before": {
+              borderColor: "var(--tli-color, var(--tl-color))"
+            }
+          },
+          "&:not(:last-of-type)": {
+            "--_line-display": "block"
+          },
+          "&:not(:first-of-type)": {
+            "--_item-mt": "var(--raikou-spacing-xl)"
+          }
+        },
+        ".timeline-itemBullet": {
+          width: "var(--tl-bullet-size)",
+          height: "var(--tl-bullet-size)",
+          borderRadius: "var(--tli-radius, var(--tl-radius))",
+          border: "var(--_bullet-border-width, var(--tl-line-width)) solid var(--_bullet-border-color)",
+          backgroundColor: "var(--_bullet-bg-color, var(--raikou-color-body))",
+          position: "absolute",
+          top: "0",
+          left: "var(--_bullet-left, 0)",
+          right: "var(--_bullet-right, 0)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "var(--_bullet-color, var(--raikou-color-text))",
+          '[data-raikou-color-scheme="light"] &': {
+            "--_bullet-border-color": "var(--raikou-timeline-bullet-border-color)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_bullet-border-color": "var(--raikou-timeline-bullet-border-color)"
+          },
+          '.timeline-root[data-align="left"] &': {
+            "--_bullet-left": "calc((var(--tl-bullet-size) / 2 + var(--tl-line-width) / 2) * -1)",
+            "--_bullet-right": "auto",
+            '[dir="rtl"] &': {
+              "--_bullet-left": "auto",
+              "--_bullet-right": "calc((var(--tl-bullet-size) / 2 + var(--tl-line-width) / 2) * -1)"
+            }
+          },
+          '.timeline-root[data-align="right"] &': {
+            "--_bullet-left": "auto",
+            "--_bullet-right": "calc((var(--tl-bullet-size) / 2 + var(--tl-line-width) / 2) * -1)",
+            '[dir="rtl"] &': {
+              "--_bullet-left": "calc((var(--tl-bullet-size) / 2 + var(--tl-line-width) / 2) * -1)",
+              "--_bullet-right": "auto"
+            }
+          },
+          "&[data-with-child]": {
+            "--_bullet-border-width": "var(--tl-line-width)",
+            '[data-raikou-color-scheme="light"] &': {
+              "--_bullet-bg-color": "var(--raikou-timeline-bullet-bg-color)"
+            },
+            '[data-raikou-color-scheme="dark"] &': {
+              "--_bullet-bg-color": "var(--raikou-timeline-bullet-bg-color)"
+            }
+          },
+          "&[data-active]": {
+            "--_bullet-border-color": "var(--tli-color, var(--tl-color))",
+            "--_bullet-bg-color": "var(--raikou-color-white)",
+            "--_bullet-color": "var(--raikou-color-white)",
+            "&[data-with-child]": {
+              "--_bullet-bg-color": "var(--tli-color, var(--tl-color))",
+              "--_bullet-color": "var(--raikou-color-white)"
+            }
+          }
+        },
+        ".timeline-itemBody": {
+          paddingLeft: "var(--_body-pl, 0)",
+          paddingRight: "var(--_body-pr, 0)",
+          textAlign: "var(--_body-ta)",
+          '.timeline-root[data-align="left"] &': {
+            "--_body-pl": "var(--offset)",
+            "--_body-ta": "left",
+            '[dir="rtl"] &': {
+              "--_body-pl": "0",
+              "--_body-pr": "var(--offset)",
+              "--_body-ta": "right"
+            }
+          },
+          '.timeline-root[data-align="right"] &': {
+            "--_body-pr": "var(--offset)",
+            "--_body-ta": "right",
+            '[dir="rtl"] &': {
+              "--_body-pl": "var(--offset)",
+              "--_body-pr": "0",
+              "--_body-ta": "left"
+            }
+          }
+        }
+      });
+    };
+  }
+});
+
 // ../components/ThemeIcon/src/ThemeIcon.plugin.ts
 var require_ThemeIcon_plugin = __commonJS({
   "../components/ThemeIcon/src/ThemeIcon.plugin.ts"(exports2, module2) {
@@ -5679,11 +7029,11 @@ var require_ThemeIcon_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".themeIcon-root": {
-          "--ti-size-xs": rem("18px"),
-          "--ti-size-sm": rem("22px"),
-          "--ti-size-md": rem("28px"),
-          "--ti-size-lg": rem("34px"),
-          "--ti-size-xl": rem("44px"),
+          "--ti-size-xs": rem2("18px"),
+          "--ti-size-sm": rem2("22px"),
+          "--ti-size-md": rem2("28px"),
+          "--ti-size-lg": rem2("34px"),
+          "--ti-size-xl": rem2("44px"),
           lineHeight: "1",
           display: "inline-flex",
           alignItems: "center",
@@ -5738,12 +7088,12 @@ var require_Tooltip_plugin = __commonJS({
           color: "var(--_tooltip-color)",
           borderRadius: "var(--tooltip-radius)",
           '[data-raikou-color-scheme="light"] &': {
-            "--_tooltip-bg": "var(--tooltip-bg, var(--raikou-color-gray-9))",
-            "--_tooltip-color": "var(--raikou-color-white)"
+            "--_tooltip-bg": "var(--tooltip-bg, var(--raikou-tooltip-bg))",
+            "--_tooltip-color": "var(--raikou-tooltip-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_tooltip-bg": "var(--tooltip-bg, var(--raikou-color-gray-2))",
-            "--_tooltip-color": "var(--raikou-color-black)"
+            "--_tooltip-bg": "var(--tooltip-bg, var(--raikou-tooltip-bg))",
+            "--_tooltip-color": "var(--raikou-tooltip-color)"
           },
           "&[data-multiline]": {
             "--_tooltip-white-space": "normal"
@@ -5765,7 +7115,7 @@ var require_UnstyledButton_plugin = __commonJS({
     "use strict";
     module2.exports = function({ addComponents, theme }) {
       addComponents({
-        ".unstyledButton-root": {
+        ".unstyled-button-root": {
           backgroundColor: "transparent",
           cursor: "pointer",
           border: "0",
@@ -5882,7 +7232,7 @@ var require_Carousel_plugin = __commonJS({
           color: "var(--raikou-color-black)",
           boxShadow: "var(--raikou-shadow-md)",
           opacity: "var(--_control-opacity)",
-          border: `${rem("1px")} solid var(--raikou-color-gray-3)`,
+          border: `${rem2("1px")} solid var(--raikou-color-gray-3)`,
           transition: "opacity 100ms ease",
           '[data-raikou-color-scheme="light"] &': {
             "--_control-opacity": "0.85"
@@ -5905,7 +7255,7 @@ var require_Carousel_plugin = __commonJS({
           position: "absolute",
           display: "flex",
           justifyContent: "center",
-          gap: rem("8px"),
+          gap: rem2("8px"),
           pointerEvents: "none",
           flexDirection: "var(--_indicators-direction)",
           bottom: "var(--_indicators-bottom)",
@@ -5949,12 +7299,12 @@ var require_Carousel_plugin = __commonJS({
             "--_indicator-opacity": "1"
           },
           '.carousel-root[data-orientation="vertical"] &': {
-            "--_indicator-width": rem("5px"),
-            "--_indicator-height": rem("25px")
+            "--_indicator-width": rem2("5px"),
+            "--_indicator-height": rem2("25px")
           },
           '.carousel-root[data-orientation="horizontal"] &': {
-            "--_indicator-width": rem("25px"),
-            "--_indicator-height": rem("5px")
+            "--_indicator-width": rem2("25px"),
+            "--_indicator-height": rem2("5px")
           }
         },
         ".carousel-slide": {
@@ -5996,34 +7346,369 @@ var require_Carousel_plugin = __commonJS({
   }
 });
 
-// ../dates/src/components/Month/Month.plugin.ts
-var require_Month_plugin = __commonJS({
-  "../dates/src/components/Month/Month.plugin.ts"(exports2, module2) {
+// ../code-highlight/src/CodeHighlight.plugin.ts
+var require_CodeHighlight_plugin = __commonJS({
+  "../code-highlight/src/CodeHighlight.plugin.ts"(exports2, module2) {
     "use strict";
     init_src();
     module2.exports = function({ addComponents }) {
       addComponents({
-        ".month-month": {
-          "border-collapse": "collapse",
-          "table-layout": "fixed"
+        ".codeHighlight-code": {
+          display: "inline-block",
+          padding: `${rem2("1px")} ${rem2("3px")}`,
+          fontSize: rem2("13px"),
+          borderRadius: "var(--raikou-radius-xs)",
+          lineHeight: "var(--_code-line-height, var(--raikou-line-height))",
+          fontFamily: "var(--raikou-font-family-monospace)"
         },
-        ".month-monthCell": {
-          padding: "var(--_month-cell-padding, 0)",
-          "&[data-with-spacing]": {
-            "--_month-cell-padding": rem("0.5px")
+        ".codeHighlight-pre": {
+          display: "block",
+          padding: "var(--raikou-spacing-xs) var(--raikou-spacing-md)",
+          margin: "0",
+          "--_code-line-height": "1.7"
+        },
+        ".codeHighlight-header": {
+          display: "flex",
+          alignItems: "flex-start",
+          justifyContent: "space-between"
+        },
+        ".codeHighlight-controls": {
+          display: "flex",
+          marginTop: rem2("7px"),
+          marginRight: rem2("7px")
+        },
+        ".codeHighlight-copy, .codeHighlight-control": {
+          backgroundColor: "transparent",
+          opacity: "0.8",
+          margin: "0",
+          "@media (hover: hover)": {
+            "&:hover": {
+              opacity: "1"
+            }
+          },
+          "@media (hover: none)": {
+            "&:active": {
+              opacity: "1"
+            }
+          },
+          "@media (max-width: 40em)": {
+            display: "none"
           }
         },
-        ".month-weekday": {
-          color: "var(--raikou-color-dimmed)",
-          fontWeight: "normal",
-          fontSize: "var(--month-fz)",
-          textTransform: "capitalize",
-          paddingBottom: "calc(var(--month-spacing) / 2)"
+        ".codeHighlight-copy": {
+          position: "absolute",
+          top: rem2("5px"),
+          right: rem2("5px"),
+          zIndex: "1"
         },
-        ".month-day": {
-          width: `var(--day-size, ${rem("36px")})`,
-          height: `var(--day-size, ${rem("36px")})`,
-          fontSize: "var(--day-fz, var(--raikou-font-size-sm))",
+        ".codeHighlight-file": {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: "var(--raikou-font-size-xs)",
+          gap: rem2("7px"),
+          padding: `${rem2("7px")} ${rem2("12px")}`,
+          fontFamily: "var(--raikou-font-family-monospace)",
+          fontWeight: "700",
+          lineHeight: "1",
+          userSelect: "none",
+          cursor: "var(--_file-cursor)",
+          border: `${rem2("1px")} solid var(--_file-bd)`,
+          borderTop: "0",
+          borderLeft: "0",
+          color: "var(--_file-color)",
+          opacity: "var(--_file-opacity)",
+          backgroundColor: "var(--_file-bg)",
+          whiteSpace: "nowrap",
+          "@media (hover: hover)": {
+            "&:hover": {
+              "--_file-opacity": "1"
+            }
+          },
+          "@media (hover: none)": {
+            "&:active": {
+              "--_file-opacity": "1"
+            }
+          },
+          "&:last-of-type": {
+            borderBottomRightRadius: "var(--raikou-radius-sm)"
+          },
+          "&:only-child": {
+            "--_file-cursor": "default"
+          },
+          "&[data-active]": {
+            "--_file-opacity": "1",
+            "--_file-color": "var(--_file-active-color) !important",
+            "--_file-bg": "var(--_file-active-bg)"
+          },
+          "--_file-opacity": "0.8",
+          "--_file-cursor": "pointer",
+          '[data-raikou-color-scheme="light"] &': {
+            "--_file-color": "var(--raikou-color-gray-8)",
+            "--_file-bd": "var(--raikou-color-gray-2)",
+            "--_file-active-bg": "var(--raikou-color-white)",
+            "--_file-active-color": "var(--raikou-color-black)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_file-color": "var(--raikou-color-dark-0)",
+            "--_file-bd": "var(--raikou-color-dark-4)",
+            "--_file-active-bg": "var(--raikou-color-dark-6)",
+            "--_file-active-color": "var(--raikou-color-white)"
+          }
+        },
+        ".codeHighlight-files": {
+          display: "flex"
+        },
+        ".codeHighlight-codeWrapper": {
+          maxHeight: "var(--ch-max-collapsed-height)",
+          overflow: "hidden",
+          position: "relative",
+          "&::before": {
+            content: '""',
+            zIndex: "100",
+            position: "absolute",
+            inset: "0",
+            pointerEvents: "none",
+            backgroundImage: "linear-gradient(0deg, var(--_background) 16%, rgba(0, 0, 0, 0) 100%)",
+            borderRadius: `calc(var(--raikou-radius-md) - ${rem2("1px")})`
+          },
+          "&[data-expanded]": {
+            maxHeight: "none",
+            "&::before": {
+              display: "none"
+            }
+          }
+        },
+        ".codeHighlight-showCodeButton": {
+          position: "absolute",
+          bottom: "0",
+          left: "50%",
+          transform: "translateX(-50%)",
+          fontSize: "var(--raikou-font-size-sm)",
+          color: "var(--raikou-color-anchor)",
+          width: "100%",
+          textAlign: "center",
+          zIndex: "101",
+          paddingTop: "var(--raikou-spacing-xs)",
+          paddingBottom: "var(--raikou-spacing-xs)",
+          "&[data-hidden]": {
+            display: "none"
+          }
+        },
+        ".codeHighlight-root": {
+          marginTop: "0",
+          position: "relative"
+        },
+        ".codeHighlight-fileIcon": {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flex: "0",
+          "& > svg": {
+            display: "block"
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../code-highlight/src/CodeHighlight.theme.plugin.ts
+var require_CodeHighlight_theme_plugin = __commonJS({
+  "../code-highlight/src/CodeHighlight.theme.plugin.ts"(exports2, module2) {
+    "use strict";
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".codeHighlight-theme": {
+          color: "var(--_color)",
+          background: "var(--_background)",
+          '[data-raikou-color-scheme="light"] &': {
+            "--_color": "var(--raikou-color-gray-7)",
+            "--_background": "var(--raikou-color-gray-0)",
+            "--code-comment-color": "var(--raikou-color-gray-6)",
+            "--code-keyword-color": "var(--raikou-color-violet-8)",
+            "--code-tag-color": "var(--raikou-color-red-9)",
+            "--code-literal-color": "var(--raikou-color-blue-6)",
+            "--code-string-color": "var(--raikou-color-blue-9)",
+            "--code-variable-color": "var(--raikou-color-lime-9)",
+            "--code-class-color": "var(--raikou-color-orange-9)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_color": "var(--raikou-color-dark-1)",
+            "--_background": "var(--raikou-color-dark-8)",
+            "--code-comment-color": "var(--raikou-color-dark-3)",
+            "--code-keyword-color": "var(--raikou-color-violet-3)",
+            "--code-tag-color": "var(--raikou-color-yellow-4)",
+            "--code-literal-color": "var(--raikou-color-blue-4)",
+            "--code-string-color": "var(--raikou-color-green-6)",
+            "--code-variable-color": "var(--raikou-color-blue-2)",
+            "--code-class-color": "var(--raikou-color-orange-5)"
+          },
+          ":global(.hljs-comment), :global(.hljs-quote)": {
+            fontStyle: "italic",
+            color: "var(--code-comment-color)"
+          },
+          ":global(.hljs-doctag), :global(.hljs-formula), :global(.hljs-keyword)": {
+            color: "var(--code-keyword-color)"
+          },
+          ":global(.hljs-deletion), :global(.hljs-name), :global(.hljs-section), :global(.hljs-selector-tag), :global(.hljs-subst)": {
+            color: "var(--code-tag-color)"
+          },
+          ":global(.hljs-literal)": {
+            color: "var(--code-literal-color)"
+          },
+          ":global(.hljs-addition), :global(.hljs-attribute), :global(.hljs-meta .hljs-string), :global(.hljs-regexp), :global(.hljs-string)": {
+            color: "var(--code-string-color)"
+          },
+          ":global(.hljs-attr), :global(.hljs-number), :global(.hljs-selector-attr), :global(.hljs-selector-class), :global(.hljs-selector-pseudo), :global(.hljs-template-variable), :global(.hljs-type), :global(.hljs-variable)": {
+            color: "var(--code-variable-color)"
+          },
+          ":global(.hljs-bullet), :global(.hljs-link), :global(.hljs-meta), :global(.hljs-selector-id), :global(.hljs-symbol), :global(.hljs-title), :global(.hljs-built_in), :global(.hljs-class .hljs-title), :global(.hljs-title.class_)": {
+            color: "var(--code-class-color)"
+          },
+          ":global(.hljs-emphasis)": {
+            fontStyle: "italic"
+          },
+          ":global(.hljs-strong)": {
+            fontWeight: "700"
+          },
+          ":global(.hljs-link)": {
+            textDecoration: "underline"
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../dates/src/components/CalendarHeader/CalendarHeader.plugin.ts
+var require_CalendarHeader_plugin = __commonJS({
+  "../dates/src/components/CalendarHeader/CalendarHeader.plugin.ts"(exports2, module2) {
+    "use strict";
+    init_src();
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".dates-calendarHeader": {
+          "--dch-control-size-xs": rem2("30px"),
+          "--dch-control-size-sm": rem2("36px"),
+          "--dch-control-size-md": rem2("42px"),
+          "--dch-control-size-lg": rem2("48px"),
+          "--dch-control-size-xl": rem2("54px"),
+          display: "flex",
+          maxWidth: `calc(var(--dch-control-size) * 7 + ${rem2("7px")})`,
+          marginBottom: "var(--raikou-spacing-xs)"
+        },
+        ".dates-calendarHeaderLevel, .dates-calendarHeaderControl": {
+          height: "var(--dch-control-size)",
+          borderRadius: "var(--raikou-radius-default)",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          userSelect: "none",
+          backgroundColor: "var(--_control-bg)",
+          opacity: "var(--_control-opacity, 1)",
+          cursor: "var(--_control-cursor, pointer)",
+          "@media (hover: hover)": {
+            "&:hover": {
+              "&:not([data-disabled], :disabled)": {
+                '[data-raikou-color-scheme="light"] &': {
+                  "--_control-bg": "var(--raikou-color-gray-0)"
+                },
+                '[data-raikou-color-scheme="dark"] &': {
+                  "--_control-bg": "var(--raikou-color-dark-5)"
+                }
+              }
+            }
+          },
+          "@media (hover: none)": {
+            "&:active": {
+              "&:not([data-disabled], :disabled)": {
+                '[data-raikou-color-scheme="light"] &': {
+                  "--_control-bg": "var(--raikou-color-gray-0)"
+                },
+                '[data-raikou-color-scheme="dark"] &': {
+                  "--_control-bg": "var(--raikou-color-dark-5)"
+                }
+              }
+            }
+          },
+          "&:disabled, &[data-disabled]": {
+            "--_control-opacity": "0.2",
+            "--_control-cursor": "not-allowed"
+          }
+        },
+        ".dates-calendarHeaderControl": {
+          width: "var(--dch-control-size)"
+        },
+        ".dates-calendarHeaderLevel": {
+          flex: "1",
+          fontSize: "var(--dch-fz)",
+          fontWeight: "500",
+          textTransform: "capitalize"
+        },
+        ".dates-calendarHeaderControlIcon": {
+          width: "60%",
+          height: "60%",
+          transform: "var(--_chevron-transform)",
+          '&[data-direction="next"]': {
+            "--_chevron-transform": "rotate(270deg)",
+            '[dir="rtl"] &': {
+              "--_chevron-transform": "rotate(90deg)"
+            }
+          },
+          '&[data-direction="previous"]': {
+            "--_chevron-transform": "rotate(90deg)",
+            '[dir="rtl"] &': {
+              "--_chevron-transform": "rotate(270deg)"
+            }
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../dates/src/components/DateTimePicker/DateTimePicker.plugin.ts
+var require_DateTimePicker_plugin = __commonJS({
+  "../dates/src/components/DateTimePicker/DateTimePicker.plugin.ts"(exports2, module2) {
+    "use strict";
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".dates-timeWrapper": {
+          display: "flex",
+          alignItems: "stretch",
+          marginTop: "var(--raikou-spacing-md)"
+        },
+        ".dates-timeInput": {
+          flex: "1",
+          marginRight: "var(--_mr, var(--raikou-spacing-md))",
+          marginLeft: "var(--_ml, 0)",
+          '[dir="rtl"] &': {
+            "--_mr": "0",
+            "--_ml": "var(--raikou-spacing-md)"
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../dates/src/components/Day/Day.plugin.ts
+var require_Day_plugin = __commonJS({
+  "../dates/src/components/Day/Day.plugin.ts"(exports2, module2) {
+    "use strict";
+    init_src();
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".dates-day": {
+          "--day-size-xs": rem2("30px"),
+          "--day-size-sm": rem2("36px"),
+          "--day-size-md": rem2("42px"),
+          "--day-size-lg": rem2("48px"),
+          "--day-size-xl": rem2("54px"),
+          width: `var(--day-size, ${rem2("36px")})`,
+          height: `var(--day-size, ${rem2("36px")})`,
+          fontSize: "calc(var(--day-size) / 2.8)",
           display: "var(--_day-display, inline-flex)",
           justifyContent: "center",
           alignItems: "center",
@@ -6070,43 +7755,26 @@ var require_Month_plugin = __commonJS({
           },
           "&:disabled, &[data-disabled]": {
             "--_day-color": "var(--raikou-color-dimmed)",
-            "--_day-cursor": "not-allowed"
+            "--_day-cursor": "not-allowed",
+            "--_day-opacity": "0.5"
           },
           "&[data-hidden]": {
             "--_day-display": "none"
           },
-          "&[data-selected]": {
-            "--_day-bg": "var(--day-selected-bg)",
-            "--_day-color": "var(--day-selected-color)",
-            "@media (hover: hover)": {
-              "&:hover": {
-                "[data-raikou-color-scheme] &": {
-                  "--_day-bg": "var(--day-selected-bg-hover)"
-                }
-              }
-            },
-            "@media (hover: none)": {
-              "&:active": {
-                "[data-raikou-color-scheme] &": {
-                  "--_day-bg": "var(--day-selected-bg-hover)"
-                }
-              }
-            }
-          },
           "&[data-in-range]": {
-            "--_day-bg": "var(--day-range-bg)",
+            "--_day-bg": "var(--raikou-primary-color-light-hover)",
             "--_day-radius": "0",
             "@media (hover: hover)": {
               "&:hover": {
-                "[data-raikou-color-scheme] &": {
-                  "--_day-bg": "var(--day-range-bg-hover)"
+                "[data-raikou-color-scheme] &:not([data-disabled], [data-static])": {
+                  "--_day-bg": "var(--raikou-primary-color-light)"
                 }
               }
             },
             "@media (hover: none)": {
               "&:active": {
-                "[data-raikou-color-scheme] &": {
-                  "--_day-bg": "var(--day-range-bg-hover)"
+                "[data-raikou-color-scheme] &:not([data-disabled], [data-static])": {
+                  "--_day-bg": "var(--raikou-primary-color-light)"
                 }
               }
             }
@@ -6122,6 +7790,288 @@ var require_Month_plugin = __commonJS({
             '[dir="rtl"] &': {
               "--_day-radius": "var(--raikou-radius-default) 0 0 var(--raikou-radius-default)"
             }
+          },
+          "&[data-last-in-range][data-first-in-range]": {
+            "--_day-radius": "var(--raikou-radius-default)"
+          },
+          "&[data-selected]": {
+            "--_day-bg": "var(--raikou-primary-color-filled)",
+            "--_day-color": "var(--raikou-color-white)",
+            "@media (hover: hover)": {
+              "&:hover": {
+                "[data-raikou-color-scheme] &:not([data-disabled], [data-static])": {
+                  "--_day-bg": "var(--raikou-primary-color-filled-hover)"
+                }
+              }
+            },
+            "@media (hover: none)": {
+              "&:active": {
+                "[data-raikou-color-scheme] &:not([data-disabled], [data-static])": {
+                  "--_day-bg": "var(--raikou-primary-color-filled-hover)"
+                }
+              }
+            }
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../dates/src/components/LevelsGroup/LevelsGroup.plugin.ts
+var require_LevelsGroup_plugin = __commonJS({
+  "../dates/src/components/LevelsGroup/LevelsGroup.plugin.ts"(exports2, module2) {
+    "use strict";
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".dates-levelsGroup": {
+          display: "flex",
+          gap: "var(--raikou-spacing-md)"
+        }
+      });
+    };
+  }
+});
+
+// ../dates/src/components/Month/Month.plugin.ts
+var require_Month_plugin = __commonJS({
+  "../dates/src/components/Month/Month.plugin.ts"(exports2, module2) {
+    "use strict";
+    init_src();
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".dates-month": {
+          borderCollapse: "collapse",
+          tableLayout: "fixed"
+        },
+        ".dates-monthCell": {
+          padding: "var(--_month-cell-padding, 0)",
+          "&[data-with-spacing]": {
+            "--_month-cell-padding": rem2("0.5px")
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../dates/src/components/MonthsList/MonthsList.plugin.ts
+var require_MonthsList_plugin = __commonJS({
+  "../dates/src/components/MonthsList/MonthsList.plugin.ts"(exports2, module2) {
+    "use strict";
+    init_src();
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".dates-monthsList": {
+          borderCollapse: "collapse",
+          borderWidth: "0",
+          cursor: "pointer"
+        },
+        ".dates-monthsListCell": {
+          padding: "var(--_cell-padding, 0)",
+          "&[data-with-spacing]": {
+            "--_cell-padding": rem2("0.5px")
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../dates/src/components/PickerControl/PickerControl.plugin.ts
+var require_PickerControl_plugin = __commonJS({
+  "../dates/src/components/PickerControl/PickerControl.plugin.ts"(exports2, module2) {
+    "use strict";
+    init_src();
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".dates-pickerControl": {
+          "--dpc-size-xs": rem2("30px"),
+          "--dpc-size-sm": rem2("36px"),
+          "--dpc-size-md": rem2("42px"),
+          "--dpc-size-lg": rem2("48px"),
+          "--dpc-size-xl": rem2("54px"),
+          fontSize: "var(--dpc-fz)",
+          height: "var(--dpc-size)",
+          width: `calc((var(--dpc-size) * 7) / 3 + ${rem2("1.5px")})`,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          userSelect: "none",
+          cursor: "var(--_control-cursor, pointer)",
+          backgroundColor: "var(--_control-bg, transparent)",
+          color: "var(--_control-color, var(--raikou-color-text))",
+          opacity: "var(--_control-opacity, 1)",
+          borderRadius: "var(--_control-radius, var(--raikou-radius-default))",
+          "@media (hover: hover)": {
+            "&:hover": {
+              "&:not([data-disabled])": {
+                '[data-raikou-color-scheme="light"] &': {
+                  "--_control-bg": "var(--raikou-color-gray-0)"
+                },
+                '[data-raikou-color-scheme="dark"] &': {
+                  "--_control-bg": "var(--raikou-color-dark-5)"
+                }
+              }
+            }
+          },
+          "@media (hover: none)": {
+            "&:active": {
+              "&:not([data-disabled])": {
+                '[data-raikou-color-scheme="light"] &': {
+                  "--_control-bg": "var(--raikou-color-gray-0)"
+                },
+                '[data-raikou-color-scheme="dark"] &': {
+                  "--_control-bg": "var(--raikou-color-dark-5)"
+                }
+              }
+            }
+          },
+          "&:disabled, &[data-disabled]": {
+            "--_control-color": "var(--raikou-color-dimmed)",
+            "--_control-cursor": "not-allowed",
+            "--_control-opacity": "0.5"
+          },
+          "&[data-selected]": {
+            "--_control-bg": "var(--raikou-primary-color-filled)",
+            "--_control-color": "var(--raikou-color-white)",
+            "@media (hover: hover)": {
+              "&:hover": {
+                "[data-raikou-color-scheme] &": {
+                  "--_control-bg": "var(--raikou-primary-color-filled-hover)"
+                }
+              }
+            },
+            "@media (hover: none)": {
+              "&:active": {
+                "[data-raikou-color-scheme] &": {
+                  "--_control-bg": "var(--raikou-primary-color-filled-hover)"
+                }
+              }
+            }
+          },
+          "&[data-in-range]": {
+            "--_control-bg": "var(--raikou-primary-color-light-hover)",
+            "--_control-radius": "0",
+            "@media (hover: hover)": {
+              "&:hover": {
+                "[data-raikou-color-scheme] &": {
+                  "--_control-bg": "var(--raikou-primary-color-light)"
+                }
+              }
+            },
+            "@media (hover: none)": {
+              "&:active": {
+                "[data-raikou-color-scheme] &": {
+                  "--_control-bg": "var(--raikou-primary-color-light)"
+                }
+              }
+            }
+          },
+          "&[data-first-in-range]": {
+            "--_control-radius": "var(--raikou-radius-default) 0 0 var(--raikou-radius-default)",
+            '[dir="rtl"] &': {
+              "--_control-radius": "0 var(--raikou-radius-default) var(--raikou-radius-default) 0"
+            }
+          },
+          "&[data-last-in-range]": {
+            "--_control-radius": "0 var(--raikou-radius-default) var(--raikou-radius-default) 0",
+            '[dir="rtl"] &': {
+              "--_control-radius": "var(--raikou-radius-default) 0 0 var(--raikou-radius-default)"
+            }
+          },
+          "&[data-first-in-range][data-last-in-range]": {
+            "--_control-radius": "var(--raikou-radius-default)"
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../dates/src/components/PickerInputBase/PickerInputBase.plugin.ts
+var require_PickerInputBase_plugin = __commonJS({
+  "../dates/src/components/PickerInputBase/PickerInputBase.plugin.ts"(exports2, module2) {
+    "use strict";
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".dates-pickerInput-input": {
+          cursor: "var(--_cursor, pointer)",
+          lineHeight: "unset",
+          "&[data-read-only]": {
+            "--_cursor": "default"
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../dates/src/components/TimeInput/TimeInput.plugin.ts
+var require_TimeInput_plugin = __commonJS({
+  "../dates/src/components/TimeInput/TimeInput.plugin.ts"(exports2, module2) {
+    "use strict";
+    init_src();
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".dates-timeInput-input": {
+          paddingTop: "0",
+          paddingBottom: "0",
+          appearance: "none",
+          "&::-webkit-calendar-picker-indicator": {
+            display: "none"
+          },
+          "&::-webkit-clear-button": {
+            display: "none"
+          },
+          "&::-webkit-datetime-edit-hour-field, &::-webkit-datetime-edit-minute-field, &::-webkit-datetime-edit-second-field": {
+            paddingTop: "0",
+            maxHeight: rem2("30px"),
+            display: "inline",
+            "&:focus": {
+              backgroundColor: "var(--raikou-primary-color-filled)",
+              color: "var(--raikou-color-white)"
+            }
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../dates/src/components/WeekdaysRow/WeekdaysRow.plugin.ts
+var require_WeekdaysRow_plugin = __commonJS({
+  "../dates/src/components/WeekdaysRow/WeekdaysRow.plugin.ts"(exports2, module2) {
+    "use strict";
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".dates-weekday": {
+          color: "var(--raikou-color-dimmed)",
+          fontWeight: "normal",
+          fontSize: "var(--wr-fz)",
+          textTransform: "capitalize",
+          paddingBottom: "calc(var(--wr-spacing) / 2)"
+        }
+      });
+    };
+  }
+});
+
+// ../dates/src/components/YearsList/YearsList.plugin.ts
+var require_YearsList_plugin = __commonJS({
+  "../dates/src/components/YearsList/YearsList.plugin.ts"(exports2, module2) {
+    "use strict";
+    init_src();
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".dates-yearsList": {
+          borderCollapse: "collapse",
+          borderWidth: "0"
+        },
+        ".dates-yearsListCell": {
+          padding: "var(--_cell-padding, 0)",
+          "&[data-with-spacing]": {
+            "--_cell-padding": rem2("0.5px")
           }
         }
       });
@@ -6271,7 +8221,7 @@ var require_NavigationProgress_plugin = __commonJS({
           "&::before": {
             content: "''",
             position: "absolute",
-            width: rem("100px"),
+            width: rem2("100px"),
             height: "var(--progress-size)",
             top: "0",
             right: "1px",
@@ -6312,11 +8262,11 @@ var require_Spotlight_plugin = __commonJS({
         },
         ".spotlight-actionsList": {
           /* Used in child ScrollArea */
-          "--spotlight-actions-list-padding": rem("4px"),
-          borderTop: `${rem("1px")} solid var(--_actions-list-border)`,
+          "--spotlight-actions-list-padding": rem2("4px"),
+          borderTop: `${rem2("1px")} solid var(--_actions-list-border)`,
           flex: "1",
           padding: "var(--spotlight-actions-list-padding)",
-          maxHeight: `calc(100% - ${rem("3.125rem")})`,
+          maxHeight: `calc(100% - ${rem2("3.125rem")})`,
           marginRight: "var(--_actions-list-mr, calc(var(--spotlight-actions-list-padding) * -1))",
           marginLeft: "var(--_actions-list-ml, 0)",
           '[dir="rtl"] &': {
@@ -6334,7 +8284,7 @@ var require_Spotlight_plugin = __commonJS({
           display: "flex",
           alignItems: "center",
           width: "100%",
-          padding: `${rem("7px")} var(--raikou-spacing-md)`,
+          padding: `${rem2("7px")} var(--raikou-spacing-md)`,
           borderRadius: "var(--raikou-radius-default)",
           backgroundColor: "var(--_action-bg, transparent)",
           color: "var(--_action-color, inherit)",
@@ -6405,10 +8355,10 @@ var require_Spotlight_plugin = __commonJS({
           textAlign: "center"
         },
         ".spotlight-footer": {
-          padding: `var(--raikou-spacing-xs) calc(var(--raikou-spacing-md) + ${rem(
+          padding: `var(--raikou-spacing-xs) calc(var(--raikou-spacing-md) + ${rem2(
             "4px"
           )})`,
-          borderTop: `${rem("1px")} solid var(--_footer-border)`,
+          borderTop: `${rem2("1px")} solid var(--_footer-border)`,
           '[data-raikou-color-scheme="light"] &': {
             "--_footer-border": "var(--raikou-color-gray-2)"
           },
@@ -6445,6 +8395,8 @@ var require_Spotlight_plugin = __commonJS({
 // src/plugin.ts
 module.exports = {
   plugins: [
+    require_global_plugin(),
+    require_css_variables_plugin(),
     require_Accordion_plugin(),
     require_ActionIcon_plugin(),
     require_Alert_plugin(),
@@ -6468,6 +8420,7 @@ module.exports = {
     require_ColorSwatch_plugin(),
     require_Combobox_plugin(),
     require_Container_plugin(),
+    require_Dialog_plugin(),
     require_Divider_plugin(),
     require_Drawer_plugin(),
     require_Fieldset_plugin(),
@@ -6479,12 +8432,14 @@ module.exports = {
     require_InlineInput_plugin(),
     require_Input_plugin(),
     require_Kbd_plugin(),
+    require_List_plugin(),
     require_Loader_plugin(),
     require_LoadingOverlay_plugin(),
     require_Mark_plugin(),
     require_Menu_plugin(),
     require_Modal_plugin(),
     require_ModalBase_plugin(),
+    require_NavLink_plugin(),
     require_Notification_plugin(),
     require_NumberInput_plugin(),
     require_Overlay_plugin(),
@@ -6496,6 +8451,7 @@ module.exports = {
     require_PinInput_plugin(),
     require_Popover_plugin(),
     require_Progress_plugin(),
+    require_Radio_plugin(),
     require_Rating_plugin(),
     require_RingProgress_plugin(),
     require_ScrollArea_plugin(),
@@ -6503,19 +8459,33 @@ module.exports = {
     require_SimpleGrid_plugin(),
     require_Skeleton_plugin(),
     require_Slider_plugin(),
+    require_Spoiler_plugin(),
     require_Stack_plugin(),
     require_Stepper_plugin(),
     require_Switch_plugin(),
     require_Table_plugin(),
     require_Tabs_plugin(),
     require_Text_plugin(),
+    require_Timeline_plugin(),
     require_ThemeIcon_plugin(),
     require_Title_plugin(),
     require_Tooltip_plugin(),
     require_UnstyledButton_plugin(),
     require_VisuallyHidden_plugin(),
     require_Carousel_plugin(),
+    require_CodeHighlight_plugin(),
+    require_CodeHighlight_theme_plugin(),
+    require_CalendarHeader_plugin(),
+    require_DateTimePicker_plugin(),
+    require_Day_plugin(),
+    require_LevelsGroup_plugin(),
     require_Month_plugin(),
+    require_MonthsList_plugin(),
+    require_PickerControl_plugin(),
+    require_PickerInputBase_plugin(),
+    require_TimeInput_plugin(),
+    require_WeekdaysRow_plugin(),
+    require_YearsList_plugin(),
     require_Dropzone_plugin(),
     require_Notifications_plugin(),
     require_NavigationProgress_plugin(),

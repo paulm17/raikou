@@ -2,9 +2,6 @@ import type { PartialDeep } from "type-fest";
 import type { VariantColorsResolver } from "./color-functions";
 
 export interface RaikouTheme {
-  /* Defines color scheme for all components, defaults to "light" */
-  colorScheme: "light" | "dark";
-
   /** Controls focus ring styles. Supports the following options:
    *  - `auto` – focus ring is displayed only when the user navigates with keyboard (default value)
    *  - `always` – focus ring is displayed when the user navigates with keyboard and mouse
@@ -187,22 +184,7 @@ export interface RaikouPrimaryShade {
   dark: RaikouColorShade;
 }
 
-export type DefaultRaikouColor =
-  | "dark"
-  | "gray"
-  | "red"
-  | "pink"
-  | "grape"
-  | "violet"
-  | "indigo"
-  | "blue"
-  | "cyan"
-  | "green"
-  | "lime"
-  | "yellow"
-  | "orange"
-  | "teal"
-  | (string & {});
+export type DefaultRaikouColor = "blue" | (string & {});
 
 export type RaikouThemeColorsOverride = {};
 

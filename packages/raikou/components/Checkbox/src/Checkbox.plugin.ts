@@ -35,13 +35,13 @@ module.exports = function ({ addComponents, theme }: any) {
       cursor: "var(--_checkbox-cursor, var(--raikou-cursor-type))",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_checkbox-bg": "var(--raikou-color-white)",
-        "--_checkbox-bd-color": "var(--raikou-color-gray-4)",
+        "--_checkbox-bg": "var(--raikou-checkbox-bg)",
+        "--_checkbox-bd-color": "var(--raikou-checkbox-bd-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_checkbox-bg": "var(--raikou-color-dark-6)",
-        "--_checkbox-bd-color": "var(--raikou-color-dark-4)",
+        "--_checkbox-bg": "var(--raikou-checkbox-bg)",
+        "--_checkbox-bd-color": "var(--raikou-checkbox-bd-color)",
       },
 
       "&[data-error]": {
@@ -64,22 +64,24 @@ module.exports = function ({ addComponents, theme }: any) {
         "--_checkbox-cursor": "not-allowed",
 
         '[data-raikou-color-scheme="light"] &': {
-          "--_checkbox-bg": "var(--raikou-color-gray-2)",
-          "--_checkbox-bd-color": "var(--raikou-color-gray-3)",
+          "--_checkbox-bg": "var(--raikou-checkbox-disabled-bg)",
+          "--_checkbox-bd-color": "var(--raikou-checkbox-disabled-bd-color)",
         },
 
         '[data-raikou-color-scheme="dark"] &': {
-          "--_checkbox-bg": "var(--raikou-color-dark-6)",
-          "--_checkbox-bd-color": "var(--raikou-color-dark-6)",
+          "--_checkbox-bg": "var(--raikou-checkbox-disabled-bg)",
+          "--_checkbox-bd-color": "var(--raikou-checkbox-disabled-bd-color)",
         },
 
         "& + .checkbox-icon": {
           '[data-raikou-color-scheme="light"] &': {
-            "--_checkbox-icon-color": "var(--raikou-color-gray-5)",
+            "--_checkbox-icon-color":
+              "var(--raikou-checkbox-disabled-icon-color)",
           },
 
           '[data-raikou-color-scheme="dark"] &': {
-            "--_checkbox-icon-color": "var(--raikou-color-dark-3)",
+            "--_checkbox-icon-color":
+              "var(--raikou-checkbox-disabled-icon-color)",
           },
         },
       },
@@ -93,10 +95,10 @@ module.exports = function ({ addComponents, theme }: any) {
       bottom: "0",
       width: "60%",
       margin: "auto",
-      color: "var(--_checkbox-icon-color, var(--raikou-color-white))",
+      color: "var(--_checkbox-icon-color, var(--raikou-checkbox-icon-color))",
       pointerEvents: "none",
       transform: `var(--_checkbox-icon-transform, translateY(${rem(
-        "5px"
+        "5px",
       )}) scale(0.5))`,
       opacity: "var(--_checkbox-icon-opacity, 0)",
       transition: "transform 100ms ease, opacity 100ms ease",

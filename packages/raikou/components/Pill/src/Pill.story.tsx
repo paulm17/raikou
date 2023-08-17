@@ -29,7 +29,7 @@ export function Usage() {
           padding: 40,
           display: "flex",
           gap: 20,
-          background: "var(--raikou-color-gray-0)",
+          background: "#f8f9fa",
         }}
       >
         <Pill withRemoveButton variant="contrast" size="xs">

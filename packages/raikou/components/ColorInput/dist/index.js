@@ -85,26 +85,26 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/ColorInput.tsx
-var import_react40 = __toESM(require("react"));
+var import_react41 = __toESM(require("react"));
 var import_hooks13 = require("@raikou/hooks");
 var import_core34 = require("@raikou/core");
 
 // ../ColorPicker/src/ColorPicker.tsx
-var import_react11 = __toESM(require("react"));
+var import_react12 = __toESM(require("react"));
 var import_hooks3 = require("@raikou/hooks");
 var import_core8 = require("@raikou/core");
 
 // ../ColorPicker/src/AlphaSlider/AlphaSlider.tsx
-var import_react6 = __toESM(require("react"));
+var import_react7 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
 
 // ../ColorPicker/src/ColorSlider/ColorSlider.tsx
-var import_react5 = __toESM(require("react"));
+var import_react6 = __toESM(require("react"));
 var import_hooks = require("@raikou/hooks");
 var import_core2 = require("@raikou/core");
 
 // ../ColorPicker/src/Thumb/Thumb.tsx
-var import_react4 = __toESM(require("react"));
+var import_react5 = __toESM(require("react"));
 var import_core = require("@raikou/core");
 
 // ../_utils/create-safe-context/create-safe-context.tsx
@@ -134,17 +134,20 @@ function createOptionalContext(initialValue = null) {
 // ../_utils/use-hovered/use-hovered.ts
 var import_react3 = require("react");
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+var import_react4 = require("react");
+
 // ../ColorPicker/src/ColorPicker.context.ts
 var [ColorPickerProvider, useColorPickerContext] = createSafeContext(
   "ColorPicker component was not found in tree"
 );
 
 // ../ColorPicker/src/Thumb/Thumb.tsx
-var Thumb = (0, import_react4.forwardRef)(
+var Thumb = (0, import_react5.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className, style, size: size2, position } = _b, others = __objRest(_b, ["className", "style", "size", "position"]);
     const { getStyles } = useColorPickerContext();
-    return /* @__PURE__ */ import_react4.default.createElement(
+    return /* @__PURE__ */ import_react5.default.createElement(
       import_core.Box,
       __spreadValues(__spreadProps(__spreadValues({
         ref
@@ -160,7 +163,7 @@ var Thumb = (0, import_react4.forwardRef)(
 Thumb.displayName = "@raikou/core/ColorPickerThumb";
 
 // ../ColorPicker/src/ColorSlider/ColorSlider.tsx
-var ColorSlider = (0, import_react5.forwardRef)(
+var ColorSlider = (0, import_react6.forwardRef)(
   (props, ref) => {
     const _a = props, {
       className,
@@ -191,8 +194,8 @@ var ColorSlider = (0, import_react5.forwardRef)(
     ]);
     const { getStyles } = useColorPickerContext();
     const theme = (0, import_core2.useRaikouTheme)();
-    const [position, setPosition] = (0, import_react5.useState)({ y: 0, x: value / maxValue });
-    const positionRef = (0, import_react5.useRef)(position);
+    const [position, setPosition] = (0, import_react6.useState)({ y: 0, x: value / maxValue });
+    const positionRef = (0, import_react6.useRef)(position);
     const getChangeValue = (val) => round3 ? Math.round(val * maxValue) : val * maxValue;
     const { ref: sliderRef } = (0, import_hooks.useMove)(
       ({ x, y }) => {
@@ -229,8 +232,8 @@ var ColorSlider = (0, import_react5.forwardRef)(
         }
       }
     };
-    const layers = overlays.map((overlay, index3) => /* @__PURE__ */ import_react5.default.createElement("div", __spreadProps(__spreadValues({}, getStyles("sliderOverlay")), { style: overlay, key: index3 })));
-    return /* @__PURE__ */ import_react5.default.createElement(
+    const layers = overlays.map((overlay, index3) => /* @__PURE__ */ import_react6.default.createElement("div", __spreadProps(__spreadValues({}, getStyles("sliderOverlay")), { style: overlay, key: index3 })));
+    return /* @__PURE__ */ import_react6.default.createElement(
       import_core2.Box,
       __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, others), {
         ref: (0, import_hooks.useMergedRef)(sliderRef, ref)
@@ -244,7 +247,7 @@ var ColorSlider = (0, import_react5.forwardRef)(
         "data-focus-ring": theme.focusRing
       }),
       layers,
-      /* @__PURE__ */ import_react5.default.createElement(
+      /* @__PURE__ */ import_react6.default.createElement(
         Thumb,
         __spreadValues({
           position,
@@ -389,14 +392,14 @@ function parseColor(color) {
 
 // ../ColorPicker/src/AlphaSlider/AlphaSlider.tsx
 var defaultProps = {};
-var AlphaSlider = (0, import_react6.forwardRef)(
+var AlphaSlider = (0, import_react7.forwardRef)(
   (props, ref) => {
     const _a = (0, import_core3.useProps)(
       "AlphaSlider",
       defaultProps,
       props
     ), { value, onChange, onChangeEnd, color } = _a, others = __objRest(_a, ["value", "onChange", "onChangeEnd", "color"]);
-    return /* @__PURE__ */ import_react6.default.createElement(
+    return /* @__PURE__ */ import_react7.default.createElement(
       ColorSlider,
       __spreadProps(__spreadValues({}, others), {
         ref,
@@ -430,17 +433,17 @@ var AlphaSlider = (0, import_react6.forwardRef)(
 AlphaSlider.displayName = "@raikou/core/AlphaSlider";
 
 // ../ColorPicker/src/HueSlider/HueSlider.tsx
-var import_react7 = __toESM(require("react"));
+var import_react8 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
 var defaultProps2 = {};
-var HueSlider = (0, import_react7.forwardRef)(
+var HueSlider = (0, import_react8.forwardRef)(
   (props, ref) => {
     const _a = (0, import_core4.useProps)(
       "HueSlider",
       defaultProps2,
       props
     ), { value, onChange, onChangeEnd, color } = _a, others = __objRest(_a, ["value", "onChange", "onChangeEnd", "color"]);
-    return /* @__PURE__ */ import_react7.default.createElement(
+    return /* @__PURE__ */ import_react8.default.createElement(
       ColorSlider,
       __spreadProps(__spreadValues({}, others), {
         ref,
@@ -468,7 +471,7 @@ var HueSlider = (0, import_react7.forwardRef)(
 HueSlider.displayName = "@raikou/core/HueSlider";
 
 // ../ColorPicker/src/Saturation/Saturation.tsx
-var import_react8 = __toESM(require("react"));
+var import_react9 = __toESM(require("react"));
 var import_hooks2 = require("@raikou/hooks");
 var import_core5 = require("@raikou/core");
 
@@ -564,11 +567,11 @@ function Saturation(_a) {
     "onScrubEnd"
   ]);
   const { getStyles } = useColorPickerContext();
-  const [position, setPosition] = (0, import_react8.useState)({
+  const [position, setPosition] = (0, import_react9.useState)({
     x: value.s / 100,
     y: 1 - value.v / 100
   });
-  const positionRef = (0, import_react8.useRef)(position);
+  const positionRef = (0, import_react9.useRef)(position);
   const { ref } = (0, import_hooks2.useMove)(
     ({ x, y }) => {
       positionRef.current = { x, y };
@@ -583,7 +586,7 @@ function Saturation(_a) {
       onScrubStart
     }
   );
-  (0, import_react8.useEffect)(() => {
+  (0, import_react9.useEffect)(() => {
     setPosition({ x: value.s / 100, y: 1 - value.v / 100 });
   }, [value.s, value.v]);
   const handleArrow = (event, pos) => {
@@ -618,7 +621,7 @@ function Saturation(_a) {
       }
     }
   };
-  return /* @__PURE__ */ import_react8.default.createElement(
+  return /* @__PURE__ */ import_react9.default.createElement(
     import_core5.Box,
     __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("saturation")), {
       ref
@@ -630,13 +633,13 @@ function Saturation(_a) {
       tabIndex: focusable ? 0 : -1,
       onKeyDown: handleKeyDown
     }),
-    /* @__PURE__ */ import_react8.default.createElement(
+    /* @__PURE__ */ import_react9.default.createElement(
       "div",
       __spreadValues({}, getStyles("saturationOverlay", {
         style: { backgroundColor: `hsl(${value.h}, 100%, 50%)` }
       }))
     ),
-    /* @__PURE__ */ import_react8.default.createElement(
+    /* @__PURE__ */ import_react9.default.createElement(
       "div",
       __spreadValues({}, getStyles("saturationOverlay", {
         style: {
@@ -644,7 +647,7 @@ function Saturation(_a) {
         }
       }))
     ),
-    /* @__PURE__ */ import_react8.default.createElement(
+    /* @__PURE__ */ import_react9.default.createElement(
       "div",
       __spreadValues({}, getStyles("saturationOverlay", {
         style: {
@@ -652,7 +655,7 @@ function Saturation(_a) {
         }
       }))
     ),
-    /* @__PURE__ */ import_react8.default.createElement(
+    /* @__PURE__ */ import_react9.default.createElement(
       Thumb,
       __spreadValues({
         position,
@@ -664,11 +667,11 @@ function Saturation(_a) {
 Saturation.displayName = "@raikou/core/Saturation";
 
 // ../ColorPicker/src/Swatches/Swatches.tsx
-var import_react10 = __toESM(require("react"));
+var import_react11 = __toESM(require("react"));
 var import_core7 = require("@raikou/core");
 
 // ../ColorSwatch/src/ColorSwatch.tsx
-var import_react9 = __toESM(require("react"));
+var import_react10 = __toESM(require("react"));
 var import_core6 = require("@raikou/core");
 var defaultProps3 = {
   size: (0, import_core6.rem)(28),
@@ -731,27 +734,27 @@ var ColorSwatch = (0, import_core6.polymorphicFactory)(
       vars,
       varsResolver
     });
-    return /* @__PURE__ */ import_react9.default.createElement(
+    return /* @__PURE__ */ import_react10.default.createElement(
       import_core6.Box,
       __spreadValues(__spreadValues({
         ref,
         variant,
         size: size2
       }, getStyles("root", { focusable: true })), others),
-      /* @__PURE__ */ import_react9.default.createElement("span", __spreadValues({}, getStyles("alphaOverlay"))),
-      withShadow && /* @__PURE__ */ import_react9.default.createElement("span", __spreadValues({}, getStyles("shadowOverlay"))),
-      /* @__PURE__ */ import_react9.default.createElement(
+      /* @__PURE__ */ import_react10.default.createElement("span", __spreadValues({}, getStyles("alphaOverlay"))),
+      withShadow && /* @__PURE__ */ import_react10.default.createElement("span", __spreadValues({}, getStyles("shadowOverlay"))),
+      /* @__PURE__ */ import_react10.default.createElement(
         "span",
         __spreadValues({}, getStyles("colorOverlay", { style: { backgroundColor: color } }))
       ),
-      /* @__PURE__ */ import_react9.default.createElement("span", __spreadValues({}, getStyles("childrenOverlay")), children)
+      /* @__PURE__ */ import_react10.default.createElement("span", __spreadValues({}, getStyles("childrenOverlay")), children)
     );
   }
 );
 ColorSwatch.displayName = "@raikou/core/ColorSwatch";
 
 // ../ColorPicker/src/Swatches/Swatches.tsx
-var Swatches = (0, import_react10.forwardRef)(
+var Swatches = (0, import_react11.forwardRef)(
   (_a, ref) => {
     var _b = _a, {
       className,
@@ -773,7 +776,7 @@ var Swatches = (0, import_react10.forwardRef)(
       "swatchesPerRow"
     ]);
     const { getStyles } = useColorPickerContext();
-    const colors = data.map((color, index3) => /* @__PURE__ */ import_react10.default.createElement(
+    const colors = data.map((color, index3) => /* @__PURE__ */ import_react11.default.createElement(
       ColorSwatch,
       __spreadProps(__spreadValues({}, getStyles("swatch")), {
         component: "button",
@@ -790,7 +793,7 @@ var Swatches = (0, import_react10.forwardRef)(
         "data-swatch": true
       })
     ));
-    return /* @__PURE__ */ import_react10.default.createElement(import_core7.Box, __spreadValues(__spreadProps(__spreadValues({}, getStyles("swatches")), { ref }), others), colors);
+    return /* @__PURE__ */ import_react11.default.createElement(import_core7.Box, __spreadValues(__spreadProps(__spreadValues({}, getStyles("swatches")), { ref }), others), colors);
   }
 );
 Swatches.displayName = "@raikou/core/Swatches";
@@ -889,10 +892,10 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver2
   });
-  const formatRef = (0, import_react11.useRef)(format);
-  const valueRef = (0, import_react11.useRef)();
-  const scrubTimeoutRef = (0, import_react11.useRef)(-1);
-  const isScrubbingRef = (0, import_react11.useRef)(false);
+  const formatRef = (0, import_react12.useRef)(format);
+  const valueRef = (0, import_react12.useRef)();
+  const scrubTimeoutRef = (0, import_react12.useRef)(-1);
+  const isScrubbingRef = (0, import_react12.useRef)(false);
   const withAlpha = format === "hexa" || format === "rgba" || format === "hsla";
   const [_value, setValue, controlled] = (0, import_hooks3.useUncontrolled)({
     value,
@@ -900,7 +903,7 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
     finalValue: "#FFFFFF",
     onChange
   });
-  const [parsed, setParsed] = (0, import_react11.useState)(parseColor(_value));
+  const [parsed, setParsed] = (0, import_react12.useState)(parseColor(_value));
   const startScrubbing = () => {
     window.clearTimeout(scrubTimeoutRef.current);
     isScrubbingRef.current = true;
@@ -928,7 +931,7 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
     formatRef.current = format;
     setValue(convertHsvaTo(format, parsed));
   }, [format]);
-  return /* @__PURE__ */ import_react11.default.createElement(ColorPickerProvider, { value: { getStyles } }, /* @__PURE__ */ import_react11.default.createElement(import_core8.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("wrapper")), { size: size2 }), others), withPicker && /* @__PURE__ */ import_react11.default.createElement(import_react11.default.Fragment, null, /* @__PURE__ */ import_react11.default.createElement(
+  return /* @__PURE__ */ import_react12.default.createElement(ColorPickerProvider, { value: { getStyles } }, /* @__PURE__ */ import_react12.default.createElement(import_core8.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("wrapper")), { size: size2 }), others), withPicker && /* @__PURE__ */ import_react12.default.createElement(import_react12.default.Fragment, null, /* @__PURE__ */ import_react12.default.createElement(
     Saturation,
     {
       value: parsed,
@@ -943,7 +946,7 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
       onScrubStart: startScrubbing,
       onScrubEnd: stopScrubbing
     }
-  ), /* @__PURE__ */ import_react11.default.createElement("div", __spreadValues({}, getStyles("body")), /* @__PURE__ */ import_react11.default.createElement("div", __spreadValues({}, getStyles("sliders")), /* @__PURE__ */ import_react11.default.createElement(
+  ), /* @__PURE__ */ import_react12.default.createElement("div", __spreadValues({}, getStyles("body")), /* @__PURE__ */ import_react12.default.createElement("div", __spreadValues({}, getStyles("sliders")), /* @__PURE__ */ import_react12.default.createElement(
     HueSlider,
     {
       value: parsed.h,
@@ -957,7 +960,7 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
       onScrubStart: startScrubbing,
       onScrubEnd: stopScrubbing
     }
-  ), withAlpha && /* @__PURE__ */ import_react11.default.createElement(
+  ), withAlpha && /* @__PURE__ */ import_react12.default.createElement(
     AlphaSlider,
     {
       value: parsed.a,
@@ -974,13 +977,13 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
       onScrubStart: startScrubbing,
       onScrubEnd: stopScrubbing
     }
-  )), withAlpha && /* @__PURE__ */ import_react11.default.createElement(
+  )), withAlpha && /* @__PURE__ */ import_react12.default.createElement(
     ColorSwatch,
     __spreadValues({
       color: _value,
       radius: "sm"
     }, getStyles("preview"))
-  ))), Array.isArray(swatches) && /* @__PURE__ */ import_react11.default.createElement(
+  ))), Array.isArray(swatches) && /* @__PURE__ */ import_react12.default.createElement(
     Swatches,
     {
       data: swatches,
@@ -1001,7 +1004,7 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
 ColorPicker.displayName = "@raikou/core/ColorPicker";
 
 // ../Input/src/Input.tsx
-var import_react17 = __toESM(require("react"));
+var import_react18 = __toESM(require("react"));
 var import_core14 = require("@raikou/core");
 
 // ../Input/src/InputWrapper.context.ts
@@ -1014,7 +1017,7 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
 });
 
 // ../Input/src/InputLabel/InputLabel.tsx
-var import_react12 = __toESM(require("react"));
+var import_react13 = __toESM(require("react"));
 var import_core9 = require("@raikou/core");
 var defaultProps5 = {
   size: "sm",
@@ -1077,7 +1080,7 @@ var InputLabel = (0, import_core9.factory)((_props, ref) => {
   });
   const ctx = useInputWrapperContext();
   const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-  return /* @__PURE__ */ import_react12.default.createElement(
+  return /* @__PURE__ */ import_react13.default.createElement(
     import_core9.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("label")), {
       component: labelElement,
@@ -1094,13 +1097,13 @@ var InputLabel = (0, import_core9.factory)((_props, ref) => {
       }
     }), others),
     children,
-    required && /* @__PURE__ */ import_react12.default.createElement("span", __spreadProps(__spreadValues({}, getStyles("required")), { "aria-hidden": true }), " *")
+    required && /* @__PURE__ */ import_react13.default.createElement("span", __spreadProps(__spreadValues({}, getStyles("required")), { "aria-hidden": true }), " *")
   );
 });
 InputLabel.displayName = "@raikou/core/InputLabel";
 
 // ../Input/src/InputError/InputError.tsx
-var import_react13 = __toESM(require("react"));
+var import_react14 = __toESM(require("react"));
 var import_core10 = require("@raikou/core");
 var defaultProps6 = {
   size: "sm"
@@ -1150,7 +1153,7 @@ var InputError = (0, import_core10.factory)((_props, ref) => {
   });
   const ctx = useInputWrapperContext();
   const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-  return /* @__PURE__ */ import_react13.default.createElement(
+  return /* @__PURE__ */ import_react14.default.createElement(
     import_core10.Box,
     __spreadValues(__spreadValues({
       component: "p",
@@ -1163,7 +1166,7 @@ var InputError = (0, import_core10.factory)((_props, ref) => {
 InputError.displayName = "@raikou/core/InputError";
 
 // ../Input/src/InputDescription/InputDescription.tsx
-var import_react14 = __toESM(require("react"));
+var import_react15 = __toESM(require("react"));
 var import_core11 = require("@raikou/core");
 var defaultProps7 = {
   size: "sm"
@@ -1216,7 +1219,7 @@ var InputDescription = (0, import_core11.factory)(
       varsResolver: varsResolver5
     });
     const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-    return /* @__PURE__ */ import_react14.default.createElement(
+    return /* @__PURE__ */ import_react15.default.createElement(
       import_core11.Box,
       __spreadValues(__spreadValues({
         component: "p",
@@ -1230,7 +1233,7 @@ var InputDescription = (0, import_core11.factory)(
 InputDescription.displayName = "@raikou/core/InputDescription";
 
 // ../Input/src/InputPlaceholder/InputPlaceholder.tsx
-var import_react15 = __toESM(require("react"));
+var import_react16 = __toESM(require("react"));
 var import_core12 = require("@raikou/core");
 var defaultProps8 = {};
 var InputPlaceholder = (0, import_core12.factory)(
@@ -1268,7 +1271,7 @@ var InputPlaceholder = (0, import_core12.factory)(
       unstyled,
       rootSelector: "placeholder"
     });
-    return /* @__PURE__ */ import_react15.default.createElement(
+    return /* @__PURE__ */ import_react16.default.createElement(
       import_core12.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("placeholder")), {
         component: "span",
@@ -1281,7 +1284,7 @@ var InputPlaceholder = (0, import_core12.factory)(
 InputPlaceholder.displayName = "@raikou/core/InputPlaceholder";
 
 // ../Input/src/InputWrapper/InputWrapper.tsx
-var import_react16 = __toESM(require("react"));
+var import_react17 = __toESM(require("react"));
 var import_hooks4 = require("@raikou/hooks");
 var import_core13 = require("@raikou/core");
 
@@ -1397,7 +1400,7 @@ var InputWrapper = (0, import_core13.factory)((_props, ref) => {
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
-  const _label = label && /* @__PURE__ */ import_react16.default.createElement(
+  const _label = label && /* @__PURE__ */ import_react17.default.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
@@ -1408,7 +1411,7 @@ var InputWrapper = (0, import_core13.factory)((_props, ref) => {
     }, sharedProps), labelProps),
     label
   );
-  const _description = hasDescription && /* @__PURE__ */ import_react16.default.createElement(
+  const _description = hasDescription && /* @__PURE__ */ import_react17.default.createElement(
     InputDescription,
     __spreadProps(__spreadValues(__spreadValues({
       key: "description"
@@ -1418,8 +1421,8 @@ var InputWrapper = (0, import_core13.factory)((_props, ref) => {
     }),
     description
   );
-  const _input = /* @__PURE__ */ import_react16.default.createElement(import_react16.default.Fragment, { key: "input" }, inputContainer(children));
-  const _error = hasError && /* @__PURE__ */ import_react16.default.createElement(
+  const _input = /* @__PURE__ */ import_react17.default.createElement(import_react17.default.Fragment, { key: "input" }, inputContainer(children));
+  const _error = hasError && /* @__PURE__ */ import_react17.default.createElement(
     InputError,
     __spreadProps(__spreadValues(__spreadValues({}, errorProps), sharedProps), {
       size: (errorProps == null ? void 0 : errorProps.size) || sharedProps.size,
@@ -1442,7 +1445,7 @@ var InputWrapper = (0, import_core13.factory)((_props, ref) => {
         return null;
     }
   });
-  return /* @__PURE__ */ import_react16.default.createElement(
+  return /* @__PURE__ */ import_react17.default.createElement(
     InputWrapperProvider,
     {
       value: __spreadValues({
@@ -1451,7 +1454,7 @@ var InputWrapper = (0, import_core13.factory)((_props, ref) => {
         inputId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
-    /* @__PURE__ */ import_react16.default.createElement(
+    /* @__PURE__ */ import_react17.default.createElement(
       import_core13.Box,
       __spreadValues(__spreadValues({
         ref,
@@ -1579,7 +1582,7 @@ var Input = (0, import_core14.polymorphicFactory)((_props, ref) => {
     "aria-describedby": ctx == null ? void 0 : ctx.describedBy,
     id: (ctx == null ? void 0 : ctx.inputId) || id
   } : {};
-  return /* @__PURE__ */ import_react17.default.createElement(
+  return /* @__PURE__ */ import_react18.default.createElement(
     import_core14.Box,
     __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, getStyles("wrapper")), styleProps), wrapperProps), {
       mod: {
@@ -1593,7 +1596,7 @@ var Input = (0, import_core14.polymorphicFactory)((_props, ref) => {
       variant,
       size: size2
     }),
-    leftSection && /* @__PURE__ */ import_react17.default.createElement(
+    leftSection && /* @__PURE__ */ import_react18.default.createElement(
       "div",
       __spreadValues(__spreadProps(__spreadValues({}, leftSectionProps), {
         "data-position": "left"
@@ -1603,7 +1606,7 @@ var Input = (0, import_core14.polymorphicFactory)((_props, ref) => {
       })),
       leftSection
     ),
-    /* @__PURE__ */ import_react17.default.createElement(
+    /* @__PURE__ */ import_react18.default.createElement(
       import_core14.Box,
       __spreadValues(__spreadProps(__spreadValues(__spreadValues({
         component: "input"
@@ -1614,7 +1617,7 @@ var Input = (0, import_core14.polymorphicFactory)((_props, ref) => {
         variant
       }), getStyles("input"))
     ),
-    rightSection && /* @__PURE__ */ import_react17.default.createElement(
+    rightSection && /* @__PURE__ */ import_react18.default.createElement(
       "div",
       __spreadValues(__spreadProps(__spreadValues({}, rightSectionProps), {
         "data-position": "right"
@@ -1726,12 +1729,12 @@ function useInputProps(component, defaultProps20, _props) {
 }
 
 // ../Popover/src/Popover.tsx
-var import_react31 = __toESM(require("react"));
+var import_react32 = __toESM(require("react"));
 var import_hooks12 = require("@raikou/hooks");
 var import_core26 = require("@raikou/core");
 
 // ../Floating/src/use-floating-auto-update.ts
-var import_react20 = require("react");
+var import_react21 = require("react");
 
 // ../../../../node_modules/.pnpm/@floating-ui+core@1.3.1/node_modules/@floating-ui/core/dist/floating-ui.core.mjs
 function getAlignment(placement) {
@@ -3244,7 +3247,7 @@ var computePosition2 = (reference, floating, options) => {
 
 // ../../../../node_modules/.pnpm/@floating-ui+react-dom@1.3.0_react-dom@18.2.0_react@18.2.0/node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.esm.js
 var React17 = __toESM(require("react"));
-var import_react18 = require("react");
+var import_react19 = require("react");
 var ReactDOM = __toESM(require("react-dom"));
 var arrow2 = (options) => {
   const {
@@ -3276,7 +3279,7 @@ var arrow2 = (options) => {
     }
   };
 };
-var index = typeof document !== "undefined" ? import_react18.useLayoutEffect : import_react18.useEffect;
+var index = typeof document !== "undefined" ? import_react19.useLayoutEffect : import_react19.useEffect;
 function deepEqual(a, b) {
   if (a === b) {
     return true;
@@ -3442,9 +3445,9 @@ function useFloating(options) {
 
 // ../../../../node_modules/.pnpm/@floating-ui+react@0.23.1_react-dom@18.2.0_react@18.2.0/node_modules/@floating-ui/react/dist/floating-ui.react.esm.js
 var React18 = __toESM(require("react"));
-var import_react19 = require("react");
+var import_react20 = require("react");
 var import_react_dom3 = require("react-dom");
-var index2 = typeof document !== "undefined" ? import_react19.useLayoutEffect : import_react19.useEffect;
+var index2 = typeof document !== "undefined" ? import_react20.useLayoutEffect : import_react20.useEffect;
 var serverHandoffComplete = false;
 var count = 0;
 var genId = () => "floating-ui-" + count++;
@@ -3586,8 +3589,8 @@ function useFloatingAutoUpdate({
   position,
   positionDependencies
 }) {
-  const [delayedUpdate, setDelayedUpdate] = (0, import_react20.useState)(0);
-  (0, import_react20.useEffect)(() => {
+  const [delayedUpdate, setDelayedUpdate] = (0, import_react21.useState)(0);
+  (0, import_react21.useEffect)(() => {
     if (floating.refs.reference.current && floating.refs.floating.current) {
       return autoUpdate(
         floating.refs.reference.current,
@@ -3622,7 +3625,7 @@ function getFloatingPosition(dir, position) {
 }
 
 // ../Floating/src/FloatingArrow/FloatingArrow.tsx
-var import_react22 = __toESM(require("react"));
+var import_react23 = __toESM(require("react"));
 var import_core19 = require("@raikou/core");
 
 // ../Floating/src/FloatingArrow/get-arrow-position-styles.ts
@@ -3708,7 +3711,7 @@ function getArrowPositionStyles({
 }
 
 // ../Floating/src/FloatingArrow/FloatingArrow.tsx
-var FloatingArrow = (0, import_react22.forwardRef)(
+var FloatingArrow = (0, import_react23.forwardRef)(
   (_a, ref) => {
     var _b = _a, {
       position,
@@ -3735,7 +3738,7 @@ var FloatingArrow = (0, import_react22.forwardRef)(
     if (!visible) {
       return null;
     }
-    return /* @__PURE__ */ import_react22.default.createElement(
+    return /* @__PURE__ */ import_react23.default.createElement(
       "div",
       __spreadProps(__spreadValues({}, others), {
         ref,
@@ -3845,7 +3848,7 @@ var [PopoverContextProvider, usePopoverContext] = createSafeContext(
 );
 
 // ../Popover/src/PopoverTarget/PopoverTarget.tsx
-var import_react24 = require("react");
+var import_react25 = require("react");
 
 // ../../../../node_modules/.pnpm/clsx@2.0.0/node_modules/clsx/dist/clsx.mjs
 function r(e) {
@@ -3895,7 +3898,7 @@ var PopoverTarget = (0, import_core20.factory)((props, ref) => {
     "aria-controls": ctx.getDropdownId(),
     id: ctx.getTargetId()
   } : {};
-  return (0, import_react24.cloneElement)(children, __spreadValues(__spreadProps(__spreadValues(__spreadValues(__spreadValues({}, forwardedProps), accessibleProps), ctx.targetProps), {
+  return (0, import_react25.cloneElement)(children, __spreadValues(__spreadProps(__spreadValues(__spreadValues(__spreadValues({}, forwardedProps), accessibleProps), ctx.targetProps), {
     className: clsx_default(
       ctx.targetProps.className,
       forwardedProps.className,
@@ -3907,24 +3910,24 @@ var PopoverTarget = (0, import_core20.factory)((props, ref) => {
 PopoverTarget.displayName = "@raikou/core/PopoverTarget";
 
 // ../Popover/src/PopoverDropdown/PopoverDropdown.tsx
-var import_react30 = __toESM(require("react"));
+var import_react31 = __toESM(require("react"));
 var import_hooks11 = require("@raikou/hooks");
 var import_core25 = require("@raikou/core");
 
 // ../Portal/src/Portal.tsx
-var import_react25 = __toESM(require("react"));
+var import_react26 = __toESM(require("react"));
 var import_react_dom4 = require("react-dom");
 var import_hooks8 = require("@raikou/hooks");
 var import_core21 = require("@raikou/core");
 var defaultProps12 = {};
-var Portal = (0, import_react25.forwardRef)((props, ref) => {
+var Portal = (0, import_react26.forwardRef)((props, ref) => {
   const _a = (0, import_core21.useProps)(
     "Portal",
     defaultProps12,
     props
   ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
-  const [mounted, setMounted] = (0, import_react25.useState)(false);
-  const nodeRef = (0, import_react25.useRef)(null);
+  const [mounted, setMounted] = (0, import_react26.useState)(false);
+  const nodeRef = (0, import_react26.useRef)(null);
   (0, import_hooks8.useIsomorphicEffect)(() => {
     setMounted(true);
     nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
@@ -3941,14 +3944,14 @@ var Portal = (0, import_react25.forwardRef)((props, ref) => {
     return null;
   }
   return (0, import_react_dom4.createPortal)(
-    /* @__PURE__ */ import_react25.default.createElement("div", __spreadValues({ className, ref }, others), children),
+    /* @__PURE__ */ import_react26.default.createElement("div", __spreadValues({ className, ref }, others), children),
     nodeRef.current
   );
 });
 Portal.displayName = "@raikou/core/Portal";
 
 // ../Portal/src/OptionalPortal.tsx
-var import_react26 = __toESM(require("react"));
+var import_react27 = __toESM(require("react"));
 function OptionalPortal(_a) {
   var _b = _a, {
     withinPortal = true,
@@ -3958,9 +3961,9 @@ function OptionalPortal(_a) {
     "children"
   ]);
   if (withinPortal) {
-    return /* @__PURE__ */ import_react26.default.createElement(Portal, __spreadValues({}, others), children);
+    return /* @__PURE__ */ import_react27.default.createElement(Portal, __spreadValues({}, others), children);
   }
-  return /* @__PURE__ */ import_react26.default.createElement(import_react26.default.Fragment, null, children);
+  return /* @__PURE__ */ import_react27.default.createElement(import_react27.default.Fragment, null, children);
 }
 OptionalPortal.displayName = "@raikou/core/OptionalPortal";
 
@@ -4067,7 +4070,7 @@ var transitions = {
 };
 
 // ../Transition/src/Transition.tsx
-var import_react28 = __toESM(require("react"));
+var import_react29 = __toESM(require("react"));
 
 // ../Transition/src/get-transition-styles/get-transition-styles.ts
 var transitionStatuses = {
@@ -4102,7 +4105,7 @@ function getTransitionStyles({
 }
 
 // ../Transition/src/use-transition.ts
-var import_react27 = require("react");
+var import_react28 = require("react");
 var import_hooks9 = require("@raikou/hooks");
 var import_core23 = require("@raikou/core");
 function useTransition({
@@ -4118,13 +4121,13 @@ function useTransition({
   const theme = (0, import_core23.useRaikouTheme)();
   const shouldReduceMotion = (0, import_hooks9.useReducedMotion)();
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
-  const [transitionDuration, setTransitionDuration] = (0, import_react27.useState)(
+  const [transitionDuration, setTransitionDuration] = (0, import_react28.useState)(
     reduceMotion ? 0 : duration
   );
-  const [transitionStatus, setStatus] = (0, import_react27.useState)(
+  const [transitionStatus, setStatus] = (0, import_react28.useState)(
     mounted ? "entered" : "exited"
   );
-  const timeoutRef = (0, import_react27.useRef)(-1);
+  const timeoutRef = (0, import_react28.useRef)(-1);
   const handleStateChange = (shouldMount) => {
     const preHandler = shouldMount ? onEnter : onExit;
     const handler = shouldMount ? onEntered : onExited;
@@ -4151,7 +4154,7 @@ function useTransition({
   (0, import_hooks9.useDidUpdate)(() => {
     handleStateChange(mounted);
   }, [mounted]);
-  (0, import_react27.useEffect)(() => () => window.clearTimeout(timeoutRef.current), []);
+  (0, import_react28.useEffect)(() => () => window.clearTimeout(timeoutRef.current), []);
   return {
     transitionDuration,
     transitionStatus,
@@ -4162,7 +4165,7 @@ function useTransition({
 // ../Transition/src/Transition.tsx
 function Transition({
   keepMounted,
-  transition,
+  transition = "fade",
   duration = 250,
   exitDuration = duration,
   mounted,
@@ -4184,9 +4187,9 @@ function Transition({
     onExited
   });
   if (transitionDuration === 0) {
-    return mounted ? /* @__PURE__ */ import_react28.default.createElement(import_react28.default.Fragment, null, children({})) : keepMounted ? children({ display: "none" }) : null;
+    return mounted ? /* @__PURE__ */ import_react29.default.createElement(import_react29.default.Fragment, null, children({})) : keepMounted ? children({ display: "none" }) : null;
   }
-  return transitionStatus === "exited" ? keepMounted ? children({ display: "none" }) : null : /* @__PURE__ */ import_react28.default.createElement(import_react28.default.Fragment, null, children(
+  return transitionStatus === "exited" ? keepMounted ? children({ display: "none" }) : null : /* @__PURE__ */ import_react29.default.createElement(import_react29.default.Fragment, null, children(
     getTransitionStyles({
       transition,
       duration: transitionDuration,
@@ -4198,7 +4201,7 @@ function Transition({
 Transition.displayName = "@raikou/core/Transition";
 
 // ../FocusTrap/src/FocusTrap.tsx
-var import_react29 = require("react");
+var import_react30 = require("react");
 var import_hooks10 = require("@raikou/hooks");
 var import_core24 = require("@raikou/core");
 function FocusTrap({
@@ -4211,7 +4214,7 @@ function FocusTrap({
   if (!(0, import_core24.isElement)(children)) {
     return children;
   }
-  return (0, import_react29.cloneElement)(children, { [refProp]: ref });
+  return (0, import_react30.cloneElement)(children, { [refProp]: ref });
 }
 FocusTrap.displayName = "@raikou/core/FocusTrap";
 
@@ -4257,7 +4260,7 @@ var PopoverDropdown = (0, import_core25.factory)(
     if (ctx.disabled) {
       return null;
     }
-    return /* @__PURE__ */ import_react30.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, ctx.portalProps), { withinPortal: ctx.withinPortal }), /* @__PURE__ */ import_react30.default.createElement(
+    return /* @__PURE__ */ import_react31.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, ctx.portalProps), { withinPortal: ctx.withinPortal }), /* @__PURE__ */ import_react31.default.createElement(
       Transition,
       __spreadProps(__spreadValues({
         mounted: ctx.opened
@@ -4269,7 +4272,7 @@ var PopoverDropdown = (0, import_core25.factory)(
       }),
       (transitionStyles) => {
         var _a2, _b2;
-        return /* @__PURE__ */ import_react30.default.createElement(FocusTrap, { active: ctx.trapFocus }, /* @__PURE__ */ import_react30.default.createElement(
+        return /* @__PURE__ */ import_react31.default.createElement(FocusTrap, { active: ctx.trapFocus }, /* @__PURE__ */ import_react31.default.createElement(
           import_core25.Box,
           __spreadValues(__spreadProps(__spreadValues(__spreadValues({}, accessibleProps), others), {
             variant,
@@ -4296,7 +4299,7 @@ var PopoverDropdown = (0, import_core25.factory)(
             ]
           })),
           children,
-          /* @__PURE__ */ import_react30.default.createElement(
+          /* @__PURE__ */ import_react31.default.createElement(
             FloatingArrow,
             __spreadValues({
               ref: ctx.arrowRef,
@@ -4447,9 +4450,9 @@ function Popover(_props) {
     vars,
     varsResolver: varsResolver8
   });
-  const arrowRef = (0, import_react31.useRef)(null);
-  const [targetNode, setTargetNode] = (0, import_react31.useState)(null);
-  const [dropdownNode, setDropdownNode] = (0, import_react31.useState)(null);
+  const arrowRef = (0, import_react32.useRef)(null);
+  const [targetNode, setTargetNode] = (0, import_react32.useState)(null);
+  const [dropdownNode, setDropdownNode] = (0, import_react32.useState)(null);
   const { dir } = (0, import_core26.useDirection)();
   const uid = (0, import_hooks12.useId)(id);
   const popover = usePopover({
@@ -4472,21 +4475,21 @@ function Popover(_props) {
     clickOutsideEvents,
     [targetNode, dropdownNode]
   );
-  const reference = (0, import_react31.useCallback)(
+  const reference = (0, import_react32.useCallback)(
     (node) => {
       setTargetNode(node);
       popover.floating.reference(node);
     },
     [popover.floating.reference]
   );
-  const floating = (0, import_react31.useCallback)(
+  const floating = (0, import_react32.useCallback)(
     (node) => {
       setDropdownNode(node);
       popover.floating.floating(node);
     },
     [popover.floating.floating]
   );
-  return /* @__PURE__ */ import_react31.default.createElement(
+  return /* @__PURE__ */ import_react32.default.createElement(
     PopoverContextProvider,
     {
       value: {
@@ -4540,10 +4543,10 @@ Popover.displayName = "@raikou/core/Popover";
 Popover.extend = (input) => input;
 
 // src/EyeDropperIcon.tsx
-var import_react32 = __toESM(require("react"));
+var import_react33 = __toESM(require("react"));
 function EyeDropperIcon(_a) {
   var _b = _a, { style } = _b, others = __objRest(_b, ["style"]);
-  return /* @__PURE__ */ import_react32.default.createElement(
+  return /* @__PURE__ */ import_react33.default.createElement(
     "svg",
     __spreadValues({
       xmlns: "http://www.w3.org/2000/svg",
@@ -4558,18 +4561,18 @@ function EyeDropperIcon(_a) {
       strokeLinecap: "round",
       strokeLinejoin: "round"
     }, others),
-    /* @__PURE__ */ import_react32.default.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }),
-    /* @__PURE__ */ import_react32.default.createElement("path", { d: "M11 7l6 6" }),
-    /* @__PURE__ */ import_react32.default.createElement("path", { d: "M4 16l11.7 -11.7a1 1 0 0 1 1.4 0l2.6 2.6a1 1 0 0 1 0 1.4l-11.7 11.7h-4v-4z" })
+    /* @__PURE__ */ import_react33.default.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }),
+    /* @__PURE__ */ import_react33.default.createElement("path", { d: "M11 7l6 6" }),
+    /* @__PURE__ */ import_react33.default.createElement("path", { d: "M4 16l11.7 -11.7a1 1 0 0 1 1.4 0l2.6 2.6a1 1 0 0 1 0 1.4l-11.7 11.7h-4v-4z" })
   );
 }
 
 // ../ActionIcon/src/ActionIcon.tsx
-var import_react39 = __toESM(require("react"));
+var import_react40 = __toESM(require("react"));
 var import_core33 = require("@raikou/core");
 
 // ../UnstyledButton/src/UnstyledButton.tsx
-var import_react33 = __toESM(require("react"));
+var import_react34 = __toESM(require("react"));
 var import_core27 = require("@raikou/core");
 var defaultProps15 = {
   __staticSelector: "UnstyledButton"
@@ -4606,7 +4609,7 @@ var UnstyledButton = (0, import_core27.polymorphicFactory)(
       styles,
       unstyled
     });
-    return /* @__PURE__ */ import_react33.default.createElement(
+    return /* @__PURE__ */ import_react34.default.createElement(
       import_core27.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { focusable: true })), {
         component,
@@ -4619,16 +4622,16 @@ var UnstyledButton = (0, import_core27.polymorphicFactory)(
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
 // ../Loader/src/Loader.tsx
-var import_react37 = __toESM(require("react"));
+var import_react38 = __toESM(require("react"));
 var import_core31 = require("@raikou/core");
 
 // ../Loader/src/loaders/Bars.tsx
-var import_react34 = __toESM(require("react"));
+var import_react35 = __toESM(require("react"));
 var import_core28 = require("@raikou/core");
-var Bars = (0, import_react34.forwardRef)(
+var Bars = (0, import_react35.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react34.default.createElement(
+    return /* @__PURE__ */ import_react35.default.createElement(
       import_core28.Box,
       __spreadProps(__spreadValues({
         component: "span",
@@ -4636,20 +4639,20 @@ var Bars = (0, import_react34.forwardRef)(
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react34.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react34.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react34.default.createElement("span", { className: "bar" })
+      /* @__PURE__ */ import_react35.default.createElement("span", { className: "bar" }),
+      /* @__PURE__ */ import_react35.default.createElement("span", { className: "bar" }),
+      /* @__PURE__ */ import_react35.default.createElement("span", { className: "bar" })
     );
   }
 );
 
 // ../Loader/src/loaders/Oval.tsx
-var import_react35 = __toESM(require("react"));
+var import_react36 = __toESM(require("react"));
 var import_core29 = require("@raikou/core");
-var Oval = (0, import_react35.forwardRef)(
+var Oval = (0, import_react36.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react35.default.createElement(
+    return /* @__PURE__ */ import_react36.default.createElement(
       import_core29.Box,
       __spreadProps(__spreadValues({
         component: "span",
@@ -4662,12 +4665,12 @@ var Oval = (0, import_react35.forwardRef)(
 );
 
 // ../Loader/src/loaders/Dots.tsx
-var import_react36 = __toESM(require("react"));
+var import_react37 = __toESM(require("react"));
 var import_core30 = require("@raikou/core");
-var Dots = (0, import_react36.forwardRef)(
+var Dots = (0, import_react37.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react36.default.createElement(
+    return /* @__PURE__ */ import_react37.default.createElement(
       import_core30.Box,
       __spreadProps(__spreadValues({
         component: "span",
@@ -4675,15 +4678,15 @@ var Dots = (0, import_react36.forwardRef)(
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react36.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react36.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react36.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react36.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react36.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react36.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react36.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react36.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react36.default.createElement("span", { className: "dot" })
+      /* @__PURE__ */ import_react37.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react37.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react37.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react37.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react37.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react37.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react37.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react37.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react37.default.createElement("span", { className: "dot" })
     );
   }
 );
@@ -4748,7 +4751,7 @@ var Loader = (0, import_core31.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver9
   });
-  return /* @__PURE__ */ import_react37.default.createElement(
+  return /* @__PURE__ */ import_react38.default.createElement(
     import_core31.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
@@ -4761,7 +4764,7 @@ var Loader = (0, import_core31.factory)((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-var import_react38 = __toESM(require("react"));
+var import_react39 = __toESM(require("react"));
 var import_core32 = require("@raikou/core");
 var defaultProps17 = {
   orientation: "horizontal",
@@ -4811,7 +4814,7 @@ var ActionIconGroup = (0, import_core32.factory)(
       varsResolver: varsResolver10,
       rootSelector: "group"
     });
-    return /* @__PURE__ */ import_react38.default.createElement(
+    return /* @__PURE__ */ import_react39.default.createElement(
       import_core32.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
         ref,
@@ -4904,7 +4907,7 @@ var ActionIcon = (0, import_core33.polymorphicFactory)(
       vars,
       varsResolver: varsResolver11
     });
-    return /* @__PURE__ */ import_react39.default.createElement(
+    return /* @__PURE__ */ import_react40.default.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues(__spreadValues({}, getStyles("root", {
         active: !disabled && !loading && !dataDisabled
@@ -4916,7 +4919,7 @@ var ActionIcon = (0, import_core33.polymorphicFactory)(
         ref,
         mod: { loading, disabled: disabled || dataDisabled }
       }),
-      loading ? /* @__PURE__ */ import_react39.default.createElement(
+      loading ? /* @__PURE__ */ import_react40.default.createElement(
         Loader,
         __spreadValues(__spreadProps(__spreadValues({}, getStyles("loader")), {
           color: "var(--ai-color)",
@@ -5030,8 +5033,8 @@ var ColorInput = (0, import_core34.factory)((_props, ref) => {
     styles,
     props
   });
-  const [dropdownOpened, setDropdownOpened] = (0, import_react40.useState)(false);
-  const [lastValidValue, setLastValidValue] = (0, import_react40.useState)("");
+  const [dropdownOpened, setDropdownOpened] = (0, import_react41.useState)(false);
+  const [lastValidValue, setLastValidValue] = (0, import_react41.useState)("");
   const [_value, setValue] = (0, import_hooks13.useUncontrolled)({
     value,
     defaultValue,
@@ -5039,7 +5042,7 @@ var ColorInput = (0, import_core34.factory)((_props, ref) => {
     onChange
   });
   const { supported: eyeDropperSupported, open: openEyeDropper } = (0, import_hooks13.useEyeDropper)();
-  const eyeDropper = /* @__PURE__ */ import_react40.default.createElement(
+  const eyeDropper = /* @__PURE__ */ import_react41.default.createElement(
     ActionIcon,
     __spreadProps(__spreadValues(__spreadValues({}, eyeDropperButtonProps), getStyles("eyeDropperButton", {
       className: eyeDropperButtonProps == null ? void 0 : eyeDropperButtonProps.className,
@@ -5057,7 +5060,7 @@ var ColorInput = (0, import_core34.factory)((_props, ref) => {
       }).catch(() => {
       })
     }),
-    eyeDropperIcon || /* @__PURE__ */ import_react40.default.createElement(EyeDropperIcon, __spreadValues({}, getStyles("eyeDropperIcon")))
+    eyeDropperIcon || /* @__PURE__ */ import_react41.default.createElement(EyeDropperIcon, __spreadValues({}, getStyles("eyeDropperIcon")))
   );
   const handleInputFocus = (event) => {
     onFocus == null ? void 0 : onFocus(event);
@@ -5072,7 +5075,7 @@ var ColorInput = (0, import_core34.factory)((_props, ref) => {
     onClick == null ? void 0 : onClick(event);
     setDropdownOpened(true);
   };
-  (0, import_react40.useEffect)(() => {
+  (0, import_react41.useEffect)(() => {
     if (isColorValid(_value) || _value.trim() === "") {
       setLastValidValue(_value);
     }
@@ -5082,14 +5085,14 @@ var ColorInput = (0, import_core34.factory)((_props, ref) => {
       setValue(convertHsvaTo(format, parseColor(_value)));
     }
   }, [format]);
-  return /* @__PURE__ */ import_react40.default.createElement(
+  return /* @__PURE__ */ import_react41.default.createElement(
     Input.Wrapper,
     __spreadProps(__spreadValues({}, wrapperProps), {
       classNames: resolvedClassNames,
       styles: resolvedStyles,
       __staticSelector: "ColorInput"
     }),
-    /* @__PURE__ */ import_react40.default.createElement(
+    /* @__PURE__ */ import_react41.default.createElement(
       Popover,
       __spreadProps(__spreadValues({
         __staticSelector: "ColorInput",
@@ -5103,7 +5106,7 @@ var ColorInput = (0, import_core34.factory)((_props, ref) => {
         withRoles: false,
         disabled: readOnly || withPicker === false && (!Array.isArray(swatches) || swatches.length === 0)
       }),
-      /* @__PURE__ */ import_react40.default.createElement(Popover.Target, null, /* @__PURE__ */ import_react40.default.createElement(
+      /* @__PURE__ */ import_react41.default.createElement(Popover.Target, null, /* @__PURE__ */ import_react41.default.createElement(
         Input,
         __spreadProps(__spreadValues(__spreadValues({
           autoComplete: "off"
@@ -5125,7 +5128,7 @@ var ColorInput = (0, import_core34.factory)((_props, ref) => {
               onChangeEnd == null ? void 0 : onChangeEnd(convertHsvaTo(format, parseColor(inputValue)));
             }
           },
-          leftSection: leftSection || (withPreview ? /* @__PURE__ */ import_react40.default.createElement(
+          leftSection: leftSection || (withPreview ? /* @__PURE__ */ import_react41.default.createElement(
             ColorSwatch,
             __spreadValues({
               color: isColorValid(_value) ? _value : "#fff",
@@ -5138,13 +5141,13 @@ var ColorInput = (0, import_core34.factory)((_props, ref) => {
           rightSection: rightSection || (withEyeDropper && !disabled && !readOnly && eyeDropperSupported ? eyeDropper : null)
         })
       )),
-      /* @__PURE__ */ import_react40.default.createElement(
+      /* @__PURE__ */ import_react41.default.createElement(
         Popover.Dropdown,
         {
           onMouseDown: (event) => event.preventDefault(),
           p: inputProps.size
         },
-        /* @__PURE__ */ import_react40.default.createElement(
+        /* @__PURE__ */ import_react41.default.createElement(
           ColorPicker,
           {
             __staticSelector: "ColorInput",

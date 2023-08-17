@@ -257,7 +257,7 @@ interface BaseProps extends __BaseInputProps, BoxProps, StylesApiProps<{
     __stylesApiProps?: Record<string, any>;
     id?: string;
 }
-declare function useInputProps<T extends BaseProps, U extends Partial<T>>(component: string, defaultProps: U, _props: T): Omit<T & { [Key in Extract<keyof T, never>]-?: {}[Key] | NonNullable<T[Key]>; }, "label" | "style" | "required" | "className" | "id" | "__staticSelector" | "size" | "unstyled" | "variant" | "classNames" | "styles" | "vars" | "description" | "error" | "__stylesApiProps" | "withAsterisk" | "labelProps" | "descriptionProps" | "errorProps" | "inputContainer" | "inputWrapperOrder" | "wrapperProps"> & {
+declare function useInputProps<T extends BaseProps, U extends Partial<T>>(component: string, defaultProps: U, _props: T): Omit<T & { [Key in Extract<keyof T, never>]-?: {}[Key] | NonNullable<T[Key]>; }, "label" | "style" | "error" | "required" | "className" | "id" | "__staticSelector" | "size" | "unstyled" | "variant" | "classNames" | "styles" | "vars" | "description" | "__stylesApiProps" | "withAsterisk" | "labelProps" | "descriptionProps" | "errorProps" | "inputContainer" | "inputWrapperOrder" | "wrapperProps"> & {
     classNames: Partial<Record<string, string>> | ((theme: _raikou_core.RaikouTheme, props: any, ctx: unknown) => Partial<Record<string, string>>) | undefined;
     styles: Partial<Record<string, react.CSSProperties>> | ((theme: _raikou_core.RaikouTheme, props: any, ctx: unknown) => Partial<Record<string, react.CSSProperties>>) | undefined;
     unstyled: boolean | undefined;
@@ -326,7 +326,7 @@ declare function useInputProps<T extends BaseProps, U extends Partial<T>>(compon
         'aria-describedby'?: string | undefined;
         'aria-details'?: string | undefined;
         'aria-disabled'?: (boolean | "true" | "false") | undefined;
-        'aria-dropeffect'?: "link" | "none" | "copy" | "execute" | "move" | "popup" | undefined;
+        'aria-dropeffect'?: "link" | "copy" | "none" | "execute" | "move" | "popup" | undefined;
         'aria-errormessage'?: string | undefined;
         'aria-expanded'?: (boolean | "true" | "false") | undefined;
         'aria-flowto'?: string | undefined;
@@ -540,7 +540,7 @@ declare function useInputProps<T extends BaseProps, U extends Partial<T>>(compon
         styles: Partial<Record<string, react.CSSProperties>> | ((theme: _raikou_core.RaikouTheme, props: any, ctx: unknown) => Partial<Record<string, react.CSSProperties>>) | undefined;
         size: _raikou_core.RaikouSize | (string & {}) | undefined;
         inputContainer: ((children: react.ReactNode) => react.ReactNode) | undefined;
-        inputWrapperOrder: ("input" | "label" | "description" | "error")[] | undefined;
+        inputWrapperOrder: ("input" | "label" | "error" | "description")[] | undefined;
         withAsterisk: boolean | undefined;
         variant: string | undefined;
     } & BoxProps;

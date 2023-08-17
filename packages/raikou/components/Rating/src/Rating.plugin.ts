@@ -38,11 +38,11 @@ module.exports = function ({ addComponents, theme }: any) {
       display: "block",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_star-color": "var(--raikou-color-gray-3)",
+        "--_star-color": "var(--raikou-rating-star-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_star-color": "var(--raikou-color-dark-4)",
+        "--_star-color": "var(--raikou-rating-star-color)",
       },
 
       "[data-raikou-color-scheme] &[data-filled]": {

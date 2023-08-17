@@ -1,6 +1,4 @@
 var __defProp = Object.defineProperty;
-var __defProps = Object.defineProperties;
-var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
@@ -16,7 +14,6 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 var __objRest = (source, exclude) => {
   var target = {};
   for (var prop in source)
@@ -30,6 +27,17 @@ var __objRest = (source, exclude) => {
   return target;
 };
 
+// src/flex-props.ts
+var FLEX_STYLE_PROPS_DATA = {
+  gap: { type: "spacing", property: "gap" },
+  rowGap: { type: "spacing", property: "rowGap" },
+  columnGap: { type: "spacing", property: "columnGap" },
+  align: { type: "identity", property: "alignItems" },
+  justify: { type: "identity", property: "justifyContent" },
+  wrap: { type: "identity", property: "flexWrap" },
+  direction: { type: "identity", property: "flexDirection" }
+};
+
 // src/Flex.tsx
 import React from "react";
 import {
@@ -37,27 +45,13 @@ import {
   factory,
   useProps,
   useStyles,
-  getSpacing,
-  createVarsResolver
+  InlineStyles,
+  useRandomClassName,
+  parseStyleProps,
+  useRaikouTheme,
+  filterProps
 } from "@raikou/core";
-var defaultProps = {
-  gap: "md",
-  align: "flex-start",
-  justify: "flex-start",
-  direction: "row",
-  wrap: "wrap"
-};
-var varsResolver = createVarsResolver(
-  (_, { gap, align, justify, wrap, direction }) => ({
-    root: {
-      "--flex-gap": getSpacing(gap),
-      "--flex-align": align,
-      "--flex-justify": justify,
-      "--flex-wrap": wrap,
-      "--flex-direction": direction
-    }
-  })
-);
+var defaultProps = {};
 var Flex = factory((_props, ref) => {
   const props = useProps("Flex", defaultProps, _props);
   const _a = props, {
@@ -67,12 +61,13 @@ var Flex = factory((_props, ref) => {
     styles,
     unstyled,
     vars,
+    gap,
+    rowGap,
+    columnGap,
     align,
     justify,
-    gap,
-    direction,
     wrap,
-    variant
+    direction
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -80,28 +75,54 @@ var Flex = factory((_props, ref) => {
     "styles",
     "unstyled",
     "vars",
+    "gap",
+    "rowGap",
+    "columnGap",
     "align",
     "justify",
-    "gap",
-    "direction",
     "wrap",
-    "variant"
+    "direction"
   ]);
   const getStyles = useStyles({
     name: "Flex",
+    classes: {
+      root: "flex-root"
+    },
     props,
-    classes: { root: "flex-root" },
     className,
     style,
     classNames,
     styles,
     unstyled,
-    vars,
-    varsResolver
+    vars
   });
-  return /* @__PURE__ */ React.createElement(Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { variant }), others));
+  const theme = useRaikouTheme();
+  const responsiveClassName = useRandomClassName();
+  const parsedStyleProps = parseStyleProps({
+    // @ts-ignore
+    styleProps: { gap, rowGap, columnGap, align, justify, wrap, direction },
+    theme,
+    data: FLEX_STYLE_PROPS_DATA
+  });
+  return /* @__PURE__ */ React.createElement(React.Fragment, null, parsedStyleProps.hasResponsiveStyles && /* @__PURE__ */ React.createElement(
+    InlineStyles,
+    {
+      selector: `.${responsiveClassName}`,
+      styles: parsedStyleProps.styles,
+      media: parsedStyleProps.media
+    }
+  ), /* @__PURE__ */ React.createElement(
+    Box,
+    __spreadValues(__spreadValues({
+      ref
+    }, getStyles("root", {
+      className: responsiveClassName,
+      style: filterProps(parsedStyleProps.inlineStyles)
+    })), others)
+  ));
 });
 Flex.displayName = "@raikou/core/Flex";
 export {
+  FLEX_STYLE_PROPS_DATA,
   Flex
 };

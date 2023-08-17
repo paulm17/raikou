@@ -1,19 +1,19 @@
-import React from 'react';
+import React from "react";
 import {
   IconMoodSmile,
   IconCheck,
   IconX,
   IconExclamationMark,
   IconBookmark,
-} from '@tabler/icons-react';
-import { Notification } from './Notification';
+} from "@tabler/icons-react";
+import { Notification } from "./Notification";
 
-export default { title: 'Notification' };
+export default { title: "Notification" };
 
 export function Usage() {
   return (
     <div style={{ padding: 60 }}>
-      <div style={{ maxWidth: 400, marginLeft: 'auto', marginRight: 'auto' }}>
+      <div style={{ maxWidth: 400, marginLeft: "auto", marginRight: "auto" }}>
         <Notification
           loading
           withCloseButton={false}
@@ -37,7 +37,8 @@ export function Usage() {
           mt="xl"
           title="Too large title Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus, facilis eveniet. Voluptas quo voluptate laudantium in nesciunt modi accusamus ipsam, iusto pariatur excepturi et porro minima expedita vitae mollitia quae!"
         >
-          Title seems to be too large, you better put this content in description
+          Title seems to be too large, you better put this content in
+          description
         </Notification>
 
         <Notification
@@ -118,15 +119,20 @@ export function Usage() {
         </Notification>
 
         <Notification
-          color="grape"
+          color="purple"
           onClose={() => {}}
           mt="xl"
-          title="Grape notification without icon"
+          title="Purple notification without icon"
         >
           This action will not work very soon
         </Notification>
 
-        <Notification color="cyan" onClose={() => {}} mt="xl" title="Primary notification">
+        <Notification
+          color="cyan"
+          onClose={() => {}}
+          mt="xl"
+          title="Primary notification"
+        >
           You have achieved something important
         </Notification>
 
@@ -136,9 +142,9 @@ export function Usage() {
           mt="xl"
           title="Notification with a lot of content"
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nam cumque natus ea aliquid
-          quo illo enim totam sunt voluptatum, dolorum blanditiis sint, porro aut asperiores ut
-          maxime doloremque. Cumque.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nam
+          cumque natus ea aliquid quo illo enim totam sunt voluptatum, dolorum
+          blanditiis sint, porro aut asperiores ut maxime doloremque. Cumque.
         </Notification>
 
         <Notification
@@ -148,9 +154,9 @@ export function Usage() {
           title="Icon notification with a lot of content"
           icon={<IconMoodSmile size={18} />}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nam cumque natus ea aliquid
-          quo illo enim totam sunt voluptatum, dolorum blanditiis sint, porro aut asperiores ut
-          maxime doloremque. Cumque.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nam
+          cumque natus ea aliquid quo illo enim totam sunt voluptatum, dolorum
+          blanditiis sint, porro aut asperiores ut maxime doloremque. Cumque.
         </Notification>
 
         <Notification
@@ -182,7 +188,12 @@ export function Usage() {
           NotificationWithoutTitleAndTheDescriptionSoLargeThatItShouldUseOverflowEllipsis
         </Notification>
 
-        <Notification color="pink" onClose={() => {}} mt="xl" icon={<IconCheck size={18} />}>
+        <Notification
+          color="pink"
+          onClose={() => {}}
+          mt="xl"
+          icon={<IconCheck size={18} />}
+        >
           Notification without title but with icon
         </Notification>
 

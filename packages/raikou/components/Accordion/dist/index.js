@@ -69,7 +69,7 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Accordion.tsx
-var import_react11 = __toESM(require("react"));
+var import_react12 = __toESM(require("react"));
 var import_hooks3 = require("@raikou/hooks");
 var import_core7 = require("@raikou/core");
 
@@ -110,7 +110,7 @@ function AccordionChevron(_a) {
 AccordionChevron.displayName = "@raikou/core/AccordionChevron";
 
 // src/AccordionItem/AccordionItem.tsx
-var import_react5 = __toESM(require("react"));
+var import_react6 = __toESM(require("react"));
 var import_core2 = require("@raikou/core");
 
 // ../_utils/create-safe-context/create-safe-context.tsx
@@ -133,6 +133,9 @@ var import_react3 = __toESM(require("react"));
 
 // ../_utils/use-hovered/use-hovered.ts
 var import_react4 = require("react");
+
+// ../_utils/create-use-external-events/create-use-external-events.ts
+var import_react5 = require("react");
 
 // src/Accordion.context.ts
 var [AccordionProvider, useAccordionContext] = createSafeContext(
@@ -165,7 +168,7 @@ var AccordionItem = (0, import_core2.factory)((props, ref) => {
     "value"
   ]);
   const ctx = useAccordionContext();
-  return /* @__PURE__ */ import_react5.default.createElement(AccordionItemProvider, { value: { value } }, /* @__PURE__ */ import_react5.default.createElement(
+  return /* @__PURE__ */ import_react6.default.createElement(AccordionItemProvider, { value: { value } }, /* @__PURE__ */ import_react6.default.createElement(
     import_core2.Box,
     __spreadValues(__spreadValues({
       ref,
@@ -182,16 +185,16 @@ var AccordionItem = (0, import_core2.factory)((props, ref) => {
 AccordionItem.displayName = "@raikou/core/AccordionItem";
 
 // src/AccordionPanel/AccordionPanel.tsx
-var import_react8 = __toESM(require("react"));
+var import_react9 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
 
 // ../Collapse/src/Collapse.tsx
-var import_react7 = __toESM(require("react"));
+var import_react8 = __toESM(require("react"));
 var import_hooks2 = require("@raikou/hooks");
 var import_core3 = require("@raikou/core");
 
 // ../Collapse/src/use-collapse.ts
-var import_react6 = require("react");
+var import_react7 = require("react");
 var import_react_dom = require("react-dom");
 var import_hooks = require("@raikou/hooks");
 function getAutoHeightDuration(height) {
@@ -212,14 +215,14 @@ function useCollapse({
   },
   opened
 }) {
-  const el = (0, import_react6.useRef)(null);
+  const el = (0, import_react7.useRef)(null);
   const collapsedHeight = 0;
   const collapsedStyles = {
     display: "none",
     height: 0,
     overflow: "hidden"
   };
-  const [styles, setStylesRaw] = (0, import_react6.useState)(
+  const [styles, setStylesRaw] = (0, import_react7.useState)(
     opened ? {} : collapsedStyles
   );
   const setStyles = (newStyles) => {
@@ -305,7 +308,7 @@ var defaultProps2 = {
   transitionTimingFunction: "ease",
   animateOpacity: true
 };
-var Collapse = (0, import_react7.forwardRef)(
+var Collapse = (0, import_react8.forwardRef)(
   (props, ref) => {
     const _a = (0, import_core3.useProps)("Collapse", defaultProps2, props), {
       children,
@@ -335,15 +338,15 @@ var Collapse = (0, import_react7.forwardRef)(
       onTransitionEnd
     });
     if (duration === 0) {
-      return opened ? /* @__PURE__ */ import_react7.default.createElement(import_core3.Box, __spreadValues({}, others), children) : null;
+      return opened ? /* @__PURE__ */ import_react8.default.createElement(import_core3.Box, __spreadValues({}, others), children) : null;
     }
-    return /* @__PURE__ */ import_react7.default.createElement(
+    return /* @__PURE__ */ import_react8.default.createElement(
       import_core3.Box,
       __spreadValues({}, getCollapseProps(__spreadValues({
         style: (0, import_core3.getStyleObject)(style, theme),
         ref
       }, others))),
-      /* @__PURE__ */ import_react7.default.createElement(
+      /* @__PURE__ */ import_react8.default.createElement(
         "div",
         {
           style: {
@@ -380,7 +383,7 @@ var AccordionPanel = (0, import_core4.factory)((props, ref) => {
   ]);
   const { value } = useAccordionItemContext();
   const ctx = useAccordionContext();
-  return /* @__PURE__ */ import_react8.default.createElement(
+  return /* @__PURE__ */ import_react9.default.createElement(
     Collapse,
     __spreadProps(__spreadValues(__spreadValues({
       ref
@@ -391,17 +394,17 @@ var AccordionPanel = (0, import_core4.factory)((props, ref) => {
       id: ctx.getRegionId(value),
       "aria-labelledby": ctx.getControlId(value)
     }),
-    /* @__PURE__ */ import_react8.default.createElement("div", __spreadValues({}, ctx.getStyles("content", { classNames, styles })), children)
+    /* @__PURE__ */ import_react9.default.createElement("div", __spreadValues({}, ctx.getStyles("content", { classNames, styles })), children)
   );
 });
 AccordionPanel.displayName = "@raikou/core/AccordionPanel";
 
 // src/AccordionControl/AccordionControl.tsx
-var import_react10 = __toESM(require("react"));
+var import_react11 = __toESM(require("react"));
 var import_core6 = require("@raikou/core");
 
 // ../UnstyledButton/src/UnstyledButton.tsx
-var import_react9 = __toESM(require("react"));
+var import_react10 = __toESM(require("react"));
 var import_core5 = require("@raikou/core");
 var defaultProps4 = {
   __staticSelector: "UnstyledButton"
@@ -438,7 +441,7 @@ var UnstyledButton = (0, import_core5.polymorphicFactory)(
       styles,
       unstyled
     });
-    return /* @__PURE__ */ import_react9.default.createElement(
+    return /* @__PURE__ */ import_react10.default.createElement(
       import_core5.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { focusable: true })), {
         component,
@@ -486,7 +489,7 @@ var AccordionControl = (0, import_core6.factory)(
     const isActive = ctx.isItemActive(value);
     const shouldWrapWithHeading = typeof ctx.order === "number";
     const Heading = `h${ctx.order}`;
-    const content = /* @__PURE__ */ import_react10.default.createElement(
+    const content = /* @__PURE__ */ import_react11.default.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues(__spreadValues({}, others), ctx.getStyles("control", {
         className,
@@ -522,7 +525,7 @@ var AccordionControl = (0, import_core6.factory)(
           onKeyDown
         })
       }),
-      /* @__PURE__ */ import_react10.default.createElement(
+      /* @__PURE__ */ import_react11.default.createElement(
         import_core6.Box,
         __spreadValues({
           component: "span",
@@ -533,8 +536,8 @@ var AccordionControl = (0, import_core6.factory)(
         }, ctx.getStyles("chevron", { classNames, styles })),
         chevron || ctx.chevron
       ),
-      /* @__PURE__ */ import_react10.default.createElement("span", __spreadValues({}, ctx.getStyles("label", { classNames, styles })), children),
-      icon && /* @__PURE__ */ import_react10.default.createElement(
+      /* @__PURE__ */ import_react11.default.createElement("span", __spreadValues({}, ctx.getStyles("label", { classNames, styles })), children),
+      icon && /* @__PURE__ */ import_react11.default.createElement(
         import_core6.Box,
         __spreadValues({
           component: "span",
@@ -543,7 +546,7 @@ var AccordionControl = (0, import_core6.factory)(
         icon
       )
     );
-    return shouldWrapWithHeading ? /* @__PURE__ */ import_react10.default.createElement(Heading, __spreadValues({}, ctx.getStyles("itemTitle", { classNames, styles })), content) : content;
+    return shouldWrapWithHeading ? /* @__PURE__ */ import_react11.default.createElement(Heading, __spreadValues({}, ctx.getStyles("itemTitle", { classNames, styles })), content) : content;
   }
 );
 AccordionControl.displayName = "@raikou/core/AccordionControl";
@@ -556,7 +559,7 @@ var defaultProps6 = {
   chevronPosition: "right",
   variant: "default",
   chevronSize: 15,
-  chevron: /* @__PURE__ */ import_react11.default.createElement(AccordionChevron, null)
+  chevron: /* @__PURE__ */ import_react12.default.createElement(AccordionChevron, null)
 };
 var varsResolver = (0, import_core7.createVarsResolver)(
   (_, { transitionDuration, chevronSize, radius }) => ({
@@ -652,7 +655,7 @@ function Accordion(_props) {
     vars,
     varsResolver
   });
-  return /* @__PURE__ */ import_react11.default.createElement(
+  return /* @__PURE__ */ import_react12.default.createElement(
     AccordionProvider,
     {
       value: {
@@ -676,7 +679,7 @@ function Accordion(_props) {
         variant
       }
     },
-    /* @__PURE__ */ import_react11.default.createElement(import_core7.Box, __spreadProps(__spreadValues(__spreadValues({}, getStyles("root")), others), { variant, "data-accordion": true }), children)
+    /* @__PURE__ */ import_react12.default.createElement(import_core7.Box, __spreadProps(__spreadValues(__spreadValues({}, getStyles("root")), others), { variant, "data-accordion": true }), children)
   );
 }
 var extendAccordion = (c) => c;

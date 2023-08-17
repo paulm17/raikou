@@ -1,6 +1,6 @@
 module.exports = function ({ addComponents, theme }: any) {
   addComponents({
-    ".unstyledButton-root": {
+    ".unstyled-button-root": {
       backgroundColor: "transparent",
       cursor: "pointer",
       border: "0",

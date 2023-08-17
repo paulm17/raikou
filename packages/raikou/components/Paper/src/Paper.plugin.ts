@@ -16,11 +16,11 @@ module.exports = function ({ addComponents, theme }: any) {
         "--_paper-border-width": "1px",
 
         '[data-raikou-color-scheme="light"] &': {
-          "--_paper-border-color": "var(--raikou-color-gray-3)",
+          "--_paper-border-color": "var(--raikou-paper-border-color)",
         },
 
         '[data-raikou-color-scheme="dark"] &': {
-          "--_paper-border-color": "var(--raikou-color-dark-4)",
+          "--_paper-border-color": "var(--raikou-paper-border-color)",
         },
       },
     },

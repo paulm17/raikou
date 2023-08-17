@@ -2,7 +2,7 @@ import { rem } from "@raikou/core";
 
 module.exports = function ({ addComponents, theme }: any) {
   addComponents({
-    ".comboBox-dropdown": {
+    ".comboBox-dropdown.comboBox-dropdown": {
       padding: "var(--combobox-padding)",
 
       "&[data-hidden]": {
@@ -43,11 +43,11 @@ module.exports = function ({ addComponents, theme }: any) {
         "&:hover": {
           "&:not([data-combobox-selected], [data-combobox-disabled])": {
             '[data-raikou-color-scheme="light"] &': {
-              "--_option-bg": "var(--raikou-color-gray-0)",
+              "--_option-bg": "var(--raikou-combobox-option-hover-bg)",
             },
 
             '[data-raikou-color-scheme="dark"] &': {
-              "--_option-bg": "var(--raikou-color-dark-7)",
+              "--_option-bg": "var(--raikou-combobox-option-hover-bg)",
             },
           },
         },
@@ -56,11 +56,11 @@ module.exports = function ({ addComponents, theme }: any) {
         "&:active": {
           "&:not([data-combobox-selected], [data-combobox-disabled])": {
             '[data-raikou-color-scheme="light"] &': {
-              "--_option-bg": "var(--raikou-color-gray-0)",
+              "--_option-bg": "var(--raikou-combobox-option-active-bg)",
             },
 
             '[data-raikou-color-scheme="dark"] &': {
-              "--_option-bg": "var(--raikou-color-dark-7)",
+              "--_option-bg": "var(--raikou-combobox-option-active-bg)",
             },
           },
         },
@@ -87,13 +87,13 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_search-border-color": "var(--raikou-color-gray-2)",
-        "--_search_background": "var(--raikou-color-white)",
+        "--_search-border-color": "var(--raikou-combobox-search-border-color)",
+        "--_search_background": "var(--raikou-combobox-search_background)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_search-border-color": "var(--raikou-color-dark-4)",
-        "--_search_background": "var(--raikou-color-dark-7)",
+        "--_search-border-color": "var(--raikou-combobox-search-border-color)",
+        "--_search_background": "var(--raikou-combobox-search_background)",
       },
     },
 
@@ -112,11 +112,11 @@ module.exports = function ({ addComponents, theme }: any) {
       padding: "var(--combobox-option-padding)",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_footer-border-color": "var(--raikou-color-gray-2)",
+        "--_footer-border-color": "var(--raikou-combobox-footer-border-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_footer-border-color": "var(--raikou-color-dark-4)",
+        "--_footer-border-color": "var(--raikou-combobox-footer-border-color)",
       },
     },
 
@@ -157,11 +157,11 @@ module.exports = function ({ addComponents, theme }: any) {
         backgroundColor: "var(--_divider-bg)",
 
         '[data-raikou-color-scheme="light"] &': {
-          "--_divider-bg": "var(--raikou-color-gray-2)",
+          "--_divider-bg": "var(--raikou-combobox-divider-bg)",
         },
 
         '[data-raikou-color-scheme="dark"] &': {
-          "--_divider-bg": "var(--raikou-color-dark-4)",
+          "--_divider-bg": "var(--raikou-combobox-divider-bg)",
         },
       },
 
@@ -182,11 +182,11 @@ module.exports = function ({ addComponents, theme }: any) {
       color: "var(--_color)",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_color": "var(--raikou-color-gray-6)",
+        "--_color": "var(--raikou-combobox-chevron-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_color": "var(--raikou-color-dark-3)",
+        "--_color": "var(--raikou-combobox-chevron-color)",
       },
 
       "&[data-error]": {

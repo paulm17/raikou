@@ -21,13 +21,13 @@ module.exports = function ({ addComponents, theme }: any) {
       position: "relative",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--slider-track-bg": "var(--raikou-color-gray-2)",
-        "--slider-track-disabled-bg": "var(--raikou-color-gray-4)",
+        "--slider-track-bg": "var(--raikou-slider-track-bg)",
+        "--slider-track-disabled-bg": "var(--raikou-slider-track-disabled-bg)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--slider-track-bg": "var(--raikou-color-dark-4)",
-        "--slider-track-disabled-bg": "var(--raikou-color-dark-3)",
+        "--slider-track-bg": "var(--raikou-slider-track-bg)",
+        "--slider-track-disabled-bg": "var(--raikou-slider-track-disabled-bg)",
       },
     },
 
@@ -45,11 +45,11 @@ module.exports = function ({ addComponents, theme }: any) {
       touchAction: "none",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_label-bg": "var(--raikou-color-gray-9)",
+        "--_label-bg": "var(--raikou-slider-label-bg)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_label-bg": "var(--raikou-color-dark-4)",
+        "--_label-bg": "var(--raikou-slider-label-bg)",
       },
     },
 
@@ -90,13 +90,13 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_thumb-bd": "var(--slider-color)",
-        "--_thumb-bg": "var(--raikou-color-white)",
+        "--_thumb-bd": "var(--raikou-slider-thumb-bd)",
+        "--_thumb-bg": "var(--raikou-slider-thumb-bg)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_thumb-bd": "var(--raikou-color-white)",
-        "--_thumb-bg": "var(--slider-color)",
+        "--_thumb-bd": "var(--raikou-slider-thumb-bd)",
+        "--_thumb-bg": "var(--raikou-slider-thumb-bg)",
       },
     },
 
@@ -163,11 +163,11 @@ module.exports = function ({ addComponents, theme }: any) {
         },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_bar-disabled-bg": "var(--raikou-color-gray-4)",
+        "--_bar-disabled-bg": "var(--raikou-slider-bar-disabled-bg)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_bar-disabled-bg": "var(--raikou-color-dark-3)",
+        "--_bar-disabled-bg": "var(--raikou-slider-bar-disabled-bg)",
       },
     },
 
@@ -201,21 +201,21 @@ module.exports = function ({ addComponents, theme }: any) {
 
         "&[data-disabled]": {
           '[data-raikou-color-scheme="light"] &': {
-            "--_mark-bd": "var(--raikou-color-gray-4)",
+            "--_mark-bd": "var(--raikou-slider-mark-disabled-bd)",
           },
 
           '[data-raikou-color-scheme="dark"] &': {
-            "--_mark-bd": "var(--raikou-color-dark-3)",
+            "--_mark-bd": "var(--raikou-slider-mark-disabled-bd)",
           },
         },
       },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_mark-bd": "var(--raikou-color-gray-2)",
+        "--_mark-bd": "var(--raikou-slider-mark-bd)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_mark-bd": "var(--raikou-color-dark-4)",
+        "--_mark-bd": "var(--raikou-slider-mark-bd)",
       },
     },
 
@@ -229,11 +229,11 @@ module.exports = function ({ addComponents, theme }: any) {
       userSelect: "none",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_mark-label-color": "var(--raikou-color-gray-6)",
+        "--_mark-label-color": "var(--raikou-slider-mark-label-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_mark-label-color": "var(--raikou-color-dark-2)",
+        "--_mark-label-color": "var(--raikou-slider-mark-label-color)",
       },
     },
   });

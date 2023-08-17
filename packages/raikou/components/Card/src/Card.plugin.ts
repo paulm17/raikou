@@ -59,11 +59,13 @@ module.exports = function ({ addComponents }: any) {
       },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_card-section-border-color": "var(--raikou-color-gray-3)",
+        "--_card-section-border-color":
+          "var(--raikou-card-section-border-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_card-section-border-color": "var(--raikou-color-dark-4)",
+        "--_card-section-border-color":
+          "var(--raikou-card-section-border-color)",
       },
     },
   });

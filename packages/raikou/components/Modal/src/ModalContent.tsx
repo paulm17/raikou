@@ -28,6 +28,7 @@ export const ModalContent = factory<ModalContentFactory>((_props, ref) => {
     props;
 
   const ctx = useModalContext();
+  // @ts-ignore
   const Scroll: React.FC<any> = ctx.scrollAreaComponent || NativeScrollArea;
 
   return (

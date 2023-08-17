@@ -65,6 +65,9 @@ import React2, { createContext as createContext2, useContext as useContext2 } fr
 // ../_utils/use-hovered/use-hovered.ts
 import { useState } from "react";
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+import { useEffect, useLayoutEffect } from "react";
+
 // src/Tabs.context.ts
 var [TabsProvider, useTabsContext] = createSafeContext(
   "Tabs component was not found in the tree"

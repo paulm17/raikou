@@ -10,11 +10,11 @@ module.exports = function ({ addComponents, theme }: any) {
       "--divider-size-xl": rem("5px"),
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_divider-color": "var(--raikou-color-gray-4)",
+        "--_divider-color": "var(--raikou-divider-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_divider-color": "var(--raikou-color-dark-4)",
+        "--_divider-color": "var(--raikou-divider-color)",
       },
 
       '&[data-orientation="horizontal"]': {

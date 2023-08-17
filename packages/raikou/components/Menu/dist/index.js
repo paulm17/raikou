@@ -89,7 +89,7 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Menu.tsx
-var import_react25 = __toESM(require("react"));
+var import_react26 = __toESM(require("react"));
 var import_hooks10 = require("@raikou/hooks");
 var import_core18 = require("@raikou/core");
 
@@ -140,16 +140,19 @@ function useHovered() {
   return [hovered, { setHovered, resetHovered }];
 }
 
-// ../Floating/src/use-delayed-hover.ts
+// ../_utils/create-use-external-events/create-use-external-events.ts
 var import_react4 = require("react");
+
+// ../Floating/src/use-delayed-hover.ts
+var import_react5 = require("react");
 function useDelayedHover({
   open,
   close,
   openDelay,
   closeDelay
 }) {
-  const openTimeout = (0, import_react4.useRef)(-1);
-  const closeTimeout = (0, import_react4.useRef)(-1);
+  const openTimeout = (0, import_react5.useRef)(-1);
+  const closeTimeout = (0, import_react5.useRef)(-1);
   const clearTimeouts = () => {
     window.clearTimeout(openTimeout.current);
     window.clearTimeout(closeTimeout.current);
@@ -170,12 +173,12 @@ function useDelayedHover({
       closeTimeout.current = window.setTimeout(close, closeDelay);
     }
   };
-  (0, import_react4.useEffect)(() => clearTimeouts, []);
+  (0, import_react5.useEffect)(() => clearTimeouts, []);
   return { openDropdown, closeDropdown };
 }
 
 // ../Floating/src/use-floating-auto-update.ts
-var import_react7 = require("react");
+var import_react8 = require("react");
 
 // ../../../../node_modules/.pnpm/@floating-ui+core@1.3.1/node_modules/@floating-ui/core/dist/floating-ui.core.mjs
 function getAlignment(placement) {
@@ -1688,7 +1691,7 @@ var computePosition2 = (reference, floating, options) => {
 
 // ../../../../node_modules/.pnpm/@floating-ui+react-dom@1.3.0_react-dom@18.2.0_react@18.2.0/node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.esm.js
 var React3 = __toESM(require("react"));
-var import_react5 = require("react");
+var import_react6 = require("react");
 var ReactDOM = __toESM(require("react-dom"));
 var arrow2 = (options) => {
   const {
@@ -1720,7 +1723,7 @@ var arrow2 = (options) => {
     }
   };
 };
-var index = typeof document !== "undefined" ? import_react5.useLayoutEffect : import_react5.useEffect;
+var index = typeof document !== "undefined" ? import_react6.useLayoutEffect : import_react6.useEffect;
 function deepEqual(a, b) {
   if (a === b) {
     return true;
@@ -1886,9 +1889,9 @@ function useFloating(options) {
 
 // ../../../../node_modules/.pnpm/@floating-ui+react@0.23.1_react-dom@18.2.0_react@18.2.0/node_modules/@floating-ui/react/dist/floating-ui.react.esm.js
 var React4 = __toESM(require("react"));
-var import_react6 = require("react");
+var import_react7 = require("react");
 var import_react_dom3 = require("react-dom");
-var index2 = typeof document !== "undefined" ? import_react6.useLayoutEffect : import_react6.useEffect;
+var index2 = typeof document !== "undefined" ? import_react7.useLayoutEffect : import_react7.useEffect;
 var serverHandoffComplete = false;
 var count = 0;
 var genId = () => "floating-ui-" + count++;
@@ -2030,8 +2033,8 @@ function useFloatingAutoUpdate({
   position,
   positionDependencies
 }) {
-  const [delayedUpdate, setDelayedUpdate] = (0, import_react7.useState)(0);
-  (0, import_react7.useEffect)(() => {
+  const [delayedUpdate, setDelayedUpdate] = (0, import_react8.useState)(0);
+  (0, import_react8.useEffect)(() => {
     if (floating.refs.reference.current && floating.refs.floating.current) {
       return autoUpdate(
         floating.refs.reference.current,
@@ -2066,7 +2069,7 @@ function getFloatingPosition(dir, position) {
 }
 
 // ../Floating/src/FloatingArrow/FloatingArrow.tsx
-var import_react9 = __toESM(require("react"));
+var import_react10 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
 
 // ../Floating/src/FloatingArrow/get-arrow-position-styles.ts
@@ -2152,7 +2155,7 @@ function getArrowPositionStyles({
 }
 
 // ../Floating/src/FloatingArrow/FloatingArrow.tsx
-var FloatingArrow = (0, import_react9.forwardRef)(
+var FloatingArrow = (0, import_react10.forwardRef)(
   (_a, ref) => {
     var _b = _a, {
       position,
@@ -2179,7 +2182,7 @@ var FloatingArrow = (0, import_react9.forwardRef)(
     if (!visible) {
       return null;
     }
-    return /* @__PURE__ */ import_react9.default.createElement(
+    return /* @__PURE__ */ import_react10.default.createElement(
       "div",
       __spreadProps(__spreadValues({}, others), {
         ref,
@@ -2200,7 +2203,7 @@ var FloatingArrow = (0, import_react9.forwardRef)(
 FloatingArrow.displayName = "@raikou/core/FloatingArrow";
 
 // ../Popover/src/Popover.tsx
-var import_react18 = __toESM(require("react"));
+var import_react19 = __toESM(require("react"));
 var import_hooks8 = require("@raikou/hooks");
 var import_core11 = require("@raikou/core");
 
@@ -2294,7 +2297,7 @@ var [PopoverContextProvider, usePopoverContext] = createSafeContext(
 );
 
 // ../Popover/src/PopoverTarget/PopoverTarget.tsx
-var import_react11 = require("react");
+var import_react12 = require("react");
 
 // ../../../../node_modules/.pnpm/clsx@2.0.0/node_modules/clsx/dist/clsx.mjs
 function r(e) {
@@ -2344,7 +2347,7 @@ var PopoverTarget = (0, import_core5.factory)((props, ref) => {
     "aria-controls": ctx.getDropdownId(),
     id: ctx.getTargetId()
   } : {};
-  return (0, import_react11.cloneElement)(children, __spreadValues(__spreadProps(__spreadValues(__spreadValues(__spreadValues({}, forwardedProps), accessibleProps), ctx.targetProps), {
+  return (0, import_react12.cloneElement)(children, __spreadValues(__spreadProps(__spreadValues(__spreadValues(__spreadValues({}, forwardedProps), accessibleProps), ctx.targetProps), {
     className: clsx_default(
       ctx.targetProps.className,
       forwardedProps.className,
@@ -2356,24 +2359,24 @@ var PopoverTarget = (0, import_core5.factory)((props, ref) => {
 PopoverTarget.displayName = "@raikou/core/PopoverTarget";
 
 // ../Popover/src/PopoverDropdown/PopoverDropdown.tsx
-var import_react17 = __toESM(require("react"));
+var import_react18 = __toESM(require("react"));
 var import_hooks7 = require("@raikou/hooks");
 var import_core10 = require("@raikou/core");
 
 // ../Portal/src/Portal.tsx
-var import_react12 = __toESM(require("react"));
+var import_react13 = __toESM(require("react"));
 var import_react_dom4 = require("react-dom");
 var import_hooks4 = require("@raikou/hooks");
 var import_core6 = require("@raikou/core");
 var defaultProps2 = {};
-var Portal = (0, import_react12.forwardRef)((props, ref) => {
+var Portal = (0, import_react13.forwardRef)((props, ref) => {
   const _a = (0, import_core6.useProps)(
     "Portal",
     defaultProps2,
     props
   ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
-  const [mounted, setMounted] = (0, import_react12.useState)(false);
-  const nodeRef = (0, import_react12.useRef)(null);
+  const [mounted, setMounted] = (0, import_react13.useState)(false);
+  const nodeRef = (0, import_react13.useRef)(null);
   (0, import_hooks4.useIsomorphicEffect)(() => {
     setMounted(true);
     nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
@@ -2390,14 +2393,14 @@ var Portal = (0, import_react12.forwardRef)((props, ref) => {
     return null;
   }
   return (0, import_react_dom4.createPortal)(
-    /* @__PURE__ */ import_react12.default.createElement("div", __spreadValues({ className, ref }, others), children),
+    /* @__PURE__ */ import_react13.default.createElement("div", __spreadValues({ className, ref }, others), children),
     nodeRef.current
   );
 });
 Portal.displayName = "@raikou/core/Portal";
 
 // ../Portal/src/OptionalPortal.tsx
-var import_react13 = __toESM(require("react"));
+var import_react14 = __toESM(require("react"));
 function OptionalPortal(_a) {
   var _b = _a, {
     withinPortal = true,
@@ -2407,9 +2410,9 @@ function OptionalPortal(_a) {
     "children"
   ]);
   if (withinPortal) {
-    return /* @__PURE__ */ import_react13.default.createElement(Portal, __spreadValues({}, others), children);
+    return /* @__PURE__ */ import_react14.default.createElement(Portal, __spreadValues({}, others), children);
   }
-  return /* @__PURE__ */ import_react13.default.createElement(import_react13.default.Fragment, null, children);
+  return /* @__PURE__ */ import_react14.default.createElement(import_react14.default.Fragment, null, children);
 }
 OptionalPortal.displayName = "@raikou/core/OptionalPortal";
 
@@ -2516,7 +2519,7 @@ var transitions = {
 };
 
 // ../Transition/src/Transition.tsx
-var import_react15 = __toESM(require("react"));
+var import_react16 = __toESM(require("react"));
 
 // ../Transition/src/get-transition-styles/get-transition-styles.ts
 var transitionStatuses = {
@@ -2551,7 +2554,7 @@ function getTransitionStyles({
 }
 
 // ../Transition/src/use-transition.ts
-var import_react14 = require("react");
+var import_react15 = require("react");
 var import_hooks5 = require("@raikou/hooks");
 var import_core8 = require("@raikou/core");
 function useTransition({
@@ -2567,13 +2570,13 @@ function useTransition({
   const theme = (0, import_core8.useRaikouTheme)();
   const shouldReduceMotion = (0, import_hooks5.useReducedMotion)();
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
-  const [transitionDuration, setTransitionDuration] = (0, import_react14.useState)(
+  const [transitionDuration, setTransitionDuration] = (0, import_react15.useState)(
     reduceMotion ? 0 : duration
   );
-  const [transitionStatus, setStatus] = (0, import_react14.useState)(
+  const [transitionStatus, setStatus] = (0, import_react15.useState)(
     mounted ? "entered" : "exited"
   );
-  const timeoutRef = (0, import_react14.useRef)(-1);
+  const timeoutRef = (0, import_react15.useRef)(-1);
   const handleStateChange = (shouldMount) => {
     const preHandler = shouldMount ? onEnter : onExit;
     const handler = shouldMount ? onEntered : onExited;
@@ -2600,7 +2603,7 @@ function useTransition({
   (0, import_hooks5.useDidUpdate)(() => {
     handleStateChange(mounted);
   }, [mounted]);
-  (0, import_react14.useEffect)(() => () => window.clearTimeout(timeoutRef.current), []);
+  (0, import_react15.useEffect)(() => () => window.clearTimeout(timeoutRef.current), []);
   return {
     transitionDuration,
     transitionStatus,
@@ -2611,7 +2614,7 @@ function useTransition({
 // ../Transition/src/Transition.tsx
 function Transition({
   keepMounted,
-  transition,
+  transition = "fade",
   duration = 250,
   exitDuration = duration,
   mounted,
@@ -2633,9 +2636,9 @@ function Transition({
     onExited
   });
   if (transitionDuration === 0) {
-    return mounted ? /* @__PURE__ */ import_react15.default.createElement(import_react15.default.Fragment, null, children({})) : keepMounted ? children({ display: "none" }) : null;
+    return mounted ? /* @__PURE__ */ import_react16.default.createElement(import_react16.default.Fragment, null, children({})) : keepMounted ? children({ display: "none" }) : null;
   }
-  return transitionStatus === "exited" ? keepMounted ? children({ display: "none" }) : null : /* @__PURE__ */ import_react15.default.createElement(import_react15.default.Fragment, null, children(
+  return transitionStatus === "exited" ? keepMounted ? children({ display: "none" }) : null : /* @__PURE__ */ import_react16.default.createElement(import_react16.default.Fragment, null, children(
     getTransitionStyles({
       transition,
       duration: transitionDuration,
@@ -2647,7 +2650,7 @@ function Transition({
 Transition.displayName = "@raikou/core/Transition";
 
 // ../FocusTrap/src/FocusTrap.tsx
-var import_react16 = require("react");
+var import_react17 = require("react");
 var import_hooks6 = require("@raikou/hooks");
 var import_core9 = require("@raikou/core");
 function FocusTrap({
@@ -2660,7 +2663,7 @@ function FocusTrap({
   if (!(0, import_core9.isElement)(children)) {
     return children;
   }
-  return (0, import_react16.cloneElement)(children, { [refProp]: ref });
+  return (0, import_react17.cloneElement)(children, { [refProp]: ref });
 }
 FocusTrap.displayName = "@raikou/core/FocusTrap";
 
@@ -2706,7 +2709,7 @@ var PopoverDropdown = (0, import_core10.factory)(
     if (ctx.disabled) {
       return null;
     }
-    return /* @__PURE__ */ import_react17.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, ctx.portalProps), { withinPortal: ctx.withinPortal }), /* @__PURE__ */ import_react17.default.createElement(
+    return /* @__PURE__ */ import_react18.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, ctx.portalProps), { withinPortal: ctx.withinPortal }), /* @__PURE__ */ import_react18.default.createElement(
       Transition,
       __spreadProps(__spreadValues({
         mounted: ctx.opened
@@ -2718,7 +2721,7 @@ var PopoverDropdown = (0, import_core10.factory)(
       }),
       (transitionStyles) => {
         var _a2, _b2;
-        return /* @__PURE__ */ import_react17.default.createElement(FocusTrap, { active: ctx.trapFocus }, /* @__PURE__ */ import_react17.default.createElement(
+        return /* @__PURE__ */ import_react18.default.createElement(FocusTrap, { active: ctx.trapFocus }, /* @__PURE__ */ import_react18.default.createElement(
           import_core10.Box,
           __spreadValues(__spreadProps(__spreadValues(__spreadValues({}, accessibleProps), others), {
             variant,
@@ -2745,7 +2748,7 @@ var PopoverDropdown = (0, import_core10.factory)(
             ]
           })),
           children,
-          /* @__PURE__ */ import_react17.default.createElement(
+          /* @__PURE__ */ import_react18.default.createElement(
             FloatingArrow,
             __spreadValues({
               ref: ctx.arrowRef,
@@ -2896,9 +2899,9 @@ function Popover(_props) {
     vars,
     varsResolver
   });
-  const arrowRef = (0, import_react18.useRef)(null);
-  const [targetNode, setTargetNode] = (0, import_react18.useState)(null);
-  const [dropdownNode, setDropdownNode] = (0, import_react18.useState)(null);
+  const arrowRef = (0, import_react19.useRef)(null);
+  const [targetNode, setTargetNode] = (0, import_react19.useState)(null);
+  const [dropdownNode, setDropdownNode] = (0, import_react19.useState)(null);
   const { dir } = (0, import_core11.useDirection)();
   const uid = (0, import_hooks8.useId)(id);
   const popover = usePopover({
@@ -2921,21 +2924,21 @@ function Popover(_props) {
     clickOutsideEvents,
     [targetNode, dropdownNode]
   );
-  const reference = (0, import_react18.useCallback)(
+  const reference = (0, import_react19.useCallback)(
     (node) => {
       setTargetNode(node);
       popover.floating.reference(node);
     },
     [popover.floating.reference]
   );
-  const floating = (0, import_react18.useCallback)(
+  const floating = (0, import_react19.useCallback)(
     (node) => {
       setDropdownNode(node);
       popover.floating.floating(node);
     },
     [popover.floating.floating]
   );
-  return /* @__PURE__ */ import_react18.default.createElement(
+  return /* @__PURE__ */ import_react19.default.createElement(
     PopoverContextProvider,
     {
       value: {
@@ -2989,7 +2992,7 @@ Popover.displayName = "@raikou/core/Popover";
 Popover.extend = (input) => input;
 
 // src/MenuDivider/MenuDivider.tsx
-var import_react19 = __toESM(require("react"));
+var import_react20 = __toESM(require("react"));
 var import_core12 = require("@raikou/core");
 
 // src/Menu.context.ts
@@ -3000,7 +3003,7 @@ var defaultProps5 = {};
 var MenuDivider = (0, import_core12.factory)((props, ref) => {
   const _a = (0, import_core12.useProps)("MenuDivider", defaultProps5, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
   const ctx = useMenuContext();
-  return /* @__PURE__ */ import_react19.default.createElement(
+  return /* @__PURE__ */ import_react20.default.createElement(
     import_core12.Box,
     __spreadValues(__spreadValues({
       ref
@@ -3010,7 +3013,7 @@ var MenuDivider = (0, import_core12.factory)((props, ref) => {
 MenuDivider.displayName = "@raikou/core/MenuDivider";
 
 // src/MenuDropdown/MenuDropdown.tsx
-var import_react20 = __toESM(require("react"));
+var import_react21 = __toESM(require("react"));
 var import_core13 = require("@raikou/core");
 var defaultProps6 = {};
 var MenuDropdown = (0, import_core13.factory)((props, ref) => {
@@ -3035,7 +3038,7 @@ var MenuDropdown = (0, import_core13.factory)((props, ref) => {
     "onMouseLeave",
     "children"
   ]);
-  const wrapperRef = (0, import_react20.useRef)(null);
+  const wrapperRef = (0, import_react21.useRef)(null);
   const ctx = useMenuContext();
   const handleKeyDown = (event) => {
     var _a2, _b;
@@ -3054,7 +3057,7 @@ var MenuDropdown = (0, import_core13.factory)((props, ref) => {
     onMouseLeave,
     () => ctx.trigger === "hover" && ctx.closeDropdown()
   );
-  return /* @__PURE__ */ import_react20.default.createElement(
+  return /* @__PURE__ */ import_react21.default.createElement(
     Popover.Dropdown,
     __spreadValues(__spreadProps(__spreadValues({}, others), {
       onMouseEnter: handleMouseEnter,
@@ -3063,7 +3066,7 @@ var MenuDropdown = (0, import_core13.factory)((props, ref) => {
       "aria-orientation": "vertical",
       ref
     }), ctx.getStyles("dropdown", { className, style, styles, classNames })),
-    /* @__PURE__ */ import_react20.default.createElement(
+    /* @__PURE__ */ import_react21.default.createElement(
       "div",
       {
         tabIndex: -1,
@@ -3080,12 +3083,12 @@ var MenuDropdown = (0, import_core13.factory)((props, ref) => {
 MenuDropdown.displayName = "@raikou/core/MenuDropdown";
 
 // src/MenuItem/MenuItem.tsx
-var import_react22 = __toESM(require("react"));
+var import_react23 = __toESM(require("react"));
 var import_hooks9 = require("@raikou/hooks");
 var import_core15 = require("@raikou/core");
 
 // ../UnstyledButton/src/UnstyledButton.tsx
-var import_react21 = __toESM(require("react"));
+var import_react22 = __toESM(require("react"));
 var import_core14 = require("@raikou/core");
 var defaultProps7 = {
   __staticSelector: "UnstyledButton"
@@ -3122,7 +3125,7 @@ var UnstyledButton = (0, import_core14.polymorphicFactory)(
       styles,
       unstyled
     });
-    return /* @__PURE__ */ import_react21.default.createElement(
+    return /* @__PURE__ */ import_react22.default.createElement(
       import_core14.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { focusable: true })), {
         component,
@@ -3167,7 +3170,7 @@ var MenuItem = (0, import_core15.polymorphicFactory)((props, ref) => {
   const ctx = useMenuContext();
   const theme = (0, import_core15.useRaikouTheme)();
   const { dir } = (0, import_core15.useDirection)();
-  const itemRef = (0, import_react22.useRef)();
+  const itemRef = (0, import_react23.useRef)();
   const itemIndex = ctx.getItemIndex(itemRef.current);
   const _others = others;
   const handleMouseLeave = (0, import_core15.createEventHandler)(
@@ -3190,7 +3193,7 @@ var MenuItem = (0, import_core15.polymorphicFactory)((props, ref) => {
     () => ctx.setHovered(ctx.getItemIndex(itemRef.current))
   );
   const colors = color ? theme.variantColorResolver({ color, theme, variant: "light" }) : void 0;
-  return /* @__PURE__ */ import_react22.default.createElement(
+  return /* @__PURE__ */ import_react23.default.createElement(
     UnstyledButton,
     __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, others), {
       tabIndex: -1,
@@ -3219,15 +3222,15 @@ var MenuItem = (0, import_core15.polymorphicFactory)((props, ref) => {
         "--menu-item-hover": colors == null ? void 0 : colors.hover
       }
     }),
-    leftSection && /* @__PURE__ */ import_react22.default.createElement(
+    leftSection && /* @__PURE__ */ import_react23.default.createElement(
       "div",
       __spreadProps(__spreadValues({}, ctx.getStyles("itemSection", { styles, classNames })), {
         "data-position": "left"
       }),
       leftSection
     ),
-    children && /* @__PURE__ */ import_react22.default.createElement("div", __spreadValues({}, ctx.getStyles("itemLabel", { styles, classNames })), children),
-    rightSection && /* @__PURE__ */ import_react22.default.createElement(
+    children && /* @__PURE__ */ import_react23.default.createElement("div", __spreadValues({}, ctx.getStyles("itemLabel", { styles, classNames })), children),
+    rightSection && /* @__PURE__ */ import_react23.default.createElement(
       "div",
       __spreadProps(__spreadValues({}, ctx.getStyles("itemSection", { styles, classNames })), {
         "data-position": "right"
@@ -3239,34 +3242,28 @@ var MenuItem = (0, import_core15.polymorphicFactory)((props, ref) => {
 MenuItem.displayName = "@raikou/core/MenuItem";
 
 // src/MenuLabel/MenuLabel.tsx
-var import_react23 = __toESM(require("react"));
+var import_react24 = __toESM(require("react"));
 var import_core16 = require("@raikou/core");
-
-// src/Menu.module.css
-var _default = {};
-
-// src/MenuLabel/MenuLabel.tsx
 var defaultProps9 = {};
 var MenuLabel = (0, import_core16.factory)((props, ref) => {
   const _a = (0, import_core16.useProps)("MenuLabel", defaultProps9, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
   const ctx = useMenuContext();
-  return /* @__PURE__ */ import_react23.default.createElement(
+  return /* @__PURE__ */ import_react24.default.createElement(
     import_core16.Box,
     __spreadValues(__spreadValues({
       ref
     }, ctx.getStyles("label", { className, style, styles, classNames })), others)
   );
 });
-MenuLabel.classes = _default;
 MenuLabel.displayName = "@raikou/core/MenuLabel";
 
 // src/MenuTarget/MenuTarget.tsx
-var import_react24 = __toESM(require("react"));
+var import_react25 = __toESM(require("react"));
 var import_core17 = require("@raikou/core");
 var defaultProps10 = {
   refProp: "ref"
 };
-var MenuTarget = (0, import_react24.forwardRef)(
+var MenuTarget = (0, import_react25.forwardRef)(
   (props, ref) => {
     const _a = (0, import_core17.useProps)(
       "MenuTarget",
@@ -3291,7 +3288,7 @@ var MenuTarget = (0, import_react24.forwardRef)(
       children.props.onMouseLeave,
       () => ctx.trigger === "hover" && ctx.closeDropdown()
     );
-    return /* @__PURE__ */ import_react24.default.createElement(Popover.Target, __spreadValues({ refProp, popupType: "menu", ref }, others), (0, import_react24.cloneElement)(children, {
+    return /* @__PURE__ */ import_react25.default.createElement(Popover.Target, __spreadValues({ refProp, popupType: "menu", ref }, others), (0, import_react25.cloneElement)(children, {
       onClick,
       onMouseEnter,
       onMouseLeave,
@@ -3351,6 +3348,7 @@ function Menu(_props) {
   const getStyles = (0, import_core18.useStyles)({
     name: "Menu",
     classes: {
+      dropdown: "menu-dropdown",
       item: "menu-item",
       itemLabel: "menu-itemLabel",
       itemSection: "menu-itemSection",
@@ -3393,7 +3391,7 @@ function Menu(_props) {
   (0, import_hooks10.useDidUpdate)(() => {
     resetHovered();
   }, [_opened]);
-  return /* @__PURE__ */ import_react25.default.createElement(
+  return /* @__PURE__ */ import_react26.default.createElement(
     MenuContextProvider,
     {
       value: {
@@ -3411,7 +3409,7 @@ function Menu(_props) {
         trigger
       }
     },
-    /* @__PURE__ */ import_react25.default.createElement(
+    /* @__PURE__ */ import_react26.default.createElement(
       Popover,
       __spreadProps(__spreadValues({}, others), {
         opened: _opened,

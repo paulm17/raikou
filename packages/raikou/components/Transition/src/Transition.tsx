@@ -8,7 +8,7 @@ export interface TransitionProps {
   keepMounted?: boolean;
 
   /** Transition name or object */
-  transition: RaikouTransition;
+  transition?: RaikouTransition;
 
   /** Transition duration in ms, `250` by default */
   duration?: number;
@@ -42,7 +42,7 @@ export type TransitionOverride = Partial<Omit<TransitionProps, "mounted">>;
 
 export function Transition({
   keepMounted,
-  transition,
+  transition = "fade",
   duration = 250,
   exitDuration = duration,
   mounted,
@@ -85,7 +85,7 @@ export function Transition({
           duration: transitionDuration,
           state: transitionStatus,
           timingFunction: transitionTimingFunction,
-        })
+        }),
       )}
     </>
   );

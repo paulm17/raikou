@@ -68,21 +68,21 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/ColorPicker.tsx
-var import_react11 = __toESM(require("react"));
+var import_react12 = __toESM(require("react"));
 var import_hooks3 = require("@raikou/hooks");
 var import_core8 = require("@raikou/core");
 
 // src/AlphaSlider/AlphaSlider.tsx
-var import_react6 = __toESM(require("react"));
+var import_react7 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
 
 // src/ColorSlider/ColorSlider.tsx
-var import_react5 = __toESM(require("react"));
+var import_react6 = __toESM(require("react"));
 var import_hooks = require("@raikou/hooks");
 var import_core2 = require("@raikou/core");
 
 // src/Thumb/Thumb.tsx
-var import_react4 = __toESM(require("react"));
+var import_react5 = __toESM(require("react"));
 var import_core = require("@raikou/core");
 
 // ../_utils/create-safe-context/create-safe-context.tsx
@@ -106,17 +106,20 @@ var import_react2 = __toESM(require("react"));
 // ../_utils/use-hovered/use-hovered.ts
 var import_react3 = require("react");
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+var import_react4 = require("react");
+
 // src/ColorPicker.context.ts
 var [ColorPickerProvider, useColorPickerContext] = createSafeContext(
   "ColorPicker component was not found in tree"
 );
 
 // src/Thumb/Thumb.tsx
-var Thumb = (0, import_react4.forwardRef)(
+var Thumb = (0, import_react5.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className, style, size, position } = _b, others = __objRest(_b, ["className", "style", "size", "position"]);
     const { getStyles } = useColorPickerContext();
-    return /* @__PURE__ */ import_react4.default.createElement(
+    return /* @__PURE__ */ import_react5.default.createElement(
       import_core.Box,
       __spreadValues(__spreadProps(__spreadValues({
         ref
@@ -132,7 +135,7 @@ var Thumb = (0, import_react4.forwardRef)(
 Thumb.displayName = "@raikou/core/ColorPickerThumb";
 
 // src/ColorSlider/ColorSlider.tsx
-var ColorSlider = (0, import_react5.forwardRef)(
+var ColorSlider = (0, import_react6.forwardRef)(
   (props, ref) => {
     const _a = props, {
       className,
@@ -163,8 +166,8 @@ var ColorSlider = (0, import_react5.forwardRef)(
     ]);
     const { getStyles } = useColorPickerContext();
     const theme = (0, import_core2.useRaikouTheme)();
-    const [position, setPosition] = (0, import_react5.useState)({ y: 0, x: value / maxValue });
-    const positionRef = (0, import_react5.useRef)(position);
+    const [position, setPosition] = (0, import_react6.useState)({ y: 0, x: value / maxValue });
+    const positionRef = (0, import_react6.useRef)(position);
     const getChangeValue = (val) => round2 ? Math.round(val * maxValue) : val * maxValue;
     const { ref: sliderRef } = (0, import_hooks.useMove)(
       ({ x, y }) => {
@@ -201,8 +204,8 @@ var ColorSlider = (0, import_react5.forwardRef)(
         }
       }
     };
-    const layers = overlays.map((overlay, index) => /* @__PURE__ */ import_react5.default.createElement("div", __spreadProps(__spreadValues({}, getStyles("sliderOverlay")), { style: overlay, key: index })));
-    return /* @__PURE__ */ import_react5.default.createElement(
+    const layers = overlays.map((overlay, index) => /* @__PURE__ */ import_react6.default.createElement("div", __spreadProps(__spreadValues({}, getStyles("sliderOverlay")), { style: overlay, key: index })));
+    return /* @__PURE__ */ import_react6.default.createElement(
       import_core2.Box,
       __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, others), {
         ref: (0, import_hooks.useMergedRef)(sliderRef, ref)
@@ -216,7 +219,7 @@ var ColorSlider = (0, import_react5.forwardRef)(
         "data-focus-ring": theme.focusRing
       }),
       layers,
-      /* @__PURE__ */ import_react5.default.createElement(
+      /* @__PURE__ */ import_react6.default.createElement(
         Thumb,
         __spreadValues({
           position,
@@ -361,14 +364,14 @@ function parseColor(color) {
 
 // src/AlphaSlider/AlphaSlider.tsx
 var defaultProps = {};
-var AlphaSlider = (0, import_react6.forwardRef)(
+var AlphaSlider = (0, import_react7.forwardRef)(
   (props, ref) => {
     const _a = (0, import_core3.useProps)(
       "AlphaSlider",
       defaultProps,
       props
     ), { value, onChange, onChangeEnd, color } = _a, others = __objRest(_a, ["value", "onChange", "onChangeEnd", "color"]);
-    return /* @__PURE__ */ import_react6.default.createElement(
+    return /* @__PURE__ */ import_react7.default.createElement(
       ColorSlider,
       __spreadProps(__spreadValues({}, others), {
         ref,
@@ -402,17 +405,17 @@ var AlphaSlider = (0, import_react6.forwardRef)(
 AlphaSlider.displayName = "@raikou/core/AlphaSlider";
 
 // src/HueSlider/HueSlider.tsx
-var import_react7 = __toESM(require("react"));
+var import_react8 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
 var defaultProps2 = {};
-var HueSlider = (0, import_react7.forwardRef)(
+var HueSlider = (0, import_react8.forwardRef)(
   (props, ref) => {
     const _a = (0, import_core4.useProps)(
       "HueSlider",
       defaultProps2,
       props
     ), { value, onChange, onChangeEnd, color } = _a, others = __objRest(_a, ["value", "onChange", "onChangeEnd", "color"]);
-    return /* @__PURE__ */ import_react7.default.createElement(
+    return /* @__PURE__ */ import_react8.default.createElement(
       ColorSlider,
       __spreadProps(__spreadValues({}, others), {
         ref,
@@ -440,7 +443,7 @@ var HueSlider = (0, import_react7.forwardRef)(
 HueSlider.displayName = "@raikou/core/HueSlider";
 
 // src/Saturation/Saturation.tsx
-var import_react8 = __toESM(require("react"));
+var import_react9 = __toESM(require("react"));
 var import_hooks2 = require("@raikou/hooks");
 var import_core5 = require("@raikou/core");
 
@@ -536,11 +539,11 @@ function Saturation(_a) {
     "onScrubEnd"
   ]);
   const { getStyles } = useColorPickerContext();
-  const [position, setPosition] = (0, import_react8.useState)({
+  const [position, setPosition] = (0, import_react9.useState)({
     x: value.s / 100,
     y: 1 - value.v / 100
   });
-  const positionRef = (0, import_react8.useRef)(position);
+  const positionRef = (0, import_react9.useRef)(position);
   const { ref } = (0, import_hooks2.useMove)(
     ({ x, y }) => {
       positionRef.current = { x, y };
@@ -555,7 +558,7 @@ function Saturation(_a) {
       onScrubStart
     }
   );
-  (0, import_react8.useEffect)(() => {
+  (0, import_react9.useEffect)(() => {
     setPosition({ x: value.s / 100, y: 1 - value.v / 100 });
   }, [value.s, value.v]);
   const handleArrow = (event, pos) => {
@@ -590,7 +593,7 @@ function Saturation(_a) {
       }
     }
   };
-  return /* @__PURE__ */ import_react8.default.createElement(
+  return /* @__PURE__ */ import_react9.default.createElement(
     import_core5.Box,
     __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("saturation")), {
       ref
@@ -602,13 +605,13 @@ function Saturation(_a) {
       tabIndex: focusable ? 0 : -1,
       onKeyDown: handleKeyDown
     }),
-    /* @__PURE__ */ import_react8.default.createElement(
+    /* @__PURE__ */ import_react9.default.createElement(
       "div",
       __spreadValues({}, getStyles("saturationOverlay", {
         style: { backgroundColor: `hsl(${value.h}, 100%, 50%)` }
       }))
     ),
-    /* @__PURE__ */ import_react8.default.createElement(
+    /* @__PURE__ */ import_react9.default.createElement(
       "div",
       __spreadValues({}, getStyles("saturationOverlay", {
         style: {
@@ -616,7 +619,7 @@ function Saturation(_a) {
         }
       }))
     ),
-    /* @__PURE__ */ import_react8.default.createElement(
+    /* @__PURE__ */ import_react9.default.createElement(
       "div",
       __spreadValues({}, getStyles("saturationOverlay", {
         style: {
@@ -624,7 +627,7 @@ function Saturation(_a) {
         }
       }))
     ),
-    /* @__PURE__ */ import_react8.default.createElement(
+    /* @__PURE__ */ import_react9.default.createElement(
       Thumb,
       __spreadValues({
         position,
@@ -636,11 +639,11 @@ function Saturation(_a) {
 Saturation.displayName = "@raikou/core/Saturation";
 
 // src/Swatches/Swatches.tsx
-var import_react10 = __toESM(require("react"));
+var import_react11 = __toESM(require("react"));
 var import_core7 = require("@raikou/core");
 
 // ../ColorSwatch/src/ColorSwatch.tsx
-var import_react9 = __toESM(require("react"));
+var import_react10 = __toESM(require("react"));
 var import_core6 = require("@raikou/core");
 var defaultProps3 = {
   size: (0, import_core6.rem)(28),
@@ -703,27 +706,27 @@ var ColorSwatch = (0, import_core6.polymorphicFactory)(
       vars,
       varsResolver
     });
-    return /* @__PURE__ */ import_react9.default.createElement(
+    return /* @__PURE__ */ import_react10.default.createElement(
       import_core6.Box,
       __spreadValues(__spreadValues({
         ref,
         variant,
         size
       }, getStyles("root", { focusable: true })), others),
-      /* @__PURE__ */ import_react9.default.createElement("span", __spreadValues({}, getStyles("alphaOverlay"))),
-      withShadow && /* @__PURE__ */ import_react9.default.createElement("span", __spreadValues({}, getStyles("shadowOverlay"))),
-      /* @__PURE__ */ import_react9.default.createElement(
+      /* @__PURE__ */ import_react10.default.createElement("span", __spreadValues({}, getStyles("alphaOverlay"))),
+      withShadow && /* @__PURE__ */ import_react10.default.createElement("span", __spreadValues({}, getStyles("shadowOverlay"))),
+      /* @__PURE__ */ import_react10.default.createElement(
         "span",
         __spreadValues({}, getStyles("colorOverlay", { style: { backgroundColor: color } }))
       ),
-      /* @__PURE__ */ import_react9.default.createElement("span", __spreadValues({}, getStyles("childrenOverlay")), children)
+      /* @__PURE__ */ import_react10.default.createElement("span", __spreadValues({}, getStyles("childrenOverlay")), children)
     );
   }
 );
 ColorSwatch.displayName = "@raikou/core/ColorSwatch";
 
 // src/Swatches/Swatches.tsx
-var Swatches = (0, import_react10.forwardRef)(
+var Swatches = (0, import_react11.forwardRef)(
   (_a, ref) => {
     var _b = _a, {
       className,
@@ -745,7 +748,7 @@ var Swatches = (0, import_react10.forwardRef)(
       "swatchesPerRow"
     ]);
     const { getStyles } = useColorPickerContext();
-    const colors = data.map((color, index) => /* @__PURE__ */ import_react10.default.createElement(
+    const colors = data.map((color, index) => /* @__PURE__ */ import_react11.default.createElement(
       ColorSwatch,
       __spreadProps(__spreadValues({}, getStyles("swatch")), {
         component: "button",
@@ -762,7 +765,7 @@ var Swatches = (0, import_react10.forwardRef)(
         "data-swatch": true
       })
     ));
-    return /* @__PURE__ */ import_react10.default.createElement(import_core7.Box, __spreadValues(__spreadProps(__spreadValues({}, getStyles("swatches")), { ref }), others), colors);
+    return /* @__PURE__ */ import_react11.default.createElement(import_core7.Box, __spreadValues(__spreadProps(__spreadValues({}, getStyles("swatches")), { ref }), others), colors);
   }
 );
 Swatches.displayName = "@raikou/core/Swatches";
@@ -861,10 +864,10 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver2
   });
-  const formatRef = (0, import_react11.useRef)(format);
-  const valueRef = (0, import_react11.useRef)();
-  const scrubTimeoutRef = (0, import_react11.useRef)(-1);
-  const isScrubbingRef = (0, import_react11.useRef)(false);
+  const formatRef = (0, import_react12.useRef)(format);
+  const valueRef = (0, import_react12.useRef)();
+  const scrubTimeoutRef = (0, import_react12.useRef)(-1);
+  const isScrubbingRef = (0, import_react12.useRef)(false);
   const withAlpha = format === "hexa" || format === "rgba" || format === "hsla";
   const [_value, setValue, controlled] = (0, import_hooks3.useUncontrolled)({
     value,
@@ -872,7 +875,7 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
     finalValue: "#FFFFFF",
     onChange
   });
-  const [parsed, setParsed] = (0, import_react11.useState)(parseColor(_value));
+  const [parsed, setParsed] = (0, import_react12.useState)(parseColor(_value));
   const startScrubbing = () => {
     window.clearTimeout(scrubTimeoutRef.current);
     isScrubbingRef.current = true;
@@ -900,7 +903,7 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
     formatRef.current = format;
     setValue(convertHsvaTo(format, parsed));
   }, [format]);
-  return /* @__PURE__ */ import_react11.default.createElement(ColorPickerProvider, { value: { getStyles } }, /* @__PURE__ */ import_react11.default.createElement(import_core8.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("wrapper")), { size }), others), withPicker && /* @__PURE__ */ import_react11.default.createElement(import_react11.default.Fragment, null, /* @__PURE__ */ import_react11.default.createElement(
+  return /* @__PURE__ */ import_react12.default.createElement(ColorPickerProvider, { value: { getStyles } }, /* @__PURE__ */ import_react12.default.createElement(import_core8.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("wrapper")), { size }), others), withPicker && /* @__PURE__ */ import_react12.default.createElement(import_react12.default.Fragment, null, /* @__PURE__ */ import_react12.default.createElement(
     Saturation,
     {
       value: parsed,
@@ -915,7 +918,7 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
       onScrubStart: startScrubbing,
       onScrubEnd: stopScrubbing
     }
-  ), /* @__PURE__ */ import_react11.default.createElement("div", __spreadValues({}, getStyles("body")), /* @__PURE__ */ import_react11.default.createElement("div", __spreadValues({}, getStyles("sliders")), /* @__PURE__ */ import_react11.default.createElement(
+  ), /* @__PURE__ */ import_react12.default.createElement("div", __spreadValues({}, getStyles("body")), /* @__PURE__ */ import_react12.default.createElement("div", __spreadValues({}, getStyles("sliders")), /* @__PURE__ */ import_react12.default.createElement(
     HueSlider,
     {
       value: parsed.h,
@@ -929,7 +932,7 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
       onScrubStart: startScrubbing,
       onScrubEnd: stopScrubbing
     }
-  ), withAlpha && /* @__PURE__ */ import_react11.default.createElement(
+  ), withAlpha && /* @__PURE__ */ import_react12.default.createElement(
     AlphaSlider,
     {
       value: parsed.a,
@@ -946,13 +949,13 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
       onScrubStart: startScrubbing,
       onScrubEnd: stopScrubbing
     }
-  )), withAlpha && /* @__PURE__ */ import_react11.default.createElement(
+  )), withAlpha && /* @__PURE__ */ import_react12.default.createElement(
     ColorSwatch,
     __spreadValues({
       color: _value,
       radius: "sm"
     }, getStyles("preview"))
-  ))), Array.isArray(swatches) && /* @__PURE__ */ import_react11.default.createElement(
+  ))), Array.isArray(swatches) && /* @__PURE__ */ import_react12.default.createElement(
     Swatches,
     {
       data: swatches,

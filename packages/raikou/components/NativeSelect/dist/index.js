@@ -64,15 +64,15 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/NativeSelect.tsx
-var import_react67 = __toESM(require("react"));
+var import_react68 = __toESM(require("react"));
 var import_core10 = require("@raikou/core");
 
 // ../InputBase/src/InputBase.tsx
-var import_react64 = __toESM(require("react"));
+var import_react65 = __toESM(require("react"));
 var import_core8 = require("@raikou/core");
 
 // ../Input/src/Input.tsx
-var import_react63 = __toESM(require("react"));
+var import_react64 = __toESM(require("react"));
 var import_core6 = require("@raikou/core");
 
 // ../_utils/create-safe-context/create-safe-context.tsx
@@ -90,6 +90,9 @@ function createOptionalContext(initialValue = null) {
 // ../_utils/use-hovered/use-hovered.ts
 var import_react3 = require("react");
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+var import_react4 = require("react");
+
 // ../Input/src/InputWrapper.context.ts
 var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetBottom: false,
@@ -100,7 +103,7 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
 });
 
 // ../Input/src/InputLabel/InputLabel.tsx
-var import_react4 = __toESM(require("react"));
+var import_react5 = __toESM(require("react"));
 var import_core = require("@raikou/core");
 var defaultProps = {
   size: "sm",
@@ -163,7 +166,7 @@ var InputLabel = (0, import_core.factory)((_props, ref) => {
   });
   const ctx = useInputWrapperContext();
   const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-  return /* @__PURE__ */ import_react4.default.createElement(
+  return /* @__PURE__ */ import_react5.default.createElement(
     import_core.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("label")), {
       component: labelElement,
@@ -180,13 +183,13 @@ var InputLabel = (0, import_core.factory)((_props, ref) => {
       }
     }), others),
     children,
-    required && /* @__PURE__ */ import_react4.default.createElement("span", __spreadProps(__spreadValues({}, getStyles("required")), { "aria-hidden": true }), " *")
+    required && /* @__PURE__ */ import_react5.default.createElement("span", __spreadProps(__spreadValues({}, getStyles("required")), { "aria-hidden": true }), " *")
   );
 });
 InputLabel.displayName = "@raikou/core/InputLabel";
 
 // ../Input/src/InputError/InputError.tsx
-var import_react5 = __toESM(require("react"));
+var import_react6 = __toESM(require("react"));
 var import_core2 = require("@raikou/core");
 var defaultProps2 = {
   size: "sm"
@@ -236,7 +239,7 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
   });
   const ctx = useInputWrapperContext();
   const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-  return /* @__PURE__ */ import_react5.default.createElement(
+  return /* @__PURE__ */ import_react6.default.createElement(
     import_core2.Box,
     __spreadValues(__spreadValues({
       component: "p",
@@ -249,7 +252,7 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
 InputError.displayName = "@raikou/core/InputError";
 
 // ../Input/src/InputDescription/InputDescription.tsx
-var import_react6 = __toESM(require("react"));
+var import_react7 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
 var defaultProps3 = {
   size: "sm"
@@ -302,7 +305,7 @@ var InputDescription = (0, import_core3.factory)(
       varsResolver: varsResolver3
     });
     const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-    return /* @__PURE__ */ import_react6.default.createElement(
+    return /* @__PURE__ */ import_react7.default.createElement(
       import_core3.Box,
       __spreadValues(__spreadValues({
         component: "p",
@@ -316,7 +319,7 @@ var InputDescription = (0, import_core3.factory)(
 InputDescription.displayName = "@raikou/core/InputDescription";
 
 // ../Input/src/InputPlaceholder/InputPlaceholder.tsx
-var import_react7 = __toESM(require("react"));
+var import_react8 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
 var defaultProps4 = {};
 var InputPlaceholder = (0, import_core4.factory)(
@@ -354,7 +357,7 @@ var InputPlaceholder = (0, import_core4.factory)(
       unstyled,
       rootSelector: "placeholder"
     });
-    return /* @__PURE__ */ import_react7.default.createElement(
+    return /* @__PURE__ */ import_react8.default.createElement(
       import_core4.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("placeholder")), {
         component: "span",
@@ -367,10 +370,9 @@ var InputPlaceholder = (0, import_core4.factory)(
 InputPlaceholder.displayName = "@raikou/core/InputPlaceholder";
 
 // ../Input/src/InputWrapper/InputWrapper.tsx
-var import_react62 = __toESM(require("react"));
+var import_react63 = __toESM(require("react"));
 
 // ../../hooks/dist/index.mjs
-var import_react8 = require("react");
 var import_react9 = require("react");
 var import_react10 = require("react");
 var import_react11 = require("react");
@@ -385,8 +387,8 @@ var import_react19 = require("react");
 var import_react20 = require("react");
 var import_react21 = require("react");
 var import_react22 = require("react");
-var import_react23 = __toESM(require("react"), 1);
-var import_react24 = require("react");
+var import_react23 = require("react");
+var import_react24 = __toESM(require("react"), 1);
 var import_react25 = require("react");
 var import_react26 = require("react");
 var import_react27 = require("react");
@@ -424,18 +426,19 @@ var import_react58 = require("react");
 var import_react59 = require("react");
 var import_react60 = require("react");
 var import_react61 = require("react");
+var import_react62 = require("react");
 function randomId() {
   return `raikou-${Math.random().toString(36).slice(2, 11)}`;
 }
-var useIsomorphicEffect = typeof document !== "undefined" ? import_react16.useLayoutEffect : import_react16.useEffect;
-var __useId = import_react23.default["useId".toString()] || (() => void 0);
+var useIsomorphicEffect = typeof document !== "undefined" ? import_react17.useLayoutEffect : import_react17.useEffect;
+var __useId = import_react24.default["useId".toString()] || (() => void 0);
 function useReactId() {
   const id = __useId();
   return id ? `raikou-${id.replace(/:/g, "")}` : "";
 }
 function useId(staticId) {
   const reactId = useReactId();
-  const [uuid, setUuid] = (0, import_react22.useState)(reactId);
+  const [uuid, setUuid] = (0, import_react23.useState)(reactId);
   useIsomorphicEffect(() => {
     setUuid(randomId());
   }, []);
@@ -563,7 +566,7 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
-  const _label = label && /* @__PURE__ */ import_react62.default.createElement(
+  const _label = label && /* @__PURE__ */ import_react63.default.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
@@ -574,7 +577,7 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
     }, sharedProps), labelProps),
     label
   );
-  const _description = hasDescription && /* @__PURE__ */ import_react62.default.createElement(
+  const _description = hasDescription && /* @__PURE__ */ import_react63.default.createElement(
     InputDescription,
     __spreadProps(__spreadValues(__spreadValues({
       key: "description"
@@ -584,8 +587,8 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
     }),
     description
   );
-  const _input = /* @__PURE__ */ import_react62.default.createElement(import_react62.default.Fragment, { key: "input" }, inputContainer(children));
-  const _error = hasError && /* @__PURE__ */ import_react62.default.createElement(
+  const _input = /* @__PURE__ */ import_react63.default.createElement(import_react63.default.Fragment, { key: "input" }, inputContainer(children));
+  const _error = hasError && /* @__PURE__ */ import_react63.default.createElement(
     InputError,
     __spreadProps(__spreadValues(__spreadValues({}, errorProps), sharedProps), {
       size: (errorProps == null ? void 0 : errorProps.size) || sharedProps.size,
@@ -608,7 +611,7 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
         return null;
     }
   });
-  return /* @__PURE__ */ import_react62.default.createElement(
+  return /* @__PURE__ */ import_react63.default.createElement(
     InputWrapperProvider,
     {
       value: __spreadValues({
@@ -617,7 +620,7 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
         inputId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
-    /* @__PURE__ */ import_react62.default.createElement(
+    /* @__PURE__ */ import_react63.default.createElement(
       import_core5.Box,
       __spreadValues(__spreadValues({
         ref,
@@ -745,7 +748,7 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
     "aria-describedby": ctx == null ? void 0 : ctx.describedBy,
     id: (ctx == null ? void 0 : ctx.inputId) || id
   } : {};
-  return /* @__PURE__ */ import_react63.default.createElement(
+  return /* @__PURE__ */ import_react64.default.createElement(
     import_core6.Box,
     __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, getStyles("wrapper")), styleProps), wrapperProps), {
       mod: {
@@ -759,7 +762,7 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
       variant,
       size
     }),
-    leftSection && /* @__PURE__ */ import_react63.default.createElement(
+    leftSection && /* @__PURE__ */ import_react64.default.createElement(
       "div",
       __spreadValues(__spreadProps(__spreadValues({}, leftSectionProps), {
         "data-position": "left"
@@ -769,7 +772,7 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
       })),
       leftSection
     ),
-    /* @__PURE__ */ import_react63.default.createElement(
+    /* @__PURE__ */ import_react64.default.createElement(
       import_core6.Box,
       __spreadValues(__spreadProps(__spreadValues(__spreadValues({
         component: "input"
@@ -780,7 +783,7 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
         variant
       }), getStyles("input"))
     ),
-    rightSection && /* @__PURE__ */ import_react63.default.createElement(
+    rightSection && /* @__PURE__ */ import_react64.default.createElement(
       "div",
       __spreadValues(__spreadProps(__spreadValues({}, rightSectionProps), {
         "data-position": "right"
@@ -903,7 +906,7 @@ var InputBase = (0, import_core8.polymorphicFactory)((props, ref) => {
     defaultProps7,
     props
   ), { inputProps, wrapperProps } = _a, others = __objRest(_a, ["inputProps", "wrapperProps"]);
-  return /* @__PURE__ */ import_react64.default.createElement(Input.Wrapper, __spreadValues({}, wrapperProps), /* @__PURE__ */ import_react64.default.createElement(Input, __spreadProps(__spreadValues(__spreadValues({}, inputProps), others), { ref })));
+  return /* @__PURE__ */ import_react65.default.createElement(Input.Wrapper, __spreadValues({}, wrapperProps), /* @__PURE__ */ import_react65.default.createElement(Input, __spreadProps(__spreadValues(__spreadValues({}, inputProps), others), { ref })));
 });
 InputBase.displayName = "@raikou/core/InputBase";
 
@@ -931,7 +934,7 @@ function getParsedComboboxData(data) {
 }
 
 // ../Combobox/src/ComboboxChevron/ComboboxChevron.tsx
-var import_react65 = __toESM(require("react"));
+var import_react66 = __toESM(require("react"));
 var import_core9 = require("@raikou/core");
 var defaultProps8 = {
   size: "sm",
@@ -981,7 +984,7 @@ var ComboboxChevron = (0, import_core9.factory)(
       varsResolver: varsResolver6,
       rootSelector: "chevron"
     });
-    return /* @__PURE__ */ import_react65.default.createElement(
+    return /* @__PURE__ */ import_react66.default.createElement(
       import_core9.Box,
       __spreadProps(__spreadValues(__spreadValues({
         component: "svg"
@@ -993,7 +996,7 @@ var ComboboxChevron = (0, import_core9.factory)(
         mod: ["combobox-chevron", { error }],
         ref
       }),
-      /* @__PURE__ */ import_react65.default.createElement(
+      /* @__PURE__ */ import_react66.default.createElement(
         "path",
         {
           d: "M4.93179 5.43179C4.75605 5.60753 4.75605 5.89245 4.93179 6.06819C5.10753 6.24392 5.39245 6.24392 5.56819 6.06819L7.49999 4.13638L9.43179 6.06819C9.60753 6.24392 9.89245 6.24392 10.0682 6.06819C10.2439 5.89245 10.2439 5.60753 10.0682 5.43179L7.81819 3.18179C7.73379 3.0974 7.61933 3.04999 7.49999 3.04999C7.38064 3.04999 7.26618 3.0974 7.18179 3.18179L4.93179 5.43179ZM10.0682 9.56819C10.2439 9.39245 10.2439 9.10753 10.0682 8.93179C9.89245 8.75606 9.60753 8.75606 9.43179 8.93179L7.49999 10.8636L5.56819 8.93179C5.39245 8.75606 5.10753 8.75606 4.93179 8.93179C4.75605 9.10753 4.75605 9.39245 4.93179 9.56819L7.18179 11.8182C7.35753 11.9939 7.64245 11.9939 7.81819 11.8182L10.0682 9.56819Z",
@@ -1008,17 +1011,17 @@ var ComboboxChevron = (0, import_core9.factory)(
 ComboboxChevron.displayName = "@raikou/core/ComboboxChevron";
 
 // src/NativeSelectOption.tsx
-var import_react66 = __toESM(require("react"));
+var import_react67 = __toESM(require("react"));
 function isGroup(input) {
   return "group" in input;
 }
 function NativeSelectOption({ data }) {
   if (isGroup(data)) {
-    const items = data.items.map((item) => /* @__PURE__ */ import_react66.default.createElement(NativeSelectOption, { key: item.value, data: item }));
-    return /* @__PURE__ */ import_react66.default.createElement("optgroup", { label: data.group }, items);
+    const items = data.items.map((item) => /* @__PURE__ */ import_react67.default.createElement(NativeSelectOption, { key: item.value, data: item }));
+    return /* @__PURE__ */ import_react67.default.createElement("optgroup", { label: data.group }, items);
   }
   const _a = data, { value, label } = _a, others = __objRest(_a, ["value", "label"]);
-  return /* @__PURE__ */ import_react66.default.createElement("option", __spreadValues({ key: data.value, value: data.value }, others), data.label);
+  return /* @__PURE__ */ import_react67.default.createElement("option", __spreadValues({ key: data.value, value: data.value }, others), data.label);
 }
 NativeSelectOption.displayName = "@raikou/core/NativeSelectOption";
 
@@ -1033,8 +1036,8 @@ var NativeSelect = (0, import_core10.factory)((props, ref) => {
     defaultProps9,
     props
   ), { data, children, size, error, rightSection } = _a, others = __objRest(_a, ["data", "children", "size", "error", "rightSection"]);
-  const options = getParsedComboboxData(data).map((item, index) => /* @__PURE__ */ import_react67.default.createElement(NativeSelectOption, { key: index, data: item }));
-  return /* @__PURE__ */ import_react67.default.createElement(
+  const options = getParsedComboboxData(data).map((item, index) => /* @__PURE__ */ import_react68.default.createElement(NativeSelectOption, { key: index, data: item }));
+  return /* @__PURE__ */ import_react68.default.createElement(
     InputBase,
     __spreadProps(__spreadValues({
       component: "select",
@@ -1044,7 +1047,7 @@ var NativeSelect = (0, import_core10.factory)((props, ref) => {
       size,
       pointer: true,
       error,
-      rightSection: rightSection || /* @__PURE__ */ import_react67.default.createElement(ComboboxChevron, { size, error })
+      rightSection: rightSection || /* @__PURE__ */ import_react68.default.createElement(ComboboxChevron, { size, error })
     }),
     children || options
   );

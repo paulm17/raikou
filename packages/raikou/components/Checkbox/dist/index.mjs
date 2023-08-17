@@ -183,6 +183,9 @@ function createOptionalContext(initialValue = null) {
 // ../_utils/use-hovered/use-hovered.ts
 import { useState as useState32 } from "react";
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+import { useEffect as useEffect34, useLayoutEffect as useLayoutEffect2 } from "react";
+
 // ../Input/src/InputWrapper.context.ts
 var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetBottom: false,

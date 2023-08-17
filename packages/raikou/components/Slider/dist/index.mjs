@@ -72,6 +72,9 @@ import React2, { createContext as createContext2, useContext as useContext2 } fr
 // ../_utils/use-hovered/use-hovered.ts
 import { useState } from "react";
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+import { useEffect, useLayoutEffect } from "react";
+
 // src/Slider.context.ts
 var [SliderProvider, useSliderContext] = createSafeContext("SliderProvider was not found in tree");
 
@@ -351,7 +354,7 @@ function getTransitionStyles({
 }
 
 // ../Transition/src/use-transition.ts
-import { useState as useState2, useEffect, useRef } from "react";
+import { useState as useState2, useEffect as useEffect2, useRef } from "react";
 import { useReducedMotion, useDidUpdate } from "@raikou/hooks";
 import { useRaikouTheme } from "@raikou/core";
 function useTransition({
@@ -400,7 +403,7 @@ function useTransition({
   useDidUpdate(() => {
     handleStateChange(mounted);
   }, [mounted]);
-  useEffect(() => () => window.clearTimeout(timeoutRef.current), []);
+  useEffect2(() => () => window.clearTimeout(timeoutRef.current), []);
   return {
     transitionDuration,
     transitionStatus,
@@ -411,7 +414,7 @@ function useTransition({
 // ../Transition/src/Transition.tsx
 function Transition({
   keepMounted,
-  transition,
+  transition = "fade",
   duration = 250,
   exitDuration = duration,
   mounted,
@@ -806,7 +809,7 @@ var Slider = factory((_props, ref) => {
 Slider.displayName = "@raikou/core/Slider";
 
 // src/RangeSlider/RangeSlider.tsx
-import React9, { useEffect as useEffect2, useRef as useRef3, useState as useState5 } from "react";
+import React9, { useEffect as useEffect3, useRef as useRef3, useState as useState5 } from "react";
 import { useMove as useMove2, useUncontrolled as useUncontrolled2 } from "@raikou/hooks";
 import {
   factory as factory2,
@@ -960,7 +963,7 @@ var RangeSlider = factory2((_props, ref) => {
     setValue(val);
     valueRef.current = val;
   };
-  useEffect2(
+  useEffect3(
     () => {
       if (Array.isArray(value)) {
         valueRef.current = value;

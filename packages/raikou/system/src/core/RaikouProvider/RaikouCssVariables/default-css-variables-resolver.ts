@@ -4,16 +4,16 @@ import { getPrimaryShade, rgba } from "../color-functions";
 import { ConvertCSSVariablesInput } from "../convert-css-variables";
 
 export type CSSVariablesResolver = (
-  theme: RaikouTheme
+  theme: RaikouTheme,
 ) => ConvertCSSVariablesInput;
 
 function assignSizeVariables(
   variables: Record<string, string>,
   sizes: Record<string, string>,
-  name: string
+  name: string,
 ) {
   keys(sizes).forEach((size) =>
-    Object.assign(variables, { [`--raikou-${name}-${size}`]: sizes[size] })
+    Object.assign(variables, { [`--raikou-${name}-${size}`]: sizes[size] }),
   );
 }
 
@@ -49,25 +49,25 @@ export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
     light: {
       "--raikou-color-text": theme.black,
       "--raikou-color-body": theme.white,
-      "--raikou-color-error": theme.colors.red[6],
-      "--raikou-color-placeholder": theme.colors.gray[5],
+      "--raikou-color-error": "#fa5252",
+      "--raikou-color-placeholder": "#adb5bd",
       "--raikou-color-anchor":
         theme.colors[theme.primaryColor][lightPrimaryShade],
       "--raikou-color-default": theme.white,
-      "--raikou-color-default-hover": theme.colors.gray[0],
+      "--raikou-color-default-hover": "#f8f9fa",
       "--raikou-color-default-color": theme.black,
-      "--raikou-color-default-border": theme.colors.gray[4],
+      "--raikou-color-default-border": "#ced4da",
     },
     dark: {
-      "--raikou-color-text": "var(--raikou-color-dark-0)",
-      "--raikou-color-body": theme.colors.dark[7],
-      "--raikou-color-error": theme.colors.red[9],
-      "--raikou-color-placeholder": theme.colors.dark[3],
+      "--raikou-color-text": "#c1c2c5",
+      "--raikou-color-body": "#1a1b1e",
+      "--raikou-color-error": "#c92a2a",
+      "--raikou-color-placeholder": "#5c5f66",
       "--raikou-color-anchor": theme.colors[theme.primaryColor][4],
-      "--raikou-color-default": theme.colors.dark[6],
-      "--raikou-color-default-hover": theme.colors.dark[5],
+      "--raikou-color-default": "#25262b",
+      "--raikou-color-default-hover": "#2c2e33",
       "--raikou-color-default-color": theme.white,
-      "--raikou-color-default-border": theme.colors.dark[4],
+      "--raikou-color-default-border": "#373a40",
     },
   };
 
@@ -98,17 +98,17 @@ export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
         ? theme.colors[color][8]
         : theme.colors[color][darkPrimaryShade + 1];
 
-    result.light["--raikou-color-dimmed"] = "var(--raikou-color-gray-6)";
+    result.light["--raikou-color-dimmed"] = "#868e96";
     result.light[`--raikou-color-${color}-filled`] =
       theme.colors[color][lightPrimaryShade];
     result.light[`--raikou-color-${color}-filled-hover`] = lightFilledHover;
     result.light[`--raikou-color-${color}-light`] = rgba(
       theme.colors[color][lightPrimaryShade],
-      0.1
+      0.1,
     );
     result.light[`--raikou-color-${color}-light-hover`] = rgba(
       theme.colors[color][lightPrimaryShade],
-      0.12
+      0.12,
     );
     result.light[`--raikou-color-${color}-light-color`] =
       theme.colors[color][lightPrimaryShade];
@@ -116,20 +116,20 @@ export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
       theme.colors[color][lightPrimaryShade];
     result.light[`--raikou-color-${color}-outline-hover`] = rgba(
       theme.colors[color][lightPrimaryShade],
-      0.05
+      0.05,
     );
 
-    result.dark["--raikou-color-dimmed"] = "var(--raikou-color-dark-2)";
+    result.dark["--raikou-color-dimmed"] = "#909296";
     result.dark[`--raikou-color-${color}-filled`] =
       theme.colors[color][darkPrimaryShade];
     result.dark[`--raikou-color-${color}-filled-hover`] = darkFilledHover;
     result.dark[`--raikou-color-${color}-light`] = rgba(
       theme.colors[color][Math.max(0, darkPrimaryShade - 2)],
-      0.1
+      0.1,
     );
     result.dark[`--raikou-color-${color}-light-hover`] = rgba(
       theme.colors[color][Math.max(0, darkPrimaryShade - 2)],
-      0.12
+      0.12,
     );
     result.dark[`--raikou-color-${color}-light-color`] =
       theme.colors[color][Math.max(darkPrimaryShade - 3, 0)];
@@ -137,7 +137,7 @@ export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
       theme.colors[color][Math.max(darkPrimaryShade - 4, 0)];
     result.dark[`--raikou-color-${color}-outline-hover`] = rgba(
       theme.colors[color][Math.max(darkPrimaryShade - 4, 0)],
-      0.05
+      0.05,
     );
   });
 

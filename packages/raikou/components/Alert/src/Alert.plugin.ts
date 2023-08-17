@@ -65,11 +65,11 @@ module.exports = function ({ addComponents, theme }: any) {
       color: "var(--_message-color, var(--__message-color))",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--__message-color": "var(--raikou-color-black)",
+        "--__message-color": "var(--raikou-alert-message-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--__message-color": "var(--raikou-color-white)",
+        "--__message-color": "var(--raikou-alert-message-color)",
       },
     },
 

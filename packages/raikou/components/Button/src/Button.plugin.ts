@@ -2,7 +2,7 @@ import { rem } from "@raikou/core";
 
 module.exports = function ({ addComponents, theme }: any) {
   addComponents({
-    ".button-root": {
+    ".button-root.button-root": {
       "--button-height-xs": rem("30px"),
       "--button-height-sm": rem("36px"),
       "--button-height-md": rem("42px"),
@@ -104,15 +104,17 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_disabled-color": "var(--raikou-color-gray-5)",
-        "--_disabled-bg": "var(--raikou-color-gray-1)",
-        "--_button-loading-overlay-bg": "rgba(255, 255, 255, 0.35)",
+        "--_disabled-color": "var(--raikou-button-disabled-color)",
+        "--_disabled-bg": "var(--raikou-button-disabled-bg)",
+        "--_button-loading-overlay-bg":
+          "var(--raikou-button-loading-overlay-bg)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_disabled-color": "var(--raikou-color-dark-3)",
-        "--_disabled-bg": "var(--raikou-color-dark-6)",
-        "--_button-loading-overlay-bg": "rgba(0, 0, 0, 0.35)",
+        "--_disabled-color": "var(--raikou-button-disabled-color)",
+        "--_disabled-bg": "var(--raikou-button-disabled-bg)",
+        "--_button-loading-overlay-bg":
+          "var(--raikou-button-loading-overlay-bg)",
       },
     },
 

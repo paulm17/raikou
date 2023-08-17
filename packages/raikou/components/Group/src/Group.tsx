@@ -106,6 +106,7 @@ export const Group = factory<GroupFactory>((_props, ref) => {
     ...others
   } = props;
 
+  // @ts-ignore
   const filteredChildren = filterFalsyChildren(children);
   const childrenCount = filteredChildren.length;
   const childWidth = `calc(${100 / childrenCount}% - (${getSpacing(

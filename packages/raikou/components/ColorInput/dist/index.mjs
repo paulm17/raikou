@@ -52,7 +52,7 @@ var __async = (__this, __arguments, generator) => {
 };
 
 // src/ColorInput.tsx
-import React35, { useEffect as useEffect7, useState as useState11 } from "react";
+import React35, { useEffect as useEffect8, useState as useState11 } from "react";
 import { useDidUpdate as useDidUpdate6, useEyeDropper, useUncontrolled as useUncontrolled3 } from "@raikou/hooks";
 import {
   factory as factory11,
@@ -124,6 +124,9 @@ function createOptionalContext(initialValue = null) {
 
 // ../_utils/use-hovered/use-hovered.ts
 import { useState } from "react";
+
+// ../_utils/create-use-external-events/create-use-external-events.ts
+import { useEffect, useLayoutEffect } from "react";
 
 // ../ColorPicker/src/ColorPicker.context.ts
 var [ColorPickerProvider, useColorPickerContext] = createSafeContext(
@@ -459,7 +462,7 @@ var HueSlider = forwardRef4(
 HueSlider.displayName = "@raikou/core/HueSlider";
 
 // ../ColorPicker/src/Saturation/Saturation.tsx
-import React7, { useEffect, useRef as useRef2, useState as useState3 } from "react";
+import React7, { useEffect as useEffect2, useRef as useRef2, useState as useState3 } from "react";
 import { clampUseMovePosition as clampUseMovePosition2, useMove as useMove2 } from "@raikou/hooks";
 import { Box as Box3 } from "@raikou/core";
 
@@ -574,7 +577,7 @@ function Saturation(_a) {
       onScrubStart
     }
   );
-  useEffect(() => {
+  useEffect2(() => {
     setPosition({ x: value.s / 100, y: 1 - value.v / 100 });
   }, [value.s, value.v]);
   const handleArrow = (event, pos) => {
@@ -1788,7 +1791,7 @@ import {
 } from "@raikou/core";
 
 // ../Floating/src/use-floating-auto-update.ts
-import { useState as useState7, useEffect as useEffect5 } from "react";
+import { useState as useState7, useEffect as useEffect6 } from "react";
 
 // ../../../../node_modules/.pnpm/@floating-ui+core@1.3.1/node_modules/@floating-ui/core/dist/floating-ui.core.mjs
 function getAlignment(placement) {
@@ -3301,7 +3304,7 @@ var computePosition2 = (reference, floating, options) => {
 
 // ../../../../node_modules/.pnpm/@floating-ui+react-dom@1.3.0_react-dom@18.2.0_react@18.2.0/node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.esm.js
 import * as React17 from "react";
-import { useLayoutEffect, useEffect as useEffect2 } from "react";
+import { useLayoutEffect as useLayoutEffect2, useEffect as useEffect3 } from "react";
 import * as ReactDOM from "react-dom";
 var arrow2 = (options) => {
   const {
@@ -3333,7 +3336,7 @@ var arrow2 = (options) => {
     }
   };
 };
-var index = typeof document !== "undefined" ? useLayoutEffect : useEffect2;
+var index = typeof document !== "undefined" ? useLayoutEffect2 : useEffect3;
 function deepEqual(a, b) {
   if (a === b) {
     return true;
@@ -3499,9 +3502,9 @@ function useFloating(options) {
 
 // ../../../../node_modules/.pnpm/@floating-ui+react@0.23.1_react-dom@18.2.0_react@18.2.0/node_modules/@floating-ui/react/dist/floating-ui.react.esm.js
 import * as React18 from "react";
-import { useLayoutEffect as useLayoutEffect2, useEffect as useEffect4, useRef as useRef6 } from "react";
+import { useLayoutEffect as useLayoutEffect3, useEffect as useEffect5, useRef as useRef6 } from "react";
 import { createPortal, flushSync as flushSync2 } from "react-dom";
-var index2 = typeof document !== "undefined" ? useLayoutEffect2 : useEffect4;
+var index2 = typeof document !== "undefined" ? useLayoutEffect3 : useEffect5;
 var serverHandoffComplete = false;
 var count = 0;
 var genId = () => "floating-ui-" + count++;
@@ -3644,7 +3647,7 @@ function useFloatingAutoUpdate({
   positionDependencies
 }) {
   const [delayedUpdate, setDelayedUpdate] = useState7(0);
-  useEffect5(() => {
+  useEffect6(() => {
     if (floating.refs.reference.current && floating.refs.floating.current) {
       return autoUpdate(
         floating.refs.reference.current,
@@ -4165,7 +4168,7 @@ function getTransitionStyles({
 }
 
 // ../Transition/src/use-transition.ts
-import { useState as useState9, useEffect as useEffect6, useRef as useRef8 } from "react";
+import { useState as useState9, useEffect as useEffect7, useRef as useRef8 } from "react";
 import { useReducedMotion, useDidUpdate as useDidUpdate5 } from "@raikou/hooks";
 import { useRaikouTheme as useRaikouTheme2 } from "@raikou/core";
 function useTransition({
@@ -4214,7 +4217,7 @@ function useTransition({
   useDidUpdate5(() => {
     handleStateChange(mounted);
   }, [mounted]);
-  useEffect6(() => () => window.clearTimeout(timeoutRef.current), []);
+  useEffect7(() => () => window.clearTimeout(timeoutRef.current), []);
   return {
     transitionDuration,
     transitionStatus,
@@ -4225,7 +4228,7 @@ function useTransition({
 // ../Transition/src/Transition.tsx
 function Transition({
   keepMounted,
-  transition,
+  transition = "fade",
   duration = 250,
   exitDuration = duration,
   mounted,
@@ -5162,7 +5165,7 @@ var ColorInput = factory11((_props, ref) => {
     onClick == null ? void 0 : onClick(event);
     setDropdownOpened(true);
   };
-  useEffect7(() => {
+  useEffect8(() => {
     if (isColorValid(_value) || _value.trim() === "") {
       setLastValidValue(_value);
     }

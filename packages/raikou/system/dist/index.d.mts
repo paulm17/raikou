@@ -3425,7 +3425,6 @@ declare function lighten(color: string, alpha: number): string;
 declare function isLightColor(color: string, luminanceThreshold?: number): boolean;
 
 interface RaikouTheme {
-    colorScheme: "light" | "dark";
     /** Controls focus ring styles. Supports the following options:
      *  - `auto` – focus ring is displayed only when the user navigates with keyboard (default value)
      *  - `always` – focus ring is displayed when the user navigates with keyboard and mouse
@@ -3569,7 +3568,7 @@ interface RaikouPrimaryShade {
     light: RaikouColorShade;
     dark: RaikouColorShade;
 }
-type DefaultRaikouColor = "dark" | "gray" | "red" | "pink" | "grape" | "violet" | "indigo" | "blue" | "cyan" | "green" | "lime" | "yellow" | "orange" | "teal" | (string & {});
+type DefaultRaikouColor = "blue" | (string & {});
 type RaikouThemeColorsOverride = {};
 type RaikouThemeColors = RaikouThemeColorsOverride extends {
     colors: Record<infer CustomColors, RaikouColorsTuple>;
@@ -3586,6 +3585,13 @@ declare const DEFAULT_THEME: RaikouTheme;
 
 declare function validateRaikouTheme(theme: RaikouTheme): asserts theme is RaikouTheme;
 declare function mergeRaikouTheme(currentTheme: RaikouTheme, themeOverride?: RaikouThemeOverride): RaikouTheme;
+
+interface RaikouCreateCssVariablesProps {
+    theme: RaikouTheme;
+    cssVariablesResolver?: any;
+    cssVariablesSelector?: string;
+}
+declare function createCSSVariables({ theme, cssVariablesResolver: generator, cssVariablesSelector, }: RaikouCreateCssVariablesProps): null;
 
 type CSSVariables = Record<CssVariable, string>;
 
@@ -3640,4 +3646,4 @@ interface DirectionProviderProps {
 }
 declare function DirectionProvider({ children, initialDirection, detectDirection, }: DirectionProviderProps): JSX.Element;
 
-export { CSSVariablesResolver, ConvertCSSVariablesInput, DEFAULT_THEME, DefaultRaikouColor, Direction, DirectionContext, DirectionContextValue, DirectionProvider, DirectionProviderProps, HeadingStyle, RGBA, RaikouBreakpoint, RaikouBreakpointsValues, RaikouColor, RaikouColorScheme, RaikouColorShade, RaikouColorsTuple, RaikouFontSize, RaikouFontSizesValues, RaikouGradient, RaikouLineHeight, RaikouLineHeightValues, RaikouPrimaryShade, RaikouProvider, RaikouRadius, RaikouRadiusValues, RaikouShadow, RaikouShadowsValues, RaikouSize, RaikouSpacing, RaikouSpacingValues, RaikouStylesRecord, RaikouTheme, RaikouThemeColors, RaikouThemeColorsOverride, RaikouThemeComponent, RaikouThemeComponents, RaikouThemeOther, RaikouThemeOverride, VariantColorResolverResult, VariantColorsResolver, VariantColorsResolverInput, convertCssVariables, darken, deepMerge, defaultCssVariablesResolver, defaultVariantColorsResolver, em, getGradient, getPrimaryShade, getThemeColor, isLightColor, keys, lighten, mergeRaikouTheme, parseThemeColor, px, rem, rgba, toRgba, useColorScheme, useDirection, validateRaikouTheme };
+export { CSSVariablesResolver, ConvertCSSVariablesInput, DEFAULT_THEME, DefaultRaikouColor, Direction, DirectionContext, DirectionContextValue, DirectionProvider, DirectionProviderProps, HeadingStyle, RGBA, RaikouBreakpoint, RaikouBreakpointsValues, RaikouColor, RaikouColorScheme, RaikouColorShade, RaikouColorsTuple, RaikouFontSize, RaikouFontSizesValues, RaikouGradient, RaikouLineHeight, RaikouLineHeightValues, RaikouPrimaryShade, RaikouProvider, RaikouRadius, RaikouRadiusValues, RaikouShadow, RaikouShadowsValues, RaikouSize, RaikouSpacing, RaikouSpacingValues, RaikouStylesRecord, RaikouTheme, RaikouThemeColors, RaikouThemeColorsOverride, RaikouThemeComponent, RaikouThemeComponents, RaikouThemeOther, RaikouThemeOverride, VariantColorResolverResult, VariantColorsResolver, VariantColorsResolverInput, convertCssVariables, createCSSVariables, darken, deepMerge, defaultCssVariablesResolver, defaultVariantColorsResolver, em, getGradient, getPrimaryShade, getThemeColor, isLightColor, keys, lighten, mergeRaikouTheme, parseThemeColor, px, rem, rgba, toRgba, useColorScheme, useDirection, validateRaikouTheme };

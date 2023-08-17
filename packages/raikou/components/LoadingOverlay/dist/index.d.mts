@@ -19,7 +19,7 @@ interface TransitionProps {
     /** If set element will not be unmounted from the DOM when it is hidden, `display: none` styles will be applied instead */
     keepMounted?: boolean;
     /** Transition name or object */
-    transition: RaikouTransition;
+    transition?: RaikouTransition;
     /** Transition duration in ms, `250` by default */
     duration?: number;
     /** Exit transition duration in ms, `250` by default */

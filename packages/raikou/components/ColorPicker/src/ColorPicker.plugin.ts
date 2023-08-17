@@ -139,11 +139,11 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_slider-checkers": "var(--raikou-color-gray-3)",
+        "--_slider-checkers": "var(--raikou-colorpicker-slider-checkers)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_slider-checkers": "var(--raikou-color-dark-4)",
+        "--_slider-checkers": "var(--raikou-colorpicker-slider-checkers)",
       },
     },
 

@@ -1,9 +1,7 @@
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
-var __defProps = Object.defineProperties;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __getProtoOf = Object.getPrototypeOf;
@@ -21,7 +19,6 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 var __objRest = (source, exclude) => {
   var target = {};
   for (var prop in source)
@@ -59,31 +56,26 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
+  FLEX_STYLE_PROPS_DATA: () => FLEX_STYLE_PROPS_DATA,
   Flex: () => Flex
 });
 module.exports = __toCommonJS(src_exports);
 
+// src/flex-props.ts
+var FLEX_STYLE_PROPS_DATA = {
+  gap: { type: "spacing", property: "gap" },
+  rowGap: { type: "spacing", property: "rowGap" },
+  columnGap: { type: "spacing", property: "columnGap" },
+  align: { type: "identity", property: "alignItems" },
+  justify: { type: "identity", property: "justifyContent" },
+  wrap: { type: "identity", property: "flexWrap" },
+  direction: { type: "identity", property: "flexDirection" }
+};
+
 // src/Flex.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
-var defaultProps = {
-  gap: "md",
-  align: "flex-start",
-  justify: "flex-start",
-  direction: "row",
-  wrap: "wrap"
-};
-var varsResolver = (0, import_core.createVarsResolver)(
-  (_, { gap, align, justify, wrap, direction }) => ({
-    root: {
-      "--flex-gap": (0, import_core.getSpacing)(gap),
-      "--flex-align": align,
-      "--flex-justify": justify,
-      "--flex-wrap": wrap,
-      "--flex-direction": direction
-    }
-  })
-);
+var defaultProps = {};
 var Flex = (0, import_core.factory)((_props, ref) => {
   const props = (0, import_core.useProps)("Flex", defaultProps, _props);
   const _a = props, {
@@ -93,12 +85,13 @@ var Flex = (0, import_core.factory)((_props, ref) => {
     styles,
     unstyled,
     vars,
+    gap,
+    rowGap,
+    columnGap,
     align,
     justify,
-    gap,
-    direction,
     wrap,
-    variant
+    direction
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -106,29 +99,55 @@ var Flex = (0, import_core.factory)((_props, ref) => {
     "styles",
     "unstyled",
     "vars",
+    "gap",
+    "rowGap",
+    "columnGap",
     "align",
     "justify",
-    "gap",
-    "direction",
     "wrap",
-    "variant"
+    "direction"
   ]);
   const getStyles = (0, import_core.useStyles)({
     name: "Flex",
+    classes: {
+      root: "flex-root"
+    },
     props,
-    classes: { root: "flex-root" },
     className,
     style,
     classNames,
     styles,
     unstyled,
-    vars,
-    varsResolver
+    vars
   });
-  return /* @__PURE__ */ import_react.default.createElement(import_core.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { variant }), others));
+  const theme = (0, import_core.useRaikouTheme)();
+  const responsiveClassName = (0, import_core.useRandomClassName)();
+  const parsedStyleProps = (0, import_core.parseStyleProps)({
+    // @ts-ignore
+    styleProps: { gap, rowGap, columnGap, align, justify, wrap, direction },
+    theme,
+    data: FLEX_STYLE_PROPS_DATA
+  });
+  return /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, parsedStyleProps.hasResponsiveStyles && /* @__PURE__ */ import_react.default.createElement(
+    import_core.InlineStyles,
+    {
+      selector: `.${responsiveClassName}`,
+      styles: parsedStyleProps.styles,
+      media: parsedStyleProps.media
+    }
+  ), /* @__PURE__ */ import_react.default.createElement(
+    import_core.Box,
+    __spreadValues(__spreadValues({
+      ref
+    }, getStyles("root", {
+      className: responsiveClassName,
+      style: (0, import_core.filterProps)(parsedStyleProps.inlineStyles)
+    })), others)
+  ));
 });
 Flex.displayName = "@raikou/core/Flex";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
+  FLEX_STYLE_PROPS_DATA,
   Flex
 });

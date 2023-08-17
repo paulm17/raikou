@@ -109,6 +109,9 @@ import React3, { createContext as createContext2, useContext as useContext2 } fr
 // ../_utils/use-hovered/use-hovered.ts
 import { useState } from "react";
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+import { useEffect, useLayoutEffect } from "react";
+
 // src/Accordion.context.ts
 var [AccordionProvider, useAccordionContext] = createSafeContext(
   "Accordion component was not found in the tree"

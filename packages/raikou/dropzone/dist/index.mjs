@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/DropzoneFullScreen.tsx
-import React14, { useEffect as useEffect2 } from "react";
+import React14, { useEffect as useEffect3 } from "react";
 import {
   Box as Box8,
   factory as factory4,
@@ -321,7 +321,7 @@ function useTransition({
 // ../components/Transition/src/Transition.tsx
 function Transition({
   keepMounted,
-  transition,
+  transition = "fade",
   duration = 250,
   exitDuration = duration,
   mounted,
@@ -719,6 +719,9 @@ import React11, { createContext as createContext2, useContext as useContext2 } f
 // ../components/_utils/use-hovered/use-hovered.ts
 import { useState as useState3 } from "react";
 
+// ../components/_utils/create-use-external-events/create-use-external-events.ts
+import { useEffect as useEffect2, useLayoutEffect } from "react";
+
 // src/Dropzone.context.ts
 var [DropzoneProvider, useDropzoneContext] = createSafeContext(
   "Dropzone component was not found in tree"
@@ -1015,10 +1018,10 @@ var DropzoneFullScreen = factory4(
     const handleDragLeave = () => {
       setCounter((prev) => prev - 1);
     };
-    useEffect2(() => {
+    useEffect3(() => {
       counter === 0 && close();
     }, [counter]);
-    useEffect2(() => {
+    useEffect3(() => {
       if (!active)
         return void 0;
       document.addEventListener("dragenter", handleDragEnter, false);

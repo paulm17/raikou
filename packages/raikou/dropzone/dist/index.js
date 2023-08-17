@@ -75,7 +75,7 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/DropzoneFullScreen.tsx
-var import_react16 = __toESM(require("react"));
+var import_react17 = __toESM(require("react"));
 var import_core12 = require("@raikou/core");
 
 // ../components/Portal/src/Portal.tsx
@@ -135,7 +135,7 @@ OptionalPortal.displayName = "@raikou/core/OptionalPortal";
 var import_hooks5 = require("@raikou/hooks");
 
 // src/Dropzone.tsx
-var import_react15 = __toESM(require("react"));
+var import_react16 = __toESM(require("react"));
 var import_react_dropzone = require("react-dropzone");
 var import_core11 = require("@raikou/core");
 
@@ -341,7 +341,7 @@ function useTransition({
 // ../components/Transition/src/Transition.tsx
 function Transition({
   keepMounted,
-  transition,
+  transition = "fade",
   duration = 250,
   exitDuration = duration,
   mounted,
@@ -721,13 +721,16 @@ var import_react12 = __toESM(require("react"));
 // ../components/_utils/use-hovered/use-hovered.ts
 var import_react13 = require("react");
 
+// ../components/_utils/create-use-external-events/create-use-external-events.ts
+var import_react14 = require("react");
+
 // src/Dropzone.context.ts
 var [DropzoneProvider, useDropzoneContext] = createSafeContext(
   "Dropzone component was not found in tree"
 );
 
 // src/DropzoneStatus.tsx
-var import_react14 = __toESM(require("react"));
+var import_react15 = __toESM(require("react"));
 var import_hooks3 = require("@raikou/hooks");
 var import_core10 = require("@raikou/core");
 function createDropzoneStatus(status) {
@@ -738,9 +741,9 @@ function createDropzoneStatus(status) {
       props
     ), { children } = _a, others = __objRest(_a, ["children"]);
     const ctx = useDropzoneContext();
-    const _children = (0, import_core10.isElement)(children) ? children : /* @__PURE__ */ import_react14.default.createElement("span", null, children);
+    const _children = (0, import_core10.isElement)(children) ? children : /* @__PURE__ */ import_react15.default.createElement("span", null, children);
     if (ctx[status]) {
-      return (0, import_react14.cloneElement)(_children, others);
+      return (0, import_react15.cloneElement)(_children, others);
     }
     return null;
   };
@@ -904,12 +907,12 @@ var Dropzone = (0, import_core11.factory)((_props, ref) => {
   }, getFilesFromEvent ? { getFilesFromEvent } : null));
   (0, import_hooks4.assignRef)(openRef, open);
   const isIdle = !isDragAccept && !isDragReject;
-  return /* @__PURE__ */ import_react15.default.createElement(
+  return /* @__PURE__ */ import_react16.default.createElement(
     DropzoneProvider,
     {
       value: { accept: isDragAccept, reject: isDragReject, idle: isIdle }
     },
-    /* @__PURE__ */ import_react15.default.createElement(
+    /* @__PURE__ */ import_react16.default.createElement(
       import_core11.Box,
       __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, others), getRootProps({ ref })), getStyles("root", { focusable: true })), {
         mod: {
@@ -920,7 +923,7 @@ var Dropzone = (0, import_core11.factory)((_props, ref) => {
           "activate-on-click": activateOnClick
         }
       }),
-      /* @__PURE__ */ import_react15.default.createElement(
+      /* @__PURE__ */ import_react16.default.createElement(
         LoadingOverlay,
         {
           visible: loading,
@@ -928,8 +931,8 @@ var Dropzone = (0, import_core11.factory)((_props, ref) => {
           unstyled
         }
       ),
-      /* @__PURE__ */ import_react15.default.createElement("input", __spreadProps(__spreadValues({}, getInputProps()), { name })),
-      /* @__PURE__ */ import_react15.default.createElement(
+      /* @__PURE__ */ import_react16.default.createElement("input", __spreadProps(__spreadValues({}, getInputProps()), { name })),
+      /* @__PURE__ */ import_react16.default.createElement(
         "div",
         __spreadProps(__spreadValues({}, getStyles("inner")), {
           "data-disable-pointer-events": !activateOnClick || void 0
@@ -1005,7 +1008,7 @@ var DropzoneFullScreen = (0, import_core12.factory)(
       styles,
       props
     });
-    const [counter, setCounter] = import_react16.default.useState(0);
+    const [counter, setCounter] = import_react17.default.useState(0);
     const [visible, { open, close }] = (0, import_hooks5.useDisclosure)(false);
     const handleDragEnter = (event) => {
       var _a2;
@@ -1017,10 +1020,10 @@ var DropzoneFullScreen = (0, import_core12.factory)(
     const handleDragLeave = () => {
       setCounter((prev) => prev - 1);
     };
-    (0, import_react16.useEffect)(() => {
+    (0, import_react17.useEffect)(() => {
       counter === 0 && close();
     }, [counter]);
-    (0, import_react16.useEffect)(() => {
+    (0, import_react17.useEffect)(() => {
       if (!active)
         return void 0;
       document.addEventListener("dragenter", handleDragEnter, false);
@@ -1030,7 +1033,7 @@ var DropzoneFullScreen = (0, import_core12.factory)(
         document.removeEventListener("dragleave", handleDragLeave, false);
       };
     }, [active]);
-    return /* @__PURE__ */ import_react16.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ import_react16.default.createElement(
+    return /* @__PURE__ */ import_react17.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ import_react17.default.createElement(
       import_core12.Box,
       __spreadProps(__spreadValues({}, getStyles("fullScreen", {
         style: {
@@ -1041,7 +1044,7 @@ var DropzoneFullScreen = (0, import_core12.factory)(
       })), {
         ref
       }),
-      /* @__PURE__ */ import_react16.default.createElement(
+      /* @__PURE__ */ import_react17.default.createElement(
         Dropzone,
         __spreadProps(__spreadValues({}, others), {
           classNames: resolvedClassNames,

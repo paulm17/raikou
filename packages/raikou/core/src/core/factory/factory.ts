@@ -46,6 +46,11 @@ export type ComponentClasses<Payload extends FactoryPayload> = {
     : never;
 };
 
+export type RaikouComponentStaticProperties<Payload extends FactoryPayload> =
+  ThemeExtend<Payload> &
+    ComponentClasses<Payload> &
+    StaticComponents<Payload["staticComponents"]>;
+
 export type RaikouComponent<Payload extends FactoryPayload> =
   React.ForwardRefExoticComponent<
     Payload["props"] & React.RefAttributes<Payload["ref"]>
@@ -61,6 +66,7 @@ export function identity<T>(value: T): T {
 export function factory<Payload extends FactoryPayload>(
   ui: React.ForwardRefRenderFunction<Payload["ref"], Payload["props"]>,
 ) {
+  // @ts-ignore
   const Component = forwardRef(ui) as RaikouComponent<Payload>;
 
   Component.extend = identity as any;

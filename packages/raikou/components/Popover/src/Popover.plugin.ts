@@ -5,7 +5,7 @@ module.exports = function ({ addComponents, theme }: any) {
     ".popover-dropdown": {
       position: "absolute",
       backgroundColor: "var(--_popover-bg)",
-      border: `rem(1px) solid var(--_popover-bd)`,
+      border: `${rem("1px")} solid var(--_popover-bd)`,
       padding: "var(--raikou-spacing-sm) var(--raikou-spacing-md)",
       boxShadow: "var(--popover-shadow, none)",
       borderRadius: "var(--popover-radius)",
@@ -15,13 +15,13 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_popover-bg": "var(--raikou-color-white)",
-        "--_popover-bd": "var(--raikou-color-gray-2)",
+        "--_popover-bg": "var(--raikou-popover-bg)",
+        "--_popover-bd": "var(--raikou-popover-bd)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_popover-bg": "var(--raikou-color-dark-6)",
-        "--_popover-bd": "var(--raikou-color-dark-4)",
+        "--_popover-bg": "var(--raikou-popover-bg)",
+        "--_popover-bd": "var(--raikou-popover-bd)",
       },
     },
 

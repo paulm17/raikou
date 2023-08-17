@@ -13,13 +13,13 @@ module.exports = function ({ addComponents, theme }: any) {
       border: `${rem("1px")} solid var(--_bd)`,
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_bd": "var(--raikou-color-gray-3)",
-        "--_bg": "var(--raikou-color-white)",
+        "--_bd": "var(--raikou-fieldset-default-bd)",
+        "--_bg": "var(--raikou-fieldset-default-bg)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_bd": "var(--raikou-color-dark-4)",
-        "--_bg": "var(--raikou-color-dark-7)",
+        "--_bd": "var(--raikou-fieldset-default-bd)",
+        "--_bg": "var(--raikou-fieldset-default-bg)",
       },
     },
 
@@ -28,13 +28,13 @@ module.exports = function ({ addComponents, theme }: any) {
       border: `${rem("1px")} solid var(--_bd)`,
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_bd": "var(--raikou-color-gray-3)",
-        "--_bg": "var(--raikou-color-gray-0)",
+        "--_bd": "var(--raikou-fieldset-filled-bd)",
+        "--_bg": "var(--raikou-fieldset-filled-bg)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_bd": "var(--raikou-color-dark-4)",
-        "--_bg": "var(--raikou-color-dark-6)",
+        "--_bd": "var(--raikou-fieldset-filled-bd)",
+        "--_bg": "var(--raikou-fieldset-filled-bg)",
       },
     },
 

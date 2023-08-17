@@ -54,11 +54,11 @@ module.exports = function ({ addComponents, theme }: any) {
 
       "fieldset:disabled &, &[data-disabled]": {
         '[data-raikou-color-scheme="light"] &': {
-          "--_label-color": "var(--raikou-color-gray-5)",
+          "--_label-color": "var(--raikou-inlineinput-disabled-label-color)",
         },
 
         '[data-raikou-color-scheme="dark"] &': {
-          "--_label-color": "var(--raikou-color-dark-3)",
+          "--_label-color": "var(--raikou-inlineinput-disabled-label-color)",
         },
       },
     },

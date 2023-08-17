@@ -184,22 +184,7 @@ export interface RaikouPrimaryShade {
   dark: RaikouColorShade;
 }
 
-export type DefaultRaikouColor =
-  | "dark"
-  | "gray"
-  | "red"
-  | "pink"
-  | "grape"
-  | "violet"
-  | "indigo"
-  | "blue"
-  | "cyan"
-  | "green"
-  | "lime"
-  | "yellow"
-  | "orange"
-  | "teal"
-  | (string & {});
+export type DefaultRaikouColor = "blue" | (string & {});
 
 export type RaikouThemeColorsOverride = {};
 

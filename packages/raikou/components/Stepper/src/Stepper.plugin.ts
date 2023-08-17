@@ -53,11 +53,11 @@ module.exports = function ({ addComponents, theme }: any) {
       backgroundColor: "var(--_separator-bg)",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_separator-bg": "var(--raikou-color-gray-2)",
+        "--_separator-bg": "var(--raikou-stepper-separator-bg)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_separator-bg": "var(--raikou-color-dark-2)",
+        "--_separator-bg": "var(--raikou-stepper-separator-bg)",
       },
 
       "&[data-active]": {
@@ -155,11 +155,13 @@ module.exports = function ({ addComponents, theme }: any) {
       borderLeft: `${rem("2px")} solid var(--_separator-border-color)`,
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_separator-border-color": "var(--raikou-color-gray-1)",
+        "--_separator-border-color":
+          "var(--raikou-stepper-separator-border-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_separator-border-color": "var(--raikou-color-dark-5)",
+        "--_separator-border-color":
+          "var(--raikou-stepper-separator-border-color)",
       },
 
       "[data-raikou-color-scheme] &[data-active]": {
@@ -185,15 +187,17 @@ module.exports = function ({ addComponents, theme }: any) {
       color: "var(--_step-icon-color)",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_step-icon-bg": "var(--raikou-color-gray-1)",
-        "--_step-icon-border-color": "var(--raikou-color-gray-1)",
-        "--_step-icon-color": "var(--raikou-color-gray-7)",
+        "--_step-icon-bg": "var(--raikou-stepper-step-icon-bg)",
+        "--_step-icon-border-color":
+          "var(--raikou-stepper-step-icon-border-color)",
+        "--_step-icon-color": "var(--raikou-stepper-step-icon-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_step-icon-bg": "var(--raikou-color-dark-5)",
-        "--_step-icon-border-color": "var(--raikou-color-dark-5)",
-        "--_step-icon-color": "var(--raikou-color-dark-1)",
+        "--_step-icon-bg": "var(--raikou-stepper-step-icon-bg)",
+        "--_step-icon-border-color":
+          "var(--raikou-stepper-step-icon-border-color)",
+        "--_step-icon-color": "var(--raikou-stepper-step-icon-color)",
       },
 
       "[data-raikou-color-scheme] &[data-progress]": {

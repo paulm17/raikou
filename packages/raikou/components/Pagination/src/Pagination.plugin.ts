@@ -10,7 +10,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--pagination-control-size-xl": rem("44px"),
     },
 
-    ".pagination-control": {
+    ".pagination-control.pagination-control": {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -42,15 +42,17 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_control-border-color": "var(--raikou-color-gray-4)",
-        "--_control-bg-color": "var(--raikou-color-white)",
-        "--_control-bg-hover": "var(--raikou-color-gray-0)",
+        "--_control-border-color":
+          "var(--raikou-pagination-control-border-color)",
+        "--_control-bg-color": "var(--raikou-pagination-control-bg-color)",
+        "--_control-bg-hover": "var(--raikou-pagination-control-bg-hover)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_control-border-color": "var(--raikou-color-dark-4)",
-        "--_control-bg-color": "var(--raikou-color-dark-6)",
-        "--_control-bg-hover": "var(--raikou-color-dark-5)",
+        "--_control-border-color":
+          "var(--raikou-pagination-control-border-color)",
+        "--_control-bg-color": "var(--raikou-pagination-control-bg-color)",
+        "--_control-bg-hover": "var(--raikou-pagination-control-bg-hover)",
       },
 
       "@media (hover: hover)": {

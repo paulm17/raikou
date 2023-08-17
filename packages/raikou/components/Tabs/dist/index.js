@@ -67,7 +67,7 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Tabs.tsx
-var import_react8 = __toESM(require("react"));
+var import_react9 = __toESM(require("react"));
 var import_hooks = require("@raikou/hooks");
 var import_core5 = require("@raikou/core");
 
@@ -92,13 +92,16 @@ var import_react2 = __toESM(require("react"));
 // ../_utils/use-hovered/use-hovered.ts
 var import_react3 = require("react");
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+var import_react4 = require("react");
+
 // src/Tabs.context.ts
 var [TabsProvider, useTabsContext] = createSafeContext(
   "Tabs component was not found in the tree"
 );
 
 // src/TabsList/TabsList.tsx
-var import_react4 = __toESM(require("react"));
+var import_react5 = __toESM(require("react"));
 var import_core = require("@raikou/core");
 var defaultProps = {};
 var TabsList = (0, import_core.factory)((_props, ref) => {
@@ -121,7 +124,7 @@ var TabsList = (0, import_core.factory)((_props, ref) => {
     "style"
   ]);
   const ctx = useTabsContext();
-  return /* @__PURE__ */ import_react4.default.createElement(
+  return /* @__PURE__ */ import_react5.default.createElement(
     import_core.Box,
     __spreadProps(__spreadValues(__spreadValues({}, others), ctx.getStyles("list", {
       className,
@@ -149,7 +152,7 @@ var TabsList = (0, import_core.factory)((_props, ref) => {
 TabsList.displayName = "@raikou/core/TabsList";
 
 // src/TabsPanel/TabsPanel.tsx
-var import_react5 = __toESM(require("react"));
+var import_react6 = __toESM(require("react"));
 var import_core2 = require("@raikou/core");
 var defaultProps2 = {};
 var TabsPanel = (0, import_core2.factory)((_props, ref) => {
@@ -158,7 +161,7 @@ var TabsPanel = (0, import_core2.factory)((_props, ref) => {
   const ctx = useTabsContext();
   const active = ctx.value === value;
   const content = ctx.keepMounted ? children : active ? children : null;
-  return /* @__PURE__ */ import_react5.default.createElement(
+  return /* @__PURE__ */ import_react6.default.createElement(
     import_core2.Box,
     __spreadProps(__spreadValues(__spreadValues({}, others), ctx.getStyles("panel", {
       className,
@@ -179,11 +182,11 @@ var TabsPanel = (0, import_core2.factory)((_props, ref) => {
 TabsPanel.displayName = "@raikou/core/TabsPanel";
 
 // src/TabsTab/TabsTab.tsx
-var import_react7 = __toESM(require("react"));
+var import_react8 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
 
 // ../UnstyledButton/src/UnstyledButton.tsx
-var import_react6 = __toESM(require("react"));
+var import_react7 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
 var defaultProps3 = {
   __staticSelector: "UnstyledButton"
@@ -220,7 +223,7 @@ var UnstyledButton = (0, import_core3.polymorphicFactory)(
       styles,
       unstyled
     });
-    return /* @__PURE__ */ import_react6.default.createElement(
+    return /* @__PURE__ */ import_react7.default.createElement(
       import_core3.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { focusable: true })), {
         component,
@@ -276,7 +279,7 @@ var TabsTab = (0, import_core4.factory)((_props, ref) => {
     onClick == null ? void 0 : onClick(event);
   };
   const stylesApiProps = { classNames, styles, props };
-  return /* @__PURE__ */ import_react7.default.createElement(
+  return /* @__PURE__ */ import_react8.default.createElement(
     UnstyledButton,
     __spreadProps(__spreadValues(__spreadValues({}, others), ctx.getStyles("tab", __spreadValues({
       className,
@@ -313,15 +316,15 @@ var TabsTab = (0, import_core4.factory)((_props, ref) => {
         onKeyDown
       })
     }),
-    leftSection && /* @__PURE__ */ import_react7.default.createElement(
+    leftSection && /* @__PURE__ */ import_react8.default.createElement(
       "span",
       __spreadProps(__spreadValues({}, ctx.getStyles("tabSection", stylesApiProps)), {
         "data-position": "left"
       }),
       leftSection
     ),
-    children && /* @__PURE__ */ import_react7.default.createElement("span", __spreadValues({}, ctx.getStyles("tabLabel", stylesApiProps)), children),
-    rightSection && /* @__PURE__ */ import_react7.default.createElement(
+    children && /* @__PURE__ */ import_react8.default.createElement("span", __spreadValues({}, ctx.getStyles("tabLabel", stylesApiProps)), children),
+    rightSection && /* @__PURE__ */ import_react8.default.createElement(
       "span",
       __spreadProps(__spreadValues({}, ctx.getStyles("tabSection", stylesApiProps)), {
         "data-position": "right"
@@ -426,7 +429,7 @@ var Tabs = (0, import_core5.factory)((_props, ref) => {
     vars,
     varsResolver
   });
-  return /* @__PURE__ */ import_react8.default.createElement(
+  return /* @__PURE__ */ import_react9.default.createElement(
     TabsProvider,
     {
       value: {
@@ -449,7 +452,7 @@ var Tabs = (0, import_core5.factory)((_props, ref) => {
         getStyles
       }
     },
-    /* @__PURE__ */ import_react8.default.createElement(
+    /* @__PURE__ */ import_react9.default.createElement(
       import_core5.Box,
       __spreadValues(__spreadValues({
         ref,

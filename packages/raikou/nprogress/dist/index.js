@@ -86,7 +86,7 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/NavigationProgress.tsx
-var import_react10 = __toESM(require("react"));
+var import_react11 = __toESM(require("react"));
 var import_core6 = require("@raikou/core");
 
 // ../components/Portal/src/Portal.tsx
@@ -143,11 +143,11 @@ function OptionalPortal(_a) {
 OptionalPortal.displayName = "@raikou/core/OptionalPortal";
 
 // ../components/Progress/src/Progress.tsx
-var import_react9 = __toESM(require("react"));
+var import_react10 = __toESM(require("react"));
 var import_core5 = require("@raikou/core");
 
 // ../components/Progress/src/ProgressRoot/ProgressRoot.tsx
-var import_react6 = __toESM(require("react"));
+var import_react7 = __toESM(require("react"));
 var import_core2 = require("@raikou/core");
 
 // ../components/_utils/create-safe-context/create-safe-context.tsx
@@ -170,6 +170,9 @@ var import_react4 = __toESM(require("react"));
 
 // ../components/_utils/use-hovered/use-hovered.ts
 var import_react5 = require("react");
+
+// ../components/_utils/create-use-external-events/create-use-external-events.ts
+var import_react6 = require("react");
 
 // ../components/Progress/src/Progress.context.ts
 var [ProgressProvider, useProgressContext] = createSafeContext(
@@ -205,12 +208,12 @@ var ProgressRoot = (0, import_core2.factory)((_props, ref) => {
     vars,
     varsResolver
   });
-  return /* @__PURE__ */ import_react6.default.createElement(ProgressProvider, { value: { getStyles } }, /* @__PURE__ */ import_react6.default.createElement(import_core2.Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others)));
+  return /* @__PURE__ */ import_react7.default.createElement(ProgressProvider, { value: { getStyles } }, /* @__PURE__ */ import_react7.default.createElement(import_core2.Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others)));
 });
 ProgressRoot.displayName = "@raikou/core/ProgressRoot";
 
 // ../components/Progress/src/ProgressSection/ProgressSection.tsx
-var import_react7 = __toESM(require("react"));
+var import_react8 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
 var defaultProps3 = {
   withAria: true
@@ -250,7 +253,7 @@ var ProgressSection = (0, import_core3.factory)((props, ref) => {
     "aria-valuenow": value,
     "aria-valuetext": `${value}%`
   } : {};
-  return /* @__PURE__ */ import_react7.default.createElement(
+  return /* @__PURE__ */ import_react8.default.createElement(
     import_core3.Box,
     __spreadProps(__spreadValues(__spreadValues(__spreadValues({
       ref
@@ -266,13 +269,13 @@ var ProgressSection = (0, import_core3.factory)((props, ref) => {
 ProgressSection.displayName = "@raikou/core/ProgressSection";
 
 // ../components/Progress/src/ProgressLabel/ProgressLabel.tsx
-var import_react8 = __toESM(require("react"));
+var import_react9 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
 var defaultProps4 = {};
 var ProgressLabel = (0, import_core4.factory)((props, ref) => {
   const _a = (0, import_core4.useProps)("ProgressLabel", defaultProps4, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
   const ctx = useProgressContext();
-  return /* @__PURE__ */ import_react8.default.createElement(
+  return /* @__PURE__ */ import_react9.default.createElement(
     import_core4.Box,
     __spreadValues(__spreadValues({
       ref
@@ -311,7 +314,7 @@ var Progress = (0, import_core5.factory)((_props, ref) => {
     styles,
     props
   });
-  return /* @__PURE__ */ import_react9.default.createElement(
+  return /* @__PURE__ */ import_react10.default.createElement(
     ProgressRoot,
     __spreadValues({
       ref,
@@ -319,7 +322,7 @@ var Progress = (0, import_core5.factory)((_props, ref) => {
       styles: resolvedStyles,
       vars
     }, others),
-    /* @__PURE__ */ import_react9.default.createElement(
+    /* @__PURE__ */ import_react10.default.createElement(
       ProgressSection,
       {
         value,
@@ -508,8 +511,8 @@ function NavigationProgress(_a) {
     timeouts: []
   });
   const state = useNprogress(store);
-  (0, import_react10.useEffect)(() => () => resetNavigationProgressAction(store), [store]);
-  return /* @__PURE__ */ import_react10.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ import_react10.default.createElement(
+  (0, import_react11.useEffect)(() => () => resetNavigationProgressAction(store), [store]);
+  return /* @__PURE__ */ import_react11.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ import_react11.default.createElement(
     Progress,
     __spreadValues({
       radius: 0,

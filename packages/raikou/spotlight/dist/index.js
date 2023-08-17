@@ -199,16 +199,16 @@ function isActionsGroup(item) {
 }
 
 // src/Spotlight.tsx
-var import_react70 = __toESM(require("react"));
+var import_react71 = __toESM(require("react"));
 var import_hooks18 = require("@raikou/hooks");
 var import_core48 = require("@raikou/core");
 
 // src/SpotlightSearch.tsx
-var import_react10 = __toESM(require("react"));
+var import_react11 = __toESM(require("react"));
 var import_core7 = require("@raikou/core");
 
 // ../components/Input/src/Input.tsx
-var import_react9 = __toESM(require("react"));
+var import_react10 = __toESM(require("react"));
 var import_core6 = require("@raikou/core");
 
 // ../components/_utils/create-safe-context/create-safe-context.tsx
@@ -238,6 +238,9 @@ function createOptionalContext(initialValue = null) {
 // ../components/_utils/use-hovered/use-hovered.ts
 var import_react3 = require("react");
 
+// ../components/_utils/create-use-external-events/create-use-external-events.ts
+var import_react4 = require("react");
+
 // ../components/Input/src/InputWrapper.context.ts
 var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetBottom: false,
@@ -248,7 +251,7 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
 });
 
 // ../components/Input/src/InputLabel/InputLabel.tsx
-var import_react4 = __toESM(require("react"));
+var import_react5 = __toESM(require("react"));
 var import_core = require("@raikou/core");
 var defaultProps = {
   size: "sm",
@@ -311,7 +314,7 @@ var InputLabel = (0, import_core.factory)((_props, ref) => {
   });
   const ctx = useInputWrapperContext();
   const getStyles2 = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-  return /* @__PURE__ */ import_react4.default.createElement(
+  return /* @__PURE__ */ import_react5.default.createElement(
     import_core.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles2("label")), {
       component: labelElement,
@@ -328,13 +331,13 @@ var InputLabel = (0, import_core.factory)((_props, ref) => {
       }
     }), others),
     children,
-    required && /* @__PURE__ */ import_react4.default.createElement("span", __spreadProps(__spreadValues({}, getStyles2("required")), { "aria-hidden": true }), " *")
+    required && /* @__PURE__ */ import_react5.default.createElement("span", __spreadProps(__spreadValues({}, getStyles2("required")), { "aria-hidden": true }), " *")
   );
 });
 InputLabel.displayName = "@raikou/core/InputLabel";
 
 // ../components/Input/src/InputError/InputError.tsx
-var import_react5 = __toESM(require("react"));
+var import_react6 = __toESM(require("react"));
 var import_core2 = require("@raikou/core");
 var defaultProps2 = {
   size: "sm"
@@ -384,7 +387,7 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
   });
   const ctx = useInputWrapperContext();
   const getStyles2 = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-  return /* @__PURE__ */ import_react5.default.createElement(
+  return /* @__PURE__ */ import_react6.default.createElement(
     import_core2.Box,
     __spreadValues(__spreadValues({
       component: "p",
@@ -397,7 +400,7 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
 InputError.displayName = "@raikou/core/InputError";
 
 // ../components/Input/src/InputDescription/InputDescription.tsx
-var import_react6 = __toESM(require("react"));
+var import_react7 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
 var defaultProps3 = {
   size: "sm"
@@ -450,7 +453,7 @@ var InputDescription = (0, import_core3.factory)(
       varsResolver: varsResolver3
     });
     const getStyles2 = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-    return /* @__PURE__ */ import_react6.default.createElement(
+    return /* @__PURE__ */ import_react7.default.createElement(
       import_core3.Box,
       __spreadValues(__spreadValues({
         component: "p",
@@ -464,7 +467,7 @@ var InputDescription = (0, import_core3.factory)(
 InputDescription.displayName = "@raikou/core/InputDescription";
 
 // ../components/Input/src/InputPlaceholder/InputPlaceholder.tsx
-var import_react7 = __toESM(require("react"));
+var import_react8 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
 var defaultProps4 = {};
 var InputPlaceholder = (0, import_core4.factory)(
@@ -502,7 +505,7 @@ var InputPlaceholder = (0, import_core4.factory)(
       unstyled,
       rootSelector: "placeholder"
     });
-    return /* @__PURE__ */ import_react7.default.createElement(
+    return /* @__PURE__ */ import_react8.default.createElement(
       import_core4.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles2("placeholder")), {
         component: "span",
@@ -515,7 +518,7 @@ var InputPlaceholder = (0, import_core4.factory)(
 InputPlaceholder.displayName = "@raikou/core/InputPlaceholder";
 
 // ../components/Input/src/InputWrapper/InputWrapper.tsx
-var import_react8 = __toESM(require("react"));
+var import_react9 = __toESM(require("react"));
 var import_hooks2 = require("@raikou/hooks");
 var import_core5 = require("@raikou/core");
 
@@ -631,7 +634,7 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
-  const _label = label && /* @__PURE__ */ import_react8.default.createElement(
+  const _label = label && /* @__PURE__ */ import_react9.default.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
@@ -642,7 +645,7 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
     }, sharedProps), labelProps),
     label
   );
-  const _description = hasDescription && /* @__PURE__ */ import_react8.default.createElement(
+  const _description = hasDescription && /* @__PURE__ */ import_react9.default.createElement(
     InputDescription,
     __spreadProps(__spreadValues(__spreadValues({
       key: "description"
@@ -652,8 +655,8 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
     }),
     description
   );
-  const _input = /* @__PURE__ */ import_react8.default.createElement(import_react8.default.Fragment, { key: "input" }, inputContainer(children));
-  const _error = hasError && /* @__PURE__ */ import_react8.default.createElement(
+  const _input = /* @__PURE__ */ import_react9.default.createElement(import_react9.default.Fragment, { key: "input" }, inputContainer(children));
+  const _error = hasError && /* @__PURE__ */ import_react9.default.createElement(
     InputError,
     __spreadProps(__spreadValues(__spreadValues({}, errorProps), sharedProps), {
       size: (errorProps == null ? void 0 : errorProps.size) || sharedProps.size,
@@ -676,7 +679,7 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
         return null;
     }
   });
-  return /* @__PURE__ */ import_react8.default.createElement(
+  return /* @__PURE__ */ import_react9.default.createElement(
     InputWrapperProvider,
     {
       value: __spreadValues({
@@ -685,7 +688,7 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
         inputId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
-    /* @__PURE__ */ import_react8.default.createElement(
+    /* @__PURE__ */ import_react9.default.createElement(
       import_core5.Box,
       __spreadValues(__spreadValues({
         ref,
@@ -813,7 +816,7 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
     "aria-describedby": ctx == null ? void 0 : ctx.describedBy,
     id: (ctx == null ? void 0 : ctx.inputId) || id
   } : {};
-  return /* @__PURE__ */ import_react9.default.createElement(
+  return /* @__PURE__ */ import_react10.default.createElement(
     import_core6.Box,
     __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, getStyles2("wrapper")), styleProps), wrapperProps), {
       mod: {
@@ -827,7 +830,7 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
       variant,
       size
     }),
-    leftSection && /* @__PURE__ */ import_react9.default.createElement(
+    leftSection && /* @__PURE__ */ import_react10.default.createElement(
       "div",
       __spreadValues(__spreadProps(__spreadValues({}, leftSectionProps), {
         "data-position": "left"
@@ -837,7 +840,7 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
       })),
       leftSection
     ),
-    /* @__PURE__ */ import_react9.default.createElement(
+    /* @__PURE__ */ import_react10.default.createElement(
       import_core6.Box,
       __spreadValues(__spreadProps(__spreadValues(__spreadValues({
         component: "input"
@@ -848,7 +851,7 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
         variant
       }), getStyles2("input"))
     ),
-    rightSection && /* @__PURE__ */ import_react9.default.createElement(
+    rightSection && /* @__PURE__ */ import_react10.default.createElement(
       "div",
       __spreadValues(__spreadProps(__spreadValues({}, rightSectionProps), {
         "data-position": "right"
@@ -895,7 +898,7 @@ var SpotlightSearch = (0, import_core7.factory)((props, ref) => {
       spotlightActions.triggerSelectedAction(ctx.store);
     }
   };
-  return /* @__PURE__ */ import_react10.default.createElement(
+  return /* @__PURE__ */ import_react11.default.createElement(
     Input,
     __spreadProps(__spreadValues({
       ref,
@@ -914,15 +917,15 @@ var SpotlightSearch = (0, import_core7.factory)((props, ref) => {
 SpotlightSearch.displayName = "@raikou/spotlight/SpotlightSearch";
 
 // src/SpotlightActionsList.tsx
-var import_react24 = __toESM(require("react"));
+var import_react25 = __toESM(require("react"));
 var import_core12 = require("@raikou/core");
 
 // ../components/ScrollArea/src/ScrollArea.tsx
-var import_react23 = __toESM(require("react"));
+var import_react24 = __toESM(require("react"));
 var import_core11 = require("@raikou/core");
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbar.tsx
-var import_react18 = __toESM(require("react"));
+var import_react19 = __toESM(require("react"));
 
 // ../components/ScrollArea/src/ScrollArea.context.ts
 var [ScrollAreaProvider, useScrollAreaContext] = createSafeContext(
@@ -930,15 +933,15 @@ var [ScrollAreaProvider, useScrollAreaContext] = createSafeContext(
 );
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarVisible.tsx
-var import_react14 = __toESM(require("react"));
+var import_react15 = __toESM(require("react"));
 var import_core8 = require("@raikou/core");
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollbarX.tsx
-var import_react12 = __toESM(require("react"));
+var import_react13 = __toESM(require("react"));
 var import_hooks5 = require("@raikou/hooks");
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/Scrollbar.tsx
-var import_react11 = __toESM(require("react"));
+var import_react12 = __toESM(require("react"));
 var import_hooks4 = require("@raikou/hooks");
 
 // ../components/ScrollArea/src/use-resize-observer.ts
@@ -1059,7 +1062,7 @@ function addUnlinkedScrollListener(node, handler = () => {
 }
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/Scrollbar.tsx
-var Scrollbar = (0, import_react11.forwardRef)(
+var Scrollbar = (0, import_react12.forwardRef)(
   (props, forwardedRef) => {
     const _a = props, {
       sizes,
@@ -1083,15 +1086,15 @@ var Scrollbar = (0, import_react11.forwardRef)(
       "onResize"
     ]);
     const context = useScrollAreaContext();
-    const [scrollbar, setScrollbar] = import_react11.default.useState(
+    const [scrollbar, setScrollbar] = import_react12.default.useState(
       null
     );
     const composeRefs = (0, import_hooks4.useMergedRef)(
       forwardedRef,
       (node) => setScrollbar(node)
     );
-    const rectRef = import_react11.default.useRef(null);
-    const prevWebkitUserSelectRef = import_react11.default.useRef("");
+    const rectRef = import_react12.default.useRef(null);
+    const prevWebkitUserSelectRef = import_react12.default.useRef("");
     const { viewport } = context;
     const maxScrollPos = sizes.content - sizes.viewport;
     const handleWheelScroll = (0, import_hooks4.useCallbackRef)(onWheelScroll);
@@ -1104,7 +1107,7 @@ var Scrollbar = (0, import_react11.forwardRef)(
         onDragScroll({ x, y });
       }
     };
-    (0, import_react11.useEffect)(() => {
+    (0, import_react12.useEffect)(() => {
       const handleWheel = (event) => {
         const element = event.target;
         const isScrollbarWheel = scrollbar == null ? void 0 : scrollbar.contains(element);
@@ -1116,10 +1119,10 @@ var Scrollbar = (0, import_react11.forwardRef)(
         passive: false
       });
     }, [viewport, scrollbar, maxScrollPos, handleWheelScroll]);
-    (0, import_react11.useEffect)(handleThumbPositionChange, [sizes, handleThumbPositionChange]);
+    (0, import_react12.useEffect)(handleThumbPositionChange, [sizes, handleThumbPositionChange]);
     useResizeObserver(scrollbar, handleResize);
     useResizeObserver(context.content, handleResize);
-    return /* @__PURE__ */ import_react11.default.createElement(
+    return /* @__PURE__ */ import_react12.default.createElement(
       ScrollbarProvider,
       {
         value: {
@@ -1131,7 +1134,7 @@ var Scrollbar = (0, import_react11.forwardRef)(
           onThumbPointerDown: (0, import_hooks4.useCallbackRef)(onThumbPointerDown)
         }
       },
-      /* @__PURE__ */ import_react11.default.createElement(
+      /* @__PURE__ */ import_react12.default.createElement(
         "div",
         __spreadProps(__spreadValues({}, scrollbarProps), {
           ref: composeRefs,
@@ -1166,17 +1169,17 @@ var Scrollbar = (0, import_react11.forwardRef)(
 );
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollbarX.tsx
-var ScrollAreaScrollbarX = (0, import_react12.forwardRef)((props, forwardedRef) => {
+var ScrollAreaScrollbarX = (0, import_react13.forwardRef)((props, forwardedRef) => {
   const _a = props, { sizes, onSizesChange, style } = _a, others = __objRest(_a, ["sizes", "onSizesChange", "style"]);
   const ctx = useScrollAreaContext();
-  const [computedStyle, setComputedStyle] = (0, import_react12.useState)();
-  const ref = (0, import_react12.useRef)(null);
+  const [computedStyle, setComputedStyle] = (0, import_react13.useState)();
+  const ref = (0, import_react13.useRef)(null);
   const composeRefs = (0, import_hooks5.useMergedRef)(forwardedRef, ref, ctx.onScrollbarXChange);
-  (0, import_react12.useEffect)(() => {
+  (0, import_react13.useEffect)(() => {
     if (ref.current)
       setComputedStyle(getComputedStyle(ref.current));
   }, [ref]);
-  return /* @__PURE__ */ import_react12.default.createElement(
+  return /* @__PURE__ */ import_react13.default.createElement(
     Scrollbar,
     __spreadProps(__spreadValues({
       "data-orientation": "horizontal"
@@ -1215,23 +1218,23 @@ var ScrollAreaScrollbarX = (0, import_react12.forwardRef)((props, forwardedRef) 
 });
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollbarY.tsx
-var import_react13 = __toESM(require("react"));
+var import_react14 = __toESM(require("react"));
 var import_hooks6 = require("@raikou/hooks");
-var ScrollAreaScrollbarY = (0, import_react13.forwardRef)((props, forwardedRef) => {
+var ScrollAreaScrollbarY = (0, import_react14.forwardRef)((props, forwardedRef) => {
   const _a = props, { sizes, onSizesChange, style } = _a, others = __objRest(_a, ["sizes", "onSizesChange", "style"]);
   const context = useScrollAreaContext();
-  const [computedStyle, setComputedStyle] = import_react13.default.useState();
-  const ref = (0, import_react13.useRef)(null);
+  const [computedStyle, setComputedStyle] = import_react14.default.useState();
+  const ref = (0, import_react14.useRef)(null);
   const composeRefs = (0, import_hooks6.useMergedRef)(
     forwardedRef,
     ref,
     context.onScrollbarYChange
   );
-  (0, import_react13.useEffect)(() => {
+  (0, import_react14.useEffect)(() => {
     if (ref.current)
       setComputedStyle(getComputedStyle(ref.current));
   }, [ref]);
-  return /* @__PURE__ */ import_react13.default.createElement(
+  return /* @__PURE__ */ import_react14.default.createElement(
     Scrollbar,
     __spreadProps(__spreadValues({}, others), {
       "data-orientation": "vertical",
@@ -1269,13 +1272,13 @@ var ScrollAreaScrollbarY = (0, import_react13.forwardRef)((props, forwardedRef) 
 });
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarVisible.tsx
-var ScrollAreaScrollbarVisible = (0, import_react14.forwardRef)((props, forwardedRef) => {
+var ScrollAreaScrollbarVisible = (0, import_react15.forwardRef)((props, forwardedRef) => {
   const _a = props, { orientation = "vertical" } = _a, scrollbarProps = __objRest(_a, ["orientation"]);
   const { dir } = (0, import_core8.useDirection)();
   const context = useScrollAreaContext();
-  const thumbRef = (0, import_react14.useRef)(null);
-  const pointerOffsetRef = (0, import_react14.useRef)(0);
-  const [sizes, setSizes] = (0, import_react14.useState)({
+  const thumbRef = (0, import_react15.useRef)(null);
+  const pointerOffsetRef = (0, import_react15.useRef)(0);
+  const [sizes, setSizes] = (0, import_react15.useState)({
     content: 0,
     viewport: 0,
     scrollbar: { size: 0, paddingStart: 0, paddingEnd: 0 }
@@ -1302,7 +1305,7 @@ var ScrollAreaScrollbarVisible = (0, import_react14.forwardRef)((props, forwarde
     direction
   );
   if (orientation === "horizontal") {
-    return /* @__PURE__ */ import_react14.default.createElement(
+    return /* @__PURE__ */ import_react15.default.createElement(
       ScrollAreaScrollbarX,
       __spreadProps(__spreadValues({}, commonProps), {
         ref: forwardedRef,
@@ -1326,7 +1329,7 @@ var ScrollAreaScrollbarVisible = (0, import_react14.forwardRef)((props, forwarde
     );
   }
   if (orientation === "vertical") {
-    return /* @__PURE__ */ import_react14.default.createElement(
+    return /* @__PURE__ */ import_react15.default.createElement(
       ScrollAreaScrollbarY,
       __spreadProps(__spreadValues({}, commonProps), {
         ref: forwardedRef,
@@ -1352,15 +1355,15 @@ var ScrollAreaScrollbarVisible = (0, import_react14.forwardRef)((props, forwarde
 });
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarHover.tsx
-var import_react16 = __toESM(require("react"));
+var import_react17 = __toESM(require("react"));
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarAuto.tsx
-var import_react15 = __toESM(require("react"));
+var import_react16 = __toESM(require("react"));
 var import_hooks7 = require("@raikou/hooks");
-var ScrollAreaScrollbarAuto = (0, import_react15.forwardRef)((props, ref) => {
+var ScrollAreaScrollbarAuto = (0, import_react16.forwardRef)((props, ref) => {
   const context = useScrollAreaContext();
   const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
-  const [visible, setVisible] = (0, import_react15.useState)(false);
+  const [visible, setVisible] = (0, import_react16.useState)(false);
   const isHorizontal = props.orientation === "horizontal";
   const handleResize = (0, import_hooks7.useDebounceCallback)(() => {
     if (context.viewport) {
@@ -1372,7 +1375,7 @@ var ScrollAreaScrollbarAuto = (0, import_react15.forwardRef)((props, ref) => {
   useResizeObserver(context.viewport, handleResize);
   useResizeObserver(context.content, handleResize);
   if (forceMount || visible) {
-    return /* @__PURE__ */ import_react15.default.createElement(
+    return /* @__PURE__ */ import_react16.default.createElement(
       ScrollAreaScrollbarVisible,
       __spreadProps(__spreadValues({
         "data-state": visible ? "visible" : "hidden"
@@ -1385,12 +1388,12 @@ var ScrollAreaScrollbarAuto = (0, import_react15.forwardRef)((props, ref) => {
 });
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarHover.tsx
-var ScrollAreaScrollbarHover = (0, import_react16.forwardRef)(
+var ScrollAreaScrollbarHover = (0, import_react17.forwardRef)(
   (props, ref) => {
     const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
     const context = useScrollAreaContext();
-    const [visible, setVisible] = (0, import_react16.useState)(false);
-    (0, import_react16.useEffect)(() => {
+    const [visible, setVisible] = (0, import_react17.useState)(false);
+    (0, import_react17.useEffect)(() => {
       const { scrollArea } = context;
       let hideTimer = 0;
       if (scrollArea) {
@@ -1412,7 +1415,7 @@ var ScrollAreaScrollbarHover = (0, import_react16.forwardRef)(
       return void 0;
     }, [context.scrollArea, context.scrollHideDelay]);
     if (forceMount || visible) {
-      return /* @__PURE__ */ import_react16.default.createElement(
+      return /* @__PURE__ */ import_react17.default.createElement(
         ScrollAreaScrollbarAuto,
         __spreadProps(__spreadValues({
           "data-state": visible ? "visible" : "hidden"
@@ -1426,15 +1429,15 @@ var ScrollAreaScrollbarHover = (0, import_react16.forwardRef)(
 );
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarScroll.tsx
-var import_react17 = __toESM(require("react"));
+var import_react18 = __toESM(require("react"));
 var import_hooks8 = require("@raikou/hooks");
-var ScrollAreaScrollbarScroll = (0, import_react17.forwardRef)((props, red) => {
+var ScrollAreaScrollbarScroll = (0, import_react18.forwardRef)((props, red) => {
   const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
   const context = useScrollAreaContext();
   const isHorizontal = props.orientation === "horizontal";
-  const [state, setState] = (0, import_react17.useState)("hidden");
+  const [state, setState] = (0, import_react18.useState)("hidden");
   const debounceScrollEnd = (0, import_hooks8.useDebounceCallback)(() => setState("idle"), 100);
-  (0, import_react17.useEffect)(() => {
+  (0, import_react18.useEffect)(() => {
     if (state === "idle") {
       const hideTimer = window.setTimeout(
         () => setState("hidden"),
@@ -1444,7 +1447,7 @@ var ScrollAreaScrollbarScroll = (0, import_react17.forwardRef)((props, red) => {
     }
     return void 0;
   }, [state, context.scrollHideDelay]);
-  (0, import_react17.useEffect)(() => {
+  (0, import_react18.useEffect)(() => {
     const { viewport } = context;
     const scrollDirection = isHorizontal ? "scrollLeft" : "scrollTop";
     if (viewport) {
@@ -1464,7 +1467,7 @@ var ScrollAreaScrollbarScroll = (0, import_react17.forwardRef)((props, red) => {
     return void 0;
   }, [context.viewport, isHorizontal, debounceScrollEnd]);
   if (forceMount || state !== "hidden") {
-    return /* @__PURE__ */ import_react17.default.createElement(
+    return /* @__PURE__ */ import_react18.default.createElement(
       ScrollAreaScrollbarVisible,
       __spreadProps(__spreadValues({
         "data-state": state === "hidden" ? "hidden" : "visible"
@@ -1485,30 +1488,30 @@ var ScrollAreaScrollbarScroll = (0, import_react17.forwardRef)((props, red) => {
 });
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbar.tsx
-var ScrollAreaScrollbar = import_react18.default.forwardRef(
+var ScrollAreaScrollbar = import_react19.default.forwardRef(
   (props, forwardedRef) => {
     const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
     const context = useScrollAreaContext();
     const { onScrollbarXEnabledChange, onScrollbarYEnabledChange } = context;
     const isHorizontal = props.orientation === "horizontal";
-    import_react18.default.useEffect(() => {
+    import_react19.default.useEffect(() => {
       isHorizontal ? onScrollbarXEnabledChange(true) : onScrollbarYEnabledChange(true);
       return () => {
         isHorizontal ? onScrollbarXEnabledChange(false) : onScrollbarYEnabledChange(false);
       };
     }, [isHorizontal, onScrollbarXEnabledChange, onScrollbarYEnabledChange]);
-    return context.type === "hover" ? /* @__PURE__ */ import_react18.default.createElement(ScrollAreaScrollbarHover, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "scroll" ? /* @__PURE__ */ import_react18.default.createElement(ScrollAreaScrollbarScroll, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "auto" ? /* @__PURE__ */ import_react18.default.createElement(ScrollAreaScrollbarAuto, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "always" ? /* @__PURE__ */ import_react18.default.createElement(ScrollAreaScrollbarVisible, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef })) : null;
+    return context.type === "hover" ? /* @__PURE__ */ import_react19.default.createElement(ScrollAreaScrollbarHover, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "scroll" ? /* @__PURE__ */ import_react19.default.createElement(ScrollAreaScrollbarScroll, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "auto" ? /* @__PURE__ */ import_react19.default.createElement(ScrollAreaScrollbarAuto, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "always" ? /* @__PURE__ */ import_react19.default.createElement(ScrollAreaScrollbarVisible, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef })) : null;
   }
 );
 
 // ../components/ScrollArea/src/ScrollAreaCorner/ScrollAreaCorner.tsx
-var import_react19 = __toESM(require("react"));
-var Corner = import_react19.default.forwardRef(
+var import_react20 = __toESM(require("react"));
+var Corner = import_react20.default.forwardRef(
   (props, ref) => {
     const _a = props, { style } = _a, others = __objRest(_a, ["style"]);
     const ctx = useScrollAreaContext();
-    const [width, setWidth] = import_react19.default.useState(0);
-    const [height, setHeight] = import_react19.default.useState(0);
+    const [width, setWidth] = import_react20.default.useState(0);
+    const [height, setHeight] = import_react20.default.useState(0);
     const hasSize = Boolean(width && height);
     useResizeObserver(ctx.scrollbarX, () => {
       var _a2;
@@ -1522,39 +1525,39 @@ var Corner = import_react19.default.forwardRef(
       ctx.onCornerWidthChange(w);
       setWidth(w);
     });
-    return hasSize ? /* @__PURE__ */ import_react19.default.createElement("div", __spreadProps(__spreadValues({}, others), { ref, style: __spreadProps(__spreadValues({}, style), { width, height }) })) : null;
+    return hasSize ? /* @__PURE__ */ import_react20.default.createElement("div", __spreadProps(__spreadValues({}, others), { ref, style: __spreadProps(__spreadValues({}, style), { width, height }) })) : null;
   }
 );
-var ScrollAreaCorner = import_react19.default.forwardRef((props, ref) => {
+var ScrollAreaCorner = import_react20.default.forwardRef((props, ref) => {
   const ctx = useScrollAreaContext();
   const hasBothScrollbarsVisible = Boolean(ctx.scrollbarX && ctx.scrollbarY);
   const hasCorner = ctx.type !== "scroll" && hasBothScrollbarsVisible;
-  return hasCorner ? /* @__PURE__ */ import_react19.default.createElement(Corner, __spreadProps(__spreadValues({}, props), { ref })) : null;
+  return hasCorner ? /* @__PURE__ */ import_react20.default.createElement(Corner, __spreadProps(__spreadValues({}, props), { ref })) : null;
 });
 
 // ../components/ScrollArea/src/ScrollAreaRoot/ScrollAreaRoot.tsx
-var import_react20 = __toESM(require("react"));
+var import_react21 = __toESM(require("react"));
 var import_hooks9 = require("@raikou/hooks");
 var import_core9 = require("@raikou/core");
 var defaultProps8 = {
   scrollHideDelay: 1e3,
   type: "hover"
 };
-var ScrollAreaRoot = (0, import_react20.forwardRef)(
+var ScrollAreaRoot = (0, import_react21.forwardRef)(
   (_props, ref) => {
     const props = (0, import_core9.useProps)("ScrollAreaRoot", defaultProps8, _props);
     const _a = props, { type, scrollHideDelay } = _a, others = __objRest(_a, ["type", "scrollHideDelay"]);
-    const [scrollArea, setScrollArea] = (0, import_react20.useState)(null);
-    const [viewport, setViewport] = (0, import_react20.useState)(null);
-    const [content, setContent] = (0, import_react20.useState)(null);
-    const [scrollbarX, setScrollbarX] = (0, import_react20.useState)(null);
-    const [scrollbarY, setScrollbarY] = (0, import_react20.useState)(null);
-    const [cornerWidth, setCornerWidth] = (0, import_react20.useState)(0);
-    const [cornerHeight, setCornerHeight] = (0, import_react20.useState)(0);
-    const [scrollbarXEnabled, setScrollbarXEnabled] = (0, import_react20.useState)(false);
-    const [scrollbarYEnabled, setScrollbarYEnabled] = (0, import_react20.useState)(false);
+    const [scrollArea, setScrollArea] = (0, import_react21.useState)(null);
+    const [viewport, setViewport] = (0, import_react21.useState)(null);
+    const [content, setContent] = (0, import_react21.useState)(null);
+    const [scrollbarX, setScrollbarX] = (0, import_react21.useState)(null);
+    const [scrollbarY, setScrollbarY] = (0, import_react21.useState)(null);
+    const [cornerWidth, setCornerWidth] = (0, import_react21.useState)(0);
+    const [cornerHeight, setCornerHeight] = (0, import_react21.useState)(0);
+    const [scrollbarXEnabled, setScrollbarXEnabled] = (0, import_react21.useState)(false);
+    const [scrollbarYEnabled, setScrollbarYEnabled] = (0, import_react21.useState)(false);
     const rootRef = (0, import_hooks9.useMergedRef)(ref, (node) => setScrollArea(node));
-    return /* @__PURE__ */ import_react20.default.createElement(
+    return /* @__PURE__ */ import_react21.default.createElement(
       ScrollAreaProvider,
       {
         value: {
@@ -1577,7 +1580,7 @@ var ScrollAreaRoot = (0, import_react20.forwardRef)(
           onCornerHeightChange: setCornerHeight
         }
       },
-      /* @__PURE__ */ import_react20.default.createElement(
+      /* @__PURE__ */ import_react21.default.createElement(
         import_core9.Box,
         __spreadProps(__spreadValues({}, others), {
           ref: rootRef,
@@ -1593,14 +1596,14 @@ var ScrollAreaRoot = (0, import_react20.forwardRef)(
 ScrollAreaRoot.displayName = "@raikou/core/ScrollAreaRoot";
 
 // ../components/ScrollArea/src/ScrollAreaViewport/ScrollAreaViewport.tsx
-var import_react21 = __toESM(require("react"));
+var import_react22 = __toESM(require("react"));
 var import_hooks10 = require("@raikou/hooks");
 var import_core10 = require("@raikou/core");
-var ScrollAreaViewport = (0, import_react21.forwardRef)((_a, ref) => {
+var ScrollAreaViewport = (0, import_react22.forwardRef)((_a, ref) => {
   var _b = _a, { children, style } = _b, others = __objRest(_b, ["children", "style"]);
   const ctx = useScrollAreaContext();
   const rootRef = (0, import_hooks10.useMergedRef)(ref, ctx.onViewportChange);
-  return /* @__PURE__ */ import_react21.default.createElement(
+  return /* @__PURE__ */ import_react22.default.createElement(
     import_core10.Box,
     __spreadProps(__spreadValues({}, others), {
       ref: rootRef,
@@ -1609,7 +1612,7 @@ var ScrollAreaViewport = (0, import_react21.forwardRef)((_a, ref) => {
         overflowY: ctx.scrollbarYEnabled ? "scroll" : "hidden"
       }, style)
     }),
-    /* @__PURE__ */ import_react21.default.createElement(
+    /* @__PURE__ */ import_react22.default.createElement(
       "div",
       {
         style: { minWidth: "100%", display: "table" },
@@ -1622,9 +1625,9 @@ var ScrollAreaViewport = (0, import_react21.forwardRef)((_a, ref) => {
 ScrollAreaViewport.displayName = "@raikou/core/ScrollAreaViewport";
 
 // ../components/ScrollArea/src/ScrollAreaThumb/ScrollAreaThumb.tsx
-var import_react22 = __toESM(require("react"));
+var import_react23 = __toESM(require("react"));
 var import_hooks11 = require("@raikou/hooks");
-var Thumb = (0, import_react22.forwardRef)(
+var Thumb = (0, import_react23.forwardRef)(
   (props, forwardedRef) => {
     const _a = props, { style } = _a, others = __objRest(_a, ["style"]);
     const scrollAreaContext = useScrollAreaContext();
@@ -1634,14 +1637,14 @@ var Thumb = (0, import_react22.forwardRef)(
       forwardedRef,
       (node) => scrollbarContext.onThumbChange(node)
     );
-    const removeUnlinkedScrollListenerRef = (0, import_react22.useRef)();
+    const removeUnlinkedScrollListenerRef = (0, import_react23.useRef)();
     const debounceScrollEnd = (0, import_hooks11.useDebounceCallback)(() => {
       if (removeUnlinkedScrollListenerRef.current) {
         removeUnlinkedScrollListenerRef.current();
         removeUnlinkedScrollListenerRef.current = void 0;
       }
     }, 100);
-    (0, import_react22.useEffect)(() => {
+    (0, import_react23.useEffect)(() => {
       const { viewport } = scrollAreaContext;
       if (viewport) {
         const handleScroll2 = () => {
@@ -1661,7 +1664,7 @@ var Thumb = (0, import_react22.forwardRef)(
       }
       return void 0;
     }, [scrollAreaContext.viewport, debounceScrollEnd, onThumbPositionChange]);
-    return /* @__PURE__ */ import_react22.default.createElement(
+    return /* @__PURE__ */ import_react23.default.createElement(
       "div",
       __spreadProps(__spreadValues({
         "data-state": scrollbarContext.hasThumb ? "visible" : "hidden"
@@ -1689,11 +1692,11 @@ var Thumb = (0, import_react22.forwardRef)(
     );
   }
 );
-var ScrollAreaThumb = import_react22.default.forwardRef((props, forwardedRef) => {
+var ScrollAreaThumb = import_react23.default.forwardRef((props, forwardedRef) => {
   const _a = props, { forceMount } = _a, thumbProps = __objRest(_a, ["forceMount"]);
   const scrollbarContext = useScrollbarContext();
   if (forceMount || scrollbarContext.hasThumb) {
-    return /* @__PURE__ */ import_react22.default.createElement(Thumb, __spreadValues({ ref: forwardedRef }, thumbProps));
+    return /* @__PURE__ */ import_react23.default.createElement(Thumb, __spreadValues({ ref: forwardedRef }, thumbProps));
   }
   return null;
 });
@@ -1744,7 +1747,7 @@ var ScrollArea = (0, import_core11.factory)((_props, ref) => {
     "children",
     "offsetScrollbars"
   ]);
-  const [scrollbarHovered, setScrollbarHovered] = (0, import_react23.useState)(false);
+  const [scrollbarHovered, setScrollbarHovered] = (0, import_react24.useState)(false);
   const getStyles2 = (0, import_core11.useStyles)({
     name: "ScrollArea",
     props,
@@ -1764,14 +1767,14 @@ var ScrollArea = (0, import_core11.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver6
   });
-  return /* @__PURE__ */ import_react23.default.createElement(
+  return /* @__PURE__ */ import_react24.default.createElement(
     ScrollAreaRoot,
     __spreadValues(__spreadValues({
       type: type === "never" ? "always" : type,
       scrollHideDelay,
       ref
     }, getStyles2("root")), others),
-    /* @__PURE__ */ import_react23.default.createElement(
+    /* @__PURE__ */ import_react24.default.createElement(
       ScrollAreaViewport,
       __spreadProps(__spreadValues(__spreadValues({}, viewportProps), getStyles2("viewport")), {
         ref: viewportRef,
@@ -1783,7 +1786,7 @@ var ScrollArea = (0, import_core11.factory)((_props, ref) => {
       }),
       children
     ),
-    /* @__PURE__ */ import_react23.default.createElement(
+    /* @__PURE__ */ import_react24.default.createElement(
       ScrollAreaScrollbar,
       __spreadProps(__spreadValues({}, getStyles2("scrollbar")), {
         orientation: "horizontal",
@@ -1792,9 +1795,9 @@ var ScrollArea = (0, import_core11.factory)((_props, ref) => {
         onMouseEnter: () => setScrollbarHovered(true),
         onMouseLeave: () => setScrollbarHovered(false)
       }),
-      /* @__PURE__ */ import_react23.default.createElement(ScrollAreaThumb, __spreadValues({}, getStyles2("thumb")))
+      /* @__PURE__ */ import_react24.default.createElement(ScrollAreaThumb, __spreadValues({}, getStyles2("thumb")))
     ),
-    /* @__PURE__ */ import_react23.default.createElement(
+    /* @__PURE__ */ import_react24.default.createElement(
       ScrollAreaScrollbar,
       __spreadProps(__spreadValues({}, getStyles2("scrollbar")), {
         orientation: "vertical",
@@ -1803,9 +1806,9 @@ var ScrollArea = (0, import_core11.factory)((_props, ref) => {
         onMouseEnter: () => setScrollbarHovered(true),
         onMouseLeave: () => setScrollbarHovered(false)
       }),
-      /* @__PURE__ */ import_react23.default.createElement(ScrollAreaThumb, __spreadValues({}, getStyles2("thumb")))
+      /* @__PURE__ */ import_react24.default.createElement(ScrollAreaThumb, __spreadValues({}, getStyles2("thumb")))
     ),
-    /* @__PURE__ */ import_react23.default.createElement(
+    /* @__PURE__ */ import_react24.default.createElement(
       ScrollAreaCorner,
       __spreadProps(__spreadValues({}, getStyles2("corner")), {
         "data-hovered": scrollbarHovered || void 0,
@@ -1849,7 +1852,7 @@ var ScrollAreaAutosize = (0, import_core11.factory)((props, ref) => {
     "style",
     "vars"
   ]);
-  return /* @__PURE__ */ import_react23.default.createElement(import_core11.Box, __spreadProps(__spreadValues({}, others), { ref, style: [{ display: "flex" }, style] }), /* @__PURE__ */ import_react23.default.createElement(import_core11.Box, { style: { display: "flex", flexDirection: "column", flex: 1 } }, /* @__PURE__ */ import_react23.default.createElement(
+  return /* @__PURE__ */ import_react24.default.createElement(import_core11.Box, __spreadProps(__spreadValues({}, others), { ref, style: [{ display: "flex" }, style] }), /* @__PURE__ */ import_react24.default.createElement(import_core11.Box, { style: { display: "flex", flexDirection: "column", flex: 1 } }, /* @__PURE__ */ import_react24.default.createElement(
     ScrollArea,
     {
       classNames,
@@ -1894,13 +1897,13 @@ var SpotlightActionsList = (0, import_core12.factory)(
       "styles"
     ]);
     const ctx = useSpotlightContext();
-    const generatedId = `raikou-${(0, import_react24.useId)().replaceAll(":", "")}`;
+    const generatedId = `raikou-${(0, import_react25.useId)().replaceAll(":", "")}`;
     const listId = id || generatedId;
-    (0, import_react24.useEffect)(() => {
+    (0, import_react25.useEffect)(() => {
       spotlightActions.setListId(listId, ctx.store);
       return () => spotlightActions.setListId("", ctx.store);
     }, []);
-    return /* @__PURE__ */ import_react24.default.createElement(
+    return /* @__PURE__ */ import_react25.default.createElement(
       ScrollArea.Autosize,
       __spreadValues(__spreadProps(__spreadValues({}, ctx.getStyles("actionsList", {
         className,
@@ -1921,11 +1924,11 @@ var SpotlightActionsList = (0, import_core12.factory)(
 SpotlightActionsList.displayName = "@raikou/spotlight/SpotlightActionsList";
 
 // src/SpotlightAction.tsx
-var import_react29 = __toESM(require("react"));
+var import_react30 = __toESM(require("react"));
 var import_core18 = require("@raikou/core");
 
 // ../components/UnstyledButton/src/UnstyledButton.tsx
-var import_react25 = __toESM(require("react"));
+var import_react26 = __toESM(require("react"));
 var import_core13 = require("@raikou/core");
 var defaultProps11 = {
   __staticSelector: "UnstyledButton"
@@ -1962,7 +1965,7 @@ var UnstyledButton = (0, import_core13.polymorphicFactory)(
       styles,
       unstyled
     });
-    return /* @__PURE__ */ import_react25.default.createElement(
+    return /* @__PURE__ */ import_react26.default.createElement(
       import_core13.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles2("root", { focusable: true })), {
         component,
@@ -1975,11 +1978,11 @@ var UnstyledButton = (0, import_core13.polymorphicFactory)(
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
 // ../components/Highlight/src/Highlight.tsx
-var import_react28 = __toESM(require("react"));
+var import_react29 = __toESM(require("react"));
 var import_core17 = require("@raikou/core");
 
 // ../components/Text/src/Text.tsx
-var import_react26 = __toESM(require("react"));
+var import_react27 = __toESM(require("react"));
 var import_core14 = require("@raikou/core");
 function getTextTruncate(truncate) {
   if (truncate === "start") {
@@ -2056,7 +2059,7 @@ var Text = (0, import_core14.polymorphicFactory)((_props, ref) => {
     vars,
     varsResolver: varsResolver7
   });
-  return /* @__PURE__ */ import_react26.default.createElement(
+  return /* @__PURE__ */ import_react27.default.createElement(
     import_core14.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles2("root", { focusable: true })), {
       ref,
@@ -2078,7 +2081,7 @@ var Text = (0, import_core14.polymorphicFactory)((_props, ref) => {
 Text.displayName = "@raikou/core/Text";
 
 // ../components/Mark/src/Mark.tsx
-var import_react27 = __toESM(require("react"));
+var import_react28 = __toESM(require("react"));
 var import_core16 = require("@raikou/core");
 
 // ../components/Mark/src/get-mark-color.ts
@@ -2143,7 +2146,7 @@ var Mark = (0, import_core16.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver8
   });
-  return /* @__PURE__ */ import_react27.default.createElement(
+  return /* @__PURE__ */ import_react28.default.createElement(
     import_core16.Box,
     __spreadValues(__spreadValues({
       component: "mark",
@@ -2178,7 +2181,7 @@ var defaultProps14 = {};
 var Highlight = (0, import_core17.polymorphicFactory)((props, ref) => {
   const _a = (0, import_core17.useProps)("Highlight", defaultProps14, props), { unstyled, children, highlight, highlightStyles, color } = _a, others = __objRest(_a, ["unstyled", "children", "highlight", "highlightStyles", "color"]);
   const highlightChunks = highlighter(children, highlight);
-  return /* @__PURE__ */ import_react28.default.createElement(
+  return /* @__PURE__ */ import_react29.default.createElement(
     Text,
     __spreadProps(__spreadValues({
       unstyled,
@@ -2187,7 +2190,7 @@ var Highlight = (0, import_core17.polymorphicFactory)((props, ref) => {
       __staticSelector: "Highlight"
     }),
     highlightChunks.map(
-      ({ chunk, highlighted }, i) => highlighted ? /* @__PURE__ */ import_react28.default.createElement(
+      ({ chunk, highlighted }, i) => highlighted ? /* @__PURE__ */ import_react29.default.createElement(
         Mark,
         {
           unstyled,
@@ -2197,7 +2200,7 @@ var Highlight = (0, import_core17.polymorphicFactory)((props, ref) => {
           "data-highlight": chunk
         },
         chunk
-      ) : /* @__PURE__ */ import_react28.default.createElement("span", { key: i }, chunk)
+      ) : /* @__PURE__ */ import_react29.default.createElement("span", { key: i }, chunk)
     )
   );
 });
@@ -2252,7 +2255,7 @@ var SpotlightAction = (0, import_core18.factory)(
     ]);
     const ctx = useSpotlightContext();
     const stylesApi = { classNames, styles };
-    const labelNode = highlightQuery && typeof label === "string" ? /* @__PURE__ */ import_react29.default.createElement(
+    const labelNode = highlightQuery && typeof label === "string" ? /* @__PURE__ */ import_react30.default.createElement(
       Highlight,
       __spreadValues({
         component: "span",
@@ -2260,8 +2263,8 @@ var SpotlightAction = (0, import_core18.factory)(
         color: highlightColor
       }, ctx.getStyles("actionLabel", stylesApi)),
       label
-    ) : /* @__PURE__ */ import_react29.default.createElement("span", __spreadValues({}, ctx.getStyles("actionLabel", stylesApi)), label);
-    return /* @__PURE__ */ import_react29.default.createElement(
+    ) : /* @__PURE__ */ import_react30.default.createElement("span", __spreadValues({}, ctx.getStyles("actionLabel", stylesApi)), label);
+    return /* @__PURE__ */ import_react30.default.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues(__spreadValues({
         ref,
@@ -2279,14 +2282,14 @@ var SpotlightAction = (0, import_core18.factory)(
         },
         tabIndex: -1
       }),
-      children || /* @__PURE__ */ import_react29.default.createElement(import_react29.default.Fragment, null, leftSection && /* @__PURE__ */ import_react29.default.createElement(
+      children || /* @__PURE__ */ import_react30.default.createElement(import_react30.default.Fragment, null, leftSection && /* @__PURE__ */ import_react30.default.createElement(
         import_core18.Box,
         __spreadValues({
           component: "span",
           mod: { position: "left", dimmed: dimmedSections }
         }, ctx.getStyles("actionSection", stylesApi)),
         leftSection
-      ), /* @__PURE__ */ import_react29.default.createElement("span", __spreadValues({}, ctx.getStyles("actionBody", stylesApi)), labelNode, /* @__PURE__ */ import_react29.default.createElement("span", __spreadValues({}, ctx.getStyles("actionDescription", stylesApi)), description)), rightSection && /* @__PURE__ */ import_react29.default.createElement(
+      ), /* @__PURE__ */ import_react30.default.createElement("span", __spreadValues({}, ctx.getStyles("actionBody", stylesApi)), labelNode, /* @__PURE__ */ import_react30.default.createElement("span", __spreadValues({}, ctx.getStyles("actionDescription", stylesApi)), description)), rightSection && /* @__PURE__ */ import_react30.default.createElement(
         import_core18.Box,
         __spreadValues({
           component: "span",
@@ -2300,7 +2303,7 @@ var SpotlightAction = (0, import_core18.factory)(
 SpotlightAction.displayName = "@raikou/spotlight/SpotlightAction";
 
 // src/SpotlightEmpty.tsx
-var import_react30 = __toESM(require("react"));
+var import_react31 = __toESM(require("react"));
 var import_core19 = require("@raikou/core");
 var defaultProps16 = {};
 var SpotlightEmpty = (0, import_core19.factory)((props, ref) => {
@@ -2310,7 +2313,7 @@ var SpotlightEmpty = (0, import_core19.factory)((props, ref) => {
     props
   ), { className, style, classNames, styles } = _a, others = __objRest(_a, ["className", "style", "classNames", "styles"]);
   const ctx = useSpotlightContext();
-  return /* @__PURE__ */ import_react30.default.createElement(
+  return /* @__PURE__ */ import_react31.default.createElement(
     import_core19.Box,
     __spreadValues(__spreadValues({
       ref
@@ -2320,7 +2323,7 @@ var SpotlightEmpty = (0, import_core19.factory)((props, ref) => {
 SpotlightEmpty.displayName = "@raikou/spotlight/SpotlightEmpty";
 
 // src/SpotlightFooter.tsx
-var import_react31 = __toESM(require("react"));
+var import_react32 = __toESM(require("react"));
 var import_core20 = require("@raikou/core");
 var defaultProps17 = {};
 var SpotlightFooter = (0, import_core20.factory)((props, ref) => {
@@ -2330,7 +2333,7 @@ var SpotlightFooter = (0, import_core20.factory)((props, ref) => {
     props
   ), { className, style, classNames, styles } = _a, others = __objRest(_a, ["className", "style", "classNames", "styles"]);
   const ctx = useSpotlightContext();
-  return /* @__PURE__ */ import_react31.default.createElement(
+  return /* @__PURE__ */ import_react32.default.createElement(
     import_core20.Box,
     __spreadValues(__spreadValues({
       ref
@@ -2340,14 +2343,14 @@ var SpotlightFooter = (0, import_core20.factory)((props, ref) => {
 SpotlightFooter.displayName = "@raikou/spotlight/SpotlightFooter";
 
 // src/SpotlightActionsGroup.tsx
-var import_react32 = __toESM(require("react"));
+var import_react33 = __toESM(require("react"));
 var import_core21 = require("@raikou/core");
 var defaultProps18 = {};
 var SpotlightActionsGroup = (0, import_core21.factory)(
   (props, ref) => {
     const _a = (0, import_core21.useProps)("SpotlightActionsGroup", defaultProps18, props), { className, style, styles, classNames, label, children } = _a, others = __objRest(_a, ["className", "style", "styles", "classNames", "label", "children"]);
     const ctx = useSpotlightContext();
-    return /* @__PURE__ */ import_react32.default.createElement(
+    return /* @__PURE__ */ import_react33.default.createElement(
       import_core21.Box,
       __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, ctx.getStyles("actionsGroup", {
         className,
@@ -2366,19 +2369,19 @@ var SpotlightActionsGroup = (0, import_core21.factory)(
 SpotlightActionsGroup.displayName = "@raikou/core/SpotlightActionsGroup";
 
 // src/SpotlightRoot.tsx
-var import_react69 = __toESM(require("react"));
+var import_react70 = __toESM(require("react"));
 var import_core47 = require("@raikou/core");
 
 // ../components/Modal/src/Modal.tsx
-var import_react68 = __toESM(require("react"));
+var import_react69 = __toESM(require("react"));
 var import_core46 = require("@raikou/core");
 
 // ../components/Modal/src/ModalRoot.tsx
-var import_react61 = __toESM(require("react"));
+var import_react62 = __toESM(require("react"));
 var import_core39 = require("@raikou/core");
 
 // ../components/ModalBase/src/ModalBase.tsx
-var import_react38 = __toESM(require("react"));
+var import_react39 = __toESM(require("react"));
 
 // ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.5_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
 var import_tslib5 = require("tslib");
@@ -2405,9 +2408,9 @@ function assignRef(ref, value) {
 }
 
 // ../../../node_modules/.pnpm/use-callback-ref@1.3.0_@types+react@18.2.5_react@18.2.0/node_modules/use-callback-ref/dist/es2015/useRef.js
-var import_react33 = require("react");
+var import_react34 = require("react");
 function useCallbackRef3(initialValue, callback) {
-  var ref = (0, import_react33.useState)(function() {
+  var ref = (0, import_react34.useState)(function() {
     return {
       // value
       value: initialValue,
@@ -3011,19 +3014,19 @@ var Combination_default = ReactRemoveScroll;
 var import_core23 = require("@raikou/core");
 
 // ../components/Portal/src/Portal.tsx
-var import_react34 = __toESM(require("react"));
+var import_react35 = __toESM(require("react"));
 var import_react_dom = require("react-dom");
 var import_hooks12 = require("@raikou/hooks");
 var import_core22 = require("@raikou/core");
 var defaultProps19 = {};
-var Portal = (0, import_react34.forwardRef)((props, ref) => {
+var Portal = (0, import_react35.forwardRef)((props, ref) => {
   const _a = (0, import_core22.useProps)(
     "Portal",
     defaultProps19,
     props
   ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
-  const [mounted, setMounted] = (0, import_react34.useState)(false);
-  const nodeRef = (0, import_react34.useRef)(null);
+  const [mounted, setMounted] = (0, import_react35.useState)(false);
+  const nodeRef = (0, import_react35.useRef)(null);
   (0, import_hooks12.useIsomorphicEffect)(() => {
     setMounted(true);
     nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
@@ -3040,14 +3043,14 @@ var Portal = (0, import_react34.forwardRef)((props, ref) => {
     return null;
   }
   return (0, import_react_dom.createPortal)(
-    /* @__PURE__ */ import_react34.default.createElement("div", __spreadValues({ className, ref }, others), children),
+    /* @__PURE__ */ import_react35.default.createElement("div", __spreadValues({ className, ref }, others), children),
     nodeRef.current
   );
 });
 Portal.displayName = "@raikou/core/Portal";
 
 // ../components/Portal/src/OptionalPortal.tsx
-var import_react35 = __toESM(require("react"));
+var import_react36 = __toESM(require("react"));
 function OptionalPortal(_a) {
   var _b = _a, {
     withinPortal = true,
@@ -3057,9 +3060,9 @@ function OptionalPortal(_a) {
     "children"
   ]);
   if (withinPortal) {
-    return /* @__PURE__ */ import_react35.default.createElement(Portal, __spreadValues({}, others), children);
+    return /* @__PURE__ */ import_react36.default.createElement(Portal, __spreadValues({}, others), children);
   }
-  return /* @__PURE__ */ import_react35.default.createElement(import_react35.default.Fragment, null, children);
+  return /* @__PURE__ */ import_react36.default.createElement(import_react36.default.Fragment, null, children);
 }
 OptionalPortal.displayName = "@raikou/core/OptionalPortal";
 
@@ -3069,18 +3072,18 @@ var [ModalBaseProvider, useModalBaseContext] = createSafeContext(
 );
 
 // ../components/ModalBase/src/use-modal.ts
-var import_react37 = require("react");
+var import_react38 = require("react");
 var import_hooks14 = require("@raikou/hooks");
 
 // ../components/ModalBase/src/use-lock-scroll.ts
-var import_react36 = require("react");
+var import_react37 = require("react");
 var import_hooks13 = require("@raikou/hooks");
 function useLockScroll({ opened, transitionDuration }) {
-  const [shouldLockScroll, setShouldLockScroll] = (0, import_react36.useState)(opened);
-  const timeout = (0, import_react36.useRef)();
+  const [shouldLockScroll, setShouldLockScroll] = (0, import_react37.useState)(opened);
+  const timeout = (0, import_react37.useRef)();
   const reduceMotion = (0, import_hooks13.useReducedMotion)();
   const _transitionDuration = reduceMotion ? 0 : transitionDuration;
-  (0, import_react36.useEffect)(() => {
+  (0, import_react37.useEffect)(() => {
     if (opened) {
       setShouldLockScroll(true);
       window.clearTimeout(timeout.current);
@@ -3108,8 +3111,8 @@ function useModal({
   returnFocus
 }) {
   const _id = (0, import_hooks14.useId)(id);
-  const [titleMounted, setTitleMounted] = (0, import_react37.useState)(false);
-  const [bodyMounted, setBodyMounted] = (0, import_react37.useState)(false);
+  const [titleMounted, setTitleMounted] = (0, import_react38.useState)(false);
+  const [bodyMounted, setBodyMounted] = (0, import_react38.useState)(false);
   const transitionDuration = typeof (transitionProps == null ? void 0 : transitionProps.duration) === "number" ? transitionProps == null ? void 0 : transitionProps.duration : 200;
   const shouldLockScroll = useLockScroll({ opened, transitionDuration });
   (0, import_hooks14.useWindowEvent)("keydown", (event) => {
@@ -3129,7 +3132,7 @@ function useModal({
 }
 
 // ../components/ModalBase/src/ModalBase.tsx
-var ModalBase = (0, import_react38.forwardRef)(
+var ModalBase = (0, import_react39.forwardRef)(
   (_a, ref) => {
     var _b = _a, {
       keepMounted,
@@ -3184,7 +3187,7 @@ var ModalBase = (0, import_react38.forwardRef)(
       onClose,
       returnFocus
     });
-    return /* @__PURE__ */ import_react38.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ import_react38.default.createElement(
+    return /* @__PURE__ */ import_react39.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ import_react39.default.createElement(
       ModalBaseProvider,
       {
         value: {
@@ -3203,7 +3206,7 @@ var ModalBase = (0, import_react38.forwardRef)(
           zIndex
         }
       },
-      /* @__PURE__ */ import_react38.default.createElement(Combination_default, { enabled: shouldLockScroll && lockScroll }, /* @__PURE__ */ import_react38.default.createElement(
+      /* @__PURE__ */ import_react39.default.createElement(Combination_default, { enabled: shouldLockScroll && lockScroll }, /* @__PURE__ */ import_react39.default.createElement(
         import_core23.Box,
         __spreadProps(__spreadValues({
           ref
@@ -3221,7 +3224,7 @@ var ModalBase = (0, import_react38.forwardRef)(
 );
 
 // ../components/ModalBase/src/ModalBaseBody.tsx
-var import_react40 = __toESM(require("react"));
+var import_react41 = __toESM(require("react"));
 
 // ../../../node_modules/.pnpm/clsx@2.0.0/node_modules/clsx/dist/clsx.mjs
 function r(e) {
@@ -3248,10 +3251,10 @@ var clsx_default = clsx;
 var import_core24 = require("@raikou/core");
 
 // ../components/ModalBase/src/use-modal-body-id.ts
-var import_react39 = require("react");
+var import_react40 = require("react");
 function useModalBodyId() {
   const ctx = useModalBaseContext();
-  (0, import_react39.useEffect)(() => {
+  (0, import_react40.useEffect)(() => {
     ctx.setBodyMounted(true);
     return () => ctx.setBodyMounted(false);
   }, []);
@@ -3259,11 +3262,11 @@ function useModalBodyId() {
 }
 
 // ../components/ModalBase/src/ModalBaseBody.tsx
-var ModalBaseBody = (0, import_react40.forwardRef)(
+var ModalBaseBody = (0, import_react41.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     const bodyId = useModalBodyId();
-    return /* @__PURE__ */ import_react40.default.createElement(
+    return /* @__PURE__ */ import_react41.default.createElement(
       import_core24.Box,
       __spreadProps(__spreadValues({
         ref
@@ -3277,14 +3280,14 @@ var ModalBaseBody = (0, import_react40.forwardRef)(
 ModalBaseBody.displayName = "@raikou/core/ModalBaseBody";
 
 // ../components/ModalBase/src/ModalBaseCloseButton.tsx
-var import_react49 = __toESM(require("react"));
+var import_react50 = __toESM(require("react"));
 
 // ../components/CloseButton/src/CloseIcon.tsx
-var import_react41 = __toESM(require("react"));
-var CloseIcon = (0, import_react41.forwardRef)(
+var import_react42 = __toESM(require("react"));
+var CloseIcon = (0, import_react42.forwardRef)(
   (_a, ref) => {
     var _b = _a, { size = "var(--cb-icon-size)", style } = _b, others = __objRest(_b, ["size", "style"]);
-    return /* @__PURE__ */ import_react41.default.createElement(
+    return /* @__PURE__ */ import_react42.default.createElement(
       "svg",
       __spreadValues({
         viewBox: "0 0 15 15",
@@ -3293,7 +3296,7 @@ var CloseIcon = (0, import_react41.forwardRef)(
         style: __spreadProps(__spreadValues({}, style), { width: size, height: size }),
         ref
       }, others),
-      /* @__PURE__ */ import_react41.default.createElement(
+      /* @__PURE__ */ import_react42.default.createElement(
         "path",
         {
           d: "M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z",
@@ -3308,24 +3311,24 @@ var CloseIcon = (0, import_react41.forwardRef)(
 CloseIcon.displayName = "@raikou/core/CloseIcon";
 
 // ../components/CloseButton/src/CloseButton.tsx
-var import_react48 = __toESM(require("react"));
+var import_react49 = __toESM(require("react"));
 var import_core31 = require("@raikou/core");
 
 // ../components/ActionIcon/src/ActionIcon.tsx
-var import_react47 = __toESM(require("react"));
+var import_react48 = __toESM(require("react"));
 var import_core30 = require("@raikou/core");
 
 // ../components/Loader/src/Loader.tsx
-var import_react45 = __toESM(require("react"));
+var import_react46 = __toESM(require("react"));
 var import_core28 = require("@raikou/core");
 
 // ../components/Loader/src/loaders/Bars.tsx
-var import_react42 = __toESM(require("react"));
+var import_react43 = __toESM(require("react"));
 var import_core25 = require("@raikou/core");
-var Bars = (0, import_react42.forwardRef)(
+var Bars = (0, import_react43.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react42.default.createElement(
+    return /* @__PURE__ */ import_react43.default.createElement(
       import_core25.Box,
       __spreadProps(__spreadValues({
         component: "span",
@@ -3333,20 +3336,20 @@ var Bars = (0, import_react42.forwardRef)(
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react42.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react42.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react42.default.createElement("span", { className: "bar" })
+      /* @__PURE__ */ import_react43.default.createElement("span", { className: "bar" }),
+      /* @__PURE__ */ import_react43.default.createElement("span", { className: "bar" }),
+      /* @__PURE__ */ import_react43.default.createElement("span", { className: "bar" })
     );
   }
 );
 
 // ../components/Loader/src/loaders/Oval.tsx
-var import_react43 = __toESM(require("react"));
+var import_react44 = __toESM(require("react"));
 var import_core26 = require("@raikou/core");
-var Oval = (0, import_react43.forwardRef)(
+var Oval = (0, import_react44.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react43.default.createElement(
+    return /* @__PURE__ */ import_react44.default.createElement(
       import_core26.Box,
       __spreadProps(__spreadValues({
         component: "span",
@@ -3359,12 +3362,12 @@ var Oval = (0, import_react43.forwardRef)(
 );
 
 // ../components/Loader/src/loaders/Dots.tsx
-var import_react44 = __toESM(require("react"));
+var import_react45 = __toESM(require("react"));
 var import_core27 = require("@raikou/core");
-var Dots = (0, import_react44.forwardRef)(
+var Dots = (0, import_react45.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react44.default.createElement(
+    return /* @__PURE__ */ import_react45.default.createElement(
       import_core27.Box,
       __spreadProps(__spreadValues({
         component: "span",
@@ -3372,15 +3375,15 @@ var Dots = (0, import_react44.forwardRef)(
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react44.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react44.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react44.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react44.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react44.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react44.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react44.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react44.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react44.default.createElement("span", { className: "dot" })
+      /* @__PURE__ */ import_react45.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react45.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react45.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react45.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react45.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react45.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react45.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react45.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react45.default.createElement("span", { className: "dot" })
     );
   }
 );
@@ -3445,7 +3448,7 @@ var Loader = (0, import_core28.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver9
   });
-  return /* @__PURE__ */ import_react45.default.createElement(
+  return /* @__PURE__ */ import_react46.default.createElement(
     import_core28.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles2("root")), {
       ref,
@@ -3458,7 +3461,7 @@ var Loader = (0, import_core28.factory)((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../components/ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-var import_react46 = __toESM(require("react"));
+var import_react47 = __toESM(require("react"));
 var import_core29 = require("@raikou/core");
 var defaultProps21 = {
   orientation: "horizontal",
@@ -3508,7 +3511,7 @@ var ActionIconGroup = (0, import_core29.factory)(
       varsResolver: varsResolver10,
       rootSelector: "group"
     });
-    return /* @__PURE__ */ import_react46.default.createElement(
+    return /* @__PURE__ */ import_react47.default.createElement(
       import_core29.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles2("group")), {
         ref,
@@ -3601,7 +3604,7 @@ var ActionIcon = (0, import_core30.polymorphicFactory)(
       vars,
       varsResolver: varsResolver11
     });
-    return /* @__PURE__ */ import_react47.default.createElement(
+    return /* @__PURE__ */ import_react48.default.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues(__spreadValues({}, getStyles2("root", {
         active: !disabled && !loading && !dataDisabled
@@ -3613,7 +3616,7 @@ var ActionIcon = (0, import_core30.polymorphicFactory)(
         ref,
         mod: { loading, disabled: disabled || dataDisabled }
       }),
-      loading ? /* @__PURE__ */ import_react47.default.createElement(
+      loading ? /* @__PURE__ */ import_react48.default.createElement(
         Loader,
         __spreadValues(__spreadProps(__spreadValues({}, getStyles2("loader")), {
           color: "var(--ai-color)",
@@ -3636,7 +3639,7 @@ var CloseButton = (0, import_core31.polymorphicFactory)(
   (_props, ref) => {
     const props = (0, import_core31.useProps)("CloseButton", defaultProps23, _props);
     const _a = props, { iconSize, children, vars } = _a, others = __objRest(_a, ["iconSize", "children", "vars"]);
-    return /* @__PURE__ */ import_react48.default.createElement(
+    return /* @__PURE__ */ import_react49.default.createElement(
       ActionIcon,
       __spreadProps(__spreadValues({
         ref
@@ -3644,7 +3647,7 @@ var CloseButton = (0, import_core31.polymorphicFactory)(
         __vars: { "--cb-icon-size": (0, import_core31.rem)(iconSize) },
         __staticSelector: "CloseButton"
       }),
-      /* @__PURE__ */ import_react48.default.createElement(CloseIcon, null),
+      /* @__PURE__ */ import_react49.default.createElement(CloseIcon, null),
       children
     );
   }
@@ -3652,23 +3655,26 @@ var CloseButton = (0, import_core31.polymorphicFactory)(
 CloseButton.displayName = "@raikou/core/CloseButton";
 
 // ../components/ModalBase/src/ModalBaseCloseButton.tsx
-var ModalBaseCloseButton = (0, import_react49.forwardRef)((_a, ref) => {
+var ModalBaseCloseButton = (0, import_react50.forwardRef)((_a, ref) => {
   var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
   const ctx = useModalBaseContext();
-  return /* @__PURE__ */ import_react49.default.createElement(
-    CloseButton,
-    __spreadProps(__spreadValues({
-      ref
-    }, others), {
-      onClick: ctx.onClose,
-      className: clsx_default("modalBase-close", className)
-    })
+  return (
+    // @ts-ignore
+    /* @__PURE__ */ import_react50.default.createElement(
+      CloseButton,
+      __spreadProps(__spreadValues({
+        ref
+      }, others), {
+        onClick: ctx.onClose,
+        className: clsx_default("modalBase-close", className)
+      })
+    )
   );
 });
 ModalBaseCloseButton.displayName = "@raikou/core/ModalBaseCloseButton";
 
 // ../components/ModalBase/src/ModalBaseContent.tsx
-var import_react54 = __toESM(require("react"));
+var import_react55 = __toESM(require("react"));
 
 // ../components/Transition/src/transitions.ts
 var import_core32 = require("@raikou/core");
@@ -3773,7 +3779,7 @@ var transitions = {
 };
 
 // ../components/Transition/src/Transition.tsx
-var import_react51 = __toESM(require("react"));
+var import_react52 = __toESM(require("react"));
 
 // ../components/Transition/src/get-transition-styles/get-transition-styles.ts
 var transitionStatuses = {
@@ -3808,7 +3814,7 @@ function getTransitionStyles({
 }
 
 // ../components/Transition/src/use-transition.ts
-var import_react50 = require("react");
+var import_react51 = require("react");
 var import_hooks15 = require("@raikou/hooks");
 var import_core33 = require("@raikou/core");
 function useTransition({
@@ -3824,13 +3830,13 @@ function useTransition({
   const theme = (0, import_core33.useRaikouTheme)();
   const shouldReduceMotion = (0, import_hooks15.useReducedMotion)();
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
-  const [transitionDuration, setTransitionDuration] = (0, import_react50.useState)(
+  const [transitionDuration, setTransitionDuration] = (0, import_react51.useState)(
     reduceMotion ? 0 : duration
   );
-  const [transitionStatus, setStatus] = (0, import_react50.useState)(
+  const [transitionStatus, setStatus] = (0, import_react51.useState)(
     mounted ? "entered" : "exited"
   );
-  const timeoutRef = (0, import_react50.useRef)(-1);
+  const timeoutRef = (0, import_react51.useRef)(-1);
   const handleStateChange = (shouldMount) => {
     const preHandler = shouldMount ? onEnter : onExit;
     const handler = shouldMount ? onEntered : onExited;
@@ -3857,7 +3863,7 @@ function useTransition({
   (0, import_hooks15.useDidUpdate)(() => {
     handleStateChange(mounted);
   }, [mounted]);
-  (0, import_react50.useEffect)(() => () => window.clearTimeout(timeoutRef.current), []);
+  (0, import_react51.useEffect)(() => () => window.clearTimeout(timeoutRef.current), []);
   return {
     transitionDuration,
     transitionStatus,
@@ -3868,7 +3874,7 @@ function useTransition({
 // ../components/Transition/src/Transition.tsx
 function Transition({
   keepMounted,
-  transition,
+  transition = "fade",
   duration = 250,
   exitDuration = duration,
   mounted,
@@ -3890,9 +3896,9 @@ function Transition({
     onExited
   });
   if (transitionDuration === 0) {
-    return mounted ? /* @__PURE__ */ import_react51.default.createElement(import_react51.default.Fragment, null, children({})) : keepMounted ? children({ display: "none" }) : null;
+    return mounted ? /* @__PURE__ */ import_react52.default.createElement(import_react52.default.Fragment, null, children({})) : keepMounted ? children({ display: "none" }) : null;
   }
-  return transitionStatus === "exited" ? keepMounted ? children({ display: "none" }) : null : /* @__PURE__ */ import_react51.default.createElement(import_react51.default.Fragment, null, children(
+  return transitionStatus === "exited" ? keepMounted ? children({ display: "none" }) : null : /* @__PURE__ */ import_react52.default.createElement(import_react52.default.Fragment, null, children(
     getTransitionStyles({
       transition,
       duration: transitionDuration,
@@ -3904,7 +3910,7 @@ function Transition({
 Transition.displayName = "@raikou/core/Transition";
 
 // ../components/FocusTrap/src/FocusTrap.tsx
-var import_react52 = require("react");
+var import_react53 = require("react");
 var import_hooks16 = require("@raikou/hooks");
 var import_core34 = require("@raikou/core");
 function FocusTrap({
@@ -3917,12 +3923,12 @@ function FocusTrap({
   if (!(0, import_core34.isElement)(children)) {
     return children;
   }
-  return (0, import_react52.cloneElement)(children, { [refProp]: ref });
+  return (0, import_react53.cloneElement)(children, { [refProp]: ref });
 }
 FocusTrap.displayName = "@raikou/core/FocusTrap";
 
 // ../components/Paper/src/Paper.tsx
-var import_react53 = __toESM(require("react"));
+var import_react54 = __toESM(require("react"));
 var import_core35 = require("@raikou/core");
 var defaultProps24 = {};
 var varsResolver12 = (0, import_core35.createVarsResolver)(
@@ -3972,7 +3978,7 @@ var Paper = (0, import_core35.polymorphicFactory)((_props, ref) => {
     vars,
     varsResolver: varsResolver12
   });
-  return /* @__PURE__ */ import_react53.default.createElement(
+  return /* @__PURE__ */ import_react54.default.createElement(
     import_core35.Box,
     __spreadValues(__spreadProps(__spreadValues({
       ref,
@@ -3985,7 +3991,7 @@ var Paper = (0, import_core35.polymorphicFactory)((_props, ref) => {
 Paper.displayName = "@raikou/core/Paper";
 
 // ../components/ModalBase/src/ModalBaseContent.tsx
-var ModalBaseContent = (0, import_react54.forwardRef)(
+var ModalBaseContent = (0, import_react55.forwardRef)(
   (_a, ref) => {
     var _b = _a, { transitionProps, className, innerProps, onKeyDown, style } = _b, others = __objRest(_b, ["transitionProps", "className", "innerProps", "onKeyDown", "style"]);
     const ctx = useModalBaseContext();
@@ -3997,18 +4003,18 @@ var ModalBaseContent = (0, import_react54.forwardRef)(
       shouldTrigger && event.key === "Escape" && ctx.closeOnEscape && ctx.onClose();
       onKeyDown == null ? void 0 : onKeyDown(event);
     };
-    return /* @__PURE__ */ import_react54.default.createElement(
+    return /* @__PURE__ */ import_react55.default.createElement(
       Transition,
       __spreadValues(__spreadValues({
         mounted: ctx.opened,
         transition: "pop"
       }, ctx.transitionProps), transitionProps),
-      (transitionStyles) => /* @__PURE__ */ import_react54.default.createElement(
+      (transitionStyles) => /* @__PURE__ */ import_react55.default.createElement(
         "div",
         __spreadProps(__spreadValues({}, innerProps), {
           className: clsx_default("modalBase-inner", innerProps.className)
         }),
-        /* @__PURE__ */ import_react54.default.createElement(FocusTrap, { active: ctx.opened && ctx.trapFocus }, /* @__PURE__ */ import_react54.default.createElement(
+        /* @__PURE__ */ import_react55.default.createElement(FocusTrap, { active: ctx.opened && ctx.trapFocus }, /* @__PURE__ */ import_react55.default.createElement(
           Paper,
           __spreadProps(__spreadValues({}, others), {
             component: "section",
@@ -4028,23 +4034,24 @@ var ModalBaseContent = (0, import_react54.forwardRef)(
     );
   }
 );
+ModalBaseContent.displayName = "@raikou/core/ModalBaseContent";
 
 // ../components/ModalBase/src/ModalBaseHeader.tsx
-var import_react55 = __toESM(require("react"));
+var import_react56 = __toESM(require("react"));
 var import_core36 = require("@raikou/core");
-var ModalBaseHeader = (0, import_react55.forwardRef)(
+var ModalBaseHeader = (0, import_react56.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react55.default.createElement(import_core36.Box, __spreadValues({ ref, className: clsx_default("modalBase-header", className) }, others));
+    return /* @__PURE__ */ import_react56.default.createElement(import_core36.Box, __spreadValues({ ref, className: clsx_default("modalBase-header", className) }, others));
   }
 );
 ModalBaseHeader.displayName = "@raikou/core/ModalBaseHeader";
 
 // ../components/ModalBase/src/ModalBaseOverlay.tsx
-var import_react57 = __toESM(require("react"));
+var import_react58 = __toESM(require("react"));
 
 // ../components/Overlay/src/Overlay.tsx
-var import_react56 = __toESM(require("react"));
+var import_react57 = __toESM(require("react"));
 var import_core37 = require("@raikou/core");
 var defaultProps25 = {
   color: "#000",
@@ -4111,7 +4118,7 @@ var Overlay = (0, import_core37.polymorphicFactory)((_props, ref) => {
     vars,
     varsResolver: varsResolver13
   });
-  return /* @__PURE__ */ import_react56.default.createElement(import_core37.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles2("root")), { mod: { center, fixed } }), others), children);
+  return /* @__PURE__ */ import_react57.default.createElement(import_core37.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles2("root")), { mod: { center, fixed } }), others), children);
 });
 Overlay.displayName = "@raikou/core/Overlay";
 
@@ -4127,11 +4134,11 @@ function useModalTransition(transitionOverride) {
 }
 
 // ../components/ModalBase/src/ModalBaseOverlay.tsx
-var ModalBaseOverlay = (0, import_react57.forwardRef)((_a, ref) => {
+var ModalBaseOverlay = (0, import_react58.forwardRef)((_a, ref) => {
   var _b = _a, { onClick, transitionProps, style } = _b, others = __objRest(_b, ["onClick", "transitionProps", "style"]);
   const ctx = useModalBaseContext();
   const transition = useModalTransition(transitionProps);
-  return /* @__PURE__ */ import_react57.default.createElement(Transition, __spreadProps(__spreadValues({ mounted: ctx.opened }, transition), { transition: "fade" }), (transitionStyles) => /* @__PURE__ */ import_react57.default.createElement(
+  return /* @__PURE__ */ import_react58.default.createElement(Transition, __spreadProps(__spreadValues({ mounted: ctx.opened }, transition), { transition: "fade" }), (transitionStyles) => /* @__PURE__ */ import_react58.default.createElement(
     Overlay,
     __spreadValues({
       ref,
@@ -4149,14 +4156,14 @@ var ModalBaseOverlay = (0, import_react57.forwardRef)((_a, ref) => {
 ModalBaseOverlay.displayName = "@raikou/core/ModalBaseOverlay";
 
 // ../components/ModalBase/src/ModalBaseTitle.tsx
-var import_react59 = __toESM(require("react"));
+var import_react60 = __toESM(require("react"));
 var import_core38 = require("@raikou/core");
 
 // ../components/ModalBase/src/use-modal-title-id.ts
-var import_react58 = require("react");
+var import_react59 = require("react");
 function useModalTitle() {
   const ctx = useModalBaseContext();
-  (0, import_react58.useEffect)(() => {
+  (0, import_react59.useEffect)(() => {
     ctx.setTitleMounted(true);
     return () => ctx.setTitleMounted(false);
   }, []);
@@ -4164,10 +4171,10 @@ function useModalTitle() {
 }
 
 // ../components/ModalBase/src/ModalBaseTitle.tsx
-var ModalBaseTitle = (0, import_react59.forwardRef)((_a, ref) => {
+var ModalBaseTitle = (0, import_react60.forwardRef)((_a, ref) => {
   var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
   const id = useModalTitle();
-  return /* @__PURE__ */ import_react59.default.createElement(
+  return /* @__PURE__ */ import_react60.default.createElement(
     import_core38.Box,
     __spreadProps(__spreadValues({
       component: "h2",
@@ -4181,9 +4188,9 @@ var ModalBaseTitle = (0, import_react59.forwardRef)((_a, ref) => {
 ModalBaseTitle.displayName = "@raikou/core/ModalBaseTitle";
 
 // ../components/ModalBase/src/NativeScrollArea.tsx
-var import_react60 = __toESM(require("react"));
+var import_react61 = __toESM(require("react"));
 function NativeScrollArea({ children }) {
-  return /* @__PURE__ */ import_react60.default.createElement(import_react60.default.Fragment, null, children);
+  return /* @__PURE__ */ import_react61.default.createElement(import_react61.default.Fragment, null, children);
 }
 
 // ../components/Modal/src/Modal.context.ts
@@ -4271,7 +4278,7 @@ var ModalRoot = (0, import_core39.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver14
   });
-  return /* @__PURE__ */ import_react61.default.createElement(ModalProvider, { value: { yOffset, scrollAreaComponent, getStyles: getStyles2 } }, /* @__PURE__ */ import_react61.default.createElement(
+  return /* @__PURE__ */ import_react62.default.createElement(ModalProvider, { value: { yOffset, scrollAreaComponent, getStyles: getStyles2 } }, /* @__PURE__ */ import_react62.default.createElement(
     ModalBase,
     __spreadValues(__spreadProps(__spreadValues({
       ref
@@ -4284,14 +4291,14 @@ var ModalRoot = (0, import_core39.factory)((_props, ref) => {
 ModalRoot.displayName = "@raikou/core/ModalRoot";
 
 // ../components/Modal/src/ModalBody.tsx
-var import_react62 = __toESM(require("react"));
+var import_react63 = __toESM(require("react"));
 var import_core40 = require("@raikou/core");
 var defaultProps27 = {};
 var ModalBody = (0, import_core40.factory)((_props, ref) => {
   const props = (0, import_core40.useProps)("ModalBody", defaultProps27, _props);
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
   const ctx = useModalContext();
-  return /* @__PURE__ */ import_react62.default.createElement(
+  return /* @__PURE__ */ import_react63.default.createElement(
     ModalBaseBody,
     __spreadValues(__spreadValues({
       ref
@@ -4301,7 +4308,7 @@ var ModalBody = (0, import_core40.factory)((_props, ref) => {
 ModalBody.displayName = "@raikou/core/ModalBody";
 
 // ../components/Modal/src/ModalCloseButton.tsx
-var import_react63 = __toESM(require("react"));
+var import_react64 = __toESM(require("react"));
 var import_core41 = require("@raikou/core");
 var defaultProps28 = {};
 var ModalCloseButton = (0, import_core41.factory)(
@@ -4309,7 +4316,7 @@ var ModalCloseButton = (0, import_core41.factory)(
     const props = (0, import_core41.useProps)("ModalCloseButton", defaultProps28, _props);
     const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
     const ctx = useModalContext();
-    return /* @__PURE__ */ import_react63.default.createElement(
+    return /* @__PURE__ */ import_react64.default.createElement(
       ModalBaseCloseButton,
       __spreadValues(__spreadValues({
         ref
@@ -4320,14 +4327,14 @@ var ModalCloseButton = (0, import_core41.factory)(
 ModalCloseButton.displayName = "@raikou/core/ModalCloseButton";
 
 // ../components/Modal/src/ModalOverlay.tsx
-var import_react64 = __toESM(require("react"));
+var import_react65 = __toESM(require("react"));
 var import_core42 = require("@raikou/core");
 var defaultProps29 = {};
 var ModalOverlay = (0, import_core42.factory)((_props, ref) => {
   const props = (0, import_core42.useProps)("ModalOverlay", defaultProps29, _props);
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
   const ctx = useModalContext();
-  return /* @__PURE__ */ import_react64.default.createElement(
+  return /* @__PURE__ */ import_react65.default.createElement(
     ModalBaseOverlay,
     __spreadValues(__spreadValues({
       ref
@@ -4337,7 +4344,7 @@ var ModalOverlay = (0, import_core42.factory)((_props, ref) => {
 ModalOverlay.displayName = "@raikou/core/ModalOverlay";
 
 // ../components/Modal/src/ModalContent.tsx
-var import_react65 = __toESM(require("react"));
+var import_react66 = __toESM(require("react"));
 var import_core43 = require("@raikou/core");
 var defaultProps30 = {};
 var ModalContent = (0, import_core43.factory)((_props, ref) => {
@@ -4345,7 +4352,7 @@ var ModalContent = (0, import_core43.factory)((_props, ref) => {
   const _a = props, { classNames, className, style, styles, vars, children } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars", "children"]);
   const ctx = useModalContext();
   const Scroll = ctx.scrollAreaComponent || NativeScrollArea;
-  return /* @__PURE__ */ import_react65.default.createElement(
+  return /* @__PURE__ */ import_react66.default.createElement(
     ModalBaseContent,
     __spreadValues(__spreadProps(__spreadValues({}, ctx.getStyles("content", { className, style, styles, classNames })), {
       innerProps: ctx.getStyles("inner", {
@@ -4356,20 +4363,20 @@ var ModalContent = (0, import_core43.factory)((_props, ref) => {
       }),
       ref
     }), others),
-    /* @__PURE__ */ import_react65.default.createElement(Scroll, { style: { maxHeight: `calc(100vh - (${(0, import_core43.rem)(ctx.yOffset)} * 2))` } }, children)
+    /* @__PURE__ */ import_react66.default.createElement(Scroll, { style: { maxHeight: `calc(100vh - (${(0, import_core43.rem)(ctx.yOffset)} * 2))` } }, children)
   );
 });
 ModalContent.displayName = "@raikou/core/ModalContent";
 
 // ../components/Modal/src/ModalTitle.tsx
-var import_react66 = __toESM(require("react"));
+var import_react67 = __toESM(require("react"));
 var import_core44 = require("@raikou/core");
 var defaultProps31 = {};
 var ModalTitle = (0, import_core44.factory)((_props, ref) => {
   const props = (0, import_core44.useProps)("ModalTitle", defaultProps31, _props);
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
   const ctx = useModalContext();
-  return /* @__PURE__ */ import_react66.default.createElement(
+  return /* @__PURE__ */ import_react67.default.createElement(
     ModalBaseTitle,
     __spreadValues(__spreadValues({
       ref
@@ -4379,14 +4386,14 @@ var ModalTitle = (0, import_core44.factory)((_props, ref) => {
 ModalTitle.displayName = "@raikou/core/ModalTitle";
 
 // ../components/Modal/src/ModalHeader.tsx
-var import_react67 = __toESM(require("react"));
+var import_react68 = __toESM(require("react"));
 var import_core45 = require("@raikou/core");
 var defaultProps32 = {};
 var ModalHeader = (0, import_core45.factory)((_props, ref) => {
   const props = (0, import_core45.useProps)("ModalHeader", defaultProps32, _props);
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
   const ctx = useModalContext();
-  return /* @__PURE__ */ import_react67.default.createElement(
+  return /* @__PURE__ */ import_react68.default.createElement(
     ModalBaseHeader,
     __spreadValues(__spreadValues({
       ref
@@ -4431,7 +4438,7 @@ var Modal = (0, import_core46.factory)((_props, ref) => {
     "radius"
   ]);
   const hasHeader = !!title || withCloseButton;
-  return /* @__PURE__ */ import_react68.default.createElement(ModalRoot, __spreadValues({ ref }, others), withOverlay && /* @__PURE__ */ import_react68.default.createElement(ModalOverlay, __spreadValues({}, overlayProps)), /* @__PURE__ */ import_react68.default.createElement(ModalContent, { radius }, hasHeader && /* @__PURE__ */ import_react68.default.createElement(ModalHeader, null, title && /* @__PURE__ */ import_react68.default.createElement(ModalTitle, null, title), withCloseButton && /* @__PURE__ */ import_react68.default.createElement(ModalCloseButton, __spreadValues({}, closeButtonProps))), /* @__PURE__ */ import_react68.default.createElement(ModalBody, null, children)));
+  return /* @__PURE__ */ import_react69.default.createElement(ModalRoot, __spreadValues({ ref }, others), withOverlay && /* @__PURE__ */ import_react69.default.createElement(ModalOverlay, __spreadValues({}, overlayProps)), /* @__PURE__ */ import_react69.default.createElement(ModalContent, { radius }, hasHeader && /* @__PURE__ */ import_react69.default.createElement(ModalHeader, null, title && /* @__PURE__ */ import_react69.default.createElement(ModalTitle, null, title), withCloseButton && /* @__PURE__ */ import_react69.default.createElement(ModalCloseButton, __spreadValues({}, closeButtonProps))), /* @__PURE__ */ import_react69.default.createElement(ModalBody, null, children)));
 });
 Modal.displayName = "@raikou/core/Modal";
 Modal.Root = ModalRoot;
@@ -4562,7 +4569,7 @@ var SpotlightRoot = (0, import_core47.factory)((_props, ref) => {
   if (disabled) {
     return null;
   }
-  return /* @__PURE__ */ import_react69.default.createElement(
+  return /* @__PURE__ */ import_react70.default.createElement(
     SpotlightProvider,
     {
       value: {
@@ -4573,7 +4580,7 @@ var SpotlightRoot = (0, import_core47.factory)((_props, ref) => {
         closeOnActionTrigger
       }
     },
-    /* @__PURE__ */ import_react69.default.createElement(
+    /* @__PURE__ */ import_react70.default.createElement(
       Modal,
       __spreadProps(__spreadValues({
         ref
@@ -4754,7 +4761,7 @@ var Spotlight = (0, import_core48.factory)((_props, ref) => {
       if (isActionsGroup(item)) {
         const items = item.actions.map((_a2) => {
           var _b = _a2, { id } = _b, actionData = __objRest(_b, ["id"]);
-          return /* @__PURE__ */ import_react70.default.createElement(
+          return /* @__PURE__ */ import_react71.default.createElement(
             SpotlightAction,
             __spreadValues({
               key: id,
@@ -4762,9 +4769,9 @@ var Spotlight = (0, import_core48.factory)((_props, ref) => {
             }, actionData)
           );
         });
-        return /* @__PURE__ */ import_react70.default.createElement(SpotlightActionsGroup, { key: item.group, label: item.group }, items);
+        return /* @__PURE__ */ import_react71.default.createElement(SpotlightActionsGroup, { key: item.group, label: item.group }, items);
       }
-      return /* @__PURE__ */ import_react70.default.createElement(
+      return /* @__PURE__ */ import_react71.default.createElement(
         SpotlightAction,
         __spreadValues({
           key: item.id,
@@ -4773,15 +4780,15 @@ var Spotlight = (0, import_core48.factory)((_props, ref) => {
       );
     }
   );
-  return /* @__PURE__ */ import_react70.default.createElement(
+  return /* @__PURE__ */ import_react71.default.createElement(
     SpotlightRoot,
     __spreadProps(__spreadValues({}, others), {
       query: _query,
       onQueryChange: setQuery2,
       ref
     }),
-    /* @__PURE__ */ import_react70.default.createElement(SpotlightSearch, __spreadValues({}, searchProps)),
-    /* @__PURE__ */ import_react70.default.createElement(SpotlightActionsList, null, filteredActions, filteredActions.length === 0 && nothingFound && /* @__PURE__ */ import_react70.default.createElement(SpotlightEmpty, null, nothingFound))
+    /* @__PURE__ */ import_react71.default.createElement(SpotlightSearch, __spreadValues({}, searchProps)),
+    /* @__PURE__ */ import_react71.default.createElement(SpotlightActionsList, null, filteredActions, filteredActions.length === 0 && nothingFound && /* @__PURE__ */ import_react71.default.createElement(SpotlightEmpty, null, nothingFound))
   );
 });
 Spotlight.displayName = "@raikou/spotlight/Spotlight";

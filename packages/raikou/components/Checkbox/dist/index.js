@@ -66,7 +66,7 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Checkbox.tsx
-var import_react68 = __toESM(require("react"));
+var import_react69 = __toESM(require("react"));
 
 // ../../hooks/dist/index.mjs
 var import_react = require("react");
@@ -170,11 +170,11 @@ function useUncontrolled({
 var import_core10 = require("@raikou/core");
 
 // ../InlineInput/src/InlineInput.tsx
-var import_react64 = __toESM(require("react"));
+var import_react65 = __toESM(require("react"));
 var import_core7 = require("@raikou/core");
 
 // ../Input/src/Input.tsx
-var import_react63 = __toESM(require("react"));
+var import_react64 = __toESM(require("react"));
 var import_core6 = require("@raikou/core");
 
 // ../_utils/create-safe-context/create-safe-context.tsx
@@ -192,6 +192,9 @@ function createOptionalContext(initialValue = null) {
 // ../_utils/use-hovered/use-hovered.ts
 var import_react57 = require("react");
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+var import_react58 = require("react");
+
 // ../Input/src/InputWrapper.context.ts
 var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetBottom: false,
@@ -202,7 +205,7 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
 });
 
 // ../Input/src/InputLabel/InputLabel.tsx
-var import_react58 = __toESM(require("react"));
+var import_react59 = __toESM(require("react"));
 var import_core = require("@raikou/core");
 var defaultProps = {
   size: "sm",
@@ -265,7 +268,7 @@ var InputLabel = (0, import_core.factory)((_props, ref) => {
   });
   const ctx = useInputWrapperContext();
   const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-  return /* @__PURE__ */ import_react58.default.createElement(
+  return /* @__PURE__ */ import_react59.default.createElement(
     import_core.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("label")), {
       component: labelElement,
@@ -282,13 +285,13 @@ var InputLabel = (0, import_core.factory)((_props, ref) => {
       }
     }), others),
     children,
-    required && /* @__PURE__ */ import_react58.default.createElement("span", __spreadProps(__spreadValues({}, getStyles("required")), { "aria-hidden": true }), " *")
+    required && /* @__PURE__ */ import_react59.default.createElement("span", __spreadProps(__spreadValues({}, getStyles("required")), { "aria-hidden": true }), " *")
   );
 });
 InputLabel.displayName = "@raikou/core/InputLabel";
 
 // ../Input/src/InputError/InputError.tsx
-var import_react59 = __toESM(require("react"));
+var import_react60 = __toESM(require("react"));
 var import_core2 = require("@raikou/core");
 var defaultProps2 = {
   size: "sm"
@@ -338,7 +341,7 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
   });
   const ctx = useInputWrapperContext();
   const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-  return /* @__PURE__ */ import_react59.default.createElement(
+  return /* @__PURE__ */ import_react60.default.createElement(
     import_core2.Box,
     __spreadValues(__spreadValues({
       component: "p",
@@ -351,7 +354,7 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
 InputError.displayName = "@raikou/core/InputError";
 
 // ../Input/src/InputDescription/InputDescription.tsx
-var import_react60 = __toESM(require("react"));
+var import_react61 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
 var defaultProps3 = {
   size: "sm"
@@ -404,7 +407,7 @@ var InputDescription = (0, import_core3.factory)(
       varsResolver: varsResolver3
     });
     const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-    return /* @__PURE__ */ import_react60.default.createElement(
+    return /* @__PURE__ */ import_react61.default.createElement(
       import_core3.Box,
       __spreadValues(__spreadValues({
         component: "p",
@@ -418,7 +421,7 @@ var InputDescription = (0, import_core3.factory)(
 InputDescription.displayName = "@raikou/core/InputDescription";
 
 // ../Input/src/InputPlaceholder/InputPlaceholder.tsx
-var import_react61 = __toESM(require("react"));
+var import_react62 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
 var defaultProps4 = {};
 var InputPlaceholder = (0, import_core4.factory)(
@@ -456,7 +459,7 @@ var InputPlaceholder = (0, import_core4.factory)(
       unstyled,
       rootSelector: "placeholder"
     });
-    return /* @__PURE__ */ import_react61.default.createElement(
+    return /* @__PURE__ */ import_react62.default.createElement(
       import_core4.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("placeholder")), {
         component: "span",
@@ -469,7 +472,7 @@ var InputPlaceholder = (0, import_core4.factory)(
 InputPlaceholder.displayName = "@raikou/core/InputPlaceholder";
 
 // ../Input/src/InputWrapper/InputWrapper.tsx
-var import_react62 = __toESM(require("react"));
+var import_react63 = __toESM(require("react"));
 var import_core5 = require("@raikou/core");
 
 // ../Input/src/InputWrapper/get-input-offsets/get-input-offsets.ts
@@ -584,7 +587,7 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
-  const _label = label && /* @__PURE__ */ import_react62.default.createElement(
+  const _label = label && /* @__PURE__ */ import_react63.default.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
@@ -595,7 +598,7 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
     }, sharedProps), labelProps),
     label
   );
-  const _description = hasDescription && /* @__PURE__ */ import_react62.default.createElement(
+  const _description = hasDescription && /* @__PURE__ */ import_react63.default.createElement(
     InputDescription,
     __spreadProps(__spreadValues(__spreadValues({
       key: "description"
@@ -605,8 +608,8 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
     }),
     description
   );
-  const _input = /* @__PURE__ */ import_react62.default.createElement(import_react62.default.Fragment, { key: "input" }, inputContainer(children));
-  const _error = hasError && /* @__PURE__ */ import_react62.default.createElement(
+  const _input = /* @__PURE__ */ import_react63.default.createElement(import_react63.default.Fragment, { key: "input" }, inputContainer(children));
+  const _error = hasError && /* @__PURE__ */ import_react63.default.createElement(
     InputError,
     __spreadProps(__spreadValues(__spreadValues({}, errorProps), sharedProps), {
       size: (errorProps == null ? void 0 : errorProps.size) || sharedProps.size,
@@ -629,7 +632,7 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
         return null;
     }
   });
-  return /* @__PURE__ */ import_react62.default.createElement(
+  return /* @__PURE__ */ import_react63.default.createElement(
     InputWrapperProvider,
     {
       value: __spreadValues({
@@ -638,7 +641,7 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
         inputId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
-    /* @__PURE__ */ import_react62.default.createElement(
+    /* @__PURE__ */ import_react63.default.createElement(
       import_core5.Box,
       __spreadValues(__spreadValues({
         ref,
@@ -766,7 +769,7 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
     "aria-describedby": ctx == null ? void 0 : ctx.describedBy,
     id: (ctx == null ? void 0 : ctx.inputId) || id
   } : {};
-  return /* @__PURE__ */ import_react63.default.createElement(
+  return /* @__PURE__ */ import_react64.default.createElement(
     import_core6.Box,
     __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, getStyles("wrapper")), styleProps), wrapperProps), {
       mod: {
@@ -780,7 +783,7 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
       variant,
       size
     }),
-    leftSection && /* @__PURE__ */ import_react63.default.createElement(
+    leftSection && /* @__PURE__ */ import_react64.default.createElement(
       "div",
       __spreadValues(__spreadProps(__spreadValues({}, leftSectionProps), {
         "data-position": "left"
@@ -790,7 +793,7 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
       })),
       leftSection
     ),
-    /* @__PURE__ */ import_react63.default.createElement(
+    /* @__PURE__ */ import_react64.default.createElement(
       import_core6.Box,
       __spreadValues(__spreadProps(__spreadValues(__spreadValues({
         component: "input"
@@ -801,7 +804,7 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
         variant
       }), getStyles("input"))
     ),
-    rightSection && /* @__PURE__ */ import_react63.default.createElement(
+    rightSection && /* @__PURE__ */ import_react64.default.createElement(
       "div",
       __spreadValues(__spreadProps(__spreadValues({}, rightSectionProps), {
         "data-position": "right"
@@ -821,7 +824,7 @@ Input.Placeholder = InputPlaceholder;
 Input.displayName = "@raikou/core/Input";
 
 // ../InlineInput/src/InlineInput.tsx
-var InlineInput = (0, import_react64.forwardRef)(
+var InlineInput = (0, import_react65.forwardRef)(
   (_a, ref) => {
     var _b = _a, {
       __staticSelector,
@@ -877,7 +880,7 @@ var InlineInput = (0, import_react64.forwardRef)(
       styles,
       unstyled
     });
-    return /* @__PURE__ */ import_react64.default.createElement(
+    return /* @__PURE__ */ import_react65.default.createElement(
       import_core7.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
         ref,
@@ -889,29 +892,29 @@ var InlineInput = (0, import_react64.forwardRef)(
         variant,
         size
       }), others),
-      /* @__PURE__ */ import_react64.default.createElement("div", __spreadValues({}, getStyles("body")), children, /* @__PURE__ */ import_react64.default.createElement("div", __spreadValues({}, getStyles("labelWrapper")), label && /* @__PURE__ */ import_react64.default.createElement(
+      /* @__PURE__ */ import_react65.default.createElement("div", __spreadValues({}, getStyles("body")), children, /* @__PURE__ */ import_react65.default.createElement("div", __spreadValues({}, getStyles("labelWrapper")), label && /* @__PURE__ */ import_react65.default.createElement(
         "label",
         __spreadProps(__spreadValues({}, getStyles("label")), {
           "data-disabled": disabled || void 0,
           htmlFor: id
         }),
         label
-      ), description && /* @__PURE__ */ import_react64.default.createElement(Input.Description, __spreadValues({ size }, getStyles("description")), description), error && error !== "boolean" && /* @__PURE__ */ import_react64.default.createElement(Input.Error, __spreadValues({ size }, getStyles("error")), error)))
+      ), description && /* @__PURE__ */ import_react65.default.createElement(Input.Description, __spreadValues({ size }, getStyles("description")), description), error && error !== "boolean" && /* @__PURE__ */ import_react65.default.createElement(Input.Error, __spreadValues({ size }, getStyles("error")), error)))
     );
   }
 );
 InlineInput.displayName = "@raikou/core/InlineInput";
 
 // src/CheckboxGroup.context.ts
-var import_react65 = require("react");
-var CheckboxGroupContext = (0, import_react65.createContext)(
+var import_react66 = require("react");
+var CheckboxGroupContext = (0, import_react66.createContext)(
   null
 );
 var CheckboxGroupProvider = CheckboxGroupContext.Provider;
-var useCheckboxGroupContext = () => (0, import_react65.useContext)(CheckboxGroupContext);
+var useCheckboxGroupContext = () => (0, import_react66.useContext)(CheckboxGroupContext);
 
 // src/CheckboxGroup/CheckboxGroup.tsx
-var import_react66 = __toESM(require("react"));
+var import_react67 = __toESM(require("react"));
 var import_core8 = require("@raikou/core");
 var defaultProps7 = {};
 var CheckboxGroup = (0, import_core8.factory)((props, ref) => {
@@ -942,12 +945,12 @@ var CheckboxGroup = (0, import_core8.factory)((props, ref) => {
       _value.includes(itemValue) ? _value.filter((item) => item !== itemValue) : [..._value, itemValue]
     );
   };
-  return /* @__PURE__ */ import_react66.default.createElement(
+  return /* @__PURE__ */ import_react67.default.createElement(
     CheckboxGroupProvider,
     {
       value: { value: _value, onChange: handleChange, size }
     },
-    /* @__PURE__ */ import_react66.default.createElement(
+    /* @__PURE__ */ import_react67.default.createElement(
       Input.Wrapper,
       __spreadProps(__spreadValues(__spreadValues({
         size,
@@ -962,12 +965,12 @@ var CheckboxGroup = (0, import_core8.factory)((props, ref) => {
 });
 
 // src/CheckIcon.tsx
-var import_react67 = __toESM(require("react"));
+var import_react68 = __toESM(require("react"));
 var import_core9 = require("@raikou/core");
 function CheckIcon(_a) {
   var _b = _a, { size, style } = _b, others = __objRest(_b, ["size", "style"]);
   const _style = size !== void 0 ? __spreadValues({ width: (0, import_core9.rem)(size), height: (0, import_core9.rem)(size) }, style) : style;
-  return /* @__PURE__ */ import_react67.default.createElement(
+  return /* @__PURE__ */ import_react68.default.createElement(
     "svg",
     __spreadValues({
       className: "icon",
@@ -976,7 +979,7 @@ function CheckIcon(_a) {
       xmlns: "http://www.w3.org/2000/svg",
       style: _style
     }, others),
-    /* @__PURE__ */ import_react67.default.createElement(
+    /* @__PURE__ */ import_react68.default.createElement(
       "path",
       {
         d: "M4 4.586L1.707 2.293A1 1 0 1 0 .293 3.707l3 3a.997.997 0 0 0 1.414 0l5-5A1 1 0 1 0 8.293.293L4 4.586z",
@@ -990,17 +993,17 @@ function CheckIcon(_a) {
 function CheckboxIcon(_a) {
   var _b = _a, { indeterminate } = _b, others = __objRest(_b, ["indeterminate"]);
   if (indeterminate) {
-    return /* @__PURE__ */ import_react67.default.createElement(
+    return /* @__PURE__ */ import_react68.default.createElement(
       "svg",
       __spreadValues({
         xmlns: "http://www.w3.org/2000/svg",
         fill: "none",
         viewBox: "0 0 32 6"
       }, others),
-      /* @__PURE__ */ import_react67.default.createElement("rect", { width: "32", height: "6", fill: "currentColor", rx: "3" })
+      /* @__PURE__ */ import_react68.default.createElement("rect", { width: "32", height: "6", fill: "currentColor", rx: "3" })
     );
   }
-  return /* @__PURE__ */ import_react67.default.createElement(CheckIcon, __spreadValues({}, others));
+  return /* @__PURE__ */ import_react68.default.createElement(CheckIcon, __spreadValues({}, others));
 }
 
 // src/Checkbox.tsx
@@ -1096,7 +1099,7 @@ var Checkbox = (0, import_core10.factory)((_props, ref) => {
     checked: ctx.value.includes(rest.value),
     onChange: ctx.onChange
   } : {};
-  return /* @__PURE__ */ import_react68.default.createElement(
+  return /* @__PURE__ */ import_react69.default.createElement(
     InlineInput,
     __spreadValues(__spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       __staticSelector: "Checkbox",
@@ -1114,12 +1117,12 @@ var Checkbox = (0, import_core10.factory)((_props, ref) => {
       "data-checked": contextProps.checked || void 0,
       variant
     }), styleProps), wrapperProps),
-    /* @__PURE__ */ import_react68.default.createElement(
+    /* @__PURE__ */ import_react69.default.createElement(
       import_core10.Box,
       __spreadProps(__spreadValues({}, getStyles("inner")), {
         mod: { "data-label-position": labelPosition }
       }),
-      /* @__PURE__ */ import_react68.default.createElement(
+      /* @__PURE__ */ import_react69.default.createElement(
         import_core10.Box,
         __spreadProps(__spreadValues(__spreadValues(__spreadValues({
           component: "input",
@@ -1132,7 +1135,7 @@ var Checkbox = (0, import_core10.factory)((_props, ref) => {
           type: "checkbox"
         })
       ),
-      /* @__PURE__ */ import_react68.default.createElement(Icon, __spreadValues({ indeterminate }, getStyles("icon")))
+      /* @__PURE__ */ import_react69.default.createElement(Icon, __spreadValues({ indeterminate }, getStyles("icon")))
     )
   );
 });

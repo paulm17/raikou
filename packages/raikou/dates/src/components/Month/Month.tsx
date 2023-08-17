@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import React from "react";
 import {
   Box,
@@ -7,44 +8,30 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  createVarsResolver,
   Factory,
   RaikouSize,
-  getFontSize,
-  getSpacing,
+  useResolvedStylesApi,
 } from "@raikou/core";
-import dayjs from "dayjs";
 import { ControlKeydownPayload, DayOfWeek } from "../../types";
-import { Day, DayProps } from "./Day/Day";
-import { MonthProvider } from "./Month.context";
+import { Day, DayProps, DayStylesNames } from "../Day";
 import { getMonthDays } from "./get-month-days/get-month-days";
 import { useDatesContext } from "../DatesProvider";
 import { getDateInTabOrder } from "./get-date-in-tab-order/get-date-in-tab-order";
 import { isSameMonth } from "./is-same-month/is-same-month";
 import { isBeforeMaxDate } from "./is-before-max-date/is-before-max-date";
 import { isAfterMinDate } from "./is-after-min-date/is-after-min-date";
-import { WeekdaysRow } from "./WeekdaysRow/WeekdaysRow";
+import { WeekdaysRow } from "../WeekdaysRow";
 
 export type MonthStylesNames =
   | "month"
   | "weekday"
   | "weekdaysRow"
-  | "day"
   | "monthRow"
+  | "month"
   | "monthThead"
   | "monthTbody"
-  | "monthCell";
-
-export type MonthCssVariables = {
-  month:
-    | "--month-fz"
-    | "--month-spacing"
-    | "--day-selected-bg"
-    | "--day-selected-bg-hover"
-    | "--day-selected-color"
-    | "--day-range-bg"
-    | "--day-range-bg-hover";
-};
+  | "monthCell"
+  | DayStylesNames;
 
 export interface MonthSettings {
   /** Determines whether propagation for Escape key should be stopped */
@@ -88,7 +75,9 @@ export interface MonthSettings {
   weekendDays?: DayOfWeek[];
 
   /** Adds props to Day component based on date */
-  getDayProps?(date: Date): Partial<DayProps>;
+  getDayProps?(
+    date: Date,
+  ): Omit<Partial<DayProps>, "classNames" | "styles" | "vars">;
 
   /** Callback function to determine whether the day should be disabled */
   excludeDate?(date: Date): boolean;
@@ -136,39 +125,12 @@ export type MonthFactory = Factory<{
   props: MonthProps;
   ref: HTMLTableElement;
   stylesNames: MonthStylesNames;
-  vars: MonthCssVariables;
 }>;
 
 const defaultProps: Partial<MonthProps> = {
   size: "sm",
   withCellSpacing: true,
 };
-
-const varsResolver = createVarsResolver<MonthFactory>((theme, { size }) => {
-  const selectedColors = theme.variantColorResolver({
-    color: theme.primaryColor,
-    theme,
-    variant: "filled",
-  });
-
-  const rangeColors = theme.variantColorResolver({
-    color: theme.primaryColor,
-    theme,
-    variant: "light",
-  });
-
-  return {
-    month: {
-      "--month-fz": getFontSize(size),
-      "--month-spacing": getSpacing(size),
-      "--day-selected-bg": selectedColors.background,
-      "--day-selected-color": selectedColors.color,
-      "--day-selected-bg-hover": selectedColors.hover,
-      "--day-range-bg": rangeColors.hover,
-      "--day-range-bg-hover": rangeColors.background,
-    },
-  };
-});
 
 export const Month = factory<MonthFactory>((_props, ref) => {
   const props = useProps("Month", defaultProps, _props);
@@ -202,17 +164,14 @@ export const Month = factory<MonthFactory>((_props, ref) => {
     __stopPropagation,
     withCellSpacing,
     size,
-    variant,
     ...others
   } = props;
 
   const getStyles = useStyles<MonthFactory>({
-    name: "Month",
+    name: __staticSelector || "Month",
     classes: {
-      month: "month-month",
-      monthCell: "month-monthCell",
-      weekday: "month-weekday",
-      day: "month-day",
+      month: "dates-month",
+      monthCell: "dates-monthCell",
     },
     props,
     className,
@@ -221,7 +180,7 @@ export const Month = factory<MonthFactory>((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver,
+    rootSelector: "month",
   });
 
   const ctx = useDatesContext();
@@ -236,6 +195,13 @@ export const Month = factory<MonthFactory>((_props, ref) => {
     hideOutsideDates,
     month,
   );
+
+  const { resolvedClassNames, resolvedStyles } =
+    useResolvedStylesApi<MonthFactory>({
+      classNames,
+      styles,
+      props,
+    });
 
   const rows = dates.map((row, rowIndex) => {
     const cells = row.map((date, cellIndex) => {
@@ -255,9 +221,14 @@ export const Month = factory<MonthFactory>((_props, ref) => {
           data-with-spacing={withCellSpacing || undefined}
         >
           <Day
+            __staticSelector={__staticSelector || "Month"}
+            classNames={resolvedClassNames}
+            styles={resolvedStyles}
+            unstyled={unstyled}
             data-raikou-stop-propagation={__stopPropagation || undefined}
             renderDay={renderDay}
             date={date}
+            size={size}
             weekend={ctx
               .getWeekendDays(weekendDays)
               .includes(date.getDay() as DayOfWeek)}
@@ -302,20 +273,29 @@ export const Month = factory<MonthFactory>((_props, ref) => {
   });
 
   return (
-    <MonthProvider value={{ getStyles }}>
-      <Box component="table" {...getStyles("month")} ref={ref} {...others}>
-        {!hideWeekdays && (
-          <thead {...getStyles("monthThead")}>
-            <WeekdaysRow
-              locale={locale}
-              firstDayOfWeek={firstDayOfWeek}
-              weekdayFormat={weekdayFormat}
-            />
-          </thead>
-        )}
-        <tbody {...getStyles("monthTbody")}>{rows}</tbody>
-      </Box>
-    </MonthProvider>
+    <Box
+      component="table"
+      {...getStyles("month")}
+      size={size}
+      ref={ref}
+      {...others}
+    >
+      {!hideWeekdays && (
+        <thead {...getStyles("monthThead")}>
+          <WeekdaysRow
+            __staticSelector={__staticSelector || "Month"}
+            locale={locale}
+            firstDayOfWeek={firstDayOfWeek}
+            weekdayFormat={weekdayFormat}
+            size={size}
+            classNames={resolvedClassNames}
+            styles={resolvedStyles}
+            unstyled={unstyled}
+          />
+        </thead>
+      )}
+      <tbody {...getStyles("monthTbody")}>{rows}</tbody>
+    </Box>
   );
 });
 

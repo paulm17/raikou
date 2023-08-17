@@ -24,6 +24,25 @@ export type AffixCssVariables = {
     | "--affix-right";
 };
 
+export interface AffixBaseProps {
+  /** Root element `z-index` property, `200` by default */
+  zIndex?: string | number;
+
+  /** Determines whether component should be rendered within portal, `true` by default */
+  withinPortal?: boolean;
+
+  /** Props to pass down to the `Portal` component when `withinPortal` is set */
+  portalProps?: Omit<PortalProps, "children">;
+
+  /** Affix position on screen, defaults value is `{ bottom: 0, right: 0 }` */
+  position?: {
+    top?: string | number;
+    left?: string | number;
+    bottom?: string | number;
+    right?: string | number;
+  };
+}
+
 export interface AffixProps
   extends BoxProps,
     StylesApiProps<AffixFactory>,
@@ -68,7 +87,7 @@ const varsResolver = createVarsResolver<AffixFactory>(
       "--affix-bottom": rem(position?.bottom),
       "--affix-right": rem(position?.right),
     },
-  })
+  }),
 );
 
 export const Affix = factory<AffixFactory>((_props, ref) => {

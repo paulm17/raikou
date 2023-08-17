@@ -65,11 +65,11 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/ScrollArea.tsx
-var import_react16 = __toESM(require("react"));
+var import_react17 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
 
 // src/ScrollAreaScrollbar/ScrollAreaScrollbar.tsx
-var import_react11 = __toESM(require("react"));
+var import_react12 = __toESM(require("react"));
 
 // ../_utils/create-safe-context/create-safe-context.tsx
 var import_react = __toESM(require("react"));
@@ -92,21 +92,24 @@ var import_react2 = __toESM(require("react"));
 // ../_utils/use-hovered/use-hovered.ts
 var import_react3 = require("react");
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+var import_react4 = require("react");
+
 // src/ScrollArea.context.ts
 var [ScrollAreaProvider, useScrollAreaContext] = createSafeContext(
   "ScrollArea.Root component was not found in tree"
 );
 
 // src/ScrollAreaScrollbar/ScrollAreaScrollbarVisible.tsx
-var import_react7 = __toESM(require("react"));
+var import_react8 = __toESM(require("react"));
 var import_core = require("@raikou/core");
 
 // src/ScrollAreaScrollbar/ScrollbarX.tsx
-var import_react5 = __toESM(require("react"));
+var import_react6 = __toESM(require("react"));
 var import_hooks3 = require("@raikou/hooks");
 
 // src/ScrollAreaScrollbar/Scrollbar.tsx
-var import_react4 = __toESM(require("react"));
+var import_react5 = __toESM(require("react"));
 var import_hooks2 = require("@raikou/hooks");
 
 // src/use-resize-observer.ts
@@ -227,7 +230,7 @@ function addUnlinkedScrollListener(node, handler = () => {
 }
 
 // src/ScrollAreaScrollbar/Scrollbar.tsx
-var Scrollbar = (0, import_react4.forwardRef)(
+var Scrollbar = (0, import_react5.forwardRef)(
   (props, forwardedRef) => {
     const _a = props, {
       sizes,
@@ -251,15 +254,15 @@ var Scrollbar = (0, import_react4.forwardRef)(
       "onResize"
     ]);
     const context = useScrollAreaContext();
-    const [scrollbar, setScrollbar] = import_react4.default.useState(
+    const [scrollbar, setScrollbar] = import_react5.default.useState(
       null
     );
     const composeRefs = (0, import_hooks2.useMergedRef)(
       forwardedRef,
       (node) => setScrollbar(node)
     );
-    const rectRef = import_react4.default.useRef(null);
-    const prevWebkitUserSelectRef = import_react4.default.useRef("");
+    const rectRef = import_react5.default.useRef(null);
+    const prevWebkitUserSelectRef = import_react5.default.useRef("");
     const { viewport } = context;
     const maxScrollPos = sizes.content - sizes.viewport;
     const handleWheelScroll = (0, import_hooks2.useCallbackRef)(onWheelScroll);
@@ -272,7 +275,7 @@ var Scrollbar = (0, import_react4.forwardRef)(
         onDragScroll({ x, y });
       }
     };
-    (0, import_react4.useEffect)(() => {
+    (0, import_react5.useEffect)(() => {
       const handleWheel = (event) => {
         const element = event.target;
         const isScrollbarWheel = scrollbar == null ? void 0 : scrollbar.contains(element);
@@ -284,10 +287,10 @@ var Scrollbar = (0, import_react4.forwardRef)(
         passive: false
       });
     }, [viewport, scrollbar, maxScrollPos, handleWheelScroll]);
-    (0, import_react4.useEffect)(handleThumbPositionChange, [sizes, handleThumbPositionChange]);
+    (0, import_react5.useEffect)(handleThumbPositionChange, [sizes, handleThumbPositionChange]);
     useResizeObserver(scrollbar, handleResize);
     useResizeObserver(context.content, handleResize);
-    return /* @__PURE__ */ import_react4.default.createElement(
+    return /* @__PURE__ */ import_react5.default.createElement(
       ScrollbarProvider,
       {
         value: {
@@ -299,7 +302,7 @@ var Scrollbar = (0, import_react4.forwardRef)(
           onThumbPointerDown: (0, import_hooks2.useCallbackRef)(onThumbPointerDown)
         }
       },
-      /* @__PURE__ */ import_react4.default.createElement(
+      /* @__PURE__ */ import_react5.default.createElement(
         "div",
         __spreadProps(__spreadValues({}, scrollbarProps), {
           ref: composeRefs,
@@ -334,17 +337,17 @@ var Scrollbar = (0, import_react4.forwardRef)(
 );
 
 // src/ScrollAreaScrollbar/ScrollbarX.tsx
-var ScrollAreaScrollbarX = (0, import_react5.forwardRef)((props, forwardedRef) => {
+var ScrollAreaScrollbarX = (0, import_react6.forwardRef)((props, forwardedRef) => {
   const _a = props, { sizes, onSizesChange, style } = _a, others = __objRest(_a, ["sizes", "onSizesChange", "style"]);
   const ctx = useScrollAreaContext();
-  const [computedStyle, setComputedStyle] = (0, import_react5.useState)();
-  const ref = (0, import_react5.useRef)(null);
+  const [computedStyle, setComputedStyle] = (0, import_react6.useState)();
+  const ref = (0, import_react6.useRef)(null);
   const composeRefs = (0, import_hooks3.useMergedRef)(forwardedRef, ref, ctx.onScrollbarXChange);
-  (0, import_react5.useEffect)(() => {
+  (0, import_react6.useEffect)(() => {
     if (ref.current)
       setComputedStyle(getComputedStyle(ref.current));
   }, [ref]);
-  return /* @__PURE__ */ import_react5.default.createElement(
+  return /* @__PURE__ */ import_react6.default.createElement(
     Scrollbar,
     __spreadProps(__spreadValues({
       "data-orientation": "horizontal"
@@ -383,23 +386,23 @@ var ScrollAreaScrollbarX = (0, import_react5.forwardRef)((props, forwardedRef) =
 });
 
 // src/ScrollAreaScrollbar/ScrollbarY.tsx
-var import_react6 = __toESM(require("react"));
+var import_react7 = __toESM(require("react"));
 var import_hooks4 = require("@raikou/hooks");
-var ScrollAreaScrollbarY = (0, import_react6.forwardRef)((props, forwardedRef) => {
+var ScrollAreaScrollbarY = (0, import_react7.forwardRef)((props, forwardedRef) => {
   const _a = props, { sizes, onSizesChange, style } = _a, others = __objRest(_a, ["sizes", "onSizesChange", "style"]);
   const context = useScrollAreaContext();
-  const [computedStyle, setComputedStyle] = import_react6.default.useState();
-  const ref = (0, import_react6.useRef)(null);
+  const [computedStyle, setComputedStyle] = import_react7.default.useState();
+  const ref = (0, import_react7.useRef)(null);
   const composeRefs = (0, import_hooks4.useMergedRef)(
     forwardedRef,
     ref,
     context.onScrollbarYChange
   );
-  (0, import_react6.useEffect)(() => {
+  (0, import_react7.useEffect)(() => {
     if (ref.current)
       setComputedStyle(getComputedStyle(ref.current));
   }, [ref]);
-  return /* @__PURE__ */ import_react6.default.createElement(
+  return /* @__PURE__ */ import_react7.default.createElement(
     Scrollbar,
     __spreadProps(__spreadValues({}, others), {
       "data-orientation": "vertical",
@@ -437,13 +440,13 @@ var ScrollAreaScrollbarY = (0, import_react6.forwardRef)((props, forwardedRef) =
 });
 
 // src/ScrollAreaScrollbar/ScrollAreaScrollbarVisible.tsx
-var ScrollAreaScrollbarVisible = (0, import_react7.forwardRef)((props, forwardedRef) => {
+var ScrollAreaScrollbarVisible = (0, import_react8.forwardRef)((props, forwardedRef) => {
   const _a = props, { orientation = "vertical" } = _a, scrollbarProps = __objRest(_a, ["orientation"]);
   const { dir } = (0, import_core.useDirection)();
   const context = useScrollAreaContext();
-  const thumbRef = (0, import_react7.useRef)(null);
-  const pointerOffsetRef = (0, import_react7.useRef)(0);
-  const [sizes, setSizes] = (0, import_react7.useState)({
+  const thumbRef = (0, import_react8.useRef)(null);
+  const pointerOffsetRef = (0, import_react8.useRef)(0);
+  const [sizes, setSizes] = (0, import_react8.useState)({
     content: 0,
     viewport: 0,
     scrollbar: { size: 0, paddingStart: 0, paddingEnd: 0 }
@@ -470,7 +473,7 @@ var ScrollAreaScrollbarVisible = (0, import_react7.forwardRef)((props, forwarded
     direction
   );
   if (orientation === "horizontal") {
-    return /* @__PURE__ */ import_react7.default.createElement(
+    return /* @__PURE__ */ import_react8.default.createElement(
       ScrollAreaScrollbarX,
       __spreadProps(__spreadValues({}, commonProps), {
         ref: forwardedRef,
@@ -494,7 +497,7 @@ var ScrollAreaScrollbarVisible = (0, import_react7.forwardRef)((props, forwarded
     );
   }
   if (orientation === "vertical") {
-    return /* @__PURE__ */ import_react7.default.createElement(
+    return /* @__PURE__ */ import_react8.default.createElement(
       ScrollAreaScrollbarY,
       __spreadProps(__spreadValues({}, commonProps), {
         ref: forwardedRef,
@@ -520,15 +523,15 @@ var ScrollAreaScrollbarVisible = (0, import_react7.forwardRef)((props, forwarded
 });
 
 // src/ScrollAreaScrollbar/ScrollAreaScrollbarHover.tsx
-var import_react9 = __toESM(require("react"));
+var import_react10 = __toESM(require("react"));
 
 // src/ScrollAreaScrollbar/ScrollAreaScrollbarAuto.tsx
-var import_react8 = __toESM(require("react"));
+var import_react9 = __toESM(require("react"));
 var import_hooks5 = require("@raikou/hooks");
-var ScrollAreaScrollbarAuto = (0, import_react8.forwardRef)((props, ref) => {
+var ScrollAreaScrollbarAuto = (0, import_react9.forwardRef)((props, ref) => {
   const context = useScrollAreaContext();
   const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
-  const [visible, setVisible] = (0, import_react8.useState)(false);
+  const [visible, setVisible] = (0, import_react9.useState)(false);
   const isHorizontal = props.orientation === "horizontal";
   const handleResize = (0, import_hooks5.useDebounceCallback)(() => {
     if (context.viewport) {
@@ -540,7 +543,7 @@ var ScrollAreaScrollbarAuto = (0, import_react8.forwardRef)((props, ref) => {
   useResizeObserver(context.viewport, handleResize);
   useResizeObserver(context.content, handleResize);
   if (forceMount || visible) {
-    return /* @__PURE__ */ import_react8.default.createElement(
+    return /* @__PURE__ */ import_react9.default.createElement(
       ScrollAreaScrollbarVisible,
       __spreadProps(__spreadValues({
         "data-state": visible ? "visible" : "hidden"
@@ -553,12 +556,12 @@ var ScrollAreaScrollbarAuto = (0, import_react8.forwardRef)((props, ref) => {
 });
 
 // src/ScrollAreaScrollbar/ScrollAreaScrollbarHover.tsx
-var ScrollAreaScrollbarHover = (0, import_react9.forwardRef)(
+var ScrollAreaScrollbarHover = (0, import_react10.forwardRef)(
   (props, ref) => {
     const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
     const context = useScrollAreaContext();
-    const [visible, setVisible] = (0, import_react9.useState)(false);
-    (0, import_react9.useEffect)(() => {
+    const [visible, setVisible] = (0, import_react10.useState)(false);
+    (0, import_react10.useEffect)(() => {
       const { scrollArea } = context;
       let hideTimer = 0;
       if (scrollArea) {
@@ -580,7 +583,7 @@ var ScrollAreaScrollbarHover = (0, import_react9.forwardRef)(
       return void 0;
     }, [context.scrollArea, context.scrollHideDelay]);
     if (forceMount || visible) {
-      return /* @__PURE__ */ import_react9.default.createElement(
+      return /* @__PURE__ */ import_react10.default.createElement(
         ScrollAreaScrollbarAuto,
         __spreadProps(__spreadValues({
           "data-state": visible ? "visible" : "hidden"
@@ -594,15 +597,15 @@ var ScrollAreaScrollbarHover = (0, import_react9.forwardRef)(
 );
 
 // src/ScrollAreaScrollbar/ScrollAreaScrollbarScroll.tsx
-var import_react10 = __toESM(require("react"));
+var import_react11 = __toESM(require("react"));
 var import_hooks6 = require("@raikou/hooks");
-var ScrollAreaScrollbarScroll = (0, import_react10.forwardRef)((props, red) => {
+var ScrollAreaScrollbarScroll = (0, import_react11.forwardRef)((props, red) => {
   const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
   const context = useScrollAreaContext();
   const isHorizontal = props.orientation === "horizontal";
-  const [state, setState] = (0, import_react10.useState)("hidden");
+  const [state, setState] = (0, import_react11.useState)("hidden");
   const debounceScrollEnd = (0, import_hooks6.useDebounceCallback)(() => setState("idle"), 100);
-  (0, import_react10.useEffect)(() => {
+  (0, import_react11.useEffect)(() => {
     if (state === "idle") {
       const hideTimer = window.setTimeout(
         () => setState("hidden"),
@@ -612,7 +615,7 @@ var ScrollAreaScrollbarScroll = (0, import_react10.forwardRef)((props, red) => {
     }
     return void 0;
   }, [state, context.scrollHideDelay]);
-  (0, import_react10.useEffect)(() => {
+  (0, import_react11.useEffect)(() => {
     const { viewport } = context;
     const scrollDirection = isHorizontal ? "scrollLeft" : "scrollTop";
     if (viewport) {
@@ -632,7 +635,7 @@ var ScrollAreaScrollbarScroll = (0, import_react10.forwardRef)((props, red) => {
     return void 0;
   }, [context.viewport, isHorizontal, debounceScrollEnd]);
   if (forceMount || state !== "hidden") {
-    return /* @__PURE__ */ import_react10.default.createElement(
+    return /* @__PURE__ */ import_react11.default.createElement(
       ScrollAreaScrollbarVisible,
       __spreadProps(__spreadValues({
         "data-state": state === "hidden" ? "hidden" : "visible"
@@ -653,30 +656,30 @@ var ScrollAreaScrollbarScroll = (0, import_react10.forwardRef)((props, red) => {
 });
 
 // src/ScrollAreaScrollbar/ScrollAreaScrollbar.tsx
-var ScrollAreaScrollbar = import_react11.default.forwardRef(
+var ScrollAreaScrollbar = import_react12.default.forwardRef(
   (props, forwardedRef) => {
     const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
     const context = useScrollAreaContext();
     const { onScrollbarXEnabledChange, onScrollbarYEnabledChange } = context;
     const isHorizontal = props.orientation === "horizontal";
-    import_react11.default.useEffect(() => {
+    import_react12.default.useEffect(() => {
       isHorizontal ? onScrollbarXEnabledChange(true) : onScrollbarYEnabledChange(true);
       return () => {
         isHorizontal ? onScrollbarXEnabledChange(false) : onScrollbarYEnabledChange(false);
       };
     }, [isHorizontal, onScrollbarXEnabledChange, onScrollbarYEnabledChange]);
-    return context.type === "hover" ? /* @__PURE__ */ import_react11.default.createElement(ScrollAreaScrollbarHover, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "scroll" ? /* @__PURE__ */ import_react11.default.createElement(ScrollAreaScrollbarScroll, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "auto" ? /* @__PURE__ */ import_react11.default.createElement(ScrollAreaScrollbarAuto, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "always" ? /* @__PURE__ */ import_react11.default.createElement(ScrollAreaScrollbarVisible, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef })) : null;
+    return context.type === "hover" ? /* @__PURE__ */ import_react12.default.createElement(ScrollAreaScrollbarHover, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "scroll" ? /* @__PURE__ */ import_react12.default.createElement(ScrollAreaScrollbarScroll, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "auto" ? /* @__PURE__ */ import_react12.default.createElement(ScrollAreaScrollbarAuto, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "always" ? /* @__PURE__ */ import_react12.default.createElement(ScrollAreaScrollbarVisible, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef })) : null;
   }
 );
 
 // src/ScrollAreaCorner/ScrollAreaCorner.tsx
-var import_react12 = __toESM(require("react"));
-var Corner = import_react12.default.forwardRef(
+var import_react13 = __toESM(require("react"));
+var Corner = import_react13.default.forwardRef(
   (props, ref) => {
     const _a = props, { style } = _a, others = __objRest(_a, ["style"]);
     const ctx = useScrollAreaContext();
-    const [width, setWidth] = import_react12.default.useState(0);
-    const [height, setHeight] = import_react12.default.useState(0);
+    const [width, setWidth] = import_react13.default.useState(0);
+    const [height, setHeight] = import_react13.default.useState(0);
     const hasSize = Boolean(width && height);
     useResizeObserver(ctx.scrollbarX, () => {
       var _a2;
@@ -690,39 +693,39 @@ var Corner = import_react12.default.forwardRef(
       ctx.onCornerWidthChange(w);
       setWidth(w);
     });
-    return hasSize ? /* @__PURE__ */ import_react12.default.createElement("div", __spreadProps(__spreadValues({}, others), { ref, style: __spreadProps(__spreadValues({}, style), { width, height }) })) : null;
+    return hasSize ? /* @__PURE__ */ import_react13.default.createElement("div", __spreadProps(__spreadValues({}, others), { ref, style: __spreadProps(__spreadValues({}, style), { width, height }) })) : null;
   }
 );
-var ScrollAreaCorner = import_react12.default.forwardRef((props, ref) => {
+var ScrollAreaCorner = import_react13.default.forwardRef((props, ref) => {
   const ctx = useScrollAreaContext();
   const hasBothScrollbarsVisible = Boolean(ctx.scrollbarX && ctx.scrollbarY);
   const hasCorner = ctx.type !== "scroll" && hasBothScrollbarsVisible;
-  return hasCorner ? /* @__PURE__ */ import_react12.default.createElement(Corner, __spreadProps(__spreadValues({}, props), { ref })) : null;
+  return hasCorner ? /* @__PURE__ */ import_react13.default.createElement(Corner, __spreadProps(__spreadValues({}, props), { ref })) : null;
 });
 
 // src/ScrollAreaRoot/ScrollAreaRoot.tsx
-var import_react13 = __toESM(require("react"));
+var import_react14 = __toESM(require("react"));
 var import_hooks7 = require("@raikou/hooks");
 var import_core2 = require("@raikou/core");
 var defaultProps = {
   scrollHideDelay: 1e3,
   type: "hover"
 };
-var ScrollAreaRoot = (0, import_react13.forwardRef)(
+var ScrollAreaRoot = (0, import_react14.forwardRef)(
   (_props, ref) => {
     const props = (0, import_core2.useProps)("ScrollAreaRoot", defaultProps, _props);
     const _a = props, { type, scrollHideDelay } = _a, others = __objRest(_a, ["type", "scrollHideDelay"]);
-    const [scrollArea, setScrollArea] = (0, import_react13.useState)(null);
-    const [viewport, setViewport] = (0, import_react13.useState)(null);
-    const [content, setContent] = (0, import_react13.useState)(null);
-    const [scrollbarX, setScrollbarX] = (0, import_react13.useState)(null);
-    const [scrollbarY, setScrollbarY] = (0, import_react13.useState)(null);
-    const [cornerWidth, setCornerWidth] = (0, import_react13.useState)(0);
-    const [cornerHeight, setCornerHeight] = (0, import_react13.useState)(0);
-    const [scrollbarXEnabled, setScrollbarXEnabled] = (0, import_react13.useState)(false);
-    const [scrollbarYEnabled, setScrollbarYEnabled] = (0, import_react13.useState)(false);
+    const [scrollArea, setScrollArea] = (0, import_react14.useState)(null);
+    const [viewport, setViewport] = (0, import_react14.useState)(null);
+    const [content, setContent] = (0, import_react14.useState)(null);
+    const [scrollbarX, setScrollbarX] = (0, import_react14.useState)(null);
+    const [scrollbarY, setScrollbarY] = (0, import_react14.useState)(null);
+    const [cornerWidth, setCornerWidth] = (0, import_react14.useState)(0);
+    const [cornerHeight, setCornerHeight] = (0, import_react14.useState)(0);
+    const [scrollbarXEnabled, setScrollbarXEnabled] = (0, import_react14.useState)(false);
+    const [scrollbarYEnabled, setScrollbarYEnabled] = (0, import_react14.useState)(false);
     const rootRef = (0, import_hooks7.useMergedRef)(ref, (node) => setScrollArea(node));
-    return /* @__PURE__ */ import_react13.default.createElement(
+    return /* @__PURE__ */ import_react14.default.createElement(
       ScrollAreaProvider,
       {
         value: {
@@ -745,7 +748,7 @@ var ScrollAreaRoot = (0, import_react13.forwardRef)(
           onCornerHeightChange: setCornerHeight
         }
       },
-      /* @__PURE__ */ import_react13.default.createElement(
+      /* @__PURE__ */ import_react14.default.createElement(
         import_core2.Box,
         __spreadProps(__spreadValues({}, others), {
           ref: rootRef,
@@ -761,14 +764,14 @@ var ScrollAreaRoot = (0, import_react13.forwardRef)(
 ScrollAreaRoot.displayName = "@raikou/core/ScrollAreaRoot";
 
 // src/ScrollAreaViewport/ScrollAreaViewport.tsx
-var import_react14 = __toESM(require("react"));
+var import_react15 = __toESM(require("react"));
 var import_hooks8 = require("@raikou/hooks");
 var import_core3 = require("@raikou/core");
-var ScrollAreaViewport = (0, import_react14.forwardRef)((_a, ref) => {
+var ScrollAreaViewport = (0, import_react15.forwardRef)((_a, ref) => {
   var _b = _a, { children, style } = _b, others = __objRest(_b, ["children", "style"]);
   const ctx = useScrollAreaContext();
   const rootRef = (0, import_hooks8.useMergedRef)(ref, ctx.onViewportChange);
-  return /* @__PURE__ */ import_react14.default.createElement(
+  return /* @__PURE__ */ import_react15.default.createElement(
     import_core3.Box,
     __spreadProps(__spreadValues({}, others), {
       ref: rootRef,
@@ -777,7 +780,7 @@ var ScrollAreaViewport = (0, import_react14.forwardRef)((_a, ref) => {
         overflowY: ctx.scrollbarYEnabled ? "scroll" : "hidden"
       }, style)
     }),
-    /* @__PURE__ */ import_react14.default.createElement(
+    /* @__PURE__ */ import_react15.default.createElement(
       "div",
       {
         style: { minWidth: "100%", display: "table" },
@@ -790,9 +793,9 @@ var ScrollAreaViewport = (0, import_react14.forwardRef)((_a, ref) => {
 ScrollAreaViewport.displayName = "@raikou/core/ScrollAreaViewport";
 
 // src/ScrollAreaThumb/ScrollAreaThumb.tsx
-var import_react15 = __toESM(require("react"));
+var import_react16 = __toESM(require("react"));
 var import_hooks9 = require("@raikou/hooks");
-var Thumb = (0, import_react15.forwardRef)(
+var Thumb = (0, import_react16.forwardRef)(
   (props, forwardedRef) => {
     const _a = props, { style } = _a, others = __objRest(_a, ["style"]);
     const scrollAreaContext = useScrollAreaContext();
@@ -802,14 +805,14 @@ var Thumb = (0, import_react15.forwardRef)(
       forwardedRef,
       (node) => scrollbarContext.onThumbChange(node)
     );
-    const removeUnlinkedScrollListenerRef = (0, import_react15.useRef)();
+    const removeUnlinkedScrollListenerRef = (0, import_react16.useRef)();
     const debounceScrollEnd = (0, import_hooks9.useDebounceCallback)(() => {
       if (removeUnlinkedScrollListenerRef.current) {
         removeUnlinkedScrollListenerRef.current();
         removeUnlinkedScrollListenerRef.current = void 0;
       }
     }, 100);
-    (0, import_react15.useEffect)(() => {
+    (0, import_react16.useEffect)(() => {
       const { viewport } = scrollAreaContext;
       if (viewport) {
         const handleScroll = () => {
@@ -829,7 +832,7 @@ var Thumb = (0, import_react15.forwardRef)(
       }
       return void 0;
     }, [scrollAreaContext.viewport, debounceScrollEnd, onThumbPositionChange]);
-    return /* @__PURE__ */ import_react15.default.createElement(
+    return /* @__PURE__ */ import_react16.default.createElement(
       "div",
       __spreadProps(__spreadValues({
         "data-state": scrollbarContext.hasThumb ? "visible" : "hidden"
@@ -857,11 +860,11 @@ var Thumb = (0, import_react15.forwardRef)(
     );
   }
 );
-var ScrollAreaThumb = import_react15.default.forwardRef((props, forwardedRef) => {
+var ScrollAreaThumb = import_react16.default.forwardRef((props, forwardedRef) => {
   const _a = props, { forceMount } = _a, thumbProps = __objRest(_a, ["forceMount"]);
   const scrollbarContext = useScrollbarContext();
   if (forceMount || scrollbarContext.hasThumb) {
-    return /* @__PURE__ */ import_react15.default.createElement(Thumb, __spreadValues({ ref: forwardedRef }, thumbProps));
+    return /* @__PURE__ */ import_react16.default.createElement(Thumb, __spreadValues({ ref: forwardedRef }, thumbProps));
   }
   return null;
 });
@@ -912,7 +915,7 @@ var ScrollArea = (0, import_core4.factory)((_props, ref) => {
     "children",
     "offsetScrollbars"
   ]);
-  const [scrollbarHovered, setScrollbarHovered] = (0, import_react16.useState)(false);
+  const [scrollbarHovered, setScrollbarHovered] = (0, import_react17.useState)(false);
   const getStyles = (0, import_core4.useStyles)({
     name: "ScrollArea",
     props,
@@ -932,14 +935,14 @@ var ScrollArea = (0, import_core4.factory)((_props, ref) => {
     vars,
     varsResolver
   });
-  return /* @__PURE__ */ import_react16.default.createElement(
+  return /* @__PURE__ */ import_react17.default.createElement(
     ScrollAreaRoot,
     __spreadValues(__spreadValues({
       type: type === "never" ? "always" : type,
       scrollHideDelay,
       ref
     }, getStyles("root")), others),
-    /* @__PURE__ */ import_react16.default.createElement(
+    /* @__PURE__ */ import_react17.default.createElement(
       ScrollAreaViewport,
       __spreadProps(__spreadValues(__spreadValues({}, viewportProps), getStyles("viewport")), {
         ref: viewportRef,
@@ -951,7 +954,7 @@ var ScrollArea = (0, import_core4.factory)((_props, ref) => {
       }),
       children
     ),
-    /* @__PURE__ */ import_react16.default.createElement(
+    /* @__PURE__ */ import_react17.default.createElement(
       ScrollAreaScrollbar,
       __spreadProps(__spreadValues({}, getStyles("scrollbar")), {
         orientation: "horizontal",
@@ -960,9 +963,9 @@ var ScrollArea = (0, import_core4.factory)((_props, ref) => {
         onMouseEnter: () => setScrollbarHovered(true),
         onMouseLeave: () => setScrollbarHovered(false)
       }),
-      /* @__PURE__ */ import_react16.default.createElement(ScrollAreaThumb, __spreadValues({}, getStyles("thumb")))
+      /* @__PURE__ */ import_react17.default.createElement(ScrollAreaThumb, __spreadValues({}, getStyles("thumb")))
     ),
-    /* @__PURE__ */ import_react16.default.createElement(
+    /* @__PURE__ */ import_react17.default.createElement(
       ScrollAreaScrollbar,
       __spreadProps(__spreadValues({}, getStyles("scrollbar")), {
         orientation: "vertical",
@@ -971,9 +974,9 @@ var ScrollArea = (0, import_core4.factory)((_props, ref) => {
         onMouseEnter: () => setScrollbarHovered(true),
         onMouseLeave: () => setScrollbarHovered(false)
       }),
-      /* @__PURE__ */ import_react16.default.createElement(ScrollAreaThumb, __spreadValues({}, getStyles("thumb")))
+      /* @__PURE__ */ import_react17.default.createElement(ScrollAreaThumb, __spreadValues({}, getStyles("thumb")))
     ),
-    /* @__PURE__ */ import_react16.default.createElement(
+    /* @__PURE__ */ import_react17.default.createElement(
       ScrollAreaCorner,
       __spreadProps(__spreadValues({}, getStyles("corner")), {
         "data-hovered": scrollbarHovered || void 0,
@@ -1017,7 +1020,7 @@ var ScrollAreaAutosize = (0, import_core4.factory)((props, ref) => {
     "style",
     "vars"
   ]);
-  return /* @__PURE__ */ import_react16.default.createElement(import_core4.Box, __spreadProps(__spreadValues({}, others), { ref, style: [{ display: "flex" }, style] }), /* @__PURE__ */ import_react16.default.createElement(import_core4.Box, { style: { display: "flex", flexDirection: "column", flex: 1 } }, /* @__PURE__ */ import_react16.default.createElement(
+  return /* @__PURE__ */ import_react17.default.createElement(import_core4.Box, __spreadProps(__spreadValues({}, others), { ref, style: [{ display: "flex" }, style] }), /* @__PURE__ */ import_react17.default.createElement(import_core4.Box, { style: { display: "flex", flexDirection: "column", flex: 1 } }, /* @__PURE__ */ import_react17.default.createElement(
     ScrollArea,
     {
       classNames,

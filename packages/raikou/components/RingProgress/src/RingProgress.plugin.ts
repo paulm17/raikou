@@ -20,11 +20,11 @@ module.exports = function ({ addComponents, theme }: any) {
       stroke: "var(--curve-color, var(--_curve-root-color))",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_curve-root-color": "var(--raikou-color-gray-2)",
+        "--_curve-root-color": "var(--raikou-ringprogress-curve-root-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_curve-root-color": "var(--raikou-color-dark-4)",
+        "--_curve-root-color": "var(--raikou-ringprogress-curve-root-color)",
       },
     },
 

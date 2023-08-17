@@ -113,6 +113,7 @@ export function Menu(_props: MenuProps) {
   const getStyles = useStyles<MenuFactory>({
     name: "Menu",
     classes: {
+      dropdown: "menu-dropdown",
       item: "menu-item",
       itemLabel: "menu-itemLabel",
       itemSection: "menu-itemSection",

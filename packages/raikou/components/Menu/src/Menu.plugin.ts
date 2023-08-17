@@ -2,7 +2,7 @@ import { rem } from "@raikou/core";
 
 module.exports = function ({ addComponents, theme }: any) {
   addComponents({
-    ".menu-dropdown": {
+    ".menu-dropdown.menu-dropdown": {
       padding: rem("4px"),
     },
 
@@ -20,15 +20,15 @@ module.exports = function ({ addComponents, theme }: any) {
       borderTop: `${rem("1px")} solid var(--_divider-color)`,
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_divider-color": "var(--raikou-color-gray-2)",
+        "--_divider-color": "var(--raikou-menu-divider-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_divider-color": "var(--raikou-color-dark-4)",
+        "--_divider-color": "var(--raikou-menu-divider-color)",
       },
     },
 
-    ".menu-item": {
+    ".menu-item.menu-item": {
       fontSize: "var(--raikou-font-size-sm)",
       width: "100%",
       padding: "calc(var(--raikou-spacing-xs) / 1.5) var(--raikou-spacing-sm)",
@@ -51,17 +51,17 @@ module.exports = function ({ addComponents, theme }: any) {
         "--_item-bg": "var(--menu-item-hover, var(--_item-bg-hover))",
 
         '[data-raikou-color-scheme="light"] &': {
-          "--_item-bg-hover": "var(--raikou-color-gray-1)",
+          "--_item-bg-hover": "var(--raikou-menu-divider-item-hover-bg)",
         },
 
         '[data-raikou-color-scheme="dark"] &': {
-          "--_item-bg-hover": "var(--raikou-color-dark-4)",
+          "--_item-bg-hover": "var(--raikou-menu-divider-item-hover-bg)",
         },
       },
     },
 
     ".menu-itemLabel": {
-      flex: 1,
+      flex: "1",
     },
 
     ".menu-itemSection": {

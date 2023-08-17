@@ -67,11 +67,11 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Progress.tsx
-var import_react7 = __toESM(require("react"));
+var import_react8 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
 
 // src/ProgressRoot/ProgressRoot.tsx
-var import_react4 = __toESM(require("react"));
+var import_react5 = __toESM(require("react"));
 var import_core = require("@raikou/core");
 
 // ../_utils/create-safe-context/create-safe-context.tsx
@@ -94,6 +94,9 @@ var import_react2 = __toESM(require("react"));
 
 // ../_utils/use-hovered/use-hovered.ts
 var import_react3 = require("react");
+
+// ../_utils/create-use-external-events/create-use-external-events.ts
+var import_react4 = require("react");
 
 // src/Progress.context.ts
 var [ProgressProvider, useProgressContext] = createSafeContext(
@@ -129,12 +132,12 @@ var ProgressRoot = (0, import_core.factory)((_props, ref) => {
     vars,
     varsResolver
   });
-  return /* @__PURE__ */ import_react4.default.createElement(ProgressProvider, { value: { getStyles } }, /* @__PURE__ */ import_react4.default.createElement(import_core.Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others)));
+  return /* @__PURE__ */ import_react5.default.createElement(ProgressProvider, { value: { getStyles } }, /* @__PURE__ */ import_react5.default.createElement(import_core.Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others)));
 });
 ProgressRoot.displayName = "@raikou/core/ProgressRoot";
 
 // src/ProgressSection/ProgressSection.tsx
-var import_react5 = __toESM(require("react"));
+var import_react6 = __toESM(require("react"));
 var import_core2 = require("@raikou/core");
 var defaultProps2 = {
   withAria: true
@@ -174,7 +177,7 @@ var ProgressSection = (0, import_core2.factory)((props, ref) => {
     "aria-valuenow": value,
     "aria-valuetext": `${value}%`
   } : {};
-  return /* @__PURE__ */ import_react5.default.createElement(
+  return /* @__PURE__ */ import_react6.default.createElement(
     import_core2.Box,
     __spreadProps(__spreadValues(__spreadValues(__spreadValues({
       ref
@@ -190,13 +193,13 @@ var ProgressSection = (0, import_core2.factory)((props, ref) => {
 ProgressSection.displayName = "@raikou/core/ProgressSection";
 
 // src/ProgressLabel/ProgressLabel.tsx
-var import_react6 = __toESM(require("react"));
+var import_react7 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
 var defaultProps3 = {};
 var ProgressLabel = (0, import_core3.factory)((props, ref) => {
   const _a = (0, import_core3.useProps)("ProgressLabel", defaultProps3, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
   const ctx = useProgressContext();
-  return /* @__PURE__ */ import_react6.default.createElement(
+  return /* @__PURE__ */ import_react7.default.createElement(
     import_core3.Box,
     __spreadValues(__spreadValues({
       ref
@@ -235,7 +238,7 @@ var Progress = (0, import_core4.factory)((_props, ref) => {
     styles,
     props
   });
-  return /* @__PURE__ */ import_react7.default.createElement(
+  return /* @__PURE__ */ import_react8.default.createElement(
     ProgressRoot,
     __spreadValues({
       ref,
@@ -243,7 +246,7 @@ var Progress = (0, import_core4.factory)((_props, ref) => {
       styles: resolvedStyles,
       vars
     }, others),
-    /* @__PURE__ */ import_react7.default.createElement(
+    /* @__PURE__ */ import_react8.default.createElement(
       ProgressSection,
       {
         value,

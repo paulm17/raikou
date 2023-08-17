@@ -205,6 +205,9 @@ function createOptionalContext(initialValue = null) {
 // ../components/_utils/use-hovered/use-hovered.ts
 import { useState } from "react";
 
+// ../components/_utils/create-use-external-events/create-use-external-events.ts
+import { useEffect, useLayoutEffect } from "react";
+
 // ../components/Input/src/InputWrapper.context.ts
 var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetBottom: false,
@@ -917,7 +920,7 @@ var SpotlightSearch = factory6((props, ref) => {
 SpotlightSearch.displayName = "@raikou/spotlight/SpotlightSearch";
 
 // src/SpotlightActionsList.tsx
-import React23, { useEffect as useEffect7, useId as useId2 } from "react";
+import React23, { useEffect as useEffect8, useId as useId2 } from "react";
 import {
   factory as factory8,
   useProps as useProps10
@@ -947,11 +950,11 @@ import React13, { useRef as useRef3, useState as useState3, forwardRef as forwar
 import { useDirection } from "@raikou/core";
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollbarX.tsx
-import React11, { forwardRef as forwardRef2, useRef, useState as useState2, useEffect as useEffect2 } from "react";
+import React11, { forwardRef as forwardRef2, useRef, useState as useState2, useEffect as useEffect3 } from "react";
 import { useMergedRef as useMergedRef2 } from "@raikou/hooks";
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/Scrollbar.tsx
-import React10, { useEffect, forwardRef } from "react";
+import React10, { useEffect as useEffect2, forwardRef } from "react";
 import {
   useMergedRef,
   useCallbackRef as useCallbackRef2,
@@ -1121,7 +1124,7 @@ var Scrollbar = forwardRef(
         onDragScroll({ x, y });
       }
     };
-    useEffect(() => {
+    useEffect2(() => {
       const handleWheel = (event) => {
         const element = event.target;
         const isScrollbarWheel = scrollbar == null ? void 0 : scrollbar.contains(element);
@@ -1133,7 +1136,7 @@ var Scrollbar = forwardRef(
         passive: false
       });
     }, [viewport, scrollbar, maxScrollPos, handleWheelScroll]);
-    useEffect(handleThumbPositionChange, [sizes, handleThumbPositionChange]);
+    useEffect2(handleThumbPositionChange, [sizes, handleThumbPositionChange]);
     useResizeObserver(scrollbar, handleResize);
     useResizeObserver(context.content, handleResize);
     return /* @__PURE__ */ React10.createElement(
@@ -1189,7 +1192,7 @@ var ScrollAreaScrollbarX = forwardRef2((props, forwardedRef) => {
   const [computedStyle, setComputedStyle] = useState2();
   const ref = useRef(null);
   const composeRefs = useMergedRef2(forwardedRef, ref, ctx.onScrollbarXChange);
-  useEffect2(() => {
+  useEffect3(() => {
     if (ref.current)
       setComputedStyle(getComputedStyle(ref.current));
   }, [ref]);
@@ -1232,7 +1235,7 @@ var ScrollAreaScrollbarX = forwardRef2((props, forwardedRef) => {
 });
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollbarY.tsx
-import React12, { forwardRef as forwardRef3, useEffect as useEffect3, useRef as useRef2 } from "react";
+import React12, { forwardRef as forwardRef3, useEffect as useEffect4, useRef as useRef2 } from "react";
 import { useMergedRef as useMergedRef3 } from "@raikou/hooks";
 var ScrollAreaScrollbarY = forwardRef3((props, forwardedRef) => {
   const _a = props, { sizes, onSizesChange, style } = _a, others = __objRest(_a, ["sizes", "onSizesChange", "style"]);
@@ -1244,7 +1247,7 @@ var ScrollAreaScrollbarY = forwardRef3((props, forwardedRef) => {
     ref,
     context.onScrollbarYChange
   );
-  useEffect3(() => {
+  useEffect4(() => {
     if (ref.current)
       setComputedStyle(getComputedStyle(ref.current));
   }, [ref]);
@@ -1369,7 +1372,7 @@ var ScrollAreaScrollbarVisible = forwardRef4((props, forwardedRef) => {
 });
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarHover.tsx
-import React15, { forwardRef as forwardRef6, useEffect as useEffect4, useState as useState5 } from "react";
+import React15, { forwardRef as forwardRef6, useEffect as useEffect5, useState as useState5 } from "react";
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarAuto.tsx
 import React14, { forwardRef as forwardRef5, useState as useState4 } from "react";
@@ -1407,7 +1410,7 @@ var ScrollAreaScrollbarHover = forwardRef6(
     const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
     const context = useScrollAreaContext();
     const [visible, setVisible] = useState5(false);
-    useEffect4(() => {
+    useEffect5(() => {
       const { scrollArea } = context;
       let hideTimer = 0;
       if (scrollArea) {
@@ -1443,7 +1446,7 @@ var ScrollAreaScrollbarHover = forwardRef6(
 );
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarScroll.tsx
-import React16, { forwardRef as forwardRef7, useEffect as useEffect5, useState as useState6 } from "react";
+import React16, { forwardRef as forwardRef7, useEffect as useEffect6, useState as useState6 } from "react";
 import { useDebounceCallback as useDebounceCallback3 } from "@raikou/hooks";
 var ScrollAreaScrollbarScroll = forwardRef7((props, red) => {
   const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
@@ -1451,7 +1454,7 @@ var ScrollAreaScrollbarScroll = forwardRef7((props, red) => {
   const isHorizontal = props.orientation === "horizontal";
   const [state, setState] = useState6("hidden");
   const debounceScrollEnd = useDebounceCallback3(() => setState("idle"), 100);
-  useEffect5(() => {
+  useEffect6(() => {
     if (state === "idle") {
       const hideTimer = window.setTimeout(
         () => setState("hidden"),
@@ -1461,7 +1464,7 @@ var ScrollAreaScrollbarScroll = forwardRef7((props, red) => {
     }
     return void 0;
   }, [state, context.scrollHideDelay]);
-  useEffect5(() => {
+  useEffect6(() => {
     const { viewport } = context;
     const scrollDirection = isHorizontal ? "scrollLeft" : "scrollTop";
     if (viewport) {
@@ -1639,7 +1642,7 @@ var ScrollAreaViewport = forwardRef9((_a, ref) => {
 ScrollAreaViewport.displayName = "@raikou/core/ScrollAreaViewport";
 
 // ../components/ScrollArea/src/ScrollAreaThumb/ScrollAreaThumb.tsx
-import React21, { forwardRef as forwardRef10, useRef as useRef4, useEffect as useEffect6 } from "react";
+import React21, { forwardRef as forwardRef10, useRef as useRef4, useEffect as useEffect7 } from "react";
 import { useDebounceCallback as useDebounceCallback4, useMergedRef as useMergedRef6 } from "@raikou/hooks";
 var Thumb = forwardRef10(
   (props, forwardedRef) => {
@@ -1658,7 +1661,7 @@ var Thumb = forwardRef10(
         removeUnlinkedScrollListenerRef.current = void 0;
       }
     }, 100);
-    useEffect6(() => {
+    useEffect7(() => {
       const { viewport } = scrollAreaContext;
       if (viewport) {
         const handleScroll2 = () => {
@@ -1913,7 +1916,7 @@ var SpotlightActionsList = factory8(
     const ctx = useSpotlightContext();
     const generatedId = `raikou-${useId2().replaceAll(":", "")}`;
     const listId = id || generatedId;
-    useEffect7(() => {
+    useEffect8(() => {
       spotlightActions.setListId(listId, ctx.store);
       return () => spotlightActions.setListId("", ctx.store);
     }, []);
@@ -3152,14 +3155,14 @@ import { useState as useState14 } from "react";
 import { useId as useId3, useWindowEvent, useFocusReturn } from "@raikou/hooks";
 
 // ../components/ModalBase/src/use-lock-scroll.ts
-import { useState as useState13, useEffect as useEffect10, useRef as useRef8 } from "react";
+import { useState as useState13, useEffect as useEffect11, useRef as useRef8 } from "react";
 import { useReducedMotion } from "@raikou/hooks";
 function useLockScroll({ opened, transitionDuration }) {
   const [shouldLockScroll, setShouldLockScroll] = useState13(opened);
   const timeout = useRef8();
   const reduceMotion = useReducedMotion();
   const _transitionDuration = reduceMotion ? 0 : transitionDuration;
-  useEffect10(() => {
+  useEffect11(() => {
     if (opened) {
       setShouldLockScroll(true);
       window.clearTimeout(timeout.current);
@@ -3327,10 +3330,10 @@ var clsx_default = clsx;
 import { Box as Box18 } from "@raikou/core";
 
 // ../components/ModalBase/src/use-modal-body-id.ts
-import { useEffect as useEffect11 } from "react";
+import { useEffect as useEffect12 } from "react";
 function useModalBodyId() {
   const ctx = useModalBaseContext();
-  useEffect11(() => {
+  useEffect12(() => {
     ctx.setBodyMounted(true);
     return () => ctx.setBodyMounted(false);
   }, []);
@@ -3760,14 +3763,17 @@ CloseButton.displayName = "@raikou/core/CloseButton";
 var ModalBaseCloseButton = forwardRef20((_a, ref) => {
   var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
   const ctx = useModalBaseContext();
-  return /* @__PURE__ */ React50.createElement(
-    CloseButton,
-    __spreadProps(__spreadValues({
-      ref
-    }, others), {
-      onClick: ctx.onClose,
-      className: clsx_default("modalBase-close", className)
-    })
+  return (
+    // @ts-ignore
+    /* @__PURE__ */ React50.createElement(
+      CloseButton,
+      __spreadProps(__spreadValues({
+        ref
+      }, others), {
+        onClick: ctx.onClose,
+        className: clsx_default("modalBase-close", className)
+      })
+    )
   );
 });
 ModalBaseCloseButton.displayName = "@raikou/core/ModalBaseCloseButton";
@@ -3913,7 +3919,7 @@ function getTransitionStyles({
 }
 
 // ../components/Transition/src/use-transition.ts
-import { useState as useState15, useEffect as useEffect12, useRef as useRef9 } from "react";
+import { useState as useState15, useEffect as useEffect13, useRef as useRef9 } from "react";
 import { useReducedMotion as useReducedMotion2, useDidUpdate } from "@raikou/hooks";
 import { useRaikouTheme } from "@raikou/core";
 function useTransition({
@@ -3962,7 +3968,7 @@ function useTransition({
   useDidUpdate(() => {
     handleStateChange(mounted);
   }, [mounted]);
-  useEffect12(() => () => window.clearTimeout(timeoutRef.current), []);
+  useEffect13(() => () => window.clearTimeout(timeoutRef.current), []);
   return {
     transitionDuration,
     transitionStatus,
@@ -3973,7 +3979,7 @@ function useTransition({
 // ../components/Transition/src/Transition.tsx
 function Transition({
   keepMounted,
-  transition,
+  transition = "fade",
   duration = 250,
   exitDuration = duration,
   mounted,
@@ -4141,6 +4147,7 @@ var ModalBaseContent = forwardRef21(
     );
   }
 );
+ModalBaseContent.displayName = "@raikou/core/ModalBaseContent";
 
 // ../components/ModalBase/src/ModalBaseHeader.tsx
 import React55, { forwardRef as forwardRef22 } from "react";
@@ -4276,10 +4283,10 @@ import React58, { forwardRef as forwardRef24 } from "react";
 import { Box as Box27 } from "@raikou/core";
 
 // ../components/ModalBase/src/use-modal-title-id.ts
-import { useEffect as useEffect13 } from "react";
+import { useEffect as useEffect14 } from "react";
 function useModalTitle() {
   const ctx = useModalBaseContext();
-  useEffect13(() => {
+  useEffect14(() => {
     ctx.setTitleMounted(true);
     return () => ctx.setTitleMounted(false);
   }, []);

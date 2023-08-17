@@ -7,19 +7,22 @@ import {
   Box,
   Button,
   Center,
+  Grid,
   Group,
   Loader,
   Notification,
   Stack,
   Text,
+  Timeline,
 } from "@raikou/server";
 import {
   Accordion,
   Checkbox,
   Chip,
-  Grid,
+  ColorInput,
   MultiSelect,
   Pagination,
+  Radio,
   ScrollArea,
   SegmentedControl,
   Select,
@@ -27,19 +30,41 @@ import {
   Tabs,
   TextInput,
 } from "@raikou/client";
-import { useColorScheme } from "@raikou/system";
-import { useElementSize } from "@raikou/hooks";
+import { useColorScheme, createCSSVariables, rem } from "@raikou/system";
+import { useElementSize, useDebouncedState } from "@raikou/hooks";
+import { createTheme } from "@raikou/global-store";
+import { generateColors } from "@raikou/colors-generator";
 
 type Mode = "light" | "dark" | "system";
 type Size = "xs" | "sm" | "md" | "lg" | "xl";
+
+const allOpen = [
+  "button",
+  "checkbox",
+  "switch",
+  "radio",
+  "chip",
+  "inputs",
+  "anchor",
+  "pagination",
+  "stepper",
+  "tabs",
+  "badge",
+  "timeline",
+  "alert",
+  "loader",
+  "notification",
+  "segmentedControl",
+];
 
 function Themer() {
   const isMountedRef = useRef<boolean>(false);
   const { colorScheme, setColorScheme } = useColorScheme();
   const [mode, setMode] = useState<Mode>(colorScheme as Mode);
   const [size, setSize] = useState<Size>("xs");
-  const [open, setOpen] = useState<string[]>([]);
+  const [open, setOpen] = useState<string[]>(allOpen);
   const { ref, height } = useElementSize();
+  const [color, setColor] = useDebouncedState("", 50);
 
   const modes = [
     { label: "Light mode", value: "light" },
@@ -48,24 +73,7 @@ function Themer() {
   const sizes = ["xs", "sm", "md", "lg", "xl"];
 
   const onOpenAll = () => {
-    setOpen([
-      "button",
-      "checkbox",
-      "switch",
-      "radio",
-      "chip",
-      "inputs",
-      "anchor",
-      "pagination",
-      "stepper",
-      "tabs",
-      "badge",
-      "timeline",
-      "alert",
-      "loader",
-      "notification",
-      "segmentedControl",
-    ]);
+    setOpen(allOpen);
   };
 
   const onCloseAll = () => {
@@ -77,6 +85,21 @@ function Themer() {
       setColorScheme(mode as Mode);
     }
   }, [mode]);
+
+  useEffect(() => {
+    if (isMountedRef.current) {
+      if (color !== "") {
+        const theme = createTheme({
+          primaryColor: "primary",
+          colors: {
+            primary: generateColors(color),
+          },
+        });
+
+        createCSSVariables({ theme });
+      }
+    }
+  }, [color]);
 
   useLayoutEffect(() => {
     isMountedRef.current = true;
@@ -183,6 +206,7 @@ function Themer() {
                       <Button variant="gradient" size={size}>
                         Gradient
                       </Button>
+                      <Button loading={true}>Loading</Button>
                     </Group>
                   </Accordion.Panel>
                 </Accordion.Item>
@@ -200,7 +224,15 @@ function Themer() {
                 </Accordion.Item>
                 <Accordion.Item value="radio">
                   <Accordion.Control>Radio</Accordion.Control>
-                  <Accordion.Panel>TBD</Accordion.Panel>
+                  <Accordion.Panel>
+                    <Radio.Group defaultValue="ng">
+                      <Group>
+                        <Radio label="React" value="react" />
+                        <Radio label="Angular" value="ng" />
+                        <Radio label="Svelte" value="sv" />
+                      </Group>
+                    </Radio.Group>
+                  </Accordion.Panel>
                 </Accordion.Item>
                 <Accordion.Item value="chip">
                   <Accordion.Control>Chip</Accordion.Control>
@@ -298,7 +330,58 @@ function Themer() {
                 </Accordion.Item>
                 <Accordion.Item value="timeline">
                   <Accordion.Control>Timeline</Accordion.Control>
-                  <Accordion.Panel>TBD</Accordion.Panel>
+                  <Accordion.Panel>
+                    {/* <Timeline active={1} bulletSize={24}>
+                      <Timeline.Item title="New branch">
+                        <Text c="dimmed" size="sm">
+                          You&apos;ve created new branch{" "}
+                          <Text variant="link" component="span" inherit>
+                            fix-notifications
+                          </Text>{" "}
+                          from master
+                        </Text>
+                        <Text size="xs" mt={4}>
+                          2 hours ago
+                        </Text>
+                      </Timeline.Item>
+
+                      <Timeline.Item title="Commits">
+                        <Text c="dimmed" size="sm">
+                          You&apos;ve pushed 23 commits to
+                          <Text variant="link" component="span" inherit>
+                            fix-notifications branch
+                          </Text>
+                        </Text>
+                        <Text size="xs" mt={4}>
+                          52 minutes ago
+                        </Text>
+                      </Timeline.Item>
+
+                      <Timeline.Item title="Pull request" lineVariant="dashed">
+                        <Text c="dimmed" size="sm">
+                          You&apos;ve submitted a pull request
+                          <Text variant="link" component="span" inherit>
+                            Fix incorrect notification message (#187)
+                          </Text>
+                        </Text>
+                        <Text size="xs" mt={4}>
+                          34 minutes ago
+                        </Text>
+                      </Timeline.Item>
+
+                      <Timeline.Item title="Code review">
+                        <Text c="dimmed" size="sm">
+                          <Text variant="link" component="span" inherit>
+                            Robert Gluesticker
+                          </Text>{" "}
+                          left a code review on your pull request
+                        </Text>
+                        <Text size="xs" mt={4}>
+                          12 minutes ago
+                        </Text>
+                      </Timeline.Item>
+                    </Timeline> */}
+                  </Accordion.Panel>
                 </Accordion.Item>
                 <Accordion.Item value="alert">
                   <Accordion.Control>Alert</Accordion.Control>
@@ -306,7 +389,6 @@ function Themer() {
                     <Stack>
                       <Alert
                         variant="default"
-                        color="blue"
                         title={
                           <Text size={size} className="font-medium">
                             Alert!
@@ -319,7 +401,6 @@ function Themer() {
                       </Alert>
                       <Alert
                         variant="filled"
-                        color="blue"
                         title={
                           <Text size={size} className="font-medium">
                             Filled
@@ -332,7 +413,6 @@ function Themer() {
                       </Alert>
                       <Alert
                         variant="outline"
-                        color="blue"
                         title={
                           <Text size={size} className="font-medium">
                             Outline
@@ -350,9 +430,9 @@ function Themer() {
                   <Accordion.Control>Loader</Accordion.Control>
                   <Accordion.Panel>
                     <Group>
-                      <Loader size={size} color="blue" />
-                      <Loader size={size} type="bars" color="blue" />
-                      <Loader size={size} type="dots" color="blue" />
+                      <Loader size={size} />
+                      <Loader size={size} type="bars" />
+                      <Loader size={size} type="dots" />
                     </Group>
                   </Accordion.Panel>
                 </Accordion.Item>
@@ -388,8 +468,11 @@ function Themer() {
           </Stack>
         </Center>
       </Grid.Col>
-      <Grid.Col span={3} p={8}>
-        TBD
+      <Grid.Col span={2} p={8}>
+        <Stack p="xs" gap={4}>
+          <Text size={rem(14)}>Primary Color</Text>
+          <ColorInput size="sm" value={color} onChange={setColor}></ColorInput>
+        </Stack>
       </Grid.Col>
     </Grid>
   );

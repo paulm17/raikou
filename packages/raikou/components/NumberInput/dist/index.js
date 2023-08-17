@@ -64,7 +64,7 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/NumberInput.tsx
-var import_react13 = __toESM(require("react"));
+var import_react14 = __toESM(require("react"));
 var import_react_number_format = require("react-number-format");
 var import_hooks2 = require("@raikou/hooks");
 var import_core10 = require("@raikou/core");
@@ -120,11 +120,11 @@ var UnstyledButton = (0, import_core.polymorphicFactory)(
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
 // ../InputBase/src/InputBase.tsx
-var import_react11 = __toESM(require("react"));
+var import_react12 = __toESM(require("react"));
 var import_core9 = require("@raikou/core");
 
 // ../Input/src/Input.tsx
-var import_react10 = __toESM(require("react"));
+var import_react11 = __toESM(require("react"));
 var import_core7 = require("@raikou/core");
 
 // ../_utils/create-safe-context/create-safe-context.tsx
@@ -142,6 +142,9 @@ function createOptionalContext(initialValue = null) {
 // ../_utils/use-hovered/use-hovered.ts
 var import_react4 = require("react");
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+var import_react5 = require("react");
+
 // ../Input/src/InputWrapper.context.ts
 var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetBottom: false,
@@ -152,7 +155,7 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
 });
 
 // ../Input/src/InputLabel/InputLabel.tsx
-var import_react5 = __toESM(require("react"));
+var import_react6 = __toESM(require("react"));
 var import_core2 = require("@raikou/core");
 var defaultProps2 = {
   size: "sm",
@@ -215,7 +218,7 @@ var InputLabel = (0, import_core2.factory)((_props, ref) => {
   });
   const ctx = useInputWrapperContext();
   const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-  return /* @__PURE__ */ import_react5.default.createElement(
+  return /* @__PURE__ */ import_react6.default.createElement(
     import_core2.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("label")), {
       component: labelElement,
@@ -232,13 +235,13 @@ var InputLabel = (0, import_core2.factory)((_props, ref) => {
       }
     }), others),
     children,
-    required && /* @__PURE__ */ import_react5.default.createElement("span", __spreadProps(__spreadValues({}, getStyles("required")), { "aria-hidden": true }), " *")
+    required && /* @__PURE__ */ import_react6.default.createElement("span", __spreadProps(__spreadValues({}, getStyles("required")), { "aria-hidden": true }), " *")
   );
 });
 InputLabel.displayName = "@raikou/core/InputLabel";
 
 // ../Input/src/InputError/InputError.tsx
-var import_react6 = __toESM(require("react"));
+var import_react7 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
 var defaultProps3 = {
   size: "sm"
@@ -288,7 +291,7 @@ var InputError = (0, import_core3.factory)((_props, ref) => {
   });
   const ctx = useInputWrapperContext();
   const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-  return /* @__PURE__ */ import_react6.default.createElement(
+  return /* @__PURE__ */ import_react7.default.createElement(
     import_core3.Box,
     __spreadValues(__spreadValues({
       component: "p",
@@ -301,7 +304,7 @@ var InputError = (0, import_core3.factory)((_props, ref) => {
 InputError.displayName = "@raikou/core/InputError";
 
 // ../Input/src/InputDescription/InputDescription.tsx
-var import_react7 = __toESM(require("react"));
+var import_react8 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
 var defaultProps4 = {
   size: "sm"
@@ -354,7 +357,7 @@ var InputDescription = (0, import_core4.factory)(
       varsResolver: varsResolver3
     });
     const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-    return /* @__PURE__ */ import_react7.default.createElement(
+    return /* @__PURE__ */ import_react8.default.createElement(
       import_core4.Box,
       __spreadValues(__spreadValues({
         component: "p",
@@ -368,7 +371,7 @@ var InputDescription = (0, import_core4.factory)(
 InputDescription.displayName = "@raikou/core/InputDescription";
 
 // ../Input/src/InputPlaceholder/InputPlaceholder.tsx
-var import_react8 = __toESM(require("react"));
+var import_react9 = __toESM(require("react"));
 var import_core5 = require("@raikou/core");
 var defaultProps5 = {};
 var InputPlaceholder = (0, import_core5.factory)(
@@ -406,7 +409,7 @@ var InputPlaceholder = (0, import_core5.factory)(
       unstyled,
       rootSelector: "placeholder"
     });
-    return /* @__PURE__ */ import_react8.default.createElement(
+    return /* @__PURE__ */ import_react9.default.createElement(
       import_core5.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("placeholder")), {
         component: "span",
@@ -419,7 +422,7 @@ var InputPlaceholder = (0, import_core5.factory)(
 InputPlaceholder.displayName = "@raikou/core/InputPlaceholder";
 
 // ../Input/src/InputWrapper/InputWrapper.tsx
-var import_react9 = __toESM(require("react"));
+var import_react10 = __toESM(require("react"));
 var import_hooks = require("@raikou/hooks");
 var import_core6 = require("@raikou/core");
 
@@ -535,7 +538,7 @@ var InputWrapper = (0, import_core6.factory)((_props, ref) => {
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
-  const _label = label && /* @__PURE__ */ import_react9.default.createElement(
+  const _label = label && /* @__PURE__ */ import_react10.default.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
@@ -546,7 +549,7 @@ var InputWrapper = (0, import_core6.factory)((_props, ref) => {
     }, sharedProps), labelProps),
     label
   );
-  const _description = hasDescription && /* @__PURE__ */ import_react9.default.createElement(
+  const _description = hasDescription && /* @__PURE__ */ import_react10.default.createElement(
     InputDescription,
     __spreadProps(__spreadValues(__spreadValues({
       key: "description"
@@ -556,8 +559,8 @@ var InputWrapper = (0, import_core6.factory)((_props, ref) => {
     }),
     description
   );
-  const _input = /* @__PURE__ */ import_react9.default.createElement(import_react9.default.Fragment, { key: "input" }, inputContainer(children));
-  const _error = hasError && /* @__PURE__ */ import_react9.default.createElement(
+  const _input = /* @__PURE__ */ import_react10.default.createElement(import_react10.default.Fragment, { key: "input" }, inputContainer(children));
+  const _error = hasError && /* @__PURE__ */ import_react10.default.createElement(
     InputError,
     __spreadProps(__spreadValues(__spreadValues({}, errorProps), sharedProps), {
       size: (errorProps == null ? void 0 : errorProps.size) || sharedProps.size,
@@ -580,7 +583,7 @@ var InputWrapper = (0, import_core6.factory)((_props, ref) => {
         return null;
     }
   });
-  return /* @__PURE__ */ import_react9.default.createElement(
+  return /* @__PURE__ */ import_react10.default.createElement(
     InputWrapperProvider,
     {
       value: __spreadValues({
@@ -589,7 +592,7 @@ var InputWrapper = (0, import_core6.factory)((_props, ref) => {
         inputId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
-    /* @__PURE__ */ import_react9.default.createElement(
+    /* @__PURE__ */ import_react10.default.createElement(
       import_core6.Box,
       __spreadValues(__spreadValues({
         ref,
@@ -717,7 +720,7 @@ var Input = (0, import_core7.polymorphicFactory)((_props, ref) => {
     "aria-describedby": ctx == null ? void 0 : ctx.describedBy,
     id: (ctx == null ? void 0 : ctx.inputId) || id
   } : {};
-  return /* @__PURE__ */ import_react10.default.createElement(
+  return /* @__PURE__ */ import_react11.default.createElement(
     import_core7.Box,
     __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, getStyles("wrapper")), styleProps), wrapperProps), {
       mod: {
@@ -731,7 +734,7 @@ var Input = (0, import_core7.polymorphicFactory)((_props, ref) => {
       variant,
       size
     }),
-    leftSection && /* @__PURE__ */ import_react10.default.createElement(
+    leftSection && /* @__PURE__ */ import_react11.default.createElement(
       "div",
       __spreadValues(__spreadProps(__spreadValues({}, leftSectionProps), {
         "data-position": "left"
@@ -741,7 +744,7 @@ var Input = (0, import_core7.polymorphicFactory)((_props, ref) => {
       })),
       leftSection
     ),
-    /* @__PURE__ */ import_react10.default.createElement(
+    /* @__PURE__ */ import_react11.default.createElement(
       import_core7.Box,
       __spreadValues(__spreadProps(__spreadValues(__spreadValues({
         component: "input"
@@ -752,7 +755,7 @@ var Input = (0, import_core7.polymorphicFactory)((_props, ref) => {
         variant
       }), getStyles("input"))
     ),
-    rightSection && /* @__PURE__ */ import_react10.default.createElement(
+    rightSection && /* @__PURE__ */ import_react11.default.createElement(
       "div",
       __spreadValues(__spreadProps(__spreadValues({}, rightSectionProps), {
         "data-position": "right"
@@ -875,15 +878,15 @@ var InputBase = (0, import_core9.polymorphicFactory)((props, ref) => {
     defaultProps8,
     props
   ), { inputProps, wrapperProps } = _a, others = __objRest(_a, ["inputProps", "wrapperProps"]);
-  return /* @__PURE__ */ import_react11.default.createElement(Input.Wrapper, __spreadValues({}, wrapperProps), /* @__PURE__ */ import_react11.default.createElement(Input, __spreadProps(__spreadValues(__spreadValues({}, inputProps), others), { ref })));
+  return /* @__PURE__ */ import_react12.default.createElement(Input.Wrapper, __spreadValues({}, wrapperProps), /* @__PURE__ */ import_react12.default.createElement(Input, __spreadProps(__spreadValues(__spreadValues({}, inputProps), others), { ref })));
 });
 InputBase.displayName = "@raikou/core/InputBase";
 
 // src/NumberInputChevron.tsx
-var import_react12 = __toESM(require("react"));
+var import_react13 = __toESM(require("react"));
 function NumberInputChevron(_a) {
   var _b = _a, { direction, style } = _b, others = __objRest(_b, ["direction", "style"]);
-  return /* @__PURE__ */ import_react12.default.createElement(
+  return /* @__PURE__ */ import_react13.default.createElement(
     "svg",
     __spreadValues({
       style: __spreadValues({
@@ -895,7 +898,7 @@ function NumberInputChevron(_a) {
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg"
     }, others),
-    /* @__PURE__ */ import_react12.default.createElement(
+    /* @__PURE__ */ import_react13.default.createElement(
       "path",
       {
         d: "M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z",
@@ -1058,7 +1061,7 @@ var NumberInput = (0, import_core10.factory)((_props, ref) => {
     }
   };
   (0, import_hooks2.assignRef)(handlersRef, { increment, decrement });
-  const controls = /* @__PURE__ */ import_react13.default.createElement("div", __spreadValues({}, getStyles("controls")), /* @__PURE__ */ import_react13.default.createElement(
+  const controls = /* @__PURE__ */ import_react14.default.createElement("div", __spreadValues({}, getStyles("controls")), /* @__PURE__ */ import_react14.default.createElement(
     UnstyledButton,
     __spreadProps(__spreadValues({}, getStyles("control")), {
       tabIndex: -1,
@@ -1067,8 +1070,8 @@ var NumberInput = (0, import_core10.factory)((_props, ref) => {
       mod: { direction: "up" },
       onPointerDown: increment
     }),
-    /* @__PURE__ */ import_react13.default.createElement(NumberInputChevron, { direction: "up" })
-  ), /* @__PURE__ */ import_react13.default.createElement(
+    /* @__PURE__ */ import_react14.default.createElement(NumberInputChevron, { direction: "up" })
+  ), /* @__PURE__ */ import_react14.default.createElement(
     UnstyledButton,
     __spreadProps(__spreadValues({}, getStyles("control")), {
       tabIndex: -1,
@@ -1077,9 +1080,9 @@ var NumberInput = (0, import_core10.factory)((_props, ref) => {
       mod: { direction: "down" },
       onPointerDown: decrement
     }),
-    /* @__PURE__ */ import_react13.default.createElement(NumberInputChevron, { direction: "down" })
+    /* @__PURE__ */ import_react14.default.createElement(NumberInputChevron, { direction: "down" })
   ));
-  return /* @__PURE__ */ import_react13.default.createElement(
+  return /* @__PURE__ */ import_react14.default.createElement(
     InputBase,
     __spreadProps(__spreadValues({
       component: import_react_number_format.NumericFormat

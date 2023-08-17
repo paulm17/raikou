@@ -1,6 +1,11 @@
 import React, { forwardRef } from "react";
 import cx from "clsx";
-import { BoxProps, ElementProps, RaikouRadius, RaikouShadow } from "@raikou/core";
+import {
+  BoxProps,
+  ElementProps,
+  RaikouRadius,
+  RaikouShadow,
+} from "@raikou/core";
 import { Transition, TransitionOverride } from "../../Transition/src";
 import { FocusTrap } from "../../FocusTrap/src";
 import { Paper } from "../../Paper/src";
@@ -27,14 +32,14 @@ export const ModalBaseContent = forwardRef<
 >(
   (
     { transitionProps, className, innerProps, onKeyDown, style, ...others },
-    ref
+    ref,
   ) => {
     const ctx = useModalBaseContext();
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
       const shouldTrigger =
         (event.target as HTMLElement)?.getAttribute(
-          "data-raikou-stop-propagation"
+          "data-raikou-stop-propagation",
         ) !== "true";
       shouldTrigger &&
         event.key === "Escape" &&
@@ -78,5 +83,7 @@ export const ModalBaseContent = forwardRef<
         )}
       </Transition>
     );
-  }
+  },
 );
+
+ModalBaseContent.displayName = "@raikou/core/ModalBaseContent";

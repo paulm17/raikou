@@ -51,15 +51,15 @@ module.exports = function ({ addComponents }: any) {
       color: "var(--_badge-color)",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_badge-bg": "var(--raikou-color-white)",
-        "--_badge-border-color": "var(--raikou-color-gray-4)",
-        "--_badge-color": "var(--raikou-color-black)",
+        "--_badge-bg": "var(--raikou-badge-bg)",
+        "--_badge-border-color": "var(--raikou-badge-border-color)",
+        "--_badge-color": "var(--raikou-badge-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_badge-bg": "var(--raikou-color-dark-5)",
-        "--_badge-border-color": "var(--raikou-color-dark-5)",
-        "--_badge-color": "var(--raikou-color-white)",
+        "--_badge-bg": "var(--raikou-badge-bg)",
+        "--_badge-border-color": "var(--raikou-badge-border-color)",
+        "--_badge-color": "var(--raikou-badge-color)",
       },
 
       "&::before": {

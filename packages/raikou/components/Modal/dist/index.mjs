@@ -759,6 +759,9 @@ import React10, { createContext as createContext2, useContext as useContext2 } f
 // ../_utils/use-hovered/use-hovered.ts
 import { useState as useState5 } from "react";
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+import { useEffect as useEffect3, useLayoutEffect } from "react";
+
 // ../ModalBase/src/ModalBase.context.ts
 var [ModalBaseProvider, useModalBaseContext] = createSafeContext(
   "ModalBase component was not found in tree"
@@ -769,14 +772,14 @@ import { useState as useState7 } from "react";
 import { useId, useWindowEvent, useFocusReturn } from "@raikou/hooks";
 
 // ../ModalBase/src/use-lock-scroll.ts
-import { useState as useState6, useEffect as useEffect3, useRef as useRef4 } from "react";
+import { useState as useState6, useEffect as useEffect4, useRef as useRef4 } from "react";
 import { useReducedMotion } from "@raikou/hooks";
 function useLockScroll({ opened, transitionDuration }) {
   const [shouldLockScroll, setShouldLockScroll] = useState6(opened);
   const timeout = useRef4();
   const reduceMotion = useReducedMotion();
   const _transitionDuration = reduceMotion ? 0 : transitionDuration;
-  useEffect3(() => {
+  useEffect4(() => {
     if (opened) {
       setShouldLockScroll(true);
       window.clearTimeout(timeout.current);
@@ -944,10 +947,10 @@ var clsx_default = clsx;
 import { Box as Box2 } from "@raikou/core";
 
 // ../ModalBase/src/use-modal-body-id.ts
-import { useEffect as useEffect4 } from "react";
+import { useEffect as useEffect5 } from "react";
 function useModalBodyId() {
   const ctx = useModalBaseContext();
-  useEffect4(() => {
+  useEffect5(() => {
     ctx.setBodyMounted(true);
     return () => ctx.setBodyMounted(false);
   }, []);
@@ -1432,14 +1435,17 @@ CloseButton.displayName = "@raikou/core/CloseButton";
 var ModalBaseCloseButton = forwardRef10((_a, ref) => {
   var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
   const ctx = useModalBaseContext();
-  return /* @__PURE__ */ React22.createElement(
-    CloseButton,
-    __spreadProps(__spreadValues({
-      ref
-    }, others), {
-      onClick: ctx.onClose,
-      className: clsx_default("modalBase-close", className)
-    })
+  return (
+    // @ts-ignore
+    /* @__PURE__ */ React22.createElement(
+      CloseButton,
+      __spreadProps(__spreadValues({
+        ref
+      }, others), {
+        onClick: ctx.onClose,
+        className: clsx_default("modalBase-close", className)
+      })
+    )
   );
 });
 ModalBaseCloseButton.displayName = "@raikou/core/ModalBaseCloseButton";
@@ -1585,7 +1591,7 @@ function getTransitionStyles({
 }
 
 // ../Transition/src/use-transition.ts
-import { useState as useState8, useEffect as useEffect5, useRef as useRef5 } from "react";
+import { useState as useState8, useEffect as useEffect6, useRef as useRef5 } from "react";
 import { useReducedMotion as useReducedMotion2, useDidUpdate } from "@raikou/hooks";
 import { useRaikouTheme } from "@raikou/core";
 function useTransition({
@@ -1634,7 +1640,7 @@ function useTransition({
   useDidUpdate(() => {
     handleStateChange(mounted);
   }, [mounted]);
-  useEffect5(() => () => window.clearTimeout(timeoutRef.current), []);
+  useEffect6(() => () => window.clearTimeout(timeoutRef.current), []);
   return {
     transitionDuration,
     transitionStatus,
@@ -1645,7 +1651,7 @@ function useTransition({
 // ../Transition/src/Transition.tsx
 function Transition({
   keepMounted,
-  transition,
+  transition = "fade",
   duration = 250,
   exitDuration = duration,
   mounted,
@@ -1813,6 +1819,7 @@ var ModalBaseContent = forwardRef11(
     );
   }
 );
+ModalBaseContent.displayName = "@raikou/core/ModalBaseContent";
 
 // ../ModalBase/src/ModalBaseHeader.tsx
 import React27, { forwardRef as forwardRef12 } from "react";
@@ -1948,10 +1955,10 @@ import React30, { forwardRef as forwardRef14 } from "react";
 import { Box as Box12 } from "@raikou/core";
 
 // ../ModalBase/src/use-modal-title-id.ts
-import { useEffect as useEffect6 } from "react";
+import { useEffect as useEffect7 } from "react";
 function useModalTitle() {
   const ctx = useModalBaseContext();
-  useEffect6(() => {
+  useEffect7(() => {
     ctx.setTitleMounted(true);
     return () => ctx.setTitleMounted(false);
   }, []);

@@ -13,6 +13,21 @@ type AffixStylesNames = "root";
 type AffixCssVariables = {
     root: "--affix-z-index" | "--affix-top" | "--affix-left" | "--affix-bottom" | "--affix-right";
 };
+interface AffixBaseProps {
+    /** Root element `z-index` property, `200` by default */
+    zIndex?: string | number;
+    /** Determines whether component should be rendered within portal, `true` by default */
+    withinPortal?: boolean;
+    /** Props to pass down to the `Portal` component when `withinPortal` is set */
+    portalProps?: Omit<PortalProps, "children">;
+    /** Affix position on screen, defaults value is `{ bottom: 0, right: 0 }` */
+    position?: {
+        top?: string | number;
+        left?: string | number;
+        bottom?: string | number;
+        right?: string | number;
+    };
+}
 interface AffixProps extends BoxProps, StylesApiProps<AffixFactory>, ElementProps<"div"> {
     /** Root element `z-index` property, `200` by default */
     zIndex?: React.CSSProperties["zIndex"];
@@ -41,4 +56,4 @@ declare const Affix: _raikou_core.RaikouComponent<{
     vars: AffixCssVariables;
 }>;
 
-export { Affix, AffixCssVariables, AffixFactory, AffixProps, AffixStylesNames };
+export { Affix, AffixBaseProps, AffixCssVariables, AffixFactory, AffixProps, AffixStylesNames };

@@ -106,8 +106,11 @@ function useHovered() {
   return [hovered, { setHovered, resetHovered }];
 }
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+import { useEffect, useLayoutEffect } from "react";
+
 // ../Floating/src/use-delayed-hover.ts
-import { useRef, useEffect } from "react";
+import { useRef, useEffect as useEffect2 } from "react";
 function useDelayedHover({
   open,
   close,
@@ -136,12 +139,12 @@ function useDelayedHover({
       closeTimeout.current = window.setTimeout(close, closeDelay);
     }
   };
-  useEffect(() => clearTimeouts, []);
+  useEffect2(() => clearTimeouts, []);
   return { openDropdown, closeDropdown };
 }
 
 // ../Floating/src/use-floating-auto-update.ts
-import { useState as useState4, useEffect as useEffect5 } from "react";
+import { useState as useState4, useEffect as useEffect6 } from "react";
 
 // ../../../../node_modules/.pnpm/@floating-ui+core@1.3.1/node_modules/@floating-ui/core/dist/floating-ui.core.mjs
 function getAlignment(placement) {
@@ -1654,7 +1657,7 @@ var computePosition2 = (reference, floating, options) => {
 
 // ../../../../node_modules/.pnpm/@floating-ui+react-dom@1.3.0_react-dom@18.2.0_react@18.2.0/node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.esm.js
 import * as React3 from "react";
-import { useLayoutEffect, useEffect as useEffect2 } from "react";
+import { useLayoutEffect as useLayoutEffect2, useEffect as useEffect3 } from "react";
 import * as ReactDOM from "react-dom";
 var arrow2 = (options) => {
   const {
@@ -1686,7 +1689,7 @@ var arrow2 = (options) => {
     }
   };
 };
-var index = typeof document !== "undefined" ? useLayoutEffect : useEffect2;
+var index = typeof document !== "undefined" ? useLayoutEffect2 : useEffect3;
 function deepEqual(a, b) {
   if (a === b) {
     return true;
@@ -1852,9 +1855,9 @@ function useFloating(options) {
 
 // ../../../../node_modules/.pnpm/@floating-ui+react@0.23.1_react-dom@18.2.0_react@18.2.0/node_modules/@floating-ui/react/dist/floating-ui.react.esm.js
 import * as React4 from "react";
-import { useLayoutEffect as useLayoutEffect2, useEffect as useEffect4, useRef as useRef4 } from "react";
+import { useLayoutEffect as useLayoutEffect3, useEffect as useEffect5, useRef as useRef4 } from "react";
 import { createPortal, flushSync as flushSync2 } from "react-dom";
-var index2 = typeof document !== "undefined" ? useLayoutEffect2 : useEffect4;
+var index2 = typeof document !== "undefined" ? useLayoutEffect3 : useEffect5;
 var serverHandoffComplete = false;
 var count = 0;
 var genId = () => "floating-ui-" + count++;
@@ -1997,7 +2000,7 @@ function useFloatingAutoUpdate({
   positionDependencies
 }) {
   const [delayedUpdate, setDelayedUpdate] = useState4(0);
-  useEffect5(() => {
+  useEffect6(() => {
     if (floating.refs.reference.current && floating.refs.floating.current) {
       return autoUpdate(
         floating.refs.reference.current,
@@ -2531,7 +2534,7 @@ function getTransitionStyles({
 }
 
 // ../Transition/src/use-transition.ts
-import { useState as useState6, useEffect as useEffect6, useRef as useRef6 } from "react";
+import { useState as useState6, useEffect as useEffect7, useRef as useRef6 } from "react";
 import { useReducedMotion, useDidUpdate as useDidUpdate3 } from "@raikou/hooks";
 import { useRaikouTheme } from "@raikou/core";
 function useTransition({
@@ -2580,7 +2583,7 @@ function useTransition({
   useDidUpdate3(() => {
     handleStateChange(mounted);
   }, [mounted]);
-  useEffect6(() => () => window.clearTimeout(timeoutRef.current), []);
+  useEffect7(() => () => window.clearTimeout(timeoutRef.current), []);
   return {
     transitionDuration,
     transitionStatus,
@@ -2591,7 +2594,7 @@ function useTransition({
 // ../Transition/src/Transition.tsx
 function Transition({
   keepMounted,
-  transition,
+  transition = "fade",
   duration = 250,
   exitDuration = duration,
   mounted,
@@ -3245,11 +3248,6 @@ import {
   factory as factory5,
   useProps as useProps9
 } from "@raikou/core";
-
-// src/Menu.module.css
-var _default = {};
-
-// src/MenuLabel/MenuLabel.tsx
 var defaultProps9 = {};
 var MenuLabel = factory5((props, ref) => {
   const _a = useProps9("MenuLabel", defaultProps9, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
@@ -3261,7 +3259,6 @@ var MenuLabel = factory5((props, ref) => {
     }, ctx.getStyles("label", { className, style, styles, classNames })), others)
   );
 });
-MenuLabel.classes = _default;
 MenuLabel.displayName = "@raikou/core/MenuLabel";
 
 // src/MenuTarget/MenuTarget.tsx
@@ -3355,6 +3352,7 @@ function Menu(_props) {
   const getStyles = useStyles3({
     name: "Menu",
     classes: {
+      dropdown: "menu-dropdown",
       item: "menu-item",
       itemLabel: "menu-itemLabel",
       itemSection: "menu-itemSection",

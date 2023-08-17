@@ -66,7 +66,7 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Carousel.tsx
-var import_react8 = __toESM(require("react"));
+var import_react9 = __toESM(require("react"));
 var import_core5 = require("@raikou/core");
 
 // ../components/UnstyledButton/src/UnstyledButton.tsx
@@ -176,6 +176,9 @@ var import_react4 = __toESM(require("react"));
 // ../components/_utils/use-hovered/use-hovered.ts
 var import_react5 = require("react");
 
+// ../components/_utils/create-use-external-events/create-use-external-events.ts
+var import_react6 = require("react");
+
 // src/Carousel.tsx
 var import_hooks = require("@raikou/hooks");
 var import_embla_carousel_react = __toESM(require("embla-carousel-react"));
@@ -194,13 +197,13 @@ var [CarouselProvider, useCarouselContext] = createSafeContext(
 );
 
 // src/CarouselSlide/CarouselSlide.tsx
-var import_react6 = __toESM(require("react"));
+var import_react7 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
 var defaultProps2 = {};
 var CarouselSlide = (0, import_core3.factory)((props, ref) => {
   const _a = (0, import_core3.useProps)("CarouselSlide", defaultProps2, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
   const ctx = useCarouselContext();
-  return /* @__PURE__ */ import_react6.default.createElement(
+  return /* @__PURE__ */ import_react7.default.createElement(
     import_core3.Box,
     __spreadValues(__spreadValues({
       ref,
@@ -211,7 +214,7 @@ var CarouselSlide = (0, import_core3.factory)((props, ref) => {
 CarouselSlide.displayName = "@raikou/core/CarouselSlide";
 
 // src/CarouselVariables/CarouselVariables.tsx
-var import_react7 = __toESM(require("react"));
+var import_react8 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
 function CarouselVariables({
   slideGap,
@@ -247,7 +250,7 @@ function CarouselVariables({
     query: `(min-width: ${theme.breakpoints[breakpoint.value]})`,
     styles: queries[breakpoint.value]
   }));
-  return /* @__PURE__ */ import_react7.default.createElement(import_core4.InlineStyles, { styles: baseStyles, media, selector });
+  return /* @__PURE__ */ import_react8.default.createElement(import_core4.InlineStyles, { styles: baseStyles, media, selector });
 }
 
 // src/Carousel.tsx
@@ -398,28 +401,28 @@ var Carousel = (0, import_core5.factory)((_props, ref) => {
     },
     plugins
   );
-  const [selected, setSelected] = (0, import_react8.useState)(0);
-  const [slidesCount, setSlidesCount] = (0, import_react8.useState)(0);
-  const handleScroll = (0, import_react8.useCallback)(
+  const [selected, setSelected] = (0, import_react9.useState)(0);
+  const [slidesCount, setSlidesCount] = (0, import_react9.useState)(0);
+  const handleScroll = (0, import_react9.useCallback)(
     (index) => embla && embla.scrollTo(index),
     [embla]
   );
-  const handleSelect = (0, import_react8.useCallback)(() => {
+  const handleSelect = (0, import_react9.useCallback)(() => {
     if (!embla)
       return;
     const slide = embla.selectedScrollSnap();
     setSelected(slide);
     onSlideChange == null ? void 0 : onSlideChange(slide);
   }, [embla, setSelected]);
-  const handlePrevious = (0, import_react8.useCallback)(() => {
+  const handlePrevious = (0, import_react9.useCallback)(() => {
     embla == null ? void 0 : embla.scrollPrev();
     onPreviousSlide == null ? void 0 : onPreviousSlide();
   }, [embla]);
-  const handleNext = (0, import_react8.useCallback)(() => {
+  const handleNext = (0, import_react9.useCallback)(() => {
     embla == null ? void 0 : embla.scrollNext();
     onNextSlide == null ? void 0 : onNextSlide();
   }, [embla]);
-  const handleKeydown = (0, import_react8.useCallback)(
+  const handleKeydown = (0, import_react9.useCallback)(
     (event) => {
       if (withKeyboardEvents) {
         if (event.key === "ArrowRight") {
@@ -434,7 +437,7 @@ var Carousel = (0, import_core5.factory)((_props, ref) => {
     },
     [embla]
   );
-  (0, import_react8.useEffect)(() => {
+  (0, import_react9.useEffect)(() => {
     if (embla) {
       getEmblaApi == null ? void 0 : getEmblaApi(embla);
       handleSelect();
@@ -446,18 +449,18 @@ var Carousel = (0, import_core5.factory)((_props, ref) => {
     }
     return void 0;
   }, [embla, slidesToScroll]);
-  (0, import_react8.useEffect)(() => {
+  (0, import_react9.useEffect)(() => {
     if (embla) {
       embla.reInit();
       setSlidesCount(embla.scrollSnapList().length);
       setSelected(
-        (currentSelected) => (0, import_hooks.clamp)(currentSelected, 0, import_react8.Children.toArray(children).length - 1)
+        (currentSelected) => (0, import_hooks.clamp)(currentSelected, 0, import_react9.Children.toArray(children).length - 1)
       );
     }
-  }, [import_react8.Children.toArray(children).length, slidesToScroll]);
+  }, [import_react9.Children.toArray(children).length, slidesToScroll]);
   const canScrollPrev = (embla == null ? void 0 : embla.canScrollPrev()) || false;
   const canScrollNext = (embla == null ? void 0 : embla.canScrollNext()) || false;
-  const indicators = Array(slidesCount).fill(0).map((_, index) => /* @__PURE__ */ import_react8.default.createElement(
+  const indicators = Array(slidesCount).fill(0).map((_, index) => /* @__PURE__ */ import_react9.default.createElement(
     UnstyledButton,
     __spreadProps(__spreadValues({}, getStyles("indicator")), {
       key: index,
@@ -467,7 +470,7 @@ var Carousel = (0, import_core5.factory)((_props, ref) => {
       onClick: () => handleScroll(index)
     })
   ));
-  return /* @__PURE__ */ import_react8.default.createElement(CarouselProvider, { value: { getStyles, orientation } }, /* @__PURE__ */ import_react8.default.createElement(CarouselVariables, __spreadProps(__spreadValues({}, props), { selector: `.${responsiveClassName}` })), /* @__PURE__ */ import_react8.default.createElement(
+  return /* @__PURE__ */ import_react9.default.createElement(CarouselProvider, { value: { getStyles, orientation } }, /* @__PURE__ */ import_react9.default.createElement(CarouselVariables, __spreadProps(__spreadValues({}, props), { selector: `.${responsiveClassName}` })), /* @__PURE__ */ import_react9.default.createElement(
     import_core5.Box,
     __spreadProps(__spreadValues(__spreadValues({
       ref
@@ -475,16 +478,16 @@ var Carousel = (0, import_core5.factory)((_props, ref) => {
       mod: { orientation, "include-gap-in-size": includeGapInSize },
       onKeyDownCapture: handleKeydown
     }),
-    /* @__PURE__ */ import_react8.default.createElement("div", __spreadProps(__spreadValues({}, getStyles("viewport")), { ref: emblaRefElement }), /* @__PURE__ */ import_react8.default.createElement("div", __spreadProps(__spreadValues({}, getStyles("container")), { "data-orientation": orientation }), children)),
-    withIndicators && /* @__PURE__ */ import_react8.default.createElement("div", __spreadValues({}, getStyles("indicators")), indicators),
-    withControls && /* @__PURE__ */ import_react8.default.createElement("div", __spreadValues({}, getStyles("controls")), /* @__PURE__ */ import_react8.default.createElement(
+    /* @__PURE__ */ import_react9.default.createElement("div", __spreadProps(__spreadValues({}, getStyles("viewport")), { ref: emblaRefElement }), /* @__PURE__ */ import_react9.default.createElement("div", __spreadProps(__spreadValues({}, getStyles("container")), { "data-orientation": orientation }), children)),
+    withIndicators && /* @__PURE__ */ import_react9.default.createElement("div", __spreadValues({}, getStyles("indicators")), indicators),
+    withControls && /* @__PURE__ */ import_react9.default.createElement("div", __spreadValues({}, getStyles("controls")), /* @__PURE__ */ import_react9.default.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues(__spreadValues({}, previousControlProps), getStyles("control")), {
         onClick: handlePrevious,
         "data-inactive": !canScrollPrev || void 0,
         tabIndex: canScrollPrev ? 0 : -1
       }),
-      typeof previousControlIcon !== "undefined" ? previousControlIcon : /* @__PURE__ */ import_react8.default.createElement(
+      typeof previousControlIcon !== "undefined" ? previousControlIcon : /* @__PURE__ */ import_react9.default.createElement(
         AccordionChevron,
         {
           style: {
@@ -496,7 +499,7 @@ var Carousel = (0, import_core5.factory)((_props, ref) => {
           }
         }
       )
-    ), /* @__PURE__ */ import_react8.default.createElement(
+    ), /* @__PURE__ */ import_react9.default.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues(__spreadValues({
         onClick: handleNext
@@ -504,7 +507,7 @@ var Carousel = (0, import_core5.factory)((_props, ref) => {
         "data-inactive": !canScrollNext || void 0,
         tabIndex: canScrollNext ? 0 : -1
       }),
-      typeof nextControlIcon !== "undefined" ? nextControlIcon : /* @__PURE__ */ import_react8.default.createElement(
+      typeof nextControlIcon !== "undefined" ? nextControlIcon : /* @__PURE__ */ import_react9.default.createElement(
         AccordionChevron,
         {
           style: {
@@ -523,9 +526,9 @@ Carousel.displayName = "@raikou/core/Carousel";
 Carousel.Slide = CarouselSlide;
 
 // src/use-animation-offset-effect.ts
-var import_react9 = require("react");
+var import_react10 = require("react");
 function useAnimationOffsetEffect(embla, transitionDuration) {
-  (0, import_react9.useEffect)(() => {
+  (0, import_react10.useEffect)(() => {
     if (embla) {
       window.setTimeout(() => {
         embla.reInit();

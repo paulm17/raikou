@@ -7,7 +7,6 @@ const DEFAULT_FONT_FAMILY =
   "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji";
 
 export const DEFAULT_THEME: RaikouTheme = {
-  colorScheme: "light",
   scale: 1,
   fontSmoothing: true,
   focusRing: "auto",

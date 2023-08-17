@@ -27,11 +27,11 @@ module.exports = function ({ addComponents, theme }: any) {
       display: "flex",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_track-bg": "var(--raikou-color-gray-2)",
+        "--_track-bg": "var(--raikou-progress-track-bg)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_track-bg": "var(--raikou-color-dark-4)",
+        "--_track-bg": "var(--raikou-progress-track-bg)",
       },
     },
 

@@ -12,7 +12,7 @@ module.exports = function ({ addComponents, theme }: any) {
       display: "flex",
       flexDirection: "column",
       width: "100%",
-      height: `calc(var(--input-height) - rem(2px))`,
+      height: `calc(var(--input-height) - ${rem("2px")})`,
       maxWidth: "calc(var(--ni-chevron-size) * 1.7)",
       marginLeft: "var(--_controls-ml, auto)",
       marginRight: "var(--_controls-mr, 0)",
@@ -23,14 +23,14 @@ module.exports = function ({ addComponents, theme }: any) {
       },
     },
 
-    ".numberInput-control": {
-      "--_control-bd": `rem(1px) solid var(--_input-bd)`,
-      "--_control-radius": `calc(var(--input-radius) - rem(1px))`,
+    ".numberInput-control.numberInput-control": {
+      "--_control-bd": `${rem("1px")} solid var(--_input-bd)`,
+      "--_control-radius": `calc(var(--input-radius) - ${rem("1px")})`,
 
       flex: "0 0 50%",
       width: "100%",
       padding: "0",
-      height: `calc(var(--input-height) / 2 - rem(1px))`,
+      height: `calc(var(--input-height) / 2 - ${rem("1px")})`,
       borderLeft: "var(--_control-bdl, var(--_control-bd))",
       borderRight: "var(--_control-bdr, none)",
       display: "flex",
@@ -54,28 +54,28 @@ module.exports = function ({ addComponents, theme }: any) {
       "@media (hover: hover)": {
         "&:hover": {
           '[data-raikou-color-scheme="light"] &': {
-            "--_control-bg": "var(--raikou-color-gray-0)",
+            "--_control-bg": "var(--raikou-numberinput-control-hover-bg)",
           },
 
           '[data-raikou-color-scheme="dark"] &': {
-            "--_control-bg": "var(--raikou-color-dark-4)",
+            "--_control-bg": "var(--raikou-numberinput-control-hover-bg)",
           },
         },
       },
       "@media (hover: none)": {
         "&:active": {
           '[data-raikou-color-scheme="light"] &': {
-            "--_control-bg": "var(--raikou-color-gray-0)",
+            "--_control-bg": "var(--raikou-numberinput-control-active-bg)",
           },
 
           '[data-raikou-color-scheme="dark"] &': {
-            "--_control-bg": "var(--raikou-color-dark-4)",
+            "--_control-bg": "var(--raikou-numberinput-control-active-bg)",
           },
         },
       },
 
       "&:first-of-type": {
-        borderBottom: `rem(0.5px) solid var(--_input-bd)`,
+        borderBottom: `${rem("0.5px")} solid var(--_input-bd)`,
         borderRadius: "0 var(--_control-radius) 0 0",
 
         '[dir="rtl"] &': {
@@ -84,7 +84,7 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       "&:last-of-type": {
-        borderTop: `rem(0.5px) solid var(--_input-bd)`,
+        borderTop: `${rem("0.5px")} solid var(--_input-bd)`,
         borderRadius: "0 0 var(--_control-radius) 0",
 
         '[dir="rtl"] &': {

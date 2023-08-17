@@ -87,6 +87,9 @@ import React2, { createContext as createContext2, useContext as useContext2 } fr
 // ../_utils/use-hovered/use-hovered.ts
 import { useState } from "react";
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+import { useEffect, useLayoutEffect } from "react";
+
 // src/ColorPicker.context.ts
 var [ColorPickerProvider, useColorPickerContext] = createSafeContext(
   "ColorPicker component was not found in tree"
@@ -421,7 +424,7 @@ var HueSlider = forwardRef4(
 HueSlider.displayName = "@raikou/core/HueSlider";
 
 // src/Saturation/Saturation.tsx
-import React7, { useEffect, useRef as useRef2, useState as useState3 } from "react";
+import React7, { useEffect as useEffect2, useRef as useRef2, useState as useState3 } from "react";
 import { clampUseMovePosition as clampUseMovePosition2, useMove as useMove2 } from "@raikou/hooks";
 import { Box as Box3 } from "@raikou/core";
 
@@ -536,7 +539,7 @@ function Saturation(_a) {
       onScrubStart
     }
   );
-  useEffect(() => {
+  useEffect2(() => {
     setPosition({ x: value.s / 100, y: 1 - value.v / 100 });
   }, [value.s, value.v]);
   const handleArrow = (event, pos) => {

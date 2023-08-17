@@ -41,11 +41,11 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_control-color": "var(--raikou-color-black)",
+        "--_control-color": "var(--raikou-accordion-control-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_control-color": "var(--raikou-color-dark-0)",
+        "--_control-color": "var(--raikou-accordion-control-color)",
       },
 
       "&:disabled, &[data-disabled]": {
@@ -60,22 +60,26 @@ module.exports = function ({ addComponents, theme }: any) {
           "@media (hover: hover)": {
             "&:hover": {
               '[data-raikou-color-scheme="light"] &': {
-                "--_control-background-color": "var(--raikou-color-gray-0)",
+                "--_control-background-color":
+                  "var(--raikou-accordion-control-background-color)",
               },
 
               '[data-raikou-color-scheme="dark"] &': {
-                "--_control-background-color": "var(--raikou-color-dark-6)",
+                "--_control-background-color":
+                  "var(--raikou-accordion-control-background-color)",
               },
             },
           },
           "@media (hover: none)": {
             "&:active": {
               '[data-raikou-color-scheme="light"] &': {
-                "--_control-background-color": "var(--raikou-color-gray-0)",
+                "--_control-background-color":
+                  "var(--raikou-accordion-control-background-color)",
               },
 
               '[data-raikou-color-scheme="dark"] &': {
-                "--_control-background-color": "var(--raikou-color-dark-6)",
+                "--_control-background-color":
+                  "var(--raikou-accordion-control-background-color)",
               },
             },
           },
@@ -158,13 +162,13 @@ module.exports = function ({ addComponents, theme }: any) {
       backgroundColor: "var(--_item-bg)",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_item-border-color": "var(--raikou-color-gray-3)",
-        "--_item-filled-color": "var(--raikou-color-gray-0)",
+        "--_item-border-color": "var(--raikou-accordion-item-border-color)",
+        "--_item-filled-color": "var(--raikou-accordion-item-filled-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_item-border-color": "var(--raikou-color-dark-4)",
-        "--_item-filled-color": "var(--raikou-color-dark-6)",
+        "--_item-border-color": "var(--raikou-accordion-item-border-color)",
+        "--_item-filled-color": "var(--raikou-accordion-item-filled-color)",
       },
     },
 
@@ -224,15 +228,15 @@ module.exports = function ({ addComponents, theme }: any) {
         "--__item-border-color": "var(--_item-border-color)",
 
         '[data-raikou-color-scheme="light"] &': {
-          "--_item-bg": "var(--raikou-color-white)",
+          "--_item-bg": "var(--raikou-accordion-item-item-bg)",
         },
 
         '[data-raikou-color-scheme="dark"] &': {
-          "--_item-bg": "var(--raikou-color-dark-7)",
+          "--_item-bg": "var(--raikou-accordion-item-item-bg)",
         },
       },
 
-      "& + &": {
+      "+ .accordion-item": {
         marginTop: "var(--raikou-spacing-md)",
       },
     },

@@ -2,10 +2,10 @@ import { deepMerge } from "../../utils";
 import type { RaikouTheme, RaikouThemeOverride } from "../theme.types";
 
 export const INVALID_PRIMARY_COLOR_ERROR =
-  "[@raikou/core] RaikouProvider: Invalid theme.primaryColor, it accepts only key of theme.colors, learn more – https://mantine.dev/theming/colors/#primary-color";
+  "[@raikou/system] RaikouProvider: Invalid theme.primaryColor, it accepts only key of theme.colors, learn more – https://mantine.dev/theming/colors/#primary-color";
 
 export const INVALID_PRIMARY_SHADE_ERROR =
-  "[@raikou/core] RaikouProvider: Invalid theme.primaryShade, it accepts only 0-9 integers or an object { light: 0-9, dark: 0-9 }";
+  "[@raikou/system] RaikouProvider: Invalid theme.primaryShade, it accepts only 0-9 integers or an object { light: 0-9, dark: 0-9 }";
 
 function isValidPrimaryShade(shade: number) {
   if (shade < 0 || shade > 9) {

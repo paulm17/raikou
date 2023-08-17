@@ -6,7 +6,7 @@ import { keys } from "../../utils";
 const defaultCssVariables = defaultCssVariablesResolver(DEFAULT_THEME);
 
 export function removeDefaultVariables(
-  input: ConvertCSSVariablesInput
+  input: ConvertCSSVariablesInput,
 ): ConvertCSSVariablesInput {
   const cleaned: ConvertCSSVariablesInput = {
     variables: {},

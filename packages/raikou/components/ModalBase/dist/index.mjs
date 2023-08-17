@@ -114,6 +114,9 @@ import React4, { createContext as createContext2, useContext as useContext2 } fr
 // ../_utils/use-hovered/use-hovered.ts
 import { useState as useState2 } from "react";
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+import { useEffect, useLayoutEffect } from "react";
+
 // src/ModalBase.context.ts
 var [ModalBaseProvider, useModalBaseContext] = createSafeContext(
   "ModalBase component was not found in tree"
@@ -124,14 +127,14 @@ import { useState as useState4 } from "react";
 import { useId, useWindowEvent, useFocusReturn } from "@raikou/hooks";
 
 // src/use-lock-scroll.ts
-import { useState as useState3, useEffect, useRef as useRef2 } from "react";
+import { useState as useState3, useEffect as useEffect2, useRef as useRef2 } from "react";
 import { useReducedMotion } from "@raikou/hooks";
 function useLockScroll({ opened, transitionDuration }) {
   const [shouldLockScroll, setShouldLockScroll] = useState3(opened);
   const timeout = useRef2();
   const reduceMotion = useReducedMotion();
   const _transitionDuration = reduceMotion ? 0 : transitionDuration;
-  useEffect(() => {
+  useEffect2(() => {
     if (opened) {
       setShouldLockScroll(true);
       window.clearTimeout(timeout.current);
@@ -277,10 +280,10 @@ import cx from "clsx";
 import { Box as Box2 } from "@raikou/core";
 
 // src/use-modal-body-id.ts
-import { useEffect as useEffect2 } from "react";
+import { useEffect as useEffect3 } from "react";
 function useModalBodyId() {
   const ctx = useModalBaseContext();
-  useEffect2(() => {
+  useEffect3(() => {
     ctx.setBodyMounted(true);
     return () => ctx.setBodyMounted(false);
   }, []);
@@ -769,14 +772,17 @@ CloseButton.displayName = "@raikou/core/CloseButton";
 var ModalBaseCloseButton = forwardRef8((_a, ref) => {
   var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
   const ctx = useModalBaseContext();
-  return /* @__PURE__ */ React16.createElement(
-    CloseButton,
-    __spreadProps(__spreadValues({
-      ref
-    }, others), {
-      onClick: ctx.onClose,
-      className: cx5("modalBase-close", className)
-    })
+  return (
+    // @ts-ignore
+    /* @__PURE__ */ React16.createElement(
+      CloseButton,
+      __spreadProps(__spreadValues({
+        ref
+      }, others), {
+        onClick: ctx.onClose,
+        className: cx5("modalBase-close", className)
+      })
+    )
   );
 });
 ModalBaseCloseButton.displayName = "@raikou/core/ModalBaseCloseButton";
@@ -923,7 +929,7 @@ function getTransitionStyles({
 }
 
 // ../Transition/src/use-transition.ts
-import { useState as useState5, useEffect as useEffect3, useRef as useRef3 } from "react";
+import { useState as useState5, useEffect as useEffect4, useRef as useRef3 } from "react";
 import { useReducedMotion as useReducedMotion2, useDidUpdate } from "@raikou/hooks";
 import { useRaikouTheme } from "@raikou/core";
 function useTransition({
@@ -972,7 +978,7 @@ function useTransition({
   useDidUpdate(() => {
     handleStateChange(mounted);
   }, [mounted]);
-  useEffect3(() => () => window.clearTimeout(timeoutRef.current), []);
+  useEffect4(() => () => window.clearTimeout(timeoutRef.current), []);
   return {
     transitionDuration,
     transitionStatus,
@@ -983,7 +989,7 @@ function useTransition({
 // ../Transition/src/Transition.tsx
 function Transition({
   keepMounted,
-  transition,
+  transition = "fade",
   duration = 250,
   exitDuration = duration,
   mounted,
@@ -1151,6 +1157,7 @@ var ModalBaseContent = forwardRef9(
     );
   }
 );
+ModalBaseContent.displayName = "@raikou/core/ModalBaseContent";
 
 // src/ModalBaseHeader.tsx
 import React21, { forwardRef as forwardRef10 } from "react";
@@ -1288,10 +1295,10 @@ import cx8 from "clsx";
 import { Box as Box12 } from "@raikou/core";
 
 // src/use-modal-title-id.ts
-import { useEffect as useEffect4 } from "react";
+import { useEffect as useEffect5 } from "react";
 function useModalTitle() {
   const ctx = useModalBaseContext();
-  useEffect4(() => {
+  useEffect5(() => {
     ctx.setTitleMounted(true);
     return () => ctx.setTitleMounted(false);
   }, []);

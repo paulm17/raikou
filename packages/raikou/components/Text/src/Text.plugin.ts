@@ -10,6 +10,7 @@ module.exports = function ({ addComponents }: any) {
       fontWeight: "normal",
       margin: "0",
       padding: "0",
+      color: "var(--text-color)",
 
       "&[data-truncate]": {
         overflow: "hidden",

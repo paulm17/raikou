@@ -6,6 +6,7 @@ export type {
   ExtendComponent,
   ExtendsRootComponent,
   RaikouComponent,
+  RaikouComponentStaticProperties,
   ThemeExtend,
 } from "./factory";
 export type { Factory, PolymorphicFactory } from "./create-factory";

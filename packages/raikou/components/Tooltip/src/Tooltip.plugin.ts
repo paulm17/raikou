@@ -11,13 +11,13 @@ module.exports = function ({ addComponents, theme }: any) {
       borderRadius: "var(--tooltip-radius)",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_tooltip-bg": "var(--tooltip-bg, var(--raikou-color-gray-9))",
-        "--_tooltip-color": "var(--raikou-color-white)",
+        "--_tooltip-bg": "var(--tooltip-bg, var(--raikou-tooltip-bg))",
+        "--_tooltip-color": "var(--raikou-tooltip-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_tooltip-bg": "var(--tooltip-bg, var(--raikou-color-gray-2))",
-        "--_tooltip-color": "var(--raikou-color-black)",
+        "--_tooltip-bg": "var(--tooltip-bg, var(--raikou-tooltip-bg))",
+        "--_tooltip-color": "var(--raikou-tooltip-color)",
       },
 
       "&[data-multiline]": {

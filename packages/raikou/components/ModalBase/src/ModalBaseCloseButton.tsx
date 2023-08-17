@@ -14,6 +14,7 @@ export const ModalBaseCloseButton = forwardRef<
 >(({ className, ...others }, ref) => {
   const ctx = useModalBaseContext();
   return (
+    // @ts-ignore
     <CloseButton
       ref={ref}
       {...others}

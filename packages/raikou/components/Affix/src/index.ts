@@ -1,7 +1,8 @@
-export { Affix } from './Affix';
+export { Affix } from "./Affix";
 export type {
   AffixCssVariables,
   AffixFactory,
   AffixProps,
-  AffixStylesNames
-} from './Affix';
+  AffixStylesNames,
+  AffixBaseProps,
+} from "./Affix";

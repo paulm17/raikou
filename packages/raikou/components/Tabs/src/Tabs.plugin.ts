@@ -74,11 +74,11 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_tab-border-color": "var(--raikou-color-gray-3)",
+        "--_tab-border-color": "var(--raikou-tabs-tab-border-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_tab-border-color": "var(--raikou-color-dark-4)",
+        "--_tab-border-color": "var(--raikou-tabs-tab-border-color)",
       },
 
       "&[data-orientation='horizontal']": {
@@ -89,11 +89,11 @@ module.exports = function ({ addComponents, theme }: any) {
         " --_list-border-width": rem("2px"),
 
         '[data-raikou-color-scheme="light"] &': {
-          "--_tab-hover-color": "var(--raikou-color-gray-0)",
+          "--_tab-hover-color": "var(--raikou-tabs-tab-default-hover-color)",
         },
 
         '[data-raikou-color-scheme="dark"] &': {
-          "--_tab-hover-color": "var(--raikou-color-dark-6)",
+          "--_tab-hover-color": "var(--raikou-tabs-tab-default-hover-color)",
         },
       },
 
@@ -105,11 +105,11 @@ module.exports = function ({ addComponents, theme }: any) {
         "--_list-gap": "calc(var(--raikou-spacing-sm) / 2)",
 
         '[data-raikou-color-scheme="light"] &': {
-          "--_tab-hover-color": "var(--raikou-color-gray-0)",
+          "--_tab-hover-color": "var(--raikou-tabs-tab-pills-hover-color)",
         },
 
         '[data-raikou-color-scheme="dark"] &': {
-          "--_tab-hover-color": "var(--raikou-color-dark-6)",
+          "--_tab-hover-color": "var(--raikou-tabs-tab-pills-hover-color)",
         },
       },
     },
@@ -132,7 +132,7 @@ module.exports = function ({ addComponents, theme }: any) {
       flexGrow: "var(--_panel-grow)",
     },
 
-    ".tabs-tab": {
+    ".tabs-tab.tabs-tab": {
       position: "relative",
       padding: "var(--raikou-spacing-xs) var(--raikou-spacing-md)",
       fontSize: "var(--raikou-font-size-sm)",

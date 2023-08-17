@@ -27,15 +27,15 @@ module.exports = function ({ addComponents, theme }: any) {
       color: "var(--_kbd-color)",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_kbd-border-color": "var(--raikou-color-gray-3)",
-        "--_kbd-color": "var(--raikou-color-gray-7)",
-        "--_kbd-bg": "var(--raikou-color-gray-0)",
+        "--_kbd-border-color": "var(--raikou-kbd-border-color)",
+        "--_kbd-color": "var(--raikou-kbd-color)",
+        "--_kbd-bg": "var(--raikou-kbd-bg)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_kbd-border-color": "var(--raikou-color-dark-4)",
-        "--_kbd-color": "var(--raikou-color-dark-0)",
-        "--_kbd-bg": "var(--raikou-color-dark-5)",
+        "--_kbd-border-color": "var(--raikou-kbd-border-color)",
+        "--_kbd-color": "var(--raikou-kbd-color)",
+        "--_kbd-bg": "var(--raikou-kbd-bg)",
       },
     },
   });

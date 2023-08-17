@@ -14,8 +14,7 @@
       "types": "./dist/plugin.d.ts",
       "import": "./dist/plugin.mjs",
       "require": "./dist/plugin.js"
-    },
-    "./styles.css": "./dist/index.css"
+    }
   },
   "files": [
     "dist/**"

@@ -66,11 +66,11 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Stepper.tsx
-var import_react13 = __toESM(require("react"));
+var import_react14 = __toESM(require("react"));
 var import_core10 = require("@raikou/core");
 
 // src/StepperStep/StepperStep.tsx
-var import_react12 = __toESM(require("react"));
+var import_react13 = __toESM(require("react"));
 var import_core9 = require("@raikou/core");
 
 // ../UnstyledButton/src/UnstyledButton.tsx
@@ -321,7 +321,7 @@ function useTransition({
 // ../Transition/src/Transition.tsx
 function Transition({
   keepMounted,
-  transition,
+  transition = "fade",
   duration = 250,
   exitDuration = duration,
   mounted,
@@ -542,13 +542,16 @@ var import_react9 = __toESM(require("react"));
 // ../_utils/use-hovered/use-hovered.ts
 var import_react10 = require("react");
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+var import_react11 = require("react");
+
 // ../Checkbox/src/CheckIcon.tsx
-var import_react11 = __toESM(require("react"));
+var import_react12 = __toESM(require("react"));
 var import_core8 = require("@raikou/core");
 function CheckIcon(_a) {
   var _b = _a, { size, style } = _b, others = __objRest(_b, ["size", "style"]);
   const _style = size !== void 0 ? __spreadValues({ width: (0, import_core8.rem)(size), height: (0, import_core8.rem)(size) }, style) : style;
-  return /* @__PURE__ */ import_react11.default.createElement(
+  return /* @__PURE__ */ import_react12.default.createElement(
     "svg",
     __spreadValues({
       className: "icon",
@@ -557,7 +560,7 @@ function CheckIcon(_a) {
       xmlns: "http://www.w3.org/2000/svg",
       style: _style
     }, others),
-    /* @__PURE__ */ import_react11.default.createElement(
+    /* @__PURE__ */ import_react12.default.createElement(
       "path",
       {
         d: "M4 4.586L1.707 2.293A1 1 0 1 0 .293 3.707l3 3a.997.997 0 0 0 1.414 0l5-5A1 1 0 1 0 8.293.293L4 4.586z",
@@ -577,7 +580,7 @@ var [StepperProvider, useStepperContext] = createSafeContext(
 // src/StepperStep/StepperStep.tsx
 var getStepFragment = (Fragment, step) => {
   if (typeof Fragment === "function") {
-    return /* @__PURE__ */ import_react12.default.createElement(Fragment, { step: step || 0 });
+    return /* @__PURE__ */ import_react13.default.createElement(Fragment, { step: step || 0 });
   }
   return Fragment;
 };
@@ -640,7 +643,7 @@ var StepperStep = (0, import_core9.factory)((props, ref) => {
     "data-progress": state === "stepProgress" || void 0,
     "data-completed": state === "stepCompleted" || void 0
   };
-  return /* @__PURE__ */ import_react12.default.createElement(
+  return /* @__PURE__ */ import_react13.default.createElement(
     UnstyledButton,
     __spreadProps(__spreadValues(__spreadValues(__spreadProps(__spreadValues({}, ctx.getStyles("step", __spreadValues({
       className,
@@ -658,46 +661,46 @@ var StepperStep = (0, import_core9.factory)((props, ref) => {
       },
       tabIndex: allowStepClick ? 0 : -1
     }),
-    withIcon && /* @__PURE__ */ import_react12.default.createElement("span", __spreadValues({}, ctx.getStyles("stepWrapper", stylesApi)), /* @__PURE__ */ import_react12.default.createElement("span", __spreadValues(__spreadValues({}, ctx.getStyles("stepIcon", stylesApi)), dataAttributes), /* @__PURE__ */ import_react12.default.createElement(
+    withIcon && /* @__PURE__ */ import_react13.default.createElement("span", __spreadValues({}, ctx.getStyles("stepWrapper", stylesApi)), /* @__PURE__ */ import_react13.default.createElement("span", __spreadValues(__spreadValues({}, ctx.getStyles("stepIcon", stylesApi)), dataAttributes), /* @__PURE__ */ import_react13.default.createElement(
       Transition,
       {
         mounted: state === "stepCompleted",
         transition: "pop",
         duration: 200
       },
-      (transitionStyles) => /* @__PURE__ */ import_react12.default.createElement(
+      (transitionStyles) => /* @__PURE__ */ import_react13.default.createElement(
         "span",
         __spreadValues({}, ctx.getStyles("stepCompletedIcon", __spreadValues({
           style: transitionStyles
         }, stylesApi))),
-        loading ? /* @__PURE__ */ import_react12.default.createElement(
+        loading ? /* @__PURE__ */ import_react13.default.createElement(
           Loader,
           __spreadValues({
             color: "var(--raikou-color-white)",
             size: "calc(var(--stepper-icon-size) / 2)"
           }, ctx.getStyles("stepLoader", stylesApi))
-        ) : getStepFragment(completedIcon, step) || /* @__PURE__ */ import_react12.default.createElement(CheckIcon, { size: "60%" })
+        ) : getStepFragment(completedIcon, step) || /* @__PURE__ */ import_react13.default.createElement(CheckIcon, { size: "60%" })
       )
-    ), state !== "stepCompleted" ? loading ? /* @__PURE__ */ import_react12.default.createElement(
+    ), state !== "stepCompleted" ? loading ? /* @__PURE__ */ import_react13.default.createElement(
       Loader,
       __spreadProps(__spreadValues({}, ctx.getStyles("stepLoader", stylesApi)), {
         size: "calc(var(--stepper-icon-size) / 2)",
         color
       })
-    ) : getStepFragment(_icon || icon, step) : null), orientation === "vertical" && /* @__PURE__ */ import_react12.default.createElement(
+    ) : getStepFragment(_icon || icon, step) : null), orientation === "vertical" && /* @__PURE__ */ import_react13.default.createElement(
       "span",
       __spreadProps(__spreadValues({}, ctx.getStyles("verticalSeparator", stylesApi)), {
         "data-active": state === "stepCompleted" || void 0
       })
     )),
-    (label || description) && /* @__PURE__ */ import_react12.default.createElement(
+    (label || description) && /* @__PURE__ */ import_react13.default.createElement(
       "span",
       __spreadProps(__spreadValues({}, ctx.getStyles("stepBody", stylesApi)), {
         "data-orientation": ctx.orientation,
         "data-icon-position": iconPosition || ctx.iconPosition
       }),
-      label && /* @__PURE__ */ import_react12.default.createElement("span", __spreadValues({}, ctx.getStyles("stepLabel", stylesApi)), getStepFragment(label, step)),
-      description && /* @__PURE__ */ import_react12.default.createElement("span", __spreadValues({}, ctx.getStyles("stepDescription", stylesApi)), getStepFragment(description, step))
+      label && /* @__PURE__ */ import_react13.default.createElement("span", __spreadValues({}, ctx.getStyles("stepLabel", stylesApi)), getStepFragment(label, step)),
+      description && /* @__PURE__ */ import_react13.default.createElement("span", __spreadValues({}, ctx.getStyles("stepDescription", stylesApi)), getStepFragment(description, step))
     )
   );
 });
@@ -803,7 +806,7 @@ var Stepper = (0, import_core10.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver2
   });
-  const convertedChildren = import_react13.Children.toArray(children);
+  const convertedChildren = import_react14.Children.toArray(children);
   const _children = convertedChildren.filter(
     (child) => child.type !== StepperCompleted
   );
@@ -823,7 +826,7 @@ var Stepper = (0, import_core10.factory)((_props, ref) => {
     };
     const isStepSelectionEnabled = shouldAllowSelect();
     acc.push(
-      (0, import_react13.cloneElement)(item, {
+      (0, import_react14.cloneElement)(item, {
         icon: item.props.icon || icon || index + 1,
         key: index,
         step: index,
@@ -842,7 +845,7 @@ var Stepper = (0, import_core10.factory)((_props, ref) => {
     );
     if (orientation === "horizontal" && index !== _children.length - 1) {
       acc.push(
-        /* @__PURE__ */ import_react13.default.createElement(
+        /* @__PURE__ */ import_react14.default.createElement(
           "div",
           __spreadProps(__spreadValues({}, getStyles("separator")), {
             "data-active": index < active || void 0,
@@ -857,7 +860,7 @@ var Stepper = (0, import_core10.factory)((_props, ref) => {
   const stepContent = (_c = (_b = _children[active]) == null ? void 0 : _b.props) == null ? void 0 : _c.children;
   const completedContent = (_d = completedStep == null ? void 0 : completedStep.props) == null ? void 0 : _d.children;
   const content = active > _children.length - 1 ? completedContent : stepContent;
-  return /* @__PURE__ */ import_react13.default.createElement(StepperProvider, { value: { getStyles, orientation, iconPosition } }, /* @__PURE__ */ import_react13.default.createElement(import_core10.Box, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref, size }), others), /* @__PURE__ */ import_react13.default.createElement(
+  return /* @__PURE__ */ import_react14.default.createElement(StepperProvider, { value: { getStyles, orientation, iconPosition } }, /* @__PURE__ */ import_react14.default.createElement(import_core10.Box, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref, size }), others), /* @__PURE__ */ import_react14.default.createElement(
     import_core10.Box,
     __spreadProps(__spreadValues({}, getStyles("steps")), {
       mod: {
@@ -867,7 +870,7 @@ var Stepper = (0, import_core10.factory)((_props, ref) => {
       }
     }),
     items
-  ), content && /* @__PURE__ */ import_react13.default.createElement("div", __spreadValues({}, getStyles("content")), content)));
+  ), content && /* @__PURE__ */ import_react14.default.createElement("div", __spreadValues({}, getStyles("content")), content)));
 });
 Stepper.displayName = "@raikou/core/Stepper";
 Stepper.Completed = StepperCompleted;

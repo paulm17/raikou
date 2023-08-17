@@ -1,0 +1,121 @@
+import React from "react";
+import {
+  BoxProps,
+  StylesApiProps,
+  factory,
+  ElementProps,
+  useProps,
+  useStyles,
+  createVarsResolver,
+  Factory,
+  getFontSize,
+  getSize,
+  RaikouSize,
+} from "@raikou/core";
+import { UnstyledButton } from "../../../../components/UnstyledButton/src";
+
+export type PickerControlStylesNames = "pickerControl";
+export type PickerControlCssVariables = {
+  pickerControl: "--dpc-size" | "--dpc-fz";
+};
+
+export interface PickerControlProps
+  extends BoxProps,
+    StylesApiProps<PickerControlFactory>,
+    ElementProps<"button"> {
+  __staticSelector?: string;
+
+  /** Control children */
+  children?: React.ReactNode;
+
+  /** Determines whether control should be disabled */
+  disabled?: boolean;
+
+  /** Determines whether control should have selected styles */
+  selected?: boolean;
+
+  /** Determines whether control is selected in range */
+  inRange?: boolean;
+
+  /** Determines whether control is first in range selection */
+  firstInRange?: boolean;
+
+  /** Determines whether control is last in range selection */
+  lastInRange?: boolean;
+
+  /** Component size */
+  size?: RaikouSize;
+}
+
+export type PickerControlFactory = Factory<{
+  props: PickerControlProps;
+  ref: HTMLButtonElement;
+  stylesNames: PickerControlStylesNames;
+  vars: PickerControlCssVariables;
+}>;
+
+const defaultProps: Partial<PickerControlProps> = {
+  size: "sm",
+};
+
+const varsResolver = createVarsResolver<PickerControlFactory>(
+  (_, { size }) => ({
+    pickerControl: {
+      "--dpc-fz": getFontSize(size),
+      "--dpc-size": getSize(size, "dpc-size"),
+    },
+  }),
+);
+
+export const PickerControl = factory<PickerControlFactory>((_props, ref) => {
+  const props = useProps("PickerControl", defaultProps, _props);
+  const {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    firstInRange,
+    lastInRange,
+    inRange,
+    __staticSelector,
+    selected,
+    disabled,
+    ...others
+  } = props;
+
+  const getStyles = useStyles<PickerControlFactory>({
+    name: __staticSelector || "PickerControl",
+    classes: {
+      pickerControl: "dates-pickerControl",
+    },
+    props,
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled,
+    vars,
+    varsResolver,
+    rootSelector: "pickerControl",
+  });
+
+  return (
+    <UnstyledButton
+      {...getStyles("pickerControl")}
+      ref={ref}
+      unstyled={unstyled}
+      data-picker-control
+      data-selected={(selected && !disabled) || undefined}
+      data-disabled={disabled || undefined}
+      data-in-range={(inRange && !disabled && !selected) || undefined}
+      data-first-in-range={(firstInRange && !disabled) || undefined}
+      data-last-in-range={(lastInRange && !disabled) || undefined}
+      disabled={disabled}
+      {...others}
+    />
+  );
+});
+
+PickerControl.displayName = "@raikou/dates/PickerControl";

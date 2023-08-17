@@ -21,11 +21,11 @@ module.exports = function ({ addComponents, theme }: any) {
       justifyContent: "center",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_separator-color": "var(--raikou-color-gray-7)",
+        "--_separator-color": "var(--raikou-breadcrumbs-separator-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_separator-color": "var(--raikou-color-dark-2)",
+        "--_separator-color": "var(--raikou-breadcrumbs-separator-color)",
       },
     },
   });

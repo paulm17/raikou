@@ -18,13 +18,15 @@ module.exports = function ({ addComponents, theme }: any) {
       textDecoration: "none",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_alpha-overlay-color": "var(--raikou-color-gray-3)",
-        "--_alpha-overlay-bg": "var(--raikou-color-white)",
+        "--_alpha-overlay-color":
+          "var(--raikou-colorswatch-alpha-overlay-color)",
+        "--_alpha-overlay-bg": "var(--raikou-colorswatch-alpha-overlay-bg)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_alpha-overlay-color": "var(--raikou-color-dark-4)",
-        "--_alpha-overlay-bg": "var(--raikou-color-dark-7)",
+        "--_alpha-overlay-color":
+          "var(--raikou-colorswatch-alpha-overlay-color)",
+        "--_alpha-overlay-bg": "var(--raikou-colorswatch-alpha-overlay-bg)",
       },
     },
 
@@ -40,7 +42,7 @@ module.exports = function ({ addComponents, theme }: any) {
       borderRadius: "var(--cs-radius)",
       zIndex: "1",
       boxShadow: `rgba(0, 0, 0, 0.1) 0 0 0 ${rem(
-        "1px"
+        "1px",
       )} inset, rgb(0, 0, 0, 0.15) 0 0 ${rem("4px")} inset`,
     },
 
@@ -50,7 +52,7 @@ module.exports = function ({ addComponents, theme }: any) {
       borderRadius: "var(--cs-radius)",
       backgroundSize: `${rem("8px")} ${rem("8px")}`,
       backgroundPosition: `0 0, 0 ${rem("4px")}, ${rem("4px")} ${rem(
-        "-4px"
+        "-4px",
       )}, ${rem("-4px")} 0`,
       backgroundImage: `linear-gradient(
           45deg,

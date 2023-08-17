@@ -544,6 +544,9 @@ function createOptionalContext(initialValue = null) {
 // ../_utils/use-hovered/use-hovered.ts
 import { useState } from "react";
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+import { useEffect, useLayoutEffect } from "react";
+
 // src/PillGroup.context.ts
 var [PillGroupProvider, usePillGroupContext] = createOptionalContext();
 

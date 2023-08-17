@@ -1,0 +1,50 @@
+{
+  "name": "@raikou/navlink",
+  "version": "0.0.1-alpha.23",
+  "main": "index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/**"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format esm,cjs --clean",
+    "lint": "eslint \"**/*.ts*\"",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "build:fast": "tsup src",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "clean-package": "../../../../clean-package.config.json",
+  "peerDependencies": {
+    "@raikou/core": ">=0.0.1-alpha.1",
+    "@raikou/hooks": ">=0.0.1-alpha.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@raikou/core": "workspace:*",
+    "@raikou/hooks": "workspace:*",
+    "tslib": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/node": "^20.3.3",
+    "clean-package": "2.2.0",
+    "tsup": "^7.1.0",
+    "typescript": "^5.1.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

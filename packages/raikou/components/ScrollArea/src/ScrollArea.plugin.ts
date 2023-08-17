@@ -58,26 +58,26 @@ module.exports = function ({ addComponents, theme }: any) {
       "@media (hover: hover)": {
         "&:hover": {
           '[data-raikou-color-scheme="light"] &': {
-            "--_scrollbar-bg": "var(--raikou-color-gray-0)",
-            "--_thumb-bg": "rgba(0, 0, 0, 0.5)",
+            "--_scrollbar-bg": "var(--raikou-scrollarea-scrollbar-hover-bg)",
+            "--_thumb-bg": "var(--raikou-scrollarea-thumb-hover-bg)",
           },
 
           '[data-raikou-color-scheme="dark"] &': {
-            "--_scrollbar-bg": "var(--raikou-color-dark-8)",
-            "--_thumb-bg": "rgba(255, 255, 255, 0.5)",
+            "--_scrollbar-bg": "var(--raikou-scrollarea-scrollbar-hover-bg)",
+            "--_thumb-bg": "var(--raikou-scrollarea-thumb-hover-bg)",
           },
         },
       },
       "@media (hover: none)": {
         "&:active": {
           '[data-raikou-color-scheme="light"] &': {
-            "--_scrollbar-bg": "var(--raikou-color-gray-0)",
-            "--_thumb-bg": "rgba(0, 0, 0, 0.5)",
+            "--_scrollbar-bg": "var(--raikou-scrollarea-scrollbar-active-bg)",
+            "--_thumb-bg": "var(--raikou-scrollarea-thumb-active-bg)",
           },
 
           '[data-raikou-color-scheme="dark"] &': {
-            "--_scrollbar-bg": "var(--raikou-color-dark-8)",
-            "--_thumb-bg": "rgba(255, 255, 255, 0.5)",
+            "--_scrollbar-bg": "var(--raikou-scrollarea-scrollbar-active-bg)",
+            "--_thumb-bg": "var(--raikou-scrollarea-thumb-active-bg)",
           },
         },
       },
@@ -135,11 +135,11 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_thumb-bg": "rgba(0, 0, 0, 0.4)",
+        "--_thumb-bg": "var(--raikou-scrollarea-thumb-bg)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_thumb-bg": "rgba(255, 255, 255, 0.4)",
+        "--_thumb-bg": "var(--raikou-scrollarea-thumb-bg)",
       },
     },
 

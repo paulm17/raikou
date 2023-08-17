@@ -308,7 +308,7 @@ function useTransition({
 // ../Transition/src/Transition.tsx
 function Transition({
   keepMounted,
-  transition,
+  transition = "fade",
   duration = 250,
   exitDuration = duration,
   mounted,
@@ -536,6 +536,9 @@ import React8, { createContext as createContext2, useContext as useContext2 } fr
 
 // ../_utils/use-hovered/use-hovered.ts
 import { useState as useState2 } from "react";
+
+// ../_utils/create-use-external-events/create-use-external-events.ts
+import { useEffect as useEffect2, useLayoutEffect } from "react";
 
 // ../Checkbox/src/CheckIcon.tsx
 import React9 from "react";

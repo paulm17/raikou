@@ -65,6 +65,9 @@ import React2, { createContext as createContext2, useContext as useContext2 } fr
 // ../_utils/use-hovered/use-hovered.ts
 import { useState } from "react";
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+import { useEffect, useLayoutEffect } from "react";
+
 // src/ScrollArea.context.ts
 var [ScrollAreaProvider, useScrollAreaContext] = createSafeContext(
   "ScrollArea.Root component was not found in tree"
@@ -75,11 +78,11 @@ import React6, { useRef as useRef3, useState as useState3, forwardRef as forward
 import { useDirection } from "@raikou/core";
 
 // src/ScrollAreaScrollbar/ScrollbarX.tsx
-import React4, { forwardRef as forwardRef2, useRef, useState as useState2, useEffect as useEffect2 } from "react";
+import React4, { forwardRef as forwardRef2, useRef, useState as useState2, useEffect as useEffect3 } from "react";
 import { useMergedRef as useMergedRef2 } from "@raikou/hooks";
 
 // src/ScrollAreaScrollbar/Scrollbar.tsx
-import React3, { useEffect, forwardRef } from "react";
+import React3, { useEffect as useEffect2, forwardRef } from "react";
 import {
   useMergedRef,
   useCallbackRef as useCallbackRef2,
@@ -249,7 +252,7 @@ var Scrollbar = forwardRef(
         onDragScroll({ x, y });
       }
     };
-    useEffect(() => {
+    useEffect2(() => {
       const handleWheel = (event) => {
         const element = event.target;
         const isScrollbarWheel = scrollbar == null ? void 0 : scrollbar.contains(element);
@@ -261,7 +264,7 @@ var Scrollbar = forwardRef(
         passive: false
       });
     }, [viewport, scrollbar, maxScrollPos, handleWheelScroll]);
-    useEffect(handleThumbPositionChange, [sizes, handleThumbPositionChange]);
+    useEffect2(handleThumbPositionChange, [sizes, handleThumbPositionChange]);
     useResizeObserver(scrollbar, handleResize);
     useResizeObserver(context.content, handleResize);
     return /* @__PURE__ */ React3.createElement(
@@ -317,7 +320,7 @@ var ScrollAreaScrollbarX = forwardRef2((props, forwardedRef) => {
   const [computedStyle, setComputedStyle] = useState2();
   const ref = useRef(null);
   const composeRefs = useMergedRef2(forwardedRef, ref, ctx.onScrollbarXChange);
-  useEffect2(() => {
+  useEffect3(() => {
     if (ref.current)
       setComputedStyle(getComputedStyle(ref.current));
   }, [ref]);
@@ -360,7 +363,7 @@ var ScrollAreaScrollbarX = forwardRef2((props, forwardedRef) => {
 });
 
 // src/ScrollAreaScrollbar/ScrollbarY.tsx
-import React5, { forwardRef as forwardRef3, useEffect as useEffect3, useRef as useRef2 } from "react";
+import React5, { forwardRef as forwardRef3, useEffect as useEffect4, useRef as useRef2 } from "react";
 import { useMergedRef as useMergedRef3 } from "@raikou/hooks";
 var ScrollAreaScrollbarY = forwardRef3((props, forwardedRef) => {
   const _a = props, { sizes, onSizesChange, style } = _a, others = __objRest(_a, ["sizes", "onSizesChange", "style"]);
@@ -372,7 +375,7 @@ var ScrollAreaScrollbarY = forwardRef3((props, forwardedRef) => {
     ref,
     context.onScrollbarYChange
   );
-  useEffect3(() => {
+  useEffect4(() => {
     if (ref.current)
       setComputedStyle(getComputedStyle(ref.current));
   }, [ref]);
@@ -497,7 +500,7 @@ var ScrollAreaScrollbarVisible = forwardRef4((props, forwardedRef) => {
 });
 
 // src/ScrollAreaScrollbar/ScrollAreaScrollbarHover.tsx
-import React8, { forwardRef as forwardRef6, useEffect as useEffect4, useState as useState5 } from "react";
+import React8, { forwardRef as forwardRef6, useEffect as useEffect5, useState as useState5 } from "react";
 
 // src/ScrollAreaScrollbar/ScrollAreaScrollbarAuto.tsx
 import React7, { forwardRef as forwardRef5, useState as useState4 } from "react";
@@ -535,7 +538,7 @@ var ScrollAreaScrollbarHover = forwardRef6(
     const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
     const context = useScrollAreaContext();
     const [visible, setVisible] = useState5(false);
-    useEffect4(() => {
+    useEffect5(() => {
       const { scrollArea } = context;
       let hideTimer = 0;
       if (scrollArea) {
@@ -571,7 +574,7 @@ var ScrollAreaScrollbarHover = forwardRef6(
 );
 
 // src/ScrollAreaScrollbar/ScrollAreaScrollbarScroll.tsx
-import React9, { forwardRef as forwardRef7, useEffect as useEffect5, useState as useState6 } from "react";
+import React9, { forwardRef as forwardRef7, useEffect as useEffect6, useState as useState6 } from "react";
 import { useDebounceCallback as useDebounceCallback3 } from "@raikou/hooks";
 var ScrollAreaScrollbarScroll = forwardRef7((props, red) => {
   const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
@@ -579,7 +582,7 @@ var ScrollAreaScrollbarScroll = forwardRef7((props, red) => {
   const isHorizontal = props.orientation === "horizontal";
   const [state, setState] = useState6("hidden");
   const debounceScrollEnd = useDebounceCallback3(() => setState("idle"), 100);
-  useEffect5(() => {
+  useEffect6(() => {
     if (state === "idle") {
       const hideTimer = window.setTimeout(
         () => setState("hidden"),
@@ -589,7 +592,7 @@ var ScrollAreaScrollbarScroll = forwardRef7((props, red) => {
     }
     return void 0;
   }, [state, context.scrollHideDelay]);
-  useEffect5(() => {
+  useEffect6(() => {
     const { viewport } = context;
     const scrollDirection = isHorizontal ? "scrollLeft" : "scrollTop";
     if (viewport) {
@@ -767,7 +770,7 @@ var ScrollAreaViewport = forwardRef9((_a, ref) => {
 ScrollAreaViewport.displayName = "@raikou/core/ScrollAreaViewport";
 
 // src/ScrollAreaThumb/ScrollAreaThumb.tsx
-import React14, { forwardRef as forwardRef10, useRef as useRef4, useEffect as useEffect6 } from "react";
+import React14, { forwardRef as forwardRef10, useRef as useRef4, useEffect as useEffect7 } from "react";
 import { useDebounceCallback as useDebounceCallback4, useMergedRef as useMergedRef6 } from "@raikou/hooks";
 var Thumb = forwardRef10(
   (props, forwardedRef) => {
@@ -786,7 +789,7 @@ var Thumb = forwardRef10(
         removeUnlinkedScrollListenerRef.current = void 0;
       }
     }, 100);
-    useEffect6(() => {
+    useEffect7(() => {
       const { viewport } = scrollAreaContext;
       if (viewport) {
         const handleScroll = () => {

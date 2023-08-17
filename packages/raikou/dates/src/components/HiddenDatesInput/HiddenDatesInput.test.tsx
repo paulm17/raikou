@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render } from "@raikou/tests";
 import { HiddenDatesInput } from "./HiddenDatesInput";
 
 describe("@raikou/dates/HiddenDatesInput", () => {
@@ -13,8 +13,14 @@ describe("@raikou/dates/HiddenDatesInput", () => {
       />,
     );
 
-    expect(container.firstChild).toHaveAttribute("name", "test-name");
-    expect(container.firstChild).toHaveAttribute("form", "test-form");
+    expect(container.querySelector("input")).toHaveAttribute(
+      "name",
+      "test-name",
+    );
+    expect(container.querySelector("input")).toHaveAttribute(
+      "form",
+      "test-form",
+    );
   });
 
   it('formats date correctly for type="default"', () => {
@@ -27,7 +33,7 @@ describe("@raikou/dates/HiddenDatesInput", () => {
       />,
     );
 
-    expect(container.firstChild).toHaveValue(
+    expect(container.querySelector("input")).toHaveValue(
       new Date(2022, 3, 11).toISOString(),
     );
     rerender(
@@ -38,7 +44,7 @@ describe("@raikou/dates/HiddenDatesInput", () => {
         value={null}
       />,
     );
-    expect(container.firstChild).toHaveValue("");
+    expect(container.querySelector("input")).toHaveValue("");
   });
 
   it('formats date correctly for type="multiple"', () => {
@@ -51,7 +57,7 @@ describe("@raikou/dates/HiddenDatesInput", () => {
       />,
     );
 
-    expect(container.firstChild).toHaveValue(
+    expect(container.querySelector("input")).toHaveValue(
       `${new Date(2022, 3, 11).toISOString()}, ${new Date(
         2022,
         4,
@@ -66,7 +72,7 @@ describe("@raikou/dates/HiddenDatesInput", () => {
         value={[]}
       />,
     );
-    expect(container.firstChild).toHaveValue("");
+    expect(container.querySelector("input")).toHaveValue("");
   });
 
   it('formats date correctly for type="range"', () => {
@@ -79,7 +85,7 @@ describe("@raikou/dates/HiddenDatesInput", () => {
       />,
     );
 
-    expect(container.firstChild).toHaveValue(
+    expect(container.querySelector("input")).toHaveValue(
       `${new Date(2022, 3, 11).toISOString()} – ${new Date(
         2022,
         4,
@@ -94,7 +100,7 @@ describe("@raikou/dates/HiddenDatesInput", () => {
         value={[new Date(2022, 3, 11), null]}
       />,
     );
-    expect(container.firstChild).toHaveValue(
+    expect(container.querySelector("input")).toHaveValue(
       `${new Date(2022, 3, 11).toISOString()} –`,
     );
 
@@ -106,6 +112,6 @@ describe("@raikou/dates/HiddenDatesInput", () => {
         value={[null, null]}
       />,
     );
-    expect(container.firstChild).toHaveValue("");
+    expect(container.querySelector("input")).toHaveValue("");
   });
 });

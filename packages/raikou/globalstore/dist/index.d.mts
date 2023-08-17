@@ -153,7 +153,7 @@ interface RaikouPrimaryShade {
     light: RaikouColorShade;
     dark: RaikouColorShade;
 }
-type DefaultRaikouColor = "dark" | "gray" | "red" | "pink" | "grape" | "violet" | "indigo" | "blue" | "cyan" | "green" | "lime" | "yellow" | "orange" | "teal" | (string & {});
+type DefaultRaikouColor = "blue" | (string & {});
 type RaikouThemeColorsOverride = {};
 type RaikouThemeColors = RaikouThemeColorsOverride extends {
     colors: Record<infer CustomColors, RaikouColorsTuple>;

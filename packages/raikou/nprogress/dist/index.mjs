@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/NavigationProgress.tsx
-import React9, { useEffect } from "react";
+import React9, { useEffect as useEffect2 } from "react";
 import { getDefaultZIndex } from "@raikou/core";
 
 // ../components/Portal/src/Portal.tsx
@@ -127,6 +127,9 @@ import React4, { createContext as createContext2, useContext as useContext2 } fr
 
 // ../components/_utils/use-hovered/use-hovered.ts
 import { useState as useState2 } from "react";
+
+// ../components/_utils/create-use-external-events/create-use-external-events.ts
+import { useEffect, useLayoutEffect } from "react";
 
 // ../components/Progress/src/Progress.context.ts
 var [ProgressProvider, useProgressContext] = createSafeContext(
@@ -475,7 +478,7 @@ function NavigationProgress(_a) {
     timeouts: []
   });
   const state = useNprogress(store);
-  useEffect(() => () => resetNavigationProgressAction(store), [store]);
+  useEffect2(() => () => resetNavigationProgressAction(store), [store]);
   return /* @__PURE__ */ React9.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ React9.createElement(
     Progress,
     __spreadValues({

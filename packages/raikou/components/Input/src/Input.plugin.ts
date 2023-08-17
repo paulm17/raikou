@@ -79,18 +79,18 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_input-disabled-bg": "var(--raikou-color-gray-1)",
-        "--_input-disabled-color": "var(--raikou-color-gray-6)",
+        "--_input-disabled-bg": "var(--raikou-input-disabled-bg)",
+        "--_input-disabled-color": "var(--raikou-input-disabled-color)",
 
         '&[data-variant="default"]': {
-          "--_input-bd": "var(--raikou-color-gray-4)",
-          "--_input-bg": "var(--raikou-color-white)",
+          "--_input-bd": "var(--raikou-input-default-bd)",
+          "--_input-bg": "var(--raikou-input-default-bg)",
           "--_input-bd-focus": "var(--raikou-color-primary)",
         },
 
         "&[data-variant='filled']": {
-          "--_input-bd": "transparent",
-          "--_input-bg": "var(--raikou-color-gray-1)",
+          "--_input-bd": "var(--raikou-input-filled-bd)",
+          "--_input-bg": "var(--raikou-input-filled-bg)",
           "--_input-bd-focus": "var(--raikou-color-primary)",
         },
 
@@ -102,18 +102,18 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_input-disabled-bg": "var(--raikou-color-dark-6)",
-        "--_input-disabled-color": "var(--raikou-color-dark-2)",
+        "--_input-disabled-bg": "var(--raikou-input-disabled-bg)",
+        "--_input-disabled-color": "var(--raikou-input-disabled-color)",
 
         "&[data-variant='default']": {
-          "--_input-bd": "var(--raikou-color-dark-4)",
-          "--_input-bg": "var(--raikou-color-dark-6)",
+          "--_input-bd": "var(--raikou-input-default-bd)",
+          "--_input-bg": "var(--raikou-input-default-bg)",
           "--_input-bd-focus": "var(--raikou-color-primary)",
         },
 
         "&[data-variant='filled']": {
-          "--_input-bd": "transparent",
-          "--_input-bg": "var(--raikou-color-dark-5)",
+          "--_input-bd": "var(--raikou-input-filled-bd)",
+          "--_input-bg": "var(--raikou-input-filled-bg)",
           "--_input-bd-focus": "var(--raikou-color-primary)",
         },
 

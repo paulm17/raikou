@@ -42,15 +42,17 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_ai-loading-overlay-bg": "rgba(255, 255, 255, 0.35)",
-        "--_ai-disabled-bg": "var(--raikou-color-gray-1)",
-        "--_ai-disabled-color": "var(--raikou-color-gray-5)",
+        "--_ai-loading-overlay-bg":
+          "var(--raikou-actionicon-loading-overlay-bg)",
+        "--_ai-disabled-bg": "var(--raikou-actionicon-disabled-bg)",
+        "--_ai-disabled-color": "var(--raikou-actionicon-disabled-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_ai-loading-overlay-bg": "rgba(0, 0, 0, 0.35)",
-        "--_ai-disabled-bg": "var(--raikou-color-dark-6)",
-        "--_ai-disabled-color": "var(--raikou-color-dark-3)",
+        "--_ai-loading-overlay-bg":
+          "var(--raikou-actionicon-loading-overlay-bg)",
+        "--_ai-disabled-bg": "var(--raikou-actionicon-disabled-bg)",
+        "--_ai-disabled-color": "var(--raikou-actionicon-disabled-color)",
       },
 
       "&[data-loading]": {

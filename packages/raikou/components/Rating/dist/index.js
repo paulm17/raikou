@@ -64,7 +64,7 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Rating.tsx
-var import_react7 = __toESM(require("react"));
+var import_react8 = __toESM(require("react"));
 var import_hooks = require("@raikou/hooks");
 var import_core2 = require("@raikou/core");
 
@@ -89,21 +89,24 @@ var import_react2 = __toESM(require("react"));
 // ../_utils/use-hovered/use-hovered.ts
 var import_react3 = require("react");
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+var import_react4 = require("react");
+
 // src/Rating.context.ts
 var [RatingProvider, useRatingContext] = createSafeContext("Rating was not found in tree");
 
 // src/RatingItem/RatingItem.tsx
-var import_react6 = __toESM(require("react"));
+var import_react7 = __toESM(require("react"));
 var import_core = require("@raikou/core");
 
 // src/StarSymbol/StarSymbol.tsx
-var import_react5 = __toESM(require("react"));
+var import_react6 = __toESM(require("react"));
 
 // src/StarSymbol/StarIcon.tsx
-var import_react4 = __toESM(require("react"));
+var import_react5 = __toESM(require("react"));
 function StarIcon(props) {
   const _a = props, { width, height, style } = _a, others = __objRest(_a, ["width", "height", "style"]);
-  return /* @__PURE__ */ import_react4.default.createElement(
+  return /* @__PURE__ */ import_react5.default.createElement(
     "svg",
     __spreadValues({
       viewBox: "0 0 24 24",
@@ -113,7 +116,7 @@ function StarIcon(props) {
       xmlns: "http://www.w3.org/2000/svg",
       style: __spreadValues({ width, height }, style)
     }, others),
-    /* @__PURE__ */ import_react4.default.createElement("path", { d: "M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" })
+    /* @__PURE__ */ import_react5.default.createElement("path", { d: "M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" })
   );
 }
 StarIcon.displayName = "@raikou/core/StarIcon";
@@ -121,7 +124,7 @@ StarIcon.displayName = "@raikou/core/StarIcon";
 // src/StarSymbol/StarSymbol.tsx
 function StarSymbol({ type }) {
   const ctx = useRatingContext();
-  return /* @__PURE__ */ import_react5.default.createElement(
+  return /* @__PURE__ */ import_react6.default.createElement(
     StarIcon,
     __spreadProps(__spreadValues({}, ctx.getStyles("starSymbol")), {
       "data-filled": type === "full" || void 0
@@ -165,7 +168,7 @@ function RatingItem(_a) {
   const ctx = useRatingContext();
   const _fullIcon = typeof fullIcon === "function" ? fullIcon(value) : fullIcon;
   const _emptyIcon = typeof emptyIcon === "function" ? emptyIcon(value) : emptyIcon;
-  return /* @__PURE__ */ import_react6.default.createElement(import_react6.default.Fragment, null, !readOnly && /* @__PURE__ */ import_react6.default.createElement(
+  return /* @__PURE__ */ import_react7.default.createElement(import_react7.default.Fragment, null, !readOnly && /* @__PURE__ */ import_react7.default.createElement(
     "input",
     __spreadValues(__spreadProps(__spreadValues({}, ctx.getStyles("input")), {
       onKeyDown: (event) => event.key === " " && onChange(value),
@@ -176,7 +179,7 @@ function RatingItem(_a) {
       value,
       onChange
     }), others)
-  ), /* @__PURE__ */ import_react6.default.createElement(
+  ), /* @__PURE__ */ import_react7.default.createElement(
     import_core.Box,
     __spreadProps(__spreadValues({
       component: readOnly ? "div" : "label"
@@ -188,14 +191,14 @@ function RatingItem(_a) {
         "--rating-item-z-index": (_a2 = fractionValue === 1 ? void 0 : active ? 2 : 0) == null ? void 0 : _a2.toString()
       }
     }),
-    /* @__PURE__ */ import_react6.default.createElement(
+    /* @__PURE__ */ import_react7.default.createElement(
       import_core.Box,
       __spreadProps(__spreadValues({}, ctx.getStyles("symbolBody")), {
         __vars: {
           "--rating-symbol-clip-path": fractionValue === 1 ? void 0 : `inset(0 ${active ? 100 - fractionValue * 100 : 100}% 0 0)`
         }
       }),
-      full ? _fullIcon || /* @__PURE__ */ import_react6.default.createElement(StarSymbol, { type: "full" }) : _emptyIcon || /* @__PURE__ */ import_react6.default.createElement(StarSymbol, { type: "empty" })
+      full ? _fullIcon || /* @__PURE__ */ import_react7.default.createElement(StarSymbol, { type: "full" }) : _emptyIcon || /* @__PURE__ */ import_react7.default.createElement(StarSymbol, { type: "empty" })
     )
   ));
 }
@@ -300,15 +303,15 @@ var Rating = (0, import_core2.factory)((_props, ref) => {
   const { dir } = (0, import_core2.useDirection)();
   const _name = (0, import_hooks.useId)(name);
   const _id = (0, import_hooks.useId)(id);
-  const rootRef = (0, import_react7.useRef)(null);
+  const rootRef = (0, import_react8.useRef)(null);
   const [_value, setValue] = (0, import_hooks.useUncontrolled)({
     value,
     defaultValue,
     finalValue: 0,
     onChange
   });
-  const [hovered, setHovered] = (0, import_react7.useState)(-1);
-  const [isOutside, setOutside] = (0, import_react7.useState)(true);
+  const [hovered, setHovered] = (0, import_react8.useState)(-1);
+  const [isOutside, setOutside] = (0, import_react8.useState)(true);
   const _fractions = Math.floor(fractions);
   const _count = Math.floor(count);
   const decimalUnit = 1 / _fractions;
@@ -360,7 +363,7 @@ var Rating = (0, import_core2.factory)((_props, ref) => {
       new Array(index === 0 ? _fractions + 1 : _fractions)
     );
     const isGroupActive = !readOnly && Math.ceil(hovered) === integerValue;
-    return /* @__PURE__ */ import_react7.default.createElement(
+    return /* @__PURE__ */ import_react8.default.createElement(
       "div",
       __spreadValues({
         key: integerValue,
@@ -372,7 +375,7 @@ var Rating = (0, import_core2.factory)((_props, ref) => {
           integerValue - 1 + fractionValue,
           decimalUnit
         );
-        return /* @__PURE__ */ import_react7.default.createElement(
+        return /* @__PURE__ */ import_react8.default.createElement(
           RatingItem,
           {
             key: `${integerValue}-${symbolValue}`,
@@ -395,7 +398,7 @@ var Rating = (0, import_core2.factory)((_props, ref) => {
       })
     );
   });
-  return /* @__PURE__ */ import_react7.default.createElement(RatingProvider, { value: { getStyles } }, /* @__PURE__ */ import_react7.default.createElement(
+  return /* @__PURE__ */ import_react8.default.createElement(RatingProvider, { value: { getStyles } }, /* @__PURE__ */ import_react8.default.createElement(
     import_core2.Box,
     __spreadValues(__spreadProps(__spreadValues({
       ref: (0, import_hooks.useMergedRef)(rootRef, ref)

@@ -5,6 +5,7 @@ import { Transition, TransitionOverride } from "../../Transition/src";
 import { useModalTransition } from "./use-modal-transition";
 import { useModalBaseContext } from "./ModalBase.context";
 
+// @ts-ignore
 export interface ModalBaseOverlayProps
   extends Omit<OverlayProps, "styles" | "classNames" | "variant" | "vars">,
     ElementProps<"div", "color"> {

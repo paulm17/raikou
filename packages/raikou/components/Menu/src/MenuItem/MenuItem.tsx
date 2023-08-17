@@ -130,12 +130,12 @@ export const MenuItem = polymorphicFactory<MenuItemFactory>((props, ref) => {
           {...ctx.getStyles("itemSection", { styles, classNames })}
           data-position="left"
         >
-          {leftSection}
+          {leftSection as any}
         </div>
       )}
       {children && (
         <div {...ctx.getStyles("itemLabel", { styles, classNames })}>
-          {children}
+          {children as any}
         </div>
       )}
       {rightSection && (
@@ -143,7 +143,7 @@ export const MenuItem = polymorphicFactory<MenuItemFactory>((props, ref) => {
           {...ctx.getStyles("itemSection", { styles, classNames })}
           data-position="right"
         >
-          {rightSection}
+          {rightSection as any}
         </div>
       )}
     </UnstyledButton>

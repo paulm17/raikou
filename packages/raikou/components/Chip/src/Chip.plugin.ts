@@ -56,8 +56,8 @@ module.exports = function ({ addComponents }: any) {
       },
 
       "&[data-disabled]": {
-        "--_chip-bg": "var(--raikou-color-gray-2)",
-        "--_chip-color": "var(--raikou-color-gray-5)",
+        "--_chip-bg": "var(--raikou-chip-bg-disabled)",
+        "--_chip-color": "var(--raikou-chip-color-disabled)",
         "--_chip-cursor": "not-allowed",
       },
     },
@@ -69,34 +69,34 @@ module.exports = function ({ addComponents }: any) {
       "@media (hover: hover)": {
         "&:hover": {
           '[data-raikou-color-scheme="light"] &': {
-            "--_chip-bg": "var(--raikou-color-gray-0)",
+            "--_chip-bg": "var(--raikou-chip-outline-hover-bg)",
           },
 
           '[data-raikou-color-scheme="dark"] &': {
-            "--_chip-bg": "var(--raikou-color-dark-5)",
+            "--_chip-bg": "var(--raikou-chip-outline-hover-bg)",
           },
         },
       },
       "@media (hover: none)": {
         "&:active": {
           '[data-raikou-color-scheme="light"] &': {
-            "--_chip-bg": "var(--raikou-color-gray-0)",
+            "--_chip-bg": "var(--raikou-chip-outline-active-bg)",
           },
 
           '[data-raikou-color-scheme="dark"] &': {
-            "--_chip-bg": "var(--raikou-color-dark-5)",
+            "--_chip-bg": "var(--raikou-chip-outline-active-bg)",
           },
         },
       },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_chip-bg": "var(--raikou-color-white)",
-        "--_chip-bd": `${rem("1px")} solid var(--raikou-color-gray-3)`,
+        "--_chip-bg": "var(--raikou-chip-outline-bg)",
+        "--_chip-bd": `${rem("1px")} solid var(--raikou-chip-outline-bd)`,
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_chip-bg": "var(--raikou-color-dark-6)",
-        "--_chip-bd": `${rem("1px")} solid var(--raikou-color-dark-4)`,
+        "--_chip-bg": "var(--raikou-chip-outline-bg)",
+        "--_chip-bd": `${rem("1px")} solid var(--raikou-chip-outline-bd)`,
       },
 
       "[data-raikou-color-scheme] &[data-checked]": {
@@ -116,60 +116,113 @@ module.exports = function ({ addComponents }: any) {
       },
     },
 
-    ".chip-root[data-variant='filled'] .chip-label:not([data-disabled]), .chip-root[data-variant='light'] .chip-label:not([data-disabled])":
-      {
-        backgroundColor: "var(--_chip-bg)",
-        border: `${rem("1px")} solid transparent`,
-        color: "var(--_chip-color, var(--raikou-color-text))",
+    ".chip-root[data-variant='filled'] .chip-label:not([data-disabled])": {
+      backgroundColor: "var(--_chip-bg)",
+      border: `${rem("1px")} solid transparent`,
+      color: "var(--_chip-color, var(--raikou-color-text))",
+
+      "@media (hover: hover)": {
+        "&:hover": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--_chip-bg": "var(--raikou-chip-filled-hover-bg)",
+          },
+
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_chip-bg": "var(--raikou-chip-filled-hover-bg)",
+          },
+        },
+      },
+      "@media (hover: none)": {
+        "&:active": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--_chip-bg": "var(--raikou-chip-filled-active-bg)",
+          },
+
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_chip-bg": "var(--raikou-chip-filled-active-bg)",
+          },
+        },
+      },
+
+      '[data-raikou-color-scheme="light"] &': {
+        "--_chip-bg": "var(--raikou-chip-filled-bg)",
+      },
+
+      '[data-raikou-color-scheme="dark"] &': {
+        "--_chip-bg": "var(--raikou-chip-filled-bg)",
+      },
+
+      "[data-raikou-color-scheme] &[data-checked]": {
+        "--_chip-icon-color": "var(--chip-color)",
+        "--_chip-color": "var(--chip-color)",
+        "--_chip-bg": "var(--chip-bg)",
 
         "@media (hover: hover)": {
           "&:hover": {
-            '[data-raikou-color-scheme="light"] &': {
-              "--_chip-bg": "var(--raikou-color-gray-1)",
-            },
-
-            '[data-raikou-color-scheme="dark"] &': {
-              "--_chip-bg": "var(--raikou-color-dark-5)",
-            },
+            "--_chip-bg": "var(--chip-hover)",
           },
         },
         "@media (hover: none)": {
           "&:active": {
-            '[data-raikou-color-scheme="light"] &': {
-              "--_chip-bg": "var(--raikou-color-gray-1)",
-            },
-
-            '[data-raikou-color-scheme="dark"] &': {
-              "--_chip-bg": "var(--raikou-color-dark-5)",
-            },
-          },
-        },
-
-        '[data-raikou-color-scheme="light"] &': {
-          "--_chip-bg": "var(--raikou-color-gray-0)",
-        },
-
-        '[data-raikou-color-scheme="dark"] &': {
-          "--_chip-bg": "var(--raikou-color-dark-6)",
-        },
-
-        "[data-raikou-color-scheme] &[data-checked]": {
-          "--_chip-icon-color": "var(--chip-color)",
-          "--_chip-color": "var(--chip-color)",
-          "--_chip-bg": "var(--chip-bg)",
-
-          "@media (hover: hover)": {
-            "&:hover": {
-              "--_chip-bg": "var(--chip-hover)",
-            },
-          },
-          "@media (hover: none)": {
-            "&:active": {
-              "--_chip-bg": "var(--chip-hover)",
-            },
+            "--_chip-bg": "var(--chip-hover)",
           },
         },
       },
+    },
+
+    ".chip-root[data-variant='light'] .chip-label:not([data-disabled])": {
+      backgroundColor: "var(--_chip-bg)",
+      border: `${rem("1px")} solid transparent`,
+      color: "var(--_chip-color, var(--raikou-color-text))",
+
+      "@media (hover: hover)": {
+        "&:hover": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--_chip-bg": "var(--raikou-chip-light-hover-bg)",
+          },
+
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_chip-bg": "var(--raikou-chip-light-hover-bg)",
+          },
+        },
+      },
+      "@media (hover: none)": {
+        "&:active": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--_chip-bg": "var(--raikou-chip-filled-active-bg)",
+          },
+
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_chip-bg": "var(--raikou-chip-light-active-bg)",
+          },
+        },
+      },
+
+      '[data-raikou-color-scheme="light"] &': {
+        "--_chip-bg": "var(--raikou-chip-light-bg)",
+      },
+
+      '[data-raikou-color-scheme="dark"] &': {
+        "--_chip-bg": "var(--raikou-chip-light-bg)",
+      },
+
+      "[data-raikou-color-scheme] &[data-checked]": {
+        "--_chip-icon-color": "var(--chip-color)",
+        "--_chip-color": "var(--chip-color)",
+        "--_chip-bg": "var(--chip-bg)",
+
+        "@media (hover: hover)": {
+          "&:hover": {
+            "--_chip-bg": "var(--chip-hover)",
+          },
+        },
+        "@media (hover: none)": {
+          "&:active": {
+            "--_chip-bg": "var(--chip-hover)",
+          },
+        },
+      },
+    },
 
     ".chip-iconWrapper": {
       width: "calc(var(--chip-icon-size) + (var(--chip-spacing) / 1.5))",

@@ -17,11 +17,11 @@ module.exports = function ({ addComponents, theme }: any) {
       "--_burger-color": "var(--burger-color, var(--__burger-color))",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--__burger-color": "var(--raikou-color-black)",
+        "--__burger-color": "var(--raikou-burger-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--__burger-color": "var(--raikou-color-white)",
+        "--__burger-color": "var(--raikou-burger-color)",
       },
     },
 

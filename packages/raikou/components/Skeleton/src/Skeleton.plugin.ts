@@ -40,11 +40,11 @@ module.exports = function ({ addComponents, theme }: any) {
           zIndex: "11",
 
           '[data-raikou-color-scheme="light"] &': {
-            backgroundColor: "var(--raikou-color-gray-3)",
+            backgroundColor: "var(--raikou-skeleton-bg)",
           },
 
           '[data-raikou-color-scheme="dark"] &': {
-            backgroundColor: "var(--raikou-color-dark-4)",
+            backgroundColor: "var(--raikou-skeleton-bg)",
           },
         },
       },

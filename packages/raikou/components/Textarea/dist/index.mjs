@@ -71,6 +71,9 @@ function createOptionalContext(initialValue = null) {
 // ../_utils/use-hovered/use-hovered.ts
 import { useState } from "react";
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+import { useEffect, useLayoutEffect } from "react";
+
 // ../Input/src/InputWrapper.context.ts
 var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetBottom: false,
@@ -379,15 +382,15 @@ InputPlaceholder.displayName = "@raikou/core/InputPlaceholder";
 import React8 from "react";
 
 // ../../hooks/dist/index.mjs
-import { useRef, useEffect, useMemo } from "react";
-import { useRef as useRef2, useEffect as useEffect2, useCallback } from "react";
+import { useRef, useEffect as useEffect2, useMemo } from "react";
+import { useRef as useRef2, useEffect as useEffect22, useCallback } from "react";
 import { useEffect as useEffect3, useRef as useRef3 } from "react";
 import { useState as useState2 } from "react";
 import { useState as useState22, useEffect as useEffect4, useRef as useRef4 } from "react";
 import { useState as useState3 } from "react";
 import { useEffect as useEffect5, useRef as useRef5, useState as useState4 } from "react";
 import { useEffect as useEffect6, useState as useState5, useRef as useRef6 } from "react";
-import { useEffect as useEffect7, useLayoutEffect } from "react";
+import { useEffect as useEffect7, useLayoutEffect as useLayoutEffect2 } from "react";
 import { useEffect as useEffect8, useState as useState6 } from "react";
 import { useRef as useRef8 } from "react";
 import { useEffect as useEffect9, useRef as useRef7 } from "react";
@@ -412,7 +415,7 @@ import { useEffect as useEffect19, useMemo as useMemo3, useRef as useRef15, useS
 import { useEffect as useEffect20, useRef as useRef16 } from "react";
 import { useReducer as useReducer2 } from "react";
 import { useCallback as useCallback6, useState as useState17, useEffect as useEffect21 } from "react";
-import { useState as useState18, useEffect as useEffect22 } from "react";
+import { useState as useState18, useEffect as useEffect222 } from "react";
 import { useCallback as useCallback7, useRef as useRef17, useState as useState19 } from "react";
 import { useState as useState20, useEffect as useEffect23 } from "react";
 import { useEffect as useEffect24 } from "react";
@@ -436,7 +439,7 @@ import { useCallback as useCallback13, useState as useState31 } from "react";
 function randomId() {
   return `raikou-${Math.random().toString(36).slice(2, 11)}`;
 }
-var useIsomorphicEffect = typeof document !== "undefined" ? useLayoutEffect : useEffect7;
+var useIsomorphicEffect = typeof document !== "undefined" ? useLayoutEffect2 : useEffect7;
 var __useId = React7["useId".toString()] || (() => void 0);
 function useReactId() {
   const id = __useId();
