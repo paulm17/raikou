@@ -78,6 +78,14 @@ module.exports = function ({ addBase }: any) {
       "--raikou-moz-font-smoothing": "grayscale",
       "--raikou-color-white": "#fff",
       "--raikou-color-black": "#000",
+      "--raikou-primary-color-filled": "var(--raikou-color-blue-filled)",
+      "--raikou-primary-color-filled-hover":
+        "var(--raikou-color-blue-filled-hover)",
+      "--raikou-primary-color-light": "var(--raikou-color-blue-light)",
+      "--raikou-primary-color-light-hover":
+        "var(--raikou-color-blue-light-hover)",
+      "--raikou-primary-color-light-color":
+        "var(--raikou-color-blue-light-color)",
       "--raikou-line-height": "1.55",
       "--raikou-font-family": `-apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
         Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji`,

@@ -12,6 +12,8 @@ export * from "@raikou/color-picker";
 export * from "@raikou/combobox";
 export * from "@raikou/dialog";
 export * from "@raikou/drawer";
+export * from "@raikou/filebutton";
+export * from "@raikou/fileinput";
 export * from "@raikou/hover-card";
 export * from "@raikou/inline-input";
 export * from "@raikou/input";

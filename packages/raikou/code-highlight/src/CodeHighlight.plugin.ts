@@ -106,17 +106,17 @@ module.exports = function ({ addComponents }: any) {
       "--_file-cursor": "pointer",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_file-color": "var(--raikou-color-gray-8)",
-        "--_file-bd": "var(--raikou-color-gray-2)",
-        "--_file-active-bg": "var(--raikou-color-white)",
-        "--_file-active-color": "var(--raikou-color-black)",
+        "--_file-color": "var(--codehighlight-file-color)",
+        "--_file-bd": "var(--codehighlight-file-bd)",
+        "--_file-active-bg": "var(--codehighlight-file-active-bg)",
+        "--_file-active-color": "var(--codehighlight-file-active-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_file-color": "var(--raikou-color-dark-0)",
-        "--_file-bd": "var(--raikou-color-dark-4)",
-        "--_file-active-bg": "var(--raikou-color-dark-6)",
-        "--_file-active-color": "var(--raikou-color-white)",
+        "--_file-color": "var(--codehighlight-file-color)",
+        "--_file-bd": "var(--codehighlight-file-bd)",
+        "--_file-active-bg": "var(--codehighlight-file-active-bg)",
+        "--_file-active-color": "var(--codehighlight-file-active-color)",
       },
     },
 

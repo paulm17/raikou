@@ -2,11 +2,11 @@ import { rem } from "@raikou/core";
 
 module.exports = function ({ addComponents, theme }: any) {
   addComponents({
-    ".navLink-root": {
+    ".navLink-root.navLink-root": {
       display: "flex",
       alignItems: "center",
       width: "100%",
-      padding: `${rem("8px")} var(--mantine-spacing-sm)`,
+      padding: `${rem("8px")} var(--raikou-spacing-sm)`,
       userSelect: "none",
       background: "var(--_nav-link-bg)",
       color: "var(--_nav-link-color)",
@@ -16,22 +16,22 @@ module.exports = function ({ addComponents, theme }: any) {
       "@media (hover: hover)": {
         "&:hover": {
           '[data-raikou-color-scheme="light"] &': {
-            "--_nav-link-bg": "var(--mantine-color-gray-0)",
+            "--_nav-link-bg": "var(--raikou-nav-link-bg-hover)",
           },
 
           '[data-raikou-color-scheme="dark"] &': {
-            "--_nav-link-bg": "var(--mantine-color-dark-6)",
+            "--_nav-link-bg": "var(--raikou-nav-link-bg-active)",
           },
         },
       },
       "@media (hover: none)": {
         "&:active": {
           '[data-raikou-color-scheme="light"] &': {
-            "--_nav-link-bg": "var(--mantine-color-gray-0)",
+            "--_nav-link-bg": "var(--raikou-nav-link-bg-hover)",
           },
 
           '[data-raikou-color-scheme="dark"] &': {
-            "--_nav-link-bg": "var(--mantine-color-dark-6)",
+            "--_nav-link-bg": "var(--raikou-nav-link-bg-active)",
           },
         },
       },
@@ -78,21 +78,21 @@ module.exports = function ({ addComponents, theme }: any) {
 
       "&[data-position='left']": {
         "--_section-ml": "0",
-        "--_section-mr": "var(--mantine-spacing-sm)",
+        "--_section-mr": "var(--raikou-spacing-sm)",
 
         '[dir="rtl"] &': {
-          "--_section-ml": "var(--mantine-spacing-sm)",
+          "--_section-ml": "var(--raikou-spacing-sm)",
           "--_section-mr": "0",
         },
       },
 
       "&[data-position='right']": {
-        "--_section-ml": "var(--mantine-spacing-sm)",
+        "--_section-ml": "var(--raikou-spacing-sm)",
         "--_section-mr": "0",
 
         '[dir="rtl"] &': {
           "--_section-ml": "0",
-          "--_section-mr": "var(--mantine-spacing-sm)",
+          "--_section-mr": "var(--raikou-spacing-sm)",
         },
       },
 
@@ -102,7 +102,7 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".navLink-label": {
-      fontSize: "var(--mantine-font-size-sm)",
+      fontSize: "var(--raikou-font-size-sm)",
     },
 
     ".navLink-body": {
@@ -118,9 +118,9 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".navLink-description": {
       display: "block",
-      fontSize: "var(--mantine-font-size-xs)",
+      fontSize: "var(--raikou-font-size-xs)",
       opacity: "var(--_description-opacity, 1)",
-      color: "var(--_description-color, var(--mantine-color-dimmed))",
+      color: "var(--_description-color, var(--raikou-color-dimmed))",
       overflow: "hidden",
       textOverflow: "ellipsis",
       whiteSpace: "var(--_body-white-space, auto)",

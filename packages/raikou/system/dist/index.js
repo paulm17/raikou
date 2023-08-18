@@ -997,7 +997,7 @@ function RaikouProvider({
   children
 }) {
   let mergedTheme = mergeRaikouTheme(DEFAULT_THEME, theme);
-  if (theme === void 0 || theme && !theme.hasOwnProperty("primaryColor")) {
+  if (theme === void 0 || theme && !theme.hasOwnProperty("colors")) {
     mergedTheme.colors = {
       blue: [
         "#eef3ff",

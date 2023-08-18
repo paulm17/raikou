@@ -1,6 +1,6 @@
 {
   "name": "@raikou/client",
-  "version": "0.0.1-alpha.23",
+  "version": "0.0.1-beta.0",
   "main": "index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -42,6 +42,8 @@
     "@raikou/combobox": "workspace:*",
     "@raikou/dialog": "workspace:*",
     "@raikou/drawer": "workspace:*",
+    "@raikou/filebutton": "workspace:*",
+    "@raikou/fileinput": "workspace:*",
     "@raikou/hover-card": "workspace:*",
     "@raikou/inline-input": "workspace:*",
     "@raikou/input": "workspace:*",

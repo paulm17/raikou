@@ -57,7 +57,7 @@ export function CustomComponent() {
 export function ColorsIndex() {
   return (
     <div style={{ padding: 40 }}>
-      <Badge color="var(--raikou-color-primary-filled)" variant="dot">
+      <Badge color="violet.2" variant="dot">
         Anchor
       </Badge>
     </div>

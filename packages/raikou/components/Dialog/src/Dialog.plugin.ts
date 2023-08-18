@@ -2,7 +2,7 @@ import { rem } from "@raikou/core";
 
 module.exports = function ({ addComponents, theme }: any) {
   addComponents({
-    ".dialog-root": {
+    ".dialog-root.dialog-root": {
       "--dialog-size-xs": rem("160px"),
       "--dialog-size-sm": rem("200px"),
       "--dialog-size-md": rem("340px"),
@@ -14,7 +14,7 @@ module.exports = function ({ addComponents, theme }: any) {
       maxwidth: "calc(100vw - var(--raikou-spacing-xl) * 2)",
       minHeight: rem("50px"),
     },
-    ".dialog-closeButton": {
+    ".dialog-closeButton.dialog-closeButton": {
       position: "absolute",
       top: "calc(var(--raikou-spacing-md) / 2)",
       right: "var(--_close-button-right, calc(var(--raikou-spacing-md) / 2))",

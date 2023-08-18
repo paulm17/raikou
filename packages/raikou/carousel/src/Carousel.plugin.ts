@@ -82,15 +82,15 @@ module.exports = function ({ addComponents }: any) {
       color: "var(--raikou-color-black)",
       boxShadow: "var(--raikou-shadow-md)",
       opacity: "var(--_control-opacity)",
-      border: `${rem("1px")} solid var(--raikou-color-gray-3)`,
+      border: `${rem("1px")} solid var(--raikou-carousel-border)`,
       transition: "opacity 100ms ease",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_control-opacity": "0.85",
+        "--_control-opacity": "var(--raikou-carousel-control-opacity)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_control-opacity": "0.65",
+        "--_control-opacity": "var(--raikou-carousel-control-opacity)",
       },
 
       "@media (hover: hover)": {

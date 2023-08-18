@@ -84,6 +84,11 @@ var require_global_plugin = __commonJS({
           "--raikou-moz-font-smoothing": "grayscale",
           "--raikou-color-white": "#fff",
           "--raikou-color-black": "#000",
+          "--raikou-primary-color-filled": "var(--raikou-color-blue-filled)",
+          "--raikou-primary-color-filled-hover": "var(--raikou-color-blue-filled-hover)",
+          "--raikou-primary-color-light": "var(--raikou-color-blue-light)",
+          "--raikou-primary-color-light-hover": "var(--raikou-color-blue-light-hover)",
+          "--raikou-primary-color-light-color": "var(--raikou-color-blue-light-color)",
           "--raikou-line-height": "1.55",
           "--raikou-font-family": `-apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
         Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji`,
@@ -468,6 +473,16 @@ var require_css_variables_plugin = __commonJS({
             "--raikou-menu-divider-item-hover-bg": "#2c2e33"
           }
         },
+        ".navLink-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-nav-link-bg-hover": "#f8f9fa",
+            "--raikou-nav-link-bg-active": "#25262b"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-nav-link-bg-hover": "#f8f9fa",
+            "--raikou-nav-link-bg-active": "#25262b"
+          }
+        },
         ".notification-root": {
           '[data-raikou-color-scheme="light"] &': {
             "--raikou-notification-border-color": "#dee2e6",
@@ -730,6 +745,165 @@ var require_css_variables_plugin = __commonJS({
             "--raikou-tooltip-bg": "#e9ecef",
             "--raikou-tooltip-color": "#000"
           }
+        },
+        ".tsp-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-tsp-mark-background-color": "#ffec99",
+            "--raikou-tsp-mark-color": "inherit",
+            "--raikou-tsp-hr-border-color": "#dee2e6",
+            "--raikou-tsp-pre-border-color": "#f8f9fa",
+            "--raikou-tsp-code-background-color": "#f8f9fa",
+            "--raikou-tsp-code-color": "#000",
+            "--raikou-tsp-blockquote-background-color": "#f8f9fa"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-tsp-mark-background-color": "#fcc419",
+            "--raikou-tsp-mark-color": "#000",
+            "--raikou-tsp-hr-border-color": "#5c5f66",
+            "--raikou-tsp-hr": "#5c5f66",
+            "--raikou-tsp-pre-border-color": "#343a40",
+            "--raikou-tsp-code-background-color": "#2c2e33",
+            "--raikou-tsp-code-color": "#fff",
+            "--raikou-tsp-blockquote-background-color": "#141517"
+          }
+        },
+        // Outside of components
+        ".carousel-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-carousel-border": "#dee2e6",
+            "--raikou-carousel-control-opacity": "0.85"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-carousel-border": "#373a40",
+            "--raikou-carousel-control-opacity": "0.65"
+          }
+        },
+        ".codeHighlight-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--codehighlight-file-color": "#343a40",
+            "--codehighlight-file-bd": "#e9ecef",
+            "--codehighlight-file-active-bg": "#fff",
+            "--codehighlight-file-active-color": "#000",
+            "--codehighlight-theme-color": "#495057",
+            "--codehighlight-theme-background": "#f8f9fa",
+            "--codehighlight-theme-code-comment-color": "#868e96",
+            "--codehighlight-theme-code-keyword-color": "#6741d9",
+            "--codehighlight-theme-code-tag-color": "#c92a2a",
+            "--codehighlight-theme-code-literal-color": "#228be6",
+            "--codehighlight-theme-code-string-color": "#1864ab",
+            "--codehighlight-theme-code-variable-color": "#5c940d",
+            "--codehighlight-theme-code-class-color": "#d9480f"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--codehighlight-file-color": "#c1c2c5",
+            "--codehighlight-file-bd": "#373a40",
+            "--codehighlight-file-active-bg": "#25262b",
+            "--codehighlight-file-active-color": "#fff",
+            "--codehighlight-theme-color": "#a6a7ab",
+            "--codehighlight-theme-background": "#141517",
+            "--codehighlight-theme-code-comment-color": "#5c5f66",
+            "--codehighlight-theme-code-keyword-color": "#b197fc",
+            "--codehighlight-theme-code-tag-color": "#ffd43b",
+            "--codehighlight-theme-code-literal-color": "#4dabf7",
+            "--codehighlight-theme-code-string-color": "#40c057",
+            "--codehighlight-theme-code-variable-color": "#a5d8ff",
+            "--codehighlight-theme-code-class-color": "#ff922b"
+          }
+        },
+        ".dates-calendarHeader": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-calendar-header-control-hover-bg": "#f8f9fa",
+            "--raikou-calendar-header-control-active-bg": "#f8f9fa"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-calendar-header-control-hover-bg": "#2c2e33",
+            "--raikou-calendar-header-control-active-bg": "#2c2e33"
+          }
+        },
+        ".dates-day": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-calendar-day-hover-bg": "#f8f9fa",
+            "--raikou-calendar-day-active-bg": "#f8f9fa"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-calendar-day-hover-bg": "#2c2e33",
+            "--raikou-calendar-day-active-bg": "#2c2e33"
+          }
+        },
+        ".dates-pickerControl": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-calendar-picker-control-hover-bg": "#f8f9fa",
+            "--raikou-calendar-picker-control-active-bg": "#f8f9fa"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-calendar-picker-control-hover-bg": "#2c2e33",
+            "--raikou-calendar-picker-control-active-bg": "#2c2e33"
+          }
+        },
+        ".dropZone-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-dropzone-bg": "#fff",
+            "--raikou-dropzone-border-color": "#ced4da",
+            "--raikou-dropzone-bg-hover": "#f8f9fa",
+            "--raikou-dropzone-bg-active": "#f8f9fa"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-dropzone-bg": "#25262b",
+            "--raikou-dropzone-border-color": "#373a40",
+            "--raikou-dropzone-bg-hover": "#2c2e33",
+            "--raikou-dropzone-bg-active": "#2c2e33"
+          }
+        },
+        ".spotlight-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-spotlight-actions-list-border": "#e9ecef",
+            "--raikou-spotlight-action-bg-hover": "#f8f9fa",
+            "--raikou-spotlight-action-bg-active": "#f8f9fa",
+            "--raikou-spotlight-footer-border": "#e9ecef"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-spotlight-actions-list-border": "#373a40",
+            "--raikou-spotlight-action-bg-hover": "#25262b",
+            "--raikou-spotlight-action-bg-active": "#25262b",
+            "--raikou-spotlight-footer-border": "#373a40"
+          }
+        },
+        // tiptap
+        ".rte-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-rte-root-bd": "#ced4da",
+            "--raikou-rte-code-bg": "#f8f9fa",
+            "--raikou-rte-code-color": "#212529",
+            "--raikou-rte-code-color-comment": "#adb5bd",
+            "--raikou-rte-code-color-var": "#f03e3e",
+            "--raikou-rte-code-color-number": "#1c7ed6",
+            "--raikou-rte-code-color-title": "#d6336c",
+            "--raikou-rte-code-color-keyword": "#7048e8",
+            "--raikou-rte-control-interactive-bg-hover": "#f8f9fa",
+            "--raikou-rte-control-interactive-bg-active": "#f8f9fa",
+            "--raikou-rte-control-interactive-bg": "#fff",
+            "--raikou-rte-control-interactive-bd": "#ced4da",
+            "--raikou-rte-control-active-bg": "#fff",
+            "--raikou-rte-control-active-bd": "#ced4da",
+            "--raikou-rte-control-toolbar-bd": "#ced4da"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-rte-root-bd": "#373a40",
+            "--raikou-rte-code-bg": "#141517",
+            "--raikou-rte-code-color": "#c1c2c5",
+            "--raikou-rte-code-color-comment": "#909296",
+            "--raikou-rte-code-color-var": "#ff6b6b",
+            "--raikou-rte-code-color-number": "#22b8cf",
+            "--raikou-rte-code-color-title": "#fcc419",
+            "--raikou-rte-code-color-keyword": "#845ef7",
+            "--raikou-rte-control-interactive-bg-hover": "#2c2e33",
+            "--raikou-rte-control-interactive-bg-active": "#2c2e33",
+            "--raikou-rte-control-interactive-bg": "#25262b",
+            "--raikou-rte-control-interactive-bd": "#373a40",
+            "--raikou-rte-control-active-bg": "#1a1b1e",
+            "--raikou-rte-control-active-bd": "#373a40",
+            "--raikou-rte-control-toolbar-bd": "#373a40"
+          }
         }
       });
     };
@@ -936,7 +1110,7 @@ var require_Accordion_plugin = __commonJS({
           margin: "0",
           padding: "0"
         },
-        ".accordion-control": {
+        ".accordion-control.accordion-control": {
           width: "100%",
           display: "flex",
           alignItems: "center",
@@ -1129,7 +1303,7 @@ var require_ActionIcon_plugin = __commonJS({
     init_src();
     module.exports = function({ addComponents, theme }) {
       addComponents({
-        ".actionIcon-root": {
+        ".actionIcon-root.actionIcon-root": {
           "--ai-size-xs": rem2("18px"),
           "--ai-size-sm": rem2("22px"),
           "--ai-size-md": rem2("28px"),
@@ -1238,6 +1412,25 @@ var require_ActionIcon_plugin = __commonJS({
               }
             }
           }
+        }
+      });
+    };
+  }
+});
+
+// ../components/Affix/src/Affix.plugin.ts
+var require_Affix_plugin = __commonJS({
+  "../components/Affix/src/Affix.plugin.ts"(exports, module) {
+    "use strict";
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".affix-root": {
+          position: "fixed",
+          zIndex: "var(--affix-z-index)",
+          top: "var(--affix-top)",
+          left: "var(--affix-left)",
+          right: "var(--affix-right)",
+          bottom: "var(--affix-bottom)"
         }
       });
     };
@@ -1480,7 +1673,7 @@ var require_Anchor_plugin = __commonJS({
     "use strict";
     module.exports = function({ addComponents, theme }) {
       addComponents({
-        ".anchor-root": {
+        ".anchor-root.anchor-root": {
           color: "var(--raikou-color-anchor)",
           textDecoration: "var(--_text-decoration, none) !important",
           appearance: "none",
@@ -3017,7 +3210,7 @@ var require_Dialog_plugin = __commonJS({
     init_src();
     module.exports = function({ addComponents, theme }) {
       addComponents({
-        ".dialog-root": {
+        ".dialog-root.dialog-root": {
           "--dialog-size-xs": rem2("160px"),
           "--dialog-size-sm": rem2("200px"),
           "--dialog-size-md": rem2("340px"),
@@ -3028,7 +3221,7 @@ var require_Dialog_plugin = __commonJS({
           maxwidth: "calc(100vw - var(--raikou-spacing-xl) * 2)",
           minHeight: rem2("50px")
         },
-        ".dialog-closeButton": {
+        ".dialog-closeButton.dialog-closeButton": {
           position: "absolute",
           top: "calc(var(--raikou-spacing-md) / 2)",
           right: "var(--_close-button-right, calc(var(--raikou-spacing-md) / 2))",
@@ -4173,11 +4366,11 @@ var require_NavLink_plugin = __commonJS({
     init_src();
     module.exports = function({ addComponents, theme }) {
       addComponents({
-        ".navLink-root": {
+        ".navLink-root.navLink-root": {
           display: "flex",
           alignItems: "center",
           width: "100%",
-          padding: `${rem2("8px")} var(--mantine-spacing-sm)`,
+          padding: `${rem2("8px")} var(--raikou-spacing-sm)`,
           userSelect: "none",
           background: "var(--_nav-link-bg)",
           color: "var(--_nav-link-color)",
@@ -4186,20 +4379,20 @@ var require_NavLink_plugin = __commonJS({
           "@media (hover: hover)": {
             "&:hover": {
               '[data-raikou-color-scheme="light"] &': {
-                "--_nav-link-bg": "var(--mantine-color-gray-0)"
+                "--_nav-link-bg": "var(--raikou-nav-link-bg-hover)"
               },
               '[data-raikou-color-scheme="dark"] &': {
-                "--_nav-link-bg": "var(--mantine-color-dark-6)"
+                "--_nav-link-bg": "var(--raikou-nav-link-bg-active)"
               }
             }
           },
           "@media (hover: none)": {
             "&:active": {
               '[data-raikou-color-scheme="light"] &': {
-                "--_nav-link-bg": "var(--mantine-color-gray-0)"
+                "--_nav-link-bg": "var(--raikou-nav-link-bg-hover)"
               },
               '[data-raikou-color-scheme="dark"] &': {
-                "--_nav-link-bg": "var(--mantine-color-dark-6)"
+                "--_nav-link-bg": "var(--raikou-nav-link-bg-active)"
               }
             }
           },
@@ -4239,18 +4432,18 @@ var require_NavLink_plugin = __commonJS({
           },
           "&[data-position='left']": {
             "--_section-ml": "0",
-            "--_section-mr": "var(--mantine-spacing-sm)",
+            "--_section-mr": "var(--raikou-spacing-sm)",
             '[dir="rtl"] &': {
-              "--_section-ml": "var(--mantine-spacing-sm)",
+              "--_section-ml": "var(--raikou-spacing-sm)",
               "--_section-mr": "0"
             }
           },
           "&[data-position='right']": {
-            "--_section-ml": "var(--mantine-spacing-sm)",
+            "--_section-ml": "var(--raikou-spacing-sm)",
             "--_section-mr": "0",
             '[dir="rtl"] &': {
               "--_section-ml": "0",
-              "--_section-mr": "var(--mantine-spacing-sm)"
+              "--_section-mr": "var(--raikou-spacing-sm)"
             }
           },
           "&[data-rotate]": {
@@ -4258,7 +4451,7 @@ var require_NavLink_plugin = __commonJS({
           }
         },
         ".navLink-label": {
-          fontSize: "var(--mantine-font-size-sm)"
+          fontSize: "var(--raikou-font-size-sm)"
         },
         ".navLink-body": {
           flex: "1",
@@ -4271,9 +4464,9 @@ var require_NavLink_plugin = __commonJS({
         },
         ".navLink-description": {
           display: "block",
-          fontSize: "var(--mantine-font-size-xs)",
+          fontSize: "var(--raikou-font-size-xs)",
           opacity: "var(--_description-opacity, 1)",
-          color: "var(--_description-color, var(--mantine-color-dimmed))",
+          color: "var(--_description-color, var(--raikou-color-dimmed))",
           overflow: "hidden",
           textOverflow: "ellipsis",
           whiteSpace: "var(--_body-white-space, auto)"
@@ -7061,6 +7254,192 @@ var require_Tooltip_plugin = __commonJS({
   }
 });
 
+// ../components/TypographyStylesProvider/src/TypographyStylesProvider.plugin.ts
+var require_TypographyStylesProvider_plugin = __commonJS({
+  "../components/TypographyStylesProvider/src/TypographyStylesProvider.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".tsp-root": {
+          "& h1, & h2, & h3, & h4, & h5, & h6": {
+            marginTop: "calc(1.55 * var(--raikou-spacing-xl))",
+            marginBottom: "var(--raikou-spacing-xs)"
+          },
+          "& h1": {
+            fontSize: "var(--raikou-h1-font-size)",
+            lineHeight: "var(--raikou-h1-line-height)",
+            fontWeight: "var(--raikou-h1-font-weight)"
+          },
+          "& h2": {
+            fontSize: "var(--raikou-h2-font-size)",
+            lineHeight: "var(--raikou-h2-line-height)",
+            fontWeight: "var(--raikou-h2-font-weight)"
+          },
+          "& h3": {
+            fontSize: "var(--raikou-h3-font-size)",
+            lineHeight: "var(--raikou-h3-line-height)",
+            fontWeight: "var(--raikou-h3-font-weight)"
+          },
+          "& h4": {
+            fontSize: "var(--raikou-h4-font-size)",
+            lineHeight: "var(--raikou-h4-line-height)",
+            fontWeight: "var(--raikou-h4-font-weight)"
+          },
+          "& h5": {
+            fontSize: "var(--raikou-h5-font-size)",
+            lineHeight: "var(--raikou-h5-line-height)",
+            fontWeight: "var(--raikou-h5-font-weight)"
+          },
+          "& h6": {
+            fontSize: "var(--raikou-h6-font-size)",
+            lineHeight: "var(--raikou-h6-line-height)",
+            fontWeight: "var(--raikou-h6-font-weight)"
+          },
+          "& img": {
+            maxWidth: "100%",
+            marginBottom: "var(--raikou-spacing-xs)"
+          },
+          "& p": {
+            marginTop: "0",
+            marginBottom: "var(--raikou-spacing-lg)"
+          },
+          "& mark": {
+            '[data-raikou-color-scheme="light"] &': {
+              backgroundColor: "var(--raikou-tsp-mark-background-color)",
+              color: "var(--raikou-tsp-mark-color)"
+            },
+            '[data-raikou-color-scheme="dark"] &': {
+              backgroundColor: "var(--raikou-tsp-mark-background-color)",
+              color: "var(--raikou-tsp-mark-color)"
+            }
+          },
+          "& a": {
+            color: "var(--raikou-color-anchor)",
+            textDecoration: "none",
+            "@media (hover: hover)": {
+              "&:hover": {
+                textDecoration: "underline"
+              }
+            },
+            "@media (hover: none)": {
+              "&:active": {
+                textDecoration: "underline"
+              }
+            }
+          },
+          "& hr": {
+            marginTop: "var(--raikou-spacing-md)",
+            marginBottom: "var(--raikou-spacing-md)",
+            border: "0",
+            borderTop: `${rem2("1px")} solid`,
+            '[data-raikou-color-scheme="light"] &': {
+              borderColor: "var(--raikou-tsp-hr-border-color)"
+            },
+            '[data-raikou-color-scheme="dark"] &': {
+              borderColor: "var(--raikou-tsp-hr-border-color)"
+            }
+          },
+          "& pre": {
+            padding: "var(--raikou-spacing-xs)",
+            lineHeight: "var(--raikou-line-height)",
+            margin: "0",
+            marginTop: "var(--raikou-spacing-md)",
+            marginBottom: "var(--raikou-spacing-md)",
+            overflowX: "auto",
+            fontFamily: "var(--raikou-font-family-monospace)",
+            fontSize: "var(--raikou-font-size-xs)",
+            borderRadius: "var(--raikou-radius-sm)",
+            '[data-raikou-color-scheme="light"] &': {
+              backgroundColor: "var(--raikou-tsp-pre-border-color)"
+            },
+            '[data-raikou-color-scheme="dark"] &': {
+              backgroundColor: "var(--raikou-tsp-pre-border-color)"
+            },
+            "& code": {
+              backgroundColor: "transparent",
+              padding: "0",
+              borderRadius: "0",
+              color: "inherit",
+              border: "0"
+            }
+          },
+          "& code": {
+            lineHeight: "var(--raikou-line-height)",
+            padding: `${rem2("1px")} ${rem2("5px")}`,
+            borderRadius: "var(--raikou-radius-sm)",
+            fontFamily: "var(--raikou-font-family-monospace)",
+            fontSize: "var(--raikou-font-size-xs)",
+            '[data-raikou-color-scheme="light"] &': {
+              backgroundColor: "var(--raikou-tsp-code-background-color)",
+              color: "var(--raikou-tsp-code-color)"
+            },
+            '[data-raikou-color-scheme="dark"] &': {
+              backgroundColor: "var(--raikou-tsp-code-background-color)",
+              color: "var(--raikou-tsp-code-color)"
+            }
+          },
+          "& ul, &, ol": {
+            marginBottom: "var(--raikou-spacing-md)",
+            paddingLeft: rem2("38px"),
+            "& li": {
+              marginBottom: "var(--raikou-spacing-xs)"
+            }
+          },
+          "& table": {
+            width: "100%",
+            borderCollapse: "collapse",
+            captionSide: "bottom",
+            marginBottom: "var(--raikou-spacing-md)",
+            "& caption": {
+              marginTop: "var(--raikou-spacing-xs)",
+              fontSize: "var(--raikou-font-size-sm)",
+              color: "#868e96"
+            },
+            "& th": {
+              textAlign: "left",
+              fontWeight: "bold",
+              color: "#495057",
+              fontSize: "var(--raikou-font-size-sm)",
+              padding: "var(--raikou-spacing-xs) var(--raikou-spacing-sm)"
+            },
+            "& thead th": {
+              borderBottom: `${rem2("1px")} solid`,
+              borderColor: "#dee2e6"
+            },
+            "& tfoot th": {
+              borderTop: `${rem2("1px")} solid`,
+              borderColor: "#dee2e6"
+            },
+            "& td": {
+              padding: "var(--raikou-spacing-xs) var(--raikou-spacing-sm)",
+              borderBottom: `${rem2("1px")} solid`,
+              borderColor: "#dee2e6",
+              fontSize: "var(--raikou-font-size-sm)"
+            },
+            "& tr:last-of-type td": {
+              borderBottom: "0"
+            }
+          },
+          "& blockquote": {
+            fontSize: "var(--raikou-font-size-lg)",
+            lineHeight: "var(--raikou-line-height)",
+            margin: "var(--raikou-spacing-md) 0",
+            borderRadius: "var(--raikou-radius-sm)",
+            padding: "var(--raikou-spacing-md) var(--raikou-spacing-lg)",
+            '[data-raikou-color-scheme="light"] &': {
+              backgroundColor: "var(--raikou-tsp-blockquote-background-color)"
+            },
+            '[data-raikou-color-scheme="dark"] &': {
+              backgroundColor: "var(--raikou-tsp-blockquote-background-color)"
+            }
+          }
+        }
+      });
+    };
+  }
+});
+
 // ../components/UnstyledButton/src/UnstyledButton.plugin.ts
 var require_UnstyledButton_plugin = __commonJS({
   "../components/UnstyledButton/src/UnstyledButton.plugin.ts"(exports, module) {
@@ -7184,13 +7563,13 @@ var require_Carousel_plugin = __commonJS({
           color: "var(--raikou-color-black)",
           boxShadow: "var(--raikou-shadow-md)",
           opacity: "var(--_control-opacity)",
-          border: `${rem2("1px")} solid var(--raikou-color-gray-3)`,
+          border: `${rem2("1px")} solid var(--raikou-carousel-border)`,
           transition: "opacity 100ms ease",
           '[data-raikou-color-scheme="light"] &': {
-            "--_control-opacity": "0.85"
+            "--_control-opacity": "var(--raikou-carousel-control-opacity)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_control-opacity": "0.65"
+            "--_control-opacity": "var(--raikou-carousel-control-opacity)"
           },
           "@media (hover: hover)": {
             "&:hover": {
@@ -7396,16 +7775,16 @@ var require_CodeHighlight_plugin = __commonJS({
           "--_file-opacity": "0.8",
           "--_file-cursor": "pointer",
           '[data-raikou-color-scheme="light"] &': {
-            "--_file-color": "var(--raikou-color-gray-8)",
-            "--_file-bd": "var(--raikou-color-gray-2)",
-            "--_file-active-bg": "var(--raikou-color-white)",
-            "--_file-active-color": "var(--raikou-color-black)"
+            "--_file-color": "var(--codehighlight-file-color)",
+            "--_file-bd": "var(--codehighlight-file-bd)",
+            "--_file-active-bg": "var(--codehighlight-file-active-bg)",
+            "--_file-active-color": "var(--codehighlight-file-active-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_file-color": "var(--raikou-color-dark-0)",
-            "--_file-bd": "var(--raikou-color-dark-4)",
-            "--_file-active-bg": "var(--raikou-color-dark-6)",
-            "--_file-active-color": "var(--raikou-color-white)"
+            "--_file-color": "var(--codehighlight-file-color)",
+            "--_file-bd": "var(--codehighlight-file-bd)",
+            "--_file-active-bg": "var(--codehighlight-file-active-bg)",
+            "--_file-active-color": "var(--codehighlight-file-active-color)"
           }
         },
         ".codeHighlight-files": {
@@ -7475,56 +7854,56 @@ var require_CodeHighlight_theme_plugin = __commonJS({
           color: "var(--_color)",
           background: "var(--_background)",
           '[data-raikou-color-scheme="light"] &': {
-            "--_color": "var(--raikou-color-gray-7)",
-            "--_background": "var(--raikou-color-gray-0)",
-            "--code-comment-color": "var(--raikou-color-gray-6)",
-            "--code-keyword-color": "var(--raikou-color-violet-8)",
-            "--code-tag-color": "var(--raikou-color-red-9)",
-            "--code-literal-color": "var(--raikou-color-blue-6)",
-            "--code-string-color": "var(--raikou-color-blue-9)",
-            "--code-variable-color": "var(--raikou-color-lime-9)",
-            "--code-class-color": "var(--raikou-color-orange-9)"
+            "--_color": "var(--codehighlight-theme-color)",
+            "--_background": "var(--codehighlight-theme-background)",
+            "--code-comment-color": "var(--codehighlight-theme-code-comment-color)",
+            "--code-keyword-color": "var(--codehighlight-theme-code-keyword-color)",
+            "--code-tag-color": "var(--codehighlight-theme-code-tag-color)",
+            "--code-literal-color": "var(--codehighlight-theme-code-literal-color)",
+            "--code-string-color": "var(--codehighlight-theme-code-string-color)",
+            "--code-variable-color": "var(--codehighlight-theme-code-variable-color)",
+            "--code-class-color": "var(--codehighlight-theme-code-class-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_color": "var(--raikou-color-dark-1)",
-            "--_background": "var(--raikou-color-dark-8)",
-            "--code-comment-color": "var(--raikou-color-dark-3)",
-            "--code-keyword-color": "var(--raikou-color-violet-3)",
-            "--code-tag-color": "var(--raikou-color-yellow-4)",
-            "--code-literal-color": "var(--raikou-color-blue-4)",
-            "--code-string-color": "var(--raikou-color-green-6)",
-            "--code-variable-color": "var(--raikou-color-blue-2)",
-            "--code-class-color": "var(--raikou-color-orange-5)"
+            "--_color": "var(--codehighlight-theme-color)",
+            "--_background": "var(--codehighlight-theme-background)",
+            "--code-comment-color": "var(--codehighlight-theme-code-comment-color)",
+            "--code-keyword-color": "var(--codehighlight-theme-code-keyword-color)",
+            "--code-tag-color": "var(--codehighlight-theme-code-tag-color)",
+            "--code-literal-color": "var(--codehighlight-theme-code-literal-color)",
+            "--code-string-color": "var(--codehighlight-theme-code-string-color)",
+            "--code-variable-color": "var(--codehighlight-theme-code-variable-color)",
+            "--code-class-color": "var(--codehighlight-theme-code-class-color)"
           },
-          ":global(.hljs-comment), :global(.hljs-quote)": {
+          ".hljs-comment, .hljs-quote": {
             fontStyle: "italic",
             color: "var(--code-comment-color)"
           },
-          ":global(.hljs-doctag), :global(.hljs-formula), :global(.hljs-keyword)": {
+          ".hljs-doctag, .hljs-formula, .hljs-keyword": {
             color: "var(--code-keyword-color)"
           },
-          ":global(.hljs-deletion), :global(.hljs-name), :global(.hljs-section), :global(.hljs-selector-tag), :global(.hljs-subst)": {
+          ".hljs-deletion, .hljs-name, .hljs-section, .hljs-selector-tag, .hljs-subst": {
             color: "var(--code-tag-color)"
           },
-          ":global(.hljs-literal)": {
+          ".hljs-literal": {
             color: "var(--code-literal-color)"
           },
-          ":global(.hljs-addition), :global(.hljs-attribute), :global(.hljs-meta .hljs-string), :global(.hljs-regexp), :global(.hljs-string)": {
+          ".hljs-addition, .hljs-attribute, .hljs-meta .hljs-string, .hljs-regexp, .hljs-string": {
             color: "var(--code-string-color)"
           },
-          ":global(.hljs-attr), :global(.hljs-number), :global(.hljs-selector-attr), :global(.hljs-selector-class), :global(.hljs-selector-pseudo), :global(.hljs-template-variable), :global(.hljs-type), :global(.hljs-variable)": {
+          ".hljs-attr, .hljs-number, .hljs-selector-attr, .hljs-selector-class, .hljs-selector-pseudo, .hljs-template-variable, .hljs-type, .hljs-variable": {
             color: "var(--code-variable-color)"
           },
-          ":global(.hljs-bullet), :global(.hljs-link), :global(.hljs-meta), :global(.hljs-selector-id), :global(.hljs-symbol), :global(.hljs-title), :global(.hljs-built_in), :global(.hljs-class .hljs-title), :global(.hljs-title.class_)": {
+          ".hljs-bullet, .hljs-link, .hljs-meta, .hljs-selector-id, .hljs-symbol, .hljs-title, .hljs-built_in, .hljs-class .hljs-title, .hljs-title.class_": {
             color: "var(--code-class-color)"
           },
-          ":global(.hljs-emphasis)": {
+          ".hljs-emphasis": {
             fontStyle: "italic"
           },
-          ":global(.hljs-strong)": {
+          ".hljs-strong": {
             fontWeight: "700"
           },
-          ":global(.hljs-link)": {
+          ".hljs-link": {
             textDecoration: "underline"
           }
         }
@@ -7564,10 +7943,10 @@ var require_CalendarHeader_plugin = __commonJS({
             "&:hover": {
               "&:not([data-disabled], :disabled)": {
                 '[data-raikou-color-scheme="light"] &': {
-                  "--_control-bg": "var(--raikou-color-gray-0)"
+                  "--_control-bg": "var(--raikou-calendar-header-control-hover-bg)"
                 },
                 '[data-raikou-color-scheme="dark"] &': {
-                  "--_control-bg": "var(--raikou-color-dark-5)"
+                  "--_control-bg": "var(--raikou-calendar-header-control-active-bg)"
                 }
               }
             }
@@ -7576,10 +7955,10 @@ var require_CalendarHeader_plugin = __commonJS({
             "&:active": {
               "&:not([data-disabled], :disabled)": {
                 '[data-raikou-color-scheme="light"] &': {
-                  "--_control-bg": "var(--raikou-color-gray-0)"
+                  "--_control-bg": "var(--raikou-calendar-header-control-hover-bg)"
                 },
                 '[data-raikou-color-scheme="dark"] &': {
-                  "--_control-bg": "var(--raikou-color-dark-5)"
+                  "--_control-bg": "var(--raikou-calendar-header-control-active-bg)"
                 }
               }
             }
@@ -7674,10 +8053,10 @@ var require_Day_plugin = __commonJS({
             "&:hover": {
               "&:not([data-static], [data-disabled])": {
                 '[data-raikou-color-scheme="light"] &': {
-                  "--_day-bg": "var(--raikou-color-gray-0)"
+                  "--_day-bg": "var(--raikou-calendar-day-hover-bg)"
                 },
                 '[data-raikou-color-scheme="dark"] &': {
-                  "--_day-bg": "var(--raikou-color-dark-5)"
+                  "--_day-bg": "var(--raikou-calendar-day-active-bg)"
                 }
               }
             }
@@ -7686,10 +8065,10 @@ var require_Day_plugin = __commonJS({
             "&:active": {
               "&:not([data-static], [data-disabled])": {
                 '[data-raikou-color-scheme="light"] &': {
-                  "--_day-bg": "var(--raikou-color-gray-0)"
+                  "--_day-bg": "var(--raikou-calendar-day-hover-bg)"
                 },
                 '[data-raikou-color-scheme="dark"] &': {
-                  "--_day-bg": "var(--raikou-color-dark-5)"
+                  "--_day-bg": "var(--raikou-calendar-day-active-bg)"
                 }
               }
             }
@@ -7859,10 +8238,10 @@ var require_PickerControl_plugin = __commonJS({
             "&:hover": {
               "&:not([data-disabled])": {
                 '[data-raikou-color-scheme="light"] &': {
-                  "--_control-bg": "var(--raikou-color-gray-0)"
+                  "--_control-bg": "var(--raikou-calendar-picker-control-hover-bg)"
                 },
                 '[data-raikou-color-scheme="dark"] &': {
-                  "--_control-bg": "var(--raikou-color-dark-5)"
+                  "--_control-bg": "var(--raikou-calendar-picker-control-hover-bg)"
                 }
               }
             }
@@ -7871,10 +8250,10 @@ var require_PickerControl_plugin = __commonJS({
             "&:active": {
               "&:not([data-disabled])": {
                 '[data-raikou-color-scheme="light"] &': {
-                  "--_control-bg": "var(--raikou-color-gray-0)"
+                  "--_control-bg": "var(--raikou-calendar-picker-control-active-bg)"
                 },
                 '[data-raikou-color-scheme="dark"] &': {
-                  "--_control-bg": "var(--raikou-color-dark-5)"
+                  "--_control-bg": "var(--raikou-calendar-picker-control-active-bg)"
                 }
               }
             }
@@ -8051,21 +8430,21 @@ var require_Dropzone_plugin = __commonJS({
             "--_dropzone-cursor": "default"
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_dropzone-bg": "var(--raikou-color-white)",
-            "--_dropzone-border-color": "var(--raikou-color-gray-4)"
+            "--_dropzone-bg": "var(--raikou-dropzone-bg)",
+            "--_dropzone-border-color": "var(--raikou-dropzone-border-color)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_dropzone-bg": "var(--raikou-color-dark-6)",
-            "--_dropzone-border-color": "var(--raikou-color-dark-4)"
+            "--_dropzone-bg": "var(--raikou-dropzone-bg)",
+            "--_dropzone-border-color": "var(--raikou-dropzone-border-color)"
           },
           "@media (hover: hover)": {
             "&:hover": {
               "&[data-activate-on-click]:not([data-loading])": {
                 '[data-raikou-color-scheme="light"] &': {
-                  "--_dropzone-bg": "var(--raikou-color-gray-0)"
+                  "--_dropzone-bg": "var(--raikou-dropzone-bg-hover)"
                 },
                 '[data-raikou-color-scheme="dark"] &': {
-                  "--_dropzone-bg": "var(--raikou-color-dark-5)"
+                  "--_dropzone-bg": "var(--raikou-dropzone-bg-hover)"
                 }
               }
             }
@@ -8074,10 +8453,10 @@ var require_Dropzone_plugin = __commonJS({
             "&:active": {
               "&[data-activate-on-click]:not([data-loading])": {
                 '[data-raikou-color-scheme="light"] &': {
-                  "--_dropzone-bg": "var(--raikou-color-gray-0)"
+                  "--_dropzone-bg": "var(--raikou-dropzone-bg-active)"
                 },
                 '[data-raikou-color-scheme="dark"] &': {
-                  "--_dropzone-bg": "var(--raikou-color-dark-5)"
+                  "--_dropzone-bg": "var(--raikou-dropzone-bg-active)"
                 }
               }
             }
@@ -8226,10 +8605,10 @@ var require_Spotlight_plugin = __commonJS({
             "--_actions-list-ml": "calc(var(--spotlight-actions-list-padding) * -1)"
           },
           '[data-raikou-color-scheme="light"] &': {
-            "--_actions-list-border": "var(--raikou-color-gray-2)"
+            "--_actions-list-border": "var(--raikou-spotlight-actions-list-border)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_actions-list-border": "var(--raikou-color-dark-4)"
+            "--_actions-list-border": "var(--raikou-spotlight-actions-list-border)"
           }
         },
         ".spotlight-action": {
@@ -8248,20 +8627,20 @@ var require_Spotlight_plugin = __commonJS({
             "@media (hover: hover)": {
               "&:hover": {
                 '[data-raikou-color-scheme="light"] &': {
-                  "--_action-bg": "var(--raikou-color-gray-0)"
+                  "--_action-bg": "var(--raikou-spotlight-action-bg-hover)"
                 },
                 '[data-raikou-color-scheme="dark"] &': {
-                  "--_action-bg": "var(--raikou-color-dark-6)"
+                  "--_action-bg": "var(--raikou-spotlight-action-bg-hover)"
                 }
               }
             },
             "@media (hover: none)": {
               "&:active": {
                 '[data-raikou-color-scheme="light"] &': {
-                  "--_action-bg": "var(--raikou-color-gray-0)"
+                  "--_action-bg": "var(--raikou-spotlight-action-bg-active)"
                 },
                 '[data-raikou-color-scheme="dark"] &': {
-                  "--_action-bg": "var(--raikou-color-dark-6)"
+                  "--_action-bg": "var(--raikou-spotlight-action-bg-active)"
                 }
               }
             }
@@ -8312,10 +8691,10 @@ var require_Spotlight_plugin = __commonJS({
           )})`,
           borderTop: `${rem2("1px")} solid var(--_footer-border)`,
           '[data-raikou-color-scheme="light"] &': {
-            "--_footer-border": "var(--raikou-color-gray-2)"
+            "--_footer-border": "var(--raikou-spotlight-footer-border)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            "--_footer-border": "var(--raikou-color-dark-4)"
+            "--_footer-border": "var(--raikou-spotlight-footer-border)"
           }
         },
         ".spotlight-actionsGroup": {
@@ -8344,6 +8723,265 @@ var require_Spotlight_plugin = __commonJS({
   }
 });
 
+// ../tiptap/src/RichTextEditor.plugin.ts
+var require_RichTextEditor_plugin = __commonJS({
+  "../tiptap/src/RichTextEditor.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents }) {
+      addComponents({
+        ".rte-root": {
+          position: "relative",
+          border: `${rem2("1px")} solid var(--_root-bd)`,
+          borderRadius: "var(--raikou-radius-default)",
+          '[data-raikou-color-scheme="light"] &': {
+            "--_root-bd": "var(--raikou-rte-root-bd)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_root-bd": "var(--raikou-rte-root-bd)"
+          }
+        },
+        ".rte-typographyStylesProvider": {
+          padding: "0",
+          margin: "0",
+          "& li > p": {
+            margin: "0"
+          },
+          "& ul li, & ol li": {
+            marginTop: rem2("2px")
+          },
+          "& p": {
+            marginBottom: rem2("7px")
+          },
+          "& h1, & h2, & h3, & h4, & h5, & h6, & p": {
+            marginTop: 0
+          }
+        },
+        ".rte-content": {
+          backgroundColor: "var(--raikou-color-body)",
+          borderRadius: "var(--raikou-radius-default)",
+          ".ProseMirror": {
+            outline: "0",
+            padding: "var(--raikou-spacing-md)"
+          },
+          ".ProseMirror > *:last-child": {
+            marginBottom: "0"
+          },
+          ".ProseMirror p.is-editor-empty:first-of-type::before": {
+            content: "attr(data-placeholder)",
+            pointerEvents: "none",
+            userSelect: "none",
+            float: "left",
+            height: "0",
+            color: "var(--raikou-color-placeholder)"
+          },
+          pre: {
+            backgroundColor: "var(--_code-bg)",
+            color: "var(--_code-color)",
+            fontFamily: "var(--raikou-font-family-monospace)",
+            borderRadius: "var(--raikou-radius-default)",
+            padding: "var(--raikou-spacing-md) var(--raikou-spacing-xl)",
+            code: {
+              background: "none !important",
+              backgroundColor: "red",
+              color: "inherit",
+              fontSize: "var(--raikou-font-size-sm)",
+              padding: "0"
+            },
+            ".hljs-comment, .hljs-quote": {
+              color: "var(--_code-color-comment)"
+            },
+            ".hljs-variable, .hljs-template-variable, .hljs-attribute, .hljs-tag, .hljs-regexp, .hljs-link, .hljs-name, .hljs-selector-id, .hljs-selector-class": {
+              color: "var(--_code-color-var)"
+            },
+            ".hljs-number, .hljs-meta, .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params": {
+              color: "var(--_code-color-number)"
+            },
+            ".hljs-string, .hljs-symbol, .hljs-bullet": {
+              color: "var(--_code-color-var)"
+            },
+            ".hljs-title, .hljs-section": {
+              color: "var(--_code-color-title)"
+            },
+            ".hljs-keyword, .hljs-selector-tag": {
+              color: "var(--_code-color-keyword)"
+            },
+            ".hljs-emphasis": {
+              fontStyle: "italic"
+            },
+            ".hljs-strong": {
+              fontWeight: "700"
+            }
+          },
+          '[data-raikou-color-scheme="light"] &': {
+            "--_code-bg": "var(--raikou-rte-code-bg)",
+            "--_code-color": "var(--raikou-rte-code-color)",
+            "--_code-color-comment": "var(--raikou-rte-code-color-comment)",
+            "--_code-color-var": "var(--raikou-rte-code-color-var)",
+            "--_code-color-number": "var(--raikou-rte-code-color-number)",
+            "--_code-color-title": "var(--raikou-rte-code-color-title)",
+            "--_code-color-keyword": "var(--raikou-rte-code-color-keyword)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_code-bg": "var(--raikou-rte-code-bg)",
+            "--_code-color": "var(--raikou-rte-code-color)",
+            "--_code-color-comment": "var(--raikou-rte-code-color-comment)",
+            "--_code-color-var": "var(--raikou-rte-code-color-var)",
+            "--_code-color-number": "var(--raikou-rte-code-color-number)",
+            "--_code-color-title": "var(--raikou-rte-code-color-title)",
+            "--_code-color-keyword": "var(--raikou-rte-code-color-keyword)"
+          }
+        },
+        ".rte-linkEditorDropdown": {
+          backgroundColor: "var(--raikou-color-body)"
+        },
+        ".rte-control": {
+          backgroundColor: "var(--_control-bg)",
+          color: "var(--_control-color)",
+          minWidth: rem2("26px"),
+          height: rem2("26px"),
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          border: `${rem2("1px")} solid var(--_control-bd)`,
+          borderRadius: "var(--raikou-radius-default)",
+          cursor: "var(--_control-cursor, default)",
+          "&[data-interactive]": {
+            "--_control-cursor": "pointer",
+            "@media (hover: hover)": {
+              "&:hover": {
+                '[data-raikou-color-scheme="light"] &': {
+                  "--_control-bg": "var(--raikou-rte-control-interactive-bg-hover)"
+                },
+                '[data-raikou-color-scheme="dark"] &': {
+                  "--_control-bg": "var(--raikou-rte-control-interactive-bg-hover)"
+                }
+              }
+            },
+            "@media (hover: none)": {
+              "&:active": {
+                '[data-raikou-color-scheme="light"] &': {
+                  "--_control-bg": "var(--raikou-rte-control-interactive-bg-active)"
+                },
+                '[data-raikou-color-scheme="dark"] &': {
+                  "--_control-bg": "var(--raikou-rte-control-interactive-bg-active)"
+                }
+              }
+            }
+          },
+          "[data-raikou-color-scheme] &[data-active]": {
+            "--_control-bg": "var(--raikou-primary-color-light)",
+            "--_control-color": "var(--raikou-primary-color-light-color)",
+            "@media (hover: hover)": {
+              "&:hover": {
+                "--_control-bg": "var(--raikou-primary-color-light-hover)"
+              }
+            },
+            "@media (hover: none)": {
+              "&:active": {
+                "--_control-bg": "var(--raikou-primary-color-light-hover)"
+              }
+            }
+          },
+          '[data-raikou-color-scheme="light"] &': {
+            "--_control-bg": "var(--raikou-rte-control-interactive-bg)",
+            "--_control-bd": "var(--raikou-rte-control-interactive-bd)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_control-bg": "var(--raikou-rte-control-interactive-bg)",
+            "--_control-bd": "var(--raikou-rte-control-interactive-bd)"
+          }
+        },
+        ".rte-controlsGroup": {
+          display: "flex",
+          backgroundColor: "var(--raikou-color-body)",
+          "& [data-rich-text-editor-control]": {
+            borderRadius: "0",
+            "&:not(:last-of-type)": {
+              borderRight: "0"
+            },
+            "&:last-of-type": {
+              borderTopRightRadius: "var(--raikou-radius-default)",
+              borderBottomRightRadius: "var(--raikou-radius-default)"
+            },
+            "&:first-of-type": {
+              borderTopLeftRadius: "var(--raikou-radius-default)",
+              borderBottomLeftRadius: "var(--raikou-radius-default)"
+            }
+          }
+        },
+        ".rte-linkEditor": {
+          display: "flex"
+        },
+        ".rte-linkEditorInput": {
+          borderTopRightRadius: "0",
+          borderBottomRightRadius: "0",
+          borderRight: "0"
+        },
+        ".rte-linkEditorExternalControl": {
+          backgroundColor: "var(--_control-bg)",
+          border: `${rem2("1px")} solid var(--_control-bd)`,
+          color: "var(--_control-color, var(--raikou-color-text))",
+          height: rem2("24px"),
+          width: rem2("24px"),
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: "var(--raikou-radius-default)",
+          "[data-raikou-color-scheme] &[data-active]": {
+            "--_control-bg": "var(--raikou-primary-color-light)",
+            "--_control-color": "var(--raikou-primary-color-filled)",
+            "@media (hover: hover)": {
+              "&:hover": {
+                "--_control-bg": "var(--raikou-primary-color-light-hover)"
+              }
+            },
+            "@media (hover: none)": {
+              "&:active": {
+                "--_control-bg": "var(--raikou-primary-color-light-hover)"
+              }
+            }
+          },
+          '[data-raikou-color-scheme="light"] &': {
+            "--_control-bg": "var(--raikou-rte-control-active-bg)",
+            "--_control-bd": "var(--raikou-rte-control-active-bd)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_control-bg": "var(--raikou-rte-control-active-bg)",
+            "--_control-bd": "var(--raikou-rte-control-active-bd)"
+          }
+        },
+        ".rte-linkEditorSave": {
+          borderTopLeftRadius: "0",
+          borderBottomLeftRadius: "0"
+        },
+        ".rte-toolbar": {
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "var(--raikou-spacing-sm)",
+          position: "var(--_toolbar-position, static)",
+          top: "var(--rte-sticky-offset, 0)",
+          backgroundColor: "var(--raikou-color-body)",
+          zIndex: "1",
+          borderTopRightRadius: "var(--raikou-radius-default)",
+          borderTopLeftRadius: "var(--raikou-radius-default)",
+          borderBottom: `${rem2("1px")} solid var(--_toolbar-bd)`,
+          padding: "var(--raikou-spacing-xs) var(--raikou-spacing-md)",
+          '[data-raikou-color-scheme="light"] &': {
+            "--_toolbar-bd": "var(--raikou-rte-control-toolbar-bd)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_toolbar-bd": "var(--raikou-rte-control-toolbar-bd)"
+          },
+          "&[data-sticky]": {
+            "--_toolbar-position": "sticky"
+          }
+        }
+      });
+    };
+  }
+});
+
 // src/plugin.ts
 var require_plugin = __commonJS({
   "src/plugin.ts"(exports, module) {
@@ -8353,6 +8991,7 @@ var require_plugin = __commonJS({
         require_css_variables_plugin(),
         require_Accordion_plugin(),
         require_ActionIcon_plugin(),
+        require_Affix_plugin(),
         require_Alert_plugin(),
         require_AppShell_plugin(),
         require_Anchor_plugin(),
@@ -8424,6 +9063,7 @@ var require_plugin = __commonJS({
         require_ThemeIcon_plugin(),
         require_Title_plugin(),
         require_Tooltip_plugin(),
+        require_TypographyStylesProvider_plugin(),
         require_UnstyledButton_plugin(),
         require_VisuallyHidden_plugin(),
         require_Carousel_plugin(),
@@ -8443,7 +9083,8 @@ var require_plugin = __commonJS({
         require_Dropzone_plugin(),
         require_Notifications_plugin(),
         require_NavigationProgress_plugin(),
-        require_Spotlight_plugin()
+        require_Spotlight_plugin(),
+        require_RichTextEditor_plugin()
       ]
     };
   }

@@ -26,11 +26,11 @@ module.exports = function ({ addComponents }: any) {
         "&:hover": {
           "&:not([data-disabled])": {
             '[data-raikou-color-scheme="light"] &': {
-              "--_control-bg": "var(--raikou-color-gray-0)",
+              "--_control-bg": "var(--raikou-calendar-picker-control-hover-bg)",
             },
 
             '[data-raikou-color-scheme="dark"] &': {
-              "--_control-bg": "var(--raikou-color-dark-5)",
+              "--_control-bg": "var(--raikou-calendar-picker-control-hover-bg)",
             },
           },
         },
@@ -39,11 +39,13 @@ module.exports = function ({ addComponents }: any) {
         "&:active": {
           "&:not([data-disabled])": {
             '[data-raikou-color-scheme="light"] &': {
-              "--_control-bg": "var(--raikou-color-gray-0)",
+              "--_control-bg":
+                "var(--raikou-calendar-picker-control-active-bg)",
             },
 
             '[data-raikou-color-scheme="dark"] &': {
-              "--_control-bg": "var(--raikou-color-dark-5)",
+              "--_control-bg":
+                "var(--raikou-calendar-picker-control-active-bg)",
             },
           },
         },

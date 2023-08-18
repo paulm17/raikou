@@ -4,6 +4,7 @@ module.exports = {
     require("../src/core/RaikouProvider/css-variables.plugin"),
     require("../../components/Accordion/src/Accordion.plugin"),
     require("../../components/ActionIcon/src/ActionIcon.plugin"),
+    require("../../components/Affix/src/Affix.plugin"),
     require("../../components/Alert/src/Alert.plugin"),
     require("../../components/AppShell/src/AppShell.plugin"),
     require("../../components/Anchor/src/Anchor.plugin"),
@@ -75,6 +76,7 @@ module.exports = {
     require("../../components/ThemeIcon/src/ThemeIcon.plugin"),
     require("../../components/Title/src/Title.plugin"),
     require("../../components/Tooltip/src/Tooltip.plugin"),
+    require("../../components/TypographyStylesProvider/src/TypographyStylesProvider.plugin"),
     require("../../components/UnstyledButton/src/UnstyledButton.plugin"),
     require("../../components/VisuallyHidden/src/VisuallyHidden.plugin"),
     require("../../carousel/src/Carousel.plugin"),
@@ -95,5 +97,6 @@ module.exports = {
     require("../../notifications/src/Notifications.plugin"),
     require("../../nprogress/src/NavigationProgress.plugin"),
     require("../../spotlight/src/Spotlight.plugin"),
+    require("../../tiptap/src/RichTextEditor.plugin"),
   ],
 };

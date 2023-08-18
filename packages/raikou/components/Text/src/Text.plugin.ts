@@ -1,5 +1,3 @@
-import { rem } from "@raikou/core";
-
 module.exports = function ({ addComponents }: any) {
   addComponents({
     ".text-root": {

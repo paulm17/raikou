@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo } from "react";
 import {
   Box,
   BoxProps,
@@ -8,34 +8,33 @@ import {
   useProps,
   useStyles,
   Factory,
-} from '@mantine/core';
-import { Editor } from '@tiptap/react';
-import { DEFAULT_LABELS, RichTextEditorLabels } from './labels';
-import { RichTextEditorProvider } from './RichTextEditor.context';
-import { RichTextEditorToolbar } from './RichTextEditorToolbar/RichTextEditorToolbar';
-import { RichTextEditorControlsGroup } from './RichTextEditorControlsGroup/RichTextEditorControlsGroup';
-import { RichTextEditorContent } from './RichTextEditorContent/RichTextEditorContent';
-import { RichTextEditorControl } from './RichTextEditorControl/RichTextEditorControl';
-import * as controls from './RichTextEditorControl';
-import classes from './RichTextEditor.module.css';
+} from "@raikou/core";
+import { Editor } from "@tiptap/react";
+import { DEFAULT_LABELS, RichTextEditorLabels } from "./labels";
+import { RichTextEditorProvider } from "./RichTextEditor.context";
+import { RichTextEditorToolbar } from "./RichTextEditorToolbar/RichTextEditorToolbar";
+import { RichTextEditorControlsGroup } from "./RichTextEditorControlsGroup/RichTextEditorControlsGroup";
+import { RichTextEditorContent } from "./RichTextEditorContent/RichTextEditorContent";
+import { RichTextEditorControl } from "./RichTextEditorControl/RichTextEditorControl";
+import * as controls from "./RichTextEditorControl";
 
 export type RichTextEditorStylesNames =
-  | 'linkEditorSave'
-  | 'linkEditorDropdown'
-  | 'root'
-  | 'content'
-  | 'typographyStylesProvider'
-  | 'control'
-  | 'controlsGroup'
-  | 'toolbar'
-  | 'linkEditor'
-  | 'linkEditorInput'
-  | 'linkEditorExternalControl';
+  | "linkEditorSave"
+  | "linkEditorDropdown"
+  | "root"
+  | "content"
+  | "typographyStylesProvider"
+  | "control"
+  | "controlsGroup"
+  | "toolbar"
+  | "linkEditor"
+  | "linkEditorInput"
+  | "linkEditorExternalControl";
 
 export interface RichTextEditorProps
   extends BoxProps,
     StylesApiProps<RichTextEditorFactory>,
-    ElementProps<'div'> {
+    ElementProps<"div"> {
   /** Tiptap editor instance */
   editor: Editor | null;
 
@@ -99,7 +98,7 @@ const defaultProps: Partial<RichTextEditorProps> = {
 };
 
 export const RichTextEditor = factory<RichTextEditorFactory>((_props, ref) => {
-  const props = useProps('RichTextEditor', defaultProps, _props);
+  const props = useProps("RichTextEditor", defaultProps, _props);
   const {
     classNames,
     className,
@@ -116,8 +115,20 @@ export const RichTextEditor = factory<RichTextEditorFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<RichTextEditorFactory>({
-    name: 'RichTextEditor',
-    classes,
+    name: "RichTextEditor",
+    classes: {
+      root: "rte-root",
+      typographyStylesProvider: "rte-typographyStylesProvider",
+      content: "rte-content",
+      linkEditorDropdown: "rte-linkEditorDropdown",
+      control: "rte-control",
+      controlsGroup: "rte-controlsGroup",
+      linkEditor: "rte-linkEditor",
+      linkEditorInput: "rte-linkEditorInput",
+      linkEditorExternalControl: "rte-linkEditorExternalControl",
+      linkEditorSave: "rte-linkEditorSave",
+      toolbar: "rte-toolbar",
+    },
     props,
     className,
     style,
@@ -127,7 +138,10 @@ export const RichTextEditor = factory<RichTextEditorFactory>((_props, ref) => {
     vars,
   });
 
-  const mergedLabels = useMemo(() => ({ ...DEFAULT_LABELS, ...labels }), [labels]);
+  const mergedLabels = useMemo(
+    () => ({ ...DEFAULT_LABELS, ...labels }),
+    [labels],
+  );
 
   return (
     <RichTextEditorProvider
@@ -139,15 +153,14 @@ export const RichTextEditor = factory<RichTextEditorFactory>((_props, ref) => {
         withTypographyStyles,
       }}
     >
-      <Box {...getStyles('root')} {...others} ref={ref}>
+      <Box {...getStyles("root")} {...others} ref={ref}>
         {children}
       </Box>
     </RichTextEditorProvider>
   );
 });
 
-RichTextEditor.classes = classes;
-RichTextEditor.displayName = '@mantine/tiptap/RichTextEditor';
+RichTextEditor.displayName = "@raikou/tiptap/RichTextEditor";
 
 // Generic components
 RichTextEditor.Content = RichTextEditorContent;

@@ -5,71 +5,73 @@ module.exports = function ({ addComponents }: any) {
       background: "var(--_background)",
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_color": "var(--raikou-color-gray-7)",
-        "--_background": "var(--raikou-color-gray-0)",
-        "--code-comment-color": "var(--raikou-color-gray-6)",
-        "--code-keyword-color": "var(--raikou-color-violet-8)",
-        "--code-tag-color": "var(--raikou-color-red-9)",
-        "--code-literal-color": "var(--raikou-color-blue-6)",
-        "--code-string-color": "var(--raikou-color-blue-9)",
-        "--code-variable-color": "var(--raikou-color-lime-9)",
-        "--code-class-color": "var(--raikou-color-orange-9)",
+        "--_color": "var(--codehighlight-theme-color)",
+        "--_background": "var(--codehighlight-theme-background)",
+        "--code-comment-color": "var(--codehighlight-theme-code-comment-color)",
+        "--code-keyword-color": "var(--codehighlight-theme-code-keyword-color)",
+        "--code-tag-color": "var(--codehighlight-theme-code-tag-color)",
+        "--code-literal-color": "var(--codehighlight-theme-code-literal-color)",
+        "--code-string-color": "var(--codehighlight-theme-code-string-color)",
+        "--code-variable-color":
+          "var(--codehighlight-theme-code-variable-color)",
+        "--code-class-color": "var(--codehighlight-theme-code-class-color)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_color": "var(--raikou-color-dark-1)",
-        "--_background": "var(--raikou-color-dark-8)",
-        "--code-comment-color": "var(--raikou-color-dark-3)",
-        "--code-keyword-color": "var(--raikou-color-violet-3)",
-        "--code-tag-color": "var(--raikou-color-yellow-4)",
-        "--code-literal-color": "var(--raikou-color-blue-4)",
-        "--code-string-color": "var(--raikou-color-green-6)",
-        "--code-variable-color": "var(--raikou-color-blue-2)",
-        "--code-class-color": "var(--raikou-color-orange-5)",
+        "--_color": "var(--codehighlight-theme-color)",
+        "--_background": "var(--codehighlight-theme-background)",
+        "--code-comment-color": "var(--codehighlight-theme-code-comment-color)",
+        "--code-keyword-color": "var(--codehighlight-theme-code-keyword-color)",
+        "--code-tag-color": "var(--codehighlight-theme-code-tag-color)",
+        "--code-literal-color": "var(--codehighlight-theme-code-literal-color)",
+        "--code-string-color": "var(--codehighlight-theme-code-string-color)",
+        "--code-variable-color":
+          "var(--codehighlight-theme-code-variable-color)",
+        "--code-class-color": "var(--codehighlight-theme-code-class-color)",
       },
 
-      ":global(.hljs-comment), :global(.hljs-quote)": {
+      ".hljs-comment, .hljs-quote": {
         fontStyle: "italic",
         color: "var(--code-comment-color)",
       },
 
-      ":global(.hljs-doctag), :global(.hljs-formula), :global(.hljs-keyword)": {
+      ".hljs-doctag, .hljs-formula, .hljs-keyword": {
         color: "var(--code-keyword-color)",
       },
 
-      ":global(.hljs-deletion), :global(.hljs-name), :global(.hljs-section), :global(.hljs-selector-tag), :global(.hljs-subst)":
+      ".hljs-deletion, .hljs-name, .hljs-section, .hljs-selector-tag, .hljs-subst":
         {
           color: "var(--code-tag-color)",
         },
 
-      ":global(.hljs-literal)": {
+      ".hljs-literal": {
         color: "var(--code-literal-color)",
       },
 
-      ":global(.hljs-addition), :global(.hljs-attribute), :global(.hljs-meta .hljs-string), :global(.hljs-regexp), :global(.hljs-string)":
+      ".hljs-addition, .hljs-attribute, .hljs-meta .hljs-string, .hljs-regexp, .hljs-string":
         {
           color: "var(--code-string-color)",
         },
 
-      ":global(.hljs-attr), :global(.hljs-number), :global(.hljs-selector-attr), :global(.hljs-selector-class), :global(.hljs-selector-pseudo), :global(.hljs-template-variable), :global(.hljs-type), :global(.hljs-variable)":
+      ".hljs-attr, .hljs-number, .hljs-selector-attr, .hljs-selector-class, .hljs-selector-pseudo, .hljs-template-variable, .hljs-type, .hljs-variable":
         {
           color: "var(--code-variable-color)",
         },
 
-      ":global(.hljs-bullet), :global(.hljs-link), :global(.hljs-meta), :global(.hljs-selector-id), :global(.hljs-symbol), :global(.hljs-title), :global(.hljs-built_in), :global(.hljs-class .hljs-title), :global(.hljs-title.class_)":
+      ".hljs-bullet, .hljs-link, .hljs-meta, .hljs-selector-id, .hljs-symbol, .hljs-title, .hljs-built_in, .hljs-class .hljs-title, .hljs-title.class_":
         {
           color: "var(--code-class-color)",
         },
 
-      ":global(.hljs-emphasis)": {
+      ".hljs-emphasis": {
         fontStyle: "italic",
       },
 
-      ":global(.hljs-strong)": {
+      ".hljs-strong": {
         fontWeight: "700",
       },
 
-      ":global(.hljs-link)": {
+      ".hljs-link": {
         textDecoration: "underline",
       },
     },

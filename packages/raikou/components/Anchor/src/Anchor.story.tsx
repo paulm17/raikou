@@ -7,15 +7,15 @@ export function Usage() {
   return (
     <div style={{ padding: 40 }}>
       <Anchor href="https://mantine.dev" target="blank" underline="never">
-        Raikou website link: never
+        Mantine website link: never
       </Anchor>
       <br />
       <Anchor href="https://mantine.dev" target="blank">
-        Raikou website link: hover
+        Mantine website link: hover
       </Anchor>
       <br />
       <Anchor href="https://mantine.dev" target="blank" underline="always">
-        Raikou website link: always
+        Mantine website link: always
       </Anchor>
       <br />
       <Anchor
@@ -26,7 +26,7 @@ export function Usage() {
         fz={60}
         fw="bold"
       >
-        Raikou website link: never
+        Mantine website link: never
       </Anchor>
     </div>
   );

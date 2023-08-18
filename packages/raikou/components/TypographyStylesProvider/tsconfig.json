@@ -1,0 +1,9 @@
+{
+  "extends": "../../../../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@raikou/tests": ["../../tests/src"]
+    }
+  },
+  "include": ["src", "../../../../configuration/types"]
+}

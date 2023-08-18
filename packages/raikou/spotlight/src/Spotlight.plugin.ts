@@ -44,11 +44,11 @@ module.exports = function ({ addComponents }: any) {
       },
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_actions-list-border": "var(--raikou-color-gray-2)",
+        "--_actions-list-border": "var(--raikou-spotlight-actions-list-border)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_actions-list-border": "var(--raikou-color-dark-4)",
+        "--_actions-list-border": "var(--raikou-spotlight-actions-list-border)",
       },
     },
 
@@ -70,22 +70,22 @@ module.exports = function ({ addComponents }: any) {
         "@media (hover: hover)": {
           "&:hover": {
             '[data-raikou-color-scheme="light"] &': {
-              "--_action-bg": "var(--raikou-color-gray-0)",
+              "--_action-bg": "var(--raikou-spotlight-action-bg-hover)",
             },
 
             '[data-raikou-color-scheme="dark"] &': {
-              "--_action-bg": "var(--raikou-color-dark-6)",
+              "--_action-bg": "var(--raikou-spotlight-action-bg-hover)",
             },
           },
         },
         "@media (hover: none)": {
           "&:active": {
             '[data-raikou-color-scheme="light"] &': {
-              "--_action-bg": "var(--raikou-color-gray-0)",
+              "--_action-bg": "var(--raikou-spotlight-action-bg-active)",
             },
 
             '[data-raikou-color-scheme="dark"] &': {
-              "--_action-bg": "var(--raikou-color-dark-6)",
+              "--_action-bg": "var(--raikou-spotlight-action-bg-active)",
             },
           },
         },
@@ -148,11 +148,11 @@ module.exports = function ({ addComponents }: any) {
       borderTop: `${rem("1px")} solid var(--_footer-border)`,
 
       '[data-raikou-color-scheme="light"] &': {
-        "--_footer-border": "var(--raikou-color-gray-2)",
+        "--_footer-border": "var(--raikou-spotlight-footer-border)",
       },
 
       '[data-raikou-color-scheme="dark"] &': {
-        "--_footer-border": "var(--raikou-color-dark-4)",
+        "--_footer-border": "var(--raikou-spotlight-footer-border)",
       },
     },
 

@@ -1,7 +1,7 @@
 {
   "name": "@raikou/tests",
   "private": true,
-  "version": "0.0.1-alpha.23",
+  "version": "0.0.1-beta.0",
   "license": "MIT",
   "dependencies": {
     "@raikou/input": "workspace:*"

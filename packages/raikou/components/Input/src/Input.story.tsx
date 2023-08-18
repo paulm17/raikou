@@ -1,7 +1,7 @@
-import React from 'react';
-import { Input } from './Input';
+import React from "react";
+import { Input } from "./Input";
 
-export default { title: 'Input' };
+export default { title: "Input" };
 
 export function WithinDisabledFieldset() {
   return (
@@ -29,7 +29,7 @@ export function Variants() {
 }
 
 export function Sizes() {
-  const sizes = (['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
+  const sizes = (["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
     <Input
       placeholder={`Input ${size}`}
       size={size}
@@ -38,7 +38,7 @@ export function Sizes() {
       rightSection={size}
       mt="md"
       styles={{
-        section: { backgroundColor: 'pink' },
+        section: { backgroundColor: "pink" },
       }}
     />
   ));
@@ -46,16 +46,38 @@ export function Sizes() {
   return <div style={{ padding: 40 }}>{sizes}</div>;
 }
 
-export function RightSection() {
+export function WithSections() {
   return (
     <div style={{ padding: 40, maxWidth: 300 }}>
       <Input
         placeholder="Input with right section"
         rightSection="$"
+        leftSection="$"
         defaultValue="asdasdnjknwebdkjwbjrbfkjberfhjbrefhberjfbjherbfjherbfjhb"
         rightSectionWidth={40}
+        leftSectionWidth={100}
         styles={{
-          section: { backgroundColor: 'pink' },
+          section: { border: "1px solid pink" },
+        }}
+      />
+      <Input
+        placeholder="Input with right section"
+        rightSection="$"
+        defaultValue="asdasdnjknwebdkjwbjrbfkjberfhjbrefhberjfbjherbfjherbfjhb"
+        rightSectionWidth={40}
+        leftSectionWidth={100}
+        styles={{
+          section: { border: "1px solid pink" },
+        }}
+      />
+      <Input
+        placeholder="Input with right section"
+        leftSection="$"
+        defaultValue="asdasdnjknwebdkjwbjrbfkjberfhjbrefhberjfbjherbfjherbfjhb"
+        rightSectionWidth={40}
+        leftSectionWidth={100}
+        styles={{
+          section: { border: "1px solid pink" },
         }}
       />
     </div>
@@ -63,8 +85,8 @@ export function RightSection() {
 }
 
 export function Multiline() {
-  const sizes = (['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
-    <div style={{ padding: 40, display: 'flex' }} key={size}>
+  const sizes = (["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
+    <div style={{ padding: 40, display: "flex" }} key={size}>
       <Input defaultValue="default input" size={size} />
       <Input
         size={size}
@@ -97,13 +119,13 @@ export function CompoundComponents() {
         id="test-id"
         styles={(theme, props) => ({
           description: {
-            background: props.required ? 'orange' : 'pink',
+            background: props.required ? "orange" : "pink",
           },
           error: {
-            background: props.required ? 'orange' : 'pink',
+            background: props.required ? "orange" : "pink",
           },
           label: {
-            background: props.error ? 'orange' : 'pink',
+            background: props.error ? "orange" : "pink",
           },
         })}
       >
@@ -115,10 +137,18 @@ export function CompoundComponents() {
 
 export function UnstyledInput() {
   return (
-    <div style={{ padding: 40, maxWidth: 300, background: 'pink' }}>
+    <div style={{ padding: 40, maxWidth: 300, background: "pink" }}>
       <Input variant="unstyled" placeholder="Unstyled input" />
-      <Input variant="unstyled" placeholder="With right section" rightSection="$$" />
-      <Input variant="unstyled" placeholder="With left section" leftSection="$$" />
+      <Input
+        variant="unstyled"
+        placeholder="With right section"
+        rightSection="$$"
+      />
+      <Input
+        variant="unstyled"
+        placeholder="With left section"
+        leftSection="$$"
+      />
     </div>
   );
 }

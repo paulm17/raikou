@@ -16,7 +16,7 @@ module.exports = function ({ addComponents, theme }: any) {
       padding: "0",
     },
 
-    ".accordion-control": {
+    ".accordion-control.accordion-control": {
       width: "100%",
       display: "flex",
       alignItems: "center",

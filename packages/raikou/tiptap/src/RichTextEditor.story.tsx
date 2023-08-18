@@ -1,36 +1,36 @@
-import React from 'react';
-import { useEditor, FloatingMenu, BubbleMenu } from '@tiptap/react';
-import { AppShell } from '@mantine/core';
-import Highlight from '@tiptap/extension-highlight';
-import { Color } from '@tiptap/extension-color';
-import TextStyle from '@tiptap/extension-text-style';
-import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
-import StarterKit from '@tiptap/starter-kit';
-import Underline from '@tiptap/extension-underline';
-import TextAlign from '@tiptap/extension-text-align';
-import Superscript from '@tiptap/extension-superscript';
-import SubScript from '@tiptap/extension-subscript';
-import Placeholder from '@tiptap/extension-placeholder';
-import { lowlight } from 'lowlight';
-import css from 'highlight.js/lib/languages/css';
-import js from 'highlight.js/lib/languages/javascript';
-import ts from 'highlight.js/lib/languages/typescript';
-import html from 'highlight.js/lib/languages/xml';
-import { IconColorPicker } from '@tabler/icons-react';
-import { Link } from './extensions/Link';
-import { RichTextEditor, RichTextEditorProps } from './RichTextEditor';
-import { RichTextEditorToolbarProps } from './RichTextEditorToolbar/RichTextEditorToolbar';
+import React from "react";
+import { useEditor, FloatingMenu, BubbleMenu } from "@tiptap/react";
+import { AppShell } from "../../components/AppShell/src";
+import Highlight from "@tiptap/extension-highlight";
+import { Color } from "@tiptap/extension-color";
+import TextStyle from "@tiptap/extension-text-style";
+import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
+import StarterKit from "@tiptap/starter-kit";
+import Underline from "@tiptap/extension-underline";
+import TextAlign from "@tiptap/extension-text-align";
+import Superscript from "@tiptap/extension-superscript";
+import SubScript from "@tiptap/extension-subscript";
+import Placeholder from "@tiptap/extension-placeholder";
+import { lowlight } from "lowlight";
+import css from "highlight.js/lib/languages/css";
+import js from "highlight.js/lib/languages/javascript";
+import ts from "highlight.js/lib/languages/typescript";
+import html from "highlight.js/lib/languages/xml";
+import { IconColorPicker } from "@tabler/icons-react";
+import { Link } from "./extensions/Link";
+import { RichTextEditor, RichTextEditorProps } from "./RichTextEditor";
+import { RichTextEditorToolbarProps } from "./RichTextEditorToolbar/RichTextEditorToolbar";
 
-lowlight.registerLanguage('html', html);
-lowlight.registerLanguage('css', css);
-lowlight.registerLanguage('js', js);
-lowlight.registerLanguage('ts', ts);
+lowlight.registerLanguage("html", html);
+lowlight.registerLanguage("css", css);
+lowlight.registerLanguage("js", js);
+lowlight.registerLanguage("ts", ts);
 
-export default { title: 'TipTap' };
+export default { title: "TipTap" };
 
 const lorem =
-  'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis necessitatibus, impedit tempora, provident voluptate aliquid eos eveniet expedita iusto mollitia accusamus illum sunt fugiat quisquam tempore molestias nulla voluptatem cumque!';
-const htmlContent = Array.from({ length: 10 }).fill(`<p>${lorem}</p>`).join('');
+  "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis necessitatibus, impedit tempora, provident voluptate aliquid eos eveniet expedita iusto mollitia accusamus illum sunt fugiat quisquam tempore molestias nulla voluptatem cumque!";
+const htmlContent = Array.from({ length: 10 }).fill(`<p>${lorem}</p>`).join("");
 
 function BasicEditor({
   editorProps,
@@ -52,7 +52,7 @@ function BasicEditor({
       Color,
       Highlight,
       TextAlign.configure({
-        types: ['heading', 'paragraph'],
+        types: ["heading", "paragraph"],
       }),
     ],
     content: content || htmlContent,
@@ -72,20 +72,20 @@ function BasicEditor({
             <RichTextEditor.Highlight />
             <RichTextEditor.ColorPicker
               colors={[
-                '#25262b',
-                '#868e96',
-                '#fa5252',
-                '#e64980',
-                '#be4bdb',
-                '#7950f2',
-                '#4c6ef5',
-                '#228be6',
-                '#15aabf',
-                '#12b886',
-                '#40c057',
-                '#82c91e',
-                '#fab005',
-                '#fd7e14',
+                "#25262b",
+                "#868e96",
+                "#fa5252",
+                "#e64980",
+                "#be4bdb",
+                "#7950f2",
+                "#4c6ef5",
+                "#228be6",
+                "#15aabf",
+                "#12b886",
+                "#40c057",
+                "#82c91e",
+                "#fab005",
+                "#fd7e14",
               ]}
             />
           </RichTextEditor.ControlsGroup>
@@ -152,11 +152,11 @@ export function Usage() {
 
 function escapeHtml(unsafe: string) {
   return unsafe
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 const code =
@@ -226,7 +226,7 @@ export function CodeHighlight() {
 const largeContent = Array(20)
   .fill(0)
   .map(() => `<p>${lorem}</p>`)
-  .join('');
+  .join("");
 const scrollContent = Array(10)
   .fill(0)
   .map((_, index) => <p key={index}>{lorem}</p>);
@@ -236,7 +236,10 @@ export function StickyToolbar() {
     <AppShell header={{ height: 60 }}>
       <AppShell.Header>Header</AppShell.Header>
       {scrollContent}
-      <BasicEditor content={largeContent} toolbarProps={{ sticky: true, stickyOffset: 60 }} />
+      <BasicEditor
+        content={largeContent}
+        toolbarProps={{ sticky: true, stickyOffset: 60 }}
+      />
       {scrollContent}
       {scrollContent}
       {scrollContent}
@@ -247,7 +250,7 @@ export function StickyToolbar() {
 export function Floating() {
   const editor = useEditor({
     extensions: [StarterKit],
-    content: '<p>Hello World!</p>',
+    content: "<p>Hello World!</p>",
   });
 
   return (
@@ -269,7 +272,7 @@ export function Floating() {
 export function Bubble() {
   const editor = useEditor({
     extensions: [StarterKit, Link],
-    content: '<p>Hello World!</p>',
+    content: "<p>Hello World!</p>",
   });
 
   return (
@@ -294,8 +297,11 @@ export function Unstyled() {
 
 export function PlaceholderExtension() {
   const editor = useEditor({
-    extensions: [StarterKit, Placeholder.configure({ placeholder: 'This is placeholder' })],
-    content: '',
+    extensions: [
+      StarterKit,
+      Placeholder.configure({ placeholder: "This is placeholder" }),
+    ],
+    content: "",
   });
 
   return (
@@ -310,12 +316,15 @@ export function PlaceholderExtension() {
 export function ControlStylesApi() {
   const editor = useEditor({
     extensions: [StarterKit, Link],
-    content: '',
+    content: "",
   });
 
   return (
     <div style={{ padding: 40 }}>
-      <RichTextEditor editor={editor} styles={{ control: { backgroundColor: 'pink' } }}>
+      <RichTextEditor
+        editor={editor}
+        styles={{ control: { backgroundColor: "pink" } }}
+      >
         <RichTextEditor.Toolbar>
           <RichTextEditor.ControlsGroup>
             <RichTextEditor.Bold />

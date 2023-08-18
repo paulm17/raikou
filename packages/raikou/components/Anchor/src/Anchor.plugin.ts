@@ -1,6 +1,6 @@
 module.exports = function ({ addComponents, theme }: any) {
   addComponents({
-    ".anchor-root": {
+    ".anchor-root.anchor-root": {
       color: "var(--raikou-color-anchor)",
       textDecoration: "var(--_text-decoration, none) !important",
       appearance: "none",

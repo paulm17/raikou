@@ -184,6 +184,8 @@ Change appPath to where the tsx files for your project reside.
 
    ```js
    import { RaikouProvider } from '@raikou/system';
+   import { createTheme, setState } from '@raikou/global-store';
+   import { generateColors } from "@raikou/colors-generator";
 
    export default function RootLayout({
       children,
@@ -191,13 +193,14 @@ Change appPath to where the tsx files for your project reside.
       children: React.ReactNode
    }) {
       const theme = createTheme({
-      primaryColor: "orange",
-      colors: {
-        orange: generateColors("#FF8000"),
-      },
-    });
+         primaryColor: "orange",
+         colors: {
+            orange: generateColors("#FF8000"),
+         },
+      });
 
-    setState(theme);
+      setState(theme);
+
       return (
          <html lang="en">
             <body className={inter.className}>

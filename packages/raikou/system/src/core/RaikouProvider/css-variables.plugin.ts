@@ -260,6 +260,16 @@ module.exports = function ({ addComponents }: any) {
         "--raikou-menu-divider-item-hover-bg": "#2c2e33",
       },
     },
+    ".navLink-root": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-nav-link-bg-hover": "#f8f9fa",
+        "--raikou-nav-link-bg-active": "#25262b",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-nav-link-bg-hover": "#f8f9fa",
+        "--raikou-nav-link-bg-active": "#25262b",
+      },
+    },
     ".notification-root": {
       '[data-raikou-color-scheme="light"] &': {
         "--raikou-notification-border-color": "#dee2e6",
@@ -521,6 +531,166 @@ module.exports = function ({ addComponents }: any) {
       '[data-raikou-color-scheme="dark"] &': {
         "--raikou-tooltip-bg": "#e9ecef",
         "--raikou-tooltip-color": "#000",
+      },
+    },
+    ".tsp-root": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-tsp-mark-background-color": "#ffec99",
+        "--raikou-tsp-mark-color": "inherit",
+        "--raikou-tsp-hr-border-color": "#dee2e6",
+        "--raikou-tsp-pre-border-color": "#f8f9fa",
+        "--raikou-tsp-code-background-color": "#f8f9fa",
+        "--raikou-tsp-code-color": "#000",
+        "--raikou-tsp-blockquote-background-color": "#f8f9fa",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-tsp-mark-background-color": "#fcc419",
+        "--raikou-tsp-mark-color": "#000",
+        "--raikou-tsp-hr-border-color": "#5c5f66",
+        "--raikou-tsp-hr": "#5c5f66",
+        "--raikou-tsp-pre-border-color": "#343a40",
+        "--raikou-tsp-code-background-color": "#2c2e33",
+        "--raikou-tsp-code-color": "#fff",
+        "--raikou-tsp-blockquote-background-color": "#141517",
+      },
+    },
+    // Outside of components
+    ".carousel-root": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-carousel-border": "#dee2e6",
+        "--raikou-carousel-control-opacity": "0.85",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-carousel-border": "#373a40",
+        "--raikou-carousel-control-opacity": "0.65",
+      },
+    },
+    ".codeHighlight-root": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--codehighlight-file-color": "#343a40",
+        "--codehighlight-file-bd": "#e9ecef",
+        "--codehighlight-file-active-bg": "#fff",
+        "--codehighlight-file-active-color": "#000",
+        "--codehighlight-theme-color": "#495057",
+        "--codehighlight-theme-background": "#f8f9fa",
+        "--codehighlight-theme-code-comment-color": "#868e96",
+        "--codehighlight-theme-code-keyword-color": "#6741d9",
+        "--codehighlight-theme-code-tag-color": "#c92a2a",
+        "--codehighlight-theme-code-literal-color": "#228be6",
+        "--codehighlight-theme-code-string-color": "#1864ab",
+        "--codehighlight-theme-code-variable-color": "#5c940d",
+        "--codehighlight-theme-code-class-color": "#d9480f",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--codehighlight-file-color": "#c1c2c5",
+        "--codehighlight-file-bd": "#373a40",
+        "--codehighlight-file-active-bg": "#25262b",
+        "--codehighlight-file-active-color": "#fff",
+        "--codehighlight-theme-color": "#a6a7ab",
+        "--codehighlight-theme-background": "#141517",
+        "--codehighlight-theme-code-comment-color": "#5c5f66",
+        "--codehighlight-theme-code-keyword-color": "#b197fc",
+        "--codehighlight-theme-code-tag-color": "#ffd43b",
+        "--codehighlight-theme-code-literal-color": "#4dabf7",
+        "--codehighlight-theme-code-string-color": "#40c057",
+        "--codehighlight-theme-code-variable-color": "#a5d8ff",
+        "--codehighlight-theme-code-class-color": "#ff922b",
+      },
+    },
+    ".dates-calendarHeader": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-calendar-header-control-hover-bg": "#f8f9fa",
+        "--raikou-calendar-header-control-active-bg": "#f8f9fa",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-calendar-header-control-hover-bg": "#2c2e33",
+        "--raikou-calendar-header-control-active-bg": "#2c2e33",
+      },
+    },
+    ".dates-day": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-calendar-day-hover-bg": "#f8f9fa",
+        "--raikou-calendar-day-active-bg": "#f8f9fa",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-calendar-day-hover-bg": "#2c2e33",
+        "--raikou-calendar-day-active-bg": "#2c2e33",
+      },
+    },
+    ".dates-pickerControl": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-calendar-picker-control-hover-bg": "#f8f9fa",
+        "--raikou-calendar-picker-control-active-bg": "#f8f9fa",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-calendar-picker-control-hover-bg": "#2c2e33",
+        "--raikou-calendar-picker-control-active-bg": "#2c2e33",
+      },
+    },
+    ".dropZone-root": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-dropzone-bg": "#fff",
+        "--raikou-dropzone-border-color": "#ced4da",
+        "--raikou-dropzone-bg-hover": "#f8f9fa",
+        "--raikou-dropzone-bg-active": "#f8f9fa",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-dropzone-bg": "#25262b",
+        "--raikou-dropzone-border-color": "#373a40",
+        "--raikou-dropzone-bg-hover": "#2c2e33",
+        "--raikou-dropzone-bg-active": "#2c2e33",
+      },
+    },
+    ".spotlight-root": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-spotlight-actions-list-border": "#e9ecef",
+        "--raikou-spotlight-action-bg-hover": "#f8f9fa",
+        "--raikou-spotlight-action-bg-active": "#f8f9fa",
+        "--raikou-spotlight-footer-border": "#e9ecef",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-spotlight-actions-list-border": "#373a40",
+        "--raikou-spotlight-action-bg-hover": "#25262b",
+        "--raikou-spotlight-action-bg-active": "#25262b",
+        "--raikou-spotlight-footer-border": "#373a40",
+      },
+    },
+    // tiptap
+    ".rte-root": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-rte-root-bd": "#ced4da",
+        "--raikou-rte-code-bg": "#f8f9fa",
+        "--raikou-rte-code-color": "#212529",
+        "--raikou-rte-code-color-comment": "#adb5bd",
+        "--raikou-rte-code-color-var": "#f03e3e",
+        "--raikou-rte-code-color-number": "#1c7ed6",
+        "--raikou-rte-code-color-title": "#d6336c",
+        "--raikou-rte-code-color-keyword": "#7048e8",
+        "--raikou-rte-control-interactive-bg-hover": "#f8f9fa",
+        "--raikou-rte-control-interactive-bg-active": "#f8f9fa",
+        "--raikou-rte-control-interactive-bg": "#fff",
+        "--raikou-rte-control-interactive-bd": "#ced4da",
+        "--raikou-rte-control-active-bg": "#fff",
+        "--raikou-rte-control-active-bd": "#ced4da",
+        "--raikou-rte-control-toolbar-bd": "#ced4da",
+      },
+
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-rte-root-bd": "#373a40",
+        "--raikou-rte-code-bg": "#141517",
+        "--raikou-rte-code-color": "#c1c2c5",
+        "--raikou-rte-code-color-comment": "#909296",
+        "--raikou-rte-code-color-var": "#ff6b6b",
+        "--raikou-rte-code-color-number": "#22b8cf",
+        "--raikou-rte-code-color-title": "#fcc419",
+        "--raikou-rte-code-color-keyword": "#845ef7",
+        "--raikou-rte-control-interactive-bg-hover": "#2c2e33",
+        "--raikou-rte-control-interactive-bg-active": "#2c2e33",
+        "--raikou-rte-control-interactive-bg": "#25262b",
+        "--raikou-rte-control-interactive-bd": "#373a40",
+        "--raikou-rte-control-active-bg": "#1a1b1e",
+        "--raikou-rte-control-active-bd": "#373a40",
+        "--raikou-rte-control-toolbar-bd": "#373a40",
       },
     },
   });

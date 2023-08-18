@@ -49,7 +49,7 @@ export function RaikouProvider({
   let mergedTheme = mergeRaikouTheme(DEFAULT_THEME, theme);
 
   // Generate default "blue" color if no primary color is provided
-  if (theme === undefined || (theme && !theme.hasOwnProperty("primaryColor"))) {
+  if (theme === undefined || (theme && !theme.hasOwnProperty("colors"))) {
     mergedTheme.colors = {
       blue: [
         "#eef3ff",

@@ -1,24 +1,29 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef, useState } from "react";
+import { BoxProps, useProps, ElementProps } from "@raikou/core";
+import { Popover, PopoverProps } from "../../../components/Popover/src";
+import { ColorSwatch } from "../../../components/ColorSwatch/src";
+import { SimpleGrid } from "../../../components/SimpleGrid/src";
 import {
-  BoxProps,
-  Popover,
-  PopoverProps,
-  ColorSwatch,
-  SimpleGrid,
   ColorPicker,
-  Group,
-  ActionIcon,
-  Tooltip,
   ColorPickerProps,
-  useProps,
-  ElementProps,
-} from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { IconCircleOff, IconColorPicker, IconX, IconPalette, IconCheck } from '@tabler/icons-react';
-import { RichTextEditorControl } from './RichTextEditorControl';
-import { useRichTextEditorContext } from '../RichTextEditor.context';
+} from "../../../components/ColorPicker/src";
+import { Group } from "../../../components/Group/src";
+import { ActionIcon } from "../../../components/ActionIcon/src";
+import { Tooltip } from "../../../components/Tooltip/src";
+import { useDisclosure } from "@raikou/hooks";
+import {
+  IconCircleOff,
+  IconColorPicker,
+  IconX,
+  IconPalette,
+  IconCheck,
+} from "@tabler/icons-react";
+import { RichTextEditorControl } from "./RichTextEditorControl";
+import { useRichTextEditorContext } from "../RichTextEditor.context";
 
-export interface RichTextEditorColorPickerControlProps extends BoxProps, ElementProps<'button'> {
+export interface RichTextEditorColorPickerControlProps
+  extends BoxProps,
+    ElementProps<"button"> {
   /** Props added to Popover component */
   popoverProps?: Partial<PopoverProps>;
 
@@ -36,15 +41,16 @@ export const RichTextEditorColorPickerControl = forwardRef<
   RichTextEditorColorPickerControlProps
 >((props, ref) => {
   const { popoverProps, colors, colorPickerProps, ...others } = useProps(
-    'RichTextEditorColorPickerControl',
+    "RichTextEditorColorPickerControl",
     defaultProps,
-    props
+    props,
   );
 
   const { editor, labels, getStyles } = useRichTextEditorContext();
   const [opened, { toggle, close }] = useDisclosure(false);
-  const [state, setState] = useState<'palette' | 'colorPicker'>('palette');
-  const currentColor = editor?.getAttributes('textStyle').color || 'var(--mantine-color-text)';
+  const [state, setState] = useState<"palette" | "colorPicker">("palette");
+  const currentColor =
+    editor?.getAttributes("textStyle").color || "var(--raikou-color-text)";
 
   const handleChange = (value: string, shouldClose = true) => {
     (editor?.chain() as any).focus().setColor(value).run();
@@ -64,14 +70,20 @@ export const RichTextEditorColorPickerControl = forwardRef<
       onClick={() => handleChange(color)}
       size={26}
       radius="xs"
-      style={{ cursor: 'pointer' }}
+      style={{ cursor: "pointer" }}
       title={labels.colorPickerColorLabel(color)}
       aria-label={labels.colorPickerColorLabel(color)}
     />
   ));
 
   return (
-    <Popover opened={opened} withinPortal trapFocus onClose={close} {...popoverProps}>
+    <Popover
+      opened={opened}
+      withinPortal
+      trapFocus
+      onClose={close}
+      {...popoverProps}
+    >
       <Popover.Target>
         <RichTextEditorControl
           {...others}
@@ -84,14 +96,14 @@ export const RichTextEditorColorPickerControl = forwardRef<
         </RichTextEditorControl>
       </Popover.Target>
 
-      <Popover.Dropdown {...getStyles('linkEditorDropdown')}>
-        {state === 'palette' && (
+      <Popover.Dropdown {...getStyles("linkEditorDropdown")}>
+        {state === "palette" && (
           <SimpleGrid cols={7} spacing={2}>
             {controls}
           </SimpleGrid>
         )}
 
-        {state === 'colorPicker' && (
+        {state === "colorPicker" && (
           <ColorPicker
             defaultValue={currentColor}
             onChange={(value) => handleChange(value, false)}
@@ -101,7 +113,7 @@ export const RichTextEditorColorPickerControl = forwardRef<
 
         <Tooltip.Group closeDelay={200}>
           <Group justify="flex-end" gap="xs" mt="sm">
-            {state === 'palette' && (
+            {state === "palette" && (
               <ActionIcon
                 variant="default"
                 onClick={close}
@@ -121,10 +133,10 @@ export const RichTextEditorColorPickerControl = forwardRef<
               <IconCircleOff stroke={1.5} size="1rem" />
             </ActionIcon>
 
-            {state === 'palette' ? (
+            {state === "palette" ? (
               <ActionIcon
                 variant="default"
-                onClick={() => setState('colorPicker')}
+                onClick={() => setState("colorPicker")}
                 title={labels.colorPickerColorPicker}
                 aria-label={labels.colorPickerColorPicker}
               >
@@ -133,7 +145,7 @@ export const RichTextEditorColorPickerControl = forwardRef<
             ) : (
               <ActionIcon
                 variant="default"
-                onClick={() => setState('palette')}
+                onClick={() => setState("palette")}
                 aria-label={labels.colorPickerPalette}
                 title={labels.colorPickerPalette}
               >
@@ -141,7 +153,7 @@ export const RichTextEditorColorPickerControl = forwardRef<
               </ActionIcon>
             )}
 
-            {state === 'colorPicker' && (
+            {state === "colorPicker" && (
               <ActionIcon
                 variant="default"
                 onClick={close}
@@ -158,4 +170,5 @@ export const RichTextEditorColorPickerControl = forwardRef<
   );
 });
 
-RichTextEditorColorPickerControl.displayName = '@mantine/tiptap/ColorPickerControl';
+RichTextEditorColorPickerControl.displayName =
+  "@raikou/tiptap/ColorPickerControl";

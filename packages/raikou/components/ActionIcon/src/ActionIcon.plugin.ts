@@ -2,7 +2,7 @@ import { rem } from "@raikou/core";
 
 module.exports = function ({ addComponents, theme }: any) {
   addComponents({
-    ".actionIcon-root": {
+    ".actionIcon-root.actionIcon-root": {
       "--ai-size-xs": rem("18px"),
       "--ai-size-sm": rem("22px"),
       "--ai-size-md": rem("28px"),

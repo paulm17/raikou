@@ -30,6 +30,8 @@ __reExport(src_exports, require("@raikou/color-picker"), module.exports);
 __reExport(src_exports, require("@raikou/combobox"), module.exports);
 __reExport(src_exports, require("@raikou/dialog"), module.exports);
 __reExport(src_exports, require("@raikou/drawer"), module.exports);
+__reExport(src_exports, require("@raikou/filebutton"), module.exports);
+__reExport(src_exports, require("@raikou/fileinput"), module.exports);
 __reExport(src_exports, require("@raikou/hover-card"), module.exports);
 __reExport(src_exports, require("@raikou/inline-input"), module.exports);
 __reExport(src_exports, require("@raikou/input"), module.exports);
@@ -82,6 +84,8 @@ __reExport(src_exports, require("@raikou/tooltip"), module.exports);
   ...require("@raikou/combobox"),
   ...require("@raikou/dialog"),
   ...require("@raikou/drawer"),
+  ...require("@raikou/filebutton"),
+  ...require("@raikou/fileinput"),
   ...require("@raikou/hover-card"),
   ...require("@raikou/inline-input"),
   ...require("@raikou/input"),

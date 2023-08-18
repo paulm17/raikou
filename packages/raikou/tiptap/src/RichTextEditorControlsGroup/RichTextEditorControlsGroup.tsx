@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Box,
   BoxProps,
@@ -7,15 +7,14 @@ import {
   ElementProps,
   useProps,
   Factory,
-} from '@mantine/core';
-import { useRichTextEditorContext } from '../RichTextEditor.context';
-import classes from '../RichTextEditor.module.css';
+} from "@raikou/core";
+import { useRichTextEditorContext } from "../RichTextEditor.context";
 
-export type RichTextEditorControlsGroupStylesNames = 'controlsGroup';
+export type RichTextEditorControlsGroupStylesNames = "controlsGroup";
 export interface RichTextEditorControlsGroupProps
   extends BoxProps,
     StylesApiProps<RichTextEditorControlsGroupFactory>,
-    ElementProps<'div'> {}
+    ElementProps<"div"> {}
 
 export type RichTextEditorControlsGroupFactory = Factory<{
   props: RichTextEditorControlsGroupProps;
@@ -26,20 +25,25 @@ export type RichTextEditorControlsGroupFactory = Factory<{
 
 const defaultProps: Partial<RichTextEditorControlsGroupProps> = {};
 
-export const RichTextEditorControlsGroup = factory<RichTextEditorControlsGroupFactory>(
-  (_props, ref) => {
-    const props = useProps('RichTextEditorControlsGroup', defaultProps, _props);
-    const { classNames, className, style, styles, unstyled, vars, ...others } = props;
+export const RichTextEditorControlsGroup =
+  factory<RichTextEditorControlsGroupFactory>((_props, ref) => {
+    const props = useProps("RichTextEditorControlsGroup", defaultProps, _props);
+    const { classNames, className, style, styles, unstyled, vars, ...others } =
+      props;
     const ctx = useRichTextEditorContext();
     return (
       <Box
         ref={ref}
-        {...ctx.getStyles('controlsGroup', { className, style, styles, classNames })}
+        {...ctx.getStyles("controlsGroup", {
+          className,
+          style,
+          styles,
+          classNames,
+        })}
         {...others}
       />
     );
-  }
-);
+  });
 
-RichTextEditorControlsGroup.classes = classes;
-RichTextEditorControlsGroup.displayName = '@mantine/tiptap/RichTextEditorControlsGroup';
+RichTextEditorControlsGroup.displayName =
+  "@raikou/tiptap/RichTextEditorControlsGroup";

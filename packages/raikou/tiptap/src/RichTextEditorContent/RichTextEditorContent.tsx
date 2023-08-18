@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Box,
   BoxProps,
@@ -7,17 +7,16 @@ import {
   ElementProps,
   useProps,
   Factory,
-  TypographyStylesProvider,
-} from '@mantine/core';
-import { EditorContent } from '@tiptap/react';
-import { useRichTextEditorContext } from '../RichTextEditor.context';
-import classes from '../RichTextEditor.module.css';
+} from "@raikou/core";
+import { TypographyStylesProvider } from "../../../components/TypographyStylesProvider/src";
+import { EditorContent } from "@tiptap/react";
+import { useRichTextEditorContext } from "../RichTextEditor.context";
 
-export type RichTextEditorContentStylesNames = 'root';
+export type RichTextEditorContentStylesNames = "root";
 export interface RichTextEditorContentProps
   extends BoxProps,
     StylesApiProps<RichTextEditorContentFactory>,
-    ElementProps<'div'> {}
+    ElementProps<"div"> {}
 
 export type RichTextEditorContentFactory = Factory<{
   props: RichTextEditorContentProps;
@@ -28,36 +27,45 @@ export type RichTextEditorContentFactory = Factory<{
 
 const defaultProps: Partial<RichTextEditorContentProps> = {};
 
-export const RichTextEditorContent = factory<RichTextEditorContentFactory>((_props, ref) => {
-  const props = useProps('RichTextEditorContent', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, ...others } = props;
-  const ctx = useRichTextEditorContext();
+export const RichTextEditorContent = factory<RichTextEditorContentFactory>(
+  (_props, ref) => {
+    const props = useProps("RichTextEditorContent", defaultProps, _props);
+    const { classNames, className, style, styles, unstyled, vars, ...others } =
+      props;
+    const ctx = useRichTextEditorContext();
 
-  if (ctx.withTypographyStyles) {
+    if (ctx.withTypographyStyles) {
+      return (
+        <TypographyStylesProvider
+          {...ctx.getStyles("typographyStylesProvider", {
+            className,
+            style,
+            styles,
+            classNames,
+          })}
+          ref={ref}
+        >
+          <Box
+            // @ts-ignore
+            component={EditorContent}
+            editor={ctx.editor}
+            {...ctx.getStyles("content", { classNames, styles })}
+            {...others}
+          />
+        </TypographyStylesProvider>
+      );
+    }
+
     return (
-      <TypographyStylesProvider
-        {...ctx.getStyles('typographyStylesProvider', { className, style, styles, classNames })}
-        ref={ref}
-      >
-        <Box
-          component={EditorContent}
-          editor={ctx.editor}
-          {...ctx.getStyles('content', { classNames, styles })}
-          {...others}
-        />
-      </TypographyStylesProvider>
+      <Box
+        // @ts-ignore
+        component={EditorContent}
+        editor={ctx.editor}
+        {...ctx.getStyles("content", { classNames, styles, className, style })}
+        {...others}
+      />
     );
-  }
+  },
+);
 
-  return (
-    <Box
-      component={EditorContent}
-      editor={ctx.editor}
-      {...ctx.getStyles('content', { classNames, styles, className, style })}
-      {...others}
-    />
-  );
-});
-
-RichTextEditorContent.classes = classes;
-RichTextEditorContent.displayName = '@mantine/tiptap/RichTextEditorContent';
+RichTextEditorContent.displayName = "@raikou/tiptap/RichTextEditorContent";
