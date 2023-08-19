@@ -97,13 +97,13 @@ var require_global_plugin = __commonJS({
         },
         ".raikou-focus-auto": {
           "&:focus-visible": {
-            outline: `${rem("2px")} solid var(--raikou-color-primary)`,
+            outline: `${rem("2px")} solid var(--raikou-primary-color-filled)`,
             outlineOffset: rem("2px")
           }
         },
         ".raikou-focus-always": {
           "&:focus": {
-            outline: `${rem("2px")} solid var(--raikou-color-primary)`,
+            outline: `${rem("2px")} solid var(--raikou-primary-color-filled)`,
             outlineOffset: rem("2px")
           }
         },
@@ -2736,7 +2736,7 @@ var require_Chip_plugin = __commonJS({
           opacity: "0",
           margin: "0",
           "&:focus-visible + .label": {
-            outline: `${rem2("2px")} solid var(--raikou-color-primary)`,
+            outline: `${rem2("2px")} solid var(--raikou-primary-color-filled)`,
             outlineOffset: rem2("2px")
           }
         }
@@ -3060,7 +3060,7 @@ var require_Combobox_plugin = __commonJS({
           cursor: "var(--_option-cursor, pointer)",
           wordBreak: "break-word",
           "&[data-combobox-selected]": {
-            "--_option-bg": "var(--raikou-color-primary)",
+            "--_option-bg": "var(--raikou-primary-color-filled)",
             "--_option-color": "var(--raikou-color-white)"
           },
           "&[data-combobox-disabled]": {
@@ -3760,12 +3760,12 @@ var require_Input_plugin = __commonJS({
             '&[data-variant="default"]': {
               "--_input-bd": "var(--raikou-input-default-bd)",
               "--_input-bg": "var(--raikou-input-default-bg)",
-              "--_input-bd-focus": "var(--raikou-color-primary)"
+              "--_input-bd-focus": "var(--raikou-primary-color-filled)"
             },
             "&[data-variant='filled']": {
               "--_input-bd": "var(--raikou-input-filled-bd)",
               "--_input-bg": "var(--raikou-input-filled-bg)",
-              "--_input-bd-focus": "var(--raikou-color-primary)"
+              "--_input-bd-focus": "var(--raikou-primary-color-filled)"
             },
             "&[data-variant='unstyled']": {
               "--_input-bd": "transparent",
@@ -3779,12 +3779,12 @@ var require_Input_plugin = __commonJS({
             "&[data-variant='default']": {
               "--_input-bd": "var(--raikou-input-default-bd)",
               "--_input-bg": "var(--raikou-input-default-bg)",
-              "--_input-bd-focus": "var(--raikou-color-primary)"
+              "--_input-bd-focus": "var(--raikou-primary-color-filled)"
             },
             "&[data-variant='filled']": {
               "--_input-bd": "var(--raikou-input-filled-bd)",
               "--_input-bg": "var(--raikou-input-filled-bg)",
-              "--_input-bd-focus": "var(--raikou-color-primary)"
+              "--_input-bd-focus": "var(--raikou-primary-color-filled)"
             },
             "&[data-variant='unstyled']": {
               "--_input-bd": "transparent",
@@ -5422,7 +5422,7 @@ var require_Rating_plugin = __commonJS({
           whiteSpace: "nowrap",
           opacity: "0",
           "&:focus-visible + label": {
-            outline: `${rem2("2px")} solid var(--raikou-color-primary)`,
+            outline: `${rem2("2px")} solid var(--raikou-primary-color-filled)`,
             outlineOffset: rem2("2px")
           }
         },
@@ -6477,7 +6477,7 @@ var require_Switch_plugin = __commonJS({
           lineHeight: "0",
           color: "var(--_switch-color)",
           ".switch-input:focus-visible + &": {
-            outline: `${rem2("2px")} solid var(--raikou-color-primary)`,
+            outline: `${rem2("2px")} solid var(--raikou-primary-color-filled)`,
             outlineOffset: rem2("2px")
           },
           ".switch-input:checked + &": {
@@ -8694,7 +8694,7 @@ var require_Spotlight_plugin = __commonJS({
             }
           },
           "&[data-selected]": {
-            "--_action-bg": "var(--raikou-color-primary)",
+            "--_action-bg": "var(--raikou-primary-color-filled)",
             "--_action-color": "var(--raikou-color-white)",
             "--_action-description-color": "var(--raikou-color-white)",
             "--_action-description-opacity": "0.7"

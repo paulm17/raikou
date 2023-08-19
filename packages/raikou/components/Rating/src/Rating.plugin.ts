@@ -59,7 +59,7 @@ module.exports = function ({ addComponents, theme }: any) {
       opacity: "0",
 
       "&:focus-visible + label": {
-        outline: `${rem("2px")} solid var(--raikou-color-primary)`,
+        outline: `${rem("2px")} solid var(--raikou-primary-color-filled)`,
         outlineOffset: rem("2px"),
       },
     },

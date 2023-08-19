@@ -515,18 +515,6 @@ function getThemeColor(color, theme) {
   return parsed.variable ? `var(${parsed.variable})` : color;
 }
 
-// src/core/RaikouProvider/color-functions/get-gradient/get-gradient.ts
-function getGradient(gradient, theme) {
-  const merged = {
-    from: (gradient == null ? void 0 : gradient.from) || theme.defaultGradient.from,
-    to: (gradient == null ? void 0 : gradient.to) || theme.defaultGradient.to,
-    deg: (gradient == null ? void 0 : gradient.deg) || theme.defaultGradient.deg || 0
-  };
-  const fromColor = getThemeColor(merged.from, theme);
-  const toColor = getThemeColor(merged.to, theme);
-  return `linear-gradient(${merged.deg}deg, ${fromColor} 0%, ${toColor} 100%)`;
-}
-
 // src/core/RaikouProvider/color-functions/to-rgba/to-rgba.ts
 function isHexColor(hex) {
   const HEX_REGEXP = /^#?([0-9A-F]{3}){1,2}$/i;
@@ -816,9 +804,10 @@ var defaultVariantColorsResolver = ({
     };
   }
   if (variant === "gradient") {
+    const gradient2 = `linear-gradient(var(--raikou-gradient-deg), var(--raikou-gradient-from) 0%, var(--raikou-gradient-to) 100%)`;
     return {
-      background: getGradient(gradient, theme),
-      hover: getGradient(gradient, theme),
+      background: gradient2,
+      hover: gradient2,
       color: "var(--raikou-color-white)",
       border: "none"
     };
@@ -833,6 +822,18 @@ var defaultVariantColorsResolver = ({
   }
   return {};
 };
+
+// src/core/RaikouProvider/color-functions/get-gradient/get-gradient.ts
+function getGradient(gradient, theme) {
+  const merged = {
+    from: (gradient == null ? void 0 : gradient.from) || theme.defaultGradient.from,
+    to: (gradient == null ? void 0 : gradient.to) || theme.defaultGradient.to,
+    deg: (gradient == null ? void 0 : gradient.deg) || theme.defaultGradient.deg || 0
+  };
+  const fromColor = getThemeColor(merged.from, theme);
+  const toColor = getThemeColor(merged.to, theme);
+  return `linear-gradient(${merged.deg}deg, ${fromColor} 0%, ${toColor} 100%)`;
+}
 
 // src/core/RaikouProvider/color-functions/lighten/lighten.ts
 function lighten(color, alpha) {
@@ -880,7 +881,11 @@ var DEFAULT_THEME = {
   fontFamilyMonospace: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
   respectReducedMotion: false,
   cursorType: "default",
-  defaultGradient: { from: "blue", to: "cyan", deg: 45 },
+  defaultGradient: {
+    from: "#dbe4f5",
+    to: "#3a5791",
+    deg: "45deg"
+  },
   defaultRadius: "sm",
   activeClassName: "raikou-active",
   focusClassName: "",

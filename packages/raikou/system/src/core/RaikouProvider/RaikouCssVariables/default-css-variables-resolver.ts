@@ -45,6 +45,17 @@ export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
       "--raikou-font-family-headings": theme.headings.fontFamily,
       "--raikou-heading-font-weight": theme.headings.fontWeight,
       "--raikou-radius-default": defaultRadius,
+
+      // Primary colors
+      "--raikou-primary-color-filled": `var(--raikou-color-${theme.primaryColor}-filled)`,
+      "--raikou-primary-color-light": `var(--raikou-color-${theme.primaryColor}-light)`,
+      "--raikou-primary-color-light-hover": `var(--raikou-color-${theme.primaryColor}-light-hover)`,
+      "--raikou-primary-color-light-color": `var(--raikou-color-${theme.primaryColor}-light-color)`,
+
+      // Gradient
+      "--raikou-gradient-from": theme.colors[theme.primaryColor][1],
+      "--raikou-gradient-to": theme.colors[theme.primaryColor][8],
+      "--raikou-gradient-deg": theme.defaultGradient.deg as string,
     },
     light: {
       "--raikou-color-text": theme.black,
@@ -77,11 +88,6 @@ export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
   assignSizeVariables(result.variables, theme.lineHeights, "line-height");
   assignSizeVariables(result.variables, theme.shadows, "shadow");
   assignSizeVariables(result.variables, theme.radius, "radius");
-
-  result.light["--raikou-color-primary"] =
-    theme.colors[theme.primaryColor][lightPrimaryShade];
-  result.dark["--raikou-color-primary"] =
-    theme.colors[theme.primaryColor][darkPrimaryShade];
 
   keys(theme.colors).forEach((color) => {
     theme.colors[color].forEach((shade, index) => {

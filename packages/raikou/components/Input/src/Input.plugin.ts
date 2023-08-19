@@ -85,13 +85,13 @@ module.exports = function ({ addComponents, theme }: any) {
         '&[data-variant="default"]': {
           "--_input-bd": "var(--raikou-input-default-bd)",
           "--_input-bg": "var(--raikou-input-default-bg)",
-          "--_input-bd-focus": "var(--raikou-color-primary)",
+          "--_input-bd-focus": "var(--raikou-primary-color-filled)",
         },
 
         "&[data-variant='filled']": {
           "--_input-bd": "var(--raikou-input-filled-bd)",
           "--_input-bg": "var(--raikou-input-filled-bg)",
-          "--_input-bd-focus": "var(--raikou-color-primary)",
+          "--_input-bd-focus": "var(--raikou-primary-color-filled)",
         },
 
         "&[data-variant='unstyled']": {
@@ -108,13 +108,13 @@ module.exports = function ({ addComponents, theme }: any) {
         "&[data-variant='default']": {
           "--_input-bd": "var(--raikou-input-default-bd)",
           "--_input-bg": "var(--raikou-input-default-bg)",
-          "--_input-bd-focus": "var(--raikou-color-primary)",
+          "--_input-bd-focus": "var(--raikou-primary-color-filled)",
         },
 
         "&[data-variant='filled']": {
           "--_input-bd": "var(--raikou-input-filled-bd)",
           "--_input-bg": "var(--raikou-input-filled-bg)",
-          "--_input-bd-focus": "var(--raikou-color-primary)",
+          "--_input-bd-focus": "var(--raikou-primary-color-filled)",
         },
 
         "&[data-variant='unstyled']": {

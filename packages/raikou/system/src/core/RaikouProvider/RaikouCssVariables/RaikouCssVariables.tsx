@@ -1,5 +1,8 @@
 import React from "react";
-import { convertCssVariables } from "../convert-css-variables/convert-css-variables";
+import {
+  convertCssNestedVariables,
+  convertCssVariables,
+} from "../convert-css-variables/convert-css-variables";
 import { getMergedVariables } from "./get-merged-variables";
 import { removeDefaultVariables } from "./remove-default-variables";
 
@@ -23,12 +26,22 @@ export function RaikouCssVariables({
   cssVariablesResolver: generator,
   cssVariablesSelector,
 }: RaikouCssVariablesProps) {
-  const mergedVariables = getMergedVariables({ theme, generator });
+  // Theme
+  const mergedVariables = getMergedVariables({ theme });
   const shouldCleanVariables = cssVariablesSelector === ":root";
   const cleanedVariables = shouldCleanVariables
     ? removeDefaultVariables(mergedVariables)
     : mergedVariables;
   const css = convertCssVariables(cleanedVariables, cssVariablesSelector);
+
+  // cssVariablesResolver
+  let css2 = "";
+
+  if (generator) {
+    const providerGeneratorFunc = new Function("theme", generator);
+    const providerGenerator = providerGeneratorFunc?.(theme);
+    css2 = convertCssNestedVariables(providerGenerator, cssVariablesSelector);
+  }
 
   if (css) {
     return (
@@ -40,7 +53,7 @@ export function RaikouCssVariables({
             shouldCleanVariables
               ? ""
               : getColorSchemeCssVariables(cssVariablesSelector)
-          }`,
+          }${css2}`,
         }}
       />
     );

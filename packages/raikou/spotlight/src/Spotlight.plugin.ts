@@ -92,7 +92,7 @@ module.exports = function ({ addComponents }: any) {
       },
 
       "&[data-selected]": {
-        "--_action-bg": "var(--raikou-color-primary)",
+        "--_action-bg": "var(--raikou-primary-color-filled)",
         "--_action-color": "var(--raikou-color-white)",
         "--_action-description-color": "var(--raikou-color-white)",
         "--_action-description-opacity": "0.7",

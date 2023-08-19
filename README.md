@@ -397,8 +397,10 @@ When omitting "use client" this results in Page.js not being requested.
 - [ ] With the new tailwind release, investigate whether it's possible to port
       the current plugins to css files and whether components can access the
       theme
-- [ ] Create a <a href="https://daisyui.com/docs/themes/">theme switcher</a>
-      similar to Daisy UI
+- [x] Create a <a href="https://daisyui.com/docs/themes/">theme switcher</a>
+      similar to Daisy UI. See the
+      <a href="https://github.com/paulm17/raikou/blob/main/apps/web/app/themer/page.tsx">/themer
+      endpoint</a>.
 - [ ] Fix the Storybook demos to work under version 7
 
 See the [open issues](https://github.com/paulm17/raikou/issues) for a full list

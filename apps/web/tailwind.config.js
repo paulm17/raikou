@@ -78,6 +78,7 @@ module.exports = {
     "./node_modules/@raikou/client/node_modules/@raikou/scroll-area/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/slider/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/spoiler/dist/*.js",
+    "./node_modules/@raikou/client/node_modules/@raikou/stepper/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/switch/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/tabs/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/text-input/dist/*.js",

@@ -14,6 +14,8 @@ export function removeDefaultVariables(
     dark: {},
   };
 
+  defaultCssVariables.variables["--raikou-gradient-deg"] = "";
+
   keys(input.variables).forEach((key) => {
     if (defaultCssVariables.variables[key] !== input.variables[key]) {
       cleaned.variables[key] = input.variables[key];

@@ -71,7 +71,7 @@ module.exports = function ({ addComponents, theme }: any) {
       color: "var(--_switch-color)",
 
       ".switch-input:focus-visible + &": {
-        outline: `${rem("2px")} solid var(--raikou-color-primary)`,
+        outline: `${rem("2px")} solid var(--raikou-primary-color-filled)`,
         outlineOffset: rem("2px"),
       },
 

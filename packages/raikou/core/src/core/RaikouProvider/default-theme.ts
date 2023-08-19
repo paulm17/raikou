@@ -21,7 +21,11 @@ export const DEFAULT_THEME: RaikouTheme = {
     "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
   respectReducedMotion: false,
   cursorType: "default",
-  defaultGradient: { from: "blue", to: "cyan", deg: 45 },
+  defaultGradient: {
+    from: "#dbe4f5",
+    to: "#3a5791",
+    deg: "45deg",
+  },
   defaultRadius: "sm",
   activeClassName: "raikou-active",
   focusClassName: "",

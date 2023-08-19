@@ -160,7 +160,7 @@ export type RaikouThemeOther = Record<string, any>;
 export interface RaikouGradient {
   from: string;
   to: string;
-  deg?: number;
+  deg?: string;
 }
 
 export type RaikouColorsTuple = readonly [

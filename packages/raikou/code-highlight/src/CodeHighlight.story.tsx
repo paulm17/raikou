@@ -110,19 +110,26 @@ const cssCode = `.root {
   border: var(--ai-bd);
   cursor: var(--_cursor);
 
-  @mixin hover {
-    &:not([data-loading]):not(:disabled):not([data-disabled]) {
-      --_bg: var(--ai-hover);
-    }
+  @media (hover: hover) {
+    "&:hover": {
+      &:not([data-loading]):not(:disabled):not([data-disabled]) {
+        --_bg: var(--ai-hover);
+      }
+    },
+    "&:active": {
+      &:not([data-loading]):not(:disabled):not([data-disabled]) {
+        --_bg: var(--ai-hover);
+      }
+    },    
   }
 
-  @mixin light {
+  [data-raikou-color-scheme="light"] {
     --_loading-overlay-bg: rgba(255, 255, 255, 0.35);
     --_disabled-bg: var(--raikou-color-gray-1);
     --_disabled-color: var(--raikou-color-gray-5);
   }
 
-  @mixin dark {
+  [data-raikou-color-scheme="dark"] {
     --_loading-overlay-bg: rgba(0, 0, 0, 0.35);
     --_disabled-bg: var(--raikou-color-dark-6);
     --_disabled-color: var(--raikou-color-dark-3);

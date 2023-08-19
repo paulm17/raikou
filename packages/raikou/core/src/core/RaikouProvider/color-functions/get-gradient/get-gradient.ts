@@ -1,7 +1,10 @@
-import { RaikouGradient, RaikouTheme } from '../../theme.types';
-import { getThemeColor } from '../get-theme-color/get-theme-color';
+import { RaikouGradient, RaikouTheme } from "../../theme.types";
+import { getThemeColor } from "../get-theme-color/get-theme-color";
 
-export function getGradient(gradient: RaikouGradient | undefined, theme: RaikouTheme) {
+export function getGradient(
+  gradient: RaikouGradient | undefined,
+  theme: RaikouTheme,
+) {
   const merged = {
     from: gradient?.from || theme.defaultGradient.from,
     to: gradient?.to || theme.defaultGradient.to,

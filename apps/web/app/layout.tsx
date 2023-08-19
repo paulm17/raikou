@@ -9,16 +9,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const theme = createTheme({
-    primaryColor: "primary",
+    primaryColor: "theme",
     colors: {
-      primary: generateColors("#F0185C"),
+      theme: generateColors("#5474B4"),
     },
   });
 
   setState(theme);
 
   return (
-    <html lang="en" dir="ltr" data-raikou-theme="default">
+    <html lang="en" dir="ltr">
       <body>
         <RaikouProvider theme={theme}>
           <body>{children}</body>

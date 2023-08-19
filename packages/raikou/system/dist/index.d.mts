@@ -3548,7 +3548,7 @@ type RaikouThemeOther = Record<string, any>;
 interface RaikouGradient {
     from: string;
     to: string;
-    deg?: number;
+    deg?: string;
 }
 type RaikouColorsTuple = readonly [
     string,

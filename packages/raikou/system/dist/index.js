@@ -604,7 +604,11 @@ var DEFAULT_THEME = {
   fontFamilyMonospace: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
   respectReducedMotion: false,
   cursorType: "default",
-  defaultGradient: { from: "blue", to: "cyan", deg: 45 },
+  defaultGradient: {
+    from: "#dbe4f5",
+    to: "#3a5791",
+    deg: "45deg"
+  },
   defaultRadius: "sm",
   activeClassName: "raikou-active",
   focusClassName: "",
@@ -724,6 +728,13 @@ function mergeRaikouTheme(currentTheme, themeOverride) {
 function cssVariablesObjectToString(variables) {
   return Object.entries(variables).map(([name, value]) => `${name}: ${value};`).join("");
 }
+function cssNestedVariablesObjectToString(variables) {
+  let cssString = "";
+  for (const nestedSelector in variables) {
+    cssString += `${nestedSelector}: ${variables[nestedSelector]}`;
+  }
+  return cssString.trim();
+}
 
 // src/core/RaikouProvider/convert-css-variables/wrap-with-selector.ts
 function wrapWithSelector(selectors, code) {
@@ -740,6 +751,29 @@ function convertCssVariables(input, selector) {
   const light = cssVariablesObjectToString(input.light);
   const lightForced = light ? wrapWithSelector(`${selector}[data-raikou-color-scheme="light"]`, light) : "";
   return `${shared}${darkForced}${lightForced}`;
+}
+function convertCssNestedVariables(input, selector) {
+  let darkForced = "";
+  for (const nestedSelector in input.dark) {
+    const dark = cssNestedVariablesObjectToString(input.dark[nestedSelector]);
+    if (dark) {
+      darkForced += wrapWithSelector(
+        `${selector}[data-raikou-color-scheme="dark"] ${nestedSelector}`,
+        dark
+      );
+    }
+  }
+  let lightForced = "";
+  for (const nestedSelector in input.light) {
+    const light = cssNestedVariablesObjectToString(input.light[nestedSelector]);
+    if (light) {
+      lightForced += wrapWithSelector(
+        `${selector}[data-raikou-color-scheme="light"] ${nestedSelector}`,
+        light
+      );
+    }
+  }
+  return `${darkForced}${lightForced}`;
 }
 
 // src/core/RaikouProvider/RaikouCssVariables/default-css-variables-resolver.ts
@@ -767,7 +801,16 @@ var defaultCssVariablesResolver = (theme) => {
       "--raikou-font-family-monospace": theme.fontFamilyMonospace,
       "--raikou-font-family-headings": theme.headings.fontFamily,
       "--raikou-heading-font-weight": theme.headings.fontWeight,
-      "--raikou-radius-default": defaultRadius
+      "--raikou-radius-default": defaultRadius,
+      // Primary colors
+      "--raikou-primary-color-filled": `var(--raikou-color-${theme.primaryColor}-filled)`,
+      "--raikou-primary-color-light": `var(--raikou-color-${theme.primaryColor}-light)`,
+      "--raikou-primary-color-light-hover": `var(--raikou-color-${theme.primaryColor}-light-hover)`,
+      "--raikou-primary-color-light-color": `var(--raikou-color-${theme.primaryColor}-light-color)`,
+      // Gradient
+      "--raikou-gradient-from": theme.colors[theme.primaryColor][1],
+      "--raikou-gradient-to": theme.colors[theme.primaryColor][8],
+      "--raikou-gradient-deg": theme.defaultGradient.deg
     },
     light: {
       "--raikou-color-text": theme.black,
@@ -798,8 +841,6 @@ var defaultCssVariablesResolver = (theme) => {
   assignSizeVariables(result.variables, theme.lineHeights, "line-height");
   assignSizeVariables(result.variables, theme.shadows, "shadow");
   assignSizeVariables(result.variables, theme.radius, "radius");
-  result.light["--raikou-color-primary"] = theme.colors[theme.primaryColor][lightPrimaryShade];
-  result.dark["--raikou-color-primary"] = theme.colors[theme.primaryColor][darkPrimaryShade];
   keys(theme.colors).forEach((color) => {
     theme.colors[color].forEach((shade, index) => {
       result.variables[`--raikou-color-${color}-${index}`] = shade;
@@ -851,14 +892,8 @@ var defaultCssVariablesResolver = (theme) => {
 };
 
 // src/core/RaikouProvider/RaikouCssVariables/get-merged-variables.ts
-function getMergedVariables({
-  theme,
-  generator
-}) {
-  const defaultResolver = defaultCssVariablesResolver(theme);
-  const providerGeneratorFunc = new Function("theme", generator);
-  const providerGenerator = providerGeneratorFunc == null ? void 0 : providerGeneratorFunc(theme);
-  return providerGenerator ? deepMerge(defaultResolver, providerGenerator) : defaultResolver;
+function getMergedVariables({ theme }) {
+  return defaultCssVariablesResolver(theme);
 }
 
 // src/core/RaikouProvider/RaikouCssVariables/remove-default-variables.ts
@@ -869,6 +904,7 @@ function removeDefaultVariables(input) {
     light: {},
     dark: {}
   };
+  defaultCssVariables.variables["--raikou-gradient-deg"] = "";
   keys(input.variables).forEach((key) => {
     if (defaultCssVariables.variables[key] !== input.variables[key]) {
       cleaned.variables[key] = input.variables[key];
@@ -900,15 +936,21 @@ function createCSSVariables({
   cssVariablesSelector = ":root"
 }) {
   let mergedTheme = mergeRaikouTheme(DEFAULT_THEME, theme);
-  const mergedVariables = getMergedVariables({ theme: mergedTheme, generator });
+  const mergedVariables = getMergedVariables({ theme: mergedTheme });
   const shouldCleanVariables = cssVariablesSelector === ":root";
   const cleanedVariables = shouldCleanVariables ? removeDefaultVariables(mergedVariables) : mergedVariables;
   const css = convertCssVariables(cleanedVariables, cssVariablesSelector);
+  const providerGeneratorFunc = new Function("theme", generator);
+  const providerGenerator = providerGeneratorFunc == null ? void 0 : providerGeneratorFunc(theme);
+  const css2 = convertCssNestedVariables(
+    providerGenerator,
+    cssVariablesSelector
+  );
   var elem = document.querySelector('style[data-raikou-styles="system"]');
   elem == null ? void 0 : elem.remove();
   var newElem = document.createElement("style");
   newElem.setAttribute("data-raikou-styles", "system");
-  newElem.innerHTML = `${css}${shouldCleanVariables ? "" : getColorSchemeCssVariables(cssVariablesSelector)}`;
+  newElem.innerHTML = `${css}${shouldCleanVariables ? "" : getColorSchemeCssVariables(cssVariablesSelector)}${css2}`;
   document.body.prepend(newElem);
   return null;
 }
@@ -942,10 +984,16 @@ function RaikouCssVariables({
   cssVariablesResolver: generator,
   cssVariablesSelector
 }) {
-  const mergedVariables = getMergedVariables({ theme, generator });
+  const mergedVariables = getMergedVariables({ theme });
   const shouldCleanVariables = cssVariablesSelector === ":root";
   const cleanedVariables = shouldCleanVariables ? removeDefaultVariables(mergedVariables) : mergedVariables;
   const css = convertCssVariables(cleanedVariables, cssVariablesSelector);
+  let css2 = "";
+  if (generator) {
+    const providerGeneratorFunc = new Function("theme", generator);
+    const providerGenerator = providerGeneratorFunc == null ? void 0 : providerGeneratorFunc(theme);
+    css2 = convertCssNestedVariables(providerGenerator, cssVariablesSelector);
+  }
   if (css) {
     return /* @__PURE__ */ import_react.default.createElement(
       "style",
@@ -953,7 +1001,7 @@ function RaikouCssVariables({
         "data-raikou-styles": "system",
         nonce: nonce == null ? void 0 : nonce(),
         dangerouslySetInnerHTML: {
-          __html: `${css}${shouldCleanVariables ? "" : getColorSchemeCssVariables2(cssVariablesSelector)}`
+          __html: `${css}${shouldCleanVariables ? "" : getColorSchemeCssVariables2(cssVariablesSelector)}${css2}`
         }
       }
     );

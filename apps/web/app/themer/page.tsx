@@ -4,11 +4,11 @@ import {
   Alert,
   Anchor,
   Badge,
-  Box,
   Button,
   Center,
   Grid,
   Group,
+  Image,
   Loader,
   Notification,
   Stack,
@@ -19,21 +19,30 @@ import {
   Accordion,
   Checkbox,
   Chip,
-  ColorInput,
+  Combobox,
+  Input,
+  InputBase,
   MultiSelect,
   Pagination,
   Radio,
   ScrollArea,
   SegmentedControl,
   Select,
+  Stepper,
   Switch,
   Tabs,
   TextInput,
+  useCombobox,
 } from "@raikou/client";
-import { useColorScheme, createCSSVariables, rem } from "@raikou/system";
-import { useElementSize, useDebouncedState } from "@raikou/hooks";
+import {
+  useColorScheme,
+  createCSSVariables,
+  RaikouThemeOverride,
+} from "@raikou/system";
+import { useElementSize } from "@raikou/hooks";
 import { createTheme } from "@raikou/global-store";
 import { generateColors } from "@raikou/colors-generator";
+import { CSSVariablesResolver } from "@raikou/system";
 
 type Mode = "light" | "dark" | "system";
 type Size = "xs" | "sm" | "md" | "lg" | "xl";
@@ -57,6 +66,24 @@ const allOpen = [
   "segmentedControl",
 ];
 
+const themes = [
+  {
+    label: (
+      <Group gap={3}>
+        <Image className="w-[18px]" src="/logo.png" />
+        <Text size={"14px"}>Mantine</Text>
+      </Group>
+    ),
+    value: "mantine",
+  },
+  { label: "🧁 Cupcake", value: "cupcake" },
+  { label: "🐝 Bumblebee", value: "bumblebee" },
+  { label: "🧛 Dracula", value: "dracula" },
+  { label: "🚗 Retro", value: "retro" },
+  { label: "🌊 Synthwave", value: "synthwave" },
+  { label: "🦊 Moonlight", value: "moonlight" },
+];
+
 function Themer() {
   const isMountedRef = useRef<boolean>(false);
   const { colorScheme, setColorScheme } = useColorScheme();
@@ -64,7 +91,7 @@ function Themer() {
   const [size, setSize] = useState<Size>("xs");
   const [open, setOpen] = useState<string[]>(allOpen);
   const { ref, height } = useElementSize();
-  const [color, setColor] = useDebouncedState("", 50);
+  const [value, setValue] = useState<string | null>("mantine");
 
   const modes = [
     { label: "Light mode", value: "light" },
@@ -80,30 +107,214 @@ function Themer() {
     setOpen([]);
   };
 
+  const combobox = useCombobox({
+    onDropdownClose: () => combobox.resetSelectedOption(),
+  });
+
+  const options = themes.map((item) => (
+    <Combobox.Option value={item.value} key={item.label.toString()}>
+      {item.label}
+    </Combobox.Option>
+  ));
+
+  const changeTheme = (value: string | null, mode: Mode) => {
+    let themeObj = {} as RaikouThemeOverride;
+    let cssVarsResolver = `return {}` as CSSVariablesResolver;
+
+    if (value === "mantine") {
+      themeObj = {
+        primaryColor: "theme",
+        black: "#000",
+        white: "#fff",
+        colors: {
+          theme: generateColors("#2c4c81"),
+        },
+      };
+    } else if (value === "cupcake") {
+      if (mode === "dark") {
+        setColorScheme("light");
+      }
+
+      themeObj = {
+        primaryColor: "theme",
+        black: "#291334",
+        white: "#faf7f5",
+        defaultGradient: { from: "#395990", to: "#dde4f1", deg: "180deg" },
+        colors: {
+          theme: generateColors("e9ddee"),
+        },
+      };
+
+      cssVarsResolver = `
+        return {
+          light: {
+            '.accordion-root': {
+              '--raikou-accordion-item-border-color': '#395990'
+            },
+            '.input-wrapper[data-variant="default"]': {
+              '--raikou-input-default-bd': '#395990'
+            }            
+          }           
+        };
+      `;
+    } else if (value === "bumblebee") {
+      if (mode === "dark") {
+        setColorScheme("light");
+      }
+
+      themeObj = {
+        primaryColor: "theme",
+        black: "#333",
+        white: "#fff",
+        colors: {
+          theme: generateColors("#5454A0"),
+        },
+      };
+
+      cssVarsResolver = `
+        return {
+          light: {
+            '.accordion-root': {
+              '--raikou-accordion-item-border-color': '#5454A0'
+            },
+            '.input-wrapper[data-variant="default"]': {
+              '--raikou-input-default-bd': '#5454A0'
+            }            
+          }           
+        };
+      `;
+    } else if (value === "dracula") {
+      if (mode === "light") {
+        setColorScheme("dark");
+      }
+
+      themeObj = {
+        primaryColor: "theme",
+        black: "#282a36",
+        white: "#f8f8f2",
+        colors: {
+          theme: generateColors("#959AB1"),
+        },
+      };
+
+      cssVarsResolver = `
+        return {
+          light: {
+            '.accordion-root': {
+              '--raikou-accordion-item-border-color': '#959AB1'
+            },
+            '.input-wrapper[data-variant="default"]': {
+              '--raikou-input-default-bd': '#959AB1'
+            }            
+          }           
+        };
+      `;
+    } else if (value === "retro") {
+      if (mode === "dark") {
+        setColorScheme("light");
+      }
+
+      themeObj = {
+        primaryColor: "theme",
+        black: "#e4d8b4",
+        white: "#282425",
+        colors: {
+          theme: generateColors("#CCC6B7"),
+        },
+      };
+
+      cssVarsResolver = `
+        return {
+          light: {
+            '.accordion-root': {
+              '--raikou-accordion-item-border-color': '#CCC6B7'
+            },
+            '.input-wrapper[data-variant="default"]': {
+              '--raikou-input-default-bd': '#CCC6B7'
+            }            
+          }           
+        };
+      `;
+    } else if (value === "synthwave") {
+      if (mode === "light") {
+        setColorScheme("dark");
+      }
+
+      themeObj = {
+        primaryColor: "theme",
+        black: "#2d1b69",
+        white: "#f9f7fd",
+        colors: {
+          theme: generateColors("#5A3ACF"),
+        },
+      };
+
+      cssVarsResolver = `
+        return {
+          light: {
+            '.accordion-root': {
+              '--raikou-accordion-item-border-color': '#5A3ACF'
+            },
+            '.input-wrapper[data-variant="default"]': {
+              '--raikou-input-default-bd': '#5A3ACF'
+            }            
+          }           
+        };
+      `;
+    } else if (value === "moonlight") {
+      if (mode === "light") {
+        setColorScheme("dark");
+      }
+
+      themeObj = {
+        primaryColor: "theme",
+        black: "#1B1E2B",
+        white: "#e4f3fa",
+        colors: {
+          theme: generateColors("#D1D5F0"),
+        },
+      };
+
+      cssVarsResolver = `
+        return {
+          light: {
+            '.accordion-root': {
+              '--raikou-accordion-item-border-color': '#D1D5F0'
+            },
+            '.input-wrapper[data-variant="default"]': {
+              '--raikou-input-default-bd': '#D1D5F0'
+            }            
+          }           
+        };
+      `;
+    }
+
+    const theme = createTheme(themeObj);
+
+    createCSSVariables({ theme, cssVariablesResolver: cssVarsResolver });
+  };
+
+  useLayoutEffect(() => {
+    isMountedRef.current = true;
+  }, []);
+
   useEffect(() => {
     if (isMountedRef.current) {
-      setColorScheme(mode as Mode);
+      changeTheme(value, mode);
+    }
+  }, [value]);
+
+  useEffect(() => {
+    if (isMountedRef.current) {
+      setColorScheme(mode);
     }
   }, [mode]);
 
   useEffect(() => {
     if (isMountedRef.current) {
-      if (color !== "") {
-        const theme = createTheme({
-          primaryColor: "primary",
-          colors: {
-            primary: generateColors(color),
-          },
-        });
-
-        createCSSVariables({ theme });
-      }
+      setMode(colorScheme as Mode);
     }
-  }, [color]);
-
-  useLayoutEffect(() => {
-    isMountedRef.current = true;
-  }, []);
+  }, [colorScheme]);
 
   return (
     <Grid
@@ -123,14 +334,15 @@ function Themer() {
                   <SegmentedControl
                     size="xs"
                     value={mode as Mode}
-                    onChange={(value) => setMode(value as Mode)}
+                    onChange={(value: Mode) => setMode(value)}
                     data={modes}
+                    disabled={value !== "mantine" ? true : false}
                   />
 
                   <SegmentedControl
                     size="xs"
                     value={size}
-                    onChange={(value) => setSize(value as Size)}
+                    onChange={(value: Size) => setSize(value)}
                     data={sizes}
                   />
                 </Group>
@@ -182,7 +394,7 @@ function Themer() {
                 </Group>
               </Group>
             )}
-            <ScrollArea.Autosize mah={height - 350} type="auto">
+            <ScrollArea.Autosize mah={height - 290} type="auto">
               <Accordion multiple value={open} onChange={setOpen}>
                 <Accordion.Item value="button">
                   <Accordion.Control>Button</Accordion.Control>
@@ -286,7 +498,38 @@ function Themer() {
                 </Accordion.Item>
                 <Accordion.Item value="stepper">
                   <Accordion.Control>Stepper</Accordion.Control>
-                  <Accordion.Panel>TBD</Accordion.Panel>
+                  <Accordion.Panel>
+                    <>
+                      <Stepper active={1}>
+                        <Stepper.Step
+                          label="First step"
+                          description="Create an account"
+                        >
+                          Step 1 content: Create an account
+                        </Stepper.Step>
+                        <Stepper.Step
+                          label="Second step"
+                          description="Verify email"
+                        >
+                          Step 2 content: Verify email
+                        </Stepper.Step>
+                        <Stepper.Step
+                          label="Final step"
+                          description="Get full access"
+                        >
+                          Step 3 content: Get full access
+                        </Stepper.Step>
+                        <Stepper.Completed>
+                          Completed, click back button to get to previous step
+                        </Stepper.Completed>
+                      </Stepper>
+
+                      <Group justify="center" mt="xl">
+                        <Button variant="default">Back</Button>
+                        <Button>Next step</Button>
+                      </Group>
+                    </>
+                  </Accordion.Panel>
                 </Accordion.Item>
                 <Accordion.Item value="tabs">
                   <Accordion.Control>Tabs</Accordion.Control>
@@ -468,10 +711,40 @@ function Themer() {
           </Stack>
         </Center>
       </Grid.Col>
-      <Grid.Col span={2} p={8}>
+      <Grid.Col span={3} p={0}>
         <Stack p="xs" gap={4}>
-          <Text size={rem(14)}>Primary Color</Text>
-          <ColorInput size="sm" value={color} onChange={setColor}></ColorInput>
+          {!isMountedRef.current && <Loader size="xs" />}
+          {isMountedRef.current && (
+            <Combobox
+              store={combobox}
+              onOptionSubmit={(val) => {
+                setValue(val);
+                combobox.closeDropdown();
+              }}
+            >
+              <Combobox.Target>
+                <Group grow>
+                  Theme
+                  <InputBase
+                    component="button"
+                    pointer
+                    rightSection={<Combobox.Chevron />}
+                    onClick={() => combobox.toggleDropdown()}
+                  >
+                    {value === null ? (
+                      <Input.Placeholder>Pick value</Input.Placeholder>
+                    ) : (
+                      themes.filter((t) => t.value === value)[0].label
+                    )}
+                  </InputBase>
+                </Group>
+              </Combobox.Target>
+
+              <Combobox.Dropdown>
+                <Combobox.Options>{options}</Combobox.Options>
+              </Combobox.Dropdown>
+            </Combobox>
+          )}
         </Stack>
       </Grid.Col>
     </Grid>

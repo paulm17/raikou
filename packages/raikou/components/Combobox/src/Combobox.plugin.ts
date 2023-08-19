@@ -30,7 +30,7 @@ module.exports = function ({ addComponents, theme }: any) {
       wordBreak: "break-word",
 
       "&[data-combobox-selected]": {
-        "--_option-bg": "var(--raikou-color-primary)",
+        "--_option-bg": "var(--raikou-primary-color-filled)",
         "--_option-color": "var(--raikou-color-white)",
       },
 

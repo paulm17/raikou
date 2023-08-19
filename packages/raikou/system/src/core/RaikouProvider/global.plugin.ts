@@ -41,13 +41,13 @@ module.exports = function ({ addBase }: any) {
     },
     ".raikou-focus-auto": {
       "&:focus-visible": {
-        outline: `${rem("2px")} solid var(--raikou-color-primary)`,
+        outline: `${rem("2px")} solid var(--raikou-primary-color-filled)`,
         outlineOffset: rem("2px"),
       },
     },
     ".raikou-focus-always": {
       "&:focus": {
-        outline: `${rem("2px")} solid var(--raikou-color-primary)`,
+        outline: `${rem("2px")} solid var(--raikou-primary-color-filled)`,
         outlineOffset: rem("2px"),
       },
     },
