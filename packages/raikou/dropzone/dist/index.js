@@ -75,8 +75,8 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/DropzoneFullScreen.tsx
-var import_react17 = __toESM(require("react"));
-var import_core12 = require("@raikou/core");
+var import_react18 = __toESM(require("react"));
+var import_core13 = require("@raikou/core");
 
 // ../components/Portal/src/Portal.tsx
 var import_react = __toESM(require("react"));
@@ -135,13 +135,13 @@ OptionalPortal.displayName = "@raikou/core/OptionalPortal";
 var import_hooks5 = require("@raikou/hooks");
 
 // src/Dropzone.tsx
-var import_react16 = __toESM(require("react"));
+var import_react17 = __toESM(require("react"));
 var import_react_dropzone = require("react-dropzone");
-var import_core11 = require("@raikou/core");
+var import_core12 = require("@raikou/core");
 
 // ../components/LoadingOverlay/src/LoadingOverlay.tsx
-var import_react10 = __toESM(require("react"));
-var import_core9 = require("@raikou/core");
+var import_react11 = __toESM(require("react"));
+var import_core10 = require("@raikou/core");
 
 // ../components/Transition/src/transitions.ts
 var import_core2 = require("@raikou/core");
@@ -377,8 +377,8 @@ function Transition({
 Transition.displayName = "@raikou/core/Transition";
 
 // ../components/Loader/src/Loader.tsx
-var import_react8 = __toESM(require("react"));
-var import_core7 = require("@raikou/core");
+var import_react9 = __toESM(require("react"));
+var import_core8 = require("@raikou/core");
 
 // ../components/Loader/src/loaders/Bars.tsx
 var import_react5 = __toESM(require("react"));
@@ -442,29 +442,58 @@ var Oval = (0, import_react6.forwardRef)(
   }
 );
 
-// ../components/Loader/src/loaders/Dots.tsx
+// ../components/Loader/src/loaders/Progress.tsx
 var import_react7 = __toESM(require("react"));
 var import_core6 = require("@raikou/core");
-var Dots = (0, import_react7.forwardRef)(
+var Progress = (0, import_react7.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ import_react7.default.createElement(
       import_core6.Box,
       __spreadProps(__spreadValues({
         component: "span",
+        className: clsx_default("progress-loader", className)
+      }, others), {
+        ref
+      }),
+      /* @__PURE__ */ import_react7.default.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ import_react7.default.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ import_react7.default.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ import_react7.default.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ import_react7.default.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ import_react7.default.createElement(
+        "animateTransform",
+        {
+          attributeName: "transform",
+          type: "rotate",
+          from: "0 16 16",
+          to: "360 16 16",
+          dur: "1s",
+          repeatCount: "indefinite"
+        }
+      )))))
+    );
+  }
+);
+
+// ../components/Loader/src/loaders/Dots.tsx
+var import_react8 = __toESM(require("react"));
+var import_core7 = require("@raikou/core");
+var Dots = (0, import_react8.forwardRef)(
+  (_a, ref) => {
+    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+    return /* @__PURE__ */ import_react8.default.createElement(
+      import_core7.Box,
+      __spreadProps(__spreadValues({
+        component: "span",
         className: clsx_default("dots-loader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" })
+      /* @__PURE__ */ import_react8.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react8.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react8.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react8.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react8.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react8.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react8.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react8.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react8.default.createElement("span", { className: "dot" })
     );
   }
 );
@@ -473,23 +502,24 @@ var Dots = (0, import_react7.forwardRef)(
 var defaultLoaders = {
   bars: Bars,
   oval: Oval,
-  dots: Dots
+  dots: Dots,
+  progress: Progress
 };
 var defaultProps2 = {
   size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
-var varsResolver = (0, import_core7.createVarsResolver)(
+var varsResolver = (0, import_core8.createVarsResolver)(
   (theme, { size, color }) => ({
     root: {
-      "--loader-size": (0, import_core7.getSize)(size, "loader-size"),
-      "--loader-color": (0, import_core7.getThemeColor)(color, theme)
+      "--loader-size": (0, import_core8.getSize)(size, "loader-size"),
+      "--loader-color": (0, import_core8.getThemeColor)(color, theme)
     }
   })
 );
-var Loader = (0, import_core7.factory)((_props, ref) => {
-  const props = (0, import_core7.useProps)("Loader", defaultProps2, _props);
+var Loader = (0, import_core8.factory)((_props, ref) => {
+  const props = (0, import_core8.useProps)("Loader", defaultProps2, _props);
   const _a = props, {
     size,
     color,
@@ -515,7 +545,7 @@ var Loader = (0, import_core7.factory)((_props, ref) => {
     "loaders",
     "variant"
   ]);
-  const getStyles = (0, import_core7.useStyles)({
+  const getStyles = (0, import_core8.useStyles)({
     name: "Loader",
     props,
     classes: {
@@ -529,8 +559,8 @@ var Loader = (0, import_core7.factory)((_props, ref) => {
     vars,
     varsResolver
   });
-  return /* @__PURE__ */ import_react8.default.createElement(
-    import_core7.Box,
+  return /* @__PURE__ */ import_react9.default.createElement(
+    import_core8.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -542,26 +572,26 @@ var Loader = (0, import_core7.factory)((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../components/Overlay/src/Overlay.tsx
-var import_react9 = __toESM(require("react"));
-var import_core8 = require("@raikou/core");
+var import_react10 = __toESM(require("react"));
+var import_core9 = require("@raikou/core");
 var defaultProps3 = {
   color: "#000",
   backgroundOpacity: 0.6,
-  zIndex: (0, import_core8.getDefaultZIndex)("modal"),
+  zIndex: (0, import_core9.getDefaultZIndex)("modal"),
   radius: 0
 };
-var varsResolver2 = (0, import_core8.createVarsResolver)(
+var varsResolver2 = (0, import_core9.createVarsResolver)(
   (_, { gradient, color, backgroundOpacity, blur, radius, zIndex }) => ({
     root: {
-      "--overlay-bg": gradient || (0, import_core8.rgba)(color || "#000", backgroundOpacity != null ? backgroundOpacity : 0.6),
-      "--overlay-filter": blur ? `blur(${(0, import_core8.rem)(blur)})` : void 0,
-      "--overlay-radius": (0, import_core8.getRadius)(radius),
+      "--overlay-bg": gradient || (0, import_core9.rgba)(color || "#000", backgroundOpacity != null ? backgroundOpacity : 0.6),
+      "--overlay-filter": blur ? `blur(${(0, import_core9.rem)(blur)})` : void 0,
+      "--overlay-radius": (0, import_core9.getRadius)(radius),
       "--overlay-z-index": zIndex == null ? void 0 : zIndex.toString()
     }
   })
 );
-var Overlay = (0, import_core8.polymorphicFactory)((_props, ref) => {
-  const props = (0, import_core8.useProps)("Overlay", defaultProps3, _props);
+var Overlay = (0, import_core9.polymorphicFactory)((_props, ref) => {
+  const props = (0, import_core9.useProps)("Overlay", defaultProps3, _props);
   const _a = props, {
     classNames,
     className,
@@ -595,7 +625,7 @@ var Overlay = (0, import_core8.polymorphicFactory)((_props, ref) => {
     "color",
     "backgroundOpacity"
   ]);
-  const getStyles = (0, import_core8.useStyles)({
+  const getStyles = (0, import_core9.useStyles)({
     name: "Overlay",
     props,
     classes: {
@@ -609,7 +639,7 @@ var Overlay = (0, import_core8.polymorphicFactory)((_props, ref) => {
     vars,
     varsResolver: varsResolver2
   });
-  return /* @__PURE__ */ import_react9.default.createElement(import_core8.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { mod: { center, fixed } }), others), children);
+  return /* @__PURE__ */ import_react10.default.createElement(import_core9.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { mod: { center, fixed } }), others), children);
 });
 Overlay.displayName = "@raikou/core/Overlay";
 
@@ -617,17 +647,17 @@ Overlay.displayName = "@raikou/core/Overlay";
 var defaultProps4 = {
   transitionProps: { transition: "fade", duration: 0 },
   overlayProps: { backgroundOpacity: 0.75 },
-  zIndex: (0, import_core9.getDefaultZIndex)("overlay")
+  zIndex: (0, import_core10.getDefaultZIndex)("overlay")
 };
-var varsResolver3 = (0, import_core9.createVarsResolver)(
+var varsResolver3 = (0, import_core10.createVarsResolver)(
   (_, { zIndex }) => ({
     root: {
       "--lo-z-index": zIndex == null ? void 0 : zIndex.toString()
     }
   })
 );
-var LoadingOverlay = (0, import_core9.factory)((_props, ref) => {
-  const props = (0, import_core9.useProps)("LoadingOverlay", defaultProps4, _props);
+var LoadingOverlay = (0, import_core10.factory)((_props, ref) => {
+  const props = (0, import_core10.useProps)("LoadingOverlay", defaultProps4, _props);
   const _a = props, {
     classNames,
     className,
@@ -653,8 +683,8 @@ var LoadingOverlay = (0, import_core9.factory)((_props, ref) => {
     "visible",
     "zIndex"
   ]);
-  const theme = (0, import_core9.useRaikouTheme)();
-  const getStyles = (0, import_core9.useStyles)({
+  const theme = (0, import_core10.useRaikouTheme)();
+  const getStyles = (0, import_core10.useStyles)({
     name: "LoadingOverlay",
     classes: {
       root: "loadingOverlay-root",
@@ -671,13 +701,13 @@ var LoadingOverlay = (0, import_core9.factory)((_props, ref) => {
     varsResolver: varsResolver3
   });
   const _overlayProps = __spreadValues(__spreadValues({}, defaultProps4.overlayProps), overlayProps);
-  return /* @__PURE__ */ import_react10.default.createElement(Transition, __spreadProps(__spreadValues({ transition: "fade" }, transitionProps), { mounted: !!visible }), (transitionStyles) => /* @__PURE__ */ import_react10.default.createElement(
-    import_core9.Box,
+  return /* @__PURE__ */ import_react11.default.createElement(Transition, __spreadProps(__spreadValues({ transition: "fade" }, transitionProps), { mounted: !!visible }), (transitionStyles) => /* @__PURE__ */ import_react11.default.createElement(
+    import_core10.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { style: transitionStyles })), {
       ref
     }), others),
-    /* @__PURE__ */ import_react10.default.createElement(Loader, __spreadValues(__spreadValues({}, getStyles("loader")), loaderProps)),
-    /* @__PURE__ */ import_react10.default.createElement(
+    /* @__PURE__ */ import_react11.default.createElement(Loader, __spreadValues(__spreadValues({}, getStyles("loader")), loaderProps)),
+    /* @__PURE__ */ import_react11.default.createElement(
       Overlay,
       __spreadProps(__spreadValues(__spreadValues({}, _overlayProps), getStyles("overlay")), {
         "data-light": true,
@@ -685,7 +715,7 @@ var LoadingOverlay = (0, import_core9.factory)((_props, ref) => {
         color: (overlayProps == null ? void 0 : overlayProps.color) || theme.white
       })
     ),
-    /* @__PURE__ */ import_react10.default.createElement(
+    /* @__PURE__ */ import_react11.default.createElement(
       Overlay,
       __spreadProps(__spreadValues(__spreadValues({}, _overlayProps), getStyles("overlay")), {
         "data-dark": true,
@@ -701,28 +731,28 @@ LoadingOverlay.displayName = "@raikou/core/LoadingOverlay";
 var import_hooks4 = require("@raikou/hooks");
 
 // ../components/_utils/create-safe-context/create-safe-context.tsx
-var import_react11 = __toESM(require("react"));
+var import_react12 = __toESM(require("react"));
 function createSafeContext(errorMessage) {
-  const Context = (0, import_react11.createContext)(null);
+  const Context = (0, import_react12.createContext)(null);
   const useSafeContext = () => {
-    const ctx = (0, import_react11.useContext)(Context);
+    const ctx = (0, import_react12.useContext)(Context);
     if (ctx === null) {
       throw new Error(errorMessage);
     }
     return ctx;
   };
-  const Provider = ({ children, value }) => /* @__PURE__ */ import_react11.default.createElement(Context.Provider, { value }, children);
+  const Provider = ({ children, value }) => /* @__PURE__ */ import_react12.default.createElement(Context.Provider, { value }, children);
   return [Provider, useSafeContext];
 }
 
 // ../components/_utils/create-optional-context/create-optional-context.tsx
-var import_react12 = __toESM(require("react"));
+var import_react13 = __toESM(require("react"));
 
 // ../components/_utils/use-hovered/use-hovered.ts
-var import_react13 = require("react");
+var import_react14 = require("react");
 
 // ../components/_utils/create-use-external-events/create-use-external-events.ts
-var import_react14 = require("react");
+var import_react15 = require("react");
 
 // src/Dropzone.context.ts
 var [DropzoneProvider, useDropzoneContext] = createSafeContext(
@@ -730,20 +760,20 @@ var [DropzoneProvider, useDropzoneContext] = createSafeContext(
 );
 
 // src/DropzoneStatus.tsx
-var import_react15 = __toESM(require("react"));
+var import_react16 = __toESM(require("react"));
 var import_hooks3 = require("@raikou/hooks");
-var import_core10 = require("@raikou/core");
+var import_core11 = require("@raikou/core");
 function createDropzoneStatus(status) {
   const Component = (props) => {
-    const _a = (0, import_core10.useProps)(
+    const _a = (0, import_core11.useProps)(
       `Dropzone${(0, import_hooks3.upperFirst)(status)}`,
       {},
       props
     ), { children } = _a, others = __objRest(_a, ["children"]);
     const ctx = useDropzoneContext();
-    const _children = (0, import_core10.isElement)(children) ? children : /* @__PURE__ */ import_react15.default.createElement("span", null, children);
+    const _children = (0, import_core11.isElement)(children) ? children : /* @__PURE__ */ import_react16.default.createElement("span", null, children);
     if (ctx[status]) {
-      return (0, import_react15.cloneElement)(_children, others);
+      return (0, import_react16.cloneElement)(_children, others);
     }
     return null;
   };
@@ -768,7 +798,7 @@ var defaultProps5 = {
   variant: "light",
   rejectColor: "red"
 };
-var varsResolver4 = (0, import_core11.createVarsResolver)(
+var varsResolver4 = (0, import_core12.createVarsResolver)(
   (theme, { radius, variant, acceptColor, rejectColor }) => {
     const acceptColors = theme.variantColorResolver({
       color: acceptColor || theme.primaryColor,
@@ -782,7 +812,7 @@ var varsResolver4 = (0, import_core11.createVarsResolver)(
     });
     return {
       root: {
-        "--dropzone-radius": (0, import_core11.getRadius)(radius),
+        "--dropzone-radius": (0, import_core12.getRadius)(radius),
         "--dropzone-accept-color": acceptColors.color,
         "--dropzone-accept-bg": acceptColors.background,
         "--dropzone-reject-color": rejectColors.color,
@@ -791,8 +821,8 @@ var varsResolver4 = (0, import_core11.createVarsResolver)(
     };
   }
 );
-var Dropzone = (0, import_core11.factory)((_props, ref) => {
-  const props = (0, import_core11.useProps)("Dropzone", defaultProps5, _props);
+var Dropzone = (0, import_core12.factory)((_props, ref) => {
+  const props = (0, import_core12.useProps)("Dropzone", defaultProps5, _props);
   const _a = props, {
     classNames,
     className,
@@ -866,7 +896,7 @@ var Dropzone = (0, import_core11.factory)((_props, ref) => {
     "rejectColor",
     "acceptColor"
   ]);
-  const getStyles = (0, import_core11.useStyles)({
+  const getStyles = (0, import_core12.useStyles)({
     name: "Dropzone",
     classes: {
       root: "dropZone-root",
@@ -907,13 +937,13 @@ var Dropzone = (0, import_core11.factory)((_props, ref) => {
   }, getFilesFromEvent ? { getFilesFromEvent } : null));
   (0, import_hooks4.assignRef)(openRef, open);
   const isIdle = !isDragAccept && !isDragReject;
-  return /* @__PURE__ */ import_react16.default.createElement(
+  return /* @__PURE__ */ import_react17.default.createElement(
     DropzoneProvider,
     {
       value: { accept: isDragAccept, reject: isDragReject, idle: isIdle }
     },
-    /* @__PURE__ */ import_react16.default.createElement(
-      import_core11.Box,
+    /* @__PURE__ */ import_react17.default.createElement(
+      import_core12.Box,
       __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, others), getRootProps({ ref })), getStyles("root", { focusable: true })), {
         mod: {
           accept: isDragAccept,
@@ -923,7 +953,7 @@ var Dropzone = (0, import_core11.factory)((_props, ref) => {
           "activate-on-click": activateOnClick
         }
       }),
-      /* @__PURE__ */ import_react16.default.createElement(
+      /* @__PURE__ */ import_react17.default.createElement(
         LoadingOverlay,
         {
           visible: loading,
@@ -931,8 +961,8 @@ var Dropzone = (0, import_core11.factory)((_props, ref) => {
           unstyled
         }
       ),
-      /* @__PURE__ */ import_react16.default.createElement("input", __spreadProps(__spreadValues({}, getInputProps()), { name })),
-      /* @__PURE__ */ import_react16.default.createElement(
+      /* @__PURE__ */ import_react17.default.createElement("input", __spreadProps(__spreadValues({}, getInputProps()), { name })),
+      /* @__PURE__ */ import_react17.default.createElement(
         "div",
         __spreadProps(__spreadValues({}, getStyles("inner")), {
           "data-disable-pointer-events": !activateOnClick || void 0
@@ -956,12 +986,12 @@ var defaultProps6 = {
   dragEventsBubbling: true,
   activateOnKeyboard: true,
   active: true,
-  zIndex: (0, import_core12.getDefaultZIndex)("max"),
+  zIndex: (0, import_core13.getDefaultZIndex)("max"),
   withinPortal: true
 };
-var DropzoneFullScreen = (0, import_core12.factory)(
+var DropzoneFullScreen = (0, import_core13.factory)(
   (_props, ref) => {
-    const props = (0, import_core12.useProps)("DropzoneFullScreen", defaultProps6, _props);
+    const props = (0, import_core13.useProps)("DropzoneFullScreen", defaultProps6, _props);
     const _a = props, {
       classNames,
       className,
@@ -989,7 +1019,7 @@ var DropzoneFullScreen = (0, import_core12.factory)(
       "withinPortal",
       "portalProps"
     ]);
-    const getStyles = (0, import_core12.useStyles)({
+    const getStyles = (0, import_core13.useStyles)({
       name: "DropzoneFullScreen",
       classes: {
         root: "dropZone-root",
@@ -1003,12 +1033,12 @@ var DropzoneFullScreen = (0, import_core12.factory)(
       unstyled,
       rootSelector: "fullScreen"
     });
-    const { resolvedClassNames, resolvedStyles } = (0, import_core12.useResolvedStylesApi)({
+    const { resolvedClassNames, resolvedStyles } = (0, import_core13.useResolvedStylesApi)({
       classNames,
       styles,
       props
     });
-    const [counter, setCounter] = import_react17.default.useState(0);
+    const [counter, setCounter] = import_react18.default.useState(0);
     const [visible, { open, close }] = (0, import_hooks5.useDisclosure)(false);
     const handleDragEnter = (event) => {
       var _a2;
@@ -1020,10 +1050,10 @@ var DropzoneFullScreen = (0, import_core12.factory)(
     const handleDragLeave = () => {
       setCounter((prev) => prev - 1);
     };
-    (0, import_react17.useEffect)(() => {
+    (0, import_react18.useEffect)(() => {
       counter === 0 && close();
     }, [counter]);
-    (0, import_react17.useEffect)(() => {
+    (0, import_react18.useEffect)(() => {
       if (!active)
         return void 0;
       document.addEventListener("dragenter", handleDragEnter, false);
@@ -1033,8 +1063,8 @@ var DropzoneFullScreen = (0, import_core12.factory)(
         document.removeEventListener("dragleave", handleDragLeave, false);
       };
     }, [active]);
-    return /* @__PURE__ */ import_react17.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ import_react17.default.createElement(
-      import_core12.Box,
+    return /* @__PURE__ */ import_react18.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ import_react18.default.createElement(
+      import_core13.Box,
       __spreadProps(__spreadValues({}, getStyles("fullScreen", {
         style: {
           opacity: visible ? 1 : 0,
@@ -1044,7 +1074,7 @@ var DropzoneFullScreen = (0, import_core12.factory)(
       })), {
         ref
       }),
-      /* @__PURE__ */ import_react17.default.createElement(
+      /* @__PURE__ */ import_react18.default.createElement(
         Dropzone,
         __spreadProps(__spreadValues({}, others), {
           classNames: resolvedClassNames,

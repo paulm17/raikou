@@ -63,9 +63,9 @@ var Link = TipTapLink.extend({
 }).configure({ openOnClick: false });
 
 // src/RichTextEditor.tsx
-import React53, { useMemo as useMemo3 } from "react";
+import React54, { useMemo as useMemo3 } from "react";
 import {
-  Box as Box30,
+  Box as Box31,
   factory as factory23,
   useProps as useProps36,
   useStyles as useStyles21
@@ -614,7 +614,7 @@ var UnsetColorControl = createControl({
 });
 
 // src/RichTextEditorControl/RichTextEditorLinkControl.tsx
-import React37, { useState as useState10 } from "react";
+import React38, { useState as useState10 } from "react";
 import {
   factory as factory18,
   useProps as useProps25,
@@ -5198,22 +5198,22 @@ var TextInput = factory13((props, ref) => {
 TextInput.displayName = "@raikou/core/TextInput";
 
 // ../components/Button/src/Button.tsx
-import React33 from "react";
+import React34 from "react";
 import {
   polymorphicFactory as polymorphicFactory4,
   useProps as useProps21,
   useStyles as useStyles12,
   createVarsResolver as createVarsResolver9,
-  Box as Box18,
+  Box as Box19,
   getRadius as getRadius3,
   getSize as getSize3,
   getFontSize as getFontSize6
 } from "@raikou/core";
 
 // ../components/Loader/src/Loader.tsx
-import React31 from "react";
+import React32 from "react";
 import {
-  Box as Box16,
+  Box as Box17,
   useProps as useProps19,
   getThemeColor,
   useStyles as useStyles10,
@@ -5261,29 +5261,58 @@ var Oval = forwardRef6(
   }
 );
 
-// ../components/Loader/src/loaders/Dots.tsx
+// ../components/Loader/src/loaders/Progress.tsx
 import React30, { forwardRef as forwardRef7 } from "react";
 import { Box as Box15 } from "@raikou/core";
-var Dots = forwardRef7(
+var Progress = forwardRef7(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ React30.createElement(
       Box15,
       __spreadProps(__spreadValues({
         component: "span",
+        className: clsx_default("progress-loader", className)
+      }, others), {
+        ref
+      }),
+      /* @__PURE__ */ React30.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ React30.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ React30.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ React30.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ React30.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ React30.createElement(
+        "animateTransform",
+        {
+          attributeName: "transform",
+          type: "rotate",
+          from: "0 16 16",
+          to: "360 16 16",
+          dur: "1s",
+          repeatCount: "indefinite"
+        }
+      )))))
+    );
+  }
+);
+
+// ../components/Loader/src/loaders/Dots.tsx
+import React31, { forwardRef as forwardRef8 } from "react";
+import { Box as Box16 } from "@raikou/core";
+var Dots = forwardRef8(
+  (_a, ref) => {
+    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+    return /* @__PURE__ */ React31.createElement(
+      Box16,
+      __spreadProps(__spreadValues({
+        component: "span",
         className: clsx_default("dots-loader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React30.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React30.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React30.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React30.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React30.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React30.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React30.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React30.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React30.createElement("span", { className: "dot" })
+      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React31.createElement("span", { className: "dot" })
     );
   }
 );
@@ -5292,7 +5321,8 @@ var Dots = forwardRef7(
 var defaultLoaders = {
   bars: Bars,
   oval: Oval,
-  dots: Dots
+  dots: Dots,
+  progress: Progress
 };
 var defaultProps19 = {
   size: "md",
@@ -5348,8 +5378,8 @@ var Loader = factory14((_props, ref) => {
     vars,
     varsResolver: varsResolver7
   });
-  return /* @__PURE__ */ React31.createElement(
-    Box16,
+  return /* @__PURE__ */ React32.createElement(
+    Box17,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -5361,10 +5391,10 @@ var Loader = factory14((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../components/Button/src/ButtonGroup/ButtonGroup.tsx
-import React32 from "react";
+import React33 from "react";
 import {
   factory as factory15,
-  Box as Box17,
+  Box as Box18,
   useProps as useProps20,
   useStyles as useStyles11,
   rem as rem10,
@@ -5416,8 +5446,8 @@ var ButtonGroup = factory15((_props, ref) => {
     vars,
     varsResolver: varsResolver8
   });
-  return /* @__PURE__ */ React32.createElement(
-    Box17,
+  return /* @__PURE__ */ React33.createElement(
+    Box18,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       variant,
@@ -5431,7 +5461,8 @@ ButtonGroup.displayName = "@raikou/core/ButtonGroup";
 // ../components/Button/src/Button.tsx
 var defaultProps21 = {
   size: "sm",
-  variant: "filled"
+  variant: "filled",
+  loaderPosition: "left"
 };
 var varsResolver9 = createVarsResolver9(
   (theme, { radius, color, gradient, variant, size: size2, justify }) => {
@@ -5471,6 +5502,7 @@ var Button = polymorphicFactory4((_props, ref) => {
     variant,
     radius,
     loading,
+    loaderPosition,
     loaderProps,
     gradient,
     classNames,
@@ -5490,6 +5522,7 @@ var Button = polymorphicFactory4((_props, ref) => {
     "variant",
     "radius",
     "loading",
+    "loaderPosition",
     "loaderProps",
     "gradient",
     "classNames",
@@ -5517,7 +5550,7 @@ var Button = polymorphicFactory4((_props, ref) => {
   });
   const hasLeftSection = !!leftSection;
   const hasRightSection = !!rightSection;
-  return /* @__PURE__ */ React33.createElement(
+  return /* @__PURE__ */ React34.createElement(
     UnstyledButton,
     __spreadValues(__spreadProps(__spreadValues({
       ref
@@ -5536,22 +5569,30 @@ var Button = polymorphicFactory4((_props, ref) => {
         }
       ]
     }), others),
-    /* @__PURE__ */ React33.createElement("span", __spreadValues({}, getStyles("inner")), leftSection && /* @__PURE__ */ React33.createElement(
-      Box18,
+    /* @__PURE__ */ React34.createElement("span", __spreadValues({}, getStyles("inner")), leftSection || loading && loaderPosition === "left" && /* @__PURE__ */ React34.createElement(
+      Box19,
       __spreadProps(__spreadValues({
         component: "span"
       }, getStyles("section")), {
         mod: { position: "left" }
       }),
-      leftSection
-    ), loading && /* @__PURE__ */ React33.createElement(Box18, __spreadValues({ component: "span" }, getStyles("loader")), /* @__PURE__ */ React33.createElement(
+      !loading && leftSection,
+      loading && /* @__PURE__ */ React34.createElement(
+        Loader,
+        __spreadValues({
+          type: "progress",
+          color: "var(--button-color)",
+          size: "calc(var(--button-height) / 2.4)"
+        }, loaderProps)
+      )
+    ), loading && loaderPosition === "center" && /* @__PURE__ */ React34.createElement(Box19, __spreadValues({ component: "span" }, getStyles("loader")), /* @__PURE__ */ React34.createElement(
       Loader,
       __spreadValues({
         color: "var(--button-color)",
         size: "calc(var(--button-height) / 1.8)"
       }, loaderProps)
-    )), /* @__PURE__ */ React33.createElement(Box18, __spreadValues({ component: "span", mod: { loading } }, getStyles("label")), children), rightSection && /* @__PURE__ */ React33.createElement(
-      Box18,
+    )), /* @__PURE__ */ React34.createElement(Box19, __spreadValues({ component: "span", mod: { loading } }, getStyles("label")), children), rightSection && /* @__PURE__ */ React34.createElement(
+      Box19,
       __spreadProps(__spreadValues({
         component: "span"
       }, getStyles("section")), {
@@ -5565,10 +5606,10 @@ Button.displayName = "@raikou/core/Button";
 Button.Group = ButtonGroup;
 
 // ../components/Tooltip/src/Tooltip.tsx
-import React36, { cloneElement as cloneElement5, useRef as useRef8 } from "react";
+import React37, { cloneElement as cloneElement5, useRef as useRef8 } from "react";
 import { useMergedRef as useMergedRef5 } from "@raikou/hooks";
 import {
-  Box as Box20,
+  Box as Box21,
   factory as factory17,
   getDefaultZIndex as getDefaultZIndex3,
   isElement as isElement6,
@@ -5581,10 +5622,10 @@ import {
 } from "@raikou/core";
 
 // ../components/Tooltip/src/TooltipFloating/TooltipFloating.tsx
-import React34, { cloneElement as cloneElement4 } from "react";
+import React35, { cloneElement as cloneElement4 } from "react";
 import { useMergedRef as useMergedRef4 } from "@raikou/hooks";
 import {
-  Box as Box19,
+  Box as Box20,
   factory as factory16,
   getDefaultZIndex as getDefaultZIndex2,
   isElement as isElement5,
@@ -5755,8 +5796,8 @@ var TooltipFloating = factory16(
       (_b2 = (_a2 = children.props).onMouseLeave) == null ? void 0 : _b2.call(_a2, event);
       setOpened(false);
     };
-    return /* @__PURE__ */ React34.createElement(React34.Fragment, null, /* @__PURE__ */ React34.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ React34.createElement(
-      Box19,
+    return /* @__PURE__ */ React35.createElement(React35.Fragment, null, /* @__PURE__ */ React35.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ React35.createElement(
+      Box20,
       __spreadProps(__spreadValues(__spreadValues({}, others), getStyles("tooltip", {
         style: __spreadProps(__spreadValues({}, getStyleObject(style, theme)), {
           zIndex,
@@ -5779,7 +5820,7 @@ var TooltipFloating = factory16(
 TooltipFloating.displayName = "@raikou/core/TooltipFloating";
 
 // ../components/Tooltip/src/TooltipGroup/TooltipGroup.tsx
-import React35 from "react";
+import React36 from "react";
 import { useProps as useProps23 } from "@raikou/core";
 
 // ../components/Tooltip/src/TooltipGroup/TooltipGroup.context.ts
@@ -5799,7 +5840,7 @@ function TooltipGroup(props) {
     defaultProps23,
     props
   );
-  return /* @__PURE__ */ React35.createElement(TooltipGroupProvider, { value: true }, /* @__PURE__ */ React35.createElement(FloatingDelayGroup, { delay: { open: openDelay, close: closeDelay } }, children));
+  return /* @__PURE__ */ React36.createElement(TooltipGroupProvider, { value: true }, /* @__PURE__ */ React36.createElement(FloatingDelayGroup, { delay: { open: openDelay, close: closeDelay } }, children));
 }
 TooltipGroup.displayName = "@raikou/core/TooltipGroup";
 
@@ -6025,7 +6066,7 @@ var Tooltip = factory17((_props, ref) => {
     duration: 100,
     transition: "fade"
   });
-  return /* @__PURE__ */ React36.createElement(React36.Fragment, null, /* @__PURE__ */ React36.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ React36.createElement(
+  return /* @__PURE__ */ React37.createElement(React37.Fragment, null, /* @__PURE__ */ React37.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ React37.createElement(
     Transition,
     __spreadProps(__spreadValues({}, transition), {
       keepMounted,
@@ -6034,8 +6075,8 @@ var Tooltip = factory17((_props, ref) => {
     }),
     (transitionStyles) => {
       var _a2, _b;
-      return /* @__PURE__ */ React36.createElement(
-        Box20,
+      return /* @__PURE__ */ React37.createElement(
+        Box21,
         __spreadValues(__spreadProps(__spreadValues({}, others), {
           variant,
           mod: { multiline }
@@ -6049,7 +6090,7 @@ var Tooltip = factory17((_props, ref) => {
           })
         })),
         label,
-        /* @__PURE__ */ React36.createElement(
+        /* @__PURE__ */ React37.createElement(
           FloatingArrow,
           __spreadValues({
             ref: arrowRef,
@@ -6086,7 +6127,7 @@ Tooltip.Group = TooltipGroup;
 // src/RichTextEditorControl/RichTextEditorLinkControl.tsx
 import { useInputState, useDisclosure, useWindowEvent } from "@raikou/hooks";
 import { IconExternalLink, IconLink } from "@tabler/icons-react";
-var LinkIcon = (props) => /* @__PURE__ */ React37.createElement(IconLink, __spreadValues({ stroke: 1.5 }, props));
+var LinkIcon = (props) => /* @__PURE__ */ React38.createElement(IconLink, __spreadValues({ stroke: 1.5 }, props));
 var defaultProps25 = {};
 var RichTextEditorLinkControl = factory18((_props, ref) => {
   var _b;
@@ -6148,7 +6189,7 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
     styles,
     props
   });
-  return /* @__PURE__ */ React37.createElement(
+  return /* @__PURE__ */ React38.createElement(
     Popover,
     __spreadValues({
       trapFocus: true,
@@ -6160,7 +6201,7 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
       zIndex: 1e4,
       unstyled
     }, popoverProps),
-    /* @__PURE__ */ React37.createElement(Popover.Target, null, /* @__PURE__ */ React37.createElement(
+    /* @__PURE__ */ React38.createElement(Popover.Target, null, /* @__PURE__ */ React38.createElement(
       RichTextEditorControlBase,
       __spreadProps(__spreadValues({
         icon: icon || LinkIcon
@@ -6177,10 +6218,10 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
         style
       })
     )),
-    /* @__PURE__ */ React37.createElement(
+    /* @__PURE__ */ React38.createElement(
       Popover.Dropdown,
       __spreadValues({}, ctx.getStyles("linkEditorDropdown", stylesApiProps)),
-      /* @__PURE__ */ React37.createElement("div", __spreadValues({}, ctx.getStyles("linkEditor", stylesApiProps)), /* @__PURE__ */ React37.createElement(
+      /* @__PURE__ */ React38.createElement("div", __spreadValues({}, ctx.getStyles("linkEditor", stylesApiProps)), /* @__PURE__ */ React38.createElement(
         TextInput,
         {
           placeholder: ctx.labels.linkEditorInputPlaceholder,
@@ -6193,7 +6234,7 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
           },
           onKeyDown: handleInputKeydown,
           unstyled,
-          rightSection: /* @__PURE__ */ React37.createElement(
+          rightSection: /* @__PURE__ */ React38.createElement(
             Tooltip,
             {
               label: external ? ctx.labels.linkEditorExternalLink : ctx.labels.linkEditorInternalLink,
@@ -6204,7 +6245,7 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
               unstyled,
               zIndex: 1e4
             },
-            /* @__PURE__ */ React37.createElement(
+            /* @__PURE__ */ React38.createElement(
               UnstyledButton,
               __spreadProps(__spreadValues({
                 onClick: () => setExternal((e) => !e),
@@ -6215,7 +6256,7 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
               )), {
                 unstyled
               }),
-              /* @__PURE__ */ React37.createElement(
+              /* @__PURE__ */ React38.createElement(
                 IconExternalLink,
                 {
                   style: { width: rem11(14), height: rem11(14) },
@@ -6225,7 +6266,7 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
             )
           )
         }
-      ), /* @__PURE__ */ React37.createElement(
+      ), /* @__PURE__ */ React38.createElement(
         Button,
         __spreadProps(__spreadValues({
           variant: "default",
@@ -6241,13 +6282,13 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
 RichTextEditorLinkControl.displayName = "@raikou/tiptap/RichTextEditorLinkControl";
 
 // src/RichTextEditorControl/RichTextEditorColorPickerControl.tsx
-import React51, { forwardRef as forwardRef13, useState as useState14 } from "react";
+import React52, { forwardRef as forwardRef14, useState as useState14 } from "react";
 import { useProps as useProps34 } from "@raikou/core";
 
 // ../components/ColorSwatch/src/ColorSwatch.tsx
-import React38 from "react";
+import React39 from "react";
 import {
-  Box as Box21,
+  Box as Box22,
   getRadius as getRadius6,
   polymorphicFactory as polymorphicFactory5,
   rem as rem12,
@@ -6316,29 +6357,29 @@ var ColorSwatch = polymorphicFactory5(
       vars,
       varsResolver: varsResolver12
     });
-    return /* @__PURE__ */ React38.createElement(
-      Box21,
+    return /* @__PURE__ */ React39.createElement(
+      Box22,
       __spreadValues(__spreadValues({
         ref,
         variant,
         size: size2
       }, getStyles("root", { focusable: true })), others),
-      /* @__PURE__ */ React38.createElement("span", __spreadValues({}, getStyles("alphaOverlay"))),
-      withShadow && /* @__PURE__ */ React38.createElement("span", __spreadValues({}, getStyles("shadowOverlay"))),
-      /* @__PURE__ */ React38.createElement(
+      /* @__PURE__ */ React39.createElement("span", __spreadValues({}, getStyles("alphaOverlay"))),
+      withShadow && /* @__PURE__ */ React39.createElement("span", __spreadValues({}, getStyles("shadowOverlay"))),
+      /* @__PURE__ */ React39.createElement(
         "span",
         __spreadValues({}, getStyles("colorOverlay", { style: { backgroundColor: color } }))
       ),
-      /* @__PURE__ */ React38.createElement("span", __spreadValues({}, getStyles("childrenOverlay")), children)
+      /* @__PURE__ */ React39.createElement("span", __spreadValues({}, getStyles("childrenOverlay")), children)
     );
   }
 );
 ColorSwatch.displayName = "@raikou/core/ColorSwatch";
 
 // ../components/SimpleGrid/src/SimpleGrid.tsx
-import React40 from "react";
+import React41 from "react";
 import {
-  Box as Box22,
+  Box as Box23,
   factory as factory19,
   useProps as useProps27,
   useStyles as useStyles16,
@@ -6346,7 +6387,7 @@ import {
 } from "@raikou/core";
 
 // ../components/SimpleGrid/src/SimpleGridVariables.tsx
-import React39 from "react";
+import React40 from "react";
 import {
   getSortedBreakpoints,
   useRaikouTheme as useRaikouTheme3,
@@ -6393,7 +6434,7 @@ function SimpleGridVariables({
     query: `(min-width: ${theme.breakpoints[breakpoint.value]})`,
     styles: queries[breakpoint.value]
   }));
-  return /* @__PURE__ */ React39.createElement(InlineStyles, { styles: baseStyles, media, selector });
+  return /* @__PURE__ */ React40.createElement(InlineStyles, { styles: baseStyles, media, selector });
 }
 
 // ../components/SimpleGrid/src/SimpleGrid.tsx
@@ -6439,8 +6480,8 @@ var SimpleGrid = factory19((_props, ref) => {
     vars
   });
   const responsiveClassName = useRandomClassName();
-  return /* @__PURE__ */ React40.createElement(React40.Fragment, null, /* @__PURE__ */ React40.createElement("div", null, /* @__PURE__ */ React40.createElement(SimpleGridVariables, __spreadProps(__spreadValues({}, props), { selector: `.${responsiveClassName}` }))), /* @__PURE__ */ React40.createElement(
-    Box22,
+  return /* @__PURE__ */ React41.createElement(React41.Fragment, null, /* @__PURE__ */ React41.createElement("div", null, /* @__PURE__ */ React41.createElement(SimpleGridVariables, __spreadProps(__spreadValues({}, props), { selector: `.${responsiveClassName}` }))), /* @__PURE__ */ React41.createElement(
+    Box23,
     __spreadValues(__spreadValues({
       ref
     }, getStyles("root", { className: responsiveClassName })), others)
@@ -6449,10 +6490,10 @@ var SimpleGrid = factory19((_props, ref) => {
 SimpleGrid.displayName = "@raikou/core/SimpleGrid";
 
 // ../components/ColorPicker/src/ColorPicker.tsx
-import React47, { useRef as useRef11, useState as useState13 } from "react";
+import React48, { useRef as useRef11, useState as useState13 } from "react";
 import { useDidUpdate as useDidUpdate6, useUncontrolled as useUncontrolled2 } from "@raikou/hooks";
 import {
-  Box as Box27,
+  Box as Box28,
   factory as factory20,
   useProps as useProps30,
   useStyles as useStyles17,
@@ -6462,11 +6503,11 @@ import {
 } from "@raikou/core";
 
 // ../components/ColorPicker/src/AlphaSlider/AlphaSlider.tsx
-import React43, { forwardRef as forwardRef10 } from "react";
+import React44, { forwardRef as forwardRef11 } from "react";
 import { useProps as useProps28, rem as rem14 } from "@raikou/core";
 
 // ../components/ColorPicker/src/ColorSlider/ColorSlider.tsx
-import React42, { useRef as useRef9, useState as useState11, forwardRef as forwardRef9 } from "react";
+import React43, { useRef as useRef9, useState as useState11, forwardRef as forwardRef10 } from "react";
 import {
   clampUseMovePosition,
   useDidUpdate as useDidUpdate5,
@@ -6474,14 +6515,14 @@ import {
   useMove
 } from "@raikou/hooks";
 import {
-  Box as Box24,
+  Box as Box25,
   useRaikouTheme as useRaikouTheme4,
   rem as rem13
 } from "@raikou/core";
 
 // ../components/ColorPicker/src/Thumb/Thumb.tsx
-import React41, { forwardRef as forwardRef8 } from "react";
-import { Box as Box23 } from "@raikou/core";
+import React42, { forwardRef as forwardRef9 } from "react";
+import { Box as Box24 } from "@raikou/core";
 
 // ../components/ColorPicker/src/ColorPicker.context.ts
 var [ColorPickerProvider, useColorPickerContext] = createSafeContext(
@@ -6489,12 +6530,12 @@ var [ColorPickerProvider, useColorPickerContext] = createSafeContext(
 );
 
 // ../components/ColorPicker/src/Thumb/Thumb.tsx
-var Thumb = forwardRef8(
+var Thumb = forwardRef9(
   (_a, ref) => {
     var _b = _a, { className, style, size: size2, position } = _b, others = __objRest(_b, ["className", "style", "size", "position"]);
     const { getStyles } = useColorPickerContext();
-    return /* @__PURE__ */ React41.createElement(
-      Box23,
+    return /* @__PURE__ */ React42.createElement(
+      Box24,
       __spreadValues(__spreadProps(__spreadValues({
         ref
       }, getStyles("thumb", { style })), {
@@ -6509,7 +6550,7 @@ var Thumb = forwardRef8(
 Thumb.displayName = "@raikou/core/ColorPickerThumb";
 
 // ../components/ColorPicker/src/ColorSlider/ColorSlider.tsx
-var ColorSlider = forwardRef9(
+var ColorSlider = forwardRef10(
   (props, ref) => {
     const _a = props, {
       className,
@@ -6578,9 +6619,9 @@ var ColorSlider = forwardRef9(
         }
       }
     };
-    const layers = overlays.map((overlay, index3) => /* @__PURE__ */ React42.createElement("div", __spreadProps(__spreadValues({}, getStyles("sliderOverlay")), { style: overlay, key: index3 })));
-    return /* @__PURE__ */ React42.createElement(
-      Box24,
+    const layers = overlays.map((overlay, index3) => /* @__PURE__ */ React43.createElement("div", __spreadProps(__spreadValues({}, getStyles("sliderOverlay")), { style: overlay, key: index3 })));
+    return /* @__PURE__ */ React43.createElement(
+      Box25,
       __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, others), {
         ref: useMergedRef6(sliderRef, ref)
       }), getStyles("slider")), {
@@ -6593,7 +6634,7 @@ var ColorSlider = forwardRef9(
         "data-focus-ring": theme.focusRing
       }),
       layers,
-      /* @__PURE__ */ React42.createElement(
+      /* @__PURE__ */ React43.createElement(
         Thumb,
         __spreadValues({
           position,
@@ -6738,14 +6779,14 @@ function parseColor(color) {
 
 // ../components/ColorPicker/src/AlphaSlider/AlphaSlider.tsx
 var defaultProps28 = {};
-var AlphaSlider = forwardRef10(
+var AlphaSlider = forwardRef11(
   (props, ref) => {
     const _a = useProps28(
       "AlphaSlider",
       defaultProps28,
       props
     ), { value, onChange, onChangeEnd, color } = _a, others = __objRest(_a, ["value", "onChange", "onChangeEnd", "color"]);
-    return /* @__PURE__ */ React43.createElement(
+    return /* @__PURE__ */ React44.createElement(
       ColorSlider,
       __spreadProps(__spreadValues({}, others), {
         ref,
@@ -6779,17 +6820,17 @@ var AlphaSlider = forwardRef10(
 AlphaSlider.displayName = "@raikou/core/AlphaSlider";
 
 // ../components/ColorPicker/src/HueSlider/HueSlider.tsx
-import React44, { forwardRef as forwardRef11 } from "react";
+import React45, { forwardRef as forwardRef12 } from "react";
 import { useProps as useProps29, rem as rem15 } from "@raikou/core";
 var defaultProps29 = {};
-var HueSlider = forwardRef11(
+var HueSlider = forwardRef12(
   (props, ref) => {
     const _a = useProps29(
       "HueSlider",
       defaultProps29,
       props
     ), { value, onChange, onChangeEnd, color } = _a, others = __objRest(_a, ["value", "onChange", "onChangeEnd", "color"]);
-    return /* @__PURE__ */ React44.createElement(
+    return /* @__PURE__ */ React45.createElement(
       ColorSlider,
       __spreadProps(__spreadValues({}, others), {
         ref,
@@ -6817,9 +6858,9 @@ var HueSlider = forwardRef11(
 HueSlider.displayName = "@raikou/core/HueSlider";
 
 // ../components/ColorPicker/src/Saturation/Saturation.tsx
-import React45, { useEffect as useEffect8, useRef as useRef10, useState as useState12 } from "react";
+import React46, { useEffect as useEffect8, useRef as useRef10, useState as useState12 } from "react";
 import { clampUseMovePosition as clampUseMovePosition2, useMove as useMove2 } from "@raikou/hooks";
-import { Box as Box25 } from "@raikou/core";
+import { Box as Box26 } from "@raikou/core";
 
 // ../components/ColorPicker/src/converters/converters.ts
 function hsvaToRgbaObject({ h, s, v, a }) {
@@ -6967,8 +7008,8 @@ function Saturation(_a) {
       }
     }
   };
-  return /* @__PURE__ */ React45.createElement(
-    Box25,
+  return /* @__PURE__ */ React46.createElement(
+    Box26,
     __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("saturation")), {
       ref
     }), others), {
@@ -6979,13 +7020,13 @@ function Saturation(_a) {
       tabIndex: focusable ? 0 : -1,
       onKeyDown: handleKeyDown
     }),
-    /* @__PURE__ */ React45.createElement(
+    /* @__PURE__ */ React46.createElement(
       "div",
       __spreadValues({}, getStyles("saturationOverlay", {
         style: { backgroundColor: `hsl(${value.h}, 100%, 50%)` }
       }))
     ),
-    /* @__PURE__ */ React45.createElement(
+    /* @__PURE__ */ React46.createElement(
       "div",
       __spreadValues({}, getStyles("saturationOverlay", {
         style: {
@@ -6993,7 +7034,7 @@ function Saturation(_a) {
         }
       }))
     ),
-    /* @__PURE__ */ React45.createElement(
+    /* @__PURE__ */ React46.createElement(
       "div",
       __spreadValues({}, getStyles("saturationOverlay", {
         style: {
@@ -7001,7 +7042,7 @@ function Saturation(_a) {
         }
       }))
     ),
-    /* @__PURE__ */ React45.createElement(
+    /* @__PURE__ */ React46.createElement(
       Thumb,
       __spreadValues({
         position,
@@ -7013,9 +7054,9 @@ function Saturation(_a) {
 Saturation.displayName = "@raikou/core/Saturation";
 
 // ../components/ColorPicker/src/Swatches/Swatches.tsx
-import React46, { forwardRef as forwardRef12 } from "react";
-import { Box as Box26 } from "@raikou/core";
-var Swatches = forwardRef12(
+import React47, { forwardRef as forwardRef13 } from "react";
+import { Box as Box27 } from "@raikou/core";
+var Swatches = forwardRef13(
   (_a, ref) => {
     var _b = _a, {
       className,
@@ -7037,7 +7078,7 @@ var Swatches = forwardRef12(
       "swatchesPerRow"
     ]);
     const { getStyles } = useColorPickerContext();
-    const colors = data.map((color, index3) => /* @__PURE__ */ React46.createElement(
+    const colors = data.map((color, index3) => /* @__PURE__ */ React47.createElement(
       ColorSwatch,
       __spreadProps(__spreadValues({}, getStyles("swatch")), {
         component: "button",
@@ -7054,7 +7095,7 @@ var Swatches = forwardRef12(
         "data-swatch": true
       })
     ));
-    return /* @__PURE__ */ React46.createElement(Box26, __spreadValues(__spreadProps(__spreadValues({}, getStyles("swatches")), { ref }), others), colors);
+    return /* @__PURE__ */ React47.createElement(Box27, __spreadValues(__spreadProps(__spreadValues({}, getStyles("swatches")), { ref }), others), colors);
   }
 );
 Swatches.displayName = "@raikou/core/Swatches";
@@ -7192,7 +7233,7 @@ var ColorPicker = factory20((_props, ref) => {
     formatRef.current = format;
     setValue(convertHsvaTo(format, parsed));
   }, [format]);
-  return /* @__PURE__ */ React47.createElement(ColorPickerProvider, { value: { getStyles } }, /* @__PURE__ */ React47.createElement(Box27, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("wrapper")), { size: size2 }), others), withPicker && /* @__PURE__ */ React47.createElement(React47.Fragment, null, /* @__PURE__ */ React47.createElement(
+  return /* @__PURE__ */ React48.createElement(ColorPickerProvider, { value: { getStyles } }, /* @__PURE__ */ React48.createElement(Box28, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("wrapper")), { size: size2 }), others), withPicker && /* @__PURE__ */ React48.createElement(React48.Fragment, null, /* @__PURE__ */ React48.createElement(
     Saturation,
     {
       value: parsed,
@@ -7207,7 +7248,7 @@ var ColorPicker = factory20((_props, ref) => {
       onScrubStart: startScrubbing,
       onScrubEnd: stopScrubbing
     }
-  ), /* @__PURE__ */ React47.createElement("div", __spreadValues({}, getStyles("body")), /* @__PURE__ */ React47.createElement("div", __spreadValues({}, getStyles("sliders")), /* @__PURE__ */ React47.createElement(
+  ), /* @__PURE__ */ React48.createElement("div", __spreadValues({}, getStyles("body")), /* @__PURE__ */ React48.createElement("div", __spreadValues({}, getStyles("sliders")), /* @__PURE__ */ React48.createElement(
     HueSlider,
     {
       value: parsed.h,
@@ -7221,7 +7262,7 @@ var ColorPicker = factory20((_props, ref) => {
       onScrubStart: startScrubbing,
       onScrubEnd: stopScrubbing
     }
-  ), withAlpha && /* @__PURE__ */ React47.createElement(
+  ), withAlpha && /* @__PURE__ */ React48.createElement(
     AlphaSlider,
     {
       value: parsed.a,
@@ -7238,13 +7279,13 @@ var ColorPicker = factory20((_props, ref) => {
       onScrubStart: startScrubbing,
       onScrubEnd: stopScrubbing
     }
-  )), withAlpha && /* @__PURE__ */ React47.createElement(
+  )), withAlpha && /* @__PURE__ */ React48.createElement(
     ColorSwatch,
     __spreadValues({
       color: _value,
       radius: "sm"
     }, getStyles("preview"))
-  ))), Array.isArray(swatches) && /* @__PURE__ */ React47.createElement(
+  ))), Array.isArray(swatches) && /* @__PURE__ */ React48.createElement(
     Swatches,
     {
       data: swatches,
@@ -7265,9 +7306,9 @@ var ColorPicker = factory20((_props, ref) => {
 ColorPicker.displayName = "@raikou/core/ColorPicker";
 
 // ../components/Group/src/Group.tsx
-import React48 from "react";
+import React49 from "react";
 import {
-  Box as Box28,
+  Box as Box29,
   factory as factory21,
   useProps as useProps31,
   useStyles as useStyles18,
@@ -7353,8 +7394,8 @@ var Group = factory21((_props, ref) => {
     vars,
     varsResolver: varsResolver14
   });
-  return /* @__PURE__ */ React48.createElement(
-    Box28,
+  return /* @__PURE__ */ React49.createElement(
+    Box29,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       variant,
@@ -7367,7 +7408,7 @@ var Group = factory21((_props, ref) => {
 Group.displayName = "@raikou/core/Group";
 
 // ../components/ActionIcon/src/ActionIcon.tsx
-import React50 from "react";
+import React51 from "react";
 import {
   useProps as useProps33,
   useStyles as useStyles20,
@@ -7378,10 +7419,10 @@ import {
 } from "@raikou/core";
 
 // ../components/ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-import React49 from "react";
+import React50 from "react";
 import {
   factory as factory22,
-  Box as Box29,
+  Box as Box30,
   useProps as useProps32,
   useStyles as useStyles19,
   rem as rem16,
@@ -7435,8 +7476,8 @@ var ActionIconGroup = factory22(
       varsResolver: varsResolver15,
       rootSelector: "group"
     });
-    return /* @__PURE__ */ React49.createElement(
-      Box29,
+    return /* @__PURE__ */ React50.createElement(
+      Box30,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
         ref,
         variant,
@@ -7528,7 +7569,7 @@ var ActionIcon = polymorphicFactory6(
       vars,
       varsResolver: varsResolver16
     });
-    return /* @__PURE__ */ React50.createElement(
+    return /* @__PURE__ */ React51.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues(__spreadValues({}, getStyles("root", {
         active: !disabled && !loading && !dataDisabled
@@ -7540,7 +7581,7 @@ var ActionIcon = polymorphicFactory6(
         ref,
         mod: { loading, disabled: disabled || dataDisabled }
       }),
-      loading ? /* @__PURE__ */ React50.createElement(
+      loading ? /* @__PURE__ */ React51.createElement(
         Loader,
         __spreadValues(__spreadProps(__spreadValues({}, getStyles("loader")), {
           color: "var(--ai-color)",
@@ -7563,7 +7604,7 @@ import {
   IconCheck
 } from "@tabler/icons-react";
 var defaultProps34 = {};
-var RichTextEditorColorPickerControl = forwardRef13((props, ref) => {
+var RichTextEditorColorPickerControl = forwardRef14((props, ref) => {
   const _a = useProps34(
     "RichTextEditorColorPickerControl",
     defaultProps34,
@@ -7581,7 +7622,7 @@ var RichTextEditorColorPickerControl = forwardRef13((props, ref) => {
     (editor == null ? void 0 : editor.chain()).focus().unsetColor().run();
     close();
   };
-  const controls = colors.map((color, index3) => /* @__PURE__ */ React51.createElement(
+  const controls = colors.map((color, index3) => /* @__PURE__ */ React52.createElement(
     ColorSwatch,
     {
       key: index3,
@@ -7595,7 +7636,7 @@ var RichTextEditorColorPickerControl = forwardRef13((props, ref) => {
       "aria-label": labels.colorPickerColorLabel(color)
     }
   ));
-  return /* @__PURE__ */ React51.createElement(
+  return /* @__PURE__ */ React52.createElement(
     Popover,
     __spreadValues({
       opened,
@@ -7603,7 +7644,7 @@ var RichTextEditorColorPickerControl = forwardRef13((props, ref) => {
       trapFocus: true,
       onClose: close
     }, popoverProps),
-    /* @__PURE__ */ React51.createElement(Popover.Target, null, /* @__PURE__ */ React51.createElement(
+    /* @__PURE__ */ React52.createElement(Popover.Target, null, /* @__PURE__ */ React52.createElement(
       RichTextEditorControl,
       __spreadProps(__spreadValues({}, others), {
         "aria-label": labels.colorPickerControlLabel,
@@ -7611,15 +7652,15 @@ var RichTextEditorColorPickerControl = forwardRef13((props, ref) => {
         ref,
         onClick: toggle
       }),
-      /* @__PURE__ */ React51.createElement(ColorSwatch, { color: currentColor, size: 14 })
+      /* @__PURE__ */ React52.createElement(ColorSwatch, { color: currentColor, size: 14 })
     )),
-    /* @__PURE__ */ React51.createElement(Popover.Dropdown, __spreadValues({}, getStyles("linkEditorDropdown")), state === "palette" && /* @__PURE__ */ React51.createElement(SimpleGrid, { cols: 7, spacing: 2 }, controls), state === "colorPicker" && /* @__PURE__ */ React51.createElement(
+    /* @__PURE__ */ React52.createElement(Popover.Dropdown, __spreadValues({}, getStyles("linkEditorDropdown")), state === "palette" && /* @__PURE__ */ React52.createElement(SimpleGrid, { cols: 7, spacing: 2 }, controls), state === "colorPicker" && /* @__PURE__ */ React52.createElement(
       ColorPicker,
       __spreadValues({
         defaultValue: currentColor,
         onChange: (value) => handleChange(value, false)
       }, colorPickerProps)
-    ), /* @__PURE__ */ React51.createElement(Tooltip.Group, { closeDelay: 200 }, /* @__PURE__ */ React51.createElement(Group, { justify: "flex-end", gap: "xs", mt: "sm" }, state === "palette" && /* @__PURE__ */ React51.createElement(
+    ), /* @__PURE__ */ React52.createElement(Tooltip.Group, { closeDelay: 200 }, /* @__PURE__ */ React52.createElement(Group, { justify: "flex-end", gap: "xs", mt: "sm" }, state === "palette" && /* @__PURE__ */ React52.createElement(
       ActionIcon,
       {
         variant: "default",
@@ -7627,8 +7668,8 @@ var RichTextEditorColorPickerControl = forwardRef13((props, ref) => {
         title: labels.colorPickerCancel,
         "aria-label": labels.colorPickerCancel
       },
-      /* @__PURE__ */ React51.createElement(IconX, { stroke: 1.5, size: "1rem" })
-    ), /* @__PURE__ */ React51.createElement(
+      /* @__PURE__ */ React52.createElement(IconX, { stroke: 1.5, size: "1rem" })
+    ), /* @__PURE__ */ React52.createElement(
       ActionIcon,
       {
         variant: "default",
@@ -7636,8 +7677,8 @@ var RichTextEditorColorPickerControl = forwardRef13((props, ref) => {
         title: labels.colorPickerClear,
         "aria-label": labels.colorPickerClear
       },
-      /* @__PURE__ */ React51.createElement(IconCircleOff2, { stroke: 1.5, size: "1rem" })
-    ), state === "palette" ? /* @__PURE__ */ React51.createElement(
+      /* @__PURE__ */ React52.createElement(IconCircleOff2, { stroke: 1.5, size: "1rem" })
+    ), state === "palette" ? /* @__PURE__ */ React52.createElement(
       ActionIcon,
       {
         variant: "default",
@@ -7645,8 +7686,8 @@ var RichTextEditorColorPickerControl = forwardRef13((props, ref) => {
         title: labels.colorPickerColorPicker,
         "aria-label": labels.colorPickerColorPicker
       },
-      /* @__PURE__ */ React51.createElement(IconColorPicker, { stroke: 1.5, size: "1rem" })
-    ) : /* @__PURE__ */ React51.createElement(
+      /* @__PURE__ */ React52.createElement(IconColorPicker, { stroke: 1.5, size: "1rem" })
+    ) : /* @__PURE__ */ React52.createElement(
       ActionIcon,
       {
         variant: "default",
@@ -7654,8 +7695,8 @@ var RichTextEditorColorPickerControl = forwardRef13((props, ref) => {
         "aria-label": labels.colorPickerPalette,
         title: labels.colorPickerPalette
       },
-      /* @__PURE__ */ React51.createElement(IconPalette, { stroke: 1.5, size: "1rem" })
-    ), state === "colorPicker" && /* @__PURE__ */ React51.createElement(
+      /* @__PURE__ */ React52.createElement(IconPalette, { stroke: 1.5, size: "1rem" })
+    ), state === "colorPicker" && /* @__PURE__ */ React52.createElement(
       ActionIcon,
       {
         variant: "default",
@@ -7663,17 +7704,17 @@ var RichTextEditorColorPickerControl = forwardRef13((props, ref) => {
         title: labels.colorPickerSave,
         "aria-label": labels.colorPickerSave
       },
-      /* @__PURE__ */ React51.createElement(IconCheck, { stroke: 1.5, size: "1rem" })
+      /* @__PURE__ */ React52.createElement(IconCheck, { stroke: 1.5, size: "1rem" })
     ))))
   );
 });
 RichTextEditorColorPickerControl.displayName = "@raikou/tiptap/ColorPickerControl";
 
 // src/RichTextEditorControl/RichTextEditorColorControl.tsx
-import React52, { forwardRef as forwardRef14 } from "react";
+import React53, { forwardRef as forwardRef15 } from "react";
 import { useProps as useProps35 } from "@raikou/core";
 var defaultProps35 = {};
-var RichTextEditorColorControl = forwardRef14((props, ref) => {
+var RichTextEditorColorControl = forwardRef15((props, ref) => {
   const _a = useProps35(
     "RichTextEditorColorControl",
     defaultProps35,
@@ -7682,7 +7723,7 @@ var RichTextEditorColorControl = forwardRef14((props, ref) => {
   const { editor, labels } = useRichTextEditorContext();
   const currentColor = (editor == null ? void 0 : editor.getAttributes("textStyle").color) || null;
   const label = labels.colorControlLabel(color);
-  return /* @__PURE__ */ React52.createElement(
+  return /* @__PURE__ */ React53.createElement(
     RichTextEditorControl,
     __spreadProps(__spreadValues({}, others), {
       active: currentColor === color,
@@ -7691,7 +7732,7 @@ var RichTextEditorColorControl = forwardRef14((props, ref) => {
       onClick: () => (editor == null ? void 0 : editor.chain()).focus().setColor(color).run(),
       ref
     }),
-    /* @__PURE__ */ React52.createElement(ColorSwatch, { color, size: 14 })
+    /* @__PURE__ */ React53.createElement(ColorSwatch, { color, size: 14 })
   );
 });
 
@@ -7754,7 +7795,7 @@ var RichTextEditor = factory23((_props, ref) => {
     () => __spreadValues(__spreadValues({}, DEFAULT_LABELS), labels),
     [labels]
   );
-  return /* @__PURE__ */ React53.createElement(
+  return /* @__PURE__ */ React54.createElement(
     RichTextEditorProvider,
     {
       value: {
@@ -7765,7 +7806,7 @@ var RichTextEditor = factory23((_props, ref) => {
         withTypographyStyles
       }
     },
-    /* @__PURE__ */ React53.createElement(Box30, __spreadProps(__spreadValues(__spreadValues({}, getStyles("root")), others), { ref }), children)
+    /* @__PURE__ */ React54.createElement(Box31, __spreadProps(__spreadValues(__spreadValues({}, getStyles("root")), others), { ref }), children)
   );
 });
 RichTextEditor.displayName = "@raikou/tiptap/RichTextEditor";

@@ -4775,9 +4775,6 @@ importers:
       '@raikou/global-store':
         specifier: workspace:*
         version: link:../globalstore
-      '@raikou/hooks':
-        specifier: workspace:*
-        version: link:../hooks
       next-themes:
         specifier: ^0.2.1
         version: 0.2.1(next@13.4.19)(react-dom@18.2.0)(react@18.2.0)

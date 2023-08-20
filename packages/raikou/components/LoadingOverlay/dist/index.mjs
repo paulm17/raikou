@@ -31,9 +31,9 @@ var __objRest = (source, exclude) => {
 };
 
 // src/LoadingOverlay.tsx
-import React8 from "react";
+import React9 from "react";
 import {
-  Box as Box6,
+  Box as Box7,
   factory as factory2,
   useProps as useProps3,
   useStyles as useStyles3,
@@ -388,9 +388,9 @@ function Transition({
 Transition.displayName = "@raikou/core/Transition";
 
 // ../Loader/src/Loader.tsx
-import React6 from "react";
+import React7 from "react";
 import {
-  Box as Box4,
+  Box as Box5,
   useProps,
   getThemeColor,
   useStyles,
@@ -461,29 +461,58 @@ var Oval = forwardRef2(
   }
 );
 
-// ../Loader/src/loaders/Dots.tsx
+// ../Loader/src/loaders/Progress.tsx
 import React5, { forwardRef as forwardRef3 } from "react";
 import { Box as Box3 } from "@raikou/core";
-var Dots = forwardRef3(
+var Progress = forwardRef3(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ React5.createElement(
       Box3,
       __spreadProps(__spreadValues({
         component: "span",
+        className: clsx_default("progress-loader", className)
+      }, others), {
+        ref
+      }),
+      /* @__PURE__ */ React5.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ React5.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ React5.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ React5.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ React5.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ React5.createElement(
+        "animateTransform",
+        {
+          attributeName: "transform",
+          type: "rotate",
+          from: "0 16 16",
+          to: "360 16 16",
+          dur: "1s",
+          repeatCount: "indefinite"
+        }
+      )))))
+    );
+  }
+);
+
+// ../Loader/src/loaders/Dots.tsx
+import React6, { forwardRef as forwardRef4 } from "react";
+import { Box as Box4 } from "@raikou/core";
+var Dots = forwardRef4(
+  (_a, ref) => {
+    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+    return /* @__PURE__ */ React6.createElement(
+      Box4,
+      __spreadProps(__spreadValues({
+        component: "span",
         className: clsx_default("dots-loader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" })
+      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React6.createElement("span", { className: "dot" })
     );
   }
 );
@@ -492,7 +521,8 @@ var Dots = forwardRef3(
 var defaultLoaders = {
   bars: Bars,
   oval: Oval,
-  dots: Dots
+  dots: Dots,
+  progress: Progress
 };
 var defaultProps = {
   size: "md",
@@ -548,8 +578,8 @@ var Loader = factory((_props, ref) => {
     vars,
     varsResolver
   });
-  return /* @__PURE__ */ React6.createElement(
-    Box4,
+  return /* @__PURE__ */ React7.createElement(
+    Box5,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -561,9 +591,9 @@ var Loader = factory((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../Overlay/src/Overlay.tsx
-import React7 from "react";
+import React8 from "react";
 import {
-  Box as Box5,
+  Box as Box6,
   polymorphicFactory,
   useProps as useProps2,
   useStyles as useStyles2,
@@ -638,7 +668,7 @@ var Overlay = polymorphicFactory((_props, ref) => {
     vars,
     varsResolver: varsResolver2
   });
-  return /* @__PURE__ */ React7.createElement(Box5, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { mod: { center, fixed } }), others), children);
+  return /* @__PURE__ */ React8.createElement(Box6, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { mod: { center, fixed } }), others), children);
 });
 Overlay.displayName = "@raikou/core/Overlay";
 
@@ -700,13 +730,13 @@ var LoadingOverlay = factory2((_props, ref) => {
     varsResolver: varsResolver3
   });
   const _overlayProps = __spreadValues(__spreadValues({}, defaultProps3.overlayProps), overlayProps);
-  return /* @__PURE__ */ React8.createElement(Transition, __spreadProps(__spreadValues({ transition: "fade" }, transitionProps), { mounted: !!visible }), (transitionStyles) => /* @__PURE__ */ React8.createElement(
-    Box6,
+  return /* @__PURE__ */ React9.createElement(Transition, __spreadProps(__spreadValues({ transition: "fade" }, transitionProps), { mounted: !!visible }), (transitionStyles) => /* @__PURE__ */ React9.createElement(
+    Box7,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { style: transitionStyles })), {
       ref
     }), others),
-    /* @__PURE__ */ React8.createElement(Loader, __spreadValues(__spreadValues({}, getStyles("loader")), loaderProps)),
-    /* @__PURE__ */ React8.createElement(
+    /* @__PURE__ */ React9.createElement(Loader, __spreadValues(__spreadValues({}, getStyles("loader")), loaderProps)),
+    /* @__PURE__ */ React9.createElement(
       Overlay,
       __spreadProps(__spreadValues(__spreadValues({}, _overlayProps), getStyles("overlay")), {
         "data-light": true,
@@ -714,7 +744,7 @@ var LoadingOverlay = factory2((_props, ref) => {
         color: (overlayProps == null ? void 0 : overlayProps.color) || theme.white
       })
     ),
-    /* @__PURE__ */ React8.createElement(
+    /* @__PURE__ */ React9.createElement(
       Overlay,
       __spreadProps(__spreadValues(__spreadValues({}, _overlayProps), getStyles("overlay")), {
         "data-dark": true,

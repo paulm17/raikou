@@ -24,7 +24,7 @@ __export(src_exports, {
 });
 module.exports = __toCommonJS(src_exports);
 function Hello() {
-  console.log("hello - C23456-5");
+  console.log("hello - D7899-6");
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

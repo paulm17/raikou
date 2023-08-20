@@ -3626,7 +3626,7 @@ interface ModalProps extends ModalRootProps {
 }
 
 type RaikouLoaderComponent = React$2.ForwardRefExoticComponent<React$2.HTMLAttributes<any> & React$2.RefAttributes<any>>;
-type RaikouLoadersRecord = Partial<Record<"bars" | "dots" | "oval" | (string & {}), RaikouLoaderComponent>>;
+type RaikouLoadersRecord = Partial<Record<"bars" | "dots" | "oval" | "progress" | (string & {}), RaikouLoaderComponent>>;
 type RaikouLoader = keyof RaikouLoadersRecord;
 
 type LoaderStylesNames = "root";
@@ -3713,6 +3713,8 @@ interface ButtonProps extends BoxProps, StylesApiProps<ButtonFactory> {
     loading?: boolean;
     /** Props added to the `Loader` component (only visible when `loading` prop is set) */
     loaderProps?: LoaderProps;
+    /** Loader position relative to button label */
+    loaderPosition?: "left" | "right" | "center";
 }
 type ButtonFactory = PolymorphicFactory<{
     props: ButtonProps;

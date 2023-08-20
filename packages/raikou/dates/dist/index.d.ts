@@ -1204,7 +1204,7 @@ declare const DateInput: _raikou_core.RaikouComponent<{
 }>;
 
 type RaikouLoaderComponent = react.ForwardRefExoticComponent<react.HTMLAttributes<any> & react.RefAttributes<any>>;
-type RaikouLoadersRecord = Partial<Record<"bars" | "dots" | "oval" | (string & {}), RaikouLoaderComponent>>;
+type RaikouLoadersRecord = Partial<Record<"bars" | "dots" | "oval" | "progress" | (string & {}), RaikouLoaderComponent>>;
 type RaikouLoader = keyof RaikouLoadersRecord;
 
 type LoaderStylesNames = "root";

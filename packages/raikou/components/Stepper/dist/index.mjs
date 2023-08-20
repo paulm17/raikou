@@ -31,9 +31,9 @@ var __objRest = (source, exclude) => {
 };
 
 // src/Stepper.tsx
-import React11, { Children, cloneElement } from "react";
+import React12, { Children, cloneElement } from "react";
 import {
-  Box as Box6,
+  Box as Box7,
   factory as factory3,
   useProps as useProps4,
   useStyles as useStyles3,
@@ -47,7 +47,7 @@ import {
 } from "@raikou/core";
 
 // src/StepperStep/StepperStep.tsx
-import React10 from "react";
+import React11 from "react";
 import {
   factory as factory2,
   useProps as useProps3,
@@ -344,9 +344,9 @@ function Transition({
 Transition.displayName = "@raikou/core/Transition";
 
 // ../Loader/src/Loader.tsx
-import React6 from "react";
+import React7 from "react";
 import {
-  Box as Box5,
+  Box as Box6,
   useProps as useProps2,
   getThemeColor,
   useStyles as useStyles2,
@@ -417,29 +417,58 @@ var Oval = forwardRef2(
   }
 );
 
-// ../Loader/src/loaders/Dots.tsx
+// ../Loader/src/loaders/Progress.tsx
 import React5, { forwardRef as forwardRef3 } from "react";
 import { Box as Box4 } from "@raikou/core";
-var Dots = forwardRef3(
+var Progress = forwardRef3(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ React5.createElement(
       Box4,
       __spreadProps(__spreadValues({
         component: "span",
+        className: clsx_default("progress-loader", className)
+      }, others), {
+        ref
+      }),
+      /* @__PURE__ */ React5.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ React5.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ React5.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ React5.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ React5.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ React5.createElement(
+        "animateTransform",
+        {
+          attributeName: "transform",
+          type: "rotate",
+          from: "0 16 16",
+          to: "360 16 16",
+          dur: "1s",
+          repeatCount: "indefinite"
+        }
+      )))))
+    );
+  }
+);
+
+// ../Loader/src/loaders/Dots.tsx
+import React6, { forwardRef as forwardRef4 } from "react";
+import { Box as Box5 } from "@raikou/core";
+var Dots = forwardRef4(
+  (_a, ref) => {
+    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+    return /* @__PURE__ */ React6.createElement(
+      Box5,
+      __spreadProps(__spreadValues({
+        component: "span",
         className: clsx_default("dots-loader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" })
+      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React6.createElement("span", { className: "dot" })
     );
   }
 );
@@ -448,7 +477,8 @@ var Dots = forwardRef3(
 var defaultLoaders = {
   bars: Bars,
   oval: Oval,
-  dots: Dots
+  dots: Dots,
+  progress: Progress
 };
 var defaultProps2 = {
   size: "md",
@@ -504,8 +534,8 @@ var Loader = factory((_props, ref) => {
     vars,
     varsResolver
   });
-  return /* @__PURE__ */ React6.createElement(
-    Box5,
+  return /* @__PURE__ */ React7.createElement(
+    Box6,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -517,7 +547,7 @@ var Loader = factory((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../_utils/create-safe-context/create-safe-context.tsx
-import React7, { createContext, useContext } from "react";
+import React8, { createContext, useContext } from "react";
 function createSafeContext(errorMessage) {
   const Context = createContext(null);
   const useSafeContext = () => {
@@ -527,12 +557,12 @@ function createSafeContext(errorMessage) {
     }
     return ctx;
   };
-  const Provider = ({ children, value }) => /* @__PURE__ */ React7.createElement(Context.Provider, { value }, children);
+  const Provider = ({ children, value }) => /* @__PURE__ */ React8.createElement(Context.Provider, { value }, children);
   return [Provider, useSafeContext];
 }
 
 // ../_utils/create-optional-context/create-optional-context.tsx
-import React8, { createContext as createContext2, useContext as useContext2 } from "react";
+import React9, { createContext as createContext2, useContext as useContext2 } from "react";
 
 // ../_utils/use-hovered/use-hovered.ts
 import { useState as useState2 } from "react";
@@ -541,12 +571,12 @@ import { useState as useState2 } from "react";
 import { useEffect as useEffect2, useLayoutEffect } from "react";
 
 // ../Checkbox/src/CheckIcon.tsx
-import React9 from "react";
+import React10 from "react";
 import { rem as rem2 } from "@raikou/core";
 function CheckIcon(_a) {
   var _b = _a, { size, style } = _b, others = __objRest(_b, ["size", "style"]);
   const _style = size !== void 0 ? __spreadValues({ width: rem2(size), height: rem2(size) }, style) : style;
-  return /* @__PURE__ */ React9.createElement(
+  return /* @__PURE__ */ React10.createElement(
     "svg",
     __spreadValues({
       className: "icon",
@@ -555,7 +585,7 @@ function CheckIcon(_a) {
       xmlns: "http://www.w3.org/2000/svg",
       style: _style
     }, others),
-    /* @__PURE__ */ React9.createElement(
+    /* @__PURE__ */ React10.createElement(
       "path",
       {
         d: "M4 4.586L1.707 2.293A1 1 0 1 0 .293 3.707l3 3a.997.997 0 0 0 1.414 0l5-5A1 1 0 1 0 8.293.293L4 4.586z",
@@ -575,7 +605,7 @@ var [StepperProvider, useStepperContext] = createSafeContext(
 // src/StepperStep/StepperStep.tsx
 var getStepFragment = (Fragment, step) => {
   if (typeof Fragment === "function") {
-    return /* @__PURE__ */ React10.createElement(Fragment, { step: step || 0 });
+    return /* @__PURE__ */ React11.createElement(Fragment, { step: step || 0 });
   }
   return Fragment;
 };
@@ -638,7 +668,7 @@ var StepperStep = factory2((props, ref) => {
     "data-progress": state === "stepProgress" || void 0,
     "data-completed": state === "stepCompleted" || void 0
   };
-  return /* @__PURE__ */ React10.createElement(
+  return /* @__PURE__ */ React11.createElement(
     UnstyledButton,
     __spreadProps(__spreadValues(__spreadValues(__spreadProps(__spreadValues({}, ctx.getStyles("step", __spreadValues({
       className,
@@ -656,46 +686,46 @@ var StepperStep = factory2((props, ref) => {
       },
       tabIndex: allowStepClick ? 0 : -1
     }),
-    withIcon && /* @__PURE__ */ React10.createElement("span", __spreadValues({}, ctx.getStyles("stepWrapper", stylesApi)), /* @__PURE__ */ React10.createElement("span", __spreadValues(__spreadValues({}, ctx.getStyles("stepIcon", stylesApi)), dataAttributes), /* @__PURE__ */ React10.createElement(
+    withIcon && /* @__PURE__ */ React11.createElement("span", __spreadValues({}, ctx.getStyles("stepWrapper", stylesApi)), /* @__PURE__ */ React11.createElement("span", __spreadValues(__spreadValues({}, ctx.getStyles("stepIcon", stylesApi)), dataAttributes), /* @__PURE__ */ React11.createElement(
       Transition,
       {
         mounted: state === "stepCompleted",
         transition: "pop",
         duration: 200
       },
-      (transitionStyles) => /* @__PURE__ */ React10.createElement(
+      (transitionStyles) => /* @__PURE__ */ React11.createElement(
         "span",
         __spreadValues({}, ctx.getStyles("stepCompletedIcon", __spreadValues({
           style: transitionStyles
         }, stylesApi))),
-        loading ? /* @__PURE__ */ React10.createElement(
+        loading ? /* @__PURE__ */ React11.createElement(
           Loader,
           __spreadValues({
             color: "var(--raikou-color-white)",
             size: "calc(var(--stepper-icon-size) / 2)"
           }, ctx.getStyles("stepLoader", stylesApi))
-        ) : getStepFragment(completedIcon, step) || /* @__PURE__ */ React10.createElement(CheckIcon, { size: "60%" })
+        ) : getStepFragment(completedIcon, step) || /* @__PURE__ */ React11.createElement(CheckIcon, { size: "60%" })
       )
-    ), state !== "stepCompleted" ? loading ? /* @__PURE__ */ React10.createElement(
+    ), state !== "stepCompleted" ? loading ? /* @__PURE__ */ React11.createElement(
       Loader,
       __spreadProps(__spreadValues({}, ctx.getStyles("stepLoader", stylesApi)), {
         size: "calc(var(--stepper-icon-size) / 2)",
         color
       })
-    ) : getStepFragment(_icon || icon, step) : null), orientation === "vertical" && /* @__PURE__ */ React10.createElement(
+    ) : getStepFragment(_icon || icon, step) : null), orientation === "vertical" && /* @__PURE__ */ React11.createElement(
       "span",
       __spreadProps(__spreadValues({}, ctx.getStyles("verticalSeparator", stylesApi)), {
         "data-active": state === "stepCompleted" || void 0
       })
     )),
-    (label || description) && /* @__PURE__ */ React10.createElement(
+    (label || description) && /* @__PURE__ */ React11.createElement(
       "span",
       __spreadProps(__spreadValues({}, ctx.getStyles("stepBody", stylesApi)), {
         "data-orientation": ctx.orientation,
         "data-icon-position": iconPosition || ctx.iconPosition
       }),
-      label && /* @__PURE__ */ React10.createElement("span", __spreadValues({}, ctx.getStyles("stepLabel", stylesApi)), getStepFragment(label, step)),
-      description && /* @__PURE__ */ React10.createElement("span", __spreadValues({}, ctx.getStyles("stepDescription", stylesApi)), getStepFragment(description, step))
+      label && /* @__PURE__ */ React11.createElement("span", __spreadValues({}, ctx.getStyles("stepLabel", stylesApi)), getStepFragment(label, step)),
+      description && /* @__PURE__ */ React11.createElement("span", __spreadValues({}, ctx.getStyles("stepDescription", stylesApi)), getStepFragment(description, step))
     )
   );
 });
@@ -840,7 +870,7 @@ var Stepper = factory3((_props, ref) => {
     );
     if (orientation === "horizontal" && index !== _children.length - 1) {
       acc.push(
-        /* @__PURE__ */ React11.createElement(
+        /* @__PURE__ */ React12.createElement(
           "div",
           __spreadProps(__spreadValues({}, getStyles("separator")), {
             "data-active": index < active || void 0,
@@ -855,8 +885,8 @@ var Stepper = factory3((_props, ref) => {
   const stepContent = (_c = (_b = _children[active]) == null ? void 0 : _b.props) == null ? void 0 : _c.children;
   const completedContent = (_d = completedStep == null ? void 0 : completedStep.props) == null ? void 0 : _d.children;
   const content = active > _children.length - 1 ? completedContent : stepContent;
-  return /* @__PURE__ */ React11.createElement(StepperProvider, { value: { getStyles, orientation, iconPosition } }, /* @__PURE__ */ React11.createElement(Box6, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref, size }), others), /* @__PURE__ */ React11.createElement(
-    Box6,
+  return /* @__PURE__ */ React12.createElement(StepperProvider, { value: { getStyles, orientation, iconPosition } }, /* @__PURE__ */ React12.createElement(Box7, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref, size }), others), /* @__PURE__ */ React12.createElement(
+    Box7,
     __spreadProps(__spreadValues({}, getStyles("steps")), {
       mod: {
         orientation,
@@ -865,7 +895,7 @@ var Stepper = factory3((_props, ref) => {
       }
     }),
     items
-  ), content && /* @__PURE__ */ React11.createElement("div", __spreadValues({}, getStyles("content")), content)));
+  ), content && /* @__PURE__ */ React12.createElement("div", __spreadValues({}, getStyles("content")), content)));
 });
 Stepper.displayName = "@raikou/core/Stepper";
 Stepper.Completed = StepperCompleted;

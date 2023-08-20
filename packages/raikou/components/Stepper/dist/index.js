@@ -66,12 +66,12 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Stepper.tsx
-var import_react14 = __toESM(require("react"));
-var import_core10 = require("@raikou/core");
+var import_react15 = __toESM(require("react"));
+var import_core11 = require("@raikou/core");
 
 // src/StepperStep/StepperStep.tsx
-var import_react13 = __toESM(require("react"));
-var import_core9 = require("@raikou/core");
+var import_react14 = __toESM(require("react"));
+var import_core10 = require("@raikou/core");
 
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react = __toESM(require("react"));
@@ -357,8 +357,8 @@ function Transition({
 Transition.displayName = "@raikou/core/Transition";
 
 // ../Loader/src/Loader.tsx
-var import_react7 = __toESM(require("react"));
-var import_core7 = require("@raikou/core");
+var import_react8 = __toESM(require("react"));
+var import_core8 = require("@raikou/core");
 
 // ../Loader/src/loaders/Bars.tsx
 var import_react4 = __toESM(require("react"));
@@ -422,29 +422,58 @@ var Oval = (0, import_react5.forwardRef)(
   }
 );
 
-// ../Loader/src/loaders/Dots.tsx
+// ../Loader/src/loaders/Progress.tsx
 var import_react6 = __toESM(require("react"));
 var import_core6 = require("@raikou/core");
-var Dots = (0, import_react6.forwardRef)(
+var Progress = (0, import_react6.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ import_react6.default.createElement(
       import_core6.Box,
       __spreadProps(__spreadValues({
         component: "span",
+        className: clsx_default("progress-loader", className)
+      }, others), {
+        ref
+      }),
+      /* @__PURE__ */ import_react6.default.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ import_react6.default.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ import_react6.default.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ import_react6.default.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ import_react6.default.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ import_react6.default.createElement(
+        "animateTransform",
+        {
+          attributeName: "transform",
+          type: "rotate",
+          from: "0 16 16",
+          to: "360 16 16",
+          dur: "1s",
+          repeatCount: "indefinite"
+        }
+      )))))
+    );
+  }
+);
+
+// ../Loader/src/loaders/Dots.tsx
+var import_react7 = __toESM(require("react"));
+var import_core7 = require("@raikou/core");
+var Dots = (0, import_react7.forwardRef)(
+  (_a, ref) => {
+    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+    return /* @__PURE__ */ import_react7.default.createElement(
+      import_core7.Box,
+      __spreadProps(__spreadValues({
+        component: "span",
         className: clsx_default("dots-loader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" })
+      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" })
     );
   }
 );
@@ -453,23 +482,24 @@ var Dots = (0, import_react6.forwardRef)(
 var defaultLoaders = {
   bars: Bars,
   oval: Oval,
-  dots: Dots
+  dots: Dots,
+  progress: Progress
 };
 var defaultProps2 = {
   size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
-var varsResolver = (0, import_core7.createVarsResolver)(
+var varsResolver = (0, import_core8.createVarsResolver)(
   (theme, { size, color }) => ({
     root: {
-      "--loader-size": (0, import_core7.getSize)(size, "loader-size"),
-      "--loader-color": (0, import_core7.getThemeColor)(color, theme)
+      "--loader-size": (0, import_core8.getSize)(size, "loader-size"),
+      "--loader-color": (0, import_core8.getThemeColor)(color, theme)
     }
   })
 );
-var Loader = (0, import_core7.factory)((_props, ref) => {
-  const props = (0, import_core7.useProps)("Loader", defaultProps2, _props);
+var Loader = (0, import_core8.factory)((_props, ref) => {
+  const props = (0, import_core8.useProps)("Loader", defaultProps2, _props);
   const _a = props, {
     size,
     color,
@@ -495,7 +525,7 @@ var Loader = (0, import_core7.factory)((_props, ref) => {
     "loaders",
     "variant"
   ]);
-  const getStyles = (0, import_core7.useStyles)({
+  const getStyles = (0, import_core8.useStyles)({
     name: "Loader",
     props,
     classes: {
@@ -509,8 +539,8 @@ var Loader = (0, import_core7.factory)((_props, ref) => {
     vars,
     varsResolver
   });
-  return /* @__PURE__ */ import_react7.default.createElement(
-    import_core7.Box,
+  return /* @__PURE__ */ import_react8.default.createElement(
+    import_core8.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -522,36 +552,36 @@ var Loader = (0, import_core7.factory)((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../_utils/create-safe-context/create-safe-context.tsx
-var import_react8 = __toESM(require("react"));
+var import_react9 = __toESM(require("react"));
 function createSafeContext(errorMessage) {
-  const Context = (0, import_react8.createContext)(null);
+  const Context = (0, import_react9.createContext)(null);
   const useSafeContext = () => {
-    const ctx = (0, import_react8.useContext)(Context);
+    const ctx = (0, import_react9.useContext)(Context);
     if (ctx === null) {
       throw new Error(errorMessage);
     }
     return ctx;
   };
-  const Provider = ({ children, value }) => /* @__PURE__ */ import_react8.default.createElement(Context.Provider, { value }, children);
+  const Provider = ({ children, value }) => /* @__PURE__ */ import_react9.default.createElement(Context.Provider, { value }, children);
   return [Provider, useSafeContext];
 }
 
 // ../_utils/create-optional-context/create-optional-context.tsx
-var import_react9 = __toESM(require("react"));
+var import_react10 = __toESM(require("react"));
 
 // ../_utils/use-hovered/use-hovered.ts
-var import_react10 = require("react");
-
-// ../_utils/create-use-external-events/create-use-external-events.ts
 var import_react11 = require("react");
 
+// ../_utils/create-use-external-events/create-use-external-events.ts
+var import_react12 = require("react");
+
 // ../Checkbox/src/CheckIcon.tsx
-var import_react12 = __toESM(require("react"));
-var import_core8 = require("@raikou/core");
+var import_react13 = __toESM(require("react"));
+var import_core9 = require("@raikou/core");
 function CheckIcon(_a) {
   var _b = _a, { size, style } = _b, others = __objRest(_b, ["size", "style"]);
-  const _style = size !== void 0 ? __spreadValues({ width: (0, import_core8.rem)(size), height: (0, import_core8.rem)(size) }, style) : style;
-  return /* @__PURE__ */ import_react12.default.createElement(
+  const _style = size !== void 0 ? __spreadValues({ width: (0, import_core9.rem)(size), height: (0, import_core9.rem)(size) }, style) : style;
+  return /* @__PURE__ */ import_react13.default.createElement(
     "svg",
     __spreadValues({
       className: "icon",
@@ -560,7 +590,7 @@ function CheckIcon(_a) {
       xmlns: "http://www.w3.org/2000/svg",
       style: _style
     }, others),
-    /* @__PURE__ */ import_react12.default.createElement(
+    /* @__PURE__ */ import_react13.default.createElement(
       "path",
       {
         d: "M4 4.586L1.707 2.293A1 1 0 1 0 .293 3.707l3 3a.997.997 0 0 0 1.414 0l5-5A1 1 0 1 0 8.293.293L4 4.586z",
@@ -580,7 +610,7 @@ var [StepperProvider, useStepperContext] = createSafeContext(
 // src/StepperStep/StepperStep.tsx
 var getStepFragment = (Fragment, step) => {
   if (typeof Fragment === "function") {
-    return /* @__PURE__ */ import_react13.default.createElement(Fragment, { step: step || 0 });
+    return /* @__PURE__ */ import_react14.default.createElement(Fragment, { step: step || 0 });
   }
   return Fragment;
 };
@@ -589,8 +619,8 @@ var defaultProps3 = {
   allowStepClick: true,
   iconPosition: "left"
 };
-var StepperStep = (0, import_core9.factory)((props, ref) => {
-  const _a = (0, import_core9.useProps)("StepperStep", defaultProps3, props), {
+var StepperStep = (0, import_core10.factory)((props, ref) => {
+  const _a = (0, import_core10.useProps)("StepperStep", defaultProps3, props), {
     classNames,
     className,
     style,
@@ -636,14 +666,14 @@ var StepperStep = (0, import_core9.factory)((props, ref) => {
     "orientation"
   ]);
   const ctx = useStepperContext();
-  const theme = (0, import_core9.useRaikouTheme)();
+  const theme = (0, import_core10.useRaikouTheme)();
   const stylesApi = { classNames, styles };
   const _icon = state === "stepCompleted" ? null : state === "stepProgress" ? progressIcon : icon;
   const dataAttributes = {
     "data-progress": state === "stepProgress" || void 0,
     "data-completed": state === "stepCompleted" || void 0
   };
-  return /* @__PURE__ */ import_react13.default.createElement(
+  return /* @__PURE__ */ import_react14.default.createElement(
     UnstyledButton,
     __spreadProps(__spreadValues(__spreadValues(__spreadProps(__spreadValues({}, ctx.getStyles("step", __spreadValues({
       className,
@@ -657,50 +687,50 @@ var StepperStep = (0, import_core9.factory)((props, ref) => {
       ref
     }), dataAttributes), others), {
       __vars: {
-        "--step-color": color ? (0, import_core9.getThemeColor)(color, theme) : void 0
+        "--step-color": color ? (0, import_core10.getThemeColor)(color, theme) : void 0
       },
       tabIndex: allowStepClick ? 0 : -1
     }),
-    withIcon && /* @__PURE__ */ import_react13.default.createElement("span", __spreadValues({}, ctx.getStyles("stepWrapper", stylesApi)), /* @__PURE__ */ import_react13.default.createElement("span", __spreadValues(__spreadValues({}, ctx.getStyles("stepIcon", stylesApi)), dataAttributes), /* @__PURE__ */ import_react13.default.createElement(
+    withIcon && /* @__PURE__ */ import_react14.default.createElement("span", __spreadValues({}, ctx.getStyles("stepWrapper", stylesApi)), /* @__PURE__ */ import_react14.default.createElement("span", __spreadValues(__spreadValues({}, ctx.getStyles("stepIcon", stylesApi)), dataAttributes), /* @__PURE__ */ import_react14.default.createElement(
       Transition,
       {
         mounted: state === "stepCompleted",
         transition: "pop",
         duration: 200
       },
-      (transitionStyles) => /* @__PURE__ */ import_react13.default.createElement(
+      (transitionStyles) => /* @__PURE__ */ import_react14.default.createElement(
         "span",
         __spreadValues({}, ctx.getStyles("stepCompletedIcon", __spreadValues({
           style: transitionStyles
         }, stylesApi))),
-        loading ? /* @__PURE__ */ import_react13.default.createElement(
+        loading ? /* @__PURE__ */ import_react14.default.createElement(
           Loader,
           __spreadValues({
             color: "var(--raikou-color-white)",
             size: "calc(var(--stepper-icon-size) / 2)"
           }, ctx.getStyles("stepLoader", stylesApi))
-        ) : getStepFragment(completedIcon, step) || /* @__PURE__ */ import_react13.default.createElement(CheckIcon, { size: "60%" })
+        ) : getStepFragment(completedIcon, step) || /* @__PURE__ */ import_react14.default.createElement(CheckIcon, { size: "60%" })
       )
-    ), state !== "stepCompleted" ? loading ? /* @__PURE__ */ import_react13.default.createElement(
+    ), state !== "stepCompleted" ? loading ? /* @__PURE__ */ import_react14.default.createElement(
       Loader,
       __spreadProps(__spreadValues({}, ctx.getStyles("stepLoader", stylesApi)), {
         size: "calc(var(--stepper-icon-size) / 2)",
         color
       })
-    ) : getStepFragment(_icon || icon, step) : null), orientation === "vertical" && /* @__PURE__ */ import_react13.default.createElement(
+    ) : getStepFragment(_icon || icon, step) : null), orientation === "vertical" && /* @__PURE__ */ import_react14.default.createElement(
       "span",
       __spreadProps(__spreadValues({}, ctx.getStyles("verticalSeparator", stylesApi)), {
         "data-active": state === "stepCompleted" || void 0
       })
     )),
-    (label || description) && /* @__PURE__ */ import_react13.default.createElement(
+    (label || description) && /* @__PURE__ */ import_react14.default.createElement(
       "span",
       __spreadProps(__spreadValues({}, ctx.getStyles("stepBody", stylesApi)), {
         "data-orientation": ctx.orientation,
         "data-icon-position": iconPosition || ctx.iconPosition
       }),
-      label && /* @__PURE__ */ import_react13.default.createElement("span", __spreadValues({}, ctx.getStyles("stepLabel", stylesApi)), getStepFragment(label, step)),
-      description && /* @__PURE__ */ import_react13.default.createElement("span", __spreadValues({}, ctx.getStyles("stepDescription", stylesApi)), getStepFragment(description, step))
+      label && /* @__PURE__ */ import_react14.default.createElement("span", __spreadValues({}, ctx.getStyles("stepLabel", stylesApi)), getStepFragment(label, step)),
+      description && /* @__PURE__ */ import_react14.default.createElement("span", __spreadValues({}, ctx.getStyles("stepDescription", stylesApi)), getStepFragment(description, step))
     )
   );
 });
@@ -720,21 +750,21 @@ var defaultProps4 = {
   allowNextStepsSelect: true,
   wrap: true
 };
-var varsResolver2 = (0, import_core10.createVarsResolver)(
+var varsResolver2 = (0, import_core11.createVarsResolver)(
   (theme, { color, iconSize, size, contentPadding, radius }) => ({
     root: {
-      "--stepper-color": (0, import_core10.getThemeColor)(color, theme),
-      "--stepper-icon-size": iconSize === void 0 ? (0, import_core10.getSize)(size, "stepper-icon-size") : (0, import_core10.rem)(iconSize),
-      "--stepper-content-padding": (0, import_core10.getSpacing)(contentPadding),
-      "--stepper-radius": (0, import_core10.getRadius)(radius),
-      "--stepper-fz": (0, import_core10.getFontSize)(size),
-      "--stepper-spacing": (0, import_core10.getSpacing)(size)
+      "--stepper-color": (0, import_core11.getThemeColor)(color, theme),
+      "--stepper-icon-size": iconSize === void 0 ? (0, import_core11.getSize)(size, "stepper-icon-size") : (0, import_core11.rem)(iconSize),
+      "--stepper-content-padding": (0, import_core11.getSpacing)(contentPadding),
+      "--stepper-radius": (0, import_core11.getRadius)(radius),
+      "--stepper-fz": (0, import_core11.getFontSize)(size),
+      "--stepper-spacing": (0, import_core11.getSpacing)(size)
     }
   })
 );
-var Stepper = (0, import_core10.factory)((_props, ref) => {
+var Stepper = (0, import_core11.factory)((_props, ref) => {
   var _b, _c, _d;
-  const props = (0, import_core10.useProps)("Stepper", defaultProps4, _props);
+  const props = (0, import_core11.useProps)("Stepper", defaultProps4, _props);
   const _a = props, {
     classNames,
     className,
@@ -780,7 +810,7 @@ var Stepper = (0, import_core10.factory)((_props, ref) => {
     "allowNextStepsSelect",
     "wrap"
   ]);
-  const getStyles = (0, import_core10.useStyles)({
+  const getStyles = (0, import_core11.useStyles)({
     name: "Stepper",
     classes: {
       root: "stepper-root",
@@ -806,7 +836,7 @@ var Stepper = (0, import_core10.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver2
   });
-  const convertedChildren = import_react14.Children.toArray(children);
+  const convertedChildren = import_react15.Children.toArray(children);
   const _children = convertedChildren.filter(
     (child) => child.type !== StepperCompleted
   );
@@ -826,7 +856,7 @@ var Stepper = (0, import_core10.factory)((_props, ref) => {
     };
     const isStepSelectionEnabled = shouldAllowSelect();
     acc.push(
-      (0, import_react14.cloneElement)(item, {
+      (0, import_react15.cloneElement)(item, {
         icon: item.props.icon || icon || index + 1,
         key: index,
         step: index,
@@ -845,7 +875,7 @@ var Stepper = (0, import_core10.factory)((_props, ref) => {
     );
     if (orientation === "horizontal" && index !== _children.length - 1) {
       acc.push(
-        /* @__PURE__ */ import_react14.default.createElement(
+        /* @__PURE__ */ import_react15.default.createElement(
           "div",
           __spreadProps(__spreadValues({}, getStyles("separator")), {
             "data-active": index < active || void 0,
@@ -860,8 +890,8 @@ var Stepper = (0, import_core10.factory)((_props, ref) => {
   const stepContent = (_c = (_b = _children[active]) == null ? void 0 : _b.props) == null ? void 0 : _c.children;
   const completedContent = (_d = completedStep == null ? void 0 : completedStep.props) == null ? void 0 : _d.children;
   const content = active > _children.length - 1 ? completedContent : stepContent;
-  return /* @__PURE__ */ import_react14.default.createElement(StepperProvider, { value: { getStyles, orientation, iconPosition } }, /* @__PURE__ */ import_react14.default.createElement(import_core10.Box, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref, size }), others), /* @__PURE__ */ import_react14.default.createElement(
-    import_core10.Box,
+  return /* @__PURE__ */ import_react15.default.createElement(StepperProvider, { value: { getStyles, orientation, iconPosition } }, /* @__PURE__ */ import_react15.default.createElement(import_core11.Box, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref, size }), others), /* @__PURE__ */ import_react15.default.createElement(
+    import_core11.Box,
     __spreadProps(__spreadValues({}, getStyles("steps")), {
       mod: {
         orientation,
@@ -870,7 +900,7 @@ var Stepper = (0, import_core10.factory)((_props, ref) => {
       }
     }),
     items
-  ), content && /* @__PURE__ */ import_react14.default.createElement("div", __spreadValues({}, getStyles("content")), content)));
+  ), content && /* @__PURE__ */ import_react15.default.createElement("div", __spreadValues({}, getStyles("content")), content)));
 });
 Stepper.displayName = "@raikou/core/Stepper";
 Stepper.Completed = StepperCompleted;

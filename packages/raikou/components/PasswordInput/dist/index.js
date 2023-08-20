@@ -64,10 +64,10 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/PasswordInput.tsx
-var import_react19 = __toESM(require("react"));
-var import_clsx4 = __toESM(require("clsx"));
+var import_react20 = __toESM(require("react"));
+var import_clsx5 = __toESM(require("clsx"));
 var import_hooks2 = require("@raikou/hooks");
-var import_core14 = require("@raikou/core");
+var import_core15 = require("@raikou/core");
 
 // ../Input/src/Input.tsx
 var import_react10 = __toESM(require("react"));
@@ -721,8 +721,8 @@ Input.Placeholder = InputPlaceholder;
 Input.displayName = "@raikou/core/Input";
 
 // ../ActionIcon/src/ActionIcon.tsx
-var import_react17 = __toESM(require("react"));
-var import_core13 = require("@raikou/core");
+var import_react18 = __toESM(require("react"));
+var import_core14 = require("@raikou/core");
 
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react11 = __toESM(require("react"));
@@ -775,8 +775,8 @@ var UnstyledButton = (0, import_core7.polymorphicFactory)(
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
 // ../Loader/src/Loader.tsx
-var import_react15 = __toESM(require("react"));
-var import_core11 = require("@raikou/core");
+var import_react16 = __toESM(require("react"));
+var import_core12 = require("@raikou/core");
 
 // ../Loader/src/loaders/Bars.tsx
 var import_react12 = __toESM(require("react"));
@@ -819,30 +819,60 @@ var Oval = (0, import_react13.forwardRef)(
   }
 );
 
-// ../Loader/src/loaders/Dots.tsx
+// ../Loader/src/loaders/Progress.tsx
 var import_react14 = __toESM(require("react"));
 var import_clsx3 = __toESM(require("clsx"));
 var import_core10 = require("@raikou/core");
-var Dots = (0, import_react14.forwardRef)(
+var Progress = (0, import_react14.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ import_react14.default.createElement(
       import_core10.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx3.default)("dots-loader", className)
+        className: (0, import_clsx3.default)("progress-loader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react14.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react14.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react14.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react14.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react14.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react14.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react14.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react14.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react14.default.createElement("span", { className: "dot" })
+      /* @__PURE__ */ import_react14.default.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ import_react14.default.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ import_react14.default.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ import_react14.default.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ import_react14.default.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ import_react14.default.createElement(
+        "animateTransform",
+        {
+          attributeName: "transform",
+          type: "rotate",
+          from: "0 16 16",
+          to: "360 16 16",
+          dur: "1s",
+          repeatCount: "indefinite"
+        }
+      )))))
+    );
+  }
+);
+
+// ../Loader/src/loaders/Dots.tsx
+var import_react15 = __toESM(require("react"));
+var import_clsx4 = __toESM(require("clsx"));
+var import_core11 = require("@raikou/core");
+var Dots = (0, import_react15.forwardRef)(
+  (_a, ref) => {
+    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+    return /* @__PURE__ */ import_react15.default.createElement(
+      import_core11.Box,
+      __spreadProps(__spreadValues({
+        component: "span",
+        className: (0, import_clsx4.default)("dots-loader", className)
+      }, others), {
+        ref
+      }),
+      /* @__PURE__ */ import_react15.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react15.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react15.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react15.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react15.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react15.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react15.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react15.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react15.default.createElement("span", { className: "dot" })
     );
   }
 );
@@ -851,23 +881,24 @@ var Dots = (0, import_react14.forwardRef)(
 var defaultLoaders = {
   bars: Bars,
   oval: Oval,
-  dots: Dots
+  dots: Dots,
+  progress: Progress
 };
 var defaultProps8 = {
   size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
-var varsResolver6 = (0, import_core11.createVarsResolver)(
+var varsResolver6 = (0, import_core12.createVarsResolver)(
   (theme, { size, color }) => ({
     root: {
-      "--loader-size": (0, import_core11.getSize)(size, "loader-size"),
-      "--loader-color": (0, import_core11.getThemeColor)(color, theme)
+      "--loader-size": (0, import_core12.getSize)(size, "loader-size"),
+      "--loader-color": (0, import_core12.getThemeColor)(color, theme)
     }
   })
 );
-var Loader = (0, import_core11.factory)((_props, ref) => {
-  const props = (0, import_core11.useProps)("Loader", defaultProps8, _props);
+var Loader = (0, import_core12.factory)((_props, ref) => {
+  const props = (0, import_core12.useProps)("Loader", defaultProps8, _props);
   const _a = props, {
     size,
     color,
@@ -893,7 +924,7 @@ var Loader = (0, import_core11.factory)((_props, ref) => {
     "loaders",
     "variant"
   ]);
-  const getStyles = (0, import_core11.useStyles)({
+  const getStyles = (0, import_core12.useStyles)({
     name: "Loader",
     props,
     classes: {
@@ -907,8 +938,8 @@ var Loader = (0, import_core11.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver6
   });
-  return /* @__PURE__ */ import_react15.default.createElement(
-    import_core11.Box,
+  return /* @__PURE__ */ import_react16.default.createElement(
+    import_core12.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -920,21 +951,21 @@ var Loader = (0, import_core11.factory)((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-var import_react16 = __toESM(require("react"));
-var import_core12 = require("@raikou/core");
+var import_react17 = __toESM(require("react"));
+var import_core13 = require("@raikou/core");
 var defaultProps9 = {
   orientation: "horizontal",
   borderWidth: 1
 };
-var varsResolver7 = (0, import_core12.createVarsResolver)(
+var varsResolver7 = (0, import_core13.createVarsResolver)(
   (_, { borderWidth }) => ({
-    group: { "--ai-border-width": (0, import_core12.rem)(borderWidth) }
+    group: { "--ai-border-width": (0, import_core13.rem)(borderWidth) }
   })
 );
-var ActionIconGroup = (0, import_core12.factory)(
+var ActionIconGroup = (0, import_core13.factory)(
   (_props, ref) => {
-    const props = (0, import_core12.useProps)("ActionIconGroup", defaultProps9, _props);
-    const _a = (0, import_core12.useProps)("ActionIconGroup", defaultProps9, _props), {
+    const props = (0, import_core13.useProps)("ActionIconGroup", defaultProps9, _props);
+    const _a = (0, import_core13.useProps)("ActionIconGroup", defaultProps9, _props), {
       className,
       style,
       classNames,
@@ -955,7 +986,7 @@ var ActionIconGroup = (0, import_core12.factory)(
       "borderWidth",
       "variant"
     ]);
-    const getStyles = (0, import_core12.useStyles)({
+    const getStyles = (0, import_core13.useStyles)({
       name: "ActionIconGroup",
       props,
       classes: {
@@ -970,8 +1001,8 @@ var ActionIconGroup = (0, import_core12.factory)(
       varsResolver: varsResolver7,
       rootSelector: "group"
     });
-    return /* @__PURE__ */ import_react16.default.createElement(
-      import_core12.Box,
+    return /* @__PURE__ */ import_react17.default.createElement(
+      import_core13.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
         ref,
         variant,
@@ -988,7 +1019,7 @@ var defaultProps10 = {
   variant: "filled",
   size: "md"
 };
-var varsResolver8 = (0, import_core13.createVarsResolver)(
+var varsResolver8 = (0, import_core14.createVarsResolver)(
   (theme, { size, radius, variant, gradient, color }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
@@ -998,8 +1029,8 @@ var varsResolver8 = (0, import_core13.createVarsResolver)(
     });
     return {
       root: {
-        "--ai-size": (0, import_core13.getSize)(size, "ai-size"),
-        "--ai-radius": (0, import_core13.getRadius)(radius),
+        "--ai-size": (0, import_core14.getSize)(size, "ai-size"),
+        "--ai-radius": (0, import_core14.getRadius)(radius),
         "--ai-bg": colors.background,
         "--ai-hover": colors.hover,
         "--ai-color": colors.color,
@@ -1008,9 +1039,9 @@ var varsResolver8 = (0, import_core13.createVarsResolver)(
     };
   }
 );
-var ActionIcon = (0, import_core13.polymorphicFactory)(
+var ActionIcon = (0, import_core14.polymorphicFactory)(
   (_props, ref) => {
-    const props = (0, import_core13.useProps)("ActionIcon", defaultProps10, _props);
+    const props = (0, import_core14.useProps)("ActionIcon", defaultProps10, _props);
     const _a = props, {
       className,
       unstyled,
@@ -1048,7 +1079,7 @@ var ActionIcon = (0, import_core13.polymorphicFactory)(
       "disabled",
       "data-disabled"
     ]);
-    const getStyles = (0, import_core13.useStyles)({
+    const getStyles = (0, import_core14.useStyles)({
       name: ["ActionIcon", __staticSelector],
       props,
       className,
@@ -1063,7 +1094,7 @@ var ActionIcon = (0, import_core13.polymorphicFactory)(
       vars,
       varsResolver: varsResolver8
     });
-    return /* @__PURE__ */ import_react17.default.createElement(
+    return /* @__PURE__ */ import_react18.default.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues(__spreadValues({}, getStyles("root", {
         active: !disabled && !loading && !dataDisabled
@@ -1075,7 +1106,7 @@ var ActionIcon = (0, import_core13.polymorphicFactory)(
         ref,
         mod: { loading, disabled: disabled || dataDisabled }
       }),
-      loading ? /* @__PURE__ */ import_react17.default.createElement(
+      loading ? /* @__PURE__ */ import_react18.default.createElement(
         Loader,
         __spreadValues(__spreadProps(__spreadValues({}, getStyles("loader")), {
           color: "var(--ai-color)",
@@ -1089,10 +1120,10 @@ ActionIcon.displayName = "@raikou/core/ActionIcon";
 ActionIcon.Group = ActionIconGroup;
 
 // src/PasswordToggleIcon.tsx
-var import_react18 = __toESM(require("react"));
+var import_react19 = __toESM(require("react"));
 var PasswordToggleIcon = ({
   reveal
-}) => /* @__PURE__ */ import_react18.default.createElement(
+}) => /* @__PURE__ */ import_react19.default.createElement(
   "svg",
   {
     viewBox: "0 0 15 15",
@@ -1100,7 +1131,7 @@ var PasswordToggleIcon = ({
     xmlns: "http://www.w3.org/2000/svg",
     style: { width: "var(--psi-icon-size)", height: "var(--psi-icon-size)" }
   },
-  /* @__PURE__ */ import_react18.default.createElement(
+  /* @__PURE__ */ import_react19.default.createElement(
     "path",
     {
       d: reveal ? "M13.3536 2.35355C13.5488 2.15829 13.5488 1.84171 13.3536 1.64645C13.1583 1.45118 12.8417 1.45118 12.6464 1.64645L10.6828 3.61012C9.70652 3.21671 8.63759 3 7.5 3C4.30786 3 1.65639 4.70638 0.0760002 7.23501C-0.0253338 7.39715 -0.0253334 7.60288 0.0760014 7.76501C0.902945 9.08812 2.02314 10.1861 3.36061 10.9323L1.64645 12.6464C1.45118 12.8417 1.45118 13.1583 1.64645 13.3536C1.84171 13.5488 2.15829 13.5488 2.35355 13.3536L4.31723 11.3899C5.29348 11.7833 6.36241 12 7.5 12C10.6921 12 13.3436 10.2936 14.924 7.76501C15.0253 7.60288 15.0253 7.39715 14.924 7.23501C14.0971 5.9119 12.9769 4.81391 11.6394 4.06771L13.3536 2.35355ZM9.90428 4.38861C9.15332 4.1361 8.34759 4 7.5 4C4.80285 4 2.52952 5.37816 1.09622 7.50001C1.87284 8.6497 2.89609 9.58106 4.09974 10.1931L9.90428 4.38861ZM5.09572 10.6114L10.9003 4.80685C12.1039 5.41894 13.1272 6.35031 13.9038 7.50001C12.4705 9.62183 10.1971 11 7.5 11C6.65241 11 5.84668 10.8639 5.09572 10.6114Z" : "M7.5 11C4.80285 11 2.52952 9.62184 1.09622 7.50001C2.52952 5.37816 4.80285 4 7.5 4C10.1971 4 12.4705 5.37816 13.9038 7.50001C12.4705 9.62183 10.1971 11 7.5 11ZM7.5 3C4.30786 3 1.65639 4.70638 0.0760002 7.23501C-0.0253338 7.39715 -0.0253334 7.60288 0.0760014 7.76501C1.65639 10.2936 4.30786 12 7.5 12C10.6921 12 13.3436 10.2936 14.924 7.76501C15.0253 7.60288 15.0253 7.39715 14.924 7.23501C13.3436 4.70638 10.6921 3 7.5 3ZM7.5 9.5C8.60457 9.5 9.5 8.60457 9.5 7.5C9.5 6.39543 8.60457 5.5 7.5 5.5C6.39543 5.5 5.5 6.39543 5.5 7.5C5.5 8.60457 6.39543 9.5 7.5 9.5Z",
@@ -1117,16 +1148,16 @@ var defaultProps11 = {
   visibilityToggleIcon: PasswordToggleIcon,
   size: "sm"
 };
-var varsResolver9 = (0, import_core14.createVarsResolver)(
+var varsResolver9 = (0, import_core15.createVarsResolver)(
   (_, { size }) => ({
     root: {
-      "--psi-icon-size": (0, import_core14.getSize)(size, "psi-icon-size"),
-      "--psi-button-size": (0, import_core14.getSize)(size, "psi-button-size")
+      "--psi-icon-size": (0, import_core15.getSize)(size, "psi-icon-size"),
+      "--psi-button-size": (0, import_core15.getSize)(size, "psi-button-size")
     }
   })
 );
-var PasswordInput = (0, import_core14.factory)((_props, ref) => {
-  const props = (0, import_core14.useProps)("PasswordInput", defaultProps11, _props);
+var PasswordInput = (0, import_core15.factory)((_props, ref) => {
+  const props = (0, import_core15.useProps)("PasswordInput", defaultProps11, _props);
   const _a = props, {
     classNames,
     className,
@@ -1206,7 +1237,7 @@ var PasswordInput = (0, import_core14.factory)((_props, ref) => {
     onChange: onVisibilityChange
   });
   const toggleVisibility = () => setVisibility(!_visible);
-  const getStyles = (0, import_core14.useStyles)({
+  const getStyles = (0, import_core15.useStyles)({
     name: "PasswordInput",
     classes: {
       root: "passwordInput-root",
@@ -1222,14 +1253,14 @@ var PasswordInput = (0, import_core14.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver9
   });
-  const { resolvedClassNames, resolvedStyles } = (0, import_core14.useResolvedStylesApi)({
+  const { resolvedClassNames, resolvedStyles } = (0, import_core15.useResolvedStylesApi)({
     classNames,
     styles,
     props
   });
-  const { styleProps, rest } = (0, import_core14.extractStyleProps)(others);
+  const { styleProps, rest } = (0, import_core15.extractStyleProps)(others);
   const VisibilityToggleIcon = visibilityToggleIcon;
-  const visibilityToggleButton = /* @__PURE__ */ import_react19.default.createElement(
+  const visibilityToggleButton = /* @__PURE__ */ import_react20.default.createElement(
     ActionIcon,
     __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("visibilityToggle")), {
       radius,
@@ -1249,9 +1280,9 @@ var PasswordInput = (0, import_core14.factory)((_props, ref) => {
         }
       }
     }),
-    /* @__PURE__ */ import_react19.default.createElement(VisibilityToggleIcon, { reveal: _visible })
+    /* @__PURE__ */ import_react20.default.createElement(VisibilityToggleIcon, { reveal: _visible })
   );
-  return /* @__PURE__ */ import_react19.default.createElement(
+  return /* @__PURE__ */ import_react20.default.createElement(
     Input.Wrapper,
     __spreadValues(__spreadValues(__spreadValues({
       required,
@@ -1272,7 +1303,7 @@ var PasswordInput = (0, import_core14.factory)((_props, ref) => {
       variant,
       labelProps: __spreadProps(__spreadValues({}, labelProps), { htmlFor: uuid })
     }, getStyles("root")), styleProps), wrapperProps),
-    /* @__PURE__ */ import_react19.default.createElement(
+    /* @__PURE__ */ import_react20.default.createElement(
       Input,
       {
         component: "div",
@@ -1280,7 +1311,7 @@ var PasswordInput = (0, import_core14.factory)((_props, ref) => {
         leftSection,
         size,
         classNames: __spreadProps(__spreadValues({}, resolvedClassNames), {
-          input: (0, import_clsx4.default)("passwordInput-input", resolvedClassNames.input)
+          input: (0, import_clsx5.default)("passwordInput-input", resolvedClassNames.input)
         }),
         styles: resolvedStyles,
         radius,
@@ -1295,7 +1326,7 @@ var PasswordInput = (0, import_core14.factory)((_props, ref) => {
         rightSectionProps,
         leftSectionProps
       },
-      /* @__PURE__ */ import_react19.default.createElement(
+      /* @__PURE__ */ import_react20.default.createElement(
         "input",
         __spreadProps(__spreadValues(__spreadProps(__spreadValues({
           required,

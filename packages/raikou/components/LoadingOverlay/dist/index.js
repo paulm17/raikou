@@ -64,8 +64,8 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/LoadingOverlay.tsx
-var import_react62 = __toESM(require("react"));
-var import_core8 = require("@raikou/core");
+var import_react63 = __toESM(require("react"));
+var import_core9 = require("@raikou/core");
 
 // ../Transition/src/transitions.ts
 var import_core = require("@raikou/core");
@@ -413,8 +413,8 @@ function Transition({
 Transition.displayName = "@raikou/core/Transition";
 
 // ../Loader/src/Loader.tsx
-var import_react60 = __toESM(require("react"));
-var import_core6 = require("@raikou/core");
+var import_react61 = __toESM(require("react"));
+var import_core7 = require("@raikou/core");
 
 // ../Loader/src/loaders/Bars.tsx
 var import_react57 = __toESM(require("react"));
@@ -478,29 +478,58 @@ var Oval = (0, import_react58.forwardRef)(
   }
 );
 
-// ../Loader/src/loaders/Dots.tsx
+// ../Loader/src/loaders/Progress.tsx
 var import_react59 = __toESM(require("react"));
 var import_core5 = require("@raikou/core");
-var Dots = (0, import_react59.forwardRef)(
+var Progress = (0, import_react59.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ import_react59.default.createElement(
       import_core5.Box,
       __spreadProps(__spreadValues({
         component: "span",
+        className: clsx_default("progress-loader", className)
+      }, others), {
+        ref
+      }),
+      /* @__PURE__ */ import_react59.default.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ import_react59.default.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ import_react59.default.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ import_react59.default.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ import_react59.default.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ import_react59.default.createElement(
+        "animateTransform",
+        {
+          attributeName: "transform",
+          type: "rotate",
+          from: "0 16 16",
+          to: "360 16 16",
+          dur: "1s",
+          repeatCount: "indefinite"
+        }
+      )))))
+    );
+  }
+);
+
+// ../Loader/src/loaders/Dots.tsx
+var import_react60 = __toESM(require("react"));
+var import_core6 = require("@raikou/core");
+var Dots = (0, import_react60.forwardRef)(
+  (_a, ref) => {
+    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+    return /* @__PURE__ */ import_react60.default.createElement(
+      import_core6.Box,
+      __spreadProps(__spreadValues({
+        component: "span",
         className: clsx_default("dots-loader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react59.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react59.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react59.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react59.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react59.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react59.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react59.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react59.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react59.default.createElement("span", { className: "dot" })
+      /* @__PURE__ */ import_react60.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react60.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react60.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react60.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react60.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react60.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react60.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react60.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react60.default.createElement("span", { className: "dot" })
     );
   }
 );
@@ -509,23 +538,24 @@ var Dots = (0, import_react59.forwardRef)(
 var defaultLoaders = {
   bars: Bars,
   oval: Oval,
-  dots: Dots
+  dots: Dots,
+  progress: Progress
 };
 var defaultProps = {
   size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
-var varsResolver = (0, import_core6.createVarsResolver)(
+var varsResolver = (0, import_core7.createVarsResolver)(
   (theme, { size, color }) => ({
     root: {
-      "--loader-size": (0, import_core6.getSize)(size, "loader-size"),
-      "--loader-color": (0, import_core6.getThemeColor)(color, theme)
+      "--loader-size": (0, import_core7.getSize)(size, "loader-size"),
+      "--loader-color": (0, import_core7.getThemeColor)(color, theme)
     }
   })
 );
-var Loader = (0, import_core6.factory)((_props, ref) => {
-  const props = (0, import_core6.useProps)("Loader", defaultProps, _props);
+var Loader = (0, import_core7.factory)((_props, ref) => {
+  const props = (0, import_core7.useProps)("Loader", defaultProps, _props);
   const _a = props, {
     size,
     color,
@@ -551,7 +581,7 @@ var Loader = (0, import_core6.factory)((_props, ref) => {
     "loaders",
     "variant"
   ]);
-  const getStyles = (0, import_core6.useStyles)({
+  const getStyles = (0, import_core7.useStyles)({
     name: "Loader",
     props,
     classes: {
@@ -565,8 +595,8 @@ var Loader = (0, import_core6.factory)((_props, ref) => {
     vars,
     varsResolver
   });
-  return /* @__PURE__ */ import_react60.default.createElement(
-    import_core6.Box,
+  return /* @__PURE__ */ import_react61.default.createElement(
+    import_core7.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -578,26 +608,26 @@ var Loader = (0, import_core6.factory)((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../Overlay/src/Overlay.tsx
-var import_react61 = __toESM(require("react"));
-var import_core7 = require("@raikou/core");
+var import_react62 = __toESM(require("react"));
+var import_core8 = require("@raikou/core");
 var defaultProps2 = {
   color: "#000",
   backgroundOpacity: 0.6,
-  zIndex: (0, import_core7.getDefaultZIndex)("modal"),
+  zIndex: (0, import_core8.getDefaultZIndex)("modal"),
   radius: 0
 };
-var varsResolver2 = (0, import_core7.createVarsResolver)(
+var varsResolver2 = (0, import_core8.createVarsResolver)(
   (_, { gradient, color, backgroundOpacity, blur, radius, zIndex }) => ({
     root: {
-      "--overlay-bg": gradient || (0, import_core7.rgba)(color || "#000", backgroundOpacity != null ? backgroundOpacity : 0.6),
-      "--overlay-filter": blur ? `blur(${(0, import_core7.rem)(blur)})` : void 0,
-      "--overlay-radius": (0, import_core7.getRadius)(radius),
+      "--overlay-bg": gradient || (0, import_core8.rgba)(color || "#000", backgroundOpacity != null ? backgroundOpacity : 0.6),
+      "--overlay-filter": blur ? `blur(${(0, import_core8.rem)(blur)})` : void 0,
+      "--overlay-radius": (0, import_core8.getRadius)(radius),
       "--overlay-z-index": zIndex == null ? void 0 : zIndex.toString()
     }
   })
 );
-var Overlay = (0, import_core7.polymorphicFactory)((_props, ref) => {
-  const props = (0, import_core7.useProps)("Overlay", defaultProps2, _props);
+var Overlay = (0, import_core8.polymorphicFactory)((_props, ref) => {
+  const props = (0, import_core8.useProps)("Overlay", defaultProps2, _props);
   const _a = props, {
     classNames,
     className,
@@ -631,7 +661,7 @@ var Overlay = (0, import_core7.polymorphicFactory)((_props, ref) => {
     "color",
     "backgroundOpacity"
   ]);
-  const getStyles = (0, import_core7.useStyles)({
+  const getStyles = (0, import_core8.useStyles)({
     name: "Overlay",
     props,
     classes: {
@@ -645,7 +675,7 @@ var Overlay = (0, import_core7.polymorphicFactory)((_props, ref) => {
     vars,
     varsResolver: varsResolver2
   });
-  return /* @__PURE__ */ import_react61.default.createElement(import_core7.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { mod: { center, fixed } }), others), children);
+  return /* @__PURE__ */ import_react62.default.createElement(import_core8.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { mod: { center, fixed } }), others), children);
 });
 Overlay.displayName = "@raikou/core/Overlay";
 
@@ -653,17 +683,17 @@ Overlay.displayName = "@raikou/core/Overlay";
 var defaultProps3 = {
   transitionProps: { transition: "fade", duration: 0 },
   overlayProps: { backgroundOpacity: 0.75 },
-  zIndex: (0, import_core8.getDefaultZIndex)("overlay")
+  zIndex: (0, import_core9.getDefaultZIndex)("overlay")
 };
-var varsResolver3 = (0, import_core8.createVarsResolver)(
+var varsResolver3 = (0, import_core9.createVarsResolver)(
   (_, { zIndex }) => ({
     root: {
       "--lo-z-index": zIndex == null ? void 0 : zIndex.toString()
     }
   })
 );
-var LoadingOverlay = (0, import_core8.factory)((_props, ref) => {
-  const props = (0, import_core8.useProps)("LoadingOverlay", defaultProps3, _props);
+var LoadingOverlay = (0, import_core9.factory)((_props, ref) => {
+  const props = (0, import_core9.useProps)("LoadingOverlay", defaultProps3, _props);
   const _a = props, {
     classNames,
     className,
@@ -689,8 +719,8 @@ var LoadingOverlay = (0, import_core8.factory)((_props, ref) => {
     "visible",
     "zIndex"
   ]);
-  const theme = (0, import_core8.useRaikouTheme)();
-  const getStyles = (0, import_core8.useStyles)({
+  const theme = (0, import_core9.useRaikouTheme)();
+  const getStyles = (0, import_core9.useStyles)({
     name: "LoadingOverlay",
     classes: {
       root: "loadingOverlay-root",
@@ -707,13 +737,13 @@ var LoadingOverlay = (0, import_core8.factory)((_props, ref) => {
     varsResolver: varsResolver3
   });
   const _overlayProps = __spreadValues(__spreadValues({}, defaultProps3.overlayProps), overlayProps);
-  return /* @__PURE__ */ import_react62.default.createElement(Transition, __spreadProps(__spreadValues({ transition: "fade" }, transitionProps), { mounted: !!visible }), (transitionStyles) => /* @__PURE__ */ import_react62.default.createElement(
-    import_core8.Box,
+  return /* @__PURE__ */ import_react63.default.createElement(Transition, __spreadProps(__spreadValues({ transition: "fade" }, transitionProps), { mounted: !!visible }), (transitionStyles) => /* @__PURE__ */ import_react63.default.createElement(
+    import_core9.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { style: transitionStyles })), {
       ref
     }), others),
-    /* @__PURE__ */ import_react62.default.createElement(Loader, __spreadValues(__spreadValues({}, getStyles("loader")), loaderProps)),
-    /* @__PURE__ */ import_react62.default.createElement(
+    /* @__PURE__ */ import_react63.default.createElement(Loader, __spreadValues(__spreadValues({}, getStyles("loader")), loaderProps)),
+    /* @__PURE__ */ import_react63.default.createElement(
       Overlay,
       __spreadProps(__spreadValues(__spreadValues({}, _overlayProps), getStyles("overlay")), {
         "data-light": true,
@@ -721,7 +751,7 @@ var LoadingOverlay = (0, import_core8.factory)((_props, ref) => {
         color: (overlayProps == null ? void 0 : overlayProps.color) || theme.white
       })
     ),
-    /* @__PURE__ */ import_react62.default.createElement(
+    /* @__PURE__ */ import_react63.default.createElement(
       Overlay,
       __spreadProps(__spreadValues(__spreadValues({}, _overlayProps), getStyles("overlay")), {
         "data-dark": true,

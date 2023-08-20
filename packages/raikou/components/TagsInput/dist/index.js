@@ -84,9 +84,9 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/TagsInput.tsx
-var import_react69 = __toESM(require("react"));
+var import_react70 = __toESM(require("react"));
 var import_hooks25 = require("@raikou/hooks");
-var import_core50 = require("@raikou/core");
+var import_core51 = require("@raikou/core");
 
 // ../Combobox/src/get-parsed-combobox-data/get-parsed-combobox-data.ts
 function parseItem(item) {
@@ -5887,8 +5887,8 @@ PillsInput.displayName = "@raikou/core/PillsInput";
 PillsInput.Field = PillsInputField;
 
 // ../Pill/src/Pill.tsx
-var import_react68 = __toESM(require("react"));
-var import_core49 = require("@raikou/core");
+var import_react69 = __toESM(require("react"));
+var import_core50 = require("@raikou/core");
 
 // ../CloseButton/src/CloseIcon.tsx
 var import_react58 = __toESM(require("react"));
@@ -5919,12 +5919,12 @@ var CloseIcon = (0, import_react58.forwardRef)(
 CloseIcon.displayName = "@raikou/core/CloseIcon";
 
 // ../CloseButton/src/CloseButton.tsx
-var import_react66 = __toESM(require("react"));
-var import_core47 = require("@raikou/core");
+var import_react67 = __toESM(require("react"));
+var import_core48 = require("@raikou/core");
 
 // ../ActionIcon/src/ActionIcon.tsx
-var import_react65 = __toESM(require("react"));
-var import_core46 = require("@raikou/core");
+var import_react66 = __toESM(require("react"));
+var import_core47 = require("@raikou/core");
 
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react59 = __toESM(require("react"));
@@ -5977,8 +5977,8 @@ var UnstyledButton = (0, import_core40.polymorphicFactory)(
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
 // ../Loader/src/Loader.tsx
-var import_react63 = __toESM(require("react"));
-var import_core44 = require("@raikou/core");
+var import_react64 = __toESM(require("react"));
+var import_core45 = require("@raikou/core");
 
 // ../Loader/src/loaders/Bars.tsx
 var import_react60 = __toESM(require("react"));
@@ -6019,29 +6019,58 @@ var Oval = (0, import_react61.forwardRef)(
   }
 );
 
-// ../Loader/src/loaders/Dots.tsx
+// ../Loader/src/loaders/Progress.tsx
 var import_react62 = __toESM(require("react"));
 var import_core43 = require("@raikou/core");
-var Dots = (0, import_react62.forwardRef)(
+var Progress = (0, import_react62.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ import_react62.default.createElement(
       import_core43.Box,
       __spreadProps(__spreadValues({
         component: "span",
+        className: clsx_default("progress-loader", className)
+      }, others), {
+        ref
+      }),
+      /* @__PURE__ */ import_react62.default.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ import_react62.default.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ import_react62.default.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ import_react62.default.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ import_react62.default.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ import_react62.default.createElement(
+        "animateTransform",
+        {
+          attributeName: "transform",
+          type: "rotate",
+          from: "0 16 16",
+          to: "360 16 16",
+          dur: "1s",
+          repeatCount: "indefinite"
+        }
+      )))))
+    );
+  }
+);
+
+// ../Loader/src/loaders/Dots.tsx
+var import_react63 = __toESM(require("react"));
+var import_core44 = require("@raikou/core");
+var Dots = (0, import_react63.forwardRef)(
+  (_a, ref) => {
+    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+    return /* @__PURE__ */ import_react63.default.createElement(
+      import_core44.Box,
+      __spreadProps(__spreadValues({
+        component: "span",
         className: clsx_default("dots-loader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react62.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react62.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react62.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react62.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react62.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react62.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react62.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react62.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react62.default.createElement("span", { className: "dot" })
+      /* @__PURE__ */ import_react63.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react63.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react63.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react63.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react63.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react63.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react63.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react63.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react63.default.createElement("span", { className: "dot" })
     );
   }
 );
@@ -6050,23 +6079,24 @@ var Dots = (0, import_react62.forwardRef)(
 var defaultLoaders = {
   bars: Bars,
   oval: Oval,
-  dots: Dots
+  dots: Dots,
+  progress: Progress
 };
 var defaultProps30 = {
   size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
-var varsResolver10 = (0, import_core44.createVarsResolver)(
+var varsResolver10 = (0, import_core45.createVarsResolver)(
   (theme, { size: size2, color }) => ({
     root: {
-      "--loader-size": (0, import_core44.getSize)(size2, "loader-size"),
-      "--loader-color": (0, import_core44.getThemeColor)(color, theme)
+      "--loader-size": (0, import_core45.getSize)(size2, "loader-size"),
+      "--loader-color": (0, import_core45.getThemeColor)(color, theme)
     }
   })
 );
-var Loader = (0, import_core44.factory)((_props, ref) => {
-  const props = (0, import_core44.useProps)("Loader", defaultProps30, _props);
+var Loader = (0, import_core45.factory)((_props, ref) => {
+  const props = (0, import_core45.useProps)("Loader", defaultProps30, _props);
   const _a = props, {
     size: size2,
     color,
@@ -6092,7 +6122,7 @@ var Loader = (0, import_core44.factory)((_props, ref) => {
     "loaders",
     "variant"
   ]);
-  const getStyles = (0, import_core44.useStyles)({
+  const getStyles = (0, import_core45.useStyles)({
     name: "Loader",
     props,
     classes: {
@@ -6106,8 +6136,8 @@ var Loader = (0, import_core44.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver10
   });
-  return /* @__PURE__ */ import_react63.default.createElement(
-    import_core44.Box,
+  return /* @__PURE__ */ import_react64.default.createElement(
+    import_core45.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -6119,21 +6149,21 @@ var Loader = (0, import_core44.factory)((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-var import_react64 = __toESM(require("react"));
-var import_core45 = require("@raikou/core");
+var import_react65 = __toESM(require("react"));
+var import_core46 = require("@raikou/core");
 var defaultProps31 = {
   orientation: "horizontal",
   borderWidth: 1
 };
-var varsResolver11 = (0, import_core45.createVarsResolver)(
+var varsResolver11 = (0, import_core46.createVarsResolver)(
   (_, { borderWidth }) => ({
-    group: { "--ai-border-width": (0, import_core45.rem)(borderWidth) }
+    group: { "--ai-border-width": (0, import_core46.rem)(borderWidth) }
   })
 );
-var ActionIconGroup = (0, import_core45.factory)(
+var ActionIconGroup = (0, import_core46.factory)(
   (_props, ref) => {
-    const props = (0, import_core45.useProps)("ActionIconGroup", defaultProps31, _props);
-    const _a = (0, import_core45.useProps)("ActionIconGroup", defaultProps31, _props), {
+    const props = (0, import_core46.useProps)("ActionIconGroup", defaultProps31, _props);
+    const _a = (0, import_core46.useProps)("ActionIconGroup", defaultProps31, _props), {
       className,
       style,
       classNames,
@@ -6154,7 +6184,7 @@ var ActionIconGroup = (0, import_core45.factory)(
       "borderWidth",
       "variant"
     ]);
-    const getStyles = (0, import_core45.useStyles)({
+    const getStyles = (0, import_core46.useStyles)({
       name: "ActionIconGroup",
       props,
       classes: {
@@ -6169,8 +6199,8 @@ var ActionIconGroup = (0, import_core45.factory)(
       varsResolver: varsResolver11,
       rootSelector: "group"
     });
-    return /* @__PURE__ */ import_react64.default.createElement(
-      import_core45.Box,
+    return /* @__PURE__ */ import_react65.default.createElement(
+      import_core46.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
         ref,
         variant,
@@ -6187,7 +6217,7 @@ var defaultProps32 = {
   variant: "filled",
   size: "md"
 };
-var varsResolver12 = (0, import_core46.createVarsResolver)(
+var varsResolver12 = (0, import_core47.createVarsResolver)(
   (theme, { size: size2, radius, variant, gradient, color }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
@@ -6197,8 +6227,8 @@ var varsResolver12 = (0, import_core46.createVarsResolver)(
     });
     return {
       root: {
-        "--ai-size": (0, import_core46.getSize)(size2, "ai-size"),
-        "--ai-radius": (0, import_core46.getRadius)(radius),
+        "--ai-size": (0, import_core47.getSize)(size2, "ai-size"),
+        "--ai-radius": (0, import_core47.getRadius)(radius),
         "--ai-bg": colors.background,
         "--ai-hover": colors.hover,
         "--ai-color": colors.color,
@@ -6207,9 +6237,9 @@ var varsResolver12 = (0, import_core46.createVarsResolver)(
     };
   }
 );
-var ActionIcon = (0, import_core46.polymorphicFactory)(
+var ActionIcon = (0, import_core47.polymorphicFactory)(
   (_props, ref) => {
-    const props = (0, import_core46.useProps)("ActionIcon", defaultProps32, _props);
+    const props = (0, import_core47.useProps)("ActionIcon", defaultProps32, _props);
     const _a = props, {
       className,
       unstyled,
@@ -6247,7 +6277,7 @@ var ActionIcon = (0, import_core46.polymorphicFactory)(
       "disabled",
       "data-disabled"
     ]);
-    const getStyles = (0, import_core46.useStyles)({
+    const getStyles = (0, import_core47.useStyles)({
       name: ["ActionIcon", __staticSelector],
       props,
       className,
@@ -6262,7 +6292,7 @@ var ActionIcon = (0, import_core46.polymorphicFactory)(
       vars,
       varsResolver: varsResolver12
     });
-    return /* @__PURE__ */ import_react65.default.createElement(
+    return /* @__PURE__ */ import_react66.default.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues(__spreadValues({}, getStyles("root", {
         active: !disabled && !loading && !dataDisabled
@@ -6274,7 +6304,7 @@ var ActionIcon = (0, import_core46.polymorphicFactory)(
         ref,
         mod: { loading, disabled: disabled || dataDisabled }
       }),
-      loading ? /* @__PURE__ */ import_react65.default.createElement(
+      loading ? /* @__PURE__ */ import_react66.default.createElement(
         Loader,
         __spreadValues(__spreadProps(__spreadValues({}, getStyles("loader")), {
           color: "var(--ai-color)",
@@ -6293,19 +6323,19 @@ var defaultProps33 = {
   variant: "subtle",
   color: "gray"
 };
-var CloseButton = (0, import_core47.polymorphicFactory)(
+var CloseButton = (0, import_core48.polymorphicFactory)(
   (_props, ref) => {
-    const props = (0, import_core47.useProps)("CloseButton", defaultProps33, _props);
+    const props = (0, import_core48.useProps)("CloseButton", defaultProps33, _props);
     const _a = props, { iconSize, children, vars } = _a, others = __objRest(_a, ["iconSize", "children", "vars"]);
-    return /* @__PURE__ */ import_react66.default.createElement(
+    return /* @__PURE__ */ import_react67.default.createElement(
       ActionIcon,
       __spreadProps(__spreadValues({
         ref
       }, others), {
-        __vars: { "--cb-icon-size": (0, import_core47.rem)(iconSize) },
+        __vars: { "--cb-icon-size": (0, import_core48.rem)(iconSize) },
         __staticSelector: "CloseButton"
       }),
-      /* @__PURE__ */ import_react66.default.createElement(CloseIcon, null),
+      /* @__PURE__ */ import_react67.default.createElement(CloseIcon, null),
       children
     );
   }
@@ -6313,23 +6343,23 @@ var CloseButton = (0, import_core47.polymorphicFactory)(
 CloseButton.displayName = "@raikou/core/CloseButton";
 
 // ../Pill/src/PillGroup/PillGroup.tsx
-var import_react67 = __toESM(require("react"));
-var import_core48 = require("@raikou/core");
+var import_react68 = __toESM(require("react"));
+var import_core49 = require("@raikou/core");
 
 // ../Pill/src/PillGroup.context.ts
 var [PillGroupProvider, usePillGroupContext] = createOptionalContext();
 
 // ../Pill/src/PillGroup/PillGroup.tsx
 var defaultProps34 = {};
-var varsResolver13 = (0, import_core48.createVarsResolver)(
+var varsResolver13 = (0, import_core49.createVarsResolver)(
   (_, { gap }, { size: size2 }) => ({
     group: {
-      "--pg-gap": typeof gap !== "undefined" ? (0, import_core48.getSize)(gap) : (0, import_core48.getSize)(size2, "pg-gap")
+      "--pg-gap": typeof gap !== "undefined" ? (0, import_core49.getSize)(gap) : (0, import_core49.getSize)(size2, "pg-gap")
     }
   })
 );
-var PillGroup = (0, import_core48.factory)((_props, ref) => {
-  const props = (0, import_core48.useProps)("PillGroup", defaultProps34, _props);
+var PillGroup = (0, import_core49.factory)((_props, ref) => {
+  const props = (0, import_core49.useProps)("PillGroup", defaultProps34, _props);
   const _a = props, {
     classNames,
     className,
@@ -6351,7 +6381,7 @@ var PillGroup = (0, import_core48.factory)((_props, ref) => {
   ]);
   const pillsInputCtx = usePillsInputContext();
   const _size = (pillsInputCtx == null ? void 0 : pillsInputCtx.size) || size2 || "sm";
-  const getStyles = (0, import_core48.useStyles)({
+  const getStyles = (0, import_core49.useStyles)({
     name: "PillGroup",
     classes: {
       group: "pill-group"
@@ -6367,7 +6397,7 @@ var PillGroup = (0, import_core48.factory)((_props, ref) => {
     stylesCtx: { size: _size },
     rootSelector: "group"
   });
-  return /* @__PURE__ */ import_react67.default.createElement(PillGroupProvider, { value: { size: _size, disabled } }, /* @__PURE__ */ import_react67.default.createElement(import_core48.Box, __spreadValues(__spreadValues({ ref, size: _size }, getStyles("group")), others)));
+  return /* @__PURE__ */ import_react68.default.createElement(PillGroupProvider, { value: { size: _size, disabled } }, /* @__PURE__ */ import_react68.default.createElement(import_core49.Box, __spreadValues(__spreadValues({ ref, size: _size }, getStyles("group")), others)));
 });
 PillGroup.displayName = "@raikou/core/PillGroup";
 
@@ -6376,17 +6406,17 @@ var defaultProps35 = {
   radius: "xl",
   variant: "default"
 };
-var varsResolver14 = (0, import_core49.createVarsResolver)(
+var varsResolver14 = (0, import_core50.createVarsResolver)(
   (_, { radius }, { size: size2 }) => ({
     root: {
-      "--pill-fz": (0, import_core49.getSize)(size2, "pill-fz"),
-      "--pill-height": (0, import_core49.getSize)(size2, "pill-height"),
-      "--pill-radius": (0, import_core49.getRadius)(radius)
+      "--pill-fz": (0, import_core50.getSize)(size2, "pill-fz"),
+      "--pill-height": (0, import_core50.getSize)(size2, "pill-height"),
+      "--pill-radius": (0, import_core50.getRadius)(radius)
     }
   })
 );
-var Pill = (0, import_core49.factory)((_props, ref) => {
-  const props = (0, import_core49.useProps)("Pill", defaultProps35, _props);
+var Pill = (0, import_core50.factory)((_props, ref) => {
+  const props = (0, import_core50.useProps)("Pill", defaultProps35, _props);
   const _a = props, {
     classNames,
     className,
@@ -6422,7 +6452,7 @@ var Pill = (0, import_core49.factory)((_props, ref) => {
   const pillsInputCtx = usePillsInputContext();
   const _size = size2 || (ctx == null ? void 0 : ctx.size) || "sm";
   const _variant = (pillsInputCtx == null ? void 0 : pillsInputCtx.variant) === "filled" ? "contrast" : variant || "default";
-  const getStyles = (0, import_core49.useStyles)({
+  const getStyles = (0, import_core50.useStyles)({
     name: "Pill",
     classes: {
       root: "pill-root",
@@ -6439,8 +6469,8 @@ var Pill = (0, import_core49.factory)((_props, ref) => {
     varsResolver: varsResolver14,
     stylesCtx: { size: _size }
   });
-  return /* @__PURE__ */ import_react68.default.createElement(
-    import_core49.Box,
+  return /* @__PURE__ */ import_react69.default.createElement(
+    import_core50.Box,
     __spreadValues(__spreadProps(__spreadValues({
       component: "span",
       ref,
@@ -6452,8 +6482,8 @@ var Pill = (0, import_core49.factory)((_props, ref) => {
         disabled: disabled || (ctx == null ? void 0 : ctx.disabled)
       }
     }), others),
-    /* @__PURE__ */ import_react68.default.createElement("span", __spreadValues({}, getStyles("label")), children),
-    withRemoveButton && /* @__PURE__ */ import_react68.default.createElement(
+    /* @__PURE__ */ import_react69.default.createElement("span", __spreadValues({}, getStyles("label")), children),
+    withRemoveButton && /* @__PURE__ */ import_react69.default.createElement(
       CloseButton,
       __spreadProps(__spreadValues(__spreadValues({
         iconSize: "70%",
@@ -6528,8 +6558,8 @@ var defaultProps36 = {
   splitChars: [","],
   size: "sm"
 };
-var TagsInput = (0, import_core50.factory)((_props, ref) => {
-  const props = (0, import_core50.useProps)("TagsInput", defaultProps36, _props);
+var TagsInput = (0, import_core51.factory)((_props, ref) => {
+  const props = (0, import_core51.useProps)("TagsInput", defaultProps36, _props);
   const _a = props, {
     classNames,
     className,
@@ -6659,7 +6689,7 @@ var TagsInput = (0, import_core50.factory)((_props, ref) => {
   const {
     styleProps,
     rest: _b
-  } = (0, import_core50.extractStyleProps)(others), _c = _b, { type } = _c, rest = __objRest(_c, ["type"]);
+  } = (0, import_core51.extractStyleProps)(others), _c = _b, { type } = _c, rest = __objRest(_c, ["type"]);
   const [_value, setValue] = (0, import_hooks25.useUncontrolled)({
     value,
     defaultValue,
@@ -6672,7 +6702,7 @@ var TagsInput = (0, import_core50.factory)((_props, ref) => {
     finalValue: "",
     onChange: onSearchChange
   });
-  const getStyles = (0, import_core50.useStyles)({
+  const getStyles = (0, import_core51.useStyles)({
     name: "TagsInput",
     classes: {},
     props,
@@ -6680,7 +6710,7 @@ var TagsInput = (0, import_core50.factory)((_props, ref) => {
     styles,
     unstyled
   });
-  const { resolvedClassNames, resolvedStyles } = (0, import_core50.useResolvedStylesApi)({
+  const { resolvedClassNames, resolvedStyles } = (0, import_core51.useResolvedStylesApi)({
     props,
     styles,
     classNames
@@ -6738,7 +6768,7 @@ var TagsInput = (0, import_core50.factory)((_props, ref) => {
       setSearchValue("");
     }
   };
-  const values = _value.map((item, index3) => /* @__PURE__ */ import_react69.default.createElement(
+  const values = _value.map((item, index3) => /* @__PURE__ */ import_react70.default.createElement(
     Pill,
     __spreadValues({
       key: `${item}-${index3}`,
@@ -6747,7 +6777,7 @@ var TagsInput = (0, import_core50.factory)((_props, ref) => {
     }, getStyles("pill")),
     item
   ));
-  return /* @__PURE__ */ import_react69.default.createElement(
+  return /* @__PURE__ */ import_react70.default.createElement(
     Combobox,
     __spreadValues({
       store: combobox,
@@ -6762,7 +6792,7 @@ var TagsInput = (0, import_core50.factory)((_props, ref) => {
         _value.length < maxTags && setValue([..._value, optionsLockup[val].label]);
       }
     }, comboboxProps),
-    /* @__PURE__ */ import_react69.default.createElement(Combobox.DropdownTarget, null, /* @__PURE__ */ import_react69.default.createElement(
+    /* @__PURE__ */ import_react70.default.createElement(Combobox.DropdownTarget, null, /* @__PURE__ */ import_react70.default.createElement(
       PillsInput,
       __spreadProps(__spreadValues({}, styleProps), {
         __staticSelector: "TagsInput",
@@ -6797,7 +6827,7 @@ var TagsInput = (0, import_core50.factory)((_props, ref) => {
         withErrorStyles,
         __stylesApiProps: __spreadProps(__spreadValues({}, props), { multiline: true })
       }),
-      /* @__PURE__ */ import_react69.default.createElement(Pill.Group, __spreadValues({ disabled }, getStyles("pillsList")), values, /* @__PURE__ */ import_react69.default.createElement(Combobox.EventsTarget, null, /* @__PURE__ */ import_react69.default.createElement(
+      /* @__PURE__ */ import_react70.default.createElement(Pill.Group, __spreadValues({ disabled }, getStyles("pillsList")), values, /* @__PURE__ */ import_react70.default.createElement(Combobox.EventsTarget, null, /* @__PURE__ */ import_react70.default.createElement(
         PillsInput.Field,
         __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, rest), {
           ref
@@ -6820,7 +6850,7 @@ var TagsInput = (0, import_core50.factory)((_props, ref) => {
         })
       )))
     )),
-    /* @__PURE__ */ import_react69.default.createElement(
+    /* @__PURE__ */ import_react70.default.createElement(
       OptionsDropdown,
       {
         data: filterPickedTags({ data: parsedData, value: _value }),

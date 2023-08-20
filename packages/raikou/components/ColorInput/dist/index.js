@@ -85,9 +85,9 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/ColorInput.tsx
-var import_react41 = __toESM(require("react"));
+var import_react42 = __toESM(require("react"));
 var import_hooks13 = require("@raikou/hooks");
-var import_core34 = require("@raikou/core");
+var import_core35 = require("@raikou/core");
 
 // ../ColorPicker/src/ColorPicker.tsx
 var import_react12 = __toESM(require("react"));
@@ -4568,8 +4568,8 @@ function EyeDropperIcon(_a) {
 }
 
 // ../ActionIcon/src/ActionIcon.tsx
-var import_react40 = __toESM(require("react"));
-var import_core33 = require("@raikou/core");
+var import_react41 = __toESM(require("react"));
+var import_core34 = require("@raikou/core");
 
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react34 = __toESM(require("react"));
@@ -4622,8 +4622,8 @@ var UnstyledButton = (0, import_core27.polymorphicFactory)(
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
 // ../Loader/src/Loader.tsx
-var import_react38 = __toESM(require("react"));
-var import_core31 = require("@raikou/core");
+var import_react39 = __toESM(require("react"));
+var import_core32 = require("@raikou/core");
 
 // ../Loader/src/loaders/Bars.tsx
 var import_react35 = __toESM(require("react"));
@@ -4664,29 +4664,58 @@ var Oval = (0, import_react36.forwardRef)(
   }
 );
 
-// ../Loader/src/loaders/Dots.tsx
+// ../Loader/src/loaders/Progress.tsx
 var import_react37 = __toESM(require("react"));
 var import_core30 = require("@raikou/core");
-var Dots = (0, import_react37.forwardRef)(
+var Progress = (0, import_react37.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ import_react37.default.createElement(
       import_core30.Box,
       __spreadProps(__spreadValues({
         component: "span",
+        className: clsx_default("progress-loader", className)
+      }, others), {
+        ref
+      }),
+      /* @__PURE__ */ import_react37.default.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ import_react37.default.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ import_react37.default.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ import_react37.default.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ import_react37.default.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ import_react37.default.createElement(
+        "animateTransform",
+        {
+          attributeName: "transform",
+          type: "rotate",
+          from: "0 16 16",
+          to: "360 16 16",
+          dur: "1s",
+          repeatCount: "indefinite"
+        }
+      )))))
+    );
+  }
+);
+
+// ../Loader/src/loaders/Dots.tsx
+var import_react38 = __toESM(require("react"));
+var import_core31 = require("@raikou/core");
+var Dots = (0, import_react38.forwardRef)(
+  (_a, ref) => {
+    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+    return /* @__PURE__ */ import_react38.default.createElement(
+      import_core31.Box,
+      __spreadProps(__spreadValues({
+        component: "span",
         className: clsx_default("dots-loader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react37.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react37.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react37.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react37.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react37.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react37.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react37.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react37.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react37.default.createElement("span", { className: "dot" })
+      /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" })
     );
   }
 );
@@ -4695,23 +4724,24 @@ var Dots = (0, import_react37.forwardRef)(
 var defaultLoaders = {
   bars: Bars,
   oval: Oval,
-  dots: Dots
+  dots: Dots,
+  progress: Progress
 };
 var defaultProps16 = {
   size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
-var varsResolver9 = (0, import_core31.createVarsResolver)(
+var varsResolver9 = (0, import_core32.createVarsResolver)(
   (theme, { size: size2, color }) => ({
     root: {
-      "--loader-size": (0, import_core31.getSize)(size2, "loader-size"),
-      "--loader-color": (0, import_core31.getThemeColor)(color, theme)
+      "--loader-size": (0, import_core32.getSize)(size2, "loader-size"),
+      "--loader-color": (0, import_core32.getThemeColor)(color, theme)
     }
   })
 );
-var Loader = (0, import_core31.factory)((_props, ref) => {
-  const props = (0, import_core31.useProps)("Loader", defaultProps16, _props);
+var Loader = (0, import_core32.factory)((_props, ref) => {
+  const props = (0, import_core32.useProps)("Loader", defaultProps16, _props);
   const _a = props, {
     size: size2,
     color,
@@ -4737,7 +4767,7 @@ var Loader = (0, import_core31.factory)((_props, ref) => {
     "loaders",
     "variant"
   ]);
-  const getStyles = (0, import_core31.useStyles)({
+  const getStyles = (0, import_core32.useStyles)({
     name: "Loader",
     props,
     classes: {
@@ -4751,8 +4781,8 @@ var Loader = (0, import_core31.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver9
   });
-  return /* @__PURE__ */ import_react38.default.createElement(
-    import_core31.Box,
+  return /* @__PURE__ */ import_react39.default.createElement(
+    import_core32.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -4764,21 +4794,21 @@ var Loader = (0, import_core31.factory)((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-var import_react39 = __toESM(require("react"));
-var import_core32 = require("@raikou/core");
+var import_react40 = __toESM(require("react"));
+var import_core33 = require("@raikou/core");
 var defaultProps17 = {
   orientation: "horizontal",
   borderWidth: 1
 };
-var varsResolver10 = (0, import_core32.createVarsResolver)(
+var varsResolver10 = (0, import_core33.createVarsResolver)(
   (_, { borderWidth }) => ({
-    group: { "--ai-border-width": (0, import_core32.rem)(borderWidth) }
+    group: { "--ai-border-width": (0, import_core33.rem)(borderWidth) }
   })
 );
-var ActionIconGroup = (0, import_core32.factory)(
+var ActionIconGroup = (0, import_core33.factory)(
   (_props, ref) => {
-    const props = (0, import_core32.useProps)("ActionIconGroup", defaultProps17, _props);
-    const _a = (0, import_core32.useProps)("ActionIconGroup", defaultProps17, _props), {
+    const props = (0, import_core33.useProps)("ActionIconGroup", defaultProps17, _props);
+    const _a = (0, import_core33.useProps)("ActionIconGroup", defaultProps17, _props), {
       className,
       style,
       classNames,
@@ -4799,7 +4829,7 @@ var ActionIconGroup = (0, import_core32.factory)(
       "borderWidth",
       "variant"
     ]);
-    const getStyles = (0, import_core32.useStyles)({
+    const getStyles = (0, import_core33.useStyles)({
       name: "ActionIconGroup",
       props,
       classes: {
@@ -4814,8 +4844,8 @@ var ActionIconGroup = (0, import_core32.factory)(
       varsResolver: varsResolver10,
       rootSelector: "group"
     });
-    return /* @__PURE__ */ import_react39.default.createElement(
-      import_core32.Box,
+    return /* @__PURE__ */ import_react40.default.createElement(
+      import_core33.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
         ref,
         variant,
@@ -4832,7 +4862,7 @@ var defaultProps18 = {
   variant: "filled",
   size: "md"
 };
-var varsResolver11 = (0, import_core33.createVarsResolver)(
+var varsResolver11 = (0, import_core34.createVarsResolver)(
   (theme, { size: size2, radius, variant, gradient, color }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
@@ -4842,8 +4872,8 @@ var varsResolver11 = (0, import_core33.createVarsResolver)(
     });
     return {
       root: {
-        "--ai-size": (0, import_core33.getSize)(size2, "ai-size"),
-        "--ai-radius": (0, import_core33.getRadius)(radius),
+        "--ai-size": (0, import_core34.getSize)(size2, "ai-size"),
+        "--ai-radius": (0, import_core34.getRadius)(radius),
         "--ai-bg": colors.background,
         "--ai-hover": colors.hover,
         "--ai-color": colors.color,
@@ -4852,9 +4882,9 @@ var varsResolver11 = (0, import_core33.createVarsResolver)(
     };
   }
 );
-var ActionIcon = (0, import_core33.polymorphicFactory)(
+var ActionIcon = (0, import_core34.polymorphicFactory)(
   (_props, ref) => {
-    const props = (0, import_core33.useProps)("ActionIcon", defaultProps18, _props);
+    const props = (0, import_core34.useProps)("ActionIcon", defaultProps18, _props);
     const _a = props, {
       className,
       unstyled,
@@ -4892,7 +4922,7 @@ var ActionIcon = (0, import_core33.polymorphicFactory)(
       "disabled",
       "data-disabled"
     ]);
-    const getStyles = (0, import_core33.useStyles)({
+    const getStyles = (0, import_core34.useStyles)({
       name: ["ActionIcon", __staticSelector],
       props,
       className,
@@ -4907,7 +4937,7 @@ var ActionIcon = (0, import_core33.polymorphicFactory)(
       vars,
       varsResolver: varsResolver11
     });
-    return /* @__PURE__ */ import_react40.default.createElement(
+    return /* @__PURE__ */ import_react41.default.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues(__spreadValues({}, getStyles("root", {
         active: !disabled && !loading && !dataDisabled
@@ -4919,7 +4949,7 @@ var ActionIcon = (0, import_core33.polymorphicFactory)(
         ref,
         mod: { loading, disabled: disabled || dataDisabled }
       }),
-      loading ? /* @__PURE__ */ import_react40.default.createElement(
+      loading ? /* @__PURE__ */ import_react41.default.createElement(
         Loader,
         __spreadValues(__spreadProps(__spreadValues({}, getStyles("loader")), {
           color: "var(--ai-color)",
@@ -4943,16 +4973,16 @@ var defaultProps19 = {
   popoverProps: { transitionProps: { transition: "fade", duration: 0 } },
   withEyeDropper: true
 };
-var varsResolver12 = (0, import_core34.createVarsResolver)((_, { size: size2 }) => ({
+var varsResolver12 = (0, import_core35.createVarsResolver)((_, { size: size2 }) => ({
   eyeDropperIcon: {
-    "--ci-eye-dropper-icon-size": (0, import_core34.getSize)(size2, "ci-eye-dropper-icon-size")
+    "--ci-eye-dropper-icon-size": (0, import_core35.getSize)(size2, "ci-eye-dropper-icon-size")
   },
   colorPreview: {
-    "--ci-preview-size": (0, import_core34.getSize)(size2, "ci-preview-size")
+    "--ci-preview-size": (0, import_core35.getSize)(size2, "ci-preview-size")
   }
 }));
-var ColorInput = (0, import_core34.factory)((_props, ref) => {
-  const props = (0, import_core34.useProps)("ColorInput", defaultProps19, _props);
+var ColorInput = (0, import_core35.factory)((_props, ref) => {
+  const props = (0, import_core35.useProps)("ColorInput", defaultProps19, _props);
   const _a = useInputProps("ColorInput", defaultProps19, _props), {
     classNames,
     styles,
@@ -5012,7 +5042,7 @@ var ColorInput = (0, import_core34.factory)((_props, ref) => {
     "rightSection",
     "swatchesPerRow"
   ]);
-  const getStyles = (0, import_core34.useStyles)({
+  const getStyles = (0, import_core35.useStyles)({
     name: "ColorInput",
     props,
     classes: {
@@ -5028,13 +5058,13 @@ var ColorInput = (0, import_core34.factory)((_props, ref) => {
     vars: props.vars,
     varsResolver: varsResolver12
   });
-  const { resolvedClassNames, resolvedStyles } = (0, import_core34.useResolvedStylesApi)({
+  const { resolvedClassNames, resolvedStyles } = (0, import_core35.useResolvedStylesApi)({
     classNames,
     styles,
     props
   });
-  const [dropdownOpened, setDropdownOpened] = (0, import_react41.useState)(false);
-  const [lastValidValue, setLastValidValue] = (0, import_react41.useState)("");
+  const [dropdownOpened, setDropdownOpened] = (0, import_react42.useState)(false);
+  const [lastValidValue, setLastValidValue] = (0, import_react42.useState)("");
   const [_value, setValue] = (0, import_hooks13.useUncontrolled)({
     value,
     defaultValue,
@@ -5042,7 +5072,7 @@ var ColorInput = (0, import_core34.factory)((_props, ref) => {
     onChange
   });
   const { supported: eyeDropperSupported, open: openEyeDropper } = (0, import_hooks13.useEyeDropper)();
-  const eyeDropper = /* @__PURE__ */ import_react41.default.createElement(
+  const eyeDropper = /* @__PURE__ */ import_react42.default.createElement(
     ActionIcon,
     __spreadProps(__spreadValues(__spreadValues({}, eyeDropperButtonProps), getStyles("eyeDropperButton", {
       className: eyeDropperButtonProps == null ? void 0 : eyeDropperButtonProps.className,
@@ -5060,7 +5090,7 @@ var ColorInput = (0, import_core34.factory)((_props, ref) => {
       }).catch(() => {
       })
     }),
-    eyeDropperIcon || /* @__PURE__ */ import_react41.default.createElement(EyeDropperIcon, __spreadValues({}, getStyles("eyeDropperIcon")))
+    eyeDropperIcon || /* @__PURE__ */ import_react42.default.createElement(EyeDropperIcon, __spreadValues({}, getStyles("eyeDropperIcon")))
   );
   const handleInputFocus = (event) => {
     onFocus == null ? void 0 : onFocus(event);
@@ -5075,7 +5105,7 @@ var ColorInput = (0, import_core34.factory)((_props, ref) => {
     onClick == null ? void 0 : onClick(event);
     setDropdownOpened(true);
   };
-  (0, import_react41.useEffect)(() => {
+  (0, import_react42.useEffect)(() => {
     if (isColorValid(_value) || _value.trim() === "") {
       setLastValidValue(_value);
     }
@@ -5085,14 +5115,14 @@ var ColorInput = (0, import_core34.factory)((_props, ref) => {
       setValue(convertHsvaTo(format, parseColor(_value)));
     }
   }, [format]);
-  return /* @__PURE__ */ import_react41.default.createElement(
+  return /* @__PURE__ */ import_react42.default.createElement(
     Input.Wrapper,
     __spreadProps(__spreadValues({}, wrapperProps), {
       classNames: resolvedClassNames,
       styles: resolvedStyles,
       __staticSelector: "ColorInput"
     }),
-    /* @__PURE__ */ import_react41.default.createElement(
+    /* @__PURE__ */ import_react42.default.createElement(
       Popover,
       __spreadProps(__spreadValues({
         __staticSelector: "ColorInput",
@@ -5106,7 +5136,7 @@ var ColorInput = (0, import_core34.factory)((_props, ref) => {
         withRoles: false,
         disabled: readOnly || withPicker === false && (!Array.isArray(swatches) || swatches.length === 0)
       }),
-      /* @__PURE__ */ import_react41.default.createElement(Popover.Target, null, /* @__PURE__ */ import_react41.default.createElement(
+      /* @__PURE__ */ import_react42.default.createElement(Popover.Target, null, /* @__PURE__ */ import_react42.default.createElement(
         Input,
         __spreadProps(__spreadValues(__spreadValues({
           autoComplete: "off"
@@ -5128,7 +5158,7 @@ var ColorInput = (0, import_core34.factory)((_props, ref) => {
               onChangeEnd == null ? void 0 : onChangeEnd(convertHsvaTo(format, parseColor(inputValue)));
             }
           },
-          leftSection: leftSection || (withPreview ? /* @__PURE__ */ import_react41.default.createElement(
+          leftSection: leftSection || (withPreview ? /* @__PURE__ */ import_react42.default.createElement(
             ColorSwatch,
             __spreadValues({
               color: isColorValid(_value) ? _value : "#fff",
@@ -5141,13 +5171,13 @@ var ColorInput = (0, import_core34.factory)((_props, ref) => {
           rightSection: rightSection || (withEyeDropper && !disabled && !readOnly && eyeDropperSupported ? eyeDropper : null)
         })
       )),
-      /* @__PURE__ */ import_react41.default.createElement(
+      /* @__PURE__ */ import_react42.default.createElement(
         Popover.Dropdown,
         {
           onMouseDown: (event) => event.preventDefault(),
           p: inputProps.size
         },
-        /* @__PURE__ */ import_react41.default.createElement(
+        /* @__PURE__ */ import_react42.default.createElement(
           ColorPicker,
           {
             __staticSelector: "ColorInput",

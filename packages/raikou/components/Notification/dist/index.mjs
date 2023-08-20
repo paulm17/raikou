@@ -31,9 +31,9 @@ var __objRest = (source, exclude) => {
 };
 
 // src/Notification.tsx
-import React11 from "react";
+import React12 from "react";
 import {
-  Box as Box8,
+  Box as Box9,
   factory as factory3,
   useProps as useProps7,
   useStyles as useStyles6,
@@ -43,9 +43,9 @@ import {
 } from "@raikou/core";
 
 // ../Loader/src/Loader.tsx
-import React4 from "react";
+import React5 from "react";
 import {
-  Box as Box4,
+  Box as Box5,
   useProps,
   getThemeColor,
   useStyles,
@@ -116,29 +116,58 @@ var Oval = forwardRef2(
   }
 );
 
-// ../Loader/src/loaders/Dots.tsx
+// ../Loader/src/loaders/Progress.tsx
 import React3, { forwardRef as forwardRef3 } from "react";
 import { Box as Box3 } from "@raikou/core";
-var Dots = forwardRef3(
+var Progress = forwardRef3(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ React3.createElement(
       Box3,
       __spreadProps(__spreadValues({
         component: "span",
+        className: clsx_default("progress-loader", className)
+      }, others), {
+        ref
+      }),
+      /* @__PURE__ */ React3.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ React3.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ React3.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ React3.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ React3.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ React3.createElement(
+        "animateTransform",
+        {
+          attributeName: "transform",
+          type: "rotate",
+          from: "0 16 16",
+          to: "360 16 16",
+          dur: "1s",
+          repeatCount: "indefinite"
+        }
+      )))))
+    );
+  }
+);
+
+// ../Loader/src/loaders/Dots.tsx
+import React4, { forwardRef as forwardRef4 } from "react";
+import { Box as Box4 } from "@raikou/core";
+var Dots = forwardRef4(
+  (_a, ref) => {
+    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+    return /* @__PURE__ */ React4.createElement(
+      Box4,
+      __spreadProps(__spreadValues({
+        component: "span",
         className: clsx_default("dots-loader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React3.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React3.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React3.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React3.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React3.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React3.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React3.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React3.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React3.createElement("span", { className: "dot" })
+      /* @__PURE__ */ React4.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React4.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React4.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React4.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React4.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React4.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React4.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React4.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React4.createElement("span", { className: "dot" })
     );
   }
 );
@@ -147,7 +176,8 @@ var Dots = forwardRef3(
 var defaultLoaders = {
   bars: Bars,
   oval: Oval,
-  dots: Dots
+  dots: Dots,
+  progress: Progress
 };
 var defaultProps = {
   size: "md",
@@ -203,8 +233,8 @@ var Loader = factory((_props, ref) => {
     vars,
     varsResolver
   });
-  return /* @__PURE__ */ React4.createElement(
-    Box4,
+  return /* @__PURE__ */ React5.createElement(
+    Box5,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -216,9 +246,9 @@ var Loader = factory((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../Text/src/Text.tsx
-import React5 from "react";
+import React6 from "react";
 import {
-  Box as Box5,
+  Box as Box6,
   polymorphicFactory,
   useStyles as useStyles2,
   useProps as useProps2,
@@ -302,8 +332,8 @@ var Text = polymorphicFactory((_props, ref) => {
     vars,
     varsResolver: varsResolver2
   });
-  return /* @__PURE__ */ React5.createElement(
-    Box5,
+  return /* @__PURE__ */ React6.createElement(
+    Box6,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { focusable: true })), {
       ref,
       component: span ? "span" : "p",
@@ -324,11 +354,11 @@ var Text = polymorphicFactory((_props, ref) => {
 Text.displayName = "@raikou/core/Text";
 
 // ../CloseButton/src/CloseIcon.tsx
-import React6, { forwardRef as forwardRef4 } from "react";
-var CloseIcon = forwardRef4(
+import React7, { forwardRef as forwardRef5 } from "react";
+var CloseIcon = forwardRef5(
   (_a, ref) => {
     var _b = _a, { size = "var(--cb-icon-size)", style } = _b, others = __objRest(_b, ["size", "style"]);
-    return /* @__PURE__ */ React6.createElement(
+    return /* @__PURE__ */ React7.createElement(
       "svg",
       __spreadValues({
         viewBox: "0 0 15 15",
@@ -337,7 +367,7 @@ var CloseIcon = forwardRef4(
         style: __spreadProps(__spreadValues({}, style), { width: size, height: size }),
         ref
       }, others),
-      /* @__PURE__ */ React6.createElement(
+      /* @__PURE__ */ React7.createElement(
         "path",
         {
           d: "M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z",
@@ -352,7 +382,7 @@ var CloseIcon = forwardRef4(
 CloseIcon.displayName = "@raikou/core/CloseIcon";
 
 // ../CloseButton/src/CloseButton.tsx
-import React10 from "react";
+import React11 from "react";
 import {
   polymorphicFactory as polymorphicFactory4,
   useProps as useProps6,
@@ -360,7 +390,7 @@ import {
 } from "@raikou/core";
 
 // ../ActionIcon/src/ActionIcon.tsx
-import React9 from "react";
+import React10 from "react";
 import {
   useProps as useProps5,
   useStyles as useStyles5,
@@ -371,9 +401,9 @@ import {
 } from "@raikou/core";
 
 // ../UnstyledButton/src/UnstyledButton.tsx
-import React7 from "react";
+import React8 from "react";
 import {
-  Box as Box6,
+  Box as Box7,
   useProps as useProps3,
   useStyles as useStyles3,
   polymorphicFactory as polymorphicFactory2
@@ -413,8 +443,8 @@ var UnstyledButton = polymorphicFactory2(
       styles,
       unstyled
     });
-    return /* @__PURE__ */ React7.createElement(
-      Box6,
+    return /* @__PURE__ */ React8.createElement(
+      Box7,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { focusable: true })), {
         component,
         ref,
@@ -426,10 +456,10 @@ var UnstyledButton = polymorphicFactory2(
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
 // ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-import React8 from "react";
+import React9 from "react";
 import {
   factory as factory2,
-  Box as Box7,
+  Box as Box8,
   useProps as useProps4,
   useStyles as useStyles4,
   rem,
@@ -483,8 +513,8 @@ var ActionIconGroup = factory2(
       varsResolver: varsResolver3,
       rootSelector: "group"
     });
-    return /* @__PURE__ */ React8.createElement(
-      Box7,
+    return /* @__PURE__ */ React9.createElement(
+      Box8,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
         ref,
         variant,
@@ -576,7 +606,7 @@ var ActionIcon = polymorphicFactory3(
       vars,
       varsResolver: varsResolver4
     });
-    return /* @__PURE__ */ React9.createElement(
+    return /* @__PURE__ */ React10.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues(__spreadValues({}, getStyles("root", {
         active: !disabled && !loading && !dataDisabled
@@ -588,7 +618,7 @@ var ActionIcon = polymorphicFactory3(
         ref,
         mod: { loading, disabled: disabled || dataDisabled }
       }),
-      loading ? /* @__PURE__ */ React9.createElement(
+      loading ? /* @__PURE__ */ React10.createElement(
         Loader,
         __spreadValues(__spreadProps(__spreadValues({}, getStyles("loader")), {
           color: "var(--ai-color)",
@@ -611,7 +641,7 @@ var CloseButton = polymorphicFactory4(
   (_props, ref) => {
     const props = useProps6("CloseButton", defaultProps6, _props);
     const _a = props, { iconSize, children, vars } = _a, others = __objRest(_a, ["iconSize", "children", "vars"]);
-    return /* @__PURE__ */ React10.createElement(
+    return /* @__PURE__ */ React11.createElement(
       ActionIcon,
       __spreadProps(__spreadValues({
         ref
@@ -619,7 +649,7 @@ var CloseButton = polymorphicFactory4(
         __vars: { "--cb-icon-size": rem2(iconSize) },
         __staticSelector: "CloseButton"
       }),
-      /* @__PURE__ */ React10.createElement(CloseIcon, null),
+      /* @__PURE__ */ React11.createElement(CloseIcon, null),
       children
     );
   }
@@ -697,8 +727,8 @@ var Notification = factory3((_props, ref) => {
     vars,
     varsResolver: varsResolver5
   });
-  return /* @__PURE__ */ React11.createElement(
-    Box8,
+  return /* @__PURE__ */ React12.createElement(
+    Box9,
     __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       mod: {
         "data-with-icon": !!icon || loading,
@@ -709,9 +739,9 @@ var Notification = factory3((_props, ref) => {
     }), others), {
       role: "alert"
     }),
-    icon && !loading && /* @__PURE__ */ React11.createElement("div", __spreadValues({}, getStyles("icon")), icon),
-    loading && /* @__PURE__ */ React11.createElement(Loader, __spreadValues({ size: 28, color }, getStyles("loader"))),
-    /* @__PURE__ */ React11.createElement("div", __spreadValues({}, getStyles("body")), title && /* @__PURE__ */ React11.createElement(Text, __spreadProps(__spreadValues({}, getStyles("title")), { size: "sm", fw: 500 }), title), /* @__PURE__ */ React11.createElement(
+    icon && !loading && /* @__PURE__ */ React12.createElement("div", __spreadValues({}, getStyles("icon")), icon),
+    loading && /* @__PURE__ */ React12.createElement(Loader, __spreadValues({ size: 28, color }, getStyles("loader"))),
+    /* @__PURE__ */ React12.createElement("div", __spreadValues({}, getStyles("body")), title && /* @__PURE__ */ React12.createElement(Text, __spreadProps(__spreadValues({}, getStyles("title")), { size: "sm", fw: 500 }), title), /* @__PURE__ */ React12.createElement(
       Text,
       __spreadProps(__spreadValues({}, getStyles("description")), {
         color: "dimmed",
@@ -722,7 +752,7 @@ var Notification = factory3((_props, ref) => {
       }),
       children
     )),
-    withCloseButton && /* @__PURE__ */ React11.createElement(
+    withCloseButton && /* @__PURE__ */ React12.createElement(
       CloseButton,
       __spreadValues(__spreadProps(__spreadValues({
         iconSize: 16,

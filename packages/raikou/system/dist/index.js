@@ -1090,9 +1090,14 @@ function RaikouProvider({
 }
 
 // src/core/DirectionProvider/DirectionProvider.tsx
-var import_react4 = __toESM(require("react"));
-var import_hooks = require("@raikou/hooks");
-var DirectionContext = (0, import_react4.createContext)({
+var import_react5 = __toESM(require("react"));
+
+// src/core/DirectionProvider/use-isomorphic-effect.ts
+var import_react4 = require("react");
+var useIsomorphicEffect = typeof document !== "undefined" ? import_react4.useLayoutEffect : import_react4.useEffect;
+
+// src/core/DirectionProvider/DirectionProvider.tsx
+var DirectionContext = (0, import_react5.createContext)({
   dir: "ltr",
   toggleDirection: () => {
   },
@@ -1100,20 +1105,20 @@ var DirectionContext = (0, import_react4.createContext)({
   }
 });
 function useDirection() {
-  return (0, import_react4.useContext)(DirectionContext);
+  return (0, import_react5.useContext)(DirectionContext);
 }
 function DirectionProvider({
   children,
   initialDirection = "ltr",
   detectDirection = true
 }) {
-  const [dir, setDir] = (0, import_react4.useState)(initialDirection);
+  const [dir, setDir] = (0, import_react5.useState)(initialDirection);
   const setDirection = (direction) => {
     setDir(direction);
     document.documentElement.setAttribute("dir", direction);
   };
   const toggleDirection = () => setDirection(dir === "ltr" ? "rtl" : "ltr");
-  (0, import_hooks.useIsomorphicEffect)(() => {
+  useIsomorphicEffect(() => {
     if (detectDirection) {
       const direction = document.documentElement.getAttribute("dir");
       if (direction === "rtl" || direction === "ltr") {
@@ -1121,7 +1126,7 @@ function DirectionProvider({
       }
     }
   }, []);
-  return /* @__PURE__ */ import_react4.default.createElement(DirectionContext.Provider, { value: { dir, toggleDirection, setDirection } }, children);
+  return /* @__PURE__ */ import_react5.default.createElement(DirectionContext.Provider, { value: { dir, toggleDirection, setDirection } }, children);
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

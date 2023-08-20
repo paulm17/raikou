@@ -964,7 +964,12 @@ function RaikouProvider({
 
 // src/core/DirectionProvider/DirectionProvider.tsx
 import React4, { createContext, useContext, useState } from "react";
-import { useIsomorphicEffect } from "@raikou/hooks";
+
+// src/core/DirectionProvider/use-isomorphic-effect.ts
+import { useEffect, useLayoutEffect } from "react";
+var useIsomorphicEffect = typeof document !== "undefined" ? useLayoutEffect : useEffect;
+
+// src/core/DirectionProvider/DirectionProvider.tsx
 var DirectionContext = createContext({
   dir: "ltr",
   toggleDirection: () => {

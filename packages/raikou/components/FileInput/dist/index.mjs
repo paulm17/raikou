@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/FileInput.tsx
-import React20, { useEffect as useEffect2, useRef as useRef2 } from "react";
+import React21, { useEffect as useEffect2, useRef as useRef2 } from "react";
 import { useUncontrolled } from "@raikou/hooks";
 import { factory as factory8, useProps as useProps14 } from "@raikou/core";
 
@@ -877,7 +877,7 @@ var CloseIcon = forwardRef(
 CloseIcon.displayName = "@raikou/core/CloseIcon";
 
 // ../CloseButton/src/CloseButton.tsx
-import React18 from "react";
+import React19 from "react";
 import {
   polymorphicFactory as polymorphicFactory5,
   useProps as useProps12,
@@ -885,7 +885,7 @@ import {
 } from "@raikou/core";
 
 // ../ActionIcon/src/ActionIcon.tsx
-import React17 from "react";
+import React18 from "react";
 import {
   useProps as useProps11,
   useStyles as useStyles10,
@@ -951,9 +951,9 @@ var UnstyledButton = polymorphicFactory3(
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
 // ../Loader/src/Loader.tsx
-import React15 from "react";
+import React16 from "react";
 import {
-  Box as Box11,
+  Box as Box12,
   useProps as useProps9,
   getThemeColor,
   useStyles as useStyles8,
@@ -1024,29 +1024,58 @@ var Oval = forwardRef3(
   }
 );
 
-// ../Loader/src/loaders/Dots.tsx
+// ../Loader/src/loaders/Progress.tsx
 import React14, { forwardRef as forwardRef4 } from "react";
 import { Box as Box10 } from "@raikou/core";
-var Dots = forwardRef4(
+var Progress = forwardRef4(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ React14.createElement(
       Box10,
       __spreadProps(__spreadValues({
         component: "span",
+        className: clsx_default("progress-loader", className)
+      }, others), {
+        ref
+      }),
+      /* @__PURE__ */ React14.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ React14.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ React14.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ React14.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ React14.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ React14.createElement(
+        "animateTransform",
+        {
+          attributeName: "transform",
+          type: "rotate",
+          from: "0 16 16",
+          to: "360 16 16",
+          dur: "1s",
+          repeatCount: "indefinite"
+        }
+      )))))
+    );
+  }
+);
+
+// ../Loader/src/loaders/Dots.tsx
+import React15, { forwardRef as forwardRef5 } from "react";
+import { Box as Box11 } from "@raikou/core";
+var Dots = forwardRef5(
+  (_a, ref) => {
+    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+    return /* @__PURE__ */ React15.createElement(
+      Box11,
+      __spreadProps(__spreadValues({
+        component: "span",
         className: clsx_default("dots-loader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React14.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React14.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React14.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React14.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React14.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React14.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React14.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React14.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React14.createElement("span", { className: "dot" })
+      /* @__PURE__ */ React15.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React15.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React15.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React15.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React15.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React15.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React15.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React15.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React15.createElement("span", { className: "dot" })
     );
   }
 );
@@ -1055,7 +1084,8 @@ var Dots = forwardRef4(
 var defaultLoaders = {
   bars: Bars,
   oval: Oval,
-  dots: Dots
+  dots: Dots,
+  progress: Progress
 };
 var defaultProps9 = {
   size: "md",
@@ -1111,8 +1141,8 @@ var Loader = factory6((_props, ref) => {
     vars,
     varsResolver: varsResolver6
   });
-  return /* @__PURE__ */ React15.createElement(
-    Box11,
+  return /* @__PURE__ */ React16.createElement(
+    Box12,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -1124,10 +1154,10 @@ var Loader = factory6((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-import React16 from "react";
+import React17 from "react";
 import {
   factory as factory7,
-  Box as Box12,
+  Box as Box13,
   useProps as useProps10,
   useStyles as useStyles9,
   rem as rem5,
@@ -1181,8 +1211,8 @@ var ActionIconGroup = factory7(
       varsResolver: varsResolver7,
       rootSelector: "group"
     });
-    return /* @__PURE__ */ React16.createElement(
-      Box12,
+    return /* @__PURE__ */ React17.createElement(
+      Box13,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
         ref,
         variant,
@@ -1274,7 +1304,7 @@ var ActionIcon = polymorphicFactory4(
       vars,
       varsResolver: varsResolver8
     });
-    return /* @__PURE__ */ React17.createElement(
+    return /* @__PURE__ */ React18.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues(__spreadValues({}, getStyles("root", {
         active: !disabled && !loading && !dataDisabled
@@ -1286,7 +1316,7 @@ var ActionIcon = polymorphicFactory4(
         ref,
         mod: { loading, disabled: disabled || dataDisabled }
       }),
-      loading ? /* @__PURE__ */ React17.createElement(
+      loading ? /* @__PURE__ */ React18.createElement(
         Loader,
         __spreadValues(__spreadProps(__spreadValues({}, getStyles("loader")), {
           color: "var(--ai-color)",
@@ -1309,7 +1339,7 @@ var CloseButton = polymorphicFactory5(
   (_props, ref) => {
     const props = useProps12("CloseButton", defaultProps12, _props);
     const _a = props, { iconSize, children, vars } = _a, others = __objRest(_a, ["iconSize", "children", "vars"]);
-    return /* @__PURE__ */ React18.createElement(
+    return /* @__PURE__ */ React19.createElement(
       ActionIcon,
       __spreadProps(__spreadValues({
         ref
@@ -1317,7 +1347,7 @@ var CloseButton = polymorphicFactory5(
         __vars: { "--cb-icon-size": rem6(iconSize) },
         __staticSelector: "CloseButton"
       }),
-      /* @__PURE__ */ React18.createElement(CloseIcon, null),
+      /* @__PURE__ */ React19.createElement(CloseIcon, null),
       children
     );
   }
@@ -1325,13 +1355,13 @@ var CloseButton = polymorphicFactory5(
 CloseButton.displayName = "@raikou/core/CloseButton";
 
 // ../FileButton/src/FileButton.tsx
-import React19, { useRef, forwardRef as forwardRef5 } from "react";
+import React20, { useRef, forwardRef as forwardRef6 } from "react";
 import { assignRef, useMergedRef } from "@raikou/hooks";
 import { useProps as useProps13 } from "@raikou/core";
 var defaultProps13 = {
   multiple: false
 };
-var FileButton = forwardRef5((props, ref) => {
+var FileButton = forwardRef6((props, ref) => {
   const _a = useProps13("FileButton", defaultProps13, props), {
     onChange,
     children,
@@ -1371,7 +1401,7 @@ var FileButton = forwardRef5((props, ref) => {
     inputRef.current.value = "";
   };
   assignRef(resetRef, reset);
-  return /* @__PURE__ */ React19.createElement(React19.Fragment, null, children(__spreadValues({ onClick }, others)), /* @__PURE__ */ React19.createElement(
+  return /* @__PURE__ */ React20.createElement(React20.Fragment, null, children(__spreadValues({ onClick }, others)), /* @__PURE__ */ React20.createElement(
     "input",
     __spreadValues({
       style: { display: "none" },
@@ -1389,7 +1419,7 @@ var FileButton = forwardRef5((props, ref) => {
 FileButton.displayName = "@raikou/core/FileButton";
 
 // src/FileInput.tsx
-var DefaultValue = ({ value }) => /* @__PURE__ */ React20.createElement(
+var DefaultValue = ({ value }) => /* @__PURE__ */ React21.createElement(
   "div",
   {
     style: {
@@ -1455,7 +1485,7 @@ var _FileInput = factory8((_props, ref) => {
   const hasValue = Array.isArray(_value) ? _value.length !== 0 : _value !== null;
   const _rightSection = rightSection || (clearable && hasValue && !readOnly ? (
     // @ts-ignore
-    /* @__PURE__ */ React20.createElement(
+    /* @__PURE__ */ React21.createElement(
       CloseButton,
       __spreadProps(__spreadValues({}, clearButtonProps), {
         variant: "subtle",
@@ -1472,7 +1502,7 @@ var _FileInput = factory8((_props, ref) => {
     }
   }, [_value]);
   const ValueComponent = valueComponent;
-  return /* @__PURE__ */ React20.createElement(
+  return /* @__PURE__ */ React21.createElement(
     FileButton,
     {
       onChange: setValue,
@@ -1485,7 +1515,7 @@ var _FileInput = factory8((_props, ref) => {
       capture,
       inputProps: fileInputProps
     },
-    (fileButtonProps) => /* @__PURE__ */ React20.createElement(
+    (fileButtonProps) => /* @__PURE__ */ React21.createElement(
       InputBase,
       __spreadProps(__spreadValues(__spreadValues({
         component: "button",
@@ -1500,7 +1530,7 @@ var _FileInput = factory8((_props, ref) => {
         unstyled,
         size
       }),
-      !hasValue ? /* @__PURE__ */ React20.createElement(Input.Placeholder, null, placeholder) : /* @__PURE__ */ React20.createElement(ValueComponent, { value: _value })
+      !hasValue ? /* @__PURE__ */ React21.createElement(Input.Placeholder, null, placeholder) : /* @__PURE__ */ React21.createElement(ValueComponent, { value: _value })
     )
   );
 });

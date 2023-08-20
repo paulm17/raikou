@@ -52,7 +52,7 @@ var __async = (__this, __arguments, generator) => {
 };
 
 // src/ColorInput.tsx
-import React35, { useEffect as useEffect8, useState as useState11 } from "react";
+import React36, { useEffect as useEffect8, useState as useState11 } from "react";
 import { useDidUpdate as useDidUpdate6, useEyeDropper, useUncontrolled as useUncontrolled3 } from "@raikou/hooks";
 import {
   factory as factory11,
@@ -4631,7 +4631,7 @@ function EyeDropperIcon(_a) {
 }
 
 // ../ActionIcon/src/ActionIcon.tsx
-import React34 from "react";
+import React35 from "react";
 import {
   useProps as useProps19,
   useStyles as useStyles13,
@@ -4697,9 +4697,9 @@ var UnstyledButton = polymorphicFactory3(
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
 // ../Loader/src/Loader.tsx
-import React32 from "react";
+import React33 from "react";
 import {
-  Box as Box18,
+  Box as Box19,
   useProps as useProps17,
   getThemeColor,
   useStyles as useStyles11,
@@ -4747,29 +4747,58 @@ var Oval = forwardRef10(
   }
 );
 
-// ../Loader/src/loaders/Dots.tsx
+// ../Loader/src/loaders/Progress.tsx
 import React31, { forwardRef as forwardRef11 } from "react";
 import { Box as Box17 } from "@raikou/core";
-var Dots = forwardRef11(
+var Progress = forwardRef11(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ React31.createElement(
       Box17,
       __spreadProps(__spreadValues({
         component: "span",
+        className: clsx_default("progress-loader", className)
+      }, others), {
+        ref
+      }),
+      /* @__PURE__ */ React31.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ React31.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ React31.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ React31.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ React31.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ React31.createElement(
+        "animateTransform",
+        {
+          attributeName: "transform",
+          type: "rotate",
+          from: "0 16 16",
+          to: "360 16 16",
+          dur: "1s",
+          repeatCount: "indefinite"
+        }
+      )))))
+    );
+  }
+);
+
+// ../Loader/src/loaders/Dots.tsx
+import React32, { forwardRef as forwardRef12 } from "react";
+import { Box as Box18 } from "@raikou/core";
+var Dots = forwardRef12(
+  (_a, ref) => {
+    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+    return /* @__PURE__ */ React32.createElement(
+      Box18,
+      __spreadProps(__spreadValues({
+        component: "span",
         className: clsx_default("dots-loader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React31.createElement("span", { className: "dot" })
+      /* @__PURE__ */ React32.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React32.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React32.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React32.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React32.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React32.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React32.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React32.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React32.createElement("span", { className: "dot" })
     );
   }
 );
@@ -4778,7 +4807,8 @@ var Dots = forwardRef11(
 var defaultLoaders = {
   bars: Bars,
   oval: Oval,
-  dots: Dots
+  dots: Dots,
+  progress: Progress
 };
 var defaultProps16 = {
   size: "md",
@@ -4834,8 +4864,8 @@ var Loader = factory9((_props, ref) => {
     vars,
     varsResolver: varsResolver9
   });
-  return /* @__PURE__ */ React32.createElement(
-    Box18,
+  return /* @__PURE__ */ React33.createElement(
+    Box19,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -4847,10 +4877,10 @@ var Loader = factory9((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-import React33 from "react";
+import React34 from "react";
 import {
   factory as factory10,
-  Box as Box19,
+  Box as Box20,
   useProps as useProps18,
   useStyles as useStyles12,
   rem as rem12,
@@ -4904,8 +4934,8 @@ var ActionIconGroup = factory10(
       varsResolver: varsResolver10,
       rootSelector: "group"
     });
-    return /* @__PURE__ */ React33.createElement(
-      Box19,
+    return /* @__PURE__ */ React34.createElement(
+      Box20,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
         ref,
         variant,
@@ -4997,7 +5027,7 @@ var ActionIcon = polymorphicFactory4(
       vars,
       varsResolver: varsResolver11
     });
-    return /* @__PURE__ */ React34.createElement(
+    return /* @__PURE__ */ React35.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues(__spreadValues({}, getStyles("root", {
         active: !disabled && !loading && !dataDisabled
@@ -5009,7 +5039,7 @@ var ActionIcon = polymorphicFactory4(
         ref,
         mod: { loading, disabled: disabled || dataDisabled }
       }),
-      loading ? /* @__PURE__ */ React34.createElement(
+      loading ? /* @__PURE__ */ React35.createElement(
         Loader,
         __spreadValues(__spreadProps(__spreadValues({}, getStyles("loader")), {
           color: "var(--ai-color)",
@@ -5132,7 +5162,7 @@ var ColorInput = factory11((_props, ref) => {
     onChange
   });
   const { supported: eyeDropperSupported, open: openEyeDropper } = useEyeDropper();
-  const eyeDropper = /* @__PURE__ */ React35.createElement(
+  const eyeDropper = /* @__PURE__ */ React36.createElement(
     ActionIcon,
     __spreadProps(__spreadValues(__spreadValues({}, eyeDropperButtonProps), getStyles("eyeDropperButton", {
       className: eyeDropperButtonProps == null ? void 0 : eyeDropperButtonProps.className,
@@ -5150,7 +5180,7 @@ var ColorInput = factory11((_props, ref) => {
       }).catch(() => {
       })
     }),
-    eyeDropperIcon || /* @__PURE__ */ React35.createElement(EyeDropperIcon, __spreadValues({}, getStyles("eyeDropperIcon")))
+    eyeDropperIcon || /* @__PURE__ */ React36.createElement(EyeDropperIcon, __spreadValues({}, getStyles("eyeDropperIcon")))
   );
   const handleInputFocus = (event) => {
     onFocus == null ? void 0 : onFocus(event);
@@ -5175,14 +5205,14 @@ var ColorInput = factory11((_props, ref) => {
       setValue(convertHsvaTo(format, parseColor(_value)));
     }
   }, [format]);
-  return /* @__PURE__ */ React35.createElement(
+  return /* @__PURE__ */ React36.createElement(
     Input.Wrapper,
     __spreadProps(__spreadValues({}, wrapperProps), {
       classNames: resolvedClassNames,
       styles: resolvedStyles,
       __staticSelector: "ColorInput"
     }),
-    /* @__PURE__ */ React35.createElement(
+    /* @__PURE__ */ React36.createElement(
       Popover,
       __spreadProps(__spreadValues({
         __staticSelector: "ColorInput",
@@ -5196,7 +5226,7 @@ var ColorInput = factory11((_props, ref) => {
         withRoles: false,
         disabled: readOnly || withPicker === false && (!Array.isArray(swatches) || swatches.length === 0)
       }),
-      /* @__PURE__ */ React35.createElement(Popover.Target, null, /* @__PURE__ */ React35.createElement(
+      /* @__PURE__ */ React36.createElement(Popover.Target, null, /* @__PURE__ */ React36.createElement(
         Input,
         __spreadProps(__spreadValues(__spreadValues({
           autoComplete: "off"
@@ -5218,7 +5248,7 @@ var ColorInput = factory11((_props, ref) => {
               onChangeEnd == null ? void 0 : onChangeEnd(convertHsvaTo(format, parseColor(inputValue)));
             }
           },
-          leftSection: leftSection || (withPreview ? /* @__PURE__ */ React35.createElement(
+          leftSection: leftSection || (withPreview ? /* @__PURE__ */ React36.createElement(
             ColorSwatch,
             __spreadValues({
               color: isColorValid(_value) ? _value : "#fff",
@@ -5231,13 +5261,13 @@ var ColorInput = factory11((_props, ref) => {
           rightSection: rightSection || (withEyeDropper && !disabled && !readOnly && eyeDropperSupported ? eyeDropper : null)
         })
       )),
-      /* @__PURE__ */ React35.createElement(
+      /* @__PURE__ */ React36.createElement(
         Popover.Dropdown,
         {
           onMouseDown: (event) => event.preventDefault(),
           p: inputProps.size
         },
-        /* @__PURE__ */ React35.createElement(
+        /* @__PURE__ */ React36.createElement(
           ColorPicker,
           {
             __staticSelector: "ColorInput",

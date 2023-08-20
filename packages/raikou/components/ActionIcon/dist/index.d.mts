@@ -3,7 +3,7 @@ import { BoxProps, StylesApiProps, RaikouSize, RaikouColor, Factory, RaikouRadiu
 import React from 'react';
 
 type RaikouLoaderComponent = React.ForwardRefExoticComponent<React.HTMLAttributes<any> & React.RefAttributes<any>>;
-type RaikouLoadersRecord = Partial<Record<"bars" | "dots" | "oval" | (string & {}), RaikouLoaderComponent>>;
+type RaikouLoadersRecord = Partial<Record<"bars" | "dots" | "oval" | "progress" | (string & {}), RaikouLoaderComponent>>;
 type RaikouLoader = keyof RaikouLoadersRecord;
 
 type LoaderStylesNames = "root";

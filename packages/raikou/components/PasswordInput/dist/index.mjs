@@ -31,8 +31,8 @@ var __objRest = (source, exclude) => {
 };
 
 // src/PasswordInput.tsx
-import React17 from "react";
-import cx4 from "clsx";
+import React18 from "react";
+import cx5 from "clsx";
 import { useId as useId2, useUncontrolled } from "@raikou/hooks";
 import {
   factory as factory8,
@@ -743,7 +743,7 @@ Input.Placeholder = InputPlaceholder;
 Input.displayName = "@raikou/core/Input";
 
 // ../ActionIcon/src/ActionIcon.tsx
-import React15 from "react";
+import React16 from "react";
 import {
   useProps as useProps10,
   useStyles as useStyles10,
@@ -809,9 +809,9 @@ var UnstyledButton = polymorphicFactory2(
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
 // ../Loader/src/Loader.tsx
-import React13 from "react";
+import React14 from "react";
 import {
-  Box as Box11,
+  Box as Box12,
   useProps as useProps8,
   getThemeColor,
   useStyles as useStyles8,
@@ -861,30 +861,60 @@ var Oval = forwardRef2(
   }
 );
 
-// ../Loader/src/loaders/Dots.tsx
+// ../Loader/src/loaders/Progress.tsx
 import React12, { forwardRef as forwardRef3 } from "react";
 import cx3 from "clsx";
 import { Box as Box10 } from "@raikou/core";
-var Dots = forwardRef3(
+var Progress = forwardRef3(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ React12.createElement(
       Box10,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx3("dots-loader", className)
+        className: cx3("progress-loader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React12.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React12.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React12.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React12.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React12.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React12.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React12.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React12.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React12.createElement("span", { className: "dot" })
+      /* @__PURE__ */ React12.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ React12.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ React12.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ React12.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ React12.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ React12.createElement(
+        "animateTransform",
+        {
+          attributeName: "transform",
+          type: "rotate",
+          from: "0 16 16",
+          to: "360 16 16",
+          dur: "1s",
+          repeatCount: "indefinite"
+        }
+      )))))
+    );
+  }
+);
+
+// ../Loader/src/loaders/Dots.tsx
+import React13, { forwardRef as forwardRef4 } from "react";
+import cx4 from "clsx";
+import { Box as Box11 } from "@raikou/core";
+var Dots = forwardRef4(
+  (_a, ref) => {
+    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+    return /* @__PURE__ */ React13.createElement(
+      Box11,
+      __spreadProps(__spreadValues({
+        component: "span",
+        className: cx4("dots-loader", className)
+      }, others), {
+        ref
+      }),
+      /* @__PURE__ */ React13.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React13.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React13.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React13.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React13.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React13.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React13.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React13.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React13.createElement("span", { className: "dot" })
     );
   }
 );
@@ -893,7 +923,8 @@ var Dots = forwardRef3(
 var defaultLoaders = {
   bars: Bars,
   oval: Oval,
-  dots: Dots
+  dots: Dots,
+  progress: Progress
 };
 var defaultProps8 = {
   size: "md",
@@ -949,8 +980,8 @@ var Loader = factory6((_props, ref) => {
     vars,
     varsResolver: varsResolver6
   });
-  return /* @__PURE__ */ React13.createElement(
-    Box11,
+  return /* @__PURE__ */ React14.createElement(
+    Box12,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -962,10 +993,10 @@ var Loader = factory6((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-import React14 from "react";
+import React15 from "react";
 import {
   factory as factory7,
-  Box as Box12,
+  Box as Box13,
   useProps as useProps9,
   useStyles as useStyles9,
   rem as rem5,
@@ -1019,8 +1050,8 @@ var ActionIconGroup = factory7(
       varsResolver: varsResolver7,
       rootSelector: "group"
     });
-    return /* @__PURE__ */ React14.createElement(
-      Box12,
+    return /* @__PURE__ */ React15.createElement(
+      Box13,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
         ref,
         variant,
@@ -1112,7 +1143,7 @@ var ActionIcon = polymorphicFactory3(
       vars,
       varsResolver: varsResolver8
     });
-    return /* @__PURE__ */ React15.createElement(
+    return /* @__PURE__ */ React16.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues(__spreadValues({}, getStyles("root", {
         active: !disabled && !loading && !dataDisabled
@@ -1124,7 +1155,7 @@ var ActionIcon = polymorphicFactory3(
         ref,
         mod: { loading, disabled: disabled || dataDisabled }
       }),
-      loading ? /* @__PURE__ */ React15.createElement(
+      loading ? /* @__PURE__ */ React16.createElement(
         Loader,
         __spreadValues(__spreadProps(__spreadValues({}, getStyles("loader")), {
           color: "var(--ai-color)",
@@ -1138,10 +1169,10 @@ ActionIcon.displayName = "@raikou/core/ActionIcon";
 ActionIcon.Group = ActionIconGroup;
 
 // src/PasswordToggleIcon.tsx
-import React16 from "react";
+import React17 from "react";
 var PasswordToggleIcon = ({
   reveal
-}) => /* @__PURE__ */ React16.createElement(
+}) => /* @__PURE__ */ React17.createElement(
   "svg",
   {
     viewBox: "0 0 15 15",
@@ -1149,7 +1180,7 @@ var PasswordToggleIcon = ({
     xmlns: "http://www.w3.org/2000/svg",
     style: { width: "var(--psi-icon-size)", height: "var(--psi-icon-size)" }
   },
-  /* @__PURE__ */ React16.createElement(
+  /* @__PURE__ */ React17.createElement(
     "path",
     {
       d: reveal ? "M13.3536 2.35355C13.5488 2.15829 13.5488 1.84171 13.3536 1.64645C13.1583 1.45118 12.8417 1.45118 12.6464 1.64645L10.6828 3.61012C9.70652 3.21671 8.63759 3 7.5 3C4.30786 3 1.65639 4.70638 0.0760002 7.23501C-0.0253338 7.39715 -0.0253334 7.60288 0.0760014 7.76501C0.902945 9.08812 2.02314 10.1861 3.36061 10.9323L1.64645 12.6464C1.45118 12.8417 1.45118 13.1583 1.64645 13.3536C1.84171 13.5488 2.15829 13.5488 2.35355 13.3536L4.31723 11.3899C5.29348 11.7833 6.36241 12 7.5 12C10.6921 12 13.3436 10.2936 14.924 7.76501C15.0253 7.60288 15.0253 7.39715 14.924 7.23501C14.0971 5.9119 12.9769 4.81391 11.6394 4.06771L13.3536 2.35355ZM9.90428 4.38861C9.15332 4.1361 8.34759 4 7.5 4C4.80285 4 2.52952 5.37816 1.09622 7.50001C1.87284 8.6497 2.89609 9.58106 4.09974 10.1931L9.90428 4.38861ZM5.09572 10.6114L10.9003 4.80685C12.1039 5.41894 13.1272 6.35031 13.9038 7.50001C12.4705 9.62183 10.1971 11 7.5 11C6.65241 11 5.84668 10.8639 5.09572 10.6114Z" : "M7.5 11C4.80285 11 2.52952 9.62184 1.09622 7.50001C2.52952 5.37816 4.80285 4 7.5 4C10.1971 4 12.4705 5.37816 13.9038 7.50001C12.4705 9.62183 10.1971 11 7.5 11ZM7.5 3C4.30786 3 1.65639 4.70638 0.0760002 7.23501C-0.0253338 7.39715 -0.0253334 7.60288 0.0760014 7.76501C1.65639 10.2936 4.30786 12 7.5 12C10.6921 12 13.3436 10.2936 14.924 7.76501C15.0253 7.60288 15.0253 7.39715 14.924 7.23501C13.3436 4.70638 10.6921 3 7.5 3ZM7.5 9.5C8.60457 9.5 9.5 8.60457 9.5 7.5C9.5 6.39543 8.60457 5.5 7.5 5.5C6.39543 5.5 5.5 6.39543 5.5 7.5C5.5 8.60457 6.39543 9.5 7.5 9.5Z",
@@ -1278,7 +1309,7 @@ var PasswordInput = factory8((_props, ref) => {
   });
   const { styleProps, rest } = extractStyleProps2(others);
   const VisibilityToggleIcon = visibilityToggleIcon;
-  const visibilityToggleButton = /* @__PURE__ */ React17.createElement(
+  const visibilityToggleButton = /* @__PURE__ */ React18.createElement(
     ActionIcon,
     __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("visibilityToggle")), {
       radius,
@@ -1298,9 +1329,9 @@ var PasswordInput = factory8((_props, ref) => {
         }
       }
     }),
-    /* @__PURE__ */ React17.createElement(VisibilityToggleIcon, { reveal: _visible })
+    /* @__PURE__ */ React18.createElement(VisibilityToggleIcon, { reveal: _visible })
   );
-  return /* @__PURE__ */ React17.createElement(
+  return /* @__PURE__ */ React18.createElement(
     Input.Wrapper,
     __spreadValues(__spreadValues(__spreadValues({
       required,
@@ -1321,7 +1352,7 @@ var PasswordInput = factory8((_props, ref) => {
       variant,
       labelProps: __spreadProps(__spreadValues({}, labelProps), { htmlFor: uuid })
     }, getStyles("root")), styleProps), wrapperProps),
-    /* @__PURE__ */ React17.createElement(
+    /* @__PURE__ */ React18.createElement(
       Input,
       {
         component: "div",
@@ -1329,7 +1360,7 @@ var PasswordInput = factory8((_props, ref) => {
         leftSection,
         size,
         classNames: __spreadProps(__spreadValues({}, resolvedClassNames), {
-          input: cx4("passwordInput-input", resolvedClassNames.input)
+          input: cx5("passwordInput-input", resolvedClassNames.input)
         }),
         styles: resolvedStyles,
         radius,
@@ -1344,7 +1375,7 @@ var PasswordInput = factory8((_props, ref) => {
         rightSectionProps,
         leftSectionProps
       },
-      /* @__PURE__ */ React17.createElement(
+      /* @__PURE__ */ React18.createElement(
         "input",
         __spreadProps(__spreadValues(__spreadProps(__spreadValues({
           required,

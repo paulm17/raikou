@@ -51,7 +51,7 @@ var __async = (__this, __arguments, generator) => {
 };
 
 // src/MultiSelect.tsx
-import React61 from "react";
+import React62 from "react";
 import { useUncontrolled as useUncontrolled3 } from "@raikou/hooks";
 import {
   factory as factory27,
@@ -5980,9 +5980,9 @@ PillsInput.displayName = "@raikou/core/PillsInput";
 PillsInput.Field = PillsInputField;
 
 // ../Pill/src/Pill.tsx
-import React60 from "react";
+import React61 from "react";
 import {
-  Box as Box26,
+  Box as Box27,
   factory as factory26,
   useProps as useProps35,
   useStyles as useStyles17,
@@ -6020,7 +6020,7 @@ var CloseIcon = forwardRef14(
 CloseIcon.displayName = "@raikou/core/CloseIcon";
 
 // ../CloseButton/src/CloseButton.tsx
-import React58 from "react";
+import React59 from "react";
 import {
   polymorphicFactory as polymorphicFactory5,
   useProps as useProps33,
@@ -6028,7 +6028,7 @@ import {
 } from "@raikou/core";
 
 // ../ActionIcon/src/ActionIcon.tsx
-import React57 from "react";
+import React58 from "react";
 import {
   useProps as useProps32,
   useStyles as useStyles15,
@@ -6094,9 +6094,9 @@ var UnstyledButton = polymorphicFactory3(
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
 // ../Loader/src/Loader.tsx
-import React55 from "react";
+import React56 from "react";
 import {
-  Box as Box23,
+  Box as Box24,
   useProps as useProps30,
   getThemeColor,
   useStyles as useStyles13,
@@ -6144,29 +6144,58 @@ var Oval = forwardRef16(
   }
 );
 
-// ../Loader/src/loaders/Dots.tsx
+// ../Loader/src/loaders/Progress.tsx
 import React54, { forwardRef as forwardRef17 } from "react";
 import { Box as Box22 } from "@raikou/core";
-var Dots = forwardRef17(
+var Progress = forwardRef17(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ React54.createElement(
       Box22,
       __spreadProps(__spreadValues({
         component: "span",
+        className: clsx_default("progress-loader", className)
+      }, others), {
+        ref
+      }),
+      /* @__PURE__ */ React54.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ React54.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ React54.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ React54.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ React54.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ React54.createElement(
+        "animateTransform",
+        {
+          attributeName: "transform",
+          type: "rotate",
+          from: "0 16 16",
+          to: "360 16 16",
+          dur: "1s",
+          repeatCount: "indefinite"
+        }
+      )))))
+    );
+  }
+);
+
+// ../Loader/src/loaders/Dots.tsx
+import React55, { forwardRef as forwardRef18 } from "react";
+import { Box as Box23 } from "@raikou/core";
+var Dots = forwardRef18(
+  (_a, ref) => {
+    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+    return /* @__PURE__ */ React55.createElement(
+      Box23,
+      __spreadProps(__spreadValues({
+        component: "span",
         className: clsx_default("dots-loader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React54.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React54.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React54.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React54.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React54.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React54.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React54.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React54.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React54.createElement("span", { className: "dot" })
+      /* @__PURE__ */ React55.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React55.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React55.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React55.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React55.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React55.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React55.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React55.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React55.createElement("span", { className: "dot" })
     );
   }
 );
@@ -6175,7 +6204,8 @@ var Dots = forwardRef17(
 var defaultLoaders = {
   bars: Bars,
   oval: Oval,
-  dots: Dots
+  dots: Dots,
+  progress: Progress
 };
 var defaultProps30 = {
   size: "md",
@@ -6231,8 +6261,8 @@ var Loader = factory23((_props, ref) => {
     vars,
     varsResolver: varsResolver10
   });
-  return /* @__PURE__ */ React55.createElement(
-    Box23,
+  return /* @__PURE__ */ React56.createElement(
+    Box24,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -6244,10 +6274,10 @@ var Loader = factory23((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-import React56 from "react";
+import React57 from "react";
 import {
   factory as factory24,
-  Box as Box24,
+  Box as Box25,
   useProps as useProps31,
   useStyles as useStyles14,
   rem as rem11,
@@ -6301,8 +6331,8 @@ var ActionIconGroup = factory24(
       varsResolver: varsResolver11,
       rootSelector: "group"
     });
-    return /* @__PURE__ */ React56.createElement(
-      Box24,
+    return /* @__PURE__ */ React57.createElement(
+      Box25,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
         ref,
         variant,
@@ -6394,7 +6424,7 @@ var ActionIcon = polymorphicFactory4(
       vars,
       varsResolver: varsResolver12
     });
-    return /* @__PURE__ */ React57.createElement(
+    return /* @__PURE__ */ React58.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues(__spreadValues({}, getStyles("root", {
         active: !disabled && !loading && !dataDisabled
@@ -6406,7 +6436,7 @@ var ActionIcon = polymorphicFactory4(
         ref,
         mod: { loading, disabled: disabled || dataDisabled }
       }),
-      loading ? /* @__PURE__ */ React57.createElement(
+      loading ? /* @__PURE__ */ React58.createElement(
         Loader,
         __spreadValues(__spreadProps(__spreadValues({}, getStyles("loader")), {
           color: "var(--ai-color)",
@@ -6429,7 +6459,7 @@ var CloseButton = polymorphicFactory5(
   (_props, ref) => {
     const props = useProps33("CloseButton", defaultProps33, _props);
     const _a = props, { iconSize, children, vars } = _a, others = __objRest(_a, ["iconSize", "children", "vars"]);
-    return /* @__PURE__ */ React58.createElement(
+    return /* @__PURE__ */ React59.createElement(
       ActionIcon,
       __spreadProps(__spreadValues({
         ref
@@ -6437,7 +6467,7 @@ var CloseButton = polymorphicFactory5(
         __vars: { "--cb-icon-size": rem12(iconSize) },
         __staticSelector: "CloseButton"
       }),
-      /* @__PURE__ */ React58.createElement(CloseIcon, null),
+      /* @__PURE__ */ React59.createElement(CloseIcon, null),
       children
     );
   }
@@ -6445,9 +6475,9 @@ var CloseButton = polymorphicFactory5(
 CloseButton.displayName = "@raikou/core/CloseButton";
 
 // ../Pill/src/PillGroup/PillGroup.tsx
-import React59 from "react";
+import React60 from "react";
 import {
-  Box as Box25,
+  Box as Box26,
   factory as factory25,
   useProps as useProps34,
   useStyles as useStyles16,
@@ -6506,7 +6536,7 @@ var PillGroup = factory25((_props, ref) => {
     stylesCtx: { size: _size },
     rootSelector: "group"
   });
-  return /* @__PURE__ */ React59.createElement(PillGroupProvider, { value: { size: _size, disabled } }, /* @__PURE__ */ React59.createElement(Box25, __spreadValues(__spreadValues({ ref, size: _size }, getStyles("group")), others)));
+  return /* @__PURE__ */ React60.createElement(PillGroupProvider, { value: { size: _size, disabled } }, /* @__PURE__ */ React60.createElement(Box26, __spreadValues(__spreadValues({ ref, size: _size }, getStyles("group")), others)));
 });
 PillGroup.displayName = "@raikou/core/PillGroup";
 
@@ -6578,8 +6608,8 @@ var Pill = factory26((_props, ref) => {
     varsResolver: varsResolver14,
     stylesCtx: { size: _size }
   });
-  return /* @__PURE__ */ React60.createElement(
-    Box26,
+  return /* @__PURE__ */ React61.createElement(
+    Box27,
     __spreadValues(__spreadProps(__spreadValues({
       component: "span",
       ref,
@@ -6591,8 +6621,8 @@ var Pill = factory26((_props, ref) => {
         disabled: disabled || (ctx == null ? void 0 : ctx.disabled)
       }
     }), others),
-    /* @__PURE__ */ React60.createElement("span", __spreadValues({}, getStyles("label")), children),
-    withRemoveButton && /* @__PURE__ */ React60.createElement(
+    /* @__PURE__ */ React61.createElement("span", __spreadValues({}, getStyles("label")), children),
+    withRemoveButton && /* @__PURE__ */ React61.createElement(
       CloseButton,
       __spreadProps(__spreadValues(__spreadValues({
         iconSize: "70%",
@@ -6816,7 +6846,7 @@ var MultiSelect = factory27((_props, ref) => {
       setValue(_value.slice(0, _value.length - 1));
     }
   };
-  const values = _value.map((item, index3) => /* @__PURE__ */ React61.createElement(
+  const values = _value.map((item, index3) => /* @__PURE__ */ React62.createElement(
     Pill,
     __spreadValues({
       key: `${item}-${index3}`,
@@ -6825,7 +6855,7 @@ var MultiSelect = factory27((_props, ref) => {
     }, getStyles("pill")),
     item
   ));
-  return /* @__PURE__ */ React61.createElement(
+  return /* @__PURE__ */ React62.createElement(
     Combobox,
     __spreadValues({
       store: combobox,
@@ -6845,7 +6875,7 @@ var MultiSelect = factory27((_props, ref) => {
         }
       }
     }, comboboxProps),
-    /* @__PURE__ */ React61.createElement(Combobox.DropdownTarget, null, /* @__PURE__ */ React61.createElement(
+    /* @__PURE__ */ React62.createElement(Combobox.DropdownTarget, null, /* @__PURE__ */ React62.createElement(
       PillsInput,
       __spreadProps(__spreadValues({}, styleProps), {
         __staticSelector: "MultiSelect",
@@ -6882,7 +6912,7 @@ var MultiSelect = factory27((_props, ref) => {
         pointer: !searchable,
         onClick: () => searchable ? combobox.openDropdown() : combobox.toggleDropdown()
       }),
-      /* @__PURE__ */ React61.createElement(Pill.Group, __spreadValues({ disabled }, getStyles("pillsList")), values, /* @__PURE__ */ React61.createElement(Combobox.EventsTarget, null, /* @__PURE__ */ React61.createElement(
+      /* @__PURE__ */ React62.createElement(Pill.Group, __spreadValues({ disabled }, getStyles("pillsList")), values, /* @__PURE__ */ React62.createElement(Combobox.EventsTarget, null, /* @__PURE__ */ React62.createElement(
         PillsInput.Field,
         __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, rest), {
           ref
@@ -6910,7 +6940,7 @@ var MultiSelect = factory27((_props, ref) => {
         })
       )))
     )),
-    /* @__PURE__ */ React61.createElement(
+    /* @__PURE__ */ React62.createElement(
       OptionsDropdown,
       {
         data: hidePickedOptions ? filterPickedValues({ data: parsedData, value: _value }) : parsedData,

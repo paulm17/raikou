@@ -51,12 +51,12 @@ var __async = (__this, __arguments, generator) => {
 };
 
 // src/CodeHighlightTabs.tsx
-import React36 from "react";
+import React37 from "react";
 import hljs from "highlight.js";
-import cx5 from "clsx";
+import cx6 from "clsx";
 import { useUncontrolled } from "@raikou/hooks";
 import {
-  Box as Box12,
+  Box as Box13,
   factory as factory6,
   useProps as useProps12,
   useStyles as useStyles8,
@@ -3812,7 +3812,7 @@ var UnstyledButton = polymorphicFactory(
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
 // ../components/ActionIcon/src/ActionIcon.tsx
-import React20 from "react";
+import React21 from "react";
 import {
   useProps as useProps9,
   useStyles as useStyles6,
@@ -3823,9 +3823,9 @@ import {
 } from "@raikou/core";
 
 // ../components/Loader/src/Loader.tsx
-import React18 from "react";
+import React19 from "react";
 import {
-  Box as Box7,
+  Box as Box8,
   useProps as useProps7,
   getThemeColor as getThemeColor3,
   useStyles as useStyles4,
@@ -3875,30 +3875,60 @@ var Oval = forwardRef5(
   }
 );
 
-// ../components/Loader/src/loaders/Dots.tsx
+// ../components/Loader/src/loaders/Progress.tsx
 import React17, { forwardRef as forwardRef6 } from "react";
 import cx4 from "clsx";
 import { Box as Box6 } from "@raikou/core";
-var Dots = forwardRef6(
+var Progress = forwardRef6(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ React17.createElement(
       Box6,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx4("dots-loader", className)
+        className: cx4("progress-loader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React17.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React17.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React17.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React17.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React17.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React17.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React17.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React17.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React17.createElement("span", { className: "dot" })
+      /* @__PURE__ */ React17.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ React17.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ React17.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ React17.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ React17.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ React17.createElement(
+        "animateTransform",
+        {
+          attributeName: "transform",
+          type: "rotate",
+          from: "0 16 16",
+          to: "360 16 16",
+          dur: "1s",
+          repeatCount: "indefinite"
+        }
+      )))))
+    );
+  }
+);
+
+// ../components/Loader/src/loaders/Dots.tsx
+import React18, { forwardRef as forwardRef7 } from "react";
+import cx5 from "clsx";
+import { Box as Box7 } from "@raikou/core";
+var Dots = forwardRef7(
+  (_a, ref) => {
+    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+    return /* @__PURE__ */ React18.createElement(
+      Box7,
+      __spreadProps(__spreadValues({
+        component: "span",
+        className: cx5("dots-loader", className)
+      }, others), {
+        ref
+      }),
+      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React18.createElement("span", { className: "dot" })
     );
   }
 );
@@ -3907,7 +3937,8 @@ var Dots = forwardRef6(
 var defaultLoaders = {
   bars: Bars,
   oval: Oval,
-  dots: Dots
+  dots: Dots,
+  progress: Progress
 };
 var defaultProps7 = {
   size: "md",
@@ -3963,8 +3994,8 @@ var Loader = factory3((_props, ref) => {
     vars,
     varsResolver: varsResolver3
   });
-  return /* @__PURE__ */ React18.createElement(
-    Box7,
+  return /* @__PURE__ */ React19.createElement(
+    Box8,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -3976,10 +4007,10 @@ var Loader = factory3((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../components/ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-import React19 from "react";
+import React20 from "react";
 import {
   factory as factory4,
-  Box as Box8,
+  Box as Box9,
   useProps as useProps8,
   useStyles as useStyles5,
   rem as rem5,
@@ -4033,8 +4064,8 @@ var ActionIconGroup = factory4(
       varsResolver: varsResolver4,
       rootSelector: "group"
     });
-    return /* @__PURE__ */ React19.createElement(
-      Box8,
+    return /* @__PURE__ */ React20.createElement(
+      Box9,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
         ref,
         variant,
@@ -4126,7 +4157,7 @@ var ActionIcon = polymorphicFactory2(
       vars,
       varsResolver: varsResolver5
     });
-    return /* @__PURE__ */ React20.createElement(
+    return /* @__PURE__ */ React21.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues(__spreadValues({}, getStyles("root", {
         active: !disabled && !loading && !dataDisabled
@@ -4138,7 +4169,7 @@ var ActionIcon = polymorphicFactory2(
         ref,
         mod: { loading, disabled: disabled || dataDisabled }
       }),
-      loading ? /* @__PURE__ */ React20.createElement(
+      loading ? /* @__PURE__ */ React21.createElement(
         Loader,
         __spreadValues(__spreadProps(__spreadValues({}, getStyles("loader")), {
           color: "var(--ai-color)",
@@ -4152,9 +4183,9 @@ ActionIcon.displayName = "@raikou/core/ActionIcon";
 ActionIcon.Group = ActionIconGroup;
 
 // ../components/ScrollArea/src/ScrollArea.tsx
-import React35, { useState as useState15 } from "react";
+import React36, { useState as useState15 } from "react";
 import {
-  Box as Box11,
+  Box as Box12,
   factory as factory5,
   useProps as useProps11,
   useStyles as useStyles7,
@@ -4163,10 +4194,10 @@ import {
 } from "@raikou/core";
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbar.tsx
-import React30 from "react";
+import React31 from "react";
 
 // ../components/_utils/create-safe-context/create-safe-context.tsx
-import React21, { createContext as createContext3, useContext as useContext3 } from "react";
+import React22, { createContext as createContext3, useContext as useContext3 } from "react";
 function createSafeContext(errorMessage) {
   const Context = createContext3(null);
   const useSafeContext = () => {
@@ -4176,12 +4207,12 @@ function createSafeContext(errorMessage) {
     }
     return ctx;
   };
-  const Provider = ({ children, value }) => /* @__PURE__ */ React21.createElement(Context.Provider, { value }, children);
+  const Provider = ({ children, value }) => /* @__PURE__ */ React22.createElement(Context.Provider, { value }, children);
   return [Provider, useSafeContext];
 }
 
 // ../components/_utils/create-optional-context/create-optional-context.tsx
-import React22, { createContext as createContext4, useContext as useContext4 } from "react";
+import React23, { createContext as createContext4, useContext as useContext4 } from "react";
 
 // ../components/_utils/use-hovered/use-hovered.ts
 import { useState as useState8 } from "react";
@@ -4195,15 +4226,15 @@ var [ScrollAreaProvider, useScrollAreaContext] = createSafeContext(
 );
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarVisible.tsx
-import React26, { useRef as useRef10, useState as useState10, forwardRef as forwardRef10 } from "react";
+import React27, { useRef as useRef10, useState as useState10, forwardRef as forwardRef11 } from "react";
 import { useDirection as useDirection3 } from "@raikou/core";
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollbarX.tsx
-import React24, { forwardRef as forwardRef8, useRef as useRef8, useState as useState9, useEffect as useEffect9 } from "react";
+import React25, { forwardRef as forwardRef9, useRef as useRef8, useState as useState9, useEffect as useEffect9 } from "react";
 import { useMergedRef as useMergedRef4 } from "@raikou/hooks";
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/Scrollbar.tsx
-import React23, { useEffect as useEffect8, forwardRef as forwardRef7 } from "react";
+import React24, { useEffect as useEffect8, forwardRef as forwardRef8 } from "react";
 import {
   useMergedRef as useMergedRef3,
   useCallbackRef as useCallbackRef2,
@@ -4328,7 +4359,7 @@ function addUnlinkedScrollListener(node, handler = () => {
 }
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/Scrollbar.tsx
-var Scrollbar = forwardRef7(
+var Scrollbar = forwardRef8(
   (props, forwardedRef) => {
     const _a = props, {
       sizes,
@@ -4352,15 +4383,15 @@ var Scrollbar = forwardRef7(
       "onResize"
     ]);
     const context = useScrollAreaContext();
-    const [scrollbar, setScrollbar] = React23.useState(
+    const [scrollbar, setScrollbar] = React24.useState(
       null
     );
     const composeRefs = useMergedRef3(
       forwardedRef,
       (node) => setScrollbar(node)
     );
-    const rectRef = React23.useRef(null);
-    const prevWebkitUserSelectRef = React23.useRef("");
+    const rectRef = React24.useRef(null);
+    const prevWebkitUserSelectRef = React24.useRef("");
     const { viewport } = context;
     const maxScrollPos = sizes.content - sizes.viewport;
     const handleWheelScroll = useCallbackRef2(onWheelScroll);
@@ -4388,7 +4419,7 @@ var Scrollbar = forwardRef7(
     useEffect8(handleThumbPositionChange, [sizes, handleThumbPositionChange]);
     useResizeObserver(scrollbar, handleResize);
     useResizeObserver(context.content, handleResize);
-    return /* @__PURE__ */ React23.createElement(
+    return /* @__PURE__ */ React24.createElement(
       ScrollbarProvider,
       {
         value: {
@@ -4400,7 +4431,7 @@ var Scrollbar = forwardRef7(
           onThumbPointerDown: useCallbackRef2(onThumbPointerDown)
         }
       },
-      /* @__PURE__ */ React23.createElement(
+      /* @__PURE__ */ React24.createElement(
         "div",
         __spreadProps(__spreadValues({}, scrollbarProps), {
           ref: composeRefs,
@@ -4435,7 +4466,7 @@ var Scrollbar = forwardRef7(
 );
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollbarX.tsx
-var ScrollAreaScrollbarX = forwardRef8((props, forwardedRef) => {
+var ScrollAreaScrollbarX = forwardRef9((props, forwardedRef) => {
   const _a = props, { sizes, onSizesChange, style } = _a, others = __objRest(_a, ["sizes", "onSizesChange", "style"]);
   const ctx = useScrollAreaContext();
   const [computedStyle, setComputedStyle] = useState9();
@@ -4445,7 +4476,7 @@ var ScrollAreaScrollbarX = forwardRef8((props, forwardedRef) => {
     if (ref.current)
       setComputedStyle(getComputedStyle(ref.current));
   }, [ref]);
-  return /* @__PURE__ */ React24.createElement(
+  return /* @__PURE__ */ React25.createElement(
     Scrollbar,
     __spreadProps(__spreadValues({
       "data-orientation": "horizontal"
@@ -4484,12 +4515,12 @@ var ScrollAreaScrollbarX = forwardRef8((props, forwardedRef) => {
 });
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollbarY.tsx
-import React25, { forwardRef as forwardRef9, useEffect as useEffect10, useRef as useRef9 } from "react";
+import React26, { forwardRef as forwardRef10, useEffect as useEffect10, useRef as useRef9 } from "react";
 import { useMergedRef as useMergedRef5 } from "@raikou/hooks";
-var ScrollAreaScrollbarY = forwardRef9((props, forwardedRef) => {
+var ScrollAreaScrollbarY = forwardRef10((props, forwardedRef) => {
   const _a = props, { sizes, onSizesChange, style } = _a, others = __objRest(_a, ["sizes", "onSizesChange", "style"]);
   const context = useScrollAreaContext();
-  const [computedStyle, setComputedStyle] = React25.useState();
+  const [computedStyle, setComputedStyle] = React26.useState();
   const ref = useRef9(null);
   const composeRefs = useMergedRef5(
     forwardedRef,
@@ -4500,7 +4531,7 @@ var ScrollAreaScrollbarY = forwardRef9((props, forwardedRef) => {
     if (ref.current)
       setComputedStyle(getComputedStyle(ref.current));
   }, [ref]);
-  return /* @__PURE__ */ React25.createElement(
+  return /* @__PURE__ */ React26.createElement(
     Scrollbar,
     __spreadProps(__spreadValues({}, others), {
       "data-orientation": "vertical",
@@ -4538,7 +4569,7 @@ var ScrollAreaScrollbarY = forwardRef9((props, forwardedRef) => {
 });
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarVisible.tsx
-var ScrollAreaScrollbarVisible = forwardRef10((props, forwardedRef) => {
+var ScrollAreaScrollbarVisible = forwardRef11((props, forwardedRef) => {
   const _a = props, { orientation = "vertical" } = _a, scrollbarProps = __objRest(_a, ["orientation"]);
   const { dir } = useDirection3();
   const context = useScrollAreaContext();
@@ -4571,7 +4602,7 @@ var ScrollAreaScrollbarVisible = forwardRef10((props, forwardedRef) => {
     direction
   );
   if (orientation === "horizontal") {
-    return /* @__PURE__ */ React26.createElement(
+    return /* @__PURE__ */ React27.createElement(
       ScrollAreaScrollbarX,
       __spreadProps(__spreadValues({}, commonProps), {
         ref: forwardedRef,
@@ -4595,7 +4626,7 @@ var ScrollAreaScrollbarVisible = forwardRef10((props, forwardedRef) => {
     );
   }
   if (orientation === "vertical") {
-    return /* @__PURE__ */ React26.createElement(
+    return /* @__PURE__ */ React27.createElement(
       ScrollAreaScrollbarY,
       __spreadProps(__spreadValues({}, commonProps), {
         ref: forwardedRef,
@@ -4621,12 +4652,12 @@ var ScrollAreaScrollbarVisible = forwardRef10((props, forwardedRef) => {
 });
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarHover.tsx
-import React28, { forwardRef as forwardRef12, useEffect as useEffect11, useState as useState12 } from "react";
+import React29, { forwardRef as forwardRef13, useEffect as useEffect11, useState as useState12 } from "react";
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarAuto.tsx
-import React27, { forwardRef as forwardRef11, useState as useState11 } from "react";
+import React28, { forwardRef as forwardRef12, useState as useState11 } from "react";
 import { useDebounceCallback as useDebounceCallback2 } from "@raikou/hooks";
-var ScrollAreaScrollbarAuto = forwardRef11((props, ref) => {
+var ScrollAreaScrollbarAuto = forwardRef12((props, ref) => {
   const context = useScrollAreaContext();
   const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
   const [visible, setVisible] = useState11(false);
@@ -4641,7 +4672,7 @@ var ScrollAreaScrollbarAuto = forwardRef11((props, ref) => {
   useResizeObserver(context.viewport, handleResize);
   useResizeObserver(context.content, handleResize);
   if (forceMount || visible) {
-    return /* @__PURE__ */ React27.createElement(
+    return /* @__PURE__ */ React28.createElement(
       ScrollAreaScrollbarVisible,
       __spreadProps(__spreadValues({
         "data-state": visible ? "visible" : "hidden"
@@ -4654,7 +4685,7 @@ var ScrollAreaScrollbarAuto = forwardRef11((props, ref) => {
 });
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarHover.tsx
-var ScrollAreaScrollbarHover = forwardRef12(
+var ScrollAreaScrollbarHover = forwardRef13(
   (props, ref) => {
     const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
     const context = useScrollAreaContext();
@@ -4681,7 +4712,7 @@ var ScrollAreaScrollbarHover = forwardRef12(
       return void 0;
     }, [context.scrollArea, context.scrollHideDelay]);
     if (forceMount || visible) {
-      return /* @__PURE__ */ React28.createElement(
+      return /* @__PURE__ */ React29.createElement(
         ScrollAreaScrollbarAuto,
         __spreadProps(__spreadValues({
           "data-state": visible ? "visible" : "hidden"
@@ -4695,9 +4726,9 @@ var ScrollAreaScrollbarHover = forwardRef12(
 );
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarScroll.tsx
-import React29, { forwardRef as forwardRef13, useEffect as useEffect12, useState as useState13 } from "react";
+import React30, { forwardRef as forwardRef14, useEffect as useEffect12, useState as useState13 } from "react";
 import { useDebounceCallback as useDebounceCallback3 } from "@raikou/hooks";
-var ScrollAreaScrollbarScroll = forwardRef13((props, red) => {
+var ScrollAreaScrollbarScroll = forwardRef14((props, red) => {
   const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
   const context = useScrollAreaContext();
   const isHorizontal = props.orientation === "horizontal";
@@ -4733,7 +4764,7 @@ var ScrollAreaScrollbarScroll = forwardRef13((props, red) => {
     return void 0;
   }, [context.viewport, isHorizontal, debounceScrollEnd]);
   if (forceMount || state !== "hidden") {
-    return /* @__PURE__ */ React29.createElement(
+    return /* @__PURE__ */ React30.createElement(
       ScrollAreaScrollbarVisible,
       __spreadProps(__spreadValues({
         "data-state": state === "hidden" ? "hidden" : "visible"
@@ -4754,30 +4785,30 @@ var ScrollAreaScrollbarScroll = forwardRef13((props, red) => {
 });
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbar.tsx
-var ScrollAreaScrollbar = React30.forwardRef(
+var ScrollAreaScrollbar = React31.forwardRef(
   (props, forwardedRef) => {
     const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
     const context = useScrollAreaContext();
     const { onScrollbarXEnabledChange, onScrollbarYEnabledChange } = context;
     const isHorizontal = props.orientation === "horizontal";
-    React30.useEffect(() => {
+    React31.useEffect(() => {
       isHorizontal ? onScrollbarXEnabledChange(true) : onScrollbarYEnabledChange(true);
       return () => {
         isHorizontal ? onScrollbarXEnabledChange(false) : onScrollbarYEnabledChange(false);
       };
     }, [isHorizontal, onScrollbarXEnabledChange, onScrollbarYEnabledChange]);
-    return context.type === "hover" ? /* @__PURE__ */ React30.createElement(ScrollAreaScrollbarHover, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "scroll" ? /* @__PURE__ */ React30.createElement(ScrollAreaScrollbarScroll, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "auto" ? /* @__PURE__ */ React30.createElement(ScrollAreaScrollbarAuto, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "always" ? /* @__PURE__ */ React30.createElement(ScrollAreaScrollbarVisible, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef })) : null;
+    return context.type === "hover" ? /* @__PURE__ */ React31.createElement(ScrollAreaScrollbarHover, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "scroll" ? /* @__PURE__ */ React31.createElement(ScrollAreaScrollbarScroll, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "auto" ? /* @__PURE__ */ React31.createElement(ScrollAreaScrollbarAuto, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "always" ? /* @__PURE__ */ React31.createElement(ScrollAreaScrollbarVisible, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef })) : null;
   }
 );
 
 // ../components/ScrollArea/src/ScrollAreaCorner/ScrollAreaCorner.tsx
-import React31 from "react";
-var Corner = React31.forwardRef(
+import React32 from "react";
+var Corner = React32.forwardRef(
   (props, ref) => {
     const _a = props, { style } = _a, others = __objRest(_a, ["style"]);
     const ctx = useScrollAreaContext();
-    const [width, setWidth] = React31.useState(0);
-    const [height, setHeight] = React31.useState(0);
+    const [width, setWidth] = React32.useState(0);
+    const [height, setHeight] = React32.useState(0);
     const hasSize = Boolean(width && height);
     useResizeObserver(ctx.scrollbarX, () => {
       var _a2;
@@ -4791,25 +4822,25 @@ var Corner = React31.forwardRef(
       ctx.onCornerWidthChange(w);
       setWidth(w);
     });
-    return hasSize ? /* @__PURE__ */ React31.createElement("div", __spreadProps(__spreadValues({}, others), { ref, style: __spreadProps(__spreadValues({}, style), { width, height }) })) : null;
+    return hasSize ? /* @__PURE__ */ React32.createElement("div", __spreadProps(__spreadValues({}, others), { ref, style: __spreadProps(__spreadValues({}, style), { width, height }) })) : null;
   }
 );
-var ScrollAreaCorner = React31.forwardRef((props, ref) => {
+var ScrollAreaCorner = React32.forwardRef((props, ref) => {
   const ctx = useScrollAreaContext();
   const hasBothScrollbarsVisible = Boolean(ctx.scrollbarX && ctx.scrollbarY);
   const hasCorner = ctx.type !== "scroll" && hasBothScrollbarsVisible;
-  return hasCorner ? /* @__PURE__ */ React31.createElement(Corner, __spreadProps(__spreadValues({}, props), { ref })) : null;
+  return hasCorner ? /* @__PURE__ */ React32.createElement(Corner, __spreadProps(__spreadValues({}, props), { ref })) : null;
 });
 
 // ../components/ScrollArea/src/ScrollAreaRoot/ScrollAreaRoot.tsx
-import React32, { useState as useState14, forwardRef as forwardRef14 } from "react";
+import React33, { useState as useState14, forwardRef as forwardRef15 } from "react";
 import { useMergedRef as useMergedRef6 } from "@raikou/hooks";
-import { Box as Box9, useProps as useProps10 } from "@raikou/core";
+import { Box as Box10, useProps as useProps10 } from "@raikou/core";
 var defaultProps10 = {
   scrollHideDelay: 1e3,
   type: "hover"
 };
-var ScrollAreaRoot = forwardRef14(
+var ScrollAreaRoot = forwardRef15(
   (_props, ref) => {
     const props = useProps10("ScrollAreaRoot", defaultProps10, _props);
     const _a = props, { type, scrollHideDelay } = _a, others = __objRest(_a, ["type", "scrollHideDelay"]);
@@ -4823,7 +4854,7 @@ var ScrollAreaRoot = forwardRef14(
     const [scrollbarXEnabled, setScrollbarXEnabled] = useState14(false);
     const [scrollbarYEnabled, setScrollbarYEnabled] = useState14(false);
     const rootRef = useMergedRef6(ref, (node) => setScrollArea(node));
-    return /* @__PURE__ */ React32.createElement(
+    return /* @__PURE__ */ React33.createElement(
       ScrollAreaProvider,
       {
         value: {
@@ -4846,8 +4877,8 @@ var ScrollAreaRoot = forwardRef14(
           onCornerHeightChange: setCornerHeight
         }
       },
-      /* @__PURE__ */ React32.createElement(
-        Box9,
+      /* @__PURE__ */ React33.createElement(
+        Box10,
         __spreadProps(__spreadValues({}, others), {
           ref: rootRef,
           __vars: {
@@ -4862,15 +4893,15 @@ var ScrollAreaRoot = forwardRef14(
 ScrollAreaRoot.displayName = "@raikou/core/ScrollAreaRoot";
 
 // ../components/ScrollArea/src/ScrollAreaViewport/ScrollAreaViewport.tsx
-import React33, { forwardRef as forwardRef15 } from "react";
+import React34, { forwardRef as forwardRef16 } from "react";
 import { useMergedRef as useMergedRef7 } from "@raikou/hooks";
-import { Box as Box10 } from "@raikou/core";
-var ScrollAreaViewport = forwardRef15((_a, ref) => {
+import { Box as Box11 } from "@raikou/core";
+var ScrollAreaViewport = forwardRef16((_a, ref) => {
   var _b = _a, { children, style } = _b, others = __objRest(_b, ["children", "style"]);
   const ctx = useScrollAreaContext();
   const rootRef = useMergedRef7(ref, ctx.onViewportChange);
-  return /* @__PURE__ */ React33.createElement(
-    Box10,
+  return /* @__PURE__ */ React34.createElement(
+    Box11,
     __spreadProps(__spreadValues({}, others), {
       ref: rootRef,
       style: __spreadValues({
@@ -4878,7 +4909,7 @@ var ScrollAreaViewport = forwardRef15((_a, ref) => {
         overflowY: ctx.scrollbarYEnabled ? "scroll" : "hidden"
       }, style)
     }),
-    /* @__PURE__ */ React33.createElement(
+    /* @__PURE__ */ React34.createElement(
       "div",
       {
         style: { minWidth: "100%", display: "table" },
@@ -4891,9 +4922,9 @@ var ScrollAreaViewport = forwardRef15((_a, ref) => {
 ScrollAreaViewport.displayName = "@raikou/core/ScrollAreaViewport";
 
 // ../components/ScrollArea/src/ScrollAreaThumb/ScrollAreaThumb.tsx
-import React34, { forwardRef as forwardRef16, useRef as useRef11, useEffect as useEffect13 } from "react";
+import React35, { forwardRef as forwardRef17, useRef as useRef11, useEffect as useEffect13 } from "react";
 import { useDebounceCallback as useDebounceCallback4, useMergedRef as useMergedRef8 } from "@raikou/hooks";
-var Thumb = forwardRef16(
+var Thumb = forwardRef17(
   (props, forwardedRef) => {
     const _a = props, { style } = _a, others = __objRest(_a, ["style"]);
     const scrollAreaContext = useScrollAreaContext();
@@ -4930,7 +4961,7 @@ var Thumb = forwardRef16(
       }
       return void 0;
     }, [scrollAreaContext.viewport, debounceScrollEnd, onThumbPositionChange]);
-    return /* @__PURE__ */ React34.createElement(
+    return /* @__PURE__ */ React35.createElement(
       "div",
       __spreadProps(__spreadValues({
         "data-state": scrollbarContext.hasThumb ? "visible" : "hidden"
@@ -4958,11 +4989,11 @@ var Thumb = forwardRef16(
     );
   }
 );
-var ScrollAreaThumb = React34.forwardRef((props, forwardedRef) => {
+var ScrollAreaThumb = React35.forwardRef((props, forwardedRef) => {
   const _a = props, { forceMount } = _a, thumbProps = __objRest(_a, ["forceMount"]);
   const scrollbarContext = useScrollbarContext();
   if (forceMount || scrollbarContext.hasThumb) {
-    return /* @__PURE__ */ React34.createElement(Thumb, __spreadValues({ ref: forwardedRef }, thumbProps));
+    return /* @__PURE__ */ React35.createElement(Thumb, __spreadValues({ ref: forwardedRef }, thumbProps));
   }
   return null;
 });
@@ -5033,14 +5064,14 @@ var ScrollArea = factory5((_props, ref) => {
     vars,
     varsResolver: varsResolver6
   });
-  return /* @__PURE__ */ React35.createElement(
+  return /* @__PURE__ */ React36.createElement(
     ScrollAreaRoot,
     __spreadValues(__spreadValues({
       type: type === "never" ? "always" : type,
       scrollHideDelay,
       ref
     }, getStyles("root")), others),
-    /* @__PURE__ */ React35.createElement(
+    /* @__PURE__ */ React36.createElement(
       ScrollAreaViewport,
       __spreadProps(__spreadValues(__spreadValues({}, viewportProps), getStyles("viewport")), {
         ref: viewportRef,
@@ -5052,7 +5083,7 @@ var ScrollArea = factory5((_props, ref) => {
       }),
       children
     ),
-    /* @__PURE__ */ React35.createElement(
+    /* @__PURE__ */ React36.createElement(
       ScrollAreaScrollbar,
       __spreadProps(__spreadValues({}, getStyles("scrollbar")), {
         orientation: "horizontal",
@@ -5061,9 +5092,9 @@ var ScrollArea = factory5((_props, ref) => {
         onMouseEnter: () => setScrollbarHovered(true),
         onMouseLeave: () => setScrollbarHovered(false)
       }),
-      /* @__PURE__ */ React35.createElement(ScrollAreaThumb, __spreadValues({}, getStyles("thumb")))
+      /* @__PURE__ */ React36.createElement(ScrollAreaThumb, __spreadValues({}, getStyles("thumb")))
     ),
-    /* @__PURE__ */ React35.createElement(
+    /* @__PURE__ */ React36.createElement(
       ScrollAreaScrollbar,
       __spreadProps(__spreadValues({}, getStyles("scrollbar")), {
         orientation: "vertical",
@@ -5072,9 +5103,9 @@ var ScrollArea = factory5((_props, ref) => {
         onMouseEnter: () => setScrollbarHovered(true),
         onMouseLeave: () => setScrollbarHovered(false)
       }),
-      /* @__PURE__ */ React35.createElement(ScrollAreaThumb, __spreadValues({}, getStyles("thumb")))
+      /* @__PURE__ */ React36.createElement(ScrollAreaThumb, __spreadValues({}, getStyles("thumb")))
     ),
-    /* @__PURE__ */ React35.createElement(
+    /* @__PURE__ */ React36.createElement(
       ScrollAreaCorner,
       __spreadProps(__spreadValues({}, getStyles("corner")), {
         "data-hovered": scrollbarHovered || void 0,
@@ -5118,7 +5149,7 @@ var ScrollAreaAutosize = factory5((props, ref) => {
     "style",
     "vars"
   ]);
-  return /* @__PURE__ */ React35.createElement(Box11, __spreadProps(__spreadValues({}, others), { ref, style: [{ display: "flex" }, style] }), /* @__PURE__ */ React35.createElement(Box11, { style: { display: "flex", flexDirection: "column", flex: 1 } }, /* @__PURE__ */ React35.createElement(
+  return /* @__PURE__ */ React36.createElement(Box12, __spreadProps(__spreadValues({}, others), { ref, style: [{ display: "flex" }, style] }), /* @__PURE__ */ React36.createElement(Box12, { style: { display: "flex", flexDirection: "column", flex: 1 } }, /* @__PURE__ */ React36.createElement(
     ScrollArea,
     {
       classNames,
@@ -5219,7 +5250,7 @@ var CodeHighlightTabs = factory6(
         codeWrapper: "codeHighlight-codeWrapper",
         showCodeButton: "codeHighlight-showCodeButton",
         fileIcon: "codeHighlight-fileIcon",
-        root: cx5("codeHighlight-root", "codeHighlight-theme")
+        root: cx6("codeHighlight-root", "codeHighlight-theme")
       },
       className,
       style,
@@ -5246,14 +5277,14 @@ var CodeHighlightTabs = factory6(
     const highlighted = hljs.highlight(currentCode.code.trim(), {
       language: currentCode.language
     }).value;
-    const files = nodes.map((node, index3) => /* @__PURE__ */ React36.createElement(
+    const files = nodes.map((node, index3) => /* @__PURE__ */ React37.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues({}, getStyles("file")), {
         key: node.fileName,
         mod: { active: index3 === value },
         onClick: () => setValue(index3)
       }),
-      /* @__PURE__ */ React36.createElement(
+      /* @__PURE__ */ React37.createElement(
         FileIcon,
         __spreadValues({
           fileIcon: node.icon,
@@ -5261,44 +5292,44 @@ var CodeHighlightTabs = factory6(
           fileName: node.fileName
         }, getStyles("fileIcon"))
       ),
-      /* @__PURE__ */ React36.createElement("span", null, node.fileName)
+      /* @__PURE__ */ React37.createElement("span", null, node.fileName)
     ));
-    return /* @__PURE__ */ React36.createElement(Box12, __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref }), others), { dir: "ltr" }), withHeader && /* @__PURE__ */ React36.createElement("div", __spreadValues({}, getStyles("header")), /* @__PURE__ */ React36.createElement(ScrollArea, { type: "never", dir: "ltr", offsetScrollbars: false }, /* @__PURE__ */ React36.createElement("div", __spreadValues({}, getStyles("files")), files)), /* @__PURE__ */ React36.createElement("div", __spreadValues({}, getStyles("controls")), withExpandButton && /* @__PURE__ */ React36.createElement(
+    return /* @__PURE__ */ React37.createElement(Box13, __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref }), others), { dir: "ltr" }), withHeader && /* @__PURE__ */ React37.createElement("div", __spreadValues({}, getStyles("header")), /* @__PURE__ */ React37.createElement(ScrollArea, { type: "never", dir: "ltr", offsetScrollbars: false }, /* @__PURE__ */ React37.createElement("div", __spreadValues({}, getStyles("files")), files)), /* @__PURE__ */ React37.createElement("div", __spreadValues({}, getStyles("controls")), withExpandButton && /* @__PURE__ */ React37.createElement(
       Tooltip,
       {
         label: _expanded ? collapseCodeLabel : expandCodeLabel,
         fz: "sm",
         position: "left"
       },
-      /* @__PURE__ */ React36.createElement(
+      /* @__PURE__ */ React37.createElement(
         ActionIcon,
         __spreadValues({
           onClick: () => setExpanded(!_expanded),
           variant: "none"
         }, getStyles("control")),
-        /* @__PURE__ */ React36.createElement(ExpandIcon, { expanded: _expanded })
+        /* @__PURE__ */ React37.createElement(ExpandIcon, { expanded: _expanded })
       )
-    ), /* @__PURE__ */ React36.createElement(CopyButton, { value: currentCode.code.trim() }, ({ copied, copy }) => /* @__PURE__ */ React36.createElement(
+    ), /* @__PURE__ */ React37.createElement(CopyButton, { value: currentCode.code.trim() }, ({ copied, copy }) => /* @__PURE__ */ React37.createElement(
       Tooltip,
       {
         label: copied ? copiedLabel : copyLabel,
         fz: "sm",
         position: "left"
       },
-      /* @__PURE__ */ React36.createElement(
+      /* @__PURE__ */ React37.createElement(
         ActionIcon,
         __spreadValues({
           onClick: copy,
           variant: "none"
         }, getStyles("control")),
-        /* @__PURE__ */ React36.createElement(CopyIcon, { copied })
+        /* @__PURE__ */ React37.createElement(CopyIcon, { copied })
       )
-    )))), /* @__PURE__ */ React36.createElement(ScrollArea, { type: "auto", dir: "ltr", offsetScrollbars: false }, /* @__PURE__ */ React36.createElement(Box12, __spreadProps(__spreadValues({}, getStyles("codeWrapper")), { mod: { expanded: _expanded } }), /* @__PURE__ */ React36.createElement("pre", __spreadValues({}, getStyles("pre")), /* @__PURE__ */ React36.createElement(
+    )))), /* @__PURE__ */ React37.createElement(ScrollArea, { type: "auto", dir: "ltr", offsetScrollbars: false }, /* @__PURE__ */ React37.createElement(Box13, __spreadProps(__spreadValues({}, getStyles("codeWrapper")), { mod: { expanded: _expanded } }), /* @__PURE__ */ React37.createElement("pre", __spreadValues({}, getStyles("pre")), /* @__PURE__ */ React37.createElement(
       "code",
       __spreadProps(__spreadValues({}, getStyles("code")), {
         dangerouslySetInnerHTML: { __html: highlighted }
       })
-    )))), /* @__PURE__ */ React36.createElement(
+    )))), /* @__PURE__ */ React37.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues({}, getStyles("showCodeButton")), {
         mod: { hidden: _expanded },
@@ -5311,10 +5342,10 @@ var CodeHighlightTabs = factory6(
 CodeHighlightTabs.displayName = "@raikou/core/CodeHighlightTabs";
 
 // src/CodeHighlight.tsx
-import React37 from "react";
-import cx6 from "clsx";
+import React38 from "react";
+import cx7 from "clsx";
 import {
-  Box as Box13,
+  Box as Box14,
   factory as factory7,
   useProps as useProps13,
   useStyles as useStyles9
@@ -5384,7 +5415,7 @@ var CodeHighlight = factory7((_props, ref) => {
       code: "codeHighlight-code",
       pre: "codeHighlight-pre",
       copy: "codeHighlight-copy",
-      root: cx6("codeHighlight-root", "codeHighlight-theme")
+      root: cx7("codeHighlight-root", "codeHighlight-theme")
     },
     className,
     style,
@@ -5397,23 +5428,23 @@ var CodeHighlight = factory7((_props, ref) => {
     language,
     highlightOnClient
   });
-  return /* @__PURE__ */ React37.createElement(Box13, __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref }), others), { dir: "ltr" }), withCopyButton && /* @__PURE__ */ React37.createElement(CopyButton, { value: code.trim() }, ({ copied, copy }) => /* @__PURE__ */ React37.createElement(
+  return /* @__PURE__ */ React38.createElement(Box14, __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref }), others), { dir: "ltr" }), withCopyButton && /* @__PURE__ */ React38.createElement(CopyButton, { value: code.trim() }, ({ copied, copy }) => /* @__PURE__ */ React38.createElement(
     Tooltip,
     {
       label: copied ? copiedLabel : copyLabel,
       fz: "sm",
       position: "left"
     },
-    /* @__PURE__ */ React37.createElement(ActionIcon, __spreadValues({ onClick: copy, variant: "none" }, getStyles("copy")), /* @__PURE__ */ React37.createElement(CopyIcon, { copied }))
-  )), /* @__PURE__ */ React37.createElement(ScrollArea, { type: "hover", dir: "ltr", offsetScrollbars: false }, /* @__PURE__ */ React37.createElement("pre", __spreadValues({}, getStyles("pre")), /* @__PURE__ */ React37.createElement("code", __spreadValues(__spreadValues({}, getStyles("code")), getCodeProps())))));
+    /* @__PURE__ */ React38.createElement(ActionIcon, __spreadValues({ onClick: copy, variant: "none" }, getStyles("copy")), /* @__PURE__ */ React38.createElement(CopyIcon, { copied }))
+  )), /* @__PURE__ */ React38.createElement(ScrollArea, { type: "hover", dir: "ltr", offsetScrollbars: false }, /* @__PURE__ */ React38.createElement("pre", __spreadValues({}, getStyles("pre")), /* @__PURE__ */ React38.createElement("code", __spreadValues(__spreadValues({}, getStyles("code")), getCodeProps())))));
 });
 CodeHighlight.displayName = "@raikou/core/CodeHighlight";
 
 // src/InlineCodeHighlight.tsx
-import React38 from "react";
-import cx7 from "clsx";
+import React39 from "react";
+import cx8 from "clsx";
 import {
-  Box as Box14,
+  Box as Box15,
   factory as factory8,
   useProps as useProps14,
   useStyles as useStyles10
@@ -5448,7 +5479,7 @@ var InlineCodeHighlight = factory8(
       name: "InlineCodeHighlight",
       props,
       classes: {
-        code: cx7("codeHighlight-code", "codeHighlight-theme")
+        code: cx8("codeHighlight-code", "codeHighlight-theme")
       },
       className,
       style,
@@ -5460,8 +5491,8 @@ var InlineCodeHighlight = factory8(
     const highlighted = hljs3.highlight(code.trim(), {
       language
     }).value;
-    return /* @__PURE__ */ React38.createElement(
-      Box14,
+    return /* @__PURE__ */ React39.createElement(
+      Box15,
       __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("code")), {
         component: "code",
         ref

@@ -1,4 +1,4 @@
-import { RaikouProvider } from "@raikou/system";
+import { RaikouProvider, DirectionProvider } from "@raikou/system";
 import "../global.css";
 import { setState, createTheme } from "@raikou/global-store";
 import { generateColors } from "@raikou/colors-generator";
@@ -20,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr">
       <body>
-        <RaikouProvider theme={theme}>
-          <body>{children}</body>
-        </RaikouProvider>
+        <DirectionProvider>
+          <RaikouProvider theme={theme}>
+            <body>{children}</body>
+          </RaikouProvider>
+        </DirectionProvider>
       </body>
     </html>
   );

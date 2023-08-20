@@ -9,7 +9,7 @@ interface CloseIconProps extends React.ComponentPropsWithoutRef<"svg"> {
 declare const CloseIcon: React.ForwardRefExoticComponent<CloseIconProps & React.RefAttributes<SVGSVGElement>>;
 
 type RaikouLoaderComponent = React.ForwardRefExoticComponent<React.HTMLAttributes<any> & React.RefAttributes<any>>;
-type RaikouLoadersRecord = Partial<Record<"bars" | "dots" | "oval" | (string & {}), RaikouLoaderComponent>>;
+type RaikouLoadersRecord = Partial<Record<"bars" | "dots" | "oval" | "progress" | (string & {}), RaikouLoaderComponent>>;
 type RaikouLoader = keyof RaikouLoadersRecord;
 
 type LoaderStylesNames = "root";

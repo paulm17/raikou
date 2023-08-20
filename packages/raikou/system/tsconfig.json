@@ -4,7 +4,6 @@
     "isolatedModules": false,
     "paths": {
       "@raikou/core": ["../core/src"],
-      "@raikou/hooks": ["../hooks/src"],
       "@raikou/global-store": ["../globalstore/src"]
     }
   },

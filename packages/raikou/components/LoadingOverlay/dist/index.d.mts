@@ -42,7 +42,7 @@ interface TransitionProps {
 type TransitionOverride = Partial<Omit<TransitionProps, "mounted">>;
 
 type RaikouLoaderComponent = React$1.ForwardRefExoticComponent<React$1.HTMLAttributes<any> & React$1.RefAttributes<any>>;
-type RaikouLoadersRecord = Partial<Record<"bars" | "dots" | "oval" | (string & {}), RaikouLoaderComponent>>;
+type RaikouLoadersRecord = Partial<Record<"bars" | "dots" | "oval" | "progress" | (string & {}), RaikouLoaderComponent>>;
 type RaikouLoader = keyof RaikouLoadersRecord;
 
 type LoaderStylesNames = "root";

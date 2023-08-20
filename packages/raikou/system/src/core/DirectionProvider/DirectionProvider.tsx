@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { useIsomorphicEffect } from "@raikou/hooks";
+import { useIsomorphicEffect } from "./use-isomorphic-effect";
 
 export type Direction = "ltr" | "rtl";
 

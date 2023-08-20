@@ -31,9 +31,9 @@ var __objRest = (source, exclude) => {
 };
 
 // src/DropzoneFullScreen.tsx
-import React14, { useEffect as useEffect3 } from "react";
+import React15, { useEffect as useEffect3 } from "react";
 import {
-  Box as Box8,
+  Box as Box9,
   factory as factory4,
   useProps as useProps7,
   useStyles as useStyles5,
@@ -98,12 +98,12 @@ OptionalPortal.displayName = "@raikou/core/OptionalPortal";
 import { useDisclosure } from "@raikou/hooks";
 
 // src/Dropzone.tsx
-import React13 from "react";
+import React14 from "react";
 import {
   useDropzone
 } from "react-dropzone";
 import {
-  Box as Box7,
+  Box as Box8,
   factory as factory3,
   useProps as useProps6,
   useStyles as useStyles4,
@@ -112,9 +112,9 @@ import {
 } from "@raikou/core";
 
 // ../components/LoadingOverlay/src/LoadingOverlay.tsx
-import React9 from "react";
+import React10 from "react";
 import {
-  Box as Box6,
+  Box as Box7,
   factory as factory2,
   useProps as useProps4,
   useStyles as useStyles3,
@@ -357,9 +357,9 @@ function Transition({
 Transition.displayName = "@raikou/core/Transition";
 
 // ../components/Loader/src/Loader.tsx
-import React7 from "react";
+import React8 from "react";
 import {
-  Box as Box4,
+  Box as Box5,
   useProps as useProps2,
   getThemeColor,
   useStyles,
@@ -430,29 +430,58 @@ var Oval = forwardRef3(
   }
 );
 
-// ../components/Loader/src/loaders/Dots.tsx
+// ../components/Loader/src/loaders/Progress.tsx
 import React6, { forwardRef as forwardRef4 } from "react";
 import { Box as Box3 } from "@raikou/core";
-var Dots = forwardRef4(
+var Progress = forwardRef4(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ React6.createElement(
       Box3,
       __spreadProps(__spreadValues({
         component: "span",
+        className: clsx_default("progress-loader", className)
+      }, others), {
+        ref
+      }),
+      /* @__PURE__ */ React6.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ React6.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ React6.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ React6.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ React6.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ React6.createElement(
+        "animateTransform",
+        {
+          attributeName: "transform",
+          type: "rotate",
+          from: "0 16 16",
+          to: "360 16 16",
+          dur: "1s",
+          repeatCount: "indefinite"
+        }
+      )))))
+    );
+  }
+);
+
+// ../components/Loader/src/loaders/Dots.tsx
+import React7, { forwardRef as forwardRef5 } from "react";
+import { Box as Box4 } from "@raikou/core";
+var Dots = forwardRef5(
+  (_a, ref) => {
+    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+    return /* @__PURE__ */ React7.createElement(
+      Box4,
+      __spreadProps(__spreadValues({
+        component: "span",
         className: clsx_default("dots-loader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "dot" })
+      /* @__PURE__ */ React7.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React7.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React7.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React7.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React7.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React7.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React7.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React7.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ React7.createElement("span", { className: "dot" })
     );
   }
 );
@@ -461,7 +490,8 @@ var Dots = forwardRef4(
 var defaultLoaders = {
   bars: Bars,
   oval: Oval,
-  dots: Dots
+  dots: Dots,
+  progress: Progress
 };
 var defaultProps2 = {
   size: "md",
@@ -517,8 +547,8 @@ var Loader = factory((_props, ref) => {
     vars,
     varsResolver
   });
-  return /* @__PURE__ */ React7.createElement(
-    Box4,
+  return /* @__PURE__ */ React8.createElement(
+    Box5,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -530,9 +560,9 @@ var Loader = factory((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // ../components/Overlay/src/Overlay.tsx
-import React8 from "react";
+import React9 from "react";
 import {
-  Box as Box5,
+  Box as Box6,
   polymorphicFactory,
   useProps as useProps3,
   useStyles as useStyles2,
@@ -607,7 +637,7 @@ var Overlay = polymorphicFactory((_props, ref) => {
     vars,
     varsResolver: varsResolver2
   });
-  return /* @__PURE__ */ React8.createElement(Box5, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { mod: { center, fixed } }), others), children);
+  return /* @__PURE__ */ React9.createElement(Box6, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { mod: { center, fixed } }), others), children);
 });
 Overlay.displayName = "@raikou/core/Overlay";
 
@@ -669,13 +699,13 @@ var LoadingOverlay = factory2((_props, ref) => {
     varsResolver: varsResolver3
   });
   const _overlayProps = __spreadValues(__spreadValues({}, defaultProps4.overlayProps), overlayProps);
-  return /* @__PURE__ */ React9.createElement(Transition, __spreadProps(__spreadValues({ transition: "fade" }, transitionProps), { mounted: !!visible }), (transitionStyles) => /* @__PURE__ */ React9.createElement(
-    Box6,
+  return /* @__PURE__ */ React10.createElement(Transition, __spreadProps(__spreadValues({ transition: "fade" }, transitionProps), { mounted: !!visible }), (transitionStyles) => /* @__PURE__ */ React10.createElement(
+    Box7,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { style: transitionStyles })), {
       ref
     }), others),
-    /* @__PURE__ */ React9.createElement(Loader, __spreadValues(__spreadValues({}, getStyles("loader")), loaderProps)),
-    /* @__PURE__ */ React9.createElement(
+    /* @__PURE__ */ React10.createElement(Loader, __spreadValues(__spreadValues({}, getStyles("loader")), loaderProps)),
+    /* @__PURE__ */ React10.createElement(
       Overlay,
       __spreadProps(__spreadValues(__spreadValues({}, _overlayProps), getStyles("overlay")), {
         "data-light": true,
@@ -683,7 +713,7 @@ var LoadingOverlay = factory2((_props, ref) => {
         color: (overlayProps == null ? void 0 : overlayProps.color) || theme.white
       })
     ),
-    /* @__PURE__ */ React9.createElement(
+    /* @__PURE__ */ React10.createElement(
       Overlay,
       __spreadProps(__spreadValues(__spreadValues({}, _overlayProps), getStyles("overlay")), {
         "data-dark": true,
@@ -699,7 +729,7 @@ LoadingOverlay.displayName = "@raikou/core/LoadingOverlay";
 import { assignRef } from "@raikou/hooks";
 
 // ../components/_utils/create-safe-context/create-safe-context.tsx
-import React10, { createContext, useContext } from "react";
+import React11, { createContext, useContext } from "react";
 function createSafeContext(errorMessage) {
   const Context = createContext(null);
   const useSafeContext = () => {
@@ -709,12 +739,12 @@ function createSafeContext(errorMessage) {
     }
     return ctx;
   };
-  const Provider = ({ children, value }) => /* @__PURE__ */ React10.createElement(Context.Provider, { value }, children);
+  const Provider = ({ children, value }) => /* @__PURE__ */ React11.createElement(Context.Provider, { value }, children);
   return [Provider, useSafeContext];
 }
 
 // ../components/_utils/create-optional-context/create-optional-context.tsx
-import React11, { createContext as createContext2, useContext as useContext2 } from "react";
+import React12, { createContext as createContext2, useContext as useContext2 } from "react";
 
 // ../components/_utils/use-hovered/use-hovered.ts
 import { useState as useState3 } from "react";
@@ -728,7 +758,7 @@ var [DropzoneProvider, useDropzoneContext] = createSafeContext(
 );
 
 // src/DropzoneStatus.tsx
-import React12, { cloneElement } from "react";
+import React13, { cloneElement } from "react";
 import { upperFirst } from "@raikou/hooks";
 import { isElement, useProps as useProps5 } from "@raikou/core";
 function createDropzoneStatus(status) {
@@ -739,7 +769,7 @@ function createDropzoneStatus(status) {
       props
     ), { children } = _a, others = __objRest(_a, ["children"]);
     const ctx = useDropzoneContext();
-    const _children = isElement(children) ? children : /* @__PURE__ */ React12.createElement("span", null, children);
+    const _children = isElement(children) ? children : /* @__PURE__ */ React13.createElement("span", null, children);
     if (ctx[status]) {
       return cloneElement(_children, others);
     }
@@ -905,13 +935,13 @@ var Dropzone = factory3((_props, ref) => {
   }, getFilesFromEvent ? { getFilesFromEvent } : null));
   assignRef(openRef, open);
   const isIdle = !isDragAccept && !isDragReject;
-  return /* @__PURE__ */ React13.createElement(
+  return /* @__PURE__ */ React14.createElement(
     DropzoneProvider,
     {
       value: { accept: isDragAccept, reject: isDragReject, idle: isIdle }
     },
-    /* @__PURE__ */ React13.createElement(
-      Box7,
+    /* @__PURE__ */ React14.createElement(
+      Box8,
       __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, others), getRootProps({ ref })), getStyles("root", { focusable: true })), {
         mod: {
           accept: isDragAccept,
@@ -921,7 +951,7 @@ var Dropzone = factory3((_props, ref) => {
           "activate-on-click": activateOnClick
         }
       }),
-      /* @__PURE__ */ React13.createElement(
+      /* @__PURE__ */ React14.createElement(
         LoadingOverlay,
         {
           visible: loading,
@@ -929,8 +959,8 @@ var Dropzone = factory3((_props, ref) => {
           unstyled
         }
       ),
-      /* @__PURE__ */ React13.createElement("input", __spreadProps(__spreadValues({}, getInputProps()), { name })),
-      /* @__PURE__ */ React13.createElement(
+      /* @__PURE__ */ React14.createElement("input", __spreadProps(__spreadValues({}, getInputProps()), { name })),
+      /* @__PURE__ */ React14.createElement(
         "div",
         __spreadProps(__spreadValues({}, getStyles("inner")), {
           "data-disable-pointer-events": !activateOnClick || void 0
@@ -1006,7 +1036,7 @@ var DropzoneFullScreen = factory4(
       styles,
       props
     });
-    const [counter, setCounter] = React14.useState(0);
+    const [counter, setCounter] = React15.useState(0);
     const [visible, { open, close }] = useDisclosure(false);
     const handleDragEnter = (event) => {
       var _a2;
@@ -1031,8 +1061,8 @@ var DropzoneFullScreen = factory4(
         document.removeEventListener("dragleave", handleDragLeave, false);
       };
     }, [active]);
-    return /* @__PURE__ */ React14.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ React14.createElement(
-      Box8,
+    return /* @__PURE__ */ React15.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ React15.createElement(
+      Box9,
       __spreadProps(__spreadValues({}, getStyles("fullScreen", {
         style: {
           opacity: visible ? 1 : 0,
@@ -1042,7 +1072,7 @@ var DropzoneFullScreen = factory4(
       })), {
         ref
       }),
-      /* @__PURE__ */ React14.createElement(
+      /* @__PURE__ */ React15.createElement(
         Dropzone,
         __spreadProps(__spreadValues({}, others), {
           classNames: resolvedClassNames,
