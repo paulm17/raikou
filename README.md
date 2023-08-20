@@ -87,6 +87,10 @@ The project was conceived with these 4 long-term goals:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Mirrored Mantine release
+
+7.0.0-beta.0
+
 <!-- GETTING STARTED -->
 
 ## Getting Started

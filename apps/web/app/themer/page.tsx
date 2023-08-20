@@ -130,19 +130,6 @@ function Themer() {
           theme: generateColors("#2c4c81"),
         },
       };
-
-      // cssVarsResolver = {
-      //   light: {
-      //     ".button-root": {
-      //       "--raikou-button-disabled-bg": "#E17900",
-      //     },
-      //   },
-      //   dark: {
-      //     ".button-root": {
-      //       "--raikou-button-disabled-bg": "#FC8C0C",
-      //     },
-      //   },
-      // };
     } else if (value === "cupcake") {
       if (mode === "dark") {
         setColorScheme("light");
@@ -583,7 +570,7 @@ function Themer() {
                 <Accordion.Item value="timeline">
                   <Accordion.Control>Timeline</Accordion.Control>
                   <Accordion.Panel>
-                    {/* <Timeline active={1} bulletSize={24}>
+                    <Timeline active={1} bulletSize={24}>
                       <Timeline.Item title="New branch">
                         <Text c="dimmed" size="sm">
                           You&apos;ve created new branch{" "}
@@ -632,7 +619,7 @@ function Themer() {
                           12 minutes ago
                         </Text>
                       </Timeline.Item>
-                    </Timeline> */}
+                    </Timeline>
                   </Accordion.Panel>
                 </Accordion.Item>
                 <Accordion.Item value="alert">

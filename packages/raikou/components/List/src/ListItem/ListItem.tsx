@@ -51,25 +51,26 @@ export const ListItem = factory<ListItemFactory>((_props, ref) => {
     ...others
   } = props;
 
-  const ctx = useStore();
-  const _icon = icon || ctx.icon;
+  const _icon = icon || useStore.getState().icon;
   const stylesApiProps = { classNames, styles };
 
   return (
     <Box
-      {...ctx.getStyles("item", { ...stylesApiProps, className, style })}
+      {...useStore
+        .getState()
+        .getStyles("item", { ...stylesApiProps, className, style })}
       component="li"
-      mod={{ "with-icon": !!_icon, centered: ctx.center }}
+      mod={{ "with-icon": !!_icon, centered: useStore.getState().center }}
       ref={ref}
       {...others}
     >
-      <div {...ctx.getStyles("itemWrapper", stylesApiProps)}>
+      <div {...useStore.getState().getStyles("itemWrapper", stylesApiProps)}>
         {_icon && (
-          <span {...ctx.getStyles("itemIcon", stylesApiProps)}>
+          <span {...useStore.getState().getStyles("itemIcon", stylesApiProps)}>
             {_icon as any}
           </span>
         )}
-        <span {...ctx.getStyles("itemLabel", stylesApiProps)}>
+        <span {...useStore.getState().getStyles("itemLabel", stylesApiProps)}>
           {children as any}
         </span>
       </div>

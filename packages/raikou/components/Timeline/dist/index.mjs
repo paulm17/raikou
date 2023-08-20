@@ -99,12 +99,11 @@ var TimelineItem = factory((_props, ref) => {
     "children",
     "title"
   ]);
-  const ctx = useStore();
   const theme = useRaikouTheme();
   const stylesApiProps = { classNames, styles };
   return /* @__PURE__ */ React.createElement(
     Box,
-    __spreadValues(__spreadProps(__spreadValues({}, ctx.getStyles("item", __spreadProps(__spreadValues({}, stylesApiProps), { className, style }))), {
+    __spreadValues(__spreadProps(__spreadValues({}, useStore.getState().getStyles("item", __spreadProps(__spreadValues({}, stylesApiProps), { className, style }))), {
       mod: { "line-active": __lineActive, active: __active },
       ref,
       __vars: {
@@ -115,12 +114,12 @@ var TimelineItem = factory((_props, ref) => {
     }), others),
     /* @__PURE__ */ React.createElement(
       Box,
-      __spreadProps(__spreadValues({}, ctx.getStyles("itemBullet", stylesApiProps)), {
+      __spreadProps(__spreadValues({}, useStore.getState().getStyles("itemBullet", stylesApiProps)), {
         mod: { "with-child": !!bullet, align: __align, active: __active }
       }),
       bullet
     ),
-    /* @__PURE__ */ React.createElement("div", __spreadValues({}, ctx.getStyles("itemBody", stylesApiProps)), title && /* @__PURE__ */ React.createElement("div", __spreadValues({}, ctx.getStyles("itemTitle", stylesApiProps)), title), /* @__PURE__ */ React.createElement("div", __spreadValues({}, ctx.getStyles("itemContent", stylesApiProps)), children))
+    /* @__PURE__ */ React.createElement("div", __spreadValues({}, useStore.getState().getStyles("itemBody", stylesApiProps)), title && /* @__PURE__ */ React.createElement("div", __spreadValues({}, useStore.getState().getStyles("itemTitle", stylesApiProps)), title), /* @__PURE__ */ React.createElement("div", __spreadValues({}, useStore.getState().getStyles("itemContent", stylesApiProps)), children))
   );
 });
 TimelineItem.displayName = "@raikou/core/TimelineItem";

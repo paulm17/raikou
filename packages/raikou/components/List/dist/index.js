@@ -103,17 +103,16 @@ var ListItem = (0, import_core.factory)((_props, ref) => {
     "icon",
     "children"
   ]);
-  const ctx = useStore();
-  const _icon = icon || ctx.icon;
+  const _icon = icon || useStore.getState().icon;
   const stylesApiProps = { classNames, styles };
   return /* @__PURE__ */ import_react.default.createElement(
     import_core.Box,
-    __spreadValues(__spreadProps(__spreadValues({}, ctx.getStyles("item", __spreadProps(__spreadValues({}, stylesApiProps), { className, style }))), {
+    __spreadValues(__spreadProps(__spreadValues({}, useStore.getState().getStyles("item", __spreadProps(__spreadValues({}, stylesApiProps), { className, style }))), {
       component: "li",
-      mod: { "with-icon": !!_icon, centered: ctx.center },
+      mod: { "with-icon": !!_icon, centered: useStore.getState().center },
       ref
     }), others),
-    /* @__PURE__ */ import_react.default.createElement("div", __spreadValues({}, ctx.getStyles("itemWrapper", stylesApiProps)), _icon && /* @__PURE__ */ import_react.default.createElement("span", __spreadValues({}, ctx.getStyles("itemIcon", stylesApiProps)), _icon), /* @__PURE__ */ import_react.default.createElement("span", __spreadValues({}, ctx.getStyles("itemLabel", stylesApiProps)), children))
+    /* @__PURE__ */ import_react.default.createElement("div", __spreadValues({}, useStore.getState().getStyles("itemWrapper", stylesApiProps)), _icon && /* @__PURE__ */ import_react.default.createElement("span", __spreadValues({}, useStore.getState().getStyles("itemIcon", stylesApiProps)), _icon), /* @__PURE__ */ import_react.default.createElement("span", __spreadValues({}, useStore.getState().getStyles("itemLabel", stylesApiProps)), children))
   );
 });
 ListItem.displayName = "@raikou/core/ListItem";
