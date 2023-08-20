@@ -36,22 +36,22 @@ function createCSSVariables({
   const css = convertCssVariables(cleanedVariables, cssVariablesSelector);
 
   // cssVariablesResolver
-  const providerGeneratorFunc = new Function("theme", generator);
-  const providerGenerator = providerGeneratorFunc?.(theme);
+  let css2 = "";
 
-  const css2 = convertCssNestedVariables(
-    providerGenerator,
-    cssVariablesSelector,
-  );
+  if (generator) {
+    const providerGeneratorFunc = new Function("theme", generator);
+    const providerGenerator = providerGeneratorFunc?.(theme);
+    css2 = convertCssNestedVariables(providerGenerator, cssVariablesSelector);
+  }
 
   var elem = document.querySelector('style[data-raikou-styles="system"]');
   elem?.remove();
 
   var newElem = document.createElement("style");
   newElem.setAttribute("data-raikou-styles", "system");
-  newElem.innerHTML = `${css}${
+  newElem.innerHTML = `${css}${css2}${
     shouldCleanVariables ? "" : getColorSchemeCssVariables(cssVariablesSelector)
-  }${css2}`;
+  }`;
   document.body.prepend(newElem);
 
   return null;

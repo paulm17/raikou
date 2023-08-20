@@ -6,7 +6,7 @@
   </a>
   <h3 align="center">RAIKOU</h3>
   <p align="center">
-    Raikou is a mantine fork which replaces css modules to use tailwind.
+    Raikou is a mantine fork which replaces css modules to adopt a tailwind first-use approach.
     <br />
     <a href="https://github.com/paulm17/raikou/issues">Report Bug</a>
     ·
@@ -33,16 +33,17 @@ The project was conceived with these 4 long-term goals:
    waiting for vercel to resolve the client bundle to be tree-shakable)
 3. To ensure that there were no clashes between the bootstrapped CSS of the
    component and tailwind styles provided, when using the ClassNames API. This
-   has been made possible with tailwind loading the styles via a plugin
+   has been made possible with tailwind loading the css styles via a plugin
    architecture. See for
    <a href="https://tailwindcss.com/docs/plugins#css-in-js-syntax">more
    information</a>.
-4. To improve the amount of data sent over each full request:
+4. To reduce the amount of data sent over each full request:
    - By leveraging the new server paradigm. All the layout components would be
-     server based, thus omitting them from the client payload. Thus, the leaf
-     components being a mixture of server and client based.
-   - Using a css purging strategy. CSS for only the modules used would be
-     shipped.
+     server based, giving an opportunity to reduce client payload when used
+     correctly. Therefore all layout components are server based and leaf
+     components being a mixture of both server and client.
+   - (in future) Using a css purging strategy. Loading CSS for only the
+     components in use.
 
 ## Project Caveats
 
@@ -56,9 +57,8 @@ The project was conceived with these 4 long-term goals:
       <a href="https://v7.mantine.dev/styles/styles-performance#inline-styles">very
       slow</a>.
     - Mantine and Raikou employ different approaches to manage the theme. While
-      Mantine uses context to maintain the theme, Raikou utilizes a global
-      Zustand state for server rendering and a window variable for client
-      rendering.
+      Mantine uses context. Raikou utilizes a global Zustand state for server
+      rendering and a window variable for client rendering.
     - The code responsible for the ColorScheme has been replaced with a more
       lightweight version using
       <a href="https://github.com/pacocoursey/next-themes">Next Themes</a>.
@@ -98,25 +98,28 @@ To get a local copy up and running follow these simple example steps.
 1. Install the required packages. Same as Mantine.
 
 - npm
-  ```sh
-  npm install @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/global-store postcss-removecss-raikou
-  ```
+
+```sh
+npm install @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/global-store postcss-removecss-raikou
+```
+
 - yarn
-  ```sh
-  yarn add @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/global-store postcss-removecss-raikou
-  ```
+
+```sh
+yarn add @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/global-store postcss-removecss-raikou
+```
 
 2. Change the postcss.config.js to:
 
-   ```js
-   module.exports = {
-     plugins: {
-       "tailwindcss/nesting": {},
-       tailwindcss: {},
-       autoprefixer: {},
-     },
-   };
-   ```
+```js
+module.exports = {
+  plugins: {
+    "tailwindcss/nesting": {},
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};
+```
 
 Note: There will be complaints in the log about tailwind nesting issues. These
 are not prevalent with the next release of tailwind.
@@ -124,92 +127,92 @@ are not prevalent with the next release of tailwind.
 3. Add a new plugin to the postcss.config.js to purge unused component library
    styles
 
-   ```js
-   "postcss-removecss-raikou": {
-      appPath: "./app",
-      libPath: [
-      "./node_modules/@raikou/client/dist/index.mjs",
-      "./node_modules/@raikou/server/dist/index.mjs",
-      ],
-      exts: [".tsx"],
-   },
-   ```
+```js
+"postcss-removecss-raikou": {
+   appPath: "./app",
+   libPath: [
+   "./node_modules/@raikou/client/dist/index.mjs",
+   "./node_modules/@raikou/server/dist/index.mjs",
+   ],
+   exts: [".tsx"],
+},
+```
 
 Change appPath to where the tsx files for your project reside.
 
 4. Change the content param in tailwind config, to pick up the component Library
 
-   ```js
-   content: [
-      "./node_modules/@raikou/**/*.js",
-      "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-   ],
-   ```
+```js
+content: [
+   "./node_modules/@raikou/**/*.js",
+   "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+],
+```
 
-   Note: If cloning the repo. The webapp will have a more extensive content
-   listing. This is due to glob breaking NextJS HMR.
+Note: If cloning the repo. The webapp will have a more extensive content
+listing. This is due to glob breaking NextJS HMR.
 
 5. Add this preset param in the tailwind config. Without this, css styling does
    not work.
 
-   ```js
-   presets: [require("@raikou/system/plugin.js")],
-   ```
+```js
+presets: [require("@raikou/system/plugin.js")],
+```
 
 6. Amend layout.tsx to resemble the following. RaikouProvider must encapsulate
    the children. It should resemble something like the following:
 
-   ```js
-   import { RaikouProvider } from '@raikou/system';
+```js
+import { RaikouProvider } from '@raikou/system';
 
-   export default function RootLayout({
-      children,
-   }: {
-      children: React.ReactNode
-   }) {
-      return (
-         <html lang="en">
-            <body className={inter.className}>
-               <RaikouProvider>{children}</RaikouProvider>
-            </body>
-         </html>
-      )
-   }
-   ```
+export default function RootLayout({
+   children,
+}: {
+   children: React.ReactNode
+}) {
+   return (
+      <html lang="en">
+         <body className={inter.className}>
+            <RaikouProvider>{children}</RaikouProvider>
+         </body>
+      </html>
+   )
+}
+```
 
-   Note, the default primary color is blue: #5474B4.
+Note, the default primary color is blue: #5474B4.
 
 7. If there is a requirement to modify the theme. For example changing the
    primary color to orange. Update layout.tsx as follows:
 
-   ```js
-   import { RaikouProvider } from '@raikou/system';
-   import { createTheme, setState } from '@raikou/global-store';
-   import { generateColors } from "@raikou/colors-generator";
+```js
+import { RaikouProvider } from '@raikou/system';
+import { createTheme, setState } from '@raikou/global-store';
+import { generateColors } from "@raikou/colors-generator";
 
-   export default function RootLayout({
-      children,
-   }: {
-      children: React.ReactNode
-   }) {
-      const theme = createTheme({
-         primaryColor: "orange",
-         colors: {
-            orange: generateColors("#FF8000"),
-         },
-      });
+export default function RootLayout({
+   children,
+}: {
+   children: React.ReactNode
+}) {
+   const theme = createTheme({
+      primaryColor: "orange",
+      colors: {
+         orange: generateColors("#FF8000"),
+      },
+   });
 
-      setState(theme);
+   setState(theme);
 
-      return (
-         <html lang="en">
-            <body className={inter.className}>
-               <RaikouProvider theme={theme}>{children}</RaikouProvider>
-            </body>
-         </html>
-      )
-   }
-   ```
+   return (
+      <html lang="en">
+         <body className={inter.className}>
+            <RaikouProvider theme={theme}>{children}</RaikouProvider>
+         </body>
+      </html>
+   )
+}
+```
 
 Note: The 10 colors for the primary color will then be generated at the :root
 pseudo-class.
@@ -218,52 +221,53 @@ pseudo-class.
    <a href="https://v7.mantine.dev/styles/variants-sizes#sizes-with-components-css-variables">original
    documentation</a>:
 
-   ```js
-   components: {
-     Button: {
-       vars: `
-         if (props.size === "xxl") {
-           return {
-             root: {
-               "--button-height": rem(60),
-               "--button-padding-x": rem(30),
-               "--button-fz": rem(30),
-             },
-           };
-         }
+```js
+components: {
+   Button: {
+      vars: `
+      if (props.size === "xxl") {
+         return {
+            root: {
+            "--button-height": rem(60),
+            "--button-padding-x": rem(30),
+            "--button-fz": rem(30),
+            },
+         };
+      }
 
-         return { root: {} };
-       `,
-     },
+      return { root: {} };
+      `,
    },
-   ```
+},
+```
 
-9. To override css variable, there are 2 options. First using
-   cssVariablesResolver:
+9. To override css variable, create an object:
 
-   ```js
-   const resolver: CSSVariablesResolver = `
-      return {
-         light: {
-         '--raikou-button-disabled-bg': '#E17900',
-         },
-         dark: {
-         '--raikou-button-disabled-bg': '#FC8C0C',
-         },
-      };
-   `;
-   ```
+```js
+const resolver = {
+  light: {
+    ".button-root": {
+      "--raikou-button-disabled-bg": "#E17900",
+    },
+  },
+  dark: {
+    ".button-root": {
+      "--raikou-button-disabled-bg": "#FC8C0C",
+    },
+  },
+};
+```
 
 Then update the RaikouProvider.
 
 ```js
-<RaikouProvider theme={theme} cssVariablesResolver={resolver}>
+<RaikouProvider
+  theme={theme}
+  cssVariablesResolver={`return ${JSON.stringify(resolver)}`}
+>
   {children}
 </RaikouProvider>
 ```
-
-The second option is to simply add the css variables to globals.css. Include the
-variables at the end of the file.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -276,17 +280,22 @@ git clone https://github.com/paulm17/raikou
 ```
 
 2. Install all the package prerequisites
-   ```sh
-   pnpm i
-   ```
+
+```sh
+pnpm i
+```
+
 3. To run the nextjs website
-   ```sh
-   pnpm run dev
-   ```
+
+```sh
+pnpm run dev
+```
+
 4. To run storybook
-   ```sh
-   pnpm run storybook
-   ```
+
+```sh
+pnpm run storybook
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

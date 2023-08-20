@@ -65,8 +65,8 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Loader.tsx
-var import_react4 = __toESM(require("react"));
-var import_core4 = require("@raikou/core");
+var import_react5 = __toESM(require("react"));
+var import_core5 = require("@raikou/core");
 
 // src/loaders/Bars.tsx
 var import_react = __toESM(require("react"));
@@ -109,30 +109,60 @@ var Oval = (0, import_react2.forwardRef)(
   }
 );
 
-// src/loaders/Dots.tsx
+// src/loaders/Progress.tsx
 var import_react3 = __toESM(require("react"));
 var import_clsx3 = __toESM(require("clsx"));
 var import_core3 = require("@raikou/core");
-var Dots = (0, import_react3.forwardRef)(
+var Progress = (0, import_react3.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ import_react3.default.createElement(
       import_core3.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx3.default)("dots-loader", className)
+        className: (0, import_clsx3.default)("progress-loader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react3.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react3.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react3.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react3.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react3.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react3.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react3.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react3.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react3.default.createElement("span", { className: "dot" })
+      /* @__PURE__ */ import_react3.default.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ import_react3.default.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ import_react3.default.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ import_react3.default.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ import_react3.default.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ import_react3.default.createElement(
+        "animateTransform",
+        {
+          attributeName: "transform",
+          type: "rotate",
+          from: "0 16 16",
+          to: "360 16 16",
+          dur: "1s",
+          repeatCount: "indefinite"
+        }
+      )))))
+    );
+  }
+);
+
+// src/loaders/Dots.tsx
+var import_react4 = __toESM(require("react"));
+var import_clsx4 = __toESM(require("clsx"));
+var import_core4 = require("@raikou/core");
+var Dots = (0, import_react4.forwardRef)(
+  (_a, ref) => {
+    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+    return /* @__PURE__ */ import_react4.default.createElement(
+      import_core4.Box,
+      __spreadProps(__spreadValues({
+        component: "span",
+        className: (0, import_clsx4.default)("dots-loader", className)
+      }, others), {
+        ref
+      }),
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" })
     );
   }
 );
@@ -141,23 +171,24 @@ var Dots = (0, import_react3.forwardRef)(
 var defaultLoaders = {
   bars: Bars,
   oval: Oval,
-  dots: Dots
+  dots: Dots,
+  progress: Progress
 };
 var defaultProps = {
   size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
-var varsResolver = (0, import_core4.createVarsResolver)(
+var varsResolver = (0, import_core5.createVarsResolver)(
   (theme, { size, color }) => ({
     root: {
-      "--loader-size": (0, import_core4.getSize)(size, "loader-size"),
-      "--loader-color": (0, import_core4.getThemeColor)(color, theme)
+      "--loader-size": (0, import_core5.getSize)(size, "loader-size"),
+      "--loader-color": (0, import_core5.getThemeColor)(color, theme)
     }
   })
 );
-var Loader = (0, import_core4.factory)((_props, ref) => {
-  const props = (0, import_core4.useProps)("Loader", defaultProps, _props);
+var Loader = (0, import_core5.factory)((_props, ref) => {
+  const props = (0, import_core5.useProps)("Loader", defaultProps, _props);
   const _a = props, {
     size,
     color,
@@ -183,7 +214,7 @@ var Loader = (0, import_core4.factory)((_props, ref) => {
     "loaders",
     "variant"
   ]);
-  const getStyles = (0, import_core4.useStyles)({
+  const getStyles = (0, import_core5.useStyles)({
     name: "Loader",
     props,
     classes: {
@@ -197,8 +228,8 @@ var Loader = (0, import_core4.factory)((_props, ref) => {
     vars,
     varsResolver
   });
-  return /* @__PURE__ */ import_react4.default.createElement(
-    import_core4.Box,
+  return /* @__PURE__ */ import_react5.default.createElement(
+    import_core5.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],

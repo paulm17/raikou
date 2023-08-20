@@ -112,6 +112,14 @@ const group = function ({ addComponents }: any) {
         animation: "oval-loader-animation 1.2s linear infinite",
       },
     },
+    ".progress-loader": {
+      display: "inline-block",
+      svg: {
+        width: "var(--loader-size)",
+        height: "var(--loader-size)",
+        stroke: "var(--loader-color)",
+      },
+    },
   });
 };
 module.exports = group;

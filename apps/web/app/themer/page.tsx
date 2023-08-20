@@ -119,7 +119,7 @@ function Themer() {
 
   const changeTheme = (value: string | null, mode: Mode) => {
     let themeObj = {} as RaikouThemeOverride;
-    let cssVarsResolver = `return {}` as CSSVariablesResolver;
+    let cssVarsResolver = {};
 
     if (value === "mantine") {
       themeObj = {
@@ -130,6 +130,19 @@ function Themer() {
           theme: generateColors("#2c4c81"),
         },
       };
+
+      // cssVarsResolver = {
+      //   light: {
+      //     ".button-root": {
+      //       "--raikou-button-disabled-bg": "#E17900",
+      //     },
+      //   },
+      //   dark: {
+      //     ".button-root": {
+      //       "--raikou-button-disabled-bg": "#FC8C0C",
+      //     },
+      //   },
+      // };
     } else if (value === "cupcake") {
       if (mode === "dark") {
         setColorScheme("light");
@@ -145,18 +158,16 @@ function Themer() {
         },
       };
 
-      cssVarsResolver = `
-        return {
-          light: {
-            '.accordion-root': {
-              '--raikou-accordion-item-border-color': '#395990'
-            },
-            '.input-wrapper[data-variant="default"]': {
-              '--raikou-input-default-bd': '#395990'
-            }            
-          }           
-        };
-      `;
+      cssVarsResolver = {
+        light: {
+          ".accordion-root": {
+            "--raikou-accordion-item-border-color": "#395990",
+          },
+          '.input-wrapper[data-variant="default"]': {
+            "--raikou-input-default-bd": "#395990",
+          },
+        },
+      };
     } else if (value === "bumblebee") {
       if (mode === "dark") {
         setColorScheme("light");
@@ -171,18 +182,16 @@ function Themer() {
         },
       };
 
-      cssVarsResolver = `
-        return {
-          light: {
-            '.accordion-root': {
-              '--raikou-accordion-item-border-color': '#5454A0'
-            },
-            '.input-wrapper[data-variant="default"]': {
-              '--raikou-input-default-bd': '#5454A0'
-            }            
-          }           
-        };
-      `;
+      cssVarsResolver = {
+        light: {
+          ".accordion-root": {
+            "--raikou-accordion-item-border-color": "#5454A0",
+          },
+          '.input-wrapper[data-variant="default"]': {
+            "--raikou-input-default-bd": "#5454A0",
+          },
+        },
+      };
     } else if (value === "dracula") {
       if (mode === "light") {
         setColorScheme("dark");
@@ -197,18 +206,16 @@ function Themer() {
         },
       };
 
-      cssVarsResolver = `
-        return {
-          light: {
-            '.accordion-root': {
-              '--raikou-accordion-item-border-color': '#959AB1'
-            },
-            '.input-wrapper[data-variant="default"]': {
-              '--raikou-input-default-bd': '#959AB1'
-            }            
-          }           
-        };
-      `;
+      cssVarsResolver = {
+        light: {
+          ".accordion-root": {
+            "--raikou-accordion-item-border-color": "#959AB1",
+          },
+          '.input-wrapper[data-variant="default"]': {
+            "--raikou-input-default-bd": "#959AB1",
+          },
+        },
+      };
     } else if (value === "retro") {
       if (mode === "dark") {
         setColorScheme("light");
@@ -223,18 +230,16 @@ function Themer() {
         },
       };
 
-      cssVarsResolver = `
-        return {
-          light: {
-            '.accordion-root': {
-              '--raikou-accordion-item-border-color': '#CCC6B7'
-            },
-            '.input-wrapper[data-variant="default"]': {
-              '--raikou-input-default-bd': '#CCC6B7'
-            }            
-          }           
-        };
-      `;
+      cssVarsResolver = {
+        light: {
+          ".accordion-root": {
+            "--raikou-accordion-item-border-color": "#CCC6B7",
+          },
+          '.input-wrapper[data-variant="default"]': {
+            "--raikou-input-default-bd": "#CCC6B7",
+          },
+        },
+      };
     } else if (value === "synthwave") {
       if (mode === "light") {
         setColorScheme("dark");
@@ -249,18 +254,16 @@ function Themer() {
         },
       };
 
-      cssVarsResolver = `
-        return {
-          light: {
-            '.accordion-root': {
-              '--raikou-accordion-item-border-color': '#5A3ACF'
-            },
-            '.input-wrapper[data-variant="default"]': {
-              '--raikou-input-default-bd': '#5A3ACF'
-            }            
-          }           
-        };
-      `;
+      cssVarsResolver = {
+        light: {
+          ".accordion-root": {
+            "--raikou-accordion-item-border-color": "#5A3ACF",
+          },
+          '.input-wrapper[data-variant="default"]': {
+            "--raikou-input-default-bd": "#5A3ACF",
+          },
+        },
+      };
     } else if (value === "moonlight") {
       if (mode === "light") {
         setColorScheme("dark");
@@ -275,23 +278,24 @@ function Themer() {
         },
       };
 
-      cssVarsResolver = `
-        return {
-          light: {
-            '.accordion-root': {
-              '--raikou-accordion-item-border-color': '#D1D5F0'
-            },
-            '.input-wrapper[data-variant="default"]': {
-              '--raikou-input-default-bd': '#D1D5F0'
-            }            
-          }           
-        };
-      `;
+      cssVarsResolver = {
+        light: {
+          ".accordion-root": {
+            "--raikou-accordion-item-border-color": "#D1D5F0",
+          },
+          '.input-wrapper[data-variant="default"]': {
+            "--raikou-input-default-bd": "#D1D5F0",
+          },
+        },
+      };
     }
 
     const theme = createTheme(themeObj);
 
-    createCSSVariables({ theme, cssVariablesResolver: cssVarsResolver });
+    createCSSVariables({
+      theme,
+      cssVariablesResolver: `return ${JSON.stringify(cssVarsResolver)}`,
+    });
   };
 
   useLayoutEffect(() => {
@@ -418,7 +422,12 @@ function Themer() {
                       <Button variant="gradient" size={size}>
                         Gradient
                       </Button>
-                      <Button loading={true}>Loading</Button>
+                      <Button variant="filled" disabled size={size}>
+                        Disabled
+                      </Button>
+                      <Button loading={true} size={size}>
+                        Loading
+                      </Button>
                     </Group>
                   </Accordion.Panel>
                 </Accordion.Item>

@@ -813,17 +813,17 @@ function createCSSVariables({
   const shouldCleanVariables = cssVariablesSelector === ":root";
   const cleanedVariables = shouldCleanVariables ? removeDefaultVariables(mergedVariables) : mergedVariables;
   const css = convertCssVariables(cleanedVariables, cssVariablesSelector);
-  const providerGeneratorFunc = new Function("theme", generator);
-  const providerGenerator = providerGeneratorFunc == null ? void 0 : providerGeneratorFunc(theme);
-  const css2 = convertCssNestedVariables(
-    providerGenerator,
-    cssVariablesSelector
-  );
+  let css2 = "";
+  if (generator) {
+    const providerGeneratorFunc = new Function("theme", generator);
+    const providerGenerator = providerGeneratorFunc == null ? void 0 : providerGeneratorFunc(theme);
+    css2 = convertCssNestedVariables(providerGenerator, cssVariablesSelector);
+  }
   var elem = document.querySelector('style[data-raikou-styles="system"]');
   elem == null ? void 0 : elem.remove();
   var newElem = document.createElement("style");
   newElem.setAttribute("data-raikou-styles", "system");
-  newElem.innerHTML = `${css}${shouldCleanVariables ? "" : getColorSchemeCssVariables(cssVariablesSelector)}${css2}`;
+  newElem.innerHTML = `${css}${css2}${shouldCleanVariables ? "" : getColorSchemeCssVariables(cssVariablesSelector)}`;
   document.body.prepend(newElem);
   return null;
 }
@@ -874,7 +874,7 @@ function RaikouCssVariables({
         "data-raikou-styles": "system",
         nonce: nonce == null ? void 0 : nonce(),
         dangerouslySetInnerHTML: {
-          __html: `${css}${shouldCleanVariables ? "" : getColorSchemeCssVariables2(cssVariablesSelector)}${css2}`
+          __html: `${css}${css2}${shouldCleanVariables ? "" : getColorSchemeCssVariables2(cssVariablesSelector)}`
         }
       }
     );

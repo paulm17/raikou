@@ -15,6 +15,7 @@ import {
 } from "@raikou/core";
 import { Bars } from "./loaders/Bars";
 import { Oval } from "./loaders/Oval";
+import { Progress } from "./loaders/Progress";
 import { Dots } from "./loaders/Dots";
 import type { RaikouLoader, RaikouLoadersRecord } from "./Loader.types";
 
@@ -54,6 +55,7 @@ export const defaultLoaders: RaikouLoadersRecord = {
   bars: Bars,
   oval: Oval,
   dots: Dots,
+  progress: Progress,
 };
 
 const defaultProps: Partial<LoaderProps> = {
@@ -68,7 +70,7 @@ const varsResolver = createVarsResolver<LoaderFactory>(
       "--loader-size": getSize(size, "loader-size"),
       "--loader-color": getThemeColor(color, theme),
     },
-  })
+  }),
 );
 
 export const Loader = factory<LoaderFactory>((_props, ref) => {

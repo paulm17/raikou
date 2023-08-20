@@ -65,8 +65,8 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Button.tsx
-var import_react7 = __toESM(require("react"));
-var import_core7 = require("@raikou/core");
+var import_react8 = __toESM(require("react"));
+var import_core8 = require("@raikou/core");
 
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react = __toESM(require("react"));
@@ -119,8 +119,8 @@ var UnstyledButton = (0, import_core.polymorphicFactory)(
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
 // ../Loader/src/Loader.tsx
-var import_react5 = __toESM(require("react"));
-var import_core5 = require("@raikou/core");
+var import_react6 = __toESM(require("react"));
+var import_core6 = require("@raikou/core");
 
 // ../Loader/src/loaders/Bars.tsx
 var import_react2 = __toESM(require("react"));
@@ -184,29 +184,58 @@ var Oval = (0, import_react3.forwardRef)(
   }
 );
 
-// ../Loader/src/loaders/Dots.tsx
+// ../Loader/src/loaders/Progress.tsx
 var import_react4 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
-var Dots = (0, import_react4.forwardRef)(
+var Progress = (0, import_react4.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ import_react4.default.createElement(
       import_core4.Box,
       __spreadProps(__spreadValues({
         component: "span",
+        className: clsx_default("progress-loader", className)
+      }, others), {
+        ref
+      }),
+      /* @__PURE__ */ import_react4.default.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ import_react4.default.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ import_react4.default.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ import_react4.default.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ import_react4.default.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ import_react4.default.createElement(
+        "animateTransform",
+        {
+          attributeName: "transform",
+          type: "rotate",
+          from: "0 16 16",
+          to: "360 16 16",
+          dur: "1s",
+          repeatCount: "indefinite"
+        }
+      )))))
+    );
+  }
+);
+
+// ../Loader/src/loaders/Dots.tsx
+var import_react5 = __toESM(require("react"));
+var import_core5 = require("@raikou/core");
+var Dots = (0, import_react5.forwardRef)(
+  (_a, ref) => {
+    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+    return /* @__PURE__ */ import_react5.default.createElement(
+      import_core5.Box,
+      __spreadProps(__spreadValues({
+        component: "span",
         className: clsx_default("dots-loader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" })
+      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
+      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" })
     );
   }
 );
@@ -215,23 +244,24 @@ var Dots = (0, import_react4.forwardRef)(
 var defaultLoaders = {
   bars: Bars,
   oval: Oval,
-  dots: Dots
+  dots: Dots,
+  progress: Progress
 };
 var defaultProps2 = {
   size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
-var varsResolver = (0, import_core5.createVarsResolver)(
+var varsResolver = (0, import_core6.createVarsResolver)(
   (theme, { size, color }) => ({
     root: {
-      "--loader-size": (0, import_core5.getSize)(size, "loader-size"),
-      "--loader-color": (0, import_core5.getThemeColor)(color, theme)
+      "--loader-size": (0, import_core6.getSize)(size, "loader-size"),
+      "--loader-color": (0, import_core6.getThemeColor)(color, theme)
     }
   })
 );
-var Loader = (0, import_core5.factory)((_props, ref) => {
-  const props = (0, import_core5.useProps)("Loader", defaultProps2, _props);
+var Loader = (0, import_core6.factory)((_props, ref) => {
+  const props = (0, import_core6.useProps)("Loader", defaultProps2, _props);
   const _a = props, {
     size,
     color,
@@ -257,7 +287,7 @@ var Loader = (0, import_core5.factory)((_props, ref) => {
     "loaders",
     "variant"
   ]);
-  const getStyles = (0, import_core5.useStyles)({
+  const getStyles = (0, import_core6.useStyles)({
     name: "Loader",
     props,
     classes: {
@@ -271,8 +301,8 @@ var Loader = (0, import_core5.factory)((_props, ref) => {
     vars,
     varsResolver
   });
-  return /* @__PURE__ */ import_react5.default.createElement(
-    import_core5.Box,
+  return /* @__PURE__ */ import_react6.default.createElement(
+    import_core6.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -284,20 +314,20 @@ var Loader = (0, import_core5.factory)((_props, ref) => {
 Loader.displayName = "@raikou/core/Loader";
 
 // src/ButtonGroup/ButtonGroup.tsx
-var import_react6 = __toESM(require("react"));
-var import_core6 = require("@raikou/core");
+var import_react7 = __toESM(require("react"));
+var import_core7 = require("@raikou/core");
 var defaultProps3 = {
   orientation: "horizontal",
   borderWidth: 1
 };
-var varsResolver2 = (0, import_core6.createVarsResolver)(
+var varsResolver2 = (0, import_core7.createVarsResolver)(
   (_, { borderWidth }) => ({
-    root: { "--button-border-width": (0, import_core6.rem)(borderWidth) }
+    root: { "--button-border-width": (0, import_core7.rem)(borderWidth) }
   })
 );
-var ButtonGroup = (0, import_core6.factory)((_props, ref) => {
-  const props = (0, import_core6.useProps)("ButtonGroup", defaultProps3, _props);
-  const _a = (0, import_core6.useProps)("ButtonGroup", defaultProps3, _props), {
+var ButtonGroup = (0, import_core7.factory)((_props, ref) => {
+  const props = (0, import_core7.useProps)("ButtonGroup", defaultProps3, _props);
+  const _a = (0, import_core7.useProps)("ButtonGroup", defaultProps3, _props), {
     className,
     style,
     classNames,
@@ -318,7 +348,7 @@ var ButtonGroup = (0, import_core6.factory)((_props, ref) => {
     "borderWidth",
     "variant"
   ]);
-  const getStyles = (0, import_core6.useStyles)({
+  const getStyles = (0, import_core7.useStyles)({
     name: "ButtonGroup",
     props,
     classes: {
@@ -332,8 +362,8 @@ var ButtonGroup = (0, import_core6.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver2
   });
-  return /* @__PURE__ */ import_react6.default.createElement(
-    import_core6.Box,
+  return /* @__PURE__ */ import_react7.default.createElement(
+    import_core7.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       variant,
@@ -347,9 +377,10 @@ ButtonGroup.displayName = "@raikou/core/ButtonGroup";
 // src/Button.tsx
 var defaultProps4 = {
   size: "sm",
-  variant: "filled"
+  variant: "filled",
+  loaderPosition: "left"
 };
-var varsResolver3 = (0, import_core7.createVarsResolver)(
+var varsResolver3 = (0, import_core8.createVarsResolver)(
   (theme, { radius, color, gradient, variant, size, justify }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
@@ -360,10 +391,10 @@ var varsResolver3 = (0, import_core7.createVarsResolver)(
     return {
       root: {
         "--button-justify": justify,
-        "--button-height": (0, import_core7.getSize)(size, "button-height"),
-        "--button-padding-x": (0, import_core7.getSize)(size, "button-padding-x"),
-        "--button-fz": (size == null ? void 0 : size.includes("compact")) ? (0, import_core7.getFontSize)(size.replace("compact-", "")) : (0, import_core7.getFontSize)(size),
-        "--button-radius": (0, import_core7.getRadius)(radius),
+        "--button-height": (0, import_core8.getSize)(size, "button-height"),
+        "--button-padding-x": (0, import_core8.getSize)(size, "button-padding-x"),
+        "--button-fz": (size == null ? void 0 : size.includes("compact")) ? (0, import_core8.getFontSize)(size.replace("compact-", "")) : (0, import_core8.getFontSize)(size),
+        "--button-radius": (0, import_core8.getRadius)(radius),
         "--button-bg": colors.background,
         "--button-hover": colors.hover,
         "--button-color": colors.color,
@@ -372,8 +403,8 @@ var varsResolver3 = (0, import_core7.createVarsResolver)(
     };
   }
 );
-var Button = (0, import_core7.polymorphicFactory)((_props, ref) => {
-  const props = (0, import_core7.useProps)("Button", defaultProps4, _props);
+var Button = (0, import_core8.polymorphicFactory)((_props, ref) => {
+  const props = (0, import_core8.useProps)("Button", defaultProps4, _props);
   const _a = props, {
     style,
     vars,
@@ -387,6 +418,7 @@ var Button = (0, import_core7.polymorphicFactory)((_props, ref) => {
     variant,
     radius,
     loading,
+    loaderPosition,
     loaderProps,
     gradient,
     classNames,
@@ -406,6 +438,7 @@ var Button = (0, import_core7.polymorphicFactory)((_props, ref) => {
     "variant",
     "radius",
     "loading",
+    "loaderPosition",
     "loaderProps",
     "gradient",
     "classNames",
@@ -413,7 +446,7 @@ var Button = (0, import_core7.polymorphicFactory)((_props, ref) => {
     "unstyled",
     "data-disabled"
   ]);
-  const getStyles = (0, import_core7.useStyles)({
+  const getStyles = (0, import_core8.useStyles)({
     name: "Button",
     props,
     classes: {
@@ -433,7 +466,7 @@ var Button = (0, import_core7.polymorphicFactory)((_props, ref) => {
   });
   const hasLeftSection = !!leftSection;
   const hasRightSection = !!rightSection;
-  return /* @__PURE__ */ import_react7.default.createElement(
+  return /* @__PURE__ */ import_react8.default.createElement(
     UnstyledButton,
     __spreadValues(__spreadProps(__spreadValues({
       ref
@@ -452,22 +485,30 @@ var Button = (0, import_core7.polymorphicFactory)((_props, ref) => {
         }
       ]
     }), others),
-    /* @__PURE__ */ import_react7.default.createElement("span", __spreadValues({}, getStyles("inner")), leftSection && /* @__PURE__ */ import_react7.default.createElement(
-      import_core7.Box,
+    /* @__PURE__ */ import_react8.default.createElement("span", __spreadValues({}, getStyles("inner")), leftSection || loading && loaderPosition === "left" && /* @__PURE__ */ import_react8.default.createElement(
+      import_core8.Box,
       __spreadProps(__spreadValues({
         component: "span"
       }, getStyles("section")), {
         mod: { position: "left" }
       }),
-      leftSection
-    ), loading && /* @__PURE__ */ import_react7.default.createElement(import_core7.Box, __spreadValues({ component: "span" }, getStyles("loader")), /* @__PURE__ */ import_react7.default.createElement(
+      !loading && leftSection,
+      loading && /* @__PURE__ */ import_react8.default.createElement(
+        Loader,
+        __spreadValues({
+          type: "progress",
+          color: "var(--button-color)",
+          size: "calc(var(--button-height) / 2.4)"
+        }, loaderProps)
+      )
+    ), loading && loaderPosition === "center" && /* @__PURE__ */ import_react8.default.createElement(import_core8.Box, __spreadValues({ component: "span" }, getStyles("loader")), /* @__PURE__ */ import_react8.default.createElement(
       Loader,
       __spreadValues({
         color: "var(--button-color)",
         size: "calc(var(--button-height) / 1.8)"
       }, loaderProps)
-    )), /* @__PURE__ */ import_react7.default.createElement(import_core7.Box, __spreadValues({ component: "span", mod: { loading } }, getStyles("label")), children), rightSection && /* @__PURE__ */ import_react7.default.createElement(
-      import_core7.Box,
+    )), /* @__PURE__ */ import_react8.default.createElement(import_core8.Box, __spreadValues({ component: "span", mod: { loading } }, getStyles("label")), children), rightSection && /* @__PURE__ */ import_react8.default.createElement(
+      import_core8.Box,
       __spreadProps(__spreadValues({
         component: "span"
       }, getStyles("section")), {

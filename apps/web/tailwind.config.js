@@ -86,10 +86,5 @@ module.exports = {
     "./app/**/*.tsx",
   ],
   presets: [require("@raikou/system/plugin.js")],
-  plugins: [
-    // require("@tailwindcss/typography"),
-    // require("./tailwind/plugin/multi-theme-plugin")({
-    //   themes: require("./app/themer/themes.js"),
-    // }),
-  ],
+  plugins: [],
 };

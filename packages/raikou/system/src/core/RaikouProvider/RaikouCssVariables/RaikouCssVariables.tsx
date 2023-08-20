@@ -49,11 +49,11 @@ export function RaikouCssVariables({
         data-raikou-styles="system"
         nonce={nonce?.()}
         dangerouslySetInnerHTML={{
-          __html: `${css}${
+          __html: `${css}${css2}${
             shouldCleanVariables
               ? ""
               : getColorSchemeCssVariables(cssVariablesSelector)
-          }${css2}`,
+          }`,
         }}
       />
     );

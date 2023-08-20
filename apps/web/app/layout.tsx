@@ -15,12 +15,28 @@ export default function RootLayout({
     },
   });
 
+  const resolver = {
+    light: {
+      ".button-root": {
+        "--raikou-button-disabled-bg": "#E17900",
+      },
+    },
+    dark: {
+      ".button-root": {
+        "--raikou-button-disabled-bg": "#FC8C0C",
+      },
+    },
+  };
+
   setState(theme);
 
   return (
     <html lang="en" dir="ltr">
       <body>
-        <RaikouProvider theme={theme}>
+        <RaikouProvider
+          theme={theme}
+          cssVariablesResolver={`return ${JSON.stringify(resolver)}`}
+        >
           <body>{children}</body>
         </RaikouProvider>
       </body>

@@ -87,6 +87,9 @@ export interface ButtonProps extends BoxProps, StylesApiProps<ButtonFactory> {
 
   /** Props added to the `Loader` component (only visible when `loading` prop is set) */
   loaderProps?: LoaderProps;
+
+  /** Loader position relative to button label */
+  loaderPosition?: "left" | "right" | "center";
 }
 
 export type ButtonFactory = PolymorphicFactory<{
@@ -104,6 +107,7 @@ export type ButtonFactory = PolymorphicFactory<{
 const defaultProps: Partial<ButtonProps> = {
   size: "sm",
   variant: "filled",
+  loaderPosition: "left",
 };
 
 const varsResolver = createVarsResolver<ButtonFactory>(
@@ -148,6 +152,7 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, ref) => {
     variant,
     radius,
     loading,
+    loaderPosition,
     loaderProps,
     gradient,
     classNames,
@@ -199,17 +204,26 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, ref) => {
       {...others}
     >
       <span {...getStyles("inner")}>
-        {leftSection && (
-          <Box
-            component="span"
-            {...getStyles("section")}
-            mod={{ position: "left" }}
-          >
-            {leftSection}
-          </Box>
-        )}
+        {leftSection ||
+          (loading && loaderPosition === "left" && (
+            <Box
+              component="span"
+              {...getStyles("section")}
+              mod={{ position: "left" }}
+            >
+              {!loading && leftSection}
+              {loading && (
+                <Loader
+                  type="progress"
+                  color="var(--button-color)"
+                  size="calc(var(--button-height) / 2.4)"
+                  {...loaderProps}
+                />
+              )}
+            </Box>
+          ))}
 
-        {loading && (
+        {loading && loaderPosition === "center" && (
           <Box component="span" {...getStyles("loader")}>
             <Loader
               color="var(--button-color)"
