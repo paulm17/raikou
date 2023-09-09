@@ -468,9 +468,12 @@ Vitaly and the Mantine community.
 
 ## CSS Modules is the wrong choice
 
+For instance, less headaches in dealing with postcss from a developer UX point
+of view.
+
 <a name="cssmodules-wrong"></a>
 
-<ol>
+<ul style="list-style: none">
    <li>
       <img src="./images/css.modules.sux1.png" style="width:500px" alt="Complaint 1">
    </li>
@@ -480,4 +483,4 @@ Vitaly and the Mantine community.
    <li>
       <img src="./images/css.modules.sux3.png" style="width:500px" alt="Complaint 3">
    </li>
-</ol>
+</ul>
