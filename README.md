@@ -466,7 +466,7 @@ Vitaly and the Mantine community.
   https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
 
-## CSS Modules is the wrong choice
+### CSS Modules is the wrong choice
 
 For instance, less headaches in dealing with postcss from a developer UX point
 of view.
@@ -484,3 +484,5 @@ of view.
       <img src="./images/css.modules.sux3.png" style="width:500px" alt="Complaint 3">
    </li>
 </ul>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
