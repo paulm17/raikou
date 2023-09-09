@@ -469,6 +469,6 @@ Vitaly and the Mantine community.
 ## CSS Modules is the wrong choice
 
 <a name="cssmodules-wrong"></a>
-<img src="./images/css.modules.sux1.png" width="200px" alt="Complaint 1">
-<img src="./images/css.modules.sux2.png" width="200px" alt="Complaint 2">
-<img src="./images/css.modules.sux3.png" width="200px" alt="Complaint 3">
+<img src="./images/css.modules.sux1.png" style="display:block;width:300px" alt="Complaint 1">
+<img src="./images/css.modules.sux2.png" style="display:block;width:300px" alt="Complaint 2">
+<img src="./images/css.modules.sux3.png" style="display:block;width:300px" alt="Complaint 3">
