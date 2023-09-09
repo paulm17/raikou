@@ -84,7 +84,7 @@ export interface AccordionProps<Multiple extends boolean = false>
   chevron?: React.ReactNode;
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. `theme.defaultRadius` by default. */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 }
 
 export type AccordionFactory = Factory<{
@@ -112,16 +112,16 @@ const varsResolver = createVarsResolver<AccordionFactory>(
       "--accordion-chevron-size": rem(chevronSize),
       "--accordion-radius": getRadius(radius),
     },
-  })
+  }),
 );
 
 export function Accordion<Multiple extends boolean = false>(
-  _props: AccordionProps<Multiple>
+  _props: AccordionProps<Multiple>,
 ) {
   const props = useProps(
     "Accordion",
     defaultProps as AccordionProps<Multiple>,
-    _props
+    _props,
   );
   const {
     classNames,
@@ -201,11 +201,11 @@ export function Accordion<Multiple extends boolean = false>(
         onChange: handleItemChange,
         getControlId: getSafeId(
           `${uid}-control`,
-          "Accordion.Item component was rendered with invalid value or without value"
+          "Accordion.Item component was rendered with invalid value or without value",
         ),
         getRegionId: getSafeId(
           `${uid}-panel`,
-          "Accordion.Item component was rendered with invalid value or without value"
+          "Accordion.Item component was rendered with invalid value or without value",
         ),
         transitionDuration,
         disableChevronRotation,
@@ -225,7 +225,7 @@ export function Accordion<Multiple extends boolean = false>(
 }
 
 const extendAccordion = (
-  c: ExtendComponent<AccordionFactory>
+  c: ExtendComponent<AccordionFactory>,
 ): RaikouThemeComponent => c;
 
 Accordion.extend = extendAccordion;

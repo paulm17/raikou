@@ -43,7 +43,7 @@ export interface BlockquoteProps
   color?: RaikouColor;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Reference to a cited quote */
   cite?: React.ReactNode;
@@ -83,7 +83,7 @@ const varsResolver = createVarsResolver<BlockquoteFactory>(
         "--bq-radius": getRadius(radius),
       },
     };
-  }
+  },
 );
 
 export const Blockquote = factory<BlockquoteFactory>((_props, ref) => {

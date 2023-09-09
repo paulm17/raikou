@@ -79,7 +79,7 @@ interface ButtonProps extends BoxProps, StylesApiProps<ButtonFactory> {
     /** Determines whether button should take 100% width of its parent container, `false` by default */
     fullWidth?: boolean;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Gradient configuration used when `variant="gradient"`, default value is `theme.defaultGradient` */
     gradient?: RaikouGradient;
     /** Indicates disabled state */

@@ -26,7 +26,7 @@ export interface __ProgressRootProps extends BoxProps, ElementProps<"div"> {
   size?: RaikouSize | (string & {}) | number;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 }
 
 export interface ProgressRootProps
@@ -40,7 +40,9 @@ export type ProgressRootFactory = Factory<{
   vars: ProgressRootCssVariables;
 }>;
 
-const defaultProps: Partial<ProgressRootProps> = {};
+const defaultProps: Partial<ProgressRootProps> = {
+  size: "md",
+};
 
 const varsResolver = createVarsResolver<ProgressRootFactory>(
   (_, { size, radius }) => ({

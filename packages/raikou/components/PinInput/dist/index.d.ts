@@ -12,9 +12,9 @@ interface PinInputProps extends BoxProps, StylesApiProps<PinInputFactory>, Eleme
     /** Hidden input form attribute */
     form?: string;
     /** Key of `theme.spacing` or any valid CSS value for `gap`, numbers are converted to rem, `'md'` by default */
-    gap?: RaikouSpacing | (string & {}) | number;
+    gap?: RaikouSpacing;
     /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Controls inputs `width` and `height`, `'sm'` by default */
     size?: RaikouSize;
     /** If set, the first input is focused when component is mounted, `false` by default */

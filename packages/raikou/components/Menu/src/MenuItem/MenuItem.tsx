@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useMergedRef } from "@raikou/hooks";
 import {
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   polymorphicFactory,
   useProps,
   PolymorphicFactory,
@@ -19,7 +19,7 @@ export type MenuItemStylesNames = "item" | "itemLabel" | "itemSection";
 
 export interface MenuItemProps
   extends BoxProps,
-    StylesApiProps<MenuItemFactory> {
+    CompoundStylesApiProps<MenuItemFactory> {
   /** Item label */
   children?: React.ReactNode;
 
@@ -55,7 +55,6 @@ export const MenuItem = polymorphicFactory<MenuItemFactory>((props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     color,
     closeMenuOnClick,
@@ -82,8 +81,10 @@ export const MenuItem = polymorphicFactory<MenuItemFactory>((props, ref) => {
 
   const handleClick = createEventHandler(_others.onClick, () => {
     if (typeof closeMenuOnClick === "boolean") {
+      // eslint-disable-next-line
       closeMenuOnClick && ctx.closeDropdownImmediately();
     } else {
+      // eslint-disable-next-line
       ctx.closeOnItemClick && ctx.closeDropdownImmediately();
     }
   });

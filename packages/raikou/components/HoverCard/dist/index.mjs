@@ -2626,7 +2626,6 @@ var PopoverDropdown = factory2(
     const _a = props, {
       className,
       style,
-      unstyled,
       vars,
       children,
       onKeyDownCapture,
@@ -2636,7 +2635,6 @@ var PopoverDropdown = factory2(
     } = _a, others = __objRest(_a, [
       "className",
       "style",
-      "unstyled",
       "vars",
       "children",
       "onKeyDownCapture",

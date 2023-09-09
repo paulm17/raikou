@@ -34,7 +34,7 @@ interface DropzoneProps extends BoxProps, StylesApiProps<DropzoneFactory>, Eleme
     /** Key of `theme.colors` or any valid CSS color to set colors of `Dropzone.Reject`, `'red'` by default */
     rejectColor?: RaikouColor;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Determines whether files capturing should be disabled, `false` by default */
     disabled?: boolean;
     /** Called when any files are dropped to the dropzone */

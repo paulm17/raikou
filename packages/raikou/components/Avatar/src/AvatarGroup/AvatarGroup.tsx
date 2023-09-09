@@ -25,7 +25,7 @@ export interface AvatarGroupProps
     StylesApiProps<AvatarGroupFactory>,
     ElementProps<"div"> {
   /** Negative space between Avatar components, `'sm'` by default */
-  spacing?: RaikouSpacing | (string & {}) | number;
+  spacing?: RaikouSpacing;
 }
 
 export type AvatarGroupFactory = Factory<{

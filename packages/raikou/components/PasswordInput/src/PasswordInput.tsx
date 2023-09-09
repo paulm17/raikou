@@ -14,14 +14,15 @@ import {
   getSize,
 } from "@raikou/core";
 import { InputBaseProps } from "../../InputBase/src";
-import { Input, InputVariant } from "../../Input/src";
+import { Input, InputVariant, __InputStylesNames } from "../../Input/src";
 import { ActionIcon } from "../../ActionIcon/src";
 import { PasswordToggleIcon } from "./PasswordToggleIcon";
 
 export type PasswordInputStylesNames =
   | "root"
   | "visibilityToggle"
-  | "innerInput";
+  | "innerInput"
+  | __InputStylesNames;
 export type PasswordInputCssVariables = {
   root: "--psi-icon-size" | "--psi-button-size";
 };
@@ -106,6 +107,7 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
     visibilityToggleButtonProps,
     rightSectionProps,
     leftSectionProps,
+    leftSectionPointerEvents,
     ...others
   } = props;
 
@@ -215,6 +217,7 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
         rightSectionPointerEvents="all"
         rightSectionProps={rightSectionProps}
         leftSectionProps={leftSectionProps}
+        leftSectionPointerEvents={leftSectionPointerEvents}
       >
         <input
           required={required}
@@ -225,6 +228,7 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
           id={uuid}
           ref={ref}
           {...rest}
+          autoComplete={rest.autoComplete || "off"}
           type={_visible ? "text" : "password"}
         />
       </Input>

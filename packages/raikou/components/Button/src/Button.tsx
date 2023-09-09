@@ -71,7 +71,7 @@ export interface ButtonProps extends BoxProps, StylesApiProps<ButtonFactory> {
   fullWidth?: boolean;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Gradient configuration used when `variant="gradient"`, default value is `theme.defaultGradient` */
   gradient?: RaikouGradient;
@@ -204,24 +204,33 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, ref) => {
       {...others}
     >
       <span {...getStyles("inner")}>
-        {leftSection ||
-          (loading && loaderPosition === "left" && (
-            <Box
-              component="span"
-              {...getStyles("section")}
-              mod={{ position: "left" }}
-            >
-              {!loading && leftSection}
-              {loading && (
-                <Loader
-                  type="progress"
-                  color="var(--button-color)"
-                  size="calc(var(--button-height) / 2.4)"
-                  {...loaderProps}
-                />
-              )}
-            </Box>
-          ))}
+        {leftSection && (
+          <Box
+            component="span"
+            {...getStyles("section")}
+            mod={{ position: "left" }}
+          >
+            {leftSection}
+          </Box>
+        )}
+
+        {loading && loaderPosition === "left" && (
+          <Box
+            component="span"
+            {...getStyles("section")}
+            mod={{ position: "left" }}
+          >
+            {!loading && leftSection}
+            {loading && (
+              <Loader
+                type="progress"
+                color="var(--button-color)"
+                size="calc(var(--button-height) / 2.4)"
+                {...loaderProps}
+              />
+            )}
+          </Box>
+        )}
 
         {loading && loaderPosition === "center" && (
           <Box component="span" {...getStyles("loader")}>

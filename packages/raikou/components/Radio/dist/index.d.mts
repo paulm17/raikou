@@ -3534,7 +3534,7 @@ interface RadioGroupProps extends Omit<InputWrapperProps, "onChange"> {
     /** Called when value changes */
     onChange?(value: string): void;
     /** Props passed down to the `Input.Wrapper` */
-    wrapperProps?: React$1.ComponentPropsWithoutRef<"div">;
+    wrapperProps?: Record<string, any>;
     /** Controls size of the `Input.Wrapper`, `'sm'` by default */
     size?: RaikouSize;
     /** Name attribute of child radio inputs */
@@ -3565,7 +3565,7 @@ interface RadioProps extends BoxProps, StylesApiProps<RadioFactory>, ElementProp
     /** Custom checked icon component, by default a circle is displayed in checked state */
     icon?: React$1.FC<RadioIconProps>;
     /** Props passed down to the root element */
-    wrapperProps?: React$1.ComponentPropsWithoutRef<"div">;
+    wrapperProps?: Record<string, any>;
     /** Position of the label relative to the input, `'right'` by default */
     labelPosition?: "left" | "right";
     /** Description displayed below the label */
@@ -3573,7 +3573,7 @@ interface RadioProps extends BoxProps, StylesApiProps<RadioFactory>, ElementProp
     /** Error displayed below the label */
     error?: React$1.ReactNode;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius,` "xl" by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
 }
 type RadioFactory = Factory<{
     props: RadioProps;

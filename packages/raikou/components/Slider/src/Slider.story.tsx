@@ -1,21 +1,21 @@
-import React from 'react';
-import { Slider } from './Slider/Slider';
-import { RangeSlider } from './RangeSlider/RangeSlider';
+import React from "react";
+import { Slider } from "./Slider/Slider";
+import { RangeSlider } from "./RangeSlider/RangeSlider";
 
-export default { title: 'Slider' };
+export default { title: "Slider" };
 
 const marks = [
-  { value: 20, label: '20%' },
-  { value: 50, label: '50%' },
-  { value: 80, label: '80%' },
+  { value: 20, label: "20%" },
+  { value: 50, label: "50%" },
+  { value: 80, label: "80%" },
 ];
 
 const sizeMarks = [
-  { value: 0, label: '000' },
-  { value: 25, label: '000' },
-  { value: 50, label: '000' },
-  { value: 75, label: '000' },
-  { value: 100, label: '000' },
+  { value: 0, label: "000" },
+  { value: 25, label: "000" },
+  { value: 50, label: "000" },
+  { value: 75, label: "000" },
+  { value: 100, label: "000" },
 ];
 
 export function WithinDisabledFieldset() {
@@ -45,7 +45,7 @@ export function Usage() {
 export function SizeSlider() {
   return (
     <div style={{ padding: 40, maxWidth: 300 }}>
-      <div style={{ background: 'pink' }}>
+      <div style={{ background: "pink" }}>
         <Slider step={25} defaultValue={50} marks={sizeMarks} size="md" />
       </div>
     </div>
@@ -66,7 +66,7 @@ export function Range() {
         labelAlwaysOn
         color="#fe0d45"
         styles={{
-          label: { background: 'pink' },
+          label: { background: "pink" },
         }}
       />
     </div>
@@ -84,6 +84,22 @@ export function Sizes() {
       <Slider defaultValue={45} mt="xl" marks={marks} size="1rem" />
       <Slider defaultValue={45} mt="xl" marks={marks} size={20} />
       <Slider defaultValue={45} mt="xl" marks={marks} size="2rem" />
+    </div>
+  );
+}
+
+export function WithDecimalValue() {
+  return (
+    <div style={{ padding: 40, maxWidth: 400 }}>
+      <RangeSlider
+        minRange={0.1}
+        step={0.1}
+        precision={1}
+        defaultValue={[0.2, 0.4]}
+        min={0}
+        max={1}
+      />
+      <Slider step={0.1} precision={1} defaultValue={0.2} min={0} max={1} />
     </div>
   );
 }

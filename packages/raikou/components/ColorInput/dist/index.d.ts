@@ -3536,11 +3536,11 @@ interface __InputProps {
     /** Sets `pointer-events` styles on the `rightSection` element, `'none'` by default */
     rightSectionPointerEvents?: React$2.CSSProperties["pointerEvents"];
     /** Props added to the root element of the `Input` component */
-    wrapperProps?: React$2.ComponentPropsWithoutRef<"div">;
+    wrapperProps?: Record<string, any>;
     /** Sets `required` attribute on the `input` element */
     required?: boolean;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Sets `disabled` attribute on the `input` element */
     disabled?: boolean;
     /** Controls input `height` and horizontal `padding`, `'sm'` by default */
@@ -3652,9 +3652,9 @@ interface __PopoverProps {
     /** Dropdown `z-index`, `300` by default */
     zIndex?: React$2.CSSProperties["zIndex"];
     /** Key of `theme.radius` or any valid CSS value to set border-radius, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Key of `theme.shadows` or any other valid CSS `box-shadow` value */
-    shadow?: RaikouShadow | (string & {});
+    shadow?: RaikouShadow;
     /** If set, popover dropdown will not be rendered */
     disabled?: boolean;
     /** Determines whether focus should be automatically returned to control when dropdown closes, `false` by default */

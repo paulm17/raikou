@@ -2,7 +2,7 @@ import React from "react";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -25,7 +25,7 @@ export type TimelineItemStylesNames =
 //@ts-ignore
 export interface TimelineItemProps
   extends BoxProps,
-    StylesApiProps<TimelineItemFactory>,
+    CompoundStylesApiProps<TimelineItemFactory>,
     ElementProps<"div", "title"> {
   /** Determines whether the item should be highlighted, controlled by the parent `Timeline` component  */
   __active?: boolean;
@@ -46,7 +46,7 @@ export interface TimelineItemProps
   bullet?: React.ReactNode;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `'xl'` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Key of `theme.colors` or any valid CSS color to control active item colors, `theme.primaryColor` by default */
   color?: RaikouColor;
@@ -71,7 +71,6 @@ export const TimelineItem = factory<TimelineItemFactory>((_props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     __active,
     __align,

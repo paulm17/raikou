@@ -62,7 +62,7 @@ export interface PaginationRootProps
   color?: RaikouColor;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `theme.defaultRadius` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Called when next page control is clicked */
   onNextPage?(): void;
@@ -101,7 +101,7 @@ const varsResolver = createVarsResolver<PaginationRootFactory>(
       "--pagination-control-fz": getFontSize(size),
       "--pagination-active-bg": getThemeColor(color, theme),
     },
-  })
+  }),
 );
 
 export const PaginationRoot = factory<PaginationRootFactory>((_props, ref) => {
@@ -155,7 +155,7 @@ export const PaginationRoot = factory<PaginationRootFactory>((_props, ref) => {
       total,
       siblings,
       boundaries,
-    }
+    },
   );
 
   const handleNextPage = createEventHandler(onNextPage, next);

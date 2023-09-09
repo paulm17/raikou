@@ -5,7 +5,7 @@ import {
   useProps,
   factory,
   ElementProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   Factory,
 } from "@raikou/core";
 import { useTabsContext } from "../Tabs.context";
@@ -14,7 +14,7 @@ export type TabsListStylesNames = "list";
 
 export interface TabsListProps
   extends BoxProps,
-    StylesApiProps<TabsListFactory>,
+    CompoundStylesApiProps<TabsListFactory>,
     ElementProps<"div"> {
   /** `Tabs.Tab` components */
   children: React.ReactNode;

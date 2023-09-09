@@ -23,7 +23,7 @@ interface IndicatorProps extends BoxProps, StylesApiProps<IndicatorFactory>, Ele
     /** Label rendered inside the indicator, for example, notification count */
     label?: React.ReactNode;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `100` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Key of `theme.colors` or any valid CSS color value, `theme.primaryColor` by default */
     color?: RaikouColor;
     /** Determines whether the indicator should have a border (color of the border is the same as the body element), `false` by default */

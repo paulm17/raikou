@@ -13,7 +13,7 @@ interface ThemeIconProps extends BoxProps, StylesApiProps<ThemeIconFactory>, Ele
     /** Key of `theme.colors` or any valid CSS color. Default value is `theme.primaryColor`.  */
     color?: RaikouColor;
     /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. `theme.defaultRadius` by default. */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Gradient data used when `variant="gradient"`, default value is `theme.defaultGradient` */
     gradient?: RaikouGradient;
     /** Icon displayed inside the component */

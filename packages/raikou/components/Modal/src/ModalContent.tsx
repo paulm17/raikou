@@ -1,5 +1,11 @@
 import React from "react";
-import { StylesApiProps, factory, useProps, Factory, rem } from "@raikou/core";
+import {
+  CompoundStylesApiProps,
+  factory,
+  useProps,
+  Factory,
+  rem,
+} from "@raikou/core";
 import {
   ModalBaseContent,
   ModalBaseContentProps,
@@ -11,7 +17,7 @@ export type ModalContentStylesNames = "content" | "inner";
 
 export interface ModalContentProps
   extends ModalBaseContentProps,
-    StylesApiProps<ModalContentFactory> {}
+    CompoundStylesApiProps<ModalContentFactory> {}
 
 export type ModalContentFactory = Factory<{
   props: ModalContentProps;

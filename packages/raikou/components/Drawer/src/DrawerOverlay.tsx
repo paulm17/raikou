@@ -1,5 +1,10 @@
 import React from "react";
-import { StylesApiProps, factory, useProps, Factory } from "@raikou/core";
+import {
+  CompoundStylesApiProps,
+  factory,
+  useProps,
+  Factory,
+} from "@raikou/core";
 import { ModalBaseOverlay, ModalBaseOverlayProps } from "../../ModalBase/src";
 import { useDrawerContext } from "./Drawer.context";
 
@@ -7,7 +12,7 @@ export type DrawerOverlayStylesNames = "overlay";
 
 export interface DrawerOverlayProps
   extends ModalBaseOverlayProps,
-    StylesApiProps<DrawerOverlayFactory> {}
+    CompoundStylesApiProps<DrawerOverlayFactory> {}
 
 export type DrawerOverlayFactory = Factory<{
   props: DrawerOverlayProps;
@@ -20,8 +25,7 @@ const defaultProps: Partial<DrawerOverlayProps> = {};
 
 export const DrawerOverlay = factory<DrawerOverlayFactory>((_props, ref) => {
   const props = useProps("DrawerOverlay", defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, ...others } =
-    props;
+  const { classNames, className, style, styles, vars, ...others } = props;
 
   const ctx = useDrawerContext();
 

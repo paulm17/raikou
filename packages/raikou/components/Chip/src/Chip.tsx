@@ -49,7 +49,7 @@ export interface ChipProps
     StylesApiProps<ChipFactory>,
     ElementProps<"input", "size" | "onChange"> {
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `'xl'` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Controls various properties, `'sm'` by default */
   size?: RaikouSize;

@@ -171,9 +171,35 @@ var defaultProps = {
 };
 var GridCol = (0, import_core2.factory)((_props, ref) => {
   const props = (0, import_core2.useProps)("GridCol", defaultProps, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, {
+    classNames,
+    className,
+    style,
+    styles,
+    vars,
+    span,
+    order,
+    offset
+  } = _a, others = __objRest(_a, [
+    "classNames",
+    "className",
+    "style",
+    "styles",
+    "vars",
+    "span",
+    "order",
+    "offset"
+  ]);
   const responsiveClassName = (0, import_core2.useRandomClassName)();
-  return /* @__PURE__ */ import_react2.default.createElement(import_react2.default.Fragment, null, /* @__PURE__ */ import_react2.default.createElement(GridColVariables, __spreadValues({ selector: `.${responsiveClassName}` }, props)), /* @__PURE__ */ import_react2.default.createElement(
+  return /* @__PURE__ */ import_react2.default.createElement(import_react2.default.Fragment, null, /* @__PURE__ */ import_react2.default.createElement(
+    GridColVariables,
+    {
+      selector: `.${responsiveClassName}`,
+      span,
+      order,
+      offset
+    }
+  ), /* @__PURE__ */ import_react2.default.createElement(
     import_core2.Box,
     __spreadValues(__spreadValues({
       ref

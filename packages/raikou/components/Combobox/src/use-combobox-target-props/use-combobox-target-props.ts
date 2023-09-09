@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { useComboboxContext } from '../Combobox.context';
+import { useState } from "react";
+import { useComboboxContext } from "../Combobox.context";
 
 interface UseComboboxTargetPropsInput {
-  targetType: 'input' | 'button' | undefined;
+  targetType: "input" | "button" | undefined;
   withAriaAttributes: boolean | undefined;
   withKeyboardNavigation: boolean | undefined;
   onKeyDown: React.KeyboardEventHandler<HTMLInputElement> | undefined;
@@ -20,47 +20,51 @@ export function useComboboxTargetProps({
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     onKeyDown?.(event);
 
+    if (ctx.readOnly) {
+      return;
+    }
+
     if (withKeyboardNavigation) {
-      if (event.nativeEvent.code === 'ArrowDown') {
+      if (event.nativeEvent.code === "ArrowDown") {
         event.preventDefault();
 
         if (!ctx.store.dropdownOpened) {
-          ctx.store.openDropdown('keyboard');
+          ctx.store.openDropdown("keyboard");
           setSelectedOptionId(ctx.store.selectActiveOption());
         } else {
           setSelectedOptionId(ctx.store.selectNextOption());
         }
       }
 
-      if (event.nativeEvent.code === 'ArrowUp') {
+      if (event.nativeEvent.code === "ArrowUp") {
         event.preventDefault();
 
         if (!ctx.store.dropdownOpened) {
-          ctx.store.openDropdown('keyboard');
+          ctx.store.openDropdown("keyboard");
           setSelectedOptionId(ctx.store.selectActiveOption());
         } else {
           setSelectedOptionId(ctx.store.selectPreviousOption());
         }
       }
 
-      if (event.nativeEvent.code === 'Enter') {
+      if (event.nativeEvent.code === "Enter") {
         if (ctx.store.dropdownOpened) {
           event.preventDefault();
           ctx.store.clickSelectedOption();
-        } else if (targetType === 'button') {
+        } else if (targetType === "button") {
           event.preventDefault();
-          ctx.store.openDropdown('keyboard');
+          ctx.store.openDropdown("keyboard");
         }
       }
 
-      if (event.nativeEvent.code === 'Escape') {
-        ctx.store.closeDropdown('keyboard');
+      if (event.nativeEvent.code === "Escape") {
+        ctx.store.closeDropdown("keyboard");
       }
 
-      if (event.nativeEvent.code === 'Space') {
-        if (targetType === 'button') {
+      if (event.nativeEvent.code === "Space") {
+        if (targetType === "button") {
           event.preventDefault();
-          ctx.store.toggleDropdown('keyboard');
+          ctx.store.toggleDropdown("keyboard");
         }
       }
     }
@@ -68,14 +72,16 @@ export function useComboboxTargetProps({
 
   const ariaAttributes = withAriaAttributes
     ? {
-        'aria-haspopup': 'listbox',
-        'aria-expanded': ctx.store.listId ? ctx.store.dropdownOpened : undefined,
-        'aria-controls': ctx.store.listId,
-        'aria-activedescendant': ctx.store.dropdownOpened
+        "aria-haspopup": "listbox",
+        "aria-expanded": ctx.store.listId
+          ? ctx.store.dropdownOpened
+          : undefined,
+        "aria-controls": ctx.store.listId,
+        "aria-activedescendant": ctx.store.dropdownOpened
           ? selectedOptionId || undefined
           : undefined,
-        autoComplete: 'off',
-        'data-expanded': ctx.store.dropdownOpened ? true : undefined,
+        autoComplete: "off",
+        "data-expanded": ctx.store.dropdownOpened ? true : undefined,
       }
     : {};
 

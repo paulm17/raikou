@@ -42,7 +42,7 @@ export interface PillProps
   removeButtonProps?: React.ComponentPropsWithoutRef<"button">;
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. `'xl'` by default. */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** If pill is disabled it has higher contrast to be visible on the disabled input background and the remove button is hidden */
   disabled?: boolean;
@@ -72,7 +72,7 @@ const varsResolver = createVarsResolver<PillFactory>(
       "--pill-height": getSize(size, "pill-height"),
       "--pill-radius": getRadius(radius),
     },
-  })
+  }),
 );
 
 export const Pill = factory<PillFactory>((_props, ref) => {

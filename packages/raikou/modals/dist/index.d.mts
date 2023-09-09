@@ -78,9 +78,9 @@ interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
     /** `z-index` CSS property of the root element, `200` by default */
     zIndex?: React$2.CSSProperties["zIndex"];
     /** Key of `theme.shadows` or any valid CSS box-shadow value, 'xl' by default */
-    shadow?: RaikouShadow | (string & {});
+    shadow?: RaikouShadow;
     /** Key of `theme.spacing` or any valid CSS value to set content, header and footer padding, `'md'` by default */
-    padding?: RaikouSpacing | (string & {}) | number;
+    padding?: RaikouSpacing;
     /** Controls width of the content area, `'md'` by default */
     size?: RaikouSize | (string & {}) | number;
 }
@@ -3557,7 +3557,7 @@ interface OverlayProps extends BoxProps, StylesApiProps<OverlayFactory> {
     /** Overlay z-index, `200` by default */
     zIndex?: React$2.CSSProperties["zIndex"];
     /** Key of `theme.radius` or any valid CSS value to set border-radius, `0` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Content inside overlay */
     children?: React$2.ReactNode;
     /** Determines whether content inside overlay should be vertically and horizontally centered, `false` by default */
@@ -3595,7 +3595,7 @@ interface ModalRootProps extends StylesApiProps<ModalRootFactory>, ModalBaseProp
     /** Scroll area component, native `div` element by default */
     scrollAreaComponent?: ScrollAreaComponent;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Determines whether the modal should be centered vertically, `false` by default */
     centered?: boolean;
     /** Determines whether the modal should take the entire screen, `false` by default */
@@ -3702,7 +3702,7 @@ interface ButtonProps extends BoxProps, StylesApiProps<ButtonFactory> {
     /** Determines whether button should take 100% width of its parent container, `false` by default */
     fullWidth?: boolean;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Gradient configuration used when `variant="gradient"`, default value is `theme.defaultGradient` */
     gradient?: RaikouGradient;
     /** Indicates disabled state */
@@ -3744,7 +3744,7 @@ interface GroupProps extends BoxProps, StylesApiProps<GroupFactory>, ElementProp
     /** Controls `flex-wrap` CSS property, `'wrap'` by default */
     wrap?: React$2.CSSProperties["flexWrap"];
     /** Key of `theme.spacing` or any valid CSS value for `gap`, numbers are converted to rem, `'md'` by default */
-    gap?: RaikouSpacing | (string & {}) | number;
+    gap?: RaikouSpacing;
     /** Determines whether each child element should have `flex-grow: 1` style, `false` by default */
     grow?: boolean;
     /** Determines whether children should take only dedicated amount of space (`max-width` style is set based on the number of children), `true` by default */

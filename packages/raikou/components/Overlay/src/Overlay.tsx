@@ -41,7 +41,7 @@ export interface OverlayProps extends BoxProps, StylesApiProps<OverlayFactory> {
   zIndex?: React.CSSProperties["zIndex"];
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius, `0` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Content inside overlay */
   children?: React.ReactNode;
@@ -77,7 +77,7 @@ const varsResolver = createVarsResolver<OverlayFactory>(
       "--overlay-radius": getRadius(radius),
       "--overlay-z-index": zIndex?.toString(),
     },
-  })
+  }),
 );
 
 export const Overlay = polymorphicFactory<OverlayFactory>((_props, ref) => {

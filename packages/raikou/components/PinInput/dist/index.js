@@ -964,13 +964,17 @@ var PinInput = (0, import_core8.factory)((props, ref) => {
   };
   const handleChange = (event, index) => {
     const inputValue = event.target.value;
-    const nextChar = inputValue.length > 1 ? inputValue.split("")[inputValue.length - 1] : inputValue;
-    const isValid = validate(nextChar);
-    if (isValid) {
-      setFieldValue(nextChar, index);
-      focusInputField("next", index);
-    } else {
-      setFieldValue("", index);
+    const nextCharOrValue = inputValue.length === 2 ? inputValue.split("")[inputValue.length - 1] : inputValue;
+    const isValid = validate(nextCharOrValue);
+    if (nextCharOrValue.length < 2) {
+      if (isValid) {
+        setFieldValue(nextCharOrValue, index);
+        focusInputField("next", index);
+      } else {
+        setFieldValue("", index);
+      }
+    } else if (isValid) {
+      setValues(inputValue);
     }
   };
   const handleKeyDown = (event, index) => {

@@ -56,7 +56,7 @@ export interface IndicatorProps
   label?: React.ReactNode;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `100` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Key of `theme.colors` or any valid CSS color value, `theme.primaryColor` by default */
   color?: RaikouColor;

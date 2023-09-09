@@ -113,7 +113,7 @@ function tableElement(element, options) {
   const name = `Table${element.charAt(0).toUpperCase()}${element.slice(1)}`;
   const Component = (0, import_core.factory)((_props, ref) => {
     const props = (0, import_core.useProps)(name, {}, _props);
-    const _a = props, { classNames, className, style, styles, unstyled } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled"]);
+    const _a = props, { classNames, className, style, styles } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles"]);
     const ctx = useStore.getState();
     return /* @__PURE__ */ import_react.default.createElement(
       import_core.Box,

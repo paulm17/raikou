@@ -2,7 +2,7 @@ import React from "react";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   ElementProps,
   factory,
   useProps,
@@ -14,7 +14,7 @@ import { TableContextValue, useStore } from "./store";
 
 export interface TableElementProps<Selector extends string>
   extends BoxProps,
-    StylesApiProps<
+    CompoundStylesApiProps<
       Omit<TableFactory, "stylesNames"> & { stylesNames: Selector }
     > {}
 
@@ -137,7 +137,7 @@ export function tableElement<Factory extends FactoryPayload>(
   const name = `Table${element.charAt(0).toUpperCase()}${element.slice(1)}`;
   const Component = factory<Factory>((_props, ref) => {
     const props = useProps(name, {}, _props);
-    const { classNames, className, style, styles, unstyled, ...others } = props;
+    const { classNames, className, style, styles, ...others } = props;
 
     const ctx = useStore.getState();
 

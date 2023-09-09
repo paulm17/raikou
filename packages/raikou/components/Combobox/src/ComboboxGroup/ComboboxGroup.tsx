@@ -2,7 +2,7 @@ import React from "react";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -14,7 +14,7 @@ export type ComboboxGroupStylesNames = "group" | "groupLabel";
 
 export interface ComboboxGroupProps
   extends BoxProps,
-    StylesApiProps<ComboboxGroupFactory>,
+    CompoundStylesApiProps<ComboboxGroupFactory>,
     ElementProps<"div"> {
   /** Group label */
   label?: React.ReactNode;
@@ -35,7 +35,6 @@ export const ComboboxGroup = factory<ComboboxGroupFactory>((props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     children,
     label,

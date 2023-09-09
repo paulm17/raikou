@@ -1,5 +1,10 @@
 import React from "react";
-import { StylesApiProps, factory, useProps, Factory } from "@raikou/core";
+import {
+  CompoundStylesApiProps,
+  factory,
+  useProps,
+  Factory,
+} from "@raikou/core";
 import { ModalBaseBody, ModalBaseBodyProps } from "../../ModalBase/src";
 import { useDrawerContext } from "./Drawer.context";
 
@@ -7,7 +12,7 @@ export type DrawerBodyStylesNames = "body";
 
 export interface DrawerBodyProps
   extends ModalBaseBodyProps,
-    StylesApiProps<DrawerBodyFactory> {}
+    CompoundStylesApiProps<DrawerBodyFactory> {}
 
 export type DrawerBodyFactory = Factory<{
   props: DrawerBodyProps;
@@ -20,8 +25,7 @@ const defaultProps: Partial<DrawerBodyProps> = {};
 
 export const DrawerBody = factory<DrawerBodyFactory>((_props, ref) => {
   const props = useProps("DrawerBody", defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, ...others } =
-    props;
+  const { classNames, className, style, styles, vars, ...others } = props;
 
   const ctx = useDrawerContext();
 

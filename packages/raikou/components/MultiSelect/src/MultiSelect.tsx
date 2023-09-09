@@ -23,7 +23,6 @@ import {
 import { __BaseInputProps, __InputStylesNames } from "../../Input/src";
 import { PillsInput } from "../../PillsInput/src";
 import { Pill } from "../../Pill/src";
-import { InputBase } from "../../InputBase/src";
 import { filterPickedValues } from "./filter-picked-values";
 
 export type MultiSelectStylesNames =
@@ -150,6 +149,8 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
     checkIconPosition,
     hidePickedOptions,
     withErrorStyles,
+    name,
+    form,
     ...others
   } = props;
 
@@ -220,127 +221,140 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
       onRemove={() => setValue(_value.filter((i) => item !== i))}
       {...getStyles("pill")}
     >
-      {item}
+      {optionsLockup[item].label}
     </Pill>
   ));
 
   return (
-    <Combobox
-      store={combobox}
-      classNames={resolvedClassNames}
-      styles={resolvedStyles}
-      unstyled={unstyled}
-      size={size}
-      __staticSelector="MultiSelect"
-      onOptionSubmit={(val) => {
-        onOptionSubmit?.(val);
-        setSearchValue("");
-        combobox.updateSelectedOptionIndex("selected");
+    <>
+      <Combobox
+        store={combobox}
+        classNames={resolvedClassNames}
+        styles={resolvedStyles}
+        unstyled={unstyled}
+        size={size}
+        readOnly={readOnly}
+        __staticSelector="MultiSelect"
+        onOptionSubmit={(val) => {
+          onOptionSubmit?.(val);
+          setSearchValue("");
+          combobox.updateSelectedOptionIndex("selected");
 
-        if (_value.includes(optionsLockup[val].value)) {
-          setValue(_value.filter((v) => v !== optionsLockup[val].value));
-        } else if (_value.length < maxValues!) {
-          setValue([..._value, optionsLockup[val].value]);
-        }
-      }}
-      {...comboboxProps}
-    >
-      <Combobox.DropdownTarget>
-        <PillsInput
-          {...styleProps}
-          __staticSelector="MultiSelect"
-          classNames={resolvedClassNames}
-          styles={resolvedStyles}
-          unstyled={unstyled}
-          size={size}
-          className={className}
-          style={style}
-          variant={variant}
-          disabled={disabled}
-          radius={radius}
-          rightSection={rightSection}
-          rightSectionWidth={rightSectionWidth}
-          rightSectionPointerEvents={rightSectionPointerEvents}
-          rightSectionProps={rightSectionProps}
-          leftSection={leftSection}
-          leftSectionWidth={leftSectionWidth}
-          leftSectionPointerEvents={leftSectionPointerEvents}
-          leftSectionProps={leftSectionProps}
-          inputContainer={inputContainer}
-          inputWrapperOrder={inputWrapperOrder}
-          withAsterisk={withAsterisk}
-          labelProps={labelProps}
-          descriptionProps={descriptionProps}
-          errorProps={errorProps}
-          wrapperProps={wrapperProps}
-          description={description}
-          label={label}
-          error={error}
-          multiline
-          withErrorStyles={withErrorStyles}
-          __stylesApiProps={{ ...props, multiline: true }}
-          pointer={!searchable}
-          onClick={() =>
-            searchable ? combobox.openDropdown() : combobox.toggleDropdown()
+          if (_value.includes(optionsLockup[val].value)) {
+            setValue(_value.filter((v) => v !== optionsLockup[val].value));
+          } else if (_value.length < maxValues!) {
+            setValue([..._value, optionsLockup[val].value]);
           }
-        >
-          <Pill.Group disabled={disabled} {...getStyles("pillsList")}>
-            {values}
-            <Combobox.EventsTarget>
-              <PillsInput.Field
-                {...rest}
-                ref={ref}
-                {...getStyles("inputField")}
-                unstyled={unstyled}
-                onFocus={(event) => {
-                  onFocus?.(event);
-                  searchable && combobox.openDropdown();
-                }}
-                onBlur={(event) => {
-                  onBlur?.(event);
-                  combobox.closeDropdown();
-                  searchable && combobox.closeDropdown();
-                  setSearchValue("");
-                }}
-                onKeyDown={handleInputKeydown}
-                value={_searchValue}
-                onChange={(event) => {
-                  setSearchValue(event.currentTarget.value);
-                  searchable && combobox.openDropdown();
-                }}
-                disabled={disabled}
-                readOnly={readOnly || !searchable}
-                pointer={!searchable}
-              />
-            </Combobox.EventsTarget>
-          </Pill.Group>
-        </PillsInput>
-      </Combobox.DropdownTarget>
+        }}
+        {...comboboxProps}
+      >
+        <input
+          type="hidden"
+          name={name}
+          value={_value.join(",")}
+          form={form}
+          disabled={disabled}
+        />
+        <Combobox.DropdownTarget>
+          <PillsInput
+            {...styleProps}
+            __staticSelector="MultiSelect"
+            classNames={resolvedClassNames}
+            styles={resolvedStyles}
+            unstyled={unstyled}
+            size={size}
+            className={className}
+            style={style}
+            variant={variant}
+            disabled={disabled}
+            radius={radius}
+            rightSection={rightSection}
+            rightSectionWidth={rightSectionWidth}
+            rightSectionPointerEvents={rightSectionPointerEvents}
+            rightSectionProps={rightSectionProps}
+            leftSection={leftSection}
+            leftSectionWidth={leftSectionWidth}
+            leftSectionPointerEvents={leftSectionPointerEvents}
+            leftSectionProps={leftSectionProps}
+            inputContainer={inputContainer}
+            inputWrapperOrder={inputWrapperOrder}
+            withAsterisk={withAsterisk}
+            labelProps={labelProps}
+            descriptionProps={descriptionProps}
+            errorProps={errorProps}
+            wrapperProps={wrapperProps}
+            description={description}
+            label={label}
+            error={error}
+            multiline
+            withErrorStyles={withErrorStyles}
+            __stylesApiProps={{ ...props, multiline: true }}
+            pointer={!searchable}
+            onClick={() =>
+              searchable ? combobox.openDropdown() : combobox.toggleDropdown()
+            }
+          >
+            <Pill.Group disabled={disabled} {...getStyles("pillsList")}>
+              {values}
+              <Combobox.EventsTarget>
+                <PillsInput.Field
+                  {...rest}
+                  ref={ref}
+                  {...getStyles("inputField")}
+                  unstyled={unstyled}
+                  onFocus={(event) => {
+                    onFocus?.(event);
+                    // eslint-disable-next-line
+                    searchable && combobox.openDropdown();
+                  }}
+                  onBlur={(event) => {
+                    onBlur?.(event);
+                    combobox.closeDropdown();
+                    // eslint-disable-next-line
+                    searchable && combobox.closeDropdown();
+                    setSearchValue("");
+                  }}
+                  onKeyDown={handleInputKeydown}
+                  value={_searchValue}
+                  onChange={(event) => {
+                    setSearchValue(event.currentTarget.value);
+                    // eslint-disable-next-line
+                    searchable && combobox.openDropdown();
+                  }}
+                  disabled={disabled}
+                  readOnly={readOnly || !searchable}
+                  pointer={!searchable}
+                />
+              </Combobox.EventsTarget>
+            </Pill.Group>
+          </PillsInput>
+        </Combobox.DropdownTarget>
 
-      <OptionsDropdown
-        data={
-          hidePickedOptions
-            ? filterPickedValues({ data: parsedData, value: _value })
-            : parsedData
-        }
-        hidden={readOnly || disabled}
-        filter={filter}
-        search={_searchValue}
-        limit={limit}
-        hiddenWhenEmpty={
-          hidePickedOptions ||
-          !nothingFoundMessage ||
-          (!searchable && _searchValue.trim().length !== 0)
-        }
-        withScrollArea={withScrollArea}
-        maxDropdownHeight={maxDropdownHeight}
-        filterOptions={searchable}
-        value={_value}
-        checkIconPosition={checkIconPosition}
-        withCheckIcon={withCheckIcon}
-        nothingFoundMessage={nothingFoundMessage}
-      />
-    </Combobox>
+        <OptionsDropdown
+          data={
+            hidePickedOptions
+              ? filterPickedValues({ data: parsedData, value: _value })
+              : parsedData
+          }
+          hidden={readOnly || disabled}
+          filter={filter}
+          search={_searchValue}
+          limit={limit}
+          hiddenWhenEmpty={
+            hidePickedOptions ||
+            !nothingFoundMessage ||
+            (!searchable && _searchValue.trim().length !== 0)
+          }
+          withScrollArea={withScrollArea}
+          maxDropdownHeight={maxDropdownHeight}
+          filterOptions={searchable}
+          value={_value}
+          checkIconPosition={checkIconPosition}
+          withCheckIcon={withCheckIcon}
+          nothingFoundMessage={nothingFoundMessage}
+        />
+      </Combobox>
+    </>
   );
 });
 

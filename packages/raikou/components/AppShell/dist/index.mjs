@@ -256,7 +256,7 @@ import {
 var defaultProps5 = {};
 var AppShellMain = factory5((_props, ref) => {
   const props = useProps5("AppShellMain", defaultProps5, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useStore.getState();
   return /* @__PURE__ */ React5.createElement(
     Box5,
@@ -279,23 +279,7 @@ var defaultProps6 = {};
 var AppShellSection = polymorphicFactory(
   (_props, ref) => {
     const props = useProps6("AppShellSection", defaultProps6, _props);
-    const _a = props, {
-      classNames,
-      className,
-      style,
-      styles,
-      unstyled,
-      vars,
-      grow
-    } = _a, others = __objRest(_a, [
-      "classNames",
-      "className",
-      "style",
-      "styles",
-      "unstyled",
-      "vars",
-      "grow"
-    ]);
+    const _a = props, { classNames, className, style, styles, vars, grow } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars", "grow"]);
     const ctx = useStore.getState();
     return /* @__PURE__ */ React6.createElement(
       Box6,

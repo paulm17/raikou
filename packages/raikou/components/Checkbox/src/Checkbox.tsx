@@ -29,7 +29,7 @@ export type CheckboxStylesNames =
   | "input"
   | InlineInputStylesNames;
 
-  export type CheckboxCssVariables = {
+export type CheckboxCssVariables = {
   root: "--checkbox-size" | "--checkbox-radius" | "--checkbox-color";
 };
 
@@ -50,10 +50,10 @@ export interface CheckboxProps
   size?: RaikouSize | (string & {});
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius,` "xl" by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
-  /** Props passed down to wrapper element */
-  wrapperProps?: React.ComponentPropsWithoutRef<"div">;
+  /** Props passed down to the root element */
+  wrapperProps?: Record<string, any>;
 
   /** Position of the label relative to the input, `'right'` by default */
   labelPosition?: "left" | "right";
@@ -94,7 +94,7 @@ const varsResolver = createVarsResolver<CheckboxFactory>(
       "--checkbox-radius": getRadius(radius),
       "--checkbox-color": getThemeColor(color, theme),
     },
-  })
+  }),
 );
 
 export const Checkbox = factory<CheckboxFactory>((_props, ref) => {

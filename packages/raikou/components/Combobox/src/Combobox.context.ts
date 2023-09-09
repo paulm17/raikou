@@ -10,9 +10,10 @@ export interface ComboboxContextValue {
   onOptionSubmit?(value: string, optionProps: ComboboxOptionProps): void;
   size: RaikouSize | (string & {});
   resetSelectionOnOptionHover: boolean | undefined;
+  readOnly: boolean | undefined;
 }
 
 export const [ComboboxProvider, useComboboxContext] =
   createSafeContext<ComboboxContextValue>(
-    "Combobox component was not found in tree"
+    "Combobox component was not found in tree",
   );

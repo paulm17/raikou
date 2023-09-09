@@ -90,10 +90,10 @@ export interface __PopoverProps {
   zIndex?: React.CSSProperties["zIndex"];
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius, `theme.defaultRadius` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Key of `theme.shadows` or any other valid CSS `box-shadow` value */
-  shadow?: RaikouShadow | (string & {});
+  shadow?: RaikouShadow;
 
   /** If set, popover dropdown will not be rendered */
   disabled?: boolean;

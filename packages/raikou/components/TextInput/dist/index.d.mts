@@ -59,11 +59,11 @@ interface __InputProps {
     /** Sets `pointer-events` styles on the `rightSection` element, `'none'` by default */
     rightSectionPointerEvents?: React$1.CSSProperties["pointerEvents"];
     /** Props added to the root element of the `Input` component */
-    wrapperProps?: React$1.ComponentPropsWithoutRef<"div">;
+    wrapperProps?: Record<string, any>;
     /** Sets `required` attribute on the `input` element */
     required?: boolean;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Sets `disabled` attribute on the `input` element */
     disabled?: boolean;
     /** Controls input `height` and horizontal `padding`, `'sm'` by default */
@@ -3434,7 +3434,7 @@ declare global {
 interface InputBaseProps extends BoxProps, __BaseInputProps, StylesApiProps<InputBaseFactory> {
     __staticSelector?: string;
     __stylesApiProps?: Record<string, any>;
-    /** Props passed to the root element (`Input.Wrapper` component) */
+    /** Props passed down to the root element (`Input.Wrapper` component) */
     wrapperProps?: Record<string, any>;
     /** Determines whether the input can have multiple lines, for example when `component="textarea"`, `false` by default */
     multiline?: boolean;

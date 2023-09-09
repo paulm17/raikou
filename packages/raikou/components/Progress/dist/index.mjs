@@ -80,7 +80,9 @@ var [ProgressProvider, useProgressContext] = createSafeContext(
 );
 
 // src/ProgressRoot/ProgressRoot.tsx
-var defaultProps = {};
+var defaultProps = {
+  size: "md"
+};
 var varsResolver = createVarsResolver(
   (_, { size, radius }) => ({
     root: {
@@ -130,7 +132,6 @@ var ProgressSection = factory2((props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     value,
     withAria,
@@ -142,7 +143,6 @@ var ProgressSection = factory2((props, ref) => {
     "className",
     "style",
     "styles",
-    "unstyled",
     "vars",
     "value",
     "withAria",
@@ -183,7 +183,11 @@ import {
 } from "@raikou/core";
 var defaultProps3 = {};
 var ProgressLabel = factory3((props, ref) => {
-  const _a = useProps3("ProgressLabel", defaultProps3, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = useProps3(
+    "ProgressLabel",
+    defaultProps3,
+    props
+  ), { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useProgressContext();
   return /* @__PURE__ */ React5.createElement(
     Box3,

@@ -135,7 +135,6 @@ var CardSection = polymorphicFactory2(
       className,
       style,
       styles,
-      unstyled,
       vars,
       withBorder,
       inheritPadding
@@ -144,7 +143,6 @@ var CardSection = polymorphicFactory2(
       "className",
       "style",
       "styles",
-      "unstyled",
       "vars",
       "withBorder",
       "inheritPadding"

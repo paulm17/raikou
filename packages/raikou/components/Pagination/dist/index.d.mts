@@ -1,5 +1,5 @@
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, RaikouSize, RaikouColor, RaikouRadius, Factory } from '@raikou/core';
+import { BoxProps, StylesApiProps, ElementProps, RaikouSize, RaikouColor, RaikouRadius, Factory, CompoundStylesApiProps } from '@raikou/core';
 import React from 'react';
 
 type PaginationRootStylesNames = "root" | "control" | "dots";
@@ -26,7 +26,7 @@ interface PaginationRootProps extends BoxProps, StylesApiProps<PaginationRootFac
     /** Key of `theme.colors`, active item color, `theme.primaryColor` by default */
     color?: RaikouColor;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Called when next page control is clicked */
     onNextPage?(): void;
     /** Called when previous page control is clicked */
@@ -52,7 +52,7 @@ declare const PaginationRoot: _raikou_core.RaikouComponent<{
 }>;
 
 type PaginationControlStylesNames = "control";
-interface PaginationControlProps extends BoxProps, StylesApiProps<PaginationControlFactory>, ElementProps<"button"> {
+interface PaginationControlProps extends BoxProps, CompoundStylesApiProps<PaginationControlFactory>, ElementProps<"button"> {
     /** Determines whether control should have active styles */
     active?: boolean;
     /** Determines whether control should have padding, true by default */
@@ -78,7 +78,7 @@ type PaginationIconProps = Omit<_PaginationIconProps, 'path'>;
 type PaginationIcon = React.FC<PaginationIconProps>;
 
 type PaginationDotsStylesNames = "dots";
-interface PaginationDotsProps extends BoxProps, StylesApiProps<PaginationDotsFactory>, ElementProps<"div"> {
+interface PaginationDotsProps extends BoxProps, CompoundStylesApiProps<PaginationDotsFactory>, ElementProps<"div"> {
     /** Custom dots icon component, must accept svg element props and size prop */
     icon?: React.FC<PaginationIconProps>;
 }

@@ -9,6 +9,8 @@ import {
   getFontSize,
   rem,
   getSize,
+  ExtendComponent,
+  RaikouThemeComponent,
 } from "@raikou/core";
 import { __PopoverProps, Popover } from "../../Popover/src";
 import { useCombobox, ComboboxStore } from "./use-combobox/use-combobox";
@@ -70,6 +72,9 @@ export interface ComboboxProps
 
   /** Determines whether selection should be reset when option is hovered, `false` by default */
   resetSelectionOnOptionHover?: boolean;
+
+  /** Determines whether Combobox value can be changed */
+  readOnly?: boolean;
 }
 
 export type ComboboxFactory = Factory<{
@@ -115,7 +120,7 @@ const varsResolver = createVarsResolver<ComboboxFactory>(
       "--combobox-option-fz": getFontSize(size),
       "--combobox-option-padding": getSize(size, "combobox-option-padding"),
     },
-  })
+  }),
 );
 
 export function Combobox(_props: ComboboxProps) {
@@ -132,6 +137,7 @@ export function Combobox(_props: ComboboxProps) {
     dropdownPadding,
     resetSelectionOnOptionHover,
     __staticSelector,
+    readOnly,
     ...others
   } = props;
 
@@ -167,6 +173,7 @@ export function Combobox(_props: ComboboxProps) {
         onOptionSubmit,
         size: size!,
         resetSelectionOnOptionHover,
+        readOnly,
       }}
     >
       <Popover
@@ -180,7 +187,11 @@ export function Combobox(_props: ComboboxProps) {
     </ComboboxProvider>
   );
 }
+const extendCombobox = (
+  c: ExtendComponent<ComboboxFactory>,
+): RaikouThemeComponent => c;
 
+Combobox.extend = extendCombobox;
 Combobox.displayName = "@raikou/core/Combobox";
 Combobox.Target = ComboboxTarget;
 Combobox.Dropdown = ComboboxDropdown;

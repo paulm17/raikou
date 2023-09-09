@@ -7,10 +7,6 @@
   <h3 align="center">RAIKOU</h3>
   <p align="center">
     Raikou is a mantine fork which replaces css modules to adopt a tailwind first-use approach.
-    <br />
-    <a href="https://github.com/paulm17/raikou/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/paulm17/raikou/issues">Request Feature</a>
   </p>
 </div>
 
@@ -75,9 +71,6 @@ The project was conceived with these 4 long-term goals:
       <a href="https://github.com/paulm17/raikou/blob/main/packages/raikou/system/src/core/RaikouProvider/css-variables.plugin.ts">the
       options available to each component</a>. Change these settings using
       cssVariablesResolver and example is below.
-
-3.  Issues may be closed due to the fork author not having free time. If an
-    issue is very important, please consider implementing a PR.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -415,9 +408,6 @@ When omitting "use client" this results in Page.js not being requested.
       <a href="https://github.com/paulm17/raikou/blob/main/apps/web/app/themer/page.tsx">/themer
       endpoint</a>.
 - [ ] Fix the Storybook demos to work under version 7
-
-See the [open issues](https://github.com/paulm17/raikou/issues) for a full list
-of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

@@ -1,5 +1,5 @@
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, Factory, PolymorphicFactory, RaikouSpacing, RaikouBreakpoint } from '@raikou/core';
+import { BoxProps, StylesApiProps, ElementProps, Factory, CompoundStylesApiProps, PolymorphicFactory, RaikouSpacing, RaikouBreakpoint } from '@raikou/core';
 import React from 'react';
 
 type AppShellNavbarStylesNames = "navbar";
@@ -91,7 +91,7 @@ declare const AppShellAside: _raikou_core.RaikouComponent<{
 }>;
 
 type AppShellMainStylesNames = "main";
-interface AppShellMainProps extends BoxProps, StylesApiProps<AppShellMainFactory>, ElementProps<"main"> {
+interface AppShellMainProps extends BoxProps, CompoundStylesApiProps<AppShellMainFactory>, ElementProps<"main"> {
 }
 type AppShellMainFactory = Factory<{
     props: AppShellMainProps;
@@ -107,7 +107,7 @@ declare const AppShellMain: _raikou_core.RaikouComponent<{
 }>;
 
 type AppShellSectionStylesNames = "section";
-interface AppShellSectionProps extends BoxProps, StylesApiProps<AppShellSectionFactory> {
+interface AppShellSectionProps extends BoxProps, CompoundStylesApiProps<AppShellSectionFactory> {
     /** Determines whether the section should take all available space, `false` by default */
     grow?: boolean;
 }
@@ -158,7 +158,7 @@ interface AppShellProps extends BoxProps, StylesApiProps<AppShellFactory>, Eleme
     /** Determines whether associated components should have a border, `true` by default */
     withBorder?: boolean;
     /** Main content section padding, `0` by default */
-    padding?: RaikouSpacing | AppShellSize | AppShellResponsiveSize;
+    padding?: RaikouSpacing | AppShellResponsiveSize;
     /** Navbar configuration */
     navbar?: {
         width: AppShellSize | AppShellResponsiveSize;

@@ -60,10 +60,10 @@ export interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
   zIndex?: React.CSSProperties["zIndex"];
 
   /** Key of `theme.shadows` or any valid CSS box-shadow value, 'xl' by default */
-  shadow?: RaikouShadow | (string & {});
+  shadow?: RaikouShadow;
 
   /** Key of `theme.spacing` or any valid CSS value to set content, header and footer padding, `'md'` by default */
-  padding?: RaikouSpacing | (string & {}) | number;
+  padding?: RaikouSpacing;
 
   /** Controls width of the content area, `'md'` by default */
   size?: RaikouSize | (string & {}) | number;
@@ -91,7 +91,7 @@ export const ModalBase = forwardRef<HTMLDivElement, ModalBaseProps>(
       __vars,
       ...others
     },
-    ref
+    ref,
   ) => {
     const {
       _id,
@@ -148,5 +148,7 @@ export const ModalBase = forwardRef<HTMLDivElement, ModalBaseProps>(
         </ModalBaseProvider>
       </OptionalPortal>
     );
-  }
+  },
 );
+
+ModalBase.displayName = "@raikou/core/ModalBase";

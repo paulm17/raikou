@@ -201,7 +201,11 @@ var import_react7 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
 var defaultProps2 = {};
 var CarouselSlide = (0, import_core3.factory)((props, ref) => {
-  const _a = (0, import_core3.useProps)("CarouselSlide", defaultProps2, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = (0, import_core3.useProps)(
+    "CarouselSlide",
+    defaultProps2,
+    props
+  ), { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useCarouselContext();
   return /* @__PURE__ */ import_react7.default.createElement(
     import_core3.Box,

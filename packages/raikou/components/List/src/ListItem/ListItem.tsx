@@ -2,7 +2,7 @@ import React from "react";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -19,7 +19,7 @@ export type ListItemStylesNames =
 // @ts-ignore
 export interface ListItemProps
   extends BoxProps,
-    StylesApiProps<ListItemFactory>,
+    CompoundStylesApiProps<ListItemFactory>,
     ElementProps<"li"> {
   /** Icon to replace item bullet */
   icon?: React.ReactNode;
@@ -44,7 +44,6 @@ export const ListItem = factory<ListItemFactory>((_props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     icon,
     children,

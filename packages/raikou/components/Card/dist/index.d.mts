@@ -1,9 +1,9 @@
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, PolymorphicFactory, RaikouShadow, RaikouRadius, RaikouSpacing } from '@raikou/core';
+import { BoxProps, CompoundStylesApiProps, PolymorphicFactory, StylesApiProps, RaikouShadow, RaikouRadius, RaikouSpacing } from '@raikou/core';
 import React from 'react';
 
 type CardSectionStylesNames = "section";
-interface CardSectionProps extends BoxProps, StylesApiProps<CardSectionFactory> {
+interface CardSectionProps extends BoxProps, CompoundStylesApiProps<CardSectionFactory> {
     /** Determines whether the section should have a border, `false` by default */
     withBorder?: boolean;
     /** Determines whether the section should inherit padding from the parent `Card`, `false` by default */
@@ -44,13 +44,13 @@ type CardCssVariables = {
 };
 interface CardProps extends BoxProps, StylesApiProps<CardFactory> {
     /** Key of `theme.shadows` or any valid CSS value to set `box-shadow`, `none` by default */
-    shadow?: RaikouShadow | (string & {});
+    shadow?: RaikouShadow;
     /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | number | (string & {});
+    radius?: RaikouRadius;
     /** Determines whether the card should have border, border color depends on color scheme, `false` by default */
     withBorder?: boolean;
     /** Controls `padding`, key of `theme.spacing` or any valid CSS value, `'md'` by default */
-    padding?: RaikouSpacing | (string & {}) | number;
+    padding?: RaikouSpacing;
     /** Card content */
     children?: React.ReactNode;
 }

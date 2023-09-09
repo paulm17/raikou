@@ -2647,7 +2647,6 @@ var PopoverDropdown = (0, import_core10.factory)(
     const _a = props, {
       className,
       style,
-      unstyled,
       vars,
       children,
       onKeyDownCapture,
@@ -2657,7 +2656,6 @@ var PopoverDropdown = (0, import_core10.factory)(
     } = _a, others = __objRest(_a, [
       "className",
       "style",
-      "unstyled",
       "vars",
       "children",
       "onKeyDownCapture",

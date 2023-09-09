@@ -156,9 +156,35 @@ var defaultProps = {
 };
 var GridCol = factory((_props, ref) => {
   const props = useProps("GridCol", defaultProps, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, {
+    classNames,
+    className,
+    style,
+    styles,
+    vars,
+    span,
+    order,
+    offset
+  } = _a, others = __objRest(_a, [
+    "classNames",
+    "className",
+    "style",
+    "styles",
+    "vars",
+    "span",
+    "order",
+    "offset"
+  ]);
   const responsiveClassName = useRandomClassName();
-  return /* @__PURE__ */ React2.createElement(React2.Fragment, null, /* @__PURE__ */ React2.createElement(GridColVariables, __spreadValues({ selector: `.${responsiveClassName}` }, props)), /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ React2.createElement(React2.Fragment, null, /* @__PURE__ */ React2.createElement(
+    GridColVariables,
+    {
+      selector: `.${responsiveClassName}`,
+      span,
+      order,
+      offset
+    }
+  ), /* @__PURE__ */ React2.createElement(
     Box,
     __spreadValues(__spreadValues({
       ref

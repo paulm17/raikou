@@ -926,7 +926,8 @@ function useInputProps(component, defaultProps52, _props) {
     inputContainer,
     inputWrapperOrder,
     withAsterisk,
-    variant
+    variant,
+    id
   }, _wrapperProps);
   return __spreadProps(__spreadValues({}, rest), {
     classNames,
@@ -1671,7 +1672,6 @@ var YearsList = factory11((_props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     decade,
     yearsListFormat,
@@ -1693,7 +1693,6 @@ var YearsList = factory11((_props, ref) => {
     "className",
     "style",
     "styles",
-    "unstyled",
     "vars",
     "decade",
     "yearsListFormat",
@@ -1722,7 +1721,6 @@ var YearsList = factory11((_props, ref) => {
     style,
     classNames,
     styles,
-    unstyled,
     vars,
     rootSelector: "yearsList"
   });
@@ -2927,7 +2925,6 @@ var DecadeLevelGroup = factory18(
       previousDisabled,
       classNames: classNames,
       styles,
-      unstyled,
       __staticSelector,
       __stopPropagation,
       numberOfColumns,
@@ -2959,7 +2956,6 @@ var DecadeLevelGroup = factory18(
       // Other settings
       "classNames",
       "styles",
-      "unstyled",
       "__staticSelector",
       "__stopPropagation",
       "numberOfColumns",
@@ -3017,7 +3013,6 @@ var DecadeLevelGroup = factory18(
           __staticSelector: __staticSelector || "DecadeLevelGroup",
           classNames,
           styles,
-          unstyled,
           withCellSpacing
         }
       );
@@ -3074,7 +3069,6 @@ var YearLevelGroup = factory19((_props, ref) => {
     hasNextLevel,
     classNames: classNames,
     styles,
-    unstyled,
     __staticSelector,
     __stopPropagation,
     numberOfColumns,
@@ -3108,7 +3102,6 @@ var YearLevelGroup = factory19((_props, ref) => {
     // Other settings
     "classNames",
     "styles",
-    "unstyled",
     "__staticSelector",
     "__stopPropagation",
     "numberOfColumns",
@@ -3167,7 +3160,6 @@ var YearLevelGroup = factory19((_props, ref) => {
         getMonthControlProps,
         classNames,
         styles,
-        unstyled,
         __staticSelector: __staticSelector || "YearLevelGroup",
         withCellSpacing
       }
@@ -5861,7 +5853,6 @@ var PopoverDropdown = factory22(
     const _a = props, {
       className,
       style,
-      unstyled,
       vars,
       children,
       onKeyDownCapture,
@@ -5871,7 +5862,6 @@ var PopoverDropdown = factory22(
     } = _a, others = __objRest(_a, [
       "className",
       "style",
-      "unstyled",
       "vars",
       "children",
       "onKeyDownCapture",
@@ -6987,6 +6977,7 @@ var ModalBase = forwardRef6(
     ));
   }
 );
+ModalBase.displayName = "@raikou/core/ModalBase";
 
 // ../components/ModalBase/src/ModalBaseBody.tsx
 import React46, { forwardRef as forwardRef7 } from "react";
@@ -7866,11 +7857,14 @@ ModalRoot.displayName = "@raikou/core/ModalRoot";
 
 // ../components/Modal/src/ModalBody.tsx
 import React65 from "react";
-import { factory as factory26, useProps as useProps35 } from "@raikou/core";
+import {
+  factory as factory26,
+  useProps as useProps35
+} from "@raikou/core";
 var defaultProps35 = {};
 var ModalBody = factory26((_props, ref) => {
   const props = useProps35("ModalBody", defaultProps35, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useModalContext();
   return /* @__PURE__ */ React65.createElement(
     ModalBaseBody,
@@ -7883,12 +7877,15 @@ ModalBody.displayName = "@raikou/core/ModalBody";
 
 // ../components/Modal/src/ModalCloseButton.tsx
 import React66 from "react";
-import { factory as factory27, useProps as useProps36 } from "@raikou/core";
+import {
+  factory as factory27,
+  useProps as useProps36
+} from "@raikou/core";
 var defaultProps36 = {};
 var ModalCloseButton = factory27(
   (_props, ref) => {
     const props = useProps36("ModalCloseButton", defaultProps36, _props);
-    const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+    const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
     const ctx = useModalContext();
     return /* @__PURE__ */ React66.createElement(
       ModalBaseCloseButton,
@@ -7902,11 +7899,14 @@ ModalCloseButton.displayName = "@raikou/core/ModalCloseButton";
 
 // ../components/Modal/src/ModalOverlay.tsx
 import React67 from "react";
-import { factory as factory28, useProps as useProps37 } from "@raikou/core";
+import {
+  factory as factory28,
+  useProps as useProps37
+} from "@raikou/core";
 var defaultProps37 = {};
 var ModalOverlay = factory28((_props, ref) => {
   const props = useProps37("ModalOverlay", defaultProps37, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useModalContext();
   return /* @__PURE__ */ React67.createElement(
     ModalBaseOverlay,
@@ -7919,7 +7919,11 @@ ModalOverlay.displayName = "@raikou/core/ModalOverlay";
 
 // ../components/Modal/src/ModalContent.tsx
 import React68 from "react";
-import { factory as factory29, useProps as useProps38, rem as rem13 } from "@raikou/core";
+import {
+  factory as factory29,
+  useProps as useProps38,
+  rem as rem13
+} from "@raikou/core";
 var defaultProps38 = {};
 var ModalContent = factory29((_props, ref) => {
   const props = useProps38("ModalContent", defaultProps38, _props);
@@ -7944,11 +7948,14 @@ ModalContent.displayName = "@raikou/core/ModalContent";
 
 // ../components/Modal/src/ModalTitle.tsx
 import React69 from "react";
-import { factory as factory30, useProps as useProps39 } from "@raikou/core";
+import {
+  factory as factory30,
+  useProps as useProps39
+} from "@raikou/core";
 var defaultProps39 = {};
 var ModalTitle = factory30((_props, ref) => {
   const props = useProps39("ModalTitle", defaultProps39, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useModalContext();
   return /* @__PURE__ */ React69.createElement(
     ModalBaseTitle,
@@ -7961,11 +7968,14 @@ ModalTitle.displayName = "@raikou/core/ModalTitle";
 
 // ../components/Modal/src/ModalHeader.tsx
 import React70 from "react";
-import { factory as factory31, useProps as useProps40 } from "@raikou/core";
+import {
+  factory as factory31,
+  useProps as useProps40
+} from "@raikou/core";
 var defaultProps40 = {};
 var ModalHeader = factory31((_props, ref) => {
   const props = useProps40("ModalHeader", defaultProps40, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useModalContext();
   return /* @__PURE__ */ React70.createElement(
     ModalBaseHeader,
@@ -8889,7 +8899,6 @@ var YearPicker = factory35(
     const _a = props, {
       classNames,
       styles,
-      unstyled,
       vars,
       type,
       defaultValue,
@@ -8905,7 +8914,6 @@ var YearPicker = factory35(
     } = _a, others = __objRest(_a, [
       "classNames",
       "styles",
-      "unstyled",
       "vars",
       "type",
       "defaultValue",
@@ -9069,7 +9077,6 @@ var DatePicker = factory37(
     const _a = props, {
       classNames,
       styles,
-      unstyled,
       vars,
       type,
       defaultValue,
@@ -9087,7 +9094,6 @@ var DatePicker = factory37(
     } = _a, others = __objRest(_a, [
       "classNames",
       "styles",
-      "unstyled",
       "vars",
       "type",
       "defaultValue",

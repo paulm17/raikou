@@ -68,6 +68,8 @@ module.exports = function ({ addComponents, theme }: any) {
         "--_separator-height": rem("2px"),
         "--_separator-ml": "var(--raikou-spacing-md)",
         "--_separator-mr": "var(--raikou-spacing-md)",
+        "--_separator-mt": "0",
+        "--_separator-mb": "0",
       },
 
       '&[data-orientation="vertical"]': {

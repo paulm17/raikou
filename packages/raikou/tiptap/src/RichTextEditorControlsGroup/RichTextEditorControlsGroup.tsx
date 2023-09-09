@@ -2,7 +2,7 @@ import React from "react";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -13,7 +13,7 @@ import { useRichTextEditorContext } from "../RichTextEditor.context";
 export type RichTextEditorControlsGroupStylesNames = "controlsGroup";
 export interface RichTextEditorControlsGroupProps
   extends BoxProps,
-    StylesApiProps<RichTextEditorControlsGroupFactory>,
+    CompoundStylesApiProps<RichTextEditorControlsGroupFactory>,
     ElementProps<"div"> {}
 
 export type RichTextEditorControlsGroupFactory = Factory<{
@@ -28,8 +28,7 @@ const defaultProps: Partial<RichTextEditorControlsGroupProps> = {};
 export const RichTextEditorControlsGroup =
   factory<RichTextEditorControlsGroupFactory>((_props, ref) => {
     const props = useProps("RichTextEditorControlsGroup", defaultProps, _props);
-    const { classNames, className, style, styles, unstyled, vars, ...others } =
-      props;
+    const { classNames, className, style, styles, vars, ...others } = props;
     const ctx = useRichTextEditorContext();
     return (
       <Box

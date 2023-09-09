@@ -16,10 +16,10 @@ export interface ModalBaseContentProps extends BoxProps, ElementProps<"div"> {
   transitionProps?: TransitionOverride;
 
   /** Key of `theme.shadows` or any valid CSS value to set `box-shadow`, `none` by default */
-  shadow?: RaikouShadow | (string & {});
+  shadow?: RaikouShadow;
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `theme.defaultRadius` by default */
-  radius?: RaikouRadius | number | (string & {});
+  radius?: RaikouRadius;
 }
 
 interface _ModalBaseContentProps extends ModalBaseContentProps {
@@ -41,6 +41,7 @@ export const ModalBaseContent = forwardRef<
         (event.target as HTMLElement)?.getAttribute(
           "data-raikou-stop-propagation",
         ) !== "true";
+      // eslint-disable-next-line
       shouldTrigger &&
         event.key === "Escape" &&
         ctx.closeOnEscape &&

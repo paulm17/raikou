@@ -89,7 +89,6 @@ var ListItem = (0, import_core.factory)((_props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     icon,
     children
@@ -98,7 +97,6 @@ var ListItem = (0, import_core.factory)((_props, ref) => {
     "className",
     "style",
     "styles",
-    "unstyled",
     "vars",
     "icon",
     "children"

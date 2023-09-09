@@ -25,7 +25,7 @@ export interface CheckboxGroupProps
   onChange?(value: string[]): void;
 
   /** Props passed down to the `Input.Wrapper` */
-  wrapperProps?: React.ComponentPropsWithoutRef<"div">;
+  wrapperProps?: Record<string, any>;
 
   /** Controls size of the `Input.Wrapper`, `'sm'` by default */
   size?: RaikouSize | (string & {});
@@ -62,7 +62,7 @@ export const CheckboxGroup = factory<CheckboxGroupFactory>((props, ref) => {
     setValue(
       _value.includes(itemValue)
         ? _value.filter((item) => item !== itemValue)
-        : [..._value, itemValue]
+        : [..._value, itemValue],
     );
   };
 
@@ -83,4 +83,3 @@ export const CheckboxGroup = factory<CheckboxGroupFactory>((props, ref) => {
     </CheckboxGroupProvider>
   );
 });
-

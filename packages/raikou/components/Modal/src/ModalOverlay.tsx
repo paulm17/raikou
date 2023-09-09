@@ -1,5 +1,10 @@
 import React from "react";
-import { StylesApiProps, factory, useProps, Factory } from "@raikou/core";
+import {
+  CompoundStylesApiProps,
+  factory,
+  useProps,
+  Factory,
+} from "@raikou/core";
 import { ModalBaseOverlay, ModalBaseOverlayProps } from "../../ModalBase/src";
 import { useModalContext } from "./Modal.context";
 
@@ -7,7 +12,7 @@ export type ModalOverlayStylesNames = "overlay";
 
 export interface ModalOverlayProps
   extends ModalBaseOverlayProps,
-    StylesApiProps<ModalOverlayFactory> {}
+    CompoundStylesApiProps<ModalOverlayFactory> {}
 
 export type ModalOverlayFactory = Factory<{
   props: ModalOverlayProps;
@@ -20,8 +25,7 @@ const defaultProps: Partial<ModalOverlayProps> = {};
 
 export const ModalOverlay = factory<ModalOverlayFactory>((_props, ref) => {
   const props = useProps("ModalOverlay", defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, ...others } =
-    props;
+  const { classNames, className, style, styles, vars, ...others } = props;
 
   const ctx = useModalContext();
 

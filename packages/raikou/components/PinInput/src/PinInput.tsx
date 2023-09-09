@@ -41,10 +41,10 @@ export interface PinInputProps
   form?: string;
 
   /** Key of `theme.spacing` or any valid CSS value for `gap`, numbers are converted to rem, `'md'` by default */
-  gap?: RaikouSpacing | (string & {}) | number;
+  gap?: RaikouSpacing;
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `theme.defaultRadius` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Controls inputs `width` and `height`, `'sm'` by default */
   size?: RaikouSize;
@@ -244,18 +244,22 @@ export const PinInput = factory<PinInputFactory>((props, ref) => {
     index: number,
   ) => {
     const inputValue = event.target.value;
-    const nextChar =
-      inputValue.length > 1
+    const nextCharOrValue =
+      inputValue.length === 2
         ? inputValue.split("")[inputValue.length - 1]
         : inputValue;
 
-    const isValid = validate(nextChar);
+    const isValid = validate(nextCharOrValue);
 
-    if (isValid) {
-      setFieldValue(nextChar, index);
-      focusInputField("next", index);
-    } else {
-      setFieldValue("", index);
+    if (nextCharOrValue.length < 2) {
+      if (isValid) {
+        setFieldValue(nextCharOrValue, index);
+        focusInputField("next", index);
+      } else {
+        setFieldValue("", index);
+      }
+    } else if (isValid) {
+      setValues(inputValue);
     }
   };
 

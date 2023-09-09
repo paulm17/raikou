@@ -383,7 +383,6 @@ var PaginationControl = (0, import_core4.factory)(
       className,
       style,
       styles,
-      unstyled,
       vars,
       active,
       disabled,
@@ -393,7 +392,6 @@ var PaginationControl = (0, import_core4.factory)(
       "className",
       "style",
       "styles",
-      "unstyled",
       "vars",
       "active",
       "disabled",
@@ -477,23 +475,7 @@ var defaultProps5 = {
 };
 var PaginationDots = (0, import_core5.factory)((_props, ref) => {
   const props = (0, import_core5.useProps)("PaginationDots", defaultProps5, _props);
-  const _a = props, {
-    classNames,
-    className,
-    style,
-    styles,
-    unstyled,
-    vars,
-    icon
-  } = _a, others = __objRest(_a, [
-    "classNames",
-    "className",
-    "style",
-    "styles",
-    "unstyled",
-    "vars",
-    "icon"
-  ]);
+  const _a = props, { classNames, className, style, styles, vars, icon } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars", "icon"]);
   const ctx = usePaginationContext();
   const Icon = icon;
   return /* @__PURE__ */ import_react11.default.createElement(

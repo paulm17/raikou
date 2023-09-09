@@ -50,12 +50,16 @@ function getDecrementedValue({
 }: GetDecrementedValueInput) {
   const nextValue = value - step;
 
+  if (min !== undefined && nextValue < min) {
+    return min;
+  }
+
   if (!allowNegative && nextValue < 0 && min === undefined) {
     return value;
   }
 
   if (min !== undefined && min >= 0 && nextValue <= min) {
-    return value;
+    return nextValue;
   }
 
   return nextValue;
@@ -178,6 +182,7 @@ const defaultProps: Partial<NumberInputProps> = {
   size: "sm",
   clampBehavior: "blur",
   allowDecimal: true,
+  allowNegative: true,
   startValue: 0,
 };
 
@@ -214,6 +219,7 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
     disabled,
     rightSectionPointerEvents,
     allowNegative,
+    readOnly,
     ...others
   } = props;
 
@@ -274,6 +280,10 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     onKeyDown?.(event);
 
+    if (readOnly) {
+      return;
+    }
+
     if (event.key === "ArrowUp") {
       event.preventDefault();
       increment();
@@ -322,11 +332,14 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
     <InputBase
       component={NumericFormat}
       {...others}
+      readOnly={readOnly}
       disabled={disabled}
       value={_value}
       getInputRef={ref}
       onValueChange={handleValueChange}
-      rightSection={hideControls ? rightSection : rightSection || controls}
+      rightSection={
+        hideControls || readOnly ? rightSection : rightSection || controls
+      }
       classNames={resolvedClassNames}
       styles={resolvedStyles}
       unstyled={unstyled}

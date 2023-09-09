@@ -3,7 +3,7 @@ import { useFocusReturn, useMergedRef } from "@raikou/hooks";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -20,7 +20,7 @@ import { usePopoverContext } from "../Popover.context";
 
 export interface PopoverDropdownProps
   extends BoxProps,
-    StylesApiProps<PopoverDropdownFactory>,
+    CompoundStylesApiProps<PopoverDropdownFactory>,
     ElementProps<"div"> {}
 
 export type PopoverDropdownFactory = Factory<{
@@ -38,7 +38,6 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>(
     const {
       className,
       style,
-      unstyled,
       vars,
       children,
       onKeyDownCapture,
@@ -139,7 +138,7 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>(
         </Transition>
       </OptionalPortal>
     );
-  }
+  },
 );
 
 PopoverDropdown.displayName = "@raikou/core/PopoverDropdown";

@@ -81,7 +81,7 @@ export interface StepperProps
   iconSize?: number | string;
 
   /** Key of `theme.spacing` or any valid CSS value to set `padding-top` of the content */
-  contentPadding?: RaikouSpacing | (string & {}) | number;
+  contentPadding?: RaikouSpacing;
 
   /** Stepper orientation, `'horizontal'` by default */
   orientation?: "vertical" | "horizontal";
@@ -93,7 +93,7 @@ export interface StepperProps
   size?: RaikouSize;
 
   /** Key of `theme.radius` or any valid CSS value to set steps border-radius, `"xl"` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Determines whether next steps can be selected, `true` by default **/
   allowNextStepsSelect?: boolean;

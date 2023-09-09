@@ -3433,7 +3433,7 @@ interface SwitchGroupProps extends Omit<InputWrapperProps, "onChange"> {
     /** Called when value changes */
     onChange?(value: string[]): void;
     /** Props passed down to the `Input.Wrapper` */
-    wrapperProps?: React$1.ComponentPropsWithoutRef<"div">;
+    wrapperProps?: Record<string, any>;
     /** Controls size of the `Input.Wrapper`, `'sm'` by default */
     size?: RaikouSize | (string & {});
 }
@@ -3466,9 +3466,9 @@ interface SwitchProps extends BoxProps, StylesApiProps<SwitchFactory>, ElementPr
     /** Controls size of all elements */
     size?: RaikouSize | (string & {});
     /** Key of `theme.radius` or any valid CSS value to set `border-radius,` "xl" by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Props passed down to the wrapper element */
-    wrapperProps?: React$1.ComponentPropsWithoutRef<"div">;
+    wrapperProps?: Record<string, any>;
     /** Icon inside the thumb of switch */
     thumbIcon?: React$1.ReactNode;
     /** Position of the label relative to the input, `'right'` by default */

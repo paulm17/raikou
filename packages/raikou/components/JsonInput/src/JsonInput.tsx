@@ -30,7 +30,7 @@ export interface JsonInputProps extends Omit<TextareaProps, "onChange"> {
 
 export type JsonInputFactory = Factory<{
   props: JsonInputProps;
-  ref: HTMLInputElement;
+  ref: HTMLTextAreaElement;
   stylesNames: __InputStylesNames;
 }>;
 

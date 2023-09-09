@@ -3483,7 +3483,7 @@ interface RaikouTheme {
     /** Object of values that are used to set `border-radius` in all components that support it */
     radius: RaikouRadiusValues;
     /** Key of `theme.radius` or any valid CSS value. Default `border-radius` used by most components */
-    defaultRadius: RaikouRadius | number | (string & {});
+    defaultRadius: RaikouRadius;
     /** Object of values that are used to set various CSS properties that control spacing between elements */
     spacing: RaikouSpacingValues;
     /** Object of values that are used to control `font-size` property in all components */
@@ -3540,9 +3540,9 @@ type RaikouShadowsValues = Record<RaikouSize, string>;
 type RaikouLineHeightValues = Record<RaikouSize, string>;
 type RaikouBreakpoint = keyof RaikouBreakpointsValues;
 type RaikouFontSize = keyof RaikouFontSizesValues;
-type RaikouRadius = keyof RaikouRadiusValues;
-type RaikouSpacing = keyof RaikouSpacingValues;
-type RaikouShadow = keyof RaikouShadowsValues;
+type RaikouRadius = keyof RaikouRadiusValues | (string & {}) | number;
+type RaikouSpacing = keyof RaikouSpacingValues | (string & {}) | number;
+type RaikouShadow = keyof RaikouShadowsValues | (string & {});
 type RaikouLineHeight = keyof RaikouLineHeightValues;
 type RaikouThemeOther = Record<string, any>;
 interface RaikouGradient {

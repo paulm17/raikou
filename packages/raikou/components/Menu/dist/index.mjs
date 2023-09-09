@@ -2656,7 +2656,6 @@ var PopoverDropdown = factory2(
     const _a = props, {
       className,
       style,
-      unstyled,
       vars,
       children,
       onKeyDownCapture,
@@ -2666,7 +2665,6 @@ var PopoverDropdown = factory2(
     } = _a, others = __objRest(_a, [
       "className",
       "style",
-      "unstyled",
       "vars",
       "children",
       "onKeyDownCapture",
@@ -2985,7 +2983,11 @@ var [MenuContextProvider, useMenuContext] = createSafeContext("Menu component wa
 // src/MenuDivider/MenuDivider.tsx
 var defaultProps5 = {};
 var MenuDivider = factory3((props, ref) => {
-  const _a = useProps5("MenuDivider", defaultProps5, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = useProps5(
+    "MenuDivider",
+    defaultProps5,
+    props
+  ), { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useMenuContext();
   return /* @__PURE__ */ React13.createElement(
     Box2,
@@ -3010,7 +3012,6 @@ var MenuDropdown = factory4((props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     onMouseEnter,
     onMouseLeave,
@@ -3020,7 +3021,6 @@ var MenuDropdown = factory4((props, ref) => {
     "className",
     "style",
     "styles",
-    "unstyled",
     "vars",
     "onMouseEnter",
     "onMouseLeave",
@@ -3145,7 +3145,6 @@ var MenuItem = polymorphicFactory2((props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     color,
     closeMenuOnClick,
@@ -3158,7 +3157,6 @@ var MenuItem = polymorphicFactory2((props, ref) => {
     "className",
     "style",
     "styles",
-    "unstyled",
     "vars",
     "color",
     "closeMenuOnClick",
@@ -3250,7 +3248,11 @@ import {
 } from "@raikou/core";
 var defaultProps9 = {};
 var MenuLabel = factory5((props, ref) => {
-  const _a = useProps9("MenuLabel", defaultProps9, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = useProps9(
+    "MenuLabel",
+    defaultProps9,
+    props
+  ), { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useMenuContext();
   return /* @__PURE__ */ React17.createElement(
     Box4,
@@ -3431,6 +3433,7 @@ function Menu(_props) {
     )
   );
 }
+Menu.extend = (input) => input;
 Menu.displayName = "@raikou/core/Menu";
 Menu.Item = MenuItem;
 Menu.Label = MenuLabel;

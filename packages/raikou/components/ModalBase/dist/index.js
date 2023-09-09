@@ -308,6 +308,7 @@ var ModalBase = (0, import_react9.forwardRef)(
     ));
   }
 );
+ModalBase.displayName = "@raikou/core/ModalBase";
 
 // src/ModalBaseBody.tsx
 var import_react11 = __toESM(require("react"));

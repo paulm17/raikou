@@ -14,7 +14,7 @@ interface BlockquoteProps extends BoxProps, StylesApiProps<BlockquoteFactory>, E
     /** Key of `theme.colors` or any valid CSS color, `theme.primaryColor` by default */
     color?: RaikouColor;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Reference to a cited quote */
     cite?: React.ReactNode;
 }

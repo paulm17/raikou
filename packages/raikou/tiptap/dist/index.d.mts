@@ -1,7 +1,7 @@
 import * as _tiptap_core from '@tiptap/core';
 import * as _tiptap_extension_link from '@tiptap/extension-link';
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, Factory, RaikouRadius, RaikouShadow, RaikouSize, GetStylesApi } from '@raikou/core';
+import { BoxProps, CompoundStylesApiProps, ElementProps, Factory, StylesApiProps, RaikouRadius, RaikouShadow, RaikouSize, GetStylesApi } from '@raikou/core';
 import React$1 from 'react';
 import { Editor } from '@tiptap/react';
 
@@ -92,7 +92,7 @@ interface RichTextEditorLabels {
 declare const DEFAULT_LABELS: RichTextEditorLabels;
 
 type RichTextEditorToolbarStylesNames = "toolbar";
-interface RichTextEditorToolbarProps extends BoxProps, StylesApiProps<RichTextEditorToolbarFactory>, ElementProps<"div"> {
+interface RichTextEditorToolbarProps extends BoxProps, CompoundStylesApiProps<RichTextEditorToolbarFactory>, ElementProps<"div"> {
     /** Determines whether `position: sticky` styles should be added to the toolbar, `false` by default */
     sticky?: boolean;
     /** Sets top style to offset elements with fixed position, `0` by default */
@@ -112,7 +112,7 @@ declare const RichTextEditorToolbar: _raikou_core.RaikouComponent<{
 }>;
 
 type RichTextEditorControlsGroupStylesNames = "controlsGroup";
-interface RichTextEditorControlsGroupProps extends BoxProps, StylesApiProps<RichTextEditorControlsGroupFactory>, ElementProps<"div"> {
+interface RichTextEditorControlsGroupProps extends BoxProps, CompoundStylesApiProps<RichTextEditorControlsGroupFactory>, ElementProps<"div"> {
 }
 type RichTextEditorControlsGroupFactory = Factory<{
     props: RichTextEditorControlsGroupProps;
@@ -128,7 +128,7 @@ declare const RichTextEditorControlsGroup: _raikou_core.RaikouComponent<{
 }>;
 
 type RichTextEditorContentStylesNames = "root";
-interface RichTextEditorContentProps extends BoxProps, StylesApiProps<RichTextEditorContentFactory>, ElementProps<"div"> {
+interface RichTextEditorContentProps extends BoxProps, CompoundStylesApiProps<RichTextEditorContentFactory>, ElementProps<"div"> {
 }
 type RichTextEditorContentFactory = Factory<{
     props: RichTextEditorContentProps;
@@ -144,7 +144,7 @@ declare const RichTextEditorContent: _raikou_core.RaikouComponent<{
 }>;
 
 type RichTextEditorControlStylesNames = "control";
-interface RichTextEditorControlProps extends BoxProps, StylesApiProps<RichTextEditorControlFactory>, ElementProps<"button"> {
+interface RichTextEditorControlProps extends BoxProps, CompoundStylesApiProps<RichTextEditorControlFactory>, ElementProps<"button"> {
     /** Determines whether the control should have active state, false by default */
     active?: boolean;
     /** Determines whether the control can be interacted with, set `false` to make the control to act as a label */
@@ -296,9 +296,9 @@ interface __PopoverProps {
     /** Dropdown `z-index`, `300` by default */
     zIndex?: React$1.CSSProperties["zIndex"];
     /** Key of `theme.radius` or any valid CSS value to set border-radius, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Key of `theme.shadows` or any other valid CSS `box-shadow` value */
-    shadow?: RaikouShadow | (string & {});
+    shadow?: RaikouShadow;
     /** If set, popover dropdown will not be rendered */
     disabled?: boolean;
     /** Determines whether focus should be automatically returned to control when dropdown closes, `false` by default */
@@ -334,7 +334,7 @@ type PopoverFactory = Factory<{
 }>;
 
 type RichTextEditorLinkControlStylesNames = "linkEditor" | "linkEditorDropdown" | "linkEditorSave" | "linkEditorInput" | "linkEditorExternalControl";
-interface RichTextEditorLinkControlProps extends BoxProps, Omit<RichTextEditorControlBaseProps, "classNames" | "styles" | "vars">, StylesApiProps<RichTextEditorLinkControlFactory> {
+interface RichTextEditorLinkControlProps extends BoxProps, Omit<RichTextEditorControlBaseProps, "classNames" | "styles" | "vars">, CompoundStylesApiProps<RichTextEditorLinkControlFactory> {
     /** Props passed down to Popover component */
     popoverProps?: Partial<PopoverProps>;
     /** Determines whether external link control tooltip should be disabled, `false` by default */

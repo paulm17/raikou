@@ -56,7 +56,7 @@ export interface AppShellProps
   withBorder?: boolean;
 
   /** Main content section padding, `0` by default */
-  padding?: RaikouSpacing | AppShellSize | AppShellResponsiveSize;
+  padding?: RaikouSpacing | AppShellResponsiveSize;
 
   /** Navbar configuration */
   navbar?: {

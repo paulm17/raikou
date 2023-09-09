@@ -23,16 +23,15 @@ import {
   SliderStylesNames,
   SliderProvider,
   SliderCssVariables,
-  SliderVariant,
 } from "../Slider.context";
 import { SliderRoot } from "../SliderRoot/SliderRoot";
 import { Track } from "../Track/Track";
 import { Thumb } from "../Thumb/Thumb";
-import { getPosition } from '../utils/get-position/get-position';
-import { getChangeValue } from '../utils/get-change-value/get-change-value';
-import { getPrecision } from '../utils/get-precision/get-precision';
-import { getFloatingValue } from '../utils/get-floating-value/get-gloating-value';
-import { getClientPosition } from '../utils/get-client-position/get-client-position';
+import { getPosition } from "../utils/get-position/get-position";
+import { getChangeValue } from "../utils/get-change-value/get-change-value";
+import { getPrecision } from "../utils/get-precision/get-precision";
+import { getFloatingValue } from "../utils/get-floating-value/get-gloating-value";
+import { getClientPosition } from "../utils/get-client-position/get-client-position";
 
 export type RangeSliderValue = [number, number];
 
@@ -44,10 +43,10 @@ export interface RangeSliderProps
   color?: RaikouColor;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `'xl'` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Controls size of the track, `'md'` by default */
-  size?: RaikouSize | (string & {}) | number;
+  size?: RaikouSize;
 
   /** Minimal possible value, `0` by default */
   min?: number;
@@ -137,7 +136,7 @@ const varsResolver = createVarsResolver<RangeSliderFactory>(
           ? rem(thumbSize)
           : "calc(var(--slider-size) * 2)",
     },
-  })
+  }),
 );
 
 const defaultProps: Partial<RangeSliderProps> = {
@@ -243,13 +242,13 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
         valueRef.current = value;
       }
     },
-    Array.isArray(value) ? [value[0], value[1]] : [null, null]
+    Array.isArray(value) ? [value[0], value[1]] : [null, null],
   );
 
   const setRangedValue = (
     val: number,
     index: number,
-    triggerChangeEnd: boolean
+    triggerChangeEnd: boolean,
   ) => {
     const clone: RangeSliderValue = [...valueRef.current];
     clone[index] = val;
@@ -282,6 +281,9 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
       }
     }
 
+    clone[0] = getFloatingValue(clone[0], precision);
+    clone[1] = getFloatingValue(clone[1], precision);
+
     _setValue(clone);
 
     if (triggerChangeEnd) {
@@ -305,7 +307,7 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
   const { ref: container, active } = useMove(
     ({ x }) => handleChange(x),
     { onScrubEnd: () => onChangeEnd?.(valueRef.current) },
-    dir
+    dir,
   );
 
   function handleThumbMouseDown(index: number) {
@@ -313,7 +315,7 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
   }
 
   const handleTrackMouseDownCapture = (
-    event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>
+    event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
   ) => {
     container.current!.focus();
     const rect = container.current!.getBoundingClientRect();
@@ -346,7 +348,7 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
   };
 
   const handleTrackKeydownCapture = (
-    event: React.KeyboardEvent<HTMLDivElement>
+    event: React.KeyboardEvent<HTMLDivElement>,
   ) => {
     if (!disabled) {
       switch (event.key) {
@@ -356,11 +358,14 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
           thumbs.current[focusedIndex].focus();
           setRangedValue(
             getFloatingValue(
-              Math.min(Math.max(valueRef.current[focusedIndex] + step!, min!), max!),
-              precision
+              Math.min(
+                Math.max(valueRef.current[focusedIndex] + step!, min!),
+                max!,
+              ),
+              precision,
             ),
             focusedIndex,
-            true
+            true,
           );
           break;
         }
@@ -372,17 +377,17 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
             getFloatingValue(
               Math.min(
                 Math.max(
-                  dir === 'rtl'
+                  dir === "rtl"
                     ? valueRef.current[focusedIndex] - step!
                     : valueRef.current[focusedIndex] + step!,
-                  min!
+                  min!,
                 ),
-                max!
+                max!,
               ),
-              precision
+              precision,
             ),
             focusedIndex,
-            true
+            true,
           );
           break;
         }
@@ -393,11 +398,14 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
           thumbs.current[focusedIndex].focus();
           setRangedValue(
             getFloatingValue(
-              Math.min(Math.max(valueRef.current[focusedIndex] - step!, min!), max!),
-              precision
+              Math.min(
+                Math.max(valueRef.current[focusedIndex] - step!, min!),
+                max!,
+              ),
+              precision,
             ),
             focusedIndex,
-            true
+            true,
           );
           break;
         }
@@ -409,17 +417,17 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
             getFloatingValue(
               Math.min(
                 Math.max(
-                  dir === 'rtl'
+                  dir === "rtl"
                     ? valueRef.current[focusedIndex] + step!
                     : valueRef.current[focusedIndex] - step!,
-                  min!
+                  min!,
                 ),
-                max!
+                max!,
               ),
-              precision
+              precision,
             ),
             focusedIndex,
-            true
+            true,
           );
           break;
         }
@@ -478,7 +486,9 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
             position={positions[0]}
             dragging={active}
             label={
-              typeof label === "function" ? label(scale!(_value[0])) : label
+              typeof label === "function"
+                ? label(getFloatingValue(scale!(_value[0]), precision))
+                : label
             }
             ref={(node) => {
               thumbs.current[0] = node!;
@@ -500,7 +510,9 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
             position={positions[1]}
             dragging={active}
             label={
-              typeof label === "function" ? label(scale!(_value[1])) : label
+              typeof label === "function"
+                ? label(getFloatingValue(scale!(_value[1]), precision))
+                : label
             }
             ref={(node) => {
               thumbs.current[1] = node!;

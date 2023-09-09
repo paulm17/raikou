@@ -1125,7 +1125,7 @@ var Notifications = (0, import_core13.factory)((_props, ref) => {
       setTimeout(() => forceUpdate(), 0);
     }
     previousLength.current = data.notifications.length;
-  }, [notifications]);
+  }, [data.notifications]);
   const items = data.notifications.map((notification) => /* @__PURE__ */ import_react17.default.createElement(
     Transition,
     {

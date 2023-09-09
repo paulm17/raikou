@@ -1142,7 +1142,7 @@ var Notifications = factory4((_props, ref) => {
       setTimeout(() => forceUpdate(), 0);
     }
     previousLength.current = data.notifications.length;
-  }, [notifications]);
+  }, [data.notifications]);
   const items = data.notifications.map((notification) => /* @__PURE__ */ React16.createElement(
     Transition,
     {

@@ -1,10 +1,10 @@
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, Factory, RaikouColor, PolymorphicFactory, RaikouRadius, RaikouShadow } from '@raikou/core';
+import { BoxProps, CompoundStylesApiProps, ElementProps, Factory, RaikouColor, PolymorphicFactory, RaikouRadius, RaikouShadow, StylesApiProps } from '@raikou/core';
 import React$1 from 'react';
 import * as types from 'types';
 
 type MenuDividerStylesNames = "divider";
-interface MenuDividerProps extends BoxProps, StylesApiProps<MenuDividerFactory>, ElementProps<"div"> {
+interface MenuDividerProps extends BoxProps, CompoundStylesApiProps<MenuDividerFactory>, ElementProps<"div"> {
 }
 type MenuDividerFactory = Factory<{
     props: MenuDividerProps;
@@ -28,7 +28,7 @@ interface MenuTargetProps {
 declare const MenuTarget: React$1.ForwardRefExoticComponent<MenuTargetProps & React$1.RefAttributes<HTMLElement>>;
 
 type MenuDropdownStylesNames = "dropdown";
-interface MenuDropdownProps extends BoxProps, StylesApiProps<MenuDropdownFactory>, ElementProps<"div"> {
+interface MenuDropdownProps extends BoxProps, CompoundStylesApiProps<MenuDropdownFactory>, ElementProps<"div"> {
 }
 type MenuDropdownFactory = Factory<{
     props: MenuDropdownProps;
@@ -44,7 +44,7 @@ declare const MenuDropdown: _raikou_core.RaikouComponent<{
 }>;
 
 type MenuLabelStylesNames = "label";
-interface MenuLabelProps extends BoxProps, StylesApiProps<MenuLabelFactory>, ElementProps<"div"> {
+interface MenuLabelProps extends BoxProps, CompoundStylesApiProps<MenuLabelFactory>, ElementProps<"div"> {
 }
 type MenuLabelFactory = Factory<{
     props: MenuLabelProps;
@@ -60,7 +60,7 @@ declare const MenuLabel: _raikou_core.RaikouComponent<{
 }>;
 
 type MenuItemStylesNames = "item" | "itemLabel" | "itemSection";
-interface MenuItemProps extends BoxProps, StylesApiProps<MenuItemFactory> {
+interface MenuItemProps extends BoxProps, CompoundStylesApiProps<MenuItemFactory> {
     /** Item label */
     children?: React$1.ReactNode;
     /** Key of `theme.colors` or any valid CSS color */
@@ -201,9 +201,9 @@ interface __PopoverProps {
     /** Dropdown `z-index`, `300` by default */
     zIndex?: React$1.CSSProperties["zIndex"];
     /** Key of `theme.radius` or any valid CSS value to set border-radius, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Key of `theme.shadows` or any other valid CSS `box-shadow` value */
-    shadow?: RaikouShadow | (string & {});
+    shadow?: RaikouShadow;
     /** If set, popover dropdown will not be rendered */
     disabled?: boolean;
     /** Determines whether focus should be automatically returned to control when dropdown closes, `false` by default */
@@ -251,6 +251,15 @@ interface MenuProps extends __PopoverProps, StylesApiProps<MenuFactory> {
 }
 declare function Menu(_props: MenuProps): React$1.JSX.Element;
 declare namespace Menu {
+    var extend: (input: _raikou_core.ExtendsRootComponent<{
+        props: MenuProps;
+        ref: HTMLDivElement;
+        stylesNames: MenuStylesNames;
+    }>) => _raikou_core.ExtendsRootComponent<{
+        props: MenuProps;
+        ref: HTMLDivElement;
+        stylesNames: MenuStylesNames;
+    }>;
     var displayName: string;
     var Item: (<C = "button">(props: C extends types.ElementType<any> ? MenuItemProps & {
         component?: C | undefined;
@@ -265,7 +274,7 @@ declare namespace Menu {
     }) | (MenuItemProps & {
         component: types.ElementType<any>;
     })>, never> & _raikou_core.ThemeExtend<{
-        props: MenuItemProps;
+        props: MenuItemProps; /** Uncontrolled menu initial opened state */
         defaultRef: HTMLButtonElement;
         defaultComponent: "button";
         stylesNames: MenuItemStylesNames;

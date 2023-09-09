@@ -82,22 +82,21 @@ type CssVars<Variable extends string = CssVariable> = CssVariables<Variable> | (
 type CssVarsProp<Variable extends string = CssVariable> = CssVars<Variable> | CssVars<Variable>[];
 
 type StyleProp<Value> = Value | Partial<Record<RaikouBreakpoint | (string & {}), Value>>;
-type StylePropSpacingValue = RaikouSpacing | number | (string & {});
 interface RaikouStyleProps {
-    m?: StyleProp<StylePropSpacingValue>;
-    my?: StyleProp<StylePropSpacingValue>;
-    mx?: StyleProp<StylePropSpacingValue>;
-    mt?: StyleProp<StylePropSpacingValue>;
-    mb?: StyleProp<StylePropSpacingValue>;
-    ml?: StyleProp<StylePropSpacingValue>;
-    mr?: StyleProp<StylePropSpacingValue>;
-    p?: StyleProp<StylePropSpacingValue>;
-    py?: StyleProp<StylePropSpacingValue>;
-    px?: StyleProp<StylePropSpacingValue>;
-    pt?: StyleProp<StylePropSpacingValue>;
-    pb?: StyleProp<StylePropSpacingValue>;
-    pl?: StyleProp<StylePropSpacingValue>;
-    pr?: StyleProp<StylePropSpacingValue>;
+    m?: StyleProp<RaikouSpacing>;
+    my?: StyleProp<RaikouSpacing>;
+    mx?: StyleProp<RaikouSpacing>;
+    mt?: StyleProp<RaikouSpacing>;
+    mb?: StyleProp<RaikouSpacing>;
+    ml?: StyleProp<RaikouSpacing>;
+    mr?: StyleProp<RaikouSpacing>;
+    p?: StyleProp<RaikouSpacing>;
+    py?: StyleProp<RaikouSpacing>;
+    px?: StyleProp<RaikouSpacing>;
+    pt?: StyleProp<RaikouSpacing>;
+    pb?: StyleProp<RaikouSpacing>;
+    pl?: StyleProp<RaikouSpacing>;
+    pr?: StyleProp<RaikouSpacing>;
     bg?: StyleProp<RaikouColor>;
     c?: StyleProp<RaikouColor>;
     opacity?: StyleProp<React.CSSProperties["opacity"]>;
@@ -356,7 +355,7 @@ interface RaikouTheme {
     /** Object of values that are used to set `border-radius` in all components that support it */
     radius: RaikouRadiusValues;
     /** Key of `theme.radius` or any valid CSS value. Default `border-radius` used by most components */
-    defaultRadius: RaikouRadius | number | (string & {});
+    defaultRadius: RaikouRadius;
     /** Object of values that are used to set various CSS properties that control spacing between elements */
     spacing: RaikouSpacingValues;
     /** Object of values that are used to control `font-size` property in all components */
@@ -413,9 +412,9 @@ type RaikouShadowsValues = Record<RaikouSize, string>;
 type RaikouLineHeightValues = Record<RaikouSize, string>;
 type RaikouBreakpoint = keyof RaikouBreakpointsValues;
 type RaikouFontSize = keyof RaikouFontSizesValues;
-type RaikouRadius = keyof RaikouRadiusValues;
-type RaikouSpacing = keyof RaikouSpacingValues;
-type RaikouShadow = keyof RaikouShadowsValues;
+type RaikouRadius = keyof RaikouRadiusValues | (string & {}) | number;
+type RaikouSpacing = keyof RaikouSpacingValues | (string & {}) | number;
+type RaikouShadow = keyof RaikouShadowsValues | (string & {});
 type RaikouLineHeight = keyof RaikouLineHeightValues;
 type RaikouThemeOther = Record<string, any>;
 interface RaikouGradient {
@@ -541,7 +540,7 @@ interface GetStylesApiOptions {
     variant?: string;
     props?: Record<string, any>;
 }
-type StylesApiRecord<Payload extends FactoryPayload, DataType> = Payload["stylesNames"] extends string ? StylesRecord<Payload["stylesNames"], DataType> | ((theme: RaikouTheme, props: Payload["props"], ctx: Payload["ctx"]) => StylesRecord<Payload["stylesNames"], DataType>) : never;
+type StylesApiRecord<Payload extends FactoryPayload, DataType> = Payload["compound"] extends true ? Payload["stylesNames"] extends string ? StylesRecord<Payload["stylesNames"], DataType> : never : Payload["stylesNames"] extends string ? StylesRecord<Payload["stylesNames"], DataType> | ((theme: RaikouTheme, props: Payload["props"], ctx: Payload["ctx"]) => StylesRecord<Payload["stylesNames"], DataType>) : never;
 type Styles<Payload extends FactoryPayload> = StylesApiRecord<Payload, CSSProperties>;
 type ClassNames<Payload extends FactoryPayload> = StylesApiRecord<Payload, string>;
 type ClassNamesArray<Payload extends FactoryPayload> = (StylesApiRecord<Payload, string> | undefined)[];
@@ -552,6 +551,8 @@ interface StylesApiProps<Payload extends FactoryPayload> {
     classNames?: ClassNames<Payload>;
     styles?: Styles<Payload>;
     vars?: PartialVarsResolver<Payload>;
+}
+interface CompoundStylesApiProps<Payload extends FactoryPayload> extends Omit<StylesApiProps<Payload>, "unstyled"> {
 }
 
 type __ClassNames = undefined | Partial<Record<string, string>> | ((theme: RaikouTheme, props: Record<string, any>, ctx: Record<string, any> | undefined) => Partial<Record<string, string>>);
@@ -619,4 +620,4 @@ declare function useDirection(): {
     setDirection: () => void;
 };
 
-export { Box, BoxComponentProps, BoxMod, BoxProps, ClassNames, ClassNamesArray, CssVariable, CssVariables, CssVars, CssVarsProp, DEFAULT_THEME, DefaultRaikouColor, Direction, ElementProps, ExtendComponent, ExtendsRootComponent, FOCUS_CLASS_NAMES, Factory, FactoryPayload, GetStylesApi, GetStylesApiOptions, HeadingStyle, InlineStyles, InlineStylesInput, InlineStylesMediaQuery, InlineStylesProps, PartialTransformVars, PartialVarsResolver, PolymorphicFactory, RGBA, RaikouBreakpoint, RaikouBreakpointsValues, RaikouColor, RaikouColorScheme, RaikouColorShade, RaikouColorsTuple, RaikouComponent, RaikouComponentStaticProperties, RaikouFontSize, RaikouFontSizesValues, RaikouGradient, RaikouLineHeight, RaikouLineHeightValues, RaikouPrimaryShade, RaikouRadius, RaikouRadiusValues, RaikouShadow, RaikouShadowsValues, RaikouSize, RaikouSpacing, RaikouSpacingValues, RaikouStyleProp, RaikouStyleProps, RaikouStylesRecord, RaikouTheme, RaikouThemeColors, RaikouThemeColorsOverride, RaikouThemeComponent, RaikouThemeComponents, RaikouThemeOther, RaikouThemeOverride, STYlE_PROPS_DATA, StyleProp, StylePropSpacingValue, Styles, StylesApiProps, StylesApiRecord, StylesRecord, SystemPropData, ThemeExtend, TransformVars, UseStylesInput, VariantColorResolverResult, VariantColorsResolver, VariantColorsResolverInput, VarsResolver, camelToKebabCase, closeOnEscape, createEventHandler, createPolymorphicComponent, createScopedKeydownHandler, createVarsResolver, darken, deepMerge, defaultVariantColorsResolver, em, extractStyleProps, factory, filterProps, findElementAncestor, getBaseValue, getBreakpointValue, getDefaultZIndex, getFontSize, getGradient, getLineHeight, getPrimaryShade, getRadius, getSafeId, getShadow, getSize, getSortedBreakpoints, getSpacing, getStyleObject, getThemeColor, isElement, isLightColor, isNumberLike, keys, lighten, mergeRaikouTheme, noop, parseStyleProps, parseThemeColor, polymorphicFactory, px, rem, resolveClassNames, resolveStyles, rgba, stylesToString, toRgba, useDirection, useProps, useRaikouTheme, useRandomClassName, useResolvedStylesApi, useStyles, validateRaikouTheme };
+export { Box, BoxComponentProps, BoxMod, BoxProps, ClassNames, ClassNamesArray, CompoundStylesApiProps, CssVariable, CssVariables, CssVars, CssVarsProp, DEFAULT_THEME, DefaultRaikouColor, Direction, ElementProps, ExtendComponent, ExtendsRootComponent, FOCUS_CLASS_NAMES, Factory, FactoryPayload, GetStylesApi, GetStylesApiOptions, HeadingStyle, InlineStyles, InlineStylesInput, InlineStylesMediaQuery, InlineStylesProps, PartialTransformVars, PartialVarsResolver, PolymorphicFactory, RGBA, RaikouBreakpoint, RaikouBreakpointsValues, RaikouColor, RaikouColorScheme, RaikouColorShade, RaikouColorsTuple, RaikouComponent, RaikouComponentStaticProperties, RaikouFontSize, RaikouFontSizesValues, RaikouGradient, RaikouLineHeight, RaikouLineHeightValues, RaikouPrimaryShade, RaikouRadius, RaikouRadiusValues, RaikouShadow, RaikouShadowsValues, RaikouSize, RaikouSpacing, RaikouSpacingValues, RaikouStyleProp, RaikouStyleProps, RaikouStylesRecord, RaikouTheme, RaikouThemeColors, RaikouThemeColorsOverride, RaikouThemeComponent, RaikouThemeComponents, RaikouThemeOther, RaikouThemeOverride, STYlE_PROPS_DATA, StyleProp, Styles, StylesApiProps, StylesApiRecord, StylesRecord, SystemPropData, ThemeExtend, TransformVars, UseStylesInput, VariantColorResolverResult, VariantColorsResolver, VariantColorsResolverInput, VarsResolver, camelToKebabCase, closeOnEscape, createEventHandler, createPolymorphicComponent, createScopedKeydownHandler, createVarsResolver, darken, deepMerge, defaultVariantColorsResolver, em, extractStyleProps, factory, filterProps, findElementAncestor, getBaseValue, getBreakpointValue, getDefaultZIndex, getFontSize, getGradient, getLineHeight, getPrimaryShade, getRadius, getSafeId, getShadow, getSize, getSortedBreakpoints, getSpacing, getStyleObject, getThemeColor, isElement, isLightColor, isNumberLike, keys, lighten, mergeRaikouTheme, noop, parseStyleProps, parseThemeColor, polymorphicFactory, px, rem, resolveClassNames, resolveStyles, rgba, stylesToString, toRgba, useDirection, useProps, useRaikouTheme, useRandomClassName, useResolvedStylesApi, useStyles, validateRaikouTheme };

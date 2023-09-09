@@ -2,7 +2,7 @@ import React from "react";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   polymorphicFactory,
   useProps,
   PolymorphicFactory,
@@ -13,7 +13,7 @@ export type CardSectionStylesNames = "section";
 
 export interface CardSectionProps
   extends BoxProps,
-    StylesApiProps<CardSectionFactory> {
+    CompoundStylesApiProps<CardSectionFactory> {
   /** Determines whether the section should have a border, `false` by default */
   withBorder?: boolean;
 
@@ -39,7 +39,6 @@ export const CardSection = polymorphicFactory<CardSectionFactory>(
       className,
       style,
       styles,
-      unstyled,
       vars,
       withBorder,
       inheritPadding,

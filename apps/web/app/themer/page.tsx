@@ -415,6 +415,12 @@ function Themer() {
                       <Button loading={true} size={size}>
                         Loading
                       </Button>
+                      <Button leftSection={<>LS</>} size={size}>
+                        Loading
+                      </Button>
+                      <Button rightSection={<>RS</>} size={size}>
+                        Loading
+                      </Button>
                     </Group>
                   </Accordion.Panel>
                 </Accordion.Item>

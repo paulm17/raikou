@@ -2,7 +2,7 @@ import React from "react";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -15,7 +15,7 @@ export type RichTextEditorToolbarStylesNames = "toolbar";
 
 export interface RichTextEditorToolbarProps
   extends BoxProps,
-    StylesApiProps<RichTextEditorToolbarFactory>,
+    CompoundStylesApiProps<RichTextEditorToolbarFactory>,
     ElementProps<"div"> {
   /** Determines whether `position: sticky` styles should be added to the toolbar, `false` by default */
   sticky?: boolean;
@@ -41,7 +41,6 @@ export const RichTextEditorToolbar = factory<RichTextEditorToolbarFactory>(
       className,
       style,
       styles,
-      unstyled,
       vars,
       sticky,
       stickyOffset,

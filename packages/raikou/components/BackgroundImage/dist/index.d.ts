@@ -8,7 +8,7 @@ type BackgroundImageCssVariables = {
 };
 interface BackgroundImageProps extends BoxProps, StylesApiProps<BackgroundImageFactory> {
     /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `0` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Image url */
     src: string;
 }

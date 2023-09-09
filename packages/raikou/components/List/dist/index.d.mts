@@ -1,9 +1,9 @@
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, Factory, RaikouSize, RaikouSpacing } from '@raikou/core';
+import { BoxProps, CompoundStylesApiProps, ElementProps, Factory, StylesApiProps, RaikouSize, RaikouSpacing } from '@raikou/core';
 import React from 'react';
 
 type ListItemStylesNames = "item" | "itemWrapper" | "itemIcon" | "itemLabel";
-interface ListItemProps extends BoxProps, StylesApiProps<ListItemFactory>, ElementProps<"li"> {
+interface ListItemProps extends BoxProps, CompoundStylesApiProps<ListItemFactory>, ElementProps<"li"> {
     /** Icon to replace item bullet */
     icon?: React.ReactNode;
     /** Item content */
@@ -38,7 +38,7 @@ interface ListProps extends BoxProps, StylesApiProps<ListFactory>, ElementProps<
     /** Icon that replaces list item dot */
     icon?: React.ReactNode;
     /** Key of `theme.spacing` or any valid CSS value to set spacing between items, `0` by default */
-    spacing?: RaikouSpacing | (string & {}) | number;
+    spacing?: RaikouSpacing;
     /** Determines whether items must be centered with their icon, `false` by default */
     center?: boolean;
     /** Controls `list-style-type`, by default inferred from `type` */

@@ -19,7 +19,7 @@ export interface TextareaProps
 
 export type TextareaFactory = Factory<{
   props: TextareaProps;
-  ref: HTMLInputElement;
+  ref: HTMLTextAreaElement;
   stylesNames: __InputStylesNames;
 }>;
 

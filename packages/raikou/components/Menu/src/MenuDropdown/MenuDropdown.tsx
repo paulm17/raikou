@@ -1,8 +1,7 @@
-/* eslint-disable jsx-a11y/no--element-interactions */
 import React, { useRef } from "react";
 import {
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -16,7 +15,7 @@ export type MenuDropdownStylesNames = "dropdown";
 
 export interface MenuDropdownProps
   extends BoxProps,
-    StylesApiProps<MenuDropdownFactory>,
+    CompoundStylesApiProps<MenuDropdownFactory>,
     ElementProps<"div"> {}
 
 export type MenuDropdownFactory = Factory<{
@@ -34,7 +33,6 @@ export const MenuDropdown = factory<MenuDropdownFactory>((props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     onMouseEnter,
     onMouseLeave,

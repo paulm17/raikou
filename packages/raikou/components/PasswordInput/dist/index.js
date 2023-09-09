@@ -1192,7 +1192,8 @@ var PasswordInput = (0, import_core15.factory)((_props, ref) => {
     visibilityToggleIcon,
     visibilityToggleButtonProps,
     rightSectionProps,
-    leftSectionProps
+    leftSectionProps,
+    leftSectionPointerEvents
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -1227,7 +1228,8 @@ var PasswordInput = (0, import_core15.factory)((_props, ref) => {
     "visibilityToggleIcon",
     "visibilityToggleButtonProps",
     "rightSectionProps",
-    "leftSectionProps"
+    "leftSectionProps",
+    "leftSectionPointerEvents"
   ]);
   const uuid = (0, import_hooks2.useId)(id);
   const [_visible, setVisibility] = (0, import_hooks2.useUncontrolled)({
@@ -1324,7 +1326,8 @@ var PasswordInput = (0, import_core15.factory)((_props, ref) => {
         leftSectionWidth,
         rightSectionPointerEvents: "all",
         rightSectionProps,
-        leftSectionProps
+        leftSectionProps,
+        leftSectionPointerEvents
       },
       /* @__PURE__ */ import_react20.default.createElement(
         "input",
@@ -1337,6 +1340,7 @@ var PasswordInput = (0, import_core15.factory)((_props, ref) => {
           id: uuid,
           ref
         }), rest), {
+          autoComplete: rest.autoComplete || "off",
           type: _visible ? "text" : "password"
         })
       )

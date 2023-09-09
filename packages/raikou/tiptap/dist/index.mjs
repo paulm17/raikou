@@ -170,7 +170,6 @@ var RichTextEditorToolbar = factory(
       className,
       style,
       styles,
-      unstyled,
       vars,
       sticky,
       stickyOffset
@@ -179,7 +178,6 @@ var RichTextEditorToolbar = factory(
       "className",
       "style",
       "styles",
-      "unstyled",
       "vars",
       "sticky",
       "stickyOffset"
@@ -208,7 +206,7 @@ import {
 var defaultProps2 = {};
 var RichTextEditorControlsGroup = factory2((_props, ref) => {
   const props = useProps2("RichTextEditorControlsGroup", defaultProps2, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useRichTextEditorContext();
   return /* @__PURE__ */ React4.createElement(
     Box2,
@@ -266,7 +264,7 @@ var defaultProps4 = {};
 var RichTextEditorContent = factory4(
   (_props, ref) => {
     const props = useProps4("RichTextEditorContent", defaultProps4, _props);
-    const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+    const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
     const ctx = useRichTextEditorContext();
     if (ctx.withTypographyStyles) {
       return /* @__PURE__ */ React6.createElement(
@@ -374,7 +372,6 @@ var RichTextEditorControl = factory5(
       className,
       style,
       styles,
-      unstyled,
       vars,
       interactive,
       active
@@ -383,7 +380,6 @@ var RichTextEditorControl = factory5(
       "className",
       "style",
       "styles",
-      "unstyled",
       "vars",
       "interactive",
       "active"
@@ -398,8 +394,7 @@ var RichTextEditorControl = factory5(
         "data-active": active || void 0,
         "aria-pressed": active && interactive || void 0,
         "aria-hidden": !interactive || void 0,
-        ref,
-        unstyled
+        ref
       })
     );
   }
@@ -4065,7 +4060,6 @@ var PopoverDropdown = factory7(
     const _a = props, {
       className,
       style,
-      unstyled,
       vars,
       children,
       onKeyDownCapture,
@@ -4075,7 +4069,6 @@ var PopoverDropdown = factory7(
     } = _a, others = __objRest(_a, [
       "className",
       "style",
-      "unstyled",
       "vars",
       "children",
       "onKeyDownCapture",
@@ -5144,7 +5137,8 @@ function useInputProps(component, defaultProps37, _props) {
     inputContainer,
     inputWrapperOrder,
     withAsterisk,
-    variant
+    variant,
+    id
   }, _wrapperProps);
   return __spreadProps(__spreadValues({}, rest), {
     classNames,
@@ -5569,7 +5563,15 @@ var Button = polymorphicFactory4((_props, ref) => {
         }
       ]
     }), others),
-    /* @__PURE__ */ React34.createElement("span", __spreadValues({}, getStyles("inner")), leftSection || loading && loaderPosition === "left" && /* @__PURE__ */ React34.createElement(
+    /* @__PURE__ */ React34.createElement("span", __spreadValues({}, getStyles("inner")), leftSection && /* @__PURE__ */ React34.createElement(
+      Box19,
+      __spreadProps(__spreadValues({
+        component: "span"
+      }, getStyles("section")), {
+        mod: { position: "left" }
+      }),
+      leftSection
+    ), loading && loaderPosition === "left" && /* @__PURE__ */ React34.createElement(
       Box19,
       __spreadProps(__spreadValues({
         component: "span"
@@ -6137,7 +6139,6 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     icon,
     popoverProps,
@@ -6148,7 +6149,6 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
     "className",
     "style",
     "styles",
-    "unstyled",
     "vars",
     "icon",
     "popoverProps",
@@ -6198,8 +6198,7 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
       opened,
       onClose: handleClose,
       offset: -44,
-      zIndex: 1e4,
-      unstyled
+      zIndex: 1e4
     }, popoverProps),
     /* @__PURE__ */ React38.createElement(Popover.Target, null, /* @__PURE__ */ React38.createElement(
       RichTextEditorControlBase,
@@ -6210,7 +6209,6 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
         title: ctx.labels.linkControlLabel,
         onClick: handleOpen,
         active: (_b = ctx.editor) == null ? void 0 : _b.isActive("link"),
-        unstyled,
         ref,
         classNames: resolvedClassNames,
         styles: resolvedStyles,
@@ -6233,7 +6231,6 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
             input: ctx.getStyles("linkEditorInput", stylesApiProps).className
           },
           onKeyDown: handleInputKeydown,
-          unstyled,
           rightSection: /* @__PURE__ */ React38.createElement(
             Tooltip,
             {
@@ -6242,20 +6239,17 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
               withinPortal: true,
               withArrow: true,
               disabled: disableTooltips,
-              unstyled,
               zIndex: 1e4
             },
             /* @__PURE__ */ React38.createElement(
               UnstyledButton,
-              __spreadProps(__spreadValues({
+              __spreadValues({
                 onClick: () => setExternal((e) => !e),
                 "data-active": external || void 0
               }, ctx.getStyles(
                 "linkEditorExternalControl",
                 stylesApiProps
-              )), {
-                unstyled
-              }),
+              )),
               /* @__PURE__ */ React38.createElement(
                 IconExternalLink,
                 {
@@ -6268,12 +6262,10 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
         }
       ), /* @__PURE__ */ React38.createElement(
         Button,
-        __spreadProps(__spreadValues({
+        __spreadValues({
           variant: "default",
           onClick: setLink
-        }, ctx.getStyles("linkEditorSave", stylesApiProps)), {
-          unstyled
-        }),
+        }, ctx.getStyles("linkEditorSave", stylesApiProps)),
         ctx.labels.linkEditorSave
       ))
     )
@@ -7748,7 +7740,6 @@ var RichTextEditor = factory23((_props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     editor,
     withCodeHighlightStyles,
@@ -7760,7 +7751,6 @@ var RichTextEditor = factory23((_props, ref) => {
     "className",
     "style",
     "styles",
-    "unstyled",
     "vars",
     "editor",
     "withCodeHighlightStyles",
@@ -7788,7 +7778,6 @@ var RichTextEditor = factory23((_props, ref) => {
     style,
     classNames,
     styles,
-    unstyled,
     vars
   });
   const mergedLabels = useMemo3(

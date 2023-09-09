@@ -28,7 +28,7 @@ export interface BreadcrumbsProps
   separator?: React.ReactNode;
 
   /** Controls spacing between separator and breadcrumb, `'xs'` by default */
-  separatorMargin?: RaikouSpacing | (string & {}) | number;
+  separatorMargin?: RaikouSpacing;
 
   /** React nodes that should be separated with `separator` */
   children: React.ReactNode;
@@ -51,7 +51,7 @@ const varsResolver = createVarsResolver<BreadcrumbsFactory>(
     root: {
       "--bc-separator-margin": getSpacing(separatorMargin),
     },
-  })
+  }),
 );
 
 export const Breadcrumbs = factory<BreadcrumbsFactory>((_props, ref) => {
@@ -105,13 +105,13 @@ export const Breadcrumbs = factory<BreadcrumbsFactory>((_props, ref) => {
         acc.push(
           <Box {...getStyles("separator")} key={`separator-${index}`}>
             {separator}
-          </Box>
+          </Box>,
         );
       }
 
       return acc;
     },
-    []
+    [],
   );
 
   return (

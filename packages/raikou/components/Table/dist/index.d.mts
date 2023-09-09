@@ -1,8 +1,8 @@
 import * as _raikou_core from '@raikou/core';
-import { ElementProps, BoxProps, StylesApiProps, RaikouColor, RaikouSpacing, Factory } from '@raikou/core';
+import { ElementProps, BoxProps, CompoundStylesApiProps, StylesApiProps, RaikouColor, RaikouSpacing, Factory } from '@raikou/core';
 import React from 'react';
 
-interface TableElementProps<Selector extends string> extends BoxProps, StylesApiProps<Omit<TableFactory, "stylesNames"> & {
+interface TableElementProps<Selector extends string> extends BoxProps, CompoundStylesApiProps<Omit<TableFactory, "stylesNames"> & {
     stylesNames: Selector;
 }> {
 }
@@ -81,9 +81,9 @@ interface TableProps extends BoxProps, StylesApiProps<TableFactory>, ElementProp
     /** Determines whether the table should have borders between rows, `true` by default */
     withRowBorders?: boolean;
     /** Horizontal cells spacing, key of `theme.spacing` or any valid CSS value for padding, numbers are converted to rem, default value is `xs` */
-    horizontalSpacing?: RaikouSpacing | number | (string & {});
+    horizontalSpacing?: RaikouSpacing;
     /** Vertical cells spacing, key of `theme.spacing` or any valid CSS value for padding, numbers are converted to rem, default value is `xs` */
-    verticalSpacing?: RaikouSpacing | number | (string & {});
+    verticalSpacing?: RaikouSpacing;
     /** Determines whether every odd/even row background should be changed to `strippedColor`, if set to `true`, then `odd` value will be used, `false` by default  */
     striped?: boolean | "odd" | "even";
     /** Background color of striped rows, key of `theme.colors` or any valid CSS color */

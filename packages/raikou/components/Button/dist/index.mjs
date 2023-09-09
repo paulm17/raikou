@@ -480,7 +480,15 @@ var Button = polymorphicFactory2((_props, ref) => {
         }
       ]
     }), others),
-    /* @__PURE__ */ React8.createElement("span", __spreadValues({}, getStyles("inner")), leftSection || loading && loaderPosition === "left" && /* @__PURE__ */ React8.createElement(
+    /* @__PURE__ */ React8.createElement("span", __spreadValues({}, getStyles("inner")), leftSection && /* @__PURE__ */ React8.createElement(
+      Box8,
+      __spreadProps(__spreadValues({
+        component: "span"
+      }, getStyles("section")), {
+        mod: { position: "left" }
+      }),
+      leftSection
+    ), loading && loaderPosition === "left" && /* @__PURE__ */ React8.createElement(
       Box8,
       __spreadProps(__spreadValues({
         component: "span"

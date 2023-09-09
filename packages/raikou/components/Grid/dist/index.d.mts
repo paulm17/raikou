@@ -1,10 +1,10 @@
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, StyleProp, Factory, RaikouSpacing } from '@raikou/core';
+import { BoxProps, CompoundStylesApiProps, ElementProps, StyleProp, Factory, StylesApiProps, RaikouSpacing } from '@raikou/core';
 import React from 'react';
 
 type GridColStylesNames = "col";
 type ColSpan = number | "auto" | "content";
-interface GridColProps extends BoxProps, StylesApiProps<GridColFactory>, ElementProps<"div"> {
+interface GridColProps extends BoxProps, CompoundStylesApiProps<GridColFactory>, ElementProps<"div"> {
     /** Column span, `12` by default */
     span?: StyleProp<ColSpan>;
     /** Column order, can be used to reorder columns at different viewport sizes */
@@ -31,7 +31,7 @@ type GridCssVariables = {
 };
 interface GridProps extends BoxProps, StylesApiProps<GridFactory>, ElementProps<"div"> {
     /** Gutter between columns, key of `theme.spacing` or any valid CSS value, `'md'` by default */
-    gutter?: StyleProp<RaikouSpacing | (string & {}) | number>;
+    gutter?: StyleProp<RaikouSpacing>;
     /** Determines whether columns in the last row should expand to fill all available space, `false` by default */
     grow?: boolean;
     /** Sets `justify-content`, `flex-start` by default */

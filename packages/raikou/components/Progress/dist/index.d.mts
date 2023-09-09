@@ -1,5 +1,5 @@
 import * as _raikou_core from '@raikou/core';
-import { StylesApiProps, Factory, BoxProps, ElementProps, RaikouSize, RaikouRadius, RaikouColor } from '@raikou/core';
+import { StylesApiProps, Factory, BoxProps, ElementProps, RaikouSize, RaikouRadius, CompoundStylesApiProps, RaikouColor } from '@raikou/core';
 
 type ProgressRootStylesNames = "root" | "section" | "label";
 type ProgressRootCssVariables = {
@@ -9,7 +9,7 @@ interface __ProgressRootProps extends BoxProps, ElementProps<"div"> {
     /** Controls track height, `'md'` by default */
     size?: RaikouSize | (string & {}) | number;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
 }
 interface ProgressRootProps extends __ProgressRootProps, StylesApiProps<ProgressRootFactory> {
 }
@@ -27,7 +27,7 @@ declare const ProgressRoot: _raikou_core.RaikouComponent<{
 }>;
 
 type ProgressSectionStylesNames = "section";
-interface ProgressSectionProps extends BoxProps, StylesApiProps<ProgressSectionFactory>, ElementProps<"div"> {
+interface ProgressSectionProps extends BoxProps, CompoundStylesApiProps<ProgressSectionFactory>, ElementProps<"div"> {
     /** Value of the section in 0–100 range  */
     value: number;
     /** Determines whether `aria-*` props should be added to the root element, `true` by default */
@@ -53,7 +53,7 @@ declare const ProgressSection: _raikou_core.RaikouComponent<{
 }>;
 
 type ProgressLabelStylesNames = "label";
-interface ProgressLabelProps extends BoxProps, StylesApiProps<ProgressLabelFactory>, ElementProps<"div"> {
+interface ProgressLabelProps extends BoxProps, CompoundStylesApiProps<ProgressLabelFactory>, ElementProps<"div"> {
 }
 type ProgressLabelFactory = Factory<{
     props: ProgressLabelProps;

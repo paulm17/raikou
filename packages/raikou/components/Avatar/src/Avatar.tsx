@@ -43,7 +43,7 @@ export interface AvatarProps extends BoxProps, StylesApiProps<AvatarFactory> {
   size?: RaikouSize | (string & {}) | number;
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius, `'100%'` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Key of `theme.colors` or any valid CSS color, default value is `theme.primaryColor`  */
   color?: RaikouColor;

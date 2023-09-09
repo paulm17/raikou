@@ -63,10 +63,10 @@ export interface SwitchProps
   size?: RaikouSize | (string & {});
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius,` "xl" by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Props passed down to the wrapper element */
-  wrapperProps?: React.ComponentPropsWithoutRef<"div">;
+  wrapperProps?: Record<string, any>;
 
   /** Icon inside the thumb of switch */
   thumbIcon?: React.ReactNode;
@@ -107,11 +107,11 @@ const varsResolver = createVarsResolver<SwitchFactory>(
       "--switch-label-font-size": getSize(size, "switch-label-font-size"),
       "--switch-track-label-padding": getSize(
         size,
-        "switch-track-label-padding"
+        "switch-track-label-padding",
       ),
       "--switch-color": getThemeColor(color, theme),
     },
-  })
+  }),
 );
 
 export const Switch = factory<SwitchFactory>((_props, ref) => {
@@ -212,6 +212,7 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
         disabled={disabled}
         checked={_checked}
         onChange={(event) => {
+          // eslint-disable-next-line
           ctx ? contextProps.onChange?.(event) : onChange?.(event);
           handleChange(event.currentTarget.checked);
         }}

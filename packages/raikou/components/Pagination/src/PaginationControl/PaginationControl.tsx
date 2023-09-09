@@ -1,7 +1,7 @@
 import React from "react";
 import {
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -14,7 +14,7 @@ export type PaginationControlStylesNames = "control";
 
 export interface PaginationControlProps
   extends BoxProps,
-    StylesApiProps<PaginationControlFactory>,
+    CompoundStylesApiProps<PaginationControlFactory>,
     ElementProps<"button"> {
   /** Determines whether control should have active styles */
   active?: boolean;
@@ -42,7 +42,6 @@ export const PaginationControl = factory<PaginationControlFactory>(
       className,
       style,
       styles,
-      unstyled,
       vars,
       active,
       disabled,
@@ -68,7 +67,7 @@ export const PaginationControl = factory<PaginationControlFactory>(
         {...others}
       />
     );
-  }
+  },
 );
 
 PaginationControl.displayName = "@raikou/core/PaginationControl";

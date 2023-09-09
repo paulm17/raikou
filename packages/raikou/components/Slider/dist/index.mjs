@@ -705,7 +705,10 @@ var Slider = factory((_props, ref) => {
           event.preventDefault();
           (_b = thumb.current) == null ? void 0 : _b.focus();
           const nextValue = getFloatingValue(
-            Math.min(Math.max(dir === "rtl" ? _value - step : _value + step, min), max),
+            Math.min(
+              Math.max(dir === "rtl" ? _value - step : _value + step, min),
+              max
+            ),
             precision
           );
           onChangeEnd == null ? void 0 : onChangeEnd(nextValue);
@@ -727,7 +730,10 @@ var Slider = factory((_props, ref) => {
           event.preventDefault();
           (_d = thumb.current) == null ? void 0 : _d.focus();
           const nextValue = getFloatingValue(
-            Math.min(Math.max(dir === "rtl" ? _value + step : _value - step, min), max),
+            Math.min(
+              Math.max(dir === "rtl" ? _value + step : _value - step, min),
+              max
+            ),
             precision
           );
           onChangeEnd == null ? void 0 : onChangeEnd(nextValue);
@@ -996,6 +1002,8 @@ var RangeSlider = factory2((_props, ref) => {
         clone[0] = val - maxRange;
       }
     }
+    clone[0] = getFloatingValue(clone[0], precision);
+    clone[1] = getFloatingValue(clone[1], precision);
     _setValue(clone);
     if (triggerChangeEnd) {
       onChangeEnd == null ? void 0 : onChangeEnd(valueRef.current);
@@ -1052,7 +1060,10 @@ var RangeSlider = factory2((_props, ref) => {
           thumbs.current[focusedIndex].focus();
           setRangedValue(
             getFloatingValue(
-              Math.min(Math.max(valueRef.current[focusedIndex] + step, min), max),
+              Math.min(
+                Math.max(valueRef.current[focusedIndex] + step, min),
+                max
+              ),
               precision
             ),
             focusedIndex,
@@ -1086,7 +1097,10 @@ var RangeSlider = factory2((_props, ref) => {
           thumbs.current[focusedIndex].focus();
           setRangedValue(
             getFloatingValue(
-              Math.min(Math.max(valueRef.current[focusedIndex] - step, min), max),
+              Math.min(
+                Math.max(valueRef.current[focusedIndex] - step, min),
+                max
+              ),
               precision
             ),
             focusedIndex,
@@ -1162,7 +1176,7 @@ var RangeSlider = factory2((_props, ref) => {
         value: scale(_value[0]),
         position: positions[0],
         dragging: active,
-        label: typeof label === "function" ? label(scale(_value[0])) : label,
+        label: typeof label === "function" ? label(getFloatingValue(scale(_value[0]), precision)) : label,
         ref: (node) => {
           thumbs.current[0] = node;
         },
@@ -1182,7 +1196,7 @@ var RangeSlider = factory2((_props, ref) => {
         value: scale(_value[1]),
         position: positions[1],
         dragging: active,
-        label: typeof label === "function" ? label(scale(_value[1])) : label,
+        label: typeof label === "function" ? label(getFloatingValue(scale(_value[1]), precision)) : label,
         ref: (node) => {
           thumbs.current[1] = node;
         },

@@ -916,6 +916,7 @@ var ModalBase = forwardRef4(
     ));
   }
 );
+ModalBase.displayName = "@raikou/core/ModalBase";
 
 // ../ModalBase/src/ModalBaseBody.tsx
 import React12, { forwardRef as forwardRef5 } from "react";
@@ -2110,11 +2111,14 @@ DrawerRoot.displayName = "@raikou/core/DrawerRoot";
 
 // src/DrawerBody.tsx
 import React34 from "react";
-import { factory as factory4, useProps as useProps10 } from "@raikou/core";
+import {
+  factory as factory4,
+  useProps as useProps10
+} from "@raikou/core";
 var defaultProps10 = {};
 var DrawerBody = factory4((_props, ref) => {
   const props = useProps10("DrawerBody", defaultProps10, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useDrawerContext();
   return /* @__PURE__ */ React34.createElement(
     ModalBaseBody,
@@ -2127,12 +2131,15 @@ DrawerBody.displayName = "@raikou/core/DrawerBody";
 
 // src/DrawerCloseButton.tsx
 import React35 from "react";
-import { factory as factory5, useProps as useProps11 } from "@raikou/core";
+import {
+  factory as factory5,
+  useProps as useProps11
+} from "@raikou/core";
 var defaultProps11 = {};
 var DrawerCloseButton = factory5(
   (_props, ref) => {
     const props = useProps11("DrawerCloseButton", defaultProps11, _props);
-    const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+    const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
     const ctx = useDrawerContext();
     return /* @__PURE__ */ React35.createElement(
       ModalBaseCloseButton,
@@ -2146,11 +2153,14 @@ DrawerCloseButton.displayName = "@raikou/core/DrawerCloseButton";
 
 // src/DrawerOverlay.tsx
 import React36 from "react";
-import { factory as factory6, useProps as useProps12 } from "@raikou/core";
+import {
+  factory as factory6,
+  useProps as useProps12
+} from "@raikou/core";
 var defaultProps12 = {};
 var DrawerOverlay = factory6((_props, ref) => {
   const props = useProps12("DrawerOverlay", defaultProps12, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useDrawerContext();
   return /* @__PURE__ */ React36.createElement(
     ModalBaseOverlay,
@@ -2163,7 +2173,10 @@ DrawerOverlay.displayName = "@raikou/core/DrawerOverlay";
 
 // src/DrawerContent.tsx
 import React37 from "react";
-import { factory as factory7, useProps as useProps13 } from "@raikou/core";
+import {
+  factory as factory7,
+  useProps as useProps13
+} from "@raikou/core";
 var defaultProps13 = {};
 var DrawerContent = factory7((_props, ref) => {
   const props = useProps13("DrawerContent", defaultProps13, _props);
@@ -2188,11 +2201,14 @@ DrawerContent.displayName = "@raikou/core/DrawerContent";
 
 // src/DrawerTitle.tsx
 import React38 from "react";
-import { factory as factory8, useProps as useProps14 } from "@raikou/core";
+import {
+  factory as factory8,
+  useProps as useProps14
+} from "@raikou/core";
 var defaultProps14 = {};
 var DrawerTitle = factory8((_props, ref) => {
   const props = useProps14("DrawerTitle", defaultProps14, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useDrawerContext();
   return /* @__PURE__ */ React38.createElement(
     ModalBaseTitle,
@@ -2205,11 +2221,14 @@ DrawerTitle.displayName = "@raikou/core/DrawerTitle";
 
 // src/DrawerHeader.tsx
 import React39 from "react";
-import { factory as factory9, useProps as useProps15 } from "@raikou/core";
+import {
+  factory as factory9,
+  useProps as useProps15
+} from "@raikou/core";
 var defaultProps15 = {};
 var DrawerHeader = factory9((_props, ref) => {
   const props = useProps15("DrawerHeader", defaultProps15, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useDrawerContext();
   return /* @__PURE__ */ React39.createElement(
     ModalBaseHeader,

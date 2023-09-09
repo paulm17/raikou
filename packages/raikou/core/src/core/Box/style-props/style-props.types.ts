@@ -10,24 +10,22 @@ export type StyleProp<Value> =
   | Value
   | Partial<Record<RaikouBreakpoint | (string & {}), Value>>;
 
-export type StylePropSpacingValue = RaikouSpacing | number | (string & {});
-
 export interface RaikouStyleProps {
-  m?: StyleProp<StylePropSpacingValue>;
-  my?: StyleProp<StylePropSpacingValue>;
-  mx?: StyleProp<StylePropSpacingValue>;
-  mt?: StyleProp<StylePropSpacingValue>;
-  mb?: StyleProp<StylePropSpacingValue>;
-  ml?: StyleProp<StylePropSpacingValue>;
-  mr?: StyleProp<StylePropSpacingValue>;
+  m?: StyleProp<RaikouSpacing>;
+  my?: StyleProp<RaikouSpacing>;
+  mx?: StyleProp<RaikouSpacing>;
+  mt?: StyleProp<RaikouSpacing>;
+  mb?: StyleProp<RaikouSpacing>;
+  ml?: StyleProp<RaikouSpacing>;
+  mr?: StyleProp<RaikouSpacing>;
 
-  p?: StyleProp<StylePropSpacingValue>;
-  py?: StyleProp<StylePropSpacingValue>;
-  px?: StyleProp<StylePropSpacingValue>;
-  pt?: StyleProp<StylePropSpacingValue>;
-  pb?: StyleProp<StylePropSpacingValue>;
-  pl?: StyleProp<StylePropSpacingValue>;
-  pr?: StyleProp<StylePropSpacingValue>;
+  p?: StyleProp<RaikouSpacing>;
+  py?: StyleProp<RaikouSpacing>;
+  px?: StyleProp<RaikouSpacing>;
+  pt?: StyleProp<RaikouSpacing>;
+  pb?: StyleProp<RaikouSpacing>;
+  pl?: StyleProp<RaikouSpacing>;
+  pr?: StyleProp<RaikouSpacing>;
 
   bg?: StyleProp<RaikouColor>;
   c?: StyleProp<RaikouColor>;

@@ -8,19 +8,13 @@ type PaperCssVariables = {
 };
 interface PaperBaseProps {
     /** Key of `theme.shadows` or any valid CSS value to set `box-shadow`, `none` by default */
-    shadow?: RaikouShadow | (string & {});
+    shadow?: RaikouShadow;
     /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | number | (string & {});
+    radius?: RaikouRadius;
     /** Determines whether the paper should have border, border color depends on color scheme, `false` by default */
     withBorder?: boolean;
 }
-interface PaperProps extends BoxProps, StylesApiProps<PaperFactory> {
-    /** Key of `theme.shadows` or any valid CSS value to set `box-shadow`, `none` by default */
-    shadow?: RaikouShadow | (string & {});
-    /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | number | (string & {});
-    /** Determines whether the paper should have border, border color depends on color scheme, `false` by default */
-    withBorder?: boolean;
+interface PaperProps extends BoxProps, PaperBaseProps, StylesApiProps<PaperFactory> {
 }
 type PaperFactory = PolymorphicFactory<{
     props: PaperProps;

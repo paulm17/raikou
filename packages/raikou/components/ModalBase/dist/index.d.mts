@@ -73,9 +73,9 @@ interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
     /** `z-index` CSS property of the root element, `200` by default */
     zIndex?: React.CSSProperties["zIndex"];
     /** Key of `theme.shadows` or any valid CSS box-shadow value, 'xl' by default */
-    shadow?: RaikouShadow | (string & {});
+    shadow?: RaikouShadow;
     /** Key of `theme.spacing` or any valid CSS value to set content, header and footer padding, `'md'` by default */
-    padding?: RaikouSpacing | (string & {}) | number;
+    padding?: RaikouSpacing;
     /** Controls width of the content area, `'md'` by default */
     size?: RaikouSize | (string & {}) | number;
 }
@@ -93,9 +93,9 @@ interface ModalBaseContentProps extends BoxProps, ElementProps<"div"> {
     /** Props passed down to the `Transition` component */
     transitionProps?: TransitionOverride;
     /** Key of `theme.shadows` or any valid CSS value to set `box-shadow`, `none` by default */
-    shadow?: RaikouShadow | (string & {});
+    shadow?: RaikouShadow;
     /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | number | (string & {});
+    radius?: RaikouRadius;
 }
 interface _ModalBaseContentProps extends ModalBaseContentProps {
     innerProps: React.ComponentPropsWithoutRef<"div">;
@@ -122,7 +122,7 @@ interface OverlayProps extends BoxProps, StylesApiProps<OverlayFactory> {
     /** Overlay z-index, `200` by default */
     zIndex?: React.CSSProperties["zIndex"];
     /** Key of `theme.radius` or any valid CSS value to set border-radius, `0` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Content inside overlay */
     children?: React.ReactNode;
     /** Determines whether content inside overlay should be vertically and horizontally centered, `false` by default */

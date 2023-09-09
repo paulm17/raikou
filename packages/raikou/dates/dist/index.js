@@ -936,7 +936,8 @@ function useInputProps(component, defaultProps52, _props) {
     inputContainer,
     inputWrapperOrder,
     withAsterisk,
-    variant
+    variant,
+    id
   }, _wrapperProps);
   return __spreadProps(__spreadValues({}, rest), {
     classNames,
@@ -1644,7 +1645,6 @@ var YearsList = (0, import_core15.factory)((_props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     decade,
     yearsListFormat,
@@ -1666,7 +1666,6 @@ var YearsList = (0, import_core15.factory)((_props, ref) => {
     "className",
     "style",
     "styles",
-    "unstyled",
     "vars",
     "decade",
     "yearsListFormat",
@@ -1695,7 +1694,6 @@ var YearsList = (0, import_core15.factory)((_props, ref) => {
     style,
     classNames,
     styles,
-    unstyled,
     vars,
     rootSelector: "yearsList"
   });
@@ -2867,7 +2865,6 @@ var DecadeLevelGroup = (0, import_core23.factory)(
       previousDisabled,
       classNames: classNames,
       styles,
-      unstyled,
       __staticSelector,
       __stopPropagation,
       numberOfColumns,
@@ -2899,7 +2896,6 @@ var DecadeLevelGroup = (0, import_core23.factory)(
       // Other settings
       "classNames",
       "styles",
-      "unstyled",
       "__staticSelector",
       "__stopPropagation",
       "numberOfColumns",
@@ -2957,7 +2953,6 @@ var DecadeLevelGroup = (0, import_core23.factory)(
           __staticSelector: __staticSelector || "DecadeLevelGroup",
           classNames,
           styles,
-          unstyled,
           withCellSpacing
         }
       );
@@ -3011,7 +3006,6 @@ var YearLevelGroup = (0, import_core24.factory)((_props, ref) => {
     hasNextLevel,
     classNames: classNames,
     styles,
-    unstyled,
     __staticSelector,
     __stopPropagation,
     numberOfColumns,
@@ -3045,7 +3039,6 @@ var YearLevelGroup = (0, import_core24.factory)((_props, ref) => {
     // Other settings
     "classNames",
     "styles",
-    "unstyled",
     "__staticSelector",
     "__stopPropagation",
     "numberOfColumns",
@@ -3104,7 +3097,6 @@ var YearLevelGroup = (0, import_core24.factory)((_props, ref) => {
         getMonthControlProps,
         classNames,
         styles,
-        unstyled,
         __staticSelector: __staticSelector || "YearLevelGroup",
         withCellSpacing
       }
@@ -5779,7 +5771,6 @@ var PopoverDropdown = (0, import_core35.factory)(
     const _a = props, {
       className,
       style,
-      unstyled,
       vars,
       children,
       onKeyDownCapture,
@@ -5789,7 +5780,6 @@ var PopoverDropdown = (0, import_core35.factory)(
     } = _a, others = __objRest(_a, [
       "className",
       "style",
-      "unstyled",
       "vars",
       "children",
       "onKeyDownCapture",
@@ -6891,6 +6881,7 @@ var ModalBase = (0, import_react49.forwardRef)(
     ));
   }
 );
+ModalBase.displayName = "@raikou/core/ModalBase";
 
 // ../components/ModalBase/src/ModalBaseBody.tsx
 var import_react51 = __toESM(require("react"));
@@ -7730,7 +7721,7 @@ var import_core52 = require("@raikou/core");
 var defaultProps35 = {};
 var ModalBody = (0, import_core52.factory)((_props, ref) => {
   const props = (0, import_core52.useProps)("ModalBody", defaultProps35, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useModalContext();
   return /* @__PURE__ */ import_react71.default.createElement(
     ModalBaseBody,
@@ -7748,7 +7739,7 @@ var defaultProps36 = {};
 var ModalCloseButton = (0, import_core53.factory)(
   (_props, ref) => {
     const props = (0, import_core53.useProps)("ModalCloseButton", defaultProps36, _props);
-    const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+    const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
     const ctx = useModalContext();
     return /* @__PURE__ */ import_react72.default.createElement(
       ModalBaseCloseButton,
@@ -7766,7 +7757,7 @@ var import_core54 = require("@raikou/core");
 var defaultProps37 = {};
 var ModalOverlay = (0, import_core54.factory)((_props, ref) => {
   const props = (0, import_core54.useProps)("ModalOverlay", defaultProps37, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useModalContext();
   return /* @__PURE__ */ import_react73.default.createElement(
     ModalBaseOverlay,
@@ -7808,7 +7799,7 @@ var import_core56 = require("@raikou/core");
 var defaultProps39 = {};
 var ModalTitle = (0, import_core56.factory)((_props, ref) => {
   const props = (0, import_core56.useProps)("ModalTitle", defaultProps39, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useModalContext();
   return /* @__PURE__ */ import_react75.default.createElement(
     ModalBaseTitle,
@@ -7825,7 +7816,7 @@ var import_core57 = require("@raikou/core");
 var defaultProps40 = {};
 var ModalHeader = (0, import_core57.factory)((_props, ref) => {
   const props = (0, import_core57.useProps)("ModalHeader", defaultProps40, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useModalContext();
   return /* @__PURE__ */ import_react76.default.createElement(
     ModalBaseHeader,
@@ -8740,7 +8731,6 @@ var YearPicker = (0, import_core61.factory)(
     const _a = props, {
       classNames,
       styles,
-      unstyled,
       vars,
       type,
       defaultValue,
@@ -8756,7 +8746,6 @@ var YearPicker = (0, import_core61.factory)(
     } = _a, others = __objRest(_a, [
       "classNames",
       "styles",
-      "unstyled",
       "vars",
       "type",
       "defaultValue",
@@ -8912,7 +8901,6 @@ var DatePicker = (0, import_core63.factory)(
     const _a = props, {
       classNames,
       styles,
-      unstyled,
       vars,
       type,
       defaultValue,
@@ -8930,7 +8918,6 @@ var DatePicker = (0, import_core63.factory)(
     } = _a, others = __objRest(_a, [
       "classNames",
       "styles",
-      "unstyled",
       "vars",
       "type",
       "defaultValue",

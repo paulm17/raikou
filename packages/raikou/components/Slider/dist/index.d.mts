@@ -46,7 +46,7 @@ interface SliderProps extends BoxProps, StylesApiProps<SliderFactory>, ElementPr
     /** Key of `theme.colors` or any valid CSS color, controls color of track and thumb, `theme.primaryColor` by default */
     color?: RaikouColor;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `'xl'` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Controls size of the track, `'md'` by default */
     size?: RaikouSize | (string & {}) | number;
     /** Minimal possible value, `0` by default */
@@ -111,9 +111,9 @@ interface RangeSliderProps extends BoxProps, StylesApiProps<RangeSliderFactory>,
     /** Key of `theme.colors` or any valid CSS color, controls color of track and thumb, `theme.primaryColor` by default */
     color?: RaikouColor;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `'xl'` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Controls size of the track, `'md'` by default */
-    size?: RaikouSize | (string & {}) | number;
+    size?: RaikouSize;
     /** Minimal possible value, `0` by default */
     min?: number;
     /** Maximum possible value, `100` by default */

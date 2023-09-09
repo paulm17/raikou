@@ -73,7 +73,7 @@ export interface RaikouTheme {
   radius: RaikouRadiusValues;
 
   /** Key of `theme.radius` or any valid CSS value. Default `border-radius` used by most components */
-  defaultRadius: RaikouRadius | number | (string & {});
+  defaultRadius: RaikouRadius;
 
   /** Object of values that are used to set various CSS properties that control spacing between elements */
   spacing: RaikouSpacingValues;
@@ -150,9 +150,9 @@ export type RaikouLineHeightValues = Record<RaikouSize, string>;
 
 export type RaikouBreakpoint = keyof RaikouBreakpointsValues;
 export type RaikouFontSize = keyof RaikouFontSizesValues;
-export type RaikouRadius = keyof RaikouRadiusValues;
-export type RaikouSpacing = keyof RaikouSpacingValues;
-export type RaikouShadow = keyof RaikouShadowsValues;
+export type RaikouRadius = keyof RaikouRadiusValues | (string & {}) | number;
+export type RaikouSpacing = keyof RaikouSpacingValues | (string & {}) | number;
+export type RaikouShadow = keyof RaikouShadowsValues | (string & {});
 export type RaikouLineHeight = keyof RaikouLineHeightValues;
 
 export type RaikouThemeOther = Record<string, any>;

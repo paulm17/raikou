@@ -45,7 +45,7 @@ const defaultProps: Partial<YearPickerProps> = {
 };
 
 type YearPickerComponent = (<Type extends DatePickerType = "default">(
-  props: YearPickerProps<Type>,
+  props: YearPickerProps<Type> & { ref?: React.ForwardedRef<HTMLDivElement> },
 ) => JSX.Element) & {
   displayName?: string;
 } & RaikouComponentStaticProperties<YearPickerFactory>;
@@ -56,7 +56,6 @@ export const YearPicker: YearPickerComponent = factory<YearPickerFactory>(
     const {
       classNames,
       styles,
-      unstyled,
       vars,
       type,
       defaultValue,

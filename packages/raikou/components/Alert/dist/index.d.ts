@@ -9,7 +9,7 @@ type AlertCssVariables = {
 };
 interface AlertProps extends BoxProps, StylesApiProps<AlertFactory>, ElementProps<"div", "title"> {
     /** Key of `theme.radius` or any valid CSS value to set border-radius, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Key of `theme.colors` or any valid CSS color, default value is `theme.primaryColor`  */
     color?: RaikouColor;
     /** Alert title */

@@ -1,7 +1,7 @@
 import * as _raikou_core from '@raikou/core';
 import { BoxProps, StylesApiProps, ElementProps, RaikouSize, Factory, RaikouRadius, PolymorphicFactory, GetStylesApi } from '@raikou/core';
-import * as react from 'react';
-import react__default from 'react';
+import * as React from 'react';
+import React__default from 'react';
 
 type InputLabelStylesNames = "label" | "required";
 type InputLabelCssVariables = {
@@ -95,11 +95,11 @@ type InputWrapperCssVariables = InputLabelCssVariables & InputErrorCssVariables 
 type InputWrapperStylesNames = "root" | InputLabelStylesNames | InputDescriptionStylesNames | InputErrorStylesNames;
 interface __InputWrapperProps {
     /** Contents of `Input.Label` component, if not set, label is not rendered. */
-    label?: react__default.ReactNode;
+    label?: React__default.ReactNode;
     /** Contents of `Input.Description` component, if not set, description is not rendered. */
-    description?: react__default.ReactNode;
+    description?: React__default.ReactNode;
     /** Contents of `Input.Error` component, if not set, error is not rendered. */
-    error?: react__default.ReactNode;
+    error?: React__default.ReactNode;
     /** Adds required attribute to the input and a red asterisk on the right side of label, `false` by default */
     required?: boolean;
     /** Determines whether required asterisk should be rendered, overrides required prop, does not add required attribute to the input, `false` by default */
@@ -111,7 +111,7 @@ interface __InputWrapperProps {
     /** Props passed down to the `InputError` component */
     errorProps?: Record<string, any>;
     /** Input container component, defaults to `React.Fragment` */
-    inputContainer?(children: react__default.ReactNode): react__default.ReactNode;
+    inputContainer?(children: React__default.ReactNode): React__default.ReactNode;
     /** Controls order of the elements, `['label', 'description', 'input', 'error']` by default */
     inputWrapperOrder?: ("label" | "input" | "description" | "error")[];
 }
@@ -153,27 +153,27 @@ interface InputStylesCtx {
 }
 interface __InputProps {
     /** Content section rendered on the left side of the input */
-    leftSection?: react__default.ReactNode;
+    leftSection?: React__default.ReactNode;
     /** Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height */
-    leftSectionWidth?: react__default.CSSProperties["width"];
+    leftSectionWidth?: React__default.CSSProperties["width"];
     /** Props added to the `leftSection` element */
-    leftSectionProps?: react__default.ComponentPropsWithoutRef<"div">;
+    leftSectionProps?: React__default.ComponentPropsWithoutRef<"div">;
     /** Sets `pointer-events` styles on the `leftSection` element, `'none'` by default */
-    leftSectionPointerEvents?: react__default.CSSProperties["pointerEvents"];
+    leftSectionPointerEvents?: React__default.CSSProperties["pointerEvents"];
     /** Content section rendered on the right side of the input */
-    rightSection?: react__default.ReactNode;
+    rightSection?: React__default.ReactNode;
     /** Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height */
-    rightSectionWidth?: react__default.CSSProperties["width"];
+    rightSectionWidth?: React__default.CSSProperties["width"];
     /** Props added to the `rightSection` element */
-    rightSectionProps?: react__default.ComponentPropsWithoutRef<"div">;
+    rightSectionProps?: React__default.ComponentPropsWithoutRef<"div">;
     /** Sets `pointer-events` styles on the `rightSection` element, `'none'` by default */
-    rightSectionPointerEvents?: react__default.CSSProperties["pointerEvents"];
+    rightSectionPointerEvents?: React__default.CSSProperties["pointerEvents"];
     /** Props added to the root element of the `Input` component */
-    wrapperProps?: react__default.ComponentPropsWithoutRef<"div">;
+    wrapperProps?: Record<string, any>;
     /** Sets `required` attribute on the `input` element */
     required?: boolean;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Sets `disabled` attribute on the `input` element */
     disabled?: boolean;
     /** Controls input `height` and horizontal `padding`, `'sm'` by default */
@@ -188,7 +188,7 @@ interface InputProps extends BoxProps, __InputProps, StylesApiProps<InputFactory
     /** Props passed to Styles API context, replaces `Input.Wrapper` props */
     __stylesApiProps?: Record<string, any>;
     /** Determines whether the input should have error styles and `aria-invalid` attribute */
-    error?: react__default.ReactNode;
+    error?: React__default.ReactNode;
     /** Determines whether the input can have multiple lines, for example when `component="textarea"`, `false` by default */
     multiline?: boolean;
     /** Input element id */
@@ -212,18 +212,18 @@ type InputFactory = PolymorphicFactory<{
         Wrapper: typeof InputWrapper;
     };
 }>;
-declare const Input: (<C = "input">(props: C extends react__default.ElementType<any> ? InputProps & {
+declare const Input: (<C = "input">(props: C extends React__default.ElementType<any> ? InputProps & {
     component?: C | undefined;
-} & Omit<JSX.LibraryManagedAttributes<C, react__default.PropsWithoutRef<react__default.ComponentProps<C>>>, "component" | keyof InputProps> & {
-    ref?: (C extends infer T ? T extends C ? T extends react__default.ElementType<any> ? react__default.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+} & Omit<JSX.LibraryManagedAttributes<C, React__default.PropsWithoutRef<React__default.ComponentProps<C>>>, "component" | keyof InputProps> & {
+    ref?: (C extends infer T ? T extends C ? T extends React__default.ElementType<any> ? React__default.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
 } : InputProps & {
-    component: react__default.ElementType<any>;
-}) => react__default.ReactElement<any, string | react__default.JSXElementConstructor<any>>) & Omit<react__default.FunctionComponent<(InputProps & {
+    component: React__default.ElementType<any>;
+}) => React__default.ReactElement<any, string | React__default.JSXElementConstructor<any>>) & Omit<React__default.FunctionComponent<(InputProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, "component" | keyof InputProps> & {
     ref?: any;
 }) | (InputProps & {
-    component: react__default.ElementType<any>;
+    component: React__default.ElementType<any>;
 })>, never> & _raikou_core.ThemeExtend<{
     props: InputProps;
     defaultRef: HTMLInputElement;
@@ -259,300 +259,39 @@ interface BaseProps extends __BaseInputProps, BoxProps, StylesApiProps<{
 }
 declare function useInputProps<T extends BaseProps, U extends Partial<T>>(component: string, defaultProps: U, _props: T): Omit<T & { [Key in Extract<keyof T, never>]-?: {}[Key] | NonNullable<T[Key]>; }, "label" | "style" | "error" | "required" | "className" | "id" | "__staticSelector" | "size" | "unstyled" | "variant" | "classNames" | "styles" | "vars" | "description" | "__stylesApiProps" | "withAsterisk" | "labelProps" | "descriptionProps" | "errorProps" | "inputContainer" | "inputWrapperOrder" | "wrapperProps"> & {
     classNames: Partial<Record<string, string>> | ((theme: _raikou_core.RaikouTheme, props: any, ctx: unknown) => Partial<Record<string, string>>) | undefined;
-    styles: Partial<Record<string, react.CSSProperties>> | ((theme: _raikou_core.RaikouTheme, props: any, ctx: unknown) => Partial<Record<string, react.CSSProperties>>) | undefined;
+    styles: Partial<Record<string, React.CSSProperties>> | ((theme: _raikou_core.RaikouTheme, props: any, ctx: unknown) => Partial<Record<string, React.CSSProperties>>) | undefined;
     unstyled: boolean | undefined;
     wrapperProps: {
-        children?: react.ReactNode;
-        slot?: string | undefined;
-        style: _raikou_core.RaikouStyleProp;
-        title?: string | undefined;
-        dir?: string | undefined;
-        key?: react.Key | null | undefined;
-        defaultChecked?: boolean | undefined;
-        defaultValue?: string | number | readonly string[] | undefined;
-        suppressContentEditableWarning?: boolean | undefined;
-        suppressHydrationWarning?: boolean | undefined;
-        accessKey?: string | undefined;
-        autoFocus?: boolean | undefined;
-        className: string | undefined;
-        contentEditable?: "inherit" | (boolean | "true" | "false") | undefined;
-        contextMenu?: string | undefined;
-        draggable?: (boolean | "true" | "false") | undefined;
-        hidden?: boolean | undefined;
-        id?: string | undefined;
-        lang?: string | undefined;
-        nonce?: string | undefined;
-        placeholder?: string | undefined;
-        spellCheck?: (boolean | "true" | "false") | undefined;
-        tabIndex?: number | undefined;
-        translate?: "yes" | "no" | undefined;
-        radioGroup?: string | undefined;
-        role?: react.AriaRole | undefined;
-        about?: string | undefined;
-        content?: string | undefined;
-        datatype?: string | undefined;
-        inlist?: any;
-        prefix?: string | undefined;
-        property?: string | undefined;
-        rel?: string | undefined;
-        resource?: string | undefined;
-        rev?: string | undefined;
-        typeof?: string | undefined;
-        vocab?: string | undefined;
-        autoCapitalize?: string | undefined;
-        autoCorrect?: string | undefined;
-        autoSave?: string | undefined;
-        color?: string | undefined;
-        itemProp?: string | undefined;
-        itemScope?: boolean | undefined;
-        itemType?: string | undefined;
-        itemID?: string | undefined;
-        itemRef?: string | undefined;
-        results?: number | undefined;
-        security?: string | undefined;
-        unselectable?: "on" | "off" | undefined;
-        inputMode?: "search" | "text" | "none" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
-        is?: string | undefined;
-        'aria-activedescendant'?: string | undefined;
-        'aria-atomic'?: (boolean | "true" | "false") | undefined;
-        'aria-autocomplete'?: "none" | "inline" | "list" | "both" | undefined;
-        'aria-busy'?: (boolean | "true" | "false") | undefined;
-        'aria-checked'?: boolean | "true" | "false" | "mixed" | undefined;
-        'aria-colcount'?: number | undefined;
-        'aria-colindex'?: number | undefined;
-        'aria-colspan'?: number | undefined;
-        'aria-controls'?: string | undefined;
-        'aria-current'?: boolean | "time" | "true" | "false" | "page" | "step" | "location" | "date" | undefined;
-        'aria-describedby'?: string | undefined;
-        'aria-details'?: string | undefined;
-        'aria-disabled'?: (boolean | "true" | "false") | undefined;
-        'aria-dropeffect'?: "link" | "copy" | "none" | "execute" | "move" | "popup" | undefined;
-        'aria-errormessage'?: string | undefined;
-        'aria-expanded'?: (boolean | "true" | "false") | undefined;
-        'aria-flowto'?: string | undefined;
-        'aria-grabbed'?: (boolean | "true" | "false") | undefined;
-        'aria-haspopup'?: boolean | "dialog" | "menu" | "grid" | "true" | "false" | "listbox" | "tree" | undefined;
-        'aria-hidden'?: (boolean | "true" | "false") | undefined;
-        'aria-invalid'?: boolean | "true" | "false" | "grammar" | "spelling" | undefined;
-        'aria-keyshortcuts'?: string | undefined;
-        'aria-label'?: string | undefined;
-        'aria-labelledby'?: string | undefined;
-        'aria-level'?: number | undefined;
-        'aria-live'?: "off" | "assertive" | "polite" | undefined;
-        'aria-modal'?: (boolean | "true" | "false") | undefined;
-        'aria-multiline'?: (boolean | "true" | "false") | undefined;
-        'aria-multiselectable'?: (boolean | "true" | "false") | undefined;
-        'aria-orientation'?: "horizontal" | "vertical" | undefined;
-        'aria-owns'?: string | undefined;
-        'aria-placeholder'?: string | undefined;
-        'aria-posinset'?: number | undefined;
-        'aria-pressed'?: boolean | "true" | "false" | "mixed" | undefined;
-        'aria-readonly'?: (boolean | "true" | "false") | undefined;
-        'aria-relevant'?: "text" | "additions" | "additions removals" | "additions text" | "all" | "removals" | "removals additions" | "removals text" | "text additions" | "text removals" | undefined;
-        'aria-required'?: (boolean | "true" | "false") | undefined;
-        'aria-roledescription'?: string | undefined;
-        'aria-rowcount'?: number | undefined;
-        'aria-rowindex'?: number | undefined;
-        'aria-rowspan'?: number | undefined;
-        'aria-selected'?: (boolean | "true" | "false") | undefined;
-        'aria-setsize'?: number | undefined;
-        'aria-sort'?: "none" | "ascending" | "descending" | "other" | undefined;
-        'aria-valuemax'?: number | undefined;
-        'aria-valuemin'?: number | undefined;
-        'aria-valuenow'?: number | undefined;
-        'aria-valuetext'?: string | undefined;
-        dangerouslySetInnerHTML?: {
-            __html: string | TrustedHTML;
-        } | undefined;
-        onCopy?: react.ClipboardEventHandler<HTMLDivElement> | undefined;
-        onCopyCapture?: react.ClipboardEventHandler<HTMLDivElement> | undefined;
-        onCut?: react.ClipboardEventHandler<HTMLDivElement> | undefined;
-        onCutCapture?: react.ClipboardEventHandler<HTMLDivElement> | undefined;
-        onPaste?: react.ClipboardEventHandler<HTMLDivElement> | undefined;
-        onPasteCapture?: react.ClipboardEventHandler<HTMLDivElement> | undefined;
-        onCompositionEnd?: react.CompositionEventHandler<HTMLDivElement> | undefined;
-        onCompositionEndCapture?: react.CompositionEventHandler<HTMLDivElement> | undefined;
-        onCompositionStart?: react.CompositionEventHandler<HTMLDivElement> | undefined;
-        onCompositionStartCapture?: react.CompositionEventHandler<HTMLDivElement> | undefined;
-        onCompositionUpdate?: react.CompositionEventHandler<HTMLDivElement> | undefined;
-        onCompositionUpdateCapture?: react.CompositionEventHandler<HTMLDivElement> | undefined;
-        onFocus?: react.FocusEventHandler<HTMLDivElement> | undefined;
-        onFocusCapture?: react.FocusEventHandler<HTMLDivElement> | undefined;
-        onBlur?: react.FocusEventHandler<HTMLDivElement> | undefined;
-        onBlurCapture?: react.FocusEventHandler<HTMLDivElement> | undefined;
-        onChange?: react.FormEventHandler<HTMLDivElement> | undefined;
-        onChangeCapture?: react.FormEventHandler<HTMLDivElement> | undefined;
-        onBeforeInput?: react.FormEventHandler<HTMLDivElement> | undefined;
-        onBeforeInputCapture?: react.FormEventHandler<HTMLDivElement> | undefined;
-        onInput?: react.FormEventHandler<HTMLDivElement> | undefined;
-        onInputCapture?: react.FormEventHandler<HTMLDivElement> | undefined;
-        onReset?: react.FormEventHandler<HTMLDivElement> | undefined;
-        onResetCapture?: react.FormEventHandler<HTMLDivElement> | undefined;
-        onSubmit?: react.FormEventHandler<HTMLDivElement> | undefined;
-        onSubmitCapture?: react.FormEventHandler<HTMLDivElement> | undefined;
-        onInvalid?: react.FormEventHandler<HTMLDivElement> | undefined;
-        onInvalidCapture?: react.FormEventHandler<HTMLDivElement> | undefined;
-        onLoad?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onLoadCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onError?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onErrorCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onKeyDown?: react.KeyboardEventHandler<HTMLDivElement> | undefined;
-        onKeyDownCapture?: react.KeyboardEventHandler<HTMLDivElement> | undefined;
-        onKeyPress?: react.KeyboardEventHandler<HTMLDivElement> | undefined;
-        onKeyPressCapture?: react.KeyboardEventHandler<HTMLDivElement> | undefined;
-        onKeyUp?: react.KeyboardEventHandler<HTMLDivElement> | undefined;
-        onKeyUpCapture?: react.KeyboardEventHandler<HTMLDivElement> | undefined;
-        onAbort?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onAbortCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onCanPlay?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onCanPlayCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onCanPlayThrough?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onCanPlayThroughCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onDurationChange?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onDurationChangeCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onEmptied?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onEmptiedCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onEncrypted?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onEncryptedCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onEnded?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onEndedCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onLoadedData?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onLoadedDataCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onLoadedMetadata?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onLoadedMetadataCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onLoadStart?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onLoadStartCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onPause?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onPauseCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onPlay?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onPlayCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onPlaying?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onPlayingCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onProgress?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onProgressCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onRateChange?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onRateChangeCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onResize?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onResizeCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onSeeked?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onSeekedCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onSeeking?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onSeekingCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onStalled?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onStalledCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onSuspend?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onSuspendCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onTimeUpdate?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onTimeUpdateCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onVolumeChange?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onVolumeChangeCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onWaiting?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onWaitingCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onAuxClick?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onAuxClickCapture?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onClick?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onClickCapture?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onContextMenu?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onContextMenuCapture?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onDoubleClick?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onDoubleClickCapture?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onDrag?: react.DragEventHandler<HTMLDivElement> | undefined;
-        onDragCapture?: react.DragEventHandler<HTMLDivElement> | undefined;
-        onDragEnd?: react.DragEventHandler<HTMLDivElement> | undefined;
-        onDragEndCapture?: react.DragEventHandler<HTMLDivElement> | undefined;
-        onDragEnter?: react.DragEventHandler<HTMLDivElement> | undefined;
-        onDragEnterCapture?: react.DragEventHandler<HTMLDivElement> | undefined;
-        onDragExit?: react.DragEventHandler<HTMLDivElement> | undefined;
-        onDragExitCapture?: react.DragEventHandler<HTMLDivElement> | undefined;
-        onDragLeave?: react.DragEventHandler<HTMLDivElement> | undefined;
-        onDragLeaveCapture?: react.DragEventHandler<HTMLDivElement> | undefined;
-        onDragOver?: react.DragEventHandler<HTMLDivElement> | undefined;
-        onDragOverCapture?: react.DragEventHandler<HTMLDivElement> | undefined;
-        onDragStart?: react.DragEventHandler<HTMLDivElement> | undefined;
-        onDragStartCapture?: react.DragEventHandler<HTMLDivElement> | undefined;
-        onDrop?: react.DragEventHandler<HTMLDivElement> | undefined;
-        onDropCapture?: react.DragEventHandler<HTMLDivElement> | undefined;
-        onMouseDown?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onMouseDownCapture?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onMouseEnter?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onMouseLeave?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onMouseMove?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onMouseMoveCapture?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onMouseOut?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onMouseOutCapture?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onMouseOver?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onMouseOverCapture?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onMouseUp?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onMouseUpCapture?: react.MouseEventHandler<HTMLDivElement> | undefined;
-        onSelect?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onSelectCapture?: react.ReactEventHandler<HTMLDivElement> | undefined;
-        onTouchCancel?: react.TouchEventHandler<HTMLDivElement> | undefined;
-        onTouchCancelCapture?: react.TouchEventHandler<HTMLDivElement> | undefined;
-        onTouchEnd?: react.TouchEventHandler<HTMLDivElement> | undefined;
-        onTouchEndCapture?: react.TouchEventHandler<HTMLDivElement> | undefined;
-        onTouchMove?: react.TouchEventHandler<HTMLDivElement> | undefined;
-        onTouchMoveCapture?: react.TouchEventHandler<HTMLDivElement> | undefined;
-        onTouchStart?: react.TouchEventHandler<HTMLDivElement> | undefined;
-        onTouchStartCapture?: react.TouchEventHandler<HTMLDivElement> | undefined;
-        onPointerDown?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onPointerDownCapture?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onPointerMove?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onPointerMoveCapture?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onPointerUp?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onPointerUpCapture?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onPointerCancel?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onPointerCancelCapture?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onPointerEnter?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onPointerEnterCapture?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onPointerLeave?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onPointerLeaveCapture?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onPointerOver?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onPointerOverCapture?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onPointerOut?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onPointerOutCapture?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onGotPointerCapture?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onGotPointerCaptureCapture?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onLostPointerCapture?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onLostPointerCaptureCapture?: react.PointerEventHandler<HTMLDivElement> | undefined;
-        onScroll?: react.UIEventHandler<HTMLDivElement> | undefined;
-        onScrollCapture?: react.UIEventHandler<HTMLDivElement> | undefined;
-        onWheel?: react.WheelEventHandler<HTMLDivElement> | undefined;
-        onWheelCapture?: react.WheelEventHandler<HTMLDivElement> | undefined;
-        onAnimationStart?: react.AnimationEventHandler<HTMLDivElement> | undefined;
-        onAnimationStartCapture?: react.AnimationEventHandler<HTMLDivElement> | undefined;
-        onAnimationEnd?: react.AnimationEventHandler<HTMLDivElement> | undefined;
-        onAnimationEndCapture?: react.AnimationEventHandler<HTMLDivElement> | undefined;
-        onAnimationIteration?: react.AnimationEventHandler<HTMLDivElement> | undefined;
-        onAnimationIterationCapture?: react.AnimationEventHandler<HTMLDivElement> | undefined;
-        onTransitionEnd?: react.TransitionEventHandler<HTMLDivElement> | undefined;
-        onTransitionEndCapture?: react.TransitionEventHandler<HTMLDivElement> | undefined;
-        label: react.ReactNode;
-        description: react.ReactNode;
-        error: react.ReactNode;
+        label: React.ReactNode;
+        description: React.ReactNode;
+        error: React.ReactNode;
         required: boolean | undefined;
         classNames: Partial<Record<string, string>> | ((theme: _raikou_core.RaikouTheme, props: any, ctx: unknown) => Partial<Record<string, string>>) | undefined;
+        className: string | undefined;
         __staticSelector: string | undefined;
         __stylesApiProps: Record<string, any>;
         errorProps: Record<string, any> | undefined;
         labelProps: Record<string, any> | undefined;
         descriptionProps: Record<string, any> | undefined;
         unstyled: boolean | undefined;
-        styles: Partial<Record<string, react.CSSProperties>> | ((theme: _raikou_core.RaikouTheme, props: any, ctx: unknown) => Partial<Record<string, react.CSSProperties>>) | undefined;
+        styles: Partial<Record<string, React.CSSProperties>> | ((theme: _raikou_core.RaikouTheme, props: any, ctx: unknown) => Partial<Record<string, React.CSSProperties>>) | undefined;
         size: _raikou_core.RaikouSize | (string & {}) | undefined;
-        inputContainer: ((children: react.ReactNode) => react.ReactNode) | undefined;
+        style: _raikou_core.RaikouStyleProp;
+        inputContainer: ((children: React.ReactNode) => React.ReactNode) | undefined;
         inputWrapperOrder: ("input" | "label" | "error" | "description")[] | undefined;
         withAsterisk: boolean | undefined;
         variant: string | undefined;
+        id: string | undefined;
     } & BoxProps;
     inputProps: {
         required: boolean | undefined;
         classNames: Partial<Record<string, string>> | ((theme: _raikou_core.RaikouTheme, props: any, ctx: unknown) => Partial<Record<string, string>>) | undefined;
-        styles: Partial<Record<string, react.CSSProperties>> | ((theme: _raikou_core.RaikouTheme, props: any, ctx: unknown) => Partial<Record<string, react.CSSProperties>>) | undefined;
+        styles: Partial<Record<string, React.CSSProperties>> | ((theme: _raikou_core.RaikouTheme, props: any, ctx: unknown) => Partial<Record<string, React.CSSProperties>>) | undefined;
         unstyled: boolean | undefined;
         size: _raikou_core.RaikouSize | (string & {}) | undefined;
         __staticSelector: string | undefined;
         __stylesApiProps: Record<string, any>;
-        error: react.ReactNode;
+        error: React.ReactNode;
         variant: string | undefined;
     };
 };

@@ -49,7 +49,7 @@ export interface DropzoneProps
   rejectColor?: RaikouColor;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `theme.defaultRadius` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Determines whether files capturing should be disabled, `false` by default */
   disabled?: boolean;

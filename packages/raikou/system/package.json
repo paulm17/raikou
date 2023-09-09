@@ -27,8 +27,7 @@
   "peerDependencies": {
     "@raikou/global-store": ">=0.0.1-alpha.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwindcss": "^3.3.2"
+    "react-dom": "^18.2.0"
   },
   "dependencies": {
     "@raikou/global-store": "workspace:*",

@@ -1,14 +1,22 @@
-import React from 'react';
-import { TextInput } from './TextInput';
+import React from "react";
+import { TextInput } from "./TextInput";
 
-export default { title: 'TextInput' };
+export default { title: "TextInput" };
 
 export function WithinDisabledFieldset() {
   return (
     <fieldset disabled style={{ padding: 40 }}>
       <legend>Disabled fieldset</legend>
-      <TextInput label="Disabled by fieldset" placeholder="Disabled by fieldset" />
-      <TextInput label="Disabled by prop" placeholder="Disabled by prop" disabled mt="md" />
+      <TextInput
+        label="Disabled by fieldset"
+        placeholder="Disabled by fieldset"
+      />
+      <TextInput
+        label="Disabled by prop"
+        placeholder="Disabled by prop"
+        disabled
+        mt="md"
+      />
     </fieldset>
   );
 }
@@ -21,6 +29,21 @@ export function Usage() {
         placeholder="This is text input"
         description="Description"
         error="Error"
+        id="test-id"
+      />
+    </div>
+  );
+}
+
+export function DisabledWithRightSection() {
+  return (
+    <div style={{ padding: 40 }}>
+      <TextInput
+        label="Text input"
+        placeholder="This is text input"
+        description="Description"
+        disabled
+        rightSection="$$$"
       />
     </div>
   );
@@ -42,8 +65,16 @@ export function WithoutErrorStyles() {
 export function Breakpoints() {
   return (
     <div style={{ padding: 40 }}>
-      <TextInput label="Text input without error styles" bg="red" hiddenFrom="sm" />
-      <TextInput label="Text input without error styles" bg="blue" visibleFrom="md" />
+      <TextInput
+        label="Text input without error styles"
+        bg="red"
+        hiddenFrom="sm"
+      />
+      <TextInput
+        label="Text input without error styles"
+        bg="blue"
+        visibleFrom="md"
+      />
     </div>
   );
 }

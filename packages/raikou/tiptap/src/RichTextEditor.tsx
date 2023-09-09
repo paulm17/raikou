@@ -104,7 +104,6 @@ export const RichTextEditor = factory<RichTextEditorFactory>((_props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     editor,
     withCodeHighlightStyles,
@@ -134,7 +133,6 @@ export const RichTextEditor = factory<RichTextEditorFactory>((_props, ref) => {
     style,
     classNames,
     styles,
-    unstyled,
     vars,
   });
 

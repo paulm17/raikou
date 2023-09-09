@@ -2676,7 +2676,6 @@ var PopoverDropdown = (0, import_core10.factory)(
     const _a = props, {
       className,
       style,
-      unstyled,
       vars,
       children,
       onKeyDownCapture,
@@ -2686,7 +2685,6 @@ var PopoverDropdown = (0, import_core10.factory)(
     } = _a, others = __objRest(_a, [
       "className",
       "style",
-      "unstyled",
       "vars",
       "children",
       "onKeyDownCapture",
@@ -3001,7 +2999,11 @@ var [MenuContextProvider, useMenuContext] = createSafeContext("Menu component wa
 // src/MenuDivider/MenuDivider.tsx
 var defaultProps5 = {};
 var MenuDivider = (0, import_core12.factory)((props, ref) => {
-  const _a = (0, import_core12.useProps)("MenuDivider", defaultProps5, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = (0, import_core12.useProps)(
+    "MenuDivider",
+    defaultProps5,
+    props
+  ), { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useMenuContext();
   return /* @__PURE__ */ import_react20.default.createElement(
     import_core12.Box,
@@ -3022,7 +3024,6 @@ var MenuDropdown = (0, import_core13.factory)((props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     onMouseEnter,
     onMouseLeave,
@@ -3032,7 +3033,6 @@ var MenuDropdown = (0, import_core13.factory)((props, ref) => {
     "className",
     "style",
     "styles",
-    "unstyled",
     "vars",
     "onMouseEnter",
     "onMouseLeave",
@@ -3145,7 +3145,6 @@ var MenuItem = (0, import_core15.polymorphicFactory)((props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     color,
     closeMenuOnClick,
@@ -3158,7 +3157,6 @@ var MenuItem = (0, import_core15.polymorphicFactory)((props, ref) => {
     "className",
     "style",
     "styles",
-    "unstyled",
     "vars",
     "color",
     "closeMenuOnClick",
@@ -3246,7 +3244,11 @@ var import_react24 = __toESM(require("react"));
 var import_core16 = require("@raikou/core");
 var defaultProps9 = {};
 var MenuLabel = (0, import_core16.factory)((props, ref) => {
-  const _a = (0, import_core16.useProps)("MenuLabel", defaultProps9, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = (0, import_core16.useProps)(
+    "MenuLabel",
+    defaultProps9,
+    props
+  ), { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useMenuContext();
   return /* @__PURE__ */ import_react24.default.createElement(
     import_core16.Box,
@@ -3427,6 +3429,7 @@ function Menu(_props) {
     )
   );
 }
+Menu.extend = (input) => input;
 Menu.displayName = "@raikou/core/Menu";
 Menu.Item = MenuItem;
 Menu.Label = MenuLabel;

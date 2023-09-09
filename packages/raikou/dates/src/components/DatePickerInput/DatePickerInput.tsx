@@ -49,7 +49,9 @@ const defaultProps: Partial<DatePickerInputProps> = {
 };
 
 type DatePickerInputComponent = (<Type extends DatePickerType = "default">(
-  props: DatePickerInputProps<Type>,
+  props: DatePickerInputProps<Type> & {
+    ref?: React.ForwardedRef<HTMLButtonElement>;
+  },
 ) => JSX.Element) & {
   displayName?: string;
 } & RaikouComponentStaticProperties<DatePickerInputFactory>;

@@ -268,7 +268,7 @@ var import_core5 = require("@raikou/core");
 var defaultProps5 = {};
 var AppShellMain = (0, import_core5.factory)((_props, ref) => {
   const props = (0, import_core5.useProps)("AppShellMain", defaultProps5, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useStore.getState();
   return /* @__PURE__ */ import_react5.default.createElement(
     import_core5.Box,
@@ -287,23 +287,7 @@ var defaultProps6 = {};
 var AppShellSection = (0, import_core6.polymorphicFactory)(
   (_props, ref) => {
     const props = (0, import_core6.useProps)("AppShellSection", defaultProps6, _props);
-    const _a = props, {
-      classNames,
-      className,
-      style,
-      styles,
-      unstyled,
-      vars,
-      grow
-    } = _a, others = __objRest(_a, [
-      "classNames",
-      "className",
-      "style",
-      "styles",
-      "unstyled",
-      "vars",
-      "grow"
-    ]);
+    const _a = props, { classNames, className, style, styles, vars, grow } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars", "grow"]);
     const ctx = useStore.getState();
     return /* @__PURE__ */ import_react6.default.createElement(
       import_core6.Box,

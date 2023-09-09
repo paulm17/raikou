@@ -1241,7 +1241,8 @@ var PasswordInput = factory8((_props, ref) => {
     visibilityToggleIcon,
     visibilityToggleButtonProps,
     rightSectionProps,
-    leftSectionProps
+    leftSectionProps,
+    leftSectionPointerEvents
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -1276,7 +1277,8 @@ var PasswordInput = factory8((_props, ref) => {
     "visibilityToggleIcon",
     "visibilityToggleButtonProps",
     "rightSectionProps",
-    "leftSectionProps"
+    "leftSectionProps",
+    "leftSectionPointerEvents"
   ]);
   const uuid = useId2(id);
   const [_visible, setVisibility] = useUncontrolled({
@@ -1373,7 +1375,8 @@ var PasswordInput = factory8((_props, ref) => {
         leftSectionWidth,
         rightSectionPointerEvents: "all",
         rightSectionProps,
-        leftSectionProps
+        leftSectionProps,
+        leftSectionPointerEvents
       },
       /* @__PURE__ */ React18.createElement(
         "input",
@@ -1386,6 +1389,7 @@ var PasswordInput = factory8((_props, ref) => {
           id: uuid,
           ref
         }), rest), {
+          autoComplete: rest.autoComplete || "off",
           type: _visible ? "text" : "password"
         })
       )

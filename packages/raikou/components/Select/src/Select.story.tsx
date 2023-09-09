@@ -10,6 +10,44 @@ export function Usage() {
       <Select
         data={["React", "Angular", "Svelte"]}
         placeholder="Select something"
+        defaultValue="First"
+      />
+    </div>
+  );
+}
+
+export function ControlledSearch() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Select
+        data={["React", "Angular", "Svelte"]}
+        placeholder="Select something"
+        searchable
+        searchValue="Re"
+      />
+    </div>
+  );
+}
+
+export function AllowDeselectFalse() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Select
+        data={["React", "Angular", "Svelte"]}
+        placeholder="Select something"
+        allowDeselect={false}
+      />
+    </div>
+  );
+}
+
+export function ReadOnly() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Select
+        data={["React", "Angular", "Svelte"]}
+        placeholder="Select something"
+        readOnly
       />
     </div>
   );
@@ -40,6 +78,26 @@ export function Searchable() {
         searchable
         nothingFoundMessage="Nothing found..."
       />
+    </div>
+  );
+}
+
+export function HiddenDropdown() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Select
+        data={["React", "Angular", "Svelte"]}
+        placeholder="Select something"
+        searchable
+        nothingFoundMessage="Nothing found..."
+      />
+      <Select
+        data={["React", "Angular", "Svelte"]}
+        placeholder="No message"
+        searchable
+        mt="xl"
+      />
+      <Select data={[]} placeholder="Empty data" searchable mt="xl" />
     </div>
   );
 }

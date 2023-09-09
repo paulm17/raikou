@@ -68,7 +68,6 @@ var ListItem = factory((_props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     icon,
     children
@@ -77,7 +76,6 @@ var ListItem = factory((_props, ref) => {
     "className",
     "style",
     "styles",
-    "unstyled",
     "vars",
     "icon",
     "children"

@@ -70,7 +70,7 @@ export interface TabsProps
   color?: RaikouColor;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-  radius?: RaikouRadius | number | (string & {});
+  radius?: RaikouRadius;
 
   /** Determines whether tabs should have inverted styles, `false` by default */
   inverted?: boolean;
@@ -113,7 +113,7 @@ const varsResolver = createVarsResolver<TabsFactory>(
       "--tabs-radius": getRadius(radius),
       "--tabs-color": getThemeColor(color, theme),
     },
-  })
+  }),
 );
 
 export const Tabs = factory<TabsFactory>((_props, ref) => {

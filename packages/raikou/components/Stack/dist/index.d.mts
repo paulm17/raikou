@@ -8,7 +8,7 @@ type StackCssVariables = {
 };
 interface StackProps extends BoxProps, StylesApiProps<StackFactory>, ElementProps<"div"> {
     /** Key of `theme.spacing` or any valid CSS value to set `gap` property, numbers are converted to rem, `'md'` by default */
-    gap?: RaikouSpacing | (string & {}) | number;
+    gap?: RaikouSpacing;
     /** Controls `align-items` CSS property, `'stretch'` by default */
     align?: React.CSSProperties["alignItems"];
     /** Controls `justify-content` CSS property, `'flex-start'` by default */

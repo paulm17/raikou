@@ -20,7 +20,7 @@ export type ColorSwatchStylesNames =
   | "colorOverlay"
   | "childrenOverlay";
 
-  export type ColorSwatchCssVariables = {
+export type ColorSwatchCssVariables = {
   root: "--cs-radius" | "--cs-size";
 };
 
@@ -34,7 +34,7 @@ export interface ColorSwatchProps
   size?: React.CSSProperties["width"];
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Determines whether the swatch should have inner `box-shadow`, `true` by default */
   withShadow?: boolean;
@@ -63,7 +63,7 @@ const varsResolver = createVarsResolver<ColorSwatchFactory>(
       "--cs-radius": getRadius(radius),
       "--cs-size": rem(size),
     },
-  })
+  }),
 );
 
 export const ColorSwatch = polymorphicFactory<ColorSwatchFactory>(
@@ -120,7 +120,7 @@ export const ColorSwatch = polymorphicFactory<ColorSwatchFactory>(
         <span {...getStyles("childrenOverlay")}>{children}</span>
       </Box>
     );
-  }
+  },
 );
 
 ColorSwatch.displayName = "@raikou/core/ColorSwatch";

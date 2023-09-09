@@ -53,7 +53,9 @@ const defaultProps: Partial<YearPickerInputProps> = {
 };
 
 type YearPickerInputComponent = (<Type extends DatePickerType = "default">(
-  props: YearPickerInputProps<Type>,
+  props: YearPickerInputProps<Type> & {
+    ref?: React.ForwardedRef<HTMLButtonElement>;
+  },
 ) => JSX.Element) & {
   displayName?: string;
 } & RaikouComponentStaticProperties<YearPickerInputFactory>;

@@ -48,7 +48,7 @@ interface PillProps extends BoxProps, StylesApiProps<PillFactory>, ElementProps<
     /** Props passed down to the remove button */
     removeButtonProps?: React.ComponentPropsWithoutRef<"button">;
     /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. `'xl'` by default. */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** If pill is disabled it has higher contrast to be visible on the disabled input background and the remove button is hidden */
     disabled?: boolean;
 }

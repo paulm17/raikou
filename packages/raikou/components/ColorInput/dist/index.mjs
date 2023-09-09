@@ -1756,7 +1756,8 @@ function useInputProps(component, defaultProps20, _props) {
     inputContainer,
     inputWrapperOrder,
     withAsterisk,
-    variant
+    variant,
+    id
   }, _wrapperProps);
   return __spreadProps(__spreadValues({}, rest), {
     classNames,
@@ -4290,7 +4291,6 @@ var PopoverDropdown = factory8(
     const _a = props, {
       className,
       style,
-      unstyled,
       vars,
       children,
       onKeyDownCapture,
@@ -4300,7 +4300,6 @@ var PopoverDropdown = factory8(
     } = _a, others = __objRest(_a, [
       "className",
       "style",
-      "unstyled",
       "vars",
       "children",
       "onKeyDownCapture",

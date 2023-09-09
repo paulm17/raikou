@@ -20,7 +20,7 @@ export type ImageCssVariables = {
 
 export interface ImageProps extends BoxProps, StylesApiProps<ImageFactory> {
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `0` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Controls `object-fit` style, `'cover'` by default */
   fit?: React.CSSProperties["objectFit"];

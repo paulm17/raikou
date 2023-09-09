@@ -41,7 +41,7 @@ export interface TimelineProps
   color?: RaikouColor;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `'xl'` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Controls size of the bullet, `20` by default */
   bulletSize?: number | string;

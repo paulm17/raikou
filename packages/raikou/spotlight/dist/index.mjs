@@ -3301,6 +3301,7 @@ var ModalBase = forwardRef14(
     ));
   }
 );
+ModalBase.displayName = "@raikou/core/ModalBase";
 
 // ../components/ModalBase/src/ModalBaseBody.tsx
 import React41, { forwardRef as forwardRef15 } from "react";
@@ -4445,11 +4446,14 @@ ModalRoot.displayName = "@raikou/core/ModalRoot";
 
 // ../components/Modal/src/ModalBody.tsx
 import React62 from "react";
-import { factory as factory17, useProps as useProps27 } from "@raikou/core";
+import {
+  factory as factory17,
+  useProps as useProps27
+} from "@raikou/core";
 var defaultProps27 = {};
 var ModalBody = factory17((_props, ref) => {
   const props = useProps27("ModalBody", defaultProps27, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useModalContext();
   return /* @__PURE__ */ React62.createElement(
     ModalBaseBody,
@@ -4462,12 +4466,15 @@ ModalBody.displayName = "@raikou/core/ModalBody";
 
 // ../components/Modal/src/ModalCloseButton.tsx
 import React63 from "react";
-import { factory as factory18, useProps as useProps28 } from "@raikou/core";
+import {
+  factory as factory18,
+  useProps as useProps28
+} from "@raikou/core";
 var defaultProps28 = {};
 var ModalCloseButton = factory18(
   (_props, ref) => {
     const props = useProps28("ModalCloseButton", defaultProps28, _props);
-    const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+    const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
     const ctx = useModalContext();
     return /* @__PURE__ */ React63.createElement(
       ModalBaseCloseButton,
@@ -4481,11 +4488,14 @@ ModalCloseButton.displayName = "@raikou/core/ModalCloseButton";
 
 // ../components/Modal/src/ModalOverlay.tsx
 import React64 from "react";
-import { factory as factory19, useProps as useProps29 } from "@raikou/core";
+import {
+  factory as factory19,
+  useProps as useProps29
+} from "@raikou/core";
 var defaultProps29 = {};
 var ModalOverlay = factory19((_props, ref) => {
   const props = useProps29("ModalOverlay", defaultProps29, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useModalContext();
   return /* @__PURE__ */ React64.createElement(
     ModalBaseOverlay,
@@ -4498,7 +4508,11 @@ ModalOverlay.displayName = "@raikou/core/ModalOverlay";
 
 // ../components/Modal/src/ModalContent.tsx
 import React65 from "react";
-import { factory as factory20, useProps as useProps30, rem as rem11 } from "@raikou/core";
+import {
+  factory as factory20,
+  useProps as useProps30,
+  rem as rem11
+} from "@raikou/core";
 var defaultProps30 = {};
 var ModalContent = factory20((_props, ref) => {
   const props = useProps30("ModalContent", defaultProps30, _props);
@@ -4523,11 +4537,14 @@ ModalContent.displayName = "@raikou/core/ModalContent";
 
 // ../components/Modal/src/ModalTitle.tsx
 import React66 from "react";
-import { factory as factory21, useProps as useProps31 } from "@raikou/core";
+import {
+  factory as factory21,
+  useProps as useProps31
+} from "@raikou/core";
 var defaultProps31 = {};
 var ModalTitle = factory21((_props, ref) => {
   const props = useProps31("ModalTitle", defaultProps31, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useModalContext();
   return /* @__PURE__ */ React66.createElement(
     ModalBaseTitle,
@@ -4540,11 +4557,14 @@ ModalTitle.displayName = "@raikou/core/ModalTitle";
 
 // ../components/Modal/src/ModalHeader.tsx
 import React67 from "react";
-import { factory as factory22, useProps as useProps32 } from "@raikou/core";
+import {
+  factory as factory22,
+  useProps as useProps32
+} from "@raikou/core";
 var defaultProps32 = {};
 var ModalHeader = factory22((_props, ref) => {
   const props = useProps32("ModalHeader", defaultProps32, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useModalContext();
   return /* @__PURE__ */ React67.createElement(
     ModalBaseHeader,

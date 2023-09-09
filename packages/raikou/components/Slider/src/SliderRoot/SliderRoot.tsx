@@ -16,7 +16,7 @@ export interface SliderRootProps extends BoxProps, ElementProps<"div"> {
   disabled: boolean | undefined;
   variant?: string;
   thumbSize: string | number | undefined;
-  radius: RaikouRadius | (string & {}) | number | undefined;
+  radius: RaikouRadius | undefined;
 }
 
 export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>(
@@ -30,7 +30,7 @@ export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>(
       radius,
       ...others
     }: SliderRootProps,
-    ref
+    ref,
   ) => {
     const { getStyles } = useSliderContext();
 
@@ -44,7 +44,7 @@ export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>(
         {...others}
       />
     );
-  }
+  },
 );
 
 SliderRoot.displayName = "@raikou/core/SliderRoot";

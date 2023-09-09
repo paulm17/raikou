@@ -61,7 +61,7 @@ const defaultProps: Partial<MonthPickerProps> = {
 };
 
 type MonthPickerComponent = (<Type extends DatePickerType = "default">(
-  props: MonthPickerProps<Type>,
+  props: MonthPickerProps<Type> & { ref?: React.ForwardedRef<HTMLDivElement> },
 ) => JSX.Element) & {
   displayName?: string;
 } & RaikouComponentStaticProperties<MonthPickerFactory>;

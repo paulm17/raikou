@@ -2,7 +2,7 @@ import React from "react";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -22,7 +22,7 @@ export type AccordionControlStylesNames =
 
 export interface AccordionControlProps
   extends BoxProps,
-    StylesApiProps<AccordionControlFactory>,
+    CompoundStylesApiProps<AccordionControlFactory>,
     ElementProps<"button"> {
   /** Disables control button */
   disabled?: boolean;
@@ -53,7 +53,6 @@ export const AccordionControl = factory<AccordionControlFactory>(
       className,
       style,
       styles,
-      unstyled,
       vars,
       chevron,
       icon,
@@ -139,7 +138,7 @@ export const AccordionControl = factory<AccordionControlFactory>(
     ) : (
       content
     );
-  }
+  },
 );
 
 AccordionControl.displayName = "@raikou/core/AccordionControl";

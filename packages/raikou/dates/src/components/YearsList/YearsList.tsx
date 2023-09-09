@@ -74,7 +74,6 @@ export const YearsList = factory<YearsListFactory>((_props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     decade,
     yearsListFormat,
@@ -105,7 +104,6 @@ export const YearsList = factory<YearsListFactory>((_props, ref) => {
     style,
     classNames,
     styles,
-    unstyled,
     vars,
     rootSelector: "yearsList",
   });
@@ -152,6 +150,7 @@ export const YearsList = factory<YearsListFactory>((_props, ref) => {
             }}
             onMouseDown={(event) => {
               controlProps?.onMouseDown?.(event);
+              // eslint-disable-next-line
               __preventFocus && event.preventDefault();
             }}
             tabIndex={__preventFocus || !isYearInTabOrder ? -1 : 0}

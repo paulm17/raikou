@@ -151,7 +151,6 @@ var CardSection = (0, import_core2.polymorphicFactory)(
       className,
       style,
       styles,
-      unstyled,
       vars,
       withBorder,
       inheritPadding
@@ -160,7 +159,6 @@ var CardSection = (0, import_core2.polymorphicFactory)(
       "className",
       "style",
       "styles",
-      "unstyled",
       "vars",
       "withBorder",
       "inheritPadding"

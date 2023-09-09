@@ -1,5 +1,5 @@
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, ElementProps, RaikouShadow, RaikouSpacing, RaikouSize, RaikouRadius, StylesApiProps, PolymorphicFactory, Factory } from '@raikou/core';
+import { BoxProps, ElementProps, RaikouShadow, RaikouSpacing, RaikouSize, RaikouRadius, StylesApiProps, PolymorphicFactory, Factory, CompoundStylesApiProps } from '@raikou/core';
 import React$1 from 'react';
 
 interface PortalProps extends React$1.ComponentPropsWithoutRef<"div"> {
@@ -74,9 +74,9 @@ interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
     /** `z-index` CSS property of the root element, `200` by default */
     zIndex?: React$1.CSSProperties["zIndex"];
     /** Key of `theme.shadows` or any valid CSS box-shadow value, 'xl' by default */
-    shadow?: RaikouShadow | (string & {});
+    shadow?: RaikouShadow;
     /** Key of `theme.spacing` or any valid CSS value to set content, header and footer padding, `'md'` by default */
-    padding?: RaikouSpacing | (string & {}) | number;
+    padding?: RaikouSpacing;
     /** Controls width of the content area, `'md'` by default */
     size?: RaikouSize | (string & {}) | number;
 }
@@ -91,9 +91,9 @@ interface ModalBaseContentProps extends BoxProps, ElementProps<"div"> {
     /** Props passed down to the `Transition` component */
     transitionProps?: TransitionOverride;
     /** Key of `theme.shadows` or any valid CSS value to set `box-shadow`, `none` by default */
-    shadow?: RaikouShadow | (string & {});
+    shadow?: RaikouShadow;
     /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | number | (string & {});
+    radius?: RaikouRadius;
 }
 
 interface ModalBaseHeaderProps extends BoxProps, ElementProps<"div"> {
@@ -115,7 +115,7 @@ interface OverlayProps extends BoxProps, StylesApiProps<OverlayFactory> {
     /** Overlay z-index, `200` by default */
     zIndex?: React$1.CSSProperties["zIndex"];
     /** Key of `theme.radius` or any valid CSS value to set border-radius, `0` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Content inside overlay */
     children?: React$1.ReactNode;
     /** Determines whether content inside overlay should be vertically and horizontally centered, `false` by default */
@@ -170,7 +170,7 @@ declare const DrawerRoot: _raikou_core.RaikouComponent<{
 }>;
 
 type DrawerBodyStylesNames = "body";
-interface DrawerBodyProps extends ModalBaseBodyProps, StylesApiProps<DrawerBodyFactory> {
+interface DrawerBodyProps extends ModalBaseBodyProps, CompoundStylesApiProps<DrawerBodyFactory> {
 }
 type DrawerBodyFactory = Factory<{
     props: DrawerBodyProps;
@@ -186,7 +186,7 @@ declare const DrawerBody: _raikou_core.RaikouComponent<{
 }>;
 
 type DrawerCloseButtonStylesNames = "close";
-interface DrawerCloseButtonProps extends ModalBaseCloseButtonProps, StylesApiProps<DrawerCloseButtonFactory> {
+interface DrawerCloseButtonProps extends ModalBaseCloseButtonProps, CompoundStylesApiProps<DrawerCloseButtonFactory> {
 }
 type DrawerCloseButtonFactory = Factory<{
     props: DrawerCloseButtonProps;
@@ -202,7 +202,7 @@ declare const DrawerCloseButton: _raikou_core.RaikouComponent<{
 }>;
 
 type DrawerOverlayStylesNames = "overlay";
-interface DrawerOverlayProps extends ModalBaseOverlayProps, StylesApiProps<DrawerOverlayFactory> {
+interface DrawerOverlayProps extends ModalBaseOverlayProps, CompoundStylesApiProps<DrawerOverlayFactory> {
 }
 type DrawerOverlayFactory = Factory<{
     props: DrawerOverlayProps;
@@ -218,7 +218,7 @@ declare const DrawerOverlay: _raikou_core.RaikouComponent<{
 }>;
 
 type DrawerContentStylesNames = "content" | "inner";
-interface DrawerContentProps extends ModalBaseContentProps, StylesApiProps<DrawerContentFactory> {
+interface DrawerContentProps extends ModalBaseContentProps, CompoundStylesApiProps<DrawerContentFactory> {
 }
 type DrawerContentFactory = Factory<{
     props: DrawerContentProps;
@@ -234,7 +234,7 @@ declare const DrawerContent: _raikou_core.RaikouComponent<{
 }>;
 
 type DrawerTitleStylesNames = "title";
-interface DrawerTitleProps extends ModalBaseTitleProps, StylesApiProps<DrawerTitleFactory> {
+interface DrawerTitleProps extends ModalBaseTitleProps, CompoundStylesApiProps<DrawerTitleFactory> {
 }
 type DrawerTitleFactory = Factory<{
     props: DrawerTitleProps;
@@ -250,7 +250,7 @@ declare const DrawerTitle: _raikou_core.RaikouComponent<{
 }>;
 
 type DrawerHeaderStylesNames = "header";
-interface DrawerHeaderProps extends ModalBaseHeaderProps, StylesApiProps<DrawerHeaderFactory> {
+interface DrawerHeaderProps extends ModalBaseHeaderProps, CompoundStylesApiProps<DrawerHeaderFactory> {
 }
 type DrawerHeaderFactory = Factory<{
     props: DrawerHeaderProps;

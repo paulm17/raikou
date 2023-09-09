@@ -368,7 +368,6 @@ var PaginationControl = factory3(
       className,
       style,
       styles,
-      unstyled,
       vars,
       active,
       disabled,
@@ -378,7 +377,6 @@ var PaginationControl = factory3(
       "className",
       "style",
       "styles",
-      "unstyled",
       "vars",
       "active",
       "disabled",
@@ -466,23 +464,7 @@ var defaultProps5 = {
 };
 var PaginationDots = factory4((_props, ref) => {
   const props = useProps5("PaginationDots", defaultProps5, _props);
-  const _a = props, {
-    classNames,
-    className,
-    style,
-    styles,
-    unstyled,
-    vars,
-    icon
-  } = _a, others = __objRest(_a, [
-    "classNames",
-    "className",
-    "style",
-    "styles",
-    "unstyled",
-    "vars",
-    "icon"
-  ]);
+  const _a = props, { classNames, className, style, styles, vars, icon } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars", "icon"]);
   const ctx = usePaginationContext();
   const Icon = icon;
   return /* @__PURE__ */ React8.createElement(

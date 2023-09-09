@@ -22,10 +22,10 @@ import { TransitionOverride } from "../../../Transition/src";
 import { SliderRoot } from "../SliderRoot/SliderRoot";
 import { Track } from "../Track/Track";
 import { Thumb } from "../Thumb/Thumb";
-import { getPosition } from '../utils/get-position/get-position';
-import { getChangeValue } from '../utils/get-change-value/get-change-value';
-import { getFloatingValue } from '../utils/get-floating-value/get-gloating-value';
-import { getPrecision } from '../utils/get-precision/get-precision';
+import { getPosition } from "../utils/get-position/get-position";
+import { getChangeValue } from "../utils/get-change-value/get-change-value";
+import { getFloatingValue } from "../utils/get-floating-value/get-gloating-value";
+import { getPrecision } from "../utils/get-precision/get-precision";
 import {
   SliderCssVariables,
   SliderProvider,
@@ -40,7 +40,7 @@ export interface SliderProps
   color?: RaikouColor;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `'xl'` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Controls size of the track, `'md'` by default */
   size?: RaikouSize | (string & {}) | number;
@@ -140,7 +140,7 @@ const varsResolver = createVarsResolver<SliderFactory>(
           ? rem(thumbSize)
           : "calc(var(--slider-size) * 2)",
     },
-  })
+  }),
 );
 
 export const Slider = factory<SliderFactory>((_props, ref) => {
@@ -231,17 +231,17 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
         valueRef.current = nextValue;
       }
     },
-    [disabled, min, max, step, precision, setValue]
+    [disabled, min, max, step, precision, setValue],
   );
 
   const { ref: container, active } = useMove(
     handleChange,
     { onScrubEnd: () => onChangeEnd?.(valueRef.current) },
-    dir
+    dir,
   );
 
   const handleTrackKeydownCapture = (
-    event: React.KeyboardEvent<HTMLDivElement>
+    event: React.KeyboardEvent<HTMLDivElement>,
   ) => {
     if (!disabled) {
       switch (event.key) {
@@ -250,7 +250,7 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
           thumb.current?.focus();
           const nextValue = getFloatingValue(
             Math.min(Math.max(_value + step!, min!), max!),
-            precision
+            precision,
           );
           onChangeEnd?.(nextValue);
           setValue(nextValue);
@@ -261,8 +261,11 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
           event.preventDefault();
           thumb.current?.focus();
           const nextValue = getFloatingValue(
-            Math.min(Math.max(dir === 'rtl' ? _value - step! : _value + step!, min!), max!),
-            precision
+            Math.min(
+              Math.max(dir === "rtl" ? _value - step! : _value + step!, min!),
+              max!,
+            ),
+            precision,
           );
           onChangeEnd?.(nextValue);
           setValue(nextValue);
@@ -274,7 +277,7 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
           thumb.current?.focus();
           const nextValue = getFloatingValue(
             Math.min(Math.max(_value - step!, min!), max!),
-            precision
+            precision,
           );
           onChangeEnd?.(nextValue);
           setValue(nextValue);
@@ -285,8 +288,11 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
           event.preventDefault();
           thumb.current?.focus();
           const nextValue = getFloatingValue(
-            Math.min(Math.max(dir === 'rtl' ? _value + step! : _value - step!, min!), max!),
-            precision
+            Math.min(
+              Math.max(dir === "rtl" ? _value + step! : _value - step!, min!),
+              max!,
+            ),
+            precision,
           );
           onChangeEnd?.(nextValue);
           setValue(nextValue);

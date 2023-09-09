@@ -1,5 +1,5 @@
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, ElementProps, RaikouShadow, RaikouSpacing, RaikouSize, RaikouRadius, StylesApiProps, PolymorphicFactory, Factory } from '@raikou/core';
+import { BoxProps, ElementProps, RaikouShadow, RaikouSpacing, RaikouSize, RaikouRadius, StylesApiProps, PolymorphicFactory, Factory, CompoundStylesApiProps } from '@raikou/core';
 import React$1 from 'react';
 
 interface PortalProps extends React$1.ComponentPropsWithoutRef<"div"> {
@@ -74,9 +74,9 @@ interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
     /** `z-index` CSS property of the root element, `200` by default */
     zIndex?: React$1.CSSProperties["zIndex"];
     /** Key of `theme.shadows` or any valid CSS box-shadow value, 'xl' by default */
-    shadow?: RaikouShadow | (string & {});
+    shadow?: RaikouShadow;
     /** Key of `theme.spacing` or any valid CSS value to set content, header and footer padding, `'md'` by default */
-    padding?: RaikouSpacing | (string & {}) | number;
+    padding?: RaikouSpacing;
     /** Controls width of the content area, `'md'` by default */
     size?: RaikouSize | (string & {}) | number;
 }
@@ -91,9 +91,9 @@ interface ModalBaseContentProps extends BoxProps, ElementProps<"div"> {
     /** Props passed down to the `Transition` component */
     transitionProps?: TransitionOverride;
     /** Key of `theme.shadows` or any valid CSS value to set `box-shadow`, `none` by default */
-    shadow?: RaikouShadow | (string & {});
+    shadow?: RaikouShadow;
     /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | number | (string & {});
+    radius?: RaikouRadius;
 }
 
 interface ModalBaseHeaderProps extends BoxProps, ElementProps<"div"> {
@@ -115,7 +115,7 @@ interface OverlayProps extends BoxProps, StylesApiProps<OverlayFactory> {
     /** Overlay z-index, `200` by default */
     zIndex?: React$1.CSSProperties["zIndex"];
     /** Key of `theme.radius` or any valid CSS value to set border-radius, `0` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Content inside overlay */
     children?: React$1.ReactNode;
     /** Determines whether content inside overlay should be vertically and horizontally centered, `false` by default */
@@ -156,7 +156,7 @@ interface ModalRootProps extends StylesApiProps<ModalRootFactory>, ModalBaseProp
     /** Scroll area component, native `div` element by default */
     scrollAreaComponent?: ScrollAreaComponent;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Determines whether the modal should be centered vertically, `false` by default */
     centered?: boolean;
     /** Determines whether the modal should take the entire screen, `false` by default */
@@ -178,7 +178,7 @@ declare const ModalRoot: _raikou_core.RaikouComponent<{
 }>;
 
 type ModalBodyStylesNames = "body";
-interface ModalBodyProps extends ModalBaseBodyProps, StylesApiProps<ModalBodyFactory> {
+interface ModalBodyProps extends ModalBaseBodyProps, CompoundStylesApiProps<ModalBodyFactory> {
 }
 type ModalBodyFactory = Factory<{
     props: ModalBodyProps;
@@ -194,7 +194,7 @@ declare const ModalBody: _raikou_core.RaikouComponent<{
 }>;
 
 type ModalCloseButtonStylesNames = "close";
-interface ModalCloseButtonProps extends ModalBaseCloseButtonProps, StylesApiProps<ModalCloseButtonFactory> {
+interface ModalCloseButtonProps extends ModalBaseCloseButtonProps, CompoundStylesApiProps<ModalCloseButtonFactory> {
 }
 type ModalCloseButtonFactory = Factory<{
     props: ModalCloseButtonProps;
@@ -210,7 +210,7 @@ declare const ModalCloseButton: _raikou_core.RaikouComponent<{
 }>;
 
 type ModalOverlayStylesNames = "overlay";
-interface ModalOverlayProps extends ModalBaseOverlayProps, StylesApiProps<ModalOverlayFactory> {
+interface ModalOverlayProps extends ModalBaseOverlayProps, CompoundStylesApiProps<ModalOverlayFactory> {
 }
 type ModalOverlayFactory = Factory<{
     props: ModalOverlayProps;
@@ -226,7 +226,7 @@ declare const ModalOverlay: _raikou_core.RaikouComponent<{
 }>;
 
 type ModalContentStylesNames = "content" | "inner";
-interface ModalContentProps extends ModalBaseContentProps, StylesApiProps<ModalContentFactory> {
+interface ModalContentProps extends ModalBaseContentProps, CompoundStylesApiProps<ModalContentFactory> {
 }
 type ModalContentFactory = Factory<{
     props: ModalContentProps;
@@ -242,7 +242,7 @@ declare const ModalContent: _raikou_core.RaikouComponent<{
 }>;
 
 type ModalTitleStylesNames = "title";
-interface ModalTitleProps extends ModalBaseTitleProps, StylesApiProps<ModalTitleFactory> {
+interface ModalTitleProps extends ModalBaseTitleProps, CompoundStylesApiProps<ModalTitleFactory> {
 }
 type ModalTitleFactory = Factory<{
     props: ModalTitleProps;
@@ -258,7 +258,7 @@ declare const ModalTitle: _raikou_core.RaikouComponent<{
 }>;
 
 type ModalHeaderStylesNames = "header";
-interface ModalHeaderProps extends ModalBaseHeaderProps, StylesApiProps<ModalHeaderFactory> {
+interface ModalHeaderProps extends ModalBaseHeaderProps, CompoundStylesApiProps<ModalHeaderFactory> {
 }
 type ModalHeaderFactory = Factory<{
     props: ModalHeaderProps;

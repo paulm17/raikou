@@ -2321,8 +2321,8 @@ var require_Card_plugin = __commonJS({
           paddingRight: "var(--_card-section-padding, 0)",
           borderTop: "var(--_card-section-border-top, unset)",
           borderBottom: "var(--_card-section-border-bottom, unset)",
-          marginTop: "var(--_card-section-mt)",
-          marginBottom: "var(--_card-section-mb)",
+          marginTop: "var(--_card-section-mt, 0)",
+          marginBottom: "var(--_card-section-mb, 0)",
           "&[data-first-section]": {
             "--_card-section-mt": "calc(var(--card-padding) * -1)",
             "--_card-section-border-top": "none !important"
@@ -6205,7 +6205,9 @@ var require_Stepper_plugin = __commonJS({
           '&[data-orientation="horizontal"]': {
             "--_separator-height": rem2("2px"),
             "--_separator-ml": "var(--raikou-spacing-md)",
-            "--_separator-mr": "var(--raikou-spacing-md)"
+            "--_separator-mr": "var(--raikou-spacing-md)",
+            "--_separator-mt": "0",
+            "--_separator-mb": "0"
           },
           '&[data-orientation="vertical"]': {
             "--_separator-width": rem2("2px"),
@@ -6575,7 +6577,7 @@ var require_Table_plugin = __commonJS({
           borderRight: "var(--_border-right)",
           "--_border-right": "none",
           "--_border-left": "none",
-          "&[data-with-column-border]:not(:last-of-type)": {
+          "&[data-with-column-border]:not(:last-child)": {
             "--_border-right": `${rem2("1px")} solid var(--_table-border-color)`,
             '[dir="rtl"] &': {
               "--_border-left": `${rem2("1px")} solid var(--_table-border-color)`,

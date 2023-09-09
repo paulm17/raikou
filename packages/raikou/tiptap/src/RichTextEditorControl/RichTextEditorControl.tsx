@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import {
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -16,7 +16,7 @@ export type RichTextEditorControlStylesNames = "control";
 
 export interface RichTextEditorControlProps
   extends BoxProps,
-    StylesApiProps<RichTextEditorControlFactory>,
+    CompoundStylesApiProps<RichTextEditorControlFactory>,
     ElementProps<"button"> {
   /** Determines whether the control should have active state, false by default */
   active?: boolean;
@@ -44,7 +44,6 @@ export const RichTextEditorControl = factory<RichTextEditorControlFactory>(
       className,
       style,
       styles,
-      unstyled,
       vars,
       interactive,
       active,
@@ -63,7 +62,6 @@ export const RichTextEditorControl = factory<RichTextEditorControlFactory>(
         aria-pressed={(active && interactive) || undefined}
         aria-hidden={!interactive || undefined}
         ref={ref}
-        unstyled={unstyled}
       />
     );
   },
@@ -101,6 +99,7 @@ export function createControl({
   operation,
   icon,
 }: CreateControlProps) {
+  // eslint-disable-next-line
   return forwardRef<HTMLButtonElement, RichTextEditorControlBaseProps>(
     (props, ref) => {
       const { editor, labels } = useRichTextEditorContext();

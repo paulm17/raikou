@@ -22,6 +22,21 @@ export function Usage() {
   );
 }
 
+export function ReadOnly() {
+  const [value, setValue] = useState<number | string>(345);
+  return (
+    <div style={{ padding: 40 }}>
+      <NumberInput
+        value={value}
+        label="Number input"
+        placeholder="Number input"
+        readOnly
+        onChange={setValue}
+      />
+    </div>
+  );
+}
+
 export function MinMax() {
   const [value, setValue] = useState<number | string>(15);
   return (
@@ -33,6 +48,26 @@ export function MinMax() {
         onChange={setValue}
         min={0}
         max={100}
+      />
+      {typeof value === "number"
+        ? `${value} number`
+        : `${value === "" ? "empty" : value} string`}
+      <Button onClick={() => setValue(245.32)}>Set value to float</Button>
+    </div>
+  );
+}
+
+export function NegativeMin() {
+  const [value, setValue] = useState<number | string>(0);
+  return (
+    <div style={{ padding: 40 }}>
+      <NumberInput
+        value={value}
+        label="Number input"
+        placeholder="Number input"
+        onChange={setValue}
+        min={-10}
+        max={-5}
       />
       {typeof value === "number"
         ? `${value} number`
@@ -85,6 +120,24 @@ export function Handlers() {
       <Button onClick={() => handlersRef.current?.decrement()}>
         Decrement
       </Button>
+    </div>
+  );
+}
+
+export function Disabled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <NumberInput
+        disabled
+        value={4000}
+        label="Disabled with value"
+        rightSection="$$"
+      />
+      <NumberInput
+        disabled
+        placeholder="Test value"
+        label="Disabled with placeholder"
+      />
     </div>
   );
 }

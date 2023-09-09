@@ -2,7 +2,7 @@ import React from "react";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -14,7 +14,7 @@ export type SpotlightEmptyStylesNames = "empty";
 
 export interface SpotlightEmptyProps
   extends BoxProps,
-    StylesApiProps<SpotlightEmptyFactory>,
+    CompoundStylesApiProps<SpotlightEmptyFactory>,
     ElementProps<"div"> {}
 
 export type SpotlightEmptyFactory = Factory<{

@@ -7,7 +7,7 @@ import {
   createScopedKeydownHandler,
   useDirection,
   getThemeColor,
-  StylesApiProps,
+  CompoundStylesApiProps,
   Factory,
   useRaikouTheme,
 } from "@raikou/core";
@@ -21,7 +21,7 @@ export type TabsTabStylesNames = "tab" | "tabSection" | "tabLabel";
 
 export interface TabsTabProps
   extends Omit<UnstyledButtonProps, "classNames" | "styles" | "vars">,
-    StylesApiProps<TabsTabFactory>,
+    CompoundStylesApiProps<TabsTabFactory>,
     ElementProps<"button"> {
   /** Value of associated panel */
   value: string;

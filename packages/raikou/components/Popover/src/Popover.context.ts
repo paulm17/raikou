@@ -34,8 +34,8 @@ interface PopoverContext {
   portalProps?: Omit<PortalProps, "children">;
   closeOnEscape: boolean | undefined;
   zIndex: React.CSSProperties["zIndex"];
-  radius?: RaikouRadius | (string & {}) | number | undefined;
-  shadow?: RaikouShadow | (string & {}) | undefined;
+  radius?: RaikouRadius | undefined;
+  shadow?: RaikouShadow | undefined;
   onClose?(): void;
   getDropdownId(): string;
   getTargetId(): string;
@@ -56,5 +56,5 @@ interface PopoverContext {
 
 export const [PopoverContextProvider, usePopoverContext] =
   createSafeContext<PopoverContext>(
-    "Popover component was not found in the tree"
+    "Popover component was not found in the tree",
   );

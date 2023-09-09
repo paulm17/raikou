@@ -1,5 +1,10 @@
 import React from "react";
-import { StylesApiProps, factory, useProps, Factory } from "@raikou/core";
+import {
+  CompoundStylesApiProps,
+  factory,
+  useProps,
+  Factory,
+} from "@raikou/core";
 import {
   ModalBaseCloseButton,
   ModalBaseCloseButtonProps,
@@ -10,7 +15,7 @@ export type ModalCloseButtonStylesNames = "close";
 
 export interface ModalCloseButtonProps
   extends ModalBaseCloseButtonProps,
-    StylesApiProps<ModalCloseButtonFactory> {}
+    CompoundStylesApiProps<ModalCloseButtonFactory> {}
 
 export type ModalCloseButtonFactory = Factory<{
   props: ModalCloseButtonProps;
@@ -24,8 +29,7 @@ const defaultProps: Partial<ModalCloseButtonProps> = {};
 export const ModalCloseButton = factory<ModalCloseButtonFactory>(
   (_props, ref) => {
     const props = useProps("ModalCloseButton", defaultProps, _props);
-    const { classNames, className, style, styles, unstyled, vars, ...others } =
-      props;
+    const { classNames, className, style, styles, vars, ...others } = props;
 
     const ctx = useModalContext();
 
@@ -36,7 +40,7 @@ export const ModalCloseButton = factory<ModalCloseButtonFactory>(
         {...others}
       />
     );
-  }
+  },
 );
 
 ModalCloseButton.displayName = "@raikou/core/ModalCloseButton";

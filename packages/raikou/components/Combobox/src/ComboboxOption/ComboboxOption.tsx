@@ -2,7 +2,7 @@ import React, { useId } from "react";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -14,7 +14,7 @@ export type ComboboxOptionStylesNames = "option";
 
 export interface ComboboxOptionProps
   extends BoxProps,
-    StylesApiProps<ComboboxOptionFactory>,
+    CompoundStylesApiProps<ComboboxOptionFactory>,
     ElementProps<"div"> {
   /** Option value */
   value: string;
@@ -45,7 +45,6 @@ export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     onClick,
     id,

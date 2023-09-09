@@ -1,7 +1,7 @@
 import React$1 from 'react';
-import { BoxProps, StylesApiProps, ElementProps, Factory, RaikouRadius, RaikouShadow } from '@raikou/core';
+import { BoxProps, CompoundStylesApiProps, ElementProps, Factory, StylesApiProps, RaikouRadius, RaikouShadow } from '@raikou/core';
 
-interface PopoverDropdownProps extends BoxProps, StylesApiProps<PopoverDropdownFactory>, ElementProps<"div"> {
+interface PopoverDropdownProps extends BoxProps, CompoundStylesApiProps<PopoverDropdownFactory>, ElementProps<"div"> {
 }
 type PopoverDropdownFactory = Factory<{
     props: PopoverDropdownProps;
@@ -120,9 +120,9 @@ interface __PopoverProps {
     /** Dropdown `z-index`, `300` by default */
     zIndex?: React$1.CSSProperties["zIndex"];
     /** Key of `theme.radius` or any valid CSS value to set border-radius, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Key of `theme.shadows` or any other valid CSS `box-shadow` value */
-    shadow?: RaikouShadow | (string & {});
+    shadow?: RaikouShadow;
     /** If set, popover dropdown will not be rendered */
     disabled?: boolean;
     /** Determines whether focus should be automatically returned to control when dropdown closes, `false` by default */

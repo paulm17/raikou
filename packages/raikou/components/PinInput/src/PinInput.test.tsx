@@ -102,4 +102,17 @@ describe("@raikou/core/PinInput", () => {
       container.querySelectorAll(".raikou-PinInput-input")[0],
     ).toHaveFocus();
   });
+
+  it("inputs will be filled when the value is bigger than 2 chars(ex: Gboard paste action from keypad)", async () => {
+    const spy = jest.fn();
+    const { container } = render(
+      <PinInput {...defaultProps} onComplete={spy} length={6} />,
+    );
+
+    const element = container.querySelectorAll(".mantine-PinInput-input")[0];
+
+    const expectedValue = "123456";
+    fireEvent.change(element, { target: { value: expectedValue } });
+    expect(spy).toHaveBeenCalledWith(expectedValue);
+  });
 });

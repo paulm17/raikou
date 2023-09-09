@@ -185,7 +185,11 @@ import {
 } from "@raikou/core";
 var defaultProps2 = {};
 var CarouselSlide = factory((props, ref) => {
-  const _a = useProps2("CarouselSlide", defaultProps2, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = useProps2(
+    "CarouselSlide",
+    defaultProps2,
+    props
+  ), { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useCarouselContext();
   return /* @__PURE__ */ React5.createElement(
     Box2,

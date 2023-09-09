@@ -82,7 +82,6 @@ export const DecadeLevelGroup = factory<DecadeLevelGroupFactory>(
       // Other settings
       classNames,
       styles,
-      unstyled,
       __staticSelector,
       __stopPropagation,
       numberOfColumns,
@@ -155,7 +154,6 @@ export const DecadeLevelGroup = factory<DecadeLevelGroupFactory>(
             __staticSelector={__staticSelector || "DecadeLevelGroup"}
             classNames={classNames}
             styles={styles}
-            unstyled={unstyled}
             withCellSpacing={withCellSpacing}
           />
         );

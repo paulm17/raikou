@@ -51,7 +51,7 @@ var __async = (__this, __arguments, generator) => {
 };
 
 // src/Select.tsx
-import React48, { useEffect as useEffect15, useState as useState16 } from "react";
+import React48, { useEffect as useEffect15 } from "react";
 import { useUncontrolled as useUncontrolled3 } from "@raikou/hooks";
 import {
   factory as factory21,
@@ -849,7 +849,8 @@ function useInputProps(component, defaultProps28, _props) {
     inputContainer,
     inputWrapperOrder,
     withAsterisk,
-    variant
+    variant,
+    id
   }, _wrapperProps);
   return __spreadProps(__spreadValues({}, rest), {
     classNames,
@@ -3528,7 +3529,6 @@ var PopoverDropdown = factory8(
     const _a = props, {
       className,
       style,
-      unstyled,
       vars,
       children,
       onKeyDownCapture,
@@ -3538,7 +3538,6 @@ var PopoverDropdown = factory8(
     } = _a, others = __objRest(_a, [
       "className",
       "style",
-      "unstyled",
       "vars",
       "children",
       "onKeyDownCapture",
@@ -4110,6 +4109,9 @@ function useComboboxTargetProps({
   const [selectedOptionId, setSelectedOptionId] = useState8(null);
   const handleKeyDown = (event) => {
     onKeyDown == null ? void 0 : onKeyDown(event);
+    if (ctx.readOnly) {
+      return;
+    }
     if (withKeyboardNavigation) {
       if (event.nativeEvent.code === "ArrowDown") {
         event.preventDefault();
@@ -4232,23 +4234,7 @@ var defaultProps15 = {};
 var ComboboxOptions = factory11(
   (_props, ref) => {
     const props = useProps15("ComboboxOptions", defaultProps15, _props);
-    const _a = props, {
-      classNames,
-      className,
-      style,
-      styles,
-      unstyled,
-      id,
-      onMouseDown
-    } = _a, others = __objRest(_a, [
-      "classNames",
-      "className",
-      "style",
-      "styles",
-      "unstyled",
-      "id",
-      "onMouseDown"
-    ]);
+    const _a = props, { classNames, className, style, styles, id, onMouseDown } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "id", "onMouseDown"]);
     const ctx = useComboboxContext();
     const _id = useId4(id);
     useEffect8(() => {
@@ -4286,7 +4272,6 @@ var ComboboxOption = factory12((_props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     onClick,
     id,
@@ -4300,7 +4285,6 @@ var ComboboxOption = factory12((_props, ref) => {
     "className",
     "style",
     "styles",
-    "unstyled",
     "vars",
     "onClick",
     "id",
@@ -4411,7 +4395,11 @@ import {
 } from "@raikou/core";
 var defaultProps18 = {};
 var ComboboxEmpty = factory14((props, ref) => {
-  const _a = useProps18("ComboboxEmpty", defaultProps18, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = useProps18(
+    "ComboboxEmpty",
+    defaultProps18,
+    props
+  ), { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useComboboxContext();
   return /* @__PURE__ */ React26.createElement(
     Box11,
@@ -4431,7 +4419,11 @@ import {
 } from "@raikou/core";
 var defaultProps19 = {};
 var ComboboxFooter = factory15((props, ref) => {
-  const _a = useProps19("ComboboxFooter", defaultProps19, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = useProps19(
+    "ComboboxFooter",
+    defaultProps19,
+    props
+  ), { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useComboboxContext();
   return /* @__PURE__ */ React27.createElement(
     Box12,
@@ -4451,7 +4443,11 @@ import {
 } from "@raikou/core";
 var defaultProps20 = {};
 var ComboboxHeader = factory16((props, ref) => {
-  const _a = useProps20("ComboboxHeader", defaultProps20, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = useProps20(
+    "ComboboxHeader",
+    defaultProps20,
+    props
+  ), { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useComboboxContext();
   return /* @__PURE__ */ React28.createElement(
     Box13,
@@ -4548,7 +4544,6 @@ var ComboboxGroup = factory19((props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     children,
     label
@@ -4557,7 +4552,6 @@ var ComboboxGroup = factory19((props, ref) => {
     "className",
     "style",
     "styles",
-    "unstyled",
     "vars",
     "children",
     "label"
@@ -4610,7 +4604,8 @@ function Combobox(_props) {
     size: size2,
     dropdownPadding,
     resetSelectionOnOptionHover,
-    __staticSelector
+    __staticSelector,
+    readOnly
   } = _a, others = __objRest(_a, [
     "classNames",
     "styles",
@@ -4622,7 +4617,8 @@ function Combobox(_props) {
     "size",
     "dropdownPadding",
     "resetSelectionOnOptionHover",
-    "__staticSelector"
+    "__staticSelector",
+    "readOnly"
   ]);
   const uncontrolledStore = useCombobox();
   const store = controlledStore || uncontrolledStore;
@@ -4654,7 +4650,8 @@ function Combobox(_props) {
         store,
         onOptionSubmit,
         size: size2,
-        resetSelectionOnOptionHover
+        resetSelectionOnOptionHover,
+        readOnly
       }
     },
     /* @__PURE__ */ React32.createElement(
@@ -4669,6 +4666,8 @@ function Combobox(_props) {
     )
   );
 }
+var extendCombobox = (c) => c;
+Combobox.extend = extendCombobox;
 Combobox.displayName = "@raikou/core/Combobox";
 Combobox.Target = ComboboxTarget;
 Combobox.Dropdown = ComboboxDropdown;
@@ -5838,6 +5837,7 @@ function OptionsDropdown({
 var defaultProps27 = {
   searchable: false,
   withCheckIcon: true,
+  allowDeselect: true,
   checkIconPosition: "left"
 };
 var Select = factory21((_props, ref) => {
@@ -5872,7 +5872,14 @@ var Select = factory21((_props, ref) => {
     rightSection,
     checkIconPosition,
     withCheckIcon,
-    nothingFoundMessage
+    nothingFoundMessage,
+    name,
+    form,
+    searchValue,
+    defaultSearchValue,
+    onSearchChange,
+    allowDeselect,
+    error
   } = _a, others = __objRest(_a, [
     "classNames",
     "styles",
@@ -5903,7 +5910,14 @@ var Select = factory21((_props, ref) => {
     "rightSection",
     "checkIconPosition",
     "withCheckIcon",
-    "nothingFoundMessage"
+    "nothingFoundMessage",
+    "name",
+    "form",
+    "searchValue",
+    "defaultSearchValue",
+    "onSearchChange",
+    "allowDeselect",
+    "error"
   ]);
   const parsedData = getParsedComboboxData(data);
   const optionsLockup = getOptionsLockup(parsedData);
@@ -5914,9 +5928,12 @@ var Select = factory21((_props, ref) => {
     onChange
   });
   const selectedOption = _value ? optionsLockup[_value] : void 0;
-  const [search, setSearch] = useState16(
-    selectedOption ? selectedOption.label : ""
-  );
+  const [search, setSearch] = useUncontrolled3({
+    value: searchValue,
+    defaultValue: defaultSearchValue,
+    finalValue: selectedOption ? selectedOption.label : "",
+    onChange: onSearchChange
+  });
   const combobox = useCombobox({
     opened: dropdownOpened,
     defaultOpened: defaultDropdownOpened,
@@ -5944,7 +5961,7 @@ var Select = factory21((_props, ref) => {
       setSearch(optionsLockup[value].label);
     }
   }, [value]);
-  return /* @__PURE__ */ React48.createElement(
+  return /* @__PURE__ */ React48.createElement(React48.Fragment, null, /* @__PURE__ */ React48.createElement(
     Combobox,
     __spreadValues({
       store: combobox,
@@ -5952,9 +5969,10 @@ var Select = factory21((_props, ref) => {
       classNames: resolvedClassNames,
       styles: resolvedStyles,
       unstyled,
+      readOnly,
       onOptionSubmit: (val) => {
         onOptionSubmit == null ? void 0 : onOptionSubmit(val);
-        const nextValue = optionsLockup[val].value === _value ? null : optionsLockup[val].value;
+        const nextValue = allowDeselect ? optionsLockup[val].value === _value ? null : optionsLockup[val].value : optionsLockup[val].value;
         setValue(nextValue);
         setSearch(nextValue ? optionsLockup[val].label : "");
         combobox.closeDropdown();
@@ -5993,7 +6011,8 @@ var Select = factory21((_props, ref) => {
         classNames: resolvedClassNames,
         styles: resolvedStyles,
         unstyled,
-        pointer: !searchable
+        pointer: !searchable,
+        error
       })
     )),
     /* @__PURE__ */ React48.createElement(
@@ -6004,7 +6023,7 @@ var Select = factory21((_props, ref) => {
         filter,
         search,
         limit,
-        hiddenWhenEmpty: !searchable && !!nothingFoundMessage && search.trim().length !== 0,
+        hiddenWhenEmpty: !searchable || !nothingFoundMessage,
         withScrollArea,
         maxDropdownHeight,
         filterOptions: searchable && (selectedOption == null ? void 0 : selectedOption.label) !== search,
@@ -6014,7 +6033,16 @@ var Select = factory21((_props, ref) => {
         nothingFoundMessage
       }
     )
-  );
+  ), /* @__PURE__ */ React48.createElement(
+    "input",
+    {
+      type: "hidden",
+      name,
+      value: _value || "",
+      form,
+      disabled
+    }
+  ));
 });
 Select.displayName = "@raikou/core/Select";
 export {

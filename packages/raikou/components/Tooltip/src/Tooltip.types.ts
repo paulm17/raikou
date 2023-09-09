@@ -35,7 +35,7 @@ export interface TooltipBaseProps
   withinPortal?: boolean;
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `theme.defaultRadius` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Key of `theme.colors` or any valid CSS color, controls tooltip background, by default set based on current color scheme */
   color?: RaikouColor;

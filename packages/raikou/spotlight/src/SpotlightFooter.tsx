@@ -2,7 +2,7 @@ import React from "react";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -14,7 +14,7 @@ export type SpotlightFooterStylesNames = "footer";
 
 export interface SpotlightFooterProps
   extends BoxProps,
-    StylesApiProps<SpotlightFooterFactory>,
+    CompoundStylesApiProps<SpotlightFooterFactory>,
     ElementProps<"div"> {}
 
 export type SpotlightFooterFactory = Factory<{

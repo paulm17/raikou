@@ -18,7 +18,7 @@ interface BaseProps
 export function useInputProps<T extends BaseProps, U extends Partial<T>>(
   component: string,
   defaultProps: U,
-  _props: T
+  _props: T,
 ) {
   const props = useProps<T>(component, defaultProps, _props);
   const {
@@ -69,6 +69,7 @@ export function useInputProps<T extends BaseProps, U extends Partial<T>>(
     inputWrapperOrder,
     withAsterisk,
     variant,
+    id,
     ..._wrapperProps,
   };
 

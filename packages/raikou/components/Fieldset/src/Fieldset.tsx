@@ -27,7 +27,7 @@ export interface FieldsetProps
   legend?: React.ReactNode;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 }
 
 export type FieldsetFactory = Factory<{

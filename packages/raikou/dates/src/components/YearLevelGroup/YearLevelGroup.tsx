@@ -83,7 +83,6 @@ export const YearLevelGroup = factory<YearLevelGroupFactory>((_props, ref) => {
     // Other settings
     classNames,
     styles,
-    unstyled,
     __staticSelector,
     __stopPropagation,
     numberOfColumns,
@@ -155,7 +154,6 @@ export const YearLevelGroup = factory<YearLevelGroupFactory>((_props, ref) => {
           getMonthControlProps={getMonthControlProps}
           classNames={classNames}
           styles={styles}
-          unstyled={unstyled}
           __staticSelector={__staticSelector || "YearLevelGroup"}
           withCellSpacing={withCellSpacing}
         />

@@ -6,9 +6,9 @@ interface SimpleGridProps extends BoxProps, StylesApiProps<SimpleGridFactory>, E
     /** Number of columns, `1` by default */
     cols?: StyleProp<number>;
     /** Spacing between columns, `'md'` by default */
-    spacing?: StyleProp<RaikouSpacing | (string & {}) | number>;
+    spacing?: StyleProp<RaikouSpacing>;
     /** Spacing between rows, `'md'` by default */
-    verticalSpacing?: StyleProp<RaikouSpacing | (string & {}) | number>;
+    verticalSpacing?: StyleProp<RaikouSpacing>;
 }
 type SimpleGridFactory = Factory<{
     props: SimpleGridProps;

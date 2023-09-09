@@ -64,7 +64,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--_border-right": "none",
       "--_border-left": "none",
 
-      "&[data-with-column-border]:not(:last-of-type)": {
+      "&[data-with-column-border]:not(:last-child)": {
         "--_border-right": `${rem("1px")} solid var(--_table-border-color)`,
 
         '[dir="rtl"] &': {

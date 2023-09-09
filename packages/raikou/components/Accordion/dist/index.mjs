@@ -125,23 +125,7 @@ var [AccordionItemProvider, useAccordionItemContext] = createSafeContext(
 // src/AccordionItem/AccordionItem.tsx
 var defaultProps = {};
 var AccordionItem = factory((props, ref) => {
-  const _a = useProps("AccordionItem", defaultProps, props), {
-    classNames,
-    className,
-    style,
-    styles,
-    unstyled,
-    vars,
-    value
-  } = _a, others = __objRest(_a, [
-    "classNames",
-    "className",
-    "style",
-    "styles",
-    "unstyled",
-    "vars",
-    "value"
-  ]);
+  const _a = useProps("AccordionItem", defaultProps, props), { classNames, className, style, styles, vars, value } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars", "value"]);
   const ctx = useAccordionContext();
   return /* @__PURE__ */ React4.createElement(AccordionItemProvider, { value: { value } }, /* @__PURE__ */ React4.createElement(
     Box,
@@ -347,23 +331,7 @@ Collapse.displayName = "@raikou/core/Collapse";
 // src/AccordionPanel/AccordionPanel.tsx
 var defaultProps3 = {};
 var AccordionPanel = factory2((props, ref) => {
-  const _a = useProps3("AccordionPanel", defaultProps3, props), {
-    classNames,
-    className,
-    style,
-    styles,
-    unstyled,
-    vars,
-    children
-  } = _a, others = __objRest(_a, [
-    "classNames",
-    "className",
-    "style",
-    "styles",
-    "unstyled",
-    "vars",
-    "children"
-  ]);
+  const _a = useProps3("AccordionPanel", defaultProps3, props), { classNames, className, style, styles, vars, children } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars", "children"]);
   const { value } = useAccordionItemContext();
   const ctx = useAccordionContext();
   return /* @__PURE__ */ React7.createElement(
@@ -455,7 +423,6 @@ var AccordionControl = factory3(
       className,
       style,
       styles,
-      unstyled,
       vars,
       chevron,
       icon,
@@ -468,7 +435,6 @@ var AccordionControl = factory3(
       "className",
       "style",
       "styles",
-      "unstyled",
       "vars",
       "chevron",
       "icon",

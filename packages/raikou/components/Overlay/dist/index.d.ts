@@ -18,7 +18,7 @@ interface OverlayProps extends BoxProps, StylesApiProps<OverlayFactory> {
     /** Overlay z-index, `200` by default */
     zIndex?: React.CSSProperties["zIndex"];
     /** Key of `theme.radius` or any valid CSS value to set border-radius, `0` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Content inside overlay */
     children?: React.ReactNode;
     /** Determines whether content inside overlay should be vertically and horizontally centered, `false` by default */

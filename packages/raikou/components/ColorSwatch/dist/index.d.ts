@@ -12,7 +12,7 @@ interface ColorSwatchProps extends BoxProps, StylesApiProps<ColorSwatchFactory> 
     /** Controls `width` and `height` of the swatch, any valid CSS value, numbers are converted to rem */
     size?: React.CSSProperties["width"];
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Determines whether the swatch should have inner `box-shadow`, `true` by default */
     withShadow?: boolean;
     /** Content rendered inside the swatch */

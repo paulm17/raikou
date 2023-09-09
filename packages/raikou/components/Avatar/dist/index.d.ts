@@ -9,7 +9,7 @@ type AvatarGroupCssVariables = {
 };
 interface AvatarGroupProps extends BoxProps, StylesApiProps<AvatarGroupFactory>, ElementProps<"div"> {
     /** Negative space between Avatar components, `'sm'` by default */
-    spacing?: RaikouSpacing | (string & {}) | number;
+    spacing?: RaikouSpacing;
 }
 type AvatarGroupFactory = Factory<{
     props: AvatarGroupProps;
@@ -35,7 +35,7 @@ interface AvatarProps extends BoxProps, StylesApiProps<AvatarFactory> {
     /** Width and height of the avatar, numbers are converted to rem, `'md'` by default */
     size?: RaikouSize | (string & {}) | number;
     /** Key of `theme.radius` or any valid CSS value to set border-radius, `'100%'` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Key of `theme.colors` or any valid CSS color, default value is `theme.primaryColor`  */
     color?: RaikouColor;
     /** Gradient configuration used when `variant="gradient"`, default value is `theme.defaultGradient` */

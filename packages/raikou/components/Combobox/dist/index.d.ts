@@ -1,13 +1,13 @@
 /// <reference path="global.d.ts" />
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, Factory, RaikouSize, PolymorphicFactory, RaikouRadius, RaikouShadow } from '@raikou/core';
+import { BoxProps, CompoundStylesApiProps, ElementProps, Factory, StylesApiProps, RaikouSize, PolymorphicFactory, RaikouRadius, RaikouShadow, RaikouThemeComponent } from '@raikou/core';
 import React$2 from 'react';
 import * as CSS from 'csstype';
 import * as PropTypes from 'prop-types';
 import { Interaction } from 'scheduler/tracing';
 
 type ComboboxGroupStylesNames = "group" | "groupLabel";
-interface ComboboxGroupProps extends BoxProps, StylesApiProps<ComboboxGroupFactory>, ElementProps<"div"> {
+interface ComboboxGroupProps extends BoxProps, CompoundStylesApiProps<ComboboxGroupFactory>, ElementProps<"div"> {
     /** Group label */
     label?: React$2.ReactNode;
 }
@@ -58,7 +58,7 @@ declare const ComboboxEventsTarget: _raikou_core.RaikouComponent<{
 }>;
 
 type ComboboxHeaderStylesNames = "header";
-interface ComboboxHeaderProps extends BoxProps, StylesApiProps<ComboboxHeaderFactory>, ElementProps<"div"> {
+interface ComboboxHeaderProps extends BoxProps, CompoundStylesApiProps<ComboboxHeaderFactory>, ElementProps<"div"> {
 }
 type ComboboxHeaderFactory = Factory<{
     props: ComboboxHeaderProps;
@@ -74,7 +74,7 @@ declare const ComboboxHeader: _raikou_core.RaikouComponent<{
 }>;
 
 type ComboboxFooterStylesNames = "footer";
-interface ComboboxFooterProps extends BoxProps, StylesApiProps<ComboboxFooterFactory>, ElementProps<"div"> {
+interface ComboboxFooterProps extends BoxProps, CompoundStylesApiProps<ComboboxFooterFactory>, ElementProps<"div"> {
 }
 type ComboboxFooterFactory = Factory<{
     props: ComboboxFooterProps;
@@ -111,7 +111,7 @@ declare const ComboboxChevron: _raikou_core.RaikouComponent<{
 }>;
 
 type ComboboxEmptyStylesNames = "empty";
-interface ComboboxEmptyProps extends BoxProps, StylesApiProps<ComboboxEmptyFactory>, ElementProps<"div"> {
+interface ComboboxEmptyProps extends BoxProps, CompoundStylesApiProps<ComboboxEmptyFactory>, ElementProps<"div"> {
 }
 type ComboboxEmptyFactory = Factory<{
     props: ComboboxEmptyProps;
@@ -289,11 +289,11 @@ interface __InputProps {
     /** Sets `pointer-events` styles on the `rightSection` element, `'none'` by default */
     rightSectionPointerEvents?: React$2.CSSProperties["pointerEvents"];
     /** Props added to the root element of the `Input` component */
-    wrapperProps?: React$2.ComponentPropsWithoutRef<"div">;
+    wrapperProps?: Record<string, any>;
     /** Sets `required` attribute on the `input` element */
     required?: boolean;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Sets `disabled` attribute on the `input` element */
     disabled?: boolean;
     /** Controls input `height` and horizontal `padding`, `'sm'` by default */
@@ -3704,7 +3704,7 @@ declare const ComboboxSearch: _raikou_core.RaikouComponent<{
 }>;
 
 type ComboboxOptionsStylesNames = "options";
-interface ComboboxOptionsProps extends BoxProps, StylesApiProps<ComboboxOptionsFactory>, ElementProps<"div"> {
+interface ComboboxOptionsProps extends BoxProps, CompoundStylesApiProps<ComboboxOptionsFactory>, ElementProps<"div"> {
 }
 type ComboboxOptionsFactory = Factory<{
     props: ComboboxOptionsProps;
@@ -3719,7 +3719,7 @@ declare const ComboboxOptions: _raikou_core.RaikouComponent<{
     compound: true;
 }>;
 
-interface PopoverDropdownProps extends BoxProps, StylesApiProps<PopoverDropdownFactory>, ElementProps<"div"> {
+interface PopoverDropdownProps extends BoxProps, CompoundStylesApiProps<PopoverDropdownFactory>, ElementProps<"div"> {
 }
 type PopoverDropdownFactory = Factory<{
     props: PopoverDropdownProps;
@@ -3826,9 +3826,9 @@ interface __PopoverProps {
     /** Dropdown `z-index`, `300` by default */
     zIndex?: React$2.CSSProperties["zIndex"];
     /** Key of `theme.radius` or any valid CSS value to set border-radius, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Key of `theme.shadows` or any other valid CSS `box-shadow` value */
-    shadow?: RaikouShadow | (string & {});
+    shadow?: RaikouShadow;
     /** If set, popover dropdown will not be rendered */
     disabled?: boolean;
     /** Determines whether focus should be automatically returned to control when dropdown closes, `false` by default */
@@ -3941,7 +3941,7 @@ interface UseComboboxOptions$1 {
 declare function useCombobox({ defaultOpened, opened, onOpenedChange, onDropdownClose, onDropdownOpen, loop, scrollBehavior, }?: UseComboboxOptions$1): ComboboxStore;
 
 type ComboboxOptionStylesNames = "option";
-interface ComboboxOptionProps extends BoxProps, StylesApiProps<ComboboxOptionFactory>, ElementProps<"div"> {
+interface ComboboxOptionProps extends BoxProps, CompoundStylesApiProps<ComboboxOptionFactory>, ElementProps<"div"> {
     /** Option value */
     value: string;
     /** Determines whether the option is selected */
@@ -3983,6 +3983,8 @@ interface ComboboxProps extends __PopoverProps, StylesApiProps<ComboboxFactory> 
     dropdownPadding?: React$2.CSSProperties["padding"];
     /** Determines whether selection should be reset when option is hovered, `false` by default */
     resetSelectionOnOptionHover?: boolean;
+    /** Determines whether Combobox value can be changed */
+    readOnly?: boolean;
 }
 type ComboboxFactory = Factory<{
     props: ComboboxProps;
@@ -4006,6 +4008,82 @@ type ComboboxFactory = Factory<{
 }>;
 declare function Combobox(_props: ComboboxProps): JSX.Element;
 declare namespace Combobox {
+    var extend: (c: _raikou_core.ExtendsRootComponent<{
+        props: ComboboxProps;
+        ref: HTMLDivElement;
+        stylesNames: ComboboxStylesNames;
+        vars: ComboboxCSSVariables;
+        staticComponents: {
+            Target: _raikou_core.RaikouComponent<{
+                props: ComboboxTargetProps;
+                ref: HTMLElement;
+                compound: true;
+            }>;
+            Dropdown: _raikou_core.RaikouComponent<{
+                props: ComboboxDropdownProps;
+                ref: HTMLDivElement;
+                stylesNames: "dropdown";
+                compound: true;
+            }>;
+            Options: _raikou_core.RaikouComponent<{
+                props: ComboboxOptionsProps;
+                ref: HTMLDivElement;
+                stylesNames: "options";
+                compound: true;
+            }>;
+            Option: _raikou_core.RaikouComponent<{
+                props: ComboboxOptionProps;
+                ref: HTMLDivElement;
+                stylesNames: "option";
+                compound: true;
+            }>;
+            Search: _raikou_core.RaikouComponent<{
+                props: ComboboxSearchProps;
+                ref: HTMLInputElement;
+                stylesNames: InputStylesNames;
+            }>;
+            Empty: _raikou_core.RaikouComponent<{
+                props: ComboboxEmptyProps;
+                ref: HTMLDivElement;
+                stylesNames: "empty";
+                compound: true;
+            }>;
+            Chevron: _raikou_core.RaikouComponent<{
+                props: ComboboxChevronProps;
+                ref: SVGSVGElement;
+                stylesNames: "chevron";
+                vars: ComboboxChevronCSSVariables;
+            }>;
+            Footer: _raikou_core.RaikouComponent<{
+                props: ComboboxFooterProps;
+                ref: HTMLDivElement;
+                stylesNames: "footer";
+                compound: true;
+            }>;
+            Header: _raikou_core.RaikouComponent<{
+                props: ComboboxHeaderProps;
+                ref: HTMLDivElement;
+                stylesNames: "header";
+                compound: true;
+            }>;
+            EventsTarget: _raikou_core.RaikouComponent<{
+                props: ComboboxEventsTargetProps;
+                ref: HTMLElement;
+                compound: true;
+            }>;
+            DropdownTarget: _raikou_core.RaikouComponent<{
+                props: ComboboxDropdownTargetProps;
+                ref: HTMLElement;
+                compound: true;
+            }>;
+            Group: _raikou_core.RaikouComponent<{
+                props: ComboboxGroupProps;
+                ref: HTMLDivElement;
+                stylesNames: ComboboxGroupStylesNames;
+                compound: true;
+            }>;
+        };
+    }>) => RaikouThemeComponent;
     var displayName: string;
     var Target: _raikou_core.RaikouComponent<{
         props: ComboboxTargetProps;
@@ -4180,27 +4258,27 @@ interface UseComboboxOptions {
 declare function useVirtualizedCombobox({ defaultOpened, opened, onOpenedChange, onDropdownClose, onDropdownOpen, loop, totalOptionsCount, isOptionDisabled, getOptionId, selectedOptionIndex, setSelectedOptionIndex, activeOptionIndex, onSelectedOptionSubmit, }?: UseComboboxOptions): ComboboxStore;
 
 interface UseComboboxTargetPropsInput {
-    targetType: 'input' | 'button' | undefined;
+    targetType: "input" | "button" | undefined;
     withAriaAttributes: boolean | undefined;
     withKeyboardNavigation: boolean | undefined;
     onKeyDown: React.KeyboardEventHandler<HTMLInputElement> | undefined;
 }
 declare function useComboboxTargetProps({ onKeyDown, withKeyboardNavigation, withAriaAttributes, targetType, }: UseComboboxTargetPropsInput): {
     onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-    'aria-haspopup': string;
-    'aria-expanded': boolean | undefined;
-    'aria-controls': string | null;
-    'aria-activedescendant': string | undefined;
+    "aria-haspopup": string;
+    "aria-expanded": boolean | undefined;
+    "aria-controls": string | null;
+    "aria-activedescendant": string | undefined;
     autoComplete: string;
-    'data-expanded': boolean | undefined;
+    "data-expanded": boolean | undefined;
 } | {
     onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
     "aria-haspopup"?: undefined;
     "aria-expanded"?: undefined;
     "aria-controls"?: undefined;
-    'aria-activedescendant'?: undefined;
+    "aria-activedescendant"?: undefined;
     autoComplete?: undefined;
-    'data-expanded'?: undefined;
+    "data-expanded"?: undefined;
 };
 
 declare function isOptionsGroup(item: ComboboxParsedItem): item is ComboboxParsedItemGroup;

@@ -1,9 +1,9 @@
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, RaikouColor, Factory, RaikouSpacing, RaikouSize, RaikouRadius } from '@raikou/core';
+import { BoxProps, CompoundStylesApiProps, ElementProps, RaikouColor, Factory, StylesApiProps, RaikouSpacing, RaikouSize, RaikouRadius } from '@raikou/core';
 import React from 'react';
 
 type StepperStepStylesNames = "step" | "stepLoader" | "verticalSeparator" | "stepWrapper" | "stepIcon" | "stepCompletedIcon" | "stepBody" | "stepLabel" | "stepDescription";
-interface StepperStepProps extends BoxProps, StylesApiProps<StepperStepFactory>, ElementProps<"button"> {
+interface StepperStepProps extends BoxProps, CompoundStylesApiProps<StepperStepFactory>, ElementProps<"button"> {
     /** Step index, controlled by Stepper component **/
     step?: number;
     /** Step state, controlled by Stepper component */
@@ -81,7 +81,7 @@ interface StepperProps extends BoxProps, StylesApiProps<StepperFactory>, Element
     /** Controls size of the step icon, by default icon size is inferred from `size` prop */
     iconSize?: number | string;
     /** Key of `theme.spacing` or any valid CSS value to set `padding-top` of the content */
-    contentPadding?: RaikouSpacing | (string & {}) | number;
+    contentPadding?: RaikouSpacing;
     /** Stepper orientation, `'horizontal'` by default */
     orientation?: "vertical" | "horizontal";
     /** Icon position relative to the step body, `'left'` by default */
@@ -89,7 +89,7 @@ interface StepperProps extends BoxProps, StylesApiProps<StepperFactory>, Element
     /** Controls size of various Stepper elements */
     size?: RaikouSize;
     /** Key of `theme.radius` or any valid CSS value to set steps border-radius, `"xl"` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Determines whether next steps can be selected, `true` by default **/
     allowNextStepsSelect?: boolean;
     /** Determines whether steps should wrap to the next line if no space is available, `true` by default */

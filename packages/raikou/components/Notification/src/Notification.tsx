@@ -43,7 +43,7 @@ export interface NotificationProps
   color?: RaikouColor;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Notification icon, replaces color line */
   icon?: React.ReactNode;
@@ -84,7 +84,7 @@ const varsResolver = createVarsResolver<NotificationFactory>(
       "--notification-radius": getRadius(radius),
       "--notification-color": getThemeColor(color, theme),
     },
-  })
+  }),
 );
 
 export const Notification = factory<NotificationFactory>((_props, ref) => {

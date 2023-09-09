@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   useProps,
   Factory,
@@ -32,7 +32,7 @@ export type RichTextEditorLinkControlStylesNames =
 export interface RichTextEditorLinkControlProps
   extends BoxProps,
     Omit<RichTextEditorControlBaseProps, "classNames" | "styles" | "vars">,
-    StylesApiProps<RichTextEditorLinkControlFactory> {
+    CompoundStylesApiProps<RichTextEditorLinkControlFactory> {
   /** Props passed down to Popover component */
   popoverProps?: Partial<PopoverProps>;
 
@@ -64,7 +64,6 @@ export const RichTextEditorLinkControl =
       className,
       style,
       styles,
-      unstyled,
       vars,
       icon,
       popoverProps,
@@ -96,6 +95,7 @@ export const RichTextEditorLinkControl =
 
     const setLink = () => {
       handleClose();
+      // eslint-disable-next-line
       url === ""
         ? ctx.editor?.chain().focus().extendMarkRange("link").unsetLink().run()
         : ctx.editor
@@ -133,7 +133,6 @@ export const RichTextEditorLinkControl =
         onClose={handleClose}
         offset={-44}
         zIndex={10000}
-        unstyled={unstyled}
         {...popoverProps}
       >
         <Popover.Target>
@@ -144,7 +143,6 @@ export const RichTextEditorLinkControl =
             title={ctx.labels.linkControlLabel}
             onClick={handleOpen}
             active={ctx.editor?.isActive("link")}
-            unstyled={unstyled}
             ref={ref}
             classNames={resolvedClassNames}
             styles={resolvedStyles}
@@ -168,7 +166,6 @@ export const RichTextEditorLinkControl =
                   .className,
               }}
               onKeyDown={handleInputKeydown}
-              unstyled={unstyled}
               rightSection={
                 <Tooltip
                   label={
@@ -180,7 +177,6 @@ export const RichTextEditorLinkControl =
                   withinPortal
                   withArrow
                   disabled={disableTooltips}
-                  unstyled={unstyled}
                   zIndex={10000}
                 >
                   <UnstyledButton
@@ -190,7 +186,6 @@ export const RichTextEditorLinkControl =
                       "linkEditorExternalControl",
                       stylesApiProps,
                     )}
-                    unstyled={unstyled}
                   >
                     <IconExternalLink
                       style={{ width: rem(14), height: rem(14) }}
@@ -205,7 +200,6 @@ export const RichTextEditorLinkControl =
               variant="default"
               onClick={setLink}
               {...ctx.getStyles("linkEditorSave", stylesApiProps)}
-              unstyled={unstyled}
             >
               {ctx.labels.linkEditorSave}
             </Button>

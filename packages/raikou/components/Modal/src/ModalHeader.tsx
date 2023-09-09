@@ -1,5 +1,10 @@
 import React from "react";
-import { StylesApiProps, factory, useProps, Factory } from "@raikou/core";
+import {
+  CompoundStylesApiProps,
+  factory,
+  useProps,
+  Factory,
+} from "@raikou/core";
 import { ModalBaseHeader, ModalBaseHeaderProps } from "../../ModalBase/src";
 import { useModalContext } from "./Modal.context";
 
@@ -7,7 +12,7 @@ export type ModalHeaderStylesNames = "header";
 
 export interface ModalHeaderProps
   extends ModalBaseHeaderProps,
-    StylesApiProps<ModalHeaderFactory> {}
+    CompoundStylesApiProps<ModalHeaderFactory> {}
 
 export type ModalHeaderFactory = Factory<{
   props: ModalHeaderProps;
@@ -20,8 +25,7 @@ const defaultProps: Partial<ModalHeaderProps> = {};
 
 export const ModalHeader = factory<ModalHeaderFactory>((_props, ref) => {
   const props = useProps("ModalHeader", defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, ...others } =
-    props;
+  const { classNames, className, style, styles, vars, ...others } = props;
 
   const ctx = useModalContext();
 

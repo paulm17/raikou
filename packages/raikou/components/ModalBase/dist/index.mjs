@@ -273,6 +273,7 @@ var ModalBase = forwardRef2(
     ));
   }
 );
+ModalBase.displayName = "@raikou/core/ModalBase";
 
 // src/ModalBaseBody.tsx
 import React6, { forwardRef as forwardRef3 } from "react";

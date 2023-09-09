@@ -1,6 +1,6 @@
 /// <reference path="global.d.ts" />
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, RaikouSize, Factory, RaikouRadius, PolymorphicFactory, RaikouShadow } from '@raikou/core';
+import { BoxProps, StylesApiProps, ElementProps, RaikouSize, Factory, RaikouRadius, PolymorphicFactory, CompoundStylesApiProps, RaikouShadow } from '@raikou/core';
 import React$2 from 'react';
 import * as CSS from 'csstype';
 import * as PropTypes from 'prop-types';
@@ -172,11 +172,11 @@ interface __InputProps {
     /** Sets `pointer-events` styles on the `rightSection` element, `'none'` by default */
     rightSectionPointerEvents?: React$2.CSSProperties["pointerEvents"];
     /** Props added to the root element of the `Input` component */
-    wrapperProps?: React$2.ComponentPropsWithoutRef<"div">;
+    wrapperProps?: Record<string, any>;
     /** Sets `required` attribute on the `input` element */
     required?: boolean;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Sets `disabled` attribute on the `input` element */
     disabled?: boolean;
     /** Controls input `height` and horizontal `padding`, `'sm'` by default */
@@ -3574,7 +3574,7 @@ declare global {
 }
 
 type ComboboxGroupStylesNames = "group" | "groupLabel";
-interface ComboboxGroupProps extends BoxProps, StylesApiProps<ComboboxGroupFactory>, ElementProps<"div"> {
+interface ComboboxGroupProps extends BoxProps, CompoundStylesApiProps<ComboboxGroupFactory>, ElementProps<"div"> {
     /** Group label */
     label?: React$2.ReactNode;
 }
@@ -3625,7 +3625,7 @@ declare const ComboboxEventsTarget: _raikou_core.RaikouComponent<{
 }>;
 
 type ComboboxHeaderStylesNames = "header";
-interface ComboboxHeaderProps extends BoxProps, StylesApiProps<ComboboxHeaderFactory>, ElementProps<"div"> {
+interface ComboboxHeaderProps extends BoxProps, CompoundStylesApiProps<ComboboxHeaderFactory>, ElementProps<"div"> {
 }
 type ComboboxHeaderFactory = Factory<{
     props: ComboboxHeaderProps;
@@ -3641,7 +3641,7 @@ declare const ComboboxHeader: _raikou_core.RaikouComponent<{
 }>;
 
 type ComboboxFooterStylesNames = "footer";
-interface ComboboxFooterProps extends BoxProps, StylesApiProps<ComboboxFooterFactory>, ElementProps<"div"> {
+interface ComboboxFooterProps extends BoxProps, CompoundStylesApiProps<ComboboxFooterFactory>, ElementProps<"div"> {
 }
 type ComboboxFooterFactory = Factory<{
     props: ComboboxFooterProps;
@@ -3678,7 +3678,7 @@ declare const ComboboxChevron: _raikou_core.RaikouComponent<{
 }>;
 
 type ComboboxEmptyStylesNames = "empty";
-interface ComboboxEmptyProps extends BoxProps, StylesApiProps<ComboboxEmptyFactory>, ElementProps<"div"> {
+interface ComboboxEmptyProps extends BoxProps, CompoundStylesApiProps<ComboboxEmptyFactory>, ElementProps<"div"> {
 }
 type ComboboxEmptyFactory = Factory<{
     props: ComboboxEmptyProps;
@@ -3707,7 +3707,7 @@ declare const ComboboxSearch: _raikou_core.RaikouComponent<{
 }>;
 
 type ComboboxOptionsStylesNames = "options";
-interface ComboboxOptionsProps extends BoxProps, StylesApiProps<ComboboxOptionsFactory>, ElementProps<"div"> {
+interface ComboboxOptionsProps extends BoxProps, CompoundStylesApiProps<ComboboxOptionsFactory>, ElementProps<"div"> {
 }
 type ComboboxOptionsFactory = Factory<{
     props: ComboboxOptionsProps;
@@ -3722,7 +3722,7 @@ declare const ComboboxOptions: _raikou_core.RaikouComponent<{
     compound: true;
 }>;
 
-interface PopoverDropdownProps extends BoxProps, StylesApiProps<PopoverDropdownFactory>, ElementProps<"div"> {
+interface PopoverDropdownProps extends BoxProps, CompoundStylesApiProps<PopoverDropdownFactory>, ElementProps<"div"> {
 }
 type PopoverDropdownFactory = Factory<{
     props: PopoverDropdownProps;
@@ -3829,9 +3829,9 @@ interface __PopoverProps {
     /** Dropdown `z-index`, `300` by default */
     zIndex?: React$2.CSSProperties["zIndex"];
     /** Key of `theme.radius` or any valid CSS value to set border-radius, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Key of `theme.shadows` or any other valid CSS `box-shadow` value */
-    shadow?: RaikouShadow | (string & {});
+    shadow?: RaikouShadow;
     /** If set, popover dropdown will not be rendered */
     disabled?: boolean;
     /** Determines whether focus should be automatically returned to control when dropdown closes, `false` by default */
@@ -3927,7 +3927,7 @@ interface ComboboxStore {
 }
 
 type ComboboxOptionStylesNames = "option";
-interface ComboboxOptionProps extends BoxProps, StylesApiProps<ComboboxOptionFactory>, ElementProps<"div"> {
+interface ComboboxOptionProps extends BoxProps, CompoundStylesApiProps<ComboboxOptionFactory>, ElementProps<"div"> {
     /** Option value */
     value: string;
     /** Determines whether the option is selected */
@@ -3969,6 +3969,8 @@ interface ComboboxProps extends __PopoverProps, StylesApiProps<ComboboxFactory> 
     dropdownPadding?: React$2.CSSProperties["padding"];
     /** Determines whether selection should be reset when option is hovered, `false` by default */
     resetSelectionOnOptionHover?: boolean;
+    /** Determines whether Combobox value can be changed */
+    readOnly?: boolean;
 }
 type ComboboxFactory = Factory<{
     props: ComboboxProps;

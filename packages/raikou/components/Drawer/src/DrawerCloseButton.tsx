@@ -1,5 +1,10 @@
 import React from "react";
-import { StylesApiProps, factory, useProps, Factory } from "@raikou/core";
+import {
+  CompoundStylesApiProps,
+  factory,
+  useProps,
+  Factory,
+} from "@raikou/core";
 import {
   ModalBaseCloseButton,
   ModalBaseCloseButtonProps,
@@ -10,7 +15,7 @@ export type DrawerCloseButtonStylesNames = "close";
 
 export interface DrawerCloseButtonProps
   extends ModalBaseCloseButtonProps,
-    StylesApiProps<DrawerCloseButtonFactory> {}
+    CompoundStylesApiProps<DrawerCloseButtonFactory> {}
 
 export type DrawerCloseButtonFactory = Factory<{
   props: DrawerCloseButtonProps;
@@ -24,8 +29,7 @@ const defaultProps: Partial<DrawerCloseButtonProps> = {};
 export const DrawerCloseButton = factory<DrawerCloseButtonFactory>(
   (_props, ref) => {
     const props = useProps("DrawerCloseButton", defaultProps, _props);
-    const { classNames, className, style, styles, unstyled, vars, ...others } =
-      props;
+    const { classNames, className, style, styles, vars, ...others } = props;
 
     const ctx = useDrawerContext();
 
@@ -36,7 +40,7 @@ export const DrawerCloseButton = factory<DrawerCloseButtonFactory>(
         {...others}
       />
     );
-  }
+  },
 );
 
 DrawerCloseButton.displayName = "@raikou/core/DrawerCloseButton";

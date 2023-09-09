@@ -104,7 +104,9 @@ var [ProgressProvider, useProgressContext] = createSafeContext(
 );
 
 // src/ProgressRoot/ProgressRoot.tsx
-var defaultProps = {};
+var defaultProps = {
+  size: "md"
+};
 var varsResolver = (0, import_core.createVarsResolver)(
   (_, { size, radius }) => ({
     root: {
@@ -148,7 +150,6 @@ var ProgressSection = (0, import_core2.factory)((props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     value,
     withAria,
@@ -160,7 +161,6 @@ var ProgressSection = (0, import_core2.factory)((props, ref) => {
     "className",
     "style",
     "styles",
-    "unstyled",
     "vars",
     "value",
     "withAria",
@@ -197,7 +197,11 @@ var import_react7 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
 var defaultProps3 = {};
 var ProgressLabel = (0, import_core3.factory)((props, ref) => {
-  const _a = (0, import_core3.useProps)("ProgressLabel", defaultProps3, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = (0, import_core3.useProps)(
+    "ProgressLabel",
+    defaultProps3,
+    props
+  ), { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useProgressContext();
   return /* @__PURE__ */ import_react7.default.createElement(
     import_core3.Box,

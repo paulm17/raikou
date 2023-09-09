@@ -22,7 +22,7 @@ export interface BackgroundImageProps
   extends BoxProps,
     StylesApiProps<BackgroundImageFactory> {
   /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `0` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Image url */
   src: string;
@@ -43,7 +43,7 @@ const defaultProps: Partial<BackgroundImageProps> = {
 const varsResolver = createVarsResolver<BackgroundImageFactory>(
   (_, { radius }) => ({
     root: { "--bi-radius": getRadius(radius) },
-  })
+  }),
 );
 
 export const BackgroundImage = polymorphicFactory<BackgroundImageFactory>(
@@ -85,7 +85,7 @@ export const BackgroundImage = polymorphicFactory<BackgroundImageFactory>(
         {...others}
       />
     );
-  }
+  },
 );
 
 BackgroundImage.displayName = "@raikou/core/BackgroundImage";

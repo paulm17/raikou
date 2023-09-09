@@ -28,8 +28,8 @@ module.exports = function ({ addComponents }: any) {
       paddingRight: "var(--_card-section-padding, 0)",
       borderTop: "var(--_card-section-border-top, unset)",
       borderBottom: "var(--_card-section-border-bottom, unset)",
-      marginTop: "var(--_card-section-mt)",
-      marginBottom: "var(--_card-section-mb)",
+      marginTop: "var(--_card-section-mt, 0)",
+      marginBottom: "var(--_card-section-mb, 0)",
 
       "&[data-first-section]": {
         "--_card-section-mt": "calc(var(--card-padding) * -1)",

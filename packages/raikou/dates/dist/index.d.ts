@@ -1,4 +1,4 @@
-import react from 'react';
+import React$1 from 'react';
 import * as _raikou_core from '@raikou/core';
 import { RaikouRadius, RaikouSize, BoxProps, StylesApiProps, PolymorphicFactory, ElementProps, Factory, RaikouShadow, RaikouSpacing, RaikouComponentStaticProperties, RaikouColor, RaikouGradient } from '@raikou/core';
 import { useDisclosure } from '@raikou/hooks';
@@ -58,9 +58,9 @@ type DatesProviderSettings = Partial<DatesProviderValue>;
 declare const DATES_PROVIDER_DEFAULT_SETTINGS: DatesProviderValue;
 interface DatesProviderProps {
     settings: DatesProviderSettings;
-    children: react.ReactNode;
+    children: React$1.ReactNode;
 }
-declare function DatesProvider({ settings, children }: DatesProviderProps): react.JSX.Element;
+declare function DatesProvider({ settings, children }: DatesProviderProps): React$1.JSX.Element;
 
 declare function useDatesContext(): {
     getLocale: (input?: string) => string;
@@ -80,7 +80,7 @@ interface HiddenDatesInputProps {
     name: string | undefined;
     form: string | undefined;
 }
-declare function HiddenDatesInput({ value, type, name, form, }: HiddenDatesInputProps): react.JSX.Element;
+declare function HiddenDatesInput({ value, type, name, form, }: HiddenDatesInputProps): React$1.JSX.Element;
 declare namespace HiddenDatesInput {
     var displayName: string;
 }
@@ -94,11 +94,11 @@ type InputDescriptionStylesNames = "description";
 type InputWrapperStylesNames = "root" | InputLabelStylesNames | InputDescriptionStylesNames | InputErrorStylesNames;
 interface __InputWrapperProps {
     /** Contents of `Input.Label` component, if not set, label is not rendered. */
-    label?: react.ReactNode;
+    label?: React$1.ReactNode;
     /** Contents of `Input.Description` component, if not set, description is not rendered. */
-    description?: react.ReactNode;
+    description?: React$1.ReactNode;
     /** Contents of `Input.Error` component, if not set, error is not rendered. */
-    error?: react.ReactNode;
+    error?: React$1.ReactNode;
     /** Adds required attribute to the input and a red asterisk on the right side of label, `false` by default */
     required?: boolean;
     /** Determines whether required asterisk should be rendered, overrides required prop, does not add required attribute to the input, `false` by default */
@@ -110,7 +110,7 @@ interface __InputWrapperProps {
     /** Props passed down to the `InputError` component */
     errorProps?: Record<string, any>;
     /** Input container component, defaults to `React.Fragment` */
-    inputContainer?(children: react.ReactNode): react.ReactNode;
+    inputContainer?(children: React$1.ReactNode): React$1.ReactNode;
     /** Controls order of the elements, `['label', 'description', 'input', 'error']` by default */
     inputWrapperOrder?: ("label" | "input" | "description" | "error")[];
 }
@@ -122,27 +122,27 @@ type InputStylesNames = "input" | "wrapper" | "section";
 type InputVariant = "default" | "filled" | "unstyled";
 interface __InputProps {
     /** Content section rendered on the left side of the input */
-    leftSection?: react.ReactNode;
+    leftSection?: React$1.ReactNode;
     /** Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height */
-    leftSectionWidth?: react.CSSProperties["width"];
+    leftSectionWidth?: React$1.CSSProperties["width"];
     /** Props added to the `leftSection` element */
-    leftSectionProps?: react.ComponentPropsWithoutRef<"div">;
+    leftSectionProps?: React$1.ComponentPropsWithoutRef<"div">;
     /** Sets `pointer-events` styles on the `leftSection` element, `'none'` by default */
-    leftSectionPointerEvents?: react.CSSProperties["pointerEvents"];
+    leftSectionPointerEvents?: React$1.CSSProperties["pointerEvents"];
     /** Content section rendered on the right side of the input */
-    rightSection?: react.ReactNode;
+    rightSection?: React$1.ReactNode;
     /** Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height */
-    rightSectionWidth?: react.CSSProperties["width"];
+    rightSectionWidth?: React$1.CSSProperties["width"];
     /** Props added to the `rightSection` element */
-    rightSectionProps?: react.ComponentPropsWithoutRef<"div">;
+    rightSectionProps?: React$1.ComponentPropsWithoutRef<"div">;
     /** Sets `pointer-events` styles on the `rightSection` element, `'none'` by default */
-    rightSectionPointerEvents?: react.CSSProperties["pointerEvents"];
+    rightSectionPointerEvents?: React$1.CSSProperties["pointerEvents"];
     /** Props added to the root element of the `Input` component */
-    wrapperProps?: react.ComponentPropsWithoutRef<"div">;
+    wrapperProps?: Record<string, any>;
     /** Sets `required` attribute on the `input` element */
     required?: boolean;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Sets `disabled` attribute on the `input` element */
     disabled?: boolean;
     /** Controls input `height` and horizontal `padding`, `'sm'` by default */
@@ -156,7 +156,7 @@ interface __InputProps {
 interface InputBaseProps extends BoxProps, __BaseInputProps, StylesApiProps<InputBaseFactory> {
     __staticSelector?: string;
     __stylesApiProps?: Record<string, any>;
-    /** Props passed to the root element (`Input.Wrapper` component) */
+    /** Props passed down to the root element (`Input.Wrapper` component) */
     wrapperProps?: Record<string, any>;
     /** Determines whether the input can have multiple lines, for example when `component="textarea"`, `false` by default */
     multiline?: boolean;
@@ -213,7 +213,7 @@ interface DayProps extends BoxProps, StylesApiProps<DayFactory>, ElementProps<"b
     /** Determines whether the day is last in range selection, `false` by default */
     lastInRange?: boolean;
     /** Controls day value rendering */
-    renderDay?(date: Date): react.ReactNode;
+    renderDay?(date: Date): React$1.ReactNode;
 }
 type DayFactory = Factory<{
     props: DayProps;
@@ -241,7 +241,7 @@ interface WeekdaysRowProps extends BoxProps, StylesApiProps<WeekdaysRowFactory>,
     /** number 0-6, 0 – Sunday, 6 – Saturday, defaults to 1 – Monday */
     firstDayOfWeek?: DayOfWeek;
     /** dayjs format to get weekday name, defaults to "dd" */
-    weekdayFormat?: string | ((date: Date) => react.ReactNode);
+    weekdayFormat?: string | ((date: Date) => React$1.ReactNode);
     /** Choose cell type that will be used to render weekdays, defaults to th */
     cellComponent?: "td" | "th";
 }
@@ -273,11 +273,11 @@ interface MonthSettings {
     /** Prevents focus shift when buttons are clicked */
     __preventFocus?: boolean;
     /** Called when day is clicked with click event and date */
-    __onDayClick?(event: react.MouseEvent<HTMLButtonElement>, date: Date): void;
+    __onDayClick?(event: React$1.MouseEvent<HTMLButtonElement>, date: Date): void;
     /** Called when mouse enters day */
-    __onDayMouseEnter?(event: react.MouseEvent<HTMLButtonElement>, date: Date): void;
+    __onDayMouseEnter?(event: React$1.MouseEvent<HTMLButtonElement>, date: Date): void;
     /** Called when any keydown event is registered on day, used for arrows navigation */
-    __onDayKeyDown?(event: react.KeyboardEvent<HTMLButtonElement>, payload: ControlKeydownPayload): void;
+    __onDayKeyDown?(event: React$1.KeyboardEvent<HTMLButtonElement>, payload: ControlKeydownPayload): void;
     /** Assigns ref of every day based on its position in the table, used for arrows navigation */
     __getDayRef?(rowIndex: number, cellIndex: number, node: HTMLButtonElement): void;
     /** dayjs locale, defaults to value defined in DatesProvider */
@@ -285,7 +285,7 @@ interface MonthSettings {
     /** number 0-6, 0 – Sunday, 6 – Saturday, defaults to 1 – Monday */
     firstDayOfWeek?: DayOfWeek;
     /** dayjs format for weekdays names, defaults to "dd" */
-    weekdayFormat?: string | ((date: Date) => react.ReactNode);
+    weekdayFormat?: string | ((date: Date) => React$1.ReactNode);
     /** Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday, defaults to value defined in DatesProvider */
     weekendDays?: DayOfWeek[];
     /** Adds props to Day component based on date */
@@ -297,7 +297,7 @@ interface MonthSettings {
     /** Maximum possible date */
     maxDate?: Date;
     /** Controls day value rendering */
-    renderDay?(date: Date): react.ReactNode;
+    renderDay?(date: Date): React$1.ReactNode;
     /** Determines whether outside dates should be hidden, defaults to false */
     hideOutsideDates?: boolean;
     /** Determines whether weekdays row should be hidden, defaults to false */
@@ -334,7 +334,7 @@ type PickerControlCssVariables = {
 interface PickerControlProps extends BoxProps, StylesApiProps<PickerControlFactory>, ElementProps<"button"> {
     __staticSelector?: string;
     /** Control children */
-    children?: react.ReactNode;
+    children?: React$1.ReactNode;
     /** Determines whether control should be disabled */
     disabled?: boolean;
     /** Determines whether control should have selected styles */
@@ -432,9 +432,9 @@ interface CalendarHeaderSettings {
     /** Determines whether propagation for Escape key should be stopped */
     __stopPropagation?: boolean;
     /** Change next icon */
-    nextIcon?: react.ReactNode;
+    nextIcon?: React$1.ReactNode;
     /** Change previous icon */
-    previousIcon?: react.ReactNode;
+    previousIcon?: React$1.ReactNode;
     /** aria-label for next button */
     nextLabel?: string;
     /** aria-label for previous button */
@@ -461,7 +461,7 @@ interface CalendarHeaderSettings {
 interface CalendarHeaderProps extends BoxProps, CalendarHeaderSettings, StylesApiProps<CalendarHeaderFactory>, ElementProps<"div"> {
     __staticSelector?: string;
     /** Label displayed between next and previous buttons */
-    label: react.ReactNode;
+    label: React$1.ReactNode;
     /** aria-label for level control */
     levelControlAriaLabel?: string;
 }
@@ -481,13 +481,13 @@ declare const CalendarHeader: _raikou_core.RaikouComponent<{
 type DecadeLevelStylesNames = YearsListStylesNames | CalendarHeaderStylesNames;
 interface DecadeLevelBaseSettings extends YearsListSettings {
     /** dayjs label format to display decade label or a function that returns decade label based on date value, defaults to "YYYY" */
-    decadeLabelFormat?: string | ((startOfDecade: Date, endOfDecade: Date) => react.ReactNode);
+    decadeLabelFormat?: string | ((startOfDecade: Date, endOfDecade: Date) => React$1.ReactNode);
 }
 interface DecadeLevelSettings extends DecadeLevelBaseSettings, Omit<CalendarHeaderSettings, "onLevelClick" | "hasNextLevel"> {
 }
 interface DecadeLevelProps extends BoxProps, DecadeLevelSettings, Omit<StylesApiProps<DecadeLevelFactory>, "classNames" | "styles">, ElementProps<"div"> {
     classNames?: Partial<Record<string, string>>;
-    styles?: Partial<Record<string, react.CSSProperties>>;
+    styles?: Partial<Record<string, React$1.CSSProperties>>;
     __staticSelector?: string;
     /** Decade that is currently displayed */
     decade: Date;
@@ -508,13 +508,13 @@ declare const DecadeLevel: _raikou_core.RaikouComponent<{
 type YearLevelStylesNames = MonthsListStylesNames | CalendarHeaderStylesNames;
 interface YearLevelBaseSettings extends MonthsListSettings {
     /** dayjs label format to display year label or a function that returns year label based on year value, defaults to "YYYY" */
-    yearLabelFormat?: string | ((year: Date) => react.ReactNode);
+    yearLabelFormat?: string | ((year: Date) => React$1.ReactNode);
 }
 interface YearLevelSettings extends YearLevelBaseSettings, CalendarHeaderSettings {
 }
 interface YearLevelProps extends BoxProps, YearLevelSettings, Omit<StylesApiProps<YearLevelFactory>, "classNames" | "styles">, ElementProps<"div"> {
     classNames?: Partial<Record<string, string>>;
-    styles?: Partial<Record<string, react.CSSProperties>>;
+    styles?: Partial<Record<string, React$1.CSSProperties>>;
     __staticSelector?: string;
     /** Year that is currently displayed */
     year: Date;
@@ -535,13 +535,13 @@ declare const YearLevel: _raikou_core.RaikouComponent<{
 type MonthLevelStylesNames = MonthStylesNames | CalendarHeaderStylesNames;
 interface MonthLevelBaseSettings extends MonthSettings {
     /** dayjs label format to display month label or a function that returns month label based on month value, defaults to "MMMM YYYY" */
-    monthLabelFormat?: string | ((month: Date) => react.ReactNode);
+    monthLabelFormat?: string | ((month: Date) => React$1.ReactNode);
 }
 interface MonthLevelSettings extends MonthLevelBaseSettings, CalendarHeaderSettings {
 }
 interface MonthLevelProps extends BoxProps, MonthLevelSettings, Omit<StylesApiProps<MonthLevelFactory>, "classNames" | "styles">, ElementProps<"div"> {
     classNames?: Partial<Record<string, string>>;
-    styles?: Partial<Record<string, react.CSSProperties>>;
+    styles?: Partial<Record<string, React$1.CSSProperties>>;
     __staticSelector?: string;
     /** Month that is currently displayed */
     month: Date;
@@ -580,7 +580,7 @@ declare const LevelsGroup: _raikou_core.RaikouComponent<{
 type DecadeLevelGroupStylesNames = LevelsGroupStylesNames | DecadeLevelStylesNames;
 interface DecadeLevelGroupProps extends BoxProps, Omit<StylesApiProps<DecadeLevelGroupFactory>, "classNames" | "styles">, Omit<DecadeLevelSettings, "withPrevious" | "withNext" | "__onControlKeyDown" | "__getControlRef">, ElementProps<"div"> {
     classNames?: Partial<Record<string, string>>;
-    styles?: Partial<Record<string, react.CSSProperties>>;
+    styles?: Partial<Record<string, React$1.CSSProperties>>;
     __staticSelector?: string;
     /** Number of columns to render next to each other */
     numberOfColumns?: number;
@@ -603,7 +603,7 @@ declare const DecadeLevelGroup: _raikou_core.RaikouComponent<{
 type YearLevelGroupStylesNames = YearLevelStylesNames | LevelsGroupStylesNames;
 interface YearLevelGroupProps extends BoxProps, Omit<YearLevelSettings, "withPrevious" | "withNext" | "__onControlKeyDown" | "__getControlRef">, Omit<StylesApiProps<YearLevelGroupFactory>, "classNames" | "styles">, ElementProps<"div"> {
     classNames?: Partial<Record<string, string>>;
-    styles?: Partial<Record<string, react.CSSProperties>>;
+    styles?: Partial<Record<string, React$1.CSSProperties>>;
     __staticSelector?: string;
     /** Number of columns to render next to each other */
     numberOfColumns?: number;
@@ -626,7 +626,7 @@ declare const YearLevelGroup: _raikou_core.RaikouComponent<{
 type MonthLevelGroupStylesNames = MonthLevelStylesNames | LevelsGroupStylesNames;
 interface MonthLevelGroupProps extends BoxProps, Omit<MonthLevelSettings, "withPrevious" | "withNext" | "__onDayKeyDown" | "__getDayRef">, Omit<StylesApiProps<MonthLevelGroupFactory>, "classNames" | "styles">, ElementProps<"div"> {
     classNames?: Partial<Record<string, string>>;
-    styles?: Partial<Record<string, react.CSSProperties>>;
+    styles?: Partial<Record<string, React$1.CSSProperties>>;
     __staticSelector?: string;
     /** Number of columns to render next to each other */
     numberOfColumns?: number;
@@ -649,10 +649,10 @@ declare const MonthLevelGroup: _raikou_core.RaikouComponent<{
 }>;
 
 interface RaikouTransitionStyles {
-    common?: react.CSSProperties;
-    in: react.CSSProperties;
-    out: react.CSSProperties;
-    transitionProperty: react.CSSProperties["transitionProperty"];
+    common?: React$1.CSSProperties;
+    in: React$1.CSSProperties;
+    out: React$1.CSSProperties;
+    transitionProperty: React$1.CSSProperties["transitionProperty"];
 }
 type RaikouTransitionName = "fade" | "skew-up" | "skew-down" | "rotate-right" | "rotate-left" | "slide-down" | "slide-up" | "slide-right" | "slide-left" | "scale-y" | "scale-x" | "scale" | "pop" | "pop-top-left" | "pop-top-right" | "pop-bottom-left" | "pop-bottom-right";
 type RaikouTransition = RaikouTransitionName | RaikouTransitionStyles;
@@ -671,7 +671,7 @@ interface TransitionProps {
     /** Determines whether component should be mounted to the DOM */
     mounted: boolean;
     /** Render function with transition styles argument */
-    children(styles: react.CSSProperties): JSX.Element;
+    children(styles: React$1.CSSProperties): JSX.Element;
     /** Called when exit transition ends */
     onExited?: () => void;
     /** Called when exit transition starts */
@@ -693,9 +693,9 @@ interface FloatingAxesOffsets {
     alignmentAxis?: number | null;
 }
 
-interface PortalProps extends react.ComponentPropsWithoutRef<"div"> {
+interface PortalProps extends React$1.ComponentPropsWithoutRef<"div"> {
     /** Portal children, for example, custom modal or popover */
-    children: react.ReactNode;
+    children: React$1.ReactNode;
     /** Element inside which portal should be created, by default a new div element is created and appended to the `document.body` */
     target?: HTMLElement | string;
 }
@@ -747,11 +747,11 @@ interface __PopoverProps {
     /** Props to pass down to the `Portal` when `withinPortal` is true */
     portalProps?: Omit<PortalProps, "children">;
     /** Dropdown `z-index`, `300` by default */
-    zIndex?: react.CSSProperties["zIndex"];
+    zIndex?: React$1.CSSProperties["zIndex"];
     /** Key of `theme.radius` or any valid CSS value to set border-radius, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Key of `theme.shadows` or any other valid CSS `box-shadow` value */
-    shadow?: RaikouShadow | (string & {});
+    shadow?: RaikouShadow;
     /** If set, popover dropdown will not be rendered */
     disabled?: boolean;
     /** Determines whether focus should be automatically returned to control when dropdown closes, `false` by default */
@@ -760,7 +760,7 @@ interface __PopoverProps {
 interface PopoverProps extends __PopoverProps, StylesApiProps<PopoverFactory> {
     __staticSelector?: string;
     /** `Popover.Target` and `Popover.Dropdown` components */
-    children?: react.ReactNode;
+    children?: React$1.ReactNode;
     /** Initial opened state for uncontrolled component */
     defaultOpened?: boolean;
     /** Controlled dropdown opened state */
@@ -804,7 +804,7 @@ interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
     /** Props passed down to the Portal component when `withinPortal` is set */
     portalProps?: Omit<PortalProps, "children">;
     /** Modal/drawer content */
-    children?: react.ReactNode;
+    children?: React$1.ReactNode;
     /** Determines whether the modal/drawer should be closed when user clicks on the overlay, `true` by default */
     closeOnClickOutside?: boolean;
     /** Props added to the `Transition` component that used to animate overlay and body, use to configure duration and animation type, `{ duration: 200, transition: 'pop' }` by default */
@@ -814,11 +814,11 @@ interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
     /** Determines whether focus should be returned to the last active element when `onClose` is called, `true` by default */
     returnFocus?: boolean;
     /** `z-index` CSS property of the root element, `200` by default */
-    zIndex?: react.CSSProperties["zIndex"];
+    zIndex?: React$1.CSSProperties["zIndex"];
     /** Key of `theme.shadows` or any valid CSS box-shadow value, 'xl' by default */
-    shadow?: RaikouShadow | (string & {});
+    shadow?: RaikouShadow;
     /** Key of `theme.spacing` or any valid CSS value to set content, header and footer padding, `'md'` by default */
-    padding?: RaikouSpacing | (string & {}) | number;
+    padding?: RaikouSpacing;
     /** Controls width of the content area, `'md'` by default */
     size?: RaikouSize | (string & {}) | number;
 }
@@ -834,17 +834,17 @@ interface OverlayProps extends BoxProps, StylesApiProps<OverlayFactory> {
     /** Controls overlay `background-color` opacity 0–1, disregarded when `gradient` prop is set, `0.6` by default */
     backgroundOpacity?: number;
     /** Overlay `background-color`, `#000` by default */
-    color?: react.CSSProperties["backgroundColor"];
+    color?: React$1.CSSProperties["backgroundColor"];
     /** Overlay background blur, `0` by default */
     blur?: number | string;
     /** Changes overlay to gradient. If set, `color` prop is ignored */
     gradient?: string;
     /** Overlay z-index, `200` by default */
-    zIndex?: react.CSSProperties["zIndex"];
+    zIndex?: React$1.CSSProperties["zIndex"];
     /** Key of `theme.radius` or any valid CSS value to set border-radius, `0` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Content inside overlay */
-    children?: react.ReactNode;
+    children?: React$1.ReactNode;
     /** Determines whether content inside overlay should be vertically and horizontally centered, `false` by default */
     center?: boolean;
     /** Determines whether overlay should have fixed position instead of absolute, `false` by default */
@@ -874,13 +874,13 @@ type ModalRootCssVariables = {
 interface ModalRootProps extends StylesApiProps<ModalRootFactory>, ModalBaseProps {
     __staticSelector?: string;
     /** Top/bottom modal offset, `5vh` by default */
-    yOffset?: react.CSSProperties["marginTop"];
+    yOffset?: React$1.CSSProperties["marginTop"];
     /** Left/right modal offset, `5vw` by default */
-    xOffset?: react.CSSProperties["marginLeft"];
+    xOffset?: React$1.CSSProperties["marginLeft"];
     /** Scroll area component, native `div` element by default */
     scrollAreaComponent?: ScrollAreaComponent;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Determines whether the modal should be centered vertically, `false` by default */
     centered?: boolean;
     /** Determines whether the modal should take the entire screen, `false` by default */
@@ -897,13 +897,13 @@ type ModalRootFactory = Factory<{
 interface ModalProps extends ModalRootProps {
     __staticSelector?: string;
     /** Modal title */
-    title?: react.ReactNode;
+    title?: React$1.ReactNode;
     /** Determines whether the overlay should be rendered, `true` by default */
     withOverlay?: boolean;
     /** Props passed down to the `Overlay` component, use to configure opacity, `background-color`, styles and other properties */
     overlayProps?: ModalBaseOverlayProps;
     /** Modal content */
-    children?: react.ReactNode;
+    children?: React$1.ReactNode;
     /** Determines whether the close button should be rendered, `true` by default */
     withCloseButton?: boolean;
     /** Props passed down to the close button */
@@ -923,7 +923,7 @@ interface DateInputSharedProps extends Omit<__BaseInputProps, "size">, ElementPr
     /** Determines whether input value can be cleared, adds clear button to right section, false by default */
     clearable?: boolean;
     /** Props passed down to clear button */
-    clearButtonProps?: react.ComponentPropsWithoutRef<"button">;
+    clearButtonProps?: React$1.ComponentPropsWithoutRef<"button">;
     /** Determines whether the user can modify the value */
     readOnly?: boolean;
     /** Determines whether dates value should be sorted before onChange call, only applicable when type="multiple", true by default */
@@ -933,9 +933,9 @@ interface DateInputSharedProps extends Omit<__BaseInputProps, "size">, ElementPr
 }
 interface PickerInputBaseProps extends BoxProps, DateInputSharedProps, Omit<StylesApiProps<PickerInputBaseFactory>, "classNames" | "styles"> {
     classNames?: Partial<Record<string, string>>;
-    styles?: Partial<Record<string, react.CSSProperties>>;
+    styles?: Partial<Record<string, React$1.CSSProperties>>;
     __staticSelector?: string;
-    children: react.ReactNode;
+    children: React$1.ReactNode;
     formattedValue: string | null | undefined;
     dropdownHandlers: ReturnType<typeof useDisclosure>[1];
     dropdownOpened: boolean;
@@ -982,9 +982,9 @@ interface CalendarSettings extends Omit<DecadeLevelSettings, OmittedSettings>, O
     /** Called when user clicks month on year level */
     onMonthSelect?(date: Date): void;
     /** Called when mouse enters year control */
-    onYearMouseEnter?(event: react.MouseEvent<HTMLButtonElement>, date: Date): void;
+    onYearMouseEnter?(event: React$1.MouseEvent<HTMLButtonElement>, date: Date): void;
     /** Called when mouse enters month control */
-    onMonthMouseEnter?(event: react.MouseEvent<HTMLButtonElement>, date: Date): void;
+    onMonthMouseEnter?(event: React$1.MouseEvent<HTMLButtonElement>, date: Date): void;
 }
 interface CalendarBaseProps {
     __staticSelector?: string;
@@ -1103,7 +1103,9 @@ type YearPickerFactory = Factory<{
     ref: HTMLDivElement;
     stylesNames: YearPickerStylesNames;
 }>;
-type YearPickerComponent = (<Type extends DatePickerType = "default">(props: YearPickerProps<Type>) => JSX.Element) & {
+type YearPickerComponent = (<Type extends DatePickerType = "default">(props: YearPickerProps<Type> & {
+    ref?: React$1.ForwardedRef<HTMLDivElement>;
+}) => JSX.Element) & {
     displayName?: string;
 } & RaikouComponentStaticProperties<YearPickerFactory>;
 declare const YearPicker: YearPickerComponent;
@@ -1129,7 +1131,9 @@ type MonthPickerFactory = Factory<{
     ref: HTMLDivElement;
     stylesNames: MonthPickerStylesNames;
 }>;
-type MonthPickerComponent = (<Type extends DatePickerType = "default">(props: MonthPickerProps<Type>) => JSX.Element) & {
+type MonthPickerComponent = (<Type extends DatePickerType = "default">(props: MonthPickerProps<Type> & {
+    ref?: React$1.ForwardedRef<HTMLDivElement>;
+}) => JSX.Element) & {
     displayName?: string;
 } & RaikouComponentStaticProperties<MonthPickerFactory>;
 declare const MonthPicker: MonthPickerComponent;
@@ -1152,7 +1156,9 @@ type DatePickerFactory = Factory<{
     ref: HTMLDivElement;
     stylesNames: DatePickerStylesNames;
 }>;
-type DatePickerComponent = (<Type extends DatePickerType = "default">(props: DatePickerProps<Type>) => JSX.Element) & {
+type DatePickerComponent = (<Type extends DatePickerType = "default">(props: DatePickerProps<Type> & {
+    ref?: React$1.ForwardedRef<HTMLDivElement>;
+}) => JSX.Element) & {
     displayName?: string;
 } & RaikouComponentStaticProperties<DatePickerFactory>;
 declare const DatePicker: DatePickerComponent;
@@ -1172,7 +1178,7 @@ interface DateInputProps extends BoxProps, Omit<__BaseInputProps, "size">, Calen
     /** Determines whether input value can be cleared, adds clear button to right section, false by default */
     clearable?: boolean;
     /** Props added to clear button */
-    clearButtonProps?: react.ComponentPropsWithoutRef<"button">;
+    clearButtonProps?: React$1.ComponentPropsWithoutRef<"button">;
     /** Dayjs format to display input value, "MMMM D, YYYY" by default  */
     valueFormat?: string;
     /** Determines whether input value should be reverted to last known valid value on blur, true by default */
@@ -1203,7 +1209,7 @@ declare const DateInput: _raikou_core.RaikouComponent<{
     variant: InputVariant;
 }>;
 
-type RaikouLoaderComponent = react.ForwardRefExoticComponent<react.HTMLAttributes<any> & react.RefAttributes<any>>;
+type RaikouLoaderComponent = React$1.ForwardRefExoticComponent<React$1.HTMLAttributes<any> & React$1.RefAttributes<any>>;
 type RaikouLoadersRecord = Partial<Record<"bars" | "dots" | "oval" | "progress" | (string & {}), RaikouLoaderComponent>>;
 type RaikouLoader = keyof RaikouLoadersRecord;
 
@@ -1211,7 +1217,7 @@ type LoaderStylesNames = "root";
 type LoaderCssVariables = {
     root: "--loader-size" | "--loader-color";
 };
-interface LoaderProps extends BoxProps, StylesApiProps<LoaderFactory>, Omit<react.ComponentPropsWithoutRef<"svg">, keyof BoxProps> {
+interface LoaderProps extends BoxProps, StylesApiProps<LoaderFactory>, Omit<React$1.ComponentPropsWithoutRef<"svg">, keyof BoxProps> {
     /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
     size?: RaikouSize | (string & {}) | number;
     /** Key of `theme.colors` or any valid CSS color, default value is `theme.primaryColor`  */
@@ -1238,7 +1244,7 @@ type ActionIconGroupCssVariables = {
 };
 interface ActionIconGroupProps extends BoxProps, StylesApiProps<ActionIconGroupFactory> {
     /** `ActionIcon` components only */
-    children?: react.ReactNode;
+    children?: React$1.ReactNode;
     /** Controls group orientation, `'horizontal'` by default */
     orientation?: "horizontal" | "vertical";
     /** `border-width` of the child `ActionIcon` components. Default value in `1` */
@@ -1274,13 +1280,13 @@ interface ActionIconProps extends BoxProps, StylesApiProps<ActionIconFactory> {
     /** Key of `theme.colors` or any valid CSS color. Default value is `theme.primaryColor`.  */
     color?: RaikouColor;
     /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. `theme.defaultRadius` by default. */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Gradient data used when `variant="gradient"`, default value is `theme.defaultGradient` */
     gradient?: RaikouGradient;
     /** Sets `disabled` and `data-disabled` attributes on the button element */
     disabled?: boolean;
     /** Icon displayed inside the button */
-    children?: react.ReactNode;
+    children?: React$1.ReactNode;
 }
 type ActionIconFactory = PolymorphicFactory<{
     props: ActionIconProps;
@@ -1306,10 +1312,10 @@ interface DateTimePickerProps extends BoxProps, Omit<DateInputSharedProps, "clas
     onChange?(value: DateValue): void;
     /** TimeInput component props */
     timeInputProps?: TimeInputProps & {
-        ref?: react.ComponentPropsWithRef<"input">["ref"];
+        ref?: React$1.ComponentPropsWithRef<"input">["ref"];
     };
     /** Props passed down to the submit button */
-    submitButtonProps?: ActionIconProps & react.ComponentPropsWithoutRef<"button">;
+    submitButtonProps?: ActionIconProps & React$1.ComponentPropsWithoutRef<"button">;
     /** Determines whether seconds input should be rendered */
     withSeconds?: boolean;
 }
@@ -1337,7 +1343,9 @@ type YearPickerInputFactory = Factory<{
     stylesNames: YearPickerInputStylesNames;
     variant: InputVariant;
 }>;
-type YearPickerInputComponent = (<Type extends DatePickerType = "default">(props: YearPickerInputProps<Type>) => JSX.Element) & {
+type YearPickerInputComponent = (<Type extends DatePickerType = "default">(props: YearPickerInputProps<Type> & {
+    ref?: React$1.ForwardedRef<HTMLButtonElement>;
+}) => JSX.Element) & {
     displayName?: string;
 } & RaikouComponentStaticProperties<YearPickerInputFactory>;
 declare const YearPickerInput: YearPickerInputComponent;
@@ -1353,7 +1361,9 @@ type MonthPickerInputFactory = Factory<{
     stylesNames: MonthPickerInputStylesNames;
     variant: InputVariant;
 }>;
-type MonthPickerInputComponent = (<Type extends DatePickerType = "default">(props: MonthPickerInputProps<Type>) => JSX.Element) & {
+type MonthPickerInputComponent = (<Type extends DatePickerType = "default">(props: MonthPickerInputProps<Type> & {
+    ref?: React$1.ForwardedRef<HTMLButtonElement>;
+}) => JSX.Element) & {
     displayName?: string;
 } & RaikouComponentStaticProperties<MonthPickerInputFactory>;
 declare const MonthPickerInput: MonthPickerInputComponent;
@@ -1369,7 +1379,9 @@ type DatePickerInputFactory = Factory<{
     stylesNames: DatePickerInputStylesNames;
     variant: InputVariant;
 }>;
-type DatePickerInputComponent = (<Type extends DatePickerType = "default">(props: DatePickerInputProps<Type>) => JSX.Element) & {
+type DatePickerInputComponent = (<Type extends DatePickerType = "default">(props: DatePickerInputProps<Type> & {
+    ref?: React$1.ForwardedRef<HTMLButtonElement>;
+}) => JSX.Element) & {
     displayName?: string;
 } & RaikouComponentStaticProperties<DatePickerInputFactory>;
 declare const DatePickerInput: DatePickerInputComponent;

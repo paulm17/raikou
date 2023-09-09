@@ -2,7 +2,7 @@ import React from "react";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   polymorphicFactory,
   useProps,
   PolymorphicFactory,
@@ -13,7 +13,7 @@ export type AppShellSectionStylesNames = "section";
 
 export interface AppShellSectionProps
   extends BoxProps,
-    StylesApiProps<AppShellSectionFactory> {
+    CompoundStylesApiProps<AppShellSectionFactory> {
   /** Determines whether the section should take all available space, `false` by default */
   grow?: boolean;
 }
@@ -31,16 +31,8 @@ const defaultProps: Partial<AppShellSectionProps> = {};
 export const AppShellSection = polymorphicFactory<AppShellSectionFactory>(
   (_props, ref) => {
     const props = useProps("AppShellSection", defaultProps, _props);
-    const {
-      classNames,
-      className,
-      style,
-      styles,
-      unstyled,
-      vars,
-      grow,
-      ...others
-    } = props;
+    const { classNames, className, style, styles, vars, grow, ...others } =
+      props;
     const ctx = useStore.getState();
 
     return (

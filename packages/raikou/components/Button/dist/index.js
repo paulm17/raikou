@@ -485,7 +485,15 @@ var Button = (0, import_core8.polymorphicFactory)((_props, ref) => {
         }
       ]
     }), others),
-    /* @__PURE__ */ import_react8.default.createElement("span", __spreadValues({}, getStyles("inner")), leftSection || loading && loaderPosition === "left" && /* @__PURE__ */ import_react8.default.createElement(
+    /* @__PURE__ */ import_react8.default.createElement("span", __spreadValues({}, getStyles("inner")), leftSection && /* @__PURE__ */ import_react8.default.createElement(
+      import_core8.Box,
+      __spreadProps(__spreadValues({
+        component: "span"
+      }, getStyles("section")), {
+        mod: { position: "left" }
+      }),
+      leftSection
+    ), loading && loaderPosition === "left" && /* @__PURE__ */ import_react8.default.createElement(
       import_core8.Box,
       __spreadProps(__spreadValues({
         component: "span"

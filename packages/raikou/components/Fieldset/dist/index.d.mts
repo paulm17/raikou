@@ -11,7 +11,7 @@ interface FieldsetProps extends BoxProps, StylesApiProps<FieldsetFactory>, Eleme
     /** Fieldset legend */
     legend?: React.ReactNode;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
 }
 type FieldsetFactory = Factory<{
     props: FieldsetProps;

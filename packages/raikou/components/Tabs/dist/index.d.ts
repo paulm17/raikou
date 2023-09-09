@@ -1,9 +1,9 @@
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, Factory, BoxComponentProps, PolymorphicFactory, RaikouColor, RaikouRadius } from '@raikou/core';
+import { BoxProps, CompoundStylesApiProps, ElementProps, Factory, BoxComponentProps, StylesApiProps, PolymorphicFactory, RaikouColor, RaikouRadius } from '@raikou/core';
 import React from 'react';
 
 type TabsListStylesNames = "list";
-interface TabsListProps extends BoxProps, StylesApiProps<TabsListFactory>, ElementProps<"div"> {
+interface TabsListProps extends BoxProps, CompoundStylesApiProps<TabsListFactory>, ElementProps<"div"> {
     /** `Tabs.Tab` components */
     children: React.ReactNode;
     /** Determines whether tabs should take all available space, `false` by default */
@@ -25,7 +25,7 @@ declare const TabsList: _raikou_core.RaikouComponent<{
 }>;
 
 type TabsPanelStylesNames = "panel";
-interface TabsPanelProps extends BoxProps, StylesApiProps<TabsPanelFactory>, ElementProps<"div"> {
+interface TabsPanelProps extends BoxProps, CompoundStylesApiProps<TabsPanelFactory>, ElementProps<"div"> {
     /** Panel content */
     children: React.ReactNode;
     /** Value of associated control */
@@ -56,7 +56,7 @@ type UnstyledButtonFactory = PolymorphicFactory<{
 }>;
 
 type TabsTabStylesNames = "tab" | "tabSection" | "tabLabel";
-interface TabsTabProps extends Omit<UnstyledButtonProps, "classNames" | "styles" | "vars">, StylesApiProps<TabsTabFactory>, ElementProps<"button"> {
+interface TabsTabProps extends Omit<UnstyledButtonProps, "classNames" | "styles" | "vars">, CompoundStylesApiProps<TabsTabFactory>, ElementProps<"button"> {
     /** Value of associated panel */
     value: string;
     /** Tab label */
@@ -110,7 +110,7 @@ interface TabsProps extends BoxProps, StylesApiProps<TabsFactory>, ElementProps<
     /** Changes colors of `Tabs.Tab` components when variant is `pills` or `default`, does nothing for other variants */
     color?: RaikouColor;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-    radius?: RaikouRadius | number | (string & {});
+    radius?: RaikouRadius;
     /** Determines whether tabs should have inverted styles, `false` by default */
     inverted?: boolean;
     /** If set to `false`, `Tabs.Panel` content will be unmounted when the associated tab is not active, `true` by default */

@@ -1,9 +1,9 @@
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, Factory, RaikouRadius, RaikouThemeComponent } from '@raikou/core';
+import { BoxProps, CompoundStylesApiProps, ElementProps, Factory, StylesApiProps, RaikouRadius, RaikouThemeComponent } from '@raikou/core';
 import React from 'react';
 
 type AccordionControlStylesNames = "control" | "chevron" | "label" | "itemTitle" | "icon";
-interface AccordionControlProps extends BoxProps, StylesApiProps<AccordionControlFactory>, ElementProps<"button"> {
+interface AccordionControlProps extends BoxProps, CompoundStylesApiProps<AccordionControlFactory>, ElementProps<"button"> {
     /** Disables control button */
     disabled?: boolean;
     /** Custom chevron icon */
@@ -27,7 +27,7 @@ declare const AccordionControl: _raikou_core.RaikouComponent<{
 }>;
 
 type AccordionPanelStylesNames = "panel" | "content";
-interface AccordionPanelProps extends BoxProps, StylesApiProps<AccordionPanelFactory>, ElementProps<"div", "onTransitionEnd"> {
+interface AccordionPanelProps extends BoxProps, CompoundStylesApiProps<AccordionPanelFactory>, ElementProps<"div", "onTransitionEnd"> {
 }
 type AccordionPanelFactory = Factory<{
     props: AccordionPanelProps;
@@ -43,7 +43,7 @@ declare const AccordionPanel: _raikou_core.RaikouComponent<{
 }>;
 
 type AccordionItemStylesNames = "item";
-interface AccordionItemProps extends BoxProps, StylesApiProps<AccordionItemFactory>, ElementProps<"div"> {
+interface AccordionItemProps extends BoxProps, CompoundStylesApiProps<AccordionItemFactory>, ElementProps<"div"> {
     /** Value that is used to manage accordion state */
     value: string;
 }
@@ -102,7 +102,7 @@ interface AccordionProps<Multiple extends boolean = false> extends BoxProps, Sty
     /** Custom chevron icon that will be used in all items */
     chevron?: React.ReactNode;
     /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. `theme.defaultRadius` by default. */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
 }
 type AccordionFactory = Factory<{
     props: AccordionProps;

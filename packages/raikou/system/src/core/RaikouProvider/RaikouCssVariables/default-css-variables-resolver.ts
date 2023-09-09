@@ -1,4 +1,4 @@
-import { RaikouRadius, RaikouTheme } from "../theme.types";
+import { RaikouTheme } from "../theme.types";
 import { keys, rem } from "../../utils";
 import { getPrimaryShade, rgba } from "../color-functions";
 import { ConvertCSSVariablesInput } from "../convert-css-variables";
@@ -22,7 +22,7 @@ export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
   const lightPrimaryShade = getPrimaryShade(theme, "light");
   const defaultRadius =
     theme.defaultRadius in theme.radius
-      ? theme.radius[theme.defaultRadius as RaikouRadius]
+      ? theme.radius[theme.defaultRadius as "xs"]
       : rem(theme.defaultRadius);
 
   const result: ConvertCSSVariablesInput = {

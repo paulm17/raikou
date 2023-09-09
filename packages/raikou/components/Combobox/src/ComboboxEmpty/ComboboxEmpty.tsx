@@ -2,7 +2,7 @@ import React from "react";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -14,7 +14,7 @@ export type ComboboxEmptyStylesNames = "empty";
 
 export interface ComboboxEmptyProps
   extends BoxProps,
-    StylesApiProps<ComboboxEmptyFactory>,
+    CompoundStylesApiProps<ComboboxEmptyFactory>,
     ElementProps<"div"> {}
 
 export type ComboboxEmptyFactory = Factory<{
@@ -27,8 +27,11 @@ export type ComboboxEmptyFactory = Factory<{
 const defaultProps: Partial<ComboboxEmptyProps> = {};
 
 export const ComboboxEmpty = factory<ComboboxEmptyFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, ...others } =
-    useProps("ComboboxEmpty", defaultProps, props);
+  const { classNames, className, style, styles, vars, ...others } = useProps(
+    "ComboboxEmpty",
+    defaultProps,
+    props,
+  );
 
   const ctx = useComboboxContext();
 

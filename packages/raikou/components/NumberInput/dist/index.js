@@ -845,7 +845,8 @@ function useInputProps(component, defaultProps10, _props) {
     inputContainer,
     inputWrapperOrder,
     withAsterisk,
-    variant
+    variant,
+    id
   }, _wrapperProps);
   return __spreadProps(__spreadValues({}, rest), {
     classNames,
@@ -921,11 +922,14 @@ function getDecrementedValue({
   allowNegative
 }) {
   const nextValue = value - step;
+  if (min !== void 0 && nextValue < min) {
+    return min;
+  }
   if (!allowNegative && nextValue < 0 && min === void 0) {
     return value;
   }
   if (min !== void 0 && min >= 0 && nextValue <= min) {
-    return value;
+    return nextValue;
   }
   return nextValue;
 }
@@ -942,6 +946,7 @@ var defaultProps9 = {
   size: "sm",
   clampBehavior: "blur",
   allowDecimal: true,
+  allowNegative: true,
   startValue: 0
 };
 var varsResolver6 = (0, import_core10.createVarsResolver)((_, { size }) => ({
@@ -975,7 +980,8 @@ var NumberInput = (0, import_core10.factory)((_props, ref) => {
     startValue,
     disabled,
     rightSectionPointerEvents,
-    allowNegative
+    allowNegative,
+    readOnly
   } = _a, others = __objRest(_a, [
     "classNames",
     "styles",
@@ -1000,7 +1006,8 @@ var NumberInput = (0, import_core10.factory)((_props, ref) => {
     "startValue",
     "disabled",
     "rightSectionPointerEvents",
-    "allowNegative"
+    "allowNegative",
+    "readOnly"
   ]);
   const getStyles = (0, import_core10.useStyles)({
     name: "NumberInput",
@@ -1051,6 +1058,9 @@ var NumberInput = (0, import_core10.factory)((_props, ref) => {
   };
   const handleKeyDown = (event) => {
     onKeyDown == null ? void 0 : onKeyDown(event);
+    if (readOnly) {
+      return;
+    }
     if (event.key === "ArrowUp") {
       event.preventDefault();
       increment();
@@ -1087,11 +1097,12 @@ var NumberInput = (0, import_core10.factory)((_props, ref) => {
     __spreadProps(__spreadValues({
       component: import_react_number_format.NumericFormat
     }, others), {
+      readOnly,
       disabled,
       value: _value,
       getInputRef: ref,
       onValueChange: handleValueChange,
-      rightSection: hideControls ? rightSection : rightSection || controls,
+      rightSection: hideControls || readOnly ? rightSection : rightSection || controls,
       classNames: resolvedClassNames,
       styles: resolvedStyles,
       unstyled,

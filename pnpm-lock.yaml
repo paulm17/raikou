@@ -159,7 +159,7 @@ importers:
         version: 3.12.7
       turbo:
         specifier: latest
-        version: 1.10.12
+        version: 1.10.13
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -235,7 +235,7 @@ importers:
         version: 7.3.1
       tailwindcss:
         specifier: insiders
-        version: 0.0.0-insiders.28e8fdf
+        version: 0.0.0-insiders.9faf109
       typescript:
         specifier: ^5.1.3
         version: 5.1.6
@@ -388,7 +388,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
 
   packages/raikou/client:
     dependencies:
@@ -575,7 +575,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -609,7 +609,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
 
   packages/raikou/colors-generator:
     dependencies:
@@ -625,7 +625,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
 
   packages/raikou/components/Accordion:
     dependencies:
@@ -659,7 +659,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -693,7 +693,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -727,7 +727,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -764,7 +764,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -801,7 +801,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -841,7 +841,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -875,7 +875,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -912,7 +912,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -946,7 +946,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -980,7 +980,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1017,7 +1017,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1051,7 +1051,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1082,7 +1082,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1116,7 +1116,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1150,7 +1150,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1184,7 +1184,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1221,7 +1221,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1255,7 +1255,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1292,7 +1292,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1329,7 +1329,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1363,7 +1363,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1397,7 +1397,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1434,7 +1434,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1471,7 +1471,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1508,7 +1508,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1542,7 +1542,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1582,7 +1582,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1619,7 +1619,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1656,7 +1656,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1693,7 +1693,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1727,7 +1727,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1764,7 +1764,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1798,7 +1798,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1832,7 +1832,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1869,7 +1869,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1906,7 +1906,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1940,7 +1940,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -1980,7 +1980,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2017,7 +2017,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2057,7 +2057,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2091,7 +2091,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2125,7 +2125,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2162,7 +2162,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2202,7 +2202,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2236,7 +2236,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2270,7 +2270,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2307,7 +2307,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2344,7 +2344,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2381,7 +2381,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2415,7 +2415,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2455,7 +2455,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2492,7 +2492,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2526,7 +2526,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2560,7 +2560,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2597,7 +2597,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2634,7 +2634,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2677,7 +2677,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2714,7 +2714,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2748,7 +2748,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2785,7 +2785,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2819,7 +2819,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2859,7 +2859,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2893,7 +2893,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2930,7 +2930,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -2964,7 +2964,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3004,7 +3004,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3038,7 +3038,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3075,7 +3075,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3118,7 +3118,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3164,7 +3164,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3201,7 +3201,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3238,7 +3238,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3275,7 +3275,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3312,7 +3312,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3349,7 +3349,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3386,7 +3386,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3423,7 +3423,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3460,7 +3460,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3494,7 +3494,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3528,7 +3528,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3565,7 +3565,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3602,7 +3602,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3639,7 +3639,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3673,7 +3673,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3710,7 +3710,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3747,7 +3747,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3784,7 +3784,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3821,7 +3821,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3858,7 +3858,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3892,7 +3892,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3926,7 +3926,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -3963,7 +3963,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -4000,7 +4000,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -4037,7 +4037,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -4071,7 +4071,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -4114,7 +4114,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -4154,7 +4154,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -4191,7 +4191,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -4225,7 +4225,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -4262,7 +4262,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -4284,9 +4284,6 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
-      tailwindcss:
-        specifier: ^3.3.2
-        version: 3.3.3
       tslib:
         specifier: ^2.6.0
         version: 2.6.0
@@ -4311,7 +4308,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.27)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -4345,7 +4342,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
 
   packages/raikou/dropzone:
     dependencies:
@@ -4373,7 +4370,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
 
   packages/raikou/form:
     dependencies:
@@ -4404,7 +4401,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
 
   packages/raikou/globalstore:
     dependencies:
@@ -4417,7 +4414,7 @@ importers:
         version: 20.3.3
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -4438,7 +4435,7 @@ importers:
         version: 18.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -4481,7 +4478,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -4524,7 +4521,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -4555,7 +4552,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
 
   packages/raikou/server:
     dependencies:
@@ -4712,7 +4709,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -4752,7 +4749,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -4768,7 +4765,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
 
   packages/raikou/system:
     dependencies:
@@ -4784,9 +4781,6 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
-      tailwindcss:
-        specifier: ^3.3.2
-        version: 3.3.3
       tslib:
         specifier: ^2.6.0
         version: 2.6.0
@@ -4811,7 +4805,7 @@ importers:
         version: 18.2.3
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.27)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -4825,10 +4819,10 @@ importers:
   packages/raikou/tiptap:
     dependencies:
       '@raikou/core':
-        specifier: '>=0.0.1-alpha.1'
+        specifier: workspace:*
         version: link:../core
       '@raikou/hooks':
-        specifier: '>=0.0.1-alpha.1'
+        specifier: workspace:*
         version: link:../hooks
       '@tabler/icons-react':
         specifier: ^2.30.0
@@ -4890,7 +4884,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
+        version: 7.1.0(typescript@5.1.6)
 
 packages:
 
@@ -4902,6 +4896,7 @@ packages:
   /@alloc/quick-lru@5.2.0:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
+    dev: true
 
   /@ampproject/remapping@2.2.1:
     resolution: {integrity: sha512-lFMjJTrFL3j7L9yBxwYfCq2k6qqwHyzuUl/XBnif78PWTJYyL/dfowQHWE3sp6U6ZzqWiiIZnpTMO96zhkjwtg==}
@@ -6731,7 +6726,7 @@ packages:
   /@emotion/use-insertion-effect-with-fallbacks@1.0.1(react@18.2.0):
     resolution: {integrity: sha512-jT/qyKZ9rzLErtrjGgdkMBn2OP8wl0G3sQlBb3YPryvKHsjvINUhVaPFfP+fpBcOkmrVOVEEHQFJ7nbj2TH2gw==}
     peerDependencies:
-      react: '>=16.8.0'
+      react: ^18.2.0
     dependencies:
       react: 18.2.0
     dev: true
@@ -7198,8 +7193,8 @@ packages:
   /@floating-ui/react-dom@1.3.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-htwHm67Ji5E/pROEAr7f8IKFShuiCKHwUC/UY4vC3I5jiSvGFAYnSYiZO5MlGmads+QqvUkR9ANHEguGrDv72g==}
     peerDependencies:
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       '@floating-ui/dom': 1.4.5
       react: 18.2.0
@@ -7209,8 +7204,8 @@ packages:
   /@floating-ui/react-dom@2.0.1(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-rZtAmSht4Lry6gdhAJDrCp/6rKN7++JnL1/Anbr/DdeyYXQPxvg/ivrbYvJulbRf4vL8b212suwMM2lxbv+RQA==}
     peerDependencies:
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       '@floating-ui/dom': 1.4.5
       react: 18.2.0
@@ -7219,8 +7214,8 @@ packages:
   /@floating-ui/react@0.23.1(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-OCc2ViQOBUKOGcE9NLAbpyqB+8Zz92IKIhxgz7XAkynKkVzcVSKtkWOcgyvO4SAzB2OybgRwk3WdzdzDRdh2QQ==}
     peerDependencies:
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       '@floating-ui/react-dom': 1.3.0(react-dom@18.2.0)(react@18.2.0)
       aria-hidden: 1.2.3
@@ -7611,7 +7606,7 @@ packages:
   /@mdx-js/react@2.3.0(react@18.2.0):
     resolution: {integrity: sha512-zQH//gdOmuu7nt2oJR29vFhDv88oGPmVw6BggmrHeMI+xgEkp1B2dX9/bMBSYtK0dyLX/aOmesKS09g222K1/g==}
     peerDependencies:
-      react: '>=16'
+      react: ^18.2.0
     dependencies:
       '@types/mdx': 2.0.5
       '@types/react': 18.2.20
@@ -7945,8 +7940,8 @@ packages:
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
-      react: ^16.8 || ^17.0 || ^18.0
-      react-dom: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -7966,8 +7961,8 @@ packages:
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
-      react: ^16.8 || ^17.0 || ^18.0
-      react-dom: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -7989,7 +7984,7 @@ packages:
     resolution: {integrity: sha512-fDSBgd44FKHa1FRMU59qBMPFcl2PZE+2nmqunj+BWFyYYjnhIDWL2ItDs3rrbJDQOtzt5nIebLCQc4QRfz6LJw==}
     peerDependencies:
       '@types/react': '*'
-      react: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8003,7 +7998,7 @@ packages:
     resolution: {integrity: sha512-ebbrdFoYTcuZ0v4wG5tedGnp9tzcV8awzsxYph7gXUyvnNLuTIcCk1q17JEbnVhXAKG9oX3KtchwiMIAYp9NLg==}
     peerDependencies:
       '@types/react': '*'
-      react: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8017,7 +8012,7 @@ packages:
     resolution: {integrity: sha512-RXcvnXgyvYvBEOhCBuddKecVkoMiI10Jcm5cTI7abJRAHYfFxeu+FBQs/DvdxSYucxR5mna0dNsL6QFlds5TMA==}
     peerDependencies:
       '@types/react': '*'
-      react: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8032,8 +8027,8 @@ packages:
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
-      react: ^16.8 || ^17.0 || ^18.0
-      react-dom: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8056,7 +8051,7 @@ packages:
     resolution: {integrity: sha512-Rect2dWbQ8waGzhMavsIbmSVCgYxkXLxxR3ZvCX79JOglzdEy4JXMb98lq4hPxUbLr77nP0UOGf4rcMU+s1pUA==}
     peerDependencies:
       '@types/react': '*'
-      react: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8071,8 +8066,8 @@ packages:
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
-      react: ^16.8 || ^17.0 || ^18.0
-      react-dom: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8093,7 +8088,7 @@ packages:
     resolution: {integrity: sha512-tI7sT/kqYp8p96yGWY1OAnLHrqDgzHefRBKQ2YAkBS5ja7QLcZ9Z/uY7bEjPUatf8RomoXM8/1sMj1IJaE5UzQ==}
     peerDependencies:
       '@types/react': '*'
-      react: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8109,8 +8104,8 @@ packages:
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
-      react: ^16.8 || ^17.0 || ^18.0
-      react-dom: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8139,8 +8134,8 @@ packages:
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
-      react: ^16.8 || ^17.0 || ^18.0
-      react-dom: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8160,8 +8155,8 @@ packages:
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
-      react: ^16.8 || ^17.0 || ^18.0
-      react-dom: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8181,8 +8176,8 @@ packages:
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
-      react: ^16.8 || ^17.0 || ^18.0
-      react-dom: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8210,8 +8205,8 @@ packages:
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
-      react: ^16.8 || ^17.0 || ^18.0
-      react-dom: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8251,8 +8246,8 @@ packages:
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
-      react: ^16.8 || ^17.0 || ^18.0
-      react-dom: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8271,7 +8266,7 @@ packages:
     resolution: {integrity: sha512-YeTpuq4deV+6DusvVUW4ivBgnkHwECUu0BiN43L5UCDFgdhsRUWAghhTF5MbvNTPzmiFOx90asDSUjWuCNapwg==}
     peerDependencies:
       '@types/react': '*'
-      react: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8287,8 +8282,8 @@ packages:
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
-      react: ^16.8 || ^17.0 || ^18.0
-      react-dom: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8314,8 +8309,8 @@ packages:
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
-      react: ^16.8 || ^17.0 || ^18.0
-      react-dom: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8337,8 +8332,8 @@ packages:
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
-      react: ^16.8 || ^17.0 || ^18.0
-      react-dom: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8363,7 +8358,7 @@ packages:
     resolution: {integrity: sha512-D94LjX4Sp0xJFVaoQOd3OO9k7tpBYNOXdVhkltUbGv2Qb9OXdrg/CpsjlZv7ia14Sylv398LswWBVVu5nqKzAQ==}
     peerDependencies:
       '@types/react': '*'
-      react: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8377,7 +8372,7 @@ packages:
     resolution: {integrity: sha512-Svl5GY5FQeN758fWKrjM6Qb7asvXeiZltlT4U2gVfl8Gx5UAv2sMR0LWo8yhsIZh2oQ0eFdZ59aoOOMV7b47VA==}
     peerDependencies:
       '@types/react': '*'
-      react: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8392,7 +8387,7 @@ packages:
     resolution: {integrity: sha512-vyL82j40hcFicA+M4Ex7hVkB9vHgSse1ZWomAqV2Je3RleKGO5iM8KMOEtfoSB0PnIelMd2lATjTGMYqN5ylTg==}
     peerDependencies:
       '@types/react': '*'
-      react: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8407,7 +8402,7 @@ packages:
     resolution: {integrity: sha512-v/5RegiJWYdoCvMnITBkNNx6bCj20fiaJnWtRkU18yITptraXjffz5Qbn05uOiQnOvi+dbkznkoaMltz1GnszQ==}
     peerDependencies:
       '@types/react': '*'
-      react: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8421,7 +8416,7 @@ packages:
     resolution: {integrity: sha512-cV5La9DPwiQ7S0gf/0qiD6YgNqM5Fk97Kdrlc5yBcrF3jyEZQwm7vYFqMo4IfeHgJXsRaMvLABFtd0OVEmZhDw==}
     peerDependencies:
       '@types/react': '*'
-      react: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8435,7 +8430,7 @@ packages:
     resolution: {integrity: sha512-Cq5DLuSiuYVKNU8orzJMbl15TXilTnJKUCltMVQg53BQOF1/C5toAaGrowkgksdBQ9H+SRL23g0HDmg9tvmxXw==}
     peerDependencies:
       '@types/react': '*'
-      react: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8450,7 +8445,7 @@ packages:
     resolution: {integrity: sha512-ibay+VqrgcaI6veAojjofPATwledXiSmX+C0KrBk/xgpX9rBzPV3OsfwlhQdUOFbh+LKQorLYT+xTXW9V8yd0g==}
     peerDependencies:
       '@types/react': '*'
-      react: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8466,8 +8461,8 @@ packages:
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
-      react: ^16.8 || ^17.0 || ^18.0
-      react-dom: ^16.8 || ^17.0 || ^18.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8549,8 +8544,8 @@ packages:
   /@storybook/addon-actions@7.3.1(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-wZQLNRgDrhHh/5BtJzjFzEI77B1+0U3M5adn3GrJor9JJIGC6xGYGWIqNjJs8IppT0HoYhoNkB/V89IO/8NVWA==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       react:
         optional: true
@@ -8583,8 +8578,8 @@ packages:
   /@storybook/addon-backgrounds@7.3.1(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Br6qfUlynXhuwtuQL78fpPMNZQGsUYwU5BqJpNe3x43N0K3t4qyGz8nXIV+X3adJbGVQGDlXHRVAZAW4GyTLCQ==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       react:
         optional: true
@@ -8611,8 +8606,8 @@ packages:
   /@storybook/addon-controls@7.3.1(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-4izb5spfoXZYFW0hiF9fqagYY8XMQapLDtSPdcdp40mEvb/2XgIfGfdnh63nEEjLMCQcO7PyK5U8EuH64NCKkg==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       react:
         optional: true
@@ -8643,8 +8638,8 @@ packages:
   /@storybook/addon-docs@7.3.1(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-GjCE2+L7frDNsC3w7KLM8HZS71K0UL4pX7unaO4OYFZXbJecJFYYsC12dPGz9d34moTXGsPTJ5KXTmYBGFmXBg==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       '@jest/transform': 29.6.1
       '@mdx-js/react': 2.3.0(react@18.2.0)
@@ -8677,8 +8672,8 @@ packages:
   /@storybook/addon-essentials@7.3.1(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-3sVzE1c84MH4Q2i/MpJZuCk1GgLYrL+Ef4lU9j0/XNK6E/Ock/H8WnPTA6lYp9x3IxNfrLVtuNeXSBGHker1JA==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       '@storybook/addon-actions': 7.3.1(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
       '@storybook/addon-backgrounds': 7.3.1(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
@@ -8714,8 +8709,8 @@ packages:
   /@storybook/addon-interactions@7.3.1(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-6ogXTIxQCpm8GLn20vRmj7g6fCzPScxpdy0Y/stgnCPeguwpVqGKEdUjY/8LA85fZKo6uTRb5LbDBcuVF9s5fw==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       react:
         optional: true
@@ -8747,8 +8742,8 @@ packages:
   /@storybook/addon-links@7.3.1(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-JL3zdC1GWwRU+F4CslHVfjAB0ciSNS6+si/KvXOy2Y9S4uRgYkp2IWnuOFmZGpifgSdQbjGvLnj0fuw/hO+IcA==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       react:
         optional: true
@@ -8772,8 +8767,8 @@ packages:
   /@storybook/addon-measure@7.3.1(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-YUwV16qVgyLcP1jhOgxMFVzifgqFTcdbaVK9Ln7mEG3zKnappdAhoUOI0mpNdVxwfYis4RXNDruAry/lzsMr9A==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       react:
         optional: true
@@ -8798,8 +8793,8 @@ packages:
   /@storybook/addon-outline@7.3.1(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-vZFNr67Ydyolh9jbhYRmrujCQddnX4UxsrBeIPjOqjwy2kgTXNaIDvIPGdhmXoJLd5IsHCKmmI+J1CdAnkZ7hg==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       react:
         optional: true
@@ -8827,8 +8822,8 @@ packages:
     peerDependencies:
       less: ^3.5.0 || ^4.0.0
       postcss: ^7.0.0 || ^8.0.1
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
       webpack: ^5.0.0
     peerDependenciesMeta:
       less:
@@ -8877,8 +8872,8 @@ packages:
   /@storybook/addon-toolbars@7.3.1(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-iOgayzcYPaGhIeG0IH5/5iM6+OOebkg7WMnByQ1QsfjIb9aDGWzP0UCOdK50U1Ez157R8Ovnpa+7nVvMEIEvDQ==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       react:
         optional: true
@@ -8900,8 +8895,8 @@ packages:
   /@storybook/addon-viewport@7.3.1(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-/eyGhAJjnSATxcZSm8/D6mF28NoTmWguCQWqCJ5SScfOhru+XpatcF/jVR0qm++9tPIEAokPB+53vcVTv6Ix3g==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       react:
         optional: true
@@ -8927,8 +8922,8 @@ packages:
   /@storybook/api@7.1.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-EvCdZRSNDqPzbeD07qZ/oP9LHsH+wDOP3sn8VC40F7AR98sGbN9O2gD4qtQkGBdwFEYhTHeXaF1QXfEdDPQZdw==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     peerDependenciesMeta:
       react:
         optional: true
@@ -8944,8 +8939,8 @@ packages:
   /@storybook/blocks@7.3.1(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-MIMM5+nU/3/RHEmCmSwkHs3Mq6mwJqUpkWUDPx81sQnq9C5r0NHHNmHGTqxF/SPyptPxmWGI88ETpiidVZK6RQ==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       '@storybook/channels': 7.3.1
       '@storybook/client-logger': 7.3.1
@@ -9160,8 +9155,8 @@ packages:
   /@storybook/components@7.1.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-o8Z5L7cxxNCUhbEA+vGwoVrZ0vWhuZJb/AUc+347RIlH1QZF4Cu6fmgA49pKBsrJWPbtOmlLCbN/9LshszH0Zw==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       '@storybook/client-logger': 7.1.0
       '@storybook/csf': 0.1.1
@@ -9178,8 +9173,8 @@ packages:
   /@storybook/components@7.3.1(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-8dk3WutobHvjxweVzA9Vqrp564vWOTQaV38JSi84ME8wzOdl20Xne9LoeMnqPHXFhnVZdm/Gkosfv4tqkDy4aw==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       '@radix-ui/react-select': 1.2.2(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-toolbar': 1.0.4(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
@@ -9389,8 +9384,8 @@ packages:
     resolution: {integrity: sha512-co5gDCYPojRAc5lRMnWxbjrR1V37/rTmAo9Vok4a1hDpHZIwkGTWesdzvYivSQXYFxZTpxdM1b5K3W87brnahw==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -9419,8 +9414,8 @@ packages:
   /@storybook/manager-api@7.1.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-a4UtzWcN/a12Kr4Z5B0KO05t3w3BtXapLRUERxiwB769ab/XJ6MmIyFY7mybKty3RZhmBWaO/oSfgrOwCeP/Gw==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       '@storybook/channels': 7.1.0
       '@storybook/client-logger': 7.1.0
@@ -9444,8 +9439,8 @@ packages:
   /@storybook/manager-api@7.3.1(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-jFH0EfWasdwHW8X5DUzTbH5mpdCZBHU7lIEUj6lVMBcBxbTniqBiG7mkwbW9VLocqEbBZimLCb/2RtTpK1Ue3Q==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       '@storybook/channels': 7.3.1
       '@storybook/client-logger': 7.3.1
@@ -9532,8 +9527,8 @@ packages:
   /@storybook/react-dom-shim@7.3.1(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-cdPCB42QvVatTEeJeXM5dP9CGpt28NGCkShnECRWepP9y2ZJTjMYZuaXSeefsQweyFuqYFO66ghJoFjaNKw+4g==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -9543,8 +9538,8 @@ packages:
     resolution: {integrity: sha512-Hplz2d7BNyZfDh+rzBejunV/jL01xJkUOhCLAMOwtobzBBfKWeGcCPiadeVSM66ApVIoqRYl47pyF81Gh0PnKw==}
     engines: {node: '>=16'}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
       vite: ^3.0.0 || ^4.0.0
     dependencies:
       '@joshwooding/vite-plugin-react-docgen-typescript': 0.2.1(typescript@5.1.6)(vite@4.4.9)
@@ -9571,8 +9566,8 @@ packages:
     resolution: {integrity: sha512-EIVxvI3qayJyQW83ExOt98/zveUeHv47AHUyUOanVOlwDpOHAv19VnijQq50Kk+XM1ooxz3rLJsNMlMPPeTiDw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
       typescript: '*'
     peerDependenciesMeta:
       typescript:
@@ -9610,8 +9605,8 @@ packages:
   /@storybook/router@7.1.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-zZUFV84bIjhKADrV7ZzHPOBtxumeonUU1Nbq7X+k6AWsurpUAdlpQrM+H+37eWIeFONX8Rfc0EUTrx+WUAq1hA==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       '@storybook/client-logger': 7.1.0
       memoizerific: 1.11.3
@@ -9623,8 +9618,8 @@ packages:
   /@storybook/router@7.3.1(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-KY+Mo0oF2xcRUDCXPJjAB5xy7d8Hi2dh8VqLahGa14ZHwhsZ/RxqE2bypwLXXkRpEiyOpfMbSsG73+1ml3fIUg==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       '@storybook/client-logger': 7.3.1
       memoizerific: 1.11.3
@@ -9662,8 +9657,8 @@ packages:
   /@storybook/theming@7.1.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-bO56c7NFlK7sfjsCbV56VLU59HHvQTW/HVu8RxUuoY+0WutyGAq6uZCmtQnMMGORzxh0p/uU2dSBVYEfW8QoTQ==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@18.2.0)
       '@storybook/client-logger': 7.1.0
@@ -9676,8 +9671,8 @@ packages:
   /@storybook/theming@7.3.1(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-1CF6bT8o8pZcd/ptl1q4CiTGY4oLV19tE8Wnhd/TO934fdMp4fUx1FF4pFL6an98lxVeZT0JQ4uvkuaTvHJFRQ==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@18.2.0)
       '@storybook/client-logger': 7.3.1
@@ -9720,7 +9715,7 @@ packages:
   /@tabler/icons-react@2.30.0(react@18.2.0):
     resolution: {integrity: sha512-aYggXusHW133L4KujJkVf4GIIrjg7tIRHgNf/n37mnoHqMjwNP+PjmVdrBM1Z8Ywx9PKFRlrwM0eUMDcG+I4HA==}
     peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
     dependencies:
       '@tabler/icons': 2.30.0
       prop-types: 15.8.1
@@ -9740,8 +9735,26 @@ packages:
     dev: true
     optional: true
 
+  /@tailwindcss/oxide-darwin-arm64@0.0.0-insiders.9faf109:
+    resolution: {integrity: sha512-SnJBw4j8uZddhXEhfsQHXUgpECVLn+icCXDTLh58cRPekKZ9JTj/uYyFYbnZHcMyIHiAKx1mQhoCP0FDXCUiWA==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /@tailwindcss/oxide-darwin-x64@0.0.0-insiders.28e8fdf:
     resolution: {integrity: sha512-j28C5rFKl/cZssI5DV06whVy6f82A+x4c6+JWCaS6jgpPM55szR3/i3NlaThcBLk5kY2qzagsbNe47FObvaFtQ==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@tailwindcss/oxide-darwin-x64@0.0.0-insiders.9faf109:
+    resolution: {integrity: sha512-lZvruT3X8tBQ/m/ShvGUxoMSaqfRh1jXoqKX6oZjuqRuTNPgG0hV2u02VDst+kL3WsZ+NoNuzDYk5jYQNUIV9A==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
@@ -9758,8 +9771,26 @@ packages:
     dev: true
     optional: true
 
+  /@tailwindcss/oxide-freebsd-x64@0.0.0-insiders.9faf109:
+    resolution: {integrity: sha512-FGh/kwk2oVYJXed+GCmVkqv0COYdNwYBeW5rLVumHT8S5yyZo7xQtEto9ehKjfHuhuN49rD5asgtNK2/pbCN0Q==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [freebsd]
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /@tailwindcss/oxide-linux-arm-gnueabihf@0.0.0-insiders.28e8fdf:
     resolution: {integrity: sha512-jmSYVdyg3s62D83OsMSw4ZlRGPdgHdI8dFPFl1lZkfWuyoJX3oIktI/BhJqiPGo6lsP1MpvweWq21mHtAtsB3w==}
+    engines: {node: '>= 10'}
+    cpu: [arm]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@tailwindcss/oxide-linux-arm-gnueabihf@0.0.0-insiders.9faf109:
+    resolution: {integrity: sha512-7rN2EuKTfZpAajhWRf+Qe0YgnomRpBYFwjL8KV8RvZ9z3rRlO1hG72JKLEegCoCH6atTqKO1c8oGRMZMhPQFDg==}
     engines: {node: '>= 10'}
     cpu: [arm]
     os: [linux]
@@ -9776,8 +9807,26 @@ packages:
     dev: true
     optional: true
 
+  /@tailwindcss/oxide-linux-arm64-gnu@0.0.0-insiders.9faf109:
+    resolution: {integrity: sha512-4pczdi52hqp2Hm9zO0OtMQyAr6JWrKNIoMF/UQQ2H61iBfaNmvaqWdpo4OVx2MjFq983nvLr8/fLC06cJp/zpA==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /@tailwindcss/oxide-linux-arm64-musl@0.0.0-insiders.28e8fdf:
     resolution: {integrity: sha512-ZrTbdAWAP8lEjHjTWaA/xK53C1uoBIsTQxmuxytXBbGNX3K0YgdK09mWQ3STBMCFFB+ns351l78i6igECG9y+g==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@tailwindcss/oxide-linux-arm64-musl@0.0.0-insiders.9faf109:
+    resolution: {integrity: sha512-OHGesCnEx8sMvle3mNLHVveDXCNIM2nlFyBxoHb7Xj58bmbgwDBXYI0GDl/KxhV+zYhGJxJm1K5+7XbUBXfgYw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -9794,6 +9843,15 @@ packages:
     dev: true
     optional: true
 
+  /@tailwindcss/oxide-linux-x64-gnu@0.0.0-insiders.9faf109:
+    resolution: {integrity: sha512-cSmIxJrPsns31RcWHah2XxQs1BBfyWy4Q7hTKen8aIGfYhjY9jhXVt0jeMm64ZOmmWzirV9y4Qkt4nt9ULSU2w==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /@tailwindcss/oxide-linux-x64-musl@0.0.0-insiders.28e8fdf:
     resolution: {integrity: sha512-P9g8PCbi/JPZO6Di3LoRi6sZwyb2l6LE7iRhLl8cJ3M68RaS+akG05mQttRlcrI804NZpG8FaU2a5zdGJJ9DxQ==}
     engines: {node: '>= 10'}
@@ -9803,8 +9861,26 @@ packages:
     dev: true
     optional: true
 
+  /@tailwindcss/oxide-linux-x64-musl@0.0.0-insiders.9faf109:
+    resolution: {integrity: sha512-zvNLNfmPtoXQnEsVnRh+dkeJCMqa6/XVYG3eSlejSzzKcz9+ZM6XXl+LBkm15a9gGYvew8jfQ9IsohIexErCbw==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /@tailwindcss/oxide-win32-x64-msvc@0.0.0-insiders.28e8fdf:
     resolution: {integrity: sha512-i+b96B5hVBdQcKGahtFr7ovdfDD7ZWZNvwXKC+Z5SCASZ7HQpT5o4qWq5n0th/dtO0V5yrfDzQeaQgPLQoD21w==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@tailwindcss/oxide-win32-x64-msvc@0.0.0-insiders.9faf109:
+    resolution: {integrity: sha512-VVIGzP3WB/xfOqf9QJRvtvs2uWqq3VAxYjdR6ilIxP6tn3cbJdOjqN7w9c8dhzgHAulEmBgW1Ea1roXeZKd39g==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -9825,6 +9901,21 @@ packages:
       '@tailwindcss/oxide-linux-x64-gnu': 0.0.0-insiders.28e8fdf
       '@tailwindcss/oxide-linux-x64-musl': 0.0.0-insiders.28e8fdf
       '@tailwindcss/oxide-win32-x64-msvc': 0.0.0-insiders.28e8fdf
+    dev: true
+
+  /@tailwindcss/oxide@0.0.0-insiders.9faf109:
+    resolution: {integrity: sha512-MsYO1lUlUigkiQCcqhS+V2OdseN59fn1odJpraX8Nqk70Xfz/6U2JS0mcXsCOYrtPTt0u6zTSxTojEc8MYPlaA==}
+    engines: {node: '>= 10'}
+    optionalDependencies:
+      '@tailwindcss/oxide-darwin-arm64': 0.0.0-insiders.9faf109
+      '@tailwindcss/oxide-darwin-x64': 0.0.0-insiders.9faf109
+      '@tailwindcss/oxide-freebsd-x64': 0.0.0-insiders.9faf109
+      '@tailwindcss/oxide-linux-arm-gnueabihf': 0.0.0-insiders.9faf109
+      '@tailwindcss/oxide-linux-arm64-gnu': 0.0.0-insiders.9faf109
+      '@tailwindcss/oxide-linux-arm64-musl': 0.0.0-insiders.9faf109
+      '@tailwindcss/oxide-linux-x64-gnu': 0.0.0-insiders.9faf109
+      '@tailwindcss/oxide-linux-x64-musl': 0.0.0-insiders.9faf109
+      '@tailwindcss/oxide-win32-x64-msvc': 0.0.0-insiders.9faf109
     dev: true
 
   /@testing-library/dom@8.13.0:
@@ -9874,8 +9965,8 @@ packages:
     resolution: {integrity: sha512-Bprbz/SZVONCJy5f7hcihNCv313IJXdYiv0nSJklIs1SQCIHHNlnGNkosSXnGZTmesyGIcBGNppYhXcc11pb7g==}
     engines: {node: '>=12'}
     peerDependencies:
-      react: ^18.0.0
-      react-dom: ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       '@babel/runtime': 7.21.5
       '@testing-library/dom': 8.20.1
@@ -10206,8 +10297,8 @@ packages:
     peerDependencies:
       '@tiptap/core': ^2.0.0
       '@tiptap/pm': ^2.0.0
-      react: ^17.0.0 || ^18.0.0
-      react-dom: ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       '@tiptap/core': 2.1.3(@tiptap/pm@2.1.3)
       '@tiptap/extension-bubble-menu': 2.1.3(@tiptap/core@2.1.3)(@tiptap/pm@2.1.3)
@@ -11431,6 +11522,7 @@ packages:
 
   /arg@5.0.2:
     resolution: {integrity: sha512-PYjyFOLKQ9y57JvQ6QLo8dAgNqswh8M1RMJYdQduT6xbWSgK36P/Z/v+p888pM69jMMfS8Xd8F6I1kQ/I9HUGg==}
+    dev: true
 
   /argparse@1.0.10:
     resolution: {integrity: sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==}
@@ -12004,6 +12096,7 @@ packages:
   /camelcase-css@2.0.1:
     resolution: {integrity: sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==}
     engines: {node: '>= 6'}
+    dev: true
 
   /camelcase-keys@6.2.2:
     resolution: {integrity: sha512-YrwaA0vEKazPBkn0ipTiMpSajYDSe+KjQfrjhcBMxJt/znbvlHd8Pw/Vamaz5EB4Wfhs3SUR3Z9mwRu/P3s3Yg==}
@@ -12915,6 +13008,7 @@ packages:
 
   /didyoumean@1.2.2:
     resolution: {integrity: sha512-gxtyfqMg7GKyhQmb056K7M3xszy/myH8w+B4RT+QXBQsvAOdc3XymqDDPHx1BgPgsdAA5SIifona89YtRATDzw==}
+    dev: true
 
   /diff-sequences@29.4.3:
     resolution: {integrity: sha512-ofrBgwpPhCD85kMKtE9RYFFq6OC1A89oW2vvgWZNCwxrUpRUILopY7lsYyMDSjc8g6U6aiO0Qubg6r4Wgt5ZnA==}
@@ -12934,6 +13028,7 @@ packages:
 
   /dlv@1.1.3:
     resolution: {integrity: sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==}
+    dev: true
 
   /doctrine@2.1.0:
     resolution: {integrity: sha512-35mSku4ZXK0vfCuHEDAwt55dg2jNajHZ1odvF+8SSr82EsZY4QmXfuWso8oEd8zRhVObSN18aM0CjSdoBX7zIw==}
@@ -13048,7 +13143,7 @@ packages:
   /embla-carousel-react@7.1.0(react@18.2.0):
     resolution: {integrity: sha512-tbYRPRZSDNd2QLNqYDcArAakGIxtUbhS7tkP0dGXktXHGgcX+3ji3VrOUTOftBiujZrMV8kRxtrRUe/1soloIQ==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.1 || ^18.0.0
+      react: ^18.2.0
     dependencies:
       embla-carousel: 7.1.0
       react: 18.2.0
@@ -14173,6 +14268,7 @@ packages:
 
   /function-bind@1.1.1:
     resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
+    dev: true
 
   /function.prototype.name@1.1.5:
     resolution: {integrity: sha512-uN7m/BzVKQnCUF/iW8jYea67v++2u7m5UgENbHRtdDVclOUP+FMPlCNdmk0h/ysGyo2tavMJEDqJAkJdRa1vMA==}
@@ -14307,6 +14403,7 @@ packages:
     engines: {node: '>=10.13.0'}
     dependencies:
       is-glob: 4.0.3
+    dev: true
 
   /glob-promise@4.2.2(glob@7.2.3):
     resolution: {integrity: sha512-xcUzJ8NWN5bktoTIX7eOclO1Npxd/dyVqUJxlLIDasT4C7KZyqlPIwkdJ0Ypiy3p2ZKahTjK4M9uC3sNSfNMzw==}
@@ -14512,6 +14609,7 @@ packages:
     engines: {node: '>= 0.4.0'}
     dependencies:
       function-bind: 1.1.1
+    dev: true
 
   /header-case@1.0.1:
     resolution: {integrity: sha512-i0q9mkOeSuhXw6bGgiQCCBgY/jlZuV/7dZXyZ9c6LcBrqwvT8eT719E9uxE5LiZftdl+z81Ugbg/VvXV4OJOeQ==}
@@ -14840,6 +14938,7 @@ packages:
     resolution: {integrity: sha512-Z7dk6Qo8pOCp3l4tsX2C5ZVas4V+UxwQodwZhLopL91TX8UyyHEXafPcyoeeWuLrwzHcr3igO78wNLwHJHsMCQ==}
     dependencies:
       has: 1.0.3
+    dev: true
 
   /is-date-object@1.0.5:
     resolution: {integrity: sha512-9YQaSxsAiSwcvS33MBk3wTCVnWK+HhF8VZR2jRxehM16QcVOdHqPn4VPHmRK4lSr38n9JriurInLcP90xsYNfQ==}
@@ -15805,6 +15904,12 @@ packages:
   /jiti@1.19.1:
     resolution: {integrity: sha512-oVhqoRDaBXf7sjkll95LHVS6Myyyb1zaunVwk4Z0+WPSW4gjS0pl01zYKHScTuyEhQsFxV5L4DR5r+YqSyqyyg==}
     hasBin: true
+    dev: true
+
+  /jiti@1.20.0:
+    resolution: {integrity: sha512-3TV69ZbrvV6U5DfQimop50jE9Dl6J8O1ja1dvBbMba/sZ3YBEQqJ2VZRoQPVnhlzjNtU1vaXRZVrVjU4qtm8yA==}
+    hasBin: true
+    dev: true
 
   /joycon@3.1.1:
     resolution: {integrity: sha512-34wB/Y7MW7bzjKRjUKTa46I2Z7eV62Rkhva+KkopW7Qvv/OSWBqvkSY7vusOPrNuZcUG3tApvdVgNB8POj3SPw==}
@@ -16069,6 +16174,15 @@ packages:
     dev: true
     optional: true
 
+  /lightningcss-darwin-arm64@1.21.7:
+    resolution: {integrity: sha512-tt7hIsFio9jZofTVHtCACz6rB6c9RyABMXfA9A/VcKOjS3sq+koX/QkRJWY06utwOImbJIXBC5hbg9t3RkPUAQ==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /lightningcss-darwin-x64@1.21.5:
     resolution: {integrity: sha512-MSJhmej/U9MrdPxDk7+FWhO8+UqVoZUHG4VvKT5RQ4RJtqtANTiWiI97LvoVNMtdMnHaKs1Pkji6wHUFxjJsHQ==}
     engines: {node: '>= 12.0.0'}
@@ -16078,8 +16192,35 @@ packages:
     dev: true
     optional: true
 
+  /lightningcss-darwin-x64@1.21.7:
+    resolution: {integrity: sha512-F4gS4bf7eWekfPT+TxJNm/pF+QRgZiTrTkQH6cw4/UWfdeZISfuhD5El2dm16giFnY0K5ylIwO+ZusgYNkGSXA==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lightningcss-freebsd-x64@1.21.7:
+    resolution: {integrity: sha512-RMfNzJWXCSfPnL55fcLWEAadcY6QUFT0S8NceNKYzp1KiCZtkJIy6RQ5SaVxPzRqd3iMsahUf5sfnG8N1UQSNQ==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
+    os: [freebsd]
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /lightningcss-linux-arm-gnueabihf@1.21.5:
     resolution: {integrity: sha512-xN6+5/JsMrbZHL1lPl+MiNJ3Xza12ueBKPepiyDCFQzlhFRTj7D0LG+cfNTzPBTO8KcYQynLpl1iBB8LGp3Xtw==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lightningcss-linux-arm-gnueabihf@1.21.7:
+    resolution: {integrity: sha512-biSRUDZNx7vubWP1jArw/qqfZKPGpkV/qzunasZzxmqijbZ43sW9faDQYxWNcxPWljJJdF/qs6qcurYFovWtrQ==}
     engines: {node: '>= 12.0.0'}
     cpu: [arm]
     os: [linux]
@@ -16096,8 +16237,26 @@ packages:
     dev: true
     optional: true
 
+  /lightningcss-linux-arm64-gnu@1.21.7:
+    resolution: {integrity: sha512-PENY8QekqL9TG3AY/A7rkUBb5ymefGxea7Oe7+x7Hbw4Bz4Hpj5cec5OoMypMqFbURPmpi0fTWx4vSWUPzpDcA==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /lightningcss-linux-arm64-musl@1.21.5:
     resolution: {integrity: sha512-bc0GytQO5Mn9QM6szaZ+31fQHNdidgpM1sSCwzPItz8hg3wOvKl8039rU0veMJV3ZgC9z0ypNRceLrSHeRHmXw==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lightningcss-linux-arm64-musl@1.21.7:
+    resolution: {integrity: sha512-pfOipKvA/0X1OjRaZt3870vnV9UGBSjayIqHh0fGx/+aRz3O0MVFHE/60P2UWXpM3YGJEw/hMWtNkrFwqOge8A==}
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
@@ -16114,6 +16273,15 @@ packages:
     dev: true
     optional: true
 
+  /lightningcss-linux-x64-gnu@1.21.7:
+    resolution: {integrity: sha512-dgcsis4TAA7s0ia4f31QHX+G4PWPwxk+wJaEQLaV0NdJs09O5hHoA8DpLEr8nrvc/tsRTyVNBP1rDtgzySjpXg==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /lightningcss-linux-x64-musl@1.21.5:
     resolution: {integrity: sha512-Ib8b6IQ/OR/VrPU6YBgy4T3QnuHY7DUa95O+nz+cwrTkMSN6fuHcTcIaz4t8TJ6HI5pl3uxUOZjmtls2pyQWow==}
     engines: {node: '>= 12.0.0'}
@@ -16123,8 +16291,26 @@ packages:
     dev: true
     optional: true
 
+  /lightningcss-linux-x64-musl@1.21.7:
+    resolution: {integrity: sha512-A+9dXpxld3p4Cd6fxev2eqEvaauYtrgNpXV3t7ioCJy30Oj9nYiNGwiGusM+4MJVcEpUPGUGiuAqY4sWilRDwA==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /lightningcss-win32-x64-msvc@1.21.5:
     resolution: {integrity: sha512-A8cSi8lUpBeVmoF+DqqW7cd0FemDbCuKr490IXdjyeI+KL8adpSKUs8tcqO0OXPh1EoDqK7JNkD/dELmd4Iz5g==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lightningcss-win32-x64-msvc@1.21.7:
+    resolution: {integrity: sha512-07/8vogEq+C/mF99pdMhh/f19/xreq8N9Ca6AWeVHZIdODyF/pt6KdKSCWDZWIn+3CUxI8gCJWuUWyOc3xymvw==}
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [win32]
@@ -16146,6 +16332,23 @@ packages:
       lightningcss-linux-x64-gnu: 1.21.5
       lightningcss-linux-x64-musl: 1.21.5
       lightningcss-win32-x64-msvc: 1.21.5
+    dev: true
+
+  /lightningcss@1.21.7:
+    resolution: {integrity: sha512-xITZyh5sLFwRPYUSw15T00Rm7gcQ1qOPuQwNOcvHsTm6nLWTQ723w7zl42wrC5t+xtdg6FPmnXHml1nZxxvp1w==}
+    engines: {node: '>= 12.0.0'}
+    dependencies:
+      detect-libc: 1.0.3
+    optionalDependencies:
+      lightningcss-darwin-arm64: 1.21.7
+      lightningcss-darwin-x64: 1.21.7
+      lightningcss-freebsd-x64: 1.21.7
+      lightningcss-linux-arm-gnueabihf: 1.21.7
+      lightningcss-linux-arm64-gnu: 1.21.7
+      lightningcss-linux-arm64-musl: 1.21.7
+      lightningcss-linux-x64-gnu: 1.21.7
+      lightningcss-linux-x64-musl: 1.21.7
+      lightningcss-win32-x64-msvc: 1.21.7
     dev: true
 
   /lilconfig@2.1.0:
@@ -16425,7 +16628,7 @@ packages:
     resolution: {integrity: sha512-9HrdzBAo0+sFz9ZYAGT5fB8ilzTW+q6lPocRxrIesMO+aB40V9MgFfbfMXxlGjf22OpRy+IXlvVaQenicdpgbg==}
     engines: {node: '>= 10'}
     peerDependencies:
-      react: '>= 0.14.0'
+      react: ^18.2.0
     dependencies:
       react: 18.2.0
     dev: true
@@ -16722,8 +16925,8 @@ packages:
     resolution: {integrity: sha512-B+AKNfYNIzh0vqQQKqQItTS8evEouKD7H5Hj3kmuPERwddR2TxvDSFZuTj6T7Jfn1oyeUyJMydPl1Bkxkh0W7A==}
     peerDependencies:
       next: '*'
-      react: '*'
-      react-dom: '*'
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       next: 13.4.19(@babel/core@7.22.10)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
@@ -16890,6 +17093,7 @@ packages:
   /object-hash@3.0.0:
     resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
     engines: {node: '>= 6'}
+    dev: true
 
   /object-inspect@1.12.3:
     resolution: {integrity: sha512-geUvdk7c+eizMNUDkRpW1wJwgfOiOeHbxBR/hLXK1aT6zmVSO0jsQcs7fj6MGw89jC/cjGfLcNOrtMYtGqm81g==}
@@ -17235,6 +17439,7 @@ packages:
 
   /path-parse@1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
+    dev: true
 
   /path-scurry@1.10.1:
     resolution: {integrity: sha512-MkhCqzzBEpPvxxQ71Md0b1Kk51W01lrYvlMzSUaIzNsODdd7mqhiimSZlr+VegAz5Z6Vzt9Xg2ttE//XBhH3EQ==}
@@ -17286,6 +17491,7 @@ packages:
   /pify@2.3.0:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
+    dev: true
 
   /pify@4.0.1:
     resolution: {integrity: sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==}
@@ -17340,6 +17546,19 @@ packages:
       postcss-value-parser: 4.2.0
       read-cache: 1.0.0
       resolve: 1.22.4
+    dev: true
+
+  /postcss-import@15.1.0(postcss@8.4.29):
+    resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      postcss: ^8.0.0
+    dependencies:
+      postcss: 8.4.29
+      postcss-value-parser: 4.2.0
+      read-cache: 1.0.0
+      resolve: 1.22.4
+    dev: true
 
   /postcss-js@4.0.1(postcss@8.4.27):
     resolution: {integrity: sha512-dDLF8pEO191hJMtlHFPRa8xsizHaM82MLfNkUHdUtVEV3tgTp5oj+8qbEqYM57SLfc74KSbw//4SeJma2LRVIw==}
@@ -17349,6 +17568,17 @@ packages:
     dependencies:
       camelcase-css: 2.0.1
       postcss: 8.4.27
+    dev: true
+
+  /postcss-js@4.0.1(postcss@8.4.29):
+    resolution: {integrity: sha512-dDLF8pEO191hJMtlHFPRa8xsizHaM82MLfNkUHdUtVEV3tgTp5oj+8qbEqYM57SLfc74KSbw//4SeJma2LRVIw==}
+    engines: {node: ^12 || ^14 || >= 16}
+    peerDependencies:
+      postcss: ^8.4.21
+    dependencies:
+      camelcase-css: 2.0.1
+      postcss: 8.4.29
+    dev: true
 
   /postcss-load-config@4.0.1(postcss@8.4.26):
     resolution: {integrity: sha512-vEJIc8RdiBRu3oRAI0ymerOn+7rPuMvRXslTvZUKZonDHFIczxztIyJ1urxM1x9JXEikvpWWTUUqal5j/8QgvA==}
@@ -17365,6 +17595,7 @@ packages:
       lilconfig: 2.1.0
       postcss: 8.4.26
       yaml: 2.3.1
+    dev: true
 
   /postcss-load-config@4.0.1(postcss@8.4.27):
     resolution: {integrity: sha512-vEJIc8RdiBRu3oRAI0ymerOn+7rPuMvRXslTvZUKZonDHFIczxztIyJ1urxM1x9JXEikvpWWTUUqal5j/8QgvA==}
@@ -17381,6 +17612,23 @@ packages:
       lilconfig: 2.1.0
       postcss: 8.4.27
       yaml: 2.3.1
+
+  /postcss-load-config@4.0.1(postcss@8.4.29):
+    resolution: {integrity: sha512-vEJIc8RdiBRu3oRAI0ymerOn+7rPuMvRXslTvZUKZonDHFIczxztIyJ1urxM1x9JXEikvpWWTUUqal5j/8QgvA==}
+    engines: {node: '>= 14'}
+    peerDependencies:
+      postcss: '>=8.0.9'
+      ts-node: '>=9.0.0'
+    peerDependenciesMeta:
+      postcss:
+        optional: true
+      ts-node:
+        optional: true
+    dependencies:
+      lilconfig: 2.1.0
+      postcss: 8.4.29
+      yaml: 2.3.1
+    dev: true
 
   /postcss-loader@7.3.3(postcss@8.4.27)(webpack@5.88.2):
     resolution: {integrity: sha512-YgO/yhtevGO/vJePCQmTxiaEwER94LABZN0ZMT4A0vsak9TpO+RvKRs7EmJ8peIlB9xfXCsS7M8LjqncsUZ5HA==}
@@ -17455,6 +17703,17 @@ packages:
     dependencies:
       postcss: 8.4.27
       postcss-selector-parser: 6.0.13
+    dev: true
+
+  /postcss-nested@6.0.1(postcss@8.4.29):
+    resolution: {integrity: sha512-mEp4xPMi5bSWiMbsgoPfcP74lsWLHkQbZc3sY+jWYd65CUwXrUaTp0fmNpa01ZcETKlIgUdFN/MpS2xZtqL9dQ==}
+    engines: {node: '>=12.0'}
+    peerDependencies:
+      postcss: ^8.2.14
+    dependencies:
+      postcss: 8.4.29
+      postcss-selector-parser: 6.0.13
+    dev: true
 
   /postcss-selector-parser@6.0.13:
     resolution: {integrity: sha512-EaV1Gl4mUEV4ddhDnv/xtj7sxwrwxdetHdWUGnT4VJQf+4d05v6lHYZr8N573k5Z0BViss7BDhfWtKS3+sfAqQ==}
@@ -17465,6 +17724,7 @@ packages:
 
   /postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
+    dev: true
 
   /postcss@8.4.14:
     resolution: {integrity: sha512-E398TUmfAYFPBSdzgeieK2Y1+1cpdxJx8yXbK/m57nRhKSmk1GB2tO4lbLBtlkfPQTDKfe4Xqv1ASWPpayPEig==}
@@ -17490,6 +17750,15 @@ packages:
       nanoid: 3.3.6
       picocolors: 1.0.0
       source-map-js: 1.0.2
+
+  /postcss@8.4.29:
+    resolution: {integrity: sha512-cbI+jaqIeu/VGqXEarWkRCCffhjgXc0qjBtXpqJhTBohMUjUQnbBr0xqX3vEKudc4iviTewcJo5ajcec5+wdJw==}
+    engines: {node: ^10 || ^12 || >=14}
+    dependencies:
+      nanoid: 3.3.6
+      picocolors: 1.0.0
+      source-map-js: 1.0.2
+    dev: true
 
   /preferred-pm@3.0.3:
     resolution: {integrity: sha512-+wZgbxNES/KlJs9q40F/1sfOd/j7f1O9JaHcW5Dsn3aUUOZg3L2bjpVUcKV2jvtElYfoTuQiNeMfQJ4kwUAhCQ==}
@@ -17889,8 +18158,8 @@ packages:
   /react-colorful@5.6.1(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-1exovf0uGTGyq5mXQT0zgQ80uvj2PCwvF8zY1RN9/vbJVSjSo3fsB/4L3ObbF7u70NduSiK4xu4Y6q1MHoUGEw==}
     peerDependencies:
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -17936,7 +18205,7 @@ packages:
     resolution: {integrity: sha512-O3om8I+PkFKbxCukfIR3QAGftYXDZfOE2N1mr/7qebQJHs7U+/RSL/9xomJNpRg9kM5h9soQSdf0Gc7OHF5Fug==}
     engines: {node: '>= 10.13'}
     peerDependencies:
-      react: '>= 16.8 || 18.0.0'
+      react: ^18.2.0
     dependencies:
       attr-accept: 2.2.2
       file-selector: 0.6.0
@@ -17947,8 +18216,8 @@ packages:
   /react-element-to-jsx-string@15.0.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-UDg4lXB6BzlobN60P8fHWVPX3Kyw8ORrTeBtClmIlGdkOOE+GYQSFvmEU5iLLpwp/6v42DINwNcwOhOLfQ//FQ==}
     peerDependencies:
-      react: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0
-      react-dom: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       '@base2/pretty-print-object': 1.0.1
       is-plain-object: 5.0.0
@@ -17960,7 +18229,7 @@ packages:
   /react-inspector@6.0.2(react@18.2.0):
     resolution: {integrity: sha512-x+b7LxhmHXjHoU/VrFAzw5iutsILRoYyDq97EDYdFpPLcvqtEzk4ZSZSQjnFPbr5T57tLXnHcqFYoN1pI6u8uQ==}
     peerDependencies:
-      react: ^16.8.4 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
     dependencies:
       react: 18.2.0
     dev: true
@@ -17979,8 +18248,8 @@ packages:
   /react-number-format@5.2.2(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-wCh64Z1HCwXcO2dbgkeYIaB+Rmp/fcsH8kAeRtUkc46dv1pIrgDjie2WkOqKBw8YqyqhwNdYgNFNQuuY+iGJ/g==}
     peerDependencies:
-      react: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       prop-types: 15.8.1
       react: 18.2.0
@@ -17997,7 +18266,7 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -18013,7 +18282,7 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -18029,7 +18298,7 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -18048,7 +18317,7 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -18067,7 +18336,7 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -18084,7 +18353,7 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -18100,7 +18369,7 @@ packages:
     resolution: {integrity: sha512-uOkyjkEl0ByEK21eCJMHDGBAAd/BoFQBawYK5XItjAmCTeSbjxghd8qnt7nzsLYzidjnoObu6M26xts0YGKsGg==}
     engines: {node: '>=10'}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
     dependencies:
       '@babel/runtime': 7.21.5
       react: 18.2.0
@@ -18113,8 +18382,8 @@ packages:
   /react-transition-group@4.4.5(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
     peerDependencies:
-      react: '>=16.6.0'
-      react-dom: '>=16.6.0'
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       '@babel/runtime': 7.21.5
       dom-helpers: 5.2.1
@@ -18128,8 +18397,8 @@ packages:
     resolution: {integrity: sha512-QrZ0JLnZFH8ltMw6q+S7U1+V2vUcSHzoIfLRzQKSv4nMJhEdjiZ+e9PqWCI7xJiy2AmSCAgo7g1V5osuurJo2Q==}
     engines: {node: '>=10'}
     peerDependencies:
-      react: '>=16 || >=17 || >= 18'
-      react-dom: '>=16 || >=17 || >= 18'
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -18145,6 +18414,7 @@ packages:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
     dependencies:
       pify: 2.3.0
+    dev: true
 
   /read-pkg-up@7.0.1:
     resolution: {integrity: sha512-zK0TB7Xd6JpCLmlLmufqykGE+/TlOePD6qKClNW7hHDKFh/J7/7gCWGR7joEQEW1bKq3a3yUZSObOoWLFQ4ohg==}
@@ -18423,6 +18693,7 @@ packages:
       is-core-module: 2.13.0
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
+    dev: true
 
   /resolve@2.0.0-next.4:
     resolution: {integrity: sha512-iMDbmAWtfU+MHpxt/I5iWI7cY6YVEZUQ3MBgPQ++XD1PELuJHIl82xBmObyP2KyQmkNB2dsqF7seoQQiAn5yDQ==}
@@ -19158,7 +19429,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
       babel-plugin-macros: '*'
-      react: '>= 16.8.0 || 17.x.x || ^18.0.0-0'
+      react: ^18.2.0
     peerDependenciesMeta:
       '@babel/core':
         optional: true
@@ -19218,6 +19489,7 @@ packages:
   /supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+    dev: true
 
   /swap-case@1.1.2:
     resolution: {integrity: sha512-BAmWG6/bx8syfc6qXPprof3Mn5vQgf5dwdUNJhsNqU9WdPt5P+ES/wQ5bxfijy8zwZgZZHslC3iAsxsuQMCzJQ==}
@@ -19281,36 +19553,40 @@ packages:
       - ts-node
     dev: true
 
-  /tailwindcss@3.3.3:
-    resolution: {integrity: sha512-A0KgSkef7eE4Mf+nKJ83i75TMyq8HqY3qmFIJSWy8bNt0v1lG7jUcpGpoTFxAwYcWOphcTBLPPJg+bDfhDf52w==}
-    engines: {node: '>=14.0.0'}
+  /tailwindcss@0.0.0-insiders.9faf109:
+    resolution: {integrity: sha512-WJ++yMXHE9TvwxU8Pl7Cw9tBQtCmtaH72XOwfGfhpI0pT9NPYzO3I+8PT+SNAwAwy/CMPYUn9Nm8UoZ8EHC3lw==}
+    engines: {node: '>=16.0.0'}
     hasBin: true
     dependencies:
       '@alloc/quick-lru': 5.2.0
+      '@tailwindcss/oxide': 0.0.0-insiders.9faf109
       arg: 5.0.2
+      browserslist: 4.21.10
       chokidar: 3.5.3
       didyoumean: 1.2.2
       dlv: 1.1.3
       fast-glob: 3.3.1
       glob-parent: 6.0.2
       is-glob: 4.0.3
-      jiti: 1.19.1
+      jiti: 1.20.0
+      lightningcss: 1.21.7
       lilconfig: 2.1.0
       micromatch: 4.0.5
       normalize-path: 3.0.0
       object-hash: 3.0.0
       picocolors: 1.0.0
-      postcss: 8.4.27
-      postcss-import: 15.1.0(postcss@8.4.27)
-      postcss-js: 4.0.1(postcss@8.4.27)
-      postcss-load-config: 4.0.1(postcss@8.4.27)
-      postcss-nested: 6.0.1(postcss@8.4.27)
+      postcss: 8.4.29
+      postcss-import: 15.1.0(postcss@8.4.29)
+      postcss-js: 4.0.1(postcss@8.4.29)
+      postcss-load-config: 4.0.1(postcss@8.4.29)
+      postcss-nested: 6.0.1(postcss@8.4.29)
       postcss-selector-parser: 6.0.13
+      postcss-value-parser: 4.2.0
       resolve: 1.22.4
       sucrase: 3.34.0
     transitivePeerDependencies:
       - ts-node
-    dev: false
+    dev: true
 
   /tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
@@ -19737,8 +20013,9 @@ packages:
     transitivePeerDependencies:
       - supports-color
       - ts-node
+    dev: true
 
-  /tsup@7.1.0(postcss@8.4.27)(typescript@5.1.6):
+  /tsup@7.1.0(typescript@5.1.6):
     resolution: {integrity: sha512-mazl/GRAk70j8S43/AbSYXGgvRP54oQeX8Un4iZxzATHt0roW0t6HYDVZIXMw0ZQIpvr1nFMniIVnN5186lW7w==}
     engines: {node: '>=16.14'}
     hasBin: true
@@ -19762,7 +20039,6 @@ packages:
       execa: 5.1.1
       globby: 11.1.0
       joycon: 3.1.1
-      postcss: 8.4.27
       postcss-load-config: 4.0.1(postcss@8.4.27)
       resolve-from: 5.0.0
       rollup: 3.26.0
@@ -19773,7 +20049,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
       - ts-node
-    dev: true
 
   /tsutils@3.21.0(typescript@5.1.6):
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
@@ -19814,65 +20089,64 @@ packages:
       safe-buffer: 5.2.1
     dev: false
 
-  /turbo-darwin-64@1.10.12:
-    resolution: {integrity: sha512-vmDfGVPl5/aFenAbOj3eOx3ePNcWVUyZwYr7taRl0ZBbmv2TzjRiFotO4vrKCiTVnbqjQqAFQWY2ugbqCI1kOQ==}
+  /turbo-darwin-64@1.10.13:
+    resolution: {integrity: sha512-vmngGfa2dlYvX7UFVncsNDMuT4X2KPyPJ2Jj+xvf5nvQnZR/3IeDEGleGVuMi/hRzdinoxwXqgk9flEmAYp0Xw==}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-darwin-arm64@1.10.12:
-    resolution: {integrity: sha512-3JliEESLNX2s7g54SOBqqkqJ7UhcOGkS0ywMr5SNuvF6kWVTbuUq7uBU/sVbGq8RwvK1ONlhPvJne5MUqBCTCQ==}
+  /turbo-darwin-arm64@1.10.13:
+    resolution: {integrity: sha512-eMoJC+k7gIS4i2qL6rKmrIQGP6Wr9nN4odzzgHFngLTMimok2cGLK3qbJs5O5F/XAtEeRAmuxeRnzQwTl/iuAw==}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-64@1.10.12:
-    resolution: {integrity: sha512-siYhgeX0DidIfHSgCR95b8xPee9enKSOjCzx7EjTLmPqPaCiVebRYvbOIYdQWRqiaKh9yfhUtFmtMOMScUf1gg==}
+  /turbo-linux-64@1.10.13:
+    resolution: {integrity: sha512-0CyYmnKTs6kcx7+JRH3nPEqCnzWduM0hj8GP/aodhaIkLNSAGAa+RiYZz6C7IXN+xUVh5rrWTnU2f1SkIy7Gdg==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-arm64@1.10.12:
-    resolution: {integrity: sha512-K/ZhvD9l4SslclaMkTiIrnfcACgos79YcAo4kwc8bnMQaKuUeRpM15sxLpZp3xDjDg8EY93vsKyjaOhdFG2UbA==}
+  /turbo-linux-arm64@1.10.13:
+    resolution: {integrity: sha512-0iBKviSGQQlh2OjZgBsGjkPXoxvRIxrrLLbLObwJo3sOjIH0loGmVIimGS5E323soMfi/o+sidjk2wU1kFfD7Q==}
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-64@1.10.12:
-    resolution: {integrity: sha512-7FSgSwvktWDNOqV65l9AbZwcoueAILeE4L7JvjauNASAjjbuzXGCEq5uN8AQU3U5BOFj4TdXrVmO2dX+lLu8Zg==}
+  /turbo-windows-64@1.10.13:
+    resolution: {integrity: sha512-S5XySRfW2AmnTeY1IT+Jdr6Goq7mxWganVFfrmqU+qqq3Om/nr0GkcUX+KTIo9mPrN0D3p5QViBRzulwB5iuUQ==}
     cpu: [x64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-arm64@1.10.12:
-    resolution: {integrity: sha512-gCNXF52dwom1HLY9ry/cneBPOKTBHhzpqhMylcyvJP0vp9zeMQQkt6yjYv+6QdnmELC92CtKNp2FsNZo+z0pyw==}
+  /turbo-windows-arm64@1.10.13:
+    resolution: {integrity: sha512-nKol6+CyiExJIuoIc3exUQPIBjP9nIq5SkMJgJuxsot2hkgGrafAg/izVDRDrRduQcXj2s8LdtxJHvvnbI8hEQ==}
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo@1.10.12:
-    resolution: {integrity: sha512-WM3+jTfQWnB9W208pmP4oeehZcC6JQNlydb/ZHMRrhmQa+htGhWLCzd6Q9rLe0MwZLPpSPFV2/bN5egCLyoKjQ==}
+  /turbo@1.10.13:
+    resolution: {integrity: sha512-vOF5IPytgQPIsgGtT0n2uGZizR2N3kKuPIn4b5p5DdeLoI0BV7uNiydT7eSzdkPRpdXNnO8UwS658VaI4+YSzQ==}
     hasBin: true
-    requiresBuild: true
     optionalDependencies:
-      turbo-darwin-64: 1.10.12
-      turbo-darwin-arm64: 1.10.12
-      turbo-linux-64: 1.10.12
-      turbo-linux-arm64: 1.10.12
-      turbo-windows-64: 1.10.12
-      turbo-windows-arm64: 1.10.12
+      turbo-darwin-64: 1.10.13
+      turbo-darwin-arm64: 1.10.13
+      turbo-linux-64: 1.10.13
+      turbo-linux-arm64: 1.10.13
+      turbo-windows-64: 1.10.13
+      turbo-windows-arm64: 1.10.13
     dev: true
 
   /tweetnacl@0.14.5:
@@ -20135,7 +20409,7 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -20150,7 +20424,7 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -20163,7 +20437,7 @@ packages:
   /use-composed-ref@1.3.0(react@18.2.0):
     resolution: {integrity: sha512-GLMG0Jc/jiKov/3Ulid1wbv3r54K9HlMW29IWcDFPEqFkSO2nS0MuefWgMJpeHQ9YJeXDL3ZUF+P3jdXlZX/cQ==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
     dependencies:
       react: 18.2.0
     dev: false
@@ -20172,7 +20446,7 @@ packages:
     resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
     peerDependencies:
       '@types/react': '*'
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -20185,7 +20459,7 @@ packages:
     resolution: {integrity: sha512-xA+AVm/Wlg3e2P/JiItTziwS7FK92LWrDB0p+hgXloIMuVCeJJ8v6f0eeHyPZaJrM+usM1FkFfbNCrJGs8A/zw==}
     peerDependencies:
       '@types/react': '*'
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -20198,8 +20472,8 @@ packages:
   /use-resize-observer@9.1.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-R25VqO9Wb3asSD4eqtcxk8sJalvIOYBqS8MNZlpDSQ4l4xMQxC/J7Id9HoTqPq8FwULIn0PVW+OAqF2dyYbjow==}
     peerDependencies:
-      react: 16.8.0 - 18
-      react-dom: 16.8.0 - 18
+      react: ^18.2.0
+      react-dom: ^18.2.0
     dependencies:
       '@juggle/resize-observer': 3.4.0
       react: 18.2.0
@@ -20211,7 +20485,7 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       '@types/react': ^16.9.0 || ^17.0.0 || ^18.0.0
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -20227,7 +20501,7 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       '@types/react': ^16.9.0 || ^17.0.0 || ^18.0.0
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -20241,7 +20515,7 @@ packages:
   /use-sync-external-store@1.2.0(react@18.2.0):
     resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^18.2.0
     dependencies:
       react: 18.2.0
     dev: false
@@ -20306,7 +20580,7 @@ packages:
     resolution: {integrity: sha512-sTKWY1e1AVUu4sY9CimoSZpufAsAXO+fzZrw0X5xtijEmDDQaPPLHZxlpONUpTLtvxPjpQURCSdUuUyBszoEOg==}
     engines: {node: '>=12.20.0'}
     peerDependencies:
-      react: '>=16.8'
+      react: ^18.2.0
     peerDependenciesMeta:
       react:
         optional: true
@@ -20808,7 +21082,7 @@ packages:
     peerDependencies:
       '@types/react': '>=16.8'
       immer: '>=9.0'
-      react: '>=16.8'
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -20828,7 +21102,7 @@ packages:
     peerDependencies:
       '@types/react': '>=16.8'
       immer: '>=9.0'
-      react: '>=16.8'
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -20848,7 +21122,7 @@ packages:
     peerDependencies:
       '@types/react': '>=16.8'
       immer: '>=9.0'
-      react: '>=16.8'
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -20868,7 +21142,7 @@ packages:
     peerDependencies:
       '@types/react': '>=16.8'
       immer: '>=9.0'
-      react: '>=16.8'
+      react: ^18.2.0
     peerDependenciesMeta:
       '@types/react':
         optional: true

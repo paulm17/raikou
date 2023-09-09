@@ -1,10 +1,10 @@
 import { EmblaCarouselType, EmblaPluginType } from 'embla-carousel-react';
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, Factory, RaikouSpacing, StyleProp } from '@raikou/core';
+import { BoxProps, CompoundStylesApiProps, ElementProps, Factory, StylesApiProps, RaikouSpacing, StyleProp } from '@raikou/core';
 import React from 'react';
 
 type CarouselSlideStylesNames = "slide";
-interface CarouselSlideProps extends BoxProps, StylesApiProps<CarouselSlideFactory>, ElementProps<"div"> {
+interface CarouselSlideProps extends BoxProps, CompoundStylesApiProps<CarouselSlideFactory>, ElementProps<"div"> {
 }
 type CarouselSlideFactory = Factory<{
     props: CarouselSlideProps;
@@ -41,11 +41,11 @@ interface CarouselProps extends BoxProps, StylesApiProps<CarouselFactory>, Eleme
     /** Controls size of the next and previous controls, `26` by default */
     controlSize?: React.CSSProperties["width"];
     /** Controls position of the next and previous controls, key of `theme.spacing` or any valid CSS value, `'sm'` by default */
-    controlsOffset?: RaikouSpacing | (string & {}) | number;
+    controlsOffset?: RaikouSpacing;
     /** Controls slide width based on viewport width, `'100%'` by default */
     slideSize?: StyleProp<string | number>;
     /** Key of theme.spacing or number to set gap between slides */
-    slideGap?: StyleProp<RaikouSpacing | (string & {}) | number>;
+    slideGap?: StyleProp<RaikouSpacing>;
     /** Carousel orientation, `'horizontal'` by default */
     orientation?: "horizontal" | "vertical";
     /** Slides container `height`, required for vertical orientation */

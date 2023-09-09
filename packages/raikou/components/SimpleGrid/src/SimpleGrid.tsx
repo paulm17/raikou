@@ -24,10 +24,10 @@ export interface SimpleGridProps
   cols?: StyleProp<number>;
 
   /** Spacing between columns, `'md'` by default */
-  spacing?: StyleProp<RaikouSpacing | (string & {}) | number>;
+  spacing?: StyleProp<RaikouSpacing>;
 
   /** Spacing between rows, `'md'` by default */
-  verticalSpacing?: StyleProp<RaikouSpacing | (string & {}) | number>;
+  verticalSpacing?: StyleProp<RaikouSpacing>;
 }
 
 export type SimpleGridFactory = Factory<{

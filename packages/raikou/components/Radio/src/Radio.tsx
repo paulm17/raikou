@@ -49,7 +49,7 @@ export interface RadioProps
   icon?: React.FC<RadioIconProps>;
 
   /** Props passed down to the root element */
-  wrapperProps?: React.ComponentPropsWithoutRef<"div">;
+  wrapperProps?: Record<string, any>;
 
   /** Position of the label relative to the input, `'right'` by default */
   labelPosition?: "left" | "right";
@@ -61,7 +61,7 @@ export interface RadioProps
   error?: React.ReactNode;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius,` "xl" by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 }
 
 export type RadioFactory = Factory<{

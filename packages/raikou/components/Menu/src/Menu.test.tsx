@@ -37,6 +37,9 @@ const getControl = () => screen.getByRole("button");
 
 describe("@raikou/core/Menu", () => {
   tests.axe([<TestContainer opened={false} />]);
+  tests.itHasExtend({ component: Menu });
+  tests.itHasClasses({ component: Menu });
+  tests.itRendersChildren({ component: Menu, props: {} });
 
   it("calls onOpen and onClose functions when dropdown state changes", async () => {
     const onOpen = jest.fn();

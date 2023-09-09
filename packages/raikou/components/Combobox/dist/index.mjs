@@ -2731,7 +2731,6 @@ var PopoverDropdown = factory3(
     const _a = props, {
       className,
       style,
-      unstyled,
       vars,
       children,
       onKeyDownCapture,
@@ -2741,7 +2740,6 @@ var PopoverDropdown = factory3(
     } = _a, others = __objRest(_a, [
       "className",
       "style",
-      "unstyled",
       "vars",
       "children",
       "onKeyDownCapture",
@@ -3313,6 +3311,9 @@ function useComboboxTargetProps({
   const [selectedOptionId, setSelectedOptionId] = useState8(null);
   const handleKeyDown = (event) => {
     onKeyDown == null ? void 0 : onKeyDown(event);
+    if (ctx.readOnly) {
+      return;
+    }
     if (withKeyboardNavigation) {
       if (event.nativeEvent.code === "ArrowDown") {
         event.preventDefault();
@@ -3435,23 +3436,7 @@ var defaultProps8 = {};
 var ComboboxOptions = factory6(
   (_props, ref) => {
     const props = useProps8("ComboboxOptions", defaultProps8, _props);
-    const _a = props, {
-      classNames,
-      className,
-      style,
-      styles,
-      unstyled,
-      id,
-      onMouseDown
-    } = _a, others = __objRest(_a, [
-      "classNames",
-      "className",
-      "style",
-      "styles",
-      "unstyled",
-      "id",
-      "onMouseDown"
-    ]);
+    const _a = props, { classNames, className, style, styles, id, onMouseDown } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "id", "onMouseDown"]);
     const ctx = useComboboxContext();
     const _id = useId3(id);
     useEffect8(() => {
@@ -3489,7 +3474,6 @@ var ComboboxOption = factory7((_props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     onClick,
     id,
@@ -3503,7 +3487,6 @@ var ComboboxOption = factory7((_props, ref) => {
     "className",
     "style",
     "styles",
-    "unstyled",
     "vars",
     "onClick",
     "id",
@@ -4296,7 +4279,11 @@ import {
 } from "@raikou/core";
 var defaultProps17 = {};
 var ComboboxEmpty = factory14((props, ref) => {
-  const _a = useProps17("ComboboxEmpty", defaultProps17, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = useProps17(
+    "ComboboxEmpty",
+    defaultProps17,
+    props
+  ), { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useComboboxContext();
   return /* @__PURE__ */ React25.createElement(
     Box11,
@@ -4316,7 +4303,11 @@ import {
 } from "@raikou/core";
 var defaultProps18 = {};
 var ComboboxFooter = factory15((props, ref) => {
-  const _a = useProps18("ComboboxFooter", defaultProps18, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = useProps18(
+    "ComboboxFooter",
+    defaultProps18,
+    props
+  ), { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useComboboxContext();
   return /* @__PURE__ */ React26.createElement(
     Box12,
@@ -4336,7 +4327,11 @@ import {
 } from "@raikou/core";
 var defaultProps19 = {};
 var ComboboxHeader = factory16((props, ref) => {
-  const _a = useProps19("ComboboxHeader", defaultProps19, props), { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = useProps19(
+    "ComboboxHeader",
+    defaultProps19,
+    props
+  ), { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useComboboxContext();
   return /* @__PURE__ */ React27.createElement(
     Box13,
@@ -4433,7 +4428,6 @@ var ComboboxGroup = factory19((props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     children,
     label
@@ -4442,7 +4436,6 @@ var ComboboxGroup = factory19((props, ref) => {
     "className",
     "style",
     "styles",
-    "unstyled",
     "vars",
     "children",
     "label"
@@ -4495,7 +4488,8 @@ function Combobox(_props) {
     size: size2,
     dropdownPadding,
     resetSelectionOnOptionHover,
-    __staticSelector
+    __staticSelector,
+    readOnly
   } = _a, others = __objRest(_a, [
     "classNames",
     "styles",
@@ -4507,7 +4501,8 @@ function Combobox(_props) {
     "size",
     "dropdownPadding",
     "resetSelectionOnOptionHover",
-    "__staticSelector"
+    "__staticSelector",
+    "readOnly"
   ]);
   const uncontrolledStore = useCombobox();
   const store = controlledStore || uncontrolledStore;
@@ -4539,7 +4534,8 @@ function Combobox(_props) {
         store,
         onOptionSubmit,
         size: size2,
-        resetSelectionOnOptionHover
+        resetSelectionOnOptionHover,
+        readOnly
       }
     },
     /* @__PURE__ */ React31.createElement(
@@ -4554,6 +4550,8 @@ function Combobox(_props) {
     )
   );
 }
+var extendCombobox = (c) => c;
+Combobox.extend = extendCombobox;
 Combobox.displayName = "@raikou/core/Combobox";
 Combobox.Target = ComboboxTarget;
 Combobox.Dropdown = ComboboxDropdown;

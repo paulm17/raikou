@@ -1,5 +1,10 @@
 import React from "react";
-import { StylesApiProps, factory, useProps, Factory } from "@raikou/core";
+import {
+  CompoundStylesApiProps,
+  factory,
+  useProps,
+  Factory,
+} from "@raikou/core";
 import {
   ModalBaseContent,
   ModalBaseContentProps,
@@ -11,7 +16,7 @@ export type DrawerContentStylesNames = "content" | "inner";
 
 export interface DrawerContentProps
   extends ModalBaseContentProps,
-    StylesApiProps<DrawerContentFactory> {}
+    CompoundStylesApiProps<DrawerContentFactory> {}
 
 export type DrawerContentFactory = Factory<{
   props: DrawerContentProps;

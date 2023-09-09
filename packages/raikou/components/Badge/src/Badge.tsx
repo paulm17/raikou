@@ -45,7 +45,7 @@ export interface BadgeProps extends BoxProps, StylesApiProps<BadgeFactory> {
   size?: RaikouSize | (string & {});
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `'xl'` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Key of `theme.colors` or any valid CSS color, `theme.primaryColor` by default */
   color?: RaikouColor;

@@ -1,9 +1,9 @@
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, RaikouRadius, RaikouColor, Factory } from '@raikou/core';
+import { BoxProps, CompoundStylesApiProps, ElementProps, RaikouRadius, RaikouColor, Factory, StylesApiProps } from '@raikou/core';
 import React from 'react';
 
 type TimelineItemStylesNames = "itemBody" | "itemContent" | "itemBullet" | "item" | "itemTitle";
-interface TimelineItemProps extends BoxProps, StylesApiProps<TimelineItemFactory>, ElementProps<"div", "title"> {
+interface TimelineItemProps extends BoxProps, CompoundStylesApiProps<TimelineItemFactory>, ElementProps<"div", "title"> {
     /** Determines whether the item should be highlighted, controlled by the parent `Timeline` component  */
     __active?: boolean;
     /** Determines whether the line of the item should be highlighted, controlled by the parent Timeline component */
@@ -17,7 +17,7 @@ interface TimelineItemProps extends BoxProps, StylesApiProps<TimelineItemFactory
     /** React node that should be rendered inside the bullet – icon, image, avatar, etc. By default, large white dot is displayed. */
     bullet?: React.ReactNode;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `'xl'` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Key of `theme.colors` or any valid CSS color to control active item colors, `theme.primaryColor` by default */
     color?: RaikouColor;
     /** Controls line border style, `'solid'` by default */
@@ -48,7 +48,7 @@ interface TimelineProps extends BoxProps, StylesApiProps<TimelineFactory>, Eleme
     /** Key of `theme.colors` or any valid CSS color to control active item colors, `theme.primaryColor` by default */
     color?: RaikouColor;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `'xl'` by default */
-    radius?: RaikouRadius | (string & {}) | number;
+    radius?: RaikouRadius;
     /** Controls size of the bullet, `20` by default */
     bulletSize?: number | string;
     /** Controls how the content is positioned relative to the bullet, `'left'` by default */

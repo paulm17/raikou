@@ -43,7 +43,7 @@ export interface ModalRootProps
   scrollAreaComponent?: ScrollAreaComponent;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-  radius?: RaikouRadius | (string & {}) | number;
+  radius?: RaikouRadius;
 
   /** Determines whether the modal should be centered vertically, `false` by default */
   centered?: boolean;

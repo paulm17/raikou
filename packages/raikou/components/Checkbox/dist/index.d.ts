@@ -3433,7 +3433,7 @@ interface CheckboxGroupProps extends Omit<InputWrapperProps, "onChange"> {
     /** Called when value changes */
     onChange?(value: string[]): void;
     /** Props passed down to the `Input.Wrapper` */
-    wrapperProps?: React$1.ComponentPropsWithoutRef<"div">;
+    wrapperProps?: Record<string, any>;
     /** Controls size of the `Input.Wrapper`, `'sm'` by default */
     size?: RaikouSize | (string & {});
 }
@@ -3462,9 +3462,9 @@ interface CheckboxProps extends BoxProps, StylesApiProps<CheckboxFactory>, Eleme
     /** Controls size of all elements */
     size?: RaikouSize | (string & {});
     /** Key of `theme.radius` or any valid CSS value to set `border-radius,` "xl" by default */
-    radius?: RaikouRadius | (string & {}) | number;
-    /** Props passed down to wrapper element */
-    wrapperProps?: React$1.ComponentPropsWithoutRef<"div">;
+    radius?: RaikouRadius;
+    /** Props passed down to the root element */
+    wrapperProps?: Record<string, any>;
     /** Position of the label relative to the input, `'right'` by default */
     labelPosition?: "left" | "right";
     /** Description displayed below the label */
