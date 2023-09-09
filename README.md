@@ -1,5 +1,7 @@
 <!-- PROJECT LOGO -->
-<br />
+
+<a name="readme-top"></a> <br />
+
 <div align="center">
   <a href="https://github.com/paulm17/raikou">
     <img src="./images/logo.png" alt="Logo">
@@ -18,7 +20,7 @@ Mantine 6 with CSS-in-JS allowed for styles to be adjacent to the component it
 was styling. However with Mantine 7 styling has switched to CSS Modules. Many in
 the industry see CSS Modules as a step backwards and I (the fork author) share
 this sentiment. Therefore forking the project to support tailwind was the
-obvious choice.
+obvious choice. <a href="#cssmodules-wrong">Don't take my word for it</a>.
 
 The project was conceived with these 4 long-term goals:
 
@@ -463,3 +465,10 @@ Vitaly and the Mantine community.
 [React.js]:
   https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
+
+## CSS Modules is the wrong choice
+
+<a name="cssmodules-wrong"></a>
+<img src="./images/css.modules.sux1.png" width="200px" alt="Complaint 1">
+<img src="./images/css.modules.sux2.png" width="200px" alt="Complaint 2">
+<img src="./images/css.modules.sux3.png" width="200px" alt="Complaint 3">
