@@ -37,7 +37,9 @@ import {
   createVarsResolver,
   getSize
 } from "@raikou/core";
-var defaultProps = {};
+var defaultProps = {
+  size: "md"
+};
 var varsResolver = createVarsResolver(
   (_, { size, fluid }) => ({
     root: {

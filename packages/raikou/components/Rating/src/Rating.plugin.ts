@@ -57,6 +57,7 @@ module.exports = function ({ addComponents, theme }: any) {
       overflow: "hidden",
       whiteSpace: "nowrap",
       opacity: "0",
+      "-webkit-tap-highlight-color": "transparent",
 
       "&:focus-visible + label": {
         outline: `${rem("2px")} solid var(--raikou-primary-color-filled)`,
@@ -71,6 +72,7 @@ module.exports = function ({ addComponents, theme }: any) {
       top: "0",
       left: "0",
       zIndex: "var(--rating-item-z-index, 0)",
+      "-webkit-tap-highlight-color": "transparent",
 
       "&[data-read-only]": {
         cursor: "default",

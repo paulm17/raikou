@@ -31,6 +31,7 @@ module.exports = function ({ addComponents, theme }: any) {
       inset: "0",
       outline: "0",
       fontSize: "inherit",
+      color: "inherit",
 
       "[data-disabled] &, &:disabled": {
         cursor: "not-allowed",

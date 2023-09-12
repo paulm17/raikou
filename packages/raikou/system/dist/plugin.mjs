@@ -177,6 +177,7 @@ var require_global_plugin = __commonJS({
           "--raikou-h6-font-weight": "700"
         },
         ':root[data-raikou-color-scheme="light"]': {
+          "--raikou-color-bright": "var(--raikou-color-white)",
           "--raikou-color-scheme": "light",
           "--raikou-color-text": "#000",
           "--raikou-color-body": "#fff",
@@ -190,6 +191,7 @@ var require_global_plugin = __commonJS({
           "--raikou-color-dimmed": "#868e96"
         },
         ':root[data-raikou-color-scheme="dark"]': {
+          "--raikou-color-bright": "var(--raikou-color-black)",
           "--raikou-color-scheme": "dark",
           "--raikou-color-text": "#c1c2c5",
           "--raikou-color-body": "#1a1b1e",
@@ -1870,7 +1872,7 @@ var require_Badge_plugin = __commonJS({
           display: "var(--_badge-display, inline-flex)",
           alignItems: "center",
           justifyContent: "center",
-          width: "var(--_badge-width, auto)",
+          width: "var(--_badge-width, fit-content)",
           textTransform: "uppercase",
           fontWeight: "700",
           letterSpacing: rem2("0.25px"),
@@ -2408,6 +2410,7 @@ var require_Checkbox_plugin = __commonJS({
           margin: "0",
           transition: "border-color 100ms ease, background-color 100ms ease",
           cursor: "var(--_checkbox-cursor, var(--raikou-cursor-type))",
+          "-webkit-tap-highlight-color": "transparent",
           '[data-raikou-color-scheme="light"] &': {
             "--_checkbox-bg": "var(--raikou-checkbox-bg)",
             "--_checkbox-bd-color": "var(--raikou-checkbox-bd-color)"
@@ -3484,6 +3487,7 @@ var require_Image_plugin = __commonJS({
       addComponents({
         ".image-root": {
           display: "block",
+          flex: 0,
           objectFit: "var(--image-object-fit, cover)",
           width: "100%",
           borderRadius: "var(--image-radius, 0)"
@@ -3666,7 +3670,7 @@ var require_Input_plugin = __commonJS({
           "--_input-padding-left": "var(--_input-padding)",
           "--_input-padding-right": "var(--_input-padding)",
           "--_input-placeholder-color": "var(--raikou-color-placeholder)",
-          "--_input-color": "inherit",
+          "--_input-color": "var(--raikou-color-text)",
           "--_input-left-section-size": `var(--input-left-section-width, calc(var(--input-height) - ${rem2(
             "2px"
           )}))`,
@@ -4902,6 +4906,7 @@ var require_PasswordInput_plugin = __commonJS({
           inset: "0",
           outline: "0",
           fontSize: "inherit",
+          color: "inherit",
           "[data-disabled] &, &:disabled": {
             cursor: "not-allowed"
           },
@@ -5286,6 +5291,7 @@ var require_Radio_plugin = __commonJS({
           transitionTimingFunction: "ease",
           transitionDuration: "100ms",
           cursor: "var(--_cursor, var(--raikou-cursor-type))",
+          "-webkit-tap-highlight-color": "transparent",
           '[data-raikou-color-scheme="light"] &': {
             "--_radio-bg": "var(--raikou-radio-bg)",
             "--_radio-bd-color": "var(--raikou-radio-bd-color)"
@@ -5381,6 +5387,7 @@ var require_Rating_plugin = __commonJS({
           overflow: "hidden",
           whiteSpace: "nowrap",
           opacity: "0",
+          "-webkit-tap-highlight-color": "transparent",
           "&:focus-visible + label": {
             outline: `${rem2("2px")} solid var(--raikou-primary-color-filled)`,
             outlineOffset: rem2("2px")
@@ -5393,6 +5400,7 @@ var require_Rating_plugin = __commonJS({
           top: "0",
           left: "0",
           zIndex: "var(--rating-item-z-index, 0)",
+          "-webkit-tap-highlight-color": "transparent",
           "&[data-read-only]": {
             cursor: "default"
           },
@@ -7761,6 +7769,7 @@ var require_CodeHighlight_plugin = __commonJS({
           opacity: "var(--_file-opacity)",
           backgroundColor: "var(--_file-bg)",
           whiteSpace: "nowrap",
+          margin: "0",
           "@media (hover: hover)": {
             "&:hover": {
               "--_file-opacity": "1"
@@ -7838,7 +7847,10 @@ var require_CodeHighlight_plugin = __commonJS({
         },
         ".codeHighlight-root": {
           marginTop: "0",
-          position: "relative"
+          position: "relative",
+          "&[data-collapsed] :global(.mantine-ScrollArea-viewport > div)": {
+            display: "block !important"
+          }
         },
         ".codeHighlight-fileIcon": {
           display: "flex",
@@ -8996,6 +9008,7 @@ var require_RichTextEditor_plugin = __commonJS({
 var require_plugin = __commonJS({
   "src/plugin.ts"(exports, module) {
     module.exports = {
+      darkMode: ["class", '[data-raikou-color-scheme="dark"]'],
       plugins: [
         require_global_plugin(),
         require_css_variables_plugin(),

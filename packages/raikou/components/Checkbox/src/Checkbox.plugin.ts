@@ -33,6 +33,7 @@ module.exports = function ({ addComponents, theme }: any) {
       margin: "0",
       transition: "border-color 100ms ease, background-color 100ms ease",
       cursor: "var(--_checkbox-cursor, var(--raikou-cursor-type))",
+      "-webkit-tap-highlight-color": "transparent",
 
       '[data-raikou-color-scheme="light"] &': {
         "--_checkbox-bg": "var(--raikou-checkbox-bg)",

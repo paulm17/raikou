@@ -5294,49 +5294,60 @@ var CodeHighlightTabs = factory6(
       ),
       /* @__PURE__ */ React37.createElement("span", null, node.fileName)
     ));
-    return /* @__PURE__ */ React37.createElement(Box13, __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref }), others), { dir: "ltr" }), withHeader && /* @__PURE__ */ React37.createElement("div", __spreadValues({}, getStyles("header")), /* @__PURE__ */ React37.createElement(ScrollArea, { type: "never", dir: "ltr", offsetScrollbars: false }, /* @__PURE__ */ React37.createElement("div", __spreadValues({}, getStyles("files")), files)), /* @__PURE__ */ React37.createElement("div", __spreadValues({}, getStyles("controls")), withExpandButton && /* @__PURE__ */ React37.createElement(
-      Tooltip,
-      {
-        label: _expanded ? collapseCodeLabel : expandCodeLabel,
-        fz: "sm",
-        position: "left"
-      },
-      /* @__PURE__ */ React37.createElement(
-        ActionIcon,
-        __spreadValues({
-          onClick: () => setExpanded(!_expanded),
-          variant: "none"
-        }, getStyles("control")),
-        /* @__PURE__ */ React37.createElement(ExpandIcon, { expanded: _expanded })
-      )
-    ), /* @__PURE__ */ React37.createElement(CopyButton, { value: currentCode.code.trim() }, ({ copied, copy }) => /* @__PURE__ */ React37.createElement(
-      Tooltip,
-      {
-        label: copied ? copiedLabel : copyLabel,
-        fz: "sm",
-        position: "left"
-      },
-      /* @__PURE__ */ React37.createElement(
-        ActionIcon,
-        __spreadValues({
-          onClick: copy,
-          variant: "none"
-        }, getStyles("control")),
-        /* @__PURE__ */ React37.createElement(CopyIcon, { copied })
-      )
-    )))), /* @__PURE__ */ React37.createElement(ScrollArea, { type: "auto", dir: "ltr", offsetScrollbars: false }, /* @__PURE__ */ React37.createElement(Box13, __spreadProps(__spreadValues({}, getStyles("codeWrapper")), { mod: { expanded: _expanded } }), /* @__PURE__ */ React37.createElement("pre", __spreadValues({}, getStyles("pre")), /* @__PURE__ */ React37.createElement(
-      "code",
-      __spreadProps(__spreadValues({}, getStyles("code")), {
-        dangerouslySetInnerHTML: { __html: highlighted }
-      })
-    )))), /* @__PURE__ */ React37.createElement(
-      UnstyledButton,
-      __spreadProps(__spreadValues({}, getStyles("showCodeButton")), {
-        mod: { hidden: _expanded },
-        onClick: () => setExpanded(true)
+    return /* @__PURE__ */ React37.createElement(
+      Box13,
+      __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
+        mod: { collapsed: !_expanded },
+        ref
+      }), others), {
+        dir: "ltr"
       }),
-      expandCodeLabel
-    ));
+      withHeader && /* @__PURE__ */ React37.createElement("div", __spreadValues({}, getStyles("header")), /* @__PURE__ */ React37.createElement(ScrollArea, { type: "never", dir: "ltr", offsetScrollbars: false }, /* @__PURE__ */ React37.createElement("div", __spreadValues({}, getStyles("files")), files)), /* @__PURE__ */ React37.createElement("div", __spreadValues({}, getStyles("controls")), withExpandButton && /* @__PURE__ */ React37.createElement(
+        Tooltip,
+        {
+          label: _expanded ? collapseCodeLabel : expandCodeLabel,
+          fz: "sm",
+          position: "left"
+        },
+        /* @__PURE__ */ React37.createElement(
+          ActionIcon,
+          __spreadValues({
+            onClick: () => setExpanded(!_expanded),
+            variant: "none"
+          }, getStyles("control")),
+          /* @__PURE__ */ React37.createElement(ExpandIcon, { expanded: _expanded })
+        )
+      ), /* @__PURE__ */ React37.createElement(CopyButton, { value: currentCode.code.trim() }, ({ copied, copy }) => /* @__PURE__ */ React37.createElement(
+        Tooltip,
+        {
+          label: copied ? copiedLabel : copyLabel,
+          fz: "sm",
+          position: "left"
+        },
+        /* @__PURE__ */ React37.createElement(
+          ActionIcon,
+          __spreadValues({
+            onClick: copy,
+            variant: "none"
+          }, getStyles("control")),
+          /* @__PURE__ */ React37.createElement(CopyIcon, { copied })
+        )
+      )))),
+      /* @__PURE__ */ React37.createElement(ScrollArea, { type: "auto", dir: "ltr", offsetScrollbars: false }, /* @__PURE__ */ React37.createElement(Box13, __spreadProps(__spreadValues({}, getStyles("codeWrapper")), { mod: { expanded: _expanded } }), /* @__PURE__ */ React37.createElement("pre", __spreadValues({}, getStyles("pre")), /* @__PURE__ */ React37.createElement(
+        "code",
+        __spreadProps(__spreadValues({}, getStyles("code")), {
+          dangerouslySetInnerHTML: { __html: highlighted }
+        })
+      )))),
+      /* @__PURE__ */ React37.createElement(
+        UnstyledButton,
+        __spreadProps(__spreadValues({}, getStyles("showCodeButton")), {
+          mod: { hidden: _expanded },
+          onClick: () => setExpanded(true)
+        }),
+        expandCodeLabel
+      )
+    );
   }
 );
 CodeHighlightTabs.displayName = "@raikou/core/CodeHighlightTabs";

@@ -26,7 +26,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--_input-padding-left": "var(--_input-padding)",
       "--_input-padding-right": "var(--_input-padding)",
       "--_input-placeholder-color": "var(--raikou-color-placeholder)",
-      "--_input-color": "inherit",
+      "--_input-color": "var(--raikou-color-text)",
       "--_input-left-section-size": `var(--input-left-section-width, calc(var(--input-height) - ${rem(
         "2px",
       )}))`,

@@ -54,6 +54,7 @@ module.exports = function ({ addComponents, theme }: any) {
       transitionTimingFunction: "ease",
       transitionDuration: "100ms",
       cursor: "var(--_cursor, var(--raikou-cursor-type))",
+      "-webkit-tap-highlight-color": "transparent",
 
       '[data-raikou-color-scheme="light"] &': {
         "--_radio-bg": "var(--raikou-radio-bg)",

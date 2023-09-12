@@ -76,6 +76,7 @@ module.exports = function ({ addComponents }: any) {
       opacity: "var(--_file-opacity)",
       backgroundColor: "var(--_file-bg)",
       whiteSpace: "nowrap",
+      margin: "0",
 
       "@media (hover: hover)": {
         "&:hover": {
@@ -170,6 +171,10 @@ module.exports = function ({ addComponents }: any) {
     ".codeHighlight-root": {
       marginTop: "0",
       position: "relative",
+
+      "&[data-collapsed] :global(.mantine-ScrollArea-viewport > div)": {
+        display: "block !important",
+      },
     },
 
     ".codeHighlight-fileIcon": {

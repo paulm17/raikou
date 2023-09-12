@@ -218,6 +218,7 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
         rightSectionProps={rightSectionProps}
         leftSectionProps={leftSectionProps}
         leftSectionPointerEvents={leftSectionPointerEvents}
+        withAria={false}
       >
         <input
           required={required}

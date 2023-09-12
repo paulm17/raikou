@@ -479,7 +479,7 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
   const isRequired = typeof withAsterisk === "boolean" ? withAsterisk : required;
   const errorId = (errorProps == null ? void 0 : errorProps.id) || `${idBase}-error`;
   const descriptionId = (descriptionProps == null ? void 0 : descriptionProps.id) || `${idBase}-description`;
-  const inputId = `${idBase}-input`;
+  const inputId = idBase;
   const hasError = !!error && typeof error !== "boolean";
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
@@ -1327,7 +1327,8 @@ var PasswordInput = (0, import_core15.factory)((_props, ref) => {
         rightSectionPointerEvents: "all",
         rightSectionProps,
         leftSectionProps,
-        leftSectionPointerEvents
+        leftSectionPointerEvents,
+        withAria: false
       },
       /* @__PURE__ */ import_react20.default.createElement(
         "input",

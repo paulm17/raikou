@@ -7,6 +7,10 @@ export function colorResolver(color: unknown, theme: RaikouTheme) {
     return "var(--raikou-color-dimmed)";
   }
 
+  if (parsedColor.color === "bright") {
+    return "var(--raikou-color-bright)";
+  }
+
   return parsedColor.variable
     ? `var(${parsedColor.variable})`
     : parsedColor.color;

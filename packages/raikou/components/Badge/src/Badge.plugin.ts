@@ -31,7 +31,7 @@ module.exports = function ({ addComponents }: any) {
       display: "var(--_badge-display, inline-flex)",
       alignItems: "center",
       justifyContent: "center",
-      width: "var(--_badge-width, auto)",
+      width: "var(--_badge-width, fit-content)",
       textTransform: "uppercase",
       fontWeight: "700",
       letterSpacing: rem("0.25px"),

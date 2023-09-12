@@ -175,6 +175,7 @@ module.exports = function ({ addBase }: any) {
     },
 
     ':root[data-raikou-color-scheme="light"]': {
+      "--raikou-color-bright": "var(--raikou-color-white)",
       "--raikou-color-scheme": "light",
       "--raikou-color-text": "#000",
       "--raikou-color-body": "#fff",
@@ -189,6 +190,7 @@ module.exports = function ({ addBase }: any) {
     },
 
     ':root[data-raikou-color-scheme="dark"]': {
+      "--raikou-color-bright": "var(--raikou-color-black)",
       "--raikou-color-scheme": "dark",
       "--raikou-color-text": "#c1c2c5",
       "--raikou-color-body": "#1a1b1e",

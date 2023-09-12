@@ -63,7 +63,9 @@ module.exports = __toCommonJS(src_exports);
 // src/Container.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
-var defaultProps = {};
+var defaultProps = {
+  size: "md"
+};
 var varsResolver = (0, import_core.createVarsResolver)(
   (_, { size, fluid }) => ({
     root: {

@@ -813,6 +813,7 @@ var defaultCssVariablesResolver = (theme) => {
       "--raikou-gradient-deg": theme.defaultGradient.deg
     },
     light: {
+      "--raikou-color-bright": "var(--raikou-color-black)",
       "--raikou-color-text": theme.black,
       "--raikou-color-body": theme.white,
       "--raikou-color-error": "#fa5252",
@@ -824,6 +825,7 @@ var defaultCssVariablesResolver = (theme) => {
       "--raikou-color-default-border": "#ced4da"
     },
     dark: {
+      "--raikou-color-bright": "var(--raikou-color-white)",
       "--raikou-color-text": "#c1c2c5",
       "--raikou-color-body": "#1a1b1e",
       "--raikou-color-error": "#c92a2a",
@@ -869,13 +871,13 @@ var defaultCssVariablesResolver = (theme) => {
     result.dark[`--raikou-color-${color}-filled-hover`] = darkFilledHover;
     result.dark[`--raikou-color-${color}-light`] = rgba(
       theme.colors[color][Math.max(0, darkPrimaryShade - 2)],
-      0.1
+      0.15
     );
     result.dark[`--raikou-color-${color}-light-hover`] = rgba(
       theme.colors[color][Math.max(0, darkPrimaryShade - 2)],
-      0.12
+      0.2
     );
-    result.dark[`--raikou-color-${color}-light-color`] = theme.colors[color][Math.max(darkPrimaryShade - 3, 0)];
+    result.dark[`--raikou-color-${color}-light-color`] = theme.colors[color][Math.max(darkPrimaryShade - 5, 0)];
     result.dark[`--raikou-color-${color}-outline`] = theme.colors[color][Math.max(darkPrimaryShade - 4, 0)];
     result.dark[`--raikou-color-${color}-outline-hover`] = rgba(
       theme.colors[color][Math.max(darkPrimaryShade - 4, 0)],

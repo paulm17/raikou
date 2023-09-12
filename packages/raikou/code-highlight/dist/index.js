@@ -5261,49 +5261,60 @@ var CodeHighlightTabs = (0, import_core26.factory)(
       ),
       /* @__PURE__ */ import_react48.default.createElement("span", null, node.fileName)
     ));
-    return /* @__PURE__ */ import_react48.default.createElement(import_core26.Box, __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref }), others), { dir: "ltr" }), withHeader && /* @__PURE__ */ import_react48.default.createElement("div", __spreadValues({}, getStyles("header")), /* @__PURE__ */ import_react48.default.createElement(ScrollArea, { type: "never", dir: "ltr", offsetScrollbars: false }, /* @__PURE__ */ import_react48.default.createElement("div", __spreadValues({}, getStyles("files")), files)), /* @__PURE__ */ import_react48.default.createElement("div", __spreadValues({}, getStyles("controls")), withExpandButton && /* @__PURE__ */ import_react48.default.createElement(
-      Tooltip,
-      {
-        label: _expanded ? collapseCodeLabel : expandCodeLabel,
-        fz: "sm",
-        position: "left"
-      },
-      /* @__PURE__ */ import_react48.default.createElement(
-        ActionIcon,
-        __spreadValues({
-          onClick: () => setExpanded(!_expanded),
-          variant: "none"
-        }, getStyles("control")),
-        /* @__PURE__ */ import_react48.default.createElement(ExpandIcon, { expanded: _expanded })
-      )
-    ), /* @__PURE__ */ import_react48.default.createElement(CopyButton, { value: currentCode.code.trim() }, ({ copied, copy }) => /* @__PURE__ */ import_react48.default.createElement(
-      Tooltip,
-      {
-        label: copied ? copiedLabel : copyLabel,
-        fz: "sm",
-        position: "left"
-      },
-      /* @__PURE__ */ import_react48.default.createElement(
-        ActionIcon,
-        __spreadValues({
-          onClick: copy,
-          variant: "none"
-        }, getStyles("control")),
-        /* @__PURE__ */ import_react48.default.createElement(CopyIcon, { copied })
-      )
-    )))), /* @__PURE__ */ import_react48.default.createElement(ScrollArea, { type: "auto", dir: "ltr", offsetScrollbars: false }, /* @__PURE__ */ import_react48.default.createElement(import_core26.Box, __spreadProps(__spreadValues({}, getStyles("codeWrapper")), { mod: { expanded: _expanded } }), /* @__PURE__ */ import_react48.default.createElement("pre", __spreadValues({}, getStyles("pre")), /* @__PURE__ */ import_react48.default.createElement(
-      "code",
-      __spreadProps(__spreadValues({}, getStyles("code")), {
-        dangerouslySetInnerHTML: { __html: highlighted }
-      })
-    )))), /* @__PURE__ */ import_react48.default.createElement(
-      UnstyledButton,
-      __spreadProps(__spreadValues({}, getStyles("showCodeButton")), {
-        mod: { hidden: _expanded },
-        onClick: () => setExpanded(true)
+    return /* @__PURE__ */ import_react48.default.createElement(
+      import_core26.Box,
+      __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
+        mod: { collapsed: !_expanded },
+        ref
+      }), others), {
+        dir: "ltr"
       }),
-      expandCodeLabel
-    ));
+      withHeader && /* @__PURE__ */ import_react48.default.createElement("div", __spreadValues({}, getStyles("header")), /* @__PURE__ */ import_react48.default.createElement(ScrollArea, { type: "never", dir: "ltr", offsetScrollbars: false }, /* @__PURE__ */ import_react48.default.createElement("div", __spreadValues({}, getStyles("files")), files)), /* @__PURE__ */ import_react48.default.createElement("div", __spreadValues({}, getStyles("controls")), withExpandButton && /* @__PURE__ */ import_react48.default.createElement(
+        Tooltip,
+        {
+          label: _expanded ? collapseCodeLabel : expandCodeLabel,
+          fz: "sm",
+          position: "left"
+        },
+        /* @__PURE__ */ import_react48.default.createElement(
+          ActionIcon,
+          __spreadValues({
+            onClick: () => setExpanded(!_expanded),
+            variant: "none"
+          }, getStyles("control")),
+          /* @__PURE__ */ import_react48.default.createElement(ExpandIcon, { expanded: _expanded })
+        )
+      ), /* @__PURE__ */ import_react48.default.createElement(CopyButton, { value: currentCode.code.trim() }, ({ copied, copy }) => /* @__PURE__ */ import_react48.default.createElement(
+        Tooltip,
+        {
+          label: copied ? copiedLabel : copyLabel,
+          fz: "sm",
+          position: "left"
+        },
+        /* @__PURE__ */ import_react48.default.createElement(
+          ActionIcon,
+          __spreadValues({
+            onClick: copy,
+            variant: "none"
+          }, getStyles("control")),
+          /* @__PURE__ */ import_react48.default.createElement(CopyIcon, { copied })
+        )
+      )))),
+      /* @__PURE__ */ import_react48.default.createElement(ScrollArea, { type: "auto", dir: "ltr", offsetScrollbars: false }, /* @__PURE__ */ import_react48.default.createElement(import_core26.Box, __spreadProps(__spreadValues({}, getStyles("codeWrapper")), { mod: { expanded: _expanded } }), /* @__PURE__ */ import_react48.default.createElement("pre", __spreadValues({}, getStyles("pre")), /* @__PURE__ */ import_react48.default.createElement(
+        "code",
+        __spreadProps(__spreadValues({}, getStyles("code")), {
+          dangerouslySetInnerHTML: { __html: highlighted }
+        })
+      )))),
+      /* @__PURE__ */ import_react48.default.createElement(
+        UnstyledButton,
+        __spreadProps(__spreadValues({}, getStyles("showCodeButton")), {
+          mod: { hidden: _expanded },
+          onClick: () => setExpanded(true)
+        }),
+        expandCodeLabel
+      )
+    );
   }
 );
 CodeHighlightTabs.displayName = "@raikou/core/CodeHighlightTabs";
