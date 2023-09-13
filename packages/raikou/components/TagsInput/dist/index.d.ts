@@ -4044,6 +4044,16 @@ interface ComboboxLikeProps {
     maxDropdownHeight?: number | string;
 }
 
+interface tagsInputScrollerProps {
+    tags: string[];
+    children: React$2.ReactNode;
+    maxHeight: number;
+}
+declare function TagsInputScroller({ tags, children, maxHeight, }: tagsInputScrollerProps): JSX.Element;
+declare namespace TagsInputScroller {
+    var displayName: string;
+}
+
 type TagsInputStylesNames = __InputStylesNames | ComboboxLikeStylesNames | "pill" | "pillsList" | "inputField";
 interface TagsInputProps extends BoxProps, __BaseInputProps, ComboboxLikeProps, StylesApiProps<TagsInputFactory>, ElementProps<"input", "size" | "value" | "defaultValue" | "onChange"> {
     /** Controlled component value */
@@ -4066,6 +4076,8 @@ interface TagsInputProps extends BoxProps, __BaseInputProps, ComboboxLikeProps, 
     onDuplicate?(value: string): void;
     /** Characters that should trigger tags split, `[',']` by default */
     splitChars?: string[];
+    /** Tags container component, defaults to `React.Fragment` */
+    tagsContainer?(children: React$2.ReactNode): React$2.ReactNode;
 }
 type TagsInputFactory = Factory<{
     props: TagsInputProps;
@@ -4078,4 +4090,4 @@ declare const TagsInput: _raikou_core.RaikouComponent<{
     stylesNames: TagsInputStylesNames;
 }>;
 
-export { TagsInput, TagsInputFactory, TagsInputProps, TagsInputStylesNames };
+export { TagsInput, TagsInputFactory, TagsInputProps, TagsInputScroller, TagsInputStylesNames };

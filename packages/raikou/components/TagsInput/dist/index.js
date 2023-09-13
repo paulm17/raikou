@@ -79,14 +79,15 @@ var __async = (__this, __arguments, generator) => {
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
-  TagsInput: () => TagsInput
+  TagsInput: () => TagsInput,
+  TagsInputScroller: () => TagsInputScroller
 });
 module.exports = __toCommonJS(src_exports);
 
 // src/TagsInput.tsx
-var import_react70 = __toESM(require("react"));
+var import_react71 = __toESM(require("react"));
 var import_hooks25 = require("@raikou/hooks");
-var import_core51 = require("@raikou/core");
+var import_core52 = require("@raikou/core");
 
 // ../Combobox/src/get-parsed-combobox-data/get-parsed-combobox-data.ts
 function parseItem(item) {
@@ -6550,15 +6551,50 @@ function filterPickedTags({ data, value }) {
   return filtered;
 }
 
+// src/scroller.tsx
+var import_react70 = __toESM(require("react"));
+
+// ../Box/src/index.ts
+var import_core51 = require("@raikou/core");
+
+// src/scroller.tsx
+function TagsInputScroller({
+  tags,
+  children,
+  maxHeight
+}) {
+  const [height, setHeight] = (0, import_react70.useState)(0);
+  const div = (0, import_react70.useRef)(null);
+  (0, import_react70.useEffect)(() => {
+    const newHeight = Math.min(div.current.scrollHeight, maxHeight);
+    setHeight(newHeight);
+  }, [tags]);
+  return /* @__PURE__ */ import_react70.default.createElement(
+    import_core51.Box,
+    {
+      id: "content",
+      ref: div,
+      className: "w-full",
+      style: {
+        maxHeight: `${height}px`,
+        overflowY: height === maxHeight ? "scroll" : "hidden"
+      }
+    },
+    children
+  );
+}
+TagsInputScroller.displayName = "@raikou/core/TagsInputScroller";
+
 // src/TagsInput.tsx
 var defaultProps36 = {
   maxTags: Infinity,
   allowDuplicates: false,
   splitChars: [","],
-  size: "sm"
+  size: "sm",
+  tagsContainer: (children) => children
 };
-var TagsInput = (0, import_core51.factory)((_props, ref) => {
-  const props = (0, import_core51.useProps)("TagsInput", defaultProps36, _props);
+var TagsInput = (0, import_core52.factory)((_props, ref) => {
+  const props = (0, import_core52.useProps)("TagsInput", defaultProps36, _props);
   const _a = props, {
     classNames,
     className,
@@ -6617,7 +6653,8 @@ var TagsInput = (0, import_core51.factory)((_props, ref) => {
     error,
     withErrorStyles,
     name,
-    form
+    form,
+    tagsContainer
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -6676,7 +6713,8 @@ var TagsInput = (0, import_core51.factory)((_props, ref) => {
     "error",
     "withErrorStyles",
     "name",
-    "form"
+    "form",
+    "tagsContainer"
   ]);
   const parsedData = getParsedComboboxData(data);
   const optionsLockup = getOptionsLockup(parsedData);
@@ -6692,7 +6730,7 @@ var TagsInput = (0, import_core51.factory)((_props, ref) => {
   const {
     styleProps,
     rest: _b
-  } = (0, import_core51.extractStyleProps)(others), _c = _b, { type } = _c, rest = __objRest(_c, ["type"]);
+  } = (0, import_core52.extractStyleProps)(others), _c = _b, { type } = _c, rest = __objRest(_c, ["type"]);
   const [_value, setValue] = (0, import_hooks25.useUncontrolled)({
     value,
     defaultValue,
@@ -6705,7 +6743,7 @@ var TagsInput = (0, import_core51.factory)((_props, ref) => {
     finalValue: "",
     onChange: onSearchChange
   });
-  const getStyles = (0, import_core51.useStyles)({
+  const getStyles = (0, import_core52.useStyles)({
     name: "TagsInput",
     classes: {},
     props,
@@ -6713,7 +6751,7 @@ var TagsInput = (0, import_core51.factory)((_props, ref) => {
     styles,
     unstyled
   });
-  const { resolvedClassNames, resolvedStyles } = (0, import_core51.useResolvedStylesApi)({
+  const { resolvedClassNames, resolvedStyles } = (0, import_core52.useResolvedStylesApi)({
     props,
     styles,
     classNames
@@ -6771,7 +6809,7 @@ var TagsInput = (0, import_core51.factory)((_props, ref) => {
       setSearchValue("");
     }
   };
-  const values = _value.map((item, index3) => /* @__PURE__ */ import_react70.default.createElement(
+  const values = _value.map((item, index3) => /* @__PURE__ */ import_react71.default.createElement(
     Pill,
     __spreadValues({
       key: `${item}-${index3}`,
@@ -6780,7 +6818,7 @@ var TagsInput = (0, import_core51.factory)((_props, ref) => {
     }, getStyles("pill")),
     item
   ));
-  return /* @__PURE__ */ import_react70.default.createElement(import_react70.default.Fragment, null, /* @__PURE__ */ import_react70.default.createElement(
+  return /* @__PURE__ */ import_react71.default.createElement(import_react71.default.Fragment, null, /* @__PURE__ */ import_react71.default.createElement(
     Combobox,
     __spreadValues({
       store: combobox,
@@ -6796,7 +6834,7 @@ var TagsInput = (0, import_core51.factory)((_props, ref) => {
         _value.length < maxTags && setValue([..._value, optionsLockup[val].label]);
       }
     }, comboboxProps),
-    /* @__PURE__ */ import_react70.default.createElement(Combobox.DropdownTarget, null, /* @__PURE__ */ import_react70.default.createElement(
+    /* @__PURE__ */ import_react71.default.createElement(Combobox.DropdownTarget, null, /* @__PURE__ */ import_react71.default.createElement(
       PillsInput,
       __spreadProps(__spreadValues({}, styleProps), {
         __staticSelector: "TagsInput",
@@ -6831,7 +6869,7 @@ var TagsInput = (0, import_core51.factory)((_props, ref) => {
         withErrorStyles,
         __stylesApiProps: __spreadProps(__spreadValues({}, props), { multiline: true })
       }),
-      /* @__PURE__ */ import_react70.default.createElement(Pill.Group, __spreadValues({ disabled }, getStyles("pillsList")), values, /* @__PURE__ */ import_react70.default.createElement(Combobox.EventsTarget, null, /* @__PURE__ */ import_react70.default.createElement(
+      /* @__PURE__ */ import_react71.default.createElement(Pill.Group, __spreadValues({ disabled }, getStyles("pillsList")), /* @__PURE__ */ import_react71.default.createElement(import_react71.default.Fragment, { key: "tagsContainer" }, tagsContainer(values)), /* @__PURE__ */ import_react71.default.createElement(Combobox.EventsTarget, null, /* @__PURE__ */ import_react71.default.createElement(
         PillsInput.Field,
         __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, rest), {
           ref
@@ -6854,7 +6892,7 @@ var TagsInput = (0, import_core51.factory)((_props, ref) => {
         })
       )))
     )),
-    /* @__PURE__ */ import_react70.default.createElement(
+    /* @__PURE__ */ import_react71.default.createElement(
       OptionsDropdown,
       {
         data: filterPickedTags({ data: parsedData, value: _value }),
@@ -6867,7 +6905,7 @@ var TagsInput = (0, import_core51.factory)((_props, ref) => {
         maxDropdownHeight
       }
     )
-  ), /* @__PURE__ */ import_react70.default.createElement(
+  ), /* @__PURE__ */ import_react71.default.createElement(
     "input",
     {
       type: "hidden",
@@ -6881,5 +6919,6 @@ var TagsInput = (0, import_core51.factory)((_props, ref) => {
 TagsInput.displayName = "@raikou/core/TagsInput";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  TagsInput
+  TagsInput,
+  TagsInputScroller
 });

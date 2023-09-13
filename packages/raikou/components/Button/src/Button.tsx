@@ -204,7 +204,7 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, ref) => {
       {...others}
     >
       <span {...getStyles("inner")}>
-        {leftSection && (
+        {!loading && leftSection && (
           <Box
             component="span"
             {...getStyles("section")}

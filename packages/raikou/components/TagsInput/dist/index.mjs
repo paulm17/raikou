@@ -51,7 +51,7 @@ var __async = (__this, __arguments, generator) => {
 };
 
 // src/TagsInput.tsx
-import React62 from "react";
+import React63 from "react";
 import { useUncontrolled as useUncontrolled3 } from "@raikou/hooks";
 import {
   factory as factory27,
@@ -6689,12 +6689,47 @@ function filterPickedTags({ data, value }) {
   return filtered;
 }
 
+// src/scroller.tsx
+import React62, { useEffect as useEffect15, useRef as useRef13, useState as useState16 } from "react";
+
+// ../Box/src/index.ts
+import { Box as Box28 } from "@raikou/core";
+
+// src/scroller.tsx
+function TagsInputScroller({
+  tags,
+  children,
+  maxHeight
+}) {
+  const [height, setHeight] = useState16(0);
+  const div = useRef13(null);
+  useEffect15(() => {
+    const newHeight = Math.min(div.current.scrollHeight, maxHeight);
+    setHeight(newHeight);
+  }, [tags]);
+  return /* @__PURE__ */ React62.createElement(
+    Box28,
+    {
+      id: "content",
+      ref: div,
+      className: "w-full",
+      style: {
+        maxHeight: `${height}px`,
+        overflowY: height === maxHeight ? "scroll" : "hidden"
+      }
+    },
+    children
+  );
+}
+TagsInputScroller.displayName = "@raikou/core/TagsInputScroller";
+
 // src/TagsInput.tsx
 var defaultProps36 = {
   maxTags: Infinity,
   allowDuplicates: false,
   splitChars: [","],
-  size: "sm"
+  size: "sm",
+  tagsContainer: (children) => children
 };
 var TagsInput = factory27((_props, ref) => {
   const props = useProps36("TagsInput", defaultProps36, _props);
@@ -6756,7 +6791,8 @@ var TagsInput = factory27((_props, ref) => {
     error,
     withErrorStyles,
     name,
-    form
+    form,
+    tagsContainer
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -6815,7 +6851,8 @@ var TagsInput = factory27((_props, ref) => {
     "error",
     "withErrorStyles",
     "name",
-    "form"
+    "form",
+    "tagsContainer"
   ]);
   const parsedData = getParsedComboboxData(data);
   const optionsLockup = getOptionsLockup(parsedData);
@@ -6910,7 +6947,7 @@ var TagsInput = factory27((_props, ref) => {
       setSearchValue("");
     }
   };
-  const values = _value.map((item, index3) => /* @__PURE__ */ React62.createElement(
+  const values = _value.map((item, index3) => /* @__PURE__ */ React63.createElement(
     Pill,
     __spreadValues({
       key: `${item}-${index3}`,
@@ -6919,7 +6956,7 @@ var TagsInput = factory27((_props, ref) => {
     }, getStyles("pill")),
     item
   ));
-  return /* @__PURE__ */ React62.createElement(React62.Fragment, null, /* @__PURE__ */ React62.createElement(
+  return /* @__PURE__ */ React63.createElement(React63.Fragment, null, /* @__PURE__ */ React63.createElement(
     Combobox,
     __spreadValues({
       store: combobox,
@@ -6935,7 +6972,7 @@ var TagsInput = factory27((_props, ref) => {
         _value.length < maxTags && setValue([..._value, optionsLockup[val].label]);
       }
     }, comboboxProps),
-    /* @__PURE__ */ React62.createElement(Combobox.DropdownTarget, null, /* @__PURE__ */ React62.createElement(
+    /* @__PURE__ */ React63.createElement(Combobox.DropdownTarget, null, /* @__PURE__ */ React63.createElement(
       PillsInput,
       __spreadProps(__spreadValues({}, styleProps), {
         __staticSelector: "TagsInput",
@@ -6970,7 +7007,7 @@ var TagsInput = factory27((_props, ref) => {
         withErrorStyles,
         __stylesApiProps: __spreadProps(__spreadValues({}, props), { multiline: true })
       }),
-      /* @__PURE__ */ React62.createElement(Pill.Group, __spreadValues({ disabled }, getStyles("pillsList")), values, /* @__PURE__ */ React62.createElement(Combobox.EventsTarget, null, /* @__PURE__ */ React62.createElement(
+      /* @__PURE__ */ React63.createElement(Pill.Group, __spreadValues({ disabled }, getStyles("pillsList")), /* @__PURE__ */ React63.createElement(React63.Fragment, { key: "tagsContainer" }, tagsContainer(values)), /* @__PURE__ */ React63.createElement(Combobox.EventsTarget, null, /* @__PURE__ */ React63.createElement(
         PillsInput.Field,
         __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, rest), {
           ref
@@ -6993,7 +7030,7 @@ var TagsInput = factory27((_props, ref) => {
         })
       )))
     )),
-    /* @__PURE__ */ React62.createElement(
+    /* @__PURE__ */ React63.createElement(
       OptionsDropdown,
       {
         data: filterPickedTags({ data: parsedData, value: _value }),
@@ -7006,7 +7043,7 @@ var TagsInput = factory27((_props, ref) => {
         maxDropdownHeight
       }
     )
-  ), /* @__PURE__ */ React62.createElement(
+  ), /* @__PURE__ */ React63.createElement(
     "input",
     {
       type: "hidden",
@@ -7019,5 +7056,6 @@ var TagsInput = factory27((_props, ref) => {
 });
 TagsInput.displayName = "@raikou/core/TagsInput";
 export {
-  TagsInput
+  TagsInput,
+  TagsInputScroller
 };

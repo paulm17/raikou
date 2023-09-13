@@ -5563,7 +5563,7 @@ var Button = polymorphicFactory4((_props, ref) => {
         }
       ]
     }), others),
-    /* @__PURE__ */ React34.createElement("span", __spreadValues({}, getStyles("inner")), leftSection && /* @__PURE__ */ React34.createElement(
+    /* @__PURE__ */ React34.createElement("span", __spreadValues({}, getStyles("inner")), !loading && leftSection && /* @__PURE__ */ React34.createElement(
       Box19,
       __spreadProps(__spreadValues({
         component: "span"

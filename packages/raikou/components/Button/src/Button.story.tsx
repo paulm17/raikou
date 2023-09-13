@@ -265,6 +265,16 @@ export function Sections() {
   );
 }
 
+export function LoadingWithIcon() {
+  return (
+    <div style={{ padding: 40, display: "flex", gap: 20 }}>
+      <Button leftSection="L" loading>
+        With Left
+      </Button>
+    </div>
+  );
+}
+
 export function ButtonGroup() {
   return (
     <div style={{ padding: 40, display: "flex", gap: 20 }}>

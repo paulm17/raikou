@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { TagsInput } from "./TagsInput";
+import { TagsInput, TagsInputScroller } from "./TagsInput";
+import { Box } from "../../Box/src";
 // import { RaikouThemeProvider } from '../../core';
 import { Button } from "../../Button/src";
+// import { ScrollArea as MantineScrollArea } from "../../ScrollArea/src";
 
 export default { title: "TagsInput" };
 
@@ -96,5 +98,53 @@ export function WithData() {
         data={["test-1", "test-2"]}
       />
     </div>
+  );
+}
+
+export function ScrollArea() {
+  const [value, setValue] = useState<string[]>([]);
+
+  return (
+    <Box className="w-[400px]">
+      <TagsInput
+        data={[
+          "React",
+          "React Native",
+          "Angular",
+          "SolidJS",
+          "Svelte",
+          "Vue",
+          "Flutter",
+          "HTMX",
+          "Mocha",
+          "Jquery",
+          "RequireJS",
+          "Qwix",
+          "NextJS",
+          "Ember.Js",
+          "Backbone.js",
+          "Meteor",
+          "Mithril",
+        ]}
+        value={value}
+        onChange={setValue}
+        tagsContainer={(children) => (
+          <>
+            {value.length > 0 && (
+              <TagsInputScroller tags={value} maxHeight={100}>
+                {children}
+              </TagsInputScroller>
+            )}
+          </>
+        )}
+        placeholder="Enter tags"
+        variant="filled"
+        data-test="orange"
+        classNames={{
+          inputField: "block",
+          pill: "mr-[4px] mb-[4px]",
+        }}
+      />
+    </Box>
   );
 }

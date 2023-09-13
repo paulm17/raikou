@@ -68,6 +68,9 @@ export interface TagsInputProps
 
   /** Characters that should trigger tags split, `[',']` by default */
   splitChars?: string[];
+
+  /** Tags container component, defaults to `React.Fragment` */
+  tagsContainer?(children: React.ReactNode): React.ReactNode;
 }
 
 export type TagsInputFactory = Factory<{
@@ -81,6 +84,7 @@ const defaultProps: Partial<TagsInputProps> = {
   allowDuplicates: false,
   splitChars: [","],
   size: "sm",
+  tagsContainer: (children) => children,
 };
 
 export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
@@ -144,6 +148,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     withErrorStyles,
     name,
     form,
+    tagsContainer,
     ...others
   } = props;
 
@@ -327,7 +332,9 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
             __stylesApiProps={{ ...props, multiline: true }}
           >
             <Pill.Group disabled={disabled} {...getStyles("pillsList")}>
-              {values}
+              <React.Fragment key="tagsContainer">
+                {tagsContainer!(values as any)}
+              </React.Fragment>
               <Combobox.EventsTarget>
                 <PillsInput.Field
                   {...rest}
@@ -377,5 +384,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     </>
   );
 });
+
+export { TagsInputScroller } from "./scroller";
 
 TagsInput.displayName = "@raikou/core/TagsInput";

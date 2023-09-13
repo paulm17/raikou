@@ -5478,7 +5478,7 @@ var Button = (0, import_core33.polymorphicFactory)((_props, ref) => {
         }
       ]
     }), others),
-    /* @__PURE__ */ import_react41.default.createElement("span", __spreadValues({}, getStyles("inner")), leftSection && /* @__PURE__ */ import_react41.default.createElement(
+    /* @__PURE__ */ import_react41.default.createElement("span", __spreadValues({}, getStyles("inner")), !loading && leftSection && /* @__PURE__ */ import_react41.default.createElement(
       import_core33.Box,
       __spreadProps(__spreadValues({
         component: "span"

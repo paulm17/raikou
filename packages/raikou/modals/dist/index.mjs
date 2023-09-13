@@ -2526,7 +2526,7 @@ var Button = polymorphicFactory6((_props, ref) => {
         }
       ]
     }), others),
-    /* @__PURE__ */ React42.createElement("span", __spreadValues({}, getStyles2("inner")), leftSection && /* @__PURE__ */ React42.createElement(
+    /* @__PURE__ */ React42.createElement("span", __spreadValues({}, getStyles2("inner")), !loading && leftSection && /* @__PURE__ */ React42.createElement(
       Box15,
       __spreadProps(__spreadValues({
         component: "span"
