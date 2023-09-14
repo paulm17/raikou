@@ -114,7 +114,7 @@ Less headaches in dealing with postcss from a developer UX point of view.
 
 ### Mirrored Mantine release
 
-7.0.0-beta.0
+7.0.0-beta.5
 
 <!-- GETTING STARTED -->
 
