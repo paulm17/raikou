@@ -19,8 +19,8 @@
 Mantine 6 with CSS-in-JS allowed for styles to be adjacent to the component it
 was styling. However with Mantine 7 styling has switched to CSS Modules. Many in
 the industry see CSS Modules as a step backwards and I (the fork author) share
-this sentiment. Therefore forking the project to support tailwind was the
-obvious choice. <a href="#cssmodules-wrong">Don't take my word for it</a>.
+this sentiment. Therefore forking the project to integrate tailwind was the
+obvious choice.
 
 The project was conceived with these 4 long-term goals:
 
@@ -73,6 +73,36 @@ The project was conceived with these 4 long-term goals:
       <a href="https://github.com/paulm17/raikou/blob/main/packages/raikou/system/src/core/RaikouProvider/css-variables.plugin.ts">the
       options available to each component</a>. Change these settings using
       cssVariablesResolver and example is below.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Why not integrate tailwind with mantine in the App?
+
+Integrating Tailwind with mantine at the app layer raises the complexity of the
+stack. Not only does the issue of css specificity come up, but other issues are
+present.
+
+<ul style="list-style: none">
+   <li>
+      <img src="./images/tailwind1.png" style="width:500px" alt="Issue 1">
+   </li>
+</ul>
+
+### CSS Modules is the wrong choice
+
+Less headaches in dealing with postcss from a developer UX point of view.
+
+<ul style="list-style: none">
+   <li>
+      <img src="./images/css.modules.sux1.png" style="width:500px" alt="Complaint 1">
+   </li>
+   <li>
+      <img src="./images/css.modules.sux2.png" style="width:500px" alt="Complaint 2">
+   </li>
+   <li>
+      <img src="./images/css.modules.sux3.png" style="width:500px" alt="Complaint 3">
+   </li>
+</ul>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -465,24 +495,5 @@ Vitaly and the Mantine community.
 [React.js]:
   https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
-
-### CSS Modules is the wrong choice
-
-For instance, less headaches in dealing with postcss from a developer UX point
-of view.
-
-<a name="cssmodules-wrong"></a>
-
-<ul style="list-style: none">
-   <li>
-      <img src="./images/css.modules.sux1.png" style="width:500px" alt="Complaint 1">
-   </li>
-   <li>
-      <img src="./images/css.modules.sux2.png" style="width:500px" alt="Complaint 2">
-   </li>
-   <li>
-      <img src="./images/css.modules.sux3.png" style="width:500px" alt="Complaint 3">
-   </li>
-</ul>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
