@@ -389,26 +389,25 @@ the page.
 
 ## Server Components - Mantine vs Raikou
 
-Here is an example of all the server components on a page (with Raikou using
-"use client").
-
-<img src="./images/serverComponents.png" alt="Server Components picture">
+Using the default NextJS 13 install. Here is an example of just 1 component:
+Badge (with Mantine + Raikou using "use client").
 
 ##### Some stats for mantine vs raikou:
 
-- 12 requests each (remove favicon from raikou)
-- 1.8MB transferred vs 2.6MB transferred
-- 7.8MB resources vs 12.4MB resources
-- Finished 3.81s vs 5.51s
-- Layout.js 37.3 kB vs 809 kB
-- Page.js 195 kb (for both)
+- 9 requests each
+- 2.6MB transferred vs 1.7MB transferred
+- 12.5MB resources vs 7.3MB resources
+- Finished 3.58s vs 1.47s
+- Layout.js 964 kB vs 51 kB
+- Page.js 91.7 Kb vs 95.5 kB
 
-Stats are taken from the very first initial load.
+Stats are taken using this method. Open up a tab with dev tools network. Run
+with yarn dev and then put in http://localhost:3000 in the browser.
 
 ##### Network tabs (Mantine vs Raikou)
 
 <p float="left">
-  <img src="./images/raikou.png" width="200" alt="Raikou Network Tab">
+  <img src="./images/mantine.png" width="200" alt="Mantine Network Tab">
   <img src="./images/raikou.png" width="200" alt="Raikou Network Tab">
 </p>
 
