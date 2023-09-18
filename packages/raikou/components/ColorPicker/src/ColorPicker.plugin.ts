@@ -27,8 +27,18 @@ module.exports = function ({ addComponents, theme }: any) {
       "--cp-saturation-height-lg": rem("140px"),
       "--cp-saturation-height-xl": rem("160px"),
 
-      width: "var(--cp-width)",
+      "--cp-preview-size": "var(--cp-preview-size-sm)",
+      "--cp-thumb-size": "var(--cp-thumb-size-sm)",
+      "--cp-saturation-height": "var(--cp-saturation-height-sm)",
+      "--cp-width": "var(--cp-width-sm)",
+      "--cp-body-spacing": "var(--raikou-spacing-sm)",
+
+      width: "var(--_cp-width, var(--cp-width))",
       padding: rem("1px"),
+
+      "&[data-full-width]": {
+        "--_cp-width": "100%",
+      },
     },
 
     ".colorPicker-preview": {
@@ -67,10 +77,10 @@ module.exports = function ({ addComponents, theme }: any) {
       height: "0",
       margin: rem("2px"),
       cursor: "pointer",
-      width: `calc(var(--cp-swatch-size) - ${rem("4px")})`,
       paddingBottom: `calc(var(--cp-swatch-size) - ${rem("4px")})`,
       minWidth: "0",
       minHeight: "0",
+      flex: `1 0 calc(var(--cp-swatch-size) - ${rem("4px")})`,
     },
 
     ".colorPicker-swatches": {

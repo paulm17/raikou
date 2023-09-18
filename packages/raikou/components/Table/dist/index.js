@@ -152,10 +152,8 @@ var TableCaption = tableElement("caption", {
 
 // src/Table.tsx
 var defaultProps = {
-  captionSide: "bottom",
   withRowBorders: true,
-  verticalSpacing: 7,
-  horizontalSpacing: "xs"
+  verticalSpacing: 7
 };
 var varsResolver = (0, import_core2.createVarsResolver)(
   (theme, {

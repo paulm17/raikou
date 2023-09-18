@@ -3612,6 +3612,8 @@ interface ComboboxEventsTargetProps {
     withKeyboardNavigation?: boolean;
     /** Determines whether the target should have `aria-` attributes, `true` by default */
     withAriaAttributes?: boolean;
+    /** Determines whether the target should have `aria-expanded` attribute, `false` by default */
+    withExpandedAttribute?: boolean;
     /** Determines which events should be handled by the target element.
      * `button` target type handles `Space` and `Enter` keys to toggle dropdown opened state.
      * `input` by default.
@@ -3708,6 +3710,8 @@ declare const ComboboxSearch: _raikou_core.RaikouComponent<{
 
 type ComboboxOptionsStylesNames = "options";
 interface ComboboxOptionsProps extends BoxProps, CompoundStylesApiProps<ComboboxOptionsFactory>, ElementProps<"div"> {
+    /** Id of the element that should label the options list */
+    labelledBy?: string;
 }
 type ComboboxOptionsFactory = Factory<{
     props: ComboboxOptionsProps;
@@ -3859,6 +3863,8 @@ interface ComboboxTargetProps {
     withKeyboardNavigation?: boolean;
     /** Determines whether the target should have `aria-` attributes, `true` by default */
     withAriaAttributes?: boolean;
+    /** Determines whether the target should have `aria-expanded` attribute, `false` by default */
+    withExpandedAttribute?: boolean;
     /** Determines which events should be handled by the target element.
      * `button` target type handles `Space` and `Enter` keys to toggle dropdown opened state.
      * `input` by default.

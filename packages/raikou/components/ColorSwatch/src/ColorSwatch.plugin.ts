@@ -3,6 +3,9 @@ import { rem } from "@raikou/core";
 module.exports = function ({ addComponents, theme }: any) {
   addComponents({
     ".colorswatch-root": {
+      "--cs-size": rem("28px"),
+      "--cs-radius": rem("1000px"),
+
       "-webkit-tap-highlight-color": "transparent",
       border: "none",
       appearance: "none",

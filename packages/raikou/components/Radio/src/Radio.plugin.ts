@@ -8,6 +8,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--radio-size-md": rem("24px"),
       "--radio-size-lg": rem("30px"),
       "--radio-size-xl": rem("36px"),
+      "--radio-size": "var(--radio-size-sm)",
 
       "--radio-icon-size": "calc(var(--radio-size) / 2.25)",
     },
@@ -67,8 +68,9 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       "&:checked": {
-        "--_radio-bg": "var(--radio-color)",
-        "--_radio-bd-color": "var(--radio-color)",
+        "--_radio-bg": "var(--radio-color, var(--raikou-primary-color-filled))",
+        "--_radio-bd-color":
+          "var(--radio-color, var(--raikou-primary-color-filled))",
 
         "& + .radio-icon": {
           "--_radio-icon-opacity": "1",

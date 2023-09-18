@@ -68,18 +68,14 @@ var import_react = __toESM(require("react"));
 var import_hooks = require("@raikou/hooks");
 var import_core = require("@raikou/core");
 var WRAPPER_PADDING = 4;
-var defaultProps = {
-  size: "sm",
-  transitionDuration: 200,
-  transitionTimingFunction: "ease"
-};
+var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)(
   (theme, { radius, color, transitionDuration, size, transitionTimingFunction }) => ({
     root: {
-      "--sc-radius": (0, import_core.getRadius)(radius),
+      "--sc-radius": radius === void 0 ? void 0 : (0, import_core.getRadius)(radius),
       "--sc-color": color ? (0, import_core.getThemeColor)(color, theme) : void 0,
       "--sc-shadow": color ? void 0 : "var(--raikou-shadow-xs)",
-      "--sc-transition-duration": `${transitionDuration}ms`,
+      "--sc-transition-duration": transitionDuration === void 0 ? void 0 : `${transitionDuration}ms`,
       "--sc-transition-timing-function": transitionTimingFunction,
       "--sc-padding": (0, import_core.getSize)(size, "sc-padding"),
       "--sc-font-size": (0, import_core.getFontSize)(size)

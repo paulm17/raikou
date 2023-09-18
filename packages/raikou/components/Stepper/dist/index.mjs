@@ -481,7 +481,6 @@ var defaultLoaders = {
   progress: Progress
 };
 var defaultProps2 = {
-  size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
@@ -489,7 +488,7 @@ var varsResolver = createVarsResolver(
   (theme, { size, color }) => ({
     root: {
       "--loader-size": getSize(size, "loader-size"),
-      "--loader-color": getThemeColor(color, theme)
+      "--loader-color": color ? getThemeColor(color, theme) : void 0
     }
   })
 );
@@ -735,9 +734,6 @@ StepperCompleted.displayName = "@raikou/core/StepperCompleted";
 
 // src/Stepper.tsx
 var defaultProps4 = {
-  contentPadding: "md",
-  size: "md",
-  radius: "xl",
   orientation: "horizontal",
   iconPosition: "left",
   allowNextStepsSelect: true,
@@ -746,10 +742,10 @@ var defaultProps4 = {
 var varsResolver2 = createVarsResolver2(
   (theme, { color, iconSize, size, contentPadding, radius }) => ({
     root: {
-      "--stepper-color": getThemeColor3(color, theme),
+      "--stepper-color": color ? getThemeColor3(color, theme) : void 0,
       "--stepper-icon-size": iconSize === void 0 ? getSize2(size, "stepper-icon-size") : rem3(iconSize),
       "--stepper-content-padding": getSpacing(contentPadding),
-      "--stepper-radius": getRadius(radius),
+      "--stepper-radius": radius === void 0 ? void 0 : getRadius(radius),
       "--stepper-fz": getFontSize(size),
       "--stepper-spacing": getSpacing(size)
     }

@@ -63,25 +63,22 @@ module.exports = __toCommonJS(src_exports);
 // src/ThemeIcon.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
-var defaultProps = {
-  variant: "filled",
-  size: "md"
-};
+var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)(
   (theme, { size, radius, variant, gradient, color }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       gradient,
-      variant
+      variant: variant || "filled"
     });
     return {
       root: {
         "--ti-size": (0, import_core.getSize)(size, "ti-size"),
-        "--ti-radius": (0, import_core.getRadius)(radius),
-        "--ti-bg": colors.background,
-        "--ti-color": colors.color,
-        "--ti-bd": colors.border
+        "--ti-radius": radius === void 0 ? void 0 : (0, import_core.getRadius)(radius),
+        "--ti-bg": color || variant ? colors.background : void 0,
+        "--ti-color": color || variant ? colors.color : void 0,
+        "--ti-bd": color || variant ? colors.border : void 0
       }
     };
   }

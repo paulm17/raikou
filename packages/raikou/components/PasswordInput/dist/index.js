@@ -104,13 +104,12 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
 var import_react5 = __toESM(require("react"));
 var import_core = require("@raikou/core");
 var defaultProps = {
-  size: "sm",
   labelElement: "label"
 };
 var varsResolver = (0, import_core.createVarsResolver)((_, { size }) => ({
   label: {
     "--input-label-size": (0, import_core.getFontSize)(size),
-    "--input-asterisk-color": "var(--raikou-color-red-filled)"
+    "--input-asterisk-color": void 0
   }
 }));
 var InputLabel = (0, import_core.factory)((_props, ref) => {
@@ -189,12 +188,10 @@ InputLabel.displayName = "@raikou/core/InputLabel";
 // ../Input/src/InputError/InputError.tsx
 var import_react6 = __toESM(require("react"));
 var import_core2 = require("@raikou/core");
-var defaultProps2 = {
-  size: "sm"
-};
+var defaultProps2 = {};
 var varsResolver2 = (0, import_core2.createVarsResolver)((_, { size }) => ({
   error: {
-    "--input-error-size": `calc(${(0, import_core2.getFontSize)(size)} - ${(0, import_core2.rem)(2)})`
+    "--input-error-size": size === void 0 ? void 0 : `calc(${(0, import_core2.getFontSize)(size)} - ${(0, import_core2.rem)(2)})`
   }
 }));
 var InputError = (0, import_core2.factory)((_props, ref) => {
@@ -252,13 +249,11 @@ InputError.displayName = "@raikou/core/InputError";
 // ../Input/src/InputDescription/InputDescription.tsx
 var import_react7 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
-var defaultProps3 = {
-  size: "sm"
-};
+var defaultProps3 = {};
 var varsResolver3 = (0, import_core3.createVarsResolver)(
   (_, { size }) => ({
     description: {
-      "--input-description-size": `calc(${(0, import_core3.getFontSize)(size)} - ${(0, import_core3.rem)(2)})`
+      "--input-description-size": size === void 0 ? void 0 : `calc(${(0, import_core3.getFontSize)(size)} - ${(0, import_core3.rem)(2)})`
     }
   })
 );
@@ -385,20 +380,19 @@ function getInputOffsets(inputWrapperOrder, { hasDescription, hasError }) {
 // ../Input/src/InputWrapper/InputWrapper.tsx
 var defaultProps5 = {
   labelElement: "label",
-  size: "sm",
   inputContainer: (children) => children,
   inputWrapperOrder: ["label", "description", "input", "error"]
 };
 var varsResolver4 = (0, import_core5.createVarsResolver)((_, { size }) => ({
   label: {
     "--input-label-size": (0, import_core5.getFontSize)(size),
-    "--input-asterisk-color": "var(--raikou-color-red-filled)"
+    "--input-asterisk-color": void 0
   },
   error: {
-    "--input-error-size": `calc(${(0, import_core5.getFontSize)(size)} - ${(0, import_core5.rem)(2)})`
+    "--input-error-size": size === void 0 ? void 0 : `calc(${(0, import_core5.getFontSize)(size)} - ${(0, import_core5.rem)(2)})`
   },
   description: {
-    "--input-description-size": `calc(${(0, import_core5.getFontSize)(size)} - ${(0, import_core5.rem)(2)})`
+    "--input-description-size": size === void 0 ? void 0 : `calc(${(0, import_core5.getFontSize)(size)} - ${(0, import_core5.rem)(2)})`
   }
 }));
 var InputWrapper = (0, import_core5.factory)((_props, ref) => {
@@ -553,7 +547,6 @@ InputWrapper.displayName = "@raikou/core/InputWrapper";
 
 // ../Input/src/Input.tsx
 var defaultProps6 = {
-  size: "sm",
   variant: "default",
   leftSectionPointerEvents: "none",
   rightSectionPointerEvents: "none",
@@ -566,7 +559,7 @@ var varsResolver5 = (0, import_core6.createVarsResolver)((_, props, ctx) => ({
     "--input-margin-bottom": ctx.offsetBottom ? "calc(var(--raikou-spacing-xs) / 2)" : void 0,
     "--input-height": (0, import_core6.getSize)(props.size, "input-height"),
     "--input-fz": (0, import_core6.getFontSize)(props.size),
-    "--input-radius": (0, import_core6.getRadius)(props.radius),
+    "--input-radius": props.radius === void 0 ? void 0 : (0, import_core6.getRadius)(props.radius),
     "--input-left-section-width": props.leftSectionWidth !== void 0 ? (0, import_core6.rem)(props.leftSectionWidth) : void 0,
     "--input-right-section-width": props.rightSectionWidth !== void 0 ? (0, import_core6.rem)(props.rightSectionWidth) : void 0,
     "--input-padding-y": props.multiline ? (0, import_core6.getSize)(props.size, "input-padding-y") : void 0,
@@ -885,7 +878,6 @@ var defaultLoaders = {
   progress: Progress
 };
 var defaultProps8 = {
-  size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
@@ -893,7 +885,7 @@ var varsResolver6 = (0, import_core12.createVarsResolver)(
   (theme, { size, color }) => ({
     root: {
       "--loader-size": (0, import_core12.getSize)(size, "loader-size"),
-      "--loader-color": (0, import_core12.getThemeColor)(color, theme)
+      "--loader-color": color ? (0, import_core12.getThemeColor)(color, theme) : void 0
     }
   })
 );
@@ -954,8 +946,7 @@ Loader.displayName = "@raikou/core/Loader";
 var import_react17 = __toESM(require("react"));
 var import_core13 = require("@raikou/core");
 var defaultProps9 = {
-  orientation: "horizontal",
-  borderWidth: 1
+  orientation: "horizontal"
 };
 var varsResolver7 = (0, import_core13.createVarsResolver)(
   (_, { borderWidth }) => ({
@@ -1015,26 +1006,23 @@ var ActionIconGroup = (0, import_core13.factory)(
 ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
 
 // ../ActionIcon/src/ActionIcon.tsx
-var defaultProps10 = {
-  variant: "filled",
-  size: "md"
-};
+var defaultProps10 = {};
 var varsResolver8 = (0, import_core14.createVarsResolver)(
   (theme, { size, radius, variant, gradient, color }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       gradient,
-      variant
+      variant: variant || "filled"
     });
     return {
       root: {
         "--ai-size": (0, import_core14.getSize)(size, "ai-size"),
-        "--ai-radius": (0, import_core14.getRadius)(radius),
-        "--ai-bg": colors.background,
-        "--ai-hover": colors.hover,
-        "--ai-color": colors.color,
-        "--ai-bd": colors.border
+        "--ai-radius": radius === void 0 ? void 0 : (0, import_core14.getRadius)(radius),
+        "--ai-bg": color || variant ? colors.background : void 0,
+        "--ai-hover": color || variant ? colors.hover : void 0,
+        "--ai-color": color || variant ? colors.color : void 0,
+        "--ai-bd": color || variant ? colors.border : void 0
       }
     };
   }
@@ -1145,8 +1133,7 @@ var PasswordToggleIcon = ({
 // src/PasswordInput.tsx
 var defaultProps11 = {
   __staticSelector: "PasswordInput",
-  visibilityToggleIcon: PasswordToggleIcon,
-  size: "sm"
+  visibilityToggleIcon: PasswordToggleIcon
 };
 var varsResolver9 = (0, import_core15.createVarsResolver)(
   (_, { size }) => ({
@@ -1266,16 +1253,21 @@ var PasswordInput = (0, import_core15.factory)((_props, ref) => {
     ActionIcon,
     __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("visibilityToggle")), {
       radius,
-      "aria-hidden": !visibilityToggleButtonProps
+      "aria-hidden": !visibilityToggleButtonProps,
+      tabIndex: -1
     }), visibilityToggleButtonProps), {
       variant: "subtle",
       color: "gray",
       unstyled,
       onMouseDown: (event) => {
+        var _a2;
         event.preventDefault();
+        (_a2 = visibilityToggleButtonProps == null ? void 0 : visibilityToggleButtonProps.onMouseDown) == null ? void 0 : _a2.call(visibilityToggleButtonProps, event);
         toggleVisibility();
       },
       onKeyDown: (event) => {
+        var _a2;
+        (_a2 = visibilityToggleButtonProps == null ? void 0 : visibilityToggleButtonProps.onKeyDown) == null ? void 0 : _a2.call(visibilityToggleButtonProps, event);
         if (event.key === " ") {
           event.preventDefault();
           toggleVisibility();

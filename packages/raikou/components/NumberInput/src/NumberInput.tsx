@@ -179,7 +179,6 @@ export type NumberInputFactory = Factory<{
 
 const defaultProps: Partial<NumberInputProps> = {
   step: 1,
-  size: "sm",
   clampBehavior: "blur",
   allowDecimal: true,
   allowNegative: true,
@@ -331,6 +330,7 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
   return (
     <InputBase
       component={NumericFormat}
+      allowNegative={allowNegative}
       {...others}
       readOnly={readOnly}
       disabled={disabled}

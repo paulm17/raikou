@@ -17,6 +17,9 @@ export interface ComboboxEventsTargetProps {
   /** Determines whether the target should have `aria-` attributes, `true` by default */
   withAriaAttributes?: boolean;
 
+  /** Determines whether the target should have `aria-expanded` attribute, `false` by default */
+  withExpandedAttribute?: boolean;
+
   /** Determines which events should be handled by the target element.
    * `button` target type handles `Space` and `Enter` keys to toggle dropdown opened state.
    * `input` by default.
@@ -44,13 +47,14 @@ export const ComboboxEventsTarget = factory<ComboboxEventsTargetFactory>(
       refProp,
       withKeyboardNavigation,
       withAriaAttributes,
+      withExpandedAttribute,
       targetType,
       ...others
     } = useProps("ComboboxEventsTarget", defaultProps, props);
 
     if (!isElement(children)) {
       throw new Error(
-        "Combobox.EventsTarget component children should be an element or a component that accepts ref. Fragments, strings, numbers and other primitive values are not supported"
+        "Combobox.EventsTarget component children should be an element or a component that accepts ref. Fragments, strings, numbers and other primitive values are not supported",
       );
     }
 
@@ -59,6 +63,7 @@ export const ComboboxEventsTarget = factory<ComboboxEventsTargetFactory>(
       targetType,
       withAriaAttributes,
       withKeyboardNavigation,
+      withExpandedAttribute,
       onKeyDown: children.props.onKeyDown,
     });
 
@@ -68,10 +73,10 @@ export const ComboboxEventsTarget = factory<ComboboxEventsTargetFactory>(
       [refProp!]: useMergedRef(
         ref,
         ctx.store.targetRef,
-        (children as any)?.ref
+        (children as any)?.ref,
       ),
     });
-  }
+  },
 );
 
 ComboboxEventsTarget.displayName = "@raikou/core/ComboboxEventsTarget";

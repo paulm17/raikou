@@ -609,7 +609,7 @@ var defaultProps2 = {
 var varsResolver = createVarsResolver(
   (theme, { radius, color }) => ({
     tooltip: {
-      "--tooltip-radius": getRadius(radius),
+      "--tooltip-radius": radius === void 0 ? void 0 : getRadius(radius),
       "--tooltip-bg": color ? getThemeColor(color, theme) : void 0
     }
   })
@@ -860,7 +860,7 @@ var defaultProps4 = {
 var varsResolver2 = createVarsResolver2(
   (theme, { radius, color }) => ({
     tooltip: {
-      "--tooltip-radius": getRadius2(radius),
+      "--tooltip-radius": radius === void 0 ? void 0 : getRadius2(radius),
       "--tooltip-bg": color ? getThemeColor2(color, theme) : void 0
     }
   })

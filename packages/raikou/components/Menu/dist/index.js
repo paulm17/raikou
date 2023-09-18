@@ -2796,7 +2796,7 @@ var defaultProps4 = {
 var varsResolver = (0, import_core11.createVarsResolver)(
   (_, { radius, shadow }) => ({
     dropdown: {
-      "--popover-radius": (0, import_core11.getRadius)(radius),
+      "--popover-radius": radius === void 0 ? void 0 : (0, import_core11.getRadius)(radius),
       "--popover-shadow": (0, import_core11.getShadow)(shadow)
     }
   })

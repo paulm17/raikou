@@ -8,6 +8,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--drawer-size-md": rem("440px"),
       "--drawer-size-lg": rem("620px"),
       "--drawer-size-xl": rem("780px"),
+      "--drawer-size": "var(--drawer-size-md)",
     },
 
     ".drawer-header": {
@@ -16,8 +17,8 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".drawer-content": {
       "--paper-radius": "0 !important",
-      flex: "var(--drawer-flex)",
-      height: "var(--drawer-height)",
+      flex: "var(--drawer-flex, 0 0 var(--drawer-size))",
+      height: "var(--drawer-height, 100%)",
       maxWidth: "100%",
       maxHeight: "100%",
       borderRadius: "0",
@@ -26,8 +27,8 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".drawer-inner": {
       display: "flex",
-      justifyContent: "var(--drawer-justify)",
-      alignItems: "var(--drawer-align)",
+      justifyContent: "var(--drawer-justify, flex-start)",
+      alignItems: "var(--drawer-align, flex-start)",
     },
   });
 };

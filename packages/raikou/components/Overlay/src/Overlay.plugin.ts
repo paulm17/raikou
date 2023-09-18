@@ -3,9 +3,9 @@ module.exports = function ({ addComponents, theme }: any) {
     ".overlay-root": {
       inset: "0",
       position: "var(--_overlay-position, absolute)",
-      background: "var(--overlay-bg)",
+      background: "var(--overlay-bg, rgba(0, 0, 0, 0.6))",
       backdropFilter: "var(--overlay-filter)",
-      borderRadius: "var(--overlay-radius)",
+      borderRadius: "var(--overlay-radius, 0)",
       zIndex: "var(--overlay-z-index)",
 
       "&[data-fixed]": {

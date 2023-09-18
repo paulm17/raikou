@@ -52,18 +52,14 @@ import {
   useRaikouTheme
 } from "@raikou/core";
 var WRAPPER_PADDING = 4;
-var defaultProps = {
-  size: "sm",
-  transitionDuration: 200,
-  transitionTimingFunction: "ease"
-};
+var defaultProps = {};
 var varsResolver = createVarsResolver(
   (theme, { radius, color, transitionDuration, size, transitionTimingFunction }) => ({
     root: {
-      "--sc-radius": getRadius(radius),
+      "--sc-radius": radius === void 0 ? void 0 : getRadius(radius),
       "--sc-color": color ? getThemeColor(color, theme) : void 0,
       "--sc-shadow": color ? void 0 : "var(--raikou-shadow-xs)",
-      "--sc-transition-duration": `${transitionDuration}ms`,
+      "--sc-transition-duration": transitionDuration === void 0 ? void 0 : `${transitionDuration}ms`,
       "--sc-transition-timing-function": transitionTimingFunction,
       "--sc-padding": getSize(size, "sc-padding"),
       "--sc-font-size": getFontSize(size)

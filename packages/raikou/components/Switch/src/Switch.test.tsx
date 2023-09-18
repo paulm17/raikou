@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createRef } from "react";
 import { render, tests, screen } from "@raikou/tests";
 import { Switch, SwitchProps, SwitchStylesNames } from "./Switch";
 import { SwitchGroup } from "./SwitchGroup/SwitchGroup";
@@ -47,17 +47,17 @@ describe("@raikou/core/Switch", () => {
 
   it("render thumb icon", () => {
     const { container } = render(
-      <Switch thumbIcon={<span className="thumb-crown" />} />
+      <Switch thumbIcon={<span className="thumb-crown" />} />,
     );
     expect(container.querySelectorAll(".thumb-crown")).toHaveLength(1);
   });
 
   it("render onLabel and offLabel if provided", () => {
     const { container: unChecked } = render(
-      <Switch offLabel={<span className="offLabel">Off</span>} />
+      <Switch offLabel={<span className="offLabel">Off</span>} />,
     );
     const { container: checked } = render(
-      <Switch checked onLabel={<span className="onLabel">On</span>} />
+      <Switch checked onLabel={<span className="onLabel">On</span>} />,
     );
 
     expect(checked.querySelectorAll(".onLabel")).toHaveLength(1);
@@ -71,5 +71,11 @@ describe("@raikou/core/Switch", () => {
 
   it("exposes SwitchGroup component", () => {
     expect(Switch.Group).toBe(SwitchGroup);
+  });
+
+  it("supports rootRef", () => {
+    const ref = createRef<HTMLDivElement>();
+    render(<Switch {...defaultProps} rootRef={ref} />);
+    expect(ref.current).toBeInstanceOf(HTMLDivElement);
   });
 });

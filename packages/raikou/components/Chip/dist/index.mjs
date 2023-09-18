@@ -133,10 +133,7 @@ ChipGroup.displayName = "@raikou/core/ChipGroup";
 
 // src/Chip.tsx
 var defaultProps2 = {
-  type: "checkbox",
-  size: "sm",
-  radius: "xl",
-  variant: "outline"
+  type: "checkbox"
 };
 var varsResolver = createVarsResolver(
   (theme, { size, radius, variant, color }) => {
@@ -149,14 +146,14 @@ var varsResolver = createVarsResolver(
       root: {
         "--chip-fz": getFontSize(size),
         "--chip-size": getSize(size, "chip-size"),
-        "--chip-radius": getRadius(radius),
+        "--chip-radius": radius === void 0 ? void 0 : getRadius(radius),
         "--chip-checked-padding": getSize(size, "chip-checked-padding"),
         "--chip-padding": getSize(size, "chip-padding"),
         "--chip-icon-size": getSize(size, "chip-icon-size"),
-        "--chip-bg": colors.background,
-        "--chip-hover": colors.hover,
-        "--chip-color": colors.color,
-        "--chip-bd": colors.border,
+        "--chip-bg": color || variant ? colors.background : void 0,
+        "--chip-hover": color || variant ? colors.hover : void 0,
+        "--chip-color": color || variant ? colors.color : void 0,
+        "--chip-bd": color || variant ? colors.border : void 0,
         "--chip-spacing": getSize(size, "chip-spacing")
       }
     };
@@ -182,7 +179,8 @@ var Chip = factory((_props, ref) => {
     children,
     size,
     variant,
-    icon
+    icon,
+    rootRef
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -201,7 +199,8 @@ var Chip = factory((_props, ref) => {
     "children",
     "size",
     "variant",
-    "icon"
+    "icon",
+    "rootRef"
   ]);
   const getStyles = useStyles({
     name: "Chip",
@@ -240,7 +239,8 @@ var Chip = factory((_props, ref) => {
     Box,
     __spreadValues(__spreadValues(__spreadValues({
       size,
-      variant
+      variant,
+      ref: rootRef
     }, getStyles("root")), styleProps), wrapperProps),
     /* @__PURE__ */ React5.createElement(
       "input",
@@ -261,7 +261,7 @@ var Chip = factory((_props, ref) => {
         htmlFor: uuid,
         "data-checked": _checked || void 0,
         "data-disabled": disabled || void 0
-      }, getStyles("label", { variant })),
+      }, getStyles("label", { variant: variant || "filled" })),
       _checked && /* @__PURE__ */ React5.createElement("span", __spreadValues({}, getStyles("iconWrapper")), icon || /* @__PURE__ */ React5.createElement(CheckIcon, __spreadValues({}, getStyles("checkIcon")))),
       children
     )

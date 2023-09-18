@@ -67,8 +67,7 @@ module.exports = __toCommonJS(src_exports);
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
 var defaultProps = {
-  separator: "/",
-  separatorMargin: "xs"
+  separator: "/"
 };
 var varsResolver = (0, import_core.createVarsResolver)(
   (_, { separatorMargin }) => ({

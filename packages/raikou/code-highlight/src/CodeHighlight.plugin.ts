@@ -34,6 +34,7 @@ module.exports = function ({ addComponents }: any) {
       backgroundColor: "transparent",
       opacity: "0.8",
       margin: "0",
+      color: "var(--raikou-color-dimmed)",
 
       "@media (hover: hover)": {
         "&:hover": {

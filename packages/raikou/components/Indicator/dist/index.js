@@ -120,9 +120,9 @@ var defaultProps = {
 var varsResolver = (0, import_core2.createVarsResolver)(
   (theme, { color, position, offset, size, radius, zIndex }) => ({
     root: __spreadValues({
-      "--indicator-color": (0, import_core2.getThemeColor)(color, theme),
+      "--indicator-color": color ? (0, import_core2.getThemeColor)(color, theme) : void 0,
       "--indicator-size": (0, import_core2.rem)(size),
-      "--indicator-radius": typeof radius !== "undefined" ? (0, import_core2.getRadius)(radius) : void 0,
+      "--indicator-radius": radius === void 0 ? void 0 : (0, import_core2.getRadius)(radius),
       "--indicator-z-index": zIndex == null ? void 0 : zIndex.toString()
     }, getPositionVariables(position, offset))
   })

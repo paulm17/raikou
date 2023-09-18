@@ -53,9 +53,6 @@ function filterFalsyChildren(children) {
 
 // ../Group/src/Group.tsx
 var defaultProps = {
-  justify: "flex-start",
-  align: "center",
-  gap: "md",
   preventGrowOverflow: true
 };
 var varsResolver = createVarsResolver(
@@ -106,9 +103,8 @@ var Group = factory((_props, ref) => {
   ]);
   const filteredChildren = filterFalsyChildren(children);
   const childrenCount = filteredChildren.length;
-  const childWidth = `calc(${100 / childrenCount}% - (${getSpacing(
-    gap
-  )} - ${getSpacing(gap)} / ${childrenCount}))`;
+  const resolvedGap = getSpacing(gap != null ? gap : "md");
+  const childWidth = `calc(${100 / childrenCount}% - (${resolvedGap} - ${resolvedGap} / ${childrenCount}))`;
   const stylesCtx = { childWidth };
   const getStyles = useStyles({
     name: "Group",
@@ -190,10 +186,10 @@ var defaultProps2 = {
 var varsResolver2 = createVarsResolver2(
   (theme, { size, radius, color }) => ({
     root: {
-      "--pagination-control-radius": getRadius(radius),
+      "--pagination-control-radius": radius === void 0 ? void 0 : getRadius(radius),
       "--pagination-control-size": getSize(size, "pagination-control-size"),
       "--pagination-control-fz": getFontSize(size),
-      "--pagination-active-bg": getThemeColor(color, theme)
+      "--pagination-active-bg": color ? getThemeColor(color, theme) : void 0
     }
   })
 );

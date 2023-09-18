@@ -21,6 +21,7 @@ module.exports = {
     require("../../components/Center/src/Center.plugin"),
     require("../../components/Checkbox/src/Checkbox.plugin"),
     require("../../components/Chip/src/Chip.plugin"),
+    require("../../components/CloseButton/src/CloseButton.plugin"),
     require("../../components/Code/src/Code.plugin"),
     require("../../components/ColorInput/src/ColorInput.plugin"),
     require("../../components/ColorPicker/src/ColorPicker.plugin"),

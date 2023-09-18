@@ -3477,6 +3477,8 @@ interface SwitchProps extends BoxProps, StylesApiProps<SwitchFactory>, ElementPr
     description?: React$1.ReactNode;
     /** Error displayed below the label */
     error?: React$1.ReactNode;
+    /** Assigns ref of the root element, can be used with `Tooltip` and other similar components */
+    rootRef?: React$1.ForwardedRef<HTMLDivElement>;
 }
 type SwitchFactory = Factory<{
     props: SwitchProps;

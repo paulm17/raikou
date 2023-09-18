@@ -122,6 +122,10 @@ module.exports = function ({ addComponents }: any) {
       '&[data-position="right"]': {
         "--_action-section-ml": "var(--raikou-spacing-md)",
       },
+
+      "& > svg": {
+        display: "block",
+      },
     },
 
     ".spotlight-actionLabel": {

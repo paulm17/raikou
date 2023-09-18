@@ -8,6 +8,7 @@ module.exports = function ({ addComponents }: any) {
       "--day-size-md": rem("42px"),
       "--day-size-lg": rem("48px"),
       "--day-size-xl": rem("54px"),
+      "--day-size": "var(--day-size-sm)",
 
       width: `var(--day-size, ${rem("36px")})`,
       height: `var(--day-size, ${rem("36px")})`,

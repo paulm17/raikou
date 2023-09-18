@@ -185,10 +185,10 @@ var notifications = {
 };
 
 // src/Notifications.tsx
-var import_react17 = __toESM(require("react"));
+var import_react14 = __toESM(require("react"));
 var import_react_transition_group = require("react-transition-group");
 var import_hooks3 = require("@raikou/hooks");
-var import_core13 = require("@raikou/core");
+var import_core10 = require("@raikou/core");
 
 // ../components/Portal/src/Portal.tsx
 var import_react2 = __toESM(require("react"));
@@ -244,11 +244,11 @@ function OptionalPortal(_a) {
 OptionalPortal.displayName = "@raikou/core/OptionalPortal";
 
 // src/NotificationContainer.tsx
-var import_react16 = __toESM(require("react"));
+var import_react13 = __toESM(require("react"));
 
 // ../components/Notification/src/Notification.tsx
-var import_react15 = __toESM(require("react"));
-var import_core12 = require("@raikou/core");
+var import_react12 = __toESM(require("react"));
+var import_core9 = require("@raikou/core");
 
 // ../components/Loader/src/Loader.tsx
 var import_react8 = __toESM(require("react"));
@@ -380,7 +380,6 @@ var defaultLoaders = {
   progress: Progress
 };
 var defaultProps2 = {
-  size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
@@ -388,7 +387,7 @@ var varsResolver = (0, import_core6.createVarsResolver)(
   (theme, { size, color }) => ({
     root: {
       "--loader-size": (0, import_core6.getSize)(size, "loader-size"),
-      "--loader-color": (0, import_core6.getThemeColor)(color, theme)
+      "--loader-color": color ? (0, import_core6.getThemeColor)(color, theme) : void 0
     }
   })
 );
@@ -445,111 +444,12 @@ var Loader = (0, import_core6.factory)((_props, ref) => {
 });
 Loader.displayName = "@raikou/core/Loader";
 
-// ../components/Text/src/Text.tsx
-var import_react9 = __toESM(require("react"));
-var import_core7 = require("@raikou/core");
-function getTextTruncate(truncate) {
-  if (truncate === "start") {
-    return "start";
-  }
-  if (truncate === "end" || truncate) {
-    return "end";
-  }
-  return void 0;
-}
-var defaultProps3 = {
-  variant: "text",
-  inherit: false,
-  size: "md"
-};
-var varsResolver2 = (0, import_core7.createVarsResolver)(
-  (theme, { variant, lineClamp, gradient, size }) => ({
-    root: {
-      "--text-fz": (0, import_core7.getFontSize)(size),
-      "--text-lh": (0, import_core7.getLineHeight)(size),
-      "--text-gradient": variant === "gradient" ? (0, import_core7.getGradient)(gradient, theme) : void 0,
-      "--text-line-clamp": typeof lineClamp === "number" ? lineClamp.toString() : void 0
-    }
-  })
-);
-var Text = (0, import_core7.polymorphicFactory)((_props, ref) => {
-  const props = (0, import_core7.useProps)("Text", defaultProps3, _props);
-  const _a = props, {
-    lineClamp,
-    truncate,
-    inline,
-    inherit,
-    gradient,
-    span,
-    __staticSelector,
-    vars,
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
-    variant,
-    mod,
-    size
-  } = _a, others = __objRest(_a, [
-    "lineClamp",
-    "truncate",
-    "inline",
-    "inherit",
-    "gradient",
-    "span",
-    "__staticSelector",
-    "vars",
-    "className",
-    "style",
-    "classNames",
-    "styles",
-    "unstyled",
-    "variant",
-    "mod",
-    "size"
-  ]);
-  const getStyles = (0, import_core7.useStyles)({
-    name: ["Text", __staticSelector],
-    props,
-    classes: {
-      root: "text-root"
-    },
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
-    vars,
-    varsResolver: varsResolver2
-  });
-  return /* @__PURE__ */ import_react9.default.createElement(
-    import_core7.Box,
-    __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { focusable: true })), {
-      ref,
-      component: span ? "span" : "p",
-      variant,
-      mod: [
-        {
-          "data-truncate": getTextTruncate(truncate),
-          "data-line-clamp": typeof lineClamp === "number",
-          "data-inline": inline,
-          "data-inherit": inherit
-        },
-        mod
-      ],
-      size
-    }), others)
-  );
-});
-Text.displayName = "@raikou/core/Text";
-
 // ../components/CloseButton/src/CloseIcon.tsx
-var import_react10 = __toESM(require("react"));
-var CloseIcon = (0, import_react10.forwardRef)(
+var import_react9 = __toESM(require("react"));
+var CloseIcon = (0, import_react9.forwardRef)(
   (_a, ref) => {
-    var _b = _a, { size = "var(--cb-icon-size)", style } = _b, others = __objRest(_b, ["size", "style"]);
-    return /* @__PURE__ */ import_react10.default.createElement(
+    var _b = _a, { size = "var(--cb-icon-size, 70%)", style } = _b, others = __objRest(_b, ["size", "style"]);
+    return /* @__PURE__ */ import_react9.default.createElement(
       "svg",
       __spreadValues({
         viewBox: "0 0 15 15",
@@ -558,7 +458,7 @@ var CloseIcon = (0, import_react10.forwardRef)(
         style: __spreadProps(__spreadValues({}, style), { width: size, height: size }),
         ref
       }, others),
-      /* @__PURE__ */ import_react10.default.createElement(
+      /* @__PURE__ */ import_react9.default.createElement(
         "path",
         {
           d: "M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z",
@@ -573,22 +473,18 @@ var CloseIcon = (0, import_react10.forwardRef)(
 CloseIcon.displayName = "@raikou/core/CloseIcon";
 
 // ../components/CloseButton/src/CloseButton.tsx
-var import_react14 = __toESM(require("react"));
-var import_core11 = require("@raikou/core");
-
-// ../components/ActionIcon/src/ActionIcon.tsx
-var import_react13 = __toESM(require("react"));
-var import_core10 = require("@raikou/core");
-
-// ../components/UnstyledButton/src/UnstyledButton.tsx
 var import_react11 = __toESM(require("react"));
 var import_core8 = require("@raikou/core");
-var defaultProps4 = {
+
+// ../components/UnstyledButton/src/UnstyledButton.tsx
+var import_react10 = __toESM(require("react"));
+var import_core7 = require("@raikou/core");
+var defaultProps3 = {
   __staticSelector: "UnstyledButton"
 };
-var UnstyledButton = (0, import_core8.polymorphicFactory)(
+var UnstyledButton = (0, import_core7.polymorphicFactory)(
   (_props, ref) => {
-    const props = (0, import_core8.useProps)("UnstyledButton", defaultProps4, _props);
+    const props = (0, import_core7.useProps)("UnstyledButton", defaultProps3, _props);
     const _a = props, {
       className,
       component = "button",
@@ -606,7 +502,7 @@ var UnstyledButton = (0, import_core8.polymorphicFactory)(
       "styles",
       "style"
     ]);
-    const getStyles = (0, import_core8.useStyles)({
+    const getStyles = (0, import_core7.useStyles)({
       name: __staticSelector,
       props,
       classes: {
@@ -618,8 +514,8 @@ var UnstyledButton = (0, import_core8.polymorphicFactory)(
       styles,
       unstyled
     });
-    return /* @__PURE__ */ import_react11.default.createElement(
-      import_core8.Box,
+    return /* @__PURE__ */ import_react10.default.createElement(
+      import_core7.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { focusable: true })), {
         component,
         ref,
@@ -630,194 +526,75 @@ var UnstyledButton = (0, import_core8.polymorphicFactory)(
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
-// ../components/ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-var import_react12 = __toESM(require("react"));
-var import_core9 = require("@raikou/core");
-var defaultProps5 = {
-  orientation: "horizontal",
-  borderWidth: 1
-};
-var varsResolver3 = (0, import_core9.createVarsResolver)(
-  (_, { borderWidth }) => ({
-    group: { "--ai-border-width": (0, import_core9.rem)(borderWidth) }
-  })
-);
-var ActionIconGroup = (0, import_core9.factory)(
-  (_props, ref) => {
-    const props = (0, import_core9.useProps)("ActionIconGroup", defaultProps5, _props);
-    const _a = (0, import_core9.useProps)("ActionIconGroup", defaultProps5, _props), {
-      className,
-      style,
-      classNames,
-      styles,
-      unstyled,
-      orientation,
-      vars,
-      borderWidth,
-      variant
-    } = _a, others = __objRest(_a, [
-      "className",
-      "style",
-      "classNames",
-      "styles",
-      "unstyled",
-      "orientation",
-      "vars",
-      "borderWidth",
-      "variant"
-    ]);
-    const getStyles = (0, import_core9.useStyles)({
-      name: "ActionIconGroup",
-      props,
-      classes: {
-        group: "actionIconGroup-root"
-      },
-      className,
-      style,
-      classNames,
-      styles,
-      unstyled,
-      vars,
-      varsResolver: varsResolver3,
-      rootSelector: "group"
-    });
-    return /* @__PURE__ */ import_react12.default.createElement(
-      import_core9.Box,
-      __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
-        ref,
-        variant,
-        mod: { "data-orientation": orientation },
-        role: "group"
-      }), others)
-    );
-  }
-);
-ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
-
-// ../components/ActionIcon/src/ActionIcon.tsx
-var defaultProps6 = {
-  variant: "filled",
+// ../components/CloseButton/src/CloseButton.tsx
+var defaultProps4 = {
+  variant: "subtle",
   size: "md"
 };
-var varsResolver4 = (0, import_core10.createVarsResolver)(
-  (theme, { size, radius, variant, gradient, color }) => {
-    const colors = theme.variantColorResolver({
-      color: color || theme.primaryColor,
-      theme,
-      gradient,
-      variant
-    });
-    return {
-      root: {
-        "--ai-size": (0, import_core10.getSize)(size, "ai-size"),
-        "--ai-radius": (0, import_core10.getRadius)(radius),
-        "--ai-bg": colors.background,
-        "--ai-hover": colors.hover,
-        "--ai-color": colors.color,
-        "--ai-bd": colors.border
-      }
-    };
-  }
+var varsResolver2 = (0, import_core8.createVarsResolver)(
+  (_, { size, radius, iconSize }) => ({
+    root: {
+      "--cb-size": (0, import_core8.getSize)(size, "cb-size"),
+      "--cb-radius": radius === void 0 ? void 0 : (0, import_core8.getRadius)(radius),
+      "--cb-icon-size": (0, import_core8.rem)(iconSize)
+    }
+  })
 );
-var ActionIcon = (0, import_core10.polymorphicFactory)(
+var CloseButton = (0, import_core8.polymorphicFactory)(
   (_props, ref) => {
-    const props = (0, import_core10.useProps)("ActionIcon", defaultProps6, _props);
+    const props = (0, import_core8.useProps)("CloseButton", defaultProps4, _props);
     const _a = props, {
-      className,
-      unstyled,
-      variant,
-      classNames,
-      styles,
-      style,
-      loading,
-      loaderProps,
-      size,
-      color,
-      radius,
-      __staticSelector,
-      gradient,
-      vars,
+      iconSize,
       children,
+      vars,
+      radius,
+      className,
+      classNames,
+      style,
+      styles,
+      unstyled,
+      "data-disabled": dataDisabled,
       disabled,
-      "data-disabled": dataDisabled
+      variant
     } = _a, others = __objRest(_a, [
-      "className",
-      "unstyled",
-      "variant",
-      "classNames",
-      "styles",
-      "style",
-      "loading",
-      "loaderProps",
-      "size",
-      "color",
-      "radius",
-      "__staticSelector",
-      "gradient",
-      "vars",
+      "iconSize",
       "children",
+      "vars",
+      "radius",
+      "className",
+      "classNames",
+      "style",
+      "styles",
+      "unstyled",
+      "data-disabled",
       "disabled",
-      "data-disabled"
+      "variant"
     ]);
-    const getStyles = (0, import_core10.useStyles)({
-      name: ["ActionIcon", __staticSelector],
+    const getStyles = (0, import_core8.useStyles)({
+      name: "CloseButton",
       props,
       className,
       style,
       classes: {
-        root: "actionIcon-root",
-        loader: "actionIcon-loader"
+        root: "closeButton-root"
       },
       classNames,
       styles,
       unstyled,
       vars,
-      varsResolver: varsResolver4
+      varsResolver: varsResolver2
     });
-    return /* @__PURE__ */ import_react13.default.createElement(
+    return /* @__PURE__ */ import_react11.default.createElement(
       UnstyledButton,
-      __spreadProps(__spreadValues(__spreadValues({}, getStyles("root", {
-        active: !disabled && !loading && !dataDisabled
-      })), others), {
-        unstyled,
-        variant,
-        size,
-        disabled: disabled || loading,
-        ref,
-        mod: { loading, disabled: disabled || dataDisabled }
-      }),
-      loading ? /* @__PURE__ */ import_react13.default.createElement(
-        Loader,
-        __spreadValues(__spreadProps(__spreadValues({}, getStyles("loader")), {
-          color: "var(--ai-color)",
-          size: "calc(var(--ai-size) * 0.55)"
-        }), loaderProps)
-      ) : children
-    );
-  }
-);
-ActionIcon.displayName = "@raikou/core/ActionIcon";
-ActionIcon.Group = ActionIconGroup;
-
-// ../components/CloseButton/src/CloseButton.tsx
-var defaultProps7 = {
-  iconSize: "70%",
-  variant: "subtle",
-  color: "gray"
-};
-var CloseButton = (0, import_core11.polymorphicFactory)(
-  (_props, ref) => {
-    const props = (0, import_core11.useProps)("CloseButton", defaultProps7, _props);
-    const _a = props, { iconSize, children, vars } = _a, others = __objRest(_a, ["iconSize", "children", "vars"]);
-    return /* @__PURE__ */ import_react14.default.createElement(
-      ActionIcon,
-      __spreadProps(__spreadValues({
+      __spreadValues(__spreadProps(__spreadValues({
         ref
       }, others), {
-        __vars: { "--cb-icon-size": (0, import_core11.rem)(iconSize) },
-        __staticSelector: "CloseButton"
-      }),
-      /* @__PURE__ */ import_react14.default.createElement(CloseIcon, null),
+        unstyled,
+        variant,
+        disabled,
+        mod: { disabled: disabled || dataDisabled }
+      }), getStyles("root", { variant, active: true })),
+      /* @__PURE__ */ import_react11.default.createElement(CloseIcon, null),
       children
     );
   }
@@ -825,19 +602,19 @@ var CloseButton = (0, import_core11.polymorphicFactory)(
 CloseButton.displayName = "@raikou/core/CloseButton";
 
 // ../components/Notification/src/Notification.tsx
-var defaultProps8 = {
+var defaultProps5 = {
   withCloseButton: true
 };
-var varsResolver5 = (0, import_core12.createVarsResolver)(
+var varsResolver3 = (0, import_core9.createVarsResolver)(
   (theme, { radius, color }) => ({
     root: {
-      "--notification-radius": (0, import_core12.getRadius)(radius),
-      "--notification-color": (0, import_core12.getThemeColor)(color, theme)
+      "--notification-radius": radius === void 0 ? void 0 : (0, import_core9.getRadius)(radius),
+      "--notification-color": color ? (0, import_core9.getThemeColor)(color, theme) : void 0
     }
   })
 );
-var Notification = (0, import_core12.factory)((_props, ref) => {
-  const props = (0, import_core12.useProps)("Notification", defaultProps8, _props);
+var Notification = (0, import_core9.factory)((_props, ref) => {
+  const props = (0, import_core9.useProps)("Notification", defaultProps5, _props);
   const _a = props, {
     className,
     color,
@@ -875,7 +652,7 @@ var Notification = (0, import_core12.factory)((_props, ref) => {
     "variant",
     "vars"
   ]);
-  const getStyles = (0, import_core12.useStyles)({
+  const getStyles = (0, import_core9.useStyles)({
     name: "Notification",
     classes: {
       root: "notification-root",
@@ -893,10 +670,10 @@ var Notification = (0, import_core12.factory)((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver5
+    varsResolver: varsResolver3
   });
-  return /* @__PURE__ */ import_react15.default.createElement(
-    import_core12.Box,
+  return /* @__PURE__ */ import_react12.default.createElement(
+    import_core9.Box,
     __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       mod: {
         "data-with-icon": !!icon || loading,
@@ -907,20 +684,10 @@ var Notification = (0, import_core12.factory)((_props, ref) => {
     }), others), {
       role: "alert"
     }),
-    icon && !loading && /* @__PURE__ */ import_react15.default.createElement("div", __spreadValues({}, getStyles("icon")), icon),
-    loading && /* @__PURE__ */ import_react15.default.createElement(Loader, __spreadValues({ size: 28, color }, getStyles("loader"))),
-    /* @__PURE__ */ import_react15.default.createElement("div", __spreadValues({}, getStyles("body")), title && /* @__PURE__ */ import_react15.default.createElement(Text, __spreadProps(__spreadValues({}, getStyles("title")), { size: "sm", fw: 500 }), title), /* @__PURE__ */ import_react15.default.createElement(
-      Text,
-      __spreadProps(__spreadValues({}, getStyles("description")), {
-        color: "dimmed",
-        mod: {
-          "data-with-title": !!title
-        },
-        size: "sm"
-      }),
-      children
-    )),
-    withCloseButton && /* @__PURE__ */ import_react15.default.createElement(
+    icon && !loading && /* @__PURE__ */ import_react12.default.createElement("div", __spreadValues({}, getStyles("icon")), icon),
+    loading && /* @__PURE__ */ import_react12.default.createElement(Loader, __spreadValues({ size: 28, color }, getStyles("loader"))),
+    /* @__PURE__ */ import_react12.default.createElement("div", __spreadValues({}, getStyles("body")), /* @__PURE__ */ import_react12.default.createElement(import_core9.Box, __spreadProps(__spreadValues({}, getStyles("description")), { mod: { "data-with-title": !!title } }), children)),
+    withCloseButton && /* @__PURE__ */ import_react12.default.createElement(
       CloseButton,
       __spreadValues(__spreadProps(__spreadValues({
         iconSize: 16,
@@ -945,11 +712,11 @@ function getAutoClose(autoClose, notificationAutoClose) {
 }
 
 // src/NotificationContainer.tsx
-var NotificationContainer = (0, import_react16.forwardRef)((_a, ref) => {
+var NotificationContainer = (0, import_react13.forwardRef)((_a, ref) => {
   var _b = _a, { data, onHide, autoClose } = _b, others = __objRest(_b, ["data", "onHide", "autoClose"]);
   const _a2 = data, { autoClose: _autoClose, message } = _a2, notificationProps = __objRest(_a2, ["autoClose", "message"]);
   const autoCloseDuration = getAutoClose(autoClose, data.autoClose);
-  const autoCloseTimeout = (0, import_react16.useRef)();
+  const autoCloseTimeout = (0, import_react13.useRef)();
   const cancelAutoClose = () => window.clearTimeout(autoCloseTimeout.current);
   const handleHide = () => {
     onHide(data.id);
@@ -963,15 +730,15 @@ var NotificationContainer = (0, import_react16.forwardRef)((_a, ref) => {
       );
     }
   };
-  (0, import_react16.useEffect)(() => {
+  (0, import_react13.useEffect)(() => {
     var _a3;
     (_a3 = data.onOpen) == null ? void 0 : _a3.call(data, data);
   }, []);
-  (0, import_react16.useEffect)(() => {
+  (0, import_react13.useEffect)(() => {
     handleAutoClose();
     return cancelAutoClose;
   }, [autoCloseDuration]);
-  return /* @__PURE__ */ import_react16.default.createElement(
+  return /* @__PURE__ */ import_react13.default.createElement(
     Notification,
     __spreadProps(__spreadValues(__spreadValues({}, others), notificationProps), {
       onClose: handleHide,
@@ -1033,18 +800,18 @@ function getNotificationStateStyles({
 
 // src/Notifications.tsx
 var Transition = import_react_transition_group.Transition;
-var defaultProps9 = {
+var defaultProps6 = {
   position: "bottom-right",
   autoClose: 4e3,
   transitionDuration: 250,
   containerWidth: 440,
   notificationMaxHeight: 200,
   limit: 5,
-  zIndex: (0, import_core13.getDefaultZIndex)("overlay"),
+  zIndex: (0, import_core10.getDefaultZIndex)("overlay"),
   store: notificationsStore,
   withinPortal: true
 };
-var varsResolver6 = (0, import_core13.createVarsResolver)(
+var varsResolver4 = (0, import_core10.createVarsResolver)(
   (_, { zIndex, position, containerWidth }) => {
     const [vertical, horizontal] = position.split("-");
     return {
@@ -1055,13 +822,13 @@ var varsResolver6 = (0, import_core13.createVarsResolver)(
         "--notifications-left": horizontal === "left" ? "var(--raikou-spacing-md)" : horizontal === "center" ? "50%" : void 0,
         "--notifications-right": horizontal === "right" ? "var(--raikou-spacing-md)" : void 0,
         "--notifications-transform": horizontal === "center" ? "translateX(-50%)" : void 0,
-        "--notifications-container-width": (0, import_core13.rem)(containerWidth)
+        "--notifications-container-width": (0, import_core10.rem)(containerWidth)
       }
     };
   }
 );
-var Notifications = (0, import_core13.factory)((_props, ref) => {
-  const props = (0, import_core13.useProps)("Notifications", defaultProps9, _props);
+var Notifications = (0, import_core10.factory)((_props, ref) => {
+  const props = (0, import_core10.useProps)("Notifications", defaultProps6, _props);
   const _a = props, {
     classNames,
     className,
@@ -1097,15 +864,15 @@ var Notifications = (0, import_core13.factory)((_props, ref) => {
     "portalProps",
     "withinPortal"
   ]);
-  const theme = (0, import_core13.useRaikouTheme)();
+  const theme = (0, import_core10.useRaikouTheme)();
   const data = useNotifications(store);
   const forceUpdate = (0, import_hooks3.useForceUpdate)();
   const shouldReduceMotion = (0, import_hooks3.useReducedMotion)();
-  const refs = (0, import_react17.useRef)({});
-  const previousLength = (0, import_react17.useRef)(0);
+  const refs = (0, import_react14.useRef)({});
+  const previousLength = (0, import_react14.useRef)(0);
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
   const duration = reduceMotion ? 1 : transitionDuration;
-  const getStyles = (0, import_core13.useStyles)({
+  const getStyles = (0, import_core10.useStyles)({
     name: "Notifications",
     classes: {
       root: "notifications-root",
@@ -1118,7 +885,7 @@ var Notifications = (0, import_core13.factory)((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver6
+    varsResolver: varsResolver4
   });
   (0, import_hooks3.useDidUpdate)(() => {
     if (data.notifications.length > previousLength.current) {
@@ -1126,7 +893,7 @@ var Notifications = (0, import_core13.factory)((_props, ref) => {
     }
     previousLength.current = data.notifications.length;
   }, [data.notifications]);
-  const items = data.notifications.map((notification) => /* @__PURE__ */ import_react17.default.createElement(
+  const items = data.notifications.map((notification) => /* @__PURE__ */ import_react14.default.createElement(
     Transition,
     {
       key: notification.id,
@@ -1134,7 +901,7 @@ var Notifications = (0, import_core13.factory)((_props, ref) => {
       onEnter: () => refs.current[notification.id].offsetHeight,
       nodeRef: { current: refs.current[notification.id] }
     },
-    (state) => /* @__PURE__ */ import_react17.default.createElement(
+    (state) => /* @__PURE__ */ import_react14.default.createElement(
       NotificationContainer,
       __spreadProps(__spreadValues({}, getStyles("notification", {
         style: getNotificationStateStyles({
@@ -1153,7 +920,7 @@ var Notifications = (0, import_core13.factory)((_props, ref) => {
       })
     )
   ));
-  return /* @__PURE__ */ import_react17.default.createElement(OptionalPortal, __spreadValues({ withinPortal }, portalProps), /* @__PURE__ */ import_react17.default.createElement(import_core13.Box, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref }), others), /* @__PURE__ */ import_react17.default.createElement(import_react_transition_group.TransitionGroup, null, items)));
+  return /* @__PURE__ */ import_react14.default.createElement(OptionalPortal, __spreadValues({ withinPortal }, portalProps), /* @__PURE__ */ import_react14.default.createElement(import_core10.Box, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref }), others), /* @__PURE__ */ import_react14.default.createElement(import_react_transition_group.TransitionGroup, null, items)));
 });
 Notifications.displayName = "@raikou/notifications/Notifications";
 Notifications.show = notifications.show;

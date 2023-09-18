@@ -1,19 +1,30 @@
-import React from 'react';
-import { IconCheck } from '@tabler/icons-react';
-import { Chip } from './Chip';
+import React from "react";
+import { IconCheck } from "@tabler/icons-react";
+import { Chip } from "./Chip";
+import { Tooltip } from "../../Tooltip/src";
 
-export default { title: 'Chip' };
+export default { title: "Chip" };
+
+export function WithTooltip() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Tooltip label="Tooltip" refProp="rootRef" position="bottom-start">
+        <Chip defaultChecked>With tooltip</Chip>
+      </Tooltip>
+    </div>
+  );
+}
 
 export function Usage() {
   return (
-    <div style={{ padding: 40 }}>
-      <Chip type="checkbox" variant="light">
+    <div style={{ padding: 40, display: "flex", gap: 40 }}>
+      <Chip type="checkbox" variant="light" defaultChecked>
         Light
       </Chip>
-      <Chip type="checkbox" variant="filled">
+      <Chip type="checkbox" defaultChecked>
         Filled
       </Chip>
-      <Chip type="checkbox" variant="outline">
+      <Chip type="checkbox" variant="outline" defaultChecked>
         Outline
       </Chip>
     </div>

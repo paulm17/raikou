@@ -8,6 +8,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--dialog-size-md": rem("340px"),
       "--dialog-size-lg": rem("400px"),
       "--dialog-size-xl": rem("500px"),
+      "--dialog-size": "var(--dialog-size-md)",
 
       position: "relative",
       width: "var(--dialog-size)",

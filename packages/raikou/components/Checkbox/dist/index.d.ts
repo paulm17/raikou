@@ -3478,6 +3478,8 @@ interface CheckboxProps extends BoxProps, StylesApiProps<CheckboxFactory>, Eleme
         indeterminate: boolean | undefined;
         className: string;
     }>;
+    /** Assigns ref of the root element, can be used with `Tooltip` and other similar components */
+    rootRef?: React$1.ForwardedRef<HTMLDivElement>;
 }
 type CheckboxFactory = Factory<{
     props: CheckboxProps;

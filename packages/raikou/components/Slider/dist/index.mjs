@@ -548,7 +548,6 @@ function getPrecision(step) {
 
 // src/Slider/Slider.tsx
 var defaultProps = {
-  size: "md",
   radius: "xl",
   min: 0,
   max: 100,
@@ -566,9 +565,9 @@ var varsResolver = createVarsResolver(
   (theme, { size, color, thumbSize, radius }) => ({
     root: {
       "--slider-size": getSize(size, "slider-size"),
-      "--slider-color": getThemeColor(color, theme),
-      "--slider-radius": getRadius(radius),
-      "--slider-thumb-size": typeof thumbSize !== "undefined" ? rem2(thumbSize) : "calc(var(--slider-size) * 2)"
+      "--slider-color": color ? getThemeColor(color, theme) : void 0,
+      "--slider-radius": radius === void 0 ? void 0 : getRadius(radius),
+      "--slider-thumb-size": thumbSize !== void 0 ? rem2(thumbSize) : "calc(var(--slider-size) * 2)"
     }
   })
 );
@@ -843,15 +842,13 @@ var varsResolver2 = createVarsResolver2(
   (theme, { size, color, thumbSize, radius }) => ({
     root: {
       "--slider-size": getSize2(size, "slider-size"),
-      "--slider-color": getThemeColor2(color, theme),
-      "--slider-radius": getRadius2(radius),
-      "--slider-thumb-size": typeof thumbSize !== "undefined" ? rem3(thumbSize) : "calc(var(--slider-size) * 2)"
+      "--slider-color": color ? getThemeColor2(color, theme) : void 0,
+      "--slider-radius": radius === void 0 ? void 0 : getRadius2(radius),
+      "--slider-thumb-size": thumbSize !== void 0 ? rem3(thumbSize) : "calc(var(--slider-size) * 2)"
     }
   })
 );
 var defaultProps2 = {
-  size: "md",
-  radius: "xl",
   min: 0,
   max: 100,
   minRange: 10,

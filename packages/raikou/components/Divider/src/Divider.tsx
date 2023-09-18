@@ -50,7 +50,6 @@ export type DividerFactory = Factory<{
 }>;
 
 const defaultProps: Partial<DividerProps> = {
-  size: "xs",
   orientation: "horizontal",
 };
 
@@ -61,7 +60,7 @@ const varsResolver = createVarsResolver<DividerFactory>(
       "--divider-border-style": variant,
       "--divider-size": getSize(size, "divider-size"),
     },
-  })
+  }),
 );
 
 export const Divider = factory<DividerFactory>((_props, ref) => {

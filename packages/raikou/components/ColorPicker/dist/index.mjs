@@ -635,14 +635,12 @@ import {
   createVarsResolver
 } from "@raikou/core";
 var defaultProps3 = {
-  size: rem4(28),
-  radius: rem4(28),
   withShadow: true
 };
 var varsResolver = createVarsResolver(
   (_, { radius, size }) => ({
     root: {
-      "--cs-radius": getRadius(radius),
+      "--cs-radius": radius === void 0 ? void 0 : getRadius(radius),
       "--cs-size": rem4(size)
     }
   })
@@ -762,16 +760,15 @@ Swatches.displayName = "@raikou/core/Swatches";
 // src/ColorPicker.tsx
 var defaultProps4 = {
   swatchesPerRow: 7,
-  size: "sm",
   withPicker: true,
   focusable: true,
   __staticSelector: "ColorPicker"
 };
 var varsResolver2 = createVarsResolver2(
-  (_, { size, fullWidth, swatchesPerRow }) => ({
+  (_, { size, swatchesPerRow }) => ({
     wrapper: {
       "--cp-preview-size": getSize(size, "cp-preview-size"),
-      "--cp-width": fullWidth ? "100%" : getSize(size, "cp-width"),
+      "--cp-width": getSize(size, "cp-width"),
       "--cp-body-spacing": getSpacing(size),
       "--cp-swatch-size": `${100 / swatchesPerRow}%`,
       "--cp-thumb-size": getSize(size, "cp-thumb-size"),
@@ -892,75 +889,88 @@ var ColorPicker = factory((_props, ref) => {
     formatRef.current = format;
     setValue(convertHsvaTo(format, parsed));
   }, [format]);
-  return /* @__PURE__ */ React10.createElement(ColorPickerProvider, { value: { getStyles } }, /* @__PURE__ */ React10.createElement(Box6, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("wrapper")), { size }), others), withPicker && /* @__PURE__ */ React10.createElement(React10.Fragment, null, /* @__PURE__ */ React10.createElement(
-    Saturation,
-    {
-      value: parsed,
-      onChange: handleChange,
-      onChangeEnd: ({ s, v }) => onChangeEnd == null ? void 0 : onChangeEnd(
-        convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { s, v }))
-      ),
-      color: _value,
+  return /* @__PURE__ */ React10.createElement(ColorPickerProvider, { value: { getStyles } }, /* @__PURE__ */ React10.createElement(
+    Box6,
+    __spreadValues(__spreadProps(__spreadValues({
+      ref
+    }, getStyles("wrapper")), {
       size,
-      focusable,
-      saturationLabel,
-      onScrubStart: startScrubbing,
-      onScrubEnd: stopScrubbing
-    }
-  ), /* @__PURE__ */ React10.createElement("div", __spreadValues({}, getStyles("body")), /* @__PURE__ */ React10.createElement("div", __spreadValues({}, getStyles("sliders")), /* @__PURE__ */ React10.createElement(
-    HueSlider,
-    {
-      value: parsed.h,
-      onChange: (h) => handleChange({ h }),
-      onChangeEnd: (h) => onChangeEnd == null ? void 0 : onChangeEnd(
-        convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { h }))
-      ),
-      size,
-      focusable,
-      "aria-label": hueLabel,
-      onScrubStart: startScrubbing,
-      onScrubEnd: stopScrubbing
-    }
-  ), withAlpha && /* @__PURE__ */ React10.createElement(
-    AlphaSlider,
-    {
-      value: parsed.a,
-      onChange: (a) => handleChange({ a }),
-      onChangeEnd: (a) => {
-        onChangeEnd == null ? void 0 : onChangeEnd(
-          convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { a }))
-        );
-      },
-      size,
-      color: convertHsvaTo("hex", parsed),
-      focusable,
-      "aria-label": alphaLabel,
-      onScrubStart: startScrubbing,
-      onScrubEnd: stopScrubbing
-    }
-  )), withAlpha && /* @__PURE__ */ React10.createElement(
-    ColorSwatch,
-    __spreadValues({
-      color: _value,
-      radius: "sm"
-    }, getStyles("preview"))
-  ))), Array.isArray(swatches) && /* @__PURE__ */ React10.createElement(
-    Swatches,
-    {
-      data: swatches,
-      swatchesPerRow,
-      focusable,
-      setValue,
-      onChangeEnd: (color) => {
-        const convertedColor = convertHsvaTo(format, parseColor(color));
-        onColorSwatchClick == null ? void 0 : onColorSwatchClick(convertedColor);
-        onChangeEnd == null ? void 0 : onChangeEnd(convertedColor);
-        if (!controlled) {
-          setParsed(parseColor(color));
+      mod: { "full-width": fullWidth }
+    }), others),
+    withPicker && /* @__PURE__ */ React10.createElement(React10.Fragment, null, /* @__PURE__ */ React10.createElement(
+      Saturation,
+      {
+        value: parsed,
+        onChange: handleChange,
+        onChangeEnd: ({ s, v }) => onChangeEnd == null ? void 0 : onChangeEnd(
+          convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), {
+            s,
+            v
+          }))
+        ),
+        color: _value,
+        size,
+        focusable,
+        saturationLabel,
+        onScrubStart: startScrubbing,
+        onScrubEnd: stopScrubbing
+      }
+    ), /* @__PURE__ */ React10.createElement("div", __spreadValues({}, getStyles("body")), /* @__PURE__ */ React10.createElement("div", __spreadValues({}, getStyles("sliders")), /* @__PURE__ */ React10.createElement(
+      HueSlider,
+      {
+        value: parsed.h,
+        onChange: (h) => handleChange({ h }),
+        onChangeEnd: (h) => onChangeEnd == null ? void 0 : onChangeEnd(
+          convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { h }))
+        ),
+        size,
+        focusable,
+        "aria-label": hueLabel,
+        onScrubStart: startScrubbing,
+        onScrubEnd: stopScrubbing
+      }
+    ), withAlpha && /* @__PURE__ */ React10.createElement(
+      AlphaSlider,
+      {
+        value: parsed.a,
+        onChange: (a) => handleChange({ a }),
+        onChangeEnd: (a) => {
+          onChangeEnd == null ? void 0 : onChangeEnd(
+            convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { a }))
+          );
+        },
+        size,
+        color: convertHsvaTo("hex", parsed),
+        focusable,
+        "aria-label": alphaLabel,
+        onScrubStart: startScrubbing,
+        onScrubEnd: stopScrubbing
+      }
+    )), withAlpha && /* @__PURE__ */ React10.createElement(
+      ColorSwatch,
+      __spreadValues({
+        color: _value,
+        radius: "sm"
+      }, getStyles("preview"))
+    ))),
+    Array.isArray(swatches) && /* @__PURE__ */ React10.createElement(
+      Swatches,
+      {
+        data: swatches,
+        swatchesPerRow,
+        focusable,
+        setValue,
+        onChangeEnd: (color) => {
+          const convertedColor = convertHsvaTo(format, parseColor(color));
+          onColorSwatchClick == null ? void 0 : onColorSwatchClick(convertedColor);
+          onChangeEnd == null ? void 0 : onChangeEnd(convertedColor);
+          if (!controlled) {
+            setParsed(parseColor(color));
+          }
         }
       }
-    }
-  )));
+    )
+  ));
 });
 ColorPicker.displayName = "@raikou/core/ColorPicker";
 export {

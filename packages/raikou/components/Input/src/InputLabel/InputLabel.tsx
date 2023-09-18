@@ -43,14 +43,13 @@ export type InputLabelFactory = Factory<{
 }>;
 
 const defaultProps: Partial<InputLabelProps> = {
-  size: "sm",
   labelElement: "label",
 };
 
 const varsResolver = createVarsResolver<InputLabelFactory>((_, { size }) => ({
   label: {
     "--input-label-size": getFontSize(size),
-    "--input-asterisk-color": "var(--raikou-color-red-filled)",
+    "--input-asterisk-color": undefined,
   },
 }));
 

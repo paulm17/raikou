@@ -14,6 +14,9 @@ module.exports = function ({ addComponents, theme }: any) {
       "--psi-icon-size-md": rem("17px"),
       "--psi-icon-size-lg": rem("19px"),
       "--psi-icon-size-xl": rem("21px"),
+
+      "--psi-button-size": "var(--psi-button-size-sm)",
+      "--psi-icon-size": "var(--psi-icon-size-sm)",
     },
 
     ".passwordInput-input": {

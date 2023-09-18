@@ -75,9 +75,6 @@ function filterFalsyChildren(children) {
 
 // src/Group.tsx
 var defaultProps = {
-  justify: "flex-start",
-  align: "center",
-  gap: "md",
   preventGrowOverflow: true
 };
 var varsResolver = (0, import_core.createVarsResolver)(
@@ -128,9 +125,8 @@ var Group = (0, import_core.factory)((_props, ref) => {
   ]);
   const filteredChildren = filterFalsyChildren(children);
   const childrenCount = filteredChildren.length;
-  const childWidth = `calc(${100 / childrenCount}% - (${(0, import_core.getSpacing)(
-    gap
-  )} - ${(0, import_core.getSpacing)(gap)} / ${childrenCount}))`;
+  const resolvedGap = (0, import_core.getSpacing)(gap != null ? gap : "md");
+  const childWidth = `calc(${100 / childrenCount}% - (${resolvedGap} - ${resolvedGap} / ${childrenCount}))`;
   const stylesCtx = { childWidth };
   const getStyles = (0, import_core.useStyles)({
     name: "Group",

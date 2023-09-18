@@ -68,7 +68,7 @@ module.exports = __toCommonJS(src_exports);
 var import_react = __toESM(require("react"));
 var CloseIcon = (0, import_react.forwardRef)(
   (_a, ref) => {
-    var _b = _a, { size = "var(--cb-icon-size)", style } = _b, others = __objRest(_b, ["size", "style"]);
+    var _b = _a, { size = "var(--cb-icon-size, 70%)", style } = _b, others = __objRest(_b, ["size", "style"]);
     return /* @__PURE__ */ import_react.default.createElement(
       "svg",
       __spreadValues({
@@ -93,12 +93,8 @@ var CloseIcon = (0, import_react.forwardRef)(
 CloseIcon.displayName = "@raikou/core/CloseIcon";
 
 // src/CloseButton.tsx
-var import_react10 = __toESM(require("react"));
-var import_core9 = require("@raikou/core");
-
-// ../ActionIcon/src/ActionIcon.tsx
-var import_react9 = __toESM(require("react"));
-var import_core8 = require("@raikou/core");
+var import_react3 = __toESM(require("react"));
+var import_core2 = require("@raikou/core");
 
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react2 = __toESM(require("react"));
@@ -150,389 +146,75 @@ var UnstyledButton = (0, import_core.polymorphicFactory)(
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
-// ../Loader/src/Loader.tsx
-var import_react7 = __toESM(require("react"));
-var import_core6 = require("@raikou/core");
-
-// ../Loader/src/loaders/Bars.tsx
-var import_react3 = __toESM(require("react"));
-
-// ../../../../node_modules/.pnpm/clsx@2.0.0/node_modules/clsx/dist/clsx.mjs
-function r(e) {
-  var t, f, n = "";
-  if ("string" == typeof e || "number" == typeof e)
-    n += e;
-  else if ("object" == typeof e)
-    if (Array.isArray(e))
-      for (t = 0; t < e.length; t++)
-        e[t] && (f = r(e[t])) && (n && (n += " "), n += f);
-    else
-      for (t in e)
-        e[t] && (n && (n += " "), n += t);
-  return n;
-}
-function clsx() {
-  for (var e, t, f = 0, n = ""; f < arguments.length; )
-    (e = arguments[f++]) && (t = r(e)) && (n && (n += " "), n += t);
-  return n;
-}
-var clsx_default = clsx;
-
-// ../Loader/src/loaders/Bars.tsx
-var import_core2 = require("@raikou/core");
-var Bars = (0, import_react3.forwardRef)(
-  (_a, ref) => {
-    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react3.default.createElement(
-      import_core2.Box,
-      __spreadProps(__spreadValues({
-        component: "span",
-        className: clsx_default("bars-loader", className)
-      }, others), {
-        ref
-      }),
-      /* @__PURE__ */ import_react3.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react3.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react3.default.createElement("span", { className: "bar" })
-    );
-  }
-);
-
-// ../Loader/src/loaders/Oval.tsx
-var import_react4 = __toESM(require("react"));
-var import_core3 = require("@raikou/core");
-var Oval = (0, import_react4.forwardRef)(
-  (_a, ref) => {
-    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react4.default.createElement(
-      import_core3.Box,
-      __spreadProps(__spreadValues({
-        component: "span",
-        className: clsx_default("oval-loader", className)
-      }, others), {
-        ref
-      })
-    );
-  }
-);
-
-// ../Loader/src/loaders/Progress.tsx
-var import_react5 = __toESM(require("react"));
-var import_core4 = require("@raikou/core");
-var Progress = (0, import_react5.forwardRef)(
-  (_a, ref) => {
-    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react5.default.createElement(
-      import_core4.Box,
-      __spreadProps(__spreadValues({
-        component: "span",
-        className: clsx_default("progress-loader", className)
-      }, others), {
-        ref
-      }),
-      /* @__PURE__ */ import_react5.default.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ import_react5.default.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ import_react5.default.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ import_react5.default.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ import_react5.default.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ import_react5.default.createElement(
-        "animateTransform",
-        {
-          attributeName: "transform",
-          type: "rotate",
-          from: "0 16 16",
-          to: "360 16 16",
-          dur: "1s",
-          repeatCount: "indefinite"
-        }
-      )))))
-    );
-  }
-);
-
-// ../Loader/src/loaders/Dots.tsx
-var import_react6 = __toESM(require("react"));
-var import_core5 = require("@raikou/core");
-var Dots = (0, import_react6.forwardRef)(
-  (_a, ref) => {
-    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react6.default.createElement(
-      import_core5.Box,
-      __spreadProps(__spreadValues({
-        component: "span",
-        className: clsx_default("dots-loader", className)
-      }, others), {
-        ref
-      }),
-      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react6.default.createElement("span", { className: "dot" })
-    );
-  }
-);
-
-// ../Loader/src/Loader.tsx
-var defaultLoaders = {
-  bars: Bars,
-  oval: Oval,
-  dots: Dots,
-  progress: Progress
-};
+// src/CloseButton.tsx
 var defaultProps2 = {
-  size: "md",
-  loaders: defaultLoaders,
-  type: "oval"
+  variant: "subtle",
+  size: "md"
 };
-var varsResolver = (0, import_core6.createVarsResolver)(
-  (theme, { size, color }) => ({
+var varsResolver = (0, import_core2.createVarsResolver)(
+  (_, { size, radius, iconSize }) => ({
     root: {
-      "--loader-size": (0, import_core6.getSize)(size, "loader-size"),
-      "--loader-color": (0, import_core6.getThemeColor)(color, theme)
+      "--cb-size": (0, import_core2.getSize)(size, "cb-size"),
+      "--cb-radius": radius === void 0 ? void 0 : (0, import_core2.getRadius)(radius),
+      "--cb-icon-size": (0, import_core2.rem)(iconSize)
     }
   })
 );
-var Loader = (0, import_core6.factory)((_props, ref) => {
-  const props = (0, import_core6.useProps)("Loader", defaultProps2, _props);
-  const _a = props, {
-    size,
-    color,
-    type,
-    vars,
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
-    loaders,
-    variant
-  } = _a, others = __objRest(_a, [
-    "size",
-    "color",
-    "type",
-    "vars",
-    "className",
-    "style",
-    "classNames",
-    "styles",
-    "unstyled",
-    "loaders",
-    "variant"
-  ]);
-  const getStyles = (0, import_core6.useStyles)({
-    name: "Loader",
-    props,
-    classes: {
-      root: "loader-root"
-    },
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
-    vars,
-    varsResolver
-  });
-  return /* @__PURE__ */ import_react7.default.createElement(
-    import_core6.Box,
-    __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
-      ref,
-      component: loaders[type],
-      variant,
-      size
-    }), others)
-  );
-});
-Loader.displayName = "@raikou/core/Loader";
-
-// ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-var import_react8 = __toESM(require("react"));
-var import_core7 = require("@raikou/core");
-var defaultProps3 = {
-  orientation: "horizontal",
-  borderWidth: 1
-};
-var varsResolver2 = (0, import_core7.createVarsResolver)(
-  (_, { borderWidth }) => ({
-    group: { "--ai-border-width": (0, import_core7.rem)(borderWidth) }
-  })
-);
-var ActionIconGroup = (0, import_core7.factory)(
+var CloseButton = (0, import_core2.polymorphicFactory)(
   (_props, ref) => {
-    const props = (0, import_core7.useProps)("ActionIconGroup", defaultProps3, _props);
-    const _a = (0, import_core7.useProps)("ActionIconGroup", defaultProps3, _props), {
+    const props = (0, import_core2.useProps)("CloseButton", defaultProps2, _props);
+    const _a = props, {
+      iconSize,
+      children,
+      vars,
+      radius,
       className,
-      style,
       classNames,
+      style,
       styles,
       unstyled,
-      orientation,
-      vars,
-      borderWidth,
+      "data-disabled": dataDisabled,
+      disabled,
       variant
     } = _a, others = __objRest(_a, [
+      "iconSize",
+      "children",
+      "vars",
+      "radius",
       "className",
-      "style",
       "classNames",
+      "style",
       "styles",
       "unstyled",
-      "orientation",
-      "vars",
-      "borderWidth",
+      "data-disabled",
+      "disabled",
       "variant"
     ]);
-    const getStyles = (0, import_core7.useStyles)({
-      name: "ActionIconGroup",
-      props,
-      classes: {
-        group: "actionIconGroup-root"
-      },
-      className,
-      style,
-      classNames,
-      styles,
-      unstyled,
-      vars,
-      varsResolver: varsResolver2,
-      rootSelector: "group"
-    });
-    return /* @__PURE__ */ import_react8.default.createElement(
-      import_core7.Box,
-      __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
-        ref,
-        variant,
-        mod: { "data-orientation": orientation },
-        role: "group"
-      }), others)
-    );
-  }
-);
-ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
-
-// ../ActionIcon/src/ActionIcon.tsx
-var defaultProps4 = {
-  variant: "filled",
-  size: "md"
-};
-var varsResolver3 = (0, import_core8.createVarsResolver)(
-  (theme, { size, radius, variant, gradient, color }) => {
-    const colors = theme.variantColorResolver({
-      color: color || theme.primaryColor,
-      theme,
-      gradient,
-      variant
-    });
-    return {
-      root: {
-        "--ai-size": (0, import_core8.getSize)(size, "ai-size"),
-        "--ai-radius": (0, import_core8.getRadius)(radius),
-        "--ai-bg": colors.background,
-        "--ai-hover": colors.hover,
-        "--ai-color": colors.color,
-        "--ai-bd": colors.border
-      }
-    };
-  }
-);
-var ActionIcon = (0, import_core8.polymorphicFactory)(
-  (_props, ref) => {
-    const props = (0, import_core8.useProps)("ActionIcon", defaultProps4, _props);
-    const _a = props, {
-      className,
-      unstyled,
-      variant,
-      classNames,
-      styles,
-      style,
-      loading,
-      loaderProps,
-      size,
-      color,
-      radius,
-      __staticSelector,
-      gradient,
-      vars,
-      children,
-      disabled,
-      "data-disabled": dataDisabled
-    } = _a, others = __objRest(_a, [
-      "className",
-      "unstyled",
-      "variant",
-      "classNames",
-      "styles",
-      "style",
-      "loading",
-      "loaderProps",
-      "size",
-      "color",
-      "radius",
-      "__staticSelector",
-      "gradient",
-      "vars",
-      "children",
-      "disabled",
-      "data-disabled"
-    ]);
-    const getStyles = (0, import_core8.useStyles)({
-      name: ["ActionIcon", __staticSelector],
+    const getStyles = (0, import_core2.useStyles)({
+      name: "CloseButton",
       props,
       className,
       style,
       classes: {
-        root: "actionIcon-root",
-        loader: "actionIcon-loader"
+        root: "closeButton-root"
       },
       classNames,
       styles,
       unstyled,
       vars,
-      varsResolver: varsResolver3
+      varsResolver
     });
-    return /* @__PURE__ */ import_react9.default.createElement(
+    return /* @__PURE__ */ import_react3.default.createElement(
       UnstyledButton,
-      __spreadProps(__spreadValues(__spreadValues({}, getStyles("root", {
-        active: !disabled && !loading && !dataDisabled
-      })), others), {
-        unstyled,
-        variant,
-        size,
-        disabled: disabled || loading,
-        ref,
-        mod: { loading, disabled: disabled || dataDisabled }
-      }),
-      loading ? /* @__PURE__ */ import_react9.default.createElement(
-        Loader,
-        __spreadValues(__spreadProps(__spreadValues({}, getStyles("loader")), {
-          color: "var(--ai-color)",
-          size: "calc(var(--ai-size) * 0.55)"
-        }), loaderProps)
-      ) : children
-    );
-  }
-);
-ActionIcon.displayName = "@raikou/core/ActionIcon";
-ActionIcon.Group = ActionIconGroup;
-
-// src/CloseButton.tsx
-var defaultProps5 = {
-  iconSize: "70%",
-  variant: "subtle",
-  color: "gray"
-};
-var CloseButton = (0, import_core9.polymorphicFactory)(
-  (_props, ref) => {
-    const props = (0, import_core9.useProps)("CloseButton", defaultProps5, _props);
-    const _a = props, { iconSize, children, vars } = _a, others = __objRest(_a, ["iconSize", "children", "vars"]);
-    return /* @__PURE__ */ import_react10.default.createElement(
-      ActionIcon,
-      __spreadProps(__spreadValues({
+      __spreadValues(__spreadProps(__spreadValues({
         ref
       }, others), {
-        __vars: { "--cb-icon-size": (0, import_core9.rem)(iconSize) },
-        __staticSelector: "CloseButton"
-      }),
-      /* @__PURE__ */ import_react10.default.createElement(CloseIcon, null),
+        unstyled,
+        variant,
+        disabled,
+        mod: { disabled: disabled || dataDisabled }
+      }), getStyles("root", { variant, active: true })),
+      /* @__PURE__ */ import_react3.default.createElement(CloseIcon, null),
       children
     );
   }

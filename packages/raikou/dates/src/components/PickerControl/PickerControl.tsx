@@ -54,9 +54,7 @@ export type PickerControlFactory = Factory<{
   vars: PickerControlCssVariables;
 }>;
 
-const defaultProps: Partial<PickerControlProps> = {
-  size: "sm",
-};
+const defaultProps: Partial<PickerControlProps> = {};
 
 const varsResolver = createVarsResolver<PickerControlFactory>(
   (_, { size }) => ({

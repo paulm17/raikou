@@ -31,7 +31,7 @@ export const NativeSelect = factory<NativeSelectFactory>((props, ref) => {
   const { data, children, size, error, rightSection, ...others } = useProps(
     "NativeSelect",
     defaultProps,
-    props
+    props,
   );
 
   const options = getParsedComboboxData(data).map((item, index) => (
@@ -48,7 +48,7 @@ export const NativeSelect = factory<NativeSelectFactory>((props, ref) => {
       pointer
       error={error}
       rightSection={
-        rightSection || <ComboboxChevron size={size!} error={error} />
+        rightSection || <ComboboxChevron size={size} error={error} />
       }
     >
       {children || options}

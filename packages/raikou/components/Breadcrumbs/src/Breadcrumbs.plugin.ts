@@ -12,8 +12,8 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".breadcrumbs-separator": {
-      marginLeft: "var(--bc-separator-margin)",
-      marginRight: "var(--bc-separator-margin)",
+      marginLeft: "var(--bc-separator-margin, var(--raikou-spacing-xs))",
+      marginRight: "var(--bc-separator-margin, var(--raikou-spacing-xs))",
       color: "var(--_separator-color)",
       lineHeight: "1",
       display: "flex",

@@ -8,7 +8,7 @@ module.exports = function ({ addComponents, theme }: any) {
       border: `${rem("1px")} solid var(--_popover-bd)`,
       padding: "var(--raikou-spacing-sm) var(--raikou-spacing-md)",
       boxShadow: "var(--popover-shadow, none)",
-      borderRadius: "var(--popover-radius)",
+      borderRadius: "var(--popover-radius, var(--raikou-radius-default))",
 
       "&:focus": {
         outline: "none",

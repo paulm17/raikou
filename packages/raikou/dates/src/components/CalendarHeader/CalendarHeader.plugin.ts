@@ -8,6 +8,7 @@ module.exports = function ({ addComponents }: any) {
       "--dch-control-size-md": rem("42px"),
       "--dch-control-size-lg": rem("48px"),
       "--dch-control-size-xl": rem("54px"),
+      "--dch-control-size": "var(--dch-control-size-sm)",
 
       display: "flex",
       maxWidth: `calc(var(--dch-control-size) * 7 + ${rem("7px")})`,
@@ -66,7 +67,7 @@ module.exports = function ({ addComponents }: any) {
 
     ".dates-calendarHeaderLevel": {
       flex: "1",
-      fontSize: "var(--dch-fz)",
+      fontSize: "var(--dch-fz, var(--raikou-font-size-sm))",
       fontWeight: "500",
       textTransform: "capitalize",
     },

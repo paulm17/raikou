@@ -31,9 +31,7 @@ export function Usage() {
         opened={opened}
         onClose={close}
         title="Just a Modal"
-        size="md"
         zIndex={73812}
-        radius="md"
       >
         <input data-autofocus />
       </Modal>

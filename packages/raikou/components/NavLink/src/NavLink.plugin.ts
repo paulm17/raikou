@@ -3,6 +3,10 @@ import { rem } from "@raikou/core";
 module.exports = function ({ addComponents, theme }: any) {
   addComponents({
     ".navLink-root.navLink-root": {
+      "--nl-bg": "var(--mantine-primary-color-light)",
+      "--nl-hover": "var(--mantine-primary-color-light-hover)",
+      "--nl-color": "var(--mantine-primary-color-light-color)",
+
       display: "flex",
       alignItems: "center",
       width: "100%",
@@ -127,12 +131,13 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".navLink-children": {
-      paddingLeft: "var(--_children-pl, var(--nl-offset))",
+      paddingLeft:
+        "var(--_children-pl, var(--nl-offset, var(--raikou-spacing-lg)))",
       paddingRight: "var(--_children-pr, 0)",
 
       '[dir="rtl"] &': {
         "--_children-pl": "0",
-        "--_children-pr": "var(--nl-offset)",
+        "--_children-pr": "var(--nl-offset, var(--mantine-spacing-lg))",
       },
     },
 

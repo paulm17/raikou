@@ -104,7 +104,6 @@ import {
   useStyles
 } from "@raikou/core";
 var defaultProps = {
-  size: "sm",
   error: null
 };
 var varsResolver = createVarsResolver(
@@ -2851,7 +2850,7 @@ var defaultProps5 = {
 var varsResolver2 = createVarsResolver2(
   (_, { radius, shadow }) => ({
     dropdown: {
-      "--popover-radius": getRadius(radius),
+      "--popover-radius": radius === void 0 ? void 0 : getRadius(radius),
       "--popover-shadow": getShadow(shadow)
     }
   })
@@ -3305,6 +3304,7 @@ function useComboboxTargetProps({
   onKeyDown,
   withKeyboardNavigation,
   withAriaAttributes,
+  withExpandedAttribute,
   targetType
 }) {
   const ctx = useComboboxContext();
@@ -3355,7 +3355,7 @@ function useComboboxTargetProps({
   };
   const ariaAttributes = withAriaAttributes ? {
     "aria-haspopup": "listbox",
-    "aria-expanded": ctx.store.listId ? ctx.store.dropdownOpened : void 0,
+    "aria-expanded": withExpandedAttribute && !!(ctx.store.listId && ctx.store.dropdownOpened) || void 0,
     "aria-controls": ctx.store.listId,
     "aria-activedescendant": ctx.store.dropdownOpened ? selectedOptionId || void 0 : void 0,
     autoComplete: "off",
@@ -3379,12 +3379,14 @@ var ComboboxTarget = factory4((props, ref) => {
     refProp,
     withKeyboardNavigation,
     withAriaAttributes,
+    withExpandedAttribute,
     targetType
   } = _a, others = __objRest(_a, [
     "children",
     "refProp",
     "withKeyboardNavigation",
     "withAriaAttributes",
+    "withExpandedAttribute",
     "targetType"
   ]);
   if (!isElement5(children)) {
@@ -3397,6 +3399,7 @@ var ComboboxTarget = factory4((props, ref) => {
     targetType,
     withAriaAttributes,
     withKeyboardNavigation,
+    withExpandedAttribute,
     onKeyDown: children.props.onKeyDown
   });
   const clonedElement = cloneElement4(children, __spreadValues(__spreadValues({}, targetProps), others));
@@ -3436,7 +3439,23 @@ var defaultProps8 = {};
 var ComboboxOptions = factory6(
   (_props, ref) => {
     const props = useProps8("ComboboxOptions", defaultProps8, _props);
-    const _a = props, { classNames, className, style, styles, id, onMouseDown } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "id", "onMouseDown"]);
+    const _a = props, {
+      classNames,
+      className,
+      style,
+      styles,
+      id,
+      labelledBy,
+      onMouseDown
+    } = _a, others = __objRest(_a, [
+      "classNames",
+      "className",
+      "style",
+      "styles",
+      "id",
+      "labelledBy",
+      "onMouseDown"
+    ]);
     const ctx = useComboboxContext();
     const _id = useId3(id);
     useEffect8(() => {
@@ -3449,6 +3468,7 @@ var ComboboxOptions = factory6(
       }, ctx.getStyles("options", { className, style, classNames, styles })), others), {
         id: _id,
         role: "listbox",
+        "aria-labelledby": labelledBy,
         onMouseDown: (event) => {
           event.preventDefault();
           onMouseDown == null ? void 0 : onMouseDown(event);
@@ -3577,13 +3597,12 @@ import {
   createVarsResolver as createVarsResolver3
 } from "@raikou/core";
 var defaultProps10 = {
-  size: "sm",
   labelElement: "label"
 };
 var varsResolver3 = createVarsResolver3((_, { size: size2 }) => ({
   label: {
     "--input-label-size": getFontSize(size2),
-    "--input-asterisk-color": "var(--raikou-color-red-filled)"
+    "--input-asterisk-color": void 0
   }
 }));
 var InputLabel = factory8((_props, ref) => {
@@ -3670,12 +3689,10 @@ import {
   rem as rem4,
   createVarsResolver as createVarsResolver4
 } from "@raikou/core";
-var defaultProps11 = {
-  size: "sm"
-};
+var defaultProps11 = {};
 var varsResolver4 = createVarsResolver4((_, { size: size2 }) => ({
   error: {
-    "--input-error-size": `calc(${getFontSize2(size2)} - ${rem4(2)})`
+    "--input-error-size": size2 === void 0 ? void 0 : `calc(${getFontSize2(size2)} - ${rem4(2)})`
   }
 }));
 var InputError = factory9((_props, ref) => {
@@ -3741,13 +3758,11 @@ import {
   rem as rem5,
   createVarsResolver as createVarsResolver5
 } from "@raikou/core";
-var defaultProps12 = {
-  size: "sm"
-};
+var defaultProps12 = {};
 var varsResolver5 = createVarsResolver5(
   (_, { size: size2 }) => ({
     description: {
-      "--input-description-size": `calc(${getFontSize3(size2)} - ${rem5(2)})`
+      "--input-description-size": size2 === void 0 ? void 0 : `calc(${getFontSize3(size2)} - ${rem5(2)})`
     }
   })
 );
@@ -3887,20 +3902,19 @@ function getInputOffsets(inputWrapperOrder, { hasDescription, hasError }) {
 // ../Input/src/InputWrapper/InputWrapper.tsx
 var defaultProps14 = {
   labelElement: "label",
-  size: "sm",
   inputContainer: (children) => children,
   inputWrapperOrder: ["label", "description", "input", "error"]
 };
 var varsResolver6 = createVarsResolver6((_, { size: size2 }) => ({
   label: {
     "--input-label-size": getFontSize4(size2),
-    "--input-asterisk-color": "var(--raikou-color-red-filled)"
+    "--input-asterisk-color": void 0
   },
   error: {
-    "--input-error-size": `calc(${getFontSize4(size2)} - ${rem6(2)})`
+    "--input-error-size": size2 === void 0 ? void 0 : `calc(${getFontSize4(size2)} - ${rem6(2)})`
   },
   description: {
-    "--input-description-size": `calc(${getFontSize4(size2)} - ${rem6(2)})`
+    "--input-description-size": size2 === void 0 ? void 0 : `calc(${getFontSize4(size2)} - ${rem6(2)})`
   }
 }));
 var InputWrapper = factory12((_props, ref) => {
@@ -4055,7 +4069,6 @@ InputWrapper.displayName = "@raikou/core/InputWrapper";
 
 // ../Input/src/Input.tsx
 var defaultProps15 = {
-  size: "sm",
   variant: "default",
   leftSectionPointerEvents: "none",
   rightSectionPointerEvents: "none",
@@ -4068,7 +4081,7 @@ var varsResolver7 = createVarsResolver7((_, props, ctx) => ({
     "--input-margin-bottom": ctx.offsetBottom ? "calc(var(--raikou-spacing-xs) / 2)" : void 0,
     "--input-height": getSize2(props.size, "input-height"),
     "--input-fz": getFontSize5(props.size),
-    "--input-radius": getRadius2(props.radius),
+    "--input-radius": props.radius === void 0 ? void 0 : getRadius2(props.radius),
     "--input-left-section-width": props.leftSectionWidth !== void 0 ? rem7(props.leftSectionWidth) : void 0,
     "--input-right-section-width": props.rightSectionWidth !== void 0 ? rem7(props.rightSectionWidth) : void 0,
     "--input-padding-y": props.multiline ? getSize2(props.size, "input-padding-y") : void 0,
@@ -4254,6 +4267,7 @@ var ComboboxSearch = factory13((_props, ref) => {
     targetType: "input",
     withAriaAttributes,
     withKeyboardNavigation,
+    withExpandedAttribute: false,
     onKeyDown
   });
   return /* @__PURE__ */ React24.createElement(
@@ -4359,12 +4373,14 @@ var ComboboxEventsTarget = factory17(
       refProp,
       withKeyboardNavigation,
       withAriaAttributes,
+      withExpandedAttribute,
       targetType
     } = _a, others = __objRest(_a, [
       "children",
       "refProp",
       "withKeyboardNavigation",
       "withAriaAttributes",
+      "withExpandedAttribute",
       "targetType"
     ]);
     if (!isElement6(children)) {
@@ -4377,6 +4393,7 @@ var ComboboxEventsTarget = factory17(
       targetType,
       withAriaAttributes,
       withKeyboardNavigation,
+      withExpandedAttribute,
       onKeyDown: children.props.onKeyDown
     });
     return cloneElement5(children, __spreadProps(__spreadValues(__spreadValues({}, targetProps), others), {
@@ -4458,9 +4475,7 @@ var defaultProps23 = {
   withinPortal: true,
   resetSelectionOnOptionHover: false,
   width: "target",
-  transitionProps: { transition: "fade", duration: 0 },
-  size: "sm",
-  dropdownPadding: 4
+  transitionProps: { transition: "fade", duration: 0 }
 };
 var varsResolver8 = createVarsResolver8(
   (_, { size: size2, dropdownPadding }) => ({
@@ -4469,7 +4484,7 @@ var varsResolver8 = createVarsResolver8(
       "--combobox-option-padding": getSize3(size2, "combobox-option-padding")
     },
     dropdown: {
-      "--combobox-padding": rem8(dropdownPadding),
+      "--combobox-padding": dropdownPadding === void 0 ? void 0 : rem8(dropdownPadding),
       "--combobox-option-fz": getFontSize6(size2),
       "--combobox-option-padding": getSize3(size2, "combobox-option-padding")
     }
@@ -5363,7 +5378,6 @@ var ScrollAreaThumb = React43.forwardRef((props, forwardedRef) => {
 
 // ../ScrollArea/src/ScrollArea.tsx
 var defaultProps25 = {
-  scrollbarSize: 12,
   scrollHideDelay: 1e3,
   type: "hover"
 };
@@ -5661,7 +5675,8 @@ function Option({
         disabled: data.disabled,
         className: "comboBox-optionsDropdownOption",
         "data-reverse": checkIconPosition === "right" || void 0,
-        "data-checked": isValueChecked(value, data.value) || void 0
+        "data-checked": isValueChecked(value, data.value) || void 0,
+        "aria-selected": isValueChecked(value, data.value)
       },
       checkIconPosition === "left" && check,
       data.label,
@@ -5684,7 +5699,8 @@ function OptionsDropdown({
   withCheckIcon = false,
   value,
   checkIconPosition,
-  nothingFoundMessage
+  nothingFoundMessage,
+  labelId
 }) {
   validateOptions(data);
   const shouldFilter = typeof search === "string";
@@ -5704,12 +5720,12 @@ function OptionsDropdown({
       checkIconPosition
     }
   ));
-  return /* @__PURE__ */ React46.createElement(Combobox.Dropdown, { hidden: hidden || hiddenWhenEmpty && isEmpty }, /* @__PURE__ */ React46.createElement(Combobox.Options, null, withScrollArea ? /* @__PURE__ */ React46.createElement(
+  return /* @__PURE__ */ React46.createElement(Combobox.Dropdown, { hidden: hidden || hiddenWhenEmpty && isEmpty }, /* @__PURE__ */ React46.createElement(Combobox.Options, { labelledBy: labelId }, withScrollArea ? /* @__PURE__ */ React46.createElement(
     ScrollArea.Autosize,
     {
       mah: maxDropdownHeight != null ? maxDropdownHeight : 220,
       type: "scroll",
-      scrollbarSize: "var(--combobox-padding)",
+      scrollbarSize: "var(--_combobox-padding)",
       offsetScrollbars: "y",
       className: "comboBox-optionsDropdownScrollArea"
     },

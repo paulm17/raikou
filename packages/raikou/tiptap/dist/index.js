@@ -4171,7 +4171,7 @@ var defaultProps10 = {
 var varsResolver = (0, import_core17.createVarsResolver)(
   (_, { radius, shadow }) => ({
     dropdown: {
-      "--popover-radius": (0, import_core17.getRadius)(radius),
+      "--popover-radius": radius === void 0 ? void 0 : (0, import_core17.getRadius)(radius),
       "--popover-shadow": (0, import_core17.getShadow)(shadow)
     }
   })
@@ -4389,13 +4389,12 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
 var import_react27 = __toESM(require("react"));
 var import_core18 = require("@raikou/core");
 var defaultProps11 = {
-  size: "sm",
   labelElement: "label"
 };
 var varsResolver2 = (0, import_core18.createVarsResolver)((_, { size: size2 }) => ({
   label: {
     "--input-label-size": (0, import_core18.getFontSize)(size2),
-    "--input-asterisk-color": "var(--raikou-color-red-filled)"
+    "--input-asterisk-color": void 0
   }
 }));
 var InputLabel = (0, import_core18.factory)((_props, ref) => {
@@ -4474,12 +4473,10 @@ InputLabel.displayName = "@raikou/core/InputLabel";
 // ../components/Input/src/InputError/InputError.tsx
 var import_react28 = __toESM(require("react"));
 var import_core19 = require("@raikou/core");
-var defaultProps12 = {
-  size: "sm"
-};
+var defaultProps12 = {};
 var varsResolver3 = (0, import_core19.createVarsResolver)((_, { size: size2 }) => ({
   error: {
-    "--input-error-size": `calc(${(0, import_core19.getFontSize)(size2)} - ${(0, import_core19.rem)(2)})`
+    "--input-error-size": size2 === void 0 ? void 0 : `calc(${(0, import_core19.getFontSize)(size2)} - ${(0, import_core19.rem)(2)})`
   }
 }));
 var InputError = (0, import_core19.factory)((_props, ref) => {
@@ -4537,13 +4534,11 @@ InputError.displayName = "@raikou/core/InputError";
 // ../components/Input/src/InputDescription/InputDescription.tsx
 var import_react29 = __toESM(require("react"));
 var import_core20 = require("@raikou/core");
-var defaultProps13 = {
-  size: "sm"
-};
+var defaultProps13 = {};
 var varsResolver4 = (0, import_core20.createVarsResolver)(
   (_, { size: size2 }) => ({
     description: {
-      "--input-description-size": `calc(${(0, import_core20.getFontSize)(size2)} - ${(0, import_core20.rem)(2)})`
+      "--input-description-size": size2 === void 0 ? void 0 : `calc(${(0, import_core20.getFontSize)(size2)} - ${(0, import_core20.rem)(2)})`
     }
   })
 );
@@ -4670,20 +4665,19 @@ function getInputOffsets(inputWrapperOrder, { hasDescription, hasError }) {
 // ../components/Input/src/InputWrapper/InputWrapper.tsx
 var defaultProps15 = {
   labelElement: "label",
-  size: "sm",
   inputContainer: (children) => children,
   inputWrapperOrder: ["label", "description", "input", "error"]
 };
 var varsResolver5 = (0, import_core22.createVarsResolver)((_, { size: size2 }) => ({
   label: {
     "--input-label-size": (0, import_core22.getFontSize)(size2),
-    "--input-asterisk-color": "var(--raikou-color-red-filled)"
+    "--input-asterisk-color": void 0
   },
   error: {
-    "--input-error-size": `calc(${(0, import_core22.getFontSize)(size2)} - ${(0, import_core22.rem)(2)})`
+    "--input-error-size": size2 === void 0 ? void 0 : `calc(${(0, import_core22.getFontSize)(size2)} - ${(0, import_core22.rem)(2)})`
   },
   description: {
-    "--input-description-size": `calc(${(0, import_core22.getFontSize)(size2)} - ${(0, import_core22.rem)(2)})`
+    "--input-description-size": size2 === void 0 ? void 0 : `calc(${(0, import_core22.getFontSize)(size2)} - ${(0, import_core22.rem)(2)})`
   }
 }));
 var InputWrapper = (0, import_core22.factory)((_props, ref) => {
@@ -4838,7 +4832,6 @@ InputWrapper.displayName = "@raikou/core/InputWrapper";
 
 // ../components/Input/src/Input.tsx
 var defaultProps16 = {
-  size: "sm",
   variant: "default",
   leftSectionPointerEvents: "none",
   rightSectionPointerEvents: "none",
@@ -4851,7 +4844,7 @@ var varsResolver6 = (0, import_core23.createVarsResolver)((_, props, ctx) => ({
     "--input-margin-bottom": ctx.offsetBottom ? "calc(var(--raikou-spacing-xs) / 2)" : void 0,
     "--input-height": (0, import_core23.getSize)(props.size, "input-height"),
     "--input-fz": (0, import_core23.getFontSize)(props.size),
-    "--input-radius": (0, import_core23.getRadius)(props.radius),
+    "--input-radius": props.radius === void 0 ? void 0 : (0, import_core23.getRadius)(props.radius),
     "--input-left-section-width": props.leftSectionWidth !== void 0 ? (0, import_core23.rem)(props.leftSectionWidth) : void 0,
     "--input-right-section-width": props.rightSectionWidth !== void 0 ? (0, import_core23.rem)(props.rightSectionWidth) : void 0,
     "--input-padding-y": props.multiline ? (0, import_core23.getSize)(props.size, "input-padding-y") : void 0,
@@ -5100,7 +5093,6 @@ function useInputProps(component, defaultProps37, _props) {
 
 // ../components/InputBase/src/InputBase.tsx
 var defaultProps17 = {
-  size: "sm",
   __staticSelector: "InputBase",
   withAria: true
 };
@@ -5241,7 +5233,6 @@ var defaultLoaders = {
   progress: Progress
 };
 var defaultProps19 = {
-  size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
@@ -5249,7 +5240,7 @@ var varsResolver7 = (0, import_core31.createVarsResolver)(
   (theme, { size: size2, color }) => ({
     root: {
       "--loader-size": (0, import_core31.getSize)(size2, "loader-size"),
-      "--loader-color": (0, import_core31.getThemeColor)(color, theme)
+      "--loader-color": color ? (0, import_core31.getThemeColor)(color, theme) : void 0
     }
   })
 );
@@ -5310,8 +5301,7 @@ Loader.displayName = "@raikou/core/Loader";
 var import_react40 = __toESM(require("react"));
 var import_core32 = require("@raikou/core");
 var defaultProps20 = {
-  orientation: "horizontal",
-  borderWidth: 1
+  orientation: "horizontal"
 };
 var varsResolver8 = (0, import_core32.createVarsResolver)(
   (_, { borderWidth }) => ({
@@ -5368,18 +5358,14 @@ var ButtonGroup = (0, import_core32.factory)((_props, ref) => {
 ButtonGroup.displayName = "@raikou/core/ButtonGroup";
 
 // ../components/Button/src/Button.tsx
-var defaultProps21 = {
-  size: "sm",
-  variant: "filled",
-  loaderPosition: "left"
-};
+var defaultProps21 = {};
 var varsResolver9 = (0, import_core33.createVarsResolver)(
   (theme, { radius, color, gradient, variant, size: size2, justify }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       gradient,
-      variant
+      variant: variant || "filled"
     });
     return {
       root: {
@@ -5387,11 +5373,11 @@ var varsResolver9 = (0, import_core33.createVarsResolver)(
         "--button-height": (0, import_core33.getSize)(size2, "button-height"),
         "--button-padding-x": (0, import_core33.getSize)(size2, "button-padding-x"),
         "--button-fz": (size2 == null ? void 0 : size2.includes("compact")) ? (0, import_core33.getFontSize)(size2.replace("compact-", "")) : (0, import_core33.getFontSize)(size2),
-        "--button-radius": (0, import_core33.getRadius)(radius),
-        "--button-bg": colors.background,
-        "--button-hover": colors.hover,
-        "--button-color": colors.color,
-        "--button-bd": colors.border
+        "--button-radius": radius ? (0, import_core33.getRadius)(radius) : void 0,
+        "--button-bg": color || variant ? colors.background : void 0,
+        "--button-hover": color || variant ? colors.hover : void 0,
+        "--button-color": color || variant ? colors.color : void 0,
+        "--button-bd": color || variant ? colors.border : void 0
       }
     };
   }
@@ -5602,7 +5588,7 @@ var defaultProps22 = {
 var varsResolver10 = (0, import_core34.createVarsResolver)(
   (theme, { radius, color }) => ({
     tooltip: {
-      "--tooltip-radius": (0, import_core34.getRadius)(radius),
+      "--tooltip-radius": radius === void 0 ? void 0 : (0, import_core34.getRadius)(radius),
       "--tooltip-bg": color ? (0, import_core34.getThemeColor)(color, theme) : void 0
     }
   })
@@ -5837,7 +5823,7 @@ var defaultProps24 = {
 var varsResolver11 = (0, import_core36.createVarsResolver)(
   (theme, { radius, color }) => ({
     tooltip: {
-      "--tooltip-radius": (0, import_core36.getRadius)(radius),
+      "--tooltip-radius": radius === void 0 ? void 0 : (0, import_core36.getRadius)(radius),
       "--tooltip-bg": color ? (0, import_core36.getThemeColor)(color, theme) : void 0
     }
   })
@@ -6173,14 +6159,12 @@ var import_core51 = require("@raikou/core");
 var import_react52 = __toESM(require("react"));
 var import_core38 = require("@raikou/core");
 var defaultProps26 = {
-  size: (0, import_core38.rem)(28),
-  radius: (0, import_core38.rem)(28),
   withShadow: true
 };
 var varsResolver12 = (0, import_core38.createVarsResolver)(
   (_, { radius, size: size2 }) => ({
     root: {
-      "--cs-radius": (0, import_core38.getRadius)(radius),
+      "--cs-radius": radius === void 0 ? void 0 : (0, import_core38.getRadius)(radius),
       "--cs-size": (0, import_core38.rem)(size2)
     }
   })
@@ -6948,16 +6932,15 @@ Swatches.displayName = "@raikou/core/Swatches";
 // ../components/ColorPicker/src/ColorPicker.tsx
 var defaultProps30 = {
   swatchesPerRow: 7,
-  size: "sm",
   withPicker: true,
   focusable: true,
   __staticSelector: "ColorPicker"
 };
 var varsResolver13 = (0, import_core47.createVarsResolver)(
-  (_, { size: size2, fullWidth, swatchesPerRow }) => ({
+  (_, { size: size2, swatchesPerRow }) => ({
     wrapper: {
       "--cp-preview-size": (0, import_core47.getSize)(size2, "cp-preview-size"),
-      "--cp-width": fullWidth ? "100%" : (0, import_core47.getSize)(size2, "cp-width"),
+      "--cp-width": (0, import_core47.getSize)(size2, "cp-width"),
       "--cp-body-spacing": (0, import_core47.getSpacing)(size2),
       "--cp-swatch-size": `${100 / swatchesPerRow}%`,
       "--cp-thumb-size": (0, import_core47.getSize)(size2, "cp-thumb-size"),
@@ -7078,75 +7061,88 @@ var ColorPicker = (0, import_core47.factory)((_props, ref) => {
     formatRef.current = format;
     setValue(convertHsvaTo(format, parsed));
   }, [format]);
-  return /* @__PURE__ */ import_react61.default.createElement(ColorPickerProvider, { value: { getStyles } }, /* @__PURE__ */ import_react61.default.createElement(import_core47.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("wrapper")), { size: size2 }), others), withPicker && /* @__PURE__ */ import_react61.default.createElement(import_react61.default.Fragment, null, /* @__PURE__ */ import_react61.default.createElement(
-    Saturation,
-    {
-      value: parsed,
-      onChange: handleChange,
-      onChangeEnd: ({ s, v }) => onChangeEnd == null ? void 0 : onChangeEnd(
-        convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { s, v }))
-      ),
-      color: _value,
+  return /* @__PURE__ */ import_react61.default.createElement(ColorPickerProvider, { value: { getStyles } }, /* @__PURE__ */ import_react61.default.createElement(
+    import_core47.Box,
+    __spreadValues(__spreadProps(__spreadValues({
+      ref
+    }, getStyles("wrapper")), {
       size: size2,
-      focusable,
-      saturationLabel,
-      onScrubStart: startScrubbing,
-      onScrubEnd: stopScrubbing
-    }
-  ), /* @__PURE__ */ import_react61.default.createElement("div", __spreadValues({}, getStyles("body")), /* @__PURE__ */ import_react61.default.createElement("div", __spreadValues({}, getStyles("sliders")), /* @__PURE__ */ import_react61.default.createElement(
-    HueSlider,
-    {
-      value: parsed.h,
-      onChange: (h) => handleChange({ h }),
-      onChangeEnd: (h) => onChangeEnd == null ? void 0 : onChangeEnd(
-        convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { h }))
-      ),
-      size: size2,
-      focusable,
-      "aria-label": hueLabel,
-      onScrubStart: startScrubbing,
-      onScrubEnd: stopScrubbing
-    }
-  ), withAlpha && /* @__PURE__ */ import_react61.default.createElement(
-    AlphaSlider,
-    {
-      value: parsed.a,
-      onChange: (a) => handleChange({ a }),
-      onChangeEnd: (a) => {
-        onChangeEnd == null ? void 0 : onChangeEnd(
-          convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { a }))
-        );
-      },
-      size: size2,
-      color: convertHsvaTo("hex", parsed),
-      focusable,
-      "aria-label": alphaLabel,
-      onScrubStart: startScrubbing,
-      onScrubEnd: stopScrubbing
-    }
-  )), withAlpha && /* @__PURE__ */ import_react61.default.createElement(
-    ColorSwatch,
-    __spreadValues({
-      color: _value,
-      radius: "sm"
-    }, getStyles("preview"))
-  ))), Array.isArray(swatches) && /* @__PURE__ */ import_react61.default.createElement(
-    Swatches,
-    {
-      data: swatches,
-      swatchesPerRow,
-      focusable,
-      setValue,
-      onChangeEnd: (color) => {
-        const convertedColor = convertHsvaTo(format, parseColor(color));
-        onColorSwatchClick == null ? void 0 : onColorSwatchClick(convertedColor);
-        onChangeEnd == null ? void 0 : onChangeEnd(convertedColor);
-        if (!controlled) {
-          setParsed(parseColor(color));
+      mod: { "full-width": fullWidth }
+    }), others),
+    withPicker && /* @__PURE__ */ import_react61.default.createElement(import_react61.default.Fragment, null, /* @__PURE__ */ import_react61.default.createElement(
+      Saturation,
+      {
+        value: parsed,
+        onChange: handleChange,
+        onChangeEnd: ({ s, v }) => onChangeEnd == null ? void 0 : onChangeEnd(
+          convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), {
+            s,
+            v
+          }))
+        ),
+        color: _value,
+        size: size2,
+        focusable,
+        saturationLabel,
+        onScrubStart: startScrubbing,
+        onScrubEnd: stopScrubbing
+      }
+    ), /* @__PURE__ */ import_react61.default.createElement("div", __spreadValues({}, getStyles("body")), /* @__PURE__ */ import_react61.default.createElement("div", __spreadValues({}, getStyles("sliders")), /* @__PURE__ */ import_react61.default.createElement(
+      HueSlider,
+      {
+        value: parsed.h,
+        onChange: (h) => handleChange({ h }),
+        onChangeEnd: (h) => onChangeEnd == null ? void 0 : onChangeEnd(
+          convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { h }))
+        ),
+        size: size2,
+        focusable,
+        "aria-label": hueLabel,
+        onScrubStart: startScrubbing,
+        onScrubEnd: stopScrubbing
+      }
+    ), withAlpha && /* @__PURE__ */ import_react61.default.createElement(
+      AlphaSlider,
+      {
+        value: parsed.a,
+        onChange: (a) => handleChange({ a }),
+        onChangeEnd: (a) => {
+          onChangeEnd == null ? void 0 : onChangeEnd(
+            convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { a }))
+          );
+        },
+        size: size2,
+        color: convertHsvaTo("hex", parsed),
+        focusable,
+        "aria-label": alphaLabel,
+        onScrubStart: startScrubbing,
+        onScrubEnd: stopScrubbing
+      }
+    )), withAlpha && /* @__PURE__ */ import_react61.default.createElement(
+      ColorSwatch,
+      __spreadValues({
+        color: _value,
+        radius: "sm"
+      }, getStyles("preview"))
+    ))),
+    Array.isArray(swatches) && /* @__PURE__ */ import_react61.default.createElement(
+      Swatches,
+      {
+        data: swatches,
+        swatchesPerRow,
+        focusable,
+        setValue,
+        onChangeEnd: (color) => {
+          const convertedColor = convertHsvaTo(format, parseColor(color));
+          onColorSwatchClick == null ? void 0 : onColorSwatchClick(convertedColor);
+          onChangeEnd == null ? void 0 : onChangeEnd(convertedColor);
+          if (!controlled) {
+            setParsed(parseColor(color));
+          }
         }
       }
-    }
-  )));
+    )
+  ));
 });
 ColorPicker.displayName = "@raikou/core/ColorPicker";
 
@@ -7162,9 +7158,6 @@ function filterFalsyChildren(children) {
 
 // ../components/Group/src/Group.tsx
 var defaultProps31 = {
-  justify: "flex-start",
-  align: "center",
-  gap: "md",
   preventGrowOverflow: true
 };
 var varsResolver14 = (0, import_core48.createVarsResolver)(
@@ -7215,9 +7208,8 @@ var Group = (0, import_core48.factory)((_props, ref) => {
   ]);
   const filteredChildren = filterFalsyChildren(children);
   const childrenCount = filteredChildren.length;
-  const childWidth = `calc(${100 / childrenCount}% - (${(0, import_core48.getSpacing)(
-    gap
-  )} - ${(0, import_core48.getSpacing)(gap)} / ${childrenCount}))`;
+  const resolvedGap = (0, import_core48.getSpacing)(gap != null ? gap : "md");
+  const childWidth = `calc(${100 / childrenCount}% - (${resolvedGap} - ${resolvedGap} / ${childrenCount}))`;
   const stylesCtx = { childWidth };
   const getStyles = (0, import_core48.useStyles)({
     name: "Group",
@@ -7253,8 +7245,7 @@ var import_core50 = require("@raikou/core");
 var import_react64 = __toESM(require("react"));
 var import_core49 = require("@raikou/core");
 var defaultProps32 = {
-  orientation: "horizontal",
-  borderWidth: 1
+  orientation: "horizontal"
 };
 var varsResolver15 = (0, import_core49.createVarsResolver)(
   (_, { borderWidth }) => ({
@@ -7314,26 +7305,23 @@ var ActionIconGroup = (0, import_core49.factory)(
 ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
 
 // ../components/ActionIcon/src/ActionIcon.tsx
-var defaultProps33 = {
-  variant: "filled",
-  size: "md"
-};
+var defaultProps33 = {};
 var varsResolver16 = (0, import_core50.createVarsResolver)(
   (theme, { size: size2, radius, variant, gradient, color }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       gradient,
-      variant
+      variant: variant || "filled"
     });
     return {
       root: {
         "--ai-size": (0, import_core50.getSize)(size2, "ai-size"),
-        "--ai-radius": (0, import_core50.getRadius)(radius),
-        "--ai-bg": colors.background,
-        "--ai-hover": colors.hover,
-        "--ai-color": colors.color,
-        "--ai-bd": colors.border
+        "--ai-radius": radius === void 0 ? void 0 : (0, import_core50.getRadius)(radius),
+        "--ai-bg": color || variant ? colors.background : void 0,
+        "--ai-hover": color || variant ? colors.hover : void 0,
+        "--ai-color": color || variant ? colors.color : void 0,
+        "--ai-bd": color || variant ? colors.border : void 0
       }
     };
   }

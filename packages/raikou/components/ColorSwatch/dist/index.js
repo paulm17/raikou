@@ -64,14 +64,12 @@ module.exports = __toCommonJS(src_exports);
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
 var defaultProps = {
-  size: (0, import_core.rem)(28),
-  radius: (0, import_core.rem)(28),
   withShadow: true
 };
 var varsResolver = (0, import_core.createVarsResolver)(
   (_, { radius, size }) => ({
     root: {
-      "--cs-radius": (0, import_core.getRadius)(radius),
+      "--cs-radius": radius === void 0 ? void 0 : (0, import_core.getRadius)(radius),
       "--cs-size": (0, import_core.rem)(size)
     }
   })

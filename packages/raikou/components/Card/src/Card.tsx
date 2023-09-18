@@ -49,9 +49,7 @@ export type CardFactory = PolymorphicFactory<{
   };
 }>;
 
-const defaultProps: Partial<CardProps> = {
-  padding: "md",
-};
+const defaultProps: Partial<CardProps> = {};
 
 const varsResolver = createVarsResolver<CardFactory>((_, { padding }) => ({
   root: {

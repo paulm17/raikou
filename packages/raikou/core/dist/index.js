@@ -439,7 +439,7 @@ function getLineHeight(size) {
 }
 function getShadow(size) {
   if (!size) {
-    return "none";
+    return void 0;
   }
   return getSize(size, "raikou-shadow");
 }

@@ -48,7 +48,7 @@ const defaultProps: Partial<PaperProps> = {};
 const varsResolver = createVarsResolver<PaperFactory>(
   (_, { radius, shadow }) => ({
     root: {
-      "--paper-radius": getRadius(radius),
+      "--paper-radius": radius === undefined ? undefined : getRadius(radius),
       "--paper-shadow": getShadow(shadow),
     },
   }),

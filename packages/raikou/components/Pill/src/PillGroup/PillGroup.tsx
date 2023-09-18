@@ -39,7 +39,7 @@ export type PillGroupFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: PillGroupStylesNames;
   vars: PillGroupCssVariables;
-  ctx: { size: RaikouSize | (string & {}) };
+  ctx: { size: RaikouSize | (string & {}) | undefined };
 }>;
 
 const defaultProps: Partial<PillGroupProps> = {};
@@ -47,10 +47,9 @@ const defaultProps: Partial<PillGroupProps> = {};
 const varsResolver = createVarsResolver<PillGroupFactory>(
   (_, { gap }, { size }) => ({
     group: {
-      "--pg-gap":
-        typeof gap !== "undefined" ? getSize(gap) : getSize(size, "pg-gap"),
+      "--pg-gap": gap !== undefined ? getSize(gap) : getSize(size, "pg-gap"),
     },
-  })
+  }),
 );
 
 export const PillGroup = factory<PillGroupFactory>((_props, ref) => {
@@ -67,7 +66,7 @@ export const PillGroup = factory<PillGroupFactory>((_props, ref) => {
     ...others
   } = props;
   const pillsInputCtx = usePillsInputContext();
-  const _size = pillsInputCtx?.size || size || "sm";
+  const _size = pillsInputCtx?.size || size || undefined;
 
   const getStyles = useStyles<PillGroupFactory>({
     name: "PillGroup",

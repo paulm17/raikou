@@ -3,8 +3,8 @@ module.exports = function ({ addComponents }: any) {
     ".text-root": {
       "-webkit-tap-highlight-color": "transparent",
       textDecoration: "none",
-      fontSize: "var(--text-fz)",
-      lineHeight: "var(--text-lh)",
+      fontSize: "var(--text-fz, var(--raikou-font-size-md))",
+      lineHeight: "var(--text-lh, var(--raikou-line-height-md))",
       fontWeight: "normal",
       margin: "0",
       padding: "0",

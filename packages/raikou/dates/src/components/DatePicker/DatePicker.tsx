@@ -20,6 +20,8 @@ import {
 import { DecadeLevelBaseSettings } from "../DecadeLevel";
 import { YearLevelBaseSettings } from "../YearLevel";
 import { MonthLevelBaseSettings } from "../MonthLevel";
+import { shiftTimezone } from "../../utils";
+import { useDatesContext } from "../DatesProvider";
 
 export type DatePickerStylesNames = CalendarStylesNames;
 
@@ -87,6 +89,7 @@ export const DatePicker: DatePickerComponent = factory<DatePickerFactory>(
       hideOutsideDates,
       __onDayMouseEnter,
       __onDayClick,
+      __timezoneApplied,
       ...others
     } = props;
 
@@ -104,6 +107,7 @@ export const DatePicker: DatePickerComponent = factory<DatePickerFactory>(
       defaultValue,
       onChange,
       onMouseLeave,
+      applyTimezone: !__timezoneApplied,
     });
 
     const { resolvedClassNames, resolvedStyles } =
@@ -112,6 +116,8 @@ export const DatePicker: DatePickerComponent = factory<DatePickerFactory>(
         styles,
         props,
       });
+
+    const ctx = useDatesContext();
 
     return (
       <Calendar
@@ -136,6 +142,13 @@ export const DatePicker: DatePickerComponent = factory<DatePickerFactory>(
           ...getDayProps?.(date),
         })}
         {...others}
+        date={shiftTimezone(
+          "add",
+          others.date,
+          ctx.getTimezone(),
+          __timezoneApplied,
+        )}
+        __timezoneApplied
       />
     );
   },

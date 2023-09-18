@@ -67,17 +67,14 @@ module.exports = __toCommonJS(src_exports);
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
 var defaultProps = {
-  color: "#000",
-  backgroundOpacity: 0.6,
-  zIndex: (0, import_core.getDefaultZIndex)("modal"),
-  radius: 0
+  zIndex: (0, import_core.getDefaultZIndex)("modal")
 };
 var varsResolver = (0, import_core.createVarsResolver)(
   (_, { gradient, color, backgroundOpacity, blur, radius, zIndex }) => ({
     root: {
-      "--overlay-bg": gradient || (0, import_core.rgba)(color || "#000", backgroundOpacity != null ? backgroundOpacity : 0.6),
+      "--overlay-bg": gradient || (color !== void 0 || backgroundOpacity !== void 0) && (0, import_core.rgba)(color || "#000", backgroundOpacity != null ? backgroundOpacity : 0.6) || void 0,
       "--overlay-filter": blur ? `blur(${(0, import_core.rem)(blur)})` : void 0,
-      "--overlay-radius": (0, import_core.getRadius)(radius),
+      "--overlay-radius": radius === void 0 ? void 0 : (0, import_core.getRadius)(radius),
       "--overlay-z-index": zIndex == null ? void 0 : zIndex.toString()
     }
   })

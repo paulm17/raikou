@@ -1,5 +1,5 @@
 import React from "react";
-import { useUncontrolled } from "@raikou/hooks";
+import { useUncontrolled, useId } from "@raikou/hooks";
 import {
   BoxProps,
   StylesApiProps,
@@ -83,7 +83,6 @@ const defaultProps: Partial<TagsInputProps> = {
   maxTags: Infinity,
   allowDuplicates: false,
   splitChars: [","],
-  size: "sm",
   tagsContainer: (children) => children,
 };
 
@@ -148,10 +147,12 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     withErrorStyles,
     name,
     form,
+    id,
     tagsContainer,
     ...others
   } = props;
 
+  const _id = useId(id);
   const parsedData = getParsedComboboxData(data);
   const optionsLockup = getOptionsLockup(parsedData);
 
@@ -330,6 +331,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
             multiline
             withErrorStyles={withErrorStyles}
             __stylesApiProps={{ ...props, multiline: true }}
+            id={_id}
           >
             <Pill.Group disabled={disabled} {...getStyles("pillsList")}>
               <React.Fragment key="tagsContainer">
@@ -357,6 +359,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
                   }
                   disabled={disabled}
                   readOnly={readOnly}
+                  id={_id}
                 />
               </Combobox.EventsTarget>
             </Pill.Group>
@@ -372,6 +375,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
           hiddenWhenEmpty
           withScrollArea={withScrollArea}
           maxDropdownHeight={maxDropdownHeight}
+          labelId={`${_id}-label`}
         />
       </Combobox>
       <input

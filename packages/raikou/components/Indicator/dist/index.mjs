@@ -96,9 +96,9 @@ var defaultProps = {
 var varsResolver = createVarsResolver(
   (theme, { color, position, offset, size, radius, zIndex }) => ({
     root: __spreadValues({
-      "--indicator-color": getThemeColor(color, theme),
+      "--indicator-color": color ? getThemeColor(color, theme) : void 0,
       "--indicator-size": rem2(size),
-      "--indicator-radius": typeof radius !== "undefined" ? getRadius(radius) : void 0,
+      "--indicator-radius": radius === void 0 ? void 0 : getRadius(radius),
       "--indicator-z-index": zIndex == null ? void 0 : zIndex.toString()
     }, getPositionVariables(position, offset))
   })

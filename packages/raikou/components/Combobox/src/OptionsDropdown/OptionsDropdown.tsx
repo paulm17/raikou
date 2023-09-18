@@ -29,7 +29,7 @@ interface OptionProps {
 
 function isValueChecked(
   value: string | string[] | undefined | null,
-  optionValue: string
+  optionValue: string,
 ) {
   return Array.isArray(value)
     ? value.includes(optionValue)
@@ -53,6 +53,7 @@ function Option({
         className="comboBox-optionsDropdownOption"
         data-reverse={checkIconPosition === "right" || undefined}
         data-checked={isValueChecked(value, data.value) || undefined}
+        aria-selected={isValueChecked(value, data.value)}
       >
         {checkIconPosition === "left" && check}
         {data.label}
@@ -81,6 +82,7 @@ export interface OptionsDropdownProps {
   value?: string | string[] | null;
   checkIconPosition?: "left" | "right";
   nothingFoundMessage?: React.ReactNode;
+  labelId: string;
 }
 
 export function OptionsDropdown({
@@ -97,6 +99,7 @@ export function OptionsDropdown({
   value,
   checkIconPosition,
   nothingFoundMessage,
+  labelId,
 }: OptionsDropdownProps) {
   validateOptions(data);
 
@@ -122,12 +125,12 @@ export function OptionsDropdown({
 
   return (
     <Combobox.Dropdown hidden={hidden || (hiddenWhenEmpty && isEmpty)}>
-      <Combobox.Options>
+      <Combobox.Options labelledBy={labelId}>
         {withScrollArea ? (
           <ScrollArea.Autosize
             mah={maxDropdownHeight ?? 220}
             type="scroll"
-            scrollbarSize="var(--combobox-padding)"
+            scrollbarSize="var(--_combobox-padding)"
             offsetScrollbars="y"
             className="comboBox-optionsDropdownScrollArea"
           >

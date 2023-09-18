@@ -15,6 +15,9 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".indicator-root": {
+      "--indicator-size": rem("10px"),
+      "--indicator-color": "var(--raikou-primary-color-filled)",
+
       position: "relative",
       display: "var(--_indicator-display, block)",
 

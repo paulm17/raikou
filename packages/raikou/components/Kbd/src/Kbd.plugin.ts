@@ -8,12 +8,14 @@ module.exports = function ({ addComponents, theme }: any) {
       "--kbd-fz-md": rem("14px"),
       "--kbd-fz-lg": rem("16px"),
       "--kbd-fz-xl": rem("20px"),
+      "--kbd-fz": "var(--kbd-fz-sm)",
 
       "--kbd-padding-xs": `${rem("2px")} ${rem("4px")}`,
       "--kbd-padding-sm": `${rem("3px")} ${rem("5px")}`,
       "--kbd-padding-md": `${rem("4px")} ${rem("7px")}`,
       "--kbd-padding-lg": `${rem("5px")} ${rem("9px")}`,
       "--kbd-padding-xl": `${rem("8px")} ${rem("14px")}`,
+      "--kbd-padding": "var(--kbd-padding-sm)",
 
       fontFamily: "var(--raikou-font-family-monospace)",
       lineHeight: "var(--raikou-line-height)",

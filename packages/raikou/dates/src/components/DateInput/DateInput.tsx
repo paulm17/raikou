@@ -16,7 +16,8 @@ import {
 } from "../../../../components/Input/src";
 import { PopoverProps, Popover } from "../../../../components/Popover/src";
 import { CloseButton } from "../../../../components/CloseButton/src";
-import { useUncontrolled, useDidUpdate } from "@raikou/hooks";
+import { useDidUpdate } from "@raikou/hooks";
+import { useUncontrolledDates } from "../../hooks";
 import dayjs from "dayjs";
 import {
   Calendar,
@@ -102,7 +103,6 @@ const defaultProps: Partial<DateInputProps> = {
   valueFormat: "MMMM D, YYYY",
   fixOnBlur: true,
   preserveTime: true,
-  size: "sm",
 };
 
 export const DateInput = factory<DateInputFactory>((_props, ref) => {
@@ -146,7 +146,7 @@ export const DateInput = factory<DateInputFactory>((_props, ref) => {
   const defaultDateParser = (val: string) => {
     const parsedDate = dayjs(val, valueFormat, ctx.getLocale(locale)).toDate();
     return Number.isNaN(parsedDate.getTime())
-      ? dateStringParser(val)
+      ? dateStringParser(val, ctx.getTimezone())
       : parsedDate;
   };
 
@@ -157,18 +157,18 @@ export const DateInput = factory<DateInputFactory>((_props, ref) => {
   const formatValue = (val: Date) =>
     val ? dayjs(val).locale(ctx.getLocale(locale)).format(valueFormat) : "";
 
-  const [_value, setValue, controlled] = useUncontrolled({
+  const [_value, setValue, controlled] = useUncontrolledDates({
+    type: "default",
     value,
     defaultValue,
-    finalValue: null,
     onChange,
   });
 
-  const [_date, setDate] = useUncontrolled({
+  const [_date, setDate] = useUncontrolledDates({
+    type: "default",
     value: date,
     defaultValue: defaultValue || defaultDate,
-    finalValue: null,
-    onChange: onDateChange,
+    onChange: onDateChange as any,
   });
 
   useEffect(() => {
@@ -292,6 +292,7 @@ export const DateInput = factory<DateInputFactory>((_props, ref) => {
           >
             <Calendar
               __staticSelector="DateInput"
+              __timezoneApplied
               {...calendarProps}
               classNames={classNames}
               styles={styles}

@@ -39,14 +39,12 @@ import {
   createVarsResolver
 } from "@raikou/core";
 var defaultProps = {
-  size: rem(28),
-  radius: rem(28),
   withShadow: true
 };
 var varsResolver = createVarsResolver(
   (_, { radius, size }) => ({
     root: {
-      "--cs-radius": getRadius(radius),
+      "--cs-radius": radius === void 0 ? void 0 : getRadius(radius),
       "--cs-size": rem(size)
     }
   })

@@ -85,9 +85,9 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/TagsInput.tsx
-var import_react71 = __toESM(require("react"));
+var import_react64 = __toESM(require("react"));
 var import_hooks25 = require("@raikou/hooks");
-var import_core52 = require("@raikou/core");
+var import_core45 = require("@raikou/core");
 
 // ../Combobox/src/get-parsed-combobox-data/get-parsed-combobox-data.ts
 function parseItem(item) {
@@ -127,7 +127,6 @@ function getOptionsLockup(options) {
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
 var defaultProps = {
-  size: "sm",
   error: null
 };
 var varsResolver = (0, import_core.createVarsResolver)(
@@ -2853,7 +2852,7 @@ var defaultProps5 = {
 var varsResolver2 = (0, import_core12.createVarsResolver)(
   (_, { radius, shadow }) => ({
     dropdown: {
-      "--popover-radius": (0, import_core12.getRadius)(radius),
+      "--popover-radius": radius === void 0 ? void 0 : (0, import_core12.getRadius)(radius),
       "--popover-shadow": (0, import_core12.getShadow)(shadow)
     }
   })
@@ -3307,6 +3306,7 @@ function useComboboxTargetProps({
   onKeyDown,
   withKeyboardNavigation,
   withAriaAttributes,
+  withExpandedAttribute,
   targetType
 }) {
   const ctx = useComboboxContext();
@@ -3357,7 +3357,7 @@ function useComboboxTargetProps({
   };
   const ariaAttributes = withAriaAttributes ? {
     "aria-haspopup": "listbox",
-    "aria-expanded": ctx.store.listId ? ctx.store.dropdownOpened : void 0,
+    "aria-expanded": withExpandedAttribute && !!(ctx.store.listId && ctx.store.dropdownOpened) || void 0,
     "aria-controls": ctx.store.listId,
     "aria-activedescendant": ctx.store.dropdownOpened ? selectedOptionId || void 0 : void 0,
     autoComplete: "off",
@@ -3381,12 +3381,14 @@ var ComboboxTarget = (0, import_core13.factory)((props, ref) => {
     refProp,
     withKeyboardNavigation,
     withAriaAttributes,
+    withExpandedAttribute,
     targetType
   } = _a, others = __objRest(_a, [
     "children",
     "refProp",
     "withKeyboardNavigation",
     "withAriaAttributes",
+    "withExpandedAttribute",
     "targetType"
   ]);
   if (!(0, import_core13.isElement)(children)) {
@@ -3399,6 +3401,7 @@ var ComboboxTarget = (0, import_core13.factory)((props, ref) => {
     targetType,
     withAriaAttributes,
     withKeyboardNavigation,
+    withExpandedAttribute,
     onKeyDown: children.props.onKeyDown
   });
   const clonedElement = (0, import_react22.cloneElement)(children, __spreadValues(__spreadValues({}, targetProps), others));
@@ -3434,7 +3437,23 @@ var defaultProps8 = {};
 var ComboboxOptions = (0, import_core15.factory)(
   (_props, ref) => {
     const props = (0, import_core15.useProps)("ComboboxOptions", defaultProps8, _props);
-    const _a = props, { classNames, className, style, styles, id, onMouseDown } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "id", "onMouseDown"]);
+    const _a = props, {
+      classNames,
+      className,
+      style,
+      styles,
+      id,
+      labelledBy,
+      onMouseDown
+    } = _a, others = __objRest(_a, [
+      "classNames",
+      "className",
+      "style",
+      "styles",
+      "id",
+      "labelledBy",
+      "onMouseDown"
+    ]);
     const ctx = useComboboxContext();
     const _id = (0, import_hooks11.useId)(id);
     (0, import_react24.useEffect)(() => {
@@ -3447,6 +3466,7 @@ var ComboboxOptions = (0, import_core15.factory)(
       }, ctx.getStyles("options", { className, style, classNames, styles })), others), {
         id: _id,
         role: "listbox",
+        "aria-labelledby": labelledBy,
         onMouseDown: (event) => {
           event.preventDefault();
           onMouseDown == null ? void 0 : onMouseDown(event);
@@ -3553,13 +3573,12 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
 var import_react26 = __toESM(require("react"));
 var import_core17 = require("@raikou/core");
 var defaultProps10 = {
-  size: "sm",
   labelElement: "label"
 };
 var varsResolver3 = (0, import_core17.createVarsResolver)((_, { size: size2 }) => ({
   label: {
     "--input-label-size": (0, import_core17.getFontSize)(size2),
-    "--input-asterisk-color": "var(--raikou-color-red-filled)"
+    "--input-asterisk-color": void 0
   }
 }));
 var InputLabel = (0, import_core17.factory)((_props, ref) => {
@@ -3638,12 +3657,10 @@ InputLabel.displayName = "@raikou/core/InputLabel";
 // ../Input/src/InputError/InputError.tsx
 var import_react27 = __toESM(require("react"));
 var import_core18 = require("@raikou/core");
-var defaultProps11 = {
-  size: "sm"
-};
+var defaultProps11 = {};
 var varsResolver4 = (0, import_core18.createVarsResolver)((_, { size: size2 }) => ({
   error: {
-    "--input-error-size": `calc(${(0, import_core18.getFontSize)(size2)} - ${(0, import_core18.rem)(2)})`
+    "--input-error-size": size2 === void 0 ? void 0 : `calc(${(0, import_core18.getFontSize)(size2)} - ${(0, import_core18.rem)(2)})`
   }
 }));
 var InputError = (0, import_core18.factory)((_props, ref) => {
@@ -3701,13 +3718,11 @@ InputError.displayName = "@raikou/core/InputError";
 // ../Input/src/InputDescription/InputDescription.tsx
 var import_react28 = __toESM(require("react"));
 var import_core19 = require("@raikou/core");
-var defaultProps12 = {
-  size: "sm"
-};
+var defaultProps12 = {};
 var varsResolver5 = (0, import_core19.createVarsResolver)(
   (_, { size: size2 }) => ({
     description: {
-      "--input-description-size": `calc(${(0, import_core19.getFontSize)(size2)} - ${(0, import_core19.rem)(2)})`
+      "--input-description-size": size2 === void 0 ? void 0 : `calc(${(0, import_core19.getFontSize)(size2)} - ${(0, import_core19.rem)(2)})`
     }
   })
 );
@@ -3834,20 +3849,19 @@ function getInputOffsets(inputWrapperOrder, { hasDescription, hasError }) {
 // ../Input/src/InputWrapper/InputWrapper.tsx
 var defaultProps14 = {
   labelElement: "label",
-  size: "sm",
   inputContainer: (children) => children,
   inputWrapperOrder: ["label", "description", "input", "error"]
 };
 var varsResolver6 = (0, import_core21.createVarsResolver)((_, { size: size2 }) => ({
   label: {
     "--input-label-size": (0, import_core21.getFontSize)(size2),
-    "--input-asterisk-color": "var(--raikou-color-red-filled)"
+    "--input-asterisk-color": void 0
   },
   error: {
-    "--input-error-size": `calc(${(0, import_core21.getFontSize)(size2)} - ${(0, import_core21.rem)(2)})`
+    "--input-error-size": size2 === void 0 ? void 0 : `calc(${(0, import_core21.getFontSize)(size2)} - ${(0, import_core21.rem)(2)})`
   },
   description: {
-    "--input-description-size": `calc(${(0, import_core21.getFontSize)(size2)} - ${(0, import_core21.rem)(2)})`
+    "--input-description-size": size2 === void 0 ? void 0 : `calc(${(0, import_core21.getFontSize)(size2)} - ${(0, import_core21.rem)(2)})`
   }
 }));
 var InputWrapper = (0, import_core21.factory)((_props, ref) => {
@@ -4002,7 +4016,6 @@ InputWrapper.displayName = "@raikou/core/InputWrapper";
 
 // ../Input/src/Input.tsx
 var defaultProps15 = {
-  size: "sm",
   variant: "default",
   leftSectionPointerEvents: "none",
   rightSectionPointerEvents: "none",
@@ -4015,7 +4028,7 @@ var varsResolver7 = (0, import_core22.createVarsResolver)((_, props, ctx) => ({
     "--input-margin-bottom": ctx.offsetBottom ? "calc(var(--raikou-spacing-xs) / 2)" : void 0,
     "--input-height": (0, import_core22.getSize)(props.size, "input-height"),
     "--input-fz": (0, import_core22.getFontSize)(props.size),
-    "--input-radius": (0, import_core22.getRadius)(props.radius),
+    "--input-radius": props.radius === void 0 ? void 0 : (0, import_core22.getRadius)(props.radius),
     "--input-left-section-width": props.leftSectionWidth !== void 0 ? (0, import_core22.rem)(props.leftSectionWidth) : void 0,
     "--input-right-section-width": props.rightSectionWidth !== void 0 ? (0, import_core22.rem)(props.rightSectionWidth) : void 0,
     "--input-padding-y": props.multiline ? (0, import_core22.getSize)(props.size, "input-padding-y") : void 0,
@@ -4171,8 +4184,8 @@ Input.displayName = "@raikou/core/Input";
 
 // ../Input/src/use-input-props.ts
 var import_core23 = require("@raikou/core");
-function useInputProps(component, defaultProps37, _props) {
-  const props = (0, import_core23.useProps)(component, defaultProps37, _props);
+function useInputProps(component, defaultProps34, _props) {
+  const props = (0, import_core23.useProps)(component, defaultProps34, _props);
   const _a = props, {
     label,
     description,
@@ -4294,6 +4307,7 @@ var ComboboxSearch = (0, import_core24.factory)((_props, ref) => {
     targetType: "input",
     withAriaAttributes,
     withKeyboardNavigation,
+    withExpandedAttribute: false,
     onKeyDown
   });
   return /* @__PURE__ */ import_react32.default.createElement(
@@ -4387,12 +4401,14 @@ var ComboboxEventsTarget = (0, import_core28.factory)(
       refProp,
       withKeyboardNavigation,
       withAriaAttributes,
+      withExpandedAttribute,
       targetType
     } = _a, others = __objRest(_a, [
       "children",
       "refProp",
       "withKeyboardNavigation",
       "withAriaAttributes",
+      "withExpandedAttribute",
       "targetType"
     ]);
     if (!(0, import_core28.isElement)(children)) {
@@ -4405,6 +4421,7 @@ var ComboboxEventsTarget = (0, import_core28.factory)(
       targetType,
       withAriaAttributes,
       withKeyboardNavigation,
+      withExpandedAttribute,
       onKeyDown: children.props.onKeyDown
     });
     return (0, import_react36.cloneElement)(children, __spreadProps(__spreadValues(__spreadValues({}, targetProps), others), {
@@ -4482,9 +4499,7 @@ var defaultProps23 = {
   withinPortal: true,
   resetSelectionOnOptionHover: false,
   width: "target",
-  transitionProps: { transition: "fade", duration: 0 },
-  size: "sm",
-  dropdownPadding: 4
+  transitionProps: { transition: "fade", duration: 0 }
 };
 var varsResolver8 = (0, import_core31.createVarsResolver)(
   (_, { size: size2, dropdownPadding }) => ({
@@ -4493,7 +4508,7 @@ var varsResolver8 = (0, import_core31.createVarsResolver)(
       "--combobox-option-padding": (0, import_core31.getSize)(size2, "combobox-option-padding")
     },
     dropdown: {
-      "--combobox-padding": (0, import_core31.rem)(dropdownPadding),
+      "--combobox-padding": dropdownPadding === void 0 ? void 0 : (0, import_core31.rem)(dropdownPadding),
       "--combobox-option-fz": (0, import_core31.getFontSize)(size2),
       "--combobox-option-padding": (0, import_core31.getSize)(size2, "combobox-option-padding")
     }
@@ -5376,7 +5391,6 @@ var ScrollAreaThumb = import_react51.default.forwardRef((props, forwardedRef) =>
 
 // ../ScrollArea/src/ScrollArea.tsx
 var defaultProps25 = {
-  scrollbarSize: 12,
   scrollHideDelay: 1e3,
   type: "hover"
 };
@@ -5674,7 +5688,8 @@ function Option({
         disabled: data.disabled,
         className: "comboBox-optionsDropdownOption",
         "data-reverse": checkIconPosition === "right" || void 0,
-        "data-checked": isValueChecked(value, data.value) || void 0
+        "data-checked": isValueChecked(value, data.value) || void 0,
+        "aria-selected": isValueChecked(value, data.value)
       },
       checkIconPosition === "left" && check,
       data.label,
@@ -5697,7 +5712,8 @@ function OptionsDropdown({
   withCheckIcon = false,
   value,
   checkIconPosition,
-  nothingFoundMessage
+  nothingFoundMessage,
+  labelId
 }) {
   validateOptions(data);
   const shouldFilter = typeof search === "string";
@@ -5717,12 +5733,12 @@ function OptionsDropdown({
       checkIconPosition
     }
   ));
-  return /* @__PURE__ */ import_react54.default.createElement(Combobox.Dropdown, { hidden: hidden || hiddenWhenEmpty && isEmpty }, /* @__PURE__ */ import_react54.default.createElement(Combobox.Options, null, withScrollArea ? /* @__PURE__ */ import_react54.default.createElement(
+  return /* @__PURE__ */ import_react54.default.createElement(Combobox.Dropdown, { hidden: hidden || hiddenWhenEmpty && isEmpty }, /* @__PURE__ */ import_react54.default.createElement(Combobox.Options, { labelledBy: labelId }, withScrollArea ? /* @__PURE__ */ import_react54.default.createElement(
     ScrollArea.Autosize,
     {
       mah: maxDropdownHeight != null ? maxDropdownHeight : 220,
       type: "scroll",
-      scrollbarSize: "var(--combobox-padding)",
+      scrollbarSize: "var(--_combobox-padding)",
       offsetScrollbars: "y",
       className: "comboBox-optionsDropdownScrollArea"
     },
@@ -5738,7 +5754,6 @@ var import_core39 = require("@raikou/core");
 var import_react55 = __toESM(require("react"));
 var import_core37 = require("@raikou/core");
 var defaultProps26 = {
-  size: "sm",
   __staticSelector: "InputBase",
   withAria: true
 };
@@ -5823,9 +5838,7 @@ var PillsInputField = (0, import_core38.factory)(
 PillsInputField.displayName = "@raikou/core/PillsInputField";
 
 // ../PillsInput/src/PillsInput.tsx
-var defaultProps28 = {
-  size: "sm"
-};
+var defaultProps28 = {};
 var PillsInput = (0, import_core39.factory)((_props, ref) => {
   const props = (0, import_core39.useProps)("PillsInput", defaultProps28, _props);
   const _a = props, {
@@ -5887,14 +5900,14 @@ PillsInput.displayName = "@raikou/core/PillsInput";
 PillsInput.Field = PillsInputField;
 
 // ../Pill/src/Pill.tsx
-var import_react69 = __toESM(require("react"));
-var import_core50 = require("@raikou/core");
+var import_react62 = __toESM(require("react"));
+var import_core43 = require("@raikou/core");
 
 // ../CloseButton/src/CloseIcon.tsx
 var import_react58 = __toESM(require("react"));
 var CloseIcon = (0, import_react58.forwardRef)(
   (_a, ref) => {
-    var _b = _a, { size: size2 = "var(--cb-icon-size)", style } = _b, others = __objRest(_b, ["size", "style"]);
+    var _b = _a, { size: size2 = "var(--cb-icon-size, 70%)", style } = _b, others = __objRest(_b, ["size", "style"]);
     return /* @__PURE__ */ import_react58.default.createElement(
       "svg",
       __spreadValues({
@@ -5919,12 +5932,8 @@ var CloseIcon = (0, import_react58.forwardRef)(
 CloseIcon.displayName = "@raikou/core/CloseIcon";
 
 // ../CloseButton/src/CloseButton.tsx
-var import_react67 = __toESM(require("react"));
-var import_core48 = require("@raikou/core");
-
-// ../ActionIcon/src/ActionIcon.tsx
-var import_react66 = __toESM(require("react"));
-var import_core47 = require("@raikou/core");
+var import_react60 = __toESM(require("react"));
+var import_core41 = require("@raikou/core");
 
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react59 = __toESM(require("react"));
@@ -5976,366 +5985,75 @@ var UnstyledButton = (0, import_core40.polymorphicFactory)(
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
-// ../Loader/src/Loader.tsx
-var import_react64 = __toESM(require("react"));
-var import_core45 = require("@raikou/core");
-
-// ../Loader/src/loaders/Bars.tsx
-var import_react60 = __toESM(require("react"));
-var import_core41 = require("@raikou/core");
-var Bars = (0, import_react60.forwardRef)(
-  (_a, ref) => {
-    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react60.default.createElement(
-      import_core41.Box,
-      __spreadProps(__spreadValues({
-        component: "span",
-        className: clsx_default("bars-loader", className)
-      }, others), {
-        ref
-      }),
-      /* @__PURE__ */ import_react60.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react60.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react60.default.createElement("span", { className: "bar" })
-    );
-  }
-);
-
-// ../Loader/src/loaders/Oval.tsx
-var import_react61 = __toESM(require("react"));
-var import_core42 = require("@raikou/core");
-var Oval = (0, import_react61.forwardRef)(
-  (_a, ref) => {
-    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react61.default.createElement(
-      import_core42.Box,
-      __spreadProps(__spreadValues({
-        component: "span",
-        className: clsx_default("oval-loader", className)
-      }, others), {
-        ref
-      })
-    );
-  }
-);
-
-// ../Loader/src/loaders/Progress.tsx
-var import_react62 = __toESM(require("react"));
-var import_core43 = require("@raikou/core");
-var Progress = (0, import_react62.forwardRef)(
-  (_a, ref) => {
-    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react62.default.createElement(
-      import_core43.Box,
-      __spreadProps(__spreadValues({
-        component: "span",
-        className: clsx_default("progress-loader", className)
-      }, others), {
-        ref
-      }),
-      /* @__PURE__ */ import_react62.default.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ import_react62.default.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ import_react62.default.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ import_react62.default.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ import_react62.default.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ import_react62.default.createElement(
-        "animateTransform",
-        {
-          attributeName: "transform",
-          type: "rotate",
-          from: "0 16 16",
-          to: "360 16 16",
-          dur: "1s",
-          repeatCount: "indefinite"
-        }
-      )))))
-    );
-  }
-);
-
-// ../Loader/src/loaders/Dots.tsx
-var import_react63 = __toESM(require("react"));
-var import_core44 = require("@raikou/core");
-var Dots = (0, import_react63.forwardRef)(
-  (_a, ref) => {
-    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react63.default.createElement(
-      import_core44.Box,
-      __spreadProps(__spreadValues({
-        component: "span",
-        className: clsx_default("dots-loader", className)
-      }, others), {
-        ref
-      }),
-      /* @__PURE__ */ import_react63.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react63.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react63.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react63.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react63.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react63.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react63.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react63.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react63.default.createElement("span", { className: "dot" })
-    );
-  }
-);
-
-// ../Loader/src/Loader.tsx
-var defaultLoaders = {
-  bars: Bars,
-  oval: Oval,
-  dots: Dots,
-  progress: Progress
-};
+// ../CloseButton/src/CloseButton.tsx
 var defaultProps30 = {
-  size: "md",
-  loaders: defaultLoaders,
-  type: "oval"
+  variant: "subtle",
+  size: "md"
 };
-var varsResolver10 = (0, import_core45.createVarsResolver)(
-  (theme, { size: size2, color }) => ({
+var varsResolver10 = (0, import_core41.createVarsResolver)(
+  (_, { size: size2, radius, iconSize }) => ({
     root: {
-      "--loader-size": (0, import_core45.getSize)(size2, "loader-size"),
-      "--loader-color": (0, import_core45.getThemeColor)(color, theme)
+      "--cb-size": (0, import_core41.getSize)(size2, "cb-size"),
+      "--cb-radius": radius === void 0 ? void 0 : (0, import_core41.getRadius)(radius),
+      "--cb-icon-size": (0, import_core41.rem)(iconSize)
     }
   })
 );
-var Loader = (0, import_core45.factory)((_props, ref) => {
-  const props = (0, import_core45.useProps)("Loader", defaultProps30, _props);
-  const _a = props, {
-    size: size2,
-    color,
-    type,
-    vars,
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
-    loaders,
-    variant
-  } = _a, others = __objRest(_a, [
-    "size",
-    "color",
-    "type",
-    "vars",
-    "className",
-    "style",
-    "classNames",
-    "styles",
-    "unstyled",
-    "loaders",
-    "variant"
-  ]);
-  const getStyles = (0, import_core45.useStyles)({
-    name: "Loader",
-    props,
-    classes: {
-      root: "loader-root"
-    },
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
-    vars,
-    varsResolver: varsResolver10
-  });
-  return /* @__PURE__ */ import_react64.default.createElement(
-    import_core45.Box,
-    __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
-      ref,
-      component: loaders[type],
-      variant,
-      size: size2
-    }), others)
-  );
-});
-Loader.displayName = "@raikou/core/Loader";
-
-// ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-var import_react65 = __toESM(require("react"));
-var import_core46 = require("@raikou/core");
-var defaultProps31 = {
-  orientation: "horizontal",
-  borderWidth: 1
-};
-var varsResolver11 = (0, import_core46.createVarsResolver)(
-  (_, { borderWidth }) => ({
-    group: { "--ai-border-width": (0, import_core46.rem)(borderWidth) }
-  })
-);
-var ActionIconGroup = (0, import_core46.factory)(
+var CloseButton = (0, import_core41.polymorphicFactory)(
   (_props, ref) => {
-    const props = (0, import_core46.useProps)("ActionIconGroup", defaultProps31, _props);
-    const _a = (0, import_core46.useProps)("ActionIconGroup", defaultProps31, _props), {
+    const props = (0, import_core41.useProps)("CloseButton", defaultProps30, _props);
+    const _a = props, {
+      iconSize,
+      children,
+      vars,
+      radius,
       className,
-      style,
       classNames,
+      style,
       styles,
       unstyled,
-      orientation,
-      vars,
-      borderWidth,
+      "data-disabled": dataDisabled,
+      disabled,
       variant
     } = _a, others = __objRest(_a, [
+      "iconSize",
+      "children",
+      "vars",
+      "radius",
       "className",
-      "style",
       "classNames",
+      "style",
       "styles",
       "unstyled",
-      "orientation",
-      "vars",
-      "borderWidth",
+      "data-disabled",
+      "disabled",
       "variant"
     ]);
-    const getStyles = (0, import_core46.useStyles)({
-      name: "ActionIconGroup",
-      props,
-      classes: {
-        group: "actionIconGroup-root"
-      },
-      className,
-      style,
-      classNames,
-      styles,
-      unstyled,
-      vars,
-      varsResolver: varsResolver11,
-      rootSelector: "group"
-    });
-    return /* @__PURE__ */ import_react65.default.createElement(
-      import_core46.Box,
-      __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
-        ref,
-        variant,
-        mod: { "data-orientation": orientation },
-        role: "group"
-      }), others)
-    );
-  }
-);
-ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
-
-// ../ActionIcon/src/ActionIcon.tsx
-var defaultProps32 = {
-  variant: "filled",
-  size: "md"
-};
-var varsResolver12 = (0, import_core47.createVarsResolver)(
-  (theme, { size: size2, radius, variant, gradient, color }) => {
-    const colors = theme.variantColorResolver({
-      color: color || theme.primaryColor,
-      theme,
-      gradient,
-      variant
-    });
-    return {
-      root: {
-        "--ai-size": (0, import_core47.getSize)(size2, "ai-size"),
-        "--ai-radius": (0, import_core47.getRadius)(radius),
-        "--ai-bg": colors.background,
-        "--ai-hover": colors.hover,
-        "--ai-color": colors.color,
-        "--ai-bd": colors.border
-      }
-    };
-  }
-);
-var ActionIcon = (0, import_core47.polymorphicFactory)(
-  (_props, ref) => {
-    const props = (0, import_core47.useProps)("ActionIcon", defaultProps32, _props);
-    const _a = props, {
-      className,
-      unstyled,
-      variant,
-      classNames,
-      styles,
-      style,
-      loading,
-      loaderProps,
-      size: size2,
-      color,
-      radius,
-      __staticSelector,
-      gradient,
-      vars,
-      children,
-      disabled,
-      "data-disabled": dataDisabled
-    } = _a, others = __objRest(_a, [
-      "className",
-      "unstyled",
-      "variant",
-      "classNames",
-      "styles",
-      "style",
-      "loading",
-      "loaderProps",
-      "size",
-      "color",
-      "radius",
-      "__staticSelector",
-      "gradient",
-      "vars",
-      "children",
-      "disabled",
-      "data-disabled"
-    ]);
-    const getStyles = (0, import_core47.useStyles)({
-      name: ["ActionIcon", __staticSelector],
+    const getStyles = (0, import_core41.useStyles)({
+      name: "CloseButton",
       props,
       className,
       style,
       classes: {
-        root: "actionIcon-root",
-        loader: "actionIcon-loader"
+        root: "closeButton-root"
       },
       classNames,
       styles,
       unstyled,
       vars,
-      varsResolver: varsResolver12
+      varsResolver: varsResolver10
     });
-    return /* @__PURE__ */ import_react66.default.createElement(
+    return /* @__PURE__ */ import_react60.default.createElement(
       UnstyledButton,
-      __spreadProps(__spreadValues(__spreadValues({}, getStyles("root", {
-        active: !disabled && !loading && !dataDisabled
-      })), others), {
-        unstyled,
-        variant,
-        size: size2,
-        disabled: disabled || loading,
-        ref,
-        mod: { loading, disabled: disabled || dataDisabled }
-      }),
-      loading ? /* @__PURE__ */ import_react66.default.createElement(
-        Loader,
-        __spreadValues(__spreadProps(__spreadValues({}, getStyles("loader")), {
-          color: "var(--ai-color)",
-          size: "calc(var(--ai-size) * 0.55)"
-        }), loaderProps)
-      ) : children
-    );
-  }
-);
-ActionIcon.displayName = "@raikou/core/ActionIcon";
-ActionIcon.Group = ActionIconGroup;
-
-// ../CloseButton/src/CloseButton.tsx
-var defaultProps33 = {
-  iconSize: "70%",
-  variant: "subtle",
-  color: "gray"
-};
-var CloseButton = (0, import_core48.polymorphicFactory)(
-  (_props, ref) => {
-    const props = (0, import_core48.useProps)("CloseButton", defaultProps33, _props);
-    const _a = props, { iconSize, children, vars } = _a, others = __objRest(_a, ["iconSize", "children", "vars"]);
-    return /* @__PURE__ */ import_react67.default.createElement(
-      ActionIcon,
-      __spreadProps(__spreadValues({
+      __spreadValues(__spreadProps(__spreadValues({
         ref
       }, others), {
-        __vars: { "--cb-icon-size": (0, import_core48.rem)(iconSize) },
-        __staticSelector: "CloseButton"
-      }),
-      /* @__PURE__ */ import_react67.default.createElement(CloseIcon, null),
+        unstyled,
+        variant,
+        disabled,
+        mod: { disabled: disabled || dataDisabled }
+      }), getStyles("root", { variant, active: true })),
+      /* @__PURE__ */ import_react60.default.createElement(CloseIcon, null),
       children
     );
   }
@@ -6343,23 +6061,23 @@ var CloseButton = (0, import_core48.polymorphicFactory)(
 CloseButton.displayName = "@raikou/core/CloseButton";
 
 // ../Pill/src/PillGroup/PillGroup.tsx
-var import_react68 = __toESM(require("react"));
-var import_core49 = require("@raikou/core");
+var import_react61 = __toESM(require("react"));
+var import_core42 = require("@raikou/core");
 
 // ../Pill/src/PillGroup.context.ts
 var [PillGroupProvider, usePillGroupContext] = createOptionalContext();
 
 // ../Pill/src/PillGroup/PillGroup.tsx
-var defaultProps34 = {};
-var varsResolver13 = (0, import_core49.createVarsResolver)(
+var defaultProps31 = {};
+var varsResolver11 = (0, import_core42.createVarsResolver)(
   (_, { gap }, { size: size2 }) => ({
     group: {
-      "--pg-gap": typeof gap !== "undefined" ? (0, import_core49.getSize)(gap) : (0, import_core49.getSize)(size2, "pg-gap")
+      "--pg-gap": gap !== void 0 ? (0, import_core42.getSize)(gap) : (0, import_core42.getSize)(size2, "pg-gap")
     }
   })
 );
-var PillGroup = (0, import_core49.factory)((_props, ref) => {
-  const props = (0, import_core49.useProps)("PillGroup", defaultProps34, _props);
+var PillGroup = (0, import_core42.factory)((_props, ref) => {
+  const props = (0, import_core42.useProps)("PillGroup", defaultProps31, _props);
   const _a = props, {
     classNames,
     className,
@@ -6380,8 +6098,8 @@ var PillGroup = (0, import_core49.factory)((_props, ref) => {
     "disabled"
   ]);
   const pillsInputCtx = usePillsInputContext();
-  const _size = (pillsInputCtx == null ? void 0 : pillsInputCtx.size) || size2 || "sm";
-  const getStyles = (0, import_core49.useStyles)({
+  const _size = (pillsInputCtx == null ? void 0 : pillsInputCtx.size) || size2 || void 0;
+  const getStyles = (0, import_core42.useStyles)({
     name: "PillGroup",
     classes: {
       group: "pill-group"
@@ -6393,30 +6111,29 @@ var PillGroup = (0, import_core49.factory)((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver13,
+    varsResolver: varsResolver11,
     stylesCtx: { size: _size },
     rootSelector: "group"
   });
-  return /* @__PURE__ */ import_react68.default.createElement(PillGroupProvider, { value: { size: _size, disabled } }, /* @__PURE__ */ import_react68.default.createElement(import_core49.Box, __spreadValues(__spreadValues({ ref, size: _size }, getStyles("group")), others)));
+  return /* @__PURE__ */ import_react61.default.createElement(PillGroupProvider, { value: { size: _size, disabled } }, /* @__PURE__ */ import_react61.default.createElement(import_core42.Box, __spreadValues(__spreadValues({ ref, size: _size }, getStyles("group")), others)));
 });
 PillGroup.displayName = "@raikou/core/PillGroup";
 
 // ../Pill/src/Pill.tsx
-var defaultProps35 = {
-  radius: "xl",
+var defaultProps32 = {
   variant: "default"
 };
-var varsResolver14 = (0, import_core50.createVarsResolver)(
+var varsResolver12 = (0, import_core43.createVarsResolver)(
   (_, { radius }, { size: size2 }) => ({
     root: {
-      "--pill-fz": (0, import_core50.getSize)(size2, "pill-fz"),
-      "--pill-height": (0, import_core50.getSize)(size2, "pill-height"),
-      "--pill-radius": (0, import_core50.getRadius)(radius)
+      "--pill-fz": (0, import_core43.getSize)(size2, "pill-fz"),
+      "--pill-height": (0, import_core43.getSize)(size2, "pill-height"),
+      "--pill-radius": radius === void 0 ? void 0 : (0, import_core43.getRadius)(radius)
     }
   })
 );
-var Pill = (0, import_core50.factory)((_props, ref) => {
-  const props = (0, import_core50.useProps)("Pill", defaultProps35, _props);
+var Pill = (0, import_core43.factory)((_props, ref) => {
+  const props = (0, import_core43.useProps)("Pill", defaultProps32, _props);
   const _a = props, {
     classNames,
     className,
@@ -6450,9 +6167,9 @@ var Pill = (0, import_core50.factory)((_props, ref) => {
   ]);
   const ctx = usePillGroupContext();
   const pillsInputCtx = usePillsInputContext();
-  const _size = size2 || (ctx == null ? void 0 : ctx.size) || "sm";
+  const _size = size2 || (ctx == null ? void 0 : ctx.size) || void 0;
   const _variant = (pillsInputCtx == null ? void 0 : pillsInputCtx.variant) === "filled" ? "contrast" : variant || "default";
-  const getStyles = (0, import_core50.useStyles)({
+  const getStyles = (0, import_core43.useStyles)({
     name: "Pill",
     classes: {
       root: "pill-root",
@@ -6466,11 +6183,11 @@ var Pill = (0, import_core50.factory)((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver14,
+    varsResolver: varsResolver12,
     stylesCtx: { size: _size }
   });
-  return /* @__PURE__ */ import_react69.default.createElement(
-    import_core50.Box,
+  return /* @__PURE__ */ import_react62.default.createElement(
+    import_core43.Box,
     __spreadValues(__spreadProps(__spreadValues({
       component: "span",
       ref,
@@ -6482,11 +6199,10 @@ var Pill = (0, import_core50.factory)((_props, ref) => {
         disabled: disabled || (ctx == null ? void 0 : ctx.disabled)
       }
     }), others),
-    /* @__PURE__ */ import_react69.default.createElement("span", __spreadValues({}, getStyles("label")), children),
-    withRemoveButton && /* @__PURE__ */ import_react69.default.createElement(
+    /* @__PURE__ */ import_react62.default.createElement("span", __spreadValues({}, getStyles("label")), children),
+    withRemoveButton && /* @__PURE__ */ import_react62.default.createElement(
       CloseButton,
       __spreadProps(__spreadValues(__spreadValues({
-        iconSize: "70%",
         variant: "transparent",
         radius,
         tabIndex: -1,
@@ -6552,10 +6268,10 @@ function filterPickedTags({ data, value }) {
 }
 
 // src/scroller.tsx
-var import_react70 = __toESM(require("react"));
+var import_react63 = __toESM(require("react"));
 
 // ../Box/src/index.ts
-var import_core51 = require("@raikou/core");
+var import_core44 = require("@raikou/core");
 
 // src/scroller.tsx
 function TagsInputScroller({
@@ -6563,14 +6279,14 @@ function TagsInputScroller({
   children,
   maxHeight
 }) {
-  const [height, setHeight] = (0, import_react70.useState)(0);
-  const div = (0, import_react70.useRef)(null);
-  (0, import_react70.useEffect)(() => {
+  const [height, setHeight] = (0, import_react63.useState)(0);
+  const div = (0, import_react63.useRef)(null);
+  (0, import_react63.useEffect)(() => {
     const newHeight = Math.min(div.current.scrollHeight, maxHeight);
     setHeight(newHeight);
   }, [tags]);
-  return /* @__PURE__ */ import_react70.default.createElement(
-    import_core51.Box,
+  return /* @__PURE__ */ import_react63.default.createElement(
+    import_core44.Box,
     {
       id: "content",
       ref: div,
@@ -6586,15 +6302,14 @@ function TagsInputScroller({
 TagsInputScroller.displayName = "@raikou/core/TagsInputScroller";
 
 // src/TagsInput.tsx
-var defaultProps36 = {
+var defaultProps33 = {
   maxTags: Infinity,
   allowDuplicates: false,
   splitChars: [","],
-  size: "sm",
   tagsContainer: (children) => children
 };
-var TagsInput = (0, import_core52.factory)((_props, ref) => {
-  const props = (0, import_core52.useProps)("TagsInput", defaultProps36, _props);
+var TagsInput = (0, import_core45.factory)((_props, ref) => {
+  const props = (0, import_core45.useProps)("TagsInput", defaultProps33, _props);
   const _a = props, {
     classNames,
     className,
@@ -6654,6 +6369,7 @@ var TagsInput = (0, import_core52.factory)((_props, ref) => {
     withErrorStyles,
     name,
     form,
+    id,
     tagsContainer
   } = _a, others = __objRest(_a, [
     "classNames",
@@ -6714,8 +6430,10 @@ var TagsInput = (0, import_core52.factory)((_props, ref) => {
     "withErrorStyles",
     "name",
     "form",
+    "id",
     "tagsContainer"
   ]);
+  const _id = (0, import_hooks25.useId)(id);
   const parsedData = getParsedComboboxData(data);
   const optionsLockup = getOptionsLockup(parsedData);
   const combobox = useCombobox({
@@ -6730,7 +6448,7 @@ var TagsInput = (0, import_core52.factory)((_props, ref) => {
   const {
     styleProps,
     rest: _b
-  } = (0, import_core52.extractStyleProps)(others), _c = _b, { type } = _c, rest = __objRest(_c, ["type"]);
+  } = (0, import_core45.extractStyleProps)(others), _c = _b, { type } = _c, rest = __objRest(_c, ["type"]);
   const [_value, setValue] = (0, import_hooks25.useUncontrolled)({
     value,
     defaultValue,
@@ -6743,7 +6461,7 @@ var TagsInput = (0, import_core52.factory)((_props, ref) => {
     finalValue: "",
     onChange: onSearchChange
   });
-  const getStyles = (0, import_core52.useStyles)({
+  const getStyles = (0, import_core45.useStyles)({
     name: "TagsInput",
     classes: {},
     props,
@@ -6751,7 +6469,7 @@ var TagsInput = (0, import_core52.factory)((_props, ref) => {
     styles,
     unstyled
   });
-  const { resolvedClassNames, resolvedStyles } = (0, import_core52.useResolvedStylesApi)({
+  const { resolvedClassNames, resolvedStyles } = (0, import_core45.useResolvedStylesApi)({
     props,
     styles,
     classNames
@@ -6809,7 +6527,7 @@ var TagsInput = (0, import_core52.factory)((_props, ref) => {
       setSearchValue("");
     }
   };
-  const values = _value.map((item, index3) => /* @__PURE__ */ import_react71.default.createElement(
+  const values = _value.map((item, index3) => /* @__PURE__ */ import_react64.default.createElement(
     Pill,
     __spreadValues({
       key: `${item}-${index3}`,
@@ -6818,7 +6536,7 @@ var TagsInput = (0, import_core52.factory)((_props, ref) => {
     }, getStyles("pill")),
     item
   ));
-  return /* @__PURE__ */ import_react71.default.createElement(import_react71.default.Fragment, null, /* @__PURE__ */ import_react71.default.createElement(
+  return /* @__PURE__ */ import_react64.default.createElement(import_react64.default.Fragment, null, /* @__PURE__ */ import_react64.default.createElement(
     Combobox,
     __spreadValues({
       store: combobox,
@@ -6834,7 +6552,7 @@ var TagsInput = (0, import_core52.factory)((_props, ref) => {
         _value.length < maxTags && setValue([..._value, optionsLockup[val].label]);
       }
     }, comboboxProps),
-    /* @__PURE__ */ import_react71.default.createElement(Combobox.DropdownTarget, null, /* @__PURE__ */ import_react71.default.createElement(
+    /* @__PURE__ */ import_react64.default.createElement(Combobox.DropdownTarget, null, /* @__PURE__ */ import_react64.default.createElement(
       PillsInput,
       __spreadProps(__spreadValues({}, styleProps), {
         __staticSelector: "TagsInput",
@@ -6867,9 +6585,10 @@ var TagsInput = (0, import_core52.factory)((_props, ref) => {
         error,
         multiline: true,
         withErrorStyles,
-        __stylesApiProps: __spreadProps(__spreadValues({}, props), { multiline: true })
+        __stylesApiProps: __spreadProps(__spreadValues({}, props), { multiline: true }),
+        id: _id
       }),
-      /* @__PURE__ */ import_react71.default.createElement(Pill.Group, __spreadValues({ disabled }, getStyles("pillsList")), /* @__PURE__ */ import_react71.default.createElement(import_react71.default.Fragment, { key: "tagsContainer" }, tagsContainer(values)), /* @__PURE__ */ import_react71.default.createElement(Combobox.EventsTarget, null, /* @__PURE__ */ import_react71.default.createElement(
+      /* @__PURE__ */ import_react64.default.createElement(Pill.Group, __spreadValues({ disabled }, getStyles("pillsList")), /* @__PURE__ */ import_react64.default.createElement(import_react64.default.Fragment, { key: "tagsContainer" }, tagsContainer(values)), /* @__PURE__ */ import_react64.default.createElement(Combobox.EventsTarget, null, /* @__PURE__ */ import_react64.default.createElement(
         PillsInput.Field,
         __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, rest), {
           ref
@@ -6888,11 +6607,12 @@ var TagsInput = (0, import_core52.factory)((_props, ref) => {
           value: _searchValue,
           onChange: (event) => setSearchValue(event.currentTarget.value),
           disabled,
-          readOnly
+          readOnly,
+          id: _id
         })
       )))
     )),
-    /* @__PURE__ */ import_react71.default.createElement(
+    /* @__PURE__ */ import_react64.default.createElement(
       OptionsDropdown,
       {
         data: filterPickedTags({ data: parsedData, value: _value }),
@@ -6902,10 +6622,11 @@ var TagsInput = (0, import_core52.factory)((_props, ref) => {
         limit,
         hiddenWhenEmpty: true,
         withScrollArea,
-        maxDropdownHeight
+        maxDropdownHeight,
+        labelId: `${_id}-label`
       }
     )
-  ), /* @__PURE__ */ import_react71.default.createElement(
+  ), /* @__PURE__ */ import_react64.default.createElement(
     "input",
     {
       type: "hidden",

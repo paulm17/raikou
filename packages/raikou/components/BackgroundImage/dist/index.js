@@ -63,12 +63,12 @@ module.exports = __toCommonJS(src_exports);
 // src/BackgroundImage.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
-var defaultProps = {
-  radius: 0
-};
+var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)(
   (_, { radius }) => ({
-    root: { "--bi-radius": (0, import_core.getRadius)(radius) }
+    root: {
+      "--bi-radius": radius === void 0 ? void 0 : (0, import_core.getRadius)(radius)
+    }
   })
 );
 var BackgroundImage = (0, import_core.polymorphicFactory)(

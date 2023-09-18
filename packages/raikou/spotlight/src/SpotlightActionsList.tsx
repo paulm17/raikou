@@ -42,7 +42,7 @@ export const SpotlightActionsList = factory<SpotlightActionsListFactory>(
       ...others
     } = useProps("SpotlightActionsList", defaultProps, props);
     const ctx = useSpotlightContext();
-    const generatedId = `raikou-${useId().replaceAll(":", "")}`;
+    const generatedId = `raikou-${useId().replace(/:/g, "")}`;
     const listId = id || generatedId;
 
     useEffect(() => {

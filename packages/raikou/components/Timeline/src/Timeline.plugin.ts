@@ -1,7 +1,13 @@
+import { rem } from "@raikou/core";
+
 module.exports = function ({ addComponents, theme }: any) {
   addComponents({
     ".timeline-root": {
       "--offset": "calc(var(--tl-bullet-size) / 2 + var(--tl-line-width) / 2)",
+      "--tl-bullet-size": rem("20px"),
+      "--tl-line-width": rem("4px"),
+      "--tl-radius": rem("1000px"),
+      "--tl-color": "var(--raikou-primary-color-filled)",
 
       "padding-left": "var(--_tl-pl, 0)",
       "padding-right": "var(--_tl-pr, 0)",
@@ -9,7 +15,7 @@ module.exports = function ({ addComponents, theme }: any) {
       '&[data-align="left"]': {
         "--_tl-pl": "var(--offset)",
 
-        "@mixin rtl": {
+        '[dir="rtl"] &': {
           "--_tl-pl": "0",
           "--_tl-pr": "var(--offset)",
         },

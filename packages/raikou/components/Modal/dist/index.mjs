@@ -31,20 +31,20 @@ var __objRest = (source, exclude) => {
 };
 
 // src/Modal.tsx
-import React40 from "react";
-import { factory as factory10, useProps as useProps16, getDefaultZIndex as getDefaultZIndex4 } from "@raikou/core";
+import React33 from "react";
+import { factory as factory8, useProps as useProps13, getDefaultZIndex as getDefaultZIndex4 } from "@raikou/core";
 
 // src/ModalRoot.tsx
-import React33 from "react";
+import React26 from "react";
 import {
-  factory as factory3,
-  useProps as useProps9,
-  useStyles as useStyles7,
-  createVarsResolver as createVarsResolver6,
+  factory,
+  useProps as useProps6,
+  useStyles as useStyles5,
+  createVarsResolver as createVarsResolver4,
   getRadius as getRadius4,
   getDefaultZIndex as getDefaultZIndex3,
-  getSize as getSize3,
-  rem as rem5
+  getSize as getSize2,
+  rem as rem4
 } from "@raikou/core";
 
 // ../ModalBase/src/ModalBase.tsx
@@ -977,13 +977,13 @@ var ModalBaseBody = forwardRef5(
 ModalBaseBody.displayName = "@raikou/core/ModalBaseBody";
 
 // ../ModalBase/src/ModalBaseCloseButton.tsx
-import React23, { forwardRef as forwardRef11 } from "react";
+import React16, { forwardRef as forwardRef7 } from "react";
 
 // ../CloseButton/src/CloseIcon.tsx
 import React13, { forwardRef as forwardRef6 } from "react";
 var CloseIcon = forwardRef6(
   (_a, ref) => {
-    var _b = _a, { size = "var(--cb-icon-size)", style } = _b, others = __objRest(_b, ["size", "style"]);
+    var _b = _a, { size = "var(--cb-icon-size, 70%)", style } = _b, others = __objRest(_b, ["size", "style"]);
     return /* @__PURE__ */ React13.createElement(
       "svg",
       __spreadValues({
@@ -1008,22 +1008,15 @@ var CloseIcon = forwardRef6(
 CloseIcon.displayName = "@raikou/core/CloseIcon";
 
 // ../CloseButton/src/CloseButton.tsx
-import React22 from "react";
+import React15 from "react";
 import {
-  polymorphicFactory as polymorphicFactory3,
-  useProps as useProps6,
-  rem as rem2
-} from "@raikou/core";
-
-// ../ActionIcon/src/ActionIcon.tsx
-import React21 from "react";
-import {
-  useProps as useProps5,
-  useStyles as useStyles4,
-  getRadius,
   polymorphicFactory as polymorphicFactory2,
-  getSize as getSize2,
-  createVarsResolver as createVarsResolver3
+  useProps as useProps3,
+  rem,
+  getSize,
+  getRadius,
+  createVarsResolver,
+  useStyles as useStyles2
 } from "@raikou/core";
 
 // ../UnstyledButton/src/UnstyledButton.tsx
@@ -1081,381 +1074,75 @@ var UnstyledButton = polymorphicFactory(
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
-// ../Loader/src/Loader.tsx
-import React19 from "react";
-import {
-  Box as Box8,
-  useProps as useProps3,
-  getThemeColor,
-  useStyles as useStyles2,
-  factory,
-  getSize,
-  createVarsResolver
-} from "@raikou/core";
-
-// ../Loader/src/loaders/Bars.tsx
-import React15, { forwardRef as forwardRef7 } from "react";
-import { Box as Box4 } from "@raikou/core";
-var Bars = forwardRef7(
-  (_a, ref) => {
-    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React15.createElement(
-      Box4,
-      __spreadProps(__spreadValues({
-        component: "span",
-        className: clsx_default("bars-loader", className)
-      }, others), {
-        ref
-      }),
-      /* @__PURE__ */ React15.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ React15.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ React15.createElement("span", { className: "bar" })
-    );
-  }
-);
-
-// ../Loader/src/loaders/Oval.tsx
-import React16, { forwardRef as forwardRef8 } from "react";
-import { Box as Box5 } from "@raikou/core";
-var Oval = forwardRef8(
-  (_a, ref) => {
-    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React16.createElement(
-      Box5,
-      __spreadProps(__spreadValues({
-        component: "span",
-        className: clsx_default("oval-loader", className)
-      }, others), {
-        ref
-      })
-    );
-  }
-);
-
-// ../Loader/src/loaders/Progress.tsx
-import React17, { forwardRef as forwardRef9 } from "react";
-import { Box as Box6 } from "@raikou/core";
-var Progress = forwardRef9(
-  (_a, ref) => {
-    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React17.createElement(
-      Box6,
-      __spreadProps(__spreadValues({
-        component: "span",
-        className: clsx_default("progress-loader", className)
-      }, others), {
-        ref
-      }),
-      /* @__PURE__ */ React17.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ React17.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ React17.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ React17.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ React17.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ React17.createElement(
-        "animateTransform",
-        {
-          attributeName: "transform",
-          type: "rotate",
-          from: "0 16 16",
-          to: "360 16 16",
-          dur: "1s",
-          repeatCount: "indefinite"
-        }
-      )))))
-    );
-  }
-);
-
-// ../Loader/src/loaders/Dots.tsx
-import React18, { forwardRef as forwardRef10 } from "react";
-import { Box as Box7 } from "@raikou/core";
-var Dots = forwardRef10(
-  (_a, ref) => {
-    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React18.createElement(
-      Box7,
-      __spreadProps(__spreadValues({
-        component: "span",
-        className: clsx_default("dots-loader", className)
-      }, others), {
-        ref
-      }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" })
-    );
-  }
-);
-
-// ../Loader/src/Loader.tsx
-var defaultLoaders = {
-  bars: Bars,
-  oval: Oval,
-  dots: Dots,
-  progress: Progress
-};
+// ../CloseButton/src/CloseButton.tsx
 var defaultProps3 = {
-  size: "md",
-  loaders: defaultLoaders,
-  type: "oval"
+  variant: "subtle",
+  size: "md"
 };
 var varsResolver = createVarsResolver(
-  (theme, { size, color }) => ({
+  (_, { size, radius, iconSize }) => ({
     root: {
-      "--loader-size": getSize(size, "loader-size"),
-      "--loader-color": getThemeColor(color, theme)
+      "--cb-size": getSize(size, "cb-size"),
+      "--cb-radius": radius === void 0 ? void 0 : getRadius(radius),
+      "--cb-icon-size": rem(iconSize)
     }
   })
 );
-var Loader = factory((_props, ref) => {
-  const props = useProps3("Loader", defaultProps3, _props);
-  const _a = props, {
-    size,
-    color,
-    type,
-    vars,
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
-    loaders,
-    variant
-  } = _a, others = __objRest(_a, [
-    "size",
-    "color",
-    "type",
-    "vars",
-    "className",
-    "style",
-    "classNames",
-    "styles",
-    "unstyled",
-    "loaders",
-    "variant"
-  ]);
-  const getStyles2 = useStyles2({
-    name: "Loader",
-    props,
-    classes: {
-      root: "loader-root"
-    },
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
-    vars,
-    varsResolver
-  });
-  return /* @__PURE__ */ React19.createElement(
-    Box8,
-    __spreadValues(__spreadProps(__spreadValues({}, getStyles2("root")), {
-      ref,
-      component: loaders[type],
-      variant,
-      size
-    }), others)
-  );
-});
-Loader.displayName = "@raikou/core/Loader";
-
-// ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-import React20 from "react";
-import {
-  factory as factory2,
-  Box as Box9,
-  useProps as useProps4,
-  useStyles as useStyles3,
-  rem,
-  createVarsResolver as createVarsResolver2
-} from "@raikou/core";
-var defaultProps4 = {
-  orientation: "horizontal",
-  borderWidth: 1
-};
-var varsResolver2 = createVarsResolver2(
-  (_, { borderWidth }) => ({
-    group: { "--ai-border-width": rem(borderWidth) }
-  })
-);
-var ActionIconGroup = factory2(
+var CloseButton = polymorphicFactory2(
   (_props, ref) => {
-    const props = useProps4("ActionIconGroup", defaultProps4, _props);
-    const _a = useProps4("ActionIconGroup", defaultProps4, _props), {
+    const props = useProps3("CloseButton", defaultProps3, _props);
+    const _a = props, {
+      iconSize,
+      children,
+      vars,
+      radius,
       className,
-      style,
       classNames,
+      style,
       styles,
       unstyled,
-      orientation,
-      vars,
-      borderWidth,
+      "data-disabled": dataDisabled,
+      disabled,
       variant
     } = _a, others = __objRest(_a, [
+      "iconSize",
+      "children",
+      "vars",
+      "radius",
       "className",
-      "style",
       "classNames",
+      "style",
       "styles",
       "unstyled",
-      "orientation",
-      "vars",
-      "borderWidth",
+      "data-disabled",
+      "disabled",
       "variant"
     ]);
-    const getStyles2 = useStyles3({
-      name: "ActionIconGroup",
-      props,
-      classes: {
-        group: "actionIconGroup-root"
-      },
-      className,
-      style,
-      classNames,
-      styles,
-      unstyled,
-      vars,
-      varsResolver: varsResolver2,
-      rootSelector: "group"
-    });
-    return /* @__PURE__ */ React20.createElement(
-      Box9,
-      __spreadValues(__spreadProps(__spreadValues({}, getStyles2("group")), {
-        ref,
-        variant,
-        mod: { "data-orientation": orientation },
-        role: "group"
-      }), others)
-    );
-  }
-);
-ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
-
-// ../ActionIcon/src/ActionIcon.tsx
-var defaultProps5 = {
-  variant: "filled",
-  size: "md"
-};
-var varsResolver3 = createVarsResolver3(
-  (theme, { size, radius, variant, gradient, color }) => {
-    const colors = theme.variantColorResolver({
-      color: color || theme.primaryColor,
-      theme,
-      gradient,
-      variant
-    });
-    return {
-      root: {
-        "--ai-size": getSize2(size, "ai-size"),
-        "--ai-radius": getRadius(radius),
-        "--ai-bg": colors.background,
-        "--ai-hover": colors.hover,
-        "--ai-color": colors.color,
-        "--ai-bd": colors.border
-      }
-    };
-  }
-);
-var ActionIcon = polymorphicFactory2(
-  (_props, ref) => {
-    const props = useProps5("ActionIcon", defaultProps5, _props);
-    const _a = props, {
-      className,
-      unstyled,
-      variant,
-      classNames,
-      styles,
-      style,
-      loading,
-      loaderProps,
-      size,
-      color,
-      radius,
-      __staticSelector,
-      gradient,
-      vars,
-      children,
-      disabled,
-      "data-disabled": dataDisabled
-    } = _a, others = __objRest(_a, [
-      "className",
-      "unstyled",
-      "variant",
-      "classNames",
-      "styles",
-      "style",
-      "loading",
-      "loaderProps",
-      "size",
-      "color",
-      "radius",
-      "__staticSelector",
-      "gradient",
-      "vars",
-      "children",
-      "disabled",
-      "data-disabled"
-    ]);
-    const getStyles2 = useStyles4({
-      name: ["ActionIcon", __staticSelector],
+    const getStyles2 = useStyles2({
+      name: "CloseButton",
       props,
       className,
       style,
       classes: {
-        root: "actionIcon-root",
-        loader: "actionIcon-loader"
+        root: "closeButton-root"
       },
       classNames,
       styles,
       unstyled,
       vars,
-      varsResolver: varsResolver3
+      varsResolver
     });
-    return /* @__PURE__ */ React21.createElement(
+    return /* @__PURE__ */ React15.createElement(
       UnstyledButton,
-      __spreadProps(__spreadValues(__spreadValues({}, getStyles2("root", {
-        active: !disabled && !loading && !dataDisabled
-      })), others), {
-        unstyled,
-        variant,
-        size,
-        disabled: disabled || loading,
-        ref,
-        mod: { loading, disabled: disabled || dataDisabled }
-      }),
-      loading ? /* @__PURE__ */ React21.createElement(
-        Loader,
-        __spreadValues(__spreadProps(__spreadValues({}, getStyles2("loader")), {
-          color: "var(--ai-color)",
-          size: "calc(var(--ai-size) * 0.55)"
-        }), loaderProps)
-      ) : children
-    );
-  }
-);
-ActionIcon.displayName = "@raikou/core/ActionIcon";
-ActionIcon.Group = ActionIconGroup;
-
-// ../CloseButton/src/CloseButton.tsx
-var defaultProps6 = {
-  iconSize: "70%",
-  variant: "subtle",
-  color: "gray"
-};
-var CloseButton = polymorphicFactory3(
-  (_props, ref) => {
-    const props = useProps6("CloseButton", defaultProps6, _props);
-    const _a = props, { iconSize, children, vars } = _a, others = __objRest(_a, ["iconSize", "children", "vars"]);
-    return /* @__PURE__ */ React22.createElement(
-      ActionIcon,
-      __spreadProps(__spreadValues({
+      __spreadValues(__spreadProps(__spreadValues({
         ref
       }, others), {
-        __vars: { "--cb-icon-size": rem2(iconSize) },
-        __staticSelector: "CloseButton"
-      }),
-      /* @__PURE__ */ React22.createElement(CloseIcon, null),
+        unstyled,
+        variant,
+        disabled,
+        mod: { disabled: disabled || dataDisabled }
+      }), getStyles2("root", { variant, active: true })),
+      /* @__PURE__ */ React15.createElement(CloseIcon, null),
       children
     );
   }
@@ -1463,12 +1150,12 @@ var CloseButton = polymorphicFactory3(
 CloseButton.displayName = "@raikou/core/CloseButton";
 
 // ../ModalBase/src/ModalBaseCloseButton.tsx
-var ModalBaseCloseButton = forwardRef11((_a, ref) => {
+var ModalBaseCloseButton = forwardRef7((_a, ref) => {
   var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
   const ctx = useModalBaseContext();
   return (
     // @ts-ignore
-    /* @__PURE__ */ React23.createElement(
+    /* @__PURE__ */ React16.createElement(
       CloseButton,
       __spreadProps(__spreadValues({
         ref
@@ -1482,13 +1169,13 @@ var ModalBaseCloseButton = forwardRef11((_a, ref) => {
 ModalBaseCloseButton.displayName = "@raikou/core/ModalBaseCloseButton";
 
 // ../ModalBase/src/ModalBaseContent.tsx
-import React27, { forwardRef as forwardRef12 } from "react";
+import React20, { forwardRef as forwardRef8 } from "react";
 
 // ../Transition/src/transitions.ts
-import { rem as rem3 } from "@raikou/core";
+import { rem as rem2 } from "@raikou/core";
 var popIn = {
   in: { opacity: 1, transform: "scale(1)" },
-  out: { opacity: 0, transform: `scale(.9) translateY(${rem3(10)})` },
+  out: { opacity: 0, transform: `scale(.9) translateY(${rem2(10)})` },
   transitionProperty: "transform, opacity"
 };
 var transitions = {
@@ -1519,7 +1206,7 @@ var transitions = {
     in: { opacity: 1, transform: "translateY(0) skew(0deg, 0deg)" },
     out: {
       opacity: 0,
-      transform: `translateY(-${rem3(20)}) skew(-10deg, -5deg)`
+      transform: `translateY(-${rem2(20)}) skew(-10deg, -5deg)`
     },
     common: { transformOrigin: "top" },
     transitionProperty: "transform, opacity"
@@ -1528,20 +1215,20 @@ var transitions = {
     in: { opacity: 1, transform: "translateY(0) skew(0deg, 0deg)" },
     out: {
       opacity: 0,
-      transform: `translateY(${rem3(20)}) skew(-10deg, -5deg)`
+      transform: `translateY(${rem2(20)}) skew(-10deg, -5deg)`
     },
     common: { transformOrigin: "bottom" },
     transitionProperty: "transform, opacity"
   },
   "rotate-left": {
     in: { opacity: 1, transform: "translateY(0) rotate(0deg)" },
-    out: { opacity: 0, transform: `translateY(${rem3(20)}) rotate(-5deg)` },
+    out: { opacity: 0, transform: `translateY(${rem2(20)}) rotate(-5deg)` },
     common: { transformOrigin: "bottom" },
     transitionProperty: "transform, opacity"
   },
   "rotate-right": {
     in: { opacity: 1, transform: "translateY(0) rotate(0deg)" },
-    out: { opacity: 0, transform: `translateY(${rem3(20)}) rotate(5deg)` },
+    out: { opacity: 0, transform: `translateY(${rem2(20)}) rotate(5deg)` },
     common: { transformOrigin: "top" },
     transitionProperty: "transform, opacity"
   },
@@ -1587,7 +1274,7 @@ var transitions = {
 };
 
 // ../Transition/src/Transition.tsx
-import React24 from "react";
+import React17 from "react";
 
 // ../Transition/src/get-transition-styles/get-transition-styles.ts
 var transitionStatuses = {
@@ -1704,9 +1391,9 @@ function Transition({
     onExited
   });
   if (transitionDuration === 0) {
-    return mounted ? /* @__PURE__ */ React24.createElement(React24.Fragment, null, children({})) : keepMounted ? children({ display: "none" }) : null;
+    return mounted ? /* @__PURE__ */ React17.createElement(React17.Fragment, null, children({})) : keepMounted ? children({ display: "none" }) : null;
   }
-  return transitionStatus === "exited" ? keepMounted ? children({ display: "none" }) : null : /* @__PURE__ */ React24.createElement(React24.Fragment, null, children(
+  return transitionStatus === "exited" ? keepMounted ? children({ display: "none" }) : null : /* @__PURE__ */ React17.createElement(React17.Fragment, null, children(
     getTransitionStyles({
       transition,
       duration: transitionDuration,
@@ -1736,27 +1423,27 @@ function FocusTrap({
 FocusTrap.displayName = "@raikou/core/FocusTrap";
 
 // ../Paper/src/Paper.tsx
-import React26 from "react";
+import React19 from "react";
 import {
-  Box as Box10,
-  polymorphicFactory as polymorphicFactory4,
-  useProps as useProps7,
-  useStyles as useStyles5,
+  Box as Box4,
+  polymorphicFactory as polymorphicFactory3,
+  useProps as useProps4,
+  useStyles as useStyles3,
   getRadius as getRadius2,
   getShadow as getShadow2,
-  createVarsResolver as createVarsResolver4
+  createVarsResolver as createVarsResolver2
 } from "@raikou/core";
-var defaultProps7 = {};
-var varsResolver4 = createVarsResolver4(
+var defaultProps4 = {};
+var varsResolver2 = createVarsResolver2(
   (_, { radius, shadow }) => ({
     root: {
-      "--paper-radius": getRadius2(radius),
+      "--paper-radius": radius === void 0 ? void 0 : getRadius2(radius),
       "--paper-shadow": getShadow2(shadow)
     }
   })
 );
-var Paper = polymorphicFactory4((_props, ref) => {
-  const props = useProps7("Paper", defaultProps7, _props);
+var Paper = polymorphicFactory3((_props, ref) => {
+  const props = useProps4("Paper", defaultProps4, _props);
   const _a = props, {
     classNames,
     className,
@@ -1780,7 +1467,7 @@ var Paper = polymorphicFactory4((_props, ref) => {
     "shadow",
     "variant"
   ]);
-  const getStyles2 = useStyles5({
+  const getStyles2 = useStyles3({
     name: "Paper",
     props,
     classes: {
@@ -1792,10 +1479,10 @@ var Paper = polymorphicFactory4((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver4
+    varsResolver: varsResolver2
   });
-  return /* @__PURE__ */ React26.createElement(
-    Box10,
+  return /* @__PURE__ */ React19.createElement(
+    Box4,
     __spreadValues(__spreadProps(__spreadValues({
       ref,
       mod: { "data-with-border": withBorder }
@@ -1807,7 +1494,7 @@ var Paper = polymorphicFactory4((_props, ref) => {
 Paper.displayName = "@raikou/core/Paper";
 
 // ../ModalBase/src/ModalBaseContent.tsx
-var ModalBaseContent = forwardRef12(
+var ModalBaseContent = forwardRef8(
   (_a, ref) => {
     var _b = _a, { transitionProps, className, innerProps, onKeyDown, style } = _b, others = __objRest(_b, ["transitionProps", "className", "innerProps", "onKeyDown", "style"]);
     const ctx = useModalBaseContext();
@@ -1819,18 +1506,18 @@ var ModalBaseContent = forwardRef12(
       shouldTrigger && event.key === "Escape" && ctx.closeOnEscape && ctx.onClose();
       onKeyDown == null ? void 0 : onKeyDown(event);
     };
-    return /* @__PURE__ */ React27.createElement(
+    return /* @__PURE__ */ React20.createElement(
       Transition,
       __spreadValues(__spreadValues({
         mounted: ctx.opened,
         transition: "pop"
       }, ctx.transitionProps), transitionProps),
-      (transitionStyles) => /* @__PURE__ */ React27.createElement(
+      (transitionStyles) => /* @__PURE__ */ React20.createElement(
         "div",
         __spreadProps(__spreadValues({}, innerProps), {
           className: clsx_default("modalBase-inner", innerProps.className)
         }),
-        /* @__PURE__ */ React27.createElement(FocusTrap, { active: ctx.opened && ctx.trapFocus }, /* @__PURE__ */ React27.createElement(
+        /* @__PURE__ */ React20.createElement(FocusTrap, { active: ctx.opened && ctx.trapFocus }, /* @__PURE__ */ React20.createElement(
           Paper,
           __spreadProps(__spreadValues({}, others), {
             component: "section",
@@ -1853,50 +1540,47 @@ var ModalBaseContent = forwardRef12(
 ModalBaseContent.displayName = "@raikou/core/ModalBaseContent";
 
 // ../ModalBase/src/ModalBaseHeader.tsx
-import React28, { forwardRef as forwardRef13 } from "react";
-import { Box as Box11 } from "@raikou/core";
-var ModalBaseHeader = forwardRef13(
+import React21, { forwardRef as forwardRef9 } from "react";
+import { Box as Box5 } from "@raikou/core";
+var ModalBaseHeader = forwardRef9(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React28.createElement(Box11, __spreadValues({ ref, className: clsx_default("modalBase-header", className) }, others));
+    return /* @__PURE__ */ React21.createElement(Box5, __spreadValues({ ref, className: clsx_default("modalBase-header", className) }, others));
   }
 );
 ModalBaseHeader.displayName = "@raikou/core/ModalBaseHeader";
 
 // ../ModalBase/src/ModalBaseOverlay.tsx
-import React30, { forwardRef as forwardRef14 } from "react";
+import React23, { forwardRef as forwardRef10 } from "react";
 
 // ../Overlay/src/Overlay.tsx
-import React29 from "react";
+import React22 from "react";
 import {
-  Box as Box12,
-  polymorphicFactory as polymorphicFactory5,
-  useProps as useProps8,
-  useStyles as useStyles6,
-  createVarsResolver as createVarsResolver5,
+  Box as Box6,
+  polymorphicFactory as polymorphicFactory4,
+  useProps as useProps5,
+  useStyles as useStyles4,
+  createVarsResolver as createVarsResolver3,
   rgba,
   getDefaultZIndex as getDefaultZIndex2,
   getRadius as getRadius3,
-  rem as rem4
+  rem as rem3
 } from "@raikou/core";
-var defaultProps8 = {
-  color: "#000",
-  backgroundOpacity: 0.6,
-  zIndex: getDefaultZIndex2("modal"),
-  radius: 0
+var defaultProps5 = {
+  zIndex: getDefaultZIndex2("modal")
 };
-var varsResolver5 = createVarsResolver5(
+var varsResolver3 = createVarsResolver3(
   (_, { gradient, color, backgroundOpacity, blur, radius, zIndex }) => ({
     root: {
-      "--overlay-bg": gradient || rgba(color || "#000", backgroundOpacity != null ? backgroundOpacity : 0.6),
-      "--overlay-filter": blur ? `blur(${rem4(blur)})` : void 0,
-      "--overlay-radius": getRadius3(radius),
+      "--overlay-bg": gradient || (color !== void 0 || backgroundOpacity !== void 0) && rgba(color || "#000", backgroundOpacity != null ? backgroundOpacity : 0.6) || void 0,
+      "--overlay-filter": blur ? `blur(${rem3(blur)})` : void 0,
+      "--overlay-radius": radius === void 0 ? void 0 : getRadius3(radius),
       "--overlay-z-index": zIndex == null ? void 0 : zIndex.toString()
     }
   })
 );
-var Overlay = polymorphicFactory5((_props, ref) => {
-  const props = useProps8("Overlay", defaultProps8, _props);
+var Overlay = polymorphicFactory4((_props, ref) => {
+  const props = useProps5("Overlay", defaultProps5, _props);
   const _a = props, {
     classNames,
     className,
@@ -1930,7 +1614,7 @@ var Overlay = polymorphicFactory5((_props, ref) => {
     "color",
     "backgroundOpacity"
   ]);
-  const getStyles2 = useStyles6({
+  const getStyles2 = useStyles4({
     name: "Overlay",
     props,
     classes: {
@@ -1942,9 +1626,9 @@ var Overlay = polymorphicFactory5((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver5
+    varsResolver: varsResolver3
   });
-  return /* @__PURE__ */ React29.createElement(Box12, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles2("root")), { mod: { center, fixed } }), others), children);
+  return /* @__PURE__ */ React22.createElement(Box6, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles2("root")), { mod: { center, fixed } }), others), children);
 });
 Overlay.displayName = "@raikou/core/Overlay";
 
@@ -1960,18 +1644,17 @@ function useModalTransition(transitionOverride) {
 }
 
 // ../ModalBase/src/ModalBaseOverlay.tsx
-var ModalBaseOverlay = forwardRef14((_a, ref) => {
+var ModalBaseOverlay = forwardRef10((_a, ref) => {
   var _b = _a, { onClick, transitionProps, style } = _b, others = __objRest(_b, ["onClick", "transitionProps", "style"]);
   const ctx = useModalBaseContext();
   const transition = useModalTransition(transitionProps);
-  return /* @__PURE__ */ React30.createElement(Transition, __spreadProps(__spreadValues({ mounted: ctx.opened }, transition), { transition: "fade" }), (transitionStyles) => /* @__PURE__ */ React30.createElement(
+  return /* @__PURE__ */ React23.createElement(Transition, __spreadProps(__spreadValues({ mounted: ctx.opened }, transition), { transition: "fade" }), (transitionStyles) => /* @__PURE__ */ React23.createElement(
     Overlay,
     __spreadValues({
       ref,
       fixed: true,
       style: [style, transitionStyles],
       zIndex: ctx.zIndex,
-      radius: 0,
       onClick: (event) => {
         onClick == null ? void 0 : onClick(event);
         ctx.closeOnClickOutside && ctx.onClose();
@@ -1982,8 +1665,8 @@ var ModalBaseOverlay = forwardRef14((_a, ref) => {
 ModalBaseOverlay.displayName = "@raikou/core/ModalBaseOverlay";
 
 // ../ModalBase/src/ModalBaseTitle.tsx
-import React31, { forwardRef as forwardRef15 } from "react";
-import { Box as Box13 } from "@raikou/core";
+import React24, { forwardRef as forwardRef11 } from "react";
+import { Box as Box7 } from "@raikou/core";
 
 // ../ModalBase/src/use-modal-title-id.ts
 import { useEffect as useEffect7 } from "react";
@@ -1997,11 +1680,11 @@ function useModalTitle() {
 }
 
 // ../ModalBase/src/ModalBaseTitle.tsx
-var ModalBaseTitle = forwardRef15((_a, ref) => {
+var ModalBaseTitle = forwardRef11((_a, ref) => {
   var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
   const id = useModalTitle();
-  return /* @__PURE__ */ React31.createElement(
-    Box13,
+  return /* @__PURE__ */ React24.createElement(
+    Box7,
     __spreadProps(__spreadValues({
       component: "h2",
       ref,
@@ -2014,9 +1697,9 @@ var ModalBaseTitle = forwardRef15((_a, ref) => {
 ModalBaseTitle.displayName = "@raikou/core/ModalBaseTitle";
 
 // ../ModalBase/src/NativeScrollArea.tsx
-import React32 from "react";
+import React25 from "react";
 function NativeScrollArea({ children }) {
-  return /* @__PURE__ */ React32.createElement(React32.Fragment, null, children);
+  return /* @__PURE__ */ React25.createElement(React25.Fragment, null, children);
 }
 
 // src/Modal.context.ts
@@ -2025,10 +1708,8 @@ var [ModalProvider, useModalContext] = createSafeContext(
 );
 
 // src/ModalRoot.tsx
-var defaultProps9 = {
+var defaultProps6 = {
   __staticSelector: "Modal",
-  yOffset: "5dvh",
-  xOffset: "5vw",
   closeOnClickOutside: true,
   withinPortal: true,
   lockScroll: true,
@@ -2037,23 +1718,20 @@ var defaultProps9 = {
   closeOnEscape: true,
   keepMounted: false,
   zIndex: getDefaultZIndex3("modal"),
-  padding: "md",
-  size: "md",
-  shadow: "xl",
   transitionProps: { duration: 200, transition: "pop" }
 };
-var varsResolver6 = createVarsResolver6(
+var varsResolver4 = createVarsResolver4(
   (_, { radius, size, yOffset, xOffset }) => ({
     root: {
-      "--modal-radius": getRadius4(radius),
-      "--modal-size": getSize3(size, "modal-size"),
-      "--modal-y-offset": rem5(yOffset),
-      "--modal-x-offset": rem5(xOffset)
+      "--modal-radius": radius === void 0 ? void 0 : getRadius4(radius),
+      "--modal-size": getSize2(size, "modal-size"),
+      "--modal-y-offset": rem4(yOffset),
+      "--modal-x-offset": rem4(xOffset)
     }
   })
 );
-var ModalRoot = factory3((_props, ref) => {
-  const props = useProps9("ModalRoot", defaultProps9, _props);
+var ModalRoot = factory((_props, ref) => {
+  const props = useProps6("ModalRoot", defaultProps6, _props);
   const _a = props, {
     classNames,
     className,
@@ -2083,7 +1761,7 @@ var ModalRoot = factory3((_props, ref) => {
     "xOffset",
     "__staticSelector"
   ]);
-  const getStyles2 = useStyles7({
+  const getStyles2 = useStyles5({
     name: __staticSelector,
     classes: {
       root: "modal-root",
@@ -2102,9 +1780,9 @@ var ModalRoot = factory3((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver6
+    varsResolver: varsResolver4
   });
-  return /* @__PURE__ */ React33.createElement(ModalProvider, { value: { yOffset, scrollAreaComponent, getStyles: getStyles2 } }, /* @__PURE__ */ React33.createElement(
+  return /* @__PURE__ */ React26.createElement(ModalProvider, { value: { yOffset, scrollAreaComponent, getStyles: getStyles2 } }, /* @__PURE__ */ React26.createElement(
     ModalBase,
     __spreadValues(__spreadProps(__spreadValues({
       ref
@@ -2117,17 +1795,17 @@ var ModalRoot = factory3((_props, ref) => {
 ModalRoot.displayName = "@raikou/core/ModalRoot";
 
 // src/ModalBody.tsx
-import React34 from "react";
+import React27 from "react";
 import {
-  factory as factory4,
-  useProps as useProps10
+  factory as factory2,
+  useProps as useProps7
 } from "@raikou/core";
-var defaultProps10 = {};
-var ModalBody = factory4((_props, ref) => {
-  const props = useProps10("ModalBody", defaultProps10, _props);
+var defaultProps7 = {};
+var ModalBody = factory2((_props, ref) => {
+  const props = useProps7("ModalBody", defaultProps7, _props);
   const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useModalContext();
-  return /* @__PURE__ */ React34.createElement(
+  return /* @__PURE__ */ React27.createElement(
     ModalBaseBody,
     __spreadValues(__spreadValues({
       ref
@@ -2137,18 +1815,18 @@ var ModalBody = factory4((_props, ref) => {
 ModalBody.displayName = "@raikou/core/ModalBody";
 
 // src/ModalCloseButton.tsx
-import React35 from "react";
+import React28 from "react";
 import {
-  factory as factory5,
-  useProps as useProps11
+  factory as factory3,
+  useProps as useProps8
 } from "@raikou/core";
-var defaultProps11 = {};
-var ModalCloseButton = factory5(
+var defaultProps8 = {};
+var ModalCloseButton = factory3(
   (_props, ref) => {
-    const props = useProps11("ModalCloseButton", defaultProps11, _props);
+    const props = useProps8("ModalCloseButton", defaultProps8, _props);
     const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
     const ctx = useModalContext();
-    return /* @__PURE__ */ React35.createElement(
+    return /* @__PURE__ */ React28.createElement(
       ModalBaseCloseButton,
       __spreadValues(__spreadValues({
         ref
@@ -2159,17 +1837,17 @@ var ModalCloseButton = factory5(
 ModalCloseButton.displayName = "@raikou/core/ModalCloseButton";
 
 // src/ModalOverlay.tsx
-import React36 from "react";
+import React29 from "react";
 import {
-  factory as factory6,
-  useProps as useProps12
+  factory as factory4,
+  useProps as useProps9
 } from "@raikou/core";
-var defaultProps12 = {};
-var ModalOverlay = factory6((_props, ref) => {
-  const props = useProps12("ModalOverlay", defaultProps12, _props);
+var defaultProps9 = {};
+var ModalOverlay = factory4((_props, ref) => {
+  const props = useProps9("ModalOverlay", defaultProps9, _props);
   const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useModalContext();
-  return /* @__PURE__ */ React36.createElement(
+  return /* @__PURE__ */ React29.createElement(
     ModalBaseOverlay,
     __spreadValues(__spreadValues({
       ref
@@ -2179,19 +1857,19 @@ var ModalOverlay = factory6((_props, ref) => {
 ModalOverlay.displayName = "@raikou/core/ModalOverlay";
 
 // src/ModalContent.tsx
-import React37 from "react";
+import React30 from "react";
 import {
-  factory as factory7,
-  useProps as useProps13,
-  rem as rem6
+  factory as factory5,
+  useProps as useProps10,
+  rem as rem5
 } from "@raikou/core";
-var defaultProps13 = {};
-var ModalContent = factory7((_props, ref) => {
-  const props = useProps13("ModalContent", defaultProps13, _props);
+var defaultProps10 = {};
+var ModalContent = factory5((_props, ref) => {
+  const props = useProps10("ModalContent", defaultProps10, _props);
   const _a = props, { classNames, className, style, styles, vars, children } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars", "children"]);
   const ctx = useModalContext();
   const Scroll = ctx.scrollAreaComponent || NativeScrollArea;
-  return /* @__PURE__ */ React37.createElement(
+  return /* @__PURE__ */ React30.createElement(
     ModalBaseContent,
     __spreadValues(__spreadProps(__spreadValues({}, ctx.getStyles("content", { className, style, styles, classNames })), {
       innerProps: ctx.getStyles("inner", {
@@ -2202,23 +1880,23 @@ var ModalContent = factory7((_props, ref) => {
       }),
       ref
     }), others),
-    /* @__PURE__ */ React37.createElement(Scroll, { style: { maxHeight: `calc(100vh - (${rem6(ctx.yOffset)} * 2))` } }, children)
+    /* @__PURE__ */ React30.createElement(Scroll, { style: { maxHeight: `calc(100vh - (${rem5(ctx.yOffset)} * 2))` } }, children)
   );
 });
 ModalContent.displayName = "@raikou/core/ModalContent";
 
 // src/ModalTitle.tsx
-import React38 from "react";
+import React31 from "react";
 import {
-  factory as factory8,
-  useProps as useProps14
+  factory as factory6,
+  useProps as useProps11
 } from "@raikou/core";
-var defaultProps14 = {};
-var ModalTitle = factory8((_props, ref) => {
-  const props = useProps14("ModalTitle", defaultProps14, _props);
+var defaultProps11 = {};
+var ModalTitle = factory6((_props, ref) => {
+  const props = useProps11("ModalTitle", defaultProps11, _props);
   const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useModalContext();
-  return /* @__PURE__ */ React38.createElement(
+  return /* @__PURE__ */ React31.createElement(
     ModalBaseTitle,
     __spreadValues(__spreadValues({
       ref
@@ -2228,17 +1906,17 @@ var ModalTitle = factory8((_props, ref) => {
 ModalTitle.displayName = "@raikou/core/ModalTitle";
 
 // src/ModalHeader.tsx
-import React39 from "react";
+import React32 from "react";
 import {
-  factory as factory9,
-  useProps as useProps15
+  factory as factory7,
+  useProps as useProps12
 } from "@raikou/core";
-var defaultProps15 = {};
-var ModalHeader = factory9((_props, ref) => {
-  const props = useProps15("ModalHeader", defaultProps15, _props);
+var defaultProps12 = {};
+var ModalHeader = factory7((_props, ref) => {
+  const props = useProps12("ModalHeader", defaultProps12, _props);
   const _a = props, { classNames, className, style, styles, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars"]);
   const ctx = useModalContext();
-  return /* @__PURE__ */ React39.createElement(
+  return /* @__PURE__ */ React32.createElement(
     ModalBaseHeader,
     __spreadValues(__spreadValues({
       ref
@@ -2248,7 +1926,7 @@ var ModalHeader = factory9((_props, ref) => {
 ModalHeader.displayName = "@raikou/core/ModalHeader";
 
 // src/Modal.tsx
-var defaultProps16 = {
+var defaultProps13 = {
   closeOnClickOutside: true,
   withinPortal: true,
   lockScroll: true,
@@ -2257,15 +1935,12 @@ var defaultProps16 = {
   closeOnEscape: true,
   keepMounted: false,
   zIndex: getDefaultZIndex4("modal"),
-  padding: "md",
-  size: "md",
-  shadow: "xl",
   transitionProps: { duration: 200, transition: "pop" },
   withOverlay: true,
   withCloseButton: true
 };
-var Modal = factory10((_props, ref) => {
-  const _a = useProps16("Modal", defaultProps16, _props), {
+var Modal = factory8((_props, ref) => {
+  const _a = useProps13("Modal", defaultProps13, _props), {
     title,
     withOverlay,
     overlayProps,
@@ -2283,7 +1958,7 @@ var Modal = factory10((_props, ref) => {
     "radius"
   ]);
   const hasHeader = !!title || withCloseButton;
-  return /* @__PURE__ */ React40.createElement(ModalRoot, __spreadValues({ ref }, others), withOverlay && /* @__PURE__ */ React40.createElement(ModalOverlay, __spreadValues({}, overlayProps)), /* @__PURE__ */ React40.createElement(ModalContent, { radius }, hasHeader && /* @__PURE__ */ React40.createElement(ModalHeader, null, title && /* @__PURE__ */ React40.createElement(ModalTitle, null, title), withCloseButton && /* @__PURE__ */ React40.createElement(ModalCloseButton, __spreadValues({}, closeButtonProps))), /* @__PURE__ */ React40.createElement(ModalBody, null, children)));
+  return /* @__PURE__ */ React33.createElement(ModalRoot, __spreadValues({ ref, radius }, others), withOverlay && /* @__PURE__ */ React33.createElement(ModalOverlay, __spreadValues({}, overlayProps)), /* @__PURE__ */ React33.createElement(ModalContent, { radius }, hasHeader && /* @__PURE__ */ React33.createElement(ModalHeader, null, title && /* @__PURE__ */ React33.createElement(ModalTitle, null, title), withCloseButton && /* @__PURE__ */ React33.createElement(ModalCloseButton, __spreadValues({}, closeButtonProps))), /* @__PURE__ */ React33.createElement(ModalBody, null, children)));
 });
 Modal.displayName = "@raikou/core/Modal";
 Modal.Root = ModalRoot;

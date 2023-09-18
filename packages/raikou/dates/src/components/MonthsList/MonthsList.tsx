@@ -63,7 +63,6 @@ export type MonthsListFactory = Factory<{
 
 const defaultProps: Partial<MonthsListProps> = {
   monthsListFormat: "MMM",
-  size: "sm",
   withCellSpacing: true,
 };
 

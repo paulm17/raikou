@@ -91,9 +91,7 @@ function getTextTruncate(truncate) {
   return void 0;
 }
 var defaultProps = {
-  variant: "text",
-  inherit: false,
-  size: "md"
+  inherit: false
 };
 var varsResolver = createVarsResolver(
   (theme, { variant, lineClamp, gradient, size }) => ({

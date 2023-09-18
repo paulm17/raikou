@@ -8,6 +8,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--label-lh-md": rem("24px"),
       "--label-lh-lg": rem("30px"),
       "--label-lh-xl": rem("36px"),
+      "--label-lh": "var(--label-lh-sm)",
 
       "&[data-label-position='left']": {
         "--_label-order": "1",
@@ -40,7 +41,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "-webkit-tap-highlight-color": "transparent",
       display: "inline-flex",
       flexDirection: "column",
-      fontSize: "var(--label-fz)",
+      fontSize: "var(--label-fz, var(--raikou-font-size-sm))",
       lineHeight: "var(--label-lh)",
       cursor: "var(--raikou-cursor-type)",
       order: "var(--_label-order)",

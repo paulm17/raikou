@@ -67,8 +67,6 @@ module.exports = __toCommonJS(src_exports);
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
 var defaultProps = {
-  width: "100%",
-  height: "auto",
   visible: true,
   animate: true
 };
@@ -77,7 +75,7 @@ var varsResolver = (0, import_core.createVarsResolver)(
     root: {
       "--skeleton-height": (0, import_core.rem)(height),
       "--skeleton-width": circle ? (0, import_core.rem)(height) : (0, import_core.rem)(width),
-      "--skeleton-radius": circle ? "1000000px" : (0, import_core.getRadius)(radius)
+      "--skeleton-radius": circle ? "1000px" : radius === void 0 ? void 0 : (0, import_core.getRadius)(radius)
     }
   })
 );

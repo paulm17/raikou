@@ -142,21 +142,21 @@ var notifications = {
 };
 
 // src/Notifications.tsx
-import React16, { useRef as useRef3 } from "react";
+import React13, { useRef as useRef3 } from "react";
 import {
   Transition as _Transition,
   TransitionGroup
 } from "react-transition-group";
 import { useForceUpdate, useDidUpdate, useReducedMotion } from "@raikou/hooks";
 import {
-  Box as Box10,
-  factory as factory4,
-  useProps as useProps9,
-  useStyles as useStyles7,
-  createVarsResolver as createVarsResolver6,
+  Box as Box8,
+  factory as factory3,
+  useProps as useProps6,
+  useStyles as useStyles5,
+  createVarsResolver as createVarsResolver4,
   getDefaultZIndex,
   useRaikouTheme,
-  rem as rem3
+  rem as rem2
 } from "@raikou/core";
 
 // ../components/Portal/src/Portal.tsx
@@ -213,16 +213,16 @@ function OptionalPortal(_a) {
 OptionalPortal.displayName = "@raikou/core/OptionalPortal";
 
 // src/NotificationContainer.tsx
-import React15, { forwardRef as forwardRef7, useRef as useRef2, useEffect } from "react";
+import React12, { forwardRef as forwardRef7, useRef as useRef2, useEffect } from "react";
 
 // ../components/Notification/src/Notification.tsx
-import React14 from "react";
+import React11 from "react";
 import {
-  Box as Box9,
-  factory as factory3,
-  useProps as useProps8,
-  useStyles as useStyles6,
-  createVarsResolver as createVarsResolver5,
+  Box as Box7,
+  factory as factory2,
+  useProps as useProps5,
+  useStyles as useStyles4,
+  createVarsResolver as createVarsResolver3,
   getRadius as getRadius2,
   getThemeColor as getThemeColor2
 } from "@raikou/core";
@@ -365,7 +365,6 @@ var defaultLoaders = {
   progress: Progress
 };
 var defaultProps2 = {
-  size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
@@ -373,7 +372,7 @@ var varsResolver = createVarsResolver(
   (theme, { size, color }) => ({
     root: {
       "--loader-size": getSize(size, "loader-size"),
-      "--loader-color": getThemeColor(color, theme)
+      "--loader-color": color ? getThemeColor(color, theme) : void 0
     }
   })
 );
@@ -430,120 +429,12 @@ var Loader = factory((_props, ref) => {
 });
 Loader.displayName = "@raikou/core/Loader";
 
-// ../components/Text/src/Text.tsx
-import React8 from "react";
-import {
-  Box as Box6,
-  polymorphicFactory,
-  useStyles as useStyles2,
-  useProps as useProps3,
-  getGradient,
-  createVarsResolver as createVarsResolver2,
-  getFontSize,
-  getLineHeight
-} from "@raikou/core";
-function getTextTruncate(truncate) {
-  if (truncate === "start") {
-    return "start";
-  }
-  if (truncate === "end" || truncate) {
-    return "end";
-  }
-  return void 0;
-}
-var defaultProps3 = {
-  variant: "text",
-  inherit: false,
-  size: "md"
-};
-var varsResolver2 = createVarsResolver2(
-  (theme, { variant, lineClamp, gradient, size }) => ({
-    root: {
-      "--text-fz": getFontSize(size),
-      "--text-lh": getLineHeight(size),
-      "--text-gradient": variant === "gradient" ? getGradient(gradient, theme) : void 0,
-      "--text-line-clamp": typeof lineClamp === "number" ? lineClamp.toString() : void 0
-    }
-  })
-);
-var Text = polymorphicFactory((_props, ref) => {
-  const props = useProps3("Text", defaultProps3, _props);
-  const _a = props, {
-    lineClamp,
-    truncate,
-    inline,
-    inherit,
-    gradient,
-    span,
-    __staticSelector,
-    vars,
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
-    variant,
-    mod,
-    size
-  } = _a, others = __objRest(_a, [
-    "lineClamp",
-    "truncate",
-    "inline",
-    "inherit",
-    "gradient",
-    "span",
-    "__staticSelector",
-    "vars",
-    "className",
-    "style",
-    "classNames",
-    "styles",
-    "unstyled",
-    "variant",
-    "mod",
-    "size"
-  ]);
-  const getStyles = useStyles2({
-    name: ["Text", __staticSelector],
-    props,
-    classes: {
-      root: "text-root"
-    },
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
-    vars,
-    varsResolver: varsResolver2
-  });
-  return /* @__PURE__ */ React8.createElement(
-    Box6,
-    __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { focusable: true })), {
-      ref,
-      component: span ? "span" : "p",
-      variant,
-      mod: [
-        {
-          "data-truncate": getTextTruncate(truncate),
-          "data-line-clamp": typeof lineClamp === "number",
-          "data-inline": inline,
-          "data-inherit": inherit
-        },
-        mod
-      ],
-      size
-    }), others)
-  );
-});
-Text.displayName = "@raikou/core/Text";
-
 // ../components/CloseButton/src/CloseIcon.tsx
-import React9, { forwardRef as forwardRef6 } from "react";
+import React8, { forwardRef as forwardRef6 } from "react";
 var CloseIcon = forwardRef6(
   (_a, ref) => {
-    var _b = _a, { size = "var(--cb-icon-size)", style } = _b, others = __objRest(_b, ["size", "style"]);
-    return /* @__PURE__ */ React9.createElement(
+    var _b = _a, { size = "var(--cb-icon-size, 70%)", style } = _b, others = __objRest(_b, ["size", "style"]);
+    return /* @__PURE__ */ React8.createElement(
       "svg",
       __spreadValues({
         viewBox: "0 0 15 15",
@@ -552,7 +443,7 @@ var CloseIcon = forwardRef6(
         style: __spreadProps(__spreadValues({}, style), { width: size, height: size }),
         ref
       }, others),
-      /* @__PURE__ */ React9.createElement(
+      /* @__PURE__ */ React8.createElement(
         "path",
         {
           d: "M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z",
@@ -567,38 +458,31 @@ var CloseIcon = forwardRef6(
 CloseIcon.displayName = "@raikou/core/CloseIcon";
 
 // ../components/CloseButton/src/CloseButton.tsx
-import React13 from "react";
+import React10 from "react";
 import {
-  polymorphicFactory as polymorphicFactory4,
-  useProps as useProps7,
-  rem as rem2
-} from "@raikou/core";
-
-// ../components/ActionIcon/src/ActionIcon.tsx
-import React12 from "react";
-import {
-  useProps as useProps6,
-  useStyles as useStyles5,
-  getRadius,
-  polymorphicFactory as polymorphicFactory3,
+  polymorphicFactory as polymorphicFactory2,
+  useProps as useProps4,
+  rem,
   getSize as getSize2,
-  createVarsResolver as createVarsResolver4
+  getRadius,
+  createVarsResolver as createVarsResolver2,
+  useStyles as useStyles3
 } from "@raikou/core";
 
 // ../components/UnstyledButton/src/UnstyledButton.tsx
-import React10 from "react";
+import React9 from "react";
 import {
-  Box as Box7,
-  useProps as useProps4,
-  useStyles as useStyles3,
-  polymorphicFactory as polymorphicFactory2
+  Box as Box6,
+  useProps as useProps3,
+  useStyles as useStyles2,
+  polymorphicFactory
 } from "@raikou/core";
-var defaultProps4 = {
+var defaultProps3 = {
   __staticSelector: "UnstyledButton"
 };
-var UnstyledButton = polymorphicFactory2(
+var UnstyledButton = polymorphicFactory(
   (_props, ref) => {
-    const props = useProps4("UnstyledButton", defaultProps4, _props);
+    const props = useProps3("UnstyledButton", defaultProps3, _props);
     const _a = props, {
       className,
       component = "button",
@@ -616,7 +500,7 @@ var UnstyledButton = polymorphicFactory2(
       "styles",
       "style"
     ]);
-    const getStyles = useStyles3({
+    const getStyles = useStyles2({
       name: __staticSelector,
       props,
       classes: {
@@ -628,8 +512,8 @@ var UnstyledButton = polymorphicFactory2(
       styles,
       unstyled
     });
-    return /* @__PURE__ */ React10.createElement(
-      Box7,
+    return /* @__PURE__ */ React9.createElement(
+      Box6,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { focusable: true })), {
         component,
         ref,
@@ -640,201 +524,75 @@ var UnstyledButton = polymorphicFactory2(
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
-// ../components/ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-import React11 from "react";
-import {
-  factory as factory2,
-  Box as Box8,
-  useProps as useProps5,
-  useStyles as useStyles4,
-  rem,
-  createVarsResolver as createVarsResolver3
-} from "@raikou/core";
-var defaultProps5 = {
-  orientation: "horizontal",
-  borderWidth: 1
-};
-var varsResolver3 = createVarsResolver3(
-  (_, { borderWidth }) => ({
-    group: { "--ai-border-width": rem(borderWidth) }
-  })
-);
-var ActionIconGroup = factory2(
-  (_props, ref) => {
-    const props = useProps5("ActionIconGroup", defaultProps5, _props);
-    const _a = useProps5("ActionIconGroup", defaultProps5, _props), {
-      className,
-      style,
-      classNames,
-      styles,
-      unstyled,
-      orientation,
-      vars,
-      borderWidth,
-      variant
-    } = _a, others = __objRest(_a, [
-      "className",
-      "style",
-      "classNames",
-      "styles",
-      "unstyled",
-      "orientation",
-      "vars",
-      "borderWidth",
-      "variant"
-    ]);
-    const getStyles = useStyles4({
-      name: "ActionIconGroup",
-      props,
-      classes: {
-        group: "actionIconGroup-root"
-      },
-      className,
-      style,
-      classNames,
-      styles,
-      unstyled,
-      vars,
-      varsResolver: varsResolver3,
-      rootSelector: "group"
-    });
-    return /* @__PURE__ */ React11.createElement(
-      Box8,
-      __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
-        ref,
-        variant,
-        mod: { "data-orientation": orientation },
-        role: "group"
-      }), others)
-    );
-  }
-);
-ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
-
-// ../components/ActionIcon/src/ActionIcon.tsx
-var defaultProps6 = {
-  variant: "filled",
+// ../components/CloseButton/src/CloseButton.tsx
+var defaultProps4 = {
+  variant: "subtle",
   size: "md"
 };
-var varsResolver4 = createVarsResolver4(
-  (theme, { size, radius, variant, gradient, color }) => {
-    const colors = theme.variantColorResolver({
-      color: color || theme.primaryColor,
-      theme,
-      gradient,
-      variant
-    });
-    return {
-      root: {
-        "--ai-size": getSize2(size, "ai-size"),
-        "--ai-radius": getRadius(radius),
-        "--ai-bg": colors.background,
-        "--ai-hover": colors.hover,
-        "--ai-color": colors.color,
-        "--ai-bd": colors.border
-      }
-    };
-  }
+var varsResolver2 = createVarsResolver2(
+  (_, { size, radius, iconSize }) => ({
+    root: {
+      "--cb-size": getSize2(size, "cb-size"),
+      "--cb-radius": radius === void 0 ? void 0 : getRadius(radius),
+      "--cb-icon-size": rem(iconSize)
+    }
+  })
 );
-var ActionIcon = polymorphicFactory3(
+var CloseButton = polymorphicFactory2(
   (_props, ref) => {
-    const props = useProps6("ActionIcon", defaultProps6, _props);
+    const props = useProps4("CloseButton", defaultProps4, _props);
     const _a = props, {
-      className,
-      unstyled,
-      variant,
-      classNames,
-      styles,
-      style,
-      loading,
-      loaderProps,
-      size,
-      color,
-      radius,
-      __staticSelector,
-      gradient,
-      vars,
+      iconSize,
       children,
+      vars,
+      radius,
+      className,
+      classNames,
+      style,
+      styles,
+      unstyled,
+      "data-disabled": dataDisabled,
       disabled,
-      "data-disabled": dataDisabled
+      variant
     } = _a, others = __objRest(_a, [
-      "className",
-      "unstyled",
-      "variant",
-      "classNames",
-      "styles",
-      "style",
-      "loading",
-      "loaderProps",
-      "size",
-      "color",
-      "radius",
-      "__staticSelector",
-      "gradient",
-      "vars",
+      "iconSize",
       "children",
+      "vars",
+      "radius",
+      "className",
+      "classNames",
+      "style",
+      "styles",
+      "unstyled",
+      "data-disabled",
       "disabled",
-      "data-disabled"
+      "variant"
     ]);
-    const getStyles = useStyles5({
-      name: ["ActionIcon", __staticSelector],
+    const getStyles = useStyles3({
+      name: "CloseButton",
       props,
       className,
       style,
       classes: {
-        root: "actionIcon-root",
-        loader: "actionIcon-loader"
+        root: "closeButton-root"
       },
       classNames,
       styles,
       unstyled,
       vars,
-      varsResolver: varsResolver4
+      varsResolver: varsResolver2
     });
-    return /* @__PURE__ */ React12.createElement(
+    return /* @__PURE__ */ React10.createElement(
       UnstyledButton,
-      __spreadProps(__spreadValues(__spreadValues({}, getStyles("root", {
-        active: !disabled && !loading && !dataDisabled
-      })), others), {
-        unstyled,
-        variant,
-        size,
-        disabled: disabled || loading,
-        ref,
-        mod: { loading, disabled: disabled || dataDisabled }
-      }),
-      loading ? /* @__PURE__ */ React12.createElement(
-        Loader,
-        __spreadValues(__spreadProps(__spreadValues({}, getStyles("loader")), {
-          color: "var(--ai-color)",
-          size: "calc(var(--ai-size) * 0.55)"
-        }), loaderProps)
-      ) : children
-    );
-  }
-);
-ActionIcon.displayName = "@raikou/core/ActionIcon";
-ActionIcon.Group = ActionIconGroup;
-
-// ../components/CloseButton/src/CloseButton.tsx
-var defaultProps7 = {
-  iconSize: "70%",
-  variant: "subtle",
-  color: "gray"
-};
-var CloseButton = polymorphicFactory4(
-  (_props, ref) => {
-    const props = useProps7("CloseButton", defaultProps7, _props);
-    const _a = props, { iconSize, children, vars } = _a, others = __objRest(_a, ["iconSize", "children", "vars"]);
-    return /* @__PURE__ */ React13.createElement(
-      ActionIcon,
-      __spreadProps(__spreadValues({
+      __spreadValues(__spreadProps(__spreadValues({
         ref
       }, others), {
-        __vars: { "--cb-icon-size": rem2(iconSize) },
-        __staticSelector: "CloseButton"
-      }),
-      /* @__PURE__ */ React13.createElement(CloseIcon, null),
+        unstyled,
+        variant,
+        disabled,
+        mod: { disabled: disabled || dataDisabled }
+      }), getStyles("root", { variant, active: true })),
+      /* @__PURE__ */ React10.createElement(CloseIcon, null),
       children
     );
   }
@@ -842,19 +600,19 @@ var CloseButton = polymorphicFactory4(
 CloseButton.displayName = "@raikou/core/CloseButton";
 
 // ../components/Notification/src/Notification.tsx
-var defaultProps8 = {
+var defaultProps5 = {
   withCloseButton: true
 };
-var varsResolver5 = createVarsResolver5(
+var varsResolver3 = createVarsResolver3(
   (theme, { radius, color }) => ({
     root: {
-      "--notification-radius": getRadius2(radius),
-      "--notification-color": getThemeColor2(color, theme)
+      "--notification-radius": radius === void 0 ? void 0 : getRadius2(radius),
+      "--notification-color": color ? getThemeColor2(color, theme) : void 0
     }
   })
 );
-var Notification = factory3((_props, ref) => {
-  const props = useProps8("Notification", defaultProps8, _props);
+var Notification = factory2((_props, ref) => {
+  const props = useProps5("Notification", defaultProps5, _props);
   const _a = props, {
     className,
     color,
@@ -892,7 +650,7 @@ var Notification = factory3((_props, ref) => {
     "variant",
     "vars"
   ]);
-  const getStyles = useStyles6({
+  const getStyles = useStyles4({
     name: "Notification",
     classes: {
       root: "notification-root",
@@ -910,10 +668,10 @@ var Notification = factory3((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver5
+    varsResolver: varsResolver3
   });
-  return /* @__PURE__ */ React14.createElement(
-    Box9,
+  return /* @__PURE__ */ React11.createElement(
+    Box7,
     __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       mod: {
         "data-with-icon": !!icon || loading,
@@ -924,20 +682,10 @@ var Notification = factory3((_props, ref) => {
     }), others), {
       role: "alert"
     }),
-    icon && !loading && /* @__PURE__ */ React14.createElement("div", __spreadValues({}, getStyles("icon")), icon),
-    loading && /* @__PURE__ */ React14.createElement(Loader, __spreadValues({ size: 28, color }, getStyles("loader"))),
-    /* @__PURE__ */ React14.createElement("div", __spreadValues({}, getStyles("body")), title && /* @__PURE__ */ React14.createElement(Text, __spreadProps(__spreadValues({}, getStyles("title")), { size: "sm", fw: 500 }), title), /* @__PURE__ */ React14.createElement(
-      Text,
-      __spreadProps(__spreadValues({}, getStyles("description")), {
-        color: "dimmed",
-        mod: {
-          "data-with-title": !!title
-        },
-        size: "sm"
-      }),
-      children
-    )),
-    withCloseButton && /* @__PURE__ */ React14.createElement(
+    icon && !loading && /* @__PURE__ */ React11.createElement("div", __spreadValues({}, getStyles("icon")), icon),
+    loading && /* @__PURE__ */ React11.createElement(Loader, __spreadValues({ size: 28, color }, getStyles("loader"))),
+    /* @__PURE__ */ React11.createElement("div", __spreadValues({}, getStyles("body")), /* @__PURE__ */ React11.createElement(Box7, __spreadProps(__spreadValues({}, getStyles("description")), { mod: { "data-with-title": !!title } }), children)),
+    withCloseButton && /* @__PURE__ */ React11.createElement(
       CloseButton,
       __spreadValues(__spreadProps(__spreadValues({
         iconSize: 16,
@@ -988,7 +736,7 @@ var NotificationContainer = forwardRef7((_a, ref) => {
     handleAutoClose();
     return cancelAutoClose;
   }, [autoCloseDuration]);
-  return /* @__PURE__ */ React15.createElement(
+  return /* @__PURE__ */ React12.createElement(
     Notification,
     __spreadProps(__spreadValues(__spreadValues({}, others), notificationProps), {
       onClose: handleHide,
@@ -1050,7 +798,7 @@ function getNotificationStateStyles({
 
 // src/Notifications.tsx
 var Transition = _Transition;
-var defaultProps9 = {
+var defaultProps6 = {
   position: "bottom-right",
   autoClose: 4e3,
   transitionDuration: 250,
@@ -1061,7 +809,7 @@ var defaultProps9 = {
   store: notificationsStore,
   withinPortal: true
 };
-var varsResolver6 = createVarsResolver6(
+var varsResolver4 = createVarsResolver4(
   (_, { zIndex, position, containerWidth }) => {
     const [vertical, horizontal] = position.split("-");
     return {
@@ -1072,13 +820,13 @@ var varsResolver6 = createVarsResolver6(
         "--notifications-left": horizontal === "left" ? "var(--raikou-spacing-md)" : horizontal === "center" ? "50%" : void 0,
         "--notifications-right": horizontal === "right" ? "var(--raikou-spacing-md)" : void 0,
         "--notifications-transform": horizontal === "center" ? "translateX(-50%)" : void 0,
-        "--notifications-container-width": rem3(containerWidth)
+        "--notifications-container-width": rem2(containerWidth)
       }
     };
   }
 );
-var Notifications = factory4((_props, ref) => {
-  const props = useProps9("Notifications", defaultProps9, _props);
+var Notifications = factory3((_props, ref) => {
+  const props = useProps6("Notifications", defaultProps6, _props);
   const _a = props, {
     classNames,
     className,
@@ -1122,7 +870,7 @@ var Notifications = factory4((_props, ref) => {
   const previousLength = useRef3(0);
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
   const duration = reduceMotion ? 1 : transitionDuration;
-  const getStyles = useStyles7({
+  const getStyles = useStyles5({
     name: "Notifications",
     classes: {
       root: "notifications-root",
@@ -1135,7 +883,7 @@ var Notifications = factory4((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver6
+    varsResolver: varsResolver4
   });
   useDidUpdate(() => {
     if (data.notifications.length > previousLength.current) {
@@ -1143,7 +891,7 @@ var Notifications = factory4((_props, ref) => {
     }
     previousLength.current = data.notifications.length;
   }, [data.notifications]);
-  const items = data.notifications.map((notification) => /* @__PURE__ */ React16.createElement(
+  const items = data.notifications.map((notification) => /* @__PURE__ */ React13.createElement(
     Transition,
     {
       key: notification.id,
@@ -1151,7 +899,7 @@ var Notifications = factory4((_props, ref) => {
       onEnter: () => refs.current[notification.id].offsetHeight,
       nodeRef: { current: refs.current[notification.id] }
     },
-    (state) => /* @__PURE__ */ React16.createElement(
+    (state) => /* @__PURE__ */ React13.createElement(
       NotificationContainer,
       __spreadProps(__spreadValues({}, getStyles("notification", {
         style: getNotificationStateStyles({
@@ -1170,7 +918,7 @@ var Notifications = factory4((_props, ref) => {
       })
     )
   ));
-  return /* @__PURE__ */ React16.createElement(OptionalPortal, __spreadValues({ withinPortal }, portalProps), /* @__PURE__ */ React16.createElement(Box10, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref }), others), /* @__PURE__ */ React16.createElement(TransitionGroup, null, items)));
+  return /* @__PURE__ */ React13.createElement(OptionalPortal, __spreadValues({ withinPortal }, portalProps), /* @__PURE__ */ React13.createElement(Box8, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref }), others), /* @__PURE__ */ React13.createElement(TransitionGroup, null, items)));
 });
 Notifications.displayName = "@raikou/notifications/Notifications";
 Notifications.show = notifications.show;

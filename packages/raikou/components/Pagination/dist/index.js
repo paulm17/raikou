@@ -87,9 +87,6 @@ function filterFalsyChildren(children) {
 
 // ../Group/src/Group.tsx
 var defaultProps = {
-  justify: "flex-start",
-  align: "center",
-  gap: "md",
   preventGrowOverflow: true
 };
 var varsResolver = (0, import_core.createVarsResolver)(
@@ -140,9 +137,8 @@ var Group = (0, import_core.factory)((_props, ref) => {
   ]);
   const filteredChildren = filterFalsyChildren(children);
   const childrenCount = filteredChildren.length;
-  const childWidth = `calc(${100 / childrenCount}% - (${(0, import_core.getSpacing)(
-    gap
-  )} - ${(0, import_core.getSpacing)(gap)} / ${childrenCount}))`;
+  const resolvedGap = (0, import_core.getSpacing)(gap != null ? gap : "md");
+  const childWidth = `calc(${100 / childrenCount}% - (${resolvedGap} - ${resolvedGap} / ${childrenCount}))`;
   const stylesCtx = { childWidth };
   const getStyles = (0, import_core.useStyles)({
     name: "Group",
@@ -213,10 +209,10 @@ var defaultProps2 = {
 var varsResolver2 = (0, import_core2.createVarsResolver)(
   (theme, { size, radius, color }) => ({
     root: {
-      "--pagination-control-radius": (0, import_core2.getRadius)(radius),
+      "--pagination-control-radius": radius === void 0 ? void 0 : (0, import_core2.getRadius)(radius),
       "--pagination-control-size": (0, import_core2.getSize)(size, "pagination-control-size"),
       "--pagination-control-fz": (0, import_core2.getFontSize)(size),
-      "--pagination-active-bg": (0, import_core2.getThemeColor)(color, theme)
+      "--pagination-active-bg": color ? (0, import_core2.getThemeColor)(color, theme) : void 0
     }
   })
 );

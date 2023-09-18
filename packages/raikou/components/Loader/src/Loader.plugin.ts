@@ -8,6 +8,8 @@ const group = function ({ addComponents }: any) {
       "--loader-size-md": rem("36px"),
       "--loader-size-lg": rem("44px"),
       "--loader-size-xl": rem("58px"),
+      "--loader-size": "var(--loader-size-md)",
+      "--loader-color": "var(--raikou-primary-color-filled)",
     },
     "@keyframes bars-loader-animation": {
       "0%": {

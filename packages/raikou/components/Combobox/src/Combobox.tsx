@@ -104,8 +104,6 @@ const defaultProps: Partial<ComboboxProps> = {
   resetSelectionOnOptionHover: false,
   width: "target",
   transitionProps: { transition: "fade", duration: 0 },
-  size: "sm",
-  dropdownPadding: 4,
 };
 
 const varsResolver = createVarsResolver<ComboboxFactory>(
@@ -116,7 +114,8 @@ const varsResolver = createVarsResolver<ComboboxFactory>(
     },
 
     dropdown: {
-      "--combobox-padding": rem(dropdownPadding),
+      "--combobox-padding":
+        dropdownPadding === undefined ? undefined : rem(dropdownPadding),
       "--combobox-option-fz": getFontSize(size),
       "--combobox-option-padding": getSize(size, "combobox-option-padding"),
     },

@@ -18,6 +18,9 @@ export interface ComboboxTargetProps {
   /** Determines whether the target should have `aria-` attributes, `true` by default */
   withAriaAttributes?: boolean;
 
+  /** Determines whether the target should have `aria-expanded` attribute, `false` by default */
+  withExpandedAttribute?: boolean;
+
   /** Determines which events should be handled by the target element.
    * `button` target type handles `Space` and `Enter` keys to toggle dropdown opened state.
    * `input` by default.
@@ -44,13 +47,14 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
     refProp,
     withKeyboardNavigation,
     withAriaAttributes,
+    withExpandedAttribute,
     targetType,
     ...others
   } = useProps("ComboboxTarget", defaultProps, props);
 
   if (!isElement(children)) {
     throw new Error(
-      "Combobox.Target component children should be an element or a component that accepts ref. Fragments, strings, numbers and other primitive values are not supported"
+      "Combobox.Target component children should be an element or a component that accepts ref. Fragments, strings, numbers and other primitive values are not supported",
     );
   }
 
@@ -60,6 +64,7 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
     targetType,
     withAriaAttributes,
     withKeyboardNavigation,
+    withExpandedAttribute,
     onKeyDown: children.props.onKeyDown,
   });
 

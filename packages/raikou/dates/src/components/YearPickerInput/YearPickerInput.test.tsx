@@ -5,9 +5,10 @@ import {
   inputStylesApiSelectors,
   render,
 } from "@raikou/tests";
-import { __InputStylesNames } from "@raikou/core";
-import { datesTests, expectValue } from "@raikou/dates-tests";
+import { __InputStylesNames } from "../../../../components/Input/src";
+import { clickInput, datesTests, expectValue } from "@raikou/dates-tests";
 import { YearPickerInput, YearPickerInputProps } from "./YearPickerInput";
+import { DatesProvider } from "../DatesProvider";
 
 const defaultProps = {
   popoverProps: { withinPortal: false, transitionProps: { duration: 0 } },
@@ -116,5 +117,49 @@ describe("@raikou/dates/YearPickerInput", () => {
     expect(container.querySelector("table button")).toHaveClass(
       "raikou-YearPickerInput-yearsListControl",
     );
+  });
+
+  it('can be controlled (type="default") with timezone (UTC)', async () => {
+    const spy = jest.fn();
+    const { container } = render(
+      <DatesProvider settings={{ timezone: "UTC" }}>
+        <YearPickerInput
+          {...defaultProps}
+          date={new Date(2022, 3, 11)}
+          value={new Date(2023, 3, 11)}
+          onChange={spy}
+        />
+      </DatesProvider>,
+    );
+
+    await clickInput(container);
+    expect(container.querySelector("[data-selected]")!.textContent).toBe(
+      "2023",
+    );
+
+    await userEvent.click(container.querySelector("table button")!);
+    expect(spy).toHaveBeenCalledWith(new Date(2019, 11, 31, 19));
+  });
+
+  it('can be controlled (type="default") with timezone (America/Los_Angeles)', async () => {
+    const spy = jest.fn();
+    const { container } = render(
+      <DatesProvider settings={{ timezone: "America/Los_Angeles" }}>
+        <YearPickerInput
+          {...defaultProps}
+          date={new Date(2022, 3, 11)}
+          value={new Date(2023, 3, 11)}
+          onChange={spy}
+        />
+      </DatesProvider>,
+    );
+
+    await clickInput(container);
+    expect(container.querySelector("[data-selected]")!.textContent).toBe(
+      "2023",
+    );
+
+    await userEvent.click(container.querySelector("table button")!);
+    expect(spy).toHaveBeenCalledWith(new Date(2020, 0, 1, 3));
   });
 });

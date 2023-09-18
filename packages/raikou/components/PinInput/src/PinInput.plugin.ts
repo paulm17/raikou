@@ -8,6 +8,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--pin-input-size-md": rem("42px"),
       "--pin-input-size-lg": rem("50px"),
       "--pin-input-size-xl": rem("60px"),
+      "--pin-input-size": "var(--pin-input-size-sm)",
     },
 
     ".pinInput-pinInput": {

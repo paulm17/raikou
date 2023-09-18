@@ -66,11 +66,7 @@ module.exports = __toCommonJS(src_exports);
 // src/Stack.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
-var defaultProps = {
-  gap: "md",
-  align: "stretch",
-  justify: "flex-start"
-};
+var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)(
   (_, { gap, align, justify }) => ({
     root: {

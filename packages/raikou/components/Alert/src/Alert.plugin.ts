@@ -3,17 +3,18 @@ import { rem } from "@raikou/core";
 module.exports = function ({ addComponents, theme }: any) {
   addComponents({
     ".alert-root": {
-      backgroundColor: "var(--alert-bg)",
-      padding: "var(--raikou-spacing-md) var(--raikou-spacing-xl)",
-      borderRadius: "var(--alert-radius)",
+      padding: "var(--raikou-spacing-md) var(--raikou-spacing-md)",
+      borderRadius: "var(--alert-radius, var(--raikou-radius-default))",
       position: "relative",
       overflow: "hidden",
-      border: "var(--alert-bd)",
-      color: "var(--alert-color)",
+      backgroundColor: "var(--alert-bg, var(--raikou-primary-color-light))",
+      border: `var(--alert-bd, ${rem("1px")} solid transparent)`,
+      color: "var(--alert-color, var(--raikou-primary-color-light-color))",
     },
 
     ".alert-root--filled": {
-      "--_message-color": "var(--alert-color)",
+      "--_message-color":
+        "var(--alert-color, var(--raikou-primary-color-light-color))",
     },
 
     ".alert-root--white": {
@@ -38,6 +39,11 @@ module.exports = function ({ addComponents, theme }: any) {
 
       "&[data-with-close-button]": {
         paddingRight: "var(--raikou-spacing-md)",
+
+        '[dir="rtl"] &': {
+          paddingLeft: "var(--raikou-spacing-md)",
+          paddingRight: "0",
+        },
       },
     },
 
@@ -56,6 +62,11 @@ module.exports = function ({ addComponents, theme }: any) {
       justifyContent: "flex-start",
       marginRight: "var(--raikou-spacing-md)",
       marginTop: rem("1px"),
+
+      '[dir="rtl"] &': {
+        marginRight: "0",
+        marginLeft: "var(--mantine-spacing-md)",
+      },
     },
 
     ".alert-message": {
@@ -76,9 +87,8 @@ module.exports = function ({ addComponents, theme }: any) {
     ".alert-closeButton": {
       width: rem("20px"),
       height: rem("20px"),
-      marginRight: "calc(var(--raikou-spacing-md) * -1)",
       marginTop: "calc(var(--raikou-spacing-sm) * -0.5)",
-      color: "var(--alert-color)",
+      color: "var(--alert-color, var(--raikou-primary-color-light-color))",
     },
   });
 };

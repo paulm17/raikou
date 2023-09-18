@@ -16,8 +16,9 @@ import { CalendarStylesNames, pickCalendarProps } from "../Calendar";
 import { useDatesInput } from "../../hooks";
 import { DatePicker, DatePickerBaseProps } from "../DatePicker";
 import { DatePickerType } from "../../types";
-import { getDefaultClampedDate } from "../../utils";
+import { getDefaultClampedDate, shiftTimezone } from "../../utils";
 import { PickerInputBase, DateInputSharedProps } from "../PickerInputBase";
+import { useDatesContext } from "../DatesProvider";
 
 export type DatePickerInputStylesNames =
   | __InputStylesNames
@@ -45,7 +46,6 @@ const defaultProps: Partial<DatePickerInputProps> = {
   closeOnChange: true,
   sortDates: true,
   dropdownType: "popover",
-  size: "sm",
 };
 
 type DatePickerInputComponent = (<Type extends DatePickerType = "default">(
@@ -115,6 +115,8 @@ export const DatePickerInput: DatePickerInputComponent =
       ? _value[0] || defaultDate
       : _value || defaultDate;
 
+    const ctx = useDatesContext();
+
     return (
       <PickerInputBase
         formattedValue={formattedValue}
@@ -141,7 +143,12 @@ export const DatePickerInput: DatePickerInputComponent =
           type={type}
           value={_value}
           defaultDate={
-            _defaultDate || getDefaultClampedDate({ maxDate, minDate })
+            _defaultDate ||
+            getDefaultClampedDate({
+              maxDate,
+              minDate,
+              timezone: ctx.getTimezone(),
+            })
           }
           onChange={setValue}
           locale={locale}
@@ -152,6 +159,8 @@ export const DatePickerInput: DatePickerInputComponent =
           __stopPropagation={dropdownType === "popover"}
           minDate={minDate}
           maxDate={maxDate}
+          date={shiftTimezone("add", calendarProps.date, ctx.getTimezone())}
+          __timezoneApplied
         />
       </PickerInputBase>
     );

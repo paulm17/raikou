@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useUncontrolled } from "@raikou/hooks";
+import { useId, useUncontrolled } from "@raikou/hooks";
 import {
   BoxProps,
   StylesApiProps,
@@ -121,9 +121,12 @@ export const Select = factory<SelectFactory>((_props, ref) => {
     onSearchChange,
     allowDeselect,
     error,
+    rightSectionPointerEvents,
+    id,
     ...others
   } = props;
 
+  const _id = useId();
   const parsedData = getParsedComboboxData(data);
   const optionsLockup = getOptionsLockup(parsedData);
 
@@ -200,8 +203,10 @@ export const Select = factory<SelectFactory>((_props, ref) => {
       >
         <Combobox.Target targetType={searchable ? "input" : "button"}>
           <InputBase
+            id={_id}
             ref={ref}
             rightSection={rightSection || <Combobox.Chevron size={size} />}
+            rightSectionPointerEvents={rightSectionPointerEvents || "none"}
             {...others}
             size={size}
             __staticSelector="Select"
@@ -251,6 +256,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
           checkIconPosition={checkIconPosition}
           withCheckIcon={withCheckIcon}
           nothingFoundMessage={nothingFoundMessage}
+          labelId={`${_id}-label`}
         />
       </Combobox>
       <input

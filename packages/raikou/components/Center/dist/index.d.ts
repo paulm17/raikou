@@ -3,9 +3,6 @@ import { BoxProps, StylesApiProps, PolymorphicFactory } from '@raikou/core';
 import React from 'react';
 
 type CenterStylesNames = "root";
-type CenterCssVariables = {
-    root: "--center-display";
-};
 interface CenterProps extends BoxProps, StylesApiProps<CenterFactory> {
     /** Content that should be centered vertically and horizontally */
     children?: React.ReactNode;
@@ -17,7 +14,6 @@ type CenterFactory = PolymorphicFactory<{
     defaultRef: HTMLDivElement;
     defaultComponent: "div";
     stylesNames: CenterStylesNames;
-    vars: CenterCssVariables;
 }>;
 declare const Center: (<C = "div">(props: C extends React.ElementType<any> ? CenterProps & {
     component?: C | undefined;
@@ -36,9 +32,8 @@ declare const Center: (<C = "div">(props: C extends React.ElementType<any> ? Cen
     defaultRef: HTMLDivElement;
     defaultComponent: "div";
     stylesNames: CenterStylesNames;
-    vars: CenterCssVariables;
 }> & {
     classes: Record<string, string>;
 } & Record<string, never>;
 
-export { Center, CenterCssVariables, CenterFactory, CenterProps, CenterStylesNames };
+export { Center, CenterFactory, CenterProps, CenterStylesNames };

@@ -542,7 +542,6 @@ var defaultLoaders = {
   progress: Progress
 };
 var defaultProps = {
-  size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
@@ -550,7 +549,7 @@ var varsResolver = (0, import_core7.createVarsResolver)(
   (theme, { size, color }) => ({
     root: {
       "--loader-size": (0, import_core7.getSize)(size, "loader-size"),
-      "--loader-color": (0, import_core7.getThemeColor)(color, theme)
+      "--loader-color": color ? (0, import_core7.getThemeColor)(color, theme) : void 0
     }
   })
 );
@@ -611,17 +610,14 @@ Loader.displayName = "@raikou/core/Loader";
 var import_react62 = __toESM(require("react"));
 var import_core8 = require("@raikou/core");
 var defaultProps2 = {
-  color: "#000",
-  backgroundOpacity: 0.6,
-  zIndex: (0, import_core8.getDefaultZIndex)("modal"),
-  radius: 0
+  zIndex: (0, import_core8.getDefaultZIndex)("modal")
 };
 var varsResolver2 = (0, import_core8.createVarsResolver)(
   (_, { gradient, color, backgroundOpacity, blur, radius, zIndex }) => ({
     root: {
-      "--overlay-bg": gradient || (0, import_core8.rgba)(color || "#000", backgroundOpacity != null ? backgroundOpacity : 0.6),
+      "--overlay-bg": gradient || (color !== void 0 || backgroundOpacity !== void 0) && (0, import_core8.rgba)(color || "#000", backgroundOpacity != null ? backgroundOpacity : 0.6) || void 0,
       "--overlay-filter": blur ? `blur(${(0, import_core8.rem)(blur)})` : void 0,
-      "--overlay-radius": (0, import_core8.getRadius)(radius),
+      "--overlay-radius": radius === void 0 ? void 0 : (0, import_core8.getRadius)(radius),
       "--overlay-z-index": zIndex == null ? void 0 : zIndex.toString()
     }
   })

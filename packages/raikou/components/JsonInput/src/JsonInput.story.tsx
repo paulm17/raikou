@@ -1,7 +1,26 @@
-import React, { useState } from 'react';
-import { JsonInput } from './JsonInput';
+import React, { useState } from "react";
+import { JsonInput } from "./JsonInput";
 
-export default { title: 'JsonInput' };
+export default { title: "JsonInput" };
+
+export function Usage() {
+  return (
+    <>
+      <JsonInput
+        defaultValue='{ "a": 1, "B": 2 }'
+        label="Usage"
+        placeholder="Usage"
+        formatOnBlur
+      />
+      <JsonInput
+        defaultValue='{ "a": 1, "B": 2 }'
+        label="Usage"
+        placeholder="Usage"
+        size="sm"
+      />
+    </>
+  );
+}
 
 export function ReadOnly() {
   return (
@@ -16,7 +35,7 @@ export function ReadOnly() {
 }
 
 export function Controlled() {
-  const [value, onChange] = useState('');
+  const [value, onChange] = useState("");
   return (
     <JsonInput
       value={value}

@@ -103,7 +103,6 @@ export type InputWrapperFactory = Factory<{
 
 const defaultProps: Partial<InputWrapperProps> = {
   labelElement: "label",
-  size: "sm",
   inputContainer: (children) => children,
   inputWrapperOrder: ["label", "description", "input", "error"],
 };
@@ -111,15 +110,17 @@ const defaultProps: Partial<InputWrapperProps> = {
 const varsResolver = createVarsResolver<InputWrapperFactory>((_, { size }) => ({
   label: {
     "--input-label-size": getFontSize(size),
-    "--input-asterisk-color": "var(--raikou-color-red-filled)",
+    "--input-asterisk-color": undefined,
   },
 
   error: {
-    "--input-error-size": `calc(${getFontSize(size)} - ${rem(2)})`,
+    "--input-error-size":
+      size === undefined ? undefined : `calc(${getFontSize(size)} - ${rem(2)})`,
   },
 
   description: {
-    "--input-description-size": `calc(${getFontSize(size)} - ${rem(2)})`,
+    "--input-description-size":
+      size === undefined ? undefined : `calc(${getFontSize(size)} - ${rem(2)})`,
   },
 }));
 

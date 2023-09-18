@@ -9,6 +9,9 @@ module.exports = function ({ addComponents, theme }: any) {
       "--ai-size-lg": rem("34px"),
       "--ai-size-xl": rem("44px"),
 
+      "--ai-size": "var(--ai-size-md)",
+      "--ai-color": "var(--raikou-color-white)",
+
       lineHeight: "1",
       display: "inline-flex",
       alignItems: "center",
@@ -20,16 +23,18 @@ module.exports = function ({ addComponents, theme }: any) {
       height: "var(--ai-size)",
       minWidth: "var(--ai-size)",
       minHeight: "var(--ai-size)",
-      borderRadius: "var(--ai-radius)",
-      background: "var(--_ai-bg, var(--ai-bg))",
-      color: "var(--_ai-color, var(--ai-color))",
-      border: "var(--ai-bd)",
+      borderRadius: "var(--ai-radius, var(--raikou-radius-default))",
+      background:
+        "var(--_ai-bg, var(--ai-bg, var(--raikou-primary-color-filled)))",
+      color: "var(--_ai-color, var(--ai-color, var(--raikou-color-white)))",
+      border: `var(--ai-bd, ${rem("1px")} solid transparent)`,
       cursor: "var(--_ai-cursor, pointer)",
 
       "@media (hover: hover)": {
         "&:hover": {
           "&:not([data-loading]):not(:disabled):not([data-disabled])": {
-            "--_ai-bg": "var(--ai-hover)",
+            "--_ai-bg":
+              "var(--ai-hover, var(--raikou-primary-color-filled-hover))",
           },
         },
       },
@@ -62,7 +67,7 @@ module.exports = function ({ addComponents, theme }: any) {
           content: '""',
           position: "absolute",
           inset: rem("-1px"),
-          borderRadius: "var(--ai-radius)",
+          borderRadius: "var(--ai-radius, var(--raikou-radius-default))",
           backgroundColor: "var(--_ai-loading-overlay-bg)",
         },
       },
@@ -81,6 +86,7 @@ module.exports = function ({ addComponents, theme }: any) {
       zIndex: "1",
     },
     ".actionIconGroup-root": {
+      "--ai-border-width": rem("1px"),
       display: "flex",
 
       "&[data-orientation='horizontal']": {

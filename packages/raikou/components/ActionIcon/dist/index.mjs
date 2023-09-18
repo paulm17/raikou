@@ -234,7 +234,6 @@ var defaultLoaders = {
   progress: Progress
 };
 var defaultProps2 = {
-  size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
@@ -242,7 +241,7 @@ var varsResolver = createVarsResolver(
   (theme, { size, color }) => ({
     root: {
       "--loader-size": getSize(size, "loader-size"),
-      "--loader-color": getThemeColor(color, theme)
+      "--loader-color": color ? getThemeColor(color, theme) : void 0
     }
   })
 );
@@ -310,8 +309,7 @@ import {
   createVarsResolver as createVarsResolver2
 } from "@raikou/core";
 var defaultProps3 = {
-  orientation: "horizontal",
-  borderWidth: 1
+  orientation: "horizontal"
 };
 var varsResolver2 = createVarsResolver2(
   (_, { borderWidth }) => ({
@@ -371,26 +369,23 @@ var ActionIconGroup = factory2(
 ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
 
 // src/ActionIcon.tsx
-var defaultProps4 = {
-  variant: "filled",
-  size: "md"
-};
+var defaultProps4 = {};
 var varsResolver3 = createVarsResolver3(
   (theme, { size, radius, variant, gradient, color }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       gradient,
-      variant
+      variant: variant || "filled"
     });
     return {
       root: {
         "--ai-size": getSize2(size, "ai-size"),
-        "--ai-radius": getRadius(radius),
-        "--ai-bg": colors.background,
-        "--ai-hover": colors.hover,
-        "--ai-color": colors.color,
-        "--ai-bd": colors.border
+        "--ai-radius": radius === void 0 ? void 0 : getRadius(radius),
+        "--ai-bg": color || variant ? colors.background : void 0,
+        "--ai-hover": color || variant ? colors.hover : void 0,
+        "--ai-color": color || variant ? colors.color : void 0,
+        "--ai-bd": color || variant ? colors.border : void 0
       }
     };
   }

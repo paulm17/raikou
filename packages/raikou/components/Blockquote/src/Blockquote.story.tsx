@@ -15,7 +15,6 @@ export function Usage() {
             stroke={1.5}
           />
         }
-        color="#F0000E"
       >
         <b>Hello there</b>
         <p>

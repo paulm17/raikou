@@ -3340,7 +3340,7 @@ var defaultProps3 = {
 var varsResolver = createVarsResolver(
   (theme, { radius, color }) => ({
     tooltip: {
-      "--tooltip-radius": getRadius(radius),
+      "--tooltip-radius": radius === void 0 ? void 0 : getRadius(radius),
       "--tooltip-bg": color ? getThemeColor(color, theme) : void 0
     }
   })
@@ -3575,7 +3575,7 @@ var defaultProps5 = {
 var varsResolver2 = createVarsResolver2(
   (theme, { radius, color }) => ({
     tooltip: {
-      "--tooltip-radius": getRadius2(radius),
+      "--tooltip-radius": radius === void 0 ? void 0 : getRadius2(radius),
       "--tooltip-bg": color ? getThemeColor2(color, theme) : void 0
     }
   })
@@ -3941,7 +3941,6 @@ var defaultLoaders = {
   progress: Progress
 };
 var defaultProps7 = {
-  size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
@@ -3949,7 +3948,7 @@ var varsResolver3 = createVarsResolver3(
   (theme, { size: size2, color }) => ({
     root: {
       "--loader-size": getSize(size2, "loader-size"),
-      "--loader-color": getThemeColor3(color, theme)
+      "--loader-color": color ? getThemeColor3(color, theme) : void 0
     }
   })
 );
@@ -4017,8 +4016,7 @@ import {
   createVarsResolver as createVarsResolver4
 } from "@raikou/core";
 var defaultProps8 = {
-  orientation: "horizontal",
-  borderWidth: 1
+  orientation: "horizontal"
 };
 var varsResolver4 = createVarsResolver4(
   (_, { borderWidth }) => ({
@@ -4078,26 +4076,23 @@ var ActionIconGroup = factory4(
 ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
 
 // ../components/ActionIcon/src/ActionIcon.tsx
-var defaultProps9 = {
-  variant: "filled",
-  size: "md"
-};
+var defaultProps9 = {};
 var varsResolver5 = createVarsResolver5(
   (theme, { size: size2, radius, variant, gradient, color }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       gradient,
-      variant
+      variant: variant || "filled"
     });
     return {
       root: {
         "--ai-size": getSize2(size2, "ai-size"),
-        "--ai-radius": getRadius3(radius),
-        "--ai-bg": colors.background,
-        "--ai-hover": colors.hover,
-        "--ai-color": colors.color,
-        "--ai-bd": colors.border
+        "--ai-radius": radius === void 0 ? void 0 : getRadius3(radius),
+        "--ai-bg": color || variant ? colors.background : void 0,
+        "--ai-hover": color || variant ? colors.hover : void 0,
+        "--ai-color": color || variant ? colors.color : void 0,
+        "--ai-bd": color || variant ? colors.border : void 0
       }
     };
   }
@@ -5000,7 +4995,6 @@ var ScrollAreaThumb = React35.forwardRef((props, forwardedRef) => {
 
 // ../components/ScrollArea/src/ScrollArea.tsx
 var defaultProps11 = {
-  scrollbarSize: 12,
   scrollHideDelay: 1e3,
   type: "hover"
 };
@@ -5313,7 +5307,8 @@ var CodeHighlightTabs = factory6(
           ActionIcon,
           __spreadValues({
             onClick: () => setExpanded(!_expanded),
-            variant: "none"
+            variant: "none",
+            "aria-label": _expanded ? collapseCodeLabel : expandCodeLabel
           }, getStyles("control")),
           /* @__PURE__ */ React37.createElement(ExpandIcon, { expanded: _expanded })
         )
@@ -5326,10 +5321,12 @@ var CodeHighlightTabs = factory6(
         },
         /* @__PURE__ */ React37.createElement(
           ActionIcon,
-          __spreadValues({
+          __spreadProps(__spreadValues({
             onClick: copy,
             variant: "none"
-          }, getStyles("control")),
+          }, getStyles("control")), {
+            "aria-label": copied ? copiedLabel : copyLabel
+          }),
           /* @__PURE__ */ React37.createElement(CopyIcon, { copied })
         )
       )))),

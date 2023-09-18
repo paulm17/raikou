@@ -35,7 +35,6 @@ export type JsonInputFactory = Factory<{
 }>;
 
 const defaultProps: Partial<JsonInputProps> = {
-  size: "sm",
   serialize: JSON.stringify,
   deserialize: JSON.parse,
 };

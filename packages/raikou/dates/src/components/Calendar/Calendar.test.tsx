@@ -3,6 +3,7 @@ import React from "react";
 import { render, tests, screen, userEvent } from "@raikou/tests";
 import { datesTests } from "@raikou/dates-tests";
 import { Calendar, CalendarProps, CalendarStylesNames } from "./Calendar";
+import { DatesProvider } from "../DatesProvider";
 
 const defaultProps: CalendarProps = {
   defaultDate: new Date(2022, 3, 11),
@@ -35,7 +36,7 @@ async function clickPrevious(level: "month" | "year" | "decade") {
   await userEvent.click(screen.getByLabelText(`previous-${level}`));
 }
 
-describe("@raikou/dates/Calendar", () => {
+describe("@mantine/dates/Calendar", () => {
   tests.itSupportsSystemProps<CalendarProps, CalendarStylesNames>({
     component: Calendar,
     props: defaultProps,
@@ -45,7 +46,7 @@ describe("@raikou/dates/Calendar", () => {
     size: true,
     classes: true,
     refType: HTMLDivElement,
-    displayName: "@raikou/dates/Calendar",
+    displayName: "@mantine/dates/Calendar",
     stylesApiSelectors: [
       "levelsGroup",
       "calendarHeader",
@@ -75,7 +76,7 @@ describe("@raikou/dates/Calendar", () => {
     {
       component: Calendar,
       props: { ...defaultProps, level: "year" },
-      listSelector: ".raikou-Calendar-monthsList",
+      listSelector: ".mantine-Calendar-monthsList",
     },
     "handle months list keyboard events",
   );
@@ -84,7 +85,7 @@ describe("@raikou/dates/Calendar", () => {
     {
       component: Calendar,
       props: { ...defaultProps, level: "decade" },
-      listSelector: ".raikou-Calendar-yearsList",
+      listSelector: ".mantine-Calendar-yearsList",
     },
     "handle years list keyboard events",
   );
@@ -192,9 +193,54 @@ describe("@raikou/dates/Calendar", () => {
     expect(screen.getByText("2020 – 2029")).toBeInTheDocument();
   });
 
+  it("renders correct header labels with defaultDate (uncontrolled) with timezone (UTC)", async () => {
+    render(
+      <DatesProvider settings={{ timezone: "UTC" }}>
+        <Calendar {...defaultProps} defaultDate={new Date(2021, 0, 31, 23)} />
+      </DatesProvider>,
+    );
+    expectHeaderLevel("month", "February 2021");
+
+    await userEvent.click(screen.getByLabelText("month-level"));
+    expectHeaderLevel("year", "2021");
+
+    await userEvent.click(screen.getByLabelText("year-level"));
+    expect(screen.getByText("2020 – 2029")).toBeInTheDocument();
+  });
+
+  it("renders correct header labels with defaultDate (uncontrolled) with timezone (America/Los_Angeles)", async () => {
+    render(
+      <DatesProvider settings={{ timezone: "America/Los_Angeles" }}>
+        <Calendar {...defaultProps} defaultDate={new Date(2021, 0, 31, 23)} />
+      </DatesProvider>,
+    );
+    expectHeaderLevel("month", "January 2021");
+
+    await userEvent.click(screen.getByLabelText("month-level"));
+    expectHeaderLevel("year", "2021");
+
+    await userEvent.click(screen.getByLabelText("year-level"));
+    expect(screen.getByText("2020 – 2029")).toBeInTheDocument();
+  });
+
   it("renders correct header labels with date (controlled)", async () => {
     render(<Calendar {...defaultProps} date={new Date(2021, 3, 11)} />);
     expectHeaderLevel("month", "April 2021");
+
+    await userEvent.click(screen.getByLabelText("month-level"));
+    expectHeaderLevel("year", "2021");
+
+    await userEvent.click(screen.getByLabelText("year-level"));
+    expect(screen.getByText("2020 – 2029")).toBeInTheDocument();
+  });
+
+  it("renders correct header labels with date (controlled) with timezone", async () => {
+    render(
+      <DatesProvider settings={{ timezone: "UTC" }}>
+        <Calendar {...defaultProps} date={new Date(2021, 0, 31, 23)} />
+      </DatesProvider>,
+    );
+    expectHeaderLevel("month", "February 2021");
 
     await userEvent.click(screen.getByLabelText("month-level"));
     expectHeaderLevel("year", "2021");
@@ -226,6 +272,38 @@ describe("@raikou/dates/Calendar", () => {
     expect(screen.getByText("2020 – 2029")).toBeInTheDocument();
   });
 
+  it("changes displayed date when next/previous controls are clicked with defaultDate prop (uncontrolled) with timezone", async () => {
+    const { rerender } = render(
+      <DatesProvider settings={{ timezone: "UTC" }}>
+        <Calendar
+          {...defaultProps}
+          defaultDate={new Date(2021, 0, 31, 23)}
+          level="month"
+        />
+      </DatesProvider>,
+    );
+    expectHeaderLevel("month", "February 2021");
+    await clickNext("month");
+    expectHeaderLevel("month", "March 2021");
+    await clickPrevious("month");
+    expectHeaderLevel("month", "February 2021");
+
+    rerender(
+      <DatesProvider settings={{ timezone: "UTC" }}>
+        <Calendar
+          {...defaultProps}
+          defaultDate={new Date(2020, 11, 31, 23)}
+          level="year"
+        />
+      </DatesProvider>,
+    );
+    expectHeaderLevel("year", "2021");
+    await clickNext("year");
+    expectHeaderLevel("year", "2022");
+    await clickPrevious("year");
+    expectHeaderLevel("year", "2021");
+  });
+
   it("does not change date when next/previous controls are clicked with date prop (controlled)", async () => {
     const { rerender } = render(
       <Calendar {...defaultProps} date={new Date(2022, 3, 11)} level="month" />,
@@ -251,6 +329,34 @@ describe("@raikou/dates/Calendar", () => {
     expect(screen.getByText("2020 – 2029")).toBeInTheDocument();
     await clickNext("decade");
     expect(screen.getByText("2020 – 2029")).toBeInTheDocument();
+  });
+
+  it("changes displayed date when next/previous controls are clicked with date prop (controlled) with timezone", async () => {
+    const { rerender } = render(
+      <DatesProvider settings={{ timezone: "UTC" }}>
+        <Calendar
+          {...defaultProps}
+          date={new Date(2021, 0, 31, 23)}
+          level="month"
+        />
+      </DatesProvider>,
+    );
+    expectHeaderLevel("month", "February 2021");
+    await clickNext("month");
+    expectHeaderLevel("month", "February 2021");
+
+    rerender(
+      <DatesProvider settings={{ timezone: "UTC" }}>
+        <Calendar
+          {...defaultProps}
+          date={new Date(2020, 11, 31, 23)}
+          level="year"
+        />
+      </DatesProvider>,
+    );
+    expectHeaderLevel("year", "2021");
+    await clickNext("year");
+    expectHeaderLevel("year", "2021");
   });
 
   it("calls onDateChange when date changes", async () => {
@@ -299,6 +405,60 @@ describe("@raikou/dates/Calendar", () => {
 
     await clickPrevious("decade");
     expect(spy).toHaveBeenLastCalledWith(new Date(2012, 3, 11));
+  });
+
+  it("calls onDateChange when date changes with timezone", async () => {
+    const spy = jest.fn();
+    const { rerender } = render(
+      <DatesProvider settings={{ timezone: "UTC" }}>
+        <Calendar
+          {...defaultProps}
+          level="month"
+          date={new Date(2022, 7, 11)}
+          onDateChange={spy}
+        />
+      </DatesProvider>,
+    );
+
+    await clickNext("month");
+    expect(spy).toHaveBeenLastCalledWith(new Date(2022, 8, 11));
+
+    await clickPrevious("month");
+    expect(spy).toHaveBeenLastCalledWith(new Date(2022, 6, 11));
+
+    rerender(
+      <DatesProvider settings={{ timezone: "UTC" }}>
+        <Calendar
+          {...defaultProps}
+          level="year"
+          date={new Date(2022, 7, 11)}
+          onDateChange={spy}
+        />
+      </DatesProvider>,
+    );
+
+    await clickNext("year");
+    expect(spy).toHaveBeenLastCalledWith(new Date(2023, 7, 11));
+
+    await clickPrevious("year");
+    expect(spy).toHaveBeenLastCalledWith(new Date(2021, 7, 11));
+
+    rerender(
+      <DatesProvider settings={{ timezone: "UTC" }}>
+        <Calendar
+          {...defaultProps}
+          level="decade"
+          date={new Date(2022, 7, 11)}
+          onDateChange={spy}
+        />
+      </DatesProvider>,
+    );
+
+    await clickNext("decade");
+    expect(spy).toHaveBeenLastCalledWith(new Date(2032, 7, 11));
+
+    await clickPrevious("decade");
+    expect(spy).toHaveBeenLastCalledWith(new Date(2012, 7, 11));
   });
 
   it("supports maxLevel", async () => {

@@ -3,9 +3,9 @@ module.exports = function ({ addComponents }: any) {
     ".dates-weekday": {
       color: "var(--raikou-color-dimmed)",
       fontWeight: "normal",
-      fontSize: "var(--wr-fz)",
+      fontSize: "var(--wr-fz, var(--raikou-font-size-sm))",
       textTransform: "capitalize",
-      paddingBottom: "calc(var(--wr-spacing) / 2)",
+      paddingBottom: "calc(var(--wr-spacing, var(--raikou-spacing-sm)) / 2)",
     },
   });
 };

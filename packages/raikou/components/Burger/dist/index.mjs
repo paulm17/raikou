@@ -98,17 +98,13 @@ var UnstyledButton = polymorphicFactory(
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
 // src/Burger.tsx
-var defaultProps2 = {
-  size: "md",
-  transitionDuration: 300,
-  transitionTimingFunction: "ease"
-};
+var defaultProps2 = {};
 var varsResolver = createVarsResolver(
   (theme, { color, size, transitionDuration, transitionTimingFunction }) => ({
     root: {
       "--burger-color": color ? getThemeColor(color, theme) : void 0,
       "--burger-size": getSize(size, "burger-size"),
-      "--burger-transition-duration": `${transitionDuration}ms`,
+      "--burger-transition-duration": transitionDuration === void 0 ? void 0 : `${transitionDuration}ms`,
       "--burger-transition-timing-function": transitionTimingFunction
     }
   })

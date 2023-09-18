@@ -38,25 +38,22 @@ import {
   getSize,
   getRadius
 } from "@raikou/core";
-var defaultProps = {
-  variant: "filled",
-  size: "md"
-};
+var defaultProps = {};
 var varsResolver = createVarsResolver(
   (theme, { size, radius, variant, gradient, color }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       gradient,
-      variant
+      variant: variant || "filled"
     });
     return {
       root: {
         "--ti-size": getSize(size, "ti-size"),
-        "--ti-radius": getRadius(radius),
-        "--ti-bg": colors.background,
-        "--ti-color": colors.color,
-        "--ti-bd": colors.border
+        "--ti-radius": radius === void 0 ? void 0 : getRadius(radius),
+        "--ti-bg": color || variant ? colors.background : void 0,
+        "--ti-color": color || variant ? colors.color : void 0,
+        "--ti-bd": color || variant ? colors.border : void 0
       }
     };
   }

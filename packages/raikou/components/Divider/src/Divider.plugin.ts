@@ -8,6 +8,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--divider-size-md": rem("3px"),
       "--divider-size-lg": rem("4px"),
       "--divider-size-xl": rem("5px"),
+      "--divider-size": "var(--divider-size-xs)",
 
       '[data-raikou-color-scheme="light"] &': {
         "--_divider-color": "var(--raikou-divider-color)",

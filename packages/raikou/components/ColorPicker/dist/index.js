@@ -646,14 +646,12 @@ var import_core7 = require("@raikou/core");
 var import_react10 = __toESM(require("react"));
 var import_core6 = require("@raikou/core");
 var defaultProps3 = {
-  size: (0, import_core6.rem)(28),
-  radius: (0, import_core6.rem)(28),
   withShadow: true
 };
 var varsResolver = (0, import_core6.createVarsResolver)(
   (_, { radius, size }) => ({
     root: {
-      "--cs-radius": (0, import_core6.getRadius)(radius),
+      "--cs-radius": radius === void 0 ? void 0 : (0, import_core6.getRadius)(radius),
       "--cs-size": (0, import_core6.rem)(size)
     }
   })
@@ -773,16 +771,15 @@ Swatches.displayName = "@raikou/core/Swatches";
 // src/ColorPicker.tsx
 var defaultProps4 = {
   swatchesPerRow: 7,
-  size: "sm",
   withPicker: true,
   focusable: true,
   __staticSelector: "ColorPicker"
 };
 var varsResolver2 = (0, import_core8.createVarsResolver)(
-  (_, { size, fullWidth, swatchesPerRow }) => ({
+  (_, { size, swatchesPerRow }) => ({
     wrapper: {
       "--cp-preview-size": (0, import_core8.getSize)(size, "cp-preview-size"),
-      "--cp-width": fullWidth ? "100%" : (0, import_core8.getSize)(size, "cp-width"),
+      "--cp-width": (0, import_core8.getSize)(size, "cp-width"),
       "--cp-body-spacing": (0, import_core8.getSpacing)(size),
       "--cp-swatch-size": `${100 / swatchesPerRow}%`,
       "--cp-thumb-size": (0, import_core8.getSize)(size, "cp-thumb-size"),
@@ -903,75 +900,88 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
     formatRef.current = format;
     setValue(convertHsvaTo(format, parsed));
   }, [format]);
-  return /* @__PURE__ */ import_react12.default.createElement(ColorPickerProvider, { value: { getStyles } }, /* @__PURE__ */ import_react12.default.createElement(import_core8.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("wrapper")), { size }), others), withPicker && /* @__PURE__ */ import_react12.default.createElement(import_react12.default.Fragment, null, /* @__PURE__ */ import_react12.default.createElement(
-    Saturation,
-    {
-      value: parsed,
-      onChange: handleChange,
-      onChangeEnd: ({ s, v }) => onChangeEnd == null ? void 0 : onChangeEnd(
-        convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { s, v }))
-      ),
-      color: _value,
+  return /* @__PURE__ */ import_react12.default.createElement(ColorPickerProvider, { value: { getStyles } }, /* @__PURE__ */ import_react12.default.createElement(
+    import_core8.Box,
+    __spreadValues(__spreadProps(__spreadValues({
+      ref
+    }, getStyles("wrapper")), {
       size,
-      focusable,
-      saturationLabel,
-      onScrubStart: startScrubbing,
-      onScrubEnd: stopScrubbing
-    }
-  ), /* @__PURE__ */ import_react12.default.createElement("div", __spreadValues({}, getStyles("body")), /* @__PURE__ */ import_react12.default.createElement("div", __spreadValues({}, getStyles("sliders")), /* @__PURE__ */ import_react12.default.createElement(
-    HueSlider,
-    {
-      value: parsed.h,
-      onChange: (h) => handleChange({ h }),
-      onChangeEnd: (h) => onChangeEnd == null ? void 0 : onChangeEnd(
-        convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { h }))
-      ),
-      size,
-      focusable,
-      "aria-label": hueLabel,
-      onScrubStart: startScrubbing,
-      onScrubEnd: stopScrubbing
-    }
-  ), withAlpha && /* @__PURE__ */ import_react12.default.createElement(
-    AlphaSlider,
-    {
-      value: parsed.a,
-      onChange: (a) => handleChange({ a }),
-      onChangeEnd: (a) => {
-        onChangeEnd == null ? void 0 : onChangeEnd(
-          convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { a }))
-        );
-      },
-      size,
-      color: convertHsvaTo("hex", parsed),
-      focusable,
-      "aria-label": alphaLabel,
-      onScrubStart: startScrubbing,
-      onScrubEnd: stopScrubbing
-    }
-  )), withAlpha && /* @__PURE__ */ import_react12.default.createElement(
-    ColorSwatch,
-    __spreadValues({
-      color: _value,
-      radius: "sm"
-    }, getStyles("preview"))
-  ))), Array.isArray(swatches) && /* @__PURE__ */ import_react12.default.createElement(
-    Swatches,
-    {
-      data: swatches,
-      swatchesPerRow,
-      focusable,
-      setValue,
-      onChangeEnd: (color) => {
-        const convertedColor = convertHsvaTo(format, parseColor(color));
-        onColorSwatchClick == null ? void 0 : onColorSwatchClick(convertedColor);
-        onChangeEnd == null ? void 0 : onChangeEnd(convertedColor);
-        if (!controlled) {
-          setParsed(parseColor(color));
+      mod: { "full-width": fullWidth }
+    }), others),
+    withPicker && /* @__PURE__ */ import_react12.default.createElement(import_react12.default.Fragment, null, /* @__PURE__ */ import_react12.default.createElement(
+      Saturation,
+      {
+        value: parsed,
+        onChange: handleChange,
+        onChangeEnd: ({ s, v }) => onChangeEnd == null ? void 0 : onChangeEnd(
+          convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), {
+            s,
+            v
+          }))
+        ),
+        color: _value,
+        size,
+        focusable,
+        saturationLabel,
+        onScrubStart: startScrubbing,
+        onScrubEnd: stopScrubbing
+      }
+    ), /* @__PURE__ */ import_react12.default.createElement("div", __spreadValues({}, getStyles("body")), /* @__PURE__ */ import_react12.default.createElement("div", __spreadValues({}, getStyles("sliders")), /* @__PURE__ */ import_react12.default.createElement(
+      HueSlider,
+      {
+        value: parsed.h,
+        onChange: (h) => handleChange({ h }),
+        onChangeEnd: (h) => onChangeEnd == null ? void 0 : onChangeEnd(
+          convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { h }))
+        ),
+        size,
+        focusable,
+        "aria-label": hueLabel,
+        onScrubStart: startScrubbing,
+        onScrubEnd: stopScrubbing
+      }
+    ), withAlpha && /* @__PURE__ */ import_react12.default.createElement(
+      AlphaSlider,
+      {
+        value: parsed.a,
+        onChange: (a) => handleChange({ a }),
+        onChangeEnd: (a) => {
+          onChangeEnd == null ? void 0 : onChangeEnd(
+            convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { a }))
+          );
+        },
+        size,
+        color: convertHsvaTo("hex", parsed),
+        focusable,
+        "aria-label": alphaLabel,
+        onScrubStart: startScrubbing,
+        onScrubEnd: stopScrubbing
+      }
+    )), withAlpha && /* @__PURE__ */ import_react12.default.createElement(
+      ColorSwatch,
+      __spreadValues({
+        color: _value,
+        radius: "sm"
+      }, getStyles("preview"))
+    ))),
+    Array.isArray(swatches) && /* @__PURE__ */ import_react12.default.createElement(
+      Swatches,
+      {
+        data: swatches,
+        swatchesPerRow,
+        focusable,
+        setValue,
+        onChangeEnd: (color) => {
+          const convertedColor = convertHsvaTo(format, parseColor(color));
+          onColorSwatchClick == null ? void 0 : onColorSwatchClick(convertedColor);
+          onChangeEnd == null ? void 0 : onChangeEnd(convertedColor);
+          if (!controlled) {
+            setParsed(parseColor(color));
+          }
         }
       }
-    }
-  )));
+    )
+  ));
 });
 ColorPicker.displayName = "@raikou/core/ColorPicker";
 // Annotate the CommonJS export names for ESM import in node:

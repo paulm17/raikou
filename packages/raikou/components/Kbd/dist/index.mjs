@@ -37,9 +37,7 @@ import {
   createVarsResolver,
   getSize
 } from "@raikou/core";
-var defaultProps = {
-  size: "sm"
-};
+var defaultProps = {};
 var varsResolver = createVarsResolver((_, { size }) => ({
   root: {
     "--kbd-fz": getSize(size, "kbd-fz"),

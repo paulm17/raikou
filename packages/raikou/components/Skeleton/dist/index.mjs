@@ -42,8 +42,6 @@ import {
   getRadius
 } from "@raikou/core";
 var defaultProps = {
-  width: "100%",
-  height: "auto",
   visible: true,
   animate: true
 };
@@ -52,7 +50,7 @@ var varsResolver = createVarsResolver(
     root: {
       "--skeleton-height": rem(height),
       "--skeleton-width": circle ? rem(height) : rem(width),
-      "--skeleton-radius": circle ? "1000000px" : getRadius(radius)
+      "--skeleton-radius": circle ? "1000px" : radius === void 0 ? void 0 : getRadius(radius)
     }
   })
 );

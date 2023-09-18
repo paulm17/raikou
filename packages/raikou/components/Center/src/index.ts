@@ -1,7 +1,2 @@
-export { Center } from './Center';
-export type {
-  CenterProps,
-  CenterCssVariables,
-  CenterFactory,
-  CenterStylesNames,
-} from './Center';
+export { Center } from "./Center";
+export type { CenterProps, CenterFactory, CenterStylesNames } from "./Center";

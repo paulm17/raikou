@@ -64,9 +64,6 @@ module.exports = __toCommonJS(src_exports);
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
 var defaultProps = {};
-var varsResolver = (0, import_core.createVarsResolver)((_, { inline }) => ({
-  root: { "--center-display": inline ? "inline-flex" : "flex" }
-}));
 var Center = (0, import_core.polymorphicFactory)((_props, ref) => {
   const props = (0, import_core.useProps)("Center", defaultProps, _props);
   const _a = props, {
@@ -97,10 +94,9 @@ var Center = (0, import_core.polymorphicFactory)((_props, ref) => {
     classNames,
     styles,
     unstyled,
-    vars,
-    varsResolver
+    vars
   });
-  return /* @__PURE__ */ import_react.default.createElement(import_core.Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others));
+  return /* @__PURE__ */ import_react.default.createElement(import_core.Box, __spreadValues(__spreadValues({ ref, mod: { inline } }, getStyles("root")), others));
 });
 Center.displayName = "@raikou/core/Center";
 // Annotate the CommonJS export names for ESM import in node:

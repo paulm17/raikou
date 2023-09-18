@@ -55,14 +55,14 @@ export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
       id,
       disabled,
       error,
-      size = "sm",
+      size,
       labelPosition = "left",
       variant,
       style,
       vars,
       ...others
     },
-    ref
+    ref,
   ) => {
     const getStyles = useStyles<InlineInputFactory>({
       name: __staticSelector,
@@ -124,7 +124,7 @@ export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
         </div>
       </Box>
     );
-  }
+  },
 );
 
 InlineInput.displayName = "@raikou/core/InlineInput";

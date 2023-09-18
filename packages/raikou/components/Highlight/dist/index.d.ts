@@ -28,7 +28,7 @@ interface TextProps extends BoxProps, StylesApiProps<TextFactory> {
 }
 type TextFactory = PolymorphicFactory<{
     props: TextProps;
-    defaultComponent: "div";
+    defaultComponent: "p";
     defaultRef: HTMLParagraphElement;
     stylesNames: TextStylesNames;
     vars: TextCssVariables;

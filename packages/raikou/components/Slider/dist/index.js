@@ -570,7 +570,6 @@ function getPrecision(step) {
 
 // src/Slider/Slider.tsx
 var defaultProps = {
-  size: "md",
   radius: "xl",
   min: 0,
   max: 100,
@@ -588,9 +587,9 @@ var varsResolver = (0, import_core7.createVarsResolver)(
   (theme, { size, color, thumbSize, radius }) => ({
     root: {
       "--slider-size": (0, import_core7.getSize)(size, "slider-size"),
-      "--slider-color": (0, import_core7.getThemeColor)(color, theme),
-      "--slider-radius": (0, import_core7.getRadius)(radius),
-      "--slider-thumb-size": typeof thumbSize !== "undefined" ? (0, import_core7.rem)(thumbSize) : "calc(var(--slider-size) * 2)"
+      "--slider-color": color ? (0, import_core7.getThemeColor)(color, theme) : void 0,
+      "--slider-radius": radius === void 0 ? void 0 : (0, import_core7.getRadius)(radius),
+      "--slider-thumb-size": thumbSize !== void 0 ? (0, import_core7.rem)(thumbSize) : "calc(var(--slider-size) * 2)"
     }
   })
 );
@@ -855,15 +854,13 @@ var varsResolver2 = (0, import_core8.createVarsResolver)(
   (theme, { size, color, thumbSize, radius }) => ({
     root: {
       "--slider-size": (0, import_core8.getSize)(size, "slider-size"),
-      "--slider-color": (0, import_core8.getThemeColor)(color, theme),
-      "--slider-radius": (0, import_core8.getRadius)(radius),
-      "--slider-thumb-size": typeof thumbSize !== "undefined" ? (0, import_core8.rem)(thumbSize) : "calc(var(--slider-size) * 2)"
+      "--slider-color": color ? (0, import_core8.getThemeColor)(color, theme) : void 0,
+      "--slider-radius": radius === void 0 ? void 0 : (0, import_core8.getRadius)(radius),
+      "--slider-thumb-size": thumbSize !== void 0 ? (0, import_core8.rem)(thumbSize) : "calc(var(--slider-size) * 2)"
     }
   })
 );
 var defaultProps2 = {
-  size: "md",
-  radius: "xl",
   min: 0,
   max: 100,
   minRange: 10,

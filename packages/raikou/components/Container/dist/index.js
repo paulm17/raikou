@@ -63,9 +63,7 @@ module.exports = __toCommonJS(src_exports);
 // src/Container.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
-var defaultProps = {
-  size: "md"
-};
+var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)(
   (_, { size, fluid }) => ({
     root: {
@@ -75,7 +73,23 @@ var varsResolver = (0, import_core.createVarsResolver)(
 );
 var Container = (0, import_core.factory)((_props, ref) => {
   const props = (0, import_core.useProps)("Container", defaultProps, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    fluid
+  } = _a, others = __objRest(_a, [
+    "classNames",
+    "className",
+    "style",
+    "styles",
+    "unstyled",
+    "vars",
+    "fluid"
+  ]);
   const getStyles = (0, import_core.useStyles)({
     name: "Container",
     classes: {
@@ -90,7 +104,7 @@ var Container = (0, import_core.factory)((_props, ref) => {
     vars,
     varsResolver
   });
-  return /* @__PURE__ */ import_react.default.createElement(import_core.Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others));
+  return /* @__PURE__ */ import_react.default.createElement(import_core.Box, __spreadValues(__spreadValues({ ref, mod: { fluid } }, getStyles("root")), others));
 });
 Container.displayName = "@raikou/core/Container";
 // Annotate the CommonJS export names for ESM import in node:

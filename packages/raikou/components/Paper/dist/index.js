@@ -70,7 +70,7 @@ var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)(
   (_, { radius, shadow }) => ({
     root: {
-      "--paper-radius": (0, import_core.getRadius)(radius),
+      "--paper-radius": radius === void 0 ? void 0 : (0, import_core.getRadius)(radius),
       "--paper-shadow": (0, import_core.getShadow)(shadow)
     }
   })

@@ -52,15 +52,13 @@ export type ColorSwatchFactory = PolymorphicFactory<{
 }>;
 
 const defaultProps: Partial<ColorSwatchProps> = {
-  size: rem(28),
-  radius: rem(28),
   withShadow: true,
 };
 
 const varsResolver = createVarsResolver<ColorSwatchFactory>(
   (_, { radius, size }) => ({
     root: {
-      "--cs-radius": getRadius(radius),
+      "--cs-radius": radius === undefined ? undefined : getRadius(radius),
       "--cs-size": rem(size),
     },
   }),

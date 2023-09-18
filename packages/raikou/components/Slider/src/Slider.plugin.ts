@@ -9,6 +9,10 @@ module.exports = function ({ addComponents, theme }: any) {
       "--slider-size-lg": rem("10px"),
       "--slider-size-xl": rem("12px"),
 
+      "--slider-size": "var(--slider-size-md)",
+      "--slider-radius": rem("1000px"),
+      "--slider-color": "var(--raikou-primary-color-filled)",
+
       "-webkit-tap-highlight-color": "transparent",
       outline: "none",
       height: "calc(var(--slider-size) * 2)",

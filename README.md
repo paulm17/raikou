@@ -55,8 +55,8 @@ The project was conceived with these 4 long-term goals:
       <a href="https://v7.mantine.dev/styles/styles-performance#inline-styles">very
       slow</a>.
     - Mantine and Raikou employ different approaches to manage the theme. While
-      Mantine uses context. Raikou utilizes a global Zustand state for server
-      rendering and a window variable for client rendering.
+      Mantine uses context. Raikou utilizes a global Zustand state for both
+      server and client rendering.
     - The code responsible for the ColorScheme has been replaced with a more
       lightweight version using
       <a href="https://github.com/pacocoursey/next-themes">Next Themes</a>.
@@ -94,13 +94,16 @@ Less headaches in dealing with postcss from a developer UX point of view.
 
 <ul style="list-style: none">
    <li>
-      <img src="./images/css.modules.sux1.png" style="width:500px" alt="Complaint 1">
+      <img src="./images/css.modules1.png" style="width:500px" alt="Complaint 1">
    </li>
    <li>
-      <img src="./images/css.modules.sux2.png" style="width:500px" alt="Complaint 2">
+      <img src="./images/css.modules2.png" style="width:500px" alt="Complaint 2">
    </li>
    <li>
-      <img src="./images/css.modules.sux3.png" style="width:500px" alt="Complaint 3">
+      <img src="./images/css.modules3.png" style="width:500px" alt="Complaint 3">
+   </li>
+   <li>
+      <img src="./images/css.modules4.png" style="width:500px" alt="Complaint 4">
    </li>
 </ul>
 

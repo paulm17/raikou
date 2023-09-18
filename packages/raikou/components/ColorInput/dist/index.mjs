@@ -673,14 +673,12 @@ import {
   createVarsResolver
 } from "@raikou/core";
 var defaultProps3 = {
-  size: rem4(28),
-  radius: rem4(28),
   withShadow: true
 };
 var varsResolver = createVarsResolver(
   (_, { radius, size: size2 }) => ({
     root: {
-      "--cs-radius": getRadius(radius),
+      "--cs-radius": radius === void 0 ? void 0 : getRadius(radius),
       "--cs-size": rem4(size2)
     }
   })
@@ -800,16 +798,15 @@ Swatches.displayName = "@raikou/core/Swatches";
 // ../ColorPicker/src/ColorPicker.tsx
 var defaultProps4 = {
   swatchesPerRow: 7,
-  size: "sm",
   withPicker: true,
   focusable: true,
   __staticSelector: "ColorPicker"
 };
 var varsResolver2 = createVarsResolver2(
-  (_, { size: size2, fullWidth, swatchesPerRow }) => ({
+  (_, { size: size2, swatchesPerRow }) => ({
     wrapper: {
       "--cp-preview-size": getSize(size2, "cp-preview-size"),
-      "--cp-width": fullWidth ? "100%" : getSize(size2, "cp-width"),
+      "--cp-width": getSize(size2, "cp-width"),
       "--cp-body-spacing": getSpacing(size2),
       "--cp-swatch-size": `${100 / swatchesPerRow}%`,
       "--cp-thumb-size": getSize(size2, "cp-thumb-size"),
@@ -930,75 +927,88 @@ var ColorPicker = factory((_props, ref) => {
     formatRef.current = format;
     setValue(convertHsvaTo(format, parsed));
   }, [format]);
-  return /* @__PURE__ */ React10.createElement(ColorPickerProvider, { value: { getStyles } }, /* @__PURE__ */ React10.createElement(Box6, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("wrapper")), { size: size2 }), others), withPicker && /* @__PURE__ */ React10.createElement(React10.Fragment, null, /* @__PURE__ */ React10.createElement(
-    Saturation,
-    {
-      value: parsed,
-      onChange: handleChange,
-      onChangeEnd: ({ s, v }) => onChangeEnd == null ? void 0 : onChangeEnd(
-        convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { s, v }))
-      ),
-      color: _value,
+  return /* @__PURE__ */ React10.createElement(ColorPickerProvider, { value: { getStyles } }, /* @__PURE__ */ React10.createElement(
+    Box6,
+    __spreadValues(__spreadProps(__spreadValues({
+      ref
+    }, getStyles("wrapper")), {
       size: size2,
-      focusable,
-      saturationLabel,
-      onScrubStart: startScrubbing,
-      onScrubEnd: stopScrubbing
-    }
-  ), /* @__PURE__ */ React10.createElement("div", __spreadValues({}, getStyles("body")), /* @__PURE__ */ React10.createElement("div", __spreadValues({}, getStyles("sliders")), /* @__PURE__ */ React10.createElement(
-    HueSlider,
-    {
-      value: parsed.h,
-      onChange: (h) => handleChange({ h }),
-      onChangeEnd: (h) => onChangeEnd == null ? void 0 : onChangeEnd(
-        convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { h }))
-      ),
-      size: size2,
-      focusable,
-      "aria-label": hueLabel,
-      onScrubStart: startScrubbing,
-      onScrubEnd: stopScrubbing
-    }
-  ), withAlpha && /* @__PURE__ */ React10.createElement(
-    AlphaSlider,
-    {
-      value: parsed.a,
-      onChange: (a) => handleChange({ a }),
-      onChangeEnd: (a) => {
-        onChangeEnd == null ? void 0 : onChangeEnd(
-          convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { a }))
-        );
-      },
-      size: size2,
-      color: convertHsvaTo("hex", parsed),
-      focusable,
-      "aria-label": alphaLabel,
-      onScrubStart: startScrubbing,
-      onScrubEnd: stopScrubbing
-    }
-  )), withAlpha && /* @__PURE__ */ React10.createElement(
-    ColorSwatch,
-    __spreadValues({
-      color: _value,
-      radius: "sm"
-    }, getStyles("preview"))
-  ))), Array.isArray(swatches) && /* @__PURE__ */ React10.createElement(
-    Swatches,
-    {
-      data: swatches,
-      swatchesPerRow,
-      focusable,
-      setValue,
-      onChangeEnd: (color) => {
-        const convertedColor = convertHsvaTo(format, parseColor(color));
-        onColorSwatchClick == null ? void 0 : onColorSwatchClick(convertedColor);
-        onChangeEnd == null ? void 0 : onChangeEnd(convertedColor);
-        if (!controlled) {
-          setParsed(parseColor(color));
+      mod: { "full-width": fullWidth }
+    }), others),
+    withPicker && /* @__PURE__ */ React10.createElement(React10.Fragment, null, /* @__PURE__ */ React10.createElement(
+      Saturation,
+      {
+        value: parsed,
+        onChange: handleChange,
+        onChangeEnd: ({ s, v }) => onChangeEnd == null ? void 0 : onChangeEnd(
+          convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), {
+            s,
+            v
+          }))
+        ),
+        color: _value,
+        size: size2,
+        focusable,
+        saturationLabel,
+        onScrubStart: startScrubbing,
+        onScrubEnd: stopScrubbing
+      }
+    ), /* @__PURE__ */ React10.createElement("div", __spreadValues({}, getStyles("body")), /* @__PURE__ */ React10.createElement("div", __spreadValues({}, getStyles("sliders")), /* @__PURE__ */ React10.createElement(
+      HueSlider,
+      {
+        value: parsed.h,
+        onChange: (h) => handleChange({ h }),
+        onChangeEnd: (h) => onChangeEnd == null ? void 0 : onChangeEnd(
+          convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { h }))
+        ),
+        size: size2,
+        focusable,
+        "aria-label": hueLabel,
+        onScrubStart: startScrubbing,
+        onScrubEnd: stopScrubbing
+      }
+    ), withAlpha && /* @__PURE__ */ React10.createElement(
+      AlphaSlider,
+      {
+        value: parsed.a,
+        onChange: (a) => handleChange({ a }),
+        onChangeEnd: (a) => {
+          onChangeEnd == null ? void 0 : onChangeEnd(
+            convertHsvaTo(formatRef.current, __spreadProps(__spreadValues({}, parsed), { a }))
+          );
+        },
+        size: size2,
+        color: convertHsvaTo("hex", parsed),
+        focusable,
+        "aria-label": alphaLabel,
+        onScrubStart: startScrubbing,
+        onScrubEnd: stopScrubbing
+      }
+    )), withAlpha && /* @__PURE__ */ React10.createElement(
+      ColorSwatch,
+      __spreadValues({
+        color: _value,
+        radius: "sm"
+      }, getStyles("preview"))
+    ))),
+    Array.isArray(swatches) && /* @__PURE__ */ React10.createElement(
+      Swatches,
+      {
+        data: swatches,
+        swatchesPerRow,
+        focusable,
+        setValue,
+        onChangeEnd: (color) => {
+          const convertedColor = convertHsvaTo(format, parseColor(color));
+          onColorSwatchClick == null ? void 0 : onColorSwatchClick(convertedColor);
+          onChangeEnd == null ? void 0 : onChangeEnd(convertedColor);
+          if (!controlled) {
+            setParsed(parseColor(color));
+          }
         }
       }
-    }
-  )));
+    )
+  ));
 });
 ColorPicker.displayName = "@raikou/core/ColorPicker";
 
@@ -1037,13 +1047,12 @@ import {
   createVarsResolver as createVarsResolver3
 } from "@raikou/core";
 var defaultProps5 = {
-  size: "sm",
   labelElement: "label"
 };
 var varsResolver3 = createVarsResolver3((_, { size: size2 }) => ({
   label: {
     "--input-label-size": getFontSize(size2),
-    "--input-asterisk-color": "var(--raikou-color-red-filled)"
+    "--input-asterisk-color": void 0
   }
 }));
 var InputLabel = factory2((_props, ref) => {
@@ -1130,12 +1139,10 @@ import {
   rem as rem5,
   createVarsResolver as createVarsResolver4
 } from "@raikou/core";
-var defaultProps6 = {
-  size: "sm"
-};
+var defaultProps6 = {};
 var varsResolver4 = createVarsResolver4((_, { size: size2 }) => ({
   error: {
-    "--input-error-size": `calc(${getFontSize2(size2)} - ${rem5(2)})`
+    "--input-error-size": size2 === void 0 ? void 0 : `calc(${getFontSize2(size2)} - ${rem5(2)})`
   }
 }));
 var InputError = factory3((_props, ref) => {
@@ -1201,13 +1208,11 @@ import {
   rem as rem6,
   createVarsResolver as createVarsResolver5
 } from "@raikou/core";
-var defaultProps7 = {
-  size: "sm"
-};
+var defaultProps7 = {};
 var varsResolver5 = createVarsResolver5(
   (_, { size: size2 }) => ({
     description: {
-      "--input-description-size": `calc(${getFontSize3(size2)} - ${rem6(2)})`
+      "--input-description-size": size2 === void 0 ? void 0 : `calc(${getFontSize3(size2)} - ${rem6(2)})`
     }
   })
 );
@@ -1347,20 +1352,19 @@ function getInputOffsets(inputWrapperOrder, { hasDescription, hasError }) {
 // ../Input/src/InputWrapper/InputWrapper.tsx
 var defaultProps9 = {
   labelElement: "label",
-  size: "sm",
   inputContainer: (children) => children,
   inputWrapperOrder: ["label", "description", "input", "error"]
 };
 var varsResolver6 = createVarsResolver6((_, { size: size2 }) => ({
   label: {
     "--input-label-size": getFontSize4(size2),
-    "--input-asterisk-color": "var(--raikou-color-red-filled)"
+    "--input-asterisk-color": void 0
   },
   error: {
-    "--input-error-size": `calc(${getFontSize4(size2)} - ${rem7(2)})`
+    "--input-error-size": size2 === void 0 ? void 0 : `calc(${getFontSize4(size2)} - ${rem7(2)})`
   },
   description: {
-    "--input-description-size": `calc(${getFontSize4(size2)} - ${rem7(2)})`
+    "--input-description-size": size2 === void 0 ? void 0 : `calc(${getFontSize4(size2)} - ${rem7(2)})`
   }
 }));
 var InputWrapper = factory6((_props, ref) => {
@@ -1515,7 +1519,6 @@ InputWrapper.displayName = "@raikou/core/InputWrapper";
 
 // ../Input/src/Input.tsx
 var defaultProps10 = {
-  size: "sm",
   variant: "default",
   leftSectionPointerEvents: "none",
   rightSectionPointerEvents: "none",
@@ -1528,7 +1531,7 @@ var varsResolver7 = createVarsResolver7((_, props, ctx) => ({
     "--input-margin-bottom": ctx.offsetBottom ? "calc(var(--raikou-spacing-xs) / 2)" : void 0,
     "--input-height": getSize2(props.size, "input-height"),
     "--input-fz": getFontSize5(props.size),
-    "--input-radius": getRadius2(props.radius),
+    "--input-radius": props.radius === void 0 ? void 0 : getRadius2(props.radius),
     "--input-left-section-width": props.leftSectionWidth !== void 0 ? rem8(props.leftSectionWidth) : void 0,
     "--input-right-section-width": props.rightSectionWidth !== void 0 ? rem8(props.rightSectionWidth) : void 0,
     "--input-padding-y": props.multiline ? getSize2(props.size, "input-padding-y") : void 0,
@@ -4411,7 +4414,7 @@ var defaultProps14 = {
 var varsResolver8 = createVarsResolver8(
   (_, { radius, shadow }) => ({
     dropdown: {
-      "--popover-radius": getRadius3(radius),
+      "--popover-radius": radius === void 0 ? void 0 : getRadius3(radius),
       "--popover-shadow": getShadow(shadow)
     }
   })
@@ -4810,7 +4813,6 @@ var defaultLoaders = {
   progress: Progress
 };
 var defaultProps16 = {
-  size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
@@ -4818,7 +4820,7 @@ var varsResolver9 = createVarsResolver9(
   (theme, { size: size2, color }) => ({
     root: {
       "--loader-size": getSize3(size2, "loader-size"),
-      "--loader-color": getThemeColor(color, theme)
+      "--loader-color": color ? getThemeColor(color, theme) : void 0
     }
   })
 );
@@ -4886,8 +4888,7 @@ import {
   createVarsResolver as createVarsResolver10
 } from "@raikou/core";
 var defaultProps17 = {
-  orientation: "horizontal",
-  borderWidth: 1
+  orientation: "horizontal"
 };
 var varsResolver10 = createVarsResolver10(
   (_, { borderWidth }) => ({
@@ -4947,26 +4948,23 @@ var ActionIconGroup = factory10(
 ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
 
 // ../ActionIcon/src/ActionIcon.tsx
-var defaultProps18 = {
-  variant: "filled",
-  size: "md"
-};
+var defaultProps18 = {};
 var varsResolver11 = createVarsResolver11(
   (theme, { size: size2, radius, variant, gradient, color }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       gradient,
-      variant
+      variant: variant || "filled"
     });
     return {
       root: {
         "--ai-size": getSize4(size2, "ai-size"),
-        "--ai-radius": getRadius4(radius),
-        "--ai-bg": colors.background,
-        "--ai-hover": colors.hover,
-        "--ai-color": colors.color,
-        "--ai-bd": colors.border
+        "--ai-radius": radius === void 0 ? void 0 : getRadius4(radius),
+        "--ai-bg": color || variant ? colors.background : void 0,
+        "--ai-hover": color || variant ? colors.hover : void 0,
+        "--ai-color": color || variant ? colors.color : void 0,
+        "--ai-bd": color || variant ? colors.border : void 0
       }
     };
   }
@@ -5053,7 +5051,6 @@ ActionIcon.Group = ActionIconGroup;
 
 // src/ColorInput.tsx
 var defaultProps19 = {
-  size: "sm",
   format: "hex",
   fixOnBlur: true,
   withPreview: true,

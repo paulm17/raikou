@@ -6,12 +6,13 @@ import {
   MonthPickerProps,
   MonthPickerStylesNames,
 } from "./MonthPicker";
+import { DatesProvider } from "../DatesProvider";
 
 const defaultProps = {
   defaultDate: new Date(2022, 3, 11),
 };
 
-describe("@raikou/dates/MonthPicker", () => {
+describe("@mantine/dates/MonthPicker", () => {
   tests.itSupportsSystemProps<MonthPickerProps, MonthPickerStylesNames>({
     component: MonthPicker,
     props: defaultProps,
@@ -21,7 +22,7 @@ describe("@raikou/dates/MonthPicker", () => {
     size: true,
     classes: true,
     refType: HTMLDivElement,
-    displayName: "@raikou/dates/MonthPicker",
+    displayName: "@mantine/dates/MonthPicker",
     stylesApiSelectors: [
       "calendarHeader",
       "calendarHeaderControl",
@@ -48,12 +49,23 @@ describe("@raikou/dates/MonthPicker", () => {
   datesTests.itHandlesControlsKeyboardEvents({
     component: MonthPicker,
     props: defaultProps,
-    listSelector: ".raikou-MonthPicker-monthsList",
+    listSelector: ".mantine-MonthPicker-monthsList",
   });
 
   it('can be uncontrolled (type="default")', async () => {
     const { container } = render(
       <MonthPicker {...defaultProps} date={new Date(2022, 3, 11)} />,
+    );
+    expect(container.querySelector("[data-selected]")!).toBe(null);
+    await userEvent.click(container.querySelector("table button")!);
+    expect(container.querySelector("[data-selected]")!.textContent).toBe("Jan");
+  });
+
+  it('can be uncontrolled (type="default") with timezone', async () => {
+    const { container } = render(
+      <DatesProvider settings={{ timezone: "UTC" }}>
+        <MonthPicker {...defaultProps} date={new Date(2022, 0, 31, 23)} />
+      </DatesProvider>,
     );
     expect(container.querySelector("[data-selected]")!).toBe(null);
     await userEvent.click(container.querySelector("table button")!);
@@ -77,6 +89,25 @@ describe("@raikou/dates/MonthPicker", () => {
     expect(spy).toHaveBeenCalledWith(new Date(2022, 0, 1));
   });
 
+  it('can be controlled (type="default") with timezone', async () => {
+    const spy = jest.fn();
+    const { container } = render(
+      <DatesProvider settings={{ timezone: "UTC" }}>
+        <MonthPicker
+          {...defaultProps}
+          date={new Date(2022, 0, 31, 23)}
+          value={new Date(2022, 0, 31, 23)}
+          onChange={spy}
+        />
+      </DatesProvider>,
+    );
+
+    expect(container.querySelector("[data-selected]")!.textContent).toBe("Feb");
+
+    await userEvent.click(container.querySelector("table button")!);
+    expect(spy).toHaveBeenCalledWith(new Date(2021, 11, 31, 19));
+  });
+
   it('can be uncontrolled (type="multiple")', async () => {
     const { container } = render(
       <MonthPicker
@@ -84,6 +115,30 @@ describe("@raikou/dates/MonthPicker", () => {
         type="multiple"
         date={new Date(2022, 3, 11)}
       />,
+    );
+    expect(container.querySelectorAll("[data-selected]")).toHaveLength(0);
+    await userEvent.click(container.querySelectorAll("table button")[0]);
+    expect(container.querySelectorAll("[data-selected]")).toHaveLength(1);
+    expect(container.querySelector("[data-selected]")!.textContent).toBe("Jan");
+
+    await userEvent.click(container.querySelectorAll("table button")[1]);
+    expect(container.querySelectorAll("[data-selected]")).toHaveLength(2);
+    expect(
+      Array.from(container.querySelectorAll("[data-selected]")).map(
+        (node) => node.textContent,
+      ),
+    ).toStrictEqual(["Jan", "Feb"]);
+  });
+
+  it('can be uncontrolled (type="multiple") with timezone', async () => {
+    const { container } = render(
+      <DatesProvider settings={{ timezone: "UTC" }}>
+        <MonthPicker
+          {...defaultProps}
+          type="multiple"
+          date={new Date(2022, 0, 31, 23)}
+        />
+      </DatesProvider>,
     );
     expect(container.querySelectorAll("[data-selected]")).toHaveLength(0);
     await userEvent.click(container.querySelectorAll("table button")[0]);
@@ -115,6 +170,27 @@ describe("@raikou/dates/MonthPicker", () => {
     expect(spy).toHaveBeenCalledWith([
       new Date(2022, 3, 11),
       new Date(2022, 0, 1),
+    ]);
+  });
+
+  it('can be controlled (type="multiple") with timezone', async () => {
+    const spy = jest.fn();
+    const { container } = render(
+      <DatesProvider settings={{ timezone: "UTC" }}>
+        <MonthPicker
+          {...defaultProps}
+          type="multiple"
+          date={new Date(2022, 0, 31, 23)}
+          value={[new Date(2022, 0, 31, 23)]}
+          onChange={spy}
+        />
+      </DatesProvider>,
+    );
+
+    await userEvent.click(container.querySelector("table button")!);
+    expect(spy).toHaveBeenCalledWith([
+      new Date(2022, 0, 31, 23),
+      new Date(2021, 11, 31, 19),
     ]);
   });
 
@@ -205,7 +281,7 @@ describe("@raikou/dates/MonthPicker", () => {
   it("has correct default __staticSelector", () => {
     const { container } = render(<MonthPicker {...defaultProps} />);
     expect(
-      container.querySelector(".raikou-MonthPicker-monthsList"),
+      container.querySelector(".mantine-MonthPicker-monthsList"),
     ).toBeInTheDocument();
   });
 
@@ -214,7 +290,7 @@ describe("@raikou/dates/MonthPicker", () => {
       <MonthPicker {...defaultProps} __staticSelector="Calendar" />,
     );
     expect(
-      container.querySelector(".raikou-Calendar-monthsList"),
+      container.querySelector(".mantine-Calendar-monthsList"),
     ).toBeInTheDocument();
   });
 });

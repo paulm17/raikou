@@ -1,5 +1,5 @@
 import React from "react";
-import { useUncontrolled } from "@raikou/hooks";
+import { useId, useUncontrolled } from "@raikou/hooks";
 import {
   BoxProps,
   StylesApiProps,
@@ -83,7 +83,6 @@ export type MultiSelectFactory = Factory<{
 
 const defaultProps: Partial<MultiSelectProps> = {
   maxValues: Infinity,
-  size: "sm",
   withCheckIcon: true,
   checkIconPosition: "left",
 };
@@ -151,9 +150,11 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
     withErrorStyles,
     name,
     form,
+    id,
     ...others
   } = props;
 
+  const _id = useId(id);
   const parsedData = getParsedComboboxData(data);
   const optionsLockup = getOptionsLockup(parsedData);
 
@@ -268,9 +269,17 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
             variant={variant}
             disabled={disabled}
             radius={radius}
-            rightSection={rightSection}
+            rightSection={
+              rightSection || (
+                <Combobox.Chevron
+                  size={size}
+                  error={error}
+                  unstyled={unstyled}
+                />
+              )
+            }
             rightSectionWidth={rightSectionWidth}
-            rightSectionPointerEvents={rightSectionPointerEvents}
+            rightSectionPointerEvents={rightSectionPointerEvents || "none"}
             rightSectionProps={rightSectionProps}
             leftSection={leftSection}
             leftSectionWidth={leftSectionWidth}
@@ -293,6 +302,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
             onClick={() =>
               searchable ? combobox.openDropdown() : combobox.toggleDropdown()
             }
+            id={_id}
           >
             <Pill.Group disabled={disabled} {...getStyles("pillsList")}>
               {values}
@@ -300,6 +310,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
                 <PillsInput.Field
                   {...rest}
                   ref={ref}
+                  id={_id}
                   {...getStyles("inputField")}
                   unstyled={unstyled}
                   onFocus={(event) => {
@@ -352,6 +363,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
           checkIconPosition={checkIconPosition}
           withCheckIcon={withCheckIcon}
           nothingFoundMessage={nothingFoundMessage}
+          labelId={`${_id}-label`}
         />
       </Combobox>
     </>

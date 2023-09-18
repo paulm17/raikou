@@ -8,7 +8,7 @@ module.exports = function ({ addComponents, theme }: any) {
       whiteSpace: "var(--_tooltip-white-space, nowrap)",
       backgroundColor: "var(--_tooltip-bg)",
       color: "var(--_tooltip-color)",
-      borderRadius: "var(--tooltip-radius)",
+      borderRadius: "var(--tooltip-radius, var(--raikou-radius-default))",
 
       '[data-raikou-color-scheme="light"] &': {
         "--_tooltip-bg": "var(--tooltip-bg, var(--raikou-tooltip-bg))",

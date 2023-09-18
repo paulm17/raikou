@@ -8,6 +8,10 @@ module.exports = function ({ addComponents, theme }: any) {
       "--modal-size-md": rem("440px"),
       "--modal-size-lg": rem("620px"),
       "--modal-size-xl": rem("780px"),
+      "--modal-size": "var(--modal-size-md)",
+
+      "--modal-y-offset": "5dvh",
+      "--modal-x-offset": "5vw",
 
       "&[data-full-screen]": {
         "--modal-border-radius": "0 !important",
@@ -32,8 +36,9 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".modal-header": {
-      borderTopLeftRadius: "var(--modal-radius)",
-      borderTopRightRadius: "var(--modal-radius)",
+      borderTopLeftRadius: "var(--modal-radius, var(--mantine-radius-default))",
+      borderTopRightRadius:
+        "var(--modal-radius, var(--mantine-radius-default))",
     },
 
     ".modal-content": {

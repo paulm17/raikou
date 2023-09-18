@@ -55,7 +55,7 @@ var defaultProps = {};
 var varsResolver = createVarsResolver(
   (_, { radius, shadow }) => ({
     root: {
-      "--paper-radius": getRadius(radius),
+      "--paper-radius": radius === void 0 ? void 0 : getRadius(radius),
       "--paper-shadow": getShadow(shadow)
     }
   })
@@ -160,9 +160,7 @@ var CardSection = polymorphicFactory2(
 CardSection.displayName = "@raikou/core/CardSection";
 
 // src/Card.tsx
-var defaultProps3 = {
-  padding: "md"
-};
+var defaultProps3 = {};
 var varsResolver2 = createVarsResolver2((_, { padding }) => ({
   root: {
     "--card-padding": getSpacing(padding)

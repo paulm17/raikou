@@ -67,9 +67,6 @@ const defaultProps: Partial<ModalProps> = {
   closeOnEscape: true,
   keepMounted: false,
   zIndex: getDefaultZIndex("modal"),
-  padding: "md",
-  size: "md",
-  shadow: "xl",
   transitionProps: { duration: 200, transition: "pop" },
   withOverlay: true,
   withCloseButton: true,
@@ -90,7 +87,7 @@ export const Modal = factory<ModalFactory>((_props, ref) => {
   const hasHeader = !!title || withCloseButton;
 
   return (
-    <ModalRoot ref={ref} {...others}>
+    <ModalRoot ref={ref} radius={radius} {...others}>
       {withOverlay && <ModalOverlay {...overlayProps} />}
       <ModalContent radius={radius}>
         {hasHeader && (

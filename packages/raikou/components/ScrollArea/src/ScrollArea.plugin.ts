@@ -5,6 +5,7 @@ module.exports = function ({ addComponents, theme }: any) {
     ".scrollArea-root": {
       position: "relative",
       overflow: "hidden",
+      "--scrollarea-scrollbar-size": rem("12px"),
     },
 
     ".scrollArea-viewport": {

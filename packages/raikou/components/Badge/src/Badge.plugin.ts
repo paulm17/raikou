@@ -9,6 +9,10 @@ module.exports = function ({ addComponents }: any) {
       "--badge-height-lg": rem("26px"),
       "--badge-height-xl": rem("32px"),
 
+      "--badge-height": "var(--badge-height-md)",
+      "--badge-fz": "var(--badge-fz-md)",
+      "--badge-padding-x": "var(--badge-padding-x-md)",
+
       "--badge-fz-xs": rem("9px"),
       "--badge-fz-sm": rem("10px"),
       "--badge-fz-md": rem("11px"),
@@ -22,7 +26,7 @@ module.exports = function ({ addComponents }: any) {
       "--badge-padding-x-xl": rem("16px"),
 
       fontSize: "var(--badge-fz)",
-      borderRadius: "var(--badge-radius)",
+      borderRadius: `var(--badge-radius, ${rem("10000px")})`,
       height: "var(--badge-height)",
       "-webkit-tap-highlight-color": "transparent",
       lineHeight: `calc(var(--badge-height) - ${rem("2px")})`,
@@ -39,9 +43,9 @@ module.exports = function ({ addComponents }: any) {
       textOverflow: "ellipsis",
       overflow: "hidden",
 
-      color: "var(--badge-color)",
-      background: "var(--badge-bg)",
-      border: "var(--badge-bd)",
+      color: "var(--badge-color, var(--raikou-color-white))",
+      background: "var(--badge-bg, var(--raikou-primary-color-filled))",
+      border: `var(--badge-bd, ${rem("1px")} solid transparent)`,
     },
     ".badge-root--dot": {
       "--badge-dot-size": "calc(var(--badge-height) / 3.4)",

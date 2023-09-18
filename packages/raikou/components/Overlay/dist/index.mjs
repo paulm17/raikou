@@ -44,17 +44,14 @@ import {
   rem
 } from "@raikou/core";
 var defaultProps = {
-  color: "#000",
-  backgroundOpacity: 0.6,
-  zIndex: getDefaultZIndex("modal"),
-  radius: 0
+  zIndex: getDefaultZIndex("modal")
 };
 var varsResolver = createVarsResolver(
   (_, { gradient, color, backgroundOpacity, blur, radius, zIndex }) => ({
     root: {
-      "--overlay-bg": gradient || rgba(color || "#000", backgroundOpacity != null ? backgroundOpacity : 0.6),
+      "--overlay-bg": gradient || (color !== void 0 || backgroundOpacity !== void 0) && rgba(color || "#000", backgroundOpacity != null ? backgroundOpacity : 0.6) || void 0,
       "--overlay-filter": blur ? `blur(${rem(blur)})` : void 0,
-      "--overlay-radius": getRadius(radius),
+      "--overlay-radius": radius === void 0 ? void 0 : getRadius(radius),
       "--overlay-z-index": zIndex == null ? void 0 : zIndex.toString()
     }
   })

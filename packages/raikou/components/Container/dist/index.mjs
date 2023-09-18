@@ -37,9 +37,7 @@ import {
   createVarsResolver,
   getSize
 } from "@raikou/core";
-var defaultProps = {
-  size: "md"
-};
+var defaultProps = {};
 var varsResolver = createVarsResolver(
   (_, { size, fluid }) => ({
     root: {
@@ -49,7 +47,23 @@ var varsResolver = createVarsResolver(
 );
 var Container = factory((_props, ref) => {
   const props = useProps("Container", defaultProps, _props);
-  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const _a = props, {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    fluid
+  } = _a, others = __objRest(_a, [
+    "classNames",
+    "className",
+    "style",
+    "styles",
+    "unstyled",
+    "vars",
+    "fluid"
+  ]);
   const getStyles = useStyles({
     name: "Container",
     classes: {
@@ -64,7 +78,7 @@ var Container = factory((_props, ref) => {
     vars,
     varsResolver
   });
-  return /* @__PURE__ */ React.createElement(Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others));
+  return /* @__PURE__ */ React.createElement(Box, __spreadValues(__spreadValues({ ref, mod: { fluid } }, getStyles("root")), others));
 });
 Container.displayName = "@raikou/core/Container";
 export {

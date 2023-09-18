@@ -9,29 +9,33 @@ module.exports = function ({ addComponents, theme }: any) {
       "--avatar-size-lg": rem("56px"),
       "--avatar-size-xl": rem("84px"),
 
+      "--_avatar-size": "var(--avatar-size, var(--avatar-size-md))",
+
       "-webkit-tap-highlight-color": "transparent",
       position: "relative",
       display: "block",
       userSelect: "none",
       overflow: "hidden",
-      borderRadius: "var(--avatar-radius)",
+      borderRadius: `var(--avatar-radius, ${rem("1000px")})`,
       textDecoration: "none",
       border: "var(--_avatar-border, none)",
-      backgroundColor: "var(--_avatar-bg, transparent)",
+      backgroundColor: "var(--_avatar-bg)",
       padding: "0",
-      width: "var(--avatar-size)",
-      height: "var(--avatar-size)",
-      minWidth: "var(--avatar-size)",
+      width: "var(--_avatar-size)",
+      height: "var(--_avatar-size)",
+      minWidth: "var(--_avatar-size)",
       marginLeft: "var(--_avatar-ml, unset)",
       marginRight: "var(--_avatar-mr, unset)",
 
       "&[data-within-group]": {
-        "--_avatar-ml": "calc(var(--ag-spacing) * -1)",
+        "--_avatar-ml":
+          "calc(var(--ag-spacing, var(--raikou-spacing-sm)) * -1)",
         "--_avatar-border": `${rem("2px")} solid var(--raikou-color-body)`,
         "--_avatar-bg": "var(--raikou-color-body)",
 
         '[dir="rtl"] &': {
-          "--_avatar-mr": "calc(var(--ag-spacing) * -1)",
+          "--_avatar-mr":
+            "calc(var(--ag-spacing, var(--raikou-spacing-sm)) * -1)",
           "--_avatar-ml": "unset",
         },
       },
@@ -54,9 +58,9 @@ module.exports = function ({ addComponents, theme }: any) {
       userSelect: "none",
       borderRadius: "var(--avatar-radius)",
       fontSize: "calc(var(--avatar-size) / 2.5)",
-      color: "var(--avatar-color)",
-      background: "var(--avatar-bg)",
-      border: "var(--avatar-bd)",
+      background: "var(--avatar-bg, var(--raikou-color-gray-light))",
+      border: `var(--avatar-bd, ${rem("1px")} solid transparent)`,
+      color: "var(--avatar-color, var(--raikou-color-gray-light-color))",
 
       "& > [data-avatar-placeholder-icon]": {
         width: "70%",
@@ -66,11 +70,11 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".avatarGroup-root": {
       display: "flex",
-      paddingLeft: "var(--ag-spacing)",
+      paddingLeft: "var(--ag-spacing, var(--raikou-spacing-sm))",
 
       '[dir="rtl"] &': {
         paddingLeft: "0",
-        paddingRight: "var(--ag-spacing)",
+        paddingRight: "var(--ag-spacing, var(--raikou-spacing-sm))",
       },
     },
   });

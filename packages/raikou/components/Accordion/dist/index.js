@@ -348,6 +348,7 @@ Collapse.displayName = "@raikou/core/Collapse";
 // src/AccordionPanel/AccordionPanel.tsx
 var defaultProps3 = {};
 var AccordionPanel = (0, import_core4.factory)((props, ref) => {
+  var _b;
   const _a = (0, import_core4.useProps)("AccordionPanel", defaultProps3, props), { classNames, className, style, styles, vars, children } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars", "children"]);
   const { value } = useAccordionItemContext();
   const ctx = useAccordionContext();
@@ -357,7 +358,7 @@ var AccordionPanel = (0, import_core4.factory)((props, ref) => {
       ref
     }, ctx.getStyles("panel", { className, classNames, style, styles })), others), {
       in: ctx.isItemActive(value),
-      transitionDuration: ctx.transitionDuration,
+      transitionDuration: (_b = ctx.transitionDuration) != null ? _b : 200,
       role: "region",
       id: ctx.getRegionId(value),
       "aria-labelledby": ctx.getControlId(value)
@@ -521,18 +522,16 @@ AccordionControl.displayName = "@raikou/core/AccordionControl";
 var defaultProps6 = {
   multiple: false,
   disableChevronRotation: false,
-  transitionDuration: 200,
   chevronPosition: "right",
   variant: "default",
-  chevronSize: 15,
   chevron: /* @__PURE__ */ import_react12.default.createElement(AccordionChevron, null)
 };
 var varsResolver = (0, import_core7.createVarsResolver)(
   (_, { transitionDuration, chevronSize, radius }) => ({
     root: {
-      "--accordion-transition-duration": `${transitionDuration}ms`,
-      "--accordion-chevron-size": (0, import_core7.rem)(chevronSize),
-      "--accordion-radius": (0, import_core7.getRadius)(radius)
+      "--accordion-transition-duration": transitionDuration === void 0 ? void 0 : `${transitionDuration}ms`,
+      "--accordion-chevron-size": chevronSize === void 0 ? void 0 : (0, import_core7.rem)(chevronSize),
+      "--accordion-radius": radius === void 0 ? void 0 : (0, import_core7.getRadius)(radius)
     }
   })
 );

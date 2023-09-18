@@ -117,9 +117,7 @@ ListItem.displayName = "@raikou/core/ListItem";
 
 // src/List.tsx
 var defaultProps2 = {
-  type: "unordered",
-  size: "md",
-  spacing: 0
+  type: "unordered"
 };
 var varsResolver = (0, import_core2.createVarsResolver)(
   (_, { size, spacing }) => ({

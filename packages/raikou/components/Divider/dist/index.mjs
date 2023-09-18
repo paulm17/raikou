@@ -42,7 +42,6 @@ import {
   getSize
 } from "@raikou/core";
 var defaultProps = {
-  size: "xs",
   orientation: "horizontal"
 };
 var varsResolver = createVarsResolver(

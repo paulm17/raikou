@@ -63,9 +63,6 @@ const defaultProps: Partial<DrawerRootProps> = {
   closeOnEscape: true,
   keepMounted: false,
   zIndex: getDefaultZIndex("modal"),
-  padding: "md",
-  size: "md",
-  shadow: "xl",
   position: "left",
 };
 
@@ -74,17 +71,15 @@ const varsResolver = createVarsResolver<DrawerRootFactory>(
     root: {
       "--drawer-size": getSize(size, "drawer-size"),
       "--drawer-flex":
-        position === "left" || position === "right"
-          ? "0 0 var(--drawer-size)"
-          : "0 0 100%",
+        position === "left" || position === "right" ? undefined : "0 0 100%",
       "--drawer-height":
         position === "left" || position === "right"
-          ? "100%"
+          ? undefined
           : "var(--drawer-size)",
-      "--drawer-align": position === "bottom" ? "flex-end" : "flex-start",
-      "--drawer-justify": position === "right" ? "flex-end" : "flex-start",
+      "--drawer-align": position === "bottom" ? "flex-end" : undefined,
+      "--drawer-justify": position === "right" ? "flex-end" : undefined,
     },
-  })
+  }),
 );
 
 export const DrawerRoot = factory<DrawerRootFactory>((_props, ref) => {

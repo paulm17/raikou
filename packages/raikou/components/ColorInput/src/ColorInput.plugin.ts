@@ -8,6 +8,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--ci-eye-dropper-icon-size-md": rem("18px"),
       "--ci-eye-dropper-icon-size-lg": rem("20px"),
       "--ci-eye-dropper-icon-size-xl": rem("22px"),
+      "--ci-eye-dropper-icon-size": "var(--ci-eye-dropper-icon-size-sm)",
     },
 
     ".colorInput-colorPreview": {
@@ -16,6 +17,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--ci-preview-size-md": rem("22px"),
       "--ci-preview-size-lg": rem("28px"),
       "--ci-preview-size-xl": rem("36px"),
+      "--ci-preview-size": "var(--ci-preview-size-sm)",
     },
   });
 };

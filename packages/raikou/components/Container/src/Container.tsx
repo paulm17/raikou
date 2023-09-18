@@ -36,9 +36,7 @@ export type ContainerFactory = Factory<{
   vars: ContainerCssVariables;
 }>;
 
-const defaultProps: Partial<ContainerProps> = {
-  size: "md",
-};
+const defaultProps: Partial<ContainerProps> = {};
 
 const varsResolver = createVarsResolver<ContainerFactory>(
   (_, { size, fluid }) => ({
@@ -50,8 +48,16 @@ const varsResolver = createVarsResolver<ContainerFactory>(
 
 export const Container = factory<ContainerFactory>((_props, ref) => {
   const props = useProps("Container", defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, ...others } =
-    props;
+  const {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    fluid,
+    ...others
+  } = props;
 
   const getStyles = useStyles<ContainerFactory>({
     name: "Container",
@@ -68,7 +74,7 @@ export const Container = factory<ContainerFactory>((_props, ref) => {
     varsResolver,
   });
 
-  return <Box ref={ref} {...getStyles("root")} {...others} />;
+  return <Box ref={ref} mod={{ fluid }} {...getStyles("root")} {...others} />;
 });
 
 Container.displayName = "@raikou/core/Container";

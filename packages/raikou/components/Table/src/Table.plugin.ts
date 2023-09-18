@@ -8,7 +8,7 @@ module.exports = function ({ addComponents, theme }: any) {
       lineHeight: "var(--raikou-line-height)",
       fontSize: "var(--raikou-font-size-sm)",
       tableLayout: "var(--table-layout, auto)",
-      captionSide: "var(--table-caption-side)",
+      captionSide: "var(--table-caption-side, bottom)",
       border: "var(--_table-border, none)",
 
       '[data-raikou-color-scheme="light"] &': {
@@ -57,7 +57,8 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".table-td, .table-th": {
-      padding: "var(--table-vertical-spacing) var(--table-horizontal-spacing)",
+      padding:
+        "var(--table-vertical-spacing) var(--table-horizontal-spacing, var(--raikou-spacing-xs))",
       borderLeft: "var(--_border-left)",
       borderRight: "var(--_border-right)",
 

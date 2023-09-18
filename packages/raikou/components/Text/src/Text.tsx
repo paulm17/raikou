@@ -64,7 +64,7 @@ export interface TextProps extends BoxProps, StylesApiProps<TextFactory> {
 
 export type TextFactory = PolymorphicFactory<{
   props: TextProps;
-  defaultComponent: "div";
+  defaultComponent: "p";
   defaultRef: HTMLParagraphElement;
   stylesNames: TextStylesNames;
   vars: TextCssVariables;
@@ -72,9 +72,7 @@ export type TextFactory = PolymorphicFactory<{
 }>;
 
 const defaultProps: Partial<TextProps> = {
-  variant: "text",
   inherit: false,
-  size: "md",
 };
 
 const varsResolver = createVarsResolver<TextFactory>(
@@ -87,7 +85,7 @@ const varsResolver = createVarsResolver<TextFactory>(
       "--text-line-clamp":
         typeof lineClamp === "number" ? lineClamp.toString() : undefined,
     },
-  })
+  }),
 );
 
 export const Text = polymorphicFactory<TextFactory>((_props, ref) => {

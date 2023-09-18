@@ -7,10 +7,11 @@ import {
   YearPickerProps,
   YearPickerStylesNames,
 } from "./YearPicker";
+import { DatesProvider } from "../DatesProvider";
 
 const defaultProps = {};
 
-describe("@raikou/dates/YearPicker", () => {
+describe("@mantine/dates/YearPicker", () => {
   tests.itSupportsSystemProps<YearPickerProps, YearPickerStylesNames>({
     component: YearPicker,
     props: defaultProps,
@@ -20,7 +21,7 @@ describe("@raikou/dates/YearPicker", () => {
     size: true,
     classes: true,
     refType: HTMLDivElement,
-    displayName: "@raikou/dates/YearPicker",
+    displayName: "@mantine/dates/YearPicker",
     stylesApiSelectors: [
       "calendarHeader",
       "calendarHeaderControl",
@@ -41,12 +42,38 @@ describe("@raikou/dates/YearPicker", () => {
   datesTests.itHandlesControlsKeyboardEvents({
     component: YearPicker,
     props: defaultProps,
-    listSelector: ".raikou-YearPicker-yearsList",
+    listSelector: ".mantine-YearPicker-yearsList",
   });
 
   it('can be uncontrolled (type="default")', async () => {
     const { container } = render(
       <YearPicker {...defaultProps} date={new Date(2022, 3, 11)} />,
+    );
+    expect(container.querySelector("[data-selected]")).toBe(null);
+    await userEvent.click(container.querySelector("table button")!);
+    expect(container.querySelector("[data-selected]")!.textContent).toBe(
+      "2020",
+    );
+  });
+
+  it('can be uncontrolled (type="default") with timezone (UTC)', async () => {
+    const { container } = render(
+      <DatesProvider settings={{ timezone: "UTC" }}>
+        <YearPicker {...defaultProps} date={new Date(2019, 11, 31, 23)} />
+      </DatesProvider>,
+    );
+    expect(container.querySelector("[data-selected]")).toBe(null);
+    await userEvent.click(container.querySelector("table button")!);
+    expect(container.querySelector("[data-selected]")!.textContent).toBe(
+      "2020",
+    );
+  });
+
+  it('can be uncontrolled (type="default") with timezone (America/Los_Angeles)', async () => {
+    const { container } = render(
+      <DatesProvider settings={{ timezone: "America/Los_Angeles" }}>
+        <YearPicker {...defaultProps} date={new Date(2020, 11, 31, 23)} />
+      </DatesProvider>,
     );
     expect(container.querySelector("[data-selected]")).toBe(null);
     await userEvent.click(container.querySelector("table button")!);
@@ -74,6 +101,48 @@ describe("@raikou/dates/YearPicker", () => {
     expect(spy).toHaveBeenCalledWith(new Date(2020, 0, 1));
   });
 
+  it('can be controlled (type="default") with timezone (UTC)', async () => {
+    const spy = jest.fn();
+    const { container } = render(
+      <DatesProvider settings={{ timezone: "UTC" }}>
+        <YearPicker
+          {...defaultProps}
+          date={new Date(2019, 11, 31, 23)}
+          value={new Date(2022, 11, 31, 23)}
+          onChange={spy}
+        />
+      </DatesProvider>,
+    );
+
+    expect(container.querySelector("[data-selected]")!.textContent).toBe(
+      "2023",
+    );
+
+    await userEvent.click(container.querySelector("table button")!);
+    expect(spy).toHaveBeenCalledWith(new Date(2019, 11, 31, 19));
+  });
+
+  it('can be controlled (type="default") with timezone (America/Los_Angeles)', async () => {
+    const spy = jest.fn();
+    const { container } = render(
+      <DatesProvider settings={{ timezone: "America/Los_Angeles" }}>
+        <YearPicker
+          {...defaultProps}
+          date={new Date(2020, 10, 31, 23)}
+          value={new Date(2022, 11, 31, 23)}
+          onChange={spy}
+        />
+      </DatesProvider>,
+    );
+
+    expect(container.querySelector("[data-selected]")!.textContent).toBe(
+      "2022",
+    );
+
+    await userEvent.click(container.querySelector("table button")!);
+    expect(spy).toHaveBeenCalledWith(new Date(2020, 0, 1, 3));
+  });
+
   it('can be uncontrolled (type="multiple")', async () => {
     const { container } = render(
       <YearPicker
@@ -81,6 +150,58 @@ describe("@raikou/dates/YearPicker", () => {
         type="multiple"
         date={new Date(2022, 3, 11)}
       />,
+    );
+    expect(container.querySelectorAll("[data-selected]")).toHaveLength(0);
+    await userEvent.click(container.querySelectorAll("table button")[0]);
+    expect(container.querySelectorAll("[data-selected]")).toHaveLength(1);
+    expect(container.querySelector("[data-selected]")!.textContent).toBe(
+      "2020",
+    );
+
+    await userEvent.click(container.querySelectorAll("table button")[1]);
+    expect(container.querySelectorAll("[data-selected]")).toHaveLength(2);
+    expect(
+      Array.from(container.querySelectorAll("[data-selected]")).map(
+        (node) => node.textContent,
+      ),
+    ).toStrictEqual(["2020", "2021"]);
+  });
+
+  it('can be uncontrolled (type="multiple") with timezone (UTC)', async () => {
+    const { container } = render(
+      <DatesProvider settings={{ timezone: "UTC" }}>
+        <YearPicker
+          {...defaultProps}
+          type="multiple"
+          date={new Date(2022, 3, 11)}
+        />
+      </DatesProvider>,
+    );
+    expect(container.querySelectorAll("[data-selected]")).toHaveLength(0);
+    await userEvent.click(container.querySelectorAll("table button")[0]);
+    expect(container.querySelectorAll("[data-selected]")).toHaveLength(1);
+    expect(container.querySelector("[data-selected]")!.textContent).toBe(
+      "2020",
+    );
+
+    await userEvent.click(container.querySelectorAll("table button")[1]);
+    expect(container.querySelectorAll("[data-selected]")).toHaveLength(2);
+    expect(
+      Array.from(container.querySelectorAll("[data-selected]")).map(
+        (node) => node.textContent,
+      ),
+    ).toStrictEqual(["2020", "2021"]);
+  });
+
+  it('can be uncontrolled (type="multiple") with timezone (America/Los_Angeles)', async () => {
+    const { container } = render(
+      <DatesProvider settings={{ timezone: "America/Los_Angeles" }}>
+        <YearPicker
+          {...defaultProps}
+          type="multiple"
+          date={new Date(2022, 3, 11)}
+        />
+      </DatesProvider>,
     );
     expect(container.querySelectorAll("[data-selected]")).toHaveLength(0);
     await userEvent.click(container.querySelectorAll("table button")[0]);
@@ -114,6 +235,48 @@ describe("@raikou/dates/YearPicker", () => {
     expect(spy).toHaveBeenCalledWith([
       new Date(2023, 3, 11),
       new Date(2020, 0, 1),
+    ]);
+  });
+
+  it('can be controlled (type="multiple") with timezone (UTC)', async () => {
+    const spy = jest.fn();
+    const { container } = render(
+      <DatesProvider settings={{ timezone: "UTC" }}>
+        <YearPicker
+          {...defaultProps}
+          type="multiple"
+          date={new Date(2022, 3, 11)}
+          value={[new Date(2023, 3, 11)]}
+          onChange={spy}
+        />
+      </DatesProvider>,
+    );
+
+    await userEvent.click(container.querySelector("table button")!);
+    expect(spy).toHaveBeenCalledWith([
+      new Date(2023, 3, 11),
+      new Date(2019, 11, 31, 19),
+    ]);
+  });
+
+  it('can be controlled (type="multiple") with timezone (America/Los_Angeles)', async () => {
+    const spy = jest.fn();
+    const { container } = render(
+      <DatesProvider settings={{ timezone: "America/Los_Angeles" }}>
+        <YearPicker
+          {...defaultProps}
+          type="multiple"
+          date={new Date(2022, 3, 11)}
+          value={[new Date(2023, 3, 11)]}
+          onChange={spy}
+        />
+      </DatesProvider>,
+    );
+
+    await userEvent.click(container.querySelector("table button")!);
+    expect(spy).toHaveBeenCalledWith([
+      new Date(2023, 3, 11),
+      new Date(2020, 0, 1, 3),
     ]);
   });
 
@@ -202,7 +365,7 @@ describe("@raikou/dates/YearPicker", () => {
   it("has correct default __staticSelector", () => {
     const { container } = render(<YearPicker {...defaultProps} />);
     expect(
-      container.querySelector(".raikou-YearPicker-yearsList"),
+      container.querySelector(".mantine-YearPicker-yearsList"),
     ).toBeInTheDocument();
   });
 
@@ -211,7 +374,7 @@ describe("@raikou/dates/YearPicker", () => {
       <YearPicker {...defaultProps} __staticSelector="Calendar" />,
     );
     expect(
-      container.querySelector(".raikou-Calendar-yearsList"),
+      container.querySelector(".mantine-Calendar-yearsList"),
     ).toBeInTheDocument();
   });
 

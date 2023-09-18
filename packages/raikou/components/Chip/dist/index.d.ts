@@ -47,6 +47,8 @@ interface ChipProps extends BoxProps, StylesApiProps<ChipFactory>, ElementProps<
     wrapperProps?: Record<string, any>;
     /** Replaces default icon */
     icon?: React.ReactNode;
+    /** Assigns ref of the root element, can be used with `Tooltip` and other similar components */
+    rootRef?: React.ForwardedRef<HTMLDivElement>;
 }
 type ChipFactory = Factory<{
     props: ChipProps;

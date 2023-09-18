@@ -79,6 +79,9 @@ export interface SwitchProps
 
   /** Error displayed below the label */
   error?: React.ReactNode;
+
+  /** Assigns ref of the root element, can be used with `Tooltip` and other similar components */
+  rootRef?: React.ForwardedRef<HTMLDivElement>;
 }
 
 export type SwitchFactory = Factory<{
@@ -92,15 +95,13 @@ export type SwitchFactory = Factory<{
 }>;
 
 const defaultProps: Partial<SwitchProps> = {
-  size: "sm",
-  radius: "xl",
   labelPosition: "right",
 };
 
 const varsResolver = createVarsResolver<SwitchFactory>(
   (theme, { radius, color, size }) => ({
     root: {
-      "--switch-radius": getRadius(radius),
+      "--switch-radius": radius === undefined ? undefined : getRadius(radius),
       "--switch-height": getSize(size, "switch-height"),
       "--switch-width": getSize(size, "switch-width"),
       "--switch-thumb-size": getSize(size, "switch-thumb-size"),
@@ -109,7 +110,7 @@ const varsResolver = createVarsResolver<SwitchFactory>(
         size,
         "switch-track-label-padding",
       ),
-      "--switch-color": getThemeColor(color, theme),
+      "--switch-color": color ? getThemeColor(color, theme) : undefined,
     },
   }),
 );
@@ -141,6 +142,7 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
     error,
     disabled,
     variant,
+    rootRef,
     ...others
   } = props;
 
@@ -204,6 +206,7 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
       unstyled={unstyled}
       data-checked={contextProps.checked || undefined}
       variant={variant}
+      ref={rootRef}
       {...styleProps}
       {...wrapperProps}
     >

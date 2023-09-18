@@ -8,6 +8,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--ti-size-md": rem("28px"),
       "--ti-size-lg": rem("34px"),
       "--ti-size-xl": rem("44px"),
+      "--ti-size": "var(--ti-size-md)",
 
       lineHeight: "1",
       display: "inline-flex",
@@ -20,10 +21,10 @@ module.exports = function ({ addComponents, theme }: any) {
       height: "var(--ti-size)",
       minWidth: "var(--ti-size)",
       minHeight: "var(--ti-size)",
-      borderRadius: "var(--ti-radius)",
-      background: "var(--_ti-bg, var(--ti-bg))",
-      color: "var(--_ti-color, var(--ti-color))",
-      border: "var(--ti-bd)",
+      borderRadius: "var(--ti-radius, var(--raikou-radius-default))",
+      background: "var(--_ti-bg, var(--raikou-primary-color-filled))",
+      color: "var(--_ti-color, var(--raikou-color-white))",
+      border: `var(--ti-bd, ${rem("1px")} solid transparent)`,
     },
   });
 };

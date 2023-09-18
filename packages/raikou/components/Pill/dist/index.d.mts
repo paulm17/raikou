@@ -20,7 +20,7 @@ type PillGroupFactory = Factory<{
     stylesNames: PillGroupStylesNames;
     vars: PillGroupCssVariables;
     ctx: {
-        size: RaikouSize | (string & {});
+        size: RaikouSize | (string & {}) | undefined;
     };
 }>;
 declare const PillGroup: _raikou_core.RaikouComponent<{
@@ -29,7 +29,7 @@ declare const PillGroup: _raikou_core.RaikouComponent<{
     stylesNames: PillGroupStylesNames;
     vars: PillGroupCssVariables;
     ctx: {
-        size: RaikouSize | (string & {});
+        size: RaikouSize | (string & {}) | undefined;
     };
 }>;
 
@@ -59,7 +59,7 @@ type PillFactory = Factory<{
     vars: PillCssVariables;
     variant: PillVariant;
     ctx: {
-        size: RaikouSize | (string & {});
+        size: RaikouSize | (string & {}) | undefined;
     };
     staticComponents: {
         Group: typeof PillGroup;
@@ -72,7 +72,7 @@ declare const Pill: _raikou_core.RaikouComponent<{
     vars: PillCssVariables;
     variant: PillVariant;
     ctx: {
-        size: RaikouSize | (string & {});
+        size: RaikouSize | (string & {}) | undefined;
     };
     staticComponents: {
         Group: typeof PillGroup;

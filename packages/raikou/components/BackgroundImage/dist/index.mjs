@@ -37,12 +37,12 @@ import {
   getRadius,
   createVarsResolver
 } from "@raikou/core";
-var defaultProps = {
-  radius: 0
-};
+var defaultProps = {};
 var varsResolver = createVarsResolver(
   (_, { radius }) => ({
-    root: { "--bi-radius": getRadius(radius) }
+    root: {
+      "--bi-radius": radius === void 0 ? void 0 : getRadius(radius)
+    }
   })
 );
 var BackgroundImage = polymorphicFactory(

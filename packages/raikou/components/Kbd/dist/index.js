@@ -63,9 +63,7 @@ module.exports = __toCommonJS(src_exports);
 // src/Kbd.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
-var defaultProps = {
-  size: "sm"
-};
+var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)((_, { size }) => ({
   root: {
     "--kbd-fz": (0, import_core.getSize)(size, "kbd-fz"),

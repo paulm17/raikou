@@ -97,13 +97,12 @@ import {
   createVarsResolver
 } from "@raikou/core";
 var defaultProps = {
-  size: "sm",
   labelElement: "label"
 };
 var varsResolver = createVarsResolver((_, { size }) => ({
   label: {
     "--input-label-size": getFontSize(size),
-    "--input-asterisk-color": "var(--raikou-color-red-filled)"
+    "--input-asterisk-color": void 0
   }
 }));
 var InputLabel = factory((_props, ref) => {
@@ -190,12 +189,10 @@ import {
   rem,
   createVarsResolver as createVarsResolver2
 } from "@raikou/core";
-var defaultProps2 = {
-  size: "sm"
-};
+var defaultProps2 = {};
 var varsResolver2 = createVarsResolver2((_, { size }) => ({
   error: {
-    "--input-error-size": `calc(${getFontSize2(size)} - ${rem(2)})`
+    "--input-error-size": size === void 0 ? void 0 : `calc(${getFontSize2(size)} - ${rem(2)})`
   }
 }));
 var InputError = factory2((_props, ref) => {
@@ -261,13 +258,11 @@ import {
   rem as rem2,
   createVarsResolver as createVarsResolver3
 } from "@raikou/core";
-var defaultProps3 = {
-  size: "sm"
-};
+var defaultProps3 = {};
 var varsResolver3 = createVarsResolver3(
   (_, { size }) => ({
     description: {
-      "--input-description-size": `calc(${getFontSize3(size)} - ${rem2(2)})`
+      "--input-description-size": size === void 0 ? void 0 : `calc(${getFontSize3(size)} - ${rem2(2)})`
     }
   })
 );
@@ -407,20 +402,19 @@ function getInputOffsets(inputWrapperOrder, { hasDescription, hasError }) {
 // ../Input/src/InputWrapper/InputWrapper.tsx
 var defaultProps5 = {
   labelElement: "label",
-  size: "sm",
   inputContainer: (children) => children,
   inputWrapperOrder: ["label", "description", "input", "error"]
 };
 var varsResolver4 = createVarsResolver4((_, { size }) => ({
   label: {
     "--input-label-size": getFontSize4(size),
-    "--input-asterisk-color": "var(--raikou-color-red-filled)"
+    "--input-asterisk-color": void 0
   },
   error: {
-    "--input-error-size": `calc(${getFontSize4(size)} - ${rem3(2)})`
+    "--input-error-size": size === void 0 ? void 0 : `calc(${getFontSize4(size)} - ${rem3(2)})`
   },
   description: {
-    "--input-description-size": `calc(${getFontSize4(size)} - ${rem3(2)})`
+    "--input-description-size": size === void 0 ? void 0 : `calc(${getFontSize4(size)} - ${rem3(2)})`
   }
 }));
 var InputWrapper = factory5((_props, ref) => {
@@ -575,7 +569,6 @@ InputWrapper.displayName = "@raikou/core/InputWrapper";
 
 // ../Input/src/Input.tsx
 var defaultProps6 = {
-  size: "sm",
   variant: "default",
   leftSectionPointerEvents: "none",
   rightSectionPointerEvents: "none",
@@ -588,7 +581,7 @@ var varsResolver5 = createVarsResolver5((_, props, ctx) => ({
     "--input-margin-bottom": ctx.offsetBottom ? "calc(var(--raikou-spacing-xs) / 2)" : void 0,
     "--input-height": getSize(props.size, "input-height"),
     "--input-fz": getFontSize5(props.size),
-    "--input-radius": getRadius(props.radius),
+    "--input-radius": props.radius === void 0 ? void 0 : getRadius(props.radius),
     "--input-left-section-width": props.leftSectionWidth !== void 0 ? rem4(props.leftSectionWidth) : void 0,
     "--input-right-section-width": props.rightSectionWidth !== void 0 ? rem4(props.rightSectionWidth) : void 0,
     "--input-padding-y": props.multiline ? getSize(props.size, "input-padding-y") : void 0,
@@ -927,7 +920,6 @@ var defaultLoaders = {
   progress: Progress
 };
 var defaultProps8 = {
-  size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
@@ -935,7 +927,7 @@ var varsResolver6 = createVarsResolver6(
   (theme, { size, color }) => ({
     root: {
       "--loader-size": getSize2(size, "loader-size"),
-      "--loader-color": getThemeColor(color, theme)
+      "--loader-color": color ? getThemeColor(color, theme) : void 0
     }
   })
 );
@@ -1003,8 +995,7 @@ import {
   createVarsResolver as createVarsResolver7
 } from "@raikou/core";
 var defaultProps9 = {
-  orientation: "horizontal",
-  borderWidth: 1
+  orientation: "horizontal"
 };
 var varsResolver7 = createVarsResolver7(
   (_, { borderWidth }) => ({
@@ -1064,26 +1055,23 @@ var ActionIconGroup = factory7(
 ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
 
 // ../ActionIcon/src/ActionIcon.tsx
-var defaultProps10 = {
-  variant: "filled",
-  size: "md"
-};
+var defaultProps10 = {};
 var varsResolver8 = createVarsResolver8(
   (theme, { size, radius, variant, gradient, color }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       gradient,
-      variant
+      variant: variant || "filled"
     });
     return {
       root: {
         "--ai-size": getSize3(size, "ai-size"),
-        "--ai-radius": getRadius2(radius),
-        "--ai-bg": colors.background,
-        "--ai-hover": colors.hover,
-        "--ai-color": colors.color,
-        "--ai-bd": colors.border
+        "--ai-radius": radius === void 0 ? void 0 : getRadius2(radius),
+        "--ai-bg": color || variant ? colors.background : void 0,
+        "--ai-hover": color || variant ? colors.hover : void 0,
+        "--ai-color": color || variant ? colors.color : void 0,
+        "--ai-bd": color || variant ? colors.border : void 0
       }
     };
   }
@@ -1194,8 +1182,7 @@ var PasswordToggleIcon = ({
 // src/PasswordInput.tsx
 var defaultProps11 = {
   __staticSelector: "PasswordInput",
-  visibilityToggleIcon: PasswordToggleIcon,
-  size: "sm"
+  visibilityToggleIcon: PasswordToggleIcon
 };
 var varsResolver9 = createVarsResolver9(
   (_, { size }) => ({
@@ -1315,16 +1302,21 @@ var PasswordInput = factory8((_props, ref) => {
     ActionIcon,
     __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("visibilityToggle")), {
       radius,
-      "aria-hidden": !visibilityToggleButtonProps
+      "aria-hidden": !visibilityToggleButtonProps,
+      tabIndex: -1
     }), visibilityToggleButtonProps), {
       variant: "subtle",
       color: "gray",
       unstyled,
       onMouseDown: (event) => {
+        var _a2;
         event.preventDefault();
+        (_a2 = visibilityToggleButtonProps == null ? void 0 : visibilityToggleButtonProps.onMouseDown) == null ? void 0 : _a2.call(visibilityToggleButtonProps, event);
         toggleVisibility();
       },
       onKeyDown: (event) => {
+        var _a2;
+        (_a2 = visibilityToggleButtonProps == null ? void 0 : visibilityToggleButtonProps.onKeyDown) == null ? void 0 : _a2.call(visibilityToggleButtonProps, event);
         if (event.key === " ") {
           event.preventDefault();
           toggleVisibility();

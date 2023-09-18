@@ -175,7 +175,6 @@ var defaultLoaders = {
   progress: Progress
 };
 var defaultProps = {
-  size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
@@ -183,7 +182,7 @@ var varsResolver = (0, import_core5.createVarsResolver)(
   (theme, { size, color }) => ({
     root: {
       "--loader-size": (0, import_core5.getSize)(size, "loader-size"),
-      "--loader-color": (0, import_core5.getThemeColor)(color, theme)
+      "--loader-color": color ? (0, import_core5.getThemeColor)(color, theme) : void 0
     }
   })
 );

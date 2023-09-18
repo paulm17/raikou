@@ -8,6 +8,9 @@ module.exports = function ({ addComponents, theme }: any) {
       "--checkbox-size-md": rem("24px"),
       "--checkbox-size-lg": rem("30px"),
       "--checkbox-size-xl": rem("36px"),
+
+      "--checkbox-size": "var(--checkbox-size-sm)",
+      "--checkbox-color": "var(--raikou-primary-color-filled)",
     },
 
     ".checkbox-inner": {
@@ -27,7 +30,7 @@ module.exports = function ({ addComponents, theme }: any) {
       border: `${rem("1px")} solid var(--_checkbox-bd-color)`,
       width: "var(--checkbox-size)",
       height: "var(--checkbox-size)",
-      borderRadius: "var(--checkbox-radius)",
+      borderRadius: "var(--checkbox-radius, var(--raikou-radius-default))",
       padding: "0",
       display: "block",
       margin: "0",

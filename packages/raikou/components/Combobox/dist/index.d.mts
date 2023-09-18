@@ -45,6 +45,8 @@ interface ComboboxEventsTargetProps {
     withKeyboardNavigation?: boolean;
     /** Determines whether the target should have `aria-` attributes, `true` by default */
     withAriaAttributes?: boolean;
+    /** Determines whether the target should have `aria-expanded` attribute, `false` by default */
+    withExpandedAttribute?: boolean;
     /** Determines which events should be handled by the target element.
      * `button` target type handles `Space` and `Enter` keys to toggle dropdown opened state.
      * `input` by default.
@@ -3705,6 +3707,8 @@ declare const ComboboxSearch: _raikou_core.RaikouComponent<{
 
 type ComboboxOptionsStylesNames = "options";
 interface ComboboxOptionsProps extends BoxProps, CompoundStylesApiProps<ComboboxOptionsFactory>, ElementProps<"div"> {
+    /** Id of the element that should label the options list */
+    labelledBy?: string;
 }
 type ComboboxOptionsFactory = Factory<{
     props: ComboboxOptionsProps;
@@ -3856,6 +3860,8 @@ interface ComboboxTargetProps {
     withKeyboardNavigation?: boolean;
     /** Determines whether the target should have `aria-` attributes, `true` by default */
     withAriaAttributes?: boolean;
+    /** Determines whether the target should have `aria-expanded` attribute, `false` by default */
+    withExpandedAttribute?: boolean;
     /** Determines which events should be handled by the target element.
      * `button` target type handles `Space` and `Enter` keys to toggle dropdown opened state.
      * `input` by default.
@@ -4182,8 +4188,9 @@ interface OptionsDropdownProps {
     value?: string | string[] | null;
     checkIconPosition?: "left" | "right";
     nothingFoundMessage?: React$2.ReactNode;
+    labelId: string;
 }
-declare function OptionsDropdown({ data, hidden, hiddenWhenEmpty, filter, search, limit, maxDropdownHeight, withScrollArea, filterOptions, withCheckIcon, value, checkIconPosition, nothingFoundMessage, }: OptionsDropdownProps): JSX.Element;
+declare function OptionsDropdown({ data, hidden, hiddenWhenEmpty, filter, search, limit, maxDropdownHeight, withScrollArea, filterOptions, withCheckIcon, value, checkIconPosition, nothingFoundMessage, labelId, }: OptionsDropdownProps): JSX.Element;
 
 interface ComboboxItem {
     value: string;
@@ -4261,12 +4268,13 @@ interface UseComboboxTargetPropsInput {
     targetType: "input" | "button" | undefined;
     withAriaAttributes: boolean | undefined;
     withKeyboardNavigation: boolean | undefined;
+    withExpandedAttribute: boolean | undefined;
     onKeyDown: React.KeyboardEventHandler<HTMLInputElement> | undefined;
 }
-declare function useComboboxTargetProps({ onKeyDown, withKeyboardNavigation, withAriaAttributes, targetType, }: UseComboboxTargetPropsInput): {
+declare function useComboboxTargetProps({ onKeyDown, withKeyboardNavigation, withAriaAttributes, withExpandedAttribute, targetType, }: UseComboboxTargetPropsInput): {
     onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
     "aria-haspopup": string;
-    "aria-expanded": boolean | undefined;
+    "aria-expanded": true | undefined;
     "aria-controls": string | null;
     "aria-activedescendant": string | undefined;
     autoComplete: string;

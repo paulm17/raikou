@@ -138,7 +138,6 @@ export type InputFactory = PolymorphicFactory<{
 }>;
 
 const defaultProps: Partial<InputProps> = {
-  size: "sm",
   variant: "default",
   leftSectionPointerEvents: "none",
   rightSectionPointerEvents: "none",
@@ -156,7 +155,8 @@ const varsResolver = createVarsResolver<InputFactory>((_, props, ctx) => ({
       : undefined,
     "--input-height": getSize(props.size, "input-height"),
     "--input-fz": getFontSize(props.size),
-    "--input-radius": getRadius(props.radius),
+    "--input-radius":
+      props.radius === undefined ? undefined : getRadius(props.radius),
     "--input-left-section-width":
       props.leftSectionWidth !== undefined
         ? rem(props.leftSectionWidth)

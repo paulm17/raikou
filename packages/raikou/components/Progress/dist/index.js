@@ -104,14 +104,12 @@ var [ProgressProvider, useProgressContext] = createSafeContext(
 );
 
 // src/ProgressRoot/ProgressRoot.tsx
-var defaultProps = {
-  size: "md"
-};
+var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)(
   (_, { size, radius }) => ({
     root: {
       "--progress-size": (0, import_core.getSize)(size, "progress-size"),
-      "--progress-radius": (0, import_core.getRadius)(radius)
+      "--progress-radius": radius === void 0 ? void 0 : (0, import_core.getRadius)(radius)
     }
   })
 );
@@ -213,9 +211,7 @@ var ProgressLabel = (0, import_core3.factory)((props, ref) => {
 ProgressLabel.displayName = "@raikou/core/ProgressLabel";
 
 // src/Progress.tsx
-var defaultProps4 = {
-  size: "md"
-};
+var defaultProps4 = {};
 var Progress = (0, import_core4.factory)((_props, ref) => {
   const props = (0, import_core4.useProps)("Progress", defaultProps4, _props);
   const _a = props, {

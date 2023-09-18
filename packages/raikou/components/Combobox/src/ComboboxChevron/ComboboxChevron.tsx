@@ -34,7 +34,6 @@ export type ComboboxChevronFactory = Factory<{
 }>;
 
 const defaultProps: Partial<ComboboxChevronProps> = {
-  size: "sm",
   error: null,
 };
 
@@ -43,7 +42,7 @@ const varsResolver = createVarsResolver<ComboboxChevronFactory>(
     chevron: {
       "--combobox-chevron-size": getSize(size, "combobox-chevron-size"),
     },
-  })
+  }),
 );
 
 export const ComboboxChevron = factory<ComboboxChevronFactory>(
@@ -97,7 +96,7 @@ export const ComboboxChevron = factory<ComboboxChevronFactory>(
         />
       </Box>
     );
-  }
+  },
 );
 
 ComboboxChevron.displayName = "@raikou/core/ComboboxChevron";

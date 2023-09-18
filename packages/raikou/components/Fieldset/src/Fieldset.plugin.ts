@@ -5,7 +5,7 @@ module.exports = function ({ addComponents, theme }: any) {
     ".fieldset-root": {
       padding: "var(--raikou-spacing-lg)",
       paddingTop: "var(--raikou-spacing-xs)",
-      borderRadius: "var(--fieldset-radius)",
+      borderRadius: "var(--fieldset-radius, var(--raikou-radius-default))",
     },
 
     ".fieldset-root[data-variant='default']": {

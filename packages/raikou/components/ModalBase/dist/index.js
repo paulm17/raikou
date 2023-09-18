@@ -345,14 +345,14 @@ var ModalBaseBody = (0, import_react11.forwardRef)(
 ModalBaseBody.displayName = "@raikou/core/ModalBaseBody";
 
 // src/ModalBaseCloseButton.tsx
-var import_react22 = __toESM(require("react"));
-var import_clsx6 = __toESM(require("clsx"));
+var import_react15 = __toESM(require("react"));
+var import_clsx2 = __toESM(require("clsx"));
 
 // ../CloseButton/src/CloseIcon.tsx
 var import_react12 = __toESM(require("react"));
 var CloseIcon = (0, import_react12.forwardRef)(
   (_a, ref) => {
-    var _b = _a, { size = "var(--cb-icon-size)", style } = _b, others = __objRest(_b, ["size", "style"]);
+    var _b = _a, { size = "var(--cb-icon-size, 70%)", style } = _b, others = __objRest(_b, ["size", "style"]);
     return /* @__PURE__ */ import_react12.default.createElement(
       "svg",
       __spreadValues({
@@ -377,12 +377,8 @@ var CloseIcon = (0, import_react12.forwardRef)(
 CloseIcon.displayName = "@raikou/core/CloseIcon";
 
 // ../CloseButton/src/CloseButton.tsx
-var import_react21 = __toESM(require("react"));
-var import_core12 = require("@raikou/core");
-
-// ../ActionIcon/src/ActionIcon.tsx
-var import_react20 = __toESM(require("react"));
-var import_core11 = require("@raikou/core");
+var import_react14 = __toESM(require("react"));
+var import_core5 = require("@raikou/core");
 
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react13 = __toESM(require("react"));
@@ -434,370 +430,75 @@ var UnstyledButton = (0, import_core4.polymorphicFactory)(
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 
-// ../Loader/src/Loader.tsx
-var import_react18 = __toESM(require("react"));
-var import_core9 = require("@raikou/core");
-
-// ../Loader/src/loaders/Bars.tsx
-var import_react14 = __toESM(require("react"));
-var import_clsx2 = __toESM(require("clsx"));
-var import_core5 = require("@raikou/core");
-var Bars = (0, import_react14.forwardRef)(
-  (_a, ref) => {
-    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react14.default.createElement(
-      import_core5.Box,
-      __spreadProps(__spreadValues({
-        component: "span",
-        className: (0, import_clsx2.default)("bars-loader", className)
-      }, others), {
-        ref
-      }),
-      /* @__PURE__ */ import_react14.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react14.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react14.default.createElement("span", { className: "bar" })
-    );
-  }
-);
-
-// ../Loader/src/loaders/Oval.tsx
-var import_react15 = __toESM(require("react"));
-var import_clsx3 = __toESM(require("clsx"));
-var import_core6 = require("@raikou/core");
-var Oval = (0, import_react15.forwardRef)(
-  (_a, ref) => {
-    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react15.default.createElement(
-      import_core6.Box,
-      __spreadProps(__spreadValues({
-        component: "span",
-        className: (0, import_clsx3.default)("oval-loader", className)
-      }, others), {
-        ref
-      })
-    );
-  }
-);
-
-// ../Loader/src/loaders/Progress.tsx
-var import_react16 = __toESM(require("react"));
-var import_clsx4 = __toESM(require("clsx"));
-var import_core7 = require("@raikou/core");
-var Progress = (0, import_react16.forwardRef)(
-  (_a, ref) => {
-    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react16.default.createElement(
-      import_core7.Box,
-      __spreadProps(__spreadValues({
-        component: "span",
-        className: (0, import_clsx4.default)("progress-loader", className)
-      }, others), {
-        ref
-      }),
-      /* @__PURE__ */ import_react16.default.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ import_react16.default.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ import_react16.default.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ import_react16.default.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ import_react16.default.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ import_react16.default.createElement(
-        "animateTransform",
-        {
-          attributeName: "transform",
-          type: "rotate",
-          from: "0 16 16",
-          to: "360 16 16",
-          dur: "1s",
-          repeatCount: "indefinite"
-        }
-      )))))
-    );
-  }
-);
-
-// ../Loader/src/loaders/Dots.tsx
-var import_react17 = __toESM(require("react"));
-var import_clsx5 = __toESM(require("clsx"));
-var import_core8 = require("@raikou/core");
-var Dots = (0, import_react17.forwardRef)(
-  (_a, ref) => {
-    var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react17.default.createElement(
-      import_core8.Box,
-      __spreadProps(__spreadValues({
-        component: "span",
-        className: (0, import_clsx5.default)("dots-loader", className)
-      }, others), {
-        ref
-      }),
-      /* @__PURE__ */ import_react17.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react17.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react17.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react17.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react17.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react17.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react17.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react17.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react17.default.createElement("span", { className: "dot" })
-    );
-  }
-);
-
-// ../Loader/src/Loader.tsx
-var defaultLoaders = {
-  bars: Bars,
-  oval: Oval,
-  dots: Dots,
-  progress: Progress
-};
+// ../CloseButton/src/CloseButton.tsx
 var defaultProps3 = {
-  size: "md",
-  loaders: defaultLoaders,
-  type: "oval"
+  variant: "subtle",
+  size: "md"
 };
-var varsResolver = (0, import_core9.createVarsResolver)(
-  (theme, { size, color }) => ({
+var varsResolver = (0, import_core5.createVarsResolver)(
+  (_, { size, radius, iconSize }) => ({
     root: {
-      "--loader-size": (0, import_core9.getSize)(size, "loader-size"),
-      "--loader-color": (0, import_core9.getThemeColor)(color, theme)
+      "--cb-size": (0, import_core5.getSize)(size, "cb-size"),
+      "--cb-radius": radius === void 0 ? void 0 : (0, import_core5.getRadius)(radius),
+      "--cb-icon-size": (0, import_core5.rem)(iconSize)
     }
   })
 );
-var Loader = (0, import_core9.factory)((_props, ref) => {
-  const props = (0, import_core9.useProps)("Loader", defaultProps3, _props);
-  const _a = props, {
-    size,
-    color,
-    type,
-    vars,
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
-    loaders,
-    variant
-  } = _a, others = __objRest(_a, [
-    "size",
-    "color",
-    "type",
-    "vars",
-    "className",
-    "style",
-    "classNames",
-    "styles",
-    "unstyled",
-    "loaders",
-    "variant"
-  ]);
-  const getStyles = (0, import_core9.useStyles)({
-    name: "Loader",
-    props,
-    classes: {
-      root: "loader-root"
-    },
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
-    vars,
-    varsResolver
-  });
-  return /* @__PURE__ */ import_react18.default.createElement(
-    import_core9.Box,
-    __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
-      ref,
-      component: loaders[type],
-      variant,
-      size
-    }), others)
-  );
-});
-Loader.displayName = "@raikou/core/Loader";
-
-// ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-var import_react19 = __toESM(require("react"));
-var import_core10 = require("@raikou/core");
-var defaultProps4 = {
-  orientation: "horizontal",
-  borderWidth: 1
-};
-var varsResolver2 = (0, import_core10.createVarsResolver)(
-  (_, { borderWidth }) => ({
-    group: { "--ai-border-width": (0, import_core10.rem)(borderWidth) }
-  })
-);
-var ActionIconGroup = (0, import_core10.factory)(
+var CloseButton = (0, import_core5.polymorphicFactory)(
   (_props, ref) => {
-    const props = (0, import_core10.useProps)("ActionIconGroup", defaultProps4, _props);
-    const _a = (0, import_core10.useProps)("ActionIconGroup", defaultProps4, _props), {
+    const props = (0, import_core5.useProps)("CloseButton", defaultProps3, _props);
+    const _a = props, {
+      iconSize,
+      children,
+      vars,
+      radius,
       className,
-      style,
       classNames,
+      style,
       styles,
       unstyled,
-      orientation,
-      vars,
-      borderWidth,
+      "data-disabled": dataDisabled,
+      disabled,
       variant
     } = _a, others = __objRest(_a, [
+      "iconSize",
+      "children",
+      "vars",
+      "radius",
       "className",
-      "style",
       "classNames",
+      "style",
       "styles",
       "unstyled",
-      "orientation",
-      "vars",
-      "borderWidth",
+      "data-disabled",
+      "disabled",
       "variant"
     ]);
-    const getStyles = (0, import_core10.useStyles)({
-      name: "ActionIconGroup",
-      props,
-      classes: {
-        group: "actionIconGroup-root"
-      },
-      className,
-      style,
-      classNames,
-      styles,
-      unstyled,
-      vars,
-      varsResolver: varsResolver2,
-      rootSelector: "group"
-    });
-    return /* @__PURE__ */ import_react19.default.createElement(
-      import_core10.Box,
-      __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
-        ref,
-        variant,
-        mod: { "data-orientation": orientation },
-        role: "group"
-      }), others)
-    );
-  }
-);
-ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
-
-// ../ActionIcon/src/ActionIcon.tsx
-var defaultProps5 = {
-  variant: "filled",
-  size: "md"
-};
-var varsResolver3 = (0, import_core11.createVarsResolver)(
-  (theme, { size, radius, variant, gradient, color }) => {
-    const colors = theme.variantColorResolver({
-      color: color || theme.primaryColor,
-      theme,
-      gradient,
-      variant
-    });
-    return {
-      root: {
-        "--ai-size": (0, import_core11.getSize)(size, "ai-size"),
-        "--ai-radius": (0, import_core11.getRadius)(radius),
-        "--ai-bg": colors.background,
-        "--ai-hover": colors.hover,
-        "--ai-color": colors.color,
-        "--ai-bd": colors.border
-      }
-    };
-  }
-);
-var ActionIcon = (0, import_core11.polymorphicFactory)(
-  (_props, ref) => {
-    const props = (0, import_core11.useProps)("ActionIcon", defaultProps5, _props);
-    const _a = props, {
-      className,
-      unstyled,
-      variant,
-      classNames,
-      styles,
-      style,
-      loading,
-      loaderProps,
-      size,
-      color,
-      radius,
-      __staticSelector,
-      gradient,
-      vars,
-      children,
-      disabled,
-      "data-disabled": dataDisabled
-    } = _a, others = __objRest(_a, [
-      "className",
-      "unstyled",
-      "variant",
-      "classNames",
-      "styles",
-      "style",
-      "loading",
-      "loaderProps",
-      "size",
-      "color",
-      "radius",
-      "__staticSelector",
-      "gradient",
-      "vars",
-      "children",
-      "disabled",
-      "data-disabled"
-    ]);
-    const getStyles = (0, import_core11.useStyles)({
-      name: ["ActionIcon", __staticSelector],
+    const getStyles = (0, import_core5.useStyles)({
+      name: "CloseButton",
       props,
       className,
       style,
       classes: {
-        root: "actionIcon-root",
-        loader: "actionIcon-loader"
+        root: "closeButton-root"
       },
       classNames,
       styles,
       unstyled,
       vars,
-      varsResolver: varsResolver3
+      varsResolver
     });
-    return /* @__PURE__ */ import_react20.default.createElement(
+    return /* @__PURE__ */ import_react14.default.createElement(
       UnstyledButton,
-      __spreadProps(__spreadValues(__spreadValues({}, getStyles("root", {
-        active: !disabled && !loading && !dataDisabled
-      })), others), {
-        unstyled,
-        variant,
-        size,
-        disabled: disabled || loading,
-        ref,
-        mod: { loading, disabled: disabled || dataDisabled }
-      }),
-      loading ? /* @__PURE__ */ import_react20.default.createElement(
-        Loader,
-        __spreadValues(__spreadProps(__spreadValues({}, getStyles("loader")), {
-          color: "var(--ai-color)",
-          size: "calc(var(--ai-size) * 0.55)"
-        }), loaderProps)
-      ) : children
-    );
-  }
-);
-ActionIcon.displayName = "@raikou/core/ActionIcon";
-ActionIcon.Group = ActionIconGroup;
-
-// ../CloseButton/src/CloseButton.tsx
-var defaultProps6 = {
-  iconSize: "70%",
-  variant: "subtle",
-  color: "gray"
-};
-var CloseButton = (0, import_core12.polymorphicFactory)(
-  (_props, ref) => {
-    const props = (0, import_core12.useProps)("CloseButton", defaultProps6, _props);
-    const _a = props, { iconSize, children, vars } = _a, others = __objRest(_a, ["iconSize", "children", "vars"]);
-    return /* @__PURE__ */ import_react21.default.createElement(
-      ActionIcon,
-      __spreadProps(__spreadValues({
+      __spreadValues(__spreadProps(__spreadValues({
         ref
       }, others), {
-        __vars: { "--cb-icon-size": (0, import_core12.rem)(iconSize) },
-        __staticSelector: "CloseButton"
-      }),
-      /* @__PURE__ */ import_react21.default.createElement(CloseIcon, null),
+        unstyled,
+        variant,
+        disabled,
+        mod: { disabled: disabled || dataDisabled }
+      }), getStyles("root", { variant, active: true })),
+      /* @__PURE__ */ import_react14.default.createElement(CloseIcon, null),
       children
     );
   }
@@ -805,18 +506,18 @@ var CloseButton = (0, import_core12.polymorphicFactory)(
 CloseButton.displayName = "@raikou/core/CloseButton";
 
 // src/ModalBaseCloseButton.tsx
-var ModalBaseCloseButton = (0, import_react22.forwardRef)((_a, ref) => {
+var ModalBaseCloseButton = (0, import_react15.forwardRef)((_a, ref) => {
   var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
   const ctx = useModalBaseContext();
   return (
     // @ts-ignore
-    /* @__PURE__ */ import_react22.default.createElement(
+    /* @__PURE__ */ import_react15.default.createElement(
       CloseButton,
       __spreadProps(__spreadValues({
         ref
       }, others), {
         onClick: ctx.onClose,
-        className: (0, import_clsx6.default)("modalBase-close", className)
+        className: (0, import_clsx2.default)("modalBase-close", className)
       })
     )
   );
@@ -824,14 +525,14 @@ var ModalBaseCloseButton = (0, import_react22.forwardRef)((_a, ref) => {
 ModalBaseCloseButton.displayName = "@raikou/core/ModalBaseCloseButton";
 
 // src/ModalBaseContent.tsx
-var import_react27 = __toESM(require("react"));
-var import_clsx7 = __toESM(require("clsx"));
+var import_react20 = __toESM(require("react"));
+var import_clsx3 = __toESM(require("clsx"));
 
 // ../Transition/src/transitions.ts
-var import_core13 = require("@raikou/core");
+var import_core6 = require("@raikou/core");
 var popIn = {
   in: { opacity: 1, transform: "scale(1)" },
-  out: { opacity: 0, transform: `scale(.9) translateY(${(0, import_core13.rem)(10)})` },
+  out: { opacity: 0, transform: `scale(.9) translateY(${(0, import_core6.rem)(10)})` },
   transitionProperty: "transform, opacity"
 };
 var transitions = {
@@ -862,7 +563,7 @@ var transitions = {
     in: { opacity: 1, transform: "translateY(0) skew(0deg, 0deg)" },
     out: {
       opacity: 0,
-      transform: `translateY(-${(0, import_core13.rem)(20)}) skew(-10deg, -5deg)`
+      transform: `translateY(-${(0, import_core6.rem)(20)}) skew(-10deg, -5deg)`
     },
     common: { transformOrigin: "top" },
     transitionProperty: "transform, opacity"
@@ -871,20 +572,20 @@ var transitions = {
     in: { opacity: 1, transform: "translateY(0) skew(0deg, 0deg)" },
     out: {
       opacity: 0,
-      transform: `translateY(${(0, import_core13.rem)(20)}) skew(-10deg, -5deg)`
+      transform: `translateY(${(0, import_core6.rem)(20)}) skew(-10deg, -5deg)`
     },
     common: { transformOrigin: "bottom" },
     transitionProperty: "transform, opacity"
   },
   "rotate-left": {
     in: { opacity: 1, transform: "translateY(0) rotate(0deg)" },
-    out: { opacity: 0, transform: `translateY(${(0, import_core13.rem)(20)}) rotate(-5deg)` },
+    out: { opacity: 0, transform: `translateY(${(0, import_core6.rem)(20)}) rotate(-5deg)` },
     common: { transformOrigin: "bottom" },
     transitionProperty: "transform, opacity"
   },
   "rotate-right": {
     in: { opacity: 1, transform: "translateY(0) rotate(0deg)" },
-    out: { opacity: 0, transform: `translateY(${(0, import_core13.rem)(20)}) rotate(5deg)` },
+    out: { opacity: 0, transform: `translateY(${(0, import_core6.rem)(20)}) rotate(5deg)` },
     common: { transformOrigin: "top" },
     transitionProperty: "transform, opacity"
   },
@@ -930,7 +631,7 @@ var transitions = {
 };
 
 // ../Transition/src/Transition.tsx
-var import_react24 = __toESM(require("react"));
+var import_react17 = __toESM(require("react"));
 
 // ../Transition/src/get-transition-styles/get-transition-styles.ts
 var transitionStatuses = {
@@ -965,9 +666,9 @@ function getTransitionStyles({
 }
 
 // ../Transition/src/use-transition.ts
-var import_react23 = require("react");
+var import_react16 = require("react");
 var import_hooks4 = require("@raikou/hooks");
-var import_core14 = require("@raikou/core");
+var import_core7 = require("@raikou/core");
 function useTransition({
   duration,
   exitDuration,
@@ -978,16 +679,16 @@ function useTransition({
   onEntered,
   onExited
 }) {
-  const theme = (0, import_core14.useRaikouTheme)();
+  const theme = (0, import_core7.useRaikouTheme)();
   const shouldReduceMotion = (0, import_hooks4.useReducedMotion)();
   const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
-  const [transitionDuration, setTransitionDuration] = (0, import_react23.useState)(
+  const [transitionDuration, setTransitionDuration] = (0, import_react16.useState)(
     reduceMotion ? 0 : duration
   );
-  const [transitionStatus, setStatus] = (0, import_react23.useState)(
+  const [transitionStatus, setStatus] = (0, import_react16.useState)(
     mounted ? "entered" : "exited"
   );
-  const timeoutRef = (0, import_react23.useRef)(-1);
+  const timeoutRef = (0, import_react16.useRef)(-1);
   const handleStateChange = (shouldMount) => {
     const preHandler = shouldMount ? onEnter : onExit;
     const handler = shouldMount ? onEntered : onExited;
@@ -1014,7 +715,7 @@ function useTransition({
   (0, import_hooks4.useDidUpdate)(() => {
     handleStateChange(mounted);
   }, [mounted]);
-  (0, import_react23.useEffect)(() => () => window.clearTimeout(timeoutRef.current), []);
+  (0, import_react16.useEffect)(() => () => window.clearTimeout(timeoutRef.current), []);
   return {
     transitionDuration,
     transitionStatus,
@@ -1047,9 +748,9 @@ function Transition({
     onExited
   });
   if (transitionDuration === 0) {
-    return mounted ? /* @__PURE__ */ import_react24.default.createElement(import_react24.default.Fragment, null, children({})) : keepMounted ? children({ display: "none" }) : null;
+    return mounted ? /* @__PURE__ */ import_react17.default.createElement(import_react17.default.Fragment, null, children({})) : keepMounted ? children({ display: "none" }) : null;
   }
-  return transitionStatus === "exited" ? keepMounted ? children({ display: "none" }) : null : /* @__PURE__ */ import_react24.default.createElement(import_react24.default.Fragment, null, children(
+  return transitionStatus === "exited" ? keepMounted ? children({ display: "none" }) : null : /* @__PURE__ */ import_react17.default.createElement(import_react17.default.Fragment, null, children(
     getTransitionStyles({
       transition,
       duration: transitionDuration,
@@ -1061,9 +762,9 @@ function Transition({
 Transition.displayName = "@raikou/core/Transition";
 
 // ../FocusTrap/src/FocusTrap.tsx
-var import_react25 = require("react");
+var import_react18 = require("react");
 var import_hooks5 = require("@raikou/hooks");
-var import_core15 = require("@raikou/core");
+var import_core8 = require("@raikou/core");
 function FocusTrap({
   children,
   active = true,
@@ -1071,27 +772,27 @@ function FocusTrap({
 }) {
   const focusTrapRef = (0, import_hooks5.useFocusTrap)(active);
   const ref = (0, import_hooks5.useMergedRef)(focusTrapRef, children == null ? void 0 : children.ref);
-  if (!(0, import_core15.isElement)(children)) {
+  if (!(0, import_core8.isElement)(children)) {
     return children;
   }
-  return (0, import_react25.cloneElement)(children, { [refProp]: ref });
+  return (0, import_react18.cloneElement)(children, { [refProp]: ref });
 }
 FocusTrap.displayName = "@raikou/core/FocusTrap";
 
 // ../Paper/src/Paper.tsx
-var import_react26 = __toESM(require("react"));
-var import_core16 = require("@raikou/core");
-var defaultProps7 = {};
-var varsResolver4 = (0, import_core16.createVarsResolver)(
+var import_react19 = __toESM(require("react"));
+var import_core9 = require("@raikou/core");
+var defaultProps4 = {};
+var varsResolver2 = (0, import_core9.createVarsResolver)(
   (_, { radius, shadow }) => ({
     root: {
-      "--paper-radius": (0, import_core16.getRadius)(radius),
-      "--paper-shadow": (0, import_core16.getShadow)(shadow)
+      "--paper-radius": radius === void 0 ? void 0 : (0, import_core9.getRadius)(radius),
+      "--paper-shadow": (0, import_core9.getShadow)(shadow)
     }
   })
 );
-var Paper = (0, import_core16.polymorphicFactory)((_props, ref) => {
-  const props = (0, import_core16.useProps)("Paper", defaultProps7, _props);
+var Paper = (0, import_core9.polymorphicFactory)((_props, ref) => {
+  const props = (0, import_core9.useProps)("Paper", defaultProps4, _props);
   const _a = props, {
     classNames,
     className,
@@ -1115,7 +816,7 @@ var Paper = (0, import_core16.polymorphicFactory)((_props, ref) => {
     "shadow",
     "variant"
   ]);
-  const getStyles = (0, import_core16.useStyles)({
+  const getStyles = (0, import_core9.useStyles)({
     name: "Paper",
     props,
     classes: {
@@ -1127,10 +828,10 @@ var Paper = (0, import_core16.polymorphicFactory)((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver4
+    varsResolver: varsResolver2
   });
-  return /* @__PURE__ */ import_react26.default.createElement(
-    import_core16.Box,
+  return /* @__PURE__ */ import_react19.default.createElement(
+    import_core9.Box,
     __spreadValues(__spreadProps(__spreadValues({
       ref,
       mod: { "data-with-border": withBorder }
@@ -1142,7 +843,7 @@ var Paper = (0, import_core16.polymorphicFactory)((_props, ref) => {
 Paper.displayName = "@raikou/core/Paper";
 
 // src/ModalBaseContent.tsx
-var ModalBaseContent = (0, import_react27.forwardRef)(
+var ModalBaseContent = (0, import_react20.forwardRef)(
   (_a, ref) => {
     var _b = _a, { transitionProps, className, innerProps, onKeyDown, style } = _b, others = __objRest(_b, ["transitionProps", "className", "innerProps", "onKeyDown", "style"]);
     const ctx = useModalBaseContext();
@@ -1154,18 +855,18 @@ var ModalBaseContent = (0, import_react27.forwardRef)(
       shouldTrigger && event.key === "Escape" && ctx.closeOnEscape && ctx.onClose();
       onKeyDown == null ? void 0 : onKeyDown(event);
     };
-    return /* @__PURE__ */ import_react27.default.createElement(
+    return /* @__PURE__ */ import_react20.default.createElement(
       Transition,
       __spreadValues(__spreadValues({
         mounted: ctx.opened,
         transition: "pop"
       }, ctx.transitionProps), transitionProps),
-      (transitionStyles) => /* @__PURE__ */ import_react27.default.createElement(
+      (transitionStyles) => /* @__PURE__ */ import_react20.default.createElement(
         "div",
         __spreadProps(__spreadValues({}, innerProps), {
-          className: (0, import_clsx7.default)("modalBase-inner", innerProps.className)
+          className: (0, import_clsx3.default)("modalBase-inner", innerProps.className)
         }),
-        /* @__PURE__ */ import_react27.default.createElement(FocusTrap, { active: ctx.opened && ctx.trapFocus }, /* @__PURE__ */ import_react27.default.createElement(
+        /* @__PURE__ */ import_react20.default.createElement(FocusTrap, { active: ctx.opened && ctx.trapFocus }, /* @__PURE__ */ import_react20.default.createElement(
           Paper,
           __spreadProps(__spreadValues({}, others), {
             component: "section",
@@ -1177,7 +878,7 @@ var ModalBaseContent = (0, import_react27.forwardRef)(
             onKeyDown: handleKeyDown,
             ref,
             style: [style, transitionStyles],
-            className: (0, import_clsx7.default)("modalBase-content", className)
+            className: (0, import_clsx3.default)("modalBase-content", className)
           }),
           others.children
         ))
@@ -1188,41 +889,38 @@ var ModalBaseContent = (0, import_react27.forwardRef)(
 ModalBaseContent.displayName = "@raikou/core/ModalBaseContent";
 
 // src/ModalBaseHeader.tsx
-var import_react28 = __toESM(require("react"));
-var import_clsx8 = __toESM(require("clsx"));
-var import_core17 = require("@raikou/core");
-var ModalBaseHeader = (0, import_react28.forwardRef)(
+var import_react21 = __toESM(require("react"));
+var import_clsx4 = __toESM(require("clsx"));
+var import_core10 = require("@raikou/core");
+var ModalBaseHeader = (0, import_react21.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react28.default.createElement(import_core17.Box, __spreadValues({ ref, className: (0, import_clsx8.default)("modalBase-header", className) }, others));
+    return /* @__PURE__ */ import_react21.default.createElement(import_core10.Box, __spreadValues({ ref, className: (0, import_clsx4.default)("modalBase-header", className) }, others));
   }
 );
 ModalBaseHeader.displayName = "@raikou/core/ModalBaseHeader";
 
 // src/ModalBaseOverlay.tsx
-var import_react30 = __toESM(require("react"));
+var import_react23 = __toESM(require("react"));
 
 // ../Overlay/src/Overlay.tsx
-var import_react29 = __toESM(require("react"));
-var import_core18 = require("@raikou/core");
-var defaultProps8 = {
-  color: "#000",
-  backgroundOpacity: 0.6,
-  zIndex: (0, import_core18.getDefaultZIndex)("modal"),
-  radius: 0
+var import_react22 = __toESM(require("react"));
+var import_core11 = require("@raikou/core");
+var defaultProps5 = {
+  zIndex: (0, import_core11.getDefaultZIndex)("modal")
 };
-var varsResolver5 = (0, import_core18.createVarsResolver)(
+var varsResolver3 = (0, import_core11.createVarsResolver)(
   (_, { gradient, color, backgroundOpacity, blur, radius, zIndex }) => ({
     root: {
-      "--overlay-bg": gradient || (0, import_core18.rgba)(color || "#000", backgroundOpacity != null ? backgroundOpacity : 0.6),
-      "--overlay-filter": blur ? `blur(${(0, import_core18.rem)(blur)})` : void 0,
-      "--overlay-radius": (0, import_core18.getRadius)(radius),
+      "--overlay-bg": gradient || (color !== void 0 || backgroundOpacity !== void 0) && (0, import_core11.rgba)(color || "#000", backgroundOpacity != null ? backgroundOpacity : 0.6) || void 0,
+      "--overlay-filter": blur ? `blur(${(0, import_core11.rem)(blur)})` : void 0,
+      "--overlay-radius": radius === void 0 ? void 0 : (0, import_core11.getRadius)(radius),
       "--overlay-z-index": zIndex == null ? void 0 : zIndex.toString()
     }
   })
 );
-var Overlay = (0, import_core18.polymorphicFactory)((_props, ref) => {
-  const props = (0, import_core18.useProps)("Overlay", defaultProps8, _props);
+var Overlay = (0, import_core11.polymorphicFactory)((_props, ref) => {
+  const props = (0, import_core11.useProps)("Overlay", defaultProps5, _props);
   const _a = props, {
     classNames,
     className,
@@ -1256,7 +954,7 @@ var Overlay = (0, import_core18.polymorphicFactory)((_props, ref) => {
     "color",
     "backgroundOpacity"
   ]);
-  const getStyles = (0, import_core18.useStyles)({
+  const getStyles = (0, import_core11.useStyles)({
     name: "Overlay",
     props,
     classes: {
@@ -1268,9 +966,9 @@ var Overlay = (0, import_core18.polymorphicFactory)((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver5
+    varsResolver: varsResolver3
   });
-  return /* @__PURE__ */ import_react29.default.createElement(import_core18.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { mod: { center, fixed } }), others), children);
+  return /* @__PURE__ */ import_react22.default.createElement(import_core11.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { mod: { center, fixed } }), others), children);
 });
 Overlay.displayName = "@raikou/core/Overlay";
 
@@ -1286,18 +984,17 @@ function useModalTransition(transitionOverride) {
 }
 
 // src/ModalBaseOverlay.tsx
-var ModalBaseOverlay = (0, import_react30.forwardRef)((_a, ref) => {
+var ModalBaseOverlay = (0, import_react23.forwardRef)((_a, ref) => {
   var _b = _a, { onClick, transitionProps, style } = _b, others = __objRest(_b, ["onClick", "transitionProps", "style"]);
   const ctx = useModalBaseContext();
   const transition = useModalTransition(transitionProps);
-  return /* @__PURE__ */ import_react30.default.createElement(Transition, __spreadProps(__spreadValues({ mounted: ctx.opened }, transition), { transition: "fade" }), (transitionStyles) => /* @__PURE__ */ import_react30.default.createElement(
+  return /* @__PURE__ */ import_react23.default.createElement(Transition, __spreadProps(__spreadValues({ mounted: ctx.opened }, transition), { transition: "fade" }), (transitionStyles) => /* @__PURE__ */ import_react23.default.createElement(
     Overlay,
     __spreadValues({
       ref,
       fixed: true,
       style: [style, transitionStyles],
       zIndex: ctx.zIndex,
-      radius: 0,
       onClick: (event) => {
         onClick == null ? void 0 : onClick(event);
         ctx.closeOnClickOutside && ctx.onClose();
@@ -1308,15 +1005,15 @@ var ModalBaseOverlay = (0, import_react30.forwardRef)((_a, ref) => {
 ModalBaseOverlay.displayName = "@raikou/core/ModalBaseOverlay";
 
 // src/ModalBaseTitle.tsx
-var import_react32 = __toESM(require("react"));
-var import_clsx9 = __toESM(require("clsx"));
-var import_core19 = require("@raikou/core");
+var import_react25 = __toESM(require("react"));
+var import_clsx5 = __toESM(require("clsx"));
+var import_core12 = require("@raikou/core");
 
 // src/use-modal-title-id.ts
-var import_react31 = require("react");
+var import_react24 = require("react");
 function useModalTitle() {
   const ctx = useModalBaseContext();
-  (0, import_react31.useEffect)(() => {
+  (0, import_react24.useEffect)(() => {
     ctx.setTitleMounted(true);
     return () => ctx.setTitleMounted(false);
   }, []);
@@ -1324,15 +1021,15 @@ function useModalTitle() {
 }
 
 // src/ModalBaseTitle.tsx
-var ModalBaseTitle = (0, import_react32.forwardRef)((_a, ref) => {
+var ModalBaseTitle = (0, import_react25.forwardRef)((_a, ref) => {
   var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
   const id = useModalTitle();
-  return /* @__PURE__ */ import_react32.default.createElement(
-    import_core19.Box,
+  return /* @__PURE__ */ import_react25.default.createElement(
+    import_core12.Box,
     __spreadProps(__spreadValues({
       component: "h2",
       ref,
-      className: (0, import_clsx9.default)("modalBase-title", className)
+      className: (0, import_clsx5.default)("modalBase-title", className)
     }, others), {
       id
     })
@@ -1341,9 +1038,9 @@ var ModalBaseTitle = (0, import_react32.forwardRef)((_a, ref) => {
 ModalBaseTitle.displayName = "@raikou/core/ModalBaseTitle";
 
 // src/NativeScrollArea.tsx
-var import_react33 = __toESM(require("react"));
+var import_react26 = __toESM(require("react"));
 function NativeScrollArea({ children }) {
-  return /* @__PURE__ */ import_react33.default.createElement(import_react33.default.Fragment, null, children);
+  return /* @__PURE__ */ import_react26.default.createElement(import_react26.default.Fragment, null, children);
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

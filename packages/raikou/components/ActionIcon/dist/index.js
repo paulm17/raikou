@@ -248,7 +248,6 @@ var defaultLoaders = {
   progress: Progress
 };
 var defaultProps2 = {
-  size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
@@ -256,7 +255,7 @@ var varsResolver = (0, import_core6.createVarsResolver)(
   (theme, { size, color }) => ({
     root: {
       "--loader-size": (0, import_core6.getSize)(size, "loader-size"),
-      "--loader-color": (0, import_core6.getThemeColor)(color, theme)
+      "--loader-color": color ? (0, import_core6.getThemeColor)(color, theme) : void 0
     }
   })
 );
@@ -317,8 +316,7 @@ Loader.displayName = "@raikou/core/Loader";
 var import_react7 = __toESM(require("react"));
 var import_core7 = require("@raikou/core");
 var defaultProps3 = {
-  orientation: "horizontal",
-  borderWidth: 1
+  orientation: "horizontal"
 };
 var varsResolver2 = (0, import_core7.createVarsResolver)(
   (_, { borderWidth }) => ({
@@ -378,26 +376,23 @@ var ActionIconGroup = (0, import_core7.factory)(
 ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
 
 // src/ActionIcon.tsx
-var defaultProps4 = {
-  variant: "filled",
-  size: "md"
-};
+var defaultProps4 = {};
 var varsResolver3 = (0, import_core8.createVarsResolver)(
   (theme, { size, radius, variant, gradient, color }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       gradient,
-      variant
+      variant: variant || "filled"
     });
     return {
       root: {
         "--ai-size": (0, import_core8.getSize)(size, "ai-size"),
-        "--ai-radius": (0, import_core8.getRadius)(radius),
-        "--ai-bg": colors.background,
-        "--ai-hover": colors.hover,
-        "--ai-color": colors.color,
-        "--ai-bd": colors.border
+        "--ai-radius": radius === void 0 ? void 0 : (0, import_core8.getRadius)(radius),
+        "--ai-bg": color || variant ? colors.background : void 0,
+        "--ai-hover": color || variant ? colors.hover : void 0,
+        "--ai-color": color || variant ? colors.color : void 0,
+        "--ai-bd": color || variant ? colors.border : void 0
       }
     };
   }

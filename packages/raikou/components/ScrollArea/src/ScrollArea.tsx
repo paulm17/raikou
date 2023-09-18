@@ -74,7 +74,6 @@ export type ScrollAreaFactory = Factory<{
 }>;
 
 const defaultProps: Partial<ScrollAreaProps> = {
-  scrollbarSize: 12,
   scrollHideDelay: 1000,
   type: "hover",
 };
@@ -84,7 +83,7 @@ const varsResolver = createVarsResolver<ScrollAreaFactory>(
     root: {
       "--scrollarea-scrollbar-size": rem(scrollbarSize),
     },
-  })
+  }),
 );
 
 export const ScrollArea = factory<ScrollAreaFactory>((_props, ref) => {

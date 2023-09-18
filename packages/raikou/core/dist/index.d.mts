@@ -67,7 +67,7 @@ declare function getSpacing(size: unknown): string;
 declare function getRadius(size: unknown): string;
 declare function getFontSize(size: unknown): string;
 declare function getLineHeight(size: unknown): string;
-declare function getShadow(size: unknown): string;
+declare function getShadow(size: unknown): string | undefined;
 
 type EventHandler<Event> = ((event?: Event) => void) | undefined;
 declare function createEventHandler<Event>(parentEventHandler: EventHandler<Event>, eventHandler: EventHandler<Event>): (event?: Event) => void;

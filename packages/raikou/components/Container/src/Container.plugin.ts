@@ -8,12 +8,17 @@ module.exports = function ({ addComponents, theme }: any) {
       "--container-size-md": rem("960px"),
       "--container-size-lg": rem("1140px"),
       "--container-size-xl": rem("1320px"),
+      "--container-size": "var(--container-size-md)",
 
       paddingLeft: "var(--raikou-spacing-md)",
       paddingRight: "var(--raikou-spacing-md)",
-      maxWidth: "var(--container-size)",
+      maxWidth: "var(--container-size, var(--container-size))",
       marginLeft: "auto",
       marginRight: "auto",
+
+      "&[data-fluid]": {
+        "--_container-size": "100%",
+      },
     },
   });
 };

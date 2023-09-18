@@ -236,7 +236,6 @@ var defaultLoaders = {
   progress: Progress
 };
 var defaultProps2 = {
-  size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
@@ -244,7 +243,7 @@ var varsResolver = createVarsResolver(
   (theme, { size, color }) => ({
     root: {
       "--loader-size": getSize(size, "loader-size"),
-      "--loader-color": getThemeColor(color, theme)
+      "--loader-color": color ? getThemeColor(color, theme) : void 0
     }
   })
 );
@@ -312,8 +311,7 @@ import {
   createVarsResolver as createVarsResolver2
 } from "@raikou/core";
 var defaultProps3 = {
-  orientation: "horizontal",
-  borderWidth: 1
+  orientation: "horizontal"
 };
 var varsResolver2 = createVarsResolver2(
   (_, { borderWidth }) => ({
@@ -370,18 +368,14 @@ var ButtonGroup = factory2((_props, ref) => {
 ButtonGroup.displayName = "@raikou/core/ButtonGroup";
 
 // src/Button.tsx
-var defaultProps4 = {
-  size: "sm",
-  variant: "filled",
-  loaderPosition: "left"
-};
+var defaultProps4 = {};
 var varsResolver3 = createVarsResolver3(
   (theme, { radius, color, gradient, variant, size, justify }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       gradient,
-      variant
+      variant: variant || "filled"
     });
     return {
       root: {
@@ -389,11 +383,11 @@ var varsResolver3 = createVarsResolver3(
         "--button-height": getSize2(size, "button-height"),
         "--button-padding-x": getSize2(size, "button-padding-x"),
         "--button-fz": (size == null ? void 0 : size.includes("compact")) ? getFontSize(size.replace("compact-", "")) : getFontSize(size),
-        "--button-radius": getRadius(radius),
-        "--button-bg": colors.background,
-        "--button-hover": colors.hover,
-        "--button-color": colors.color,
-        "--button-bd": colors.border
+        "--button-radius": radius ? getRadius(radius) : void 0,
+        "--button-bg": color || variant ? colors.background : void 0,
+        "--button-hover": color || variant ? colors.hover : void 0,
+        "--button-color": color || variant ? colors.color : void 0,
+        "--button-bd": color || variant ? colors.border : void 0
       }
     };
   }

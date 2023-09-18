@@ -3,6 +3,8 @@ import { rem } from "@raikou/core";
 module.exports = function ({ addComponents }: any) {
   addComponents({
     ".card-root.card-root": {
+      "--card-padding": "var(--raikou-spacing-md)",
+
       position: "relative",
       overflow: "hidden",
       display: "flex",

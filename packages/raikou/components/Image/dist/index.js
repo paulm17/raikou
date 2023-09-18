@@ -74,12 +74,10 @@ var useStore = (0, import_zustand.create)(() => ({
 }));
 
 // src/Image.tsx
-var defaultProps = {
-  radius: 0
-};
+var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)((_, { radius, fit }) => ({
   root: {
-    "--image-radius": (0, import_core.getRadius)(radius),
+    "--image-radius": radius === void 0 ? void 0 : (0, import_core.getRadius)(radius),
     "--image-object-fit": fit
   }
 }));

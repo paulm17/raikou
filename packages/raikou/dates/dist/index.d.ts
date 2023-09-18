@@ -50,6 +50,7 @@ interface PickerBaseProps<Type extends DatePickerType = 'default'> {
 
 interface DatesProviderValue {
     locale: string;
+    timezone: string | null;
     firstDayOfWeek: DayOfWeek;
     weekendDays: DayOfWeek[];
     labelSeparator: string;
@@ -64,10 +65,12 @@ declare function DatesProvider({ settings, children }: DatesProviderProps): Reac
 
 declare function useDatesContext(): {
     getLocale: (input?: string) => string;
+    getTimezone: (input?: string) => string | undefined;
     getFirstDayOfWeek: (input?: DayOfWeek) => DayOfWeek;
     getWeekendDays: (input?: DayOfWeek[]) => DayOfWeek[];
     getLabelSeparator: (input?: string) => string;
     locale: string;
+    timezone: string | null;
     firstDayOfWeek: DayOfWeek;
     weekendDays: DayOfWeek[];
     labelSeparator: string;
@@ -262,7 +265,7 @@ declare function getEndOfWeek(date: Date, firstDayOfWeek?: DayOfWeek): Date;
 
 declare function getStartOfWeek(date: Date, firstDayOfWeek?: DayOfWeek): Date;
 
-declare function getMonthDays(month: Date, firstDayOfWeek?: DayOfWeek): Date[][];
+declare function getMonthDays(month: Date, firstDayOfWeek?: DayOfWeek, timezone?: string | undefined): Date[][];
 
 declare function isSameMonth(date: Date, comparison: Date): boolean;
 
@@ -943,7 +946,7 @@ interface PickerInputBaseProps extends BoxProps, DateInputSharedProps, Omit<Styl
     shouldClear: boolean;
     value: HiddenDatesInputValue;
     type: DatePickerType;
-    size: RaikouSize;
+    size?: RaikouSize;
 }
 type PickerInputBaseFactory = Factory<{
     props: PickerInputBaseProps;
@@ -988,6 +991,8 @@ interface CalendarSettings extends Omit<DecadeLevelSettings, OmittedSettings>, O
 }
 interface CalendarBaseProps {
     __staticSelector?: string;
+    /** Internal Variable to check if timezones were applied by parent component */
+    __timezoneApplied?: boolean;
     /** Prevents focus shift when buttons are clicked */
     __preventFocus?: boolean;
     /** Determines whether date should be updated when year control is clicked */
@@ -1088,7 +1093,7 @@ declare function pickCalendarProps<T extends Record<string, any>>(props: T): {
         maxDate: any;
         locale: any;
     };
-    others: Omit<T, "locale" | "firstDayOfWeek" | "weekendDays" | "date" | "renderDay" | "weekdayFormat" | "getDayProps" | "excludeDate" | "minDate" | "maxDate" | "hideOutsideDates" | "hideWeekdays" | "getDayAriaLabel" | "withCellSpacing" | "yearsListFormat" | "getYearControlProps" | "monthsListFormat" | "getMonthControlProps" | "nextIcon" | "previousIcon" | "decadeLabelFormat" | "yearLabelFormat" | "monthLabelFormat" | "numberOfColumns" | "defaultLevel" | "level" | "onLevelChange" | "onYearSelect" | "onMonthSelect" | "onYearMouseEnter" | "onMonthMouseEnter" | "maxLevel" | "minLevel" | "__updateDateOnYearSelect" | "__updateDateOnMonthSelect" | "defaultDate" | "onDateChange" | "columnsToScroll" | "ariaLabels" | "onNextDecade" | "onPreviousDecade" | "onNextYear" | "onPreviousYear" | "onNextMonth" | "onPreviousMonth" | "allowSingleDateInRange" | "allowDeselect">;
+    others: Omit<T, "locale" | "firstDayOfWeek" | "weekendDays" | "date" | "minDate" | "maxDate" | "renderDay" | "weekdayFormat" | "getDayProps" | "excludeDate" | "hideOutsideDates" | "hideWeekdays" | "getDayAriaLabel" | "withCellSpacing" | "yearsListFormat" | "getYearControlProps" | "monthsListFormat" | "getMonthControlProps" | "nextIcon" | "previousIcon" | "decadeLabelFormat" | "yearLabelFormat" | "monthLabelFormat" | "numberOfColumns" | "level" | "allowSingleDateInRange" | "allowDeselect" | "defaultLevel" | "onLevelChange" | "onYearSelect" | "onMonthSelect" | "onYearMouseEnter" | "onMonthMouseEnter" | "maxLevel" | "minLevel" | "__updateDateOnYearSelect" | "__updateDateOnMonthSelect" | "defaultDate" | "onDateChange" | "columnsToScroll" | "ariaLabels" | "onNextDecade" | "onPreviousDecade" | "onNextYear" | "onPreviousYear" | "onNextMonth" | "onPreviousMonth">;
 };
 
 type YearPickerStylesNames = DecadeLevelGroupStylesNames;

@@ -375,6 +375,24 @@ var require_css_variables_plugin = __commonJS({
             "--raikou-checkbox-icon-color": "#fff"
           }
         },
+        ".closeButton-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-closebutton-cb-color": "#495057"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-closebutton-cb-color": "#f1f3f5"
+          }
+        },
+        '.closeButton-root[data-variant="subtle"]': {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-closebutton-bg-hover": "#f8f9fa",
+            "--raikou-closebutton-bg-active": "#868e96"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-closebutton-bg-hover": "#f8f9fa",
+            "--raikou-closebutton-bg-active": "#868e96"
+          }
+        },
         ".chip-root": {
           '[data-raikou-color-scheme="light"] &': {
             "--raikou-chip-bg-disabled": "#e9ecef",
@@ -1149,6 +1167,9 @@ var require_Accordion_plugin = __commonJS({
     init_src();
     module2.exports = function({ addComponents, theme }) {
       addComponents({
+        ".accordion-root": {
+          "--_accordion-radius": "var(--accordion-radius, var(--raikou-radius-default))"
+        },
         ".accordion-panel": {
           wordBreak: "break-word"
         },
@@ -1223,17 +1244,20 @@ var require_Accordion_plugin = __commonJS({
           overflow: "hidden",
           textOverflow: "ellipsis",
           paddingTop: "var(--raikou-spacing-sm)",
-          paddingBottom: "var(--raikou-spacing-sm)"
+          paddingBottom: "var(--raikou-spacing-sm)",
+          '[dir="rtl"] &': {
+            textAlign: "right"
+          }
         },
         ".accordion-chevron": {
           display: "flex",
           alignItems: "center",
           justifyContent: "flex-start",
-          transition: "transform var(--accordion-transition-duration) ease",
+          transition: "transform var(--accordion-transition-duration, 200ms) ease",
           marginRight: "var(--_chevron-margin-right)",
           marginLeft: "var(--_chevron-margin-left)",
-          width: "var(--accordion-chevron-size)",
-          minWidth: "var(--accordion-chevron-size)",
+          width: `var(--accordion-chevron-size, ${rem2("15px")})`,
+          minWidth: `var(--accordion-chevron-size, ${rem2("15px")})`,
           transform: "var(--_chevron-transform, rotate(0deg))",
           "&[data-rotate]": {
             "--_chevron-transform": "rotate(180deg)"
@@ -1298,19 +1322,19 @@ var require_Accordion_plugin = __commonJS({
             "--_item-bg": "var(--_item-filled-color)"
           },
           "&:first-of-type": {
-            borderTopLeftRadius: "var(--accordion-radius)",
-            borderTopRightRadius: "var(--accordion-radius)",
+            borderTopLeftRadius: "var(--_accordion-radius)",
+            borderTopRightRadius: "var(--_accordion-radius)",
             "& > [data-accordion-control]": {
-              borderTopLeftRadius: "var(--accordion-radius)",
-              borderTopRightRadius: "var(--accordion-radius)"
+              borderTopLeftRadius: "var(--_accordion-radius)",
+              borderTopRightRadius: "var(--_accordion-radius)"
             }
           },
           "&:last-of-type": {
-            borderBottomLeftRadius: "var(--accordion-radius)",
-            borderBottomRightRadius: "var(--accordion-radius)",
+            borderBottomLeftRadius: "var(--_accordion-radius)",
+            borderBottomRightRadius: "var(--_accordion-radius)",
             "& > [data-accordion-control]": {
-              borderBottomLeftRadius: "var(--accordion-radius)",
-              borderBottomRightRadius: "var(--accordion-radius)"
+              borderBottomLeftRadius: "var(--_accordion-radius)",
+              borderBottomRightRadius: "var(--_accordion-radius)"
             }
           },
           "& + &": {
@@ -1318,14 +1342,14 @@ var require_Accordion_plugin = __commonJS({
           }
         },
         ".accordion-root[data-variant='filled'] .accordion-item": {
-          borderRadius: "var(--accordion-radius)",
+          borderRadius: "var(--_accordion-radius)",
           "&[data-active]": {
             "--_item-bg": "var(--_item-filled-color)"
           }
         },
         ".accordion-root[data-variant='separated'] .accordion-item": {
           "--_item-bg": "var(--_item-filled-color)",
-          borderRadius: "var(--accordion-radius)",
+          borderRadius: "var(--_accordion-radius)",
           border: `${rem2("1px")} solid var(--__item-border-color, transparent)`,
           transition: "background-color 150ms ease",
           "&[data-active]": {
@@ -1359,6 +1383,8 @@ var require_ActionIcon_plugin = __commonJS({
           "--ai-size-md": rem2("28px"),
           "--ai-size-lg": rem2("34px"),
           "--ai-size-xl": rem2("44px"),
+          "--ai-size": "var(--ai-size-md)",
+          "--ai-color": "var(--raikou-color-white)",
           lineHeight: "1",
           display: "inline-flex",
           alignItems: "center",
@@ -1369,15 +1395,15 @@ var require_ActionIcon_plugin = __commonJS({
           height: "var(--ai-size)",
           minWidth: "var(--ai-size)",
           minHeight: "var(--ai-size)",
-          borderRadius: "var(--ai-radius)",
-          background: "var(--_ai-bg, var(--ai-bg))",
-          color: "var(--_ai-color, var(--ai-color))",
-          border: "var(--ai-bd)",
+          borderRadius: "var(--ai-radius, var(--raikou-radius-default))",
+          background: "var(--_ai-bg, var(--ai-bg, var(--raikou-primary-color-filled)))",
+          color: "var(--_ai-color, var(--ai-color, var(--raikou-color-white)))",
+          border: `var(--ai-bd, ${rem2("1px")} solid transparent)`,
           cursor: "var(--_ai-cursor, pointer)",
           "@media (hover: hover)": {
             "&:hover": {
               "&:not([data-loading]):not(:disabled):not([data-disabled])": {
-                "--_ai-bg": "var(--ai-hover)"
+                "--_ai-bg": "var(--ai-hover, var(--raikou-primary-color-filled-hover))"
               }
             }
           },
@@ -1404,7 +1430,7 @@ var require_ActionIcon_plugin = __commonJS({
               content: '""',
               position: "absolute",
               inset: rem2("-1px"),
-              borderRadius: "var(--ai-radius)",
+              borderRadius: "var(--ai-radius, var(--raikou-radius-default))",
               backgroundColor: "var(--_ai-loading-overlay-bg)"
             }
           },
@@ -1421,6 +1447,7 @@ var require_ActionIcon_plugin = __commonJS({
           zIndex: "1"
         },
         ".actionIconGroup-root": {
+          "--ai-border-width": rem2("1px"),
           display: "flex",
           "&[data-orientation='horizontal']": {
             flexDirection: "row",
@@ -1495,16 +1522,16 @@ var require_Alert_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".alert-root": {
-          backgroundColor: "var(--alert-bg)",
-          padding: "var(--raikou-spacing-md) var(--raikou-spacing-xl)",
-          borderRadius: "var(--alert-radius)",
+          padding: "var(--raikou-spacing-md) var(--raikou-spacing-md)",
+          borderRadius: "var(--alert-radius, var(--raikou-radius-default))",
           position: "relative",
           overflow: "hidden",
-          border: "var(--alert-bd)",
-          color: "var(--alert-color)"
+          backgroundColor: "var(--alert-bg, var(--raikou-primary-color-light))",
+          border: `var(--alert-bd, ${rem2("1px")} solid transparent)`,
+          color: "var(--alert-color, var(--raikou-primary-color-light-color))"
         },
         ".alert-root--filled": {
-          "--_message-color": "var(--alert-color)"
+          "--_message-color": "var(--alert-color, var(--raikou-primary-color-light-color))"
         },
         ".alert-root--white": {
           "--_message-color": "var(--raikou-color-black)"
@@ -1523,7 +1550,11 @@ var require_Alert_plugin = __commonJS({
           fontSize: "var(--raikou-font-size-sm)",
           fontWeight: "700",
           "&[data-with-close-button]": {
-            paddingRight: "var(--raikou-spacing-md)"
+            paddingRight: "var(--raikou-spacing-md)",
+            '[dir="rtl"] &': {
+              paddingLeft: "var(--raikou-spacing-md)",
+              paddingRight: "0"
+            }
           }
         },
         ".alert-label": {
@@ -1539,7 +1570,11 @@ var require_Alert_plugin = __commonJS({
           alignItems: "center",
           justifyContent: "flex-start",
           marginRight: "var(--raikou-spacing-md)",
-          marginTop: rem2("1px")
+          marginTop: rem2("1px"),
+          '[dir="rtl"] &': {
+            marginRight: "0",
+            marginLeft: "var(--mantine-spacing-md)"
+          }
         },
         ".alert-message": {
           textOverflow: "ellipsis",
@@ -1556,9 +1591,8 @@ var require_Alert_plugin = __commonJS({
         ".alert-closeButton": {
           width: rem2("20px"),
           height: rem2("20px"),
-          marginRight: "calc(var(--raikou-spacing-md) * -1)",
           marginTop: "calc(var(--raikou-spacing-sm) * -0.5)",
-          color: "var(--alert-color)"
+          color: "var(--alert-color, var(--raikou-primary-color-light-color))"
         }
       });
     };
@@ -1767,7 +1801,7 @@ var require_AspectRatio_plugin = __commonJS({
             content: '""',
             height: "0",
             display: "block",
-            paddingBottom: "calc((1 / var(--ar-ratio)) * 100%)"
+            paddingBottom: "calc((1 / var(--ar-ratio, 1)) * 100%)"
           },
           "&::after": {
             content: '""',
@@ -1805,27 +1839,28 @@ var require_Avatar_plugin = __commonJS({
           "--avatar-size-md": rem2("38px"),
           "--avatar-size-lg": rem2("56px"),
           "--avatar-size-xl": rem2("84px"),
+          "--_avatar-size": "var(--avatar-size, var(--avatar-size-md))",
           "-webkit-tap-highlight-color": "transparent",
           position: "relative",
           display: "block",
           userSelect: "none",
           overflow: "hidden",
-          borderRadius: "var(--avatar-radius)",
+          borderRadius: `var(--avatar-radius, ${rem2("1000px")})`,
           textDecoration: "none",
           border: "var(--_avatar-border, none)",
-          backgroundColor: "var(--_avatar-bg, transparent)",
+          backgroundColor: "var(--_avatar-bg)",
           padding: "0",
-          width: "var(--avatar-size)",
-          height: "var(--avatar-size)",
-          minWidth: "var(--avatar-size)",
+          width: "var(--_avatar-size)",
+          height: "var(--_avatar-size)",
+          minWidth: "var(--_avatar-size)",
           marginLeft: "var(--_avatar-ml, unset)",
           marginRight: "var(--_avatar-mr, unset)",
           "&[data-within-group]": {
-            "--_avatar-ml": "calc(var(--ag-spacing) * -1)",
+            "--_avatar-ml": "calc(var(--ag-spacing, var(--raikou-spacing-sm)) * -1)",
             "--_avatar-border": `${rem2("2px")} solid var(--raikou-color-body)`,
             "--_avatar-bg": "var(--raikou-color-body)",
             '[dir="rtl"] &': {
-              "--_avatar-mr": "calc(var(--ag-spacing) * -1)",
+              "--_avatar-mr": "calc(var(--ag-spacing, var(--raikou-spacing-sm)) * -1)",
               "--_avatar-ml": "unset"
             }
           }
@@ -1846,9 +1881,9 @@ var require_Avatar_plugin = __commonJS({
           userSelect: "none",
           borderRadius: "var(--avatar-radius)",
           fontSize: "calc(var(--avatar-size) / 2.5)",
-          color: "var(--avatar-color)",
-          background: "var(--avatar-bg)",
-          border: "var(--avatar-bd)",
+          background: "var(--avatar-bg, var(--raikou-color-gray-light))",
+          border: `var(--avatar-bd, ${rem2("1px")} solid transparent)`,
+          color: "var(--avatar-color, var(--raikou-color-gray-light-color))",
           "& > [data-avatar-placeholder-icon]": {
             width: "70%",
             height: "70%"
@@ -1856,10 +1891,10 @@ var require_Avatar_plugin = __commonJS({
         },
         ".avatarGroup-root": {
           display: "flex",
-          paddingLeft: "var(--ag-spacing)",
+          paddingLeft: "var(--ag-spacing, var(--raikou-spacing-sm))",
           '[dir="rtl"] &': {
             paddingLeft: "0",
-            paddingRight: "var(--ag-spacing)"
+            paddingRight: "var(--ag-spacing, var(--raikou-spacing-sm))"
           }
         }
       });
@@ -1880,7 +1915,7 @@ var require_BackgroundImage_plugin = __commonJS({
           width: "100%",
           border: "0",
           textDecoration: "none",
-          borderRadius: "var(--bi-radius)"
+          borderRadius: "var(--bi-radius, 0)"
         }
       });
     };
@@ -1900,6 +1935,9 @@ var require_Badge_plugin = __commonJS({
           "--badge-height-md": rem2("20px"),
           "--badge-height-lg": rem2("26px"),
           "--badge-height-xl": rem2("32px"),
+          "--badge-height": "var(--badge-height-md)",
+          "--badge-fz": "var(--badge-fz-md)",
+          "--badge-padding-x": "var(--badge-padding-x-md)",
           "--badge-fz-xs": rem2("9px"),
           "--badge-fz-sm": rem2("10px"),
           "--badge-fz-md": rem2("11px"),
@@ -1911,7 +1949,7 @@ var require_Badge_plugin = __commonJS({
           "--badge-padding-x-lg": rem2("12px"),
           "--badge-padding-x-xl": rem2("16px"),
           fontSize: "var(--badge-fz)",
-          borderRadius: "var(--badge-radius)",
+          borderRadius: `var(--badge-radius, ${rem2("10000px")})`,
           height: "var(--badge-height)",
           "-webkit-tap-highlight-color": "transparent",
           lineHeight: `calc(var(--badge-height) - ${rem2("2px")})`,
@@ -1927,9 +1965,9 @@ var require_Badge_plugin = __commonJS({
           cursor: "inherit",
           textOverflow: "ellipsis",
           overflow: "hidden",
-          color: "var(--badge-color)",
-          background: "var(--badge-bg)",
-          border: "var(--badge-bd)"
+          color: "var(--badge-color, var(--raikou-color-white))",
+          background: "var(--badge-bg, var(--raikou-primary-color-filled))",
+          border: `var(--badge-bd, ${rem2("1px")} solid transparent)`
         },
         ".badge-root--dot": {
           "--badge-dot-size": "calc(var(--badge-height) / 3.4)",
@@ -2062,8 +2100,8 @@ var require_Breadcrumbs_plugin = __commonJS({
           "-webkit-tap-highlight-color": "transparent"
         },
         ".breadcrumbs-separator": {
-          marginLeft: "var(--bc-separator-margin)",
-          marginRight: "var(--bc-separator-margin)",
+          marginLeft: "var(--bc-separator-margin, var(--raikou-spacing-xs))",
+          marginRight: "var(--bc-separator-margin, var(--raikou-spacing-xs))",
           color: "var(--_separator-color)",
           lineHeight: "1",
           display: "flex",
@@ -2094,6 +2132,7 @@ var require_Burger_plugin = __commonJS({
           "--burger-size-md": rem2("24px"),
           "--burger-size-lg": rem2("34px"),
           "--burger-size-xl": rem2("42px"),
+          "--burger-size": "var(--burger-size-md)",
           width: "calc(var(--burger-size) + var(--raikou-spacing-xs))",
           height: "calc(var(--burger-size) + var(--raikou-spacing-xs))",
           padding: "calc(var(--raikou-spacing-xs) / 2)",
@@ -2116,8 +2155,8 @@ var require_Burger_plugin = __commonJS({
             backgroundColor: "var(--_burger-color)",
             outline: `${rem2("1px")} solid transparent`,
             transitionProperty: "background-color, transform",
-            transitionDuration: "var(--burger-transition-duration)",
-            transitionTimingFunction: "var(--burger-transition-timing-function)"
+            transitionDuration: "var(--burger-transition-duration, 300ms)",
+            transitionTimingFunction: "var(--burger-transition-timing-function, ease)"
           },
           "&::before, &::after": {
             position: "absolute",
@@ -2173,6 +2212,9 @@ var require_Button_plugin = __commonJS({
           "--button-padding-x-compact-md": rem2("10px"),
           "--button-padding-x-compact-lg": rem2("12px"),
           "--button-padding-x-compact-xl": rem2("14px"),
+          "--button-height": "var(--button-height-sm)",
+          "--button-padding-x": "var(--button-padding-x-sm)",
+          "--button-color": "var(--raikou-color-white)",
           userSelect: "none",
           fontWeight: "600",
           position: "relative",
@@ -2181,14 +2223,16 @@ var require_Button_plugin = __commonJS({
           width: "var(--_button-width, auto)",
           cursor: "var(--_button-cursor, pointer)",
           display: "var(--_button-display, inline-block)",
-          borderRadius: "var(--button-radius)",
-          fontSize: "var(--button-fz)",
-          background: "var(--_button-bg, var(--button-bg))",
-          border: "var(--_button-bd, var(--button-bd))",
-          color: "var(--_button-color, var(--button-color))",
-          height: "var(--button-height)",
-          paddingLeft: "var(--_button-padding-left, var(--button-padding-x))",
-          paddingRight: "var(--_button-padding-right, var(--button-padding-x))",
+          borderRadius: "var(--button-radius, var(--raikou-radius-default))",
+          fontSize: "var(--button-fz, var(--raikou-font-size-sm))",
+          background: "var(--_button-bg, var(--button-bg, var(--raikou-primary-color-filled)))",
+          border: `var(--_button-bd, var(--button-bd, ${rem2(
+            "1px"
+          )} solid transparent)))`,
+          color: "var(--_button-color, var(--button-color, var(--raikou-color-white)))",
+          height: "var(--button-height, var(--button-height-sm))",
+          paddingLeft: "var(--_button-padding-left, var(--button-padding-x, var(--button-padding-x-sm)))",
+          paddingRight: "var(--_button-padding-right, var(--button-padding-x, var(--button-padding-x-sm)))",
           "&[data-block]": {
             "--_button-display": "block",
             "--_button-width": "100%"
@@ -2227,14 +2271,14 @@ var require_Button_plugin = __commonJS({
           "@media (hover: hover)": {
             "&:hover": {
               "&:not([data-loading]):not(:disabled):not([data-disabled])": {
-                "--_button-bg": "var(--button-hover)"
+                "--_button-bg": "var(--button-hover, var(--raikou-primary-color-filled-hover)"
               }
             }
           },
           "@media (hover: none)": {
             "&:active": {
               "&:not([data-loading]):not(:disabled):not([data-disabled])": {
-                "--_button-bg": "var(--button-hover)"
+                "--_button-bg": "var(--button-hover, var(--raikou-primary-color-filled-hover)"
               }
             }
           },
@@ -2295,6 +2339,7 @@ var require_Button_plugin = __commonJS({
         },
         ".buttonGroup-root": {
           display: "flex",
+          "--button-border-width": rem2("1px"),
           '&[data-orientation="horizontal"]': {
             flexDirection: "row",
             "& [data-button]": {
@@ -2349,6 +2394,7 @@ var require_Card_plugin = __commonJS({
     module2.exports = function({ addComponents }) {
       addComponents({
         ".card-root.card-root": {
+          "--card-padding": "var(--raikou-spacing-md)",
           position: "relative",
           overflow: "hidden",
           display: "flex",
@@ -2414,7 +2460,7 @@ var require_Center_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".center-root": {
-          display: "var(--center-display)",
+          display: "var(--center-display, flex)",
           alignItems: "center",
           justifyContent: "center"
         }
@@ -2435,7 +2481,9 @@ var require_Checkbox_plugin = __commonJS({
           "--checkbox-size-sm": rem2("20px"),
           "--checkbox-size-md": rem2("24px"),
           "--checkbox-size-lg": rem2("30px"),
-          "--checkbox-size-xl": rem2("36px")
+          "--checkbox-size-xl": rem2("36px"),
+          "--checkbox-size": "var(--checkbox-size-sm)",
+          "--checkbox-color": "var(--raikou-primary-color-filled)"
         },
         ".checkbox-inner": {
           position: "relative",
@@ -2452,7 +2500,7 @@ var require_Checkbox_plugin = __commonJS({
           border: `${rem2("1px")} solid var(--_checkbox-bd-color)`,
           width: "var(--checkbox-size)",
           height: "var(--checkbox-size)",
-          borderRadius: "var(--checkbox-radius)",
+          borderRadius: "var(--checkbox-radius, var(--raikou-radius-default))",
           padding: "0",
           display: "block",
           margin: "0",
@@ -2553,15 +2601,24 @@ var require_Chip_plugin = __commonJS({
           "--chip-spacing-sm": rem2("12px"),
           "--chip-spacing-md": rem2("16px"),
           "--chip-spacing-lg": rem2("20px"),
-          "--chip-spacing-xl": rem2("22px")
+          "--chip-spacing-xl": rem2("22px"),
+          "--chip-size": "var(--chip-size-sm)",
+          "--chip-icon-size": "var(--chip-icon-size-sm)",
+          "--chip-padding": "var(--chip-padding-sm)",
+          "--chip-spacing": "var(--chip-spacing-sm)",
+          "--chip-checked-padding": "var(--chip-checked-padding-sm)",
+          "--chip-bg": "var(--raikou-primary-color-filled)",
+          "--chip-hover": "var(--raikou-primary-color-filled-hover)",
+          "--chip-color": "var(--raikou-color-white)",
+          "--chip-bd": `${rem2("1px")} solid transparent`
         },
         ".chip-label": {
           display: "inline-flex",
           alignItems: "center",
           userSelect: "none",
-          borderRadius: "var(--chip-radius)",
+          borderRadius: `var(--chip-radius, ${rem2("1000px")})`,
           height: "var(--chip-size)",
-          fontSize: "var(--chip-fz)",
+          fontSize: "var(--chip-fz, var(--raikou-font-size-sm))",
           lineHeight: `calc(var(--chip-size) - ${rem2("2px")})`,
           paddingLeft: "var(--_chip-padding, var(--chip-padding))",
           paddingRight: "var(--_chip-padding, var(--chip-padding))",
@@ -2748,6 +2805,68 @@ var require_Chip_plugin = __commonJS({
   }
 });
 
+// ../components/CloseButton/src/CloseButton.plugin.ts
+var require_CloseButton_plugin = __commonJS({
+  "../components/CloseButton/src/CloseButton.plugin.ts"(exports2, module2) {
+    "use strict";
+    init_src();
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".closeButton-root": {
+          "--cb-size-xs": rem2("18px"),
+          "--cb-size-sm": rem2("22px"),
+          "--cb-size-md": rem2("28px"),
+          "--cb-size-lg": rem2("34px"),
+          "--cb-size-xl": rem2("44px"),
+          "--cb-size": "var(--cb-size-md)",
+          "--cb-icon-size": "70%",
+          lineHeight: "1",
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          position: "relative",
+          userSelect: "none",
+          width: "var(--cb-size)",
+          height: "var(--cb-size)",
+          minWidth: "var(--cb-size)",
+          minHeight: "var(--cb-size)",
+          borderRadius: "var(--cb-radius, var(--raikou-radius-default))",
+          color: "var(--_cb-color)",
+          '[data-raikou-color-scheme="light"] &': {
+            "--_cb-color": "var(--raikou-closebutton-cb-color)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_cb-color": "var(--raikou-closebutton-cb-color)"
+          }
+        },
+        '.closeButton-root[data-variant="subtle"]': {
+          backgroundColor: "var(--_cb-bg)",
+          "@media (hover: hover)": {
+            "&:hover": {
+              '[data-raikou-color-scheme="light"] &': {
+                "--_cb-bg": "var(--raikou-closebutton-bg-hover)"
+              },
+              '[data-raikou-color-scheme="dark"] &': {
+                "--_cb-bg": "var(--raikou-closebutton-bg-active)"
+              }
+            }
+          },
+          "@media (hover: none)": {
+            "&:active": {
+              '[data-raikou-color-scheme="light"] &': {
+                "--_cb-bg": "var(--raikou-closebutton-bg-hover)"
+              },
+              '[data-raikou-color-scheme="dark"] &': {
+                "--_cb-bg": "var(--raikou-closebutton-bg-active)"
+              }
+            }
+          }
+        }
+      });
+    };
+  }
+});
+
 // ../components/Code/src/Code.plugin.ts
 var require_Code_plugin = __commonJS({
   "../components/Code/src/Code.plugin.ts"(exports2, module2) {
@@ -2796,14 +2915,16 @@ var require_ColorInput_plugin = __commonJS({
           "--ci-eye-dropper-icon-size-sm": rem2("16px"),
           "--ci-eye-dropper-icon-size-md": rem2("18px"),
           "--ci-eye-dropper-icon-size-lg": rem2("20px"),
-          "--ci-eye-dropper-icon-size-xl": rem2("22px")
+          "--ci-eye-dropper-icon-size-xl": rem2("22px"),
+          "--ci-eye-dropper-icon-size": "var(--ci-eye-dropper-icon-size-sm)"
         },
         ".colorInput-colorPreview": {
           "--ci-preview-size-xs": rem2("16px"),
           "--ci-preview-size-sm": rem2("18px"),
           "--ci-preview-size-md": rem2("22px"),
           "--ci-preview-size-lg": rem2("28px"),
-          "--ci-preview-size-xl": rem2("36px")
+          "--ci-preview-size-xl": rem2("36px"),
+          "--ci-preview-size": "var(--ci-preview-size-sm)"
         }
       });
     };
@@ -2838,8 +2959,16 @@ var require_ColorPicker_plugin = __commonJS({
           "--cp-saturation-height-md": rem2("120px"),
           "--cp-saturation-height-lg": rem2("140px"),
           "--cp-saturation-height-xl": rem2("160px"),
-          width: "var(--cp-width)",
-          padding: rem2("1px")
+          "--cp-preview-size": "var(--cp-preview-size-sm)",
+          "--cp-thumb-size": "var(--cp-thumb-size-sm)",
+          "--cp-saturation-height": "var(--cp-saturation-height-sm)",
+          "--cp-width": "var(--cp-width-sm)",
+          "--cp-body-spacing": "var(--raikou-spacing-sm)",
+          width: "var(--_cp-width, var(--cp-width))",
+          padding: rem2("1px"),
+          "&[data-full-width]": {
+            "--_cp-width": "100%"
+          }
         },
         ".colorPicker-preview": {
           width: "var(--cp-preview-size)",
@@ -2872,10 +3001,10 @@ var require_ColorPicker_plugin = __commonJS({
           height: "0",
           margin: rem2("2px"),
           cursor: "pointer",
-          width: `calc(var(--cp-swatch-size) - ${rem2("4px")})`,
           paddingBottom: `calc(var(--cp-swatch-size) - ${rem2("4px")})`,
           minWidth: "0",
-          minHeight: "0"
+          minHeight: "0",
+          flex: `1 0 calc(var(--cp-swatch-size) - ${rem2("4px")})`
         },
         ".colorPicker-swatches": {
           marginTop: rem2("5px"),
@@ -2961,6 +3090,8 @@ var require_ColorSwatch_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".colorswatch-root": {
+          "--cs-size": rem2("28px"),
+          "--cs-radius": rem2("1000px"),
           "-webkit-tap-highlight-color": "transparent",
           border: "none",
           appearance: "none",
@@ -3040,6 +3171,7 @@ var require_Combobox_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".comboBox-dropdown.comboBox-dropdown": {
+          "--_combobox-padding": `var(--combobox-padding, ${rem2("4px")})`,
           padding: "var(--combobox-padding)",
           "&[data-hidden]": {
             display: "none"
@@ -3054,8 +3186,8 @@ var require_Combobox_plugin = __commonJS({
           "--combobox-option-padding-xl": `${rem2("14px")} ${rem2("20px")}`
         },
         ".comboBox-option": {
-          padding: "var(--combobox-option-padding)",
-          fontSize: "var(--combobox-option-fz)",
+          padding: "var(--_combobox-option-padding)",
+          fontSize: "var(--combobox-option-fz, var(--raikou-font-size-sm))",
           borderRadius: "var(--raikou-radius-default)",
           backgroundColor: "var(--_option-bg, transparent)",
           color: "var(--_option-color, inherit)",
@@ -3096,16 +3228,16 @@ var require_Combobox_plugin = __commonJS({
           }
         },
         ".comboBox-search": {
-          marginLeft: "calc(var(--combobox-padding) * -1)",
-          marginRight: "calc(var(--combobox-padding) * -1)",
-          marginTop: "calc(var(--combobox-padding) * -1)",
-          width: "calc(100% + var(--combobox-padding) * 2)",
+          marginLeft: "calc(var(--_combobox-padding) * -1)",
+          marginRight: "calc(var(--_combobox-padding) * -1)",
+          marginTop: "calc(var(--_combobox-padding) * -1)",
+          width: "calc(100% + var(--_combobox-padding) * 2)",
           borderTopWidth: "0",
           borderRightWidth: "0",
           borderLeftWidth: "0",
           borderBottomLeftRadius: "0",
           borderBottomRightRadius: "0",
-          marginBottom: "var(--combobox-padding)",
+          marginBottom: "var(--_combobox-padding)",
           backgroundColor: "var(--_search_background)",
           position: "relative",
           zIndex: "1000",
@@ -3122,17 +3254,17 @@ var require_Combobox_plugin = __commonJS({
           }
         },
         ".comboBox-empty": {
-          fontSize: "var(--combobox-option-fz)",
+          fontSize: "var(--combobox-option-fz, var(--raikou-font-size-sm))",
           textAlign: "center",
-          padding: "var(--combobox-option-padding)",
+          padding: "var(--_combobox-option-padding)",
           color: "var(--raikou-color-dimmed)"
         },
         ".comboBox-header, .comboBox-footer": {
-          fontSize: "var(--combobox-option-fz)",
+          fontSize: "var(--combobox-option-fz, var(--raikou-font-size-sm))",
           border: "0 solid var(--_footer-border-color)",
-          marginLeft: "calc(var(--combobox-padding) * -1)",
-          marginRight: "calc(var(--combobox-padding) * -1)",
-          padding: "var(--combobox-option-padding)",
+          marginLeft: "calc(var(--_combobox-padding) * -1)",
+          marginRight: "calc(var(--_combobox-padding) * -1)",
+          padding: "var(--_combobox-option-padding)",
           '[data-raikou-color-scheme="light"] &': {
             "--_footer-border-color": "var(--raikou-combobox-footer-border-color)"
           },
@@ -3142,13 +3274,13 @@ var require_Combobox_plugin = __commonJS({
         },
         ".comboBox-footer": {
           borderTopWidth: rem2("1px"),
-          marginTop: "var(--combobox-padding)",
-          marginBottom: "calc(var(--combobox-padding) * -1)"
+          marginTop: "var(--_combobox-padding)",
+          marginBottom: "calc(var(--_combobox-padding) * -1)"
         },
         ".comboBox-header": {
           borderBottomWidth: rem2("1px"),
-          marginBottom: "var(--combobox-padding)",
-          marginTop: "calc(var(--combobox-padding) * -1)"
+          marginBottom: "var(--_combobox-padding)",
+          marginTop: "calc(var(--_combobox-padding) * -1)"
         },
         ".comboBox-group": {
           "&:has(.groupLabel:only-child)": {
@@ -3157,8 +3289,8 @@ var require_Combobox_plugin = __commonJS({
         },
         ".comboBox-groupLabel": {
           color: "var(--raikou-color-dimmed)",
-          fontSize: "calc(var(--combobox-option-fz) * 0.85)",
-          padding: "var(--combobox-option-padding)",
+          fontSize: "calc(var(--combobox-option-fz, var(--raikou-font-size-sm)) * 0.85)",
+          padding: "var(--_combobox-option-padding)",
           fontWeight: "500",
           position: "relative",
           display: "flex",
@@ -3188,6 +3320,7 @@ var require_Combobox_plugin = __commonJS({
           "--combobox-chevron-size-md": rem2("20px"),
           "--combobox-chevron-size-lg": rem2("24px"),
           "--combobox-chevron-size-xl": rem2("28px"),
+          "--combobox-chevron-size": "var(--combobox-chevron-size-sm)",
           width: "var(--combobox-chevron-size)",
           height: "var(--combobox-chevron-size)",
           color: "var(--_color)",
@@ -3202,9 +3335,9 @@ var require_Combobox_plugin = __commonJS({
           }
         },
         ".comboBox-optionsDropdownScrollArea": {
-          "margin-right": "calc(var(--combobox-padding) * -1)",
+          "margin-right": "calc(var(--_combobox-padding) * -1)",
           '[dir="rtl"] &': {
-            marginLeft: "calc(var(--combobox-padding) * -1)",
+            marginLeft: "calc(var(--_combobox-padding) * -1)",
             marginRight: "0"
           }
         },
@@ -3243,11 +3376,15 @@ var require_Container_plugin = __commonJS({
           "--container-size-md": rem2("960px"),
           "--container-size-lg": rem2("1140px"),
           "--container-size-xl": rem2("1320px"),
+          "--container-size": "var(--container-size-md)",
           paddingLeft: "var(--raikou-spacing-md)",
           paddingRight: "var(--raikou-spacing-md)",
-          maxWidth: "var(--container-size)",
+          maxWidth: "var(--container-size, var(--container-size))",
           marginLeft: "auto",
-          marginRight: "auto"
+          marginRight: "auto",
+          "&[data-fluid]": {
+            "--_container-size": "100%"
+          }
         }
       });
     };
@@ -3267,6 +3404,7 @@ var require_Dialog_plugin = __commonJS({
           "--dialog-size-md": rem2("340px"),
           "--dialog-size-lg": rem2("400px"),
           "--dialog-size-xl": rem2("500px"),
+          "--dialog-size": "var(--dialog-size-md)",
           position: "relative",
           width: "var(--dialog-size)",
           maxwidth: "calc(100vw - var(--raikou-spacing-xl) * 2)",
@@ -3300,6 +3438,7 @@ var require_Divider_plugin = __commonJS({
           "--divider-size-md": rem2("3px"),
           "--divider-size-lg": rem2("4px"),
           "--divider-size-xl": rem2("5px"),
+          "--divider-size": "var(--divider-size-xs)",
           '[data-raikou-color-scheme="light"] &': {
             "--_divider-color": "var(--raikou-divider-color)"
           },
@@ -3374,15 +3513,16 @@ var require_Drawer_plugin = __commonJS({
           "--drawer-size-sm": rem2("380px"),
           "--drawer-size-md": rem2("440px"),
           "--drawer-size-lg": rem2("620px"),
-          "--drawer-size-xl": rem2("780px")
+          "--drawer-size-xl": rem2("780px"),
+          "--drawer-size": "var(--drawer-size-md)"
         },
         ".drawer-header": {
           zIndex: "1000"
         },
         ".drawer-content": {
           "--paper-radius": "0 !important",
-          flex: "var(--drawer-flex)",
-          height: "var(--drawer-height)",
+          flex: "var(--drawer-flex, 0 0 var(--drawer-size))",
+          height: "var(--drawer-height, 100%)",
           maxWidth: "100%",
           maxHeight: "100%",
           borderRadius: "0",
@@ -3390,8 +3530,8 @@ var require_Drawer_plugin = __commonJS({
         },
         ".drawer-inner": {
           display: "flex",
-          justifyContent: "var(--drawer-justify)",
-          alignItems: "var(--drawer-align)"
+          justifyContent: "var(--drawer-justify, flex-start)",
+          alignItems: "var(--drawer-align, flex-start)"
         }
       });
     };
@@ -3408,7 +3548,7 @@ var require_Fieldset_plugin = __commonJS({
         ".fieldset-root": {
           padding: "var(--raikou-spacing-lg)",
           paddingTop: "var(--raikou-spacing-xs)",
-          borderRadius: "var(--fieldset-radius)"
+          borderRadius: "var(--fieldset-radius, var(--raikou-radius-default))"
         },
         ".fieldset-root[data-variant='default']": {
           backgroundColor: "var(--_bg)",
@@ -3512,9 +3652,9 @@ var require_Group_plugin = __commonJS({
           display: "flex",
           flexDirection: "row",
           flexWrap: "var(--group-wrap, wrap)",
-          justifyContent: "var(--group-justify)",
-          alignItems: "var(--group-align)",
-          gap: "var(--group-gap)",
+          justifyContent: "var(--group-justify, flex-start)",
+          alignItems: "var(--group-align, center)",
+          gap: "var(--group-gap, var(--mantine-spacing-md)",
           "&[data-grow]": {
             "& > *": {
               flexGrow: "1",
@@ -3563,6 +3703,8 @@ var require_Indicator_plugin = __commonJS({
           }
         },
         ".indicator-root": {
+          "--indicator-size": rem2("10px"),
+          "--indicator-color": "var(--raikou-primary-color-filled)",
           position: "relative",
           display: "var(--_indicator-display, block)",
           "&[data-inline]": {
@@ -3628,6 +3770,7 @@ var require_InlineInput_plugin = __commonJS({
           "--label-lh-md": rem2("24px"),
           "--label-lh-lg": rem2("30px"),
           "--label-lh-xl": rem2("36px"),
+          "--label-lh": "var(--label-lh-sm)",
           "&[data-label-position='left']": {
             "--_label-order": "1",
             "--_offset-right": "var(--raikou-spacing-sm)",
@@ -3654,7 +3797,7 @@ var require_InlineInput_plugin = __commonJS({
           "-webkit-tap-highlight-color": "transparent",
           display: "inline-flex",
           flexDirection: "column",
-          fontSize: "var(--label-fz)",
+          fontSize: "var(--label-fz, var(--raikou-font-size-sm))",
           lineHeight: "var(--label-lh)",
           cursor: "var(--raikou-cursor-type)",
           order: "var(--_label-order)"
@@ -3711,34 +3854,38 @@ var require_Input_plugin = __commonJS({
           "--input-padding-y-md": rem2("8px"),
           "--input-padding-y-lg": rem2("10px"),
           "--input-padding-y-xl": rem2("13px"),
+          "--input-padding-y": "var(--input-padding-y-sm)",
+          "--_input-height": "var(--input-height, var(--input-height-sm))",
+          "--_input-radius": "var(--input-radius, var(--mantine-radius-default))",
           "--_input-cursor": "text",
           "--_input-text-align": "left",
-          "--_input-line-height": `calc(var(--input-height) - ${rem2("2px")})`,
-          "--_input-padding": "calc(var(--input-height) / 3)",
+          "--_input-line-height": `calc(var(--_input-height) - ${rem2("2px")})`,
+          "--_input-padding": "calc(var(--_input-height) / 3)",
           "--_input-padding-left": "var(--_input-padding)",
           "--_input-padding-right": "var(--_input-padding)",
           "--_input-placeholder-color": "var(--raikou-color-placeholder)",
           "--_input-color": "var(--raikou-color-text)",
-          "--_input-left-section-size": `var(--input-left-section-width, calc(var(--input-height) - ${rem2(
+          "--_input-left-section-size": `var(--input-left-section-width, calc(var(--_input-height) - ${rem2(
             "2px"
           )}))`,
-          "--_input-right-section-size": `var(--input-right-section-width, calc(var(--input-height) - ${rem2(
+          "--_input-right-section-size": `var(--input-right-section-width, calc(var(--_input-height) - ${rem2(
             "2px"
           )}))`,
-          "--_input-size": "var(--input-height)",
+          "--_input-size": "var(--_input-height)",
           "--_section-y": rem2("1px"),
           "--_left-section-left": rem2("1px"),
           "--_left-section-right": "unset",
-          "--_left-section-border-radius": "var(--input-radius) 0 0 var(--input-radius)",
+          "--_left-section-border-radius": "var(--_input-radius) 0 0 var(--_input-radius)",
           "--_right-section-left": "unset",
           "--_right-section-right": rem2("1px"),
-          "--_right-section-border-radius": "0 var(--input-radius) var(--input-radius) 0",
+          "--_right-section-border-radius": "0 var(--_input-radius) var(--_input-radius) 0",
           "&[data-pointer]": {
             "--_input-cursor": "pointer"
           },
           "&[data-multiline]": {
             "--_input-size": "auto",
-            "--_input-line-height": "var(--raikou-line-height)"
+            "--_input-line-height": "var(--raikou-line-height)",
+            "--input-padding-y": "var(--input-padding-y-sm)"
           },
           "&[data-variant='unstyled']": {
             "--input-padding": "0",
@@ -3806,10 +3953,10 @@ var require_Input_plugin = __commonJS({
             "--_input-text-align": "right",
             "--_left-section-left": "unset",
             "--_left-section-right": rem2("1px"),
-            "--_left-section-border-radius": "0 var(--input-radius) var(--input-radius) 0",
+            "--_left-section-border-radius": "0 var(--_input-radius) var(--_input-radius) 0",
             "--_right-section-left": rem2("1px"),
             "--_right-section-right": "unset",
-            "--_right-section-border-radius": "var(--input-radius) 0 0 var(--input-radius)"
+            "--_right-section-border-radius": "var(--_input-radius) 0 0 var(--_input-radius)"
           }
         },
         ".input-input": {
@@ -3827,8 +3974,8 @@ var require_Input_plugin = __commonJS({
           height: "var(--_input-size)",
           minHeight: "var(--input-height)",
           lineHeight: "var(--_input-line-height)",
-          fontSize: "var(--input-fz)",
-          borderRadius: "var(--input-radius)",
+          fontSize: "var(--input-fz, var(--input-fz, var(--raikou-font-size-sm))",
+          borderRadius: "var(--_input-radius)",
           paddingLeft: "var(--_input-padding-left)",
           paddingRight: "var(--_input-padding-right)",
           paddingTop: `var(--input-padding-y, 0rem)`,
@@ -3842,7 +3989,9 @@ var require_Input_plugin = __commonJS({
           /* Used as data attribute in JsonInput component, does not have associated prop on the Input component */
           "&[data-monospace]": {
             "--_input-font-family": "var(--raikou-font-family-monospace)",
-            "--_input-fz": `calc(var(--input-fz) - ${rem2("2px")})`
+            "--_input-fz": `calc(var(--input-fz, var(--raikou-font-size-sm)) - ${rem2(
+              "2px"
+            )})`
           },
           "&:focus, &:focus-within": {
             outline: "none",
@@ -3858,7 +4007,14 @@ var require_Input_plugin = __commonJS({
           "&[type='number']": {
             "-moz-appearance": "textfield"
           },
-          "&:has(input:disabled), &:disabled, &[data-disabled]": {
+          "&:disabled, &[data-disabled]": {
+            cursor: "not-allowed",
+            opacity: "0.6",
+            backgroundColor: "var(--_input-disabled-bg)",
+            color: "var(--_input-disabled-color)"
+          },
+          /* Required to be a separate selector to work in Firefox, can be merged with &:disabled once :has is supported */
+          "&:has(input:disabled)": {
             cursor: "not-allowed",
             opacity: "0.6",
             backgroundColor: "var(--_input-disabled-bg)",
@@ -3906,10 +4062,10 @@ var require_Input_plugin = __commonJS({
           wordBreak: "break-word",
           cursor: "default",
           "-webkit-tap-highlight-color": "transparent",
-          fontSize: "var(--input-label-size)"
+          fontSize: "var(--input-label-size, var(--raikou-font-size-sm))"
         },
         ".inputWrapper-required": {
-          color: "var(--input-asterisk-color)"
+          color: "var(--input-asterisk-color, var(--raikou-color-red-filled))"
         },
         ".inputWrapper-error, .inputWrapper-description": {
           wordWrap: "break-word",
@@ -3920,11 +4076,15 @@ var require_Input_plugin = __commonJS({
         },
         ".inputWrapper-error": {
           color: "var(--raikou-color-error)",
-          fontSize: "var(--input-error-size)"
+          fontSize: `var(--input-error-size, calc(var(--raikou-font-size-sm) - ${rem2(
+            "2px"
+          )}))`
         },
         ".inputWrapper-description": {
           color: "var(--raikou-color-dimmed)",
-          fontSize: "var(--input-description-size)"
+          fontSize: `var(--input-description-size, calc(var(--mantine-font-size-sm) - ${rem2(
+            "2px"
+          )}))`
         }
       });
     };
@@ -3944,11 +4104,13 @@ var require_Kbd_plugin = __commonJS({
           "--kbd-fz-md": rem2("14px"),
           "--kbd-fz-lg": rem2("16px"),
           "--kbd-fz-xl": rem2("20px"),
+          "--kbd-fz": "var(--kbd-fz-sm)",
           "--kbd-padding-xs": `${rem2("2px")} ${rem2("4px")}`,
           "--kbd-padding-sm": `${rem2("3px")} ${rem2("5px")}`,
           "--kbd-padding-md": `${rem2("4px")} ${rem2("7px")}`,
           "--kbd-padding-lg": `${rem2("5px")} ${rem2("9px")}`,
           "--kbd-padding-xl": `${rem2("8px")} ${rem2("14px")}`,
+          "--kbd-padding": "var(--kbd-padding-sm)",
           fontFamily: "var(--raikou-font-family-monospace)",
           lineHeight: "var(--raikou-line-height)",
           fontWeight: "700",
@@ -3983,8 +4145,8 @@ var require_List_plugin = __commonJS({
       addComponents({
         ".list-root": {
           listStylePosition: "inside",
-          fontSize: "var(--list-fz)",
-          lineHeight: "var(--list-lh)",
+          fontSize: "var(--list-fz, var(--raikou-fz-md))",
+          lineHeight: "var(--list-lh, var(--raikou-line-height-md))",
           margin: "0",
           padding: "0",
           paddingLeft: "var(--_list-pl, 0)",
@@ -4010,7 +4172,7 @@ var require_List_plugin = __commonJS({
             }
           },
           "&:not(:first-of-type)": {
-            "--_item-mt": "var(--list-spacing)"
+            "--_item-mt": "var(--list-spacing, 0)"
           },
           "&[data-centered]": {
             "--_item-lh": "1"
@@ -4049,7 +4211,9 @@ var require_Loader_plugin = __commonJS({
           "--loader-size-sm": rem2("22px"),
           "--loader-size-md": rem2("36px"),
           "--loader-size-lg": rem2("44px"),
-          "--loader-size-xl": rem2("58px")
+          "--loader-size-xl": rem2("58px"),
+          "--loader-size": "var(--loader-size-md)",
+          "--loader-color": "var(--raikou-primary-color-filled)"
         },
         "@keyframes bars-loader-animation": {
           "0%": {
@@ -4314,6 +4478,9 @@ var require_Modal_plugin = __commonJS({
           "--modal-size-md": rem2("440px"),
           "--modal-size-lg": rem2("620px"),
           "--modal-size-xl": rem2("780px"),
+          "--modal-size": "var(--modal-size-md)",
+          "--modal-y-offset": "5dvh",
+          "--modal-x-offset": "5vw",
           "&[data-full-screen]": {
             "--modal-border-radius": "0 !important",
             ".modal-content": {
@@ -4333,8 +4500,8 @@ var require_Modal_plugin = __commonJS({
           }
         },
         ".modal-header": {
-          borderTopLeftRadius: "var(--modal-radius)",
-          borderTopRightRadius: "var(--modal-radius)"
+          borderTopLeftRadius: "var(--modal-radius, var(--mantine-radius-default))",
+          borderTopRightRadius: "var(--modal-radius, var(--mantine-radius-default))"
         },
         ".modal-content": {
           flex: "var(--_content-flex, 0 0 var(--modal-size))",
@@ -4375,16 +4542,20 @@ var require_ModalBase_plugin = __commonJS({
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "var(--mb-padding)",
-          paddingRight: `var(--_pr, calc(var(--mb-padding) - ${rem2("5px")}))`,
-          paddingLeft: "var(--_pl, var(--mb-padding))",
+          padding: "var(--mb-padding, var(--raikou-spacing-md))",
+          paddingRight: `var(--_pr, calc(var(--mb-padding, var(--raikou-spacing-md)) - ${rem2(
+            "5px"
+          )}))`,
+          paddingLeft: "var(--_pl, var(--mb-padding, var(--raikou-spacing-md)))",
           position: "sticky",
           top: "0",
           backgroundColor: "var(--raikou-color-body)",
           zIndex: "1000",
           '[dir="rtl"] &': {
-            "--_pr": "var(--mb-padding)",
-            "--_pl": `calc(var(--mb-padding) - ${rem2("5px")})`
+            "--_pr": "var(--mb-padding, var(--raikou-spacing-md))",
+            "--_pl": `calc(var(--mb-padding, var(--raikou-spacing-md)) - ${rem2(
+              "5px"
+            )})`
           }
         },
         ".modalBase-inner": {
@@ -4397,7 +4568,7 @@ var require_ModalBase_plugin = __commonJS({
         },
         ".modalBase-content": {
           pointerEvents: "all",
-          boxShadow: "var(--mb-shadow)"
+          boxShadow: "var(--mb-shadow, var(--raikou-shadow-xl))"
         },
         ".modalBase-close": {
           marginLeft: "var(--_close-ml, auto)",
@@ -4408,8 +4579,8 @@ var require_ModalBase_plugin = __commonJS({
           }
         },
         ".modalBase-body": {
-          padding: "var(--mb-padding)",
-          paddingTop: "var(--_pt, var(--mb-padding))",
+          padding: "var(--mb-padding, var(--raikou-spacing-md))",
+          paddingTop: "var(--_pt, var(--mb-padding, var(--raikou-spacing-md)))",
           "&:not(:only-child)": {
             "--_pt": "0"
           }
@@ -4427,6 +4598,9 @@ var require_NavLink_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".navLink-root.navLink-root": {
+          "--nl-bg": "var(--mantine-primary-color-light)",
+          "--nl-hover": "var(--mantine-primary-color-light-hover)",
+          "--nl-color": "var(--mantine-primary-color-light-color)",
           display: "flex",
           alignItems: "center",
           width: "100%",
@@ -4532,11 +4706,11 @@ var require_NavLink_plugin = __commonJS({
           whiteSpace: "var(--_body-white-space, auto)"
         },
         ".navLink-children": {
-          paddingLeft: "var(--_children-pl, var(--nl-offset))",
+          paddingLeft: "var(--_children-pl, var(--nl-offset, var(--raikou-spacing-lg)))",
           paddingRight: "var(--_children-pr, 0)",
           '[dir="rtl"] &': {
             "--_children-pl": "0",
-            "--_children-pr": "var(--nl-offset)"
+            "--_children-pr": "var(--nl-offset, var(--mantine-spacing-lg))"
           }
         },
         ".navLink-chevron": {
@@ -4565,7 +4739,7 @@ var require_Notification_plugin = __commonJS({
           paddingTop: "var(--raikou-spacing-xs)",
           paddingBottom: "var(--raikou-spacing-xs)",
           border: "var(--_border, none)",
-          borderRadius: "var(--notification-radius)",
+          borderRadius: "var(--notification-radius, var(--raikou-radius-default))",
           boxShadow: "var(--raikou-shadow-lg)",
           backgroundColor: "var(--_bg)",
           "&::before": {
@@ -4573,11 +4747,11 @@ var require_Notification_plugin = __commonJS({
             display: "block",
             position: "absolute",
             width: rem2("6px"),
-            top: "var(--notification-radius)",
-            bottom: "var(--notification-radius)",
+            top: "var(--notification-radius, var(--raikou-radius-default))",
+            bottom: "var(--notification-radius, var(--raikou-radius-default))",
             left: rem2("4px"),
-            borderRadius: "var(--notification-radius)",
-            backgroundColor: "var(--notification-color)",
+            borderRadius: "var(--notification-radius, var(--raikou-radius-default))",
+            backgroundColor: "var(--notification-color, var(--raikou-primary-color-filled))",
             '[dir="rtl"] &': {
               right: rem2("4px"),
               left: "auto"
@@ -4644,11 +4818,13 @@ var require_Notification_plugin = __commonJS({
           }
         },
         ".notification-title": {
-          lineHeight: "1.4",
           marginBottom: rem2("2px"),
           overflow: "hidden",
           textOverflow: "ellipsis",
           color: "var(--_title-color)",
+          fontSize: "var(--raikou-font-size-sm)",
+          lineHeight: "var(--raikou-line-height-sm)",
+          fontWeight: "500",
           '[data-raikou-color-scheme="light"] &': {
             "--_title-color": "var(--raikou-notification-title-color)"
           },
@@ -4658,7 +4834,8 @@ var require_Notification_plugin = __commonJS({
         },
         ".notification-description": {
           color: "var(--_description-color)",
-          lineHeight: "1.4",
+          fontSize: "var(--raikou-font-size-sm)",
+          lineHeight: "var(--raikou-line-height-sm)",
           overflow: "hidden",
           textOverflow: "ellipsis",
           "&[data-with-title]": {
@@ -4703,10 +4880,11 @@ var require_NumberInput_plugin = __commonJS({
           "--ni-chevron-size-md": rem2("16px"),
           "--ni-chevron-size-lg": rem2("18px"),
           "--ni-chevron-size-xl": rem2("20px"),
+          "--ni-chevron-size": "var(--ni-chevron-size-sm)",
           display: "flex",
           flexDirection: "column",
           width: "100%",
-          height: `calc(var(--input-height) - ${rem2("2px")})`,
+          height: `calc(var(--_input-height) - ${rem2("2px")})`,
           maxWidth: "calc(var(--ni-chevron-size) * 1.7)",
           marginLeft: "var(--_controls-ml, auto)",
           marginRight: "var(--_controls-mr, 0)",
@@ -4717,11 +4895,11 @@ var require_NumberInput_plugin = __commonJS({
         },
         ".numberInput-control.numberInput-control": {
           "--_control-bd": `${rem2("1px")} solid var(--_input-bd)`,
-          "--_control-radius": `calc(var(--input-radius) - ${rem2("1px")})`,
+          "--_control-radius": `calc(var(--_input-radius) - ${rem2("1px")})`,
           flex: "0 0 50%",
           width: "100%",
           padding: "0",
-          height: `calc(var(--input-height) / 2 - ${rem2("1px")})`,
+          height: `calc(var(--_input-height) / 2 - ${rem2("1px")})`,
           borderLeft: "var(--_control-bdl, var(--_control-bd))",
           borderRight: "var(--_control-bdr, none)",
           display: "flex",
@@ -4788,9 +4966,9 @@ var require_Overlay_plugin = __commonJS({
         ".overlay-root": {
           inset: "0",
           position: "var(--_overlay-position, absolute)",
-          background: "var(--overlay-bg)",
+          background: "var(--overlay-bg, rgba(0, 0, 0, 0.6))",
           backdropFilter: "var(--overlay-filter)",
-          borderRadius: "var(--overlay-radius)",
+          borderRadius: "var(--overlay-radius, 0)",
           zIndex: "var(--overlay-z-index)",
           "&[data-fixed]": {
             "--_overlay-position": "fixed"
@@ -4818,7 +4996,10 @@ var require_Pagination_plugin = __commonJS({
           "--pagination-control-size-sm": rem2("26px"),
           "--pagination-control-size-md": rem2("32px"),
           "--pagination-control-size-lg": rem2("38px"),
-          "--pagination-control-size-xl": rem2("44px")
+          "--pagination-control-size-xl": rem2("44px"),
+          "--pagination-control-size": "var(--pagination-control-size-md)",
+          "--pagination-control-fz": "var(--raikou-font-size-md)",
+          "--pagination-active-bg": "var(--raikou-primary-color-filled)"
         },
         ".pagination-control.pagination-control": {
           display: "flex",
@@ -4833,7 +5014,7 @@ var require_Pagination_plugin = __commonJS({
           padding: "var(--_control-padding, 0)",
           lineHeight: "1",
           backgroundColor: "var(--_control-bg-color)",
-          borderRadius: "var(--pagination-control-radius)",
+          borderRadius: "var(--pagination-control-radius, var(--raikou-radius-default))",
           opacity: "var(--_control-opacity, 1)",
           "&[data-with-padding]": {
             "--_control-padding": "calc(var(--pagination-control-size) / 4)"
@@ -4894,6 +5075,7 @@ var require_Pagination_plugin = __commonJS({
 var require_Paper_plugin = __commonJS({
   "../components/Paper/src/Paper.plugin.ts"(exports2, module2) {
     "use strict";
+    init_src();
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".paper-root": {
@@ -4902,12 +5084,12 @@ var require_Paper_plugin = __commonJS({
           display: "block",
           touchAction: "manipulation",
           textDecoration: "none",
-          borderRadius: "var(--paper-radius)",
-          boxShadow: "var(--paper-shadow)",
+          borderRadius: "var(--paper-radius, var(--raikou-radius-default))",
+          boxShadow: "var(--paper-shadow, none)",
           backgroundColor: "var(--raikou-color-body)",
           border: "var(--_paper-border-width, 0) solid var(--_paper-border-color, transparent)",
           "&[data-with-border]": {
-            "--_paper-border-width": "1px",
+            "--_paper-border-width": rem2("1px"),
             '[data-raikou-color-scheme="light"] &': {
               "--_paper-border-color": "var(--raikou-paper-border-color)"
             },
@@ -4938,7 +5120,9 @@ var require_PasswordInput_plugin = __commonJS({
           "--psi-icon-size-sm": rem2("15px"),
           "--psi-icon-size-md": rem2("17px"),
           "--psi-icon-size-lg": rem2("19px"),
-          "--psi-icon-size-xl": rem2("21px")
+          "--psi-icon-size-xl": rem2("21px"),
+          "--psi-button-size": "var(--psi-button-size-sm)",
+          "--psi-icon-size": "var(--psi-icon-size-sm)"
         },
         ".passwordInput-input": {
           position: "relative",
@@ -4991,6 +5175,8 @@ var require_Pill_plugin = __commonJS({
           "--pill-height-md": rem2("25px"),
           "--pill-height-lg": rem2("28px"),
           "--pill-height-xl": rem2("32px"),
+          "--pill-fz": "var(--pill-fz-sm)",
+          "--pill-height": "var(--pill-height-sm)",
           fontSize: "var(--pill-fz)",
           flex: "0",
           height: "var(--pill-height)",
@@ -4998,7 +5184,7 @@ var require_Pill_plugin = __commonJS({
           paddingRight: "var(--_pill-padding-right, 0.8em)",
           display: "inline-flex",
           alignItems: "center",
-          borderRadius: "var(--pill-radius)",
+          borderRadius: "var(--pill-radius, rem(1000px))",
           backgroundColor: "var(--_pill-bg)",
           lineHeight: "1",
           whiteSpace: "nowrap",
@@ -5074,6 +5260,7 @@ var require_Pill_plugin = __commonJS({
           "--pg-gap-md": rem2("10px"),
           "--pg-gap-lg": rem2("12px"),
           "--pg-gap-xl": rem2("12px"),
+          "--pg-gap": "var(--pg-gap-sm)",
           display: "flex",
           alignItems: "center",
           gap: "var(--pg-gap)",
@@ -5147,7 +5334,8 @@ var require_PinInput_plugin = __commonJS({
           "--pin-input-size-sm": rem2("36px"),
           "--pin-input-size-md": rem2("42px"),
           "--pin-input-size-lg": rem2("50px"),
-          "--pin-input-size-xl": rem2("60px")
+          "--pin-input-size-xl": rem2("60px"),
+          "--pin-input-size": "var(--pin-input-size-sm)"
         },
         ".pinInput-pinInput": {
           width: "var(--pin-input-size)",
@@ -5171,7 +5359,7 @@ var require_Popover_plugin = __commonJS({
           border: `${rem2("1px")} solid var(--_popover-bd)`,
           padding: "var(--raikou-spacing-sm) var(--raikou-spacing-md)",
           boxShadow: "var(--popover-shadow, none)",
-          borderRadius: "var(--popover-radius)",
+          borderRadius: "var(--popover-radius, var(--raikou-radius-default))",
           "&:focus": {
             outline: "none"
           },
@@ -5210,11 +5398,13 @@ var require_Progress_plugin = __commonJS({
           }
         },
         ".progress-root": {
+          "--progress-radius": "var(--raikou-radius-default)",
           "--progress-size-xs": rem2("3px"),
           "--progress-size-sm": rem2("5px"),
           "--progress-size-md": rem2("8px"),
           "--progress-size-lg": rem2("12px"),
           "--progress-size-xl": rem2("16px"),
+          "--progress-size": "var(--progress-size-md)",
           position: "relative",
           height: "var(--progress-size)",
           borderRadius: "var(--progress-radius)",
@@ -5298,6 +5488,7 @@ var require_Radio_plugin = __commonJS({
           "--radio-size-md": rem2("24px"),
           "--radio-size-lg": rem2("30px"),
           "--radio-size-xl": rem2("36px"),
+          "--radio-size": "var(--radio-size-sm)",
           "--radio-icon-size": "calc(var(--radio-size) / 2.25)"
         },
         ".radio-inner": {
@@ -5349,8 +5540,8 @@ var require_Radio_plugin = __commonJS({
             "--_radio-bd-color": "var(--raikou-radio-bd-color)"
           },
           "&:checked": {
-            "--_radio-bg": "var(--radio-color)",
-            "--_radio-bd-color": "var(--radio-color)",
+            "--_radio-bg": "var(--radio-color, var(--raikou-primary-color-filled))",
+            "--_radio-bd-color": "var(--radio-color, var(--raikou-primary-color-filled))",
             "& + .radio-icon": {
               "--_radio-icon-opacity": "1",
               "--_radio-icon-transform": "scale(1)"
@@ -5514,7 +5705,8 @@ var require_ScrollArea_plugin = __commonJS({
       addComponents({
         ".scrollArea-root": {
           position: "relative",
-          overflow: "hidden"
+          overflow: "hidden",
+          "--scrollarea-scrollbar-size": rem2("12px")
         },
         ".scrollArea-viewport": {
           scrollbarWidth: "none",
@@ -5674,12 +5866,16 @@ var require_SegmentedControl_plugin = __commonJS({
           "--sc-padding-md": `${rem2("7px")} ${rem2("14px")}`,
           "--sc-padding-lg": `${rem2("9px")} ${rem2("16px")}`,
           "--sc-padding-xl": `${rem2("12px")} ${rem2("20px")}`,
+          "--sc-transition-duration": "200ms",
+          "--sc-padding": "var(--sc-padding-sm)",
+          "--sc-transition-timing-function": "ease",
+          "--sc-font-size": "var(--raikou-font-size-sm)",
           position: "relative",
           display: "var(--_display, inline-flex)",
           flexDirection: "var(--_flex-direction, row)",
           width: "var(--_width, auto)",
           backgroundColor: "var(--_bg)",
-          borderRadius: "var(--sc-radius)",
+          borderRadius: "var(--sc-radius, var(--raikou-radius-default))",
           overflow: "hidden",
           padding: "4px",
           "&[data-full-width]": {
@@ -5704,7 +5900,7 @@ var require_SegmentedControl_plugin = __commonJS({
           position: "absolute",
           display: "block",
           zIndex: "1",
-          borderRadius: "var(--sc-radius)",
+          borderRadius: "var(--sc-radius, var(--raikou-radius-default))",
           boxShadow: "var(--_box-shadow)",
           width: "var(--sc-indicator-width)",
           height: "var(--sc-indicator-height)",
@@ -5729,7 +5925,7 @@ var require_SegmentedControl_plugin = __commonJS({
           overflow: "hidden",
           textOverflow: "ellipsis",
           userSelect: "none",
-          borderRadius: "var(--sc-radius)",
+          borderRadius: "var(--sc-radius, var(--raikou-radius-default))",
           fontSize: "var(--sc-font-size)",
           padding: "var(--sc-padding)",
           transition: "color var(--sc-transition-duration) var(--sc-transition-timing-function)",
@@ -5917,9 +6113,9 @@ var require_Skeleton_plugin = __commonJS({
           }
         },
         ".skeleton-root": {
-          height: "var(--skeleton-height)",
-          width: "var(--skeleton-width)",
-          borderRadius: "var(--skeleton-radius)",
+          height: "var(--skeleton-height, auto)",
+          width: "var(--skeleton-width, 100%)",
+          borderRadius: "var(--skeleton-radius, var(--raikou-radius-default))",
           position: "relative",
           transform: "translateZ(0)",
           "-webkit-transform": "translateZ(0)",
@@ -5967,6 +6163,9 @@ var require_Slider_plugin = __commonJS({
           "--slider-size-md": rem2("8px"),
           "--slider-size-lg": rem2("10px"),
           "--slider-size-xl": rem2("12px"),
+          "--slider-size": "var(--slider-size-md)",
+          "--slider-radius": rem2("1000px"),
+          "--slider-color": "var(--raikou-primary-color-filled)",
           "-webkit-tap-highlight-color": "transparent",
           outline: "none",
           height: "calc(var(--slider-size) * 2)",
@@ -6192,9 +6391,9 @@ var require_Stack_plugin = __commonJS({
         ".stack-root": {
           display: "flex",
           flexDirection: "column",
-          alignItems: "var(--stack-align)",
-          justifyContent: "var(--stack-justify)",
-          gap: "var(--stack-gap)"
+          alignItems: "var(--stack-align, stretch)",
+          justifyContent: "var(--stack-justify, flex-start)",
+          gap: "var(--stack-gap, var(--raikou-spacing-md)"
         }
       });
     };
@@ -6213,7 +6412,13 @@ var require_Stepper_plugin = __commonJS({
           "--stepper-icon-size-sm": rem2("36px"),
           "--stepper-icon-size-md": rem2("42px"),
           "--stepper-icon-size-lg": rem2("48px"),
-          "--stepper-icon-size-xl": rem2("52px")
+          "--stepper-icon-size-xl": rem2("52px"),
+          "--stepper-icon-size": "var(--stepper-icon-size-md)",
+          "--stepper-color": "var(--mantine-primary-color-filled)",
+          "--stepper-content-padding": "var(--mantine-spacing-md)",
+          "--stepper-spacing": "var(--mantine-spacing-md)",
+          "--stepper-radius": rem2("1000px"),
+          "--stepper-fz": "var(--mantine-font-size-md)"
         },
         ".stepper-steps": {
           display: "flex",
@@ -6460,6 +6665,13 @@ var require_Switch_plugin = __commonJS({
           "--switch-track-label-padding-md": rem2("2px"),
           "--switch-track-label-padding-lg": rem2("3px"),
           "--switch-track-label-padding-xl": rem2("3px"),
+          "--switch-height": "var(--switch-height-sm)",
+          "--switch-width": "var(--switch-width-sm)",
+          "--switch-thumb-size": "var(--switch-thumb-size-sm)",
+          "--switch-label-font-size": "var(--switch-label-font-size-sm)",
+          "--switch-track-label-padding": "var(--switch-track-label-padding-sm)",
+          "--switch-radius": rem2("1000px"),
+          "--switch-color": "var(--mantine-primary-color-filled)",
           position: "relative"
         },
         ".switch-input": {
@@ -6588,7 +6800,7 @@ var require_Table_plugin = __commonJS({
           lineHeight: "var(--raikou-line-height)",
           fontSize: "var(--raikou-font-size-sm)",
           tableLayout: "var(--table-layout, auto)",
-          captionSide: "var(--table-caption-side)",
+          captionSide: "var(--table-caption-side, bottom)",
           border: "var(--_table-border, none)",
           '[data-raikou-color-scheme="light"] &': {
             "--_table-hover-color": "var(--raikou-table-hover-color)",
@@ -6628,7 +6840,7 @@ var require_Table_plugin = __commonJS({
           }
         },
         ".table-td, .table-th": {
-          padding: "var(--table-vertical-spacing) var(--table-horizontal-spacing)",
+          padding: "var(--table-vertical-spacing) var(--table-horizontal-spacing, var(--raikou-spacing-xs))",
           borderLeft: "var(--_border-left)",
           borderRight: "var(--_border-right)",
           "--_border-right": "none",
@@ -6999,8 +7211,8 @@ var require_Text_plugin = __commonJS({
         ".text-root": {
           "-webkit-tap-highlight-color": "transparent",
           textDecoration: "none",
-          fontSize: "var(--text-fz)",
-          lineHeight: "var(--text-lh)",
+          fontSize: "var(--text-fz, var(--raikou-font-size-md))",
+          lineHeight: "var(--text-lh, var(--raikou-line-height-md))",
           fontWeight: "normal",
           margin: "0",
           padding: "0",
@@ -7049,15 +7261,20 @@ var require_Text_plugin = __commonJS({
 var require_Timeline_plugin = __commonJS({
   "../components/Timeline/src/Timeline.plugin.ts"(exports2, module2) {
     "use strict";
+    init_src();
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".timeline-root": {
           "--offset": "calc(var(--tl-bullet-size) / 2 + var(--tl-line-width) / 2)",
+          "--tl-bullet-size": rem2("20px"),
+          "--tl-line-width": rem2("4px"),
+          "--tl-radius": rem2("1000px"),
+          "--tl-color": "var(--raikou-primary-color-filled)",
           "padding-left": "var(--_tl-pl, 0)",
           "padding-right": "var(--_tl-pr, 0)",
           '&[data-align="left"]': {
             "--_tl-pl": "var(--offset)",
-            "@mixin rtl": {
+            '[dir="rtl"] &': {
               "--_tl-pl": "0",
               "--_tl-pr": "var(--offset)"
             }
@@ -7245,6 +7462,7 @@ var require_ThemeIcon_plugin = __commonJS({
           "--ti-size-md": rem2("28px"),
           "--ti-size-lg": rem2("34px"),
           "--ti-size-xl": rem2("44px"),
+          "--ti-size": "var(--ti-size-md)",
           lineHeight: "1",
           display: "inline-flex",
           alignItems: "center",
@@ -7255,10 +7473,10 @@ var require_ThemeIcon_plugin = __commonJS({
           height: "var(--ti-size)",
           minWidth: "var(--ti-size)",
           minHeight: "var(--ti-size)",
-          borderRadius: "var(--ti-radius)",
-          background: "var(--_ti-bg, var(--ti-bg))",
-          color: "var(--_ti-color, var(--ti-color))",
-          border: "var(--ti-bd)"
+          borderRadius: "var(--ti-radius, var(--raikou-radius-default))",
+          background: "var(--_ti-bg, var(--raikou-primary-color-filled))",
+          color: "var(--_ti-color, var(--raikou-color-white))",
+          border: `var(--ti-bd, ${rem2("1px")} solid transparent)`
         }
       });
     };
@@ -7297,7 +7515,7 @@ var require_Tooltip_plugin = __commonJS({
           whiteSpace: "var(--_tooltip-white-space, nowrap)",
           backgroundColor: "var(--_tooltip-bg)",
           color: "var(--_tooltip-color)",
-          borderRadius: "var(--tooltip-radius)",
+          borderRadius: "var(--tooltip-radius, var(--raikou-radius-default))",
           '[data-raikou-color-scheme="light"] &': {
             "--_tooltip-bg": "var(--tooltip-bg, var(--raikou-tooltip-bg))",
             "--_tooltip-color": "var(--raikou-tooltip-color)"
@@ -7778,6 +7996,7 @@ var require_CodeHighlight_plugin = __commonJS({
           backgroundColor: "transparent",
           opacity: "0.8",
           margin: "0",
+          color: "var(--raikou-color-dimmed)",
           "@media (hover: hover)": {
             "&:hover": {
               opacity: "1"
@@ -7995,6 +8214,7 @@ var require_CalendarHeader_plugin = __commonJS({
           "--dch-control-size-md": rem2("42px"),
           "--dch-control-size-lg": rem2("48px"),
           "--dch-control-size-xl": rem2("54px"),
+          "--dch-control-size": "var(--dch-control-size-sm)",
           display: "flex",
           maxWidth: `calc(var(--dch-control-size) * 7 + ${rem2("7px")})`,
           marginBottom: "var(--raikou-spacing-xs)"
@@ -8043,7 +8263,7 @@ var require_CalendarHeader_plugin = __commonJS({
         },
         ".dates-calendarHeaderLevel": {
           flex: "1",
-          fontSize: "var(--dch-fz)",
+          fontSize: "var(--dch-fz, var(--raikou-font-size-sm))",
           fontWeight: "500",
           textTransform: "capitalize"
         },
@@ -8107,6 +8327,7 @@ var require_Day_plugin = __commonJS({
           "--day-size-md": rem2("42px"),
           "--day-size-lg": rem2("48px"),
           "--day-size-xl": rem2("54px"),
+          "--day-size": "var(--day-size-sm)",
           width: `var(--day-size, ${rem2("36px")})`,
           height: `var(--day-size, ${rem2("36px")})`,
           fontSize: "calc(var(--day-size) / 2.8)",
@@ -8292,7 +8513,8 @@ var require_PickerControl_plugin = __commonJS({
           "--dpc-size-md": rem2("42px"),
           "--dpc-size-lg": rem2("48px"),
           "--dpc-size-xl": rem2("54px"),
-          fontSize: "var(--dpc-fz)",
+          "--dpc-size": "var(--dpc-size-sm)",
+          fontSize: "var(--dpc-fz, var(--raikou-font-size-sm))",
           height: "var(--dpc-size)",
           width: `calc((var(--dpc-size) * 7) / 3 + ${rem2("1.5px")})`,
           display: "flex",
@@ -8449,9 +8671,9 @@ var require_WeekdaysRow_plugin = __commonJS({
         ".dates-weekday": {
           color: "var(--raikou-color-dimmed)",
           fontWeight: "normal",
-          fontSize: "var(--wr-fz)",
+          fontSize: "var(--wr-fz, var(--raikou-font-size-sm))",
           textTransform: "capitalize",
-          paddingBottom: "calc(var(--wr-spacing) / 2)"
+          paddingBottom: "calc(var(--wr-spacing, var(--raikou-spacing-sm)) / 2)"
         }
       });
     };
@@ -8739,6 +8961,9 @@ var require_Spotlight_plugin = __commonJS({
           },
           '&[data-position="right"]': {
             "--_action-section-ml": "var(--raikou-spacing-md)"
+          },
+          "& > svg": {
+            display: "block"
           }
         },
         ".spotlight-actionLabel": {
@@ -9076,6 +9301,7 @@ module.exports = {
     require_Center_plugin(),
     require_Checkbox_plugin(),
     require_Chip_plugin(),
+    require_CloseButton_plugin(),
     require_Code_plugin(),
     require_ColorInput_plugin(),
     require_ColorPicker_plugin(),

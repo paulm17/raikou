@@ -8,8 +8,9 @@ module.exports = function ({ addComponents }: any) {
       "--dpc-size-md": rem("42px"),
       "--dpc-size-lg": rem("48px"),
       "--dpc-size-xl": rem("54px"),
+      "--dpc-size": "var(--dpc-size-sm)",
 
-      fontSize: "var(--dpc-fz)",
+      fontSize: "var(--dpc-fz, var(--raikou-font-size-sm))",
       height: "var(--dpc-size)",
       width: `calc((var(--dpc-size) * 7) / 3 + ${rem("1.5px")})`,
       display: "flex",

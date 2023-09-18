@@ -85,7 +85,6 @@ export type ColorInputFactory = Factory<{
 }>;
 
 const defaultProps: Partial<ColorInputProps> = {
-  size: "sm",
   format: "hex",
   fixOnBlur: true,
   withPreview: true,

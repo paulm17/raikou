@@ -14,17 +14,21 @@ module.exports = function ({ addComponents, theme }: any) {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-      padding: "var(--mb-padding)",
-      paddingRight: `var(--_pr, calc(var(--mb-padding) - ${rem("5px")}))`,
-      paddingLeft: "var(--_pl, var(--mb-padding))",
+      padding: "var(--mb-padding, var(--raikou-spacing-md))",
+      paddingRight: `var(--_pr, calc(var(--mb-padding, var(--raikou-spacing-md)) - ${rem(
+        "5px",
+      )}))`,
+      paddingLeft: "var(--_pl, var(--mb-padding, var(--raikou-spacing-md)))",
       position: "sticky",
       top: "0",
       backgroundColor: "var(--raikou-color-body)",
       zIndex: "1000",
 
       '[dir="rtl"] &': {
-        "--_pr": "var(--mb-padding)",
-        "--_pl": `calc(var(--mb-padding) - ${rem("5px")})`,
+        "--_pr": "var(--mb-padding, var(--raikou-spacing-md))",
+        "--_pl": `calc(var(--mb-padding, var(--raikou-spacing-md)) - ${rem(
+          "5px",
+        )})`,
       },
     },
 
@@ -39,7 +43,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".modalBase-content": {
       pointerEvents: "all",
-      boxShadow: "var(--mb-shadow)",
+      boxShadow: "var(--mb-shadow, var(--raikou-shadow-xl))",
     },
 
     ".modalBase-close": {
@@ -53,8 +57,8 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".modalBase-body": {
-      padding: "var(--mb-padding)",
-      paddingTop: "var(--_pt, var(--mb-padding))",
+      padding: "var(--mb-padding, var(--raikou-spacing-md))",
+      paddingTop: "var(--_pt, var(--mb-padding, var(--raikou-spacing-md)))",
 
       "&:not(:only-child)": {
         "--_pt": "0",

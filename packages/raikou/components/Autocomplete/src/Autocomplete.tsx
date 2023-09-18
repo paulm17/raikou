@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useUncontrolled } from "@raikou/hooks";
+import { useUncontrolled, useId } from "@raikou/hooks";
 import {
   BoxProps,
   StylesApiProps,
@@ -82,9 +82,11 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
     withScrollArea,
     maxDropdownHeight,
     size,
+    id,
     ...others
   } = props;
 
+  const _id = useId(id);
   const parsedData = getParsedComboboxData(data);
   const optionsLockup = getOptionsLockup(parsedData);
 
@@ -164,6 +166,7 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
           classNames={resolvedClassNames}
           styles={resolvedStyles}
           unstyled={unstyled}
+          id={_id}
         />
       </Combobox.Target>
       <OptionsDropdown
@@ -175,6 +178,7 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
         hiddenWhenEmpty
         withScrollArea={withScrollArea}
         maxDropdownHeight={maxDropdownHeight}
+        labelId={`${_id}-label`}
       />
     </Combobox>
   );

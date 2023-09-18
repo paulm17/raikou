@@ -15,6 +15,9 @@ module.exports = function ({ addComponents, theme }: any) {
       "--pill-height-lg": rem("28px"),
       "--pill-height-xl": rem("32px"),
 
+      "--pill-fz": "var(--pill-fz-sm)",
+      "--pill-height": "var(--pill-height-sm)",
+
       fontSize: "var(--pill-fz)",
       flex: "0",
       height: "var(--pill-height)",
@@ -22,7 +25,7 @@ module.exports = function ({ addComponents, theme }: any) {
       paddingRight: "var(--_pill-padding-right, 0.8em)",
       display: "inline-flex",
       alignItems: "center",
-      borderRadius: "var(--pill-radius)",
+      borderRadius: "var(--pill-radius, rem(1000px))",
       backgroundColor: "var(--_pill-bg)",
       lineHeight: "1",
       whiteSpace: "nowrap",
@@ -112,6 +115,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--pg-gap-md": rem("10px"),
       "--pg-gap-lg": rem("12px"),
       "--pg-gap-xl": rem("12px"),
+      "--pg-gap": "var(--pg-gap-sm)",
 
       display: "flex",
       alignItems: "center",

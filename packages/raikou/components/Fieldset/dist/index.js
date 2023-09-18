@@ -68,7 +68,7 @@ var defaultProps = {
 };
 var varsResolver = (0, import_core.createVarsResolver)((_, { radius }) => ({
   root: {
-    "--fieldset-radius": (0, import_core.getRadius)(radius)
+    "--fieldset-radius": radius === void 0 ? void 0 : (0, import_core.getRadius)(radius)
   }
 }));
 var Fieldset = (0, import_core.factory)((_props, ref) => {

@@ -143,10 +143,7 @@ TimelineItem.displayName = "@raikou/core/TimelineItem";
 // src/Timeline.tsx
 var defaultProps2 = {
   active: -1,
-  radius: "xl",
-  bulletSize: 20,
   align: "left",
-  lineWidth: 4,
   reverseActive: false
 };
 var varsResolver = (0, import_core2.createVarsResolver)(
@@ -154,8 +151,8 @@ var varsResolver = (0, import_core2.createVarsResolver)(
     root: {
       "--tl-bullet-size": (0, import_core2.rem)(bulletSize),
       "--tl-line-width": (0, import_core2.rem)(lineWidth),
-      "--tl-radius": (0, import_core2.getRadius)(radius),
-      "--tl-color": (0, import_core2.getThemeColor)(color, theme)
+      "--tl-radius": radius === void 0 ? void 0 : (0, import_core2.getRadius)(radius),
+      "--tl-color": color ? (0, import_core2.getThemeColor)(color, theme) : void 0
     }
   })
 );

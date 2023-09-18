@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createRef } from "react";
 import { render, tests } from "@raikou/tests";
 import { Chip, ChipProps, ChipStylesNames } from "./Chip";
 
@@ -41,5 +41,11 @@ describe("@raikou/core/Chip", () => {
     expect(container.querySelectorAll(".raikou-Chip-checkIcon")).toHaveLength(
       0,
     );
+  });
+
+  it("supports rootRef", () => {
+    const ref = createRef<HTMLDivElement>();
+    render(<Chip {...defaultProps} rootRef={ref} />);
+    expect(ref.current).toBeInstanceOf(HTMLDivElement);
   });
 });

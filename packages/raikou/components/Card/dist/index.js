@@ -75,7 +75,7 @@ var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)(
   (_, { radius, shadow }) => ({
     root: {
-      "--paper-radius": (0, import_core.getRadius)(radius),
+      "--paper-radius": radius === void 0 ? void 0 : (0, import_core.getRadius)(radius),
       "--paper-shadow": (0, import_core.getShadow)(shadow)
     }
   })
@@ -176,9 +176,7 @@ var CardSection = (0, import_core2.polymorphicFactory)(
 CardSection.displayName = "@raikou/core/CardSection";
 
 // src/Card.tsx
-var defaultProps3 = {
-  padding: "md"
-};
+var defaultProps3 = {};
 var varsResolver2 = (0, import_core3.createVarsResolver)((_, { padding }) => ({
   root: {
     "--card-padding": (0, import_core3.getSpacing)(padding)

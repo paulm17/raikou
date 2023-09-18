@@ -238,6 +238,7 @@ export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>(
                   <ActionIcon
                     onClick={() => setExpanded(!_expanded)}
                     variant="none"
+                    aria-label={_expanded ? collapseCodeLabel : expandCodeLabel}
                     {...getStyles("control")}
                   >
                     <ExpandIcon expanded={_expanded} />
@@ -256,6 +257,7 @@ export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>(
                       onClick={copy}
                       variant="none"
                       {...getStyles("control")}
+                      aria-label={copied ? copiedLabel : copyLabel}
                     >
                       <CopyIcon copied={copied} />
                     </ActionIcon>

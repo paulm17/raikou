@@ -81,7 +81,7 @@ describe("@raikou/core/get-line-height", () => {
 
 describe("@raikou/core/get-shadow", () => {
   it("returns correct values", () => {
-    expect(getShadow(undefined)).toBe("none");
+    expect(getShadow(undefined)).toBe(undefined);
     expect(getShadow("5px 5px 10px red")).toBe("5px 5px 10px red");
     expect(getShadow("xs")).toBe("var(--raikou-shadow-xs)");
     expect(getShadow("md")).toBe("var(--raikou-shadow-md)");

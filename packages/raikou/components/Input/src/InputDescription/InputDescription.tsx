@@ -37,16 +37,17 @@ export type InputDescriptionFactory = Factory<{
   vars: InputDescriptionCssVariables;
 }>;
 
-const defaultProps: Partial<InputDescriptionProps> = {
-  size: "sm",
-};
+const defaultProps: Partial<InputDescriptionProps> = {};
 
 const varsResolver = createVarsResolver<InputDescriptionFactory>(
   (_, { size }) => ({
     description: {
-      "--input-description-size": `calc(${getFontSize(size)} - ${rem(2)})`,
+      "--input-description-size":
+        size === undefined
+          ? undefined
+          : `calc(${getFontSize(size)} - ${rem(2)})`,
     },
-  })
+  }),
 );
 
 export const InputDescription = factory<InputDescriptionFactory>(
@@ -94,7 +95,7 @@ export const InputDescription = factory<InputDescriptionFactory>(
         {...others}
       />
     );
-  }
+  },
 );
 
 InputDescription.displayName = "@raikou/core/InputDescription";

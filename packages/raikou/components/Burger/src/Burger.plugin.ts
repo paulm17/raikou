@@ -9,6 +9,8 @@ module.exports = function ({ addComponents, theme }: any) {
       "--burger-size-lg": rem("34px"),
       "--burger-size-xl": rem("42px"),
 
+      "--burger-size": "var(--burger-size-md)",
+
       width: "calc(var(--burger-size) + var(--raikou-spacing-xs))",
       height: "calc(var(--burger-size) + var(--raikou-spacing-xs))",
       padding: "calc(var(--raikou-spacing-xs) / 2)",
@@ -36,8 +38,9 @@ module.exports = function ({ addComponents, theme }: any) {
         backgroundColor: "var(--_burger-color)",
         outline: `${rem("1px")} solid transparent`,
         transitionProperty: "background-color, transform",
-        transitionDuration: "var(--burger-transition-duration)",
-        transitionTimingFunction: "var(--burger-transition-timing-function)",
+        transitionDuration: "var(--burger-transition-duration, 300ms)",
+        transitionTimingFunction:
+          "var(--burger-transition-timing-function, ease)",
       },
 
       "&::before, &::after": {

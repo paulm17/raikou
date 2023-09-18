@@ -3,6 +3,8 @@ import { rem } from "@raikou/core";
 module.exports = function ({ addComponents, theme }: any) {
   addComponents({
     ".comboBox-dropdown.comboBox-dropdown": {
+      "--_combobox-padding": `var(--combobox-padding, ${rem("4px")})`,
+
       padding: "var(--combobox-padding)",
 
       "&[data-hidden]": {
@@ -20,8 +22,8 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".comboBox-option": {
-      padding: "var(--combobox-option-padding)",
-      fontSize: "var(--combobox-option-fz)",
+      padding: "var(--_combobox-option-padding)",
+      fontSize: "var(--combobox-option-fz, var(--raikou-font-size-sm))",
       borderRadius: "var(--raikou-radius-default)",
       backgroundColor: "var(--_option-bg, transparent)",
       color: "var(--_option-color, inherit)",
@@ -68,16 +70,16 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".comboBox-search": {
-      marginLeft: "calc(var(--combobox-padding) * -1)",
-      marginRight: "calc(var(--combobox-padding) * -1)",
-      marginTop: "calc(var(--combobox-padding) * -1)",
-      width: "calc(100% + var(--combobox-padding) * 2)",
+      marginLeft: "calc(var(--_combobox-padding) * -1)",
+      marginRight: "calc(var(--_combobox-padding) * -1)",
+      marginTop: "calc(var(--_combobox-padding) * -1)",
+      width: "calc(100% + var(--_combobox-padding) * 2)",
       borderTopWidth: "0",
       borderRightWidth: "0",
       borderLeftWidth: "0",
       borderBottomLeftRadius: "0",
       borderBottomRightRadius: "0",
-      marginBottom: "var(--combobox-padding)",
+      marginBottom: "var(--_combobox-padding)",
       backgroundColor: "var(--_search_background)",
       position: "relative",
       zIndex: "1000",
@@ -98,18 +100,18 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".comboBox-empty": {
-      fontSize: "var(--combobox-option-fz)",
+      fontSize: "var(--combobox-option-fz, var(--raikou-font-size-sm))",
       textAlign: "center",
-      padding: "var(--combobox-option-padding)",
+      padding: "var(--_combobox-option-padding)",
       color: "var(--raikou-color-dimmed)",
     },
 
     ".comboBox-header, .comboBox-footer": {
-      fontSize: "var(--combobox-option-fz)",
+      fontSize: "var(--combobox-option-fz, var(--raikou-font-size-sm))",
       border: "0 solid var(--_footer-border-color)",
-      marginLeft: "calc(var(--combobox-padding) * -1)",
-      marginRight: "calc(var(--combobox-padding) * -1)",
-      padding: "var(--combobox-option-padding)",
+      marginLeft: "calc(var(--_combobox-padding) * -1)",
+      marginRight: "calc(var(--_combobox-padding) * -1)",
+      padding: "var(--_combobox-option-padding)",
 
       '[data-raikou-color-scheme="light"] &': {
         "--_footer-border-color": "var(--raikou-combobox-footer-border-color)",
@@ -122,14 +124,14 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".comboBox-footer": {
       borderTopWidth: rem("1px"),
-      marginTop: "var(--combobox-padding)",
-      marginBottom: "calc(var(--combobox-padding) * -1)",
+      marginTop: "var(--_combobox-padding)",
+      marginBottom: "calc(var(--_combobox-padding) * -1)",
     },
 
     ".comboBox-header": {
       borderBottomWidth: rem("1px"),
-      marginBottom: "var(--combobox-padding)",
-      marginTop: "calc(var(--combobox-padding) * -1)",
+      marginBottom: "var(--_combobox-padding)",
+      marginTop: "calc(var(--_combobox-padding) * -1)",
     },
 
     ".comboBox-group": {
@@ -140,8 +142,9 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".comboBox-groupLabel": {
       color: "var(--raikou-color-dimmed)",
-      fontSize: "calc(var(--combobox-option-fz) * 0.85)",
-      padding: "var(--combobox-option-padding)",
+      fontSize:
+        "calc(var(--combobox-option-fz, var(--raikou-font-size-sm)) * 0.85)",
+      padding: "var(--_combobox-option-padding)",
       fontWeight: "500",
       position: "relative",
       display: "flex",
@@ -176,6 +179,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--combobox-chevron-size-md": rem("20px"),
       "--combobox-chevron-size-lg": rem("24px"),
       "--combobox-chevron-size-xl": rem("28px"),
+      "--combobox-chevron-size": "var(--combobox-chevron-size-sm)",
 
       width: "var(--combobox-chevron-size)",
       height: "var(--combobox-chevron-size)",
@@ -195,10 +199,10 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".comboBox-optionsDropdownScrollArea": {
-      "margin-right": "calc(var(--combobox-padding) * -1)",
+      "margin-right": "calc(var(--_combobox-padding) * -1)",
 
       '[dir="rtl"] &': {
-        marginLeft: "calc(var(--combobox-padding) * -1)",
+        marginLeft: "calc(var(--_combobox-padding) * -1)",
         marginRight: "0",
       },
     },

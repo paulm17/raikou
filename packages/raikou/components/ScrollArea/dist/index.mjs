@@ -848,7 +848,6 @@ var ScrollAreaThumb = React14.forwardRef((props, forwardedRef) => {
 
 // src/ScrollArea.tsx
 var defaultProps2 = {
-  scrollbarSize: 12,
   scrollHideDelay: 1e3,
   type: "hover"
 };

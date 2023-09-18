@@ -42,8 +42,7 @@ import {
   getSpacing
 } from "@raikou/core";
 var defaultProps = {
-  separator: "/",
-  separatorMargin: "xs"
+  separator: "/"
 };
 var varsResolver = createVarsResolver(
   (_, { separatorMargin }) => ({

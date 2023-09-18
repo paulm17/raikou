@@ -42,28 +42,24 @@ import {
   getRadius,
   getThemeColor
 } from "@raikou/core";
-var defaultProps = {
-  size: "md",
-  radius: "xl",
-  variant: "filled"
-};
+var defaultProps = {};
 var varsResolver = createVarsResolver(
   (theme, { radius, color, gradient, variant, size }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       gradient,
-      variant
+      variant: variant || "filled"
     });
     return {
       root: {
         "--badge-height": getSize(size, "badge-height"),
         "--badge-padding-x": getSize(size, "badge-padding-x"),
         "--badge-fz": getSize(size, "badge-fz"),
-        "--badge-radius": getRadius(radius),
-        "--badge-bg": colors.background,
-        "--badge-color": colors.color,
-        "--badge-bd": colors.border,
+        "--badge-radius": radius === void 0 ? void 0 : getRadius(radius),
+        "--badge-bg": color || variant ? colors.background : void 0,
+        "--badge-color": color || variant ? colors.color : void 0,
+        "--badge-bd": color || variant ? colors.border : void 0,
         "--badge-dot-color": variant === "dot" ? getThemeColor(color, theme) : void 0
       }
     };

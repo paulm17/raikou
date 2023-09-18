@@ -8,7 +8,7 @@ module.exports = function ({ addComponents, theme }: any) {
         content: '""',
         height: "0",
         display: "block",
-        paddingBottom: "calc((1 / var(--ar-ratio)) * 100%)",
+        paddingBottom: "calc((1 / var(--ar-ratio, 1)) * 100%)",
       },
 
       "&::after": {

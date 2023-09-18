@@ -93,13 +93,12 @@ import {
   createVarsResolver
 } from "@raikou/core";
 var defaultProps = {
-  size: "sm",
   labelElement: "label"
 };
 var varsResolver = createVarsResolver((_, { size }) => ({
   label: {
     "--input-label-size": getFontSize(size),
-    "--input-asterisk-color": "var(--raikou-color-red-filled)"
+    "--input-asterisk-color": void 0
   }
 }));
 var InputLabel = factory((_props, ref) => {
@@ -186,12 +185,10 @@ import {
   rem,
   createVarsResolver as createVarsResolver2
 } from "@raikou/core";
-var defaultProps2 = {
-  size: "sm"
-};
+var defaultProps2 = {};
 var varsResolver2 = createVarsResolver2((_, { size }) => ({
   error: {
-    "--input-error-size": `calc(${getFontSize2(size)} - ${rem(2)})`
+    "--input-error-size": size === void 0 ? void 0 : `calc(${getFontSize2(size)} - ${rem(2)})`
   }
 }));
 var InputError = factory2((_props, ref) => {
@@ -257,13 +254,11 @@ import {
   rem as rem2,
   createVarsResolver as createVarsResolver3
 } from "@raikou/core";
-var defaultProps3 = {
-  size: "sm"
-};
+var defaultProps3 = {};
 var varsResolver3 = createVarsResolver3(
   (_, { size }) => ({
     description: {
-      "--input-description-size": `calc(${getFontSize3(size)} - ${rem2(2)})`
+      "--input-description-size": size === void 0 ? void 0 : `calc(${getFontSize3(size)} - ${rem2(2)})`
     }
   })
 );
@@ -483,20 +478,19 @@ function getInputOffsets(inputWrapperOrder, { hasDescription, hasError }) {
 // ../Input/src/InputWrapper/InputWrapper.tsx
 var defaultProps5 = {
   labelElement: "label",
-  size: "sm",
   inputContainer: (children) => children,
   inputWrapperOrder: ["label", "description", "input", "error"]
 };
 var varsResolver4 = createVarsResolver4((_, { size }) => ({
   label: {
     "--input-label-size": getFontSize4(size),
-    "--input-asterisk-color": "var(--raikou-color-red-filled)"
+    "--input-asterisk-color": void 0
   },
   error: {
-    "--input-error-size": `calc(${getFontSize4(size)} - ${rem3(2)})`
+    "--input-error-size": size === void 0 ? void 0 : `calc(${getFontSize4(size)} - ${rem3(2)})`
   },
   description: {
-    "--input-description-size": `calc(${getFontSize4(size)} - ${rem3(2)})`
+    "--input-description-size": size === void 0 ? void 0 : `calc(${getFontSize4(size)} - ${rem3(2)})`
   }
 }));
 var InputWrapper = factory5((_props, ref) => {
@@ -651,7 +645,6 @@ InputWrapper.displayName = "@raikou/core/InputWrapper";
 
 // ../Input/src/Input.tsx
 var defaultProps6 = {
-  size: "sm",
   variant: "default",
   leftSectionPointerEvents: "none",
   rightSectionPointerEvents: "none",
@@ -664,7 +657,7 @@ var varsResolver5 = createVarsResolver5((_, props, ctx) => ({
     "--input-margin-bottom": ctx.offsetBottom ? "calc(var(--raikou-spacing-xs) / 2)" : void 0,
     "--input-height": getSize(props.size, "input-height"),
     "--input-fz": getFontSize5(props.size),
-    "--input-radius": getRadius(props.radius),
+    "--input-radius": props.radius === void 0 ? void 0 : getRadius(props.radius),
     "--input-left-section-width": props.leftSectionWidth !== void 0 ? rem4(props.leftSectionWidth) : void 0,
     "--input-right-section-width": props.rightSectionWidth !== void 0 ? rem4(props.rightSectionWidth) : void 0,
     "--input-padding-y": props.multiline ? getSize(props.size, "input-padding-y") : void 0,
@@ -916,7 +909,6 @@ function useInputProps(component, defaultProps10, _props) {
 
 // ../InputBase/src/InputBase.tsx
 var defaultProps7 = {
-  size: "sm",
   __staticSelector: "InputBase",
   withAria: true
 };
@@ -964,7 +956,6 @@ import {
   useStyles as useStyles7
 } from "@raikou/core";
 var defaultProps8 = {
-  size: "sm",
   error: null
 };
 var varsResolver6 = createVarsResolver6(

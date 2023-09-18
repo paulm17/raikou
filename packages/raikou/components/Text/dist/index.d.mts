@@ -28,13 +28,13 @@ interface TextProps extends BoxProps, StylesApiProps<TextFactory> {
 }
 type TextFactory = PolymorphicFactory<{
     props: TextProps;
-    defaultComponent: "div";
+    defaultComponent: "p";
     defaultRef: HTMLParagraphElement;
     stylesNames: TextStylesNames;
     vars: TextCssVariables;
     variant: TextVariant;
 }>;
-declare const Text: (<C = "div">(props: C extends React.ElementType<any> ? TextProps & {
+declare const Text: (<C = "p">(props: C extends React.ElementType<any> ? TextProps & {
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, keyof TextProps | "component"> & {
     ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
@@ -48,7 +48,7 @@ declare const Text: (<C = "div">(props: C extends React.ElementType<any> ? TextP
     component: React.ElementType<any>;
 })>, never> & _raikou_core.ThemeExtend<{
     props: TextProps;
-    defaultComponent: "div";
+    defaultComponent: "p";
     defaultRef: HTMLParagraphElement;
     stylesNames: TextStylesNames;
     vars: TextCssVariables;

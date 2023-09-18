@@ -62,6 +62,9 @@ export interface RadioProps
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius,` "xl" by default */
   radius?: RaikouRadius;
+
+  /** Assigns ref of the root element, can be used with `Tooltip` and other similar components */
+  rootRef?: React.ForwardedRef<HTMLDivElement>;
 }
 
 export type RadioFactory = Factory<{
@@ -84,8 +87,8 @@ const varsResolver = createVarsResolver<RadioFactory>(
   (theme, { size, radius, color }) => ({
     root: {
       "--radio-size": getSize(size, "radio-size"),
-      "--radio-radius": getRadius(radius),
-      "--radio-color": getThemeColor(color, theme),
+      "--radio-radius": radius === undefined ? undefined : getRadius(radius),
+      "--radio-color": color ? getThemeColor(color, theme) : undefined,
     },
   }),
 );
@@ -111,6 +114,7 @@ export const Radio = factory<RadioFactory>((_props, ref) => {
     disabled,
     wrapperProps,
     icon: Icon = RadioIcon,
+    rootRef,
     ...others
   } = props;
 
@@ -173,6 +177,7 @@ export const Radio = factory<RadioFactory>((_props, ref) => {
       unstyled={unstyled}
       data-checked={contextProps.checked || undefined}
       variant={variant}
+      ref={rootRef}
       {...styleProps}
       {...wrapperProps}
     >

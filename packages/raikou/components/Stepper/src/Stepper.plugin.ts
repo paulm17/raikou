@@ -8,6 +8,13 @@ module.exports = function ({ addComponents, theme }: any) {
       "--stepper-icon-size-md": rem("42px"),
       "--stepper-icon-size-lg": rem("48px"),
       "--stepper-icon-size-xl": rem("52px"),
+
+      "--stepper-icon-size": "var(--stepper-icon-size-md)",
+      "--stepper-color": "var(--mantine-primary-color-filled)",
+      "--stepper-content-padding": "var(--mantine-spacing-md)",
+      "--stepper-spacing": "var(--mantine-spacing-md)",
+      "--stepper-radius": rem("1000px"),
+      "--stepper-fz": "var(--mantine-font-size-md)",
     },
 
     ".stepper-steps": {

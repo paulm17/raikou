@@ -75,11 +75,7 @@ export type BadgeFactory = PolymorphicFactory<{
   variant: BadgeVariant;
 }>;
 
-const defaultProps: Partial<BadgeProps> = {
-  size: "md",
-  radius: "xl",
-  variant: "filled",
-};
+const defaultProps: Partial<BadgeProps> = {};
 
 const varsResolver = createVarsResolver<BadgeFactory>(
   (theme, { radius, color, gradient, variant, size }) => {
@@ -87,7 +83,7 @@ const varsResolver = createVarsResolver<BadgeFactory>(
       color: color || theme.primaryColor,
       theme,
       gradient,
-      variant: variant!,
+      variant: variant || "filled",
     });
 
     return {
@@ -95,10 +91,10 @@ const varsResolver = createVarsResolver<BadgeFactory>(
         "--badge-height": getSize(size, "badge-height"),
         "--badge-padding-x": getSize(size, "badge-padding-x"),
         "--badge-fz": getSize(size, "badge-fz"),
-        "--badge-radius": getRadius(radius),
-        "--badge-bg": colors.background,
-        "--badge-color": colors.color,
-        "--badge-bd": colors.border,
+        "--badge-radius": radius === undefined ? undefined : getRadius(radius),
+        "--badge-bg": color || variant ? colors.background : undefined,
+        "--badge-color": color || variant ? colors.color : undefined,
+        "--badge-bd": color || variant ? colors.border : undefined,
         "--badge-dot-color":
           variant === "dot" ? getThemeColor(color, theme) : undefined,
       },

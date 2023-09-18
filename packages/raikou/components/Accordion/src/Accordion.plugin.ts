@@ -2,6 +2,11 @@ import { rem } from "@raikou/core";
 
 module.exports = function ({ addComponents, theme }: any) {
   addComponents({
+    ".accordion-root": {
+      "--_accordion-radius":
+        "var(--accordion-radius, var(--raikou-radius-default))",
+    },
+
     ".accordion-panel": {
       wordBreak: "break-word",
     },
@@ -94,17 +99,21 @@ module.exports = function ({ addComponents, theme }: any) {
       textOverflow: "ellipsis",
       paddingTop: "var(--raikou-spacing-sm)",
       paddingBottom: "var(--raikou-spacing-sm)",
+
+      '[dir="rtl"] &': {
+        textAlign: "right",
+      },
     },
 
     ".accordion-chevron": {
       display: "flex",
       alignItems: "center",
       justifyContent: "flex-start",
-      transition: "transform var(--accordion-transition-duration) ease",
+      transition: "transform var(--accordion-transition-duration, 200ms) ease",
       marginRight: "var(--_chevron-margin-right)",
       marginLeft: "var(--_chevron-margin-left)",
-      width: "var(--accordion-chevron-size)",
-      minWidth: "var(--accordion-chevron-size)",
+      width: `var(--accordion-chevron-size, ${rem("15px")})`,
+      minWidth: `var(--accordion-chevron-size, ${rem("15px")})`,
       transform: "var(--_chevron-transform, rotate(0deg))",
 
       "&[data-rotate]": {
@@ -185,22 +194,22 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       "&:first-of-type": {
-        borderTopLeftRadius: "var(--accordion-radius)",
-        borderTopRightRadius: "var(--accordion-radius)",
+        borderTopLeftRadius: "var(--_accordion-radius)",
+        borderTopRightRadius: "var(--_accordion-radius)",
 
         "& > [data-accordion-control]": {
-          borderTopLeftRadius: "var(--accordion-radius)",
-          borderTopRightRadius: "var(--accordion-radius)",
+          borderTopLeftRadius: "var(--_accordion-radius)",
+          borderTopRightRadius: "var(--_accordion-radius)",
         },
       },
 
       "&:last-of-type": {
-        borderBottomLeftRadius: "var(--accordion-radius)",
-        borderBottomRightRadius: "var(--accordion-radius)",
+        borderBottomLeftRadius: "var(--_accordion-radius)",
+        borderBottomRightRadius: "var(--_accordion-radius)",
 
         "& > [data-accordion-control]": {
-          borderBottomLeftRadius: "var(--accordion-radius)",
-          borderBottomRightRadius: "var(--accordion-radius)",
+          borderBottomLeftRadius: "var(--_accordion-radius)",
+          borderBottomRightRadius: "var(--_accordion-radius)",
         },
       },
 
@@ -210,7 +219,7 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".accordion-root[data-variant='filled'] .accordion-item": {
-      borderRadius: "var(--accordion-radius)",
+      borderRadius: "var(--_accordion-radius)",
 
       "&[data-active]": {
         "--_item-bg": "var(--_item-filled-color)",
@@ -220,7 +229,7 @@ module.exports = function ({ addComponents, theme }: any) {
     ".accordion-root[data-variant='separated'] .accordion-item": {
       "--_item-bg": "var(--_item-filled-color)",
 
-      borderRadius: "var(--accordion-radius)",
+      borderRadius: "var(--_accordion-radius)",
       border: `${rem("1px")} solid var(--__item-border-color, transparent)`,
       transition: "background-color 150ms ease",
 

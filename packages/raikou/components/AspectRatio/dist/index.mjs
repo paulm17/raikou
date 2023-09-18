@@ -39,7 +39,7 @@ import {
 var defaultProps = {};
 var varsResolver = createVarsResolver((_, { ratio }) => ({
   root: {
-    "--ar-ratio": (ratio != null ? ratio : 1).toString()
+    "--ar-ratio": ratio == null ? void 0 : ratio.toString()
   }
 }));
 var AspectRatio = factory((_props, ref) => {

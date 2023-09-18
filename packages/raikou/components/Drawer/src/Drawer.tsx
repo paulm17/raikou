@@ -65,9 +65,6 @@ const defaultProps: Partial<DrawerProps> = {
   closeOnEscape: true,
   keepMounted: false,
   zIndex: getDefaultZIndex("modal"),
-  padding: "md",
-  size: "md",
-  shadow: "xl",
   withOverlay: true,
   withCloseButton: true,
 };

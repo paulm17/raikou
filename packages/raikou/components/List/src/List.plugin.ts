@@ -2,8 +2,8 @@ module.exports = function ({ addComponents, theme }: any) {
   addComponents({
     ".list-root": {
       listStylePosition: "inside",
-      fontSize: "var(--list-fz)",
-      lineHeight: "var(--list-lh)",
+      fontSize: "var(--list-fz, var(--raikou-fz-md))",
+      lineHeight: "var(--list-lh, var(--raikou-line-height-md))",
       margin: "0",
       padding: "0",
       paddingLeft: "var(--_list-pl, 0)",
@@ -35,7 +35,7 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       "&:not(:first-of-type)": {
-        "--_item-mt": "var(--list-spacing)",
+        "--_item-mt": "var(--list-spacing, 0)",
       },
 
       "&[data-centered]": {

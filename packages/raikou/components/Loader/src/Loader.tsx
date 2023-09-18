@@ -59,7 +59,6 @@ export const defaultLoaders: RaikouLoadersRecord = {
 };
 
 const defaultProps: Partial<LoaderProps> = {
-  size: "md",
   loaders: defaultLoaders,
   type: "oval",
 };
@@ -68,7 +67,7 @@ const varsResolver = createVarsResolver<LoaderFactory>(
   (theme, { size, color }) => ({
     root: {
       "--loader-size": getSize(size, "loader-size"),
-      "--loader-color": getThemeColor(color, theme),
+      "--loader-color": color ? getThemeColor(color, theme) : undefined,
     },
   }),
 );

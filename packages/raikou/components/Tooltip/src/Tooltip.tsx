@@ -113,10 +113,10 @@ const defaultProps: Partial<TooltipProps> = {
 const varsResolver = createVarsResolver<TooltipFactory>(
   (theme, { radius, color }) => ({
     tooltip: {
-      "--tooltip-radius": getRadius(radius),
+      "--tooltip-radius": radius === undefined ? undefined : getRadius(radius),
       "--tooltip-bg": color ? getThemeColor(color, theme) : undefined,
     },
-  })
+  }),
 );
 
 export const Tooltip = factory<TooltipFactory>((_props, ref) => {
@@ -199,7 +199,7 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
 
   if (!isElement(children)) {
     throw new Error(
-      "[@raikou/core] Tooltip component children should be an element or a component that accepts ref, fragments, strings, numbers and other primitive values are not supported"
+      "[@raikou/core] Tooltip component children should be an element or a component that accepts ref, fragments, strings, numbers and other primitive values are not supported",
     );
   }
 
@@ -266,7 +266,7 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
           [refProp!]: targetRef,
           className: cx(className, children.props.className),
           ...children.props,
-        })
+        }),
       )}
     </>
   );

@@ -3345,7 +3345,7 @@ var defaultProps3 = {
 var varsResolver = (0, import_core11.createVarsResolver)(
   (theme, { radius, color }) => ({
     tooltip: {
-      "--tooltip-radius": (0, import_core11.getRadius)(radius),
+      "--tooltip-radius": radius === void 0 ? void 0 : (0, import_core11.getRadius)(radius),
       "--tooltip-bg": color ? (0, import_core11.getThemeColor)(color, theme) : void 0
     }
   })
@@ -3580,7 +3580,7 @@ var defaultProps5 = {
 var varsResolver2 = (0, import_core13.createVarsResolver)(
   (theme, { radius, color }) => ({
     tooltip: {
-      "--tooltip-radius": (0, import_core13.getRadius)(radius),
+      "--tooltip-radius": radius === void 0 ? void 0 : (0, import_core13.getRadius)(radius),
       "--tooltip-bg": color ? (0, import_core13.getThemeColor)(color, theme) : void 0
     }
   })
@@ -3926,7 +3926,6 @@ var defaultLoaders = {
   progress: Progress
 };
 var defaultProps7 = {
-  size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
@@ -3934,7 +3933,7 @@ var varsResolver3 = (0, import_core19.createVarsResolver)(
   (theme, { size: size2, color }) => ({
     root: {
       "--loader-size": (0, import_core19.getSize)(size2, "loader-size"),
-      "--loader-color": (0, import_core19.getThemeColor)(color, theme)
+      "--loader-color": color ? (0, import_core19.getThemeColor)(color, theme) : void 0
     }
   })
 );
@@ -3995,8 +3994,7 @@ Loader.displayName = "@raikou/core/Loader";
 var import_react29 = __toESM(require("react"));
 var import_core20 = require("@raikou/core");
 var defaultProps8 = {
-  orientation: "horizontal",
-  borderWidth: 1
+  orientation: "horizontal"
 };
 var varsResolver4 = (0, import_core20.createVarsResolver)(
   (_, { borderWidth }) => ({
@@ -4056,26 +4054,23 @@ var ActionIconGroup = (0, import_core20.factory)(
 ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
 
 // ../components/ActionIcon/src/ActionIcon.tsx
-var defaultProps9 = {
-  variant: "filled",
-  size: "md"
-};
+var defaultProps9 = {};
 var varsResolver5 = (0, import_core21.createVarsResolver)(
   (theme, { size: size2, radius, variant, gradient, color }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       gradient,
-      variant
+      variant: variant || "filled"
     });
     return {
       root: {
         "--ai-size": (0, import_core21.getSize)(size2, "ai-size"),
-        "--ai-radius": (0, import_core21.getRadius)(radius),
-        "--ai-bg": colors.background,
-        "--ai-hover": colors.hover,
-        "--ai-color": colors.color,
-        "--ai-bd": colors.border
+        "--ai-radius": radius === void 0 ? void 0 : (0, import_core21.getRadius)(radius),
+        "--ai-bg": color || variant ? colors.background : void 0,
+        "--ai-hover": color || variant ? colors.hover : void 0,
+        "--ai-color": color || variant ? colors.color : void 0,
+        "--ai-bd": color || variant ? colors.border : void 0
       }
     };
   }
@@ -4967,7 +4962,6 @@ var ScrollAreaThumb = import_react46.default.forwardRef((props, forwardedRef) =>
 
 // ../components/ScrollArea/src/ScrollArea.tsx
 var defaultProps11 = {
-  scrollbarSize: 12,
   scrollHideDelay: 1e3,
   type: "hover"
 };
@@ -5280,7 +5274,8 @@ var CodeHighlightTabs = (0, import_core26.factory)(
           ActionIcon,
           __spreadValues({
             onClick: () => setExpanded(!_expanded),
-            variant: "none"
+            variant: "none",
+            "aria-label": _expanded ? collapseCodeLabel : expandCodeLabel
           }, getStyles("control")),
           /* @__PURE__ */ import_react48.default.createElement(ExpandIcon, { expanded: _expanded })
         )
@@ -5293,10 +5288,12 @@ var CodeHighlightTabs = (0, import_core26.factory)(
         },
         /* @__PURE__ */ import_react48.default.createElement(
           ActionIcon,
-          __spreadValues({
+          __spreadProps(__spreadValues({
             onClick: copy,
             variant: "none"
-          }, getStyles("control")),
+          }, getStyles("control")), {
+            "aria-label": copied ? copiedLabel : copyLabel
+          }),
           /* @__PURE__ */ import_react48.default.createElement(CopyIcon, { copied })
         )
       )))),

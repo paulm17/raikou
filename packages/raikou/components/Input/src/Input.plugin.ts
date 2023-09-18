@@ -18,33 +18,37 @@ module.exports = function ({ addComponents, theme }: any) {
       "--input-padding-y-md": rem("8px"),
       "--input-padding-y-lg": rem("10px"),
       "--input-padding-y-xl": rem("13px"),
+      "--input-padding-y": "var(--input-padding-y-sm)",
+
+      "--_input-height": "var(--input-height, var(--input-height-sm))",
+      "--_input-radius": "var(--input-radius, var(--mantine-radius-default))",
 
       "--_input-cursor": "text",
       "--_input-text-align": "left",
-      "--_input-line-height": `calc(var(--input-height) - ${rem("2px")})`,
-      "--_input-padding": "calc(var(--input-height) / 3)",
+      "--_input-line-height": `calc(var(--_input-height) - ${rem("2px")})`,
+      "--_input-padding": "calc(var(--_input-height) / 3)",
       "--_input-padding-left": "var(--_input-padding)",
       "--_input-padding-right": "var(--_input-padding)",
       "--_input-placeholder-color": "var(--raikou-color-placeholder)",
       "--_input-color": "var(--raikou-color-text)",
-      "--_input-left-section-size": `var(--input-left-section-width, calc(var(--input-height) - ${rem(
+      "--_input-left-section-size": `var(--input-left-section-width, calc(var(--_input-height) - ${rem(
         "2px",
       )}))`,
-      "--_input-right-section-size": `var(--input-right-section-width, calc(var(--input-height) - ${rem(
+      "--_input-right-section-size": `var(--input-right-section-width, calc(var(--_input-height) - ${rem(
         "2px",
       )}))`,
-      "--_input-size": "var(--input-height)",
+      "--_input-size": "var(--_input-height)",
 
       "--_section-y": rem("1px"),
       "--_left-section-left": rem("1px"),
       "--_left-section-right": "unset",
       "--_left-section-border-radius":
-        "var(--input-radius) 0 0 var(--input-radius)",
+        "var(--_input-radius) 0 0 var(--_input-radius)",
 
       "--_right-section-left": "unset",
       "--_right-section-right": rem("1px"),
       "--_right-section-border-radius":
-        "0 var(--input-radius) var(--input-radius) 0",
+        "0 var(--_input-radius) var(--_input-radius) 0",
 
       "&[data-pointer]": {
         "--_input-cursor": "pointer",
@@ -53,6 +57,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "&[data-multiline]": {
         "--_input-size": "auto",
         "--_input-line-height": "var(--raikou-line-height)",
+        "--input-padding-y": "var(--input-padding-y-sm)",
       },
 
       "&[data-variant='unstyled']": {
@@ -136,11 +141,11 @@ module.exports = function ({ addComponents, theme }: any) {
         "--_left-section-left": "unset",
         "--_left-section-right": rem("1px"),
         "--_left-section-border-radius":
-          "0 var(--input-radius) var(--input-radius) 0",
+          "0 var(--_input-radius) var(--_input-radius) 0",
         "--_right-section-left": rem("1px"),
         "--_right-section-right": "unset",
         "--_right-section-border-radius":
-          "var(--input-radius) 0 0 var(--input-radius)",
+          "var(--_input-radius) 0 0 var(--_input-radius)",
       },
     },
 
@@ -160,8 +165,8 @@ module.exports = function ({ addComponents, theme }: any) {
       height: "var(--_input-size)",
       minHeight: "var(--input-height)",
       lineHeight: "var(--_input-line-height)",
-      fontSize: "var(--input-fz)",
-      borderRadius: "var(--input-radius)",
+      fontSize: "var(--input-fz, var(--input-fz, var(--raikou-font-size-sm))",
+      borderRadius: "var(--_input-radius)",
       paddingLeft: "var(--_input-padding-left)",
       paddingRight: "var(--_input-padding-right)",
       paddingTop: `var(--input-padding-y, 0rem)`,
@@ -177,7 +182,9 @@ module.exports = function ({ addComponents, theme }: any) {
       /* Used as data attribute in JsonInput component, does not have associated prop on the Input component */
       "&[data-monospace]": {
         "--_input-font-family": "var(--raikou-font-family-monospace)",
-        "--_input-fz": `calc(var(--input-fz) - ${rem("2px")})`,
+        "--_input-fz": `calc(var(--input-fz, var(--raikou-font-size-sm)) - ${rem(
+          "2px",
+        )})`,
       },
 
       "&:focus, &:focus-within": {
@@ -199,7 +206,15 @@ module.exports = function ({ addComponents, theme }: any) {
         "-moz-appearance": "textfield",
       },
 
-      "&:has(input:disabled), &:disabled, &[data-disabled]": {
+      "&:disabled, &[data-disabled]": {
+        cursor: "not-allowed",
+        opacity: "0.6",
+        backgroundColor: "var(--_input-disabled-bg)",
+        color: "var(--_input-disabled-color)",
+      },
+
+      /* Required to be a separate selector to work in Firefox, can be merged with &:disabled once :has is supported */
+      "&:has(input:disabled)": {
         cursor: "not-allowed",
         opacity: "0.6",
         backgroundColor: "var(--_input-disabled-bg)",
@@ -255,11 +270,11 @@ module.exports = function ({ addComponents, theme }: any) {
       cursor: "default",
       "-webkit-tap-highlight-color": "transparent",
 
-      fontSize: "var(--input-label-size)",
+      fontSize: "var(--input-label-size, var(--raikou-font-size-sm))",
     },
 
     ".inputWrapper-required": {
-      color: "var(--input-asterisk-color)",
+      color: "var(--input-asterisk-color, var(--raikou-color-red-filled))",
     },
 
     ".inputWrapper-error, .inputWrapper-description": {
@@ -272,12 +287,16 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".inputWrapper-error": {
       color: "var(--raikou-color-error)",
-      fontSize: "var(--input-error-size)",
+      fontSize: `var(--input-error-size, calc(var(--raikou-font-size-sm) - ${rem(
+        "2px",
+      )}))`,
     },
 
     ".inputWrapper-description": {
       color: "var(--raikou-color-dimmed)",
-      fontSize: "var(--input-description-size)",
+      fontSize: `var(--input-description-size, calc(var(--mantine-font-size-sm) - ${rem(
+        "2px",
+      )}))`,
     },
   });
 };

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Progress } from './Progress';
+import React from "react";
+import { Progress } from "./Progress";
 
-export default { title: 'Progress' };
+export default { title: "Progress" };
 
 export function Usage() {
   return (
@@ -12,6 +12,7 @@ export function Usage() {
       <Progress value={56} size="lg" mt="md" />
       <Progress value={56} size="xl" mt="md" />
       <Progress value={56} size={50} mt="md" />
+      <Progress value={56} />
     </div>
   );
 }

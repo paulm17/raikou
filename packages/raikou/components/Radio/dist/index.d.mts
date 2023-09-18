@@ -3574,6 +3574,8 @@ interface RadioProps extends BoxProps, StylesApiProps<RadioFactory>, ElementProp
     error?: React$1.ReactNode;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius,` "xl" by default */
     radius?: RaikouRadius;
+    /** Assigns ref of the root element, can be used with `Tooltip` and other similar components */
+    rootRef?: React$1.ForwardedRef<HTMLDivElement>;
 }
 type RadioFactory = Factory<{
     props: RadioProps;

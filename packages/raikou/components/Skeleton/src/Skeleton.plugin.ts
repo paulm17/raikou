@@ -11,9 +11,9 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".skeleton-root": {
-      height: "var(--skeleton-height)",
-      width: "var(--skeleton-width)",
-      borderRadius: "var(--skeleton-radius)",
+      height: "var(--skeleton-height, auto)",
+      width: "var(--skeleton-width, 100%)",
+      borderRadius: "var(--skeleton-radius, var(--raikou-radius-default))",
       position: "relative",
       transform: "translateZ(0)",
       "-webkit-transform": "translateZ(0)",

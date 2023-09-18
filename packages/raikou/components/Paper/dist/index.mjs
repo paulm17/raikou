@@ -45,7 +45,7 @@ var defaultProps = {};
 var varsResolver = createVarsResolver(
   (_, { radius, shadow }) => ({
     root: {
-      "--paper-radius": getRadius(radius),
+      "--paper-radius": radius === void 0 ? void 0 : getRadius(radius),
       "--paper-shadow": getShadow(shadow)
     }
   })

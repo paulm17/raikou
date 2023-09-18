@@ -8,6 +8,9 @@ module.exports = function ({ addComponents, theme }: any) {
       "--pagination-control-size-md": rem("32px"),
       "--pagination-control-size-lg": rem("38px"),
       "--pagination-control-size-xl": rem("44px"),
+      "--pagination-control-size": "var(--pagination-control-size-md)",
+      "--pagination-control-fz": "var(--raikou-font-size-md)",
+      "--pagination-active-bg": "var(--raikou-primary-color-filled)",
     },
 
     ".pagination-control.pagination-control": {
@@ -23,7 +26,8 @@ module.exports = function ({ addComponents, theme }: any) {
       padding: "var(--_control-padding, 0)",
       lineHeight: "1",
       backgroundColor: "var(--_control-bg-color)",
-      borderRadius: "var(--pagination-control-radius)",
+      borderRadius:
+        "var(--pagination-control-radius, var(--raikou-radius-default))",
       opacity: "var(--_control-opacity, 1)",
 
       "&[data-with-padding]": {

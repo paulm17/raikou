@@ -15,13 +15,8 @@ import {
   ActionIconProps,
 } from "../../../../components/ActionIcon/src";
 import { CheckIcon } from "../../../../components/Checkbox/src";
-import {
-  useDisclosure,
-  useUncontrolled,
-  useDidUpdate,
-  useMergedRef,
-} from "@raikou/hooks";
-import { assignTime } from "../../utils";
+import { useDisclosure, useDidUpdate, useMergedRef } from "@raikou/hooks";
+import { assignTime, shiftTimezone } from "../../utils";
 import { TimeInput, TimeInputProps } from "../TimeInput";
 import {
   pickCalendarProps,
@@ -37,6 +32,7 @@ import {
 } from "../PickerInputBase";
 import { DateValue } from "../../types";
 import { useDatesContext } from "../DatesProvider";
+import { useUncontrolledDates } from "../../hooks";
 
 export type DateTimePickerStylesNames =
   | "timeWrapper"
@@ -87,7 +83,6 @@ export type DateTimePickerFactory = Factory<{
 }>;
 
 const defaultProps: Partial<DateTimePickerProps> = {
-  size: "sm",
   dropdownType: "popover",
 };
 
@@ -146,10 +141,10 @@ export const DateTimePicker = factory<DateTimePickerFactory>((_props, ref) => {
   } = pickCalendarProps(rest);
 
   const ctx = useDatesContext();
-  const [_value, setValue] = useUncontrolled({
+  const [_value, setValue] = useUncontrolledDates({
+    type: "default",
     value,
     defaultValue,
-    finalValue: null,
     onChange,
   });
 
@@ -175,11 +170,16 @@ export const DateTimePicker = factory<DateTimePickerFactory>((_props, ref) => {
 
     if (val) {
       const [hours, minutes, seconds] = val.split(":").map(Number);
-      const timeDate = new Date();
+      const timeDate = shiftTimezone("add", new Date(), ctx.getTimezone());
       timeDate.setHours(hours);
       timeDate.setMinutes(minutes);
       seconds !== undefined && timeDate.setSeconds(seconds);
-      setValue(assignTime(timeDate, _value || new Date()));
+      setValue(
+        assignTime(
+          timeDate,
+          _value || shiftTimezone("add", new Date(), ctx.getTimezone()),
+        ),
+      );
     }
   };
 
@@ -252,6 +252,7 @@ export const DateTimePicker = factory<DateTimePickerFactory>((_props, ref) => {
           setCurrentLevel(_level);
           calendarProps.onLevelChange?.(_level);
         }}
+        __timezoneApplied
       />
 
       {currentLevel === "month" && (
@@ -274,7 +275,7 @@ export const DateTimePicker = factory<DateTimePickerFactory>((_props, ref) => {
 
           <ActionIcon<"button">
             variant="default"
-            size={`input-${size}`}
+            size={`input-${size || "sm"}`}
             {...getStyles("submitButton", {
               className: submitButtonProps?.className,
               style: submitButtonProps?.style,

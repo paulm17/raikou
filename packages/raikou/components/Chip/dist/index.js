@@ -157,10 +157,7 @@ ChipGroup.displayName = "@raikou/core/ChipGroup";
 
 // src/Chip.tsx
 var defaultProps2 = {
-  type: "checkbox",
-  size: "sm",
-  radius: "xl",
-  variant: "outline"
+  type: "checkbox"
 };
 var varsResolver = (0, import_core3.createVarsResolver)(
   (theme, { size, radius, variant, color }) => {
@@ -173,14 +170,14 @@ var varsResolver = (0, import_core3.createVarsResolver)(
       root: {
         "--chip-fz": (0, import_core3.getFontSize)(size),
         "--chip-size": (0, import_core3.getSize)(size, "chip-size"),
-        "--chip-radius": (0, import_core3.getRadius)(radius),
+        "--chip-radius": radius === void 0 ? void 0 : (0, import_core3.getRadius)(radius),
         "--chip-checked-padding": (0, import_core3.getSize)(size, "chip-checked-padding"),
         "--chip-padding": (0, import_core3.getSize)(size, "chip-padding"),
         "--chip-icon-size": (0, import_core3.getSize)(size, "chip-icon-size"),
-        "--chip-bg": colors.background,
-        "--chip-hover": colors.hover,
-        "--chip-color": colors.color,
-        "--chip-bd": colors.border,
+        "--chip-bg": color || variant ? colors.background : void 0,
+        "--chip-hover": color || variant ? colors.hover : void 0,
+        "--chip-color": color || variant ? colors.color : void 0,
+        "--chip-bd": color || variant ? colors.border : void 0,
         "--chip-spacing": (0, import_core3.getSize)(size, "chip-spacing")
       }
     };
@@ -206,7 +203,8 @@ var Chip = (0, import_core3.factory)((_props, ref) => {
     children,
     size,
     variant,
-    icon
+    icon,
+    rootRef
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -225,7 +223,8 @@ var Chip = (0, import_core3.factory)((_props, ref) => {
     "children",
     "size",
     "variant",
-    "icon"
+    "icon",
+    "rootRef"
   ]);
   const getStyles = (0, import_core3.useStyles)({
     name: "Chip",
@@ -264,7 +263,8 @@ var Chip = (0, import_core3.factory)((_props, ref) => {
     import_core3.Box,
     __spreadValues(__spreadValues(__spreadValues({
       size,
-      variant
+      variant,
+      ref: rootRef
     }, getStyles("root")), styleProps), wrapperProps),
     /* @__PURE__ */ import_react7.default.createElement(
       "input",
@@ -285,7 +285,7 @@ var Chip = (0, import_core3.factory)((_props, ref) => {
         htmlFor: uuid,
         "data-checked": _checked || void 0,
         "data-disabled": disabled || void 0
-      }, getStyles("label", { variant })),
+      }, getStyles("label", { variant: variant || "filled" })),
       _checked && /* @__PURE__ */ import_react7.default.createElement("span", __spreadValues({}, getStyles("iconWrapper")), icon || /* @__PURE__ */ import_react7.default.createElement(CheckIcon, __spreadValues({}, getStyles("checkIcon")))),
       children
     )

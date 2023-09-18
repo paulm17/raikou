@@ -525,7 +525,6 @@ var defaultLoaders = {
   progress: Progress
 };
 var defaultProps = {
-  size: "md",
   loaders: defaultLoaders,
   type: "oval"
 };
@@ -533,7 +532,7 @@ var varsResolver = createVarsResolver(
   (theme, { size, color }) => ({
     root: {
       "--loader-size": getSize(size, "loader-size"),
-      "--loader-color": getThemeColor(color, theme)
+      "--loader-color": color ? getThemeColor(color, theme) : void 0
     }
   })
 );
@@ -604,17 +603,14 @@ import {
   rem as rem2
 } from "@raikou/core";
 var defaultProps2 = {
-  color: "#000",
-  backgroundOpacity: 0.6,
-  zIndex: getDefaultZIndex("modal"),
-  radius: 0
+  zIndex: getDefaultZIndex("modal")
 };
 var varsResolver2 = createVarsResolver2(
   (_, { gradient, color, backgroundOpacity, blur, radius, zIndex }) => ({
     root: {
-      "--overlay-bg": gradient || rgba(color || "#000", backgroundOpacity != null ? backgroundOpacity : 0.6),
+      "--overlay-bg": gradient || (color !== void 0 || backgroundOpacity !== void 0) && rgba(color || "#000", backgroundOpacity != null ? backgroundOpacity : 0.6) || void 0,
       "--overlay-filter": blur ? `blur(${rem2(blur)})` : void 0,
-      "--overlay-radius": getRadius(radius),
+      "--overlay-radius": radius === void 0 ? void 0 : getRadius(radius),
       "--overlay-z-index": zIndex == null ? void 0 : zIndex.toString()
     }
   })

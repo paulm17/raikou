@@ -63,9 +63,7 @@ function useAvatarGroupContext() {
 }
 
 // src/AvatarGroup/AvatarGroup.tsx
-var defaultProps = {
-  spacing: "sm"
-};
+var defaultProps = {};
 var varsResolver = createVarsResolver(
   (_, { spacing }) => ({
     root: {
@@ -134,27 +132,22 @@ function AvatarPlaceholderIcon(props) {
 }
 
 // src/Avatar.tsx
-var defaultProps2 = {
-  size: "md",
-  radius: "100%",
-  color: "gray",
-  variant: "light"
-};
+var defaultProps2 = {};
 var varsResolver2 = createVarsResolver2(
   (theme, { size, radius, variant, gradient, color }) => {
     const colors = theme.variantColorResolver({
-      color: color || theme.primaryColor,
+      color: color || "gray",
       theme,
       gradient,
-      variant
+      variant: variant || "light"
     });
     return {
       root: {
         "--avatar-size": getSize(size, "avatar-size"),
-        "--avatar-radius": getRadius(radius),
-        "--avatar-bg": colors.background,
-        "--avatar-color": colors.color,
-        "--avatar-bd": colors.border
+        "--avatar-radius": radius === void 0 ? void 0 : getRadius(radius),
+        "--avatar-bg": color || variant ? colors.background : void 0,
+        "--avatar-color": color || variant ? colors.color : void 0,
+        "--avatar-bd": color || variant ? colors.border : void 0
       }
     };
   }

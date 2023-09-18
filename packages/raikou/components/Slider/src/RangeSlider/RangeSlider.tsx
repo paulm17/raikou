@@ -129,10 +129,10 @@ const varsResolver = createVarsResolver<RangeSliderFactory>(
   (theme, { size, color, thumbSize, radius }) => ({
     root: {
       "--slider-size": getSize(size, "slider-size"),
-      "--slider-color": getThemeColor(color, theme),
-      "--slider-radius": getRadius(radius),
+      "--slider-color": color ? getThemeColor(color, theme) : undefined,
+      "--slider-radius": radius === undefined ? undefined : getRadius(radius),
       "--slider-thumb-size":
-        typeof thumbSize !== "undefined"
+        thumbSize !== undefined
           ? rem(thumbSize)
           : "calc(var(--slider-size) * 2)",
     },
@@ -140,8 +140,6 @@ const varsResolver = createVarsResolver<RangeSliderFactory>(
 );
 
 const defaultProps: Partial<RangeSliderProps> = {
-  size: "md",
-  radius: "xl",
   min: 0,
   max: 100,
   minRange: 10,

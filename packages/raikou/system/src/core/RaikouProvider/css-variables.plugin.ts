@@ -112,6 +112,24 @@ module.exports = function ({ addComponents }: any) {
         "--raikou-checkbox-icon-color": "#fff",
       },
     },
+    ".closeButton-root": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-closebutton-cb-color": "#495057",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-closebutton-cb-color": "#f1f3f5",
+      },
+    },
+    '.closeButton-root[data-variant="subtle"]': {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-closebutton-bg-hover": "#f8f9fa",
+        "--raikou-closebutton-bg-active": "#868e96",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-closebutton-bg-hover": "#f8f9fa",
+        "--raikou-closebutton-bg-active": "#868e96",
+      },
+    },
     ".chip-root": {
       '[data-raikou-color-scheme="light"] &': {
         "--raikou-chip-bg-disabled": "#e9ecef",

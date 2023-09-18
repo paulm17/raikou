@@ -27,6 +27,10 @@ module.exports = function ({ addComponents, theme }: any) {
       "--button-padding-x-compact-lg": rem("12px"),
       "--button-padding-x-compact-xl": rem("14px"),
 
+      "--button-height": "var(--button-height-sm)",
+      "--button-padding-x": "var(--button-padding-x-sm)",
+      "--button-color": "var(--raikou-color-white)",
+
       userSelect: "none",
       fontWeight: "600",
       position: "relative",
@@ -36,14 +40,20 @@ module.exports = function ({ addComponents, theme }: any) {
       width: "var(--_button-width, auto)",
       cursor: "var(--_button-cursor, pointer)",
       display: "var(--_button-display, inline-block)",
-      borderRadius: "var(--button-radius)",
-      fontSize: "var(--button-fz)",
-      background: "var(--_button-bg, var(--button-bg))",
-      border: "var(--_button-bd, var(--button-bd))",
-      color: "var(--_button-color, var(--button-color))",
-      height: "var(--button-height)",
-      paddingLeft: "var(--_button-padding-left, var(--button-padding-x))",
-      paddingRight: "var(--_button-padding-right, var(--button-padding-x))",
+      borderRadius: "var(--button-radius, var(--raikou-radius-default))",
+      fontSize: "var(--button-fz, var(--raikou-font-size-sm))",
+      background:
+        "var(--_button-bg, var(--button-bg, var(--raikou-primary-color-filled)))",
+      border: `var(--_button-bd, var(--button-bd, ${rem(
+        "1px",
+      )} solid transparent)))`,
+      color:
+        "var(--_button-color, var(--button-color, var(--raikou-color-white)))",
+      height: "var(--button-height, var(--button-height-sm))",
+      paddingLeft:
+        "var(--_button-padding-left, var(--button-padding-x, var(--button-padding-x-sm)))",
+      paddingRight:
+        "var(--_button-padding-right, var(--button-padding-x, var(--button-padding-x-sm)))",
 
       "&[data-block]": {
         "--_button-display": "block",
@@ -91,14 +101,16 @@ module.exports = function ({ addComponents, theme }: any) {
       "@media (hover: hover)": {
         "&:hover": {
           "&:not([data-loading]):not(:disabled):not([data-disabled])": {
-            "--_button-bg": "var(--button-hover)",
+            "--_button-bg":
+              "var(--button-hover, var(--raikou-primary-color-filled-hover)",
           },
         },
       },
       "@media (hover: none)": {
         "&:active": {
           "&:not([data-loading]):not(:disabled):not([data-disabled])": {
-            "--_button-bg": "var(--button-hover)",
+            "--_button-bg":
+              "var(--button-hover, var(--raikou-primary-color-filled-hover)",
           },
         },
       },
@@ -173,6 +185,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".buttonGroup-root": {
       display: "flex",
+      "--button-border-width": rem("1px"),
 
       '&[data-orientation="horizontal"]': {
         flexDirection: "row",

@@ -42,7 +42,7 @@ var defaultProps = {
 };
 var varsResolver = createVarsResolver((_, { radius }) => ({
   root: {
-    "--fieldset-radius": getRadius(radius)
+    "--fieldset-radius": radius === void 0 ? void 0 : getRadius(radius)
   }
 }));
 var Fieldset = factory((_props, ref) => {

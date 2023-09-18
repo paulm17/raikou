@@ -33,13 +33,9 @@ import {
   Box,
   polymorphicFactory,
   useProps,
-  useStyles,
-  createVarsResolver
+  useStyles
 } from "@raikou/core";
 var defaultProps = {};
-var varsResolver = createVarsResolver((_, { inline }) => ({
-  root: { "--center-display": inline ? "inline-flex" : "flex" }
-}));
 var Center = polymorphicFactory((_props, ref) => {
   const props = useProps("Center", defaultProps, _props);
   const _a = props, {
@@ -70,10 +66,9 @@ var Center = polymorphicFactory((_props, ref) => {
     classNames,
     styles,
     unstyled,
-    vars,
-    varsResolver
+    vars
   });
-  return /* @__PURE__ */ React.createElement(Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others));
+  return /* @__PURE__ */ React.createElement(Box, __spreadValues(__spreadValues({ ref, mod: { inline } }, getStyles("root")), others));
 });
 Center.displayName = "@raikou/core/Center";
 export {

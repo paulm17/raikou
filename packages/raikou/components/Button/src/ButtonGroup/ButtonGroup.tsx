@@ -40,7 +40,6 @@ export type ButtonGroupFactory = Factory<{
 
 const defaultProps: Partial<ButtonGroupProps> = {
   orientation: "horizontal",
-  borderWidth: 1,
 };
 
 const varsResolver = createVarsResolver<ButtonGroupFactory>(

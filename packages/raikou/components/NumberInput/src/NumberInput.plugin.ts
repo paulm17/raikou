@@ -8,11 +8,12 @@ module.exports = function ({ addComponents, theme }: any) {
       "--ni-chevron-size-md": rem("16px"),
       "--ni-chevron-size-lg": rem("18px"),
       "--ni-chevron-size-xl": rem("20px"),
+      "--ni-chevron-size": "var(--ni-chevron-size-sm)",
 
       display: "flex",
       flexDirection: "column",
       width: "100%",
-      height: `calc(var(--input-height) - ${rem("2px")})`,
+      height: `calc(var(--_input-height) - ${rem("2px")})`,
       maxWidth: "calc(var(--ni-chevron-size) * 1.7)",
       marginLeft: "var(--_controls-ml, auto)",
       marginRight: "var(--_controls-mr, 0)",
@@ -25,12 +26,12 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".numberInput-control.numberInput-control": {
       "--_control-bd": `${rem("1px")} solid var(--_input-bd)`,
-      "--_control-radius": `calc(var(--input-radius) - ${rem("1px")})`,
+      "--_control-radius": `calc(var(--_input-radius) - ${rem("1px")})`,
 
       flex: "0 0 50%",
       width: "100%",
       padding: "0",
-      height: `calc(var(--input-height) / 2 - ${rem("1px")})`,
+      height: `calc(var(--_input-height) / 2 - ${rem("1px")})`,
       borderLeft: "var(--_control-bdl, var(--_control-bd))",
       borderRight: "var(--_control-bdr, none)",
       display: "flex",

@@ -24,24 +24,24 @@ describe("@raikou/core/Text", () => {
     const { container, rerender } = render(<Text truncate="start" />);
     expect(container.querySelector(".raikou-Text-root")).toHaveAttribute(
       "data-truncate",
-      "start"
+      "start",
     );
 
     rerender(<Text truncate="end" />);
     expect(container.querySelector(".raikou-Text-root")).toHaveAttribute(
       "data-truncate",
-      "end"
+      "end",
     );
 
     rerender(<Text truncate />);
     expect(container.querySelector(".raikou-Text-root")).toHaveAttribute(
       "data-truncate",
-      "end"
+      "end",
     );
 
     rerender(<Text />);
     expect(container.querySelector(".raikou-Text-root")).not.toHaveAttribute(
-      "data-truncate"
+      "data-truncate",
     );
   });
 
@@ -49,62 +49,56 @@ describe("@raikou/core/Text", () => {
     const { container, rerender } = render(<Text variant="text" />);
     expect(container.querySelector(".raikou-Text-root")).toHaveAttribute(
       "data-variant",
-      "text"
+      "text",
     );
 
     rerender(<Text variant="gradient" />);
     expect(container.querySelector(".raikou-Text-root")).toHaveAttribute(
       "data-variant",
-      "gradient"
-    );
-
-    rerender(<Text />);
-    expect(container.querySelector(".raikou-Text-root")).toHaveAttribute(
-      "data-variant",
-      "text"
+      "gradient",
     );
   });
 
   it("sets data-inline attribute based on inline prop", () => {
     const { container, rerender } = render(<Text inline />);
     expect(container.querySelector(".raikou-Text-root")).toHaveAttribute(
-      "data-inline"
+      "data-inline",
     );
 
     rerender(<Text />);
     expect(container.querySelector(".raikou-Text-root")).not.toHaveAttribute(
-      "data-inline"
+      "data-inline",
     );
   });
 
   it("sets data-inherit attribute based on inherit prop", () => {
     const { container, rerender } = render(<Text inherit />);
     expect(container.querySelector(".raikou-Text-root")).toHaveAttribute(
-      "data-inherit"
+      "data-inherit",
     );
 
     rerender(<Text inherit={false} />);
     expect(container.querySelector(".raikou-Text-root")).not.toHaveAttribute(
-      "data-inherit"
+      "data-inherit",
     );
   });
 
   it("sets data-line-clamp attribute based on lineClamp prop", () => {
     const { container, rerender } = render(<Text lineClamp={3} />);
     expect(container.querySelector(".raikou-Text-root")).toHaveAttribute(
-      "data-line-clamp"
+      "data-line-clamp",
     );
 
     rerender(<Text />);
     expect(container.querySelector(".raikou-Text-root")).not.toHaveAttribute(
-      "data-line-clamp"
+      "data-line-clamp",
     );
   });
 
   it("changes root element to span if span prop is set", () => {
     const { container } = render(<Text span />);
     expect(
-      container.querySelector(".raikou-Text-root")!.nodeName.toLowerCase()
+      container.querySelector(".raikou-Text-root")!.nodeName.toLowerCase(),
     ).toBe("span");
   });
 });

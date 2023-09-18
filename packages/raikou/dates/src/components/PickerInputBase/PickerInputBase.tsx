@@ -70,7 +70,7 @@ export interface PickerInputBaseProps
   shouldClear: boolean;
   value: HiddenDatesInputValue;
   type: DatePickerType;
-  size: RaikouSize;
+  size?: RaikouSize;
 }
 
 export type PickerInputBaseFactory = Factory<{
@@ -121,7 +121,7 @@ export const PickerInputBase = factory<PickerInputBaseFactory>(
           variant="transparent"
           onClick={onClear}
           unstyled={unstyled}
-          size={inputProps.size}
+          size={inputProps.size || "sm"}
           {...clearButtonProps}
         />
       ) : null);
@@ -165,6 +165,7 @@ export const PickerInputBase = factory<PickerInputBaseFactory>(
           >
             <Popover.Target>
               <Input
+                aria-label={formattedValue || placeholder}
                 data-dates-input
                 data-read-only={readOnly || undefined}
                 disabled={disabled}

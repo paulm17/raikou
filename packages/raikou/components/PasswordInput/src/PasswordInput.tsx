@@ -58,7 +58,6 @@ export type PasswordInputFactory = Factory<{
 const defaultProps: Partial<PasswordInputProps> = {
   __staticSelector: "PasswordInput",
   visibilityToggleIcon: PasswordToggleIcon,
-  size: "sm",
 };
 
 const varsResolver = createVarsResolver<PasswordInputFactory>(
@@ -154,15 +153,18 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
       {...getStyles("visibilityToggle")}
       radius={radius}
       aria-hidden={!visibilityToggleButtonProps}
+      tabIndex={-1}
       {...visibilityToggleButtonProps}
       variant="subtle"
       color="gray"
       unstyled={unstyled}
       onMouseDown={(event) => {
         event.preventDefault();
+        visibilityToggleButtonProps?.onMouseDown?.(event);
         toggleVisibility();
       }}
       onKeyDown={(event) => {
+        visibilityToggleButtonProps?.onKeyDown?.(event);
         if (event.key === " ") {
           event.preventDefault();
           toggleVisibility();

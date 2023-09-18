@@ -13,7 +13,7 @@ module.exports = function ({ addComponents, theme }: any) {
       paddingTop: "var(--raikou-spacing-xs)",
       paddingBottom: "var(--raikou-spacing-xs)",
       border: "var(--_border, none)",
-      borderRadius: "var(--notification-radius)",
+      borderRadius: "var(--notification-radius, var(--raikou-radius-default))",
       boxShadow: "var(--raikou-shadow-lg)",
       backgroundColor: "var(--_bg)",
 
@@ -22,11 +22,13 @@ module.exports = function ({ addComponents, theme }: any) {
         display: "block",
         position: "absolute",
         width: rem("6px"),
-        top: "var(--notification-radius)",
-        bottom: "var(--notification-radius)",
+        top: "var(--notification-radius, var(--raikou-radius-default))",
+        bottom: "var(--notification-radius, var(--raikou-radius-default))",
         left: rem("4px"),
-        borderRadius: "var(--notification-radius)",
-        backgroundColor: "var(--notification-color)",
+        borderRadius:
+          "var(--notification-radius, var(--raikou-radius-default))",
+        backgroundColor:
+          "var(--notification-color, var(--raikou-primary-color-filled))",
 
         '[dir="rtl"] &': {
           right: rem("4px"),
@@ -108,11 +110,13 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".notification-title": {
-      lineHeight: "1.4",
       marginBottom: rem("2px"),
       overflow: "hidden",
       textOverflow: "ellipsis",
       color: "var(--_title-color)",
+      fontSize: "var(--raikou-font-size-sm)",
+      lineHeight: "var(--raikou-line-height-sm)",
+      fontWeight: "500",
 
       '[data-raikou-color-scheme="light"] &': {
         "--_title-color": "var(--raikou-notification-title-color)",
@@ -125,7 +129,8 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".notification-description": {
       color: "var(--_description-color)",
-      lineHeight: "1.4",
+      fontSize: "var(--raikou-font-size-sm)",
+      lineHeight: "var(--raikou-line-height-sm)",
       overflow: "hidden",
       textOverflow: "ellipsis",
 

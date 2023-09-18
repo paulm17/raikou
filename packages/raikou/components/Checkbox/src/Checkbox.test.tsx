@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createRef } from "react";
 import { render, tests, screen } from "@raikou/tests";
 import { Checkbox, CheckboxProps, CheckboxStylesNames } from "./Checkbox";
 
@@ -54,7 +54,7 @@ describe("@raikou/core/Checkbox", () => {
 
     rerender(<Checkbox indeterminate={false} />);
     expect(screen.getByRole("checkbox")).not.toHaveAttribute(
-      "data-indeterminate"
+      "data-indeterminate",
     );
   });
 
@@ -72,5 +72,11 @@ describe("@raikou/core/Checkbox", () => {
 
     rerender(<Checkbox disabled={false} />);
     expect(screen.getByRole("checkbox")).not.toBeDisabled();
+  });
+
+  it("supports rootRef", () => {
+    const ref = createRef<HTMLDivElement>();
+    render(<Checkbox {...defaultProps} rootRef={ref} />);
+    expect(ref.current).toBeInstanceOf(HTMLDivElement);
   });
 });

@@ -313,22 +313,19 @@ var Collapse = forwardRef(
 Collapse.displayName = "@raikou/core/Collapse";
 
 // src/NavLink.tsx
-var defaultProps3 = {
-  variant: "light",
-  childrenOffset: "lg"
-};
+var defaultProps3 = {};
 var varsResolver = createVarsResolver(
   (theme, { variant, color, childrenOffset }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
-      variant
+      variant: variant || "light"
     });
     return {
       root: {
-        "--nl-bg": colors.background,
-        "--nl-hover": colors.hover,
-        "--nl-color": colors.color
+        "--nl-bg": color || variant ? colors.background : void 0,
+        "--nl-hover": color || variant ? colors.hover : void 0,
+        "--nl-color": color || variant ? colors.color : void 0
       },
       children: {
         "--nl-offset": getSpacing(childrenOffset)

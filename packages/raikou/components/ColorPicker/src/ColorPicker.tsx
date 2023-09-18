@@ -113,23 +113,22 @@ export type ColorPickerFactory = Factory<{
 
 const defaultProps: Partial<ColorPickerProps> = {
   swatchesPerRow: 7,
-  size: "sm",
   withPicker: true,
   focusable: true,
   __staticSelector: "ColorPicker",
 };
 
 const varsResolver = createVarsResolver<ColorPickerFactory>(
-  (_, { size, fullWidth, swatchesPerRow }) => ({
+  (_, { size, swatchesPerRow }) => ({
     wrapper: {
       "--cp-preview-size": getSize(size, "cp-preview-size"),
-      "--cp-width": fullWidth ? "100%" : getSize(size, "cp-width"),
+      "--cp-width": getSize(size, "cp-width"),
       "--cp-body-spacing": getSpacing(size),
       "--cp-swatch-size": `${100 / swatchesPerRow!}%`,
       "--cp-thumb-size": getSize(size, "cp-thumb-size"),
       "--cp-saturation-height": getSize(size, "cp-saturation-height"),
     },
-  })
+  }),
 );
 
 export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
@@ -236,7 +235,13 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
 
   return (
     <ColorPickerProvider value={{ getStyles }}>
-      <Box ref={ref} {...getStyles("wrapper")} size={size} {...others}>
+      <Box
+        ref={ref}
+        {...getStyles("wrapper")}
+        size={size}
+        mod={{ "full-width": fullWidth }}
+        {...others}
+      >
         {withPicker && (
           <>
             <Saturation
@@ -244,7 +249,11 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
               onChange={handleChange}
               onChangeEnd={({ s, v }) =>
                 onChangeEnd?.(
-                  convertHsvaTo(formatRef.current!, { ...parsed, s: s!, v: v! })
+                  convertHsvaTo(formatRef.current!, {
+                    ...parsed,
+                    s: s!,
+                    v: v!,
+                  }),
                 )
               }
               color={_value}
@@ -262,7 +271,7 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
                   onChange={(h) => handleChange({ h })}
                   onChangeEnd={(h) =>
                     onChangeEnd?.(
-                      convertHsvaTo(formatRef.current!, { ...parsed, h })
+                      convertHsvaTo(formatRef.current!, { ...parsed, h }),
                     )
                   }
                   size={size}
@@ -278,7 +287,7 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
                     onChange={(a) => handleChange({ a })}
                     onChangeEnd={(a) => {
                       onChangeEnd?.(
-                        convertHsvaTo(formatRef.current!, { ...parsed, a })
+                        convertHsvaTo(formatRef.current!, { ...parsed, a }),
                       );
                     }}
                     size={size}

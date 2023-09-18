@@ -13,11 +13,13 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".progress-root": {
+      "--progress-radius": "var(--raikou-radius-default)",
       "--progress-size-xs": rem("3px"),
       "--progress-size-sm": rem("5px"),
       "--progress-size-md": rem("8px"),
       "--progress-size-lg": rem("12px"),
       "--progress-size-xl": rem("16px"),
+      "--progress-size": "var(--progress-size-md)",
 
       position: "relative",
       height: "var(--progress-size)",

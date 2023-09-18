@@ -3,9 +3,9 @@ module.exports = function ({ addComponents, theme }: any) {
     ".stack-root": {
       display: "flex",
       flexDirection: "column",
-      alignItems: "var(--stack-align)",
-      justifyContent: "var(--stack-justify)",
-      gap: "var(--stack-gap)",
+      alignItems: "var(--stack-align, stretch)",
+      justifyContent: "var(--stack-justify, flex-start)",
+      gap: "var(--stack-gap, var(--raikou-spacing-md)",
     },
   });
 };

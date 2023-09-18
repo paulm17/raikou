@@ -9,12 +9,17 @@ module.exports = function ({ addComponents, theme }: any) {
       "--sc-padding-lg": `${rem("9px")} ${rem("16px")}`,
       "--sc-padding-xl": `${rem("12px")} ${rem("20px")}`,
 
+      "--sc-transition-duration": "200ms",
+      "--sc-padding": "var(--sc-padding-sm)",
+      "--sc-transition-timing-function": "ease",
+      "--sc-font-size": "var(--raikou-font-size-sm)",
+
       position: "relative",
       display: "var(--_display, inline-flex)",
       flexDirection: "var(--_flex-direction, row)",
       width: "var(--_width, auto)",
       backgroundColor: "var(--_bg)",
-      borderRadius: "var(--sc-radius)",
+      borderRadius: "var(--sc-radius, var(--raikou-radius-default))",
       overflow: "hidden",
       padding: "4px" /* px required for correct indicator calculations */,
 
@@ -45,7 +50,7 @@ module.exports = function ({ addComponents, theme }: any) {
       position: "absolute",
       display: "block",
       zIndex: "1",
-      borderRadius: "var(--sc-radius)",
+      borderRadius: "var(--sc-radius, var(--raikou-radius-default))",
       boxShadow: "var(--_box-shadow)",
       width: "var(--sc-indicator-width)",
       height: "var(--sc-indicator-height)",
@@ -74,7 +79,7 @@ module.exports = function ({ addComponents, theme }: any) {
       overflow: "hidden",
       textOverflow: "ellipsis",
       userSelect: "none",
-      borderRadius: "var(--sc-radius)",
+      borderRadius: "var(--sc-radius, var(--raikou-radius-default))",
       fontSize: "var(--sc-font-size)",
       padding: "var(--sc-padding)",
       transition:

@@ -105,13 +105,12 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
 var import_react5 = __toESM(require("react"));
 var import_core = require("@raikou/core");
 var defaultProps = {
-  size: "sm",
   labelElement: "label"
 };
 var varsResolver = (0, import_core.createVarsResolver)((_, { size }) => ({
   label: {
     "--input-label-size": (0, import_core.getFontSize)(size),
-    "--input-asterisk-color": "var(--raikou-color-red-filled)"
+    "--input-asterisk-color": void 0
   }
 }));
 var InputLabel = (0, import_core.factory)((_props, ref) => {
@@ -190,12 +189,10 @@ InputLabel.displayName = "@raikou/core/InputLabel";
 // src/InputError/InputError.tsx
 var import_react6 = __toESM(require("react"));
 var import_core2 = require("@raikou/core");
-var defaultProps2 = {
-  size: "sm"
-};
+var defaultProps2 = {};
 var varsResolver2 = (0, import_core2.createVarsResolver)((_, { size }) => ({
   error: {
-    "--input-error-size": `calc(${(0, import_core2.getFontSize)(size)} - ${(0, import_core2.rem)(2)})`
+    "--input-error-size": size === void 0 ? void 0 : `calc(${(0, import_core2.getFontSize)(size)} - ${(0, import_core2.rem)(2)})`
   }
 }));
 var InputError = (0, import_core2.factory)((_props, ref) => {
@@ -253,13 +250,11 @@ InputError.displayName = "@raikou/core/InputError";
 // src/InputDescription/InputDescription.tsx
 var import_react7 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
-var defaultProps3 = {
-  size: "sm"
-};
+var defaultProps3 = {};
 var varsResolver3 = (0, import_core3.createVarsResolver)(
   (_, { size }) => ({
     description: {
-      "--input-description-size": `calc(${(0, import_core3.getFontSize)(size)} - ${(0, import_core3.rem)(2)})`
+      "--input-description-size": size === void 0 ? void 0 : `calc(${(0, import_core3.getFontSize)(size)} - ${(0, import_core3.rem)(2)})`
     }
   })
 );
@@ -386,20 +381,19 @@ function getInputOffsets(inputWrapperOrder, { hasDescription, hasError }) {
 // src/InputWrapper/InputWrapper.tsx
 var defaultProps5 = {
   labelElement: "label",
-  size: "sm",
   inputContainer: (children) => children,
   inputWrapperOrder: ["label", "description", "input", "error"]
 };
 var varsResolver4 = (0, import_core5.createVarsResolver)((_, { size }) => ({
   label: {
     "--input-label-size": (0, import_core5.getFontSize)(size),
-    "--input-asterisk-color": "var(--raikou-color-red-filled)"
+    "--input-asterisk-color": void 0
   },
   error: {
-    "--input-error-size": `calc(${(0, import_core5.getFontSize)(size)} - ${(0, import_core5.rem)(2)})`
+    "--input-error-size": size === void 0 ? void 0 : `calc(${(0, import_core5.getFontSize)(size)} - ${(0, import_core5.rem)(2)})`
   },
   description: {
-    "--input-description-size": `calc(${(0, import_core5.getFontSize)(size)} - ${(0, import_core5.rem)(2)})`
+    "--input-description-size": size === void 0 ? void 0 : `calc(${(0, import_core5.getFontSize)(size)} - ${(0, import_core5.rem)(2)})`
   }
 }));
 var InputWrapper = (0, import_core5.factory)((_props, ref) => {
@@ -554,7 +548,6 @@ InputWrapper.displayName = "@raikou/core/InputWrapper";
 
 // src/Input.tsx
 var defaultProps6 = {
-  size: "sm",
   variant: "default",
   leftSectionPointerEvents: "none",
   rightSectionPointerEvents: "none",
@@ -567,7 +560,7 @@ var varsResolver5 = (0, import_core6.createVarsResolver)((_, props, ctx) => ({
     "--input-margin-bottom": ctx.offsetBottom ? "calc(var(--raikou-spacing-xs) / 2)" : void 0,
     "--input-height": (0, import_core6.getSize)(props.size, "input-height"),
     "--input-fz": (0, import_core6.getFontSize)(props.size),
-    "--input-radius": (0, import_core6.getRadius)(props.radius),
+    "--input-radius": props.radius === void 0 ? void 0 : (0, import_core6.getRadius)(props.radius),
     "--input-left-section-width": props.leftSectionWidth !== void 0 ? (0, import_core6.rem)(props.leftSectionWidth) : void 0,
     "--input-right-section-width": props.rightSectionWidth !== void 0 ? (0, import_core6.rem)(props.rightSectionWidth) : void 0,
     "--input-padding-y": props.multiline ? (0, import_core6.getSize)(props.size, "input-padding-y") : void 0,

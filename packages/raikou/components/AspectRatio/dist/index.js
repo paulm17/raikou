@@ -66,7 +66,7 @@ var import_core = require("@raikou/core");
 var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)((_, { ratio }) => ({
   root: {
-    "--ar-ratio": (ratio != null ? ratio : 1).toString()
+    "--ar-ratio": ratio == null ? void 0 : ratio.toString()
   }
 }));
 var AspectRatio = (0, import_core.factory)((_props, ref) => {
