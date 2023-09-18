@@ -65,7 +65,8 @@ export function GridColVariables({
   const theme = useRaikouTheme();
   const ctx = useStore.getState();
 
-  const baseSpan = getBaseValue(span);
+  const baseValue = getBaseValue(span);
+  const baseSpan = baseValue === undefined ? 12 : getBaseValue(span);
 
   const baseStyles: Record<string, string | undefined> = filterProps({
     "--col-order": getBaseValue(order)?.toString(),

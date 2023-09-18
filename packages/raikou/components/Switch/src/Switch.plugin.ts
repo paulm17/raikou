@@ -39,7 +39,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--switch-label-font-size": "var(--switch-label-font-size-sm)",
       "--switch-track-label-padding": "var(--switch-track-label-padding-sm)",
       "--switch-radius": rem("1000px"),
-      "--switch-color": "var(--mantine-primary-color-filled)",
+      "--switch-color": "var(--raikou-primary-color-filled)",
 
       position: "relative",
     },

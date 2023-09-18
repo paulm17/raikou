@@ -3,9 +3,9 @@ import { rem } from "@raikou/core";
 module.exports = function ({ addComponents, theme }: any) {
   addComponents({
     ".navLink-root.navLink-root": {
-      "--nl-bg": "var(--mantine-primary-color-light)",
-      "--nl-hover": "var(--mantine-primary-color-light-hover)",
-      "--nl-color": "var(--mantine-primary-color-light-color)",
+      "--nl-bg": "var(--raikou-primary-color-light)",
+      "--nl-hover": "var(--raikou-primary-color-light-hover)",
+      "--nl-color": "var(--raikou-primary-color-light-color)",
 
       display: "flex",
       alignItems: "center",
@@ -137,7 +137,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
       '[dir="rtl"] &': {
         "--_children-pl": "0",
-        "--_children-pr": "var(--nl-offset, var(--mantine-spacing-lg))",
+        "--_children-pr": "var(--nl-offset, var(--raikou-spacing-lg))",
       },
     },
 

@@ -34,6 +34,8 @@ module.exports = function ({ addComponents, theme }: any) {
       inset: "0",
       outline: "0",
       fontSize: "inherit",
+      lineHeight: "var(--raikou-line-height)",
+      height: "100%",
       color: "inherit",
 
       "[data-disabled] &, &:disabled": {
@@ -42,6 +44,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
       "&::placeholder": {
         color: "var(--_input-placeholder-color)",
+        opacity: "1",
       },
     },
 

@@ -21,7 +21,7 @@ module.exports = function ({ addComponents, theme }: any) {
       "--input-padding-y": "var(--input-padding-y-sm)",
 
       "--_input-height": "var(--input-height, var(--input-height-sm))",
-      "--_input-radius": "var(--input-radius, var(--mantine-radius-default))",
+      "--_input-radius": "var(--input-radius, var(--raikou-radius-default))",
 
       "--_input-cursor": "text",
       "--_input-text-align": "left",
@@ -294,7 +294,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".inputWrapper-description": {
       color: "var(--raikou-color-dimmed)",
-      fontSize: `var(--input-description-size, calc(var(--mantine-font-size-sm) - ${rem(
+      fontSize: `var(--input-description-size, calc(var(--raikou-font-size-sm) - ${rem(
         "2px",
       )}))`,
     },

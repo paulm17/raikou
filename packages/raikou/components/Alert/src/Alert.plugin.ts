@@ -65,7 +65,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
       '[dir="rtl"] &': {
         marginRight: "0",
-        marginLeft: "var(--mantine-spacing-md)",
+        marginLeft: "var(--raikou-spacing-md)",
       },
     },
 

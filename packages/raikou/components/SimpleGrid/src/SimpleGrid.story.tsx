@@ -9,8 +9,8 @@ export function Usage() {
     <div style={{ padding: 40 }}>
       <SimpleGrid
         cols={{ sm: 2, md: 5 }}
-        spacing={{ base: 10, sm: "md" }}
-        verticalSpacing={0}
+        spacing={{ sm: 100 }}
+        verticalSpacing={{ sm: 10 }}
       >
         {Array(10)
           .fill(0)

@@ -36,9 +36,8 @@ module.exports = function ({ addComponents, theme }: any) {
     },
 
     ".modal-header": {
-      borderTopLeftRadius: "var(--modal-radius, var(--mantine-radius-default))",
-      borderTopRightRadius:
-        "var(--modal-radius, var(--mantine-radius-default))",
+      borderTopLeftRadius: "var(--modal-radius, var(--raikou-radius-default))",
+      borderTopRightRadius: "var(--modal-radius, var(--raikou-radius-default))",
     },
 
     ".modal-content": {
