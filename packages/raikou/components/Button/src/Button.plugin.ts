@@ -46,7 +46,7 @@ module.exports = function ({ addComponents, theme }: any) {
         "var(--_button-bg, var(--button-bg, var(--raikou-primary-color-filled)))",
       border: `var(--_button-bd, var(--button-bd, ${rem(
         "1px",
-      )} solid transparent)))`,
+      )} solid transparent))`,
       color:
         "var(--_button-color, var(--button-color, var(--raikou-color-white)))",
       height: "var(--button-height, var(--button-height-sm))",
@@ -91,7 +91,7 @@ module.exports = function ({ addComponents, theme }: any) {
 
         "&::before": {
           content: '""',
-          position: "absolute",
+          position: "relative",
           inset: rem("-1px"),
           borderRadius: "var(--button-radius)",
           backgroundColor: "var(--_button-loading-overlay-bg)",
@@ -102,7 +102,7 @@ module.exports = function ({ addComponents, theme }: any) {
         "&:hover": {
           "&:not([data-loading]):not(:disabled):not([data-disabled])": {
             "--_button-bg":
-              "var(--button-hover, var(--raikou-primary-color-filled-hover)",
+              "var(--button-hover, var(--raikou-primary-color-filled-hover))",
           },
         },
       },
@@ -110,7 +110,7 @@ module.exports = function ({ addComponents, theme }: any) {
         "&:active": {
           "&:not([data-loading]):not(:disabled):not([data-disabled])": {
             "--_button-bg":
-              "var(--button-hover, var(--raikou-primary-color-filled-hover)",
+              "var(--button-hover, var(--raikou-primary-color-filled-hover))",
           },
         },
       },

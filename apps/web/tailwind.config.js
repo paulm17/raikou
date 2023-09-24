@@ -1,8 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  corePlugins: {
-    preflight: true,
-  },
   content: [
     "./node_modules/@raikou/server/node_modules/@raikou/action-icon/dist/*.js",
     "./node_modules/@raikou/server/node_modules/@raikou/alert/dist/*.js",
@@ -85,6 +82,5 @@ module.exports = {
     "./node_modules/@raikou/client/node_modules/@raikou/tooltip/dist/*.js",
     "./app/**/*.tsx",
   ],
-  presets: [require("@raikou/system/plugin.js")],
-  plugins: [],
+  presets: [require("../../packages/raikou/system/dist/plugin")],
 };

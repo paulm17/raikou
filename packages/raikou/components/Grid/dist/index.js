@@ -114,7 +114,8 @@ function GridColVariables({
   var _a;
   const theme = (0, import_core.useRaikouTheme)();
   const ctx = useStore.getState();
-  const baseSpan = (0, import_core.getBaseValue)(span);
+  const baseValue = (0, import_core.getBaseValue)(span);
+  const baseSpan = baseValue === void 0 ? 12 : (0, import_core.getBaseValue)(span);
   const baseStyles = (0, import_core.filterProps)({
     "--col-order": (_a = (0, import_core.getBaseValue)(order)) == null ? void 0 : _a.toString(),
     "--col-flex-grow": getColumnFlexGrow(baseSpan, ctx.grow),

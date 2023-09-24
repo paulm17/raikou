@@ -242,7 +242,8 @@ var Spoiler = (0, import_core3.factory)((_props, ref) => {
     hideLabel,
     showLabel,
     children,
-    controlRef
+    controlRef,
+    transitionDuration
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -255,7 +256,8 @@ var Spoiler = (0, import_core3.factory)((_props, ref) => {
     "hideLabel",
     "showLabel",
     "children",
-    "controlRef"
+    "controlRef",
+    "transitionDuration"
   ]);
   const getStyles = (0, import_core3.useStyles)({
     name: "Spoiler",

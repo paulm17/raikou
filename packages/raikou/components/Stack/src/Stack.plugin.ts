@@ -5,7 +5,7 @@ module.exports = function ({ addComponents, theme }: any) {
       flexDirection: "column",
       alignItems: "var(--stack-align, stretch)",
       justifyContent: "var(--stack-justify, flex-start)",
-      gap: "var(--stack-gap, var(--raikou-spacing-md)",
+      gap: "var(--stack-gap, var(--raikou-spacing-md))",
     },
   });
 };

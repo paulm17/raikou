@@ -14,6 +14,9 @@ export default function Page() {
       <br />
       <br />
       <a href="/testing">Testing</a>
+      <br />
+      <br />
+      <a href="/visx">Charts</a>
     </p>
   );
 }

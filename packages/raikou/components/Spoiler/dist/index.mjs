@@ -225,7 +225,8 @@ var Spoiler = factory((_props, ref) => {
     hideLabel,
     showLabel,
     children,
-    controlRef
+    controlRef,
+    transitionDuration
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -238,7 +239,8 @@ var Spoiler = factory((_props, ref) => {
     "hideLabel",
     "showLabel",
     "children",
-    "controlRef"
+    "controlRef",
+    "transitionDuration"
   ]);
   const getStyles = useStyles2({
     name: "Spoiler",

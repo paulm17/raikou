@@ -6251,9 +6251,10 @@ function SimpleGridVariables({
 }) {
   var _a;
   const theme = (0, import_core39.useRaikouTheme)();
+  const _verticalSpacing = verticalSpacing === void 0 ? spacing : verticalSpacing;
   const baseStyles = (0, import_core39.filterProps)({
     "--sg-spacing-x": (0, import_core39.getSpacing)((0, import_core39.getBaseValue)(spacing)),
-    "--sg-spacing-y": (0, import_core39.getSpacing)((0, import_core39.getBaseValue)(verticalSpacing)),
+    "--sg-spacing-y": (0, import_core39.getSpacing)((0, import_core39.getBaseValue)(_verticalSpacing)),
     "--sg-cols": (_a = (0, import_core39.getBaseValue)(cols)) == null ? void 0 : _a.toString()
   });
   const queries = (0, import_core39.keys)(theme.breakpoints).reduce((acc, breakpoint) => {
@@ -6263,9 +6264,9 @@ function SimpleGridVariables({
     if (typeof spacing === "object" && spacing[breakpoint] !== void 0) {
       acc[breakpoint]["--sg-spacing-x"] = (0, import_core39.getSpacing)(spacing[breakpoint]);
     }
-    if (typeof verticalSpacing === "object" && verticalSpacing[breakpoint] !== void 0) {
+    if (typeof _verticalSpacing === "object" && _verticalSpacing[breakpoint] !== void 0) {
       acc[breakpoint]["--sg-spacing-y"] = (0, import_core39.getSpacing)(
-        verticalSpacing[breakpoint]
+        _verticalSpacing[breakpoint]
       );
     }
     if (typeof cols === "object" && cols[breakpoint] !== void 0) {
@@ -6286,8 +6287,7 @@ function SimpleGridVariables({
 // ../components/SimpleGrid/src/SimpleGrid.tsx
 var defaultProps27 = {
   cols: 1,
-  spacing: "md",
-  verticalSpacing: "md"
+  spacing: "md"
 };
 var SimpleGrid = (0, import_core40.factory)((_props, ref) => {
   const props = (0, import_core40.useProps)("SimpleGrid", defaultProps27, _props);

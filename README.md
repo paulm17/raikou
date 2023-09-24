@@ -301,6 +301,20 @@ Then update the RaikouProvider.
 </RaikouProvider>
 ```
 
+10. Improve DX for classes API, for VSCode.
+
+In the settings.json file, under .vscode folder. Add the following:
+
+```js
+   "tailwindCSS.includeLanguages": {
+      "javascript": "javascript react"
+   },
+   "tailwindCSS.classAttributes": ["className"],
+   "tailwindCSS.experimental.classRegex": [":\\s*?[\"'`]([^\"'`]*).*?"]
+```
+
+This will enable intellisense for tailwind styles when adding a new entry.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Cloning the repo

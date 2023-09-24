@@ -1573,7 +1573,7 @@ var require_Alert_plugin = __commonJS({
           marginTop: rem2("1px"),
           '[dir="rtl"] &': {
             marginRight: "0",
-            marginLeft: "var(--mantine-spacing-md)"
+            marginLeft: "var(--raikou-spacing-md)"
           }
         },
         ".alert-message": {
@@ -2228,7 +2228,7 @@ var require_Button_plugin = __commonJS({
           background: "var(--_button-bg, var(--button-bg, var(--raikou-primary-color-filled)))",
           border: `var(--_button-bd, var(--button-bd, ${rem2(
             "1px"
-          )} solid transparent)))`,
+          )} solid transparent))`,
           color: "var(--_button-color, var(--button-color, var(--raikou-color-white)))",
           height: "var(--button-height, var(--button-height-sm))",
           paddingLeft: "var(--_button-padding-left, var(--button-padding-x, var(--button-padding-x-sm)))",
@@ -2262,7 +2262,7 @@ var require_Button_plugin = __commonJS({
             transform: "none",
             "&::before": {
               content: '""',
-              position: "absolute",
+              position: "relative",
               inset: rem2("-1px"),
               borderRadius: "var(--button-radius)",
               backgroundColor: "var(--_button-loading-overlay-bg)"
@@ -2271,14 +2271,14 @@ var require_Button_plugin = __commonJS({
           "@media (hover: hover)": {
             "&:hover": {
               "&:not([data-loading]):not(:disabled):not([data-disabled])": {
-                "--_button-bg": "var(--button-hover, var(--raikou-primary-color-filled-hover)"
+                "--_button-bg": "var(--button-hover, var(--raikou-primary-color-filled-hover))"
               }
             }
           },
           "@media (hover: none)": {
             "&:active": {
               "&:not([data-loading]):not(:disabled):not([data-disabled])": {
-                "--_button-bg": "var(--button-hover, var(--raikou-primary-color-filled-hover)"
+                "--_button-bg": "var(--button-hover, var(--raikou-primary-color-filled-hover))"
               }
             }
           },
@@ -3654,7 +3654,7 @@ var require_Group_plugin = __commonJS({
           flexWrap: "var(--group-wrap, wrap)",
           justifyContent: "var(--group-justify, flex-start)",
           alignItems: "var(--group-align, center)",
-          gap: "var(--group-gap, var(--mantine-spacing-md)",
+          gap: "var(--group-gap, var(--raikou-spacing-md))",
           "&[data-grow]": {
             "& > *": {
               flexGrow: "1",
@@ -3856,7 +3856,7 @@ var require_Input_plugin = __commonJS({
           "--input-padding-y-xl": rem2("13px"),
           "--input-padding-y": "var(--input-padding-y-sm)",
           "--_input-height": "var(--input-height, var(--input-height-sm))",
-          "--_input-radius": "var(--input-radius, var(--mantine-radius-default))",
+          "--_input-radius": "var(--input-radius, var(--raikou-radius-default))",
           "--_input-cursor": "text",
           "--_input-text-align": "left",
           "--_input-line-height": `calc(var(--_input-height) - ${rem2("2px")})`,
@@ -3974,12 +3974,12 @@ var require_Input_plugin = __commonJS({
           height: "var(--_input-size)",
           minHeight: "var(--input-height)",
           lineHeight: "var(--_input-line-height)",
-          fontSize: "var(--input-fz, var(--input-fz, var(--raikou-font-size-sm))",
+          fontSize: "var(--input-fz, var(--input-fz, var(--raikou-font-size-sm)))",
           borderRadius: "var(--_input-radius)",
           paddingLeft: "var(--_input-padding-left)",
           paddingRight: "var(--_input-padding-right)",
-          paddingTop: `var(--input-padding-y, 0rem)`,
-          paddingBottom: `var(--input-padding-y, 0rem)`,
+          paddingTop: "var(--input-padding-y, 0rem)",
+          paddingBottom: "var(--input-padding-y, 0rem)",
           cursor: "var(--_input-cursor)",
           overflow: "var(--_input-overflow)",
           /* Used as data attribute in Textarea component, does not have associated prop on the Input component */
@@ -4082,7 +4082,7 @@ var require_Input_plugin = __commonJS({
         },
         ".inputWrapper-description": {
           color: "var(--raikou-color-dimmed)",
-          fontSize: `var(--input-description-size, calc(var(--mantine-font-size-sm) - ${rem2(
+          fontSize: `var(--input-description-size, calc(var(--raikou-font-size-sm) - ${rem2(
             "2px"
           )}))`
         }
@@ -4500,8 +4500,8 @@ var require_Modal_plugin = __commonJS({
           }
         },
         ".modal-header": {
-          borderTopLeftRadius: "var(--modal-radius, var(--mantine-radius-default))",
-          borderTopRightRadius: "var(--modal-radius, var(--mantine-radius-default))"
+          borderTopLeftRadius: "var(--modal-radius, var(--raikou-radius-default))",
+          borderTopRightRadius: "var(--modal-radius, var(--raikou-radius-default))"
         },
         ".modal-content": {
           flex: "var(--_content-flex, 0 0 var(--modal-size))",
@@ -4598,9 +4598,9 @@ var require_NavLink_plugin = __commonJS({
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".navLink-root.navLink-root": {
-          "--nl-bg": "var(--mantine-primary-color-light)",
-          "--nl-hover": "var(--mantine-primary-color-light-hover)",
-          "--nl-color": "var(--mantine-primary-color-light-color)",
+          "--nl-bg": "var(--raikou-primary-color-light)",
+          "--nl-hover": "var(--raikou-primary-color-light-hover)",
+          "--nl-color": "var(--raikou-primary-color-light-color)",
           display: "flex",
           alignItems: "center",
           width: "100%",
@@ -4710,7 +4710,7 @@ var require_NavLink_plugin = __commonJS({
           paddingRight: "var(--_children-pr, 0)",
           '[dir="rtl"] &': {
             "--_children-pl": "0",
-            "--_children-pr": "var(--nl-offset, var(--mantine-spacing-lg))"
+            "--_children-pr": "var(--nl-offset, var(--raikou-spacing-lg))"
           }
         },
         ".navLink-chevron": {
@@ -5138,12 +5138,15 @@ var require_PasswordInput_plugin = __commonJS({
           inset: "0",
           outline: "0",
           fontSize: "inherit",
+          lineHeight: "var(--raikou-line-height)",
+          height: "100%",
           color: "inherit",
           "[data-disabled] &, &:disabled": {
             cursor: "not-allowed"
           },
           "&::placeholder": {
-            color: "var(--_input-placeholder-color)"
+            color: "var(--_input-placeholder-color)",
+            opacity: "1"
           }
         },
         ".passwordInput-visibilityToggle": {
@@ -6393,7 +6396,7 @@ var require_Stack_plugin = __commonJS({
           flexDirection: "column",
           alignItems: "var(--stack-align, stretch)",
           justifyContent: "var(--stack-justify, flex-start)",
-          gap: "var(--stack-gap, var(--raikou-spacing-md)"
+          gap: "var(--stack-gap, var(--raikou-spacing-md))"
         }
       });
     };
@@ -6414,11 +6417,11 @@ var require_Stepper_plugin = __commonJS({
           "--stepper-icon-size-lg": rem2("48px"),
           "--stepper-icon-size-xl": rem2("52px"),
           "--stepper-icon-size": "var(--stepper-icon-size-md)",
-          "--stepper-color": "var(--mantine-primary-color-filled)",
-          "--stepper-content-padding": "var(--mantine-spacing-md)",
-          "--stepper-spacing": "var(--mantine-spacing-md)",
+          "--stepper-color": "var(--raikou-primary-color-filled)",
+          "--stepper-content-padding": "var(--raikou-spacing-md)",
+          "--stepper-spacing": "var(--raikou-spacing-md)",
           "--stepper-radius": rem2("1000px"),
-          "--stepper-fz": "var(--mantine-font-size-md)"
+          "--stepper-fz": "var(--raikou-font-size-md)"
         },
         ".stepper-steps": {
           display: "flex",
@@ -6671,7 +6674,7 @@ var require_Switch_plugin = __commonJS({
           "--switch-label-font-size": "var(--switch-label-font-size-sm)",
           "--switch-track-label-padding": "var(--switch-track-label-padding-sm)",
           "--switch-radius": rem2("1000px"),
-          "--switch-color": "var(--mantine-primary-color-filled)",
+          "--switch-color": "var(--raikou-primary-color-filled)",
           position: "relative"
         },
         ".switch-input": {
@@ -9279,6 +9282,9 @@ var require_RichTextEditor_plugin = __commonJS({
 
 // src/plugin.ts
 module.exports = {
+  corePlugins: {
+    preflight: false
+  },
   darkMode: ["class", '[data-raikou-color-scheme="dark"]'],
   plugins: [
     require_global_plugin(),
