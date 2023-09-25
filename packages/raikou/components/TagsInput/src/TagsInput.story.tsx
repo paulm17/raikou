@@ -35,6 +35,37 @@ export function Usage() {
   );
 }
 
+export function Clearable() {
+  return (
+    <div style={{ padding: 40 }}>
+      <TagsInput
+        placeholder="Clearable"
+        data={["React", "Angular", "Svelte"]}
+        defaultValue={["React"]}
+        clearable
+      />
+
+      <TagsInput
+        placeholder="Disabled"
+        data={["React", "Angular", "Svelte"]}
+        defaultValue={["React"]}
+        clearable
+        disabled
+        mt="md"
+      />
+
+      <TagsInput
+        placeholder="Read only"
+        data={["React", "Angular", "Svelte"]}
+        defaultValue={["React"]}
+        clearable
+        readOnly
+        mt="md"
+      />
+    </div>
+  );
+}
+
 export function Controlled() {
   const [value, setValue] = useState<string[]>(["React"]);
   return (

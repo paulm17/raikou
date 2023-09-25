@@ -23,6 +23,7 @@ import {
 import { __BaseInputProps, __InputStylesNames } from "../../Input/src";
 import { PillsInput } from "../../PillsInput/src";
 import { Pill } from "../../Pill/src";
+import { __CloseButtonProps } from "../../CloseButton/src";
 import { getSplittedTags } from "./get-splitted-tags";
 import { filterPickedTags } from "./filter-picked-tags";
 
@@ -68,6 +69,12 @@ export interface TagsInputProps
 
   /** Characters that should trigger tags split, `[',']` by default */
   splitChars?: string[];
+
+  /** Determines whether the clear button should be displayed in the right section when the component has value, `false` by default */
+  clearable?: boolean;
+
+  /** Props passed down to the clear button */
+  clearButtonProps?: __CloseButtonProps & ElementProps<"button">;
 
   /** Tags container component, defaults to `React.Fragment` */
   tagsContainer?(children: React.ReactNode): React.ReactNode;
@@ -148,6 +155,8 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     name,
     form,
     id,
+    clearable,
+    clearButtonProps,
     tagsContainer,
     ...others
   } = props;
@@ -278,6 +287,20 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     </Pill>
   ));
 
+  const clearButton = clearable &&
+    _value.length > 0 &&
+    !disabled &&
+    !readOnly && (
+      <Combobox.ClearButton
+        size={size as string}
+        {...clearButtonProps}
+        onClear={() => {
+          setValue([]);
+          setSearchValue("");
+        }}
+      />
+    );
+
   return (
     <>
       <Combobox
@@ -310,7 +333,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
             variant={variant}
             disabled={disabled}
             radius={radius}
-            rightSection={rightSection}
+            rightSection={rightSection || clearButton}
             rightSectionWidth={rightSectionWidth}
             rightSectionPointerEvents={rightSectionPointerEvents}
             rightSectionProps={rightSectionProps}

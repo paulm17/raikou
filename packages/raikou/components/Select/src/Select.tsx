@@ -10,6 +10,7 @@ import {
   useResolvedStylesApi,
 } from "@raikou/core";
 import { InputBase } from "../../InputBase/src";
+import { __CloseButtonProps } from "../../CloseButton/src";
 import {
   __InputStylesNames,
   __BaseInputProps,
@@ -65,6 +66,12 @@ export interface SelectProps
 
   /** Determines whether it should be possible to deselect value by clicking on the selected option, `true` by default */
   allowDeselect?: boolean;
+
+  /** Determines whether the clear button should be displayed in the right section when the component has value, `false` by default */
+  clearable?: boolean;
+
+  /** Props passed down to the clear button */
+  clearButtonProps?: __CloseButtonProps & ElementProps<"button">;
 }
 
 export type SelectFactory = Factory<{
@@ -123,10 +130,12 @@ export const Select = factory<SelectFactory>((_props, ref) => {
     error,
     rightSectionPointerEvents,
     id,
+    clearable,
+    clearButtonProps,
     ...others
   } = props;
 
-  const _id = useId();
+  const _id = useId(id);
   const parsedData = getParsedComboboxData(data);
   const optionsLockup = getOptionsLockup(parsedData);
 
@@ -176,7 +185,18 @@ export const Select = factory<SelectFactory>((_props, ref) => {
     if (typeof value === "string" && optionsLockup[value]) {
       setSearch(optionsLockup[value].label);
     }
-  }, [value]);
+  }, [value, optionsLockup]);
+
+  const clearButton = clearable && !!_value && !disabled && !readOnly && (
+    <Combobox.ClearButton
+      size={size as string}
+      {...clearButtonProps}
+      onClear={() => {
+        setValue(null);
+        setSearch("");
+      }}
+    />
+  );
 
   return (
     <>
@@ -205,8 +225,19 @@ export const Select = factory<SelectFactory>((_props, ref) => {
           <InputBase
             id={_id}
             ref={ref}
-            rightSection={rightSection || <Combobox.Chevron size={size} />}
-            rightSectionPointerEvents={rightSectionPointerEvents || "none"}
+            rightSection={
+              rightSection ||
+              clearButton || (
+                <Combobox.Chevron
+                  size={size}
+                  error={error}
+                  unstyled={unstyled}
+                />
+              )
+            }
+            rightSectionPointerEvents={
+              rightSectionPointerEvents || clearButton ? "all" : "none"
+            }
             {...others}
             size={size}
             __staticSelector="Select"

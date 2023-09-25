@@ -7,6 +7,7 @@ interface InputWrapperContextValue {
   offsetBottom: boolean;
   describedBy: string | undefined;
   inputId: string | undefined;
+  labelId: string | undefined;
   getStyles: GetStylesApi<InputWrapperFactory> | null;
 }
 
@@ -17,4 +18,5 @@ export const [InputWrapperProvider, useInputWrapperContext] =
     describedBy: undefined,
     getStyles: null,
     inputId: undefined,
+    labelId: undefined,
   });

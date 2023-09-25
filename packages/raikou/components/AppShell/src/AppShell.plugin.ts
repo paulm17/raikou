@@ -112,8 +112,7 @@ module.exports = function ({ addComponents, theme }: any) {
         "calc(var(--app-shell-header-offset, 0px) + var(--app-shell-padding))",
       paddingBottom:
         "calc(var(--app-shell-footer-offset, 0px) + var(--app-shell-padding))",
-      minHeight:
-        "calc(100dvh - var(--app-shell-header-offset, 0px) - var(--app-shell-footer-offset, 0px))",
+      minHeight: "100dvh",
       transitionProperty: "padding",
 
       '[dir="rtl"] &': {

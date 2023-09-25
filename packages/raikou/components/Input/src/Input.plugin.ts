@@ -189,7 +189,11 @@ module.exports = function ({ addComponents, theme }: any) {
 
       "&:focus, &:focus-within": {
         outline: "none",
-        borderColor: "var(--_input-bd-focus)",
+        "--_input-bd": "var(--_input-bd-focus)",
+
+        "[data-error] &": {
+          "--_input-bd": "var(--mantine-color-error)",
+        },
       },
 
       "&::placeholder": {

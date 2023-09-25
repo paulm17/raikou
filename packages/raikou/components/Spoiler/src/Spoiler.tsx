@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useElementSize } from "@raikou/hooks";
+import { useElementSize, useId } from "@raikou/hooks";
 import {
   Box,
   BoxProps,
@@ -81,6 +81,7 @@ export const Spoiler = factory<SpoilerFactory>((_props, ref) => {
     children,
     controlRef,
     transitionDuration,
+    id,
     ...others
   } = props;
 
@@ -100,32 +101,44 @@ export const Spoiler = factory<SpoilerFactory>((_props, ref) => {
     varsResolver,
   });
 
+  const _id = useId(id);
+  const regionId = `${_id}-region`;
   const [show, setShowState] = useState(initialState);
   const { ref: contentRef, height } = useElementSize();
   const spoiler = maxHeight! < height;
-
   const spoilerMoreContent = show ? hideLabel : showLabel;
 
-  const s = {
-    maxHeight: !show ? rem(maxHeight) : height ? rem(height) : undefined,
-  };
-
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
-      <div {...getStyles("content", { style: s })} data-reduce-motion>
-        <div ref={contentRef}>{children}</div>
-      </div>
-
+    <Box {...getStyles("root")} id={_id} ref={ref} {...others}>
       {spoiler && (
         <Anchor
           component="button"
+          type="button"
           ref={controlRef}
           onClick={() => setShowState((opened) => !opened)}
+          aria-expanded={show}
+          aria-controls={regionId}
           {...getStyles("control")}
         >
           {spoilerMoreContent}
         </Anchor>
       )}
+      <div
+        {...getStyles("content", {
+          style: {
+            maxHeight: !show
+              ? rem(maxHeight)
+              : height
+              ? rem(height)
+              : undefined,
+          },
+        })}
+        data-reduce-motion
+        role="region"
+        id={regionId}
+      >
+        <div ref={contentRef}>{children}</div>
+      </div>
     </Box>
   );
 });

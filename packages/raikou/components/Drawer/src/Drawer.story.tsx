@@ -3,6 +3,7 @@ import { useDisclosure } from "@raikou/hooks";
 import { Button } from "../../Button/src";
 import { ScrollArea } from "../../ScrollArea/src";
 import { Drawer } from "./Drawer";
+import { Tabs } from "../../Tabs/src";
 
 export default { title: "Drawer" };
 
@@ -31,6 +32,36 @@ export function Usage() {
         zIndex={73812}
       >
         <input data-autofocus />
+      </Drawer>
+    </div>
+  );
+}
+
+export function WithTabs() {
+  const [opened, { open, close }] = useDisclosure(true);
+  return (
+    <div style={{ padding: 40 }}>
+      <Button onClick={open}>Open drawer</Button>
+      <Drawer
+        opened={opened}
+        onClose={close}
+        title="Just a Drawer"
+        zIndex={73812}
+      >
+        <Tabs defaultValue="comment">
+          <Tabs.List>
+            <Tabs.Tab value="comment">Comment</Tabs.Tab>
+            <Tabs.Tab value="task">Task</Tabs.Tab>
+          </Tabs.List>
+
+          <Tabs.Panel value="comment">
+            <input />
+          </Tabs.Panel>
+
+          <Tabs.Panel value="task">
+            <input />
+          </Tabs.Panel>
+        </Tabs>
       </Drawer>
     </div>
   );

@@ -82,6 +82,7 @@ module.exports = function ({ addComponents, theme }: any) {
         "--_button-cursor": "not-allowed",
         "--_button-bg": "var(--_disabled-bg)",
         "--_button-color": "var(--_disabled-color)",
+        "--_button-bd": "transparent",
         transform: "none",
       },
 

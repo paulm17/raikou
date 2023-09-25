@@ -76,6 +76,7 @@ module.exports = function ({ addComponents, theme }: any) {
         "--_ai-cursor": "not-allowed",
         "--_ai-bg": "var(--_ai-disabled-bg)",
         "--_ai-color": "var(--_ai-disabled-color)",
+        "--ai-bd": `${rem("1px")} solid transparent !important`,
 
         "&:active": {
           transform: "none",

@@ -6,6 +6,7 @@ import {
   Input,
   InputWrapperProps,
 } from "../../../Input/src";
+import { InputsGroupFieldset } from "../../../InputsGroupFieldset/src";
 import { CheckboxGroupProvider } from "../CheckboxGroup.context";
 
 export type CheckboxGroupStylesNames = InputWrapperStylesNames;
@@ -78,7 +79,7 @@ export const CheckboxGroup = factory<CheckboxGroupFactory>((props, ref) => {
         labelElement="div"
         __staticSelector="CheckboxGroup"
       >
-        {children}
+        <InputsGroupFieldset role="group">{children}</InputsGroupFieldset>
       </Input.Wrapper>
     </CheckboxGroupProvider>
   );

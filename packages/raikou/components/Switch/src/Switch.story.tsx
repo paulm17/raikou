@@ -64,6 +64,7 @@ export function SwitchGroup() {
         defaultValue={["one", "three"]}
         m={4}
         label="Switch Group"
+        description="Some description"
         classNames={{ label: "test-label" }}
       >
         <Switch value="one" label="one" />
@@ -83,7 +84,7 @@ export function labelPosition() {
   );
 }
 
-export function WithDesciprtion() {
+export function WithDescription() {
   return (
     <Stack style={{ width: 300, padding: 20 }}>
       <Switch

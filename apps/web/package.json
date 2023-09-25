@@ -13,6 +13,7 @@
     "@raikou/server": "workspace:*",
     "@raikou/system": "workspace:*",
     "@raikou/hooks": "workspace:*",
+    "@raikou/visx": "workspace:*",
     "@raikou/global-store": "workspace:*",
     "@raikou/colors-generator": "workspace:*",
     "@tabler/icons-react": "^2.25.0",

@@ -42,12 +42,12 @@ module.exports = function ({ addComponents, theme }: any) {
 
       "@media (hover: hover)": {
         "&:hover": {
-          "--_tr-bg": "var(--_tr-hover-bg, transparent)",
+          "--_tr-bg": "var(--_tr-hover-bg, transparent) !important",
         },
       },
       "@media (hover: none)": {
         "&:active": {
-          "--_tr-bg": "var(--_tr-hover-bg, transparent)",
+          "--_tr-bg": "var(--_tr-hover-bg, transparent) !important",
         },
       },
 

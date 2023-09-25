@@ -7,6 +7,7 @@ import {
   InputWrapperProps,
 } from "../../../Input/src";
 import { RadioGroupProvider } from "../RadioGroup.context";
+import { InputsGroupFieldset } from "../../../InputsGroupFieldset/src";
 
 export type RadioGroupStylesNames = InputWrapperStylesNames;
 
@@ -78,7 +79,7 @@ export const RadioGroup = factory<RadioGroupFactory>((props, ref) => {
         labelElement="div"
         __staticSelector="RadioGroup"
       >
-        {children as any}
+        <InputsGroupFieldset role="radiogroup">{children}</InputsGroupFieldset>
       </Input.Wrapper>
     </RadioGroupProvider>
   );

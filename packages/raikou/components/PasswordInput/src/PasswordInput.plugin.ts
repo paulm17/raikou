@@ -36,6 +36,7 @@ module.exports = function ({ addComponents, theme }: any) {
       fontSize: "inherit",
       lineHeight: "var(--raikou-line-height)",
       height: "100%",
+      width: "100%",
       color: "inherit",
 
       "[data-disabled] &, &:disabled": {

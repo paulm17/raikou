@@ -48,9 +48,11 @@ const group = function ({ addComponents }: any) {
     },
     "@keyframes loader-dots-animation": {
       "0%, 100%": {
+        transform: "scale(1)",
         opacity: "1",
       },
       "50%": {
+        transform: "scale(0.6)",
         opacity: "0.5",
       },
     },
@@ -59,7 +61,6 @@ const group = function ({ addComponents }: any) {
       justifyContent: "center",
       alignItems: "center",
       gap: "calc(var(--loader-size) / 10)",
-      flexWrap: "wrap",
       position: "relative",
       width: "var(--loader-size)",
       height: "var(--loader-size)",
@@ -69,22 +70,10 @@ const group = function ({ addComponents }: any) {
       height: "calc(var(--loader-size) / 3 - var(--loader-size) / 15)",
       borderRadius: "50%",
       background: "var(--loader-color)",
-      animation: "loader-dots-animation 1200ms linear infinite",
+      animation: "loader-dots-animation 0.8s linear infinite",
 
-      "&:nth-child(2), &:nth-child(4)": {
+      "&:nth-child(2)": {
         animationDelay: "-400ms",
-      },
-
-      "&:nth-child(3), &:nth-child(5), &:nth-child(7)": {
-        animationDelay: "-800ms",
-      },
-
-      "&:nth-child(6), &:nth-child(8)": {
-        animationDelay: "-1200ms",
-      },
-
-      "&:nth-child(9)": {
-        animationDelay: "-1600ms",
       },
     },
     "@keyframes oval-loader-animation": {

@@ -1,24 +1,28 @@
 import React, { forwardRef } from "react";
 import cx from "clsx";
 import { BoxProps, ElementProps } from "@raikou/core";
-import { CloseButton } from "../../CloseButton/src";
+import { CloseButton, CloseButtonProps } from "../../CloseButton/src";
 import { useModalBaseContext } from "./ModalBase.context";
 
+// @ts-ignore
 export interface ModalBaseCloseButtonProps
-  extends BoxProps,
+  extends CloseButtonProps,
+    BoxProps,
     ElementProps<"button"> {}
 
 export const ModalBaseCloseButton = forwardRef<
   HTMLButtonElement,
   ModalBaseCloseButtonProps
->(({ className, ...others }, ref) => {
+>(({ className, onClick, ...others }, ref) => {
   const ctx = useModalBaseContext();
   return (
-    // @ts-ignore
     <CloseButton
       ref={ref}
       {...others}
-      onClick={ctx.onClose}
+      onClick={(event) => {
+        ctx.onClose();
+        onClick?.(event);
+      }}
       className={cx("modalBase-close", className)}
     />
   );

@@ -7,6 +7,7 @@ import {
   InputWrapperProps,
 } from "../../../Input/src";
 import { SwitchGroupProvider } from "../SwitchGroup.context";
+import { InputsGroupFieldset } from "../../../InputsGroupFieldset/src";
 
 export type SwitchGroupStylesNames = InputWrapperStylesNames;
 
@@ -77,7 +78,7 @@ export const SwitchGroup = factory<SwitchGroupFactory>((props, ref) => {
         labelElement="div"
         __staticSelector="SwitchGroup"
       >
-        {children}
+        <InputsGroupFieldset role="group">{children}</InputsGroupFieldset>
       </Input.Wrapper>
     </SwitchGroupProvider>
   );

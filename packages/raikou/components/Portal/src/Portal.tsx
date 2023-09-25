@@ -1,7 +1,19 @@
 import React, { useRef, useState, forwardRef } from "react";
 import { createPortal } from "react-dom";
-import { useIsomorphicEffect } from "@raikou/hooks";
+import { useIsomorphicEffect, assignRef } from "@raikou/hooks";
 import { useProps } from "@raikou/core";
+
+function createPortalNode(props: React.ComponentPropsWithoutRef<"div">) {
+  const node = document.createElement("div");
+  node.setAttribute("data-portal", "true");
+  // eslint-disable-next-line
+  typeof props.className === "string" && node.classList.add(props.className);
+  // eslint-disable-next-line
+  typeof props.style === "object" && Object.assign(node.style, props.style);
+  // eslint-disable-next-line
+  typeof props.id === "string" && node.setAttribute("id", props.id);
+  return node;
+}
 
 export interface PortalProps extends React.ComponentPropsWithoutRef<"div"> {
   /** Portal children, for example, custom modal or popover */
@@ -15,7 +27,7 @@ const defaultProps: Partial<PortalProps> = {};
 
 // @ts-ignore
 export const Portal = forwardRef<HTMLDivElement, PortalProps>((props, ref) => {
-  const { children, target, className, ...others } = useProps(
+  const { children, target, ...others } = useProps(
     "Portal",
     defaultProps,
     props,
@@ -27,10 +39,12 @@ export const Portal = forwardRef<HTMLDivElement, PortalProps>((props, ref) => {
   useIsomorphicEffect(() => {
     setMounted(true);
     nodeRef.current = !target
-      ? document.createElement("div")
+      ? createPortalNode(others)
       : typeof target === "string"
       ? document.querySelector(target)
       : target;
+
+    assignRef(ref, nodeRef.current);
 
     if (!target && nodeRef.current) {
       document.body.appendChild(nodeRef.current);
@@ -47,12 +61,7 @@ export const Portal = forwardRef<HTMLDivElement, PortalProps>((props, ref) => {
     return null;
   }
 
-  return createPortal(
-    <div className={className} ref={ref} {...others}>
-      {children}
-    </div>,
-    nodeRef.current,
-  );
+  return createPortal(<>{children}</>, nodeRef.current);
 });
 
 Portal.displayName = "@raikou/core/Portal";

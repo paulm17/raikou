@@ -1,0 +1,12 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@raikou/tests": ["../tests/src"],
+      "@visx/group": ["./src/group"],
+      "@visx/shape": ["./src/shape"],
+      "@visx/scale": ["./src/scale"]
+    }
+  },
+  "include": ["src", "index.ts"]
+}

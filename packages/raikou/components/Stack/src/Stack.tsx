@@ -39,7 +39,11 @@ export type StackFactory = Factory<{
   vars: StackCssVariables;
 }>;
 
-const defaultProps: Partial<StackProps> = {};
+const defaultProps: Partial<StackProps> = {
+  gap: "md",
+  align: "stretch",
+  justify: "flex-start",
+};
 
 const varsResolver = createVarsResolver<StackFactory>(
   (_, { gap, align, justify }) => ({

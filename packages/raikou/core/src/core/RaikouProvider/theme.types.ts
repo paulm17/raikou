@@ -141,12 +141,15 @@ export interface HeadingStyle {
 }
 
 export type RaikouSize = "xs" | "sm" | "md" | "lg" | "xl";
-export type RaikouBreakpointsValues = Record<RaikouSize, string>;
-export type RaikouFontSizesValues = Record<RaikouSize, string>;
-export type RaikouRadiusValues = Record<RaikouSize, string>;
-export type RaikouSpacingValues = Record<RaikouSize, string>;
-export type RaikouShadowsValues = Record<RaikouSize, string>;
-export type RaikouLineHeightValues = Record<RaikouSize, string>;
+export type RaikouBreakpointsValues = Record<
+  RaikouSize | (string & {}),
+  string
+>;
+export type RaikouFontSizesValues = Record<RaikouSize | (string & {}), string>;
+export type RaikouRadiusValues = Record<RaikouSize | (string & {}), string>;
+export type RaikouSpacingValues = Record<RaikouSize | (string & {}), string>;
+export type RaikouShadowsValues = Record<RaikouSize | (string & {}), string>;
+export type RaikouLineHeightValues = Record<RaikouSize | (string & {}), string>;
 
 export type RaikouBreakpoint = keyof RaikouBreakpointsValues;
 export type RaikouFontSize = keyof RaikouFontSizesValues;
@@ -155,7 +158,9 @@ export type RaikouSpacing = keyof RaikouSpacingValues | (string & {}) | number;
 export type RaikouShadow = keyof RaikouShadowsValues | (string & {});
 export type RaikouLineHeight = keyof RaikouLineHeightValues;
 
-export type RaikouThemeOther = Record<string, any>;
+export interface RaikouThemeOther {
+  [key: string]: any;
+}
 
 export interface RaikouGradient {
   from: string;
@@ -186,7 +191,7 @@ export interface RaikouPrimaryShade {
 
 export type DefaultRaikouColor = "blue" | (string & {});
 
-export type RaikouThemeColorsOverride = {};
+export interface RaikouThemeColorsOverride {}
 
 export type RaikouThemeColors = RaikouThemeColorsOverride extends {
   colors: Record<infer CustomColors, RaikouColorsTuple>;

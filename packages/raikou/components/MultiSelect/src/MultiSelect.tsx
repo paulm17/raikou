@@ -23,6 +23,7 @@ import {
 import { __BaseInputProps, __InputStylesNames } from "../../Input/src";
 import { PillsInput } from "../../PillsInput/src";
 import { Pill } from "../../Pill/src";
+import { __CloseButtonProps } from "../../CloseButton/src";
 import { filterPickedValues } from "./filter-picked-values";
 
 export type MultiSelectStylesNames =
@@ -73,6 +74,12 @@ export interface MultiSelectProps
 
   /** Determines whether picked options should be removed from the options list, `false` by default */
   hidePickedOptions?: boolean;
+
+  /** Determines whether the clear button should be displayed in the right section when the component has value, `false` by default */
+  clearable?: boolean;
+
+  /** Props passed down to the clear button */
+  clearButtonProps?: __CloseButtonProps & ElementProps<"button">;
 }
 
 export type MultiSelectFactory = Factory<{
@@ -151,6 +158,8 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
     name,
     form,
     id,
+    clearable,
+    clearButtonProps,
     ...others
   } = props;
 
@@ -226,6 +235,20 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
     </Pill>
   ));
 
+  const clearButton = clearable &&
+    _value.length > 0 &&
+    !disabled &&
+    !readOnly && (
+      <Combobox.ClearButton
+        size={size as string}
+        {...clearButtonProps}
+        onClear={() => {
+          setValue([]);
+          setSearchValue("");
+        }}
+      />
+    );
+
   return (
     <>
       <Combobox
@@ -270,7 +293,8 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
             disabled={disabled}
             radius={radius}
             rightSection={
-              rightSection || (
+              rightSection ||
+              clearButton || (
                 <Combobox.Chevron
                   size={size}
                   error={error}
@@ -279,7 +303,9 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
               )
             }
             rightSectionWidth={rightSectionWidth}
-            rightSectionPointerEvents={rightSectionPointerEvents || "none"}
+            rightSectionPointerEvents={
+              rightSectionPointerEvents || clearButton ? "all" : "none"
+            }
             rightSectionProps={rightSectionProps}
             leftSection={leftSection}
             leftSectionWidth={leftSectionWidth}

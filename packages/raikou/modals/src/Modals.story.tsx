@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 import React, { useState } from "react";
+import { useDisclosure } from "@raikou/hooks";
 import { Button } from "../../components/Button/src";
+import { Tabs } from "../../components/Tabs/src";
 import { Text } from "../../components/Text/src";
 import { Group } from "../../components/Group/src";
 import { Modal } from "../../components/Modal/src";
@@ -16,6 +18,36 @@ import {
 } from "./index";
 
 export default { title: "Modals manager" };
+
+export function WithTabs() {
+  const [opened, { open, close }] = useDisclosure(true);
+  return (
+    <div style={{ padding: 40 }}>
+      <Button onClick={open}>Open modal</Button>
+      <Modal
+        opened={opened}
+        onClose={close}
+        title="Just a Modal"
+        zIndex={73812}
+      >
+        <Tabs defaultValue="comment">
+          <Tabs.List>
+            <Tabs.Tab value="comment">Comment</Tabs.Tab>
+            <Tabs.Tab value="task">Task</Tabs.Tab>
+          </Tabs.List>
+
+          <Tabs.Panel value="comment">
+            <input />
+          </Tabs.Panel>
+
+          <Tabs.Panel value="task">
+            <input />
+          </Tabs.Panel>
+        </Tabs>
+      </Modal>
+    </div>
+  );
+}
 
 export function Usage() {
   const showContextModal = () =>

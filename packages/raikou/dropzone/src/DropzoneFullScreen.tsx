@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   BoxProps,
@@ -103,7 +103,7 @@ export const DropzoneFullScreen = factory<DropzoneFullScreenFactory>(
         props,
       });
 
-    const [counter, setCounter] = React.useState(0);
+    const [counter, setCounter] = useState(0);
     const [visible, { open, close }] = useDisclosure(false);
 
     const handleDragEnter = (event: DragEvent) => {
@@ -154,10 +154,12 @@ export const DropzoneFullScreen = factory<DropzoneFullScreenFactory>(
             onDrop={(files: any) => {
               onDrop?.(files);
               close();
+              setCounter(0);
             }}
             onReject={(files: any) => {
               onReject?.(files);
               close();
+              setCounter(0);
             }}
           />
         </Box>

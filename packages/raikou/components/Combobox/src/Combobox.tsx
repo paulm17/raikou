@@ -30,6 +30,7 @@ import { ComboboxHeader } from "./ComboboxHeader/ComboboxHeader";
 import { ComboboxEventsTarget } from "./ComboboxEventsTarget/ComboboxEventsTarget";
 import { ComboboxDropdownTarget } from "./ComboboxDropdownTarget/ComboboxDropdownTarget";
 import { ComboboxGroup } from "./ComboboxGroup/ComboboxGroup";
+import { ComboboxClearButton } from "./ComboboxClearButton/ComboboxClearButton";
 
 export type ComboboxStylesNames =
   | "options"
@@ -204,3 +205,4 @@ Combobox.Header = ComboboxHeader;
 Combobox.EventsTarget = ComboboxEventsTarget;
 Combobox.DropdownTarget = ComboboxDropdownTarget;
 Combobox.Group = ComboboxGroup;
+Combobox.ClearButton = ComboboxClearButton;

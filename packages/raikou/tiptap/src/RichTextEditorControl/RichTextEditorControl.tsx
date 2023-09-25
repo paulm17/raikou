@@ -47,6 +47,7 @@ export const RichTextEditorControl = factory<RichTextEditorControlFactory>(
       vars,
       interactive,
       active,
+      onMouseDown,
       ...others
     } = props;
     const ctx = useRichTextEditorContext();
@@ -62,6 +63,10 @@ export const RichTextEditorControl = factory<RichTextEditorControlFactory>(
         aria-pressed={(active && interactive) || undefined}
         aria-hidden={!interactive || undefined}
         ref={ref}
+        onMouseDown={(event) => {
+          event.preventDefault();
+          onMouseDown?.(event);
+        }}
       />
     );
   },
