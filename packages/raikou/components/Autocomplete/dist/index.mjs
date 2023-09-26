@@ -51,11 +51,11 @@ var __async = (__this, __arguments, generator) => {
 };
 
 // src/Autocomplete.tsx
-import React48, { useEffect as useEffect15 } from "react";
+import React52, { useEffect as useEffect15 } from "react";
 import { useUncontrolled as useUncontrolled3, useId as useId6 } from "@raikou/hooks";
 import {
   factory as factory21,
-  useProps as useProps27,
+  useProps as useProps29,
   useResolvedStylesApi
 } from "@raikou/core";
 
@@ -116,7 +116,8 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetTop: false,
   describedBy: void 0,
   getStyles: null,
-  inputId: void 0
+  inputId: void 0,
+  labelId: void 0
 });
 
 // ../Input/src/InputLabel/InputLabel.tsx
@@ -533,12 +534,13 @@ var InputWrapper = factory5((_props, ref) => {
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
+  const labelId = (labelProps == null ? void 0 : labelProps.id) || `${idBase}-label`;
   const _label = label && /* @__PURE__ */ React7.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
       labelElement,
-      id: `${idBase}-label`,
+      id: labelId,
       htmlFor: inputId,
       required: isRequired
     }, sharedProps), labelProps),
@@ -584,7 +586,8 @@ var InputWrapper = factory5((_props, ref) => {
       value: __spreadValues({
         getStyles,
         describedBy,
-        inputId
+        inputId,
+        labelId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
     /* @__PURE__ */ React7.createElement(
@@ -773,8 +776,8 @@ import {
   extractStyleProps as extractStyleProps2,
   useProps as useProps7
 } from "@raikou/core";
-function useInputProps(component, defaultProps28, _props) {
-  const props = useProps7(component, defaultProps28, _props);
+function useInputProps(component, defaultProps30, _props) {
+  const props = useProps7(component, defaultProps30, _props);
   const _a = props, {
     label,
     description,
@@ -997,14 +1000,14 @@ var ComboboxChevron = factory6(
 ComboboxChevron.displayName = "@raikou/core/ComboboxChevron";
 
 // ../Combobox/src/Combobox.tsx
-import React32 from "react";
+import React36 from "react";
 import {
-  useProps as useProps24,
-  useStyles as useStyles9,
-  createVarsResolver as createVarsResolver8,
+  useProps as useProps26,
+  useStyles as useStyles11,
+  createVarsResolver as createVarsResolver9,
   getFontSize as getFontSize6,
-  rem as rem8,
-  getSize as getSize3
+  rem as rem9,
+  getSize as getSize4
 } from "@raikou/core";
 
 // ../Popover/src/Popover.tsx
@@ -3073,8 +3076,10 @@ function usePopover(options) {
   });
   const onClose = () => {
     var _a;
-    (_a = options.onClose) == null ? void 0 : _a.call(options);
-    setOpened(false);
+    if (_opened) {
+      (_a = options.onClose) == null ? void 0 : _a.call(options);
+      setOpened(false);
+    }
   };
   const onToggle = () => {
     var _a, _b;
@@ -3210,20 +3215,29 @@ import {
 // ../Portal/src/Portal.tsx
 import React15, { useRef as useRef4, useState as useState5, forwardRef as forwardRef3 } from "react";
 import { createPortal as createPortal2 } from "react-dom";
-import { useIsomorphicEffect } from "@raikou/hooks";
+import { useIsomorphicEffect, assignRef } from "@raikou/hooks";
 import { useProps as useProps10 } from "@raikou/core";
+function createPortalNode(props) {
+  const node = document.createElement("div");
+  node.setAttribute("data-portal", "true");
+  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.style === "object" && Object.assign(node.style, props.style);
+  typeof props.id === "string" && node.setAttribute("id", props.id);
+  return node;
+}
 var defaultProps10 = {};
 var Portal = forwardRef3((props, ref) => {
   const _a = useProps10(
     "Portal",
     defaultProps10,
     props
-  ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
+  ), { children, target } = _a, others = __objRest(_a, ["children", "target"]);
   const [mounted, setMounted] = useState5(false);
   const nodeRef = useRef4(null);
   useIsomorphicEffect(() => {
     setMounted(true);
-    nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
+    nodeRef.current = !target ? createPortalNode(others) : typeof target === "string" ? document.querySelector(target) : target;
+    assignRef(ref, nodeRef.current);
     if (!target && nodeRef.current) {
       document.body.appendChild(nodeRef.current);
     }
@@ -3236,10 +3250,7 @@ var Portal = forwardRef3((props, ref) => {
   if (!mounted || !nodeRef.current) {
     return null;
   }
-  return createPortal2(
-    /* @__PURE__ */ React15.createElement("div", __spreadValues({ className, ref }, others), children),
-    nodeRef.current
-  );
+  return createPortal2(/* @__PURE__ */ React15.createElement(React15.Fragment, null, children), nodeRef.current);
 });
 Portal.displayName = "@raikou/core/Portal";
 
@@ -4584,29 +4595,227 @@ var ComboboxGroup = factory19((props, ref) => {
 });
 ComboboxGroup.displayName = "@raikou/core/ComboboxGroup";
 
-// ../Combobox/src/Combobox.tsx
+// ../Combobox/src/ComboboxClearButton/ComboboxClearButton.tsx
+import React35, { forwardRef as forwardRef5 } from "react";
+
+// ../CloseButton/src/CloseIcon.tsx
+import React32, { forwardRef as forwardRef4 } from "react";
+var CloseIcon = forwardRef4(
+  (_a, ref) => {
+    var _b = _a, { size: size2 = "var(--cb-icon-size, 70%)", style } = _b, others = __objRest(_b, ["size", "style"]);
+    return /* @__PURE__ */ React32.createElement(
+      "svg",
+      __spreadValues({
+        viewBox: "0 0 15 15",
+        fill: "none",
+        xmlns: "http://www.w3.org/2000/svg",
+        style: __spreadProps(__spreadValues({}, style), { width: size2, height: size2 }),
+        ref
+      }, others),
+      /* @__PURE__ */ React32.createElement(
+        "path",
+        {
+          d: "M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z",
+          fill: "currentColor",
+          fillRule: "evenodd",
+          clipRule: "evenodd"
+        }
+      )
+    );
+  }
+);
+CloseIcon.displayName = "@raikou/core/CloseIcon";
+
+// ../CloseButton/src/CloseButton.tsx
+import React34 from "react";
+import {
+  polymorphicFactory as polymorphicFactory4,
+  useProps as useProps25,
+  rem as rem8,
+  getSize as getSize3,
+  getRadius as getRadius3,
+  createVarsResolver as createVarsResolver8,
+  useStyles as useStyles10
+} from "@raikou/core";
+
+// ../UnstyledButton/src/UnstyledButton.tsx
+import React33 from "react";
+import {
+  Box as Box15,
+  useProps as useProps24,
+  useStyles as useStyles9,
+  polymorphicFactory as polymorphicFactory3
+} from "@raikou/core";
 var defaultProps24 = {
+  __staticSelector: "UnstyledButton"
+};
+var UnstyledButton = polymorphicFactory3(
+  (_props, ref) => {
+    const props = useProps24("UnstyledButton", defaultProps24, _props);
+    const _a = props, {
+      className,
+      component = "button",
+      __staticSelector,
+      unstyled,
+      classNames,
+      styles,
+      style
+    } = _a, others = __objRest(_a, [
+      "className",
+      "component",
+      "__staticSelector",
+      "unstyled",
+      "classNames",
+      "styles",
+      "style"
+    ]);
+    const getStyles = useStyles9({
+      name: __staticSelector,
+      props,
+      classes: {
+        root: "unstyled-button-root"
+      },
+      className,
+      style,
+      classNames,
+      styles,
+      unstyled
+    });
+    return /* @__PURE__ */ React33.createElement(
+      Box15,
+      __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { focusable: true })), {
+        component,
+        ref,
+        type: component === "button" ? "button" : void 0
+      }), others)
+    );
+  }
+);
+UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+
+// ../CloseButton/src/CloseButton.tsx
+var defaultProps25 = {
+  variant: "subtle",
+  size: "md"
+};
+var varsResolver8 = createVarsResolver8(
+  (_, { size: size2, radius, iconSize }) => ({
+    root: {
+      "--cb-size": getSize3(size2, "cb-size"),
+      "--cb-radius": radius === void 0 ? void 0 : getRadius3(radius),
+      "--cb-icon-size": rem8(iconSize)
+    }
+  })
+);
+var CloseButton = polymorphicFactory4(
+  (_props, ref) => {
+    const props = useProps25("CloseButton", defaultProps25, _props);
+    const _a = props, {
+      iconSize,
+      children,
+      vars,
+      radius,
+      className,
+      classNames,
+      style,
+      styles,
+      unstyled,
+      "data-disabled": dataDisabled,
+      disabled,
+      variant
+    } = _a, others = __objRest(_a, [
+      "iconSize",
+      "children",
+      "vars",
+      "radius",
+      "className",
+      "classNames",
+      "style",
+      "styles",
+      "unstyled",
+      "data-disabled",
+      "disabled",
+      "variant"
+    ]);
+    const getStyles = useStyles10({
+      name: "CloseButton",
+      props,
+      className,
+      style,
+      classes: {
+        root: "closeButton-root"
+      },
+      classNames,
+      styles,
+      unstyled,
+      vars,
+      varsResolver: varsResolver8
+    });
+    return /* @__PURE__ */ React34.createElement(
+      UnstyledButton,
+      __spreadValues(__spreadProps(__spreadValues({
+        ref
+      }, others), {
+        unstyled,
+        variant,
+        disabled,
+        mod: { disabled: disabled || dataDisabled }
+      }), getStyles("root", { variant, active: true })),
+      /* @__PURE__ */ React34.createElement(CloseIcon, null),
+      children
+    );
+  }
+);
+CloseButton.displayName = "@raikou/core/CloseButton";
+
+// ../Combobox/src/ComboboxClearButton/ComboboxClearButton.tsx
+var ComboboxClearButton = forwardRef5((_a, ref) => {
+  var _b = _a, { size: size2, onMouseDown, onClick, onClear } = _b, others = __objRest(_b, ["size", "onMouseDown", "onClick", "onClear"]);
+  return /* @__PURE__ */ React35.createElement(
+    CloseButton,
+    __spreadProps(__spreadValues({
+      ref,
+      size: size2 || "sm",
+      variant: "transparent",
+      tabIndex: -1,
+      "aria-hidden": true
+    }, others), {
+      onMouseDown: (event) => {
+        event.preventDefault();
+        onMouseDown == null ? void 0 : onMouseDown(event);
+      },
+      onClick: (event) => {
+        onClear();
+        onClick == null ? void 0 : onClick(event);
+      }
+    })
+  );
+});
+ComboboxClearButton.displayName = "@mantine/core/ComboboxClearButton";
+
+// ../Combobox/src/Combobox.tsx
+var defaultProps26 = {
   keepMounted: true,
   withinPortal: true,
   resetSelectionOnOptionHover: false,
   width: "target",
   transitionProps: { transition: "fade", duration: 0 }
 };
-var varsResolver8 = createVarsResolver8(
+var varsResolver9 = createVarsResolver9(
   (_, { size: size2, dropdownPadding }) => ({
     options: {
       "--combobox-option-fz": getFontSize6(size2),
-      "--combobox-option-padding": getSize3(size2, "combobox-option-padding")
+      "--combobox-option-padding": getSize4(size2, "combobox-option-padding")
     },
     dropdown: {
-      "--combobox-padding": dropdownPadding === void 0 ? void 0 : rem8(dropdownPadding),
+      "--combobox-padding": dropdownPadding === void 0 ? void 0 : rem9(dropdownPadding),
       "--combobox-option-fz": getFontSize6(size2),
-      "--combobox-option-padding": getSize3(size2, "combobox-option-padding")
+      "--combobox-option-padding": getSize4(size2, "combobox-option-padding")
     }
   })
 );
 function Combobox(_props) {
-  const props = useProps24("Combobox", defaultProps24, _props);
+  const props = useProps26("Combobox", defaultProps26, _props);
   const _a = props, {
     classNames,
     styles,
@@ -4636,7 +4845,7 @@ function Combobox(_props) {
   ]);
   const uncontrolledStore = useCombobox();
   const store = controlledStore || uncontrolledStore;
-  const getStyles = useStyles9({
+  const getStyles = useStyles11({
     name: __staticSelector || "Combobox",
     classes: {
       dropdown: "comboBox-dropdown",
@@ -4654,9 +4863,9 @@ function Combobox(_props) {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver8
+    varsResolver: varsResolver9
   });
-  return /* @__PURE__ */ React32.createElement(
+  return /* @__PURE__ */ React36.createElement(
     ComboboxProvider,
     {
       value: {
@@ -4668,7 +4877,7 @@ function Combobox(_props) {
         readOnly
       }
     },
-    /* @__PURE__ */ React32.createElement(
+    /* @__PURE__ */ React36.createElement(
       Popover,
       __spreadProps(__spreadValues({
         opened: store.dropdownOpened
@@ -4695,23 +4904,24 @@ Combobox.Header = ComboboxHeader;
 Combobox.EventsTarget = ComboboxEventsTarget;
 Combobox.DropdownTarget = ComboboxDropdownTarget;
 Combobox.Group = ComboboxGroup;
+Combobox.ClearButton = ComboboxClearButton;
 
 // ../Combobox/src/OptionsDropdown/OptionsDropdown.tsx
-import React47 from "react";
+import React51 from "react";
 
 // ../ScrollArea/src/ScrollArea.tsx
-import React45, { useState as useState15 } from "react";
+import React49, { useState as useState15 } from "react";
 import {
-  Box as Box17,
+  Box as Box18,
   factory as factory20,
-  useProps as useProps26,
-  useStyles as useStyles10,
-  rem as rem9,
-  createVarsResolver as createVarsResolver9
+  useProps as useProps28,
+  useStyles as useStyles12,
+  rem as rem10,
+  createVarsResolver as createVarsResolver10
 } from "@raikou/core";
 
 // ../ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbar.tsx
-import React40 from "react";
+import React44 from "react";
 
 // ../ScrollArea/src/ScrollArea.context.ts
 var [ScrollAreaProvider, useScrollAreaContext] = createSafeContext(
@@ -4719,15 +4929,15 @@ var [ScrollAreaProvider, useScrollAreaContext] = createSafeContext(
 );
 
 // ../ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarVisible.tsx
-import React36, { useRef as useRef10, useState as useState10, forwardRef as forwardRef7 } from "react";
+import React40, { useRef as useRef10, useState as useState10, forwardRef as forwardRef9 } from "react";
 import { useDirection as useDirection3 } from "@raikou/core";
 
 // ../ScrollArea/src/ScrollAreaScrollbar/ScrollbarX.tsx
-import React34, { forwardRef as forwardRef5, useRef as useRef8, useState as useState9, useEffect as useEffect10 } from "react";
+import React38, { forwardRef as forwardRef7, useRef as useRef8, useState as useState9, useEffect as useEffect10 } from "react";
 import { useMergedRef as useMergedRef8 } from "@raikou/hooks";
 
 // ../ScrollArea/src/ScrollAreaScrollbar/Scrollbar.tsx
-import React33, { useEffect as useEffect9, forwardRef as forwardRef4 } from "react";
+import React37, { useEffect as useEffect9, forwardRef as forwardRef6 } from "react";
 import {
   useMergedRef as useMergedRef7,
   useCallbackRef as useCallbackRef2,
@@ -4852,7 +5062,7 @@ function addUnlinkedScrollListener(node, handler = () => {
 }
 
 // ../ScrollArea/src/ScrollAreaScrollbar/Scrollbar.tsx
-var Scrollbar = forwardRef4(
+var Scrollbar = forwardRef6(
   (props, forwardedRef) => {
     const _a = props, {
       sizes,
@@ -4876,15 +5086,15 @@ var Scrollbar = forwardRef4(
       "onResize"
     ]);
     const context = useScrollAreaContext();
-    const [scrollbar, setScrollbar] = React33.useState(
+    const [scrollbar, setScrollbar] = React37.useState(
       null
     );
     const composeRefs = useMergedRef7(
       forwardedRef,
       (node) => setScrollbar(node)
     );
-    const rectRef = React33.useRef(null);
-    const prevWebkitUserSelectRef = React33.useRef("");
+    const rectRef = React37.useRef(null);
+    const prevWebkitUserSelectRef = React37.useRef("");
     const { viewport } = context;
     const maxScrollPos = sizes.content - sizes.viewport;
     const handleWheelScroll = useCallbackRef2(onWheelScroll);
@@ -4912,7 +5122,7 @@ var Scrollbar = forwardRef4(
     useEffect9(handleThumbPositionChange, [sizes, handleThumbPositionChange]);
     useResizeObserver(scrollbar, handleResize);
     useResizeObserver(context.content, handleResize);
-    return /* @__PURE__ */ React33.createElement(
+    return /* @__PURE__ */ React37.createElement(
       ScrollbarProvider,
       {
         value: {
@@ -4924,7 +5134,7 @@ var Scrollbar = forwardRef4(
           onThumbPointerDown: useCallbackRef2(onThumbPointerDown)
         }
       },
-      /* @__PURE__ */ React33.createElement(
+      /* @__PURE__ */ React37.createElement(
         "div",
         __spreadProps(__spreadValues({}, scrollbarProps), {
           ref: composeRefs,
@@ -4959,7 +5169,7 @@ var Scrollbar = forwardRef4(
 );
 
 // ../ScrollArea/src/ScrollAreaScrollbar/ScrollbarX.tsx
-var ScrollAreaScrollbarX = forwardRef5((props, forwardedRef) => {
+var ScrollAreaScrollbarX = forwardRef7((props, forwardedRef) => {
   const _a = props, { sizes, onSizesChange, style } = _a, others = __objRest(_a, ["sizes", "onSizesChange", "style"]);
   const ctx = useScrollAreaContext();
   const [computedStyle, setComputedStyle] = useState9();
@@ -4969,7 +5179,7 @@ var ScrollAreaScrollbarX = forwardRef5((props, forwardedRef) => {
     if (ref.current)
       setComputedStyle(getComputedStyle(ref.current));
   }, [ref]);
-  return /* @__PURE__ */ React34.createElement(
+  return /* @__PURE__ */ React38.createElement(
     Scrollbar,
     __spreadProps(__spreadValues({
       "data-orientation": "horizontal"
@@ -5008,12 +5218,12 @@ var ScrollAreaScrollbarX = forwardRef5((props, forwardedRef) => {
 });
 
 // ../ScrollArea/src/ScrollAreaScrollbar/ScrollbarY.tsx
-import React35, { forwardRef as forwardRef6, useEffect as useEffect11, useRef as useRef9 } from "react";
+import React39, { forwardRef as forwardRef8, useEffect as useEffect11, useRef as useRef9 } from "react";
 import { useMergedRef as useMergedRef9 } from "@raikou/hooks";
-var ScrollAreaScrollbarY = forwardRef6((props, forwardedRef) => {
+var ScrollAreaScrollbarY = forwardRef8((props, forwardedRef) => {
   const _a = props, { sizes, onSizesChange, style } = _a, others = __objRest(_a, ["sizes", "onSizesChange", "style"]);
   const context = useScrollAreaContext();
-  const [computedStyle, setComputedStyle] = React35.useState();
+  const [computedStyle, setComputedStyle] = React39.useState();
   const ref = useRef9(null);
   const composeRefs = useMergedRef9(
     forwardedRef,
@@ -5024,7 +5234,7 @@ var ScrollAreaScrollbarY = forwardRef6((props, forwardedRef) => {
     if (ref.current)
       setComputedStyle(getComputedStyle(ref.current));
   }, [ref]);
-  return /* @__PURE__ */ React35.createElement(
+  return /* @__PURE__ */ React39.createElement(
     Scrollbar,
     __spreadProps(__spreadValues({}, others), {
       "data-orientation": "vertical",
@@ -5062,7 +5272,7 @@ var ScrollAreaScrollbarY = forwardRef6((props, forwardedRef) => {
 });
 
 // ../ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarVisible.tsx
-var ScrollAreaScrollbarVisible = forwardRef7((props, forwardedRef) => {
+var ScrollAreaScrollbarVisible = forwardRef9((props, forwardedRef) => {
   const _a = props, { orientation = "vertical" } = _a, scrollbarProps = __objRest(_a, ["orientation"]);
   const { dir } = useDirection3();
   const context = useScrollAreaContext();
@@ -5095,7 +5305,7 @@ var ScrollAreaScrollbarVisible = forwardRef7((props, forwardedRef) => {
     direction
   );
   if (orientation === "horizontal") {
-    return /* @__PURE__ */ React36.createElement(
+    return /* @__PURE__ */ React40.createElement(
       ScrollAreaScrollbarX,
       __spreadProps(__spreadValues({}, commonProps), {
         ref: forwardedRef,
@@ -5119,7 +5329,7 @@ var ScrollAreaScrollbarVisible = forwardRef7((props, forwardedRef) => {
     );
   }
   if (orientation === "vertical") {
-    return /* @__PURE__ */ React36.createElement(
+    return /* @__PURE__ */ React40.createElement(
       ScrollAreaScrollbarY,
       __spreadProps(__spreadValues({}, commonProps), {
         ref: forwardedRef,
@@ -5145,12 +5355,12 @@ var ScrollAreaScrollbarVisible = forwardRef7((props, forwardedRef) => {
 });
 
 // ../ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarHover.tsx
-import React38, { forwardRef as forwardRef9, useEffect as useEffect12, useState as useState12 } from "react";
+import React42, { forwardRef as forwardRef11, useEffect as useEffect12, useState as useState12 } from "react";
 
 // ../ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarAuto.tsx
-import React37, { forwardRef as forwardRef8, useState as useState11 } from "react";
+import React41, { forwardRef as forwardRef10, useState as useState11 } from "react";
 import { useDebounceCallback as useDebounceCallback2 } from "@raikou/hooks";
-var ScrollAreaScrollbarAuto = forwardRef8((props, ref) => {
+var ScrollAreaScrollbarAuto = forwardRef10((props, ref) => {
   const context = useScrollAreaContext();
   const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
   const [visible, setVisible] = useState11(false);
@@ -5165,7 +5375,7 @@ var ScrollAreaScrollbarAuto = forwardRef8((props, ref) => {
   useResizeObserver(context.viewport, handleResize);
   useResizeObserver(context.content, handleResize);
   if (forceMount || visible) {
-    return /* @__PURE__ */ React37.createElement(
+    return /* @__PURE__ */ React41.createElement(
       ScrollAreaScrollbarVisible,
       __spreadProps(__spreadValues({
         "data-state": visible ? "visible" : "hidden"
@@ -5178,7 +5388,7 @@ var ScrollAreaScrollbarAuto = forwardRef8((props, ref) => {
 });
 
 // ../ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarHover.tsx
-var ScrollAreaScrollbarHover = forwardRef9(
+var ScrollAreaScrollbarHover = forwardRef11(
   (props, ref) => {
     const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
     const context = useScrollAreaContext();
@@ -5205,7 +5415,7 @@ var ScrollAreaScrollbarHover = forwardRef9(
       return void 0;
     }, [context.scrollArea, context.scrollHideDelay]);
     if (forceMount || visible) {
-      return /* @__PURE__ */ React38.createElement(
+      return /* @__PURE__ */ React42.createElement(
         ScrollAreaScrollbarAuto,
         __spreadProps(__spreadValues({
           "data-state": visible ? "visible" : "hidden"
@@ -5219,9 +5429,9 @@ var ScrollAreaScrollbarHover = forwardRef9(
 );
 
 // ../ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbarScroll.tsx
-import React39, { forwardRef as forwardRef10, useEffect as useEffect13, useState as useState13 } from "react";
+import React43, { forwardRef as forwardRef12, useEffect as useEffect13, useState as useState13 } from "react";
 import { useDebounceCallback as useDebounceCallback3 } from "@raikou/hooks";
-var ScrollAreaScrollbarScroll = forwardRef10((props, red) => {
+var ScrollAreaScrollbarScroll = forwardRef12((props, red) => {
   const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
   const context = useScrollAreaContext();
   const isHorizontal = props.orientation === "horizontal";
@@ -5257,7 +5467,7 @@ var ScrollAreaScrollbarScroll = forwardRef10((props, red) => {
     return void 0;
   }, [context.viewport, isHorizontal, debounceScrollEnd]);
   if (forceMount || state !== "hidden") {
-    return /* @__PURE__ */ React39.createElement(
+    return /* @__PURE__ */ React43.createElement(
       ScrollAreaScrollbarVisible,
       __spreadProps(__spreadValues({
         "data-state": state === "hidden" ? "hidden" : "visible"
@@ -5278,30 +5488,30 @@ var ScrollAreaScrollbarScroll = forwardRef10((props, red) => {
 });
 
 // ../ScrollArea/src/ScrollAreaScrollbar/ScrollAreaScrollbar.tsx
-var ScrollAreaScrollbar = React40.forwardRef(
+var ScrollAreaScrollbar = React44.forwardRef(
   (props, forwardedRef) => {
     const _a = props, { forceMount } = _a, scrollbarProps = __objRest(_a, ["forceMount"]);
     const context = useScrollAreaContext();
     const { onScrollbarXEnabledChange, onScrollbarYEnabledChange } = context;
     const isHorizontal = props.orientation === "horizontal";
-    React40.useEffect(() => {
+    React44.useEffect(() => {
       isHorizontal ? onScrollbarXEnabledChange(true) : onScrollbarYEnabledChange(true);
       return () => {
         isHorizontal ? onScrollbarXEnabledChange(false) : onScrollbarYEnabledChange(false);
       };
     }, [isHorizontal, onScrollbarXEnabledChange, onScrollbarYEnabledChange]);
-    return context.type === "hover" ? /* @__PURE__ */ React40.createElement(ScrollAreaScrollbarHover, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "scroll" ? /* @__PURE__ */ React40.createElement(ScrollAreaScrollbarScroll, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "auto" ? /* @__PURE__ */ React40.createElement(ScrollAreaScrollbarAuto, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "always" ? /* @__PURE__ */ React40.createElement(ScrollAreaScrollbarVisible, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef })) : null;
+    return context.type === "hover" ? /* @__PURE__ */ React44.createElement(ScrollAreaScrollbarHover, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "scroll" ? /* @__PURE__ */ React44.createElement(ScrollAreaScrollbarScroll, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "auto" ? /* @__PURE__ */ React44.createElement(ScrollAreaScrollbarAuto, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef, forceMount })) : context.type === "always" ? /* @__PURE__ */ React44.createElement(ScrollAreaScrollbarVisible, __spreadProps(__spreadValues({}, scrollbarProps), { ref: forwardedRef })) : null;
   }
 );
 
 // ../ScrollArea/src/ScrollAreaCorner/ScrollAreaCorner.tsx
-import React41 from "react";
-var Corner = React41.forwardRef(
+import React45 from "react";
+var Corner = React45.forwardRef(
   (props, ref) => {
     const _a = props, { style } = _a, others = __objRest(_a, ["style"]);
     const ctx = useScrollAreaContext();
-    const [width, setWidth] = React41.useState(0);
-    const [height, setHeight] = React41.useState(0);
+    const [width, setWidth] = React45.useState(0);
+    const [height, setHeight] = React45.useState(0);
     const hasSize = Boolean(width && height);
     useResizeObserver(ctx.scrollbarX, () => {
       var _a2;
@@ -5315,27 +5525,27 @@ var Corner = React41.forwardRef(
       ctx.onCornerWidthChange(w);
       setWidth(w);
     });
-    return hasSize ? /* @__PURE__ */ React41.createElement("div", __spreadProps(__spreadValues({}, others), { ref, style: __spreadProps(__spreadValues({}, style), { width, height }) })) : null;
+    return hasSize ? /* @__PURE__ */ React45.createElement("div", __spreadProps(__spreadValues({}, others), { ref, style: __spreadProps(__spreadValues({}, style), { width, height }) })) : null;
   }
 );
-var ScrollAreaCorner = React41.forwardRef((props, ref) => {
+var ScrollAreaCorner = React45.forwardRef((props, ref) => {
   const ctx = useScrollAreaContext();
   const hasBothScrollbarsVisible = Boolean(ctx.scrollbarX && ctx.scrollbarY);
   const hasCorner = ctx.type !== "scroll" && hasBothScrollbarsVisible;
-  return hasCorner ? /* @__PURE__ */ React41.createElement(Corner, __spreadProps(__spreadValues({}, props), { ref })) : null;
+  return hasCorner ? /* @__PURE__ */ React45.createElement(Corner, __spreadProps(__spreadValues({}, props), { ref })) : null;
 });
 
 // ../ScrollArea/src/ScrollAreaRoot/ScrollAreaRoot.tsx
-import React42, { useState as useState14, forwardRef as forwardRef11 } from "react";
+import React46, { useState as useState14, forwardRef as forwardRef13 } from "react";
 import { useMergedRef as useMergedRef10 } from "@raikou/hooks";
-import { Box as Box15, useProps as useProps25 } from "@raikou/core";
-var defaultProps25 = {
+import { Box as Box16, useProps as useProps27 } from "@raikou/core";
+var defaultProps27 = {
   scrollHideDelay: 1e3,
   type: "hover"
 };
-var ScrollAreaRoot = forwardRef11(
+var ScrollAreaRoot = forwardRef13(
   (_props, ref) => {
-    const props = useProps25("ScrollAreaRoot", defaultProps25, _props);
+    const props = useProps27("ScrollAreaRoot", defaultProps27, _props);
     const _a = props, { type, scrollHideDelay } = _a, others = __objRest(_a, ["type", "scrollHideDelay"]);
     const [scrollArea, setScrollArea] = useState14(null);
     const [viewport, setViewport] = useState14(null);
@@ -5347,7 +5557,7 @@ var ScrollAreaRoot = forwardRef11(
     const [scrollbarXEnabled, setScrollbarXEnabled] = useState14(false);
     const [scrollbarYEnabled, setScrollbarYEnabled] = useState14(false);
     const rootRef = useMergedRef10(ref, (node) => setScrollArea(node));
-    return /* @__PURE__ */ React42.createElement(
+    return /* @__PURE__ */ React46.createElement(
       ScrollAreaProvider,
       {
         value: {
@@ -5370,8 +5580,8 @@ var ScrollAreaRoot = forwardRef11(
           onCornerHeightChange: setCornerHeight
         }
       },
-      /* @__PURE__ */ React42.createElement(
-        Box15,
+      /* @__PURE__ */ React46.createElement(
+        Box16,
         __spreadProps(__spreadValues({}, others), {
           ref: rootRef,
           __vars: {
@@ -5386,15 +5596,15 @@ var ScrollAreaRoot = forwardRef11(
 ScrollAreaRoot.displayName = "@raikou/core/ScrollAreaRoot";
 
 // ../ScrollArea/src/ScrollAreaViewport/ScrollAreaViewport.tsx
-import React43, { forwardRef as forwardRef12 } from "react";
+import React47, { forwardRef as forwardRef14 } from "react";
 import { useMergedRef as useMergedRef11 } from "@raikou/hooks";
-import { Box as Box16 } from "@raikou/core";
-var ScrollAreaViewport = forwardRef12((_a, ref) => {
+import { Box as Box17 } from "@raikou/core";
+var ScrollAreaViewport = forwardRef14((_a, ref) => {
   var _b = _a, { children, style } = _b, others = __objRest(_b, ["children", "style"]);
   const ctx = useScrollAreaContext();
   const rootRef = useMergedRef11(ref, ctx.onViewportChange);
-  return /* @__PURE__ */ React43.createElement(
-    Box16,
+  return /* @__PURE__ */ React47.createElement(
+    Box17,
     __spreadProps(__spreadValues({}, others), {
       ref: rootRef,
       style: __spreadValues({
@@ -5402,7 +5612,7 @@ var ScrollAreaViewport = forwardRef12((_a, ref) => {
         overflowY: ctx.scrollbarYEnabled ? "scroll" : "hidden"
       }, style)
     }),
-    /* @__PURE__ */ React43.createElement(
+    /* @__PURE__ */ React47.createElement(
       "div",
       {
         style: { minWidth: "100%", display: "table" },
@@ -5415,9 +5625,9 @@ var ScrollAreaViewport = forwardRef12((_a, ref) => {
 ScrollAreaViewport.displayName = "@raikou/core/ScrollAreaViewport";
 
 // ../ScrollArea/src/ScrollAreaThumb/ScrollAreaThumb.tsx
-import React44, { forwardRef as forwardRef13, useRef as useRef11, useEffect as useEffect14 } from "react";
+import React48, { forwardRef as forwardRef15, useRef as useRef11, useEffect as useEffect14 } from "react";
 import { useDebounceCallback as useDebounceCallback4, useMergedRef as useMergedRef12 } from "@raikou/hooks";
-var Thumb = forwardRef13(
+var Thumb = forwardRef15(
   (props, forwardedRef) => {
     const _a = props, { style } = _a, others = __objRest(_a, ["style"]);
     const scrollAreaContext = useScrollAreaContext();
@@ -5454,7 +5664,7 @@ var Thumb = forwardRef13(
       }
       return void 0;
     }, [scrollAreaContext.viewport, debounceScrollEnd, onThumbPositionChange]);
-    return /* @__PURE__ */ React44.createElement(
+    return /* @__PURE__ */ React48.createElement(
       "div",
       __spreadProps(__spreadValues({
         "data-state": scrollbarContext.hasThumb ? "visible" : "hidden"
@@ -5482,29 +5692,29 @@ var Thumb = forwardRef13(
     );
   }
 );
-var ScrollAreaThumb = React44.forwardRef((props, forwardedRef) => {
+var ScrollAreaThumb = React48.forwardRef((props, forwardedRef) => {
   const _a = props, { forceMount } = _a, thumbProps = __objRest(_a, ["forceMount"]);
   const scrollbarContext = useScrollbarContext();
   if (forceMount || scrollbarContext.hasThumb) {
-    return /* @__PURE__ */ React44.createElement(Thumb, __spreadValues({ ref: forwardedRef }, thumbProps));
+    return /* @__PURE__ */ React48.createElement(Thumb, __spreadValues({ ref: forwardedRef }, thumbProps));
   }
   return null;
 });
 
 // ../ScrollArea/src/ScrollArea.tsx
-var defaultProps26 = {
+var defaultProps28 = {
   scrollHideDelay: 1e3,
   type: "hover"
 };
-var varsResolver9 = createVarsResolver9(
+var varsResolver10 = createVarsResolver10(
   (_, { scrollbarSize }) => ({
     root: {
-      "--scrollarea-scrollbar-size": rem9(scrollbarSize)
+      "--scrollarea-scrollbar-size": rem10(scrollbarSize)
     }
   })
 );
 var ScrollArea = factory20((_props, ref) => {
-  const props = useProps26("ScrollArea", defaultProps26, _props);
+  const props = useProps28("ScrollArea", defaultProps28, _props);
   const _a = props, {
     classNames,
     className,
@@ -5537,7 +5747,7 @@ var ScrollArea = factory20((_props, ref) => {
     "offsetScrollbars"
   ]);
   const [scrollbarHovered, setScrollbarHovered] = useState15(false);
-  const getStyles = useStyles10({
+  const getStyles = useStyles12({
     name: "ScrollArea",
     props,
     classes: {
@@ -5554,16 +5764,16 @@ var ScrollArea = factory20((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver9
+    varsResolver: varsResolver10
   });
-  return /* @__PURE__ */ React45.createElement(
+  return /* @__PURE__ */ React49.createElement(
     ScrollAreaRoot,
     __spreadValues(__spreadValues({
       type: type === "never" ? "always" : type,
       scrollHideDelay,
       ref
     }, getStyles("root")), others),
-    /* @__PURE__ */ React45.createElement(
+    /* @__PURE__ */ React49.createElement(
       ScrollAreaViewport,
       __spreadProps(__spreadValues(__spreadValues({}, viewportProps), getStyles("viewport")), {
         ref: viewportRef,
@@ -5575,7 +5785,7 @@ var ScrollArea = factory20((_props, ref) => {
       }),
       children
     ),
-    /* @__PURE__ */ React45.createElement(
+    /* @__PURE__ */ React49.createElement(
       ScrollAreaScrollbar,
       __spreadProps(__spreadValues({}, getStyles("scrollbar")), {
         orientation: "horizontal",
@@ -5584,9 +5794,9 @@ var ScrollArea = factory20((_props, ref) => {
         onMouseEnter: () => setScrollbarHovered(true),
         onMouseLeave: () => setScrollbarHovered(false)
       }),
-      /* @__PURE__ */ React45.createElement(ScrollAreaThumb, __spreadValues({}, getStyles("thumb")))
+      /* @__PURE__ */ React49.createElement(ScrollAreaThumb, __spreadValues({}, getStyles("thumb")))
     ),
-    /* @__PURE__ */ React45.createElement(
+    /* @__PURE__ */ React49.createElement(
       ScrollAreaScrollbar,
       __spreadProps(__spreadValues({}, getStyles("scrollbar")), {
         orientation: "vertical",
@@ -5595,9 +5805,9 @@ var ScrollArea = factory20((_props, ref) => {
         onMouseEnter: () => setScrollbarHovered(true),
         onMouseLeave: () => setScrollbarHovered(false)
       }),
-      /* @__PURE__ */ React45.createElement(ScrollAreaThumb, __spreadValues({}, getStyles("thumb")))
+      /* @__PURE__ */ React49.createElement(ScrollAreaThumb, __spreadValues({}, getStyles("thumb")))
     ),
-    /* @__PURE__ */ React45.createElement(
+    /* @__PURE__ */ React49.createElement(
       ScrollAreaCorner,
       __spreadProps(__spreadValues({}, getStyles("corner")), {
         "data-hovered": scrollbarHovered || void 0,
@@ -5608,7 +5818,7 @@ var ScrollArea = factory20((_props, ref) => {
 });
 ScrollArea.displayName = "@raikou/core/ScrollArea";
 var ScrollAreaAutosize = factory20((props, ref) => {
-  const _a = useProps26("ScrollAreaAutosize", defaultProps26, props), {
+  const _a = useProps28("ScrollAreaAutosize", defaultProps28, props), {
     children,
     classNames,
     styles,
@@ -5641,7 +5851,7 @@ var ScrollAreaAutosize = factory20((props, ref) => {
     "style",
     "vars"
   ]);
-  return /* @__PURE__ */ React45.createElement(Box17, __spreadProps(__spreadValues({}, others), { ref, style: [{ display: "flex" }, style] }), /* @__PURE__ */ React45.createElement(Box17, { style: { display: "flex", flexDirection: "column", flex: 1 } }, /* @__PURE__ */ React45.createElement(
+  return /* @__PURE__ */ React49.createElement(Box18, __spreadProps(__spreadValues({}, others), { ref, style: [{ display: "flex" }, style] }), /* @__PURE__ */ React49.createElement(Box18, { style: { display: "flex", flexDirection: "column", flex: 1 } }, /* @__PURE__ */ React49.createElement(
     ScrollArea,
     {
       classNames,
@@ -5665,12 +5875,12 @@ ScrollAreaAutosize.displayName = "@raikou/core/ScrollAreaAutosize";
 ScrollArea.Autosize = ScrollAreaAutosize;
 
 // ../Checkbox/src/CheckIcon.tsx
-import React46 from "react";
-import { rem as rem10 } from "@raikou/core";
+import React50 from "react";
+import { rem as rem11 } from "@raikou/core";
 function CheckIcon(_a) {
   var _b = _a, { size: size2, style } = _b, others = __objRest(_b, ["size", "style"]);
-  const _style = size2 !== void 0 ? __spreadValues({ width: rem10(size2), height: rem10(size2) }, style) : style;
-  return /* @__PURE__ */ React46.createElement(
+  const _style = size2 !== void 0 ? __spreadValues({ width: rem11(size2), height: rem11(size2) }, style) : style;
+  return /* @__PURE__ */ React50.createElement(
     "svg",
     __spreadValues({
       className: "icon",
@@ -5679,7 +5889,7 @@ function CheckIcon(_a) {
       xmlns: "http://www.w3.org/2000/svg",
       style: _style
     }, others),
-    /* @__PURE__ */ React46.createElement(
+    /* @__PURE__ */ React50.createElement(
       "path",
       {
         d: "M4 4.586L1.707 2.293A1 1 0 1 0 .293 3.707l3 3a.997.997 0 0 0 1.414 0l5-5A1 1 0 1 0 8.293.293L4 4.586z",
@@ -5782,8 +5992,8 @@ function Option({
   checkIconPosition
 }) {
   if (!isOptionsGroup(data)) {
-    const check = withCheckIcon && isValueChecked(value, data.value) && /* @__PURE__ */ React47.createElement(CheckIcon, { className: "comboBox-optionsDropdownCheckIcon" });
-    return /* @__PURE__ */ React47.createElement(
+    const check = withCheckIcon && isValueChecked(value, data.value) && /* @__PURE__ */ React51.createElement(CheckIcon, { className: "comboBox-optionsDropdownCheckIcon" });
+    return /* @__PURE__ */ React51.createElement(
       Combobox.Option,
       {
         value: data.value,
@@ -5798,8 +6008,17 @@ function Option({
       checkIconPosition === "right" && check
     );
   }
-  const options = data.items.map((item) => /* @__PURE__ */ React47.createElement(Option, { data: item, key: item.value }));
-  return /* @__PURE__ */ React47.createElement(Combobox.Group, { label: data.group }, options);
+  const options = data.items.map((item) => /* @__PURE__ */ React51.createElement(
+    Option,
+    {
+      data: item,
+      value,
+      key: item.value,
+      withCheckIcon,
+      checkIconPosition
+    }
+  ));
+  return /* @__PURE__ */ React51.createElement(Combobox.Group, { label: data.group }, options);
 }
 function OptionsDropdown({
   data,
@@ -5825,7 +6044,7 @@ function OptionsDropdown({
     limit: limit != null ? limit : Infinity
   }) : data;
   const isEmpty = isEmptyComboboxData(filteredData);
-  const options = filteredData.map((item) => /* @__PURE__ */ React47.createElement(
+  const options = filteredData.map((item) => /* @__PURE__ */ React51.createElement(
     Option,
     {
       data: item,
@@ -5835,7 +6054,7 @@ function OptionsDropdown({
       checkIconPosition
     }
   ));
-  return /* @__PURE__ */ React47.createElement(Combobox.Dropdown, { hidden: hidden || hiddenWhenEmpty && isEmpty }, /* @__PURE__ */ React47.createElement(Combobox.Options, { labelledBy: labelId }, withScrollArea ? /* @__PURE__ */ React47.createElement(
+  return /* @__PURE__ */ React51.createElement(Combobox.Dropdown, { hidden: hidden || hiddenWhenEmpty && isEmpty }, /* @__PURE__ */ React51.createElement(Combobox.Options, { labelledBy: labelId }, withScrollArea ? /* @__PURE__ */ React51.createElement(
     ScrollArea.Autosize,
     {
       mah: maxDropdownHeight != null ? maxDropdownHeight : 220,
@@ -5845,13 +6064,13 @@ function OptionsDropdown({
       className: "comboBox-optionsDropdownScrollArea"
     },
     options
-  ) : options, isEmpty && nothingFoundMessage && /* @__PURE__ */ React47.createElement(Combobox.Empty, null, nothingFoundMessage)));
+  ) : options, isEmpty && nothingFoundMessage && /* @__PURE__ */ React51.createElement(Combobox.Empty, null, nothingFoundMessage)));
 }
 
 // src/Autocomplete.tsx
-var defaultProps27 = {};
+var defaultProps29 = {};
 var Autocomplete = factory21((_props, ref) => {
-  const props = useProps27("Autocomplete", defaultProps27, _props);
+  const props = useProps29("Autocomplete", defaultProps29, _props);
   const _a = props, {
     classNames,
     styles,
@@ -5935,7 +6154,7 @@ var Autocomplete = factory21((_props, ref) => {
       combobox.selectFirstOption();
     }
   }, [selectFirstOptionOnChange, _value]);
-  return /* @__PURE__ */ React48.createElement(
+  return /* @__PURE__ */ React52.createElement(
     Combobox,
     __spreadValues({
       store: combobox,
@@ -5951,7 +6170,7 @@ var Autocomplete = factory21((_props, ref) => {
       },
       size: size2
     }, comboboxProps),
-    /* @__PURE__ */ React48.createElement(Combobox.Target, null, /* @__PURE__ */ React48.createElement(
+    /* @__PURE__ */ React52.createElement(Combobox.Target, null, /* @__PURE__ */ React52.createElement(
       InputBase,
       __spreadProps(__spreadValues({
         ref
@@ -5984,7 +6203,7 @@ var Autocomplete = factory21((_props, ref) => {
         id: _id
       })
     )),
-    /* @__PURE__ */ React48.createElement(
+    /* @__PURE__ */ React52.createElement(
       OptionsDropdown,
       {
         data: parsedData,

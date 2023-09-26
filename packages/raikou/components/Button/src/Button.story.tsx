@@ -7,7 +7,7 @@ export default { title: "Button" };
 export function SingleButton() {
   return (
     <div style={{ padding: 40 }}>
-      <Button>Button</Button>
+      <Button loading>Button</Button>
     </div>
   );
 }

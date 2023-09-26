@@ -462,12 +462,6 @@ var Dots = forwardRef4(
       }),
       /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
       /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
       /* @__PURE__ */ React6.createElement("span", { className: "dot" })
     );
   }

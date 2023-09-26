@@ -1,10 +1,24 @@
 /// <reference path="global.d.ts" />
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, RaikouSize, Factory, RaikouRadius, PolymorphicFactory, CompoundStylesApiProps, RaikouShadow } from '@raikou/core';
+import { RaikouSize, RaikouRadius, BoxProps, StylesApiProps, ElementProps, Factory, PolymorphicFactory, CompoundStylesApiProps, RaikouShadow } from '@raikou/core';
 import React$2 from 'react';
 import * as CSS from 'csstype';
 import * as PropTypes from 'prop-types';
 import { Interaction } from 'scheduler/tracing';
+
+interface __CloseButtonProps {
+    "data-disabled"?: boolean;
+    /** Controls width and height of the button. Numbers are converted to rem. `'md'` by default. */
+    size?: RaikouSize | (string & {}) | number;
+    /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. `theme.defaultRadius` by default. */
+    radius?: RaikouRadius;
+    /** Sets `disabled` and `data-disabled` attributes on the button element */
+    disabled?: boolean;
+    /** `X` icon `width` and `height`, `80%` by default */
+    iconSize?: number | string;
+    /** Content rendered inside the button, for example `VisuallyHidden` with label for screen readers */
+    children?: React$2.ReactNode;
+}
 
 type InputLabelStylesNames = "label" | "required";
 type InputLabelCssVariables = {
@@ -4074,6 +4088,10 @@ interface SelectProps extends BoxProps, __BaseInputProps, ComboboxLikeProps, Sty
     onSearchChange?(value: string): void;
     /** Determines whether it should be possible to deselect value by clicking on the selected option, `true` by default */
     allowDeselect?: boolean;
+    /** Determines whether the clear button should be displayed in the right section when the component has value, `false` by default */
+    clearable?: boolean;
+    /** Props passed down to the clear button */
+    clearButtonProps?: __CloseButtonProps & ElementProps<"button">;
 }
 type SelectFactory = Factory<{
     props: SelectProps;

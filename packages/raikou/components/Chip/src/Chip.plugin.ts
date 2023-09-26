@@ -126,59 +126,60 @@ module.exports = function ({ addComponents }: any) {
       },
     },
 
-    ".chip-root[data-variant='filled'] .chip-label:not([data-disabled])": {
-      backgroundColor: "var(--_chip-bg)",
-      border: `${rem("1px")} solid transparent`,
-      color: "var(--_chip-color, var(--raikou-color-text))",
-
-      "@media (hover: hover)": {
-        "&:hover": {
-          '[data-raikou-color-scheme="light"] &': {
-            "--_chip-bg": "var(--raikou-chip-filled-hover-bg)",
-          },
-
-          '[data-raikou-color-scheme="dark"] &': {
-            "--_chip-bg": "var(--raikou-chip-filled-hover-bg)",
-          },
-        },
-      },
-      "@media (hover: none)": {
-        "&:active": {
-          '[data-raikou-color-scheme="light"] &': {
-            "--_chip-bg": "var(--raikou-chip-filled-active-bg)",
-          },
-
-          '[data-raikou-color-scheme="dark"] &': {
-            "--_chip-bg": "var(--raikou-chip-filled-active-bg)",
-          },
-        },
-      },
-
-      '[data-raikou-color-scheme="light"] &': {
-        "--_chip-bg": "var(--raikou-chip-filled-bg)",
-      },
-
-      '[data-raikou-color-scheme="dark"] &': {
-        "--_chip-bg": "var(--raikou-chip-filled-bg)",
-      },
-
-      "[data-raikou-color-scheme] &[data-checked]": {
-        "--_chip-icon-color": "var(--chip-color)",
-        "--_chip-color": "var(--chip-color)",
-        "--_chip-bg": "var(--chip-bg)",
+    ".chip-root[data-variant='filled'] .chip-label:not([data-disabled]), .chip-label:not([data-disabled])":
+      {
+        backgroundColor: "var(--_chip-bg)",
+        border: `${rem("1px")} solid transparent`,
+        color: "var(--_chip-color, var(--raikou-color-text))",
 
         "@media (hover: hover)": {
           "&:hover": {
-            "--_chip-bg": "var(--chip-hover)",
+            '[data-raikou-color-scheme="light"] &': {
+              "--_chip-bg": "var(--raikou-chip-filled-hover-bg)",
+            },
+
+            '[data-raikou-color-scheme="dark"] &': {
+              "--_chip-bg": "var(--raikou-chip-filled-hover-bg)",
+            },
           },
         },
         "@media (hover: none)": {
           "&:active": {
-            "--_chip-bg": "var(--chip-hover)",
+            '[data-raikou-color-scheme="light"] &': {
+              "--_chip-bg": "var(--raikou-chip-filled-active-bg)",
+            },
+
+            '[data-raikou-color-scheme="dark"] &': {
+              "--_chip-bg": "var(--raikou-chip-filled-active-bg)",
+            },
+          },
+        },
+
+        '[data-raikou-color-scheme="light"] &': {
+          "--_chip-bg": "var(--raikou-chip-filled-bg)",
+        },
+
+        '[data-raikou-color-scheme="dark"] &': {
+          "--_chip-bg": "var(--raikou-chip-filled-bg)",
+        },
+
+        "[data-raikou-color-scheme] &[data-checked]": {
+          "--_chip-icon-color": "var(--chip-color)",
+          "--_chip-color": "var(--chip-color)",
+          "--_chip-bg": "var(--chip-bg)",
+
+          "@media (hover: hover)": {
+            "&:hover": {
+              "--_chip-bg": "var(--chip-hover)",
+            },
+          },
+          "@media (hover: none)": {
+            "&:active": {
+              "--_chip-bg": "var(--chip-hover)",
+            },
           },
         },
       },
-    },
 
     ".chip-root[data-variant='light'] .chip-label:not([data-disabled])": {
       backgroundColor: "var(--_chip-bg)",

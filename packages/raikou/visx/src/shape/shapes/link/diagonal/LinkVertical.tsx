@@ -29,7 +29,9 @@ export default function LinkVerticalDiagonal<Link, Node>({
   data,
   innerRef,
   path,
+  // @ts-ignore
   x = getX,
+  // @ts-ignore
   y = getY,
   source = getSource,
   target = getTarget,

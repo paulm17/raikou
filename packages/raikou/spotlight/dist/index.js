@@ -247,7 +247,8 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetTop: false,
   describedBy: void 0,
   getStyles: null,
-  inputId: void 0
+  inputId: void 0,
+  labelId: void 0
 });
 
 // ../components/Input/src/InputLabel/InputLabel.tsx
@@ -628,12 +629,13 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
+  const labelId = (labelProps == null ? void 0 : labelProps.id) || `${idBase}-label`;
   const _label = label && /* @__PURE__ */ import_react9.default.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
       labelElement,
-      id: `${idBase}-label`,
+      id: labelId,
       htmlFor: inputId,
       required: isRequired
     }, sharedProps), labelProps),
@@ -679,7 +681,8 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
       value: __spreadValues({
         getStyles: getStyles2,
         describedBy,
-        inputId
+        inputId,
+        labelId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
     /* @__PURE__ */ import_react9.default.createElement(
@@ -3008,18 +3011,27 @@ var import_react35 = __toESM(require("react"));
 var import_react_dom = require("react-dom");
 var import_hooks12 = require("@raikou/hooks");
 var import_core22 = require("@raikou/core");
+function createPortalNode(props) {
+  const node = document.createElement("div");
+  node.setAttribute("data-portal", "true");
+  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.style === "object" && Object.assign(node.style, props.style);
+  typeof props.id === "string" && node.setAttribute("id", props.id);
+  return node;
+}
 var defaultProps19 = {};
 var Portal = (0, import_react35.forwardRef)((props, ref) => {
   const _a = (0, import_core22.useProps)(
     "Portal",
     defaultProps19,
     props
-  ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
+  ), { children, target } = _a, others = __objRest(_a, ["children", "target"]);
   const [mounted, setMounted] = (0, import_react35.useState)(false);
   const nodeRef = (0, import_react35.useRef)(null);
   (0, import_hooks12.useIsomorphicEffect)(() => {
     setMounted(true);
-    nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
+    nodeRef.current = !target ? createPortalNode(others) : typeof target === "string" ? document.querySelector(target) : target;
+    (0, import_hooks12.assignRef)(ref, nodeRef.current);
     if (!target && nodeRef.current) {
       document.body.appendChild(nodeRef.current);
     }
@@ -3032,10 +3044,7 @@ var Portal = (0, import_react35.forwardRef)((props, ref) => {
   if (!mounted || !nodeRef.current) {
     return null;
   }
-  return (0, import_react_dom.createPortal)(
-    /* @__PURE__ */ import_react35.default.createElement("div", __spreadValues({ className, ref }, others), children),
-    nodeRef.current
-  );
+  return (0, import_react_dom.createPortal)(/* @__PURE__ */ import_react35.default.createElement(import_react35.default.Fragment, null, children), nodeRef.current);
 });
 Portal.displayName = "@raikou/core/Portal";
 
@@ -3380,19 +3389,19 @@ CloseButton.displayName = "@raikou/core/CloseButton";
 
 // ../components/ModalBase/src/ModalBaseCloseButton.tsx
 var ModalBaseCloseButton = (0, import_react44.forwardRef)((_a, ref) => {
-  var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+  var _b = _a, { className, onClick } = _b, others = __objRest(_b, ["className", "onClick"]);
   const ctx = useModalBaseContext();
-  return (
-    // @ts-ignore
-    /* @__PURE__ */ import_react44.default.createElement(
-      CloseButton,
-      __spreadProps(__spreadValues({
-        ref
-      }, others), {
-        onClick: ctx.onClose,
-        className: clsx_default("modalBase-close", className)
-      })
-    )
+  return /* @__PURE__ */ import_react44.default.createElement(
+    CloseButton,
+    __spreadProps(__spreadValues({
+      ref
+    }, others), {
+      onClick: (event) => {
+        ctx.onClose();
+        onClick == null ? void 0 : onClick(event);
+      },
+      className: clsx_default("modalBase-close", className)
+    })
   );
 });
 ModalBaseCloseButton.displayName = "@raikou/core/ModalBaseCloseButton";

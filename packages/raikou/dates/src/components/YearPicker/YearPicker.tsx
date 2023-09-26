@@ -131,5 +131,4 @@ export const YearPicker: YearPickerComponent = factory<YearPickerFactory>(
   },
 ) as any;
 
-YearPicker.classes = Calendar.classes;
 YearPicker.displayName = "@raikou/dates/YearPicker";

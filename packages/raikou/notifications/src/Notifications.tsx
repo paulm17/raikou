@@ -225,6 +225,7 @@ export const Notifications = factory<NotificationsFactory>((_props, ref) => {
   return (
     <OptionalPortal withinPortal={withinPortal} {...portalProps}>
       <Box {...getStyles("root")} ref={ref} {...others}>
+        {/* @ts-ignore */}
         <TransitionGroup>{items}</TransitionGroup>
       </Box>
     </OptionalPortal>

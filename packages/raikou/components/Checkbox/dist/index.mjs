@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/Checkbox.tsx
-import React13 from "react";
+import React14 from "react";
 
 // ../../hooks/dist/index.mjs
 import { useRef, useEffect, useMemo } from "react";
@@ -40,54 +40,54 @@ import { useEffect as useEffect3, useRef as useRef3 } from "react";
 import { useState } from "react";
 import { useState as useState2, useEffect as useEffect4, useRef as useRef4 } from "react";
 import { useState as useState3 } from "react";
-import { useEffect as useEffect5, useRef as useRef5, useState as useState4 } from "react";
+import { useEffect as useEffect5, useRef as useRef5, useState as useState4, useCallback as useCallback2 } from "react";
 import { useEffect as useEffect6, useState as useState5, useRef as useRef6 } from "react";
 import { useEffect as useEffect7, useLayoutEffect } from "react";
 import { useEffect as useEffect8, useState as useState6 } from "react";
 import { useRef as useRef8 } from "react";
 import { useEffect as useEffect9, useRef as useRef7 } from "react";
-import { useCallback as useCallback2, useEffect as useEffect10, useRef as useRef9 } from "react";
+import { useCallback as useCallback3, useEffect as useEffect10, useRef as useRef9 } from "react";
 import { useReducer } from "react";
 import { useState as useState7 } from "react";
 import React from "react";
 import { useState as useState8, useEffect as useEffect11, useRef as useRef10 } from "react";
 import { useEffect as useEffect12, useRef as useRef11, useState as useState9 } from "react";
 import { useState as useState10 } from "react";
-import { useState as useState11, useCallback as useCallback3, useEffect as useEffect14 } from "react";
+import { useState as useState11, useCallback as useCallback4, useEffect as useEffect14 } from "react";
 import { useEffect as useEffect13 } from "react";
-import { useCallback as useCallback4 } from "react";
+import { useCallback as useCallback5 } from "react";
 import { useEffect as useEffect15, useRef as useRef12, useState as useState12 } from "react";
 import { useEffect as useEffect16, useState as useState13, useRef as useRef13 } from "react";
 import { useMemo as useMemo2 } from "react";
 import { useState as useState14 } from "react";
 import { useState as useState15 } from "react";
 import { useEffect as useEffect17 } from "react";
-import { useCallback as useCallback5, useRef as useRef14, useEffect as useEffect18 } from "react";
+import { useCallback as useCallback6, useRef as useRef14, useEffect as useEffect18 } from "react";
 import { useEffect as useEffect19, useMemo as useMemo3, useRef as useRef15, useState as useState16 } from "react";
 import { useEffect as useEffect20, useRef as useRef16 } from "react";
 import { useReducer as useReducer2 } from "react";
-import { useCallback as useCallback6, useState as useState17, useEffect as useEffect21 } from "react";
+import { useCallback as useCallback7, useState as useState17, useEffect as useEffect21 } from "react";
 import { useState as useState18, useEffect as useEffect22 } from "react";
-import { useCallback as useCallback7, useRef as useRef17, useState as useState19 } from "react";
+import { useCallback as useCallback8, useRef as useRef17, useState as useState19 } from "react";
 import { useState as useState20, useEffect as useEffect23 } from "react";
 import { useEffect as useEffect24 } from "react";
-import { useCallback as useCallback8, useRef as useRef18, useState as useState21, useEffect as useEffect25 } from "react";
+import { useCallback as useCallback9, useRef as useRef18, useState as useState21, useEffect as useEffect25 } from "react";
 import { useEffect as useEffect26 } from "react";
-import { useState as useState22, useEffect as useEffect27, useRef as useRef19, useCallback as useCallback9 } from "react";
+import { useState as useState22, useEffect as useEffect27, useRef as useRef19, useCallback as useCallback10 } from "react";
 import { useState as useState23 } from "react";
 import { useState as useState24 } from "react";
-import { useState as useState25, useCallback as useCallback10 } from "react";
+import { useState as useState25, useCallback as useCallback11 } from "react";
 import { useState as useState26 } from "react";
 import { useRef as useRef20, useEffect as useEffect28 } from "react";
-import { useState as useState27, useCallback as useCallback11 } from "react";
+import { useState as useState27, useCallback as useCallback12 } from "react";
 import { useRef as useRef21, useState as useState28, useEffect as useEffect29 } from "react";
-import { useState as useState29, useEffect as useEffect30, useCallback as useCallback12 } from "react";
+import { useState as useState29, useEffect as useEffect30, useCallback as useCallback13 } from "react";
 import { useRef as useRef22, useEffect as useEffect31 } from "react";
 import { useState as useState30, useEffect as useEffect32 } from "react";
 import { useEffect as useEffect33, useRef as useRef23 } from "react";
 import { useRef as useRef24 } from "react";
 import { useRef as useRef25 } from "react";
-import { useCallback as useCallback13, useState as useState31 } from "react";
+import { useCallback as useCallback14, useState as useState31 } from "react";
 function randomId() {
   return `raikou-${Math.random().toString(36).slice(2, 11)}`;
 }
@@ -192,7 +192,8 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetTop: false,
   describedBy: void 0,
   getStyles: null,
-  inputId: void 0
+  inputId: void 0,
+  labelId: void 0
 });
 
 // ../Input/src/InputLabel/InputLabel.tsx
@@ -608,12 +609,13 @@ var InputWrapper = factory5((_props, ref) => {
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
+  const labelId = (labelProps == null ? void 0 : labelProps.id) || `${idBase}-label`;
   const _label = label && /* @__PURE__ */ React8.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
       labelElement,
-      id: `${idBase}-label`,
+      id: labelId,
       htmlFor: inputId,
       required: isRequired
     }, sharedProps), labelProps),
@@ -659,7 +661,8 @@ var InputWrapper = factory5((_props, ref) => {
       value: __spreadValues({
         getStyles,
         describedBy,
-        inputId
+        inputId,
+        labelId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
     /* @__PURE__ */ React8.createElement(
@@ -934,8 +937,31 @@ var CheckboxGroupProvider = CheckboxGroupContext.Provider;
 var useCheckboxGroupContext = () => useContext3(CheckboxGroupContext);
 
 // src/CheckboxGroup/CheckboxGroup.tsx
-import React11 from "react";
+import React12 from "react";
 import { factory as factory6, useProps as useProps7 } from "@raikou/core";
+
+// ../InputsGroupFieldset/src/InputsGroupFieldset.tsx
+import React11 from "react";
+function InputsGroupFieldset({
+  children,
+  role
+}) {
+  const ctx = useInputWrapperContext();
+  if (!ctx) {
+    return /* @__PURE__ */ React11.createElement(React11.Fragment, null, children);
+  }
+  return /* @__PURE__ */ React11.createElement(
+    "div",
+    {
+      role,
+      "aria-labelledby": ctx.labelId,
+      "aria-describedby": ctx.describedBy
+    },
+    children
+  );
+}
+
+// src/CheckboxGroup/CheckboxGroup.tsx
 var defaultProps7 = {};
 var CheckboxGroup = factory6((props, ref) => {
   const _a = useProps7("CheckboxGroup", defaultProps7, props), {
@@ -965,12 +991,12 @@ var CheckboxGroup = factory6((props, ref) => {
       _value.includes(itemValue) ? _value.filter((item) => item !== itemValue) : [..._value, itemValue]
     );
   };
-  return /* @__PURE__ */ React11.createElement(
+  return /* @__PURE__ */ React12.createElement(
     CheckboxGroupProvider,
     {
       value: { value: _value, onChange: handleChange, size }
     },
-    /* @__PURE__ */ React11.createElement(
+    /* @__PURE__ */ React12.createElement(
       Input.Wrapper,
       __spreadProps(__spreadValues(__spreadValues({
         size,
@@ -979,18 +1005,18 @@ var CheckboxGroup = factory6((props, ref) => {
         labelElement: "div",
         __staticSelector: "CheckboxGroup"
       }),
-      children
+      /* @__PURE__ */ React12.createElement(InputsGroupFieldset, { role: "group" }, children)
     )
   );
 });
 
 // src/CheckIcon.tsx
-import React12 from "react";
+import React13 from "react";
 import { rem as rem5 } from "@raikou/core";
 function CheckIcon(_a) {
   var _b = _a, { size, style } = _b, others = __objRest(_b, ["size", "style"]);
   const _style = size !== void 0 ? __spreadValues({ width: rem5(size), height: rem5(size) }, style) : style;
-  return /* @__PURE__ */ React12.createElement(
+  return /* @__PURE__ */ React13.createElement(
     "svg",
     __spreadValues({
       className: "icon",
@@ -999,7 +1025,7 @@ function CheckIcon(_a) {
       xmlns: "http://www.w3.org/2000/svg",
       style: _style
     }, others),
-    /* @__PURE__ */ React12.createElement(
+    /* @__PURE__ */ React13.createElement(
       "path",
       {
         d: "M4 4.586L1.707 2.293A1 1 0 1 0 .293 3.707l3 3a.997.997 0 0 0 1.414 0l5-5A1 1 0 1 0 8.293.293L4 4.586z",
@@ -1013,17 +1039,17 @@ function CheckIcon(_a) {
 function CheckboxIcon(_a) {
   var _b = _a, { indeterminate } = _b, others = __objRest(_b, ["indeterminate"]);
   if (indeterminate) {
-    return /* @__PURE__ */ React12.createElement(
+    return /* @__PURE__ */ React13.createElement(
       "svg",
       __spreadValues({
         xmlns: "http://www.w3.org/2000/svg",
         fill: "none",
         viewBox: "0 0 32 6"
       }, others),
-      /* @__PURE__ */ React12.createElement("rect", { width: "32", height: "6", fill: "currentColor", rx: "3" })
+      /* @__PURE__ */ React13.createElement("rect", { width: "32", height: "6", fill: "currentColor", rx: "3" })
     );
   }
-  return /* @__PURE__ */ React12.createElement(CheckIcon, __spreadValues({}, others));
+  return /* @__PURE__ */ React13.createElement(CheckIcon, __spreadValues({}, others));
 }
 
 // src/Checkbox.tsx
@@ -1120,7 +1146,7 @@ var Checkbox = factory7((_props, ref) => {
     checked: ctx.value.includes(rest.value),
     onChange: ctx.onChange
   } : {};
-  return /* @__PURE__ */ React13.createElement(
+  return /* @__PURE__ */ React14.createElement(
     InlineInput,
     __spreadValues(__spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       __staticSelector: "Checkbox",
@@ -1139,12 +1165,12 @@ var Checkbox = factory7((_props, ref) => {
       variant,
       ref: rootRef
     }), styleProps), wrapperProps),
-    /* @__PURE__ */ React13.createElement(
+    /* @__PURE__ */ React14.createElement(
       Box8,
       __spreadProps(__spreadValues({}, getStyles("inner")), {
         mod: { "data-label-position": labelPosition }
       }),
-      /* @__PURE__ */ React13.createElement(
+      /* @__PURE__ */ React14.createElement(
         Box8,
         __spreadProps(__spreadValues(__spreadValues(__spreadValues({
           component: "input",
@@ -1157,7 +1183,7 @@ var Checkbox = factory7((_props, ref) => {
           type: "checkbox"
         })
       ),
-      /* @__PURE__ */ React13.createElement(Icon, __spreadValues({ indeterminate }, getStyles("icon")))
+      /* @__PURE__ */ React14.createElement(Icon, __spreadValues({ indeterminate }, getStyles("icon")))
     )
   );
 });

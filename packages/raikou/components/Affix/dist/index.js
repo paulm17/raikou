@@ -128,21 +128,37 @@ var import_react53 = require("react");
 var import_react54 = require("react");
 var useIsomorphicEffect = typeof document !== "undefined" ? import_react9.useLayoutEffect : import_react9.useEffect;
 var __useId = import_react16.default["useId".toString()] || (() => void 0);
+function assignRef(ref, value) {
+  if (typeof ref === "function") {
+    ref(value);
+  } else if (typeof ref === "object" && ref !== null && "current" in ref) {
+    ref.current = value;
+  }
+}
 
 // ../Portal/src/Portal.tsx
 var import_core = require("@raikou/core");
+function createPortalNode(props) {
+  const node = document.createElement("div");
+  node.setAttribute("data-portal", "true");
+  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.style === "object" && Object.assign(node.style, props.style);
+  typeof props.id === "string" && node.setAttribute("id", props.id);
+  return node;
+}
 var defaultProps = {};
 var Portal = (0, import_react55.forwardRef)((props, ref) => {
   const _a = (0, import_core.useProps)(
     "Portal",
     defaultProps,
     props
-  ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
+  ), { children, target } = _a, others = __objRest(_a, ["children", "target"]);
   const [mounted, setMounted] = (0, import_react55.useState)(false);
   const nodeRef = (0, import_react55.useRef)(null);
   useIsomorphicEffect(() => {
     setMounted(true);
-    nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
+    nodeRef.current = !target ? createPortalNode(others) : typeof target === "string" ? document.querySelector(target) : target;
+    assignRef(ref, nodeRef.current);
     if (!target && nodeRef.current) {
       document.body.appendChild(nodeRef.current);
     }
@@ -155,10 +171,7 @@ var Portal = (0, import_react55.forwardRef)((props, ref) => {
   if (!mounted || !nodeRef.current) {
     return null;
   }
-  return (0, import_react_dom.createPortal)(
-    /* @__PURE__ */ import_react55.default.createElement("div", __spreadValues({ className, ref }, others), children),
-    nodeRef.current
-  );
+  return (0, import_react_dom.createPortal)(/* @__PURE__ */ import_react55.default.createElement(import_react55.default.Fragment, null, children), nodeRef.current);
 });
 Portal.displayName = "@raikou/core/Portal";
 

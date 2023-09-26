@@ -2,6 +2,7 @@ import { CSSProperties } from "react";
 import { CssVariable } from "../../../../Box";
 import { RaikouTheme } from "../../../../RaikouProvider";
 import { mergeVars } from "./merge-vars";
+import { rem } from "../../../../utils/units-converters";
 
 type ResolvedVars = Partial<Record<string, Record<CssVariable, string>>>;
 
@@ -30,8 +31,6 @@ export function resolveVars({
   selector,
   themeName,
 }: ResolveVarsInput) {
-  const rem = require("../../../../utils/units-converters").rem;
-
   return mergeVars([
     varsResolver?.(theme, props, stylesCtx),
     ...themeName.map((name) => {

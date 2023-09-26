@@ -720,18 +720,27 @@ var import_react2 = __toESM(require("react"));
 var import_react_dom = require("react-dom");
 var import_hooks = require("@raikou/hooks");
 var import_core = require("@raikou/core");
+function createPortalNode(props) {
+  const node = document.createElement("div");
+  node.setAttribute("data-portal", "true");
+  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.style === "object" && Object.assign(node.style, props.style);
+  typeof props.id === "string" && node.setAttribute("id", props.id);
+  return node;
+}
 var defaultProps = {};
 var Portal = (0, import_react2.forwardRef)((props, ref) => {
   const _a = (0, import_core.useProps)(
     "Portal",
     defaultProps,
     props
-  ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
+  ), { children, target } = _a, others = __objRest(_a, ["children", "target"]);
   const [mounted, setMounted] = (0, import_react2.useState)(false);
   const nodeRef = (0, import_react2.useRef)(null);
   (0, import_hooks.useIsomorphicEffect)(() => {
     setMounted(true);
-    nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
+    nodeRef.current = !target ? createPortalNode(others) : typeof target === "string" ? document.querySelector(target) : target;
+    (0, import_hooks.assignRef)(ref, nodeRef.current);
     if (!target && nodeRef.current) {
       document.body.appendChild(nodeRef.current);
     }
@@ -744,10 +753,7 @@ var Portal = (0, import_react2.forwardRef)((props, ref) => {
   if (!mounted || !nodeRef.current) {
     return null;
   }
-  return (0, import_react_dom.createPortal)(
-    /* @__PURE__ */ import_react2.default.createElement("div", __spreadValues({ className, ref }, others), children),
-    nodeRef.current
-  );
+  return (0, import_react_dom.createPortal)(/* @__PURE__ */ import_react2.default.createElement(import_react2.default.Fragment, null, children), nodeRef.current);
 });
 Portal.displayName = "@raikou/core/Portal";
 
@@ -1193,19 +1199,19 @@ CloseButton.displayName = "@raikou/core/CloseButton";
 
 // ../components/ModalBase/src/ModalBaseCloseButton.tsx
 var ModalBaseCloseButton = (0, import_react16.forwardRef)((_a, ref) => {
-  var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+  var _b = _a, { className, onClick } = _b, others = __objRest(_b, ["className", "onClick"]);
   const ctx = useModalBaseContext();
-  return (
-    // @ts-ignore
-    /* @__PURE__ */ import_react16.default.createElement(
-      CloseButton,
-      __spreadProps(__spreadValues({
-        ref
-      }, others), {
-        onClick: ctx.onClose,
-        className: clsx_default("modalBase-close", className)
-      })
-    )
+  return /* @__PURE__ */ import_react16.default.createElement(
+    CloseButton,
+    __spreadProps(__spreadValues({
+      ref
+    }, others), {
+      onClick: (event) => {
+        ctx.onClose();
+        onClick == null ? void 0 : onClick(event);
+      },
+      className: clsx_default("modalBase-close", className)
+    })
   );
 });
 ModalBaseCloseButton.displayName = "@raikou/core/ModalBaseCloseButton";
@@ -2077,12 +2083,6 @@ var Dots = (0, import_react40.forwardRef)(
       }),
       /* @__PURE__ */ import_react40.default.createElement("span", { className: "dot" }),
       /* @__PURE__ */ import_react40.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react40.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react40.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react40.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react40.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react40.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react40.default.createElement("span", { className: "dot" }),
       /* @__PURE__ */ import_react40.default.createElement("span", { className: "dot" })
     );
   }
@@ -2221,7 +2221,9 @@ var ButtonGroup = (0, import_core26.factory)((_props, ref) => {
 ButtonGroup.displayName = "@raikou/core/ButtonGroup";
 
 // ../components/Button/src/Button.tsx
-var defaultProps16 = {};
+var defaultProps16 = {
+  loaderPosition: "left"
+};
 var varsResolver7 = (0, import_core27.createVarsResolver)(
   (theme, { radius, color, gradient, variant, size, justify }) => {
     const colors = theme.variantColorResolver({
@@ -2383,7 +2385,11 @@ function filterFalsyChildren(children) {
 
 // ../components/Group/src/Group.tsx
 var defaultProps17 = {
-  preventGrowOverflow: true
+  preventGrowOverflow: true,
+  gap: "md",
+  align: "center",
+  justify: "flex-start",
+  wrap: "wrap"
 };
 var varsResolver8 = (0, import_core28.createVarsResolver)(
   (_, { grow, preventGrowOverflow, gap, align, justify, wrap }, { childWidth }) => ({

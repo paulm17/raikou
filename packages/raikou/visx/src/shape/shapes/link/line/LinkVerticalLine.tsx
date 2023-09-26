@@ -35,7 +35,9 @@ export default function LinkVerticalLine<Link, Node>({
   innerRef,
   data,
   path,
+  // @ts-ignore
   x = getX,
+  // @ts-ignore
   y = getY,
   source = getSource,
   target = getTarget,

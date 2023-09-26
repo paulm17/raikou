@@ -229,12 +229,6 @@ var Dots = (0, import_react5.forwardRef)(
       }),
       /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
       /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" }),
       /* @__PURE__ */ import_react5.default.createElement("span", { className: "dot" })
     );
   }

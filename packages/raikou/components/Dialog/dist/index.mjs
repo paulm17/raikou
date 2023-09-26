@@ -55,20 +55,29 @@ import {
 // ../Portal/src/Portal.tsx
 import React, { useRef, useState, forwardRef } from "react";
 import { createPortal } from "react-dom";
-import { useIsomorphicEffect } from "@raikou/hooks";
+import { useIsomorphicEffect, assignRef } from "@raikou/hooks";
 import { useProps } from "@raikou/core";
+function createPortalNode(props) {
+  const node = document.createElement("div");
+  node.setAttribute("data-portal", "true");
+  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.style === "object" && Object.assign(node.style, props.style);
+  typeof props.id === "string" && node.setAttribute("id", props.id);
+  return node;
+}
 var defaultProps = {};
 var Portal = forwardRef((props, ref) => {
   const _a = useProps(
     "Portal",
     defaultProps,
     props
-  ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
+  ), { children, target } = _a, others = __objRest(_a, ["children", "target"]);
   const [mounted, setMounted] = useState(false);
   const nodeRef = useRef(null);
   useIsomorphicEffect(() => {
     setMounted(true);
-    nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
+    nodeRef.current = !target ? createPortalNode(others) : typeof target === "string" ? document.querySelector(target) : target;
+    assignRef(ref, nodeRef.current);
     if (!target && nodeRef.current) {
       document.body.appendChild(nodeRef.current);
     }
@@ -81,10 +90,7 @@ var Portal = forwardRef((props, ref) => {
   if (!mounted || !nodeRef.current) {
     return null;
   }
-  return createPortal(
-    /* @__PURE__ */ React.createElement("div", __spreadValues({ className, ref }, others), children),
-    nodeRef.current
-  );
+  return createPortal(/* @__PURE__ */ React.createElement(React.Fragment, null, children), nodeRef.current);
 });
 Portal.displayName = "@raikou/core/Portal";
 

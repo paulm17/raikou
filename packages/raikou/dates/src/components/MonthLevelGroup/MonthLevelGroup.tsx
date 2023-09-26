@@ -196,5 +196,4 @@ export const MonthLevelGroup = factory<MonthLevelGroupFactory>(
   },
 );
 
-MonthLevelGroup.classes = { ...LevelsGroup.classes, ...MonthLevel.classes };
 MonthLevelGroup.displayName = "@raikou/dates/MonthLevelGroup";

@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/DropzoneFullScreen.tsx
-import React15, { useEffect as useEffect3 } from "react";
+import React15, { useEffect as useEffect3, useState as useState4 } from "react";
 import {
   Box as Box9,
   factory as factory4,
@@ -44,20 +44,29 @@ import {
 // ../components/Portal/src/Portal.tsx
 import React, { useRef, useState, forwardRef } from "react";
 import { createPortal } from "react-dom";
-import { useIsomorphicEffect } from "@raikou/hooks";
+import { useIsomorphicEffect, assignRef } from "@raikou/hooks";
 import { useProps } from "@raikou/core";
+function createPortalNode(props) {
+  const node = document.createElement("div");
+  node.setAttribute("data-portal", "true");
+  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.style === "object" && Object.assign(node.style, props.style);
+  typeof props.id === "string" && node.setAttribute("id", props.id);
+  return node;
+}
 var defaultProps = {};
 var Portal = forwardRef((props, ref) => {
   const _a = useProps(
     "Portal",
     defaultProps,
     props
-  ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
+  ), { children, target } = _a, others = __objRest(_a, ["children", "target"]);
   const [mounted, setMounted] = useState(false);
   const nodeRef = useRef(null);
   useIsomorphicEffect(() => {
     setMounted(true);
-    nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
+    nodeRef.current = !target ? createPortalNode(others) : typeof target === "string" ? document.querySelector(target) : target;
+    assignRef(ref, nodeRef.current);
     if (!target && nodeRef.current) {
       document.body.appendChild(nodeRef.current);
     }
@@ -70,10 +79,7 @@ var Portal = forwardRef((props, ref) => {
   if (!mounted || !nodeRef.current) {
     return null;
   }
-  return createPortal(
-    /* @__PURE__ */ React.createElement("div", __spreadValues({ className, ref }, others), children),
-    nodeRef.current
-  );
+  return createPortal(/* @__PURE__ */ React.createElement(React.Fragment, null, children), nodeRef.current);
 });
 Portal.displayName = "@raikou/core/Portal";
 
@@ -475,12 +481,6 @@ var Dots = forwardRef5(
       }),
       /* @__PURE__ */ React7.createElement("span", { className: "dot" }),
       /* @__PURE__ */ React7.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React7.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React7.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React7.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React7.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React7.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React7.createElement("span", { className: "dot" }),
       /* @__PURE__ */ React7.createElement("span", { className: "dot" })
     );
   }
@@ -722,7 +722,7 @@ var LoadingOverlay = factory2((_props, ref) => {
 LoadingOverlay.displayName = "@raikou/core/LoadingOverlay";
 
 // src/Dropzone.tsx
-import { assignRef } from "@raikou/hooks";
+import { assignRef as assignRef2 } from "@raikou/hooks";
 
 // ../components/_utils/create-safe-context/create-safe-context.tsx
 import React11, { createContext, useContext } from "react";
@@ -929,7 +929,7 @@ var Dropzone = factory3((_props, ref) => {
     useFsAccessApi,
     validator
   }, getFilesFromEvent ? { getFilesFromEvent } : null));
-  assignRef(openRef, open);
+  assignRef2(openRef, open);
   const isIdle = !isDragAccept && !isDragReject;
   return /* @__PURE__ */ React14.createElement(
     DropzoneProvider,
@@ -1032,7 +1032,7 @@ var DropzoneFullScreen = factory4(
       styles,
       props
     });
-    const [counter, setCounter] = React15.useState(0);
+    const [counter, setCounter] = useState4(0);
     const [visible, { open, close }] = useDisclosure(false);
     const handleDragEnter = (event) => {
       var _a2;
@@ -1078,10 +1078,12 @@ var DropzoneFullScreen = factory4(
           onDrop: (files) => {
             onDrop == null ? void 0 : onDrop(files);
             close();
+            setCounter(0);
           },
           onReject: (files) => {
             onReject == null ? void 0 : onReject(files);
             close();
+            setCounter(0);
           }
         })
       )

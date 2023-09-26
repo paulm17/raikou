@@ -56,5 +56,4 @@ export const TimeInput = factory<TimeInputFactory>((_props, ref) => {
   );
 });
 
-TimeInput.classes = InputBase.classes;
 TimeInput.displayName = "@raikou/dates/TimeInput";

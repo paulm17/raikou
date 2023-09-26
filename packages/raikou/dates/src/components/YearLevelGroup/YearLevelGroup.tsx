@@ -173,5 +173,4 @@ export const YearLevelGroup = factory<YearLevelGroupFactory>((_props, ref) => {
   );
 });
 
-YearLevelGroup.classes = { ...YearLevel.classes, ...LevelsGroup.classes };
 YearLevelGroup.displayName = "@raikou/dates/YearLevelGroup";

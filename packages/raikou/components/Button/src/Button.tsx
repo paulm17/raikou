@@ -104,7 +104,9 @@ export type ButtonFactory = PolymorphicFactory<{
   variant: ButtonVariant;
 }>;
 
-const defaultProps: Partial<ButtonProps> = {};
+const defaultProps: Partial<ButtonProps> = {
+  loaderPosition: "left",
+};
 
 const varsResolver = createVarsResolver<ButtonFactory>(
   (theme, { radius, color, gradient, variant, size, justify }) => {

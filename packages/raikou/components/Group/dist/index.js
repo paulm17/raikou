@@ -75,7 +75,11 @@ function filterFalsyChildren(children) {
 
 // src/Group.tsx
 var defaultProps = {
-  preventGrowOverflow: true
+  preventGrowOverflow: true,
+  gap: "md",
+  align: "center",
+  justify: "flex-start",
+  wrap: "wrap"
 };
 var varsResolver = (0, import_core.createVarsResolver)(
   (_, { grow, preventGrowOverflow, gap, align, justify, wrap }, { childWidth }) => ({

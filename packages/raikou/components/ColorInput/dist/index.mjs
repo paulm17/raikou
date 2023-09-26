@@ -1033,7 +1033,8 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetTop: false,
   describedBy: void 0,
   getStyles: null,
-  inputId: void 0
+  inputId: void 0,
+  labelId: void 0
 });
 
 // ../Input/src/InputLabel/InputLabel.tsx
@@ -1450,12 +1451,13 @@ var InputWrapper = factory6((_props, ref) => {
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
+  const labelId = (labelProps == null ? void 0 : labelProps.id) || `${idBase}-label`;
   const _label = label && /* @__PURE__ */ React15.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
       labelElement,
-      id: `${idBase}-label`,
+      id: labelId,
       htmlFor: inputId,
       required: isRequired
     }, sharedProps), labelProps),
@@ -1501,7 +1503,8 @@ var InputWrapper = factory6((_props, ref) => {
       value: __spreadValues({
         getStyles,
         describedBy,
-        inputId
+        inputId,
+        labelId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
     /* @__PURE__ */ React15.createElement(
@@ -3847,8 +3850,10 @@ function usePopover(options) {
   });
   const onClose = () => {
     var _a;
-    (_a = options.onClose) == null ? void 0 : _a.call(options);
-    setOpened(false);
+    if (_opened) {
+      (_a = options.onClose) == null ? void 0 : _a.call(options);
+      setOpened(false);
+    }
   };
   const onToggle = () => {
     var _a, _b;
@@ -3984,20 +3989,29 @@ import {
 // ../Portal/src/Portal.tsx
 import React21, { useRef as useRef7, useState as useState8, forwardRef as forwardRef8 } from "react";
 import { createPortal as createPortal2 } from "react-dom";
-import { useIsomorphicEffect } from "@raikou/hooks";
+import { useIsomorphicEffect, assignRef } from "@raikou/hooks";
 import { useProps as useProps13 } from "@raikou/core";
+function createPortalNode(props) {
+  const node = document.createElement("div");
+  node.setAttribute("data-portal", "true");
+  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.style === "object" && Object.assign(node.style, props.style);
+  typeof props.id === "string" && node.setAttribute("id", props.id);
+  return node;
+}
 var defaultProps12 = {};
 var Portal = forwardRef8((props, ref) => {
   const _a = useProps13(
     "Portal",
     defaultProps12,
     props
-  ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
+  ), { children, target } = _a, others = __objRest(_a, ["children", "target"]);
   const [mounted, setMounted] = useState8(false);
   const nodeRef = useRef7(null);
   useIsomorphicEffect(() => {
     setMounted(true);
-    nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
+    nodeRef.current = !target ? createPortalNode(others) : typeof target === "string" ? document.querySelector(target) : target;
+    assignRef(ref, nodeRef.current);
     if (!target && nodeRef.current) {
       document.body.appendChild(nodeRef.current);
     }
@@ -4010,10 +4024,7 @@ var Portal = forwardRef8((props, ref) => {
   if (!mounted || !nodeRef.current) {
     return null;
   }
-  return createPortal2(
-    /* @__PURE__ */ React21.createElement("div", __spreadValues({ className, ref }, others), children),
-    nodeRef.current
-  );
+  return createPortal2(/* @__PURE__ */ React21.createElement(React21.Fragment, null, children), nodeRef.current);
 });
 Portal.displayName = "@raikou/core/Portal";
 
@@ -4792,12 +4803,6 @@ var Dots = forwardRef12(
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React32.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React32.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React32.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React32.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React32.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React32.createElement("span", { className: "dot" }),
       /* @__PURE__ */ React32.createElement("span", { className: "dot" }),
       /* @__PURE__ */ React32.createElement("span", { className: "dot" }),
       /* @__PURE__ */ React32.createElement("span", { className: "dot" })

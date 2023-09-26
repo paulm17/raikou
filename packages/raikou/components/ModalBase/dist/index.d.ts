@@ -1,5 +1,5 @@
 import React from 'react';
-import { BoxProps, ElementProps, RaikouShadow, RaikouSpacing, RaikouSize, RaikouRadius, StylesApiProps, PolymorphicFactory } from '@raikou/core';
+import { BoxProps, ElementProps, RaikouShadow, RaikouSpacing, RaikouSize, StylesApiProps, PolymorphicFactory, RaikouRadius } from '@raikou/core';
 
 interface PortalProps extends React.ComponentPropsWithoutRef<"div"> {
     /** Portal children, for example, custom modal or popover */
@@ -85,7 +85,36 @@ interface ModalBaseBodyProps extends BoxProps, ElementProps<"div"> {
 }
 declare const ModalBaseBody: React.ForwardRefExoticComponent<ModalBaseBodyProps & React.RefAttributes<HTMLDivElement>>;
 
-interface ModalBaseCloseButtonProps extends BoxProps, ElementProps<"button"> {
+type CloseButtonVariant = "subtle" | "transparent";
+type CloseButtonStylesNames = "root";
+type CloseButtonCssVariables = {
+    root: "--cb-icon-size" | "--cb-size" | "--cb-radius";
+};
+interface __CloseButtonProps {
+    "data-disabled"?: boolean;
+    /** Controls width and height of the button. Numbers are converted to rem. `'md'` by default. */
+    size?: RaikouSize | (string & {}) | number;
+    /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. `theme.defaultRadius` by default. */
+    radius?: RaikouRadius;
+    /** Sets `disabled` and `data-disabled` attributes on the button element */
+    disabled?: boolean;
+    /** `X` icon `width` and `height`, `80%` by default */
+    iconSize?: number | string;
+    /** Content rendered inside the button, for example `VisuallyHidden` with label for screen readers */
+    children?: React.ReactNode;
+}
+interface CloseButtonProps extends __CloseButtonProps, BoxProps, StylesApiProps<CloseButtonFactory> {
+}
+type CloseButtonFactory = PolymorphicFactory<{
+    props: CloseButtonProps;
+    defaultComponent: "button";
+    defaultRef: HTMLButtonElement;
+    stylesNames: CloseButtonStylesNames;
+    variant: CloseButtonVariant;
+    vars: CloseButtonCssVariables;
+}>;
+
+interface ModalBaseCloseButtonProps extends CloseButtonProps, BoxProps, ElementProps<"button"> {
 }
 declare const ModalBaseCloseButton: React.ForwardRefExoticComponent<ModalBaseCloseButtonProps & React.RefAttributes<HTMLButtonElement>>;
 

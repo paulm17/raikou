@@ -9,8 +9,15 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
+    },
+    "./d3-*": {
+      "types": "./d3-*.d.ts"
     }
   },
+  "files": [
+    "./d3-*",
+    "./internmap.js"
+  ],
   "license": "MIT",
   "sideEffects": false,
   "scripts": {

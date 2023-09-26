@@ -36,7 +36,9 @@ export default function LinkRadialDiagonal<Link, Node>({
   data,
   innerRef,
   path,
+  // @ts-ignore
   angle = getX,
+  // @ts-ignore
   radius = getY,
   source = getSource,
   target = getTarget,

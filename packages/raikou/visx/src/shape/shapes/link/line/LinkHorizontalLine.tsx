@@ -36,7 +36,9 @@ export default function LinkHorizontalLine<Link, Node>({
   innerRef,
   data,
   path,
+  // @ts-ignore
   x = getY, // note this returns a y value
+  // @ts-ignore
   y = getX, // note this returns a x value
   source = getSource,
   target = getTarget,

@@ -90,6 +90,7 @@ export const Spoiler = factory<SpoilerFactory>((_props, ref) => {
     classes: {
       root: "spoiler-root",
       content: "spoiler-content",
+      control: "spoiler-control",
     },
     props,
     className,
@@ -120,6 +121,7 @@ export const Spoiler = factory<SpoilerFactory>((_props, ref) => {
           aria-controls={regionId}
           {...getStyles("control")}
         >
+          {/* @ts-ignore */}
           {spoilerMoreContent}
         </Anchor>
       )}

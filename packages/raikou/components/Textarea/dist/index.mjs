@@ -80,7 +80,8 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetTop: false,
   describedBy: void 0,
   getStyles: null,
-  inputId: void 0
+  inputId: void 0,
+  labelId: void 0
 });
 
 // ../Input/src/InputLabel/InputLabel.tsx
@@ -383,54 +384,54 @@ import { useEffect as useEffect3, useRef as useRef3 } from "react";
 import { useState as useState2 } from "react";
 import { useState as useState22, useEffect as useEffect4, useRef as useRef4 } from "react";
 import { useState as useState3 } from "react";
-import { useEffect as useEffect5, useRef as useRef5, useState as useState4 } from "react";
+import { useEffect as useEffect5, useRef as useRef5, useState as useState4, useCallback as useCallback2 } from "react";
 import { useEffect as useEffect6, useState as useState5, useRef as useRef6 } from "react";
 import { useEffect as useEffect7, useLayoutEffect as useLayoutEffect2 } from "react";
 import { useEffect as useEffect8, useState as useState6 } from "react";
 import { useRef as useRef8 } from "react";
 import { useEffect as useEffect9, useRef as useRef7 } from "react";
-import { useCallback as useCallback2, useEffect as useEffect10, useRef as useRef9 } from "react";
+import { useCallback as useCallback3, useEffect as useEffect10, useRef as useRef9 } from "react";
 import { useReducer } from "react";
 import { useState as useState7 } from "react";
 import React7 from "react";
 import { useState as useState8, useEffect as useEffect11, useRef as useRef10 } from "react";
 import { useEffect as useEffect12, useRef as useRef11, useState as useState9 } from "react";
 import { useState as useState10 } from "react";
-import { useState as useState11, useCallback as useCallback3, useEffect as useEffect14 } from "react";
+import { useState as useState11, useCallback as useCallback4, useEffect as useEffect14 } from "react";
 import { useEffect as useEffect13 } from "react";
-import { useCallback as useCallback4 } from "react";
+import { useCallback as useCallback5 } from "react";
 import { useEffect as useEffect15, useRef as useRef12, useState as useState12 } from "react";
 import { useEffect as useEffect16, useState as useState13, useRef as useRef13 } from "react";
 import { useMemo as useMemo2 } from "react";
 import { useState as useState14 } from "react";
 import { useState as useState15 } from "react";
 import { useEffect as useEffect17 } from "react";
-import { useCallback as useCallback5, useRef as useRef14, useEffect as useEffect18 } from "react";
+import { useCallback as useCallback6, useRef as useRef14, useEffect as useEffect18 } from "react";
 import { useEffect as useEffect19, useMemo as useMemo3, useRef as useRef15, useState as useState16 } from "react";
 import { useEffect as useEffect20, useRef as useRef16 } from "react";
 import { useReducer as useReducer2 } from "react";
-import { useCallback as useCallback6, useState as useState17, useEffect as useEffect21 } from "react";
+import { useCallback as useCallback7, useState as useState17, useEffect as useEffect21 } from "react";
 import { useState as useState18, useEffect as useEffect222 } from "react";
-import { useCallback as useCallback7, useRef as useRef17, useState as useState19 } from "react";
+import { useCallback as useCallback8, useRef as useRef17, useState as useState19 } from "react";
 import { useState as useState20, useEffect as useEffect23 } from "react";
 import { useEffect as useEffect24 } from "react";
-import { useCallback as useCallback8, useRef as useRef18, useState as useState21, useEffect as useEffect25 } from "react";
+import { useCallback as useCallback9, useRef as useRef18, useState as useState21, useEffect as useEffect25 } from "react";
 import { useEffect as useEffect26 } from "react";
-import { useState as useState222, useEffect as useEffect27, useRef as useRef19, useCallback as useCallback9 } from "react";
+import { useState as useState222, useEffect as useEffect27, useRef as useRef19, useCallback as useCallback10 } from "react";
 import { useState as useState23 } from "react";
 import { useState as useState24 } from "react";
-import { useState as useState25, useCallback as useCallback10 } from "react";
+import { useState as useState25, useCallback as useCallback11 } from "react";
 import { useState as useState26 } from "react";
 import { useRef as useRef20, useEffect as useEffect28 } from "react";
-import { useState as useState27, useCallback as useCallback11 } from "react";
+import { useState as useState27, useCallback as useCallback12 } from "react";
 import { useRef as useRef21, useState as useState28, useEffect as useEffect29 } from "react";
-import { useState as useState29, useEffect as useEffect30, useCallback as useCallback12 } from "react";
+import { useState as useState29, useEffect as useEffect30, useCallback as useCallback13 } from "react";
 import { useRef as useRef22, useEffect as useEffect31 } from "react";
 import { useState as useState30, useEffect as useEffect32 } from "react";
 import { useEffect as useEffect33, useRef as useRef23 } from "react";
 import { useRef as useRef24 } from "react";
 import { useRef as useRef25 } from "react";
-import { useCallback as useCallback13, useState as useState31 } from "react";
+import { useCallback as useCallback14, useState as useState31 } from "react";
 function randomId() {
   return `raikou-${Math.random().toString(36).slice(2, 11)}`;
 }
@@ -577,12 +578,13 @@ var InputWrapper = factory5((_props, ref) => {
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
+  const labelId = (labelProps == null ? void 0 : labelProps.id) || `${idBase}-label`;
   const _label = label && /* @__PURE__ */ React8.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
       labelElement,
-      id: `${idBase}-label`,
+      id: labelId,
       htmlFor: inputId,
       required: isRequired
     }, sharedProps), labelProps),
@@ -628,7 +630,8 @@ var InputWrapper = factory5((_props, ref) => {
       value: __spreadValues({
         getStyles,
         describedBy,
-        inputId
+        inputId,
+        labelId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
     /* @__PURE__ */ React8.createElement(

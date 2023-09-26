@@ -104,7 +104,7 @@ const group = function ({ addComponents }: any) {
       },
     },
     ".progress-loader": {
-      display: "inline-block",
+      display: "flex",
       svg: {
         width: "var(--loader-size)",
         height: "var(--loader-size)",

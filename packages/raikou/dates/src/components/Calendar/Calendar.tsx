@@ -425,9 +425,4 @@ export const Calendar = factory<CalendarFactory>((_props, ref) => {
   );
 });
 
-Calendar.classes = {
-  ...DecadeLevelGroup.classes,
-  ...YearLevelGroup.classes,
-  ...MonthLevelGroup.classes,
-};
 Calendar.displayName = "@raikou/dates/Calendar";

@@ -5,7 +5,7 @@ module.exports = function ({ addComponents, theme }: any) {
     ".comboBox-dropdown.comboBox-dropdown": {
       "--_combobox-padding": `var(--combobox-padding, ${rem("4px")})`,
 
-      padding: "var(--combobox-padding)",
+      padding: "var(--_combobox-padding)",
 
       "&[data-hidden]": {
         display: "none",
@@ -19,6 +19,9 @@ module.exports = function ({ addComponents, theme }: any) {
       "--combobox-option-padding-md": `${rem("8px")} ${rem("12px")}`,
       "--combobox-option-padding-lg": `${rem("10px")} ${rem("16px")}`,
       "--combobox-option-padding-xl": `${rem("14px")} ${rem("20px")}`,
+
+      "--_combobox-option-padding":
+        "var(--combobox-option-padding, var(--combobox-option-padding-sm))",
     },
 
     ".comboBox-option": {

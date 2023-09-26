@@ -62,11 +62,11 @@ declare function closeOnEscape(callback?: (event: any) => void, options?: Option
 
 declare const noop: () => void;
 
-declare function getSize(size: unknown, prefix?: string, convertToRem?: boolean): string;
-declare function getSpacing(size: unknown): string;
-declare function getRadius(size: unknown): string;
-declare function getFontSize(size: unknown): string;
-declare function getLineHeight(size: unknown): string;
+declare function getSize(size: unknown, prefix?: string, convertToRem?: boolean): string | undefined;
+declare function getSpacing(size: unknown): string | undefined;
+declare function getRadius(size: unknown): string | undefined;
+declare function getFontSize(size: unknown): string | undefined;
+declare function getLineHeight(size: unknown): string | undefined;
 declare function getShadow(size: unknown): string | undefined;
 
 type EventHandler<Event> = ((event?: Event) => void) | undefined;
@@ -404,19 +404,21 @@ interface HeadingStyle {
     lineHeight: string;
 }
 type RaikouSize = "xs" | "sm" | "md" | "lg" | "xl";
-type RaikouBreakpointsValues = Record<RaikouSize, string>;
-type RaikouFontSizesValues = Record<RaikouSize, string>;
-type RaikouRadiusValues = Record<RaikouSize, string>;
-type RaikouSpacingValues = Record<RaikouSize, string>;
-type RaikouShadowsValues = Record<RaikouSize, string>;
-type RaikouLineHeightValues = Record<RaikouSize, string>;
+type RaikouBreakpointsValues = Record<RaikouSize | (string & {}), string>;
+type RaikouFontSizesValues = Record<RaikouSize | (string & {}), string>;
+type RaikouRadiusValues = Record<RaikouSize | (string & {}), string>;
+type RaikouSpacingValues = Record<RaikouSize | (string & {}), string>;
+type RaikouShadowsValues = Record<RaikouSize | (string & {}), string>;
+type RaikouLineHeightValues = Record<RaikouSize | (string & {}), string>;
 type RaikouBreakpoint = keyof RaikouBreakpointsValues;
 type RaikouFontSize = keyof RaikouFontSizesValues;
 type RaikouRadius = keyof RaikouRadiusValues | (string & {}) | number;
 type RaikouSpacing = keyof RaikouSpacingValues | (string & {}) | number;
 type RaikouShadow = keyof RaikouShadowsValues | (string & {});
 type RaikouLineHeight = keyof RaikouLineHeightValues;
-type RaikouThemeOther = Record<string, any>;
+interface RaikouThemeOther {
+    [key: string]: any;
+}
 interface RaikouGradient {
     from: string;
     to: string;
@@ -441,7 +443,8 @@ interface RaikouPrimaryShade {
     dark: RaikouColorShade;
 }
 type DefaultRaikouColor = "blue" | (string & {});
-type RaikouThemeColorsOverride = {};
+interface RaikouThemeColorsOverride {
+}
 type RaikouThemeColors = RaikouThemeColorsOverride extends {
     colors: Record<infer CustomColors, RaikouColorsTuple>;
 } ? Record<CustomColors, RaikouColorsTuple> : Record<DefaultRaikouColor, RaikouColorsTuple>;

@@ -259,7 +259,8 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetTop: false,
   describedBy: void 0,
   getStyles: null,
-  inputId: void 0
+  inputId: void 0,
+  labelId: void 0
 });
 
 // ../components/Input/src/InputLabel/InputLabel.tsx
@@ -640,12 +641,13 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
+  const labelId = (labelProps == null ? void 0 : labelProps.id) || `${idBase}-label`;
   const _label = label && /* @__PURE__ */ import_react12.default.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
       labelElement,
-      id: `${idBase}-label`,
+      id: labelId,
       htmlFor: inputId,
       required: isRequired
     }, sharedProps), labelProps),
@@ -691,7 +693,8 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
       value: __spreadValues({
         getStyles: getStyles2,
         describedBy,
-        inputId
+        inputId,
+        labelId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
     /* @__PURE__ */ import_react12.default.createElement(
@@ -1009,7 +1012,6 @@ var TimeInput = (0, import_core9.factory)((_props, ref) => {
     })
   );
 });
-TimeInput.classes = InputBase.classes;
 TimeInput.displayName = "@raikou/dates/TimeInput";
 
 // src/components/Day/Day.tsx
@@ -2561,7 +2563,6 @@ var DecadeLevel = (0, import_core19.factory)((_props, ref) => {
     }, stylesApiProps)
   ));
 });
-DecadeLevel.classes = __spreadValues(__spreadValues({}, YearsList.classes), CalendarHeader.classes);
 DecadeLevel.displayName = "@raikou/dates/DecadeLevel";
 
 // src/components/YearLevel/YearLevel.tsx
@@ -2692,7 +2693,6 @@ var YearLevel = (0, import_core20.factory)((_props, ref) => {
     }, stylesApiProps)
   ));
 });
-YearLevel.classes = __spreadValues(__spreadValues({}, CalendarHeader.classes), MonthsList.classes);
 YearLevel.displayName = "@raikou/dates/YearLevel";
 
 // src/components/MonthLevel/MonthLevel.tsx
@@ -2847,7 +2847,6 @@ var MonthLevel = (0, import_core21.factory)((_props, ref) => {
     }, stylesApiProps)
   ));
 });
-MonthLevel.classes = __spreadValues(__spreadValues({}, Month.classes), CalendarHeader.classes);
 MonthLevel.displayName = "@raikou/dates/MonthLevel";
 
 // src/components/LevelsGroup/LevelsGroup.tsx
@@ -3027,7 +3026,6 @@ var DecadeLevelGroup = (0, import_core23.factory)(
     );
   }
 );
-DecadeLevelGroup.classes = __spreadValues(__spreadValues({}, LevelsGroup.classes), DecadeLevel.classes);
 DecadeLevelGroup.displayName = "@raikou/dates/DecadeLevelGroup";
 
 // src/components/YearLevelGroup/YearLevelGroup.tsx
@@ -3170,7 +3168,6 @@ var YearLevelGroup = (0, import_core24.factory)((_props, ref) => {
     years
   );
 });
-YearLevelGroup.classes = __spreadValues(__spreadValues({}, YearLevel.classes), LevelsGroup.classes);
 YearLevelGroup.displayName = "@raikou/dates/YearLevelGroup";
 
 // src/components/MonthLevelGroup/MonthLevelGroup.tsx
@@ -3342,7 +3339,6 @@ var MonthLevelGroup = (0, import_core25.factory)(
     );
   }
 );
-MonthLevelGroup.classes = __spreadValues(__spreadValues({}, LevelsGroup.classes), MonthLevel.classes);
 MonthLevelGroup.displayName = "@raikou/dates/MonthLevelGroup";
 
 // src/components/PickerInputBase/PickerInputBase.tsx
@@ -5408,8 +5404,10 @@ function usePopover(options) {
   });
   const onClose = () => {
     var _a;
-    (_a = options.onClose) == null ? void 0 : _a.call(options);
-    setOpened(false);
+    if (_opened) {
+      (_a = options.onClose) == null ? void 0 : _a.call(options);
+      setOpened(false);
+    }
   };
   const onToggle = () => {
     var _a, _b;
@@ -5519,18 +5517,27 @@ var import_react39 = __toESM(require("react"));
 var import_react_dom4 = require("react-dom");
 var import_hooks5 = require("@raikou/hooks");
 var import_core31 = require("@raikou/core");
+function createPortalNode(props) {
+  const node = document.createElement("div");
+  node.setAttribute("data-portal", "true");
+  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.style === "object" && Object.assign(node.style, props.style);
+  typeof props.id === "string" && node.setAttribute("id", props.id);
+  return node;
+}
 var defaultProps25 = {};
 var Portal = (0, import_react39.forwardRef)((props, ref) => {
   const _a = (0, import_core31.useProps)(
     "Portal",
     defaultProps25,
     props
-  ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
+  ), { children, target } = _a, others = __objRest(_a, ["children", "target"]);
   const [mounted, setMounted] = (0, import_react39.useState)(false);
   const nodeRef = (0, import_react39.useRef)(null);
   (0, import_hooks5.useIsomorphicEffect)(() => {
     setMounted(true);
-    nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
+    nodeRef.current = !target ? createPortalNode(others) : typeof target === "string" ? document.querySelector(target) : target;
+    (0, import_hooks5.assignRef)(ref, nodeRef.current);
     if (!target && nodeRef.current) {
       document.body.appendChild(nodeRef.current);
     }
@@ -5543,10 +5550,7 @@ var Portal = (0, import_react39.forwardRef)((props, ref) => {
   if (!mounted || !nodeRef.current) {
     return null;
   }
-  return (0, import_react_dom4.createPortal)(
-    /* @__PURE__ */ import_react39.default.createElement("div", __spreadValues({ className, ref }, others), children),
-    nodeRef.current
-  );
+  return (0, import_react_dom4.createPortal)(/* @__PURE__ */ import_react39.default.createElement(import_react39.default.Fragment, null, children), nodeRef.current);
 });
 Portal.displayName = "@raikou/core/Portal";
 
@@ -6166,7 +6170,7 @@ var noScrollbarsClassName = "with-scroll-bars-hidden";
 var removedBarSizeVariable = "--removed-body-scroll-bar-size";
 
 // ../../../node_modules/.pnpm/use-callback-ref@1.3.0_@types+react@18.2.5_react@18.2.0/node_modules/use-callback-ref/dist/es2015/assignRef.js
-function assignRef(ref, value) {
+function assignRef2(ref, value) {
   if (typeof ref === "function") {
     ref(value);
   } else if (ref) {
@@ -6207,7 +6211,7 @@ function useCallbackRef(initialValue, callback) {
 function useMergeRefs(refs, defaultValue) {
   return useCallbackRef(defaultValue || null, function(newValue) {
     return refs.forEach(function(ref) {
-      return assignRef(ref, newValue);
+      return assignRef2(ref, newValue);
     });
   });
 }
@@ -7084,19 +7088,19 @@ CloseButton.displayName = "@raikou/core/CloseButton";
 
 // ../components/ModalBase/src/ModalBaseCloseButton.tsx
 var ModalBaseCloseButton = (0, import_react54.forwardRef)((_a, ref) => {
-  var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+  var _b = _a, { className, onClick } = _b, others = __objRest(_b, ["className", "onClick"]);
   const ctx = useModalBaseContext();
-  return (
-    // @ts-ignore
-    /* @__PURE__ */ import_react54.default.createElement(
-      CloseButton,
-      __spreadProps(__spreadValues({
-        ref
-      }, others), {
-        onClick: ctx.onClose,
-        className: (0, import_clsx4.default)("modalBase-close", className)
-      })
-    )
+  return /* @__PURE__ */ import_react54.default.createElement(
+    CloseButton,
+    __spreadProps(__spreadValues({
+      ref
+    }, others), {
+      onClick: (event) => {
+        ctx.onClose();
+        onClick == null ? void 0 : onClick(event);
+      },
+      className: (0, import_clsx4.default)("modalBase-close", className)
+    })
   );
 });
 ModalBaseCloseButton.displayName = "@raikou/core/ModalBaseCloseButton";
@@ -8321,7 +8325,6 @@ var Calendar = (0, import_core53.factory)((_props, ref) => {
     }, stylesApiProps)
   ));
 });
-Calendar.classes = __spreadValues(__spreadValues(__spreadValues({}, DecadeLevelGroup.classes), YearLevelGroup.classes), MonthLevelGroup.classes);
 Calendar.displayName = "@raikou/dates/Calendar";
 
 // src/components/Calendar/pick-calendar-levels-props/pick-calendar-levels-props.ts
@@ -8579,7 +8582,6 @@ var YearPicker = (0, import_core54.factory)(
     );
   }
 );
-YearPicker.classes = Calendar.classes;
 YearPicker.displayName = "@raikou/dates/YearPicker";
 
 // src/components/MonthPicker/MonthPicker.tsx
@@ -8675,7 +8677,6 @@ var MonthPicker = (0, import_core55.factory)(
     );
   }
 );
-MonthPicker.classes = Calendar.classes;
 MonthPicker.displayName = "@raikou/dates/MonthPicker";
 
 // src/components/DatePicker/DatePicker.tsx
@@ -8780,7 +8781,6 @@ var DatePicker = (0, import_core56.factory)(
     );
   }
 );
-DatePicker.classes = Calendar.classes;
 DatePicker.displayName = "@raikou/dates/DatePicker";
 
 // src/components/DateInput/DateInput.tsx
@@ -9032,7 +9032,6 @@ var DateInput = (0, import_core57.factory)((_props, ref) => {
     )
   )), /* @__PURE__ */ import_react78.default.createElement(HiddenDatesInput, { name, form, value: _value, type: "default" }));
 });
-DateInput.classes = __spreadValues(__spreadValues({}, Input.classes), Calendar.classes);
 DateInput.displayName = "@raikou/dates/DateInput";
 
 // src/components/DateTimePicker/DateTimePicker.tsx
@@ -9134,12 +9133,6 @@ var Dots = (0, import_react82.forwardRef)(
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react82.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react82.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react82.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react82.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react82.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react82.default.createElement("span", { className: "dot" }),
       /* @__PURE__ */ import_react82.default.createElement("span", { className: "dot" }),
       /* @__PURE__ */ import_react82.default.createElement("span", { className: "dot" }),
       /* @__PURE__ */ import_react82.default.createElement("span", { className: "dot" })
@@ -9504,7 +9497,7 @@ var DateTimePicker = (0, import_core66.factory)((_props, ref) => {
       const timeDate = shiftTimezone("add", /* @__PURE__ */ new Date(), ctx.getTimezone());
       timeDate.setHours(hours);
       timeDate.setMinutes(minutes);
-      seconds !== void 0 && timeDate.setSeconds(seconds);
+      timeDate.setSeconds(seconds || 0);
       setValue(
         assignTime(
           timeDate,
@@ -9726,7 +9719,7 @@ var YearPickerInput = (0, import_core67.factory)((_props, ref) => {
         variant,
         type,
         value: _value,
-        defaultDate: Array.isArray(_value) ? _value[0] || getDefaultClampedDate({ maxDate, minDate }) : _value || getDefaultClampedDate({ maxDate, minDate }) ? _value[0] || getDefaultClampedDate({
+        defaultDate: Array.isArray(_value) ? _value[0] || getDefaultClampedDate({
           maxDate,
           minDate,
           timezone: ctx.getTimezone()
@@ -9750,7 +9743,6 @@ var YearPickerInput = (0, import_core67.factory)((_props, ref) => {
     )
   );
 });
-YearPickerInput.classes = __spreadValues(__spreadValues({}, PickerInputBase.classes), YearPicker.classes);
 YearPickerInput.displayName = "@raikou/dates/YearPickerInput";
 
 // src/components/MonthPickerInput/MonthPickerInput.tsx
@@ -9873,7 +9865,6 @@ var MonthPickerInput = (0, import_core68.factory)((_props, ref) => {
     )
   );
 });
-MonthPickerInput.classes = __spreadValues(__spreadValues({}, PickerInputBase.classes), MonthPicker.classes);
 MonthPickerInput.displayName = "@raikou/dates/MonthPickerInput";
 
 // src/components/DatePickerInput/DatePickerInput.tsx
@@ -10003,7 +9994,6 @@ var DatePickerInput = (0, import_core69.factory)((_props, ref) => {
     )
   );
 });
-DatePickerInput.classes = __spreadValues(__spreadValues({}, PickerInputBase.classes), DatePicker.classes);
 DatePickerInput.displayName = "@raikou/dates/DatePickerInput";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

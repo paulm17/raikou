@@ -1,10 +1,24 @@
 /// <reference path="global.d.ts" />
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, CompoundStylesApiProps, ElementProps, Factory, StylesApiProps, RaikouSize, RaikouRadius, PolymorphicFactory, RaikouShadow } from '@raikou/core';
+import { RaikouSize, RaikouRadius, BoxProps, CompoundStylesApiProps, ElementProps, Factory, StylesApiProps, PolymorphicFactory, RaikouShadow } from '@raikou/core';
 import React$2 from 'react';
 import * as CSS from 'csstype';
 import * as PropTypes from 'prop-types';
 import { Interaction } from 'scheduler/tracing';
+
+interface __CloseButtonProps {
+    "data-disabled"?: boolean;
+    /** Controls width and height of the button. Numbers are converted to rem. `'md'` by default. */
+    size?: RaikouSize | (string & {}) | number;
+    /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. `theme.defaultRadius` by default. */
+    radius?: RaikouRadius;
+    /** Sets `disabled` and `data-disabled` attributes on the button element */
+    disabled?: boolean;
+    /** `X` icon `width` and `height`, `80%` by default */
+    iconSize?: number | string;
+    /** Content rendered inside the button, for example `VisuallyHidden` with label for screen readers */
+    children?: React$2.ReactNode;
+}
 
 type ComboboxGroupStylesNames = "group" | "groupLabel";
 interface ComboboxGroupProps extends BoxProps, CompoundStylesApiProps<ComboboxGroupFactory>, ElementProps<"div"> {
@@ -4082,6 +4096,10 @@ interface TagsInputProps extends BoxProps, __BaseInputProps, ComboboxLikeProps, 
     onDuplicate?(value: string): void;
     /** Characters that should trigger tags split, `[',']` by default */
     splitChars?: string[];
+    /** Determines whether the clear button should be displayed in the right section when the component has value, `false` by default */
+    clearable?: boolean;
+    /** Props passed down to the clear button */
+    clearButtonProps?: __CloseButtonProps & ElementProps<"button">;
     /** Tags container component, defaults to `React.Fragment` */
     tagsContainer?(children: React$2.ReactNode): React$2.ReactNode;
 }

@@ -217,12 +217,6 @@ var Dots = forwardRef4(
       }),
       /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
       /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
       /* @__PURE__ */ React5.createElement("span", { className: "dot" })
     );
   }
@@ -368,7 +362,9 @@ var ButtonGroup = factory2((_props, ref) => {
 ButtonGroup.displayName = "@raikou/core/ButtonGroup";
 
 // src/Button.tsx
-var defaultProps4 = {};
+var defaultProps4 = {
+  loaderPosition: "left"
+};
 var varsResolver3 = createVarsResolver3(
   (theme, { radius, color, gradient, variant, size, justify }) => {
     const colors = theme.variantColorResolver({

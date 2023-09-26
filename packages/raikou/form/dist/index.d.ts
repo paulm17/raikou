@@ -1,6 +1,6 @@
 import React$1 from 'react';
 
-type GetInputPropsType = 'input' | 'checkbox';
+type GetInputPropsType = "input" | "checkbox";
 type FormStatus = Record<string, boolean>;
 interface FormFieldValidationResult {
     hasError: boolean;
@@ -17,7 +17,7 @@ interface ReorderPayload {
 }
 type Rule<Value, Values> = (value: Value, values: Values, path: string) => React.ReactNode;
 type FormRule<Value, Values> = NonNullable<Value> extends Array<infer ListValue> ? Partial<{
-    [Key in keyof ListValue]: ListValue[Key] extends Array<infer NestedListItem> ? FormRulesRecord<NestedListItem> | Rule<ListValue[Key], Values> : FormRulesRecord<ListValue[Key]> | Rule<ListValue[Key], Values>;
+    [Key in keyof ListValue]: ListValue[Key] extends Array<infer NestedListItem> ? FormRulesRecord<NestedListItem, Values> | Rule<ListValue[Key], Values> : FormRulesRecord<ListValue[Key], Values> | Rule<ListValue[Key], Values>;
 }> | Rule<Value, Values> : NonNullable<Value> extends Record<string, any> ? FormRulesRecord<Value, Values> | Rule<Value, Values> : Rule<Value, Values>;
 type FormRulesRecord<Values, InitValues = Values> = Partial<{
     [Key in keyof Values]: FormRule<Values[Key], InitValues>;
@@ -96,7 +96,7 @@ interface UseFormReturnType<Values, TransformValues extends _TransformValues<Val
     getTransformedValues: GetTransformedValues<Values, TransformValues>;
 }
 type UseForm<Values = Record<string, unknown>, TransformValues extends _TransformValues<Values> = (values: Values) => Values> = (input?: UseFormInput<Values, TransformValues>) => UseFormReturnType<Values, TransformValues>;
-type TransformedValues<Form extends UseFormReturnType<any>> = Parameters<Parameters<Form['onSubmit']>[0]>[0];
+type TransformedValues<Form extends UseFormReturnType<any>> = Parameters<Parameters<Form["onSubmit"]>[0]>[0];
 
 declare function useForm<Values = Record<string, unknown>, TransformValues extends _TransformValues<Values> = (values: Values) => Values>({ initialValues, initialErrors, initialDirty, initialTouched, clearInputErrorOnChange, validateInputOnChange, validateInputOnBlur, transformValues, validate: rules, }?: UseFormInput<Values, TransformValues>): UseFormReturnType<Values, TransformValues>;
 

@@ -3891,7 +3891,36 @@ interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
     size?: RaikouSize | (string & {}) | number;
 }
 
-interface ModalBaseCloseButtonProps extends BoxProps, ElementProps<"button"> {
+type CloseButtonVariant = "subtle" | "transparent";
+type CloseButtonStylesNames = "root";
+type CloseButtonCssVariables = {
+    root: "--cb-icon-size" | "--cb-size" | "--cb-radius";
+};
+interface __CloseButtonProps {
+    "data-disabled"?: boolean;
+    /** Controls width and height of the button. Numbers are converted to rem. `'md'` by default. */
+    size?: RaikouSize | (string & {}) | number;
+    /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. `theme.defaultRadius` by default. */
+    radius?: RaikouRadius;
+    /** Sets `disabled` and `data-disabled` attributes on the button element */
+    disabled?: boolean;
+    /** `X` icon `width` and `height`, `80%` by default */
+    iconSize?: number | string;
+    /** Content rendered inside the button, for example `VisuallyHidden` with label for screen readers */
+    children?: React$2.ReactNode;
+}
+interface CloseButtonProps extends __CloseButtonProps, BoxProps, StylesApiProps<CloseButtonFactory> {
+}
+type CloseButtonFactory = PolymorphicFactory<{
+    props: CloseButtonProps;
+    defaultComponent: "button";
+    defaultRef: HTMLButtonElement;
+    stylesNames: CloseButtonStylesNames;
+    variant: CloseButtonVariant;
+    vars: CloseButtonCssVariables;
+}>;
+
+interface ModalBaseCloseButtonProps extends CloseButtonProps, BoxProps, ElementProps<"button"> {
 }
 
 type OverlayStylesNames = "root";

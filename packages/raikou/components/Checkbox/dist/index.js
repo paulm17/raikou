@@ -66,7 +66,7 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Checkbox.tsx
-var import_react69 = __toESM(require("react"));
+var import_react70 = __toESM(require("react"));
 
 // ../../hooks/dist/index.mjs
 var import_react = require("react");
@@ -201,7 +201,8 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetTop: false,
   describedBy: void 0,
   getStyles: null,
-  inputId: void 0
+  inputId: void 0,
+  labelId: void 0
 });
 
 // ../Input/src/InputLabel/InputLabel.tsx
@@ -581,12 +582,13 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
+  const labelId = (labelProps == null ? void 0 : labelProps.id) || `${idBase}-label`;
   const _label = label && /* @__PURE__ */ import_react63.default.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
       labelElement,
-      id: `${idBase}-label`,
+      id: labelId,
       htmlFor: inputId,
       required: isRequired
     }, sharedProps), labelProps),
@@ -632,7 +634,8 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
       value: __spreadValues({
         getStyles,
         describedBy,
-        inputId
+        inputId,
+        labelId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
     /* @__PURE__ */ import_react63.default.createElement(
@@ -907,8 +910,31 @@ var CheckboxGroupProvider = CheckboxGroupContext.Provider;
 var useCheckboxGroupContext = () => (0, import_react66.useContext)(CheckboxGroupContext);
 
 // src/CheckboxGroup/CheckboxGroup.tsx
-var import_react67 = __toESM(require("react"));
+var import_react68 = __toESM(require("react"));
 var import_core8 = require("@raikou/core");
+
+// ../InputsGroupFieldset/src/InputsGroupFieldset.tsx
+var import_react67 = __toESM(require("react"));
+function InputsGroupFieldset({
+  children,
+  role
+}) {
+  const ctx = useInputWrapperContext();
+  if (!ctx) {
+    return /* @__PURE__ */ import_react67.default.createElement(import_react67.default.Fragment, null, children);
+  }
+  return /* @__PURE__ */ import_react67.default.createElement(
+    "div",
+    {
+      role,
+      "aria-labelledby": ctx.labelId,
+      "aria-describedby": ctx.describedBy
+    },
+    children
+  );
+}
+
+// src/CheckboxGroup/CheckboxGroup.tsx
 var defaultProps7 = {};
 var CheckboxGroup = (0, import_core8.factory)((props, ref) => {
   const _a = (0, import_core8.useProps)("CheckboxGroup", defaultProps7, props), {
@@ -938,12 +964,12 @@ var CheckboxGroup = (0, import_core8.factory)((props, ref) => {
       _value.includes(itemValue) ? _value.filter((item) => item !== itemValue) : [..._value, itemValue]
     );
   };
-  return /* @__PURE__ */ import_react67.default.createElement(
+  return /* @__PURE__ */ import_react68.default.createElement(
     CheckboxGroupProvider,
     {
       value: { value: _value, onChange: handleChange, size }
     },
-    /* @__PURE__ */ import_react67.default.createElement(
+    /* @__PURE__ */ import_react68.default.createElement(
       Input.Wrapper,
       __spreadProps(__spreadValues(__spreadValues({
         size,
@@ -952,18 +978,18 @@ var CheckboxGroup = (0, import_core8.factory)((props, ref) => {
         labelElement: "div",
         __staticSelector: "CheckboxGroup"
       }),
-      children
+      /* @__PURE__ */ import_react68.default.createElement(InputsGroupFieldset, { role: "group" }, children)
     )
   );
 });
 
 // src/CheckIcon.tsx
-var import_react68 = __toESM(require("react"));
+var import_react69 = __toESM(require("react"));
 var import_core9 = require("@raikou/core");
 function CheckIcon(_a) {
   var _b = _a, { size, style } = _b, others = __objRest(_b, ["size", "style"]);
   const _style = size !== void 0 ? __spreadValues({ width: (0, import_core9.rem)(size), height: (0, import_core9.rem)(size) }, style) : style;
-  return /* @__PURE__ */ import_react68.default.createElement(
+  return /* @__PURE__ */ import_react69.default.createElement(
     "svg",
     __spreadValues({
       className: "icon",
@@ -972,7 +998,7 @@ function CheckIcon(_a) {
       xmlns: "http://www.w3.org/2000/svg",
       style: _style
     }, others),
-    /* @__PURE__ */ import_react68.default.createElement(
+    /* @__PURE__ */ import_react69.default.createElement(
       "path",
       {
         d: "M4 4.586L1.707 2.293A1 1 0 1 0 .293 3.707l3 3a.997.997 0 0 0 1.414 0l5-5A1 1 0 1 0 8.293.293L4 4.586z",
@@ -986,17 +1012,17 @@ function CheckIcon(_a) {
 function CheckboxIcon(_a) {
   var _b = _a, { indeterminate } = _b, others = __objRest(_b, ["indeterminate"]);
   if (indeterminate) {
-    return /* @__PURE__ */ import_react68.default.createElement(
+    return /* @__PURE__ */ import_react69.default.createElement(
       "svg",
       __spreadValues({
         xmlns: "http://www.w3.org/2000/svg",
         fill: "none",
         viewBox: "0 0 32 6"
       }, others),
-      /* @__PURE__ */ import_react68.default.createElement("rect", { width: "32", height: "6", fill: "currentColor", rx: "3" })
+      /* @__PURE__ */ import_react69.default.createElement("rect", { width: "32", height: "6", fill: "currentColor", rx: "3" })
     );
   }
-  return /* @__PURE__ */ import_react68.default.createElement(CheckIcon, __spreadValues({}, others));
+  return /* @__PURE__ */ import_react69.default.createElement(CheckIcon, __spreadValues({}, others));
 }
 
 // src/Checkbox.tsx
@@ -1093,7 +1119,7 @@ var Checkbox = (0, import_core10.factory)((_props, ref) => {
     checked: ctx.value.includes(rest.value),
     onChange: ctx.onChange
   } : {};
-  return /* @__PURE__ */ import_react69.default.createElement(
+  return /* @__PURE__ */ import_react70.default.createElement(
     InlineInput,
     __spreadValues(__spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       __staticSelector: "Checkbox",
@@ -1112,12 +1138,12 @@ var Checkbox = (0, import_core10.factory)((_props, ref) => {
       variant,
       ref: rootRef
     }), styleProps), wrapperProps),
-    /* @__PURE__ */ import_react69.default.createElement(
+    /* @__PURE__ */ import_react70.default.createElement(
       import_core10.Box,
       __spreadProps(__spreadValues({}, getStyles("inner")), {
         mod: { "data-label-position": labelPosition }
       }),
-      /* @__PURE__ */ import_react69.default.createElement(
+      /* @__PURE__ */ import_react70.default.createElement(
         import_core10.Box,
         __spreadProps(__spreadValues(__spreadValues(__spreadValues({
           component: "input",
@@ -1130,7 +1156,7 @@ var Checkbox = (0, import_core10.factory)((_props, ref) => {
           type: "checkbox"
         })
       ),
-      /* @__PURE__ */ import_react69.default.createElement(Icon, __spreadValues({ indeterminate }, getStyles("icon")))
+      /* @__PURE__ */ import_react70.default.createElement(Icon, __spreadValues({ indeterminate }, getStyles("icon")))
     )
   );
 });

@@ -13,6 +13,7 @@ import { useModalContext } from "./Modal.context";
 
 export type ModalCloseButtonStylesNames = "close";
 
+// @ts-ignore
 export interface ModalCloseButtonProps
   extends ModalBaseCloseButtonProps,
     CompoundStylesApiProps<ModalCloseButtonFactory> {}

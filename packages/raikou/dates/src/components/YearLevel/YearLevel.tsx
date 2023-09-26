@@ -175,5 +175,4 @@ export const YearLevel = factory<YearLevelFactory>((_props, ref) => {
   );
 });
 
-YearLevel.classes = { ...CalendarHeader.classes, ...MonthsList.classes };
 YearLevel.displayName = "@raikou/dates/YearLevel";

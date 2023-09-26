@@ -18,7 +18,6 @@ module.exports = function ({ addComponents, theme }: any) {
       "--input-padding-y-md": rem("8px"),
       "--input-padding-y-lg": rem("10px"),
       "--input-padding-y-xl": rem("13px"),
-      "--input-padding-y": "var(--input-padding-y-sm)",
 
       "--_input-height": "var(--input-height, var(--input-height-sm))",
       "--_input-radius": "var(--input-radius, var(--raikou-radius-default))",
@@ -163,7 +162,7 @@ module.exports = function ({ addComponents, theme }: any) {
       backgroundColor: "var(--_input-bg)",
       fontFamily: "var(--raikou-font-family)",
       height: "var(--_input-size)",
-      minHeight: "var(--input-height)",
+      minHeight: "var(--_input-height)",
       lineHeight: "var(--_input-line-height)",
       fontSize: "var(--input-fz, var(--input-fz, var(--raikou-font-size-sm)))",
       borderRadius: "var(--_input-radius)",

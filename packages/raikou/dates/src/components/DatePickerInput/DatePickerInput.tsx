@@ -166,5 +166,4 @@ export const DatePickerInput: DatePickerInputComponent =
     );
   }) as any;
 
-DatePickerInput.classes = { ...PickerInputBase.classes, ...DatePicker.classes };
 DatePickerInput.displayName = "@raikou/dates/DatePickerInput";

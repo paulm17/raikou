@@ -32,7 +32,9 @@ export default function LinkHorizontalDiagonal<Link, Node>({
   data,
   innerRef,
   path,
+  // @ts-ignore
   x = getY, // note this returns a y value
+  // @ts-ignore
   y = getX, // note this returns an x value
   source = getSource,
   target = getTarget,

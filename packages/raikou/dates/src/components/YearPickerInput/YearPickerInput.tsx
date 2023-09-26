@@ -143,8 +143,6 @@ export const YearPickerInput: YearPickerInputComponent =
           value={_value}
           defaultDate={
             Array.isArray(_value)
-              ? _value[0] || getDefaultClampedDate({ maxDate, minDate })
-              : _value || getDefaultClampedDate({ maxDate, minDate })
               ? _value[0] ||
                 getDefaultClampedDate({
                   maxDate,
@@ -174,5 +172,4 @@ export const YearPickerInput: YearPickerInputComponent =
     );
   }) as any;
 
-YearPickerInput.classes = { ...PickerInputBase.classes, ...YearPicker.classes };
 YearPickerInput.displayName = "@raikou/dates/YearPickerInput";

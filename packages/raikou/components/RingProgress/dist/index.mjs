@@ -3189,20 +3189,29 @@ function getTransitionProps(transitionProps, componentTransition) {
 // ../Portal/src/Portal.tsx
 import React5, { useRef as useRef5, useState as useState5, forwardRef as forwardRef3 } from "react";
 import { createPortal as createPortal2 } from "react-dom";
-import { useIsomorphicEffect } from "@raikou/hooks";
+import { useIsomorphicEffect, assignRef } from "@raikou/hooks";
 import { useProps } from "@raikou/core";
+function createPortalNode(props) {
+  const node = document.createElement("div");
+  node.setAttribute("data-portal", "true");
+  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.style === "object" && Object.assign(node.style, props.style);
+  typeof props.id === "string" && node.setAttribute("id", props.id);
+  return node;
+}
 var defaultProps = {};
 var Portal = forwardRef3((props, ref) => {
   const _a = useProps(
     "Portal",
     defaultProps,
     props
-  ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
+  ), { children, target } = _a, others = __objRest(_a, ["children", "target"]);
   const [mounted, setMounted] = useState5(false);
   const nodeRef = useRef5(null);
   useIsomorphicEffect(() => {
     setMounted(true);
-    nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
+    nodeRef.current = !target ? createPortalNode(others) : typeof target === "string" ? document.querySelector(target) : target;
+    assignRef(ref, nodeRef.current);
     if (!target && nodeRef.current) {
       document.body.appendChild(nodeRef.current);
     }
@@ -3215,10 +3224,7 @@ var Portal = forwardRef3((props, ref) => {
   if (!mounted || !nodeRef.current) {
     return null;
   }
-  return createPortal2(
-    /* @__PURE__ */ React5.createElement("div", __spreadValues({ className, ref }, others), children),
-    nodeRef.current
-  );
+  return createPortal2(/* @__PURE__ */ React5.createElement(React5.Fragment, null, children), nodeRef.current);
 });
 Portal.displayName = "@raikou/core/Portal";
 

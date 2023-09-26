@@ -154,5 +154,4 @@ export const DatePicker: DatePickerComponent = factory<DatePickerFactory>(
   },
 ) as any;
 
-DatePicker.classes = Calendar.classes;
 DatePicker.displayName = "@raikou/dates/DatePicker";

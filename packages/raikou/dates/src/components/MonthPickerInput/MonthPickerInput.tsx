@@ -162,8 +162,4 @@ export const MonthPickerInput: MonthPickerInputComponent =
     );
   }) as any;
 
-MonthPickerInput.classes = {
-  ...PickerInputBase.classes,
-  ...MonthPicker.classes,
-};
 MonthPickerInput.displayName = "@raikou/dates/MonthPickerInput";

@@ -2182,8 +2182,10 @@ function usePopover(options) {
   });
   const onClose = () => {
     var _a;
-    (_a = options.onClose) == null ? void 0 : _a.call(options);
-    setOpened(false);
+    if (_opened) {
+      (_a = options.onClose) == null ? void 0 : _a.call(options);
+      setOpened(false);
+    }
   };
   const onToggle = () => {
     var _a, _b;
@@ -2339,18 +2341,27 @@ var import_react13 = __toESM(require("react"));
 var import_react_dom4 = require("react-dom");
 var import_hooks4 = require("@raikou/hooks");
 var import_core6 = require("@raikou/core");
+function createPortalNode(props) {
+  const node = document.createElement("div");
+  node.setAttribute("data-portal", "true");
+  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.style === "object" && Object.assign(node.style, props.style);
+  typeof props.id === "string" && node.setAttribute("id", props.id);
+  return node;
+}
 var defaultProps2 = {};
 var Portal = (0, import_react13.forwardRef)((props, ref) => {
   const _a = (0, import_core6.useProps)(
     "Portal",
     defaultProps2,
     props
-  ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
+  ), { children, target } = _a, others = __objRest(_a, ["children", "target"]);
   const [mounted, setMounted] = (0, import_react13.useState)(false);
   const nodeRef = (0, import_react13.useRef)(null);
   (0, import_hooks4.useIsomorphicEffect)(() => {
     setMounted(true);
-    nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
+    nodeRef.current = !target ? createPortalNode(others) : typeof target === "string" ? document.querySelector(target) : target;
+    (0, import_hooks4.assignRef)(ref, nodeRef.current);
     if (!target && nodeRef.current) {
       document.body.appendChild(nodeRef.current);
     }
@@ -2363,10 +2374,7 @@ var Portal = (0, import_react13.forwardRef)((props, ref) => {
   if (!mounted || !nodeRef.current) {
     return null;
   }
-  return (0, import_react_dom4.createPortal)(
-    /* @__PURE__ */ import_react13.default.createElement("div", __spreadValues({ className, ref }, others), children),
-    nodeRef.current
-  );
+  return (0, import_react_dom4.createPortal)(/* @__PURE__ */ import_react13.default.createElement(import_react13.default.Fragment, null, children), nodeRef.current);
 });
 Portal.displayName = "@raikou/core/Portal";
 

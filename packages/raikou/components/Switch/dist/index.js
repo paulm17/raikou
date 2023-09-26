@@ -65,7 +65,7 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Switch.tsx
-var import_react14 = __toESM(require("react"));
+var import_react15 = __toESM(require("react"));
 var import_hooks3 = require("@raikou/hooks");
 var import_core9 = require("@raikou/core");
 
@@ -101,7 +101,8 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetTop: false,
   describedBy: void 0,
   getStyles: null,
-  inputId: void 0
+  inputId: void 0,
+  labelId: void 0
 });
 
 // ../Input/src/InputLabel/InputLabel.tsx
@@ -482,12 +483,13 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
+  const labelId = (labelProps == null ? void 0 : labelProps.id) || `${idBase}-label`;
   const _label = label && /* @__PURE__ */ import_react9.default.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
       labelElement,
-      id: `${idBase}-label`,
+      id: labelId,
       htmlFor: inputId,
       required: isRequired
     }, sharedProps), labelProps),
@@ -533,7 +535,8 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
       value: __spreadValues({
         getStyles,
         describedBy,
-        inputId
+        inputId,
+        labelId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
     /* @__PURE__ */ import_react9.default.createElement(
@@ -806,9 +809,32 @@ var SwitchGroupProvider = SwitchGroupContext.Provider;
 var useSwitchGroupContext = () => (0, import_react12.useContext)(SwitchGroupContext);
 
 // src/SwitchGroup/SwitchGroup.tsx
-var import_react13 = __toESM(require("react"));
+var import_react14 = __toESM(require("react"));
 var import_hooks2 = require("@raikou/hooks");
 var import_core8 = require("@raikou/core");
+
+// ../InputsGroupFieldset/src/InputsGroupFieldset.tsx
+var import_react13 = __toESM(require("react"));
+function InputsGroupFieldset({
+  children,
+  role
+}) {
+  const ctx = useInputWrapperContext();
+  if (!ctx) {
+    return /* @__PURE__ */ import_react13.default.createElement(import_react13.default.Fragment, null, children);
+  }
+  return /* @__PURE__ */ import_react13.default.createElement(
+    "div",
+    {
+      role,
+      "aria-labelledby": ctx.labelId,
+      "aria-describedby": ctx.describedBy
+    },
+    children
+  );
+}
+
+// src/SwitchGroup/SwitchGroup.tsx
 var defaultProps7 = {};
 var SwitchGroup = (0, import_core8.factory)((props, ref) => {
   const _a = (0, import_core8.useProps)("SwitchGroup", defaultProps7, props), {
@@ -838,12 +864,12 @@ var SwitchGroup = (0, import_core8.factory)((props, ref) => {
       _value.includes(itemValue) ? _value.filter((item) => item !== itemValue) : [..._value, itemValue]
     );
   };
-  return /* @__PURE__ */ import_react13.default.createElement(
+  return /* @__PURE__ */ import_react14.default.createElement(
     SwitchGroupProvider,
     {
       value: { value: _value, onChange: handleChange, size }
     },
-    /* @__PURE__ */ import_react13.default.createElement(
+    /* @__PURE__ */ import_react14.default.createElement(
       Input.Wrapper,
       __spreadProps(__spreadValues(__spreadValues({
         size,
@@ -852,7 +878,7 @@ var SwitchGroup = (0, import_core8.factory)((props, ref) => {
         labelElement: "div",
         __staticSelector: "SwitchGroup"
       }),
-      children
+      /* @__PURE__ */ import_react14.default.createElement(InputsGroupFieldset, { role: "group" }, children)
     )
   );
 });
@@ -970,7 +996,7 @@ var Switch = (0, import_core9.factory)((_props, ref) => {
     defaultValue: defaultChecked,
     finalValue: false
   });
-  return /* @__PURE__ */ import_react14.default.createElement(
+  return /* @__PURE__ */ import_react15.default.createElement(
     InlineInput,
     __spreadValues(__spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       __staticSelector: "Switch",
@@ -989,7 +1015,7 @@ var Switch = (0, import_core9.factory)((_props, ref) => {
       variant,
       ref: rootRef
     }), styleProps), wrapperProps),
-    /* @__PURE__ */ import_react14.default.createElement(
+    /* @__PURE__ */ import_react15.default.createElement(
       "input",
       __spreadValues(__spreadProps(__spreadValues({}, rest), {
         disabled,
@@ -1004,15 +1030,15 @@ var Switch = (0, import_core9.factory)((_props, ref) => {
         type: "checkbox"
       }), getStyles("input"))
     ),
-    /* @__PURE__ */ import_react14.default.createElement(
+    /* @__PURE__ */ import_react15.default.createElement(
       import_core9.Box,
       __spreadValues({
         component: "label",
         htmlFor: uuid,
         mod: { error, "label-position": labelPosition }
       }, getStyles("track")),
-      /* @__PURE__ */ import_react14.default.createElement(import_core9.Box, __spreadValues({ component: "span", mod: "reduce-motion" }, getStyles("thumb")), thumbIcon),
-      /* @__PURE__ */ import_react14.default.createElement("span", __spreadValues({}, getStyles("trackLabel")), _checked ? onLabel : offLabel)
+      /* @__PURE__ */ import_react15.default.createElement(import_core9.Box, __spreadValues({ component: "span", mod: "reduce-motion" }, getStyles("thumb")), thumbIcon),
+      /* @__PURE__ */ import_react15.default.createElement("span", __spreadValues({}, getStyles("trackLabel")), _checked ? onLabel : offLabel)
     )
   );
 });

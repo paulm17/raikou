@@ -193,25 +193,28 @@ function useCounter(initialValue = 0, options) {
 }
 
 // src/use-debounced-state/use-debounced-state.ts
-import { useEffect as useEffect5, useRef as useRef5, useState as useState4 } from "react";
+import { useEffect as useEffect5, useRef as useRef5, useState as useState4, useCallback as useCallback2 } from "react";
 function useDebouncedState(defaultValue, wait, options = { leading: false }) {
   const [value, setValue] = useState4(defaultValue);
   const timeoutRef = useRef5(null);
   const leadingRef = useRef5(true);
   const clearTimeout = () => window.clearTimeout(timeoutRef.current);
   useEffect5(() => clearTimeout, []);
-  const debouncedSetValue = (newValue) => {
-    clearTimeout();
-    if (leadingRef.current && options.leading) {
-      setValue(newValue);
-    } else {
-      timeoutRef.current = window.setTimeout(() => {
-        leadingRef.current = true;
+  const debouncedSetValue = useCallback2(
+    (newValue) => {
+      clearTimeout();
+      if (leadingRef.current && options.leading) {
         setValue(newValue);
-      }, wait);
-    }
-    leadingRef.current = false;
-  };
+      } else {
+        timeoutRef.current = window.setTimeout(() => {
+          leadingRef.current = true;
+          setValue(newValue);
+        }, wait);
+      }
+      leadingRef.current = false;
+    },
+    [options.leading]
+  );
   return [value, debouncedSetValue];
 }
 
@@ -322,7 +325,7 @@ function useFocusReturn({ opened, shouldReturnFocus = true }) {
 }
 
 // src/use-focus-trap/use-focus-trap.ts
-import { useCallback as useCallback2, useEffect as useEffect10, useRef as useRef9 } from "react";
+import { useCallback as useCallback3, useEffect as useEffect10, useRef as useRef9 } from "react";
 
 // src/use-focus-trap/tabbable.ts
 var TABBABLE_NODES = /input|select|textarea|button|object/;
@@ -458,7 +461,7 @@ function useFocusTrap(active = true) {
       );
     }
   };
-  const setRef = useCallback2(
+  const setRef = useCallback3(
     (node) => {
       if (!active) {
         return;
@@ -678,7 +681,7 @@ function useListState(initialValue = []) {
 }
 
 // src/use-local-storage/create-storage.ts
-import { useState as useState11, useCallback as useCallback3, useEffect as useEffect14 } from "react";
+import { useState as useState11, useCallback as useCallback4, useEffect as useEffect14 } from "react";
 
 // src/use-window-event/use-window-event.ts
 import { useEffect as useEffect13 } from "react";
@@ -694,7 +697,9 @@ function serializeJSON(value, hookName) {
   try {
     return JSON.stringify(value);
   } catch (error) {
-    throw new Error(`@raikou/hooks ${hookName}: Failed to serialize the value`);
+    throw new Error(
+      `@mantine/hooks ${hookName}: Failed to serialize the value`
+    );
   }
 }
 function deserializeJSON(value) {
@@ -704,8 +709,40 @@ function deserializeJSON(value) {
     return value;
   }
 }
+function createStorageHandler(type) {
+  const getItem = (key) => {
+    try {
+      return window[type].getItem(key);
+    } catch (error) {
+      console.warn(
+        "use-local-storage: Failed to get value from storage, localStorage is blocked"
+      );
+      return null;
+    }
+  };
+  const setItem = (key, value) => {
+    try {
+      window[type].setItem(key, value);
+    } catch (error) {
+      console.warn(
+        "use-local-storage: Failed to set value to storage, localStorage is blocked"
+      );
+    }
+  };
+  const removeItem = (key) => {
+    try {
+      window[type].removeItem(key);
+    } catch (error) {
+      console.warn(
+        "use-local-storage: Failed to remove value from storage, localStorage is blocked"
+      );
+    }
+  };
+  return { getItem, setItem, removeItem };
+}
 function createStorage(type, hookName) {
-  const eventName = type === "localStorage" ? "raikou-local-storage" : "raikou-session-storage";
+  const eventName = type === "localStorage" ? "mantine-local-storage" : "mantine-session-storage";
+  const { getItem, setItem, removeItem } = createStorageHandler(type);
   return function useStorage({
     key,
     defaultValue = void 0,
@@ -713,12 +750,12 @@ function createStorage(type, hookName) {
     deserialize = deserializeJSON,
     serialize = (value) => serializeJSON(value, hookName)
   }) {
-    const readStorageValue = useCallback3(
+    const readStorageValue = useCallback4(
       (skipStorage) => {
         if (typeof window === "undefined" || !(type in window) || window[type] === null || skipStorage) {
           return defaultValue;
         }
-        const storageValue = window[type].getItem(key);
+        const storageValue = getItem(key);
         return storageValue !== null ? deserialize(storageValue) : defaultValue;
       },
       [key, defaultValue]
@@ -726,12 +763,12 @@ function createStorage(type, hookName) {
     const [value, setValue] = useState11(
       readStorageValue(getInitialValueInEffect)
     );
-    const setStorageValue = useCallback3(
+    const setStorageValue = useCallback4(
       (val) => {
         if (val instanceof Function) {
           setValue((current) => {
             const result = val(current);
-            window[type].setItem(key, serialize(result));
+            setItem(key, serialize(result));
             window.dispatchEvent(
               new CustomEvent(eventName, {
                 detail: { key, value: val(current) }
@@ -740,7 +777,7 @@ function createStorage(type, hookName) {
             return result;
           });
         } else {
-          window[type].setItem(key, serialize(val));
+          setItem(key, serialize(val));
           window.dispatchEvent(
             new CustomEvent(eventName, { detail: { key, value: val } })
           );
@@ -749,8 +786,8 @@ function createStorage(type, hookName) {
       },
       [key]
     );
-    const removeStorageValue = useCallback3(() => {
-      window[type].removeItem(key);
+    const removeStorageValue = useCallback4(() => {
+      removeItem(key);
       window.dispatchEvent(
         new CustomEvent(eventName, { detail: { key, value: defaultValue } })
       );
@@ -794,7 +831,7 @@ function useSessionStorage(props) {
 }
 
 // src/use-merged-ref/use-merged-ref.ts
-import { useCallback as useCallback4 } from "react";
+import { useCallback as useCallback5 } from "react";
 function assignRef(ref, value) {
   if (typeof ref === "function") {
     ref(value);
@@ -808,7 +845,7 @@ function mergeRefs(...refs) {
   };
 }
 function useMergedRef(...refs) {
-  return useCallback4(mergeRefs(...refs), refs);
+  return useCallback5(mergeRefs(...refs), refs);
 }
 
 // src/use-mouse/use-mouse.ts
@@ -1078,7 +1115,7 @@ function useReducedMotion(initialValue, options) {
 }
 
 // src/use-scroll-into-view/use-scroll-into-view.ts
-import { useCallback as useCallback5, useRef as useRef14, useEffect as useEffect18 } from "react";
+import { useCallback as useCallback6, useRef as useRef14, useEffect as useEffect18 } from "react";
 
 // src/use-scroll-into-view/utils/ease-in-out-quad.ts
 var easeInOutQuad = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
@@ -1192,7 +1229,7 @@ function useScrollIntoView({
       cancelAnimationFrame(frameID.current);
     }
   };
-  const scrollIntoView = useCallback5(
+  const scrollIntoView = useCallback6(
     ({ alignment = "start" } = {}) => {
       shouldStop.current = false;
       if (frameID.current) {
@@ -1345,7 +1382,7 @@ function useToggle(options = [false, true]) {
 }
 
 // src/use-viewport-size/use-viewport-size.ts
-import { useCallback as useCallback6, useState as useState17, useEffect as useEffect21 } from "react";
+import { useCallback as useCallback7, useState as useState17, useEffect as useEffect21 } from "react";
 var eventListerOptions = {
   passive: true
 };
@@ -1354,7 +1391,7 @@ function useViewportSize() {
     width: 0,
     height: 0
   });
-  const setSize = useCallback6(() => {
+  const setSize = useCallback7(() => {
     setWindowSize({ width: window.innerWidth || 0, height: window.innerHeight || 0 });
   }, []);
   useWindowEvent("resize", setSize, eventListerOptions);
@@ -1391,11 +1428,11 @@ function useWindowScroll() {
 }
 
 // src/use-intersection/use-intersection.ts
-import { useCallback as useCallback7, useRef as useRef17, useState as useState19 } from "react";
+import { useCallback as useCallback8, useRef as useRef17, useState as useState19 } from "react";
 function useIntersection(options) {
   const [entry, setEntry] = useState19(null);
   const observer = useRef17(null);
-  const ref = useCallback7(
+  const ref = useCallback8(
     (element) => {
       if (observer.current) {
         observer.current.disconnect();
@@ -1527,7 +1564,7 @@ function useHotkeys(hotkeys, tagsToIgnore = ["INPUT", "TEXTAREA", "SELECT"], tri
 }
 
 // src/use-fullscreen/use-fullscreen.ts
-import { useCallback as useCallback8, useRef as useRef18, useState as useState21, useEffect as useEffect25 } from "react";
+import { useCallback as useCallback9, useRef as useRef18, useState as useState21, useEffect as useEffect25 } from "react";
 function getFullscreenElement() {
   const _document = window.document;
   const fullscreenElement = _document.fullscreenElement || _document.webkitFullscreenElement || _document.mozFullScreenElement || _document.msFullscreenElement;
@@ -1569,13 +1606,13 @@ function addEvents(element, {
 function useFullscreen() {
   const [fullscreen, setFullscreen] = useState21(false);
   const _ref = useRef18();
-  const handleFullscreenChange = useCallback8(
+  const handleFullscreenChange = useCallback9(
     (event) => {
       setFullscreen(event.target === getFullscreenElement());
     },
     [setFullscreen]
   );
-  const handleFullscreenError = useCallback8(
+  const handleFullscreenError = useCallback9(
     (event) => {
       setFullscreen(false);
       console.error(
@@ -1584,14 +1621,14 @@ function useFullscreen() {
     },
     [setFullscreen]
   );
-  const toggle = useCallback8(async () => {
+  const toggle = useCallback9(async () => {
     if (!getFullscreenElement()) {
       await enterFullScreen(_ref.current);
     } else {
       await exitFullscreen();
     }
   }, []);
-  const ref = useCallback8((element) => {
+  const ref = useCallback9((element) => {
     if (element === null) {
       _ref.current = window.document.documentElement;
     } else {
@@ -1631,12 +1668,12 @@ function useLogger(componentName, props) {
 }
 
 // src/use-hover/use-hover.ts
-import { useState as useState22, useEffect as useEffect27, useRef as useRef19, useCallback as useCallback9 } from "react";
+import { useState as useState22, useEffect as useEffect27, useRef as useRef19, useCallback as useCallback10 } from "react";
 function useHover() {
   const [hovered, setHovered] = useState22(false);
   const ref = useRef19(null);
-  const onMouseEnter = useCallback9(() => setHovered(true), []);
-  const onMouseLeave = useCallback9(() => setHovered(false), []);
+  const onMouseEnter = useCallback10(() => setHovered(true), []);
+  const onMouseLeave = useCallback10(() => setHovered(false), []);
   useEffect27(() => {
     if (ref.current) {
       ref.current.addEventListener("mouseenter", onMouseEnter);
@@ -1712,10 +1749,10 @@ function useOs(options = { getValueInEffect: true }) {
 }
 
 // src/use-set-state/use-set-state.ts
-import { useState as useState25, useCallback as useCallback10 } from "react";
+import { useState as useState25, useCallback as useCallback11 } from "react";
 function useSetState(initialState) {
   const [state, _setState] = useState25(initialState);
-  const setState = useCallback10(
+  const setState = useCallback11(
     (statePartial) => _setState((current) => ({
       ...current,
       ...typeof statePartial === "function" ? statePartial(current) : statePartial
@@ -1768,11 +1805,11 @@ function useEventListener(type, listener, options) {
 }
 
 // src/use-disclosure/use-disclosure.ts
-import { useState as useState27, useCallback as useCallback11 } from "react";
+import { useState as useState27, useCallback as useCallback12 } from "react";
 function useDisclosure(initialState = false, callbacks) {
   const { onOpen, onClose } = callbacks || {};
   const [opened, setOpened] = useState27(initialState);
-  const open = useCallback11(() => {
+  const open = useCallback12(() => {
     setOpened((isOpened) => {
       if (!isOpened) {
         onOpen == null ? void 0 : onOpen();
@@ -1781,7 +1818,7 @@ function useDisclosure(initialState = false, callbacks) {
       return isOpened;
     });
   }, [onOpen]);
-  const close = useCallback11(() => {
+  const close = useCallback12(() => {
     setOpened((isOpened) => {
       if (isOpened) {
         onClose == null ? void 0 : onClose();
@@ -1790,7 +1827,7 @@ function useDisclosure(initialState = false, callbacks) {
       return isOpened;
     });
   }, [onClose]);
-  const toggle = useCallback11(() => {
+  const toggle = useCallback12(() => {
     opened ? close() : open();
   }, [close, open, opened]);
   return [opened, { open, close, toggle }];
@@ -1843,7 +1880,7 @@ function useFocusWithin({
 }
 
 // src/use-network/use-network.ts
-import { useState as useState29, useEffect as useEffect30, useCallback as useCallback12 } from "react";
+import { useState as useState29, useEffect as useEffect30, useCallback as useCallback13 } from "react";
 function getConnection() {
   if (typeof navigator === "undefined") {
     return {};
@@ -1866,7 +1903,7 @@ function useNetwork() {
   const [status, setStatus] = useState29({
     online: true
   });
-  const handleConnectionChange = useCallback12(
+  const handleConnectionChange = useCallback13(
     () => setStatus((current) => ({ ...current, ...getConnection() })),
     []
   );
@@ -2006,13 +2043,13 @@ function useHeadroom({ fixedAt = 0, onPin, onFix, onRelease } = {}) {
 }
 
 // src/use-eye-dropper/use-eye-dropper.ts
-import { useCallback as useCallback13, useState as useState31 } from "react";
+import { useCallback as useCallback14, useState as useState31 } from "react";
 function useEyeDropper() {
   const [supported, setSupported] = useState31(false);
   useIsomorphicEffect(() => {
     setSupported(typeof window !== "undefined" && "EyeDropper" in window);
   }, []);
-  const open = useCallback13(
+  const open = useCallback14(
     (options = {}) => {
       if (supported) {
         const eyeDropper = new window.EyeDropper();

@@ -53,71 +53,87 @@ import { useEffect as useEffect3, useRef as useRef3 } from "react";
 import { useState } from "react";
 import { useState as useState2, useEffect as useEffect4, useRef as useRef4 } from "react";
 import { useState as useState3 } from "react";
-import { useEffect as useEffect5, useRef as useRef5, useState as useState4 } from "react";
+import { useEffect as useEffect5, useRef as useRef5, useState as useState4, useCallback as useCallback2 } from "react";
 import { useEffect as useEffect6, useState as useState5, useRef as useRef6 } from "react";
 import { useEffect as useEffect7, useLayoutEffect } from "react";
 import { useEffect as useEffect8, useState as useState6 } from "react";
 import { useRef as useRef8 } from "react";
 import { useEffect as useEffect9, useRef as useRef7 } from "react";
-import { useCallback as useCallback2, useEffect as useEffect10, useRef as useRef9 } from "react";
+import { useCallback as useCallback3, useEffect as useEffect10, useRef as useRef9 } from "react";
 import { useReducer } from "react";
 import { useState as useState7 } from "react";
 import React from "react";
 import { useState as useState8, useEffect as useEffect11, useRef as useRef10 } from "react";
 import { useEffect as useEffect12, useRef as useRef11, useState as useState9 } from "react";
 import { useState as useState10 } from "react";
-import { useState as useState11, useCallback as useCallback3, useEffect as useEffect14 } from "react";
+import { useState as useState11, useCallback as useCallback4, useEffect as useEffect14 } from "react";
 import { useEffect as useEffect13 } from "react";
-import { useCallback as useCallback4 } from "react";
+import { useCallback as useCallback5 } from "react";
 import { useEffect as useEffect15, useRef as useRef12, useState as useState12 } from "react";
 import { useEffect as useEffect16, useState as useState13, useRef as useRef13 } from "react";
 import { useMemo as useMemo2 } from "react";
 import { useState as useState14 } from "react";
 import { useState as useState15 } from "react";
 import { useEffect as useEffect17 } from "react";
-import { useCallback as useCallback5, useRef as useRef14, useEffect as useEffect18 } from "react";
+import { useCallback as useCallback6, useRef as useRef14, useEffect as useEffect18 } from "react";
 import { useEffect as useEffect19, useMemo as useMemo3, useRef as useRef15, useState as useState16 } from "react";
 import { useEffect as useEffect20, useRef as useRef16 } from "react";
 import { useReducer as useReducer2 } from "react";
-import { useCallback as useCallback6, useState as useState17, useEffect as useEffect21 } from "react";
+import { useCallback as useCallback7, useState as useState17, useEffect as useEffect21 } from "react";
 import { useState as useState18, useEffect as useEffect22 } from "react";
-import { useCallback as useCallback7, useRef as useRef17, useState as useState19 } from "react";
+import { useCallback as useCallback8, useRef as useRef17, useState as useState19 } from "react";
 import { useState as useState20, useEffect as useEffect23 } from "react";
 import { useEffect as useEffect24 } from "react";
-import { useCallback as useCallback8, useRef as useRef18, useState as useState21, useEffect as useEffect25 } from "react";
+import { useCallback as useCallback9, useRef as useRef18, useState as useState21, useEffect as useEffect25 } from "react";
 import { useEffect as useEffect26 } from "react";
-import { useState as useState22, useEffect as useEffect27, useRef as useRef19, useCallback as useCallback9 } from "react";
+import { useState as useState22, useEffect as useEffect27, useRef as useRef19, useCallback as useCallback10 } from "react";
 import { useState as useState23 } from "react";
 import { useState as useState24 } from "react";
-import { useState as useState25, useCallback as useCallback10 } from "react";
+import { useState as useState25, useCallback as useCallback11 } from "react";
 import { useState as useState26 } from "react";
 import { useRef as useRef20, useEffect as useEffect28 } from "react";
-import { useState as useState27, useCallback as useCallback11 } from "react";
+import { useState as useState27, useCallback as useCallback12 } from "react";
 import { useRef as useRef21, useState as useState28, useEffect as useEffect29 } from "react";
-import { useState as useState29, useEffect as useEffect30, useCallback as useCallback12 } from "react";
+import { useState as useState29, useEffect as useEffect30, useCallback as useCallback13 } from "react";
 import { useRef as useRef22, useEffect as useEffect31 } from "react";
 import { useState as useState30, useEffect as useEffect32 } from "react";
 import { useEffect as useEffect33, useRef as useRef23 } from "react";
 import { useRef as useRef24 } from "react";
 import { useRef as useRef25 } from "react";
-import { useCallback as useCallback13, useState as useState31 } from "react";
+import { useCallback as useCallback14, useState as useState31 } from "react";
 var useIsomorphicEffect = typeof document !== "undefined" ? useLayoutEffect : useEffect7;
 var __useId = React["useId".toString()] || (() => void 0);
+function assignRef(ref, value) {
+  if (typeof ref === "function") {
+    ref(value);
+  } else if (typeof ref === "object" && ref !== null && "current" in ref) {
+    ref.current = value;
+  }
+}
 
 // ../Portal/src/Portal.tsx
 import { useProps } from "@raikou/core";
+function createPortalNode(props) {
+  const node = document.createElement("div");
+  node.setAttribute("data-portal", "true");
+  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.style === "object" && Object.assign(node.style, props.style);
+  typeof props.id === "string" && node.setAttribute("id", props.id);
+  return node;
+}
 var defaultProps = {};
 var Portal = forwardRef((props, ref) => {
   const _a = useProps(
     "Portal",
     defaultProps,
     props
-  ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
+  ), { children, target } = _a, others = __objRest(_a, ["children", "target"]);
   const [mounted, setMounted] = useState32(false);
   const nodeRef = useRef26(null);
   useIsomorphicEffect(() => {
     setMounted(true);
-    nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
+    nodeRef.current = !target ? createPortalNode(others) : typeof target === "string" ? document.querySelector(target) : target;
+    assignRef(ref, nodeRef.current);
     if (!target && nodeRef.current) {
       document.body.appendChild(nodeRef.current);
     }
@@ -130,10 +146,7 @@ var Portal = forwardRef((props, ref) => {
   if (!mounted || !nodeRef.current) {
     return null;
   }
-  return createPortal(
-    /* @__PURE__ */ React2.createElement("div", __spreadValues({ className, ref }, others), children),
-    nodeRef.current
-  );
+  return createPortal(/* @__PURE__ */ React2.createElement(React2.Fragment, null, children), nodeRef.current);
 });
 Portal.displayName = "@raikou/core/Portal";
 

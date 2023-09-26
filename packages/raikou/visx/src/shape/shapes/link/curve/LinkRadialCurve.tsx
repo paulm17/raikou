@@ -55,7 +55,9 @@ export default function LinkRadialCurve<Link, Node>({
   innerRef,
   path,
   percent = 0.2,
+  // @ts-ignore
   x = getX,
+  // @ts-ignore
   y = getY,
   source = getSource,
   target = getTarget,

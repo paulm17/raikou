@@ -190,5 +190,4 @@ export const MonthLevel = factory<MonthLevelFactory>((_props, ref) => {
   );
 });
 
-MonthLevel.classes = { ...Month.classes, ...CalendarHeader.classes };
 MonthLevel.displayName = "@raikou/dates/MonthLevel";

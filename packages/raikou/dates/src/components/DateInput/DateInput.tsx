@@ -314,5 +314,4 @@ export const DateInput = factory<DateInputFactory>((_props, ref) => {
   );
 });
 
-DateInput.classes = { ...Input.classes, ...Calendar.classes };
 DateInput.displayName = "@raikou/dates/DateInput";

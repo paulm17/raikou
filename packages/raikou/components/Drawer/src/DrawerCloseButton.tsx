@@ -13,6 +13,7 @@ import { useDrawerContext } from "./Drawer.context";
 
 export type DrawerCloseButtonStylesNames = "close";
 
+// @ts-ignore
 export interface DrawerCloseButtonProps
   extends ModalBaseCloseButtonProps,
     CompoundStylesApiProps<DrawerCloseButtonFactory> {}

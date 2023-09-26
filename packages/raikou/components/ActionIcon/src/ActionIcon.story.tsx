@@ -4,6 +4,14 @@ import { DEFAULT_THEME, rem } from "@raikou/core";
 
 export default { title: "ActionIcon" };
 
+export function SingleButton() {
+  return (
+    <div style={{ padding: 40 }}>
+      <ActionIcon loading>$$</ActionIcon>
+    </div>
+  );
+}
+
 function Colors({ index, ...others }: ActionIconProps & { index?: number }) {
   const colors = Object.keys(DEFAULT_THEME.colors).map((color) => (
     <ActionIcon

@@ -1438,6 +1438,7 @@ var require_ActionIcon_plugin = __commonJS({
             "--_ai-cursor": "not-allowed",
             "--_ai-bg": "var(--_ai-disabled-bg)",
             "--_ai-color": "var(--_ai-disabled-color)",
+            "--ai-bd": `${rem2("1px")} solid transparent !important`,
             "&:active": {
               transform: "none"
             }
@@ -1694,7 +1695,7 @@ var require_AppShell_plugin = __commonJS({
           paddingRight: "var(--_main-padding-right, calc(var(--app-shell-aside-offset, 0px) + var(--app-shell-padding)))",
           paddingTop: "calc(var(--app-shell-header-offset, 0px) + var(--app-shell-padding))",
           paddingBottom: "calc(var(--app-shell-footer-offset, 0px) + var(--app-shell-padding))",
-          minHeight: "calc(100dvh - var(--app-shell-header-offset, 0px) - var(--app-shell-footer-offset, 0px))",
+          minHeight: "100dvh",
           transitionProperty: "padding",
           '[dir="rtl"] &': {
             "--_main-padding-left": "calc(var(--app-shell-aside-offset, 0px) + var(--app-shell-padding))",
@@ -2255,6 +2256,7 @@ var require_Button_plugin = __commonJS({
             "--_button-cursor": "not-allowed",
             "--_button-bg": "var(--_disabled-bg)",
             "--_button-color": "var(--_disabled-color)",
+            "--_button-bd": "transparent",
             transform: "none"
           },
           "&[data-loading]": {
@@ -2683,7 +2685,7 @@ var require_Chip_plugin = __commonJS({
             }
           }
         },
-        ".chip-root[data-variant='filled'] .chip-label:not([data-disabled])": {
+        ".chip-root[data-variant='filled'] .chip-label:not([data-disabled]), .chip-label:not([data-disabled])": {
           backgroundColor: "var(--_chip-bg)",
           border: `${rem2("1px")} solid transparent`,
           color: "var(--_chip-color, var(--raikou-color-text))",
@@ -3172,7 +3174,7 @@ var require_Combobox_plugin = __commonJS({
       addComponents({
         ".comboBox-dropdown.comboBox-dropdown": {
           "--_combobox-padding": `var(--combobox-padding, ${rem2("4px")})`,
-          padding: "var(--combobox-padding)",
+          padding: "var(--_combobox-padding)",
           "&[data-hidden]": {
             display: "none"
           }
@@ -3183,7 +3185,8 @@ var require_Combobox_plugin = __commonJS({
           "--combobox-option-padding-sm": `${rem2("6px")} ${rem2("10px")}`,
           "--combobox-option-padding-md": `${rem2("8px")} ${rem2("12px")}`,
           "--combobox-option-padding-lg": `${rem2("10px")} ${rem2("16px")}`,
-          "--combobox-option-padding-xl": `${rem2("14px")} ${rem2("20px")}`
+          "--combobox-option-padding-xl": `${rem2("14px")} ${rem2("20px")}`,
+          "--_combobox-option-padding": "var(--combobox-option-padding, var(--combobox-option-padding-sm))"
         },
         ".comboBox-option": {
           padding: "var(--_combobox-option-padding)",
@@ -3854,7 +3857,6 @@ var require_Input_plugin = __commonJS({
           "--input-padding-y-md": rem2("8px"),
           "--input-padding-y-lg": rem2("10px"),
           "--input-padding-y-xl": rem2("13px"),
-          "--input-padding-y": "var(--input-padding-y-sm)",
           "--_input-height": "var(--input-height, var(--input-height-sm))",
           "--_input-radius": "var(--input-radius, var(--raikou-radius-default))",
           "--_input-cursor": "text",
@@ -3972,7 +3974,7 @@ var require_Input_plugin = __commonJS({
           backgroundColor: "var(--_input-bg)",
           fontFamily: "var(--raikou-font-family)",
           height: "var(--_input-size)",
-          minHeight: "var(--input-height)",
+          minHeight: "var(--_input-height)",
           lineHeight: "var(--_input-line-height)",
           fontSize: "var(--input-fz, var(--input-fz, var(--raikou-font-size-sm)))",
           borderRadius: "var(--_input-radius)",
@@ -3995,7 +3997,10 @@ var require_Input_plugin = __commonJS({
           },
           "&:focus, &:focus-within": {
             outline: "none",
-            borderColor: "var(--_input-bd-focus)"
+            "--_input-bd": "var(--_input-bd-focus)",
+            "[data-error] &": {
+              "--_input-bd": "var(--mantine-color-error)"
+            }
           },
           "&::placeholder": {
             color: "var(--_input-placeholder-color)",
@@ -4248,9 +4253,11 @@ var require_Loader_plugin = __commonJS({
         },
         "@keyframes loader-dots-animation": {
           "0%, 100%": {
+            transform: "scale(1)",
             opacity: "1"
           },
           "50%": {
+            transform: "scale(0.6)",
             opacity: "0.5"
           }
         },
@@ -4259,7 +4266,6 @@ var require_Loader_plugin = __commonJS({
           justifyContent: "center",
           alignItems: "center",
           gap: "calc(var(--loader-size) / 10)",
-          flexWrap: "wrap",
           position: "relative",
           width: "var(--loader-size)",
           height: "var(--loader-size)"
@@ -4269,18 +4275,9 @@ var require_Loader_plugin = __commonJS({
           height: "calc(var(--loader-size) / 3 - var(--loader-size) / 15)",
           borderRadius: "50%",
           background: "var(--loader-color)",
-          animation: "loader-dots-animation 1200ms linear infinite",
-          "&:nth-child(2), &:nth-child(4)": {
+          animation: "loader-dots-animation 0.8s linear infinite",
+          "&:nth-child(2)": {
             animationDelay: "-400ms"
-          },
-          "&:nth-child(3), &:nth-child(5), &:nth-child(7)": {
-            animationDelay: "-800ms"
-          },
-          "&:nth-child(6), &:nth-child(8)": {
-            animationDelay: "-1200ms"
-          },
-          "&:nth-child(9)": {
-            animationDelay: "-1600ms"
           }
         },
         "@keyframes oval-loader-animation": {
@@ -4308,7 +4305,7 @@ var require_Loader_plugin = __commonJS({
           }
         },
         ".progress-loader": {
-          display: "inline-block",
+          display: "flex",
           svg: {
             width: "var(--loader-size)",
             height: "var(--loader-size)",
@@ -5140,6 +5137,7 @@ var require_PasswordInput_plugin = __commonJS({
           fontSize: "inherit",
           lineHeight: "var(--raikou-line-height)",
           height: "100%",
+          width: "100%",
           color: "inherit",
           "[data-disabled] &, &:disabled": {
             cursor: "not-allowed"
@@ -5184,10 +5182,10 @@ var require_Pill_plugin = __commonJS({
           flex: "0",
           height: "var(--pill-height)",
           paddingLeft: "0.8em",
-          paddingRight: "var(--_pill-padding-right, 0.8em)",
+          paddingRight: "var(--pill-padding-right, 0.8em)",
           display: "inline-flex",
           alignItems: "center",
-          borderRadius: "var(--pill-radius, rem(1000px))",
+          borderRadius: `var(--pill-radius, ${rem2("1000px")})`,
           backgroundColor: "var(--_pill-bg)",
           lineHeight: "1",
           whiteSpace: "nowrap",
@@ -6369,16 +6367,24 @@ var require_Slider_plugin = __commonJS({
 var require_Spoiler_plugin = __commonJS({
   "../components/Spoiler/src/Spoiler.plugin.ts"(exports2, module2) {
     "use strict";
+    init_src();
     module2.exports = function({ addComponents, theme }) {
       addComponents({
         ".spoiler-root": {
-          position: "relative"
+          position: "relative",
+          marginBottom: rem2("24px")
         },
         ".spoiler-content": {
           display: "flex",
           flexDirection: "column",
           overflow: "hidden",
           transition: "max-height var(--spoiler-transition-duration, 200ms) ease"
+        },
+        ".spoiler-control": {
+          position: "absolute",
+          left: "0",
+          top: "100%",
+          height: rem2("24px")
         }
       });
     };
@@ -6830,12 +6836,12 @@ var require_Table_plugin = __commonJS({
           backgroundColor: "var(--_tr-bg, transparent)",
           "@media (hover: hover)": {
             "&:hover": {
-              "--_tr-bg": "var(--_tr-hover-bg, transparent)"
+              "--_tr-bg": "var(--_tr-hover-bg, transparent) !important"
             }
           },
           "@media (hover: none)": {
             "&:active": {
-              "--_tr-bg": "var(--_tr-hover-bg, transparent)"
+              "--_tr-bg": "var(--_tr-hover-bg, transparent) !important"
             }
           },
           "&[data-with-row-border]": {

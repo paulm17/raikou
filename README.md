@@ -86,6 +86,9 @@ present.
    <li>
       <img src="./images/tailwind1.png" style="width:500px" alt="Issue 1">
    </li>
+   <li>
+      <img src="./images/tailwind2.png" style="width:500px" alt="Issue 2">
+   </li>
 </ul>
 
 ### CSS Modules is the wrong choice
@@ -117,7 +120,7 @@ Less headaches in dealing with postcss from a developer UX point of view.
 
 ### Mirrored Mantine release
 
-7.0.0-beta.5
+7.0.2
 
 <!-- GETTING STARTED -->
 

@@ -303,18 +303,21 @@ function useDebouncedState(defaultValue, wait, options = { leading: false }) {
   const leadingRef = (0, import_react7.useRef)(true);
   const clearTimeout = () => window.clearTimeout(timeoutRef.current);
   (0, import_react7.useEffect)(() => clearTimeout, []);
-  const debouncedSetValue = (newValue) => {
-    clearTimeout();
-    if (leadingRef.current && options.leading) {
-      setValue(newValue);
-    } else {
-      timeoutRef.current = window.setTimeout(() => {
-        leadingRef.current = true;
+  const debouncedSetValue = (0, import_react7.useCallback)(
+    (newValue) => {
+      clearTimeout();
+      if (leadingRef.current && options.leading) {
         setValue(newValue);
-      }, wait);
-    }
-    leadingRef.current = false;
-  };
+      } else {
+        timeoutRef.current = window.setTimeout(() => {
+          leadingRef.current = true;
+          setValue(newValue);
+        }, wait);
+      }
+      leadingRef.current = false;
+    },
+    [options.leading]
+  );
   return [value, debouncedSetValue];
 }
 
@@ -797,7 +800,9 @@ function serializeJSON(value, hookName) {
   try {
     return JSON.stringify(value);
   } catch (error) {
-    throw new Error(`@raikou/hooks ${hookName}: Failed to serialize the value`);
+    throw new Error(
+      `@mantine/hooks ${hookName}: Failed to serialize the value`
+    );
   }
 }
 function deserializeJSON(value) {
@@ -807,8 +812,40 @@ function deserializeJSON(value) {
     return value;
   }
 }
+function createStorageHandler(type) {
+  const getItem = (key) => {
+    try {
+      return window[type].getItem(key);
+    } catch (error) {
+      console.warn(
+        "use-local-storage: Failed to get value from storage, localStorage is blocked"
+      );
+      return null;
+    }
+  };
+  const setItem = (key, value) => {
+    try {
+      window[type].setItem(key, value);
+    } catch (error) {
+      console.warn(
+        "use-local-storage: Failed to set value to storage, localStorage is blocked"
+      );
+    }
+  };
+  const removeItem = (key) => {
+    try {
+      window[type].removeItem(key);
+    } catch (error) {
+      console.warn(
+        "use-local-storage: Failed to remove value from storage, localStorage is blocked"
+      );
+    }
+  };
+  return { getItem, setItem, removeItem };
+}
 function createStorage(type, hookName) {
-  const eventName = type === "localStorage" ? "raikou-local-storage" : "raikou-session-storage";
+  const eventName = type === "localStorage" ? "mantine-local-storage" : "mantine-session-storage";
+  const { getItem, setItem, removeItem } = createStorageHandler(type);
   return function useStorage({
     key,
     defaultValue = void 0,
@@ -821,7 +858,7 @@ function createStorage(type, hookName) {
         if (typeof window === "undefined" || !(type in window) || window[type] === null || skipStorage) {
           return defaultValue;
         }
-        const storageValue = window[type].getItem(key);
+        const storageValue = getItem(key);
         return storageValue !== null ? deserialize(storageValue) : defaultValue;
       },
       [key, defaultValue]
@@ -834,7 +871,7 @@ function createStorage(type, hookName) {
         if (val instanceof Function) {
           setValue((current) => {
             const result = val(current);
-            window[type].setItem(key, serialize(result));
+            setItem(key, serialize(result));
             window.dispatchEvent(
               new CustomEvent(eventName, {
                 detail: { key, value: val(current) }
@@ -843,7 +880,7 @@ function createStorage(type, hookName) {
             return result;
           });
         } else {
-          window[type].setItem(key, serialize(val));
+          setItem(key, serialize(val));
           window.dispatchEvent(
             new CustomEvent(eventName, { detail: { key, value: val } })
           );
@@ -853,7 +890,7 @@ function createStorage(type, hookName) {
       [key]
     );
     const removeStorageValue = (0, import_react21.useCallback)(() => {
-      window[type].removeItem(key);
+      removeItem(key);
       window.dispatchEvent(
         new CustomEvent(eventName, { detail: { key, value: defaultValue } })
       );

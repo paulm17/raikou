@@ -107,7 +107,7 @@ interface UseListStateHandlers<T> {
 type UseListState<T> = [T[], UseListStateHandlers<T>];
 declare function useListState<T>(initialValue?: T[]): UseListState<T>;
 
-interface IStorageProperties<T> {
+interface StorageProperties<T> {
     /** Storage key */
     key: string;
     /** Default value that will be set if value is not found in storage */
@@ -120,9 +120,9 @@ interface IStorageProperties<T> {
     deserialize?(value: string | undefined): T;
 }
 
-declare function useLocalStorage<T = string>(props: IStorageProperties<T>): readonly [T | undefined, (val: T | ((prevState: T) => T)) => void, () => void];
+declare function useLocalStorage<T = string>(props: StorageProperties<T>): readonly [T | undefined, (val: T | ((prevState: T) => T)) => void, () => void];
 
-declare function useSessionStorage<T = string>(props: IStorageProperties<T>): readonly [T | undefined, (val: T | ((prevState: T) => T)) => void, () => void];
+declare function useSessionStorage<T = string>(props: StorageProperties<T>): readonly [T | undefined, (val: T | ((prevState: T) => T)) => void, () => void];
 
 type PossibleRef<T> = Ref<T> | undefined;
 declare function assignRef<T>(ref: PossibleRef<T>, value: T): void;

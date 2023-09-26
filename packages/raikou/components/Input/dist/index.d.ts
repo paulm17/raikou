@@ -301,6 +301,7 @@ interface InputWrapperContextValue {
     offsetBottom: boolean;
     describedBy: string | undefined;
     inputId: string | undefined;
+    labelId: string | undefined;
     getStyles: GetStylesApi<InputWrapperFactory> | null;
 }
 declare const useInputWrapperContext: () => InputWrapperContextValue | null;

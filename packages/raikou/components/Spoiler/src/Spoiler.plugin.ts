@@ -12,7 +12,7 @@ module.exports = function ({ addComponents, theme }: any) {
       overflow: "hidden",
       transition: "max-height var(--spoiler-transition-duration, 200ms) ease",
     },
-    ".control": {
+    ".spoiler-control": {
       position: "absolute",
       left: "0",
       top: "100%",

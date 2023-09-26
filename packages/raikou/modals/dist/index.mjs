@@ -692,20 +692,29 @@ import {
 // ../components/Portal/src/Portal.tsx
 import React7, { useRef as useRef3, useState as useState4, forwardRef as forwardRef3 } from "react";
 import { createPortal } from "react-dom";
-import { useIsomorphicEffect } from "@raikou/hooks";
+import { useIsomorphicEffect, assignRef as assignRef2 } from "@raikou/hooks";
 import { useProps } from "@raikou/core";
+function createPortalNode(props) {
+  const node = document.createElement("div");
+  node.setAttribute("data-portal", "true");
+  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.style === "object" && Object.assign(node.style, props.style);
+  typeof props.id === "string" && node.setAttribute("id", props.id);
+  return node;
+}
 var defaultProps = {};
 var Portal = forwardRef3((props, ref) => {
   const _a = useProps(
     "Portal",
     defaultProps,
     props
-  ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
+  ), { children, target } = _a, others = __objRest(_a, ["children", "target"]);
   const [mounted, setMounted] = useState4(false);
   const nodeRef = useRef3(null);
   useIsomorphicEffect(() => {
     setMounted(true);
-    nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
+    nodeRef.current = !target ? createPortalNode(others) : typeof target === "string" ? document.querySelector(target) : target;
+    assignRef2(ref, nodeRef.current);
     if (!target && nodeRef.current) {
       document.body.appendChild(nodeRef.current);
     }
@@ -718,10 +727,7 @@ var Portal = forwardRef3((props, ref) => {
   if (!mounted || !nodeRef.current) {
     return null;
   }
-  return createPortal(
-    /* @__PURE__ */ React7.createElement("div", __spreadValues({ className, ref }, others), children),
-    nodeRef.current
-  );
+  return createPortal(/* @__PURE__ */ React7.createElement(React7.Fragment, null, children), nodeRef.current);
 });
 Portal.displayName = "@raikou/core/Portal";
 
@@ -1180,19 +1186,19 @@ CloseButton.displayName = "@raikou/core/CloseButton";
 
 // ../components/ModalBase/src/ModalBaseCloseButton.tsx
 var ModalBaseCloseButton = forwardRef7((_a, ref) => {
-  var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
+  var _b = _a, { className, onClick } = _b, others = __objRest(_b, ["className", "onClick"]);
   const ctx = useModalBaseContext();
-  return (
-    // @ts-ignore
-    /* @__PURE__ */ React16.createElement(
-      CloseButton,
-      __spreadProps(__spreadValues({
-        ref
-      }, others), {
-        onClick: ctx.onClose,
-        className: clsx_default("modalBase-close", className)
-      })
-    )
+  return /* @__PURE__ */ React16.createElement(
+    CloseButton,
+    __spreadProps(__spreadValues({
+      ref
+    }, others), {
+      onClick: (event) => {
+        ctx.onClose();
+        onClick == null ? void 0 : onClick(event);
+      },
+      className: clsx_default("modalBase-close", className)
+    })
   );
 });
 ModalBaseCloseButton.displayName = "@raikou/core/ModalBaseCloseButton";
@@ -2118,12 +2124,6 @@ var Dots = forwardRef15(
       }),
       /* @__PURE__ */ React37.createElement("span", { className: "dot" }),
       /* @__PURE__ */ React37.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React37.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React37.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React37.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React37.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React37.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React37.createElement("span", { className: "dot" }),
       /* @__PURE__ */ React37.createElement("span", { className: "dot" })
     );
   }
@@ -2269,7 +2269,9 @@ var ButtonGroup = factory10((_props, ref) => {
 ButtonGroup.displayName = "@raikou/core/ButtonGroup";
 
 // ../components/Button/src/Button.tsx
-var defaultProps16 = {};
+var defaultProps16 = {
+  loaderPosition: "left"
+};
 var varsResolver7 = createVarsResolver7(
   (theme, { radius, color, gradient, variant, size, justify }) => {
     const colors = theme.variantColorResolver({
@@ -2438,7 +2440,11 @@ function filterFalsyChildren(children) {
 
 // ../components/Group/src/Group.tsx
 var defaultProps17 = {
-  preventGrowOverflow: true
+  preventGrowOverflow: true,
+  gap: "md",
+  align: "center",
+  justify: "flex-start",
+  wrap: "wrap"
 };
 var varsResolver8 = createVarsResolver8(
   (_, { grow, preventGrowOverflow, gap, align, justify, wrap }, { childWidth }) => ({

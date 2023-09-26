@@ -1023,7 +1023,8 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetTop: false,
   describedBy: void 0,
   getStyles: null,
-  inputId: void 0
+  inputId: void 0,
+  labelId: void 0
 });
 
 // ../Input/src/InputLabel/InputLabel.tsx
@@ -1404,12 +1405,13 @@ var InputWrapper = (0, import_core13.factory)((_props, ref) => {
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
+  const labelId = (labelProps == null ? void 0 : labelProps.id) || `${idBase}-label`;
   const _label = label && /* @__PURE__ */ import_react17.default.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
       labelElement,
-      id: `${idBase}-label`,
+      id: labelId,
       htmlFor: inputId,
       required: isRequired
     }, sharedProps), labelProps),
@@ -1455,7 +1457,8 @@ var InputWrapper = (0, import_core13.factory)((_props, ref) => {
       value: __spreadValues({
         getStyles,
         describedBy,
-        inputId
+        inputId,
+        labelId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
     /* @__PURE__ */ import_react17.default.createElement(
@@ -3790,8 +3793,10 @@ function usePopover(options) {
   });
   const onClose = () => {
     var _a;
-    (_a = options.onClose) == null ? void 0 : _a.call(options);
-    setOpened(false);
+    if (_opened) {
+      (_a = options.onClose) == null ? void 0 : _a.call(options);
+      setOpened(false);
+    }
   };
   const onToggle = () => {
     var _a, _b;
@@ -3923,18 +3928,27 @@ var import_react26 = __toESM(require("react"));
 var import_react_dom4 = require("react-dom");
 var import_hooks8 = require("@raikou/hooks");
 var import_core21 = require("@raikou/core");
+function createPortalNode(props) {
+  const node = document.createElement("div");
+  node.setAttribute("data-portal", "true");
+  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.style === "object" && Object.assign(node.style, props.style);
+  typeof props.id === "string" && node.setAttribute("id", props.id);
+  return node;
+}
 var defaultProps12 = {};
 var Portal = (0, import_react26.forwardRef)((props, ref) => {
   const _a = (0, import_core21.useProps)(
     "Portal",
     defaultProps12,
     props
-  ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
+  ), { children, target } = _a, others = __objRest(_a, ["children", "target"]);
   const [mounted, setMounted] = (0, import_react26.useState)(false);
   const nodeRef = (0, import_react26.useRef)(null);
   (0, import_hooks8.useIsomorphicEffect)(() => {
     setMounted(true);
-    nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
+    nodeRef.current = !target ? createPortalNode(others) : typeof target === "string" ? document.querySelector(target) : target;
+    (0, import_hooks8.assignRef)(ref, nodeRef.current);
     if (!target && nodeRef.current) {
       document.body.appendChild(nodeRef.current);
     }
@@ -3947,10 +3961,7 @@ var Portal = (0, import_react26.forwardRef)((props, ref) => {
   if (!mounted || !nodeRef.current) {
     return null;
   }
-  return (0, import_react_dom4.createPortal)(
-    /* @__PURE__ */ import_react26.default.createElement("div", __spreadValues({ className, ref }, others), children),
-    nodeRef.current
-  );
+  return (0, import_react_dom4.createPortal)(/* @__PURE__ */ import_react26.default.createElement(import_react26.default.Fragment, null, children), nodeRef.current);
 });
 Portal.displayName = "@raikou/core/Portal";
 
@@ -4709,12 +4720,6 @@ var Dots = (0, import_react38.forwardRef)(
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" }),
       /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" }),
       /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" }),
       /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" })

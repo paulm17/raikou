@@ -467,12 +467,6 @@ var Dots = (0, import_react7.forwardRef)(
       }),
       /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
       /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
       /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" })
     );
   }

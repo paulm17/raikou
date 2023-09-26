@@ -69,7 +69,6 @@ export function Usage() {
         est. Sed eleifend interdum enim, a facilisis ex faucibus nec. Morbi vel
         est et mauris congue ullamcorper. Duis eget velit lacinia, consequat
         neque vel, dignissim massa.
-        <input />
         <input aria-label="test-input" />
       </Spoiler>
       <div>Some content after the spoiler</div>

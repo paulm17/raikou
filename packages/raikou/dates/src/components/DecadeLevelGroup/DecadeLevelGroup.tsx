@@ -173,5 +173,4 @@ export const DecadeLevelGroup = factory<DecadeLevelGroupFactory>(
   },
 );
 
-DecadeLevelGroup.classes = { ...LevelsGroup.classes, ...DecadeLevel.classes };
 DecadeLevelGroup.displayName = "@raikou/dates/DecadeLevelGroup";

@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/Switch.tsx
-import React11 from "react";
+import React12 from "react";
 import { useId as useId2, useUncontrolled as useUncontrolled2 } from "@raikou/hooks";
 import {
   factory as factory7,
@@ -93,7 +93,8 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetTop: false,
   describedBy: void 0,
   getStyles: null,
-  inputId: void 0
+  inputId: void 0,
+  labelId: void 0
 });
 
 // ../Input/src/InputLabel/InputLabel.tsx
@@ -510,12 +511,13 @@ var InputWrapper = factory5((_props, ref) => {
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
+  const labelId = (labelProps == null ? void 0 : labelProps.id) || `${idBase}-label`;
   const _label = label && /* @__PURE__ */ React7.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
       labelElement,
-      id: `${idBase}-label`,
+      id: labelId,
       htmlFor: inputId,
       required: isRequired
     }, sharedProps), labelProps),
@@ -561,7 +563,8 @@ var InputWrapper = factory5((_props, ref) => {
       value: __spreadValues({
         getStyles,
         describedBy,
-        inputId
+        inputId,
+        labelId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
     /* @__PURE__ */ React7.createElement(
@@ -834,9 +837,32 @@ var SwitchGroupProvider = SwitchGroupContext.Provider;
 var useSwitchGroupContext = () => useContext3(SwitchGroupContext);
 
 // src/SwitchGroup/SwitchGroup.tsx
-import React10 from "react";
+import React11 from "react";
 import { useUncontrolled } from "@raikou/hooks";
 import { factory as factory6, useProps as useProps7 } from "@raikou/core";
+
+// ../InputsGroupFieldset/src/InputsGroupFieldset.tsx
+import React10 from "react";
+function InputsGroupFieldset({
+  children,
+  role
+}) {
+  const ctx = useInputWrapperContext();
+  if (!ctx) {
+    return /* @__PURE__ */ React10.createElement(React10.Fragment, null, children);
+  }
+  return /* @__PURE__ */ React10.createElement(
+    "div",
+    {
+      role,
+      "aria-labelledby": ctx.labelId,
+      "aria-describedby": ctx.describedBy
+    },
+    children
+  );
+}
+
+// src/SwitchGroup/SwitchGroup.tsx
 var defaultProps7 = {};
 var SwitchGroup = factory6((props, ref) => {
   const _a = useProps7("SwitchGroup", defaultProps7, props), {
@@ -866,12 +892,12 @@ var SwitchGroup = factory6((props, ref) => {
       _value.includes(itemValue) ? _value.filter((item) => item !== itemValue) : [..._value, itemValue]
     );
   };
-  return /* @__PURE__ */ React10.createElement(
+  return /* @__PURE__ */ React11.createElement(
     SwitchGroupProvider,
     {
       value: { value: _value, onChange: handleChange, size }
     },
-    /* @__PURE__ */ React10.createElement(
+    /* @__PURE__ */ React11.createElement(
       Input.Wrapper,
       __spreadProps(__spreadValues(__spreadValues({
         size,
@@ -880,7 +906,7 @@ var SwitchGroup = factory6((props, ref) => {
         labelElement: "div",
         __staticSelector: "SwitchGroup"
       }),
-      children
+      /* @__PURE__ */ React11.createElement(InputsGroupFieldset, { role: "group" }, children)
     )
   );
 });
@@ -998,7 +1024,7 @@ var Switch = factory7((_props, ref) => {
     defaultValue: defaultChecked,
     finalValue: false
   });
-  return /* @__PURE__ */ React11.createElement(
+  return /* @__PURE__ */ React12.createElement(
     InlineInput,
     __spreadValues(__spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       __staticSelector: "Switch",
@@ -1017,7 +1043,7 @@ var Switch = factory7((_props, ref) => {
       variant,
       ref: rootRef
     }), styleProps), wrapperProps),
-    /* @__PURE__ */ React11.createElement(
+    /* @__PURE__ */ React12.createElement(
       "input",
       __spreadValues(__spreadProps(__spreadValues({}, rest), {
         disabled,
@@ -1032,15 +1058,15 @@ var Switch = factory7((_props, ref) => {
         type: "checkbox"
       }), getStyles("input"))
     ),
-    /* @__PURE__ */ React11.createElement(
+    /* @__PURE__ */ React12.createElement(
       Box8,
       __spreadValues({
         component: "label",
         htmlFor: uuid,
         mod: { error, "label-position": labelPosition }
       }, getStyles("track")),
-      /* @__PURE__ */ React11.createElement(Box8, __spreadValues({ component: "span", mod: "reduce-motion" }, getStyles("thumb")), thumbIcon),
-      /* @__PURE__ */ React11.createElement("span", __spreadValues({}, getStyles("trackLabel")), _checked ? onLabel : offLabel)
+      /* @__PURE__ */ React12.createElement(Box8, __spreadValues({ component: "span", mod: "reduce-motion" }, getStyles("thumb")), thumbIcon),
+      /* @__PURE__ */ React12.createElement("span", __spreadValues({}, getStyles("trackLabel")), _checked ? onLabel : offLabel)
     )
   );
 });

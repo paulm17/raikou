@@ -45,7 +45,9 @@ export default function LinkHorizontalCurve<Link, Node>({
   innerRef,
   path,
   percent = 0.2,
+  // @ts-ignore
   x = getY, // note this returns a y value
+  // @ts-ignore
   y = getX, // note this returns an x value
   source = getSource,
   target = getTarget,

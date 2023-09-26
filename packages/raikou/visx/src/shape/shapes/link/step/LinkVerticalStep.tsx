@@ -41,7 +41,9 @@ export default function LinkVerticalStep<Link, Node>({
   data,
   path,
   percent = 0.5,
+  // @ts-ignore
   x = getX,
+  // @ts-ignore
   y = getY,
   source = getSource,
   target = getTarget,

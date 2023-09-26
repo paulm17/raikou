@@ -147,5 +147,4 @@ export const MonthPicker: MonthPickerComponent = factory<MonthPickerFactory>(
   },
 ) as any;
 
-MonthPicker.classes = Calendar.classes;
 MonthPicker.displayName = "@raikou/dates/MonthPicker";

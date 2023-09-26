@@ -374,7 +374,8 @@ var RichTextEditorControl = factory5(
       styles,
       vars,
       interactive,
-      active
+      active,
+      onMouseDown
     } = _a, others = __objRest(_a, [
       "classNames",
       "className",
@@ -382,7 +383,8 @@ var RichTextEditorControl = factory5(
       "styles",
       "vars",
       "interactive",
-      "active"
+      "active",
+      "onMouseDown"
     ]);
     const ctx = useRichTextEditorContext();
     return /* @__PURE__ */ React8.createElement(
@@ -394,7 +396,11 @@ var RichTextEditorControl = factory5(
         "data-active": active || void 0,
         "aria-pressed": active && interactive || void 0,
         "aria-hidden": !interactive || void 0,
-        ref
+        ref,
+        onMouseDown: (event) => {
+          event.preventDefault();
+          onMouseDown == null ? void 0 : onMouseDown(event);
+        }
       })
     );
   }
@@ -3604,8 +3610,10 @@ function usePopover(options) {
   });
   const onClose = () => {
     var _a;
-    (_a = options.onClose) == null ? void 0 : _a.call(options);
-    setOpened(false);
+    if (_opened) {
+      (_a = options.onClose) == null ? void 0 : _a.call(options);
+      setOpened(false);
+    }
   };
   const onToggle = () => {
     var _a, _b;
@@ -3741,20 +3749,29 @@ import {
 // ../components/Portal/src/Portal.tsx
 import React14, { useRef as useRef4, useState as useState5, forwardRef as forwardRef4 } from "react";
 import { createPortal as createPortal2 } from "react-dom";
-import { useIsomorphicEffect } from "@raikou/hooks";
+import { useIsomorphicEffect, assignRef } from "@raikou/hooks";
 import { useProps as useProps8 } from "@raikou/core";
+function createPortalNode(props) {
+  const node = document.createElement("div");
+  node.setAttribute("data-portal", "true");
+  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.style === "object" && Object.assign(node.style, props.style);
+  typeof props.id === "string" && node.setAttribute("id", props.id);
+  return node;
+}
 var defaultProps8 = {};
 var Portal = forwardRef4((props, ref) => {
   const _a = useProps8(
     "Portal",
     defaultProps8,
     props
-  ), { children, target, className } = _a, others = __objRest(_a, ["children", "target", "className"]);
+  ), { children, target } = _a, others = __objRest(_a, ["children", "target"]);
   const [mounted, setMounted] = useState5(false);
   const nodeRef = useRef4(null);
   useIsomorphicEffect(() => {
     setMounted(true);
-    nodeRef.current = !target ? document.createElement("div") : typeof target === "string" ? document.querySelector(target) : target;
+    nodeRef.current = !target ? createPortalNode(others) : typeof target === "string" ? document.querySelector(target) : target;
+    assignRef(ref, nodeRef.current);
     if (!target && nodeRef.current) {
       document.body.appendChild(nodeRef.current);
     }
@@ -3767,10 +3784,7 @@ var Portal = forwardRef4((props, ref) => {
   if (!mounted || !nodeRef.current) {
     return null;
   }
-  return createPortal2(
-    /* @__PURE__ */ React14.createElement("div", __spreadValues({ className, ref }, others), children),
-    nodeRef.current
-  );
+  return createPortal2(/* @__PURE__ */ React14.createElement(React14.Fragment, null, children), nodeRef.current);
 });
 Portal.displayName = "@raikou/core/Portal";
 
@@ -4404,7 +4418,8 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetTop: false,
   describedBy: void 0,
   getStyles: null,
-  inputId: void 0
+  inputId: void 0,
+  labelId: void 0
 });
 
 // ../components/Input/src/InputLabel/InputLabel.tsx
@@ -4821,12 +4836,13 @@ var InputWrapper = factory12((_props, ref) => {
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
+  const labelId = (labelProps == null ? void 0 : labelProps.id) || `${idBase}-label`;
   const _label = label && /* @__PURE__ */ React24.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
       labelElement,
-      id: `${idBase}-label`,
+      id: labelId,
       htmlFor: inputId,
       required: isRequired
     }, sharedProps), labelProps),
@@ -4872,7 +4888,8 @@ var InputWrapper = factory12((_props, ref) => {
       value: __spreadValues({
         getStyles,
         describedBy,
-        inputId
+        inputId,
+        labelId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
     /* @__PURE__ */ React24.createElement(
@@ -5292,12 +5309,6 @@ var Dots = forwardRef8(
       }),
       /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
       /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
       /* @__PURE__ */ React31.createElement("span", { className: "dot" })
     );
   }
@@ -5443,7 +5454,9 @@ var ButtonGroup = factory15((_props, ref) => {
 ButtonGroup.displayName = "@raikou/core/ButtonGroup";
 
 // ../components/Button/src/Button.tsx
-var defaultProps21 = {};
+var defaultProps21 = {
+  loaderPosition: "left"
+};
 var varsResolver9 = createVarsResolver9(
   (theme, { radius, color, gradient, variant, size: size2, justify }) => {
     const colors = theme.variantColorResolver({
@@ -7312,7 +7325,11 @@ function filterFalsyChildren(children) {
 
 // ../components/Group/src/Group.tsx
 var defaultProps31 = {
-  preventGrowOverflow: true
+  preventGrowOverflow: true,
+  gap: "md",
+  align: "center",
+  justify: "flex-start",
+  wrap: "wrap"
 };
 var varsResolver14 = createVarsResolver14(
   (_, { grow, preventGrowOverflow, gap, align, justify, wrap }, { childWidth }) => ({

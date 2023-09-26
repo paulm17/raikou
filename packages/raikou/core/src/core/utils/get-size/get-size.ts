@@ -5,7 +5,11 @@ export function getSize(
   size: unknown,
   prefix = "size",
   convertToRem = true,
-): string {
+): string | undefined {
+  if (size === undefined) {
+    return undefined;
+  }
+
   return isNumberLike(size)
     ? convertToRem
       ? rem(size)

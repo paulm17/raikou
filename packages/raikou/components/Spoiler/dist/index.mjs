@@ -32,7 +32,7 @@ var __objRest = (source, exclude) => {
 
 // src/Spoiler.tsx
 import React3, { useState } from "react";
-import { useElementSize } from "@raikou/hooks";
+import { useElementSize, useId } from "@raikou/hooks";
 import {
   Box as Box2,
   factory,
@@ -226,7 +226,8 @@ var Spoiler = factory((_props, ref) => {
     showLabel,
     children,
     controlRef,
-    transitionDuration
+    transitionDuration,
+    id
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -240,13 +241,15 @@ var Spoiler = factory((_props, ref) => {
     "showLabel",
     "children",
     "controlRef",
-    "transitionDuration"
+    "transitionDuration",
+    "id"
   ]);
   const getStyles = useStyles2({
     name: "Spoiler",
     classes: {
       root: "spoiler-root",
-      content: "spoiler-content"
+      content: "spoiler-content",
+      control: "spoiler-control"
     },
     props,
     className,
@@ -257,21 +260,35 @@ var Spoiler = factory((_props, ref) => {
     vars,
     varsResolver: varsResolver2
   });
+  const _id = useId(id);
+  const regionId = `${_id}-region`;
   const [show, setShowState] = useState(initialState);
   const { ref: contentRef, height } = useElementSize();
   const spoiler = maxHeight < height;
   const spoilerMoreContent = show ? hideLabel : showLabel;
-  const s = {
-    maxHeight: !show ? rem(maxHeight) : height ? rem(height) : void 0
-  };
-  return /* @__PURE__ */ React3.createElement(Box2, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref }), others), /* @__PURE__ */ React3.createElement("div", __spreadProps(__spreadValues({}, getStyles("content", { style: s })), { "data-reduce-motion": true }), /* @__PURE__ */ React3.createElement("div", { ref: contentRef }, children)), spoiler && /* @__PURE__ */ React3.createElement(
+  return /* @__PURE__ */ React3.createElement(Box2, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { id: _id, ref }), others), spoiler && /* @__PURE__ */ React3.createElement(
     Anchor,
     __spreadValues({
       component: "button",
+      type: "button",
       ref: controlRef,
-      onClick: () => setShowState((opened) => !opened)
+      onClick: () => setShowState((opened) => !opened),
+      "aria-expanded": show,
+      "aria-controls": regionId
     }, getStyles("control")),
     spoilerMoreContent
+  ), /* @__PURE__ */ React3.createElement(
+    "div",
+    __spreadProps(__spreadValues({}, getStyles("content", {
+      style: {
+        maxHeight: !show ? rem(maxHeight) : height ? rem(height) : void 0
+      }
+    })), {
+      "data-reduce-motion": true,
+      role: "region",
+      id: regionId
+    }),
+    /* @__PURE__ */ React3.createElement("div", { ref: contentRef }, children)
   ));
 });
 Spoiler.displayName = "@raikou/core/Spoiler";

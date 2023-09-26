@@ -40,7 +40,11 @@ import {
   getSpacing,
   createVarsResolver
 } from "@raikou/core";
-var defaultProps = {};
+var defaultProps = {
+  gap: "md",
+  align: "stretch",
+  justify: "flex-start"
+};
 var varsResolver = createVarsResolver(
   (_, { gap, align, justify }) => ({
     root: {

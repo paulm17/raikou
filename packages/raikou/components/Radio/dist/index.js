@@ -66,7 +66,7 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Radio.tsx
-var import_react14 = __toESM(require("react"));
+var import_react15 = __toESM(require("react"));
 var import_hooks3 = require("@raikou/hooks");
 var import_core10 = require("@raikou/core");
 
@@ -102,7 +102,8 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
   offsetTop: false,
   describedBy: void 0,
   getStyles: null,
-  inputId: void 0
+  inputId: void 0,
+  labelId: void 0
 });
 
 // ../Input/src/InputLabel/InputLabel.tsx
@@ -483,12 +484,13 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
+  const labelId = (labelProps == null ? void 0 : labelProps.id) || `${idBase}-label`;
   const _label = label && /* @__PURE__ */ import_react9.default.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
       labelElement,
-      id: `${idBase}-label`,
+      id: labelId,
       htmlFor: inputId,
       required: isRequired
     }, sharedProps), labelProps),
@@ -534,7 +536,8 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
       value: __spreadValues({
         getStyles,
         describedBy,
-        inputId
+        inputId,
+        labelId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
     /* @__PURE__ */ import_react9.default.createElement(
@@ -818,12 +821,33 @@ function RadioIcon(_a) {
 }
 
 // src/RadioGroup/RadioGroup.tsx
-var import_react13 = __toESM(require("react"));
+var import_react14 = __toESM(require("react"));
 var import_hooks2 = require("@raikou/hooks");
 var import_core9 = require("@raikou/core");
 
 // src/RadioGroup.context.ts
 var [RadioGroupProvider, useRadioGroupContext] = createOptionalContext();
+
+// ../InputsGroupFieldset/src/InputsGroupFieldset.tsx
+var import_react13 = __toESM(require("react"));
+function InputsGroupFieldset({
+  children,
+  role
+}) {
+  const ctx = useInputWrapperContext();
+  if (!ctx) {
+    return /* @__PURE__ */ import_react13.default.createElement(import_react13.default.Fragment, null, children);
+  }
+  return /* @__PURE__ */ import_react13.default.createElement(
+    "div",
+    {
+      role,
+      "aria-labelledby": ctx.labelId,
+      "aria-describedby": ctx.describedBy
+    },
+    children
+  );
+}
 
 // src/RadioGroup/RadioGroup.tsx
 var defaultProps7 = {};
@@ -853,12 +877,12 @@ var RadioGroup = (0, import_core9.factory)((props, ref) => {
     onChange
   });
   const handleChange = (event) => setValue(event.currentTarget.value);
-  return /* @__PURE__ */ import_react13.default.createElement(
+  return /* @__PURE__ */ import_react14.default.createElement(
     RadioGroupProvider,
     {
       value: { value: _value, onChange: handleChange, size, name: _name }
     },
-    /* @__PURE__ */ import_react13.default.createElement(
+    /* @__PURE__ */ import_react14.default.createElement(
       Input.Wrapper,
       __spreadProps(__spreadValues(__spreadValues({
         size,
@@ -867,7 +891,7 @@ var RadioGroup = (0, import_core9.factory)((props, ref) => {
         labelElement: "div",
         __staticSelector: "RadioGroup"
       }),
-      children
+      /* @__PURE__ */ import_react14.default.createElement(InputsGroupFieldset, { role: "radiogroup" }, children)
     )
   );
 });
@@ -964,7 +988,7 @@ var Radio = (0, import_core10.factory)((_props, ref) => {
     name: (_c = rest.name) != null ? _c : ctx.name,
     onChange: ctx.onChange
   } : {};
-  return /* @__PURE__ */ import_react14.default.createElement(
+  return /* @__PURE__ */ import_react15.default.createElement(
     InlineInput,
     __spreadValues(__spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       __staticSelector: "Radio",
@@ -983,7 +1007,7 @@ var Radio = (0, import_core10.factory)((_props, ref) => {
       variant,
       ref: rootRef
     }), styleProps), wrapperProps),
-    /* @__PURE__ */ import_react14.default.createElement(import_core10.Box, __spreadProps(__spreadValues({}, getStyles("inner")), { mod: { "label-position": labelPosition } }), /* @__PURE__ */ import_react14.default.createElement(
+    /* @__PURE__ */ import_react15.default.createElement(import_core10.Box, __spreadProps(__spreadValues({}, getStyles("inner")), { mod: { "label-position": labelPosition } }), /* @__PURE__ */ import_react15.default.createElement(
       import_core10.Box,
       __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, getStyles("radio", { focusable: true })), rest), contextProps), {
         component: "input",
@@ -993,7 +1017,7 @@ var Radio = (0, import_core10.factory)((_props, ref) => {
         disabled,
         type: "radio"
       })
-    ), /* @__PURE__ */ import_react14.default.createElement(Icon, __spreadProps(__spreadValues({}, getStyles("icon")), { "aria-hidden": true })))
+    ), /* @__PURE__ */ import_react15.default.createElement(Icon, __spreadProps(__spreadValues({}, getStyles("icon")), { "aria-hidden": true })))
   );
 });
 Radio.displayName = "@raikou/core/Radio";

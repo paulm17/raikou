@@ -1,6 +1,6 @@
 import React from 'react';
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, RaikouSize, RaikouRadius, PolymorphicFactory } from '@raikou/core';
+import { RaikouSize, RaikouRadius, BoxProps, StylesApiProps, PolymorphicFactory } from '@raikou/core';
 
 interface CloseIconProps extends React.ComponentPropsWithoutRef<"svg"> {
     /** Icon width and height, `var(--icon-size)` by default */
@@ -13,7 +13,7 @@ type CloseButtonStylesNames = "root";
 type CloseButtonCssVariables = {
     root: "--cb-icon-size" | "--cb-size" | "--cb-radius";
 };
-interface CloseButtonProps extends BoxProps, StylesApiProps<CloseButtonFactory> {
+interface __CloseButtonProps {
     "data-disabled"?: boolean;
     /** Controls width and height of the button. Numbers are converted to rem. `'md'` by default. */
     size?: RaikouSize | (string & {}) | number;
@@ -25,6 +25,8 @@ interface CloseButtonProps extends BoxProps, StylesApiProps<CloseButtonFactory> 
     iconSize?: number | string;
     /** Content rendered inside the button, for example `VisuallyHidden` with label for screen readers */
     children?: React.ReactNode;
+}
+interface CloseButtonProps extends __CloseButtonProps, BoxProps, StylesApiProps<CloseButtonFactory> {
 }
 type CloseButtonFactory = PolymorphicFactory<{
     props: CloseButtonProps;
@@ -57,4 +59,4 @@ declare const CloseButton: (<C = "button">(props: C extends React.ElementType<an
     classes: Record<string, string>;
 } & Record<string, never>;
 
-export { CloseButton, CloseButtonCssVariables, CloseButtonFactory, CloseButtonProps, CloseButtonStylesNames, CloseButtonVariant, CloseIcon, CloseIconProps };
+export { CloseButton, CloseButtonCssVariables, CloseButtonFactory, CloseButtonProps, CloseButtonStylesNames, CloseButtonVariant, CloseIcon, CloseIconProps, __CloseButtonProps };

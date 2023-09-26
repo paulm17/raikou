@@ -182,5 +182,4 @@ export const DecadeLevel = factory<DecadeLevelFactory>((_props, ref) => {
   );
 });
 
-DecadeLevel.classes = { ...YearsList.classes, ...CalendarHeader.classes };
 DecadeLevel.displayName = "@raikou/dates/DecadeLevel";
