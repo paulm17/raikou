@@ -5,6 +5,355 @@ import {
   rem
 } from "./chunk-GZGEIAFB.mjs";
 
+// ../data-table/src/DataTable.plugin.ts
+var require_DataTable_plugin = __commonJS({
+  "../data-table/src/DataTable.plugin.ts"(exports, module) {
+    "use strict";
+    module.exports = function({ addComponents }) {
+      addComponents({
+        ".datatable-root": {
+          position: "relative",
+          display: "flex",
+          flexDirection: "column",
+          overflow: "hidden"
+        },
+        ".data-table-root tr": {
+          '[data-raikou-color-scheme="light"] &': {
+            backgroundColor: "--raikou-color-white"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            backgroundColor: "--raikou-color-dark-7"
+          }
+        },
+        ".data-table-root thead tr th": {
+          '[data-raikou-color-scheme="light"] &': {
+            backgroundBottomColor: "--mantine-color-gray-3"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            backgroundBottomColor: "--mantine-color-dark-4"
+          }
+        },
+        ".data-table-root tbody tr td": {
+          '[data-raikou-color-scheme="light"] &': {
+            backgroundTopColor: "--mantine-color-gray-3"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            backgroundTopColor: "--mantine-color-dark-4"
+          }
+        },
+        ".data-table-root.lastRowBorderBottomVisible tbody tr:last-of-type td": {
+          '[data-raikou-color-scheme="light"] &': {
+            borderBottom: "1px solid rgb(var(--mantine-color-gray-3) / 65%)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            borderBottom: "1px solid rgb(var(--mantine-color-dark-4) / 65%)"
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../data-table/src/DataTableEmptyRow.plugin.ts
+var require_DataTableEmptyRow_plugin = __commonJS({
+  "../data-table/src/DataTableEmptyRow.plugin.ts"(exports, module) {
+    "use strict";
+    module.exports = function({ addComponents }) {
+      addComponents({
+        ".dataTableEmptyRow-root": {
+          "&&": {
+            background: "transparent",
+            "&:last-of-type td": {
+              borderBbottom: "none"
+            }
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../data-table/src/DataTableFooter.plugin.ts
+var require_DataTableFooter_plugin = __commonJS({
+  "../data-table/src/DataTableFooter.plugin.ts"(exports, module) {
+    "use strict";
+    module.exports = function({ addComponents }) {
+      addComponents({
+        ".dataTableFooter-root": {
+          zIndex: "2",
+          '[data-raikou-color-scheme="light"] &': {
+            color: "--raikou-color-white"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            color: "--raikou-color-dark-7"
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../data-table/src/DataTableHeader.plugin.ts
+var require_DataTableHeader_plugin = __commonJS({
+  "../data-table/src/DataTableHeader.plugin.ts"(exports, module) {
+    "use strict";
+    module.exports = function({ addComponents }) {
+      addComponents({
+        ".dataTableHeader-root": {
+          zIndex: "2",
+          position: "sticky",
+          top: "0",
+          '[data-raikou-color-scheme="light"] &': {
+            background: "--raikou-color-dark-7"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            background: "--raikou-color-white"
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../data-table/src/DataTableLoader.plugin.ts
+var require_DataTableLoader_plugin = __commonJS({
+  "../data-table/src/DataTableLoader.plugin.ts"(exports, module) {
+    "use strict";
+    module.exports = function({ addComponents }) {
+      addComponents({
+        ".dataTableLoader-root": {
+          zIndex: "3",
+          position: "absolute",
+          top: "0",
+          left: "0",
+          right: "0",
+          bottom: "0",
+          pointerEvents: "none",
+          opacity: "0",
+          transition: "opacity 0.15s ease",
+          '[data-raikou-color-scheme="light"] &': {
+            background: "rgb(var(--raikou-color-white) / 75%)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            background: "rgb(var(--raikou-color-dark-8) / 75%)"
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../data-table/src/DataTablePagination.plugin.ts
+var require_DataTablePagination_plugin = __commonJS({
+  "../data-table/src/DataTablePagination.plugin.ts"(exports, module) {
+    "use strict";
+    module.exports = function({ addComponents }) {
+      addComponents({
+        ".dataTablePagination-root": {
+          background: "var(--colorScheme-dark-7, #1c1c1c)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: "var(--spacing-xs)"
+        },
+        "@media (min-width: var(--mantine-breakpoint-sm))": {
+          ".dataTablePagination-root": {
+            flexDirection: "row"
+          }
+        },
+        ".dataTablePagination-text": {
+          flex: "1 1 auto"
+        },
+        ".dataTablePagination-pagination": {
+          opacity: "1",
+          transition: "opacity 0.15s ease"
+        },
+        ".dataTablePagination-paginationFetching": {
+          opacity: "0"
+        }
+      });
+    };
+  }
+});
+
+// ../data-table/src/DataTableRowMenu.plugin.ts
+var require_DataTableRowMenu_plugin = __commonJS({
+  "../data-table/src/DataTableRowMenu.plugin.ts"(exports, module) {
+    "use strict";
+    module.exports = function({ addComponents }) {
+      addComponents({
+        ".dataTableRowMenu-root": {
+          position: "fixed",
+          overflow: "hidden",
+          transition: "all .15s ease",
+          '[data-raikou-color-scheme="light"] &': {
+            border: "1px solid var(--mantine-color-gray-3)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            border: "1px solid --mantine-color-dark-4)"
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../data-table/src/DataTableRowMenuItem.plugin.ts
+var require_DataTableRowMenuItem_plugin = __commonJS({
+  "../data-table/src/DataTableRowMenuItem.plugin.ts"(exports, module) {
+    "use strict";
+    module.exports = function({ addComponents }) {
+      addComponents({
+        ".dataTableHeader-root": {
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          paddingTop: "calc(var(--mantine-spacing-sm) / 2)",
+          paddingBottom: "calc(var(--mantine-spacing-sm) / 2)",
+          paddingLeft: "var(--mantine-spacing-sm)",
+          paddingRight: "var(--mantine-spacing-sm)",
+          transition: "background 0.15s ease",
+          "& [disabled]": {
+            cursor: "not-allowed",
+            color: "var(--mantine-color-dark-3)"
+          },
+          "&:hover:not([disabled])": {
+            background: "rgba(var(--mantine-color-gray-4), 0.25)"
+          },
+          "&:active:not([disabled])": {
+            background: "rgba(var(--mantine-color-gray-4), 0.5)"
+          }
+        },
+        ".dataTableHeader-icon": {
+          fontSize: "0",
+          marginRight: "var(--spacing-xs)"
+        },
+        ".dataTableHeader-title": {
+          whiteSpace: "nowrap"
+        }
+      });
+    };
+  }
+});
+
+// ../data-table/src/DataTableRowSelectorCell.plugin.ts
+var require_DataTableRowSelectorCell_plugin = __commonJS({
+  "../data-table/src/DataTableRowSelectorCell.plugin.ts"(exports, module) {
+    "use strict";
+    module.exports = function({ addComponents }) {
+      addComponents({
+        ".dataTableRowSelectorCell-root": {
+          position: "sticky",
+          zIndex: "1",
+          width: "0",
+          left: "0",
+          background: "inherit"
+        },
+        ".dataTableRowSelectorCell-root:after": {
+          content: '""',
+          position: "absolute",
+          top: "0",
+          right: "-px(var(--mantine-spacing-sm))",
+          bottom: "0",
+          width: "var(--mantine-spacing-sm)",
+          pointerEvents: "none",
+          opacity: "0",
+          transition: "opacity .15s ease"
+        },
+        ".dataTableRowSelectorCell-withRightShadow": {
+          "&::after": {
+            opacity: "1"
+          }
+        },
+        ".dataTableRowSelectorCell-checkbox": {
+          cursor: "pointer"
+        }
+      });
+    };
+  }
+});
+
+// ../data-table/src/DataTableScrollArea.plugin.ts
+var require_DataTableScrollArea_plugin = __commonJS({
+  "../data-table/src/DataTableScrollArea.plugin.ts"(exports, module) {
+    "use strict";
+    module.exports = function({ addComponents }) {
+      addComponents({
+        ".dataTableScrollArea-root": {
+          flex: "1 1 100%"
+        },
+        ".dataTableScrollArea-scrollbar": {
+          '&[data-state="visible"]': { background: "transparent" },
+          "div:before": { pointerEvents: "none" }
+        },
+        ".dataTableScrollArea-corner": {
+          background: "transparent"
+        },
+        ".dataTableScrollArea-thumb": {
+          zIndex: "3"
+        },
+        ".dataTableScrollArea-shadow": {
+          position: "absolute",
+          pointerEvents: "none",
+          opacity: "0",
+          transition: "opacity .15s ease"
+        },
+        ".dataTableScrollArea-topShadow": {
+          zIndex: "2",
+          left: "0",
+          right: "0",
+          height: "var(--mantine-spacing-sm)"
+        },
+        ".dataTableScrollArea-leftShadow": {
+          zIndex: "3",
+          top: "0",
+          left: "0",
+          bottom: "0",
+          width: "var(--mantine-spacing-sm)"
+        },
+        ".dataTableScrollArea-rightShadow": {
+          zIndex: "2",
+          top: "0",
+          bottom: "0",
+          right: "0",
+          width: "var(--mantine-spacing-sm)"
+        },
+        ".dataTableScrollArea-bottomShadow": {
+          zIndex: "2",
+          left: "0",
+          right: "0",
+          height: "var(--mantine-spacing-sm)"
+        },
+        ".dataTableScrollArea-shadowVisible": {
+          opacity: "1"
+        }
+      });
+    };
+  }
+});
+
+// ../data-table/src/preset.ts
+var require_preset = __commonJS({
+  "../data-table/src/preset.ts"(exports, module) {
+    "use strict";
+    module.exports = {
+      plugins: [
+        require_DataTable_plugin(),
+        require_DataTableEmptyRow_plugin(),
+        require_DataTableFooter_plugin(),
+        require_DataTableHeader_plugin(),
+        require_DataTableLoader_plugin(),
+        require_DataTablePagination_plugin(),
+        require_DataTableRowMenu_plugin(),
+        require_DataTableRowMenuItem_plugin(),
+        require_DataTableRowSelectorCell_plugin(),
+        require_DataTableScrollArea_plugin()
+      ]
+    };
+  }
+});
+
 // src/core/RaikouProvider/global.plugin.ts
 var require_global_plugin = __commonJS({
   "src/core/RaikouProvider/global.plugin.ts"(exports, module) {
@@ -9246,6 +9595,7 @@ var require_plugin = __commonJS({
         preflight: false
       },
       darkMode: ["class", '[data-raikou-color-scheme="dark"]'],
+      preset: [require_preset()],
       plugins: [
         require_global_plugin(),
         require_css_variables_plugin(),

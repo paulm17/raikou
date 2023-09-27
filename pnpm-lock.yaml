@@ -196,7 +196,7 @@ importers:
         version: 7.4.5(react-dom@18.2.0)(react@18.2.0)
       '@storybook/addon-styling':
         specifier: ^1.3.6
-        version: 1.3.6(less@4.1.3)(postcss@8.4.29)(react-dom@18.2.0)(react@18.2.0)(webpack@5.88.2)
+        version: 1.3.6(less@4.1.3)(postcss@8.4.30)(react-dom@18.2.0)(react@18.2.0)(webpack@5.88.2)
       '@storybook/blocks':
         specifier: ^7.4.5
         version: 7.4.5(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
@@ -220,7 +220,7 @@ importers:
         version: 4.0.4(vite@4.4.9)
       autoprefixer:
         specifier: ^10.4.15
-        version: 10.4.15(postcss@8.4.29)
+        version: 10.4.15(postcss@8.4.30)
       eslint-plugin-storybook:
         specifier: ^0.6.12
         version: 0.6.13(eslint@8.45.0)(typescript@5.1.6)
@@ -235,7 +235,7 @@ importers:
         version: 7.4.5
       tailwindcss:
         specifier: insiders
-        version: 0.0.0-insiders.aaca7c4
+        version: 0.0.0-insiders.61dc99f
       typescript:
         specifier: ^5.1.3
         version: 5.1.6
@@ -4337,6 +4337,49 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.0
         version: 18.2.3
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      tsup:
+        specifier: ^7.1.0
+        version: 7.1.0(typescript@5.1.6)
+      typescript:
+        specifier: ^5.1.6
+        version: 5.1.6
+
+  packages/raikou/data-table:
+    dependencies:
+      '@raikou/core':
+        specifier: workspace:*
+        version: link:../core
+      '@raikou/hooks':
+        specifier: workspace:*
+        version: link:../hooks
+      clsx:
+        specifier: ^2.0.0
+        version: 2.0.0
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      tslib:
+        specifier: ^2.6.0
+        version: 2.6.1
+      type-fest:
+        specifier: ^4.0.0
+        version: 4.0.0
+    devDependencies:
+      '@types/node':
+        specifier: ^20.3.3
+        version: 20.5.1
+      '@types/react':
+        specifier: ^18.2.0
+        version: 18.2.20
+      '@types/react-dom':
+        specifier: ^18.2.0
+        version: 18.2.7
       clean-package:
         specifier: 2.2.0
         version: 2.2.0
@@ -8854,7 +8897,7 @@ packages:
       - '@types/react-dom'
     dev: true
 
-  /@storybook/addon-styling@1.3.6(less@4.1.3)(postcss@8.4.29)(react-dom@18.2.0)(react@18.2.0)(webpack@5.88.2):
+  /@storybook/addon-styling@1.3.6(less@4.1.3)(postcss@8.4.30)(react-dom@18.2.0)(react@18.2.0)(webpack@5.88.2):
     resolution: {integrity: sha512-g4e9vLnNlpjR3hHcyC8iCtgqcWQj6IPK+HZ8PdF92O95sa0nus+NG4meahEBwCsZm6CtYV/QMymFtLnp2NvAmg==}
     hasBin: true
     peerDependencies:
@@ -8889,8 +8932,8 @@ packages:
       css-loader: 6.8.1(webpack@5.88.2)
       less: 4.1.3
       less-loader: 11.1.3(less@4.1.3)(webpack@5.88.2)
-      postcss: 8.4.29
-      postcss-loader: 7.3.3(postcss@8.4.29)(webpack@5.88.2)
+      postcss: 8.4.30
+      postcss-loader: 7.3.3(postcss@8.4.30)(webpack@5.88.2)
       prettier: 2.8.8
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -9765,8 +9808,8 @@ packages:
     dev: true
     optional: true
 
-  /@tailwindcss/oxide-darwin-arm64@0.0.0-insiders.aaca7c4:
-    resolution: {integrity: sha512-WUpaeyghKmuqGwaCwC+ct68XmXLoIWhlN2SB920aUAu19vziTyGyv4OWlW9KMCYfuG/WwwbgbqCOnR2p6PaH7A==}
+  /@tailwindcss/oxide-darwin-arm64@0.0.0-insiders.61dc99f:
+    resolution: {integrity: sha512-RvWEAnDgZRVQPMnyTxkzb0kD/4zbm3iOUj0Ncfqxa281PknBsjr56+2+F9y5Njd2RGYbi1nUQKICg64twA6/sQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
@@ -9783,8 +9826,8 @@ packages:
     dev: true
     optional: true
 
-  /@tailwindcss/oxide-darwin-x64@0.0.0-insiders.aaca7c4:
-    resolution: {integrity: sha512-6LWlBKu1wH+3+p9CEFS5I3S2x+Nt6BepyRnq0WESu4uunO8+x4TDxdC2Vsvv1MnM6CnAogAjX/hoewOQI0RqIg==}
+  /@tailwindcss/oxide-darwin-x64@0.0.0-insiders.61dc99f:
+    resolution: {integrity: sha512-F1EXoA8YRi86RSYJM6X/bCU/EMxtmHbE+Mfex+yWlCEH4NAe5bJJhgfsV5dh6r3wdAvH6tUVMdQWccHK5log9g==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
@@ -9801,8 +9844,8 @@ packages:
     dev: true
     optional: true
 
-  /@tailwindcss/oxide-freebsd-x64@0.0.0-insiders.aaca7c4:
-    resolution: {integrity: sha512-M/N6oMAAyVAD08qtvxLGOSziZ5LnnHJJGjhZE3qeBcYseGFR1N2CbYBifjLyXiw2i3Cvj+QE5c4VinxpRBpsjQ==}
+  /@tailwindcss/oxide-freebsd-x64@0.0.0-insiders.61dc99f:
+    resolution: {integrity: sha512-sp/Qiv+6W1cBhAqe/9OPh5fENJM58gOO+E0nPDLNZdXDyldR3+9I8oR9GJgZBv1Gvic74y/Ye2LCfoSzRcambw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [freebsd]
@@ -9819,8 +9862,8 @@ packages:
     dev: true
     optional: true
 
-  /@tailwindcss/oxide-linux-arm-gnueabihf@0.0.0-insiders.aaca7c4:
-    resolution: {integrity: sha512-kiR29smAECb8mw9RYoJN51JBKBdrUpLI2s3LavCLxFANFtniRBVXQok2BC/P2uGuofrGBeoV678c7BuVZRJLhA==}
+  /@tailwindcss/oxide-linux-arm-gnueabihf@0.0.0-insiders.61dc99f:
+    resolution: {integrity: sha512-pDA+7ioPzmv0inW22duKmS5d+5t0RLgkyYsMJd7xDcVMAMrpR0EDZczHctUEc2iOIIsgm9ZcIK5rT3sVQUwWOg==}
     engines: {node: '>= 10'}
     cpu: [arm]
     os: [linux]
@@ -9837,8 +9880,8 @@ packages:
     dev: true
     optional: true
 
-  /@tailwindcss/oxide-linux-arm64-gnu@0.0.0-insiders.aaca7c4:
-    resolution: {integrity: sha512-ab8M2Q5mPUhxCch5QYNn+B2ZJrSHd3js+/Fu4OpyzPMfHv+VdwMALOVY1DzEA5rT4z6pwj3qgEKP5Q9aFMomiQ==}
+  /@tailwindcss/oxide-linux-arm64-gnu@0.0.0-insiders.61dc99f:
+    resolution: {integrity: sha512-JMMjTcVsAFBEP/8Ec6s9feNuDCsvD7LRGJp79/IgLAezoZP1iw4IMLEEXdo67xFgfaH/4CEKqg1EYIdEquHgSg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -9855,8 +9898,8 @@ packages:
     dev: true
     optional: true
 
-  /@tailwindcss/oxide-linux-arm64-musl@0.0.0-insiders.aaca7c4:
-    resolution: {integrity: sha512-0l2PGcr86Hg+9y3gXoZzHSC7ch2DxJ1vestNP+LuF4c+Y3uzu3Kt1NwEe7xLBrcdbsMY65tDo28O1fgcJgUFnw==}
+  /@tailwindcss/oxide-linux-arm64-musl@0.0.0-insiders.61dc99f:
+    resolution: {integrity: sha512-lhQOhSSJWH58GARQGuX27Niw5MPOvLjHUJ7NdiQ2QEJQmOZgjW3Uq90ldHUvLKynK4H1oOe7NvzhyTrMAgsNKQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -9873,8 +9916,8 @@ packages:
     dev: true
     optional: true
 
-  /@tailwindcss/oxide-linux-x64-gnu@0.0.0-insiders.aaca7c4:
-    resolution: {integrity: sha512-SV6f5XsZifxTzY6z6R0HFN84BKkaymGAxfSzwVe8wRXEERGHc0Z36vaqxA5g4awk3FKn25VNV/nxslpYl5MpvQ==}
+  /@tailwindcss/oxide-linux-x64-gnu@0.0.0-insiders.61dc99f:
+    resolution: {integrity: sha512-ycb6iqRXR11G57l9M+YSvO9r4cNE+Hg478etM1xAv2ZpiJcah4aUiQ7n3unYxzbp5WGuVFsAxk2oEbvjS/Yczg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -9891,8 +9934,8 @@ packages:
     dev: true
     optional: true
 
-  /@tailwindcss/oxide-linux-x64-musl@0.0.0-insiders.aaca7c4:
-    resolution: {integrity: sha512-bXlk6BAr3I86XeiDZUMF2L+OnTs+lAEN7EzoGW80uRnKDKYDaSUSJwhkRXjV9oSXakH4B+kJ4EXrYSoC6J3pHQ==}
+  /@tailwindcss/oxide-linux-x64-musl@0.0.0-insiders.61dc99f:
+    resolution: {integrity: sha512-I3U7LwI8UK2qPRugo90tN5FD9G40qNlFVh9vPVYlMyRyrR9Wfhg5niDoGpmGHiNtvNbu44HsMzpznAawoAYqGg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -9909,8 +9952,8 @@ packages:
     dev: true
     optional: true
 
-  /@tailwindcss/oxide-win32-x64-msvc@0.0.0-insiders.aaca7c4:
-    resolution: {integrity: sha512-CbDHlzFxgpktD8eMoazDq1CTL83YcntzprxMO+ouyoAL/5mZo/fnjEVmB0jkT/txh3zQNvn4E59h1KUQL4MSRQ==}
+  /@tailwindcss/oxide-win32-x64-msvc@0.0.0-insiders.61dc99f:
+    resolution: {integrity: sha512-CncTHCl8P41PlfHuza4K04LKNwsVJnWpUQWlFJBwUTWhCIFjCjmrvvURpBajqa7AfHj8CdGEc+zmhnVsyDzn8A==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -9933,19 +9976,19 @@ packages:
       '@tailwindcss/oxide-win32-x64-msvc': 0.0.0-insiders.28e8fdf
     dev: true
 
-  /@tailwindcss/oxide@0.0.0-insiders.aaca7c4:
-    resolution: {integrity: sha512-lpi/r6XPDRoaUYSCFUyDcKDsy9Wnv+PTD2TJ403xlJn75wU72XV6PbVhLY1hMgYkwj6QPs9LaFxPAU3CAU/acA==}
+  /@tailwindcss/oxide@0.0.0-insiders.61dc99f:
+    resolution: {integrity: sha512-kOiEUun95SuY6xuipQXdF4uy6HYmtqsyjPEaFgsgn8lmuLLueT6Ghln9T+biJ31P7mWpTcFySzmXTbBr55IhWQ==}
     engines: {node: '>= 10'}
     optionalDependencies:
-      '@tailwindcss/oxide-darwin-arm64': 0.0.0-insiders.aaca7c4
-      '@tailwindcss/oxide-darwin-x64': 0.0.0-insiders.aaca7c4
-      '@tailwindcss/oxide-freebsd-x64': 0.0.0-insiders.aaca7c4
-      '@tailwindcss/oxide-linux-arm-gnueabihf': 0.0.0-insiders.aaca7c4
-      '@tailwindcss/oxide-linux-arm64-gnu': 0.0.0-insiders.aaca7c4
-      '@tailwindcss/oxide-linux-arm64-musl': 0.0.0-insiders.aaca7c4
-      '@tailwindcss/oxide-linux-x64-gnu': 0.0.0-insiders.aaca7c4
-      '@tailwindcss/oxide-linux-x64-musl': 0.0.0-insiders.aaca7c4
-      '@tailwindcss/oxide-win32-x64-msvc': 0.0.0-insiders.aaca7c4
+      '@tailwindcss/oxide-darwin-arm64': 0.0.0-insiders.61dc99f
+      '@tailwindcss/oxide-darwin-x64': 0.0.0-insiders.61dc99f
+      '@tailwindcss/oxide-freebsd-x64': 0.0.0-insiders.61dc99f
+      '@tailwindcss/oxide-linux-arm-gnueabihf': 0.0.0-insiders.61dc99f
+      '@tailwindcss/oxide-linux-arm64-gnu': 0.0.0-insiders.61dc99f
+      '@tailwindcss/oxide-linux-arm64-musl': 0.0.0-insiders.61dc99f
+      '@tailwindcss/oxide-linux-x64-gnu': 0.0.0-insiders.61dc99f
+      '@tailwindcss/oxide-linux-x64-musl': 0.0.0-insiders.61dc99f
+      '@tailwindcss/oxide-win32-x64-msvc': 0.0.0-insiders.61dc99f
     dev: true
 
   /@testing-library/dom@8.13.0:
@@ -10750,7 +10793,7 @@ packages:
   /@types/react-transition-group@4.4.6:
     resolution: {integrity: sha512-VnCdSxfcm08KjsJVQcfBmhEQAPnLB8G08hAxn39azX1qYBQ/5RVQuoHuKIcfKOdncuaUvEpFKFzEvbtIMsfVew==}
     dependencies:
-      '@types/react': 18.2.22
+      '@types/react': 18.2.20
     dev: true
 
   /@types/react@18.2.17:
@@ -11746,7 +11789,7 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /autoprefixer@10.4.15(postcss@8.4.29):
+  /autoprefixer@10.4.15(postcss@8.4.30):
     resolution: {integrity: sha512-KCuPB8ZCIqFdA4HwKXsvz7j6gvSDNhDP7WnUjBleRkKjPdvCmHFuQ77ocavI8FT6NdvlBnE2UFr2H4Mycn8Vew==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
@@ -11758,7 +11801,7 @@ packages:
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
-      postcss: 8.4.29
+      postcss: 8.4.30
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -17656,13 +17699,13 @@ packages:
       resolve: 1.22.6
     dev: true
 
-  /postcss-import@15.1.0(postcss@8.4.29):
+  /postcss-import@15.1.0(postcss@8.4.30):
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       postcss: ^8.0.0
     dependencies:
-      postcss: 8.4.29
+      postcss: 8.4.30
       postcss-value-parser: 4.2.0
       read-cache: 1.0.0
       resolve: 1.22.6
@@ -17678,14 +17721,14 @@ packages:
       postcss: 8.4.27
     dev: true
 
-  /postcss-js@4.0.1(postcss@8.4.29):
+  /postcss-js@4.0.1(postcss@8.4.30):
     resolution: {integrity: sha512-dDLF8pEO191hJMtlHFPRa8xsizHaM82MLfNkUHdUtVEV3tgTp5oj+8qbEqYM57SLfc74KSbw//4SeJma2LRVIw==}
     engines: {node: ^12 || ^14 || >= 16}
     peerDependencies:
       postcss: ^8.4.21
     dependencies:
       camelcase-css: 2.0.1
-      postcss: 8.4.29
+      postcss: 8.4.30
     dev: true
 
   /postcss-load-config@4.0.1(postcss@8.4.26):
@@ -17721,7 +17764,7 @@ packages:
       yaml: 2.3.1
     dev: true
 
-  /postcss-load-config@4.0.1(postcss@8.4.29):
+  /postcss-load-config@4.0.1(postcss@8.4.30):
     resolution: {integrity: sha512-vEJIc8RdiBRu3oRAI0ymerOn+7rPuMvRXslTvZUKZonDHFIczxztIyJ1urxM1x9JXEikvpWWTUUqal5j/8QgvA==}
     engines: {node: '>= 14'}
     peerDependencies:
@@ -17734,11 +17777,11 @@ packages:
         optional: true
     dependencies:
       lilconfig: 2.1.0
-      postcss: 8.4.29
+      postcss: 8.4.30
       yaml: 2.3.1
     dev: true
 
-  /postcss-loader@7.3.3(postcss@8.4.29)(webpack@5.88.2):
+  /postcss-loader@7.3.3(postcss@8.4.30)(webpack@5.88.2):
     resolution: {integrity: sha512-YgO/yhtevGO/vJePCQmTxiaEwER94LABZN0ZMT4A0vsak9TpO+RvKRs7EmJ8peIlB9xfXCsS7M8LjqncsUZ5HA==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -17747,7 +17790,7 @@ packages:
     dependencies:
       cosmiconfig: 8.2.0
       jiti: 1.19.1
-      postcss: 8.4.29
+      postcss: 8.4.30
       semver: 7.5.4
       webpack: 5.88.2(esbuild@0.18.11)
     dev: true
@@ -17813,13 +17856,13 @@ packages:
       postcss-selector-parser: 6.0.13
     dev: true
 
-  /postcss-nested@6.0.1(postcss@8.4.29):
+  /postcss-nested@6.0.1(postcss@8.4.30):
     resolution: {integrity: sha512-mEp4xPMi5bSWiMbsgoPfcP74lsWLHkQbZc3sY+jWYd65CUwXrUaTp0fmNpa01ZcETKlIgUdFN/MpS2xZtqL9dQ==}
     engines: {node: '>=12.0'}
     peerDependencies:
       postcss: ^8.2.14
     dependencies:
-      postcss: 8.4.29
+      postcss: 8.4.30
       postcss-selector-parser: 6.0.13
     dev: true
 
@@ -17860,8 +17903,8 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
-  /postcss@8.4.29:
-    resolution: {integrity: sha512-cbI+jaqIeu/VGqXEarWkRCCffhjgXc0qjBtXpqJhTBohMUjUQnbBr0xqX3vEKudc4iviTewcJo5ajcec5+wdJw==}
+  /postcss@8.4.30:
+    resolution: {integrity: sha512-7ZEao1g4kd68l97aWG/etQKPKq07us0ieSZ2TnFDk11i0ZfDW2AwKHYU8qv4MZKqN2fdBfg+7q0ES06UA73C1g==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.6
@@ -19671,13 +19714,13 @@ packages:
       - ts-node
     dev: true
 
-  /tailwindcss@0.0.0-insiders.aaca7c4:
-    resolution: {integrity: sha512-uQ68+vvctVwfvwLrKrQ5DMjhjMfqry8FPJDtfJfZNfvKcBCPIFM67imrsFJ3gLYdlZYWDDB/IKB3No0CI8K6MA==}
+  /tailwindcss@0.0.0-insiders.61dc99f:
+    resolution: {integrity: sha512-uQFkNH1AM/Yj2To23An4BHGsM80u39zNKWFFwbyD4zsH8uhVqfZNkOxuxveKpJkKMFlP8JgT4I7ke1nl8UZ+oQ==}
     engines: {node: '>=16.0.0'}
     hasBin: true
     dependencies:
       '@alloc/quick-lru': 5.2.0
-      '@tailwindcss/oxide': 0.0.0-insiders.aaca7c4
+      '@tailwindcss/oxide': 0.0.0-insiders.61dc99f
       arg: 5.0.2
       browserslist: 4.21.10
       chokidar: 3.5.3
@@ -19693,11 +19736,11 @@ packages:
       normalize-path: 3.0.0
       object-hash: 3.0.0
       picocolors: 1.0.0
-      postcss: 8.4.29
-      postcss-import: 15.1.0(postcss@8.4.29)
-      postcss-js: 4.0.1(postcss@8.4.29)
-      postcss-load-config: 4.0.1(postcss@8.4.29)
-      postcss-nested: 6.0.1(postcss@8.4.29)
+      postcss: 8.4.30
+      postcss-import: 15.1.0(postcss@8.4.30)
+      postcss-js: 4.0.1(postcss@8.4.30)
+      postcss-load-config: 4.0.1(postcss@8.4.30)
+      postcss-nested: 6.0.1(postcss@8.4.30)
       postcss-selector-parser: 6.0.13
       postcss-value-parser: 4.2.0
       resolve: 1.22.6

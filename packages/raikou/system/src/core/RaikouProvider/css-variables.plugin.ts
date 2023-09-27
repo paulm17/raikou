@@ -208,6 +208,156 @@ module.exports = function ({ addComponents }: any) {
         "--raikou-combobox-chevron-color": "#5c5f66",
       },
     },
+    ".dataTable-root tr": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-datatable-root-tr": "#fff",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-datatable-root-tr": "#1a1b1e",
+      },
+    },
+    ".dataTable-root thead tr th": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-datatable-root-th": "#dee2e6",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-datatable-root-th": "#373a40",
+      },
+    },
+    ".dataTable-root tbody tr td": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-datatable-root-td": "#dee2e6",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-datatable-root-td": "#373a40",
+      },
+    },
+    ".dataTable-root.lastRowBorderBottomVisible tbody tr:last-of-type td": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-datatable-root-lastrow-border": "#5c5f66",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-datatable-root-lastrow-border": "#373a40",
+      },
+    },
+    ".dataTable-root-tableWithBorder": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-datatable-root-tablewith-border": "#dee2e6",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-datatable-root-tablewith-border": "#373a40",
+      },
+    },
+    ".dataTable-root-tableWithColumnBorders th:not(:first-of-type), .dataTable-tableWithColumnBorders td:not(:first-of-type)":
+      {
+        '[data-raikou-color-scheme="light"] &': {
+          "--raikou-datatable-root-table-column-borders": "#dee2e6",
+        },
+        '[data-raikou-color-scheme="dark"] &': {
+          "--raikou-datatable-root-table-column-borders": "#373a40",
+        },
+      },
+    ".dataTable-root-tableWithColumnBordersAndSelectableRecords thead tr + tr th":
+      {
+        '[data-raikou-color-scheme="light"] &': {
+          "--raikou-datatable-root-table-column-borders-and-selectable-records":
+            "#dee2e6",
+        },
+        '[data-raikou-color-scheme="dark"] &': {
+          "--raikou-datatable-root-table-column-borders-and-selectable-records":
+            "#373a40",
+        },
+      },
+    ".dataTableEmptyState-root": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-datatable-empty-state-root": "#868e96",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-datatable-empty-state-root": "#5c5f66",
+      },
+    },
+    ".dataTableFooter-root": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-datatable-footer-root": "#fff",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-datatable-footer-root": "#1a1b1e",
+      },
+    },
+    ".dataTableHeader-root": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-datatable-header-root": "#1a1b1e",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-datatable-header-root": "#fff",
+      },
+    },
+    ".dataTableHeaderSelectorCell-root": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-datatable-header-selectorcell-border-left": "#dee2e6",
+        "--raikou-datatable-header-selectorcell-background":
+          "linear-gradient(to right, rgba(var(0,0,0) / 0.05), rgba(var(0,0,0) / 0), linear-gradient(to right, rgba(var(0,0,0), / 0.05), rgba(var(0,0,0) / 0) 30%)",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-datatable-header-selectorcell-border-left": "#373a40",
+        "--raikou-datatable-header-selectorcell-background":
+          "linear-gradient(to right, rgba(var(0,0,0) / 0.5), rgba(var(0,0,0) / 0), linear-gradient(to right, rgba(var(0,0,0), / 0.5), rgba(var(0,0,0) / 0) 30%)",
+      },
+    },
+    ".dataTableLoader-root": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-datatable-loader-root": "#fff",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-datatable-loader-root": "#141517",
+      },
+    },
+    ".dataTablePagination-root": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-datatable-pagination-root": "#5c5f66",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-datatable-pagination-root": "#1c1c1c",
+      },
+    },
+    ".dataTableRow-selected": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-datatable-row-selected-tr": "rgb(37,38,43 / 90%)",
+        "--raikou-datatable-row-selected-tbody": "rgb(37,38,43 / 85%)",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-datatable-row-selected-tr": "rgb(37,38,43 / 60%)",
+        "--raikou-datatable-row-selected-tbody": "rgb(37,38,43 / 55%)",
+      },
+    },
+    ".dataTableRow-context-menu": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-datatable-row-context-menu-tr": "rgb(37,38,43 / 70%)",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-datatable-row-context-menu-tbody": "rgb(37,38,43 / 65%)",
+      },
+    },
+    ".dataTableRowMenu-root": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-datatable-rowmenu-root": "#dee2e6",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-datatable-rowmenu-root": "#373a40",
+      },
+    },
+    ".dataTableRowMenuItem-root": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-datatable-rowmenuitem-disabled-color": "#5c5f66",
+        "--raikou-datatable-rowmenuitem-disabled-hover": "#ced4da",
+        "--raikou-datatable-rowmenuitem-disabled-active": "#ced4da",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-datatable-rowmenuitem-disabled-color": "#5c5f66",
+        "--raikou-datatable-rowmenuitem-disabled-hover": "#ced4da",
+        "--raikou-datatable-rowmenuitem-disabled-active": "#ced4da",
+      },
+    },
     ".divider-root": {
       '[data-raikou-color-scheme="light"] &': {
         "--raikou-divider-color": "#ced4da",
