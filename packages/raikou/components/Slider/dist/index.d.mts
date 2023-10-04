@@ -92,6 +92,8 @@ interface SliderProps extends BoxProps, StylesApiProps<SliderFactory>, ElementPr
     scale?(value: number): number;
     /** Determines whether track value representation should be inverted, `false` by default */
     inverted?: boolean;
+    /** Props passed down to the hidden input */
+    hiddenInputProps?: React.ComponentPropsWithoutRef<"input">;
 }
 type SliderFactory = Factory<{
     props: SliderProps;
@@ -163,6 +165,8 @@ interface RangeSliderProps extends BoxProps, StylesApiProps<RangeSliderFactory>,
     thumbFromLabel?: string;
     /** Second thumb `aria-label` */
     thumbToLabel?: string;
+    /** Props passed down to the hidden input */
+    hiddenInputProps?: React.ComponentPropsWithoutRef<"input">;
 }
 type RangeSliderFactory = Factory<{
     props: RangeSliderProps;

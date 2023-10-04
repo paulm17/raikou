@@ -80,6 +80,9 @@ export interface MultiSelectProps
 
   /** Props passed down to the clear button */
   clearButtonProps?: __CloseButtonProps & ElementProps<"button">;
+
+  /** Props passed down to the hidden input */
+  hiddenInputProps?: React.ComponentPropsWithoutRef<"input">;
 }
 
 export type MultiSelectFactory = Factory<{
@@ -160,6 +163,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
     id,
     clearable,
     clearButtonProps,
+    hiddenInputProps,
     ...others
   } = props;
 
@@ -278,6 +282,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
           value={_value.join(",")}
           form={form}
           disabled={disabled}
+          {...hiddenInputProps}
         />
         <Combobox.DropdownTarget>
           <PillsInput

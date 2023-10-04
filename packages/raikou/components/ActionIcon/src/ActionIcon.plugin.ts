@@ -111,6 +111,24 @@ module.exports = function ({ addComponents, theme }: any) {
             borderRightWidth: "calc(var(--ai-border-width) / 2)",
             borderLeftWidth: "calc(var(--ai-border-width) / 2)",
           },
+
+          '[dir="rtl"] &': {
+            "&:not(:only-child):first-child": {
+              border: `var(--ai-bd, ${rem("1px")} solid transparent)`,
+              borderRadius: "var(--ai-radius, var(--mantine-radius-default))",
+              borderBottomLeftRadius: "0",
+              borderTopLeftRadius: "0",
+              borderLeftWidth: "calc(var(--ai-border-width) / 2)",
+            },
+
+            "&:not(:only-child):last-child": {
+              border: `var(--ai-bd, ${rem("1px")} solid transparent)`,
+              borderRadius: "var(--ai-radius, var(--mantine-radius-default))",
+              borderBottomRightRadius: "0",
+              borderTopRightRadius: "0",
+              borderRightWidth: "calc(var(--ai-border-width) / 2)",
+            },
+          },
         },
       },
 

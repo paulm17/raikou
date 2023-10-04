@@ -25,6 +25,7 @@ export interface InputErrorProps
     StylesApiProps<InputErrorFactory>,
     ElementProps<"div"> {
   __staticSelector?: string;
+  __inheritStyles?: boolean;
 
   /** Controls error `font-size`, `'sm'` by default */
   size?: RaikouSize | (string & {});
@@ -57,6 +58,7 @@ export const InputError = factory<InputErrorFactory>((_props, ref) => {
     vars,
     size,
     __staticSelector,
+    __inheritStyles = true,
     variant,
     ...others
   } = props;
@@ -78,7 +80,7 @@ export const InputError = factory<InputErrorFactory>((_props, ref) => {
   });
 
   const ctx = useInputWrapperContext();
-  const getStyles = ctx?.getStyles || _getStyles;
+  const getStyles = (__inheritStyles && ctx?.getStyles) || _getStyles;
 
   return (
     <Box

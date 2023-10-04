@@ -24,6 +24,7 @@ export * from "@raikou/menu";
 export * from "@raikou/modal";
 export * from "@raikou/modal-base";
 export * from "@raikou/multi-select";
+export * from "@raikou/overlay";
 export * from "@raikou/native-select";
 export * from "@raikou/navlink";
 export * from "@raikou/notifications";

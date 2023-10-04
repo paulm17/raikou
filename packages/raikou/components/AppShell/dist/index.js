@@ -65,7 +65,8 @@ __export(src_exports, {
   AppShellHeader: () => AppShellHeader,
   AppShellMain: () => AppShellMain,
   AppShellNavbar: () => AppShellNavbar,
-  AppShellSection: () => AppShellSection
+  AppShellSection: () => AppShellSection,
+  CreateAppShellMediaStyles: () => CreateAppShellMediaStyles
 });
 module.exports = __toCommonJS(src_exports);
 
@@ -708,7 +709,7 @@ var AppShell = (0, import_core15.factory)((_props, ref) => {
     varsResolver
   });
   useStore.setState({ getStyles, withBorder, zIndex, disabled });
-  return /* @__PURE__ */ import_react8.default.createElement(import_react8.default.Fragment, null, /* @__PURE__ */ import_react8.default.createElement(
+  return /* @__PURE__ */ import_react8.default.createElement(import_react8.default.Fragment, null, /* @__PURE__ */ import_react8.default.createElement("div", { id: "appshell-style" }, /* @__PURE__ */ import_react8.default.createElement(
     AppShellMediaStyles,
     {
       navbar,
@@ -717,7 +718,7 @@ var AppShell = (0, import_core15.factory)((_props, ref) => {
       footer,
       padding
     }
-  ), /* @__PURE__ */ import_react8.default.createElement(
+  )), /* @__PURE__ */ import_react8.default.createElement(
     import_core15.Box,
     __spreadValues(__spreadProps(__spreadValues({
       ref
@@ -733,6 +734,39 @@ AppShell.Main = AppShellMain;
 AppShell.Aside = AppShellAside;
 AppShell.Footer = AppShellFooter;
 AppShell.Section = AppShellSection;
+
+// src/AppShellFuncs/createAppShellMediaStyles.ts
+var import_core16 = require("@raikou/core");
+function CreateAppShellMediaStyles({
+  navbar,
+  header,
+  aside,
+  footer,
+  padding
+}) {
+  const theme = (0, import_core16.useRaikouTheme)();
+  const { media, baseStyles } = getVariables({
+    navbar,
+    header,
+    footer,
+    aside,
+    padding,
+    theme
+  });
+  var elem = document.querySelector(
+    "#appshell-style style[data-raikou-styles]"
+  );
+  elem == null ? void 0 : elem.remove();
+  var newElem = document.createElement("style");
+  newElem.setAttribute("data-raikou-styles", "inline");
+  newElem.innerHTML = (0, import_core16.stylesToString)({
+    selector: ":root",
+    styles: baseStyles,
+    media
+  });
+  document.querySelector("#appshell-style").append(newElem);
+  return null;
+}
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   AppShell,
@@ -741,5 +775,6 @@ AppShell.Section = AppShellSection;
   AppShellHeader,
   AppShellMain,
   AppShellNavbar,
-  AppShellSection
+  AppShellSection,
+  CreateAppShellMediaStyles
 });

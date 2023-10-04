@@ -23,14 +23,18 @@ declare const BackgroundImage: (<C = "div">(props: C extends React.ElementType<a
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, keyof BackgroundImageProps | "component"> & {
     ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : BackgroundImageProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 }) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(BackgroundImageProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, keyof BackgroundImageProps | "component"> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (BackgroundImageProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & _raikou_core.ThemeExtend<{
     props: BackgroundImageProps;
     defaultRef: HTMLDivElement;

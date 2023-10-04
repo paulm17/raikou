@@ -67,7 +67,7 @@ var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)(
   (_, { size, fluid }) => ({
     root: {
-      "--container-size": fluid ? "100%" : (0, import_core.getSize)(size, "container-size")
+      "--container-size": fluid ? void 0 : (0, import_core.getSize)(size, "container-size")
     }
   })
 );

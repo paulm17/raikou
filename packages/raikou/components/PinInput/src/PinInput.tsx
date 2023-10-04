@@ -111,6 +111,9 @@ export interface PinInputProps
 
   /** `aria-label` for the inputs */
   ariaLabel?: string;
+
+  /** Props passed down to the hidden input */
+  hiddenInputProps?: React.ComponentPropsWithoutRef<"input">;
 }
 
 export type PinInputFactory = Factory<{
@@ -167,6 +170,7 @@ export const PinInput = factory<PinInputFactory>((props, ref) => {
     inputMode,
     ariaLabel,
     vars,
+    hiddenInputProps,
     ...others
   } = useProps("PinInput", defaultProps, props);
 
@@ -373,7 +377,13 @@ export const PinInput = factory<PinInputFactory>((props, ref) => {
         ))}
       </Group>
 
-      <input type="hidden" name={name} form={form} value={_value} />
+      <input
+        type="hidden"
+        name={name}
+        form={form}
+        value={_value}
+        {...hiddenInputProps}
+      />
     </>
   );
 });

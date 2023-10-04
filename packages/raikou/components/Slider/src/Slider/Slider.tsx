@@ -104,6 +104,9 @@ export interface SliderProps
 
   /** Determines whether track value representation should be inverted, `false` by default */
   inverted?: boolean;
+
+  /** Props passed down to the hidden input */
+  hiddenInputProps?: React.ComponentPropsWithoutRef<"input">;
 }
 
 export type SliderFactory = Factory<{
@@ -171,6 +174,7 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
     className,
     style,
     vars,
+    hiddenInputProps,
     ...others
   } = props;
 
@@ -367,7 +371,12 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
           </Thumb>
         </Track>
 
-        <input type="hidden" name={name} value={scaledValue} />
+        <input
+          type="hidden"
+          name={name}
+          value={scaledValue}
+          {...hiddenInputProps}
+        />
       </SliderRoot>
     </SliderProvider>
   );

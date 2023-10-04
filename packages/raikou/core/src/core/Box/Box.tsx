@@ -53,7 +53,7 @@ export interface BoxComponentProps extends BoxProps {
 
 const _Box = forwardRef<
   HTMLDivElement,
-  BoxComponentProps & { component: any; className: string }
+  BoxComponentProps & { component: any; className: string; renderRoot: any }
 >(
   (
     {
@@ -66,6 +66,7 @@ const _Box = forwardRef<
       size,
       hiddenFrom,
       visibleFrom,
+      renderRoot,
       ...others
     },
     ref,
@@ -80,6 +81,25 @@ const _Box = forwardRef<
       data: STYlE_PROPS_DATA,
     });
 
+    const props = {
+      ref,
+      style: getBoxStyle({
+        theme,
+        style,
+        vars: __vars,
+        styleProps: parsedStyleProps.inlineStyles,
+      }),
+      className: cx(className, {
+        [responsiveClassName]: parsedStyleProps.hasResponsiveStyles,
+        [`raikou-hidden-from-${hiddenFrom}`]: hiddenFrom,
+        [`raikou-visible-from-${visibleFrom}`]: visibleFrom,
+      }),
+      "data-variant": variant,
+      "data-size": isNumberLike(size) ? undefined : size || undefined,
+      ...getBoxMod(mod),
+      ...rest,
+    };
+
     return (
       <>
         {parsedStyleProps.hasResponsiveStyles && (
@@ -89,24 +109,11 @@ const _Box = forwardRef<
             media={parsedStyleProps.media}
           />
         )}
-        <Element
-          ref={ref}
-          style={getBoxStyle({
-            theme,
-            style,
-            vars: __vars,
-            styleProps: parsedStyleProps.inlineStyles,
-          })}
-          className={cx(className, {
-            [responsiveClassName]: parsedStyleProps.hasResponsiveStyles,
-            [`raikou-hidden-from-${hiddenFrom}`]: hiddenFrom,
-            [`raikou-visible-from-${visibleFrom}`]: visibleFrom,
-          })}
-          data-variant={variant}
-          data-size={isNumberLike(size) ? undefined : size || undefined}
-          {...getBoxMod(mod)}
-          {...rest}
-        />
+        {typeof renderRoot === "function" ? (
+          renderRoot(props)
+        ) : (
+          <Element {...props} />
+        )}
       </>
     );
   },

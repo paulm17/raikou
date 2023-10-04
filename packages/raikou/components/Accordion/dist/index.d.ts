@@ -64,7 +64,7 @@ interface AccordionChevronProps extends React.ComponentPropsWithoutRef<"svg"> {
     /** Controls `width` and `height` of the icon, `16` by default */
     size?: number | string;
 }
-declare function AccordionChevron({ style, size, ...others }: AccordionChevronProps): JSX.Element;
+declare function AccordionChevron({ style, size, ...others }: AccordionChevronProps): React.JSX.Element;
 declare namespace AccordionChevron {
     var displayName: string;
 }
@@ -111,7 +111,7 @@ type AccordionFactory = Factory<{
     vars: AccordionCssVariables;
     variant: AccordionVariant;
 }>;
-declare function Accordion<Multiple extends boolean = false>(_props: AccordionProps<Multiple>): JSX.Element;
+declare function Accordion<Multiple extends boolean = false>(_props: AccordionProps<Multiple>): React.JSX.Element;
 declare namespace Accordion {
     var extend: (c: _raikou_core.ExtendsRootComponent<{
         props: AccordionProps<false>;

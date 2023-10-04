@@ -307,6 +307,7 @@ var InputError = factory3((_props, ref) => {
     vars,
     size,
     __staticSelector,
+    __inheritStyles = true,
     variant
   } = _a, others = __objRest(_a, [
     "classNames",
@@ -317,6 +318,7 @@ var InputError = factory3((_props, ref) => {
     "vars",
     "size",
     "__staticSelector",
+    "__inheritStyles",
     "variant"
   ]);
   const _getStyles = useStyles3({
@@ -335,7 +337,7 @@ var InputError = factory3((_props, ref) => {
     varsResolver: varsResolver3
   });
   const ctx = useInputWrapperContext();
-  const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+  const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
   return /* @__PURE__ */ React5.createElement(
     Box3,
     __spreadValues(__spreadValues({
@@ -379,6 +381,7 @@ var InputDescription = factory4(
       vars,
       size,
       __staticSelector,
+      __inheritStyles = true,
       variant
     } = _a, others = __objRest(_a, [
       "classNames",
@@ -389,6 +392,7 @@ var InputDescription = factory4(
       "vars",
       "size",
       "__staticSelector",
+      "__inheritStyles",
       "variant"
     ]);
     const ctx = useInputWrapperContext();
@@ -407,7 +411,7 @@ var InputDescription = factory4(
       vars,
       varsResolver: varsResolver4
     });
-    const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+    const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
     return /* @__PURE__ */ React6.createElement(
       Box4,
       __spreadValues(__spreadValues({
@@ -902,7 +906,8 @@ var PinInput = factory7((props, ref) => {
     inputType,
     inputMode,
     ariaLabel,
-    vars
+    vars,
+    hiddenInputProps
   } = _a, others = __objRest(_a, [
     "name",
     "form",
@@ -932,7 +937,8 @@ var PinInput = factory7((props, ref) => {
     "inputType",
     "inputMode",
     "ariaLabel",
-    "vars"
+    "vars",
+    "hiddenInputProps"
   ]);
   const uuid = useId2(name);
   const getStyles = useStyles8({
@@ -1093,7 +1099,15 @@ var PinInput = factory7((props, ref) => {
         readOnly
       })
     ))
-  ), /* @__PURE__ */ React10.createElement("input", { type: "hidden", name, form, value: _value }));
+  ), /* @__PURE__ */ React10.createElement(
+    "input",
+    __spreadValues({
+      type: "hidden",
+      name,
+      form,
+      value: _value
+    }, hiddenInputProps)
+  ));
 });
 PinInput.displayName = "@raikou/core/PinInput";
 export {

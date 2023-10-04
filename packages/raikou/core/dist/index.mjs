@@ -966,8 +966,6 @@ function useRaikouTheme() {
     theme.variantColorResolver = defaultVariantColorsResolver;
     return theme;
   }
-  console.log("warning - using default theme, should not happen");
-  return DEFAULT_THEME;
 }
 
 // src/core/RaikouProvider/use-props/use-props.ts
@@ -1784,6 +1782,7 @@ var _Box = forwardRef3(
     size,
     hiddenFrom,
     visibleFrom,
+    renderRoot,
     ...others
   }, ref) => {
     const theme = useRaikouTheme();
@@ -1795,6 +1794,24 @@ var _Box = forwardRef3(
       theme,
       data: STYlE_PROPS_DATA
     });
+    const props = {
+      ref,
+      style: getBoxStyle({
+        theme,
+        style,
+        vars: __vars,
+        styleProps: parsedStyleProps.inlineStyles
+      }),
+      className: cx4(className, {
+        [responsiveClassName]: parsedStyleProps.hasResponsiveStyles,
+        [`raikou-hidden-from-${hiddenFrom}`]: hiddenFrom,
+        [`raikou-visible-from-${visibleFrom}`]: visibleFrom
+      }),
+      "data-variant": variant,
+      "data-size": isNumberLike(size) ? void 0 : size || void 0,
+      ...getBoxMod(mod),
+      ...rest
+    };
     return /* @__PURE__ */ React3.createElement(React3.Fragment, null, parsedStyleProps.hasResponsiveStyles && /* @__PURE__ */ React3.createElement(
       InlineStyles,
       {
@@ -1802,27 +1819,7 @@ var _Box = forwardRef3(
         styles: parsedStyleProps.styles,
         media: parsedStyleProps.media
       }
-    ), /* @__PURE__ */ React3.createElement(
-      Element,
-      {
-        ref,
-        style: getBoxStyle({
-          theme,
-          style,
-          vars: __vars,
-          styleProps: parsedStyleProps.inlineStyles
-        }),
-        className: cx4(className, {
-          [responsiveClassName]: parsedStyleProps.hasResponsiveStyles,
-          [`raikou-hidden-from-${hiddenFrom}`]: hiddenFrom,
-          [`raikou-visible-from-${visibleFrom}`]: visibleFrom
-        }),
-        "data-variant": variant,
-        "data-size": isNumberLike(size) ? void 0 : size || void 0,
-        ...getBoxMod(mod),
-        ...rest
-      }
-    ));
+    ), typeof renderRoot === "function" ? renderRoot(props) : /* @__PURE__ */ React3.createElement(Element, { ...props }));
   }
 );
 _Box.displayName = "@raikou/core/Box";

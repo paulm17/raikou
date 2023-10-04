@@ -1,5 +1,6 @@
-import React$1 from 'react';
+import * as _raikou_core from '@raikou/core';
 import { BoxProps, CompoundStylesApiProps, ElementProps, Factory, StylesApiProps, RaikouRadius, RaikouShadow } from '@raikou/core';
+import React$1 from 'react';
 
 interface PopoverDropdownProps extends BoxProps, CompoundStylesApiProps<PopoverDropdownFactory>, ElementProps<"div"> {
 }
@@ -165,7 +166,7 @@ interface HoverCardDropdownProps extends PopoverDropdownProps {
     /** Dropdown content */
     children?: React$1.ReactNode;
 }
-declare function HoverCardDropdown(props: HoverCardDropdownProps): JSX.Element;
+declare function HoverCardDropdown(props: HoverCardDropdownProps): React$1.JSX.Element;
 declare namespace HoverCardDropdown {
     var displayName: string;
 }
@@ -183,11 +184,20 @@ interface HoverCardProps extends PopoverProps {
     /** Close delay in ms */
     closeDelay?: number;
 }
-declare function HoverCard(props: HoverCardProps): JSX.Element;
+declare function HoverCard(props: HoverCardProps): React$1.JSX.Element;
 declare namespace HoverCard {
     var displayName: string;
     var Target: React$1.ForwardRefExoticComponent<HoverCardTargetProps & React$1.RefAttributes<HTMLElement>>;
     var Dropdown: typeof HoverCardDropdown;
+    var extend: (input: _raikou_core.ExtendsRootComponent<{
+        props: HoverCardProps;
+        stylesNames: PopoverStylesNames;
+        vars: PopoverCssVariables;
+    }>) => _raikou_core.ExtendsRootComponent<{
+        props: HoverCardProps;
+        stylesNames: PopoverStylesNames;
+        vars: PopoverCssVariables;
+    }>;
 }
 
 export { HoverCard, HoverCardDropdown, HoverCardDropdownProps, HoverCardProps, HoverCardTarget, HoverCardTargetProps };

@@ -1,6 +1,5 @@
 import * as _raikou_core from '@raikou/core';
 import { BoxProps, StylesApiProps, RaikouColor, RaikouSize, PolymorphicFactory } from '@raikou/core';
-import * as types from 'types';
 import React from 'react';
 
 type NavLinkStylesNames = "root" | "section" | "body" | "label" | "description" | "chevron" | "children";
@@ -49,18 +48,22 @@ type NavLinkFactory = PolymorphicFactory<{
     vars: NavLinkCssVariables;
     variant: NavLinkVariant;
 }>;
-declare const NavLink: (<C = "a">(props: C extends types.ElementType<any> ? NavLinkProps & {
+declare const NavLink: (<C = "a">(props: C extends React.ElementType<any> ? NavLinkProps & {
     component?: C | undefined;
-} & Omit<JSX.LibraryManagedAttributes<C, types.PropsWithoutRef<types.ComponentProps<C>>>, "component" | keyof NavLinkProps> & {
-    ref?: (C extends infer T ? T extends C ? T extends types.ElementType<any> ? types.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+} & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, "component" | keyof NavLinkProps> & {
+    ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : NavLinkProps & {
-    component: types.ElementType<any>;
-}) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<types.FunctionComponent<(NavLinkProps & {
+    component: React.ElementType<any>;
+    renderRoot?(props: any): any;
+}) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(NavLinkProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, "component" | keyof NavLinkProps> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (NavLinkProps & {
-    component: types.ElementType<any>;
+    component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & _raikou_core.ThemeExtend<{
     props: NavLinkProps;
     defaultRef: HTMLAnchorElement;

@@ -42,6 +42,7 @@ module.exports = {
     "./node_modules/@raikou/server/node_modules/@raikou/visually-hidden/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/accordion/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/avatar/dist/*.js",
+    "./node_modules/@raikou/client/node_modules/@raikou/burger/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/checkbox/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/chip/dist/*.js",
     "./node_modules/@raikou/client/node_modules/@raikou/color-input/dist/*.js",

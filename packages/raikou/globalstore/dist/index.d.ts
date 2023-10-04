@@ -122,14 +122,16 @@ interface HeadingStyle {
     lineHeight: string;
 }
 type RaikouSize = "xs" | "sm" | "md" | "lg" | "xl";
-type RaikouBreakpointsValues = Record<RaikouSize, string>;
-type RaikouFontSizesValues = Record<RaikouSize, string>;
-type RaikouRadiusValues = Record<RaikouSize, string>;
-type RaikouSpacingValues = Record<RaikouSize, string>;
-type RaikouShadowsValues = Record<RaikouSize, string>;
-type RaikouLineHeightValues = Record<RaikouSize, string>;
+type RaikouBreakpointsValues = Record<RaikouSize | (string & {}), string>;
+type RaikouFontSizesValues = Record<RaikouSize | (string & {}), string>;
+type RaikouRadiusValues = Record<RaikouSize | (string & {}), string>;
+type RaikouSpacingValues = Record<RaikouSize | (string & {}), string>;
+type RaikouShadowsValues = Record<RaikouSize | (string & {}), string>;
+type RaikouLineHeightValues = Record<RaikouSize | (string & {}), string>;
 type RaikouRadius = keyof RaikouRadiusValues | (string & {}) | number;
-type RaikouThemeOther = Record<string, any>;
+interface RaikouThemeOther {
+    [key: string]: any;
+}
 interface RaikouGradient {
     from: string;
     to: string;
@@ -154,7 +156,8 @@ interface RaikouPrimaryShade {
     dark: RaikouColorShade;
 }
 type DefaultRaikouColor = "blue" | (string & {});
-type RaikouThemeColorsOverride = {};
+interface RaikouThemeColorsOverride {
+}
 type RaikouThemeColors = RaikouThemeColorsOverride extends {
     colors: Record<infer CustomColors, RaikouColorsTuple>;
 } ? Record<CustomColors, RaikouColorsTuple> : Record<DefaultRaikouColor, RaikouColorsTuple>;

@@ -1922,29 +1922,32 @@ function useNetwork() {
 }
 
 // src/use-timeout/use-timeout.ts
-import { useRef as useRef22, useEffect as useEffect31 } from "react";
+import { useRef as useRef22, useEffect as useEffect31, useCallback as useCallback14 } from "react";
 function useTimeout(callback, delay, options = { autoInvoke: false }) {
   const timeoutRef = useRef22(null);
-  const start = (...callbackParams) => {
-    if (!timeoutRef.current) {
-      timeoutRef.current = window.setTimeout(() => {
-        callback(callbackParams);
-        timeoutRef.current = null;
-      }, delay);
-    }
-  };
-  const clear = () => {
+  const start = useCallback14(
+    (...callbackParams) => {
+      if (!timeoutRef.current) {
+        timeoutRef.current = window.setTimeout(() => {
+          callback(callbackParams);
+          timeoutRef.current = null;
+        }, delay);
+      }
+    },
+    [callback, delay]
+  );
+  const clear = useCallback14(() => {
     if (timeoutRef.current) {
       window.clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
     }
-  };
+  }, []);
   useEffect31(() => {
     if (options.autoInvoke) {
       start();
     }
     return clear;
-  }, [delay]);
+  }, [clear, start]);
   return { start, clear };
 }
 
@@ -2043,13 +2046,13 @@ function useHeadroom({ fixedAt = 0, onPin, onFix, onRelease } = {}) {
 }
 
 // src/use-eye-dropper/use-eye-dropper.ts
-import { useCallback as useCallback14, useState as useState31 } from "react";
+import { useCallback as useCallback15, useState as useState31 } from "react";
 function useEyeDropper() {
   const [supported, setSupported] = useState31(false);
   useIsomorphicEffect(() => {
     setSupported(typeof window !== "undefined" && "EyeDropper" in window);
   }, []);
-  const open = useCallback14(
+  const open = useCallback15(
     (options = {}) => {
       if (supported) {
         const eyeDropper = new window.EyeDropper();

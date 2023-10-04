@@ -1,11 +1,11 @@
-import type { MantineNumberSize, MantineShadow } from '@mantine/core';
-import type { DataTableContextMenuItemProps } from './DataTableContextMenuItemProps';
+import type { RaikouSize, RaikouShadow } from "@raikou/core";
+import type { DataTableContextMenuItemProps } from "./DataTableContextMenuItemProps";
 
 export type DataTableContextMenuProps<T> = {
   /**
    * Context menu trigger; defaults to `rightClick` for classic behavior
    */
-  trigger?: 'rightClick' | 'click';
+  trigger?: "rightClick" | "click";
 
   /**
    * Menu z-index; defaults to `3`
@@ -15,12 +15,12 @@ export type DataTableContextMenuProps<T> = {
   /**
    * Menu border radius; defaults to `xs`
    */
-  borderRadius?: MantineNumberSize;
+  borderRadius?: RaikouSize;
 
   /**
    * Menu shadow; defaults to `sm`
    */
-  shadow?: MantineShadow;
+  shadow?: RaikouShadow;
 
   /**
    * Boolean or a function accepting the current record and its index as arguments and returning a boolean value;

@@ -251,7 +251,9 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
 
   const handleValueChange: OnValueChange = (payload, event) => {
     setValue(
-      isValidNumber(payload.floatValue) ? payload.floatValue : payload.value,
+      typeof _value === "number" && isValidNumber(payload.floatValue)
+        ? payload.floatValue
+        : payload.value,
     );
     onValueChange?.(payload, event);
   };

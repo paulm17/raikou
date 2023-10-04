@@ -241,6 +241,7 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
     vars,
     size: size2,
     __staticSelector,
+    __inheritStyles = true,
     variant
   } = _a, others = __objRest(_a, [
     "classNames",
@@ -251,6 +252,7 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
     "vars",
     "size",
     "__staticSelector",
+    "__inheritStyles",
     "variant"
   ]);
   const _getStyles = (0, import_core2.useStyles)({
@@ -269,7 +271,7 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
     varsResolver: varsResolver2
   });
   const ctx = useInputWrapperContext();
-  const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+  const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
   return /* @__PURE__ */ import_react6.default.createElement(
     import_core2.Box,
     __spreadValues(__spreadValues({
@@ -305,6 +307,7 @@ var InputDescription = (0, import_core3.factory)(
       vars,
       size: size2,
       __staticSelector,
+      __inheritStyles = true,
       variant
     } = _a, others = __objRest(_a, [
       "classNames",
@@ -315,6 +318,7 @@ var InputDescription = (0, import_core3.factory)(
       "vars",
       "size",
       "__staticSelector",
+      "__inheritStyles",
       "variant"
     ]);
     const ctx = useInputWrapperContext();
@@ -333,7 +337,7 @@ var InputDescription = (0, import_core3.factory)(
       vars,
       varsResolver: varsResolver3
     });
-    const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+    const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
     return /* @__PURE__ */ import_react7.default.createElement(
       import_core3.Box,
       __spreadValues(__spreadValues({
@@ -3169,7 +3173,7 @@ var import_core15 = require("@raikou/core");
 function createPortalNode(props) {
   const node = document.createElement("div");
   node.setAttribute("data-portal", "true");
-  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.className === "string" && node.classList.add(...props.className.split(" "));
   typeof props.style === "object" && Object.assign(node.style, props.style);
   typeof props.id === "string" && node.setAttribute("id", props.id);
   return node;

@@ -1,8 +1,8 @@
-import type { MantineColor, MantineNumberSize, MantineSize } from '@mantine/core';
-import type { ReactNode } from 'react';
-import type { DataTablePageSizeSelectorProps } from './DataTablePageSizeSelectorProps';
+import type { RaikouSize } from "@raikou/core";
+import type { ReactNode } from "react";
+import type { DataTablePageSizeSelectorProps } from "./DataTablePageSizeSelectorProps";
 
-export type DataTablePaginationProps = (
+export type _DataTablePaginationProps = (
   | {
       page?: never;
       onPageChange?: never;
@@ -39,12 +39,12 @@ export type DataTablePaginationProps = (
       /**
        * Pagination component size; defaults to `sm`
        */
-      paginationSize?: MantineSize;
+      paginationSize?: RaikouSize;
 
       /**
        * Pagination component color; defaults to primary theme color
        */
-      paginationColor?: MantineColor;
+      paginationColor?: any;
 
       /**
        * Text to show while records are loading
@@ -55,19 +55,25 @@ export type DataTablePaginationProps = (
        * Pagination text; defaults to ```({ from, to, totalRecords }) => `${from}-${to}/${totalRecords}`
        * ```
        */
-      paginationText?: (options: { from: number; to: number; totalRecords: number }) => ReactNode;
+      paginationText?: (options: {
+        from: number;
+        to: number;
+        totalRecords: number;
+      }) => ReactNode;
 
       /**
        * Pagination wrap breakpoints; defaults to `sm`.
        * Below this breakpoint the content will be displayed on multiple lines;
        * above it the content will be displayed on a single line.
        */
-      paginationWrapBreakpoint?: MantineNumberSize;
+      paginationWrapBreakpoint?: RaikouSize;
 
       /**
        * Function that returns props object for pagination control; useful for improving accessibility
        */
-      getPaginationControlProps?: (control: 'previous' | 'next') => Record<string, unknown>;
+      getPaginationControlProps?: (
+        control: "previous" | "next",
+      ) => Record<string, unknown>;
     }
 ) &
   DataTablePageSizeSelectorProps;

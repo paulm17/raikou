@@ -94,7 +94,7 @@ module.exports = function ({ addComponents, theme }: any) {
           content: '""',
           position: "relative",
           inset: rem("-1px"),
-          borderRadius: "var(--button-radius)",
+          borderRadius: "var(--button-radius, var(--raikou-radius-default))",
           backgroundColor: "var(--_button-loading-overlay-bg)",
         },
       },
@@ -208,6 +208,30 @@ module.exports = function ({ addComponents, theme }: any) {
             borderRadius: "0",
             borderRightWidth: "calc(var(--button-border-width) / 2)",
             borderLeftWidth: "calc(var(--button-border-width) / 2)",
+          },
+
+          '[dir="rtl"] &': {
+            "&:not(:only-child):first-child": {
+              border: `var(--_button-bd, var(--button-bd, ${rem(
+                "1px",
+              )} solid transparent))`,
+              borderRadius:
+                "var(--button-radius, var(--raikou-radius-default))",
+              borderBottomLeftRadius: "0",
+              borderTopLeftRadius: "0",
+              borderLeftWidth: "calc(var(--button-border-width) / 2)",
+            },
+
+            "&:not(:only-child):last-child": {
+              border: `var(--_button-bd, var(--button-bd, ${rem(
+                "1px",
+              )} solid transparent))`,
+              borderRadius:
+                "var(--button-radius, var(--raikou-radius-default))",
+              borderBottomRightRadius: "0",
+              borderTopRightRadius: "0",
+              borderRightWidth: "calc(var(--button-border-width) / 2)",
+            },
           },
         },
       },

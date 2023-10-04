@@ -1,14 +1,16 @@
-import React from "react";
+import React, { ChangeEventHandler, MouseEventHandler, ReactNode } from "react";
+import {
+  factory,
+  useProps,
+  Factory,
+  BoxProps,
+  StylesApiProps,
+  useStyles,
+} from "@raikou/core";
 import { Box } from "../../components/Box/src";
-import type {
-  ChangeEventHandler,
-  CSSProperties,
-  MouseEventHandler,
-  ReactNode,
-} from "react";
-import DataTableRowCell from "./DataTableRowCell";
-import DataTableRowExpansion from "./DataTableRowExpansion";
-import DataTableRowSelectorCell from "./DataTableRowSelectorCell";
+import { DataTableRowCell } from "./DataTableRowCell";
+import { DataTableRowExpansion } from "./DataTableRowExpansion";
+import { DataTableRowSelectorCell } from "./DataTableRowSelectorCell";
 import { useRowExpansion } from "./hooks";
 import type {
   DataTableCellClickHandler,
@@ -17,74 +19,107 @@ import type {
 } from "./types";
 import cx from "clsx";
 
-type DataTableRowProps<T> = {
-  record: T;
+export type DataTableRowStylesNames = "root" | "td";
+
+export interface DataTableRowProps
+  extends BoxProps,
+    StylesApiProps<DataTableRowFactory> {
+  record: any;
   recordIndex: number;
-  columns: DataTableColumn<T>[];
-  defaultColumnProps: DataTableDefaultColumnProps<T> | undefined;
+  columns: DataTableColumn[];
+  defaultColumnProps: DataTableDefaultColumnProps | undefined;
   defaultColumnRender:
-    | ((record: T, index: number, accessor: string) => ReactNode)
+    | ((record: any, index: number, accessor: string) => ReactNode)
     | undefined;
   selectionVisible: boolean;
   selectionChecked: boolean;
   onSelectionChange: ChangeEventHandler<HTMLInputElement> | undefined;
-  isRecordSelectable: ((record: T, index: number) => boolean) | undefined;
+  isRecordSelectable: ((record: any, index: number) => boolean) | undefined;
   getSelectionCheckboxProps: (
-    record: T,
+    record: any,
     recordIndex: number,
   ) => Record<string, unknown>;
   onClick: MouseEventHandler<HTMLTableRowElement> | undefined;
-  onCellClick: DataTableCellClickHandler<T> | undefined;
+  onCellClick: DataTableCellClickHandler | undefined;
   onContextMenu: MouseEventHandler<HTMLTableRowElement> | undefined;
-  expansion: ReturnType<typeof useRowExpansion<T>>;
+  expansion: ReturnType<typeof useRowExpansion<any>>;
   customAttributes?: (
-    record: T,
+    record: any,
     recordIndex: number,
   ) => Record<string, unknown>;
-  className?: string | ((record: T, recordIndex: number) => string | undefined);
-  style?:
-    | CSSProperties
-    | ((record: T, recordIndex: number) => CSSProperties | undefined);
   contextMenuVisible: boolean;
   leftShadowVisible: boolean;
-};
+}
 
-export default function DataTableRow<T>({
-  record,
-  recordIndex,
-  columns,
-  defaultColumnProps,
-  defaultColumnRender,
-  selectionVisible,
-  selectionChecked,
-  onSelectionChange,
-  isRecordSelectable,
-  getSelectionCheckboxProps,
-  onClick,
-  onCellClick,
-  onContextMenu,
-  expansion,
-  customAttributes,
-  className,
-  style,
-  contextMenuVisible,
-  leftShadowVisible,
-}: DataTableRowProps<T>) {
+export type DataTableRowFactory = Factory<{
+  props: DataTableRowProps;
+  ref: HTMLDivElement;
+  defaultRef: HTMLDivElement;
+  defaultComponent: "div";
+  stylesNames: DataTableRowStylesNames;
+}>;
+
+type ClassNames = Partial<Record<DataTableRowStylesNames, string>>;
+
+const defaultProps: Partial<DataTableRowProps> = {};
+
+export const DataTableRow = factory<DataTableRowFactory>((_props) => {
+  const props = useProps("DataTableRow", defaultProps, _props);
+  const {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    record,
+    recordIndex,
+    columns,
+    defaultColumnProps,
+    defaultColumnRender,
+    selectionVisible,
+    selectionChecked,
+    onSelectionChange,
+    isRecordSelectable,
+    getSelectionCheckboxProps,
+    onClick,
+    onCellClick,
+    onContextMenu,
+    expansion,
+    customAttributes,
+    contextMenuVisible,
+    leftShadowVisible,
+    ...others
+  } = props;
+
+  const getStyles = useStyles<DataTableRowFactory>({
+    name: "DataTableRow",
+    props,
+    classes: {
+      root: "",
+      td: "",
+    },
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled,
+    vars,
+    varsResolver: undefined,
+  });
+
   return (
     <>
       <Box
         component="tr"
-        className={cx(
-          {
+        {...getStyles("root", {
+          className: cx({
             ["dataTableRow-withPointerCursor"]:
               onClick || expansion?.expandOnClick,
             ["dataTableRow-selected"]: selectionChecked,
             ["dataTableRow-contextMenuVisible"]: contextMenuVisible,
-          },
-          typeof className === "function"
-            ? className(record, recordIndex)
-            : className,
-        )}
+          }),
+        })}
         onClick={(e) => {
           if (expansion) {
             const { isRowExpanded, expandOnClick, expandRow, collapseRow } =
@@ -99,12 +134,12 @@ export default function DataTableRow<T>({
           }
           onClick?.(e);
         }}
-        style={typeof style === "function" ? style(record, recordIndex) : style}
         {...customAttributes?.(record, recordIndex)}
         onContextMenu={onContextMenu}
+        {...others}
       >
         {selectionVisible && (
-          <DataTableRowSelectorCell<T>
+          <DataTableRowSelectorCell
             record={record}
             recordIndex={recordIndex}
             withRightShadow={leftShadowVisible}
@@ -130,8 +165,6 @@ export default function DataTableRow<T>({
             ellipsis,
             width,
             render,
-            cellsClassName,
-            cellsStyle,
             customCellAttributes,
           } = { ...defaultColumnProps, ...columnProps };
 
@@ -150,18 +183,11 @@ export default function DataTableRow<T>({
           }
 
           return (
-            <DataTableRowCell<T>
+            <DataTableRowCell
               key={accessor}
-              className={
-                typeof cellsClassName === "function"
-                  ? cellsClassName(record, recordIndex)
-                  : cellsClassName
-              }
-              style={
-                typeof cellsStyle === "function"
-                  ? cellsStyle(record, recordIndex)
-                  : cellsStyle
-              }
+              classNames={{
+                root: (classNames as ClassNames)["td"],
+              }}
               visibleMediaQuery={visibleMediaQuery}
               record={record}
               recordIndex={recordIndex}
@@ -191,4 +217,6 @@ export default function DataTableRow<T>({
       )}
     </>
   );
-}
+});
+
+DataTableRow.displayName = "@raikou/DataTableRow";

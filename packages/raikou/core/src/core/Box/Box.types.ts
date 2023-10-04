@@ -1,8 +1,10 @@
 import type { RaikouTheme } from "../RaikouProvider";
 
-type RaikouStyle =
-  | React.CSSProperties
-  | ((theme: RaikouTheme) => React.CSSProperties);
+export interface CSSProperties extends React.CSSProperties {
+  [key: string]: any;
+}
+
+type RaikouStyle = CSSProperties | ((theme: RaikouTheme) => CSSProperties);
 export type RaikouStyleProp =
   | RaikouStyle
   | RaikouStyle[]

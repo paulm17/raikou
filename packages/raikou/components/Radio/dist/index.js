@@ -211,6 +211,7 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
     vars,
     size,
     __staticSelector,
+    __inheritStyles = true,
     variant
   } = _a, others = __objRest(_a, [
     "classNames",
@@ -221,6 +222,7 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
     "vars",
     "size",
     "__staticSelector",
+    "__inheritStyles",
     "variant"
   ]);
   const _getStyles = (0, import_core2.useStyles)({
@@ -239,7 +241,7 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
     varsResolver: varsResolver2
   });
   const ctx = useInputWrapperContext();
-  const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+  const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
   return /* @__PURE__ */ import_react6.default.createElement(
     import_core2.Box,
     __spreadValues(__spreadValues({
@@ -275,6 +277,7 @@ var InputDescription = (0, import_core3.factory)(
       vars,
       size,
       __staticSelector,
+      __inheritStyles = true,
       variant
     } = _a, others = __objRest(_a, [
       "classNames",
@@ -285,6 +288,7 @@ var InputDescription = (0, import_core3.factory)(
       "vars",
       "size",
       "__staticSelector",
+      "__inheritStyles",
       "variant"
     ]);
     const ctx = useInputWrapperContext();
@@ -303,7 +307,7 @@ var InputDescription = (0, import_core3.factory)(
       vars,
       varsResolver: varsResolver3
     });
-    const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+    const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
     return /* @__PURE__ */ import_react7.default.createElement(
       import_core3.Box,
       __spreadValues(__spreadValues({
@@ -797,7 +801,21 @@ var InlineInput = (0, import_react11.forwardRef)(
           htmlFor: id
         }),
         label
-      ), description && /* @__PURE__ */ import_react11.default.createElement(Input.Description, __spreadValues({ size }, getStyles("description")), description), error && error !== "boolean" && /* @__PURE__ */ import_react11.default.createElement(Input.Error, __spreadValues({ size }, getStyles("error")), error)))
+      ), description && /* @__PURE__ */ import_react11.default.createElement(
+        Input.Description,
+        __spreadValues({
+          size,
+          __inheritStyles: false
+        }, getStyles("description")),
+        description
+      ), error && error !== "boolean" && /* @__PURE__ */ import_react11.default.createElement(
+        Input.Error,
+        __spreadValues({
+          size,
+          __inheritStyles: false
+        }, getStyles("error")),
+        error
+      )))
     );
   }
 );

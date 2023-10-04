@@ -180,7 +180,7 @@ declare const ModalBaseTitle: React.ForwardRefExoticComponent<ModalBaseTitleProp
 interface NativeScrollAreaProps {
     children: React.ReactNode;
 }
-declare function NativeScrollArea({ children }: NativeScrollAreaProps): JSX.Element;
+declare function NativeScrollArea({ children }: NativeScrollAreaProps): React.JSX.Element;
 
 type ModalBaseStylesNames = 'body' | 'header' | 'title' | 'overlay' | 'root' | 'content' | 'close' | 'inner';
 

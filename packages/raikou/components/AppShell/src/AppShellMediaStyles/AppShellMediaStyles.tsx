@@ -28,5 +28,6 @@ export function AppShellMediaStyles({
     padding,
     theme,
   });
+
   return <InlineStyles media={media} styles={baseStyles} selector=":root" />;
 }

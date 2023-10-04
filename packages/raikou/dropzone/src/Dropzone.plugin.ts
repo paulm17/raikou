@@ -66,11 +66,11 @@ module.exports = function ({ addComponents }: any) {
     },
 
     ".dropZone-inner": {
-      pointerEvents: "var(--_dropzone-inner-pointer-events, all)",
+      pointerEvents: "var(--_dropzone-inner-pointer-events, none)",
       userSelect: "none",
 
       "&[data-disable-pointer-events]": {
-        "--_dropzone-inner-pointer-events": "none",
+        "--_dropzone-inner-pointer-events": "all",
       },
     },
 

@@ -53,6 +53,8 @@ interface PinInputProps extends BoxProps, StylesApiProps<PinInputFactory>, Eleme
     inputMode?: "none" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | "search" | undefined;
     /** `aria-label` for the inputs */
     ariaLabel?: string;
+    /** Props passed down to the hidden input */
+    hiddenInputProps?: React.ComponentPropsWithoutRef<"input">;
 }
 type PinInputFactory = Factory<{
     props: PinInputProps;

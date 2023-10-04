@@ -283,30 +283,39 @@ var Spoiler = (0, import_core3.factory)((_props, ref) => {
   const { ref: contentRef, height } = (0, import_hooks.useElementSize)();
   const spoiler = maxHeight < height;
   const spoilerMoreContent = show ? hideLabel : showLabel;
-  return /* @__PURE__ */ import_react3.default.createElement(import_core3.Box, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { id: _id, ref }), others), spoiler && /* @__PURE__ */ import_react3.default.createElement(
-    Anchor,
-    __spreadValues({
-      component: "button",
-      type: "button",
-      ref: controlRef,
-      onClick: () => setShowState((opened) => !opened),
-      "aria-expanded": show,
-      "aria-controls": regionId
-    }, getStyles("control")),
-    spoilerMoreContent
-  ), /* @__PURE__ */ import_react3.default.createElement(
-    "div",
-    __spreadProps(__spreadValues({}, getStyles("content", {
-      style: {
-        maxHeight: !show ? (0, import_core3.rem)(maxHeight) : height ? (0, import_core3.rem)(height) : void 0
-      }
-    })), {
-      "data-reduce-motion": true,
-      role: "region",
-      id: regionId
-    }),
-    /* @__PURE__ */ import_react3.default.createElement("div", { ref: contentRef }, children)
-  ));
+  return /* @__PURE__ */ import_react3.default.createElement(
+    import_core3.Box,
+    __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
+      id: _id,
+      ref,
+      "data-has-spoiler": spoiler || void 0
+    }), others),
+    spoiler && /* @__PURE__ */ import_react3.default.createElement(
+      Anchor,
+      __spreadValues({
+        component: "button",
+        type: "button",
+        ref: controlRef,
+        onClick: () => setShowState((opened) => !opened),
+        "aria-expanded": show,
+        "aria-controls": regionId
+      }, getStyles("control")),
+      spoilerMoreContent
+    ),
+    /* @__PURE__ */ import_react3.default.createElement(
+      "div",
+      __spreadProps(__spreadValues({}, getStyles("content", {
+        style: {
+          maxHeight: !show ? (0, import_core3.rem)(maxHeight) : height ? (0, import_core3.rem)(height) : void 0
+        }
+      })), {
+        "data-reduce-motion": true,
+        role: "region",
+        id: regionId
+      }),
+      /* @__PURE__ */ import_react3.default.createElement("div", { ref: contentRef }, children)
+    )
+  );
 });
 Spoiler.displayName = "@raikou/core/Spoiler";
 // Annotate the CommonJS export names for ESM import in node:

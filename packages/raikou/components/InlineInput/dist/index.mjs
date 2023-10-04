@@ -202,6 +202,7 @@ var InputError = factory2((_props, ref) => {
     vars,
     size,
     __staticSelector,
+    __inheritStyles = true,
     variant
   } = _a, others = __objRest(_a, [
     "classNames",
@@ -212,6 +213,7 @@ var InputError = factory2((_props, ref) => {
     "vars",
     "size",
     "__staticSelector",
+    "__inheritStyles",
     "variant"
   ]);
   const _getStyles = useStyles2({
@@ -230,7 +232,7 @@ var InputError = factory2((_props, ref) => {
     varsResolver: varsResolver2
   });
   const ctx = useInputWrapperContext();
-  const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+  const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
   return /* @__PURE__ */ React4.createElement(
     Box2,
     __spreadValues(__spreadValues({
@@ -274,6 +276,7 @@ var InputDescription = factory3(
       vars,
       size,
       __staticSelector,
+      __inheritStyles = true,
       variant
     } = _a, others = __objRest(_a, [
       "classNames",
@@ -284,6 +287,7 @@ var InputDescription = factory3(
       "vars",
       "size",
       "__staticSelector",
+      "__inheritStyles",
       "variant"
     ]);
     const ctx = useInputWrapperContext();
@@ -302,7 +306,7 @@ var InputDescription = factory3(
       vars,
       varsResolver: varsResolver3
     });
-    const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+    const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
     return /* @__PURE__ */ React5.createElement(
       Box3,
       __spreadValues(__spreadValues({
@@ -424,12 +428,12 @@ import { useRef as useRef20, useEffect as useEffect28 } from "react";
 import { useState as useState27, useCallback as useCallback12 } from "react";
 import { useRef as useRef21, useState as useState28, useEffect as useEffect29 } from "react";
 import { useState as useState29, useEffect as useEffect30, useCallback as useCallback13 } from "react";
-import { useRef as useRef22, useEffect as useEffect31 } from "react";
+import { useRef as useRef22, useEffect as useEffect31, useCallback as useCallback14 } from "react";
 import { useState as useState30, useEffect as useEffect32 } from "react";
 import { useEffect as useEffect33, useRef as useRef23 } from "react";
 import { useRef as useRef24 } from "react";
 import { useRef as useRef25 } from "react";
-import { useCallback as useCallback14, useState as useState31 } from "react";
+import { useCallback as useCallback15, useState as useState31 } from "react";
 function randomId() {
   return `raikou-${Math.random().toString(36).slice(2, 11)}`;
 }
@@ -889,7 +893,21 @@ var InlineInput = forwardRef(
           htmlFor: id
         }),
         label
-      ), description && /* @__PURE__ */ React10.createElement(Input.Description, __spreadValues({ size }, getStyles("description")), description), error && error !== "boolean" && /* @__PURE__ */ React10.createElement(Input.Error, __spreadValues({ size }, getStyles("error")), error)))
+      ), description && /* @__PURE__ */ React10.createElement(
+        Input.Description,
+        __spreadValues({
+          size,
+          __inheritStyles: false
+        }, getStyles("description")),
+        description
+      ), error && error !== "boolean" && /* @__PURE__ */ React10.createElement(
+        Input.Error,
+        __spreadValues({
+          size,
+          __inheritStyles: false
+        }, getStyles("error")),
+        error
+      )))
     );
   }
 );

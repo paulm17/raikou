@@ -29,14 +29,18 @@ declare const Image: (<C = "img">(props: C extends React.ElementType<any> ? Imag
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, keyof ImageProps | "component"> & {
     ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : ImageProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 }) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(ImageProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, keyof ImageProps | "component"> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (ImageProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & _raikou_core.ThemeExtend<{
     props: ImageProps;
     defaultRef: HTMLImageElement;

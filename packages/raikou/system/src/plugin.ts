@@ -3,7 +3,7 @@ module.exports = {
     preflight: false,
   },
   darkMode: ["class", '[data-raikou-color-scheme="dark"]'],
-  preset: [require("../../data-table/src/preset")],
+  presets: [require("../../data-table/src/preset")],
   plugins: [
     require("../src/core/RaikouProvider/global.plugin"),
     require("../src/core/RaikouProvider/css-variables.plugin"),

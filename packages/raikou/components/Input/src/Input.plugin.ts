@@ -54,6 +54,12 @@ module.exports = function ({ addComponents, theme }: any) {
       },
 
       "&[data-multiline]": {
+        "--input-padding-y-xs": rem("4.5px"),
+        "--input-padding-y-sm": rem("5.5px"),
+        "--input-padding-y-md": rem("7px"),
+        "--input-padding-y-lg": rem("9.5px"),
+        "--input-padding-y-xl": rem("13px"),
+
         "--_input-size": "auto",
         "--_input-line-height": "var(--raikou-line-height)",
         "--input-padding-y": "var(--input-padding-y-sm)",

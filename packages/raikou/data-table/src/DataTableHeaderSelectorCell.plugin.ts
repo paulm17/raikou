@@ -1,13 +1,13 @@
 module.exports = function ({ addComponents }: any) {
   addComponents({
-    ".dataTableHeaderSelectorCell-root": {
+    ".dtHeaderSelectorCell-root": {
       "--shadow-gradient-alpha": "0.05",
       position: "sticky",
       width: "0",
       left: "0",
       background: "inherit",
     },
-    ".dataTableHeaderSelectorCell-root:after": {
+    ".dtHeaderSelectorCell-root::after": {
       content: '""',
       position: "absolute",
       top: "0",
@@ -21,10 +21,10 @@ module.exports = function ({ addComponents }: any) {
         "1px solid var(--raikou-datatable-header-selectorcell-border-left)",
       background: "var(--raikou-datatable-header-selectorcell-background)",
     },
-    ".dataTableHeaderSelectorCell-shadowVisible:after": {
+    ".dtHeaderSelectorCell-shadowVisible::after": {
       opacity: "1",
     },
-    ".dataTableHeaderSelectorCell-checkboxInput": {
+    ".dtHeaderSelectorCell-checkboxInput": {
       cursor: "pointer",
     },
   });

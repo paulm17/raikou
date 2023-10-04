@@ -29,14 +29,18 @@ declare const ColorSwatch: (<C = "div">(props: C extends React.ElementType<any> 
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, keyof ColorSwatchProps | "component"> & {
     ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : ColorSwatchProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 }) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(ColorSwatchProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, keyof ColorSwatchProps | "component"> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (ColorSwatchProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & _raikou_core.ThemeExtend<{
     props: ColorSwatchProps;
     defaultRef: HTMLDivElement;

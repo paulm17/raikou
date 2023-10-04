@@ -1,7 +1,6 @@
 # build client
 pnpm --filter @raikou/accordion run build
 pnpm --filter @raikou/alert run build
-pnpm --filter @raikou/appshell run build
 pnpm --filter @raikou/autocomplete run build
 pnpm --filter @raikou/avatar run build
 pnpm --filter @raikou/checkbox run build

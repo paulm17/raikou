@@ -1,6 +1,6 @@
 {
   "name": "@raikou/code-highlight",
-  "version": "0.0.1-beta.6",
+  "version": "0.0.1-beta.7",
   "main": "index.js",
   "types": "./dist/index.d.ts",
   "exports": {

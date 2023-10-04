@@ -168,6 +168,7 @@ function RatingItem(_a) {
   const ctx = useRatingContext();
   const _fullIcon = typeof fullIcon === "function" ? fullIcon(value) : fullIcon;
   const _emptyIcon = typeof emptyIcon === "function" ? emptyIcon(value) : emptyIcon;
+  const { dir } = (0, import_core.useDirection)();
   return /* @__PURE__ */ import_react7.default.createElement(import_react7.default.Fragment, null, !readOnly && /* @__PURE__ */ import_react7.default.createElement(
     "input",
     __spreadValues(__spreadProps(__spreadValues({}, ctx.getStyles("input")), {
@@ -195,7 +196,7 @@ function RatingItem(_a) {
       import_core.Box,
       __spreadProps(__spreadValues({}, ctx.getStyles("symbolBody")), {
         __vars: {
-          "--rating-symbol-clip-path": fractionValue === 1 ? void 0 : `inset(0 ${active ? 100 - fractionValue * 100 : 100}% 0 0)`
+          "--rating-symbol-clip-path": fractionValue === 1 ? void 0 : dir === "ltr" ? `inset(0 ${active ? 100 - fractionValue * 100 : 100}% 0 0)` : `inset(0 0 0 ${active ? 100 - fractionValue * 100 : 100}% )`
         }
       }),
       full ? _fullIcon || /* @__PURE__ */ import_react7.default.createElement(StarSymbol, { type: "full" }) : _emptyIcon || /* @__PURE__ */ import_react7.default.createElement(StarSymbol, { type: "empty" })

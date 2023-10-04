@@ -700,7 +700,7 @@ var AppShell = factory6((_props, ref) => {
     varsResolver
   });
   useStore.setState({ getStyles, withBorder, zIndex, disabled });
-  return /* @__PURE__ */ React8.createElement(React8.Fragment, null, /* @__PURE__ */ React8.createElement(
+  return /* @__PURE__ */ React8.createElement(React8.Fragment, null, /* @__PURE__ */ React8.createElement("div", { id: "appshell-style" }, /* @__PURE__ */ React8.createElement(
     AppShellMediaStyles,
     {
       navbar,
@@ -709,7 +709,7 @@ var AppShell = factory6((_props, ref) => {
       footer,
       padding
     }
-  ), /* @__PURE__ */ React8.createElement(
+  )), /* @__PURE__ */ React8.createElement(
     Box7,
     __spreadValues(__spreadProps(__spreadValues({
       ref
@@ -725,6 +725,39 @@ AppShell.Main = AppShellMain;
 AppShell.Aside = AppShellAside;
 AppShell.Footer = AppShellFooter;
 AppShell.Section = AppShellSection;
+
+// src/AppShellFuncs/createAppShellMediaStyles.ts
+import { stylesToString, useRaikouTheme as useRaikouTheme2 } from "@raikou/core";
+function CreateAppShellMediaStyles({
+  navbar,
+  header,
+  aside,
+  footer,
+  padding
+}) {
+  const theme = useRaikouTheme2();
+  const { media, baseStyles } = getVariables({
+    navbar,
+    header,
+    footer,
+    aside,
+    padding,
+    theme
+  });
+  var elem = document.querySelector(
+    "#appshell-style style[data-raikou-styles]"
+  );
+  elem == null ? void 0 : elem.remove();
+  var newElem = document.createElement("style");
+  newElem.setAttribute("data-raikou-styles", "inline");
+  newElem.innerHTML = stylesToString({
+    selector: ":root",
+    styles: baseStyles,
+    media
+  });
+  document.querySelector("#appshell-style").append(newElem);
+  return null;
+}
 export {
   AppShell,
   AppShellAside,
@@ -732,5 +765,6 @@ export {
   AppShellHeader,
   AppShellMain,
   AppShellNavbar,
-  AppShellSection
+  AppShellSection,
+  CreateAppShellMediaStyles
 };

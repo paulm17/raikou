@@ -103,7 +103,7 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
-// ../../../../node_modules/.pnpm/react-textarea-autosize@8.5.2_@types+react@18.2.5_react@18.2.0/node_modules/react-textarea-autosize/dist/react-textarea-autosize.esm.js
+// ../../../../node_modules/.pnpm/react-textarea-autosize@8.5.2_@types+react@18.2.23_react@18.2.0/node_modules/react-textarea-autosize/dist/react-textarea-autosize.esm.js
 var React = __toESM(require("react"));
 
 // ../../../../node_modules/.pnpm/use-composed-ref@1.3.0_react@18.2.0/node_modules/use-composed-ref/dist/use-composed-ref.esm.js
@@ -131,7 +131,7 @@ var useComposedRef = function useComposedRef2(libRef, userRef) {
 };
 var use_composed_ref_esm_default = useComposedRef;
 
-// ../../../../node_modules/.pnpm/react-textarea-autosize@8.5.2_@types+react@18.2.5_react@18.2.0/node_modules/react-textarea-autosize/dist/react-textarea-autosize.esm.js
+// ../../../../node_modules/.pnpm/react-textarea-autosize@8.5.2_@types+react@18.2.23_react@18.2.0/node_modules/react-textarea-autosize/dist/react-textarea-autosize.esm.js
 var noop = function noop2() {
 };
 var _excluded = ["cacheMeasurements", "maxRows", "minRows", "onChange", "onHeightChange"];
@@ -298,6 +298,7 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
     vars,
     size,
     __staticSelector,
+    __inheritStyles = true,
     variant
   } = _a, others = __objRest(_a, [
     "classNames",
@@ -308,6 +309,7 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
     "vars",
     "size",
     "__staticSelector",
+    "__inheritStyles",
     "variant"
   ]);
   const _getStyles = (0, import_core2.useStyles)({
@@ -326,7 +328,7 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
     varsResolver: varsResolver2
   });
   const ctx = useInputWrapperContext();
-  const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+  const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
   return /* @__PURE__ */ import_react7.default.createElement(
     import_core2.Box,
     __spreadValues(__spreadValues({
@@ -362,6 +364,7 @@ var InputDescription = (0, import_core3.factory)(
       vars,
       size,
       __staticSelector,
+      __inheritStyles = true,
       variant
     } = _a, others = __objRest(_a, [
       "classNames",
@@ -372,6 +375,7 @@ var InputDescription = (0, import_core3.factory)(
       "vars",
       "size",
       "__staticSelector",
+      "__inheritStyles",
       "variant"
     ]);
     const ctx = useInputWrapperContext();
@@ -390,7 +394,7 @@ var InputDescription = (0, import_core3.factory)(
       vars,
       varsResolver: varsResolver3
     });
-    const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+    const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
     return /* @__PURE__ */ import_react8.default.createElement(
       import_core3.Box,
       __spreadValues(__spreadValues({

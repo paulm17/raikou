@@ -27,7 +27,7 @@ import { DropzoneProvider } from "./Dropzone.context";
 import { DropzoneAccept, DropzoneIdle, DropzoneReject } from "./DropzoneStatus";
 import type { DropzoneFullScreenType } from "./DropzoneFullScreen";
 
-export type DropzoneStylesNames = "root" | "inner";
+export type DropzoneStylesNames = "root" | "inner" | "fullScreen";
 export type DropzoneVariant = "filled" | "light";
 export type DropzoneCssVariables = {
   root:
@@ -127,6 +127,9 @@ export interface DropzoneProps
 
   /** Custom validation function. It must return null if there's no errors. */
   validator?: <T extends File>(file: T) => FileError | FileError[] | null;
+
+  /** Determines whether pointer events should be enabled on the inner element, `false` by default */
+  enablePointerEvents?: boolean;
 }
 
 export type DropzoneFactory = Factory<{
@@ -220,6 +223,7 @@ export const Dropzone = factory<DropzoneFactory>((_props, ref) => {
     validator,
     rejectColor,
     acceptColor,
+    enablePointerEvents,
     ...others
   } = props;
 
@@ -296,7 +300,7 @@ export const Dropzone = factory<DropzoneFactory>((_props, ref) => {
         <input {...getInputProps()} name={name} />
         <div
           {...getStyles("inner")}
-          data-disable-pointer-events={!activateOnClick || undefined}
+          data-enable-pointer-events={enablePointerEvents || undefined}
         >
           {children}
         </div>

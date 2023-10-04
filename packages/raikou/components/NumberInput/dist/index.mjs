@@ -269,6 +269,7 @@ var InputError = factory2((_props, ref) => {
     vars,
     size,
     __staticSelector,
+    __inheritStyles = true,
     variant
   } = _a, others = __objRest(_a, [
     "classNames",
@@ -279,6 +280,7 @@ var InputError = factory2((_props, ref) => {
     "vars",
     "size",
     "__staticSelector",
+    "__inheritStyles",
     "variant"
   ]);
   const _getStyles = useStyles3({
@@ -297,7 +299,7 @@ var InputError = factory2((_props, ref) => {
     varsResolver: varsResolver2
   });
   const ctx = useInputWrapperContext();
-  const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+  const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
   return /* @__PURE__ */ React5.createElement(
     Box3,
     __spreadValues(__spreadValues({
@@ -341,6 +343,7 @@ var InputDescription = factory3(
       vars,
       size,
       __staticSelector,
+      __inheritStyles = true,
       variant
     } = _a, others = __objRest(_a, [
       "classNames",
@@ -351,6 +354,7 @@ var InputDescription = factory3(
       "vars",
       "size",
       "__staticSelector",
+      "__inheritStyles",
       "variant"
     ]);
     const ctx = useInputWrapperContext();
@@ -369,7 +373,7 @@ var InputDescription = factory3(
       vars,
       varsResolver: varsResolver3
     });
-    const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+    const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
     return /* @__PURE__ */ React6.createElement(
       Box4,
       __spreadValues(__spreadValues({
@@ -1061,7 +1065,7 @@ var NumberInput = factory6((_props, ref) => {
   });
   const handleValueChange = (payload, event) => {
     setValue(
-      isValidNumber(payload.floatValue) ? payload.floatValue : payload.value
+      typeof _value === "number" && isValidNumber(payload.floatValue) ? payload.floatValue : payload.value
     );
     onValueChange == null ? void 0 : onValueChange(payload, event);
   };

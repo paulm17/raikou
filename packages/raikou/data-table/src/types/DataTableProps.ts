@@ -1,35 +1,58 @@
-import type { DefaultProps, MantineShadow, MantineTheme, ScrollAreaProps, Sx, TableProps } from '@mantine/core';
-import type { CSSProperties, Key, MouseEvent, ReactNode, RefObject } from 'react';
 import type {
-  DataTableCellClickHandler,
-  DataTableContextMenuProps,
-  DataTableDefaultColumnProps,
-  DataTableEmptyStateProps,
-  DataTableOuterBorderProps,
-  DataTablePaginationProps,
-  DataTableRowExpansionProps,
-  DataTableSelectionProps,
-  DataTableSortProps,
+  CSSProperties,
+  Key,
+  MouseEvent,
+  ReactNode,
+  RefObject,
+} from "react";
+import {
+  BoxProps,
+  ElementProps,
+  RaikouShadow,
+  RaikouSize,
+  RaikouTheme,
+  StylesApiProps,
+} from "@raikou/core";
+import { ScrollAreaProps } from "../../../components/ScrollArea/src";
+import type { TableProps } from "../../../components/Table/src";
+import { DataTableFactory } from "../DataTable";
+import {
   DataTableVerticalAlignment,
-} from './';
-import type { DataTableColumnProps } from './DataTableColumnProps';
-import type { DataTableLoaderProps } from './DataTableLoaderProps';
+  DataTableContextMenuProps,
+  DataTableRowExpansionProps,
+  DataTableCellClickHandler,
+  DataTableDefaultColumnProps,
+  DataTableOuterBorderProps,
+  _DataTablePaginationProps,
+  DataTableSortProps,
+  DataTableSelectionProps,
+} from "./";
+import { DataTableEmptyStateProps } from "./DataTableEmptyStateProps";
+import { DataTableColumnProps } from "./DataTableColumnProps";
+import { DataTableLoaderProps } from "./DataTableLoaderProps";
 
-export type DataTableProps<T> = {
+export interface _DataTableProps
+  extends BoxProps,
+    StylesApiProps<DataTableFactory>,
+    ElementProps<"div">,
+    Pick<
+      TableProps,
+      "striped" | "highlightOnHover" | "horizontalSpacing" | "verticalSpacing"
+    > {
   /**
    * Table height; defaults to `100%`
    */
-  height?: string | number;
+  height?: RaikouSize;
 
   /**
    * Minimum table height
    */
-  minHeight?: string | number;
+  minHeight?: RaikouSize;
 
   /**
    * `DataTable` component shadow
    */
-  shadow?: MantineShadow;
+  shadow?: RaikouShadow;
 
   /**
    * If true, columns will have vertical borders
@@ -41,13 +64,13 @@ export type DataTableProps<T> = {
    * footer top border; defaults to
    * `(theme) => (theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3])`
    */
-  borderColor?: string | ((theme: MantineTheme) => string);
+  borderColor?: string | ((theme: RaikouTheme) => string);
 
   /**
    * Row border color; defaults to
    * `(theme) => (theme.fn.rgba(theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3], 0.65))`
    */
-  rowBorderColor?: string | ((theme: MantineTheme) => string);
+  rowBorderColor?: string | ((theme: RaikouTheme) => string);
 
   /**
    * If true, the user will not be able to select text
@@ -67,13 +90,17 @@ export type DataTableProps<T> = {
   /**
    * Default column props; will be merged with column props provided to each column
    */
-  defaultColumnProps?: DataTableDefaultColumnProps<T>;
+  defaultColumnProps?: DataTableDefaultColumnProps;
 
   /**
    * A default render function for all columns; accepts the current record, its index in `records`
    * and the column accessor
    */
-  defaultColumnRender?: (record: T, index: number, accesor: string) => ReactNode;
+  defaultColumnRender?: (
+    record: any,
+    index: number,
+    accesor: string,
+  ) => ReactNode;
 
   /**
    * Accessor to use as unique record key; can be a string representing a property name
@@ -82,12 +109,12 @@ export type DataTableProps<T> = {
    * (i.e. `department.name` or `department.company.name`);
    * defaults to `id`
    */
-  idAccessor?: string | ((record: T) => Key);
+  idAccessor?: string | ((record: any) => Key);
 
   /**
    * Visible records; the `DataTable` component will try to infer its row type from here
    */
-  records?: T[];
+  records?: any[];
 
   /**
    * Text to show on empty state and pagination footer when no records are available
@@ -102,12 +129,12 @@ export type DataTableProps<T> = {
   /**
    * Function to call when a row cell is clicked
    */
-  onCellClick?: DataTableCellClickHandler<T>;
+  onCellClick?: DataTableCellClickHandler;
 
   /**
    * Function to call when a row is clicked, receiving the current record, its index in `records` and the click event
    */
-  onRowClick?: (record: T, recordIndex: number, event: MouseEvent) => void;
+  onRowClick?: (record: any, recordIndex: number, event: MouseEvent) => void;
 
   /**
    * Function to call when the DataTable is scrolled to top
@@ -132,36 +159,43 @@ export type DataTableProps<T> = {
   /**
    * Defines a context-menu to show when user right-clicks or clicks on a row
    */
-  rowContextMenu?: DataTableContextMenuProps<T>;
+  rowContextMenu?: DataTableContextMenuProps<any>;
 
   /**
    * Defines the row expansion behavior
    */
-  rowExpansion?: DataTableRowExpansionProps<T>;
+  rowExpansion?: DataTableRowExpansionProps<any>;
 
   /**
    * Optional class name passed to each row; can be a string or a function
    * receiving the current record and its index as arguments and returning a string
    */
-  rowClassName?: string | ((record: T, recordIndex: number) => string | undefined);
+  rowClassName?:
+    | string
+    | ((record: any, recordIndex: number) => string | undefined);
 
   /**
    * Optional style passed to each row; can be a CSS properties object or
    * a function receiving the current record and its index as arguments and returning a CSS properties object
    */
-  rowStyle?: CSSProperties | ((record: T, recordIndex: number) => CSSProperties | undefined);
+  rowStyle?:
+    | CSSProperties
+    | ((record: any, recordIndex: number) => CSSProperties | undefined);
 
   /**
    * Optional style passed to each row; see https://mantine.dev/styles/sx/
    */
-  rowSx?: Sx;
+  // rowSx?: Sx;
 
   /**
    * Optional function returning an object of custom attributes to be applied to each row in the table.
    * Receives the current record and its index as arguments.
    * Useful for adding data attributes, handling middle-clicks, etc.
    */
-  customRowAttributes?: (record: T, recordIndex: number) => Record<string, unknown>;
+  customRowAttributes?: (
+    record: any,
+    recordIndex: number,
+  ) => Record<string, unknown>;
 
   /**
    * Ref pointing to the scrollable viewport element; useful for imperative scrolling
@@ -171,20 +205,23 @@ export type DataTableProps<T> = {
   /**
    * Additional props passed to the underlying `ScrollArea` element
    */
-  scrollAreaProps?: Omit<ScrollAreaProps, 'classNames' | 'styles' | 'onScrollPositionChange'>;
+  scrollAreaProps?: Omit<
+    ScrollAreaProps,
+    "classNames" | "styles" | "onScrollPositionChange"
+  >;
   /**
    * Ref pointing to the table body element
    */
-  bodyRef?: ((instance: HTMLTableSectionElement | null) => void) | RefObject<HTMLTableSectionElement>;
-} & Pick<TableProps, 'striped' | 'highlightOnHover' | 'horizontalSpacing' | 'verticalSpacing' | 'fontSize'> &
-  Omit<
-    DefaultProps<'root' | 'header' | 'footer' | 'pagination', CSSProperties>,
-    'unstyled' | 'p' | 'px' | 'py' | 'pt' | 'pb' | 'pl' | 'pr'
-  > &
-  DataTableColumnProps<T> &
+  bodyRef?:
+    | ((instance: HTMLTableSectionElement | null) => void)
+    | RefObject<HTMLTableSectionElement>;
+}
+
+export type DataTableProps = _DataTableProps &
+  DataTableColumnProps &
   DataTableOuterBorderProps &
   DataTableLoaderProps &
   DataTableEmptyStateProps &
-  DataTablePaginationProps &
+  _DataTablePaginationProps &
   DataTableSortProps &
-  DataTableSelectionProps<T>;
+  DataTableSelectionProps;

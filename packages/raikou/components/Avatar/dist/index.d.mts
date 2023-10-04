@@ -64,14 +64,18 @@ declare const Avatar: (<C = "div">(props: C extends React.ElementType<any> ? Ava
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, "component" | keyof AvatarProps> & {
     ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : AvatarProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 }) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(AvatarProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, "component" | keyof AvatarProps> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (AvatarProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & _raikou_core.ThemeExtend<{
     props: AvatarProps;
     defaultRef: HTMLDivElement;

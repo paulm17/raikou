@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { flushSync } from "react-dom";
 import { useDidUpdate, mergeRefs } from "@raikou/hooks";
+import { CSSProperties } from "../../Box/src";
 
 function getAutoHeightDuration(height: number | string) {
   if (!height || typeof height === "string") {
@@ -11,7 +12,7 @@ function getAutoHeightDuration(height: number | string) {
 }
 
 export function getElementHeight(
-  el: React.RefObject<HTMLElement> | { current?: { scrollHeight: number } }
+  el: React.RefObject<HTMLElement> | { current?: { scrollHeight: number } },
 ) {
   return el?.current ? el.current.scrollHeight : "auto";
 }
@@ -27,7 +28,7 @@ interface UseCollapse {
 
 interface GetCollapseProps {
   [key: string]: unknown;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
   onTransitionEnd?: (e: TransitionEvent) => void;
   refKey?: string;
   ref?: React.ForwardedRef<HTMLDivElement>;
@@ -46,8 +47,8 @@ export function useCollapse({
     height: 0,
     overflow: "hidden",
   };
-  const [styles, setStylesRaw] = useState<React.CSSProperties>(
-    opened ? {} : collapsedStyles
+  const [styles, setStylesRaw] = useState<CSSProperties>(
+    opened ? {} : collapsedStyles,
   );
   const setStyles = (newStyles: {} | ((oldStyles: {}) => {})): void => {
     flushSync(() => setStylesRaw(newStyles));
@@ -89,7 +90,7 @@ export function useCollapse({
             height,
           });
           raf(() =>
-            mergeStyles({ height: collapsedHeight, overflow: "hidden" })
+            mergeStyles({ height: collapsedHeight, overflow: "hidden" }),
           );
         });
       }

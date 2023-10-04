@@ -14,7 +14,7 @@ interface ChipGroupProps<T extends boolean = false> {
     /** <Chip /> components */
     children?: React.ReactNode;
 }
-declare function ChipGroup<T extends boolean>(props: ChipGroupProps<T>): JSX.Element;
+declare function ChipGroup<T extends boolean>(props: ChipGroupProps<T>): React.JSX.Element;
 declare namespace ChipGroup {
     var displayName: string;
 }

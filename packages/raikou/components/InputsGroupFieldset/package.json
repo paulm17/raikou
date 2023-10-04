@@ -1,6 +1,6 @@
 {
   "name": "@raikou/input-group-fieldset",
-  "version": "0.0.1-beta.6",
+  "version": "0.0.1-beta.7",
   "main": "index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -36,7 +36,7 @@
     "tslib": "^2.6.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.0",
+    "@types/react": "^18.2.23",
     "@types/node": "^20.3.3",
     "clean-package": "2.2.0",
     "tsup": "^7.1.0",

@@ -1,4 +1,4 @@
-import type { MantineNumberSize } from '@mantine/core';
+import type { RaikouSize } from "@raikou/core";
 
 export type DataTableOuterBorderProps =
   | {
@@ -14,5 +14,5 @@ export type DataTableOuterBorderProps =
       /**
        * Table border radius
        */
-      borderRadius?: MantineNumberSize;
+      borderRadius?: RaikouSize;
     };

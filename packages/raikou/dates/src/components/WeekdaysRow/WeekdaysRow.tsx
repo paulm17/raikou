@@ -81,6 +81,7 @@ export const WeekdaysRow = factory<WeekdaysRowFactory>((_props, ref) => {
     name: __staticSelector || "WeekdaysRow",
     classes: {
       weekday: "dates-weekday",
+      weekdaysRow: "",
     },
     props,
     className,

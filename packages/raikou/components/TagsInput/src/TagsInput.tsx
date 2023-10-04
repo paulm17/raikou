@@ -76,6 +76,9 @@ export interface TagsInputProps
   /** Props passed down to the clear button */
   clearButtonProps?: __CloseButtonProps & ElementProps<"button">;
 
+  /** Props passed down to the hidden input */
+  hiddenInputProps?: React.ComponentPropsWithoutRef<"input">;
+
   /** Tags container component, defaults to `React.Fragment` */
   tagsContainer?(children: React.ReactNode): React.ReactNode;
 }
@@ -157,6 +160,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     id,
     clearable,
     clearButtonProps,
+    hiddenInputProps,
     tagsContainer,
     ...others
   } = props;
@@ -230,7 +234,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
       event.preventDefault();
     }
 
-    if (event.key === "Enter" && length > 0) {
+    if (event.key === "Enter" && length > 0 && !event.nativeEvent.isComposing) {
       event.preventDefault();
       const isDuplicate = _value.some(
         (tag) => tag.toLowerCase() === inputValue.toLowerCase(),
@@ -244,6 +248,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
         (!isDuplicate || (isDuplicate && allowDuplicates)) &&
         _value.length < maxTags!
       ) {
+        onOptionSubmit?.(inputValue);
         setSearchValue("");
 
         if (inputValue.length > 0) {
@@ -407,6 +412,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
         form={form}
         value={_value.join(",")}
         disabled={disabled}
+        {...hiddenInputProps}
       />
     </>
   );

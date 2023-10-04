@@ -1,21 +1,21 @@
-import React from "react";
+import React, { MouseEventHandler, ReactNode } from "react";
+import {
+  factory,
+  useProps,
+  Factory,
+  BoxProps,
+  StylesApiProps,
+  useStyles,
+} from "@raikou/core";
 import { Box } from "../../components/Box/src";
-import type { CSSProperties, MouseEventHandler, ReactNode } from "react";
-import type { DataTableColumn } from "./types";
 import { getValueAtPath, useMediaQueryStringOrFunction } from "./utils";
+import type { DataTableColumn } from "./types";
 import cx from "clsx";
 
-type DataTableRowCellProps<T> = {
-  className?: string;
-  style?: CSSProperties;
-  record: T;
-  recordIndex: number;
-  defaultRender:
-    | ((record: T, index: number, accessor: string) => ReactNode)
-    | undefined;
-  onClick?: MouseEventHandler<HTMLTableCellElement>;
-} & Pick<
-  DataTableColumn<T>,
+export type DataTableRowCellStylesNames = "root";
+
+type Tablecolumn = Pick<
+  DataTableColumn,
   | "accessor"
   | "visibleMediaQuery"
   | "textAlignment"
@@ -26,34 +26,78 @@ type DataTableRowCellProps<T> = {
   | "customCellAttributes"
 >;
 
-export default function DataTableRowCell<T>({
-  className,
-  style,
-  visibleMediaQuery,
-  record,
-  recordIndex,
-  onClick,
-  noWrap,
-  ellipsis,
-  textAlignment,
-  width,
-  accessor,
-  render,
-  defaultRender,
-  customCellAttributes,
-}: DataTableRowCellProps<T>) {
+export interface DataTableRowCellProps
+  extends BoxProps,
+    StylesApiProps<DataTableRowCellFactory>,
+    Tablecolumn {
+  record: any;
+  recordIndex: number;
+  defaultRender:
+    | ((record: any, index: number, accessor: string) => ReactNode)
+    | undefined;
+  onClick?: MouseEventHandler<HTMLTableCellElement>;
+}
+
+export type DataTableRowCellFactory = Factory<{
+  props: DataTableRowCellProps;
+  ref: HTMLDivElement;
+  defaultRef: HTMLDivElement;
+  defaultComponent: "div";
+  stylesNames: DataTableRowCellStylesNames;
+}>;
+
+const defaultProps: Partial<DataTableRowCellProps> = {};
+
+export const DataTableRowCell = factory<DataTableRowCellFactory>((_props) => {
+  const props = useProps("DataTableRowCell", defaultProps, _props);
+  const {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    visibleMediaQuery,
+    record,
+    recordIndex,
+    onClick,
+    noWrap,
+    ellipsis,
+    textAlignment,
+    width,
+    accessor,
+    render,
+    defaultRender,
+    customCellAttributes,
+    ...others
+  } = props;
+
+  const getStyles = useStyles<DataTableRowCellFactory>({
+    name: "DataTableRowCell",
+    props,
+    classes: {
+      root: "",
+    },
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled,
+    vars,
+    varsResolver: undefined,
+  });
+
   if (!useMediaQueryStringOrFunction(visibleMediaQuery)) return null;
   return (
     <Box
       component="td"
-      className={cx(
-        {
+      {...getStyles("root", {
+        className: cx({
           ["dataTableRowCell-noWrap"]: noWrap || ellipsis,
           ["dataTableRowCell-ellipsis"]: ellipsis,
           ["dataTableRowCell-withPointerCursor"]: onClick,
-        },
-        className,
-      )}
+        }),
+      })}
       style={[
         {
           ...style,
@@ -65,6 +109,7 @@ export default function DataTableRowCell<T>({
       ]}
       onClick={onClick}
       {...customCellAttributes?.(record, recordIndex)}
+      {...others}
     >
       {render
         ? render(record, recordIndex)
@@ -73,4 +118,6 @@ export default function DataTableRowCell<T>({
         : (getValueAtPath(record, accessor) as ReactNode)}
     </Box>
   );
-}
+});
+
+DataTableRowCell.displayName = "@raikou/DataTableRowCell";

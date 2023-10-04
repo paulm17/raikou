@@ -2429,7 +2429,7 @@ var import_core7 = require("@raikou/core");
 function createPortalNode(props) {
   const node = document.createElement("div");
   node.setAttribute("data-portal", "true");
-  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.className === "string" && node.classList.add(...props.className.split(" "));
   typeof props.style === "object" && Object.assign(node.style, props.style);
   typeof props.id === "string" && node.setAttribute("id", props.id);
   return node;
@@ -3683,6 +3683,7 @@ var InputError = (0, import_core18.factory)((_props, ref) => {
     vars,
     size: size2,
     __staticSelector,
+    __inheritStyles = true,
     variant
   } = _a, others = __objRest(_a, [
     "classNames",
@@ -3693,6 +3694,7 @@ var InputError = (0, import_core18.factory)((_props, ref) => {
     "vars",
     "size",
     "__staticSelector",
+    "__inheritStyles",
     "variant"
   ]);
   const _getStyles = (0, import_core18.useStyles)({
@@ -3711,7 +3713,7 @@ var InputError = (0, import_core18.factory)((_props, ref) => {
     varsResolver: varsResolver4
   });
   const ctx = useInputWrapperContext();
-  const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+  const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
   return /* @__PURE__ */ import_react27.default.createElement(
     import_core18.Box,
     __spreadValues(__spreadValues({
@@ -3747,6 +3749,7 @@ var InputDescription = (0, import_core19.factory)(
       vars,
       size: size2,
       __staticSelector,
+      __inheritStyles = true,
       variant
     } = _a, others = __objRest(_a, [
       "classNames",
@@ -3757,6 +3760,7 @@ var InputDescription = (0, import_core19.factory)(
       "vars",
       "size",
       "__staticSelector",
+      "__inheritStyles",
       "variant"
     ]);
     const ctx = useInputWrapperContext();
@@ -3775,7 +3779,7 @@ var InputDescription = (0, import_core19.factory)(
       vars,
       varsResolver: varsResolver5
     });
-    const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+    const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
     return /* @__PURE__ */ import_react28.default.createElement(
       import_core19.Box,
       __spreadValues(__spreadValues({
@@ -6421,6 +6425,7 @@ var TagsInput = (0, import_core45.factory)((_props, ref) => {
     id,
     clearable,
     clearButtonProps,
+    hiddenInputProps,
     tagsContainer
   } = _a, others = __objRest(_a, [
     "classNames",
@@ -6484,6 +6489,7 @@ var TagsInput = (0, import_core45.factory)((_props, ref) => {
     "id",
     "clearable",
     "clearButtonProps",
+    "hiddenInputProps",
     "tagsContainer"
   ]);
   const _id = (0, import_hooks25.useId)(id);
@@ -6544,7 +6550,7 @@ var TagsInput = (0, import_core45.factory)((_props, ref) => {
       setSearchValue("");
       event.preventDefault();
     }
-    if (event.key === "Enter" && length > 0) {
+    if (event.key === "Enter" && length > 0 && !event.nativeEvent.isComposing) {
       event.preventDefault();
       const isDuplicate = _value.some(
         (tag) => tag.toLowerCase() === inputValue.toLowerCase()
@@ -6553,6 +6559,7 @@ var TagsInput = (0, import_core45.factory)((_props, ref) => {
         onDuplicate == null ? void 0 : onDuplicate(inputValue);
       }
       if ((!isDuplicate || isDuplicate && allowDuplicates) && _value.length < maxTags) {
+        onOptionSubmit == null ? void 0 : onOptionSubmit(inputValue);
         setSearchValue("");
         if (inputValue.length > 0) {
           setValue([..._value, inputValue]);
@@ -6692,13 +6699,13 @@ var TagsInput = (0, import_core45.factory)((_props, ref) => {
     )
   ), /* @__PURE__ */ import_react65.default.createElement(
     "input",
-    {
+    __spreadValues({
       type: "hidden",
       name,
       form,
       value: _value.join(","),
       disabled
-    }
+    }, hiddenInputProps)
   ));
 });
 TagsInput.displayName = "@raikou/core/TagsInput";

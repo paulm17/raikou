@@ -37,14 +37,18 @@ declare const Overlay: (<C = "div">(props: C extends React.ElementType<any> ? Ov
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, keyof OverlayProps | "component"> & {
     ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : OverlayProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 }) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(OverlayProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, keyof OverlayProps | "component"> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (OverlayProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & _raikou_core.ThemeExtend<{
     props: OverlayProps;
     defaultRef: HTMLDivElement;

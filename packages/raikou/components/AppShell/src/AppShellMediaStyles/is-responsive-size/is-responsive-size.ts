@@ -1,13 +1,16 @@
-import type { AppShellSize, AppShellResponsiveSize } from '../../AppShell';
+import type {
+  AppShellSize,
+  AppShellResponsiveSize,
+} from "../../AppShell.types";
 
 export function isResponsiveSize(
-  size: AppShellSize | AppShellResponsiveSize | undefined
+  size: AppShellSize | AppShellResponsiveSize | undefined,
 ): size is AppShellResponsiveSize {
-  if (typeof size !== 'object' || size === null) {
+  if (typeof size !== "object" || size === null) {
     return false;
   }
 
-  if (Object.keys(size as object).length === 1 && 'base' in (size as object)) {
+  if (Object.keys(size as object).length === 1 && "base" in (size as object)) {
     return false;
   }
 

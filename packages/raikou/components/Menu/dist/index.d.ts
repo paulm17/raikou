@@ -1,7 +1,6 @@
 import * as _raikou_core from '@raikou/core';
 import { BoxProps, CompoundStylesApiProps, ElementProps, Factory, RaikouColor, PolymorphicFactory, RaikouRadius, RaikouShadow, StylesApiProps } from '@raikou/core';
 import React$1 from 'react';
-import * as types from 'types';
 
 type MenuDividerStylesNames = "divider";
 interface MenuDividerProps extends BoxProps, CompoundStylesApiProps<MenuDividerFactory>, ElementProps<"div"> {
@@ -81,18 +80,22 @@ type MenuItemFactory = PolymorphicFactory<{
     stylesNames: MenuItemStylesNames;
     compound: true;
 }>;
-declare const MenuItem: (<C = "button">(props: C extends types.ElementType<any> ? MenuItemProps & {
+declare const MenuItem: (<C = "button">(props: C extends React$1.ElementType<any> ? MenuItemProps & {
     component?: C | undefined;
-} & Omit<JSX.LibraryManagedAttributes<C, types.PropsWithoutRef<types.ComponentProps<C>>>, "component" | keyof MenuItemProps> & {
-    ref?: (C extends infer T ? T extends C ? T extends types.ElementType<any> ? types.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+} & Omit<JSX.LibraryManagedAttributes<C, React$1.PropsWithoutRef<React$1.ComponentProps<C>>>, "component" | keyof MenuItemProps> & {
+    ref?: (C extends infer T ? T extends C ? T extends React$1.ElementType<any> ? React$1.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : MenuItemProps & {
-    component: types.ElementType<any>;
-}) => React$1.ReactElement<any, string | React$1.JSXElementConstructor<any>>) & Omit<types.FunctionComponent<(MenuItemProps & {
+    component: React$1.ElementType<any>;
+    renderRoot?(props: any): any;
+}) => React$1.ReactElement<any, string | React$1.JSXElementConstructor<any>>) & Omit<React$1.FunctionComponent<(MenuItemProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, "component" | keyof MenuItemProps> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (MenuItemProps & {
-    component: types.ElementType<any>;
+    component: React$1.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & _raikou_core.ThemeExtend<{
     props: MenuItemProps;
     defaultRef: HTMLButtonElement;
@@ -261,18 +264,22 @@ declare namespace Menu {
         stylesNames: MenuStylesNames;
     }>;
     var displayName: string;
-    var Item: (<C = "button">(props: C extends types.ElementType<any> ? MenuItemProps & {
+    var Item: (<C = "button">(props: C extends React$1.ElementType<any> ? MenuItemProps & {
         component?: C | undefined;
-    } & Omit<JSX.LibraryManagedAttributes<C, types.PropsWithoutRef<types.ComponentProps<C>>>, "component" | keyof MenuItemProps> & {
-        ref?: (C extends infer T ? T extends C ? T extends types.ElementType<any> ? types.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    } & Omit<JSX.LibraryManagedAttributes<C, React$1.PropsWithoutRef<React$1.ComponentProps<C>>>, "component" | keyof MenuItemProps> & {
+        ref?: (C extends infer T ? T extends C ? T extends React$1.ElementType<any> ? React$1.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+        renderRoot?(props: any): any;
     } : MenuItemProps & {
-        component: types.ElementType<any>;
-    }) => React$1.ReactElement<any, string | React$1.JSXElementConstructor<any>>) & Omit<types.FunctionComponent<(MenuItemProps & {
+        component: React$1.ElementType<any>;
+        renderRoot?(props: any): any;
+    }) => React$1.ReactElement<any, string | React$1.JSXElementConstructor<any>>) & Omit<React$1.FunctionComponent<(MenuItemProps & {
         component?: any;
     } & Omit<Omit<any, "ref">, "component" | keyof MenuItemProps> & {
         ref?: any;
+        renderRoot?(props: any): any;
     }) | (MenuItemProps & {
-        component: types.ElementType<any>;
+        component: React$1.ElementType<any>;
+        renderRoot?(props: any): any;
     })>, never> & _raikou_core.ThemeExtend<{
         props: MenuItemProps; /** Uncontrolled menu initial opened state */
         defaultRef: HTMLButtonElement;

@@ -3,8 +3,8 @@
   "compilerOptions": {
     "paths": {
       "@raikou/tests": ["../tests/src"],
-      "types": ["../hooks/node_modules/@types/react"]
+      "types": ["../../raikou/core/node_modules/@types/react"]
     }
   },
-  "include": ["src", "index.ts"]
+  "include": ["src", "index.ts", "../../../../configuration/types"]
 }

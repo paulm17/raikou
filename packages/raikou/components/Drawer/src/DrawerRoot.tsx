@@ -8,6 +8,7 @@ import {
   Factory,
   getDefaultZIndex,
   getSize,
+  useDirection,
 } from "@raikou/core";
 import { RaikouTransition } from "../../Transition/src";
 import {
@@ -54,6 +55,13 @@ const transitions: Record<DrawerPosition, RaikouTransition> = {
   right: "slide-left",
 };
 
+const rtlTransitions: Record<DrawerPosition, RaikouTransition> = {
+  top: "slide-down",
+  bottom: "slide-up",
+  right: "slide-right",
+  left: "slide-left",
+};
+
 const defaultProps: Partial<DrawerRootProps> = {
   closeOnClickOutside: true,
   withinPortal: true,
@@ -97,6 +105,8 @@ export const DrawerRoot = factory<DrawerRootFactory>((_props, ref) => {
     ...others
   } = props;
 
+  const { dir } = useDirection();
+
   const getStyles = useStyles<DrawerRootFactory>({
     name: "Drawer",
     classes: {
@@ -119,15 +129,16 @@ export const DrawerRoot = factory<DrawerRootFactory>((_props, ref) => {
     varsResolver,
   });
 
+  const drawerTransition = (dir === "rtl" ? rtlTransitions : transitions)[
+    position!
+  ];
+
   return (
     <DrawerProvider value={{ scrollAreaComponent, getStyles }}>
       <ModalBase
         ref={ref}
         {...getStyles("root")}
-        transitionProps={{
-          transition: transitions[position!],
-          ...transitionProps,
-        }}
+        transitionProps={{ transition: drawerTransition, ...transitionProps }}
         {...others}
       />
     </DrawerProvider>

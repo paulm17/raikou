@@ -35,6 +35,7 @@ type InputErrorCssVariables = {
 };
 interface InputErrorProps extends BoxProps, StylesApiProps<InputErrorFactory>, ElementProps<"div"> {
     __staticSelector?: string;
+    __inheritStyles?: boolean;
     /** Controls error `font-size`, `'sm'` by default */
     size?: RaikouSize | (string & {});
 }
@@ -57,6 +58,7 @@ type InputDescriptionCssVariables = {
 };
 interface InputDescriptionProps extends BoxProps, StylesApiProps<InputDescriptionFactory>, ElementProps<"div"> {
     __staticSelector?: string;
+    __inheritStyles?: boolean;
     /** Controls description `font-size`, `'sm'` by default */
     size?: RaikouSize | (string & {});
 }
@@ -216,14 +218,18 @@ declare const Input: (<C = "input">(props: C extends React__default.ElementType<
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React__default.PropsWithoutRef<React__default.ComponentProps<C>>>, "component" | keyof InputProps> & {
     ref?: (C extends infer T ? T extends C ? T extends React__default.ElementType<any> ? React__default.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : InputProps & {
     component: React__default.ElementType<any>;
+    renderRoot?(props: any): any;
 }) => React__default.ReactElement<any, string | React__default.JSXElementConstructor<any>>) & Omit<React__default.FunctionComponent<(InputProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, "component" | keyof InputProps> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (InputProps & {
     component: React__default.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & _raikou_core.ThemeExtend<{
     props: InputProps;
     defaultRef: HTMLInputElement;

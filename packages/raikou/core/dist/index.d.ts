@@ -1,5 +1,5 @@
 import * as React$1 from 'react';
-import React__default, { CSSProperties } from 'react';
+import React__default, { CSSProperties as CSSProperties$1 } from 'react';
 import { PartialDeep } from 'type-fest';
 
 declare function keys<T extends object, K extends keyof T>(object: T): K[];
@@ -74,7 +74,10 @@ declare function createEventHandler<Event>(parentEventHandler: EventHandler<Even
 
 declare function getPrimaryShade(theme: RaikouTheme, colorScheme: RaikouColorScheme): RaikouColorShade;
 
-type RaikouStyle = React.CSSProperties | ((theme: RaikouTheme) => React.CSSProperties);
+interface CSSProperties extends React.CSSProperties {
+    [key: string]: any;
+}
+type RaikouStyle = CSSProperties | ((theme: RaikouTheme) => CSSProperties);
 type RaikouStyleProp = RaikouStyle | RaikouStyle[] | RaikouStyleProp[] | undefined;
 type CssVariable = `--${string}`;
 type CssVariables<Variable extends string = CssVariable> = Partial<Record<Variable, string>>;
@@ -174,7 +177,7 @@ declare function stylesToString({ selector, styles, media }: InlineStylesInput):
 
 interface InlineStylesProps extends InlineStylesInput, Omit<React__default.ComponentPropsWithoutRef<"style">, keyof InlineStylesInput> {
 }
-declare function InlineStyles({ selector, styles, media }: InlineStylesInput): JSX.Element;
+declare function InlineStyles({ selector, styles, media }: InlineStylesInput): React__default.JSX.Element;
 
 interface SortMediaQueriesResult extends Omit<ParseStylePropsResult, 'media'> {
     media: InlineStylesMediaQuery[];
@@ -204,16 +207,20 @@ type ComponentProp<C> = {
     component?: C;
 };
 type InheritedProps<C extends ElementType, Props = {}> = ExtendedProps<PropsOf<C>, Props>;
-type PolymorphicRef<C> = C extends React__default.ElementType ? React__default.ComponentPropsWithRef<C>['ref'] : never;
+type PolymorphicRef<C> = C extends React__default.ElementType ? React__default.ComponentPropsWithRef<C>["ref"] : never;
 type PolymorphicComponentProps<C, Props = {}> = C extends React__default.ElementType ? InheritedProps<C, Props & ComponentProp<C>> & {
     ref?: PolymorphicRef<C>;
+    renderRoot?(props: any): any;
 } : Props & {
     component: React__default.ElementType;
+    renderRoot?(props: any): any;
 };
 declare function createPolymorphicComponent<ComponentDefaultType, Props, StaticComponents = Record<string, never>>(component: any): (<C = ComponentDefaultType>(props: PolymorphicComponentProps<C, Props>) => React__default.ReactElement) & Omit<React__default.FunctionComponent<(Props & ComponentProp<any> & Omit<Omit<any, "ref">, "component" | keyof Props> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (Props & {
     component: React__default.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & StaticComponents;
 
 type Mod = Record<string, any> | string;
@@ -243,8 +250,10 @@ declare const Box: (<C = "div">(props: PolymorphicComponentProps<C, BoxComponent
     component?: any;
 } & Omit<Omit<any, "ref">, "component" | keyof BoxComponentProps> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (BoxComponentProps & {
     component: React__default.ElementType<any>;
+    renderRoot?(props: any): any; /** Inline style added to root component element, can subscribe to theme defined on RaikouProvider */
 })>, never> & Record<string, never>;
 
 interface ParseThemeColorOptions {
@@ -510,8 +519,10 @@ declare function polymorphicFactory<Payload extends PolymorphicFactoryPayload>(u
     component?: any;
 } & Omit<Omit<any, "ref">, "component" | keyof Payload["props"]> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (Payload["props"] & {
     component: React$1.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & ThemeExtend<Payload> & ComponentClasses<Payload> & StaticComponents<Payload["staticComponents"]>;
 
 type Factory<Payload extends FactoryPayload> = Payload;
@@ -544,7 +555,7 @@ interface GetStylesApiOptions {
     props?: Record<string, any>;
 }
 type StylesApiRecord<Payload extends FactoryPayload, DataType> = Payload["compound"] extends true ? Payload["stylesNames"] extends string ? StylesRecord<Payload["stylesNames"], DataType> : never : Payload["stylesNames"] extends string ? StylesRecord<Payload["stylesNames"], DataType> | ((theme: RaikouTheme, props: Payload["props"], ctx: Payload["ctx"]) => StylesRecord<Payload["stylesNames"], DataType>) : never;
-type Styles<Payload extends FactoryPayload> = StylesApiRecord<Payload, CSSProperties>;
+type Styles<Payload extends FactoryPayload> = StylesApiRecord<Payload, CSSProperties$1>;
 type ClassNames<Payload extends FactoryPayload> = StylesApiRecord<Payload, string>;
 type ClassNamesArray<Payload extends FactoryPayload> = (StylesApiRecord<Payload, string> | undefined)[];
 type StylesRecord<StylesNames extends string, Payload> = Partial<Record<StylesNames, Payload>>;
@@ -569,7 +580,7 @@ interface ResolveClassNamesInput {
 }
 declare function resolveClassNames({ theme, classNames, props, stylesCtx, }: ResolveClassNamesInput): Partial<Record<string, string>>;
 
-type _Styles = undefined | Partial<Record<string, CSSProperties>> | ((theme: RaikouTheme, props: Record<string, any>, ctx: Record<string, any> | undefined) => Partial<Record<string, CSSProperties>>);
+type _Styles = undefined | Partial<Record<string, CSSProperties$1>> | ((theme: RaikouTheme, props: Record<string, any>, ctx: Record<string, any> | undefined) => Partial<Record<string, CSSProperties$1>>);
 
 interface ResolveStylesInput {
     theme: RaikouTheme;
@@ -612,7 +623,7 @@ interface UseStylesInput<Payload extends FactoryPayload> {
 }
 type GetStylesApi<Payload extends FactoryPayload> = (selector: NonNullable<Payload["stylesNames"]>, options?: GetStylesApiOptions) => {
     className: string;
-    style: CSSProperties;
+    style: CSSProperties$1;
 };
 declare function useStyles<Payload extends FactoryPayload>({ name, classes, props, stylesCtx, className, style, rootSelector, unstyled, classNames, styles, vars, varsResolver, }: UseStylesInput<Payload>): GetStylesApi<Payload>;
 
@@ -623,4 +634,4 @@ declare function useDirection(): {
     setDirection: () => void;
 };
 
-export { Box, BoxComponentProps, BoxMod, BoxProps, ClassNames, ClassNamesArray, CompoundStylesApiProps, CssVariable, CssVariables, CssVars, CssVarsProp, DEFAULT_THEME, DefaultRaikouColor, Direction, ElementProps, ExtendComponent, ExtendsRootComponent, FOCUS_CLASS_NAMES, Factory, FactoryPayload, GetStylesApi, GetStylesApiOptions, HeadingStyle, InlineStyles, InlineStylesInput, InlineStylesMediaQuery, InlineStylesProps, PartialTransformVars, PartialVarsResolver, PolymorphicFactory, RGBA, RaikouBreakpoint, RaikouBreakpointsValues, RaikouColor, RaikouColorScheme, RaikouColorShade, RaikouColorsTuple, RaikouComponent, RaikouComponentStaticProperties, RaikouFontSize, RaikouFontSizesValues, RaikouGradient, RaikouLineHeight, RaikouLineHeightValues, RaikouPrimaryShade, RaikouRadius, RaikouRadiusValues, RaikouShadow, RaikouShadowsValues, RaikouSize, RaikouSpacing, RaikouSpacingValues, RaikouStyleProp, RaikouStyleProps, RaikouStylesRecord, RaikouTheme, RaikouThemeColors, RaikouThemeColorsOverride, RaikouThemeComponent, RaikouThemeComponents, RaikouThemeOther, RaikouThemeOverride, STYlE_PROPS_DATA, StyleProp, Styles, StylesApiProps, StylesApiRecord, StylesRecord, SystemPropData, ThemeExtend, TransformVars, UseStylesInput, VariantColorResolverResult, VariantColorsResolver, VariantColorsResolverInput, VarsResolver, camelToKebabCase, closeOnEscape, createEventHandler, createPolymorphicComponent, createScopedKeydownHandler, createVarsResolver, darken, deepMerge, defaultVariantColorsResolver, em, extractStyleProps, factory, filterProps, findElementAncestor, getBaseValue, getBreakpointValue, getDefaultZIndex, getFontSize, getGradient, getLineHeight, getPrimaryShade, getRadius, getSafeId, getShadow, getSize, getSortedBreakpoints, getSpacing, getStyleObject, getThemeColor, isElement, isLightColor, isNumberLike, keys, lighten, mergeRaikouTheme, noop, parseStyleProps, parseThemeColor, polymorphicFactory, px, rem, resolveClassNames, resolveStyles, rgba, stylesToString, toRgba, useDirection, useProps, useRaikouTheme, useRandomClassName, useResolvedStylesApi, useStyles, validateRaikouTheme };
+export { Box, BoxComponentProps, BoxMod, BoxProps, CSSProperties, ClassNames, ClassNamesArray, CompoundStylesApiProps, CssVariable, CssVariables, CssVars, CssVarsProp, DEFAULT_THEME, DefaultRaikouColor, Direction, ElementProps, ExtendComponent, ExtendsRootComponent, FOCUS_CLASS_NAMES, Factory, FactoryPayload, GetStylesApi, GetStylesApiOptions, HeadingStyle, InlineStyles, InlineStylesInput, InlineStylesMediaQuery, InlineStylesProps, PartialTransformVars, PartialVarsResolver, PolymorphicFactory, RGBA, RaikouBreakpoint, RaikouBreakpointsValues, RaikouColor, RaikouColorScheme, RaikouColorShade, RaikouColorsTuple, RaikouComponent, RaikouComponentStaticProperties, RaikouFontSize, RaikouFontSizesValues, RaikouGradient, RaikouLineHeight, RaikouLineHeightValues, RaikouPrimaryShade, RaikouRadius, RaikouRadiusValues, RaikouShadow, RaikouShadowsValues, RaikouSize, RaikouSpacing, RaikouSpacingValues, RaikouStyleProp, RaikouStyleProps, RaikouStylesRecord, RaikouTheme, RaikouThemeColors, RaikouThemeColorsOverride, RaikouThemeComponent, RaikouThemeComponents, RaikouThemeOther, RaikouThemeOverride, STYlE_PROPS_DATA, StyleProp, Styles, StylesApiProps, StylesApiRecord, StylesRecord, SystemPropData, ThemeExtend, TransformVars, UseStylesInput, VariantColorResolverResult, VariantColorsResolver, VariantColorsResolverInput, VarsResolver, camelToKebabCase, closeOnEscape, createEventHandler, createPolymorphicComponent, createScopedKeydownHandler, createVarsResolver, darken, deepMerge, defaultVariantColorsResolver, em, extractStyleProps, factory, filterProps, findElementAncestor, getBaseValue, getBreakpointValue, getDefaultZIndex, getFontSize, getGradient, getLineHeight, getPrimaryShade, getRadius, getSafeId, getShadow, getSize, getSortedBreakpoints, getSpacing, getStyleObject, getThemeColor, isElement, isLightColor, isNumberLike, keys, lighten, mergeRaikouTheme, noop, parseStyleProps, parseThemeColor, polymorphicFactory, px, rem, resolveClassNames, resolveStyles, rgba, stylesToString, toRgba, useDirection, useProps, useRaikouTheme, useRandomClassName, useResolvedStylesApi, useStyles, validateRaikouTheme };

@@ -62,6 +62,9 @@ module.exports = function ({ addComponents, theme }: any) {
 
     ".menu-itemLabel": {
       flex: "1",
+      '[dir="rtl"] &': {
+        textAlign: "right",
+      },
     },
 
     ".menu-itemSection": {

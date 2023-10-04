@@ -599,7 +599,8 @@ var Slider = factory((_props, ref) => {
     inverted,
     className,
     style,
-    vars
+    vars,
+    hiddenInputProps
   } = _a, others = __objRest(_a, [
     "classNames",
     "styles",
@@ -626,7 +627,8 @@ var Slider = factory((_props, ref) => {
     "inverted",
     "className",
     "style",
-    "vars"
+    "vars",
+    "hiddenInputProps"
   ]);
   const getStyles = useStyles({
     name: "Slider",
@@ -808,7 +810,14 @@ var Slider = factory((_props, ref) => {
         thumbChildren
       )
     ),
-    /* @__PURE__ */ React8.createElement("input", { type: "hidden", name, value: scaledValue })
+    /* @__PURE__ */ React8.createElement(
+      "input",
+      __spreadValues({
+        type: "hidden",
+        name,
+        value: scaledValue
+      }, hiddenInputProps)
+    )
   ));
 });
 Slider.displayName = "@raikou/core/Slider";
@@ -892,7 +901,8 @@ var RangeSlider = factory2((_props, ref) => {
     inverted,
     className,
     style,
-    vars
+    vars,
+    hiddenInputProps
   } = _a, others = __objRest(_a, [
     "classNames",
     "styles",
@@ -922,7 +932,8 @@ var RangeSlider = factory2((_props, ref) => {
     "inverted",
     "className",
     "style",
-    "vars"
+    "vars",
+    "hiddenInputProps"
   ]);
   const getStyles = useStyles2({
     name: "Slider",
@@ -1205,7 +1216,21 @@ var RangeSlider = factory2((_props, ref) => {
       }),
       hasArrayThumbChildren ? thumbChildren[1] : thumbChildren
     )
-  ), /* @__PURE__ */ React9.createElement("input", { type: "hidden", name: `${name}_from`, value: _value[0] }), /* @__PURE__ */ React9.createElement("input", { type: "hidden", name: `${name}_to`, value: _value[1] })));
+  ), /* @__PURE__ */ React9.createElement(
+    "input",
+    __spreadValues({
+      type: "hidden",
+      name: `${name}_from`,
+      value: _value[0]
+    }, hiddenInputProps)
+  ), /* @__PURE__ */ React9.createElement(
+    "input",
+    __spreadValues({
+      type: "hidden",
+      name: `${name}_to`,
+      value: _value[1]
+    }, hiddenInputProps)
+  )));
 });
 RangeSlider.displayName = "@raikou/core/RangeSlider";
 export {

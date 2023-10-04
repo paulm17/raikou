@@ -12,7 +12,7 @@ interface OptionalPortalProps extends PortalProps {
     /** Determines whether children should be rendered inside `<Portal />` */
     withinPortal?: boolean;
 }
-declare function OptionalPortal({ withinPortal, children, ...others }: OptionalPortalProps): JSX.Element;
+declare function OptionalPortal({ withinPortal, children, ...others }: OptionalPortalProps): React.JSX.Element;
 declare namespace OptionalPortal {
     var displayName: string;
 }

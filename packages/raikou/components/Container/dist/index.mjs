@@ -41,7 +41,7 @@ var defaultProps = {};
 var varsResolver = createVarsResolver(
   (_, { size, fluid }) => ({
     root: {
-      "--container-size": fluid ? "100%" : getSize(size, "container-size")
+      "--container-size": fluid ? void 0 : getSize(size, "container-size")
     }
   })
 );

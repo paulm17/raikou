@@ -20,14 +20,18 @@ declare const CardSection: (<C = "div">(props: C extends React.ElementType<any> 
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, "component" | keyof CardSectionProps> & {
     ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : CardSectionProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 }) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(CardSectionProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, "component" | keyof CardSectionProps> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (CardSectionProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & _raikou_core.ThemeExtend<{
     props: CardSectionProps;
     defaultRef: HTMLDivElement;
@@ -68,14 +72,18 @@ declare const Card: (<C = "div">(props: C extends React.ElementType<any> ? CardP
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, "component" | keyof CardProps> & {
     ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : CardProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 }) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(CardProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, "component" | keyof CardProps> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (CardProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & _raikou_core.ThemeExtend<{
     props: CardProps;
     defaultRef: HTMLDivElement;

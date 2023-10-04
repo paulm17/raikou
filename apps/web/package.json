@@ -17,7 +17,7 @@
     "@raikou/colors-generator": "workspace:*",
     "@tabler/icons-react": "^2.25.0",
     "@visx/mock-data": "^3.3.0",
-    "next": "^13.5.3",
+    "next": "^13.5.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "request": "^2.88.2",
@@ -26,12 +26,12 @@
   },
   "devDependencies": {
     "@types/node": "20.5.1",
-    "@types/react": "18.2.20",
-    "@types/react-dom": "18.2.7",
+    "@types/react": "^18.2.23",
+    "@types/react-dom": "^18.2.8",
     "autoprefixer": "^10.4.15",
     "concurrently": "^8.2.0",
     "postcss": "^8.4.27",
-    "tailwindcss": "0.0.0-insiders.28e8fdf",
+    "tailwindcss": "0.0.0-insiders.d322286",
     "typescript": "5.1.6"
   }
 }

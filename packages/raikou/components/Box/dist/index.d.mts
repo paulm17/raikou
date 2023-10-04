@@ -1,1 +1,1 @@
-export { Box, BoxComponentProps, BoxMod, BoxProps, ElementProps } from '@raikou/core';
+export { Box, BoxComponentProps, BoxMod, BoxProps, CSSProperties, ElementProps } from '@raikou/core';

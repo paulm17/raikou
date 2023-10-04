@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useId, useUncontrolled } from "@raikou/hooks";
 import {
   BoxProps,
@@ -72,6 +72,9 @@ export interface SelectProps
 
   /** Props passed down to the clear button */
   clearButtonProps?: __CloseButtonProps & ElementProps<"button">;
+
+  /** Props passed down to the hidden input */
+  hiddenInputProps?: React.ComponentPropsWithoutRef<"input">;
 }
 
 export type SelectFactory = Factory<{
@@ -132,12 +135,16 @@ export const Select = factory<SelectFactory>((_props, ref) => {
     id,
     clearable,
     clearButtonProps,
+    hiddenInputProps,
     ...others
   } = props;
 
   const _id = useId(id);
-  const parsedData = getParsedComboboxData(data);
-  const optionsLockup = getOptionsLockup(parsedData);
+  const parsedData = useMemo(() => getParsedComboboxData(data), [data]);
+  const optionsLockup = useMemo(
+    () => getOptionsLockup(parsedData),
+    [parsedData],
+  );
 
   const [_value, setValue] = useUncontrolled({
     value,
@@ -296,6 +303,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
         value={_value || ""}
         form={form}
         disabled={disabled}
+        {...hiddenInputProps}
       />
     </>
   );

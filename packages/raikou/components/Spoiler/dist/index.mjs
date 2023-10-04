@@ -266,30 +266,39 @@ var Spoiler = factory((_props, ref) => {
   const { ref: contentRef, height } = useElementSize();
   const spoiler = maxHeight < height;
   const spoilerMoreContent = show ? hideLabel : showLabel;
-  return /* @__PURE__ */ React3.createElement(Box2, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { id: _id, ref }), others), spoiler && /* @__PURE__ */ React3.createElement(
-    Anchor,
-    __spreadValues({
-      component: "button",
-      type: "button",
-      ref: controlRef,
-      onClick: () => setShowState((opened) => !opened),
-      "aria-expanded": show,
-      "aria-controls": regionId
-    }, getStyles("control")),
-    spoilerMoreContent
-  ), /* @__PURE__ */ React3.createElement(
-    "div",
-    __spreadProps(__spreadValues({}, getStyles("content", {
-      style: {
-        maxHeight: !show ? rem(maxHeight) : height ? rem(height) : void 0
-      }
-    })), {
-      "data-reduce-motion": true,
-      role: "region",
-      id: regionId
-    }),
-    /* @__PURE__ */ React3.createElement("div", { ref: contentRef }, children)
-  ));
+  return /* @__PURE__ */ React3.createElement(
+    Box2,
+    __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
+      id: _id,
+      ref,
+      "data-has-spoiler": spoiler || void 0
+    }), others),
+    spoiler && /* @__PURE__ */ React3.createElement(
+      Anchor,
+      __spreadValues({
+        component: "button",
+        type: "button",
+        ref: controlRef,
+        onClick: () => setShowState((opened) => !opened),
+        "aria-expanded": show,
+        "aria-controls": regionId
+      }, getStyles("control")),
+      spoilerMoreContent
+    ),
+    /* @__PURE__ */ React3.createElement(
+      "div",
+      __spreadProps(__spreadValues({}, getStyles("content", {
+        style: {
+          maxHeight: !show ? rem(maxHeight) : height ? rem(height) : void 0
+        }
+      })), {
+        "data-reduce-motion": true,
+        role: "region",
+        id: regionId
+      }),
+      /* @__PURE__ */ React3.createElement("div", { ref: contentRef }, children)
+    )
+  );
 });
 Spoiler.displayName = "@raikou/core/Spoiler";
 export {

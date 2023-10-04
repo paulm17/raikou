@@ -37,14 +37,18 @@ declare const Badge: (<C = "div">(props: C extends React.ElementType<any> ? Badg
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, keyof BadgeProps | "component"> & {
     ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : BadgeProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 }) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(BadgeProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, keyof BadgeProps | "component"> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (BadgeProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & _raikou_core.ThemeExtend<{
     props: BadgeProps;
     defaultRef: HTMLDivElement;

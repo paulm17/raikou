@@ -1,5 +1,5 @@
-import type { DefaultMantineColor, MantineNumberSize, MantineTheme } from '@mantine/core';
-import type { ReactNode } from 'react';
+import type { RaikouSize } from "@raikou/core";
+import type { ReactNode } from "react";
 
 export type DataTableLoaderProps = {
   /**
@@ -21,17 +21,17 @@ export type DataTableLoaderProps = {
       /**
        * Loader size; defaults to `lg`
        */
-      loaderSize?: MantineNumberSize;
+      loaderSize?: RaikouSize;
 
       /**
        * Loader variant
        */
-      loaderVariant?: MantineTheme['loader'];
+      loaderVariant?: any;
 
       /**
        * Loader color
        */
-      loaderColor?: DefaultMantineColor;
+      loaderColor?: any;
 
       customLoader?: never;
     }

@@ -51,7 +51,7 @@ var __async = (__this, __arguments, generator) => {
 };
 
 // src/Select.tsx
-import React52, { useEffect as useEffect15 } from "react";
+import React52, { useEffect as useEffect15, useMemo as useMemo3 } from "react";
 import { useId as useId6, useUncontrolled as useUncontrolled3 } from "@raikou/hooks";
 import {
   factory as factory21,
@@ -240,6 +240,7 @@ var InputError = factory2((_props, ref) => {
     vars,
     size: size2,
     __staticSelector,
+    __inheritStyles = true,
     variant
   } = _a, others = __objRest(_a, [
     "classNames",
@@ -250,6 +251,7 @@ var InputError = factory2((_props, ref) => {
     "vars",
     "size",
     "__staticSelector",
+    "__inheritStyles",
     "variant"
   ]);
   const _getStyles = useStyles2({
@@ -268,7 +270,7 @@ var InputError = factory2((_props, ref) => {
     varsResolver: varsResolver2
   });
   const ctx = useInputWrapperContext();
-  const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+  const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
   return /* @__PURE__ */ React4.createElement(
     Box2,
     __spreadValues(__spreadValues({
@@ -312,6 +314,7 @@ var InputDescription = factory3(
       vars,
       size: size2,
       __staticSelector,
+      __inheritStyles = true,
       variant
     } = _a, others = __objRest(_a, [
       "classNames",
@@ -322,6 +325,7 @@ var InputDescription = factory3(
       "vars",
       "size",
       "__staticSelector",
+      "__inheritStyles",
       "variant"
     ]);
     const ctx = useInputWrapperContext();
@@ -340,7 +344,7 @@ var InputDescription = factory3(
       vars,
       varsResolver: varsResolver3
     });
-    const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+    const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
     return /* @__PURE__ */ React5.createElement(
       Box3,
       __spreadValues(__spreadValues({
@@ -3220,7 +3224,7 @@ import { useProps as useProps10 } from "@raikou/core";
 function createPortalNode(props) {
   const node = document.createElement("div");
   node.setAttribute("data-portal", "true");
-  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.className === "string" && node.classList.add(...props.className.split(" "));
   typeof props.style === "object" && Object.assign(node.style, props.style);
   typeof props.id === "string" && node.setAttribute("id", props.id);
   return node;
@@ -6117,7 +6121,8 @@ var Select = factory21((_props, ref) => {
     rightSectionPointerEvents,
     id,
     clearable,
-    clearButtonProps
+    clearButtonProps,
+    hiddenInputProps
   } = _a, others = __objRest(_a, [
     "classNames",
     "styles",
@@ -6159,11 +6164,15 @@ var Select = factory21((_props, ref) => {
     "rightSectionPointerEvents",
     "id",
     "clearable",
-    "clearButtonProps"
+    "clearButtonProps",
+    "hiddenInputProps"
   ]);
   const _id = useId6(id);
-  const parsedData = getParsedComboboxData(data);
-  const optionsLockup = getOptionsLockup(parsedData);
+  const parsedData = useMemo3(() => getParsedComboboxData(data), [data]);
+  const optionsLockup = useMemo3(
+    () => getOptionsLockup(parsedData),
+    [parsedData]
+  );
   const [_value, setValue] = useUncontrolled3({
     value,
     defaultValue,
@@ -6299,13 +6308,13 @@ var Select = factory21((_props, ref) => {
     )
   ), /* @__PURE__ */ React52.createElement(
     "input",
-    {
+    __spreadValues({
       type: "hidden",
       name,
       value: _value || "",
       form,
       disabled
-    }
+    }, hiddenInputProps)
   ));
 });
 Select.displayName = "@raikou/core/Select";

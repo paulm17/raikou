@@ -284,6 +284,14 @@ module.exports = function ({ addComponents }: any) {
         "--raikou-datatable-footer-root": "#1a1b1e",
       },
     },
+    ".dataTableFooterSelectorPlaceholderCell-root:after": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-datatable-footer-selector-placeholdercell-root": "#dee2e6",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-datatable-footer-selector-placeholdercell-root": "#373a40",
+      },
+    },
     ".dataTableHeader-root": {
       '[data-raikou-color-scheme="light"] &': {
         "--raikou-datatable-header-root": "#1a1b1e",
@@ -346,6 +354,14 @@ module.exports = function ({ addComponents }: any) {
         "--raikou-datatable-rowmenu-root": "#373a40",
       },
     },
+    ".dataTableRowMenuDivider-root": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-datatable-rowmenu-divider-root": "#f1f3f5",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-datatable-rowmenu-divider-root": "#adb5bd",
+      },
+    },
     ".dataTableRowMenuItem-root": {
       '[data-raikou-color-scheme="light"] &': {
         "--raikou-datatable-rowmenuitem-disabled-color": "#5c5f66",
@@ -356,6 +372,24 @@ module.exports = function ({ addComponents }: any) {
         "--raikou-datatable-rowmenuitem-disabled-color": "#5c5f66",
         "--raikou-datatable-rowmenuitem-disabled-hover": "#ced4da",
         "--raikou-datatable-rowmenuitem-disabled-active": "#ced4da",
+      },
+    },
+    ".dataTable-sortableColumnHeader": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-datatable-sortable-column-header-border": "#f8f9fa",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-datatable-sortable-column-header-border": "#25262b",
+      },
+    },
+    ".dataTable-sortableColumnHeaderUnsortedIcon": {
+      '[data-raikou-color-scheme="light"] &': {
+        "--raikou-datatable-sortable-column-header-icon-color": "#2c2e33",
+        "--raikou-datatable-sortable-column-header-icon-color-hover": "#25262b",
+      },
+      '[data-raikou-color-scheme="dark"] &': {
+        "--raikou-datatable-sortable-column-header-icon-color": "#dee2e6",
+        "--raikou-datatable-sortable-column-header-icon-color-hover": "#e9ecef",
       },
     },
     ".divider-root": {

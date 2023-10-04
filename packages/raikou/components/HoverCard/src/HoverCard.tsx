@@ -1,8 +1,9 @@
 import React from "react";
 import { useDisclosure } from "@raikou/hooks";
-import { useProps } from "@raikou/core";
+import { ExtendComponent, Factory, useProps } from "@raikou/core";
 import { useDelayedHover } from "../../Floating/src";
-import { Popover, PopoverProps } from "../../Popover/src";
+import { Popover, PopoverProps, PopoverStylesNames } from "../../Popover/src";
+import { PopoverCssVariables } from "../../Popover/src/Popover";
 import { HoverCardContextProvider } from "./HoverCard.context";
 import { HoverCardDropdown } from "./HoverCardDropdown/HoverCardDropdown";
 import { HoverCardTarget } from "./HoverCardTarget/HoverCardTarget";
@@ -25,6 +26,12 @@ export interface HoverCardProps extends PopoverProps {
   /** Close delay in ms */
   closeDelay?: number;
 }
+
+export type HoverCardFactory = Factory<{
+  props: HoverCardProps;
+  stylesNames: PopoverStylesNames;
+  vars: PopoverCssVariables;
+}>;
 
 const defaultProps: Partial<HoverCardProps> = {
   openDelay: 0,
@@ -65,3 +72,4 @@ export function HoverCard(props: HoverCardProps) {
 HoverCard.displayName = "@raikou/core/HoverCard";
 HoverCard.Target = HoverCardTarget;
 HoverCard.Dropdown = HoverCardDropdown;
+HoverCard.extend = (input: ExtendComponent<HoverCardFactory>) => input;

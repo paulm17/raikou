@@ -1,8 +1,8 @@
-import type { MantineTheme, Sx } from '@mantine/core';
-import type { CSSProperties, ReactNode } from 'react';
-import type { DataTableColumnTextAlignment } from './DataTableColumnTextAlignment';
+import type { RaikouTheme } from "@Raikou/core";
+import type { CSSProperties, ReactNode } from "react";
+import type { DataTableColumnTextAlignment } from "./DataTableColumnTextAlignment";
 
-export type DataTableColumn<T> = {
+export type DataTableColumn = {
   /**
    * Column accessor; you can use dot-notation for nested objects property drilling
    * (i.e. `department.name` or `department.company.name`)
@@ -19,7 +19,7 @@ export type DataTableColumn<T> = {
   /**
    * Custom cell data render function accepting the current record and its index in `records`
    */
-  render?: (record: T, index: number) => ReactNode;
+  render?: (record: any, index: number) => ReactNode;
 
   /**
    * Column text alignment; defaults to `left`
@@ -77,7 +77,7 @@ export type DataTableColumn<T> = {
   /**
    * If set, the column will only be visible according to the specified media query
    */
-  visibleMediaQuery?: string | ((theme: MantineTheme) => string);
+  visibleMediaQuery?: string | ((theme: RaikouTheme) => string);
 
   /**
    * Optional class name passed to the column title
@@ -92,31 +92,38 @@ export type DataTableColumn<T> = {
   /**
    * Optional style passed to the column title; see https://mantine.dev/styles/sx/
    */
-  titleSx?: Sx;
+  // titleSx?: Sx;
 
   /**
    * Optional class name passed to each data cell in the column; can be a string or a function
    * receiving the current record and its index as arguments and returning a string
    */
-  cellsClassName?: string | ((record: T, recordIndex: number) => string | undefined);
+  cellsClassName?:
+    | string
+    | ((record: any, recordIndex: number) => string | undefined);
 
   /**
    * Optional style passed to each data cell in the column; can be a CSS properties object or
    * a function receiving the current record and its index as arguments and returning a CSS properties object
    */
-  cellsStyle?: CSSProperties | ((record: T, recordIndex: number) => CSSProperties | undefined);
+  cellsStyle?:
+    | CSSProperties
+    | ((record: any, recordIndex: number) => CSSProperties | undefined);
 
   /**
    * Optional style passed to each data cell in the column; see https://mantine.dev/styles/sx/
    */
-  cellsSx?: Sx;
+  // cellsSx?: Sx;
 
   /**
    * Optional function returning an object of custom attributes to be applied to each cell in the column.
    * Receives the current record and its index as arguments.
    * Useful for adding data attributes, handling middle-clicks, etc.
    */
-  customCellAttributes?: (record: T, recordIndex: number) => Record<string, unknown>;
+  customCellAttributes?: (
+    record: any,
+    recordIndex: number,
+  ) => Record<string, unknown>;
 
   /**
    * Optional column footer content; if at least one column has a footer, the table will display a footer row
@@ -136,7 +143,7 @@ export type DataTableColumn<T> = {
   /**
    * Optional style passed to the column footer; see https://mantine.dev/styles/sx/
    */
-  footerSx?: Sx;
+  // footerSx?: Sx;
 } & (
   | {
       /**

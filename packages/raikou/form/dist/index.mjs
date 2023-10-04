@@ -342,7 +342,9 @@ function useForm({
     setDirty({});
   };
   const setErrors = useCallback(
-    (errs) => _setErrors((current) => filterErrors(typeof errs === "function" ? errs(current) : errs)),
+    (errs) => _setErrors(
+      (current) => filterErrors(typeof errs === "function" ? errs(current) : errs)
+    ),
     []
   );
   const clearErrors = useCallback(() => _setErrors({}), []);
@@ -400,21 +402,27 @@ function useForm({
     });
     clearInputErrorOnChange && clearErrors();
   }, []);
-  const reorderListItem = useCallback((path, payload) => {
-    clearFieldDirty(path);
-    _setValues((current) => reorderPath(path, payload, current));
-    _setErrors((errs) => reorderErrors(path, payload, errs));
-  }, []);
+  const reorderListItem = useCallback(
+    (path, payload) => {
+      clearFieldDirty(path);
+      _setValues((current) => reorderPath(path, payload, current));
+      _setErrors((errs) => reorderErrors(path, payload, errs));
+    },
+    []
+  );
   const removeListItem = useCallback((path, index) => {
     clearFieldDirty(path);
     _setValues((current) => removePath(path, index, current));
     _setErrors((errs) => changeErrorIndices(path, index, errs, -1));
   }, []);
-  const insertListItem = useCallback((path, item, index) => {
-    clearFieldDirty(path);
-    _setValues((current) => insertPath(path, item, index, current));
-    _setErrors((errs) => changeErrorIndices(path, index, errs, 1));
-  }, []);
+  const insertListItem = useCallback(
+    (path, item, index) => {
+      clearFieldDirty(path);
+      _setValues((current) => insertPath(path, item, index, current));
+      _setErrors((errs) => changeErrorIndices(path, index, errs, 1));
+    },
+    []
+  );
   const validate = useCallback(() => {
     const results = validateValues(rules, values);
     _setErrors(results.errors);
@@ -429,7 +437,9 @@ function useForm({
     [values, rules]
   );
   const getInputProps = (path, { type = "input", withError = true, withFocus = true } = {}) => {
-    const onChange = getInputOnChange((value) => setFieldValue(path, value));
+    const onChange = getInputOnChange(
+      (value) => setFieldValue(path, value)
+    );
     const payload = { onChange };
     if (withError) {
       payload.error = errors[path];
@@ -492,6 +502,7 @@ function useForm({
     values,
     errors,
     setValues,
+    setInitialValues: setValuesSnapshot,
     setErrors,
     setFieldValue,
     setFieldError,

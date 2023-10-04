@@ -1,18 +1,18 @@
-import type { DataTableColumn } from './DataTableColumn';
-import type { DataTableColumnGroup } from './DataTableColumnGroup';
+import type { DataTableColumn } from "./DataTableColumn";
+import type { DataTableColumnGroup } from "./DataTableColumnGroup";
 
-export type DataTableColumnProps<T> =
+export type DataTableColumnProps =
   | {
       /**
        * Grouped columns
        */
-      groups: readonly DataTableColumnGroup<T>[];
+      groups: readonly DataTableColumnGroup[];
       columns?: never;
     }
   | {
       /**
        * Visible columns
        */
-      columns: DataTableColumn<T>[];
+      columns: DataTableColumn[];
       groups?: never;
     };

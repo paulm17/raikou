@@ -7,7 +7,8 @@ function createPortalNode(props: React.ComponentPropsWithoutRef<"div">) {
   const node = document.createElement("div");
   node.setAttribute("data-portal", "true");
   // eslint-disable-next-line
-  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.className === "string" &&
+    node.classList.add(...props.className.split(" "));
   // eslint-disable-next-line
   typeof props.style === "object" && Object.assign(node.style, props.style);
   // eslint-disable-next-line

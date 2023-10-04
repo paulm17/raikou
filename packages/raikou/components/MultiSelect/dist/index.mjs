@@ -2429,7 +2429,7 @@ import { useProps as useProps3 } from "@raikou/core";
 function createPortalNode(props) {
   const node = document.createElement("div");
   node.setAttribute("data-portal", "true");
-  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.className === "string" && node.classList.add(...props.className.split(" "));
   typeof props.style === "object" && Object.assign(node.style, props.style);
   typeof props.id === "string" && node.setAttribute("id", props.id);
   return node;
@@ -3717,6 +3717,7 @@ var InputError = factory9((_props, ref) => {
     vars,
     size: size2,
     __staticSelector,
+    __inheritStyles = true,
     variant
   } = _a, others = __objRest(_a, [
     "classNames",
@@ -3727,6 +3728,7 @@ var InputError = factory9((_props, ref) => {
     "vars",
     "size",
     "__staticSelector",
+    "__inheritStyles",
     "variant"
   ]);
   const _getStyles = useStyles4({
@@ -3745,7 +3747,7 @@ var InputError = factory9((_props, ref) => {
     varsResolver: varsResolver4
   });
   const ctx = useInputWrapperContext();
-  const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+  const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
   return /* @__PURE__ */ React19.createElement(
     Box6,
     __spreadValues(__spreadValues({
@@ -3789,6 +3791,7 @@ var InputDescription = factory10(
       vars,
       size: size2,
       __staticSelector,
+      __inheritStyles = true,
       variant
     } = _a, others = __objRest(_a, [
       "classNames",
@@ -3799,6 +3802,7 @@ var InputDescription = factory10(
       "vars",
       "size",
       "__staticSelector",
+      "__inheritStyles",
       "variant"
     ]);
     const ctx = useInputWrapperContext();
@@ -3817,7 +3821,7 @@ var InputDescription = factory10(
       vars,
       varsResolver: varsResolver5
     });
-    const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+    const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
     return /* @__PURE__ */ React20.createElement(
       Box7,
       __spreadValues(__spreadValues({
@@ -6489,7 +6493,8 @@ var MultiSelect = factory25((_props, ref) => {
     form,
     id,
     clearable,
-    clearButtonProps
+    clearButtonProps,
+    hiddenInputProps
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -6553,7 +6558,8 @@ var MultiSelect = factory25((_props, ref) => {
     "form",
     "id",
     "clearable",
-    "clearButtonProps"
+    "clearButtonProps",
+    "hiddenInputProps"
   ]);
   const _id = useId6(id);
   const parsedData = getParsedComboboxData(data);
@@ -6645,13 +6651,13 @@ var MultiSelect = factory25((_props, ref) => {
     }, comboboxProps),
     /* @__PURE__ */ React56.createElement(
       "input",
-      {
+      __spreadValues({
         type: "hidden",
         name,
         value: _value.join(","),
         form,
         disabled
-      }
+      }, hiddenInputProps)
     ),
     /* @__PURE__ */ React56.createElement(Combobox.DropdownTarget, null, /* @__PURE__ */ React56.createElement(
       PillsInput,

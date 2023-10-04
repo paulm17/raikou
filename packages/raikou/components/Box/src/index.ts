@@ -4,4 +4,5 @@ export type {
   ElementProps,
   BoxMod,
   BoxComponentProps,
+  CSSProperties,
 } from "@raikou/core";

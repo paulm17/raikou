@@ -27,14 +27,18 @@ declare const Paper: (<C = "div">(props: C extends React.ElementType<any> ? Pape
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, keyof PaperProps | "component"> & {
     ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : PaperProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 }) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(PaperProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, keyof PaperProps | "component"> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (PaperProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & _raikou_core.ThemeExtend<{
     props: PaperProps;
     defaultComponent: "div";

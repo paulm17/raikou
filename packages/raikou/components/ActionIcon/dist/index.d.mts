@@ -96,14 +96,18 @@ declare const ActionIcon: (<C = "button">(props: C extends React.ElementType<any
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, "component" | keyof ActionIconProps> & {
     ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : ActionIconProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 }) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(ActionIconProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, "component" | keyof ActionIconProps> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (ActionIconProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & _raikou_core.ThemeExtend<{
     props: ActionIconProps;
     defaultComponent: "button";

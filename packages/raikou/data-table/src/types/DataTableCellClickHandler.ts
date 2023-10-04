@@ -1,7 +1,7 @@
-import type { MouseEvent } from 'react';
-import type { DataTableColumn } from './DataTableColumn';
+import type { MouseEvent } from "react";
+import type { DataTableColumn } from "./DataTableColumn";
 
-export type DataTableCellClickHandler<T> = (params: {
+export type DataTableCellClickHandler = (params: {
   /**
    * Click event
    */
@@ -10,7 +10,7 @@ export type DataTableCellClickHandler<T> = (params: {
   /**
    * Clicked record
    */
-  record: T;
+  record: any;
   /**
    * Clicked record index
    */
@@ -18,7 +18,7 @@ export type DataTableCellClickHandler<T> = (params: {
   /**
    * Clicked column information
    */
-  column: DataTableColumn<T>;
+  column: DataTableColumn;
   /**
    * Clicked column index
    */

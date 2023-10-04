@@ -368,6 +368,7 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
     vars,
     size: size2,
     __staticSelector,
+    __inheritStyles = true,
     variant
   } = _a, others = __objRest(_a, [
     "classNames",
@@ -378,6 +379,7 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
     "vars",
     "size",
     "__staticSelector",
+    "__inheritStyles",
     "variant"
   ]);
   const _getStyles = (0, import_core2.useStyles)({
@@ -396,7 +398,7 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
     varsResolver: varsResolver2
   });
   const ctx = useInputWrapperContext();
-  const getStyles2 = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+  const getStyles2 = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
   return /* @__PURE__ */ import_react9.default.createElement(
     import_core2.Box,
     __spreadValues(__spreadValues({
@@ -432,6 +434,7 @@ var InputDescription = (0, import_core3.factory)(
       vars,
       size: size2,
       __staticSelector,
+      __inheritStyles = true,
       variant
     } = _a, others = __objRest(_a, [
       "classNames",
@@ -442,6 +445,7 @@ var InputDescription = (0, import_core3.factory)(
       "vars",
       "size",
       "__staticSelector",
+      "__inheritStyles",
       "variant"
     ]);
     const ctx = useInputWrapperContext();
@@ -460,7 +464,7 @@ var InputDescription = (0, import_core3.factory)(
       vars,
       varsResolver: varsResolver3
     });
-    const getStyles2 = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+    const getStyles2 = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
     return /* @__PURE__ */ import_react10.default.createElement(
       import_core3.Box,
       __spreadValues(__spreadValues({
@@ -1483,7 +1487,8 @@ var WeekdaysRow = (0, import_core12.factory)((_props, ref) => {
   const getStyles2 = (0, import_core12.useStyles)({
     name: __staticSelector || "WeekdaysRow",
     classes: {
-      weekday: "dates-weekday"
+      weekday: "dates-weekday",
+      weekdaysRow: ""
     },
     props,
     className,
@@ -5520,7 +5525,7 @@ var import_core31 = require("@raikou/core");
 function createPortalNode(props) {
   const node = document.createElement("div");
   node.setAttribute("data-portal", "true");
-  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.className === "string" && node.classList.add(...props.className.split(" "));
   typeof props.style === "object" && Object.assign(node.style, props.style);
   typeof props.id === "string" && node.setAttribute("id", props.id);
   return node;
@@ -6155,21 +6160,21 @@ var import_core44 = require("@raikou/core");
 // ../components/ModalBase/src/ModalBase.tsx
 var import_react49 = __toESM(require("react"));
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.5_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
 var import_tslib5 = require("tslib");
 var React44 = __toESM(require("react"));
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.5_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
 var import_tslib3 = require("tslib");
 var React40 = __toESM(require("react"));
 
-// ../../../node_modules/.pnpm/react-remove-scroll-bar@2.3.4_@types+react@18.2.5_react@18.2.0/node_modules/react-remove-scroll-bar/dist/es2015/constants.js
+// ../../../node_modules/.pnpm/react-remove-scroll-bar@2.3.4_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll-bar/dist/es2015/constants.js
 var zeroRightClassName = "right-scroll-bar-position";
 var fullWidthClassName = "width-before-scroll-bar";
 var noScrollbarsClassName = "with-scroll-bars-hidden";
 var removedBarSizeVariable = "--removed-body-scroll-bar-size";
 
-// ../../../node_modules/.pnpm/use-callback-ref@1.3.0_@types+react@18.2.5_react@18.2.0/node_modules/use-callback-ref/dist/es2015/assignRef.js
+// ../../../node_modules/.pnpm/use-callback-ref@1.3.0_@types+react@18.2.23_react@18.2.0/node_modules/use-callback-ref/dist/es2015/assignRef.js
 function assignRef2(ref, value) {
   if (typeof ref === "function") {
     ref(value);
@@ -6179,7 +6184,7 @@ function assignRef2(ref, value) {
   return ref;
 }
 
-// ../../../node_modules/.pnpm/use-callback-ref@1.3.0_@types+react@18.2.5_react@18.2.0/node_modules/use-callback-ref/dist/es2015/useRef.js
+// ../../../node_modules/.pnpm/use-callback-ref@1.3.0_@types+react@18.2.23_react@18.2.0/node_modules/use-callback-ref/dist/es2015/useRef.js
 var import_react46 = require("react");
 function useCallbackRef(initialValue, callback) {
   var ref = (0, import_react46.useState)(function() {
@@ -6207,7 +6212,7 @@ function useCallbackRef(initialValue, callback) {
   return ref.facade;
 }
 
-// ../../../node_modules/.pnpm/use-callback-ref@1.3.0_@types+react@18.2.5_react@18.2.0/node_modules/use-callback-ref/dist/es2015/useMergeRef.js
+// ../../../node_modules/.pnpm/use-callback-ref@1.3.0_@types+react@18.2.23_react@18.2.0/node_modules/use-callback-ref/dist/es2015/useMergeRef.js
 function useMergeRefs(refs, defaultValue) {
   return useCallbackRef(defaultValue || null, function(newValue) {
     return refs.forEach(function(ref) {
@@ -6216,7 +6221,7 @@ function useMergeRefs(refs, defaultValue) {
   });
 }
 
-// ../../../node_modules/.pnpm/use-sidecar@1.1.2_@types+react@18.2.5_react@18.2.0/node_modules/use-sidecar/dist/es2015/medium.js
+// ../../../node_modules/.pnpm/use-sidecar@1.1.2_@types+react@18.2.23_react@18.2.0/node_modules/use-sidecar/dist/es2015/medium.js
 var import_tslib = require("tslib");
 function ItoI(a) {
   return a;
@@ -6303,7 +6308,7 @@ function createSidecarMedium(options) {
   return medium;
 }
 
-// ../../../node_modules/.pnpm/use-sidecar@1.1.2_@types+react@18.2.5_react@18.2.0/node_modules/use-sidecar/dist/es2015/exports.js
+// ../../../node_modules/.pnpm/use-sidecar@1.1.2_@types+react@18.2.23_react@18.2.0/node_modules/use-sidecar/dist/es2015/exports.js
 var import_tslib2 = require("tslib");
 var React39 = __toESM(require("react"));
 var SideCar = function(_a) {
@@ -6323,10 +6328,10 @@ function exportSidecar(medium, exported) {
   return SideCar;
 }
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.5_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/medium.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/medium.js
 var effectCar = createSidecarMedium();
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.5_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
 var nothing = function() {
   return;
 };
@@ -6358,14 +6363,14 @@ RemoveScroll.classNames = {
   zeroRight: zeroRightClassName
 };
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.5_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
 var import_tslib4 = require("tslib");
 var React43 = __toESM(require("react"));
 
-// ../../../node_modules/.pnpm/react-remove-scroll-bar@2.3.4_@types+react@18.2.5_react@18.2.0/node_modules/react-remove-scroll-bar/dist/es2015/component.js
+// ../../../node_modules/.pnpm/react-remove-scroll-bar@2.3.4_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll-bar/dist/es2015/component.js
 var React42 = __toESM(require("react"));
 
-// ../../../node_modules/.pnpm/react-style-singleton@2.2.1_@types+react@18.2.5_react@18.2.0/node_modules/react-style-singleton/dist/es2015/hook.js
+// ../../../node_modules/.pnpm/react-style-singleton@2.2.1_@types+react@18.2.23_react@18.2.0/node_modules/react-style-singleton/dist/es2015/hook.js
 var React41 = __toESM(require("react"));
 
 // ../../../node_modules/.pnpm/get-nonce@1.0.1/node_modules/get-nonce/dist/es2015/index.js
@@ -6380,7 +6385,7 @@ var getNonce = function() {
   return void 0;
 };
 
-// ../../../node_modules/.pnpm/react-style-singleton@2.2.1_@types+react@18.2.5_react@18.2.0/node_modules/react-style-singleton/dist/es2015/singleton.js
+// ../../../node_modules/.pnpm/react-style-singleton@2.2.1_@types+react@18.2.23_react@18.2.0/node_modules/react-style-singleton/dist/es2015/singleton.js
 function makeStyleTag() {
   if (!document)
     return null;
@@ -6426,7 +6431,7 @@ var stylesheetSingleton = function() {
   };
 };
 
-// ../../../node_modules/.pnpm/react-style-singleton@2.2.1_@types+react@18.2.5_react@18.2.0/node_modules/react-style-singleton/dist/es2015/hook.js
+// ../../../node_modules/.pnpm/react-style-singleton@2.2.1_@types+react@18.2.23_react@18.2.0/node_modules/react-style-singleton/dist/es2015/hook.js
 var styleHookSingleton = function() {
   var sheet = stylesheetSingleton();
   return function(styles, isDynamic) {
@@ -6439,7 +6444,7 @@ var styleHookSingleton = function() {
   };
 };
 
-// ../../../node_modules/.pnpm/react-style-singleton@2.2.1_@types+react@18.2.5_react@18.2.0/node_modules/react-style-singleton/dist/es2015/component.js
+// ../../../node_modules/.pnpm/react-style-singleton@2.2.1_@types+react@18.2.23_react@18.2.0/node_modules/react-style-singleton/dist/es2015/component.js
 var styleSingleton = function() {
   var useStyle = styleHookSingleton();
   var Sheet = function(_a) {
@@ -6450,7 +6455,7 @@ var styleSingleton = function() {
   return Sheet;
 };
 
-// ../../../node_modules/.pnpm/react-remove-scroll-bar@2.3.4_@types+react@18.2.5_react@18.2.0/node_modules/react-remove-scroll-bar/dist/es2015/utils.js
+// ../../../node_modules/.pnpm/react-remove-scroll-bar@2.3.4_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll-bar/dist/es2015/utils.js
 var zeroGap = {
   left: 0,
   top: 0,
@@ -6485,7 +6490,7 @@ var getGapWidth = function(gapMode) {
   };
 };
 
-// ../../../node_modules/.pnpm/react-remove-scroll-bar@2.3.4_@types+react@18.2.5_react@18.2.0/node_modules/react-remove-scroll-bar/dist/es2015/component.js
+// ../../../node_modules/.pnpm/react-remove-scroll-bar@2.3.4_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll-bar/dist/es2015/component.js
 var Style = styleSingleton();
 var getStyles = function(_a, allowRelative, gapMode, important) {
   var left = _a.left, top = _a.top, right = _a.right, gap = _a.gap;
@@ -6506,7 +6511,7 @@ var RemoveScrollBar = function(props) {
   return React42.createElement(Style, { styles: getStyles(gap, !noRelative, gapMode, !noImportant ? "!important" : "") });
 };
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.5_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/aggresiveCapture.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/aggresiveCapture.js
 var passiveSupported = false;
 if (typeof window !== "undefined") {
   try {
@@ -6525,7 +6530,7 @@ if (typeof window !== "undefined") {
 var options;
 var nonPassive = passiveSupported ? { passive: false } : false;
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.5_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/handleScroll.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/handleScroll.js
 var alwaysContainsScroll = function(node) {
   return node.tagName === "TEXTAREA";
 };
@@ -6618,7 +6623,7 @@ var handleScroll = function(axis, endTarget, event, sourceDelta, noOverscroll) {
   return shouldCancelScroll;
 };
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.5_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
 var getTouchXY = function(event) {
   return "changedTouches" in event ? [event.changedTouches[0].clientX, event.changedTouches[0].clientY] : [0, 0];
 };
@@ -6772,10 +6777,10 @@ function RemoveScrollSideCar(props) {
   );
 }
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.5_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/sidecar.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/sidecar.js
 var sidecar_default = exportSidecar(effectCar, RemoveScrollSideCar);
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.5_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
 var ReactRemoveScroll = React44.forwardRef(function(props, ref) {
   return React44.createElement(RemoveScroll, (0, import_tslib5.__assign)({}, props, { ref, sideCar: sidecar_default }));
 });

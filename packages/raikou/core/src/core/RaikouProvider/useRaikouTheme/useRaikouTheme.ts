@@ -20,8 +20,4 @@ export function useRaikouTheme() {
 
     return theme as RaikouTheme;
   }
-
-  console.log("warning - using default theme, should not happen");
-
-  return DEFAULT_THEME;
 }

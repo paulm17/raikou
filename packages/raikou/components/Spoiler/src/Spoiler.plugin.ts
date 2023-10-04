@@ -4,7 +4,11 @@ module.exports = function ({ addComponents, theme }: any) {
   addComponents({
     ".spoiler-root": {
       position: "relative",
-      marginBottom: rem("24px"),
+      marginBottom: "var(--_spoiler-margin-bottom)",
+
+      "&[data-has-spoiler]": {
+        "--_spoiler-margin-bottom": rem("24px"),
+      },
     },
     ".spoiler-content": {
       display: "flex",

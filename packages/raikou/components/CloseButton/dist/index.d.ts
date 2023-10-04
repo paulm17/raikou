@@ -40,14 +40,18 @@ declare const CloseButton: (<C = "button">(props: C extends React.ElementType<an
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, "component" | keyof CloseButtonProps> & {
     ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : CloseButtonProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 }) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(CloseButtonProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, "component" | keyof CloseButtonProps> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (CloseButtonProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & _raikou_core.ThemeExtend<{
     props: CloseButtonProps;
     defaultComponent: "button";

@@ -621,7 +621,8 @@ var Slider = (0, import_core7.factory)((_props, ref) => {
     inverted,
     className,
     style,
-    vars
+    vars,
+    hiddenInputProps
   } = _a, others = __objRest(_a, [
     "classNames",
     "styles",
@@ -648,7 +649,8 @@ var Slider = (0, import_core7.factory)((_props, ref) => {
     "inverted",
     "className",
     "style",
-    "vars"
+    "vars",
+    "hiddenInputProps"
   ]);
   const getStyles = (0, import_core7.useStyles)({
     name: "Slider",
@@ -830,7 +832,14 @@ var Slider = (0, import_core7.factory)((_props, ref) => {
         thumbChildren
       )
     ),
-    /* @__PURE__ */ import_react11.default.createElement("input", { type: "hidden", name, value: scaledValue })
+    /* @__PURE__ */ import_react11.default.createElement(
+      "input",
+      __spreadValues({
+        type: "hidden",
+        name,
+        value: scaledValue
+      }, hiddenInputProps)
+    )
   ));
 });
 Slider.displayName = "@raikou/core/Slider";
@@ -904,7 +913,8 @@ var RangeSlider = (0, import_core8.factory)((_props, ref) => {
     inverted,
     className,
     style,
-    vars
+    vars,
+    hiddenInputProps
   } = _a, others = __objRest(_a, [
     "classNames",
     "styles",
@@ -934,7 +944,8 @@ var RangeSlider = (0, import_core8.factory)((_props, ref) => {
     "inverted",
     "className",
     "style",
-    "vars"
+    "vars",
+    "hiddenInputProps"
   ]);
   const getStyles = (0, import_core8.useStyles)({
     name: "Slider",
@@ -1217,7 +1228,21 @@ var RangeSlider = (0, import_core8.factory)((_props, ref) => {
       }),
       hasArrayThumbChildren ? thumbChildren[1] : thumbChildren
     )
-  ), /* @__PURE__ */ import_react12.default.createElement("input", { type: "hidden", name: `${name}_from`, value: _value[0] }), /* @__PURE__ */ import_react12.default.createElement("input", { type: "hidden", name: `${name}_to`, value: _value[1] })));
+  ), /* @__PURE__ */ import_react12.default.createElement(
+    "input",
+    __spreadValues({
+      type: "hidden",
+      name: `${name}_from`,
+      value: _value[0]
+    }, hiddenInputProps)
+  ), /* @__PURE__ */ import_react12.default.createElement(
+    "input",
+    __spreadValues({
+      type: "hidden",
+      name: `${name}_to`,
+      value: _value[1]
+    }, hiddenInputProps)
+  )));
 });
 RangeSlider.displayName = "@raikou/core/RangeSlider";
 // Annotate the CommonJS export names for ESM import in node:

@@ -12,12 +12,12 @@ module.exports = function ({ addComponents, theme }: any) {
 
       paddingLeft: "var(--raikou-spacing-md)",
       paddingRight: "var(--raikou-spacing-md)",
-      maxWidth: "var(--container-size, var(--container-size))",
+      maxWidth: "var(--container-size)",
       marginLeft: "auto",
       marginRight: "auto",
 
       "&[data-fluid]": {
-        "--_container-size": "100%",
+        "--container-size": "100%",
       },
     },
   });

@@ -60,7 +60,7 @@ import { useProps } from "@raikou/core";
 function createPortalNode(props) {
   const node = document.createElement("div");
   node.setAttribute("data-portal", "true");
-  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.className === "string" && node.classList.add(...props.className.split(" "));
   typeof props.style === "object" && Object.assign(node.style, props.style);
   typeof props.id === "string" && node.setAttribute("id", props.id);
   return node;
@@ -139,7 +139,8 @@ var Affix = factory((_props, ref) => {
     vars,
     portalProps,
     zIndex,
-    withinPortal
+    withinPortal,
+    position
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -149,7 +150,8 @@ var Affix = factory((_props, ref) => {
     "vars",
     "portalProps",
     "zIndex",
-    "withinPortal"
+    "withinPortal",
+    "position"
   ]);
   const getStyles = useStyles({
     name: "Affix",

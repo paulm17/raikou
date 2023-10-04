@@ -1,8 +1,7 @@
-import type { Sx } from '@mantine/core';
-import type { CSSProperties, ReactNode } from 'react';
-import type { DataTableColumn } from './DataTableColumn';
+import type { CSSProperties, ReactNode } from "react";
+import type { DataTableColumn } from "./DataTableColumn";
 
-export type DataTableColumnGroup<T> = {
+export type DataTableColumnGroup = {
   /**
    * Used as the `key` prop for the created `<th />`.
    */
@@ -14,8 +13,7 @@ export type DataTableColumnGroup<T> = {
   /**
    * Columns which are part of the group.
    */
-  columns: readonly DataTableColumn<T>[];
+  columns: readonly DataTableColumn[];
   className?: string;
-  sx?: Sx;
   style?: CSSProperties;
 };

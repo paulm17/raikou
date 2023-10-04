@@ -8,11 +8,11 @@ module.exports = function ({ addComponents }: any) {
       justifyContent: "space-between",
       gap: "var(--spacing-xs)",
     },
-    "@media (min-width: var(--raikou-breakpoint-sm))": {
-      ".dataTablePagination-root": {
-        flexDirection: "row",
-      },
-    },
+    // "@media (min-width: var(--raikou-breakpoint-sm))": {
+    //   ".dataTablePagination-root": {
+    //     flexDirection: "row",
+    //   },
+    // },
     ".dataTablePagination-text": {
       flex: "1 1 auto",
     },

@@ -102,60 +102,76 @@ declare const PaginationNext: (<C = "button">(props: C extends React.ElementType
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, "component" | keyof PaginationEdgeProps> & {
     ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : PaginationEdgeProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 }) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(PaginationEdgeProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, "component" | keyof PaginationEdgeProps> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (PaginationEdgeProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & Record<string, never>;
 declare const PaginationPrevious: (<C = "button">(props: C extends React.ElementType<any> ? PaginationEdgeProps & {
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, "component" | keyof PaginationEdgeProps> & {
     ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : PaginationEdgeProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 }) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(PaginationEdgeProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, "component" | keyof PaginationEdgeProps> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (PaginationEdgeProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & Record<string, never>;
 declare const PaginationFirst: (<C = "button">(props: C extends React.ElementType<any> ? PaginationEdgeProps & {
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, "component" | keyof PaginationEdgeProps> & {
     ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : PaginationEdgeProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 }) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(PaginationEdgeProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, "component" | keyof PaginationEdgeProps> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (PaginationEdgeProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & Record<string, never>;
 declare const PaginationLast: (<C = "button">(props: C extends React.ElementType<any> ? PaginationEdgeProps & {
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, "component" | keyof PaginationEdgeProps> & {
     ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : PaginationEdgeProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 }) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(PaginationEdgeProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, "component" | keyof PaginationEdgeProps> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (PaginationEdgeProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & Record<string, never>;
 
 interface PaginationItemsProps {
     /** Dots icon component */
     dotsIcon?: PaginationIcon;
 }
-declare function PaginationItems({ dotsIcon }: PaginationItemsProps): JSX.Element;
+declare function PaginationItems({ dotsIcon }: PaginationItemsProps): React.JSX.Element;
 declare namespace PaginationItems {
     var displayName: string;
 }

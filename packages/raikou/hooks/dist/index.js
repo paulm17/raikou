@@ -2028,26 +2028,29 @@ function useNetwork() {
 var import_react49 = require("react");
 function useTimeout(callback, delay, options = { autoInvoke: false }) {
   const timeoutRef = (0, import_react49.useRef)(null);
-  const start = (...callbackParams) => {
-    if (!timeoutRef.current) {
-      timeoutRef.current = window.setTimeout(() => {
-        callback(callbackParams);
-        timeoutRef.current = null;
-      }, delay);
-    }
-  };
-  const clear = () => {
+  const start = (0, import_react49.useCallback)(
+    (...callbackParams) => {
+      if (!timeoutRef.current) {
+        timeoutRef.current = window.setTimeout(() => {
+          callback(callbackParams);
+          timeoutRef.current = null;
+        }, delay);
+      }
+    },
+    [callback, delay]
+  );
+  const clear = (0, import_react49.useCallback)(() => {
     if (timeoutRef.current) {
       window.clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
     }
-  };
+  }, []);
   (0, import_react49.useEffect)(() => {
     if (options.autoInvoke) {
       start();
     }
     return clear;
-  }, [delay]);
+  }, [clear, start]);
   return { start, clear };
 }
 

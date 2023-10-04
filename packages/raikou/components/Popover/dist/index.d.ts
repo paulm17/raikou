@@ -168,7 +168,7 @@ type PopoverFactory = Factory<{
     stylesNames: PopoverStylesNames;
     vars: PopoverCssVariables;
 }>;
-declare function Popover(_props: PopoverProps): JSX.Element;
+declare function Popover(_props: PopoverProps): React$1.JSX.Element;
 declare namespace Popover {
     var Target: _raikou_core.RaikouComponent<{
         props: PopoverTargetProps;

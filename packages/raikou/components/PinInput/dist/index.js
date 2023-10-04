@@ -300,6 +300,7 @@ var InputError = (0, import_core3.factory)((_props, ref) => {
     vars,
     size,
     __staticSelector,
+    __inheritStyles = true,
     variant
   } = _a, others = __objRest(_a, [
     "classNames",
@@ -310,6 +311,7 @@ var InputError = (0, import_core3.factory)((_props, ref) => {
     "vars",
     "size",
     "__staticSelector",
+    "__inheritStyles",
     "variant"
   ]);
   const _getStyles = (0, import_core3.useStyles)({
@@ -328,7 +330,7 @@ var InputError = (0, import_core3.factory)((_props, ref) => {
     varsResolver: varsResolver3
   });
   const ctx = useInputWrapperContext();
-  const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+  const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
   return /* @__PURE__ */ import_react8.default.createElement(
     import_core3.Box,
     __spreadValues(__spreadValues({
@@ -364,6 +366,7 @@ var InputDescription = (0, import_core4.factory)(
       vars,
       size,
       __staticSelector,
+      __inheritStyles = true,
       variant
     } = _a, others = __objRest(_a, [
       "classNames",
@@ -374,6 +377,7 @@ var InputDescription = (0, import_core4.factory)(
       "vars",
       "size",
       "__staticSelector",
+      "__inheritStyles",
       "variant"
     ]);
     const ctx = useInputWrapperContext();
@@ -392,7 +396,7 @@ var InputDescription = (0, import_core4.factory)(
       vars,
       varsResolver: varsResolver4
     });
-    const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
+    const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
     return /* @__PURE__ */ import_react9.default.createElement(
       import_core4.Box,
       __spreadValues(__spreadValues({
@@ -874,7 +878,8 @@ var PinInput = (0, import_core8.factory)((props, ref) => {
     inputType,
     inputMode,
     ariaLabel,
-    vars
+    vars,
+    hiddenInputProps
   } = _a, others = __objRest(_a, [
     "name",
     "form",
@@ -904,7 +909,8 @@ var PinInput = (0, import_core8.factory)((props, ref) => {
     "inputType",
     "inputMode",
     "ariaLabel",
-    "vars"
+    "vars",
+    "hiddenInputProps"
   ]);
   const uuid = (0, import_hooks2.useId)(name);
   const getStyles = (0, import_core8.useStyles)({
@@ -1065,7 +1071,15 @@ var PinInput = (0, import_core8.factory)((props, ref) => {
         readOnly
       })
     ))
-  ), /* @__PURE__ */ import_react13.default.createElement("input", { type: "hidden", name, form, value: _value }));
+  ), /* @__PURE__ */ import_react13.default.createElement(
+    "input",
+    __spreadValues({
+      type: "hidden",
+      name,
+      form,
+      value: _value
+    }, hiddenInputProps)
+  ));
 });
 PinInput.displayName = "@raikou/core/PinInput";
 // Annotate the CommonJS export names for ESM import in node:

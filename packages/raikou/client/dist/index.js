@@ -42,6 +42,7 @@ __reExport(src_exports, require("@raikou/menu"), module.exports);
 __reExport(src_exports, require("@raikou/modal"), module.exports);
 __reExport(src_exports, require("@raikou/modal-base"), module.exports);
 __reExport(src_exports, require("@raikou/multi-select"), module.exports);
+__reExport(src_exports, require("@raikou/overlay"), module.exports);
 __reExport(src_exports, require("@raikou/native-select"), module.exports);
 __reExport(src_exports, require("@raikou/navlink"), module.exports);
 __reExport(src_exports, require("@raikou/notifications"), module.exports);
@@ -96,6 +97,7 @@ __reExport(src_exports, require("@raikou/tooltip"), module.exports);
   ...require("@raikou/modal"),
   ...require("@raikou/modal-base"),
   ...require("@raikou/multi-select"),
+  ...require("@raikou/overlay"),
   ...require("@raikou/native-select"),
   ...require("@raikou/navlink"),
   ...require("@raikou/notifications"),

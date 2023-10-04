@@ -41,7 +41,7 @@ const defaultProps: Partial<ContainerProps> = {};
 const varsResolver = createVarsResolver<ContainerFactory>(
   (_, { size, fluid }) => ({
     root: {
-      "--container-size": fluid ? "100%" : getSize(size, "container-size"),
+      "--container-size": fluid ? undefined : getSize(size, "container-size"),
     },
   }),
 );

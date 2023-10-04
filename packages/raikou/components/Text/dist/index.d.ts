@@ -38,14 +38,18 @@ declare const Text: (<C = "p">(props: C extends React.ElementType<any> ? TextPro
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, keyof TextProps | "component"> & {
     ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : TextProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 }) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(TextProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, keyof TextProps | "component"> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (TextProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & _raikou_core.ThemeExtend<{
     props: TextProps;
     defaultComponent: "p";

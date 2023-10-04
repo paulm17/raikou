@@ -86,7 +86,7 @@ var import_core = require("@raikou/core");
 function createPortalNode(props) {
   const node = document.createElement("div");
   node.setAttribute("data-portal", "true");
-  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.className === "string" && node.classList.add(...props.className.split(" "));
   typeof props.style === "object" && Object.assign(node.style, props.style);
   typeof props.id === "string" && node.setAttribute("id", props.id);
   return node;
@@ -854,7 +854,8 @@ var Dropzone = (0, import_core12.factory)((_props, ref) => {
     getFilesFromEvent,
     validator,
     rejectColor,
-    acceptColor
+    acceptColor,
+    enablePointerEvents
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -890,7 +891,8 @@ var Dropzone = (0, import_core12.factory)((_props, ref) => {
     "getFilesFromEvent",
     "validator",
     "rejectColor",
-    "acceptColor"
+    "acceptColor",
+    "enablePointerEvents"
   ]);
   const getStyles = (0, import_core12.useStyles)({
     name: "Dropzone",
@@ -961,7 +963,7 @@ var Dropzone = (0, import_core12.factory)((_props, ref) => {
       /* @__PURE__ */ import_react17.default.createElement(
         "div",
         __spreadProps(__spreadValues({}, getStyles("inner")), {
-          "data-disable-pointer-events": !activateOnClick || void 0
+          "data-enable-pointer-events": enablePointerEvents || void 0
         }),
         children
       )

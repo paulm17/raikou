@@ -103,7 +103,7 @@ interface TooltipGroupProps {
     /** Close delay in ms */
     closeDelay?: number;
 }
-declare function TooltipGroup(props: TooltipGroupProps): JSX.Element;
+declare function TooltipGroup(props: TooltipGroupProps): React$1.JSX.Element;
 declare namespace TooltipGroup {
     var displayName: string;
 }

@@ -23,7 +23,7 @@ type DropzoneAcceptProps = DropzoneStatusProps;
 type DropzoneRejectProps = DropzoneStatusProps;
 type DropzoneIdleProps = DropzoneStatusProps;
 
-type DropzoneStylesNames = "root" | "inner";
+type DropzoneStylesNames = "root" | "inner" | "fullScreen";
 type DropzoneVariant = "filled" | "light";
 type DropzoneCssVariables = {
     root: "--dropzone-radius" | "--dropzone-accept-color" | "--dropzone-accept-bg" | "--dropzone-reject-color" | "--dropzone-reject-bg";
@@ -85,6 +85,8 @@ interface DropzoneProps extends BoxProps, StylesApiProps<DropzoneFactory>, Eleme
     getFilesFromEvent?: (event: DropEvent) => Promise<Array<File | DataTransferItem>>;
     /** Custom validation function. It must return null if there's no errors. */
     validator?: <T extends File>(file: T) => FileError | FileError[] | null;
+    /** Determines whether pointer events should be enabled on the inner element, `false` by default */
+    enablePointerEvents?: boolean;
 }
 type DropzoneFactory = Factory<{
     props: DropzoneProps;

@@ -95,12 +95,12 @@ import { useRef as useRef20, useEffect as useEffect28 } from "react";
 import { useState as useState27, useCallback as useCallback12 } from "react";
 import { useRef as useRef21, useState as useState28, useEffect as useEffect29 } from "react";
 import { useState as useState29, useEffect as useEffect30, useCallback as useCallback13 } from "react";
-import { useRef as useRef22, useEffect as useEffect31 } from "react";
+import { useRef as useRef22, useEffect as useEffect31, useCallback as useCallback14 } from "react";
 import { useState as useState30, useEffect as useEffect32 } from "react";
 import { useEffect as useEffect33, useRef as useRef23 } from "react";
 import { useRef as useRef24 } from "react";
 import { useRef as useRef25 } from "react";
-import { useCallback as useCallback14, useState as useState31 } from "react";
+import { useCallback as useCallback15, useState as useState31 } from "react";
 var useIsomorphicEffect = typeof document !== "undefined" ? useLayoutEffect : useEffect7;
 var __useId = React["useId".toString()] || (() => void 0);
 function assignRef(ref, value) {
@@ -116,7 +116,7 @@ import { useProps } from "@raikou/core";
 function createPortalNode(props) {
   const node = document.createElement("div");
   node.setAttribute("data-portal", "true");
-  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.className === "string" && node.classList.add(...props.className.split(" "));
   typeof props.style === "object" && Object.assign(node.style, props.style);
   typeof props.id === "string" && node.setAttribute("id", props.id);
   return node;
@@ -195,7 +195,8 @@ var Affix = factory((_props, ref) => {
     vars,
     portalProps,
     zIndex,
-    withinPortal
+    withinPortal,
+    position
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -205,7 +206,8 @@ var Affix = factory((_props, ref) => {
     "vars",
     "portalProps",
     "zIndex",
-    "withinPortal"
+    "withinPortal",
+    "position"
   ]);
   const getStyles = useStyles({
     name: "Affix",

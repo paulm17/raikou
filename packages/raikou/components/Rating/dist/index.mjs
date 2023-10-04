@@ -39,7 +39,7 @@ import {
   useProps,
   useStyles,
   createVarsResolver,
-  useDirection,
+  useDirection as useDirection2,
   getSize,
   getThemeColor
 } from "@raikou/core";
@@ -73,7 +73,10 @@ var [RatingProvider, useRatingContext] = createSafeContext("Rating was not found
 
 // src/RatingItem/RatingItem.tsx
 import React5 from "react";
-import { Box } from "@raikou/core";
+import {
+  Box,
+  useDirection
+} from "@raikou/core";
 
 // src/StarSymbol/StarSymbol.tsx
 import React4 from "react";
@@ -144,6 +147,7 @@ function RatingItem(_a) {
   const ctx = useRatingContext();
   const _fullIcon = typeof fullIcon === "function" ? fullIcon(value) : fullIcon;
   const _emptyIcon = typeof emptyIcon === "function" ? emptyIcon(value) : emptyIcon;
+  const { dir } = useDirection();
   return /* @__PURE__ */ React5.createElement(React5.Fragment, null, !readOnly && /* @__PURE__ */ React5.createElement(
     "input",
     __spreadValues(__spreadProps(__spreadValues({}, ctx.getStyles("input")), {
@@ -171,7 +175,7 @@ function RatingItem(_a) {
       Box,
       __spreadProps(__spreadValues({}, ctx.getStyles("symbolBody")), {
         __vars: {
-          "--rating-symbol-clip-path": fractionValue === 1 ? void 0 : `inset(0 ${active ? 100 - fractionValue * 100 : 100}% 0 0)`
+          "--rating-symbol-clip-path": fractionValue === 1 ? void 0 : dir === "ltr" ? `inset(0 ${active ? 100 - fractionValue * 100 : 100}% 0 0)` : `inset(0 0 0 ${active ? 100 - fractionValue * 100 : 100}% )`
         }
       }),
       full ? _fullIcon || /* @__PURE__ */ React5.createElement(StarSymbol, { type: "full" }) : _emptyIcon || /* @__PURE__ */ React5.createElement(StarSymbol, { type: "empty" })
@@ -276,7 +280,7 @@ var Rating = factory((_props, ref) => {
     vars,
     varsResolver
   });
-  const { dir } = useDirection();
+  const { dir } = useDirection2();
   const _name = useId(name);
   const _id = useId(id);
   const rootRef = useRef(null);

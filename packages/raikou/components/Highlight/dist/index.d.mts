@@ -56,14 +56,18 @@ declare const Highlight: (<C = "div">(props: C extends React.ElementType<any> ? 
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, "component" | keyof HighlightProps> & {
     ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : HighlightProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 }) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(HighlightProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, "component" | keyof HighlightProps> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (HighlightProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & _raikou_core.ThemeExtend<{
     props: HighlightProps;
     defaultRef: HTMLDivElement;

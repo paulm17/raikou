@@ -11,7 +11,7 @@ interface CopyButtonProps {
     /** Copied status timeout in ms, `1000` by default */
     timeout?: number;
 }
-declare function CopyButton(props: CopyButtonProps): JSX.Element;
+declare function CopyButton(props: CopyButtonProps): React.JSX.Element;
 declare namespace CopyButton {
     var displayName: string;
 }

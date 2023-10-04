@@ -13,43 +13,58 @@ var require_DataTable_plugin = __commonJS({
     "use strict";
     module2.exports = function({ addComponents }) {
       addComponents({
-        ".datatable-root": {
+        ".dataTable-root": {
           position: "relative",
           display: "flex",
           flexDirection: "column",
           overflow: "hidden"
         },
-        ".data-table-root tr": {
-          '[data-raikou-color-scheme="light"] &': {
-            backgroundColor: "--raikou-color-white"
-          },
-          '[data-raikou-color-scheme="dark"] &': {
-            backgroundColor: "--raikou-color-dark-7"
-          }
+        ".dataTable-root tr": {
+          backgroundColor: "var(--raikou-datatable-root-tr)"
         },
-        ".data-table-root thead tr th": {
-          '[data-raikou-color-scheme="light"] &': {
-            backgroundBottomColor: "--mantine-color-gray-3"
-          },
-          '[data-raikou-color-scheme="dark"] &': {
-            backgroundBottomColor: "--mantine-color-dark-4"
-          }
+        ".dataTable-root thead tr th, .dataTable-root thead tr td": {
+          borderRight: "none"
         },
-        ".data-table-root tbody tr td": {
-          '[data-raikou-color-scheme="light"] &': {
-            backgroundTopColor: "--mantine-color-gray-3"
-          },
-          '[data-raikou-color-scheme="dark"] &': {
-            backgroundTopColor: "--mantine-color-dark-4"
-          }
+        ".dataTable-root thead tr th": {
+          borderBottom: "0.0625rem solid var(--raikou-datatable-root-th)",
+          textAlign: "left",
+          fontWeight: "bold",
+          color: "rgb(193, 194, 197)",
+          padding: "0.4375rem 0.625rem",
+          fontSize: "0.875rem"
         },
-        ".data-table-root.lastRowBorderBottomVisible tbody tr:last-of-type td": {
-          '[data-raikou-color-scheme="light"] &': {
-            borderBottom: "1px solid rgb(var(--mantine-color-gray-3) / 65%)"
-          },
-          '[data-raikou-color-scheme="dark"] &': {
-            borderBottom: "1px solid rgb(var(--mantine-color-dark-4) / 65%)"
-          }
+        ".dataTable-root tbody tr td": {
+          borderTop: "0.0625rem solid var(--raikou-datatable-root-td)",
+          padding: "0.4375rem 0.625rem",
+          fontSize: "0.875rem"
+        },
+        ".dataTable-root tbody tr:first-of-type td": {
+          borderTop: "none"
+        },
+        ".dataTable-root .lastRowBorderBottomVisible tbody tr:last-of-type td": {
+          borderBottom: "1px solid rgb(var(--raikou-datatable-root-lastrow-border) / 65%)"
+        },
+        ".dataTable-textSelectionDisabled": {
+          userSelect: "none"
+        },
+        ".dataTable-table": {
+          borderCollapse: "separate",
+          borderSpacing: "0"
+        },
+        ".dataTable-tableWithBorder": {
+          border: "1px solid rgb(var(--raikou-datatable-root-tablewith-border))"
+        },
+        ".dataTable-tableWithColumnBorders th:not(:first-of-type), .dataTable-tableWithColumnBorders td:not(:first-of-type)": {
+          borderLeft: "1px solid rgb(var(--raikou-datatable-root-table-column-borders) / 65%)"
+        },
+        ".dataTable-tableWithColumnBordersAndSelectableRecords thead tr + tr th": {
+          borderLeft: "1px solid rgb(var(--raikou-datatable-root-table-column-borders-and-selectable-records) / 65%)"
+        },
+        ".dataTable-verticalAlignmentTop td": {
+          verticalAlign: "top"
+        },
+        ".dataTable-verticalAlignmentBottom td": {
+          verticalAlign: "bottom"
         }
       });
     };
@@ -75,6 +90,37 @@ var require_DataTableEmptyRow_plugin = __commonJS({
   }
 });
 
+// ../data-table/src/DataTableEmptyState.plugin.ts
+var require_DataTableEmptyState_plugin = __commonJS({
+  "../data-table/src/DataTableEmptyState.plugin.ts"(exports2, module2) {
+    "use strict";
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".dataTableEmptyState-root": {
+          position: "absolute",
+          top: "0",
+          right: "0",
+          bottom: "0",
+          left: "0",
+          flexDirection: "column",
+          pointerEvents: "none",
+          opacity: "0",
+          transition: "opacity 0.15s ease",
+          color: "var(--raikou-datatable-empty-state-root)"
+        },
+        ".dataTableEmptyState-active": {
+          opacity: "1"
+        },
+        ".dataTableEmptyState-standardIcon": {
+          fontSize: "0",
+          borderRadius: "50%",
+          padding: "var(--spacing-xs)"
+        }
+      });
+    };
+  }
+});
+
 // ../data-table/src/DataTableFooter.plugin.ts
 var require_DataTableFooter_plugin = __commonJS({
   "../data-table/src/DataTableFooter.plugin.ts"(exports2, module2) {
@@ -83,12 +129,64 @@ var require_DataTableFooter_plugin = __commonJS({
       addComponents({
         ".dataTableFooter-root": {
           zIndex: "2",
+          color: "var(--raikou-datatable-footer-root)"
+        }
+      });
+    };
+  }
+});
+
+// ../data-table/src/DataTableFooterCell.plugin.ts
+var require_DataTableFooterCell_plugin = __commonJS({
+  "../data-table/src/DataTableFooterCell.plugin.ts"(exports2, module2) {
+    "use strict";
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".dataTableFooterCell-noWrap": {
+          whiteSpace: "nowrap"
+        },
+        ".dataTableFooterCell-ellipsis": {
+          overflow: "hidden",
+          textOverflow: "ellipsis"
+        }
+      });
+    };
+  }
+});
+
+// ../data-table/src/DataTableFooterSelectorPlaceholderCell.plugin.ts
+var require_DataTableFooterSelectorPlaceholderCell_plugin = __commonJS({
+  "../data-table/src/DataTableFooterSelectorPlaceholderCell.plugin.ts"(exports2, module2) {
+    "use strict";
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        "dataTableFooterSelectorPlaceholderCell-root": {
+          position: "sticky",
+          width: "0",
+          left: "0",
+          background: "inherit"
+        },
+        "dataTableFooterSelectorPlaceholderCell-root:after": {
+          content: '""',
+          position: "absolute",
+          top: "0",
+          right: "-var(--raikou-spacing-sm)",
+          bottom: "0",
+          width: "var(--raikou-spacing-sm)",
+          pointerEvents: "none",
+          opacity: "0",
+          transition: "opacity 0.15s ease",
+          borderLeft: "1px solid var(--raikou-datatable-footer-selector-placeholdercell-root)",
           '[data-raikou-color-scheme="light"] &': {
-            color: "--raikou-color-white"
+            color: "--raikou-color-white",
+            background: "linear-gradient(to right, rgba(var(--raikou-color-black) / 0.05), rgba(var(--raikou-color-black) / 0)), linear-gradient(to right, rgba(var(--raikou-color-black) / 0.05), rgba(var(--raikou-color-black) / 0) 30%)"
           },
           '[data-raikou-color-scheme="dark"] &': {
-            color: "--raikou-color-dark-7"
+            background: "linear-gradient(to right, rgba(var(--mantine-color-black) / 0.5), rgba(var(--raikou-color-black) / 0)), linear-gradient(to right, rgba(var(--raikou-color-black) / 0.5), rgba(var(--raikou-color-black) / 0) 30%)"
           }
+        },
+        ".dataTableFooterSelectorPlaceholderCell-shadowVisible:after": {
+          opacity: "1"
         }
       });
     };
@@ -105,12 +203,87 @@ var require_DataTableHeader_plugin = __commonJS({
           zIndex: "2",
           position: "sticky",
           top: "0",
-          '[data-raikou-color-scheme="light"] &': {
-            background: "--raikou-color-dark-7"
-          },
-          '[data-raikou-color-scheme="dark"] &': {
-            background: "--raikou-color-white"
+          background: "var(--raikou-datatable-header-root)"
+        }
+      });
+    };
+  }
+});
+
+// ../data-table/src/DataTableHeaderCell.plugin.ts
+var require_DataTableHeaderCell_plugin = __commonJS({
+  "../data-table/src/DataTableHeaderCell.plugin.ts"(exports2, module2) {
+    "use strict";
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".dataTable-sortableColumnHeader": {
+          cursor: "pointer",
+          transition: "background .15s ease",
+          "&:hover:not(:has(button:hover))": {
+            background: "var(--raikou-datatable-sortable-column-header-border)"
           }
+        },
+        ".dataTable-sortableColumnHeaderGroup.dataTable-sortableColumnHeaderGroup": {
+          gap: "0.25em"
+        },
+        ".dataTable-columnHeaderText": {
+          overflow: "hidden",
+          whiteSpace: "nowrap",
+          textOverflow: "ellipsis"
+        },
+        ".dataTable-sortableColumnHeaderText": {
+          minWidth: "0",
+          flexGrow: "1"
+        },
+        ".dataTable-sortableColumnHeaderIcon": {
+          transition: "transform .15s ease"
+        },
+        ".dataTable-sortableColumnHeaderIconRotated": {
+          transform: "rotate3d(0, 0, 1, 180deg)"
+        },
+        ".dataTable-sortableColumnHeaderUnsortedIcon": {
+          color: "var(--raikou-datatable-sortable-column-header-icon-color)",
+          transition: "color .15s ease",
+          "th:hover &": {
+            color: "var(--raikou-datatable-sortable-column-header-icon-color-hover)"
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../data-table/src/DataTableHeaderSelectorCell.plugin.ts
+var require_DataTableHeaderSelectorCell_plugin = __commonJS({
+  "../data-table/src/DataTableHeaderSelectorCell.plugin.ts"(exports2, module2) {
+    "use strict";
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".dtHeaderSelectorCell-root": {
+          "--shadow-gradient-alpha": "0.05",
+          position: "sticky",
+          width: "0",
+          left: "0",
+          background: "inherit"
+        },
+        ".dtHeaderSelectorCell-root::after": {
+          content: '""',
+          position: "absolute",
+          top: "0",
+          right: "var(--raikou-spacing-sm)",
+          bottom: "0",
+          width: "var(--raikou-spacing-sm)",
+          pointerEvents: "none",
+          opacity: "0",
+          transition: "opacity 0.15s ease",
+          borderLeft: "1px solid var(--raikou-datatable-header-selectorcell-border-left)",
+          background: "var(--raikou-datatable-header-selectorcell-background)"
+        },
+        ".dtHeaderSelectorCell-shadowVisible::after": {
+          opacity: "1"
+        },
+        ".dtHeaderSelectorCell-checkboxInput": {
+          cursor: "pointer"
         }
       });
     };
@@ -133,12 +306,11 @@ var require_DataTableLoader_plugin = __commonJS({
           pointerEvents: "none",
           opacity: "0",
           transition: "opacity 0.15s ease",
-          '[data-raikou-color-scheme="light"] &': {
-            background: "rgb(var(--raikou-color-white) / 75%)"
-          },
-          '[data-raikou-color-scheme="dark"] &': {
-            background: "rgb(var(--raikou-color-dark-8) / 75%)"
-          }
+          background: "rgb(var(--raikou-datatable-loader-root) / 75%)"
+        },
+        ".dataTableLoader-fetching": {
+          pointerEvents: "all",
+          opacity: "1"
         }
       });
     };
@@ -152,18 +324,18 @@ var require_DataTablePagination_plugin = __commonJS({
     module2.exports = function({ addComponents }) {
       addComponents({
         ".dataTablePagination-root": {
-          background: "var(--colorScheme-dark-7, #1c1c1c)",
+          background: "var(--raikou-datatable-pagination-root)",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "space-between",
           gap: "var(--spacing-xs)"
         },
-        "@media (min-width: var(--mantine-breakpoint-sm))": {
-          ".dataTablePagination-root": {
-            flexDirection: "row"
-          }
-        },
+        // "@media (min-width: var(--raikou-breakpoint-sm))": {
+        //   ".dataTablePagination-root": {
+        //     flexDirection: "row",
+        //   },
+        // },
         ".dataTablePagination-text": {
           flex: "1 1 auto"
         },
@@ -173,6 +345,83 @@ var require_DataTablePagination_plugin = __commonJS({
         },
         ".dataTablePagination-paginationFetching": {
           opacity: "0"
+        }
+      });
+    };
+  }
+});
+
+// ../data-table/src/DataTableRow.plugin.ts
+var require_DataTableRow_plugin = __commonJS({
+  "../data-table/src/DataTableRow.plugin.ts"(exports2, module2) {
+    "use strict";
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".dataTableRow-withPointerCursor": {
+          cursor: "pointer"
+        },
+        ".dataTableRow-selected": {
+          "&&": {
+            "tr&": {
+              background: "var(--raikou-datatable-row-selected-tr)"
+            },
+            "table[data-striped] tbody &:nth-of-type(odd)": {
+              background: "var(--raikou-datatable-row-selected-tbody)"
+            }
+          }
+        },
+        ".dataTableRow-contextMenuVisible": {
+          "&&": {
+            "tr&": {
+              background: "var(--raikou-datatable-row-context-menu-tr)"
+            },
+            "table[data-striped] tbody &:nth-of-type(odd)": {
+              background: "var(--raikou-datatable-row-context-menu-tbody)"
+            }
+          }
+        }
+      });
+    };
+  }
+});
+
+// ../data-table/src/DataTableRowCell.plugin.ts
+var require_DataTableRowCell_plugin = __commonJS({
+  "../data-table/src/DataTableRowCell.plugin.ts"(exports2, module2) {
+    "use strict";
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".dataTableRowCell-withPointerCursor": {
+          cursor: "pointer"
+        },
+        ".dataTableRowCell-noWrap": {
+          whiteSpace: "nowrap"
+        },
+        ".dataTableRowCell-ellipsis": {
+          overflow: "hidden",
+          textOverflow: "ellipsis"
+        }
+      });
+    };
+  }
+});
+
+// ../data-table/src/DataTableRowExpansion.plugin.ts
+var require_DataTableRowExpansion_plugin = __commonJS({
+  "../data-table/src/DataTableRowExpansion.plugin.ts"(exports2, module2) {
+    "use strict";
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".dataTableRowExpansion-cell": {
+          "&&": {
+            borderBottomWidth: "0",
+            padding: "0"
+          }
+        },
+        ".dataTableRowCell-expandedCell": {
+          "&&": {
+            borderBottomWidth: "1"
+          }
         }
       });
     };
@@ -189,12 +438,22 @@ var require_DataTableRowMenu_plugin = __commonJS({
           position: "fixed",
           overflow: "hidden",
           transition: "all .15s ease",
-          '[data-raikou-color-scheme="light"] &': {
-            border: "1px solid var(--mantine-color-gray-3)"
-          },
-          '[data-raikou-color-scheme="dark"] &': {
-            border: "1px solid --mantine-color-dark-4)"
-          }
+          border: "1px solid var(--raikou-datatable-rowmenu-root)"
+        }
+      });
+    };
+  }
+});
+
+// ../data-table/src/DataTableRowMenuDivider.plugin.ts
+var require_DataTableRowMenuDivider_plugin = __commonJS({
+  "../data-table/src/DataTableRowMenuDivider.plugin.ts"(exports2, module2) {
+    "use strict";
+    module2.exports = function({ addComponents }) {
+      addComponents({
+        ".dataTableRowMenuDivider-root": {
+          height: "1",
+          background: "--raikou-datatable-rowmenu-divider-root"
         }
       });
     };
@@ -207,7 +466,7 @@ var require_DataTableRowMenuItem_plugin = __commonJS({
     "use strict";
     module2.exports = function({ addComponents }) {
       addComponents({
-        ".dataTableHeader-root": {
+        ".dataTableRowMenuItem-root": {
           width: "100%",
           display: "flex",
           alignItems: "center",
@@ -218,20 +477,20 @@ var require_DataTableRowMenuItem_plugin = __commonJS({
           transition: "background 0.15s ease",
           "& [disabled]": {
             cursor: "not-allowed",
-            color: "var(--mantine-color-dark-3)"
+            color: "var(--raikou-datatable-rowmenuitem-disabled-color)"
           },
           "&:hover:not([disabled])": {
-            background: "rgba(var(--mantine-color-gray-4), 0.25)"
+            background: "rgba(var(--raikou-datatable-rowmenuitem-disabled-hover), 0.25)"
           },
           "&:active:not([disabled])": {
-            background: "rgba(var(--mantine-color-gray-4), 0.5)"
+            background: "rgba(var(--raikou-datatable-rowmenuitem-disabled-active), 0.5)"
           }
         },
-        ".dataTableHeader-icon": {
+        ".dataTableRowMenuItem-icon": {
           fontSize: "0",
           marginRight: "var(--spacing-xs)"
         },
-        ".dataTableHeader-title": {
+        ".dataTableRowMenuItem-title": {
           whiteSpace: "nowrap"
         }
       });
@@ -256,9 +515,9 @@ var require_DataTableRowSelectorCell_plugin = __commonJS({
           content: '""',
           position: "absolute",
           top: "0",
-          right: "-px(var(--mantine-spacing-sm))",
+          right: "-px(var(--raikou-spacing-sm))",
           bottom: "0",
-          width: "var(--mantine-spacing-sm)",
+          width: "var(--raikou-spacing-sm)",
           pointerEvents: "none",
           opacity: "0",
           transition: "opacity .15s ease"
@@ -305,27 +564,27 @@ var require_DataTableScrollArea_plugin = __commonJS({
           zIndex: "2",
           left: "0",
           right: "0",
-          height: "var(--mantine-spacing-sm)"
+          height: "var(--raikou-spacing-sm)"
         },
         ".dataTableScrollArea-leftShadow": {
           zIndex: "3",
           top: "0",
           left: "0",
           bottom: "0",
-          width: "var(--mantine-spacing-sm)"
+          width: "var(--raikou-spacing-sm)"
         },
         ".dataTableScrollArea-rightShadow": {
           zIndex: "2",
           top: "0",
           bottom: "0",
           right: "0",
-          width: "var(--mantine-spacing-sm)"
+          width: "var(--raikou-spacing-sm)"
         },
         ".dataTableScrollArea-bottomShadow": {
           zIndex: "2",
           left: "0",
           right: "0",
-          height: "var(--mantine-spacing-sm)"
+          height: "var(--raikou-spacing-sm)"
         },
         ".dataTableScrollArea-shadowVisible": {
           opacity: "1"
@@ -343,11 +602,20 @@ var require_preset = __commonJS({
       plugins: [
         require_DataTable_plugin(),
         require_DataTableEmptyRow_plugin(),
+        require_DataTableEmptyState_plugin(),
         require_DataTableFooter_plugin(),
+        require_DataTableFooterCell_plugin(),
+        require_DataTableFooterSelectorPlaceholderCell_plugin(),
         require_DataTableHeader_plugin(),
+        require_DataTableHeaderCell_plugin(),
+        require_DataTableHeaderSelectorCell_plugin(),
         require_DataTableLoader_plugin(),
         require_DataTablePagination_plugin(),
+        require_DataTableRow_plugin(),
+        require_DataTableRowCell_plugin(),
+        require_DataTableRowExpansion_plugin(),
         require_DataTableRowMenu_plugin(),
+        require_DataTableRowMenuDivider_plugin(),
         require_DataTableRowMenuItem_plugin(),
         require_DataTableRowSelectorCell_plugin(),
         require_DataTableScrollArea_plugin()
@@ -818,6 +1086,184 @@ var require_css_variables_plugin = __commonJS({
             "--raikou-combobox-footer-border-color": "#373a40",
             "--raikou-combobox-divider-bg": "#373a40",
             "--raikou-combobox-chevron-color": "#5c5f66"
+          }
+        },
+        ".dataTable-root tr": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-root-tr": "#fff"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-root-tr": "#1a1b1e"
+          }
+        },
+        ".dataTable-root thead tr th": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-root-th": "#dee2e6"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-root-th": "#373a40"
+          }
+        },
+        ".dataTable-root tbody tr td": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-root-td": "#dee2e6"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-root-td": "#373a40"
+          }
+        },
+        ".dataTable-root.lastRowBorderBottomVisible tbody tr:last-of-type td": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-root-lastrow-border": "#5c5f66"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-root-lastrow-border": "#373a40"
+          }
+        },
+        ".dataTable-root-tableWithBorder": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-root-tablewith-border": "#dee2e6"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-root-tablewith-border": "#373a40"
+          }
+        },
+        ".dataTable-root-tableWithColumnBorders th:not(:first-of-type), .dataTable-tableWithColumnBorders td:not(:first-of-type)": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-root-table-column-borders": "#dee2e6"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-root-table-column-borders": "#373a40"
+          }
+        },
+        ".dataTable-root-tableWithColumnBordersAndSelectableRecords thead tr + tr th": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-root-table-column-borders-and-selectable-records": "#dee2e6"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-root-table-column-borders-and-selectable-records": "#373a40"
+          }
+        },
+        ".dataTableEmptyState-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-empty-state-root": "#868e96"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-empty-state-root": "#5c5f66"
+          }
+        },
+        ".dataTableFooter-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-footer-root": "#fff"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-footer-root": "#1a1b1e"
+          }
+        },
+        ".dataTableFooterSelectorPlaceholderCell-root:after": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-footer-selector-placeholdercell-root": "#dee2e6"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-footer-selector-placeholdercell-root": "#373a40"
+          }
+        },
+        ".dataTableHeader-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-header-root": "#1a1b1e"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-header-root": "#fff"
+          }
+        },
+        ".dataTableHeaderSelectorCell-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-header-selectorcell-border-left": "#dee2e6",
+            "--raikou-datatable-header-selectorcell-background": "linear-gradient(to right, rgba(var(0,0,0) / 0.05), rgba(var(0,0,0) / 0), linear-gradient(to right, rgba(var(0,0,0), / 0.05), rgba(var(0,0,0) / 0) 30%)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-header-selectorcell-border-left": "#373a40",
+            "--raikou-datatable-header-selectorcell-background": "linear-gradient(to right, rgba(var(0,0,0) / 0.5), rgba(var(0,0,0) / 0), linear-gradient(to right, rgba(var(0,0,0), / 0.5), rgba(var(0,0,0) / 0) 30%)"
+          }
+        },
+        ".dataTableLoader-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-loader-root": "#fff"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-loader-root": "#141517"
+          }
+        },
+        ".dataTablePagination-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-pagination-root": "#5c5f66"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-pagination-root": "#1c1c1c"
+          }
+        },
+        ".dataTableRow-selected": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-row-selected-tr": "rgb(37,38,43 / 90%)",
+            "--raikou-datatable-row-selected-tbody": "rgb(37,38,43 / 85%)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-row-selected-tr": "rgb(37,38,43 / 60%)",
+            "--raikou-datatable-row-selected-tbody": "rgb(37,38,43 / 55%)"
+          }
+        },
+        ".dataTableRow-context-menu": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-row-context-menu-tr": "rgb(37,38,43 / 70%)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-row-context-menu-tbody": "rgb(37,38,43 / 65%)"
+          }
+        },
+        ".dataTableRowMenu-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-rowmenu-root": "#dee2e6"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-rowmenu-root": "#373a40"
+          }
+        },
+        ".dataTableRowMenuDivider-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-rowmenu-divider-root": "#f1f3f5"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-rowmenu-divider-root": "#adb5bd"
+          }
+        },
+        ".dataTableRowMenuItem-root": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-rowmenuitem-disabled-color": "#5c5f66",
+            "--raikou-datatable-rowmenuitem-disabled-hover": "#ced4da",
+            "--raikou-datatable-rowmenuitem-disabled-active": "#ced4da"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-rowmenuitem-disabled-color": "#5c5f66",
+            "--raikou-datatable-rowmenuitem-disabled-hover": "#ced4da",
+            "--raikou-datatable-rowmenuitem-disabled-active": "#ced4da"
+          }
+        },
+        ".dataTable-sortableColumnHeader": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-sortable-column-header-border": "#f8f9fa"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-sortable-column-header-border": "#25262b"
+          }
+        },
+        ".dataTable-sortableColumnHeaderUnsortedIcon": {
+          '[data-raikou-color-scheme="light"] &': {
+            "--raikou-datatable-sortable-column-header-icon-color": "#2c2e33",
+            "--raikou-datatable-sortable-column-header-icon-color-hover": "#25262b"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--raikou-datatable-sortable-column-header-icon-color": "#dee2e6",
+            "--raikou-datatable-sortable-column-header-icon-color-hover": "#e9ecef"
           }
         },
         ".divider-root": {
@@ -1816,6 +2262,22 @@ var require_ActionIcon_plugin = __commonJS({
                 borderRadius: "0",
                 borderRightWidth: "calc(var(--ai-border-width) / 2)",
                 borderLeftWidth: "calc(var(--ai-border-width) / 2)"
+              },
+              '[dir="rtl"] &': {
+                "&:not(:only-child):first-child": {
+                  border: `var(--ai-bd, ${rem2("1px")} solid transparent)`,
+                  borderRadius: "var(--ai-radius, var(--mantine-radius-default))",
+                  borderBottomLeftRadius: "0",
+                  borderTopLeftRadius: "0",
+                  borderLeftWidth: "calc(var(--ai-border-width) / 2)"
+                },
+                "&:not(:only-child):last-child": {
+                  border: `var(--ai-bd, ${rem2("1px")} solid transparent)`,
+                  borderRadius: "var(--ai-radius, var(--mantine-radius-default))",
+                  borderBottomRightRadius: "0",
+                  borderTopRightRadius: "0",
+                  borderRightWidth: "calc(var(--ai-border-width) / 2)"
+                }
               }
             }
           },
@@ -2615,7 +3077,7 @@ var require_Button_plugin = __commonJS({
               content: '""',
               position: "relative",
               inset: rem2("-1px"),
-              borderRadius: "var(--button-radius)",
+              borderRadius: "var(--button-radius, var(--raikou-radius-default))",
               backgroundColor: "var(--_button-loading-overlay-bg)"
             }
           },
@@ -2708,6 +3170,26 @@ var require_Button_plugin = __commonJS({
                 borderRadius: "0",
                 borderRightWidth: "calc(var(--button-border-width) / 2)",
                 borderLeftWidth: "calc(var(--button-border-width) / 2)"
+              },
+              '[dir="rtl"] &': {
+                "&:not(:only-child):first-child": {
+                  border: `var(--_button-bd, var(--button-bd, ${rem2(
+                    "1px"
+                  )} solid transparent))`,
+                  borderRadius: "var(--button-radius, var(--raikou-radius-default))",
+                  borderBottomLeftRadius: "0",
+                  borderTopLeftRadius: "0",
+                  borderLeftWidth: "calc(var(--button-border-width) / 2)"
+                },
+                "&:not(:only-child):last-child": {
+                  border: `var(--_button-bd, var(--button-bd, ${rem2(
+                    "1px"
+                  )} solid transparent))`,
+                  borderRadius: "var(--button-radius, var(--raikou-radius-default))",
+                  borderBottomRightRadius: "0",
+                  borderTopRightRadius: "0",
+                  borderRightWidth: "calc(var(--button-border-width) / 2)"
+                }
               }
             }
           },
@@ -3731,11 +4213,11 @@ var require_Container_plugin = __commonJS({
           "--container-size": "var(--container-size-md)",
           paddingLeft: "var(--raikou-spacing-md)",
           paddingRight: "var(--raikou-spacing-md)",
-          maxWidth: "var(--container-size, var(--container-size))",
+          maxWidth: "var(--container-size)",
           marginLeft: "auto",
           marginRight: "auto",
           "&[data-fluid]": {
-            "--_container-size": "100%"
+            "--container-size": "100%"
           }
         }
       });
@@ -4234,6 +4716,11 @@ var require_Input_plugin = __commonJS({
             "--_input-cursor": "pointer"
           },
           "&[data-multiline]": {
+            "--input-padding-y-xs": rem2("4.5px"),
+            "--input-padding-y-sm": rem2("5.5px"),
+            "--input-padding-y-md": rem2("7px"),
+            "--input-padding-y-lg": rem2("9.5px"),
+            "--input-padding-y-xl": rem2("13px"),
             "--_input-size": "auto",
             "--_input-line-height": "var(--raikou-line-height)",
             "--input-padding-y": "var(--input-padding-y-sm)"
@@ -4781,7 +5268,10 @@ var require_Menu_plugin = __commonJS({
           }
         },
         ".menu-itemLabel": {
-          flex: "1"
+          flex: "1",
+          '[dir="rtl"] &': {
+            textAlign: "right"
+          }
         },
         ".menu-itemSection": {
           display: "flex",
@@ -6721,7 +7211,10 @@ var require_Spoiler_plugin = __commonJS({
       addComponents({
         ".spoiler-root": {
           position: "relative",
-          marginBottom: rem2("24px")
+          marginBottom: "var(--_spoiler-margin-bottom)",
+          "&[data-has-spoiler]": {
+            "--_spoiler-margin-bottom": rem2("24px")
+          }
         },
         ".spoiler-content": {
           display: "flex",
@@ -9123,10 +9616,10 @@ var require_Dropzone_plugin = __commonJS({
           }
         },
         ".dropZone-inner": {
-          pointerEvents: "var(--_dropzone-inner-pointer-events, all)",
+          pointerEvents: "var(--_dropzone-inner-pointer-events, none)",
           userSelect: "none",
           "&[data-disable-pointer-events]": {
-            "--_dropzone-inner-pointer-events": "none"
+            "--_dropzone-inner-pointer-events": "all"
           }
         },
         ".dropZone-fullScreen": {
@@ -9641,7 +10134,7 @@ module.exports = {
     preflight: false
   },
   darkMode: ["class", '[data-raikou-color-scheme="dark"]'],
-  preset: [require_preset()],
+  presets: [require_preset()],
   plugins: [
     require_global_plugin(),
     require_css_variables_plugin(),

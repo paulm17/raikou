@@ -1,6 +1,6 @@
-import type { DataTableColumn } from './DataTableColumn';
+import type { DataTableColumn } from "./DataTableColumn";
 
-export type DataTableDefaultColumnProps<T> = Omit<
-  DataTableColumn<T>,
-  'accessor' | 'hidden' | 'visibleMediaQuery' | 'render'
+export type DataTableDefaultColumnProps = Omit<
+  DataTableColumn,
+  "accessor" | "hidden" | "visibleMediaQuery" | "render"
 >;

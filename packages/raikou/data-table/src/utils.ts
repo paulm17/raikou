@@ -1,21 +1,37 @@
-import { useMantineTheme, type MantineTheme } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
-import { Key, useEffect, useLayoutEffect, useMemo } from 'react';
-import { useMediaQueries } from './useMediaQueries';
+import { useRaikouTheme, type RaikouTheme } from "@raikou/core";
+import { useMediaQuery } from "@raikou/hooks";
+import {
+  Key,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+} from "react";
+import { useMediaQueries } from "./useMediaQueries";
 
-export const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+export const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
-export function useMediaQueryStringOrFunction(mediaQuery: string | ((theme: MantineTheme) => string) | undefined) {
-  const theme = useMantineTheme();
-  const mediaQueryValue = typeof mediaQuery === 'function' ? mediaQuery(theme) : mediaQuery;
-  return useMediaQuery(mediaQueryValue || '', true);
+export function useMediaQueryStringOrFunction(
+  mediaQuery: string | ((theme: RaikouTheme) => string) | undefined,
+) {
+  const theme = useRaikouTheme();
+  const mediaQueryValue =
+    typeof mediaQuery === "function" ? mediaQuery(theme) : mediaQuery;
+  return useMediaQuery(mediaQueryValue || "", true);
 }
 
-export function useMediaQueriesStringOrFunction(queries: (string | ((theme: MantineTheme) => string) | undefined)[]) {
-  const theme = useMantineTheme();
+export function useMediaQueriesStringOrFunction(
+  queries: (string | ((theme: RaikouTheme) => string) | undefined)[],
+) {
+  const theme = useRaikouTheme();
   const values = useMemo(
-    () => queries.map((query) => (typeof query === 'function' ? query(theme) : query) ?? ''),
-    [queries, theme]
+    () =>
+      queries.map(
+        (query) => (typeof query === "function" ? query(theme) : query) ?? "",
+      ),
+    [queries, theme],
   );
   const defaults = useMemo(() => queries.map(() => true), [queries]);
   return useMediaQueries(values, defaults);
@@ -26,8 +42,8 @@ export function useMediaQueriesStringOrFunction(queries: (string | ((theme: Mant
  */
 export function humanize(value: string) {
   const str = value
-    .replace(/([a-z\d])([A-Z]+)/g, '$1 $2')
-    .replace(/\W|_/g, ' ')
+    .replace(/([a-z\d])([A-Z]+)/g, "$1 $2")
+    .replace(/\W|_/g, " ")
     .trim()
     .toLowerCase();
   return `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
@@ -36,7 +52,11 @@ export function humanize(value: string) {
 /**
  * Utility function that returns an array of values that are present in the first array but not in the second
  */
-export function differenceBy<T>(arr1: T[], arr2: T[], iteratee: (value: T) => unknown) {
+export function differenceBy<T>(
+  arr1: T[],
+  arr2: T[],
+  iteratee: (value: T) => unknown,
+) {
   return arr1.filter((c) => !arr2.map(iteratee).includes(iteratee(c)));
 }
 
@@ -44,7 +64,9 @@ export function differenceBy<T>(arr1: T[], arr2: T[], iteratee: (value: T) => un
  * Utility function that returns an array of unique values from a given array
  */
 export function uniqBy<T>(arr: T[], iteratee: (value: T) => unknown) {
-  return arr.filter((x, i, self) => i === self.findIndex((y) => iteratee(x) === iteratee(y)));
+  return arr.filter(
+    (x, i, self) => i === self.findIndex((y) => iteratee(x) === iteratee(y)),
+  );
 }
 
 /**
@@ -53,12 +75,43 @@ export function uniqBy<T>(arr: T[], iteratee: (value: T) => unknown) {
 export function getValueAtPath(obj: unknown, path: string) {
   if (!path) return undefined;
   const pathArray = path.match(/([^[.\]])+/g) as string[];
-  return pathArray.reduce((prevObj: unknown, key) => prevObj && (prevObj as Record<string, unknown>)[key], obj);
+  return pathArray.reduce(
+    (prevObj: unknown, key) =>
+      prevObj && (prevObj as Record<string, unknown>)[key],
+    obj,
+  );
 }
 
 /**
  * Utility function that returns the record id using idAccessor
  */
-export function getRecordId<T>(record: T, idAccessor: string | ((record: T) => Key)) {
-  return typeof idAccessor === 'string' ? getValueAtPath(record, idAccessor) : idAccessor(record);
+export function getRecordId<T>(
+  record: T,
+  idAccessor: string | ((record: T) => Key),
+) {
+  return typeof idAccessor === "string"
+    ? getValueAtPath(record, idAccessor)
+    : idAccessor(record);
+}
+
+export function useIsMounted() {
+  const isMounted = useRef(false);
+
+  useEffect(() => {
+    isMounted.current = true;
+
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
+
+  return useCallback(() => isMounted.current, []);
+}
+
+export type DelayOptions = { min: number; max: number };
+
+export function delay({ min, max }: DelayOptions) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, min + Math.round(Math.random() * (max - min)));
+  });
 }

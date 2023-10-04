@@ -1,142 +1,150 @@
-import React from "react";
-import { Box } from "../../components/Box/src";
-import { Portal } from "../../components/Portal/src";
-import { Table } from "../../components/Table/src";
-import { RaikouSize, useRaikouTheme } from "@raikou/core";
-import cx from "clsx";
-
-import { useMergedRef } from "@raikou/hooks";
-import {
+import React, {
+  ChangeEventHandler,
+  Key,
+  MouseEventHandler,
   useCallback,
   useMemo,
   useState,
-  type ChangeEventHandler,
-  type Key,
-  type MouseEventHandler,
 } from "react";
-import DataTableEmptyRow from "./DataTableEmptyRow";
-import DataTableEmptyState from "./DataTableEmptyState";
-import DataTableFooter from "./DataTableFooter";
-import DataTableHeader from "./DataTableHeader";
-import DataTableLoader from "./DataTableLoader";
-import DataTablePagination from "./DataTablePagination";
-import DataTableRow from "./DataTableRow";
-import DataTableRowMenu from "./DataTableRowMenu";
-import DataTableRowMenuDivider from "./DataTableRowMenuDivider";
-import DataTableRowMenuItem from "./DataTableRowMenuItem";
-import DataTableScrollArea from "./DataTableScrollArea";
+import { Box, factory, useProps, Factory } from "@raikou/core";
 import {
   useElementOuterSize,
   useLastSelectionChangeIndex,
   useRowContextMenu,
   useRowExpansion,
 } from "./hooks";
-import type { DataTableProps } from "./types";
+import { Table } from "../../components/Table/src";
+import { DataTableProps } from "./types/DataTableProps";
+import cx from "clsx";
 import {
   differenceBy,
   getRecordId,
-  humanize,
+  // humanize,
   uniqBy,
   useIsomorphicLayoutEffect,
 } from "./utils";
+import { DataTableScrollArea } from "./DataTableScrollArea";
+import { useMergedRef } from "@raikou/hooks";
+import { DataTableEmptyState } from "./DataTableEmptyState";
+import { DataTableLoader } from "./DataTableLoader";
+import { DataTablePagination } from "./DataTablePagination";
+import { DataTableFooter } from "./DataTableFooter";
+import { DataTableHeader } from "./DataTableHeader";
+import { DataTableRow } from "./DataTableRow";
 
-const EMPTY_OBJECT = {};
+export type DataTableStylesNames =
+  | "root"
+  | "textSelectionDisabled"
+  | "table"
+  | "table-tr"
+  | "table-td"
+  | "tableWithBorder"
+  | "tableWithColumnBorders"
+  | "tableWithColumnBordersAndSelectableRecords"
+  | "verticalAlignmentTop"
+  | "verticalAlignmentBottom";
 
-export default function DataTable<T>({
-  withBorder,
-  borderRadius,
-  borderColor = (theme) =>
-    theme === "dark"
-      ? "var(--raikou-color-dark-4)"
-      : "var(--raikou-color-gray-3)",
-  // rowBorderColor = (theme) =>
-  //   `rgb(${
-  //     theme === "dark"
-  //       ? "var(--raikou-color-dark-4)"
-  //       : "var(--raikou-color-gray-3)"
-  //   } / 65%)`,
-  withColumnBorders,
-  textSelectionDisabled,
-  height = "100%",
-  minHeight,
-  shadow,
-  verticalAlignment = "center",
-  fetching,
-  columns,
-  groups,
-  defaultColumnProps,
-  defaultColumnRender,
-  idAccessor = "id",
-  records,
-  selectedRecords,
-  onSelectedRecordsChange,
-  isRecordSelectable,
-  allRecordsSelectionCheckboxProps = { "aria-label": "Select all records" },
-  getRecordSelectionCheckboxProps = (_, index) => ({
-    "aria-label": `Select record ${index + 1}`,
-  }),
-  sortStatus,
-  sortIcons,
-  onSortStatusChange,
-  horizontalSpacing,
-  page,
-  onPageChange,
-  totalRecords,
-  recordsPerPage,
-  onRecordsPerPageChange,
-  recordsPerPageOptions,
-  recordsPerPageLabel = "Records per page",
-  paginationColor,
-  paginationSize = "sm",
-  paginationText = ({ from, to, totalRecords }) =>
-    `${from} - ${to} / ${totalRecords}`,
-  paginationWrapBreakpoint = "sm",
-  getPaginationControlProps = (control) => {
-    if (control === "previous") {
-      return { "aria-label": "Previous page" };
-    } else if (control === "next") {
-      return { "aria-label": "Next page" };
-    }
-    return {};
-  },
-  loaderBackgroundBlur,
-  customLoader,
-  loaderSize,
-  loaderVariant,
-  loaderColor,
-  loadingText = "...",
-  emptyState,
-  noRecordsText = "No records",
-  noRecordsIcon,
-  striped,
-  noHeader: withoutHeader,
-  onRowClick,
-  onCellClick,
-  onScrollToTop,
-  onScrollToBottom,
-  onScrollToLeft,
-  onScrollToRight,
-  rowContextMenu,
-  rowExpansion,
-  rowClassName,
-  rowStyle,
-  customRowAttributes,
-  scrollViewportRef: scrollViewportRefProp,
-  scrollAreaProps,
-  bodyRef,
-  m,
-  my,
-  mx,
-  mt,
-  mb,
-  ml,
-  mr,
-  className,
-  classNames,
-  style,
-  styles,
-  ...otherProps
-}: DataTableProps<T>) {
+export type DataTableCssVariables = {
+  root:
+    | "--datatable-height"
+    | "--datatable-min-height"
+    | "--datatable-shadow"
+    | "--datatable-border-color"
+    | "--datatable-row-border-color";
+};
+
+export type DataTableFactory = Factory<{
+  props: DataTableProps;
+  ref: HTMLDivElement;
+  defaultRef: HTMLDivElement;
+  defaultComponent: "div";
+  stylesNames: DataTableStylesNames;
+  vars: DataTableCssVariables;
+}>;
+
+type ClassNames = Partial<Record<DataTableStylesNames, string>>;
+
+const defaultProps: Partial<DataTableProps> = {};
+
+export const DataTable = factory<DataTableFactory>((_props, ref) => {
+  const props = useProps("DataTable", defaultProps, _props);
+  const {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    withBorder,
+    striped,
+    noHeader: withoutHeader,
+    onCellClick,
+    onRowClick,
+    withColumnBorders,
+    textSelectionDisabled,
+    verticalAlignment = "center",
+    defaultColumnProps,
+    fetching,
+    onPageChange,
+    rowExpansion,
+    rowClassName,
+    rowStyle,
+    rowContextMenu,
+    customRowAttributes,
+    records,
+    groups,
+    columns,
+    selectedRecords,
+    emptyState,
+    loaderBackgroundBlur,
+    customLoader,
+    loaderSize,
+    loaderVariant,
+    loaderColor,
+    noRecordsText = "No records",
+    noRecordsIcon,
+    isRecordSelectable,
+    onSelectedRecordsChange,
+    defaultColumnRender,
+    idAccessor = "id",
+    onScrollToTop,
+    onScrollToLeft,
+    onScrollToBottom,
+    onScrollToRight,
+    scrollViewportRef: scrollViewportRefProp,
+    scrollAreaProps,
+    page,
+    bodyRef,
+    totalRecords,
+    recordsPerPage,
+    getRecordSelectionCheckboxProps = (_, index) => ({
+      "aria-label": `Select record ${index + 1}`,
+    }),
+    allRecordsSelectionCheckboxProps = { "aria-label": "Select all records" },
+    sortStatus,
+    sortIcons,
+    onSortStatusChange,
+    onRecordsPerPageChange,
+    recordsPerPageOptions,
+    recordsPerPageLabel = "Records per page",
+    horizontalSpacing,
+    paginationColor,
+    paginationSize = "sm",
+    paginationText = ({ from, to, totalRecords }) =>
+      `${from} - ${to} / ${totalRecords}`,
+    paginationWrapBreakpoint = "sm",
+    loadingText = "...",
+    getPaginationControlProps = (control) => {
+      if (control === "previous") {
+        return { "aria-label": "Previous page" };
+      } else if (control === "next") {
+        return { "aria-label": "Next page" };
+      }
+      return {};
+    },
+    ...others
+  } = props;
+
   const {
     ref: scrollViewportRef,
     width: scrollViewportWidth,
@@ -149,13 +157,16 @@ export default function DataTable<T>({
 
   const { ref: headerRef, height: headerHeight } =
     useElementOuterSize<HTMLTableSectionElement>();
+
   const {
     ref: tableRef,
     width: tableWidth,
     height: tableHeight,
   } = useElementOuterSize<HTMLTableElement>();
+
   const { ref: footerRef, height: footerHeight } =
     useElementOuterSize<HTMLTableSectionElement>();
+
   const { ref: paginationRef, height: paginationHeight } =
     useElementOuterSize<HTMLDivElement>();
 
@@ -165,8 +176,8 @@ export default function DataTable<T>({
   const [scrolledToRight, setScrolledToRight] = useState(true);
 
   const { rowContextMenuInfo, setRowContextMenuInfo } =
-    useRowContextMenu<T>(fetching);
-  const rowExpansionInfo = useRowExpansion<T>({
+    useRowContextMenu(fetching);
+  const rowExpansionInfo = useRowExpansion({
     rowExpansion,
     records,
     idAccessor,
@@ -181,7 +192,7 @@ export default function DataTable<T>({
       setScrolledToTop(true);
       setScrolledToBottom(true);
     } else {
-      const scrollTop = scrollViewportRef.current.scrollTop;
+      const scrollTop = scrollViewportRef.current?.scrollTop || 0;
       const newScrolledToTop = scrollTop === 0;
       const newScrolledToBottom =
         tableHeight - scrollTop - scrollViewportHeight < 1;
@@ -197,7 +208,7 @@ export default function DataTable<T>({
       setScrolledToLeft(true);
       setScrolledToRight(true);
     } else {
-      const scrollLeft = scrollViewportRef.current.scrollLeft;
+      const scrollLeft = scrollViewportRef.current?.scrollLeft || 0;
       const newScrolledToLeft = scrollLeft === 0;
       const newScrolledToRight =
         tableWidth - scrollLeft - scrollViewportWidth < 1;
@@ -233,7 +244,7 @@ export default function DataTable<T>({
 
   const handlePageChange = useCallback(
     (page: number) => {
-      scrollViewportRef.current.scrollTo({ top: 0, left: 0 });
+      scrollViewportRef.current?.scrollTo({ top: 0, left: 0 });
       onPageChange!(page);
     },
     [onPageChange, scrollViewportRef],
@@ -291,32 +302,20 @@ export default function DataTable<T>({
   const selectionVisibleAndNotScrolledToLeft =
     selectionColumnVisible && !scrolledToLeft;
 
-  const marginProperties = { m, my, mx, mt, mb, ml, mr };
-  const theme = useRaikouTheme();
-  const styleProperties =
-    typeof styles === "function"
-      ? styles(theme, EMPTY_OBJECT, EMPTY_OBJECT)
-      : styles;
+  // // const marginProperties = { m, my, mx, mt, mb, ml, mr };
+  // const theme = useRaikouTheme();
+  // // const styleProperties =
+  // //   typeof styles === "function"
+  // //     ? styles(theme, EMPTY_OBJECT, EMPTY_OBJECT)
+  // //     : styles;
 
   return (
     <Box
-      {...marginProperties}
-      className={cx(
-        "dataTable-root",
-        { [classes.tableWithBorder]: withBorder },
-        className,
-        classNames?.root,
-      )}
-      style={[
-        {
-          borderRadius:
-            theme.radius[borderRadius as RaikouSize] || borderRadius,
-          boxShadow: theme.shadows[shadow as RaikouSize] || shadow,
-          height,
-          minHeight,
-        },
-        { ...styleProperties?.root, ...style },
-      ]}
+      className={cx("dataTable-root", {
+        ["dataTable-root-tableWithBorder"]: withBorder,
+      })}
+      {...others}
+      ref={ref}
     >
       <DataTableScrollArea
         viewportRef={useMergedRef(
@@ -332,29 +331,28 @@ export default function DataTable<T>({
         onScrollPositionChange={handleScrollPositionChange}
         scrollAreaProps={scrollAreaProps}
       >
+        {/* @ts-ignore */}
         <Table
           ref={tableRef}
           horizontalSpacing={horizontalSpacing}
           className={cx("dataTable-table", {
-            ["dataTable-root-tableWithColumnBorders"]: withColumnBorders,
-            ["dataTable-root.lastRowBorderBottomVisible"]:
-              tableHeight < scrollViewportHeight,
+            ["dataTable-tableWithBorder"]: withColumnBorders,
+            ["lastRowBorderBottomVisible"]: tableHeight < scrollViewportHeight,
             ["dataTable-textSelectionDisabled"]: textSelectionDisabled,
-            ["dataTable-root-verticalAlignmentTop"]:
-              verticalAlignment === "top",
-            ["dataTable-root-verticalAlignmentBottom"]:
+            ["dataTable-verticalAlignmentTop"]: verticalAlignment === "top",
+            ["dataTable-verticalAlignmentBottom"]:
               verticalAlignment === "bottom",
-            ["dataTable-root-tableWithColumnBordersAndSelectableRecords"]:
+            ["dataTable-tableWithColumnBordersAndSelectableRecords"]:
               selectionColumnVisible && withColumnBorders,
           })}
           striped={recordsLength ? striped : false}
-          {...otherProps}
+          {...others}
         >
           {withoutHeader ? null : (
-            <DataTableHeader<T>
+            <DataTableHeader
               ref={headerRef}
-              className={classNames?.header}
-              style={styleProperties?.header}
+              // className={classNames?.header}
+              // style={styleProperties?.header}
               columns={effectiveColumns}
               defaultColumnProps={defaultColumnProps}
               groups={groups}
@@ -481,7 +479,12 @@ export default function DataTable<T>({
                 }
 
                 return (
-                  <DataTableRow<T>
+                  <DataTableRow
+                    classNames={{
+                      root:
+                        classNames && (classNames as ClassNames)["table-tr"],
+                      td: classNames && (classNames as ClassNames)["table-td"],
+                    }}
                     key={recordId as Key}
                     record={record}
                     recordIndex={recordIndex}
@@ -503,7 +506,6 @@ export default function DataTable<T>({
                         : false
                     }
                     expansion={rowExpansionInfo}
-                    className={rowClassName}
                     style={rowStyle}
                     customAttributes={customRowAttributes}
                     leftShadowVisible={selectionVisibleAndNotScrolledToLeft}
@@ -511,15 +513,17 @@ export default function DataTable<T>({
                 );
               })
             ) : (
-              <DataTableEmptyRow />
+              <tr className="dataTableEmptyRow-root">
+                <td />
+              </tr>
             )}
           </tbody>
           {effectiveColumns.some(({ footer }) => footer) && (
-            <DataTableFooter<T>
+            <DataTableFooter
               ref={footerRef}
-              className={classNames?.footer}
-              style={styleProperties?.footer}
-              borderColor={borderColor}
+              // className={classNames?.footer}
+              // style={styleProperties?.footer}
+              borderColor={""}
               columns={effectiveColumns}
               defaultColumnProps={defaultColumnProps}
               selectionVisible={selectionColumnVisible}
@@ -532,10 +536,10 @@ export default function DataTable<T>({
       {page && (
         <DataTablePagination
           ref={paginationRef}
-          className={classNames?.pagination}
-          style={styleProperties?.pagination}
-          topBorderColor={borderColor}
-          horizontalSpacing={horizontalSpacing}
+          // className={classNames?.pagination}
+          // style={styleProperties?.pagination}
+          px={horizontalSpacing ?? "xs"}
+          topBorderColor={""}
           fetching={fetching}
           page={page}
           onPageChange={handlePageChange}
@@ -573,48 +577,8 @@ export default function DataTable<T>({
       >
         {emptyState}
       </DataTableEmptyState>
-      {rowContextMenu && rowContextMenuInfo && (
-        <Portal>
-          <DataTableRowMenu
-            zIndex={rowContextMenu.zIndex}
-            borderRadius={rowContextMenu.borderRadius}
-            shadow={rowContextMenu.shadow}
-            y={rowContextMenuInfo.y}
-            x={rowContextMenuInfo.x}
-            onDestroy={() => setRowContextMenuInfo(null)}
-          >
-            {rowContextMenu
-              .items(rowContextMenuInfo.record, rowContextMenuInfo.recordIndex)
-              .map(
-                ({
-                  divider,
-                  key,
-                  title,
-                  icon,
-                  color,
-                  hidden,
-                  disabled,
-                  onClick,
-                }) =>
-                  divider ? (
-                    <DataTableRowMenuDivider key={key} />
-                  ) : hidden ? null : (
-                    <DataTableRowMenuItem
-                      key={key}
-                      title={title ?? humanize(key)}
-                      icon={icon}
-                      color={color}
-                      disabled={disabled}
-                      onClick={() => {
-                        setRowContextMenuInfo(null);
-                        onClick();
-                      }}
-                    />
-                  ),
-              )}
-          </DataTableRowMenu>
-        </Portal>
-      )}
     </Box>
   );
-}
+});
+
+DataTable.displayName = "@raikou/DataTable";

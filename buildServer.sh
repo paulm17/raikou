@@ -2,6 +2,7 @@
 pnpm --filter @raikou/action-icon run build
 pnpm --filter @raikou/alert run build
 pnpm --filter @raikou/anchor run build
+pnpm --filter @raikou/appshell run build
 pnpm --filter @raikou/aspect-ratio run build
 pnpm --filter @raikou/background-image run build
 pnpm --filter @raikou/badge run build

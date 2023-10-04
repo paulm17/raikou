@@ -4,6 +4,14 @@ import { DEFAULT_THEME, rem } from "@raikou/core";
 
 export default { title: "Button" };
 
+export function RenderRoot() {
+  return (
+    <Button renderRoot={(props) => <a {...props} href="#" />} className="test">
+      Some content
+    </Button>
+  );
+}
+
 export function SingleButton() {
   return (
     <div style={{ padding: 40 }}>

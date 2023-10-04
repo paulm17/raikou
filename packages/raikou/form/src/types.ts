@@ -58,6 +58,7 @@ export type LooseKeys<Values> = keyof Values | (string & {});
 export type SetValues<Values> = React.Dispatch<
   React.SetStateAction<Partial<Values>>
 >;
+export type SetInitialValues<Values> = (values: Values) => void;
 export type SetErrors = React.Dispatch<React.SetStateAction<FormErrors>>;
 export type SetFormStatus = React.Dispatch<React.SetStateAction<FormStatus>>;
 
@@ -168,6 +169,7 @@ export interface UseFormReturnType<
   values: Values;
   errors: FormErrors;
   setValues: SetValues<Values>;
+  setInitialValues: SetInitialValues<Values>;
   setErrors: SetErrors;
   setFieldValue: SetFieldValue<Values>;
   setFieldError: SetFieldError<Values>;

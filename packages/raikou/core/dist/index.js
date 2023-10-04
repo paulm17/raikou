@@ -1059,8 +1059,6 @@ function useRaikouTheme() {
     theme.variantColorResolver = defaultVariantColorsResolver;
     return theme;
   }
-  console.log("warning - using default theme, should not happen");
-  return DEFAULT_THEME;
 }
 
 // src/core/RaikouProvider/use-props/use-props.ts
@@ -1877,6 +1875,7 @@ var _Box = (0, import_react6.forwardRef)(
     size,
     hiddenFrom,
     visibleFrom,
+    renderRoot,
     ...others
   }, ref) => {
     const theme = useRaikouTheme();
@@ -1888,6 +1887,24 @@ var _Box = (0, import_react6.forwardRef)(
       theme,
       data: STYlE_PROPS_DATA
     });
+    const props = {
+      ref,
+      style: getBoxStyle({
+        theme,
+        style,
+        vars: __vars,
+        styleProps: parsedStyleProps.inlineStyles
+      }),
+      className: (0, import_clsx4.default)(className, {
+        [responsiveClassName]: parsedStyleProps.hasResponsiveStyles,
+        [`raikou-hidden-from-${hiddenFrom}`]: hiddenFrom,
+        [`raikou-visible-from-${visibleFrom}`]: visibleFrom
+      }),
+      "data-variant": variant,
+      "data-size": isNumberLike(size) ? void 0 : size || void 0,
+      ...getBoxMod(mod),
+      ...rest
+    };
     return /* @__PURE__ */ import_react6.default.createElement(import_react6.default.Fragment, null, parsedStyleProps.hasResponsiveStyles && /* @__PURE__ */ import_react6.default.createElement(
       InlineStyles,
       {
@@ -1895,27 +1912,7 @@ var _Box = (0, import_react6.forwardRef)(
         styles: parsedStyleProps.styles,
         media: parsedStyleProps.media
       }
-    ), /* @__PURE__ */ import_react6.default.createElement(
-      Element,
-      {
-        ref,
-        style: getBoxStyle({
-          theme,
-          style,
-          vars: __vars,
-          styleProps: parsedStyleProps.inlineStyles
-        }),
-        className: (0, import_clsx4.default)(className, {
-          [responsiveClassName]: parsedStyleProps.hasResponsiveStyles,
-          [`raikou-hidden-from-${hiddenFrom}`]: hiddenFrom,
-          [`raikou-visible-from-${visibleFrom}`]: visibleFrom
-        }),
-        "data-variant": variant,
-        "data-size": isNumberLike(size) ? void 0 : size || void 0,
-        ...getBoxMod(mod),
-        ...rest
-      }
-    ));
+    ), typeof renderRoot === "function" ? renderRoot(props) : /* @__PURE__ */ import_react6.default.createElement(Element, { ...props }));
   }
 );
 _Box.displayName = "@raikou/core/Box";

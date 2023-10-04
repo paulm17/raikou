@@ -102,6 +102,7 @@ export const Affix = factory<AffixFactory>((_props, ref) => {
     portalProps,
     zIndex,
     withinPortal,
+    position,
     ...others
   } = props;
 

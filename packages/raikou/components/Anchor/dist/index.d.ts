@@ -54,14 +54,18 @@ declare const Anchor: (<C = "a">(props: C extends React.ElementType<any> ? Ancho
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, "component" | keyof AnchorProps> & {
     ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    renderRoot?(props: any): any;
 } : AnchorProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 }) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(AnchorProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, "component" | keyof AnchorProps> & {
     ref?: any;
+    renderRoot?(props: any): any;
 }) | (AnchorProps & {
     component: React.ElementType<any>;
+    renderRoot?(props: any): any;
 })>, never> & _raikou_core.ThemeExtend<{
     props: AnchorProps;
     defaultComponent: "a";

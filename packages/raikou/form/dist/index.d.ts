@@ -25,6 +25,7 @@ type FormRulesRecord<Values, InitValues = Values> = Partial<{
 type FormValidateInput<Values> = FormRulesRecord<Values> | ((values: Values) => FormErrors);
 type LooseKeys<Values> = keyof Values | (string & {});
 type SetValues<Values> = React.Dispatch<React.SetStateAction<Partial<Values>>>;
+type SetInitialValues<Values> = (values: Values) => void;
 type SetErrors = React.Dispatch<React.SetStateAction<FormErrors>>;
 type SetFormStatus = React.Dispatch<React.SetStateAction<FormStatus>>;
 type OnSubmit<Values, TransformValues extends _TransformValues<Values>> = (handleSubmit: (values: ReturnType<TransformValues>, event: React.FormEvent<HTMLFormElement> | undefined) => void, handleValidationFailure?: (errors: FormErrors, values: Values, event: React.FormEvent<HTMLFormElement> | undefined) => void) => (event?: React.FormEvent<HTMLFormElement>) => void;
@@ -72,6 +73,7 @@ interface UseFormReturnType<Values, TransformValues extends _TransformValues<Val
     values: Values;
     errors: FormErrors;
     setValues: SetValues<Values>;
+    setInitialValues: SetInitialValues<Values>;
     setErrors: SetErrors;
     setFieldValue: SetFieldValue<Values>;
     setFieldError: SetFieldError<Values>;

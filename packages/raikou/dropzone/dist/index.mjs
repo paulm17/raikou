@@ -49,7 +49,7 @@ import { useProps } from "@raikou/core";
 function createPortalNode(props) {
   const node = document.createElement("div");
   node.setAttribute("data-portal", "true");
-  typeof props.className === "string" && node.classList.add(props.className);
+  typeof props.className === "string" && node.classList.add(...props.className.split(" "));
   typeof props.style === "object" && Object.assign(node.style, props.style);
   typeof props.id === "string" && node.setAttribute("id", props.id);
   return node;
@@ -852,7 +852,8 @@ var Dropzone = factory3((_props, ref) => {
     getFilesFromEvent,
     validator,
     rejectColor,
-    acceptColor
+    acceptColor,
+    enablePointerEvents
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -888,7 +889,8 @@ var Dropzone = factory3((_props, ref) => {
     "getFilesFromEvent",
     "validator",
     "rejectColor",
-    "acceptColor"
+    "acceptColor",
+    "enablePointerEvents"
   ]);
   const getStyles = useStyles4({
     name: "Dropzone",
@@ -959,7 +961,7 @@ var Dropzone = factory3((_props, ref) => {
       /* @__PURE__ */ React14.createElement(
         "div",
         __spreadProps(__spreadValues({}, getStyles("inner")), {
-          "data-disable-pointer-events": !activateOnClick || void 0
+          "data-enable-pointer-events": enablePointerEvents || void 0
         }),
         children
       )
