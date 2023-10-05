@@ -281,12 +281,6 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
-      request:
-        specifier: ^2.88.2
-        version: 2.88.2
-      xmlhttprequest:
-        specifier: ^1.8.0
-        version: 1.8.0
       zustand:
         specifier: ^4.4.0
         version: 4.4.1(@types/react@18.2.23)(react@18.2.0)
@@ -4350,70 +4344,6 @@ importers:
         specifier: ^5.1.6
         version: 5.1.6
 
-  packages/raikou/data-table:
-    dependencies:
-      '@faker-js/faker':
-        specifier: ^8.1.0
-        version: 8.1.0
-      '@formkit/auto-animate':
-        specifier: ^0.8.0
-        version: 0.8.0
-      '@raikou/core':
-        specifier: workspace:*
-        version: link:../core
-      '@raikou/hooks':
-        specifier: workspace:*
-        version: link:../hooks
-      clsx:
-        specifier: ^2.0.0
-        version: 2.0.0
-      dayjs:
-        specifier: ^1.11.10
-        version: 1.11.10
-      lodash.get:
-        specifier: ^4.4.2
-        version: 4.4.2
-      lodash.sortby:
-        specifier: ^4.7.0
-        version: 4.7.0
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.2.0(react@18.2.0)
-      tslib:
-        specifier: ^2.6.0
-        version: 2.6.1
-      type-fest:
-        specifier: ^4.0.0
-        version: 4.0.0
-    devDependencies:
-      '@types/lodash.get':
-        specifier: ^4.4.7
-        version: 4.4.7
-      '@types/lodash.sortby':
-        specifier: ^4.7.7
-        version: 4.7.7
-      '@types/node':
-        specifier: ^20.3.3
-        version: 20.5.1
-      '@types/react':
-        specifier: ^18.2.23
-        version: 18.2.23
-      '@types/react-dom':
-        specifier: ^18.2.8
-        version: 18.2.8
-      clean-package:
-        specifier: 2.2.0
-        version: 2.2.0
-      tsup:
-        specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.26)(typescript@5.1.6)
-      typescript:
-        specifier: ^5.1.6
-        version: 5.1.6
-
   packages/raikou/dates:
     dependencies:
       '@raikou/core':
@@ -7283,11 +7213,6 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@faker-js/faker@8.1.0:
-    resolution: {integrity: sha512-38DT60rumHfBYynif3lmtxMqMqmsOQIxQgEuPZxCk2yUYN0eqWpTACgxi0VpidvsJB8CRxCpvP7B3anK85FjtQ==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13'}
-    dev: false
-
   /@fal-works/esbuild-plugin-global-externals@2.1.2:
     resolution: {integrity: sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==}
     dev: true
@@ -7332,10 +7257,6 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       tabbable: 6.2.0
-    dev: false
-
-  /@formkit/auto-animate@0.8.0:
-    resolution: {integrity: sha512-G8f7489ka0mWyi+1IEZT+xgIwcpWtRMmE2x+IrVoQ+KM1cP6VDj/TbujZjwxdb0P8w8b16/qBfViRmydbYHwMw==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.10:
@@ -10615,18 +10536,6 @@ packages:
       '@types/node': 20.5.1
     dev: true
 
-  /@types/lodash.get@4.4.7:
-    resolution: {integrity: sha512-af34Mj+KdDeuzsJBxc/XeTtOx0SZHZNLd+hdrn+PcKGQs0EG2TJTzQAOTCZTgDJCArahlCzLWSy8c2w59JRz7Q==}
-    dependencies:
-      '@types/lodash': 4.14.195
-    dev: true
-
-  /@types/lodash.sortby@4.7.7:
-    resolution: {integrity: sha512-J/4IS+jQopGBrrRetBXDCX0KnSeXJZ0rOTmGAxR9MWGV24YdHxX8IRi9LCGAU9GKWlBov9KRSfQpuup9PReqrw==}
-    dependencies:
-      '@types/lodash': 4.14.195
-    dev: true
-
   /@types/lodash@4.14.195:
     resolution: {integrity: sha512-Hwx9EUgdwf2GLarOjQp5ZH8ZmblzcbTBC2wtQWNKARBSxM9ezRIAUpeDTgoQRAFB0+8CNWXVA9+MaSOzOF3nPg==}
     dev: true
@@ -12805,10 +12714,6 @@ packages:
     dependencies:
       '@babel/runtime': 7.21.5
     dev: true
-
-  /dayjs@1.11.10:
-    resolution: {integrity: sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==}
-    dev: false
 
   /dayjs@1.11.9:
     resolution: {integrity: sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==}
@@ -16458,6 +16363,7 @@ packages:
 
   /lodash.get@4.4.2:
     resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
+    dev: true
 
   /lodash.memoize@4.1.2:
     resolution: {integrity: sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==}
@@ -20753,11 +20659,6 @@ packages:
   /xmlchars@2.2.0:
     resolution: {integrity: sha512-JZnDKK8B0RCDw84FNdDAIpZK+JuJw+s7Lz8nksI7SIuU3UXJJslUthsi+uWBUYOwPFwW7W7PRLRfUKpxjtjFCw==}
     dev: true
-
-  /xmlhttprequest@1.8.0:
-    resolution: {integrity: sha512-58Im/U0mlVBLM38NdZjHyhuMtCqa61469k2YP/AaPbvCoV9aQGUpbJBj1QRm2ytRiVQBD/fsw7L2bJGDVQswBA==}
-    engines: {node: '>=0.4.0'}
-    dev: false
 
   /xtend@4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}

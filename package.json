@@ -2,8 +2,6 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "clean:emotion-types": "rimraf node_modules/@emotion/core/types",
-    "postinstall": "pnpm clean:emotion-types",
     "build": "turbo run build --filter=!./examples/* --filter=!*props-docs",
     "build:fast": "turbo run build:fast --filter=!./examples/* --filter=!*props-docs",
     "build:prop-docs": "pnpm typedocs && pnpm --filter=*props-docs build",
