@@ -2,7 +2,7 @@
   "name": "@raikou/data-table",
   "private": true,
   "description": "Lightweight and feature-rich DataTable component with dark theme support, custom rendering, and asynchronous data loading",
-  "version": "0.0.1-beta.7",
+  "version": "0.0.1-beta.8",
   "license": "MIT",
   "scripts": {
     "build": "tsup src/index.ts --dts --format esm,cjs --clean",

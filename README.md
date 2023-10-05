@@ -120,7 +120,7 @@ Less headaches in dealing with postcss from a developer UX point of view.
 
 ### Mirrored Mantine release
 
-0.0.1-beta.7 = 7.1.2
+0.0.1-beta.8 = 7.1.2
 
 <!-- GETTING STARTED -->
 
@@ -410,16 +410,7 @@ the page.
 ## Server Components - Mantine vs Raikou
 
 Using the default NextJS 13 install. Here is an example of just 1 component:
-Badge (with Mantine + Raikou using "use client").
-
-##### Some stats for mantine vs raikou:
-
-- 9 requests each
-- 2.6MB transferred vs 1.7MB transferred
-- 12.5MB resources vs 7.3MB resources
-- Finished 3.58s vs 1.47s
-- Layout.js 964 kB vs 51 kB
-- Page.js 91.7 Kb vs 95.5 kB
+Badge (with Mantine + Raikou using "use client" + full css payload).
 
 Stats are taken using this method. Open up a tab with dev tools network. Run
 with yarn dev and then put in http://localhost:3000 in the browser.
@@ -434,6 +425,10 @@ with yarn dev and then put in http://localhost:3000 in the browser.
 ##### Raikou server vs client
 
 When omitting "use client" this results in Page.js not being requested.
+
+<p float="left">
+   <img src="./images/raikou-server.png" width="200" alt="Raikou Network Tab">
+</p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
