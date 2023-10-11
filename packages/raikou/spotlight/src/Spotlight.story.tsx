@@ -45,7 +45,6 @@ export function Compound() {
         onSpotlightOpen={() => console.log("open")}
         onSpotlightClose={() => console.log("close")}
         clearQueryOnClose
-        scrollable
         // fullScreen
         // maxHeight="100vh"
       >

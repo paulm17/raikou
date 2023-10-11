@@ -89,6 +89,9 @@ present.
    <li>
       <img src="./images/tailwind2.png" style="width:500px" alt="Issue 2">
    </li>
+   <li>
+      <img src="./images/tailwind3.png" style="width:500px" alt="Issue 3">
+   </li>
 </ul>
 
 ### CSS Modules is the wrong choice
