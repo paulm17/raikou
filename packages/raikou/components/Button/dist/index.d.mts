@@ -31,10 +31,10 @@ type LoaderFactory = Factory<{
 }>;
 declare const defaultLoaders: RaikouLoadersRecord;
 
-type ButtonGroupStylesNames = "root";
+type ButtonGroupStylesNames = "group";
 type ButtonGroupVariant = string;
 type ButtonGroupCssVariables = {
-    root: "--button-border-width";
+    group: "--button-border-width";
 };
 interface ButtonGroupProps extends BoxProps, StylesApiProps<ButtonGroupFactory> {
     /** `Button` components */

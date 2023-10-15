@@ -2,10 +2,10 @@ import * as _raikou_core from '@raikou/core';
 import { BoxProps, StylesApiProps, ElementProps, RaikouSpacing, Factory, RaikouSize, RaikouRadius, RaikouColor, RaikouGradient, PolymorphicFactory } from '@raikou/core';
 import React from 'react';
 
-type AvatarGroupStylesNames = "root";
+type AvatarGroupStylesNames = "group";
 type AvatarGroupVariant = string;
 type AvatarGroupCssVariables = {
-    root: "--ag-spacing";
+    group: "--ag-spacing";
 };
 interface AvatarGroupProps extends BoxProps, StylesApiProps<AvatarGroupFactory>, ElementProps<"div"> {
     /** Negative space between Avatar components, `'sm'` by default */

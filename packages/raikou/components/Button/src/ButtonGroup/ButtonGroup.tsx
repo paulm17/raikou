@@ -11,10 +11,10 @@ import {
   Factory,
 } from "@raikou/core";
 
-export type ButtonGroupStylesNames = "root";
+export type ButtonGroupStylesNames = "group";
 export type ButtonGroupVariant = string;
 export type ButtonGroupCssVariables = {
-  root: "--button-border-width";
+  group: "--button-border-width";
 };
 
 export interface ButtonGroupProps
@@ -44,7 +44,7 @@ const defaultProps: Partial<ButtonGroupProps> = {
 
 const varsResolver = createVarsResolver<ButtonGroupFactory>(
   (_, { borderWidth }) => ({
-    root: { "--button-border-width": rem(borderWidth) },
+    group: { "--button-border-width": rem(borderWidth) },
   }),
 );
 
@@ -67,7 +67,7 @@ export const ButtonGroup = factory<ButtonGroupFactory>((_props, ref) => {
     name: "ButtonGroup",
     props,
     classes: {
-      root: "buttonGroup-root",
+      group: "buttonGroup-group",
     },
     className,
     style,
@@ -76,11 +76,12 @@ export const ButtonGroup = factory<ButtonGroupFactory>((_props, ref) => {
     unstyled,
     vars,
     varsResolver,
+    rootSelector: "group",
   });
 
   return (
     <Box
-      {...getStyles("root")}
+      {...getStyles("group")}
       ref={ref}
       variant={variant}
       mod={{ "data-orientation": orientation }}

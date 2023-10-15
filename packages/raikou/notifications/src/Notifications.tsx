@@ -194,33 +194,38 @@ export const Notifications = factory<NotificationsFactory>((_props, ref) => {
     previousLength.current = data.notifications.length;
   }, [data.notifications]);
 
-  const items = data.notifications.map((notification) => (
-    <Transition
-      key={notification.id}
-      timeout={duration}
-      onEnter={() => refs.current[notification.id!].offsetHeight}
-      nodeRef={{ current: refs.current[notification.id!] }}
-    >
-      {(state: TransitionStatus) => (
-        <NotificationContainer
-          {...getStyles("notification", {
-            style: getNotificationStateStyles({
-              state,
-              position,
-              transitionDuration: duration!,
-              maxHeight: notificationMaxHeight!,
-            }),
-          })}
-          ref={(node) => {
-            refs.current[notification.id!] = node!;
-          }}
-          data={notification}
-          onHide={(id) => hideNotification(id, store)}
-          autoClose={autoClose!}
-        />
-      )}
-    </Transition>
-  ));
+  const items = data.notifications.map(
+    ({ style: notificationStyle, ...notification }) => (
+      <Transition
+        key={notification.id}
+        timeout={duration}
+        onEnter={() => refs.current[notification.id!].offsetHeight}
+        nodeRef={{ current: refs.current[notification.id!] }}
+      >
+        {(state: TransitionStatus) => (
+          <NotificationContainer
+            ref={(node) => {
+              refs.current[notification.id!] = node!;
+            }}
+            data={notification}
+            onHide={(id) => hideNotification(id, store)}
+            autoClose={autoClose!}
+            {...getStyles("notification", {
+              style: {
+                ...getNotificationStateStyles({
+                  state,
+                  position,
+                  transitionDuration: duration!,
+                  maxHeight: notificationMaxHeight!,
+                }),
+                ...notificationStyle,
+              },
+            })}
+          />
+        )}
+      </Transition>
+    ),
+  );
 
   return (
     <OptionalPortal withinPortal={withinPortal} {...portalProps}>

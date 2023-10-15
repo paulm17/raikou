@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@raikou/core": "workspace:*",
+    "@raikou/ds": "workspace:*",
     "@raikou/hooks": "workspace:*",
     "@raikou/system": "workspace:*",
     "@raikou/global-store": "workspace:*",

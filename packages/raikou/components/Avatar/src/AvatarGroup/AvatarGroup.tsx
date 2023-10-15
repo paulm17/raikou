@@ -14,10 +14,10 @@ import {
 } from "@raikou/core";
 import { AvatarGroupProvider } from "./AvatarGroup.context";
 
-export type AvatarGroupStylesNames = "root";
+export type AvatarGroupStylesNames = "group";
 export type AvatarGroupVariant = string;
 export type AvatarGroupCssVariables = {
-  root: "--ag-spacing";
+  group: "--ag-spacing";
 };
 
 export interface AvatarGroupProps
@@ -40,7 +40,7 @@ const defaultProps: Partial<AvatarGroupProps> = {};
 
 const varsResolver = createVarsResolver<AvatarGroupFactory>(
   (_, { spacing }) => ({
-    root: {
+    group: {
       "--ag-spacing": getSpacing(spacing),
     },
   }),
@@ -62,7 +62,7 @@ export const AvatarGroup = factory<AvatarGroupFactory>((_props, ref) => {
   const getStyles = useStyles<AvatarGroupFactory>({
     name: "AvatarGroup",
     classes: {
-      root: "avatarGroup-root",
+      root: "avatarGroup-group",
     },
     props,
     className,
@@ -72,11 +72,12 @@ export const AvatarGroup = factory<AvatarGroupFactory>((_props, ref) => {
     unstyled,
     vars,
     varsResolver,
+    rootSelector: "group",
   });
 
   return (
     <AvatarGroupProvider value>
-      <Box ref={ref} {...getStyles("root")} {...others} />
+      <Box ref={ref} {...getStyles("group")} {...others} />
     </AvatarGroupProvider>
   );
 });

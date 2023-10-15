@@ -54,11 +54,11 @@ export function setListId(id: string, store: SpotlightStore) {
 
 export function selectAction(index: number, store: SpotlightStore): number {
   const state = store.getState();
-  const actionsList = document.getElementById(state.listId)!;
+  const actionsList = document.getElementById(state.listId);
   const selected =
-    actionsList.querySelector<HTMLButtonElement>("[data-selected]");
+    actionsList?.querySelector<HTMLButtonElement>("[data-selected]");
   const actions =
-    actionsList.querySelectorAll<HTMLButtonElement>("[data-action]");
+    actionsList?.querySelectorAll<HTMLButtonElement>("[data-action]") ?? [];
   const nextIndex =
     index === -1 ? actions.length - 1 : index === actions.length ? 0 : index;
 

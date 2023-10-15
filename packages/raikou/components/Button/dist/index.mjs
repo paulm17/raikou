@@ -309,7 +309,7 @@ var defaultProps3 = {
 };
 var varsResolver2 = createVarsResolver2(
   (_, { borderWidth }) => ({
-    root: { "--button-border-width": rem(borderWidth) }
+    group: { "--button-border-width": rem(borderWidth) }
   })
 );
 var ButtonGroup = factory2((_props, ref) => {
@@ -339,7 +339,7 @@ var ButtonGroup = factory2((_props, ref) => {
     name: "ButtonGroup",
     props,
     classes: {
-      root: "buttonGroup-root"
+      group: "buttonGroup-group"
     },
     className,
     style,
@@ -347,11 +347,12 @@ var ButtonGroup = factory2((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver2
+    varsResolver: varsResolver2,
+    rootSelector: "group"
   });
   return /* @__PURE__ */ React7.createElement(
     Box7,
-    __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
+    __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
       ref,
       variant,
       mod: { "data-orientation": orientation },

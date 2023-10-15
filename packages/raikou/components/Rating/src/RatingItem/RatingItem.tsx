@@ -22,6 +22,7 @@ export interface RatingItemProps
   value: number;
   id: string;
   onChange(event: React.ChangeEvent<HTMLInputElement> | number): void;
+  onInputChange(event: React.ChangeEvent<HTMLInputElement> | number): void;
 }
 
 export function RatingItem({
@@ -36,7 +37,9 @@ export function RatingItem({
   fractionValue,
   color,
   id,
+  onBlur,
   onChange,
+  onInputChange,
   style,
   ...others
 }: RatingItemProps) {
@@ -57,7 +60,8 @@ export function RatingItem({
           data-active={active || undefined}
           aria-label={getSymbolLabel?.(value)}
           value={value}
-          onChange={onChange}
+          onBlur={onBlur}
+          onChange={onInputChange}
           {...others}
         />
       )}

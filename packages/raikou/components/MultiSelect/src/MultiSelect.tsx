@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useId, useUncontrolled } from "@raikou/hooks";
 import {
   BoxProps,
@@ -164,6 +164,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
     clearable,
     clearButtonProps,
     hiddenInputProps,
+    placeholder,
     ...others
   } = props;
 
@@ -239,6 +240,12 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
     </Pill>
   ));
 
+  useEffect(() => {
+    if (selectFirstOptionOnChange) {
+      combobox.selectFirstOption();
+    }
+  }, [selectFirstOptionOnChange, _value]);
+
   const clearButton = clearable &&
     _value.length > 0 &&
     !disabled &&
@@ -252,6 +259,8 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
         }}
       />
     );
+
+  const filteredData = filterPickedValues({ data: parsedData, value: _value });
 
   return (
     <>
@@ -342,12 +351,15 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
                   {...rest}
                   ref={ref}
                   id={_id}
+                  placeholder={placeholder}
+                  type={!searchable && !placeholder ? "hidden" : "visible"}
                   {...getStyles("inputField")}
                   unstyled={unstyled}
                   onFocus={(event) => {
                     onFocus?.(event);
                     // eslint-disable-next-line
                     searchable && combobox.openDropdown();
+                    selectFirstOptionOnChange && combobox.selectFirstOption();
                   }}
                   onBlur={(event) => {
                     onBlur?.(event);
@@ -373,19 +385,17 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
         </Combobox.DropdownTarget>
 
         <OptionsDropdown
-          data={
-            hidePickedOptions
-              ? filterPickedValues({ data: parsedData, value: _value })
-              : parsedData
-          }
+          data={hidePickedOptions ? filteredData : parsedData}
           hidden={readOnly || disabled}
           filter={filter}
           search={_searchValue}
           limit={limit}
           hiddenWhenEmpty={
-            hidePickedOptions ||
+            !searchable ||
             !nothingFoundMessage ||
-            (!searchable && _searchValue.trim().length !== 0)
+            (hidePickedOptions &&
+              filteredData.length === 0 &&
+              _searchValue.trim().length === 0)
           }
           withScrollArea={withScrollArea}
           maxDropdownHeight={maxDropdownHeight}

@@ -13,7 +13,13 @@ export function Usage() {
 
       <Group>
         <Button
-          onClick={() => showNotification({ message: "Test", title: "Test" })}
+          onClick={() =>
+            showNotification({
+              message: "Test",
+              title: "Test",
+              style: { background: "red" },
+            })
+          }
         >
           Show notification
         </Button>

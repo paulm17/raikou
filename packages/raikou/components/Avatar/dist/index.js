@@ -85,7 +85,7 @@ function useAvatarGroupContext() {
 var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)(
   (_, { spacing }) => ({
-    root: {
+    group: {
       "--ag-spacing": (0, import_core.getSpacing)(spacing)
     }
   })
@@ -112,7 +112,7 @@ var AvatarGroup = (0, import_core.factory)((_props, ref) => {
   const getStyles = (0, import_core.useStyles)({
     name: "AvatarGroup",
     classes: {
-      root: "avatarGroup-root"
+      root: "avatarGroup-group"
     },
     props,
     className,
@@ -121,9 +121,10 @@ var AvatarGroup = (0, import_core.factory)((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver
+    varsResolver,
+    rootSelector: "group"
   });
-  return /* @__PURE__ */ import_react2.default.createElement(AvatarGroupProvider, { value: true }, /* @__PURE__ */ import_react2.default.createElement(import_core.Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others)));
+  return /* @__PURE__ */ import_react2.default.createElement(AvatarGroupProvider, { value: true }, /* @__PURE__ */ import_react2.default.createElement(import_core.Box, __spreadValues(__spreadValues({ ref }, getStyles("group")), others)));
 });
 AvatarGroup.displayName = "@raikou/core/AvatarGroup";
 

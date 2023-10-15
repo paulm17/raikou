@@ -184,7 +184,7 @@ module.exports = function ({ addComponents, theme }: any) {
       transform: "translate(-50%, -50%)",
     },
 
-    ".buttonGroup-root": {
+    ".buttonGroup-group": {
       display: "flex",
       "--button-border-width": rem("1px"),
 

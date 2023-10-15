@@ -314,7 +314,7 @@ var defaultProps3 = {
 };
 var varsResolver2 = (0, import_core7.createVarsResolver)(
   (_, { borderWidth }) => ({
-    root: { "--button-border-width": (0, import_core7.rem)(borderWidth) }
+    group: { "--button-border-width": (0, import_core7.rem)(borderWidth) }
   })
 );
 var ButtonGroup = (0, import_core7.factory)((_props, ref) => {
@@ -344,7 +344,7 @@ var ButtonGroup = (0, import_core7.factory)((_props, ref) => {
     name: "ButtonGroup",
     props,
     classes: {
-      root: "buttonGroup-root"
+      group: "buttonGroup-group"
     },
     className,
     style,
@@ -352,11 +352,12 @@ var ButtonGroup = (0, import_core7.factory)((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver2
+    varsResolver: varsResolver2,
+    rootSelector: "group"
   });
   return /* @__PURE__ */ import_react7.default.createElement(
     import_core7.Box,
-    __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
+    __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
       ref,
       variant,
       mod: { "data-orientation": orientation },

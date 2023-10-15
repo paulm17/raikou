@@ -373,8 +373,14 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
           <div {...getStyles("controls")}>
             <UnstyledButton
               {...previousControlProps}
-              {...getStyles("control")}
-              onClick={handlePrevious}
+              {...getStyles("control", {
+                className: previousControlProps?.className,
+                style: previousControlProps?.style,
+              })}
+              onClick={(event) => {
+                handlePrevious();
+                previousControlProps?.onClick?.(event);
+              }}
               data-inactive={!canScrollPrev || undefined}
               tabIndex={canScrollPrev ? 0 : -1}
             >
@@ -395,9 +401,15 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
             </UnstyledButton>
 
             <UnstyledButton
-              onClick={handleNext}
-              {...getStyles("control")}
+              {...getStyles("control", {
+                className: nextControlProps?.className,
+                style: nextControlProps?.style,
+              })}
               {...nextControlProps}
+              onClick={(event) => {
+                handleNext();
+                nextControlProps?.onClick?.(event);
+              }}
               data-inactive={!canScrollNext || undefined}
               tabIndex={canScrollNext ? 0 : -1}
             >

@@ -11,19 +11,24 @@ module.exports = function ({ addComponents, theme }: any) {
       borderRadius: "var(--paper-radius, var(--raikou-radius-default))",
       boxShadow: "var(--paper-shadow, none)",
       backgroundColor: "var(--raikou-color-body)",
-      border:
-        "var(--_paper-border-width, 0) solid var(--_paper-border-color, transparent)",
+      border: "var(--_paper-border, none)",
 
       "&[data-with-border]": {
-        "--_paper-border-width": rem("1px"),
-
         '[data-raikou-color-scheme="light"] &': {
-          "--_paper-border-color": "var(--raikou-paper-border-color)",
+          "--_paper-border-color": `${rem(
+            "1px",
+          )} var(--raikou-paper-border-color)`,
         },
 
         '[data-raikou-color-scheme="dark"] &': {
-          "--_paper-border-color": "var(--raikou-paper-border-color)",
+          "--_paper-border-color": `${rem(
+            "1px",
+          )} var(--raikou-paper-border-color)`,
         },
+      },
+
+      "&:not([data-with-border])": {
+        "--_paper-border": "none !important",
       },
     },
   });

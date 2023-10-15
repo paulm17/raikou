@@ -68,7 +68,7 @@ module.exports = function ({ addComponents, theme }: any) {
       },
     },
 
-    ".avatarGroup-root": {
+    ".avatarGroup-group": {
       display: "flex",
       paddingLeft: "var(--ag-spacing, var(--raikou-spacing-sm))",
 
