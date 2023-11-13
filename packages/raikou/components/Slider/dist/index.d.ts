@@ -1,5 +1,5 @@
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, RaikouColor, RaikouRadius, RaikouSize, Factory } from '@raikou/core';
+import { RaikouColor, RaikouRadius, RaikouSize, BoxProps, StylesApiProps, ElementProps, Factory } from '@raikou/core';
 import React from 'react';
 
 interface RaikouTransitionStyles {
@@ -25,7 +25,7 @@ interface TransitionProps {
     /** Determines whether component should be mounted to the DOM */
     mounted: boolean;
     /** Render function with transition styles argument */
-    children(styles: React.CSSProperties): JSX.Element;
+    children: (styles: React.CSSProperties) => JSX.Element;
     /** Called when exit transition ends */
     onExited?: () => void;
     /** Called when exit transition starts */
@@ -42,7 +42,7 @@ type SliderCssVariables = {
     root: "--slider-size" | "--slider-color" | "--slider-thumb-size" | "--slider-radius";
 };
 
-interface SliderProps extends BoxProps, StylesApiProps<SliderFactory>, ElementProps<"div", "onChange"> {
+interface SliderBaseProps {
     /** Key of `theme.colors` or any valid CSS color, controls color of track and thumb, `theme.primaryColor` by default */
     color?: RaikouColor;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `'xl'` by default */
@@ -62,9 +62,9 @@ interface SliderProps extends BoxProps, StylesApiProps<SliderFactory>, ElementPr
     /** Uncontrolled component default value */
     defaultValue?: number;
     /** Called when value changes */
-    onChange?(value: number): void;
+    onChange?: (value: number) => void;
     /** Called when user stops dragging slider or changes value with arrows */
-    onChangeEnd?(value: number): void;
+    onChangeEnd?: (value: number) => void;
     /** Hidden input name, use with uncontrolled component */
     name?: string;
     /** Marks displayed on the track */
@@ -89,7 +89,60 @@ interface SliderProps extends BoxProps, StylesApiProps<SliderFactory>, ElementPr
     /** Thumb `width` and `height`, by default value is computed based on `size` prop */
     thumbSize?: number | string;
     /** A transformation function to change the scale of the slider */
-    scale?(value: number): number;
+    scale?: (value: number) => number;
+    /** Determines whether track value representation should be inverted, `false` by default */
+    inverted?: boolean;
+    /** Props passed down to the hidden input */
+    hiddenInputProps?: React.ComponentPropsWithoutRef<"input">;
+}
+interface SliderProps extends BoxProps, StylesApiProps<SliderFactory>, ElementProps<"div", "onChange"> {
+    /** Key of `theme.colors` or any valid CSS color, controls color of track and thumb, `theme.primaryColor` by default */
+    color?: RaikouColor;
+    /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `'xl'` by default */
+    radius?: RaikouRadius;
+    /** Controls size of the track, `'md'` by default */
+    size?: RaikouSize | (string & {}) | number;
+    /** Minimal possible value, `0` by default */
+    min?: number;
+    /** Maximum possible value, `100` by default */
+    max?: number;
+    /** Number by which value will be incremented/decremented with thumb drag and arrows, `1` by default */
+    step?: number;
+    /** Number of significant digits after the decimal point */
+    precision?: number;
+    /** Controlled component value */
+    value?: number;
+    /** Uncontrolled component default value */
+    defaultValue?: number;
+    /** Called when value changes */
+    onChange?: (value: number) => void;
+    /** Called when user stops dragging slider or changes value with arrows */
+    onChangeEnd?: (value: number) => void;
+    /** Hidden input name, use with uncontrolled component */
+    name?: string;
+    /** Marks displayed on the track */
+    marks?: {
+        value: number;
+        label?: React.ReactNode;
+    }[];
+    /** Function to generate label or any react node to render instead, set to null to disable label */
+    label?: React.ReactNode | ((value: number) => React.ReactNode);
+    /** Props passed down to the `Transition` component, `{ transition: 'fade', duration: 0 }` by default */
+    labelTransitionProps?: TransitionOverride;
+    /** Determines whether the label should be visible when the slider is not being dragged or hovered, `false` by default */
+    labelAlwaysOn?: boolean;
+    /** Thumb `aria-label` */
+    thumbLabel?: string;
+    /** Determines whether thumb label should be displayed when the slider is hovered, `true` by default */
+    showLabelOnHover?: boolean;
+    /** Content rendered inside thumb */
+    thumbChildren?: React.ReactNode;
+    /** Disables slider */
+    disabled?: boolean;
+    /** Thumb `width` and `height`, by default value is computed based on `size` prop */
+    thumbSize?: number | string;
+    /** A transformation function to change the scale of the slider */
+    scale?: (value: number) => number;
     /** Determines whether track value representation should be inverted, `false` by default */
     inverted?: boolean;
     /** Props passed down to the hidden input */
@@ -129,9 +182,9 @@ interface RangeSliderProps extends BoxProps, StylesApiProps<RangeSliderFactory>,
     /** Uncontrolled component default value */
     defaultValue?: RangeSliderValue;
     /** Called when value changes */
-    onChange?(value: RangeSliderValue): void;
+    onChange?: (value: RangeSliderValue) => void;
     /** Called when user stops dragging slider or changes value with arrows */
-    onChangeEnd?(value: RangeSliderValue): void;
+    onChangeEnd?: (value: RangeSliderValue) => void;
     /** Hidden input name, use with uncontrolled component */
     name?: string;
     /** Marks displayed on the track */
@@ -154,7 +207,7 @@ interface RangeSliderProps extends BoxProps, StylesApiProps<RangeSliderFactory>,
     /** Thumb `width` and `height`, by default value is computed based on `size` prop */
     thumbSize?: number | string;
     /** A transformation function to change the scale of the slider */
-    scale?(value: number): number;
+    scale?: (value: number) => number;
     /** Determines whether track values representation should be inverted, `false` by default */
     inverted?: boolean;
     /** Minimal range interval, `10` by default */
@@ -181,4 +234,4 @@ declare const RangeSlider: _raikou_core.RaikouComponent<{
     vars: SliderCssVariables;
 }>;
 
-export { RangeSlider, RangeSliderFactory, RangeSliderProps, RangeSliderValue, Slider, SliderCssVariables, SliderFactory, SliderProps, SliderStylesNames };
+export { RangeSlider, RangeSliderFactory, RangeSliderProps, RangeSliderValue, Slider, SliderBaseProps, SliderCssVariables, SliderFactory, SliderProps, SliderStylesNames };

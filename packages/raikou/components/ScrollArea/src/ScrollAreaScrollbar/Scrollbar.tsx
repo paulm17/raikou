@@ -17,9 +17,9 @@ export interface ScrollbarPrivateProps {
   onThumbPointerUp: ScrollbarContextValue["onThumbPointerUp"];
   onThumbPointerDown: ScrollbarContextValue["onThumbPointerDown"];
   onThumbPositionChange: ScrollbarContextValue["onThumbPositionChange"];
-  onWheelScroll(event: WheelEvent, maxScrollPos: number): void;
-  onDragScroll(pointerPos: { x: number; y: number }): void;
-  onResize(): void;
+  onWheelScroll: (event: WheelEvent, maxScrollPos: number) => void;
+  onDragScroll: (pointerPos: { x: number; y: number }) => void;
+  onResize: () => void;
 }
 
 interface ScrollbarProps
@@ -42,10 +42,10 @@ export const Scrollbar = forwardRef<HTMLDivElement, ScrollbarProps>(
     } = props;
     const context = useScrollAreaContext();
     const [scrollbar, setScrollbar] = React.useState<HTMLDivElement | null>(
-      null
+      null,
     );
     const composeRefs = useMergedRef(forwardedRef, (node) =>
-      setScrollbar(node)
+      setScrollbar(node),
     );
     const rectRef = React.useRef<ClientRect | null>(null);
     const prevWebkitUserSelectRef = React.useRef<string>("");
@@ -110,7 +110,7 @@ export const Scrollbar = forwardRef<HTMLDivElement, ScrollbarProps>(
           })}
           onPointerMove={composeEventHandlers(
             props.onPointerMove,
-            handleDragScroll
+            handleDragScroll,
           )}
           onPointerUp={composeEventHandlers(props.onPointerUp, (event) => {
             const element = event.target as HTMLElement;
@@ -124,5 +124,7 @@ export const Scrollbar = forwardRef<HTMLDivElement, ScrollbarProps>(
         />
       </ScrollbarProvider>
     );
-  }
+  },
 );
+
+Scrollbar.displayName = "@raikou/Scrollbar";

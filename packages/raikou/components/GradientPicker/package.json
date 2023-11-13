@@ -1,0 +1,45 @@
+{
+  "name": "@raikou/gradient-picker",
+  "private": true,
+  "description": "Extension of color picker to support gradients",
+  "version": "0.0.1-beta.8",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format esm,cjs --clean",
+    "lint": "eslint \"**/*.ts*\"",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "build:fast": "tsup src",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "clean-package": "../../../clean-package.config.json",
+  "peerDependencies": {
+    "@raikou/core": ">=0.0.1-alpha.1",
+    "@raikou/hooks": ">=0.0.1-alpha.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@ctrl/tinycolor": "^4.0.2",
+    "@raikou/core": "workspace:*",
+    "@raikou/hooks": "workspace:*",
+    "clsx": "^2.0.0",
+    "colord": "^2.9.3",
+    "lodash.isequal": "^4.5.0",
+    "type-fest": "^4.0.0",
+    "tslib": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/lodash.isequal": "^4.5.7",
+    "@types/node": "^20.3.3",
+    "@types/react": "^18.2.23",
+    "@types/react-dom": "^18.2.8",
+    "clean-package": "2.2.0",
+    "tsup": "^7.1.0",
+    "typescript": "^5.1.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

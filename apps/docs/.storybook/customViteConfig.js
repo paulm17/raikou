@@ -9,4 +9,20 @@ export default defineConfig({
       configFile: path.join(__dirname, "../tsconfig.json"),
     }),
   ],
+  optimizeDeps: {
+    include: [
+      "@storybook/addon-styling",
+      "next-themes",
+      "zustand",
+      "@tabler/icons-react",
+      "clsx",
+      "react-dom",
+      "@floating-ui/react",
+      "tslib",
+      "react-remove-scroll",
+      "react-transition-group",
+      "react-number-format",
+      "react-textarea-autosize",
+    ],
+  },
 });

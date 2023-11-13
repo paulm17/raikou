@@ -46,7 +46,7 @@ export interface MultiSelectProps
   defaultValue?: string[];
 
   /** Called whe value changes */
-  onChange?(value: string[]): void;
+  onChange?: (value: string[]) => void;
 
   /** Controlled search value */
   searchValue?: string;
@@ -55,7 +55,7 @@ export interface MultiSelectProps
   defaultSearchValue?: string;
 
   /** Called when search changes */
-  onSearchChange?(value: string): void;
+  onSearchChange?: (value: string) => void;
 
   /** Maximum number of values, `Infinity` by default */
   maxValues?: number;

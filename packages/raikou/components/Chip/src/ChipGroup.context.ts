@@ -1,8 +1,8 @@
 import { createOptionalContext } from "../../_utils";
 
 interface ChipGroupContextValue {
-  isChipSelected(value: string): boolean;
-  onChange(event: React.ChangeEvent<HTMLInputElement>): void;
+  isChipSelected: (value: string) => boolean;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   multiple: boolean;
 }
 

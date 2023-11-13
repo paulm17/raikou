@@ -47,7 +47,7 @@ export interface TagsInputProps
   defaultValue?: string[];
 
   /** Called whe value changes */
-  onChange?(value: string[]): void;
+  onChange?: (value: string[]) => void;
 
   /** Controlled search value */
   searchValue?: string;
@@ -56,7 +56,7 @@ export interface TagsInputProps
   defaultSearchValue?: string;
 
   /** Called when search changes */
-  onSearchChange?(value: string): void;
+  onSearchChange?: (value: string) => void;
 
   /** Maximum number of tags, `Infinity` by default */
   maxTags?: number;
@@ -65,7 +65,7 @@ export interface TagsInputProps
   allowDuplicates?: boolean;
 
   /** Called when user tries to submit a duplicated tag */
-  onDuplicate?(value: string): void;
+  onDuplicate?: (value: string) => void;
 
   /** Characters that should trigger tags split, `[',']` by default */
   splitChars?: string[];
@@ -147,6 +147,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     inputContainer,
     inputWrapperOrder,
     withAsterisk,
+    required,
     labelProps,
     descriptionProps,
     errorProps,
@@ -349,6 +350,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
             inputContainer={inputContainer}
             inputWrapperOrder={inputWrapperOrder}
             withAsterisk={withAsterisk}
+            required={required}
             labelProps={labelProps}
             descriptionProps={descriptionProps}
             errorProps={errorProps}
@@ -385,6 +387,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
                   onChange={(event) =>
                     setSearchValue(event.currentTarget.value)
                   }
+                  required={required && _value.length === 0}
                   disabled={disabled}
                   readOnly={readOnly}
                   id={_id}

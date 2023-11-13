@@ -1,6 +1,6 @@
-import type { DatePickerType, DatePickerValue } from './DatePickerValue';
+import type { DatePickerType, DatePickerValue } from "./DatePickerValue";
 
-export interface PickerBaseProps<Type extends DatePickerType = 'default'> {
+export interface PickerBaseProps<Type extends DatePickerType = "default"> {
   /** Picker type: range, multiple or default */
   type?: DatePickerType | Type;
 
@@ -11,11 +11,11 @@ export interface PickerBaseProps<Type extends DatePickerType = 'default'> {
   defaultValue?: DatePickerValue<Type>;
 
   /** Called when value changes */
-  onChange?(value: DatePickerValue<Type>): void;
+  onChange?: (value: DatePickerValue<Type>) => void;
 
   /** Determines whether user can deselect the date by clicking on selected item, applicable only when type="default" */
-  allowDeselect?: Type extends 'default' ? boolean : never;
+  allowDeselect?: Type extends "default" ? boolean : never;
 
   /** Determines whether single year can be selected as range, applicable only when type="range" */
-  allowSingleDateInRange?: Type extends 'range' ? boolean : never;
+  allowSingleDateInRange?: Type extends "range" ? boolean : never;
 }

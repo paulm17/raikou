@@ -58,7 +58,7 @@ export interface DayProps
   lastInRange?: boolean;
 
   /** Controls day value rendering */
-  renderDay?(date: Date): React.ReactNode;
+  renderDay?: (date: Date) => React.ReactNode;
 }
 
 export type DayFactory = Factory<{

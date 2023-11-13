@@ -20,8 +20,8 @@ interface PopoverContext {
   arrowRef: React.RefObject<HTMLDivElement>;
   opened: boolean;
   transitionProps?: TransitionOverride;
-  reference(node: HTMLElement): void;
-  floating(node: HTMLElement): void;
+  reference: (node: HTMLElement) => void;
+  floating: (node: HTMLElement) => void;
   width?: PopoverWidth;
   withArrow: boolean | undefined;
   arrowSize: number;
@@ -36,11 +36,11 @@ interface PopoverContext {
   zIndex: React.CSSProperties["zIndex"];
   radius?: RaikouRadius | undefined;
   shadow?: RaikouShadow | undefined;
-  onClose?(): void;
-  getDropdownId(): string;
-  getTargetId(): string;
+  onClose?: () => void;
+  getDropdownId: () => string;
+  getTargetId: () => string;
   controlled: boolean;
-  onToggle(): void;
+  onToggle: () => void;
   withRoles: boolean | undefined;
   targetProps: Record<string, any>;
   disabled: boolean | undefined;

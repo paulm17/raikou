@@ -59,7 +59,7 @@ export interface SpotlightRootProps
   query?: string;
 
   /** Called when query changes */
-  onQueryChange?(query: string): void;
+  onQueryChange?: (query: string) => void;
 
   /** Determines whether the search query should be cleared when the spotlight is closed, `true` by default */
   clearQueryOnClose?: boolean;
@@ -77,10 +77,10 @@ export interface SpotlightRootProps
   disabled?: boolean;
 
   /** Called when spotlight opens */
-  onSpotlightOpen?(): void;
+  onSpotlightOpen?: () => void;
 
   /** Called when spotlight closes */
-  onSpotlightClose?(): void;
+  onSpotlightClose?: () => void;
 
   /** Forces opened state, useful for tests */
   forceOpened?: boolean;

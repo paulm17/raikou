@@ -5,7 +5,7 @@ import { useProps } from "@raikou/core";
 
 export interface CopyButtonProps {
   /** Children callback, provides current status and copy function as an argument */
-  children(payload: { copied: boolean; copy(): void }): React.ReactNode;
+  children: (payload: { copied: boolean; copy: () => void }) => React.ReactNode;
 
   /** Value that will be copied to the clipboard when the button is clicked */
   value: string;
@@ -22,7 +22,7 @@ export function CopyButton(props: CopyButtonProps) {
   const { children, timeout, value, ...others } = useProps(
     "CopyButton",
     defaultProps,
-    props
+    props,
   );
   const clipboard = useClipboard({ timeout });
   const copy = () => clipboard.copy(value);

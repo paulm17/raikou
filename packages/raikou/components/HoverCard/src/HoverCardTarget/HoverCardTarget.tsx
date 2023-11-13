@@ -3,7 +3,10 @@ import { isElement, createEventHandler, useProps } from "@raikou/core";
 import { Popover, PopoverTargetProps } from "../../../Popover/src";
 import { useHoverCardContext } from "../HoverCard.context";
 
-export interface HoverCardTargetProps extends PopoverTargetProps {}
+export interface HoverCardTargetProps extends PopoverTargetProps {
+  /** Key of the prop that is used to pass event listeners, by default event listeners are passed directly to component */
+  eventPropsWrapperName?: string;
+}
 
 const defaultProps: Partial<HoverCardTargetProps> = {
   refProp: "ref",
@@ -11,7 +14,7 @@ const defaultProps: Partial<HoverCardTargetProps> = {
 
 export const HoverCardTarget = forwardRef<HTMLElement, HoverCardTargetProps>(
   (props, ref) => {
-    const { children, refProp, ...others } = useProps(
+    const { children, refProp, eventPropsWrapperName, ...others } = useProps(
       "HoverCardTarget",
       defaultProps,
       props,
@@ -33,12 +36,16 @@ export const HoverCardTarget = forwardRef<HTMLElement, HoverCardTargetProps>(
       ctx.closeDropdown,
     );
 
+    const eventListeners = { onMouseEnter, onMouseLeave };
+
     return (
       <Popover.Target refProp={refProp} ref={ref} {...others}>
-        {cloneElement(children as React.ReactElement, {
-          onMouseEnter,
-          onMouseLeave,
-        })}
+        {cloneElement(
+          children as React.ReactElement,
+          eventPropsWrapperName
+            ? { [eventPropsWrapperName]: eventListeners }
+            : eventListeners,
+        )}
       </Popover.Target>
     );
   },

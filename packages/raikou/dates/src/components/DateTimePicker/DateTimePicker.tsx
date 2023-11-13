@@ -60,7 +60,7 @@ export interface DateTimePickerProps
   defaultValue?: DateValue;
 
   /** Called when value changes */
-  onChange?(value: DateValue): void;
+  onChange?: (value: DateValue) => void;
 
   /** TimeInput component props */
   timeInputProps?: TimeInputProps & {
@@ -183,8 +183,10 @@ export const DateTimePicker = factory<DateTimePickerFactory>((_props, ref) => {
     }
   };
 
-  const handleDateChange = (date: Date) => {
-    setValue(assignTime(_value!, date));
+  const handleDateChange = (date: DateValue) => {
+    if (date) {
+      setValue(assignTime(_value, date));
+    }
     timeInputRef.current?.focus();
   };
 

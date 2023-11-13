@@ -8,10 +8,10 @@ import { useColorPickerContext } from "../ColorPicker.context";
 
 export interface SaturationProps extends ElementProps<"div", "onChange"> {
   value: HsvaColor;
-  onChange(color: Partial<HsvaColor>): void;
-  onChangeEnd(color: Partial<HsvaColor>): void;
-  onScrubStart?(): void;
-  onScrubEnd?(): void;
+  onChange: (color: Partial<HsvaColor>) => void;
+  onChangeEnd: (color: Partial<HsvaColor>) => void;
+  onScrubStart?: () => void;
+  onScrubEnd?: () => void;
   saturationLabel?: string;
   size: RaikouSize | (string & {});
   color: string;
@@ -51,7 +51,7 @@ export function Saturation({
         onScrubEnd?.();
       },
       onScrubStart,
-    }
+    },
   );
 
   useEffect(() => {
@@ -60,7 +60,7 @@ export function Saturation({
 
   const handleArrow = (
     event: React.KeyboardEvent<HTMLDivElement>,
-    pos: UseMovePosition
+    pos: UseMovePosition,
   ) => {
     event.preventDefault();
     const _position = clampUseMovePosition(pos);

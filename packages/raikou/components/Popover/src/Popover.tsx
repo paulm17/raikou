@@ -42,16 +42,16 @@ export interface __PopoverProps {
   offset?: number | FloatingAxesOffsets;
 
   /** Called when dropdown position changes */
-  onPositionChange?(position: FloatingPosition): void;
+  onPositionChange?: (position: FloatingPosition) => void;
 
   /** `useEffect` dependencies to force update dropdown position, `[]` by default */
   positionDependencies?: any[];
 
   /** Called when dropdown closes */
-  onClose?(): void;
+  onClose?: () => void;
 
   /** Called when dropdown opens */
-  onOpen?(): void;
+  onOpen?: () => void;
 
   /** If set dropdown will not be unmounted from the DOM when it is hidden, `display: none` styles will be added instead, `false` by default */
   keepMounted?: boolean;
@@ -117,7 +117,7 @@ export interface PopoverProps
   opened?: boolean;
 
   /** Called with current state when dropdown opens or closes */
-  onChange?(opened: boolean): void;
+  onChange?: (opened: boolean) => void;
 
   /** Determines whether dropdown should be closed on outside clicks, `true` by default */
   closeOnClickOutside?: boolean;

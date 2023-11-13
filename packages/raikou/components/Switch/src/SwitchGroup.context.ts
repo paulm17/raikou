@@ -3,7 +3,7 @@ import { RaikouSize } from "@raikou/core";
 
 interface SwitchGroupContextValue {
   value: string[];
-  onChange(event: React.ChangeEvent<HTMLInputElement>): void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   size: RaikouSize | (string & {}) | undefined;
 }
 

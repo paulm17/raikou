@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import hljs from 'highlight.js';
+import { useState, useEffect } from "react";
+import hljs from "highlight.js";
 
 interface UseHighlightInput {
   code: string;
@@ -7,11 +7,16 @@ interface UseHighlightInput {
   highlightOnClient: boolean | undefined;
 }
 
-export function useHighlight({ code, language, highlightOnClient }: UseHighlightInput) {
-  const getHighlightedCode = () => hljs.highlight(code.trim(), { language: language! }).value;
+export function useHighlight({
+  code,
+  language,
+  highlightOnClient,
+}: UseHighlightInput) {
+  const getHighlightedCode = () =>
+    hljs.highlight(code.trim(), { language: language! }).value;
   const [highlighted, setHighlighted] = useState(!highlightOnClient);
   const [highlightedCode, setHighlightedCode] = useState(
-    highlightOnClient ? code : getHighlightedCode()
+    highlightOnClient ? code : getHighlightedCode(),
   );
 
   const getCodeProps = () =>
@@ -25,6 +30,10 @@ export function useHighlight({ code, language, highlightOnClient }: UseHighlight
       setHighlighted(true);
     }
   }, []);
+
+  useEffect(() => {
+    setHighlightedCode(getHighlightedCode());
+  }, [code]);
 
   return getCodeProps;
 }

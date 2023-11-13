@@ -1,8 +1,8 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback } from "react";
 
 export function useDisclosure(
   initialState = false,
-  callbacks?: { onOpen?(): void; onClose?(): void }
+  callbacks?: { onOpen?: () => void; onClose?: () => void },
 ) {
   const { onOpen, onClose } = callbacks || {};
   const [opened, setOpened] = useState(initialState);

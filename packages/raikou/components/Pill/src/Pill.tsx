@@ -36,7 +36,7 @@ export interface PillProps
   withRemoveButton?: boolean;
 
   /** Called when the remove button is clicked */
-  onRemove?(): void;
+  onRemove?: () => void;
 
   /** Props passed down to the remove button */
   removeButtonProps?: React.ComponentPropsWithoutRef<"button">;

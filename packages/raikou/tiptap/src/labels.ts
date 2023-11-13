@@ -84,7 +84,7 @@ export interface RichTextEditorLabels {
   highlightControlLabel: string;
 
   /** A function go get RichTextEditor.Color control aria-label based on color that control applies */
-  colorControlLabel(color: string): string;
+  colorControlLabel: (color: string) => string;
 
   /** aria-label for link editor url input */
   linkEditorInputLabel: string;
@@ -117,53 +117,53 @@ export interface RichTextEditorLabels {
   colorPickerSave: string;
 
   /** aria-label for color palette colors */
-  colorPickerColorLabel(color: string): string;
+  colorPickerColorLabel: (color: string) => string;
 }
 
 export const DEFAULT_LABELS: RichTextEditorLabels = {
   // Controls labels
-  linkControlLabel: 'Link',
-  colorPickerControlLabel: 'Text color',
-  highlightControlLabel: 'Highlight text',
+  linkControlLabel: "Link",
+  colorPickerControlLabel: "Text color",
+  highlightControlLabel: "Highlight text",
   colorControlLabel: (color) => `Set text color ${color}`,
-  boldControlLabel: 'Bold',
-  italicControlLabel: 'Italic',
-  underlineControlLabel: 'Underline',
-  strikeControlLabel: 'Strikethrough',
-  clearFormattingControlLabel: 'Clear formatting',
-  unlinkControlLabel: 'Remove link',
-  bulletListControlLabel: 'Bullet list',
-  orderedListControlLabel: 'Ordered list',
-  h1ControlLabel: 'Heading 1',
-  h2ControlLabel: 'Heading 2',
-  h3ControlLabel: 'Heading 3',
-  h4ControlLabel: 'Heading 4',
-  h5ControlLabel: 'Heading 5',
-  h6ControlLabel: 'Heading 6',
-  blockquoteControlLabel: 'Blockquote',
-  alignLeftControlLabel: 'Align text: left',
-  alignCenterControlLabel: 'Align text: center',
-  alignRightControlLabel: 'Align text: right',
-  alignJustifyControlLabel: 'Align text: justify',
-  codeControlLabel: 'Code',
-  codeBlockControlLabel: 'Code block',
-  subscriptControlLabel: 'Subscript',
-  superscriptControlLabel: 'Superscript',
-  unsetColorControlLabel: 'Unset color',
-  hrControlLabel: 'Horizontal line',
+  boldControlLabel: "Bold",
+  italicControlLabel: "Italic",
+  underlineControlLabel: "Underline",
+  strikeControlLabel: "Strikethrough",
+  clearFormattingControlLabel: "Clear formatting",
+  unlinkControlLabel: "Remove link",
+  bulletListControlLabel: "Bullet list",
+  orderedListControlLabel: "Ordered list",
+  h1ControlLabel: "Heading 1",
+  h2ControlLabel: "Heading 2",
+  h3ControlLabel: "Heading 3",
+  h4ControlLabel: "Heading 4",
+  h5ControlLabel: "Heading 5",
+  h6ControlLabel: "Heading 6",
+  blockquoteControlLabel: "Blockquote",
+  alignLeftControlLabel: "Align text: left",
+  alignCenterControlLabel: "Align text: center",
+  alignRightControlLabel: "Align text: right",
+  alignJustifyControlLabel: "Align text: justify",
+  codeControlLabel: "Code",
+  codeBlockControlLabel: "Code block",
+  subscriptControlLabel: "Subscript",
+  superscriptControlLabel: "Superscript",
+  unsetColorControlLabel: "Unset color",
+  hrControlLabel: "Horizontal line",
 
   // Link editor
-  linkEditorInputLabel: 'Enter URL',
-  linkEditorInputPlaceholder: 'https://example.com/',
-  linkEditorExternalLink: 'Open link in a new tab',
-  linkEditorInternalLink: 'Open link in the same tab',
-  linkEditorSave: 'Save',
+  linkEditorInputLabel: "Enter URL",
+  linkEditorInputPlaceholder: "https://example.com/",
+  linkEditorExternalLink: "Open link in a new tab",
+  linkEditorInternalLink: "Open link in the same tab",
+  linkEditorSave: "Save",
 
   // Color picker control
-  colorPickerCancel: 'Cancel',
-  colorPickerClear: 'Clear color',
-  colorPickerColorPicker: 'Color picker',
-  colorPickerPalette: 'Color palette',
-  colorPickerSave: 'Save',
+  colorPickerCancel: "Cancel",
+  colorPickerClear: "Clear color",
+  colorPickerColorPicker: "Color picker",
+  colorPickerPalette: "Color palette",
+  colorPickerSave: "Save",
   colorPickerColorLabel: (color) => `Set text color ${color}`,
 };

@@ -10,7 +10,8 @@ module.exports = function ({ addComponents, theme }: any) {
       "--rating-size-xl": rem("32px"),
 
       display: "flex",
-      width: "max-content",
+      width: "fit-content",
+      flexWrap: "wrap",
       pointerEvents: "var(--_pointer-events)",
 
       "&:has(input:disabled)": {

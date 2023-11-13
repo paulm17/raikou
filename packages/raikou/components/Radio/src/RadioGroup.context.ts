@@ -4,7 +4,7 @@ import { createOptionalContext } from "../../_utils";
 interface RadioGroupContextValue {
   size: RaikouSize | undefined;
   value: string;
-  onChange(event: React.ChangeEvent<HTMLInputElement>): void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   name: string;
 }
 

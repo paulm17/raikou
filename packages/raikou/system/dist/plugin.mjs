@@ -2653,7 +2653,7 @@ var require_Avatar_plugin = __commonJS({
             height: "70%"
           }
         },
-        ".avatarGroup-root": {
+        ".avatarGroup-group": {
           display: "flex",
           paddingLeft: "var(--ag-spacing, var(--raikou-spacing-sm))",
           '[dir="rtl"] &': {
@@ -3102,7 +3102,7 @@ var require_Button_plugin = __commonJS({
           top: "50%",
           transform: "translate(-50%, -50%)"
         },
-        ".buttonGroup-root": {
+        ".buttonGroup-group": {
           display: "flex",
           "--button-border-width": rem2("1px"),
           '&[data-orientation="horizontal"]': {
@@ -4177,6 +4177,65 @@ var require_Container_plugin = __commonJS({
   }
 });
 
+// ../components/Dial/src/Dial.plugin.ts
+var require_Dial_plugin = __commonJS({
+  "../components/Dial/src/Dial.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents }) {
+      addComponents({
+        ".dial-root": {
+          "--dial-size-xs": rem2("16px"),
+          "--dial-size-sm": rem2("18px"),
+          "--dial-size-md": rem2("20px"),
+          "--dial-size-lg": rem2("26px"),
+          "--dial-size-xl": rem2("32px"),
+          position: "relative",
+          display: "inline-block",
+          width: "var(--dial-size, var(--dial-size-md))",
+          height: "var(--dial-size, var(--dial-size-md))",
+          transform: `scale(var(--dial-scale))`
+        },
+        ".dial-inner": {
+          position: "absolute",
+          left: "5px",
+          top: "5px",
+          display: "flex",
+          width: "100%",
+          height: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: "9999px",
+          border: "2px solid #383a3c"
+        },
+        ".dial-handle": {
+          position: "relative",
+          display: "block",
+          top: "calc(-25% - 0px)",
+          width: "3px",
+          height: "calc(50% + 2px)",
+          background: "#006dd2",
+          transformOrigin: "bottom",
+          transform: `rotate(var(--dial-angle))`,
+          cursor: "pointer",
+          "&:after": {
+            content: '""',
+            position: "absolute",
+            display: "block",
+            top: "-1px",
+            left: "-1px",
+            width: "5px",
+            height: "5px",
+            background: "#818589",
+            borderRadius: "0.375rem",
+            cursor: "pointer"
+          }
+        }
+      });
+    };
+  }
+});
+
 // ../components/Dialog/src/Dialog.plugin.ts
 var require_Dialog_plugin = __commonJS({
   "../components/Dialog/src/Dialog.plugin.ts"(exports, module) {
@@ -4385,6 +4444,157 @@ var require_Flex_plugin = __commonJS({
       addComponents({
         ".flex-root": {
           display: "flex"
+        }
+      });
+    };
+  }
+});
+
+// ../components/GradientPicker/src/GradientPicker.plugin.ts
+var require_GradientPicker_plugin = __commonJS({
+  "../components/GradientPicker/src/GradientPicker.plugin.ts"(exports, module) {
+    "use strict";
+    init_src();
+    module.exports = function({ addComponents, theme }) {
+      addComponents({
+        ".gradientPicker-wrapper": {
+          "--gp-width-xs": rem2("180px"),
+          "--gp-width-sm": rem2("200px"),
+          "--gp-width-md": rem2("240px"),
+          "--gp-width-lg": rem2("280px"),
+          "--gp-width-xl": rem2("320px"),
+          "--gp-preview-size-xs": rem2("26px"),
+          "--gp-preview-size-sm": rem2("34px"),
+          "--gp-preview-size-md": rem2("42px"),
+          "--gp-preview-size-lg": rem2("50px"),
+          "--gp-preview-size-xl": rem2("54px"),
+          "--gp-thumb-size-xs": rem2("8px"),
+          "--gp-thumb-size-sm": rem2("12px"),
+          "--gp-thumb-size-md": rem2("16px"),
+          "--gp-thumb-size-lg": rem2("20px"),
+          "--gp-thumb-size-xl": rem2("22px"),
+          "--gp-saturation-height-xs": rem2("100px"),
+          "--gp-saturation-height-sm": rem2("110px"),
+          "--gp-saturation-height-md": rem2("120px"),
+          "--gp-saturation-height-lg": rem2("140px"),
+          "--gp-saturation-height-xl": rem2("160px"),
+          "--gp-preview-size": "var(--gp-preview-size-sm)",
+          "--gp-thumb-size": "var(--gp-thumb-size-sm)",
+          "--gp-saturation-height": "var(--gp-saturation-height-sm)",
+          "--gp-width": "var(--gp-width-sm)",
+          "--gp-body-spacing": "var(--raikou-spacing-sm)",
+          width: "var(--_gp-width, var(--gp-width))",
+          padding: rem2("1px"),
+          "&[data-full-width]": {
+            "--_gp-width": "100%"
+          }
+        },
+        ".gradientPicker-preview": {
+          width: "var(--gp-preview-size)",
+          height: "var(--gp-preview-size)"
+        },
+        ".gradientPicker-body": {
+          display: "flex",
+          paddingTop: "calc(var(--gp-body-spacing) / 2)"
+        },
+        ".gradientPicker-sliders": {
+          flex: "1",
+          "&:not(:only-child)": {
+            marginRight: "var(--raikou-spacing-xs)"
+          }
+        },
+        ".gradientPicker-thumb": {
+          overflow: "hidden",
+          position: "absolute",
+          boxShadow: `0 0 ${rem2("1px")} rgba(0, 0, 0, 0.6)`,
+          border: `${rem2("2px")} solid var(--raikou-color-white)`,
+          width: "var(--gp-thumb-size)",
+          height: "var(--gp-thumb-size)",
+          borderRadius: "var(--gp-thumb-size)",
+          outline: "var(--_outline)",
+          left: "calc(var(--_thumb-x-offset) - var(--gp-thumb-size) / 2)",
+          top: "calc(var(--_thumb-y-offset) - var(--gp-thumb-size) / 2)"
+        },
+        /* Duplicate class to increase specificity */
+        ".gradientPicker-swatch.gradientPicker-swatch": {
+          height: "0",
+          margin: rem2("2px"),
+          cursor: "pointer",
+          paddingBottom: `calc(var(--gp-swatch-size) - ${rem2("4px")})`,
+          minWidth: "0",
+          minHeight: "0",
+          flex: `1 0 calc(var(--gp-swatch-size) - ${rem2("4px")})`
+        },
+        ".gradientPicker-swatches": {
+          marginTop: rem2("5px"),
+          marginLeft: rem2("-2px"),
+          marginRight: rem2("-2px"),
+          display: "flex",
+          flexWrap: "wrap"
+        },
+        ".gradientPicker-saturation": {
+          "-webkit-tap-highlight-color": "transparent",
+          position: "relative",
+          height: "var(--gp-saturation-height)",
+          borderRadius: "var(--raikou-radius-sm)",
+          margin: "calc(var(--gp-thumb-size) / 2)",
+          "&[data-focus-ring='auto']": {
+            "&:focus:focus-visible": {
+              "& .thumb": {
+                "--_outline": `${rem2("2px")} solid var(--raikou-color-blue-filled)`
+              }
+            }
+          },
+          "&[data-focus-ring='always']": {
+            "&:focus": {
+              "& .thumb": {
+                "--_outline": `${rem2("2px")} solid var(--raikou-color-blue-filled)`
+              }
+            }
+          }
+        },
+        ".gradientPicker-saturationOverlay": {
+          position: "absolute",
+          borderRadius: "var(--raikou-radius-sm)",
+          inset: `calc(var(--gp-thumb-size) * -1 / 2 - ${rem2("1px")})`
+        },
+        ".gradientPicker-slider": {
+          position: "relative",
+          height: ` calc(var(--gp-thumb-size) + ${rem2("2px")})`,
+          marginLeft: "calc(var(--gp-thumb-size) / 2)",
+          marginRight: "calc(var(--gp-thumb-size) / 2)",
+          outline: "none",
+          "& + &": {
+            marginTop: rem2("6px")
+          },
+          "&[data-focus-ring='auto']": {
+            "&:focus:focus-visible": {
+              "& .thumb": {
+                "--_outline": `${rem2("2px")} solid var(--raikou-color-blue-filled)`
+              }
+            }
+          },
+          "&[data-focus-ring='always']": {
+            "&:focus": {
+              "& .thumb": {
+                "--_outline": `${rem2("2px")} solid var(--raikou-color-blue-filled)`
+              }
+            }
+          },
+          '[data-raikou-color-scheme="light"] &': {
+            "--_slider-checkers": "var(--raikou-colorpicker-slider-checkers)"
+          },
+          '[data-raikou-color-scheme="dark"] &': {
+            "--_slider-checkers": "var(--raikou-colorpicker-slider-checkers)"
+          }
+        },
+        ".gradientPicker-sliderOverlay": {
+          position: "absolute",
+          top: "0",
+          bottom: "0",
+          left: `calc(var(--gp-thumb-size) * -1 / 2 - ${rem2("1px")})`,
+          right: `calc(var(--gp-thumb-size) * -1 / 2 - ${rem2("1px")})`,
+          borderRadius: "10000rem"
         }
       });
     };
@@ -5875,15 +6085,21 @@ var require_Paper_plugin = __commonJS({
           borderRadius: "var(--paper-radius, var(--raikou-radius-default))",
           boxShadow: "var(--paper-shadow, none)",
           backgroundColor: "var(--raikou-color-body)",
-          border: "var(--_paper-border-width, 0) solid var(--_paper-border-color, transparent)",
+          border: "var(--_paper-border, none)",
           "&[data-with-border]": {
-            "--_paper-border-width": rem2("1px"),
             '[data-raikou-color-scheme="light"] &': {
-              "--_paper-border-color": "var(--raikou-paper-border-color)"
+              "--_paper-border-color": `${rem2(
+                "1px"
+              )} var(--raikou-paper-border-color)`
             },
             '[data-raikou-color-scheme="dark"] &': {
-              "--_paper-border-color": "var(--raikou-paper-border-color)"
+              "--_paper-border-color": `${rem2(
+                "1px"
+              )} var(--raikou-paper-border-color)`
             }
+          },
+          "&:not([data-with-border])": {
+            "--_paper-border": "none !important"
           }
         }
       });
@@ -6281,7 +6497,12 @@ var require_Radio_plugin = __commonJS({
           "--radio-size-lg": rem2("30px"),
           "--radio-size-xl": rem2("36px"),
           "--radio-size": "var(--radio-size-sm)",
-          "--radio-icon-size": "calc(var(--radio-size) / 2.25)"
+          "--radio-icon-size-xs": rem2("6px"),
+          "--radio-icon-size-sm": rem2("8px"),
+          "--radio-icon-size-md": rem2("10px"),
+          "--radio-icon-size-lg": rem2("14px"),
+          "--radio-icon-size-xl": rem2("16px"),
+          "--radio-icon-size": "var(--radio-icon-size-sm)"
         },
         ".radio-inner": {
           position: "relative",
@@ -6379,7 +6600,8 @@ var require_Rating_plugin = __commonJS({
           "--rating-size-lg": rem2("28px"),
           "--rating-size-xl": rem2("32px"),
           display: "flex",
-          width: "max-content",
+          width: "fit-content",
+          flexWrap: "wrap",
           pointerEvents: "var(--_pointer-events)",
           "&:has(input:disabled)": {
             "--_pointer-events": "none"
@@ -10117,11 +10339,13 @@ var require_plugin = __commonJS({
         require_ColorSwatch_plugin(),
         require_Combobox_plugin(),
         require_Container_plugin(),
+        require_Dial_plugin(),
         require_Dialog_plugin(),
         require_Divider_plugin(),
         require_Drawer_plugin(),
         require_Fieldset_plugin(),
         require_Flex_plugin(),
+        require_GradientPicker_plugin(),
         require_Grid_plugin(),
         require_Group_plugin(),
         require_Image_plugin(),

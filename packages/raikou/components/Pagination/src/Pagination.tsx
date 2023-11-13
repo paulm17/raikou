@@ -29,9 +29,9 @@ export interface PaginationProps extends PaginationRootProps {
   withControls?: boolean;
 
   /** Adds props to next/previous/first/last controls */
-  getControlProps?(
-    control: "first" | "previous" | "last" | "next"
-  ): Record<string, any>;
+  getControlProps?: (
+    control: "first" | "previous" | "last" | "next",
+  ) => Record<string, any>;
 
   /** Next control icon component */
   nextIcon?: PaginationIcon;

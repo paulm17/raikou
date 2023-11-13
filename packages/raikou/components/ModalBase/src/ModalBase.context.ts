@@ -4,15 +4,15 @@ import { TransitionOverride } from "../../Transition/src";
 interface ModalBaseContextValue {
   titleMounted: boolean;
   bodyMounted: boolean;
-  setTitleMounted(value: boolean): void;
-  setBodyMounted(value: boolean): void;
-  getTitleId(): string;
-  getBodyId(): string;
+  setTitleMounted: (value: boolean) => void;
+  setBodyMounted: (value: boolean) => void;
+  getTitleId: () => string;
+  getBodyId: () => string;
   transitionProps: Partial<TransitionOverride> | undefined;
   zIndex: React.CSSProperties["zIndex"];
 
   opened: boolean;
-  onClose(): void;
+  onClose: () => void;
 
   closeOnEscape: boolean | undefined;
   trapFocus: boolean | undefined;
@@ -21,5 +21,5 @@ interface ModalBaseContextValue {
 
 export const [ModalBaseProvider, useModalBaseContext] =
   createSafeContext<ModalBaseContextValue>(
-    "ModalBase component was not found in tree"
+    "ModalBase component was not found in tree",
   );

@@ -13,7 +13,7 @@ export interface ConfiguratorNumberControlProps
   extends BoxProps,
     ElementProps<"div", "onChange"> {
   value: number;
-  onChange(value: number): void;
+  onChange: (value: number) => void;
   prop: string;
   step?: number;
   min?: number;

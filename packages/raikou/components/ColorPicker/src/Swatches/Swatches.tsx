@@ -9,7 +9,7 @@ export interface SwatchesProps extends ElementProps<"div"> {
   swatchesPerRow?: number;
   focusable?: boolean;
   onChangeEnd?: (color: string) => void;
-  setValue(value: string): void;
+  setValue: (value: string) => void;
 }
 
 export const Swatches = forwardRef<HTMLDivElement, SwatchesProps>(
@@ -25,7 +25,7 @@ export const Swatches = forwardRef<HTMLDivElement, SwatchesProps>(
       swatchesPerRow,
       ...others
     },
-    ref
+    ref,
   ) => {
     const { getStyles } = useColorPickerContext();
 
@@ -52,7 +52,7 @@ export const Swatches = forwardRef<HTMLDivElement, SwatchesProps>(
         {colors}
       </Box>
     );
-  }
+  },
 );
 
 Swatches.displayName = "@raikou/core/Swatches";

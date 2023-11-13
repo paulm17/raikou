@@ -9,16 +9,16 @@ interface PaginationContext {
   disabled: boolean | undefined;
   // color: RaikouColor;
   // radius: RaikouNumberSize;
-  getItemProps?(page: number): Record<string, any>;
-  onChange(page: number): void;
-  onNext(): void;
-  onPrevious(): void;
-  onFirst(): void;
-  onLast(): void;
+  getItemProps?: (page: number) => Record<string, any>;
+  onChange: (page: number) => void;
+  onNext: () => void;
+  onPrevious: () => void;
+  onFirst: () => void;
+  onLast: () => void;
   getStyles: GetStylesApi<PaginationRootFactory>;
 }
 
 export const [PaginationProvider, usePaginationContext] =
   createSafeContext<PaginationContext>(
-    "Pagination.Root component was not found in tree"
+    "Pagination.Root component was not found in tree",
   );

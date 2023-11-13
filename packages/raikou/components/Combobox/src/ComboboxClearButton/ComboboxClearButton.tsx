@@ -6,7 +6,7 @@ export interface ComboboxClearButtonProps
   extends __CloseButtonProps,
     ElementProps<"button"> {
   size?: RaikouSize | (string & {}) | number;
-  onClear(): void;
+  onClear: () => void;
 }
 
 export const ComboboxClearButton = forwardRef<

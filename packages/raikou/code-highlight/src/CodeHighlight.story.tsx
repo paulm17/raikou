@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { CodeHighlightTabs } from "./CodeHighlightTabs";
 import { CodeHighlight } from "./CodeHighlight";
 import { InlineCodeHighlight } from "./InlineCodeHighlight";
@@ -253,5 +253,23 @@ export function Inline() {
         temporibus! Quibusdam quod enim voluptatibus?
       </p>
     </div>
+  );
+}
+
+export function DataChangesOverTime() {
+  const [code, setCode] = useState("a");
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => {
+          setCode((c) => (c === "a" ? "b" : "a"));
+        }}
+      >
+        Toggle
+      </button>
+      <CodeHighlight code={code} />
+      {code}
+    </>
   );
 }

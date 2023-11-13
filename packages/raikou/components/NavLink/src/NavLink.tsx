@@ -63,7 +63,7 @@ export interface NavLinkProps extends BoxProps, StylesApiProps<NavLinkFactory> {
   defaultOpened?: boolean;
 
   /** Called when open state changes */
-  onChange?(opened: boolean): void;
+  onChange?: (opened: boolean) => void;
 
   /** If set, right section will not be rotated when collapse is opened, `false` by default */
   disableRightSectionRotation?: boolean;
@@ -75,7 +75,7 @@ export interface NavLinkProps extends BoxProps, StylesApiProps<NavLinkFactory> {
   disabled?: boolean;
 
   /** Called when the link is clicked */
-  onClick?(event: React.MouseEvent<HTMLAnchorElement>): void;
+  onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
 export type NavLinkFactory = PolymorphicFactory<{

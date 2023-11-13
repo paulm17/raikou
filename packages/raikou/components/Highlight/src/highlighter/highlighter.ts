@@ -1,5 +1,5 @@
 function escapeRegex(value: string) {
-  return value.replace(/[-[\]{}()*+?.,\\^$|#]/g, '\\$&');
+  return value.replace(/[-[\]{}()*+?.,\\^$|#]/g, "\\$&");
 }
 
 export function highlighter(value: string, _highlight: string | string[]) {
@@ -13,21 +13,22 @@ export function highlighter(value: string, _highlight: string | string[]) {
 
   const shouldHighlight = Array.isArray(highlight)
     ? highlight.filter((part) => part.trim().length > 0).length > 0
-    : highlight.trim() !== '';
+    : highlight.trim() !== "";
 
   if (!shouldHighlight) {
     return [{ chunk: value, highlighted: false }];
   }
 
   const matcher =
-    typeof highlight === 'string'
+    typeof highlight === "string"
       ? highlight.trim()
       : highlight
           .filter((part) => part.trim().length !== 0)
           .map((part) => part.trim())
-          .join('|');
+          .sort((a, b) => b.length - a.length)
+          .join("|");
 
-  const re = new RegExp(`(${matcher})`, 'gi');
+  const re = new RegExp(`(${matcher})`, "gi");
   const chunks = value
     .split(re)
     .map((part) => ({ chunk: part, highlighted: re.test(part) }))

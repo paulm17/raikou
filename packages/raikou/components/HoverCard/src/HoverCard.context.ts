@@ -1,8 +1,8 @@
 import { createSafeContext } from "../../_utils";
 
 interface HoverCardContext {
-  openDropdown(): void;
-  closeDropdown(): void;
+  openDropdown: () => void;
+  closeDropdown: () => void;
 }
 
 export const [HoverCardContextProvider, useHoverCardContext] =

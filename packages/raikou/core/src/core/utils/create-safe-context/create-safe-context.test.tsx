@@ -5,7 +5,7 @@ import { createSafeContext } from "./create-safe-context";
 
 interface ContextType {
   value: number;
-  onChange(value: number): void;
+  onChange: (value: number) => void;
 }
 
 describe("@raikou/core/create-safe-context", () => {
@@ -13,7 +13,7 @@ describe("@raikou/core/create-safe-context", () => {
     patchConsoleError();
     const [, useContext] = createSafeContext<ContextType>("test-error");
     expect(() => renderHook(() => useContext())).toThrow(
-      new Error("test-error")
+      new Error("test-error"),
     );
     patchConsoleError.release();
   });

@@ -10,15 +10,15 @@ export interface ThumbProps {
   position: number;
   dragging: boolean;
   label: React.ReactNode;
-  onKeyDownCapture?(event: React.KeyboardEvent<HTMLDivElement>): void;
-  onMouseDown?(
-    event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>
-  ): void;
+  onKeyDownCapture?: (event: React.KeyboardEvent<HTMLDivElement>) => void;
+  onMouseDown?: (
+    event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
+  ) => void;
   labelTransitionProps: TransitionOverride | undefined;
   labelAlwaysOn: boolean | undefined;
   thumbLabel: string | undefined;
-  onFocus?(): void;
-  onBlur?(): void;
+  onFocus?: () => void;
+  onBlur?: () => void;
   showLabelOnHover: boolean | undefined;
   isHovered?: boolean;
   children?: React.ReactNode;
@@ -48,7 +48,7 @@ export const Thumb = forwardRef<HTMLDivElement, ThumbProps>(
       children = null,
       disabled,
     }: ThumbProps,
-    ref
+    ref,
   ) => {
     const { getStyles } = useSliderContext();
 
@@ -97,7 +97,7 @@ export const Thumb = forwardRef<HTMLDivElement, ThumbProps>(
         </Transition>
       </Box>
     );
-  }
+  },
 );
 
 Thumb.displayName = "@raikou/core/SliderThumb";

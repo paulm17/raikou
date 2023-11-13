@@ -9,9 +9,9 @@ export interface TabsContextValue {
   loop: boolean | undefined;
   activateTabWithKeyboard: boolean | undefined;
   allowTabDeactivation: boolean | undefined;
-  onChange(value: string | null): void;
-  getTabId(value: string): string;
-  getPanelId(value: string): string;
+  onChange: (value: string | null) => void;
+  getTabId: (value: string) => string;
+  getPanelId: (value: string) => string;
   variant: string | undefined;
   color: string | undefined;
   radius: string | number | undefined;
@@ -24,5 +24,5 @@ export interface TabsContextValue {
 
 export const [TabsProvider, useTabsContext] =
   createSafeContext<TabsContextValue>(
-    "Tabs component was not found in the tree"
+    "Tabs component was not found in the tree",
   );

@@ -42,7 +42,7 @@ export interface DatePickerBaseProps<Type extends DatePickerType = "default">
   level?: CalendarLevel;
 
   /** Called when level changes */
-  onLevelChange?(level: CalendarLevel): void;
+  onLevelChange?: (level: CalendarLevel) => void;
 }
 
 export interface DatePickerProps<Type extends DatePickerType = "default">
@@ -105,7 +105,7 @@ export const DatePicker: DatePickerComponent = factory<DatePickerFactory>(
       allowSingleDateInRange,
       value,
       defaultValue,
-      onChange,
+      onChange: onChange as any,
       onMouseLeave,
       applyTimezone: !__timezoneApplied,
     });

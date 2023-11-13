@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "../../Button/src";
 import { Tooltip } from "../../Tooltip/src";
+import { Switch } from "../../Switch/src";
 import { HoverCard } from "./HoverCard";
 
 export default { title: "HoverCard" };
@@ -40,6 +41,27 @@ export function TargetWithTooltip() {
         </HoverCard.Target>
 
         <HoverCard.Dropdown>Dropdown</HoverCard.Dropdown>
+      </HoverCard>
+    </div>
+  );
+}
+
+export function WithSwitch() {
+  return (
+    <div style={{ padding: 40 }}>
+      <HoverCard width={280} shadow="md">
+        <HoverCard.Target
+          refProp="rootRef"
+          eventPropsWrapperName="wrapperProps"
+        >
+          <Switch label="Switch label" />
+        </HoverCard.Target>
+        <HoverCard.Dropdown>
+          <p>
+            Hover card is revealed when user hovers over target element, it will
+            be hidden once mouse is not over both target and dropdown elements
+          </p>
+        </HoverCard.Dropdown>
       </HoverCard>
     </div>
   );

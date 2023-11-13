@@ -6,7 +6,7 @@ import { FloatingPosition } from "./types";
 interface Payload {
   opened: boolean | undefined;
   floating: {
-    update(): void;
+    update: () => void;
     refs: {
       floating: React.MutableRefObject<any>;
       reference: React.MutableRefObject<any>;
@@ -29,7 +29,7 @@ export function useFloatingAutoUpdate({
       return autoUpdate(
         floating.refs.reference.current,
         floating.refs.floating.current,
-        floating.update
+        floating.update,
       );
     }
 

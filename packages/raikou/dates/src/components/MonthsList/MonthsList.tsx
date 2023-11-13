@@ -29,7 +29,7 @@ export interface MonthsListSettings extends ControlsGroupSettings {
   monthsListFormat?: string;
 
   /** Adds props to month picker control based on date */
-  getMonthControlProps?(date: Date): Partial<PickerControlProps>;
+  getMonthControlProps?: (date: Date) => Partial<PickerControlProps>;
 
   /** Determines whether propagation for Escape key should be stopped */
   __stopPropagation?: boolean;

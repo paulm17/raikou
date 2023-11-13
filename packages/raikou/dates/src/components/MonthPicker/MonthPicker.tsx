@@ -40,7 +40,7 @@ export interface MonthPickerBaseProps<Type extends DatePickerType = "default">
   level?: MonthPickerLevel;
 
   /** Called when level changes */
-  onLevelChange?(level: MonthPickerLevel): void;
+  onLevelChange?: (level: MonthPickerLevel) => void;
 }
 
 export interface MonthPickerProps<Type extends DatePickerType = "default">
@@ -49,7 +49,7 @@ export interface MonthPickerProps<Type extends DatePickerType = "default">
     StylesApiProps<MonthPickerFactory>,
     ElementProps<"div", "onChange" | "value" | "defaultValue"> {
   /** Called when month is selected */
-  onMonthSelect?(date: Date): void;
+  onMonthSelect?: (date: Date) => void;
 }
 
 export type MonthPickerFactory = Factory<{
@@ -88,6 +88,7 @@ export const MonthPicker: MonthPickerComponent = factory<MonthPickerFactory>(
       onMonthSelect,
       __updateDateOnMonthSelect,
       __timezoneApplied,
+      onLevelChange,
       ...others
     } = props;
 
@@ -103,7 +104,7 @@ export const MonthPicker: MonthPickerComponent = factory<MonthPickerFactory>(
       allowSingleDateInRange,
       value,
       defaultValue,
-      onChange,
+      onChange: onChange as any,
       onMouseLeave,
       applyTimezone: !__timezoneApplied,
     });
@@ -135,6 +136,7 @@ export const MonthPicker: MonthPickerComponent = factory<MonthPickerFactory>(
         })}
         classNames={resolvedClassNames}
         styles={resolvedStyles}
+        onLevelChange={onLevelChange as any}
         {...others}
         date={shiftTimezone(
           "add",
