@@ -1,8 +1,5 @@
 use std::env;
-use std::fs::File;
-use std::io::{ self, BufRead, Write, SeekFrom, Seek };
-use std::sync::mpsc;
-use std::thread;
+use std::io::{ self, Read };
 
 use lightningcss::{
   rules::CssRule,
@@ -37,8 +34,6 @@ impl<'i> Visitor<'i> for MyVisitor {
 }
 
 fn parse_stylesheet(line: &str) -> StyleSheet {
-  // println!("{:?}", line);
-
   StyleSheet::parse(line, ParserOptions::default()).unwrap()
 }
 
@@ -46,93 +41,99 @@ fn convert_to_css(stylesheet: &StyleSheet) -> String {
   stylesheet.to_css(PrinterOptions::default()).unwrap().code.to_string()
 }
 
-fn process_stylesheet(line: &str, file: &Option<File>) -> std::io::Result<()> {
+fn process_stylesheet(line: &str) -> String {
   let mut stylesheet = parse_stylesheet(&line);
 
   match stylesheet.visit(&mut MyVisitor) {
     Ok(_) => (),
     Err(e) => {
       println!("Error occurred: {:?}", e);
-      return Ok(());
+      return "".into();
     }
   }
 
-  let css = convert_to_css(&stylesheet);
+  return convert_to_css(&stylesheet);
+}
 
-  if let Some(mut file) = file.as_ref() {
-    file.seek(SeekFrom::Start(0))?;
-    file.set_len(0).expect("Failed to truncate file");
-
-    writeln!(file, "{}", css.trim()).expect("Could not write to file");
+fn is_quoted(s: &str) -> bool {
+  match (s.chars().next(), s.chars().last()) {
+    (Some('"'), Some('"')) | (Some('\''), Some('\'')) => true,
+    _ => false,
   }
+}
 
-  Ok(())
+fn remove_quotes(s: &str) -> String {
+  match (s.chars().next(), s.chars().last()) {
+    (Some('"'), Some('"')) | (Some('\''), Some('\'')) => {
+      s.chars()
+        .skip(1)
+        .take(s.len() - 2)
+        .collect()
+    }
+    _ => s.to_string(),
+  }
 }
 
 fn main() -> Result<(), io::Error> {
   let args: Vec<String> = env::args().collect();
 
-  if args.len() < 1 {
-    eprintln!("No command line options provided. Exiting.");
-    std::process::exit(1);
-  }
-
-  let out_file = create_out_file(&args);
-
-  let (tx, rx) = mpsc::channel::<String>();
-
-  thread::spawn(move || {
-    let stdin = io::stdin();
-    let mut lines = stdin.lock().lines();
-    while let Some(Ok(line)) = lines.next() {
-      tx.send(line).unwrap();
-    }
-  });
+  let directory = parse_args(args);
 
   let mut input = String::new();
-  for received in rx {
+  io::stdin().read_to_string(&mut input)?;
+
+  let mut style_sheet = String::new();
+
+  for line in input.to_string().lines().into_iter() {
     if
-      !received.is_empty() &&
-      !received.starts_with("change ") &&
-      !received.to_lowercase().contains("unocss") &&
-      !received.ends_with("EOF")
+      !line.is_empty() &&
+      !line.starts_with("change ") &&
+      !line.to_lowercase().contains("unocss")
     {
-      let mut css = received.clone();
+      if is_quoted(&input) {
+        let no_quotes = remove_quotes(&line);
 
-      if let Some(start) = css.find("ℹ Watching for changes") {
-        css.replace_range(start.., "");
-
-        input.push_str(&css);
+        style_sheet.push_str(&no_quotes);
       } else {
-        input.push_str(&received);
+        style_sheet.push_str(line);
       }
     }
-
-    if received.contains("<<EOF") {
-      process_stylesheet(&input, &out_file)?;
-      input.clear();
-    }
   }
+
+  let css = process_stylesheet(&style_sheet);
+  style_sheet.clear();
+
+  // output to postcss
+  println!("{}", css);
 
   Ok(())
 }
 
-fn create_out_file(args: &[String]) -> Option<File> {
-  for arg in args {
-    if arg == "-o" || arg == "--out-file" {
-      let file_path =
-        &args
-          [
+fn parse_args(args: Vec<String>) -> Option<String> {
+  let mut file_extension: Option<String> = None;
 
-              args
-                .iter()
-                .position(|r| r == arg)
-                .unwrap() + 1
-
-          ];
-      return File::create(file_path).ok();
+  for arg in &args {
+    if arg == "-d" {
+      if
+        let Some(next_arg) = args.get(
+          args
+            .iter()
+            .position(|x| x == arg)
+            .unwrap() + 1
+        )
+      {
+        file_extension = Some(next_arg.clone());
+      } else {
+        eprintln!("Please provide a value for -d argument");
+        std::process::exit(1);
+      }
     }
   }
 
-  None
+  if file_extension.is_none() {
+    eprintln!("param -d was not provided.  Exiting...");
+    std::process::exit(1);
+  }
+
+  file_extension
 }

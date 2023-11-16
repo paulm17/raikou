@@ -18,13 +18,22 @@ pub mod stylesheet {
   pub fn gen_declaration_from_stylesheet<'i>(
     css: &'i str
   ) -> (Option<DeclarationBlock<'i>>, Option<CssRuleList<'i>>) {
-    let stylesheet = StyleSheet::parse(&css, ParserOptions::default()).unwrap();
+    let mut new_css = css.to_string();
+
+    if css.contains("+ . ") {
+      new_css = css.replace("+ . ", "+ .");
+    }
+
+    let stylesheet = StyleSheet::parse(
+      &new_css,
+      ParserOptions::default()
+    ).unwrap();
 
     if let CssRule::Style(style_rule) = stylesheet.rules.0.first().unwrap() {
       let declaration_block = style_rule.declarations.to_owned();
       let rules = style_rule.rules.to_owned();
 
-      return (Some(declaration_block), Some(rules));
+      return (Some(declaration_block.into_owned()), Some(rules.into_owned()));
     }
 
     (None, None)
@@ -60,9 +69,7 @@ pub mod stylesheet {
           }
         }
       } else {
-        let mut function_arguments = function.arguments.clone();
-
-        for argument in function_arguments.0.iter_mut() {
+        for argument in function.arguments.0.iter_mut() {
           let new_function = convert_rem(argument.to_owned());
 
           if new_function.is_some() {
@@ -110,6 +117,14 @@ pub mod stylesheet {
 
             if new_function != None {
               *custom_value = TokenOrValue::Function(new_function.unwrap());
+            }
+          } else {
+            if let TokenOrValue::Var(varr) = custom_value {
+              if varr.fallback != None {
+                iterate_property_token_list(
+                  &mut varr.fallback.as_mut().unwrap()
+                );
+              }
             }
           }
         }
@@ -172,18 +187,30 @@ pub mod stylesheet {
   pub fn create_hover_mixin_declaration(
     unknown: UnknownAtRule<'_>
   ) -> Option<CssRuleList<'_>> {
+    let mut rule_list_css = Vec::new();
+
     // Retrieve the styles of the selector
     let css = unknown.to_css_string(PrinterOptions::default()).unwrap();
     let css = &css.replace("@mixin hover", ".foo").to_owned();
 
     // Create the declarations and rules
-    let (_, rules) = gen_declaration_from_stylesheet(&css);
+    let (declaration, rules) = gen_declaration_from_stylesheet(&css);
+
+    if declaration != None {
+      rule_list_css.push(
+        declaration
+          .unwrap()
+          .to_css_string(PrinterOptions::default())
+          .ok()
+          .unwrap()
+      );
+    }
 
     if rules != None {
-      let mut rule_list_css = Vec::new();
-
       for rule_item in rules.unwrap().0.iter_mut() {
         if let CssRule::Style(style) = rule_item {
+          process_styles(style);
+
           let css_rule = CssRule::Style(StyleRule {
             selectors: SelectorList {
               0: style.selectors.0.to_owned(),
@@ -215,7 +242,9 @@ pub mod stylesheet {
           );
         }
       }
+    }
 
+    if rule_list_css.len() > 0 {
       let css = format!(
         "
         @media (hover: hover) {{
