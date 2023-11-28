@@ -7,7 +7,7 @@ export default { title: "Grid" };
 export function Usage() {
   return (
     <div style={{ padding: 0 }}>
-      <Grid bg="pink.3">
+      <Grid bg="red-300">
         <Grid.Col span={{ sm: 6, md: 3 }}>
           <Button fullWidth>First</Button>
         </Grid.Col>

@@ -1,13 +1,12 @@
 import React from "react";
-import clsx from "clsx";
+import cx from "clsx";
+import classes from "./VisuallyHidden.module.css";
 
 export interface VisuallyHiddenProps
   extends React.ComponentPropsWithoutRef<"span"> {}
 
 export function VisuallyHidden({ className, ...others }: VisuallyHiddenProps) {
-  return (
-    <span className={clsx("visuallyHidden-root", className)} {...others} />
-  );
+  return <span className={cx(classes.root, className)} {...others} />;
 }
 
 VisuallyHidden.displayName = "@raikou/core/VisuallyHidden";

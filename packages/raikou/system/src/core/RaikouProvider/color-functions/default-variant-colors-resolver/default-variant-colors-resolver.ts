@@ -1,6 +1,6 @@
 import { RaikouColor, RaikouTheme, RaikouGradient } from "../../theme.types";
 import { parseThemeColor } from "../parse-theme-color/parse-theme-color";
-import { getGradient } from "../get-gradient/get-gradient";
+// import { getGradient } from "../get-gradient/get-gradient";
 import { darken } from "../darken/darken";
 import { rgba } from "../rgba/rgba";
 import { rem } from "../../../utils";
@@ -20,7 +20,7 @@ export interface VariantColorResolverResult {
 }
 
 export type VariantColorsResolver = (
-  input: VariantColorsResolverInput
+  input: VariantColorsResolverInput,
 ) => VariantColorResolverResult;
 
 export const defaultVariantColorsResolver: VariantColorsResolver = ({
@@ -29,7 +29,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
   variant,
   gradient,
 }) => {
-  const parsed = parseThemeColor({ color, theme });
+  const parsed = parseThemeColor({ color: color || theme.primaryColor, theme });
 
   if (variant === "filled") {
     if (parsed.isThemeColor) {
@@ -78,7 +78,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
         hover: rgba(parsedColor, 0.12),
         color: `var(--raikou-color-${parsed.color}-${Math.min(
           parsed.shade,
-          6
+          6,
         )})`,
         border: `${rem(1)} solid transparent`,
       };
@@ -139,7 +139,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
         hover: rgba(parsedColor, 0.12),
         color: `var(--raikou-color-${parsed.color}-${Math.min(
           parsed.shade,
-          6
+          6,
         )})`,
         border: `${rem(1)} solid transparent`,
       };
@@ -169,7 +169,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
         hover: "transparent",
         color: `var(--raikou-color-${parsed.color}-${Math.min(
           parsed.shade,
-          6
+          6,
         )})`,
         border: `${rem(1)} solid transparent`,
       };
@@ -210,10 +210,28 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
     };
   }
 
+  // if (variant === "gradient") {
+  //   return {
+  //     background: getGradient(gradient, theme),
+  //     hover: getGradient(gradient, theme),
+  //     color: "var(--raikou-color-white)",
+  //     border: "none",
+  //   };
+  // }
+
   if (variant === "gradient") {
+    // return {
+    //   background: getGradient(gradient, theme),
+    //   hover: getGradient(gradient, theme),
+    //   color: "var(--raikou-color-white)",
+    //   border: "none",
+    // };
+
+    const gradient = `linear-gradient(var(--raikou-gradient-deg), var(--raikou-gradient-from) 0%, var(--raikou-gradient-to) 100%)`;
+
     return {
-      background: getGradient(gradient, theme),
-      hover: getGradient(gradient, theme),
+      background: gradient,
+      hover: gradient,
       color: "var(--raikou-color-white)",
       border: "none",
     };

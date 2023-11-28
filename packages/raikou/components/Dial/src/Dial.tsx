@@ -12,6 +12,7 @@ import {
   RaikouSize,
 } from "@raikou/core";
 import { useMergedRef } from "@raikou/hooks";
+import classes from "./Dial.module.css";
 
 export type DialStylesNames = "root" | "inner" | "handle";
 
@@ -70,11 +71,7 @@ export const Dial = polymorphicFactory<DialFactory>((_props, ref) => {
   const getStyles = useStyles<DialFactory>({
     name: "Dial",
     props,
-    classes: {
-      root: "dial-root",
-      inner: "dial-inner",
-      handle: "dial-handle",
-    },
+    classes,
     className,
     style,
     classNames,
@@ -158,3 +155,4 @@ export const Dial = polymorphicFactory<DialFactory>((_props, ref) => {
 });
 
 Dial.displayName = "@raikou/Dial";
+Dial.classes = classes;

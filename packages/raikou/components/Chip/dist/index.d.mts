@@ -10,7 +10,7 @@ interface ChipGroupProps<T extends boolean = false> {
     /** Uncontrolled component initial value */
     defaultValue?: T extends true ? string[] : string | null;
     /** Called when value changes */
-    onChange?(value: T extends true ? string[] : string): void;
+    onChange?: (value: T extends true ? string[] : string) => void;
     /** <Chip /> components */
     children?: React.ReactNode;
 }
@@ -38,7 +38,7 @@ interface ChipProps extends BoxProps, StylesApiProps<ChipFactory>, ElementProps<
     /** Default checked state for uncontrolled component */
     defaultChecked?: boolean;
     /** Calls when checked state changes */
-    onChange?(checked: boolean): void;
+    onChange?: (checked: boolean) => void;
     /** Key of `theme.colors` or any valid CSS color, `theme.primaryColor` */
     color?: RaikouColor;
     /** Static id to bind input with label */

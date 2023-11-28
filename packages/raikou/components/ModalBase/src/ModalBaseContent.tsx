@@ -10,6 +10,7 @@ import { Transition, TransitionOverride } from "../../Transition/src";
 import { FocusTrap } from "../../FocusTrap/src";
 import { Paper } from "../../Paper/src";
 import { useModalBaseContext } from "./ModalBase.context";
+import classes from "./ModalBase.module.css";
 
 export interface ModalBaseContentProps extends BoxProps, ElementProps<"div"> {
   /** Props passed down to the `Transition` component */
@@ -59,7 +60,7 @@ export const ModalBaseContent = forwardRef<
         {(transitionStyles) => (
           <div
             {...innerProps}
-            className={cx("modalBase-inner", innerProps.className)}
+            className={cx(classes.inner, innerProps.className)}
           >
             <FocusTrap active={ctx.opened && ctx.trapFocus}>
               <Paper
@@ -75,7 +76,7 @@ export const ModalBaseContent = forwardRef<
                 onKeyDown={handleKeyDown}
                 ref={ref}
                 style={[style, transitionStyles]}
-                className={cx("modalBase-content", className)}
+                className={cx(classes.content, className)}
               >
                 {others.children}
               </Paper>

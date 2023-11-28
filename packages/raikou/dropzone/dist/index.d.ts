@@ -1,5 +1,5 @@
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, RaikouColor, RaikouRadius, Factory } from '@raikou/core';
+import { BoxProps, StylesApiProps, RaikouSize, RaikouColor, Factory, ElementProps, RaikouRadius } from '@raikou/core';
 import * as React from 'react';
 import React__default from 'react';
 import { FileWithPath, FileRejection, Accept, DropEvent, FileError } from 'react-dropzone';
@@ -11,6 +11,35 @@ interface PortalProps extends React__default.ComponentPropsWithoutRef<"div"> {
     /** Element inside which portal should be created, by default a new div element is created and appended to the `document.body` */
     target?: HTMLElement | string;
 }
+
+type RaikouLoaderComponent = React__default.ForwardRefExoticComponent<React__default.HTMLAttributes<any> & React__default.RefAttributes<any>>;
+type RaikouLoadersRecord = Partial<Record<"bars" | "dots" | "oval" | "progress" | (string & {}), RaikouLoaderComponent>>;
+type RaikouLoader = keyof RaikouLoadersRecord;
+
+type LoaderStylesNames = "root";
+type LoaderCssVariables = {
+    root: "--loader-size" | "--loader-color";
+};
+interface LoaderProps extends BoxProps, StylesApiProps<LoaderFactory>, Omit<React__default.ComponentPropsWithoutRef<"svg">, keyof BoxProps> {
+    /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
+    size?: RaikouSize | (string & {}) | number;
+    /** Key of `theme.colors` or any valid CSS color, default value is `theme.primaryColor`  */
+    color?: RaikouColor;
+    /** Loader type, key of `loaders` prop, default value is `'oval'` */
+    type?: RaikouLoader;
+    /** Object of loaders components, can be customized via default props or inline. Default value contains `bars`, `oval` and `dots` */
+    loaders?: RaikouLoadersRecord;
+}
+type LoaderFactory = Factory<{
+    props: LoaderProps;
+    ref: HTMLSpanElement;
+    stylesNames: LoaderStylesNames;
+    vars: LoaderCssVariables;
+    staticComponents: {
+        defaultLoaders: typeof defaultLoaders;
+    };
+}>;
+declare const defaultLoaders: RaikouLoadersRecord;
 
 interface DropzoneStatusProps {
     children: React__default.ReactNode;
@@ -38,11 +67,11 @@ interface DropzoneProps extends BoxProps, StylesApiProps<DropzoneFactory>, Eleme
     /** Determines whether files capturing should be disabled, `false` by default */
     disabled?: boolean;
     /** Called when any files are dropped to the dropzone */
-    onDropAny?(files: FileWithPath[], fileRejections: FileRejection[]): void;
+    onDropAny?: (files: FileWithPath[], fileRejections: FileRejection[]) => void;
     /** Called when valid files are dropped to the dropzone */
-    onDrop(files: FileWithPath[]): void;
+    onDrop: (files: FileWithPath[]) => void;
     /** Called when dropped files do not meet file restrictions */
-    onReject?(fileRejections: FileRejection[]): void;
+    onReject?: (fileRejections: FileRejection[]) => void;
     /** Determines whether a loading overlay should be displayed over the dropzone, `false` by default */
     loading?: boolean;
     /** Mime types of the files that dropzone can accepts. By default, dropzone accepts all file types. */
@@ -68,15 +97,15 @@ interface DropzoneProps extends BoxProps, StylesApiProps<DropzoneFactory>, Eleme
     /** If `false`, stops drag event propagation to parents */
     dragEventsBubbling?: boolean;
     /** Called when the `dragenter` event occurs */
-    onDragEnter?(event: React__default.DragEvent<HTMLElement>): void;
+    onDragEnter?: (event: React__default.DragEvent<HTMLElement>) => void;
     /** Called when the `dragleave` event occurs */
-    onDragLeave?(event: React__default.DragEvent<HTMLElement>): void;
+    onDragLeave?: (event: React__default.DragEvent<HTMLElement>) => void;
     /** Called when the `dragover` event occurs */
-    onDragOver?(event: React__default.DragEvent<HTMLElement>): void;
+    onDragOver?: (event: React__default.DragEvent<HTMLElement>) => void;
     /** Called when user closes the file selection dialog with no selection */
-    onFileDialogCancel?(): void;
+    onFileDialogCancel?: () => void;
     /** Called when user opens the file selection dialog */
-    onFileDialogOpen?(): void;
+    onFileDialogOpen?: () => void;
     /** If `false`, allow dropped items to take over the current browser window */
     preventDropOnDocument?: boolean;
     /** Set to true to use the File System Access API to open the file picker instead of using an <input type="file"> click event, defaults to true */
@@ -87,6 +116,8 @@ interface DropzoneProps extends BoxProps, StylesApiProps<DropzoneFactory>, Eleme
     validator?: <T extends File>(file: T) => FileError | FileError[] | null;
     /** Determines whether pointer events should be enabled on the inner element, `false` by default */
     enablePointerEvents?: boolean;
+    /** Props passed down to the Loader component */
+    loaderProps?: LoaderProps;
 }
 type DropzoneFactory = Factory<{
     props: DropzoneProps;

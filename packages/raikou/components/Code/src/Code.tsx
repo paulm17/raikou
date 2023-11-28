@@ -12,6 +12,7 @@ import {
   createVarsResolver,
   Factory,
 } from "@raikou/core";
+import classes from "./Code.module.css";
 
 export type CodeStylesNames = "root";
 
@@ -63,9 +64,7 @@ export const Code = factory<CodeFactory>((_props, ref) => {
   const getStyles = useStyles<CodeFactory>({
     name: "Code",
     props,
-    classes: {
-      root: "code-root",
-    },
+    classes,
     className,
     style,
     classNames,
@@ -89,3 +88,4 @@ export const Code = factory<CodeFactory>((_props, ref) => {
 });
 
 Code.displayName = "@raikou/core/Code";
+Code.classes = classes;

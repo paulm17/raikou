@@ -34,7 +34,7 @@ export function Usage() {
           It is loading you have to wait
         </Notification>
 
-        <Notification
+        {/* <Notification
           onClose={() => {}}
           mt="xl"
           title="NotificationTitleSoLargeThatItWillUseOverflowEllipsisOption"
@@ -209,7 +209,7 @@ export function Usage() {
 
         <Notification withBorder color="gray" onClose={() => {}} mt="xl">
           Notification with border
-        </Notification>
+        </Notification> */}
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ type NotificationCssVariables = {
 interface NotificationProps extends BoxProps, StylesApiProps<NotificationFactory>, ElementProps<"div", "title"> {
     variant?: string;
     /** Called when close button is clicked */
-    onClose?(): void;
+    onClose?: () => void;
     /** Controls notification line or icon color, key of `theme.colors` or any valid CSS color, `theme.primaryColor` by default */
     color?: RaikouColor;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
@@ -39,11 +39,11 @@ type NotificationFactory = Factory<{
 type RaikouStoreSubscriber<Value> = (value: Value) => void;
 type SetStateCallback<Value> = (value: Value) => Value;
 interface RaikouStore<Value> {
-    getState(): Value;
-    setState(value: Value | SetStateCallback<Value>): void;
-    updateState(value: Value | SetStateCallback<Value>): void;
-    initialize(value: Value): void;
-    subscribe(callback: RaikouStoreSubscriber<Value>): () => void;
+    getState: () => Value;
+    setState: (value: Value | SetStateCallback<Value>) => void;
+    updateState: (value: Value | SetStateCallback<Value>) => void;
+    initialize: (value: Value) => void;
+    subscribe: (callback: RaikouStoreSubscriber<Value>) => () => void;
 }
 
 interface NotificationData extends Omit<NotificationProps, "onClose"> {
@@ -56,9 +56,9 @@ interface NotificationData extends Omit<NotificationProps, "onClose"> {
      * */
     autoClose?: boolean | number;
     /** Called when notification closes */
-    onClose?(props: NotificationData): void;
+    onClose?: (props: NotificationData) => void;
     /** Called when notification opens */
-    onOpen?(props: NotificationData): void;
+    onOpen?: (props: NotificationData) => void;
 }
 interface NotificationsState {
     notifications: NotificationData[];

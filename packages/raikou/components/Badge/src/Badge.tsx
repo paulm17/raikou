@@ -16,6 +16,7 @@ import {
   RaikouGradient,
   getThemeColor,
 } from "@raikou/core";
+import classes from "./Badge.module.css";
 
 export type BadgeStylesNames = "root" | "root--dot" | "section" | "label";
 export type BadgeVariant =
@@ -125,12 +126,7 @@ export const Badge = polymorphicFactory<BadgeFactory>((_props, ref) => {
   const getStyles = useStyles<BadgeFactory>({
     name: "Badge",
     props,
-    classes: {
-      root: "badge-root",
-      "root--dot": "badge-root--dot",
-      section: "badge-section",
-      label: "badge-label",
-    },
+    classes,
     className,
     style,
     classNames,
@@ -164,3 +160,4 @@ export const Badge = polymorphicFactory<BadgeFactory>((_props, ref) => {
 });
 
 Badge.displayName = "@raikou/Badge";
+Badge.classes = classes;

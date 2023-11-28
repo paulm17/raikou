@@ -76,7 +76,7 @@ var UnstyledButton = polymorphicFactory(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,
@@ -141,13 +141,13 @@ var Bars = forwardRef(
       Box2,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("bars-loader", className)
+        className: clsx_default("loader-barsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React2.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ React2.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ React2.createElement("span", { className: "bar" })
+      /* @__PURE__ */ React2.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ React2.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ React2.createElement("span", { className: "loader-bar" })
     );
   }
 );
@@ -162,7 +162,7 @@ var Oval = forwardRef2(
       Box3,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("oval-loader", className)
+        className: clsx_default("loader-ovalLoader", className)
       }, others), {
         ref
       })
@@ -180,7 +180,7 @@ var Progress = forwardRef3(
       Box4,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("progress-loader", className)
+        className: clsx_default("loader-progressLoader", className)
       }, others), {
         ref
       }),
@@ -209,13 +209,13 @@ var Dots = forwardRef4(
       Box5,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("dots-loader", className)
+        className: clsx_default("loader-dotsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "dot" })
+      /* @__PURE__ */ React5.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ React5.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ React5.createElement("span", { className: "loader-dot" })
     );
   }
 );

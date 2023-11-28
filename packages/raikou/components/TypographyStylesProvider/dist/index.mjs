@@ -42,7 +42,7 @@ var TypographyStylesProvider = factory((_props, ref) => {
   const getStyles = useStyles({
     name: "TypographyStylesProvider",
     classes: {
-      root: "tsp-root"
+      root: "typographyStylesProvider-root"
     },
     props,
     className,

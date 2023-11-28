@@ -10,6 +10,7 @@ import {
   Factory,
   RaikouSize,
 } from "@raikou/core";
+import classes from "./LevelsGroup.module.css";
 
 export type LevelsGroupStylesNames = "levelsGroup";
 
@@ -44,9 +45,7 @@ export const LevelsGroup = factory<LevelsGroupFactory>((_props, ref) => {
 
   const getStyles = useStyles<LevelsGroupFactory>({
     name: __staticSelector || "LevelsGroup",
-    classes: {
-      levelsGroup: "dates-levelsGroup",
-    },
+    classes,
     props,
     className,
     style,
@@ -60,4 +59,5 @@ export const LevelsGroup = factory<LevelsGroupFactory>((_props, ref) => {
   return <Box ref={ref} {...getStyles("levelsGroup")} {...others} />;
 });
 
+LevelsGroup.classes = classes;
 LevelsGroup.displayName = "@raikou/dates/LevelsGroup";

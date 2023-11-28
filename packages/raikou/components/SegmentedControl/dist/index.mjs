@@ -51,6 +51,35 @@ import {
   createVarsResolver,
   useRaikouTheme
 } from "@raikou/core";
+
+// src/get-root-padding.ts
+function getPaddingValue(value, defaultPaddingValue) {
+  const val = parseFloat(value.replace("px", ""));
+  return Number.isNaN(val) ? defaultPaddingValue : val;
+}
+function getRootPadding(root, defaultPaddingValue) {
+  const computedStyle = window.getComputedStyle(root);
+  return {
+    top: getPaddingValue(
+      computedStyle.getPropertyValue("padding-top"),
+      defaultPaddingValue
+    ),
+    right: getPaddingValue(
+      computedStyle.getPropertyValue("padding-right"),
+      defaultPaddingValue
+    ),
+    bottom: getPaddingValue(
+      computedStyle.getPropertyValue("padding-bottom"),
+      defaultPaddingValue
+    ),
+    left: getPaddingValue(
+      computedStyle.getPropertyValue("padding-left"),
+      defaultPaddingValue
+    )
+  };
+}
+
+// src/SegmentedControl.tsx
 var WRAPPER_PADDING = 4;
 var defaultProps = {};
 var varsResolver = createVarsResolver(
@@ -151,17 +180,19 @@ var SegmentedControl = factory(
     });
     const uuid = useId(name);
     const refs = useRef({});
+    const rootRef = useRef(null);
     const [observerRef, containerRect] = useResizeObserver();
     useEffect(() => {
       if (_value in refs.current && observerRef.current) {
         const element = refs.current[_value];
         if (element) {
+          const rootPadding = getRootPadding(rootRef.current, WRAPPER_PADDING);
           const elementRect = element.getBoundingClientRect();
           const scaledValue = element.offsetWidth / elementRect.width;
           const width = element.clientWidth * scaledValue || 0;
           const height = element.clientHeight * scaledValue || 0;
-          const offsetRight = containerRect.width - element.parentElement.offsetLeft + WRAPPER_PADDING - width;
-          const offsetLeft = element.parentElement.offsetLeft - WRAPPER_PADDING;
+          const offsetRight = containerRect.width - element.parentElement.offsetLeft + (dir === "rtl" ? rootPadding.left : rootPadding.right) - width;
+          const offsetLeft = element.parentElement.offsetLeft - (dir === "rtl" ? rootPadding.right : rootPadding.left);
           setActivePosition({
             width,
             height,
@@ -214,7 +245,7 @@ var SegmentedControl = factory(
         item.label
       )
     ));
-    const mergedRef = useMergedRef(observerRef, ref);
+    const mergedRef = useMergedRef(observerRef, rootRef, ref);
     if (data.length === 0) {
       return null;
     }

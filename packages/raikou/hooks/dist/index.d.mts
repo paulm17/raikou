@@ -115,14 +115,14 @@ interface StorageProperties<T> {
     /** If set to true, value will be update is useEffect after mount */
     getInitialValueInEffect?: boolean;
     /** Function to serialize value into string to be save in storage */
-    serialize?(value: T): string;
+    serialize?: (value: T) => string;
     /** Function to deserialize string value from storage to value */
-    deserialize?(value: string | undefined): T;
+    deserialize?: (value: string | undefined) => T;
 }
 
-declare function useLocalStorage<T = string>(props: StorageProperties<T>): readonly [T | undefined, (val: T | ((prevState: T) => T)) => void, () => void];
+declare function useLocalStorage<T = string>(props: StorageProperties<T>): [T, (val: T | ((prevState: T) => T)) => void, () => void];
 
-declare function useSessionStorage<T = string>(props: StorageProperties<T>): readonly [T | undefined, (val: T | ((prevState: T) => T)) => void, () => void];
+declare function useSessionStorage<T = string>(props: StorageProperties<T>): [T, (val: T | ((prevState: T) => T)) => void, () => void];
 
 type PossibleRef<T> = Ref<T> | undefined;
 declare function assignRef<T>(ref: PossibleRef<T>, value: T): void;
@@ -146,10 +146,10 @@ declare const clampUseMovePosition: (position: UseMovePosition) => {
     y: number;
 };
 interface useMoveHandlers {
-    onScrubStart?(): void;
-    onScrubEnd?(): void;
+    onScrubStart?: () => void;
+    onScrubEnd?: () => void;
 }
-declare function useMove<T extends HTMLElement = HTMLDivElement>(onChange: (value: UseMovePosition) => void, handlers?: useMoveHandlers, dir?: 'ltr' | 'rtl'): {
+declare function useMove<T extends HTMLElement = HTMLDivElement>(onChange: (value: UseMovePosition) => void, handlers?: useMoveHandlers, dir?: "ltr" | "rtl"): {
     ref: react.MutableRefObject<T | undefined>;
     active: boolean;
 };
@@ -240,7 +240,7 @@ interface UseUncontrolledInput<T> {
     /** Final value for uncontrolled state when value and defaultValue are not provided */
     finalValue?: T;
     /** Controlled state onChange handler */
-    onChange?(value: T): void;
+    onChange?: (value: T) => void;
 }
 declare function useUncontrolled<T>({ value, defaultValue, finalValue, onChange, }: UseUncontrolledInput<T>): [T, (value: T) => void, boolean];
 
@@ -263,7 +263,10 @@ declare function useIntersection<T extends HTMLElement = any>(options?: Construc
     entry: IntersectionObserverEntry | null;
 };
 
-declare function useHash(): readonly [string, (value: string) => void];
+interface UseHashOptions {
+    getInitialValueInEffect?: boolean;
+}
+declare function useHash({ getInitialValueInEffect, }?: UseHashOptions): readonly [string, (value: string) => void];
 
 interface HotkeyItemOptions {
     preventDefault?: boolean;
@@ -310,8 +313,8 @@ declare function useInputState<T>(initialState: T): [T, (value: null | undefined
 declare function useEventListener<K extends keyof HTMLElementEventMap, T extends HTMLElement = any>(type: K, listener: (this: HTMLDivElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): react.MutableRefObject<T | undefined>;
 
 declare function useDisclosure(initialState?: boolean, callbacks?: {
-    onOpen?(): void;
-    onClose?(): void;
+    onOpen?: () => void;
+    onClose?: () => void;
 }): readonly [boolean, {
     readonly open: () => void;
     readonly close: () => void;
@@ -319,8 +322,8 @@ declare function useDisclosure(initialState?: boolean, callbacks?: {
 }];
 
 interface UseFocusWithinOptions {
-    onFocus?(event: FocusEvent): void;
-    onBlur?(event: FocusEvent): void;
+    onFocus?: (event: FocusEvent) => void;
+    onBlur?: (event: FocusEvent) => void;
 }
 declare function useFocusWithin<T extends HTMLElement = any>({ onBlur, onFocus, }?: UseFocusWithinOptions): {
     ref: React.MutableRefObject<T>;
@@ -356,13 +359,13 @@ interface UseHeadroomInput {
     /** Number in px at which element should be fixed */
     fixedAt?: number;
     /** Called when element is pinned */
-    onPin?(): void;
+    onPin?: () => void;
     /** Called when element is at fixed position */
-    onFix?(): void;
+    onFix?: () => void;
     /** Called when element is unpinned */
-    onRelease?(): void;
+    onRelease?: () => void;
 }
-declare function useHeadroom({ fixedAt, onPin, onFix, onRelease }?: UseHeadroomInput): boolean;
+declare function useHeadroom({ fixedAt, onPin, onFix, onRelease, }?: UseHeadroomInput): boolean;
 
 interface EyeDropperOpenOptions {
     signal?: AbortSignal;

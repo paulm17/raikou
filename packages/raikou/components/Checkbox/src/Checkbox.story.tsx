@@ -26,6 +26,14 @@ export function Usage() {
   );
 }
 
+export function IconColor() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Checkbox label="Default" color="lime.4" iconColor="dark.8" />
+    </div>
+  );
+}
+
 export function WithTooltip() {
   return (
     <div style={{ padding: 40 }}>
@@ -126,7 +134,13 @@ export function WithError() {
 }
 
 export function Sizes() {
-  return ["xs", "sm", "md", "lg", "xl"].map((size) => (
-    <Checkbox size={size} defaultChecked label={`Size ${size}`} mt="md" />
+  return ["xs", "sm", "md", "lg", "xl"].map((size, index) => (
+    <Checkbox
+      key={index}
+      size={size}
+      defaultChecked
+      label={`Size ${size}`}
+      mt="md"
+    />
   ));
 }

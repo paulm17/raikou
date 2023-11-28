@@ -104,13 +104,13 @@ var Bars = (0, import_react.forwardRef)(
       import_core.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("bars-loader", className)
+        className: clsx_default("loader-barsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react.default.createElement("span", { className: "bar" })
+      /* @__PURE__ */ import_react.default.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ import_react.default.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ import_react.default.createElement("span", { className: "loader-bar" })
     );
   }
 );
@@ -125,7 +125,7 @@ var Oval = (0, import_react2.forwardRef)(
       import_core2.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("oval-loader", className)
+        className: clsx_default("loader-ovalLoader", className)
       }, others), {
         ref
       })
@@ -143,7 +143,7 @@ var Progress = (0, import_react3.forwardRef)(
       import_core3.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("progress-loader", className)
+        className: clsx_default("loader-progressLoader", className)
       }, others), {
         ref
       }),
@@ -172,13 +172,13 @@ var Dots = (0, import_react4.forwardRef)(
       import_core4.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("dots-loader", className)
+        className: clsx_default("loader-dotsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" })
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "loader-dot" })
     );
   }
 );
@@ -317,7 +317,7 @@ var UnstyledButton = (0, import_core6.polymorphicFactory)(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,

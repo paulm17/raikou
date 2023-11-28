@@ -44,7 +44,7 @@ interface PillProps extends BoxProps, StylesApiProps<PillFactory>, ElementProps<
     /** Determines whether the remove button should be displayed, `false` by default */
     withRemoveButton?: boolean;
     /** Called when the remove button is clicked */
-    onRemove?(): void;
+    onRemove?: () => void;
     /** Props passed down to the remove button */
     removeButtonProps?: React.ComponentPropsWithoutRef<"button">;
     /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. `'xl'` by default. */

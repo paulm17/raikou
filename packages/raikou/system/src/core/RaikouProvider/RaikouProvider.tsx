@@ -22,7 +22,7 @@ export interface RaikouProviderProps {
   withCssVariables?: boolean;
 
   /** Function to generate nonce attribute added to all generated `<style />` tags */
-  getStyleNonce?: () => string;
+  getStyleNonce?(): string;
 
   /** Function to generate CSS variables based on theme object */
   cssVariablesResolver?: CSSVariablesResolver;

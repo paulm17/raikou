@@ -21,11 +21,13 @@ import {
   getRadius,
   RaikouColor,
 } from "@raikou/core";
+import { LoaderProps } from "@raikou/loader";
 import { LoadingOverlay } from "@raikou/loading-overlay";
 import { assignRef } from "@raikou/hooks";
 import { DropzoneProvider } from "./Dropzone.context";
 import { DropzoneAccept, DropzoneIdle, DropzoneReject } from "./DropzoneStatus";
 import type { DropzoneFullScreenType } from "./DropzoneFullScreen";
+import classes from "./Dropzone.module.css";
 
 export type DropzoneStylesNames = "root" | "inner" | "fullScreen";
 export type DropzoneVariant = "filled" | "light";
@@ -130,6 +132,9 @@ export interface DropzoneProps
 
   /** Determines whether pointer events should be enabled on the inner element, `false` by default */
   enablePointerEvents?: boolean;
+
+  /** Props passed down to the Loader component */
+  loaderProps?: LoaderProps;
 }
 
 export type DropzoneFactory = Factory<{
@@ -224,16 +229,13 @@ export const Dropzone = factory<DropzoneFactory>((_props, ref) => {
     rejectColor,
     acceptColor,
     enablePointerEvents,
+    loaderProps,
     ...others
   } = props;
 
   const getStyles = useStyles<DropzoneFactory>({
     name: "Dropzone",
-    classes: {
-      root: "dropZone-root",
-      inner: "dropZone-inner",
-      fullScreen: "dropZone-fullScreen",
-    },
+    classes,
     props,
     className,
     style,
@@ -281,9 +283,9 @@ export const Dropzone = factory<DropzoneFactory>((_props, ref) => {
       value={{ accept: isDragAccept, reject: isDragReject, idle: isIdle }}
     >
       <Box
-        {...others}
         {...getRootProps({ ref })}
         {...getStyles("root", { focusable: true })}
+        {...others}
         mod={{
           accept: isDragAccept,
           reject: isDragReject,
@@ -296,6 +298,7 @@ export const Dropzone = factory<DropzoneFactory>((_props, ref) => {
           visible={loading}
           overlayProps={{ radius }}
           unstyled={unstyled}
+          loaderProps={loaderProps}
         />
         <input {...getInputProps()} name={name} />
         <div
@@ -309,6 +312,7 @@ export const Dropzone = factory<DropzoneFactory>((_props, ref) => {
   );
 });
 
+Dropzone.classes = classes;
 Dropzone.displayName = "@raikou/dropzone/Dropzone";
 Dropzone.Accept = DropzoneAccept;
 Dropzone.Idle = DropzoneIdle;

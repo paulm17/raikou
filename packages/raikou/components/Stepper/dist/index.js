@@ -103,7 +103,7 @@ var UnstyledButton = (0, import_core.polymorphicFactory)(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,
@@ -393,13 +393,13 @@ var Bars = (0, import_react4.forwardRef)(
       import_core4.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("bars-loader", className)
+        className: clsx_default("loader-barsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "bar" })
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "loader-bar" })
     );
   }
 );
@@ -414,7 +414,7 @@ var Oval = (0, import_react5.forwardRef)(
       import_core5.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("oval-loader", className)
+        className: clsx_default("loader-ovalLoader", className)
       }, others), {
         ref
       })
@@ -432,7 +432,7 @@ var Progress = (0, import_react6.forwardRef)(
       import_core6.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("progress-loader", className)
+        className: clsx_default("loader-progressLoader", className)
       }, others), {
         ref
       }),
@@ -461,13 +461,13 @@ var Dots = (0, import_react7.forwardRef)(
       import_core7.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("dots-loader", className)
+        className: clsx_default("loader-dotsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "dot" })
+      /* @__PURE__ */ import_react7.default.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ import_react7.default.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ import_react7.default.createElement("span", { className: "loader-dot" })
     );
   }
 );
@@ -577,11 +577,11 @@ function CheckIcon(_a) {
   return /* @__PURE__ */ import_react13.default.createElement(
     "svg",
     __spreadValues({
-      className: "icon",
       viewBox: "0 0 10 7",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
-      style: _style
+      style: _style,
+      "aria-hidden": true
     }, others),
     /* @__PURE__ */ import_react13.default.createElement(
       "path",

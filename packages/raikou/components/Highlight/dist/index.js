@@ -254,7 +254,7 @@ function highlighter(value, _highlight) {
   if (!shouldHighlight) {
     return [{ chunk: value, highlighted: false }];
   }
-  const matcher = typeof highlight === "string" ? highlight.trim() : highlight.filter((part) => part.trim().length !== 0).map((part) => part.trim()).join("|");
+  const matcher = typeof highlight === "string" ? highlight.trim() : highlight.filter((part) => part.trim().length !== 0).map((part) => part.trim()).sort((a, b) => b.length - a.length).join("|");
   const re = new RegExp(`(${matcher})`, "gi");
   const chunks = value.split(re).map((part) => ({ chunk: part, highlighted: re.test(part) })).filter(({ chunk }) => chunk);
   return chunks;

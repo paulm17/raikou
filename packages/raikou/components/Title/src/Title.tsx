@@ -11,6 +11,7 @@ import {
   BoxProps,
 } from "@raikou/core";
 import { getTitleSize } from "./get-title-size";
+import classes from "./Title.module.css";
 
 export type TitleOrder = 1 | 2 | 3 | 4 | 5 | 6;
 export type TitleSize = `h${TitleOrder}` | React.CSSProperties["fontSize"];
@@ -71,9 +72,7 @@ export const Title = factory<TitleFactory>((_props, ref) => {
   const getStyles = useStyles<TitleFactory>({
     name: "Title",
     props,
-    classes: {
-      root: "title-root",
-    },
+    classes,
     className,
     style,
     classNames,
@@ -100,4 +99,5 @@ export const Title = factory<TitleFactory>((_props, ref) => {
   );
 });
 
+Title.classes = classes;
 Title.displayName = "@raikou/core/Title";

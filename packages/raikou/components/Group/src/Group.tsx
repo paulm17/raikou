@@ -13,6 +13,7 @@ import {
   Factory,
 } from "@raikou/core";
 import { filterFalsyChildren } from "./filter-falsy-children/filter-falsy-children";
+import classes from "./Group.module.css";
 
 export type GroupStylesNames = "root";
 export type GroupCssVariables = {
@@ -123,7 +124,7 @@ export const Group = factory<GroupFactory>((_props, ref) => {
     stylesCtx,
     className,
     style,
-    classes: { root: "group-root" },
+    classes,
     classNames,
     styles,
     unstyled,
@@ -146,3 +147,4 @@ export const Group = factory<GroupFactory>((_props, ref) => {
 });
 
 Group.displayName = "@raikou/core/Group";
+Group.classes = classes;

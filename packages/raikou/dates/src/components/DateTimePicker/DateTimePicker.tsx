@@ -33,6 +33,7 @@ import {
 import { DateValue } from "../../types";
 import { useDatesContext } from "../DatesProvider";
 import { useUncontrolledDates } from "../../hooks";
+import classes from "./DateTimePicker.module.css";
 
 export type DateTimePickerStylesNames =
   | "timeWrapper"
@@ -111,10 +112,7 @@ export const DateTimePicker = factory<DateTimePickerFactory>((_props, ref) => {
 
   const getStyles = useStyles<DateTimePickerFactory>({
     name: "DateTimePicker",
-    classes: {
-      timeWrapper: "dates-timeWrapper",
-      timeInput: "dates-timeInput",
-    },
+    classes,
     props,
     classNames,
     styles,
@@ -299,4 +297,9 @@ export const DateTimePicker = factory<DateTimePickerFactory>((_props, ref) => {
   );
 });
 
+DateTimePicker.classes = {
+  ...classes,
+  ...PickerInputBase.classes,
+  ...DatePicker.classes,
+};
 DateTimePicker.displayName = "@raikou/dates/DateTimePicker";

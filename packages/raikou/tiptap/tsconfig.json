@@ -5,5 +5,5 @@
       "@raikou/tests": ["../tests/src"]
     }
   },
-  "include": ["src", "index.ts"]
+  "include": ["src", "index.ts", "../../../configuration/types"]
 }

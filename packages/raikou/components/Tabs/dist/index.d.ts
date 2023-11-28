@@ -92,7 +92,7 @@ interface TabsProps extends BoxProps, StylesApiProps<TabsFactory>, ElementProps<
     /** Value for controlled component */
     value?: string | null;
     /** Called when value changes */
-    onChange?(value: string | null): void;
+    onChange?: (value: string | null) => void;
     /** Tabs orientation, `'horizontal'` by default */
     orientation?: "vertical" | "horizontal";
     /** `Tabs.List` placement relative to `Tabs.Panel`, applicable only when `orientation="vertical"`, `'left'` by default */

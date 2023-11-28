@@ -2,6 +2,7 @@ import React, { forwardRef } from "react";
 import cx from "clsx";
 import { Box, BoxProps, ElementProps } from "@raikou/core";
 import { useModalBodyId } from "./use-modal-body-id";
+import classes from "./ModalBase.module.css";
 
 export interface ModalBaseBodyProps extends BoxProps, ElementProps<"div"> {}
 
@@ -13,10 +14,10 @@ export const ModalBaseBody = forwardRef<HTMLDivElement, ModalBaseBodyProps>(
         ref={ref}
         {...others}
         id={bodyId}
-        className={cx("modalBase-body", className)}
+        className={cx(classes.body, className)}
       />
     );
-  }
+  },
 );
 
 ModalBaseBody.displayName = "@raikou/core/ModalBaseBody";

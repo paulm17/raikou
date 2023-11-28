@@ -27,6 +27,7 @@ import {
   AppShellResponsiveSize,
 } from "./AppShell.types";
 import { useStore } from "./store";
+import classes from "./AppShell.module.css";
 
 export type AppShellStylesNames =
   | "root"
@@ -138,15 +139,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
 
   const getStyles = useStyles<AppShellFactory>({
     name: "AppShell",
-    classes: {
-      root: "appshell-root",
-      navbar: "appshell-navbar",
-      aside: "appshell-aside",
-      main: "appshell-main",
-      header: "appshell-header",
-      footer: "appshell-footer",
-      section: "appshell-section",
-    },
+    classes,
     props,
     className,
     style,
@@ -187,3 +180,4 @@ AppShell.Main = AppShellMain;
 AppShell.Aside = AppShellAside;
 AppShell.Footer = AppShellFooter;
 AppShell.Section = AppShellSection;
+AppShell.classes = classes;

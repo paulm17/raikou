@@ -117,7 +117,7 @@ var UnstyledButton = polymorphicFactory(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,
@@ -310,7 +310,7 @@ var Alert = factory((_props, ref) => {
         "data-with-close-button": withCloseButton || void 0
       }),
       /* @__PURE__ */ React4.createElement("span", __spreadValues({ id: titleId }, getStyles("label")), title)
-    ), /* @__PURE__ */ React4.createElement("div", __spreadValues({ id: bodyId }, getStyles("message")), children)), withCloseButton && /* @__PURE__ */ React4.createElement(
+    ), children && /* @__PURE__ */ React4.createElement("div", __spreadValues({ id: bodyId }, getStyles("message")), children)), withCloseButton && /* @__PURE__ */ React4.createElement(
       CloseButton,
       __spreadProps(__spreadValues({}, getStyles("closeButton")), {
         onClick: onClose,

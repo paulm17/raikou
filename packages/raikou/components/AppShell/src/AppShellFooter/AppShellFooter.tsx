@@ -9,6 +9,7 @@ import {
   Factory,
 } from "@raikou/core";
 import { useStore } from "../store";
+import classes from "../AppShell.module.css";
 
 export type AppShellFooterStylesNames = "footer";
 export type AppShellFooterVariant = string;
@@ -71,3 +72,4 @@ export const AppShellFooter = factory<AppShellFooterFactory>((_props, ref) => {
 });
 
 AppShellFooter.displayName = "@raikou/core/AppShellFooter";
+AppShellFooter.classes = classes;

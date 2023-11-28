@@ -30,7 +30,7 @@ interface NavLinkProps extends BoxProps, StylesApiProps<NavLinkFactory> {
     /** Uncontrolled nested items collapse initial state */
     defaultOpened?: boolean;
     /** Called when open state changes */
-    onChange?(opened: boolean): void;
+    onChange?: (opened: boolean) => void;
     /** If set, right section will not be rotated when collapse is opened, `false` by default */
     disableRightSectionRotation?: boolean;
     /** Key of `theme.spacing` or any valid CSS value to set collapsed links padding-left, `'lg'` by default */
@@ -38,7 +38,7 @@ interface NavLinkProps extends BoxProps, StylesApiProps<NavLinkFactory> {
     /** If set, disabled styles will be added to the root element, `false` by default */
     disabled?: boolean;
     /** Called when the link is clicked */
-    onClick?(event: React.MouseEvent<HTMLAnchorElement>): void;
+    onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 type NavLinkFactory = PolymorphicFactory<{
     props: NavLinkProps;

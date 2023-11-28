@@ -21,6 +21,7 @@ import { isSameMonth } from "./is-same-month/is-same-month";
 import { isBeforeMaxDate } from "./is-before-max-date/is-before-max-date";
 import { isAfterMinDate } from "./is-after-min-date/is-after-min-date";
 import { WeekdaysRow } from "../WeekdaysRow";
+import classes from "./Month.module.css";
 
 export type MonthStylesNames =
   | "month"
@@ -171,10 +172,7 @@ export const Month = factory<MonthFactory>((_props, ref) => {
 
   const getStyles = useStyles<MonthFactory>({
     name: __staticSelector || "Month",
-    classes: {
-      month: "dates-month",
-      monthCell: "dates-monthCell",
-    },
+    classes,
     props,
     className,
     style,
@@ -301,4 +299,5 @@ export const Month = factory<MonthFactory>((_props, ref) => {
   );
 });
 
+Month.classes = classes;
 Month.displayName = "@raikou/dates/Month";

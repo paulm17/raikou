@@ -17,6 +17,7 @@ import { getYearsData } from "./get-years-data/get-years-data";
 import { getYearInTabOrder } from "./get-year-in-tab-order/get-year-in-tab-order";
 import { useDatesContext } from "../DatesProvider";
 import { isYearDisabled } from "./is-year-disabled/is-year-disabled";
+import classes from "./YearsList.module.css";
 
 export type YearsListStylesNames =
   | "yearsListControl"
@@ -94,10 +95,7 @@ export const YearsList = factory<YearsListFactory>((_props, ref) => {
 
   const getStyles = useStyles<YearsListFactory>({
     name: __staticSelector || "YearsList",
-    classes: {
-      yearsList: "dates-yearsList",
-      yearsListCell: "dates-yearsListCell",
-    },
+    classes,
     props,
     className,
     style,
@@ -180,4 +178,5 @@ export const YearsList = factory<YearsListFactory>((_props, ref) => {
   );
 });
 
+YearsList.classes = classes;
 YearsList.displayName = "@raikou/dates/YearsList";

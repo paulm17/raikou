@@ -65,6 +65,7 @@ module.exports = __toCommonJS(src_exports);
 
 // src/NumberInput.tsx
 var import_react14 = __toESM(require("react"));
+var import_clsx = __toESM(require("clsx"));
 var import_react_number_format = require("react-number-format");
 var import_hooks2 = require("@raikou/hooks");
 var import_core10 = require("@raikou/core");
@@ -99,7 +100,7 @@ var UnstyledButton = (0, import_core.polymorphicFactory)(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,
@@ -955,6 +956,7 @@ var varsResolver6 = (0, import_core10.createVarsResolver)((_, { size }) => ({
 var NumberInput = (0, import_core10.factory)((_props, ref) => {
   const props = (0, import_core10.useProps)("NumberInput", defaultProps9, _props);
   const _a = props, {
+    className,
     classNames,
     styles,
     unstyled,
@@ -979,8 +981,11 @@ var NumberInput = (0, import_core10.factory)((_props, ref) => {
     disabled,
     rightSectionPointerEvents,
     allowNegative,
-    readOnly
+    readOnly,
+    size,
+    rightSectionWidth
   } = _a, others = __objRest(_a, [
+    "className",
     "classNames",
     "styles",
     "unstyled",
@@ -1005,7 +1010,9 @@ var NumberInput = (0, import_core10.factory)((_props, ref) => {
     "disabled",
     "rightSectionPointerEvents",
     "allowNegative",
-    "readOnly"
+    "readOnly",
+    "size",
+    "rightSectionWidth"
   ]);
   const getStyles = (0, import_core10.useStyles)({
     name: "NumberInput",
@@ -1076,6 +1083,7 @@ var NumberInput = (0, import_core10.factory)((_props, ref) => {
       "aria-hidden": true,
       disabled: disabled || typeof _value === "number" && max !== void 0 && _value >= max,
       mod: { direction: "up" },
+      onMouseDown: (event) => event.preventDefault(),
       onPointerDown: increment
     }),
     /* @__PURE__ */ import_react14.default.createElement(NumberInputChevron, { direction: "up" })
@@ -1086,6 +1094,7 @@ var NumberInput = (0, import_core10.factory)((_props, ref) => {
       "aria-hidden": true,
       disabled: disabled || typeof _value === "number" && min !== void 0 && _value <= min,
       mod: { direction: "down" },
+      onMouseDown: (event) => event.preventDefault(),
       onPointerDown: decrement
     }),
     /* @__PURE__ */ import_react14.default.createElement(NumberInputChevron, { direction: "down" })
@@ -1094,7 +1103,9 @@ var NumberInput = (0, import_core10.factory)((_props, ref) => {
     InputBase,
     __spreadProps(__spreadValues({
       component: import_react_number_format.NumericFormat,
-      allowNegative
+      allowNegative,
+      className: (0, import_clsx.default)("numberInput-root", className),
+      size
     }, others), {
       readOnly,
       disabled,
@@ -1109,6 +1120,7 @@ var NumberInput = (0, import_core10.factory)((_props, ref) => {
       decimalScale: allowDecimal ? decimalScale : 0,
       onKeyDown: handleKeyDown,
       rightSectionPointerEvents: (rightSectionPointerEvents != null ? rightSectionPointerEvents : disabled) ? "none" : void 0,
+      rightSectionWidth: rightSectionWidth != null ? rightSectionWidth : `var(--ni-right-section-width-${size || "sm"})`,
       onBlur: (event) => {
         onBlur == null ? void 0 : onBlur(event);
         if (clampBehavior === "blur" && typeof _value === "number") {

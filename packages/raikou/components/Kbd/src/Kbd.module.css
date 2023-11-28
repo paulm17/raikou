@@ -1,0 +1,49 @@
+.root {
+  @mixin light {
+    --raikou-kbd-border-color: #dee2e6;
+    --raikou-kbd-color: #495057;
+    --raikou-kbd-bg: #f8f9fa;
+  }
+  @mixin dark {
+    --raikou-kbd-border-color: #373a40;
+    --raikou-kbd-color: #c1c2c5;
+    --raikou-kbd-bg: #2c2e33;
+  }
+
+  --kbd-fz-xs: rem(10px);
+  --kbd-fz-sm: rem(12px);
+  --kbd-fz-md: rem(14px);
+  --kbd-fz-lg: rem(16px);
+  --kbd-fz-xl: rem(20px);
+  --kbd-fz: var(--kbd-fz-sm);
+
+  --kbd-padding-xs: rem(2px) rem(4px);
+  --kbd-padding-sm: rem(3px) rem(5px);
+  --kbd-padding-md: rem(4px) rem(7px);
+  --kbd-padding-lg: rem(5px) rem(9px);
+  --kbd-padding-xl: rem(8px) rem(14px);
+  --kbd-padding: var(--kbd-padding-sm);
+
+  font-family: var(--raikou-font-family-monospace);
+  line-height: var(--raikou-line-height);
+  font-weight: 700;
+  padding: var(--kbd-padding);
+  font-size: var(--kbd-fz);
+  border-radius: var(--raikou-radius-sm);
+  border: rem(1px) solid var(--_kbd-border-color);
+  border-bottom-width: rem(3px);
+  background-color: var(--_kbd-bg);
+  color: var(--_kbd-color);
+
+  @mixin light {
+    --_kbd-border-color: var(--raikou-kbd-border-color);
+    --_kbd-color: var(--raikou-kbd-color);
+    --_kbd-bg: var(--raikou-kbd-bg);
+  }
+
+  @mixin dark {
+    --_kbd-border-color: var(--raikou-kbd-border-color);
+    --_kbd-color: var(--raikou-kbd-color);
+    --_kbd-bg: var(--raikou-kbd-bg);
+  }
+}

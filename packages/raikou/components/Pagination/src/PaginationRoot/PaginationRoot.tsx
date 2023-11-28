@@ -20,6 +20,7 @@ import {
   getThemeColor,
 } from "@raikou/core";
 import { PaginationProvider } from "../Pagination.context";
+import classes from "../Pagination.module.css";
 
 export type PaginationRootStylesNames = "root" | "control" | "dots";
 export type PaginationRootCssVariables = {
@@ -133,11 +134,7 @@ export const PaginationRoot = factory<PaginationRootFactory>((_props, ref) => {
 
   const getStyles = useStyles<PaginationRootFactory>({
     name: "Pagination",
-    classes: {
-      root: "pagination-root",
-      control: "pagination-control",
-      dots: "pagination-dots",
-    },
+    classes,
     props,
     className,
     style,
@@ -185,4 +182,5 @@ export const PaginationRoot = factory<PaginationRootFactory>((_props, ref) => {
   );
 });
 
+PaginationRoot.classes = classes;
 PaginationRoot.displayName = "@raikou/core/PaginationRoot";

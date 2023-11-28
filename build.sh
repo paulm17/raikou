@@ -1,2 +1,0 @@
-./buildServer.sh
-./buildClient.sh

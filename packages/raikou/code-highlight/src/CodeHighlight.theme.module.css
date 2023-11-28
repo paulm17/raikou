@@ -1,0 +1,118 @@
+.theme {
+  @mixin light {
+    --codehighlight-theme-color: #495057;
+    --codehighlight-theme-background: #f8f9fa;
+    --codehighlight-theme-code-comment-color: #868e96;
+    --codehighlight-theme-code-keyword-color: #6741d9;
+    --codehighlight-theme-code-tag-color: #c92a2a;
+    --codehighlight-theme-code-literal-color: #228be6;
+    --codehighlight-theme-code-string-color: #1864ab;
+    --codehighlight-theme-code-variable-color: #5c940d;
+    --codehighlight-theme-code-class-color: #d9480f;
+  }
+  @mixin dark {
+    --codehighlight-theme-color: #a6a7ab;
+    --codehighlight-theme-background: #141517;
+    --codehighlight-theme-code-comment-color: #5c5f66;
+    --codehighlight-theme-code-keyword-color: #b197fc;
+    --codehighlight-theme-code-tag-color: #ffd43b;
+    --codehighlight-theme-code-literal-color: #4dabf7;
+    --codehighlight-theme-code-string-color: #40c057;
+    --codehighlight-theme-code-variable-color: #a5d8ff;
+    --codehighlight-theme-code-class-color: #ff922b;
+  }
+
+  color: var(--_color);
+  background: var(--_background);
+
+  @mixin light {
+    --_color: var(--codehighlight-theme-color);
+    --_background: var(--codehighlight-theme-background);
+    --code-comment-color: var(--codehighlight-theme-code-comment-color);
+    --code-keyword-color: var(--codehighlight-theme-code-keyword-color);
+    --code-tag-color: var(--codehighlight-theme-code-tag-color);
+    --code-literal-color: var(--codehighlight-theme-code-literal-color);
+    --code-string-color: var(--codehighlight-theme-code-string-color);
+    --code-variable-color: var(--codehighlight-theme-code-variable-color);
+    --code-class-color: var(--codehighlight-theme-code-class-color);
+  }
+
+  @mixin dark {
+    --_color: var(--codehighlight-theme-color);
+    --_background: var(--codehighlight-theme-background);
+    --code-comment-color: var(--codehighlight-theme-code-comment-color);
+    --code-keyword-color: var(--codehighlight-theme-code-keyword-color);
+    --code-tag-color: var(--codehighlight-theme-code-tag-color);
+    --code-literal-color: var(--codehighlight-theme-code-literal-color);
+    --code-string-color: var(--codehighlight-theme-code-string-color);
+    --code-variable-color: var(--codehighlight-theme-code-variable-color);
+    --code-class-color: var(--codehighlight-theme-code-class-color);
+  }
+
+  :global(.hljs-comment),
+  :global(.hljs-quote) {
+    font-style: italic;
+    color: var(--code-comment-color);
+  }
+
+  :global(.hljs-doctag),
+  :global(.hljs-formula),
+  :global(.hljs-keyword) {
+    color: var(--code-keyword-color);
+  }
+
+  :global(.hljs-deletion),
+  :global(.hljs-name),
+  :global(.hljs-section),
+  :global(.hljs-selector-tag),
+  :global(.hljs-subst) {
+    color: var(--code-tag-color);
+  }
+
+  :global(.hljs-literal) {
+    color: var(--code-literal-color);
+  }
+
+  :global(.hljs-addition),
+  :global(.hljs-attribute),
+  :global(.hljs-meta .hljs-string),
+  :global(.hljs-regexp),
+  :global(.hljs-string) {
+    color: var(--code-string-color);
+  }
+
+  :global(.hljs-attr),
+  :global(.hljs-number),
+  :global(.hljs-selector-attr),
+  :global(.hljs-selector-class),
+  :global(.hljs-selector-pseudo),
+  :global(.hljs-template-variable),
+  :global(.hljs-type),
+  :global(.hljs-variable) {
+    color: var(--code-variable-color);
+  }
+
+  :global(.hljs-bullet),
+  :global(.hljs-link),
+  :global(.hljs-meta),
+  :global(.hljs-selector-id),
+  :global(.hljs-symbol),
+  :global(.hljs-title),
+  :global(.hljs-built_in),
+  :global(.hljs-class .hljs-title),
+  :global(.hljs-title.class_) {
+    color: var(--code-class-color);
+  }
+
+  :global(.hljs-emphasis) {
+    font-style: italic;
+  }
+
+  :global(.hljs-strong) {
+    font-weight: 700;
+  }
+
+  :global(.hljs-link) {
+    text-decoration: underline;
+  }
+}

@@ -14,6 +14,7 @@ import {
   Factory,
 } from "@raikou/core";
 import { useInputWrapperContext } from "../InputWrapper.context";
+import classes from "../Input.module.css";
 
 export type InputDescriptionStylesNames = "description";
 export type InputDescriptionCssVariables = {
@@ -72,9 +73,10 @@ export const InputDescription = factory<InputDescriptionFactory>(
     const _getStyles = useStyles<InputDescriptionFactory>({
       name: ["InputWrapper", __staticSelector],
       props,
-      classes: {
-        description: "inputWrapper-description",
-      },
+      classes,
+      // classes: {
+      //   description: "inputWrapper-description",
+      // },
       className,
       style,
       classNames,

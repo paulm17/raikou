@@ -395,9 +395,8 @@ function useForm({
   );
   const clearErrors = (0, import_react.useCallback)(() => _setErrors({}), []);
   const reset = (0, import_react.useCallback)(() => {
-    _setValues(initialValues);
+    _setValues(valuesSnapshot.current);
     clearErrors();
-    setValuesSnapshot(initialValues);
     setDirty({});
     resetTouched();
   }, []);
@@ -599,8 +598,10 @@ var Form = (0, import_react3.forwardRef)(
     return /* @__PURE__ */ import_react3.default.createElement(
       "form",
       __spreadProps(__spreadValues({}, others), {
-        onSubmit: form.onSubmit(typeof onSubmit === "function" ? onSubmit : () => {
-        }),
+        onSubmit: form.onSubmit(
+          typeof onSubmit === "function" ? onSubmit : () => {
+          }
+        ),
         onReset: (event) => {
           onReset == null ? void 0 : onReset(event);
           form.onReset(event);

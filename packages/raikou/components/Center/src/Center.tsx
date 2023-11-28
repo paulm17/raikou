@@ -8,6 +8,7 @@ import {
   useStyles,
   PolymorphicFactory,
 } from "@raikou/core";
+import classes from "./Center.module.css";
 
 export type CenterStylesNames = "root";
 
@@ -44,9 +45,7 @@ export const Center = polymorphicFactory<CenterFactory>((_props, ref) => {
   const getStyles = useStyles<CenterFactory>({
     name: "Center",
     props,
-    classes: {
-      root: "center-root",
-    },
+    classes,
     className,
     style,
     classNames,
@@ -59,3 +58,4 @@ export const Center = polymorphicFactory<CenterFactory>((_props, ref) => {
 });
 
 Center.displayName = "@raikou/core/Center";
+Center.classes = classes;

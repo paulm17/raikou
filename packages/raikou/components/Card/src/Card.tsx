@@ -15,6 +15,7 @@ import {
 import { Paper } from "../../Paper/src";
 import { CardSection } from "./CardSection/CardSection";
 import { useStore } from "./store";
+import classes from "./Card.module.css";
 
 export type CardStylesNames = "root" | "section";
 export type CardCssVariables = {
@@ -74,10 +75,7 @@ export const Card = polymorphicFactory<CardFactory>((_props, ref) => {
   const getStyles = useStyles<CardFactory>({
     name: "Card",
     props,
-    classes: {
-      root: "card-root",
-      section: "card-section",
-    },
+    classes,
     className,
     style,
     classNames,
@@ -114,3 +112,4 @@ export const Card = polymorphicFactory<CardFactory>((_props, ref) => {
 
 Card.displayName = "@raikou/core/Card";
 Card.Section = CardSection;
+Card.classes = classes;

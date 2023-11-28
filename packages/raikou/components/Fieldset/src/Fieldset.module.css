@@ -1,0 +1,64 @@
+.root {
+  @mixin light {
+    --raikou-fieldset-default-bd: #dee2e6;
+    --raikou-fieldset-default-bg: #fff;
+    --raikou-fieldset-filled-bd: #dee2e6;
+    --raikou-fieldset-filled-bg: #f8f9fa;
+  }
+  @mixin dark {
+    --raikou-fieldset-default-bd: #373a40;
+    --raikou-fieldset-default-bg: #1a1b1e;
+    --raikou-fieldset-filled-bd: #373a40;
+    --raikou-fieldset-filled-bg: #25262b;
+  }
+
+  padding: var(--raikou-spacing-lg);
+  padding-top: var(--raikou-spacing-xs);
+  border-radius: var(--fieldset-radius, var(--raikou-radius-default));
+  min-inline-size: auto;
+}
+
+.root--default {
+  background-color: var(--_bg);
+  border: rem(1px) solid var(--_bd);
+
+  @mixin light {
+    --_bd: var(--raikou-fieldset-default-bd);
+    --_bg: var(--raikou-fieldset-default-bg);
+  }
+
+  @mixin dark {
+    --_bd: var(--raikou-fieldset-default-bd);
+    --_bg: var(--raikou-fieldset-default-bg);
+  }
+}
+
+.root--filled {
+  background-color: var(--_bg);
+  border: rem(1px) solid var(--_bd);
+
+  @mixin light {
+    --_bd: var(--raikou-fieldset-filled-bd);
+    --_bg: var(--raikou-fieldset-filled-bg);
+  }
+
+  @mixin dark {
+    --_bd: var(--raikou-fieldset-filled-bd);
+    --_bg: var(--raikou-fieldset-filled-bg);
+  }
+}
+
+.root--unstyled {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+.legend {
+  font-size: var(--raikou-font-size-sm);
+}
+
+.root--unstyled .legend {
+  padding: 0;
+  margin-bottom: var(--raikou-spacing-sm);
+}

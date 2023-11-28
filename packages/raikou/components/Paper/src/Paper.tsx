@@ -13,6 +13,7 @@ import {
   createVarsResolver,
   PolymorphicFactory,
 } from "@raikou/core";
+import classes from "./Paper.module.css";
 
 export type PaperStylesNames = "root";
 export type PaperCssVariables = {
@@ -73,9 +74,7 @@ export const Paper = polymorphicFactory<PaperFactory>((_props, ref) => {
   const getStyles = useStyles<PaperFactory>({
     name: "Paper",
     props,
-    classes: {
-      root: "paper-root",
-    },
+    classes,
     className,
     style,
     classNames,
@@ -97,3 +96,4 @@ export const Paper = polymorphicFactory<PaperFactory>((_props, ref) => {
 });
 
 Paper.displayName = "@raikou/core/Paper";
+Paper.classes = classes;

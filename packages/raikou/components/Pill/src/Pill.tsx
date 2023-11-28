@@ -18,6 +18,7 @@ import { CloseButton } from "../../CloseButton/src";
 import { PillGroup } from "./PillGroup/PillGroup";
 import { usePillGroupContext } from "./PillGroup.context";
 import { usePillsInputContext } from "../../PillsInput/src/PillsInput.context";
+import classes from "./Pill.module.css";
 
 export type PillStylesNames = "root" | "label" | "remove";
 export type PillVariant = "default" | "contrast";
@@ -102,11 +103,7 @@ export const Pill = factory<PillFactory>((_props, ref) => {
 
   const getStyles = useStyles<PillFactory>({
     name: "Pill",
-    classes: {
-      root: "pill-root",
-      label: "pill-label",
-      remove: "pill-remove",
-    },
+    classes,
     props,
     className,
     style,
@@ -159,5 +156,6 @@ export const Pill = factory<PillFactory>((_props, ref) => {
   );
 });
 
+Pill.classes = classes;
 Pill.displayName = "@raikou/core/Pill";
 Pill.Group = PillGroup;

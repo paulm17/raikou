@@ -11,6 +11,9 @@ import {
   Factory,
 } from "@raikou/core";
 import { Input } from "../../Input/src";
+import classes from "./InlineInput.module.css";
+
+export const InlineInputClasses = classes;
 
 export type InlineInputStylesNames =
   | "root"
@@ -69,14 +72,7 @@ export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
       props: __stylesApiProps,
       className,
       style,
-      classes: {
-        root: "inlineInput-root",
-        body: "inlineInput-body",
-        labelWrapper: "inlineInput-labelWrapper",
-        label: "inlineInput-label",
-        description: "inlineInput-description",
-        error: "inlineInput-error",
-      },
+      classes,
       classNames,
       styles,
       unstyled,

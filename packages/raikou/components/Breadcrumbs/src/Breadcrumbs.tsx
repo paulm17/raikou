@@ -13,6 +13,7 @@ import {
   RaikouSpacing,
   getSpacing,
 } from "@raikou/core";
+import classes from "./Breadcrumbs.module.css";
 
 export type BreadcrumbsStylesNames = "root" | "separator" | "breadcrumb";
 
@@ -70,11 +71,7 @@ export const Breadcrumbs = factory<BreadcrumbsFactory>((_props, ref) => {
 
   const getStyles = useStyles<BreadcrumbsFactory>({
     name: "Breadcrumbs",
-    classes: {
-      root: "breadcrumbs-root",
-      breadcrumb: "breadcrumbs-breadcrumb",
-      separator: "breadcrumbs-separator",
-    },
+    classes,
     props,
     className,
     style,
@@ -121,3 +118,4 @@ export const Breadcrumbs = factory<BreadcrumbsFactory>((_props, ref) => {
 });
 
 Breadcrumbs.displayName = "@raikou/core/Breadcrumbs";
+Breadcrumbs.classes = classes;

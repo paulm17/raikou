@@ -18,6 +18,7 @@ import {
   ModalBaseStylesNames,
 } from "../../ModalBase/src";
 import { ModalProvider, ScrollAreaComponent } from "./Modal.context";
+import classes from "./Modal.module.css";
 
 export type ModalRootStylesNames = ModalBaseStylesNames;
 export type ModalRootCssVariables = {
@@ -71,6 +72,7 @@ const defaultProps: Partial<ModalRootProps> = {
   keepMounted: false,
   zIndex: getDefaultZIndex("modal"),
   transitionProps: { duration: 200, transition: "pop" },
+  yOffset: "5dvh",
 };
 
 const varsResolver = createVarsResolver<ModalRootFactory>(
@@ -105,16 +107,7 @@ export const ModalRoot = factory<ModalRootFactory>((_props, ref) => {
 
   const getStyles = useStyles<ModalRootFactory>({
     name: __staticSelector!,
-    classes: {
-      root: "modal-root",
-      header: "modal-header",
-      content: "modal-content",
-      inner: "modal-inner",
-      title: "modal-title",
-      body: "modal-body",
-      overlay: "modal-overlay",
-      close: "modal-close",
-    },
+    classes,
     props,
     className,
     style,
@@ -138,4 +131,5 @@ export const ModalRoot = factory<ModalRootFactory>((_props, ref) => {
   );
 });
 
+ModalRoot.classes = classes;
 ModalRoot.displayName = "@raikou/core/ModalRoot";

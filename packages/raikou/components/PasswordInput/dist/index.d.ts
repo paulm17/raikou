@@ -31,7 +31,7 @@ interface __InputWrapperProps {
     /** Props passed down to the `InputError` component */
     errorProps?: Record<string, any>;
     /** Input container component, defaults to `React.Fragment` */
-    inputContainer?(children: React$1.ReactNode): React$1.ReactNode;
+    inputContainer?: (children: React$1.ReactNode) => React$1.ReactNode;
     /** Controls order of the elements, `['label', 'description', 'input', 'error']` by default */
     inputWrapperOrder?: ("label" | "input" | "description" | "error")[];
 }
@@ -3645,7 +3645,7 @@ interface PasswordInputProps extends Omit<InputBaseProps, "classNames" | "styles
     /** Determines whether input content should be visible (uncontrolled) */
     defaultVisible?: boolean;
     /** Called when visibility changes */
-    onVisibilityChange?(visible: boolean): void;
+    onVisibilityChange?: (visible: boolean) => void;
 }
 type PasswordInputFactory = Factory<{
     props: PasswordInputProps;

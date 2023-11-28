@@ -1,4 +1,4 @@
-export { Table } from './Table';
+export { Table } from "./Table";
 export {
   TableCaption,
   TableTbody,
@@ -7,13 +7,14 @@ export {
   TableTr,
   TableTh,
   TableThead,
-} from './Table.components';
+} from "./Table.components";
 export type {
   TableProps,
   TableStylesNames,
   TableCssVariables,
   TableFactory,
-} from './Table';
+  TableData,
+} from "./Table";
 
 export type {
   TableTbodyProps,
@@ -23,4 +24,4 @@ export type {
   TableCaptionProps,
   TableTfootProps,
   TableTheadProps,
-} from './Table.components';
+} from "./Table.components";

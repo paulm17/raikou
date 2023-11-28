@@ -16,6 +16,7 @@ import {
 import type { DayOfWeek } from "../../types";
 import { useDatesContext } from "../DatesProvider";
 import { getWeekdayNames } from "./get-weekdays-names/get-weekdays-names";
+import classes from "./WeekdaysRow.module.css";
 
 export type WeekdaysRowStylesNames = "weekday" | "weekdaysRow";
 export type WeekdaysRowCssVariables = {
@@ -79,10 +80,7 @@ export const WeekdaysRow = factory<WeekdaysRowFactory>((_props, ref) => {
 
   const getStyles = useStyles<WeekdaysRowFactory>({
     name: __staticSelector || "WeekdaysRow",
-    classes: {
-      weekday: "dates-weekday",
-      weekdaysRow: "",
-    },
+    classes,
     props,
     className,
     style,
@@ -113,4 +111,5 @@ export const WeekdaysRow = factory<WeekdaysRowFactory>((_props, ref) => {
   );
 });
 
+WeekdaysRow.classes = classes;
 WeekdaysRow.displayName = "@raikou/dates/WeekdaysRow";

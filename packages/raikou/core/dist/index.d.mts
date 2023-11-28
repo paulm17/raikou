@@ -236,6 +236,10 @@ interface BoxProps extends RaikouStyleProps {
     hiddenFrom?: RaikouBreakpoint;
     /** Breakpoint below which the component is hidden with `display: none` */
     visibleFrom?: RaikouBreakpoint;
+    /** Determines whether component should be hidden in light color scheme with `display: none` */
+    lightHidden?: boolean;
+    /** Determines whether component should be hidden in dark color scheme with `display: none` */
+    darkHidden?: boolean;
 }
 type ElementProps<ElementType extends React__default.ElementType, PropsToOmit extends string = never> = Omit<React__default.ComponentPropsWithoutRef<ElementType>, "style" | PropsToOmit>;
 interface BoxComponentProps extends BoxProps {

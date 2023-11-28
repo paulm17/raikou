@@ -27,10 +27,10 @@ interface ScrollAreaProps extends BoxProps, StylesApiProps<ScrollAreaFactory>, E
     /** Props passed down to the viewport element */
     viewportProps?: React.ComponentPropsWithRef<"div">;
     /** Called with current position (`x` and `y` coordinates) when viewport is scrolled */
-    onScrollPositionChange?(position: {
+    onScrollPositionChange?: (position: {
         x: number;
         y: number;
-    }): void;
+    }) => void;
 }
 interface ScrollAreaAutosizeProps extends ScrollAreaProps {
 }

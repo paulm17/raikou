@@ -10,6 +10,7 @@ import {
   createVarsResolver,
   Factory,
 } from "@raikou/core";
+import classes from "../ActionIcon.module.css";
 
 export type ActionIconGroupStylesNames = "group";
 export type ActionIconGroupCssVariables = {
@@ -65,9 +66,7 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>(
     const getStyles = useStyles<ActionIconGroupFactory>({
       name: "ActionIconGroup",
       props,
-      classes: {
-        group: "actionIconGroup-root",
-      },
+      classes,
       className,
       style,
       classNames,
@@ -91,4 +90,5 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>(
   },
 );
 
+ActionIconGroup.classes = classes;
 ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";

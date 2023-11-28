@@ -12,7 +12,7 @@ interface RatingProps extends BoxProps, StylesApiProps<RatingFactory>, ElementPr
     /** Value for controlled component */
     value?: number;
     /** Called when value changes */
-    onChange?(value: number): void;
+    onChange?: (value: number) => void;
     /** The icon that is displayed when symbol is empty */
     emptySymbol?: React.ReactNode | ((value: number) => React.ReactNode);
     /** This icon that is displayed when symbol is full */
@@ -24,7 +24,7 @@ interface RatingProps extends BoxProps, StylesApiProps<RatingFactory>, ElementPr
     /** Number of controls that should be rendered */
     count?: number;
     /** Called when item is hovered */
-    onHover?(value: number): void;
+    onHover?: (value: number) => void;
     /** Function should return labelText for the symbols */
     getSymbolLabel?: (value: number) => string;
     /** Name of rating, should be unique within the page */

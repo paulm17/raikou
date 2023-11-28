@@ -1,0 +1,57 @@
+@keyframes skeleton-fade {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.root {
+  @mixin light {
+    --raikou-skeleton-bg: #5c5f66;
+  }
+  @mixin dark {
+    --raikou-skeleton-bg: #373a40;
+  }
+
+  height: var(--skeleton-height, auto);
+  width: var(--skeleton-width, 100%);
+  border-radius: var(--skeleton-radius, var(--raikou-radius-default));
+  position: relative;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+
+  &[data-animate]::after {
+    animation: skeleton-fade 1500ms linear infinite;
+  }
+
+  &[data-visible] {
+    overflow: hidden;
+
+    &::before {
+      position: absolute;
+      content: "";
+      inset: 0;
+      z-index: 10;
+      background-color: var(--raikou-color-body);
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      inset: 0;
+      z-index: 11;
+
+      @mixin light {
+        background-color: var(--raikou-skeleton-bg);
+      }
+
+      @mixin dark {
+        background-color: var(--raikou-skeleton-bg);
+      }
+    }
+  }
+}

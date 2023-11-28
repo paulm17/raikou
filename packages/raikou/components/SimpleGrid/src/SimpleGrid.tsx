@@ -13,6 +13,7 @@ import {
   RaikouSpacing,
 } from "@raikou/core";
 import { SimpleGridVariables } from "./SimpleGridVariables";
+import classes from "./SimpleGrid.module.css";
 
 export type SimpleGridStylesNames = "root";
 
@@ -58,9 +59,7 @@ export const SimpleGrid = factory<SimpleGridFactory>((_props, ref) => {
 
   const getStyles = useStyles<SimpleGridFactory>({
     name: "SimpleGrid",
-    classes: {
-      root: "simpleGrid-root",
-    },
+    classes,
     props,
     className,
     style,
@@ -89,4 +88,5 @@ export const SimpleGrid = factory<SimpleGridFactory>((_props, ref) => {
   );
 });
 
+SimpleGrid.classes = classes;
 SimpleGrid.displayName = "@raikou/core/SimpleGrid";

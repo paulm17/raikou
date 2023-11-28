@@ -16,6 +16,7 @@ import {
 } from "@raikou/core";
 import { Loader } from "../../Loader/src";
 import { CloseButton } from "../../CloseButton/src";
+import classes from "./Notification.module.css";
 
 export type NotificationStylesNames =
   | "root"
@@ -112,15 +113,7 @@ export const Notification = factory<NotificationFactory>((_props, ref) => {
 
   const getStyles = useStyles<NotificationFactory>({
     name: "Notification",
-    classes: {
-      root: "notification-root",
-      icon: "notification-icon",
-      loader: "notification-loader",
-      body: "notification-body",
-      title: "notification-title",
-      description: "notification-description",
-      closeButton: "notification-close-button",
-    },
+    classes,
     props,
     className,
     style,
@@ -165,4 +158,5 @@ export const Notification = factory<NotificationFactory>((_props, ref) => {
   );
 });
 
+Notification.classes = classes;
 Notification.displayName = "@raikou/core/Notification";

@@ -26,6 +26,7 @@ import {
   AccordionValue,
 } from "./Accordion.types";
 import { AccordionProvider } from "./Accordion.context";
+import classes from "./Accordion.module.css";
 
 export type AccordionStylesNames =
   | "root"
@@ -176,17 +177,7 @@ export function Accordion<Multiple extends boolean = false>(
 
   const getStyles = useStyles<AccordionFactory>({
     name: "Accordion",
-    classes: {
-      root: "accordion-root",
-      content: "accordion-content",
-      item: "accordion-item",
-      panel: "accordion-panel",
-      icon: "accordion-icon",
-      chevron: "accordion-chevron",
-      label: "accordion-label",
-      itemTitle: "accordion-itemTitle",
-      control: "accordion-control",
-    },
+    classes,
     props: props as AccordionProps,
     className,
     style,

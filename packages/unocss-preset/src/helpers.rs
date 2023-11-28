@@ -4,7 +4,7 @@ pub mod stylesheet {
     declaration::DeclarationBlock,
     properties::Property,
     properties::custom::{ Function, TokenList, TokenOrValue, Token, Variable },
-    rules::{ CssRuleList, CssRule, Location },
+    rules::{ CssRuleList, CssRule, Location, keyframes::KeyframesRule },
     rules::style::StyleRule,
     rules::unknown::UnknownAtRule,
     selector::{ SelectorList, Selector },
@@ -14,8 +14,9 @@ pub mod stylesheet {
     values::length::LengthValue,
     vendor_prefix::VendorPrefix,
   };
+  use regex::Regex;
 
-  pub fn gen_declaration_from_stylesheet<'i>(
+  fn gen_declaration_from_stylesheet<'i>(
     css: &'i str
   ) -> (Option<DeclarationBlock<'i>>, Option<CssRuleList<'i>>) {
     let mut new_css = css.to_string();
@@ -39,7 +40,7 @@ pub mod stylesheet {
     (None, None)
   }
 
-  pub fn convert_rem(fallback_value: TokenOrValue) -> Option<Function> {
+  fn convert_rem(fallback_value: TokenOrValue) -> Option<Function> {
     if let TokenOrValue::Function(mut function) = fallback_value {
       let function_name = function.name.to_string();
 
@@ -47,6 +48,31 @@ pub mod stylesheet {
         for argument in function.arguments.0.iter_mut() {
           if let TokenOrValue::Length(size) = argument {
             let (value, _) = size.to_unit_value();
+
+            let new_function = Function {
+              name: "calc".into(),
+              arguments: TokenList(
+                vec![
+                  TokenOrValue::Length(LengthValue::Rem(value / 16.0)),
+                  TokenOrValue::Token(Token::Delim('*')),
+                  TokenOrValue::Var(Variable {
+                    name: DashedIdentReference {
+                      ident: "--raikou-scale".into(),
+                      from: None,
+                    },
+                    fallback: None,
+                  })
+                ]
+              ),
+            };
+
+            return Some(new_function);
+          } else if let TokenOrValue::Token(size) = argument {
+            let value_str = size
+              .to_css_string(PrinterOptions::default())
+              .ok()
+              .unwrap();
+            let value: f32 = value_str.parse().ok().unwrap();
 
             let new_function = Function {
               name: "calc".into(),
@@ -84,7 +110,7 @@ pub mod stylesheet {
     None
   }
 
-  pub fn iterate_property_token_list(property_value: &mut TokenList) {
+  fn iterate_property_token_list(property_value: &mut TokenList) {
     for token in property_value.0.iter_mut() {
       if let TokenOrValue::Var(varr) = token {
         if varr.fallback != None {
@@ -100,7 +126,7 @@ pub mod stylesheet {
     }
   }
 
-  pub fn gen_declaration_from_style_rule(
+  fn gen_declaration_from_style_rule(
     declarations: DeclarationBlock<'_>
   ) -> DeclarationBlock {
     let mut new_declarations = declarations.clone();
@@ -134,10 +160,7 @@ pub mod stylesheet {
     return new_declarations;
   }
 
-  pub fn change_colorscheme_selector<'i>(
-    ident: String,
-    not: bool
-  ) -> Selector<'i> {
+  fn change_colorscheme_selector<'i>(ident: String, not: bool) -> Selector<'i> {
     let selector_string = match not {
       true => format!("&[data-raikou-color-scheme=\"{}\"]", &ident),
       false => format!("[data-raikou-color-scheme=\"{}\"] &", &ident),
@@ -151,10 +174,7 @@ pub mod stylesheet {
     return selector.into_owned();
   }
 
-  pub fn change_direction_selector<'i>(
-    ident: String,
-    not: bool
-  ) -> Selector<'i> {
+  fn change_direction_selector<'i>(ident: String, not: bool) -> Selector<'i> {
     let selector_string = match not {
       true => format!(":root:not([dir=\"{}\"]) &", &ident),
       false => format!("[dir=\"{}\"] &", &ident),
@@ -168,7 +188,7 @@ pub mod stylesheet {
     return selector.into_owned();
   }
 
-  pub fn create_mixin_declaration(
+  fn create_mixin_declaration(
     unknown: UnknownAtRule<'_>,
     ident: String
   ) -> (DeclarationBlock<'_>, CssRuleList<'_>) {
@@ -184,7 +204,7 @@ pub mod stylesheet {
     return (new_declaration.unwrap().into_owned(), rules.unwrap().into_owned());
   }
 
-  pub fn create_hover_mixin_declaration(
+  fn create_hover_mixin_declaration(
     unknown: UnknownAtRule<'_>
   ) -> Option<CssRuleList<'_>> {
     let mut rule_list_css = Vec::new();
@@ -273,7 +293,7 @@ pub mod stylesheet {
     None
   }
 
-  pub fn process_mixins<'i>(
+  fn process_mixins<'i>(
     unknown: &mut UnknownAtRule<'i>
   ) -> (
     String,
@@ -371,7 +391,31 @@ pub mod stylesheet {
     return ("None".into(), None, None, None);
   }
 
+  fn replace_variant_selector(style_rule: &mut StyleRule) {
+    let re = Regex::new(r"--(\w+)").unwrap();
+    let input = style_rule.selectors.clone().to_string();
+
+    // Check if the input does not contain the pattern --word
+    if !re.is_match(&input) {
+      return;
+    }
+
+    let output = re.replace_all(&input, r"[data-variant='$1']");
+
+    let selector = Selector::parse_string_with_options(
+      &output,
+      ParserOptions::default()
+    ).unwrap();
+
+    style_rule.selectors = SelectorList {
+      0: smallvec::smallvec![selector.into_owned()],
+    };
+  }
+
   pub fn process_styles(style_rule: &mut StyleRule) {
+    // replace variants
+    replace_variant_selector(style_rule);
+
     // process declaration block
     let new_declaration = gen_declaration_from_style_rule(
       style_rule.declarations.clone()
@@ -418,6 +462,17 @@ pub mod stylesheet {
     // Push new hover rules
     if mixin_rules.len() > 0 {
       style_rule.rules.0.extend(mixin_rules);
+    }
+  }
+
+  pub fn process_keyframes(keyframe_rule: &mut KeyframesRule) {
+    // process declaration block
+    for keyframe in keyframe_rule.keyframes.iter_mut() {
+      let new_declaration = gen_declaration_from_style_rule(
+        keyframe.declarations.clone()
+      );
+
+      keyframe.declarations = new_declaration;
     }
   }
 }

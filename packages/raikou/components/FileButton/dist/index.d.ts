@@ -2,11 +2,11 @@ import React from 'react';
 
 interface FileButtonProps<Multiple extends boolean = false> {
     /** Called when files are picked */
-    onChange(payload: Multiple extends true ? File[] : File | null): void;
+    onChange: (payload: Multiple extends true ? File[] : File | null) => void;
     /** Function that receives button props and returns react node that should be rendered */
-    children(props: {
-        onClick(): void;
-    }): React.ReactNode;
+    children: (props: {
+        onClick: () => void;
+    }) => React.ReactNode;
     /** Determines whether user can pick more than one file */
     multiple?: Multiple;
     /** File input accept attribute, for example, `"image/png,image/jpeg"` */

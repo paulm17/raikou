@@ -25,6 +25,7 @@ import {
   spotlightActions,
 } from "./spotlight.store";
 import { getHotkeys } from "./get-hotkeys";
+import classes from "./Spotlight.module.css";
 
 export type SpotlightRootStylesNames =
   | ModalStylesNames
@@ -154,21 +155,7 @@ export const SpotlightRoot = factory<SpotlightRootFactory>((_props, ref) => {
 
   const getStyles = useStyles<SpotlightRootFactory>({
     name: "Spotlight",
-    classes: {
-      root: "spotlight-root",
-      content: "spotlight-content",
-      body: "spotlight-body",
-      search: "spotlight-search",
-      actionsList: "spotlight-actionsList",
-      action: "spotlight-action",
-      actionBody: "spotlight-actionBody",
-      actionSection: "spotlight-actionSection",
-      actionLabel: "spotlight-actionLabel",
-      actionDescription: "spotlight-actionDescription",
-      empty: "spotlight-empty",
-      footer: "spotlight-footer",
-      actionsGroup: "spotlight-actionsGroup",
-    },
+    classes,
     props,
     className,
     style,
@@ -212,24 +199,7 @@ export const SpotlightRoot = factory<SpotlightRootFactory>((_props, ref) => {
         style={style}
         classNames={resolveClassNames({
           theme,
-          classNames: [
-            {
-              root: "spotlight-root",
-              content: "spotlight-content",
-              body: "spotlight-body",
-              search: "spotlight-search",
-              actionsList: "spotlight-actionsList",
-              action: "spotlight-action",
-              actionBody: "spotlight-actionBody",
-              actionSection: "spotlight-actionSection",
-              actionLabel: "spotlight-actionLabel",
-              actionDescription: "spotlight-actionDescription",
-              empty: "spotlight-empty",
-              footer: "spotlight-footer",
-              actionsGroup: "spotlight-actionsGroup",
-            },
-            classNames,
-          ],
+          classNames: [classes, classNames],
           props,
           stylesCtx: undefined,
         })}
@@ -257,4 +227,5 @@ export const SpotlightRoot = factory<SpotlightRootFactory>((_props, ref) => {
   );
 });
 
+SpotlightRoot.classes = classes;
 SpotlightRoot.displayName = "@raikou/spotlight/SpotlightRoot";

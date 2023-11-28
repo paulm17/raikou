@@ -34,10 +34,10 @@ export function CustomComponent() {
   return (
     <div style={{ maxWidth: 400, padding: 40, margin: "auto" }}>
       <Card withBorder component="a" href="https://mantine.dev">
-        <Card.Section bg="blue">Card section 1</Card.Section>
+        <Card.Section bg="blue-400">Card section 1</Card.Section>
         <Card.Section component="button">Card section 2</Card.Section>
         <div>Content</div>
-        <Card.Section bg="red">Card section 3</Card.Section>
+        <Card.Section bg="red-400">Card section 3</Card.Section>
       </Card>
     </div>
   );

@@ -9,6 +9,7 @@ import {
   useStyles,
   Factory,
 } from "@raikou/core";
+import classes from "./TypographyStylesProvider.module.css";
 
 export type TypographyStylesProviderStylesNames = "root";
 
@@ -32,9 +33,7 @@ export const TypographyStylesProvider =
 
     const getStyles = useStyles<TypographyStylesProviderFactory>({
       name: "TypographyStylesProvider",
-      classes: {
-        root: "tsp-root",
-      },
+      classes,
       props,
       className,
       style,

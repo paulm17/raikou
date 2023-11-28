@@ -335,6 +335,7 @@ var Scrollbar = (0, import_react5.forwardRef)(
     );
   }
 );
+Scrollbar.displayName = "@raikou/Scrollbar";
 
 // src/ScrollAreaScrollbar/ScrollbarX.tsx
 var ScrollAreaScrollbarX = (0, import_react6.forwardRef)((props, forwardedRef) => {

@@ -17,11 +17,13 @@ pnpm --filter @raikou/container run build
 pnpm --filter @raikou/divider run build
 pnpm --filter @raikou/fieldset run build
 pnpm --filter @raikou/flex run build
+pnpm --filter @raikou/grid run build
 pnpm --filter @raikou/group run build
 pnpm --filter @raikou/highlight run build
 pnpm --filter @raikou/kbd run build
 pnpm --filter @raikou/loader run build
 pnpm --filter @raikou/mark run build
+pnpm --filter @raikou/notification run build
 pnpm --filter @raikou/paper run build
 pnpm --filter @raikou/skeleton run build
 pnpm --filter @raikou/stack run build
@@ -29,4 +31,3 @@ pnpm --filter @raikou/text run build
 pnpm --filter @raikou/title run build
 pnpm --filter @raikou/unstyled-button run build
 pnpm --filter @raikou/visually-hidden run build
-pnpm --filter @raikou/server run build

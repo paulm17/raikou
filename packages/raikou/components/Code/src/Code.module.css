@@ -1,0 +1,34 @@
+.root {
+  @mixin light {
+    --raikou-code-bg: #f1f3f5;
+    --raikou-code-color: #000;
+  }
+  @mixin dark {
+    --raikou-code-bg: #2c2e33;
+    --raikou-code-color: #fff;
+  }
+
+  font-family: var(--raikou-font-family-monospace);
+  line-height: var(--raikou-line-height);
+  padding: var(--_code-padding, rem(2px) calc(var(--raikou-spacing-xs) / 2));
+  border-radius: var(--raikou-radius-sm);
+  font-size: var(--raikou-font-size-xs);
+  background-color: var(--_code-bg);
+  color: var(--_code-color);
+  margin: 0;
+  overflow: auto;
+
+  @mixin light {
+    --_code-bg: var(--code-bg, var(--raikou-code-bg));
+    --_code-color: var(--raikou-code-color);
+  }
+
+  @mixin dark {
+    --_code-bg: var(--code-bg, var(--raikou-code-bg));
+    --_code-color: var(--raikou-code-color);
+  }
+
+  &[data-block] {
+    --_code-padding: var(--raikou-spacing-xs);
+  }
+}

@@ -3,7 +3,7 @@ import { findElementAncestor } from "../find-element-ancestor/find-element-ances
 function getPreviousIndex(
   current: number,
   elements: HTMLButtonElement[],
-  loop: boolean,
+  loop: boolean
 ) {
   for (let i = current - 1; i >= 0; i -= 1) {
     if (!elements[i].disabled) {
@@ -25,7 +25,7 @@ function getPreviousIndex(
 function getNextIndex(
   current: number,
   elements: HTMLButtonElement[],
-  loop: boolean,
+  loop: boolean
 ) {
   for (let i = current + 1; i < elements.length; i += 1) {
     if (!elements[i].disabled) {
@@ -48,7 +48,7 @@ function getNextIndex(
 function onSameLevel(
   target: HTMLButtonElement,
   sibling: HTMLButtonElement,
-  parentSelector: string,
+  parentSelector: string
 ) {
   return (
     findElementAncestor(target, parentSelector) ===
@@ -76,7 +76,7 @@ interface GetElementsSiblingsInput {
   activateOnFocus?: boolean;
 
   /** External keydown event */
-  onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+  onKeyDown?(event: React.KeyboardEvent<HTMLButtonElement>): void;
 }
 
 export function createScopedKeydownHandler({
@@ -94,8 +94,8 @@ export function createScopedKeydownHandler({
     const elements = Array.from(
       findElementAncestor(
         event.currentTarget,
-        parentSelector,
-      )?.querySelectorAll<HTMLButtonElement>(siblingSelector) || [],
+        parentSelector
+      )?.querySelectorAll<HTMLButtonElement>(siblingSelector) || []
     ).filter((node) => onSameLevel(event.currentTarget, node, parentSelector));
 
     const current = elements.findIndex((el) => event.currentTarget === el);

@@ -419,13 +419,13 @@ var Bars = (0, import_react5.forwardRef)(
       import_core4.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("bars-loader", className)
+        className: clsx_default("loader-barsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "bar" })
+      /* @__PURE__ */ import_react5.default.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ import_react5.default.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ import_react5.default.createElement("span", { className: "loader-bar" })
     );
   }
 );
@@ -440,7 +440,7 @@ var Oval = (0, import_react6.forwardRef)(
       import_core5.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("oval-loader", className)
+        className: clsx_default("loader-ovalLoader", className)
       }, others), {
         ref
       })
@@ -458,7 +458,7 @@ var Progress = (0, import_react7.forwardRef)(
       import_core6.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("progress-loader", className)
+        className: clsx_default("loader-progressLoader", className)
       }, others), {
         ref
       }),
@@ -487,13 +487,13 @@ var Dots = (0, import_react8.forwardRef)(
       import_core7.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("dots-loader", className)
+        className: clsx_default("loader-dotsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react8.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react8.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react8.default.createElement("span", { className: "dot" })
+      /* @__PURE__ */ import_react8.default.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ import_react8.default.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ import_react8.default.createElement("span", { className: "loader-dot" })
     );
   }
 );
@@ -855,7 +855,8 @@ var Dropzone = (0, import_core12.factory)((_props, ref) => {
     validator,
     rejectColor,
     acceptColor,
-    enablePointerEvents
+    enablePointerEvents,
+    loaderProps
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -892,7 +893,8 @@ var Dropzone = (0, import_core12.factory)((_props, ref) => {
     "validator",
     "rejectColor",
     "acceptColor",
-    "enablePointerEvents"
+    "enablePointerEvents",
+    "loaderProps"
   ]);
   const getStyles = (0, import_core12.useStyles)({
     name: "Dropzone",
@@ -942,7 +944,7 @@ var Dropzone = (0, import_core12.factory)((_props, ref) => {
     },
     /* @__PURE__ */ import_react17.default.createElement(
       import_core12.Box,
-      __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, others), getRootProps({ ref })), getStyles("root", { focusable: true })), {
+      __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, getRootProps({ ref })), getStyles("root", { focusable: true })), others), {
         mod: {
           accept: isDragAccept,
           reject: isDragReject,
@@ -956,7 +958,8 @@ var Dropzone = (0, import_core12.factory)((_props, ref) => {
         {
           visible: loading,
           overlayProps: { radius },
-          unstyled
+          unstyled,
+          loaderProps
         }
       ),
       /* @__PURE__ */ import_react17.default.createElement("input", __spreadProps(__spreadValues({}, getInputProps()), { name })),

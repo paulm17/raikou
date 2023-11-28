@@ -26,6 +26,7 @@ import {
   __InputWrapperProps,
   InputWrapperStylesNames,
 } from "./InputWrapper/InputWrapper";
+import classes from "./Input.module.css";
 
 export interface __BaseInputProps extends __InputWrapperProps, __InputProps {}
 export type __InputStylesNames = InputStylesNames | InputWrapperStylesNames;
@@ -217,11 +218,12 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
   const getStyles = useStyles<InputFactory>({
     name: ["Input", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      wrapper: "input-wrapper",
-      input: "input-input",
-      section: "input-section",
-    },
+    classes,
+    // classes: {
+    //   wrapper: "input-wrapper",
+    //   input: "input-input",
+    //   section: "input-section",
+    // },
     className,
     style,
     classNames,

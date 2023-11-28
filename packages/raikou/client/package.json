@@ -63,6 +63,7 @@
     "@raikou/navlink": "workspace:*",
     "@raikou/notifications": "workspace:*",
     "@raikou/number-input": "workspace:*",
+    "@raikou/number-formatter": "workspace:*",
     "@raikou/overlay": "workspace:*",
     "@raikou/pagination": "workspace:*",
     "@raikou/password-input": "workspace:*",

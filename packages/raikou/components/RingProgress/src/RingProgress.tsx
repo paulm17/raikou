@@ -14,6 +14,11 @@ import {
 } from "@raikou/core";
 import { getCurves } from "./get-curves/get-curves";
 import { Curve } from "./Curve/Curve";
+import classes from "./RingProgress.module.css";
+
+function getClampedThickness(thickness: number, size: number) {
+  return Math.min(thickness, size / 4);
+}
 
 interface RingProgressSection extends React.ComponentPropsWithRef<"circle"> {
   value: number;
@@ -90,12 +95,7 @@ export const RingProgress = factory<RingProgressFactory>((_props, ref) => {
 
   const getStyles = useStyles<RingProgressFactory>({
     name: "RingProgress",
-    classes: {
-      root: "ringProgress-root",
-      svg: "ringProgress-svg",
-      label: "ringProgress-label",
-      curve: "ringProgress-curve",
-    },
+    classes,
     props,
     className,
     style,
@@ -106,9 +106,11 @@ export const RingProgress = factory<RingProgressFactory>((_props, ref) => {
     varsResolver,
   });
 
+  const clampedThickness = getClampedThickness(thickness!, size!);
+
   const curves = getCurves({
     size: size!,
-    thickness: thickness!,
+    thickness: clampedThickness,
     sections,
     renderRoundedLineCaps: roundCaps,
     rootColor,
@@ -117,7 +119,7 @@ export const RingProgress = factory<RingProgressFactory>((_props, ref) => {
       {...data}
       key={index}
       size={size!}
-      thickness={thickness!}
+      thickness={clampedThickness!}
       sum={sum}
       offset={offset}
       color={data?.color}
@@ -135,4 +137,5 @@ export const RingProgress = factory<RingProgressFactory>((_props, ref) => {
   );
 });
 
+RingProgress.classes = classes;
 RingProgress.displayName = "@raikou/core/RingProgress";

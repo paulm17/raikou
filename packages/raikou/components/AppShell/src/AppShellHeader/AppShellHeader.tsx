@@ -9,6 +9,7 @@ import {
   Factory,
 } from "@raikou/core";
 import { useStore } from "../store";
+import classes from "../AppShell.module.css";
 
 export type AppShellHeaderStylesNames = "header";
 export type AppShellHeaderVariant = string;
@@ -71,3 +72,4 @@ export const AppShellHeader = factory<AppShellHeaderFactory>((_props, ref) => {
 });
 
 AppShellHeader.displayName = "@raikou/core/AppShellHeader";
+AppShellHeader.classes = classes;

@@ -30,7 +30,7 @@ interface __InputWrapperProps {
     /** Props passed down to the `InputError` component */
     errorProps?: Record<string, any>;
     /** Input container component, defaults to `React.Fragment` */
-    inputContainer?(children: React$1.ReactNode): React$1.ReactNode;
+    inputContainer?: (children: React$1.ReactNode) => React$1.ReactNode;
     /** Controls order of the elements, `['label', 'description', 'input', 'error']` by default */
     inputWrapperOrder?: ("label" | "input" | "description" | "error")[];
 }
@@ -3630,7 +3630,7 @@ type InputBaseFactory = PolymorphicFactory<{
 
 interface FileInputProps<Multiple = false> extends InputBaseProps, ElementProps<"button", "value" | "defaultValue" | "onChange"> {
     /** Called when value changes */
-    onChange?(payload: Multiple extends true ? File[] : File | null): void;
+    onChange?: (payload: Multiple extends true ? File[] : File | null) => void;
     /** Controlled component value */
     value?: Multiple extends true ? File[] : File | null;
     /** Uncontrolled component default value */

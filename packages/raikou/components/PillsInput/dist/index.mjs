@@ -895,7 +895,7 @@ var PillsInputField = factory6(
     const getStyles = useStyles7({
       name: "PillsInputField",
       classes: {
-        field: "field"
+        field: "pillsInput-field"
       },
       props,
       className,

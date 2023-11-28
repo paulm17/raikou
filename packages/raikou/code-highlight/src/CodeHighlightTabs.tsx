@@ -23,10 +23,10 @@ import { UnstyledButton } from "../../components/UnstyledButton/src";
 import { ActionIcon } from "../../components/ActionIcon/src";
 import { ScrollArea } from "../../components/ScrollArea/src";
 
-// import _classes from "./CodeHighlight.module.css";
-// import themeClasses from "./CodeHighlight.theme.module.css";
+import _classes from "./CodeHighlight.module.css";
+import themeClasses from "./CodeHighlight.theme.module.css";
 
-// const classes = { ..._classes, root: cx(_classes.root, themeClasses.theme) };
+const classes = { ..._classes, root: cx(_classes.root, themeClasses.theme) };
 
 export type CodeHighlightTabsStylesNames =
   | "root"
@@ -155,19 +155,7 @@ export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>(
     const getStyles = useStyles<CodeHighlightTabsFactory>({
       name: "CodeHighlightTabs",
       props,
-      classes: {
-        code: "codeHighlight-code",
-        pre: "codeHighlight-pre",
-        header: "codeHighlight-header",
-        controls: "codeHighlight-controls",
-        control: "codeHighlight-control",
-        file: "codeHighlight-file",
-        files: "codeHighlight-files",
-        codeWrapper: "codeHighlight-codeWrapper",
-        showCodeButton: "codeHighlight-showCodeButton",
-        fileIcon: "codeHighlight-fileIcon",
-        root: cx("codeHighlight-root", "codeHighlight-theme"),
-      },
+      classes,
       className,
       style,
       classNames,
@@ -195,7 +183,7 @@ export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>(
     const currentCode = nodes[value];
 
     const highlighted = hljs.highlight(currentCode.code.trim(), {
-      language: currentCode.language!,
+      language: currentCode.language || "plaintext",
     }).value;
 
     const files = nodes.map((node, index) => (
@@ -291,3 +279,4 @@ export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>(
 );
 
 CodeHighlightTabs.displayName = "@raikou/core/CodeHighlightTabs";
+CodeHighlightTabs.classes = classes;

@@ -14,6 +14,7 @@ import {
   getRadius,
   rem,
 } from "@raikou/core";
+import classes from "./Overlay.module.css";
 
 export type OverlayStylesNames = "root";
 export type OverlayCssVariables = {
@@ -104,9 +105,7 @@ export const Overlay = polymorphicFactory<OverlayFactory>((_props, ref) => {
   const getStyles = useStyles<OverlayFactory>({
     name: "Overlay",
     props,
-    classes: {
-      root: "overlay-root",
-    },
+    classes,
     className,
     style,
     classNames,
@@ -124,3 +123,4 @@ export const Overlay = polymorphicFactory<OverlayFactory>((_props, ref) => {
 });
 
 Overlay.displayName = "@raikou/core/Overlay";
+Overlay.classes = classes;

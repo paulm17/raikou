@@ -1,0 +1,35 @@
+.root {
+  @mixin light {
+    --raikou-breadcrumbs-separator-color: #495057;
+  }
+  @mixin dark {
+    --raikou-breadcrumbs-separator-color: #909296;
+  }
+
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb {
+  line-height: 1;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.separator {
+  margin-left: var(--bc-separator-margin, var(--raikou-spacing-xs));
+  margin-right: var(--bc-separator-margin, var(--raikou-spacing-xs));
+  color: var(--_separator-color);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @mixin light {
+    --_separator-color: var(--raikou-breadcrumbs-separator-color);
+  }
+
+  @mixin dark {
+    --_separator-color: var(--raikou-breadcrumbs-separator-color);
+  }
+}

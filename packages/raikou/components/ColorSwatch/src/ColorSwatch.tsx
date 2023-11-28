@@ -12,6 +12,7 @@ import {
   createVarsResolver,
   PolymorphicFactory,
 } from "@raikou/core";
+import classes from "./ColorSwatch.module.css";
 
 export type ColorSwatchStylesNames =
   | "root"
@@ -86,13 +87,7 @@ export const ColorSwatch = polymorphicFactory<ColorSwatchFactory>(
     const getStyles = useStyles<ColorSwatchFactory>({
       name: "ColorSwatch",
       props,
-      classes: {
-        root: "colorswatch-root",
-        alphaOverlay: "colorswatch-alphaOverlay",
-        shadowOverlay: "colorswatch-shadowOverlay",
-        colorOverlay: "colorswatch-colorOverlay",
-        childrenOverlay: "colorswatch-childrenOverlay",
-      },
+      classes,
       className,
       style,
       classNames,
@@ -122,3 +117,4 @@ export const ColorSwatch = polymorphicFactory<ColorSwatchFactory>(
 );
 
 ColorSwatch.displayName = "@raikou/core/ColorSwatch";
+ColorSwatch.classes = classes;

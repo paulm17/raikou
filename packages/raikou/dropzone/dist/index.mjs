@@ -407,13 +407,13 @@ var Bars = forwardRef2(
       Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("bars-loader", className)
+        className: clsx_default("loader-barsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React4.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ React4.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ React4.createElement("span", { className: "bar" })
+      /* @__PURE__ */ React4.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ React4.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ React4.createElement("span", { className: "loader-bar" })
     );
   }
 );
@@ -428,7 +428,7 @@ var Oval = forwardRef3(
       Box2,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("oval-loader", className)
+        className: clsx_default("loader-ovalLoader", className)
       }, others), {
         ref
       })
@@ -446,7 +446,7 @@ var Progress = forwardRef4(
       Box3,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("progress-loader", className)
+        className: clsx_default("loader-progressLoader", className)
       }, others), {
         ref
       }),
@@ -475,13 +475,13 @@ var Dots = forwardRef5(
       Box4,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("dots-loader", className)
+        className: clsx_default("loader-dotsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React7.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React7.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React7.createElement("span", { className: "dot" })
+      /* @__PURE__ */ React7.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ React7.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ React7.createElement("span", { className: "loader-dot" })
     );
   }
 );
@@ -853,7 +853,8 @@ var Dropzone = factory3((_props, ref) => {
     validator,
     rejectColor,
     acceptColor,
-    enablePointerEvents
+    enablePointerEvents,
+    loaderProps
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -890,7 +891,8 @@ var Dropzone = factory3((_props, ref) => {
     "validator",
     "rejectColor",
     "acceptColor",
-    "enablePointerEvents"
+    "enablePointerEvents",
+    "loaderProps"
   ]);
   const getStyles = useStyles4({
     name: "Dropzone",
@@ -940,7 +942,7 @@ var Dropzone = factory3((_props, ref) => {
     },
     /* @__PURE__ */ React14.createElement(
       Box8,
-      __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, others), getRootProps({ ref })), getStyles("root", { focusable: true })), {
+      __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, getRootProps({ ref })), getStyles("root", { focusable: true })), others), {
         mod: {
           accept: isDragAccept,
           reject: isDragReject,
@@ -954,7 +956,8 @@ var Dropzone = factory3((_props, ref) => {
         {
           visible: loading,
           overlayProps: { radius },
-          unstyled
+          unstyled,
+          loaderProps
         }
       ),
       /* @__PURE__ */ React14.createElement("input", __spreadProps(__spreadValues({}, getInputProps()), { name })),

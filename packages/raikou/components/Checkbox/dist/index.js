@@ -1010,11 +1010,11 @@ function CheckIcon(_a) {
   return /* @__PURE__ */ import_react69.default.createElement(
     "svg",
     __spreadValues({
-      className: "icon",
       viewBox: "0 0 10 7",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
-      style: _style
+      style: _style,
+      "aria-hidden": true
     }, others),
     /* @__PURE__ */ import_react69.default.createElement(
       "path",
@@ -1035,7 +1035,8 @@ function CheckboxIcon(_a) {
       __spreadValues({
         xmlns: "http://www.w3.org/2000/svg",
         fill: "none",
-        viewBox: "0 0 32 6"
+        viewBox: "0 0 32 6",
+        "aria-hidden": true
       }, others),
       /* @__PURE__ */ import_react69.default.createElement("rect", { width: "32", height: "6", fill: "currentColor", rx: "3" })
     );
@@ -1049,11 +1050,12 @@ var defaultProps8 = {
   icon: CheckboxIcon
 };
 var varsResolver6 = (0, import_core10.createVarsResolver)(
-  (theme, { radius, color, size }) => ({
+  (theme, { radius, color, size, iconColor }) => ({
     root: {
       "--checkbox-size": (0, import_core10.getSize)(size, "checkbox-size"),
       "--checkbox-radius": radius === void 0 ? void 0 : (0, import_core10.getRadius)(radius),
-      "--checkbox-color": color ? (0, import_core10.getThemeColor)(color, theme) : void 0
+      "--checkbox-color": color ? (0, import_core10.getThemeColor)(color, theme) : void 0,
+      "--checkbox-icon-color": iconColor ? (0, import_core10.getThemeColor)(iconColor, theme) : void 0
     }
   })
 );
@@ -1081,7 +1083,8 @@ var Checkbox = (0, import_core10.factory)((_props, ref) => {
     variant,
     indeterminate,
     icon,
-    rootRef
+    rootRef,
+    iconColor
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -1104,7 +1107,8 @@ var Checkbox = (0, import_core10.factory)((_props, ref) => {
     "variant",
     "indeterminate",
     "icon",
-    "rootRef"
+    "rootRef",
+    "iconColor"
   ]);
   const ctx = useCheckboxGroupContext();
   const _size = size || (ctx == null ? void 0 : ctx.size);

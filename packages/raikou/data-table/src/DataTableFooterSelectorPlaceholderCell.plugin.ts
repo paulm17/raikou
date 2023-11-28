@@ -25,7 +25,7 @@ module.exports = function ({ addComponents }: any) {
       },
       '[data-raikou-color-scheme="dark"] &': {
         background:
-          "linear-gradient(to right, rgba(var(--mantine-color-black) / 0.5), rgba(var(--raikou-color-black) / 0)), linear-gradient(to right, rgba(var(--raikou-color-black) / 0.5), rgba(var(--raikou-color-black) / 0) 30%)",
+          "linear-gradient(to right, rgba(var(--raikou-color-black) / 0.5), rgba(var(--raikou-color-black) / 0)), linear-gradient(to right, rgba(var(--raikou-color-black) / 0.5), rgba(var(--raikou-color-black) / 0) 30%)",
       },
     },
     ".dataTableFooterSelectorPlaceholderCell-shadowVisible:after": {

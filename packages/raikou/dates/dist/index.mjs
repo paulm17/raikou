@@ -1054,7 +1054,7 @@ var UnstyledButton = polymorphicFactory3(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,
@@ -5459,8 +5459,8 @@ FloatingArrow.displayName = "@raikou/core/FloatingArrow";
 
 // ../components/Popover/src/use-popover.ts
 import { useDidUpdate as useDidUpdate2, useUncontrolled } from "@raikou/hooks";
-function getPopoverMiddlewares(options) {
-  var _a, _b, _c;
+function getPopoverMiddlewares(options, getFloating) {
+  var _a, _b, _c, _d;
   const middlewares = [offset(options.offset)];
   if ((_a = options.middlewares) == null ? void 0 : _a.shift) {
     middlewares.push(shift({ limiter: limitShift() }));
@@ -5474,6 +5474,28 @@ function getPopoverMiddlewares(options) {
   middlewares.push(
     arrow2({ element: options.arrowRef, padding: options.arrowOffset })
   );
+  if (((_d = options.middlewares) == null ? void 0 : _d.size) || options.width === "target") {
+    middlewares.push(
+      size({
+        apply({ rects, availableWidth, availableHeight }) {
+          var _a2, _b2, _c2;
+          const floating = getFloating();
+          const styles = (_b2 = (_a2 = floating.refs.floating.current) == null ? void 0 : _a2.style) != null ? _b2 : {};
+          if ((_c2 = options.middlewares) == null ? void 0 : _c2.size) {
+            Object.assign(styles, {
+              maxWidth: `${availableWidth}px`,
+              maxHeight: `${availableHeight}px`
+            });
+          }
+          if (options.width === "target") {
+            Object.assign(styles, {
+              width: `${rects.reference.width}px`
+            });
+          }
+        }
+      })
+    );
+  }
   return middlewares;
 }
 function usePopover(options) {
@@ -5502,19 +5524,7 @@ function usePopover(options) {
   };
   const floating = useFloating2({
     placement: options.position,
-    middleware: [
-      ...getPopoverMiddlewares(options),
-      ...options.width === "target" ? [
-        size({
-          apply({ rects }) {
-            var _a, _b;
-            Object.assign((_b = (_a = floating.refs.floating.current) == null ? void 0 : _a.style) != null ? _b : {}, {
-              width: `${rects.reference.width}px`
-            });
-          }
-        })
-      ] : []
-    ]
+    middleware: getPopoverMiddlewares(options, () => floating)
   });
   useFloatingAutoUpdate({
     opened: options.opened,
@@ -6251,11 +6261,11 @@ import {
 // ../components/ModalBase/src/ModalBase.tsx
 import React45, { forwardRef as forwardRef6 } from "react";
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
 import { __assign as __assign4 } from "tslib";
 import * as React44 from "react";
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
 import { __assign as __assign3, __rest as __rest2 } from "tslib";
 import * as React40 from "react";
 
@@ -6419,10 +6429,10 @@ function exportSidecar(medium, exported) {
   return SideCar;
 }
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/medium.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/medium.js
 var effectCar = createSidecarMedium();
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
 var nothing = function() {
   return;
 };
@@ -6433,14 +6443,14 @@ var RemoveScroll = React40.forwardRef(function(props, parentRef) {
     onWheelCapture: nothing,
     onTouchMoveCapture: nothing
   }), callbacks = _a[0], setCallbacks = _a[1];
-  var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? "div" : _b, gapMode = props.gapMode, rest = __rest2(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as", "gapMode"]);
+  var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? "div" : _b, rest = __rest2(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as"]);
   var SideCar2 = sideCar;
   var containerRef = useMergeRefs([ref, parentRef]);
   var containerProps = __assign3(__assign3({}, rest), callbacks);
   return React40.createElement(
     React40.Fragment,
     null,
-    enabled && React40.createElement(SideCar2, { sideCar: effectCar, removeScrollBar, shards, noIsolation, inert, setCallbacks, allowPinchZoom: !!allowPinchZoom, lockRef: ref, gapMode }),
+    enabled && React40.createElement(SideCar2, { sideCar: effectCar, removeScrollBar, shards, noIsolation, inert, setCallbacks, allowPinchZoom: !!allowPinchZoom, lockRef: ref }),
     forwardProps ? React40.cloneElement(React40.Children.only(children), __assign3(__assign3({}, containerProps), { ref: containerRef })) : React40.createElement(Container, __assign3({}, containerProps, { className, ref: containerRef }), children)
   );
 });
@@ -6454,7 +6464,7 @@ RemoveScroll.classNames = {
   zeroRight: zeroRightClassName
 };
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
 import { __spreadArray } from "tslib";
 import * as React43 from "react";
 
@@ -6602,7 +6612,7 @@ var RemoveScrollBar = function(props) {
   return React42.createElement(Style, { styles: getStyles(gap, !noRelative, gapMode, !noImportant ? "!important" : "") });
 };
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/aggresiveCapture.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/aggresiveCapture.js
 var passiveSupported = false;
 if (typeof window !== "undefined") {
   try {
@@ -6621,7 +6631,7 @@ if (typeof window !== "undefined") {
 var options;
 var nonPassive = passiveSupported ? { passive: false } : false;
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/handleScroll.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/handleScroll.js
 var alwaysContainsScroll = function(node) {
   return node.tagName === "TEXTAREA";
 };
@@ -6640,7 +6650,6 @@ var elementCouldBeHScrolled = function(node) {
   return elementCanBeScrolled(node, "overflowX");
 };
 var locationCouldBeScrolled = function(axis, node) {
-  var ownerDocument = node.ownerDocument;
   var current = node;
   do {
     if (typeof ShadowRoot !== "undefined" && current instanceof ShadowRoot) {
@@ -6654,7 +6663,7 @@ var locationCouldBeScrolled = function(axis, node) {
       }
     }
     current = current.parentNode;
-  } while (current && current !== ownerDocument.body);
+  } while (current && current !== document.body);
   return false;
 };
 var getVScrollVariables = function(_a) {
@@ -6714,7 +6723,7 @@ var handleScroll = function(axis, endTarget, event, sourceDelta, noOverscroll) {
   return shouldCancelScroll;
 };
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
 var getTouchXY = function(event) {
   return "changedTouches" in event ? [event.changedTouches[0].clientX, event.changedTouches[0].clientY] : [0, 0];
 };
@@ -6737,7 +6746,9 @@ function RemoveScrollSideCar(props) {
   var touchStartRef = React43.useRef([0, 0]);
   var activeAxis = React43.useRef();
   var id = React43.useState(idCounter++)[0];
-  var Style2 = React43.useState(styleSingleton)[0];
+  var Style2 = React43.useState(function() {
+    return styleSingleton();
+  })[0];
   var lastProps = React43.useRef(props);
   React43.useEffect(function() {
     lastProps.current = props;
@@ -6864,14 +6875,14 @@ function RemoveScrollSideCar(props) {
     React43.Fragment,
     null,
     inert ? React43.createElement(Style2, { styles: generateStyle(id) }) : null,
-    removeScrollBar ? React43.createElement(RemoveScrollBar, { gapMode: props.gapMode }) : null
+    removeScrollBar ? React43.createElement(RemoveScrollBar, { gapMode: "margin" }) : null
   );
 }
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/sidecar.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/sidecar.js
 var sidecar_default = exportSidecar(effectCar, RemoveScrollSideCar);
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
 var ReactRemoveScroll = React44.forwardRef(function(props, ref) {
   return React44.createElement(RemoveScroll, __assign4({}, props, { ref, sideCar: sidecar_default }));
 });
@@ -7516,7 +7527,8 @@ var defaultProps31 = {
   closeOnEscape: true,
   keepMounted: false,
   zIndex: getDefaultZIndex4("modal"),
-  transitionProps: { duration: 200, transition: "pop" }
+  transitionProps: { duration: 200, transition: "pop" },
+  yOffset: "5dvh"
 };
 var varsResolver14 = createVarsResolver14(
   (_, { radius, size: size2, yOffset, xOffset }) => ({
@@ -8768,7 +8780,8 @@ var MonthPicker = factory34(
       onMouseLeave,
       onMonthSelect,
       __updateDateOnMonthSelect,
-      __timezoneApplied
+      __timezoneApplied,
+      onLevelChange
     } = _a, others = __objRest(_a, [
       "classNames",
       "styles",
@@ -8785,7 +8798,8 @@ var MonthPicker = factory34(
       "onMouseLeave",
       "onMonthSelect",
       "__updateDateOnMonthSelect",
-      "__timezoneApplied"
+      "__timezoneApplied",
+      "onLevelChange"
     ]);
     const {
       onDateChange,
@@ -8824,7 +8838,8 @@ var MonthPicker = factory34(
         },
         getMonthControlProps: (date) => __spreadValues(__spreadValues({}, getControlProps(date)), getMonthControlProps == null ? void 0 : getMonthControlProps(date)),
         classNames: resolvedClassNames,
-        styles: resolvedStyles
+        styles: resolvedStyles,
+        onLevelChange
       }, others), {
         date: shiftTimezone(
           "add",
@@ -9055,6 +9070,7 @@ var DateInput = factory36((_props, ref) => {
     "defaultDate",
     "onDateChange"
   ]);
+  const [dropdownOpened, setDropdownOpened] = useState14(false);
   const { calendarProps, others } = pickCalendarProps(rest);
   const ctx = useDatesContext();
   const defaultDateParser = (val) => {
@@ -9085,10 +9101,10 @@ var DateInput = factory36((_props, ref) => {
   useEffect12(() => {
     setInputValue(formatValue2(_value));
   }, [ctx.getLocale(locale)]);
-  const [dropdownOpened, setDropdownOpened] = useState14(false);
   const handleInputChange = (event) => {
     const val = event.currentTarget.value;
     setInputValue(val);
+    setDropdownOpened(true);
     if (val.trim() === "" && clearable) {
       setValue(null);
     } else {
@@ -9243,13 +9259,13 @@ var Bars = forwardRef14(
       Box25,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx9("bars-loader", className)
+        className: cx9("loader-barsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React71.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ React71.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ React71.createElement("span", { className: "bar" })
+      /* @__PURE__ */ React71.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ React71.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ React71.createElement("span", { className: "loader-bar" })
     );
   }
 );
@@ -9265,7 +9281,7 @@ var Oval = forwardRef15(
       Box26,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx10("oval-loader", className)
+        className: cx10("loader-ovalLoader", className)
       }, others), {
         ref
       })
@@ -9284,7 +9300,7 @@ var Progress = forwardRef16(
       Box27,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx11("progress-loader", className)
+        className: cx11("loader-progressLoader", className)
       }, others), {
         ref
       }),
@@ -9314,13 +9330,13 @@ var Dots = forwardRef17(
       Box28,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx12("dots-loader", className)
+        className: cx12("loader-dotsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React74.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React74.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React74.createElement("span", { className: "dot" })
+      /* @__PURE__ */ React74.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ React74.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ React74.createElement("span", { className: "loader-dot" })
     );
   }
 );
@@ -9578,11 +9594,11 @@ function CheckIcon(_a) {
   return /* @__PURE__ */ React78.createElement(
     "svg",
     __spreadValues({
-      className: "icon",
       viewBox: "0 0 10 7",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
-      style: _style
+      style: _style,
+      "aria-hidden": true
     }, others),
     /* @__PURE__ */ React78.createElement(
       "path",
@@ -9700,7 +9716,9 @@ var DateTimePicker = factory39((_props, ref) => {
   };
   const handleDateChange = (date) => {
     var _a2;
-    setValue(assignTime(_value, date));
+    if (date) {
+      setValue(assignTime(_value, date));
+    }
     (_a2 = timeInputRef.current) == null ? void 0 : _a2.focus();
   };
   const handleTimeInputKeyDown = (event) => {

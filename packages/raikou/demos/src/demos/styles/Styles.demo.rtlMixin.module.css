@@ -1,0 +1,13 @@
+.demo {
+  text-align: center;
+  color: var(--raikou-color-white);
+  padding: var(--raikou-spacing-md);
+
+  /* LTR styles */
+  background-color: var(--raikou-color-blue-filled);
+
+  @mixin rtl {
+    /* RTL styles override LTR styles */
+    background-color: var(--raikou-color-red-filled);
+  }
+}

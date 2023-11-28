@@ -151,7 +151,7 @@ interface TransitionProps {
     /** Determines whether component should be mounted to the DOM */
     mounted: boolean;
     /** Render function with transition styles argument */
-    children(styles: React$1.CSSProperties): JSX.Element;
+    children: (styles: React$1.CSSProperties) => JSX.Element;
     /** Called when exit transition ends */
     onExited?: () => void;
     /** Called when exit transition starts */
@@ -180,11 +180,12 @@ interface PortalProps extends React$1.ComponentPropsWithoutRef<"div"> {
     target?: HTMLElement | string;
 }
 
-type PopoverWidth = 'target' | React.CSSProperties['width'];
+type PopoverWidth = "target" | React.CSSProperties["width"];
 interface PopoverMiddlewares {
     shift: boolean;
     flip: boolean;
     inline?: boolean;
+    size?: boolean;
 }
 
 type PopoverStylesNames = "dropdown" | "arrow";
@@ -197,13 +198,13 @@ interface __PopoverProps {
     /** Offset of the dropdown element, `8` by default */
     offset?: number | FloatingAxesOffsets;
     /** Called when dropdown position changes */
-    onPositionChange?(position: FloatingPosition): void;
+    onPositionChange?: (position: FloatingPosition) => void;
     /** `useEffect` dependencies to force update dropdown position, `[]` by default */
     positionDependencies?: any[];
     /** Called when dropdown closes */
-    onClose?(): void;
+    onClose?: () => void;
     /** Called when dropdown opens */
-    onOpen?(): void;
+    onOpen?: () => void;
     /** If set dropdown will not be unmounted from the DOM when it is hidden, `display: none` styles will be added instead, `false` by default */
     keepMounted?: boolean;
     /** Props passed down to the `Transition` component that used to animate dropdown presence, use to configure duration and animation type, `{ duration: 150, transition: 'fade' }` by default */
@@ -246,7 +247,7 @@ interface PopoverProps extends __PopoverProps, StylesApiProps<PopoverFactory> {
     /** Controlled dropdown opened state */
     opened?: boolean;
     /** Called with current state when dropdown opens or closes */
-    onChange?(opened: boolean): void;
+    onChange?: (opened: boolean) => void;
     /** Determines whether dropdown should be closed on outside clicks, `true` by default */
     closeOnClickOutside?: boolean;
     /** Events that trigger outside clicks */

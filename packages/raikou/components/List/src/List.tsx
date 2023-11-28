@@ -17,6 +17,7 @@ import {
 } from "@raikou/core";
 import { ListItem, ListItemStylesNames } from "./ListItem/ListItem";
 import { useStore } from "./store";
+import classes from "./List.module.css";
 
 export type ListStylesNames = "root" | ListItemStylesNames;
 export type ListCssVariables = {
@@ -98,12 +99,7 @@ export const List = factory<ListFactory>((_props, ref) => {
 
   const getStyles = useStyles<ListFactory>({
     name: "List",
-    classes: {
-      root: "list-root",
-      item: "list-item",
-      itemWrapper: "list-itemWrapper",
-      itemIcon: "list-itemIcon",
-    },
+    classes,
     props,
     className,
     style,
@@ -129,5 +125,6 @@ export const List = factory<ListFactory>((_props, ref) => {
   );
 });
 
+List.classes = classes;
 List.displayName = "@raikou/core/List";
 List.Item = ListItem;

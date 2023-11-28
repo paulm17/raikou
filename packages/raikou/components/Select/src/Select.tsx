@@ -222,7 +222,9 @@ export const Select = factory<SelectFactory>((_props, ref) => {
               : optionsLockup[val].value
             : optionsLockup[val].value;
           setValue(nextValue);
-          setSearch(nextValue ? optionsLockup[val].label : "");
+          setSearch(
+            typeof nextValue === "string" ? optionsLockup[val].label : "",
+          );
           combobox.closeDropdown();
         }}
         size={size}
@@ -265,7 +267,9 @@ export const Select = factory<SelectFactory>((_props, ref) => {
             onBlur={(event) => {
               // eslint-disable-next-line
               searchable && combobox.closeDropdown();
-              setSearch(_value ? optionsLockup[_value].label : "");
+              setSearch(
+                _value != null ? optionsLockup[_value]?.label || "" : "",
+              );
               onBlur?.(event);
             }}
             onClick={(event) => {

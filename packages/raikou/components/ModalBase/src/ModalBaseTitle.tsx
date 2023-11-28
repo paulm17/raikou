@@ -1,6 +1,7 @@
 import React, { forwardRef } from "react";
 import cx from "clsx";
 import { Box, BoxProps, ElementProps } from "@raikou/core";
+import classes from "./ModalBase.module.css";
 import { useModalTitle } from "./use-modal-title-id";
 
 export interface ModalBaseTitleProps extends BoxProps, ElementProps<"h2"> {}
@@ -14,7 +15,7 @@ export const ModalBaseTitle = forwardRef<
     <Box
       component="h2"
       ref={ref}
-      className={cx("modalBase-title", className)}
+      className={cx(classes.title, className)}
       {...others}
       id={id}
     />

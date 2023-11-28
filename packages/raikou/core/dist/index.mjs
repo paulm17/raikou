@@ -67,7 +67,7 @@ function scaleRem(remValue) {
   return `calc(${remValue} * var(--raikou-scale))`;
 }
 function createConverter(units, { shouldScale = false } = {}) {
-  return (value) => {
+  function converter(value) {
     if (value === 0 || value === "0") {
       return "0";
     }
@@ -76,8 +76,11 @@ function createConverter(units, { shouldScale = false } = {}) {
       return shouldScale ? scaleRem(val) : val;
     }
     if (typeof value === "string") {
-      if (value.includes("calc(") || value.includes("var(")) {
+      if (value.startsWith("calc(") || value.startsWith("var(")) {
         return value;
+      }
+      if (value.includes(" ")) {
+        return value.split(" ").map((val) => converter(val)).join(" ");
       }
       if (value.includes(units)) {
         return shouldScale ? scaleRem(value) : value;
@@ -89,7 +92,8 @@ function createConverter(units, { shouldScale = false } = {}) {
       }
     }
     return value;
-  };
+  }
+  return converter;
 }
 var rem = createConverter("rem", { shouldScale: true });
 var em = createConverter("em");
@@ -110,7 +114,7 @@ function isNumberLike(value) {
     return true;
   }
   if (typeof value === "string") {
-    if (value.startsWith("calc(") || value.startsWith("var(")) {
+    if (value.startsWith("calc(") || value.startsWith("var(") || value.includes(" ") && value.trim() !== "") {
       return true;
     }
     return /[0-9]/.test(value.trim().replace("-", "")[0]);
@@ -318,7 +322,7 @@ function getShadow(size) {
   if (!size) {
     return void 0;
   }
-  return getSize(size, "raikou-shadow");
+  return getSize(size, "raikou-shadow", false);
 }
 
 // src/core/utils/create-event-handler/create-event-handler.ts
@@ -598,7 +602,7 @@ var defaultVariantColorsResolver = ({
   variant,
   gradient
 }) => {
-  const parsed = parseThemeColor({ color, theme });
+  const parsed = parseThemeColor({ color: color || theme.primaryColor, theme });
   if (variant === "filled") {
     if (parsed.isThemeColor) {
       if (parsed.shade === void 0) {
@@ -783,7 +787,7 @@ function getGradient(gradient, theme) {
   };
   const fromColor = getThemeColor(merged.from, theme);
   const toColor = getThemeColor(merged.to, theme);
-  return `linear-gradient(${merged.deg}deg, ${fromColor} 0%, ${toColor} 100%)`;
+  return `linear-gradient(${merged.deg}, ${fromColor} 0%, ${toColor} 100%)`;
 }
 
 // src/core/RaikouProvider/color-functions/lighten/lighten.ts
@@ -1394,6 +1398,10 @@ function extractStyleProps(others) {
     right,
     inset,
     display,
+    hiddenFrom,
+    visibleFrom,
+    lightHidden,
+    darkHidden,
     ...rest
   } = others;
   const styleProps = filterProps({
@@ -1439,7 +1447,11 @@ function extractStyleProps(others) {
     bottom,
     right,
     inset,
-    display
+    display,
+    hiddenFrom,
+    visibleFrom,
+    lightHidden,
+    darkHidden
   });
   return { styleProps, rest };
 }
@@ -1460,7 +1472,7 @@ var STYlE_PROPS_DATA = {
   pr: { type: "spacing", property: "paddingRight" },
   px: { type: "spacing", property: ["paddingRight", "paddingLeft"] },
   py: { type: "spacing", property: ["paddingTop", "paddingBottom"] },
-  bg: { type: "color", property: "background" },
+  bg: { type: "color", property: "bg" },
   c: { type: "color", property: "color" },
   opacity: { type: "identity", property: "opacity" },
   ff: { type: "identity", property: "fontFamily" },
@@ -1782,6 +1794,8 @@ var _Box = forwardRef3(
     size,
     hiddenFrom,
     visibleFrom,
+    lightHidden,
+    darkHidden,
     renderRoot,
     ...others
   }, ref) => {
@@ -1804,12 +1818,15 @@ var _Box = forwardRef3(
       }),
       className: cx4(className, {
         [responsiveClassName]: parsedStyleProps.hasResponsiveStyles,
+        "raikou-light-hidden": lightHidden,
+        "raikou-dark-hidden": darkHidden,
         [`raikou-hidden-from-${hiddenFrom}`]: hiddenFrom,
         [`raikou-visible-from-${visibleFrom}`]: visibleFrom
       }),
       "data-variant": variant,
       "data-size": isNumberLike(size) ? void 0 : size || void 0,
       ...getBoxMod(mod),
+      ...parsedStyleProps.inlineStyles,
       ...rest
     };
     return /* @__PURE__ */ React3.createElement(React3.Fragment, null, parsedStyleProps.hasResponsiveStyles && /* @__PURE__ */ React3.createElement(

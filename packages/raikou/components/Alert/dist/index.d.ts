@@ -19,7 +19,7 @@ interface AlertProps extends BoxProps, StylesApiProps<AlertFactory>, ElementProp
     /** Determines whether close button should be displayed, `false` by default */
     withCloseButton?: boolean;
     /** Called when the close button is clicked */
-    onClose?(): void;
+    onClose?: () => void;
     /** Close button `aria-label` */
     closeButtonLabel?: string;
 }

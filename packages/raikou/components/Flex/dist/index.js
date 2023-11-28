@@ -76,7 +76,7 @@ var FLEX_STYLE_PROPS_DATA = {
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
 var defaultProps = {};
-var Flex = (0, import_core.factory)((_props, ref) => {
+var Flex = (0, import_core.polymorphicFactory)((_props, ref) => {
   const props = (0, import_core.useProps)("Flex", defaultProps, _props);
   const _a = props, {
     classNames,

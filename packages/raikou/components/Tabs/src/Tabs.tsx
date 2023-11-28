@@ -20,6 +20,7 @@ import { TabsProvider } from "./Tabs.context";
 import { TabsList, TabsListStylesNames } from "./TabsList/TabsList";
 import { TabsPanel, TabsPanelStylesNames } from "./TabsPanel/TabsPanel";
 import { TabsTab, TabsTabStylesNames } from "./TabsTab/TabsTab";
+import classes from "./Tabs.module.css";
 
 export type TabsStylesNames =
   | "root"
@@ -155,14 +156,7 @@ export const Tabs = factory<TabsFactory>((_props, ref) => {
   const getStyles = useStyles<TabsFactory>({
     name: "Tabs",
     props,
-    classes: {
-      root: "tabs-root",
-      list: "tabs-list",
-      panel: "tabs-panel",
-      tab: "tabs-tab",
-      tabSection: "tabs-tabSection",
-      tabLabel: "tabs-tabLabel",
-    },
+    classes,
     className,
     style,
     classNames,
@@ -212,6 +206,7 @@ export const Tabs = factory<TabsFactory>((_props, ref) => {
   );
 });
 
+Tabs.classes = classes;
 Tabs.displayName = "@raikou/core/Tabs";
 Tabs.Tab = TabsTab;
 Tabs.Panel = TabsPanel;

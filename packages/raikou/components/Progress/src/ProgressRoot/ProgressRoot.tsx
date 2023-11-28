@@ -15,6 +15,7 @@ import {
   getRadius,
 } from "@raikou/core";
 import { ProgressProvider } from "../Progress.context";
+import classes from "../Progress.module.css";
 
 export type ProgressRootStylesNames = "root" | "section" | "label";
 export type ProgressRootCssVariables = {
@@ -58,11 +59,7 @@ export const ProgressRoot = factory<ProgressRootFactory>((_props, ref) => {
 
   const getStyles = useStyles<ProgressRootFactory>({
     name: "Progress",
-    classes: {
-      root: "progress-root",
-      section: "progress-section",
-      label: "progress-label",
-    },
+    classes,
     props,
     className,
     style,
@@ -80,4 +77,5 @@ export const ProgressRoot = factory<ProgressRootFactory>((_props, ref) => {
   );
 });
 
+ProgressRoot.classes = classes;
 ProgressRoot.displayName = "@raikou/core/ProgressRoot";

@@ -7,6 +7,7 @@ import {
 } from "@raikou/core";
 import { ModalBaseOverlay, ModalBaseOverlayProps } from "../../ModalBase/src";
 import { useModalContext } from "./Modal.context";
+import classes from "./Modal.module.css";
 
 export type ModalOverlayStylesNames = "overlay";
 
@@ -38,4 +39,5 @@ export const ModalOverlay = factory<ModalOverlayFactory>((_props, ref) => {
   );
 });
 
+ModalOverlay.classes = classes;
 ModalOverlay.displayName = "@raikou/core/ModalOverlay";

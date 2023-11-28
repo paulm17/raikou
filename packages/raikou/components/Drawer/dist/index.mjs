@@ -49,11 +49,11 @@ import {
 // ../ModalBase/src/ModalBase.tsx
 import React11, { forwardRef as forwardRef4 } from "react";
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
 import { __assign as __assign4 } from "tslib";
 import * as React6 from "react";
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
 import { __assign as __assign3, __rest as __rest2 } from "tslib";
 import * as React2 from "react";
 
@@ -217,10 +217,10 @@ function exportSidecar(medium, exported) {
   return SideCar;
 }
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/medium.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/medium.js
 var effectCar = createSidecarMedium();
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
 var nothing = function() {
   return;
 };
@@ -231,14 +231,14 @@ var RemoveScroll = React2.forwardRef(function(props, parentRef) {
     onWheelCapture: nothing,
     onTouchMoveCapture: nothing
   }), callbacks = _a[0], setCallbacks = _a[1];
-  var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? "div" : _b, gapMode = props.gapMode, rest = __rest2(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as", "gapMode"]);
+  var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? "div" : _b, rest = __rest2(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as"]);
   var SideCar2 = sideCar;
   var containerRef = useMergeRefs([ref, parentRef]);
   var containerProps = __assign3(__assign3({}, rest), callbacks);
   return React2.createElement(
     React2.Fragment,
     null,
-    enabled && React2.createElement(SideCar2, { sideCar: effectCar, removeScrollBar, shards, noIsolation, inert, setCallbacks, allowPinchZoom: !!allowPinchZoom, lockRef: ref, gapMode }),
+    enabled && React2.createElement(SideCar2, { sideCar: effectCar, removeScrollBar, shards, noIsolation, inert, setCallbacks, allowPinchZoom: !!allowPinchZoom, lockRef: ref }),
     forwardProps ? React2.cloneElement(React2.Children.only(children), __assign3(__assign3({}, containerProps), { ref: containerRef })) : React2.createElement(Container, __assign3({}, containerProps, { className, ref: containerRef }), children)
   );
 });
@@ -252,7 +252,7 @@ RemoveScroll.classNames = {
   zeroRight: zeroRightClassName
 };
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
 import { __spreadArray } from "tslib";
 import * as React5 from "react";
 
@@ -400,7 +400,7 @@ var RemoveScrollBar = function(props) {
   return React4.createElement(Style, { styles: getStyles(gap, !noRelative, gapMode, !noImportant ? "!important" : "") });
 };
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/aggresiveCapture.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/aggresiveCapture.js
 var passiveSupported = false;
 if (typeof window !== "undefined") {
   try {
@@ -419,7 +419,7 @@ if (typeof window !== "undefined") {
 var options;
 var nonPassive = passiveSupported ? { passive: false } : false;
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/handleScroll.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/handleScroll.js
 var alwaysContainsScroll = function(node) {
   return node.tagName === "TEXTAREA";
 };
@@ -438,7 +438,6 @@ var elementCouldBeHScrolled = function(node) {
   return elementCanBeScrolled(node, "overflowX");
 };
 var locationCouldBeScrolled = function(axis, node) {
-  var ownerDocument = node.ownerDocument;
   var current = node;
   do {
     if (typeof ShadowRoot !== "undefined" && current instanceof ShadowRoot) {
@@ -452,7 +451,7 @@ var locationCouldBeScrolled = function(axis, node) {
       }
     }
     current = current.parentNode;
-  } while (current && current !== ownerDocument.body);
+  } while (current && current !== document.body);
   return false;
 };
 var getVScrollVariables = function(_a) {
@@ -512,7 +511,7 @@ var handleScroll = function(axis, endTarget, event, sourceDelta, noOverscroll) {
   return shouldCancelScroll;
 };
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
 var getTouchXY = function(event) {
   return "changedTouches" in event ? [event.changedTouches[0].clientX, event.changedTouches[0].clientY] : [0, 0];
 };
@@ -535,7 +534,9 @@ function RemoveScrollSideCar(props) {
   var touchStartRef = React5.useRef([0, 0]);
   var activeAxis = React5.useRef();
   var id = React5.useState(idCounter++)[0];
-  var Style2 = React5.useState(styleSingleton)[0];
+  var Style2 = React5.useState(function() {
+    return styleSingleton();
+  })[0];
   var lastProps = React5.useRef(props);
   React5.useEffect(function() {
     lastProps.current = props;
@@ -662,14 +663,14 @@ function RemoveScrollSideCar(props) {
     React5.Fragment,
     null,
     inert ? React5.createElement(Style2, { styles: generateStyle(id) }) : null,
-    removeScrollBar ? React5.createElement(RemoveScrollBar, { gapMode: props.gapMode }) : null
+    removeScrollBar ? React5.createElement(RemoveScrollBar, { gapMode: "margin" }) : null
   );
 }
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/sidecar.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/sidecar.js
 var sidecar_default = exportSidecar(effectCar, RemoveScrollSideCar);
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
 var ReactRemoveScroll = React6.forwardRef(function(props, ref) {
   return React6.createElement(RemoveScroll, __assign4({}, props, { ref, sideCar: sidecar_default }));
 });
@@ -1059,7 +1060,7 @@ var UnstyledButton = polymorphicFactory(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,

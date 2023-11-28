@@ -80,9 +80,8 @@ export function useForm<
 
   const clearErrors: ClearErrors = useCallback(() => _setErrors({}), []);
   const reset: Reset = useCallback(() => {
-    _setValues(initialValues);
+    _setValues(valuesSnapshot.current);
     clearErrors();
-    setValuesSnapshot(initialValues);
     setDirty({});
     resetTouched();
   }, []);

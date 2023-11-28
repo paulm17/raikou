@@ -10,6 +10,7 @@ import {
 import { Collapse } from "../../../Collapse/src";
 import { useAccordionContext } from "../Accordion.context";
 import { useAccordionItemContext } from "../AccordionItem.context";
+import classes from "../Accordion.module.css";
 
 export type AccordionPanelStylesNames = "panel" | "content";
 
@@ -53,3 +54,4 @@ export const AccordionPanel = factory<AccordionPanelFactory>((props, ref) => {
 });
 
 AccordionPanel.displayName = "@raikou/core/AccordionPanel";
+AccordionPanel.classes = classes;

@@ -14,5 +14,5 @@ export function getGradient(
   const fromColor = getThemeColor(merged.from, theme);
   const toColor = getThemeColor(merged.to, theme);
 
-  return `linear-gradient(${merged.deg}deg, ${fromColor} 0%, ${toColor} 100%)`;
+  return `linear-gradient(${merged.deg}, ${fromColor} 0%, ${toColor} 100%)`;
 }

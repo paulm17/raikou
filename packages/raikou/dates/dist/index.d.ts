@@ -13,13 +13,13 @@ interface ControlKeydownPayload {
 
 interface ControlsGroupSettings {
     /** Called when control is clicked with event and date */
-    __onControlClick?(event: React.MouseEvent<HTMLButtonElement>, date: Date): void;
+    __onControlClick?: (event: React.MouseEvent<HTMLButtonElement>, date: Date) => void;
     /** Called when mouse enters control with event and date, used for ranges */
-    __onControlMouseEnter?(event: React.MouseEvent<HTMLButtonElement>, date: Date): void;
+    __onControlMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>, date: Date) => void;
     /** Called when any keydown event is registered on control, used for arrows navigation */
-    __onControlKeyDown?(event: React.KeyboardEvent<HTMLButtonElement>, payload: ControlKeydownPayload): void;
+    __onControlKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>, payload: ControlKeydownPayload) => void;
     /** Assigns ref of every control based on its position in the table, used for arrows navigation */
-    __getControlRef?(rowIndex: number, cellIndex: number, node: HTMLButtonElement): void;
+    __getControlRef?: (rowIndex: number, cellIndex: number, node: HTMLButtonElement) => void;
     /** Minimum possible date */
     minDate?: Date;
     /** Maximum possible date */
@@ -33,7 +33,7 @@ type DatesRangeValue = [DateValue, DateValue];
 type DatePickerType = 'default' | 'multiple' | 'range';
 type DatePickerValue<Type extends DatePickerType = 'default'> = Type extends 'range' ? DatesRangeValue : Type extends 'multiple' ? Date[] : DateValue;
 
-interface PickerBaseProps<Type extends DatePickerType = 'default'> {
+interface PickerBaseProps<Type extends DatePickerType = "default"> {
     /** Picker type: range, multiple or default */
     type?: DatePickerType | Type;
     /** Value for controlled component */
@@ -41,11 +41,11 @@ interface PickerBaseProps<Type extends DatePickerType = 'default'> {
     /** Default value for uncontrolled component */
     defaultValue?: DatePickerValue<Type>;
     /** Called when value changes */
-    onChange?(value: DatePickerValue<Type>): void;
+    onChange?: (value: DatePickerValue<Type>) => void;
     /** Determines whether user can deselect the date by clicking on selected item, applicable only when type="default" */
-    allowDeselect?: Type extends 'default' ? boolean : never;
+    allowDeselect?: Type extends "default" ? boolean : never;
     /** Determines whether single year can be selected as range, applicable only when type="range" */
-    allowSingleDateInRange?: Type extends 'range' ? boolean : never;
+    allowSingleDateInRange?: Type extends "range" ? boolean : never;
 }
 
 interface DatesProviderValue {
@@ -113,7 +113,7 @@ interface __InputWrapperProps {
     /** Props passed down to the `InputError` component */
     errorProps?: Record<string, any>;
     /** Input container component, defaults to `React.Fragment` */
-    inputContainer?(children: React$1.ReactNode): React$1.ReactNode;
+    inputContainer?: (children: React$1.ReactNode) => React$1.ReactNode;
     /** Controls order of the elements, `['label', 'description', 'input', 'error']` by default */
     inputWrapperOrder?: ("label" | "input" | "description" | "error")[];
 }
@@ -216,7 +216,7 @@ interface DayProps extends BoxProps, StylesApiProps<DayFactory>, ElementProps<"b
     /** Determines whether the day is last in range selection, `false` by default */
     lastInRange?: boolean;
     /** Controls day value rendering */
-    renderDay?(date: Date): React$1.ReactNode;
+    renderDay?: (date: Date) => React$1.ReactNode;
 }
 type DayFactory = Factory<{
     props: DayProps;
@@ -276,13 +276,13 @@ interface MonthSettings {
     /** Prevents focus shift when buttons are clicked */
     __preventFocus?: boolean;
     /** Called when day is clicked with click event and date */
-    __onDayClick?(event: React$1.MouseEvent<HTMLButtonElement>, date: Date): void;
+    __onDayClick?: (event: React$1.MouseEvent<HTMLButtonElement>, date: Date) => void;
     /** Called when mouse enters day */
-    __onDayMouseEnter?(event: React$1.MouseEvent<HTMLButtonElement>, date: Date): void;
+    __onDayMouseEnter?: (event: React$1.MouseEvent<HTMLButtonElement>, date: Date) => void;
     /** Called when any keydown event is registered on day, used for arrows navigation */
-    __onDayKeyDown?(event: React$1.KeyboardEvent<HTMLButtonElement>, payload: ControlKeydownPayload): void;
+    __onDayKeyDown?: (event: React$1.KeyboardEvent<HTMLButtonElement>, payload: ControlKeydownPayload) => void;
     /** Assigns ref of every day based on its position in the table, used for arrows navigation */
-    __getDayRef?(rowIndex: number, cellIndex: number, node: HTMLButtonElement): void;
+    __getDayRef?: (rowIndex: number, cellIndex: number, node: HTMLButtonElement) => void;
     /** dayjs locale, defaults to value defined in DatesProvider */
     locale?: string;
     /** number 0-6, 0 – Sunday, 6 – Saturday, defaults to 1 – Monday */
@@ -292,21 +292,21 @@ interface MonthSettings {
     /** Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday, defaults to value defined in DatesProvider */
     weekendDays?: DayOfWeek[];
     /** Adds props to Day component based on date */
-    getDayProps?(date: Date): Omit<Partial<DayProps>, "classNames" | "styles" | "vars">;
+    getDayProps?: (date: Date) => Omit<Partial<DayProps>, "classNames" | "styles" | "vars">;
     /** Callback function to determine whether the day should be disabled */
-    excludeDate?(date: Date): boolean;
+    excludeDate?: (date: Date) => boolean;
     /** Minimum possible date */
     minDate?: Date;
     /** Maximum possible date */
     maxDate?: Date;
     /** Controls day value rendering */
-    renderDay?(date: Date): React$1.ReactNode;
+    renderDay?: (date: Date) => React$1.ReactNode;
     /** Determines whether outside dates should be hidden, defaults to false */
     hideOutsideDates?: boolean;
     /** Determines whether weekdays row should be hidden, defaults to false */
     hideWeekdays?: boolean;
     /** Assigns aria-label to days based on date */
-    getDayAriaLabel?(date: Date): string;
+    getDayAriaLabel?: (date: Date) => string;
     /** Controls size */
     size?: RaikouSize;
     /** Determines whether controls should be separated by spacing, true by default */
@@ -373,7 +373,7 @@ interface YearsListSettings extends ControlsGroupSettings {
     /** dayjs format for years list, `'YYYY'` by default  */
     yearsListFormat?: string;
     /** Adds props to year picker control based on date */
-    getYearControlProps?(date: Date): Partial<PickerControlProps>;
+    getYearControlProps?: (date: Date) => Partial<PickerControlProps>;
     /** Component size */
     size?: RaikouSize;
     /** Determines whether controls should be separated by spacing, true by default */
@@ -400,7 +400,7 @@ interface MonthsListSettings extends ControlsGroupSettings {
     /** dayjs format for months list  */
     monthsListFormat?: string;
     /** Adds props to month picker control based on date */
-    getMonthControlProps?(date: Date): Partial<PickerControlProps>;
+    getMonthControlProps?: (date: Date) => Partial<PickerControlProps>;
     /** Determines whether propagation for Escape key should be stopped */
     __stopPropagation?: boolean;
     /** Determines whether controls should be separated by spacing, true by default */
@@ -443,11 +443,11 @@ interface CalendarHeaderSettings {
     /** aria-label for previous button */
     previousLabel?: string;
     /** Called when next button is clicked */
-    onNext?(): void;
+    onNext?: () => void;
     /** Called when previous button is clicked */
-    onPrevious?(): void;
+    onPrevious?: () => void;
     /** Called when level button is clicked */
-    onLevelClick?(): void;
+    onLevelClick?: () => void;
     /** Determines whether next control should be disabled, defaults to true */
     nextDisabled?: boolean;
     /** Determines whether previous control should be disabled, defaults to true */
@@ -674,7 +674,7 @@ interface TransitionProps {
     /** Determines whether component should be mounted to the DOM */
     mounted: boolean;
     /** Render function with transition styles argument */
-    children(styles: React$1.CSSProperties): JSX.Element;
+    children: (styles: React$1.CSSProperties) => JSX.Element;
     /** Called when exit transition ends */
     onExited?: () => void;
     /** Called when exit transition starts */
@@ -703,11 +703,12 @@ interface PortalProps extends React$1.ComponentPropsWithoutRef<"div"> {
     target?: HTMLElement | string;
 }
 
-type PopoverWidth = 'target' | React.CSSProperties['width'];
+type PopoverWidth = "target" | React.CSSProperties["width"];
 interface PopoverMiddlewares {
     shift: boolean;
     flip: boolean;
     inline?: boolean;
+    size?: boolean;
 }
 
 type PopoverStylesNames = "dropdown" | "arrow";
@@ -720,13 +721,13 @@ interface __PopoverProps {
     /** Offset of the dropdown element, `8` by default */
     offset?: number | FloatingAxesOffsets;
     /** Called when dropdown position changes */
-    onPositionChange?(position: FloatingPosition): void;
+    onPositionChange?: (position: FloatingPosition) => void;
     /** `useEffect` dependencies to force update dropdown position, `[]` by default */
     positionDependencies?: any[];
     /** Called when dropdown closes */
-    onClose?(): void;
+    onClose?: () => void;
     /** Called when dropdown opens */
-    onOpen?(): void;
+    onOpen?: () => void;
     /** If set dropdown will not be unmounted from the DOM when it is hidden, `display: none` styles will be added instead, `false` by default */
     keepMounted?: boolean;
     /** Props passed down to the `Transition` component that used to animate dropdown presence, use to configure duration and animation type, `{ duration: 150, transition: 'fade' }` by default */
@@ -769,7 +770,7 @@ interface PopoverProps extends __PopoverProps, StylesApiProps<PopoverFactory> {
     /** Controlled dropdown opened state */
     opened?: boolean;
     /** Called with current state when dropdown opens or closes */
-    onChange?(opened: boolean): void;
+    onChange?: (opened: boolean) => void;
     /** Determines whether dropdown should be closed on outside clicks, `true` by default */
     closeOnClickOutside?: boolean;
     /** Events that trigger outside clicks */
@@ -795,7 +796,7 @@ interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
     /** Determines whether modal/drawer is opened */
     opened: boolean;
     /** Called when modal/drawer is closed */
-    onClose(): void;
+    onClose: () => void;
     /** Id used to connect modal/drawer with body and title */
     id?: string;
     /** Determines whether scroll should be locked when `opened={true}`, `true` by default */
@@ -971,7 +972,7 @@ interface PickerInputBaseProps extends BoxProps, DateInputSharedProps, Omit<Styl
     formattedValue: string | null | undefined;
     dropdownHandlers: ReturnType<typeof useDisclosure>[1];
     dropdownOpened: boolean;
-    onClear(): void;
+    onClear: () => void;
     shouldClear: boolean;
     value: HiddenDatesInputValue;
     type: DatePickerType;
@@ -1008,15 +1009,15 @@ interface CalendarSettings extends Omit<DecadeLevelSettings, OmittedSettings>, O
     /** Current level displayed to the user (decade, year, month), used for controlled component */
     level?: CalendarLevel;
     /** Called when level changes */
-    onLevelChange?(level: CalendarLevel): void;
+    onLevelChange?: (level: CalendarLevel) => void;
     /** Called when user clicks year on decade level */
-    onYearSelect?(date: Date): void;
+    onYearSelect?: (date: Date) => void;
     /** Called when user clicks month on year level */
-    onMonthSelect?(date: Date): void;
+    onMonthSelect?: (date: Date) => void;
     /** Called when mouse enters year control */
-    onYearMouseEnter?(event: React$1.MouseEvent<HTMLButtonElement>, date: Date): void;
+    onYearMouseEnter?: (event: React$1.MouseEvent<HTMLButtonElement>, date: Date) => void;
     /** Called when mouse enters month control */
-    onMonthMouseEnter?(event: React$1.MouseEvent<HTMLButtonElement>, date: Date): void;
+    onMonthMouseEnter?: (event: React$1.MouseEvent<HTMLButtonElement>, date: Date) => void;
 }
 interface CalendarBaseProps {
     __staticSelector?: string;
@@ -1033,7 +1034,7 @@ interface CalendarBaseProps {
     /** Date that is displayed, used for controlled component */
     date?: Date;
     /** Called when date changes */
-    onDateChange?(date: Date): void;
+    onDateChange?: (date: Date) => void;
     /** Number of columns to render next to each other */
     numberOfColumns?: number;
     /** Number of columns to scroll when user clicks next/prev buttons, defaults to numberOfColumns */
@@ -1041,17 +1042,17 @@ interface CalendarBaseProps {
     /** aria-label attributes for controls on different levels */
     ariaLabels?: CalendarAriaLabels;
     /** Called when next decade button is clicked */
-    onNextDecade?(date: Date): void;
+    onNextDecade?: (date: Date) => void;
     /** Called when previous decade button is clicked */
-    onPreviousDecade?(date: Date): void;
+    onPreviousDecade?: (date: Date) => void;
     /** Called when next year button is clicked */
-    onNextYear?(date: Date): void;
+    onNextYear?: (date: Date) => void;
     /** Called when previous year button is clicked */
-    onPreviousYear?(date: Date): void;
+    onPreviousYear?: (date: Date) => void;
     /** Called when next month button is clicked */
-    onNextMonth?(date: Date): void;
+    onNextMonth?: (date: Date) => void;
     /** Called when previous month button is clicked */
-    onPreviousMonth?(date: Date): void;
+    onPreviousMonth?: (date: Date) => void;
 }
 interface CalendarProps extends BoxProps, CalendarSettings, CalendarBaseProps, StylesApiProps<CalendarFactory>, ElementProps<"div"> {
     /** Max level that user can go up to (decade, year, month), defaults to decade */
@@ -1130,7 +1131,7 @@ interface YearPickerBaseProps<Type extends DatePickerType = "default"> extends P
 }
 interface YearPickerProps<Type extends DatePickerType = "default"> extends BoxProps, YearPickerBaseProps<Type>, StylesApiProps<YearPickerFactory>, ElementProps<"div", "onChange" | "value" | "defaultValue"> {
     /** Called when year is selected */
-    onYearSelect?(date: Date): void;
+    onYearSelect?: (date: Date) => void;
 }
 type YearPickerFactory = Factory<{
     props: YearPickerProps;
@@ -1154,11 +1155,11 @@ interface MonthPickerBaseProps<Type extends DatePickerType = "default"> extends 
     /** Current level displayed to the user (decade, year, month), used for controlled component */
     level?: MonthPickerLevel;
     /** Called when level changes */
-    onLevelChange?(level: MonthPickerLevel): void;
+    onLevelChange?: (level: MonthPickerLevel) => void;
 }
 interface MonthPickerProps<Type extends DatePickerType = "default"> extends BoxProps, MonthPickerBaseProps<Type>, StylesApiProps<MonthPickerFactory>, ElementProps<"div", "onChange" | "value" | "defaultValue"> {
     /** Called when month is selected */
-    onMonthSelect?(date: Date): void;
+    onMonthSelect?: (date: Date) => void;
 }
 type MonthPickerFactory = Factory<{
     props: MonthPickerProps;
@@ -1181,7 +1182,7 @@ interface DatePickerBaseProps<Type extends DatePickerType = "default"> extends P
     /** Current level displayed to the user (decade, year, month), used for controlled component */
     level?: CalendarLevel;
     /** Called when level changes */
-    onLevelChange?(level: CalendarLevel): void;
+    onLevelChange?: (level: CalendarLevel) => void;
 }
 interface DatePickerProps<Type extends DatePickerType = "default"> extends BoxProps, DatePickerBaseProps<Type>, StylesApiProps<DatePickerFactory>, ElementProps<"div", "onChange" | "value" | "defaultValue"> {
 }
@@ -1206,7 +1207,7 @@ interface DateInputProps extends BoxProps, Omit<__BaseInputProps, "size">, Calen
     /** Default value for uncontrolled component */
     defaultValue?: DateValue;
     /** Called when value changes */
-    onChange?(value: DateValue): void;
+    onChange?: (value: DateValue) => void;
     /** Props added to Popover component */
     popoverProps?: Partial<Omit<PopoverProps, "children">>;
     /** Determines whether input value can be cleared, adds clear button to right section, false by default */
@@ -1228,7 +1229,7 @@ interface DateInputProps extends BoxProps, Omit<__BaseInputProps, "size">, Calen
     /** Current level displayed to the user (decade, year, month), used for controlled component */
     level?: CalendarLevel;
     /** Called when level changes */
-    onLevelChange?(level: CalendarLevel): void;
+    onLevelChange?: (level: CalendarLevel) => void;
 }
 type DateInputFactory = Factory<{
     props: DateInputProps;
@@ -1343,7 +1344,7 @@ interface DateTimePickerProps extends BoxProps, Omit<DateInputSharedProps, "clas
     /** Default value for uncontrolled component */
     defaultValue?: DateValue;
     /** Called when value changes */
-    onChange?(value: DateValue): void;
+    onChange?: (value: DateValue) => void;
     /** TimeInput component props */
     timeInputProps?: TimeInputProps & {
         ref?: React$1.ComponentPropsWithRef<"input">["ref"];

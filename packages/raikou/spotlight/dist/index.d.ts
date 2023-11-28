@@ -142,7 +142,7 @@ interface __InputWrapperProps {
     /** Props passed down to the `InputError` component */
     errorProps?: Record<string, any>;
     /** Input container component, defaults to `React.Fragment` */
-    inputContainer?(children: React$2.ReactNode): React$2.ReactNode;
+    inputContainer?: (children: React$2.ReactNode) => React$2.ReactNode;
     /** Controls order of the elements, `['label', 'description', 'input', 'error']` by default */
     inputWrapperOrder?: ("label" | "input" | "description" | "error")[];
 }
@@ -3928,7 +3928,7 @@ interface TransitionProps {
     /** Determines whether component should be mounted to the DOM */
     mounted: boolean;
     /** Render function with transition styles argument */
-    children(styles: React$2.CSSProperties): JSX.Element;
+    children: (styles: React$2.CSSProperties) => JSX.Element;
     /** Called when exit transition ends */
     onExited?: () => void;
     /** Called when exit transition starts */
@@ -3946,7 +3946,7 @@ interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
     /** Determines whether modal/drawer is opened */
     opened: boolean;
     /** Called when modal/drawer is closed */
-    onClose(): void;
+    onClose: () => void;
     /** Id used to connect modal/drawer with body and title */
     id?: string;
     /** Determines whether scroll should be locked when `opened={true}`, `true` by default */
@@ -4101,7 +4101,7 @@ interface SpotlightRootProps extends StylesApiProps<SpotlightRootFactory>, Omit<
     /** Controlled Spotlight search query */
     query?: string;
     /** Called when query changes */
-    onQueryChange?(query: string): void;
+    onQueryChange?: (query: string) => void;
     /** Determines whether the search query should be cleared when the spotlight is closed, `true` by default */
     clearQueryOnClose?: boolean;
     /** Keyboard shortcut or a list of shortcuts to trigger spotlight, `'mod + K'` by default */
@@ -4113,9 +4113,9 @@ interface SpotlightRootProps extends StylesApiProps<SpotlightRootFactory>, Omit<
     /** If set, spotlight will not be rendered */
     disabled?: boolean;
     /** Called when spotlight opens */
-    onSpotlightOpen?(): void;
+    onSpotlightOpen?: () => void;
     /** Called when spotlight closes */
-    onSpotlightClose?(): void;
+    onSpotlightClose?: () => void;
     /** Forces opened state, useful for tests */
     forceOpened?: boolean;
     /** Determines whether spotlight should be closed when one of the actions is triggered, `true` by default */

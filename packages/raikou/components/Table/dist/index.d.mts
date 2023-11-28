@@ -63,10 +63,24 @@ declare const TableCaption: _raikou_core.RaikouComponent<{
     compound: true;
 }>;
 
+interface TableDataRendererProps {
+    data: TableData;
+}
+declare function TableDataRenderer({ data }: TableDataRendererProps): React.JSX.Element;
+declare namespace TableDataRenderer {
+    var displayName: string;
+}
+
 type TableStylesNames = "table" | "thead" | "tbody" | "tfoot" | "tr" | "th" | "td" | "caption";
 type TableCssVariables = {
     table: "--table-layout" | "--table-border-color" | "--table-caption-side" | "--table-horizontal-spacing" | "--table-vertical-spacing" | "--table-striped-color" | "--table-highlight-on-hover-color";
 };
+interface TableData {
+    head?: React.ReactNode[];
+    body?: React.ReactNode[][];
+    foot?: React.ReactNode[];
+    caption?: string;
+}
 interface TableProps extends BoxProps, StylesApiProps<TableFactory>, ElementProps<"table"> {
     /** Value of `table-layout` style, `auto` by default */
     layout?: React.CSSProperties["tableLayout"];
@@ -92,6 +106,8 @@ interface TableProps extends BoxProps, StylesApiProps<TableFactory>, ElementProp
     highlightOnHover?: boolean;
     /** Background color of table rows when hovered, key of `theme.colors` or any valid CSS color */
     highlightOnHoverColor?: RaikouColor;
+    /** Data that should be used to generate table, ignored if `children` prop is set */
+    data?: TableData;
 }
 type TableFactory = Factory<{
     props: TableProps;
@@ -106,6 +122,7 @@ type TableFactory = Factory<{
         Th: typeof TableTh;
         Tr: typeof TableTr;
         Caption: typeof TableCaption;
+        DataRenderer: typeof TableDataRenderer;
     };
 }>;
 declare const Table: _raikou_core.RaikouComponent<{
@@ -121,7 +138,8 @@ declare const Table: _raikou_core.RaikouComponent<{
         Th: typeof TableTh;
         Tr: typeof TableTr;
         Caption: typeof TableCaption;
+        DataRenderer: typeof TableDataRenderer;
     };
 }>;
 
-export { Table, TableCaption, TableCaptionProps, TableCssVariables, TableFactory, TableProps, TableStylesNames, TableTbody, TableTbodyProps, TableTd, TableTdProps, TableTfoot, TableTfootProps, TableTh, TableThProps, TableThead, TableTheadProps, TableTr, TableTrProps };
+export { Table, TableCaption, TableCaptionProps, TableCssVariables, TableData, TableFactory, TableProps, TableStylesNames, TableTbody, TableTbodyProps, TableTd, TableTdProps, TableTfoot, TableTfootProps, TableTh, TableThProps, TableThead, TableTheadProps, TableTr, TableTrProps };

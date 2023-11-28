@@ -17,6 +17,7 @@ import { InputBaseProps } from "../../InputBase/src";
 import { Input, InputVariant, __InputStylesNames } from "../../Input/src";
 import { ActionIcon } from "../../ActionIcon/src";
 import { PasswordToggleIcon } from "./PasswordToggleIcon";
+import classes from "./PasswordInput.module.css";
 
 export type PasswordInputStylesNames =
   | "root"
@@ -123,11 +124,7 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
 
   const getStyles = useStyles<PasswordInputFactory>({
     name: "PasswordInput",
-    classes: {
-      root: "passwordInput-root",
-      innerInput: "passwordInput-innerInput",
-      visibilityToggle: "passwordInput-visibilityToggle",
-    },
+    classes,
     props,
     className,
     style,
@@ -151,6 +148,7 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
   const visibilityToggleButton = (
     <ActionIcon<"button">
       {...getStyles("visibilityToggle")}
+      disabled={disabled}
       radius={radius}
       aria-hidden={!visibilityToggleButtonProps}
       tabIndex={-1}
@@ -239,4 +237,5 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
   );
 });
 
+PasswordInput.classes = classes;
 PasswordInput.displayName = "@raikou/core/PasswordInput";

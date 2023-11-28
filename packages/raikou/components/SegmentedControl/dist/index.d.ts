@@ -19,7 +19,7 @@ interface SegmentedControlProps extends BoxProps, StylesApiProps<SegmentedContro
     /** Uncontrolled component default value */
     defaultValue?: string;
     /** Called when value changes */
-    onChange?(value: string): void;
+    onChange?: (value: string) => void;
     /** Determines whether the component is disabled */
     disabled?: boolean;
     /** Name of the radio group, by default random name is generated */

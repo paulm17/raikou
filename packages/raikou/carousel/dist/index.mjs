@@ -79,7 +79,7 @@ var UnstyledButton = polymorphicFactory(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,
@@ -478,8 +478,15 @@ var Carousel = factory2((_props, ref) => {
     withIndicators && /* @__PURE__ */ React7.createElement("div", __spreadValues({}, getStyles("indicators")), indicators),
     withControls && /* @__PURE__ */ React7.createElement("div", __spreadValues({}, getStyles("controls")), /* @__PURE__ */ React7.createElement(
       UnstyledButton,
-      __spreadProps(__spreadValues(__spreadValues({}, previousControlProps), getStyles("control")), {
-        onClick: handlePrevious,
+      __spreadProps(__spreadValues(__spreadValues({}, previousControlProps), getStyles("control", {
+        className: previousControlProps == null ? void 0 : previousControlProps.className,
+        style: previousControlProps == null ? void 0 : previousControlProps.style
+      })), {
+        onClick: (event) => {
+          var _a2;
+          handlePrevious();
+          (_a2 = previousControlProps == null ? void 0 : previousControlProps.onClick) == null ? void 0 : _a2.call(previousControlProps, event);
+        },
         "data-inactive": !canScrollPrev || void 0,
         tabIndex: canScrollPrev ? 0 : -1
       }),
@@ -497,9 +504,15 @@ var Carousel = factory2((_props, ref) => {
       )
     ), /* @__PURE__ */ React7.createElement(
       UnstyledButton,
-      __spreadProps(__spreadValues(__spreadValues({
-        onClick: handleNext
-      }, getStyles("control")), nextControlProps), {
+      __spreadProps(__spreadValues(__spreadValues({}, getStyles("control", {
+        className: nextControlProps == null ? void 0 : nextControlProps.className,
+        style: nextControlProps == null ? void 0 : nextControlProps.style
+      })), nextControlProps), {
+        onClick: (event) => {
+          var _a2;
+          handleNext();
+          (_a2 = nextControlProps == null ? void 0 : nextControlProps.onClick) == null ? void 0 : _a2.call(nextControlProps, event);
+        },
         "data-inactive": !canScrollNext || void 0,
         tabIndex: canScrollNext ? 0 : -1
       }),

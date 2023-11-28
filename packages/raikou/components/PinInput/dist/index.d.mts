@@ -24,9 +24,9 @@ interface PinInputProps extends BoxProps, StylesApiProps<PinInputFactory>, Eleme
     /** Uncontrolled component default value */
     defaultValue?: string;
     /** Called when value changes */
-    onChange?(value: string): void;
+    onChange?: (value: string) => void;
     /** Called when all inputs have value */
-    onComplete?(value: string): void;
+    onComplete?: (value: string) => void;
     /** Inputs placeholder, `'○'` by default */
     placeholder?: string;
     /** Determines whether focus should be moved automatically to the next input once filled, `true` by default */

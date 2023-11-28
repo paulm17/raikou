@@ -25,7 +25,7 @@ interface TransitionProps {
     /** Determines whether component should be mounted to the DOM */
     mounted: boolean;
     /** Render function with transition styles argument */
-    children(styles: React.CSSProperties): JSX.Element;
+    children: (styles: React.CSSProperties) => JSX.Element;
     /** Called when exit transition ends */
     onExited?: () => void;
     /** Called when exit transition starts */
@@ -44,4 +44,4 @@ declare namespace Transition {
 type MinimalTransitionOverride = SetRequired<TransitionOverride, 'duration' | 'transition'>;
 declare function getTransitionProps(transitionProps: TransitionOverride | undefined, componentTransition: TransitionOverride | undefined): MinimalTransitionOverride;
 
-export { RaikouTransition, Transition, TransitionOverride, TransitionProps, getTransitionProps, transitions as raikou_TRANSITIONS };
+export { transitions as RAIKOU_TRANSITIONS, RaikouTransition, Transition, TransitionOverride, TransitionProps, getTransitionProps };

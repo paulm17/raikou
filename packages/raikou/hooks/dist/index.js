@@ -490,7 +490,15 @@ function scopeTab(node, event) {
   }
   const finalTabbable = tabbable2[event.shiftKey ? 0 : tabbable2.length - 1];
   const root = node.getRootNode();
-  const leavingFinalTabbable = finalTabbable === root.activeElement || node === root.activeElement;
+  let leavingFinalTabbable = finalTabbable === root.activeElement || node === root.activeElement;
+  const activeElement = root.activeElement;
+  const activeElementIsRadio = activeElement.tagName === "INPUT" && activeElement.getAttribute("type") === "radio";
+  if (activeElementIsRadio) {
+    const activeRadioGroup = tabbable2.filter(
+      (element) => element.getAttribute("type") === "radio" && element.getAttribute("name") === activeElement.getAttribute("name")
+    );
+    leavingFinalTabbable = activeRadioGroup.includes(finalTabbable);
+  }
   if (!leavingFinalTabbable) {
     return;
   }
@@ -807,7 +815,7 @@ function serializeJSON(value, hookName) {
 }
 function deserializeJSON(value) {
   try {
-    return JSON.parse(value);
+    return value && JSON.parse(value);
   } catch {
     return value;
   }
@@ -848,7 +856,7 @@ function createStorage(type, hookName) {
   const { getItem, setItem, removeItem } = createStorageHandler(type);
   return function useStorage({
     key,
-    defaultValue = void 0,
+    defaultValue,
     getInitialValueInEffect = true,
     deserialize = deserializeJSON,
     serialize = (value) => serializeJSON(value, hookName)
@@ -1067,10 +1075,15 @@ function useMove(onChange, handlers, dir = "ltr") {
       if (event.cancelable) {
         event.preventDefault();
       }
-      onScrub({ x: event.changedTouches[0].clientX, y: event.changedTouches[0].clientY });
+      onScrub({
+        x: event.changedTouches[0].clientX,
+        y: event.changedTouches[0].clientY
+      });
     };
     (_a = ref.current) == null ? void 0 : _a.addEventListener("mousedown", onMouseDown);
-    (_b = ref.current) == null ? void 0 : _b.addEventListener("touchstart", onTouchStart, { passive: false });
+    (_b = ref.current) == null ? void 0 : _b.addEventListener("touchstart", onTouchStart, {
+      passive: false
+    });
     return () => {
       if (ref.current) {
         ref.current.removeEventListener("mousedown", onMouseDown);
@@ -1557,8 +1570,12 @@ function useIntersection(options) {
 
 // src/use-hash/use-hash.ts
 var import_react36 = require("react");
-function useHash() {
-  const [hash, setHashValue] = (0, import_react36.useState)("");
+function useHash({
+  getInitialValueInEffect = false
+} = {}) {
+  const [hash, setHashValue] = (0, import_react36.useState)(
+    getInitialValueInEffect ? window.location.hash || "" : ""
+  );
   const setHash = (value) => {
     const valueWithHash = value.startsWith("#") ? value : `#${value}`;
     window.location.hash = valueWithHash;
@@ -1571,7 +1588,9 @@ function useHash() {
     }
   });
   (0, import_react36.useEffect)(() => {
-    setHashValue(window.location.hash);
+    if (getInitialValueInEffect) {
+      setHashValue(window.location.hash);
+    }
   }, []);
   return [hash, setHash];
 }
@@ -2037,7 +2056,7 @@ function useTimeout(callback, delay, options = { autoInvoke: false }) {
         }, delay);
       }
     },
-    [callback, delay]
+    [delay]
   );
   const clear = (0, import_react49.useCallback)(() => {
     if (timeoutRef.current) {
@@ -2118,7 +2137,12 @@ var import_react53 = require("react");
 var isFixed = (current, fixedAt) => current <= fixedAt;
 var isPinned = (current, previous) => current <= previous;
 var isReleased = (current, previous, fixedAt) => !isPinned(current, previous) && !isFixed(current, fixedAt);
-function useHeadroom({ fixedAt = 0, onPin, onFix, onRelease } = {}) {
+function useHeadroom({
+  fixedAt = 0,
+  onPin,
+  onFix,
+  onRelease
+} = {}) {
   const scrollRef = (0, import_react53.useRef)(0);
   const [{ y: scrollPosition }] = useWindowScroll();
   useIsomorphicEffect(() => {

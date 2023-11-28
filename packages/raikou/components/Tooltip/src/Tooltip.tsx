@@ -35,6 +35,7 @@ import {
 import { TooltipFloating } from "./TooltipFloating/TooltipFloating";
 import { TooltipGroup } from "./TooltipGroup/TooltipGroup";
 import { useTooltip } from "./use-tooltip";
+import classes from "./Tooltip.module.css";
 
 export interface TooltipProps extends TooltipBaseProps {
   /** Called when tooltip position changes */
@@ -183,10 +184,7 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
   const getStyles = useStyles<TooltipFactory>({
     name: "Tooltip",
     props,
-    classes: {
-      tooltip: "tooltip-root",
-      arrow: "tooltip-arrow",
-    },
+    classes,
     className,
     style,
     classNames,
@@ -272,6 +270,7 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
   );
 });
 
+Tooltip.classes = classes;
 Tooltip.displayName = "@raikou/core/Tooltip";
 Tooltip.Floating = TooltipFloating;
 Tooltip.Group = TooltipGroup;

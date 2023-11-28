@@ -43,7 +43,7 @@ interface __InputWrapperProps {
     /** Props passed down to the `InputError` component */
     errorProps?: Record<string, any>;
     /** Input container component, defaults to `React.Fragment` */
-    inputContainer?(children: React$1.ReactNode): React$1.ReactNode;
+    inputContainer?: (children: React$1.ReactNode) => React$1.ReactNode;
     /** Controls order of the elements, `['label', 'description', 'input', 'error']` by default */
     inputWrapperOrder?: ("label" | "input" | "description" | "error")[];
 }
@@ -3611,7 +3611,7 @@ interface SwitchGroupProps extends Omit<InputWrapperProps, "onChange"> {
     /** Default value for uncontrolled component */
     defaultValue?: string[];
     /** Called when value changes */
-    onChange?(value: string[]): void;
+    onChange?: (value: string[]) => void;
     /** Props passed down to the `Input.Wrapper` */
     wrapperProps?: Record<string, any>;
     /** Controls size of the `Input.Wrapper`, `'sm'` by default */

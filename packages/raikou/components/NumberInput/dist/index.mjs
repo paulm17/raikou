@@ -32,6 +32,7 @@ var __objRest = (source, exclude) => {
 
 // src/NumberInput.tsx
 import React12 from "react";
+import cx from "clsx";
 import {
   NumericFormat
 } from "react-number-format";
@@ -80,7 +81,7 @@ var UnstyledButton = polymorphicFactory(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,
@@ -988,6 +989,7 @@ var varsResolver6 = createVarsResolver6((_, { size }) => ({
 var NumberInput = factory6((_props, ref) => {
   const props = useProps9("NumberInput", defaultProps9, _props);
   const _a = props, {
+    className,
     classNames,
     styles,
     unstyled,
@@ -1012,8 +1014,11 @@ var NumberInput = factory6((_props, ref) => {
     disabled,
     rightSectionPointerEvents,
     allowNegative,
-    readOnly
+    readOnly,
+    size,
+    rightSectionWidth
   } = _a, others = __objRest(_a, [
+    "className",
     "classNames",
     "styles",
     "unstyled",
@@ -1038,7 +1043,9 @@ var NumberInput = factory6((_props, ref) => {
     "disabled",
     "rightSectionPointerEvents",
     "allowNegative",
-    "readOnly"
+    "readOnly",
+    "size",
+    "rightSectionWidth"
   ]);
   const getStyles = useStyles8({
     name: "NumberInput",
@@ -1109,6 +1116,7 @@ var NumberInput = factory6((_props, ref) => {
       "aria-hidden": true,
       disabled: disabled || typeof _value === "number" && max !== void 0 && _value >= max,
       mod: { direction: "up" },
+      onMouseDown: (event) => event.preventDefault(),
       onPointerDown: increment
     }),
     /* @__PURE__ */ React12.createElement(NumberInputChevron, { direction: "up" })
@@ -1119,6 +1127,7 @@ var NumberInput = factory6((_props, ref) => {
       "aria-hidden": true,
       disabled: disabled || typeof _value === "number" && min !== void 0 && _value <= min,
       mod: { direction: "down" },
+      onMouseDown: (event) => event.preventDefault(),
       onPointerDown: decrement
     }),
     /* @__PURE__ */ React12.createElement(NumberInputChevron, { direction: "down" })
@@ -1127,7 +1136,9 @@ var NumberInput = factory6((_props, ref) => {
     InputBase,
     __spreadProps(__spreadValues({
       component: NumericFormat,
-      allowNegative
+      allowNegative,
+      className: cx("numberInput-root", className),
+      size
     }, others), {
       readOnly,
       disabled,
@@ -1142,6 +1153,7 @@ var NumberInput = factory6((_props, ref) => {
       decimalScale: allowDecimal ? decimalScale : 0,
       onKeyDown: handleKeyDown,
       rightSectionPointerEvents: (rightSectionPointerEvents != null ? rightSectionPointerEvents : disabled) ? "none" : void 0,
+      rightSectionWidth: rightSectionWidth != null ? rightSectionWidth : `var(--ni-right-section-width-${size || "sm"})`,
       onBlur: (event) => {
         onBlur == null ? void 0 : onBlur(event);
         if (clampBehavior === "blur" && typeof _value === "number") {

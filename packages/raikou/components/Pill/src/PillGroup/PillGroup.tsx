@@ -14,6 +14,7 @@ import {
 } from "@raikou/core";
 import { PillGroupProvider } from "../PillGroup.context";
 import { usePillsInputContext } from "../../../PillsInput/src/PillsInput.context";
+import classes from "../Pill.module.css";
 
 export type PillGroupStylesNames = "group";
 export type PillGroupCssVariables = {
@@ -70,9 +71,7 @@ export const PillGroup = factory<PillGroupFactory>((_props, ref) => {
 
   const getStyles = useStyles<PillGroupFactory>({
     name: "PillGroup",
-    classes: {
-      group: "pill-group",
-    },
+    classes,
     props,
     className,
     style,
@@ -92,4 +91,5 @@ export const PillGroup = factory<PillGroupFactory>((_props, ref) => {
   );
 });
 
+PillGroup.classes = classes;
 PillGroup.displayName = "@raikou/core/PillGroup";

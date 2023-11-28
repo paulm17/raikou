@@ -3807,6 +3807,9 @@ function Curve(_a) {
 Curve.displayName = "@raikou/core/Curve";
 
 // src/RingProgress.tsx
+function getClampedThickness(thickness, size2) {
+  return Math.min(thickness, size2 / 4);
+}
 var defaultProps5 = {
   size: 120,
   thickness: 12
@@ -3865,9 +3868,10 @@ var RingProgress = (0, import_core12.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver3
   });
+  const clampedThickness = getClampedThickness(thickness, size2);
   const curves = getCurves({
     size: size2,
-    thickness,
+    thickness: clampedThickness,
     sections,
     renderRoundedLineCaps: roundCaps,
     rootColor
@@ -3876,7 +3880,7 @@ var RingProgress = (0, import_core12.factory)((_props, ref) => {
     __spreadProps(__spreadValues({}, data), {
       key: index3,
       size: size2,
-      thickness,
+      thickness: clampedThickness,
       sum,
       offset: offset2,
       color: data == null ? void 0 : data.color,

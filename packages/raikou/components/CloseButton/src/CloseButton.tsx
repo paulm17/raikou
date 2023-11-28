@@ -15,6 +15,7 @@ import {
 } from "@raikou/core";
 import { UnstyledButton } from "../../UnstyledButton/src";
 import { CloseIcon } from "./CloseIcon";
+import classes from "./CloseButton.module.css";
 
 export type CloseButtonVariant = "subtle" | "transparent";
 export type CloseButtonStylesNames = "root";
@@ -94,9 +95,7 @@ export const CloseButton = polymorphicFactory<CloseButtonFactory>(
       props,
       className,
       style,
-      classes: {
-        root: "closeButton-root",
-      },
+      classes,
       classNames,
       styles,
       unstyled,
@@ -122,3 +121,4 @@ export const CloseButton = polymorphicFactory<CloseButtonFactory>(
 );
 
 CloseButton.displayName = "@raikou/core/CloseButton";
+CloseButton.classes = classes;

@@ -1,10 +1,10 @@
 # build client
 pnpm --filter @raikou/accordion run build
-pnpm --filter @raikou/affix run build
 pnpm --filter @raikou/alert run build
 pnpm --filter @raikou/autocomplete run build
 pnpm --filter @raikou/avatar run build
 pnpm --filter @raikou/checkbox run build
+pnpm --filter @raikou/color-input run build
 pnpm --filter @raikou/color-picker run build
 pnpm --filter @raikou/collapse run build
 pnpm --filter @raikou/combobox run build
@@ -12,13 +12,15 @@ pnpm --filter @raikou/drawer run build
 pnpm --filter @raikou/inlineInput run build
 pnpm --filter @raikou/input run build
 pnpm --filter @raikou/input-base run build
+pnpm --filter @raikou/number-input run build
+pnpm --filter @raikou/number-formatter run build
 pnpm --filter @raikou/modal run build
 pnpm --filter @raikou/modal-base run build
 pnpm --filter @raikou/multi-select run build
 pnpm --filter @raikou/native-select run build
 pnpm --filter @raikou/pagination run build
 pnpm --filter @raikou/pill run build
-pnpm --filter @raikou/pillsInput run build
+pnpm --filter @raikou/pills-input run build
 pnpm --filter @raikou/popover run build
 pnpm --filter @raikou/portal run build
 pnpm --filter @raikou/scroll-area run build
@@ -29,4 +31,3 @@ pnpm --filter @raikou/table run build
 pnpm --filter @raikou/tags-input run build
 pnpm --filter @raikou/text-input run build
 pnpm --filter @raikou/tooltip run build
-pnpm --filter @raikou/client run build

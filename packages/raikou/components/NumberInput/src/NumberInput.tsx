@@ -1,4 +1,5 @@
 import React from "react";
+import cx from "clsx";
 import {
   NumericFormat,
   OnValueChange,
@@ -25,6 +26,7 @@ import {
   InputVariant,
 } from "../../Input/src";
 import { NumberInputChevron } from "./NumberInputChevron";
+import classes from "./NumberInput.module.css";
 
 export interface NumberInputHandlers {
   increment: () => void;
@@ -194,6 +196,7 @@ const varsResolver = createVarsResolver<NumberInputFactory>((_, { size }) => ({
 export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
   const props = useProps("NumberInput", defaultProps, _props);
   const {
+    className,
     classNames,
     styles,
     unstyled,
@@ -219,15 +222,14 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
     rightSectionPointerEvents,
     allowNegative,
     readOnly,
+    size,
+    rightSectionWidth,
     ...others
   } = props;
 
   const getStyles = useStyles<NumberInputFactory>({
     name: "NumberInput",
-    classes: {
-      controls: "numberInput-controls",
-      control: "numberInput-control",
-    },
+    classes,
     props,
     classNames,
     styles,
@@ -335,6 +337,8 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
     <InputBase
       component={NumericFormat}
       allowNegative={allowNegative}
+      className={cx(classes.root, className)}
+      size={size}
       {...others}
       readOnly={readOnly}
       disabled={disabled}
@@ -352,6 +356,9 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
       onKeyDown={handleKeyDown}
       rightSectionPointerEvents={
         rightSectionPointerEvents ?? disabled ? "none" : undefined
+      }
+      rightSectionWidth={
+        rightSectionWidth ?? `var(--ni-right-section-width-${size || "sm"})`
       }
       onBlur={(event) => {
         onBlur?.(event);

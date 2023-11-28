@@ -12,6 +12,7 @@ import {
   InputBase,
   InputBaseProps,
 } from "../../../../components/InputBase/src";
+import classes from "./TimeInput.module.css";
 
 export interface TimeInputProps
   extends InputBaseProps,
@@ -43,7 +44,7 @@ export const TimeInput = factory<TimeInputFactory>((_props, ref) => {
     <InputBase
       classNames={{
         ...resolvedClassNames,
-        input: cx("dates-timeInput-input", resolvedClassNames?.input),
+        input: cx(classes.input, resolvedClassNames?.input),
       }}
       styles={resolvedStyles}
       unstyled={unstyled}
@@ -56,4 +57,5 @@ export const TimeInput = factory<TimeInputFactory>((_props, ref) => {
   );
 });
 
+TimeInput.classes = InputBase.classes;
 TimeInput.displayName = "@raikou/dates/TimeInput";

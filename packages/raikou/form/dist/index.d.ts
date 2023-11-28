@@ -108,9 +108,9 @@ interface FormProviderProps<Form> {
 }
 declare function createFormContext<Values, TransformValues extends _TransformValues<Values> = (values: Values) => Values>(): [React$1.FC<FormProviderProps<UseFormReturnType<Values, TransformValues>>>, () => UseFormReturnType<Values, TransformValues>, UseForm<Values, TransformValues>];
 
-interface FormProps<Form extends UseFormReturnType<any>> extends React$1.ComponentPropsWithRef<'form'> {
+interface FormProps<Form extends UseFormReturnType<any>> extends React$1.ComponentPropsWithRef<"form"> {
     form: Form;
-    onSubmit?(values: TransformedValues<Form>): void;
+    onSubmit?: (values: TransformedValues<Form>) => void;
 }
 type FormComponent = <Form extends UseFormReturnType<any>>(props: FormProps<Form>) => JSX.Element | React$1.ReactNode;
 declare const Form: FormComponent;
@@ -152,7 +152,7 @@ interface ZodParseError {
     };
 }
 interface ZodSchema<T extends Record<string, any>> {
-    safeParse(values: T): ZodParseSuccess | ZodParseError;
+    safeParse: (values: T) => ZodParseSuccess | ZodParseError;
 }
 declare function zodResolver<T extends Record<string, any>>(schema: ZodSchema<T>): (values: T) => FormErrors;
 

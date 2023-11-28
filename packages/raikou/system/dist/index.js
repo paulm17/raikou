@@ -139,7 +139,7 @@ function scaleRem(remValue) {
   return `calc(${remValue} * var(--raikou-scale))`;
 }
 function createConverter(units, { shouldScale = false } = {}) {
-  return (value) => {
+  function converter(value) {
     if (value === 0 || value === "0") {
       return "0";
     }
@@ -148,8 +148,11 @@ function createConverter(units, { shouldScale = false } = {}) {
       return shouldScale ? scaleRem(val) : val;
     }
     if (typeof value === "string") {
-      if (value.includes("calc(") || value.includes("var(")) {
+      if (value.startsWith("calc(") || value.startsWith("var(")) {
         return value;
+      }
+      if (value.includes(" ")) {
+        return value.split(" ").map((val) => converter(val)).join(" ");
       }
       if (value.includes(units)) {
         return shouldScale ? scaleRem(value) : value;
@@ -161,7 +164,8 @@ function createConverter(units, { shouldScale = false } = {}) {
       }
     }
     return value;
-  };
+  }
+  return converter;
 }
 var rem = createConverter("rem", { shouldScale: true });
 var em = createConverter("em");
@@ -222,18 +226,6 @@ function parseThemeColor({
 function getThemeColor(color, theme) {
   const parsed = parseThemeColor({ color: color || theme.primaryColor, theme });
   return parsed.variable ? `var(${parsed.variable})` : color;
-}
-
-// src/core/RaikouProvider/color-functions/get-gradient/get-gradient.ts
-function getGradient(gradient, theme) {
-  const merged = {
-    from: (gradient == null ? void 0 : gradient.from) || theme.defaultGradient.from,
-    to: (gradient == null ? void 0 : gradient.to) || theme.defaultGradient.to,
-    deg: (gradient == null ? void 0 : gradient.deg) || theme.defaultGradient.deg || 0
-  };
-  const fromColor = getThemeColor(merged.from, theme);
-  const toColor = getThemeColor(merged.to, theme);
-  return `linear-gradient(${merged.deg}deg, ${fromColor} 0%, ${toColor} 100%)`;
 }
 
 // src/core/RaikouProvider/color-functions/to-rgba/to-rgba.ts
@@ -368,7 +360,7 @@ var defaultVariantColorsResolver = ({
   variant,
   gradient
 }) => {
-  const parsed = parseThemeColor({ color, theme });
+  const parsed = parseThemeColor({ color: color || theme.primaryColor, theme });
   if (variant === "filled") {
     if (parsed.isThemeColor) {
       if (parsed.shade === void 0) {
@@ -525,9 +517,10 @@ var defaultVariantColorsResolver = ({
     };
   }
   if (variant === "gradient") {
+    const gradient2 = `linear-gradient(var(--raikou-gradient-deg), var(--raikou-gradient-from) 0%, var(--raikou-gradient-to) 100%)`;
     return {
-      background: getGradient(gradient, theme),
-      hover: getGradient(gradient, theme),
+      background: gradient2,
+      hover: gradient2,
       color: "var(--raikou-color-white)",
       border: "none"
     };
@@ -542,6 +535,18 @@ var defaultVariantColorsResolver = ({
   }
   return {};
 };
+
+// src/core/RaikouProvider/color-functions/get-gradient/get-gradient.ts
+function getGradient(gradient, theme) {
+  const merged = {
+    from: (gradient == null ? void 0 : gradient.from) || theme.defaultGradient.from,
+    to: (gradient == null ? void 0 : gradient.to) || theme.defaultGradient.to,
+    deg: (gradient == null ? void 0 : gradient.deg) || theme.defaultGradient.deg || 0
+  };
+  const fromColor = getThemeColor(merged.from, theme);
+  const toColor = getThemeColor(merged.to, theme);
+  return `linear-gradient(${merged.deg}, ${fromColor} 0%, ${toColor} 100%)`;
+}
 
 // src/core/RaikouProvider/color-functions/lighten/lighten.ts
 function lighten(color, alpha) {

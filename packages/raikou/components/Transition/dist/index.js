@@ -47,9 +47,9 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
+  RAIKOU_TRANSITIONS: () => transitions,
   Transition: () => Transition,
-  getTransitionProps: () => getTransitionProps,
-  raikou_TRANSITIONS: () => transitions
+  getTransitionProps: () => getTransitionProps
 });
 module.exports = __toCommonJS(src_exports);
 
@@ -296,7 +296,7 @@ function getTransitionProps(transitionProps, componentTransition) {
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
+  RAIKOU_TRANSITIONS,
   Transition,
-  getTransitionProps,
-  raikou_TRANSITIONS
+  getTransitionProps
 });

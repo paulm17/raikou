@@ -33,6 +33,12 @@ export interface BoxProps extends RaikouStyleProps {
 
   /** Breakpoint below which the component is hidden with `display: none` */
   visibleFrom?: RaikouBreakpoint;
+
+  /** Determines whether component should be hidden in light color scheme with `display: none` */
+  lightHidden?: boolean;
+
+  /** Determines whether component should be hidden in dark color scheme with `display: none` */
+  darkHidden?: boolean;
 }
 
 export type ElementProps<
@@ -66,6 +72,8 @@ const _Box = forwardRef<
       size,
       hiddenFrom,
       visibleFrom,
+      lightHidden,
+      darkHidden,
       renderRoot,
       ...others
     },
@@ -91,12 +99,15 @@ const _Box = forwardRef<
       }),
       className: cx(className, {
         [responsiveClassName]: parsedStyleProps.hasResponsiveStyles,
+        "raikou-light-hidden": lightHidden,
+        "raikou-dark-hidden": darkHidden,
         [`raikou-hidden-from-${hiddenFrom}`]: hiddenFrom,
         [`raikou-visible-from-${visibleFrom}`]: visibleFrom,
       }),
       "data-variant": variant,
       "data-size": isNumberLike(size) ? undefined : size || undefined,
       ...getBoxMod(mod),
+      ...parsedStyleProps.inlineStyles,
       ...rest,
     };
 

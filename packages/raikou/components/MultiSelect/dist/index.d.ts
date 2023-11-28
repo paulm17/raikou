@@ -252,7 +252,7 @@ interface __InputWrapperProps {
     /** Props passed down to the `InputError` component */
     errorProps?: Record<string, any>;
     /** Input container component, defaults to `React.Fragment` */
-    inputContainer?(children: React$2.ReactNode): React$2.ReactNode;
+    inputContainer?: (children: React$2.ReactNode) => React$2.ReactNode;
     /** Controls order of the elements, `['label', 'description', 'input', 'error']` by default */
     inputWrapperOrder?: ("label" | "input" | "description" | "error")[];
 }
@@ -3954,7 +3954,7 @@ interface TransitionProps {
     /** Determines whether component should be mounted to the DOM */
     mounted: boolean;
     /** Render function with transition styles argument */
-    children(styles: React$2.CSSProperties): JSX.Element;
+    children: (styles: React$2.CSSProperties) => JSX.Element;
     /** Called when exit transition ends */
     onExited?: () => void;
     /** Called when exit transition starts */
@@ -3983,11 +3983,12 @@ interface PortalProps extends React$2.ComponentPropsWithoutRef<"div"> {
     target?: HTMLElement | string;
 }
 
-type PopoverWidth = 'target' | React.CSSProperties['width'];
+type PopoverWidth = "target" | React.CSSProperties["width"];
 interface PopoverMiddlewares {
     shift: boolean;
     flip: boolean;
     inline?: boolean;
+    size?: boolean;
 }
 
 type PopoverStylesNames = "dropdown" | "arrow";
@@ -3997,13 +3998,13 @@ interface __PopoverProps {
     /** Offset of the dropdown element, `8` by default */
     offset?: number | FloatingAxesOffsets;
     /** Called when dropdown position changes */
-    onPositionChange?(position: FloatingPosition): void;
+    onPositionChange?: (position: FloatingPosition) => void;
     /** `useEffect` dependencies to force update dropdown position, `[]` by default */
     positionDependencies?: any[];
     /** Called when dropdown closes */
-    onClose?(): void;
+    onClose?: () => void;
     /** Called when dropdown opens */
-    onOpen?(): void;
+    onOpen?: () => void;
     /** If set dropdown will not be unmounted from the DOM when it is hidden, `display: none` styles will be added instead, `false` by default */
     keepMounted?: boolean;
     /** Props passed down to the `Transition` component that used to animate dropdown presence, use to configure duration and animation type, `{ duration: 150, transition: 'fade' }` by default */
@@ -4078,54 +4079,54 @@ interface ComboboxStore {
     /** Current dropdown opened state */
     dropdownOpened: boolean;
     /** Opens dropdown */
-    openDropdown(eventSource?: ComboboxDropdownEventSource): void;
+    openDropdown: (eventSource?: ComboboxDropdownEventSource) => void;
     /** Closes dropdown */
-    closeDropdown(eventSource?: ComboboxDropdownEventSource): void;
+    closeDropdown: (eventSource?: ComboboxDropdownEventSource) => void;
     /** Toggles dropdown opened state */
-    toggleDropdown(eventSource?: ComboboxDropdownEventSource): void;
+    toggleDropdown: (eventSource?: ComboboxDropdownEventSource) => void;
     /** Selected option index */
     selectedOptionIndex: number;
     /** Selects `Combobox.Option` by index */
-    selectOption(index: number): void;
+    selectOption: (index: number) => void;
     /** Selects first `Combobox.Option` with `active` prop.
      *  If there are no such options, the function does nothing.
      */
-    selectActiveOption(): string | null;
+    selectActiveOption: () => string | null;
     /** Selects first `Combobox.Option` that is not disabled.
      *  If there are no such options, the function does nothing.
      * */
-    selectFirstOption(): string | null;
+    selectFirstOption: () => string | null;
     /** Selects next `Combobox.Option` that is not disabled.
      *  If the current option is the last one, the function selects first option, if `loop` is true.
      */
-    selectNextOption(): string | null;
+    selectNextOption: () => string | null;
     /** Selects previous `Combobox.Option` that is not disabled.
      *  If the current option is the first one, the function selects last option, if `loop` is true.
      * */
-    selectPreviousOption(): string | null;
+    selectPreviousOption: () => string | null;
     /** Resets selected option index to -1, removes `data-combobox-selected` from selected option */
-    resetSelectedOption(): void;
+    resetSelectedOption: () => void;
     /** Triggers `onClick` event of selected option.
      *  If there is no selected option, the function does nothing.
      */
-    clickSelectedOption(): void;
+    clickSelectedOption: () => void;
     /** Updates selected option index to currently selected or active option.
      *  The function is required to be used with searchable components to update selected option index
      *  when options list changes based on search query.
      */
-    updateSelectedOptionIndex(target?: "active" | "selected"): void;
+    updateSelectedOptionIndex: (target?: "active" | "selected") => void;
     /** List id, used for `aria-*` attributes */
     listId: string | null;
     /** Sets list id */
-    setListId(id: string): void;
+    setListId: (id: string) => void;
     /** Ref of `Combobox.Search` input */
     searchRef: React.MutableRefObject<HTMLInputElement | null>;
     /** Moves focus to `Combobox.Search` input */
-    focusSearchInput(): void;
+    focusSearchInput: () => void;
     /** Ref of the target element */
     targetRef: React.MutableRefObject<HTMLElement | null>;
     /** Moves focus to the target element */
-    focusTarget(): void;
+    focusTarget: () => void;
 }
 
 type ComboboxOptionStylesNames = "option";
@@ -4164,7 +4165,7 @@ interface ComboboxProps extends __PopoverProps, StylesApiProps<ComboboxFactory> 
     /** Combobox store, can be used to control combobox state */
     store?: ComboboxStore;
     /** Called when item is selected with `Enter` key or by clicking it */
-    onOptionSubmit?(value: string, optionProps: ComboboxOptionProps): void;
+    onOptionSubmit?: (value: string, optionProps: ComboboxOptionProps) => void;
     /** Controls items `font-size` and `padding`, `'sm'` by default */
     size?: RaikouSize | (string & {});
     /** Controls `padding` of the dropdown, `4` by default */
@@ -4218,7 +4219,7 @@ interface ComboboxParsedItemGroup {
 }
 type ComboboxData = (string | ComboboxItem | ComboboxItemGroup)[];
 type ComboboxParsedItem = ComboboxItem | ComboboxParsedItemGroup;
-type ComboboxLikeStylesNames = Exclude<ComboboxStylesNames, 'header' | 'footer' | 'search'>;
+type ComboboxLikeStylesNames = Exclude<ComboboxStylesNames, "header" | "footer" | "search">;
 interface ComboboxLikeProps {
     /** Data used to generate options */
     data?: ComboboxData;
@@ -4227,13 +4228,13 @@ interface ComboboxLikeProps {
     /** Uncontrolled dropdown initial opened state */
     defaultDropdownOpened?: boolean;
     /** Called when dropdown opens */
-    onDropdownOpen?(): void;
+    onDropdownOpen?: () => void;
     /** Called when dropdown closes */
-    onDropdownClose?(): void;
+    onDropdownClose?: () => void;
     /** Determines whether the first option should be selected when value changes, `false` by default */
     selectFirstOptionOnChange?: boolean;
     /** Called when option is submitted from dropdown with mouse click or `Enter` key */
-    onOptionSubmit?(value: string): void;
+    onOptionSubmit?: (value: string) => void;
     /** Props passed down to `Combobox` component */
     comboboxProps?: ComboboxProps;
     /** Function based on which items are filtered and sorted */
@@ -4253,13 +4254,13 @@ interface MultiSelectProps extends BoxProps, __BaseInputProps, ComboboxLikeProps
     /** Default value for uncontrolled component */
     defaultValue?: string[];
     /** Called whe value changes */
-    onChange?(value: string[]): void;
+    onChange?: (value: string[]) => void;
     /** Controlled search value */
     searchValue?: string;
     /** Default search value */
     defaultSearchValue?: string;
     /** Called when search changes */
-    onSearchChange?(value: string): void;
+    onSearchChange?: (value: string) => void;
     /** Maximum number of values, `Infinity` by default */
     maxValues?: number;
     /** Determines whether the select should be searchable, `false` by default */

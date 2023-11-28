@@ -20,7 +20,7 @@ interface CodeHighlightTabsProps extends BoxProps, StylesApiProps<CodeHighlightT
     /** Index of controlled active tab state */
     activeTab?: number;
     /** Called when tab changes */
-    onTabChange?(tab: number): void;
+    onTabChange?: (tab: number) => void;
     /** Determines whether header with file names and copy button should be rendered, `true` by default */
     withHeader?: boolean;
     /** Copy tooltip label, `'Copy code'` by default */
@@ -28,7 +28,7 @@ interface CodeHighlightTabsProps extends BoxProps, StylesApiProps<CodeHighlightT
     /** Copied tooltip label, `'Copied'` by default */
     copiedLabel?: string;
     /** Function that returns icon based on file name */
-    getFileIcon?(fileName: string): React.ReactNode;
+    getFileIcon?: (fileName: string) => React.ReactNode;
     /** `max-height` of code in collapsed state */
     maxCollapsedHeight?: React.CSSProperties["maxHeight"];
     /** Controlled expanded state */
@@ -36,7 +36,7 @@ interface CodeHighlightTabsProps extends BoxProps, StylesApiProps<CodeHighlightT
     /** Uncontrolled expanded state initial value */
     defaultExpanded?: boolean;
     /** Called when expanded state changes */
-    onExpandedChange?(expanded: boolean): void;
+    onExpandedChange?: (expanded: boolean) => void;
     /** Expand button label and tooltip, `'Expand code'` by default */
     expandCodeLabel?: string;
     /** Collapse button label and tooltip, `'Collapse code'` by default */

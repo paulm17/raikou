@@ -68,7 +68,7 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/Table.tsx
-var import_react2 = __toESM(require("react"));
+var import_react3 = __toESM(require("react"));
 var import_core2 = require("@raikou/core");
 
 // src/Table.components.tsx
@@ -150,6 +150,13 @@ var TableCaption = tableElement("caption", {
   captionSide: true
 });
 
+// src/TableDataRenderer.tsx
+var import_react2 = __toESM(require("react"));
+function TableDataRenderer({ data }) {
+  return /* @__PURE__ */ import_react2.default.createElement(import_react2.default.Fragment, null, data.caption && /* @__PURE__ */ import_react2.default.createElement(TableCaption, null, data.caption), data.head && /* @__PURE__ */ import_react2.default.createElement(TableThead, null, /* @__PURE__ */ import_react2.default.createElement(TableTr, null, data.head.map((item, index) => /* @__PURE__ */ import_react2.default.createElement(TableTh, { key: index }, item)))), data.body && /* @__PURE__ */ import_react2.default.createElement(TableTbody, null, data.body.map((row, rowIndex) => /* @__PURE__ */ import_react2.default.createElement(TableTr, { key: rowIndex }, row.map((item, index) => /* @__PURE__ */ import_react2.default.createElement(TableTd, { key: index }, item))))), data.foot && /* @__PURE__ */ import_react2.default.createElement(TableTfoot, null, /* @__PURE__ */ import_react2.default.createElement(TableTr, null, data.foot.map((item, index) => /* @__PURE__ */ import_react2.default.createElement(TableTh, { key: index }, item)))));
+}
+TableDataRenderer.displayName = "@mantine/core/TableDataRenderer";
+
 // src/Table.tsx
 var defaultProps = {
   withRowBorders: true,
@@ -199,7 +206,9 @@ var Table = (0, import_core2.factory)((_props, ref) => {
     withTableBorder,
     borderColor,
     layout,
-    variant
+    variant,
+    data,
+    children
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -219,7 +228,9 @@ var Table = (0, import_core2.factory)((_props, ref) => {
     "withTableBorder",
     "borderColor",
     "layout",
-    "variant"
+    "variant",
+    "data",
+    "children"
   ]);
   const getStyles = (0, import_core2.useStyles)({
     name: "Table",
@@ -251,14 +262,15 @@ var Table = (0, import_core2.factory)((_props, ref) => {
     withRowBorders,
     captionSide: captionSide || "bottom"
   });
-  return /* @__PURE__ */ import_react2.default.createElement(
+  return /* @__PURE__ */ import_react3.default.createElement(
     import_core2.Box,
     __spreadValues(__spreadValues({
       component: "table",
       variant,
       ref,
       mod: { "data-with-table-border": withTableBorder }
-    }, getStyles("table")), others)
+    }, getStyles("table")), others),
+    children || !!data && /* @__PURE__ */ import_react3.default.createElement(TableDataRenderer, { data })
   );
 });
 Table.displayName = "@raikou/core/Table";
@@ -269,6 +281,7 @@ Table.Thead = TableThead;
 Table.Tbody = TableTbody;
 Table.Tfoot = TableTfoot;
 Table.Caption = TableCaption;
+Table.DataRenderer = TableDataRenderer;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Table,

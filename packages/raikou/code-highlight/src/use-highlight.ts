@@ -12,8 +12,9 @@ export function useHighlight({
   language,
   highlightOnClient,
 }: UseHighlightInput) {
+  const lang = hljs.getLanguage(language) ? language : "plaintext";
   const getHighlightedCode = () =>
-    hljs.highlight(code.trim(), { language: language! }).value;
+    hljs.highlight(code.trim(), { language: lang }).value;
   const [highlighted, setHighlighted] = useState(!highlightOnClient);
   const [highlightedCode, setHighlightedCode] = useState(
     highlightOnClient ? code : getHighlightedCode(),

@@ -10,6 +10,7 @@ import {
   createVarsResolver,
   Factory,
 } from "@raikou/core";
+import classes from "./AspectRatio.module.css";
 
 export type AspectRatioStylesNames = "root";
 export type AspectRatioVariant = string;
@@ -56,9 +57,7 @@ export const AspectRatio = factory<AspectRatioFactory>((_props, ref) => {
 
   const getStyles = useStyles<AspectRatioFactory>({
     name: "AspectRatio",
-    classes: {
-      root: "aspectRatio-root",
-    },
+    classes,
     props,
     className,
     style,
@@ -73,3 +72,4 @@ export const AspectRatio = factory<AspectRatioFactory>((_props, ref) => {
 });
 
 AspectRatio.displayName = "@raikou/core/AspectRatio";
+AspectRatio.classes = classes;

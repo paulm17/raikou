@@ -1,16 +1,16 @@
-import editJson from "edit-json-file"
-import path from "path"
+import editJson from "edit-json-file";
+import path from "path";
 
 // read package.json
 export function getPackageJson(dir: string) {
-  const pkgPath = path.resolve(dir, "package.json")
-  return editJson(pkgPath)
+  const pkgPath = path.resolve(dir, "package.json");
+  return editJson(pkgPath);
 }
 
 export function deletePackageJson(dir: string, key: string) {
-  const pkgJson = getPackageJson(dir)
-  pkgJson.unset(key)
-  pkgJson.save()
+  const pkgJson = getPackageJson(dir);
+  pkgJson.unset(key);
+  pkgJson.save();
 }
 
 /**
@@ -21,17 +21,17 @@ export function deletePackageJson(dir: string, key: string) {
  */
 export function editPackageJson(dir: string, content: Record<string, any>) {
   // read package.json
-  const pkgJson = getPackageJson(dir)
+  const pkgJson = getPackageJson(dir);
 
   // update entrypoint fields
   for (const key in content) {
-    const valueInJson = pkgJson.get(key)
-    const value = content[key]
+    const valueInJson = pkgJson.get(key);
+    const value = content[key];
 
     if (valueInJson != value) {
-      pkgJson.set(key, value)
+      pkgJson.set(key, value);
     }
   }
 
-  pkgJson.save()
+  pkgJson.save();
 }

@@ -1,6 +1,4 @@
 module.exports = {
-  plugins: {
-    "tailwindcss/nesting": {},
-    tailwindcss: {},
-  },
+  map: { inline: false },
+  plugins: [require("postcss-preset-raikou")],
 };

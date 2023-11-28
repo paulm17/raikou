@@ -13,6 +13,7 @@ import {
   rem,
 } from "@raikou/core";
 import { Anchor } from "../../Anchor/src";
+import classes from "./Spoiler.module.css";
 
 export type SpoilerStylesNames = "root" | "control" | "content";
 export type SpoilerCssVariables = {
@@ -87,11 +88,7 @@ export const Spoiler = factory<SpoilerFactory>((_props, ref) => {
 
   const getStyles = useStyles<SpoilerFactory>({
     name: "Spoiler",
-    classes: {
-      root: "spoiler-root",
-      content: "spoiler-content",
-      control: "spoiler-control",
-    },
+    classes,
     props,
     className,
     style,
@@ -151,4 +148,5 @@ export const Spoiler = factory<SpoilerFactory>((_props, ref) => {
   );
 });
 
+Spoiler.classes = classes;
 Spoiler.displayName = "@raikou/core/Spoiler";

@@ -20,6 +20,7 @@ import {
   TimelineItemStylesNames,
 } from "./TimelineItem/TimelineItem";
 import { useStore } from "./store";
+import classes from "./Timeline.module.css";
 
 export type TimelineStylesNames = "root" | TimelineItemStylesNames;
 export type TimelineCssVariables = {
@@ -105,13 +106,7 @@ export const Timeline = factory<TimelineFactory>((_props, ref) => {
 
   const getStyles = useStyles<TimelineFactory>({
     name: "Timeline",
-    classes: {
-      root: "timeline-root",
-      itemTitle: "timeline-itemTitle",
-      item: "timeline-item",
-      itemBullet: "timeline-itemBullet",
-      itemBody: "timeline-itemBody",
-    },
+    classes,
     props,
     className,
     style,
@@ -149,5 +144,6 @@ export const Timeline = factory<TimelineFactory>((_props, ref) => {
   );
 });
 
+Timeline.classes = classes;
 Timeline.displayName = "@raikou/core/Timeline";
 Timeline.Item = TimelineItem;

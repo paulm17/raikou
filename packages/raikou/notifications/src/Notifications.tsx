@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import {
   Transition as _Transition,
   TransitionGroup,
@@ -29,6 +29,7 @@ import {
 } from "./notifications.store";
 import { NotificationContainer } from "./NotificationContainer";
 import { getNotificationStateStyles } from "./get-notification-state-styles";
+import classes from "./Notifications.module.css";
 
 const Transition: any = _Transition;
 
@@ -173,10 +174,7 @@ export const Notifications = factory<NotificationsFactory>((_props, ref) => {
 
   const getStyles = useStyles<NotificationsFactory>({
     name: "Notifications",
-    classes: {
-      root: "notifications-root",
-      notification: "notifications-notification",
-    },
+    classes,
     props,
     className,
     style,
@@ -186,6 +184,10 @@ export const Notifications = factory<NotificationsFactory>((_props, ref) => {
     vars,
     varsResolver,
   });
+
+  useEffect(() => {
+    store?.updateState((current) => ({ ...current, limit: limit || 5 }));
+  }, [limit]);
 
   useDidUpdate(() => {
     if (data.notifications.length > previousLength.current) {
@@ -237,6 +239,7 @@ export const Notifications = factory<NotificationsFactory>((_props, ref) => {
   );
 });
 
+Notifications.classes = classes;
 Notifications.displayName = "@raikou/notifications/Notifications";
 Notifications.show = notifications.show;
 Notifications.hide = notifications.hide;

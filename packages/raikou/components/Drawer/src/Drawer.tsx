@@ -16,6 +16,7 @@ import { DrawerOverlay } from "./DrawerOverlay";
 import { DrawerContent } from "./DrawerContent";
 import { DrawerTitle } from "./DrawerTitle";
 import { DrawerHeader } from "./DrawerHeader";
+import classes from "./Drawer.module.css";
 
 export type DrawerStylesNames = DrawerRootStylesNames;
 export type DrawerCssVariables = DrawerRootCssVariables;
@@ -99,6 +100,7 @@ export const Drawer = factory<DrawerFactory>((_props, ref) => {
   );
 });
 
+Drawer.classes = classes;
 Drawer.displayName = "@raikou/core/Drawer";
 Drawer.Root = DrawerRoot;
 Drawer.Overlay = DrawerOverlay;

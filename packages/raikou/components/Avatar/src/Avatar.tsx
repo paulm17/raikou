@@ -18,6 +18,7 @@ import {
 import { AvatarGroup } from "./AvatarGroup/AvatarGroup";
 import { useAvatarGroupContext } from "./AvatarGroup/AvatarGroup.context";
 import { AvatarPlaceholderIcon } from "./AvatarPlaceholderIcon";
+import classes from "./Avatar.module.css";
 
 export type AvatarStylesNames = "root" | "placeholder" | "image";
 export type AvatarVariant =
@@ -123,11 +124,7 @@ export const Avatar = polymorphicFactory<AvatarFactory>((_props, ref) => {
   const getStyles = useStyles<AvatarFactory>({
     name: "Avatar",
     props,
-    classes: {
-      root: "avatar-root",
-      placeholder: "avatar-placeholder",
-      image: "avatar-image",
-    },
+    classes,
     className,
     style,
     classNames,
@@ -168,3 +165,4 @@ export const Avatar = polymorphicFactory<AvatarFactory>((_props, ref) => {
 
 Avatar.displayName = "@raikou/core/Avatar";
 Avatar.Group = AvatarGroup;
+Avatar.classes = classes;

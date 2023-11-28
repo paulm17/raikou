@@ -12,6 +12,7 @@ import {
   NativeScrollArea,
 } from "../../ModalBase/src";
 import { useModalContext } from "./Modal.context";
+import classes from "./Modal.module.css";
 
 export type ModalContentStylesNames = "content" | "inner";
 
@@ -56,4 +57,5 @@ export const ModalContent = factory<ModalContentFactory>((_props, ref) => {
   );
 });
 
+ModalContent.classes = classes;
 ModalContent.displayName = "@raikou/core/ModalContent";

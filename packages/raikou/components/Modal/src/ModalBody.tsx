@@ -7,6 +7,7 @@ import {
 } from "@raikou/core";
 import { ModalBaseBody, ModalBaseBodyProps } from "../../ModalBase/src";
 import { useModalContext } from "./Modal.context";
+import classes from "./Modal.module.css";
 
 export type ModalBodyStylesNames = "body";
 
@@ -38,4 +39,5 @@ export const ModalBody = factory<ModalBodyFactory>((_props, ref) => {
   );
 });
 
+ModalBody.classes = classes;
 ModalBody.displayName = "@raikou/core/ModalBody";

@@ -12,6 +12,7 @@ import {
   createVarsResolver,
   Factory,
 } from "@raikou/core";
+import classes from "./Stack.module.css";
 
 export type StackStylesNames = "root";
 export type StackCssVariables = {
@@ -74,7 +75,7 @@ export const Stack = factory<StackFactory>((_props, ref) => {
   const getStyles = useStyles<StackFactory>({
     name: "Stack",
     props,
-    classes: { root: "stack-root" },
+    classes,
     className,
     style,
     classNames,
@@ -88,3 +89,4 @@ export const Stack = factory<StackFactory>((_props, ref) => {
 });
 
 Stack.displayName = "@raikou/core/Stack";
+Stack.classes = classes;

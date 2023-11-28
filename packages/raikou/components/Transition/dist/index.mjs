@@ -260,7 +260,7 @@ function getTransitionProps(transitionProps, componentTransition) {
   return __spreadValues(__spreadValues(__spreadValues({}, defaultTransition), componentTransition), transitionProps);
 }
 export {
+  transitions as RAIKOU_TRANSITIONS,
   Transition,
-  getTransitionProps,
-  transitions as raikou_TRANSITIONS
+  getTransitionProps
 };

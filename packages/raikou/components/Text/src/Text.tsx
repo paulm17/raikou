@@ -15,6 +15,7 @@ import {
   getFontSize,
   getLineHeight,
 } from "@raikou/core";
+import classes from "./Text.module.css";
 
 type TextTruncate = "end" | "start" | boolean;
 
@@ -113,9 +114,7 @@ export const Text = polymorphicFactory<TextFactory>((_props, ref) => {
   const getStyles = useStyles<TextFactory>({
     name: ["Text", __staticSelector],
     props,
-    classes: {
-      root: "text-root",
-    },
+    classes,
     className,
     style,
     classNames,
@@ -146,4 +145,5 @@ export const Text = polymorphicFactory<TextFactory>((_props, ref) => {
   );
 });
 
+Text.classes = classes;
 Text.displayName = "@raikou/core/Text";

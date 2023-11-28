@@ -43,7 +43,7 @@ interface __InputWrapperProps {
     /** Props passed down to the `InputError` component */
     errorProps?: Record<string, any>;
     /** Input container component, defaults to `React.Fragment` */
-    inputContainer?(children: React$1.ReactNode): React$1.ReactNode;
+    inputContainer?: (children: React$1.ReactNode) => React$1.ReactNode;
     /** Controls order of the elements, `['label', 'description', 'input', 'error']` by default */
     inputWrapperOrder?: ("label" | "input" | "description" | "error")[];
 }
@@ -3611,7 +3611,7 @@ interface CheckboxGroupProps extends Omit<InputWrapperProps, "onChange"> {
     /** Default value for uncontrolled component */
     defaultValue?: string[];
     /** Called when value changes */
-    onChange?(value: string[]): void;
+    onChange?: (value: string[]) => void;
     /** Props passed down to the `Input.Wrapper` */
     wrapperProps?: Record<string, any>;
     /** Controls size of the `Input.Wrapper`, `'sm'` by default */
@@ -3630,14 +3630,14 @@ declare const CheckboxGroup: _raikou_core.RaikouComponent<{
 
 type CheckboxStylesNames = "icon" | "inner" | "input" | InlineInputStylesNames;
 type CheckboxCssVariables = {
-    root: "--checkbox-size" | "--checkbox-radius" | "--checkbox-color";
+    root: "--checkbox-size" | "--checkbox-radius" | "--checkbox-color" | "--checkbox-icon-color";
 };
 interface CheckboxProps extends BoxProps, StylesApiProps<CheckboxFactory>, ElementProps<"input", "size"> {
     /** Id used to bind input and label, if not passed, unique id will be generated instead */
     id?: string;
     /** Checkbox label */
     label?: React$1.ReactNode;
-    /** Key of `theme.colors` or any valid CSS color to set input color in checked state, `theme.primaryColor` by default */
+    /** Key of `theme.colors` or any valid CSS color to set input background color in checked state, `theme.primaryColor` by default */
     color?: RaikouColor;
     /** Controls size of all elements */
     size?: RaikouSize | (string & {});
@@ -3660,6 +3660,8 @@ interface CheckboxProps extends BoxProps, StylesApiProps<CheckboxFactory>, Eleme
     }>;
     /** Assigns ref of the root element, can be used with `Tooltip` and other similar components */
     rootRef?: React$1.ForwardedRef<HTMLDivElement>;
+    /** Key of `theme.colors` or any valid CSS color to set icon color, `theme.white` by default */
+    iconColor?: RaikouColor;
 }
 type CheckboxFactory = Factory<{
     props: CheckboxProps;

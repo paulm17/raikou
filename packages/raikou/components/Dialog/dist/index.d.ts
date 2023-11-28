@@ -57,7 +57,7 @@ interface TransitionProps {
     /** Determines whether component should be mounted to the DOM */
     mounted: boolean;
     /** Render function with transition styles argument */
-    children(styles: React.CSSProperties): JSX.Element;
+    children: (styles: React.CSSProperties) => JSX.Element;
     /** Called when exit transition ends */
     onExited?: () => void;
     /** Called when exit transition starts */
@@ -79,7 +79,7 @@ interface DialogProps extends BoxProps, AffixBaseProps, PaperBaseProps, StylesAp
     /** Determines whether the close button should be displayed, `true` by default */
     withCloseButton?: boolean;
     /** Called when the close button is clicked */
-    onClose?(): void;
+    onClose?: () => void;
     /** Dialog content */
     children?: React.ReactNode;
     /** Opened state */

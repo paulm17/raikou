@@ -16,6 +16,7 @@ import {
 import { GridCol } from "./GridCol/GridCol";
 import { GridVariables } from "./GridVariables";
 import { useStore } from "./store";
+import classes from "./Grid.module.css";
 
 export type GridStylesNames = "root" | "col" | "inner";
 export type GridCssVariables = {
@@ -87,11 +88,7 @@ export const Grid = factory<GridFactory>((_props, ref) => {
 
   const getStyles = useStyles<GridFactory>({
     name: "Grid",
-    classes: {
-      root: "grid-root",
-      col: "grid-col",
-      inner: "grid-inner",
-    },
+    classes,
     props,
     className,
     style,
@@ -127,3 +124,4 @@ export const Grid = factory<GridFactory>((_props, ref) => {
 
 Grid.displayName = "@raikou/core/Grid";
 Grid.Col = GridCol;
+Grid.classes = classes;

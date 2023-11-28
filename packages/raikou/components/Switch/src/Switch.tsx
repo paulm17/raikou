@@ -21,6 +21,7 @@ import {
 import { InlineInput, InlineInputStylesNames } from "../../InlineInput/src";
 import { useSwitchGroupContext } from "./SwitchGroup.context";
 import { SwitchGroup } from "./SwitchGroup/SwitchGroup";
+import classes from "./Switch.module.css";
 
 export type SwitchStylesNames =
   | "root"
@@ -152,18 +153,7 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
   const getStyles = useStyles<SwitchFactory>({
     name: "Switch",
     props,
-    classes: {
-      root: "switch-root",
-      input: "switch-input",
-      track: "switch-track",
-      thumb: "switch-thumb",
-      trackLabel: "switch-trackLabel",
-      body: "inlineInput-body",
-      label: "inlineInput-label",
-      labelWrapper: "inlineInput-labelWrapper",
-      description: "inlineInput-description",
-      error: "inlineInput-error",
-    },
+    classes,
     className,
     style,
     classNames,
@@ -242,5 +232,6 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
   );
 });
 
+Switch.classes = classes;
 Switch.displayName = "@raikou/core/Switch";
 Switch.Group = SwitchGroup;

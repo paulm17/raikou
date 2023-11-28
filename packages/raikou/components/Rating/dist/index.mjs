@@ -126,7 +126,9 @@ function RatingItem(_a) {
     fractionValue,
     color,
     id,
+    onBlur,
     onChange,
+    onInputChange,
     style
   } = _b, others = __objRest(_b, [
     "size",
@@ -140,7 +142,9 @@ function RatingItem(_a) {
     "fractionValue",
     "color",
     "id",
+    "onBlur",
     "onChange",
+    "onInputChange",
     "style"
   ]);
   var _a2;
@@ -157,7 +161,8 @@ function RatingItem(_a) {
       "data-active": active || void 0,
       "aria-label": getSymbolLabel == null ? void 0 : getSymbolLabel(value),
       value,
-      onChange
+      onBlur,
+      onChange: onInputChange
     }), others)
   ), /* @__PURE__ */ React5.createElement(
     Box,
@@ -227,6 +232,8 @@ var Rating = factory((_props, ref) => {
     onMouseMove,
     onHover,
     onMouseLeave,
+    onTouchStart,
+    onTouchEnd,
     size,
     variant,
     getSymbolLabel,
@@ -253,6 +260,8 @@ var Rating = factory((_props, ref) => {
     "onMouseMove",
     "onHover",
     "onMouseLeave",
+    "onTouchStart",
+    "onTouchEnd",
     "size",
     "variant",
     "getSymbolLabel",
@@ -297,6 +306,17 @@ var Rating = factory((_props, ref) => {
   const decimalUnit = 1 / _fractions;
   const stableValueRounded = roundValueTo(_value, decimalUnit);
   const finalValue = hovered !== -1 ? hovered : stableValueRounded;
+  const getRatingFromCoordinates = (x) => {
+    const { left, right, width } = rootRef.current.getBoundingClientRect();
+    const symbolWidth = width / _count;
+    const hoverPosition = dir === "rtl" ? right - x : x - left;
+    const hoverValue = hoverPosition / symbolWidth;
+    return clamp(
+      roundValueTo(hoverValue + decimalUnit / 2, decimalUnit),
+      decimalUnit,
+      _count
+    );
+  };
   const handleMouseEnter = (event) => {
     onMouseEnter == null ? void 0 : onMouseEnter(event);
     !readOnly && setOutside(false);
@@ -306,15 +326,7 @@ var Rating = factory((_props, ref) => {
     if (readOnly) {
       return;
     }
-    const { left, right, width } = rootRef.current.getBoundingClientRect();
-    const symbolWidth = width / _count;
-    const hoverPosition = dir === "rtl" ? right - event.clientX : event.clientX - left;
-    const hoverValue = hoverPosition / symbolWidth;
-    const rounded = clamp(
-      roundValueTo(hoverValue + decimalUnit / 2, decimalUnit),
-      decimalUnit,
-      _count
-    );
+    const rounded = getRatingFromCoordinates(event.clientX);
     setHovered(rounded);
     rounded !== hovered && (onHover == null ? void 0 : onHover(rounded));
   };
@@ -327,7 +339,30 @@ var Rating = factory((_props, ref) => {
     setOutside(true);
     hovered !== -1 && (onHover == null ? void 0 : onHover(-1));
   };
+  const handleTouchStart = (event) => {
+    event.preventDefault();
+    const { touches } = event;
+    if (touches.length !== 1) {
+      return;
+    }
+    const touch = touches[0];
+    setValue(getRatingFromCoordinates(touch.clientX));
+    onTouchStart == null ? void 0 : onTouchStart(event);
+  };
+  const handleTouchEnd = (event) => {
+    event.preventDefault();
+    onTouchEnd == null ? void 0 : onTouchEnd(event);
+  };
   const handleItemBlur = () => isOutside && setHovered(-1);
+  const handleInputChange = (event) => {
+    if (!readOnly) {
+      if (typeof event === "number") {
+        setHovered(event);
+      } else {
+        setHovered(parseFloat(event.target.value));
+      }
+    }
+  };
   const handleChange = (event) => {
     if (!readOnly) {
       if (typeof event === "number") {
@@ -372,6 +407,7 @@ var Rating = factory((_props, ref) => {
             name: _name,
             onChange: handleChange,
             onBlur: handleItemBlur,
+            onInputChange: handleInputChange,
             id: `${_id}-${index}-${fractionIndex}`
           }
         );
@@ -386,6 +422,8 @@ var Rating = factory((_props, ref) => {
       onMouseMove: handleMouseMove,
       onMouseEnter: handleMouseEnter,
       onMouseLeave: handleMouseLeave,
+      onTouchStart: handleTouchStart,
+      onTouchEnd: handleTouchEnd,
       variant,
       size
     }), others),

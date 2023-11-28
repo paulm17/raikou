@@ -754,7 +754,7 @@ var UnstyledButton = (0, import_core7.polymorphicFactory)(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,
@@ -789,13 +789,13 @@ var Bars = (0, import_react12.forwardRef)(
       import_core8.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx.default)("bars-loader", className)
+        className: (0, import_clsx.default)("loader-barsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react12.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react12.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react12.default.createElement("span", { className: "bar" })
+      /* @__PURE__ */ import_react12.default.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ import_react12.default.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ import_react12.default.createElement("span", { className: "loader-bar" })
     );
   }
 );
@@ -811,7 +811,7 @@ var Oval = (0, import_react13.forwardRef)(
       import_core9.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx2.default)("oval-loader", className)
+        className: (0, import_clsx2.default)("loader-ovalLoader", className)
       }, others), {
         ref
       })
@@ -830,7 +830,7 @@ var Progress = (0, import_react14.forwardRef)(
       import_core10.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx3.default)("progress-loader", className)
+        className: (0, import_clsx3.default)("loader-progressLoader", className)
       }, others), {
         ref
       }),
@@ -860,13 +860,13 @@ var Dots = (0, import_react15.forwardRef)(
       import_core11.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx4.default)("dots-loader", className)
+        className: (0, import_clsx4.default)("loader-dotsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react15.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react15.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react15.default.createElement("span", { className: "dot" })
+      /* @__PURE__ */ import_react15.default.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ import_react15.default.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ import_react15.default.createElement("span", { className: "loader-dot" })
     );
   }
 );
@@ -1253,6 +1253,7 @@ var PasswordInput = (0, import_core15.factory)((_props, ref) => {
   const visibilityToggleButton = /* @__PURE__ */ import_react20.default.createElement(
     ActionIcon,
     __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("visibilityToggle")), {
+      disabled,
       radius,
       "aria-hidden": !visibilityToggleButtonProps,
       tabIndex: -1

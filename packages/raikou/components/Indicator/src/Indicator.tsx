@@ -17,6 +17,7 @@ import {
 } from "@raikou/core";
 import { getPositionVariables } from "./get-position-variables/get-position-variables";
 import { IndicatorPosition } from "./Indicator.types";
+import classes from "./Indicator.module.css";
 
 export type IndicatorPositionVariables =
   | "--indicator-top"
@@ -129,10 +130,7 @@ export const Indicator = factory<IndicatorFactory>((_props, ref) => {
 
   const getStyles = useStyles<IndicatorFactory>({
     name: "Indicator",
-    classes: {
-      root: "indicator-root",
-      indicator: "indicator-indicator",
-    },
+    classes,
     props,
     className,
     style,
@@ -164,4 +162,5 @@ export const Indicator = factory<IndicatorFactory>((_props, ref) => {
   );
 });
 
+Indicator.classes = classes;
 Indicator.displayName = "@raikou/core/Indicator";

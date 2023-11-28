@@ -12,6 +12,7 @@ import {
   rem,
   getRadius,
 } from "@raikou/core";
+import classes from "./Skeleton.module.css";
 
 export type SkeletonStylesNames = "root";
 export type SkeletonCssVariables = {
@@ -87,9 +88,7 @@ export const Skeleton = factory<SkeletonFactory>((_props, ref) => {
 
   const getStyles = useStyles<SkeletonFactory>({
     name: "Skeleton",
-    classes: {
-      root: "skeleton-root",
-    },
+    classes,
     props,
     className,
     style,
@@ -110,4 +109,5 @@ export const Skeleton = factory<SkeletonFactory>((_props, ref) => {
   );
 });
 
+Skeleton.classes = classes;
 Skeleton.displayName = "@raikou/core/Skeleton";

@@ -9,6 +9,7 @@ import {
   Factory,
 } from "@raikou/core";
 import { useStore } from "../store";
+import classes from "../AppShell.module.css";
 
 export type AppShellMainStylesNames = "main";
 
@@ -42,3 +43,4 @@ export const AppShellMain = factory<AppShellMainFactory>((_props, ref) => {
 });
 
 AppShellMain.displayName = "@raikou/core/AppShellMain";
+AppShellMain.classes = classes;

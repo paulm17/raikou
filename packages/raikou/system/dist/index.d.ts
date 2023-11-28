@@ -3801,7 +3801,7 @@ interface RaikouProviderProps {
     /** Determines whether theme CSS variables should be added to given `cssVariablesSelector`, `true` by default */
     withCssVariables?: boolean;
     /** Function to generate nonce attribute added to all generated `<style />` tags */
-    getStyleNonce?: () => string;
+    getStyleNonce?(): string;
     /** Function to generate CSS variables based on theme object */
     cssVariablesResolver?: CSSVariablesResolver;
     /** Store theme in local storage */
@@ -3814,8 +3814,8 @@ declare function RaikouProvider({ theme, defaultColorScheme, cssVariablesSelecto
 type Direction = "ltr" | "rtl";
 interface DirectionContextValue {
     dir: Direction;
-    toggleDirection: () => void;
-    setDirection: (dir: Direction) => void;
+    toggleDirection(): void;
+    setDirection(dir: Direction): void;
 }
 declare const DirectionContext: React$2.Context<DirectionContextValue>;
 declare function useDirection(): DirectionContextValue;

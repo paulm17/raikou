@@ -28,7 +28,7 @@ var __objRest = (source, exclude) => {
 };
 
 // src/Table.tsx
-import React2 from "react";
+import React3 from "react";
 import {
   Box as Box2,
   factory as factory2,
@@ -122,6 +122,13 @@ var TableCaption = tableElement("caption", {
   captionSide: true
 });
 
+// src/TableDataRenderer.tsx
+import React2 from "react";
+function TableDataRenderer({ data }) {
+  return /* @__PURE__ */ React2.createElement(React2.Fragment, null, data.caption && /* @__PURE__ */ React2.createElement(TableCaption, null, data.caption), data.head && /* @__PURE__ */ React2.createElement(TableThead, null, /* @__PURE__ */ React2.createElement(TableTr, null, data.head.map((item, index) => /* @__PURE__ */ React2.createElement(TableTh, { key: index }, item)))), data.body && /* @__PURE__ */ React2.createElement(TableTbody, null, data.body.map((row, rowIndex) => /* @__PURE__ */ React2.createElement(TableTr, { key: rowIndex }, row.map((item, index) => /* @__PURE__ */ React2.createElement(TableTd, { key: index }, item))))), data.foot && /* @__PURE__ */ React2.createElement(TableTfoot, null, /* @__PURE__ */ React2.createElement(TableTr, null, data.foot.map((item, index) => /* @__PURE__ */ React2.createElement(TableTh, { key: index }, item)))));
+}
+TableDataRenderer.displayName = "@mantine/core/TableDataRenderer";
+
 // src/Table.tsx
 var defaultProps = {
   withRowBorders: true,
@@ -171,7 +178,9 @@ var Table = factory2((_props, ref) => {
     withTableBorder,
     borderColor,
     layout,
-    variant
+    variant,
+    data,
+    children
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -191,7 +200,9 @@ var Table = factory2((_props, ref) => {
     "withTableBorder",
     "borderColor",
     "layout",
-    "variant"
+    "variant",
+    "data",
+    "children"
   ]);
   const getStyles = useStyles({
     name: "Table",
@@ -223,14 +234,15 @@ var Table = factory2((_props, ref) => {
     withRowBorders,
     captionSide: captionSide || "bottom"
   });
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ React3.createElement(
     Box2,
     __spreadValues(__spreadValues({
       component: "table",
       variant,
       ref,
       mod: { "data-with-table-border": withTableBorder }
-    }, getStyles("table")), others)
+    }, getStyles("table")), others),
+    children || !!data && /* @__PURE__ */ React3.createElement(TableDataRenderer, { data })
   );
 });
 Table.displayName = "@raikou/core/Table";
@@ -241,6 +253,7 @@ Table.Thead = TableThead;
 Table.Tbody = TableTbody;
 Table.Tfoot = TableTfoot;
 Table.Caption = TableCaption;
+Table.DataRenderer = TableDataRenderer;
 export {
   Table,
   TableCaption,

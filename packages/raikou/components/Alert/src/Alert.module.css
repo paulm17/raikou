@@ -1,0 +1,94 @@
+.root {
+  @mixin light {
+    --raikou-alert-message-color: #000;
+  }
+  @mixin dark {
+    --raikou-alert-message-color: #fff;
+  }
+
+  padding: var(--raikou-spacing-md) var(--raikou-spacing-md);
+  border-radius: var(--alert-radius, var(--raikou-radius-default));
+  position: relative;
+  overflow: hidden;
+  background-color: var(--alert-bg, var(--raikou-primary-color-light));
+  border: var(--alert-bd, rem(1px) solid transparent);
+  color: var(--alert-color, var(--raikou-primary-color-light-color));
+}
+
+.root--filled {
+  --_message-color: var(--alert-color, var(--raikou-primary-color-light-color));
+}
+
+.root--white {
+  --_message-color: var(--raikou-color-black);
+}
+
+.wrapper {
+  display: flex;
+}
+
+.body {
+  flex: 1;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--raikou-font-size-sm);
+  font-weight: 700;
+
+  &[data-with-close-button] {
+    padding-right: var(--raikou-spacing-md);
+
+    @mixin rtl {
+      padding-left: var(--raikou-spacing-md);
+      padding-right: 0;
+    }
+  }
+}
+
+.label {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.icon {
+  line-height: 1;
+  width: rem(20px);
+  height: rem(20px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: var(--raikou-spacing-md);
+  margin-top: rem(1px);
+
+  @mixin rtl {
+    margin-right: 0;
+    margin-left: var(--raikou-spacing-md);
+  }
+}
+
+.message {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: var(--raikou-font-size-sm);
+  color: var(--_message-color, var(--__message-color));
+  margin-top: var(--raikou-spacing-xs);
+
+  @mixin light {
+    --__message-color: var(--raikou-alert-message-color);
+  }
+
+  @mixin dark {
+    --__message-color: var(--raikou-alert-message-color);
+  }
+}
+
+.closeButton {
+  width: rem(20px);
+  height: rem(20px);
+  margin-top: calc(var(--raikou-spacing-sm) * -0.5);
+  color: var(--alert-color, var(--raikou-primary-color-light-color));
+}

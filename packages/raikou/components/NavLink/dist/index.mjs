@@ -78,7 +78,7 @@ var UnstyledButton = polymorphicFactory(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,
@@ -382,13 +382,13 @@ var NavLink = polymorphicFactory2((_props, ref) => {
     name: "NavLink",
     props,
     classes: {
-      root: "navLink-root",
-      section: "navLink-section",
-      label: "navLink-label",
-      body: "navLink-body",
-      description: "navLink-description",
-      children: "navLink-children",
-      chevron: "navLink-chevron"
+      root: "navlink-root",
+      section: "navlink-section",
+      label: "navlink-label",
+      body: "navlink-body",
+      description: "navlink-description",
+      children: "navlink-children",
+      chevron: "navlink-chevron"
     },
     className,
     style,

@@ -1,0 +1,335 @@
+/* src/demos/core/Accordion/Accordion.demo.chevron.module.css */
+.chevron {
+  &[data-rotate] {
+    transform: rotate(45deg);
+  }
+}
+.icon {
+  width: rem(16px);
+  height: rem(16px);
+}
+
+/* src/demos/core/Accordion/Accordion.demo.customize.module.css */
+.root {
+  border-radius: var(--raikou-radius-sm);
+  background-color: light-dark(var(--raikou-color-gray-0), var(--raikou-color-dark-6));
+}
+.item {
+  background-color: light-dark(var(--raikou-color-gray-0), var(--raikou-color-dark-6));
+  border: rem(1px) solid transparent;
+  position: relative;
+  z-index: 0;
+  transition: transform 150ms ease;
+  &[data-active] {
+    transform: scale(1.03);
+    z-index: 1;
+    background-color: var(--raikou-color-body);
+    border-color: light-dark(var(--raikou-color-gray-2), var(--raikou-color-dark-4));
+    box-shadow: var(--raikou-shadow-md);
+    border-radius: var(--raikou-radius-md);
+  }
+}
+.chevron {
+  &[data-rotate] {
+    transform: rotate(-90deg);
+  }
+}
+
+/* src/demos/core/ActionIcon/ActionIcon.demo.disabledStyles.module.css */
+.button {
+  &:disabled,
+  &[data-disabled] {
+    border-color: light-dark(var(--raikou-color-gray-3), var(--raikou-color-dark-4));
+    background-color: transparent;
+  }
+}
+
+/* src/demos/core/Button/Button.demo.disabledStyles.module.css */
+.button {
+  &:disabled,
+  &[data-disabled] {
+    border-color: light-dark(var(--raikou-color-gray-3), var(--raikou-color-dark-4));
+    background-color: transparent;
+  }
+}
+
+/* src/demos/core/Checkbox/Checkbox.demo.card.module.css */
+.root {
+  position: relative;
+}
+.control {
+  background-color: light-dark(var(--raikou-color-white), var(--raikou-color-dark-6));
+  border: rem(1px) solid light-dark(var(--raikou-color-gray-3), var(--raikou-color-dark-4));
+  padding: var(--raikou-spacing-md);
+  padding-left: rem(60px);
+  border-radius: var(--raikou-radius-md);
+  transition: border-color 100ms ease;
+  &[data-checked] {
+    border-color: var(--raikou-color-blue-filled);
+  }
+}
+.checkboxWrapper {
+  position: absolute;
+  top: var(--raikou-spacing-md);
+  left: var(--raikou-spacing-md);
+  pointer-events: none;
+}
+.checkbox {
+  &:not(:checked) {
+    background-color: var(--raikou-color-body);
+  }
+}
+.label {
+  font-family: var(--raikou-font-family-monospace);
+  font-weight: bold;
+  font-size: var(--raikou-font-size-md);
+  line-height: 1.3;
+  color: var(--raikou-color-bright);
+}
+.description {
+  margin-top: rem(8px);
+  color: var(--raikou-color-dimmed);
+  font-size: var(--raikou-font-size-xs);
+}
+
+/* src/demos/core/Checkbox/Checkbox.demo.customize.module.css */
+.root {
+  border: rem(1px) solid light-dark(var(--raikou-color-gray-3), var(--raikou-color-dark-4));
+  padding: var(--raikou-spacing-xs) var(--raikou-spacing-sm);
+  border-radius: var(--raikou-radius-md);
+  font-weight: 500;
+  transition:
+    color 100ms ease,
+    background-color 100ms ease,
+    border-color 100ms ease;
+  cursor: pointer;
+  &[data-checked] {
+    background-color: var(--raikou-color-blue-filled);
+    border-color: var(--raikou-color-blue-filled);
+    color: var(--raikou-color-white);
+  }
+  & * {
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+/* src/demos/core/Grid/_col-wrapper.module.css */
+.col {
+  height: 100%;
+  background-color: light-dark(var(--raikou-color-blue-0), var(--raikou-color-dark-4));
+  padding: var(--raikou-spacing-md);
+}
+.label {
+  color: light-dark(var(--raikou-color-blue-6), var(--raikou-color-dimmed));
+  font-size: var(--raikou-font-size-xl);
+  font-weight: bold;
+  text-align: center;
+}
+
+/* src/demos/core/Input/Input.demo.focusStyles.module.css */
+.input {
+  transition: none;
+  &:focus-within {
+    outline: rem(2px) solid var(--raikou-color-blue-filled);
+    border-color: transparent;
+  }
+}
+
+/* src/demos/core/Pill/_demo.module.css */
+.demoWrapper {
+  padding: rem(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: light-dark(var(--raikou-color-white), var(--raikou-color-dark-5));
+}
+
+/* src/demos/core/ScrollArea/ScrollArea.demo.stylesApi.module.css */
+.scrollbar {
+  &,
+  &:hover {
+    background-color: light-dark(var(--raikou-color-gray-0), var(--raikou-color-dark-6));
+  }
+  &[data-orientation=vertical] .thumb {
+    background-color: var(--raikou-color-red-6);
+  }
+  &[data-orientation=horizontal] .thumb {
+    background-color: var(--raikou-color-blue-6);
+  }
+}
+.corner {
+  background-color: light-dark(var(--raikou-color-gray-0), var(--raikou-color-dark-6));
+  opacity: 1;
+}
+
+/* src/demos/core/SimpleGrid/_item.module.css */
+.item {
+  background-color: light-dark(var(--raikou-color-blue-0), var(--raikou-color-dark-4));
+  padding: var(--raikou-spacing-md);
+}
+.label {
+  color: light-dark(var(--raikou-color-blue-6), var(--raikou-color-dimmed));
+  font-size: var(--raikou-font-size-xl);
+  font-weight: bold;
+  text-align: center;
+}
+
+/* src/demos/core/Slider/Slider.demo.customize.module.css */
+.track {
+  &::before {
+    background-color: light-dark(var(--raikou-color-blue-1), var(--raikou-color-dark-3));
+  }
+}
+.mark {
+  width: rem(6px);
+  height: rem(6px);
+  border-radius: rem(6px);
+  transform: translateX(rem(-3px)) translateY(rem(-2px));
+  border-color: light-dark(var(--raikou-color-blue-1), var(--raikou-color-dark-3));
+  &[data-filled] {
+    border-color: var(--raikou-color-blue-6);
+  }
+}
+.markLabel {
+  font-size: var(--raikou-font-size-xs);
+  margin-bottom: rem(5px);
+  margin-top: 0;
+}
+.thumb {
+  height: rem(16px);
+  width: rem(16px);
+  background-color: var(--raikou-color-white);
+  border-width: rem(1px);
+  box-shadow: var(--raikou-shadow-sm);
+}
+
+/* src/demos/core/Stepper/Stepper.demo.stylesApi3.module.css */
+.separator {
+  height: rem(2px);
+  border-top: rem(2px) solid light-dark(var(--raikou-color-gray-4), var(--raikou-color-dark-3));
+  border-radius: var(--raikou-radius-xl);
+  background-color: transparent;
+  &[data-active] {
+    border-width: 0;
+    background-image: linear-gradient(45deg, var(--raikou-color-blue-6), var(--raikou-color-cyan-6));
+  }
+}
+.stepIcon {
+  border-color: transparent;
+  background-color: light-dark(var(--raikou-color-gray-0), var(--raikou-color-dark-4));
+  border-width: 0;
+  &[data-completed] {
+    border-width: 0;
+    background-color: transparent;
+    background-image: linear-gradient(45deg, var(--raikou-color-blue-6), var(--raikou-color-cyan-6));
+  }
+}
+.step {
+  transition: transform 150ms ease;
+  &[data-progress] {
+    transform: scale(1.05);
+  }
+}
+
+/* src/demos/core/Tabs/Tabs.demo.customize.module.css */
+.tab {
+  position: relative;
+  border: rem(1px) solid light-dark(var(--raikou-color-gray-2), var(--raikou-color-dark-4));
+  background-color: light-dark(var(--raikou-color-white), var(--raikou-color-dark-6));
+  &:first-of-type {
+    border-radius: rem(4px) 0 0 rem(4px);
+    @mixin rtl { border-radius: 0 rem(4px) rem(4px) 0; }
+  }
+  &:last-of-type {
+    border-radius: 0 rem(4px) rem(4px) 0;
+    @mixin rtl { border-radius: rem(4px) 0 0 rem(4px); }
+  }
+  & + & {
+    border-left-width: 0;
+    @mixin rtl { border-right-width: 0; border-left-width: rem(1px); }
+  }
+  @mixin hover { background-color: light-dark(var(--raikou-color-gray-0), var(--raikou-color-dark-5)); }
+  &[data-active] {
+    z-index: 1;
+    background-color: var(--raikou-color-blue-filled);
+    border-color: var(--raikou-color-blue-filled);
+    color: var(--raikou-color-white);
+    @mixin hover { background-color: var(--raikou-color-blue-filled-hover); }
+  }
+}
+
+/* src/demos/notifications/Notifications.demo.customize.module.css */
+.root {
+  background-color: var( --notification-color, var(--raikou-primary-color-filled) );
+  &::before {
+    background-color: var(--raikou-color-white);
+  }
+}
+.description,
+.title {
+  color: var(--raikou-color-white);
+}
+.closeButton {
+  color: var(--raikou-color-white);
+  @mixin hover { background-color: rgba(0, 0, 0, 0.1); }
+}
+
+/* src/demos/carousel/Carousel.demo.indicatorStyles.module.css */
+.indicator {
+  width: rem(12px);
+  height: rem(4px);
+  transition: width 250ms ease;
+  &[data-active] {
+    width: rem(40px);
+  }
+}
+
+/* src/demos/carousel/Carousel.demo.controlsStyles.module.css */
+.control {
+  &[data-inactive] {
+    opacity: 0;
+    cursor: default;
+  }
+}
+
+/* src/demos/carousel/Carousel.demo.controlsHover.module.css */
+.controls {
+  transition: opacity 150ms ease;
+  opacity: 0;
+}
+.root {
+  &:hover {
+    .controls {
+      opacity: 1;
+    }
+  }
+}
+
+/* src/demos/dropzone/Dropzone.disabled.module.css */
+.disabled {
+  background-color: light-dark(var(--raikou-color-gray-0), var(--raikou-color-dark-6));
+  border-color: light-dark(var(--raikou-color-gray-2), var(--raikou-color-dark-5));
+  cursor: not-allowed;
+  & * {
+    color: light-dark(var(--raikou-color-gray-5), var(--raikou-color-dark-3));
+  }
+}
+
+/* src/demos/dropzone/Dropzone.demo.stylesApi.module.css */
+.root {
+  min-height: rem(120px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  background-color: light-dark(var(--raikou-color-gray-0), var(--raikou-color-dark-6));
+  &[data-accept] {
+    color: var(--raikou-color-white);
+    background-color: var(--raikou-color-blue-6);
+  }
+  &[data-reject] {
+    color: var(--raikou-color-white);
+    background-color: var(--raikou-color-red-6);
+  }
+}

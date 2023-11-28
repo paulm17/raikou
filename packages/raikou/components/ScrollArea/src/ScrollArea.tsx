@@ -16,6 +16,7 @@ import { ScrollAreaCorner } from "./ScrollAreaCorner/ScrollAreaCorner";
 import { ScrollAreaRoot } from "./ScrollAreaRoot/ScrollAreaRoot";
 import { ScrollAreaViewport } from "./ScrollAreaViewport/ScrollAreaViewport";
 import { ScrollAreaThumb } from "./ScrollAreaThumb/ScrollAreaThumb";
+import classes from "./ScrollArea.module.css";
 
 export type ScrollAreaStylesNames =
   | "root"
@@ -111,14 +112,7 @@ export const ScrollArea = factory<ScrollAreaFactory>((_props, ref) => {
   const getStyles = useStyles<ScrollAreaFactory>({
     name: "ScrollArea",
     props,
-    classes: {
-      root: "scrollArea-root",
-      viewport: "scrollArea-viewport",
-      viewportInner: "scrollArea-viewportInner",
-      scrollbar: "scrollArea-scrollbar",
-      thumb: "scrollArea-thumb",
-      corner: "scrollArea-corner",
-    },
+    classes,
     className,
     style,
     classNames,
@@ -229,5 +223,6 @@ export const ScrollAreaAutosize = factory<ScrollAreaFactory>((props, ref) => {
   );
 });
 
+ScrollArea.classes = classes;
 ScrollAreaAutosize.displayName = "@raikou/core/ScrollAreaAutosize";
 ScrollArea.Autosize = ScrollAreaAutosize;

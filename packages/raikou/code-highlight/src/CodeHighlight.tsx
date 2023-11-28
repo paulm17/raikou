@@ -16,10 +16,10 @@ import { ActionIcon } from "../../components/ActionIcon/src";
 import { ScrollArea } from "../../components/ScrollArea/src";
 import { useHighlight } from "./use-highlight";
 import { CopyIcon } from "./CopyIcon";
-// import _classes from "./CodeHighlight.module.css";
-// import themeClasses from "./CodeHighlight.theme.module.css";
+import _classes from "./CodeHighlight.module.css";
+import themeClasses from "./CodeHighlight.theme.module.css";
 
-// const classes = { ..._classes, root: cx(_classes.root, themeClasses.theme) };
+const classes = { ..._classes, root: cx(_classes.root, themeClasses.theme) };
 
 export type CodeHighlightStylesNames = "root" | "code" | "pre" | "copy";
 
@@ -81,12 +81,7 @@ export const CodeHighlight = factory<CodeHighlightFactory>((_props, ref) => {
   const getStyles = useStyles<CodeHighlightFactory>({
     name: "CodeHighlight",
     props,
-    classes: {
-      code: "codeHighlight-code",
-      pre: "codeHighlight-pre",
-      copy: "codeHighlight-copy",
-      root: cx("codeHighlight-root", "codeHighlight-theme"),
-    },
+    classes,
     className,
     style,
     classNames,
@@ -127,4 +122,5 @@ export const CodeHighlight = factory<CodeHighlightFactory>((_props, ref) => {
   );
 });
 
+CodeHighlight.classes = classes;
 CodeHighlight.displayName = "@raikou/core/CodeHighlight";

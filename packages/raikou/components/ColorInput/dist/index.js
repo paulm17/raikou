@@ -3771,8 +3771,8 @@ FloatingArrow.displayName = "@raikou/core/FloatingArrow";
 
 // ../Popover/src/use-popover.ts
 var import_hooks6 = require("@raikou/hooks");
-function getPopoverMiddlewares(options) {
-  var _a, _b, _c;
+function getPopoverMiddlewares(options, getFloating) {
+  var _a, _b, _c, _d;
   const middlewares = [offset(options.offset)];
   if ((_a = options.middlewares) == null ? void 0 : _a.shift) {
     middlewares.push(shift({ limiter: limitShift() }));
@@ -3786,6 +3786,28 @@ function getPopoverMiddlewares(options) {
   middlewares.push(
     arrow2({ element: options.arrowRef, padding: options.arrowOffset })
   );
+  if (((_d = options.middlewares) == null ? void 0 : _d.size) || options.width === "target") {
+    middlewares.push(
+      size({
+        apply({ rects, availableWidth, availableHeight }) {
+          var _a2, _b2, _c2;
+          const floating = getFloating();
+          const styles = (_b2 = (_a2 = floating.refs.floating.current) == null ? void 0 : _a2.style) != null ? _b2 : {};
+          if ((_c2 = options.middlewares) == null ? void 0 : _c2.size) {
+            Object.assign(styles, {
+              maxWidth: `${availableWidth}px`,
+              maxHeight: `${availableHeight}px`
+            });
+          }
+          if (options.width === "target") {
+            Object.assign(styles, {
+              width: `${rects.reference.width}px`
+            });
+          }
+        }
+      })
+    );
+  }
   return middlewares;
 }
 function usePopover(options) {
@@ -3814,19 +3836,7 @@ function usePopover(options) {
   };
   const floating = useFloating2({
     placement: options.position,
-    middleware: [
-      ...getPopoverMiddlewares(options),
-      ...options.width === "target" ? [
-        size({
-          apply({ rects }) {
-            var _a, _b;
-            Object.assign((_b = (_a = floating.refs.floating.current) == null ? void 0 : _a.style) != null ? _b : {}, {
-              width: `${rects.reference.width}px`
-            });
-          }
-        })
-      ] : []
-    ]
+    middleware: getPopoverMiddlewares(options, () => floating)
   });
   useFloatingAutoUpdate({
     opened: options.opened,
@@ -4618,7 +4628,7 @@ var UnstyledButton = (0, import_core27.polymorphicFactory)(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,
@@ -4652,13 +4662,13 @@ var Bars = (0, import_react35.forwardRef)(
       import_core28.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("bars-loader", className)
+        className: clsx_default("loader-barsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react35.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react35.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react35.default.createElement("span", { className: "bar" })
+      /* @__PURE__ */ import_react35.default.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ import_react35.default.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ import_react35.default.createElement("span", { className: "loader-bar" })
     );
   }
 );
@@ -4673,7 +4683,7 @@ var Oval = (0, import_react36.forwardRef)(
       import_core29.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("oval-loader", className)
+        className: clsx_default("loader-ovalLoader", className)
       }, others), {
         ref
       })
@@ -4691,7 +4701,7 @@ var Progress = (0, import_react37.forwardRef)(
       import_core30.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("progress-loader", className)
+        className: clsx_default("loader-progressLoader", className)
       }, others), {
         ref
       }),
@@ -4720,13 +4730,13 @@ var Dots = (0, import_react38.forwardRef)(
       import_core31.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("dots-loader", className)
+        className: clsx_default("loader-dotsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react38.default.createElement("span", { className: "dot" })
+      /* @__PURE__ */ import_react38.default.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ import_react38.default.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ import_react38.default.createElement("span", { className: "loader-dot" })
     );
   }
 );

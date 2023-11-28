@@ -16,6 +16,7 @@ import {
 } from "@raikou/core";
 // import { useId } from "@raikou/hooks";
 import { CloseButton } from "../../CloseButton/src";
+import classes from "./Alert.module.css";
 
 export type AlertStylesNames =
   | "root"
@@ -116,16 +117,7 @@ export const Alert = factory<AlertFactory>((_props, ref) => {
 
   const getStyles = useStyles<AlertFactory>({
     name: "Alert",
-    classes: {
-      root: "alert-root",
-      body: "alert-body",
-      label: "alert-label",
-      title: "alert-title",
-      icon: "alert-icon",
-      wrapper: "alert-wrapper",
-      message: "alert-message",
-      closeButton: "alert-closeButton",
-    },
+    classes,
     props,
     className,
     style,
@@ -166,9 +158,11 @@ export const Alert = factory<AlertFactory>((_props, ref) => {
             </div>
           )}
 
-          <div id={bodyId} {...getStyles("message")}>
-            {children}
-          </div>
+          {children && (
+            <div id={bodyId} {...getStyles("message")}>
+              {children}
+            </div>
+          )}
         </div>
 
         {withCloseButton && (
@@ -187,3 +181,4 @@ export const Alert = factory<AlertFactory>((_props, ref) => {
 });
 
 Alert.displayName = "@raikou/core/Alert";
+Alert.classes = classes;

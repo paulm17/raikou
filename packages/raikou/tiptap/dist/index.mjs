@@ -245,7 +245,7 @@ var TypographyStylesProvider = factory3((_props, ref) => {
   const getStyles = useStyles({
     name: "TypographyStylesProvider",
     classes: {
-      root: "tsp-root"
+      root: "typographyStylesProvider-root"
     },
     props,
     className,
@@ -340,7 +340,7 @@ var UnstyledButton = polymorphicFactory(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,
@@ -3584,8 +3584,8 @@ FloatingArrow.displayName = "@raikou/core/FloatingArrow";
 
 // ../components/Popover/src/use-popover.ts
 import { useDidUpdate as useDidUpdate2, useUncontrolled } from "@raikou/hooks";
-function getPopoverMiddlewares(options) {
-  var _a, _b, _c;
+function getPopoverMiddlewares(options, getFloating) {
+  var _a, _b, _c, _d;
   const middlewares = [offset(options.offset)];
   if ((_a = options.middlewares) == null ? void 0 : _a.shift) {
     middlewares.push(shift({ limiter: limitShift() }));
@@ -3599,6 +3599,28 @@ function getPopoverMiddlewares(options) {
   middlewares.push(
     arrow2({ element: options.arrowRef, padding: options.arrowOffset })
   );
+  if (((_d = options.middlewares) == null ? void 0 : _d.size) || options.width === "target") {
+    middlewares.push(
+      size({
+        apply({ rects, availableWidth, availableHeight }) {
+          var _a2, _b2, _c2;
+          const floating = getFloating();
+          const styles = (_b2 = (_a2 = floating.refs.floating.current) == null ? void 0 : _a2.style) != null ? _b2 : {};
+          if ((_c2 = options.middlewares) == null ? void 0 : _c2.size) {
+            Object.assign(styles, {
+              maxWidth: `${availableWidth}px`,
+              maxHeight: `${availableHeight}px`
+            });
+          }
+          if (options.width === "target") {
+            Object.assign(styles, {
+              width: `${rects.reference.width}px`
+            });
+          }
+        }
+      })
+    );
+  }
   return middlewares;
 }
 function usePopover(options) {
@@ -3627,19 +3649,7 @@ function usePopover(options) {
   };
   const floating = useFloating2({
     placement: options.position,
-    middleware: [
-      ...getPopoverMiddlewares(options),
-      ...options.width === "target" ? [
-        size({
-          apply({ rects }) {
-            var _a, _b;
-            Object.assign((_b = (_a = floating.refs.floating.current) == null ? void 0 : _a.style) != null ? _b : {}, {
-              width: `${rects.reference.width}px`
-            });
-          }
-        })
-      ] : []
-    ]
+    middleware: getPopoverMiddlewares(options, () => floating)
   });
   useFloatingAutoUpdate({
     opened: options.opened,
@@ -5239,13 +5249,13 @@ var Bars = forwardRef5(
       Box13,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("bars-loader", className)
+        className: clsx_default("loader-barsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React28.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ React28.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ React28.createElement("span", { className: "bar" })
+      /* @__PURE__ */ React28.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ React28.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ React28.createElement("span", { className: "loader-bar" })
     );
   }
 );
@@ -5260,7 +5270,7 @@ var Oval = forwardRef6(
       Box14,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("oval-loader", className)
+        className: clsx_default("loader-ovalLoader", className)
       }, others), {
         ref
       })
@@ -5278,7 +5288,7 @@ var Progress = forwardRef7(
       Box15,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("progress-loader", className)
+        className: clsx_default("loader-progressLoader", className)
       }, others), {
         ref
       }),
@@ -5307,13 +5317,13 @@ var Dots = forwardRef8(
       Box16,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("dots-loader", className)
+        className: clsx_default("loader-dotsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React31.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React31.createElement("span", { className: "dot" })
+      /* @__PURE__ */ React31.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ React31.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ React31.createElement("span", { className: "loader-dot" })
     );
   }
 );
@@ -5405,7 +5415,7 @@ var defaultProps20 = {
 };
 var varsResolver8 = createVarsResolver8(
   (_, { borderWidth }) => ({
-    root: { "--button-border-width": rem10(borderWidth) }
+    group: { "--button-border-width": rem10(borderWidth) }
   })
 );
 var ButtonGroup = factory15((_props, ref) => {
@@ -5435,7 +5445,7 @@ var ButtonGroup = factory15((_props, ref) => {
     name: "ButtonGroup",
     props,
     classes: {
-      root: "buttonGroup-root"
+      group: "buttonGroup-group"
     },
     className,
     style,
@@ -5443,11 +5453,12 @@ var ButtonGroup = factory15((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver8
+    varsResolver: varsResolver8,
+    rootSelector: "group"
   });
   return /* @__PURE__ */ React33.createElement(
     Box18,
-    __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
+    __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
       ref,
       variant,
       mod: { "data-orientation": orientation },

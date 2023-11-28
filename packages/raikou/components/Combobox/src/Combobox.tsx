@@ -31,6 +31,7 @@ import { ComboboxEventsTarget } from "./ComboboxEventsTarget/ComboboxEventsTarge
 import { ComboboxDropdownTarget } from "./ComboboxDropdownTarget/ComboboxDropdownTarget";
 import { ComboboxGroup } from "./ComboboxGroup/ComboboxGroup";
 import { ComboboxClearButton } from "./ComboboxClearButton/ComboboxClearButton";
+import classes from "./Combobox.module.css";
 
 export type ComboboxStylesNames =
   | "options"
@@ -146,17 +147,7 @@ export function Combobox(_props: ComboboxProps) {
 
   const getStyles = useStyles<ComboboxFactory>({
     name: __staticSelector || "Combobox",
-    classes: {
-      dropdown: "comboBox-dropdown",
-      options: "comboBox-options",
-      option: "comboBox-option",
-      search: "comboBox-search",
-      empty: "comboBox-empty",
-      header: "comboBox-header",
-      footer: "comboBox-footer",
-      group: "comboBox-group",
-      groupLabel: "comboBox-groupLabel",
-    },
+    classes,
     props,
     classNames,
     styles,
@@ -192,6 +183,7 @@ const extendCombobox = (
 ): RaikouThemeComponent => c;
 
 Combobox.extend = extendCombobox;
+Combobox.classes = classes;
 Combobox.displayName = "@raikou/core/Combobox";
 Combobox.Target = ComboboxTarget;
 Combobox.Dropdown = ComboboxDropdown;

@@ -12,6 +12,7 @@ import {
   getSize,
   RaikouSize,
 } from "@raikou/core";
+import classes from "./Kbd.module.css";
 
 export type KbdStylesNames = "root";
 export type KbdCssVariables = {
@@ -49,9 +50,7 @@ export const Kbd = factory<KbdFactory>((_props, ref) => {
 
   const getStyles = useStyles<KbdFactory>({
     name: "Kbd",
-    classes: {
-      root: "kbd-root",
-    },
+    classes,
     props,
     className,
     style,
@@ -65,4 +64,5 @@ export const Kbd = factory<KbdFactory>((_props, ref) => {
   return <Box component="kbd" ref={ref} {...getStyles("root")} {...others} />;
 });
 
+Kbd.classes = classes;
 Kbd.displayName = "@raikou/core/Kbd";

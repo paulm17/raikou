@@ -12,6 +12,7 @@ import {
   getRadius,
 } from "@raikou/core";
 import { useStore } from "./store";
+import classes from "./Image.module.css";
 
 export type ImageStylesNames = "root";
 export type ImageCssVariables = {
@@ -71,9 +72,7 @@ export const Image = polymorphicFactory<ImageFactory>((_props, ref) => {
 
   const getStyles = useStyles<ImageFactory>({
     name: "Image",
-    classes: {
-      root: "image-root",
-    },
+    classes,
     props,
     className,
     style,
@@ -107,4 +106,5 @@ export const Image = polymorphicFactory<ImageFactory>((_props, ref) => {
   );
 });
 
+Image.classes = classes;
 Image.displayName = "@raikou/core/Image";

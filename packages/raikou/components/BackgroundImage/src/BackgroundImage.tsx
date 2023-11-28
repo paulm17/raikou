@@ -11,6 +11,7 @@ import {
   createVarsResolver,
   PolymorphicFactory,
 } from "@raikou/core";
+import classes from "./BackgroundImage.module.css";
 
 export type BackgroundImageStylesNames = "root";
 export type BackgroundImageVariant = string;
@@ -65,9 +66,7 @@ export const BackgroundImage = polymorphicFactory<BackgroundImageFactory>(
     const getStyles = useStyles<BackgroundImageFactory>({
       name: "BackgroundImage",
       props,
-      classes: {
-        root: "backgroundImage-root",
-      },
+      classes,
       className,
       style,
       classNames,
@@ -89,3 +88,4 @@ export const BackgroundImage = polymorphicFactory<BackgroundImageFactory>(
 );
 
 BackgroundImage.displayName = "@raikou/core/BackgroundImage";
+BackgroundImage.classes = classes;

@@ -3009,8 +3009,8 @@ FloatingArrow.displayName = "@raikou/core/FloatingArrow";
 
 // ../Popover/src/use-popover.ts
 var import_hooks3 = require("@raikou/hooks");
-function getPopoverMiddlewares(options) {
-  var _a, _b, _c;
+function getPopoverMiddlewares(options, getFloating) {
+  var _a, _b, _c, _d;
   const middlewares = [offset(options.offset)];
   if ((_a = options.middlewares) == null ? void 0 : _a.shift) {
     middlewares.push(shift({ limiter: limitShift() }));
@@ -3024,6 +3024,28 @@ function getPopoverMiddlewares(options) {
   middlewares.push(
     arrow2({ element: options.arrowRef, padding: options.arrowOffset })
   );
+  if (((_d = options.middlewares) == null ? void 0 : _d.size) || options.width === "target") {
+    middlewares.push(
+      size({
+        apply({ rects, availableWidth, availableHeight }) {
+          var _a2, _b2, _c2;
+          const floating = getFloating();
+          const styles = (_b2 = (_a2 = floating.refs.floating.current) == null ? void 0 : _a2.style) != null ? _b2 : {};
+          if ((_c2 = options.middlewares) == null ? void 0 : _c2.size) {
+            Object.assign(styles, {
+              maxWidth: `${availableWidth}px`,
+              maxHeight: `${availableHeight}px`
+            });
+          }
+          if (options.width === "target") {
+            Object.assign(styles, {
+              width: `${rects.reference.width}px`
+            });
+          }
+        }
+      })
+    );
+  }
   return middlewares;
 }
 function usePopover(options) {
@@ -3052,19 +3074,7 @@ function usePopover(options) {
   };
   const floating = useFloating2({
     placement: options.position,
-    middleware: [
-      ...getPopoverMiddlewares(options),
-      ...options.width === "target" ? [
-        size({
-          apply({ rects }) {
-            var _a, _b;
-            Object.assign((_b = (_a = floating.refs.floating.current) == null ? void 0 : _a.style) != null ? _b : {}, {
-              width: `${rects.reference.width}px`
-            });
-          }
-        })
-      ] : []
-    ]
+    middleware: getPopoverMiddlewares(options, () => floating)
   });
   useFloatingAutoUpdate({
     opened: options.opened,
@@ -4589,7 +4599,7 @@ var UnstyledButton = (0, import_core32.polymorphicFactory)(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,
@@ -5072,6 +5082,7 @@ var Scrollbar = (0, import_react45.forwardRef)(
     );
   }
 );
+Scrollbar.displayName = "@raikou/Scrollbar";
 
 // ../ScrollArea/src/ScrollAreaScrollbar/ScrollbarX.tsx
 var ScrollAreaScrollbarX = (0, import_react46.forwardRef)((props, forwardedRef) => {
@@ -5788,11 +5799,11 @@ function CheckIcon(_a) {
   return /* @__PURE__ */ import_react58.default.createElement(
     "svg",
     __spreadValues({
-      className: "icon",
       viewBox: "0 0 10 7",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
-      style: _style
+      style: _style,
+      "aria-hidden": true
     }, others),
     /* @__PURE__ */ import_react58.default.createElement(
       "path",
@@ -6110,10 +6121,10 @@ var Select = (0, import_core40.factory)((_props, ref) => {
     if (value === null) {
       setSearch("");
     }
-    if (typeof value === "string" && optionsLockup[value]) {
-      setSearch(optionsLockup[value].label);
+    if (typeof value === "string" && selectedOption) {
+      setSearch(selectedOption.label);
     }
-  }, [value, optionsLockup]);
+  }, [value, selectedOption]);
   const clearButton = clearable && !!_value && !disabled && !readOnly && /* @__PURE__ */ import_react60.default.createElement(
     Combobox.ClearButton,
     __spreadProps(__spreadValues({
@@ -6138,7 +6149,9 @@ var Select = (0, import_core40.factory)((_props, ref) => {
         onOptionSubmit == null ? void 0 : onOptionSubmit(val);
         const nextValue = allowDeselect ? optionsLockup[val].value === _value ? null : optionsLockup[val].value : optionsLockup[val].value;
         setValue(nextValue);
-        setSearch(nextValue ? optionsLockup[val].label : "");
+        setSearch(
+          typeof nextValue === "string" ? optionsLockup[val].label : ""
+        );
         combobox.closeDropdown();
       },
       size: size2
@@ -6173,8 +6186,11 @@ var Select = (0, import_core40.factory)((_props, ref) => {
           onFocus == null ? void 0 : onFocus(event);
         },
         onBlur: (event) => {
+          var _a2;
           searchable && combobox.closeDropdown();
-          setSearch(_value ? optionsLockup[_value].label : "");
+          setSearch(
+            _value != null ? ((_a2 = optionsLockup[_value]) == null ? void 0 : _a2.label) || "" : ""
+          );
           onBlur == null ? void 0 : onBlur(event);
         },
         onClick: (event) => {

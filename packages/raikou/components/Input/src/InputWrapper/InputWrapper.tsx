@@ -31,6 +31,7 @@ import {
 } from "../InputError/InputError";
 import { InputWrapperProvider } from "../InputWrapper.context";
 import { getInputOffsets } from "./get-input-offsets/get-input-offsets";
+import classes from "../Input.module.css";
 
 export type InputWrapperCssVariables = InputLabelCssVariables &
   InputErrorCssVariables &
@@ -156,13 +157,14 @@ export const InputWrapper = factory<InputWrapperFactory>((_props, ref) => {
   const getStyles = useStyles<InputWrapperFactory>({
     name: ["InputWrapper", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      root: "inputWrapper-root",
-      label: "inputWrapper-label",
-      required: "inputWrapper-required",
-      error: "inputWrapper-error",
-      description: "inputWrapper-description",
-    },
+    classes,
+    // classes: {
+    //   root: "inputWrapper-root",
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    //   error: "inputWrapper-error",
+    //   description: "inputWrapper-description",
+    // },
     className,
     style,
     classNames,

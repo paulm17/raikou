@@ -859,9 +859,10 @@ function RadioIcon(_a) {
       xmlns: "http://www.w3.org/2000/svg",
       fill: "none",
       viewBox: "0 0 5 5",
-      style: __spreadValues({ width: rem5(size), height: rem5(size) }, style)
+      style: __spreadValues({ width: rem5(size), height: rem5(size) }, style),
+      "aria-hidden": true
     }, others),
-    /* @__PURE__ */ React10.createElement("path", { fill: "currentColor", d: "M0 2.5a2.5 2.5 0 115 0 2.5 2.5 0 01-5 0z" })
+    /* @__PURE__ */ React10.createElement("circle", { cx: "2.5", cy: "2.5", r: "2.5", fill: "currentColor" })
   );
 }
 
@@ -949,11 +950,13 @@ var defaultProps8 = {
   radius: "xl"
 };
 var varsResolver6 = createVarsResolver6(
-  (theme, { size, radius, color }) => ({
+  (theme, { size, radius, color, iconColor }) => ({
     root: {
       "--radio-size": getSize3(size, "radio-size"),
+      "--radio-icon-size": getSize3(size, "radio-icon-size"),
       "--radio-radius": radius === void 0 ? void 0 : getRadius2(radius),
-      "--radio-color": color ? getThemeColor(color, theme) : void 0
+      "--radio-color": color ? getThemeColor(color, theme) : void 0,
+      "--radio-icon-color": iconColor ? getThemeColor(iconColor, theme) : void 0
     }
   })
 );

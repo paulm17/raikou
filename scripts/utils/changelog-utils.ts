@@ -1,24 +1,25 @@
-import { Octokit, RestEndpointMethodTypes } from "@octokit/rest"
-import fs from "fs"
+import { Octokit, RestEndpointMethodTypes } from "@octokit/rest";
+import fs from "fs";
 
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
-})
+});
 
 /* -----------------------------------------------------------------------------
  * Types
  * -----------------------------------------------------------------------------*/
 
-type PullRequests = RestEndpointMethodTypes["pulls"]["list"]["response"]["data"]
-type PullRequest = PullRequests[number]
+type PullRequests =
+  RestEndpointMethodTypes["pulls"]["list"]["response"]["data"];
+type PullRequest = PullRequests[number];
 
 export type PrData = {
-  id: number
-  url: string
-  body: string
-  date: string
-  version: string | undefined
-}
+  id: number;
+  url: string;
+  body: string;
+  date: string;
+  version: string | undefined;
+};
 
 /* -----------------------------------------------------------------------------
  *  Get details of a pull request
@@ -28,33 +29,33 @@ const dateFormatOptions: Intl.DateTimeFormatOptions = {
   year: "numeric",
   month: "long",
   day: "numeric",
-}
+};
 
 export function getPrData(pr: PullRequest): PrData | undefined {
-  if (!pr.body) return
+  if (!pr.body) return;
 
-  let content = pr.body ?? ""
-  const parts = content.split("# Releases")
-  content = parts[1] || content
+  let content = pr.body ?? "";
+  const parts = content.split("# Releases");
+  content = parts[1] || content;
 
   const date = new Date(pr.merged_at ?? pr.updated_at).toLocaleDateString(
     "en-US",
     dateFormatOptions,
-  )
+  );
 
-  const match = content.match(/## @charizardxx-ui\/react\@(?<version>\d.+)/)
-  const version = match?.groups?.version
+  const match = content.match(/## @charizardxx-ui\/react\@(?<version>\d.+)/);
+  const version = match?.groups?.version;
 
   const sanitized = content
     .replace(/<(https?:\/\/.+)>/g, (_, group) => {
-      return `[${group}](${group})`
+      return `[${group}](${group})`;
     })
     .replace(/-\s+(Updated dependencies(?:\n.+)*]):(?:\n.+)*/gm, (_, group) => {
-      return `- ${group}`
+      return `- ${group}`;
     })
     .replace(/-\s+(Updated dependencies) \\\[\]:(?:\n.+)*/gm, (_, group) => {
-      return `- ${group}`
-    })
+      return `- ${group}`;
+    });
 
   const body = [
     "---",
@@ -66,7 +67,7 @@ export function getPrData(pr: PullRequest): PrData | undefined {
     "---",
     "\n",
     `${sanitized}`,
-  ]
+  ];
 
   return {
     id: pr.number,
@@ -74,7 +75,7 @@ export function getPrData(pr: PullRequest): PrData | undefined {
     body: body.join("\n"),
     date: date,
     version,
-  }
+  };
 }
 
 /* -----------------------------------------------------------------------------
@@ -86,9 +87,9 @@ export async function getPrByNumber(num: number): Promise<PullRequest> {
     owner: "charizardxx-ui",
     repo: "charizardxx-ui",
     pull_number: num,
-  })
+  });
 
-  return data as any
+  return data as any;
 }
 
 export async function getLatestPr(): Promise<PullRequest> {
@@ -99,9 +100,9 @@ export async function getLatestPr(): Promise<PullRequest> {
     base: "main",
     head: "charizardxx-ui:changeset-release/main",
     per_page: 1,
-  })
+  });
 
-  return data[0]
+  return data[0];
 }
 
 export async function getMergedPrs(): Promise<PullRequests> {
@@ -112,17 +113,17 @@ export async function getMergedPrs(): Promise<PullRequests> {
     base: "main",
     head: "charizardxx-ui:changeset-release/main",
     per_page: 100,
-  })
+  });
 
-  return data.filter((pr) => pr.merged_at)
+  return data.filter((pr) => pr.merged_at);
 }
 
 export async function writePrFile(pr: PrData | undefined) {
-  if (!pr) return
+  if (!pr) return;
   if (!fs.existsSync(".changelog")) {
-    fs.mkdirSync(".changelog")
+    fs.mkdirSync(".changelog");
   }
-  return fs.promises.writeFile(`.changelog/v${pr.version}.mdx`, pr.body)
+  return fs.promises.writeFile(`.changelog/v${pr.version}.mdx`, pr.body);
 }
 
 /* -----------------------------------------------------------------------------
@@ -132,33 +133,36 @@ export async function writePrFile(pr: PrData | undefined) {
 export const manifest = {
   path: ".changelog/manifest.json",
   async write(data: PrData[]) {
-    const sortedData = data.sort((a, b) => b.id - a.id)
-    return fs.promises.writeFile(this.path, JSON.stringify(sortedData, null, 2))
+    const sortedData = data.sort((a, b) => b.id - a.id);
+    return fs.promises.writeFile(
+      this.path,
+      JSON.stringify(sortedData, null, 2),
+    );
   },
   async read(): Promise<PrData[]> {
     try {
-      return JSON.parse(await fs.promises.readFile(this.path, "utf8"))
+      return JSON.parse(await fs.promises.readFile(this.path, "utf8"));
     } catch (error) {
-      return []
+      return [];
     }
   },
   async update(data: PrData) {
-    const prevData = await this.read()
-    const newData = [data, ...prevData]
-    return this.write(newData)
+    const prevData = await this.read();
+    const newData = [data, ...prevData];
+    return this.write(newData);
   },
-}
+};
 
 /* -----------------------------------------------------------------------------
  * The readme file helpers
  * -----------------------------------------------------------------------------*/
 
 export async function writeReadme() {
-  const data = await manifest.read()
+  const data = await manifest.read();
   const sortedData = data.map(
     (pr) => `### ${pr.date}: [v${pr.version}](/.changelog/v${pr.version}.mdx)`,
-  )
-  const [latestRelease, ...otherReleases] = sortedData
+  );
+  const [latestRelease, ...otherReleases] = sortedData;
 
   const readme = [
     "# Changelog",
@@ -168,7 +172,7 @@ export async function writeReadme() {
     "\n",
     "## Previous Releases",
     ...otherReleases,
-  ].join("\n")
+  ].join("\n");
 
-  await fs.promises.writeFile("CHANGELOG.md", readme)
+  await fs.promises.writeFile("CHANGELOG.md", readme);
 }

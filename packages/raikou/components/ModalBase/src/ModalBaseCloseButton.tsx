@@ -3,6 +3,7 @@ import cx from "clsx";
 import { BoxProps, ElementProps } from "@raikou/core";
 import { CloseButton, CloseButtonProps } from "../../CloseButton/src";
 import { useModalBaseContext } from "./ModalBase.context";
+import classes from "./ModalBase.module.css";
 
 // @ts-ignore
 export interface ModalBaseCloseButtonProps
@@ -23,7 +24,7 @@ export const ModalBaseCloseButton = forwardRef<
         ctx.onClose();
         onClick?.(event);
       }}
-      className={cx("modalBase-close", className)}
+      className={cx(classes.close, className)}
     />
   );
 });

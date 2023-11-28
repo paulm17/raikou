@@ -14,6 +14,7 @@ import {
   getSize,
   RaikouSize,
 } from "@raikou/core";
+import classes from "./Divider.module.css";
 
 export type DividerStylesNames = "root" | "label";
 export type DividerVariant = "solid" | "dashed" | "dotted";
@@ -81,10 +82,7 @@ export const Divider = factory<DividerFactory>((_props, ref) => {
 
   const getStyles = useStyles<DividerFactory>({
     name: "Divider",
-    classes: {
-      root: "divider-root",
-      label: "divider-label",
-    },
+    classes,
     props,
     className,
     style,
@@ -117,3 +115,4 @@ export const Divider = factory<DividerFactory>((_props, ref) => {
 });
 
 Divider.displayName = "@raikou/core/Divider";
+Divider.classes = classes;

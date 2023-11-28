@@ -12,6 +12,7 @@ import {
 } from "@raikou/core";
 import { useInputWrapperContext } from "../../../Input/src";
 import { usePillsInputContext } from "../PillsInput.context";
+import classes from "../PillsInput.module.css";
 
 export type PillsInputFieldStylesNames = "field";
 
@@ -57,9 +58,7 @@ export const PillsInputField = factory<PillsInputFieldFactory>(
 
     const getStyles = useStyles<PillsInputFieldFactory>({
       name: "PillsInputField",
-      classes: {
-        field: "field",
-      },
+      classes,
       props,
       className,
       style,
@@ -85,7 +84,8 @@ export const PillsInputField = factory<PillsInputFieldFactory>(
         aria-describedby={inputWrapperCtx?.describedBy}
       />
     );
-  }
+  },
 );
 
+PillsInputField.classes = classes;
 PillsInputField.displayName = "@raikou/core/PillsInputField";

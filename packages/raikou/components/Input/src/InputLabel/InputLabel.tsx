@@ -13,6 +13,7 @@ import {
   Factory,
 } from "@raikou/core";
 import { useInputWrapperContext } from "../InputWrapper.context";
+import classes from "../Input.module.css";
 
 export type InputLabelStylesNames = "label" | "required";
 export type InputLabelCssVariables = {
@@ -76,10 +77,11 @@ export const InputLabel = factory<InputLabelFactory>((_props, ref) => {
   const _getStyles = useStyles<InputLabelFactory>({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      label: "inputWrapper-label",
-      required: "inputWrapper-required",
-    },
+    classes,
+    // classes: {
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    // },
     className,
     style,
     classNames,

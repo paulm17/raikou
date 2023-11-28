@@ -31,6 +31,7 @@ import {
   SliderProvider,
   SliderStylesNames,
 } from "../Slider.context";
+import classes from "../Slider.module.css";
 
 export interface SliderBaseProps {
   /** Key of `theme.colors` or any valid CSS color, controls color of track and thumb, `theme.primaryColor` by default */
@@ -255,17 +256,7 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
   const getStyles = useStyles<SliderFactory>({
     name: "Slider",
     props,
-    classes: {
-      root: "slider-root",
-      label: "slider-label",
-      thumb: "slider-thumb",
-      trackContainer: "slider-trackContainer",
-      track: "slider-track",
-      bar: "slider-bar",
-      markWrapper: "slider-markWrapper",
-      mark: "slider-mark",
-      markLabel: "slider-markLabel",
-    },
+    classes,
     classNames,
     className,
     styles,
@@ -456,4 +447,5 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
   );
 });
 
+Slider.classes = classes;
 Slider.displayName = "@raikou/core/Slider";

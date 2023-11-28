@@ -42,17 +42,17 @@ var FLEX_STYLE_PROPS_DATA = {
 import React from "react";
 import {
   Box,
-  factory,
   useProps,
   useStyles,
   InlineStyles,
   useRandomClassName,
   parseStyleProps,
   useRaikouTheme,
-  filterProps
+  filterProps,
+  polymorphicFactory
 } from "@raikou/core";
 var defaultProps = {};
-var Flex = factory((_props, ref) => {
+var Flex = polymorphicFactory((_props, ref) => {
   const props = useProps("Flex", defaultProps, _props);
   const _a = props, {
     classNames,

@@ -2234,8 +2234,8 @@ FloatingArrow.displayName = "@raikou/core/FloatingArrow";
 
 // ../Popover/src/use-popover.ts
 var import_hooks2 = require("@raikou/hooks");
-function getPopoverMiddlewares(options) {
-  var _a, _b, _c;
+function getPopoverMiddlewares(options, getFloating) {
+  var _a, _b, _c, _d;
   const middlewares = [offset(options.offset)];
   if ((_a = options.middlewares) == null ? void 0 : _a.shift) {
     middlewares.push(shift({ limiter: limitShift() }));
@@ -2249,6 +2249,28 @@ function getPopoverMiddlewares(options) {
   middlewares.push(
     arrow2({ element: options.arrowRef, padding: options.arrowOffset })
   );
+  if (((_d = options.middlewares) == null ? void 0 : _d.size) || options.width === "target") {
+    middlewares.push(
+      size({
+        apply({ rects, availableWidth, availableHeight }) {
+          var _a2, _b2, _c2;
+          const floating = getFloating();
+          const styles = (_b2 = (_a2 = floating.refs.floating.current) == null ? void 0 : _a2.style) != null ? _b2 : {};
+          if ((_c2 = options.middlewares) == null ? void 0 : _c2.size) {
+            Object.assign(styles, {
+              maxWidth: `${availableWidth}px`,
+              maxHeight: `${availableHeight}px`
+            });
+          }
+          if (options.width === "target") {
+            Object.assign(styles, {
+              width: `${rects.reference.width}px`
+            });
+          }
+        }
+      })
+    );
+  }
   return middlewares;
 }
 function usePopover(options) {
@@ -2277,19 +2299,7 @@ function usePopover(options) {
   };
   const floating = useFloating2({
     placement: options.position,
-    middleware: [
-      ...getPopoverMiddlewares(options),
-      ...options.width === "target" ? [
-        size({
-          apply({ rects }) {
-            var _a, _b;
-            Object.assign((_b = (_a = floating.refs.floating.current) == null ? void 0 : _a.style) != null ? _b : {}, {
-              width: `${rects.reference.width}px`
-            });
-          }
-        })
-      ] : []
-    ]
+    middleware: getPopoverMiddlewares(options, () => floating)
   });
   useFloatingAutoUpdate({
     opened: options.opened,
@@ -4572,7 +4582,7 @@ var UnstyledButton = (0, import_core31.polymorphicFactory)(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,
@@ -5055,6 +5065,7 @@ var Scrollbar = (0, import_react44.forwardRef)(
     );
   }
 );
+Scrollbar.displayName = "@raikou/Scrollbar";
 
 // ../ScrollArea/src/ScrollAreaScrollbar/ScrollbarX.tsx
 var ScrollAreaScrollbarX = (0, import_react45.forwardRef)((props, forwardedRef) => {
@@ -5771,11 +5782,11 @@ function CheckIcon(_a) {
   return /* @__PURE__ */ import_react57.default.createElement(
     "svg",
     __spreadValues({
-      className: "icon",
       viewBox: "0 0 10 7",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
-      style: _style
+      style: _style,
+      "aria-hidden": true
     }, others),
     /* @__PURE__ */ import_react57.default.createElement(
       "path",
@@ -6017,7 +6028,7 @@ var PillsInputField = (0, import_core40.factory)(
     const getStyles = (0, import_core40.useStyles)({
       name: "PillsInputField",
       classes: {
-        field: "field"
+        field: "pillsInput-field"
       },
       props,
       className,
@@ -6373,7 +6384,8 @@ var MultiSelect = (0, import_core44.factory)((_props, ref) => {
     id,
     clearable,
     clearButtonProps,
-    hiddenInputProps
+    hiddenInputProps,
+    placeholder
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -6438,7 +6450,8 @@ var MultiSelect = (0, import_core44.factory)((_props, ref) => {
     "id",
     "clearable",
     "clearButtonProps",
-    "hiddenInputProps"
+    "hiddenInputProps",
+    "placeholder"
   ]);
   const _id = (0, import_hooks25.useId)(id);
   const parsedData = getParsedComboboxData(data);
@@ -6496,6 +6509,11 @@ var MultiSelect = (0, import_core44.factory)((_props, ref) => {
     }, getStyles("pill")),
     optionsLockup[item].label
   ));
+  (0, import_react64.useEffect)(() => {
+    if (selectFirstOptionOnChange) {
+      combobox.selectFirstOption();
+    }
+  }, [selectFirstOptionOnChange, _value]);
   const clearButton = clearable && _value.length > 0 && !disabled && !readOnly && /* @__PURE__ */ import_react64.default.createElement(
     Combobox.ClearButton,
     __spreadProps(__spreadValues({
@@ -6507,6 +6525,7 @@ var MultiSelect = (0, import_core44.factory)((_props, ref) => {
       }
     })
   );
+  const filteredData = filterPickedValues({ data: parsedData, value: _value });
   return /* @__PURE__ */ import_react64.default.createElement(import_react64.default.Fragment, null, /* @__PURE__ */ import_react64.default.createElement(
     Combobox,
     __spreadValues({
@@ -6587,12 +6606,15 @@ var MultiSelect = (0, import_core44.factory)((_props, ref) => {
         PillsInput.Field,
         __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, rest), {
           ref,
-          id: _id
+          id: _id,
+          placeholder,
+          type: !searchable && !placeholder ? "hidden" : "visible"
         }), getStyles("inputField")), {
           unstyled,
           onFocus: (event) => {
             onFocus == null ? void 0 : onFocus(event);
             searchable && combobox.openDropdown();
+            selectFirstOptionOnChange && combobox.selectFirstOption();
           },
           onBlur: (event) => {
             onBlur == null ? void 0 : onBlur(event);
@@ -6615,12 +6637,12 @@ var MultiSelect = (0, import_core44.factory)((_props, ref) => {
     /* @__PURE__ */ import_react64.default.createElement(
       OptionsDropdown,
       {
-        data: hidePickedOptions ? filterPickedValues({ data: parsedData, value: _value }) : parsedData,
+        data: hidePickedOptions ? filteredData : parsedData,
         hidden: readOnly || disabled,
         filter,
         search: _searchValue,
         limit,
-        hiddenWhenEmpty: hidePickedOptions || !nothingFoundMessage || !searchable && _searchValue.trim().length !== 0,
+        hiddenWhenEmpty: !searchable || !nothingFoundMessage || hidePickedOptions && filteredData.length === 0 && _searchValue.trim().length === 0,
         withScrollArea,
         maxDropdownHeight,
         filterOptions: searchable,

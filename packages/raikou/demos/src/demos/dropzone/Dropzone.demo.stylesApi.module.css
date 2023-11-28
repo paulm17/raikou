@@ -1,0 +1,21 @@
+.root {
+  min-height: rem(120px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  background-color: light-dark(
+    var(--raikou-color-gray-0),
+    var(--raikou-color-dark-6)
+  );
+
+  &[data-accept] {
+    color: var(--raikou-color-white);
+    background-color: var(--raikou-color-blue-6);
+  }
+
+  &[data-reject] {
+    color: var(--raikou-color-white);
+    background-color: var(--raikou-color-red-6);
+  }
+}

@@ -10,6 +10,7 @@ import {
 } from "@raikou/core";
 import { Popover } from "../../../Popover/src";
 import { useMenuContext } from "../Menu.context";
+import classes from "../Menu.module.css";
 
 export type MenuDropdownStylesNames = "dropdown";
 
@@ -88,4 +89,5 @@ export const MenuDropdown = factory<MenuDropdownFactory>((props, ref) => {
   );
 });
 
+MenuDropdown.classes = classes;
 MenuDropdown.displayName = "@raikou/core/MenuDropdown";

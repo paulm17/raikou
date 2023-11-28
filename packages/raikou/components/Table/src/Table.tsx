@@ -23,7 +23,9 @@ import {
   TableTr,
   TableThead,
 } from "./Table.components";
+import { TableDataRenderer } from "./TableDataRenderer";
 import { useStore } from "./store";
+import classes from "./Table.module.css";
 
 export type TableStylesNames =
   | "table"
@@ -45,6 +47,13 @@ export type TableCssVariables = {
     | "--table-striped-color"
     | "--table-highlight-on-hover-color";
 };
+
+export interface TableData {
+  head?: React.ReactNode[];
+  body?: React.ReactNode[][];
+  foot?: React.ReactNode[];
+  caption?: string;
+}
 
 export interface TableProps
   extends BoxProps,
@@ -85,6 +94,9 @@ export interface TableProps
 
   /** Background color of table rows when hovered, key of `theme.colors` or any valid CSS color */
   highlightOnHoverColor?: RaikouColor;
+
+  /** Data that should be used to generate table, ignored if `children` prop is set */
+  data?: TableData;
 }
 
 export type TableFactory = Factory<{
@@ -100,6 +112,7 @@ export type TableFactory = Factory<{
     Th: typeof TableTh;
     Tr: typeof TableTr;
     Caption: typeof TableCaption;
+    DataRenderer: typeof TableDataRenderer;
   };
 }>;
 
@@ -165,6 +178,8 @@ export const Table = factory<TableFactory>((_props, ref) => {
     borderColor,
     layout,
     variant,
+    data,
+    children,
     ...others
   } = props;
 
@@ -173,16 +188,7 @@ export const Table = factory<TableFactory>((_props, ref) => {
     props,
     className,
     style,
-    classes: {
-      table: "table-root",
-      th: "table-th",
-      tr: "table-tr",
-      td: "table-td",
-      tbody: "table-tbody",
-      caption: "table-caption",
-      tfoot: "table-tfoot",
-      thead: "table-thead",
-    },
+    classes,
     classNames,
     styles,
     unstyled,
@@ -208,10 +214,13 @@ export const Table = factory<TableFactory>((_props, ref) => {
       mod={{ "data-with-table-border": withTableBorder }}
       {...getStyles("table")}
       {...others}
-    />
+    >
+      {children || (!!data && <TableDataRenderer data={data} />)}
+    </Box>
   );
 });
 
+Table.classes = classes;
 Table.displayName = "@raikou/core/Table";
 Table.Td = TableTd;
 Table.Th = TableTh;
@@ -220,3 +229,4 @@ Table.Thead = TableThead;
 Table.Tbody = TableTbody;
 Table.Tfoot = TableTfoot;
 Table.Caption = TableCaption;
+Table.DataRenderer = TableDataRenderer;

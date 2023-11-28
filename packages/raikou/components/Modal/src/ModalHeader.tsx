@@ -7,6 +7,7 @@ import {
 } from "@raikou/core";
 import { ModalBaseHeader, ModalBaseHeaderProps } from "../../ModalBase/src";
 import { useModalContext } from "./Modal.context";
+import classes from "./Modal.module.css";
 
 export type ModalHeaderStylesNames = "header";
 
@@ -38,4 +39,5 @@ export const ModalHeader = factory<ModalHeaderFactory>((_props, ref) => {
   );
 });
 
+ModalHeader.classes = classes;
 ModalHeader.displayName = "@raikou/core/ModalHeader";

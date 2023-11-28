@@ -17,6 +17,7 @@ import {
   RaikouRadius,
   getRadius,
 } from "@raikou/core";
+import classes from "./Blockquote.module.css";
 
 export type BlockquoteStylesNames = "root" | "icon" | "cite";
 
@@ -104,11 +105,7 @@ export const Blockquote = factory<BlockquoteFactory>((_props, ref) => {
 
   const getStyles = useStyles<BlockquoteFactory>({
     name: "Blockquote",
-    classes: {
-      root: "blockquote-root",
-      icon: "blockquote-icon",
-      cite: "blockquote-cite",
-    },
+    classes,
     props,
     className,
     style,
@@ -129,3 +126,4 @@ export const Blockquote = factory<BlockquoteFactory>((_props, ref) => {
 });
 
 Blockquote.displayName = "@raikou/core/Blockquote";
+Blockquote.classes = classes;

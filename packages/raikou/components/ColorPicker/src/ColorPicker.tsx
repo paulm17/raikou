@@ -22,6 +22,7 @@ import { ColorFormat, HsvaColor } from "./ColorPicker.types";
 import { convertHsvaTo, isColorValid, parseColor } from "./converters";
 import { ColorSwatch } from "../../ColorSwatch/src";
 import { ColorPickerProvider } from "./ColorPicker.context";
+import classes from "./ColorPicker.module.css";
 
 export type ColorPickerStylesNames =
   | "wrapper"
@@ -162,19 +163,7 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
   const getStyles = useStyles<ColorPickerFactory>({
     name: __staticSelector!,
     props,
-    classes: {
-      wrapper: "colorPicker-wrapper",
-      preview: "colorPicker-preview",
-      body: "colorPicker-body",
-      sliders: "colorPicker-sliders",
-      slider: "colorPicker-slider",
-      sliderOverlay: "colorPicker-sliderOverlay",
-      thumb: "colorPicker-thumb",
-      saturation: "colorPicker-saturation",
-      saturationOverlay: "colorPicker-saturationOverlay",
-      swatches: "colorPicker-swatches",
-      swatch: "colorPicker-swatch",
-    },
+    classes,
     className,
     style,
     classNames,
@@ -333,3 +322,4 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
 });
 
 ColorPicker.displayName = "@raikou/core/ColorPicker";
+ColorPicker.classes = classes;

@@ -18,6 +18,7 @@ import { Oval } from "./loaders/Oval";
 import { Progress } from "./loaders/Progress";
 import { Dots } from "./loaders/Dots";
 import type { RaikouLoader, RaikouLoadersRecord } from "./Loader.types";
+import classes from "./Loader.module.css";
 
 export type LoaderStylesNames = "root";
 export type LoaderCssVariables = {
@@ -92,9 +93,7 @@ export const Loader = factory<LoaderFactory>((_props, ref) => {
   const getStyles = useStyles<LoaderFactory>({
     name: "Loader",
     props,
-    classes: {
-      root: "loader-root",
-    },
+    classes,
     className,
     style,
     classNames,
@@ -117,3 +116,4 @@ export const Loader = factory<LoaderFactory>((_props, ref) => {
 });
 
 Loader.displayName = "@raikou/core/Loader";
+Loader.classes = classes;

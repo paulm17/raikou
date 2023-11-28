@@ -12,6 +12,7 @@ import {
   RaikouSize,
   Factory,
 } from "@raikou/core";
+import classes from "./Container.module.css";
 
 export type ContainerStylesNames = "root";
 export type ContainerCssVariables = {
@@ -61,9 +62,7 @@ export const Container = factory<ContainerFactory>((_props, ref) => {
 
   const getStyles = useStyles<ContainerFactory>({
     name: "Container",
-    classes: {
-      root: "container-root",
-    },
+    classes,
     props,
     className,
     style,
@@ -78,3 +77,4 @@ export const Container = factory<ContainerFactory>((_props, ref) => {
 });
 
 Container.displayName = "@raikou/core/Container";
+Container.classes = classes;

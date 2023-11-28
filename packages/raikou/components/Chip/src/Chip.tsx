@@ -21,6 +21,7 @@ import {
 import { CheckIcon } from "../../Checkbox/src";
 import { useChipGroupContext } from "./ChipGroup.context";
 import { ChipGroup } from "./ChipGroup/ChipGroup";
+import classes from "./Chip.module.css";
 
 export type ChipStylesNames =
   | "root"
@@ -153,13 +154,14 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
 
   const getStyles = useStyles<ChipFactory>({
     name: "Chip",
-    classes: {
-      root: "chip-root",
-      input: "chip-input",
-      iconWrapper: "chip-iconWrapper",
-      checkIcon: "chip-checkIcon",
-      label: "chip-label",
-    },
+    classes,
+    // classes: {
+    //   root: "chip-root",
+    //   input: "chip-input",
+    //   iconWrapper: "chip-iconWrapper",
+    //   checkIcon: "chip-checkIcon",
+    //   label: "chip-label",
+    // },
     props,
     className,
     style,

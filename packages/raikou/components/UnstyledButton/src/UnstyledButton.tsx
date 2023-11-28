@@ -8,6 +8,7 @@ import {
   BoxComponentProps,
   PolymorphicFactory,
 } from "@raikou/core";
+import classes from "./UnstyledButton.module.css";
 
 export type UnstyledButtonStylesNames = "root";
 
@@ -45,9 +46,7 @@ export const UnstyledButton = polymorphicFactory<UnstyledButtonFactory>(
     const getStyles = useStyles<UnstyledButtonFactory>({
       name: __staticSelector!,
       props,
-      classes: {
-        root: "unstyled-button-root",
-      },
+      classes,
       className,
       style,
       classNames,
@@ -64,7 +63,8 @@ export const UnstyledButton = polymorphicFactory<UnstyledButtonFactory>(
         {...others}
       />
     );
-  }
+  },
 );
 
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = classes;

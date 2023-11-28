@@ -31,7 +31,7 @@ interface TransitionProps {
     /** Determines whether component should be mounted to the DOM */
     mounted: boolean;
     /** Render function with transition styles argument */
-    children(styles: React.CSSProperties): JSX.Element;
+    children: (styles: React.CSSProperties) => JSX.Element;
     /** Called when exit transition ends */
     onExited?: () => void;
     /** Called when exit transition starts */
@@ -49,7 +49,7 @@ interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
     /** Determines whether modal/drawer is opened */
     opened: boolean;
     /** Called when modal/drawer is closed */
-    onClose(): void;
+    onClose: () => void;
     /** Id used to connect modal/drawer with body and title */
     id?: string;
     /** Determines whether scroll should be locked when `opened={true}`, `true` by default */

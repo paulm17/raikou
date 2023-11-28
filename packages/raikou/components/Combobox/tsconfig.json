@@ -5,5 +5,5 @@
       "@raikou/tests": ["../../tests/src"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "../../../../configuration/types"]
 }

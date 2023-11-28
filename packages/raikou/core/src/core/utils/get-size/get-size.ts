@@ -42,5 +42,5 @@ export function getShadow(size: unknown) {
     return undefined;
   }
 
-  return getSize(size, "raikou-shadow");
+  return getSize(size, "raikou-shadow", false);
 }

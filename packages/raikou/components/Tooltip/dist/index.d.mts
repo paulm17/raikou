@@ -35,7 +35,7 @@ interface TransitionProps {
     /** Determines whether component should be mounted to the DOM */
     mounted: boolean;
     /** Render function with transition styles argument */
-    children(styles: React$1.CSSProperties): JSX.Element;
+    children: (styles: React$1.CSSProperties) => JSX.Element;
     /** Called when exit transition ends */
     onExited?: () => void;
     /** Called when exit transition starts */
@@ -110,7 +110,7 @@ declare namespace TooltipGroup {
 
 interface TooltipProps extends TooltipBaseProps {
     /** Called when tooltip position changes */
-    onPositionChange?(position: FloatingPosition): void;
+    onPositionChange?: (position: FloatingPosition) => void;
     /** Open delay in ms */
     openDelay?: number;
     /** Close delay in ms, `0` by default */

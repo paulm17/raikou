@@ -9,6 +9,7 @@ import {
   Factory,
 } from "@raikou/core";
 import { useStore } from "../store";
+import classes from "../AppShell.module.css";
 
 export type AppShellNavbarStylesNames = "navbar";
 
@@ -65,3 +66,4 @@ export const AppShellNavbar = factory<AppShellNavbarFactory>((_props, ref) => {
 });
 
 AppShellNavbar.displayName = "@raikou/core/AppShellNavbar";
+AppShellNavbar.classes = classes;

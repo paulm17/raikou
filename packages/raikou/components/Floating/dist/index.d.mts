@@ -1,8 +1,8 @@
 import React$1 from 'react';
 
 interface UseDelayedHoverInput {
-    open(): void;
-    close(): void;
+    open: () => void;
+    close: () => void;
     openDelay: number | undefined;
     closeDelay: number | undefined;
 }
@@ -24,7 +24,7 @@ interface FloatingAxesOffsets {
 interface Payload {
     opened: boolean | undefined;
     floating: {
-        update(): void;
+        update: () => void;
         refs: {
             floating: React.MutableRefObject<any>;
             reference: React.MutableRefObject<any>;

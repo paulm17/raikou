@@ -67,6 +67,35 @@ module.exports = __toCommonJS(src_exports);
 var import_react = __toESM(require("react"));
 var import_hooks = require("@raikou/hooks");
 var import_core = require("@raikou/core");
+
+// src/get-root-padding.ts
+function getPaddingValue(value, defaultPaddingValue) {
+  const val = parseFloat(value.replace("px", ""));
+  return Number.isNaN(val) ? defaultPaddingValue : val;
+}
+function getRootPadding(root, defaultPaddingValue) {
+  const computedStyle = window.getComputedStyle(root);
+  return {
+    top: getPaddingValue(
+      computedStyle.getPropertyValue("padding-top"),
+      defaultPaddingValue
+    ),
+    right: getPaddingValue(
+      computedStyle.getPropertyValue("padding-right"),
+      defaultPaddingValue
+    ),
+    bottom: getPaddingValue(
+      computedStyle.getPropertyValue("padding-bottom"),
+      defaultPaddingValue
+    ),
+    left: getPaddingValue(
+      computedStyle.getPropertyValue("padding-left"),
+      defaultPaddingValue
+    )
+  };
+}
+
+// src/SegmentedControl.tsx
 var WRAPPER_PADDING = 4;
 var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)(
@@ -167,17 +196,19 @@ var SegmentedControl = (0, import_core.factory)(
     });
     const uuid = (0, import_hooks.useId)(name);
     const refs = (0, import_react.useRef)({});
+    const rootRef = (0, import_react.useRef)(null);
     const [observerRef, containerRect] = (0, import_hooks.useResizeObserver)();
     (0, import_react.useEffect)(() => {
       if (_value in refs.current && observerRef.current) {
         const element = refs.current[_value];
         if (element) {
+          const rootPadding = getRootPadding(rootRef.current, WRAPPER_PADDING);
           const elementRect = element.getBoundingClientRect();
           const scaledValue = element.offsetWidth / elementRect.width;
           const width = element.clientWidth * scaledValue || 0;
           const height = element.clientHeight * scaledValue || 0;
-          const offsetRight = containerRect.width - element.parentElement.offsetLeft + WRAPPER_PADDING - width;
-          const offsetLeft = element.parentElement.offsetLeft - WRAPPER_PADDING;
+          const offsetRight = containerRect.width - element.parentElement.offsetLeft + (dir === "rtl" ? rootPadding.left : rootPadding.right) - width;
+          const offsetLeft = element.parentElement.offsetLeft - (dir === "rtl" ? rootPadding.right : rootPadding.left);
           setActivePosition({
             width,
             height,
@@ -230,7 +261,7 @@ var SegmentedControl = (0, import_core.factory)(
         item.label
       )
     ));
-    const mergedRef = (0, import_hooks.useMergedRef)(observerRef, ref);
+    const mergedRef = (0, import_hooks.useMergedRef)(observerRef, rootRef, ref);
     if (data.length === 0) {
       return null;
     }

@@ -17,6 +17,7 @@ import { MenuItem } from "./MenuItem/MenuItem";
 import { MenuLabel } from "./MenuLabel/MenuLabel";
 import { MenuTarget } from "./MenuTarget/MenuTarget";
 import { MenuContextProvider } from "./Menu.context";
+import classes from "./Menu.module.css";
 
 export type MenuStylesNames =
   | "item"
@@ -114,14 +115,7 @@ export function Menu(_props: MenuProps) {
 
   const getStyles = useStyles<MenuFactory>({
     name: "Menu",
-    classes: {
-      dropdown: "menu-dropdown",
-      item: "menu-item",
-      itemLabel: "menu-itemLabel",
-      itemSection: "menu-itemSection",
-      label: "menu-label",
-      divider: "menu-divider",
-    },
+    classes,
     props,
     classNames,
     styles,

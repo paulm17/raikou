@@ -83,7 +83,7 @@ export function createStorage<T>(type: StorageType, hookName: string) {
 
   return function useStorage({
     key,
-    defaultValue = undefined,
+    defaultValue,
     getInitialValueInEffect = true,
     deserialize = deserializeJSON,
     serialize = (value: T) => serializeJSON(value, hookName),
@@ -170,6 +170,6 @@ export function createStorage<T>(type: StorageType, hookName: string) {
       value === undefined ? defaultValue : value,
       setStorageValue,
       removeStorageValue,
-    ] as const;
+    ] as [T, (val: T | ((prevState: T) => T)) => void, () => void];
   };
 }

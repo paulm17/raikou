@@ -705,10 +705,16 @@ var CheckboxStylesApi = {
     root: {
       "--checkbox-color": "Controls checked checkbox `background-color`",
       "--checkbox-radius": "Controls checkbox `border-radius`",
-      "--checkbox-size": "Controls checkbox `width` and `height`"
+      "--checkbox-size": "Controls checkbox `width` and `height`",
+      "--checkbox-icon-color": "Controls checkbox icon `color`"
     }
   },
   modifiers: [
+    {
+      modifier: "data-checked",
+      selector: "root",
+      condition: "`checked` prop is set"
+    },
     {
       modifier: "data-error",
       selector: "input",
@@ -1842,7 +1848,9 @@ var RadioStylesApi = {
     root: {
       "--radio-color": "Controls checked radio `background-color`",
       "--radio-radius": "Controls radio `border-radius`",
-      "--radio-size": "Controls radio `width` and `height`"
+      "--radio-size": "Controls radio `width` and `height`",
+      "--radio-icon-color": "Controls radio icon `color`",
+      "--radio-icon-size": "Controls radio icon `width` and `height`"
     }
   },
   modifiers: [

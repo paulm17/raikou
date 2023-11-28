@@ -832,9 +832,10 @@ function RadioIcon(_a) {
       xmlns: "http://www.w3.org/2000/svg",
       fill: "none",
       viewBox: "0 0 5 5",
-      style: __spreadValues({ width: (0, import_core8.rem)(size), height: (0, import_core8.rem)(size) }, style)
+      style: __spreadValues({ width: (0, import_core8.rem)(size), height: (0, import_core8.rem)(size) }, style),
+      "aria-hidden": true
     }, others),
-    /* @__PURE__ */ import_react12.default.createElement("path", { fill: "currentColor", d: "M0 2.5a2.5 2.5 0 115 0 2.5 2.5 0 01-5 0z" })
+    /* @__PURE__ */ import_react12.default.createElement("circle", { cx: "2.5", cy: "2.5", r: "2.5", fill: "currentColor" })
   );
 }
 
@@ -922,11 +923,13 @@ var defaultProps8 = {
   radius: "xl"
 };
 var varsResolver6 = (0, import_core10.createVarsResolver)(
-  (theme, { size, radius, color }) => ({
+  (theme, { size, radius, color, iconColor }) => ({
     root: {
       "--radio-size": (0, import_core10.getSize)(size, "radio-size"),
+      "--radio-icon-size": (0, import_core10.getSize)(size, "radio-icon-size"),
       "--radio-radius": radius === void 0 ? void 0 : (0, import_core10.getRadius)(radius),
-      "--radio-color": color ? (0, import_core10.getThemeColor)(color, theme) : void 0
+      "--radio-color": color ? (0, import_core10.getThemeColor)(color, theme) : void 0,
+      "--radio-icon-color": iconColor ? (0, import_core10.getThemeColor)(iconColor, theme) : void 0
     }
   })
 );

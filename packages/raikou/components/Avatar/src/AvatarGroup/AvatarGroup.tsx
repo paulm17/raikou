@@ -13,6 +13,7 @@ import {
   getSpacing,
 } from "@raikou/core";
 import { AvatarGroupProvider } from "./AvatarGroup.context";
+import classes from "../Avatar.module.css";
 
 export type AvatarGroupStylesNames = "group";
 export type AvatarGroupVariant = string;
@@ -61,9 +62,7 @@ export const AvatarGroup = factory<AvatarGroupFactory>((_props, ref) => {
 
   const getStyles = useStyles<AvatarGroupFactory>({
     name: "AvatarGroup",
-    classes: {
-      root: "avatarGroup-group",
-    },
+    classes,
     props,
     className,
     style,
@@ -83,3 +82,4 @@ export const AvatarGroup = factory<AvatarGroupFactory>((_props, ref) => {
 });
 
 AvatarGroup.displayName = "@raikou/core/AvatarGroup";
+AvatarGroup.classes = classes;

@@ -17,6 +17,7 @@ import { RichTextEditorControlsGroup } from "./RichTextEditorControlsGroup/RichT
 import { RichTextEditorContent } from "./RichTextEditorContent/RichTextEditorContent";
 import { RichTextEditorControl } from "./RichTextEditorControl/RichTextEditorControl";
 import * as controls from "./RichTextEditorControl";
+import classes from "./RichTextEditor.module.css";
 
 export type RichTextEditorStylesNames =
   | "linkEditorSave"
@@ -115,19 +116,7 @@ export const RichTextEditor = factory<RichTextEditorFactory>((_props, ref) => {
 
   const getStyles = useStyles<RichTextEditorFactory>({
     name: "RichTextEditor",
-    classes: {
-      root: "rte-root",
-      typographyStylesProvider: "rte-typographyStylesProvider",
-      content: "rte-content",
-      linkEditorDropdown: "rte-linkEditorDropdown",
-      control: "rte-control",
-      controlsGroup: "rte-controlsGroup",
-      linkEditor: "rte-linkEditor",
-      linkEditorInput: "rte-linkEditorInput",
-      linkEditorExternalControl: "rte-linkEditorExternalControl",
-      linkEditorSave: "rte-linkEditorSave",
-      toolbar: "rte-toolbar",
-    },
+    classes,
     props,
     className,
     style,
@@ -158,6 +147,7 @@ export const RichTextEditor = factory<RichTextEditorFactory>((_props, ref) => {
   );
 });
 
+RichTextEditor.classes = classes;
 RichTextEditor.displayName = "@raikou/tiptap/RichTextEditor";
 
 // Generic components

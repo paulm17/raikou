@@ -12,6 +12,7 @@ import {
   Factory,
 } from "@raikou/core";
 import { getMarkColor } from "./get-mark-color";
+import classes from "./Mark.module.css";
 
 export type MarkStylesNames = "root";
 export type MarkCssVariables = {
@@ -63,9 +64,7 @@ export const Mark = factory<MarkFactory>((_props, ref) => {
     props,
     className,
     style,
-    classes: {
-      root: "mark-root",
-    },
+    classes,
     classNames,
     styles,
     unstyled,
@@ -84,4 +83,5 @@ export const Mark = factory<MarkFactory>((_props, ref) => {
   );
 });
 
+Mark.classes = classes;
 Mark.displayName = "@raikou/core/Mark";

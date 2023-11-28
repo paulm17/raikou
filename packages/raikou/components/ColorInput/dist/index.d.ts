@@ -15,9 +15,9 @@ interface __ColorPickerProps {
     /** Uncontrolled component default value */
     defaultValue?: string;
     /** Called when color changes */
-    onChange?(value: string): void;
+    onChange?: (value: string) => void;
     /** Called when user stops dragging or changes value with arrow keys */
-    onChangeEnd?(value: string): void;
+    onChangeEnd?: (value: string) => void;
     /** Color format, `'hex'` by default */
     format?: ColorFormat;
     /** Determines whether color picker should be displayed, `true` by default */
@@ -55,7 +55,7 @@ interface __InputWrapperProps {
     /** Props passed down to the `InputError` component */
     errorProps?: Record<string, any>;
     /** Input container component, defaults to `React.Fragment` */
-    inputContainer?(children: React$2.ReactNode): React$2.ReactNode;
+    inputContainer?: (children: React$2.ReactNode) => React$2.ReactNode;
     /** Controls order of the elements, `['label', 'description', 'input', 'error']` by default */
     inputWrapperOrder?: ("label" | "input" | "description" | "error")[];
 }
@@ -3658,7 +3658,7 @@ interface TransitionProps {
     /** Determines whether component should be mounted to the DOM */
     mounted: boolean;
     /** Render function with transition styles argument */
-    children(styles: React$2.CSSProperties): JSX.Element;
+    children: (styles: React$2.CSSProperties) => JSX.Element;
     /** Called when exit transition ends */
     onExited?: () => void;
     /** Called when exit transition starts */
@@ -3687,11 +3687,12 @@ interface PortalProps extends React$2.ComponentPropsWithoutRef<"div"> {
     target?: HTMLElement | string;
 }
 
-type PopoverWidth = 'target' | React.CSSProperties['width'];
+type PopoverWidth = "target" | React.CSSProperties["width"];
 interface PopoverMiddlewares {
     shift: boolean;
     flip: boolean;
     inline?: boolean;
+    size?: boolean;
 }
 
 type PopoverStylesNames = "dropdown" | "arrow";
@@ -3704,13 +3705,13 @@ interface __PopoverProps {
     /** Offset of the dropdown element, `8` by default */
     offset?: number | FloatingAxesOffsets;
     /** Called when dropdown position changes */
-    onPositionChange?(position: FloatingPosition): void;
+    onPositionChange?: (position: FloatingPosition) => void;
     /** `useEffect` dependencies to force update dropdown position, `[]` by default */
     positionDependencies?: any[];
     /** Called when dropdown closes */
-    onClose?(): void;
+    onClose?: () => void;
     /** Called when dropdown opens */
-    onOpen?(): void;
+    onOpen?: () => void;
     /** If set dropdown will not be unmounted from the DOM when it is hidden, `display: none` styles will be added instead, `false` by default */
     keepMounted?: boolean;
     /** Props passed down to the `Transition` component that used to animate dropdown presence, use to configure duration and animation type, `{ duration: 150, transition: 'fade' }` by default */
@@ -3753,7 +3754,7 @@ interface PopoverProps extends __PopoverProps, StylesApiProps<PopoverFactory> {
     /** Controlled dropdown opened state */
     opened?: boolean;
     /** Called with current state when dropdown opens or closes */
-    onChange?(opened: boolean): void;
+    onChange?: (opened: boolean) => void;
     /** Determines whether dropdown should be closed on outside clicks, `true` by default */
     closeOnClickOutside?: boolean;
     /** Events that trigger outside clicks */

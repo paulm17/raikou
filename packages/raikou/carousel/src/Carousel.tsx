@@ -27,6 +27,7 @@ import { getChevronRotation } from "./get-chevron-rotation";
 import { CarouselProvider } from "./Carousel.context";
 import { CarouselSlide } from "./CarouselSlide/CarouselSlide";
 import { CarouselVariables } from "./CarouselVariables/CarouselVariables";
+import classes from "./Carousel.module.css";
 
 export type CarouselStylesNames =
   | "slide"
@@ -227,16 +228,7 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
 
   const getStyles = useStyles<CarouselFactory>({
     name: "Carousel",
-    classes: {
-      root: "carousel-root",
-      viewport: "carousel-viewport",
-      container: "carousel-container",
-      controls: "carousel-controls",
-      control: "carousel-control",
-      indicators: "carousel-indicators",
-      indicator: "carousel-indicator",
-      slide: "carousel-slide",
-    },
+    classes,
     props,
     className,
     style,
@@ -435,5 +427,6 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
   );
 });
 
+Carousel.classes = classes;
 Carousel.displayName = "@raikou/core/Carousel";
 Carousel.Slide = CarouselSlide;

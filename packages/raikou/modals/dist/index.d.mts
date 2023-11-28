@@ -36,7 +36,7 @@ interface TransitionProps {
     /** Determines whether component should be mounted to the DOM */
     mounted: boolean;
     /** Render function with transition styles argument */
-    children(styles: React$2.CSSProperties): JSX.Element;
+    children: (styles: React$2.CSSProperties) => JSX.Element;
     /** Called when exit transition ends */
     onExited?: () => void;
     /** Called when exit transition starts */
@@ -54,7 +54,7 @@ interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
     /** Determines whether modal/drawer is opened */
     opened: boolean;
     /** Called when modal/drawer is closed */
-    onClose(): void;
+    onClose: () => void;
     /** Id used to connect modal/drawer with body and title */
     id?: string;
     /** Determines whether scroll should be locked when `opened={true}`, `true` by default */
@@ -3767,10 +3767,10 @@ type LoaderFactory = Factory<{
 }>;
 declare const defaultLoaders: RaikouLoadersRecord;
 
-type ButtonGroupStylesNames = "root";
+type ButtonGroupStylesNames = "group";
 type ButtonGroupVariant = string;
 type ButtonGroupCssVariables = {
-    root: "--button-border-width";
+    group: "--button-border-width";
 };
 interface ButtonGroupProps extends BoxProps, StylesApiProps<ButtonGroupFactory> {
     /** `Button` components */
@@ -3874,8 +3874,8 @@ type GroupFactory = Factory<{
 interface ConfirmModalProps {
     id?: string;
     children?: React$2.ReactNode;
-    onCancel?(): void;
-    onConfirm?(): void;
+    onCancel?: () => void;
+    onConfirm?: () => void;
     closeOnConfirm?: boolean;
     closeOnCancel?: boolean;
     cancelProps?: ButtonProps & React$2.ComponentPropsWithoutRef<"button">;
@@ -3945,14 +3945,14 @@ declare function ModalsProvider({ children, modalProps, labels, modals, }: Modal
 declare function useModals(): ModalsContextProps;
 
 type ModalsEvents = {
-    openModal(payload: ModalSettings): void;
-    closeModal(id: string): void;
-    closeContextModal<TKey extends RaikouModal>(id: TKey): void;
-    closeAllModals(): void;
-    openConfirmModal(payload: OpenConfirmModal): void;
-    openContextModal<TKey extends RaikouModal>(payload: OpenContextModal<Parameters<RaikouModals[TKey]>[0]["innerProps"]> & {
+    openModal: (payload: ModalSettings) => void;
+    closeModal: (id: string) => void;
+    closeContextModal: <TKey extends RaikouModal>(id: TKey) => void;
+    closeAllModals: () => void;
+    openConfirmModal: (payload: OpenConfirmModal) => void;
+    openContextModal: <TKey extends RaikouModal>(payload: OpenContextModal<Parameters<RaikouModals[TKey]>[0]["innerProps"]> & {
         modal: TKey;
-    }): void;
+    }) => void;
 };
 declare const openModal: (payload_0: ModalSettings) => void;
 declare const closeModal: (payload_0: string) => void;

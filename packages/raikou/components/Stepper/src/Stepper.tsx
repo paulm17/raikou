@@ -23,6 +23,7 @@ import {
 import { StepperStep } from "./StepperStep/StepperStep";
 import { StepperCompleted } from "./StepperCompleted/StepperCompleted";
 import { StepperProvider } from "./Stepper.context";
+import classes from "./Stepper.module.css";
 
 export type StepFragmentComponent = React.FC<{ step: number }>;
 
@@ -165,21 +166,7 @@ export const Stepper = factory<StepperFactory>((_props, ref) => {
 
   const getStyles = useStyles<StepperFactory>({
     name: "Stepper",
-    classes: {
-      root: "stepper-root",
-      steps: "stepper-steps",
-      separator: "stepper-separator",
-      content: "stepper-content",
-      step: "stepper-step",
-      stepWrapper: "stepper-stepWrapper",
-      verticalSeparator: "stepper-verticalSeparator",
-      stepIcon: "stepper-stepIcon",
-      stepCompletedIcon: "stepper-stepCompletedIcon",
-      stepBody: "stepper-stepBody",
-      stepLabel: "stepper-stepLabel",
-      stepDescription: "stepper-stepDescription",
-      stepLoader: "stepper-stepLoader",
-    },
+    classes,
     props,
     className,
     style,
@@ -277,6 +264,7 @@ export const Stepper = factory<StepperFactory>((_props, ref) => {
   );
 });
 
+Stepper.classes = classes;
 Stepper.displayName = "@raikou/core/Stepper";
 Stepper.Completed = StepperCompleted;
 Stepper.Step = StepperStep;

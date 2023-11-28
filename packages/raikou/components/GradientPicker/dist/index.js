@@ -137,8 +137,8 @@ var require_use_sync_external_store_shim_development = __commonJS({
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
           __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
         }
-        var React57 = require("react");
-        var ReactSharedInternals = React57.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+        var React46 = require("react");
+        var ReactSharedInternals = React46.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
         function error(format) {
           {
             {
@@ -168,13 +168,13 @@ var require_use_sync_external_store_shim_development = __commonJS({
           return x === y && (x !== 0 || 1 / x === 1 / y) || x !== x && y !== y;
         }
         var objectIs = typeof Object.is === "function" ? Object.is : is;
-        var useState14 = React57.useState, useEffect11 = React57.useEffect, useLayoutEffect4 = React57.useLayoutEffect, useDebugValue2 = React57.useDebugValue;
+        var useState14 = React46.useState, useEffect11 = React46.useEffect, useLayoutEffect4 = React46.useLayoutEffect, useDebugValue2 = React46.useDebugValue;
         var didWarnOld18Alpha = false;
         var didWarnUncachedGetSnapshot = false;
         function useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot) {
           {
             if (!didWarnOld18Alpha) {
-              if (React57.startTransition !== void 0) {
+              if (React46.startTransition !== void 0) {
                 didWarnOld18Alpha = true;
                 error("You are using an outdated, pre-release alpha of React 18 that does not support useSyncExternalStore. The use-sync-external-store shim will not work correctly. Upgrade to a newer pre-release.");
               }
@@ -239,7 +239,7 @@ var require_use_sync_external_store_shim_development = __commonJS({
         var canUseDOM = !!(typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined");
         var isServerEnvironment = !canUseDOM;
         var shim = isServerEnvironment ? useSyncExternalStore$1 : useSyncExternalStore;
-        var useSyncExternalStore$2 = React57.useSyncExternalStore !== void 0 ? React57.useSyncExternalStore : shim;
+        var useSyncExternalStore$2 = React46.useSyncExternalStore !== void 0 ? React46.useSyncExternalStore : shim;
         exports.useSyncExternalStore = useSyncExternalStore$2;
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") {
           __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
@@ -333,14 +333,14 @@ var require_with_selector_development = __commonJS({
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
           __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
         }
-        var React57 = require("react");
+        var React46 = require("react");
         var shim = require_shim();
         function is(x, y) {
           return x === y && (x !== 0 || 1 / x === 1 / y) || x !== x && y !== y;
         }
         var objectIs = typeof Object.is === "function" ? Object.is : is;
         var useSyncExternalStore = shim.useSyncExternalStore;
-        var useRef11 = React57.useRef, useEffect11 = React57.useEffect, useMemo3 = React57.useMemo, useDebugValue2 = React57.useDebugValue;
+        var useRef11 = React46.useRef, useEffect11 = React46.useEffect, useMemo3 = React46.useMemo, useDebugValue2 = React46.useDebugValue;
         function useSyncExternalStoreWithSelector2(subscribe, getSnapshot, getServerSnapshot, selector, isEqual2) {
           var instRef = useRef11(null);
           var inst;
@@ -10264,8 +10264,8 @@ var require_memstore = __commonJS({
       domains.forEach(function(domain) {
         var paths = Object.keys(idx[domain]);
         paths.forEach(function(path) {
-          var keys3 = Object.keys(idx[domain][path]);
-          keys3.forEach(function(key) {
+          var keys = Object.keys(idx[domain][path]);
+          keys.forEach(function(key) {
             if (key !== null) {
               cookies.push(idx[domain][path][key]);
             }
@@ -11346,18 +11346,18 @@ var require_stringify = __commonJS({
       return JSON.stringify(obj, serializer(replacer, cycleReplacer), spaces);
     }
     function serializer(replacer, cycleReplacer) {
-      var stack = [], keys3 = [];
+      var stack = [], keys = [];
       if (cycleReplacer == null)
         cycleReplacer = function(key, value) {
           if (stack[0] === value)
             return "[Circular ~]";
-          return "[Circular ~." + keys3.slice(0, stack.indexOf(value)).join(".") + "]";
+          return "[Circular ~." + keys.slice(0, stack.indexOf(value)).join(".") + "]";
         };
       return function(key, value) {
         if (stack.length > 0) {
           var thisPos = stack.indexOf(this);
           ~thisPos ? stack.splice(thisPos + 1) : stack.push(this);
-          ~thisPos ? keys3.splice(thisPos, Infinity, key) : keys3.push(key);
+          ~thisPos ? keys.splice(thisPos, Infinity, key) : keys.push(key);
           if (~stack.indexOf(value))
             value = cycleReplacer.call(this, key, value);
         } else
@@ -11488,7 +11488,7 @@ var require_aws_sign2 = __commonJS({
     "use strict";
     var crypto = require("crypto");
     var parse = require("url").parse;
-    var keys3 = [
+    var keys = [
       "acl",
       "location",
       "logging",
@@ -11555,7 +11555,7 @@ var require_aws_sign2 = __commonJS({
     function canonicalizeResource(resource) {
       var url = parse(resource, true), path = url.pathname, buf = [];
       Object.keys(url.query).forEach(function(key) {
-        if (!~keys3.indexOf(key))
+        if (!~keys.indexOf(key))
           return;
         var val = "" == url.query[key] ? "" : "=" + encodeURIComponent(url.query[key]);
         buf.push(key + val);
@@ -12048,7 +12048,7 @@ var require_assert = __commonJS({
       }
     };
     function _setExports(ndebug) {
-      var keys3 = Object.keys(types);
+      var keys = Object.keys(types);
       var out;
       if (process.env.NODE_NDEBUG) {
         out = noop;
@@ -12059,7 +12059,7 @@ var require_assert = __commonJS({
           }
         };
       }
-      keys3.forEach(function(k) {
+      keys.forEach(function(k) {
         if (ndebug) {
           out[k] = noop;
           return;
@@ -12071,7 +12071,7 @@ var require_assert = __commonJS({
           }
         };
       });
-      keys3.forEach(function(k) {
+      keys.forEach(function(k) {
         var name = "optional" + _capitalize(k);
         if (ndebug) {
           out[name] = noop;
@@ -12087,7 +12087,7 @@ var require_assert = __commonJS({
           }
         };
       });
-      keys3.forEach(function(k) {
+      keys.forEach(function(k) {
         var name = "arrayOf" + _capitalize(k);
         if (ndebug) {
           out[name] = noop;
@@ -12107,7 +12107,7 @@ var require_assert = __commonJS({
           }
         };
       });
-      keys3.forEach(function(k) {
+      keys.forEach(function(k) {
         var name = "optionalArrayOf" + _capitalize(k);
         if (ndebug) {
           out[name] = noop;
@@ -12220,9 +12220,9 @@ var require_safer = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/algs.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/algs.js
 var require_algs = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/algs.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/algs.js"(exports, module2) {
     "use strict";
     var Buffer2 = require_safer().Buffer;
     var algInfo = {
@@ -12307,9 +12307,9 @@ var require_algs = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/errors.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/errors.js
 var require_errors = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/errors.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/errors.js"(exports, module2) {
     "use strict";
     var assert = require_assert();
     var util = require("util");
@@ -12624,8 +12624,8 @@ var require_writer = __commonJS({
       assert.equal(typeof from, "object");
       assert.ok(to);
       assert.equal(typeof to, "object");
-      var keys3 = Object.getOwnPropertyNames(from);
-      keys3.forEach(function(key) {
+      var keys = Object.getOwnPropertyNames(from);
+      keys.forEach(function(key) {
         if (to[key])
           return;
         var value = Object.getOwnPropertyDescriptor(from, key);
@@ -17024,9 +17024,9 @@ var require_nacl_fast = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/utils.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/utils.js
 var require_utils = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/utils.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/utils.js"(exports, module2) {
     "use strict";
     module2.exports = {
       bufferSplit,
@@ -17391,9 +17391,9 @@ var require_utils = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/ssh-buffer.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/ssh-buffer.js
 var require_ssh_buffer = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/ssh-buffer.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/ssh-buffer.js"(exports, module2) {
     "use strict";
     module2.exports = SSHBuffer;
     var assert = require_assert();
@@ -17527,9 +17527,9 @@ var require_ssh_buffer = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/signature.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/signature.js
 var require_signature = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/signature.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/signature.js"(exports, module2) {
     "use strict";
     module2.exports = Signature;
     var assert = require_assert();
@@ -17959,9 +17959,9 @@ var require_ecc_jsbn = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/dhe.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/dhe.js
 var require_dhe = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/dhe.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/dhe.js"(exports, module2) {
     "use strict";
     module2.exports = {
       DiffieHellman,
@@ -18313,9 +18313,9 @@ var require_dhe = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/ed-compat.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/ed-compat.js
 var require_ed_compat = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/ed-compat.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/ed-compat.js"(exports, module2) {
     "use strict";
     module2.exports = {
       Verifier,
@@ -18395,9 +18395,9 @@ var require_ed_compat = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/pkcs8.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/pkcs8.js
 var require_pkcs8 = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/pkcs8.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/pkcs8.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -18719,13 +18719,17 @@ var require_pkcs8 = __commonJS({
       der.readSequence(asn1.Ber.OctetString);
       var k = der.readString(asn1.Ber.OctetString, true);
       k = utils.zeroPadToLength(k, 32);
-      var A;
-      if (der.peek() === asn1.Ber.BitString) {
-        A = utils.readBitString(der);
-        A = utils.zeroPadToLength(A, 32);
-      } else {
-        A = utils.calculateED25519Public(k);
+      var A, tag;
+      while ((tag = der.peek()) !== null) {
+        if (tag === (asn1.Ber.Context | 1)) {
+          A = utils.readBitString(der, tag);
+        } else {
+          der.readSequence(tag);
+          der._offset += der.length;
+        }
       }
+      if (A === void 0)
+        A = utils.calculateED25519Public(k);
       var key = {
         type: "ed25519",
         parts: [
@@ -18759,8 +18763,11 @@ var require_pkcs8 = __commonJS({
     function writePkcs8(der, key) {
       der.startSequence();
       if (PrivateKey.isPrivateKey(key)) {
-        var sillyInt = Buffer2.from([0]);
-        der.writeBuffer(sillyInt, asn1.Ber.Integer);
+        var version = 0;
+        if (key.type === "ed25519")
+          version = 1;
+        var vbuf = Buffer2.from([version]);
+        der.writeBuffer(vbuf, asn1.Ber.Integer);
       }
       der.startSequence();
       switch (key.type) {
@@ -18788,8 +18795,9 @@ var require_pkcs8 = __commonJS({
         case "ed25519":
           der.writeOID("1.3.101.112");
           if (PrivateKey.isPrivateKey(key))
-            throw new Error("Ed25519 private keys in pkcs8 format are not supported");
-          writePkcs8EdDSAPublic(key, der);
+            writePkcs8EdDSAPrivate(key, der);
+          else
+            writePkcs8EdDSAPublic(key, der);
           break;
         default:
           throw new Error("Unsupported key type: " + key.type);
@@ -18905,12 +18913,22 @@ var require_pkcs8 = __commonJS({
       der.endSequence();
       utils.writeBitString(der, key.part.A.data);
     }
+    function writePkcs8EdDSAPrivate(key, der) {
+      der.endSequence();
+      der.startSequence(asn1.Ber.OctetString);
+      var k = utils.mpNormalize(key.part.k.data);
+      while (k.length > 32 && k[0] === 0)
+        k = k.slice(1);
+      der.writeBuffer(k, asn1.Ber.OctetString);
+      der.endSequence();
+      utils.writeBitString(der, key.part.A.data, asn1.Ber.Context | 1);
+    }
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/pkcs1.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/pkcs1.js
 var require_pkcs1 = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/pkcs1.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/pkcs1.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -19219,9 +19237,9 @@ var require_pkcs1 = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/rfc4253.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/rfc4253.js
 var require_rfc4253 = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/rfc4253.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/rfc4253.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read: read.bind(void 0, false, void 0),
@@ -20616,9 +20634,9 @@ var require_bcrypt_pbkdf = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/ssh-private.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/ssh-private.js
 var require_ssh_private = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/ssh-private.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/ssh-private.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -20863,9 +20881,9 @@ var require_ssh_private = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/pem.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/pem.js
 var require_pem = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/pem.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/pem.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -21124,9 +21142,9 @@ var require_pem = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/ssh.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/ssh.js
 var require_ssh = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/ssh.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/ssh.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -21202,9 +21220,9 @@ var require_ssh = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/dnssec.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/dnssec.js
 var require_dnssec = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/dnssec.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/dnssec.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -21456,9 +21474,9 @@ var require_dnssec = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/putty.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/putty.js
 var require_putty = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/putty.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/putty.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -21638,9 +21656,9 @@ var require_putty = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/auto.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/auto.js
 var require_auto = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/auto.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/auto.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -21742,9 +21760,9 @@ var require_auto = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/private-key.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/private-key.js
 var require_private_key = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/private-key.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/private-key.js"(exports, module2) {
     "use strict";
     module2.exports = PrivateKey;
     var assert = require_assert();
@@ -21947,9 +21965,9 @@ var require_private_key = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/identity.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/identity.js
 var require_identity = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/identity.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/identity.js"(exports, module2) {
     "use strict";
     module2.exports = Identity;
     var assert = require_assert();
@@ -22164,21 +22182,21 @@ var require_identity = __commonJS({
       assert.string(dn, "dn");
       var parts = [""];
       var idx = 0;
-      var rem12 = dn;
-      while (rem12.length > 0) {
+      var rem10 = dn;
+      while (rem10.length > 0) {
         var m;
-        if ((m = /^,/.exec(rem12)) !== null) {
+        if ((m = /^,/.exec(rem10)) !== null) {
           parts[++idx] = "";
-          rem12 = rem12.slice(m[0].length);
-        } else if ((m = /^\\,/.exec(rem12)) !== null) {
+          rem10 = rem10.slice(m[0].length);
+        } else if ((m = /^\\,/.exec(rem10)) !== null) {
           parts[idx] += ",";
-          rem12 = rem12.slice(m[0].length);
-        } else if ((m = /^\\./.exec(rem12)) !== null) {
+          rem10 = rem10.slice(m[0].length);
+        } else if ((m = /^\\./.exec(rem10)) !== null) {
           parts[idx] += m[0];
-          rem12 = rem12.slice(m[0].length);
-        } else if ((m = /^[^\\,]+/.exec(rem12)) !== null) {
+          rem10 = rem10.slice(m[0].length);
+        } else if ((m = /^[^\\,]+/.exec(rem10)) !== null) {
           parts[idx] += m[0];
-          rem12 = rem12.slice(m[0].length);
+          rem10 = rem10.slice(m[0].length);
         } else {
           throw new Error("Failed to parse DN");
         }
@@ -22256,9 +22274,9 @@ var require_identity = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/openssh-cert.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/openssh-cert.js
 var require_openssh_cert = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/openssh-cert.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/openssh-cert.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -22543,9 +22561,9 @@ var require_openssh_cert = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/x509.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/x509.js
 var require_x509 = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/x509.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/x509.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -23175,9 +23193,9 @@ var require_x509 = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/x509-pem.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/x509-pem.js
 var require_x509_pem = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/x509-pem.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/x509-pem.js"(exports, module2) {
     "use strict";
     var x509 = require_x509();
     module2.exports = {
@@ -23259,9 +23277,9 @@ var require_x509_pem = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/certificate.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/certificate.js
 var require_certificate = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/certificate.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/certificate.js"(exports, module2) {
     "use strict";
     module2.exports = Certificate;
     var assert = require_assert();
@@ -23617,9 +23635,9 @@ var require_certificate = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/fingerprint.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/fingerprint.js
 var require_fingerprint = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/fingerprint.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/fingerprint.js"(exports, module2) {
     "use strict";
     module2.exports = Fingerprint;
     var assert = require_assert();
@@ -23813,9 +23831,9 @@ var require_fingerprint = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/key.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/key.js
 var require_key = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/key.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/key.js"(exports, module2) {
     "use strict";
     module2.exports = Key;
     var assert = require_assert();
@@ -24053,9 +24071,9 @@ var require_key = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/index.js
+// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/index.js
 var require_lib2 = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/index.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/index.js"(exports, module2) {
     "use strict";
     var Key = require_key();
     var Fingerprint = require_fingerprint();
@@ -24886,15 +24904,15 @@ var require_verror = __commonJS({
 var require_validate = __commonJS({
   "../../../../node_modules/.pnpm/json-schema@0.4.0/node_modules/json-schema/lib/validate.js"(exports, module2) {
     "use strict";
-    (function(root, factory29) {
+    (function(root, factory23) {
       if (typeof define === "function" && define.amd) {
         define([], function() {
-          return factory29();
+          return factory23();
         });
       } else if (typeof module2 === "object" && module2.exports) {
-        module2.exports = factory29();
+        module2.exports = factory23();
       } else {
-        root.jsonSchema = factory29();
+        root.jsonSchema = factory23();
       }
     })(exports, function() {
       var exports2 = validate;
@@ -34640,10 +34658,10 @@ var require_caseless = __commonJS({
       }
     };
     Caseless.prototype.has = function(name) {
-      var keys3 = Object.keys(this.dict), name = name.toLowerCase();
-      for (var i = 0; i < keys3.length; i++) {
-        if (keys3[i].toLowerCase() === name)
-          return keys3[i];
+      var keys = Object.keys(this.dict), name = name.toLowerCase();
+      for (var i = 0; i < keys.length; i++) {
+        if (keys[i].toLowerCase() === name)
+          return keys[i];
       }
       return false;
     };
@@ -35833,9 +35851,9 @@ var require_utils3 = __commonJS({
       for (var i = 0; i < queue.length; ++i) {
         var item = queue[i];
         var obj = item.obj[item.prop];
-        var keys3 = Object.keys(obj);
-        for (var j = 0; j < keys3.length; ++j) {
-          var key = keys3[j];
+        var keys = Object.keys(obj);
+        for (var j = 0; j < keys.length; ++j) {
+          var key = keys[j];
           var val = obj[key];
           if (typeof val === "object" && val !== null && refs.indexOf(val) === -1) {
             queue.push({ obj, prop: key });
@@ -35951,8 +35969,8 @@ var require_stringify2 = __commonJS({
       if (isArray(filter)) {
         objKeys = filter;
       } else {
-        var keys3 = Object.keys(obj);
-        objKeys = sort ? keys3.sort(sort) : keys3;
+        var keys = Object.keys(obj);
+        objKeys = sort ? keys.sort(sort) : keys;
       }
       for (var i = 0; i < objKeys.length; ++i) {
         var key = objKeys[i];
@@ -36023,7 +36041,7 @@ var require_stringify2 = __commonJS({
         filter = options.filter;
         objKeys = filter;
       }
-      var keys3 = [];
+      var keys = [];
       if (typeof obj !== "object" || obj === null) {
         return "";
       }
@@ -36047,7 +36065,7 @@ var require_stringify2 = __commonJS({
         if (skipNulls && obj[key] === null) {
           continue;
         }
-        pushToArray(keys3, stringify(
+        pushToArray(keys, stringify(
           obj[key],
           key,
           generateArrayPrefix,
@@ -36062,7 +36080,7 @@ var require_stringify2 = __commonJS({
           encodeValuesOnly
         ));
       }
-      var joined = keys3.join(delimiter);
+      var joined = keys.join(delimiter);
       var prefix = options.addQueryPrefix === true ? "?" : "";
       return joined.length > 0 ? prefix + joined : "";
     };
@@ -36144,14 +36162,14 @@ var require_parse = __commonJS({
       var child = /(\[[^[\]]*])/g;
       var segment = brackets.exec(key);
       var parent = segment ? key.slice(0, segment.index) : key;
-      var keys3 = [];
+      var keys = [];
       if (parent) {
         if (!options.plainObjects && has.call(Object.prototype, parent)) {
           if (!options.allowPrototypes) {
             return;
           }
         }
-        keys3.push(parent);
+        keys.push(parent);
       }
       var i = 0;
       while ((segment = child.exec(key)) !== null && i < options.depth) {
@@ -36161,12 +36179,12 @@ var require_parse = __commonJS({
             return;
           }
         }
-        keys3.push(segment[1]);
+        keys.push(segment[1]);
       }
       if (segment) {
-        keys3.push("[" + key.slice(segment.index) + "]");
+        keys.push("[" + key.slice(segment.index) + "]");
       }
-      return parseObject(keys3, val, options);
+      return parseObject(keys, val, options);
     };
     module2.exports = function(str, opts) {
       var options = opts ? utils.assign({}, opts) : {};
@@ -36189,9 +36207,9 @@ var require_parse = __commonJS({
       }
       var tempObj = typeof str === "string" ? parseValues(str, options) : str;
       var obj = options.plainObjects ? /* @__PURE__ */ Object.create(null) : {};
-      var keys3 = Object.keys(tempObj);
-      for (var i = 0; i < keys3.length; ++i) {
-        var key = keys3[i];
+      var keys = Object.keys(tempObj);
+      for (var i = 0; i < keys.length; ++i) {
+        var key = keys[i];
         var newObj = parseKeys(key, tempObj[key], options);
         obj = utils.merge(obj, newObj, options);
       }
@@ -36267,8 +36285,8 @@ var require_querystring = __commonJS({
 var require_uri_all = __commonJS({
   "../../../../node_modules/.pnpm/uri-js@4.4.1/node_modules/uri-js/dist/es5/uri.all.js"(exports, module2) {
     "use strict";
-    (function(global, factory29) {
-      typeof exports === "object" && typeof module2 !== "undefined" ? factory29(exports) : typeof define === "function" && define.amd ? define(["exports"], factory29) : factory29(global.URI = global.URI || {});
+    (function(global, factory23) {
+      typeof exports === "object" && typeof module2 !== "undefined" ? factory23(exports) : typeof define === "function" && define.amd ? define(["exports"], factory23) : factory23(global.URI = global.URI || {});
     })(exports, function(exports2) {
       "use strict";
       function merge() {
@@ -37310,7 +37328,7 @@ var require_fast_deep_equal = __commonJS({
       if (a && b && typeof a == "object" && typeof b == "object") {
         if (a.constructor !== b.constructor)
           return false;
-        var length, i, keys3;
+        var length, i, keys;
         if (Array.isArray(a)) {
           length = a.length;
           if (length != b.length)
@@ -37326,15 +37344,15 @@ var require_fast_deep_equal = __commonJS({
           return a.valueOf() === b.valueOf();
         if (a.toString !== Object.prototype.toString)
           return a.toString() === b.toString();
-        keys3 = Object.keys(a);
-        length = keys3.length;
+        keys = Object.keys(a);
+        length = keys.length;
         if (length !== Object.keys(b).length)
           return false;
         for (i = length; i-- !== 0; )
-          if (!Object.prototype.hasOwnProperty.call(b, keys3[i]))
+          if (!Object.prototype.hasOwnProperty.call(b, keys[i]))
             return false;
         for (i = length; i-- !== 0; ) {
-          var key = keys3[i];
+          var key = keys[i];
           if (!equal(a[key], b[key]))
             return false;
         }
@@ -37989,10 +38007,10 @@ var require_fast_json_stable_stringify = __commonJS({
           throw new TypeError("Converting circular structure to JSON");
         }
         var seenIndex = seen.push(node) - 1;
-        var keys3 = Object.keys(node).sort(cmp && cmp(node));
+        var keys = Object.keys(node).sort(cmp && cmp(node));
         out = "";
-        for (i = 0; i < keys3.length; i++) {
-          var key = keys3[i];
+        for (i = 0; i < keys.length; i++) {
+          var key = keys[i];
           var value = stringify(node[key]);
           if (!value)
             continue;
@@ -44687,9 +44705,9 @@ var require_tunnel_agent = __commonJS({
       for (var i = 1, len = arguments.length; i < len; ++i) {
         var overrides = arguments[i];
         if (typeof overrides === "object") {
-          var keys3 = Object.keys(overrides);
-          for (var j = 0, keyLen = keys3.length; j < keyLen; ++j) {
-            var k = keys3[j];
+          var keys = Object.keys(overrides);
+          for (var j = 0, keyLen = keys.length; j < keyLen; ++j) {
+            var k = keys[j];
             if (overrides[k] !== void 0) {
               target[k] = overrides[k];
             }
@@ -46263,8 +46281,8 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/GradientPicker.tsx
-var import_react70 = __toESM(require("react"));
-var import_core53 = require("@raikou/core");
+var import_react59 = __toESM(require("react"));
+var import_core45 = require("@raikou/core");
 
 // ../_utils/create-safe-context/create-safe-context.tsx
 var import_react = __toESM(require("react"));
@@ -47562,13 +47580,13 @@ var genRandomId = (length = 8) => {
 };
 
 // src/GradientPicker.tsx
-var import_colord9 = require("colord");
+var import_colord5 = require("colord");
 var import_hooks17 = require("@raikou/hooks");
 var import_lodash = __toESM(require("lodash.isequal"));
 
 // src/components/compact/index.tsx
-var import_react69 = __toESM(require("react"));
-var import_core52 = require("@raikou/core");
+var import_react58 = __toESM(require("react"));
+var import_core44 = require("@raikou/core");
 
 // ../Popover/src/Popover.tsx
 var import_react18 = __toESM(require("react"));
@@ -49132,7 +49150,7 @@ function deepEqual(a, b) {
   if (typeof a === "function" && a.toString() === b.toString()) {
     return true;
   }
-  let length, i, keys3;
+  let length, i, keys;
   if (a && b && typeof a == "object") {
     if (Array.isArray(a)) {
       length = a.length;
@@ -49145,18 +49163,18 @@ function deepEqual(a, b) {
       }
       return true;
     }
-    keys3 = Object.keys(a);
-    length = keys3.length;
+    keys = Object.keys(a);
+    length = keys.length;
     if (length !== Object.keys(b).length) {
       return false;
     }
     for (i = length; i-- !== 0; ) {
-      if (!Object.prototype.hasOwnProperty.call(b, keys3[i])) {
+      if (!Object.prototype.hasOwnProperty.call(b, keys[i])) {
         return false;
       }
     }
     for (i = length; i-- !== 0; ) {
-      const key = keys3[i];
+      const key = keys[i];
       if (key === "_owner" && a.$$typeof) {
         continue;
       }
@@ -50523,8 +50541,8 @@ FloatingArrow.displayName = "@raikou/core/FloatingArrow";
 
 // ../Popover/src/use-popover.ts
 var import_hooks2 = require("@raikou/hooks");
-function getPopoverMiddlewares(options) {
-  var _a, _b, _c;
+function getPopoverMiddlewares(options, getFloating) {
+  var _a, _b, _c, _d;
   const middlewares = [offset(options.offset)];
   if ((_a = options.middlewares) == null ? void 0 : _a.shift) {
     middlewares.push(shift({ limiter: limitShift() }));
@@ -50538,6 +50556,28 @@ function getPopoverMiddlewares(options) {
   middlewares.push(
     arrow2({ element: options.arrowRef, padding: options.arrowOffset })
   );
+  if (((_d = options.middlewares) == null ? void 0 : _d.size) || options.width === "target") {
+    middlewares.push(
+      size({
+        apply({ rects, availableWidth, availableHeight }) {
+          var _a2, _b2, _c2;
+          const floating = getFloating();
+          const styles = (_b2 = (_a2 = floating.refs.floating.current) == null ? void 0 : _a2.style) != null ? _b2 : {};
+          if ((_c2 = options.middlewares) == null ? void 0 : _c2.size) {
+            Object.assign(styles, {
+              maxWidth: `${availableWidth}px`,
+              maxHeight: `${availableHeight}px`
+            });
+          }
+          if (options.width === "target") {
+            Object.assign(styles, {
+              width: `${rects.reference.width}px`
+            });
+          }
+        }
+      })
+    );
+  }
   return middlewares;
 }
 function usePopover(options) {
@@ -50566,19 +50606,7 @@ function usePopover(options) {
   };
   const floating = useFloating2({
     placement: options.position,
-    middleware: [
-      ...getPopoverMiddlewares(options),
-      ...options.width === "target" ? [
-        size({
-          apply({ rects }) {
-            var _a, _b;
-            Object.assign((_b = (_a = floating.refs.floating.current) == null ? void 0 : _a.style) != null ? _b : {}, {
-              width: `${rects.reference.width}px`
-            });
-          }
-        })
-      ] : []
-    ]
+    middleware: getPopoverMiddlewares(options, () => floating)
   });
   useFloatingAutoUpdate({
     opened: options.opened,
@@ -51299,7 +51327,7 @@ Popover.displayName = "@raikou/core/Popover";
 Popover.extend = (input) => input;
 
 // src/components/compact/index.tsx
-var import_colord8 = require("colord");
+var import_colord4 = require("colord");
 var import_hooks16 = require("@raikou/hooks");
 
 // src/components/picker/index.tsx
@@ -51949,8 +51977,8 @@ Input.displayName = "@raikou/core/Input";
 
 // ../Input/src/use-input-props.ts
 var import_core18 = require("@raikou/core");
-function useInputProps(component, defaultProps40, _props) {
-  const props = (0, import_core18.useProps)(component, defaultProps40, _props);
+function useInputProps(component, defaultProps34, _props) {
+  const props = (0, import_core18.useProps)(component, defaultProps34, _props);
   const _a = props, {
     label,
     description,
@@ -52284,7 +52312,7 @@ var GradientPickerPicker = (0, import_core23.factory)(
 GradientPickerPicker.displayName = "@raikou/core/GradientPickerPicker";
 
 // src/components/compact/index.tsx
-var import_clsx12 = __toESM(require("clsx"));
+var import_clsx10 = __toESM(require("clsx"));
 
 // ../Button/src/Button.tsx
 var import_react37 = __toESM(require("react"));
@@ -52320,7 +52348,7 @@ var UnstyledButton = (0, import_core24.polymorphicFactory)(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,
@@ -52355,13 +52383,13 @@ var Bars = (0, import_react31.forwardRef)(
       import_core25.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx3.default)("bars-loader", className)
+        className: (0, import_clsx3.default)("loader-barsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react31.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react31.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react31.default.createElement("span", { className: "bar" })
+      /* @__PURE__ */ import_react31.default.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ import_react31.default.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ import_react31.default.createElement("span", { className: "loader-bar" })
     );
   }
 );
@@ -52377,7 +52405,7 @@ var Oval = (0, import_react32.forwardRef)(
       import_core26.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx4.default)("oval-loader", className)
+        className: (0, import_clsx4.default)("loader-ovalLoader", className)
       }, others), {
         ref
       })
@@ -52396,7 +52424,7 @@ var Progress = (0, import_react33.forwardRef)(
       import_core27.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx5.default)("progress-loader", className)
+        className: (0, import_clsx5.default)("loader-progressLoader", className)
       }, others), {
         ref
       }),
@@ -52426,13 +52454,13 @@ var Dots = (0, import_react34.forwardRef)(
       import_core28.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx6.default)("dots-loader", className)
+        className: (0, import_clsx6.default)("loader-dotsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react34.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react34.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react34.default.createElement("span", { className: "dot" })
+      /* @__PURE__ */ import_react34.default.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ import_react34.default.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ import_react34.default.createElement("span", { className: "loader-dot" })
     );
   }
 );
@@ -52727,7 +52755,7 @@ Button.Group = ButtonGroup;
 var import_react39 = __toESM(require("react"));
 var import_core32 = require("@raikou/core");
 
-// ../../../../node_modules/.pnpm/zustand@4.4.0_@types+react@18.2.23_react@18.2.0/node_modules/zustand/esm/vanilla.mjs
+// ../../../../node_modules/.pnpm/zustand@4.4.1_@types+react@18.2.23_react@18.2.0/node_modules/zustand/esm/vanilla.mjs
 var import_meta = {};
 var createStoreImpl = (createState) => {
   let state;
@@ -52759,16 +52787,18 @@ var createStoreImpl = (createState) => {
 };
 var createStore = (createState) => createState ? createStoreImpl(createState) : createStoreImpl;
 
-// ../../../../node_modules/.pnpm/zustand@4.4.0_@types+react@18.2.23_react@18.2.0/node_modules/zustand/esm/index.mjs
+// ../../../../node_modules/.pnpm/zustand@4.4.1_@types+react@18.2.23_react@18.2.0/node_modules/zustand/esm/index.mjs
 var import_react38 = require("react");
 var import_with_selector = __toESM(require_with_selector(), 1);
 var import_meta2 = {};
 var { useSyncExternalStoreWithSelector } = import_with_selector.default;
+var didWarnAboutEqualityFn = false;
 function useStore(api, selector = api.getState, equalityFn) {
-  if ((import_meta2.env ? import_meta2.env.MODE : void 0) !== "production" && equalityFn) {
+  if ((import_meta2.env ? import_meta2.env.MODE : void 0) !== "production" && equalityFn && !didWarnAboutEqualityFn) {
     console.warn(
-      "[DEPRECATED] Use `createWithEqualityFn` from 'zustand/traditional'. https://github.com/pmndrs/zustand/discussions/1937"
+      "[DEPRECATED] Use `createWithEqualityFn` instead of `create` or use `useStoreWithEqualityFn` instead of `useStore`. They can be imported from 'zustand/traditional'. https://github.com/pmndrs/zustand/discussions/1937"
     );
+    didWarnAboutEqualityFn = true;
   }
   const slice = useSyncExternalStoreWithSelector(
     api.subscribe,
@@ -53558,22 +53588,37 @@ Tooltip.displayName = "@raikou/core/Tooltip";
 Tooltip.Floating = TooltipFloating;
 Tooltip.Group = TooltipGroup;
 
-// src/components/colorModel/index.tsx
-var import_react57 = __toESM(require("react"));
-var import_core40 = require("@raikou/core");
-
-// src/components/colorModel/saturationSlider.tsx
-var import_react54 = __toESM(require("react"));
-
-// src/components/colorSlider/index.tsx
-var import_react53 = __toESM(require("react"));
-var import_core39 = require("@raikou/core");
-var import_hooks13 = require("@raikou/hooks");
-var import_clsx9 = __toESM(require("clsx"));
-
-// src/components/thumb/index.tsx
+// src/components/eyeDropper/index.tsx
 var import_react52 = __toESM(require("react"));
 var import_core38 = require("@raikou/core");
+var import_hooks13 = require("@raikou/hooks");
+var import_colord2 = require("colord");
+var defaultProps26 = {
+  size: "md"
+};
+var GradientPickerEyeDropper = (0, import_core38.factory)((props, ref) => {
+  const _a = (0, import_core38.useProps)("GradientPickerEyeDropper", defaultProps26, props), { classNames, className, style, styles, vars, onChange } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars", "onChange"]);
+  const { supported, open } = (0, import_hooks13.useEyeDropper)();
+  const pickColor = () => __async(void 0, null, function* () {
+    try {
+      const { sRGBHex: color } = yield open();
+      const _color = (0, import_colord2.colord)(color).toHsv();
+      onChange(_color);
+    } catch (e) {
+      console.log(e);
+    }
+  });
+  return /* @__PURE__ */ import_react52.default.createElement(import_react52.default.Fragment, null, supported && /* @__PURE__ */ import_react52.default.createElement(Button, __spreadValues({ onClick: pickColor }, others), /* @__PURE__ */ import_react52.default.createElement(Text, { className: "w-[20px] text-center" }, /* @__PURE__ */ import_react52.default.createElement(Image, { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNMzQxLjYgMjkuMkwyNDAuMSAxMzAuOGwtOS40LTkuNGMtMTIuNS0xMi41LTMyLjgtMTIuNS00NS4zIDBzLTEyLjUgMzIuOCAwIDQ1LjNsMTYwIDE2MGMxMi41IDEyLjUgMzIuOCAxMi41IDQ1LjMgMHMxMi41LTMyLjggMC00NS4zbC05LjQtOS40TDQ4Mi44IDE3MC40YzM5LTM5IDM5LTEwMi4yIDAtMTQxLjFzLTEwMi4yLTM5LTE0MS4xIDB6TTU1LjQgMzIzLjNjLTE1IDE1LTIzLjQgMzUuNC0yMy40IDU2LjZ2NDIuNEw1LjQgNDYyLjJjLTguNSAxMi43LTYuOCAyOS42IDQgNDAuNHMyNy43IDEyLjUgNDAuNCA0TDg5LjcgNDgwaDQyLjRjMjEuMiAwIDQxLjYtOC40IDU2LjYtMjMuNEwzMDkuNCAzMzUuOWwtNDUuMy00NS4zTDE0My40IDQxMS4zYy0zIDMtNy4xIDQuNy0xMS4zIDQuN0g5NlYzNzkuOWMwLTQuMiAxLjctOC4zIDQuNy0xMS4zTDIyMS40IDI0Ny45bC00NS4zLTQ1LjNMNTUuNCAzMjMuM3oiLz48L3N2Zz4=" }))));
+});
+GradientPickerEyeDropper.displayName = "@raikou/core/GradientPickerEyeDropper";
+
+// src/components/saturation/index.tsx
+var import_react54 = __toESM(require("react"));
+var import_core40 = require("@raikou/core");
+
+// src/components/thumb/index.tsx
+var import_react53 = __toESM(require("react"));
+var import_core39 = require("@raikou/core");
 var import_clsx8 = __toESM(require("clsx"));
 
 // src/components/thumb/style.ts
@@ -53586,10 +53631,10 @@ var THUMB_SIZES = {
 };
 
 // src/components/thumb/index.tsx
-var defaultProps26 = {};
-var GradientPickerThumb = (0, import_core38.factory)(
+var defaultProps27 = {};
+var GradientPickerThumb = (0, import_core39.factory)(
   (props, ref) => {
-    const _a = (0, import_core38.useProps)("GradientPickerThumb", defaultProps26, props), {
+    const _a = (0, import_core39.useProps)("GradientPickerThumb", defaultProps27, props), {
       classNames,
       className,
       style,
@@ -53606,10 +53651,10 @@ var GradientPickerThumb = (0, import_core38.factory)(
       "position",
       "size"
     ]);
-    return /* @__PURE__ */ import_react52.default.createElement(
-      import_core38.Box,
+    return /* @__PURE__ */ import_react53.default.createElement(
+      import_core39.Box,
       __spreadValues({
-        className: (0, import_clsx8.default)("thumb", className),
+        className: (0, import_clsx8.default)("gradientPicker-thumb", className),
         style: __spreadValues({
           left: `calc(${position.x * 100}% - ${THUMB_SIZES[size2] / 2}px)`,
           top: `calc(${position.y * 100}% - ${THUMB_SIZES[size2] / 2}px)`
@@ -53620,850 +53665,14 @@ var GradientPickerThumb = (0, import_core38.factory)(
 );
 GradientPickerThumb.displayName = "@raikou/core/GradientPickerThumb";
 
-// src/components/colorSlider/index.tsx
-var defaultProps27 = {
-  size: "md",
-  focusable: true
-};
-var GradientPickerColorSlider = (0, import_core39.factory)((props, ref) => {
-  const _a = (0, import_core39.useProps)("GradientPickerColorSlider", defaultProps27, props), {
-    classNames,
-    className,
-    style,
-    styles,
-    vars,
-    value,
-    onChange,
-    onChangeEnd,
-    maxValue,
-    round: round3,
-    size: size2,
-    focusable,
-    overlays
-  } = _a, others = __objRest(_a, [
-    "classNames",
-    "className",
-    "style",
-    "styles",
-    "vars",
-    "value",
-    "onChange",
-    "onChangeEnd",
-    "maxValue",
-    "round",
-    "size",
-    "focusable",
-    "overlays"
-  ]);
-  const [position, setPosition] = (0, import_react53.useState)({ y: 0, x: value / maxValue });
-  const positionRef = (0, import_react53.useRef)(position);
-  const getChangeValue = (val) => round3 ? Math.round(val * maxValue) : val * maxValue;
-  const { ref: sliderRef } = (0, import_hooks13.useMove)(
-    ({ x, y }) => {
-      positionRef.current = { x, y };
-      onChange(getChangeValue(x));
-    },
-    {
-      onScrubEnd: () => {
-        const { x } = positionRef.current;
-        onChangeEnd(getChangeValue(x));
-      }
-    }
-  );
-  (0, import_hooks13.useDidUpdate)(() => {
-    setPosition({ y: 0, x: value / maxValue });
-  }, [value]);
-  const handleArrow = (event, pos) => {
-    event.preventDefault();
-    const _position = (0, import_hooks13.clampUseMovePosition)(pos);
-    onChange(getChangeValue(_position.x));
-    onChangeEnd(getChangeValue(_position.x));
-  };
-  const handleKeyDown = (event) => {
-    switch (event.key) {
-      case "ArrowRight": {
-        handleArrow(event, { x: position.x + 0.05, y: position.y });
-        break;
-      }
-      case "ArrowLeft": {
-        handleArrow(event, { x: position.x - 0.05, y: position.y });
-        break;
-      }
-    }
-  };
-  const layers = overlays ? overlays.map((overlay, index3) => /* @__PURE__ */ import_react53.default.createElement("div", { className: "sliderOverlay", style: overlay, key: index3 })) : null;
-  return /* @__PURE__ */ import_react53.default.createElement(
-    import_core39.Box,
-    __spreadProps(__spreadValues({}, others), {
-      ref: (0, import_hooks13.useMergedRef)(sliderRef, ref),
-      className: (0, import_clsx9.default)("slider", className),
-      role: "slider",
-      "aria-valuenow": value,
-      "aria-valuemax": maxValue,
-      "aria-valuemin": 0,
-      tabIndex: focusable ? 0 : -1,
-      onKeyDown: handleKeyDown
-    }),
-    layers,
-    /* @__PURE__ */ import_react53.default.createElement(
-      GradientPickerThumb,
-      {
-        classNames,
-        styles,
-        position,
-        className: "sliderThumb",
-        size: size2
-      }
-    )
-  );
-});
-GradientPickerColorSlider.displayName = "@raikou/core/GradientPickerColorSlider";
-
-// src/components/colorModel/saturationSlider.tsx
-var SaturationSlider = (0, import_react54.forwardRef)(
-  (_a, ref) => {
-    var _b = _a, { value, onChange, onChangeEnd, hsl } = _b, others = __objRest(_b, ["value", "onChange", "onChangeEnd", "hsl"]);
-    const gradientBar = () => {
-      let gradient = [];
-      for (let i = 0; i <= 100; i += 10) {
-        gradient.push(`hsl(${hsl[0]},${i}%,${hsl[2]}%)`);
-      }
-      return `linear-gradient(to right, ${gradient.join(",")})`;
-    };
-    return /* @__PURE__ */ import_react54.default.createElement(
-      GradientPickerColorSlider,
-      __spreadProps(__spreadValues({}, others), {
-        ref,
-        value,
-        onChange,
-        onChangeEnd,
-        maxValue: 100,
-        round: true,
-        overlays: [
-          {
-            backgroundImage: gradientBar()
-          },
-          {
-            boxShadow: "rgba(0, 0, 0, .1) 0px 0px 0px 1px inset, rgb(0, 0, 0, .15) 0px 0px 4px inset"
-          }
-        ]
-      })
-    );
-  }
-);
-SaturationSlider.displayName = "@raikou/core/SaturationSlider";
-
-// src/components/colorModel/lightnessSlider.tsx
-var import_react55 = __toESM(require("react"));
-var LightnessSlider = (0, import_react55.forwardRef)(
-  (_a, ref) => {
-    var _b = _a, { value, onChange, onChangeEnd, hsl } = _b, others = __objRest(_b, ["value", "onChange", "onChangeEnd", "hsl"]);
-    const gradientBar = () => {
-      let gradient = [];
-      for (let i = 0; i <= 100; i += 10) {
-        gradient.push(`hsl(${hsl[0]}, ${hsl[1]}%, ${i}%)`);
-      }
-      return `linear-gradient(to right, ${gradient.join(",")})`;
-    };
-    return /* @__PURE__ */ import_react55.default.createElement(
-      GradientPickerColorSlider,
-      __spreadProps(__spreadValues({}, others), {
-        ref,
-        value,
-        onChange,
-        onChangeEnd,
-        maxValue: 100,
-        round: true,
-        overlays: [
-          {
-            backgroundImage: gradientBar()
-          },
-          {
-            boxShadow: "rgba(0, 0, 0, .1) 0px 0px 0px 1px inset, rgb(0, 0, 0, .15) 0px 0px 4px inset"
-          }
-        ]
-      })
-    );
-  }
-);
-LightnessSlider.displayName = "@raikou/core/LightnessSlider";
-
-// src/components/colorModel/brightnessSlider.tsx
-var import_react56 = __toESM(require("react"));
-var import_tinycolor = require("@ctrl/tinycolor");
-var BrightnessSlider = (0, import_react56.forwardRef)(
-  (_a, ref) => {
-    var _b = _a, { value, onChange, onChangeEnd, hsl } = _b, others = __objRest(_b, ["value", "onChange", "onChangeEnd", "hsl"]);
-    const gradientBar = () => {
-      let gradient = [];
-      for (let i = 0; i <= 100; i += 10) {
-        let color = new import_tinycolor.TinyColor({
-          h: hsl[0],
-          s: hsl[1],
-          v: i
-        });
-        gradient.push(`${color.toHslString()}`);
-      }
-      return `linear-gradient(to right, ${gradient.join(",")})`;
-    };
-    return /* @__PURE__ */ import_react56.default.createElement(
-      GradientPickerColorSlider,
-      __spreadProps(__spreadValues({}, others), {
-        ref,
-        value,
-        onChange,
-        onChangeEnd,
-        maxValue: 100,
-        round: true,
-        overlays: [
-          {
-            backgroundImage: gradientBar()
-          },
-          {
-            boxShadow: "rgba(0, 0, 0, .1) 0px 0px 0px 1px inset, rgb(0, 0, 0, .15) 0px 0px 4px inset"
-          }
-        ]
-      })
-    );
-  }
-);
-BrightnessSlider.displayName = "@raikou/core/BrightnessSlider";
-
-// src/components/colorModel/index.tsx
-var import_tinycolor2 = require("@ctrl/tinycolor");
-var import_colord2 = require("colord");
-var defaultProps28 = {};
-var GradientPickerColorModel = (0, import_core40.factory)((props, ref) => {
-  const _a = (0, import_core40.useProps)("GradientPickerColorModel", defaultProps28, props), {
-    classNames,
-    className,
-    style,
-    styles,
-    vars,
-    value,
-    size: size2,
-    saturationSliderLabel,
-    lightnessSliderLabel,
-    brightnessSliderLabel,
-    focusable,
-    onChange
-  } = _a, others = __objRest(_a, [
-    "classNames",
-    "className",
-    "style",
-    "styles",
-    "vars",
-    "value",
-    "size",
-    "saturationSliderLabel",
-    "lightnessSliderLabel",
-    "brightnessSliderLabel",
-    "focusable",
-    "onChange"
-  ]);
-  const ctx = useGradientPickerContext();
-  const colorHSL = (0, import_colord2.colord)(value).toHsl();
-  const saturationChange = (value2) => {
-    const rgba = new import_tinycolor2.TinyColor({
-      h: colorHSL.h,
-      s: value2,
-      l: colorHSL.l
-    }).toRgbString();
-    onChange((0, import_colord2.colord)(rgba).toHsv());
-  };
-  const lightnessChange = (value2) => {
-    const rgba = new import_tinycolor2.TinyColor({
-      h: colorHSL.h,
-      s: colorHSL.s,
-      l: value2
-    }).toRgbString();
-    onChange((0, import_colord2.colord)(rgba).toHsv());
-  };
-  const brightnessChange = (value2) => {
-    const rgba = new import_tinycolor2.TinyColor({
-      h: colorHSL.h,
-      s: ctx.color.s,
-      v: value2
-    }).toRgbString();
-    onChange((0, import_colord2.colord)(rgba).toHsv());
-  };
-  return /* @__PURE__ */ import_react57.default.createElement(Stack, __spreadValues({ gap: 0 }, others), /* @__PURE__ */ import_react57.default.createElement(Stack, { gap: 0 }, /* @__PURE__ */ import_react57.default.createElement(Text, { size: (0, import_core40.rem)(12), className: "text-center" }, "Saturation"), /* @__PURE__ */ import_react57.default.createElement(
-    SaturationSlider,
-    {
-      value: colorHSL.s,
-      hsl: [colorHSL.h, colorHSL.s, colorHSL.l, colorHSL.a],
-      onChange: (s) => saturationChange(s),
-      onChangeEnd: (s) => saturationChange(s),
-      size: size2,
-      focusable,
-      "aria-label": saturationSliderLabel
-    }
-  )), /* @__PURE__ */ import_react57.default.createElement(Stack, { gap: 0 }, /* @__PURE__ */ import_react57.default.createElement(Text, { size: 12, align: "center" }, "Lightness"), /* @__PURE__ */ import_react57.default.createElement(
-    LightnessSlider,
-    {
-      value: colorHSL.l,
-      hsl: [colorHSL.h, colorHSL.s, colorHSL.l, colorHSL.a],
-      onChange: (l) => lightnessChange(l),
-      onChangeEnd: (l) => lightnessChange(l),
-      size: size2,
-      focusable,
-      "aria-label": lightnessSliderLabel
-    }
-  )), /* @__PURE__ */ import_react57.default.createElement(Stack, { gap: 0 }, /* @__PURE__ */ import_react57.default.createElement(Text, { size: (0, import_core40.rem)(12), className: "text-center" }, "Brightness"), /* @__PURE__ */ import_react57.default.createElement(
-    BrightnessSlider,
-    {
-      value: ctx.color.v,
-      hsl: [colorHSL.h, colorHSL.s, colorHSL.l, colorHSL.a],
-      onChange: (v) => brightnessChange(v),
-      onChangeEnd: (v) => brightnessChange(v),
-      size: size2,
-      focusable,
-      "aria-label": brightnessSliderLabel
-    }
-  )));
-});
-GradientPickerColorModel.displayName = "@raikou/core/GradientPickerColorModel";
-
-// src/components/colorGuide/index.tsx
-var import_react58 = __toESM(require("react"));
-var import_core41 = require("@raikou/core");
-var import_tinycolor3 = require("@ctrl/tinycolor");
-var import_colord3 = require("colord");
-var defaultProps29 = {};
-var GradientPickerColorGuide = (0, import_core41.factory)((props, ref) => {
-  const _a = (0, import_core41.useProps)("GradientPickerColorGuide", defaultProps29, props), {
-    classNames,
-    className,
-    style,
-    styles,
-    vars,
-    value,
-    onChange
-  } = _a, others = __objRest(_a, [
-    "classNames",
-    "className",
-    "style",
-    "styles",
-    "vars",
-    "value",
-    "onChange"
-  ]);
-  const tinyColor = new import_tinycolor3.TinyColor((0, import_colord3.colord)(value).toRgbString());
-  const analogous = tinyColor.analogous();
-  const monochromatic = tinyColor.monochromatic();
-  const triad = tinyColor.triad();
-  const tetrad = tinyColor.tetrad();
-  return /* @__PURE__ */ import_react58.default.createElement(Stack, __spreadValues({ gap: 0 }, others), /* @__PURE__ */ import_react58.default.createElement(Stack, { gap: 0, mb: 4 }, /* @__PURE__ */ import_react58.default.createElement(Text, { size: (0, import_core41.rem)(12) }, "Analogous"), /* @__PURE__ */ import_react58.default.createElement(Group, { gap: 0, grow: true }, analogous == null ? void 0 : analogous.map((c, key) => /* @__PURE__ */ import_react58.default.createElement(
-    import_core41.Box,
-    {
-      key,
-      style: {
-        height: 30,
-        background: c.toHexString()
-      },
-      onClick: () => onChange((0, import_colord3.colord)(c.toRgbString()).toHsv())
-    }
-  )))), /* @__PURE__ */ import_react58.default.createElement(Stack, { gap: 0, mb: 4 }, /* @__PURE__ */ import_react58.default.createElement(Text, { size: (0, import_core41.rem)(12) }, "Monochromatic"), /* @__PURE__ */ import_react58.default.createElement(Group, { gap: 0, grow: true }, monochromatic == null ? void 0 : monochromatic.map((c, key) => /* @__PURE__ */ import_react58.default.createElement(
-    import_core41.Box,
-    {
-      key,
-      style: {
-        height: 30,
-        background: c.toHexString()
-      },
-      onClick: () => onChange((0, import_colord3.colord)(c.toRgbString()).toHsv())
-    }
-  )))), /* @__PURE__ */ import_react58.default.createElement(Stack, { gap: 0, mb: 4 }, /* @__PURE__ */ import_react58.default.createElement(Text, { size: (0, import_core41.rem)(12) }, "Triad"), /* @__PURE__ */ import_react58.default.createElement(Group, { gap: 0, grow: true }, triad == null ? void 0 : triad.map((c, key) => /* @__PURE__ */ import_react58.default.createElement(
-    import_core41.Box,
-    {
-      key,
-      style: {
-        height: 30,
-        background: c.toHexString()
-      },
-      onClick: () => onChange((0, import_colord3.colord)(c.toRgbString()).toHsv())
-    }
-  )))), /* @__PURE__ */ import_react58.default.createElement(Stack, { gap: 0 }, /* @__PURE__ */ import_react58.default.createElement(Text, { size: (0, import_core41.rem)(12) }, "Tetrad"), /* @__PURE__ */ import_react58.default.createElement(Group, { gap: 0, grow: true }, tetrad == null ? void 0 : tetrad.map((c, key) => /* @__PURE__ */ import_react58.default.createElement(
-    import_core41.Box,
-    {
-      key,
-      style: {
-        height: 30,
-        background: c.toHexString()
-      },
-      onClick: () => onChange((0, import_colord3.colord)(c.toRgbString()).toHsv())
-    }
-  )))));
-});
-GradientPickerColorGuide.displayName = "@raikou/core/GradientPickerColorGuide";
-
-// src/components/swatches/index.tsx
-var import_react59 = __toESM(require("react"));
-var import_core42 = require("@raikou/core");
-var import_colord4 = require("colord");
-var defaultProps30 = {
-  swatchesPerRow: 10,
-  focusable: true
-};
-var GradientPickerColorSwatches = (0, import_core42.factory)((props, ref) => {
-  const _a = (0, import_core42.useProps)("GradientPickerColorSwatches", defaultProps30, props), {
-    classNames,
-    className,
-    style,
-    styles,
-    vars,
-    data,
-    swatchesPerRow,
-    focusable,
-    setValue,
-    onChangeEnd
-  } = _a, others = __objRest(_a, [
-    "classNames",
-    "className",
-    "style",
-    "styles",
-    "vars",
-    "data",
-    "swatchesPerRow",
-    "focusable",
-    "setValue",
-    "onChangeEnd"
-  ]);
-  const colors = data.map((color, index3) => /* @__PURE__ */ import_react59.default.createElement(
-    ColorSwatch,
-    {
-      className: "swatch",
-      component: "button",
-      type: "button",
-      color,
-      key: index3,
-      radius: "sm",
-      onClick: () => {
-        const _color = (0, import_colord4.colord)(color).toHsv();
-        setValue(_color);
-        onChangeEnd == null ? void 0 : onChangeEnd(_color);
-      },
-      style: { cursor: "pointer" },
-      "aria-label": color,
-      tabIndex: focusable ? 0 : -1
-    }
-  ));
-  return /* @__PURE__ */ import_react59.default.createElement(import_core42.Box, __spreadValues({ className: "swatches" }, others), colors);
-});
-GradientPickerColorSwatches.displayName = "@raikou/core/GradientPickerColorSwatches";
-
-// src/components/eyeDropper/index.tsx
-var import_react60 = __toESM(require("react"));
-var import_core43 = require("@raikou/core");
-var import_hooks14 = require("@raikou/hooks");
-var import_colord5 = require("colord");
-var defaultProps31 = {
-  size: "md"
-};
-var GradientPickerEyeDropper = (0, import_core43.factory)((props, ref) => {
-  const _a = (0, import_core43.useProps)("GradientPickerEyeDropper", defaultProps31, props), { classNames, className, style, styles, vars, onChange } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars", "onChange"]);
-  const { supported, open } = (0, import_hooks14.useEyeDropper)();
-  const pickColor = () => __async(void 0, null, function* () {
-    try {
-      const { sRGBHex: color } = yield open();
-      const _color = (0, import_colord5.colord)(color).toHsv();
-      onChange(_color);
-    } catch (e) {
-      console.log(e);
-    }
-  });
-  return /* @__PURE__ */ import_react60.default.createElement(import_react60.default.Fragment, null, supported && /* @__PURE__ */ import_react60.default.createElement(Button, __spreadValues({ onClick: pickColor }, others), /* @__PURE__ */ import_react60.default.createElement(Text, { className: "w-[20px] text-center" }, /* @__PURE__ */ import_react60.default.createElement(Image, { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNMzQxLjYgMjkuMkwyNDAuMSAxMzAuOGwtOS40LTkuNGMtMTIuNS0xMi41LTMyLjgtMTIuNS00NS4zIDBzLTEyLjUgMzIuOCAwIDQ1LjNsMTYwIDE2MGMxMi41IDEyLjUgMzIuOCAxMi41IDQ1LjMgMHMxMi41LTMyLjggMC00NS4zbC05LjQtOS40TDQ4Mi44IDE3MC40YzM5LTM5IDM5LTEwMi4yIDAtMTQxLjFzLTEwMi4yLTM5LTE0MS4xIDB6TTU1LjQgMzIzLjNjLTE1IDE1LTIzLjQgMzUuNC0yMy40IDU2LjZ2NDIuNEw1LjQgNDYyLjJjLTguNSAxMi43LTYuOCAyOS42IDQgNDAuNHMyNy43IDEyLjUgNDAuNCA0TDg5LjcgNDgwaDQyLjRjMjEuMiAwIDQxLjYtOC40IDU2LjYtMjMuNEwzMDkuNCAzMzUuOWwtNDUuMy00NS4zTDE0My40IDQxMS4zYy0zIDMtNy4xIDQuNy0xMS4zIDQuN0g5NlYzNzkuOWMwLTQuMiAxLjctOC4zIDQuNy0xMS4zTDIyMS40IDI0Ny45bC00NS4zLTQ1LjNMNTUuNCAzMjMuM3oiLz48L3N2Zz4=" }))));
-});
-GradientPickerEyeDropper.displayName = "@raikou/core/GradientPickerEyeDropper";
-
-// src/components/inputs/index.tsx
-var import_react65 = __toESM(require("react"));
-var import_core48 = require("@raikou/core");
-var import_clsx11 = __toESM(require("clsx"));
-
-// ../Grid/src/Grid.tsx
-var import_react64 = __toESM(require("react"));
-var import_core47 = require("@raikou/core");
-
-// ../Grid/src/GridCol/GridCol.tsx
-var import_react62 = __toESM(require("react"));
-var import_clsx10 = __toESM(require("clsx"));
-var import_core45 = require("@raikou/core");
-
-// ../Grid/src/GridCol/GridColVariables.tsx
-var import_react61 = __toESM(require("react"));
-var import_core44 = require("@raikou/core");
-
-// ../Grid/src/store.ts
-var useStore3 = create(() => ({
-  getStyles: void 0,
-  grow: false,
-  columns: 12
-}));
-
-// ../Grid/src/GridCol/GridColVariables.tsx
-var getColumnFlexBasis = (colSpan, columns) => {
-  if (colSpan === "content") {
-    return "auto";
-  }
-  if (colSpan === "auto") {
-    return "0rem";
-  }
-  return colSpan ? `${100 / (columns / colSpan)}%` : void 0;
-};
-var getColumnMaxWidth = (colSpan, columns, grow) => {
-  if (grow || colSpan === "auto" || colSpan === "content") {
-    return "unset";
-  }
-  return getColumnFlexBasis(colSpan, columns);
-};
-var getColumnFlexGrow = (colSpan, grow) => {
-  if (!colSpan) {
-    return void 0;
-  }
-  return colSpan === "auto" || grow ? "1" : void 0;
-};
-var getColumnOffset = (offset2, columns) => offset2 === 0 ? "0" : offset2 ? `${100 / (columns / offset2)}%` : void 0;
-function GridColVariables({
-  span,
-  order,
-  offset: offset2,
-  selector
-}) {
-  var _a;
-  const theme = (0, import_core44.useRaikouTheme)();
-  const ctx = useStore3.getState();
-  const baseValue = (0, import_core44.getBaseValue)(span);
-  const baseSpan = baseValue === void 0 ? 12 : (0, import_core44.getBaseValue)(span);
-  const baseStyles = (0, import_core44.filterProps)({
-    "--col-order": (_a = (0, import_core44.getBaseValue)(order)) == null ? void 0 : _a.toString(),
-    "--col-flex-grow": getColumnFlexGrow(baseSpan, ctx.grow),
-    "--col-flex-basis": getColumnFlexBasis(baseSpan, ctx.columns),
-    "--col-width": baseSpan === "content" ? "auto" : void 0,
-    "--col-max-width": getColumnMaxWidth(baseSpan, ctx.columns, ctx.grow),
-    "--col-offset": getColumnOffset((0, import_core44.getBaseValue)(offset2), ctx.columns)
-  });
-  const queries = (0, import_core44.keys)(theme.breakpoints).reduce((acc, breakpoint) => {
-    var _a2;
-    if (!acc[breakpoint]) {
-      acc[breakpoint] = {};
-    }
-    if (typeof order === "object" && order[breakpoint] !== void 0) {
-      acc[breakpoint]["--col-order"] = (_a2 = order[breakpoint]) == null ? void 0 : _a2.toString();
-    }
-    if (typeof span === "object" && span[breakpoint] !== void 0) {
-      acc[breakpoint]["--col-flex-grow"] = getColumnFlexGrow(
-        span[breakpoint],
-        ctx.grow
-      );
-      acc[breakpoint]["--col-flex-basis"] = getColumnFlexBasis(
-        span[breakpoint],
-        ctx.columns
-      );
-      acc[breakpoint]["--col-width"] = span[breakpoint] === "content" ? "auto" : void 0;
-      acc[breakpoint]["--col-max-width"] = getColumnMaxWidth(
-        span[breakpoint],
-        ctx.columns,
-        ctx.grow
-      );
-    }
-    if (typeof offset2 === "object" && offset2[breakpoint] !== void 0) {
-      acc[breakpoint]["--col-offset"] = getColumnOffset(
-        offset2[breakpoint],
-        ctx.columns
-      );
-    }
-    return acc;
-  }, {});
-  const sortedBreakpoints = (0, import_core44.getSortedBreakpoints)((0, import_core44.keys)(queries), theme).filter(
-    (breakpoint) => (0, import_core44.keys)(queries[breakpoint.value]).length > 0
-  );
-  const media = sortedBreakpoints.map((breakpoint) => ({
-    query: `(min-width: ${theme.breakpoints[breakpoint.value]})`,
-    styles: queries[breakpoint.value]
-  }));
-  return /* @__PURE__ */ import_react61.default.createElement(import_core44.InlineStyles, { styles: baseStyles, media, selector });
-}
-
-// ../Grid/src/GridCol/GridCol.tsx
-var defaultProps32 = {
-  span: 12
-};
-var GridCol = (0, import_core45.factory)((_props, ref) => {
-  const props = (0, import_core45.useProps)("GridCol", defaultProps32, _props);
-  const _a = props, {
-    classNames,
-    className,
-    style,
-    styles,
-    vars,
-    span,
-    order,
-    offset: offset2
-  } = _a, others = __objRest(_a, [
-    "classNames",
-    "className",
-    "style",
-    "styles",
-    "vars",
-    "span",
-    "order",
-    "offset"
-  ]);
-  const responsiveClassName = (0, import_core45.useRandomClassName)();
-  return /* @__PURE__ */ import_react62.default.createElement(import_react62.default.Fragment, null, /* @__PURE__ */ import_react62.default.createElement(
-    GridColVariables,
-    {
-      selector: `.${responsiveClassName}`,
-      span,
-      order,
-      offset: offset2
-    }
-  ), /* @__PURE__ */ import_react62.default.createElement(
-    import_core45.Box,
-    __spreadValues(__spreadValues({
-      ref
-    }, useStore3.getState().getStyles("col", {
-      className: (0, import_clsx10.default)(className, responsiveClassName),
-      style,
-      classNames,
-      styles
-    })), others)
-  ));
-});
-GridCol.displayName = "@raikou/core/GridCol";
-
-// ../Grid/src/GridVariables.tsx
-var import_react63 = __toESM(require("react"));
-var import_core46 = require("@raikou/core");
-function GridVariables({ gutter, selector }) {
-  const theme = (0, import_core46.useRaikouTheme)();
-  const baseStyles = (0, import_core46.filterProps)({
-    "--grid-gutter": (0, import_core46.getSpacing)((0, import_core46.getBaseValue)(gutter))
-  });
-  const queries = (0, import_core46.keys)(theme.breakpoints).reduce((acc, breakpoint) => {
-    if (!acc[breakpoint]) {
-      acc[breakpoint] = {};
-    }
-    if (typeof gutter === "object" && gutter[breakpoint] !== void 0) {
-      acc[breakpoint]["--grid-gutter"] = (0, import_core46.getSpacing)(gutter[breakpoint]);
-    }
-    return acc;
-  }, {});
-  const sortedBreakpoints = (0, import_core46.getSortedBreakpoints)((0, import_core46.keys)(queries), theme).filter(
-    (breakpoint) => (0, import_core46.keys)(queries[breakpoint.value]).length > 0
-  );
-  const media = sortedBreakpoints.map((breakpoint) => ({
-    query: `(min-width: ${theme.breakpoints[breakpoint.value]})`,
-    styles: queries[breakpoint.value]
-  }));
-  return /* @__PURE__ */ import_react63.default.createElement(import_core46.InlineStyles, { styles: baseStyles, media, selector });
-}
-
-// ../Grid/src/Grid.tsx
-var defaultProps33 = {
-  gutter: "md",
-  grow: false,
-  columns: 12
-};
-var varsResolver17 = (0, import_core47.createVarsResolver)(
-  (_, { justify, align }) => ({
-    root: {
-      "--grid-justify": justify,
-      "--grid-align": align
-    }
-  })
-);
-var Grid = (0, import_core47.factory)((_props, ref) => {
-  const props = (0, import_core47.useProps)("Grid", defaultProps33, _props);
-  const _a = props, {
-    classNames,
-    className,
-    style,
-    styles,
-    unstyled,
-    vars,
-    grow,
-    gutter,
-    columns,
-    align,
-    justify,
-    children
-  } = _a, others = __objRest(_a, [
-    "classNames",
-    "className",
-    "style",
-    "styles",
-    "unstyled",
-    "vars",
-    "grow",
-    "gutter",
-    "columns",
-    "align",
-    "justify",
-    "children"
-  ]);
-  const getStyles = (0, import_core47.useStyles)({
-    name: "Grid",
-    classes: {
-      root: "grid-root",
-      col: "grid-col",
-      inner: "grid-inner"
-    },
-    props,
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
-    vars,
-    varsResolver: varsResolver17
-  });
-  const responsiveClassName = (0, import_core47.useRandomClassName)();
-  useStore3.setState({ getStyles, grow, columns });
-  return /* @__PURE__ */ import_react64.default.createElement(import_react64.default.Fragment, null, /* @__PURE__ */ import_react64.default.createElement("div", null, /* @__PURE__ */ import_react64.default.createElement(GridVariables, __spreadValues({ selector: `.${responsiveClassName}` }, props))), /* @__PURE__ */ import_react64.default.createElement(
-    import_core47.Box,
-    __spreadValues(__spreadValues({
-      ref
-    }, getStyles("root", { className: responsiveClassName })), others),
-    /* @__PURE__ */ import_react64.default.createElement("div", __spreadValues({}, getStyles("inner")), children)
-  ));
-});
-Grid.displayName = "@raikou/core/Grid";
-Grid.Col = GridCol;
-
-// src/components/inputs/index.tsx
-var import_colord6 = require("colord");
-var defaultProps34 = {
-  format: "rgba"
-};
-var GradientPickerInputs = (0, import_core48.factory)(
-  (props, ref) => {
-    const _a = (0, import_core48.useProps)("GradientPickerInputs", defaultProps34, props), { classNames, className, style, styles, vars, format } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars", "format"]);
-    const ctx = useGradientPickerContext();
-    const retrieveValue = (index3) => {
-      if (format === "rgba") {
-        const value = (0, import_colord6.colord)(ctx.color).toRgb();
-        const key = Object.keys(value)[index3];
-        return value[key];
-      } else if (format === "hsla") {
-        const value = (0, import_colord6.colord)(ctx.color).toHsl();
-        const key = Object.keys(value)[index3];
-        return value[key];
-      } else if (format === "hsva") {
-        const value = ctx.color[index3];
-        const key = Object.keys(value)[index3];
-        return value[key];
-      } else if (format === "cmyk") {
-      }
-      return "";
-    };
-    const retrieveLabel = (index3) => {
-      if (format === "rgba") {
-        return "RGBA".split("")[index3];
-      } else if (format === "hsla") {
-        return "HSLA".split("")[index3];
-      } else if (format === "hsva") {
-        return "HSVA".split("")[index3];
-      } else if (format === "cmyk") {
-        return "CMYK".split("")[index3];
-      }
-      return "";
-    };
-    return /* @__PURE__ */ import_react65.default.createElement(Grid, __spreadValues({}, others), /* @__PURE__ */ import_react65.default.createElement(
-      Grid.Col,
-      {
-        span: 4
-      },
-      /* @__PURE__ */ import_react65.default.createElement(
-        TextInput,
-        {
-          size: "xs",
-          value: (0, import_colord6.colord)(ctx.color).toHex().toString().replace("#", ""),
-          onChange: () => {
-          },
-          label: "Hex",
-          styles: {
-            root: {
-              display: "flex",
-              flexDirection: "column-reverse",
-              width: "70px"
-            },
-            label: {
-              width: "100%",
-              textAlign: "center"
-            },
-            input: {
-              textAlign: "center"
-            }
-          }
-        }
-      )
-    ), /* @__PURE__ */ import_react65.default.createElement(
-      Grid.Col,
-      {
-        span: "auto"
-      },
-      /* @__PURE__ */ import_react65.default.createElement(Group, { gap: 8, grow: true }, /* @__PURE__ */ import_react65.default.createElement(
-        TextInput,
-        {
-          size: "xs",
-          readOnly: true,
-          value: retrieveValue(0),
-          onChange: () => {
-          },
-          label: retrieveLabel(0),
-          className: (0, import_clsx11.default)("textInput", className)
-        }
-      ), /* @__PURE__ */ import_react65.default.createElement(
-        TextInput,
-        {
-          size: "xs",
-          readOnly: true,
-          value: retrieveValue(1),
-          onChange: () => {
-          },
-          label: retrieveLabel(1),
-          className: (0, import_clsx11.default)("textInput", className)
-        }
-      ), /* @__PURE__ */ import_react65.default.createElement(
-        TextInput,
-        {
-          size: "xs",
-          readOnly: true,
-          value: retrieveValue(2),
-          onChange: () => {
-          },
-          label: retrieveLabel(2),
-          className: (0, import_clsx11.default)("textInput", className)
-        }
-      ), /* @__PURE__ */ import_react65.default.createElement(
-        TextInput,
-        {
-          size: "xs",
-          readOnly: true,
-          value: retrieveValue(3),
-          onChange: () => {
-          },
-          label: retrieveLabel(3),
-          className: (0, import_clsx11.default)("textInput", className)
-        }
-      ))
-    ));
-  }
-);
-GradientPickerInputs.displayName = "@raikou/core/GradientPickerInputs";
-
 // src/components/saturation/index.tsx
-var import_react66 = __toESM(require("react"));
-var import_core49 = require("@raikou/core");
-var import_colord7 = require("colord");
-var import_hooks15 = require("@raikou/hooks");
-var defaultProps35 = {
+var import_colord3 = require("colord");
+var import_hooks14 = require("@raikou/hooks");
+var defaultProps28 = {
   focusable: true
 };
-var GradientPickerSaturation = (0, import_core49.factory)((props, ref) => {
-  const _a = (0, import_core49.useProps)("GradientPickerSaturation", defaultProps35, props), {
+var GradientPickerSaturation = (0, import_core40.factory)((props, ref) => {
+  const _a = (0, import_core40.useProps)("GradientPickerSaturation", defaultProps28, props), {
     classNames,
     className,
     style,
@@ -54488,12 +53697,12 @@ var GradientPickerSaturation = (0, import_core49.factory)((props, ref) => {
     "onChange",
     "onChangeEnd"
   ]);
-  const [position, setPosition] = (0, import_react66.useState)({
+  const [position, setPosition] = (0, import_react54.useState)({
     x: value.s / 100,
     y: 1 - value.v / 100
   });
-  const positionRef = (0, import_react66.useRef)(position);
-  const { ref: moveRef } = (0, import_hooks15.useMove)(
+  const positionRef = (0, import_react54.useRef)(position);
+  const { ref: moveRef } = (0, import_hooks14.useMove)(
     ({ x, y }) => {
       positionRef.current = { x, y };
       onChange({
@@ -54515,12 +53724,12 @@ var GradientPickerSaturation = (0, import_core49.factory)((props, ref) => {
       }
     }
   );
-  (0, import_react66.useEffect)(() => {
+  (0, import_react54.useEffect)(() => {
     setPosition({ x: value.s / 100, y: 1 - value.v / 100 });
   }, [value.s, value.v]);
   const handleArrow = (event, pos) => {
     event.preventDefault();
-    const _position = (0, import_hooks15.clampUseMovePosition)(pos);
+    const _position = (0, import_hooks14.clampUseMovePosition)(pos);
     const _color = {
       h: value.h,
       s: Math.round(_position.x * 100),
@@ -54550,50 +53759,49 @@ var GradientPickerSaturation = (0, import_core49.factory)((props, ref) => {
       }
     }
   };
-  return /* @__PURE__ */ import_react66.default.createElement(
-    import_core49.Box,
+  return /* @__PURE__ */ import_react54.default.createElement(
+    import_core40.Box,
     __spreadValues({
-      className: "saturation",
+      className: "gradientPicker-saturation",
       ref: moveRef,
       role: "slider",
       "aria-label": saturationLabel,
       "aria-valuenow": position.x,
-      "aria-valuetext": (0, import_colord7.colord)(value).toRgbString(),
+      "aria-valuetext": (0, import_colord3.colord)(value).toRgbString(),
       tabIndex: focusable ? 0 : -1,
       onKeyDown: handleKeyDown,
       style: { height: "194px" }
     }, others),
-    /* @__PURE__ */ import_react66.default.createElement(
+    /* @__PURE__ */ import_react54.default.createElement(
       "div",
       {
-        className: "saturationOverlay",
+        className: "gradientPicker-saturationOverlay",
         style: { backgroundColor: `hsl(${value.h}, 100%, 50%)` }
       }
     ),
-    /* @__PURE__ */ import_react66.default.createElement(
+    /* @__PURE__ */ import_react54.default.createElement(
       "div",
       {
-        className: "saturationOverlay",
+        className: "gradientPicker-saturationOverlay",
         style: {
           backgroundImage: "linear-gradient(90deg, #fff, transparent)"
         }
       }
     ),
-    /* @__PURE__ */ import_react66.default.createElement(
+    /* @__PURE__ */ import_react54.default.createElement(
       "div",
       {
-        className: "saturationOverlay",
+        className: "gradientPicker-saturationOverlay",
         style: {
           backgroundImage: "linear-gradient(0deg, #000, transparent)"
         }
       }
     ),
-    /* @__PURE__ */ import_react66.default.createElement(
+    /* @__PURE__ */ import_react54.default.createElement(
       GradientPickerThumb,
       {
         position,
-        className: "saturationThumb",
-        style: { backgroundColor: (0, import_colord7.colord)(value).toRgbString() },
+        style: { backgroundColor: (0, import_colord3.colord)(value).toRgbString() },
         size: size2
       }
     )
@@ -54602,12 +53810,117 @@ var GradientPickerSaturation = (0, import_core49.factory)((props, ref) => {
 GradientPickerSaturation.displayName = "@raikou/core/GradientPickerSaturation";
 
 // src/components/hueSlider.tsx
-var import_react67 = __toESM(require("react"));
-var import_core50 = require("@raikou/core");
-var defaultProps36 = {};
-var GradientPickerHueSlider = (0, import_core50.factory)(
+var import_react56 = __toESM(require("react"));
+var import_core42 = require("@raikou/core");
+
+// src/components/colorSlider/index.tsx
+var import_react55 = __toESM(require("react"));
+var import_core41 = require("@raikou/core");
+var import_hooks15 = require("@raikou/hooks");
+var import_clsx9 = __toESM(require("clsx"));
+var defaultProps29 = {
+  size: "md",
+  focusable: true
+};
+var GradientPickerColorSlider = (0, import_core41.factory)((props, ref) => {
+  const _a = (0, import_core41.useProps)("GradientPickerColorSlider", defaultProps29, props), {
+    classNames,
+    className,
+    style,
+    styles,
+    vars,
+    value,
+    onChange,
+    onChangeEnd,
+    maxValue,
+    round: round3,
+    size: size2,
+    focusable,
+    overlays
+  } = _a, others = __objRest(_a, [
+    "classNames",
+    "className",
+    "style",
+    "styles",
+    "vars",
+    "value",
+    "onChange",
+    "onChangeEnd",
+    "maxValue",
+    "round",
+    "size",
+    "focusable",
+    "overlays"
+  ]);
+  const [position, setPosition] = (0, import_react55.useState)({ y: 0, x: value / maxValue });
+  const positionRef = (0, import_react55.useRef)(position);
+  const getChangeValue = (val) => round3 ? Math.round(val * maxValue) : val * maxValue;
+  const { ref: sliderRef } = (0, import_hooks15.useMove)(
+    ({ x, y }) => {
+      positionRef.current = { x, y };
+      onChange(getChangeValue(x));
+    },
+    {
+      onScrubEnd: () => {
+        const { x } = positionRef.current;
+        onChangeEnd(getChangeValue(x));
+      }
+    }
+  );
+  (0, import_hooks15.useDidUpdate)(() => {
+    setPosition({ y: 0, x: value / maxValue });
+  }, [value]);
+  const handleArrow = (event, pos) => {
+    event.preventDefault();
+    const _position = (0, import_hooks15.clampUseMovePosition)(pos);
+    onChange(getChangeValue(_position.x));
+    onChangeEnd(getChangeValue(_position.x));
+  };
+  const handleKeyDown = (event) => {
+    switch (event.key) {
+      case "ArrowRight": {
+        handleArrow(event, { x: position.x + 0.05, y: position.y });
+        break;
+      }
+      case "ArrowLeft": {
+        handleArrow(event, { x: position.x - 0.05, y: position.y });
+        break;
+      }
+    }
+  };
+  const layers = overlays ? overlays.map((overlay, index3) => /* @__PURE__ */ import_react55.default.createElement("div", { className: "sliderOverlay", style: overlay, key: index3 })) : null;
+  return /* @__PURE__ */ import_react55.default.createElement(
+    import_core41.Box,
+    __spreadProps(__spreadValues({}, others), {
+      ref: (0, import_hooks15.useMergedRef)(sliderRef, ref),
+      className: (0, import_clsx9.default)("slider", className),
+      role: "slider",
+      "aria-valuenow": value,
+      "aria-valuemax": maxValue,
+      "aria-valuemin": 0,
+      tabIndex: focusable ? 0 : -1,
+      onKeyDown: handleKeyDown
+    }),
+    layers,
+    /* @__PURE__ */ import_react55.default.createElement(
+      GradientPickerThumb,
+      {
+        classNames,
+        styles,
+        position,
+        className: "sliderThumb",
+        size: size2
+      }
+    )
+  );
+});
+GradientPickerColorSlider.displayName = "@raikou/core/GradientPickerColorSlider";
+
+// src/components/hueSlider.tsx
+var defaultProps30 = {};
+var GradientPickerHueSlider = (0, import_core42.factory)(
   (props, ref) => {
-    const _a = (0, import_core50.useProps)("GradientPickerHueSlider", defaultProps36, props), {
+    const _a = (0, import_core42.useProps)("GradientPickerHueSlider", defaultProps30, props), {
       classNames,
       className,
       style,
@@ -54626,7 +53939,7 @@ var GradientPickerHueSlider = (0, import_core50.factory)(
       "onChange",
       "onChangeEnd"
     ]);
-    return /* @__PURE__ */ import_react67.default.createElement(
+    return /* @__PURE__ */ import_react56.default.createElement(
       GradientPickerColorSlider,
       __spreadValues({
         ref,
@@ -54642,8 +53955,8 @@ var GradientPickerHueSlider = (0, import_core50.factory)(
 GradientPickerHueSlider.displayName = "@raikou/core/GradientPickerHueSlider";
 
 // src/components/alphaSlider.tsx
-var import_react68 = __toESM(require("react"));
-var import_core51 = require("@raikou/core");
+var import_react57 = __toESM(require("react"));
+var import_core43 = require("@raikou/core");
 
 // src/utils/index.ts
 function round2(number, digits = 0, base = __pow(10, digits)) {
@@ -54651,9 +53964,9 @@ function round2(number, digits = 0, base = __pow(10, digits)) {
 }
 
 // src/components/alphaSlider.tsx
-var defaultProps37 = {};
-var GradientPickerAlphaSlider = (0, import_core51.factory)((props, ref) => {
-  const _a = (0, import_core51.useProps)("GradientPickerAlphaSlider", defaultProps37, props), {
+var defaultProps31 = {};
+var GradientPickerAlphaSlider = (0, import_core43.factory)((props, ref) => {
+  const _a = (0, import_core43.useProps)("GradientPickerAlphaSlider", defaultProps31, props), {
     classNames,
     className,
     style,
@@ -54674,7 +53987,7 @@ var GradientPickerAlphaSlider = (0, import_core51.factory)((props, ref) => {
     "onChange",
     "onChangeEnd"
   ]);
-  return /* @__PURE__ */ import_react68.default.createElement(
+  return /* @__PURE__ */ import_react57.default.createElement(
     GradientPickerColorSlider,
     __spreadValues({
       ref,
@@ -54689,11 +54002,11 @@ var GradientPickerAlphaSlider = (0, import_core51.factory)((props, ref) => {
 GradientPickerAlphaSlider.displayName = "@raikou/core/GradientPickerAlphaSlider";
 
 // src/components/compact/index.tsx
-var defaultProps38 = {};
-var GradientPickerCompact = (0, import_core52.factory)(
+var defaultProps32 = {};
+var GradientPickerCompact = (0, import_core44.factory)(
   (props, ref) => {
     var _b, _c;
-    const _a = (0, import_core52.useProps)("GradientPickerCompact", defaultProps38, props), {
+    const _a = (0, import_core44.useProps)("GradientPickerCompact", defaultProps32, props), {
       classNames,
       className,
       style,
@@ -54752,7 +54065,7 @@ var GradientPickerCompact = (0, import_core52.factory)(
       "onClose",
       "shadow"
     ]);
-    const [colorCtrl, toggleColorCtrl] = (0, import_react69.useState)("none");
+    const [colorCtrl, toggleColorCtrl] = (0, import_react58.useState)("none");
     const ctx = useGradientPickerContext();
     const { ref: pickerRef, width: elementWidth } = (0, import_hooks16.useElementSize)();
     const handleChange = (color) => {
@@ -54763,22 +54076,23 @@ var GradientPickerCompact = (0, import_core52.factory)(
           (item) => item.id === ctx.activeStopIndex
         );
         if (obj) {
-          obj.color = (0, import_colord8.colord)(color).toHex();
-          obj.hex = (0, import_colord8.colord)(color).toHex();
+          obj.color = (0, import_colord4.colord)(color).toHex();
+          obj.hex = (0, import_colord4.colord)(color).toHex();
           obj.rgb = [
-            (0, import_colord8.colord)(color).toRgb().r,
-            (0, import_colord8.colord)(color).toRgb().g,
-            (0, import_colord8.colord)(color).toRgb().b
+            (0, import_colord4.colord)(color).toRgb().r,
+            (0, import_colord4.colord)(color).toRgb().g,
+            (0, import_colord4.colord)(color).toRgb().b
           ];
           obj.value = [
-            (0, import_colord8.colord)(color).toRgb().r,
-            (0, import_colord8.colord)(color).toRgb().g,
-            (0, import_colord8.colord)(color).toRgb().b,
-            (0, import_colord8.colord)(color).toRgb().a
+            (0, import_colord4.colord)(color).toRgb().r,
+            (0, import_colord4.colord)(color).toRgb().g,
+            (0, import_colord4.colord)(color).toRgb().b,
+            (0, import_colord4.colord)(color).toRgb().a
           ];
         }
       }
     };
+    console.log(elementWidth);
     const onColorCtrlChange = (value) => {
       if (value === colorCtrl) {
         toggleColorCtrl("none");
@@ -54790,14 +54104,15 @@ var GradientPickerCompact = (0, import_core52.factory)(
         toggleColorCtrl(value);
       }
     };
-    (0, import_react69.useEffect)(() => {
+    (0, import_react58.useEffect)(() => {
       if (ctx.isOpen) {
         onOpen && onOpen();
       } else {
         onClose && onClose();
       }
     }, [ctx.isOpen]);
-    return /* @__PURE__ */ import_react69.default.createElement(
+    console.log(width);
+    return /* @__PURE__ */ import_react58.default.createElement(
       Popover,
       {
         __staticSelector: "Compact",
@@ -54808,178 +54123,152 @@ var GradientPickerCompact = (0, import_core52.factory)(
         withinPortal,
         transitionProps,
         opened: ctx.isOpen,
-        shadow,
-        width: width === void 0 ? elementWidth : width
+        shadow
       },
-      /* @__PURE__ */ import_react69.default.createElement(Popover.Target, null, /* @__PURE__ */ import_react69.default.createElement(
+      /* @__PURE__ */ import_react58.default.createElement(Popover.Target, null, /* @__PURE__ */ import_react58.default.createElement(
         GradientPickerPicker,
         {
           ref: pickerRef,
           disabled,
           control: picker,
           swatchSize,
-          className: (0, import_clsx12.default)("pickerInput", className)
+          className: (0, import_clsx10.default)("pickerInput", className)
         }
       )),
-      /* @__PURE__ */ import_react69.default.createElement(Popover.Dropdown, null, /* @__PURE__ */ import_react69.default.createElement(Stack, __spreadValues({ gap: 0, ref: ctx.setDropdown }, others), /* @__PURE__ */ import_react69.default.createElement(
-        GradientPickerSaturation,
-        {
-          value: ctx.color,
-          onChange: (color) => handleChange(color),
-          onChangeEnd: (color) => handleChange(color),
-          size: size2,
-          focusable,
-          saturationLabel
-        }
-      ), /* @__PURE__ */ import_react69.default.createElement(Group, { gap: 10, mb: 8 }, /* @__PURE__ */ import_react69.default.createElement(Button.Group, null, /* @__PURE__ */ import_react69.default.createElement(
-        GradientPickerEyeDropper,
-        {
-          className: "px-[8px]",
-          size: "md",
-          onChange: (color) => handleChange(color)
-        }
-      ), /* @__PURE__ */ import_react69.default.createElement(
-        Button,
-        {
-          variant: "default",
-          size: "md",
-          onClick: () => onColorCtrlChange("colorMode"),
-          className: "px-[4px]",
-          style: {
-            background: colorCtrl === "colorMode" ? "white" : "",
-            color: colorCtrl === "colorMode" ? "rgb(86, 140, 245)" : "",
-            borderRadius: colorCtrl === "colorMode" ? 8 : 0
-          }
-        },
-        /* @__PURE__ */ import_react69.default.createElement(
-          Tooltip,
+      /* @__PURE__ */ import_react58.default.createElement(Popover.Dropdown, null, /* @__PURE__ */ import_react58.default.createElement(
+        Stack,
+        __spreadValues({
+          gap: 0,
+          ref: ctx.setDropdown,
+          className: "gradientPicker-wrapper"
+        }, others),
+        /* @__PURE__ */ import_react58.default.createElement(
+          GradientPickerSaturation,
           {
-            label: "Color Model",
-            offset: 10,
-            opened: colorCtrl === "colorMode" ? false : void 0
-          },
-          /* @__PURE__ */ import_react69.default.createElement(Text, { className: "w-[20px] text-center" }, /* @__PURE__ */ import_react69.default.createElement(Image, { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNOTYgMGMxNy43IDAgMzIgMTQuMyAzMiAzMlY4Ni43YzI4LjMgMTIuMyA0OCA0MC41IDQ4IDczLjNzLTE5LjcgNjEtNDggNzMuM1Y0ODBjMCAxNy43LTE0LjMgMzItMzIgMzJzLTMyLTE0LjMtMzItMzJWMjMzLjNDMzUuNyAyMjEgMTYgMTkyLjggMTYgMTYwczE5LjctNjEgNDgtNzMuM1YzMkM2NCAxNC4zIDc4LjMgMCA5NiAwem0wIDE5MmEzMiAzMiAwIDEgMCAwLTY0IDMyIDMyIDAgMSAwIDAgNjR6TTI1NiAzODRhMzIgMzIgMCAxIDAgMC02NCAzMiAzMiAwIDEgMCAwIDY0em04MC0zMmMwIDMyLjgtMTkuNyA2MS00OCA3My4zVjQ4MGMwIDE3LjctMTQuMyAzMi0zMiAzMnMtMzItMTQuMy0zMi0zMlY0MjUuM2MtMjguMy0xMi4zLTQ4LTQwLjUtNDgtNzMuM3MxOS43LTYxIDQ4LTczLjNWMzJjMC0xNy43IDE0LjMtMzIgMzItMzJzMzIgMTQuMyAzMiAzMlYyNzguN2MyOC4zIDEyLjMgNDggNDAuNSA0OCA3My4zek00NDggMTkyYTMyIDMyIDAgMSAwIC02NCAwIDMyIDMyIDAgMSAwIDY0IDB6bTAgNzMuM1Y0ODBjMCAxNy43LTE0LjMgMzItMzIgMzJzLTMyLTE0LjMtMzItMzJWMjY1LjNjLTI4LjMtMTIuMy00OC00MC41LTQ4LTczLjNzMTkuNy02MSA0OC03My4zVjMyYzAtMTcuNyAxNC4zLTMyIDMyLTMyczMyIDE0LjMgMzIgMzJ2ODYuN2MyOC4zIDEyLjMgNDggNDAuNSA0OCA3My4zcy0xOS43IDYxLTQ4IDczLjN6Ii8+PC9zdmc+" }))
-        )
-      ), /* @__PURE__ */ import_react69.default.createElement(
-        Button,
-        {
-          variant: "default",
-          size: "md",
-          onClick: () => onColorCtrlChange("colorGuide"),
-          className: "px-[4px]",
-          style: {
-            background: colorCtrl === "colorGuide" ? "white" : "",
-            color: colorCtrl === "colorGuide" ? "rgb(86, 140, 245)" : "",
-            borderRadius: colorCtrl === "colorGuide" ? 8 : 0
+            value: ctx.color,
+            onChange: (color) => handleChange(color),
+            onChangeEnd: (color) => handleChange(color),
+            size: size2,
+            focusable,
+            saturationLabel
           }
-        },
-        /* @__PURE__ */ import_react69.default.createElement(
-          Tooltip,
+        ),
+        /* @__PURE__ */ import_react58.default.createElement(Group, { gap: 10, mb: 8 }, /* @__PURE__ */ import_react58.default.createElement(Button.Group, null, /* @__PURE__ */ import_react58.default.createElement(
+          GradientPickerEyeDropper,
           {
-            label: "Color Guide",
-            offset: 10,
-            opened: colorCtrl === "colorGuide" ? false : void 0
-          },
-          /* @__PURE__ */ import_react69.default.createElement(Text, { className: "w-[20px] text-center" }, /* @__PURE__ */ import_react69.default.createElement(Image, { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNNTEyIDI1NmMwIC45IDAgMS44IDAgMi43Yy0uNCAzNi41LTMzLjYgNjEuMy03MC4xIDYxLjNIMzQ0Yy0yNi41IDAtNDggMjEuNS00OCA0OGMwIDMuNCAuNCA2LjcgMSA5LjljMi4xIDEwLjIgNi41IDIwIDEwLjggMjkuOWM2LjEgMTMuOCAxMi4xIDI3LjUgMTIuMSA0MmMwIDMxLjgtMjEuNiA2MC43LTUzLjQgNjJjLTMuNSAuMS03IC4yLTEwLjYgLjJDMTE0LjYgNTEyIDAgMzk3LjQgMCAyNTZTMTE0LjYgMCAyNTYgMFM1MTIgMTE0LjYgNTEyIDI1NnpNMTI4IDI4OGEzMiAzMiAwIDEgMCAtNjQgMCAzMiAzMiAwIDEgMCA2NCAwem0wLTk2YTMyIDMyIDAgMSAwIDAtNjQgMzIgMzIgMCAxIDAgMCA2NHpNMjg4IDk2YTMyIDMyIDAgMSAwIC02NCAwIDMyIDMyIDAgMSAwIDY0IDB6bTk2IDk2YTMyIDMyIDAgMSAwIDAtNjQgMzIgMzIgMCAxIDAgMCA2NHoiLz48L3N2Zz4=" }))
-        )
-      )), /* @__PURE__ */ import_react69.default.createElement(import_core52.Box, { className: "calc(100%_-_102px)" }, /* @__PURE__ */ import_react69.default.createElement(
-        GradientPickerHueSlider,
-        {
-          value: (_b = ctx.color) == null ? void 0 : _b.h,
-          onChange: (h) => handleChange({
-            h,
-            // @ts-ignore
-            s: ctx.color.s,
-            // @ts-ignore
-            v: ctx.color.v,
-            // @ts-ignore
-            a: ctx.color.a
-          }),
-          onChangeEnd: (h) => handleChange({
-            h,
-            // @ts-ignore
-            s: ctx.color.s,
-            // @ts-ignore
-            v: ctx.color.v,
-            // @ts-ignore
-            a: ctx.color.a
-          }),
-          size: size2,
-          "aria-label": hueLabel
-        }
-      ), /* @__PURE__ */ import_react69.default.createElement(
-        GradientPickerAlphaSlider,
-        {
-          value: (_c = ctx.color) == null ? void 0 : _c.a,
-          onChange: (a) => handleChange({
-            // @ts-ignore
-            h: ctx.color.h,
-            // @ts-ignore
-            s: ctx.color.s,
-            // @ts-ignore
-            v: ctx.color.v,
-            a
-          }),
-          onChangeEnd: (a) => handleChange({
-            // @ts-ignore
-            h: ctx.color.h,
-            // @ts-ignore
-            s: ctx.color.s,
-            // @ts-ignore
-            v: ctx.color.v,
-            a
-          }),
-          size: size2,
-          color: (0, import_colord8.colord)(ctx.color).toHex().toString(),
-          style: { marginTop: 6 },
-          "aria-label": alphaLabel
-        }
-      ))), colorCtrl === "colorMode" && /* @__PURE__ */ import_react69.default.createElement(
-        GradientPickerColorModel,
-        {
-          mb: 10,
-          value: ctx.color,
-          onChange: (color) => handleChange(color),
-          saturationSliderLabel,
-          lightnessSliderLabel,
-          brightnessSliderLabel,
-          focusable
-        }
-      ), colorCtrl === "colorGuide" && /* @__PURE__ */ import_react69.default.createElement(
-        GradientPickerColorGuide,
-        {
-          mb: 10,
-          value: ctx.color,
-          onChange: (color) => handleChange(color)
-        }
-      ), /* @__PURE__ */ import_react69.default.createElement(
-        GradientPickerInputs,
-        {
-          format,
-          className: (0, import_clsx12.default)("format", className)
-        }
-      ), Array.isArray(swatches) && /* @__PURE__ */ import_react69.default.createElement(import_core52.Box, { className: (0, import_clsx12.default)("swatches", className) }, /* @__PURE__ */ import_react69.default.createElement(
-        GradientPickerColorSwatches,
-        {
-          data: swatches,
-          swatchesPerRow,
-          focusable,
-          setValue: (color) => {
-            handleChange(color);
+            className: "px-[8px]",
+            size: "md",
+            onChange: (color) => handleChange(color)
           }
-        }
-      ))), /* @__PURE__ */ import_react69.default.createElement(import_core52.Box, null, "dropdown"))
+        ), /* @__PURE__ */ import_react58.default.createElement(
+          Button,
+          {
+            variant: "default",
+            size: "md",
+            onClick: () => onColorCtrlChange("colorMode"),
+            className: "px-[4px]",
+            style: {
+              background: colorCtrl === "colorMode" ? "white" : "",
+              color: colorCtrl === "colorMode" ? "rgb(86, 140, 245)" : "",
+              borderRadius: colorCtrl === "colorMode" ? 8 : 0
+            }
+          },
+          /* @__PURE__ */ import_react58.default.createElement(
+            Tooltip,
+            {
+              label: "Color Model",
+              offset: 10,
+              opened: colorCtrl === "colorMode" ? false : void 0
+            },
+            /* @__PURE__ */ import_react58.default.createElement(Text, { className: "w-[20px] text-center" }, /* @__PURE__ */ import_react58.default.createElement(Image, { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNOTYgMGMxNy43IDAgMzIgMTQuMyAzMiAzMlY4Ni43YzI4LjMgMTIuMyA0OCA0MC41IDQ4IDczLjNzLTE5LjcgNjEtNDggNzMuM1Y0ODBjMCAxNy43LTE0LjMgMzItMzIgMzJzLTMyLTE0LjMtMzItMzJWMjMzLjNDMzUuNyAyMjEgMTYgMTkyLjggMTYgMTYwczE5LjctNjEgNDgtNzMuM1YzMkM2NCAxNC4zIDc4LjMgMCA5NiAwem0wIDE5MmEzMiAzMiAwIDEgMCAwLTY0IDMyIDMyIDAgMSAwIDAgNjR6TTI1NiAzODRhMzIgMzIgMCAxIDAgMC02NCAzMiAzMiAwIDEgMCAwIDY0em04MC0zMmMwIDMyLjgtMTkuNyA2MS00OCA3My4zVjQ4MGMwIDE3LjctMTQuMyAzMi0zMiAzMnMtMzItMTQuMy0zMi0zMlY0MjUuM2MtMjguMy0xMi4zLTQ4LTQwLjUtNDgtNzMuM3MxOS43LTYxIDQ4LTczLjNWMzJjMC0xNy43IDE0LjMtMzIgMzItMzJzMzIgMTQuMyAzMiAzMlYyNzguN2MyOC4zIDEyLjMgNDggNDAuNSA0OCA3My4zek00NDggMTkyYTMyIDMyIDAgMSAwIC02NCAwIDMyIDMyIDAgMSAwIDY0IDB6bTAgNzMuM1Y0ODBjMCAxNy43LTE0LjMgMzItMzIgMzJzLTMyLTE0LjMtMzItMzJWMjY1LjNjLTI4LjMtMTIuMy00OC00MC41LTQ4LTczLjNzMTkuNy02MSA0OC03My4zVjMyYzAtMTcuNyAxNC4zLTMyIDMyLTMyczMyIDE0LjMgMzIgMzJ2ODYuN2MyOC4zIDEyLjMgNDggNDAuNSA0OCA3My4zcy0xOS43IDYxLTQ4IDczLjN6Ii8+PC9zdmc+" }))
+          )
+        ), /* @__PURE__ */ import_react58.default.createElement(
+          Button,
+          {
+            variant: "default",
+            size: "md",
+            onClick: () => onColorCtrlChange("colorGuide"),
+            className: "px-[4px]",
+            style: {
+              background: colorCtrl === "colorGuide" ? "white" : "",
+              color: colorCtrl === "colorGuide" ? "rgb(86, 140, 245)" : "",
+              borderRadius: colorCtrl === "colorGuide" ? 8 : 0
+            }
+          },
+          /* @__PURE__ */ import_react58.default.createElement(
+            Tooltip,
+            {
+              label: "Color Guide",
+              offset: 10,
+              opened: colorCtrl === "colorGuide" ? false : void 0
+            },
+            /* @__PURE__ */ import_react58.default.createElement(Text, { className: "w-[20px] text-center" }, /* @__PURE__ */ import_react58.default.createElement(Image, { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNNTEyIDI1NmMwIC45IDAgMS44IDAgMi43Yy0uNCAzNi41LTMzLjYgNjEuMy03MC4xIDYxLjNIMzQ0Yy0yNi41IDAtNDggMjEuNS00OCA0OGMwIDMuNCAuNCA2LjcgMSA5LjljMi4xIDEwLjIgNi41IDIwIDEwLjggMjkuOWM2LjEgMTMuOCAxMi4xIDI3LjUgMTIuMSA0MmMwIDMxLjgtMjEuNiA2MC43LTUzLjQgNjJjLTMuNSAuMS03IC4yLTEwLjYgLjJDMTE0LjYgNTEyIDAgMzk3LjQgMCAyNTZTMTE0LjYgMCAyNTYgMFM1MTIgMTE0LjYgNTEyIDI1NnpNMTI4IDI4OGEzMiAzMiAwIDEgMCAtNjQgMCAzMiAzMiAwIDEgMCA2NCAwem0wLTk2YTMyIDMyIDAgMSAwIDAtNjQgMzIgMzIgMCAxIDAgMCA2NHpNMjg4IDk2YTMyIDMyIDAgMSAwIC02NCAwIDMyIDMyIDAgMSAwIDY0IDB6bTk2IDk2YTMyIDMyIDAgMSAwIDAtNjQgMzIgMzIgMCAxIDAgMCA2NHoiLz48L3N2Zz4=" }))
+          )
+        )), /* @__PURE__ */ import_react58.default.createElement(import_core44.Box, { className: "calc(100%_-_102px)" }, /* @__PURE__ */ import_react58.default.createElement(
+          GradientPickerHueSlider,
+          {
+            value: (_b = ctx.color) == null ? void 0 : _b.h,
+            onChange: (h) => handleChange({
+              h,
+              // @ts-ignore
+              s: ctx.color.s,
+              // @ts-ignore
+              v: ctx.color.v,
+              // @ts-ignore
+              a: ctx.color.a
+            }),
+            onChangeEnd: (h) => handleChange({
+              h,
+              // @ts-ignore
+              s: ctx.color.s,
+              // @ts-ignore
+              v: ctx.color.v,
+              // @ts-ignore
+              a: ctx.color.a
+            }),
+            size: size2,
+            "aria-label": hueLabel
+          }
+        ), /* @__PURE__ */ import_react58.default.createElement(
+          GradientPickerAlphaSlider,
+          {
+            value: (_c = ctx.color) == null ? void 0 : _c.a,
+            onChange: (a) => handleChange({
+              // @ts-ignore
+              h: ctx.color.h,
+              // @ts-ignore
+              s: ctx.color.s,
+              // @ts-ignore
+              v: ctx.color.v,
+              a
+            }),
+            onChangeEnd: (a) => handleChange({
+              // @ts-ignore
+              h: ctx.color.h,
+              // @ts-ignore
+              s: ctx.color.s,
+              // @ts-ignore
+              v: ctx.color.v,
+              a
+            }),
+            size: size2,
+            color: (0, import_colord4.colord)(ctx.color).toHex().toString(),
+            style: { marginTop: 6 },
+            "aria-label": alphaLabel
+          }
+        )))
+      ))
     );
   }
 );
 GradientPickerCompact.displayName = "@raikou/core/GradientPickerCompact";
 
 // src/GradientPicker.tsx
-var defaultProps39 = {};
+var defaultProps33 = {};
 function GradientPicker(_props) {
-  const props = (0, import_core53.useProps)(
+  const props = (0, import_core45.useProps)(
     "GradientPicker",
-    defaultProps39,
+    defaultProps33,
     _props
   );
   const _a = props, {
@@ -55003,7 +54292,7 @@ function GradientPicker(_props) {
     "value",
     "onChange"
   ]);
-  const getStyles = (0, import_core53.useStyles)({
+  const getStyles = (0, import_core45.useStyles)({
     name: "GradientPicker",
     classes: {
       root: "gradientPicker-root"
@@ -55017,13 +54306,13 @@ function GradientPicker(_props) {
     vars
     // varsResolver,
   });
-  const [update, setUpdate] = (0, import_react70.useState)(true);
-  const [activeStopIndex, setActiveStopIndex] = (0, import_react70.useState)("");
+  const [update, setUpdate] = (0, import_react59.useState)(true);
+  const [activeStopIndex, setActiveStopIndex] = (0, import_react59.useState)("");
   const [isOpen, toggleOpen] = (0, import_hooks17.useToggle)([false, true]);
-  const [control, setControl] = (0, import_react70.useState)(null);
-  const [dropdown, setDropdown] = (0, import_react70.useState)(null);
-  const [color, setColor] = (0, import_react70.useState)(void 0);
-  const [gradient, setGradient] = (0, import_react70.useState)(void 0);
+  const [control, setControl] = (0, import_react59.useState)(null);
+  const [dropdown, setDropdown] = (0, import_react59.useState)(null);
+  const [color, setColor] = (0, import_react59.useState)(void 0);
+  const [gradient, setGradient] = (0, import_react59.useState)(void 0);
   (0, import_hooks17.useClickOutside)(() => toggleOpen(false), null, [control, dropdown]);
   const compareGradient = (value2, gradient2) => {
     if (gradient2 === void 0) {
@@ -55033,12 +54322,12 @@ function GradientPicker(_props) {
     const gradientStr = cssGradient([gradient2], "single_gradient");
     return valueStr === gradientStr;
   };
-  (0, import_react70.useEffect)(() => {
+  (0, import_react59.useEffect)(() => {
     if (update) {
       const hasGradient = isGradient(value);
       if (!hasGradient) {
-        if (color !== (0, import_colord9.colord)(value).toHsv()) {
-          const color2 = (0, import_colord9.colord)(value).toHsv();
+        if (color !== (0, import_colord5.colord)(value).toHsv()) {
+          const color2 = (0, import_colord5.colord)(value).toHsv();
           setColor(color2);
         }
       } else {
@@ -55047,7 +54336,7 @@ function GradientPicker(_props) {
           setGradient(gradientObject2);
           if (gradientObject2.colors.length > 0) {
             const _color = gradientObject2.colors[0].color;
-            setColor((0, import_colord9.colord)(_color).toHsv());
+            setColor((0, import_colord5.colord)(_color).toHsv());
             setActiveStopIndex(gradientObject2.colors[0].id);
           }
         } else {
@@ -55096,7 +54385,7 @@ function GradientPicker(_props) {
             }
             if (update2) {
               const _color = newGradient.colors[0].color;
-              setColor((0, import_colord9.colord)(_color).toHsv());
+              setColor((0, import_colord5.colord)(_color).toHsv());
               setGradient(newGradient);
               setActiveStopIndex(newGradient.colors[0].id);
             }
@@ -55109,7 +54398,7 @@ function GradientPicker(_props) {
     if (color !== void 0) {
       setUpdate(false);
       if (gradient === void 0) {
-        onChange((0, import_colord9.colord)(color).toRgbString());
+        onChange((0, import_colord5.colord)(color).toRgbString());
       } else {
         onChange(cssGradient([gradient], "single_gradient"));
       }
@@ -55121,10 +54410,10 @@ function GradientPicker(_props) {
   (0, import_hooks17.useDidUpdate)(() => {
     const obj = gradient == null ? void 0 : gradient.colors.find((item) => item.id === activeStopIndex);
     if (obj) {
-      setColor((0, import_colord9.colord)(obj.color).toHsv());
+      setColor((0, import_colord5.colord)(obj.color).toHsv());
     }
   }, [activeStopIndex]);
-  return /* @__PURE__ */ import_react70.default.createElement(
+  return /* @__PURE__ */ import_react59.default.createElement(
     GradientPickerProvider,
     {
       value: {
@@ -55144,7 +54433,7 @@ function GradientPicker(_props) {
         getStyles
       }
     },
-    /* @__PURE__ */ import_react70.default.createElement(import_core53.Box, __spreadValues(__spreadValues({}, getStyles("root")), others), children)
+    /* @__PURE__ */ import_react59.default.createElement(import_core45.Box, __spreadValues(__spreadValues({}, getStyles("root")), others), children)
   );
 }
 var extendGradientPicker = (c) => c;

@@ -1,11 +1,12 @@
-use std::env;
 use std::io::{ self, Read };
 
 use lightningcss::{
+  // css_modules::Config,
   rules::CssRule,
   stylesheet::{ StyleSheet, ParserOptions, PrinterOptions },
   visitor::{ Visitor, Visit, VisitTypes },
   visit_types,
+  // css_modules::{ Pattern, Segment },
 };
 
 pub mod helpers;
@@ -27,6 +28,8 @@ impl<'i> Visitor<'i> for MyVisitor {
   fn visit_rule(&mut self, rule: &mut CssRule) -> Result<(), Self::Error> {
     if let CssRule::Style(style_rule) = rule {
       helpers::stylesheet::process_styles(style_rule);
+    } else if let CssRule::Keyframes(keyframe_rule) = rule {
+      helpers::stylesheet::process_keyframes(keyframe_rule);
     }
 
     Ok(())
@@ -34,7 +37,22 @@ impl<'i> Visitor<'i> for MyVisitor {
 }
 
 fn parse_stylesheet(line: &str) -> StyleSheet {
-  StyleSheet::parse(line, ParserOptions::default()).unwrap()
+  let opts = ParserOptions::default();
+
+  // opts.css_modules = Some(Config {
+  //   pattern: Pattern {
+  //     segments: smallvec![
+  //       Segment::Literal("r"),
+  //       Segment::Literal("-"),
+  //       Segment::Hash,
+  //       Segment::Literal("_"),
+  //       Segment::Local
+  //     ],
+  //   },
+  //   dashed_idents: false,
+  // });
+
+  StyleSheet::parse(line, opts).unwrap()
 }
 
 fn convert_to_css(stylesheet: &StyleSheet) -> String {
@@ -75,10 +93,6 @@ fn remove_quotes(s: &str) -> String {
 }
 
 fn main() -> Result<(), io::Error> {
-  let args: Vec<String> = env::args().collect();
-
-  let directory = parse_args(args);
-
   let mut input = String::new();
   io::stdin().read_to_string(&mut input)?;
 
@@ -107,33 +121,4 @@ fn main() -> Result<(), io::Error> {
   println!("{}", css);
 
   Ok(())
-}
-
-fn parse_args(args: Vec<String>) -> Option<String> {
-  let mut file_extension: Option<String> = None;
-
-  for arg in &args {
-    if arg == "-d" {
-      if
-        let Some(next_arg) = args.get(
-          args
-            .iter()
-            .position(|x| x == arg)
-            .unwrap() + 1
-        )
-      {
-        file_extension = Some(next_arg.clone());
-      } else {
-        eprintln!("Please provide a value for -d argument");
-        std::process::exit(1);
-      }
-    }
-  }
-
-  if file_extension.is_none() {
-    eprintln!("param -d was not provided.  Exiting...");
-    std::process::exit(1);
-  }
-
-  file_extension
 }

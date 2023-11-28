@@ -86,7 +86,7 @@ interface AccordionProps<Multiple extends boolean = false> extends BoxProps, Sty
     /** Default value for uncontrolled component */
     defaultValue?: AccordionValue<Multiple>;
     /** Called when value changes */
-    onChange?(value: AccordionValue<Multiple>): void;
+    onChange?: (value: AccordionValue<Multiple>) => void;
     /** Determines whether arrow key presses should loop though items (first to last and last to first), `true` by default */
     loop?: boolean;
     /** Transition duration in ms, `200` by default */

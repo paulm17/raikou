@@ -15,6 +15,7 @@ import {
   getSize,
 } from "@raikou/core";
 import { UnstyledButton } from "../../UnstyledButton/src";
+import classes from "./Burger.module.css";
 
 export type BurgerStylesNames = "root" | "burger";
 
@@ -87,10 +88,7 @@ export const Burger = factory<BurgerFactory>((_props, ref) => {
 
   const getStyles = useStyles<BurgerFactory>({
     name: "Burger",
-    classes: {
-      root: "burger-root",
-      burger: "burger-burger",
-    },
+    classes,
     props,
     className,
     style,
@@ -110,3 +108,4 @@ export const Burger = factory<BurgerFactory>((_props, ref) => {
 });
 
 Burger.displayName = "@raikou/core/Burger";
+Burger.classes = classes;

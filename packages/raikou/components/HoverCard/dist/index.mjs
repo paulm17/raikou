@@ -2129,8 +2129,8 @@ import {
 
 // ../Popover/src/use-popover.ts
 import { useDidUpdate as useDidUpdate2, useUncontrolled } from "@raikou/hooks";
-function getPopoverMiddlewares(options) {
-  var _a, _b, _c;
+function getPopoverMiddlewares(options, getFloating) {
+  var _a, _b, _c, _d;
   const middlewares = [offset(options.offset)];
   if ((_a = options.middlewares) == null ? void 0 : _a.shift) {
     middlewares.push(shift({ limiter: limitShift() }));
@@ -2144,6 +2144,28 @@ function getPopoverMiddlewares(options) {
   middlewares.push(
     arrow2({ element: options.arrowRef, padding: options.arrowOffset })
   );
+  if (((_d = options.middlewares) == null ? void 0 : _d.size) || options.width === "target") {
+    middlewares.push(
+      size({
+        apply({ rects, availableWidth, availableHeight }) {
+          var _a2, _b2, _c2;
+          const floating = getFloating();
+          const styles = (_b2 = (_a2 = floating.refs.floating.current) == null ? void 0 : _a2.style) != null ? _b2 : {};
+          if ((_c2 = options.middlewares) == null ? void 0 : _c2.size) {
+            Object.assign(styles, {
+              maxWidth: `${availableWidth}px`,
+              maxHeight: `${availableHeight}px`
+            });
+          }
+          if (options.width === "target") {
+            Object.assign(styles, {
+              width: `${rects.reference.width}px`
+            });
+          }
+        }
+      })
+    );
+  }
   return middlewares;
 }
 function usePopover(options) {
@@ -2172,19 +2194,7 @@ function usePopover(options) {
   };
   const floating = useFloating2({
     placement: options.position,
-    middleware: [
-      ...getPopoverMiddlewares(options),
-      ...options.width === "target" ? [
-        size({
-          apply({ rects }) {
-            var _a, _b;
-            Object.assign((_b = (_a = floating.refs.floating.current) == null ? void 0 : _a.style) != null ? _b : {}, {
-              width: `${rects.reference.width}px`
-            });
-          }
-        })
-      ] : []
-    ]
+    middleware: getPopoverMiddlewares(options, () => floating)
   });
   useFloatingAutoUpdate({
     opened: options.opened,
@@ -2994,7 +3004,7 @@ var HoverCardTarget = forwardRef4(
       "HoverCardTarget",
       defaultProps6,
       props
-    ), { children, refProp } = _a, others = __objRest(_a, ["children", "refProp"]);
+    ), { children, refProp, eventPropsWrapperName } = _a, others = __objRest(_a, ["children", "refProp", "eventPropsWrapperName"]);
     if (!isElement5(children)) {
       throw new Error(
         "HoverCard.Target component children should be an element or a component that accepts ref. Fragments, strings, numbers and other primitive values are not supported"
@@ -3009,10 +3019,11 @@ var HoverCardTarget = forwardRef4(
       children.props.onMouseLeave,
       ctx.closeDropdown
     );
-    return /* @__PURE__ */ React14.createElement(Popover.Target, __spreadValues({ refProp, ref }, others), cloneElement4(children, {
-      onMouseEnter,
-      onMouseLeave
-    }));
+    const eventListeners = { onMouseEnter, onMouseLeave };
+    return /* @__PURE__ */ React14.createElement(Popover.Target, __spreadValues({ refProp, ref }, others), cloneElement4(
+      children,
+      eventPropsWrapperName ? { [eventPropsWrapperName]: eventListeners } : eventListeners
+    ));
   }
 );
 HoverCardTarget.displayName = "@raikou/core/HoverCardTarget";

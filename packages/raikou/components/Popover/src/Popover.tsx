@@ -28,6 +28,7 @@ import { PopoverContextProvider } from "./Popover.context";
 import { PopoverWidth, PopoverMiddlewares } from "./Popover.types";
 import { PopoverTarget } from "./PopoverTarget/PopoverTarget";
 import { PopoverDropdown } from "./PopoverDropdown/PopoverDropdown";
+import classes from "./Popover.module.css";
 
 export type PopoverStylesNames = "dropdown" | "arrow";
 export type PopoverCssVariables = {
@@ -222,10 +223,7 @@ export function Popover(_props: PopoverProps) {
   const getStyles = useStyles<PopoverFactory>({
     name: __staticSelector!,
     props,
-    classes: {
-      dropdown: "popover-dropdown",
-      arrow: "popover-arrow",
-    },
+    classes,
     classNames,
     styles,
     unstyled,

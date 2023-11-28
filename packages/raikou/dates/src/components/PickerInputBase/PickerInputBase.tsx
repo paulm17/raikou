@@ -21,6 +21,7 @@ import {
 import { PopoverProps, Popover } from "../../../../components/Popover/src";
 import { ModalProps, Modal } from "../../../../components/Modal/src";
 import { CloseButton } from "../../../../components/CloseButton/src";
+import classes from "./PickerInputBase.module.css";
 
 export type PickerInputBaseStylesNames = __InputStylesNames;
 
@@ -181,10 +182,7 @@ export const PickerInputBase = factory<PickerInputBaseFactory>(
                 ref={ref}
                 classNames={{
                   ...classNames,
-                  input: cx(
-                    "dates-pickerInput-input",
-                    (classNames as any)?.input,
-                  ),
+                  input: cx(classes.input, (classNames as any)?.input),
                 }}
                 {...others}
               >
@@ -206,4 +204,5 @@ export const PickerInputBase = factory<PickerInputBaseFactory>(
   },
 );
 
+PickerInputBase.classes = classes;
 PickerInputBase.displayName = "@raikou/dates/PickerInputBase";

@@ -9,6 +9,7 @@ import {
   Factory,
 } from "@raikou/core";
 import { useStore } from "../store";
+import classes from "../AppShell.module.css";
 
 export type AppShellAsideStylesNames = "aside";
 
@@ -65,3 +66,4 @@ export const AppShellAside = factory<AppShellAsideFactory>((_props, ref) => {
 });
 
 AppShellAside.displayName = "@raikou/core/AppShellAside";
+AppShellAside.classes = classes;

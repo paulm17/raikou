@@ -16,6 +16,7 @@ import {
 import { UnstyledButton } from "../../UnstyledButton/src";
 import { AccordionChevron } from "../../Accordion/src";
 import { Collapse } from "../../Collapse/src";
+import classes from "./NavLink.module.css";
 
 export type NavLinkStylesNames =
   | "root"
@@ -140,15 +141,7 @@ export const NavLink = polymorphicFactory<NavLinkFactory>((_props, ref) => {
   const getStyles = useStyles<NavLinkFactory>({
     name: "NavLink",
     props,
-    classes: {
-      root: "navLink-root",
-      section: "navLink-section",
-      label: "navLink-label",
-      body: "navLink-body",
-      description: "navLink-description",
-      children: "navLink-children",
-      chevron: "navLink-chevron",
-    },
+    classes,
     className,
     style,
     classNames,
@@ -227,4 +220,5 @@ export const NavLink = polymorphicFactory<NavLinkFactory>((_props, ref) => {
   );
 });
 
+NavLink.classes = classes;
 NavLink.displayName = "@raikou/core/NavLink";

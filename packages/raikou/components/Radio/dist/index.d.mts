@@ -48,7 +48,7 @@ interface __InputWrapperProps {
     /** Props passed down to the `InputError` component */
     errorProps?: Record<string, any>;
     /** Input container component, defaults to `React.Fragment` */
-    inputContainer?(children: React$1.ReactNode): React$1.ReactNode;
+    inputContainer?: (children: React$1.ReactNode) => React$1.ReactNode;
     /** Controls order of the elements, `['label', 'description', 'input', 'error']` by default */
     inputWrapperOrder?: ("label" | "input" | "description" | "error")[];
 }
@@ -3616,7 +3616,7 @@ interface RadioGroupProps extends Omit<InputWrapperProps, "onChange"> {
     /** Default value for uncontrolled component */
     defaultValue?: string;
     /** Called when value changes */
-    onChange?(value: string): void;
+    onChange?: (value: string) => void;
     /** Props passed down to the `Input.Wrapper` */
     wrapperProps?: Record<string, any>;
     /** Controls size of the `Input.Wrapper`, `'sm'` by default */
@@ -3637,7 +3637,7 @@ declare const RadioGroup: _raikou_core.RaikouComponent<{
 
 type RadioStylesNames = InlineInputStylesNames | "inner" | "radio" | "icon";
 type RadioCssVariables = {
-    root: "--radio-size" | "--radio-radius" | "--radio-color";
+    root: "--radio-size" | "--radio-radius" | "--radio-color" | "--radio-icon-color" | "--radio-icon-size";
 };
 interface RadioProps extends BoxProps, StylesApiProps<RadioFactory>, ElementProps<"input", "size"> {
     /** Radio label */
@@ -3660,6 +3660,8 @@ interface RadioProps extends BoxProps, StylesApiProps<RadioFactory>, ElementProp
     radius?: RaikouRadius;
     /** Assigns ref of the root element, can be used with `Tooltip` and other similar components */
     rootRef?: React$1.ForwardedRef<HTMLDivElement>;
+    /** Key of `theme.colors` or any valid CSS color to set icon color, `theme.white` by default */
+    iconColor?: RaikouColor;
 }
 type RadioFactory = Factory<{
     props: RadioProps;

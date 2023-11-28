@@ -32,7 +32,7 @@ interface __InputWrapperProps {
     /** Props passed down to the `InputError` component */
     errorProps?: Record<string, any>;
     /** Input container component, defaults to `React.Fragment` */
-    inputContainer?(children: React$1.ReactNode): React$1.ReactNode;
+    inputContainer?: (children: React$1.ReactNode) => React$1.ReactNode;
     /** Controls order of the elements, `['label', 'description', 'input', 'error']` by default */
     inputWrapperOrder?: ("label" | "input" | "description" | "error")[];
 }
@@ -3613,8 +3613,8 @@ interface GlobalJSXIntrinsicClassAttributes<T> extends JSX.IntrinsicClassAttribu
 interface GlobalJSXIntrinsicElements extends JSX.IntrinsicElements {}
 
 interface NumberInputHandlers {
-    increment(): void;
-    decrement(): void;
+    increment: () => void;
+    decrement: () => void;
 }
 type NumberInputStylesNames = "controls" | "control" | __InputStylesNames;
 type NumberInputCssVariables = {
@@ -3626,7 +3626,7 @@ interface NumberInputProps extends BoxProps, __BaseInputProps, StylesApiProps<Nu
     /** Uncontrolled component default value */
     defaultValue?: number | string;
     /** Called when value changes */
-    onChange?(value: number | string): void;
+    onChange?: (value: number | string) => void;
     /** Called when value changes with `react-number-format` payload */
     onValueChange?: OnValueChange;
     /** Determines whether leading zeros are allowed. If not set, leading zeros are removed when the input is blurred. `false` by default */
@@ -3648,7 +3648,7 @@ interface NumberInputProps extends BoxProps, __BaseInputProps, StylesApiProps<Nu
     /** Defines the thousand grouping style. */
     thousandsGroupStyle?: "thousand" | "lakh" | "wan" | "none";
     /** A function to validate the input value. If this function returns `false`, the `onChange` will not be called and the input value will not change. */
-    isAllowed?(values: NumberFormatValues): boolean;
+    isAllowed?: (values: NumberFormatValues) => boolean;
     /** If value is passed as string representation of numbers (unformatted) and number is used in any format props like in prefix or suffix in numeric format and format prop in pattern format then this should be passed as `true`. `false` by default. */
     valueIsNumericString?: boolean;
     /** Controls input `type` attribute, `'text'` by default */

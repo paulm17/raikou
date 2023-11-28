@@ -12,6 +12,7 @@ import {
   RaikouRadius,
   getRadius,
 } from "@raikou/core";
+import classes from "./Fieldset.module.css";
 
 export type FieldsetStylesNames = "root" | "legend";
 export type FieldsetVariant = "default" | "filled" | "unstyled";
@@ -65,10 +66,7 @@ export const Fieldset = factory<FieldsetFactory>((_props, ref) => {
 
   const getStyles = useStyles<FieldsetFactory>({
     name: "Fieldset",
-    classes: {
-      root: "fieldset-root",
-      legend: "fieldset-legend",
-    },
+    classes,
     props,
     className,
     style,
@@ -96,3 +94,4 @@ export const Fieldset = factory<FieldsetFactory>((_props, ref) => {
 });
 
 Fieldset.displayName = "@raikou/core/Fieldset";
+Fieldset.classes = classes;

@@ -16,7 +16,7 @@ interface PaginationRootProps extends BoxProps, StylesApiProps<PaginationRootFac
     /** Active page for uncontrolled component, must be an integer in [0, total] interval */
     defaultValue?: number;
     /** Called when page changes */
-    onChange?(value: number): void;
+    onChange?: (value: number) => void;
     /** Determines whether all controls should be disabled, `false` by default */
     disabled?: boolean;
     /** Number of siblings displayed on the left/right side of the selected page, `1` by default */
@@ -28,15 +28,15 @@ interface PaginationRootProps extends BoxProps, StylesApiProps<PaginationRootFac
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `theme.defaultRadius` by default */
     radius?: RaikouRadius;
     /** Called when next page control is clicked */
-    onNextPage?(): void;
+    onNextPage?: () => void;
     /** Called when previous page control is clicked */
-    onPreviousPage?(): void;
+    onPreviousPage?: () => void;
     /** Called when first page control is clicked */
-    onFirstPage?(): void;
+    onFirstPage?: () => void;
     /** Called when last page control is clicked */
-    onLastPage?(): void;
+    onLastPage?: () => void;
     /** Additional props passed down to controls */
-    getItemProps?(page: number): Record<string, any>;
+    getItemProps?: (page: number) => Record<string, any>;
 }
 type PaginationRootFactory = Factory<{
     props: PaginationRootProps;
@@ -184,7 +184,7 @@ interface PaginationProps extends PaginationRootProps {
     /** Determines whether next/previous controls should be rendered, true by default */
     withControls?: boolean;
     /** Adds props to next/previous/first/last controls */
-    getControlProps?(control: "first" | "previous" | "last" | "next"): Record<string, any>;
+    getControlProps?: (control: "first" | "previous" | "last" | "next") => Record<string, any>;
     /** Next control icon component */
     nextIcon?: PaginationIcon;
     /** Previous control icon component */

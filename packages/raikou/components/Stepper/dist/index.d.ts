@@ -67,7 +67,7 @@ interface StepperProps extends BoxProps, StylesApiProps<StepperFactory>, Element
     /** <Stepper.Step /> components */
     children: React.ReactNode;
     /** Called when step is clicked */
-    onStepClick?(stepIndex: number): void;
+    onStepClick?: (stepIndex: number) => void;
     /** Index of the active step */
     active: number;
     /** Step icon, default value is step index + 1 */

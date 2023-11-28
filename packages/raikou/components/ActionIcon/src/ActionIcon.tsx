@@ -17,6 +17,7 @@ import {
 import { UnstyledButton } from "../../UnstyledButton/src";
 import { LoaderProps, Loader } from "../../Loader/src";
 import { ActionIconGroup } from "./ActionIconGroup/ActionIconGroup";
+import classes from "./ActionIcon.module.css";
 
 export type ActionIconVariant =
   | "filled"
@@ -135,10 +136,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>(
       props,
       className,
       style,
-      classes: {
-        root: "actionIcon-root",
-        loader: "actionIcon-loader",
-      },
+      classes,
       classNames,
       styles,
       unstyled,
@@ -176,3 +174,4 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>(
 
 ActionIcon.displayName = "@raikou/core/ActionIcon";
 ActionIcon.Group = ActionIconGroup;
+ActionIcon.classes = classes;

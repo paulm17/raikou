@@ -18,6 +18,8 @@ import {
 import { Group } from "../../Group/src";
 import { Input } from "../../Input/src";
 import { createPinArray } from "./create-pin-array/create-pin-array";
+import classes from "./PinInput.module.css";
+import { InputBase } from "../../InputBase/src";
 
 const regex = {
   number: /^[0-9]+$/,
@@ -178,11 +180,7 @@ export const PinInput = factory<PinInputFactory>((props, ref) => {
 
   const getStyles = useStyles<PinInputFactory>({
     name: "PinInput",
-    classes: {
-      root: "pinInput-root",
-      pinInput: "pinInput-pinInput",
-      input: "input",
-    },
+    classes,
     props,
     className,
     style,
@@ -388,4 +386,5 @@ export const PinInput = factory<PinInputFactory>((props, ref) => {
   );
 });
 
+PinInput.classes = { ...classes, ...InputBase.classes };
 PinInput.displayName = "@raikou/core/PinInput";

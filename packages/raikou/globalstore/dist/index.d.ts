@@ -163,15 +163,10 @@ type RaikouThemeColors = RaikouThemeColorsOverride extends {
 } ? Record<CustomColors, RaikouColorsTuple> : Record<DefaultRaikouColor, RaikouColorsTuple>;
 type RaikouColor = keyof RaikouThemeColors;
 
-declare function px(value: unknown): string | number;
-
-declare const rem: (value: unknown) => string;
-declare const em: (value: unknown) => string;
-
 declare const useStore: zustand.UseBoundStore<zustand.StoreApi<types.PartialObjectDeep<RaikouTheme, {}>>>;
 declare const getState: () => types.PartialObjectDeep<RaikouTheme, {}>;
 declare const setState: (partial: types.PartialObjectDeep<RaikouTheme, {}> | Partial<types.PartialObjectDeep<RaikouTheme, {}>> | ((state: types.PartialObjectDeep<RaikouTheme, {}>) => types.PartialObjectDeep<RaikouTheme, {}> | Partial<types.PartialObjectDeep<RaikouTheme, {}>>), replace?: boolean | undefined) => void;
 
 declare function createTheme(theme: RaikouThemeOverride): RaikouThemeOverride;
 
-export { createTheme, useStore as default, em, getState, px, rem, setState };
+export { createTheme, useStore as default, getState, setState };

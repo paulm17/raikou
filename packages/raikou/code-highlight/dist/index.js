@@ -3797,7 +3797,7 @@ var UnstyledButton = (0, import_core14.polymorphicFactory)(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,
@@ -3836,13 +3836,13 @@ var Bars = (0, import_react24.forwardRef)(
       import_core15.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx2.default)("bars-loader", className)
+        className: (0, import_clsx2.default)("loader-barsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react24.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react24.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react24.default.createElement("span", { className: "bar" })
+      /* @__PURE__ */ import_react24.default.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ import_react24.default.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ import_react24.default.createElement("span", { className: "loader-bar" })
     );
   }
 );
@@ -3858,7 +3858,7 @@ var Oval = (0, import_react25.forwardRef)(
       import_core16.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx3.default)("oval-loader", className)
+        className: (0, import_clsx3.default)("loader-ovalLoader", className)
       }, others), {
         ref
       })
@@ -3877,7 +3877,7 @@ var Progress = (0, import_react26.forwardRef)(
       import_core17.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx4.default)("progress-loader", className)
+        className: (0, import_clsx4.default)("loader-progressLoader", className)
       }, others), {
         ref
       }),
@@ -3907,13 +3907,13 @@ var Dots = (0, import_react27.forwardRef)(
       import_core18.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx5.default)("dots-loader", className)
+        className: (0, import_clsx5.default)("loader-dotsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react27.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react27.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react27.default.createElement("span", { className: "dot" })
+      /* @__PURE__ */ import_react27.default.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ import_react27.default.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ import_react27.default.createElement("span", { className: "loader-dot" })
     );
   }
 );
@@ -4426,6 +4426,7 @@ var Scrollbar = (0, import_react35.forwardRef)(
     );
   }
 );
+Scrollbar.displayName = "@raikou/Scrollbar";
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollbarX.tsx
 var ScrollAreaScrollbarX = (0, import_react36.forwardRef)((props, forwardedRef) => {
@@ -5236,7 +5237,7 @@ var CodeHighlightTabs = (0, import_core26.factory)(
     const nodes = Array.isArray(code) ? code : [code];
     const currentCode = nodes[value];
     const highlighted = import_highlight.default.highlight(currentCode.code.trim(), {
-      language: currentCode.language
+      language: currentCode.language || "plaintext"
     }).value;
     const files = nodes.map((node, index3) => /* @__PURE__ */ import_react48.default.createElement(
       UnstyledButton,
@@ -5324,8 +5325,13 @@ var import_core27 = require("@raikou/core");
 // src/use-highlight.ts
 var import_react49 = require("react");
 var import_highlight2 = __toESM(require("highlight.js"));
-function useHighlight({ code, language, highlightOnClient }) {
-  const getHighlightedCode = () => import_highlight2.default.highlight(code.trim(), { language }).value;
+function useHighlight({
+  code,
+  language,
+  highlightOnClient
+}) {
+  const lang = import_highlight2.default.getLanguage(language) ? language : "plaintext";
+  const getHighlightedCode = () => import_highlight2.default.highlight(code.trim(), { language: lang }).value;
   const [highlighted, setHighlighted] = (0, import_react49.useState)(!highlightOnClient);
   const [highlightedCode, setHighlightedCode] = (0, import_react49.useState)(
     highlightOnClient ? code : getHighlightedCode()
@@ -5337,6 +5343,9 @@ function useHighlight({ code, language, highlightOnClient }) {
       setHighlighted(true);
     }
   }, []);
+  (0, import_react49.useEffect)(() => {
+    setHighlightedCode(getHighlightedCode());
+  }, [code]);
   return getCodeProps;
 }
 

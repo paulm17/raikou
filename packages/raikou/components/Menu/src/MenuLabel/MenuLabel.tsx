@@ -9,6 +9,7 @@ import {
   Factory,
 } from "@raikou/core";
 import { useMenuContext } from "../Menu.context";
+import classes from "../Menu.module.css";
 
 export type MenuLabelStylesNames = "label";
 
@@ -43,4 +44,5 @@ export const MenuLabel = factory<MenuLabelFactory>((props, ref) => {
   );
 });
 
+MenuLabel.classes = classes;
 MenuLabel.displayName = "@raikou/core/MenuLabel";

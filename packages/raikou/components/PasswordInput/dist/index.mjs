@@ -788,7 +788,7 @@ var UnstyledButton = polymorphicFactory2(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,
@@ -831,13 +831,13 @@ var Bars = forwardRef(
       Box8,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx("bars-loader", className)
+        className: cx("loader-barsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React10.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ React10.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ React10.createElement("span", { className: "bar" })
+      /* @__PURE__ */ React10.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ React10.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ React10.createElement("span", { className: "loader-bar" })
     );
   }
 );
@@ -853,7 +853,7 @@ var Oval = forwardRef2(
       Box9,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx2("oval-loader", className)
+        className: cx2("loader-ovalLoader", className)
       }, others), {
         ref
       })
@@ -872,7 +872,7 @@ var Progress = forwardRef3(
       Box10,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx3("progress-loader", className)
+        className: cx3("loader-progressLoader", className)
       }, others), {
         ref
       }),
@@ -902,13 +902,13 @@ var Dots = forwardRef4(
       Box11,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx4("dots-loader", className)
+        className: cx4("loader-dotsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React13.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React13.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React13.createElement("span", { className: "dot" })
+      /* @__PURE__ */ React13.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ React13.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ React13.createElement("span", { className: "loader-dot" })
     );
   }
 );
@@ -1302,6 +1302,7 @@ var PasswordInput = factory8((_props, ref) => {
   const visibilityToggleButton = /* @__PURE__ */ React18.createElement(
     ActionIcon,
     __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("visibilityToggle")), {
+      disabled,
       radius,
       "aria-hidden": !visibilityToggleButtonProps,
       tabIndex: -1

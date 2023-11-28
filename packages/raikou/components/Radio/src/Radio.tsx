@@ -22,6 +22,7 @@ import { InlineInput, InlineInputStylesNames } from "../../InlineInput/src";
 import { RadioIcon, RadioIconProps } from "./RadioIcon";
 import { RadioGroup } from "./RadioGroup/RadioGroup";
 import { useRadioGroupContext } from "./RadioGroup.context";
+import classes from "./Radio.module.css";
 
 export type RadioStylesNames =
   | InlineInputStylesNames
@@ -29,7 +30,12 @@ export type RadioStylesNames =
   | "radio"
   | "icon";
 export type RadioCssVariables = {
-  root: "--radio-size" | "--radio-radius" | "--radio-color";
+  root:
+    | "--radio-size"
+    | "--radio-radius"
+    | "--radio-color"
+    | "--radio-icon-color"
+    | "--radio-icon-size";
 };
 
 export interface RadioProps
@@ -65,6 +71,9 @@ export interface RadioProps
 
   /** Assigns ref of the root element, can be used with `Tooltip` and other similar components */
   rootRef?: React.ForwardedRef<HTMLDivElement>;
+
+  /** Key of `theme.colors` or any valid CSS color to set icon color, `theme.white` by default */
+  iconColor?: RaikouColor;
 }
 
 export type RadioFactory = Factory<{
@@ -84,12 +93,15 @@ const defaultProps: Partial<RadioProps> = {
 };
 
 const varsResolver = createVarsResolver<RadioFactory>(
-  (theme, { size, radius, color }) => ({
+  (theme, { size, radius, color, iconColor }) => ({
     root: {
       "--radio-size": getSize(size, "radio-size"),
+      "--radio-icon-size": getSize(size, "radio-icon-size"),
       "--radio-radius": radius === undefined ? undefined : getRadius(radius),
       "--radio-color": color ? getThemeColor(color, theme) : undefined,
-      "--radio-icon-size": getSize(size, "radio-icon-size"),
+      "--radio-icon-color": iconColor
+        ? getThemeColor(iconColor, theme)
+        : undefined,
     },
   }),
 );
@@ -121,17 +133,7 @@ export const Radio = factory<RadioFactory>((_props, ref) => {
 
   const getStyles = useStyles<RadioFactory>({
     name: "Radio",
-    classes: {
-      root: "radio-root",
-      inner: "radio-inner",
-      icon: "radio-icon",
-      radio: "radio-radio",
-      body: "inputWrapper-body",
-      label: "inputWrapper-label",
-      labelWrapper: "inputWrapper-labelWrapper",
-      description: "inputWrapper-description",
-      error: "inputWrapper-error",
-    },
+    classes,
     props,
     className,
     style,
@@ -200,5 +202,6 @@ export const Radio = factory<RadioFactory>((_props, ref) => {
   );
 });
 
+Radio.classes = classes;
 Radio.displayName = "@raikou/core/Radio";
 Radio.Group = RadioGroup;

@@ -1037,11 +1037,11 @@ function CheckIcon(_a) {
   return /* @__PURE__ */ React13.createElement(
     "svg",
     __spreadValues({
-      className: "icon",
       viewBox: "0 0 10 7",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
-      style: _style
+      style: _style,
+      "aria-hidden": true
     }, others),
     /* @__PURE__ */ React13.createElement(
       "path",
@@ -1062,7 +1062,8 @@ function CheckboxIcon(_a) {
       __spreadValues({
         xmlns: "http://www.w3.org/2000/svg",
         fill: "none",
-        viewBox: "0 0 32 6"
+        viewBox: "0 0 32 6",
+        "aria-hidden": true
       }, others),
       /* @__PURE__ */ React13.createElement("rect", { width: "32", height: "6", fill: "currentColor", rx: "3" })
     );
@@ -1076,11 +1077,12 @@ var defaultProps8 = {
   icon: CheckboxIcon
 };
 var varsResolver6 = createVarsResolver6(
-  (theme, { radius, color, size }) => ({
+  (theme, { radius, color, size, iconColor }) => ({
     root: {
       "--checkbox-size": getSize3(size, "checkbox-size"),
       "--checkbox-radius": radius === void 0 ? void 0 : getRadius2(radius),
-      "--checkbox-color": color ? getThemeColor(color, theme) : void 0
+      "--checkbox-color": color ? getThemeColor(color, theme) : void 0,
+      "--checkbox-icon-color": iconColor ? getThemeColor(iconColor, theme) : void 0
     }
   })
 );
@@ -1108,7 +1110,8 @@ var Checkbox = factory7((_props, ref) => {
     variant,
     indeterminate,
     icon,
-    rootRef
+    rootRef,
+    iconColor
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -1131,7 +1134,8 @@ var Checkbox = factory7((_props, ref) => {
     "variant",
     "indeterminate",
     "icon",
-    "rootRef"
+    "rootRef",
+    "iconColor"
   ]);
   const ctx = useCheckboxGroupContext();
   const _size = size || (ctx == null ? void 0 : ctx.size);

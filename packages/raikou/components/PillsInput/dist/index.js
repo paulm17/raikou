@@ -872,7 +872,7 @@ var PillsInputField = (0, import_core9.factory)(
     const getStyles = (0, import_core9.useStyles)({
       name: "PillsInputField",
       classes: {
-        field: "field"
+        field: "pillsInput-field"
       },
       props,
       className,

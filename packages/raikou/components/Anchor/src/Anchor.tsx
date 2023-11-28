@@ -8,6 +8,7 @@ import {
   TextStylesNames,
   TextVariant,
 } from "../../Text/src";
+import classes from "./Anchor.module.css";
 
 export type AnchorStylesNames = TextStylesNames;
 export type AnchorVariant = TextVariant;
@@ -35,13 +36,13 @@ export const Anchor = polymorphicFactory<AnchorFactory>((props, ref) => {
   const { underline, className, ...others } = useProps(
     "Anchor",
     defaultProps,
-    props
+    props,
   );
   return (
     <Text
       component="a"
       ref={ref}
-      className={cx("anchor-root", className)}
+      className={cx(classes.root, className)}
       {...others}
       mod={{ underline }}
       __staticSelector="Anchor"
@@ -50,3 +51,4 @@ export const Anchor = polymorphicFactory<AnchorFactory>((props, ref) => {
 });
 
 Anchor.displayName = "@raikou/core/Anchor";
+Anchor.classes = classes;

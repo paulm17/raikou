@@ -19,6 +19,7 @@ import {
 import { UnstyledButton } from "../../UnstyledButton/src";
 import { Loader, LoaderProps } from "../../Loader/src";
 import { ButtonGroup } from "./ButtonGroup/ButtonGroup";
+import classes from "./Button.module.css";
 
 export type ButtonStylesNames =
   | "root"
@@ -163,13 +164,7 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, ref) => {
   const getStyles = useStyles<ButtonFactory>({
     name: "Button",
     props,
-    classes: {
-      root: "button-root",
-      inner: "button-inner",
-      loader: "button-loader",
-      section: "button-section",
-      label: "button-label",
-    },
+    classes,
     className,
     style,
     classNames,
@@ -260,3 +255,4 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, ref) => {
 
 Button.displayName = "@raikou/core/Button";
 Button.Group = ButtonGroup;
+Button.classes = classes;

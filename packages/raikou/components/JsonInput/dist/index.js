@@ -103,7 +103,7 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
-// ../../../../node_modules/.pnpm/react-textarea-autosize@8.5.2_@types+react@18.2.23_react@18.2.0/node_modules/react-textarea-autosize/dist/react-textarea-autosize.esm.js
+// ../../../../node_modules/.pnpm/react-textarea-autosize@8.5.3_@types+react@18.2.23_react@18.2.0/node_modules/react-textarea-autosize/dist/react-textarea-autosize.esm.js
 var React = __toESM(require("react"));
 
 // ../../../../node_modules/.pnpm/use-composed-ref@1.3.0_react@18.2.0/node_modules/use-composed-ref/dist/use-composed-ref.esm.js
@@ -131,7 +131,7 @@ var useComposedRef = function useComposedRef2(libRef, userRef) {
 };
 var use_composed_ref_esm_default = useComposedRef;
 
-// ../../../../node_modules/.pnpm/react-textarea-autosize@8.5.2_@types+react@18.2.23_react@18.2.0/node_modules/react-textarea-autosize/dist/react-textarea-autosize.esm.js
+// ../../../../node_modules/.pnpm/react-textarea-autosize@8.5.3_@types+react@18.2.23_react@18.2.0/node_modules/react-textarea-autosize/dist/react-textarea-autosize.esm.js
 var noop = function noop2() {
 };
 var _excluded = ["cacheMeasurements", "maxRows", "minRows", "onChange", "onHeightChange"];

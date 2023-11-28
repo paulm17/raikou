@@ -1,110 +1,132 @@
-module.exports = {
-  corePlugins: {
-    preflight: false,
-  },
-  darkMode: ["class", '[data-raikou-color-scheme="dark"]'],
-  presets: [require("../../data-table/src/preset")],
-  plugins: [
-    require("../src/core/RaikouProvider/global.plugin"),
-    require("../src/core/RaikouProvider/css-variables.plugin"),
-    require("../../components/Accordion/src/Accordion.plugin"),
-    require("../../components/ActionIcon/src/ActionIcon.plugin"),
-    require("../../components/Affix/src/Affix.plugin"),
-    require("../../components/Alert/src/Alert.plugin"),
-    require("../../components/AppShell/src/AppShell.plugin"),
-    require("../../components/Anchor/src/Anchor.plugin"),
-    require("../../components/AspectRatio/src/AspectRatio.plugin"),
-    require("../../components/Avatar/src/Avatar.plugin"),
-    require("../../components/BackgroundImage/src/BackgroundImage.plugin"),
-    require("../../components/Badge/src/Badge.plugin"),
-    require("../../components/Blockquote/src/Blockquote.plugin"),
-    require("../../components/Breadcrumbs/src/Breadcrumbs.plugin"),
-    require("../../components/Burger/src/Burger.plugin"),
-    require("../../components/Button/src/Button.plugin"),
-    require("../../components/Card/src/Card.plugin"),
-    require("../../components/Center/src/Center.plugin"),
-    require("../../components/Checkbox/src/Checkbox.plugin"),
-    require("../../components/Chip/src/Chip.plugin"),
-    require("../../components/CloseButton/src/CloseButton.plugin"),
-    require("../../components/Code/src/Code.plugin"),
-    require("../../components/ColorInput/src/ColorInput.plugin"),
-    require("../../components/ColorPicker/src/ColorPicker.plugin"),
-    require("../../components/ColorSwatch/src/ColorSwatch.plugin"),
-    require("../../components/Combobox/src/Combobox.plugin"),
-    require("../../components/Container/src/Container.plugin"),
-    require("../../components/Dial/src/Dial.plugin"),
-    require("../../components/Dialog/src/Dialog.plugin"),
-    require("../../components/Divider/src/Divider.plugin"),
-    require("../../components/Drawer/src/Drawer.plugin"),
-    require("../../components/Fieldset/src/Fieldset.plugin"),
-    require("../../components/Flex/src/Flex.plugin"),
-    require("../../components/GradientPicker/src/GradientPicker.plugin"),
-    require("../../components/Grid/src/Grid.plugin"),
-    require("../../components/Group/src/Group.plugin"),
-    require("../../components/Image/src/Image.plugin"),
-    require("../../components/Indicator/src/Indicator.plugin"),
-    require("../../components/InlineInput/src/InlineInput.plugin"),
-    require("../../components/Input/src/Input.plugin"),
-    require("../../components/Kbd/src/Kbd.plugin"),
-    require("../../components/List/src/List.plugin"),
-    require("../../components/Loader/src/Loader.plugin"),
-    require("../../components/LoadingOverlay/src/LoadingOverlay.plugin"),
-    require("../../components/Mark/src/Mark.plugin"),
-    require("../../components/Menu/src/Menu.plugin"),
-    require("../../components/Modal/src/Modal.plugin"),
-    require("../../components/ModalBase/src/ModalBase.plugin"),
-    require("../../components/NavLink/src/NavLink.plugin"),
-    require("../../components/Notification/src/Notification.plugin"),
-    require("../../components/NumberInput/src/NumberInput.plugin"),
-    require("../../components/Overlay/src/Overlay.plugin"),
-    require("../../components/Pagination/src/Pagination.plugin"),
-    require("../../components/Paper/src/Paper.plugin"),
-    require("../../components/PasswordInput/src/PasswordInput.plugin"),
-    require("../../components/Pill/src/Pill.plugin"),
-    require("../../components/PillsInput/src/PillsInput.plugin"),
-    require("../../components/PinInput/src/PinInput.plugin"),
-    require("../../components/Popover/src/Popover.plugin"),
-    require("../../components/Progress/src/Progress.plugin"),
-    require("../../components/Radio/src/Radio.plugin"),
-    require("../../components/Rating/src/Rating.plugin"),
-    require("../../components/RingProgress/src/RingProgress.plugin"),
-    require("../../components/ScrollArea/src/ScrollArea.plugin"),
-    require("../../components/SegmentedControl/src/SegmentedControl.plugin"),
-    require("../../components/SimpleGrid/src/SimpleGrid.plugin"),
-    require("../../components/Skeleton/src/Skeleton.plugin"),
-    require("../../components/Slider/src/Slider.plugin"),
-    require("../../components/Spoiler/src/Spoiler.plugin"),
-    require("../../components/Stack/src/Stack.plugin"),
-    require("../../components/Stepper/src/Stepper.plugin"),
-    require("../../components/Switch/src/Switch.plugin"),
-    require("../../components/Table/src/Table.plugin"),
-    require("../../components/Tabs/src/Tabs.plugin"),
-    require("../../components/Text/src/Text.plugin"),
-    require("../../components/Timeline/src/Timeline.plugin"),
-    require("../../components/ThemeIcon/src/ThemeIcon.plugin"),
-    require("../../components/Title/src/Title.plugin"),
-    require("../../components/Tooltip/src/Tooltip.plugin"),
-    require("../../components/TypographyStylesProvider/src/TypographyStylesProvider.plugin"),
-    require("../../components/UnstyledButton/src/UnstyledButton.plugin"),
-    require("../../components/VisuallyHidden/src/VisuallyHidden.plugin"),
-    require("../../carousel/src/Carousel.plugin"),
-    require("../../code-highlight/src/CodeHighlight.plugin"),
-    require("../../code-highlight/src/CodeHighlight.theme.plugin"),
-    require("../../dates/src/components/CalendarHeader/CalendarHeader.plugin"),
-    require("../../dates/src/components/DateTimePicker/DateTimePicker.plugin"),
-    require("../../dates/src/components/Day/Day.plugin"),
-    require("../../dates/src/components/LevelsGroup/LevelsGroup.plugin"),
-    require("../../dates/src/components/Month/Month.plugin"),
-    require("../../dates/src/components/MonthsList/MonthsList.plugin"),
-    require("../../dates/src/components/PickerControl/PickerControl.plugin"),
-    require("../../dates/src/components/PickerInputBase/PickerInputBase.plugin"),
-    require("../../dates/src/components/TimeInput/TimeInput.plugin"),
-    require("../../dates/src/components/WeekdaysRow/WeekdaysRow.plugin"),
-    require("../../dates/src/components/YearsList/YearsList.plugin"),
-    require("../../dropzone/src/Dropzone.plugin"),
-    require("../../notifications/src/Notifications.plugin"),
-    require("../../nprogress/src/NavigationProgress.plugin"),
-    require("../../spotlight/src/Spotlight.plugin"),
-    require("../../tiptap/src/RichTextEditor.plugin"),
-  ],
-};
+import { definePreset } from "unocss";
+import fs from "fs/promises";
+import { cwd } from "node:process";
+import { rem } from "./core";
+
+function genMargin(type: "px" | "rem", px: RegExpMatchArray) {
+  let value = "";
+
+  if (type === "px") {
+    value = px[2].replace("[", "").replace("]", "");
+  } else if (type === "rem") {
+    const baseFontSize = 16;
+    value = `${parseInt(px[2]) * baseFontSize}px`;
+  }
+
+  const margins: { [key: string]: string } = {
+    m: "margin",
+    ml: "margin-left",
+    mr: "margin-right",
+    mt: "margin-top",
+    mb: "margin-bottom",
+  };
+
+  const name = px[1];
+
+  if (Object.keys(margins).includes(name)) {
+    return { [margins[name]]: rem(value) };
+  } else if (name === "mx") {
+    return { "margin-left": rem(value), "margin-right": rem(value) };
+  } else if (name === "my") {
+    return { "margin-top": rem(value), "margin-bottom": rem(value) };
+  }
+}
+
+function genPadding(type: "px" | "rem", px: RegExpMatchArray) {
+  let value = "";
+
+  if (type === "px") {
+    value = px[2].replace("[", "").replace("]", "");
+  } else if (type === "rem") {
+    const baseFontSize = 16;
+    value = `${parseInt(px[2]) * baseFontSize}px`;
+  }
+
+  const paddings: { [key: string]: string } = {
+    p: "padding",
+    pl: "padding-left",
+    pr: "padding-right",
+    pt: "padding-top",
+    pb: "padding-bottom",
+  };
+
+  const name = px[1];
+
+  if (Object.keys(paddings).includes(name)) {
+    return { [paddings[name]]: rem(value) };
+  } else if (name === "mx") {
+    return { "padding-left": rem(value), "padding-right": rem(value) };
+  } else if (name === "my") {
+    return { "padding-top": rem(value), "padding-bottom": rem(value) };
+  }
+}
+
+export default definePreset(() => {
+  return {
+    presets: [], // disable default preset
+    rules: [
+      [
+        /^(m|ml|mr|mt|mb|mx|my)?-(.+)$/,
+        ([name]) => {
+          if (name.match(/(\[|\])/)) {
+            const px = name.match(/(m|ml|mr|mt|mb|mx|my)?-(.+)/)!;
+
+            if (px && px.length === 3) {
+              return genMargin("px", px);
+            }
+          } else if (name.match(/\d+/)) {
+            const res = name.match(/(m|ml|mr|mt|mb|mx|my)?-(.+)/);
+
+            if (res) {
+              return genMargin("rem", res);
+            }
+          }
+        },
+      ],
+      [
+        /^(p|pl|pr|pt|pb|px|py)?-(.+)$/,
+        ([name]) => {
+          if (name.match(/(\[|\])/)) {
+            const px = name.match(/(p|pl|pr|pt|pb|px|py)?-(.+)/)!;
+
+            if (px && px.length === 3) {
+              return genPadding("px", px);
+            }
+          } else if (name.match(/\d+/)) {
+            const res = name.match(/(p|pl|pr|pt|pb|px|py)?-(.+)/);
+
+            if (res) {
+              return genPadding("rem", res);
+            }
+          }
+        },
+      ],
+    ],
+    preflights: [
+      {
+        layer: "raikou_1",
+        getCSS: async () => {
+          const component_css = await fs.readFile(
+            `${cwd()}/node_modules/@raikou/system/dist/global.css`,
+            "utf8",
+          );
+          return component_css;
+        },
+      },
+      // {
+      //   layer: "raikou_2",
+      //   getCSS: async () => {
+      //     const component_css = await fs.readFile(
+      //       `${cwd()}/node_modules/@raikou/system/dist/styles_2.css`,
+      //       "utf8",
+      //     );
+      //     return component_css;
+      //   },
+      // },
+    ],
+    layers: {
+      raikou_1: -1,
+      default: 1,
+    },
+  };
+}) as any;

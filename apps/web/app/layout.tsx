@@ -1,7 +1,7 @@
 import { RaikouProvider, DirectionProvider } from "@raikou/system";
-import "../global.css";
 import { setState, createTheme } from "@raikou/global-store";
-import { generateColors } from "@raikou/colors-generator";
+// import { generateColors } from "@raikou/colors-generator";
+import "./styles/uno.css";
 
 export default function RootLayout({
   children,
@@ -9,10 +9,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const theme = createTheme({
-    primaryColor: "theme",
-    colors: {
-      theme: generateColors("#5474B4"),
-    },
+    primaryColor: "blue",
+    // colors: {
+    //   theme: generateColors("#5474B4"),
+    // },
   });
 
   setState(theme);

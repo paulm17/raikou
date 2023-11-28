@@ -10,6 +10,7 @@ import {
 } from "@raikou/core";
 import { useAccordionContext } from "../Accordion.context";
 import { AccordionItemProvider } from "../AccordionItem.context";
+import classes from "../Accordion.module.css";
 
 export type AccordionItemStylesNames = "item";
 
@@ -54,3 +55,4 @@ export const AccordionItem = factory<AccordionItemFactory>((props, ref) => {
 });
 
 AccordionItem.displayName = "@raikou/core/AccordionItem";
+AccordionItem.classes = classes;

@@ -12,6 +12,14 @@ export function Usage() {
   );
 }
 
+export function Unocss() {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", padding: 40 }}>
+      <Badge bg="red-800 hover:green-600">Badge</Badge>
+    </div>
+  );
+}
+
 export function Variants() {
   return (
     <Group p={40}>

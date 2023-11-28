@@ -197,7 +197,7 @@ module.exports = function ({ addComponents, theme }: any) {
         "--_input-bd": "var(--_input-bd-focus)",
 
         "[data-error] &": {
-          "--_input-bd": "var(--mantine-color-error)",
+          "--_input-bd": "var(--raikou-color-error)",
         },
       },
 

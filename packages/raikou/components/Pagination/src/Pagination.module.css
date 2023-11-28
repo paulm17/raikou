@@ -1,0 +1,87 @@
+.root {
+  @mixin light {
+    --raikou-pagination-control-border-color: #ced4da;
+    --raikou-pagination-control-bg-color: #fff;
+    --raikou-pagination-control-bg-hover: #f8f9fa;
+  }
+  @mixin dark {
+    --raikou-pagination-control-border-color: #373a40;
+    --raikou-pagination-control-bg-color: #25262b;
+    --raikou-pagination-control-bg-hover: #2c2e33;
+  }
+
+  --pagination-control-size-xs: rem(22px);
+  --pagination-control-size-sm: rem(26px);
+  --pagination-control-size-md: rem(32px);
+  --pagination-control-size-lg: rem(38px);
+  --pagination-control-size-xl: rem(44px);
+  --pagination-control-size: var(--pagination-control-size-md);
+  --pagination-control-fz: var(--raikou-font-size-md);
+  --pagination-active-bg: var(--raikou-primary-color-filled);
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: rem(1px) solid var(--_control-border-color);
+  cursor: var(--_control-cursor, pointer);
+  color: var(--_control-color, var(--raikou-color-text));
+  height: var(--pagination-control-size);
+  min-width: var(--pagination-control-size);
+  font-size: var(--pagination-control-fz);
+  padding: var(--_control-padding, 0);
+  line-height: 1;
+  background-color: var(--_control-bg-color);
+  border-radius: var(--pagination-control-radius, var(--raikou-radius-default));
+  opacity: var(--_control-opacity, 1);
+
+  &[data-with-padding] {
+    --_control-padding: calc(var(--pagination-control-size) / 4);
+  }
+
+  &:disabled,
+  &[data-disabled] {
+    --_control-cursor: not-allowed;
+    --_control-opacity: 0.4;
+  }
+
+  &[data-active] {
+    --_control-bg-color: var(--pagination-active-bg) !important;
+    --_control-border-color: var(--pagination-active-bg) !important;
+    --_control-color: var(--raikou-color-white);
+  }
+
+  @mixin light {
+    --_control-border-color: var(--raikou-pagination-control-border-color);
+    --_control-bg-color: var(--raikou-pagination-control-bg-color);
+    --_control-bg-hover: var(--raikou-pagination-control-bg-hover);
+  }
+
+  @mixin dark {
+    --_control-border-color: var(--raikou-pagination-control-border-color);
+    --_control-bg-color: var(--raikou-pagination-control-bg-color);
+    --_control-bg-hover: var(--raikou-pagination-control-bg-hover);
+  }
+
+  @mixin hover {
+    &:not(:disabled, [data-disabled]) {
+      --_control-bg-color: var(--_control-bg-hover);
+    }
+  }
+
+  @mixin rtl {
+    & > svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.dots {
+  height: var(--pagination-control-size);
+  min-width: var(--pagination-control-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}

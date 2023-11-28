@@ -1,0 +1,18 @@
+[components]
+core_dir = [
+  "/Users/paul/development/src/github/raikou/packages/raikou/server/dist/index.mjs",
+  "/Users/paul/development/src/github/raikou/packages/raikou/client/dist/index.mjs"
+]
+other_dir = [
+  "@raikou/carousel",
+  "@raikou/code-highlight",
+  "@raikou/data-table",
+  "@raikou/dates",
+  "@raikou/dial",
+  "@raikou/dropzone",
+  "@raikou/modals",
+  "@raikou/notifications",
+  "@raikou/nprogress",
+  "@raikou/spotlight",
+  "@raikou/tiptap"
+]

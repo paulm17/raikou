@@ -7,6 +7,7 @@ import {
 } from "@raikou/core";
 import { ModalBaseTitle, ModalBaseTitleProps } from "../../ModalBase/src";
 import { useModalContext } from "./Modal.context";
+import classes from "./Modal.module.css";
 
 export type ModalTitleStylesNames = "title";
 
@@ -38,4 +39,5 @@ export const ModalTitle = factory<ModalTitleFactory>((_props, ref) => {
   );
 });
 
+ModalTitle.classes = classes;
 ModalTitle.displayName = "@raikou/core/ModalTitle";

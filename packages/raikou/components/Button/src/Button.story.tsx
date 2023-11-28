@@ -15,7 +15,16 @@ export function RenderRoot() {
 export function SingleButton() {
   return (
     <div style={{ padding: 40 }}>
-      <Button loading>Button</Button>
+      <div>
+        <Button variant="outline" size="xl">
+          Button
+        </Button>
+      </div>
+      <div>
+        <Button disabled variant="outline" size="xl">
+          Button
+        </Button>
+      </div>
     </div>
   );
 }
@@ -281,16 +290,6 @@ export function Sections() {
   );
 }
 
-export function LoadingWithIcon() {
-  return (
-    <div style={{ padding: 40, display: "flex", gap: 20 }}>
-      <Button leftSection="L" loading>
-        With Left
-      </Button>
-    </div>
-  );
-}
-
 export function ButtonGroup() {
   return (
     <div style={{ padding: 40, display: "flex", gap: 20 }}>
@@ -338,6 +337,16 @@ export function ButtonGroup() {
           3
         </Button>
       </Button.Group>
+    </div>
+  );
+}
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Button unstyled loading>
+        Unstyled
+      </Button>
     </div>
   );
 }

@@ -1,2 +1,3 @@
+declare const _default: any;
 
-export { }
+export { _default as default };

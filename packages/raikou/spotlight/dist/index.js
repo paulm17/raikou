@@ -109,16 +109,16 @@ function setListId(id, store) {
   store.updateState((state) => __spreadProps(__spreadValues({}, state), { listId: id }));
 }
 function selectAction(index, store) {
-  var _a, _b;
+  var _a, _b, _c;
   const state = store.getState();
   const actionsList = document.getElementById(state.listId);
-  const selected = actionsList.querySelector("[data-selected]");
-  const actions = actionsList.querySelectorAll("[data-action]");
+  const selected = actionsList == null ? void 0 : actionsList.querySelector("[data-selected]");
+  const actions = (_a = actionsList == null ? void 0 : actionsList.querySelectorAll("[data-action]")) != null ? _a : [];
   const nextIndex = index === -1 ? actions.length - 1 : index === actions.length ? 0 : index;
   const selectedIndex = (0, import_hooks.clamp)(nextIndex, 0, actions.length - 1);
   selected == null ? void 0 : selected.removeAttribute("data-selected");
-  (_a = actions[selectedIndex]) == null ? void 0 : _a.scrollIntoView({ block: "nearest" });
-  (_b = actions[selectedIndex]) == null ? void 0 : _b.setAttribute("data-selected", "true");
+  (_b = actions[selectedIndex]) == null ? void 0 : _b.scrollIntoView({ block: "nearest" });
+  (_c = actions[selectedIndex]) == null ? void 0 : _c.setAttribute("data-selected", "true");
   setSelectedAction(selectedIndex, store);
   return selectedIndex;
 }
@@ -1167,6 +1167,7 @@ var Scrollbar = (0, import_react12.forwardRef)(
     );
   }
 );
+Scrollbar.displayName = "@raikou/Scrollbar";
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollbarX.tsx
 var ScrollAreaScrollbarX = (0, import_react13.forwardRef)((props, forwardedRef) => {
@@ -1956,7 +1957,7 @@ var UnstyledButton = (0, import_core13.polymorphicFactory)(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,
@@ -2167,7 +2168,7 @@ function highlighter(value, _highlight) {
   if (!shouldHighlight) {
     return [{ chunk: value, highlighted: false }];
   }
-  const matcher = typeof highlight === "string" ? highlight.trim() : highlight.filter((part) => part.trim().length !== 0).map((part) => part.trim()).join("|");
+  const matcher = typeof highlight === "string" ? highlight.trim() : highlight.filter((part) => part.trim().length !== 0).map((part) => part.trim()).sort((a, b) => b.length - a.length).join("|");
   const re = new RegExp(`(${matcher})`, "gi");
   const chunks = value.split(re).map((part) => ({ chunk: part, highlighted: re.test(part) })).filter(({ chunk }) => chunk);
   return chunks;
@@ -2380,11 +2381,11 @@ var import_core33 = require("@raikou/core");
 // ../components/ModalBase/src/ModalBase.tsx
 var import_react39 = __toESM(require("react"));
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
 var import_tslib5 = require("tslib");
 var React37 = __toESM(require("react"));
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
 var import_tslib3 = require("tslib");
 var React33 = __toESM(require("react"));
 
@@ -2548,10 +2549,10 @@ function exportSidecar(medium, exported) {
   return SideCar;
 }
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/medium.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/medium.js
 var effectCar = createSidecarMedium();
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
 var nothing = function() {
   return;
 };
@@ -2562,14 +2563,14 @@ var RemoveScroll = React33.forwardRef(function(props, parentRef) {
     onWheelCapture: nothing,
     onTouchMoveCapture: nothing
   }), callbacks = _a[0], setCallbacks = _a[1];
-  var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? "div" : _b, gapMode = props.gapMode, rest = (0, import_tslib3.__rest)(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as", "gapMode"]);
+  var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? "div" : _b, rest = (0, import_tslib3.__rest)(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as"]);
   var SideCar2 = sideCar;
   var containerRef = useMergeRefs([ref, parentRef]);
   var containerProps = (0, import_tslib3.__assign)((0, import_tslib3.__assign)({}, rest), callbacks);
   return React33.createElement(
     React33.Fragment,
     null,
-    enabled && React33.createElement(SideCar2, { sideCar: effectCar, removeScrollBar, shards, noIsolation, inert, setCallbacks, allowPinchZoom: !!allowPinchZoom, lockRef: ref, gapMode }),
+    enabled && React33.createElement(SideCar2, { sideCar: effectCar, removeScrollBar, shards, noIsolation, inert, setCallbacks, allowPinchZoom: !!allowPinchZoom, lockRef: ref }),
     forwardProps ? React33.cloneElement(React33.Children.only(children), (0, import_tslib3.__assign)((0, import_tslib3.__assign)({}, containerProps), { ref: containerRef })) : React33.createElement(Container, (0, import_tslib3.__assign)({}, containerProps, { className, ref: containerRef }), children)
   );
 });
@@ -2583,7 +2584,7 @@ RemoveScroll.classNames = {
   zeroRight: zeroRightClassName
 };
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
 var import_tslib4 = require("tslib");
 var React36 = __toESM(require("react"));
 
@@ -2731,7 +2732,7 @@ var RemoveScrollBar = function(props) {
   return React35.createElement(Style, { styles: getStyles(gap, !noRelative, gapMode, !noImportant ? "!important" : "") });
 };
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/aggresiveCapture.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/aggresiveCapture.js
 var passiveSupported = false;
 if (typeof window !== "undefined") {
   try {
@@ -2750,7 +2751,7 @@ if (typeof window !== "undefined") {
 var options;
 var nonPassive = passiveSupported ? { passive: false } : false;
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/handleScroll.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/handleScroll.js
 var alwaysContainsScroll = function(node) {
   return node.tagName === "TEXTAREA";
 };
@@ -2769,7 +2770,6 @@ var elementCouldBeHScrolled = function(node) {
   return elementCanBeScrolled(node, "overflowX");
 };
 var locationCouldBeScrolled = function(axis, node) {
-  var ownerDocument = node.ownerDocument;
   var current = node;
   do {
     if (typeof ShadowRoot !== "undefined" && current instanceof ShadowRoot) {
@@ -2783,7 +2783,7 @@ var locationCouldBeScrolled = function(axis, node) {
       }
     }
     current = current.parentNode;
-  } while (current && current !== ownerDocument.body);
+  } while (current && current !== document.body);
   return false;
 };
 var getVScrollVariables = function(_a) {
@@ -2843,7 +2843,7 @@ var handleScroll = function(axis, endTarget, event, sourceDelta, noOverscroll) {
   return shouldCancelScroll;
 };
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
 var getTouchXY = function(event) {
   return "changedTouches" in event ? [event.changedTouches[0].clientX, event.changedTouches[0].clientY] : [0, 0];
 };
@@ -2866,7 +2866,9 @@ function RemoveScrollSideCar(props) {
   var touchStartRef = React36.useRef([0, 0]);
   var activeAxis = React36.useRef();
   var id = React36.useState(idCounter++)[0];
-  var Style2 = React36.useState(styleSingleton)[0];
+  var Style2 = React36.useState(function() {
+    return styleSingleton();
+  })[0];
   var lastProps = React36.useRef(props);
   React36.useEffect(function() {
     lastProps.current = props;
@@ -2993,14 +2995,14 @@ function RemoveScrollSideCar(props) {
     React36.Fragment,
     null,
     inert ? React36.createElement(Style2, { styles: generateStyle(id) }) : null,
-    removeScrollBar ? React36.createElement(RemoveScrollBar, { gapMode: props.gapMode }) : null
+    removeScrollBar ? React36.createElement(RemoveScrollBar, { gapMode: "margin" }) : null
   );
 }
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/sidecar.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/sidecar.js
 var sidecar_default = exportSidecar(effectCar, RemoveScrollSideCar);
 
-// ../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
+// ../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
 var ReactRemoveScroll = React37.forwardRef(function(props, ref) {
   return React37.createElement(RemoveScroll, (0, import_tslib5.__assign)({}, props, { ref, sideCar: sidecar_default }));
 });
@@ -3942,7 +3944,8 @@ var defaultProps23 = {
   closeOnEscape: true,
   keepMounted: false,
   zIndex: (0, import_core33.getDefaultZIndex)("modal"),
-  transitionProps: { duration: 200, transition: "pop" }
+  transitionProps: { duration: 200, transition: "pop" },
+  yOffset: "5dvh"
 };
 var varsResolver12 = (0, import_core33.createVarsResolver)(
   (_, { radius, size, yOffset, xOffset }) => ({

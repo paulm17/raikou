@@ -1,5 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-vite";
-import { mergeConfig } from "vite";
+import Unocss from "unocss/vite";
 
 const config: StorybookConfig = {
   stories: [
@@ -9,6 +9,7 @@ const config: StorybookConfig = {
     "../../../packages/raikou/demos/**/src/**/*.story.@(js|jsx|ts|tsx)",
   ],
   addons: [
+    "storybook-dark-mode",
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
@@ -24,6 +25,10 @@ const config: StorybookConfig = {
   },
   typescript: {
     reactDocgen: false, // 👈 react-docgen configured here.
+  },
+  viteFinal(config) {
+    config.plugins?.push(Unocss());
+    return config;
   },
 };
 export default config;

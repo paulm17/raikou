@@ -2,12 +2,13 @@ import React, { forwardRef } from "react";
 import cx from "clsx";
 import { Box } from "@raikou/core";
 import { RaikouLoaderComponent } from "../Loader.types";
+import classes from "../Loader.module.css";
 
 export const Progress: RaikouLoaderComponent = forwardRef(
   ({ className, ...others }, ref) => (
     <Box
       component="span"
-      className={cx("progress-loader", className)}
+      className={cx(classes.progressLoader, className)}
       {...others}
       ref={ref}
     >

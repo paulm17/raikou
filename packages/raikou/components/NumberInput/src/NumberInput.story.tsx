@@ -1,6 +1,9 @@
 import React, { useState, useRef } from "react";
+import { useForm } from "@raikou/form";
 import { NumberInput, NumberInputHandlers } from "./NumberInput";
 import { Button } from "../../Button/src";
+import { TextInput } from "../../TextInput/src";
+import { Group } from "../../Group/src";
 
 export default { title: "NumberInput" };
 
@@ -18,6 +21,68 @@ export function Usage() {
         ? `${value} number`
         : `${value === "" ? "empty" : value} string`}
       <Button onClick={() => setValue(245.32)}>Set value to float</Button>
+    </div>
+  );
+}
+
+export function OnChangeValue() {
+  const [value, setValue] = useState<number | string>(345);
+  return (
+    <div style={{ padding: 40 }}>
+      <NumberInput
+        value={value}
+        label="Number input"
+        placeholder="Number input"
+        suffix="suf"
+        prefix="pref"
+        thousandSeparator
+        onChange={setValue}
+      />
+      {typeof value === "number"
+        ? `${value} number`
+        : `${value === "" ? "empty" : value} string`}
+      <Button onClick={() => setValue(245.32)}>Set value to float</Button>
+    </div>
+  );
+}
+
+export function RightSectionSizes() {
+  return (
+    <div
+      style={{
+        maxWidth: 340,
+        margin: "auto",
+        padding: 40,
+        display: "flex",
+        flexDirection: "column",
+        gap: 20,
+      }}
+    >
+      <NumberInput
+        placeholder="xs"
+        size="xs"
+        styles={{ section: { background: "transparent" } }}
+      />
+      <NumberInput
+        placeholder="sm"
+        size="sm"
+        styles={{ section: { background: "transparent" } }}
+      />
+      <NumberInput
+        placeholder="md"
+        size="md"
+        styles={{ section: { background: "transparent" } }}
+      />
+      <NumberInput
+        placeholder="lg"
+        size="lg"
+        styles={{ section: { background: "transparent" } }}
+      />
+      <NumberInput
+        placeholder="xl"
+        size="xl"
+        styles={{ section: { background: "transparent" } }}
+      />
     </div>
   );
 }
@@ -45,7 +110,9 @@ export function MinMax() {
         value={value}
         label="Number input"
         placeholder="Number input"
-        onChange={setValue}
+        onChange={(val) => {
+          setValue(val);
+        }}
         min={0}
         max={100}
       />
@@ -138,6 +205,53 @@ export function Disabled() {
         placeholder="Test value"
         label="Disabled with placeholder"
       />
+    </div>
+  );
+}
+
+export function FormValidateOnBlur() {
+  const form = useForm({
+    validateInputOnBlur: true,
+    validate: {
+      age: (value) => (value < 18 ? "Error" : null),
+      name: (value) => (value.length < 2 ? "Error" : null),
+    },
+    initialValues: {
+      name: "",
+      age: 2,
+    },
+  });
+
+  return (
+    <div style={{ padding: 40, maxWidth: 340 }}>
+      <form onSubmit={form.onSubmit((values) => console.log(values))}>
+        <NumberInput label="Age" {...form.getInputProps("age")} />
+        <TextInput label="Name" {...form.getInputProps("name")} />
+        <Group justify="flex-end" mt="xl">
+          <Button type="submit">Submit</Button>
+        </Group>
+      </form>
+    </div>
+  );
+}
+
+export function ExternalOnChange() {
+  const [value, setValue] = React.useState(0);
+  return (
+    <div>
+      <NumberInput
+        disabled={value === 0}
+        value={value}
+        onChange={(v) => {
+          console.log("onChange", v);
+          setValue(35);
+        }}
+        suffix="%"
+      />
+      <Group>
+        <Button onClick={() => setValue(0)}>Set value to 0</Button>
+        <Button onClick={() => setValue(1)}>Set value to 1</Button>
+      </Group>
     </div>
   );
 }

@@ -1,0 +1,16 @@
+.timeWrapper {
+  display: flex;
+  align-items: stretch;
+  margin-top: var(--raikou-spacing-md);
+}
+
+.timeInput {
+  flex: 1;
+  margin-right: var(--_mr, var(--raikou-spacing-md));
+  margin-left: var(--_ml, 0);
+
+  @mixin rtl {
+    --_mr: 0;
+    --_ml: var(--raikou-spacing-md);
+  }
+}

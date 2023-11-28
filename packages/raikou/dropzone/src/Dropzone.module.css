@@ -1,0 +1,88 @@
+.root {
+  @mixin light {
+    --raikou-dropzone-bg: #fff;
+    --raikou-dropzone-border-color: #ced4da;
+    --raikou-dropzone-bg-hover: #f8f9fa;
+    --raikou-dropzone-bg-active: #f8f9fa;
+  }
+  @mixin dark {
+    --raikou-dropzone-bg: #25262b;
+    --raikou-dropzone-border-color: #373a40;
+    --raikou-dropzone-bg-hover: #2c2e33;
+    --raikou-dropzone-bg-active: #2c2e33;
+  }
+
+  position: relative;
+  background-color: var(--_dropzone-bg);
+  border: rem(1px) dashed var(--_dropzone-border-color);
+  color: var(--_dropzone-color, var(--raikou-color-text));
+  padding: var(--raikou-spacing-md);
+  border-radius: var(--dropzone-radius);
+  cursor: var(--_dropzone-cursor, pointer);
+  user-select: none;
+  transition:
+    background-color 100ms ease,
+    border-color 100ms ease;
+
+  &[data-loading],
+  &:not([data-activate-on-click]) {
+    --_dropzone-cursor: default;
+  }
+
+  @mixin light {
+    --_dropzone-bg: var(--raikou-dropzone-bg);
+    --_dropzone-border-color: var(--raikou-dropzone-border-color);
+  }
+
+  @mixin dark {
+    --_dropzone-bg: var(--raikou-dropzone-bg);
+    --_dropzone-border-color: var(--raikou-dropzone-border-color);
+  }
+
+  @mixin hover {
+    &[data-activate-on-click]:not([data-loading]) {
+      @mixin light {
+        --_dropzone-bg: var(--raikou-color-gray-0);
+      }
+
+      @mixin dark {
+        --_dropzone-bg: var(--raikou-color-dark-5);
+      }
+    }
+  }
+
+  &[data-accept] {
+    --_dropzone-bg: var(--dropzone-accept-bg);
+    --_dropzone-border-color: var(--dropzone-accept-bg);
+    --_dropzone-color: var(--dropzone-accept-color);
+  }
+
+  &[data-reject] {
+    --_dropzone-bg: var(--dropzone-reject-bg);
+    --_dropzone-border-color: var(--dropzone-reject-bg);
+    --_dropzone-color: var(--dropzone-reject-color);
+  }
+}
+
+.inner {
+  pointer-events: var(--_dropzone-inner-pointer-events, none);
+  user-select: none;
+
+  &[data-enable-pointer-events] {
+    --_dropzone-inner-pointer-events: all;
+  }
+}
+
+.fullScreen {
+  position: fixed;
+  inset: 0;
+  background-color: var(--raikou-color-body);
+  display: flex;
+  flex-direction: column;
+  padding: var(--raikou-spacing-xs);
+  transition: opacity 100ms ease;
+
+  & .dropzone {
+    flex: 1;
+  }
+}

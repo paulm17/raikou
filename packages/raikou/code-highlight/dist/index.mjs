@@ -3797,7 +3797,7 @@ var UnstyledButton = polymorphicFactory(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,
@@ -3851,13 +3851,13 @@ var Bars = forwardRef4(
       Box4,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx2("bars-loader", className)
+        className: cx2("loader-barsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React15.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ React15.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ React15.createElement("span", { className: "bar" })
+      /* @__PURE__ */ React15.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ React15.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ React15.createElement("span", { className: "loader-bar" })
     );
   }
 );
@@ -3873,7 +3873,7 @@ var Oval = forwardRef5(
       Box5,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx3("oval-loader", className)
+        className: cx3("loader-ovalLoader", className)
       }, others), {
         ref
       })
@@ -3892,7 +3892,7 @@ var Progress = forwardRef6(
       Box6,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx4("progress-loader", className)
+        className: cx4("loader-progressLoader", className)
       }, others), {
         ref
       }),
@@ -3922,13 +3922,13 @@ var Dots = forwardRef7(
       Box7,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx5("dots-loader", className)
+        className: cx5("loader-dotsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "dot" })
+      /* @__PURE__ */ React18.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ React18.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ React18.createElement("span", { className: "loader-dot" })
     );
   }
 );
@@ -4459,6 +4459,7 @@ var Scrollbar = forwardRef8(
     );
   }
 );
+Scrollbar.displayName = "@raikou/Scrollbar";
 
 // ../components/ScrollArea/src/ScrollAreaScrollbar/ScrollbarX.tsx
 var ScrollAreaScrollbarX = forwardRef9((props, forwardedRef) => {
@@ -5269,7 +5270,7 @@ var CodeHighlightTabs = factory6(
     const nodes = Array.isArray(code) ? code : [code];
     const currentCode = nodes[value];
     const highlighted = hljs.highlight(currentCode.code.trim(), {
-      language: currentCode.language
+      language: currentCode.language || "plaintext"
     }).value;
     const files = nodes.map((node, index3) => /* @__PURE__ */ React37.createElement(
       UnstyledButton,
@@ -5362,8 +5363,13 @@ import {
 // src/use-highlight.ts
 import { useState as useState16, useEffect as useEffect14 } from "react";
 import hljs2 from "highlight.js";
-function useHighlight({ code, language, highlightOnClient }) {
-  const getHighlightedCode = () => hljs2.highlight(code.trim(), { language }).value;
+function useHighlight({
+  code,
+  language,
+  highlightOnClient
+}) {
+  const lang = hljs2.getLanguage(language) ? language : "plaintext";
+  const getHighlightedCode = () => hljs2.highlight(code.trim(), { language: lang }).value;
   const [highlighted, setHighlighted] = useState16(!highlightOnClient);
   const [highlightedCode, setHighlightedCode] = useState16(
     highlightOnClient ? code : getHighlightedCode()
@@ -5375,6 +5381,9 @@ function useHighlight({ code, language, highlightOnClient }) {
       setHighlighted(true);
     }
   }, []);
+  useEffect14(() => {
+    setHighlightedCode(getHighlightedCode());
+  }, [code]);
   return getCodeProps;
 }
 

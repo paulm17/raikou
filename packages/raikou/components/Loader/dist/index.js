@@ -79,13 +79,13 @@ var Bars = (0, import_react.forwardRef)(
       import_core.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx.default)("bars-loader", className)
+        className: (0, import_clsx.default)("loader-barsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react.default.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ import_react.default.createElement("span", { className: "bar" })
+      /* @__PURE__ */ import_react.default.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ import_react.default.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ import_react.default.createElement("span", { className: "loader-bar" })
     );
   }
 );
@@ -101,7 +101,7 @@ var Oval = (0, import_react2.forwardRef)(
       import_core2.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx2.default)("oval-loader", className)
+        className: (0, import_clsx2.default)("loader-ovalLoader", className)
       }, others), {
         ref
       })
@@ -120,7 +120,7 @@ var Progress = (0, import_react3.forwardRef)(
       import_core3.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx3.default)("progress-loader", className)
+        className: (0, import_clsx3.default)("loader-progressLoader", className)
       }, others), {
         ref
       }),
@@ -150,13 +150,13 @@ var Dots = (0, import_react4.forwardRef)(
       import_core4.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx4.default)("dots-loader", className)
+        className: (0, import_clsx4.default)("loader-dotsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "dot" })
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: "loader-dot" })
     );
   }
 );

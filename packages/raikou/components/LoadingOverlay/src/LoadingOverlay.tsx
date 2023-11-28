@@ -15,6 +15,7 @@ import {
 import { Transition, TransitionOverride } from "../../Transition/src";
 import { Loader, LoaderProps } from "../../Loader/src";
 import { Overlay, OverlayProps } from "../../Overlay/src";
+import classes from "./LoadingOverlay.module.css";
 
 export type LoadingOverlayStylesNames = "root" | "loader" | "overlay";
 export type LoadingOverlayCssVariables = {
@@ -83,11 +84,7 @@ export const LoadingOverlay = factory<LoadingOverlayFactory>((_props, ref) => {
 
   const getStyles = useStyles<LoadingOverlayFactory>({
     name: "LoadingOverlay",
-    classes: {
-      root: "loadingOverlay-root",
-      loader: "loadingOverlay-loader",
-      overlay: "loadingOverlay-overlay",
-    },
+    classes,
     props,
     className,
     style,
@@ -131,4 +128,5 @@ export const LoadingOverlay = factory<LoadingOverlayFactory>((_props, ref) => {
   );
 });
 
+LoadingOverlay.classes = classes;
 LoadingOverlay.displayName = "@raikou/core/LoadingOverlay";

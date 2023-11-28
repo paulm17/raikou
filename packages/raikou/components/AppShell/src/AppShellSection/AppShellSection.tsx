@@ -8,6 +8,7 @@ import {
   PolymorphicFactory,
 } from "@raikou/core";
 import { useStore } from "../store";
+import classes from "../AppShell.module.css";
 
 export type AppShellSectionStylesNames = "section";
 
@@ -47,3 +48,4 @@ export const AppShellSection = polymorphicFactory<AppShellSectionFactory>(
 );
 
 AppShellSection.displayName = "@raikou/core/AppShellSection";
+AppShellSection.classes = classes;

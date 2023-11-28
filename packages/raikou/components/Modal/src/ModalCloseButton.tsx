@@ -10,6 +10,7 @@ import {
   ModalBaseCloseButtonProps,
 } from "../../ModalBase/src";
 import { useModalContext } from "./Modal.context";
+import classes from "./Modal.module.css";
 
 export type ModalCloseButtonStylesNames = "close";
 
@@ -44,4 +45,5 @@ export const ModalCloseButton = factory<ModalCloseButtonFactory>(
   },
 );
 
+ModalCloseButton.classes = classes;
 ModalCloseButton.displayName = "@raikou/core/ModalCloseButton";

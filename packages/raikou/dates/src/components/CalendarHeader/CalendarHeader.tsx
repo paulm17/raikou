@@ -15,8 +15,7 @@ import {
 } from "@raikou/core";
 import { UnstyledButton } from "../../../../components/UnstyledButton/src";
 import { AccordionChevron } from "../../../../components/Accordion/src";
-
-// import classes from "./CalendarHeader.module.css";
+import classes from "./CalendarHeader.module.css";
 
 export type CalendarHeaderStylesNames =
   | "calendarHeader"
@@ -142,12 +141,7 @@ export const CalendarHeader = factory<CalendarHeaderFactory>((_props, ref) => {
 
   const getStyles = useStyles<CalendarHeaderFactory>({
     name: __staticSelector || "CalendarHeader",
-    classes: {
-      calendarHeader: "dates-calendarHeader",
-      calendarHeaderLevel: "dates-calendarHeaderLevel",
-      calendarHeaderControl: "dates-calendarHeaderControl",
-      calendarHeaderControlIcon: "dates-calendarHeaderControlIcon",
-    },
+    classes,
     props,
     className,
     style,
@@ -229,4 +223,5 @@ export const CalendarHeader = factory<CalendarHeaderFactory>((_props, ref) => {
   );
 });
 
+CalendarHeader.classes = classes;
 CalendarHeader.displayName = "@raikou/dates/CalendarHeader";

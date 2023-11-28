@@ -1,0 +1,257 @@
+.root {
+  @mixin light {
+    --raikou-segmentedcontrol-bg: #f1f3f5;
+    --raikou-segmentedcontrol-indicator-bg: #fff;
+    --raikou-segmentedcontrol-disabled-color: #adb5bd;
+    --raikou-segmentedcontrol-active-color: #000;
+    --raikou-segmentedcontrol-hover-color: #000;
+    --raikou-segmentedcontrol-color: #495057;
+    --raikou-segmentedcontrol-separator-color: #dee2e6;
+    --raikou-segmentedcontrol-ring-outline: #1971c2;
+  }
+  @mixin dark {
+    --raikou-segmentedcontrol-bg: #141517;
+    --raikou-segmentedcontrol-indicator-bg: #2c2e33;
+    --raikou-segmentedcontrol-disabled-color: #5c5f66;
+    --raikou-segmentedcontrol-active-color: #fff;
+    --raikou-segmentedcontrol-hover-color: #fff;
+    --raikou-segmentedcontrol-color: #a6a7ab;
+    --raikou-segmentedcontrol-separator-color: #373a40;
+    --raikou-segmentedcontrol-ring-outline: #1971c2;
+  }
+
+  --sc-padding-xs: rem(3px) rem(6px);
+  --sc-padding-sm: rem(5px) rem(10px);
+  --sc-padding-md: rem(7px) rem(14px);
+  --sc-padding-lg: rem(9px) rem(16px);
+  --sc-padding-xl: rem(12px) rem(20px);
+
+  --sc-transition-duration: 200ms;
+  --sc-padding: var(--sc-padding-sm);
+  --sc-transition-timing-function: ease;
+  --sc-font-size: var(--raikou-font-size-sm);
+
+  position: relative;
+  display: var(--_display, inline-flex);
+  flex-direction: var(--_flex-direction, row);
+  width: var(--_width, auto);
+  background-color: var(--_bg);
+  border-radius: var(--sc-radius, var(--raikou-radius-default));
+  overflow: hidden;
+  padding: 4px; /* px required for correct indicator calculations */
+
+  &[data-full-width] {
+    --_display: flex;
+  }
+
+  &[data-orientation="vertical"] {
+    --_display: flex;
+    --_flex-direction: column;
+    --_width: max-content;
+
+    &[data-full-width] {
+      --_width: auto;
+    }
+  }
+
+  @mixin light {
+    --_bg: var(--raikou-segmentedcontrol-bg);
+  }
+
+  @mixin dark {
+    --_bg: var(--raikou-segmentedcontrol-bg);
+  }
+}
+
+.indicator {
+  position: absolute;
+  display: block;
+  z-index: 1;
+  border-radius: var(--sc-radius, var(--raikou-radius-default));
+  box-shadow: var(--_box-shadow);
+  width: var(--sc-indicator-width);
+  height: var(--sc-indicator-height);
+  transform: var(--sc-indicator-transform);
+  transition:
+    transform var(--sc-transition-duration) var(--sc-transition-timing-function),
+    width var(--sc-transition-duration) var(--sc-transition-timing-function);
+  background-color: var(--_bg);
+
+  @mixin light {
+    --_box-shadow: var(--sc-shadow, none);
+    --_bg: var(--sc-color, var(--raikou-segmentedcontrol-indicator-bg));
+  }
+
+  @mixin dark {
+    --_box-shadow: none;
+    --_bg: var(--sc-color, var(--raikou-segmentedcontrol-indicator-bg));
+  }
+}
+
+.label {
+  -webkit-tap-highlight-color: transparent;
+  font-weight: 500;
+  display: block;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+  border-radius: var(--sc-radius, var(--raikou-radius-default));
+  font-size: var(--sc-font-size);
+  padding: var(--sc-padding);
+  transition: color var(--sc-transition-duration)
+    var(--sc-transition-timing-function);
+  cursor: var(--_cursor, pointer);
+  color: var(--_color);
+
+  /* outline is controlled by .input */
+  outline: var(--_outline, none);
+
+  fieldset:disabled &,
+  &[data-disabled] {
+    --_cursor: not-allowed;
+
+    @mixin light {
+      --_color: var(--raikou-segmentedcontrol-disabled-color);
+    }
+
+    @mixin dark {
+      --_color: var(--raikou-segmentedcontrol-disabled-color);
+    }
+  }
+
+  &[data-active] {
+    @mixin light {
+      --_color: var(
+        --sc-label-color,
+        var(--raikou-segmentedcontrol-active-color)
+      );
+    }
+
+    @mixin dark {
+      --_color: var(
+        --sc-label-color,
+        var(--raikou-segmentedcontrol-active-color)
+      );
+    }
+  }
+
+  &:not([data-disabled]):not([data-active]) {
+    @mixin hover {
+      @mixin light {
+        --_color: var(--raikou-segmentedcontrol-hover-color);
+      }
+
+      @mixin dark {
+        --_color: var(--raikou-segmentedcontrol-hover-color);
+      }
+    }
+  }
+
+  fieldset:disabled & {
+    @mixin hover {
+      @mixin light {
+        --_color: var(--raikou-segmentedcontrol-disabled-color) !important;
+      }
+
+      @mixin dark {
+        --_color: var(--raikou-segmentedcontrol-disabled-color) !important;
+      }
+    }
+  }
+
+  @mixin light {
+    --_color: var(--raikou-segmentedcontrol-color);
+  }
+
+  @mixin dark {
+    --_color: var(--raikou-segmentedcontrol-color);
+  }
+}
+
+.input {
+  height: 0;
+  width: 0;
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+
+  &[data-focus-ring="auto"] {
+    &:focus:focus-visible {
+      & + .label {
+        --_outline: rem(2px) solid var(--raikou-color-blue-filled);
+      }
+    }
+  }
+
+  &[data-focus-ring="always"] {
+    &:focus {
+      & + .label {
+        --_outline: rem(2px) solid var(--raikou-color-blue-filled);
+      }
+    }
+  }
+}
+
+.control {
+  position: relative;
+  flex: 1;
+  z-index: 2;
+  transition: border-color var(--sc-transition-duration)
+    var(--sc-transition-timing-function);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--_separator-color);
+    width: rem(1px);
+    transition: background-color var(--sc-transition-duration)
+      var(--sc-transition-timing-function);
+
+    @mixin rtl {
+      right: 0;
+      left: auto;
+    }
+  }
+
+  &[data-orientation="vertical"] {
+    &::before {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: auto;
+      height: rem(1px);
+      width: auto;
+    }
+  }
+
+  @mixin light {
+    --_separator-color: var(--raikou-segmentedcontrol-separator-color);
+  }
+
+  @mixin dark {
+    --_separator-color: var(--raikou-segmentedcontrol-separator-color);
+  }
+
+  &:first-of-type {
+    &::before {
+      --_separator-color: transparent;
+    }
+  }
+
+  &[data-active] {
+    [data-raikou-color-scheme] & {
+      &,
+      & + .control {
+        &::before {
+          --_separator-color: transparent;
+        }
+      }
+    }
+  }
+}

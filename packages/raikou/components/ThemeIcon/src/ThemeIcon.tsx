@@ -16,6 +16,7 @@ import {
   RaikouColor,
   RaikouSize,
 } from "@raikou/core";
+import classes from "./ThemeIcon.module.css";
 
 export type ThemeIconStylesNames = "root";
 export type ThemeIconVariant =
@@ -90,9 +91,7 @@ export const ThemeIcon = factory<ThemeIconFactory>((_props, ref) => {
 
   const getStyles = useStyles<ThemeIconFactory>({
     name: "ThemeIcon",
-    classes: {
-      root: "themeIcon-root",
-    },
+    classes,
     props,
     className,
     style,
@@ -106,4 +105,5 @@ export const ThemeIcon = factory<ThemeIconFactory>((_props, ref) => {
   return <Box ref={ref} {...getStyles("root")} {...others} />;
 });
 
+ThemeIcon.classes = classes;
 ThemeIcon.displayName = "@raikou/core/ThemeIcon";

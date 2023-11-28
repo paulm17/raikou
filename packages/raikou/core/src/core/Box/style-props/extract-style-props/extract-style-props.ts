@@ -1,8 +1,8 @@
-import { filterProps } from '../../../utils';
-import type { RaikouStyleProps } from '../style-props.types';
+import { filterProps } from "../../../utils";
+import type { RaikouStyleProps } from "../style-props.types";
 
 export function extractStyleProps<T extends Record<string, any>>(
-  others: RaikouStyleProps & T
+  others: RaikouStyleProps & T,
 ): { styleProps: RaikouStyleProps; rest: T } {
   const {
     m,
@@ -48,6 +48,10 @@ export function extractStyleProps<T extends Record<string, any>>(
     right,
     inset,
     display,
+    hiddenFrom,
+    visibleFrom,
+    lightHidden,
+    darkHidden,
     ...rest
   } = others;
   const styleProps = filterProps({
@@ -94,6 +98,10 @@ export function extractStyleProps<T extends Record<string, any>>(
     right,
     inset,
     display,
+    hiddenFrom,
+    visibleFrom,
+    lightHidden,
+    darkHidden,
   });
 
   return { styleProps, rest: rest as unknown as T };

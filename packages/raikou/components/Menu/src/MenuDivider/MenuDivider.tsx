@@ -9,6 +9,7 @@ import {
   Factory,
 } from "@raikou/core";
 import { useMenuContext } from "../Menu.context";
+import classes from "../Menu.module.css";
 
 export type MenuDividerStylesNames = "divider";
 
@@ -43,4 +44,5 @@ export const MenuDivider = factory<MenuDividerFactory>((props, ref) => {
   );
 });
 
+MenuDivider.classes = classes;
 MenuDivider.displayName = "@raikou/core/MenuDivider";

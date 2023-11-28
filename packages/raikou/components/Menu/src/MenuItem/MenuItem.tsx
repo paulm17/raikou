@@ -14,6 +14,7 @@ import {
 } from "@raikou/core";
 import { UnstyledButton } from "../../../UnstyledButton/src";
 import { useMenuContext } from "../Menu.context";
+import classes from "../Menu.module.css";
 
 export type MenuItemStylesNames = "item" | "itemLabel" | "itemSection";
 
@@ -151,4 +152,5 @@ export const MenuItem = polymorphicFactory<MenuItemFactory>((props, ref) => {
   );
 });
 
+MenuItem.classes = classes;
 MenuItem.displayName = "@raikou/core/MenuItem";

@@ -1,0 +1,41 @@
+.root {
+  @mixin light {
+    --raikou-tooltip-bg: #212529;
+    --raikou-tooltip-color: #fff;
+  }
+  @mixin dark {
+    --raikou-tooltip-bg: #e9ecef;
+    --raikou-tooltip-color: #000;
+  }
+}
+
+.tooltip {
+  position: absolute;
+  padding: calc(var(--raikou-spacing-xs) / 2) var(--raikou-spacing-xs);
+  pointer-events: none;
+  font-size: var(--raikou-font-size-sm);
+  white-space: var(--_tooltip-white-space, nowrap);
+  background-color: var(--_tooltip-bg);
+  color: var(--_tooltip-color);
+  border-radius: var(--tooltip-radius, var(--raikou-radius-default));
+
+  @mixin light {
+    --_tooltip-bg: var(--tooltip-bg, var(--raikou-tooltip-bg));
+    --_tooltip-color: var(--raikou-tooltip-color);
+  }
+
+  @mixin dark {
+    --_tooltip-bg: var(--tooltip-bg, var(--raikou-tooltip-bg));
+    --_tooltip-color: var(--raikou-tooltip-color);
+  }
+
+  &[data-multiline] {
+    --_tooltip-white-space: normal;
+  }
+}
+
+.arrow {
+  background-color: inherit;
+  border: 0;
+  z-index: 1;
+}

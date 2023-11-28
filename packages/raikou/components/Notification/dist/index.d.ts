@@ -9,7 +9,7 @@ type NotificationCssVariables = {
 interface NotificationProps extends BoxProps, StylesApiProps<NotificationFactory>, ElementProps<"div", "title"> {
     variant?: string;
     /** Called when close button is clicked */
-    onClose?(): void;
+    onClose?: () => void;
     /** Controls notification line or icon color, key of `theme.colors` or any valid CSS color, `theme.primaryColor` by default */
     color?: RaikouColor;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */

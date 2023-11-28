@@ -5,7 +5,7 @@ interface CollapseProps extends BoxProps, Omit<React.ComponentPropsWithoutRef<"d
     /** Opened state */
     in: boolean;
     /** Called each time transition ends */
-    onTransitionEnd?(): void;
+    onTransitionEnd?: () => void;
     /** Transition duration in ms, `200` by default */
     transitionDuration?: number;
     /** Transition timing function, default value is `ease` */

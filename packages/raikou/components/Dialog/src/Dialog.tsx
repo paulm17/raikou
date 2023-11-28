@@ -15,6 +15,7 @@ import { Affix, AffixBaseProps } from "../../Affix/src";
 import { Paper, PaperBaseProps } from "../../Paper/src";
 import { Transition, TransitionOverride } from "../../Transition/src";
 import { CloseButton } from "../../CloseButton/src";
+import classes from "./Dialog.module.css";
 
 export type DialogStylesNames = "root" | "closeButton";
 export type DialogCssVariables = {
@@ -98,10 +99,7 @@ export const Dialog = factory<DialogFactory>((_props, ref) => {
 
   const getStyles = useStyles<DialogFactory>({
     name: "Dialog",
-    classes: {
-      root: "dialog-root",
-      closeButton: "dialog-closeButton",
-    },
+    classes,
     props,
     className,
     style,
@@ -143,3 +141,4 @@ export const Dialog = factory<DialogFactory>((_props, ref) => {
 });
 
 Dialog.displayName = "@raikou/core/Dialog";
+Dialog.classes = classes;

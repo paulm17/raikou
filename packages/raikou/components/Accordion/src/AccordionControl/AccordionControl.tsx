@@ -12,6 +12,7 @@ import {
 import { UnstyledButton } from "../../../UnstyledButton/src";
 import { useAccordionContext } from "../Accordion.context";
 import { useAccordionItemContext } from "../AccordionItem.context";
+import classes from "../Accordion.module.css";
 
 export type AccordionControlStylesNames =
   | "control"
@@ -142,3 +143,4 @@ export const AccordionControl = factory<AccordionControlFactory>(
 );
 
 AccordionControl.displayName = "@raikou/core/AccordionControl";
+AccordionControl.classes = classes;

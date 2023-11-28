@@ -1,9 +1,11 @@
-import { React } from "react";
+import React from "react";
 import { withThemeByDataAttribute } from "@storybook/addon-styling";
 import type { Preview } from "@storybook/react";
 import { RaikouProvider } from "@raikou/system";
 import { createTheme } from "@raikou/global-store";
-import "../tailwind.css";
+
+// import "@unocss/reset/tailwind.css";
+import "uno.css";
 
 // Add back the 10 colors
 const theme = createTheme({
@@ -199,6 +201,7 @@ const preview: Preview = {
         <Story />
       </RaikouProvider>
     ),
+    // @ts-ignore
     withThemeByDataAttribute({
       themes: {
         light: "light",
@@ -209,6 +212,7 @@ const preview: Preview = {
     }),
   ],
   parameters: {
+    layout: "fullscreen",
     actions: { argTypesRegex: "^on[A-Z].*" },
     options: {
       showPanel: false,

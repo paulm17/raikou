@@ -9,6 +9,7 @@ import {
   useStyles,
   Factory,
 } from "@raikou/core";
+import classes from "../Input.module.css";
 
 export type InputPlaceholderStylesNames = "placeholder";
 export type InputPlaceholderVariant = string;
@@ -47,9 +48,10 @@ export const InputPlaceholder = factory<InputPlaceholderFactory>(
     const getStyles = useStyles<InputPlaceholderFactory>({
       name: ["InputPlaceholder", __staticSelector],
       props,
-      classes: {
-        placeholder: "input-placeholder",
-      },
+      classes,
+      // classes: {
+      //   placeholder: "input-placeholder",
+      // },
       className,
       style,
       classNames,

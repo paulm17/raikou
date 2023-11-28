@@ -17,6 +17,18 @@ export default function Page() {
       <br />
       <br />
       <a href="/visx">Charts</a>
+      <br />
+      <br />
+      <a href="/unocss">unocss</a>
+      <br />
+      <br />
+      <a href="/datatable">datatable</a>
+      <br />
+      <br />
+      <a href="/anchor">anchor</a>
+      <br />
+      <br />
+      <a href="/chip">chip</a>
     </p>
   );
 }

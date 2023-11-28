@@ -8,6 +8,7 @@ import {
   resetNavigationProgressAction,
   useNprogress,
 } from "./nprogress.store";
+import classes from "./NavigationProgress.module.css";
 
 export interface NavigationProgressProps extends ElementProps<"div"> {
   /** Component store, controls state */
@@ -66,10 +67,7 @@ export function NavigationProgress({
         value={state.progress}
         size={size}
         color={color}
-        classNames={{
-          root: "nProgress-root",
-          section: "nProgress-section",
-        }}
+        classNames={classes}
         data-mounted={state.mounted || undefined}
         __vars={{ "--nprogress-z-index": zIndex?.toString() }}
         {...others}

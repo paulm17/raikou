@@ -11,6 +11,10 @@ import {
   Factory,
 } from "@raikou/core";
 import hljs from "highlight.js";
+import _classes from "./CodeHighlight.module.css";
+import themeClasses from "./CodeHighlight.theme.module.css";
+
+const classes = { ..._classes, code: cx(_classes.code, themeClasses.theme) };
 
 export type InlineCodeHighlightStylesNames = "code";
 
@@ -53,9 +57,7 @@ export const InlineCodeHighlight = factory<InlineCodeHighlightFactory>(
     const getStyles = useStyles<InlineCodeHighlightFactory>({
       name: "InlineCodeHighlight",
       props,
-      classes: {
-        code: cx("codeHighlight-code", "codeHighlight-theme"),
-      },
+      classes,
       className,
       style,
       classNames,

@@ -30,7 +30,7 @@ export default { title: "Container" };
 export function Usage() {
   return (
     // <RaikouThemeProvider theme={theme}>
-    <Container size="xxs" h={50} bg="blue">
+    <Container size={rem(200)} h={50} bg="blue-400">
       Container
     </Container>
     // </RaikouThemeProvider>
@@ -39,8 +39,8 @@ export function Usage() {
 
 export function NonFluidWithinFluid() {
   return (
-    <Container fluid h={50} bg="blue">
-      <Container h={50} bg="red">
+    <Container fluid h={50} bg="blue-400">
+      <Container h={50} bg="red-400">
         Child container
       </Container>
     </Container>

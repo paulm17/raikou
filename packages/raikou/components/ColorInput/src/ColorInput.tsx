@@ -31,6 +31,7 @@ import { Popover, PopoverProps } from "../../Popover/src";
 import { EyeDropperIcon } from "./EyeDropperIcon";
 import { ActionIcon } from "../../ActionIcon/src";
 import { ColorSwatch } from "../../ColorSwatch/src";
+import classes from "./ColorInput.module.css";
 
 export type ColorInputStylesNames =
   | "dropdown"
@@ -141,12 +142,7 @@ export const ColorInput = factory<ColorInputFactory>((_props, ref) => {
   const getStyles = useStyles<ColorInputFactory>({
     name: "ColorInput",
     props,
-    classes: {
-      dropdown: "popover-dropdown",
-      eyeDropperButton: "colorInput-eyeDropperButton",
-      eyeDropperIcon: "colorInput-eyeDropperIcon",
-      colorPreview: "colorInput-colorPreview",
-    },
+    classes,
     classNames,
     styles,
     unstyled,
@@ -325,3 +321,4 @@ export const ColorInput = factory<ColorInputFactory>((_props, ref) => {
 });
 
 ColorInput.displayName = "@raikou/core/ColorInput";
+ColorInput.classes = classes;

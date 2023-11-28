@@ -142,7 +142,7 @@ var notifications = {
 };
 
 // src/Notifications.tsx
-import React13, { useRef as useRef3 } from "react";
+import React13, { useRef as useRef3, useEffect as useEffect2 } from "react";
 import {
   Transition as _Transition,
   TransitionGroup
@@ -278,13 +278,13 @@ var Bars = forwardRef2(
       Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("bars-loader", className)
+        className: clsx_default("loader-barsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React3.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ React3.createElement("span", { className: "bar" }),
-      /* @__PURE__ */ React3.createElement("span", { className: "bar" })
+      /* @__PURE__ */ React3.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ React3.createElement("span", { className: "loader-bar" }),
+      /* @__PURE__ */ React3.createElement("span", { className: "loader-bar" })
     );
   }
 );
@@ -299,7 +299,7 @@ var Oval = forwardRef3(
       Box2,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("oval-loader", className)
+        className: clsx_default("loader-ovalLoader", className)
       }, others), {
         ref
       })
@@ -317,7 +317,7 @@ var Progress = forwardRef4(
       Box3,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("progress-loader", className)
+        className: clsx_default("loader-progressLoader", className)
       }, others), {
         ref
       }),
@@ -346,13 +346,13 @@ var Dots = forwardRef5(
       Box4,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("dots-loader", className)
+        className: clsx_default("loader-dotsLoader", className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "dot" })
+      /* @__PURE__ */ React6.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ React6.createElement("span", { className: "loader-dot" }),
+      /* @__PURE__ */ React6.createElement("span", { className: "loader-dot" })
     );
   }
 );
@@ -504,7 +504,7 @@ var UnstyledButton = polymorphicFactory(
       name: __staticSelector,
       props,
       classes: {
-        root: "unstyled-button-root"
+        root: "unstyledButton-root"
       },
       className,
       style,
@@ -885,39 +885,47 @@ var Notifications = factory3((_props, ref) => {
     vars,
     varsResolver: varsResolver4
   });
+  useEffect2(() => {
+    store == null ? void 0 : store.updateState((current) => __spreadProps(__spreadValues({}, current), { limit: limit || 5 }));
+  }, [limit]);
   useDidUpdate(() => {
     if (data.notifications.length > previousLength.current) {
       setTimeout(() => forceUpdate(), 0);
     }
     previousLength.current = data.notifications.length;
   }, [data.notifications]);
-  const items = data.notifications.map((notification) => /* @__PURE__ */ React13.createElement(
-    Transition,
-    {
-      key: notification.id,
-      timeout: duration,
-      onEnter: () => refs.current[notification.id].offsetHeight,
-      nodeRef: { current: refs.current[notification.id] }
-    },
-    (state) => /* @__PURE__ */ React13.createElement(
-      NotificationContainer,
-      __spreadProps(__spreadValues({}, getStyles("notification", {
-        style: getNotificationStateStyles({
-          state,
-          position,
-          transitionDuration: duration,
-          maxHeight: notificationMaxHeight
-        })
-      })), {
-        ref: (node) => {
-          refs.current[notification.id] = node;
+  const items = data.notifications.map(
+    (_b) => {
+      var _c = _b, { style: notificationStyle } = _c, notification = __objRest(_c, ["style"]);
+      return /* @__PURE__ */ React13.createElement(
+        Transition,
+        {
+          key: notification.id,
+          timeout: duration,
+          onEnter: () => refs.current[notification.id].offsetHeight,
+          nodeRef: { current: refs.current[notification.id] }
         },
-        data: notification,
-        onHide: (id) => hideNotification(id, store),
-        autoClose
-      })
-    )
-  ));
+        (state) => /* @__PURE__ */ React13.createElement(
+          NotificationContainer,
+          __spreadValues({
+            ref: (node) => {
+              refs.current[notification.id] = node;
+            },
+            data: notification,
+            onHide: (id) => hideNotification(id, store),
+            autoClose
+          }, getStyles("notification", {
+            style: __spreadValues(__spreadValues({}, getNotificationStateStyles({
+              state,
+              position,
+              transitionDuration: duration,
+              maxHeight: notificationMaxHeight
+            })), notificationStyle)
+          }))
+        )
+      );
+    }
+  );
   return /* @__PURE__ */ React13.createElement(OptionalPortal, __spreadValues({ withinPortal }, portalProps), /* @__PURE__ */ React13.createElement(Box8, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref }), others), /* @__PURE__ */ React13.createElement(TransitionGroup, null, items)));
 });
 Notifications.displayName = "@raikou/notifications/Notifications";

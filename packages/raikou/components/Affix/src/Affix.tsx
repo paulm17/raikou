@@ -13,6 +13,7 @@ import {
   rem,
 } from "@raikou/core";
 import { OptionalPortal, PortalProps } from "../../Portal/src";
+import classes from "./Affix.module.css";
 
 export type AffixStylesNames = "root";
 export type AffixCssVariables = {
@@ -108,9 +109,7 @@ export const Affix = factory<AffixFactory>((_props, ref) => {
 
   const getStyles = useStyles<AffixFactory>({
     name: "Affix",
-    classes: {
-      root: "affix-root",
-    },
+    classes,
     props,
     className,
     style,
@@ -129,3 +128,4 @@ export const Affix = factory<AffixFactory>((_props, ref) => {
 });
 
 Affix.displayName = "@raikou/core/Affix";
+Affix.classes = classes;

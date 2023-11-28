@@ -16,7 +16,7 @@ interface ImageProps extends BoxProps, StylesApiProps<ImageFactory> {
     /** Image url */
     src?: any;
     /** Called when image fails to load */
-    onError?(event: React.SyntheticEvent<HTMLImageElement, Event>): void;
+    onError?: (event: React.SyntheticEvent<HTMLImageElement, Event>) => void;
 }
 type ImageFactory = PolymorphicFactory<{
     props: ImageProps;

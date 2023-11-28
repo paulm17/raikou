@@ -18,6 +18,7 @@ import {
 } from "@raikou/core";
 import { RatingProvider } from "./Rating.context";
 import { RatingItem } from "./RatingItem/RatingItem";
+import classes from "./Rating.module.css";
 
 function roundValueTo(value: number, to: number) {
   const rounded = Math.round(value / to) * to;
@@ -143,14 +144,7 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
 
   const getStyles = useStyles<RatingFactory>({
     name: "Rating",
-    classes: {
-      root: "rating-root",
-      starSymbol: "rating-starSymbol",
-      input: "rating-input",
-      label: "rating-label",
-      symbolBody: "rating-symbolBody",
-      symbolGroup: "rating-symbolGroup",
-    },
+    classes,
     props,
     className,
     style,
@@ -346,4 +340,5 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
   );
 });
 
+Rating.classes = classes;
 Rating.displayName = "@raikou/core/Rating";

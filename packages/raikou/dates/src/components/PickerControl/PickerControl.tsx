@@ -13,6 +13,7 @@ import {
   RaikouSize,
 } from "@raikou/core";
 import { UnstyledButton } from "../../../../components/UnstyledButton/src";
+import classes from "./PickerControl.module.css";
 
 export type PickerControlStylesNames = "pickerControl";
 export type PickerControlCssVariables = {
@@ -85,9 +86,7 @@ export const PickerControl = factory<PickerControlFactory>((_props, ref) => {
 
   const getStyles = useStyles<PickerControlFactory>({
     name: __staticSelector || "PickerControl",
-    classes: {
-      pickerControl: "dates-pickerControl",
-    },
+    classes,
     props,
     className,
     style,
@@ -116,4 +115,5 @@ export const PickerControl = factory<PickerControlFactory>((_props, ref) => {
   );
 });
 
+PickerControl.classes = classes;
 PickerControl.displayName = "@raikou/dates/PickerControl";

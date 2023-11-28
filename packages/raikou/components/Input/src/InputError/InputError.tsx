@@ -14,6 +14,7 @@ import {
   Factory,
 } from "@raikou/core";
 import { useInputWrapperContext } from "../InputWrapper.context";
+import classes from "../Input.module.css";
 
 export type InputErrorStylesNames = "error";
 export type InputErrorCssVariables = {
@@ -66,9 +67,10 @@ export const InputError = factory<InputErrorFactory>((_props, ref) => {
   const _getStyles = useStyles<InputErrorFactory>({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      error: "inputWrapper-error",
-    },
+    classes,
+    // classes: {
+    //   error: "inputWrapper-error",
+    // },
     className,
     style,
     classNames,

@@ -18,6 +18,46 @@ declare const meta: {
     };
 };
 
+interface DiscordIconProps extends React.ComponentPropsWithoutRef<"svg"> {
+    size?: number | string;
+}
+declare function DiscordIcon({ size, style, ...others }: DiscordIconProps): React.JSX.Element;
+
+interface TwitterIconProps extends React.ComponentPropsWithoutRef<"svg"> {
+    size?: number | string;
+}
+declare function TwitterIcon({ size, style, ...others }: TwitterIconProps): React.JSX.Element;
+
+interface GithubIconProps extends React.ComponentPropsWithoutRef<"svg"> {
+    size?: number | string;
+}
+declare function GithubIcon({ size, style, ...others }: GithubIconProps): React.JSX.Element;
+
+interface NpmIconProps extends React.ComponentPropsWithoutRef<"svg"> {
+    size?: number | string;
+}
+declare function NpmIcon({ size, style, ...others }: NpmIconProps): React.JSX.Element;
+
+interface YarnIconProps extends React.ComponentPropsWithoutRef<"svg"> {
+    size?: number | string;
+}
+declare function YarnIcon({ size, style, ...others }: YarnIconProps): React.JSX.Element;
+
+interface TypeScriptIconProps extends React.ComponentPropsWithoutRef<"svg"> {
+    size?: number | string;
+}
+declare function TypeScriptIcon({ size, style, ...others }: TypeScriptIconProps): React.JSX.Element;
+
+interface TypeScriptCircleIconProps extends React.ComponentPropsWithoutRef<"svg"> {
+    size?: number | string;
+}
+declare function TypeScriptCircleIcon({ size, style, ...others }: TypeScriptCircleIconProps): React.JSX.Element;
+
+interface CssIconProps extends React.ComponentPropsWithoutRef<"svg"> {
+    size?: number | string;
+}
+declare function CssIcon({ size, style, ...others }: CssIconProps): React.JSX.Element;
+
 interface DemoAreaProps {
     children?: React.ReactNode;
     withPadding?: boolean;
@@ -110,4 +150,4 @@ interface DemoProps {
 }
 declare function Demo({ data }: DemoProps): React.JSX.Element | null;
 
-export { ConfiguratorControlOptions, Demo, RaikouDemo, getFileIcon as getCodeFileIcon, meta };
+export { ConfiguratorControlOptions, CssIcon, Demo, DiscordIcon, GithubIcon, NpmIcon, RaikouDemo, TwitterIcon, TypeScriptCircleIcon, TypeScriptIcon, YarnIcon, getFileIcon as getCodeFileIcon, meta };

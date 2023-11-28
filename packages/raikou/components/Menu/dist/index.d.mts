@@ -129,7 +129,7 @@ interface TransitionProps {
     /** Determines whether component should be mounted to the DOM */
     mounted: boolean;
     /** Render function with transition styles argument */
-    children(styles: React$1.CSSProperties): JSX.Element;
+    children: (styles: React$1.CSSProperties) => JSX.Element;
     /** Called when exit transition ends */
     onExited?: () => void;
     /** Called when exit transition starts */
@@ -158,11 +158,12 @@ interface PortalProps extends React$1.ComponentPropsWithoutRef<"div"> {
     target?: HTMLElement | string;
 }
 
-type PopoverWidth = 'target' | React.CSSProperties['width'];
+type PopoverWidth = "target" | React.CSSProperties["width"];
 interface PopoverMiddlewares {
     shift: boolean;
     flip: boolean;
     inline?: boolean;
+    size?: boolean;
 }
 
 type PopoverStylesNames = "dropdown" | "arrow";
@@ -172,13 +173,13 @@ interface __PopoverProps {
     /** Offset of the dropdown element, `8` by default */
     offset?: number | FloatingAxesOffsets;
     /** Called when dropdown position changes */
-    onPositionChange?(position: FloatingPosition): void;
+    onPositionChange?: (position: FloatingPosition) => void;
     /** `useEffect` dependencies to force update dropdown position, `[]` by default */
     positionDependencies?: any[];
     /** Called when dropdown closes */
-    onClose?(): void;
+    onClose?: () => void;
     /** Called when dropdown opens */
-    onOpen?(): void;
+    onOpen?: () => void;
     /** If set dropdown will not be unmounted from the DOM when it is hidden, `display: none` styles will be added instead, `false` by default */
     keepMounted?: boolean;
     /** Props passed down to the `Transition` component that used to animate dropdown presence, use to configure duration and animation type, `{ duration: 150, transition: 'fade' }` by default */
@@ -228,11 +229,11 @@ interface MenuProps extends __PopoverProps, StylesApiProps<MenuFactory> {
     /** Uncontrolled menu initial opened state */
     defaultOpened?: boolean;
     /** Called when menu opened state changes */
-    onChange?(opened: boolean): void;
+    onChange?: (opened: boolean) => void;
     /** Called when Menu is opened */
-    onOpen?(): void;
+    onOpen?: () => void;
     /** Called when Menu is closed */
-    onClose?(): void;
+    onClose?: () => void;
     /** Determines whether Menu should be closed when item is clicked */
     closeOnItemClick?: boolean;
     /** Determines whether arrow key presses should loop though items (first to last and last to first) */

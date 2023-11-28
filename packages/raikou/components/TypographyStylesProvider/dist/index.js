@@ -70,7 +70,7 @@ var TypographyStylesProvider = (0, import_core.factory)((_props, ref) => {
   const getStyles = (0, import_core.useStyles)({
     name: "TypographyStylesProvider",
     classes: {
-      root: "tsp-root"
+      root: "typographyStylesProvider-root"
     },
     props,
     className,
