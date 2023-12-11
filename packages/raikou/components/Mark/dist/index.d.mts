@@ -22,4 +22,4 @@ declare const Mark: _raikou_core.RaikouComponent<{
     vars: MarkCssVariables;
 }>;
 
-export { Mark, MarkCssVariables, MarkFactory, MarkProps, MarkStylesNames };
+export { Mark, type MarkCssVariables, type MarkFactory, type MarkProps, type MarkStylesNames };

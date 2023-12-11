@@ -1,6 +1,9 @@
 .track {
   &::before {
-    background-color: light-dark(var(--raikou-color-blue-1), var(--raikou-color-dark-3));
+    background-color: light-dark(
+      var(--raikou-color-blue-1),
+      var(--raikou-color-dark-3)
+    );
   }
 }
 
@@ -9,7 +12,10 @@
   height: rem(6px);
   border-radius: rem(6px);
   transform: translateX(rem(-3px)) translateY(rem(-2px));
-  border-color: light-dark(var(--raikou-color-blue-1), var(--raikou-color-dark-3));
+  border-color: light-dark(
+    var(--raikou-color-blue-1),
+    var(--raikou-color-dark-3)
+  );
 
   &[data-filled] {
     border-color: var(--raikou-color-blue-6);

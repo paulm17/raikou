@@ -46,4 +46,4 @@ declare const Dial: (<C = "div">(props: C extends React.ElementType<any> ? DialP
     classes: Record<string, string>;
 } & Record<string, never>;
 
-export { Dial, DialCssVariables, DialFactory, DialProps, DialStylesNames };
+export { Dial, type DialCssVariables, type DialFactory, type DialProps, type DialStylesNames };

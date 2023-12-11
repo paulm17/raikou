@@ -27,7 +27,7 @@
   }
 }
 
-.inner {
+.inner.inner {
   position: fixed;
   width: 100%;
   top: 0;
@@ -36,7 +36,7 @@
   pointer-events: none;
 }
 
-.content {
+.content.content {
   pointer-events: all;
   box-shadow: var(--mb-shadow, var(--raikou-shadow-xl));
 }

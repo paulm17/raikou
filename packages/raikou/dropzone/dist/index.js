@@ -412,6 +412,11 @@ var clsx_default = clsx;
 
 // ../components/Loader/src/loaders/Bars.tsx
 var import_core4 = require("@raikou/core");
+
+// css-module:../Loader.module.css#css-module
+var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
+
+// ../components/Loader/src/loaders/Bars.tsx
 var Bars = (0, import_react5.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
@@ -419,13 +424,13 @@ var Bars = (0, import_react5.forwardRef)(
       import_core4.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-barsLoader", className)
+        className: clsx_default(Loader_module_default.barsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "loader-bar" })
+      /* @__PURE__ */ import_react5.default.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ import_react5.default.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ import_react5.default.createElement("span", { className: Loader_module_default.bar })
     );
   }
 );
@@ -440,7 +445,7 @@ var Oval = (0, import_react6.forwardRef)(
       import_core5.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-ovalLoader", className)
+        className: clsx_default(Loader_module_default.ovalLoader, className)
       }, others), {
         ref
       })
@@ -458,7 +463,7 @@ var Progress = (0, import_react7.forwardRef)(
       import_core6.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-progressLoader", className)
+        className: clsx_default(Loader_module_default.progressLoader, className)
       }, others), {
         ref
       }),
@@ -487,16 +492,19 @@ var Dots = (0, import_react8.forwardRef)(
       import_core7.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-dotsLoader", className)
+        className: clsx_default(Loader_module_default.dotsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react8.default.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ import_react8.default.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ import_react8.default.createElement("span", { className: "loader-dot" })
+      /* @__PURE__ */ import_react8.default.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ import_react8.default.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ import_react8.default.createElement("span", { className: Loader_module_default.dot })
     );
   }
 );
+
+// css-module:./Loader.module.css#css-module
+var Loader_module_default2 = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
 
 // ../components/Loader/src/Loader.tsx
 var defaultLoaders = {
@@ -547,9 +555,7 @@ var Loader = (0, import_core8.factory)((_props, ref) => {
   const getStyles = (0, import_core8.useStyles)({
     name: "Loader",
     props,
-    classes: {
-      root: "loader-root"
-    },
+    classes: Loader_module_default2,
     className,
     style,
     classNames,
@@ -569,10 +575,16 @@ var Loader = (0, import_core8.factory)((_props, ref) => {
   );
 });
 Loader.displayName = "@raikou/core/Loader";
+Loader.classes = Loader_module_default2;
 
 // ../components/Overlay/src/Overlay.tsx
 var import_react10 = __toESM(require("react"));
 var import_core9 = require("@raikou/core");
+
+// css-module:./Overlay.module.css#css-module
+var Overlay_module_default = { "root": "m-9814e45f" };
+
+// ../components/Overlay/src/Overlay.tsx
 var defaultProps3 = {
   zIndex: (0, import_core9.getDefaultZIndex)("modal")
 };
@@ -624,9 +636,7 @@ var Overlay = (0, import_core9.polymorphicFactory)((_props, ref) => {
   const getStyles = (0, import_core9.useStyles)({
     name: "Overlay",
     props,
-    classes: {
-      root: "overlay-root"
-    },
+    classes: Overlay_module_default,
     className,
     style,
     classNames,
@@ -638,6 +648,10 @@ var Overlay = (0, import_core9.polymorphicFactory)((_props, ref) => {
   return /* @__PURE__ */ import_react10.default.createElement(import_core9.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { mod: { center, fixed } }), others), children);
 });
 Overlay.displayName = "@raikou/core/Overlay";
+Overlay.classes = Overlay_module_default;
+
+// css-module:./LoadingOverlay.module.css#css-module
+var LoadingOverlay_module_default = { "root": "m-6e45937b", "loader": "m-e8eb006c", "overlay": "m-df587f17" };
 
 // ../components/LoadingOverlay/src/LoadingOverlay.tsx
 var defaultProps4 = {
@@ -682,11 +696,7 @@ var LoadingOverlay = (0, import_core10.factory)((_props, ref) => {
   const theme = (0, import_core10.useRaikouTheme)();
   const getStyles = (0, import_core10.useStyles)({
     name: "LoadingOverlay",
-    classes: {
-      root: "loadingOverlay-root",
-      loader: "loadingOverlay-loader",
-      overlay: "loadingOverlay-overlay"
-    },
+    classes: LoadingOverlay_module_default,
     props,
     className,
     style,
@@ -721,6 +731,7 @@ var LoadingOverlay = (0, import_core10.factory)((_props, ref) => {
     )
   ));
 });
+LoadingOverlay.classes = LoadingOverlay_module_default;
 LoadingOverlay.displayName = "@raikou/core/LoadingOverlay";
 
 // src/Dropzone.tsx
@@ -779,6 +790,9 @@ function createDropzoneStatus(status) {
 var DropzoneAccept = createDropzoneStatus("accept");
 var DropzoneReject = createDropzoneStatus("reject");
 var DropzoneIdle = createDropzoneStatus("idle");
+
+// css-module:./Dropzone.module.css#css-module
+var Dropzone_module_default = { "root": "m-d46a4834", "inner": "m-b85f7144", "fullScreen": "m-96f6e9ad", "dropzone": "m-7946116d" };
 
 // src/Dropzone.tsx
 var defaultProps5 = {
@@ -898,11 +912,7 @@ var Dropzone = (0, import_core12.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core12.useStyles)({
     name: "Dropzone",
-    classes: {
-      root: "dropZone-root",
-      inner: "dropZone-inner",
-      fullScreen: "dropZone-fullScreen"
-    },
+    classes: Dropzone_module_default,
     props,
     className,
     style,
@@ -973,6 +983,7 @@ var Dropzone = (0, import_core12.factory)((_props, ref) => {
     )
   );
 });
+Dropzone.classes = Dropzone_module_default;
 Dropzone.displayName = "@raikou/dropzone/Dropzone";
 Dropzone.Accept = DropzoneAccept;
 Dropzone.Idle = DropzoneIdle;
@@ -1153,3 +1164,4 @@ var Dropzone2 = Dropzone;
   MS_WORD_MIME_TYPE,
   PDF_MIME_TYPE
 });
+//# sourceMappingURL=index.js.map

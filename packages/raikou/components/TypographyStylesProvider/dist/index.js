@@ -63,15 +63,18 @@ module.exports = __toCommonJS(src_exports);
 // src/TypographyStylesProvider.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./TypographyStylesProvider.module.css#css-module
+var TypographyStylesProvider_module_default = { "root": "m-d6493fad" };
+
+// src/TypographyStylesProvider.tsx
 var defaultProps = {};
 var TypographyStylesProvider = (0, import_core.factory)((_props, ref) => {
   const props = (0, import_core.useProps)("TypographyStylesProvider", defaultProps, _props);
   const _a = props, { classNames, className, style, styles, unstyled } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled"]);
   const getStyles = (0, import_core.useStyles)({
     name: "TypographyStylesProvider",
-    classes: {
-      root: "typographyStylesProvider-root"
-    },
+    classes: TypographyStylesProvider_module_default,
     props,
     className,
     style,
@@ -86,3 +89,4 @@ TypographyStylesProvider.displayName = "@raikou/core/TypographyStylesProvider";
 0 && (module.exports = {
   TypographyStylesProvider
 });
+//# sourceMappingURL=index.js.map

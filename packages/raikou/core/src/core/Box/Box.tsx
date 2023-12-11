@@ -107,7 +107,6 @@ const _Box = forwardRef<
       "data-variant": variant,
       "data-size": isNumberLike(size) ? undefined : size || undefined,
       ...getBoxMod(mod),
-      ...parsedStyleProps.inlineStyles,
       ...rest,
     };
 

@@ -92,6 +92,9 @@ function SimpleGridVariables({
   return /* @__PURE__ */ React.createElement(InlineStyles, { styles: baseStyles, media, selector });
 }
 
+// css-module:./SimpleGrid.module.css#css-module
+var SimpleGrid_module_default = { "root": "m-2415a157" };
+
 // src/SimpleGrid.tsx
 var defaultProps = {
   cols: 1,
@@ -122,9 +125,7 @@ var SimpleGrid = factory((_props, ref) => {
   ]);
   const getStyles = useStyles({
     name: "SimpleGrid",
-    classes: {
-      root: "simpleGrid-root"
-    },
+    classes: SimpleGrid_module_default,
     props,
     className,
     style,
@@ -141,7 +142,9 @@ var SimpleGrid = factory((_props, ref) => {
     }, getStyles("root", { className: responsiveClassName })), others)
   ));
 });
+SimpleGrid.classes = SimpleGrid_module_default;
 SimpleGrid.displayName = "@raikou/core/SimpleGrid";
 export {
   SimpleGrid
 };
+//# sourceMappingURL=index.mjs.map

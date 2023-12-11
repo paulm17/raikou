@@ -63,6 +63,11 @@ module.exports = __toCommonJS(src_exports);
 // src/ColorSwatch.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./ColorSwatch.module.css#css-module
+var ColorSwatch_module_default = { "root": "m-de3d2490", "colorOverlay": "m-862f3d1b", "shadowOverlay": "m-98ae7f22", "alphaOverlay": "m-95709ac0", "childrenOverlay": "m-93e74e3" };
+
+// src/ColorSwatch.tsx
 var defaultProps = {
   withShadow: true
 };
@@ -107,13 +112,7 @@ var ColorSwatch = (0, import_core.polymorphicFactory)(
     const getStyles = (0, import_core.useStyles)({
       name: "ColorSwatch",
       props,
-      classes: {
-        root: "colorswatch-root",
-        alphaOverlay: "colorswatch-alphaOverlay",
-        shadowOverlay: "colorswatch-shadowOverlay",
-        colorOverlay: "colorswatch-colorOverlay",
-        childrenOverlay: "colorswatch-childrenOverlay"
-      },
+      classes: ColorSwatch_module_default,
       className,
       style,
       classNames,
@@ -140,7 +139,9 @@ var ColorSwatch = (0, import_core.polymorphicFactory)(
   }
 );
 ColorSwatch.displayName = "@raikou/core/ColorSwatch";
+ColorSwatch.classes = ColorSwatch_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   ColorSwatch
 });
+//# sourceMappingURL=index.js.map

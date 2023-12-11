@@ -15,16 +15,17 @@
       "import": "./dist/plugin.mjs",
       "require": "./dist/plugin.js"
     },
-    "./styles.css": "./dist/global.css"
+    "./styles.css": "./dist/styles.css"
   },
   "files": [
     "dist/**"
   ],
   "sideEffects": false,
   "scripts": {
-    "build": "tsup src/index.ts src/plugin.ts --dts --format esm,cjs --clean && npm run build:css && npm run build:component_names",
+    "build": "tsup src/index.ts src/plugin.ts --dts --format esm,cjs --clean && npm run build:css && npm run build:component_names && npm run build:css_modules",
     "build:component_names": "src/component_names/component-names -config /Users/paul/development/src/github/raikou/packages/raikou/system/src/component_names/config.toml -o /Users/paul/development/src/github/raikou/packages/raikou/system/dist/component_names.txt",
-    "build:css": "postcss src/core/RaikouProvider/global.css --dir dist",
+    "build:css_modules": "src/css_modules/css-modules -config /Users/paul/development/src/github/raikou/packages/raikou/system/src/css_modules/config.toml -d /Users/paul/development/src/github/raikou/packages/raikou -o /Users/paul/development/src/github/raikou/packages/raikou/system/dist/css_modules.txt",
+    "build:css": "postcss src/styles.css --dir dist",
     "lint": "eslint \"**/*.ts*\""
   },
   "peerDependencies": {
@@ -37,18 +38,12 @@
     "fast-glob": "^3.3.2",
     "next-themes": "^0.2.1",
     "type-fest": "^4.0.0",
-    "tslib": "^2.6.0",
-    "valtio": "^1.11.1",
-    "zustand": "^4.4.0"
+    "tslib": "^2.6.0"
   },
   "devDependencies": {
     "@types/node": "^20.3.3",
     "@types/react": "^18.2.23",
     "@types/react-dom": "^18.2.8",
-    "postcss": "^8.4.31",
-    "postcss-import": "^15.1.0",
-    "postcss-preset-raikou": "workspace:*",
-    "tsup": "^7.1.0",
     "typescript": "^5.1.6",
     "unocss": "^0.56.5"
   },

@@ -1,0 +1,66 @@
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Avatar/src/Avatar.module.css/#css-module-data */
+.m-f85678b6 {
+  --avatar-size-xs: calc(1rem * var(--raikou-scale));
+  --avatar-size-sm: calc(1.625rem * var(--raikou-scale));
+  --avatar-size-md: calc(2.375rem * var(--raikou-scale));
+  --avatar-size-lg: calc(3.5rem * var(--raikou-scale));
+  --avatar-size-xl: calc(5.25rem * var(--raikou-scale));
+  --_avatar-size: var(--avatar-size, var(--avatar-size-md));
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  display: block;
+  user-select: none;
+  overflow: hidden;
+  border-radius: var(--avatar-radius, calc(62.5rem * var(--raikou-scale)));
+  text-decoration: none;
+  border: var(--_avatar-border, none);
+  background-color: var(--_avatar-bg);
+  padding: 0;
+  width: var(--_avatar-size);
+  height: var(--_avatar-size);
+  min-width: var(--_avatar-size);
+  margin-left: var(--_avatar-ml, unset);
+  margin-right: var(--_avatar-mr, unset);
+}
+.m-f85678b6[data-within-group] {
+  --_avatar-ml: calc(var(--ag-spacing, var(--raikou-spacing-sm)) * -1);
+  --_avatar-border: calc(0.125rem * var(--raikou-scale)) solid var(--raikou-color-body);
+  --_avatar-bg: var(--raikou-color-body);
+}
+[dir=rtl] .m-f85678b6[data-within-group] {
+  --_avatar-mr: calc(var(--ag-spacing, var(--raikou-spacing-sm)) * -1);
+  --_avatar-ml: unset;
+}
+.m-11f8ac07 {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.m-104cd71f {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  border-radius: var(--avatar-radius);
+  font-size: calc(var(--_avatar-size) / 2.5);
+  background: var(--avatar-bg, var(--raikou-color-gray-light));
+  border: var(--avatar-bd, calc(0.0625rem * var(--raikou-scale)) solid transparent);
+  color: var(--avatar-color, var(--raikou-color-gray-light-color));
+}
+.m-104cd71f > [data-avatar-placeholder-icon] {
+  width: 70%;
+  height: 70%;
+}
+.m-11def92b {
+  display: flex;
+  padding-left: var(--ag-spacing, var(--raikou-spacing-sm));
+}
+[dir=rtl] .m-11def92b {
+  padding-left: 0;
+  padding-right: var(--ag-spacing, var(--raikou-spacing-sm));
+}
+/*# sourceMappingURL=index.css.map */

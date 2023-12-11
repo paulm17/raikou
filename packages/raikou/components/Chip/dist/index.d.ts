@@ -71,4 +71,4 @@ declare const Chip: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { Chip, ChipCssVariables, ChipFactory, ChipGroup, ChipGroupProps, ChipProps, ChipStylesNames, ChipVariant };
+export { Chip, type ChipCssVariables, type ChipFactory, ChipGroup, type ChipGroupProps, type ChipProps, type ChipStylesNames, type ChipVariant };

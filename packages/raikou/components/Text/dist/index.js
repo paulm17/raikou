@@ -66,6 +66,11 @@ module.exports = __toCommonJS(src_exports);
 // src/Text.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./Text.module.css#css-module
+var Text_module_default = { "root": "m-b6d8b162" };
+
+// src/Text.tsx
 function getTextTruncate(truncate) {
   if (truncate === "start") {
     return "start";
@@ -128,9 +133,7 @@ var Text = (0, import_core.polymorphicFactory)((_props, ref) => {
   const getStyles = (0, import_core.useStyles)({
     name: ["Text", __staticSelector],
     props,
-    classes: {
-      root: "text-root"
-    },
+    classes: Text_module_default,
     className,
     style,
     classNames,
@@ -158,8 +161,10 @@ var Text = (0, import_core.polymorphicFactory)((_props, ref) => {
     }), others)
   );
 });
+Text.classes = Text_module_default;
 Text.displayName = "@raikou/core/Text";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Text
 });
+//# sourceMappingURL=index.js.map

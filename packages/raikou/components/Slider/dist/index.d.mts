@@ -234,4 +234,4 @@ declare const RangeSlider: _raikou_core.RaikouComponent<{
     vars: SliderCssVariables;
 }>;
 
-export { RangeSlider, RangeSliderFactory, RangeSliderProps, RangeSliderValue, Slider, SliderBaseProps, SliderCssVariables, SliderFactory, SliderProps, SliderStylesNames };
+export { RangeSlider, type RangeSliderFactory, type RangeSliderProps, type RangeSliderValue, Slider, type SliderBaseProps, type SliderCssVariables, type SliderFactory, type SliderProps, type SliderStylesNames };

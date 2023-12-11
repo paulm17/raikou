@@ -54,4 +54,4 @@ declare const SegmentedControl: _raikou_core.RaikouComponent<{
     vars: SegmentedControlCssVariables;
 }>;
 
-export { SegmentedControl, SegmentedControlCssVariables, SegmentedControlFactory, SegmentedControlItem, SegmentedControlProps, SegmentedControlStylesNames };
+export { SegmentedControl, type SegmentedControlCssVariables, type SegmentedControlFactory, type SegmentedControlItem, type SegmentedControlProps, type SegmentedControlStylesNames };

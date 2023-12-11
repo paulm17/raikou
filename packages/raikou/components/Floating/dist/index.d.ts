@@ -49,4 +49,4 @@ interface FloatingArrowProps extends React$1.ComponentPropsWithoutRef<"div"> {
 }
 declare const FloatingArrow: React$1.ForwardRefExoticComponent<FloatingArrowProps & React$1.RefAttributes<HTMLDivElement>>;
 
-export { ArrowPosition, FloatingArrow, FloatingAxesOffsets, FloatingPlacement, FloatingPosition, FloatingSide, getFloatingPosition, useDelayedHover, useFloatingAutoUpdate };
+export { type ArrowPosition, FloatingArrow, type FloatingAxesOffsets, type FloatingPlacement, type FloatingPosition, type FloatingSide, getFloatingPosition, useDelayedHover, useFloatingAutoUpdate };

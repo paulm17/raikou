@@ -228,6 +228,11 @@ import {
   getFontSize,
   createVarsResolver
 } from "@raikou/core";
+
+// css-module:../Input.module.css#css-module
+var Input_module_default = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
+
+// ../components/Input/src/InputLabel/InputLabel.tsx
 var defaultProps = {
   labelElement: "label"
 };
@@ -273,10 +278,11 @@ var InputLabel = factory((_props, ref) => {
   const _getStyles = useStyles({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      label: "inputWrapper-label",
-      required: "inputWrapper-required"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    // },
     className,
     style,
     classNames,
@@ -355,9 +361,10 @@ var InputError = factory2((_props, ref) => {
   const _getStyles = useStyles2({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      error: "inputWrapper-error"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   error: "inputWrapper-error",
+    // },
     className,
     style,
     classNames,
@@ -430,9 +437,10 @@ var InputDescription = factory3(
     const _getStyles = useStyles3({
       name: ["InputWrapper", __staticSelector],
       props,
-      classes: {
-        description: "inputWrapper-description"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   description: "inputWrapper-description",
+      // },
       className,
       style,
       classNames,
@@ -490,9 +498,10 @@ var InputPlaceholder = factory4(
     const getStyles2 = useStyles4({
       name: ["InputPlaceholder", __staticSelector],
       props,
-      classes: {
-        placeholder: "input-placeholder"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   placeholder: "input-placeholder",
+      // },
       className,
       style,
       classNames,
@@ -607,13 +616,14 @@ var InputWrapper = factory5((_props, ref) => {
   const getStyles2 = useStyles5({
     name: ["InputWrapper", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      root: "inputWrapper-root",
-      label: "inputWrapper-label",
-      required: "inputWrapper-required",
-      error: "inputWrapper-error",
-      description: "inputWrapper-description"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   root: "inputWrapper-root",
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    //   error: "inputWrapper-error",
+    //   description: "inputWrapper-description",
+    // },
     className,
     style,
     classNames,
@@ -704,6 +714,9 @@ var InputWrapper = factory5((_props, ref) => {
   );
 });
 InputWrapper.displayName = "@raikou/core/InputWrapper";
+
+// css-module:./Input.module.css#css-module
+var Input_module_default2 = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
 
 // ../components/Input/src/Input.tsx
 var defaultProps6 = {
@@ -797,11 +810,12 @@ var Input = polymorphicFactory((_props, ref) => {
   const getStyles2 = useStyles6({
     name: ["Input", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      wrapper: "input-wrapper",
-      input: "input-input",
-      section: "input-section"
-    },
+    classes: Input_module_default2,
+    // classes: {
+    //   wrapper: "input-wrapper",
+    //   input: "input-input",
+    //   section: "input-section",
+    // },
     className,
     style,
     classNames,
@@ -1719,6 +1733,9 @@ var ScrollAreaThumb = React21.forwardRef((props, forwardedRef) => {
   return null;
 });
 
+// css-module:./ScrollArea.module.css#css-module
+var ScrollArea_module_default = { "root": "m-d57069b5", "viewport": "m-c0783ff9", "viewportInner": "m-f8f631dd", "scrollbar": "m-c44ba933", "thumb": "m-d8b5e363", "corner": "m-21657268" };
+
 // ../components/ScrollArea/src/ScrollArea.tsx
 var defaultProps9 = {
   scrollHideDelay: 1e3,
@@ -1768,14 +1785,7 @@ var ScrollArea = factory7((_props, ref) => {
   const getStyles2 = useStyles7({
     name: "ScrollArea",
     props,
-    classes: {
-      root: "scrollArea-root",
-      viewport: "scrollArea-viewport",
-      viewportInner: "scrollArea-viewportInner",
-      scrollbar: "scrollArea-scrollbar",
-      thumb: "scrollArea-thumb",
-      corner: "scrollArea-corner"
-    },
+    classes: ScrollArea_module_default,
     className,
     style,
     classNames,
@@ -1889,6 +1899,7 @@ var ScrollAreaAutosize = factory7((props, ref) => {
     children
   )));
 });
+ScrollArea.classes = ScrollArea_module_default;
 ScrollAreaAutosize.displayName = "@raikou/core/ScrollAreaAutosize";
 ScrollArea.Autosize = ScrollAreaAutosize;
 
@@ -1956,6 +1967,11 @@ import {
   useStyles as useStyles8,
   polymorphicFactory as polymorphicFactory2
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../components/UnstyledButton/src/UnstyledButton.tsx
 var defaultProps11 = {
   __staticSelector: "UnstyledButton"
 };
@@ -1982,9 +1998,7 @@ var UnstyledButton = polymorphicFactory2(
     const getStyles2 = useStyles8({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -2002,6 +2016,7 @@ var UnstyledButton = polymorphicFactory2(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // ../components/Highlight/src/Highlight.tsx
 import React27 from "react";
@@ -2022,6 +2037,11 @@ import {
   getFontSize as getFontSize6,
   getLineHeight
 } from "@raikou/core";
+
+// css-module:./Text.module.css#css-module
+var Text_module_default = { "root": "m-b6d8b162" };
+
+// ../components/Text/src/Text.tsx
 function getTextTruncate(truncate) {
   if (truncate === "start") {
     return "start";
@@ -2084,9 +2104,7 @@ var Text = polymorphicFactory3((_props, ref) => {
   const getStyles2 = useStyles9({
     name: ["Text", __staticSelector],
     props,
-    classes: {
-      root: "text-root"
-    },
+    classes: Text_module_default,
     className,
     style,
     classNames,
@@ -2114,6 +2132,7 @@ var Text = polymorphicFactory3((_props, ref) => {
     }), others)
   );
 });
+Text.classes = Text_module_default;
 Text.displayName = "@raikou/core/Text";
 
 // ../components/Mark/src/Mark.tsx
@@ -2142,6 +2161,9 @@ function getMarkColor({
   }
   return `var(${parsed.variable})`;
 }
+
+// css-module:./Mark.module.css#css-module
+var Mark_module_default = { "root": "m-bcb3f3c2" };
 
 // ../components/Mark/src/Mark.tsx
 var defaultProps13 = {
@@ -2179,9 +2201,7 @@ var Mark = factory9((_props, ref) => {
     props,
     className,
     style,
-    classes: {
-      root: "mark-root"
-    },
+    classes: Mark_module_default,
     classNames,
     styles,
     unstyled,
@@ -2197,6 +2217,7 @@ var Mark = factory9((_props, ref) => {
     }, getStyles2("root")), others)
   );
 });
+Mark.classes = Mark_module_default;
 Mark.displayName = "@raikou/core/Mark";
 
 // ../components/Highlight/src/highlighter/highlighter.ts
@@ -3346,6 +3367,9 @@ function useModalBodyId() {
   return ctx.getBodyId();
 }
 
+// css-module:./ModalBase.module.css#css-module
+var ModalBase_module_default = { "title": "m-615af6c9", "header": "m-b5489c3c", "inner": "m-60c222c7", "content": "m-fd1ab0aa", "close": "m-606cb269", "body": "m-5df29311" };
+
 // ../components/ModalBase/src/ModalBaseBody.tsx
 var ModalBaseBody = forwardRef15(
   (_a, ref) => {
@@ -3357,7 +3381,7 @@ var ModalBaseBody = forwardRef15(
         ref
       }, others), {
         id: bodyId,
-        className: clsx_default("modalBase-body", className)
+        className: clsx_default(ModalBase_module_default.body, className)
       })
     );
   }
@@ -3406,6 +3430,11 @@ import {
   createVarsResolver as createVarsResolver9,
   useStyles as useStyles11
 } from "@raikou/core";
+
+// css-module:./CloseButton.module.css#css-module
+var CloseButton_module_default = { "root": "m-86a44da5", "root--subtle": "m-220c80f2" };
+
+// ../components/CloseButton/src/CloseButton.tsx
 var defaultProps20 = {
   variant: "subtle",
   size: "md"
@@ -3454,9 +3483,7 @@ var CloseButton = polymorphicFactory5(
       props,
       className,
       style,
-      classes: {
-        root: "closeButton-root"
-      },
+      classes: CloseButton_module_default,
       classNames,
       styles,
       unstyled,
@@ -3479,6 +3506,7 @@ var CloseButton = polymorphicFactory5(
   }
 );
 CloseButton.displayName = "@raikou/core/CloseButton";
+CloseButton.classes = CloseButton_module_default;
 
 // ../components/ModalBase/src/ModalBaseCloseButton.tsx
 var ModalBaseCloseButton = forwardRef17((_a, ref) => {
@@ -3493,7 +3521,7 @@ var ModalBaseCloseButton = forwardRef17((_a, ref) => {
         ctx.onClose();
         onClick == null ? void 0 : onClick(event);
       },
-      className: clsx_default("modalBase-close", className)
+      className: clsx_default(ModalBase_module_default.close, className)
     })
   );
 });
@@ -3764,6 +3792,11 @@ import {
   getShadow as getShadow2,
   createVarsResolver as createVarsResolver10
 } from "@raikou/core";
+
+// css-module:./Paper.module.css#css-module
+var Paper_module_default = { "root": "m-1b7284a3" };
+
+// ../components/Paper/src/Paper.tsx
 var defaultProps21 = {};
 var varsResolver10 = createVarsResolver10(
   (_, { radius, shadow }) => ({
@@ -3801,9 +3834,7 @@ var Paper = polymorphicFactory6((_props, ref) => {
   const getStyles2 = useStyles12({
     name: "Paper",
     props,
-    classes: {
-      root: "paper-root"
-    },
+    classes: Paper_module_default,
     className,
     style,
     classNames,
@@ -3823,6 +3854,7 @@ var Paper = polymorphicFactory6((_props, ref) => {
   );
 });
 Paper.displayName = "@raikou/core/Paper";
+Paper.classes = Paper_module_default;
 
 // ../components/ModalBase/src/ModalBaseContent.tsx
 var ModalBaseContent = forwardRef18(
@@ -3846,7 +3878,7 @@ var ModalBaseContent = forwardRef18(
       (transitionStyles) => /* @__PURE__ */ React48.createElement(
         "div",
         __spreadProps(__spreadValues({}, innerProps), {
-          className: clsx_default("modalBase-inner", innerProps.className)
+          className: clsx_default(ModalBase_module_default.inner, innerProps.className)
         }),
         /* @__PURE__ */ React48.createElement(FocusTrap, { active: ctx.opened && ctx.trapFocus }, /* @__PURE__ */ React48.createElement(
           Paper,
@@ -3860,7 +3892,7 @@ var ModalBaseContent = forwardRef18(
             onKeyDown: handleKeyDown,
             ref,
             style: [style, transitionStyles],
-            className: clsx_default("modalBase-content", className)
+            className: clsx_default(ModalBase_module_default.content, className)
           }),
           others.children
         ))
@@ -3876,7 +3908,7 @@ import { Box as Box20 } from "@raikou/core";
 var ModalBaseHeader = forwardRef19(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React49.createElement(Box20, __spreadValues({ ref, className: clsx_default("modalBase-header", className) }, others));
+    return /* @__PURE__ */ React49.createElement(Box20, __spreadValues({ ref, className: clsx_default(ModalBase_module_default.header, className) }, others));
   }
 );
 ModalBaseHeader.displayName = "@raikou/core/ModalBaseHeader";
@@ -3897,6 +3929,11 @@ import {
   getRadius as getRadius4,
   rem as rem8
 } from "@raikou/core";
+
+// css-module:./Overlay.module.css#css-module
+var Overlay_module_default = { "root": "m-9814e45f" };
+
+// ../components/Overlay/src/Overlay.tsx
 var defaultProps22 = {
   zIndex: getDefaultZIndex2("modal")
 };
@@ -3948,9 +3985,7 @@ var Overlay = polymorphicFactory7((_props, ref) => {
   const getStyles2 = useStyles13({
     name: "Overlay",
     props,
-    classes: {
-      root: "overlay-root"
-    },
+    classes: Overlay_module_default,
     className,
     style,
     classNames,
@@ -3962,6 +3997,7 @@ var Overlay = polymorphicFactory7((_props, ref) => {
   return /* @__PURE__ */ React50.createElement(Box21, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles2("root")), { mod: { center, fixed } }), others), children);
 });
 Overlay.displayName = "@raikou/core/Overlay";
+Overlay.classes = Overlay_module_default;
 
 // ../components/ModalBase/src/use-modal-transition.ts
 var DEFAULT_TRANSITION = {
@@ -4019,7 +4055,7 @@ var ModalBaseTitle = forwardRef21((_a, ref) => {
     __spreadProps(__spreadValues({
       component: "h2",
       ref,
-      className: clsx_default("modalBase-title", className)
+      className: clsx_default(ModalBase_module_default.title, className)
     }, others), {
       id
     })
@@ -4037,6 +4073,9 @@ function NativeScrollArea({ children }) {
 var [ModalProvider, useModalContext] = createSafeContext(
   "Modal component was not found in tree"
 );
+
+// css-module:./Modal.module.css#css-module
+var Modal_module_default = { "root": "m-9df02822", "content": "m-54c44539", "inner": "m-1f958f16", "header": "m-d0e2b9cd" };
 
 // ../components/Modal/src/ModalRoot.tsx
 var defaultProps23 = {
@@ -4095,16 +4134,7 @@ var ModalRoot = factory14((_props, ref) => {
   ]);
   const getStyles2 = useStyles14({
     name: __staticSelector,
-    classes: {
-      root: "modal-root",
-      header: "modal-header",
-      content: "modal-content",
-      inner: "modal-inner",
-      title: "modal-title",
-      body: "modal-body",
-      overlay: "modal-overlay",
-      close: "modal-close"
-    },
+    classes: Modal_module_default,
     props,
     className,
     style,
@@ -4124,6 +4154,7 @@ var ModalRoot = factory14((_props, ref) => {
     }), others)
   ));
 });
+ModalRoot.classes = Modal_module_default;
 ModalRoot.displayName = "@raikou/core/ModalRoot";
 
 // ../components/Modal/src/ModalBody.tsx
@@ -4144,6 +4175,7 @@ var ModalBody = factory15((_props, ref) => {
     }, ctx.getStyles("body", { classNames, style, styles, className })), others)
   );
 });
+ModalBody.classes = Modal_module_default;
 ModalBody.displayName = "@raikou/core/ModalBody";
 
 // ../components/Modal/src/ModalCloseButton.tsx
@@ -4166,6 +4198,7 @@ var ModalCloseButton = factory16(
     );
   }
 );
+ModalCloseButton.classes = Modal_module_default;
 ModalCloseButton.displayName = "@raikou/core/ModalCloseButton";
 
 // ../components/Modal/src/ModalOverlay.tsx
@@ -4186,6 +4219,7 @@ var ModalOverlay = factory17((_props, ref) => {
     }, ctx.getStyles("overlay", { classNames, style, styles, className })), others)
   );
 });
+ModalOverlay.classes = Modal_module_default;
 ModalOverlay.displayName = "@raikou/core/ModalOverlay";
 
 // ../components/Modal/src/ModalContent.tsx
@@ -4215,6 +4249,7 @@ var ModalContent = factory18((_props, ref) => {
     /* @__PURE__ */ React58.createElement(Scroll, { style: { maxHeight: `calc(100vh - (${rem10(ctx.yOffset)} * 2))` } }, children)
   );
 });
+ModalContent.classes = Modal_module_default;
 ModalContent.displayName = "@raikou/core/ModalContent";
 
 // ../components/Modal/src/ModalTitle.tsx
@@ -4235,6 +4270,7 @@ var ModalTitle = factory19((_props, ref) => {
     }, ctx.getStyles("title", { classNames, style, styles, className })), others)
   );
 });
+ModalTitle.classes = Modal_module_default;
 ModalTitle.displayName = "@raikou/core/ModalTitle";
 
 // ../components/Modal/src/ModalHeader.tsx
@@ -4255,6 +4291,7 @@ var ModalHeader = factory20((_props, ref) => {
     }, ctx.getStyles("header", { classNames, style, styles, className })), others)
   );
 });
+ModalHeader.classes = Modal_module_default;
 ModalHeader.displayName = "@raikou/core/ModalHeader";
 
 // ../components/Modal/src/Modal.tsx
@@ -4315,6 +4352,9 @@ function getHotkeys(hotkeys, store) {
   }
   return [[hotkeys, open]];
 }
+
+// css-module:./Spotlight.module.css#css-module
+var Spotlight_module_default = { "root": "m-d2b315db", "content": "m-3cd250e0", "body": "m-d2abce9b", "search": "m-f366a061", "actionsList": "m-6e463822", "action": "m-d49bb8ef", "actionBody": "m-3d475731", "actionSection": "m-832642f6", "actionLabel": "m-6c2a1345", "actionDescription": "m-a6d9d78d", "empty": "m-82f78f74", "footer": "m-ddcaf054", "actionsGroup": "m-5a3e5f7b" };
 
 // src/SpotlightRoot.tsx
 var defaultProps31 = {
@@ -4388,21 +4428,7 @@ var SpotlightRoot = factory22((_props, ref) => {
   };
   const getStyles2 = useStyles15({
     name: "Spotlight",
-    classes: {
-      root: "spotlight-root",
-      content: "spotlight-content",
-      body: "spotlight-body",
-      search: "spotlight-search",
-      actionsList: "spotlight-actionsList",
-      action: "spotlight-action",
-      actionBody: "spotlight-actionBody",
-      actionSection: "spotlight-actionSection",
-      actionLabel: "spotlight-actionLabel",
-      actionDescription: "spotlight-actionDescription",
-      empty: "spotlight-empty",
-      footer: "spotlight-footer",
-      actionsGroup: "spotlight-actionsGroup"
-    },
+    classes: Spotlight_module_default,
     props,
     className,
     style,
@@ -4445,24 +4471,7 @@ var SpotlightRoot = factory22((_props, ref) => {
         style,
         classNames: resolveClassNames({
           theme,
-          classNames: [
-            {
-              root: "spotlight-root",
-              content: "spotlight-content",
-              body: "spotlight-body",
-              search: "spotlight-search",
-              actionsList: "spotlight-actionsList",
-              action: "spotlight-action",
-              actionBody: "spotlight-actionBody",
-              actionSection: "spotlight-actionSection",
-              actionLabel: "spotlight-actionLabel",
-              actionDescription: "spotlight-actionDescription",
-              empty: "spotlight-empty",
-              footer: "spotlight-footer",
-              actionsGroup: "spotlight-actionsGroup"
-            },
-            classNames
-          ],
+          classNames: [Spotlight_module_default, classNames],
           props,
           stylesCtx: void 0
         }),
@@ -4488,6 +4497,7 @@ var SpotlightRoot = factory22((_props, ref) => {
     )
   );
 });
+SpotlightRoot.classes = Spotlight_module_default;
 SpotlightRoot.displayName = "@raikou/spotlight/SpotlightRoot";
 
 // src/default-spotlight-filter.ts
@@ -4671,3 +4681,4 @@ export {
   toggleSpotlight,
   useSpotlight
 };
+//# sourceMappingURL=index.mjs.map

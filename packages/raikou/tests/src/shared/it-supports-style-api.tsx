@@ -23,7 +23,7 @@ const getTestFunctionClassNames =
 
 interface Options<
   Props extends Record<string, any> = any,
-  Selectors extends string = string
+  Selectors extends string = string,
 > {
   component: React.ComponentType<Props>;
   props: Props;
@@ -35,17 +35,17 @@ interface Options<
 
 export function itSupportsStylesApi<
   Props extends Record<string, any>,
-  Selectors extends string = string
+  Selectors extends string = string,
 >(options: Options<Props, Selectors>, name = "supports styles api") {
   it(`${name}: classNames (inline object)`, () => {
     const classNames = getTestObjectClassNames(options.selectors);
     const { container } = render(
-      <options.component {...options.props} classNames={classNames} />
+      <options.component {...options.props} classNames={classNames} />,
     );
 
     options.selectors.forEach((selector) => {
       expect(
-        container.querySelector(`.${classNames[selector]}`)
+        container.querySelector(`.${classNames[selector]}`),
       ).toBeInTheDocument();
     });
   });
@@ -58,13 +58,15 @@ export function itSupportsStylesApi<
           {...options.props}
           data-test="__test"
           classNames={classNames}
-        />
+        />,
       );
       options.selectors.forEach((selector) => {
         expect(
           container.querySelector(
-            `.${classNames(DEFAULT_THEME, { "data-test": "__test" })[selector]}`
-          )
+            `.${
+              classNames(DEFAULT_THEME, { "data-test": "__test" })[selector]
+            }`,
+          ),
         ).toBeInTheDocument();
       });
     });
@@ -84,7 +86,7 @@ export function itSupportsStylesApi<
         {...options.props}
         classNames={classNames}
         styles={styles}
-      />
+      />,
     );
 
     options.selectors.forEach((selector) => {
@@ -106,7 +108,7 @@ export function itSupportsStylesApi<
             };
             return acc;
           },
-          {}
+          {},
         );
 
       // const { container } = render(
@@ -132,7 +134,7 @@ export function itSupportsStylesApi<
     const { container } = render(<options.component {...options.props} />);
     options.selectors.forEach((selector) => {
       expect(
-        container.querySelector(`.raikou-${options.providerName}-${selector}`)
+        container.querySelector(`.raikou-${options.providerName}-${selector}`),
       ).toBeInTheDocument();
     });
   });
@@ -151,12 +153,12 @@ export function itSupportsStylesApi<
               classNames,
             },
           },
-        }
+        },
       );
 
       options.selectors.forEach((selector) => {
         expect(
-          container.querySelector(`.${classNames[selector]}`)
+          container.querySelector(`.${classNames[selector]}`),
         ).toBeInTheDocument();
       });
     });
@@ -175,13 +177,15 @@ export function itSupportsStylesApi<
               classNames: classNames as any,
             },
           },
-        }
+        },
       );
       options.selectors.forEach((selector) => {
         expect(
           container.querySelector(
-            `.${classNames(DEFAULT_THEME, { "data-test": "__test" })[selector]}`
-          )
+            `.${
+              classNames(DEFAULT_THEME, { "data-test": "__test" })[selector]
+            }`,
+          ),
         ).toBeInTheDocument();
       });
     });
@@ -208,7 +212,7 @@ export function itSupportsStylesApi<
         expect(container.querySelector(`.${classNames[selector]}`)).toHaveStyle(
           {
             ...styles[selector],
-          }
+          },
         );
       });
     });
@@ -224,7 +228,7 @@ export function itSupportsStylesApi<
             };
             return acc;
           },
-          {}
+          {},
         );
 
       // const { container } = render(

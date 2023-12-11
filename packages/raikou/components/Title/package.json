@@ -16,7 +16,7 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "build": "tsup src/index.ts --dts --format esm,cjs --clean",
+    "build": "tsup src/index.ts --config ../../../../configuration/tsup/tsup.config.ts",
     "lint": "eslint \"**/*.ts*\"",
     "clean": "rimraf dist .turbo",
     "typecheck": "tsc --noEmit",
@@ -39,7 +39,6 @@
     "@types/react-dom": "^18.2.8",
     "@types/node": "^20.3.3",
     "clean-package": "2.2.0",
-    "tsup": "^7.1.0",
     "typescript": "^5.1.6"
   },
   "publishConfig": {

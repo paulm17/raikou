@@ -44,4 +44,4 @@ declare namespace Transition {
 type MinimalTransitionOverride = SetRequired<TransitionOverride, 'duration' | 'transition'>;
 declare function getTransitionProps(transitionProps: TransitionOverride | undefined, componentTransition: TransitionOverride | undefined): MinimalTransitionOverride;
 
-export { transitions as RAIKOU_TRANSITIONS, RaikouTransition, Transition, TransitionOverride, TransitionProps, getTransitionProps };
+export { transitions as RAIKOU_TRANSITIONS, type RaikouTransition, Transition, type TransitionOverride, type TransitionProps, getTransitionProps };

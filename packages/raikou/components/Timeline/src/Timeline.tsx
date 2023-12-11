@@ -135,7 +135,9 @@ export const Timeline = factory<TimelineFactory>((_props, ref) => {
     }),
   );
 
-  useStore.setState({ getStyles });
+  useStore.update((state) => {
+    state.getStyles = getStyles;
+  });
 
   return (
     <Box {...getStyles("root")} mod={{ align }} ref={ref} {...others}>

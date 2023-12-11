@@ -110,7 +110,11 @@ export const List = factory<ListFactory>((_props, ref) => {
     varsResolver,
   });
 
-  useStore.setState({ getStyles, center, icon });
+  useStore.update((state) => {
+    state.getStyles = getStyles;
+    state.center = center;
+    state.icon = icon;
+  });
 
   return (
     <Box<any>

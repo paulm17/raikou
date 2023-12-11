@@ -1,33 +1,30 @@
-var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
-var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
 var __pow = Math.pow;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __spreadValues = (a, b) => {
-  for (var prop in b || (b = {}))
-    if (__hasOwnProp.call(b, prop))
-      __defNormalProp(a, prop, b[prop]);
+var __spreadValues = (a2, b2) => {
+  for (var prop in b2 || (b2 = {}))
+    if (__hasOwnProp.call(b2, prop))
+      __defNormalProp(a2, prop, b2[prop]);
   if (__getOwnPropSymbols)
-    for (var prop of __getOwnPropSymbols(b)) {
-      if (__propIsEnum.call(b, prop))
-        __defNormalProp(a, prop, b[prop]);
+    for (var prop of __getOwnPropSymbols(b2)) {
+      if (__propIsEnum.call(b2, prop))
+        __defNormalProp(a2, prop, b2[prop]);
     }
-  return a;
+  return a2;
 };
-var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
-  get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
-}) : x)(function(x) {
+var __spreadProps = (a2, b2) => __defProps(a2, __getOwnPropDescs(b2));
+var __require = /* @__PURE__ */ ((x2) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x2, {
+  get: (a2, b2) => (typeof require !== "undefined" ? require : a2)[b2]
+}) : x2)(function(x2) {
   if (typeof require !== "undefined")
     return require.apply(this, arguments);
-  throw Error('Dynamic require of "' + x + '" is not supported');
+  throw Error('Dynamic require of "' + x2 + '" is not supported');
 });
 var __objRest = (source, exclude) => {
   var target = {};
@@ -44,22 +41,6 @@ var __objRest = (source, exclude) => {
 var __commonJS = (cb, mod) => function __require2() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
-  // If the importer is in node compatibility mode or this is not an ESM
-  // file that has been converted to a CommonJS file using a Babel-
-  // compatible transform (i.e. "__esModule" has not been set), then set
-  // "default" to the CommonJS "module.exports" for node compatibility.
-  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
-  mod
-));
 var __async = (__this, __arguments, generator) => {
   return new Promise((resolve, reject) => {
     var fulfilled = (value) => {
@@ -76,355 +57,10 @@ var __async = (__this, __arguments, generator) => {
         reject(e);
       }
     };
-    var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
+    var step = (x2) => x2.done ? resolve(x2.value) : Promise.resolve(x2.value).then(fulfilled, rejected);
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
-
-// ../../../../node_modules/.pnpm/use-sync-external-store@1.2.0_react@18.2.0/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.production.min.js
-var require_use_sync_external_store_shim_production_min = __commonJS({
-  "../../../../node_modules/.pnpm/use-sync-external-store@1.2.0_react@18.2.0/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.production.min.js"(exports) {
-    "use strict";
-    var e = __require("react");
-    function h(a, b) {
-      return a === b && (0 !== a || 1 / a === 1 / b) || a !== a && b !== b;
-    }
-    var k = "function" === typeof Object.is ? Object.is : h;
-    var l = e.useState;
-    var m = e.useEffect;
-    var n = e.useLayoutEffect;
-    var p = e.useDebugValue;
-    function q2(a, b) {
-      var d = b(), f = l({ inst: { value: d, getSnapshot: b } }), c = f[0].inst, g = f[1];
-      n(function() {
-        c.value = d;
-        c.getSnapshot = b;
-        r(c) && g({ inst: c });
-      }, [a, d, b]);
-      m(function() {
-        r(c) && g({ inst: c });
-        return a(function() {
-          r(c) && g({ inst: c });
-        });
-      }, [a]);
-      p(d);
-      return d;
-    }
-    function r(a) {
-      var b = a.getSnapshot;
-      a = a.value;
-      try {
-        var d = b();
-        return !k(a, d);
-      } catch (f) {
-        return true;
-      }
-    }
-    function t(a, b) {
-      return b();
-    }
-    var u = "undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement ? t : q2;
-    exports.useSyncExternalStore = void 0 !== e.useSyncExternalStore ? e.useSyncExternalStore : u;
-  }
-});
-
-// ../../../../node_modules/.pnpm/use-sync-external-store@1.2.0_react@18.2.0/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.development.js
-var require_use_sync_external_store_shim_development = __commonJS({
-  "../../../../node_modules/.pnpm/use-sync-external-store@1.2.0_react@18.2.0/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.development.js"(exports) {
-    "use strict";
-    if (process.env.NODE_ENV !== "production") {
-      (function() {
-        "use strict";
-        if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
-          __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-        }
-        var React46 = __require("react");
-        var ReactSharedInternals = React46.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-        function error(format) {
-          {
-            {
-              for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-                args[_key2 - 1] = arguments[_key2];
-              }
-              printWarning("error", format, args);
-            }
-          }
-        }
-        function printWarning(level, format, args) {
-          {
-            var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
-            var stack = ReactDebugCurrentFrame.getStackAddendum();
-            if (stack !== "") {
-              format += "%s";
-              args = args.concat([stack]);
-            }
-            var argsWithFormat = args.map(function(item) {
-              return String(item);
-            });
-            argsWithFormat.unshift("Warning: " + format);
-            Function.prototype.apply.call(console[level], console, argsWithFormat);
-          }
-        }
-        function is(x, y) {
-          return x === y && (x !== 0 || 1 / x === 1 / y) || x !== x && y !== y;
-        }
-        var objectIs = typeof Object.is === "function" ? Object.is : is;
-        var useState14 = React46.useState, useEffect11 = React46.useEffect, useLayoutEffect4 = React46.useLayoutEffect, useDebugValue2 = React46.useDebugValue;
-        var didWarnOld18Alpha = false;
-        var didWarnUncachedGetSnapshot = false;
-        function useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot) {
-          {
-            if (!didWarnOld18Alpha) {
-              if (React46.startTransition !== void 0) {
-                didWarnOld18Alpha = true;
-                error("You are using an outdated, pre-release alpha of React 18 that does not support useSyncExternalStore. The use-sync-external-store shim will not work correctly. Upgrade to a newer pre-release.");
-              }
-            }
-          }
-          var value = getSnapshot();
-          {
-            if (!didWarnUncachedGetSnapshot) {
-              var cachedValue = getSnapshot();
-              if (!objectIs(value, cachedValue)) {
-                error("The result of getSnapshot should be cached to avoid an infinite loop");
-                didWarnUncachedGetSnapshot = true;
-              }
-            }
-          }
-          var _useState = useState14({
-            inst: {
-              value,
-              getSnapshot
-            }
-          }), inst = _useState[0].inst, forceUpdate = _useState[1];
-          useLayoutEffect4(function() {
-            inst.value = value;
-            inst.getSnapshot = getSnapshot;
-            if (checkIfSnapshotChanged(inst)) {
-              forceUpdate({
-                inst
-              });
-            }
-          }, [subscribe, value, getSnapshot]);
-          useEffect11(function() {
-            if (checkIfSnapshotChanged(inst)) {
-              forceUpdate({
-                inst
-              });
-            }
-            var handleStoreChange = function() {
-              if (checkIfSnapshotChanged(inst)) {
-                forceUpdate({
-                  inst
-                });
-              }
-            };
-            return subscribe(handleStoreChange);
-          }, [subscribe]);
-          useDebugValue2(value);
-          return value;
-        }
-        function checkIfSnapshotChanged(inst) {
-          var latestGetSnapshot = inst.getSnapshot;
-          var prevValue = inst.value;
-          try {
-            var nextValue = latestGetSnapshot();
-            return !objectIs(prevValue, nextValue);
-          } catch (error2) {
-            return true;
-          }
-        }
-        function useSyncExternalStore$1(subscribe, getSnapshot, getServerSnapshot) {
-          return getSnapshot();
-        }
-        var canUseDOM = !!(typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined");
-        var isServerEnvironment = !canUseDOM;
-        var shim = isServerEnvironment ? useSyncExternalStore$1 : useSyncExternalStore;
-        var useSyncExternalStore$2 = React46.useSyncExternalStore !== void 0 ? React46.useSyncExternalStore : shim;
-        exports.useSyncExternalStore = useSyncExternalStore$2;
-        if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") {
-          __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
-        }
-      })();
-    }
-  }
-});
-
-// ../../../../node_modules/.pnpm/use-sync-external-store@1.2.0_react@18.2.0/node_modules/use-sync-external-store/shim/index.js
-var require_shim = __commonJS({
-  "../../../../node_modules/.pnpm/use-sync-external-store@1.2.0_react@18.2.0/node_modules/use-sync-external-store/shim/index.js"(exports, module) {
-    "use strict";
-    if (process.env.NODE_ENV === "production") {
-      module.exports = require_use_sync_external_store_shim_production_min();
-    } else {
-      module.exports = require_use_sync_external_store_shim_development();
-    }
-  }
-});
-
-// ../../../../node_modules/.pnpm/use-sync-external-store@1.2.0_react@18.2.0/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.production.min.js
-var require_with_selector_production_min = __commonJS({
-  "../../../../node_modules/.pnpm/use-sync-external-store@1.2.0_react@18.2.0/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.production.min.js"(exports) {
-    "use strict";
-    var h = __require("react");
-    var n = require_shim();
-    function p(a, b) {
-      return a === b && (0 !== a || 1 / a === 1 / b) || a !== a && b !== b;
-    }
-    var q2 = "function" === typeof Object.is ? Object.is : p;
-    var r = n.useSyncExternalStore;
-    var t = h.useRef;
-    var u = h.useEffect;
-    var v = h.useMemo;
-    var w = h.useDebugValue;
-    exports.useSyncExternalStoreWithSelector = function(a, b, e, l, g) {
-      var c = t(null);
-      if (null === c.current) {
-        var f = { hasValue: false, value: null };
-        c.current = f;
-      } else
-        f = c.current;
-      c = v(function() {
-        function a2(a3) {
-          if (!c2) {
-            c2 = true;
-            d2 = a3;
-            a3 = l(a3);
-            if (void 0 !== g && f.hasValue) {
-              var b2 = f.value;
-              if (g(b2, a3))
-                return k = b2;
-            }
-            return k = a3;
-          }
-          b2 = k;
-          if (q2(d2, a3))
-            return b2;
-          var e2 = l(a3);
-          if (void 0 !== g && g(b2, e2))
-            return b2;
-          d2 = a3;
-          return k = e2;
-        }
-        var c2 = false, d2, k, m = void 0 === e ? null : e;
-        return [function() {
-          return a2(b());
-        }, null === m ? void 0 : function() {
-          return a2(m());
-        }];
-      }, [b, e, l, g]);
-      var d = r(a, c[0], c[1]);
-      u(function() {
-        f.hasValue = true;
-        f.value = d;
-      }, [d]);
-      w(d);
-      return d;
-    };
-  }
-});
-
-// ../../../../node_modules/.pnpm/use-sync-external-store@1.2.0_react@18.2.0/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.development.js
-var require_with_selector_development = __commonJS({
-  "../../../../node_modules/.pnpm/use-sync-external-store@1.2.0_react@18.2.0/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.development.js"(exports) {
-    "use strict";
-    if (process.env.NODE_ENV !== "production") {
-      (function() {
-        "use strict";
-        if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
-          __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-        }
-        var React46 = __require("react");
-        var shim = require_shim();
-        function is(x, y) {
-          return x === y && (x !== 0 || 1 / x === 1 / y) || x !== x && y !== y;
-        }
-        var objectIs = typeof Object.is === "function" ? Object.is : is;
-        var useSyncExternalStore = shim.useSyncExternalStore;
-        var useRef11 = React46.useRef, useEffect11 = React46.useEffect, useMemo3 = React46.useMemo, useDebugValue2 = React46.useDebugValue;
-        function useSyncExternalStoreWithSelector2(subscribe, getSnapshot, getServerSnapshot, selector, isEqual2) {
-          var instRef = useRef11(null);
-          var inst;
-          if (instRef.current === null) {
-            inst = {
-              hasValue: false,
-              value: null
-            };
-            instRef.current = inst;
-          } else {
-            inst = instRef.current;
-          }
-          var _useMemo = useMemo3(function() {
-            var hasMemo = false;
-            var memoizedSnapshot;
-            var memoizedSelection;
-            var memoizedSelector = function(nextSnapshot) {
-              if (!hasMemo) {
-                hasMemo = true;
-                memoizedSnapshot = nextSnapshot;
-                var _nextSelection = selector(nextSnapshot);
-                if (isEqual2 !== void 0) {
-                  if (inst.hasValue) {
-                    var currentSelection = inst.value;
-                    if (isEqual2(currentSelection, _nextSelection)) {
-                      memoizedSelection = currentSelection;
-                      return currentSelection;
-                    }
-                  }
-                }
-                memoizedSelection = _nextSelection;
-                return _nextSelection;
-              }
-              var prevSnapshot = memoizedSnapshot;
-              var prevSelection = memoizedSelection;
-              if (objectIs(prevSnapshot, nextSnapshot)) {
-                return prevSelection;
-              }
-              var nextSelection = selector(nextSnapshot);
-              if (isEqual2 !== void 0 && isEqual2(prevSelection, nextSelection)) {
-                return prevSelection;
-              }
-              memoizedSnapshot = nextSnapshot;
-              memoizedSelection = nextSelection;
-              return nextSelection;
-            };
-            var maybeGetServerSnapshot = getServerSnapshot === void 0 ? null : getServerSnapshot;
-            var getSnapshotWithSelector = function() {
-              return memoizedSelector(getSnapshot());
-            };
-            var getServerSnapshotWithSelector = maybeGetServerSnapshot === null ? void 0 : function() {
-              return memoizedSelector(maybeGetServerSnapshot());
-            };
-            return [getSnapshotWithSelector, getServerSnapshotWithSelector];
-          }, [getSnapshot, getServerSnapshot, selector, isEqual2]), getSelection = _useMemo[0], getServerSelection = _useMemo[1];
-          var value = useSyncExternalStore(subscribe, getSelection, getServerSelection);
-          useEffect11(function() {
-            inst.hasValue = true;
-            inst.value = value;
-          }, [value]);
-          useDebugValue2(value);
-          return value;
-        }
-        exports.useSyncExternalStoreWithSelector = useSyncExternalStoreWithSelector2;
-        if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") {
-          __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
-        }
-      })();
-    }
-  }
-});
-
-// ../../../../node_modules/.pnpm/use-sync-external-store@1.2.0_react@18.2.0/node_modules/use-sync-external-store/shim/with-selector.js
-var require_with_selector = __commonJS({
-  "../../../../node_modules/.pnpm/use-sync-external-store@1.2.0_react@18.2.0/node_modules/use-sync-external-store/shim/with-selector.js"(exports, module) {
-    "use strict";
-    if (process.env.NODE_ENV === "production") {
-      module.exports = require_with_selector_production_min();
-    } else {
-      module.exports = require_with_selector_development();
-    }
-  }
-});
 
 // ../../../../node_modules/.pnpm/extend@3.0.2/node_modules/extend/index.js
 var require_extend = __commonJS({
@@ -479,19 +115,19 @@ var require_extend = __commonJS({
     module.exports = function extend() {
       var options, name, src, copy, copyIsArray, clone;
       var target = arguments[0];
-      var i = 1;
+      var i2 = 1;
       var length = arguments.length;
       var deep = false;
       if (typeof target === "boolean") {
         deep = target;
         target = arguments[1] || {};
-        i = 2;
+        i2 = 2;
       }
       if (target == null || typeof target !== "object" && typeof target !== "function") {
         target = {};
       }
-      for (; i < length; ++i) {
-        options = arguments[i];
+      for (; i2 < length; ++i2) {
+        options = arguments[i2];
         if (options != null) {
           for (name in options) {
             src = getProperty(target, name);
@@ -9948,8 +9584,8 @@ var require_psl = __commonJS({
       }
       var labels = ascii.split(".");
       var label;
-      for (var i = 0; i < labels.length; ++i) {
-        label = labels[i];
+      for (var i2 = 0; i2 < labels.length; ++i2) {
+        label = labels[i2];
         if (!label.length) {
           return "LABEL_TOO_SHORT";
         }
@@ -10273,8 +9909,8 @@ var require_memstore = __commonJS({
           });
         });
       });
-      cookies.sort(function(a, b) {
-        return (a.creationIndex || 0) - (b.creationIndex || 0);
+      cookies.sort(function(a2, b2) {
+        return (a2.creationIndex || 0) - (b2.creationIndex || 0);
       });
       cb(null, cookies);
     };
@@ -10354,8 +9990,8 @@ var require_cookie = __commonJS({
     function parseDigits(token, minDigits, maxDigits, trailingOK) {
       var count2 = 0;
       while (count2 < token.length) {
-        var c = token.charCodeAt(count2);
-        if (c <= 47 || c >= 58) {
+        var c2 = token.charCodeAt(count2);
+        if (c2 <= 47 || c2 >= 58) {
           break;
         }
         count2++;
@@ -10374,13 +10010,13 @@ var require_cookie = __commonJS({
       if (parts.length !== 3) {
         return null;
       }
-      for (var i = 0; i < 3; i++) {
-        var trailingOK = i == 2;
-        var num = parseDigits(parts[i], 1, 2, trailingOK);
+      for (var i2 = 0; i2 < 3; i2++) {
+        var trailingOK = i2 == 2;
+        var num = parseDigits(parts[i2], 1, 2, trailingOK);
         if (num === null) {
           return null;
         }
-        result[i] = num;
+        result[i2] = num;
       }
       return result;
     }
@@ -10403,8 +10039,8 @@ var require_cookie = __commonJS({
       var dayOfMonth = null;
       var month = null;
       var year = null;
-      for (var i = 0; i < tokens.length; i++) {
-        var token = tokens[i].trim();
+      for (var i2 = 0; i2 < tokens.length; i2++) {
+        var token = tokens[i2].trim();
         if (!token.length) {
           continue;
         }
@@ -10450,15 +10086,15 @@ var require_cookie = __commonJS({
       return new Date(Date.UTC(year, month, dayOfMonth, hour, minute, second));
     }
     function formatDate(date) {
-      var d = date.getUTCDate();
-      d = d >= 10 ? d : "0" + d;
-      var h = date.getUTCHours();
-      h = h >= 10 ? h : "0" + h;
+      var d2 = date.getUTCDate();
+      d2 = d2 >= 10 ? d2 : "0" + d2;
+      var h2 = date.getUTCHours();
+      h2 = h2 >= 10 ? h2 : "0" + h2;
       var m = date.getUTCMinutes();
       m = m >= 10 ? m : "0" + m;
-      var s = date.getUTCSeconds();
-      s = s >= 10 ? s : "0" + s;
-      return NUM_TO_DAY[date.getUTCDay()] + ", " + d + " " + NUM_TO_MONTH[date.getUTCMonth()] + " " + date.getUTCFullYear() + " " + h + ":" + m + ":" + s + " GMT";
+      var s2 = date.getUTCSeconds();
+      s2 = s2 >= 10 ? s2 : "0" + s2;
+      return NUM_TO_DAY[date.getUTCDay()] + ", " + d2 + " " + NUM_TO_MONTH[date.getUTCMonth()] + " " + date.getUTCFullYear() + " " + h2 + ":" + m + ":" + s2 + " GMT";
     }
     function canonicalDomain(str) {
       if (str == null) {
@@ -10510,8 +10146,8 @@ var require_cookie = __commonJS({
       return path.slice(0, rightSlash);
     }
     function trimTerminator(str) {
-      for (var t = 0; t < TERMINATORS.length; t++) {
-        var terminatorIdx = str.indexOf(TERMINATORS[t]);
+      for (var t2 = 0; t2 < TERMINATORS.length; t2++) {
+        var terminatorIdx = str.indexOf(TERMINATORS[t2]);
         if (terminatorIdx !== -1) {
           str = str.substr(0, terminatorIdx);
         }
@@ -10542,10 +10178,10 @@ var require_cookie = __commonJS({
       if (CONTROL_CHARS.test(cookieName) || CONTROL_CHARS.test(cookieValue)) {
         return;
       }
-      var c = new Cookie();
-      c.key = cookieName;
-      c.value = cookieValue;
-      return c;
+      var c2 = new Cookie();
+      c2.key = cookieName;
+      c2.value = cookieValue;
+      return c2;
     }
     function parse(str, options) {
       if (!options || typeof options !== "object") {
@@ -10554,16 +10190,16 @@ var require_cookie = __commonJS({
       str = str.trim();
       var firstSemi = str.indexOf(";");
       var cookiePair = firstSemi === -1 ? str : str.substr(0, firstSemi);
-      var c = parseCookiePair(cookiePair, !!options.loose);
-      if (!c) {
+      var c2 = parseCookiePair(cookiePair, !!options.loose);
+      if (!c2) {
         return;
       }
       if (firstSemi === -1) {
-        return c;
+        return c2;
       }
       var unparsed = str.slice(firstSemi + 1).trim();
       if (unparsed.length === 0) {
-        return c;
+        return c2;
       }
       var cookie_avs = unparsed.split(";");
       while (cookie_avs.length) {
@@ -10589,7 +10225,7 @@ var require_cookie = __commonJS({
             if (av_value) {
               var exp = parseDate(av_value);
               if (exp) {
-                c.expires = exp;
+                c2.expires = exp;
               }
             }
             break;
@@ -10597,7 +10233,7 @@ var require_cookie = __commonJS({
             if (av_value) {
               if (/^-?[0-9]+$/.test(av_value)) {
                 var delta = parseInt(av_value, 10);
-                c.setMaxAge(delta);
+                c2.setMaxAge(delta);
               }
             }
             break;
@@ -10605,26 +10241,26 @@ var require_cookie = __commonJS({
             if (av_value) {
               var domain = av_value.trim().replace(/^\./, "");
               if (domain) {
-                c.domain = domain.toLowerCase();
+                c2.domain = domain.toLowerCase();
               }
             }
             break;
           case "path":
-            c.path = av_value && av_value[0] === "/" ? av_value : null;
+            c2.path = av_value && av_value[0] === "/" ? av_value : null;
             break;
           case "secure":
-            c.secure = true;
+            c2.secure = true;
             break;
           case "httponly":
-            c.httpOnly = true;
+            c2.httpOnly = true;
             break;
           default:
-            c.extensions = c.extensions || [];
-            c.extensions.push(av);
+            c2.extensions = c2.extensions || [];
+            c2.extensions.push(av);
             break;
         }
       }
-      return c;
+      return c2;
     }
     function jsonParse(str) {
       var obj;
@@ -10648,39 +10284,39 @@ var require_cookie = __commonJS({
       } else {
         obj = str;
       }
-      var c = new Cookie();
-      for (var i = 0; i < Cookie.serializableProperties.length; i++) {
-        var prop = Cookie.serializableProperties[i];
+      var c2 = new Cookie();
+      for (var i2 = 0; i2 < Cookie.serializableProperties.length; i2++) {
+        var prop = Cookie.serializableProperties[i2];
         if (obj[prop] === void 0 || obj[prop] === Cookie.prototype[prop]) {
           continue;
         }
         if (prop === "expires" || prop === "creation" || prop === "lastAccessed") {
           if (obj[prop] === null) {
-            c[prop] = null;
+            c2[prop] = null;
           } else {
-            c[prop] = obj[prop] == "Infinity" ? "Infinity" : new Date(obj[prop]);
+            c2[prop] = obj[prop] == "Infinity" ? "Infinity" : new Date(obj[prop]);
           }
         } else {
-          c[prop] = obj[prop];
+          c2[prop] = obj[prop];
         }
       }
-      return c;
+      return c2;
     }
-    function cookieCompare(a, b) {
+    function cookieCompare(a2, b2) {
       var cmp = 0;
-      var aPathLen = a.path ? a.path.length : 0;
-      var bPathLen = b.path ? b.path.length : 0;
+      var aPathLen = a2.path ? a2.path.length : 0;
+      var bPathLen = b2.path ? b2.path.length : 0;
       cmp = bPathLen - aPathLen;
       if (cmp !== 0) {
         return cmp;
       }
-      var aTime = a.creation ? a.creation.getTime() : MAX_TIME;
-      var bTime = b.creation ? b.creation.getTime() : MAX_TIME;
+      var aTime = a2.creation ? a2.creation.getTime() : MAX_TIME;
+      var bTime = b2.creation ? b2.creation.getTime() : MAX_TIME;
       cmp = aTime - bTime;
       if (cmp !== 0) {
         return cmp;
       }
-      cmp = a.creationIndex - b.creationIndex;
+      cmp = a2.creationIndex - b2.creationIndex;
       return cmp;
     }
     function permutePath(path) {
@@ -10763,8 +10399,8 @@ var require_cookie = __commonJS({
     Cookie.prototype.toJSON = function() {
       var obj = {};
       var props = Cookie.serializableProperties;
-      for (var i = 0; i < props.length; i++) {
-        var prop = props[i];
+      for (var i2 = 0; i2 < props.length; i2++) {
+        var prop = props[i2];
         if (this[prop] === Cookie.prototype[prop]) {
           continue;
         }
@@ -11041,27 +10677,27 @@ var require_cookie = __commonJS({
       var expireCheck = options.expire !== false;
       var allPaths = !!options.allPaths;
       var store = this.store;
-      function matchingCookie(c) {
-        if (c.hostOnly) {
-          if (c.domain != host) {
+      function matchingCookie(c2) {
+        if (c2.hostOnly) {
+          if (c2.domain != host) {
             return false;
           }
         } else {
-          if (!domainMatch(host, c.domain, false)) {
+          if (!domainMatch(host, c2.domain, false)) {
             return false;
           }
         }
-        if (!allPaths && !pathMatch(path, c.path)) {
+        if (!allPaths && !pathMatch(path, c2.path)) {
           return false;
         }
-        if (c.secure && !secure) {
+        if (c2.secure && !secure) {
           return false;
         }
-        if (c.httpOnly && !http) {
+        if (c2.httpOnly && !http) {
           return false;
         }
-        if (expireCheck && c.expiryTime() <= now) {
-          store.removeCookie(c.domain, c.path, c.key, function() {
+        if (expireCheck && c2.expiryTime() <= now) {
+          store.removeCookie(c2.domain, c2.path, c2.key, function() {
           });
           return false;
         }
@@ -11076,8 +10712,8 @@ var require_cookie = __commonJS({
           cookies = cookies.sort(cookieCompare);
         }
         var now2 = /* @__PURE__ */ new Date();
-        cookies.forEach(function(c) {
-          c.lastAccessed = now2;
+        cookies.forEach(function(c2) {
+          c2.lastAccessed = now2;
         });
         cb(null, cookies);
       });
@@ -11090,8 +10726,8 @@ var require_cookie = __commonJS({
         if (err) {
           cb(err);
         } else {
-          cb(null, cookies.sort(cookieCompare).map(function(c) {
-            return c.cookieString();
+          cb(null, cookies.sort(cookieCompare).map(function(c2) {
+            return c2.cookieString();
           }).join("; "));
         }
       };
@@ -11106,8 +10742,8 @@ var require_cookie = __commonJS({
         if (err) {
           cb(err);
         } else {
-          cb(null, cookies.map(function(c) {
-            return c.toString();
+          cb(null, cookies.map(function(c2) {
+            return c2.toString();
           }));
         }
       };
@@ -11458,11 +11094,11 @@ var require_helpers = __commonJS({
       return Buffer2.from(str || "", "utf8").toString("base64");
     }
     function copy(obj) {
-      var o = {};
-      Object.keys(obj).forEach(function(i) {
-        o[i] = obj[i];
+      var o2 = {};
+      Object.keys(obj).forEach(function(i2) {
+        o2[i2] = obj[i2];
       });
-      return o;
+      return o2;
     }
     function version() {
       var numbers = process.version.replace("v", "").split(".");
@@ -11528,14 +11164,14 @@ var require_aws_sign2 = __commonJS({
       var headers = options.amazonHeaders || "";
       if (headers)
         headers += "\n";
-      var r = [
+      var r2 = [
         options.verb,
         options.md5,
         options.contentType,
         options.date ? options.date.toUTCString() : "",
         headers + options.resource
       ];
-      return r.join("\n");
+      return r2.join("\n");
     }
     module.exports.stringToSign = stringToSign;
     function queryStringToSign(options) {
@@ -11544,8 +11180,8 @@ var require_aws_sign2 = __commonJS({
     module.exports.queryStringToSign = queryStringToSign;
     function canonicalizeHeaders(headers) {
       var buf = [], fields = Object.keys(headers);
-      for (var i = 0, len = fields.length; i < len; ++i) {
-        var field = fields[i], val = headers[field], field = field.toLowerCase();
+      for (var i2 = 0, len = fields.length; i2 < len; ++i2) {
+        var field = fields[i2], val = headers[field], field = field.toLowerCase();
         if (0 !== field.indexOf("x-amz"))
           continue;
         buf.push(field + ":" + val);
@@ -11677,8 +11313,8 @@ var require_aws4 = __commonJS({
       return crypto.createHash("sha256").update(string, "utf8").digest(encoding);
     }
     function encodeRfc3986(urlEncodedString) {
-      return urlEncodedString.replace(/[!'()*]/g, function(c) {
-        return "%" + c.charCodeAt(0).toString(16).toUpperCase();
+      return urlEncodedString.replace(/[!'()*]/g, function(c2) {
+        return "%" + c2.charCodeAt(0).toString(16).toUpperCase();
       });
     }
     function encodeRfc3986Full(str) {
@@ -11725,9 +11361,9 @@ var require_aws4 = __commonJS({
         hostParts[0] = "s3";
         hostParts[1] = "us-east-1";
       } else {
-        for (var i = 0; i < 2; i++) {
-          if (/^s3-/.test(hostParts[i])) {
-            hostParts[1] = hostParts[i].slice(3);
+        for (var i2 = 0; i2 < 2; i2++) {
+          if (/^s3-/.test(hostParts[i2])) {
+            hostParts[1] = hostParts[i2].slice(3);
             hostParts[0] = "s3";
             break;
           }
@@ -11892,8 +11528,8 @@ var require_aws4 = __commonJS({
       }
       return Object.keys(headers).filter(function(key) {
         return HEADERS_TO_IGNORE[key.toLowerCase()] == null;
-      }).sort(function(a, b) {
-        return a.toLowerCase() < b.toLowerCase() ? -1 : 1;
+      }).sort(function(a2, b2) {
+        return a2.toLowerCase() < b2.toLowerCase() ? -1 : 1;
       }).map(function(key) {
         return key.toLowerCase() + ":" + trimAll(headers[key]);
       }).join("\n");
@@ -12060,62 +11696,62 @@ var require_assert = __commonJS({
           }
         };
       }
-      keys.forEach(function(k) {
+      keys.forEach(function(k2) {
         if (ndebug) {
-          out[k] = noop;
+          out[k2] = noop;
           return;
         }
-        var type = types[k];
-        out[k] = function(arg, msg) {
+        var type = types[k2];
+        out[k2] = function(arg, msg) {
           if (!type.check(arg)) {
-            _toss(msg, k, type.operator, arg, type.actual);
+            _toss(msg, k2, type.operator, arg, type.actual);
           }
         };
       });
-      keys.forEach(function(k) {
-        var name = "optional" + _capitalize(k);
+      keys.forEach(function(k2) {
+        var name = "optional" + _capitalize(k2);
         if (ndebug) {
           out[name] = noop;
           return;
         }
-        var type = types[k];
+        var type = types[k2];
         out[name] = function(arg, msg) {
           if (arg === void 0 || arg === null) {
             return;
           }
           if (!type.check(arg)) {
-            _toss(msg, k, type.operator, arg, type.actual);
+            _toss(msg, k2, type.operator, arg, type.actual);
           }
         };
       });
-      keys.forEach(function(k) {
-        var name = "arrayOf" + _capitalize(k);
+      keys.forEach(function(k2) {
+        var name = "arrayOf" + _capitalize(k2);
         if (ndebug) {
           out[name] = noop;
           return;
         }
-        var type = types[k];
-        var expected = "[" + k + "]";
+        var type = types[k2];
+        var expected = "[" + k2 + "]";
         out[name] = function(arg, msg) {
           if (!Array.isArray(arg)) {
             _toss(msg, expected, type.operator, arg, type.actual);
           }
-          var i;
-          for (i = 0; i < arg.length; i++) {
-            if (!type.check(arg[i])) {
+          var i2;
+          for (i2 = 0; i2 < arg.length; i2++) {
+            if (!type.check(arg[i2])) {
               _toss(msg, expected, type.operator, arg, type.actual);
             }
           }
         };
       });
-      keys.forEach(function(k) {
-        var name = "optionalArrayOf" + _capitalize(k);
+      keys.forEach(function(k2) {
+        var name = "optionalArrayOf" + _capitalize(k2);
         if (ndebug) {
           out[name] = noop;
           return;
         }
-        var type = types[k];
-        var expected = "[" + k + "]";
+        var type = types[k2];
+        var expected = "[" + k2 + "]";
         out[name] = function(arg, msg) {
           if (arg === void 0 || arg === null) {
             return;
@@ -12123,24 +11759,24 @@ var require_assert = __commonJS({
           if (!Array.isArray(arg)) {
             _toss(msg, expected, type.operator, arg, type.actual);
           }
-          var i;
-          for (i = 0; i < arg.length; i++) {
-            if (!type.check(arg[i])) {
+          var i2;
+          for (i2 = 0; i2 < arg.length; i2++) {
+            if (!type.check(arg[i2])) {
               _toss(msg, expected, type.operator, arg, type.actual);
             }
           }
         };
       });
-      Object.keys(assert).forEach(function(k) {
-        if (k === "AssertionError") {
-          out[k] = assert[k];
+      Object.keys(assert).forEach(function(k2) {
+        if (k2 === "AssertionError") {
+          out[k2] = assert[k2];
           return;
         }
         if (ndebug) {
-          out[k] = noop;
+          out[k2] = noop;
           return;
         }
-        out[k] = assert[k];
+        out[k2] = assert[k2];
       });
       out._setExports = _setExports;
       return out;
@@ -12483,10 +12119,10 @@ var require_reader = __commonJS({
     Reader.prototype.readByte = function(peek) {
       if (this._size - this._offset < 1)
         return null;
-      var b = this._buf[this._offset] & 255;
+      var b2 = this._buf[this._offset] & 255;
       if (!peek)
         this._offset += 1;
-      return b;
+      return b2;
     };
     Reader.prototype.peek = function() {
       return this.readByte(true);
@@ -12508,7 +12144,7 @@ var require_reader = __commonJS({
         if (this._size - offset2 < lenB)
           return null;
         this._len = 0;
-        for (var i = 0; i < lenB; i++)
+        for (var i2 = 0; i2 < lenB; i2++)
           this._len = (this._len << 8) + (this._buf[offset2++] & 255);
       } else {
         this._len = lenB;
@@ -12521,10 +12157,10 @@ var require_reader = __commonJS({
         return null;
       if (tag !== void 0 && tag !== seq)
         throw newInvalidAsn1Error("Expected 0x" + tag.toString(16) + ": got 0x" + seq.toString(16));
-      var o = this.readLength(this._offset + 1);
-      if (o === null)
+      var o2 = this.readLength(this._offset + 1);
+      if (o2 === null)
         return null;
-      this._offset = o;
+      this._offset = o2;
       return seq;
     };
     Reader.prototype.readInt = function() {
@@ -12539,17 +12175,17 @@ var require_reader = __commonJS({
     Reader.prototype.readString = function(tag, retbuf) {
       if (!tag)
         tag = ASN1.OctetString;
-      var b = this.peek();
-      if (b === null)
+      var b2 = this.peek();
+      if (b2 === null)
         return null;
-      if (b !== tag)
-        throw newInvalidAsn1Error("Expected 0x" + tag.toString(16) + ": got 0x" + b.toString(16));
-      var o = this.readLength(this._offset + 1);
-      if (o === null)
+      if (b2 !== tag)
+        throw newInvalidAsn1Error("Expected 0x" + tag.toString(16) + ": got 0x" + b2.toString(16));
+      var o2 = this.readLength(this._offset + 1);
+      if (o2 === null)
         return null;
-      if (this.length > this._size - o)
+      if (this.length > this._size - o2)
         return null;
-      this._offset = o;
+      this._offset = o2;
       if (this.length === 0)
         return retbuf ? Buffer2.alloc(0) : "";
       var str = this._buf.slice(this._offset, this._offset + this.length);
@@ -12559,13 +12195,13 @@ var require_reader = __commonJS({
     Reader.prototype.readOID = function(tag) {
       if (!tag)
         tag = ASN1.OID;
-      var b = this.readString(tag, true);
-      if (b === null)
+      var b2 = this.readString(tag, true);
+      if (b2 === null)
         return null;
       var values = [];
       var value = 0;
-      for (var i = 0; i < b.length; i++) {
-        var byte = b[i] & 255;
+      for (var i2 = 0; i2 < b2.length; i2++) {
+        var byte = b2[i2] & 255;
         value <<= 7;
         value += byte & 127;
         if ((byte & 128) === 0) {
@@ -12580,27 +12216,27 @@ var require_reader = __commonJS({
     };
     Reader.prototype._readTag = function(tag) {
       assert.ok(tag !== void 0);
-      var b = this.peek();
-      if (b === null)
+      var b2 = this.peek();
+      if (b2 === null)
         return null;
-      if (b !== tag)
-        throw newInvalidAsn1Error("Expected 0x" + tag.toString(16) + ": got 0x" + b.toString(16));
-      var o = this.readLength(this._offset + 1);
-      if (o === null)
+      if (b2 !== tag)
+        throw newInvalidAsn1Error("Expected 0x" + tag.toString(16) + ": got 0x" + b2.toString(16));
+      var o2 = this.readLength(this._offset + 1);
+      if (o2 === null)
         return null;
       if (this.length > 4)
         throw newInvalidAsn1Error("Integer too long: " + this.length);
-      if (this.length > this._size - o)
+      if (this.length > this._size - o2)
         return null;
-      this._offset = o;
+      this._offset = o2;
       var fb = this._buf[this._offset];
       var value = 0;
-      for (var i = 0; i < this.length; i++) {
+      for (var i2 = 0; i2 < this.length; i2++) {
         value <<= 8;
         value |= this._buf[this._offset++] & 255;
       }
-      if ((fb & 128) === 128 && i !== 4)
-        value -= 1 << i * 8;
+      if ((fb & 128) === 128 && i2 !== 4)
+        value -= 1 << i2 * 8;
       return value >> 0;
     };
     module.exports = Reader;
@@ -12649,21 +12285,21 @@ var require_writer = __commonJS({
         return this._buf.slice(0, this._offset);
       }
     });
-    Writer.prototype.writeByte = function(b) {
-      if (typeof b !== "number")
+    Writer.prototype.writeByte = function(b2) {
+      if (typeof b2 !== "number")
         throw new TypeError("argument must be a Number");
       this._ensure(1);
-      this._buf[this._offset++] = b;
+      this._buf[this._offset++] = b2;
     };
-    Writer.prototype.writeInt = function(i, tag) {
-      if (typeof i !== "number")
+    Writer.prototype.writeInt = function(i2, tag) {
+      if (typeof i2 !== "number")
         throw new TypeError("argument must be a Number");
       if (typeof tag !== "number")
         tag = ASN1.Integer;
       var sz = 4;
-      while (((i & 4286578688) === 0 || (i & 4286578688) === 4286578688 >> 0) && sz > 1) {
+      while (((i2 & 4286578688) === 0 || (i2 & 4286578688) === 4286578688 >> 0) && sz > 1) {
         sz--;
-        i <<= 8;
+        i2 <<= 8;
       }
       if (sz > 4)
         throw newInvalidAsn1Error("BER ints cannot be > 0xffffffff");
@@ -12671,42 +12307,42 @@ var require_writer = __commonJS({
       this._buf[this._offset++] = tag;
       this._buf[this._offset++] = sz;
       while (sz-- > 0) {
-        this._buf[this._offset++] = (i & 4278190080) >>> 24;
-        i <<= 8;
+        this._buf[this._offset++] = (i2 & 4278190080) >>> 24;
+        i2 <<= 8;
       }
     };
     Writer.prototype.writeNull = function() {
       this.writeByte(ASN1.Null);
       this.writeByte(0);
     };
-    Writer.prototype.writeEnumeration = function(i, tag) {
-      if (typeof i !== "number")
+    Writer.prototype.writeEnumeration = function(i2, tag) {
+      if (typeof i2 !== "number")
         throw new TypeError("argument must be a Number");
       if (typeof tag !== "number")
         tag = ASN1.Enumeration;
-      return this.writeInt(i, tag);
+      return this.writeInt(i2, tag);
     };
-    Writer.prototype.writeBoolean = function(b, tag) {
-      if (typeof b !== "boolean")
+    Writer.prototype.writeBoolean = function(b2, tag) {
+      if (typeof b2 !== "boolean")
         throw new TypeError("argument must be a Boolean");
       if (typeof tag !== "number")
         tag = ASN1.Boolean;
       this._ensure(3);
       this._buf[this._offset++] = tag;
       this._buf[this._offset++] = 1;
-      this._buf[this._offset++] = b ? 255 : 0;
+      this._buf[this._offset++] = b2 ? 255 : 0;
     };
-    Writer.prototype.writeString = function(s, tag) {
-      if (typeof s !== "string")
-        throw new TypeError("argument must be a string (was: " + typeof s + ")");
+    Writer.prototype.writeString = function(s2, tag) {
+      if (typeof s2 !== "string")
+        throw new TypeError("argument must be a string (was: " + typeof s2 + ")");
       if (typeof tag !== "number")
         tag = ASN1.OctetString;
-      var len = Buffer2.byteLength(s);
+      var len = Buffer2.byteLength(s2);
       this.writeByte(tag);
       this.writeLength(len);
       if (len) {
         this._ensure(len);
-        this._buf.write(s, this._offset);
+        this._buf.write(s2, this._offset);
         this._offset += len;
       }
     };
@@ -12725,16 +12361,16 @@ var require_writer = __commonJS({
       if (!strings instanceof Array)
         throw new TypeError("argument must be an Array[String]");
       var self2 = this;
-      strings.forEach(function(s) {
-        self2.writeString(s);
+      strings.forEach(function(s2) {
+        self2.writeString(s2);
       });
     };
-    Writer.prototype.writeOID = function(s, tag) {
-      if (typeof s !== "string")
+    Writer.prototype.writeOID = function(s2, tag) {
+      if (typeof s2 !== "string")
         throw new TypeError("argument must be a string");
       if (typeof tag !== "number")
         tag = ASN1.OID;
-      if (!/^([0-9]+\.){3,}[0-9]+$/.test(s))
+      if (!/^([0-9]+\.){3,}[0-9]+$/.test(s2))
         throw new Error("argument is not a valid OID string");
       function encodeOctet(bytes2, octet) {
         if (octet < 128) {
@@ -12759,18 +12395,18 @@ var require_writer = __commonJS({
           bytes2.push(octet & 127);
         }
       }
-      var tmp = s.split(".");
+      var tmp = s2.split(".");
       var bytes = [];
       bytes.push(parseInt(tmp[0], 10) * 40 + parseInt(tmp[1], 10));
-      tmp.slice(2).forEach(function(b) {
-        encodeOctet(bytes, parseInt(b, 10));
+      tmp.slice(2).forEach(function(b2) {
+        encodeOctet(bytes, parseInt(b2, 10));
       });
       var self2 = this;
       this._ensure(2 + bytes.length);
       this.writeByte(tag);
       this.writeLength(bytes.length);
-      bytes.forEach(function(b) {
-        self2.writeByte(b);
+      bytes.forEach(function(b2) {
+        self2.writeByte(b2);
       });
     };
     Writer.prototype.writeLength = function(len) {
@@ -12863,11 +12499,11 @@ var require_ber = __commonJS({
       Reader,
       Writer
     };
-    for (t in types) {
-      if (types.hasOwnProperty(t))
-        module.exports[t] = types[t];
+    for (t2 in types) {
+      if (types.hasOwnProperty(t2))
+        module.exports[t2] = types[t2];
     }
-    var t;
+    var t2;
     for (e in errors) {
       if (errors.hasOwnProperty(e))
         module.exports[e] = errors[e];
@@ -12897,49 +12533,49 @@ var require_jsbn = __commonJS({
       var dbits;
       var canary = 244837814094590;
       var j_lm = (canary & 16777215) == 15715070;
-      function BigInteger(a, b, c) {
-        if (a != null)
-          if ("number" == typeof a)
-            this.fromNumber(a, b, c);
-          else if (b == null && "string" != typeof a)
-            this.fromString(a, 256);
+      function BigInteger(a2, b2, c2) {
+        if (a2 != null)
+          if ("number" == typeof a2)
+            this.fromNumber(a2, b2, c2);
+          else if (b2 == null && "string" != typeof a2)
+            this.fromString(a2, 256);
           else
-            this.fromString(a, b);
+            this.fromString(a2, b2);
       }
       function nbi() {
         return new BigInteger(null);
       }
-      function am1(i, x, w, j, c, n) {
-        while (--n >= 0) {
-          var v = x * this[i++] + w[j] + c;
-          c = Math.floor(v / 67108864);
-          w[j++] = v & 67108863;
+      function am1(i2, x2, w2, j2, c2, n2) {
+        while (--n2 >= 0) {
+          var v2 = x2 * this[i2++] + w2[j2] + c2;
+          c2 = Math.floor(v2 / 67108864);
+          w2[j2++] = v2 & 67108863;
         }
-        return c;
+        return c2;
       }
-      function am2(i, x, w, j, c, n) {
-        var xl = x & 32767, xh = x >> 15;
-        while (--n >= 0) {
-          var l = this[i] & 32767;
-          var h = this[i++] >> 15;
-          var m = xh * l + h * xl;
-          l = xl * l + ((m & 32767) << 15) + w[j] + (c & 1073741823);
-          c = (l >>> 30) + (m >>> 15) + xh * h + (c >>> 30);
-          w[j++] = l & 1073741823;
+      function am2(i2, x2, w2, j2, c2, n2) {
+        var xl = x2 & 32767, xh = x2 >> 15;
+        while (--n2 >= 0) {
+          var l2 = this[i2] & 32767;
+          var h2 = this[i2++] >> 15;
+          var m = xh * l2 + h2 * xl;
+          l2 = xl * l2 + ((m & 32767) << 15) + w2[j2] + (c2 & 1073741823);
+          c2 = (l2 >>> 30) + (m >>> 15) + xh * h2 + (c2 >>> 30);
+          w2[j2++] = l2 & 1073741823;
         }
-        return c;
+        return c2;
       }
-      function am3(i, x, w, j, c, n) {
-        var xl = x & 16383, xh = x >> 14;
-        while (--n >= 0) {
-          var l = this[i] & 16383;
-          var h = this[i++] >> 14;
-          var m = xh * l + h * xl;
-          l = xl * l + ((m & 16383) << 14) + w[j] + c;
-          c = (l >> 28) + (m >> 14) + xh * h;
-          w[j++] = l & 268435455;
+      function am3(i2, x2, w2, j2, c2, n2) {
+        var xl = x2 & 16383, xh = x2 >> 14;
+        while (--n2 >= 0) {
+          var l2 = this[i2] & 16383;
+          var h2 = this[i2++] >> 14;
+          var m = xh * l2 + h2 * xl;
+          l2 = xl * l2 + ((m & 16383) << 14) + w2[j2] + c2;
+          c2 = (l2 >> 28) + (m >> 14) + xh * h2;
+          w2[j2++] = l2 & 268435455;
         }
-        return c;
+        return c2;
       }
       var inBrowser = typeof navigator !== "undefined";
       if (inBrowser && j_lm && navigator.appName == "Microsoft Internet Explorer") {
@@ -12971,75 +12607,75 @@ var require_jsbn = __commonJS({
       rr = "A".charCodeAt(0);
       for (vv = 10; vv < 36; ++vv)
         BI_RC[rr++] = vv;
-      function int2char(n) {
-        return BI_RM.charAt(n);
+      function int2char(n2) {
+        return BI_RM.charAt(n2);
       }
-      function intAt(s, i) {
-        var c = BI_RC[s.charCodeAt(i)];
-        return c == null ? -1 : c;
+      function intAt(s2, i2) {
+        var c2 = BI_RC[s2.charCodeAt(i2)];
+        return c2 == null ? -1 : c2;
       }
-      function bnpCopyTo(r) {
-        for (var i = this.t - 1; i >= 0; --i)
-          r[i] = this[i];
-        r.t = this.t;
-        r.s = this.s;
+      function bnpCopyTo(r2) {
+        for (var i2 = this.t - 1; i2 >= 0; --i2)
+          r2[i2] = this[i2];
+        r2.t = this.t;
+        r2.s = this.s;
       }
-      function bnpFromInt(x) {
+      function bnpFromInt(x2) {
         this.t = 1;
-        this.s = x < 0 ? -1 : 0;
-        if (x > 0)
-          this[0] = x;
-        else if (x < -1)
-          this[0] = x + this.DV;
+        this.s = x2 < 0 ? -1 : 0;
+        if (x2 > 0)
+          this[0] = x2;
+        else if (x2 < -1)
+          this[0] = x2 + this.DV;
         else
           this.t = 0;
       }
-      function nbv(i) {
-        var r = nbi();
-        r.fromInt(i);
-        return r;
+      function nbv(i2) {
+        var r2 = nbi();
+        r2.fromInt(i2);
+        return r2;
       }
-      function bnpFromString(s, b) {
-        var k;
-        if (b == 16)
-          k = 4;
-        else if (b == 8)
-          k = 3;
-        else if (b == 256)
-          k = 8;
-        else if (b == 2)
-          k = 1;
-        else if (b == 32)
-          k = 5;
-        else if (b == 4)
-          k = 2;
+      function bnpFromString(s2, b2) {
+        var k2;
+        if (b2 == 16)
+          k2 = 4;
+        else if (b2 == 8)
+          k2 = 3;
+        else if (b2 == 256)
+          k2 = 8;
+        else if (b2 == 2)
+          k2 = 1;
+        else if (b2 == 32)
+          k2 = 5;
+        else if (b2 == 4)
+          k2 = 2;
         else {
-          this.fromRadix(s, b);
+          this.fromRadix(s2, b2);
           return;
         }
         this.t = 0;
         this.s = 0;
-        var i = s.length, mi = false, sh = 0;
-        while (--i >= 0) {
-          var x = k == 8 ? s[i] & 255 : intAt(s, i);
-          if (x < 0) {
-            if (s.charAt(i) == "-")
+        var i2 = s2.length, mi = false, sh = 0;
+        while (--i2 >= 0) {
+          var x2 = k2 == 8 ? s2[i2] & 255 : intAt(s2, i2);
+          if (x2 < 0) {
+            if (s2.charAt(i2) == "-")
               mi = true;
             continue;
           }
           mi = false;
           if (sh == 0)
-            this[this.t++] = x;
-          else if (sh + k > this.DB) {
-            this[this.t - 1] |= (x & (1 << this.DB - sh) - 1) << sh;
-            this[this.t++] = x >> this.DB - sh;
+            this[this.t++] = x2;
+          else if (sh + k2 > this.DB) {
+            this[this.t - 1] |= (x2 & (1 << this.DB - sh) - 1) << sh;
+            this[this.t++] = x2 >> this.DB - sh;
           } else
-            this[this.t - 1] |= x << sh;
-          sh += k;
+            this[this.t - 1] |= x2 << sh;
+          sh += k2;
           if (sh >= this.DB)
             sh -= this.DB;
         }
-        if (k == 8 && (s[0] & 128) != 0) {
+        if (k2 == 8 && (s2[0] & 128) != 0) {
           this.s = -1;
           if (sh > 0)
             this[this.t - 1] |= (1 << this.DB - sh) - 1 << sh;
@@ -13049,304 +12685,304 @@ var require_jsbn = __commonJS({
           BigInteger.ZERO.subTo(this, this);
       }
       function bnpClamp() {
-        var c = this.s & this.DM;
-        while (this.t > 0 && this[this.t - 1] == c)
+        var c2 = this.s & this.DM;
+        while (this.t > 0 && this[this.t - 1] == c2)
           --this.t;
       }
-      function bnToString(b) {
+      function bnToString(b2) {
         if (this.s < 0)
-          return "-" + this.negate().toString(b);
-        var k;
-        if (b == 16)
-          k = 4;
-        else if (b == 8)
-          k = 3;
-        else if (b == 2)
-          k = 1;
-        else if (b == 32)
-          k = 5;
-        else if (b == 4)
-          k = 2;
+          return "-" + this.negate().toString(b2);
+        var k2;
+        if (b2 == 16)
+          k2 = 4;
+        else if (b2 == 8)
+          k2 = 3;
+        else if (b2 == 2)
+          k2 = 1;
+        else if (b2 == 32)
+          k2 = 5;
+        else if (b2 == 4)
+          k2 = 2;
         else
-          return this.toRadix(b);
-        var km = (1 << k) - 1, d, m = false, r = "", i = this.t;
-        var p = this.DB - i * this.DB % k;
-        if (i-- > 0) {
-          if (p < this.DB && (d = this[i] >> p) > 0) {
+          return this.toRadix(b2);
+        var km = (1 << k2) - 1, d2, m = false, r2 = "", i2 = this.t;
+        var p2 = this.DB - i2 * this.DB % k2;
+        if (i2-- > 0) {
+          if (p2 < this.DB && (d2 = this[i2] >> p2) > 0) {
             m = true;
-            r = int2char(d);
+            r2 = int2char(d2);
           }
-          while (i >= 0) {
-            if (p < k) {
-              d = (this[i] & (1 << p) - 1) << k - p;
-              d |= this[--i] >> (p += this.DB - k);
+          while (i2 >= 0) {
+            if (p2 < k2) {
+              d2 = (this[i2] & (1 << p2) - 1) << k2 - p2;
+              d2 |= this[--i2] >> (p2 += this.DB - k2);
             } else {
-              d = this[i] >> (p -= k) & km;
-              if (p <= 0) {
-                p += this.DB;
-                --i;
+              d2 = this[i2] >> (p2 -= k2) & km;
+              if (p2 <= 0) {
+                p2 += this.DB;
+                --i2;
               }
             }
-            if (d > 0)
+            if (d2 > 0)
               m = true;
             if (m)
-              r += int2char(d);
+              r2 += int2char(d2);
           }
         }
-        return m ? r : "0";
+        return m ? r2 : "0";
       }
       function bnNegate() {
-        var r = nbi();
-        BigInteger.ZERO.subTo(this, r);
-        return r;
+        var r2 = nbi();
+        BigInteger.ZERO.subTo(this, r2);
+        return r2;
       }
       function bnAbs() {
         return this.s < 0 ? this.negate() : this;
       }
-      function bnCompareTo(a) {
-        var r = this.s - a.s;
-        if (r != 0)
-          return r;
-        var i = this.t;
-        r = i - a.t;
-        if (r != 0)
-          return this.s < 0 ? -r : r;
-        while (--i >= 0)
-          if ((r = this[i] - a[i]) != 0)
-            return r;
+      function bnCompareTo(a2) {
+        var r2 = this.s - a2.s;
+        if (r2 != 0)
+          return r2;
+        var i2 = this.t;
+        r2 = i2 - a2.t;
+        if (r2 != 0)
+          return this.s < 0 ? -r2 : r2;
+        while (--i2 >= 0)
+          if ((r2 = this[i2] - a2[i2]) != 0)
+            return r2;
         return 0;
       }
-      function nbits(x) {
-        var r = 1, t2;
-        if ((t2 = x >>> 16) != 0) {
-          x = t2;
-          r += 16;
+      function nbits(x2) {
+        var r2 = 1, t3;
+        if ((t3 = x2 >>> 16) != 0) {
+          x2 = t3;
+          r2 += 16;
         }
-        if ((t2 = x >> 8) != 0) {
-          x = t2;
-          r += 8;
+        if ((t3 = x2 >> 8) != 0) {
+          x2 = t3;
+          r2 += 8;
         }
-        if ((t2 = x >> 4) != 0) {
-          x = t2;
-          r += 4;
+        if ((t3 = x2 >> 4) != 0) {
+          x2 = t3;
+          r2 += 4;
         }
-        if ((t2 = x >> 2) != 0) {
-          x = t2;
-          r += 2;
+        if ((t3 = x2 >> 2) != 0) {
+          x2 = t3;
+          r2 += 2;
         }
-        if ((t2 = x >> 1) != 0) {
-          x = t2;
-          r += 1;
+        if ((t3 = x2 >> 1) != 0) {
+          x2 = t3;
+          r2 += 1;
         }
-        return r;
+        return r2;
       }
       function bnBitLength() {
         if (this.t <= 0)
           return 0;
         return this.DB * (this.t - 1) + nbits(this[this.t - 1] ^ this.s & this.DM);
       }
-      function bnpDLShiftTo(n, r) {
-        var i;
-        for (i = this.t - 1; i >= 0; --i)
-          r[i + n] = this[i];
-        for (i = n - 1; i >= 0; --i)
-          r[i] = 0;
-        r.t = this.t + n;
-        r.s = this.s;
+      function bnpDLShiftTo(n2, r2) {
+        var i2;
+        for (i2 = this.t - 1; i2 >= 0; --i2)
+          r2[i2 + n2] = this[i2];
+        for (i2 = n2 - 1; i2 >= 0; --i2)
+          r2[i2] = 0;
+        r2.t = this.t + n2;
+        r2.s = this.s;
       }
-      function bnpDRShiftTo(n, r) {
-        for (var i = n; i < this.t; ++i)
-          r[i - n] = this[i];
-        r.t = Math.max(this.t - n, 0);
-        r.s = this.s;
+      function bnpDRShiftTo(n2, r2) {
+        for (var i2 = n2; i2 < this.t; ++i2)
+          r2[i2 - n2] = this[i2];
+        r2.t = Math.max(this.t - n2, 0);
+        r2.s = this.s;
       }
-      function bnpLShiftTo(n, r) {
-        var bs = n % this.DB;
+      function bnpLShiftTo(n2, r2) {
+        var bs = n2 % this.DB;
         var cbs = this.DB - bs;
         var bm = (1 << cbs) - 1;
-        var ds = Math.floor(n / this.DB), c = this.s << bs & this.DM, i;
-        for (i = this.t - 1; i >= 0; --i) {
-          r[i + ds + 1] = this[i] >> cbs | c;
-          c = (this[i] & bm) << bs;
+        var ds = Math.floor(n2 / this.DB), c2 = this.s << bs & this.DM, i2;
+        for (i2 = this.t - 1; i2 >= 0; --i2) {
+          r2[i2 + ds + 1] = this[i2] >> cbs | c2;
+          c2 = (this[i2] & bm) << bs;
         }
-        for (i = ds - 1; i >= 0; --i)
-          r[i] = 0;
-        r[ds] = c;
-        r.t = this.t + ds + 1;
-        r.s = this.s;
-        r.clamp();
+        for (i2 = ds - 1; i2 >= 0; --i2)
+          r2[i2] = 0;
+        r2[ds] = c2;
+        r2.t = this.t + ds + 1;
+        r2.s = this.s;
+        r2.clamp();
       }
-      function bnpRShiftTo(n, r) {
-        r.s = this.s;
-        var ds = Math.floor(n / this.DB);
+      function bnpRShiftTo(n2, r2) {
+        r2.s = this.s;
+        var ds = Math.floor(n2 / this.DB);
         if (ds >= this.t) {
-          r.t = 0;
+          r2.t = 0;
           return;
         }
-        var bs = n % this.DB;
+        var bs = n2 % this.DB;
         var cbs = this.DB - bs;
         var bm = (1 << bs) - 1;
-        r[0] = this[ds] >> bs;
-        for (var i = ds + 1; i < this.t; ++i) {
-          r[i - ds - 1] |= (this[i] & bm) << cbs;
-          r[i - ds] = this[i] >> bs;
+        r2[0] = this[ds] >> bs;
+        for (var i2 = ds + 1; i2 < this.t; ++i2) {
+          r2[i2 - ds - 1] |= (this[i2] & bm) << cbs;
+          r2[i2 - ds] = this[i2] >> bs;
         }
         if (bs > 0)
-          r[this.t - ds - 1] |= (this.s & bm) << cbs;
-        r.t = this.t - ds;
-        r.clamp();
+          r2[this.t - ds - 1] |= (this.s & bm) << cbs;
+        r2.t = this.t - ds;
+        r2.clamp();
       }
-      function bnpSubTo(a, r) {
-        var i = 0, c = 0, m = Math.min(a.t, this.t);
-        while (i < m) {
-          c += this[i] - a[i];
-          r[i++] = c & this.DM;
-          c >>= this.DB;
+      function bnpSubTo(a2, r2) {
+        var i2 = 0, c2 = 0, m = Math.min(a2.t, this.t);
+        while (i2 < m) {
+          c2 += this[i2] - a2[i2];
+          r2[i2++] = c2 & this.DM;
+          c2 >>= this.DB;
         }
-        if (a.t < this.t) {
-          c -= a.s;
-          while (i < this.t) {
-            c += this[i];
-            r[i++] = c & this.DM;
-            c >>= this.DB;
+        if (a2.t < this.t) {
+          c2 -= a2.s;
+          while (i2 < this.t) {
+            c2 += this[i2];
+            r2[i2++] = c2 & this.DM;
+            c2 >>= this.DB;
           }
-          c += this.s;
+          c2 += this.s;
         } else {
-          c += this.s;
-          while (i < a.t) {
-            c -= a[i];
-            r[i++] = c & this.DM;
-            c >>= this.DB;
+          c2 += this.s;
+          while (i2 < a2.t) {
+            c2 -= a2[i2];
+            r2[i2++] = c2 & this.DM;
+            c2 >>= this.DB;
           }
-          c -= a.s;
+          c2 -= a2.s;
         }
-        r.s = c < 0 ? -1 : 0;
-        if (c < -1)
-          r[i++] = this.DV + c;
-        else if (c > 0)
-          r[i++] = c;
-        r.t = i;
-        r.clamp();
+        r2.s = c2 < 0 ? -1 : 0;
+        if (c2 < -1)
+          r2[i2++] = this.DV + c2;
+        else if (c2 > 0)
+          r2[i2++] = c2;
+        r2.t = i2;
+        r2.clamp();
       }
-      function bnpMultiplyTo(a, r) {
-        var x = this.abs(), y = a.abs();
-        var i = x.t;
-        r.t = i + y.t;
-        while (--i >= 0)
-          r[i] = 0;
-        for (i = 0; i < y.t; ++i)
-          r[i + x.t] = x.am(0, y[i], r, i, 0, x.t);
-        r.s = 0;
-        r.clamp();
-        if (this.s != a.s)
-          BigInteger.ZERO.subTo(r, r);
+      function bnpMultiplyTo(a2, r2) {
+        var x2 = this.abs(), y2 = a2.abs();
+        var i2 = x2.t;
+        r2.t = i2 + y2.t;
+        while (--i2 >= 0)
+          r2[i2] = 0;
+        for (i2 = 0; i2 < y2.t; ++i2)
+          r2[i2 + x2.t] = x2.am(0, y2[i2], r2, i2, 0, x2.t);
+        r2.s = 0;
+        r2.clamp();
+        if (this.s != a2.s)
+          BigInteger.ZERO.subTo(r2, r2);
       }
-      function bnpSquareTo(r) {
-        var x = this.abs();
-        var i = r.t = 2 * x.t;
-        while (--i >= 0)
-          r[i] = 0;
-        for (i = 0; i < x.t - 1; ++i) {
-          var c = x.am(i, x[i], r, 2 * i, 0, 1);
-          if ((r[i + x.t] += x.am(i + 1, 2 * x[i], r, 2 * i + 1, c, x.t - i - 1)) >= x.DV) {
-            r[i + x.t] -= x.DV;
-            r[i + x.t + 1] = 1;
+      function bnpSquareTo(r2) {
+        var x2 = this.abs();
+        var i2 = r2.t = 2 * x2.t;
+        while (--i2 >= 0)
+          r2[i2] = 0;
+        for (i2 = 0; i2 < x2.t - 1; ++i2) {
+          var c2 = x2.am(i2, x2[i2], r2, 2 * i2, 0, 1);
+          if ((r2[i2 + x2.t] += x2.am(i2 + 1, 2 * x2[i2], r2, 2 * i2 + 1, c2, x2.t - i2 - 1)) >= x2.DV) {
+            r2[i2 + x2.t] -= x2.DV;
+            r2[i2 + x2.t + 1] = 1;
           }
         }
-        if (r.t > 0)
-          r[r.t - 1] += x.am(i, x[i], r, 2 * i, 0, 1);
-        r.s = 0;
-        r.clamp();
+        if (r2.t > 0)
+          r2[r2.t - 1] += x2.am(i2, x2[i2], r2, 2 * i2, 0, 1);
+        r2.s = 0;
+        r2.clamp();
       }
-      function bnpDivRemTo(m, q2, r) {
+      function bnpDivRemTo(m, q3, r2) {
         var pm = m.abs();
         if (pm.t <= 0)
           return;
         var pt = this.abs();
         if (pt.t < pm.t) {
-          if (q2 != null)
-            q2.fromInt(0);
-          if (r != null)
-            this.copyTo(r);
+          if (q3 != null)
+            q3.fromInt(0);
+          if (r2 != null)
+            this.copyTo(r2);
           return;
         }
-        if (r == null)
-          r = nbi();
-        var y = nbi(), ts = this.s, ms = m.s;
+        if (r2 == null)
+          r2 = nbi();
+        var y2 = nbi(), ts = this.s, ms = m.s;
         var nsh = this.DB - nbits(pm[pm.t - 1]);
         if (nsh > 0) {
-          pm.lShiftTo(nsh, y);
-          pt.lShiftTo(nsh, r);
+          pm.lShiftTo(nsh, y2);
+          pt.lShiftTo(nsh, r2);
         } else {
-          pm.copyTo(y);
-          pt.copyTo(r);
+          pm.copyTo(y2);
+          pt.copyTo(r2);
         }
-        var ys = y.t;
-        var y0 = y[ys - 1];
+        var ys = y2.t;
+        var y0 = y2[ys - 1];
         if (y0 == 0)
           return;
-        var yt = y0 * (1 << this.F1) + (ys > 1 ? y[ys - 2] >> this.F2 : 0);
+        var yt = y0 * (1 << this.F1) + (ys > 1 ? y2[ys - 2] >> this.F2 : 0);
         var d1 = this.FV / yt, d2 = (1 << this.F1) / yt, e = 1 << this.F2;
-        var i = r.t, j = i - ys, t2 = q2 == null ? nbi() : q2;
-        y.dlShiftTo(j, t2);
-        if (r.compareTo(t2) >= 0) {
-          r[r.t++] = 1;
-          r.subTo(t2, r);
+        var i2 = r2.t, j2 = i2 - ys, t3 = q3 == null ? nbi() : q3;
+        y2.dlShiftTo(j2, t3);
+        if (r2.compareTo(t3) >= 0) {
+          r2[r2.t++] = 1;
+          r2.subTo(t3, r2);
         }
-        BigInteger.ONE.dlShiftTo(ys, t2);
-        t2.subTo(y, y);
-        while (y.t < ys)
-          y[y.t++] = 0;
-        while (--j >= 0) {
-          var qd = r[--i] == y0 ? this.DM : Math.floor(r[i] * d1 + (r[i - 1] + e) * d2);
-          if ((r[i] += y.am(0, qd, r, j, 0, ys)) < qd) {
-            y.dlShiftTo(j, t2);
-            r.subTo(t2, r);
-            while (r[i] < --qd)
-              r.subTo(t2, r);
+        BigInteger.ONE.dlShiftTo(ys, t3);
+        t3.subTo(y2, y2);
+        while (y2.t < ys)
+          y2[y2.t++] = 0;
+        while (--j2 >= 0) {
+          var qd = r2[--i2] == y0 ? this.DM : Math.floor(r2[i2] * d1 + (r2[i2 - 1] + e) * d2);
+          if ((r2[i2] += y2.am(0, qd, r2, j2, 0, ys)) < qd) {
+            y2.dlShiftTo(j2, t3);
+            r2.subTo(t3, r2);
+            while (r2[i2] < --qd)
+              r2.subTo(t3, r2);
           }
         }
-        if (q2 != null) {
-          r.drShiftTo(ys, q2);
+        if (q3 != null) {
+          r2.drShiftTo(ys, q3);
           if (ts != ms)
-            BigInteger.ZERO.subTo(q2, q2);
+            BigInteger.ZERO.subTo(q3, q3);
         }
-        r.t = ys;
-        r.clamp();
+        r2.t = ys;
+        r2.clamp();
         if (nsh > 0)
-          r.rShiftTo(nsh, r);
+          r2.rShiftTo(nsh, r2);
         if (ts < 0)
-          BigInteger.ZERO.subTo(r, r);
+          BigInteger.ZERO.subTo(r2, r2);
       }
-      function bnMod(a) {
-        var r = nbi();
-        this.abs().divRemTo(a, null, r);
-        if (this.s < 0 && r.compareTo(BigInteger.ZERO) > 0)
-          a.subTo(r, r);
-        return r;
+      function bnMod(a2) {
+        var r2 = nbi();
+        this.abs().divRemTo(a2, null, r2);
+        if (this.s < 0 && r2.compareTo(BigInteger.ZERO) > 0)
+          a2.subTo(r2, r2);
+        return r2;
       }
       function Classic(m) {
         this.m = m;
       }
-      function cConvert(x) {
-        if (x.s < 0 || x.compareTo(this.m) >= 0)
-          return x.mod(this.m);
+      function cConvert(x2) {
+        if (x2.s < 0 || x2.compareTo(this.m) >= 0)
+          return x2.mod(this.m);
         else
-          return x;
+          return x2;
       }
-      function cRevert(x) {
-        return x;
+      function cRevert(x2) {
+        return x2;
       }
-      function cReduce(x) {
-        x.divRemTo(this.m, null, x);
+      function cReduce(x2) {
+        x2.divRemTo(this.m, null, x2);
       }
-      function cMulTo(x, y, r) {
-        x.multiplyTo(y, r);
-        this.reduce(r);
+      function cMulTo(x2, y2, r2) {
+        x2.multiplyTo(y2, r2);
+        this.reduce(r2);
       }
-      function cSqrTo(x, r) {
-        x.squareTo(r);
-        this.reduce(r);
+      function cSqrTo(x2, r2) {
+        x2.squareTo(r2);
+        this.reduce(r2);
       }
       Classic.prototype.convert = cConvert;
       Classic.prototype.revert = cRevert;
@@ -13356,15 +12992,15 @@ var require_jsbn = __commonJS({
       function bnpInvDigit() {
         if (this.t < 1)
           return 0;
-        var x = this[0];
-        if ((x & 1) == 0)
+        var x2 = this[0];
+        if ((x2 & 1) == 0)
           return 0;
-        var y = x & 3;
-        y = y * (2 - (x & 15) * y) & 15;
-        y = y * (2 - (x & 255) * y) & 255;
-        y = y * (2 - ((x & 65535) * y & 65535)) & 65535;
-        y = y * (2 - x * y % this.DV) % this.DV;
-        return y > 0 ? this.DV - y : -y;
+        var y2 = x2 & 3;
+        y2 = y2 * (2 - (x2 & 15) * y2) & 15;
+        y2 = y2 * (2 - (x2 & 255) * y2) & 255;
+        y2 = y2 * (2 - ((x2 & 65535) * y2 & 65535)) & 65535;
+        y2 = y2 * (2 - x2 * y2 % this.DV) % this.DV;
+        return y2 > 0 ? this.DV - y2 : -y2;
       }
       function Montgomery(m) {
         this.m = m;
@@ -13374,45 +13010,45 @@ var require_jsbn = __commonJS({
         this.um = (1 << m.DB - 15) - 1;
         this.mt2 = 2 * m.t;
       }
-      function montConvert(x) {
-        var r = nbi();
-        x.abs().dlShiftTo(this.m.t, r);
-        r.divRemTo(this.m, null, r);
-        if (x.s < 0 && r.compareTo(BigInteger.ZERO) > 0)
-          this.m.subTo(r, r);
-        return r;
+      function montConvert(x2) {
+        var r2 = nbi();
+        x2.abs().dlShiftTo(this.m.t, r2);
+        r2.divRemTo(this.m, null, r2);
+        if (x2.s < 0 && r2.compareTo(BigInteger.ZERO) > 0)
+          this.m.subTo(r2, r2);
+        return r2;
       }
-      function montRevert(x) {
-        var r = nbi();
-        x.copyTo(r);
-        this.reduce(r);
-        return r;
+      function montRevert(x2) {
+        var r2 = nbi();
+        x2.copyTo(r2);
+        this.reduce(r2);
+        return r2;
       }
-      function montReduce(x) {
-        while (x.t <= this.mt2)
-          x[x.t++] = 0;
-        for (var i = 0; i < this.m.t; ++i) {
-          var j = x[i] & 32767;
-          var u0 = j * this.mpl + ((j * this.mph + (x[i] >> 15) * this.mpl & this.um) << 15) & x.DM;
-          j = i + this.m.t;
-          x[j] += this.m.am(0, u0, x, i, 0, this.m.t);
-          while (x[j] >= x.DV) {
-            x[j] -= x.DV;
-            x[++j]++;
+      function montReduce(x2) {
+        while (x2.t <= this.mt2)
+          x2[x2.t++] = 0;
+        for (var i2 = 0; i2 < this.m.t; ++i2) {
+          var j2 = x2[i2] & 32767;
+          var u0 = j2 * this.mpl + ((j2 * this.mph + (x2[i2] >> 15) * this.mpl & this.um) << 15) & x2.DM;
+          j2 = i2 + this.m.t;
+          x2[j2] += this.m.am(0, u0, x2, i2, 0, this.m.t);
+          while (x2[j2] >= x2.DV) {
+            x2[j2] -= x2.DV;
+            x2[++j2]++;
           }
         }
-        x.clamp();
-        x.drShiftTo(this.m.t, x);
-        if (x.compareTo(this.m) >= 0)
-          x.subTo(this.m, x);
+        x2.clamp();
+        x2.drShiftTo(this.m.t, x2);
+        if (x2.compareTo(this.m) >= 0)
+          x2.subTo(this.m, x2);
       }
-      function montSqrTo(x, r) {
-        x.squareTo(r);
-        this.reduce(r);
+      function montSqrTo(x2, r2) {
+        x2.squareTo(r2);
+        this.reduce(r2);
       }
-      function montMulTo(x, y, r) {
-        x.multiplyTo(y, r);
-        this.reduce(r);
+      function montMulTo(x2, y2, r2) {
+        x2.multiplyTo(y2, r2);
+        this.reduce(r2);
       }
       Montgomery.prototype.convert = montConvert;
       Montgomery.prototype.revert = montRevert;
@@ -13422,30 +13058,30 @@ var require_jsbn = __commonJS({
       function bnpIsEven() {
         return (this.t > 0 ? this[0] & 1 : this.s) == 0;
       }
-      function bnpExp(e, z2) {
+      function bnpExp(e, z3) {
         if (e > 4294967295 || e < 1)
           return BigInteger.ONE;
-        var r = nbi(), r2 = nbi(), g = z2.convert(this), i = nbits(e) - 1;
-        g.copyTo(r);
-        while (--i >= 0) {
-          z2.sqrTo(r, r2);
-          if ((e & 1 << i) > 0)
-            z2.mulTo(r2, g, r);
+        var r2 = nbi(), r22 = nbi(), g2 = z3.convert(this), i2 = nbits(e) - 1;
+        g2.copyTo(r2);
+        while (--i2 >= 0) {
+          z3.sqrTo(r2, r22);
+          if ((e & 1 << i2) > 0)
+            z3.mulTo(r22, g2, r2);
           else {
-            var t2 = r;
-            r = r2;
-            r2 = t2;
+            var t3 = r2;
+            r2 = r22;
+            r22 = t3;
           }
         }
-        return z2.revert(r);
+        return z3.revert(r2);
       }
       function bnModPowInt(e, m) {
-        var z2;
+        var z3;
         if (e < 256 || m.isEven())
-          z2 = new Classic(m);
+          z3 = new Classic(m);
         else
-          z2 = new Montgomery(m);
-        return this.exp(e, z2);
+          z3 = new Montgomery(m);
+        return this.exp(e, z3);
       }
       BigInteger.prototype.copyTo = bnpCopyTo;
       BigInteger.prototype.fromInt = bnpFromInt;
@@ -13472,9 +13108,9 @@ var require_jsbn = __commonJS({
       BigInteger.ZERO = nbv(0);
       BigInteger.ONE = nbv(1);
       function bnClone() {
-        var r = nbi();
-        this.copyTo(r);
-        return r;
+        var r2 = nbi();
+        this.copyTo(r2);
+        return r2;
       }
       function bnIntValue() {
         if (this.s < 0) {
@@ -13494,8 +13130,8 @@ var require_jsbn = __commonJS({
       function bnShortValue() {
         return this.t == 0 ? this.s : this[0] << 16 >> 16;
       }
-      function bnpChunkSize(r) {
-        return Math.floor(Math.LN2 * this.DB / Math.log(r));
+      function bnpChunkSize(r2) {
+        return Math.floor(Math.LN2 * this.DB / Math.log(r2));
       }
       function bnSigNum() {
         if (this.s < 0)
@@ -13505,348 +13141,348 @@ var require_jsbn = __commonJS({
         else
           return 1;
       }
-      function bnpToRadix(b) {
-        if (b == null)
-          b = 10;
-        if (this.signum() == 0 || b < 2 || b > 36)
+      function bnpToRadix(b2) {
+        if (b2 == null)
+          b2 = 10;
+        if (this.signum() == 0 || b2 < 2 || b2 > 36)
           return "0";
-        var cs = this.chunkSize(b);
-        var a = Math.pow(b, cs);
-        var d = nbv(a), y = nbi(), z2 = nbi(), r = "";
-        this.divRemTo(d, y, z2);
-        while (y.signum() > 0) {
-          r = (a + z2.intValue()).toString(b).substr(1) + r;
-          y.divRemTo(d, y, z2);
+        var cs = this.chunkSize(b2);
+        var a2 = Math.pow(b2, cs);
+        var d2 = nbv(a2), y2 = nbi(), z3 = nbi(), r2 = "";
+        this.divRemTo(d2, y2, z3);
+        while (y2.signum() > 0) {
+          r2 = (a2 + z3.intValue()).toString(b2).substr(1) + r2;
+          y2.divRemTo(d2, y2, z3);
         }
-        return z2.intValue().toString(b) + r;
+        return z3.intValue().toString(b2) + r2;
       }
-      function bnpFromRadix(s, b) {
+      function bnpFromRadix(s2, b2) {
         this.fromInt(0);
-        if (b == null)
-          b = 10;
-        var cs = this.chunkSize(b);
-        var d = Math.pow(b, cs), mi = false, j = 0, w = 0;
-        for (var i = 0; i < s.length; ++i) {
-          var x = intAt(s, i);
-          if (x < 0) {
-            if (s.charAt(i) == "-" && this.signum() == 0)
+        if (b2 == null)
+          b2 = 10;
+        var cs = this.chunkSize(b2);
+        var d2 = Math.pow(b2, cs), mi = false, j2 = 0, w2 = 0;
+        for (var i2 = 0; i2 < s2.length; ++i2) {
+          var x2 = intAt(s2, i2);
+          if (x2 < 0) {
+            if (s2.charAt(i2) == "-" && this.signum() == 0)
               mi = true;
             continue;
           }
-          w = b * w + x;
-          if (++j >= cs) {
-            this.dMultiply(d);
-            this.dAddOffset(w, 0);
-            j = 0;
-            w = 0;
+          w2 = b2 * w2 + x2;
+          if (++j2 >= cs) {
+            this.dMultiply(d2);
+            this.dAddOffset(w2, 0);
+            j2 = 0;
+            w2 = 0;
           }
         }
-        if (j > 0) {
-          this.dMultiply(Math.pow(b, j));
-          this.dAddOffset(w, 0);
+        if (j2 > 0) {
+          this.dMultiply(Math.pow(b2, j2));
+          this.dAddOffset(w2, 0);
         }
         if (mi)
           BigInteger.ZERO.subTo(this, this);
       }
-      function bnpFromNumber(a, b, c) {
-        if ("number" == typeof b) {
-          if (a < 2)
+      function bnpFromNumber(a2, b2, c2) {
+        if ("number" == typeof b2) {
+          if (a2 < 2)
             this.fromInt(1);
           else {
-            this.fromNumber(a, c);
-            if (!this.testBit(a - 1))
-              this.bitwiseTo(BigInteger.ONE.shiftLeft(a - 1), op_or, this);
+            this.fromNumber(a2, c2);
+            if (!this.testBit(a2 - 1))
+              this.bitwiseTo(BigInteger.ONE.shiftLeft(a2 - 1), op_or, this);
             if (this.isEven())
               this.dAddOffset(1, 0);
-            while (!this.isProbablePrime(b)) {
+            while (!this.isProbablePrime(b2)) {
               this.dAddOffset(2, 0);
-              if (this.bitLength() > a)
-                this.subTo(BigInteger.ONE.shiftLeft(a - 1), this);
+              if (this.bitLength() > a2)
+                this.subTo(BigInteger.ONE.shiftLeft(a2 - 1), this);
             }
           }
         } else {
-          var x = new Array(), t2 = a & 7;
-          x.length = (a >> 3) + 1;
-          b.nextBytes(x);
-          if (t2 > 0)
-            x[0] &= (1 << t2) - 1;
+          var x2 = new Array(), t3 = a2 & 7;
+          x2.length = (a2 >> 3) + 1;
+          b2.nextBytes(x2);
+          if (t3 > 0)
+            x2[0] &= (1 << t3) - 1;
           else
-            x[0] = 0;
-          this.fromString(x, 256);
+            x2[0] = 0;
+          this.fromString(x2, 256);
         }
       }
       function bnToByteArray() {
-        var i = this.t, r = new Array();
-        r[0] = this.s;
-        var p = this.DB - i * this.DB % 8, d, k = 0;
-        if (i-- > 0) {
-          if (p < this.DB && (d = this[i] >> p) != (this.s & this.DM) >> p)
-            r[k++] = d | this.s << this.DB - p;
-          while (i >= 0) {
-            if (p < 8) {
-              d = (this[i] & (1 << p) - 1) << 8 - p;
-              d |= this[--i] >> (p += this.DB - 8);
+        var i2 = this.t, r2 = new Array();
+        r2[0] = this.s;
+        var p2 = this.DB - i2 * this.DB % 8, d2, k2 = 0;
+        if (i2-- > 0) {
+          if (p2 < this.DB && (d2 = this[i2] >> p2) != (this.s & this.DM) >> p2)
+            r2[k2++] = d2 | this.s << this.DB - p2;
+          while (i2 >= 0) {
+            if (p2 < 8) {
+              d2 = (this[i2] & (1 << p2) - 1) << 8 - p2;
+              d2 |= this[--i2] >> (p2 += this.DB - 8);
             } else {
-              d = this[i] >> (p -= 8) & 255;
-              if (p <= 0) {
-                p += this.DB;
-                --i;
+              d2 = this[i2] >> (p2 -= 8) & 255;
+              if (p2 <= 0) {
+                p2 += this.DB;
+                --i2;
               }
             }
-            if ((d & 128) != 0)
-              d |= -256;
-            if (k == 0 && (this.s & 128) != (d & 128))
-              ++k;
-            if (k > 0 || d != this.s)
-              r[k++] = d;
+            if ((d2 & 128) != 0)
+              d2 |= -256;
+            if (k2 == 0 && (this.s & 128) != (d2 & 128))
+              ++k2;
+            if (k2 > 0 || d2 != this.s)
+              r2[k2++] = d2;
           }
         }
-        return r;
+        return r2;
       }
-      function bnEquals(a) {
-        return this.compareTo(a) == 0;
+      function bnEquals(a2) {
+        return this.compareTo(a2) == 0;
       }
-      function bnMin(a) {
-        return this.compareTo(a) < 0 ? this : a;
+      function bnMin(a2) {
+        return this.compareTo(a2) < 0 ? this : a2;
       }
-      function bnMax(a) {
-        return this.compareTo(a) > 0 ? this : a;
+      function bnMax(a2) {
+        return this.compareTo(a2) > 0 ? this : a2;
       }
-      function bnpBitwiseTo(a, op, r) {
-        var i, f, m = Math.min(a.t, this.t);
-        for (i = 0; i < m; ++i)
-          r[i] = op(this[i], a[i]);
-        if (a.t < this.t) {
-          f = a.s & this.DM;
-          for (i = m; i < this.t; ++i)
-            r[i] = op(this[i], f);
-          r.t = this.t;
+      function bnpBitwiseTo(a2, op, r2) {
+        var i2, f2, m = Math.min(a2.t, this.t);
+        for (i2 = 0; i2 < m; ++i2)
+          r2[i2] = op(this[i2], a2[i2]);
+        if (a2.t < this.t) {
+          f2 = a2.s & this.DM;
+          for (i2 = m; i2 < this.t; ++i2)
+            r2[i2] = op(this[i2], f2);
+          r2.t = this.t;
         } else {
-          f = this.s & this.DM;
-          for (i = m; i < a.t; ++i)
-            r[i] = op(f, a[i]);
-          r.t = a.t;
+          f2 = this.s & this.DM;
+          for (i2 = m; i2 < a2.t; ++i2)
+            r2[i2] = op(f2, a2[i2]);
+          r2.t = a2.t;
         }
-        r.s = op(this.s, a.s);
-        r.clamp();
+        r2.s = op(this.s, a2.s);
+        r2.clamp();
       }
-      function op_and(x, y) {
-        return x & y;
+      function op_and(x2, y2) {
+        return x2 & y2;
       }
-      function bnAnd(a) {
-        var r = nbi();
-        this.bitwiseTo(a, op_and, r);
-        return r;
+      function bnAnd(a2) {
+        var r2 = nbi();
+        this.bitwiseTo(a2, op_and, r2);
+        return r2;
       }
-      function op_or(x, y) {
-        return x | y;
+      function op_or(x2, y2) {
+        return x2 | y2;
       }
-      function bnOr(a) {
-        var r = nbi();
-        this.bitwiseTo(a, op_or, r);
-        return r;
+      function bnOr(a2) {
+        var r2 = nbi();
+        this.bitwiseTo(a2, op_or, r2);
+        return r2;
       }
-      function op_xor(x, y) {
-        return x ^ y;
+      function op_xor(x2, y2) {
+        return x2 ^ y2;
       }
-      function bnXor(a) {
-        var r = nbi();
-        this.bitwiseTo(a, op_xor, r);
-        return r;
+      function bnXor(a2) {
+        var r2 = nbi();
+        this.bitwiseTo(a2, op_xor, r2);
+        return r2;
       }
-      function op_andnot(x, y) {
-        return x & ~y;
+      function op_andnot(x2, y2) {
+        return x2 & ~y2;
       }
-      function bnAndNot(a) {
-        var r = nbi();
-        this.bitwiseTo(a, op_andnot, r);
-        return r;
+      function bnAndNot(a2) {
+        var r2 = nbi();
+        this.bitwiseTo(a2, op_andnot, r2);
+        return r2;
       }
       function bnNot() {
-        var r = nbi();
-        for (var i = 0; i < this.t; ++i)
-          r[i] = this.DM & ~this[i];
-        r.t = this.t;
-        r.s = ~this.s;
-        return r;
+        var r2 = nbi();
+        for (var i2 = 0; i2 < this.t; ++i2)
+          r2[i2] = this.DM & ~this[i2];
+        r2.t = this.t;
+        r2.s = ~this.s;
+        return r2;
       }
-      function bnShiftLeft(n) {
-        var r = nbi();
-        if (n < 0)
-          this.rShiftTo(-n, r);
+      function bnShiftLeft(n2) {
+        var r2 = nbi();
+        if (n2 < 0)
+          this.rShiftTo(-n2, r2);
         else
-          this.lShiftTo(n, r);
-        return r;
+          this.lShiftTo(n2, r2);
+        return r2;
       }
-      function bnShiftRight(n) {
-        var r = nbi();
-        if (n < 0)
-          this.lShiftTo(-n, r);
+      function bnShiftRight(n2) {
+        var r2 = nbi();
+        if (n2 < 0)
+          this.lShiftTo(-n2, r2);
         else
-          this.rShiftTo(n, r);
-        return r;
+          this.rShiftTo(n2, r2);
+        return r2;
       }
-      function lbit(x) {
-        if (x == 0)
+      function lbit(x2) {
+        if (x2 == 0)
           return -1;
-        var r = 0;
-        if ((x & 65535) == 0) {
-          x >>= 16;
-          r += 16;
+        var r2 = 0;
+        if ((x2 & 65535) == 0) {
+          x2 >>= 16;
+          r2 += 16;
         }
-        if ((x & 255) == 0) {
-          x >>= 8;
-          r += 8;
+        if ((x2 & 255) == 0) {
+          x2 >>= 8;
+          r2 += 8;
         }
-        if ((x & 15) == 0) {
-          x >>= 4;
-          r += 4;
+        if ((x2 & 15) == 0) {
+          x2 >>= 4;
+          r2 += 4;
         }
-        if ((x & 3) == 0) {
-          x >>= 2;
-          r += 2;
+        if ((x2 & 3) == 0) {
+          x2 >>= 2;
+          r2 += 2;
         }
-        if ((x & 1) == 0)
-          ++r;
-        return r;
+        if ((x2 & 1) == 0)
+          ++r2;
+        return r2;
       }
       function bnGetLowestSetBit() {
-        for (var i = 0; i < this.t; ++i)
-          if (this[i] != 0)
-            return i * this.DB + lbit(this[i]);
+        for (var i2 = 0; i2 < this.t; ++i2)
+          if (this[i2] != 0)
+            return i2 * this.DB + lbit(this[i2]);
         if (this.s < 0)
           return this.t * this.DB;
         return -1;
       }
-      function cbit(x) {
-        var r = 0;
-        while (x != 0) {
-          x &= x - 1;
-          ++r;
+      function cbit(x2) {
+        var r2 = 0;
+        while (x2 != 0) {
+          x2 &= x2 - 1;
+          ++r2;
         }
-        return r;
+        return r2;
       }
       function bnBitCount() {
-        var r = 0, x = this.s & this.DM;
-        for (var i = 0; i < this.t; ++i)
-          r += cbit(this[i] ^ x);
-        return r;
+        var r2 = 0, x2 = this.s & this.DM;
+        for (var i2 = 0; i2 < this.t; ++i2)
+          r2 += cbit(this[i2] ^ x2);
+        return r2;
       }
-      function bnTestBit(n) {
-        var j = Math.floor(n / this.DB);
-        if (j >= this.t)
+      function bnTestBit(n2) {
+        var j2 = Math.floor(n2 / this.DB);
+        if (j2 >= this.t)
           return this.s != 0;
-        return (this[j] & 1 << n % this.DB) != 0;
+        return (this[j2] & 1 << n2 % this.DB) != 0;
       }
-      function bnpChangeBit(n, op) {
-        var r = BigInteger.ONE.shiftLeft(n);
-        this.bitwiseTo(r, op, r);
-        return r;
+      function bnpChangeBit(n2, op) {
+        var r2 = BigInteger.ONE.shiftLeft(n2);
+        this.bitwiseTo(r2, op, r2);
+        return r2;
       }
-      function bnSetBit(n) {
-        return this.changeBit(n, op_or);
+      function bnSetBit(n2) {
+        return this.changeBit(n2, op_or);
       }
-      function bnClearBit(n) {
-        return this.changeBit(n, op_andnot);
+      function bnClearBit(n2) {
+        return this.changeBit(n2, op_andnot);
       }
-      function bnFlipBit(n) {
-        return this.changeBit(n, op_xor);
+      function bnFlipBit(n2) {
+        return this.changeBit(n2, op_xor);
       }
-      function bnpAddTo(a, r) {
-        var i = 0, c = 0, m = Math.min(a.t, this.t);
-        while (i < m) {
-          c += this[i] + a[i];
-          r[i++] = c & this.DM;
-          c >>= this.DB;
+      function bnpAddTo(a2, r2) {
+        var i2 = 0, c2 = 0, m = Math.min(a2.t, this.t);
+        while (i2 < m) {
+          c2 += this[i2] + a2[i2];
+          r2[i2++] = c2 & this.DM;
+          c2 >>= this.DB;
         }
-        if (a.t < this.t) {
-          c += a.s;
-          while (i < this.t) {
-            c += this[i];
-            r[i++] = c & this.DM;
-            c >>= this.DB;
+        if (a2.t < this.t) {
+          c2 += a2.s;
+          while (i2 < this.t) {
+            c2 += this[i2];
+            r2[i2++] = c2 & this.DM;
+            c2 >>= this.DB;
           }
-          c += this.s;
+          c2 += this.s;
         } else {
-          c += this.s;
-          while (i < a.t) {
-            c += a[i];
-            r[i++] = c & this.DM;
-            c >>= this.DB;
+          c2 += this.s;
+          while (i2 < a2.t) {
+            c2 += a2[i2];
+            r2[i2++] = c2 & this.DM;
+            c2 >>= this.DB;
           }
-          c += a.s;
+          c2 += a2.s;
         }
-        r.s = c < 0 ? -1 : 0;
-        if (c > 0)
-          r[i++] = c;
-        else if (c < -1)
-          r[i++] = this.DV + c;
-        r.t = i;
-        r.clamp();
+        r2.s = c2 < 0 ? -1 : 0;
+        if (c2 > 0)
+          r2[i2++] = c2;
+        else if (c2 < -1)
+          r2[i2++] = this.DV + c2;
+        r2.t = i2;
+        r2.clamp();
       }
-      function bnAdd(a) {
-        var r = nbi();
-        this.addTo(a, r);
-        return r;
+      function bnAdd(a2) {
+        var r2 = nbi();
+        this.addTo(a2, r2);
+        return r2;
       }
-      function bnSubtract(a) {
-        var r = nbi();
-        this.subTo(a, r);
-        return r;
+      function bnSubtract(a2) {
+        var r2 = nbi();
+        this.subTo(a2, r2);
+        return r2;
       }
-      function bnMultiply(a) {
-        var r = nbi();
-        this.multiplyTo(a, r);
-        return r;
+      function bnMultiply(a2) {
+        var r2 = nbi();
+        this.multiplyTo(a2, r2);
+        return r2;
       }
       function bnSquare() {
-        var r = nbi();
-        this.squareTo(r);
-        return r;
+        var r2 = nbi();
+        this.squareTo(r2);
+        return r2;
       }
-      function bnDivide(a) {
-        var r = nbi();
-        this.divRemTo(a, r, null);
-        return r;
+      function bnDivide(a2) {
+        var r2 = nbi();
+        this.divRemTo(a2, r2, null);
+        return r2;
       }
-      function bnRemainder(a) {
-        var r = nbi();
-        this.divRemTo(a, null, r);
-        return r;
+      function bnRemainder(a2) {
+        var r2 = nbi();
+        this.divRemTo(a2, null, r2);
+        return r2;
       }
-      function bnDivideAndRemainder(a) {
-        var q2 = nbi(), r = nbi();
-        this.divRemTo(a, q2, r);
-        return new Array(q2, r);
+      function bnDivideAndRemainder(a2) {
+        var q3 = nbi(), r2 = nbi();
+        this.divRemTo(a2, q3, r2);
+        return new Array(q3, r2);
       }
-      function bnpDMultiply(n) {
-        this[this.t] = this.am(0, n - 1, this, 0, 0, this.t);
+      function bnpDMultiply(n2) {
+        this[this.t] = this.am(0, n2 - 1, this, 0, 0, this.t);
         ++this.t;
         this.clamp();
       }
-      function bnpDAddOffset(n, w) {
-        if (n == 0)
+      function bnpDAddOffset(n2, w2) {
+        if (n2 == 0)
           return;
-        while (this.t <= w)
+        while (this.t <= w2)
           this[this.t++] = 0;
-        this[w] += n;
-        while (this[w] >= this.DV) {
-          this[w] -= this.DV;
-          if (++w >= this.t)
+        this[w2] += n2;
+        while (this[w2] >= this.DV) {
+          this[w2] -= this.DV;
+          if (++w2 >= this.t)
             this[this.t++] = 0;
-          ++this[w];
+          ++this[w2];
         }
       }
       function NullExp() {
       }
-      function nNop(x) {
-        return x;
+      function nNop(x2) {
+        return x2;
       }
-      function nMulTo(x, y, r) {
-        x.multiplyTo(y, r);
+      function nMulTo(x2, y2, r2) {
+        x2.multiplyTo(y2, r2);
       }
-      function nSqrTo(x, r) {
-        x.squareTo(r);
+      function nSqrTo(x2, r2) {
+        x2.squareTo(r2);
       }
       NullExp.prototype.convert = nNop;
       NullExp.prototype.revert = nNop;
@@ -13855,29 +13491,29 @@ var require_jsbn = __commonJS({
       function bnPow(e) {
         return this.exp(e, new NullExp());
       }
-      function bnpMultiplyLowerTo(a, n, r) {
-        var i = Math.min(this.t + a.t, n);
-        r.s = 0;
-        r.t = i;
-        while (i > 0)
-          r[--i] = 0;
-        var j;
-        for (j = r.t - this.t; i < j; ++i)
-          r[i + this.t] = this.am(0, a[i], r, i, 0, this.t);
-        for (j = Math.min(a.t, n); i < j; ++i)
-          this.am(0, a[i], r, i, 0, n - i);
-        r.clamp();
+      function bnpMultiplyLowerTo(a2, n2, r2) {
+        var i2 = Math.min(this.t + a2.t, n2);
+        r2.s = 0;
+        r2.t = i2;
+        while (i2 > 0)
+          r2[--i2] = 0;
+        var j2;
+        for (j2 = r2.t - this.t; i2 < j2; ++i2)
+          r2[i2 + this.t] = this.am(0, a2[i2], r2, i2, 0, this.t);
+        for (j2 = Math.min(a2.t, n2); i2 < j2; ++i2)
+          this.am(0, a2[i2], r2, i2, 0, n2 - i2);
+        r2.clamp();
       }
-      function bnpMultiplyUpperTo(a, n, r) {
-        --n;
-        var i = r.t = this.t + a.t - n;
-        r.s = 0;
-        while (--i >= 0)
-          r[i] = 0;
-        for (i = Math.max(n - this.t, 0); i < a.t; ++i)
-          r[this.t + i - n] = this.am(n - i, a[i], r, 0, 0, this.t + i - n);
-        r.clamp();
-        r.drShiftTo(1, r);
+      function bnpMultiplyUpperTo(a2, n2, r2) {
+        --n2;
+        var i2 = r2.t = this.t + a2.t - n2;
+        r2.s = 0;
+        while (--i2 >= 0)
+          r2[i2] = 0;
+        for (i2 = Math.max(n2 - this.t, 0); i2 < a2.t; ++i2)
+          r2[this.t + i2 - n2] = this.am(n2 - i2, a2[i2], r2, 0, 0, this.t + i2 - n2);
+        r2.clamp();
+        r2.drShiftTo(1, r2);
       }
       function Barrett(m) {
         this.r2 = nbi();
@@ -13886,42 +13522,42 @@ var require_jsbn = __commonJS({
         this.mu = this.r2.divide(m);
         this.m = m;
       }
-      function barrettConvert(x) {
-        if (x.s < 0 || x.t > 2 * this.m.t)
-          return x.mod(this.m);
-        else if (x.compareTo(this.m) < 0)
-          return x;
+      function barrettConvert(x2) {
+        if (x2.s < 0 || x2.t > 2 * this.m.t)
+          return x2.mod(this.m);
+        else if (x2.compareTo(this.m) < 0)
+          return x2;
         else {
-          var r = nbi();
-          x.copyTo(r);
-          this.reduce(r);
-          return r;
+          var r2 = nbi();
+          x2.copyTo(r2);
+          this.reduce(r2);
+          return r2;
         }
       }
-      function barrettRevert(x) {
-        return x;
+      function barrettRevert(x2) {
+        return x2;
       }
-      function barrettReduce(x) {
-        x.drShiftTo(this.m.t - 1, this.r2);
-        if (x.t > this.m.t + 1) {
-          x.t = this.m.t + 1;
-          x.clamp();
+      function barrettReduce(x2) {
+        x2.drShiftTo(this.m.t - 1, this.r2);
+        if (x2.t > this.m.t + 1) {
+          x2.t = this.m.t + 1;
+          x2.clamp();
         }
         this.mu.multiplyUpperTo(this.r2, this.m.t + 1, this.q3);
         this.m.multiplyLowerTo(this.q3, this.m.t + 1, this.r2);
-        while (x.compareTo(this.r2) < 0)
-          x.dAddOffset(1, this.m.t + 1);
-        x.subTo(this.r2, x);
-        while (x.compareTo(this.m) >= 0)
-          x.subTo(this.m, x);
+        while (x2.compareTo(this.r2) < 0)
+          x2.dAddOffset(1, this.m.t + 1);
+        x2.subTo(this.r2, x2);
+        while (x2.compareTo(this.m) >= 0)
+          x2.subTo(this.m, x2);
       }
-      function barrettSqrTo(x, r) {
-        x.squareTo(r);
-        this.reduce(r);
+      function barrettSqrTo(x2, r2) {
+        x2.squareTo(r2);
+        this.reduce(r2);
       }
-      function barrettMulTo(x, y, r) {
-        x.multiplyTo(y, r);
-        this.reduce(r);
+      function barrettMulTo(x2, y2, r2) {
+        x2.multiplyTo(y2, r2);
+        this.reduce(r2);
       }
       Barrett.prototype.convert = barrettConvert;
       Barrett.prototype.revert = barrettRevert;
@@ -13929,233 +13565,233 @@ var require_jsbn = __commonJS({
       Barrett.prototype.mulTo = barrettMulTo;
       Barrett.prototype.sqrTo = barrettSqrTo;
       function bnModPow(e, m) {
-        var i = e.bitLength(), k, r = nbv(1), z2;
-        if (i <= 0)
-          return r;
-        else if (i < 18)
-          k = 1;
-        else if (i < 48)
-          k = 3;
-        else if (i < 144)
-          k = 4;
-        else if (i < 768)
-          k = 5;
+        var i2 = e.bitLength(), k2, r2 = nbv(1), z3;
+        if (i2 <= 0)
+          return r2;
+        else if (i2 < 18)
+          k2 = 1;
+        else if (i2 < 48)
+          k2 = 3;
+        else if (i2 < 144)
+          k2 = 4;
+        else if (i2 < 768)
+          k2 = 5;
         else
-          k = 6;
-        if (i < 8)
-          z2 = new Classic(m);
+          k2 = 6;
+        if (i2 < 8)
+          z3 = new Classic(m);
         else if (m.isEven())
-          z2 = new Barrett(m);
+          z3 = new Barrett(m);
         else
-          z2 = new Montgomery(m);
-        var g = new Array(), n = 3, k1 = k - 1, km = (1 << k) - 1;
-        g[1] = z2.convert(this);
-        if (k > 1) {
-          var g2 = nbi();
-          z2.sqrTo(g[1], g2);
-          while (n <= km) {
-            g[n] = nbi();
-            z2.mulTo(g2, g[n - 2], g[n]);
-            n += 2;
+          z3 = new Montgomery(m);
+        var g2 = new Array(), n2 = 3, k1 = k2 - 1, km = (1 << k2) - 1;
+        g2[1] = z3.convert(this);
+        if (k2 > 1) {
+          var g22 = nbi();
+          z3.sqrTo(g2[1], g22);
+          while (n2 <= km) {
+            g2[n2] = nbi();
+            z3.mulTo(g22, g2[n2 - 2], g2[n2]);
+            n2 += 2;
           }
         }
-        var j = e.t - 1, w, is1 = true, r2 = nbi(), t2;
-        i = nbits(e[j]) - 1;
-        while (j >= 0) {
-          if (i >= k1)
-            w = e[j] >> i - k1 & km;
+        var j2 = e.t - 1, w2, is1 = true, r22 = nbi(), t3;
+        i2 = nbits(e[j2]) - 1;
+        while (j2 >= 0) {
+          if (i2 >= k1)
+            w2 = e[j2] >> i2 - k1 & km;
           else {
-            w = (e[j] & (1 << i + 1) - 1) << k1 - i;
-            if (j > 0)
-              w |= e[j - 1] >> this.DB + i - k1;
+            w2 = (e[j2] & (1 << i2 + 1) - 1) << k1 - i2;
+            if (j2 > 0)
+              w2 |= e[j2 - 1] >> this.DB + i2 - k1;
           }
-          n = k;
-          while ((w & 1) == 0) {
-            w >>= 1;
-            --n;
+          n2 = k2;
+          while ((w2 & 1) == 0) {
+            w2 >>= 1;
+            --n2;
           }
-          if ((i -= n) < 0) {
-            i += this.DB;
-            --j;
+          if ((i2 -= n2) < 0) {
+            i2 += this.DB;
+            --j2;
           }
           if (is1) {
-            g[w].copyTo(r);
+            g2[w2].copyTo(r2);
             is1 = false;
           } else {
-            while (n > 1) {
-              z2.sqrTo(r, r2);
-              z2.sqrTo(r2, r);
-              n -= 2;
+            while (n2 > 1) {
+              z3.sqrTo(r2, r22);
+              z3.sqrTo(r22, r2);
+              n2 -= 2;
             }
-            if (n > 0)
-              z2.sqrTo(r, r2);
+            if (n2 > 0)
+              z3.sqrTo(r2, r22);
             else {
-              t2 = r;
-              r = r2;
-              r2 = t2;
+              t3 = r2;
+              r2 = r22;
+              r22 = t3;
             }
-            z2.mulTo(r2, g[w], r);
+            z3.mulTo(r22, g2[w2], r2);
           }
-          while (j >= 0 && (e[j] & 1 << i) == 0) {
-            z2.sqrTo(r, r2);
-            t2 = r;
-            r = r2;
-            r2 = t2;
-            if (--i < 0) {
-              i = this.DB - 1;
-              --j;
+          while (j2 >= 0 && (e[j2] & 1 << i2) == 0) {
+            z3.sqrTo(r2, r22);
+            t3 = r2;
+            r2 = r22;
+            r22 = t3;
+            if (--i2 < 0) {
+              i2 = this.DB - 1;
+              --j2;
             }
           }
         }
-        return z2.revert(r);
+        return z3.revert(r2);
       }
-      function bnGCD(a) {
-        var x = this.s < 0 ? this.negate() : this.clone();
-        var y = a.s < 0 ? a.negate() : a.clone();
-        if (x.compareTo(y) < 0) {
-          var t2 = x;
-          x = y;
-          y = t2;
+      function bnGCD(a2) {
+        var x2 = this.s < 0 ? this.negate() : this.clone();
+        var y2 = a2.s < 0 ? a2.negate() : a2.clone();
+        if (x2.compareTo(y2) < 0) {
+          var t3 = x2;
+          x2 = y2;
+          y2 = t3;
         }
-        var i = x.getLowestSetBit(), g = y.getLowestSetBit();
-        if (g < 0)
-          return x;
-        if (i < g)
-          g = i;
-        if (g > 0) {
-          x.rShiftTo(g, x);
-          y.rShiftTo(g, y);
+        var i2 = x2.getLowestSetBit(), g2 = y2.getLowestSetBit();
+        if (g2 < 0)
+          return x2;
+        if (i2 < g2)
+          g2 = i2;
+        if (g2 > 0) {
+          x2.rShiftTo(g2, x2);
+          y2.rShiftTo(g2, y2);
         }
-        while (x.signum() > 0) {
-          if ((i = x.getLowestSetBit()) > 0)
-            x.rShiftTo(i, x);
-          if ((i = y.getLowestSetBit()) > 0)
-            y.rShiftTo(i, y);
-          if (x.compareTo(y) >= 0) {
-            x.subTo(y, x);
-            x.rShiftTo(1, x);
+        while (x2.signum() > 0) {
+          if ((i2 = x2.getLowestSetBit()) > 0)
+            x2.rShiftTo(i2, x2);
+          if ((i2 = y2.getLowestSetBit()) > 0)
+            y2.rShiftTo(i2, y2);
+          if (x2.compareTo(y2) >= 0) {
+            x2.subTo(y2, x2);
+            x2.rShiftTo(1, x2);
           } else {
-            y.subTo(x, y);
-            y.rShiftTo(1, y);
+            y2.subTo(x2, y2);
+            y2.rShiftTo(1, y2);
           }
         }
-        if (g > 0)
-          y.lShiftTo(g, y);
-        return y;
+        if (g2 > 0)
+          y2.lShiftTo(g2, y2);
+        return y2;
       }
-      function bnpModInt(n) {
-        if (n <= 0)
+      function bnpModInt(n2) {
+        if (n2 <= 0)
           return 0;
-        var d = this.DV % n, r = this.s < 0 ? n - 1 : 0;
+        var d2 = this.DV % n2, r2 = this.s < 0 ? n2 - 1 : 0;
         if (this.t > 0)
-          if (d == 0)
-            r = this[0] % n;
+          if (d2 == 0)
+            r2 = this[0] % n2;
           else
-            for (var i = this.t - 1; i >= 0; --i)
-              r = (d * r + this[i]) % n;
-        return r;
+            for (var i2 = this.t - 1; i2 >= 0; --i2)
+              r2 = (d2 * r2 + this[i2]) % n2;
+        return r2;
       }
       function bnModInverse(m) {
         var ac = m.isEven();
         if (this.isEven() && ac || m.signum() == 0)
           return BigInteger.ZERO;
-        var u = m.clone(), v = this.clone();
-        var a = nbv(1), b = nbv(0), c = nbv(0), d = nbv(1);
-        while (u.signum() != 0) {
-          while (u.isEven()) {
-            u.rShiftTo(1, u);
+        var u2 = m.clone(), v2 = this.clone();
+        var a2 = nbv(1), b2 = nbv(0), c2 = nbv(0), d2 = nbv(1);
+        while (u2.signum() != 0) {
+          while (u2.isEven()) {
+            u2.rShiftTo(1, u2);
             if (ac) {
-              if (!a.isEven() || !b.isEven()) {
-                a.addTo(this, a);
-                b.subTo(m, b);
+              if (!a2.isEven() || !b2.isEven()) {
+                a2.addTo(this, a2);
+                b2.subTo(m, b2);
               }
-              a.rShiftTo(1, a);
-            } else if (!b.isEven())
-              b.subTo(m, b);
-            b.rShiftTo(1, b);
+              a2.rShiftTo(1, a2);
+            } else if (!b2.isEven())
+              b2.subTo(m, b2);
+            b2.rShiftTo(1, b2);
           }
-          while (v.isEven()) {
-            v.rShiftTo(1, v);
+          while (v2.isEven()) {
+            v2.rShiftTo(1, v2);
             if (ac) {
-              if (!c.isEven() || !d.isEven()) {
-                c.addTo(this, c);
-                d.subTo(m, d);
+              if (!c2.isEven() || !d2.isEven()) {
+                c2.addTo(this, c2);
+                d2.subTo(m, d2);
               }
-              c.rShiftTo(1, c);
-            } else if (!d.isEven())
-              d.subTo(m, d);
-            d.rShiftTo(1, d);
+              c2.rShiftTo(1, c2);
+            } else if (!d2.isEven())
+              d2.subTo(m, d2);
+            d2.rShiftTo(1, d2);
           }
-          if (u.compareTo(v) >= 0) {
-            u.subTo(v, u);
+          if (u2.compareTo(v2) >= 0) {
+            u2.subTo(v2, u2);
             if (ac)
-              a.subTo(c, a);
-            b.subTo(d, b);
+              a2.subTo(c2, a2);
+            b2.subTo(d2, b2);
           } else {
-            v.subTo(u, v);
+            v2.subTo(u2, v2);
             if (ac)
-              c.subTo(a, c);
-            d.subTo(b, d);
+              c2.subTo(a2, c2);
+            d2.subTo(b2, d2);
           }
         }
-        if (v.compareTo(BigInteger.ONE) != 0)
+        if (v2.compareTo(BigInteger.ONE) != 0)
           return BigInteger.ZERO;
-        if (d.compareTo(m) >= 0)
-          return d.subtract(m);
-        if (d.signum() < 0)
-          d.addTo(m, d);
+        if (d2.compareTo(m) >= 0)
+          return d2.subtract(m);
+        if (d2.signum() < 0)
+          d2.addTo(m, d2);
         else
-          return d;
-        if (d.signum() < 0)
-          return d.add(m);
+          return d2;
+        if (d2.signum() < 0)
+          return d2.add(m);
         else
-          return d;
+          return d2;
       }
       var lowprimes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563, 569, 571, 577, 587, 593, 599, 601, 607, 613, 617, 619, 631, 641, 643, 647, 653, 659, 661, 673, 677, 683, 691, 701, 709, 719, 727, 733, 739, 743, 751, 757, 761, 769, 773, 787, 797, 809, 811, 821, 823, 827, 829, 839, 853, 857, 859, 863, 877, 881, 883, 887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997];
       var lplim = (1 << 26) / lowprimes[lowprimes.length - 1];
-      function bnIsProbablePrime(t2) {
-        var i, x = this.abs();
-        if (x.t == 1 && x[0] <= lowprimes[lowprimes.length - 1]) {
-          for (i = 0; i < lowprimes.length; ++i)
-            if (x[0] == lowprimes[i])
+      function bnIsProbablePrime(t3) {
+        var i2, x2 = this.abs();
+        if (x2.t == 1 && x2[0] <= lowprimes[lowprimes.length - 1]) {
+          for (i2 = 0; i2 < lowprimes.length; ++i2)
+            if (x2[0] == lowprimes[i2])
               return true;
           return false;
         }
-        if (x.isEven())
+        if (x2.isEven())
           return false;
-        i = 1;
-        while (i < lowprimes.length) {
-          var m = lowprimes[i], j = i + 1;
-          while (j < lowprimes.length && m < lplim)
-            m *= lowprimes[j++];
-          m = x.modInt(m);
-          while (i < j)
-            if (m % lowprimes[i++] == 0)
+        i2 = 1;
+        while (i2 < lowprimes.length) {
+          var m = lowprimes[i2], j2 = i2 + 1;
+          while (j2 < lowprimes.length && m < lplim)
+            m *= lowprimes[j2++];
+          m = x2.modInt(m);
+          while (i2 < j2)
+            if (m % lowprimes[i2++] == 0)
               return false;
         }
-        return x.millerRabin(t2);
+        return x2.millerRabin(t3);
       }
-      function bnpMillerRabin(t2) {
+      function bnpMillerRabin(t3) {
         var n1 = this.subtract(BigInteger.ONE);
-        var k = n1.getLowestSetBit();
-        if (k <= 0)
+        var k2 = n1.getLowestSetBit();
+        if (k2 <= 0)
           return false;
-        var r = n1.shiftRight(k);
-        t2 = t2 + 1 >> 1;
-        if (t2 > lowprimes.length)
-          t2 = lowprimes.length;
-        var a = nbi();
-        for (var i = 0; i < t2; ++i) {
-          a.fromInt(lowprimes[Math.floor(Math.random() * lowprimes.length)]);
-          var y = a.modPow(r, this);
-          if (y.compareTo(BigInteger.ONE) != 0 && y.compareTo(n1) != 0) {
-            var j = 1;
-            while (j++ < k && y.compareTo(n1) != 0) {
-              y = y.modPowInt(2, this);
-              if (y.compareTo(BigInteger.ONE) == 0)
+        var r2 = n1.shiftRight(k2);
+        t3 = t3 + 1 >> 1;
+        if (t3 > lowprimes.length)
+          t3 = lowprimes.length;
+        var a2 = nbi();
+        for (var i2 = 0; i2 < t3; ++i2) {
+          a2.fromInt(lowprimes[Math.floor(Math.random() * lowprimes.length)]);
+          var y2 = a2.modPow(r2, this);
+          if (y2.compareTo(BigInteger.ONE) != 0 && y2.compareTo(n1) != 0) {
+            var j2 = 1;
+            while (j2++ < k2 && y2.compareTo(n1) != 0) {
+              y2 = y2.modPowInt(2, this);
+              if (y2.compareTo(BigInteger.ONE) == 0)
                 return false;
             }
-            if (y.compareTo(n1) != 0)
+            if (y2.compareTo(n1) != 0)
               return false;
           }
         }
@@ -14212,11 +13848,11 @@ var require_jsbn = __commonJS({
       var rng_state;
       var rng_pool;
       var rng_pptr;
-      function rng_seed_int(x) {
-        rng_pool[rng_pptr++] ^= x & 255;
-        rng_pool[rng_pptr++] ^= x >> 8 & 255;
-        rng_pool[rng_pptr++] ^= x >> 16 & 255;
-        rng_pool[rng_pptr++] ^= x >> 24 & 255;
+      function rng_seed_int(x2) {
+        rng_pool[rng_pptr++] ^= x2 & 255;
+        rng_pool[rng_pptr++] ^= x2 >> 8 & 255;
+        rng_pool[rng_pptr++] ^= x2 >> 16 & 255;
+        rng_pool[rng_pptr++] ^= x2 >> 24 & 255;
         if (rng_pptr >= rng_psize)
           rng_pptr -= rng_psize;
       }
@@ -14226,23 +13862,23 @@ var require_jsbn = __commonJS({
       if (rng_pool == null) {
         rng_pool = new Array();
         rng_pptr = 0;
-        var t;
+        var t2;
         if (typeof window !== "undefined" && window.crypto) {
           if (window.crypto.getRandomValues) {
             var ua = new Uint8Array(32);
             window.crypto.getRandomValues(ua);
-            for (t = 0; t < 32; ++t)
-              rng_pool[rng_pptr++] = ua[t];
+            for (t2 = 0; t2 < 32; ++t2)
+              rng_pool[rng_pptr++] = ua[t2];
           } else if (navigator.appName == "Netscape" && navigator.appVersion < "5") {
-            var z = window.crypto.random(32);
-            for (t = 0; t < z.length; ++t)
-              rng_pool[rng_pptr++] = z.charCodeAt(t) & 255;
+            var z2 = window.crypto.random(32);
+            for (t2 = 0; t2 < z2.length; ++t2)
+              rng_pool[rng_pptr++] = z2.charCodeAt(t2) & 255;
           }
         }
         while (rng_pptr < rng_psize) {
-          t = Math.floor(65536 * Math.random());
-          rng_pool[rng_pptr++] = t >>> 8;
-          rng_pool[rng_pptr++] = t & 255;
+          t2 = Math.floor(65536 * Math.random());
+          rng_pool[rng_pptr++] = t2 >>> 8;
+          rng_pool[rng_pptr++] = t2 & 255;
         }
         rng_pptr = 0;
         rng_seed_time();
@@ -14259,9 +13895,9 @@ var require_jsbn = __commonJS({
         return rng_state.next();
       }
       function rng_get_bytes(ba) {
-        var i;
-        for (i = 0; i < ba.length; ++i)
-          ba[i] = rng_get_byte();
+        var i2;
+        for (i2 = 0; i2 < ba.length; ++i2)
+          ba[i2] = rng_get_byte();
       }
       function SecureRandom2() {
       }
@@ -14272,27 +13908,27 @@ var require_jsbn = __commonJS({
         this.S = new Array();
       }
       function ARC4init(key) {
-        var i, j, t2;
-        for (i = 0; i < 256; ++i)
-          this.S[i] = i;
-        j = 0;
-        for (i = 0; i < 256; ++i) {
-          j = j + this.S[i] + key[i % key.length] & 255;
-          t2 = this.S[i];
-          this.S[i] = this.S[j];
-          this.S[j] = t2;
+        var i2, j2, t3;
+        for (i2 = 0; i2 < 256; ++i2)
+          this.S[i2] = i2;
+        j2 = 0;
+        for (i2 = 0; i2 < 256; ++i2) {
+          j2 = j2 + this.S[i2] + key[i2 % key.length] & 255;
+          t3 = this.S[i2];
+          this.S[i2] = this.S[j2];
+          this.S[j2] = t3;
         }
         this.i = 0;
         this.j = 0;
       }
       function ARC4next() {
-        var t2;
+        var t3;
         this.i = this.i + 1 & 255;
         this.j = this.j + this.S[this.i] & 255;
-        t2 = this.S[this.i];
+        t3 = this.S[this.i];
         this.S[this.i] = this.S[this.j];
-        this.S[this.j] = t2;
-        return this.S[t2 + this.S[this.i] & 255];
+        this.S[this.j] = t3;
+        return this.S[t3 + this.S[this.i] & 255];
       }
       Arcfour.prototype.init = ARC4init;
       Arcfour.prototype.next = ARC4next;
@@ -14318,9 +13954,9 @@ var require_ec = __commonJS({
     "use strict";
     var BigInteger = require_jsbn().BigInteger;
     var Barrett = BigInteger.prototype.Barrett;
-    function ECFieldElementFp(q2, x) {
-      this.x = x;
-      this.q = q2;
+    function ECFieldElementFp(q3, x2) {
+      this.x = x2;
+      this.q = q3;
     }
     function feFpEquals(other) {
       if (other == this)
@@ -14333,20 +13969,20 @@ var require_ec = __commonJS({
     function feFpNegate() {
       return new ECFieldElementFp(this.q, this.x.negate().mod(this.q));
     }
-    function feFpAdd(b) {
-      return new ECFieldElementFp(this.q, this.x.add(b.toBigInteger()).mod(this.q));
+    function feFpAdd(b2) {
+      return new ECFieldElementFp(this.q, this.x.add(b2.toBigInteger()).mod(this.q));
     }
-    function feFpSubtract(b) {
-      return new ECFieldElementFp(this.q, this.x.subtract(b.toBigInteger()).mod(this.q));
+    function feFpSubtract(b2) {
+      return new ECFieldElementFp(this.q, this.x.subtract(b2.toBigInteger()).mod(this.q));
     }
-    function feFpMultiply(b) {
-      return new ECFieldElementFp(this.q, this.x.multiply(b.toBigInteger()).mod(this.q));
+    function feFpMultiply(b2) {
+      return new ECFieldElementFp(this.q, this.x.multiply(b2.toBigInteger()).mod(this.q));
     }
     function feFpSquare() {
       return new ECFieldElementFp(this.q, this.x.square().mod(this.q));
     }
-    function feFpDivide(b) {
-      return new ECFieldElementFp(this.q, this.x.multiply(b.toBigInteger().modInverse(this.q)).mod(this.q));
+    function feFpDivide(b2) {
+      return new ECFieldElementFp(this.q, this.x.multiply(b2.toBigInteger().modInverse(this.q)).mod(this.q));
     }
     ECFieldElementFp.prototype.equals = feFpEquals;
     ECFieldElementFp.prototype.toBigInteger = feFpToBigInteger;
@@ -14356,14 +13992,14 @@ var require_ec = __commonJS({
     ECFieldElementFp.prototype.multiply = feFpMultiply;
     ECFieldElementFp.prototype.square = feFpSquare;
     ECFieldElementFp.prototype.divide = feFpDivide;
-    function ECPointFp(curve, x, y, z) {
+    function ECPointFp(curve, x2, y2, z2) {
       this.curve = curve;
-      this.x = x;
-      this.y = y;
-      if (z == null) {
+      this.x = x2;
+      this.y = y2;
+      if (z2 == null) {
         this.z = BigInteger.ONE;
       } else {
-        this.z = z;
+        this.z = z2;
       }
       this.zinv = null;
     }
@@ -14371,17 +14007,17 @@ var require_ec = __commonJS({
       if (this.zinv == null) {
         this.zinv = this.z.modInverse(this.curve.q);
       }
-      var r = this.x.toBigInteger().multiply(this.zinv);
-      this.curve.reduce(r);
-      return this.curve.fromBigInteger(r);
+      var r2 = this.x.toBigInteger().multiply(this.zinv);
+      this.curve.reduce(r2);
+      return this.curve.fromBigInteger(r2);
     }
     function pointFpGetY() {
       if (this.zinv == null) {
         this.zinv = this.z.modInverse(this.curve.q);
       }
-      var r = this.y.toBigInteger().multiply(this.zinv);
-      this.curve.reduce(r);
-      return this.curve.fromBigInteger(r);
+      var r2 = this.y.toBigInteger().multiply(this.zinv);
+      this.curve.reduce(r2);
+      return this.curve.fromBigInteger(r2);
     }
     function pointFpEquals(other) {
       if (other == this)
@@ -14390,12 +14026,12 @@ var require_ec = __commonJS({
         return other.isInfinity();
       if (other.isInfinity())
         return this.isInfinity();
-      var u, v;
-      u = other.y.toBigInteger().multiply(this.z).subtract(this.y.toBigInteger().multiply(other.z)).mod(this.curve.q);
-      if (!u.equals(BigInteger.ZERO))
+      var u2, v2;
+      u2 = other.y.toBigInteger().multiply(this.z).subtract(this.y.toBigInteger().multiply(other.z)).mod(this.curve.q);
+      if (!u2.equals(BigInteger.ZERO))
         return false;
-      v = other.x.toBigInteger().multiply(this.z).subtract(this.x.toBigInteger().multiply(other.z)).mod(this.curve.q);
-      return v.equals(BigInteger.ZERO);
+      v2 = other.x.toBigInteger().multiply(this.z).subtract(this.x.toBigInteger().multiply(other.z)).mod(this.curve.q);
+      return v2.equals(BigInteger.ZERO);
     }
     function pointFpIsInfinity() {
       if (this.x == null && this.y == null)
@@ -14405,15 +14041,15 @@ var require_ec = __commonJS({
     function pointFpNegate() {
       return new ECPointFp(this.curve, this.x, this.y.negate(), this.z);
     }
-    function pointFpAdd(b) {
+    function pointFpAdd(b2) {
       if (this.isInfinity())
-        return b;
-      if (b.isInfinity())
+        return b2;
+      if (b2.isInfinity())
         return this;
-      var u = b.y.toBigInteger().multiply(this.z).subtract(this.y.toBigInteger().multiply(b.z)).mod(this.curve.q);
-      var v = b.x.toBigInteger().multiply(this.z).subtract(this.x.toBigInteger().multiply(b.z)).mod(this.curve.q);
-      if (BigInteger.ZERO.equals(v)) {
-        if (BigInteger.ZERO.equals(u)) {
+      var u2 = b2.y.toBigInteger().multiply(this.z).subtract(this.y.toBigInteger().multiply(b2.z)).mod(this.curve.q);
+      var v2 = b2.x.toBigInteger().multiply(this.z).subtract(this.x.toBigInteger().multiply(b2.z)).mod(this.curve.q);
+      if (BigInteger.ZERO.equals(v2)) {
+        if (BigInteger.ZERO.equals(u2)) {
           return this.twice();
         }
         return this.curve.getInfinity();
@@ -14421,15 +14057,15 @@ var require_ec = __commonJS({
       var THREE = new BigInteger("3");
       var x1 = this.x.toBigInteger();
       var y1 = this.y.toBigInteger();
-      var x2 = b.x.toBigInteger();
-      var y2 = b.y.toBigInteger();
-      var v2 = v.square();
-      var v3 = v2.multiply(v);
-      var x1v2 = x1.multiply(v2);
-      var zu2 = u.square().multiply(this.z);
-      var x3 = zu2.subtract(x1v2.shiftLeft(1)).multiply(b.z).subtract(v3).multiply(v).mod(this.curve.q);
-      var y3 = x1v2.multiply(THREE).multiply(u).subtract(y1.multiply(v3)).subtract(zu2.multiply(u)).multiply(b.z).add(u.multiply(v3)).mod(this.curve.q);
-      var z3 = v3.multiply(this.z).multiply(b.z).mod(this.curve.q);
+      var x2 = b2.x.toBigInteger();
+      var y2 = b2.y.toBigInteger();
+      var v22 = v2.square();
+      var v3 = v22.multiply(v2);
+      var x1v2 = x1.multiply(v22);
+      var zu2 = u2.square().multiply(this.z);
+      var x3 = zu2.subtract(x1v2.shiftLeft(1)).multiply(b2.z).subtract(v3).multiply(v2).mod(this.curve.q);
+      var y3 = x1v2.multiply(THREE).multiply(u2).subtract(y1.multiply(v3)).subtract(zu2.multiply(u2)).multiply(b2.z).add(u2.multiply(v3)).mod(this.curve.q);
+      var z3 = v3.multiply(this.z).multiply(b2.z).mod(this.curve.q);
       return new ECPointFp(this.curve, this.curve.fromBigInteger(x3), this.curve.fromBigInteger(y3), z3);
     }
     function pointFpTwice() {
@@ -14442,61 +14078,61 @@ var require_ec = __commonJS({
       var y1 = this.y.toBigInteger();
       var y1z1 = y1.multiply(this.z);
       var y1sqz1 = y1z1.multiply(y1).mod(this.curve.q);
-      var a = this.curve.a.toBigInteger();
-      var w = x1.square().multiply(THREE);
-      if (!BigInteger.ZERO.equals(a)) {
-        w = w.add(this.z.square().multiply(a));
+      var a2 = this.curve.a.toBigInteger();
+      var w2 = x1.square().multiply(THREE);
+      if (!BigInteger.ZERO.equals(a2)) {
+        w2 = w2.add(this.z.square().multiply(a2));
       }
-      w = w.mod(this.curve.q);
-      var x3 = w.square().subtract(x1.shiftLeft(3).multiply(y1sqz1)).shiftLeft(1).multiply(y1z1).mod(this.curve.q);
-      var y3 = w.multiply(THREE).multiply(x1).subtract(y1sqz1.shiftLeft(1)).shiftLeft(2).multiply(y1sqz1).subtract(w.square().multiply(w)).mod(this.curve.q);
+      w2 = w2.mod(this.curve.q);
+      var x3 = w2.square().subtract(x1.shiftLeft(3).multiply(y1sqz1)).shiftLeft(1).multiply(y1z1).mod(this.curve.q);
+      var y3 = w2.multiply(THREE).multiply(x1).subtract(y1sqz1.shiftLeft(1)).shiftLeft(2).multiply(y1sqz1).subtract(w2.square().multiply(w2)).mod(this.curve.q);
       var z3 = y1z1.square().multiply(y1z1).shiftLeft(3).mod(this.curve.q);
       return new ECPointFp(this.curve, this.curve.fromBigInteger(x3), this.curve.fromBigInteger(y3), z3);
     }
-    function pointFpMultiply(k) {
+    function pointFpMultiply(k2) {
       if (this.isInfinity())
         return this;
-      if (k.signum() == 0)
+      if (k2.signum() == 0)
         return this.curve.getInfinity();
-      var e = k;
-      var h = e.multiply(new BigInteger("3"));
+      var e = k2;
+      var h2 = e.multiply(new BigInteger("3"));
       var neg = this.negate();
-      var R = this;
-      var i;
-      for (i = h.bitLength() - 2; i > 0; --i) {
-        R = R.twice();
-        var hBit = h.testBit(i);
-        var eBit = e.testBit(i);
+      var R2 = this;
+      var i2;
+      for (i2 = h2.bitLength() - 2; i2 > 0; --i2) {
+        R2 = R2.twice();
+        var hBit = h2.testBit(i2);
+        var eBit = e.testBit(i2);
         if (hBit != eBit) {
-          R = R.add(hBit ? this : neg);
+          R2 = R2.add(hBit ? this : neg);
         }
       }
-      return R;
+      return R2;
     }
-    function pointFpMultiplyTwo(j, x, k) {
-      var i;
-      if (j.bitLength() > k.bitLength())
-        i = j.bitLength() - 1;
+    function pointFpMultiplyTwo(j2, x2, k2) {
+      var i2;
+      if (j2.bitLength() > k2.bitLength())
+        i2 = j2.bitLength() - 1;
       else
-        i = k.bitLength() - 1;
-      var R = this.curve.getInfinity();
-      var both = this.add(x);
-      while (i >= 0) {
-        R = R.twice();
-        if (j.testBit(i)) {
-          if (k.testBit(i)) {
-            R = R.add(both);
+        i2 = k2.bitLength() - 1;
+      var R2 = this.curve.getInfinity();
+      var both = this.add(x2);
+      while (i2 >= 0) {
+        R2 = R2.twice();
+        if (j2.testBit(i2)) {
+          if (k2.testBit(i2)) {
+            R2 = R2.add(both);
           } else {
-            R = R.add(this);
+            R2 = R2.add(this);
           }
         } else {
-          if (k.testBit(i)) {
-            R = R.add(x);
+          if (k2.testBit(i2)) {
+            R2 = R2.add(x2);
           }
         }
-        --i;
+        --i2;
       }
-      return R;
+      return R2;
     }
     ECPointFp.prototype.getX = pointFpGetX;
     ECPointFp.prototype.getY = pointFpGetY;
@@ -14507,10 +14143,10 @@ var require_ec = __commonJS({
     ECPointFp.prototype.twice = pointFpTwice;
     ECPointFp.prototype.multiply = pointFpMultiply;
     ECPointFp.prototype.multiplyTwo = pointFpMultiplyTwo;
-    function ECCurveFp(q2, a, b) {
-      this.q = q2;
-      this.a = this.fromBigInteger(a);
-      this.b = this.fromBigInteger(b);
+    function ECCurveFp(q3, a2, b2) {
+      this.q = q3;
+      this.a = this.fromBigInteger(a2);
+      this.b = this.fromBigInteger(b2);
       this.infinity = new ECPointFp(this, null, null);
       this.reducer = new Barrett(this.q);
     }
@@ -14531,17 +14167,17 @@ var require_ec = __commonJS({
     function curveFpGetInfinity() {
       return this.infinity;
     }
-    function curveFpFromBigInteger(x) {
-      return new ECFieldElementFp(this.q, x);
+    function curveFpFromBigInteger(x2) {
+      return new ECFieldElementFp(this.q, x2);
     }
-    function curveReduce(x) {
-      this.reducer.reduce(x);
+    function curveReduce(x2) {
+      this.reducer.reduce(x2);
     }
-    function curveFpEncodePointHex(p) {
-      if (p.isInfinity())
+    function curveFpEncodePointHex(p2) {
+      if (p2.isInfinity())
         return "00";
-      var xHex = p.getX().toBigInteger().toString(16);
-      var yHex = p.getY().toBigInteger().toString(16);
+      var xHex = p2.getX().toBigInteger().toString(16);
+      var yHex = p2.getY().toBigInteger().toString(16);
       var oLen = this.getQ().toString(16).length;
       if (oLen % 2 != 0)
         oLen++;
@@ -14561,9 +14197,9 @@ var require_ec = __commonJS({
     ECCurveFp.prototype.fromBigInteger = curveFpFromBigInteger;
     ECCurveFp.prototype.reduce = curveReduce;
     ECCurveFp.prototype.encodePointHex = curveFpEncodePointHex;
-    ECCurveFp.prototype.decodePointHex = function(s) {
+    ECCurveFp.prototype.decodePointHex = function(s2) {
       var yIsEven;
-      switch (parseInt(s.substr(0, 2), 16)) {
+      switch (parseInt(s2.substr(0, 2), 16)) {
         case 0:
           return this.infinity;
         case 2:
@@ -14571,10 +14207,10 @@ var require_ec = __commonJS({
         case 3:
           if (yIsEven == void 0)
             yIsEven = true;
-          var len = s.length - 2;
-          var xHex = s.substr(2, len);
-          var x = this.fromBigInteger(new BigInteger(xHex, 16));
-          var alpha = x.multiply(x.square().add(this.getA())).add(this.getB());
+          var len = s2.length - 2;
+          var xHex = s2.substr(2, len);
+          var x2 = this.fromBigInteger(new BigInteger(xHex, 16));
+          var alpha = x2.multiply(x2.square().add(this.getA())).add(this.getB());
           var beta = alpha.sqrt();
           if (beta == null)
             throw "Invalid point compression";
@@ -14582,13 +14218,13 @@ var require_ec = __commonJS({
           if (betaValue.testBit(0) != yIsEven) {
             beta = this.fromBigInteger(this.getQ().subtract(betaValue));
           }
-          return new ECPointFp(this, x, beta);
+          return new ECPointFp(this, x2, beta);
         case 4:
         case 6:
         case 7:
-          var len = (s.length - 2) / 2;
-          var xHex = s.substr(2, len);
-          var yHex = s.substr(len + 2, len);
+          var len = (s2.length - 2) / 2;
+          var xHex = s2.substr(2, len);
+          var yHex = s2.substr(len + 2, len);
           return new ECPointFp(
             this,
             this.fromBigInteger(new BigInteger(xHex, 16)),
@@ -14598,17 +14234,17 @@ var require_ec = __commonJS({
           return null;
       }
     };
-    ECCurveFp.prototype.encodeCompressedPointHex = function(p) {
-      if (p.isInfinity())
+    ECCurveFp.prototype.encodeCompressedPointHex = function(p2) {
+      if (p2.isInfinity())
         return "00";
-      var xHex = p.getX().toBigInteger().toString(16);
+      var xHex = p2.getX().toBigInteger().toString(16);
       var oLen = this.getQ().toString(16).length;
       if (oLen % 2 != 0)
         oLen++;
       while (xHex.length < oLen)
         xHex = "0" + xHex;
       var yPrefix;
-      if (p.getY().toBigInteger().isEven())
+      if (p2.getY().toBigInteger().isEven())
         yPrefix = "02";
       else
         yPrefix = "03";
@@ -14630,49 +14266,49 @@ var require_ec = __commonJS({
     ECFieldElementFp.prototype.modMult = function(x1, x2) {
       return this.modReduce(x1.multiply(x2));
     };
-    ECFieldElementFp.prototype.modReduce = function(x) {
+    ECFieldElementFp.prototype.modReduce = function(x2) {
       if (this.getR() != null) {
         var qLen = q.bitLength();
-        while (x.bitLength() > qLen + 1) {
-          var u = x.shiftRight(qLen);
-          var v = x.subtract(u.shiftLeft(qLen));
+        while (x2.bitLength() > qLen + 1) {
+          var u2 = x2.shiftRight(qLen);
+          var v2 = x2.subtract(u2.shiftLeft(qLen));
           if (!this.getR().equals(BigInteger.ONE)) {
-            u = u.multiply(this.getR());
+            u2 = u2.multiply(this.getR());
           }
-          x = u.add(v);
+          x2 = u2.add(v2);
         }
-        while (x.compareTo(q) >= 0) {
-          x = x.subtract(q);
+        while (x2.compareTo(q) >= 0) {
+          x2 = x2.subtract(q);
         }
       } else {
-        x = x.mod(q);
+        x2 = x2.mod(q);
       }
-      return x;
+      return x2;
     };
     ECFieldElementFp.prototype.sqrt = function() {
       if (!this.q.testBit(0))
         throw "unsupported";
       if (this.q.testBit(1)) {
-        var z = new ECFieldElementFp(this.q, this.x.modPow(this.q.shiftRight(2).add(BigInteger.ONE), this.q));
-        return z.square().equals(this) ? z : null;
+        var z2 = new ECFieldElementFp(this.q, this.x.modPow(this.q.shiftRight(2).add(BigInteger.ONE), this.q));
+        return z2.square().equals(this) ? z2 : null;
       }
       var qMinusOne = this.q.subtract(BigInteger.ONE);
       var legendreExponent = qMinusOne.shiftRight(1);
       if (!this.x.modPow(legendreExponent, this.q).equals(BigInteger.ONE)) {
         return null;
       }
-      var u = qMinusOne.shiftRight(2);
-      var k = u.shiftLeft(1).add(BigInteger.ONE);
-      var Q = this.x;
-      var fourQ = modDouble(modDouble(Q));
-      var U, V;
+      var u2 = qMinusOne.shiftRight(2);
+      var k2 = u2.shiftLeft(1).add(BigInteger.ONE);
+      var Q2 = this.x;
+      var fourQ = modDouble(modDouble(Q2));
+      var U2, V;
       do {
-        var P;
+        var P2;
         do {
-          P = new BigInteger(this.q.bitLength(), new SecureRandom());
-        } while (P.compareTo(this.q) >= 0 || !P.multiply(P).subtract(fourQ).modPow(legendreExponent, this.q).equals(qMinusOne));
-        var result = this.lucasSequence(P, Q, k);
-        U = result[0];
+          P2 = new BigInteger(this.q.bitLength(), new SecureRandom());
+        } while (P2.compareTo(this.q) >= 0 || !P2.multiply(P2).subtract(fourQ).modPow(legendreExponent, this.q).equals(qMinusOne));
+        var result = this.lucasSequence(P2, Q2, k2);
+        U2 = result[0];
         V = result[1];
         if (this.modMult(V, V).equals(fourQ)) {
           if (V.testBit(0)) {
@@ -14681,37 +14317,37 @@ var require_ec = __commonJS({
           V = V.shiftRight(1);
           return new ECFieldElementFp(q, V);
         }
-      } while (U.equals(BigInteger.ONE) || U.equals(qMinusOne));
+      } while (U2.equals(BigInteger.ONE) || U2.equals(qMinusOne));
       return null;
     };
-    ECFieldElementFp.prototype.lucasSequence = function(P, Q, k) {
-      var n = k.bitLength();
-      var s = k.getLowestSetBit();
+    ECFieldElementFp.prototype.lucasSequence = function(P2, Q2, k2) {
+      var n2 = k2.bitLength();
+      var s2 = k2.getLowestSetBit();
       var Uh = BigInteger.ONE;
       var Vl = BigInteger.TWO;
-      var Vh = P;
+      var Vh = P2;
       var Ql = BigInteger.ONE;
       var Qh = BigInteger.ONE;
-      for (var j = n - 1; j >= s + 1; --j) {
+      for (var j2 = n2 - 1; j2 >= s2 + 1; --j2) {
         Ql = this.modMult(Ql, Qh);
-        if (k.testBit(j)) {
-          Qh = this.modMult(Ql, Q);
+        if (k2.testBit(j2)) {
+          Qh = this.modMult(Ql, Q2);
           Uh = this.modMult(Uh, Vh);
-          Vl = this.modReduce(Vh.multiply(Vl).subtract(P.multiply(Ql)));
+          Vl = this.modReduce(Vh.multiply(Vl).subtract(P2.multiply(Ql)));
           Vh = this.modReduce(Vh.multiply(Vh).subtract(Qh.shiftLeft(1)));
         } else {
           Qh = Ql;
           Uh = this.modReduce(Uh.multiply(Vl).subtract(Ql));
-          Vh = this.modReduce(Vh.multiply(Vl).subtract(P.multiply(Ql)));
+          Vh = this.modReduce(Vh.multiply(Vl).subtract(P2.multiply(Ql)));
           Vl = this.modReduce(Vl.multiply(Vl).subtract(Ql.shiftLeft(1)));
         }
       }
       Ql = this.modMult(Ql, Qh);
-      Qh = this.modMult(Ql, Q);
+      Qh = this.modMult(Ql, Q2);
       Uh = this.modReduce(Uh.multiply(Vl).subtract(Ql));
-      Vl = this.modReduce(Vh.multiply(Vl).subtract(P.multiply(Ql)));
+      Vl = this.modReduce(Vh.multiply(Vl).subtract(P2.multiply(Ql)));
       Ql = this.modMult(Ql, Qh);
-      for (var j = 1; j <= s; ++j) {
+      for (var j2 = 1; j2 <= s2; ++j2) {
         Uh = this.modMult(Uh, Vl);
         Vl = this.modReduce(Vl.multiply(Vl).subtract(Ql.shiftLeft(1)));
         Ql = this.modMult(Ql, Ql);
@@ -14734,11 +14370,11 @@ var require_nacl_fast = __commonJS({
     (function(nacl) {
       "use strict";
       var gf = function(init) {
-        var i, r = new Float64Array(16);
+        var i2, r2 = new Float64Array(16);
         if (init)
-          for (i = 0; i < init.length; i++)
-            r[i] = init[i];
-        return r;
+          for (i2 = 0; i2 < init.length; i2++)
+            r2[i2] = init[i2];
+        return r2;
       };
       var randombytes = function() {
         throw new Error("no PRNG");
@@ -14746,97 +14382,97 @@ var require_nacl_fast = __commonJS({
       var _0 = new Uint8Array(16);
       var _9 = new Uint8Array(32);
       _9[0] = 9;
-      var gf0 = gf(), gf1 = gf([1]), _121665 = gf([56129, 1]), D = gf([30883, 4953, 19914, 30187, 55467, 16705, 2637, 112, 59544, 30585, 16505, 36039, 65139, 11119, 27886, 20995]), D2 = gf([61785, 9906, 39828, 60374, 45398, 33411, 5274, 224, 53552, 61171, 33010, 6542, 64743, 22239, 55772, 9222]), X = gf([54554, 36645, 11616, 51542, 42930, 38181, 51040, 26924, 56412, 64982, 57905, 49316, 21502, 52590, 14035, 8553]), Y = gf([26200, 26214, 26214, 26214, 26214, 26214, 26214, 26214, 26214, 26214, 26214, 26214, 26214, 26214, 26214, 26214]), I = gf([41136, 18958, 6951, 50414, 58488, 44335, 6150, 12099, 55207, 15867, 153, 11085, 57099, 20417, 9344, 11139]);
-      function ts64(x, i, h, l) {
-        x[i] = h >> 24 & 255;
-        x[i + 1] = h >> 16 & 255;
-        x[i + 2] = h >> 8 & 255;
-        x[i + 3] = h & 255;
-        x[i + 4] = l >> 24 & 255;
-        x[i + 5] = l >> 16 & 255;
-        x[i + 6] = l >> 8 & 255;
-        x[i + 7] = l & 255;
+      var gf0 = gf(), gf1 = gf([1]), _121665 = gf([56129, 1]), D2 = gf([30883, 4953, 19914, 30187, 55467, 16705, 2637, 112, 59544, 30585, 16505, 36039, 65139, 11119, 27886, 20995]), D22 = gf([61785, 9906, 39828, 60374, 45398, 33411, 5274, 224, 53552, 61171, 33010, 6542, 64743, 22239, 55772, 9222]), X2 = gf([54554, 36645, 11616, 51542, 42930, 38181, 51040, 26924, 56412, 64982, 57905, 49316, 21502, 52590, 14035, 8553]), Y2 = gf([26200, 26214, 26214, 26214, 26214, 26214, 26214, 26214, 26214, 26214, 26214, 26214, 26214, 26214, 26214, 26214]), I2 = gf([41136, 18958, 6951, 50414, 58488, 44335, 6150, 12099, 55207, 15867, 153, 11085, 57099, 20417, 9344, 11139]);
+      function ts64(x2, i2, h2, l2) {
+        x2[i2] = h2 >> 24 & 255;
+        x2[i2 + 1] = h2 >> 16 & 255;
+        x2[i2 + 2] = h2 >> 8 & 255;
+        x2[i2 + 3] = h2 & 255;
+        x2[i2 + 4] = l2 >> 24 & 255;
+        x2[i2 + 5] = l2 >> 16 & 255;
+        x2[i2 + 6] = l2 >> 8 & 255;
+        x2[i2 + 7] = l2 & 255;
       }
-      function vn(x, xi, y, yi, n) {
-        var i, d = 0;
-        for (i = 0; i < n; i++)
-          d |= x[xi + i] ^ y[yi + i];
-        return (1 & d - 1 >>> 8) - 1;
+      function vn2(x2, xi, y2, yi, n2) {
+        var i2, d2 = 0;
+        for (i2 = 0; i2 < n2; i2++)
+          d2 |= x2[xi + i2] ^ y2[yi + i2];
+        return (1 & d2 - 1 >>> 8) - 1;
       }
-      function crypto_verify_16(x, xi, y, yi) {
-        return vn(x, xi, y, yi, 16);
+      function crypto_verify_16(x2, xi, y2, yi) {
+        return vn2(x2, xi, y2, yi, 16);
       }
-      function crypto_verify_32(x, xi, y, yi) {
-        return vn(x, xi, y, yi, 32);
+      function crypto_verify_32(x2, xi, y2, yi) {
+        return vn2(x2, xi, y2, yi, 32);
       }
-      function core_salsa20(o, p, k, c) {
-        var j0 = c[0] & 255 | (c[1] & 255) << 8 | (c[2] & 255) << 16 | (c[3] & 255) << 24, j1 = k[0] & 255 | (k[1] & 255) << 8 | (k[2] & 255) << 16 | (k[3] & 255) << 24, j2 = k[4] & 255 | (k[5] & 255) << 8 | (k[6] & 255) << 16 | (k[7] & 255) << 24, j3 = k[8] & 255 | (k[9] & 255) << 8 | (k[10] & 255) << 16 | (k[11] & 255) << 24, j4 = k[12] & 255 | (k[13] & 255) << 8 | (k[14] & 255) << 16 | (k[15] & 255) << 24, j5 = c[4] & 255 | (c[5] & 255) << 8 | (c[6] & 255) << 16 | (c[7] & 255) << 24, j6 = p[0] & 255 | (p[1] & 255) << 8 | (p[2] & 255) << 16 | (p[3] & 255) << 24, j7 = p[4] & 255 | (p[5] & 255) << 8 | (p[6] & 255) << 16 | (p[7] & 255) << 24, j8 = p[8] & 255 | (p[9] & 255) << 8 | (p[10] & 255) << 16 | (p[11] & 255) << 24, j9 = p[12] & 255 | (p[13] & 255) << 8 | (p[14] & 255) << 16 | (p[15] & 255) << 24, j10 = c[8] & 255 | (c[9] & 255) << 8 | (c[10] & 255) << 16 | (c[11] & 255) << 24, j11 = k[16] & 255 | (k[17] & 255) << 8 | (k[18] & 255) << 16 | (k[19] & 255) << 24, j12 = k[20] & 255 | (k[21] & 255) << 8 | (k[22] & 255) << 16 | (k[23] & 255) << 24, j13 = k[24] & 255 | (k[25] & 255) << 8 | (k[26] & 255) << 16 | (k[27] & 255) << 24, j14 = k[28] & 255 | (k[29] & 255) << 8 | (k[30] & 255) << 16 | (k[31] & 255) << 24, j15 = c[12] & 255 | (c[13] & 255) << 8 | (c[14] & 255) << 16 | (c[15] & 255) << 24;
-        var x0 = j0, x1 = j1, x2 = j2, x3 = j3, x4 = j4, x5 = j5, x6 = j6, x7 = j7, x8 = j8, x9 = j9, x10 = j10, x11 = j11, x12 = j12, x13 = j13, x14 = j14, x15 = j15, u;
-        for (var i = 0; i < 20; i += 2) {
-          u = x0 + x12 | 0;
-          x4 ^= u << 7 | u >>> 32 - 7;
-          u = x4 + x0 | 0;
-          x8 ^= u << 9 | u >>> 32 - 9;
-          u = x8 + x4 | 0;
-          x12 ^= u << 13 | u >>> 32 - 13;
-          u = x12 + x8 | 0;
-          x0 ^= u << 18 | u >>> 32 - 18;
-          u = x5 + x1 | 0;
-          x9 ^= u << 7 | u >>> 32 - 7;
-          u = x9 + x5 | 0;
-          x13 ^= u << 9 | u >>> 32 - 9;
-          u = x13 + x9 | 0;
-          x1 ^= u << 13 | u >>> 32 - 13;
-          u = x1 + x13 | 0;
-          x5 ^= u << 18 | u >>> 32 - 18;
-          u = x10 + x6 | 0;
-          x14 ^= u << 7 | u >>> 32 - 7;
-          u = x14 + x10 | 0;
-          x2 ^= u << 9 | u >>> 32 - 9;
-          u = x2 + x14 | 0;
-          x6 ^= u << 13 | u >>> 32 - 13;
-          u = x6 + x2 | 0;
-          x10 ^= u << 18 | u >>> 32 - 18;
-          u = x15 + x11 | 0;
-          x3 ^= u << 7 | u >>> 32 - 7;
-          u = x3 + x15 | 0;
-          x7 ^= u << 9 | u >>> 32 - 9;
-          u = x7 + x3 | 0;
-          x11 ^= u << 13 | u >>> 32 - 13;
-          u = x11 + x7 | 0;
-          x15 ^= u << 18 | u >>> 32 - 18;
-          u = x0 + x3 | 0;
-          x1 ^= u << 7 | u >>> 32 - 7;
-          u = x1 + x0 | 0;
-          x2 ^= u << 9 | u >>> 32 - 9;
-          u = x2 + x1 | 0;
-          x3 ^= u << 13 | u >>> 32 - 13;
-          u = x3 + x2 | 0;
-          x0 ^= u << 18 | u >>> 32 - 18;
-          u = x5 + x4 | 0;
-          x6 ^= u << 7 | u >>> 32 - 7;
-          u = x6 + x5 | 0;
-          x7 ^= u << 9 | u >>> 32 - 9;
-          u = x7 + x6 | 0;
-          x4 ^= u << 13 | u >>> 32 - 13;
-          u = x4 + x7 | 0;
-          x5 ^= u << 18 | u >>> 32 - 18;
-          u = x10 + x9 | 0;
-          x11 ^= u << 7 | u >>> 32 - 7;
-          u = x11 + x10 | 0;
-          x8 ^= u << 9 | u >>> 32 - 9;
-          u = x8 + x11 | 0;
-          x9 ^= u << 13 | u >>> 32 - 13;
-          u = x9 + x8 | 0;
-          x10 ^= u << 18 | u >>> 32 - 18;
-          u = x15 + x14 | 0;
-          x12 ^= u << 7 | u >>> 32 - 7;
-          u = x12 + x15 | 0;
-          x13 ^= u << 9 | u >>> 32 - 9;
-          u = x13 + x12 | 0;
-          x14 ^= u << 13 | u >>> 32 - 13;
-          u = x14 + x13 | 0;
-          x15 ^= u << 18 | u >>> 32 - 18;
+      function core_salsa20(o2, p2, k2, c2) {
+        var j0 = c2[0] & 255 | (c2[1] & 255) << 8 | (c2[2] & 255) << 16 | (c2[3] & 255) << 24, j1 = k2[0] & 255 | (k2[1] & 255) << 8 | (k2[2] & 255) << 16 | (k2[3] & 255) << 24, j2 = k2[4] & 255 | (k2[5] & 255) << 8 | (k2[6] & 255) << 16 | (k2[7] & 255) << 24, j3 = k2[8] & 255 | (k2[9] & 255) << 8 | (k2[10] & 255) << 16 | (k2[11] & 255) << 24, j4 = k2[12] & 255 | (k2[13] & 255) << 8 | (k2[14] & 255) << 16 | (k2[15] & 255) << 24, j5 = c2[4] & 255 | (c2[5] & 255) << 8 | (c2[6] & 255) << 16 | (c2[7] & 255) << 24, j6 = p2[0] & 255 | (p2[1] & 255) << 8 | (p2[2] & 255) << 16 | (p2[3] & 255) << 24, j7 = p2[4] & 255 | (p2[5] & 255) << 8 | (p2[6] & 255) << 16 | (p2[7] & 255) << 24, j8 = p2[8] & 255 | (p2[9] & 255) << 8 | (p2[10] & 255) << 16 | (p2[11] & 255) << 24, j9 = p2[12] & 255 | (p2[13] & 255) << 8 | (p2[14] & 255) << 16 | (p2[15] & 255) << 24, j10 = c2[8] & 255 | (c2[9] & 255) << 8 | (c2[10] & 255) << 16 | (c2[11] & 255) << 24, j11 = k2[16] & 255 | (k2[17] & 255) << 8 | (k2[18] & 255) << 16 | (k2[19] & 255) << 24, j12 = k2[20] & 255 | (k2[21] & 255) << 8 | (k2[22] & 255) << 16 | (k2[23] & 255) << 24, j13 = k2[24] & 255 | (k2[25] & 255) << 8 | (k2[26] & 255) << 16 | (k2[27] & 255) << 24, j14 = k2[28] & 255 | (k2[29] & 255) << 8 | (k2[30] & 255) << 16 | (k2[31] & 255) << 24, j15 = c2[12] & 255 | (c2[13] & 255) << 8 | (c2[14] & 255) << 16 | (c2[15] & 255) << 24;
+        var x0 = j0, x1 = j1, x2 = j2, x3 = j3, x4 = j4, x5 = j5, x6 = j6, x7 = j7, x8 = j8, x9 = j9, x10 = j10, x11 = j11, x12 = j12, x13 = j13, x14 = j14, x15 = j15, u2;
+        for (var i2 = 0; i2 < 20; i2 += 2) {
+          u2 = x0 + x12 | 0;
+          x4 ^= u2 << 7 | u2 >>> 32 - 7;
+          u2 = x4 + x0 | 0;
+          x8 ^= u2 << 9 | u2 >>> 32 - 9;
+          u2 = x8 + x4 | 0;
+          x12 ^= u2 << 13 | u2 >>> 32 - 13;
+          u2 = x12 + x8 | 0;
+          x0 ^= u2 << 18 | u2 >>> 32 - 18;
+          u2 = x5 + x1 | 0;
+          x9 ^= u2 << 7 | u2 >>> 32 - 7;
+          u2 = x9 + x5 | 0;
+          x13 ^= u2 << 9 | u2 >>> 32 - 9;
+          u2 = x13 + x9 | 0;
+          x1 ^= u2 << 13 | u2 >>> 32 - 13;
+          u2 = x1 + x13 | 0;
+          x5 ^= u2 << 18 | u2 >>> 32 - 18;
+          u2 = x10 + x6 | 0;
+          x14 ^= u2 << 7 | u2 >>> 32 - 7;
+          u2 = x14 + x10 | 0;
+          x2 ^= u2 << 9 | u2 >>> 32 - 9;
+          u2 = x2 + x14 | 0;
+          x6 ^= u2 << 13 | u2 >>> 32 - 13;
+          u2 = x6 + x2 | 0;
+          x10 ^= u2 << 18 | u2 >>> 32 - 18;
+          u2 = x15 + x11 | 0;
+          x3 ^= u2 << 7 | u2 >>> 32 - 7;
+          u2 = x3 + x15 | 0;
+          x7 ^= u2 << 9 | u2 >>> 32 - 9;
+          u2 = x7 + x3 | 0;
+          x11 ^= u2 << 13 | u2 >>> 32 - 13;
+          u2 = x11 + x7 | 0;
+          x15 ^= u2 << 18 | u2 >>> 32 - 18;
+          u2 = x0 + x3 | 0;
+          x1 ^= u2 << 7 | u2 >>> 32 - 7;
+          u2 = x1 + x0 | 0;
+          x2 ^= u2 << 9 | u2 >>> 32 - 9;
+          u2 = x2 + x1 | 0;
+          x3 ^= u2 << 13 | u2 >>> 32 - 13;
+          u2 = x3 + x2 | 0;
+          x0 ^= u2 << 18 | u2 >>> 32 - 18;
+          u2 = x5 + x4 | 0;
+          x6 ^= u2 << 7 | u2 >>> 32 - 7;
+          u2 = x6 + x5 | 0;
+          x7 ^= u2 << 9 | u2 >>> 32 - 9;
+          u2 = x7 + x6 | 0;
+          x4 ^= u2 << 13 | u2 >>> 32 - 13;
+          u2 = x4 + x7 | 0;
+          x5 ^= u2 << 18 | u2 >>> 32 - 18;
+          u2 = x10 + x9 | 0;
+          x11 ^= u2 << 7 | u2 >>> 32 - 7;
+          u2 = x11 + x10 | 0;
+          x8 ^= u2 << 9 | u2 >>> 32 - 9;
+          u2 = x8 + x11 | 0;
+          x9 ^= u2 << 13 | u2 >>> 32 - 13;
+          u2 = x9 + x8 | 0;
+          x10 ^= u2 << 18 | u2 >>> 32 - 18;
+          u2 = x15 + x14 | 0;
+          x12 ^= u2 << 7 | u2 >>> 32 - 7;
+          u2 = x12 + x15 | 0;
+          x13 ^= u2 << 9 | u2 >>> 32 - 9;
+          u2 = x13 + x12 | 0;
+          x14 ^= u2 << 13 | u2 >>> 32 - 13;
+          u2 = x14 + x13 | 0;
+          x15 ^= u2 << 18 | u2 >>> 32 - 18;
         }
         x0 = x0 + j0 | 0;
         x1 = x1 + j1 | 0;
@@ -14854,250 +14490,250 @@ var require_nacl_fast = __commonJS({
         x13 = x13 + j13 | 0;
         x14 = x14 + j14 | 0;
         x15 = x15 + j15 | 0;
-        o[0] = x0 >>> 0 & 255;
-        o[1] = x0 >>> 8 & 255;
-        o[2] = x0 >>> 16 & 255;
-        o[3] = x0 >>> 24 & 255;
-        o[4] = x1 >>> 0 & 255;
-        o[5] = x1 >>> 8 & 255;
-        o[6] = x1 >>> 16 & 255;
-        o[7] = x1 >>> 24 & 255;
-        o[8] = x2 >>> 0 & 255;
-        o[9] = x2 >>> 8 & 255;
-        o[10] = x2 >>> 16 & 255;
-        o[11] = x2 >>> 24 & 255;
-        o[12] = x3 >>> 0 & 255;
-        o[13] = x3 >>> 8 & 255;
-        o[14] = x3 >>> 16 & 255;
-        o[15] = x3 >>> 24 & 255;
-        o[16] = x4 >>> 0 & 255;
-        o[17] = x4 >>> 8 & 255;
-        o[18] = x4 >>> 16 & 255;
-        o[19] = x4 >>> 24 & 255;
-        o[20] = x5 >>> 0 & 255;
-        o[21] = x5 >>> 8 & 255;
-        o[22] = x5 >>> 16 & 255;
-        o[23] = x5 >>> 24 & 255;
-        o[24] = x6 >>> 0 & 255;
-        o[25] = x6 >>> 8 & 255;
-        o[26] = x6 >>> 16 & 255;
-        o[27] = x6 >>> 24 & 255;
-        o[28] = x7 >>> 0 & 255;
-        o[29] = x7 >>> 8 & 255;
-        o[30] = x7 >>> 16 & 255;
-        o[31] = x7 >>> 24 & 255;
-        o[32] = x8 >>> 0 & 255;
-        o[33] = x8 >>> 8 & 255;
-        o[34] = x8 >>> 16 & 255;
-        o[35] = x8 >>> 24 & 255;
-        o[36] = x9 >>> 0 & 255;
-        o[37] = x9 >>> 8 & 255;
-        o[38] = x9 >>> 16 & 255;
-        o[39] = x9 >>> 24 & 255;
-        o[40] = x10 >>> 0 & 255;
-        o[41] = x10 >>> 8 & 255;
-        o[42] = x10 >>> 16 & 255;
-        o[43] = x10 >>> 24 & 255;
-        o[44] = x11 >>> 0 & 255;
-        o[45] = x11 >>> 8 & 255;
-        o[46] = x11 >>> 16 & 255;
-        o[47] = x11 >>> 24 & 255;
-        o[48] = x12 >>> 0 & 255;
-        o[49] = x12 >>> 8 & 255;
-        o[50] = x12 >>> 16 & 255;
-        o[51] = x12 >>> 24 & 255;
-        o[52] = x13 >>> 0 & 255;
-        o[53] = x13 >>> 8 & 255;
-        o[54] = x13 >>> 16 & 255;
-        o[55] = x13 >>> 24 & 255;
-        o[56] = x14 >>> 0 & 255;
-        o[57] = x14 >>> 8 & 255;
-        o[58] = x14 >>> 16 & 255;
-        o[59] = x14 >>> 24 & 255;
-        o[60] = x15 >>> 0 & 255;
-        o[61] = x15 >>> 8 & 255;
-        o[62] = x15 >>> 16 & 255;
-        o[63] = x15 >>> 24 & 255;
+        o2[0] = x0 >>> 0 & 255;
+        o2[1] = x0 >>> 8 & 255;
+        o2[2] = x0 >>> 16 & 255;
+        o2[3] = x0 >>> 24 & 255;
+        o2[4] = x1 >>> 0 & 255;
+        o2[5] = x1 >>> 8 & 255;
+        o2[6] = x1 >>> 16 & 255;
+        o2[7] = x1 >>> 24 & 255;
+        o2[8] = x2 >>> 0 & 255;
+        o2[9] = x2 >>> 8 & 255;
+        o2[10] = x2 >>> 16 & 255;
+        o2[11] = x2 >>> 24 & 255;
+        o2[12] = x3 >>> 0 & 255;
+        o2[13] = x3 >>> 8 & 255;
+        o2[14] = x3 >>> 16 & 255;
+        o2[15] = x3 >>> 24 & 255;
+        o2[16] = x4 >>> 0 & 255;
+        o2[17] = x4 >>> 8 & 255;
+        o2[18] = x4 >>> 16 & 255;
+        o2[19] = x4 >>> 24 & 255;
+        o2[20] = x5 >>> 0 & 255;
+        o2[21] = x5 >>> 8 & 255;
+        o2[22] = x5 >>> 16 & 255;
+        o2[23] = x5 >>> 24 & 255;
+        o2[24] = x6 >>> 0 & 255;
+        o2[25] = x6 >>> 8 & 255;
+        o2[26] = x6 >>> 16 & 255;
+        o2[27] = x6 >>> 24 & 255;
+        o2[28] = x7 >>> 0 & 255;
+        o2[29] = x7 >>> 8 & 255;
+        o2[30] = x7 >>> 16 & 255;
+        o2[31] = x7 >>> 24 & 255;
+        o2[32] = x8 >>> 0 & 255;
+        o2[33] = x8 >>> 8 & 255;
+        o2[34] = x8 >>> 16 & 255;
+        o2[35] = x8 >>> 24 & 255;
+        o2[36] = x9 >>> 0 & 255;
+        o2[37] = x9 >>> 8 & 255;
+        o2[38] = x9 >>> 16 & 255;
+        o2[39] = x9 >>> 24 & 255;
+        o2[40] = x10 >>> 0 & 255;
+        o2[41] = x10 >>> 8 & 255;
+        o2[42] = x10 >>> 16 & 255;
+        o2[43] = x10 >>> 24 & 255;
+        o2[44] = x11 >>> 0 & 255;
+        o2[45] = x11 >>> 8 & 255;
+        o2[46] = x11 >>> 16 & 255;
+        o2[47] = x11 >>> 24 & 255;
+        o2[48] = x12 >>> 0 & 255;
+        o2[49] = x12 >>> 8 & 255;
+        o2[50] = x12 >>> 16 & 255;
+        o2[51] = x12 >>> 24 & 255;
+        o2[52] = x13 >>> 0 & 255;
+        o2[53] = x13 >>> 8 & 255;
+        o2[54] = x13 >>> 16 & 255;
+        o2[55] = x13 >>> 24 & 255;
+        o2[56] = x14 >>> 0 & 255;
+        o2[57] = x14 >>> 8 & 255;
+        o2[58] = x14 >>> 16 & 255;
+        o2[59] = x14 >>> 24 & 255;
+        o2[60] = x15 >>> 0 & 255;
+        o2[61] = x15 >>> 8 & 255;
+        o2[62] = x15 >>> 16 & 255;
+        o2[63] = x15 >>> 24 & 255;
       }
-      function core_hsalsa20(o, p, k, c) {
-        var j0 = c[0] & 255 | (c[1] & 255) << 8 | (c[2] & 255) << 16 | (c[3] & 255) << 24, j1 = k[0] & 255 | (k[1] & 255) << 8 | (k[2] & 255) << 16 | (k[3] & 255) << 24, j2 = k[4] & 255 | (k[5] & 255) << 8 | (k[6] & 255) << 16 | (k[7] & 255) << 24, j3 = k[8] & 255 | (k[9] & 255) << 8 | (k[10] & 255) << 16 | (k[11] & 255) << 24, j4 = k[12] & 255 | (k[13] & 255) << 8 | (k[14] & 255) << 16 | (k[15] & 255) << 24, j5 = c[4] & 255 | (c[5] & 255) << 8 | (c[6] & 255) << 16 | (c[7] & 255) << 24, j6 = p[0] & 255 | (p[1] & 255) << 8 | (p[2] & 255) << 16 | (p[3] & 255) << 24, j7 = p[4] & 255 | (p[5] & 255) << 8 | (p[6] & 255) << 16 | (p[7] & 255) << 24, j8 = p[8] & 255 | (p[9] & 255) << 8 | (p[10] & 255) << 16 | (p[11] & 255) << 24, j9 = p[12] & 255 | (p[13] & 255) << 8 | (p[14] & 255) << 16 | (p[15] & 255) << 24, j10 = c[8] & 255 | (c[9] & 255) << 8 | (c[10] & 255) << 16 | (c[11] & 255) << 24, j11 = k[16] & 255 | (k[17] & 255) << 8 | (k[18] & 255) << 16 | (k[19] & 255) << 24, j12 = k[20] & 255 | (k[21] & 255) << 8 | (k[22] & 255) << 16 | (k[23] & 255) << 24, j13 = k[24] & 255 | (k[25] & 255) << 8 | (k[26] & 255) << 16 | (k[27] & 255) << 24, j14 = k[28] & 255 | (k[29] & 255) << 8 | (k[30] & 255) << 16 | (k[31] & 255) << 24, j15 = c[12] & 255 | (c[13] & 255) << 8 | (c[14] & 255) << 16 | (c[15] & 255) << 24;
-        var x0 = j0, x1 = j1, x2 = j2, x3 = j3, x4 = j4, x5 = j5, x6 = j6, x7 = j7, x8 = j8, x9 = j9, x10 = j10, x11 = j11, x12 = j12, x13 = j13, x14 = j14, x15 = j15, u;
-        for (var i = 0; i < 20; i += 2) {
-          u = x0 + x12 | 0;
-          x4 ^= u << 7 | u >>> 32 - 7;
-          u = x4 + x0 | 0;
-          x8 ^= u << 9 | u >>> 32 - 9;
-          u = x8 + x4 | 0;
-          x12 ^= u << 13 | u >>> 32 - 13;
-          u = x12 + x8 | 0;
-          x0 ^= u << 18 | u >>> 32 - 18;
-          u = x5 + x1 | 0;
-          x9 ^= u << 7 | u >>> 32 - 7;
-          u = x9 + x5 | 0;
-          x13 ^= u << 9 | u >>> 32 - 9;
-          u = x13 + x9 | 0;
-          x1 ^= u << 13 | u >>> 32 - 13;
-          u = x1 + x13 | 0;
-          x5 ^= u << 18 | u >>> 32 - 18;
-          u = x10 + x6 | 0;
-          x14 ^= u << 7 | u >>> 32 - 7;
-          u = x14 + x10 | 0;
-          x2 ^= u << 9 | u >>> 32 - 9;
-          u = x2 + x14 | 0;
-          x6 ^= u << 13 | u >>> 32 - 13;
-          u = x6 + x2 | 0;
-          x10 ^= u << 18 | u >>> 32 - 18;
-          u = x15 + x11 | 0;
-          x3 ^= u << 7 | u >>> 32 - 7;
-          u = x3 + x15 | 0;
-          x7 ^= u << 9 | u >>> 32 - 9;
-          u = x7 + x3 | 0;
-          x11 ^= u << 13 | u >>> 32 - 13;
-          u = x11 + x7 | 0;
-          x15 ^= u << 18 | u >>> 32 - 18;
-          u = x0 + x3 | 0;
-          x1 ^= u << 7 | u >>> 32 - 7;
-          u = x1 + x0 | 0;
-          x2 ^= u << 9 | u >>> 32 - 9;
-          u = x2 + x1 | 0;
-          x3 ^= u << 13 | u >>> 32 - 13;
-          u = x3 + x2 | 0;
-          x0 ^= u << 18 | u >>> 32 - 18;
-          u = x5 + x4 | 0;
-          x6 ^= u << 7 | u >>> 32 - 7;
-          u = x6 + x5 | 0;
-          x7 ^= u << 9 | u >>> 32 - 9;
-          u = x7 + x6 | 0;
-          x4 ^= u << 13 | u >>> 32 - 13;
-          u = x4 + x7 | 0;
-          x5 ^= u << 18 | u >>> 32 - 18;
-          u = x10 + x9 | 0;
-          x11 ^= u << 7 | u >>> 32 - 7;
-          u = x11 + x10 | 0;
-          x8 ^= u << 9 | u >>> 32 - 9;
-          u = x8 + x11 | 0;
-          x9 ^= u << 13 | u >>> 32 - 13;
-          u = x9 + x8 | 0;
-          x10 ^= u << 18 | u >>> 32 - 18;
-          u = x15 + x14 | 0;
-          x12 ^= u << 7 | u >>> 32 - 7;
-          u = x12 + x15 | 0;
-          x13 ^= u << 9 | u >>> 32 - 9;
-          u = x13 + x12 | 0;
-          x14 ^= u << 13 | u >>> 32 - 13;
-          u = x14 + x13 | 0;
-          x15 ^= u << 18 | u >>> 32 - 18;
+      function core_hsalsa20(o2, p2, k2, c2) {
+        var j0 = c2[0] & 255 | (c2[1] & 255) << 8 | (c2[2] & 255) << 16 | (c2[3] & 255) << 24, j1 = k2[0] & 255 | (k2[1] & 255) << 8 | (k2[2] & 255) << 16 | (k2[3] & 255) << 24, j2 = k2[4] & 255 | (k2[5] & 255) << 8 | (k2[6] & 255) << 16 | (k2[7] & 255) << 24, j3 = k2[8] & 255 | (k2[9] & 255) << 8 | (k2[10] & 255) << 16 | (k2[11] & 255) << 24, j4 = k2[12] & 255 | (k2[13] & 255) << 8 | (k2[14] & 255) << 16 | (k2[15] & 255) << 24, j5 = c2[4] & 255 | (c2[5] & 255) << 8 | (c2[6] & 255) << 16 | (c2[7] & 255) << 24, j6 = p2[0] & 255 | (p2[1] & 255) << 8 | (p2[2] & 255) << 16 | (p2[3] & 255) << 24, j7 = p2[4] & 255 | (p2[5] & 255) << 8 | (p2[6] & 255) << 16 | (p2[7] & 255) << 24, j8 = p2[8] & 255 | (p2[9] & 255) << 8 | (p2[10] & 255) << 16 | (p2[11] & 255) << 24, j9 = p2[12] & 255 | (p2[13] & 255) << 8 | (p2[14] & 255) << 16 | (p2[15] & 255) << 24, j10 = c2[8] & 255 | (c2[9] & 255) << 8 | (c2[10] & 255) << 16 | (c2[11] & 255) << 24, j11 = k2[16] & 255 | (k2[17] & 255) << 8 | (k2[18] & 255) << 16 | (k2[19] & 255) << 24, j12 = k2[20] & 255 | (k2[21] & 255) << 8 | (k2[22] & 255) << 16 | (k2[23] & 255) << 24, j13 = k2[24] & 255 | (k2[25] & 255) << 8 | (k2[26] & 255) << 16 | (k2[27] & 255) << 24, j14 = k2[28] & 255 | (k2[29] & 255) << 8 | (k2[30] & 255) << 16 | (k2[31] & 255) << 24, j15 = c2[12] & 255 | (c2[13] & 255) << 8 | (c2[14] & 255) << 16 | (c2[15] & 255) << 24;
+        var x0 = j0, x1 = j1, x2 = j2, x3 = j3, x4 = j4, x5 = j5, x6 = j6, x7 = j7, x8 = j8, x9 = j9, x10 = j10, x11 = j11, x12 = j12, x13 = j13, x14 = j14, x15 = j15, u2;
+        for (var i2 = 0; i2 < 20; i2 += 2) {
+          u2 = x0 + x12 | 0;
+          x4 ^= u2 << 7 | u2 >>> 32 - 7;
+          u2 = x4 + x0 | 0;
+          x8 ^= u2 << 9 | u2 >>> 32 - 9;
+          u2 = x8 + x4 | 0;
+          x12 ^= u2 << 13 | u2 >>> 32 - 13;
+          u2 = x12 + x8 | 0;
+          x0 ^= u2 << 18 | u2 >>> 32 - 18;
+          u2 = x5 + x1 | 0;
+          x9 ^= u2 << 7 | u2 >>> 32 - 7;
+          u2 = x9 + x5 | 0;
+          x13 ^= u2 << 9 | u2 >>> 32 - 9;
+          u2 = x13 + x9 | 0;
+          x1 ^= u2 << 13 | u2 >>> 32 - 13;
+          u2 = x1 + x13 | 0;
+          x5 ^= u2 << 18 | u2 >>> 32 - 18;
+          u2 = x10 + x6 | 0;
+          x14 ^= u2 << 7 | u2 >>> 32 - 7;
+          u2 = x14 + x10 | 0;
+          x2 ^= u2 << 9 | u2 >>> 32 - 9;
+          u2 = x2 + x14 | 0;
+          x6 ^= u2 << 13 | u2 >>> 32 - 13;
+          u2 = x6 + x2 | 0;
+          x10 ^= u2 << 18 | u2 >>> 32 - 18;
+          u2 = x15 + x11 | 0;
+          x3 ^= u2 << 7 | u2 >>> 32 - 7;
+          u2 = x3 + x15 | 0;
+          x7 ^= u2 << 9 | u2 >>> 32 - 9;
+          u2 = x7 + x3 | 0;
+          x11 ^= u2 << 13 | u2 >>> 32 - 13;
+          u2 = x11 + x7 | 0;
+          x15 ^= u2 << 18 | u2 >>> 32 - 18;
+          u2 = x0 + x3 | 0;
+          x1 ^= u2 << 7 | u2 >>> 32 - 7;
+          u2 = x1 + x0 | 0;
+          x2 ^= u2 << 9 | u2 >>> 32 - 9;
+          u2 = x2 + x1 | 0;
+          x3 ^= u2 << 13 | u2 >>> 32 - 13;
+          u2 = x3 + x2 | 0;
+          x0 ^= u2 << 18 | u2 >>> 32 - 18;
+          u2 = x5 + x4 | 0;
+          x6 ^= u2 << 7 | u2 >>> 32 - 7;
+          u2 = x6 + x5 | 0;
+          x7 ^= u2 << 9 | u2 >>> 32 - 9;
+          u2 = x7 + x6 | 0;
+          x4 ^= u2 << 13 | u2 >>> 32 - 13;
+          u2 = x4 + x7 | 0;
+          x5 ^= u2 << 18 | u2 >>> 32 - 18;
+          u2 = x10 + x9 | 0;
+          x11 ^= u2 << 7 | u2 >>> 32 - 7;
+          u2 = x11 + x10 | 0;
+          x8 ^= u2 << 9 | u2 >>> 32 - 9;
+          u2 = x8 + x11 | 0;
+          x9 ^= u2 << 13 | u2 >>> 32 - 13;
+          u2 = x9 + x8 | 0;
+          x10 ^= u2 << 18 | u2 >>> 32 - 18;
+          u2 = x15 + x14 | 0;
+          x12 ^= u2 << 7 | u2 >>> 32 - 7;
+          u2 = x12 + x15 | 0;
+          x13 ^= u2 << 9 | u2 >>> 32 - 9;
+          u2 = x13 + x12 | 0;
+          x14 ^= u2 << 13 | u2 >>> 32 - 13;
+          u2 = x14 + x13 | 0;
+          x15 ^= u2 << 18 | u2 >>> 32 - 18;
         }
-        o[0] = x0 >>> 0 & 255;
-        o[1] = x0 >>> 8 & 255;
-        o[2] = x0 >>> 16 & 255;
-        o[3] = x0 >>> 24 & 255;
-        o[4] = x5 >>> 0 & 255;
-        o[5] = x5 >>> 8 & 255;
-        o[6] = x5 >>> 16 & 255;
-        o[7] = x5 >>> 24 & 255;
-        o[8] = x10 >>> 0 & 255;
-        o[9] = x10 >>> 8 & 255;
-        o[10] = x10 >>> 16 & 255;
-        o[11] = x10 >>> 24 & 255;
-        o[12] = x15 >>> 0 & 255;
-        o[13] = x15 >>> 8 & 255;
-        o[14] = x15 >>> 16 & 255;
-        o[15] = x15 >>> 24 & 255;
-        o[16] = x6 >>> 0 & 255;
-        o[17] = x6 >>> 8 & 255;
-        o[18] = x6 >>> 16 & 255;
-        o[19] = x6 >>> 24 & 255;
-        o[20] = x7 >>> 0 & 255;
-        o[21] = x7 >>> 8 & 255;
-        o[22] = x7 >>> 16 & 255;
-        o[23] = x7 >>> 24 & 255;
-        o[24] = x8 >>> 0 & 255;
-        o[25] = x8 >>> 8 & 255;
-        o[26] = x8 >>> 16 & 255;
-        o[27] = x8 >>> 24 & 255;
-        o[28] = x9 >>> 0 & 255;
-        o[29] = x9 >>> 8 & 255;
-        o[30] = x9 >>> 16 & 255;
-        o[31] = x9 >>> 24 & 255;
+        o2[0] = x0 >>> 0 & 255;
+        o2[1] = x0 >>> 8 & 255;
+        o2[2] = x0 >>> 16 & 255;
+        o2[3] = x0 >>> 24 & 255;
+        o2[4] = x5 >>> 0 & 255;
+        o2[5] = x5 >>> 8 & 255;
+        o2[6] = x5 >>> 16 & 255;
+        o2[7] = x5 >>> 24 & 255;
+        o2[8] = x10 >>> 0 & 255;
+        o2[9] = x10 >>> 8 & 255;
+        o2[10] = x10 >>> 16 & 255;
+        o2[11] = x10 >>> 24 & 255;
+        o2[12] = x15 >>> 0 & 255;
+        o2[13] = x15 >>> 8 & 255;
+        o2[14] = x15 >>> 16 & 255;
+        o2[15] = x15 >>> 24 & 255;
+        o2[16] = x6 >>> 0 & 255;
+        o2[17] = x6 >>> 8 & 255;
+        o2[18] = x6 >>> 16 & 255;
+        o2[19] = x6 >>> 24 & 255;
+        o2[20] = x7 >>> 0 & 255;
+        o2[21] = x7 >>> 8 & 255;
+        o2[22] = x7 >>> 16 & 255;
+        o2[23] = x7 >>> 24 & 255;
+        o2[24] = x8 >>> 0 & 255;
+        o2[25] = x8 >>> 8 & 255;
+        o2[26] = x8 >>> 16 & 255;
+        o2[27] = x8 >>> 24 & 255;
+        o2[28] = x9 >>> 0 & 255;
+        o2[29] = x9 >>> 8 & 255;
+        o2[30] = x9 >>> 16 & 255;
+        o2[31] = x9 >>> 24 & 255;
       }
-      function crypto_core_salsa20(out, inp, k, c) {
-        core_salsa20(out, inp, k, c);
+      function crypto_core_salsa20(out, inp, k2, c2) {
+        core_salsa20(out, inp, k2, c2);
       }
-      function crypto_core_hsalsa20(out, inp, k, c) {
-        core_hsalsa20(out, inp, k, c);
+      function crypto_core_hsalsa20(out, inp, k2, c2) {
+        core_hsalsa20(out, inp, k2, c2);
       }
       var sigma = new Uint8Array([101, 120, 112, 97, 110, 100, 32, 51, 50, 45, 98, 121, 116, 101, 32, 107]);
-      function crypto_stream_salsa20_xor(c, cpos, m, mpos, b, n, k) {
-        var z = new Uint8Array(16), x = new Uint8Array(64);
-        var u, i;
-        for (i = 0; i < 16; i++)
-          z[i] = 0;
-        for (i = 0; i < 8; i++)
-          z[i] = n[i];
-        while (b >= 64) {
-          crypto_core_salsa20(x, z, k, sigma);
-          for (i = 0; i < 64; i++)
-            c[cpos + i] = m[mpos + i] ^ x[i];
-          u = 1;
-          for (i = 8; i < 16; i++) {
-            u = u + (z[i] & 255) | 0;
-            z[i] = u & 255;
-            u >>>= 8;
+      function crypto_stream_salsa20_xor(c2, cpos, m, mpos, b2, n2, k2) {
+        var z2 = new Uint8Array(16), x2 = new Uint8Array(64);
+        var u2, i2;
+        for (i2 = 0; i2 < 16; i2++)
+          z2[i2] = 0;
+        for (i2 = 0; i2 < 8; i2++)
+          z2[i2] = n2[i2];
+        while (b2 >= 64) {
+          crypto_core_salsa20(x2, z2, k2, sigma);
+          for (i2 = 0; i2 < 64; i2++)
+            c2[cpos + i2] = m[mpos + i2] ^ x2[i2];
+          u2 = 1;
+          for (i2 = 8; i2 < 16; i2++) {
+            u2 = u2 + (z2[i2] & 255) | 0;
+            z2[i2] = u2 & 255;
+            u2 >>>= 8;
           }
-          b -= 64;
+          b2 -= 64;
           cpos += 64;
           mpos += 64;
         }
-        if (b > 0) {
-          crypto_core_salsa20(x, z, k, sigma);
-          for (i = 0; i < b; i++)
-            c[cpos + i] = m[mpos + i] ^ x[i];
+        if (b2 > 0) {
+          crypto_core_salsa20(x2, z2, k2, sigma);
+          for (i2 = 0; i2 < b2; i2++)
+            c2[cpos + i2] = m[mpos + i2] ^ x2[i2];
         }
         return 0;
       }
-      function crypto_stream_salsa20(c, cpos, b, n, k) {
-        var z = new Uint8Array(16), x = new Uint8Array(64);
-        var u, i;
-        for (i = 0; i < 16; i++)
-          z[i] = 0;
-        for (i = 0; i < 8; i++)
-          z[i] = n[i];
-        while (b >= 64) {
-          crypto_core_salsa20(x, z, k, sigma);
-          for (i = 0; i < 64; i++)
-            c[cpos + i] = x[i];
-          u = 1;
-          for (i = 8; i < 16; i++) {
-            u = u + (z[i] & 255) | 0;
-            z[i] = u & 255;
-            u >>>= 8;
+      function crypto_stream_salsa20(c2, cpos, b2, n2, k2) {
+        var z2 = new Uint8Array(16), x2 = new Uint8Array(64);
+        var u2, i2;
+        for (i2 = 0; i2 < 16; i2++)
+          z2[i2] = 0;
+        for (i2 = 0; i2 < 8; i2++)
+          z2[i2] = n2[i2];
+        while (b2 >= 64) {
+          crypto_core_salsa20(x2, z2, k2, sigma);
+          for (i2 = 0; i2 < 64; i2++)
+            c2[cpos + i2] = x2[i2];
+          u2 = 1;
+          for (i2 = 8; i2 < 16; i2++) {
+            u2 = u2 + (z2[i2] & 255) | 0;
+            z2[i2] = u2 & 255;
+            u2 >>>= 8;
           }
-          b -= 64;
+          b2 -= 64;
           cpos += 64;
         }
-        if (b > 0) {
-          crypto_core_salsa20(x, z, k, sigma);
-          for (i = 0; i < b; i++)
-            c[cpos + i] = x[i];
+        if (b2 > 0) {
+          crypto_core_salsa20(x2, z2, k2, sigma);
+          for (i2 = 0; i2 < b2; i2++)
+            c2[cpos + i2] = x2[i2];
         }
         return 0;
       }
-      function crypto_stream(c, cpos, d, n, k) {
-        var s = new Uint8Array(32);
-        crypto_core_hsalsa20(s, n, k, sigma);
-        var sn = new Uint8Array(8);
-        for (var i = 0; i < 8; i++)
-          sn[i] = n[i + 16];
-        return crypto_stream_salsa20(c, cpos, d, sn, s);
+      function crypto_stream(c2, cpos, d2, n2, k2) {
+        var s2 = new Uint8Array(32);
+        crypto_core_hsalsa20(s2, n2, k2, sigma);
+        var sn2 = new Uint8Array(8);
+        for (var i2 = 0; i2 < 8; i2++)
+          sn2[i2] = n2[i2 + 16];
+        return crypto_stream_salsa20(c2, cpos, d2, sn2, s2);
       }
-      function crypto_stream_xor(c, cpos, m, mpos, d, n, k) {
-        var s = new Uint8Array(32);
-        crypto_core_hsalsa20(s, n, k, sigma);
-        var sn = new Uint8Array(8);
-        for (var i = 0; i < 8; i++)
-          sn[i] = n[i + 16];
-        return crypto_stream_salsa20_xor(c, cpos, m, mpos, d, sn, s);
+      function crypto_stream_xor(c2, cpos, m, mpos, d2, n2, k2) {
+        var s2 = new Uint8Array(32);
+        crypto_core_hsalsa20(s2, n2, k2, sigma);
+        var sn2 = new Uint8Array(8);
+        for (var i2 = 0; i2 < 8; i2++)
+          sn2[i2] = n2[i2 + 16];
+        return crypto_stream_salsa20_xor(c2, cpos, m, mpos, d2, sn2, s2);
       }
       var poly1305 = function(key) {
         this.buffer = new Uint8Array(16);
@@ -15136,7 +14772,7 @@ var require_nacl_fast = __commonJS({
       };
       poly1305.prototype.blocks = function(m, mpos, bytes) {
         var hibit = this.fin ? 0 : 1 << 11;
-        var t0, t1, t2, t3, t4, t5, t6, t7, c;
+        var t0, t1, t2, t3, t4, t5, t6, t7, c2;
         var d0, d1, d2, d3, d4, d5, d6, d7, d8, d9;
         var h0 = this.h[0], h1 = this.h[1], h2 = this.h[2], h3 = this.h[3], h4 = this.h[4], h5 = this.h[5], h6 = this.h[6], h7 = this.h[7], h8 = this.h[8], h9 = this.h[9];
         var r0 = this.r[0], r1 = this.r[1], r2 = this.r[2], r3 = this.r[3], r4 = this.r[4], r5 = this.r[5], r6 = this.r[6], r7 = this.r[7], r8 = this.r[8], r9 = this.r[9];
@@ -15159,162 +14795,162 @@ var require_nacl_fast = __commonJS({
           t7 = m[mpos + 14] & 255 | (m[mpos + 15] & 255) << 8;
           h8 += (t6 >>> 8 | t7 << 8) & 8191;
           h9 += t7 >>> 5 | hibit;
-          c = 0;
-          d0 = c;
+          c2 = 0;
+          d0 = c2;
           d0 += h0 * r0;
           d0 += h1 * (5 * r9);
           d0 += h2 * (5 * r8);
           d0 += h3 * (5 * r7);
           d0 += h4 * (5 * r6);
-          c = d0 >>> 13;
+          c2 = d0 >>> 13;
           d0 &= 8191;
           d0 += h5 * (5 * r5);
           d0 += h6 * (5 * r4);
           d0 += h7 * (5 * r3);
           d0 += h8 * (5 * r2);
           d0 += h9 * (5 * r1);
-          c += d0 >>> 13;
+          c2 += d0 >>> 13;
           d0 &= 8191;
-          d1 = c;
+          d1 = c2;
           d1 += h0 * r1;
           d1 += h1 * r0;
           d1 += h2 * (5 * r9);
           d1 += h3 * (5 * r8);
           d1 += h4 * (5 * r7);
-          c = d1 >>> 13;
+          c2 = d1 >>> 13;
           d1 &= 8191;
           d1 += h5 * (5 * r6);
           d1 += h6 * (5 * r5);
           d1 += h7 * (5 * r4);
           d1 += h8 * (5 * r3);
           d1 += h9 * (5 * r2);
-          c += d1 >>> 13;
+          c2 += d1 >>> 13;
           d1 &= 8191;
-          d2 = c;
+          d2 = c2;
           d2 += h0 * r2;
           d2 += h1 * r1;
           d2 += h2 * r0;
           d2 += h3 * (5 * r9);
           d2 += h4 * (5 * r8);
-          c = d2 >>> 13;
+          c2 = d2 >>> 13;
           d2 &= 8191;
           d2 += h5 * (5 * r7);
           d2 += h6 * (5 * r6);
           d2 += h7 * (5 * r5);
           d2 += h8 * (5 * r4);
           d2 += h9 * (5 * r3);
-          c += d2 >>> 13;
+          c2 += d2 >>> 13;
           d2 &= 8191;
-          d3 = c;
+          d3 = c2;
           d3 += h0 * r3;
           d3 += h1 * r2;
           d3 += h2 * r1;
           d3 += h3 * r0;
           d3 += h4 * (5 * r9);
-          c = d3 >>> 13;
+          c2 = d3 >>> 13;
           d3 &= 8191;
           d3 += h5 * (5 * r8);
           d3 += h6 * (5 * r7);
           d3 += h7 * (5 * r6);
           d3 += h8 * (5 * r5);
           d3 += h9 * (5 * r4);
-          c += d3 >>> 13;
+          c2 += d3 >>> 13;
           d3 &= 8191;
-          d4 = c;
+          d4 = c2;
           d4 += h0 * r4;
           d4 += h1 * r3;
           d4 += h2 * r2;
           d4 += h3 * r1;
           d4 += h4 * r0;
-          c = d4 >>> 13;
+          c2 = d4 >>> 13;
           d4 &= 8191;
           d4 += h5 * (5 * r9);
           d4 += h6 * (5 * r8);
           d4 += h7 * (5 * r7);
           d4 += h8 * (5 * r6);
           d4 += h9 * (5 * r5);
-          c += d4 >>> 13;
+          c2 += d4 >>> 13;
           d4 &= 8191;
-          d5 = c;
+          d5 = c2;
           d5 += h0 * r5;
           d5 += h1 * r4;
           d5 += h2 * r3;
           d5 += h3 * r2;
           d5 += h4 * r1;
-          c = d5 >>> 13;
+          c2 = d5 >>> 13;
           d5 &= 8191;
           d5 += h5 * r0;
           d5 += h6 * (5 * r9);
           d5 += h7 * (5 * r8);
           d5 += h8 * (5 * r7);
           d5 += h9 * (5 * r6);
-          c += d5 >>> 13;
+          c2 += d5 >>> 13;
           d5 &= 8191;
-          d6 = c;
+          d6 = c2;
           d6 += h0 * r6;
           d6 += h1 * r5;
           d6 += h2 * r4;
           d6 += h3 * r3;
           d6 += h4 * r2;
-          c = d6 >>> 13;
+          c2 = d6 >>> 13;
           d6 &= 8191;
           d6 += h5 * r1;
           d6 += h6 * r0;
           d6 += h7 * (5 * r9);
           d6 += h8 * (5 * r8);
           d6 += h9 * (5 * r7);
-          c += d6 >>> 13;
+          c2 += d6 >>> 13;
           d6 &= 8191;
-          d7 = c;
+          d7 = c2;
           d7 += h0 * r7;
           d7 += h1 * r6;
           d7 += h2 * r5;
           d7 += h3 * r4;
           d7 += h4 * r3;
-          c = d7 >>> 13;
+          c2 = d7 >>> 13;
           d7 &= 8191;
           d7 += h5 * r2;
           d7 += h6 * r1;
           d7 += h7 * r0;
           d7 += h8 * (5 * r9);
           d7 += h9 * (5 * r8);
-          c += d7 >>> 13;
+          c2 += d7 >>> 13;
           d7 &= 8191;
-          d8 = c;
+          d8 = c2;
           d8 += h0 * r8;
           d8 += h1 * r7;
           d8 += h2 * r6;
           d8 += h3 * r5;
           d8 += h4 * r4;
-          c = d8 >>> 13;
+          c2 = d8 >>> 13;
           d8 &= 8191;
           d8 += h5 * r3;
           d8 += h6 * r2;
           d8 += h7 * r1;
           d8 += h8 * r0;
           d8 += h9 * (5 * r9);
-          c += d8 >>> 13;
+          c2 += d8 >>> 13;
           d8 &= 8191;
-          d9 = c;
+          d9 = c2;
           d9 += h0 * r9;
           d9 += h1 * r8;
           d9 += h2 * r7;
           d9 += h3 * r6;
           d9 += h4 * r5;
-          c = d9 >>> 13;
+          c2 = d9 >>> 13;
           d9 &= 8191;
           d9 += h5 * r4;
           d9 += h6 * r3;
           d9 += h7 * r2;
           d9 += h8 * r1;
           d9 += h9 * r0;
-          c += d9 >>> 13;
+          c2 += d9 >>> 13;
           d9 &= 8191;
-          c = (c << 2) + c | 0;
-          c = c + d0 | 0;
-          d0 = c & 8191;
-          c = c >>> 13;
-          d1 += c;
+          c2 = (c2 << 2) + c2 | 0;
+          c2 = c2 + d0 | 0;
+          d0 = c2 & 8191;
+          c2 = c2 >>> 13;
+          d1 += c2;
           h0 = d0;
           h1 = d1;
           h2 = d2;
@@ -15340,45 +14976,45 @@ var require_nacl_fast = __commonJS({
         this.h[9] = h9;
       };
       poly1305.prototype.finish = function(mac, macpos) {
-        var g = new Uint16Array(10);
-        var c, mask, f, i;
+        var g2 = new Uint16Array(10);
+        var c2, mask, f2, i2;
         if (this.leftover) {
-          i = this.leftover;
-          this.buffer[i++] = 1;
-          for (; i < 16; i++)
-            this.buffer[i] = 0;
+          i2 = this.leftover;
+          this.buffer[i2++] = 1;
+          for (; i2 < 16; i2++)
+            this.buffer[i2] = 0;
           this.fin = 1;
           this.blocks(this.buffer, 0, 16);
         }
-        c = this.h[1] >>> 13;
+        c2 = this.h[1] >>> 13;
         this.h[1] &= 8191;
-        for (i = 2; i < 10; i++) {
-          this.h[i] += c;
-          c = this.h[i] >>> 13;
-          this.h[i] &= 8191;
+        for (i2 = 2; i2 < 10; i2++) {
+          this.h[i2] += c2;
+          c2 = this.h[i2] >>> 13;
+          this.h[i2] &= 8191;
         }
-        this.h[0] += c * 5;
-        c = this.h[0] >>> 13;
+        this.h[0] += c2 * 5;
+        c2 = this.h[0] >>> 13;
         this.h[0] &= 8191;
-        this.h[1] += c;
-        c = this.h[1] >>> 13;
+        this.h[1] += c2;
+        c2 = this.h[1] >>> 13;
         this.h[1] &= 8191;
-        this.h[2] += c;
-        g[0] = this.h[0] + 5;
-        c = g[0] >>> 13;
-        g[0] &= 8191;
-        for (i = 1; i < 10; i++) {
-          g[i] = this.h[i] + c;
-          c = g[i] >>> 13;
-          g[i] &= 8191;
+        this.h[2] += c2;
+        g2[0] = this.h[0] + 5;
+        c2 = g2[0] >>> 13;
+        g2[0] &= 8191;
+        for (i2 = 1; i2 < 10; i2++) {
+          g2[i2] = this.h[i2] + c2;
+          c2 = g2[i2] >>> 13;
+          g2[i2] &= 8191;
         }
-        g[9] -= 1 << 13;
-        mask = (c ^ 1) - 1;
-        for (i = 0; i < 10; i++)
-          g[i] &= mask;
+        g2[9] -= 1 << 13;
+        mask = (c2 ^ 1) - 1;
+        for (i2 = 0; i2 < 10; i2++)
+          g2[i2] &= mask;
         mask = ~mask;
-        for (i = 0; i < 10; i++)
-          this.h[i] = this.h[i] & mask | g[i];
+        for (i2 = 0; i2 < 10; i2++)
+          this.h[i2] = this.h[i2] & mask | g2[i2];
         this.h[0] = (this.h[0] | this.h[1] << 13) & 65535;
         this.h[1] = (this.h[1] >>> 3 | this.h[2] << 10) & 65535;
         this.h[2] = (this.h[2] >>> 6 | this.h[3] << 7) & 65535;
@@ -15387,11 +15023,11 @@ var require_nacl_fast = __commonJS({
         this.h[5] = (this.h[6] >>> 2 | this.h[7] << 11) & 65535;
         this.h[6] = (this.h[7] >>> 5 | this.h[8] << 8) & 65535;
         this.h[7] = (this.h[8] >>> 8 | this.h[9] << 5) & 65535;
-        f = this.h[0] + this.pad[0];
-        this.h[0] = f & 65535;
-        for (i = 1; i < 8; i++) {
-          f = (this.h[i] + this.pad[i] | 0) + (f >>> 16) | 0;
-          this.h[i] = f & 65535;
+        f2 = this.h[0] + this.pad[0];
+        this.h[0] = f2 & 65535;
+        for (i2 = 1; i2 < 8; i2++) {
+          f2 = (this.h[i2] + this.pad[i2] | 0) + (f2 >>> 16) | 0;
+          this.h[i2] = f2 & 65535;
         }
         mac[macpos + 0] = this.h[0] >>> 0 & 255;
         mac[macpos + 1] = this.h[0] >>> 8 & 255;
@@ -15411,13 +15047,13 @@ var require_nacl_fast = __commonJS({
         mac[macpos + 15] = this.h[7] >>> 8 & 255;
       };
       poly1305.prototype.update = function(m, mpos, bytes) {
-        var i, want;
+        var i2, want;
         if (this.leftover) {
           want = 16 - this.leftover;
           if (want > bytes)
             want = bytes;
-          for (i = 0; i < want; i++)
-            this.buffer[this.leftover + i] = m[mpos + i];
+          for (i2 = 0; i2 < want; i2++)
+            this.buffer[this.leftover + i2] = m[mpos + i2];
           bytes -= want;
           mpos += want;
           this.leftover += want;
@@ -15433,390 +15069,390 @@ var require_nacl_fast = __commonJS({
           bytes -= want;
         }
         if (bytes) {
-          for (i = 0; i < bytes; i++)
-            this.buffer[this.leftover + i] = m[mpos + i];
+          for (i2 = 0; i2 < bytes; i2++)
+            this.buffer[this.leftover + i2] = m[mpos + i2];
           this.leftover += bytes;
         }
       };
-      function crypto_onetimeauth(out, outpos, m, mpos, n, k) {
-        var s = new poly1305(k);
-        s.update(m, mpos, n);
-        s.finish(out, outpos);
+      function crypto_onetimeauth(out, outpos, m, mpos, n2, k2) {
+        var s2 = new poly1305(k2);
+        s2.update(m, mpos, n2);
+        s2.finish(out, outpos);
         return 0;
       }
-      function crypto_onetimeauth_verify(h, hpos, m, mpos, n, k) {
-        var x = new Uint8Array(16);
-        crypto_onetimeauth(x, 0, m, mpos, n, k);
-        return crypto_verify_16(h, hpos, x, 0);
+      function crypto_onetimeauth_verify(h2, hpos, m, mpos, n2, k2) {
+        var x2 = new Uint8Array(16);
+        crypto_onetimeauth(x2, 0, m, mpos, n2, k2);
+        return crypto_verify_16(h2, hpos, x2, 0);
       }
-      function crypto_secretbox(c, m, d, n, k) {
-        var i;
-        if (d < 32)
+      function crypto_secretbox(c2, m, d2, n2, k2) {
+        var i2;
+        if (d2 < 32)
           return -1;
-        crypto_stream_xor(c, 0, m, 0, d, n, k);
-        crypto_onetimeauth(c, 16, c, 32, d - 32, c);
-        for (i = 0; i < 16; i++)
-          c[i] = 0;
+        crypto_stream_xor(c2, 0, m, 0, d2, n2, k2);
+        crypto_onetimeauth(c2, 16, c2, 32, d2 - 32, c2);
+        for (i2 = 0; i2 < 16; i2++)
+          c2[i2] = 0;
         return 0;
       }
-      function crypto_secretbox_open(m, c, d, n, k) {
-        var i;
-        var x = new Uint8Array(32);
-        if (d < 32)
+      function crypto_secretbox_open(m, c2, d2, n2, k2) {
+        var i2;
+        var x2 = new Uint8Array(32);
+        if (d2 < 32)
           return -1;
-        crypto_stream(x, 0, 32, n, k);
-        if (crypto_onetimeauth_verify(c, 16, c, 32, d - 32, x) !== 0)
+        crypto_stream(x2, 0, 32, n2, k2);
+        if (crypto_onetimeauth_verify(c2, 16, c2, 32, d2 - 32, x2) !== 0)
           return -1;
-        crypto_stream_xor(m, 0, c, 0, d, n, k);
-        for (i = 0; i < 32; i++)
-          m[i] = 0;
+        crypto_stream_xor(m, 0, c2, 0, d2, n2, k2);
+        for (i2 = 0; i2 < 32; i2++)
+          m[i2] = 0;
         return 0;
       }
-      function set25519(r, a) {
-        var i;
-        for (i = 0; i < 16; i++)
-          r[i] = a[i] | 0;
+      function set25519(r2, a2) {
+        var i2;
+        for (i2 = 0; i2 < 16; i2++)
+          r2[i2] = a2[i2] | 0;
       }
-      function car25519(o) {
-        var i, v, c = 1;
-        for (i = 0; i < 16; i++) {
-          v = o[i] + c + 65535;
-          c = Math.floor(v / 65536);
-          o[i] = v - c * 65536;
+      function car25519(o2) {
+        var i2, v2, c2 = 1;
+        for (i2 = 0; i2 < 16; i2++) {
+          v2 = o2[i2] + c2 + 65535;
+          c2 = Math.floor(v2 / 65536);
+          o2[i2] = v2 - c2 * 65536;
         }
-        o[0] += c - 1 + 37 * (c - 1);
+        o2[0] += c2 - 1 + 37 * (c2 - 1);
       }
-      function sel25519(p, q2, b) {
-        var t, c = ~(b - 1);
-        for (var i = 0; i < 16; i++) {
-          t = c & (p[i] ^ q2[i]);
-          p[i] ^= t;
-          q2[i] ^= t;
+      function sel25519(p2, q3, b2) {
+        var t2, c2 = ~(b2 - 1);
+        for (var i2 = 0; i2 < 16; i2++) {
+          t2 = c2 & (p2[i2] ^ q3[i2]);
+          p2[i2] ^= t2;
+          q3[i2] ^= t2;
         }
       }
-      function pack25519(o, n) {
-        var i, j, b;
-        var m = gf(), t = gf();
-        for (i = 0; i < 16; i++)
-          t[i] = n[i];
-        car25519(t);
-        car25519(t);
-        car25519(t);
-        for (j = 0; j < 2; j++) {
-          m[0] = t[0] - 65517;
-          for (i = 1; i < 15; i++) {
-            m[i] = t[i] - 65535 - (m[i - 1] >> 16 & 1);
-            m[i - 1] &= 65535;
+      function pack25519(o2, n2) {
+        var i2, j2, b2;
+        var m = gf(), t2 = gf();
+        for (i2 = 0; i2 < 16; i2++)
+          t2[i2] = n2[i2];
+        car25519(t2);
+        car25519(t2);
+        car25519(t2);
+        for (j2 = 0; j2 < 2; j2++) {
+          m[0] = t2[0] - 65517;
+          for (i2 = 1; i2 < 15; i2++) {
+            m[i2] = t2[i2] - 65535 - (m[i2 - 1] >> 16 & 1);
+            m[i2 - 1] &= 65535;
           }
-          m[15] = t[15] - 32767 - (m[14] >> 16 & 1);
-          b = m[15] >> 16 & 1;
+          m[15] = t2[15] - 32767 - (m[14] >> 16 & 1);
+          b2 = m[15] >> 16 & 1;
           m[14] &= 65535;
-          sel25519(t, m, 1 - b);
+          sel25519(t2, m, 1 - b2);
         }
-        for (i = 0; i < 16; i++) {
-          o[2 * i] = t[i] & 255;
-          o[2 * i + 1] = t[i] >> 8;
+        for (i2 = 0; i2 < 16; i2++) {
+          o2[2 * i2] = t2[i2] & 255;
+          o2[2 * i2 + 1] = t2[i2] >> 8;
         }
       }
-      function neq25519(a, b) {
-        var c = new Uint8Array(32), d = new Uint8Array(32);
-        pack25519(c, a);
-        pack25519(d, b);
-        return crypto_verify_32(c, 0, d, 0);
+      function neq25519(a2, b2) {
+        var c2 = new Uint8Array(32), d2 = new Uint8Array(32);
+        pack25519(c2, a2);
+        pack25519(d2, b2);
+        return crypto_verify_32(c2, 0, d2, 0);
       }
-      function par25519(a) {
-        var d = new Uint8Array(32);
-        pack25519(d, a);
-        return d[0] & 1;
+      function par25519(a2) {
+        var d2 = new Uint8Array(32);
+        pack25519(d2, a2);
+        return d2[0] & 1;
       }
-      function unpack25519(o, n) {
-        var i;
-        for (i = 0; i < 16; i++)
-          o[i] = n[2 * i] + (n[2 * i + 1] << 8);
-        o[15] &= 32767;
+      function unpack25519(o2, n2) {
+        var i2;
+        for (i2 = 0; i2 < 16; i2++)
+          o2[i2] = n2[2 * i2] + (n2[2 * i2 + 1] << 8);
+        o2[15] &= 32767;
       }
-      function A(o, a, b) {
-        for (var i = 0; i < 16; i++)
-          o[i] = a[i] + b[i];
+      function A2(o2, a2, b2) {
+        for (var i2 = 0; i2 < 16; i2++)
+          o2[i2] = a2[i2] + b2[i2];
       }
-      function Z(o, a, b) {
-        for (var i = 0; i < 16; i++)
-          o[i] = a[i] - b[i];
+      function Z2(o2, a2, b2) {
+        for (var i2 = 0; i2 < 16; i2++)
+          o2[i2] = a2[i2] - b2[i2];
       }
-      function M(o, a, b) {
-        var v, c, t0 = 0, t1 = 0, t2 = 0, t3 = 0, t4 = 0, t5 = 0, t6 = 0, t7 = 0, t8 = 0, t9 = 0, t10 = 0, t11 = 0, t12 = 0, t13 = 0, t14 = 0, t15 = 0, t16 = 0, t17 = 0, t18 = 0, t19 = 0, t20 = 0, t21 = 0, t22 = 0, t23 = 0, t24 = 0, t25 = 0, t26 = 0, t27 = 0, t28 = 0, t29 = 0, t30 = 0, b0 = b[0], b1 = b[1], b2 = b[2], b3 = b[3], b4 = b[4], b5 = b[5], b6 = b[6], b7 = b[7], b8 = b[8], b9 = b[9], b10 = b[10], b11 = b[11], b12 = b[12], b13 = b[13], b14 = b[14], b15 = b[15];
-        v = a[0];
-        t0 += v * b0;
-        t1 += v * b1;
-        t2 += v * b2;
-        t3 += v * b3;
-        t4 += v * b4;
-        t5 += v * b5;
-        t6 += v * b6;
-        t7 += v * b7;
-        t8 += v * b8;
-        t9 += v * b9;
-        t10 += v * b10;
-        t11 += v * b11;
-        t12 += v * b12;
-        t13 += v * b13;
-        t14 += v * b14;
-        t15 += v * b15;
-        v = a[1];
-        t1 += v * b0;
-        t2 += v * b1;
-        t3 += v * b2;
-        t4 += v * b3;
-        t5 += v * b4;
-        t6 += v * b5;
-        t7 += v * b6;
-        t8 += v * b7;
-        t9 += v * b8;
-        t10 += v * b9;
-        t11 += v * b10;
-        t12 += v * b11;
-        t13 += v * b12;
-        t14 += v * b13;
-        t15 += v * b14;
-        t16 += v * b15;
-        v = a[2];
-        t2 += v * b0;
-        t3 += v * b1;
-        t4 += v * b2;
-        t5 += v * b3;
-        t6 += v * b4;
-        t7 += v * b5;
-        t8 += v * b6;
-        t9 += v * b7;
-        t10 += v * b8;
-        t11 += v * b9;
-        t12 += v * b10;
-        t13 += v * b11;
-        t14 += v * b12;
-        t15 += v * b13;
-        t16 += v * b14;
-        t17 += v * b15;
-        v = a[3];
-        t3 += v * b0;
-        t4 += v * b1;
-        t5 += v * b2;
-        t6 += v * b3;
-        t7 += v * b4;
-        t8 += v * b5;
-        t9 += v * b6;
-        t10 += v * b7;
-        t11 += v * b8;
-        t12 += v * b9;
-        t13 += v * b10;
-        t14 += v * b11;
-        t15 += v * b12;
-        t16 += v * b13;
-        t17 += v * b14;
-        t18 += v * b15;
-        v = a[4];
-        t4 += v * b0;
-        t5 += v * b1;
-        t6 += v * b2;
-        t7 += v * b3;
-        t8 += v * b4;
-        t9 += v * b5;
-        t10 += v * b6;
-        t11 += v * b7;
-        t12 += v * b8;
-        t13 += v * b9;
-        t14 += v * b10;
-        t15 += v * b11;
-        t16 += v * b12;
-        t17 += v * b13;
-        t18 += v * b14;
-        t19 += v * b15;
-        v = a[5];
-        t5 += v * b0;
-        t6 += v * b1;
-        t7 += v * b2;
-        t8 += v * b3;
-        t9 += v * b4;
-        t10 += v * b5;
-        t11 += v * b6;
-        t12 += v * b7;
-        t13 += v * b8;
-        t14 += v * b9;
-        t15 += v * b10;
-        t16 += v * b11;
-        t17 += v * b12;
-        t18 += v * b13;
-        t19 += v * b14;
-        t20 += v * b15;
-        v = a[6];
-        t6 += v * b0;
-        t7 += v * b1;
-        t8 += v * b2;
-        t9 += v * b3;
-        t10 += v * b4;
-        t11 += v * b5;
-        t12 += v * b6;
-        t13 += v * b7;
-        t14 += v * b8;
-        t15 += v * b9;
-        t16 += v * b10;
-        t17 += v * b11;
-        t18 += v * b12;
-        t19 += v * b13;
-        t20 += v * b14;
-        t21 += v * b15;
-        v = a[7];
-        t7 += v * b0;
-        t8 += v * b1;
-        t9 += v * b2;
-        t10 += v * b3;
-        t11 += v * b4;
-        t12 += v * b5;
-        t13 += v * b6;
-        t14 += v * b7;
-        t15 += v * b8;
-        t16 += v * b9;
-        t17 += v * b10;
-        t18 += v * b11;
-        t19 += v * b12;
-        t20 += v * b13;
-        t21 += v * b14;
-        t22 += v * b15;
-        v = a[8];
-        t8 += v * b0;
-        t9 += v * b1;
-        t10 += v * b2;
-        t11 += v * b3;
-        t12 += v * b4;
-        t13 += v * b5;
-        t14 += v * b6;
-        t15 += v * b7;
-        t16 += v * b8;
-        t17 += v * b9;
-        t18 += v * b10;
-        t19 += v * b11;
-        t20 += v * b12;
-        t21 += v * b13;
-        t22 += v * b14;
-        t23 += v * b15;
-        v = a[9];
-        t9 += v * b0;
-        t10 += v * b1;
-        t11 += v * b2;
-        t12 += v * b3;
-        t13 += v * b4;
-        t14 += v * b5;
-        t15 += v * b6;
-        t16 += v * b7;
-        t17 += v * b8;
-        t18 += v * b9;
-        t19 += v * b10;
-        t20 += v * b11;
-        t21 += v * b12;
-        t22 += v * b13;
-        t23 += v * b14;
-        t24 += v * b15;
-        v = a[10];
-        t10 += v * b0;
-        t11 += v * b1;
-        t12 += v * b2;
-        t13 += v * b3;
-        t14 += v * b4;
-        t15 += v * b5;
-        t16 += v * b6;
-        t17 += v * b7;
-        t18 += v * b8;
-        t19 += v * b9;
-        t20 += v * b10;
-        t21 += v * b11;
-        t22 += v * b12;
-        t23 += v * b13;
-        t24 += v * b14;
-        t25 += v * b15;
-        v = a[11];
-        t11 += v * b0;
-        t12 += v * b1;
-        t13 += v * b2;
-        t14 += v * b3;
-        t15 += v * b4;
-        t16 += v * b5;
-        t17 += v * b6;
-        t18 += v * b7;
-        t19 += v * b8;
-        t20 += v * b9;
-        t21 += v * b10;
-        t22 += v * b11;
-        t23 += v * b12;
-        t24 += v * b13;
-        t25 += v * b14;
-        t26 += v * b15;
-        v = a[12];
-        t12 += v * b0;
-        t13 += v * b1;
-        t14 += v * b2;
-        t15 += v * b3;
-        t16 += v * b4;
-        t17 += v * b5;
-        t18 += v * b6;
-        t19 += v * b7;
-        t20 += v * b8;
-        t21 += v * b9;
-        t22 += v * b10;
-        t23 += v * b11;
-        t24 += v * b12;
-        t25 += v * b13;
-        t26 += v * b14;
-        t27 += v * b15;
-        v = a[13];
-        t13 += v * b0;
-        t14 += v * b1;
-        t15 += v * b2;
-        t16 += v * b3;
-        t17 += v * b4;
-        t18 += v * b5;
-        t19 += v * b6;
-        t20 += v * b7;
-        t21 += v * b8;
-        t22 += v * b9;
-        t23 += v * b10;
-        t24 += v * b11;
-        t25 += v * b12;
-        t26 += v * b13;
-        t27 += v * b14;
-        t28 += v * b15;
-        v = a[14];
-        t14 += v * b0;
-        t15 += v * b1;
-        t16 += v * b2;
-        t17 += v * b3;
-        t18 += v * b4;
-        t19 += v * b5;
-        t20 += v * b6;
-        t21 += v * b7;
-        t22 += v * b8;
-        t23 += v * b9;
-        t24 += v * b10;
-        t25 += v * b11;
-        t26 += v * b12;
-        t27 += v * b13;
-        t28 += v * b14;
-        t29 += v * b15;
-        v = a[15];
-        t15 += v * b0;
-        t16 += v * b1;
-        t17 += v * b2;
-        t18 += v * b3;
-        t19 += v * b4;
-        t20 += v * b5;
-        t21 += v * b6;
-        t22 += v * b7;
-        t23 += v * b8;
-        t24 += v * b9;
-        t25 += v * b10;
-        t26 += v * b11;
-        t27 += v * b12;
-        t28 += v * b13;
-        t29 += v * b14;
-        t30 += v * b15;
+      function M2(o2, a2, b2) {
+        var v2, c2, t0 = 0, t1 = 0, t2 = 0, t3 = 0, t4 = 0, t5 = 0, t6 = 0, t7 = 0, t8 = 0, t9 = 0, t10 = 0, t11 = 0, t12 = 0, t13 = 0, t14 = 0, t15 = 0, t16 = 0, t17 = 0, t18 = 0, t19 = 0, t20 = 0, t21 = 0, t22 = 0, t23 = 0, t24 = 0, t25 = 0, t26 = 0, t27 = 0, t28 = 0, t29 = 0, t30 = 0, b0 = b2[0], b1 = b2[1], b22 = b2[2], b3 = b2[3], b4 = b2[4], b5 = b2[5], b6 = b2[6], b7 = b2[7], b8 = b2[8], b9 = b2[9], b10 = b2[10], b11 = b2[11], b12 = b2[12], b13 = b2[13], b14 = b2[14], b15 = b2[15];
+        v2 = a2[0];
+        t0 += v2 * b0;
+        t1 += v2 * b1;
+        t2 += v2 * b22;
+        t3 += v2 * b3;
+        t4 += v2 * b4;
+        t5 += v2 * b5;
+        t6 += v2 * b6;
+        t7 += v2 * b7;
+        t8 += v2 * b8;
+        t9 += v2 * b9;
+        t10 += v2 * b10;
+        t11 += v2 * b11;
+        t12 += v2 * b12;
+        t13 += v2 * b13;
+        t14 += v2 * b14;
+        t15 += v2 * b15;
+        v2 = a2[1];
+        t1 += v2 * b0;
+        t2 += v2 * b1;
+        t3 += v2 * b22;
+        t4 += v2 * b3;
+        t5 += v2 * b4;
+        t6 += v2 * b5;
+        t7 += v2 * b6;
+        t8 += v2 * b7;
+        t9 += v2 * b8;
+        t10 += v2 * b9;
+        t11 += v2 * b10;
+        t12 += v2 * b11;
+        t13 += v2 * b12;
+        t14 += v2 * b13;
+        t15 += v2 * b14;
+        t16 += v2 * b15;
+        v2 = a2[2];
+        t2 += v2 * b0;
+        t3 += v2 * b1;
+        t4 += v2 * b22;
+        t5 += v2 * b3;
+        t6 += v2 * b4;
+        t7 += v2 * b5;
+        t8 += v2 * b6;
+        t9 += v2 * b7;
+        t10 += v2 * b8;
+        t11 += v2 * b9;
+        t12 += v2 * b10;
+        t13 += v2 * b11;
+        t14 += v2 * b12;
+        t15 += v2 * b13;
+        t16 += v2 * b14;
+        t17 += v2 * b15;
+        v2 = a2[3];
+        t3 += v2 * b0;
+        t4 += v2 * b1;
+        t5 += v2 * b22;
+        t6 += v2 * b3;
+        t7 += v2 * b4;
+        t8 += v2 * b5;
+        t9 += v2 * b6;
+        t10 += v2 * b7;
+        t11 += v2 * b8;
+        t12 += v2 * b9;
+        t13 += v2 * b10;
+        t14 += v2 * b11;
+        t15 += v2 * b12;
+        t16 += v2 * b13;
+        t17 += v2 * b14;
+        t18 += v2 * b15;
+        v2 = a2[4];
+        t4 += v2 * b0;
+        t5 += v2 * b1;
+        t6 += v2 * b22;
+        t7 += v2 * b3;
+        t8 += v2 * b4;
+        t9 += v2 * b5;
+        t10 += v2 * b6;
+        t11 += v2 * b7;
+        t12 += v2 * b8;
+        t13 += v2 * b9;
+        t14 += v2 * b10;
+        t15 += v2 * b11;
+        t16 += v2 * b12;
+        t17 += v2 * b13;
+        t18 += v2 * b14;
+        t19 += v2 * b15;
+        v2 = a2[5];
+        t5 += v2 * b0;
+        t6 += v2 * b1;
+        t7 += v2 * b22;
+        t8 += v2 * b3;
+        t9 += v2 * b4;
+        t10 += v2 * b5;
+        t11 += v2 * b6;
+        t12 += v2 * b7;
+        t13 += v2 * b8;
+        t14 += v2 * b9;
+        t15 += v2 * b10;
+        t16 += v2 * b11;
+        t17 += v2 * b12;
+        t18 += v2 * b13;
+        t19 += v2 * b14;
+        t20 += v2 * b15;
+        v2 = a2[6];
+        t6 += v2 * b0;
+        t7 += v2 * b1;
+        t8 += v2 * b22;
+        t9 += v2 * b3;
+        t10 += v2 * b4;
+        t11 += v2 * b5;
+        t12 += v2 * b6;
+        t13 += v2 * b7;
+        t14 += v2 * b8;
+        t15 += v2 * b9;
+        t16 += v2 * b10;
+        t17 += v2 * b11;
+        t18 += v2 * b12;
+        t19 += v2 * b13;
+        t20 += v2 * b14;
+        t21 += v2 * b15;
+        v2 = a2[7];
+        t7 += v2 * b0;
+        t8 += v2 * b1;
+        t9 += v2 * b22;
+        t10 += v2 * b3;
+        t11 += v2 * b4;
+        t12 += v2 * b5;
+        t13 += v2 * b6;
+        t14 += v2 * b7;
+        t15 += v2 * b8;
+        t16 += v2 * b9;
+        t17 += v2 * b10;
+        t18 += v2 * b11;
+        t19 += v2 * b12;
+        t20 += v2 * b13;
+        t21 += v2 * b14;
+        t22 += v2 * b15;
+        v2 = a2[8];
+        t8 += v2 * b0;
+        t9 += v2 * b1;
+        t10 += v2 * b22;
+        t11 += v2 * b3;
+        t12 += v2 * b4;
+        t13 += v2 * b5;
+        t14 += v2 * b6;
+        t15 += v2 * b7;
+        t16 += v2 * b8;
+        t17 += v2 * b9;
+        t18 += v2 * b10;
+        t19 += v2 * b11;
+        t20 += v2 * b12;
+        t21 += v2 * b13;
+        t22 += v2 * b14;
+        t23 += v2 * b15;
+        v2 = a2[9];
+        t9 += v2 * b0;
+        t10 += v2 * b1;
+        t11 += v2 * b22;
+        t12 += v2 * b3;
+        t13 += v2 * b4;
+        t14 += v2 * b5;
+        t15 += v2 * b6;
+        t16 += v2 * b7;
+        t17 += v2 * b8;
+        t18 += v2 * b9;
+        t19 += v2 * b10;
+        t20 += v2 * b11;
+        t21 += v2 * b12;
+        t22 += v2 * b13;
+        t23 += v2 * b14;
+        t24 += v2 * b15;
+        v2 = a2[10];
+        t10 += v2 * b0;
+        t11 += v2 * b1;
+        t12 += v2 * b22;
+        t13 += v2 * b3;
+        t14 += v2 * b4;
+        t15 += v2 * b5;
+        t16 += v2 * b6;
+        t17 += v2 * b7;
+        t18 += v2 * b8;
+        t19 += v2 * b9;
+        t20 += v2 * b10;
+        t21 += v2 * b11;
+        t22 += v2 * b12;
+        t23 += v2 * b13;
+        t24 += v2 * b14;
+        t25 += v2 * b15;
+        v2 = a2[11];
+        t11 += v2 * b0;
+        t12 += v2 * b1;
+        t13 += v2 * b22;
+        t14 += v2 * b3;
+        t15 += v2 * b4;
+        t16 += v2 * b5;
+        t17 += v2 * b6;
+        t18 += v2 * b7;
+        t19 += v2 * b8;
+        t20 += v2 * b9;
+        t21 += v2 * b10;
+        t22 += v2 * b11;
+        t23 += v2 * b12;
+        t24 += v2 * b13;
+        t25 += v2 * b14;
+        t26 += v2 * b15;
+        v2 = a2[12];
+        t12 += v2 * b0;
+        t13 += v2 * b1;
+        t14 += v2 * b22;
+        t15 += v2 * b3;
+        t16 += v2 * b4;
+        t17 += v2 * b5;
+        t18 += v2 * b6;
+        t19 += v2 * b7;
+        t20 += v2 * b8;
+        t21 += v2 * b9;
+        t22 += v2 * b10;
+        t23 += v2 * b11;
+        t24 += v2 * b12;
+        t25 += v2 * b13;
+        t26 += v2 * b14;
+        t27 += v2 * b15;
+        v2 = a2[13];
+        t13 += v2 * b0;
+        t14 += v2 * b1;
+        t15 += v2 * b22;
+        t16 += v2 * b3;
+        t17 += v2 * b4;
+        t18 += v2 * b5;
+        t19 += v2 * b6;
+        t20 += v2 * b7;
+        t21 += v2 * b8;
+        t22 += v2 * b9;
+        t23 += v2 * b10;
+        t24 += v2 * b11;
+        t25 += v2 * b12;
+        t26 += v2 * b13;
+        t27 += v2 * b14;
+        t28 += v2 * b15;
+        v2 = a2[14];
+        t14 += v2 * b0;
+        t15 += v2 * b1;
+        t16 += v2 * b22;
+        t17 += v2 * b3;
+        t18 += v2 * b4;
+        t19 += v2 * b5;
+        t20 += v2 * b6;
+        t21 += v2 * b7;
+        t22 += v2 * b8;
+        t23 += v2 * b9;
+        t24 += v2 * b10;
+        t25 += v2 * b11;
+        t26 += v2 * b12;
+        t27 += v2 * b13;
+        t28 += v2 * b14;
+        t29 += v2 * b15;
+        v2 = a2[15];
+        t15 += v2 * b0;
+        t16 += v2 * b1;
+        t17 += v2 * b22;
+        t18 += v2 * b3;
+        t19 += v2 * b4;
+        t20 += v2 * b5;
+        t21 += v2 * b6;
+        t22 += v2 * b7;
+        t23 += v2 * b8;
+        t24 += v2 * b9;
+        t25 += v2 * b10;
+        t26 += v2 * b11;
+        t27 += v2 * b12;
+        t28 += v2 * b13;
+        t29 += v2 * b14;
+        t30 += v2 * b15;
         t0 += 38 * t16;
         t1 += 38 * t17;
         t2 += 38 * t18;
@@ -15832,227 +15468,227 @@ var require_nacl_fast = __commonJS({
         t12 += 38 * t28;
         t13 += 38 * t29;
         t14 += 38 * t30;
-        c = 1;
-        v = t0 + c + 65535;
-        c = Math.floor(v / 65536);
-        t0 = v - c * 65536;
-        v = t1 + c + 65535;
-        c = Math.floor(v / 65536);
-        t1 = v - c * 65536;
-        v = t2 + c + 65535;
-        c = Math.floor(v / 65536);
-        t2 = v - c * 65536;
-        v = t3 + c + 65535;
-        c = Math.floor(v / 65536);
-        t3 = v - c * 65536;
-        v = t4 + c + 65535;
-        c = Math.floor(v / 65536);
-        t4 = v - c * 65536;
-        v = t5 + c + 65535;
-        c = Math.floor(v / 65536);
-        t5 = v - c * 65536;
-        v = t6 + c + 65535;
-        c = Math.floor(v / 65536);
-        t6 = v - c * 65536;
-        v = t7 + c + 65535;
-        c = Math.floor(v / 65536);
-        t7 = v - c * 65536;
-        v = t8 + c + 65535;
-        c = Math.floor(v / 65536);
-        t8 = v - c * 65536;
-        v = t9 + c + 65535;
-        c = Math.floor(v / 65536);
-        t9 = v - c * 65536;
-        v = t10 + c + 65535;
-        c = Math.floor(v / 65536);
-        t10 = v - c * 65536;
-        v = t11 + c + 65535;
-        c = Math.floor(v / 65536);
-        t11 = v - c * 65536;
-        v = t12 + c + 65535;
-        c = Math.floor(v / 65536);
-        t12 = v - c * 65536;
-        v = t13 + c + 65535;
-        c = Math.floor(v / 65536);
-        t13 = v - c * 65536;
-        v = t14 + c + 65535;
-        c = Math.floor(v / 65536);
-        t14 = v - c * 65536;
-        v = t15 + c + 65535;
-        c = Math.floor(v / 65536);
-        t15 = v - c * 65536;
-        t0 += c - 1 + 37 * (c - 1);
-        c = 1;
-        v = t0 + c + 65535;
-        c = Math.floor(v / 65536);
-        t0 = v - c * 65536;
-        v = t1 + c + 65535;
-        c = Math.floor(v / 65536);
-        t1 = v - c * 65536;
-        v = t2 + c + 65535;
-        c = Math.floor(v / 65536);
-        t2 = v - c * 65536;
-        v = t3 + c + 65535;
-        c = Math.floor(v / 65536);
-        t3 = v - c * 65536;
-        v = t4 + c + 65535;
-        c = Math.floor(v / 65536);
-        t4 = v - c * 65536;
-        v = t5 + c + 65535;
-        c = Math.floor(v / 65536);
-        t5 = v - c * 65536;
-        v = t6 + c + 65535;
-        c = Math.floor(v / 65536);
-        t6 = v - c * 65536;
-        v = t7 + c + 65535;
-        c = Math.floor(v / 65536);
-        t7 = v - c * 65536;
-        v = t8 + c + 65535;
-        c = Math.floor(v / 65536);
-        t8 = v - c * 65536;
-        v = t9 + c + 65535;
-        c = Math.floor(v / 65536);
-        t9 = v - c * 65536;
-        v = t10 + c + 65535;
-        c = Math.floor(v / 65536);
-        t10 = v - c * 65536;
-        v = t11 + c + 65535;
-        c = Math.floor(v / 65536);
-        t11 = v - c * 65536;
-        v = t12 + c + 65535;
-        c = Math.floor(v / 65536);
-        t12 = v - c * 65536;
-        v = t13 + c + 65535;
-        c = Math.floor(v / 65536);
-        t13 = v - c * 65536;
-        v = t14 + c + 65535;
-        c = Math.floor(v / 65536);
-        t14 = v - c * 65536;
-        v = t15 + c + 65535;
-        c = Math.floor(v / 65536);
-        t15 = v - c * 65536;
-        t0 += c - 1 + 37 * (c - 1);
-        o[0] = t0;
-        o[1] = t1;
-        o[2] = t2;
-        o[3] = t3;
-        o[4] = t4;
-        o[5] = t5;
-        o[6] = t6;
-        o[7] = t7;
-        o[8] = t8;
-        o[9] = t9;
-        o[10] = t10;
-        o[11] = t11;
-        o[12] = t12;
-        o[13] = t13;
-        o[14] = t14;
-        o[15] = t15;
+        c2 = 1;
+        v2 = t0 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t0 = v2 - c2 * 65536;
+        v2 = t1 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t1 = v2 - c2 * 65536;
+        v2 = t2 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t2 = v2 - c2 * 65536;
+        v2 = t3 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t3 = v2 - c2 * 65536;
+        v2 = t4 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t4 = v2 - c2 * 65536;
+        v2 = t5 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t5 = v2 - c2 * 65536;
+        v2 = t6 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t6 = v2 - c2 * 65536;
+        v2 = t7 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t7 = v2 - c2 * 65536;
+        v2 = t8 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t8 = v2 - c2 * 65536;
+        v2 = t9 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t9 = v2 - c2 * 65536;
+        v2 = t10 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t10 = v2 - c2 * 65536;
+        v2 = t11 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t11 = v2 - c2 * 65536;
+        v2 = t12 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t12 = v2 - c2 * 65536;
+        v2 = t13 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t13 = v2 - c2 * 65536;
+        v2 = t14 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t14 = v2 - c2 * 65536;
+        v2 = t15 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t15 = v2 - c2 * 65536;
+        t0 += c2 - 1 + 37 * (c2 - 1);
+        c2 = 1;
+        v2 = t0 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t0 = v2 - c2 * 65536;
+        v2 = t1 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t1 = v2 - c2 * 65536;
+        v2 = t2 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t2 = v2 - c2 * 65536;
+        v2 = t3 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t3 = v2 - c2 * 65536;
+        v2 = t4 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t4 = v2 - c2 * 65536;
+        v2 = t5 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t5 = v2 - c2 * 65536;
+        v2 = t6 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t6 = v2 - c2 * 65536;
+        v2 = t7 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t7 = v2 - c2 * 65536;
+        v2 = t8 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t8 = v2 - c2 * 65536;
+        v2 = t9 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t9 = v2 - c2 * 65536;
+        v2 = t10 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t10 = v2 - c2 * 65536;
+        v2 = t11 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t11 = v2 - c2 * 65536;
+        v2 = t12 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t12 = v2 - c2 * 65536;
+        v2 = t13 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t13 = v2 - c2 * 65536;
+        v2 = t14 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t14 = v2 - c2 * 65536;
+        v2 = t15 + c2 + 65535;
+        c2 = Math.floor(v2 / 65536);
+        t15 = v2 - c2 * 65536;
+        t0 += c2 - 1 + 37 * (c2 - 1);
+        o2[0] = t0;
+        o2[1] = t1;
+        o2[2] = t2;
+        o2[3] = t3;
+        o2[4] = t4;
+        o2[5] = t5;
+        o2[6] = t6;
+        o2[7] = t7;
+        o2[8] = t8;
+        o2[9] = t9;
+        o2[10] = t10;
+        o2[11] = t11;
+        o2[12] = t12;
+        o2[13] = t13;
+        o2[14] = t14;
+        o2[15] = t15;
       }
-      function S(o, a) {
-        M(o, a, a);
+      function S2(o2, a2) {
+        M2(o2, a2, a2);
       }
-      function inv25519(o, i) {
-        var c = gf();
-        var a;
-        for (a = 0; a < 16; a++)
-          c[a] = i[a];
-        for (a = 253; a >= 0; a--) {
-          S(c, c);
-          if (a !== 2 && a !== 4)
-            M(c, c, i);
+      function inv25519(o2, i2) {
+        var c2 = gf();
+        var a2;
+        for (a2 = 0; a2 < 16; a2++)
+          c2[a2] = i2[a2];
+        for (a2 = 253; a2 >= 0; a2--) {
+          S2(c2, c2);
+          if (a2 !== 2 && a2 !== 4)
+            M2(c2, c2, i2);
         }
-        for (a = 0; a < 16; a++)
-          o[a] = c[a];
+        for (a2 = 0; a2 < 16; a2++)
+          o2[a2] = c2[a2];
       }
-      function pow2523(o, i) {
-        var c = gf();
-        var a;
-        for (a = 0; a < 16; a++)
-          c[a] = i[a];
-        for (a = 250; a >= 0; a--) {
-          S(c, c);
-          if (a !== 1)
-            M(c, c, i);
+      function pow2523(o2, i2) {
+        var c2 = gf();
+        var a2;
+        for (a2 = 0; a2 < 16; a2++)
+          c2[a2] = i2[a2];
+        for (a2 = 250; a2 >= 0; a2--) {
+          S2(c2, c2);
+          if (a2 !== 1)
+            M2(c2, c2, i2);
         }
-        for (a = 0; a < 16; a++)
-          o[a] = c[a];
+        for (a2 = 0; a2 < 16; a2++)
+          o2[a2] = c2[a2];
       }
-      function crypto_scalarmult(q2, n, p) {
-        var z = new Uint8Array(32);
-        var x = new Float64Array(80), r, i;
-        var a = gf(), b = gf(), c = gf(), d = gf(), e = gf(), f = gf();
-        for (i = 0; i < 31; i++)
-          z[i] = n[i];
-        z[31] = n[31] & 127 | 64;
-        z[0] &= 248;
-        unpack25519(x, p);
-        for (i = 0; i < 16; i++) {
-          b[i] = x[i];
-          d[i] = a[i] = c[i] = 0;
+      function crypto_scalarmult(q3, n2, p2) {
+        var z2 = new Uint8Array(32);
+        var x2 = new Float64Array(80), r2, i2;
+        var a2 = gf(), b2 = gf(), c2 = gf(), d2 = gf(), e = gf(), f2 = gf();
+        for (i2 = 0; i2 < 31; i2++)
+          z2[i2] = n2[i2];
+        z2[31] = n2[31] & 127 | 64;
+        z2[0] &= 248;
+        unpack25519(x2, p2);
+        for (i2 = 0; i2 < 16; i2++) {
+          b2[i2] = x2[i2];
+          d2[i2] = a2[i2] = c2[i2] = 0;
         }
-        a[0] = d[0] = 1;
-        for (i = 254; i >= 0; --i) {
-          r = z[i >>> 3] >>> (i & 7) & 1;
-          sel25519(a, b, r);
-          sel25519(c, d, r);
-          A(e, a, c);
-          Z(a, a, c);
-          A(c, b, d);
-          Z(b, b, d);
-          S(d, e);
-          S(f, a);
-          M(a, c, a);
-          M(c, b, e);
-          A(e, a, c);
-          Z(a, a, c);
-          S(b, a);
-          Z(c, d, f);
-          M(a, c, _121665);
-          A(a, a, d);
-          M(c, c, a);
-          M(a, d, f);
-          M(d, b, x);
-          S(b, e);
-          sel25519(a, b, r);
-          sel25519(c, d, r);
+        a2[0] = d2[0] = 1;
+        for (i2 = 254; i2 >= 0; --i2) {
+          r2 = z2[i2 >>> 3] >>> (i2 & 7) & 1;
+          sel25519(a2, b2, r2);
+          sel25519(c2, d2, r2);
+          A2(e, a2, c2);
+          Z2(a2, a2, c2);
+          A2(c2, b2, d2);
+          Z2(b2, b2, d2);
+          S2(d2, e);
+          S2(f2, a2);
+          M2(a2, c2, a2);
+          M2(c2, b2, e);
+          A2(e, a2, c2);
+          Z2(a2, a2, c2);
+          S2(b2, a2);
+          Z2(c2, d2, f2);
+          M2(a2, c2, _121665);
+          A2(a2, a2, d2);
+          M2(c2, c2, a2);
+          M2(a2, d2, f2);
+          M2(d2, b2, x2);
+          S2(b2, e);
+          sel25519(a2, b2, r2);
+          sel25519(c2, d2, r2);
         }
-        for (i = 0; i < 16; i++) {
-          x[i + 16] = a[i];
-          x[i + 32] = c[i];
-          x[i + 48] = b[i];
-          x[i + 64] = d[i];
+        for (i2 = 0; i2 < 16; i2++) {
+          x2[i2 + 16] = a2[i2];
+          x2[i2 + 32] = c2[i2];
+          x2[i2 + 48] = b2[i2];
+          x2[i2 + 64] = d2[i2];
         }
-        var x32 = x.subarray(32);
-        var x16 = x.subarray(16);
+        var x32 = x2.subarray(32);
+        var x16 = x2.subarray(16);
         inv25519(x32, x32);
-        M(x16, x16, x32);
-        pack25519(q2, x16);
+        M2(x16, x16, x32);
+        pack25519(q3, x16);
         return 0;
       }
-      function crypto_scalarmult_base(q2, n) {
-        return crypto_scalarmult(q2, n, _9);
+      function crypto_scalarmult_base(q3, n2) {
+        return crypto_scalarmult(q3, n2, _9);
       }
-      function crypto_box_keypair(y, x) {
-        randombytes(x, 32);
-        return crypto_scalarmult_base(y, x);
+      function crypto_box_keypair(y2, x2) {
+        randombytes(x2, 32);
+        return crypto_scalarmult_base(y2, x2);
       }
-      function crypto_box_beforenm(k, y, x) {
-        var s = new Uint8Array(32);
-        crypto_scalarmult(s, x, y);
-        return crypto_core_hsalsa20(k, _0, s, sigma);
+      function crypto_box_beforenm(k2, y2, x2) {
+        var s2 = new Uint8Array(32);
+        crypto_scalarmult(s2, x2, y2);
+        return crypto_core_hsalsa20(k2, _0, s2, sigma);
       }
       var crypto_box_afternm = crypto_secretbox;
       var crypto_box_open_afternm = crypto_secretbox_open;
-      function crypto_box(c, m, d, n, y, x) {
-        var k = new Uint8Array(32);
-        crypto_box_beforenm(k, y, x);
-        return crypto_box_afternm(c, m, d, n, k);
+      function crypto_box(c2, m, d2, n2, y2, x2) {
+        var k2 = new Uint8Array(32);
+        crypto_box_beforenm(k2, y2, x2);
+        return crypto_box_afternm(c2, m, d2, n2, k2);
       }
-      function crypto_box_open(m, c, d, n, y, x) {
-        var k = new Uint8Array(32);
-        crypto_box_beforenm(k, y, x);
-        return crypto_box_open_afternm(m, c, d, n, k);
+      function crypto_box_open(m, c2, d2, n2, y2, x2) {
+        var k2 = new Uint8Array(32);
+        crypto_box_beforenm(k2, y2, x2);
+        return crypto_box_open_afternm(m, c2, d2, n2, k2);
       }
       var K = [
         1116352408,
@@ -16216,17 +15852,17 @@ var require_nacl_fast = __commonJS({
         1816402316,
         1246189591
       ];
-      function crypto_hashblocks_hl(hh, hl, m, n) {
-        var wh = new Int32Array(16), wl = new Int32Array(16), bh0, bh1, bh2, bh3, bh4, bh5, bh6, bh7, bl0, bl1, bl2, bl3, bl4, bl5, bl6, bl7, th, tl, i, j, h, l, a, b, c, d;
+      function crypto_hashblocks_hl(hh, hl, m, n2) {
+        var wh = new Int32Array(16), wl = new Int32Array(16), bh0, bh1, bh2, bh3, bh4, bh5, bh6, bh7, bl0, bl1, bl2, bl3, bl4, bl5, bl6, bl7, th, tl, i2, j2, h2, l2, a2, b2, c2, d2;
         var ah0 = hh[0], ah1 = hh[1], ah2 = hh[2], ah3 = hh[3], ah4 = hh[4], ah5 = hh[5], ah6 = hh[6], ah7 = hh[7], al0 = hl[0], al1 = hl[1], al2 = hl[2], al3 = hl[3], al4 = hl[4], al5 = hl[5], al6 = hl[6], al7 = hl[7];
         var pos = 0;
-        while (n >= 128) {
-          for (i = 0; i < 16; i++) {
-            j = 8 * i + pos;
-            wh[i] = m[j + 0] << 24 | m[j + 1] << 16 | m[j + 2] << 8 | m[j + 3];
-            wl[i] = m[j + 4] << 24 | m[j + 5] << 16 | m[j + 6] << 8 | m[j + 7];
+        while (n2 >= 128) {
+          for (i2 = 0; i2 < 16; i2++) {
+            j2 = 8 * i2 + pos;
+            wh[i2] = m[j2 + 0] << 24 | m[j2 + 1] << 16 | m[j2 + 2] << 8 | m[j2 + 3];
+            wl[i2] = m[j2 + 4] << 24 | m[j2 + 5] << 16 | m[j2 + 6] << 8 | m[j2 + 7];
           }
-          for (i = 0; i < 80; i++) {
+          for (i2 = 0; i2 < 80; i2++) {
             bh0 = ah0;
             bh1 = ah1;
             bh2 = ah2;
@@ -16243,81 +15879,81 @@ var require_nacl_fast = __commonJS({
             bl5 = al5;
             bl6 = al6;
             bl7 = al7;
-            h = ah7;
-            l = al7;
-            a = l & 65535;
-            b = l >>> 16;
-            c = h & 65535;
-            d = h >>> 16;
-            h = (ah4 >>> 14 | al4 << 32 - 14) ^ (ah4 >>> 18 | al4 << 32 - 18) ^ (al4 >>> 41 - 32 | ah4 << 32 - (41 - 32));
-            l = (al4 >>> 14 | ah4 << 32 - 14) ^ (al4 >>> 18 | ah4 << 32 - 18) ^ (ah4 >>> 41 - 32 | al4 << 32 - (41 - 32));
-            a += l & 65535;
-            b += l >>> 16;
-            c += h & 65535;
-            d += h >>> 16;
-            h = ah4 & ah5 ^ ~ah4 & ah6;
-            l = al4 & al5 ^ ~al4 & al6;
-            a += l & 65535;
-            b += l >>> 16;
-            c += h & 65535;
-            d += h >>> 16;
-            h = K[i * 2];
-            l = K[i * 2 + 1];
-            a += l & 65535;
-            b += l >>> 16;
-            c += h & 65535;
-            d += h >>> 16;
-            h = wh[i % 16];
-            l = wl[i % 16];
-            a += l & 65535;
-            b += l >>> 16;
-            c += h & 65535;
-            d += h >>> 16;
-            b += a >>> 16;
-            c += b >>> 16;
-            d += c >>> 16;
-            th = c & 65535 | d << 16;
-            tl = a & 65535 | b << 16;
-            h = th;
-            l = tl;
-            a = l & 65535;
-            b = l >>> 16;
-            c = h & 65535;
-            d = h >>> 16;
-            h = (ah0 >>> 28 | al0 << 32 - 28) ^ (al0 >>> 34 - 32 | ah0 << 32 - (34 - 32)) ^ (al0 >>> 39 - 32 | ah0 << 32 - (39 - 32));
-            l = (al0 >>> 28 | ah0 << 32 - 28) ^ (ah0 >>> 34 - 32 | al0 << 32 - (34 - 32)) ^ (ah0 >>> 39 - 32 | al0 << 32 - (39 - 32));
-            a += l & 65535;
-            b += l >>> 16;
-            c += h & 65535;
-            d += h >>> 16;
-            h = ah0 & ah1 ^ ah0 & ah2 ^ ah1 & ah2;
-            l = al0 & al1 ^ al0 & al2 ^ al1 & al2;
-            a += l & 65535;
-            b += l >>> 16;
-            c += h & 65535;
-            d += h >>> 16;
-            b += a >>> 16;
-            c += b >>> 16;
-            d += c >>> 16;
-            bh7 = c & 65535 | d << 16;
-            bl7 = a & 65535 | b << 16;
-            h = bh3;
-            l = bl3;
-            a = l & 65535;
-            b = l >>> 16;
-            c = h & 65535;
-            d = h >>> 16;
-            h = th;
-            l = tl;
-            a += l & 65535;
-            b += l >>> 16;
-            c += h & 65535;
-            d += h >>> 16;
-            b += a >>> 16;
-            c += b >>> 16;
-            d += c >>> 16;
-            bh3 = c & 65535 | d << 16;
-            bl3 = a & 65535 | b << 16;
+            h2 = ah7;
+            l2 = al7;
+            a2 = l2 & 65535;
+            b2 = l2 >>> 16;
+            c2 = h2 & 65535;
+            d2 = h2 >>> 16;
+            h2 = (ah4 >>> 14 | al4 << 32 - 14) ^ (ah4 >>> 18 | al4 << 32 - 18) ^ (al4 >>> 41 - 32 | ah4 << 32 - (41 - 32));
+            l2 = (al4 >>> 14 | ah4 << 32 - 14) ^ (al4 >>> 18 | ah4 << 32 - 18) ^ (ah4 >>> 41 - 32 | al4 << 32 - (41 - 32));
+            a2 += l2 & 65535;
+            b2 += l2 >>> 16;
+            c2 += h2 & 65535;
+            d2 += h2 >>> 16;
+            h2 = ah4 & ah5 ^ ~ah4 & ah6;
+            l2 = al4 & al5 ^ ~al4 & al6;
+            a2 += l2 & 65535;
+            b2 += l2 >>> 16;
+            c2 += h2 & 65535;
+            d2 += h2 >>> 16;
+            h2 = K[i2 * 2];
+            l2 = K[i2 * 2 + 1];
+            a2 += l2 & 65535;
+            b2 += l2 >>> 16;
+            c2 += h2 & 65535;
+            d2 += h2 >>> 16;
+            h2 = wh[i2 % 16];
+            l2 = wl[i2 % 16];
+            a2 += l2 & 65535;
+            b2 += l2 >>> 16;
+            c2 += h2 & 65535;
+            d2 += h2 >>> 16;
+            b2 += a2 >>> 16;
+            c2 += b2 >>> 16;
+            d2 += c2 >>> 16;
+            th = c2 & 65535 | d2 << 16;
+            tl = a2 & 65535 | b2 << 16;
+            h2 = th;
+            l2 = tl;
+            a2 = l2 & 65535;
+            b2 = l2 >>> 16;
+            c2 = h2 & 65535;
+            d2 = h2 >>> 16;
+            h2 = (ah0 >>> 28 | al0 << 32 - 28) ^ (al0 >>> 34 - 32 | ah0 << 32 - (34 - 32)) ^ (al0 >>> 39 - 32 | ah0 << 32 - (39 - 32));
+            l2 = (al0 >>> 28 | ah0 << 32 - 28) ^ (ah0 >>> 34 - 32 | al0 << 32 - (34 - 32)) ^ (ah0 >>> 39 - 32 | al0 << 32 - (39 - 32));
+            a2 += l2 & 65535;
+            b2 += l2 >>> 16;
+            c2 += h2 & 65535;
+            d2 += h2 >>> 16;
+            h2 = ah0 & ah1 ^ ah0 & ah2 ^ ah1 & ah2;
+            l2 = al0 & al1 ^ al0 & al2 ^ al1 & al2;
+            a2 += l2 & 65535;
+            b2 += l2 >>> 16;
+            c2 += h2 & 65535;
+            d2 += h2 >>> 16;
+            b2 += a2 >>> 16;
+            c2 += b2 >>> 16;
+            d2 += c2 >>> 16;
+            bh7 = c2 & 65535 | d2 << 16;
+            bl7 = a2 & 65535 | b2 << 16;
+            h2 = bh3;
+            l2 = bl3;
+            a2 = l2 & 65535;
+            b2 = l2 >>> 16;
+            c2 = h2 & 65535;
+            d2 = h2 >>> 16;
+            h2 = th;
+            l2 = tl;
+            a2 += l2 & 65535;
+            b2 += l2 >>> 16;
+            c2 += h2 & 65535;
+            d2 += h2 >>> 16;
+            b2 += a2 >>> 16;
+            c2 += b2 >>> 16;
+            d2 += c2 >>> 16;
+            bh3 = c2 & 65535 | d2 << 16;
+            bl3 = a2 & 65535 | b2 << 16;
             ah1 = bh0;
             ah2 = bh1;
             ah3 = bh2;
@@ -16334,187 +15970,187 @@ var require_nacl_fast = __commonJS({
             al6 = bl5;
             al7 = bl6;
             al0 = bl7;
-            if (i % 16 === 15) {
-              for (j = 0; j < 16; j++) {
-                h = wh[j];
-                l = wl[j];
-                a = l & 65535;
-                b = l >>> 16;
-                c = h & 65535;
-                d = h >>> 16;
-                h = wh[(j + 9) % 16];
-                l = wl[(j + 9) % 16];
-                a += l & 65535;
-                b += l >>> 16;
-                c += h & 65535;
-                d += h >>> 16;
-                th = wh[(j + 1) % 16];
-                tl = wl[(j + 1) % 16];
-                h = (th >>> 1 | tl << 32 - 1) ^ (th >>> 8 | tl << 32 - 8) ^ th >>> 7;
-                l = (tl >>> 1 | th << 32 - 1) ^ (tl >>> 8 | th << 32 - 8) ^ (tl >>> 7 | th << 32 - 7);
-                a += l & 65535;
-                b += l >>> 16;
-                c += h & 65535;
-                d += h >>> 16;
-                th = wh[(j + 14) % 16];
-                tl = wl[(j + 14) % 16];
-                h = (th >>> 19 | tl << 32 - 19) ^ (tl >>> 61 - 32 | th << 32 - (61 - 32)) ^ th >>> 6;
-                l = (tl >>> 19 | th << 32 - 19) ^ (th >>> 61 - 32 | tl << 32 - (61 - 32)) ^ (tl >>> 6 | th << 32 - 6);
-                a += l & 65535;
-                b += l >>> 16;
-                c += h & 65535;
-                d += h >>> 16;
-                b += a >>> 16;
-                c += b >>> 16;
-                d += c >>> 16;
-                wh[j] = c & 65535 | d << 16;
-                wl[j] = a & 65535 | b << 16;
+            if (i2 % 16 === 15) {
+              for (j2 = 0; j2 < 16; j2++) {
+                h2 = wh[j2];
+                l2 = wl[j2];
+                a2 = l2 & 65535;
+                b2 = l2 >>> 16;
+                c2 = h2 & 65535;
+                d2 = h2 >>> 16;
+                h2 = wh[(j2 + 9) % 16];
+                l2 = wl[(j2 + 9) % 16];
+                a2 += l2 & 65535;
+                b2 += l2 >>> 16;
+                c2 += h2 & 65535;
+                d2 += h2 >>> 16;
+                th = wh[(j2 + 1) % 16];
+                tl = wl[(j2 + 1) % 16];
+                h2 = (th >>> 1 | tl << 32 - 1) ^ (th >>> 8 | tl << 32 - 8) ^ th >>> 7;
+                l2 = (tl >>> 1 | th << 32 - 1) ^ (tl >>> 8 | th << 32 - 8) ^ (tl >>> 7 | th << 32 - 7);
+                a2 += l2 & 65535;
+                b2 += l2 >>> 16;
+                c2 += h2 & 65535;
+                d2 += h2 >>> 16;
+                th = wh[(j2 + 14) % 16];
+                tl = wl[(j2 + 14) % 16];
+                h2 = (th >>> 19 | tl << 32 - 19) ^ (tl >>> 61 - 32 | th << 32 - (61 - 32)) ^ th >>> 6;
+                l2 = (tl >>> 19 | th << 32 - 19) ^ (th >>> 61 - 32 | tl << 32 - (61 - 32)) ^ (tl >>> 6 | th << 32 - 6);
+                a2 += l2 & 65535;
+                b2 += l2 >>> 16;
+                c2 += h2 & 65535;
+                d2 += h2 >>> 16;
+                b2 += a2 >>> 16;
+                c2 += b2 >>> 16;
+                d2 += c2 >>> 16;
+                wh[j2] = c2 & 65535 | d2 << 16;
+                wl[j2] = a2 & 65535 | b2 << 16;
               }
             }
           }
-          h = ah0;
-          l = al0;
-          a = l & 65535;
-          b = l >>> 16;
-          c = h & 65535;
-          d = h >>> 16;
-          h = hh[0];
-          l = hl[0];
-          a += l & 65535;
-          b += l >>> 16;
-          c += h & 65535;
-          d += h >>> 16;
-          b += a >>> 16;
-          c += b >>> 16;
-          d += c >>> 16;
-          hh[0] = ah0 = c & 65535 | d << 16;
-          hl[0] = al0 = a & 65535 | b << 16;
-          h = ah1;
-          l = al1;
-          a = l & 65535;
-          b = l >>> 16;
-          c = h & 65535;
-          d = h >>> 16;
-          h = hh[1];
-          l = hl[1];
-          a += l & 65535;
-          b += l >>> 16;
-          c += h & 65535;
-          d += h >>> 16;
-          b += a >>> 16;
-          c += b >>> 16;
-          d += c >>> 16;
-          hh[1] = ah1 = c & 65535 | d << 16;
-          hl[1] = al1 = a & 65535 | b << 16;
-          h = ah2;
-          l = al2;
-          a = l & 65535;
-          b = l >>> 16;
-          c = h & 65535;
-          d = h >>> 16;
-          h = hh[2];
-          l = hl[2];
-          a += l & 65535;
-          b += l >>> 16;
-          c += h & 65535;
-          d += h >>> 16;
-          b += a >>> 16;
-          c += b >>> 16;
-          d += c >>> 16;
-          hh[2] = ah2 = c & 65535 | d << 16;
-          hl[2] = al2 = a & 65535 | b << 16;
-          h = ah3;
-          l = al3;
-          a = l & 65535;
-          b = l >>> 16;
-          c = h & 65535;
-          d = h >>> 16;
-          h = hh[3];
-          l = hl[3];
-          a += l & 65535;
-          b += l >>> 16;
-          c += h & 65535;
-          d += h >>> 16;
-          b += a >>> 16;
-          c += b >>> 16;
-          d += c >>> 16;
-          hh[3] = ah3 = c & 65535 | d << 16;
-          hl[3] = al3 = a & 65535 | b << 16;
-          h = ah4;
-          l = al4;
-          a = l & 65535;
-          b = l >>> 16;
-          c = h & 65535;
-          d = h >>> 16;
-          h = hh[4];
-          l = hl[4];
-          a += l & 65535;
-          b += l >>> 16;
-          c += h & 65535;
-          d += h >>> 16;
-          b += a >>> 16;
-          c += b >>> 16;
-          d += c >>> 16;
-          hh[4] = ah4 = c & 65535 | d << 16;
-          hl[4] = al4 = a & 65535 | b << 16;
-          h = ah5;
-          l = al5;
-          a = l & 65535;
-          b = l >>> 16;
-          c = h & 65535;
-          d = h >>> 16;
-          h = hh[5];
-          l = hl[5];
-          a += l & 65535;
-          b += l >>> 16;
-          c += h & 65535;
-          d += h >>> 16;
-          b += a >>> 16;
-          c += b >>> 16;
-          d += c >>> 16;
-          hh[5] = ah5 = c & 65535 | d << 16;
-          hl[5] = al5 = a & 65535 | b << 16;
-          h = ah6;
-          l = al6;
-          a = l & 65535;
-          b = l >>> 16;
-          c = h & 65535;
-          d = h >>> 16;
-          h = hh[6];
-          l = hl[6];
-          a += l & 65535;
-          b += l >>> 16;
-          c += h & 65535;
-          d += h >>> 16;
-          b += a >>> 16;
-          c += b >>> 16;
-          d += c >>> 16;
-          hh[6] = ah6 = c & 65535 | d << 16;
-          hl[6] = al6 = a & 65535 | b << 16;
-          h = ah7;
-          l = al7;
-          a = l & 65535;
-          b = l >>> 16;
-          c = h & 65535;
-          d = h >>> 16;
-          h = hh[7];
-          l = hl[7];
-          a += l & 65535;
-          b += l >>> 16;
-          c += h & 65535;
-          d += h >>> 16;
-          b += a >>> 16;
-          c += b >>> 16;
-          d += c >>> 16;
-          hh[7] = ah7 = c & 65535 | d << 16;
-          hl[7] = al7 = a & 65535 | b << 16;
+          h2 = ah0;
+          l2 = al0;
+          a2 = l2 & 65535;
+          b2 = l2 >>> 16;
+          c2 = h2 & 65535;
+          d2 = h2 >>> 16;
+          h2 = hh[0];
+          l2 = hl[0];
+          a2 += l2 & 65535;
+          b2 += l2 >>> 16;
+          c2 += h2 & 65535;
+          d2 += h2 >>> 16;
+          b2 += a2 >>> 16;
+          c2 += b2 >>> 16;
+          d2 += c2 >>> 16;
+          hh[0] = ah0 = c2 & 65535 | d2 << 16;
+          hl[0] = al0 = a2 & 65535 | b2 << 16;
+          h2 = ah1;
+          l2 = al1;
+          a2 = l2 & 65535;
+          b2 = l2 >>> 16;
+          c2 = h2 & 65535;
+          d2 = h2 >>> 16;
+          h2 = hh[1];
+          l2 = hl[1];
+          a2 += l2 & 65535;
+          b2 += l2 >>> 16;
+          c2 += h2 & 65535;
+          d2 += h2 >>> 16;
+          b2 += a2 >>> 16;
+          c2 += b2 >>> 16;
+          d2 += c2 >>> 16;
+          hh[1] = ah1 = c2 & 65535 | d2 << 16;
+          hl[1] = al1 = a2 & 65535 | b2 << 16;
+          h2 = ah2;
+          l2 = al2;
+          a2 = l2 & 65535;
+          b2 = l2 >>> 16;
+          c2 = h2 & 65535;
+          d2 = h2 >>> 16;
+          h2 = hh[2];
+          l2 = hl[2];
+          a2 += l2 & 65535;
+          b2 += l2 >>> 16;
+          c2 += h2 & 65535;
+          d2 += h2 >>> 16;
+          b2 += a2 >>> 16;
+          c2 += b2 >>> 16;
+          d2 += c2 >>> 16;
+          hh[2] = ah2 = c2 & 65535 | d2 << 16;
+          hl[2] = al2 = a2 & 65535 | b2 << 16;
+          h2 = ah3;
+          l2 = al3;
+          a2 = l2 & 65535;
+          b2 = l2 >>> 16;
+          c2 = h2 & 65535;
+          d2 = h2 >>> 16;
+          h2 = hh[3];
+          l2 = hl[3];
+          a2 += l2 & 65535;
+          b2 += l2 >>> 16;
+          c2 += h2 & 65535;
+          d2 += h2 >>> 16;
+          b2 += a2 >>> 16;
+          c2 += b2 >>> 16;
+          d2 += c2 >>> 16;
+          hh[3] = ah3 = c2 & 65535 | d2 << 16;
+          hl[3] = al3 = a2 & 65535 | b2 << 16;
+          h2 = ah4;
+          l2 = al4;
+          a2 = l2 & 65535;
+          b2 = l2 >>> 16;
+          c2 = h2 & 65535;
+          d2 = h2 >>> 16;
+          h2 = hh[4];
+          l2 = hl[4];
+          a2 += l2 & 65535;
+          b2 += l2 >>> 16;
+          c2 += h2 & 65535;
+          d2 += h2 >>> 16;
+          b2 += a2 >>> 16;
+          c2 += b2 >>> 16;
+          d2 += c2 >>> 16;
+          hh[4] = ah4 = c2 & 65535 | d2 << 16;
+          hl[4] = al4 = a2 & 65535 | b2 << 16;
+          h2 = ah5;
+          l2 = al5;
+          a2 = l2 & 65535;
+          b2 = l2 >>> 16;
+          c2 = h2 & 65535;
+          d2 = h2 >>> 16;
+          h2 = hh[5];
+          l2 = hl[5];
+          a2 += l2 & 65535;
+          b2 += l2 >>> 16;
+          c2 += h2 & 65535;
+          d2 += h2 >>> 16;
+          b2 += a2 >>> 16;
+          c2 += b2 >>> 16;
+          d2 += c2 >>> 16;
+          hh[5] = ah5 = c2 & 65535 | d2 << 16;
+          hl[5] = al5 = a2 & 65535 | b2 << 16;
+          h2 = ah6;
+          l2 = al6;
+          a2 = l2 & 65535;
+          b2 = l2 >>> 16;
+          c2 = h2 & 65535;
+          d2 = h2 >>> 16;
+          h2 = hh[6];
+          l2 = hl[6];
+          a2 += l2 & 65535;
+          b2 += l2 >>> 16;
+          c2 += h2 & 65535;
+          d2 += h2 >>> 16;
+          b2 += a2 >>> 16;
+          c2 += b2 >>> 16;
+          d2 += c2 >>> 16;
+          hh[6] = ah6 = c2 & 65535 | d2 << 16;
+          hl[6] = al6 = a2 & 65535 | b2 << 16;
+          h2 = ah7;
+          l2 = al7;
+          a2 = l2 & 65535;
+          b2 = l2 >>> 16;
+          c2 = h2 & 65535;
+          d2 = h2 >>> 16;
+          h2 = hh[7];
+          l2 = hl[7];
+          a2 += l2 & 65535;
+          b2 += l2 >>> 16;
+          c2 += h2 & 65535;
+          d2 += h2 >>> 16;
+          b2 += a2 >>> 16;
+          c2 += b2 >>> 16;
+          d2 += c2 >>> 16;
+          hh[7] = ah7 = c2 & 65535 | d2 << 16;
+          hl[7] = al7 = a2 & 65535 | b2 << 16;
           pos += 128;
-          n -= 128;
+          n2 -= 128;
         }
-        return n;
+        return n2;
       }
-      function crypto_hash(out, m, n) {
-        var hh = new Int32Array(8), hl = new Int32Array(8), x = new Uint8Array(256), i, b = n;
+      function crypto_hash(out, m, n2) {
+        var hh = new Int32Array(8), hl = new Int32Array(8), x2 = new Uint8Array(256), i2, b2 = n2;
         hh[0] = 1779033703;
         hh[1] = 3144134277;
         hh[2] = 1013904242;
@@ -16531,218 +16167,218 @@ var require_nacl_fast = __commonJS({
         hl[5] = 725511199;
         hl[6] = 4215389547;
         hl[7] = 327033209;
-        crypto_hashblocks_hl(hh, hl, m, n);
-        n %= 128;
-        for (i = 0; i < n; i++)
-          x[i] = m[b - n + i];
-        x[n] = 128;
-        n = 256 - 128 * (n < 112 ? 1 : 0);
-        x[n - 9] = 0;
-        ts64(x, n - 8, b / 536870912 | 0, b << 3);
-        crypto_hashblocks_hl(hh, hl, x, n);
-        for (i = 0; i < 8; i++)
-          ts64(out, 8 * i, hh[i], hl[i]);
+        crypto_hashblocks_hl(hh, hl, m, n2);
+        n2 %= 128;
+        for (i2 = 0; i2 < n2; i2++)
+          x2[i2] = m[b2 - n2 + i2];
+        x2[n2] = 128;
+        n2 = 256 - 128 * (n2 < 112 ? 1 : 0);
+        x2[n2 - 9] = 0;
+        ts64(x2, n2 - 8, b2 / 536870912 | 0, b2 << 3);
+        crypto_hashblocks_hl(hh, hl, x2, n2);
+        for (i2 = 0; i2 < 8; i2++)
+          ts64(out, 8 * i2, hh[i2], hl[i2]);
         return 0;
       }
-      function add(p, q2) {
-        var a = gf(), b = gf(), c = gf(), d = gf(), e = gf(), f = gf(), g = gf(), h = gf(), t = gf();
-        Z(a, p[1], p[0]);
-        Z(t, q2[1], q2[0]);
-        M(a, a, t);
-        A(b, p[0], p[1]);
-        A(t, q2[0], q2[1]);
-        M(b, b, t);
-        M(c, p[3], q2[3]);
-        M(c, c, D2);
-        M(d, p[2], q2[2]);
-        A(d, d, d);
-        Z(e, b, a);
-        Z(f, d, c);
-        A(g, d, c);
-        A(h, b, a);
-        M(p[0], e, f);
-        M(p[1], h, g);
-        M(p[2], g, f);
-        M(p[3], e, h);
+      function add(p2, q3) {
+        var a2 = gf(), b2 = gf(), c2 = gf(), d2 = gf(), e = gf(), f2 = gf(), g2 = gf(), h2 = gf(), t2 = gf();
+        Z2(a2, p2[1], p2[0]);
+        Z2(t2, q3[1], q3[0]);
+        M2(a2, a2, t2);
+        A2(b2, p2[0], p2[1]);
+        A2(t2, q3[0], q3[1]);
+        M2(b2, b2, t2);
+        M2(c2, p2[3], q3[3]);
+        M2(c2, c2, D22);
+        M2(d2, p2[2], q3[2]);
+        A2(d2, d2, d2);
+        Z2(e, b2, a2);
+        Z2(f2, d2, c2);
+        A2(g2, d2, c2);
+        A2(h2, b2, a2);
+        M2(p2[0], e, f2);
+        M2(p2[1], h2, g2);
+        M2(p2[2], g2, f2);
+        M2(p2[3], e, h2);
       }
-      function cswap(p, q2, b) {
-        var i;
-        for (i = 0; i < 4; i++) {
-          sel25519(p[i], q2[i], b);
+      function cswap(p2, q3, b2) {
+        var i2;
+        for (i2 = 0; i2 < 4; i2++) {
+          sel25519(p2[i2], q3[i2], b2);
         }
       }
-      function pack(r, p) {
+      function pack(r2, p2) {
         var tx = gf(), ty = gf(), zi = gf();
-        inv25519(zi, p[2]);
-        M(tx, p[0], zi);
-        M(ty, p[1], zi);
-        pack25519(r, ty);
-        r[31] ^= par25519(tx) << 7;
+        inv25519(zi, p2[2]);
+        M2(tx, p2[0], zi);
+        M2(ty, p2[1], zi);
+        pack25519(r2, ty);
+        r2[31] ^= par25519(tx) << 7;
       }
-      function scalarmult(p, q2, s) {
-        var b, i;
-        set25519(p[0], gf0);
-        set25519(p[1], gf1);
-        set25519(p[2], gf1);
-        set25519(p[3], gf0);
-        for (i = 255; i >= 0; --i) {
-          b = s[i / 8 | 0] >> (i & 7) & 1;
-          cswap(p, q2, b);
-          add(q2, p);
-          add(p, p);
-          cswap(p, q2, b);
+      function scalarmult(p2, q3, s2) {
+        var b2, i2;
+        set25519(p2[0], gf0);
+        set25519(p2[1], gf1);
+        set25519(p2[2], gf1);
+        set25519(p2[3], gf0);
+        for (i2 = 255; i2 >= 0; --i2) {
+          b2 = s2[i2 / 8 | 0] >> (i2 & 7) & 1;
+          cswap(p2, q3, b2);
+          add(q3, p2);
+          add(p2, p2);
+          cswap(p2, q3, b2);
         }
       }
-      function scalarbase(p, s) {
-        var q2 = [gf(), gf(), gf(), gf()];
-        set25519(q2[0], X);
-        set25519(q2[1], Y);
-        set25519(q2[2], gf1);
-        M(q2[3], X, Y);
-        scalarmult(p, q2, s);
+      function scalarbase(p2, s2) {
+        var q3 = [gf(), gf(), gf(), gf()];
+        set25519(q3[0], X2);
+        set25519(q3[1], Y2);
+        set25519(q3[2], gf1);
+        M2(q3[3], X2, Y2);
+        scalarmult(p2, q3, s2);
       }
       function crypto_sign_keypair(pk, sk, seeded) {
-        var d = new Uint8Array(64);
-        var p = [gf(), gf(), gf(), gf()];
-        var i;
+        var d2 = new Uint8Array(64);
+        var p2 = [gf(), gf(), gf(), gf()];
+        var i2;
         if (!seeded)
           randombytes(sk, 32);
-        crypto_hash(d, sk, 32);
-        d[0] &= 248;
-        d[31] &= 127;
-        d[31] |= 64;
-        scalarbase(p, d);
-        pack(pk, p);
-        for (i = 0; i < 32; i++)
-          sk[i + 32] = pk[i];
+        crypto_hash(d2, sk, 32);
+        d2[0] &= 248;
+        d2[31] &= 127;
+        d2[31] |= 64;
+        scalarbase(p2, d2);
+        pack(pk, p2);
+        for (i2 = 0; i2 < 32; i2++)
+          sk[i2 + 32] = pk[i2];
         return 0;
       }
-      var L = new Float64Array([237, 211, 245, 92, 26, 99, 18, 88, 214, 156, 247, 162, 222, 249, 222, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16]);
-      function modL(r, x) {
-        var carry, i, j, k;
-        for (i = 63; i >= 32; --i) {
+      var L2 = new Float64Array([237, 211, 245, 92, 26, 99, 18, 88, 214, 156, 247, 162, 222, 249, 222, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16]);
+      function modL(r2, x2) {
+        var carry, i2, j2, k2;
+        for (i2 = 63; i2 >= 32; --i2) {
           carry = 0;
-          for (j = i - 32, k = i - 12; j < k; ++j) {
-            x[j] += carry - 16 * x[i] * L[j - (i - 32)];
-            carry = x[j] + 128 >> 8;
-            x[j] -= carry * 256;
+          for (j2 = i2 - 32, k2 = i2 - 12; j2 < k2; ++j2) {
+            x2[j2] += carry - 16 * x2[i2] * L2[j2 - (i2 - 32)];
+            carry = x2[j2] + 128 >> 8;
+            x2[j2] -= carry * 256;
           }
-          x[j] += carry;
-          x[i] = 0;
+          x2[j2] += carry;
+          x2[i2] = 0;
         }
         carry = 0;
-        for (j = 0; j < 32; j++) {
-          x[j] += carry - (x[31] >> 4) * L[j];
-          carry = x[j] >> 8;
-          x[j] &= 255;
+        for (j2 = 0; j2 < 32; j2++) {
+          x2[j2] += carry - (x2[31] >> 4) * L2[j2];
+          carry = x2[j2] >> 8;
+          x2[j2] &= 255;
         }
-        for (j = 0; j < 32; j++)
-          x[j] -= carry * L[j];
-        for (i = 0; i < 32; i++) {
-          x[i + 1] += x[i] >> 8;
-          r[i] = x[i] & 255;
+        for (j2 = 0; j2 < 32; j2++)
+          x2[j2] -= carry * L2[j2];
+        for (i2 = 0; i2 < 32; i2++) {
+          x2[i2 + 1] += x2[i2] >> 8;
+          r2[i2] = x2[i2] & 255;
         }
       }
-      function reduce(r) {
-        var x = new Float64Array(64), i;
-        for (i = 0; i < 64; i++)
-          x[i] = r[i];
-        for (i = 0; i < 64; i++)
-          r[i] = 0;
-        modL(r, x);
+      function reduce(r2) {
+        var x2 = new Float64Array(64), i2;
+        for (i2 = 0; i2 < 64; i2++)
+          x2[i2] = r2[i2];
+        for (i2 = 0; i2 < 64; i2++)
+          r2[i2] = 0;
+        modL(r2, x2);
       }
-      function crypto_sign(sm, m, n, sk) {
-        var d = new Uint8Array(64), h = new Uint8Array(64), r = new Uint8Array(64);
-        var i, j, x = new Float64Array(64);
-        var p = [gf(), gf(), gf(), gf()];
-        crypto_hash(d, sk, 32);
-        d[0] &= 248;
-        d[31] &= 127;
-        d[31] |= 64;
-        var smlen = n + 64;
-        for (i = 0; i < n; i++)
-          sm[64 + i] = m[i];
-        for (i = 0; i < 32; i++)
-          sm[32 + i] = d[32 + i];
-        crypto_hash(r, sm.subarray(32), n + 32);
-        reduce(r);
-        scalarbase(p, r);
-        pack(sm, p);
-        for (i = 32; i < 64; i++)
-          sm[i] = sk[i];
-        crypto_hash(h, sm, n + 64);
-        reduce(h);
-        for (i = 0; i < 64; i++)
-          x[i] = 0;
-        for (i = 0; i < 32; i++)
-          x[i] = r[i];
-        for (i = 0; i < 32; i++) {
-          for (j = 0; j < 32; j++) {
-            x[i + j] += h[i] * d[j];
+      function crypto_sign(sm, m, n2, sk) {
+        var d2 = new Uint8Array(64), h2 = new Uint8Array(64), r2 = new Uint8Array(64);
+        var i2, j2, x2 = new Float64Array(64);
+        var p2 = [gf(), gf(), gf(), gf()];
+        crypto_hash(d2, sk, 32);
+        d2[0] &= 248;
+        d2[31] &= 127;
+        d2[31] |= 64;
+        var smlen = n2 + 64;
+        for (i2 = 0; i2 < n2; i2++)
+          sm[64 + i2] = m[i2];
+        for (i2 = 0; i2 < 32; i2++)
+          sm[32 + i2] = d2[32 + i2];
+        crypto_hash(r2, sm.subarray(32), n2 + 32);
+        reduce(r2);
+        scalarbase(p2, r2);
+        pack(sm, p2);
+        for (i2 = 32; i2 < 64; i2++)
+          sm[i2] = sk[i2];
+        crypto_hash(h2, sm, n2 + 64);
+        reduce(h2);
+        for (i2 = 0; i2 < 64; i2++)
+          x2[i2] = 0;
+        for (i2 = 0; i2 < 32; i2++)
+          x2[i2] = r2[i2];
+        for (i2 = 0; i2 < 32; i2++) {
+          for (j2 = 0; j2 < 32; j2++) {
+            x2[i2 + j2] += h2[i2] * d2[j2];
           }
         }
-        modL(sm.subarray(32), x);
+        modL(sm.subarray(32), x2);
         return smlen;
       }
-      function unpackneg(r, p) {
-        var t = gf(), chk = gf(), num = gf(), den = gf(), den2 = gf(), den4 = gf(), den6 = gf();
-        set25519(r[2], gf1);
-        unpack25519(r[1], p);
-        S(num, r[1]);
-        M(den, num, D);
-        Z(num, num, r[2]);
-        A(den, r[2], den);
-        S(den2, den);
-        S(den4, den2);
-        M(den6, den4, den2);
-        M(t, den6, num);
-        M(t, t, den);
-        pow2523(t, t);
-        M(t, t, num);
-        M(t, t, den);
-        M(t, t, den);
-        M(r[0], t, den);
-        S(chk, r[0]);
-        M(chk, chk, den);
+      function unpackneg(r2, p2) {
+        var t2 = gf(), chk = gf(), num = gf(), den = gf(), den2 = gf(), den4 = gf(), den6 = gf();
+        set25519(r2[2], gf1);
+        unpack25519(r2[1], p2);
+        S2(num, r2[1]);
+        M2(den, num, D2);
+        Z2(num, num, r2[2]);
+        A2(den, r2[2], den);
+        S2(den2, den);
+        S2(den4, den2);
+        M2(den6, den4, den2);
+        M2(t2, den6, num);
+        M2(t2, t2, den);
+        pow2523(t2, t2);
+        M2(t2, t2, num);
+        M2(t2, t2, den);
+        M2(t2, t2, den);
+        M2(r2[0], t2, den);
+        S2(chk, r2[0]);
+        M2(chk, chk, den);
         if (neq25519(chk, num))
-          M(r[0], r[0], I);
-        S(chk, r[0]);
-        M(chk, chk, den);
+          M2(r2[0], r2[0], I2);
+        S2(chk, r2[0]);
+        M2(chk, chk, den);
         if (neq25519(chk, num))
           return -1;
-        if (par25519(r[0]) === p[31] >> 7)
-          Z(r[0], gf0, r[0]);
-        M(r[3], r[0], r[1]);
+        if (par25519(r2[0]) === p2[31] >> 7)
+          Z2(r2[0], gf0, r2[0]);
+        M2(r2[3], r2[0], r2[1]);
         return 0;
       }
-      function crypto_sign_open(m, sm, n, pk) {
-        var i, mlen;
-        var t = new Uint8Array(32), h = new Uint8Array(64);
-        var p = [gf(), gf(), gf(), gf()], q2 = [gf(), gf(), gf(), gf()];
+      function crypto_sign_open(m, sm, n2, pk) {
+        var i2, mlen;
+        var t2 = new Uint8Array(32), h2 = new Uint8Array(64);
+        var p2 = [gf(), gf(), gf(), gf()], q3 = [gf(), gf(), gf(), gf()];
         mlen = -1;
-        if (n < 64)
+        if (n2 < 64)
           return -1;
-        if (unpackneg(q2, pk))
+        if (unpackneg(q3, pk))
           return -1;
-        for (i = 0; i < n; i++)
-          m[i] = sm[i];
-        for (i = 0; i < 32; i++)
-          m[i + 32] = pk[i];
-        crypto_hash(h, m, n);
-        reduce(h);
-        scalarmult(p, q2, h);
-        scalarbase(q2, sm.subarray(32));
-        add(p, q2);
-        pack(t, p);
-        n -= 64;
-        if (crypto_verify_32(sm, 0, t, 0)) {
-          for (i = 0; i < n; i++)
-            m[i] = 0;
+        for (i2 = 0; i2 < n2; i2++)
+          m[i2] = sm[i2];
+        for (i2 = 0; i2 < 32; i2++)
+          m[i2 + 32] = pk[i2];
+        crypto_hash(h2, m, n2);
+        reduce(h2);
+        scalarmult(p2, q3, h2);
+        scalarbase(q3, sm.subarray(32));
+        add(p2, q3);
+        pack(t2, p2);
+        n2 -= 64;
+        if (crypto_verify_32(sm, 0, t2, 0)) {
+          for (i2 = 0; i2 < n2; i2++)
+            m[i2] = 0;
           return -1;
         }
-        for (i = 0; i < n; i++)
-          m[i] = sm[i + 64];
-        mlen = n;
+        for (i2 = 0; i2 < n2; i2++)
+          m[i2] = sm[i2 + 64];
+        mlen = n2;
         return mlen;
       }
       var crypto_secretbox_KEYBYTES = 32, crypto_secretbox_NONCEBYTES = 24, crypto_secretbox_ZEROBYTES = 32, crypto_secretbox_BOXZEROBYTES = 16, crypto_scalarmult_BYTES = 32, crypto_scalarmult_SCALARBYTES = 32, crypto_box_PUBLICKEYBYTES = 32, crypto_box_SECRETKEYBYTES = 32, crypto_box_BEFORENMBYTES = 32, crypto_box_NONCEBYTES = crypto_secretbox_NONCEBYTES, crypto_box_ZEROBYTES = crypto_secretbox_ZEROBYTES, crypto_box_BOXZEROBYTES = crypto_secretbox_BOXZEROBYTES, crypto_sign_BYTES = 64, crypto_sign_PUBLICKEYBYTES = 32, crypto_sign_SECRETKEYBYTES = 64, crypto_sign_SEEDBYTES = 32, crypto_hash_BYTES = 64;
@@ -16787,10 +16423,10 @@ var require_nacl_fast = __commonJS({
         crypto_sign_SEEDBYTES,
         crypto_hash_BYTES
       };
-      function checkLengths(k, n) {
-        if (k.length !== crypto_secretbox_KEYBYTES)
+      function checkLengths(k2, n2) {
+        if (k2.length !== crypto_secretbox_KEYBYTES)
           throw new Error("bad key size");
-        if (n.length !== crypto_secretbox_NONCEBYTES)
+        if (n2.length !== crypto_secretbox_NONCEBYTES)
           throw new Error("bad nonce size");
       }
       function checkBoxLengths(pk, sk) {
@@ -16800,15 +16436,15 @@ var require_nacl_fast = __commonJS({
           throw new Error("bad secret key size");
       }
       function checkArrayTypes() {
-        var t, i;
-        for (i = 0; i < arguments.length; i++) {
-          if ((t = Object.prototype.toString.call(arguments[i])) !== "[object Uint8Array]")
-            throw new TypeError("unexpected type " + t + ", use Uint8Array");
+        var t2, i2;
+        for (i2 = 0; i2 < arguments.length; i2++) {
+          if ((t2 = Object.prototype.toString.call(arguments[i2])) !== "[object Uint8Array]")
+            throw new TypeError("unexpected type " + t2 + ", use Uint8Array");
         }
       }
       function cleanup(arr) {
-        for (var i = 0; i < arr.length; i++)
-          arr[i] = 0;
+        for (var i2 = 0; i2 < arr.length; i2++)
+          arr[i2] = 0;
       }
       if (!nacl.util) {
         nacl.util = {};
@@ -16816,72 +16452,72 @@ var require_nacl_fast = __commonJS({
           throw new Error("nacl.util moved into separate package: https://github.com/dchest/tweetnacl-util-js");
         };
       }
-      nacl.randomBytes = function(n) {
-        var b = new Uint8Array(n);
-        randombytes(b, n);
-        return b;
+      nacl.randomBytes = function(n2) {
+        var b2 = new Uint8Array(n2);
+        randombytes(b2, n2);
+        return b2;
       };
       nacl.secretbox = function(msg, nonce, key) {
         checkArrayTypes(msg, nonce, key);
         checkLengths(key, nonce);
         var m = new Uint8Array(crypto_secretbox_ZEROBYTES + msg.length);
-        var c = new Uint8Array(m.length);
-        for (var i = 0; i < msg.length; i++)
-          m[i + crypto_secretbox_ZEROBYTES] = msg[i];
-        crypto_secretbox(c, m, m.length, nonce, key);
-        return c.subarray(crypto_secretbox_BOXZEROBYTES);
+        var c2 = new Uint8Array(m.length);
+        for (var i2 = 0; i2 < msg.length; i2++)
+          m[i2 + crypto_secretbox_ZEROBYTES] = msg[i2];
+        crypto_secretbox(c2, m, m.length, nonce, key);
+        return c2.subarray(crypto_secretbox_BOXZEROBYTES);
       };
       nacl.secretbox.open = function(box, nonce, key) {
         checkArrayTypes(box, nonce, key);
         checkLengths(key, nonce);
-        var c = new Uint8Array(crypto_secretbox_BOXZEROBYTES + box.length);
-        var m = new Uint8Array(c.length);
-        for (var i = 0; i < box.length; i++)
-          c[i + crypto_secretbox_BOXZEROBYTES] = box[i];
-        if (c.length < 32)
+        var c2 = new Uint8Array(crypto_secretbox_BOXZEROBYTES + box.length);
+        var m = new Uint8Array(c2.length);
+        for (var i2 = 0; i2 < box.length; i2++)
+          c2[i2 + crypto_secretbox_BOXZEROBYTES] = box[i2];
+        if (c2.length < 32)
           return false;
-        if (crypto_secretbox_open(m, c, c.length, nonce, key) !== 0)
+        if (crypto_secretbox_open(m, c2, c2.length, nonce, key) !== 0)
           return false;
         return m.subarray(crypto_secretbox_ZEROBYTES);
       };
       nacl.secretbox.keyLength = crypto_secretbox_KEYBYTES;
       nacl.secretbox.nonceLength = crypto_secretbox_NONCEBYTES;
       nacl.secretbox.overheadLength = crypto_secretbox_BOXZEROBYTES;
-      nacl.scalarMult = function(n, p) {
-        checkArrayTypes(n, p);
-        if (n.length !== crypto_scalarmult_SCALARBYTES)
+      nacl.scalarMult = function(n2, p2) {
+        checkArrayTypes(n2, p2);
+        if (n2.length !== crypto_scalarmult_SCALARBYTES)
           throw new Error("bad n size");
-        if (p.length !== crypto_scalarmult_BYTES)
+        if (p2.length !== crypto_scalarmult_BYTES)
           throw new Error("bad p size");
-        var q2 = new Uint8Array(crypto_scalarmult_BYTES);
-        crypto_scalarmult(q2, n, p);
-        return q2;
+        var q3 = new Uint8Array(crypto_scalarmult_BYTES);
+        crypto_scalarmult(q3, n2, p2);
+        return q3;
       };
-      nacl.scalarMult.base = function(n) {
-        checkArrayTypes(n);
-        if (n.length !== crypto_scalarmult_SCALARBYTES)
+      nacl.scalarMult.base = function(n2) {
+        checkArrayTypes(n2);
+        if (n2.length !== crypto_scalarmult_SCALARBYTES)
           throw new Error("bad n size");
-        var q2 = new Uint8Array(crypto_scalarmult_BYTES);
-        crypto_scalarmult_base(q2, n);
-        return q2;
+        var q3 = new Uint8Array(crypto_scalarmult_BYTES);
+        crypto_scalarmult_base(q3, n2);
+        return q3;
       };
       nacl.scalarMult.scalarLength = crypto_scalarmult_SCALARBYTES;
       nacl.scalarMult.groupElementLength = crypto_scalarmult_BYTES;
       nacl.box = function(msg, nonce, publicKey, secretKey) {
-        var k = nacl.box.before(publicKey, secretKey);
-        return nacl.secretbox(msg, nonce, k);
+        var k2 = nacl.box.before(publicKey, secretKey);
+        return nacl.secretbox(msg, nonce, k2);
       };
       nacl.box.before = function(publicKey, secretKey) {
         checkArrayTypes(publicKey, secretKey);
         checkBoxLengths(publicKey, secretKey);
-        var k = new Uint8Array(crypto_box_BEFORENMBYTES);
-        crypto_box_beforenm(k, publicKey, secretKey);
-        return k;
+        var k2 = new Uint8Array(crypto_box_BEFORENMBYTES);
+        crypto_box_beforenm(k2, publicKey, secretKey);
+        return k2;
       };
       nacl.box.after = nacl.secretbox;
       nacl.box.open = function(msg, nonce, publicKey, secretKey) {
-        var k = nacl.box.before(publicKey, secretKey);
-        return nacl.secretbox.open(msg, nonce, k);
+        var k2 = nacl.box.before(publicKey, secretKey);
+        return nacl.secretbox.open(msg, nonce, k2);
       };
       nacl.box.open.after = nacl.secretbox.open;
       nacl.box.keyPair = function() {
@@ -16922,15 +16558,15 @@ var require_nacl_fast = __commonJS({
         if (mlen < 0)
           return null;
         var m = new Uint8Array(mlen);
-        for (var i = 0; i < m.length; i++)
-          m[i] = tmp[i];
+        for (var i2 = 0; i2 < m.length; i2++)
+          m[i2] = tmp[i2];
         return m;
       };
       nacl.sign.detached = function(msg, secretKey) {
         var signedMsg = nacl.sign(msg, secretKey);
         var sig = new Uint8Array(crypto_sign_BYTES);
-        for (var i = 0; i < sig.length; i++)
-          sig[i] = signedMsg[i];
+        for (var i2 = 0; i2 < sig.length; i2++)
+          sig[i2] = signedMsg[i2];
         return sig;
       };
       nacl.sign.detached.verify = function(msg, sig, publicKey) {
@@ -16941,11 +16577,11 @@ var require_nacl_fast = __commonJS({
           throw new Error("bad public key size");
         var sm = new Uint8Array(crypto_sign_BYTES + msg.length);
         var m = new Uint8Array(crypto_sign_BYTES + msg.length);
-        var i;
-        for (i = 0; i < crypto_sign_BYTES; i++)
-          sm[i] = sig[i];
-        for (i = 0; i < msg.length; i++)
-          sm[i + crypto_sign_BYTES] = msg[i];
+        var i2;
+        for (i2 = 0; i2 < crypto_sign_BYTES; i2++)
+          sm[i2] = sig[i2];
+        for (i2 = 0; i2 < msg.length; i2++)
+          sm[i2 + crypto_sign_BYTES] = msg[i2];
         return crypto_sign_open(m, sm, sm.length, publicKey) >= 0;
       };
       nacl.sign.keyPair = function() {
@@ -16959,8 +16595,8 @@ var require_nacl_fast = __commonJS({
         if (secretKey.length !== crypto_sign_SECRETKEYBYTES)
           throw new Error("bad secret key size");
         var pk = new Uint8Array(crypto_sign_PUBLICKEYBYTES);
-        for (var i = 0; i < pk.length; i++)
-          pk[i] = secretKey[32 + i];
+        for (var i2 = 0; i2 < pk.length; i2++)
+          pk[i2] = secretKey[32 + i2];
         return { publicKey: pk, secretKey: new Uint8Array(secretKey) };
       };
       nacl.sign.keyPair.fromSeed = function(seed) {
@@ -16969,8 +16605,8 @@ var require_nacl_fast = __commonJS({
           throw new Error("bad seed size");
         var pk = new Uint8Array(crypto_sign_PUBLICKEYBYTES);
         var sk = new Uint8Array(crypto_sign_SECRETKEYBYTES);
-        for (var i = 0; i < 32; i++)
-          sk[i] = seed[i];
+        for (var i2 = 0; i2 < 32; i2++)
+          sk[i2] = seed[i2];
         crypto_sign_keypair(pk, sk, true);
         return { publicKey: pk, secretKey: sk };
       };
@@ -16980,43 +16616,43 @@ var require_nacl_fast = __commonJS({
       nacl.sign.signatureLength = crypto_sign_BYTES;
       nacl.hash = function(msg) {
         checkArrayTypes(msg);
-        var h = new Uint8Array(crypto_hash_BYTES);
-        crypto_hash(h, msg, msg.length);
-        return h;
+        var h2 = new Uint8Array(crypto_hash_BYTES);
+        crypto_hash(h2, msg, msg.length);
+        return h2;
       };
       nacl.hash.hashLength = crypto_hash_BYTES;
-      nacl.verify = function(x, y) {
-        checkArrayTypes(x, y);
-        if (x.length === 0 || y.length === 0)
+      nacl.verify = function(x2, y2) {
+        checkArrayTypes(x2, y2);
+        if (x2.length === 0 || y2.length === 0)
           return false;
-        if (x.length !== y.length)
+        if (x2.length !== y2.length)
           return false;
-        return vn(x, 0, y, 0, x.length) === 0 ? true : false;
+        return vn2(x2, 0, y2, 0, x2.length) === 0 ? true : false;
       };
-      nacl.setPRNG = function(fn) {
-        randombytes = fn;
+      nacl.setPRNG = function(fn2) {
+        randombytes = fn2;
       };
       (function() {
         var crypto = typeof self !== "undefined" ? self.crypto || self.msCrypto : null;
         if (crypto && crypto.getRandomValues) {
           var QUOTA = 65536;
-          nacl.setPRNG(function(x, n) {
-            var i, v = new Uint8Array(n);
-            for (i = 0; i < n; i += QUOTA) {
-              crypto.getRandomValues(v.subarray(i, i + Math.min(n - i, QUOTA)));
+          nacl.setPRNG(function(x2, n2) {
+            var i2, v2 = new Uint8Array(n2);
+            for (i2 = 0; i2 < n2; i2 += QUOTA) {
+              crypto.getRandomValues(v2.subarray(i2, i2 + Math.min(n2 - i2, QUOTA)));
             }
-            for (i = 0; i < n; i++)
-              x[i] = v[i];
-            cleanup(v);
+            for (i2 = 0; i2 < n2; i2++)
+              x2[i2] = v2[i2];
+            cleanup(v2);
           });
         } else if (typeof __require !== "undefined") {
           crypto = __require("crypto");
           if (crypto && crypto.randomBytes) {
-            nacl.setPRNG(function(x, n) {
-              var i, v = crypto.randomBytes(n);
-              for (i = 0; i < n; i++)
-                x[i] = v[i];
-              cleanup(v);
+            nacl.setPRNG(function(x2, n2) {
+              var i2, v2 = crypto.randomBytes(n2);
+              for (i2 = 0; i2 < n2; i2++)
+                x2[i2] = v2[i2];
+              cleanup(v2);
             });
           }
         }
@@ -17127,7 +16763,7 @@ var require_utils = __commonJS({
       var clen = CIPHER_LEN[cipher];
       assert.object(clen, "supported cipher");
       salt = salt.slice(0, PKCS5_SALT_LEN);
-      var D, D_prev, bufs;
+      var D2, D_prev, bufs;
       var material = Buffer2.alloc(0);
       while (material.length < clen.key + clen.iv) {
         bufs = [];
@@ -17135,11 +16771,11 @@ var require_utils = __commonJS({
           bufs.push(D_prev);
         bufs.push(passphrase);
         bufs.push(salt);
-        D = Buffer2.concat(bufs);
-        for (var j = 0; j < count2; ++j)
-          D = crypto.createHash("md5").update(D).digest();
-        material = Buffer2.concat([material, D]);
-        D_prev = D;
+        D2 = Buffer2.concat(bufs);
+        for (var j2 = 0; j2 < count2; ++j2)
+          D2 = crypto.createHash("md5").update(D2).digest();
+        material = Buffer2.concat([material, D2]);
+        D_prev = D2;
       }
       return {
         key: material.slice(0, clen.key),
@@ -17150,43 +16786,43 @@ var require_utils = __commonJS({
       var hkey = Buffer2.alloc(salt.length + 4);
       salt.copy(hkey);
       var gen = 0, ts = [];
-      var i = 1;
+      var i2 = 1;
       while (gen < size2) {
-        var t = T(i++);
-        gen += t.length;
-        ts.push(t);
+        var t2 = T(i2++);
+        gen += t2.length;
+        ts.push(t2);
       }
       return Buffer2.concat(ts).slice(0, size2);
-      function T(I) {
-        hkey.writeUInt32BE(I, hkey.length - 4);
+      function T(I2) {
+        hkey.writeUInt32BE(I2, hkey.length - 4);
         var hmac = crypto.createHmac(hashAlg, passphrase);
         hmac.update(hkey);
         var Ti = hmac.digest();
         var Uc = Ti;
-        var c = 1;
-        while (c++ < iterations) {
+        var c2 = 1;
+        while (c2++ < iterations) {
           hmac = crypto.createHmac(hashAlg, passphrase);
           hmac.update(Uc);
           Uc = hmac.digest();
-          for (var x = 0; x < Ti.length; ++x)
-            Ti[x] ^= Uc[x];
+          for (var x2 = 0; x2 < Ti.length; ++x2)
+            Ti[x2] ^= Uc[x2];
         }
         return Ti;
       }
     }
     function countZeros(buf) {
-      var o = 0, obit = 8;
-      while (o < buf.length) {
+      var o2 = 0, obit = 8;
+      while (o2 < buf.length) {
         var mask = 1 << obit;
-        if ((buf[o] & mask) === mask)
+        if ((buf[o2] & mask) === mask)
           break;
         obit--;
         if (obit < 0) {
-          o++;
+          o2++;
           obit = 8;
         }
       }
-      return o * 8 + (8 - obit) - 1;
+      return o2 * 8 + (8 - obit) - 1;
     }
     function bufferSplit(buf, chr) {
       assert.buffer(buf);
@@ -17194,15 +16830,15 @@ var require_utils = __commonJS({
       var parts = [];
       var lastPart = 0;
       var matches = 0;
-      for (var i = 0; i < buf.length; ++i) {
-        if (buf[i] === chr.charCodeAt(matches))
+      for (var i2 = 0; i2 < buf.length; ++i2) {
+        if (buf[i2] === chr.charCodeAt(matches))
           ++matches;
-        else if (buf[i] === chr.charCodeAt(0))
+        else if (buf[i2] === chr.charCodeAt(0))
           matches = 1;
         else
           matches = 0;
         if (matches >= chr.length) {
-          var newPart = i + 1;
+          var newPart = i2 + 1;
           parts.push(buf.slice(lastPart, newPart - matches));
           lastPart = newPart;
           matches = 0;
@@ -17231,10 +16867,10 @@ var require_utils = __commonJS({
         if (!addZero)
           return buf;
       }
-      var b = Buffer2.alloc(buf.length + 1);
-      b[0] = 0;
-      buf.copy(b, 1);
-      return b;
+      var b2 = Buffer2.alloc(buf.length + 1);
+      b2[0] = 0;
+      buf.copy(b2, 1);
+      return b2;
     }
     function readBitString(der, tag) {
       if (tag === void 0)
@@ -17246,20 +16882,20 @@ var require_utils = __commonJS({
     function writeBitString(der, buf, tag) {
       if (tag === void 0)
         tag = asn1.Ber.BitString;
-      var b = Buffer2.alloc(buf.length + 1);
-      b[0] = 0;
-      buf.copy(b, 1);
-      der.writeBuffer(b, tag);
+      var b2 = Buffer2.alloc(buf.length + 1);
+      b2[0] = 0;
+      buf.copy(b2, 1);
+      der.writeBuffer(b2, tag);
     }
     function mpNormalize(buf) {
       assert.buffer(buf);
       while (buf.length > 1 && buf[0] === 0 && (buf[1] & 128) === 0)
         buf = buf.slice(1);
       if ((buf[0] & 128) === 128) {
-        var b = Buffer2.alloc(buf.length + 1);
-        b[0] = 0;
-        buf.copy(b, 1);
-        buf = b;
+        var b2 = Buffer2.alloc(buf.length + 1);
+        b2[0] = 0;
+        buf.copy(b2, 1);
+        buf = b2;
       }
       return buf;
     }
@@ -17277,10 +16913,10 @@ var require_utils = __commonJS({
         buf = buf.slice(1);
       }
       while (buf.length < len) {
-        var b = Buffer2.alloc(buf.length + 1);
-        b[0] = 0;
-        buf.copy(b, 1);
-        buf = b;
+        var b2 = Buffer2.alloc(buf.length + 1);
+        b2[0] = 0;
+        buf.copy(b2, 1);
+        buf = b2;
       }
       return buf;
     }
@@ -17289,42 +16925,42 @@ var require_utils = __commonJS({
       buf = mpNormalize(buf);
       return buf;
     }
-    function calculateDSAPublic(g, p, x) {
-      assert.buffer(g);
-      assert.buffer(p);
-      assert.buffer(x);
-      g = new jsbn(g);
-      p = new jsbn(p);
-      x = new jsbn(x);
-      var y = g.modPow(x, p);
-      var ybuf = bigintToMpBuf(y);
+    function calculateDSAPublic(g2, p2, x2) {
+      assert.buffer(g2);
+      assert.buffer(p2);
+      assert.buffer(x2);
+      g2 = new jsbn(g2);
+      p2 = new jsbn(p2);
+      x2 = new jsbn(x2);
+      var y2 = g2.modPow(x2, p2);
+      var ybuf = bigintToMpBuf(y2);
       return ybuf;
     }
-    function calculateED25519Public(k) {
-      assert.buffer(k);
-      var kp = nacl.sign.keyPair.fromSeed(new Uint8Array(k));
+    function calculateED25519Public(k2) {
+      assert.buffer(k2);
+      var kp = nacl.sign.keyPair.fromSeed(new Uint8Array(k2));
       return Buffer2.from(kp.publicKey);
     }
-    function calculateX25519Public(k) {
-      assert.buffer(k);
-      var kp = nacl.box.keyPair.fromSeed(new Uint8Array(k));
+    function calculateX25519Public(k2) {
+      assert.buffer(k2);
+      var kp = nacl.box.keyPair.fromSeed(new Uint8Array(k2));
       return Buffer2.from(kp.publicKey);
     }
     function addRSAMissing(key) {
       assert.object(key);
       assertCompatible(key, PrivateKey, [1, 1]);
-      var d = new jsbn(key.part.d.data);
+      var d2 = new jsbn(key.part.d.data);
       var buf;
       if (!key.part.dmodp) {
-        var p = new jsbn(key.part.p.data);
-        var dmodp = d.mod(p.subtract(1));
+        var p2 = new jsbn(key.part.p.data);
+        var dmodp = d2.mod(p2.subtract(1));
         buf = bigintToMpBuf(dmodp);
         key.part.dmodp = { name: "dmodp", data: buf };
         key.parts.push(key.part.dmodp);
       }
       if (!key.part.dmodq) {
-        var q2 = new jsbn(key.part.q.data);
-        var dmodq = d.mod(q2.subtract(1));
+        var q3 = new jsbn(key.part.q.data);
+        var dmodq = d2.mod(q3.subtract(1));
         buf = bigintToMpBuf(dmodq);
         key.part.dmodq = { name: "dmodq", data: buf };
         key.parts.push(key.part.dmodq);
@@ -17334,13 +16970,13 @@ var require_utils = __commonJS({
       assert.string(curveName, "curveName");
       assert.buffer(priv);
       var params = algs.curves[curveName];
-      var p = new jsbn(params.p);
-      var a = new jsbn(params.a);
-      var b = new jsbn(params.b);
-      var curve = new ec.ECCurveFp(p, a, b);
-      var G = curve.decodePointHex(params.G.toString("hex"));
-      var d = new jsbn(mpNormalize(priv));
-      var pub = G.multiply(d);
+      var p2 = new jsbn(params.p);
+      var a2 = new jsbn(params.a);
+      var b2 = new jsbn(params.b);
+      var curve = new ec.ECCurveFp(p2, a2, b2);
+      var G2 = curve.decodePointHex(params.G.toString("hex"));
+      var d2 = new jsbn(mpNormalize(priv));
+      var pub = G2.multiply(d2);
       pub = Buffer2.from(curve.encodePointHex(pub), "hex");
       var parts = [];
       parts.push({ name: "curve", data: Buffer2.from(curveName) });
@@ -17416,8 +17052,8 @@ var require_ssh_buffer = __commonJS({
     SSHBuffer.prototype.remainder = function() {
       return this._buffer.slice(this._offset);
     };
-    SSHBuffer.prototype.skip = function(n) {
-      this._offset += n;
+    SSHBuffer.prototype.skip = function(n2) {
+      this._offset += n2;
     };
     SSHBuffer.prototype.expand = function() {
       this._size *= 2;
@@ -17452,22 +17088,22 @@ var require_ssh_buffer = __commonJS({
       return str;
     };
     SSHBuffer.prototype.readInt = function() {
-      var v = this._buffer.readUInt32BE(this._offset);
+      var v2 = this._buffer.readUInt32BE(this._offset);
       this._offset += 4;
-      return v;
+      return v2;
     };
     SSHBuffer.prototype.readInt64 = function() {
       assert.ok(
         this._offset + 8 < this._buffer.length,
         "buffer not long enough to read Int64"
       );
-      var v = this._buffer.slice(this._offset, this._offset + 8);
+      var v2 = this._buffer.slice(this._offset, this._offset + 8);
       this._offset += 8;
-      return v;
+      return v2;
     };
     SSHBuffer.prototype.readChar = function() {
-      var v = this._buffer[this._offset++];
-      return v;
+      var v2 = this._buffer[this._offset++];
+      return v2;
     };
     SSHBuffer.prototype.writeBuffer = function(buf) {
       while (this._offset + 4 + buf.length > this._size)
@@ -17487,37 +17123,37 @@ var require_ssh_buffer = __commonJS({
       this._offset += str.length;
       this._buffer[this._offset++] = 0;
     };
-    SSHBuffer.prototype.writeInt = function(v) {
+    SSHBuffer.prototype.writeInt = function(v2) {
       while (this._offset + 4 > this._size)
         this.expand();
-      this._buffer.writeUInt32BE(v, this._offset);
+      this._buffer.writeUInt32BE(v2, this._offset);
       this._offset += 4;
     };
-    SSHBuffer.prototype.writeInt64 = function(v) {
-      assert.buffer(v, "value");
-      if (v.length > 8) {
-        var lead = v.slice(0, v.length - 8);
-        for (var i = 0; i < lead.length; ++i) {
+    SSHBuffer.prototype.writeInt64 = function(v2) {
+      assert.buffer(v2, "value");
+      if (v2.length > 8) {
+        var lead = v2.slice(0, v2.length - 8);
+        for (var i2 = 0; i2 < lead.length; ++i2) {
           assert.strictEqual(
-            lead[i],
+            lead[i2],
             0,
             "must fit in 64 bits of precision"
           );
         }
-        v = v.slice(v.length - 8, v.length);
+        v2 = v2.slice(v2.length - 8, v2.length);
       }
       while (this._offset + 8 > this._size)
         this.expand();
-      v.copy(this._buffer, this._offset);
+      v2.copy(this._buffer, this._offset);
       this._offset += 8;
     };
-    SSHBuffer.prototype.writeChar = function(v) {
+    SSHBuffer.prototype.writeChar = function(v2) {
       while (this._offset + 1 > this._size)
         this.expand();
-      this._buffer[this._offset++] = v;
+      this._buffer[this._offset++] = v2;
     };
-    SSHBuffer.prototype.writePart = function(p) {
-      this.writeBuffer(p.data);
+    SSHBuffer.prototype.writePart = function(p2) {
+      this.writeBuffer(p2.data);
     };
     SSHBuffer.prototype.write = function(buf) {
       while (this._offset + buf.length > this._size)
@@ -17548,8 +17184,8 @@ var require_signature = __commonJS({
       assert.arrayOfObject(opts.parts, "options.parts");
       assert.string(opts.type, "options.type");
       var partLookup = {};
-      for (var i = 0; i < opts.parts.length; ++i) {
-        var part = opts.parts[i];
+      for (var i2 = 0; i2 < opts.parts.length; ++i2) {
+        var part = opts.parts[i2];
         partLookup[part.name] = part;
       }
       this.type = opts.type;
@@ -17600,40 +17236,40 @@ var require_signature = __commonJS({
           break;
         case "dsa":
         case "ecdsa":
-          var r, s;
+          var r2, s2;
           if (format === "asn1") {
             var der = new asn1.BerWriter();
             der.startSequence();
-            r = utils.mpNormalize(this.part.r.data);
-            s = utils.mpNormalize(this.part.s.data);
-            der.writeBuffer(r, asn1.Ber.Integer);
-            der.writeBuffer(s, asn1.Ber.Integer);
+            r2 = utils.mpNormalize(this.part.r.data);
+            s2 = utils.mpNormalize(this.part.s.data);
+            der.writeBuffer(r2, asn1.Ber.Integer);
+            der.writeBuffer(s2, asn1.Ber.Integer);
             der.endSequence();
             return der.buffer;
           } else if (format === "ssh" && this.type === "dsa") {
             buf = new SSHBuffer({});
             buf.writeString("ssh-dss");
-            r = this.part.r.data;
-            if (r.length > 20 && r[0] === 0)
-              r = r.slice(1);
-            s = this.part.s.data;
-            if (s.length > 20 && s[0] === 0)
-              s = s.slice(1);
-            if (this.hashAlgorithm && this.hashAlgorithm !== "sha1" || r.length + s.length !== 40) {
+            r2 = this.part.r.data;
+            if (r2.length > 20 && r2[0] === 0)
+              r2 = r2.slice(1);
+            s2 = this.part.s.data;
+            if (s2.length > 20 && s2[0] === 0)
+              s2 = s2.slice(1);
+            if (this.hashAlgorithm && this.hashAlgorithm !== "sha1" || r2.length + s2.length !== 40) {
               throw new Error("OpenSSH only supports DSA signatures with SHA1 hash");
             }
-            buf.writeBuffer(Buffer2.concat([r, s]));
+            buf.writeBuffer(Buffer2.concat([r2, s2]));
             return buf.toBuffer();
           } else if (format === "ssh" && this.type === "ecdsa") {
             var inner = new SSHBuffer({});
-            r = this.part.r.data;
-            inner.writeBuffer(r);
+            r2 = this.part.r.data;
+            inner.writeBuffer(r2);
             inner.writePart(this.part.s);
             buf = new SSHBuffer({});
             var curve;
-            if (r[0] === 0)
-              r = r.slice(1);
-            var sz = r.length * 8;
+            if (r2[0] === 0)
+              r2 = r2.slice(1);
+            var sz = r2.length * 8;
             if (sz === 256)
               curve = "nistp256";
             else if (sz === 384)
@@ -17728,21 +17364,21 @@ var require_signature = __commonJS({
     function parseDSAasn1(data, type, format, opts) {
       var der = new asn1.BerReader(data);
       der.readSequence();
-      var r = der.readString(asn1.Ber.Integer, true);
-      var s = der.readString(asn1.Ber.Integer, true);
-      opts.parts.push({ name: "r", data: utils.mpNormalize(r) });
-      opts.parts.push({ name: "s", data: utils.mpNormalize(s) });
+      var r2 = der.readString(asn1.Ber.Integer, true);
+      var s2 = der.readString(asn1.Ber.Integer, true);
+      opts.parts.push({ name: "r", data: utils.mpNormalize(r2) });
+      opts.parts.push({ name: "s", data: utils.mpNormalize(s2) });
       return new Signature(opts);
     }
     function parseDSA(data, type, format, opts) {
       if (data.length != 40) {
         var buf = new SSHBuffer({ buffer: data });
-        var d = buf.readBuffer();
-        if (d.toString("ascii") === "ssh-dss")
-          d = buf.readBuffer();
+        var d2 = buf.readBuffer();
+        if (d2.toString("ascii") === "ssh-dss")
+          d2 = buf.readBuffer();
         assert.ok(buf.atEnd(), "extra trailing bytes");
-        assert.strictEqual(d.length, 40, "invalid inner length");
-        data = d;
+        assert.strictEqual(d2.length, 40, "invalid inner length");
+        data = d2;
       }
       opts.parts.push({ name: "r", data: data.slice(0, 20) });
       opts.parts.push({ name: "s", data: data.slice(20, 40) });
@@ -17750,7 +17386,7 @@ var require_signature = __commonJS({
     }
     function parseECDSA(data, type, format, opts) {
       var buf = new SSHBuffer({ buffer: data });
-      var r, s;
+      var r2, s2;
       var inner = buf.readBuffer();
       var stype = inner.toString("ascii");
       if (stype.slice(0, 6) === "ecdsa-") {
@@ -17774,16 +17410,16 @@ var require_signature = __commonJS({
         inner = buf.readBuffer();
         assert.ok(buf.atEnd(), "extra trailing bytes on outer");
         buf = new SSHBuffer({ buffer: inner });
-        r = buf.readPart();
+        r2 = buf.readPart();
       } else {
-        r = { data: inner };
+        r2 = { data: inner };
       }
-      s = buf.readPart();
+      s2 = buf.readPart();
       assert.ok(buf.atEnd(), "extra trailing bytes");
-      r.name = "r";
-      s.name = "s";
-      opts.parts.push(r);
-      opts.parts.push(s);
+      r2.name = "r";
+      s2.name = "s";
+      opts.parts.push(r2);
+      opts.parts.push(s2);
       return new Signature(opts);
     }
     Signature.isSignature = function(obj, ver) {
@@ -17805,11 +17441,11 @@ var require_sec = __commonJS({
     "use strict";
     var BigInteger = require_jsbn().BigInteger;
     var ECCurveFp = require_ec().ECCurveFp;
-    function X9ECParameters(curve, g, n, h) {
+    function X9ECParameters(curve, g2, n2, h2) {
       this.curve = curve;
-      this.g = g;
-      this.n = n;
-      this.h = h;
+      this.g = g2;
+      this.n = n2;
+      this.h = h2;
     }
     function x9getCurve() {
       return this.curve;
@@ -17827,78 +17463,78 @@ var require_sec = __commonJS({
     X9ECParameters.prototype.getG = x9getG;
     X9ECParameters.prototype.getN = x9getN;
     X9ECParameters.prototype.getH = x9getH;
-    function fromHex(s) {
-      return new BigInteger(s, 16);
+    function fromHex(s2) {
+      return new BigInteger(s2, 16);
     }
     function secp128r1() {
-      var p = fromHex("FFFFFFFDFFFFFFFFFFFFFFFFFFFFFFFF");
-      var a = fromHex("FFFFFFFDFFFFFFFFFFFFFFFFFFFFFFFC");
-      var b = fromHex("E87579C11079F43DD824993C2CEE5ED3");
-      var n = fromHex("FFFFFFFE0000000075A30D1B9038A115");
-      var h = BigInteger.ONE;
-      var curve = new ECCurveFp(p, a, b);
-      var G = curve.decodePointHex("04161FF7528B899B2D0C28607CA52C5B86CF5AC8395BAFEB13C02DA292DDED7A83");
-      return new X9ECParameters(curve, G, n, h);
+      var p2 = fromHex("FFFFFFFDFFFFFFFFFFFFFFFFFFFFFFFF");
+      var a2 = fromHex("FFFFFFFDFFFFFFFFFFFFFFFFFFFFFFFC");
+      var b2 = fromHex("E87579C11079F43DD824993C2CEE5ED3");
+      var n2 = fromHex("FFFFFFFE0000000075A30D1B9038A115");
+      var h2 = BigInteger.ONE;
+      var curve = new ECCurveFp(p2, a2, b2);
+      var G2 = curve.decodePointHex("04161FF7528B899B2D0C28607CA52C5B86CF5AC8395BAFEB13C02DA292DDED7A83");
+      return new X9ECParameters(curve, G2, n2, h2);
     }
     function secp160k1() {
-      var p = fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFAC73");
-      var a = BigInteger.ZERO;
-      var b = fromHex("7");
-      var n = fromHex("0100000000000000000001B8FA16DFAB9ACA16B6B3");
-      var h = BigInteger.ONE;
-      var curve = new ECCurveFp(p, a, b);
-      var G = curve.decodePointHex("043B4C382CE37AA192A4019E763036F4F5DD4D7EBB938CF935318FDCED6BC28286531733C3F03C4FEE");
-      return new X9ECParameters(curve, G, n, h);
+      var p2 = fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFAC73");
+      var a2 = BigInteger.ZERO;
+      var b2 = fromHex("7");
+      var n2 = fromHex("0100000000000000000001B8FA16DFAB9ACA16B6B3");
+      var h2 = BigInteger.ONE;
+      var curve = new ECCurveFp(p2, a2, b2);
+      var G2 = curve.decodePointHex("043B4C382CE37AA192A4019E763036F4F5DD4D7EBB938CF935318FDCED6BC28286531733C3F03C4FEE");
+      return new X9ECParameters(curve, G2, n2, h2);
     }
     function secp160r1() {
-      var p = fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7FFFFFFF");
-      var a = fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7FFFFFFC");
-      var b = fromHex("1C97BEFC54BD7A8B65ACF89F81D4D4ADC565FA45");
-      var n = fromHex("0100000000000000000001F4C8F927AED3CA752257");
-      var h = BigInteger.ONE;
-      var curve = new ECCurveFp(p, a, b);
-      var G = curve.decodePointHex("044A96B5688EF573284664698968C38BB913CBFC8223A628553168947D59DCC912042351377AC5FB32");
-      return new X9ECParameters(curve, G, n, h);
+      var p2 = fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7FFFFFFF");
+      var a2 = fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7FFFFFFC");
+      var b2 = fromHex("1C97BEFC54BD7A8B65ACF89F81D4D4ADC565FA45");
+      var n2 = fromHex("0100000000000000000001F4C8F927AED3CA752257");
+      var h2 = BigInteger.ONE;
+      var curve = new ECCurveFp(p2, a2, b2);
+      var G2 = curve.decodePointHex("044A96B5688EF573284664698968C38BB913CBFC8223A628553168947D59DCC912042351377AC5FB32");
+      return new X9ECParameters(curve, G2, n2, h2);
     }
     function secp192k1() {
-      var p = fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFEE37");
-      var a = BigInteger.ZERO;
-      var b = fromHex("3");
-      var n = fromHex("FFFFFFFFFFFFFFFFFFFFFFFE26F2FC170F69466A74DEFD8D");
-      var h = BigInteger.ONE;
-      var curve = new ECCurveFp(p, a, b);
-      var G = curve.decodePointHex("04DB4FF10EC057E9AE26B07D0280B7F4341DA5D1B1EAE06C7D9B2F2F6D9C5628A7844163D015BE86344082AA88D95E2F9D");
-      return new X9ECParameters(curve, G, n, h);
+      var p2 = fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFEE37");
+      var a2 = BigInteger.ZERO;
+      var b2 = fromHex("3");
+      var n2 = fromHex("FFFFFFFFFFFFFFFFFFFFFFFE26F2FC170F69466A74DEFD8D");
+      var h2 = BigInteger.ONE;
+      var curve = new ECCurveFp(p2, a2, b2);
+      var G2 = curve.decodePointHex("04DB4FF10EC057E9AE26B07D0280B7F4341DA5D1B1EAE06C7D9B2F2F6D9C5628A7844163D015BE86344082AA88D95E2F9D");
+      return new X9ECParameters(curve, G2, n2, h2);
     }
     function secp192r1() {
-      var p = fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFFFF");
-      var a = fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFFFC");
-      var b = fromHex("64210519E59C80E70FA7E9AB72243049FEB8DEECC146B9B1");
-      var n = fromHex("FFFFFFFFFFFFFFFFFFFFFFFF99DEF836146BC9B1B4D22831");
-      var h = BigInteger.ONE;
-      var curve = new ECCurveFp(p, a, b);
-      var G = curve.decodePointHex("04188DA80EB03090F67CBF20EB43A18800F4FF0AFD82FF101207192B95FFC8DA78631011ED6B24CDD573F977A11E794811");
-      return new X9ECParameters(curve, G, n, h);
+      var p2 = fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFFFF");
+      var a2 = fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFFFC");
+      var b2 = fromHex("64210519E59C80E70FA7E9AB72243049FEB8DEECC146B9B1");
+      var n2 = fromHex("FFFFFFFFFFFFFFFFFFFFFFFF99DEF836146BC9B1B4D22831");
+      var h2 = BigInteger.ONE;
+      var curve = new ECCurveFp(p2, a2, b2);
+      var G2 = curve.decodePointHex("04188DA80EB03090F67CBF20EB43A18800F4FF0AFD82FF101207192B95FFC8DA78631011ED6B24CDD573F977A11E794811");
+      return new X9ECParameters(curve, G2, n2, h2);
     }
     function secp224r1() {
-      var p = fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000000000000001");
-      var a = fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFE");
-      var b = fromHex("B4050A850C04B3ABF54132565044B0B7D7BFD8BA270B39432355FFB4");
-      var n = fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFF16A2E0B8F03E13DD29455C5C2A3D");
-      var h = BigInteger.ONE;
-      var curve = new ECCurveFp(p, a, b);
-      var G = curve.decodePointHex("04B70E0CBD6BB4BF7F321390B94A03C1D356C21122343280D6115C1D21BD376388B5F723FB4C22DFE6CD4375A05A07476444D5819985007E34");
-      return new X9ECParameters(curve, G, n, h);
+      var p2 = fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000000000000001");
+      var a2 = fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFE");
+      var b2 = fromHex("B4050A850C04B3ABF54132565044B0B7D7BFD8BA270B39432355FFB4");
+      var n2 = fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFF16A2E0B8F03E13DD29455C5C2A3D");
+      var h2 = BigInteger.ONE;
+      var curve = new ECCurveFp(p2, a2, b2);
+      var G2 = curve.decodePointHex("04B70E0CBD6BB4BF7F321390B94A03C1D356C21122343280D6115C1D21BD376388B5F723FB4C22DFE6CD4375A05A07476444D5819985007E34");
+      return new X9ECParameters(curve, G2, n2, h2);
     }
     function secp256r1() {
-      var p = fromHex("FFFFFFFF00000001000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFF");
-      var a = fromHex("FFFFFFFF00000001000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFC");
-      var b = fromHex("5AC635D8AA3A93E7B3EBBD55769886BC651D06B0CC53B0F63BCE3C3E27D2604B");
-      var n = fromHex("FFFFFFFF00000000FFFFFFFFFFFFFFFFBCE6FAADA7179E84F3B9CAC2FC632551");
-      var h = BigInteger.ONE;
-      var curve = new ECCurveFp(p, a, b);
-      var G = curve.decodePointHex("046B17D1F2E12C4247F8BCE6E563A440F277037D812DEB33A0F4A13945D898C2964FE342E2FE1A7F9B8EE7EB4A7C0F9E162BCE33576B315ECECBB6406837BF51F5");
-      return new X9ECParameters(curve, G, n, h);
+      var p2 = fromHex("FFFFFFFF00000001000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFF");
+      var a2 = fromHex("FFFFFFFF00000001000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFC");
+      var b2 = fromHex("5AC635D8AA3A93E7B3EBBD55769886BC651D06B0CC53B0F63BCE3C3E27D2604B");
+      var n2 = fromHex("FFFFFFFF00000000FFFFFFFFFFFFFFFFBCE6FAADA7179E84F3B9CAC2FC632551");
+      var h2 = BigInteger.ONE;
+      var curve = new ECCurveFp(p2, a2, b2);
+      var G2 = curve.decodePointHex("046B17D1F2E12C4247F8BCE6E563A440F277037D812DEB33A0F4A13945D898C2964FE342E2FE1A7F9B8EE7EB4A7C0F9E162BCE33576B315ECECBB6406837BF51F5");
+      return new X9ECParameters(curve, G2, n2, h2);
     }
     module.exports = {
       "secp128r1": secp128r1,
@@ -17926,12 +17562,12 @@ var require_ecc_jsbn = __commonJS({
     }
     exports.ECKey = function(curve, key, isPublic) {
       var priv;
-      var c = curve();
-      var n = c.getN();
-      var bytes = Math.floor(n.bitLength() / 8);
+      var c2 = curve();
+      var n2 = c2.getN();
+      var bytes = Math.floor(n2.bitLength() / 8);
       if (key) {
         if (isPublic) {
-          var curve = c.getCurve();
+          var curve = c2.getCurve();
           this.P = curve.decodePointHex(key.toString("hex"));
         } else {
           if (key.length != bytes)
@@ -17939,21 +17575,21 @@ var require_ecc_jsbn = __commonJS({
           priv = new BigInteger(key.toString("hex"), 16);
         }
       } else {
-        var n1 = n.subtract(BigInteger.ONE);
-        var r = new BigInteger(crypto.randomBytes(n.bitLength()));
-        priv = r.mod(n1).add(BigInteger.ONE);
-        this.P = c.getG().multiply(priv);
+        var n1 = n2.subtract(BigInteger.ONE);
+        var r2 = new BigInteger(crypto.randomBytes(n2.bitLength()));
+        priv = r2.mod(n1).add(BigInteger.ONE);
+        this.P = c2.getG().multiply(priv);
       }
       if (this.P) {
-        this.PublicKey = Buffer2.from(c.getCurve().encodeCompressedPointHex(this.P), "hex");
+        this.PublicKey = Buffer2.from(c2.getCurve().encodeCompressedPointHex(this.P), "hex");
       }
       if (priv) {
         this.PrivateKey = Buffer2.from(unstupid(priv.toString(16), bytes * 2), "hex");
         this.deriveSharedSecret = function(key2) {
           if (!key2 || !key2.P)
             return false;
-          var S = key2.P.multiply(priv);
-          return Buffer2.from(unstupid(S.getX().toBigInteger().toString(16), bytes * 2), "hex");
+          var S2 = key2.P.multiply(priv);
+          return Buffer2.from(unstupid(S2.getX().toBigInteger().toString(16), bytes * 2), "hex");
         };
       }
     };
@@ -18088,10 +17724,10 @@ var require_dhe = __commonJS({
           );
         }
       } else if (pk.type === "curve25519") {
-        var k = pk.part.k;
+        var k2 = pk.part.k;
         if (!pk.part.k)
-          k = pk.part.r;
-        this._priv = k.data;
+          k2 = pk.part.r;
+        this._priv = k2.data;
         if (this._priv[0] === 0)
           this._priv = this._priv.slice(1);
         this._priv = this._priv.slice(0, 32);
@@ -18169,10 +17805,10 @@ var require_dhe = __commonJS({
           this._isPriv = true;
           return this._key;
         } else {
-          var n = this._ecParams.getN();
-          var r = new jsbn(crypto.randomBytes(n.bitLength()));
-          var n1 = n.subtract(jsbn.ONE);
-          priv = r.mod(n1).add(jsbn.ONE);
+          var n2 = this._ecParams.getN();
+          var r2 = new jsbn(crypto.randomBytes(n2.bitLength()));
+          var n1 = n2.subtract(jsbn.ONE);
+          priv = r2.mod(n1).add(jsbn.ONE);
           pub = this._ecParams.getG().multiply(priv);
           priv = Buffer2.from(priv.toByteArray());
           pub = Buffer2.from(this._ecParams.getCurve().encodePointHex(pub), "hex");
@@ -18213,17 +17849,17 @@ var require_dhe = __commonJS({
     function X9ECParameters(name) {
       var params = algs.curves[name];
       assert.object(params);
-      var p = new jsbn(params.p);
-      var a = new jsbn(params.a);
-      var b = new jsbn(params.b);
-      var n = new jsbn(params.n);
-      var h = jsbn.ONE;
-      var curve = new ec.ECCurveFp(p, a, b);
-      var G = curve.decodePointHex(params.G.toString("hex"));
+      var p2 = new jsbn(params.p);
+      var a2 = new jsbn(params.a);
+      var b2 = new jsbn(params.b);
+      var n2 = new jsbn(params.n);
+      var h2 = jsbn.ONE;
+      var curve = new ec.ECCurveFp(p2, a2, b2);
+      var G2 = curve.decodePointHex(params.G.toString("hex"));
       this.curve = curve;
-      this.g = G;
-      this.n = n;
-      this.h = h;
+      this.g = G2;
+      this.n = n2;
+      this.h = h2;
     }
     X9ECParameters.prototype.getCurve = function() {
       return this.curve;
@@ -18249,8 +17885,8 @@ var require_dhe = __commonJS({
     }
     ECPrivate.prototype.deriveSharedSecret = function(pubKey) {
       assert.ok(pubKey instanceof ECPublic);
-      var S = pubKey._pub.multiply(this._priv);
-      return Buffer2.from(S.getX().toBigInteger().toByteArray());
+      var S2 = pubKey._pub.multiply(this._priv);
+      return Buffer2.from(S2.getX().toBigInteger().toByteArray());
     };
     function generateED25519() {
       var pair = nacl.sign.keyPair();
@@ -18292,11 +17928,11 @@ var require_dhe = __commonJS({
         return key;
       } else {
         var ecParams = new X9ECParameters(curve);
-        var n = ecParams.getN();
-        var cByteLen = Math.ceil((n.bitLength() + 64) / 8);
-        var c = new jsbn(crypto.randomBytes(cByteLen));
-        var n1 = n.subtract(jsbn.ONE);
-        var priv = c.mod(n1).add(jsbn.ONE);
+        var n2 = ecParams.getN();
+        var cByteLen = Math.ceil((n2.bitLength() + 64) / 8);
+        var c2 = new jsbn(crypto.randomBytes(cByteLen));
+        var n1 = n2.subtract(jsbn.ONE);
+        var priv = c2.mod(n1).add(jsbn.ONE);
         var pub = ecParams.getG().multiply(priv);
         priv = Buffer2.from(priv.toByteArray());
         pub = Buffer2.from(ecParams.getCurve().encodePointHex(pub), "hex");
@@ -18480,14 +18116,14 @@ var require_pkcs8 = __commonJS({
       der.readSequence(asn1.Ber.BitString);
       der.readByte();
       der.readSequence();
-      var n = readMPInt(der, "modulus");
+      var n2 = readMPInt(der, "modulus");
       var e = readMPInt(der, "exponent");
       var key = {
         type: "rsa",
         source: der.originalInput,
         parts: [
           { name: "e", data: e },
-          { name: "n", data: n }
+          { name: "n", data: n2 }
         ]
       };
       return new Key(key);
@@ -18497,23 +18133,23 @@ var require_pkcs8 = __commonJS({
       der.readSequence();
       var ver = readMPInt(der, "version");
       assert.equal(ver[0], 0, "unknown RSA private key version");
-      var n = readMPInt(der, "modulus");
+      var n2 = readMPInt(der, "modulus");
       var e = readMPInt(der, "public exponent");
-      var d = readMPInt(der, "private exponent");
-      var p = readMPInt(der, "prime1");
-      var q2 = readMPInt(der, "prime2");
+      var d2 = readMPInt(der, "private exponent");
+      var p2 = readMPInt(der, "prime1");
+      var q3 = readMPInt(der, "prime2");
       var dmodp = readMPInt(der, "exponent1");
       var dmodq = readMPInt(der, "exponent2");
       var iqmp = readMPInt(der, "iqmp");
       var key = {
         type: "rsa",
         parts: [
-          { name: "n", data: n },
+          { name: "n", data: n2 },
           { name: "e", data: e },
-          { name: "d", data: d },
+          { name: "d", data: d2 },
           { name: "iqmp", data: iqmp },
-          { name: "p", data: p },
-          { name: "q", data: q2 },
+          { name: "p", data: p2 },
+          { name: "q", data: q3 },
           { name: "dmodp", data: dmodp },
           { name: "dmodq", data: dmodq }
         ]
@@ -18522,54 +18158,54 @@ var require_pkcs8 = __commonJS({
     }
     function readPkcs8DSAPublic(der) {
       der.readSequence();
-      var p = readMPInt(der, "p");
-      var q2 = readMPInt(der, "q");
-      var g = readMPInt(der, "g");
+      var p2 = readMPInt(der, "p");
+      var q3 = readMPInt(der, "q");
+      var g2 = readMPInt(der, "g");
       der.readSequence(asn1.Ber.BitString);
       der.readByte();
-      var y = readMPInt(der, "y");
+      var y2 = readMPInt(der, "y");
       var key = {
         type: "dsa",
         parts: [
-          { name: "p", data: p },
-          { name: "q", data: q2 },
-          { name: "g", data: g },
-          { name: "y", data: y }
+          { name: "p", data: p2 },
+          { name: "q", data: q3 },
+          { name: "g", data: g2 },
+          { name: "y", data: y2 }
         ]
       };
       return new Key(key);
     }
     function readPkcs8DSAPrivate(der) {
       der.readSequence();
-      var p = readMPInt(der, "p");
-      var q2 = readMPInt(der, "q");
-      var g = readMPInt(der, "g");
+      var p2 = readMPInt(der, "p");
+      var q3 = readMPInt(der, "q");
+      var g2 = readMPInt(der, "g");
       der.readSequence(asn1.Ber.OctetString);
-      var x = readMPInt(der, "x");
-      var y = utils.calculateDSAPublic(g, p, x);
+      var x2 = readMPInt(der, "x");
+      var y2 = utils.calculateDSAPublic(g2, p2, x2);
       var key = {
         type: "dsa",
         parts: [
-          { name: "p", data: p },
-          { name: "q", data: q2 },
-          { name: "g", data: g },
-          { name: "y", data: y },
-          { name: "x", data: x }
+          { name: "p", data: p2 },
+          { name: "q", data: q3 },
+          { name: "g", data: g2 },
+          { name: "y", data: y2 },
+          { name: "x", data: x2 }
         ]
       };
       return new PrivateKey(key);
     }
     function readECDSACurve(der) {
       var curveName, curveNames;
-      var j, c, cd;
+      var j2, c2, cd;
       if (der.peek() === asn1.Ber.OID) {
         var oid = der.readOID();
         curveNames = Object.keys(algs.curves);
-        for (j = 0; j < curveNames.length; ++j) {
-          c = curveNames[j];
-          cd = algs.curves[c];
+        for (j2 = 0; j2 < curveNames.length; ++j2) {
+          c2 = curveNames[j2];
+          cd = algs.curves[c2];
           if (cd.pkcs8oid === oid) {
-            curveName = c;
+            curveName = c2;
             break;
           }
         }
@@ -18585,10 +18221,10 @@ var require_pkcs8 = __commonJS({
           "1.2.840.10045.1.1",
           "ECDSA key is not from a prime-field"
         );
-        var p = curve.p = utils.mpNormalize(
+        var p2 = curve.p = utils.mpNormalize(
           der.readString(asn1.Ber.Integer, true)
         );
-        curve.size = p.length * 8 - utils.countZeros(p);
+        curve.size = p2.length * 8 - utils.countZeros(p2);
         der.readSequence();
         curve.a = utils.mpNormalize(
           der.readString(asn1.Ber.OctetString, true)
@@ -18613,33 +18249,33 @@ var require_pkcs8 = __commonJS({
         assert.strictEqual(curve.h[0], 1, "a cofactor=1 curve is required");
         curveNames = Object.keys(algs.curves);
         var ks = Object.keys(curve);
-        for (j = 0; j < curveNames.length; ++j) {
-          c = curveNames[j];
-          cd = algs.curves[c];
+        for (j2 = 0; j2 < curveNames.length; ++j2) {
+          c2 = curveNames[j2];
+          cd = algs.curves[c2];
           var equal = true;
-          for (var i = 0; i < ks.length; ++i) {
-            var k = ks[i];
-            if (cd[k] === void 0)
+          for (var i2 = 0; i2 < ks.length; ++i2) {
+            var k2 = ks[i2];
+            if (cd[k2] === void 0)
               continue;
-            if (typeof cd[k] === "object" && cd[k].equals !== void 0) {
-              if (!cd[k].equals(curve[k])) {
+            if (typeof cd[k2] === "object" && cd[k2].equals !== void 0) {
+              if (!cd[k2].equals(curve[k2])) {
                 equal = false;
                 break;
               }
-            } else if (Buffer2.isBuffer(cd[k])) {
-              if (cd[k].toString("binary") !== curve[k].toString("binary")) {
+            } else if (Buffer2.isBuffer(cd[k2])) {
+              if (cd[k2].toString("binary") !== curve[k2].toString("binary")) {
                 equal = false;
                 break;
               }
             } else {
-              if (cd[k] !== curve[k]) {
+              if (cd[k2] !== curve[k2]) {
                 equal = false;
                 break;
               }
             }
           }
           if (equal) {
-            curveName = c;
+            curveName = c2;
             break;
           }
         }
@@ -18653,27 +18289,27 @@ var require_pkcs8 = __commonJS({
       der.readSequence();
       var version = readMPInt(der, "version");
       assert.equal(version[0], 1, "unknown version of ECDSA key");
-      var d = der.readString(asn1.Ber.OctetString, true);
-      var Q;
+      var d2 = der.readString(asn1.Ber.OctetString, true);
+      var Q2;
       if (der.peek() == 160) {
         der.readSequence(160);
         der._offset += der.length;
       }
       if (der.peek() == 161) {
         der.readSequence(161);
-        Q = der.readString(asn1.Ber.BitString, true);
-        Q = utils.ecNormalize(Q);
+        Q2 = der.readString(asn1.Ber.BitString, true);
+        Q2 = utils.ecNormalize(Q2);
       }
-      if (Q === void 0) {
-        var pub = utils.publicFromPrivateECDSA(curveName, d);
-        Q = pub.part.Q.data;
+      if (Q2 === void 0) {
+        var pub = utils.publicFromPrivateECDSA(curveName, d2);
+        Q2 = pub.part.Q.data;
       }
       var key = {
         type: "ecdsa",
         parts: [
           { name: "curve", data: Buffer2.from(curveName) },
-          { name: "Q", data: Q },
-          { name: "d", data: d }
+          { name: "Q", data: Q2 },
+          { name: "d", data: d2 }
         ]
       };
       return new PrivateKey(key);
@@ -18681,13 +18317,13 @@ var require_pkcs8 = __commonJS({
     function readPkcs8ECDSAPublic(der) {
       var curveName = readECDSACurve(der);
       assert.string(curveName, "a known elliptic curve");
-      var Q = der.readString(asn1.Ber.BitString, true);
-      Q = utils.ecNormalize(Q);
+      var Q2 = der.readString(asn1.Ber.BitString, true);
+      Q2 = utils.ecNormalize(Q2);
       var key = {
         type: "ecdsa",
         parts: [
           { name: "curve", data: Buffer2.from(curveName) },
-          { name: "Q", data: Q }
+          { name: "Q", data: Q2 }
         ]
       };
       return new Key(key);
@@ -18695,21 +18331,21 @@ var require_pkcs8 = __commonJS({
     function readPkcs8EdDSAPublic(der) {
       if (der.peek() === 0)
         der.readByte();
-      var A = utils.readBitString(der);
+      var A2 = utils.readBitString(der);
       var key = {
         type: "ed25519",
         parts: [
-          { name: "A", data: utils.zeroPadToLength(A, 32) }
+          { name: "A", data: utils.zeroPadToLength(A2, 32) }
         ]
       };
       return new Key(key);
     }
     function readPkcs8X25519Public(der) {
-      var A = utils.readBitString(der);
+      var A2 = utils.readBitString(der);
       var key = {
         type: "curve25519",
         parts: [
-          { name: "A", data: utils.zeroPadToLength(A, 32) }
+          { name: "A", data: utils.zeroPadToLength(A2, 32) }
         ]
       };
       return new Key(key);
@@ -18718,24 +18354,24 @@ var require_pkcs8 = __commonJS({
       if (der.peek() === 0)
         der.readByte();
       der.readSequence(asn1.Ber.OctetString);
-      var k = der.readString(asn1.Ber.OctetString, true);
-      k = utils.zeroPadToLength(k, 32);
-      var A, tag;
+      var k2 = der.readString(asn1.Ber.OctetString, true);
+      k2 = utils.zeroPadToLength(k2, 32);
+      var A2, tag;
       while ((tag = der.peek()) !== null) {
         if (tag === (asn1.Ber.Context | 1)) {
-          A = utils.readBitString(der, tag);
+          A2 = utils.readBitString(der, tag);
         } else {
           der.readSequence(tag);
           der._offset += der.length;
         }
       }
-      if (A === void 0)
-        A = utils.calculateED25519Public(k);
+      if (A2 === void 0)
+        A2 = utils.calculateED25519Public(k2);
       var key = {
         type: "ed25519",
         parts: [
-          { name: "A", data: utils.zeroPadToLength(A, 32) },
-          { name: "k", data: utils.zeroPadToLength(k, 32) }
+          { name: "A", data: utils.zeroPadToLength(A2, 32) },
+          { name: "k", data: utils.zeroPadToLength(k2, 32) }
         ]
       };
       return new PrivateKey(key);
@@ -18744,14 +18380,14 @@ var require_pkcs8 = __commonJS({
       if (der.peek() === 0)
         der.readByte();
       der.readSequence(asn1.Ber.OctetString);
-      var k = der.readString(asn1.Ber.OctetString, true);
-      k = utils.zeroPadToLength(k, 32);
-      var A = utils.calculateX25519Public(k);
+      var k2 = der.readString(asn1.Ber.OctetString, true);
+      k2 = utils.zeroPadToLength(k2, 32);
+      var A2 = utils.calculateX25519Public(k2);
       var key = {
         type: "curve25519",
         parts: [
-          { name: "A", data: utils.zeroPadToLength(A, 32) },
-          { name: "k", data: utils.zeroPadToLength(k, 32) }
+          { name: "A", data: utils.zeroPadToLength(A2, 32) },
+          { name: "k", data: utils.zeroPadToLength(k2, 32) }
         ]
       };
       return new PrivateKey(key);
@@ -18872,28 +18508,28 @@ var require_pkcs8 = __commonJS({
         der.writeBuffer(curve.p, asn1.Ber.Integer);
         der.endSequence();
         der.startSequence();
-        var a = curve.p;
-        if (a[0] === 0)
-          a = a.slice(1);
-        der.writeBuffer(a, asn1.Ber.OctetString);
+        var a2 = curve.p;
+        if (a2[0] === 0)
+          a2 = a2.slice(1);
+        der.writeBuffer(a2, asn1.Ber.OctetString);
         der.writeBuffer(curve.b, asn1.Ber.OctetString);
         der.writeBuffer(curve.s, asn1.Ber.BitString);
         der.endSequence();
         der.writeBuffer(curve.G, asn1.Ber.OctetString);
         der.writeBuffer(curve.n, asn1.Ber.Integer);
-        var h = curve.h;
-        if (!h) {
-          h = Buffer2.from([1]);
+        var h2 = curve.h;
+        if (!h2) {
+          h2 = Buffer2.from([1]);
         }
-        der.writeBuffer(h, asn1.Ber.Integer);
+        der.writeBuffer(h2, asn1.Ber.Integer);
         der.endSequence();
       }
     }
     function writePkcs8ECDSAPublic(key, der) {
       writeECDSACurve(key, der);
       der.endSequence();
-      var Q = utils.ecNormalize(key.part.Q.data, true);
-      der.writeBuffer(Q, asn1.Ber.BitString);
+      var Q2 = utils.ecNormalize(key.part.Q.data, true);
+      der.writeBuffer(Q2, asn1.Ber.BitString);
     }
     function writePkcs8ECDSAPrivate(key, der) {
       writeECDSACurve(key, der);
@@ -18904,8 +18540,8 @@ var require_pkcs8 = __commonJS({
       der.writeBuffer(version, asn1.Ber.Integer);
       der.writeBuffer(key.part.d.data, asn1.Ber.OctetString);
       der.startSequence(161);
-      var Q = utils.ecNormalize(key.part.Q.data, true);
-      der.writeBuffer(Q, asn1.Ber.BitString);
+      var Q2 = utils.ecNormalize(key.part.Q.data, true);
+      der.writeBuffer(Q2, asn1.Ber.BitString);
       der.endSequence();
       der.endSequence();
       der.endSequence();
@@ -18917,10 +18553,10 @@ var require_pkcs8 = __commonJS({
     function writePkcs8EdDSAPrivate(key, der) {
       der.endSequence();
       der.startSequence(asn1.Ber.OctetString);
-      var k = utils.mpNormalize(key.part.k.data);
-      while (k.length > 32 && k[0] === 0)
-        k = k.slice(1);
-      der.writeBuffer(k, asn1.Ber.OctetString);
+      var k2 = utils.mpNormalize(key.part.k.data);
+      while (k2.length > 32 && k2[0] === 0)
+        k2 = k2.slice(1);
+      der.writeBuffer(k2, asn1.Ber.OctetString);
       der.endSequence();
       utils.writeBitString(der, key.part.A.data, asn1.Ber.Context | 1);
     }
@@ -18992,13 +18628,13 @@ var require_pkcs1 = __commonJS({
       }
     }
     function readPkcs1RSAPublic(der) {
-      var n = readMPInt(der, "modulus");
+      var n2 = readMPInt(der, "modulus");
       var e = readMPInt(der, "exponent");
       var key = {
         type: "rsa",
         parts: [
           { name: "e", data: e },
-          { name: "n", data: n }
+          { name: "n", data: n2 }
         ]
       };
       return new Key(key);
@@ -19006,23 +18642,23 @@ var require_pkcs1 = __commonJS({
     function readPkcs1RSAPrivate(der) {
       var version = readMPInt(der, "version");
       assert.strictEqual(version[0], 0);
-      var n = readMPInt(der, "modulus");
+      var n2 = readMPInt(der, "modulus");
       var e = readMPInt(der, "public exponent");
-      var d = readMPInt(der, "private exponent");
-      var p = readMPInt(der, "prime1");
-      var q2 = readMPInt(der, "prime2");
+      var d2 = readMPInt(der, "private exponent");
+      var p2 = readMPInt(der, "prime1");
+      var q3 = readMPInt(der, "prime2");
       var dmodp = readMPInt(der, "exponent1");
       var dmodq = readMPInt(der, "exponent2");
       var iqmp = readMPInt(der, "iqmp");
       var key = {
         type: "rsa",
         parts: [
-          { name: "n", data: n },
+          { name: "n", data: n2 },
           { name: "e", data: e },
-          { name: "d", data: d },
+          { name: "d", data: d2 },
           { name: "iqmp", data: iqmp },
-          { name: "p", data: p },
-          { name: "q", data: q2 },
+          { name: "p", data: p2 },
+          { name: "q", data: q3 },
           { name: "dmodp", data: dmodp },
           { name: "dmodq", data: dmodq }
         ]
@@ -19032,19 +18668,19 @@ var require_pkcs1 = __commonJS({
     function readPkcs1DSAPrivate(der) {
       var version = readMPInt(der, "version");
       assert.strictEqual(version.readUInt8(0), 0);
-      var p = readMPInt(der, "p");
-      var q2 = readMPInt(der, "q");
-      var g = readMPInt(der, "g");
-      var y = readMPInt(der, "y");
-      var x = readMPInt(der, "x");
+      var p2 = readMPInt(der, "p");
+      var q3 = readMPInt(der, "q");
+      var g2 = readMPInt(der, "g");
+      var y2 = readMPInt(der, "y");
+      var x2 = readMPInt(der, "x");
       var key = {
         type: "dsa",
         parts: [
-          { name: "p", data: p },
-          { name: "q", data: q2 },
-          { name: "g", data: g },
-          { name: "y", data: y },
-          { name: "x", data: x }
+          { name: "p", data: p2 },
+          { name: "q", data: q3 },
+          { name: "g", data: g2 },
+          { name: "y", data: y2 },
+          { name: "x", data: x2 }
         ]
       };
       return new PrivateKey(key);
@@ -19052,33 +18688,33 @@ var require_pkcs1 = __commonJS({
     function readPkcs1EdDSAPrivate(der) {
       var version = readMPInt(der, "version");
       assert.strictEqual(version.readUInt8(0), 1);
-      var k = der.readString(asn1.Ber.OctetString, true);
+      var k2 = der.readString(asn1.Ber.OctetString, true);
       der.readSequence(160);
       var oid = der.readOID();
       assert.strictEqual(oid, "1.3.101.112", "the ed25519 curve identifier");
       der.readSequence(161);
-      var A = utils.readBitString(der);
+      var A2 = utils.readBitString(der);
       var key = {
         type: "ed25519",
         parts: [
-          { name: "A", data: utils.zeroPadToLength(A, 32) },
-          { name: "k", data: k }
+          { name: "A", data: utils.zeroPadToLength(A2, 32) },
+          { name: "k", data: k2 }
         ]
       };
       return new PrivateKey(key);
     }
     function readPkcs1DSAPublic(der) {
-      var y = readMPInt(der, "y");
-      var p = readMPInt(der, "p");
-      var q2 = readMPInt(der, "q");
-      var g = readMPInt(der, "g");
+      var y2 = readMPInt(der, "y");
+      var p2 = readMPInt(der, "p");
+      var q3 = readMPInt(der, "q");
+      var g2 = readMPInt(der, "g");
       var key = {
         type: "dsa",
         parts: [
-          { name: "y", data: y },
-          { name: "p", data: p },
-          { name: "q", data: q2 },
-          { name: "g", data: g }
+          { name: "y", data: y2 },
+          { name: "p", data: p2 },
+          { name: "q", data: q3 },
+          { name: "g", data: g2 }
         ]
       };
       return new Key(key);
@@ -19090,22 +18726,22 @@ var require_pkcs1 = __commonJS({
       var curveOid = der.readOID();
       var curve;
       var curves = Object.keys(algs.curves);
-      for (var j = 0; j < curves.length; ++j) {
-        var c = curves[j];
-        var cd = algs.curves[c];
+      for (var j2 = 0; j2 < curves.length; ++j2) {
+        var c2 = curves[j2];
+        var cd = algs.curves[c2];
         if (cd.pkcs8oid === curveOid) {
-          curve = c;
+          curve = c2;
           break;
         }
       }
       assert.string(curve, "a known ECDSA named curve");
-      var Q = der.readString(asn1.Ber.BitString, true);
-      Q = utils.ecNormalize(Q);
+      var Q2 = der.readString(asn1.Ber.BitString, true);
+      Q2 = utils.ecNormalize(Q2);
       var key = {
         type: "ecdsa",
         parts: [
           { name: "curve", data: Buffer2.from(curve) },
-          { name: "Q", data: Q }
+          { name: "Q", data: Q2 }
         ]
       };
       return new Key(key);
@@ -19113,19 +18749,19 @@ var require_pkcs1 = __commonJS({
     function readPkcs1ECDSAPrivate(der) {
       var version = readMPInt(der, "version");
       assert.strictEqual(version.readUInt8(0), 1);
-      var d = der.readString(asn1.Ber.OctetString, true);
+      var d2 = der.readString(asn1.Ber.OctetString, true);
       der.readSequence(160);
       var curve = readECDSACurve(der);
       assert.string(curve, "a known elliptic curve");
       der.readSequence(161);
-      var Q = der.readString(asn1.Ber.BitString, true);
-      Q = utils.ecNormalize(Q);
+      var Q2 = der.readString(asn1.Ber.BitString, true);
+      Q2 = utils.ecNormalize(Q2);
       var key = {
         type: "ecdsa",
         parts: [
           { name: "curve", data: Buffer2.from(curve) },
-          { name: "Q", data: Q },
-          { name: "d", data: d }
+          { name: "Q", data: Q2 },
+          { name: "d", data: d2 }
         ]
       };
       return new PrivateKey(key);
@@ -19203,8 +18839,8 @@ var require_pkcs1 = __commonJS({
       assert.string(curveOid, "a known ECDSA named curve");
       der.writeOID(curveOid);
       der.endSequence();
-      var Q = utils.ecNormalize(key.part.Q.data, true);
-      der.writeBuffer(Q, asn1.Ber.BitString);
+      var Q2 = utils.ecNormalize(key.part.Q.data, true);
+      der.writeBuffer(Q2, asn1.Ber.BitString);
     }
     function writePkcs1ECDSAPrivate(der, key) {
       var ver = Buffer2.from([1]);
@@ -19217,8 +18853,8 @@ var require_pkcs1 = __commonJS({
       der.writeOID(curveOid);
       der.endSequence();
       der.startSequence(161);
-      var Q = utils.ecNormalize(key.part.Q.data, true);
-      der.writeBuffer(Q, asn1.Ber.BitString);
+      var Q2 = utils.ecNormalize(key.part.Q.data, true);
+      der.writeBuffer(Q2, asn1.Ber.BitString);
       der.endSequence();
     }
     function writePkcs1EdDSAPrivate(der, key) {
@@ -19328,20 +18964,20 @@ var require_rfc4253 = __commonJS({
         assert.strictEqual(res[1], parts[0].data.toString());
       }
       var normalized = true;
-      for (var i = 0; i < algInfo.parts.length; ++i) {
-        var p = parts[i];
-        p.name = algInfo.parts[i];
-        if (key.type === "ed25519" && p.name === "k")
-          p.data = p.data.slice(0, 32);
-        if (p.name !== "curve" && algInfo.normalize !== false) {
+      for (var i2 = 0; i2 < algInfo.parts.length; ++i2) {
+        var p2 = parts[i2];
+        p2.name = algInfo.parts[i2];
+        if (key.type === "ed25519" && p2.name === "k")
+          p2.data = p2.data.slice(0, 32);
+        if (p2.name !== "curve" && algInfo.normalize !== false) {
           var nd;
           if (key.type === "ed25519") {
-            nd = utils.zeroPadToLength(p.data, 32);
+            nd = utils.zeroPadToLength(p2.data, 32);
           } else {
-            nd = utils.mpNormalize(p.data);
+            nd = utils.mpNormalize(p2.data);
           }
-          if (nd.toString("binary") !== p.data.toString("binary")) {
-            p.data = nd;
+          if (nd.toString("binary") !== p2.data.toString("binary")) {
+            p2.data = nd;
             normalized = false;
           }
         }
@@ -19357,22 +18993,22 @@ var require_rfc4253 = __commonJS({
     function write(key, options) {
       assert.object(key);
       var alg = keyTypeToAlg(key);
-      var i;
+      var i2;
       var algInfo = algs.info[key.type];
       if (PrivateKey.isPrivateKey(key))
         algInfo = algs.privInfo[key.type];
       var parts = algInfo.parts;
       var buf = new SSHBuffer({});
       buf.writeString(alg);
-      for (i = 0; i < parts.length; ++i) {
-        var data = key.part[parts[i]].data;
+      for (i2 = 0; i2 < parts.length; ++i2) {
+        var data = key.part[parts[i2]].data;
         if (algInfo.normalize !== false) {
           if (key.type === "ed25519")
             data = utils.zeroPadToLength(data, 32);
           else
             data = utils.mpNormalize(data);
         }
-        if (key.type === "ed25519" && parts[i] === "k")
+        if (key.type === "ed25519" && parts[i2] === "k")
           data = Buffer2.concat([data, key.part.A.data]);
         buf.writeBuffer(data);
       }
@@ -20443,40 +20079,40 @@ var require_bcrypt_pbkdf = __commonJS({
         2306472731
       ]);
     };
-    function F(S, x8, i) {
-      return (S[0][x8[i + 3]] + S[1][x8[i + 2]] ^ S[2][x8[i + 1]]) + S[3][x8[i]];
+    function F(S2, x8, i2) {
+      return (S2[0][x8[i2 + 3]] + S2[1][x8[i2 + 2]] ^ S2[2][x8[i2 + 1]]) + S2[3][x8[i2]];
     }
-    Blowfish.prototype.encipher = function(x, x8) {
+    Blowfish.prototype.encipher = function(x2, x8) {
       if (x8 === void 0) {
-        x8 = new Uint8Array(x.buffer);
-        if (x.byteOffset !== 0)
-          x8 = x8.subarray(x.byteOffset);
+        x8 = new Uint8Array(x2.buffer);
+        if (x2.byteOffset !== 0)
+          x8 = x8.subarray(x2.byteOffset);
       }
-      x[0] ^= this.P[0];
-      for (var i = 1; i < 16; i += 2) {
-        x[1] ^= F(this.S, x8, 0) ^ this.P[i];
-        x[0] ^= F(this.S, x8, 4) ^ this.P[i + 1];
+      x2[0] ^= this.P[0];
+      for (var i2 = 1; i2 < 16; i2 += 2) {
+        x2[1] ^= F(this.S, x8, 0) ^ this.P[i2];
+        x2[0] ^= F(this.S, x8, 4) ^ this.P[i2 + 1];
       }
-      var t = x[0];
-      x[0] = x[1] ^ this.P[17];
-      x[1] = t;
+      var t2 = x2[0];
+      x2[0] = x2[1] ^ this.P[17];
+      x2[1] = t2;
     };
-    Blowfish.prototype.decipher = function(x) {
-      var x8 = new Uint8Array(x.buffer);
-      if (x.byteOffset !== 0)
-        x8 = x8.subarray(x.byteOffset);
-      x[0] ^= this.P[17];
-      for (var i = 16; i > 0; i -= 2) {
-        x[1] ^= F(this.S, x8, 0) ^ this.P[i];
-        x[0] ^= F(this.S, x8, 4) ^ this.P[i - 1];
+    Blowfish.prototype.decipher = function(x2) {
+      var x8 = new Uint8Array(x2.buffer);
+      if (x2.byteOffset !== 0)
+        x8 = x8.subarray(x2.byteOffset);
+      x2[0] ^= this.P[17];
+      for (var i2 = 16; i2 > 0; i2 -= 2) {
+        x2[1] ^= F(this.S, x8, 0) ^ this.P[i2];
+        x2[0] ^= F(this.S, x8, 4) ^ this.P[i2 - 1];
       }
-      var t = x[0];
-      x[0] = x[1] ^ this.P[0];
-      x[1] = t;
+      var t2 = x2[0];
+      x2[0] = x2[1] ^ this.P[0];
+      x2[1] = t2;
     };
     function stream2word(data, databytes) {
-      var i, temp = 0;
-      for (i = 0; i < 4; i++, BLF_J++) {
+      var i2, temp = 0;
+      for (i2 = 0; i2 < 4; i2++, BLF_J++) {
         if (BLF_J >= databytes)
           BLF_J = 0;
         temp = temp << 8 | data[BLF_J];
@@ -20484,62 +20120,62 @@ var require_bcrypt_pbkdf = __commonJS({
       return temp;
     }
     Blowfish.prototype.expand0state = function(key, keybytes) {
-      var d = new Uint32Array(2), i, k;
-      var d8 = new Uint8Array(d.buffer);
-      for (i = 0, BLF_J = 0; i < 18; i++) {
-        this.P[i] ^= stream2word(key, keybytes);
+      var d2 = new Uint32Array(2), i2, k2;
+      var d8 = new Uint8Array(d2.buffer);
+      for (i2 = 0, BLF_J = 0; i2 < 18; i2++) {
+        this.P[i2] ^= stream2word(key, keybytes);
       }
       BLF_J = 0;
-      for (i = 0; i < 18; i += 2) {
-        this.encipher(d, d8);
-        this.P[i] = d[0];
-        this.P[i + 1] = d[1];
+      for (i2 = 0; i2 < 18; i2 += 2) {
+        this.encipher(d2, d8);
+        this.P[i2] = d2[0];
+        this.P[i2 + 1] = d2[1];
       }
-      for (i = 0; i < 4; i++) {
-        for (k = 0; k < 256; k += 2) {
-          this.encipher(d, d8);
-          this.S[i][k] = d[0];
-          this.S[i][k + 1] = d[1];
+      for (i2 = 0; i2 < 4; i2++) {
+        for (k2 = 0; k2 < 256; k2 += 2) {
+          this.encipher(d2, d8);
+          this.S[i2][k2] = d2[0];
+          this.S[i2][k2 + 1] = d2[1];
         }
       }
     };
     Blowfish.prototype.expandstate = function(data, databytes, key, keybytes) {
-      var d = new Uint32Array(2), i, k;
-      for (i = 0, BLF_J = 0; i < 18; i++) {
-        this.P[i] ^= stream2word(key, keybytes);
+      var d2 = new Uint32Array(2), i2, k2;
+      for (i2 = 0, BLF_J = 0; i2 < 18; i2++) {
+        this.P[i2] ^= stream2word(key, keybytes);
       }
-      for (i = 0, BLF_J = 0; i < 18; i += 2) {
-        d[0] ^= stream2word(data, databytes);
-        d[1] ^= stream2word(data, databytes);
-        this.encipher(d);
-        this.P[i] = d[0];
-        this.P[i + 1] = d[1];
+      for (i2 = 0, BLF_J = 0; i2 < 18; i2 += 2) {
+        d2[0] ^= stream2word(data, databytes);
+        d2[1] ^= stream2word(data, databytes);
+        this.encipher(d2);
+        this.P[i2] = d2[0];
+        this.P[i2 + 1] = d2[1];
       }
-      for (i = 0; i < 4; i++) {
-        for (k = 0; k < 256; k += 2) {
-          d[0] ^= stream2word(data, databytes);
-          d[1] ^= stream2word(data, databytes);
-          this.encipher(d);
-          this.S[i][k] = d[0];
-          this.S[i][k + 1] = d[1];
+      for (i2 = 0; i2 < 4; i2++) {
+        for (k2 = 0; k2 < 256; k2 += 2) {
+          d2[0] ^= stream2word(data, databytes);
+          d2[1] ^= stream2word(data, databytes);
+          this.encipher(d2);
+          this.S[i2][k2] = d2[0];
+          this.S[i2][k2 + 1] = d2[1];
         }
       }
       BLF_J = 0;
     };
     Blowfish.prototype.enc = function(data, blocks) {
-      for (var i = 0; i < blocks; i++) {
-        this.encipher(data.subarray(i * 2));
+      for (var i2 = 0; i2 < blocks; i2++) {
+        this.encipher(data.subarray(i2 * 2));
       }
     };
     Blowfish.prototype.dec = function(data, blocks) {
-      for (var i = 0; i < blocks; i++) {
-        this.decipher(data.subarray(i * 2));
+      for (var i2 = 0; i2 < blocks; i2++) {
+        this.decipher(data.subarray(i2 * 2));
       }
     };
     var BCRYPT_BLOCKS = 8;
     var BCRYPT_HASHSIZE = 32;
     function bcrypt_hash(sha2pass, sha2salt, out) {
-      var state = new Blowfish(), cdata = new Uint32Array(BCRYPT_BLOCKS), i, ciphertext = new Uint8Array([
+      var state = new Blowfish(), cdata = new Uint32Array(BCRYPT_BLOCKS), i2, ciphertext = new Uint8Array([
         79,
         120,
         121,
@@ -20574,31 +20210,31 @@ var require_bcrypt_pbkdf = __commonJS({
         101
       ]);
       state.expandstate(sha2salt, 64, sha2pass, 64);
-      for (i = 0; i < 64; i++) {
+      for (i2 = 0; i2 < 64; i2++) {
         state.expand0state(sha2salt, 64);
         state.expand0state(sha2pass, 64);
       }
-      for (i = 0; i < BCRYPT_BLOCKS; i++)
-        cdata[i] = stream2word(ciphertext, ciphertext.byteLength);
-      for (i = 0; i < 64; i++)
+      for (i2 = 0; i2 < BCRYPT_BLOCKS; i2++)
+        cdata[i2] = stream2word(ciphertext, ciphertext.byteLength);
+      for (i2 = 0; i2 < 64; i2++)
         state.enc(cdata, cdata.byteLength / 8);
-      for (i = 0; i < BCRYPT_BLOCKS; i++) {
-        out[4 * i + 3] = cdata[i] >>> 24;
-        out[4 * i + 2] = cdata[i] >>> 16;
-        out[4 * i + 1] = cdata[i] >>> 8;
-        out[4 * i + 0] = cdata[i];
+      for (i2 = 0; i2 < BCRYPT_BLOCKS; i2++) {
+        out[4 * i2 + 3] = cdata[i2] >>> 24;
+        out[4 * i2 + 2] = cdata[i2] >>> 16;
+        out[4 * i2 + 1] = cdata[i2] >>> 8;
+        out[4 * i2 + 0] = cdata[i2];
       }
     }
     function bcrypt_pbkdf(pass, passlen, salt, saltlen, key, keylen, rounds) {
-      var sha2pass = new Uint8Array(64), sha2salt = new Uint8Array(64), out = new Uint8Array(BCRYPT_HASHSIZE), tmpout = new Uint8Array(BCRYPT_HASHSIZE), countsalt = new Uint8Array(saltlen + 4), i, j, amt, stride, dest, count2, origkeylen = keylen;
+      var sha2pass = new Uint8Array(64), sha2salt = new Uint8Array(64), out = new Uint8Array(BCRYPT_HASHSIZE), tmpout = new Uint8Array(BCRYPT_HASHSIZE), countsalt = new Uint8Array(saltlen + 4), i2, j2, amt, stride, dest, count2, origkeylen = keylen;
       if (rounds < 1)
         return -1;
       if (passlen === 0 || saltlen === 0 || keylen === 0 || keylen > out.byteLength * out.byteLength || saltlen > 1 << 20)
         return -1;
       stride = Math.floor((keylen + out.byteLength - 1) / out.byteLength);
       amt = Math.floor((keylen + stride - 1) / stride);
-      for (i = 0; i < saltlen; i++)
-        countsalt[i] = salt[i];
+      for (i2 = 0; i2 < saltlen; i2++)
+        countsalt[i2] = salt[i2];
       crypto_hash_sha512(sha2pass, pass, passlen);
       for (count2 = 1; keylen > 0; count2++) {
         countsalt[saltlen + 0] = count2 >>> 24;
@@ -20607,22 +20243,22 @@ var require_bcrypt_pbkdf = __commonJS({
         countsalt[saltlen + 3] = count2;
         crypto_hash_sha512(sha2salt, countsalt, saltlen + 4);
         bcrypt_hash(sha2pass, sha2salt, tmpout);
-        for (i = out.byteLength; i--; )
-          out[i] = tmpout[i];
-        for (i = 1; i < rounds; i++) {
+        for (i2 = out.byteLength; i2--; )
+          out[i2] = tmpout[i2];
+        for (i2 = 1; i2 < rounds; i2++) {
           crypto_hash_sha512(sha2salt, tmpout, tmpout.byteLength);
           bcrypt_hash(sha2pass, sha2salt, tmpout);
-          for (j = 0; j < out.byteLength; j++)
-            out[j] ^= tmpout[j];
+          for (j2 = 0; j2 < out.byteLength; j2++)
+            out[j2] ^= tmpout[j2];
         }
         amt = Math.min(amt, keylen);
-        for (i = 0; i < amt; i++) {
-          dest = i * stride + (count2 - 1);
+        for (i2 = 0; i2 < amt; i2++) {
+          dest = i2 * stride + (count2 - 1);
           if (dest >= origkeylen)
             break;
-          key[dest] = out[i];
+          key[dest] = out[i2];
         }
-        keylen -= i;
+        keylen -= i2;
       }
       return 0;
     }
@@ -20793,9 +20429,9 @@ var require_ssh_private = __commonJS({
         privBuf.writeInt(checkInt);
         privBuf.write(key.toBuffer("rfc4253"));
         privBuf.writeString(key.comment || "");
-        var n = 1;
+        var n2 = 1;
         while (privBuf._offset % cinf.blockSize !== 0)
-          privBuf.writeChar(n++);
+          privBuf.writeChar(n2++);
         privBuf = privBuf.toBuffer();
       }
       switch (kdf) {
@@ -20866,18 +20502,18 @@ var require_ssh_private = __commonJS({
       var tmp = buf.toString("base64");
       var len = tmp.length + tmp.length / 70 + 18 + 16 + header.length * 2 + 10;
       buf = Buffer2.alloc(len);
-      var o = 0;
-      o += buf.write("-----BEGIN " + header + "-----\n", o);
-      for (var i = 0; i < tmp.length; ) {
-        var limit = i + 70;
+      var o2 = 0;
+      o2 += buf.write("-----BEGIN " + header + "-----\n", o2);
+      for (var i2 = 0; i2 < tmp.length; ) {
+        var limit = i2 + 70;
         if (limit > tmp.length)
           limit = tmp.length;
-        o += buf.write(tmp.slice(i, limit), o);
-        buf[o++] = 10;
-        i = limit;
+        o2 += buf.write(tmp.slice(i2, limit), o2);
+        buf[o2++] = 10;
+        i2 = limit;
       }
-      o += buf.write("-----END " + header + "-----\n", o);
-      return buf.slice(0, o);
+      o2 += buf.write("-----END " + header + "-----\n", o2);
+      return buf.slice(0, o2);
     }
   }
 });
@@ -20911,8 +20547,8 @@ var require_pem = __commonJS({
       "2.16.840.1.101.3.4.1.42": "aes256-cbc"
     };
     var CIPHER_TO_OID = {};
-    Object.keys(OID_TO_CIPHER).forEach(function(k) {
-      CIPHER_TO_OID[OID_TO_CIPHER[k]] = k;
+    Object.keys(OID_TO_CIPHER).forEach(function(k2) {
+      CIPHER_TO_OID[OID_TO_CIPHER[k2]] = k2;
     });
     var OID_TO_HASH = {
       "1.2.840.113549.2.7": "sha1",
@@ -20920,8 +20556,8 @@ var require_pem = __commonJS({
       "1.2.840.113549.2.11": "sha512"
     };
     var HASH_TO_OID = {};
-    Object.keys(OID_TO_HASH).forEach(function(k) {
-      HASH_TO_OID[OID_TO_HASH[k]] = k;
+    Object.keys(OID_TO_HASH).forEach(function(k2) {
+      HASH_TO_OID[OID_TO_HASH[k2]] = k2;
     });
     function read(buf, options, forceType) {
       var input = buf;
@@ -21127,18 +20763,18 @@ var require_pem = __commonJS({
       var tmp = der.buffer.toString("base64");
       var len = tmp.length + tmp.length / 64 + 18 + 16 + header.length * 2 + 10;
       var buf = Buffer2.alloc(len);
-      var o = 0;
-      o += buf.write("-----BEGIN " + header + "-----\n", o);
-      for (var i = 0; i < tmp.length; ) {
-        var limit = i + 64;
+      var o2 = 0;
+      o2 += buf.write("-----BEGIN " + header + "-----\n", o2);
+      for (var i2 = 0; i2 < tmp.length; ) {
+        var limit = i2 + 64;
         if (limit > tmp.length)
           limit = tmp.length;
-        o += buf.write(tmp.slice(i, limit), o);
-        buf[o++] = 10;
-        i = limit;
+        o2 += buf.write(tmp.slice(i2, limit), o2);
+        buf[o2++] = 10;
+        i2 = limit;
       }
-      o += buf.write("-----END " + header + "-----\n", o);
-      return buf.slice(0, o);
+      o2 += buf.write("-----END " + header + "-----\n", o2);
+      return buf.slice(0, o2);
     }
   }
 });
@@ -21249,8 +20885,8 @@ var require_dnssec = __commonJS({
        */
     };
     var supportedAlgosById = {};
-    Object.keys(supportedAlgos).forEach(function(k) {
-      supportedAlgosById[supportedAlgos[k]] = k.toUpperCase();
+    Object.keys(supportedAlgos).forEach(function(k2) {
+      supportedAlgosById[supportedAlgos[k2]] = k2.toUpperCase();
     });
     function read(buf, options) {
       if (typeof buf !== "string") {
@@ -21369,23 +21005,23 @@ var require_dnssec = __commonJS({
         return readDNSSECRSAPrivateKey(elements);
       }
       if (supportedAlgosById[alg] === "ECDSA-P384-SHA384" || supportedAlgosById[alg] === "ECDSA-P256-SHA256") {
-        var d = Buffer2.from(elements[0].split(" ")[1], "base64");
+        var d2 = Buffer2.from(elements[0].split(" ")[1], "base64");
         var curve = "nistp384";
         var size2 = 384;
         if (supportedAlgosById[alg] === "ECDSA-P256-SHA256") {
           curve = "nistp256";
           size2 = 256;
         }
-        var publicKey = utils.publicFromPrivateECDSA(curve, d);
-        var Q = publicKey.part["Q"].data;
+        var publicKey = utils.publicFromPrivateECDSA(curve, d2);
+        var Q2 = publicKey.part["Q"].data;
         var ecdsaKey = {
           type: "ecdsa",
           curve,
           size: size2,
           parts: [
             { name: "curve", data: Buffer2.from(curve) },
-            { name: "d", data: d },
-            { name: "Q", data: Q }
+            { name: "d", data: d2 },
+            { name: "Q", data: Q2 }
           ]
         };
         return new PrivateKey(ecdsaKey);
@@ -21417,16 +21053,16 @@ var require_dnssec = __commonJS({
       var out = "";
       out += "Private-key-format: v1.3\n";
       out += "Algorithm: " + rsaAlgFromOptions(options) + "\n";
-      var n = utils.mpDenormalize(key.part["n"].data);
-      out += "Modulus: " + n.toString("base64") + "\n";
+      var n2 = utils.mpDenormalize(key.part["n"].data);
+      out += "Modulus: " + n2.toString("base64") + "\n";
       var e = utils.mpDenormalize(key.part["e"].data);
       out += "PublicExponent: " + e.toString("base64") + "\n";
-      var d = utils.mpDenormalize(key.part["d"].data);
-      out += "PrivateExponent: " + d.toString("base64") + "\n";
-      var p = utils.mpDenormalize(key.part["p"].data);
-      out += "Prime1: " + p.toString("base64") + "\n";
-      var q2 = utils.mpDenormalize(key.part["q"].data);
-      out += "Prime2: " + q2.toString("base64") + "\n";
+      var d2 = utils.mpDenormalize(key.part["d"].data);
+      out += "PrivateExponent: " + d2.toString("base64") + "\n";
+      var p2 = utils.mpDenormalize(key.part["p"].data);
+      out += "Prime1: " + p2.toString("base64") + "\n";
+      var q3 = utils.mpDenormalize(key.part["q"].data);
+      out += "Prime2: " + q3.toString("base64") + "\n";
       var dmodp = utils.mpDenormalize(key.part["dmodp"].data);
       out += "Exponent1: " + dmodp.toString("base64") + "\n";
       var dmodq = utils.mpDenormalize(key.part["dmodq"].data);
@@ -21821,9 +21457,9 @@ var require_private_key = __commonJS({
         return this._pubCache;
       var algInfo = algs.info[this.type];
       var pubParts = [];
-      for (var i = 0; i < algInfo.parts.length; ++i) {
-        var p = algInfo.parts[i];
-        pubParts.push(this.part[p]);
+      for (var i2 = 0; i2 < algInfo.parts.length; ++i2) {
+        var p2 = algInfo.parts[i2];
+        pubParts.push(this.part[p2]);
       }
       this._pubCache = new Key({
         type: this.type,
@@ -21877,24 +21513,24 @@ var require_private_key = __commonJS({
         return new edCompat.Signer(this, hashAlgo);
       if (this.type === "curve25519")
         throw new Error("Curve25519 keys are not suitable for signing or verification");
-      var v, nm, err;
+      var v2, nm, err;
       try {
         nm = hashAlgo.toUpperCase();
-        v = crypto.createSign(nm);
+        v2 = crypto.createSign(nm);
       } catch (e) {
         err = e;
       }
-      if (v === void 0 || err instanceof Error && err.message.match(/Unknown message digest/)) {
+      if (v2 === void 0 || err instanceof Error && err.message.match(/Unknown message digest/)) {
         nm = "RSA-";
         nm += hashAlgo.toUpperCase();
-        v = crypto.createSign(nm);
+        v2 = crypto.createSign(nm);
       }
-      assert.ok(v, "failed to create verifier");
-      var oldSign = v.sign.bind(v);
+      assert.ok(v2, "failed to create verifier");
+      var oldSign = v2.sign.bind(v2);
       var key = this.toBuffer("pkcs1");
       var type = this.type;
       var curve = this.curve;
-      v.sign = function() {
+      v2.sign = function() {
         var sig = oldSign(key);
         if (typeof sig === "string")
           sig = Buffer2.from(sig, "binary");
@@ -21903,7 +21539,7 @@ var require_private_key = __commonJS({
         sig.curve = curve;
         return sig;
       };
-      return v;
+      return v2;
     };
     PrivateKey.parse = function(data, format, options) {
       if (typeof data !== "string")
@@ -21921,11 +21557,11 @@ var require_private_key = __commonJS({
         options.filename = "(unnamed)";
       assert.object(formats[format], "formats[format]");
       try {
-        var k = formats[format].read(data, options);
-        assert.ok(k instanceof PrivateKey, "key is not a private key");
-        if (!k.comment)
-          k.comment = options.filename;
-        return k;
+        var k2 = formats[format].read(data, options);
+        assert.ok(k2 instanceof PrivateKey, "key is not a private key");
+        if (!k2.comment)
+          k2.comment = options.filename;
+        return k2;
       } catch (e) {
         if (e.name === "KeyEncryptedError")
           throw e;
@@ -22006,8 +21642,8 @@ var require_identity = __commonJS({
     oids.pseudonym = "2.5.4.65";
     oids.emailAddress = "1.2.840.113549.1.9.1";
     var unoids = {};
-    Object.keys(oids).forEach(function(k) {
-      unoids[oids[k]] = k;
+    Object.keys(oids).forEach(function(k2) {
+      unoids[oids[k2]] = k2;
     });
     function Identity(opts) {
       var self2 = this;
@@ -22015,14 +21651,14 @@ var require_identity = __commonJS({
       assert.arrayOfObject(opts.components, "options.components");
       this.components = opts.components;
       this.componentLookup = {};
-      this.components.forEach(function(c) {
-        if (c.name && !c.oid)
-          c.oid = oids[c.name];
-        if (c.oid && !c.name)
-          c.name = unoids[c.oid];
-        if (self2.componentLookup[c.name] === void 0)
-          self2.componentLookup[c.name] = [];
-        self2.componentLookup[c.name].push(c);
+      this.components.forEach(function(c2) {
+        if (c2.name && !c2.oid)
+          c2.oid = oids[c2.name];
+        if (c2.oid && !c2.name)
+          c2.name = unoids[c2.oid];
+        if (self2.componentLookup[c2.name] === void 0)
+          self2.componentLookup[c2.name] = [];
+        self2.componentLookup[c2.name].push(c2);
       });
       if (this.componentLookup.cn && this.componentLookup.cn.length > 0) {
         this.cn = this.componentLookup.cn[0].value;
@@ -22035,8 +21671,8 @@ var require_identity = __commonJS({
         } else if (this.componentLookup.dc && this.components.length === this.componentLookup.dc.length) {
           this.type = "host";
           this.hostname = this.componentLookup.dc.map(
-            function(c) {
-              return c.value;
+            function(c2) {
+              return c2.value;
             }
           ).join(".");
         } else if (this.componentLookup.uid && this.components.length === this.componentLookup.uid.length) {
@@ -22070,12 +21706,12 @@ var require_identity = __commonJS({
       }
     }
     Identity.prototype.toString = function() {
-      return this.components.map(function(c) {
-        var n = c.name.toUpperCase();
-        n = n.replace(/=/g, "\\=");
-        var v = c.value;
-        v = v.replace(/,/g, "\\,");
-        return n + "=" + v;
+      return this.components.map(function(c2) {
+        var n2 = c2.name.toUpperCase();
+        n2 = n2.replace(/=/g, "\\=");
+        var v2 = c2.value;
+        v2 = v2.replace(/,/g, "\\,");
+        return n2 + "=" + v2;
       }).join(", ");
     };
     Identity.prototype.get = function(name, asArray) {
@@ -22087,15 +21723,15 @@ var require_identity = __commonJS({
         throw new Error("Multiple values for attribute " + name);
       if (!asArray)
         return arr[0].value;
-      return arr.map(function(c) {
-        return c.value;
+      return arr.map(function(c2) {
+        return c2.value;
       });
     };
     Identity.prototype.toArray = function(idx) {
-      return this.components.map(function(c) {
+      return this.components.map(function(c2) {
         return {
-          name: c.name,
-          value: c.value
+          name: c2.name,
+          value: c2.value
         };
       });
     };
@@ -22103,37 +21739,37 @@ var require_identity = __commonJS({
     var NOT_IA5 = /[^\x00-\x7f]/;
     Identity.prototype.toAsn1 = function(der, tag) {
       der.startSequence(tag);
-      this.components.forEach(function(c) {
+      this.components.forEach(function(c2) {
         der.startSequence(asn1.Ber.Constructor | asn1.Ber.Set);
         der.startSequence();
-        der.writeOID(c.oid);
-        if (c.asn1type === asn1.Ber.Utf8String || c.value.match(NOT_IA5)) {
-          var v = Buffer2.from(c.value, "utf8");
-          der.writeBuffer(v, asn1.Ber.Utf8String);
-        } else if (c.asn1type === asn1.Ber.IA5String || c.value.match(NOT_PRINTABLE)) {
-          der.writeString(c.value, asn1.Ber.IA5String);
+        der.writeOID(c2.oid);
+        if (c2.asn1type === asn1.Ber.Utf8String || c2.value.match(NOT_IA5)) {
+          var v2 = Buffer2.from(c2.value, "utf8");
+          der.writeBuffer(v2, asn1.Ber.Utf8String);
+        } else if (c2.asn1type === asn1.Ber.IA5String || c2.value.match(NOT_PRINTABLE)) {
+          der.writeString(c2.value, asn1.Ber.IA5String);
         } else {
           var type = asn1.Ber.PrintableString;
-          if (c.asn1type !== void 0)
-            type = c.asn1type;
-          der.writeString(c.value, type);
+          if (c2.asn1type !== void 0)
+            type = c2.asn1type;
+          der.writeString(c2.value, type);
         }
         der.endSequence();
         der.endSequence();
       });
       der.endSequence();
     };
-    function globMatch(a, b) {
-      if (a === "**" || b === "**")
+    function globMatch(a2, b2) {
+      if (a2 === "**" || b2 === "**")
         return true;
-      var aParts = a.split(".");
-      var bParts = b.split(".");
+      var aParts = a2.split(".");
+      var bParts = b2.split(".");
       if (aParts.length !== bParts.length)
         return false;
-      for (var i = 0; i < aParts.length; ++i) {
-        if (aParts[i] === "*" || bParts[i] === "*")
+      for (var i2 = 0; i2 < aParts.length; ++i2) {
+        if (aParts[i2] === "*" || bParts[i2] === "*")
           continue;
-        if (aParts[i] !== bParts[i])
+        if (aParts[i2] !== bParts[i2])
           return false;
       }
       return true;
@@ -22143,12 +21779,12 @@ var require_identity = __commonJS({
         return false;
       if (other.components.length !== this.components.length)
         return false;
-      for (var i = 0; i < this.components.length; ++i) {
-        if (this.components[i].oid !== other.components[i].oid)
+      for (var i2 = 0; i2 < this.components.length; ++i2) {
+        if (this.components[i2].oid !== other.components[i2].oid)
           return false;
         if (!globMatch(
-          this.components[i].value,
-          other.components[i].value
+          this.components[i2].value,
+          other.components[i2].value
         )) {
           return false;
         }
@@ -22202,16 +21838,16 @@ var require_identity = __commonJS({
           throw new Error("Failed to parse DN");
         }
       }
-      var cmps = parts.map(function(c) {
-        c = c.trim();
-        var eqPos = c.indexOf("=");
-        while (eqPos > 0 && c.charAt(eqPos - 1) === "\\")
-          eqPos = c.indexOf("=", eqPos + 1);
+      var cmps = parts.map(function(c2) {
+        c2 = c2.trim();
+        var eqPos = c2.indexOf("=");
+        while (eqPos > 0 && c2.charAt(eqPos - 1) === "\\")
+          eqPos = c2.indexOf("=", eqPos + 1);
         if (eqPos === -1) {
           throw new Error("Failed to parse DN");
         }
-        var name = c.slice(0, eqPos).toLowerCase().replace(/\\=/g, "=");
-        var value = c.slice(eqPos + 1);
+        var name = c2.slice(0, eqPos).toLowerCase().replace(/\\=/g, "=");
+        var value = c2.slice(eqPos + 1);
         return { name, value };
       });
       return new Identity({ components: cmps });
@@ -22308,8 +21944,8 @@ var require_openssh_cert = __commonJS({
       "user": 1,
       "host": 2
     };
-    Object.keys(TYPES).forEach(function(k) {
-      TYPES[TYPES[k]] = k;
+    Object.keys(TYPES).forEach(function(k2) {
+      TYPES[TYPES[k2]] = k2;
     });
     var ECDSA_ALGO = /^ecdsa-sha2-([^@-]+)-cert-v01@openssh.com$/;
     function read(buf, options) {
@@ -22347,11 +21983,11 @@ var require_openssh_cert = __commonJS({
         assert.ok(res !== null);
         assert.strictEqual(res[1], parts[0].data.toString());
       }
-      for (var i = 0; i < algInfo.parts.length; ++i) {
-        parts[i].name = algInfo.parts[i];
-        if (parts[i].name !== "curve" && algInfo.normalize !== false) {
-          var p = parts[i];
-          p.data = utils.mpNormalize(p.data);
+      for (var i2 = 0; i2 < algInfo.parts.length; ++i2) {
+        parts[i2].name = algInfo.parts[i2];
+        if (parts[i2].name !== "curve" && algInfo.normalize !== false) {
+          var p2 = parts[i2];
+          p2.data = utils.mpNormalize(p2.data);
         }
       }
       cert.subjectKey = new Key(key);
@@ -22405,19 +22041,19 @@ var require_openssh_cert = __commonJS({
       return new Certificate(cert);
     }
     function int64ToDate(buf) {
-      var i = buf.readUInt32BE(0) * 4294967296;
-      i += buf.readUInt32BE(4);
-      var d = /* @__PURE__ */ new Date();
-      d.setTime(i * 1e3);
-      d.sourceInt64 = buf;
-      return d;
+      var i2 = buf.readUInt32BE(0) * 4294967296;
+      i2 += buf.readUInt32BE(4);
+      var d2 = /* @__PURE__ */ new Date();
+      d2.setTime(i2 * 1e3);
+      d2.sourceInt64 = buf;
+      return d2;
     }
     function dateToInt64(date) {
       if (date.sourceInt64 !== void 0)
         return date.sourceInt64;
-      var i = Math.round(date.getTime() / 1e3);
-      var upper = Math.floor(i / 4294967296);
-      var lower = Math.floor(i % 4294967296);
+      var i2 = Math.round(date.getTime() / 1e3);
+      var upper = Math.floor(i2 / 4294967296);
+      var lower = Math.floor(i2 % 4294967296);
       var buf = Buffer2.alloc(8);
       buf.writeUInt32BE(upper, 0);
       buf.writeUInt32BE(lower, 4);
@@ -22609,11 +22245,11 @@ var require_x509 = __commonJS({
       verifier.write(blob);
       return verifier.verify(sig.signature);
     }
-    function Local(i) {
-      return asn1.Ber.Context | asn1.Ber.Constructor | i;
+    function Local(i2) {
+      return asn1.Ber.Context | asn1.Ber.Constructor | i2;
     }
-    function Context(i) {
-      return asn1.Ber.Context | i;
+    function Context(i2) {
+      return asn1.Ber.Context | i2;
     }
     var SIGN_ALGS = {
       "rsa-md5": "1.2.840.113549.1.1.4",
@@ -22629,8 +22265,8 @@ var require_x509 = __commonJS({
       "ecdsa-sha512": "1.2.840.10045.4.3.4",
       "ed25519-sha512": "1.3.101.112"
     };
-    Object.keys(SIGN_ALGS).forEach(function(k) {
-      SIGN_ALGS[SIGN_ALGS[k]] = k;
+    Object.keys(SIGN_ALGS).forEach(function(k2) {
+      SIGN_ALGS[SIGN_ALGS[k2]] = k2;
     });
     SIGN_ALGS["1.3.14.3.2.3"] = "rsa-md5";
     SIGN_ALGS["1.3.14.3.2.29"] = "rsa-sha1";
@@ -22756,8 +22392,8 @@ var require_x509 = __commonJS({
       "joyentCmon": "1.3.6.1.4.1.38678.1.4.2"
     };
     var EXTPURPOSE_REV = {};
-    Object.keys(EXTPURPOSE).forEach(function(k) {
-      EXTPURPOSE_REV[EXTPURPOSE[k]] = k;
+    Object.keys(EXTPURPOSE).forEach(function(k2) {
+      EXTPURPOSE_REV[EXTPURPOSE[k2]] = k2;
     });
     var KEYUSEBITS = [
       "signature",
@@ -22891,67 +22527,67 @@ var require_x509 = __commonJS({
       der._offset = after;
     }
     var UTCTIME_RE = /^([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})?Z$/;
-    function utcTimeToDate(t) {
-      var m = t.match(UTCTIME_RE);
+    function utcTimeToDate(t2) {
+      var m = t2.match(UTCTIME_RE);
       assert.ok(m, "timestamps must be in UTC");
-      var d = /* @__PURE__ */ new Date();
-      var thisYear = d.getUTCFullYear();
+      var d2 = /* @__PURE__ */ new Date();
+      var thisYear = d2.getUTCFullYear();
       var century = Math.floor(thisYear / 100) * 100;
       var year = parseInt(m[1], 10);
       if (thisYear % 100 < 50 && year >= 60)
         year += century - 1;
       else
         year += century;
-      d.setUTCFullYear(year, parseInt(m[2], 10) - 1, parseInt(m[3], 10));
-      d.setUTCHours(parseInt(m[4], 10), parseInt(m[5], 10));
+      d2.setUTCFullYear(year, parseInt(m[2], 10) - 1, parseInt(m[3], 10));
+      d2.setUTCHours(parseInt(m[4], 10), parseInt(m[5], 10));
       if (m[6] && m[6].length > 0)
-        d.setUTCSeconds(parseInt(m[6], 10));
-      return d;
+        d2.setUTCSeconds(parseInt(m[6], 10));
+      return d2;
     }
     var GTIME_RE = /^([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})?Z$/;
-    function gTimeToDate(t) {
-      var m = t.match(GTIME_RE);
+    function gTimeToDate(t2) {
+      var m = t2.match(GTIME_RE);
       assert.ok(m);
-      var d = /* @__PURE__ */ new Date();
-      d.setUTCFullYear(
+      var d2 = /* @__PURE__ */ new Date();
+      d2.setUTCFullYear(
         parseInt(m[1], 10),
         parseInt(m[2], 10) - 1,
         parseInt(m[3], 10)
       );
-      d.setUTCHours(parseInt(m[4], 10), parseInt(m[5], 10));
+      d2.setUTCHours(parseInt(m[4], 10), parseInt(m[5], 10));
       if (m[6] && m[6].length > 0)
-        d.setUTCSeconds(parseInt(m[6], 10));
-      return d;
+        d2.setUTCSeconds(parseInt(m[6], 10));
+      return d2;
     }
-    function zeroPad(n, m) {
+    function zeroPad(n2, m) {
       if (m === void 0)
         m = 2;
-      var s = "" + n;
-      while (s.length < m)
-        s = "0" + s;
-      return s;
+      var s2 = "" + n2;
+      while (s2.length < m)
+        s2 = "0" + s2;
+      return s2;
     }
-    function dateToUTCTime(d) {
-      var s = "";
-      s += zeroPad(d.getUTCFullYear() % 100);
-      s += zeroPad(d.getUTCMonth() + 1);
-      s += zeroPad(d.getUTCDate());
-      s += zeroPad(d.getUTCHours());
-      s += zeroPad(d.getUTCMinutes());
-      s += zeroPad(d.getUTCSeconds());
-      s += "Z";
-      return s;
+    function dateToUTCTime(d2) {
+      var s2 = "";
+      s2 += zeroPad(d2.getUTCFullYear() % 100);
+      s2 += zeroPad(d2.getUTCMonth() + 1);
+      s2 += zeroPad(d2.getUTCDate());
+      s2 += zeroPad(d2.getUTCHours());
+      s2 += zeroPad(d2.getUTCMinutes());
+      s2 += zeroPad(d2.getUTCSeconds());
+      s2 += "Z";
+      return s2;
     }
-    function dateToGTime(d) {
-      var s = "";
-      s += zeroPad(d.getUTCFullYear(), 4);
-      s += zeroPad(d.getUTCMonth() + 1);
-      s += zeroPad(d.getUTCDate());
-      s += zeroPad(d.getUTCHours());
-      s += zeroPad(d.getUTCMinutes());
-      s += zeroPad(d.getUTCSeconds());
-      s += "Z";
-      return s;
+    function dateToGTime(d2) {
+      var s2 = "";
+      s2 += zeroPad(d2.getUTCFullYear(), 4);
+      s2 += zeroPad(d2.getUTCMonth() + 1);
+      s2 += zeroPad(d2.getUTCDate());
+      s2 += zeroPad(d2.getUTCHours());
+      s2 += zeroPad(d2.getUTCMinutes());
+      s2 += zeroPad(d2.getUTCSeconds());
+      s2 += "Z";
+      return s2;
     }
     function sign(cert, key) {
       if (cert.signatures.x509 === void 0)
@@ -23065,12 +22701,12 @@ var require_x509 = __commonJS({
         exts.push({ oid: EXTS.altName });
         if (sig.extras && sig.extras.exts)
           exts = sig.extras.exts;
-        for (var i = 0; i < exts.length; ++i) {
+        for (var i2 = 0; i2 < exts.length; ++i2) {
           der.startSequence();
-          der.writeOID(exts[i].oid);
-          if (exts[i].critical !== void 0)
-            der.writeBoolean(exts[i].critical);
-          if (exts[i].oid === EXTS.altName) {
+          der.writeOID(exts[i2].oid);
+          if (exts[i2].critical !== void 0)
+            der.writeBoolean(exts[i2].critical);
+          if (exts[i2].oid === EXTS.altName) {
             der.startSequence(asn1.Ber.OctetString);
             der.startSequence();
             if (subject.type === "host") {
@@ -23079,38 +22715,38 @@ var require_x509 = __commonJS({
                 Context(2)
               );
             }
-            for (var j = 0; j < altNames.length; ++j) {
-              if (altNames[j].type === "host") {
+            for (var j2 = 0; j2 < altNames.length; ++j2) {
+              if (altNames[j2].type === "host") {
                 der.writeString(
-                  altNames[j].hostname,
+                  altNames[j2].hostname,
                   ALTNAME.DNSName
                 );
-              } else if (altNames[j].type === "email") {
+              } else if (altNames[j2].type === "email") {
                 der.writeString(
-                  altNames[j].email,
+                  altNames[j2].email,
                   ALTNAME.RFC822Name
                 );
               } else {
                 der.startSequence(
                   ALTNAME.DirectoryName
                 );
-                altNames[j].toAsn1(der);
+                altNames[j2].toAsn1(der);
                 der.endSequence();
               }
             }
             der.endSequence();
             der.endSequence();
-          } else if (exts[i].oid === EXTS.basicConstraints) {
+          } else if (exts[i2].oid === EXTS.basicConstraints) {
             der.startSequence(asn1.Ber.OctetString);
             der.startSequence();
             var ca = cert.purposes.indexOf("ca") !== -1;
-            var pathLen = exts[i].pathLen;
+            var pathLen = exts[i2].pathLen;
             der.writeBoolean(ca);
             if (pathLen !== void 0)
               der.writeInt(pathLen);
             der.endSequence();
             der.endSequence();
-          } else if (exts[i].oid === EXTS.extKeyUsage) {
+          } else if (exts[i2].oid === EXTS.extKeyUsage) {
             der.startSequence(asn1.Ber.OctetString);
             der.startSequence();
             cert.purposes.forEach(function(purpose) {
@@ -23125,11 +22761,11 @@ var require_x509 = __commonJS({
             });
             der.endSequence();
             der.endSequence();
-          } else if (exts[i].oid === EXTS.keyUsage) {
+          } else if (exts[i2].oid === EXTS.keyUsage) {
             der.startSequence(asn1.Ber.OctetString);
-            if (exts[i].bits !== void 0) {
+            if (exts[i2].bits !== void 0) {
               der.writeBuffer(
-                exts[i].bits,
+                exts[i2].bits,
                 asn1.Ber.BitString
               );
             } else {
@@ -23145,7 +22781,7 @@ var require_x509 = __commonJS({
             der.endSequence();
           } else {
             der.writeBuffer(
-              exts[i].data,
+              exts[i2].data,
               asn1.Ber.OctetString
             );
           }
@@ -23159,12 +22795,12 @@ var require_x509 = __commonJS({
     function readBitField(bits, bitIndex) {
       var bitLen = 8 * (bits.length - 1) - bits[0];
       var setBits = {};
-      for (var i = 0; i < bitLen; ++i) {
-        var byteN = 1 + Math.floor(i / 8);
-        var bit = 7 - i % 8;
+      for (var i2 = 0; i2 < bitLen; ++i2) {
+        var byteN = 1 + Math.floor(i2 / 8);
+        var bit = 7 - i2 % 8;
         var mask = 1 << bit;
         var bitVal = (bits[byteN] & mask) !== 0;
-        var name = bitIndex[i];
+        var name = bitIndex[i2];
         if (bitVal && typeof name === "string") {
           setBits[name] = true;
         }
@@ -23177,11 +22813,11 @@ var require_x509 = __commonJS({
       var unused = blen * 8 - bitLen;
       var bits = Buffer2.alloc(1 + blen);
       bits[0] = unused;
-      for (var i = 0; i < bitLen; ++i) {
-        var byteN = 1 + Math.floor(i / 8);
-        var bit = 7 - i % 8;
+      for (var i2 = 0; i2 < bitLen; ++i2) {
+        var byteN = 1 + Math.floor(i2 / 8);
+        var bit = 7 - i2 % 8;
         var mask = 1 << bit;
-        var name = bitIndex[i];
+        var name = bitIndex[i2];
         if (name === void 0)
           continue;
         var bitVal = setBits.indexOf(name) !== -1;
@@ -23262,18 +22898,18 @@ var require_x509_pem = __commonJS({
       var tmp = dbuf.toString("base64");
       var len = tmp.length + tmp.length / 64 + 18 + 16 + header.length * 2 + 10;
       var buf = Buffer2.alloc(len);
-      var o = 0;
-      o += buf.write("-----BEGIN " + header + "-----\n", o);
-      for (var i = 0; i < tmp.length; ) {
-        var limit = i + 64;
+      var o2 = 0;
+      o2 += buf.write("-----BEGIN " + header + "-----\n", o2);
+      for (var i2 = 0; i2 < tmp.length; ) {
+        var limit = i2 + 64;
         if (limit > tmp.length)
           limit = tmp.length;
-        o += buf.write(tmp.slice(i, limit), o);
-        buf[o++] = 10;
-        i = limit;
+        o2 += buf.write(tmp.slice(i2, limit), o2);
+        buf[o2++] = 10;
+        i2 = limit;
       }
-      o += buf.write("-----END " + header + "-----\n", o);
-      return buf.slice(0, o);
+      o2 += buf.write("-----END " + header + "-----\n", o2);
+      return buf.slice(0, o2);
     }
   }
 });
@@ -23435,9 +23071,9 @@ var require_certificate = __commonJS({
       utils.assertCompatible(key, PrivateKey, [1, 2], "key");
       var fmts = Object.keys(formats);
       var didOne = false;
-      for (var i = 0; i < fmts.length; ++i) {
-        if (fmts[i] !== "pem") {
-          var ret = formats[fmts[i]].sign(this, key);
+      for (var i2 = 0; i2 < fmts.length; ++i2) {
+        if (fmts[i2] !== "pem") {
+          var ret = formats[fmts[i2]].sign(this, key);
           if (ret === true)
             didOne = true;
         }
@@ -23620,8 +23256,8 @@ var require_certificate = __commonJS({
         options.filename = "(unnamed)";
       assert.object(formats[format], "formats[format]");
       try {
-        var k = formats[format].read(data, options);
-        return k;
+        var k2 = formats[format].read(data, options);
+        return k2;
       } catch (e) {
         throw new CertificateParseError(options.filename, format, e);
       }
@@ -23751,12 +23387,12 @@ var require_fingerprint = __commonJS({
         alg = "md5";
         if (parts[0].toLowerCase() === "md5")
           parts = parts.slice(1);
-        parts = parts.map(function(p) {
-          while (p.length < 2)
-            p = "0" + p;
-          if (p.length > 2)
+        parts = parts.map(function(p2) {
+          while (p2.length < 2)
+            p2 = "0" + p2;
+          if (p2.length > 2)
             throw new FingerprintFormatError(fp);
-          return p;
+          return p2;
         });
         parts = parts.join("");
         if (!hexRE.test(parts) || parts.length % 2 !== 0)
@@ -23798,8 +23434,8 @@ var require_fingerprint = __commonJS({
       if (algs.hashAlgs[alg] === void 0)
         throw new InvalidAlgorithmError(alg);
       if (enAlgs !== void 0) {
-        enAlgs = enAlgs.map(function(a) {
-          return a.toLowerCase();
+        enAlgs = enAlgs.map(function(a2) {
+          return a2.toLowerCase();
         });
         if (enAlgs.indexOf(alg) === -1)
           throw new InvalidAlgorithmError(alg);
@@ -23811,14 +23447,14 @@ var require_fingerprint = __commonJS({
         hashType
       });
     };
-    function addColons(s) {
-      return s.replace(/(.{2})(?=.)/g, "$1:");
+    function addColons(s2) {
+      return s2.replace(/(.{2})(?=.)/g, "$1:");
     }
-    function base64Strip(s) {
-      return s.replace(/=*$/, "");
+    function base64Strip(s2) {
+      return s2.replace(/=*$/, "");
     }
-    function sshBase64Format(alg, h) {
-      return alg.toUpperCase() + ":" + base64Strip(h);
+    function sshBase64Format(alg, h2) {
+      return alg.toUpperCase() + ":" + base64Strip(h2);
     }
     Fingerprint.isFingerprint = function(obj, ver) {
       return utils.isCompatible(obj, Fingerprint, ver);
@@ -23874,8 +23510,8 @@ var require_key = __commonJS({
       if (typeof algInfo !== "object")
         throw new InvalidAlgorithmError(opts.type);
       var partLookup = {};
-      for (var i = 0; i < opts.parts.length; ++i) {
-        var part = opts.parts[i];
+      for (var i2 = 0; i2 < opts.parts.length; ++i2) {
+        var part = opts.parts[i2];
         partLookup[part.name] = part;
       }
       this.type = opts.type;
@@ -23982,24 +23618,24 @@ var require_key = __commonJS({
         return new edCompat.Verifier(this, hashAlgo);
       if (this.type === "curve25519")
         throw new Error("Curve25519 keys are not suitable for signing or verification");
-      var v, nm, err;
+      var v2, nm, err;
       try {
         nm = hashAlgo.toUpperCase();
-        v = crypto.createVerify(nm);
+        v2 = crypto.createVerify(nm);
       } catch (e) {
         err = e;
       }
-      if (v === void 0 || err instanceof Error && err.message.match(/Unknown message digest/)) {
+      if (v2 === void 0 || err instanceof Error && err.message.match(/Unknown message digest/)) {
         nm = "RSA-";
         nm += hashAlgo.toUpperCase();
-        v = crypto.createVerify(nm);
+        v2 = crypto.createVerify(nm);
       }
-      assert.ok(v, "failed to create verifier");
-      var oldVerify = v.verify.bind(v);
+      assert.ok(v2, "failed to create verifier");
+      var oldVerify = v2.verify.bind(v2);
       var key = this.toBuffer("pkcs8");
       var curve = this.curve;
       var self2 = this;
-      v.verify = function(signature, fmt) {
+      v2.verify = function(signature, fmt) {
         if (Signature.isSignature(signature, [2, 0])) {
           if (signature.type !== self2.type)
             return false;
@@ -24016,7 +23652,7 @@ var require_key = __commonJS({
           throw new TypeError("signature must be a string, Buffer, or Signature object");
         }
       };
-      return v;
+      return v2;
     };
     Key.prototype.createDiffieHellman = function() {
       if (this.type === "rsa")
@@ -24040,12 +23676,12 @@ var require_key = __commonJS({
         options.filename = "(unnamed)";
       assert.object(formats[format], "formats[format]");
       try {
-        var k = formats[format].read(data, options);
-        if (k instanceof PrivateKey)
-          k = k.toPublic();
-        if (!k.comment)
-          k.comment = options.filename;
-        return k;
+        var k2 = formats[format].read(data, options);
+        if (k2 instanceof PrivateKey)
+          k2 = k2.toPublic();
+        if (!k2.comment)
+          k2.comment = options.filename;
+        return k2;
       } catch (e) {
         if (e.name === "KeyEncryptedError")
           throw e;
@@ -24175,8 +23811,8 @@ var require_utils2 = __commonJS({
        */
       sshKeyToPEM: function sshKeyToPEM(key) {
         assert.string(key, "ssh_key");
-        var k = sshpk.parseKey(key, "ssh");
-        return k.toString("pem");
+        var k2 = sshpk.parseKey(key, "ssh");
+        return k2.toString("pem");
       },
       /**
        * Generates an OpenSSH fingerprint from an ssh public key.
@@ -24188,8 +23824,8 @@ var require_utils2 = __commonJS({
        */
       fingerprint: function fingerprint(key) {
         assert.string(key, "ssh_key");
-        var k = sshpk.parseKey(key, "ssh");
-        return k.fingerprint("md5").toString("hex");
+        var k2 = sshpk.parseKey(key, "ssh");
+        return k2.fingerprint("md5").toString("hex");
       },
       /**
        * Converts a PKGCS#8 PEM file to an OpenSSH public key (rsa)
@@ -24198,9 +23834,9 @@ var require_utils2 = __commonJS({
        */
       pemToRsaSSHKey: function pemToRsaSSHKey(pem, comment) {
         assert.equal("string", typeof pem, "typeof pem");
-        var k = sshpk.parseKey(pem, "pem");
-        k.comment = comment;
-        return k.toString("ssh");
+        var k2 = sshpk.parseKey(pem, "pem");
+        k2.comment = comment;
+        return k2.toString("ssh");
       }
     };
   }
@@ -24309,7 +23945,7 @@ var require_parser = __commonJS({
           throw new MissingHeaderError("no " + authzHeaderName + " header present in the request");
         }
         options.clockSkew = options.clockSkew || 300;
-        var i = 0;
+        var i2 = 0;
         var state = State.New;
         var substate = ParamsState.Name;
         var tmpName = "";
@@ -24320,23 +23956,23 @@ var require_parser = __commonJS({
           signingString: ""
         };
         var authz = request.headers[authzHeaderName];
-        for (i = 0; i < authz.length; i++) {
-          var c = authz.charAt(i);
+        for (i2 = 0; i2 < authz.length; i2++) {
+          var c2 = authz.charAt(i2);
           switch (Number(state)) {
             case State.New:
-              if (c !== " ")
-                parsed.scheme += c;
+              if (c2 !== " ")
+                parsed.scheme += c2;
               else
                 state = State.Params;
               break;
             case State.Params:
               switch (Number(substate)) {
                 case ParamsState.Name:
-                  var code = c.charCodeAt(0);
+                  var code = c2.charCodeAt(0);
                   if (code >= 65 && code <= 90 || // A-Z
                   code >= 97 && code <= 122) {
-                    tmpName += c;
-                  } else if (c === "=") {
+                    tmpName += c2;
+                  } else if (c2 === "=") {
                     if (tmpName.length === 0)
                       throw new InvalidHeaderError("bad param format");
                     substate = ParamsState.Quote;
@@ -24345,7 +23981,7 @@ var require_parser = __commonJS({
                   }
                   break;
                 case ParamsState.Quote:
-                  if (c === '"') {
+                  if (c2 === '"') {
                     tmpValue = "";
                     substate = ParamsState.Value;
                   } else {
@@ -24353,15 +23989,15 @@ var require_parser = __commonJS({
                   }
                   break;
                 case ParamsState.Value:
-                  if (c === '"') {
+                  if (c2 === '"') {
                     parsed.params[tmpName] = tmpValue;
                     substate = ParamsState.Comma;
                   } else {
-                    tmpValue += c;
+                    tmpValue += c2;
                   }
                   break;
                 case ParamsState.Comma:
-                  if (c === ",") {
+                  if (c2 === ",") {
                     tmpName = "";
                     substate = ParamsState.Name;
                   } else {
@@ -24402,24 +24038,24 @@ var require_parser = __commonJS({
           else
             throw e;
         }
-        for (i = 0; i < parsed.params.headers.length; i++) {
-          var h = parsed.params.headers[i].toLowerCase();
-          parsed.params.headers[i] = h;
-          if (h === "request-line") {
+        for (i2 = 0; i2 < parsed.params.headers.length; i2++) {
+          var h2 = parsed.params.headers[i2].toLowerCase();
+          parsed.params.headers[i2] = h2;
+          if (h2 === "request-line") {
             if (!options.strict) {
               parsed.signingString += request.method + " " + request.url + " HTTP/" + request.httpVersion;
             } else {
               throw new StrictParsingError("request-line is not a valid header with strict parsing enabled.");
             }
-          } else if (h === "(request-target)") {
+          } else if (h2 === "(request-target)") {
             parsed.signingString += "(request-target): " + request.method.toLowerCase() + " " + request.url;
           } else {
-            var value = request.headers[h];
+            var value = request.headers[h2];
             if (value === void 0)
-              throw new MissingHeaderError(h + " was not in the request");
-            parsed.signingString += h + ": " + value;
+              throw new MissingHeaderError(h2 + " was not in the request");
+            parsed.signingString += h2 + ": " + value;
           }
-          if (i + 1 < parsed.params.headers.length)
+          if (i2 + 1 < parsed.params.headers.length)
             parsed.signingString += "\n";
         }
         var date;
@@ -24633,8 +24269,8 @@ var require_util = __commonJS({
       return typeof arg === "object" && arg !== null;
     }
     exports.isObject = isObject;
-    function isDate(d) {
-      return objectToString(d) === "[object Date]";
+    function isDate(d2) {
+      return objectToString(d2) === "[object Date]";
     }
     exports.isDate = isDate;
     function isError(e) {
@@ -24651,8 +24287,8 @@ var require_util = __commonJS({
     }
     exports.isPrimitive = isPrimitive;
     exports.isBuffer = Buffer.isBuffer;
-    function objectToString(o) {
-      return Object.prototype.toString.call(o);
+    function objectToString(o2) {
+      return Object.prototype.toString.call(o2);
     }
   }
 });
@@ -24672,7 +24308,7 @@ var require_verror = __commonJS({
     VError.WError = WError;
     VError.MultiError = MultiError;
     function parseConstructorArguments(args) {
-      var argv, options, sprintf_args, shortmessage, k;
+      var argv, options, sprintf_args, shortmessage, k2;
       mod_assertplus.object(args, "args");
       mod_assertplus.bool(args.strict, "args.strict");
       mod_assertplus.array(args.argv, "args.argv");
@@ -24685,8 +24321,8 @@ var require_verror = __commonJS({
         sprintf_args = argv.slice(1);
       } else if (typeof argv[0] === "object") {
         options = {};
-        for (k in argv[0]) {
-          options[k] = argv[0][k];
+        for (k2 in argv[0]) {
+          options[k2] = argv[0][k2];
         }
         sprintf_args = argv.slice(1);
       } else {
@@ -24699,8 +24335,8 @@ var require_verror = __commonJS({
       }
       mod_assertplus.object(options);
       if (!options.strict && !args.strict) {
-        sprintf_args = sprintf_args.map(function(a) {
-          return a === null ? "null" : a === void 0 ? "undefined" : a;
+        sprintf_args = sprintf_args.map(function(a2) {
+          return a2 === null ? "null" : a2 === void 0 ? "undefined" : a2;
         });
       }
       if (sprintf_args.length === 0) {
@@ -24714,7 +24350,7 @@ var require_verror = __commonJS({
       };
     }
     function VError() {
-      var args, obj, parsed, cause, ctor, message, k;
+      var args, obj, parsed, cause, ctor, message, k2;
       args = Array.prototype.slice.call(arguments, 0);
       if (!(this instanceof VError)) {
         obj = Object.create(VError.prototype);
@@ -24744,8 +24380,8 @@ var require_verror = __commonJS({
       }
       this.jse_info = {};
       if (parsed.options.info) {
-        for (k in parsed.options.info) {
-          this.jse_info[k] = parsed.options.info[k];
+        for (k2 in parsed.options.info) {
+          this.jse_info[k2] = parsed.options.info[k2];
         }
       }
       this.message = message;
@@ -24773,7 +24409,7 @@ var require_verror = __commonJS({
       return mod_isError(err.jse_cause) ? err.jse_cause : null;
     };
     VError.info = function(err) {
-      var rv, cause, k;
+      var rv, cause, k2;
       mod_assertplus.ok(mod_isError(err), "err must be an Error");
       cause = VError.cause(err);
       if (cause !== null) {
@@ -24782,8 +24418,8 @@ var require_verror = __commonJS({
         rv = {};
       }
       if (typeof err.jse_info == "object" && err.jse_info !== null) {
-        for (k in err.jse_info) {
-          rv[k] = err.jse_info[k];
+        for (k2 in err.jse_info) {
+          rv[k2] = err.jse_info[k2];
         }
       }
       return rv;
@@ -24893,9 +24529,9 @@ var require_verror = __commonJS({
         str += "; caused by " + this.jse_cause.toString();
       return str;
     };
-    WError.prototype.cause = function we_cause(c) {
-      if (mod_isError(c))
-        this.jse_cause = c;
+    WError.prototype.cause = function we_cause(c2) {
+      if (mod_isError(c2))
+        this.jse_cause = c2;
       return this.jse_cause;
     };
   }
@@ -24942,9 +24578,9 @@ var require_validate = __commonJS({
           return schema2.type || primitiveConstructors[schema2.name] == schema2 && schema2.name.toLowerCase();
         }
         var errors = [];
-        function checkProp(value, schema2, path, i) {
-          var l;
-          path += path ? typeof i == "number" ? "[" + i + "]" : typeof i == "undefined" ? "" : "." + i : i;
+        function checkProp(value, schema2, path, i2) {
+          var l2;
+          path += path ? typeof i2 == "number" ? "[" + i2 + "]" : typeof i2 == "undefined" ? "" : "." + i2 : i2;
           function addError(message) {
             errors.push({ property: path, message });
           }
@@ -24962,7 +24598,7 @@ var require_validate = __commonJS({
             addError("is a readonly field, it can not be changed");
           }
           if (schema2["extends"]) {
-            checkProp(value, schema2["extends"], path, i);
+            checkProp(value, schema2["extends"], path, i2);
           }
           function checkType(type, value2) {
             if (type) {
@@ -24971,8 +24607,8 @@ var require_validate = __commonJS({
               }
               if (type instanceof Array) {
                 var unionErrors = [];
-                for (var j2 = 0; j2 < type.length; j2++) {
-                  if (!(unionErrors = checkType(type[j2], value2)).length) {
+                for (var j3 = 0; j3 < type.length; j3++) {
+                  if (!(unionErrors = checkType(type[j3], value2)).length) {
                     break;
                   }
                 }
@@ -25004,12 +24640,12 @@ var require_validate = __commonJS({
                 if (schema2.items) {
                   var itemsIsArray = schema2.items instanceof Array;
                   var propDef = schema2.items;
-                  for (i = 0, l = value.length; i < l; i += 1) {
+                  for (i2 = 0, l2 = value.length; i2 < l2; i2 += 1) {
                     if (itemsIsArray)
-                      propDef = schema2.items[i];
+                      propDef = schema2.items[i2];
                     if (options.coerce)
-                      value[i] = options.coerce(value[i], propDef);
-                    errors.concat(checkProp(value[i], propDef, path, i));
+                      value[i2] = options.coerce(value[i2], propDef);
+                    errors.concat(checkProp(value[i2], propDef, path, i2));
                   }
                 }
                 if (schema2.minItems && value.length < schema2.minItems) {
@@ -25038,10 +24674,10 @@ var require_validate = __commonJS({
               }
               if (schema2["enum"]) {
                 var enumer = schema2["enum"];
-                l = enumer.length;
+                l2 = enumer.length;
                 var found;
-                for (var j = 0; j < l; j++) {
-                  if (enumer[j] === value) {
+                for (var j2 = 0; j2 < l2; j2++) {
+                  if (enumer[j2] === value) {
                     found = 1;
                     break;
                   }
@@ -25062,44 +24698,44 @@ var require_validate = __commonJS({
             if (typeof instance2 != "object" || instance2 instanceof Array) {
               errors.push({ property: path, message: "an object is required" });
             }
-            for (var i in objTypeDef) {
-              if (objTypeDef.hasOwnProperty(i) && i != "__proto__" && i != "constructor") {
-                var value = instance2.hasOwnProperty(i) ? instance2[i] : void 0;
+            for (var i2 in objTypeDef) {
+              if (objTypeDef.hasOwnProperty(i2) && i2 != "__proto__" && i2 != "constructor") {
+                var value = instance2.hasOwnProperty(i2) ? instance2[i2] : void 0;
                 if (value === void 0 && options.existingOnly)
                   continue;
-                var propDef = objTypeDef[i];
+                var propDef = objTypeDef[i2];
                 if (value === void 0 && propDef["default"]) {
-                  value = instance2[i] = propDef["default"];
+                  value = instance2[i2] = propDef["default"];
                 }
-                if (options.coerce && i in instance2) {
-                  value = instance2[i] = options.coerce(value, propDef);
+                if (options.coerce && i2 in instance2) {
+                  value = instance2[i2] = options.coerce(value, propDef);
                 }
-                checkProp(value, propDef, path, i);
+                checkProp(value, propDef, path, i2);
               }
             }
           }
-          for (i in instance2) {
-            if (instance2.hasOwnProperty(i) && !(i.charAt(0) == "_" && i.charAt(1) == "_") && objTypeDef && !objTypeDef[i] && additionalProp === false) {
+          for (i2 in instance2) {
+            if (instance2.hasOwnProperty(i2) && !(i2.charAt(0) == "_" && i2.charAt(1) == "_") && objTypeDef && !objTypeDef[i2] && additionalProp === false) {
               if (options.filter) {
-                delete instance2[i];
+                delete instance2[i2];
                 continue;
               } else {
-                errors.push({ property: path, message: "The property " + i + " is not defined in the schema and the schema does not allow additional properties" });
+                errors.push({ property: path, message: "The property " + i2 + " is not defined in the schema and the schema does not allow additional properties" });
               }
             }
-            var requires = objTypeDef && objTypeDef[i] && objTypeDef[i].requires;
+            var requires = objTypeDef && objTypeDef[i2] && objTypeDef[i2].requires;
             if (requires && !(requires in instance2)) {
-              errors.push({ property: path, message: "the presence of the property " + i + " requires that " + requires + " also be present" });
+              errors.push({ property: path, message: "the presence of the property " + i2 + " requires that " + requires + " also be present" });
             }
-            value = instance2[i];
-            if (additionalProp && (!(objTypeDef && typeof objTypeDef == "object") || !(i in objTypeDef))) {
+            value = instance2[i2];
+            if (additionalProp && (!(objTypeDef && typeof objTypeDef == "object") || !(i2 in objTypeDef))) {
               if (options.coerce) {
-                value = instance2[i] = options.coerce(value, additionalProp);
+                value = instance2[i2] = options.coerce(value, additionalProp);
               }
-              checkProp(value, additionalProp, path, i);
+              checkProp(value, additionalProp, path, i2);
             }
             if (!_changing && value && value.$schema) {
-              errors = errors.concat(checkProp(value, value.$schema, path, i));
+              errors = errors.concat(checkProp(value, value.$schema, path, i2));
             }
           }
           return errors;
@@ -25192,15 +24828,15 @@ var require_jsprim = __commonJS({
         return obj1 === obj2;
       if (obj1.constructor != obj2.constructor)
         return false;
-      var k;
-      for (k in obj1) {
-        if (!obj2.hasOwnProperty(k))
+      var k2;
+      for (k2 in obj1) {
+        if (!obj2.hasOwnProperty(k2))
           return false;
-        if (!deepEqual2(obj1[k], obj2[k]))
+        if (!deepEqual2(obj1[k2], obj2[k2]))
           return false;
       }
-      for (k in obj2) {
-        if (!obj1.hasOwnProperty(k))
+      for (k2 in obj2) {
+        if (!obj1.hasOwnProperty(k2))
           return false;
       }
       return true;
@@ -25231,13 +24867,13 @@ var require_jsprim = __commonJS({
         return void 0;
       if (obj.hasOwnProperty(key))
         return obj[key];
-      var i = key.indexOf(".");
-      if (i == -1)
+      var i2 = key.indexOf(".");
+      if (i2 == -1)
         return void 0;
-      var key1 = key.substr(0, i);
+      var key1 = key.substr(0, i2);
       if (!obj.hasOwnProperty(key1))
         return void 0;
-      return pluckv(obj[key1], key.substr(i + 1));
+      return pluckv(obj[key1], key.substr(i2 + 1));
     }
     function flattenIter(data, depth, callback) {
       doFlattenIter(data, depth, [], callback);
@@ -25271,8 +24907,8 @@ var require_jsprim = __commonJS({
       var rv = [];
       var key;
       for (key in data) {
-        flattenObject(data[key], depth - 1).forEach(function(p) {
-          rv.push([key].concat(p));
+        flattenObject(data[key], depth - 1).forEach(function(p2) {
+          rv.push([key].concat(p2));
         });
       }
       return rv;
@@ -25286,19 +24922,19 @@ var require_jsprim = __commonJS({
         suffix.length
       ) == suffix;
     }
-    function iso8601(d) {
-      if (typeof d == "number")
-        d = new Date(d);
-      mod_assert.ok(d.constructor === Date);
+    function iso8601(d2) {
+      if (typeof d2 == "number")
+        d2 = new Date(d2);
+      mod_assert.ok(d2.constructor === Date);
       return mod_extsprintf.sprintf(
         "%4d-%02d-%02dT%02d:%02d:%02d.%03dZ",
-        d.getUTCFullYear(),
-        d.getUTCMonth() + 1,
-        d.getUTCDate(),
-        d.getUTCHours(),
-        d.getUTCMinutes(),
-        d.getUTCSeconds(),
-        d.getUTCMilliseconds()
+        d2.getUTCFullYear(),
+        d2.getUTCMonth() + 1,
+        d2.getUTCDate(),
+        d2.getUTCHours(),
+        d2.getUTCMinutes(),
+        d2.getUTCSeconds(),
+        d2.getUTCMilliseconds()
       );
     }
     var RFC1123_MONTHS = [
@@ -25408,7 +25044,7 @@ var require_jsprim = __commonJS({
           );
         }
       }
-      var c;
+      var c2;
       var pbase = -1;
       var base = options.base;
       var start;
@@ -25442,10 +25078,10 @@ var require_jsprim = __commonJS({
         }
       }
       for (start = idx; idx < len; ++idx) {
-        c = translateDigit(str.charCodeAt(idx));
-        if (c !== -1 && c < base) {
+        c2 = translateDigit(str.charCodeAt(idx));
+        if (c2 !== -1 && c2 < base) {
           value *= base;
-          value += c;
+          value += c2;
         } else {
           break;
         }
@@ -25470,28 +25106,28 @@ var require_jsprim = __commonJS({
       }
       return result;
     }
-    function translateDigit(d) {
-      if (d >= CP_0 && d <= CP_9) {
-        return d - PI_CONV_DEC;
-      } else if (d >= CP_A && d <= CP_Z) {
-        return d - PI_CONV_UC;
-      } else if (d >= CP_a && d <= CP_z) {
-        return d - PI_CONV_LC;
+    function translateDigit(d2) {
+      if (d2 >= CP_0 && d2 <= CP_9) {
+        return d2 - PI_CONV_DEC;
+      } else if (d2 >= CP_A && d2 <= CP_Z) {
+        return d2 - PI_CONV_UC;
+      } else if (d2 >= CP_a && d2 <= CP_z) {
+        return d2 - PI_CONV_LC;
       } else {
         return -1;
       }
     }
-    function isSpace(c) {
-      return c === 32 || c >= 9 && c <= 13 || c === 160 || c === 5760 || c === 6158 || c >= 8192 && c <= 8202 || c === 8232 || c === 8233 || c === 8239 || c === 8287 || c === 12288 || c === 65279;
+    function isSpace(c2) {
+      return c2 === 32 || c2 >= 9 && c2 <= 13 || c2 === 160 || c2 === 5760 || c2 === 6158 || c2 >= 8192 && c2 <= 8202 || c2 === 8232 || c2 === 8233 || c2 === 8239 || c2 === 8287 || c2 === 12288 || c2 === 65279;
     }
-    function prefixToBase(c) {
-      if (c === CP_b || c === CP_B) {
+    function prefixToBase(c2) {
+      if (c2 === CP_b || c2 === CP_B) {
         return 2;
-      } else if (c === CP_o || c === CP_O) {
+      } else if (c2 === CP_o || c2 === CP_O) {
         return 8;
-      } else if (c === CP_t || c === CP_T) {
+      } else if (c2 === CP_t || c2 === CP_T) {
         return 10;
-      } else if (c === CP_x || c === CP_X) {
+      } else if (c2 === CP_x || c2 === CP_X) {
         return 16;
       } else {
         return -1;
@@ -25504,13 +25140,13 @@ var require_jsprim = __commonJS({
       var error = report.errors[0];
       var propname = error["property"];
       var reason = error["message"].toLowerCase();
-      var i, j;
-      if ((i = reason.indexOf("the property ")) != -1 && (j = reason.indexOf(" is not defined in the schema and the schema does not allow additional properties")) != -1) {
-        i += "the property ".length;
+      var i2, j2;
+      if ((i2 = reason.indexOf("the property ")) != -1 && (j2 = reason.indexOf(" is not defined in the schema and the schema does not allow additional properties")) != -1) {
+        i2 += "the property ".length;
         if (propname === "")
-          propname = reason.substr(i, j - i);
+          propname = reason.substr(i2, j2 - i2);
         else
-          propname = propname + "." + reason.substr(i, j - i);
+          propname = propname + "." + reason.substr(i2, j2 - i2);
         reason = "unsupported property";
       }
       var rv = new mod_verror.VError('property "%s": %s', propname, reason);
@@ -25524,56 +25160,56 @@ var require_jsprim = __commonJS({
       );
       return arr[Math.floor(Math.random() * arr.length)];
     }
-    function assertHrtime(a) {
+    function assertHrtime(a2) {
       mod_assert.ok(
-        a[0] >= 0 && a[1] >= 0,
+        a2[0] >= 0 && a2[1] >= 0,
         "negative numbers not allowed in hrtimes"
       );
-      mod_assert.ok(a[1] < 1e9, "nanoseconds column overflow");
+      mod_assert.ok(a2[1] < 1e9, "nanoseconds column overflow");
     }
-    function hrtimeDiff(a, b) {
-      assertHrtime(a);
-      assertHrtime(b);
+    function hrtimeDiff(a2, b2) {
+      assertHrtime(a2);
+      assertHrtime(b2);
       mod_assert.ok(
-        a[0] > b[0] || a[0] == b[0] && a[1] >= b[1],
+        a2[0] > b2[0] || a2[0] == b2[0] && a2[1] >= b2[1],
         "negative differences not allowed"
       );
-      var rv = [a[0] - b[0], 0];
-      if (a[1] >= b[1]) {
-        rv[1] = a[1] - b[1];
+      var rv = [a2[0] - b2[0], 0];
+      if (a2[1] >= b2[1]) {
+        rv[1] = a2[1] - b2[1];
       } else {
         rv[0]--;
-        rv[1] = 1e9 - (b[1] - a[1]);
+        rv[1] = 1e9 - (b2[1] - a2[1]);
       }
       return rv;
     }
-    function hrtimeNanosec(a) {
-      assertHrtime(a);
-      return Math.floor(a[0] * 1e9 + a[1]);
+    function hrtimeNanosec(a2) {
+      assertHrtime(a2);
+      return Math.floor(a2[0] * 1e9 + a2[1]);
     }
-    function hrtimeMicrosec(a) {
-      assertHrtime(a);
-      return Math.floor(a[0] * 1e6 + a[1] / 1e3);
+    function hrtimeMicrosec(a2) {
+      assertHrtime(a2);
+      return Math.floor(a2[0] * 1e6 + a2[1] / 1e3);
     }
-    function hrtimeMillisec(a) {
-      assertHrtime(a);
-      return Math.floor(a[0] * 1e3 + a[1] / 1e6);
+    function hrtimeMillisec(a2) {
+      assertHrtime(a2);
+      return Math.floor(a2[0] * 1e3 + a2[1] / 1e6);
     }
-    function hrtimeAccum(a, b) {
-      assertHrtime(a);
-      assertHrtime(b);
-      a[1] += b[1];
-      if (a[1] >= 1e9) {
-        a[0]++;
-        a[1] -= 1e9;
+    function hrtimeAccum(a2, b2) {
+      assertHrtime(a2);
+      assertHrtime(b2);
+      a2[1] += b2[1];
+      if (a2[1] >= 1e9) {
+        a2[0]++;
+        a2[1] -= 1e9;
       }
-      a[0] += b[0];
-      return a;
+      a2[0] += b2[0];
+      return a2;
     }
-    function hrtimeAdd(a, b) {
-      assertHrtime(a);
-      var rv = [a[0], a[1]];
-      return hrtimeAccum(rv, b);
+    function hrtimeAdd(a2, b2) {
+      assertHrtime(a2);
+      var rv = [a2[0], a2[1]];
+      return hrtimeAccum(rv, b2);
     }
     function extraProperties(obj, allowed) {
       mod_assert.ok(
@@ -25584,9 +25220,9 @@ var require_jsprim = __commonJS({
         Array.isArray(allowed),
         "allowed argument must be an array of strings"
       );
-      for (var i = 0; i < allowed.length; i++) {
+      for (var i2 = 0; i2 < allowed.length; i2++) {
         mod_assert.ok(
-          typeof allowed[i] === "string",
+          typeof allowed[i2] === "string",
           "allowed argument must be an array of strings"
         );
       }
@@ -25595,19 +25231,19 @@ var require_jsprim = __commonJS({
       });
     }
     function mergeObjects(provided, overrides, defaults) {
-      var rv, k;
+      var rv, k2;
       rv = {};
       if (defaults) {
-        for (k in defaults)
-          rv[k] = defaults[k];
+        for (k2 in defaults)
+          rv[k2] = defaults[k2];
       }
       if (provided) {
-        for (k in provided)
-          rv[k] = provided[k];
+        for (k2 in provided)
+          rv[k2] = provided[k2];
       }
       if (overrides) {
-        for (k in overrides)
-          rv[k] = overrides[k];
+        for (k2 in overrides)
+          rv[k2] = overrides[k2];
       }
       return rv;
     }
@@ -25843,28 +25479,28 @@ var require_signer = __commonJS({
           options.algorithm = options.algorithm.toLowerCase();
           alg = validateAlgorithm(options.algorithm);
         }
-        var i;
+        var i2;
         var stringToSign = "";
-        for (i = 0; i < options.headers.length; i++) {
-          if (typeof options.headers[i] !== "string")
+        for (i2 = 0; i2 < options.headers.length; i2++) {
+          if (typeof options.headers[i2] !== "string")
             throw new TypeError("options.headers must be an array of Strings");
-          var h = options.headers[i].toLowerCase();
-          if (h === "request-line") {
+          var h2 = options.headers[i2].toLowerCase();
+          if (h2 === "request-line") {
             if (!options.strict) {
               stringToSign += request.method + " " + request.path + " HTTP/" + options.httpVersion;
             } else {
               throw new StrictParsingError("request-line is not a valid header with strict parsing enabled.");
             }
-          } else if (h === "(request-target)") {
+          } else if (h2 === "(request-target)") {
             stringToSign += "(request-target): " + request.method.toLowerCase() + " " + request.path;
           } else {
-            var value = request.getHeader(h);
+            var value = request.getHeader(h2);
             if (value === void 0 || value === "") {
-              throw new MissingHeaderError(h + " was not in the request");
+              throw new MissingHeaderError(h2 + " was not in the request");
             }
-            stringToSign += h + ": " + value;
+            stringToSign += h2 + ": " + value;
           }
-          if (i + 1 < options.headers.length)
+          if (i2 + 1 < options.headers.length)
             stringToSign += "\n";
         }
         if (request.hasOwnProperty("_stringToSign")) {
@@ -25947,9 +25583,9 @@ var require_verify = __commonJS({
         var alg = validateAlgorithm(parsedSignature.algorithm);
         if (alg[0] === "hmac" || alg[0] !== pubkey.type)
           return false;
-        var v = pubkey.createVerify(alg[1]);
-        v.update(parsedSignature.signingString);
-        return v.verify(parsedSignature.params.signature, "base64");
+        var v2 = pubkey.createVerify(alg[1]);
+        v2.update(parsedSignature.signingString);
+        return v2.verify(parsedSignature.params.signature, "base64");
       },
       /**
        * Verify HMAC against shared secret.  You are expected to pass in an object
@@ -34619,8 +34255,8 @@ var require_mime_types = __commonJS({
           return;
         }
         extensions[type] = exts;
-        for (var i = 0; i < exts.length; i++) {
-          var extension2 = exts[i];
+        for (var i2 = 0; i2 < exts.length; i2++) {
+          var extension2 = exts[i2];
           if (types[extension2]) {
             var from = preference.indexOf(db[types[extension2]].source);
             var to = preference.indexOf(mime.source);
@@ -34644,8 +34280,8 @@ var require_caseless = __commonJS({
     }
     Caseless.prototype.set = function(name, value, clobber) {
       if (typeof name === "object") {
-        for (var i in name) {
-          this.set(i, name[i], value);
+        for (var i2 in name) {
+          this.set(i2, name[i2], value);
         }
       } else {
         if (typeof clobber === "undefined")
@@ -34660,9 +34296,9 @@ var require_caseless = __commonJS({
     };
     Caseless.prototype.has = function(name) {
       var keys = Object.keys(this.dict), name = name.toLowerCase();
-      for (var i = 0; i < keys.length; i++) {
-        if (keys[i].toLowerCase() === name)
-          return keys[i];
+      for (var i2 = 0; i2 < keys.length; i2++) {
+        if (keys[i2].toLowerCase() === name)
+          return keys[i2];
       }
       return false;
     };
@@ -34694,23 +34330,23 @@ var require_caseless = __commonJS({
       return new Caseless(dict);
     };
     module.exports.httpify = function(resp, headers) {
-      var c = new Caseless(headers);
+      var c2 = new Caseless(headers);
       resp.setHeader = function(key, value, clobber) {
         if (typeof value === "undefined")
           return;
-        return c.set(key, value, clobber);
+        return c2.set(key, value, clobber);
       };
       resp.hasHeader = function(key) {
-        return c.has(key);
+        return c2.has(key);
       };
       resp.getHeader = function(key) {
-        return c.get(key);
+        return c2.get(key);
       };
       resp.removeHeader = function(key) {
-        return c.del(key);
+        return c2.del(key);
       };
-      resp.headers = c.dict;
-      return c;
+      resp.headers = c2.dict;
+      return c2;
     };
   }
 });
@@ -34782,9 +34418,9 @@ var require_forever_agent = __commonJS({
         this.addRequestNoreuse(req, host, port);
       }
     };
-    ForeverAgent.prototype.removeSocket = function(s, name, host, port) {
+    ForeverAgent.prototype.removeSocket = function(s2, name, host, port) {
       if (this.sockets[name]) {
-        var index3 = this.sockets[name].indexOf(s);
+        var index3 = this.sockets[name].indexOf(s2);
         if (index3 !== -1) {
           this.sockets[name].splice(index3, 1);
         }
@@ -34793,7 +34429,7 @@ var require_forever_agent = __commonJS({
         delete this.requests[name];
       }
       if (this.freeSockets[name]) {
-        var index3 = this.freeSockets[name].indexOf(s);
+        var index3 = this.freeSockets[name].indexOf(s2);
         if (index3 !== -1) {
           this.freeSockets[name].splice(index3, 1);
           if (this.freeSockets[name].length === 0) {
@@ -34895,9 +34531,9 @@ var require_delayed_stream = __commonJS({
       this._bufferedEvents = [];
     };
     DelayedStream.prototype.pipe = function() {
-      var r = Stream.prototype.pipe.apply(this, arguments);
+      var r2 = Stream.prototype.pipe.apply(this, arguments);
       this.resume();
-      return r;
+      return r2;
     };
     DelayedStream.prototype._handleEmit = function(args) {
       if (this._released) {
@@ -35101,12 +34737,12 @@ var require_defer = __commonJS({
   "../../../../node_modules/.pnpm/asynckit@0.4.0/node_modules/asynckit/lib/defer.js"(exports, module) {
     "use strict";
     module.exports = defer;
-    function defer(fn) {
+    function defer(fn2) {
       var nextTick = typeof setImmediate == "function" ? setImmediate : typeof process == "object" && typeof process.nextTick == "function" ? process.nextTick : null;
       if (nextTick) {
-        nextTick(fn);
+        nextTick(fn2);
       } else {
-        setTimeout(fn, 0);
+        setTimeout(fn2, 0);
       }
     }
   }
@@ -35201,8 +34837,8 @@ var require_state = __commonJS({
         size: isNamedList ? Object.keys(list).length : list.length
       };
       if (sortMethod) {
-        initState.keyedList.sort(isNamedList ? sortMethod : function(a, b) {
-          return sortMethod(list[a], list[b]);
+        initState.keyedList.sort(isNamedList ? sortMethod : function(a2, b2) {
+          return sortMethod(list[a2], list[b2]);
         });
       }
       return initState;
@@ -35282,11 +34918,11 @@ var require_serialOrdered = __commonJS({
       });
       return terminator.bind(state, callback);
     }
-    function ascending(a, b) {
-      return a < b ? -1 : a > b ? 1 : 0;
+    function ascending(a2, b2) {
+      return a2 < b2 ? -1 : a2 > b2 ? 1 : 0;
     }
-    function descending(a, b) {
-      return -1 * ascending(a, b);
+    function descending(a2, b2) {
+      return -1 * ascending(a2, b2);
     }
   }
 });
@@ -35523,7 +35159,7 @@ var require_form_data = __commonJS({
     };
     FormData.prototype._generateBoundary = function() {
       var boundary = "--------------------------";
-      for (var i = 0; i < 24; i++) {
+      for (var i2 = 0; i2 < 24; i2++) {
         boundary += Math.floor(Math.random() * 10).toString(16);
       }
       this._boundary = boundary;
@@ -35724,8 +35360,8 @@ var require_utils3 = __commonJS({
     var has = Object.prototype.hasOwnProperty;
     var hexTable = function() {
       var array = [];
-      for (var i = 0; i < 256; ++i) {
-        array.push("%" + ((i < 16 ? "0" : "") + i.toString(16)).toUpperCase());
+      for (var i2 = 0; i2 < 256; ++i2) {
+        array.push("%" + ((i2 < 16 ? "0" : "") + i2.toString(16)).toUpperCase());
       }
       return array;
     }();
@@ -35736,9 +35372,9 @@ var require_utils3 = __commonJS({
         obj = item.obj[item.prop];
         if (Array.isArray(obj)) {
           var compacted = [];
-          for (var j = 0; j < obj.length; ++j) {
-            if (typeof obj[j] !== "undefined") {
-              compacted.push(obj[j]);
+          for (var j2 = 0; j2 < obj.length; ++j2) {
+            if (typeof obj[j2] !== "undefined") {
+              compacted.push(obj[j2]);
             }
           }
           item.obj[item.prop] = compacted;
@@ -35748,9 +35384,9 @@ var require_utils3 = __commonJS({
     };
     var arrayToObject = function arrayToObject2(source, options) {
       var obj = options && options.plainObjects ? /* @__PURE__ */ Object.create(null) : {};
-      for (var i = 0; i < source.length; ++i) {
-        if (typeof source[i] !== "undefined") {
-          obj[i] = source[i];
+      for (var i2 = 0; i2 < source.length; ++i2) {
+        if (typeof source[i2] !== "undefined") {
+          obj[i2] = source[i2];
         }
       }
       return obj;
@@ -35779,16 +35415,16 @@ var require_utils3 = __commonJS({
         mergeTarget = arrayToObject(target, options);
       }
       if (Array.isArray(target) && Array.isArray(source)) {
-        source.forEach(function(item, i) {
-          if (has.call(target, i)) {
-            var targetItem = target[i];
+        source.forEach(function(item, i2) {
+          if (has.call(target, i2)) {
+            var targetItem = target[i2];
             if (targetItem && typeof targetItem === "object" && item && typeof item === "object") {
-              target[i] = merge2(targetItem, item, options);
+              target[i2] = merge2(targetItem, item, options);
             } else {
               target.push(item);
             }
           } else {
-            target[i] = item;
+            target[i2] = item;
           }
         });
         return target;
@@ -35822,39 +35458,39 @@ var require_utils3 = __commonJS({
       }
       var string = typeof str === "string" ? str : String(str);
       var out = "";
-      for (var i = 0; i < string.length; ++i) {
-        var c = string.charCodeAt(i);
-        if (c === 45 || c === 46 || c === 95 || c === 126 || c >= 48 && c <= 57 || c >= 65 && c <= 90 || c >= 97 && c <= 122) {
-          out += string.charAt(i);
+      for (var i2 = 0; i2 < string.length; ++i2) {
+        var c2 = string.charCodeAt(i2);
+        if (c2 === 45 || c2 === 46 || c2 === 95 || c2 === 126 || c2 >= 48 && c2 <= 57 || c2 >= 65 && c2 <= 90 || c2 >= 97 && c2 <= 122) {
+          out += string.charAt(i2);
           continue;
         }
-        if (c < 128) {
-          out = out + hexTable[c];
+        if (c2 < 128) {
+          out = out + hexTable[c2];
           continue;
         }
-        if (c < 2048) {
-          out = out + (hexTable[192 | c >> 6] + hexTable[128 | c & 63]);
+        if (c2 < 2048) {
+          out = out + (hexTable[192 | c2 >> 6] + hexTable[128 | c2 & 63]);
           continue;
         }
-        if (c < 55296 || c >= 57344) {
-          out = out + (hexTable[224 | c >> 12] + hexTable[128 | c >> 6 & 63] + hexTable[128 | c & 63]);
+        if (c2 < 55296 || c2 >= 57344) {
+          out = out + (hexTable[224 | c2 >> 12] + hexTable[128 | c2 >> 6 & 63] + hexTable[128 | c2 & 63]);
           continue;
         }
-        i += 1;
-        c = 65536 + ((c & 1023) << 10 | string.charCodeAt(i) & 1023);
-        out += hexTable[240 | c >> 18] + hexTable[128 | c >> 12 & 63] + hexTable[128 | c >> 6 & 63] + hexTable[128 | c & 63];
+        i2 += 1;
+        c2 = 65536 + ((c2 & 1023) << 10 | string.charCodeAt(i2) & 1023);
+        out += hexTable[240 | c2 >> 18] + hexTable[128 | c2 >> 12 & 63] + hexTable[128 | c2 >> 6 & 63] + hexTable[128 | c2 & 63];
       }
       return out;
     };
     var compact = function compact2(value) {
       var queue = [{ obj: { o: value }, prop: "o" }];
       var refs = [];
-      for (var i = 0; i < queue.length; ++i) {
-        var item = queue[i];
+      for (var i2 = 0; i2 < queue.length; ++i2) {
+        var item = queue[i2];
         var obj = item.obj[item.prop];
         var keys = Object.keys(obj);
-        for (var j = 0; j < keys.length; ++j) {
-          var key = keys[j];
+        for (var j2 = 0; j2 < keys.length; ++j2) {
+          var key = keys[j2];
           var val = obj[key];
           if (typeof val === "object" && val !== null && refs.indexOf(val) === -1) {
             queue.push({ obj, prop: key });
@@ -35973,8 +35609,8 @@ var require_stringify2 = __commonJS({
         var keys = Object.keys(obj);
         objKeys = sort ? keys.sort(sort) : keys;
       }
-      for (var i = 0; i < objKeys.length; ++i) {
-        var key = objKeys[i];
+      for (var i2 = 0; i2 < objKeys.length; ++i2) {
+        var key = objKeys[i2];
         if (skipNulls && obj[key] === null) {
           continue;
         }
@@ -36061,8 +35697,8 @@ var require_stringify2 = __commonJS({
       if (sort) {
         objKeys.sort(sort);
       }
-      for (var i = 0; i < objKeys.length; ++i) {
-        var key = objKeys[i];
+      for (var i2 = 0; i2 < objKeys.length; ++i2) {
+        var key = objKeys[i2];
         if (skipNulls && obj[key] === null) {
           continue;
         }
@@ -36110,8 +35746,8 @@ var require_parse = __commonJS({
       var cleanStr = options.ignoreQueryPrefix ? str.replace(/^\?/, "") : str;
       var limit = options.parameterLimit === Infinity ? void 0 : options.parameterLimit;
       var parts = cleanStr.split(options.delimiter, limit);
-      for (var i = 0; i < parts.length; ++i) {
-        var part = parts[i];
+      for (var i2 = 0; i2 < parts.length; ++i2) {
+        var part = parts[i2];
         var bracketEqualsPos = part.indexOf("]=");
         var pos = bracketEqualsPos === -1 ? part.indexOf("=") : bracketEqualsPos + 1;
         var key, val;
@@ -36132,9 +35768,9 @@ var require_parse = __commonJS({
     };
     var parseObject = function(chain, val, options) {
       var leaf = val;
-      for (var i = chain.length - 1; i >= 0; --i) {
+      for (var i2 = chain.length - 1; i2 >= 0; --i2) {
         var obj;
-        var root = chain[i];
+        var root = chain[i2];
         if (root === "[]" && options.parseArrays) {
           obj = [].concat(leaf);
         } else {
@@ -36172,9 +35808,9 @@ var require_parse = __commonJS({
         }
         keys.push(parent);
       }
-      var i = 0;
-      while ((segment = child.exec(key)) !== null && i < options.depth) {
-        i += 1;
+      var i2 = 0;
+      while ((segment = child.exec(key)) !== null && i2 < options.depth) {
+        i2 += 1;
         if (!options.plainObjects && has.call(Object.prototype, segment[1].slice(1, -1))) {
           if (!options.allowPrototypes) {
             return;
@@ -36209,8 +35845,8 @@ var require_parse = __commonJS({
       var tempObj = typeof str === "string" ? parseValues(str, options) : str;
       var obj = options.plainObjects ? /* @__PURE__ */ Object.create(null) : {};
       var keys = Object.keys(tempObj);
-      for (var i = 0; i < keys.length; ++i) {
-        var key = keys[i];
+      for (var i2 = 0; i2 < keys.length; ++i2) {
+        var key = keys[i2];
         var newObj = parseKeys(key, tempObj[key], options);
         obj = utils.merge(obj, newObj, options);
       }
@@ -36273,8 +35909,8 @@ var require_querystring = __commonJS({
       ) : this.lib.parse(str, this.parseOptions);
     };
     Querystring.prototype.rfc3986 = function(str) {
-      return str.replace(/[!'()*]/g, function(c) {
-        return "%" + c.charCodeAt(0).toString(16).toUpperCase();
+      return str.replace(/[!'()*]/g, function(c2) {
+        return "%" + c2.charCodeAt(0).toString(16).toUpperCase();
       });
     };
     Querystring.prototype.unescape = querystring.unescape;
@@ -36297,8 +35933,8 @@ var require_uri_all = __commonJS({
         if (sets.length > 1) {
           sets[0] = sets[0].slice(0, -1);
           var xl = sets.length - 1;
-          for (var x = 1; x < xl; ++x) {
-            sets[x] = sets[x].slice(1, -1);
+          for (var x2 = 1; x2 < xl; ++x2) {
+            sets[x2] = sets[x2].slice(1, -1);
           }
           sets[xl] = sets[xl].slice(1);
           return sets.join("");
@@ -36309,8 +35945,8 @@ var require_uri_all = __commonJS({
       function subexp(str) {
         return "(?:" + str + ")";
       }
-      function typeOf(o) {
-        return o === void 0 ? "undefined" : o === null ? "null" : Object.prototype.toString.call(o).split(" ").pop().split("]").shift().toLowerCase();
+      function typeOf(o2) {
+        return o2 === void 0 ? "undefined" : o2 === null ? "null" : Object.prototype.toString.call(o2).split(" ").pop().split("]").shift().toLowerCase();
       }
       function toUpperCase(str) {
         return str.toUpperCase();
@@ -36349,7 +35985,7 @@ var require_uri_all = __commonJS({
       var URI_PROTOCOL = buildExps(false);
       var IRI_PROTOCOL = buildExps(true);
       var slicedToArray = function() {
-        function sliceIterator(arr, i) {
+        function sliceIterator(arr, i2) {
           var _arr = [];
           var _n = true;
           var _d = false;
@@ -36357,7 +35993,7 @@ var require_uri_all = __commonJS({
           try {
             for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
               _arr.push(_s.value);
-              if (i && _arr.length === i)
+              if (i2 && _arr.length === i2)
                 break;
             }
           } catch (err) {
@@ -36374,11 +36010,11 @@ var require_uri_all = __commonJS({
           }
           return _arr;
         }
-        return function(arr, i) {
+        return function(arr, i2) {
           if (Array.isArray(arr)) {
             return arr;
           } else if (Symbol.iterator in Object(arr)) {
-            return sliceIterator(arr, i);
+            return sliceIterator(arr, i2);
           } else {
             throw new TypeError("Invalid attempt to destructure non-iterable instance");
           }
@@ -36386,8 +36022,8 @@ var require_uri_all = __commonJS({
       }();
       var toConsumableArray = function(arr) {
         if (Array.isArray(arr)) {
-          for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++)
-            arr2[i] = arr[i];
+          for (var i2 = 0, arr2 = Array(arr.length); i2 < arr.length; i2++)
+            arr2[i2] = arr[i2];
           return arr2;
         } else {
           return Array.from(arr);
@@ -36416,15 +36052,15 @@ var require_uri_all = __commonJS({
       function error$1(type) {
         throw new RangeError(errors[type]);
       }
-      function map(array, fn) {
+      function map(array, fn2) {
         var result = [];
         var length = array.length;
         while (length--) {
-          result[length] = fn(array[length]);
+          result[length] = fn2(array[length]);
         }
         return result;
       }
-      function mapDomain(string, fn) {
+      function mapDomain(string, fn2) {
         var parts = string.split("@");
         var result = "";
         if (parts.length > 1) {
@@ -36433,7 +36069,7 @@ var require_uri_all = __commonJS({
         }
         string = string.replace(regexSeparators, ".");
         var labels = string.split(".");
-        var encoded = map(labels, fn).join(".");
+        var encoded = map(labels, fn2).join(".");
         return result + encoded;
       }
       function ucs2decode(string) {
@@ -36475,69 +36111,69 @@ var require_uri_all = __commonJS({
         return digit + 22 + 75 * (digit < 26) - ((flag != 0) << 5);
       };
       var adapt = function adapt2(delta, numPoints, firstTime) {
-        var k = 0;
+        var k2 = 0;
         delta = firstTime ? floor2(delta / damp) : delta >> 1;
         delta += floor2(delta / numPoints);
         for (
           ;
           /* no initialization */
           delta > baseMinusTMin * tMax >> 1;
-          k += base
+          k2 += base
         ) {
           delta = floor2(delta / baseMinusTMin);
         }
-        return floor2(k + (baseMinusTMin + 1) * delta / (delta + skew));
+        return floor2(k2 + (baseMinusTMin + 1) * delta / (delta + skew));
       };
       var decode = function decode2(input) {
         var output = [];
         var inputLength = input.length;
-        var i = 0;
-        var n = initialN;
+        var i2 = 0;
+        var n2 = initialN;
         var bias = initialBias;
         var basic = input.lastIndexOf(delimiter);
         if (basic < 0) {
           basic = 0;
         }
-        for (var j = 0; j < basic; ++j) {
-          if (input.charCodeAt(j) >= 128) {
+        for (var j2 = 0; j2 < basic; ++j2) {
+          if (input.charCodeAt(j2) >= 128) {
             error$1("not-basic");
           }
-          output.push(input.charCodeAt(j));
+          output.push(input.charCodeAt(j2));
         }
         for (var index3 = basic > 0 ? basic + 1 : 0; index3 < inputLength; ) {
-          var oldi = i;
+          var oldi = i2;
           for (
-            var w = 1, k = base;
+            var w2 = 1, k2 = base;
             ;
             /* no condition */
-            k += base
+            k2 += base
           ) {
             if (index3 >= inputLength) {
               error$1("invalid-input");
             }
             var digit = basicToDigit(input.charCodeAt(index3++));
-            if (digit >= base || digit > floor2((maxInt - i) / w)) {
+            if (digit >= base || digit > floor2((maxInt - i2) / w2)) {
               error$1("overflow");
             }
-            i += digit * w;
-            var t = k <= bias ? tMin : k >= bias + tMax ? tMax : k - bias;
-            if (digit < t) {
+            i2 += digit * w2;
+            var t2 = k2 <= bias ? tMin : k2 >= bias + tMax ? tMax : k2 - bias;
+            if (digit < t2) {
               break;
             }
-            var baseMinusT = base - t;
-            if (w > floor2(maxInt / baseMinusT)) {
+            var baseMinusT = base - t2;
+            if (w2 > floor2(maxInt / baseMinusT)) {
               error$1("overflow");
             }
-            w *= baseMinusT;
+            w2 *= baseMinusT;
           }
           var out = output.length + 1;
-          bias = adapt(i - oldi, out, oldi == 0);
-          if (floor2(i / out) > maxInt - n) {
+          bias = adapt(i2 - oldi, out, oldi == 0);
+          if (floor2(i2 / out) > maxInt - n2) {
             error$1("overflow");
           }
-          n += floor2(i / out);
-          i %= out;
-          output.splice(i++, 0, n);
+          n2 += floor2(i2 / out);
+          i2 %= out;
+          output.splice(i2++, 0, n2);
         }
         return String.fromCodePoint.apply(String, output);
       };
@@ -36545,7 +36181,7 @@ var require_uri_all = __commonJS({
         var output = [];
         input = ucs2decode(input);
         var inputLength = input.length;
-        var n = initialN;
+        var n2 = initialN;
         var delta = 0;
         var bias = initialBias;
         var _iteratorNormalCompletion = true;
@@ -36585,7 +36221,7 @@ var require_uri_all = __commonJS({
           try {
             for (var _iterator2 = input[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
               var currentValue = _step2.value;
-              if (currentValue >= n && currentValue < m) {
+              if (currentValue >= n2 && currentValue < m) {
                 m = currentValue;
               }
             }
@@ -36604,38 +36240,38 @@ var require_uri_all = __commonJS({
             }
           }
           var handledCPCountPlusOne = handledCPCount + 1;
-          if (m - n > floor2((maxInt - delta) / handledCPCountPlusOne)) {
+          if (m - n2 > floor2((maxInt - delta) / handledCPCountPlusOne)) {
             error$1("overflow");
           }
-          delta += (m - n) * handledCPCountPlusOne;
-          n = m;
+          delta += (m - n2) * handledCPCountPlusOne;
+          n2 = m;
           var _iteratorNormalCompletion3 = true;
           var _didIteratorError3 = false;
           var _iteratorError3 = void 0;
           try {
             for (var _iterator3 = input[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
               var _currentValue = _step3.value;
-              if (_currentValue < n && ++delta > maxInt) {
+              if (_currentValue < n2 && ++delta > maxInt) {
                 error$1("overflow");
               }
-              if (_currentValue == n) {
-                var q2 = delta;
+              if (_currentValue == n2) {
+                var q3 = delta;
                 for (
-                  var k = base;
+                  var k2 = base;
                   ;
                   /* no condition */
-                  k += base
+                  k2 += base
                 ) {
-                  var t = k <= bias ? tMin : k >= bias + tMax ? tMax : k - bias;
-                  if (q2 < t) {
+                  var t2 = k2 <= bias ? tMin : k2 >= bias + tMax ? tMax : k2 - bias;
+                  if (q3 < t2) {
                     break;
                   }
-                  var qMinusT = q2 - t;
-                  var baseMinusT = base - t;
-                  output.push(stringFromCharCode(digitToBasic(t + qMinusT % baseMinusT, 0)));
-                  q2 = floor2(qMinusT / baseMinusT);
+                  var qMinusT = q3 - t2;
+                  var baseMinusT = base - t2;
+                  output.push(stringFromCharCode(digitToBasic(t2 + qMinusT % baseMinusT, 0)));
+                  q3 = floor2(qMinusT / baseMinusT);
                 }
-                output.push(stringFromCharCode(digitToBasic(q2, 0)));
+                output.push(stringFromCharCode(digitToBasic(q3, 0)));
                 bias = adapt(delta, handledCPCountPlusOne, handledCPCount == basicLength);
                 delta = 0;
                 ++handledCPCount;
@@ -36656,7 +36292,7 @@ var require_uri_all = __commonJS({
             }
           }
           ++delta;
-          ++n;
+          ++n2;
         }
         return output.join("");
       };
@@ -36695,47 +36331,47 @@ var require_uri_all = __commonJS({
       };
       var SCHEMES = {};
       function pctEncChar(chr) {
-        var c = chr.charCodeAt(0);
+        var c2 = chr.charCodeAt(0);
         var e = void 0;
-        if (c < 16)
-          e = "%0" + c.toString(16).toUpperCase();
-        else if (c < 128)
-          e = "%" + c.toString(16).toUpperCase();
-        else if (c < 2048)
-          e = "%" + (c >> 6 | 192).toString(16).toUpperCase() + "%" + (c & 63 | 128).toString(16).toUpperCase();
+        if (c2 < 16)
+          e = "%0" + c2.toString(16).toUpperCase();
+        else if (c2 < 128)
+          e = "%" + c2.toString(16).toUpperCase();
+        else if (c2 < 2048)
+          e = "%" + (c2 >> 6 | 192).toString(16).toUpperCase() + "%" + (c2 & 63 | 128).toString(16).toUpperCase();
         else
-          e = "%" + (c >> 12 | 224).toString(16).toUpperCase() + "%" + (c >> 6 & 63 | 128).toString(16).toUpperCase() + "%" + (c & 63 | 128).toString(16).toUpperCase();
+          e = "%" + (c2 >> 12 | 224).toString(16).toUpperCase() + "%" + (c2 >> 6 & 63 | 128).toString(16).toUpperCase() + "%" + (c2 & 63 | 128).toString(16).toUpperCase();
         return e;
       }
       function pctDecChars(str) {
         var newStr = "";
-        var i = 0;
+        var i2 = 0;
         var il = str.length;
-        while (i < il) {
-          var c = parseInt(str.substr(i + 1, 2), 16);
-          if (c < 128) {
-            newStr += String.fromCharCode(c);
-            i += 3;
-          } else if (c >= 194 && c < 224) {
-            if (il - i >= 6) {
-              var c2 = parseInt(str.substr(i + 4, 2), 16);
-              newStr += String.fromCharCode((c & 31) << 6 | c2 & 63);
+        while (i2 < il) {
+          var c2 = parseInt(str.substr(i2 + 1, 2), 16);
+          if (c2 < 128) {
+            newStr += String.fromCharCode(c2);
+            i2 += 3;
+          } else if (c2 >= 194 && c2 < 224) {
+            if (il - i2 >= 6) {
+              var c22 = parseInt(str.substr(i2 + 4, 2), 16);
+              newStr += String.fromCharCode((c2 & 31) << 6 | c22 & 63);
             } else {
-              newStr += str.substr(i, 6);
+              newStr += str.substr(i2, 6);
             }
-            i += 6;
-          } else if (c >= 224) {
-            if (il - i >= 9) {
-              var _c = parseInt(str.substr(i + 4, 2), 16);
-              var c3 = parseInt(str.substr(i + 7, 2), 16);
-              newStr += String.fromCharCode((c & 15) << 12 | (_c & 63) << 6 | c3 & 63);
+            i2 += 6;
+          } else if (c2 >= 224) {
+            if (il - i2 >= 9) {
+              var _c = parseInt(str.substr(i2 + 4, 2), 16);
+              var c3 = parseInt(str.substr(i2 + 7, 2), 16);
+              newStr += String.fromCharCode((c2 & 15) << 12 | (_c & 63) << 6 | c3 & 63);
             } else {
-              newStr += str.substr(i, 9);
+              newStr += str.substr(i2, 9);
             }
-            i += 9;
+            i2 += 9;
           } else {
-            newStr += str.substr(i, 3);
-            i += 3;
+            newStr += str.substr(i2, 3);
+            i2 += 3;
           }
         }
         return newStr;
@@ -36782,8 +36418,8 @@ var require_uri_all = __commonJS({
           var fieldCount = isLastFieldIPv4Address ? 7 : 8;
           var lastFieldsStart = lastFields.length - fieldCount;
           var fields = Array(fieldCount);
-          for (var x = 0; x < fieldCount; ++x) {
-            fields[x] = firstFields[x] || lastFields[lastFieldsStart + x] || "";
+          for (var x2 = 0; x2 < fieldCount; ++x2) {
+            fields[x2] = firstFields[x2] || lastFields[lastFieldsStart + x2] || "";
           }
           if (isLastFieldIPv4Address) {
             fields[fieldCount - 1] = _normalizeIPv4(fields[fieldCount - 1], protocol);
@@ -36799,8 +36435,8 @@ var require_uri_all = __commonJS({
             }
             return acc;
           }, []);
-          var longestZeroFields = allZeroFields.sort(function(a, b) {
-            return b.length - a.length;
+          var longestZeroFields = allZeroFields.sort(function(a2, b2) {
+            return b2.length - a2.length;
           })[0];
           var newHost = void 0;
           if (longestZeroFields && longestZeroFields.length > 1) {
@@ -36895,7 +36531,7 @@ var require_uri_all = __commonJS({
           uriTokens.push("@");
         }
         if (components.host !== void 0) {
-          uriTokens.push(_normalizeIPv6(_normalizeIPv4(String(components.host), protocol), protocol).replace(protocol.IPV6ADDRESS, function(_, $1, $2) {
+          uriTokens.push(_normalizeIPv6(_normalizeIPv4(String(components.host), protocol), protocol).replace(protocol.IPV6ADDRESS, function(_2, $1, $2) {
             return "[" + $1 + ($2 ? "%25" + $2 : "") + "]";
           }));
         }
@@ -36924,9 +36560,9 @@ var require_uri_all = __commonJS({
           } else {
             var im = input.match(RDS5);
             if (im) {
-              var s = im[0];
-              input = input.slice(s.length);
-              output.push(s);
+              var s2 = im[0];
+              input = input.slice(s2.length);
+              output.push(s2);
             } else {
               throw new Error("Unexpected dot segment condition");
             }
@@ -36967,14 +36603,14 @@ var require_uri_all = __commonJS({
           }
         }
         if (components.path !== void 0) {
-          var s = components.path;
+          var s2 = components.path;
           if (!options.absolutePath && (!schemeHandler || !schemeHandler.absolutePath)) {
-            s = removeDotSegments(s);
+            s2 = removeDotSegments(s2);
           }
           if (authority === void 0) {
-            s = s.replace(/^\/\//, "/%2F");
+            s2 = s2.replace(/^\/\//, "/%2F");
           }
-          uriTokens.push(s);
+          uriTokens.push(s2);
         }
         if (components.query !== void 0) {
           uriTokens.push("?");
@@ -37136,7 +36772,7 @@ var require_uri_all = __commonJS({
         parse: handler$2.parse,
         serialize: handler$2.serialize
       };
-      var O = {};
+      var O2 = {};
       var isIRI = true;
       var UNRESERVED$$ = "[A-Za-z0-9\\-\\.\\_\\~" + (isIRI ? "\\xA0-\\u200D\\u2010-\\u2029\\u202F-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF" : "") + "]";
       var HEXDIG$$ = "[0-9A-Fa-f]";
@@ -37164,8 +36800,8 @@ var require_uri_all = __commonJS({
             var unknownHeaders = false;
             var headers = {};
             var hfields = mailtoComponents.query.split("&");
-            for (var x = 0, xl = hfields.length; x < xl; ++x) {
-              var hfield = hfields[x].split("=");
+            for (var x2 = 0, xl = hfields.length; x2 < xl; ++x2) {
+              var hfield = hfields[x2].split("=");
               switch (hfield[0]) {
                 case "to":
                   var toAddrs = hfield[1].split(",");
@@ -37209,8 +36845,8 @@ var require_uri_all = __commonJS({
           var components = mailtoComponents;
           var to = toArray(mailtoComponents.to);
           if (to) {
-            for (var x = 0, xl = to.length; x < xl; ++x) {
-              var toAddr = String(to[x]);
+            for (var x2 = 0, xl = to.length; x2 < xl; ++x2) {
+              var toAddr = String(to[x2]);
               var atIdx = toAddr.lastIndexOf("@");
               var localPart = toAddr.slice(0, atIdx).replace(PCT_ENCODED, decodeUnreserved).replace(PCT_ENCODED, toUpperCase).replace(NOT_LOCAL_PART, pctEncChar);
               var domain = toAddr.slice(atIdx + 1);
@@ -37219,7 +36855,7 @@ var require_uri_all = __commonJS({
               } catch (e) {
                 components.error = components.error || "Email address's domain name can not be converted to " + (!options.iri ? "ASCII" : "Unicode") + " via punycode: " + e;
               }
-              to[x] = localPart + "@" + domain;
+              to[x2] = localPart + "@" + domain;
             }
             components.path = to.join(",");
           }
@@ -37230,7 +36866,7 @@ var require_uri_all = __commonJS({
             headers["body"] = mailtoComponents.body;
           var fields = [];
           for (var name in headers) {
-            if (headers[name] !== O[name]) {
+            if (headers[name] !== O2[name]) {
               fields.push(name.replace(PCT_ENCODED, decodeUnreserved).replace(PCT_ENCODED, toUpperCase).replace(NOT_HFNAME, pctEncChar) + "=" + headers[name].replace(PCT_ENCODED, decodeUnreserved).replace(PCT_ENCODED, toUpperCase).replace(NOT_HFVALUE, pctEncChar));
             }
           }
@@ -37323,43 +36959,43 @@ var require_uri_all = __commonJS({
 var require_fast_deep_equal = __commonJS({
   "../../../../node_modules/.pnpm/fast-deep-equal@3.1.3/node_modules/fast-deep-equal/index.js"(exports, module) {
     "use strict";
-    module.exports = function equal(a, b) {
-      if (a === b)
+    module.exports = function equal(a2, b2) {
+      if (a2 === b2)
         return true;
-      if (a && b && typeof a == "object" && typeof b == "object") {
-        if (a.constructor !== b.constructor)
+      if (a2 && b2 && typeof a2 == "object" && typeof b2 == "object") {
+        if (a2.constructor !== b2.constructor)
           return false;
-        var length, i, keys;
-        if (Array.isArray(a)) {
-          length = a.length;
-          if (length != b.length)
+        var length, i2, keys;
+        if (Array.isArray(a2)) {
+          length = a2.length;
+          if (length != b2.length)
             return false;
-          for (i = length; i-- !== 0; )
-            if (!equal(a[i], b[i]))
+          for (i2 = length; i2-- !== 0; )
+            if (!equal(a2[i2], b2[i2]))
               return false;
           return true;
         }
-        if (a.constructor === RegExp)
-          return a.source === b.source && a.flags === b.flags;
-        if (a.valueOf !== Object.prototype.valueOf)
-          return a.valueOf() === b.valueOf();
-        if (a.toString !== Object.prototype.toString)
-          return a.toString() === b.toString();
-        keys = Object.keys(a);
+        if (a2.constructor === RegExp)
+          return a2.source === b2.source && a2.flags === b2.flags;
+        if (a2.valueOf !== Object.prototype.valueOf)
+          return a2.valueOf() === b2.valueOf();
+        if (a2.toString !== Object.prototype.toString)
+          return a2.toString() === b2.toString();
+        keys = Object.keys(a2);
         length = keys.length;
-        if (length !== Object.keys(b).length)
+        if (length !== Object.keys(b2).length)
           return false;
-        for (i = length; i-- !== 0; )
-          if (!Object.prototype.hasOwnProperty.call(b, keys[i]))
+        for (i2 = length; i2-- !== 0; )
+          if (!Object.prototype.hasOwnProperty.call(b2, keys[i2]))
             return false;
-        for (i = length; i-- !== 0; ) {
-          var key = keys[i];
-          if (!equal(a[key], b[key]))
+        for (i2 = length; i2-- !== 0; ) {
+          var key = keys[i2];
+          if (!equal(a2[key], b2[key]))
             return false;
         }
         return true;
       }
-      return a !== a && b !== b;
+      return a2 !== a2 && b2 !== b2;
     };
   }
 });
@@ -37412,10 +37048,10 @@ var require_util2 = __commonJS({
       escapeFragment,
       escapeJsonPointer
     };
-    function copy(o, to) {
+    function copy(o2, to) {
       to = to || {};
-      for (var key in o)
-        to[key] = o[key];
+      for (var key in o2)
+        to[key] = o2[key];
       return to;
     }
     function checkDataType(dataType, data, strictNumbers, negate) {
@@ -37451,8 +37087,8 @@ var require_util2 = __commonJS({
           }
           if (types.number)
             delete types.integer;
-          for (var t in types)
-            code += (code ? " && " : "") + checkDataType(t, data, strictNumbers, true);
+          for (var t2 in types)
+            code += (code ? " && " : "") + checkDataType(t2, data, strictNumbers, true);
           return code;
       }
     }
@@ -37460,12 +37096,12 @@ var require_util2 = __commonJS({
     function coerceToTypes(optionCoerceTypes, dataTypes) {
       if (Array.isArray(dataTypes)) {
         var types = [];
-        for (var i = 0; i < dataTypes.length; i++) {
-          var t = dataTypes[i];
-          if (COERCE_TO_TYPES[t])
-            types[types.length] = t;
-          else if (optionCoerceTypes === "array" && t === "array")
-            types[types.length] = t;
+        for (var i2 = 0; i2 < dataTypes.length; i2++) {
+          var t2 = dataTypes[i2];
+          if (COERCE_TO_TYPES[t2])
+            types[types.length] = t2;
+          else if (optionCoerceTypes === "array" && t2 === "array")
+            types[types.length] = t2;
         }
         if (types.length)
           return types;
@@ -37477,8 +37113,8 @@ var require_util2 = __commonJS({
     }
     function toHash(arr) {
       var hash = {};
-      for (var i = 0; i < arr.length; i++)
-        hash[arr[i]] = true;
+      for (var i2 = 0; i2 < arr.length; i2++)
+        hash[arr[i2]] = true;
       return hash;
     }
     var IDENTIFIER = /^[a-z$_][a-z$_0-9]*$/i;
@@ -37561,8 +37197,8 @@ var require_util2 = __commonJS({
       }
       var expr = data;
       var segments = jsonPointer.split("/");
-      for (var i = 0; i < segments.length; i++) {
-        var segment = segments[i];
+      for (var i2 = 0; i2 < segments.length; i2++) {
+        var segment = segments[i2];
         if (segment) {
           data += getProperty(unescapeJsonPointer(segment));
           expr += " && " + data;
@@ -37570,10 +37206,10 @@ var require_util2 = __commonJS({
       }
       return expr;
     }
-    function joinPaths(a, b) {
-      if (a == '""')
-        return b;
-      return (a + " + " + b).replace(/([^\\])' \+ '/g, "$1");
+    function joinPaths(a2, b2) {
+      if (a2 == '""')
+        return b2;
+      return (a2 + " + " + b2).replace(/([^\\])' \+ '/g, "$1");
     }
     function unescapeFragment(str) {
       return unescapeJsonPointer(decodeURIComponent(str));
@@ -37665,8 +37301,8 @@ var require_json_schema_traverse = __commonJS({
           var sch = schema[key];
           if (Array.isArray(sch)) {
             if (key in traverse.arrayKeywords) {
-              for (var i = 0; i < sch.length; i++)
-                _traverse(opts, pre, post, sch[i], jsonPtr + "/" + key + "/" + i, rootSchema, jsonPtr, key, schema, i);
+              for (var i2 = 0; i2 < sch.length; i2++)
+                _traverse(opts, pre, post, sch[i2], jsonPtr + "/" + key + "/" + i2, rootSchema, jsonPtr, key, schema, i2);
             }
           } else if (key in traverse.propsKeywords) {
             if (sch && typeof sch == "object") {
@@ -37715,26 +37351,26 @@ var require_resolve = __commonJS({
         return inlineRef(refVal.schema, this._opts.inlineRefs) ? refVal.schema : refVal.validate || this._compile(refVal);
       }
       var res = resolveSchema.call(this, root, ref);
-      var schema, v, baseId;
+      var schema, v2, baseId;
       if (res) {
         schema = res.schema;
         root = res.root;
         baseId = res.baseId;
       }
       if (schema instanceof SchemaObject) {
-        v = schema.validate || compile.call(this, schema.schema, root, void 0, baseId);
+        v2 = schema.validate || compile.call(this, schema.schema, root, void 0, baseId);
       } else if (schema !== void 0) {
-        v = inlineRef(schema, this._opts.inlineRefs) ? schema : compile.call(this, schema, root, void 0, baseId);
+        v2 = inlineRef(schema, this._opts.inlineRefs) ? schema : compile.call(this, schema, root, void 0, baseId);
       }
-      return v;
+      return v2;
     }
     function resolveSchema(root, ref) {
-      var p = URI.parse(ref), refPath = _getFullPath(p), baseId = getFullPath(this._getId(root.schema));
+      var p2 = URI.parse(ref), refPath = _getFullPath(p2), baseId = getFullPath(this._getId(root.schema));
       if (Object.keys(root.schema).length === 0 || refPath !== baseId) {
         var id = normalizeId(refPath);
         var refVal = this._refs[id];
         if (typeof refVal == "string") {
-          return resolveRecursive.call(this, root, refVal, p);
+          return resolveRecursive.call(this, root, refVal, p2);
         } else if (refVal instanceof SchemaObject) {
           if (!refVal.validate)
             this._compile(refVal);
@@ -37755,7 +37391,7 @@ var require_resolve = __commonJS({
           return;
         baseId = getFullPath(this._getId(root.schema));
       }
-      return getJsonPointer.call(this, p, baseId, root.schema, root);
+      return getJsonPointer.call(this, p2, baseId, root.schema, root);
     }
     function resolveRecursive(root, ref, parsedRef) {
       var res = resolveSchema.call(this, root, ref);
@@ -37775,8 +37411,8 @@ var require_resolve = __commonJS({
       if (parsedRef.fragment.slice(0, 1) != "/")
         return;
       var parts = parsedRef.fragment.split("/");
-      for (var i = 1; i < parts.length; i++) {
-        var part = parts[i];
+      for (var i2 = 1; i2 < parts.length; i2++) {
+        var part = parts[i2];
         if (part) {
           part = util.unescapeFragment(part);
           schema = schema[part];
@@ -37830,8 +37466,8 @@ var require_resolve = __commonJS({
     function checkNoRef(schema) {
       var item;
       if (Array.isArray(schema)) {
-        for (var i = 0; i < schema.length; i++) {
-          item = schema[i];
+        for (var i2 = 0; i2 < schema.length; i2++) {
+          item = schema[i2];
           if (typeof item == "object" && !checkNoRef(item))
             return false;
         }
@@ -37849,8 +37485,8 @@ var require_resolve = __commonJS({
     function countKeys(schema) {
       var count2 = 0, item;
       if (Array.isArray(schema)) {
-        for (var i = 0; i < schema.length; i++) {
-          item = schema[i];
+        for (var i2 = 0; i2 < schema.length; i2++) {
+          item = schema[i2];
           if (typeof item == "object")
             count2 += countKeys(item);
           if (count2 == Infinity)
@@ -37876,11 +37512,11 @@ var require_resolve = __commonJS({
     function getFullPath(id, normalize) {
       if (normalize !== false)
         id = normalizeId(id);
-      var p = URI.parse(id);
-      return _getFullPath(p);
+      var p2 = URI.parse(id);
+      return _getFullPath(p2);
     }
-    function _getFullPath(p) {
-      return URI.serialize(p).split("#")[0] + "#";
+    function _getFullPath(p2) {
+      return URI.serialize(p2).split("#")[0] + "#";
     }
     var TRAILING_SLASH_HASH = /#\/?$/;
     function normalizeId(id) {
@@ -37970,12 +37606,12 @@ var require_fast_json_stable_stringify = __commonJS({
       if (typeof opts === "function")
         opts = { cmp: opts };
       var cycles = typeof opts.cycles === "boolean" ? opts.cycles : false;
-      var cmp = opts.cmp && function(f) {
+      var cmp = opts.cmp && function(f2) {
         return function(node) {
-          return function(a, b) {
-            var aobj = { key: a, value: node[a] };
-            var bobj = { key: b, value: node[b] };
-            return f(aobj, bobj);
+          return function(a2, b2) {
+            var aobj = { key: a2, value: node[a2] };
+            var bobj = { key: b2, value: node[b2] };
+            return f2(aobj, bobj);
           };
         };
       }(opts.cmp);
@@ -37990,13 +37626,13 @@ var require_fast_json_stable_stringify = __commonJS({
           return isFinite(node) ? "" + node : "null";
         if (typeof node !== "object")
           return JSON.stringify(node);
-        var i, out;
+        var i2, out;
         if (Array.isArray(node)) {
           out = "[";
-          for (i = 0; i < node.length; i++) {
-            if (i)
+          for (i2 = 0; i2 < node.length; i2++) {
+            if (i2)
               out += ",";
-            out += stringify(node[i]) || "null";
+            out += stringify(node[i2]) || "null";
           }
           return out + "]";
         }
@@ -38010,8 +37646,8 @@ var require_fast_json_stable_stringify = __commonJS({
         var seenIndex = seen.push(node) - 1;
         var keys = Object.keys(node).sort(cmp && cmp(node));
         out = "";
-        for (i = 0; i < keys.length; i++) {
-          var key = keys[i];
+        for (i2 = 0; i2 < keys.length; i2++) {
+          var key = keys[i2];
           var value = stringify(node[key]);
           if (!value)
             continue;
@@ -38479,8 +38115,8 @@ var require_validate2 = __commonJS({
       }
       function $shouldUseGroup($rulesGroup2) {
         var rules = $rulesGroup2.rules;
-        for (var i = 0; i < rules.length; i++)
-          if ($shouldUseRule(rules[i]))
+        for (var i4 = 0; i4 < rules.length; i4++)
+          if ($shouldUseRule(rules[i4]))
             return true;
       }
       function $shouldUseRule($rule2) {
@@ -38488,8 +38124,8 @@ var require_validate2 = __commonJS({
       }
       function $ruleImplementsSomeKeyword($rule2) {
         var impl = $rule2.implements;
-        for (var i = 0; i < impl.length; i++)
-          if (it.schema[impl[i]] !== void 0)
+        for (var i4 = 0; i4 < impl.length; i4++)
+          if (it.schema[impl[i4]] !== void 0)
             return true;
       }
       return out;
@@ -38513,27 +38149,27 @@ var require_compile = __commonJS({
     function compile(schema, root, localRefs, baseId) {
       var self2 = this, opts = this._opts, refVal = [void 0], refs = {}, patterns = [], patternsHash = {}, defaults = [], defaultsHash = {}, customRules = [];
       root = root || { schema, refVal, refs };
-      var c = checkCompiling.call(this, schema, root, baseId);
-      var compilation = this._compilations[c.index];
-      if (c.compiling)
+      var c2 = checkCompiling.call(this, schema, root, baseId);
+      var compilation = this._compilations[c2.index];
+      if (c2.compiling)
         return compilation.callValidate = callValidate;
       var formats = this._formats;
       var RULES = this.RULES;
       try {
-        var v = localCompile(schema, root, localRefs, baseId);
-        compilation.validate = v;
+        var v2 = localCompile(schema, root, localRefs, baseId);
+        compilation.validate = v2;
         var cv = compilation.callValidate;
         if (cv) {
-          cv.schema = v.schema;
+          cv.schema = v2.schema;
           cv.errors = null;
-          cv.refs = v.refs;
-          cv.refVal = v.refVal;
-          cv.root = v.root;
-          cv.$async = v.$async;
+          cv.refs = v2.refs;
+          cv.refVal = v2.refVal;
+          cv.root = v2.root;
+          cv.$async = v2.$async;
           if (opts.sourceCode)
-            cv.source = v.source;
+            cv.source = v2.source;
         }
-        return v;
+        return v2;
       } finally {
         endCompiling.call(this, schema, root, baseId);
       }
@@ -38640,32 +38276,32 @@ var require_compile = __commonJS({
           }
         }
         refCode = addLocalRef(ref);
-        var v2 = resolve.call(self2, localCompile, root, ref);
-        if (v2 === void 0) {
+        var v3 = resolve.call(self2, localCompile, root, ref);
+        if (v3 === void 0) {
           var localSchema = localRefs && localRefs[ref];
           if (localSchema) {
-            v2 = resolve.inlineRef(localSchema, opts.inlineRefs) ? localSchema : compile.call(self2, localSchema, root, localRefs, baseId2);
+            v3 = resolve.inlineRef(localSchema, opts.inlineRefs) ? localSchema : compile.call(self2, localSchema, root, localRefs, baseId2);
           }
         }
-        if (v2 === void 0) {
+        if (v3 === void 0) {
           removeLocalRef(ref);
         } else {
-          replaceLocalRef(ref, v2);
-          return resolvedRef(v2, refCode);
+          replaceLocalRef(ref, v3);
+          return resolvedRef(v3, refCode);
         }
       }
-      function addLocalRef(ref, v2) {
+      function addLocalRef(ref, v3) {
         var refId = refVal.length;
-        refVal[refId] = v2;
+        refVal[refId] = v3;
         refs[ref] = refId;
         return "refVal" + refId;
       }
       function removeLocalRef(ref) {
         delete refs[ref];
       }
-      function replaceLocalRef(ref, v2) {
+      function replaceLocalRef(ref, v3) {
         var refId = refs[ref];
-        refVal[refId] = v2;
+        refVal[refId] = v3;
       }
       function resolvedRef(refVal2, code) {
         return typeof refVal2 == "object" || typeof refVal2 == "boolean" ? { code, schema: refVal2, inline: true } : { code, $async: refVal2 && !!refVal2.$async };
@@ -38754,36 +38390,36 @@ var require_compile = __commonJS({
       return { index: index3, compiling: false };
     }
     function endCompiling(schema, root, baseId) {
-      var i = compIndex.call(this, schema, root, baseId);
-      if (i >= 0)
-        this._compilations.splice(i, 1);
+      var i2 = compIndex.call(this, schema, root, baseId);
+      if (i2 >= 0)
+        this._compilations.splice(i2, 1);
     }
     function compIndex(schema, root, baseId) {
-      for (var i = 0; i < this._compilations.length; i++) {
-        var c = this._compilations[i];
-        if (c.schema == schema && c.root == root && c.baseId == baseId)
-          return i;
+      for (var i2 = 0; i2 < this._compilations.length; i2++) {
+        var c2 = this._compilations[i2];
+        if (c2.schema == schema && c2.root == root && c2.baseId == baseId)
+          return i2;
       }
       return -1;
     }
-    function patternCode(i, patterns) {
-      return "var pattern" + i + " = new RegExp(" + util.toQuotedString(patterns[i]) + ");";
+    function patternCode(i2, patterns) {
+      return "var pattern" + i2 + " = new RegExp(" + util.toQuotedString(patterns[i2]) + ");";
     }
-    function defaultCode(i) {
-      return "var default" + i + " = defaults[" + i + "];";
+    function defaultCode(i2) {
+      return "var default" + i2 + " = defaults[" + i2 + "];";
     }
-    function refValCode(i, refVal) {
-      return refVal[i] === void 0 ? "" : "var refVal" + i + " = refVal[" + i + "];";
+    function refValCode(i2, refVal) {
+      return refVal[i2] === void 0 ? "" : "var refVal" + i2 + " = refVal[" + i2 + "];";
     }
-    function customRuleCode(i) {
-      return "var customRule" + i + " = customRules[" + i + "];";
+    function customRuleCode(i2) {
+      return "var customRule" + i2 + " = customRules[" + i2 + "];";
     }
     function vars(arr, statement) {
       if (!arr.length)
         return "";
       var code = "";
-      for (var i = 0; i < arr.length; i++)
-        code += statement(i, arr);
+      for (var i2 = 0; i2 < arr.length; i2++)
+        code += statement(i2, arr);
       return code;
     }
   }
@@ -40737,8 +40373,8 @@ var require_properties = __commonJS({
       if ($required && !(it.opts.$data && $required.$data) && $required.length < it.opts.loopRequired) {
         var $requiredHash = it.util.toHash($required);
       }
-      function notProto(p) {
-        return p !== "__proto__";
+      function notProto(p2) {
+        return p2 !== "__proto__";
       }
       out += "var " + $errs + " = errors;var " + $nextValid + " = true;";
       if ($ownProperties) {
@@ -41561,9 +41197,9 @@ var require_rules2 = __commonJS({
             var key = Object.keys(keyword)[0];
             implKeywords = keyword[key];
             keyword = key;
-            implKeywords.forEach(function(k) {
-              ALL.push(k);
-              RULES.all[k] = true;
+            implKeywords.forEach(function(k2) {
+              ALL.push(k2);
+              RULES.all[k2] = true;
             });
           }
           ALL.push(keyword);
@@ -41614,15 +41250,15 @@ var require_data = __commonJS({
       "const"
     ];
     module.exports = function(metaSchema, keywordsJsonPointers) {
-      for (var i = 0; i < keywordsJsonPointers.length; i++) {
+      for (var i2 = 0; i2 < keywordsJsonPointers.length; i2++) {
         metaSchema = JSON.parse(JSON.stringify(metaSchema));
-        var segments = keywordsJsonPointers[i].split("/");
+        var segments = keywordsJsonPointers[i2].split("/");
         var keywords = metaSchema;
-        var j;
-        for (j = 1; j < segments.length; j++)
-          keywords = keywords[segments[j]];
-        for (j = 0; j < KEYWORDS.length; j++) {
-          var key = KEYWORDS[j];
+        var j2;
+        for (j2 = 1; j2 < segments.length; j2++)
+          keywords = keywords[segments[j2]];
+        for (j2 = 0; j2 < KEYWORDS.length; j2++) {
+          var key = KEYWORDS[j2];
           var schema = keywords[key];
           if (schema) {
             keywords[key] = {
@@ -41653,19 +41289,19 @@ var require_async2 = __commonJS({
         callback = meta;
         meta = void 0;
       }
-      var p = loadMetaSchemaOf(schema).then(function() {
+      var p2 = loadMetaSchemaOf(schema).then(function() {
         var schemaObj = self2._addSchema(schema, void 0, meta);
         return schemaObj.validate || _compileAsync(schemaObj);
       });
       if (callback) {
-        p.then(
-          function(v) {
-            callback(null, v);
+        p2.then(
+          function(v2) {
+            callback(null, v2);
           },
           callback
         );
       }
-      return p;
+      return p2;
       function loadMetaSchemaOf(sch) {
         var $schema = sch.$schema;
         return $schema && !self2.getSchema($schema) ? compileAsync.call(self2, { $ref: $schema }, true) : Promise.resolve();
@@ -42173,8 +41809,8 @@ var require_keyword = __commonJS({
         this.validateKeyword(definition, true);
         var dataType = definition.type;
         if (Array.isArray(dataType)) {
-          for (var i = 0; i < dataType.length; i++)
-            _addRule(keyword, dataType[i], definition);
+          for (var i2 = 0; i2 < dataType.length; i2++)
+            _addRule(keyword, dataType[i2], definition);
         } else {
           _addRule(keyword, dataType, definition);
         }
@@ -42194,8 +41830,8 @@ var require_keyword = __commonJS({
       RULES.keywords[keyword] = RULES.all[keyword] = true;
       function _addRule(keyword2, dataType2, definition2) {
         var ruleGroup;
-        for (var i2 = 0; i2 < RULES.length; i2++) {
-          var rg = RULES[i2];
+        for (var i3 = 0; i3 < RULES.length; i3++) {
+          var rg = RULES[i3];
           if (rg.type == dataType2) {
             ruleGroup = rg;
             break;
@@ -42226,11 +41862,11 @@ var require_keyword = __commonJS({
       delete RULES.keywords[keyword];
       delete RULES.all[keyword];
       delete RULES.custom[keyword];
-      for (var i = 0; i < RULES.length; i++) {
-        var rules = RULES[i].rules;
-        for (var j = 0; j < rules.length; j++) {
-          if (rules[j].keyword == keyword) {
-            rules.splice(j, 1);
+      for (var i2 = 0; i2 < RULES.length; i2++) {
+        var rules = RULES[i2].rules;
+        for (var j2 = 0; j2 < rules.length; j2++) {
+          if (rules[j2].keyword == keyword) {
+            rules.splice(j2, 1);
             break;
           }
         }
@@ -42239,12 +41875,12 @@ var require_keyword = __commonJS({
     }
     function validateKeyword(definition, throwError) {
       validateKeyword.errors = null;
-      var v = this._validateKeyword = this._validateKeyword || this.compile(definitionSchema, true);
-      if (v(definition))
+      var v2 = this._validateKeyword = this._validateKeyword || this.compile(definitionSchema, true);
+      if (v2(definition))
         return true;
-      validateKeyword.errors = v.errors;
+      validateKeyword.errors = v2.errors;
       if (throwError)
-        throw new Error("custom keyword definition is invalid: " + this.errorsText(v.errors));
+        throw new Error("custom keyword definition is invalid: " + this.errorsText(v2.errors));
       else
         return false;
     }
@@ -42344,18 +41980,18 @@ var require_ajv = __commonJS({
       addInitialSchemas(this);
     }
     function validate(schemaKeyRef, data) {
-      var v;
+      var v2;
       if (typeof schemaKeyRef == "string") {
-        v = this.getSchema(schemaKeyRef);
-        if (!v)
+        v2 = this.getSchema(schemaKeyRef);
+        if (!v2)
           throw new Error('no schema with key or ref "' + schemaKeyRef + '"');
       } else {
         var schemaObj = this._addSchema(schemaKeyRef);
-        v = schemaObj.validate || this._compile(schemaObj);
+        v2 = schemaObj.validate || this._compile(schemaObj);
       }
-      var valid = v(data);
-      if (v.$async !== true)
-        this.errors = v.errors;
+      var valid = v2(data);
+      if (v2.$async !== true)
+        this.errors = v2.errors;
       return valid;
     }
     function compile(schema, _meta) {
@@ -42364,8 +42000,8 @@ var require_ajv = __commonJS({
     }
     function addSchema(schema, key, _skipValidation, _meta) {
       if (Array.isArray(schema)) {
-        for (var i = 0; i < schema.length; i++)
-          this.addSchema(schema[i], void 0, _skipValidation, _meta);
+        for (var i2 = 0; i2 < schema.length; i2++)
+          this.addSchema(schema[i2], void 0, _skipValidation, _meta);
         return this;
       }
       var id = this._getId(schema);
@@ -42420,16 +42056,16 @@ var require_ajv = __commonJS({
       var res = resolve.schema.call(self2, { schema: {} }, ref);
       if (res) {
         var schema = res.schema, root = res.root, baseId = res.baseId;
-        var v = compileSchema.call(self2, schema, root, void 0, baseId);
+        var v2 = compileSchema.call(self2, schema, root, void 0, baseId);
         self2._fragments[ref] = new SchemaObject({
           ref,
           fragment: true,
           schema,
           root,
           baseId,
-          validate: v
+          validate: v2
         });
-        return v;
+        return v2;
       }
     }
     function _getSchemaObj(self2, keyRef) {
@@ -42524,9 +42160,9 @@ var require_ajv = __commonJS({
         currentOpts = this._opts;
         this._opts = this._metaOpts;
       }
-      var v;
+      var v2;
       try {
-        v = compileSchema.call(this, schemaObj.schema, root, schemaObj.localRefs);
+        v2 = compileSchema.call(this, schemaObj.schema, root, schemaObj.localRefs);
       } catch (e) {
         delete schemaObj.validate;
         throw e;
@@ -42535,11 +42171,11 @@ var require_ajv = __commonJS({
         if (schemaObj.meta)
           this._opts = currentOpts;
       }
-      schemaObj.validate = v;
-      schemaObj.refs = v.refs;
-      schemaObj.refVal = v.refVal;
-      schemaObj.root = v.root;
-      return v;
+      schemaObj.validate = v2;
+      schemaObj.refs = v2.refs;
+      schemaObj.refVal = v2.refVal;
+      schemaObj.root = v2.root;
+      return v2;
       function callValidate() {
         var _validate = schemaObj.validate;
         var result = _validate.apply(this, arguments);
@@ -42580,8 +42216,8 @@ var require_ajv = __commonJS({
       var separator = options.separator === void 0 ? ", " : options.separator;
       var dataVar = options.dataVar === void 0 ? "data" : options.dataVar;
       var text = "";
-      for (var i = 0; i < errors.length; i++) {
-        var e = errors[i];
+      for (var i2 = 0; i2 < errors.length; i2++) {
+        var e = errors[i2];
         if (e)
           text += dataVar + e.dataPath + " " + e.message + separator;
       }
@@ -42635,8 +42271,8 @@ var require_ajv = __commonJS({
     }
     function getMetaSchemaOptions(self2) {
       var metaOpts = util.copy(self2._opts);
-      for (var i = 0; i < META_IGNORE_OPTIONS.length; i++)
-        delete metaOpts[META_IGNORE_OPTIONS[i]];
+      for (var i2 = 0; i2 < META_IGNORE_OPTIONS.length; i2++)
+        delete metaOpts[META_IGNORE_OPTIONS[i2]];
       return metaOpts;
     }
     function setLogger(self2) {
@@ -43804,34 +43440,34 @@ var require_bytesToUuid = __commonJS({
   "../../../../node_modules/.pnpm/uuid@3.4.0/node_modules/uuid/lib/bytesToUuid.js"(exports, module) {
     "use strict";
     var byteToHex = [];
-    for (i = 0; i < 256; ++i) {
-      byteToHex[i] = (i + 256).toString(16).substr(1);
+    for (i2 = 0; i2 < 256; ++i2) {
+      byteToHex[i2] = (i2 + 256).toString(16).substr(1);
     }
-    var i;
+    var i2;
     function bytesToUuid(buf, offset2) {
-      var i2 = offset2 || 0;
+      var i3 = offset2 || 0;
       var bth = byteToHex;
       return [
-        bth[buf[i2++]],
-        bth[buf[i2++]],
-        bth[buf[i2++]],
-        bth[buf[i2++]],
+        bth[buf[i3++]],
+        bth[buf[i3++]],
+        bth[buf[i3++]],
+        bth[buf[i3++]],
         "-",
-        bth[buf[i2++]],
-        bth[buf[i2++]],
+        bth[buf[i3++]],
+        bth[buf[i3++]],
         "-",
-        bth[buf[i2++]],
-        bth[buf[i2++]],
+        bth[buf[i3++]],
+        bth[buf[i3++]],
         "-",
-        bth[buf[i2++]],
-        bth[buf[i2++]],
+        bth[buf[i3++]],
+        bth[buf[i3++]],
         "-",
-        bth[buf[i2++]],
-        bth[buf[i2++]],
-        bth[buf[i2++]],
-        bth[buf[i2++]],
-        bth[buf[i2++]],
-        bth[buf[i2++]]
+        bth[buf[i3++]],
+        bth[buf[i3++]],
+        bth[buf[i3++]],
+        bth[buf[i3++]],
+        bth[buf[i3++]],
+        bth[buf[i3++]]
       ].join("");
     }
     module.exports = bytesToUuid;
@@ -43845,7 +43481,7 @@ var require_v4 = __commonJS({
     var rng = require_rng();
     var bytesToUuid = require_bytesToUuid();
     function v4(options, buf, offset2) {
-      var i = buf && offset2 || 0;
+      var i2 = buf && offset2 || 0;
       if (typeof options == "string") {
         buf = options === "binary" ? new Array(16) : null;
         options = null;
@@ -43856,7 +43492,7 @@ var require_v4 = __commonJS({
       rnds[8] = rnds[8] & 63 | 128;
       if (buf) {
         for (var ii = 0; ii < 16; ++ii) {
-          buf[i + ii] = rnds[ii];
+          buf[i2 + ii] = rnds[ii];
         }
       }
       return buf || bytesToUuid(rnds);
@@ -43948,12 +43584,12 @@ var require_auth = __commonJS({
         opaque: challenge.opaque
       };
       authHeader = [];
-      for (var k in authValues) {
-        if (authValues[k]) {
-          if (k === "qop" || k === "nc" || k === "algorithm") {
-            authHeader.push(k + "=" + authValues[k]);
+      for (var k2 in authValues) {
+        if (authValues[k2]) {
+          if (k2 === "qop" || k2 === "nc" || k2 === "algorithm") {
+            authHeader.push(k2 + "=" + authValues[k2]);
           } else {
-            authHeader.push(k + '="' + authValues[k] + '"');
+            authHeader.push(k2 + '="' + authValues[k2] + '"');
           }
         }
       }
@@ -43982,8 +43618,8 @@ var require_auth = __commonJS({
       if (!self2.hasAuth || self2.sentAuth) {
         return null;
       }
-      var c = caseless(response.headers);
-      var authHeader = c.get("www-authenticate");
+      var c2 = caseless(response.headers);
+      var authHeader = c2.get("www-authenticate");
       var authVerb = authHeader && authHeader.split(" ")[0].toLowerCase();
       request.debug("reauth", authVerb);
       switch (authVerb) {
@@ -44018,8 +43654,8 @@ var require_oauth_sign = __commonJS({
       for (key in obj) {
         val = obj[key];
         if (Array.isArray(val))
-          for (var i = 0; i < val.length; i++)
-            arr.push([key, val[i]]);
+          for (var i2 = 0; i2 < val.length; i2++)
+            arr.push([key, val[i2]]);
         else if (typeof val === "object")
           for (var prop in val)
             arr.push([key + "[" + prop + "]", val[prop]]);
@@ -44028,16 +43664,16 @@ var require_oauth_sign = __commonJS({
       }
       return arr;
     }
-    function compare(a, b) {
-      return a > b ? 1 : a < b ? -1 : 0;
+    function compare(a2, b2) {
+      return a2 > b2 ? 1 : a2 < b2 ? -1 : 0;
     }
     function generateBase(httpMethod, base_uri, params) {
-      var normalized = map(params).map(function(p) {
-        return [rfc3986(p[0]), rfc3986(p[1] || "")];
-      }).sort(function(a, b) {
-        return compare(a[0], b[0]) || compare(a[1], b[1]);
-      }).map(function(p) {
-        return p.join("=");
+      var normalized = map(params).map(function(p2) {
+        return [rfc3986(p2[0]), rfc3986(p2[1] || "")];
+      }).sort(function(a2, b2) {
+        return compare(a2[0], b2[0]) || compare(a2[1], b2[1]);
+      }).map(function(p2) {
+        return p2.join("=");
       }).join("&");
       var base = [
         rfc3986(httpMethod ? httpMethod.toUpperCase() : "GET"),
@@ -44123,8 +43759,8 @@ var require_oauth = __commonJS({
     }
     OAuth.prototype.buildParams = function(_oauth, uri, method, query, form, qsLib) {
       var oa = {};
-      for (var i in _oauth) {
-        oa["oauth_" + i] = _oauth[i];
+      for (var i2 in _oauth) {
+        oa["oauth_" + i2] = _oauth[i2];
       }
       if (!oa.oauth_version) {
         oa.oauth_version = "1.0";
@@ -44174,15 +43810,15 @@ var require_oauth = __commonJS({
     };
     OAuth.prototype.concatParams = function(oa, sep, wrap) {
       wrap = wrap || "";
-      var params = Object.keys(oa).filter(function(i) {
-        return i !== "realm" && i !== "oauth_signature";
+      var params = Object.keys(oa).filter(function(i2) {
+        return i2 !== "realm" && i2 !== "oauth_signature";
       }).sort();
       if (oa.realm) {
         params.splice(0, 0, "realm");
       }
       params.push("oauth_signature");
-      return params.map(function(i) {
-        return i + "=" + wrap + oauth.rfc3986(oa[i]) + wrap;
+      return params.map(function(i2) {
+        return i2 + "=" + wrap + oauth.rfc3986(oa[i2]) + wrap;
       }).join(sep);
     };
     OAuth.prototype.onRequest = function(_oauth) {
@@ -44573,10 +44209,10 @@ var require_tunnel_agent = __commonJS({
       self2.requests = [];
       self2.sockets = [];
       self2.on("free", function onFree(socket, host, port) {
-        for (var i = 0, len = self2.requests.length; i < len; ++i) {
-          var pending = self2.requests[i];
+        for (var i2 = 0, len = self2.requests.length; i2 < len; ++i2) {
+          var pending = self2.requests[i2];
           if (pending.host === host && pending.port === port) {
-            self2.requests.splice(i, 1);
+            self2.requests.splice(i2, 1);
             pending.request.onSocket(socket);
             return;
           }
@@ -44703,14 +44339,14 @@ var require_tunnel_agent = __commonJS({
       });
     }
     function mergeOptions(target) {
-      for (var i = 1, len = arguments.length; i < len; ++i) {
-        var overrides = arguments[i];
+      for (var i2 = 1, len = arguments.length; i2 < len; ++i2) {
+        var overrides = arguments[i2];
         if (typeof overrides === "object") {
           var keys = Object.keys(overrides);
-          for (var j = 0, keyLen = keys.length; j < keyLen; ++j) {
-            var k = keys[j];
-            if (overrides[k] !== void 0) {
-              target[k] = overrides[k];
+          for (var j2 = 0, keyLen = keys.length; j2 < keyLen; ++j2) {
+            var k2 = keys[j2];
+            if (overrides[k2] !== void 0) {
+              target[k2] = overrides[k2];
             }
           }
         }
@@ -44958,21 +44594,21 @@ var require_request2 = __commonJS({
     var globalPool = {};
     function filterForNonReserved(reserved, options) {
       var object = {};
-      for (var i in options) {
-        var notReserved = reserved.indexOf(i) === -1;
+      for (var i2 in options) {
+        var notReserved = reserved.indexOf(i2) === -1;
         if (notReserved) {
-          object[i] = options[i];
+          object[i2] = options[i2];
         }
       }
       return object;
     }
     function filterOutReservedFunctions(reserved, options) {
       var object = {};
-      for (var i in options) {
-        var isReserved = !(reserved.indexOf(i) === -1);
-        var isFunction = typeof options[i] === "function";
+      for (var i2 in options) {
+        var isReserved = !(reserved.indexOf(i2) === -1);
+        var isFunction = typeof options[i2] === "function";
         if (!(isReserved && isFunction)) {
-          object[i] = options[i];
+          object[i2] = options[i2];
         }
       }
       return object;
@@ -45171,8 +44807,8 @@ var require_request2 = __commonJS({
           if (formData.hasOwnProperty(formKey)) {
             var formValue = formData[formKey];
             if (formValue instanceof Array) {
-              for (var j = 0; j < formValue.length; j++) {
-                appendFormValue(formKey, formValue[j]);
+              for (var j2 = 0; j2 < formValue.length; j2++) {
+                appendFormValue(formKey, formValue[j2]);
               }
             } else {
               appendFormValue(formKey, formValue);
@@ -45252,8 +44888,8 @@ var require_request2 = __commonJS({
           if (typeof self2.body === "string") {
             length = Buffer2.byteLength(self2.body);
           } else if (Array.isArray(self2.body)) {
-            length = self2.body.reduce(function(a, b) {
-              return a + b.length;
+            length = self2.body.reduce(function(a2, b2) {
+              return a2 + b2.length;
             }, 0);
           } else {
             length = self2.body.length;
@@ -45290,8 +44926,8 @@ var require_request2 = __commonJS({
         if (options.agentClass) {
           self2.agentClass = options.agentClass;
         } else if (options.forever) {
-          var v = version();
-          if (v.major === 0 && v.minor <= 10) {
+          var v2 = version();
+          if (v2.major === 0 && v2.minor <= 10) {
             self2.agentClass = protocol === "http:" ? ForeverAgent : ForeverAgent.SSL;
           } else {
             self2.agentClass = self2.httpModule.Agent;
@@ -45318,9 +44954,9 @@ var require_request2 = __commonJS({
           }
         } else {
           if (src.headers) {
-            for (var i in src.headers) {
-              if (!self2.hasHeader(i)) {
-                self2.setHeader(i, src.headers[i]);
+            for (var i2 in src.headers) {
+              if (!self2.hasHeader(i2)) {
+                self2.setHeader(i2, src.headers[i2]);
               }
             }
           }
@@ -45394,8 +45030,8 @@ var require_request2 = __commonJS({
       var Agent = self2.agentClass;
       var options = {};
       if (self2.agentOptions) {
-        for (var i in self2.agentOptions) {
-          options[i] = self2.agentOptions[i];
+        for (var i2 in self2.agentOptions) {
+          options[i2] = self2.agentOptions[i2];
         }
       }
       if (self2.ca) {
@@ -45850,9 +45486,9 @@ var require_request2 = __commonJS({
         }
       }
       if (dest.setHeader && !dest.headersSent) {
-        for (var i in response.headers) {
-          if (!self2.gzip || i !== "content-encoding") {
-            dest.setHeader(i, response.headers[i]);
+        for (var i2 in response.headers) {
+          if (!self2.gzip || i2 !== "content-encoding") {
+            dest.setHeader(i2, response.headers[i2]);
           }
         }
         dest.statusCode = response.statusCode;
@@ -45861,7 +45497,7 @@ var require_request2 = __commonJS({
         self2.pipefilter(response, dest);
       }
     };
-    Request.prototype.qs = function(q2, clobber) {
+    Request.prototype.qs = function(q3, clobber) {
       var self2 = this;
       var base;
       if (!clobber && self2.uri.query) {
@@ -45869,8 +45505,8 @@ var require_request2 = __commonJS({
       } else {
         base = {};
       }
-      for (var i in q2) {
-        base[i] = q2[i];
+      for (var i2 in q3) {
+        base[i2] = q3[i2];
       }
       var qs = self2._qs.stringify(base);
       if (qs === "") {
@@ -46485,24 +46121,24 @@ var sanitizeAlpha = (alpha) => {
   );
 };
 var rgbHslString = (rr, gg, bb, aa, type) => {
-  const r = Math.round(rr);
-  const g = Math.round(gg);
-  const b = Math.round(bb);
-  const a = sanitizeAlpha(aa);
+  const r2 = Math.round(rr);
+  const g2 = Math.round(gg);
+  const b2 = Math.round(bb);
+  const a2 = sanitizeAlpha(aa);
   if (type) {
     const perc = type === "rgb" ? "" : "%";
-    if (a === 1) {
-      return `${type}(${r}, ${g}${perc}, ${b}${perc})`;
+    if (a2 === 1) {
+      return `${type}(${r2}, ${g2}${perc}, ${b2}${perc})`;
     }
-    return `${type}a(${r}, ${g}${perc}, ${b}${perc}, ${a})`;
+    return `${type}a(${r2}, ${g2}${perc}, ${b2}${perc}, ${a2})`;
   }
-  return `rgba(${r},${g},${b},${a})`;
+  return `rgba(${r2},${g2},${b2},${a2})`;
 };
-var toHex = (c) => {
-  return ("0" + parseInt(c, 10).toString(16)).slice(-2).toUpperCase();
+var toHex = (c2) => {
+  return ("0" + parseInt(c2, 10).toString(16)).slice(-2).toUpperCase();
 };
-var rgbToHex = (r, g, b, reduce = true) => {
-  let hex = `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+var rgbToHex = (r2, g2, b2, reduce = true) => {
+  let hex = `#${toHex(r2)}${toHex(g2)}${toHex(b2)}`;
   if (reduce) {
     hex = reduceHex(hex);
   }
@@ -46512,10 +46148,10 @@ var isValidRgbHsl = (color) => {
   return regRgb.test(color) || regRgba.test(color) || regHsl.test(color) || regHsla.test(color);
 };
 var fullHex = (hex) => {
-  const a = hex.charAt(0);
-  const b = hex.charAt(1);
-  const c = hex.charAt(2);
-  return `${a}${a}${b}${b}${c}${c}`;
+  const a2 = hex.charAt(0);
+  const b2 = hex.charAt(1);
+  const c2 = hex.charAt(2);
+  return `${a2}${a2}${b2}${b2}${c2}${c2}`;
 };
 var reduceHex = (clr, fromOutput) => {
   let color = clr.toLowerCase();
@@ -46556,12 +46192,12 @@ var getRgbHslValues = (color, hsl) => {
   if (values.length === 3) {
     values.push(1);
   }
-  for (let i = 0; i < 4; i++) {
-    if (i < 3) {
-      const max3 = !hsl ? 255 : i > 0 ? 100 : 360;
-      values[i] = Math.min(max3, Math.max(0, parseInt(values[i], 10)));
+  for (let i2 = 0; i2 < 4; i2++) {
+    if (i2 < 3) {
+      const max3 = !hsl ? 255 : i2 > 0 ? 100 : 360;
+      values[i2] = Math.min(max3, Math.max(0, parseInt(values[i2], 10)));
     } else {
-      values[i] = Math.min(1, Math.max(0, parseFloat(values[i])));
+      values[i2] = Math.min(1, Math.max(0, parseFloat(values[i2])));
     }
   }
   return values;
@@ -46628,10 +46264,10 @@ var sortCompareAlt = (() => {
   return [
     { index: 0, val: 0 },
     { index: 1, val: 0 }
-  ].sort((a, b) => a.val >= b.val)[0].index;
+  ].sort((a2, b2) => a2.val >= b2.val)[0].index;
 })();
-var sortCompare = (a, b) => {
-  return !sortCompareAlt ? a >= b ? 1 : -1 : a > b ? 1 : -1;
+var sortCompare = (a2, b2) => {
+  return !sortCompareAlt ? a2 >= b2 ? 1 : -1 : a2 > b2 ? 1 : -1;
 };
 
 // src/components/gradient/utils/common.js
@@ -46653,14 +46289,14 @@ var getGradientPositions = (prefix) => {
       positions = ["50%", pos];
     }
   }
-  const x = getPosition(positions[0]);
-  let y;
+  const x2 = getPosition(positions[0]);
+  let y2;
   if (positions.length === 1) {
-    y = { value: 50, unit: "%" };
+    y2 = { value: 50, unit: "%" };
   } else {
-    y = getPosition(positions[1]);
+    y2 = getPosition(positions[1]);
   }
-  return { x, y };
+  return { x: x2, y: y2 };
 };
 var normalizePositions = (positions) => {
   const firstPos = positions[0].trim();
@@ -46927,13 +46563,13 @@ var trimPositions = (clrs, hints) => {
   }
   const perc = toFixed(1 / total * 100);
   let curPos = perc;
-  for (let j = 1; j < total; j++) {
-    const { color, position, unit } = clrs[j];
+  for (let j2 = 1; j2 < total; j2++) {
+    const { color, position, unit } = clrs[j2];
     if (unit === "px") {
       return clrs;
     }
-    const { color: prevColor } = clrs[j - 1];
-    const { color: nextColor } = clrs[j + 1];
+    const { color: prevColor } = clrs[j2 - 1];
+    const { color: nextColor } = clrs[j2 + 1];
     if (position !== curPos || color === prevColor || color === nextColor) {
       return clrs;
     }
@@ -46981,14 +46617,14 @@ var shrinkOuput = (colors) => {
   const newColors = [`${prevColor},`];
   const multiStops = true;
   const { length } = colors;
-  for (let i = 1; i < length; i++) {
-    let curColor = trimComma(colors[i]);
+  for (let i2 = 1; i2 < length; i2++) {
+    let curColor = trimComma(colors[i2]);
     if (multiStops) {
       const clrA = prevColor.split(" ");
       const clrB = curColor.split(" ");
       if (clrA[0] === clrB[0] && clrA.length > 1 && clrB.length > 1) {
-        if (i + 1 < length) {
-          const nextColor = trimComma(colors[i + 1]);
+        if (i2 + 1 < length) {
+          const nextColor = trimComma(colors[i2 + 1]);
           if (clrA[0] === nextColor.split(" ")[0]) {
             continue;
           }
@@ -47091,9 +46727,9 @@ var conicGradient = (grad) => {
     positions: gradPositions,
     repeating: gradRepeating
   } = grad;
-  const { x, y } = gradPositions;
-  const { value: valueX, unit: unitX } = x;
-  const { value: valueY, unit: unitY } = y;
+  const { x: x2, y: y2 } = gradPositions;
+  const { value: valueX, unit: unitX } = x2;
+  const { value: valueY, unit: unitY } = y2;
   const defaultX = valueX === 50 && unitX === "%";
   const defaultY = valueY === 50 && unitY === "%";
   const hasAngle = gradAngle !== 0 && gradAngle !== 360;
@@ -47170,8 +46806,8 @@ var getGradientObject = (color) => {
 var getGradients = (grad) => {
   const gradients = grad.split(/(,linear|,radial|,conic|,repeating)/);
   const list = gradients.splice(0, 1);
-  for (let i = 0; i < gradients.length; i += 2) {
-    list.push(gradients[i] + gradients[i + 1]);
+  for (let i2 = 0; i2 < gradients.length; i2 += 2) {
+    list.push(gradients[i2] + gradients[i2 + 1]);
   }
   return list.map((gradient) => gradientObject(gradient))[0];
 };
@@ -47231,10 +46867,10 @@ var createGradientColorsArray = (gradient) => {
   const { length } = gradient;
   let start;
   let index3 = 0;
-  for (let i = 0; i < length; i++) {
-    const chr = gradient[i];
+  for (let i2 = 0; i2 < length; i2++) {
+    const chr = gradient[i2];
     if (!start && chr === ",") {
-      let color = gradient.slice(index3, i);
+      let color = gradient.slice(index3, i2);
       const pos = color.search(/\)/);
       if (color.charAt(0) === ",") {
         color = color.replace(",", "");
@@ -47243,7 +46879,7 @@ var createGradientColorsArray = (gradient) => {
         color = color.replace(")", ") ");
       }
       colors.push(color);
-      index3 = i;
+      index3 = i2;
     } else if (chr === "(") {
       start = true;
     } else if (chr === ")") {
@@ -47374,9 +47010,9 @@ var addHints = (clrs) => {
   const colors = [];
   const { length } = clrs;
   let count2;
-  for (let i = 0; i < length; i += count2) {
-    const curColor = clrs[i];
-    const nextColor = clrs[i + 1];
+  for (let i2 = 0; i2 < length; i2 += count2) {
+    const curColor = clrs[i2];
+    const nextColor = clrs[i2 + 1];
     count2 = 1;
     if (isNaN(parseInt(curColor, 10))) {
       colors.push(curColor);
@@ -47490,8 +47126,8 @@ var getGradientColorData = (colors) => {
 var minPositionPoints = (colors) => {
   let prevColor = colors[0];
   const { length } = colors;
-  for (let i = 1; i < length; i++) {
-    const curColor = colors[i];
+  for (let i2 = 1; i2 < length; i2++) {
+    const curColor = colors[i2];
     let { position: prevPos, unit: prevUnit } = prevColor;
     let { position: curPos, unit: curUnit } = curColor;
     let unitConverted;
@@ -47513,7 +47149,7 @@ var minPositionPoints = (colors) => {
       position = convertPositionUnit2(position, true);
     }
     curColor.position = position;
-    prevColor = colors[i];
+    prevColor = colors[i2];
   }
 };
 var sortByPosition = (items, colors) => {
@@ -47568,13 +47204,13 @@ var trimItems = (st, items) => {
   return str;
 };
 var genRandomId = (length = 8) => {
-  const c = "abcdefghijklmnopqrstuvwxyz";
-  const s = [...Array(1)].map((_) => c[~~(Math.random() * c.length)]).join("");
+  const c2 = "abcdefghijklmnopqrstuvwxyz";
+  const s2 = [...Array(1)].map((_2) => c2[~~(Math.random() * c2.length)]).join("");
   const id = Array.from(
     { length },
     () => Math.random().toString(36)[2]
   ).join("");
-  return `${s}${id}`;
+  return `${s2}${id}`;
 };
 
 // src/GradientPicker.tsx
@@ -47688,25 +47324,25 @@ var computePosition = (reference, floating, config) => __async(void 0, null, fun
     strategy
   });
   let {
-    x,
-    y
+    x: x2,
+    y: y2
   } = computeCoordsFromPlacement(rects, placement, rtl);
   let statefulPlacement = placement;
   let middlewareData = {};
   let resetCount = 0;
-  for (let i = 0; i < validMiddleware.length; i++) {
+  for (let i2 = 0; i2 < validMiddleware.length; i2++) {
     const {
       name,
-      fn
-    } = validMiddleware[i];
+      fn: fn2
+    } = validMiddleware[i2];
     const {
       x: nextX,
       y: nextY,
       data,
       reset
-    } = yield fn({
-      x,
-      y,
+    } = yield fn2({
+      x: x2,
+      y: y2,
       initialPlacement: placement,
       placement: statefulPlacement,
       strategy,
@@ -47718,8 +47354,8 @@ var computePosition = (reference, floating, config) => __async(void 0, null, fun
         floating
       }
     });
-    x = nextX != null ? nextX : x;
-    y = nextY != null ? nextY : y;
+    x2 = nextX != null ? nextX : x2;
+    y2 = nextY != null ? nextY : y2;
     middlewareData = __spreadProps(__spreadValues({}, middlewareData), {
       [name]: __spreadValues(__spreadValues({}, middlewareData[name]), data)
     });
@@ -47737,17 +47373,17 @@ var computePosition = (reference, floating, config) => __async(void 0, null, fun
           }) : reset.rects;
         }
         ({
-          x,
-          y
+          x: x2,
+          y: y2
         } = computeCoordsFromPlacement(rects, statefulPlacement, rtl));
       }
-      i = -1;
+      i2 = -1;
       continue;
     }
   }
   return {
-    x,
-    y,
+    x: x2,
+    y: y2,
     placement: statefulPlacement,
     strategy,
     middlewareData
@@ -47787,8 +47423,8 @@ function detectOverflow(state, options) {
       options = {};
     }
     const {
-      x,
-      y,
+      x: x2,
+      y: y2,
       platform: platform2,
       rects,
       elements,
@@ -47811,8 +47447,8 @@ function detectOverflow(state, options) {
       strategy
     }));
     const rect = elementContext === "floating" ? __spreadProps(__spreadValues({}, rects.floating), {
-      x,
-      y
+      x: x2,
+      y: y2
     }) : rects.reference;
     const offsetParent = yield platform2.getOffsetParent == null ? void 0 : platform2.getOffsetParent(elements.floating);
     const offsetScale = (yield platform2.isElement == null ? void 0 : platform2.isElement(offsetParent)) ? (yield platform2.getScale == null ? void 0 : platform2.getScale(offsetParent)) || {
@@ -47846,8 +47482,8 @@ var arrow = (options) => ({
   fn(state) {
     return __async(this, null, function* () {
       const {
-        x,
-        y,
+        x: x2,
+        y: y2,
         placement,
         rects,
         platform: platform2,
@@ -47862,8 +47498,8 @@ var arrow = (options) => ({
       }
       const paddingObject = getSideObjectFromPadding(padding);
       const coords = {
-        x,
-        y
+        x: x2,
+        y: y2
       };
       const axis = getMainAxisFromPlacement(placement);
       const length = getLengthFromAxis(axis);
@@ -48037,12 +47673,12 @@ var flip = function(options) {
               }
             };
           }
-          let resetPlacement = (_overflowsData$filter = overflowsData.filter((d) => d.overflows[0] <= 0).sort((a, b) => a.overflows[1] - b.overflows[1])[0]) == null ? void 0 : _overflowsData$filter.placement;
+          let resetPlacement = (_overflowsData$filter = overflowsData.filter((d2) => d2.overflows[0] <= 0).sort((a2, b2) => a2.overflows[1] - b2.overflows[1])[0]) == null ? void 0 : _overflowsData$filter.placement;
           if (!resetPlacement) {
             switch (fallbackStrategy) {
               case "bestFit": {
                 var _overflowsData$map$so;
-                const placement2 = (_overflowsData$map$so = overflowsData.map((d) => [d.placement, d.overflows.filter((overflow2) => overflow2 > 0).reduce((acc, overflow2) => acc + overflow2, 0)]).sort((a, b) => a[1] - b[1])[0]) == null ? void 0 : _overflowsData$map$so[0];
+                const placement2 = (_overflowsData$map$so = overflowsData.map((d2) => [d2.placement, d2.overflows.filter((overflow2) => overflow2 > 0).reduce((acc, overflow2) => acc + overflow2, 0)]).sort((a2, b2) => a2[1] - b2[1])[0]) == null ? void 0 : _overflowsData$map$so[0];
                 if (placement2) {
                   resetPlacement = placement2;
                 }
@@ -48079,11 +47715,11 @@ function getBoundingRect(rects) {
   };
 }
 function getRectsByLine(rects) {
-  const sortedRects = rects.slice().sort((a, b) => a.y - b.y);
+  const sortedRects = rects.slice().sort((a2, b2) => a2.y - b2.y);
   const groups = [];
   let prevRect = null;
-  for (let i = 0; i < sortedRects.length; i++) {
-    const rect = sortedRects[i];
+  for (let i2 = 0; i2 < sortedRects.length; i2++) {
+    const rect = sortedRects[i2];
     if (!prevRect || rect.y - prevRect.y > prevRect.height / 2) {
       groups.push([rect]);
     } else {
@@ -48111,16 +47747,16 @@ var inline = function(options) {
         } = state;
         const {
           padding = 2,
-          x,
-          y
+          x: x2,
+          y: y2
         } = evaluate(options, state);
         const nativeClientRects = Array.from((yield platform2.getClientRects == null ? void 0 : platform2.getClientRects(elements.reference)) || []);
         const clientRects = getRectsByLine(nativeClientRects);
         const fallback = rectToClientRect(getBoundingRect(nativeClientRects));
         const paddingObject = getSideObjectFromPadding(padding);
         function getBoundingClientRect2() {
-          if (clientRects.length === 2 && clientRects[0].left > clientRects[1].right && x != null && y != null) {
-            return clientRects.find((rect) => x > rect.left - paddingObject.left && x < rect.right + paddingObject.right && y > rect.top - paddingObject.top && y < rect.bottom + paddingObject.bottom) || fallback;
+          if (clientRects.length === 2 && clientRects[0].left > clientRects[1].right && x2 != null && y2 != null) {
+            return clientRects.find((rect) => x2 > rect.left - paddingObject.left && x2 < rect.right + paddingObject.right && y2 > rect.top - paddingObject.top && y2 < rect.bottom + paddingObject.bottom) || fallback;
           }
           if (clientRects.length >= 2) {
             if (getMainAxisFromPlacement(placement) === "x") {
@@ -48235,13 +47871,13 @@ var offset = function(options) {
     fn(state) {
       return __async(this, null, function* () {
         const {
-          x,
-          y
+          x: x2,
+          y: y2
         } = state;
         const diffCoords = yield convertValueToCoords(state, options);
         return {
-          x: x + diffCoords.x,
-          y: y + diffCoords.y,
+          x: x2 + diffCoords.x,
+          y: y2 + diffCoords.y,
           data: diffCoords
         };
       });
@@ -48261,8 +47897,8 @@ var shift = function(options) {
     fn(state) {
       return __async(this, null, function* () {
         const {
-          x,
-          y,
+          x: x2,
+          y: y2,
           placement
         } = state;
         const _a2 = evaluate(options, state), {
@@ -48271,12 +47907,12 @@ var shift = function(options) {
           limiter = {
             fn: (_ref) => {
               let {
-                x: x2,
-                y: y2
+                x: x3,
+                y: y3
               } = _ref;
               return {
-                x: x2,
-                y: y2
+                x: x3,
+                y: y3
               };
             }
           }
@@ -48286,8 +47922,8 @@ var shift = function(options) {
           "limiter"
         ]);
         const coords = {
-          x,
-          y
+          x: x2,
+          y: y2
         };
         const overflow = yield detectOverflow(state, detectOverflowOptions);
         const mainAxis = getMainAxisFromPlacement(getSide(placement));
@@ -48314,8 +47950,8 @@ var shift = function(options) {
         }));
         return __spreadProps(__spreadValues({}, limitedCoords), {
           data: {
-            x: limitedCoords.x - x,
-            y: limitedCoords.y - y
+            x: limitedCoords.x - x2,
+            y: limitedCoords.y - y2
           }
         });
       });
@@ -48330,8 +47966,8 @@ var limitShift = function(options) {
     options,
     fn(state) {
       const {
-        x,
-        y,
+        x: x2,
+        y: y2,
         placement,
         rects,
         middlewareData
@@ -48342,8 +47978,8 @@ var limitShift = function(options) {
         crossAxis: checkCrossAxis = true
       } = evaluate(options, state);
       const coords = {
-        x,
-        y
+        x: x2,
+        y: y2
       };
       const mainAxis = getMainAxisFromPlacement(placement);
       const crossAxis = getCrossAxis(mainAxis);
@@ -48521,9 +48157,9 @@ var min2 = Math.min;
 var max2 = Math.max;
 var round = Math.round;
 var floor = Math.floor;
-var createCoords = (v) => ({
-  x: v,
-  y: v
+var createCoords = (v2) => ({
+  x: v2,
+  y: v2
 });
 function getCssDimensions(element) {
   const css = getComputedStyle$1(element);
@@ -48560,17 +48196,17 @@ function getScale(element) {
     height,
     $
   } = getCssDimensions(domElement);
-  let x = ($ ? round(rect.width) : rect.width) / width;
-  let y = ($ ? round(rect.height) : rect.height) / height;
-  if (!x || !Number.isFinite(x)) {
-    x = 1;
+  let x2 = ($ ? round(rect.width) : rect.width) / width;
+  let y2 = ($ ? round(rect.height) : rect.height) / height;
+  if (!x2 || !Number.isFinite(x2)) {
+    x2 = 1;
   }
-  if (!y || !Number.isFinite(y)) {
-    y = 1;
+  if (!y2 || !Number.isFinite(y2)) {
+    y2 = 1;
   }
   return {
-    x,
-    y
+    x: x2,
+    y: y2
   };
 }
 var noOffsets = /* @__PURE__ */ createCoords(0);
@@ -48613,8 +48249,8 @@ function getBoundingClientRect(element, includeScale, isFixedStrategy, offsetPar
     }
   }
   const visualOffsets = shouldAddVisualOffsets(domElement, isFixedStrategy, offsetParent) ? getVisualOffsets(domElement) : createCoords(0);
-  let x = (clientRect.left + visualOffsets.x) / scale.x;
-  let y = (clientRect.top + visualOffsets.y) / scale.y;
+  let x2 = (clientRect.left + visualOffsets.x) / scale.x;
+  let y2 = (clientRect.top + visualOffsets.y) / scale.y;
   let width = clientRect.width / scale.x;
   let height = clientRect.height / scale.y;
   if (domElement) {
@@ -48627,20 +48263,20 @@ function getBoundingClientRect(element, includeScale, isFixedStrategy, offsetPar
       const css = getComputedStyle(currentIFrame);
       const left = iframeRect.left + (currentIFrame.clientLeft + parseFloat(css.paddingLeft)) * iframeScale.x;
       const top = iframeRect.top + (currentIFrame.clientTop + parseFloat(css.paddingTop)) * iframeScale.y;
-      x *= iframeScale.x;
-      y *= iframeScale.y;
+      x2 *= iframeScale.x;
+      y2 *= iframeScale.y;
       width *= iframeScale.x;
       height *= iframeScale.y;
-      x += left;
-      y += top;
+      x2 += left;
+      y2 += top;
       currentIFrame = getWindow(currentIFrame).frameElement;
     }
   }
   return rectToClientRect({
     width,
     height,
-    x,
-    y
+    x: x2,
+    y: y2
   });
 }
 function getNodeScroll(element) {
@@ -48706,16 +48342,16 @@ function getDocumentRect(element) {
   const body = element.ownerDocument.body;
   const width = max2(html.scrollWidth, html.clientWidth, body.scrollWidth, body.clientWidth);
   const height = max2(html.scrollHeight, html.clientHeight, body.scrollHeight, body.clientHeight);
-  let x = -scroll.scrollLeft + getWindowScrollBarX(element);
-  const y = -scroll.scrollTop;
+  let x2 = -scroll.scrollLeft + getWindowScrollBarX(element);
+  const y2 = -scroll.scrollTop;
   if (getComputedStyle$1(body).direction === "rtl") {
-    x += max2(html.clientWidth, body.clientWidth) - width;
+    x2 += max2(html.clientWidth, body.clientWidth) - width;
   }
   return {
     width,
     height,
-    x,
-    y
+    x: x2,
+    y: y2
   };
 }
 function getParentNode(node) {
@@ -48760,22 +48396,22 @@ function getViewportRect(element, strategy) {
   const visualViewport = win.visualViewport;
   let width = html.clientWidth;
   let height = html.clientHeight;
-  let x = 0;
-  let y = 0;
+  let x2 = 0;
+  let y2 = 0;
   if (visualViewport) {
     width = visualViewport.width;
     height = visualViewport.height;
     const visualViewportBased = isSafari();
     if (!visualViewportBased || visualViewportBased && strategy === "fixed") {
-      x = visualViewport.offsetLeft;
-      y = visualViewport.offsetTop;
+      x2 = visualViewport.offsetLeft;
+      y2 = visualViewport.offsetTop;
     }
   }
   return {
     width,
     height,
-    x,
-    y
+    x: x2,
+    y: y2
   };
 }
 function getInnerBoundingClientRect(element, strategy) {
@@ -48785,13 +48421,13 @@ function getInnerBoundingClientRect(element, strategy) {
   const scale = isHTMLElement(element) ? getScale(element) : createCoords(1);
   const width = element.clientWidth * scale.x;
   const height = element.clientHeight * scale.y;
-  const x = left * scale.x;
-  const y = top * scale.y;
+  const x2 = left * scale.x;
+  const y2 = top * scale.y;
   return {
     width,
     height,
-    x,
-    y
+    x: x2,
+    y: y2
   };
 }
 function getClientRectFromClippingAncestor(element, clippingAncestor, strategy) {
@@ -49150,51 +48786,51 @@ var arrow2 = (options) => {
   };
 };
 var index = typeof document !== "undefined" ? useLayoutEffect2 : useEffect2;
-function deepEqual(a, b) {
-  if (a === b) {
+function deepEqual(a2, b2) {
+  if (a2 === b2) {
     return true;
   }
-  if (typeof a !== typeof b) {
+  if (typeof a2 !== typeof b2) {
     return false;
   }
-  if (typeof a === "function" && a.toString() === b.toString()) {
+  if (typeof a2 === "function" && a2.toString() === b2.toString()) {
     return true;
   }
-  let length, i, keys;
-  if (a && b && typeof a == "object") {
-    if (Array.isArray(a)) {
-      length = a.length;
-      if (length != b.length)
+  let length, i2, keys;
+  if (a2 && b2 && typeof a2 == "object") {
+    if (Array.isArray(a2)) {
+      length = a2.length;
+      if (length != b2.length)
         return false;
-      for (i = length; i-- !== 0; ) {
-        if (!deepEqual(a[i], b[i])) {
+      for (i2 = length; i2-- !== 0; ) {
+        if (!deepEqual(a2[i2], b2[i2])) {
           return false;
         }
       }
       return true;
     }
-    keys = Object.keys(a);
+    keys = Object.keys(a2);
     length = keys.length;
-    if (length !== Object.keys(b).length) {
+    if (length !== Object.keys(b2).length) {
       return false;
     }
-    for (i = length; i-- !== 0; ) {
-      if (!Object.prototype.hasOwnProperty.call(b, keys[i])) {
+    for (i2 = length; i2-- !== 0; ) {
+      if (!Object.prototype.hasOwnProperty.call(b2, keys[i2])) {
         return false;
       }
     }
-    for (i = length; i-- !== 0; ) {
-      const key = keys[i];
-      if (key === "_owner" && a.$$typeof) {
+    for (i2 = length; i2-- !== 0; ) {
+      const key = keys[i2];
+      if (key === "_owner" && a2.$$typeof) {
         continue;
       }
-      if (!deepEqual(a[key], b[key])) {
+      if (!deepEqual(a2[key], b2[key])) {
         return false;
       }
     }
     return true;
   }
-  return a !== a && b !== b;
+  return a2 !== a2 && b2 !== b2;
 }
 function useLatestRef(value) {
   const ref = React3.useRef(value);
@@ -49349,7 +48985,7 @@ function createPubSub() {
     },
     off(event, listener) {
       var _map$get2;
-      map.set(event, ((_map$get2 = map.get(event)) == null ? void 0 : _map$get2.filter((l) => l !== listener)) || []);
+      map.set(event, ((_map$get2 = map.get(event)) == null ? void 0 : _map$get2.filter((l2) => l2 !== listener)) || []);
     }
   };
 }
@@ -49844,9 +49480,9 @@ function getChildren(nodes, id) {
   while (currentChildren.length) {
     currentChildren = nodes.filter((node) => {
       var _currentChildren;
-      return (_currentChildren = currentChildren) == null ? void 0 : _currentChildren.some((n) => {
+      return (_currentChildren = currentChildren) == null ? void 0 : _currentChildren.some((n2) => {
         var _node$context2;
-        return node.parentId === n.id && ((_node$context2 = node.context) == null ? void 0 : _node$context2.open);
+        return node.parentId === n2.id && ((_node$context2 = node.context) == null ? void 0 : _node$context2.open);
       });
     });
     allChildren = allChildren.concat(currentChildren);
@@ -49860,7 +49496,7 @@ function getTarget(event) {
   return event.target;
 }
 var useInsertionEffect = React4[/* @__PURE__ */ "useInsertionEffect".toString()];
-var useSafeInsertionEffect = useInsertionEffect || ((fn) => fn());
+var useSafeInsertionEffect = useInsertionEffect || ((fn2) => fn2());
 function useEvent(callback) {
   const ref = React4.useRef(() => {
     if (process.env.NODE_ENV !== "production") {
@@ -50331,7 +49967,7 @@ function mergeProps(userProps, propsList, elementKey) {
             for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
               args[_key] = arguments[_key];
             }
-            return (_map$get2 = map.get(key)) == null ? void 0 : _map$get2.map((fn) => fn(...args)).find((val) => val !== void 0);
+            return (_map$get2 = map.get(key)) == null ? void 0 : _map$get2.map((fn2) => fn2(...args)).find((val) => val !== void 0);
           };
         }
       } else {
@@ -50401,7 +50037,7 @@ function useFloatingAutoUpdate({
     floating.update();
   }, positionDependencies);
   useDidUpdate(() => {
-    setDelayedUpdate((c) => c + 1);
+    setDelayedUpdate((c2) => c2 + 1);
   }, [opened]);
 }
 
@@ -51124,6 +50760,9 @@ var PopoverDropdown = factory2(
 );
 PopoverDropdown.displayName = "@raikou/core/PopoverDropdown";
 
+// css-module:./Popover.module.css#css-module
+var Popover_module_default = { "dropdown": "m-38a85659", "arrow": "m-a31dc6c1" };
+
 // ../Popover/src/Popover.tsx
 var defaultProps4 = {
   position: "bottom",
@@ -51147,7 +50786,7 @@ var defaultProps4 = {
   width: "max-content"
 };
 var varsResolver = createVarsResolver(
-  (_, { radius, shadow }) => ({
+  (_2, { radius, shadow }) => ({
     dropdown: {
       "--popover-radius": radius === void 0 ? void 0 : getRadius(radius),
       "--popover-shadow": getShadow(shadow)
@@ -51239,10 +50878,7 @@ function Popover(_props) {
   const getStyles = useStyles({
     name: __staticSelector,
     props,
-    classes: {
-      dropdown: "popover-dropdown",
-      arrow: "popover-arrow"
-    },
+    classes: Popover_module_default,
     classNames,
     styles,
     unstyled,
@@ -51399,10 +51035,15 @@ import {
   getFontSize,
   createVarsResolver as createVarsResolver2
 } from "@raikou/core";
+
+// css-module:../Input.module.css#css-module
+var Input_module_default = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
+
+// ../Input/src/InputLabel/InputLabel.tsx
 var defaultProps5 = {
   labelElement: "label"
 };
-var varsResolver2 = createVarsResolver2((_, { size: size2 }) => ({
+var varsResolver2 = createVarsResolver2((_2, { size: size2 }) => ({
   label: {
     "--input-label-size": getFontSize(size2),
     "--input-asterisk-color": void 0
@@ -51444,10 +51085,11 @@ var InputLabel = factory3((_props, ref) => {
   const _getStyles = useStyles2({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      label: "inputWrapper-label",
-      required: "inputWrapper-required"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    // },
     className,
     style,
     classNames,
@@ -51493,7 +51135,7 @@ import {
   createVarsResolver as createVarsResolver3
 } from "@raikou/core";
 var defaultProps6 = {};
-var varsResolver3 = createVarsResolver3((_, { size: size2 }) => ({
+var varsResolver3 = createVarsResolver3((_2, { size: size2 }) => ({
   error: {
     "--input-error-size": size2 === void 0 ? void 0 : `calc(${getFontSize2(size2)} - ${rem4(2)})`
   }
@@ -51526,9 +51168,10 @@ var InputError = factory4((_props, ref) => {
   const _getStyles = useStyles3({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      error: "inputWrapper-error"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   error: "inputWrapper-error",
+    // },
     className,
     style,
     classNames,
@@ -51565,7 +51208,7 @@ import {
 } from "@raikou/core";
 var defaultProps7 = {};
 var varsResolver4 = createVarsResolver4(
-  (_, { size: size2 }) => ({
+  (_2, { size: size2 }) => ({
     description: {
       "--input-description-size": size2 === void 0 ? void 0 : `calc(${getFontSize3(size2)} - ${rem5(2)})`
     }
@@ -51601,9 +51244,10 @@ var InputDescription = factory5(
     const _getStyles = useStyles4({
       name: ["InputWrapper", __staticSelector],
       props,
-      classes: {
-        description: "inputWrapper-description"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   description: "inputWrapper-description",
+      // },
       className,
       style,
       classNames,
@@ -51661,9 +51305,10 @@ var InputPlaceholder = factory6(
     const getStyles = useStyles5({
       name: ["InputPlaceholder", __staticSelector],
       props,
-      classes: {
-        placeholder: "input-placeholder"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   placeholder: "input-placeholder",
+      // },
       className,
       style,
       classNames,
@@ -51712,7 +51357,7 @@ var defaultProps9 = {
   inputContainer: (children) => children,
   inputWrapperOrder: ["label", "description", "input", "error"]
 };
-var varsResolver5 = createVarsResolver5((_, { size: size2 }) => ({
+var varsResolver5 = createVarsResolver5((_2, { size: size2 }) => ({
   label: {
     "--input-label-size": getFontSize4(size2),
     "--input-asterisk-color": void 0
@@ -51778,13 +51423,14 @@ var InputWrapper = factory7((_props, ref) => {
   const getStyles = useStyles6({
     name: ["InputWrapper", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      root: "inputWrapper-root",
-      label: "inputWrapper-label",
-      required: "inputWrapper-required",
-      error: "inputWrapper-error",
-      description: "inputWrapper-description"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   root: "inputWrapper-root",
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    //   error: "inputWrapper-error",
+    //   description: "inputWrapper-description",
+    // },
     className,
     style,
     classNames,
@@ -51876,6 +51522,9 @@ var InputWrapper = factory7((_props, ref) => {
 });
 InputWrapper.displayName = "@raikou/core/InputWrapper";
 
+// css-module:./Input.module.css#css-module
+var Input_module_default2 = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
+
 // ../Input/src/Input.tsx
 var defaultProps10 = {
   variant: "default",
@@ -51884,7 +51533,7 @@ var defaultProps10 = {
   withAria: true,
   withErrorStyles: true
 };
-var varsResolver6 = createVarsResolver6((_, props, ctx) => ({
+var varsResolver6 = createVarsResolver6((_2, props, ctx) => ({
   wrapper: {
     "--input-margin-top": ctx.offsetTop ? "calc(var(--raikou-spacing-xs) / 2)" : void 0,
     "--input-margin-bottom": ctx.offsetBottom ? "calc(var(--raikou-spacing-xs) / 2)" : void 0,
@@ -51968,11 +51617,12 @@ var Input = polymorphicFactory((_props, ref) => {
   const getStyles = useStyles7({
     name: ["Input", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      wrapper: "input-wrapper",
-      input: "input-input",
-      section: "input-section"
-    },
+    classes: Input_module_default2,
+    // classes: {
+    //   wrapper: "input-wrapper",
+    //   input: "input-input",
+    //   section: "input-section",
+    // },
     className,
     style,
     classNames,
@@ -52181,13 +51831,18 @@ import {
   getSpacing,
   createVarsResolver as createVarsResolver7
 } from "@raikou/core";
+
+// css-module:./Stack.module.css#css-module
+var Stack_module_default = { "root": "m-6d731127" };
+
+// ../Stack/src/Stack.tsx
 var defaultProps13 = {
   gap: "md",
   align: "stretch",
   justify: "flex-start"
 };
 var varsResolver7 = createVarsResolver7(
-  (_, { gap, align, justify }) => ({
+  (_2, { gap, align, justify }) => ({
     root: {
       "--stack-gap": getSpacing(gap),
       "--stack-align": align,
@@ -52223,7 +51878,7 @@ var Stack = factory9((_props, ref) => {
   const getStyles = useStyles8({
     name: "Stack",
     props,
-    classes: { root: "stack-root" },
+    classes: Stack_module_default,
     className,
     style,
     classNames,
@@ -52235,6 +51890,7 @@ var Stack = factory9((_props, ref) => {
   return /* @__PURE__ */ React21.createElement(Box8, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { variant }), others));
 });
 Stack.displayName = "@raikou/core/Stack";
+Stack.classes = Stack_module_default;
 
 // ../ColorSwatch/src/ColorSwatch.tsx
 import React22 from "react";
@@ -52247,11 +51903,16 @@ import {
   useStyles as useStyles9,
   createVarsResolver as createVarsResolver8
 } from "@raikou/core";
+
+// css-module:./ColorSwatch.module.css#css-module
+var ColorSwatch_module_default = { "root": "m-de3d2490", "colorOverlay": "m-862f3d1b", "shadowOverlay": "m-98ae7f22", "alphaOverlay": "m-95709ac0", "childrenOverlay": "m-93e74e3" };
+
+// ../ColorSwatch/src/ColorSwatch.tsx
 var defaultProps14 = {
   withShadow: true
 };
 var varsResolver8 = createVarsResolver8(
-  (_, { radius, size: size2 }) => ({
+  (_2, { radius, size: size2 }) => ({
     root: {
       "--cs-radius": radius === void 0 ? void 0 : getRadius3(radius),
       "--cs-size": rem8(size2)
@@ -52291,13 +51952,7 @@ var ColorSwatch = polymorphicFactory3(
     const getStyles = useStyles9({
       name: "ColorSwatch",
       props,
-      classes: {
-        root: "colorswatch-root",
-        alphaOverlay: "colorswatch-alphaOverlay",
-        shadowOverlay: "colorswatch-shadowOverlay",
-        colorOverlay: "colorswatch-colorOverlay",
-        childrenOverlay: "colorswatch-childrenOverlay"
-      },
+      classes: ColorSwatch_module_default,
       className,
       style,
       classNames,
@@ -52324,6 +51979,7 @@ var ColorSwatch = polymorphicFactory3(
   }
 );
 ColorSwatch.displayName = "@raikou/core/ColorSwatch";
+ColorSwatch.classes = ColorSwatch_module_default;
 
 // src/components/picker/index.tsx
 import cx2 from "clsx";
@@ -52422,6 +52078,11 @@ import {
   useStyles as useStyles10,
   polymorphicFactory as polymorphicFactory4
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps16 = {
   __staticSelector: "UnstyledButton"
 };
@@ -52448,9 +52109,7 @@ var UnstyledButton = polymorphicFactory4(
     const getStyles = useStyles10({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -52468,6 +52127,7 @@ var UnstyledButton = polymorphicFactory4(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // ../Loader/src/Loader.tsx
 import React29 from "react";
@@ -52485,6 +52145,11 @@ import {
 import React25, { forwardRef as forwardRef4 } from "react";
 import cx3 from "clsx";
 import { Box as Box12 } from "@raikou/core";
+
+// css-module:../Loader.module.css#css-module
+var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
+
+// ../Loader/src/loaders/Bars.tsx
 var Bars = forwardRef4(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
@@ -52492,13 +52157,13 @@ var Bars = forwardRef4(
       Box12,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx3("loader-barsLoader", className)
+        className: cx3(Loader_module_default.barsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React25.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ React25.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ React25.createElement("span", { className: "loader-bar" })
+      /* @__PURE__ */ React25.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React25.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React25.createElement("span", { className: Loader_module_default.bar })
     );
   }
 );
@@ -52514,7 +52179,7 @@ var Oval = forwardRef5(
       Box13,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx4("loader-ovalLoader", className)
+        className: cx4(Loader_module_default.ovalLoader, className)
       }, others), {
         ref
       })
@@ -52533,7 +52198,7 @@ var Progress = forwardRef6(
       Box14,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx5("loader-progressLoader", className)
+        className: cx5(Loader_module_default.progressLoader, className)
       }, others), {
         ref
       }),
@@ -52563,16 +52228,19 @@ var Dots = forwardRef7(
       Box15,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx6("loader-dotsLoader", className)
+        className: cx6(Loader_module_default.dotsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React28.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ React28.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ React28.createElement("span", { className: "loader-dot" })
+      /* @__PURE__ */ React28.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React28.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React28.createElement("span", { className: Loader_module_default.dot })
     );
   }
 );
+
+// css-module:./Loader.module.css#css-module
+var Loader_module_default2 = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
 
 // ../Loader/src/Loader.tsx
 var defaultLoaders = {
@@ -52623,9 +52291,7 @@ var Loader = factory11((_props, ref) => {
   const getStyles = useStyles11({
     name: "Loader",
     props,
-    classes: {
-      root: "loader-root"
-    },
+    classes: Loader_module_default2,
     className,
     style,
     classNames,
@@ -52645,6 +52311,7 @@ var Loader = factory11((_props, ref) => {
   );
 });
 Loader.displayName = "@raikou/core/Loader";
+Loader.classes = Loader_module_default2;
 
 // ../Button/src/ButtonGroup/ButtonGroup.tsx
 import React30 from "react";
@@ -52660,7 +52327,7 @@ var defaultProps18 = {
   orientation: "horizontal"
 };
 var varsResolver10 = createVarsResolver10(
-  (_, { borderWidth }) => ({
+  (_2, { borderWidth }) => ({
     group: { "--button-border-width": rem9(borderWidth) }
   })
 );
@@ -52713,6 +52380,9 @@ var ButtonGroup = factory12((_props, ref) => {
   );
 });
 ButtonGroup.displayName = "@raikou/core/ButtonGroup";
+
+// css-module:./Button.module.css#css-module
+var Button_module_default = { "root": "m-77c9d27d", "inner": "m-80f1301b", "label": "m-811560b9", "section": "m-a74036a", "loader": "m-a25b86ee", "group": "m-80d6d844" };
 
 // ../Button/src/Button.tsx
 var defaultProps19 = {
@@ -52787,13 +52457,7 @@ var Button = polymorphicFactory5((_props, ref) => {
   const getStyles = useStyles13({
     name: "Button",
     props,
-    classes: {
-      root: "button-root",
-      inner: "button-inner",
-      loader: "button-loader",
-      section: "button-section",
-      label: "button-label"
-    },
+    classes: Button_module_default,
     className,
     style,
     classNames,
@@ -52866,6 +52530,7 @@ var Button = polymorphicFactory5((_props, ref) => {
 });
 Button.displayName = "@raikou/core/Button";
 Button.Group = ButtonGroup;
+Button.classes = Button_module_default;
 
 // ../Image/src/Image.tsx
 import React32 from "react";
@@ -52878,82 +52543,447 @@ import {
   getRadius as getRadius5
 } from "@raikou/core";
 
-// ../../../../node_modules/.pnpm/zustand@4.4.1_@types+react@18.2.23_react@18.2.0/node_modules/zustand/esm/vanilla.mjs
-var import_meta = {};
-var createStoreImpl = (createState) => {
-  let state;
-  const listeners = /* @__PURE__ */ new Set();
-  const setState = (partial, replace) => {
-    const nextState = typeof partial === "function" ? partial(state) : partial;
-    if (!Object.is(nextState, state)) {
-      const previousState = state;
-      state = (replace != null ? replace : typeof nextState !== "object") ? nextState : Object.assign({}, state, nextState);
-      listeners.forEach((listener) => listener(state, previousState));
-    }
-  };
-  const getState = () => state;
-  const subscribe = (listener) => {
-    listeners.add(listener);
-    return () => listeners.delete(listener);
-  };
-  const destroy = () => {
-    if ((import_meta.env ? import_meta.env.MODE : void 0) !== "production") {
-      console.warn(
-        "[DEPRECATED] The `destroy` method will be unsupported in a future version. Instead use unsubscribe function returned by subscribe. Everything will be garbage-collected if store is garbage-collected."
-      );
-    }
-    listeners.clear();
-  };
-  const api = { setState, getState, subscribe, destroy };
-  state = createState(setState, getState, api);
-  return api;
-};
-var createStore = (createState) => createState ? createStoreImpl(createState) : createStoreImpl;
-
-// ../../../../node_modules/.pnpm/zustand@4.4.1_@types+react@18.2.23_react@18.2.0/node_modules/zustand/esm/index.mjs
-var import_with_selector = __toESM(require_with_selector(), 1);
-import { useDebugValue } from "react";
-var import_meta2 = {};
-var { useSyncExternalStoreWithSelector } = import_with_selector.default;
-var didWarnAboutEqualityFn = false;
-function useStore(api, selector = api.getState, equalityFn) {
-  if ((import_meta2.env ? import_meta2.env.MODE : void 0) !== "production" && equalityFn && !didWarnAboutEqualityFn) {
-    console.warn(
-      "[DEPRECATED] Use `createWithEqualityFn` instead of `create` or use `useStoreWithEqualityFn` instead of `useStore`. They can be imported from 'zustand/traditional'. https://github.com/pmndrs/zustand/discussions/1937"
-    );
-    didWarnAboutEqualityFn = true;
+// ../../../../node_modules/.pnpm/immer@7.0.15/node_modules/immer/dist/immer.esm.js
+function n(n2) {
+  for (var t2 = arguments.length, r2 = Array(t2 > 1 ? t2 - 1 : 0), e = 1; e < t2; e++)
+    r2[e - 1] = arguments[e];
+  if ("production" !== process.env.NODE_ENV) {
+    var i2 = Y[n2], o2 = i2 ? "function" == typeof i2 ? i2.apply(null, r2) : i2 : "unknown error nr: " + n2;
+    throw Error("[Immer] " + o2);
   }
-  const slice = useSyncExternalStoreWithSelector(
-    api.subscribe,
-    api.getState,
-    api.getServerState || api.getState,
-    selector,
-    equalityFn
-  );
-  useDebugValue(slice);
-  return slice;
+  throw Error("[Immer] minified error nr: " + n2 + (r2.length ? " " + r2.map(function(n3) {
+    return "'" + n3 + "'";
+  }).join(",") : "") + ". Find the full error at: https://bit.ly/3cXEKWf");
 }
-var createImpl = (createState) => {
-  if ((import_meta2.env ? import_meta2.env.MODE : void 0) !== "production" && typeof createState !== "function") {
-    console.warn(
-      "[DEPRECATED] Passing a vanilla store will be unsupported in a future version. Instead use `import { useStore } from 'zustand'`."
-    );
+function t(n2) {
+  return !!n2 && !!n2[Q];
+}
+function r(n2) {
+  return !!n2 && (function(n3) {
+    if (!n3 || "object" != typeof n3)
+      return false;
+    var t2 = Object.getPrototypeOf(n3);
+    return !t2 || t2 === Object.prototype;
+  }(n2) || Array.isArray(n2) || !!n2[L] || !!n2.constructor[L] || s(n2) || v(n2));
+}
+function i(n2, t2, r2) {
+  void 0 === r2 && (r2 = false), 0 === o(n2) ? (r2 ? Object.keys : Z)(n2).forEach(function(e) {
+    r2 && "symbol" == typeof e || t2(e, n2[e], n2);
+  }) : n2.forEach(function(r3, e) {
+    return t2(e, r3, n2);
+  });
+}
+function o(n2) {
+  var t2 = n2[Q];
+  return t2 ? t2.i > 3 ? t2.i - 4 : t2.i : Array.isArray(n2) ? 1 : s(n2) ? 2 : v(n2) ? 3 : 0;
+}
+function u(n2, t2) {
+  return 2 === o(n2) ? n2.has(t2) : Object.prototype.hasOwnProperty.call(n2, t2);
+}
+function a(n2, t2) {
+  return 2 === o(n2) ? n2.get(t2) : n2[t2];
+}
+function f(n2, t2, r2) {
+  var e = o(n2);
+  2 === e ? n2.set(t2, r2) : 3 === e ? (n2.delete(t2), n2.add(r2)) : n2[t2] = r2;
+}
+function c(n2, t2) {
+  return n2 === t2 ? 0 !== n2 || 1 / n2 == 1 / t2 : n2 != n2 && t2 != t2;
+}
+function s(n2) {
+  return X && n2 instanceof Map;
+}
+function v(n2) {
+  return q2 && n2 instanceof Set;
+}
+function p(n2) {
+  return n2.o || n2.t;
+}
+function l(n2) {
+  if (Array.isArray(n2))
+    return Array.prototype.slice.call(n2);
+  var t2 = nn(n2);
+  delete t2[Q];
+  for (var r2 = Z(t2), e = 0; e < r2.length; e++) {
+    var i2 = r2[e], o2 = t2[i2];
+    false === o2.writable && (o2.writable = true, o2.configurable = true), (o2.get || o2.set) && (t2[i2] = { configurable: true, writable: true, enumerable: o2.enumerable, value: n2[i2] });
   }
-  const api = typeof createState === "function" ? createStore(createState) : createState;
-  const useBoundStore = (selector, equalityFn) => useStore(api, selector, equalityFn);
-  Object.assign(useBoundStore, api);
-  return useBoundStore;
+  return Object.create(Object.getPrototypeOf(n2), t2);
+}
+function d(n2, e) {
+  y(n2) || t(n2) || !r(n2) || (o(n2) > 1 && (n2.set = n2.add = n2.clear = n2.delete = h), Object.freeze(n2), e && i(n2, function(n3, t2) {
+    return d(t2, true);
+  }, true));
+}
+function h() {
+  n(2);
+}
+function y(n2) {
+  return null == n2 || "object" != typeof n2 || Object.isFrozen(n2);
+}
+function b(t2) {
+  var r2 = tn[t2];
+  return r2 || n(18, t2), r2;
+}
+function _() {
+  return "production" === process.env.NODE_ENV || U || n(0), U;
+}
+function j(n2, t2) {
+  t2 && (b("Patches"), n2.u = [], n2.s = [], n2.v = t2);
+}
+function g(n2) {
+  O(n2), n2.p.forEach(S), n2.p = null;
+}
+function O(n2) {
+  n2 === U && (U = n2.l);
+}
+function w(n2) {
+  return U = { p: [], l: U, h: n2, m: true, _: 0 };
+}
+function S(n2) {
+  var t2 = n2[Q];
+  0 === t2.i || 1 === t2.i ? t2.j() : t2.g = true;
+}
+function P(t2, e) {
+  e._ = e.p.length;
+  var i2 = e.p[0], o2 = void 0 !== t2 && t2 !== i2;
+  return e.h.O || b("ES5").S(e, t2, o2), o2 ? (i2[Q].P && (g(e), n(4)), r(t2) && (t2 = M(e, t2), e.l || x(e, t2)), e.u && b("Patches").M(i2[Q], t2, e.u, e.s)) : t2 = M(e, i2, []), g(e), e.u && e.v(e.u, e.s), t2 !== H ? t2 : void 0;
+}
+function M(n2, t2, r2) {
+  if (y(t2))
+    return t2;
+  var e = t2[Q];
+  if (!e)
+    return i(t2, function(i2, o3) {
+      return A(n2, e, t2, i2, o3, r2);
+    }, true), t2;
+  if (e.A !== n2)
+    return t2;
+  if (!e.P)
+    return x(n2, e.t, true), e.t;
+  if (!e.I) {
+    e.I = true, e.A._--;
+    var o2 = 4 === e.i || 5 === e.i ? e.o = l(e.k) : e.o;
+    i(3 === e.i ? new Set(o2) : o2, function(t3, i2) {
+      return A(n2, e, o2, t3, i2, r2);
+    }), x(n2, o2, false), r2 && n2.u && b("Patches").R(e, r2, n2.u, n2.s);
+  }
+  return e.o;
+}
+function A(e, i2, o2, a2, c2, s2) {
+  if ("production" !== process.env.NODE_ENV && c2 === o2 && n(5), t(c2)) {
+    var v2 = M(e, c2, s2 && i2 && 3 !== i2.i && !u(i2.D, a2) ? s2.concat(a2) : void 0);
+    if (f(o2, a2, v2), !t(v2))
+      return;
+    e.m = false;
+  }
+  if (r(c2) && !y(c2)) {
+    if (!e.h.N && e._ < 1)
+      return;
+    M(e, c2), i2 && i2.A.l || x(e, c2);
+  }
+}
+function x(n2, t2, r2) {
+  void 0 === r2 && (r2 = false), n2.h.N && n2.m && d(t2, r2);
+}
+function z(n2, t2) {
+  var r2 = n2[Q];
+  return (r2 ? p(r2) : n2)[t2];
+}
+function I(n2, t2) {
+  if (t2 in n2)
+    for (var r2 = Object.getPrototypeOf(n2); r2; ) {
+      var e = Object.getOwnPropertyDescriptor(r2, t2);
+      if (e)
+        return e;
+      r2 = Object.getPrototypeOf(r2);
+    }
+}
+function E(n2) {
+  n2.P || (n2.P = true, n2.l && E(n2.l));
+}
+function k(n2) {
+  n2.o || (n2.o = l(n2.t));
+}
+function R(n2, t2, r2) {
+  var e = s(t2) ? b("MapSet").T(t2, r2) : v(t2) ? b("MapSet").F(t2, r2) : n2.O ? function(n3, t3) {
+    var r3 = Array.isArray(n3), e2 = { i: r3 ? 1 : 0, A: t3 ? t3.A : _(), P: false, I: false, D: {}, l: t3, t: n3, k: null, o: null, j: null, C: false }, i2 = e2, o2 = rn;
+    r3 && (i2 = [e2], o2 = en);
+    var u2 = Proxy.revocable(i2, o2), a2 = u2.revoke, f2 = u2.proxy;
+    return e2.k = f2, e2.j = a2, f2;
+  }(t2, r2) : b("ES5").J(t2, r2);
+  return (r2 ? r2.A : _()).p.push(e), e;
+}
+function D(e) {
+  return t(e) || n(22, e), function n2(t2) {
+    if (!r(t2))
+      return t2;
+    var e2, u2 = t2[Q], c2 = o(t2);
+    if (u2) {
+      if (!u2.P && (u2.i < 4 || !b("ES5").K(u2)))
+        return u2.t;
+      u2.I = true, e2 = N(t2, c2), u2.I = false;
+    } else
+      e2 = N(t2, c2);
+    return i(e2, function(t3, r2) {
+      u2 && a(u2.t, t3) === r2 || f(e2, t3, n2(r2));
+    }), 3 === c2 ? new Set(e2) : e2;
+  }(e);
+}
+function N(n2, t2) {
+  switch (t2) {
+    case 2:
+      return new Map(n2);
+    case 3:
+      return Array.from(n2);
+  }
+  return l(n2);
+}
+var G;
+var U;
+var W = "undefined" != typeof Symbol && "symbol" == typeof Symbol("x");
+var X = "undefined" != typeof Map;
+var q2 = "undefined" != typeof Set;
+var B = "undefined" != typeof Proxy && void 0 !== Proxy.revocable && "undefined" != typeof Reflect;
+var H = W ? Symbol.for("immer-nothing") : ((G = {})["immer-nothing"] = true, G);
+var L = W ? Symbol.for("immer-draftable") : "__$immer_draftable";
+var Q = W ? Symbol.for("immer-state") : "__$immer_state";
+var Y = { 0: "Illegal state", 1: "Immer drafts cannot have computed properties", 2: "This object has been frozen and should not be mutated", 3: function(n2) {
+  return "Cannot use a proxy that has been revoked. Did you pass an object from inside an immer function to an async process? " + n2;
+}, 4: "An immer producer returned a new value *and* modified its draft. Either return a new value *or* modify the draft.", 5: "Immer forbids circular references", 6: "The first or second argument to `produce` must be a function", 7: "The third argument to `produce` must be a function or undefined", 8: "First argument to `createDraft` must be a plain object, an array, or an immerable object", 9: "First argument to `finishDraft` must be a draft returned by `createDraft`", 10: "The given draft is already finalized", 11: "Object.defineProperty() cannot be used on an Immer draft", 12: "Object.setPrototypeOf() cannot be used on an Immer draft", 13: "Immer only supports deleting array indices", 14: "Immer only supports setting array indices and the 'length' property", 15: function(n2) {
+  return "Cannot apply patch, path doesn't resolve: " + n2;
+}, 16: 'Sets cannot have "replace" patches.', 17: function(n2) {
+  return "Unsupported patch operation: " + n2;
+}, 18: function(n2) {
+  return "The plugin for '" + n2 + "' has not been loaded into Immer. To enable the plugin, import and call `enable" + n2 + "()` when initializing your application.";
+}, 20: "Cannot use proxies if Proxy, Proxy.revocable or Reflect are not available", 21: function(n2) {
+  return "produce can only be called on things that are draftable: plain objects, arrays, Map, Set or classes that are marked with '[immerable]: true'. Got '" + n2 + "'";
+}, 22: function(n2) {
+  return "'current' expects a draft, got: " + n2;
+}, 23: function(n2) {
+  return "'original' expects a draft, got: " + n2;
+} };
+var Z = "undefined" != typeof Reflect && Reflect.ownKeys ? Reflect.ownKeys : void 0 !== Object.getOwnPropertySymbols ? function(n2) {
+  return Object.getOwnPropertyNames(n2).concat(Object.getOwnPropertySymbols(n2));
+} : Object.getOwnPropertyNames;
+var nn = Object.getOwnPropertyDescriptors || function(n2) {
+  var t2 = {};
+  return Z(n2).forEach(function(r2) {
+    t2[r2] = Object.getOwnPropertyDescriptor(n2, r2);
+  }), t2;
 };
-var create = (createState) => createState ? createImpl(createState) : createImpl;
+var tn = {};
+var rn = { get: function(n2, t2) {
+  if (t2 === Q)
+    return n2;
+  var e = p(n2);
+  if (!u(e, t2))
+    return function(n3, t3, r2) {
+      var e2, i3 = I(t3, r2);
+      return i3 ? "value" in i3 ? i3.value : null === (e2 = i3.get) || void 0 === e2 ? void 0 : e2.call(n3.k) : void 0;
+    }(n2, e, t2);
+  var i2 = e[t2];
+  return n2.I || !r(i2) ? i2 : i2 === z(n2.t, t2) ? (k(n2), n2.o[t2] = R(n2.A.h, i2, n2)) : i2;
+}, has: function(n2, t2) {
+  return t2 in p(n2);
+}, ownKeys: function(n2) {
+  return Reflect.ownKeys(p(n2));
+}, set: function(n2, t2, r2) {
+  var e = I(p(n2), t2);
+  if (null == e ? void 0 : e.set)
+    return e.set.call(n2.k, r2), true;
+  if (!n2.P) {
+    var i2 = z(p(n2), t2), o2 = null == i2 ? void 0 : i2[Q];
+    if (o2 && o2.t === r2)
+      return n2.o[t2] = r2, n2.D[t2] = false, true;
+    if (c(r2, i2) && (void 0 !== r2 || u(n2.t, t2)))
+      return true;
+    k(n2), E(n2);
+  }
+  return n2.o[t2] = r2, n2.D[t2] = true, true;
+}, deleteProperty: function(n2, t2) {
+  return void 0 !== z(n2.t, t2) || t2 in n2.t ? (n2.D[t2] = false, k(n2), E(n2)) : delete n2.D[t2], n2.o && delete n2.o[t2], true;
+}, getOwnPropertyDescriptor: function(n2, t2) {
+  var r2 = p(n2), e = Reflect.getOwnPropertyDescriptor(r2, t2);
+  return e ? { writable: true, configurable: 1 !== n2.i || "length" !== t2, enumerable: e.enumerable, value: r2[t2] } : e;
+}, defineProperty: function() {
+  n(11);
+}, getPrototypeOf: function(n2) {
+  return Object.getPrototypeOf(n2.t);
+}, setPrototypeOf: function() {
+  n(12);
+} };
+var en = {};
+i(rn, function(n2, t2) {
+  en[n2] = function() {
+    return arguments[0] = arguments[0][0], t2.apply(this, arguments);
+  };
+}), en.deleteProperty = function(t2, r2) {
+  return "production" !== process.env.NODE_ENV && isNaN(parseInt(r2)) && n(13), rn.deleteProperty.call(this, t2[0], r2);
+}, en.set = function(t2, r2, e) {
+  return "production" !== process.env.NODE_ENV && "length" !== r2 && isNaN(parseInt(r2)) && n(14), rn.set.call(this, t2[0], r2, e, t2[0]);
+};
+var on = function() {
+  function e(n2) {
+    this.O = B, this.N = "production" !== process.env.NODE_ENV, "boolean" == typeof (null == n2 ? void 0 : n2.useProxies) && this.setUseProxies(n2.useProxies), "boolean" == typeof (null == n2 ? void 0 : n2.autoFreeze) && this.setAutoFreeze(n2.autoFreeze), this.produce = this.produce.bind(this), this.produceWithPatches = this.produceWithPatches.bind(this);
+  }
+  var i2 = e.prototype;
+  return i2.produce = function(t2, e2, i3) {
+    if ("function" == typeof t2 && "function" != typeof e2) {
+      var o2 = e2;
+      e2 = t2;
+      var u2 = this;
+      return function(n2) {
+        var t3 = this;
+        void 0 === n2 && (n2 = o2);
+        for (var r2 = arguments.length, i4 = Array(r2 > 1 ? r2 - 1 : 0), a3 = 1; a3 < r2; a3++)
+          i4[a3 - 1] = arguments[a3];
+        return u2.produce(n2, function(n3) {
+          var r3;
+          return (r3 = e2).call.apply(r3, [t3, n3].concat(i4));
+        });
+      };
+    }
+    var a2;
+    if ("function" != typeof e2 && n(6), void 0 !== i3 && "function" != typeof i3 && n(7), r(t2)) {
+      var f2 = w(this), c2 = R(this, t2, void 0), s2 = true;
+      try {
+        a2 = e2(c2), s2 = false;
+      } finally {
+        s2 ? g(f2) : O(f2);
+      }
+      return "undefined" != typeof Promise && a2 instanceof Promise ? a2.then(function(n2) {
+        return j(f2, i3), P(n2, f2);
+      }, function(n2) {
+        throw g(f2), n2;
+      }) : (j(f2, i3), P(a2, f2));
+    }
+    if (!t2 || "object" != typeof t2) {
+      if ((a2 = e2(t2)) === H)
+        return;
+      return void 0 === a2 && (a2 = t2), this.N && d(a2, true), a2;
+    }
+    n(21, t2);
+  }, i2.produceWithPatches = function(n2, t2) {
+    var r2, e2, i3 = this;
+    return "function" == typeof n2 ? function(t3) {
+      for (var r3 = arguments.length, e3 = Array(r3 > 1 ? r3 - 1 : 0), o2 = 1; o2 < r3; o2++)
+        e3[o2 - 1] = arguments[o2];
+      return i3.produceWithPatches(t3, function(t4) {
+        return n2.apply(void 0, [t4].concat(e3));
+      });
+    } : [this.produce(n2, t2, function(n3, t3) {
+      r2 = n3, e2 = t3;
+    }), r2, e2];
+  }, i2.createDraft = function(e2) {
+    r(e2) || n(8), t(e2) && (e2 = D(e2));
+    var i3 = w(this), o2 = R(this, e2, void 0);
+    return o2[Q].C = true, O(i3), o2;
+  }, i2.finishDraft = function(t2, r2) {
+    var e2 = t2 && t2[Q];
+    "production" !== process.env.NODE_ENV && (e2 && e2.C || n(9), e2.I && n(10));
+    var i3 = e2.A;
+    return j(i3, r2), P(void 0, i3);
+  }, i2.setAutoFreeze = function(n2) {
+    this.N = n2;
+  }, i2.setUseProxies = function(t2) {
+    t2 && !B && n(20), this.O = t2;
+  }, i2.applyPatches = function(n2, r2) {
+    var e2;
+    for (e2 = r2.length - 1; e2 >= 0; e2--) {
+      var i3 = r2[e2];
+      if (0 === i3.path.length && "replace" === i3.op) {
+        n2 = i3.value;
+        break;
+      }
+    }
+    var o2 = b("Patches").$;
+    return t(n2) ? o2(n2, r2) : this.produce(n2, function(n3) {
+      return o2(n3, r2.slice(e2 + 1));
+    });
+  }, e;
+}();
+var un = new on();
+var an = un.produce;
+var fn = un.produceWithPatches.bind(un);
+var cn = un.setAutoFreeze.bind(un);
+var sn = un.setUseProxies.bind(un);
+var vn = un.applyPatches.bind(un);
+var pn = un.createDraft.bind(un);
+var ln = un.finishDraft.bind(un);
+var immer_esm_default = an;
+
+// ../../../../node_modules/.pnpm/pure-store@1.2.0/node_modules/pure-store/index.js
+var PureStore = (
+  /** @class */
+  function() {
+    function PureStore2(parent, getter, rootState) {
+      var _this = this;
+      this.callbacks = [];
+      this.getState = function() {
+        return _this.getter(_this.root.rootState);
+      };
+      this.update = function(updater) {
+        var updaterFn = updater instanceof Function ? updater : function(e) {
+          return Object.assign(e, updater);
+        };
+        var oldState = _this.root.rootState;
+        _this.root.rootState = immer_esm_default(_this.root.rootState, function(s2) {
+          updaterFn(_this.getter(s2));
+        });
+        if (_this.root.rootState !== oldState) {
+          _this.root.callbacks.forEach(function(callback) {
+            return callback();
+          });
+        }
+      };
+      this.storeFor = function(getter2) {
+        return new PureStore2(_this, getter2);
+      };
+      this.updaterFor = function(getter2) {
+        return _this.storeFor(getter2).update;
+      };
+      this.subscribe = function(callback) {
+        _this.root.callbacks.push(callback);
+        return function() {
+          return _this.root.callbacks.splice(_this.root.callbacks.indexOf(callback), 1);
+        };
+      };
+      this.parent = parent;
+      this.root = parent && parent.root || this;
+      if (!parent)
+        this.rootState = rootState;
+      this.getter = function(s2) {
+        return getter(parent ? parent.getter(s2) : s2);
+      };
+    }
+    Object.defineProperty(PureStore2.prototype, "state", {
+      get: function() {
+        return this.getState();
+      },
+      enumerable: true,
+      configurable: true
+    });
+    return PureStore2;
+  }()
+);
+var pure_store_default = function(state) {
+  return new PureStore(null, function(s2) {
+    return s2;
+  }, state);
+};
 
 // ../Image/src/store.ts
-var useStore2 = create(() => ({
+var useStore = pure_store_default({
   error: false
-}));
+});
+
+// css-module:./Image.module.css#css-module
+var Image_module_default = { "root": "m-9e117634" };
 
 // ../Image/src/Image.tsx
 var defaultProps20 = {};
-var varsResolver12 = createVarsResolver12((_, { radius, fit }) => ({
+var varsResolver12 = createVarsResolver12((_2, { radius, fit }) => ({
   root: {
     "--image-radius": radius === void 0 ? void 0 : getRadius5(radius),
     "--image-object-fit": fit
@@ -52988,9 +53018,7 @@ var Image = polymorphicFactory6((_props, ref) => {
   ]);
   const getStyles = useStyles14({
     name: "Image",
-    classes: {
-      root: "image-root"
-    },
+    classes: Image_module_default,
     props,
     className,
     style,
@@ -53004,9 +53032,13 @@ var Image = polymorphicFactory6((_props, ref) => {
     var request = require_request3().defaults({ encoding: null });
     request.get(src, function(error, response) {
       if (response === void 0) {
-        useStore2.getState().error = true;
+        useStore.update((state) => {
+          state.error = true;
+        });
       } else if (response.statusCode !== 200) {
-        useStore2.getState().error = true;
+        useStore.update((state) => {
+          state.error = true;
+        });
       }
     });
   }
@@ -53016,10 +53048,11 @@ var Image = polymorphicFactory6((_props, ref) => {
       component: "img",
       ref
     }, getStyles("root")), {
-      src: useStore2.getState().error ? fallbackSrc : src
+      src: useStore.getState().error ? fallbackSrc : src
     }), others)
   );
 });
+Image.classes = Image_module_default;
 Image.displayName = "@raikou/core/Image";
 
 // ../Group/src/Group.tsx
@@ -53039,6 +53072,9 @@ function filterFalsyChildren(children) {
   return Children.toArray(children).filter(Boolean);
 }
 
+// css-module:./Group.module.css#css-module
+var Group_module_default = { "root": "m-4081bf90" };
+
 // ../Group/src/Group.tsx
 var defaultProps21 = {
   preventGrowOverflow: true,
@@ -53048,7 +53084,7 @@ var defaultProps21 = {
   wrap: "wrap"
 };
 var varsResolver13 = createVarsResolver13(
-  (_, { grow, preventGrowOverflow, gap, align, justify, wrap }, { childWidth }) => ({
+  (_2, { grow, preventGrowOverflow, gap, align, justify, wrap }, { childWidth }) => ({
     root: {
       "--group-child-width": grow && preventGrowOverflow ? childWidth : void 0,
       "--group-gap": getSpacing2(gap),
@@ -53104,7 +53140,7 @@ var Group = factory13((_props, ref) => {
     stylesCtx,
     className,
     style,
-    classes: { root: "group-root" },
+    classes: Group_module_default,
     classNames,
     styles,
     unstyled,
@@ -53123,6 +53159,7 @@ var Group = factory13((_props, ref) => {
   );
 });
 Group.displayName = "@raikou/core/Group";
+Group.classes = Group_module_default;
 
 // ../Text/src/Text.tsx
 import React34 from "react";
@@ -53136,6 +53173,11 @@ import {
   getFontSize as getFontSize7,
   getLineHeight
 } from "@raikou/core";
+
+// css-module:./Text.module.css#css-module
+var Text_module_default = { "root": "m-b6d8b162" };
+
+// ../Text/src/Text.tsx
 function getTextTruncate(truncate) {
   if (truncate === "start") {
     return "start";
@@ -53198,9 +53240,7 @@ var Text = polymorphicFactory7((_props, ref) => {
   const getStyles = useStyles16({
     name: ["Text", __staticSelector],
     props,
-    classes: {
-      root: "text-root"
-    },
+    classes: Text_module_default,
     className,
     style,
     classNames,
@@ -53228,6 +53268,7 @@ var Text = polymorphicFactory7((_props, ref) => {
     }), others)
   );
 });
+Text.classes = Text_module_default;
 Text.displayName = "@raikou/core/Text";
 
 // ../Tooltip/src/Tooltip.tsx
@@ -53272,7 +53313,7 @@ function useFloatingTooltip({
 }) {
   const [opened, setOpened] = useState8(false);
   const boundaryRef = useRef7();
-  const { x, y, reference, floating, refs, update, placement } = useFloating2({
+  const { x: x2, y: y2, reference, floating, refs, update, placement } = useFloating2({
     placement: position,
     middleware: [
       shift({
@@ -53320,7 +53361,7 @@ function useFloatingTooltip({
     }
     return void 0;
   }, [reference, refs.floating.current, update, handleMouseMove, opened]);
-  return { handleMouseMove, x, y, opened, setOpened, boundaryRef, floating };
+  return { handleMouseMove, x: x2, y: y2, opened, setOpened, boundaryRef, floating };
 }
 
 // ../Tooltip/src/TooltipFloating/TooltipFloating.tsx
@@ -53401,7 +53442,7 @@ var TooltipFloating = factory14(
       vars,
       varsResolver: varsResolver15
     });
-    const { handleMouseMove, x, y, opened, boundaryRef, floating, setOpened } = useFloatingTooltip({
+    const { handleMouseMove, x: x2, y: y2, opened, boundaryRef, floating, setOpened } = useFloatingTooltip({
       offset: offset2,
       position
     });
@@ -53428,8 +53469,8 @@ var TooltipFloating = factory14(
         style: __spreadProps(__spreadValues({}, getStyleObject(style, theme)), {
           zIndex,
           display: !disabled && opened ? "block" : "none",
-          top: (_b = y && Math.round(y)) != null ? _b : "",
-          left: (_c = x && Math.round(x)) != null ? _c : ""
+          top: (_b = y2 && Math.round(y2)) != null ? _b : "",
+          left: (_c = x2 && Math.round(x2)) != null ? _c : ""
         })
       })), {
         variant,
@@ -53491,8 +53532,8 @@ function useTooltip(settings) {
     [setCurrentId, uid]
   );
   const {
-    x,
-    y,
+    x: x2,
+    y: y2,
     reference,
     floating,
     context,
@@ -53536,8 +53577,8 @@ function useTooltip(settings) {
   }, [placement]);
   const isGroupPhase = opened && currentId && currentId !== uid;
   return {
-    x,
-    y,
+    x: x2,
+    y: y2,
     arrowX,
     arrowY,
     reference,
@@ -53549,6 +53590,9 @@ function useTooltip(settings) {
     placement
   };
 }
+
+// css-module:./Tooltip.module.css#css-module
+var Tooltip_module_default = { "root": "m-946fb08c", "tooltip": "m-1b3c8819", "arrow": "m-f898399f" };
 
 // ../Tooltip/src/Tooltip.tsx
 var defaultProps25 = {
@@ -53669,10 +53713,7 @@ var Tooltip = factory15((_props, ref) => {
   const getStyles = useStyles18({
     name: "Tooltip",
     props,
-    classes: {
-      tooltip: "tooltip-root",
-      arrow: "tooltip-arrow"
-    },
+    classes: Tooltip_module_default,
     className,
     style,
     classNames,
@@ -53746,6 +53787,7 @@ var Tooltip = factory15((_props, ref) => {
     }, children.props))
   ));
 });
+Tooltip.classes = Tooltip_module_default;
 Tooltip.displayName = "@raikou/core/Tooltip";
 Tooltip.Floating = TooltipFloating;
 Tooltip.Group = TooltipGroup;
@@ -53876,22 +53918,22 @@ var GradientPickerSaturation = factory18((props, ref) => {
   });
   const positionRef = useRef9(position);
   const { ref: moveRef } = useMove(
-    ({ x, y }) => {
-      positionRef.current = { x, y };
+    ({ x: x2, y: y2 }) => {
+      positionRef.current = { x: x2, y: y2 };
       onChange({
         h: value.h,
-        s: Math.round(x * 100),
-        v: Math.round((1 - y) * 100),
+        s: Math.round(x2 * 100),
+        v: Math.round((1 - y2) * 100),
         a: value.a
       });
     },
     {
       onScrubEnd: () => {
-        const { x, y } = positionRef.current;
+        const { x: x2, y: y2 } = positionRef.current;
         onChangeEnd({
           h: value.h,
-          s: Math.round(x * 100),
-          v: Math.round((1 - y) * 100),
+          s: Math.round(x2 * 100),
+          v: Math.round((1 - y2) * 100),
           a: value.a
         });
       }
@@ -54041,14 +54083,14 @@ var GradientPickerColorSlider = factory19((props, ref) => {
   const positionRef = useRef10(position);
   const getChangeValue = (val) => round3 ? Math.round(val * maxValue) : val * maxValue;
   const { ref: sliderRef } = useMove2(
-    ({ x, y }) => {
-      positionRef.current = { x, y };
-      onChange(getChangeValue(x));
+    ({ x: x2, y: y2 }) => {
+      positionRef.current = { x: x2, y: y2 };
+      onChange(getChangeValue(x2));
     },
     {
       onScrubEnd: () => {
-        const { x } = positionRef.current;
-        onChangeEnd(getChangeValue(x));
+        const { x: x2 } = positionRef.current;
+        onChangeEnd(getChangeValue(x2));
       }
     }
   );
@@ -54396,8 +54438,8 @@ var GradientPickerCompact = factory22(
           GradientPickerHueSlider,
           {
             value: (_b = ctx.color) == null ? void 0 : _b.h,
-            onChange: (h) => handleChange({
-              h,
+            onChange: (h2) => handleChange({
+              h: h2,
               // @ts-ignore
               s: ctx.color.s,
               // @ts-ignore
@@ -54405,8 +54447,8 @@ var GradientPickerCompact = factory22(
               // @ts-ignore
               a: ctx.color.a
             }),
-            onChangeEnd: (h) => handleChange({
-              h,
+            onChangeEnd: (h2) => handleChange({
+              h: h2,
               // @ts-ignore
               s: ctx.color.s,
               // @ts-ignore
@@ -54421,23 +54463,23 @@ var GradientPickerCompact = factory22(
           GradientPickerAlphaSlider,
           {
             value: (_c = ctx.color) == null ? void 0 : _c.a,
-            onChange: (a) => handleChange({
+            onChange: (a2) => handleChange({
               // @ts-ignore
               h: ctx.color.h,
               // @ts-ignore
               s: ctx.color.s,
               // @ts-ignore
               v: ctx.color.v,
-              a
+              a: a2
             }),
-            onChangeEnd: (a) => handleChange({
+            onChangeEnd: (a2) => handleChange({
               // @ts-ignore
               h: ctx.color.h,
               // @ts-ignore
               s: ctx.color.s,
               // @ts-ignore
               v: ctx.color.v,
-              a
+              a: a2
             }),
             size: size2,
             color: colord4(ctx.color).toHex().toString(),
@@ -54624,7 +54666,7 @@ function GradientPicker(_props) {
     /* @__PURE__ */ React45.createElement(Box28, __spreadValues(__spreadValues({}, getStyles("root")), others), children)
   );
 }
-var extendGradientPicker = (c) => c;
+var extendGradientPicker = (c2) => c2;
 GradientPicker.extend = extendGradientPicker;
 GradientPicker.displayName = "@raikou/core/GradientPicker";
 GradientPicker.Compact = GradientPickerCompact;
@@ -54633,50 +54675,6 @@ export {
   GradientPicker
 };
 /*! Bundled license information:
-
-use-sync-external-store/cjs/use-sync-external-store-shim.production.min.js:
-  (**
-   * @license React
-   * use-sync-external-store-shim.production.min.js
-   *
-   * Copyright (c) Facebook, Inc. and its affiliates.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   *)
-
-use-sync-external-store/cjs/use-sync-external-store-shim.development.js:
-  (**
-   * @license React
-   * use-sync-external-store-shim.development.js
-   *
-   * Copyright (c) Facebook, Inc. and its affiliates.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   *)
-
-use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.production.min.js:
-  (**
-   * @license React
-   * use-sync-external-store-shim/with-selector.production.min.js
-   *
-   * Copyright (c) Facebook, Inc. and its affiliates.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   *)
-
-use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.development.js:
-  (**
-   * @license React
-   * use-sync-external-store-shim/with-selector.development.js
-   *
-   * Copyright (c) Facebook, Inc. and its affiliates.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   *)
 
 tough-cookie/lib/pubsuffix-psl.js:
   (*!
@@ -54909,3 +54907,4 @@ mime-types/index.js:
 uri-js/dist/es5/uri.all.js:
   (** @license URI.js v4.4.1 (c) 2011 Gary Court. License: http://github.com/garycourt/uri-js *)
 */
+//# sourceMappingURL=index.mjs.map

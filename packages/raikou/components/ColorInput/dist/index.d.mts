@@ -3812,4 +3812,4 @@ declare const ColorInput: _raikou_core.RaikouComponent<{
     variant: InputVariant;
 }>;
 
-export { ColorInput, ColorInputCssVariables, ColorInputFactory, ColorInputProps, ColorInputStylesNames };
+export { ColorInput, type ColorInputCssVariables, type ColorInputFactory, type ColorInputProps, type ColorInputStylesNames };

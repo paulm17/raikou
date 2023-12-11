@@ -146,4 +146,4 @@ declare namespace GradientPicker {
     }>;
 }
 
-export { GradientPicker, GradientPickerFactory, GradientPickerProps, GradientPickerStylesNames };
+export { GradientPicker, type GradientPickerFactory, type GradientPickerProps, type GradientPickerStylesNames };

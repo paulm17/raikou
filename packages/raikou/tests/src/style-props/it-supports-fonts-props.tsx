@@ -9,40 +9,40 @@ interface Options<Props = any> {
 
 export function itSupportsFontsProps<Props>(
   options: Options<Props>,
-  name = "supports ff, fz, lts, ta, lh, fs, tt and td props"
+  name = "supports ff, fz, lts, ta, lh, fs, tt and td props",
 ) {
   const selector = options.selector || "*:not(style)";
 
   it(name, () => {
     const { container: theme } = render(
-      <options.component {...options.props} fz="xs" />
+      <options.component {...options.props} fz="xs" />,
     );
     const { container: fz } = render(
-      <options.component {...options.props} fz={32} />
+      <options.component {...options.props} fz={32} />,
     );
     const { container: fw } = render(
-      <options.component {...options.props} fw={700} />
+      <options.component {...options.props} fw={700} />,
     );
     const { container: ff } = render(
-      <options.component {...options.props} ff="sans-serif" />
+      <options.component {...options.props} ff="sans-serif" />,
     );
     const { container: lts } = render(
-      <options.component {...options.props} lts={16} />
+      <options.component {...options.props} lts={16} />,
     );
     const { container: ta } = render(
-      <options.component {...options.props} ta="right" />
+      <options.component {...options.props} ta="right" />,
     );
     const { container: lh } = render(
-      <options.component {...options.props} lh={2.25} />
+      <options.component {...options.props} lh={2.25} />,
     );
     const { container: fs } = render(
-      <options.component {...options.props} fs="italic" />
+      <options.component {...options.props} fs="italic" />,
     );
     const { container: tt } = render(
-      <options.component {...options.props} tt="uppercase" />
+      <options.component {...options.props} tt="uppercase" />,
     );
     const { container: td } = render(
-      <options.component {...options.props} td="underline" />
+      <options.component {...options.props} td="underline" />,
     );
 
     expect(theme.querySelector(selector)).toHaveStyle({

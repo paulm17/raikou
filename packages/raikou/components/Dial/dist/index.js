@@ -56,7 +56,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// src/index.tsx
+// src/index.ts
 var src_exports = {};
 __export(src_exports, {
   Dial: () => Dial
@@ -67,6 +67,11 @@ module.exports = __toCommonJS(src_exports);
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
 var import_hooks = require("@raikou/hooks");
+
+// css-module:./Dial.module.css#css-module
+var Dial_module_default = { "root": "m-43c05cff", "inner": "m-33cbf5d9", "handle": "m-4346b705" };
+
+// src/Dial.tsx
 var defaultProps = {
   scale: 1
 };
@@ -107,11 +112,7 @@ var Dial = (0, import_core.polymorphicFactory)((_props, ref) => {
   const getStyles = (0, import_core.useStyles)({
     name: "Dial",
     props,
-    classes: {
-      root: "dial-root",
-      inner: "dial-inner",
-      handle: "dial-handle"
-    },
+    classes: Dial_module_default,
     className,
     style,
     classNames,
@@ -179,7 +180,9 @@ var Dial = (0, import_core.polymorphicFactory)((_props, ref) => {
   );
 });
 Dial.displayName = "@raikou/Dial";
+Dial.classes = Dial_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Dial
 });
+//# sourceMappingURL=index.js.map

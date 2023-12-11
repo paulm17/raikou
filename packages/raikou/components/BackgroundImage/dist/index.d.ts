@@ -45,4 +45,4 @@ declare const BackgroundImage: (<C = "div">(props: C extends React.ElementType<a
     classes: Record<string, string>;
 } & Record<string, never>;
 
-export { BackgroundImage, BackgroundImageCssVariables, BackgroundImageFactory, BackgroundImageProps, BackgroundImageStylesNames };
+export { BackgroundImage, type BackgroundImageCssVariables, type BackgroundImageFactory, type BackgroundImageProps, type BackgroundImageStylesNames };

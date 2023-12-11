@@ -41,6 +41,11 @@ import {
   getThemeColor,
   getSize
 } from "@raikou/core";
+
+// css-module:./Divider.module.css#css-module
+var Divider_module_default = { "root": "m-3eebeb36", "label": "m-9e365f20" };
+
+// src/Divider.tsx
 var defaultProps = {
   orientation: "horizontal"
 };
@@ -80,10 +85,7 @@ var Divider = factory((_props, ref) => {
   ]);
   const getStyles = useStyles({
     name: "Divider",
-    classes: {
-      root: "divider-root",
-      label: "divider-label"
-    },
+    classes: Divider_module_default,
     props,
     className,
     style,
@@ -112,6 +114,8 @@ var Divider = factory((_props, ref) => {
   );
 });
 Divider.displayName = "@raikou/core/Divider";
+Divider.classes = Divider_module_default;
 export {
   Divider
 };
+//# sourceMappingURL=index.mjs.map

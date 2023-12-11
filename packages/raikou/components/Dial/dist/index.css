@@ -1,0 +1,49 @@
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Dial/src/Dial.module.css/#css-module-data */
+.m-43c05cff {
+  --dial-size-xs: calc(1rem * var(--raikou-scale));
+  --dial-size-sm: calc(1.125rem * var(--raikou-scale));
+  --dial-size-md: calc(1.25rem * var(--raikou-scale));
+  --dial-size-lg: calc(1.625rem * var(--raikou-scale));
+  --dial-size-xl: calc(2rem * var(--raikou-scale));
+  position: relative;
+  display: inline-block;
+  width: var(--dial-size, var(--dial-size-md));
+  height: var(--dial-size, var(--dial-size-md));
+  transform: scale(var(--dial-scale));
+}
+.m-33cbf5d9 {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 2px solid #383a3c;
+}
+.m-4346b705 {
+  position: relative;
+  display: block;
+  top: calc(-25% - 0px);
+  width: 3px;
+  height: calc(50% + 2px);
+  background: #006dd2;
+  transform-origin: bottom;
+  transform: rotate(var(--dial-angle));
+  cursor: pointer;
+}
+.m-4346b705:after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: 5px;
+  background: #818589;
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+/*# sourceMappingURL=index.css.map */

@@ -36,7 +36,7 @@
   border-top-right-radius: var(--modal-radius, var(--raikou-radius-default));
 }
 
-.content {
+.content.content {
   flex: var(--_content-flex, 0 0 var(--modal-size));
   max-width: 100%;
   max-height: var(

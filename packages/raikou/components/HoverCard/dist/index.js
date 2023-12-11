@@ -2760,6 +2760,9 @@ var PopoverDropdown = (0, import_core10.factory)(
 );
 PopoverDropdown.displayName = "@raikou/core/PopoverDropdown";
 
+// css-module:./Popover.module.css#css-module
+var Popover_module_default = { "dropdown": "m-38a85659", "arrow": "m-a31dc6c1" };
+
 // ../Popover/src/Popover.tsx
 var defaultProps4 = {
   position: "bottom",
@@ -2875,10 +2878,7 @@ function Popover(_props) {
   const getStyles = (0, import_core11.useStyles)({
     name: __staticSelector,
     props,
-    classes: {
-      dropdown: "popover-dropdown",
-      arrow: "popover-arrow"
-    },
+    classes: Popover_module_default,
     classNames,
     styles,
     unstyled,
@@ -3093,3 +3093,4 @@ HoverCard.extend = (input) => input;
   HoverCardDropdown,
   HoverCardTarget
 });
+//# sourceMappingURL=index.js.map

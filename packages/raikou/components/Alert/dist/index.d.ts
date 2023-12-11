@@ -38,4 +38,4 @@ declare const Alert: _raikou_core.RaikouComponent<{
     variant: AlertVariant;
 }>;
 
-export { Alert, AlertCssVariables, AlertFactory, AlertProps, AlertStylesNames, AlertVariant };
+export { Alert, type AlertCssVariables, type AlertFactory, type AlertProps, type AlertStylesNames, type AlertVariant };

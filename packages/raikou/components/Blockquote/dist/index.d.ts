@@ -31,4 +31,4 @@ declare const Blockquote: _raikou_core.RaikouComponent<{
     vars: BlockquoteCssVariables;
 }>;
 
-export { Blockquote, BlockquoteCssVariables, BlockquoteFactory, BlockquoteProps, BlockquoteStylesNames };
+export { Blockquote, type BlockquoteCssVariables, type BlockquoteFactory, type BlockquoteProps, type BlockquoteStylesNames };

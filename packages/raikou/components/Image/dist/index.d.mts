@@ -51,4 +51,4 @@ declare const Image: (<C = "img">(props: C extends React.ElementType<any> ? Imag
     classes: Record<string, string>;
 } & Record<string, never>;
 
-export { Image, ImageCssVariables, ImageFactory, ImageProps, ImageStylesNames };
+export { Image, type ImageCssVariables, type ImageFactory, type ImageProps, type ImageStylesNames };

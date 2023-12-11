@@ -12,9 +12,9 @@ export const Dots: RaikouLoaderComponent = forwardRef(
       {...others}
       ref={ref}
     >
-      <span className="loader-dot" />
-      <span className="loader-dot" />
-      <span className="loader-dot" />
+      <span className={classes.dot} />
+      <span className={classes.dot} />
+      <span className={classes.dot} />
     </Box>
   ),
 );

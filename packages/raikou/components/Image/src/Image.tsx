@@ -88,9 +88,13 @@ export const Image = polymorphicFactory<ImageFactory>((_props, ref) => {
 
     request.get(src, function (error: any, response: any) {
       if (response === undefined) {
-        useStore.getState().error = true;
+        useStore.update((state) => {
+          state.error = true;
+        });
       } else if (response.statusCode !== 200) {
-        useStore.getState().error = true;
+        useStore.update((state) => {
+          state.error = true;
+        });
       }
     });
   }

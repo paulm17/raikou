@@ -141,4 +141,4 @@ declare const Tabs: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { Tabs, TabsCssVariables, TabsFactory, TabsList, TabsListProps, TabsListStylesNames, TabsPanel, TabsPanelProps, TabsPanelStylesNames, TabsProps, TabsStylesNames, TabsTab, TabsTabProps, TabsTabStylesNames, TabsVariant };
+export { Tabs, type TabsCssVariables, type TabsFactory, TabsList, type TabsListProps, type TabsListStylesNames, TabsPanel, type TabsPanelProps, type TabsPanelStylesNames, type TabsProps, type TabsStylesNames, TabsTab, type TabsTabProps, type TabsTabStylesNames, type TabsVariant };

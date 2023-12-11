@@ -15,4 +15,4 @@ declare const TypographyStylesProvider: _raikou_core.RaikouComponent<{
     stylesNames: TypographyStylesProviderStylesNames;
 }>;
 
-export { TypographyStylesProvider, TypographyStylesProviderFactory, TypographyStylesProviderProps, TypographyStylesProviderStylesNames };
+export { TypographyStylesProvider, type TypographyStylesProviderFactory, type TypographyStylesProviderProps, type TypographyStylesProviderStylesNames };

@@ -70,6 +70,11 @@ var import_core2 = require("@raikou/core");
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps = {
   __staticSelector: "UnstyledButton"
 };
@@ -96,9 +101,7 @@ var UnstyledButton = (0, import_core.polymorphicFactory)(
     const getStyles = (0, import_core.useStyles)({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -116,6 +119,10 @@ var UnstyledButton = (0, import_core.polymorphicFactory)(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
+
+// css-module:./Burger.module.css#css-module
+var Burger_module_default = { "root": "m-fea6bf1a", "burger": "m-d4fb9cad" };
 
 // src/Burger.tsx
 var defaultProps2 = {};
@@ -156,10 +163,7 @@ var Burger = (0, import_core2.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core2.useStyles)({
     name: "Burger",
-    classes: {
-      root: "burger-root",
-      burger: "burger-burger"
-    },
+    classes: Burger_module_default,
     props,
     className,
     style,
@@ -172,7 +176,9 @@ var Burger = (0, import_core2.factory)((_props, ref) => {
   return /* @__PURE__ */ import_react2.default.createElement(UnstyledButton, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref }), others), /* @__PURE__ */ import_react2.default.createElement(import_core2.Box, __spreadValues({ mod: ["reduce-motion", { opened }] }, getStyles("burger"))), children);
 });
 Burger.displayName = "@raikou/core/Burger";
+Burger.classes = Burger_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Burger
 });
+//# sourceMappingURL=index.js.map

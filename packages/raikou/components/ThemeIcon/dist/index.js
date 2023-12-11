@@ -63,6 +63,11 @@ module.exports = __toCommonJS(src_exports);
 // src/ThemeIcon.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./ThemeIcon.module.css#css-module
+var ThemeIcon_module_default = { "root": "m-7341320d" };
+
+// src/ThemeIcon.tsx
 var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)(
   (theme, { size, radius, variant, gradient, color }) => {
@@ -88,9 +93,7 @@ var ThemeIcon = (0, import_core.factory)((_props, ref) => {
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
   const getStyles = (0, import_core.useStyles)({
     name: "ThemeIcon",
-    classes: {
-      root: "themeIcon-root"
-    },
+    classes: ThemeIcon_module_default,
     props,
     className,
     style,
@@ -102,8 +105,10 @@ var ThemeIcon = (0, import_core.factory)((_props, ref) => {
   });
   return /* @__PURE__ */ import_react.default.createElement(import_core.Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others));
 });
+ThemeIcon.classes = ThemeIcon_module_default;
 ThemeIcon.displayName = "@raikou/core/ThemeIcon";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   ThemeIcon
 });
+//# sourceMappingURL=index.js.map

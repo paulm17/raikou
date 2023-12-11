@@ -4291,4 +4291,4 @@ declare const MultiSelect: _raikou_core.RaikouComponent<{
     stylesNames: MultiSelectStylesNames;
 }>;
 
-export { MultiSelect, MultiSelectFactory, MultiSelectProps, MultiSelectStylesNames };
+export { MultiSelect, type MultiSelectFactory, type MultiSelectProps, type MultiSelectStylesNames };

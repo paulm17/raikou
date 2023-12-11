@@ -194,4 +194,4 @@ declare namespace Popover {
     }>;
 }
 
-export { Popover, PopoverDropdown, PopoverDropdownProps, PopoverFactory, PopoverProps, PopoverStylesNames, PopoverTarget, PopoverTargetProps, PopoverWidth, __PopoverProps };
+export { Popover, PopoverDropdown, type PopoverDropdownProps, type PopoverFactory, type PopoverProps, type PopoverStylesNames, PopoverTarget, type PopoverTargetProps, type PopoverWidth, type __PopoverProps };

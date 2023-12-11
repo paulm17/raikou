@@ -66,6 +66,11 @@ module.exports = __toCommonJS(src_exports);
 // src/Overlay.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./Overlay.module.css#css-module
+var Overlay_module_default = { "root": "m-9814e45f" };
+
+// src/Overlay.tsx
 var defaultProps = {
   zIndex: (0, import_core.getDefaultZIndex)("modal")
 };
@@ -117,9 +122,7 @@ var Overlay = (0, import_core.polymorphicFactory)((_props, ref) => {
   const getStyles = (0, import_core.useStyles)({
     name: "Overlay",
     props,
-    classes: {
-      root: "overlay-root"
-    },
+    classes: Overlay_module_default,
     className,
     style,
     classNames,
@@ -131,7 +134,9 @@ var Overlay = (0, import_core.polymorphicFactory)((_props, ref) => {
   return /* @__PURE__ */ import_react.default.createElement(import_core.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { mod: { center, fixed } }), others), children);
 });
 Overlay.displayName = "@raikou/core/Overlay";
+Overlay.classes = Overlay_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Overlay
 });
+//# sourceMappingURL=index.js.map

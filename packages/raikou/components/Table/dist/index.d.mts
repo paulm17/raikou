@@ -142,4 +142,4 @@ declare const Table: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { Table, TableCaption, TableCaptionProps, TableCssVariables, TableData, TableFactory, TableProps, TableStylesNames, TableTbody, TableTbodyProps, TableTd, TableTdProps, TableTfoot, TableTfootProps, TableTh, TableThProps, TableThead, TableTheadProps, TableTr, TableTrProps };
+export { Table, TableCaption, type TableCaptionProps, type TableCssVariables, type TableFactory, type TableProps, type TableStylesNames, TableTbody, type TableTbodyProps, TableTd, type TableTdProps, TableTfoot, type TableTfootProps, TableTh, type TableThProps, TableThead, type TableTheadProps, TableTr, type TableTrProps };

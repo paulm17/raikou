@@ -3682,4 +3682,4 @@ declare const Radio: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { Radio, RadioCssVariables, RadioFactory, RadioGroup, RadioGroupFactory, RadioGroupProps, RadioGroupStylesNames, RadioIcon, RadioIconProps, RadioProps, RadioStylesNames };
+export { Radio, type RadioCssVariables, type RadioFactory, RadioGroup, type RadioGroupFactory, type RadioGroupProps, type RadioGroupStylesNames, RadioIcon, type RadioIconProps, type RadioProps, type RadioStylesNames };

@@ -82,3 +82,4 @@ CopyButton.displayName = "@raikou/core/CopyButton";
 0 && (module.exports = {
   CopyButton
 });
+//# sourceMappingURL=index.js.map

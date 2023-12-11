@@ -6,6 +6,7 @@ core_dir = [
 other_dir = [
   "@raikou/carousel",
   "@raikou/code-highlight",
+  "@raikou/contextmenu",
   "@raikou/data-table",
   "@raikou/dates",
   "@raikou/dial",

@@ -1125,7 +1125,7 @@ function getStaticClassNames({
   classNamesPrefix,
   selector
 }) {
-  return themeName.map((n) => `${classNamesPrefix}-${n}-${selector}`);
+  return themeName.map((n) => `${n.toLowerCase()}-${selector}`);
 }
 
 // src/core/styles-api/use-styles/get-class-name/get-theme-class-names/get-theme-class-names.ts
@@ -1722,6 +1722,9 @@ function parseStyleProps({
   return sortMediaQueries(
     keys(styleProps).reduce(
       (acc, styleProp) => {
+        if (styleProp === "hiddenFrom" || styleProp === "visibleFrom") {
+          return acc;
+        }
         const propertyData = data[styleProp];
         const properties = Array.isArray(propertyData.property) ? propertyData.property : [propertyData.property];
         const baseValue = getBaseValue2(styleProps[styleProp]);
@@ -1919,7 +1922,6 @@ var _Box = (0, import_react6.forwardRef)(
       "data-variant": variant,
       "data-size": isNumberLike(size) ? void 0 : size || void 0,
       ...getBoxMod(mod),
-      ...parsedStyleProps.inlineStyles,
       ...rest
     };
     return /* @__PURE__ */ import_react6.default.createElement(import_react6.default.Fragment, null, parsedStyleProps.hasResponsiveStyles && /* @__PURE__ */ import_react6.default.createElement(

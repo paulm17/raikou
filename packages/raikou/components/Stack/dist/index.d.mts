@@ -27,4 +27,4 @@ declare const Stack: _raikou_core.RaikouComponent<{
     vars: StackCssVariables;
 }>;
 
-export { Stack, StackCssVariables, StackFactory, StackProps, StackStylesNames };
+export { Stack, type StackCssVariables, type StackFactory, type StackProps, type StackStylesNames };

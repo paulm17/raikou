@@ -63,6 +63,11 @@ module.exports = __toCommonJS(src_exports);
 // src/Blockquote.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./Blockquote.module.css#css-module
+var Blockquote_module_default = { "root": "m-ddec01c0", "icon": "m-dde7bd57", "cite": "m-dde51a35" };
+
+// src/Blockquote.tsx
 var defaultProps = {
   iconSize: 48
 };
@@ -116,11 +121,7 @@ var Blockquote = (0, import_core.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core.useStyles)({
     name: "Blockquote",
-    classes: {
-      root: "blockquote-root",
-      icon: "blockquote-icon",
-      cite: "blockquote-cite"
-    },
+    classes: Blockquote_module_default,
     props,
     className,
     style,
@@ -133,7 +134,9 @@ var Blockquote = (0, import_core.factory)((_props, ref) => {
   return /* @__PURE__ */ import_react.default.createElement(import_core.Box, __spreadValues(__spreadValues({ component: "blockquote", ref }, getStyles("root")), others), icon && /* @__PURE__ */ import_react.default.createElement("span", __spreadValues({}, getStyles("icon")), icon), children, cite && /* @__PURE__ */ import_react.default.createElement("cite", __spreadValues({}, getStyles("cite")), cite));
 });
 Blockquote.displayName = "@raikou/core/Blockquote";
+Blockquote.classes = Blockquote_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Blockquote
 });
+//# sourceMappingURL=index.js.map

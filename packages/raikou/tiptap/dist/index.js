@@ -283,15 +283,18 @@ var import_core4 = require("@raikou/core");
 // ../components/TypographyStylesProvider/src/TypographyStylesProvider.tsx
 var import_react7 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
+
+// css-module:./TypographyStylesProvider.module.css#css-module
+var TypographyStylesProvider_module_default = { "root": "m-d6493fad" };
+
+// ../components/TypographyStylesProvider/src/TypographyStylesProvider.tsx
 var defaultProps3 = {};
 var TypographyStylesProvider = (0, import_core3.factory)((_props, ref) => {
   const props = (0, import_core3.useProps)("TypographyStylesProvider", defaultProps3, _props);
   const _a = props, { classNames, className, style, styles, unstyled } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled"]);
   const getStyles = (0, import_core3.useStyles)({
     name: "TypographyStylesProvider",
-    classes: {
-      root: "typographyStylesProvider-root"
-    },
+    classes: TypographyStylesProvider_module_default,
     props,
     className,
     style,
@@ -349,6 +352,11 @@ var import_core6 = require("@raikou/core");
 // ../components/UnstyledButton/src/UnstyledButton.tsx
 var import_react10 = __toESM(require("react"));
 var import_core5 = require("@raikou/core");
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../components/UnstyledButton/src/UnstyledButton.tsx
 var defaultProps5 = {
   __staticSelector: "UnstyledButton"
 };
@@ -375,9 +383,7 @@ var UnstyledButton = (0, import_core5.polymorphicFactory)(
     const getStyles = (0, import_core5.useStyles)({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -395,6 +401,7 @@ var UnstyledButton = (0, import_core5.polymorphicFactory)(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // src/RichTextEditorControl/RichTextEditorControl.tsx
 var defaultProps6 = {
@@ -4170,6 +4177,9 @@ var PopoverDropdown = (0, import_core16.factory)(
 );
 PopoverDropdown.displayName = "@raikou/core/PopoverDropdown";
 
+// css-module:./Popover.module.css#css-module
+var Popover_module_default = { "dropdown": "m-38a85659", "arrow": "m-a31dc6c1" };
+
 // ../components/Popover/src/Popover.tsx
 var defaultProps10 = {
   position: "bottom",
@@ -4285,10 +4295,7 @@ function Popover(_props) {
   const getStyles = (0, import_core17.useStyles)({
     name: __staticSelector,
     props,
-    classes: {
-      dropdown: "popover-dropdown",
-      arrow: "popover-arrow"
-    },
+    classes: Popover_module_default,
     classNames,
     styles,
     unstyled,
@@ -4413,6 +4420,11 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
 // ../components/Input/src/InputLabel/InputLabel.tsx
 var import_react27 = __toESM(require("react"));
 var import_core18 = require("@raikou/core");
+
+// css-module:../Input.module.css#css-module
+var Input_module_default = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
+
+// ../components/Input/src/InputLabel/InputLabel.tsx
 var defaultProps11 = {
   labelElement: "label"
 };
@@ -4458,10 +4470,11 @@ var InputLabel = (0, import_core18.factory)((_props, ref) => {
   const _getStyles = (0, import_core18.useStyles)({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      label: "inputWrapper-label",
-      required: "inputWrapper-required"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    // },
     className,
     style,
     classNames,
@@ -4532,9 +4545,10 @@ var InputError = (0, import_core19.factory)((_props, ref) => {
   const _getStyles = (0, import_core19.useStyles)({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      error: "inputWrapper-error"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   error: "inputWrapper-error",
+    // },
     className,
     style,
     classNames,
@@ -4599,9 +4613,10 @@ var InputDescription = (0, import_core20.factory)(
     const _getStyles = (0, import_core20.useStyles)({
       name: ["InputWrapper", __staticSelector],
       props,
-      classes: {
-        description: "inputWrapper-description"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   description: "inputWrapper-description",
+      // },
       className,
       style,
       classNames,
@@ -4654,9 +4669,10 @@ var InputPlaceholder = (0, import_core21.factory)(
     const getStyles = (0, import_core21.useStyles)({
       name: ["InputPlaceholder", __staticSelector],
       props,
-      classes: {
-        placeholder: "input-placeholder"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   placeholder: "input-placeholder",
+      // },
       className,
       style,
       classNames,
@@ -4763,13 +4779,14 @@ var InputWrapper = (0, import_core22.factory)((_props, ref) => {
   const getStyles = (0, import_core22.useStyles)({
     name: ["InputWrapper", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      root: "inputWrapper-root",
-      label: "inputWrapper-label",
-      required: "inputWrapper-required",
-      error: "inputWrapper-error",
-      description: "inputWrapper-description"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   root: "inputWrapper-root",
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    //   error: "inputWrapper-error",
+    //   description: "inputWrapper-description",
+    // },
     className,
     style,
     classNames,
@@ -4860,6 +4877,9 @@ var InputWrapper = (0, import_core22.factory)((_props, ref) => {
   );
 });
 InputWrapper.displayName = "@raikou/core/InputWrapper";
+
+// css-module:./Input.module.css#css-module
+var Input_module_default2 = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
 
 // ../components/Input/src/Input.tsx
 var defaultProps16 = {
@@ -4953,11 +4973,12 @@ var Input = (0, import_core23.polymorphicFactory)((_props, ref) => {
   const getStyles = (0, import_core23.useStyles)({
     name: ["Input", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      wrapper: "input-wrapper",
-      input: "input-input",
-      section: "input-section"
-    },
+    classes: Input_module_default2,
+    // classes: {
+    //   wrapper: "input-wrapper",
+    //   input: "input-input",
+    //   section: "input-section",
+    // },
     className,
     style,
     classNames,
@@ -5164,6 +5185,11 @@ var import_core31 = require("@raikou/core");
 // ../components/Loader/src/loaders/Bars.tsx
 var import_react35 = __toESM(require("react"));
 var import_core27 = require("@raikou/core");
+
+// css-module:../Loader.module.css#css-module
+var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
+
+// ../components/Loader/src/loaders/Bars.tsx
 var Bars = (0, import_react35.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
@@ -5171,13 +5197,13 @@ var Bars = (0, import_react35.forwardRef)(
       import_core27.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-barsLoader", className)
+        className: clsx_default(Loader_module_default.barsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react35.default.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ import_react35.default.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ import_react35.default.createElement("span", { className: "loader-bar" })
+      /* @__PURE__ */ import_react35.default.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ import_react35.default.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ import_react35.default.createElement("span", { className: Loader_module_default.bar })
     );
   }
 );
@@ -5192,7 +5218,7 @@ var Oval = (0, import_react36.forwardRef)(
       import_core28.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-ovalLoader", className)
+        className: clsx_default(Loader_module_default.ovalLoader, className)
       }, others), {
         ref
       })
@@ -5210,7 +5236,7 @@ var Progress = (0, import_react37.forwardRef)(
       import_core29.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-progressLoader", className)
+        className: clsx_default(Loader_module_default.progressLoader, className)
       }, others), {
         ref
       }),
@@ -5239,16 +5265,19 @@ var Dots = (0, import_react38.forwardRef)(
       import_core30.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-dotsLoader", className)
+        className: clsx_default(Loader_module_default.dotsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react38.default.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ import_react38.default.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ import_react38.default.createElement("span", { className: "loader-dot" })
+      /* @__PURE__ */ import_react38.default.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ import_react38.default.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ import_react38.default.createElement("span", { className: Loader_module_default.dot })
     );
   }
 );
+
+// css-module:./Loader.module.css#css-module
+var Loader_module_default2 = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
 
 // ../components/Loader/src/Loader.tsx
 var defaultLoaders = {
@@ -5299,9 +5328,7 @@ var Loader = (0, import_core31.factory)((_props, ref) => {
   const getStyles = (0, import_core31.useStyles)({
     name: "Loader",
     props,
-    classes: {
-      root: "loader-root"
-    },
+    classes: Loader_module_default2,
     className,
     style,
     classNames,
@@ -5321,6 +5348,7 @@ var Loader = (0, import_core31.factory)((_props, ref) => {
   );
 });
 Loader.displayName = "@raikou/core/Loader";
+Loader.classes = Loader_module_default2;
 
 // ../components/Button/src/ButtonGroup/ButtonGroup.tsx
 var import_react40 = __toESM(require("react"));
@@ -5382,6 +5410,9 @@ var ButtonGroup = (0, import_core32.factory)((_props, ref) => {
   );
 });
 ButtonGroup.displayName = "@raikou/core/ButtonGroup";
+
+// css-module:./Button.module.css#css-module
+var Button_module_default = { "root": "m-77c9d27d", "inner": "m-80f1301b", "label": "m-811560b9", "section": "m-a74036a", "loader": "m-a25b86ee", "group": "m-80d6d844" };
 
 // ../components/Button/src/Button.tsx
 var defaultProps21 = {
@@ -5456,13 +5487,7 @@ var Button = (0, import_core33.polymorphicFactory)((_props, ref) => {
   const getStyles = (0, import_core33.useStyles)({
     name: "Button",
     props,
-    classes: {
-      root: "button-root",
-      inner: "button-inner",
-      loader: "button-loader",
-      section: "button-section",
-      label: "button-label"
-    },
+    classes: Button_module_default,
     className,
     style,
     classNames,
@@ -5535,6 +5560,7 @@ var Button = (0, import_core33.polymorphicFactory)((_props, ref) => {
 });
 Button.displayName = "@raikou/core/Button";
 Button.Group = ButtonGroup;
+Button.classes = Button_module_default;
 
 // ../components/Tooltip/src/Tooltip.tsx
 var import_react50 = __toESM(require("react"));
@@ -5832,6 +5858,9 @@ function useTooltip(settings) {
   };
 }
 
+// css-module:./Tooltip.module.css#css-module
+var Tooltip_module_default = { "root": "m-946fb08c", "tooltip": "m-1b3c8819", "arrow": "m-f898399f" };
+
 // ../components/Tooltip/src/Tooltip.tsx
 var defaultProps24 = {
   position: "top",
@@ -5951,10 +5980,7 @@ var Tooltip = (0, import_core36.factory)((_props, ref) => {
   const getStyles = (0, import_core36.useStyles)({
     name: "Tooltip",
     props,
-    classes: {
-      tooltip: "tooltip-root",
-      arrow: "tooltip-arrow"
-    },
+    classes: Tooltip_module_default,
     className,
     style,
     classNames,
@@ -6028,6 +6054,7 @@ var Tooltip = (0, import_core36.factory)((_props, ref) => {
     }, children.props))
   ));
 });
+Tooltip.classes = Tooltip_module_default;
 Tooltip.displayName = "@raikou/core/Tooltip";
 Tooltip.Floating = TooltipFloating;
 Tooltip.Group = TooltipGroup;
@@ -6186,6 +6213,11 @@ var import_core51 = require("@raikou/core");
 // ../components/ColorSwatch/src/ColorSwatch.tsx
 var import_react52 = __toESM(require("react"));
 var import_core38 = require("@raikou/core");
+
+// css-module:./ColorSwatch.module.css#css-module
+var ColorSwatch_module_default = { "root": "m-de3d2490", "colorOverlay": "m-862f3d1b", "shadowOverlay": "m-98ae7f22", "alphaOverlay": "m-95709ac0", "childrenOverlay": "m-93e74e3" };
+
+// ../components/ColorSwatch/src/ColorSwatch.tsx
 var defaultProps26 = {
   withShadow: true
 };
@@ -6230,13 +6262,7 @@ var ColorSwatch = (0, import_core38.polymorphicFactory)(
     const getStyles = (0, import_core38.useStyles)({
       name: "ColorSwatch",
       props,
-      classes: {
-        root: "colorswatch-root",
-        alphaOverlay: "colorswatch-alphaOverlay",
-        shadowOverlay: "colorswatch-shadowOverlay",
-        colorOverlay: "colorswatch-colorOverlay",
-        childrenOverlay: "colorswatch-childrenOverlay"
-      },
+      classes: ColorSwatch_module_default,
       className,
       style,
       classNames,
@@ -6263,6 +6289,7 @@ var ColorSwatch = (0, import_core38.polymorphicFactory)(
   }
 );
 ColorSwatch.displayName = "@raikou/core/ColorSwatch";
+ColorSwatch.classes = ColorSwatch_module_default;
 
 // ../components/SimpleGrid/src/SimpleGrid.tsx
 var import_react54 = __toESM(require("react"));
@@ -6312,6 +6339,9 @@ function SimpleGridVariables({
   return /* @__PURE__ */ import_react53.default.createElement(import_core39.InlineStyles, { styles: baseStyles, media, selector });
 }
 
+// css-module:./SimpleGrid.module.css#css-module
+var SimpleGrid_module_default = { "root": "m-2415a157" };
+
 // ../components/SimpleGrid/src/SimpleGrid.tsx
 var defaultProps27 = {
   cols: 1,
@@ -6342,9 +6372,7 @@ var SimpleGrid = (0, import_core40.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core40.useStyles)({
     name: "SimpleGrid",
-    classes: {
-      root: "simpleGrid-root"
-    },
+    classes: SimpleGrid_module_default,
     props,
     className,
     style,
@@ -6361,6 +6389,7 @@ var SimpleGrid = (0, import_core40.factory)((_props, ref) => {
     }, getStyles("root", { className: responsiveClassName })), others)
   ));
 });
+SimpleGrid.classes = SimpleGrid_module_default;
 SimpleGrid.displayName = "@raikou/core/SimpleGrid";
 
 // ../components/ColorPicker/src/ColorPicker.tsx
@@ -6957,6 +6986,9 @@ var Swatches = (0, import_react60.forwardRef)(
 );
 Swatches.displayName = "@raikou/core/Swatches";
 
+// css-module:./ColorPicker.module.css#css-module
+var ColorPicker_module_default = { "wrapper": "m-fee9c77", "preview": "m-9dddfbac", "body": "m-bffecc3e", "sliders": "m-3283bb96", "thumb": "m-40d572ba", "swatch": "m-d8ee6fd8", "swatches": "m-5711e686", "saturation": "m-202a296e", "saturationOverlay": "m-11b3db02", "slider": "m-d856d47d", "sliderOverlay": "m-8f327113" };
+
 // ../components/ColorPicker/src/ColorPicker.tsx
 var defaultProps30 = {
   swatchesPerRow: 7,
@@ -7028,19 +7060,7 @@ var ColorPicker = (0, import_core47.factory)((_props, ref) => {
   const getStyles = (0, import_core47.useStyles)({
     name: __staticSelector,
     props,
-    classes: {
-      wrapper: "colorPicker-wrapper",
-      preview: "colorPicker-preview",
-      body: "colorPicker-body",
-      sliders: "colorPicker-sliders",
-      slider: "colorPicker-slider",
-      sliderOverlay: "colorPicker-sliderOverlay",
-      thumb: "colorPicker-thumb",
-      saturation: "colorPicker-saturation",
-      saturationOverlay: "colorPicker-saturationOverlay",
-      swatches: "colorPicker-swatches",
-      swatch: "colorPicker-swatch"
-    },
+    classes: ColorPicker_module_default,
     className,
     style,
     classNames,
@@ -7173,6 +7193,7 @@ var ColorPicker = (0, import_core47.factory)((_props, ref) => {
   ));
 });
 ColorPicker.displayName = "@raikou/core/ColorPicker";
+ColorPicker.classes = ColorPicker_module_default;
 
 // ../components/Group/src/Group.tsx
 var import_react63 = __toESM(require("react"));
@@ -7183,6 +7204,9 @@ var import_react62 = require("react");
 function filterFalsyChildren(children) {
   return import_react62.Children.toArray(children).filter(Boolean);
 }
+
+// css-module:./Group.module.css#css-module
+var Group_module_default = { "root": "m-4081bf90" };
 
 // ../components/Group/src/Group.tsx
 var defaultProps31 = {
@@ -7249,7 +7273,7 @@ var Group = (0, import_core48.factory)((_props, ref) => {
     stylesCtx,
     className,
     style,
-    classes: { root: "group-root" },
+    classes: Group_module_default,
     classNames,
     styles,
     unstyled,
@@ -7268,6 +7292,7 @@ var Group = (0, import_core48.factory)((_props, ref) => {
   );
 });
 Group.displayName = "@raikou/core/Group";
+Group.classes = Group_module_default;
 
 // ../components/ActionIcon/src/ActionIcon.tsx
 var import_react65 = __toESM(require("react"));
@@ -7276,6 +7301,11 @@ var import_core50 = require("@raikou/core");
 // ../components/ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
 var import_react64 = __toESM(require("react"));
 var import_core49 = require("@raikou/core");
+
+// css-module:../ActionIcon.module.css#css-module
+var ActionIcon_module_default = { "root": "m-8d3f4000", "loader": "m-302b9fb1", "group": "m-1a0f1b21" };
+
+// ../components/ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
 var defaultProps32 = {
   orientation: "horizontal"
 };
@@ -7311,9 +7341,7 @@ var ActionIconGroup = (0, import_core49.factory)(
     const getStyles = (0, import_core49.useStyles)({
       name: "ActionIconGroup",
       props,
-      classes: {
-        group: "actionIconGroup-root"
-      },
+      classes: ActionIcon_module_default,
       className,
       style,
       classNames,
@@ -7334,7 +7362,11 @@ var ActionIconGroup = (0, import_core49.factory)(
     );
   }
 );
+ActionIconGroup.classes = ActionIcon_module_default;
 ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
+
+// css-module:./ActionIcon.module.css#css-module
+var ActionIcon_module_default2 = { "root": "m-8d3f4000", "loader": "m-302b9fb1", "group": "m-1a0f1b21" };
 
 // ../components/ActionIcon/src/ActionIcon.tsx
 var defaultProps33 = {};
@@ -7403,10 +7435,7 @@ var ActionIcon = (0, import_core50.polymorphicFactory)(
       props,
       className,
       style,
-      classes: {
-        root: "actionIcon-root",
-        loader: "actionIcon-loader"
-      },
+      classes: ActionIcon_module_default2,
       classNames,
       styles,
       unstyled,
@@ -7437,6 +7466,7 @@ var ActionIcon = (0, import_core50.polymorphicFactory)(
 );
 ActionIcon.displayName = "@raikou/core/ActionIcon";
 ActionIcon.Group = ActionIconGroup;
+ActionIcon.classes = ActionIcon_module_default2;
 
 // src/RichTextEditorControl/RichTextEditorColorPickerControl.tsx
 var import_hooks17 = require("@raikou/hooks");
@@ -7574,6 +7604,9 @@ var RichTextEditorColorControl = (0, import_react67.forwardRef)((props, ref) => 
   );
 });
 
+// css-module:./RichTextEditor.module.css#css-module
+var RichTextEditor_module_default = { "root": "m-dd3f7539", "typographyStylesProvider": "m-d37966d9", "content": "m-c2204cc2", "linkEditorDropdown": "m-8a991b4f", "control": "m-c2207da6", "controlsGroup": "m-2ab47ef2", "linkEditor": "m-b67b711e", "linkEditorInput": "m-296cf94c", "linkEditorExternalControl": "m-cfef614", "linkEditorSave": "m-3b28e7bb", "toolbar": "m-4574a3c4" };
+
 // src/RichTextEditor.tsx
 var defaultProps36 = {
   withCodeHighlightStyles: true,
@@ -7606,19 +7639,7 @@ var RichTextEditor = (0, import_core53.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core53.useStyles)({
     name: "RichTextEditor",
-    classes: {
-      root: "rte-root",
-      typographyStylesProvider: "rte-typographyStylesProvider",
-      content: "rte-content",
-      linkEditorDropdown: "rte-linkEditorDropdown",
-      control: "rte-control",
-      controlsGroup: "rte-controlsGroup",
-      linkEditor: "rte-linkEditor",
-      linkEditorInput: "rte-linkEditorInput",
-      linkEditorExternalControl: "rte-linkEditorExternalControl",
-      linkEditorSave: "rte-linkEditorSave",
-      toolbar: "rte-toolbar"
-    },
+    classes: RichTextEditor_module_default,
     props,
     className,
     style,
@@ -7644,6 +7665,7 @@ var RichTextEditor = (0, import_core53.factory)((_props, ref) => {
     /* @__PURE__ */ import_react68.default.createElement(import_core53.Box, __spreadProps(__spreadValues(__spreadValues({}, getStyles("root")), others), { ref }), children)
   );
 });
+RichTextEditor.classes = RichTextEditor_module_default;
 RichTextEditor.displayName = "@raikou/tiptap/RichTextEditor";
 RichTextEditor.Content = RichTextEditorContent;
 RichTextEditor.Control = RichTextEditorControl;
@@ -7717,3 +7739,4 @@ RichTextEditor.UnsetColor = UnsetColorControl;
   UnsetColorControl,
   useRichTextEditorContext
 });
+//# sourceMappingURL=index.js.map

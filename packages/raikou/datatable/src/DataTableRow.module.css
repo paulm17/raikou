@@ -1,0 +1,25 @@
+.mantine-datatable-row {
+  --raikou-datatable-row-color: var(
+    light-dark(
+      --raikou-datatable-row-color-light,
+      --raikou-datatable-row-color-dark
+    )
+  );
+  --raikou-datatable-row-background-color: var(
+    light-dark(
+      --raikou-datatable-row-background-color-light,
+      --raikou-datatable-row-background-color-dark
+    )
+  );
+
+  color: var(--raikou-datatable-row-color, inherit);
+  background: var(--raikou-datatable-row-background-color, inherit);
+
+  &[data-with-row-border]:not(:last-of-type) td {
+    border-bottom: rem(1px) solid var(--raikou-datatable-row-border-color);
+  }
+
+  &[data-selected] td {
+    background: var(--raikou-primary-color-light);
+  }
+}

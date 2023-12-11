@@ -1,6 +1,6 @@
 import { GetStylesApi } from "@raikou/core";
 import type { ListFactory } from "./List";
-import { create } from "zustand";
+import createStore from "pure-store";
 
 interface ListContextValue {
   getStyles: GetStylesApi<ListFactory> | any;
@@ -8,8 +8,8 @@ interface ListContextValue {
   icon: React.ReactNode | undefined;
 }
 
-export const useStore = create<ListContextValue>(() => ({
+export const useStore = createStore<ListContextValue>({
   getStyles: undefined,
   center: undefined,
   icon: undefined,
-}));
+});

@@ -99,4 +99,4 @@ declare const Card: (<C = "div">(props: C extends React.ElementType<any> ? CardP
     Section: typeof CardSection;
 };
 
-export { Card, CardCssVariables, CardFactory, CardProps, CardSection, CardSectionProps, CardStylesNames };
+export { Card, type CardCssVariables, type CardFactory, type CardProps, CardSection, type CardSectionProps, type CardStylesNames };

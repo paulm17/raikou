@@ -31,13 +31,13 @@ var __objRest = (source, exclude) => {
 };
 
 // src/PinInput.tsx
-import React10, { useRef, useState as useState2, useEffect as useEffect2 } from "react";
+import React11, { useRef, useState as useState2, useEffect as useEffect2 } from "react";
 import { useUncontrolled, useId as useId2 } from "@raikou/hooks";
 import {
   createVarsResolver as createVarsResolver7,
   factory as factory7,
   getSize as getSize2,
-  useProps as useProps8,
+  useProps as useProps9,
   useResolvedStylesApi,
   useStyles as useStyles8
 } from "@raikou/core";
@@ -58,6 +58,9 @@ import { Children } from "react";
 function filterFalsyChildren(children) {
   return Children.toArray(children).filter(Boolean);
 }
+
+// css-module:./Group.module.css#css-module
+var Group_module_default = { "root": "m-4081bf90" };
 
 // ../Group/src/Group.tsx
 var defaultProps = {
@@ -124,7 +127,7 @@ var Group = factory((_props, ref) => {
     stylesCtx,
     className,
     style,
-    classes: { root: "group-root" },
+    classes: Group_module_default,
     classNames,
     styles,
     unstyled,
@@ -143,6 +146,7 @@ var Group = factory((_props, ref) => {
   );
 });
 Group.displayName = "@raikou/core/Group";
+Group.classes = Group_module_default;
 
 // ../Input/src/Input.tsx
 import React9 from "react";
@@ -197,6 +201,11 @@ import {
   getFontSize,
   createVarsResolver as createVarsResolver2
 } from "@raikou/core";
+
+// css-module:../Input.module.css#css-module
+var Input_module_default = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
+
+// ../Input/src/InputLabel/InputLabel.tsx
 var defaultProps2 = {
   labelElement: "label"
 };
@@ -242,10 +251,11 @@ var InputLabel = factory2((_props, ref) => {
   const _getStyles = useStyles2({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      label: "inputWrapper-label",
-      required: "inputWrapper-required"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    // },
     className,
     style,
     classNames,
@@ -324,9 +334,10 @@ var InputError = factory3((_props, ref) => {
   const _getStyles = useStyles3({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      error: "inputWrapper-error"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   error: "inputWrapper-error",
+    // },
     className,
     style,
     classNames,
@@ -399,9 +410,10 @@ var InputDescription = factory4(
     const _getStyles = useStyles4({
       name: ["InputWrapper", __staticSelector],
       props,
-      classes: {
-        description: "inputWrapper-description"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   description: "inputWrapper-description",
+      // },
       className,
       style,
       classNames,
@@ -459,9 +471,10 @@ var InputPlaceholder = factory5(
     const getStyles = useStyles5({
       name: ["InputPlaceholder", __staticSelector],
       props,
-      classes: {
-        placeholder: "input-placeholder"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   placeholder: "input-placeholder",
+      // },
       className,
       style,
       classNames,
@@ -576,13 +589,14 @@ var InputWrapper = factory6((_props, ref) => {
   const getStyles = useStyles6({
     name: ["InputWrapper", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      root: "inputWrapper-root",
-      label: "inputWrapper-label",
-      required: "inputWrapper-required",
-      error: "inputWrapper-error",
-      description: "inputWrapper-description"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   root: "inputWrapper-root",
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    //   error: "inputWrapper-error",
+    //   description: "inputWrapper-description",
+    // },
     className,
     style,
     classNames,
@@ -673,6 +687,9 @@ var InputWrapper = factory6((_props, ref) => {
   );
 });
 InputWrapper.displayName = "@raikou/core/InputWrapper";
+
+// css-module:./Input.module.css#css-module
+var Input_module_default2 = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
 
 // ../Input/src/Input.tsx
 var defaultProps7 = {
@@ -766,11 +783,12 @@ var Input = polymorphicFactory((_props, ref) => {
   const getStyles = useStyles7({
     name: ["Input", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      wrapper: "input-wrapper",
-      input: "input-input",
-      section: "input-section"
-    },
+    classes: Input_module_default2,
+    // classes: {
+    //   wrapper: "input-wrapper",
+    //   input: "input-input",
+    //   section: "input-section",
+    // },
     className,
     style,
     classNames,
@@ -842,6 +860,102 @@ Input.Description = InputDescription;
 Input.Placeholder = InputPlaceholder;
 Input.displayName = "@raikou/core/Input";
 
+// ../Input/src/use-input-props.ts
+import {
+  extractStyleProps as extractStyleProps2,
+  useProps as useProps8
+} from "@raikou/core";
+function useInputProps(component, defaultProps10, _props) {
+  const props = useProps8(component, defaultProps10, _props);
+  const _a = props, {
+    label,
+    description,
+    error,
+    required,
+    classNames,
+    styles,
+    className,
+    unstyled,
+    __staticSelector,
+    __stylesApiProps,
+    errorProps,
+    labelProps,
+    descriptionProps,
+    wrapperProps: _wrapperProps,
+    id,
+    size,
+    style,
+    inputContainer,
+    inputWrapperOrder,
+    withAsterisk,
+    variant,
+    vars
+  } = _a, others = __objRest(_a, [
+    "label",
+    "description",
+    "error",
+    "required",
+    "classNames",
+    "styles",
+    "className",
+    "unstyled",
+    "__staticSelector",
+    "__stylesApiProps",
+    "errorProps",
+    "labelProps",
+    "descriptionProps",
+    "wrapperProps",
+    "id",
+    "size",
+    "style",
+    "inputContainer",
+    "inputWrapperOrder",
+    "withAsterisk",
+    "variant",
+    "vars"
+  ]);
+  const { styleProps, rest } = extractStyleProps2(others);
+  const wrapperProps = __spreadValues({
+    label,
+    description,
+    error,
+    required,
+    classNames,
+    className,
+    __staticSelector,
+    __stylesApiProps: __stylesApiProps || props,
+    errorProps,
+    labelProps,
+    descriptionProps,
+    unstyled,
+    styles,
+    size,
+    style,
+    inputContainer,
+    inputWrapperOrder,
+    withAsterisk,
+    variant,
+    id
+  }, _wrapperProps);
+  return __spreadProps(__spreadValues({}, rest), {
+    classNames,
+    styles,
+    unstyled,
+    wrapperProps: __spreadValues(__spreadValues({}, wrapperProps), styleProps),
+    inputProps: {
+      required,
+      classNames,
+      styles,
+      unstyled,
+      size,
+      __staticSelector,
+      __stylesApiProps: __stylesApiProps || props,
+      error,
+      variant
+    }
+  });
+}
+
 // src/create-pin-array/create-pin-array.ts
 function createPinArray(length, value) {
   if (length < 1) {
@@ -857,12 +971,34 @@ function createPinArray(length, value) {
   return values;
 }
 
+// css-module:./PinInput.module.css#css-module
+var PinInput_module_default = { "root": "m-f1cb205a", "pinInput": "m-cb288ead" };
+
+// ../InputBase/src/InputBase.tsx
+import React10 from "react";
+import {
+  polymorphicFactory as polymorphicFactory2
+} from "@raikou/core";
+var defaultProps8 = {
+  __staticSelector: "InputBase",
+  withAria: true
+};
+var InputBase = polymorphicFactory2((props, ref) => {
+  const _a = useInputProps(
+    "InputBase",
+    defaultProps8,
+    props
+  ), { inputProps, wrapperProps } = _a, others = __objRest(_a, ["inputProps", "wrapperProps"]);
+  return /* @__PURE__ */ React10.createElement(Input.Wrapper, __spreadValues({}, wrapperProps), /* @__PURE__ */ React10.createElement(Input, __spreadProps(__spreadValues(__spreadValues({}, inputProps), others), { ref })));
+});
+InputBase.displayName = "@raikou/core/InputBase";
+
 // src/PinInput.tsx
 var regex = {
   number: /^[0-9]+$/,
   alphanumeric: /^[a-zA-Z0-9]+$/i
 };
-var defaultProps8 = {
+var defaultProps9 = {
   gap: "sm",
   length: 4,
   manageFocus: true,
@@ -873,11 +1009,11 @@ var defaultProps8 = {
 };
 var varsResolver7 = createVarsResolver7((_, { size }) => ({
   root: {
-    "--pin-input-size": getSize2(size != null ? size : defaultProps8.size, "pin-input-size")
+    "--pin-input-size": getSize2(size != null ? size : defaultProps9.size, "pin-input-size")
   }
 }));
 var PinInput = factory7((props, ref) => {
-  const _a = useProps8("PinInput", defaultProps8, props), {
+  const _a = useProps9("PinInput", defaultProps9, props), {
     name,
     form,
     className,
@@ -943,11 +1079,7 @@ var PinInput = factory7((props, ref) => {
   const uuid = useId2(name);
   const getStyles = useStyles8({
     name: "PinInput",
-    classes: {
-      root: "pinInput-root",
-      pinInput: "pinInput-pinInput",
-      input: "input"
-    },
+    classes: PinInput_module_default,
     props,
     className,
     style,
@@ -1048,7 +1180,7 @@ var PinInput = factory7((props, ref) => {
       return;
     onComplete == null ? void 0 : onComplete(_value);
   }, [_value]);
-  return /* @__PURE__ */ React10.createElement(React10.Fragment, null, /* @__PURE__ */ React10.createElement(
+  return /* @__PURE__ */ React11.createElement(React11.Fragment, null, /* @__PURE__ */ React11.createElement(
     Group,
     __spreadProps(__spreadValues(__spreadValues({}, others), getStyles("root")), {
       role: "group",
@@ -1060,7 +1192,7 @@ var PinInput = factory7((props, ref) => {
       variant,
       __size: size
     }),
-    createPinArray(length != null ? length : 0, _value).map((char, index) => /* @__PURE__ */ React10.createElement(
+    createPinArray(length != null ? length : 0, _value).map((char, index) => /* @__PURE__ */ React11.createElement(
       Input,
       __spreadProps(__spreadValues({
         component: "input"
@@ -1099,7 +1231,7 @@ var PinInput = factory7((props, ref) => {
         readOnly
       })
     ))
-  ), /* @__PURE__ */ React10.createElement(
+  ), /* @__PURE__ */ React11.createElement(
     "input",
     __spreadValues({
       type: "hidden",
@@ -1109,7 +1241,9 @@ var PinInput = factory7((props, ref) => {
     }, hiddenInputProps)
   ));
 });
+PinInput.classes = __spreadValues(__spreadValues({}, PinInput_module_default), InputBase.classes);
 PinInput.displayName = "@raikou/core/PinInput";
 export {
   PinInput
 };
+//# sourceMappingURL=index.mjs.map

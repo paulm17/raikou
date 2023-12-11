@@ -3690,4 +3690,4 @@ interface CheckIconProps extends React$1.ComponentPropsWithoutRef<"svg"> {
 }
 declare function CheckIcon({ size, style, ...others }: CheckIconProps): React$1.JSX.Element;
 
-export { CheckIcon, CheckIconProps, Checkbox, CheckboxCssVariables, CheckboxFactory, CheckboxGroup, CheckboxGroupFactory, CheckboxGroupProps, CheckboxGroupStylesNames, CheckboxIconProps, CheckboxProps, CheckboxStylesNames };
+export { CheckIcon, type CheckIconProps, Checkbox, type CheckboxCssVariables, type CheckboxFactory, CheckboxGroup, type CheckboxGroupFactory, type CheckboxGroupProps, type CheckboxGroupStylesNames, type CheckboxIconProps, type CheckboxProps, type CheckboxStylesNames };

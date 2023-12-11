@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { useState } from "react";
 import { IconSearch } from "@tabler/icons-react";
-import { Button } from "../../components/Button";
+import { Button } from "../../components/Button/src";
 import { Spotlight, SpotlightActionData } from "./Spotlight";
 import { createSpotlight } from "./spotlight.store";
 

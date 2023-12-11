@@ -71,6 +71,11 @@ var import_core8 = require("@raikou/core");
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps = {
   __staticSelector: "UnstyledButton"
 };
@@ -97,9 +102,7 @@ var UnstyledButton = (0, import_core.polymorphicFactory)(
     const getStyles = (0, import_core.useStyles)({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -117,6 +120,7 @@ var UnstyledButton = (0, import_core.polymorphicFactory)(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // ../Loader/src/Loader.tsx
 var import_react6 = __toESM(require("react"));
@@ -148,6 +152,11 @@ var clsx_default = clsx;
 
 // ../Loader/src/loaders/Bars.tsx
 var import_core2 = require("@raikou/core");
+
+// css-module:../Loader.module.css#css-module
+var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
+
+// ../Loader/src/loaders/Bars.tsx
 var Bars = (0, import_react2.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
@@ -155,13 +164,13 @@ var Bars = (0, import_react2.forwardRef)(
       import_core2.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-barsLoader", className)
+        className: clsx_default(Loader_module_default.barsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react2.default.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ import_react2.default.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ import_react2.default.createElement("span", { className: "loader-bar" })
+      /* @__PURE__ */ import_react2.default.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ import_react2.default.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ import_react2.default.createElement("span", { className: Loader_module_default.bar })
     );
   }
 );
@@ -176,7 +185,7 @@ var Oval = (0, import_react3.forwardRef)(
       import_core3.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-ovalLoader", className)
+        className: clsx_default(Loader_module_default.ovalLoader, className)
       }, others), {
         ref
       })
@@ -194,7 +203,7 @@ var Progress = (0, import_react4.forwardRef)(
       import_core4.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-progressLoader", className)
+        className: clsx_default(Loader_module_default.progressLoader, className)
       }, others), {
         ref
       }),
@@ -223,16 +232,19 @@ var Dots = (0, import_react5.forwardRef)(
       import_core5.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-dotsLoader", className)
+        className: clsx_default(Loader_module_default.dotsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ import_react5.default.createElement("span", { className: "loader-dot" })
+      /* @__PURE__ */ import_react5.default.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ import_react5.default.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ import_react5.default.createElement("span", { className: Loader_module_default.dot })
     );
   }
 );
+
+// css-module:./Loader.module.css#css-module
+var Loader_module_default2 = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
 
 // ../Loader/src/Loader.tsx
 var defaultLoaders = {
@@ -283,9 +295,7 @@ var Loader = (0, import_core6.factory)((_props, ref) => {
   const getStyles = (0, import_core6.useStyles)({
     name: "Loader",
     props,
-    classes: {
-      root: "loader-root"
-    },
+    classes: Loader_module_default2,
     className,
     style,
     classNames,
@@ -305,10 +315,16 @@ var Loader = (0, import_core6.factory)((_props, ref) => {
   );
 });
 Loader.displayName = "@raikou/core/Loader";
+Loader.classes = Loader_module_default2;
 
 // src/ActionIconGroup/ActionIconGroup.tsx
 var import_react7 = __toESM(require("react"));
 var import_core7 = require("@raikou/core");
+
+// css-module:../ActionIcon.module.css#css-module
+var ActionIcon_module_default = { "root": "m-8d3f4000", "loader": "m-302b9fb1", "group": "m-1a0f1b21" };
+
+// src/ActionIconGroup/ActionIconGroup.tsx
 var defaultProps3 = {
   orientation: "horizontal"
 };
@@ -344,9 +360,7 @@ var ActionIconGroup = (0, import_core7.factory)(
     const getStyles = (0, import_core7.useStyles)({
       name: "ActionIconGroup",
       props,
-      classes: {
-        group: "actionIconGroup-root"
-      },
+      classes: ActionIcon_module_default,
       className,
       style,
       classNames,
@@ -367,7 +381,11 @@ var ActionIconGroup = (0, import_core7.factory)(
     );
   }
 );
+ActionIconGroup.classes = ActionIcon_module_default;
 ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
+
+// css-module:./ActionIcon.module.css#css-module
+var ActionIcon_module_default2 = { "root": "m-8d3f4000", "loader": "m-302b9fb1", "group": "m-1a0f1b21" };
 
 // src/ActionIcon.tsx
 var defaultProps4 = {};
@@ -436,10 +454,7 @@ var ActionIcon = (0, import_core8.polymorphicFactory)(
       props,
       className,
       style,
-      classes: {
-        root: "actionIcon-root",
-        loader: "actionIcon-loader"
-      },
+      classes: ActionIcon_module_default2,
       classNames,
       styles,
       unstyled,
@@ -470,8 +485,10 @@ var ActionIcon = (0, import_core8.polymorphicFactory)(
 );
 ActionIcon.displayName = "@raikou/core/ActionIcon";
 ActionIcon.Group = ActionIconGroup;
+ActionIcon.classes = ActionIcon_module_default2;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   ActionIcon,
   ActionIconGroup
 });
+//# sourceMappingURL=index.js.map

@@ -3665,4 +3665,4 @@ declare const JsonInput: _raikou_core.RaikouComponent<{
     stylesNames: __InputStylesNames;
 }>;
 
-export { JsonInput, JsonInputFactory, JsonInputProps };
+export { JsonInput, type JsonInputFactory, type JsonInputProps };

@@ -56,7 +56,7 @@ export function Usage() {
           <Menu.Divider />
 
           <Menu.Label>Label 2</Menu.Label>
-          <Menu.Item color="red" leftSection={<IconTable size={14} />}>
+          <Menu.Item color="red-400" leftSection={<IconTable size={14} />}>
             Red color
           </Menu.Item>
           <Menu.Item leftSection={<IconTable size={14} />}>

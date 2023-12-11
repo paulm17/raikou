@@ -25,4 +25,4 @@ declare const AspectRatio: _raikou_core.RaikouComponent<{
     variant: AspectRatioVariant;
 }>;
 
-export { AspectRatio, AspectRatioCssVariables, AspectRatioFactory, AspectRatioProps, AspectRatioStylesNames };
+export { AspectRatio, type AspectRatioCssVariables, type AspectRatioFactory, type AspectRatioProps, type AspectRatioStylesNames };

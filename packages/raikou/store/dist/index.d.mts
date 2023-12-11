@@ -11,4 +11,4 @@ type RaikouStoreValue<Store extends RaikouStore<any>> = ReturnType<Store["getSta
 declare function createStore<Value extends Record<string, any>>(initialState: Value): RaikouStore<Value>;
 declare function useStore<Store extends RaikouStore<any>>(store: Store): ReturnType<Store["getState"]>;
 
-export { RaikouStore, RaikouStoreSubscriber, RaikouStoreValue, createStore, useStore };
+export { type RaikouStore, type RaikouStoreSubscriber, type RaikouStoreValue, createStore, useStore };

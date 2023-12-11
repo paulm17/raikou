@@ -4,7 +4,7 @@ import Unocss from "unocss/vite";
 const config: StorybookConfig = {
   stories: [
     "../../../packages/raikou/components/**/src/*.story.@(js|jsx|ts|tsx)",
-    "../../../packages/raikou/@(carousel|code-highlight|data-table|dropzone|form|modals|notifications|nprogress|spotlight|tiptap)/**/src/*.story.@(js|jsx|ts|tsx)",
+    "../../../packages/raikou/@(carousel|code-highlight|contextmenu|datatable|dropzone|form|modals|notifications|nprogress|spotlight|tiptap)/**/src/*.story.@(js|jsx|ts|tsx)",
     "../../../packages/raikou/dates/**/src/**/*.story.@(js|jsx|ts|tsx)",
     "../../../packages/raikou/demos/**/src/**/*.story.@(js|jsx|ts|tsx)",
   ],

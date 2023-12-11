@@ -3679,4 +3679,4 @@ declare const Switch: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { Switch, SwitchCssVariables, SwitchFactory, SwitchGroup, SwitchGroupFactory, SwitchGroupProps, SwitchGroupStylesNames, SwitchProps, SwitchStylesNames };
+export { Switch, type SwitchCssVariables, type SwitchFactory, SwitchGroup, type SwitchGroupFactory, type SwitchGroupProps, type SwitchGroupStylesNames, type SwitchProps, type SwitchStylesNames };

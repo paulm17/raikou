@@ -127,4 +127,4 @@ declare const LoadingOverlay: _raikou_core.RaikouComponent<{
     vars: LoadingOverlayCssVariables;
 }>;
 
-export { LoadingOverlay, LoadingOverlayCssVariables, LoadingOverlayFactory, LoadingOverlayProps, LoadingOverlayStylesNames };
+export { LoadingOverlay, type LoadingOverlayCssVariables, type LoadingOverlayFactory, type LoadingOverlayProps, type LoadingOverlayStylesNames };

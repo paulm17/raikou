@@ -3642,4 +3642,4 @@ declare const TextInput: _raikou_core.RaikouComponent<{
     stylesNames: __InputStylesNames;
 }>;
 
-export { TextInput, TextInputFactory, TextInputProps };
+export { TextInput, type TextInputFactory, type TextInputProps };

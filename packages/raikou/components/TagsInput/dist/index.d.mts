@@ -4299,4 +4299,4 @@ declare const TagsInput: _raikou_core.RaikouComponent<{
     stylesNames: TagsInputStylesNames;
 }>;
 
-export { TagsInput, TagsInputFactory, TagsInputProps, TagsInputScroller, TagsInputStylesNames };
+export { TagsInput, type TagsInputFactory, type TagsInputProps, TagsInputScroller, type TagsInputStylesNames };

@@ -37,4 +37,4 @@ declare const UnstyledButton: (<C = "button">(props: C extends React.ElementType
     classes: Record<string, string>;
 } & Record<string, never>;
 
-export { UnstyledButton, UnstyledButtonFactory, UnstyledButtonProps, UnstyledButtonStylesNames };
+export { UnstyledButton, type UnstyledButtonFactory, type UnstyledButtonProps, type UnstyledButtonStylesNames };

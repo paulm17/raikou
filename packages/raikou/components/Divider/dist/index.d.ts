@@ -34,4 +34,4 @@ declare const Divider: _raikou_core.RaikouComponent<{
     variant: DividerVariant;
 }>;
 
-export { Divider, DividerCssVariables, DividerFactory, DividerProps, DividerStylesNames, DividerVariant };
+export { Divider, type DividerCssVariables, type DividerFactory, type DividerProps, type DividerStylesNames, type DividerVariant };

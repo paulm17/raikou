@@ -46,6 +46,11 @@ import {
 import React, { forwardRef } from "react";
 import cx from "clsx";
 import { Box } from "@raikou/core";
+
+// css-module:../Loader.module.css#css-module
+var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
+
+// src/loaders/Bars.tsx
 var Bars = forwardRef(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
@@ -53,13 +58,13 @@ var Bars = forwardRef(
       Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx("loader-barsLoader", className)
+        className: cx(Loader_module_default.barsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ React.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ React.createElement("span", { className: "loader-bar" })
+      /* @__PURE__ */ React.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React.createElement("span", { className: Loader_module_default.bar })
     );
   }
 );
@@ -75,7 +80,7 @@ var Oval = forwardRef2(
       Box2,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx2("loader-ovalLoader", className)
+        className: cx2(Loader_module_default.ovalLoader, className)
       }, others), {
         ref
       })
@@ -94,7 +99,7 @@ var Progress = forwardRef3(
       Box3,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx3("loader-progressLoader", className)
+        className: cx3(Loader_module_default.progressLoader, className)
       }, others), {
         ref
       }),
@@ -124,16 +129,19 @@ var Dots = forwardRef4(
       Box4,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx4("loader-dotsLoader", className)
+        className: cx4(Loader_module_default.dotsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React4.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ React4.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ React4.createElement("span", { className: "loader-dot" })
+      /* @__PURE__ */ React4.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React4.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React4.createElement("span", { className: Loader_module_default.dot })
     );
   }
 );
+
+// css-module:./Loader.module.css#css-module
+var Loader_module_default2 = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
 
 // src/Loader.tsx
 var defaultLoaders = {
@@ -184,9 +192,7 @@ var Loader = factory((_props, ref) => {
   const getStyles = useStyles({
     name: "Loader",
     props,
-    classes: {
-      root: "loader-root"
-    },
+    classes: Loader_module_default2,
     className,
     style,
     classNames,
@@ -206,7 +212,9 @@ var Loader = factory((_props, ref) => {
   );
 });
 Loader.displayName = "@raikou/core/Loader";
+Loader.classes = Loader_module_default2;
 export {
   Loader,
   defaultLoaders
 };
+//# sourceMappingURL=index.mjs.map

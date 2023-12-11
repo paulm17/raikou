@@ -71,6 +71,11 @@ var import_core3 = require("@raikou/core");
 // ../Paper/src/Paper.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./Paper.module.css#css-module
+var Paper_module_default = { "root": "m-1b7284a3" };
+
+// ../Paper/src/Paper.tsx
 var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)(
   (_, { radius, shadow }) => ({
@@ -108,9 +113,7 @@ var Paper = (0, import_core.polymorphicFactory)((_props, ref) => {
   const getStyles = (0, import_core.useStyles)({
     name: "Paper",
     props,
-    classes: {
-      root: "paper-root"
-    },
+    classes: Paper_module_default,
     className,
     style,
     classNames,
@@ -130,16 +133,17 @@ var Paper = (0, import_core.polymorphicFactory)((_props, ref) => {
   );
 });
 Paper.displayName = "@raikou/core/Paper";
+Paper.classes = Paper_module_default;
 
 // src/CardSection/CardSection.tsx
 var import_react2 = __toESM(require("react"));
 var import_core2 = require("@raikou/core");
 
 // src/store.ts
-var import_zustand = require("zustand");
-var useStore = (0, import_zustand.create)(() => ({
+var import_pure_store = __toESM(require("pure-store"));
+var useStore = (0, import_pure_store.default)({
   getStyles: void 0
-}));
+});
 
 // src/CardSection/CardSection.tsx
 var defaultProps2 = {};
@@ -175,6 +179,9 @@ var CardSection = (0, import_core2.polymorphicFactory)(
 );
 CardSection.displayName = "@raikou/core/CardSection";
 
+// css-module:./Card.module.css#css-module
+var Card_module_default = { "root": "m-e615b15f", "section": "m-599a2148" };
+
 // src/Card.tsx
 var defaultProps3 = {};
 var varsResolver2 = (0, import_core3.createVarsResolver)((_, { padding }) => ({
@@ -206,10 +213,7 @@ var Card = (0, import_core3.polymorphicFactory)((_props, ref) => {
   const getStyles = (0, import_core3.useStyles)({
     name: "Card",
     props,
-    classes: {
-      root: "card-root",
-      section: "card-section"
-    },
+    classes: Card_module_default,
     className,
     style,
     classNames,
@@ -218,7 +222,9 @@ var Card = (0, import_core3.polymorphicFactory)((_props, ref) => {
     vars,
     varsResolver: varsResolver2
   });
-  useStore.setState({ getStyles });
+  useStore.update((state) => {
+    state.getStyles = getStyles;
+  });
   const _children = import_react3.Children.toArray(children);
   const content = _children.map((child, index) => {
     if (typeof child === "object" && child && "type" in child && child.type === CardSection) {
@@ -233,8 +239,10 @@ var Card = (0, import_core3.polymorphicFactory)((_props, ref) => {
 });
 Card.displayName = "@raikou/core/Card";
 Card.Section = CardSection;
+Card.classes = Card_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Card,
   CardSection
 });
+//# sourceMappingURL=index.js.map

@@ -2769,6 +2769,9 @@ var PopoverDropdown = factory2(
 );
 PopoverDropdown.displayName = "@raikou/core/PopoverDropdown";
 
+// css-module:./Popover.module.css#css-module
+var Popover_module_default = { "dropdown": "m-38a85659", "arrow": "m-a31dc6c1" };
+
 // ../Popover/src/Popover.tsx
 var defaultProps4 = {
   position: "bottom",
@@ -2884,10 +2887,7 @@ function Popover(_props) {
   const getStyles = useStyles({
     name: __staticSelector,
     props,
-    classes: {
-      dropdown: "popover-dropdown",
-      arrow: "popover-arrow"
-    },
+    classes: Popover_module_default,
     classNames,
     styles,
     unstyled,
@@ -2998,6 +2998,9 @@ import {
 // src/Menu.context.ts
 var [MenuContextProvider, useMenuContext] = createSafeContext("Menu component was not found in the tree");
 
+// css-module:../Menu.module.css#css-module
+var Menu_module_default = { "dropdown": "m-dc9b7c9f", "label": "m-9bfac126", "divider": "m-efdf90cb", "item": "m-99ac2aa1", "itemLabel": "m-5476e0d3", "itemSection": "m-8b75e504" };
+
 // src/MenuDivider/MenuDivider.tsx
 var defaultProps5 = {};
 var MenuDivider = factory3((props, ref) => {
@@ -3014,6 +3017,7 @@ var MenuDivider = factory3((props, ref) => {
     }, ctx.getStyles("divider", { className, style, styles, classNames })), others)
   );
 });
+MenuDivider.classes = Menu_module_default;
 MenuDivider.displayName = "@raikou/core/MenuDivider";
 
 // src/MenuDropdown/MenuDropdown.tsx
@@ -3086,6 +3090,7 @@ var MenuDropdown = factory4((props, ref) => {
     )
   );
 });
+MenuDropdown.classes = Menu_module_default;
 MenuDropdown.displayName = "@raikou/core/MenuDropdown";
 
 // src/MenuItem/MenuItem.tsx
@@ -3108,6 +3113,11 @@ import {
   useStyles as useStyles2,
   polymorphicFactory
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps7 = {
   __staticSelector: "UnstyledButton"
 };
@@ -3134,9 +3144,7 @@ var UnstyledButton = polymorphicFactory(
     const getStyles = useStyles2({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -3154,6 +3162,7 @@ var UnstyledButton = polymorphicFactory(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // src/MenuItem/MenuItem.tsx
 var defaultProps8 = {};
@@ -3255,6 +3264,7 @@ var MenuItem = polymorphicFactory2((props, ref) => {
     )
   );
 });
+MenuItem.classes = Menu_module_default;
 MenuItem.displayName = "@raikou/core/MenuItem";
 
 // src/MenuLabel/MenuLabel.tsx
@@ -3279,6 +3289,7 @@ var MenuLabel = factory5((props, ref) => {
     }, ctx.getStyles("label", { className, style, styles, classNames })), others)
   );
 });
+MenuLabel.classes = Menu_module_default;
 MenuLabel.displayName = "@raikou/core/MenuLabel";
 
 // src/MenuTarget/MenuTarget.tsx
@@ -3321,6 +3332,9 @@ var MenuTarget = forwardRef4(
   }
 );
 MenuTarget.displayName = "@raikou/core/MenuTarget";
+
+// css-module:./Menu.module.css#css-module
+var Menu_module_default2 = { "dropdown": "m-dc9b7c9f", "label": "m-9bfac126", "divider": "m-efdf90cb", "item": "m-99ac2aa1", "itemLabel": "m-5476e0d3", "itemSection": "m-8b75e504" };
 
 // src/Menu.tsx
 var defaultProps11 = {
@@ -3371,14 +3385,7 @@ function Menu(_props) {
   ]);
   const getStyles = useStyles3({
     name: "Menu",
-    classes: {
-      dropdown: "menu-dropdown",
-      item: "menu-item",
-      itemLabel: "menu-itemLabel",
-      itemSection: "menu-itemSection",
-      label: "menu-label",
-      divider: "menu-divider"
-    },
+    classes: Menu_module_default2,
     props,
     classNames,
     styles,
@@ -3466,3 +3473,4 @@ export {
   MenuLabel,
   MenuTarget
 };
+//# sourceMappingURL=index.mjs.map

@@ -49,4 +49,4 @@ declare const Rating: _raikou_core.RaikouComponent<{
     vars: RatingCssVariables;
 }>;
 
-export { Rating, RatingCssVariables, RatingFactory, RatingProps, RatingStylesNames };
+export { Rating, type RatingCssVariables, type RatingFactory, type RatingProps, type RatingStylesNames };

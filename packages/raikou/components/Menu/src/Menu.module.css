@@ -33,7 +33,7 @@
   }
 }
 
-.item {
+.item.item {
   font-size: var(--raikou-font-size-sm);
   width: 100%;
   padding: calc(var(--raikou-spacing-xs) / 1.5) var(--raikou-spacing-sm);

@@ -95,6 +95,9 @@ function getRootPadding(root, defaultPaddingValue) {
   };
 }
 
+// css-module:./SegmentedControl.module.css#css-module
+var SegmentedControl_module_default = { "root": "m-cf365364", "indicator": "m-9e182ccd", "label": "m-1738fcb2", "input": "m-1714d588", "control": "m-69686b9b" };
+
 // src/SegmentedControl.tsx
 var WRAPPER_PADDING = 4;
 var defaultProps = {};
@@ -163,13 +166,7 @@ var SegmentedControl = (0, import_core.factory)(
     const getStyles = (0, import_core.useStyles)({
       name: "SegmentedControl",
       props,
-      classes: {
-        root: "segmentedControl-root",
-        indicator: "segmentedControl-indicator",
-        label: "segmentedControl-label",
-        input: "segmentedControl-input",
-        control: "segmentedControl-control"
-      },
+      classes: SegmentedControl_module_default,
       className,
       style,
       classNames,
@@ -214,7 +211,7 @@ var SegmentedControl = (0, import_core.factory)(
             height,
             translate: [
               dir === "rtl" ? offsetRight * -1 : offsetLeft,
-              element.parentElement.offsetTop - WRAPPER_PADDING
+              element.parentElement.offsetTop - rootPadding.top
             ]
           });
         } else {
@@ -291,8 +288,10 @@ var SegmentedControl = (0, import_core.factory)(
     );
   }
 );
+SegmentedControl.classes = SegmentedControl_module_default;
 SegmentedControl.displayName = "@raikou/core/SegmentedControl";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   SegmentedControl
 });
+//# sourceMappingURL=index.js.map

@@ -1,0 +1,15 @@
+[files]
+components_dir = "components"
+other_dir = [
+  "carousel",
+  "code-highlight",
+  "contextmenu",
+  "datatable",
+  "dates",
+  "dropzone",
+  "modals",
+  "notifications",
+  "nprogress",
+  "spotlight",
+  "tiptap"
+]

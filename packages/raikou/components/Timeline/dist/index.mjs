@@ -55,10 +55,10 @@ import {
 } from "@raikou/core";
 
 // src/store.ts
-import { create } from "zustand";
-var useStore = create(() => ({
+import createStore from "pure-store";
+var useStore = createStore({
   getStyles: void 0
-}));
+});
 
 // src/TimelineItem/TimelineItem.tsx
 var defaultProps = {};
@@ -122,6 +122,9 @@ var TimelineItem = factory((_props, ref) => {
 });
 TimelineItem.displayName = "@raikou/core/TimelineItem";
 
+// css-module:./Timeline.module.css#css-module
+var Timeline_module_default = { "root": "m-43657ece", "itemTitle": "m-2ebe8099", "item": "m-436178ff", "itemBullet": "m-8affcee1", "itemBody": "m-540e8f41" };
+
 // src/Timeline.tsx
 var defaultProps2 = {
   active: -1,
@@ -173,13 +176,7 @@ var Timeline = factory2((_props, ref) => {
   ]);
   const getStyles = useStyles({
     name: "Timeline",
-    classes: {
-      root: "timeline-root",
-      itemTitle: "timeline-itemTitle",
-      item: "timeline-item",
-      itemBullet: "timeline-itemBullet",
-      itemBody: "timeline-itemBody"
-    },
+    classes: Timeline_module_default,
     props,
     className,
     style,
@@ -201,12 +198,16 @@ var Timeline = factory2((_props, ref) => {
       });
     }
   );
-  useStore.setState({ getStyles });
+  useStore.update((state) => {
+    state.getStyles = getStyles;
+  });
   return /* @__PURE__ */ React2.createElement(Box2, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { mod: { align }, ref }), others), items);
 });
+Timeline.classes = Timeline_module_default;
 Timeline.displayName = "@raikou/core/Timeline";
 Timeline.Item = TimelineItem;
 export {
   Timeline,
   TimelineItem
 };
+//# sourceMappingURL=index.mjs.map

@@ -1,7 +1,7 @@
 const path = require("path");
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
-import { generateScopedName } from "../../../scripts/utils/generated-scope";
+import { generateScopedName } from "./generated-scope";
 
 export default defineConfig({
   css: {

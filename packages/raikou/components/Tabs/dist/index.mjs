@@ -181,6 +181,11 @@ import {
   useStyles,
   polymorphicFactory
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps3 = {
   __staticSelector: "UnstyledButton"
 };
@@ -207,9 +212,7 @@ var UnstyledButton = polymorphicFactory(
     const getStyles = useStyles({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -227,6 +230,7 @@ var UnstyledButton = polymorphicFactory(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // src/TabsTab/TabsTab.tsx
 var defaultProps4 = {};
@@ -328,6 +332,9 @@ var TabsTab = factory3((_props, ref) => {
 });
 TabsTab.displayName = "@raikou/core/TabsTab";
 
+// css-module:./Tabs.module.css#css-module
+var Tabs_module_default = { "root": "m-89d60db1", "list--default": "m-576c9d4", "list": "m-89d33d6d", "panel": "m-b0c91715", "tab": "m-4ec4dce6", "tabSection": "m-fc420b1f", "tab--default": "m-539e827b", "list--outline": "m-6772fbd5", "tab--outline": "m-b59ab47c", "tab--pills": "m-c3381914" };
+
 // src/Tabs.tsx
 var VALUE_ERROR = "Tabs.Tab or Tabs.Panel component was rendered with invalid value or without value";
 var defaultProps5 = {
@@ -406,14 +413,7 @@ var Tabs = factory4((_props, ref) => {
   const getStyles = useStyles2({
     name: "Tabs",
     props,
-    classes: {
-      root: "tabs-root",
-      list: "tabs-list",
-      panel: "tabs-panel",
-      tab: "tabs-tab",
-      tabSection: "tabs-tabSection",
-      tabLabel: "tabs-tabLabel"
-    },
+    classes: Tabs_module_default,
     className,
     style,
     classNames,
@@ -461,6 +461,7 @@ var Tabs = factory4((_props, ref) => {
     )
   );
 });
+Tabs.classes = Tabs_module_default;
 Tabs.displayName = "@raikou/core/Tabs";
 Tabs.Tab = TabsTab;
 Tabs.Panel = TabsPanel;
@@ -471,3 +472,4 @@ export {
   TabsPanel,
   TabsTab
 };
+//# sourceMappingURL=index.mjs.map

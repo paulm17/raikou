@@ -73,12 +73,12 @@ var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
 
 // src/store.ts
-var import_zustand = require("zustand");
-var useStore = (0, import_zustand.create)(() => ({
+var import_pure_store = __toESM(require("pure-store"));
+var useStore = (0, import_pure_store.default)({
   getStyles: void 0,
   center: void 0,
   icon: void 0
-}));
+});
 
 // src/ListItem/ListItem.tsx
 var defaultProps = {};
@@ -114,6 +114,9 @@ var ListItem = (0, import_core.factory)((_props, ref) => {
   );
 });
 ListItem.displayName = "@raikou/core/ListItem";
+
+// css-module:./List.module.css#css-module
+var List_module_default = { "root": "m-abbac491", "item": "m-abb6bec2", "itemWrapper": "m-75cd9f71", "itemIcon": "m-60f83e5b" };
 
 // src/List.tsx
 var defaultProps2 = {
@@ -161,12 +164,7 @@ var List = (0, import_core2.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core2.useStyles)({
     name: "List",
-    classes: {
-      root: "list-root",
-      item: "list-item",
-      itemWrapper: "list-itemWrapper",
-      itemIcon: "list-itemIcon"
-    },
+    classes: List_module_default,
     props,
     className,
     style,
@@ -176,7 +174,11 @@ var List = (0, import_core2.factory)((_props, ref) => {
     vars,
     varsResolver
   });
-  useStore.setState({ getStyles, center, icon });
+  useStore.update((state) => {
+    state.getStyles = getStyles;
+    state.center = center;
+    state.icon = icon;
+  });
   return /* @__PURE__ */ import_react2.default.createElement(
     import_core2.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { style: { listStyleType } })), {
@@ -187,6 +189,7 @@ var List = (0, import_core2.factory)((_props, ref) => {
     children
   );
 });
+List.classes = List_module_default;
 List.displayName = "@raikou/core/List";
 List.Item = ListItem;
 // Annotate the CommonJS export names for ESM import in node:
@@ -194,3 +197,4 @@ List.Item = ListItem;
   List,
   ListItem
 });
+//# sourceMappingURL=index.js.map

@@ -38,4 +38,4 @@ declare const RingProgress: _raikou_core.RaikouComponent<{
     vars: RingProgressCssVariables;
 }>;
 
-export { RingProgress, RingProgressCssVariables, RingProgressFactory, RingProgressProps, RingProgressStylesNames };
+export { RingProgress, type RingProgressCssVariables, type RingProgressFactory, type RingProgressProps, type RingProgressStylesNames };

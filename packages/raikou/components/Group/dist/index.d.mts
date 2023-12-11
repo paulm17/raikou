@@ -39,4 +39,4 @@ declare const Group: _raikou_core.RaikouComponent<{
     ctx: GroupStylesCtx;
 }>;
 
-export { Group, GroupCssVariables, GroupFactory, GroupProps, GroupStylesCtx, GroupStylesNames };
+export { Group, type GroupCssVariables, type GroupFactory, type GroupProps, type GroupStylesCtx, type GroupStylesNames };

@@ -208,6 +208,11 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
 // ../Input/src/InputLabel/InputLabel.tsx
 var import_react59 = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:../Input.module.css#css-module
+var Input_module_default = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
+
+// ../Input/src/InputLabel/InputLabel.tsx
 var defaultProps = {
   labelElement: "label"
 };
@@ -253,10 +258,11 @@ var InputLabel = (0, import_core.factory)((_props, ref) => {
   const _getStyles = (0, import_core.useStyles)({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      label: "inputWrapper-label",
-      required: "inputWrapper-required"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    // },
     className,
     style,
     classNames,
@@ -327,9 +333,10 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
   const _getStyles = (0, import_core2.useStyles)({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      error: "inputWrapper-error"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   error: "inputWrapper-error",
+    // },
     className,
     style,
     classNames,
@@ -394,9 +401,10 @@ var InputDescription = (0, import_core3.factory)(
     const _getStyles = (0, import_core3.useStyles)({
       name: ["InputWrapper", __staticSelector],
       props,
-      classes: {
-        description: "inputWrapper-description"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   description: "inputWrapper-description",
+      // },
       className,
       style,
       classNames,
@@ -449,9 +457,10 @@ var InputPlaceholder = (0, import_core4.factory)(
     const getStyles = (0, import_core4.useStyles)({
       name: ["InputPlaceholder", __staticSelector],
       props,
-      classes: {
-        placeholder: "input-placeholder"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   placeholder: "input-placeholder",
+      // },
       className,
       style,
       classNames,
@@ -557,13 +566,14 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
   const getStyles = (0, import_core5.useStyles)({
     name: ["InputWrapper", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      root: "inputWrapper-root",
-      label: "inputWrapper-label",
-      required: "inputWrapper-required",
-      error: "inputWrapper-error",
-      description: "inputWrapper-description"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   root: "inputWrapper-root",
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    //   error: "inputWrapper-error",
+    //   description: "inputWrapper-description",
+    // },
     className,
     style,
     classNames,
@@ -654,6 +664,9 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
   );
 });
 InputWrapper.displayName = "@raikou/core/InputWrapper";
+
+// css-module:./Input.module.css#css-module
+var Input_module_default2 = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
 
 // ../Input/src/Input.tsx
 var defaultProps6 = {
@@ -747,11 +760,12 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
   const getStyles = (0, import_core6.useStyles)({
     name: ["Input", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      wrapper: "input-wrapper",
-      input: "input-input",
-      section: "input-section"
-    },
+    classes: Input_module_default2,
+    // classes: {
+    //   wrapper: "input-wrapper",
+    //   input: "input-input",
+    //   section: "input-section",
+    // },
     className,
     style,
     classNames,
@@ -823,6 +837,9 @@ Input.Description = InputDescription;
 Input.Placeholder = InputPlaceholder;
 Input.displayName = "@raikou/core/Input";
 
+// css-module:./InlineInput.module.css#css-module
+var InlineInput_module_default = { "root": "m-5f75b09e", "body": "m-5f6e695e", "labelWrapper": "m-d3ea56bb", "label": "m-8ee546b8", "description": "m-328f68c0", "error": "m-8e8a99cc" };
+
 // ../InlineInput/src/InlineInput.tsx
 var InlineInput = (0, import_react65.forwardRef)(
   (_a, ref) => {
@@ -868,14 +885,7 @@ var InlineInput = (0, import_react65.forwardRef)(
       props: __stylesApiProps,
       className,
       style,
-      classes: {
-        root: "inlineInput-root",
-        body: "inlineInput-body",
-        labelWrapper: "inlineInput-labelWrapper",
-        label: "inlineInput-label",
-        description: "inlineInput-description",
-        error: "inlineInput-error"
-      },
+      classes: InlineInput_module_default,
       classNames,
       styles,
       unstyled
@@ -1044,6 +1054,9 @@ function CheckboxIcon(_a) {
   return /* @__PURE__ */ import_react69.default.createElement(CheckIcon, __spreadValues({}, others));
 }
 
+// css-module:./Checkbox.module.css#css-module
+var Checkbox_module_default = { "root": "m-bf2d988c", "inner": "m-26062bec", "input": "m-26063560", "icon": "m-bf295423" };
+
 // src/Checkbox.tsx
 var defaultProps8 = {
   labelPosition: "right",
@@ -1116,17 +1129,18 @@ var Checkbox = (0, import_core10.factory)((_props, ref) => {
   const getStyles = (0, import_core10.useStyles)({
     name: "Checkbox",
     props,
-    classes: {
-      root: "checkbox-root",
-      inner: "checkbox-inner",
-      input: "checkbox-input",
-      icon: "checkbox-icon",
-      body: "inlineInput-body",
-      label: "inlineInput-label",
-      labelWrapper: "inlineInput-labelWrapper",
-      description: "inlineInput-description",
-      error: "inlineInput-error"
-    },
+    classes: Checkbox_module_default,
+    // classes: {
+    //   root: "checkbox-root",
+    //   inner: "checkbox-inner",
+    //   input: "checkbox-input",
+    //   icon: "checkbox-icon",
+    //   body: "inlineInput-body",
+    //   label: "inlineInput-label",
+    //   labelWrapper: "inlineInput-labelWrapper",
+    //   description: "inlineInput-description",
+    //   error: "inlineInput-error",
+    // },
     className,
     style,
     classNames,
@@ -1190,3 +1204,4 @@ Checkbox.Group = CheckboxGroup;
   Checkbox,
   CheckboxGroup
 });
+//# sourceMappingURL=index.js.map

@@ -49,10 +49,13 @@ import {
 } from "@raikou/core";
 
 // src/store.ts
-import { create } from "zustand";
-var useStore = create(() => ({
+import createStore from "pure-store";
+var useStore = createStore({
   error: false
-}));
+});
+
+// css-module:./Image.module.css#css-module
+var Image_module_default = { "root": "m-9e117634" };
 
 // src/Image.tsx
 var defaultProps = {};
@@ -91,9 +94,7 @@ var Image = polymorphicFactory((_props, ref) => {
   ]);
   const getStyles = useStyles({
     name: "Image",
-    classes: {
-      root: "image-root"
-    },
+    classes: Image_module_default,
     props,
     className,
     style,
@@ -107,9 +108,13 @@ var Image = polymorphicFactory((_props, ref) => {
     var request = __require("request").defaults({ encoding: null });
     request.get(src, function(error, response) {
       if (response === void 0) {
-        useStore.getState().error = true;
+        useStore.update((state) => {
+          state.error = true;
+        });
       } else if (response.statusCode !== 200) {
-        useStore.getState().error = true;
+        useStore.update((state) => {
+          state.error = true;
+        });
       }
     });
   }
@@ -123,7 +128,9 @@ var Image = polymorphicFactory((_props, ref) => {
     }), others)
   );
 });
+Image.classes = Image_module_default;
 Image.displayName = "@raikou/core/Image";
 export {
   Image
 };
+//# sourceMappingURL=index.mjs.map

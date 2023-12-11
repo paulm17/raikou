@@ -1,0 +1,78 @@
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Rating/src/Rating.module.css/#css-module-data */
+[data-raikou-color-scheme=light] .m-f8d312f2 {
+  --raikou-rating-star-color: #dee2e6;
+}
+[data-raikou-color-scheme=dark] .m-f8d312f2 {
+  --raikou-rating-star-color: #373a40;
+}
+.m-f8d312f2 {
+  --rating-size-xs: calc(0.875rem * var(--raikou-scale));
+  --rating-size-sm: calc(1.125rem * var(--raikou-scale));
+  --rating-size-md: calc(1.25rem * var(--raikou-scale));
+  --rating-size-lg: calc(1.75rem * var(--raikou-scale));
+  --rating-size-xl: calc(2rem * var(--raikou-scale));
+  display: flex;
+  width: max-content;
+  pointer-events: var(--_pointer-events);
+}
+.m-f8d312f2:has(input:disabled) {
+  --_pointer-events: none;
+}
+.m-61734bb7 {
+  position: relative;
+  transition: transform 100ms ease;
+  z-index: var(--_z-index);
+  transform: var(--_transform);
+}
+.m-61734bb7[data-active] {
+  --_z-index: 1;
+  --_transform: scale(1.1);
+}
+.m-5662a89a {
+  width: var(--rating-size);
+  height: var(--rating-size);
+  stroke: var(--_star-color);
+  fill: var(--_star-color);
+  display: block;
+}
+[data-raikou-color-scheme=light] .m-5662a89a {
+  --_star-color: var(--raikou-rating-star-color);
+}
+[data-raikou-color-scheme=dark] .m-5662a89a {
+  --_star-color: var(--raikou-rating-star-color);
+}
+[data-raikou-color-scheme] .m-5662a89a[data-filled] {
+  --_star-color: var(--rating-color);
+}
+.m-211007ba {
+  height: 0;
+  width: 0;
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.m-211007ba:focus-visible + label {
+  outline: calc(0.125rem * var(--raikou-scale)) solid var(--raikou-primary-color-filled);
+  outline-offset: calc(0.125rem * var(--raikou-scale));
+}
+.m-21342ee4 {
+  display: block;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: var(--rating-item-z-index, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+.m-21342ee4[data-read-only] {
+  cursor: default;
+}
+.m-21342ee4:last-of-type {
+  position: relative;
+}
+.m-fae05d6a {
+  clip-path: var(--rating-symbol-clip-path);
+}
+/*# sourceMappingURL=index.css.map */

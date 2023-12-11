@@ -271,6 +271,11 @@ var clsx_default = clsx;
 
 // ../components/Loader/src/loaders/Bars.tsx
 import { Box } from "@raikou/core";
+
+// css-module:../Loader.module.css#css-module
+var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
+
+// ../components/Loader/src/loaders/Bars.tsx
 var Bars = forwardRef2(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
@@ -278,13 +283,13 @@ var Bars = forwardRef2(
       Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-barsLoader", className)
+        className: clsx_default(Loader_module_default.barsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React3.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ React3.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ React3.createElement("span", { className: "loader-bar" })
+      /* @__PURE__ */ React3.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React3.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React3.createElement("span", { className: Loader_module_default.bar })
     );
   }
 );
@@ -299,7 +304,7 @@ var Oval = forwardRef3(
       Box2,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-ovalLoader", className)
+        className: clsx_default(Loader_module_default.ovalLoader, className)
       }, others), {
         ref
       })
@@ -317,7 +322,7 @@ var Progress = forwardRef4(
       Box3,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-progressLoader", className)
+        className: clsx_default(Loader_module_default.progressLoader, className)
       }, others), {
         ref
       }),
@@ -346,16 +351,19 @@ var Dots = forwardRef5(
       Box4,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-dotsLoader", className)
+        className: clsx_default(Loader_module_default.dotsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React6.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "loader-dot" })
+      /* @__PURE__ */ React6.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React6.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React6.createElement("span", { className: Loader_module_default.dot })
     );
   }
 );
+
+// css-module:./Loader.module.css#css-module
+var Loader_module_default2 = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
 
 // ../components/Loader/src/Loader.tsx
 var defaultLoaders = {
@@ -406,9 +414,7 @@ var Loader = factory((_props, ref) => {
   const getStyles = useStyles({
     name: "Loader",
     props,
-    classes: {
-      root: "loader-root"
-    },
+    classes: Loader_module_default2,
     className,
     style,
     classNames,
@@ -428,6 +434,7 @@ var Loader = factory((_props, ref) => {
   );
 });
 Loader.displayName = "@raikou/core/Loader";
+Loader.classes = Loader_module_default2;
 
 // ../components/CloseButton/src/CloseIcon.tsx
 import React8, { forwardRef as forwardRef6 } from "react";
@@ -477,6 +484,11 @@ import {
   useStyles as useStyles2,
   polymorphicFactory
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../components/UnstyledButton/src/UnstyledButton.tsx
 var defaultProps3 = {
   __staticSelector: "UnstyledButton"
 };
@@ -503,9 +515,7 @@ var UnstyledButton = polymorphicFactory(
     const getStyles = useStyles2({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -523,6 +533,10 @@ var UnstyledButton = polymorphicFactory(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
+
+// css-module:./CloseButton.module.css#css-module
+var CloseButton_module_default = { "root": "m-86a44da5", "root--subtle": "m-220c80f2" };
 
 // ../components/CloseButton/src/CloseButton.tsx
 var defaultProps4 = {
@@ -573,9 +587,7 @@ var CloseButton = polymorphicFactory2(
       props,
       className,
       style,
-      classes: {
-        root: "closeButton-root"
-      },
+      classes: CloseButton_module_default,
       classNames,
       styles,
       unstyled,
@@ -598,6 +610,10 @@ var CloseButton = polymorphicFactory2(
   }
 );
 CloseButton.displayName = "@raikou/core/CloseButton";
+CloseButton.classes = CloseButton_module_default;
+
+// css-module:./Notification.module.css#css-module
+var Notification_module_default = { "root": "m-a513464", "icon": "m-a4ceffb", "loader": "m-b0920b15", "body": "m-a49ed24", "title": "m-3feedf16", "description": "m-3d733a3a", "closeButton": "m-919a4d88" };
 
 // ../components/Notification/src/Notification.tsx
 var defaultProps5 = {
@@ -652,15 +668,7 @@ var Notification = factory2((_props, ref) => {
   ]);
   const getStyles = useStyles4({
     name: "Notification",
-    classes: {
-      root: "notification-root",
-      icon: "notification-icon",
-      loader: "notification-loader",
-      body: "notification-body",
-      title: "notification-title",
-      description: "notification-description",
-      closeButton: "notification-close-button"
-    },
+    classes: Notification_module_default,
     props,
     className,
     style,
@@ -696,6 +704,7 @@ var Notification = factory2((_props, ref) => {
     )
   );
 });
+Notification.classes = Notification_module_default;
 Notification.displayName = "@raikou/core/Notification";
 
 // src/get-auto-close/get-auto-close.ts
@@ -796,6 +805,9 @@ function getNotificationStateStyles({
   return __spreadValues(__spreadValues({}, commonStyles), transitionStyles[state]);
 }
 
+// css-module:./Notifications.module.css#css-module
+var Notifications_module_default = { "root": "m-b37d9ac7", "notification": "m-5ed0edd0" };
+
 // src/Notifications.tsx
 var Transition = _Transition;
 var defaultProps6 = {
@@ -872,10 +884,7 @@ var Notifications = factory3((_props, ref) => {
   const duration = reduceMotion ? 1 : transitionDuration;
   const getStyles = useStyles5({
     name: "Notifications",
-    classes: {
-      root: "notifications-root",
-      notification: "notifications-notification"
-    },
+    classes: Notifications_module_default,
     props,
     className,
     style,
@@ -928,6 +937,7 @@ var Notifications = factory3((_props, ref) => {
   );
   return /* @__PURE__ */ React13.createElement(OptionalPortal, __spreadValues({ withinPortal }, portalProps), /* @__PURE__ */ React13.createElement(Box8, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref }), others), /* @__PURE__ */ React13.createElement(TransitionGroup, null, items)));
 });
+Notifications.classes = Notifications_module_default;
 Notifications.displayName = "@raikou/notifications/Notifications";
 Notifications.show = notifications.show;
 Notifications.hide = notifications.hide;
@@ -948,3 +958,4 @@ export {
   updateNotificationsState,
   useNotifications
 };
+//# sourceMappingURL=index.mjs.map

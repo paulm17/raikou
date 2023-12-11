@@ -9,7 +9,7 @@ interface Options<Props = any> {
 
 export function itSupportsProviderDefaultProps<Props>(
   options: Options<Props>,
-  name = "supports default props on RaikouProvider"
+  name = "supports default props on RaikouProvider",
 ) {
   it(name, () => {
     const { container } = render(
@@ -20,7 +20,7 @@ export function itSupportsProviderDefaultProps<Props>(
             defaultProps: { "data-provider-prop": "test-provider-prop" },
           },
         },
-      }
+      },
     );
 
     const element = container.querySelector("[data-provider-prop]");

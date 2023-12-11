@@ -209,7 +209,7 @@ body {
   --raikou-color-default-hover: #2c2e33;
   --raikou-color-default-color: #fff;
   --raikou-color-default-border: #373a40;
-  --raikou-color-dimmed: "#868e96";
+  --raikou-color-dimmed: #868e96;
 }
 
 :root[data-raikou-color-scheme="light"] {
@@ -224,5 +224,5 @@ body {
   --raikou-color-default-hover: #f8f9fa;
   --raikou-color-default-color: #000;
   --raikou-color-default-border: #ced4da;
-  --raikou-color-dimmed: "#909296";
+  --raikou-color-dimmed: #909296;
 }

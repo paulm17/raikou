@@ -5,3 +5,4 @@ function Hello() {
 export {
   Hello
 };
+//# sourceMappingURL=index.mjs.map

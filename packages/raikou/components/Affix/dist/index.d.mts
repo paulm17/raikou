@@ -56,4 +56,4 @@ declare const Affix: _raikou_core.RaikouComponent<{
     vars: AffixCssVariables;
 }>;
 
-export { Affix, AffixBaseProps, AffixCssVariables, AffixFactory, AffixProps, AffixStylesNames };
+export { Affix, type AffixBaseProps, type AffixCssVariables, type AffixFactory, type AffixProps, type AffixStylesNames };

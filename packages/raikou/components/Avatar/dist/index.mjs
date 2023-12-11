@@ -62,6 +62,9 @@ function useAvatarGroupContext() {
   return { withinGroup: !!ctx };
 }
 
+// css-module:../Avatar.module.css#css-module
+var Avatar_module_default = { "root": "m-f85678b6", "image": "m-11f8ac07", "placeholder": "m-104cd71f", "group": "m-11def92b" };
+
 // src/AvatarGroup/AvatarGroup.tsx
 var defaultProps = {};
 var varsResolver = createVarsResolver(
@@ -92,9 +95,7 @@ var AvatarGroup = factory((_props, ref) => {
   ]);
   const getStyles = useStyles({
     name: "AvatarGroup",
-    classes: {
-      root: "avatarGroup-group"
-    },
+    classes: Avatar_module_default,
     props,
     className,
     style,
@@ -108,6 +109,7 @@ var AvatarGroup = factory((_props, ref) => {
   return /* @__PURE__ */ React.createElement(AvatarGroupProvider, { value: true }, /* @__PURE__ */ React.createElement(Box, __spreadValues(__spreadValues({ ref }, getStyles("group")), others)));
 });
 AvatarGroup.displayName = "@raikou/core/AvatarGroup";
+AvatarGroup.classes = Avatar_module_default;
 
 // src/AvatarPlaceholderIcon.tsx
 import React2 from "react";
@@ -131,6 +133,9 @@ function AvatarPlaceholderIcon(props) {
     )
   );
 }
+
+// css-module:./Avatar.module.css#css-module
+var Avatar_module_default2 = { "root": "m-f85678b6", "image": "m-11f8ac07", "placeholder": "m-104cd71f", "group": "m-11def92b" };
 
 // src/Avatar.tsx
 var defaultProps2 = {};
@@ -189,11 +194,7 @@ var Avatar = polymorphicFactory((_props, ref) => {
   const getStyles = useStyles2({
     name: "Avatar",
     props,
-    classes: {
-      root: "avatar-root",
-      placeholder: "avatar-placeholder",
-      image: "avatar-image"
-    },
+    classes: Avatar_module_default2,
     className,
     style,
     classNames,
@@ -225,7 +226,9 @@ var Avatar = polymorphicFactory((_props, ref) => {
 });
 Avatar.displayName = "@raikou/core/Avatar";
 Avatar.Group = AvatarGroup;
+Avatar.classes = Avatar_module_default2;
 export {
   Avatar,
   AvatarGroup
 };
+//# sourceMappingURL=index.mjs.map

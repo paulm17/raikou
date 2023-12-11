@@ -3,8 +3,12 @@
 }
 
 .control {
-  background-color: light-dark(var(--raikou-color-white), var(--raikou-color-dark-6));
-  border: rem(1px) solid light-dark(var(--raikou-color-gray-3), var(--raikou-color-dark-4));
+  background-color: light-dark(
+    var(--raikou-color-white),
+    var(--raikou-color-dark-6)
+  );
+  border: rem(1px) solid
+    light-dark(var(--raikou-color-gray-3), var(--raikou-color-dark-4));
   padding: var(--raikou-spacing-md);
   padding-left: rem(60px);
   border-radius: var(--raikou-radius-md);

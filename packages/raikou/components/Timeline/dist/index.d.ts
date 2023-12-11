@@ -77,4 +77,4 @@ declare const Timeline: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { Timeline, TimelineCssVariables, TimelineFactory, TimelineItem, TimelineItemFactory, TimelineItemProps, TimelineItemStylesNames, TimelineProps, TimelineStylesNames };
+export { Timeline, type TimelineCssVariables, type TimelineFactory, TimelineItem, type TimelineItemFactory, type TimelineItemProps, type TimelineItemStylesNames, type TimelineProps, type TimelineStylesNames };

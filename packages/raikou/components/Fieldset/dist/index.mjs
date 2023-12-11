@@ -37,6 +37,11 @@ import {
   createVarsResolver,
   getRadius
 } from "@raikou/core";
+
+// css-module:./Fieldset.module.css#css-module
+var Fieldset_module_default = { "root": "m-e9408a47", "root--default": "m-84c9523a", "root--filled": "m-ef274e49", "root--unstyled": "m-eda993d3", "legend": "m-90794832" };
+
+// src/Fieldset.tsx
 var defaultProps = {
   variant: "default"
 };
@@ -70,10 +75,7 @@ var Fieldset = factory((_props, ref) => {
   ]);
   const getStyles = useStyles({
     name: "Fieldset",
-    classes: {
-      root: "fieldset-root",
-      legend: "fieldset-legend"
-    },
+    classes: Fieldset_module_default,
     props,
     className,
     style,
@@ -95,6 +97,8 @@ var Fieldset = factory((_props, ref) => {
   );
 });
 Fieldset.displayName = "@raikou/core/Fieldset";
+Fieldset.classes = Fieldset_module_default;
 export {
   Fieldset
 };
+//# sourceMappingURL=index.mjs.map

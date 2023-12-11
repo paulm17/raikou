@@ -13,7 +13,7 @@ export type {
   TableStylesNames,
   TableCssVariables,
   TableFactory,
-  TableData,
+  // TableData,
 } from "./Table";
 
 export type {

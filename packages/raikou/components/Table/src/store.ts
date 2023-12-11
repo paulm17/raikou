@@ -1,6 +1,6 @@
 import { GetStylesApi } from "@raikou/core";
 import type { TableFactory } from "./Table";
-import { create } from "zustand";
+import createStore from "pure-store";
 
 export type TableContextValue = {
   getStyles: GetStylesApi<TableFactory> | any;
@@ -11,11 +11,11 @@ export type TableContextValue = {
   captionSide: "top" | "bottom";
 };
 
-export const useStore = create<TableContextValue>(() => ({
+export const useStore = createStore<TableContextValue>({
   getStyles: undefined,
   striped: undefined,
   highlightOnHover: undefined,
   withColumnBorders: undefined,
   withRowBorders: undefined,
   captionSide: "top",
-}));
+});

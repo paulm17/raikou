@@ -20,7 +20,7 @@ const slides = (
 export function Usage() {
   return (
     <div style={{ padding: 40, maxWidth: 500 }}>
-      <Carousel slideSize="70%" slideGap="md" height={200}>
+      <Carousel bg="red-400" slideSize="70%" slideGap="md" height={200}>
         {slides}
       </Carousel>
     </div>

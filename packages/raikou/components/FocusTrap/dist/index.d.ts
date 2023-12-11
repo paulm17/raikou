@@ -13,4 +13,4 @@ declare namespace FocusTrap {
     var displayName: string;
 }
 
-export { FocusTrap, FocusTrapProps };
+export { FocusTrap, type FocusTrapProps };

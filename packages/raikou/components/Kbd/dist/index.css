@@ -1,0 +1,46 @@
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Kbd/src/Kbd.module.css/#css-module-data */
+[data-raikou-color-scheme=light] .m-dc6f14e2 {
+  --raikou-bd-border-color: #dee2e6;
+  --raikou-bd-color: #495057;
+  --raikou-bd-bg: #f8f9fa ;
+}
+[data-raikou-color-scheme=dark] .m-dc6f14e2 {
+  --raikou-bd-border-color: #373a40;
+  --raikou-bd-color: #c1c2c5;
+  --raikou-bd-bg: #2c2e33 ;
+}
+.m-dc6f14e2 {
+  --kbd-fz-xs: calc(0.625rem * var(--raikou-scale));
+  --kbd-fz-sm: calc(0.75rem * var(--raikou-scale));
+  --kbd-fz-md: calc(0.875rem * var(--raikou-scale));
+  --kbd-fz-lg: calc(1rem * var(--raikou-scale));
+  --kbd-fz-xl: calc(1.25rem * var(--raikou-scale));
+  --kbd-fz: var(--kbd-fz-sm);
+  --kbd-padding-xs: calc(0.125rem * var(--raikou-scale)) calc(0.25rem * var(--raikou-scale));
+  --kbd-padding-sm: calc(0.1875rem * var(--raikou-scale)) calc(0.3125rem * var(--raikou-scale));
+  --kbd-padding-md: calc(0.25rem * var(--raikou-scale)) calc(0.4375rem * var(--raikou-scale));
+  --kbd-padding-lg: calc(0.3125rem * var(--raikou-scale)) calc(0.5625rem * var(--raikou-scale));
+  --kbd-padding-xl: calc(0.5rem * var(--raikou-scale)) calc(0.875rem * var(--raikou-scale));
+  --kbd-padding: var(--kbd-padding-sm);
+  font-family: var(--raikou-font-family-monospace);
+  line-height: var(--raikou-line-height);
+  font-weight: 700;
+  padding: var(--kbd-padding);
+  font-size: var(--kbd-fz);
+  border-radius: var(--raikou-radius-sm);
+  border: calc(0.0625rem * var(--raikou-scale)) solid var(--_kbd-border-color);
+  border-bottom-width: calc(0.1875rem * var(--raikou-scale));
+  background-color: var(--_kbd-bg);
+  color: var(--_kbd-color);
+}
+[data-raikou-color-scheme=light] .m-dc6f14e2 {
+  --_kbd-border-color: var(--raikou-bd-border-color);
+  --_kbd-color: var(--raikou-bd-color);
+  --_kbd-bg: var(--raikou-bd-bg) ;
+}
+[data-raikou-color-scheme=dark] .m-dc6f14e2 {
+  --_kbd-border-color: var(--raikou-bd-border-color);
+  --_kbd-color: var(--raikou-bd-color);
+  --_kbd-bg: var(--raikou-bd-bg) ;
+}
+/*# sourceMappingURL=index.css.map */

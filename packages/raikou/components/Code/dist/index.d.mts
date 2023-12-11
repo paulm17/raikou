@@ -24,4 +24,4 @@ declare const Code: _raikou_core.RaikouComponent<{
     vars: CodeCssVariables;
 }>;
 
-export { Code, CodeCssVariables, CodeFactory, CodeProps, CodeStylesNames };
+export { Code, type CodeCssVariables, type CodeFactory, type CodeProps, type CodeStylesNames };

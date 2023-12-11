@@ -1,0 +1,89 @@
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Paper/src/Paper.module.css/#css-module-data */
+[data-raikou-color-scheme=light] .m-1b7284a3.m-1b7284a3 {
+  --raikou-paper-border-color: #dee2e6;
+}
+[data-raikou-color-scheme=dark] .m-1b7284a3.m-1b7284a3 {
+  --raikou-paper-border-color: #373a40;
+}
+.m-1b7284a3.m-1b7284a3 {
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+  display: block;
+  touch-action: manipulation;
+  text-decoration: none;
+  border-radius: var(--paper-radius, var(--raikou-radius-default));
+  box-shadow: var(--paper-shadow, none);
+  background-color: var(--raikou-color-body);
+  border: var(--_paper-border, none);
+}
+[data-raikou-color-scheme=light] .m-1b7284a3.m-1b7284a3[data-with-border] {
+  --_paper-border: calc(0.0625rem * var(--raikou-scale)) solid var(--raikou-paper-border-color);
+}
+[data-raikou-color-scheme=dark] .m-1b7284a3.m-1b7284a3[data-with-border] {
+  --_paper-border: calc(0.0625rem * var(--raikou-scale)) solid var(--raikou-paper-border-color);
+}
+.m-1b7284a3.m-1b7284a3:not([data-with-border]) {
+  --_paper-border: none !important;
+}
+
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Card/src/Card.module.css/#css-module-data */
+[data-raikou-color-scheme=light] .m-e615b15f {
+  --raikou-card-bg: #fff;
+  --raikou-card-section-border-color: #dee2e6;
+}
+[data-raikou-color-scheme=dark] .m-e615b15f {
+  --raikou-card-bg: #25262b;
+  --raikou-card-section-border-color: #373a40;
+}
+.m-e615b15f {
+  --card-padding: var(--raikou-spacing-md);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--_card-bg);
+  padding: var(--card-padding);
+  color: var(--raikou-color-text);
+}
+[data-raikou-color-scheme=light] .m-e615b15f {
+  --_card-bg: var(--raikou-card-bg);
+}
+[data-raikou-color-scheme=dark] .m-e615b15f {
+  --_card-bg: var(--raikou-card-bg);
+}
+.m-599a2148 {
+  display: block;
+  margin-left: calc(var(--card-padding) * -1);
+  margin-right: calc(var(--card-padding) * -1);
+  padding-left: var(--_card-section-padding, 0);
+  padding-right: var(--_card-section-padding, 0);
+  border-top: var(--_card-section-border-top, unset);
+  border-bottom: var(--_card-section-border-bottom, unset);
+  margin-top: var(--_card-section-mt, 0);
+  margin-bottom: var(--_card-section-mb, 0);
+}
+.m-599a2148[data-first-section] {
+  --_card-section-mt: calc(var(--card-padding) * -1);
+  --_card-section-border-top: none !important;
+}
+.m-599a2148[data-last-section] {
+  --_card-section-mb: calc(var(--card-padding) * -1);
+  --_card-section-border-bottom: none !important;
+}
+.m-599a2148[data-inherit-padding] {
+  --_card-section-padding: var(--card-padding);
+}
+.m-599a2148[data-with-border] {
+  --_card-section-border-top: calc(0.0625rem * var(--raikou-scale)) solid var(--_card-section-border-color);
+  --_card-section-border-bottom: calc(0.0625rem * var(--raikou-scale)) solid var(--_card-section-border-color);
+}
+.m-599a2148 + .m-599a2148 {
+  --_card-section-border-top: none !important;
+}
+[data-raikou-color-scheme=light] .m-599a2148 {
+  --_card-section-border-color: var(--raikou-card-section-border-color);
+}
+[data-raikou-color-scheme=dark] .m-599a2148 {
+  --_card-section-border-color: var(--raikou-card-section-border-color);
+}
+/*# sourceMappingURL=index.css.map */

@@ -42,4 +42,4 @@ declare const Loader: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { Loader, LoaderCssVariables, LoaderFactory, LoaderProps, LoaderStylesNames, RaikouLoader, RaikouLoaderComponent, RaikouLoadersRecord, SvgLoaderProps, defaultLoaders };
+export { Loader, type LoaderCssVariables, type LoaderFactory, type LoaderProps, type LoaderStylesNames, type RaikouLoader, type RaikouLoaderComponent, type RaikouLoadersRecord, type SvgLoaderProps, defaultLoaders };

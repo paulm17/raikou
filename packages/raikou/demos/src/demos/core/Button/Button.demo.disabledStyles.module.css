@@ -1,7 +1,10 @@
 .button {
   &:disabled,
   &[data-disabled] {
-    border-color: light-dark(var(--raikou-color-gray-3), var(--raikou-color-dark-4));
+    border-color: light-dark(
+      var(--raikou-color-gray-3),
+      var(--raikou-color-dark-4)
+    );
     background-color: transparent;
   }
 }

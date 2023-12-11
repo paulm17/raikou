@@ -75,6 +75,11 @@ var FLEX_STYLE_PROPS_DATA = {
 // src/Flex.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./Flex.module.css#css-module
+var Flex_module_default = { "flex-root": "m-3bac8182" };
+
+// src/Flex.tsx
 var defaultProps = {};
 var Flex = (0, import_core.polymorphicFactory)((_props, ref) => {
   const props = (0, import_core.useProps)("Flex", defaultProps, _props);
@@ -109,9 +114,7 @@ var Flex = (0, import_core.polymorphicFactory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core.useStyles)({
     name: "Flex",
-    classes: {
-      root: "flex-root"
-    },
+    classes: Flex_module_default,
     props,
     className,
     style,
@@ -146,8 +149,10 @@ var Flex = (0, import_core.polymorphicFactory)((_props, ref) => {
   ));
 });
 Flex.displayName = "@raikou/core/Flex";
+Flex.classes = Flex_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   FLEX_STYLE_PROPS_DATA,
   Flex
 });
+//# sourceMappingURL=index.js.map

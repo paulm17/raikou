@@ -85,6 +85,9 @@ function filterFalsyChildren(children) {
   return import_react.Children.toArray(children).filter(Boolean);
 }
 
+// css-module:./Group.module.css#css-module
+var Group_module_default = { "root": "m-4081bf90" };
+
 // ../Group/src/Group.tsx
 var defaultProps = {
   preventGrowOverflow: true,
@@ -150,7 +153,7 @@ var Group = (0, import_core.factory)((_props, ref) => {
     stylesCtx,
     className,
     style,
-    classes: { root: "group-root" },
+    classes: Group_module_default,
     classNames,
     styles,
     unstyled,
@@ -169,6 +172,7 @@ var Group = (0, import_core.factory)((_props, ref) => {
   );
 });
 Group.displayName = "@raikou/core/Group";
+Group.classes = Group_module_default;
 
 // src/PaginationRoot/PaginationRoot.tsx
 var import_react7 = __toESM(require("react"));
@@ -203,6 +207,9 @@ var import_react6 = require("react");
 var [PaginationProvider, usePaginationContext] = createSafeContext(
   "Pagination.Root component was not found in tree"
 );
+
+// css-module:../Pagination.module.css#css-module
+var Pagination_module_default = { "root": "m-4addd315", "control": "m-326d024a", "dots": "m-4ad7767d" };
 
 // src/PaginationRoot/PaginationRoot.tsx
 var defaultProps2 = {
@@ -267,11 +274,7 @@ var PaginationRoot = (0, import_core2.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core2.useStyles)({
     name: "Pagination",
-    classes: {
-      root: "pagination-root",
-      control: "pagination-control",
-      dots: "pagination-dots"
-    },
+    classes: Pagination_module_default,
     props,
     className,
     style,
@@ -315,6 +318,7 @@ var PaginationRoot = (0, import_core2.factory)((_props, ref) => {
     /* @__PURE__ */ import_react7.default.createElement(import_core2.Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others))
   );
 });
+PaginationRoot.classes = Pagination_module_default;
 PaginationRoot.displayName = "@raikou/core/PaginationRoot";
 
 // src/PaginationControl/PaginationControl.tsx
@@ -324,6 +328,11 @@ var import_core4 = require("@raikou/core");
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react8 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps3 = {
   __staticSelector: "UnstyledButton"
 };
@@ -350,9 +359,7 @@ var UnstyledButton = (0, import_core3.polymorphicFactory)(
     const getStyles = (0, import_core3.useStyles)({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -370,6 +377,7 @@ var UnstyledButton = (0, import_core3.polymorphicFactory)(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // src/PaginationControl/PaginationControl.tsx
 var defaultProps4 = {
@@ -648,3 +656,4 @@ Pagination.Items = PaginationItems;
   PaginationPrevious,
   PaginationRoot
 });
+//# sourceMappingURL=index.js.map

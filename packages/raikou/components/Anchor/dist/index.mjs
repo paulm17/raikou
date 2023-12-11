@@ -47,6 +47,11 @@ import {
   getFontSize,
   getLineHeight
 } from "@raikou/core";
+
+// css-module:./Text.module.css#css-module
+var Text_module_default = { "root": "m-b6d8b162" };
+
+// ../Text/src/Text.tsx
 function getTextTruncate(truncate) {
   if (truncate === "start") {
     return "start";
@@ -109,9 +114,7 @@ var Text = polymorphicFactory((_props, ref) => {
   const getStyles = useStyles({
     name: ["Text", __staticSelector],
     props,
-    classes: {
-      root: "text-root"
-    },
+    classes: Text_module_default,
     className,
     style,
     classNames,
@@ -139,7 +142,11 @@ var Text = polymorphicFactory((_props, ref) => {
     }), others)
   );
 });
+Text.classes = Text_module_default;
 Text.displayName = "@raikou/core/Text";
+
+// css-module:./Anchor.module.css#css-module
+var Anchor_module_default = { "root": "m-849cf0da" };
 
 // src/Anchor.tsx
 var defaultProps2 = {
@@ -156,7 +163,7 @@ var Anchor = polymorphicFactory2((props, ref) => {
     __spreadProps(__spreadValues({
       component: "a",
       ref,
-      className: cx("anchor-root", className)
+      className: cx(Anchor_module_default.root, className)
     }, others), {
       mod: { underline },
       __staticSelector: "Anchor"
@@ -164,6 +171,8 @@ var Anchor = polymorphicFactory2((props, ref) => {
   );
 });
 Anchor.displayName = "@raikou/core/Anchor";
+Anchor.classes = Anchor_module_default;
 export {
   Anchor
 };
+//# sourceMappingURL=index.mjs.map

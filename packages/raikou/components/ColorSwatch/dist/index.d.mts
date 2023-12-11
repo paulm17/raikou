@@ -51,4 +51,4 @@ declare const ColorSwatch: (<C = "div">(props: C extends React.ElementType<any> 
     classes: Record<string, string>;
 } & Record<string, never>;
 
-export { ColorSwatch, ColorSwatchCssVariables, ColorSwatchFactory, ColorSwatchProps, ColorSwatchStylesNames };
+export { ColorSwatch, type ColorSwatchCssVariables, type ColorSwatchFactory, type ColorSwatchProps, type ColorSwatchStylesNames };

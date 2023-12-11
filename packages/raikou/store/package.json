@@ -26,7 +26,6 @@
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "clean-package": "2.2.0",
-    "tsup": "^7.1.0"
+    "clean-package": "2.2.0"
   }
 }

@@ -66,4 +66,4 @@ declare function convertHsvaTo(format: ColorFormat, color: HsvaColor): string;
 declare function isColorValid(color: string): boolean;
 declare function parseColor(color: string): HsvaColor;
 
-export { ColorPicker, ColorPickerCssVariables, ColorPickerFactory, ColorPickerProps, ColorPickerStylesNames, __ColorPickerProps, convertHsvaTo, isColorValid, parseColor };
+export { ColorPicker, type ColorPickerCssVariables, type ColorPickerFactory, type ColorPickerProps, type ColorPickerStylesNames, type __ColorPickerProps, convertHsvaTo, isColorValid, parseColor };

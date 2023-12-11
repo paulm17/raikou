@@ -4291,4 +4291,4 @@ declare const Select: _raikou_core.RaikouComponent<{
     variant: InputVariant;
 }>;
 
-export { Select, SelectFactory, SelectProps, SelectStylesNames };
+export { Select, type SelectFactory, type SelectProps, type SelectStylesNames };

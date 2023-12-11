@@ -111,6 +111,9 @@ function OptionalPortal(_a) {
 }
 OptionalPortal.displayName = "@raikou/core/OptionalPortal";
 
+// css-module:./Affix.module.css#css-module
+var Affix_module_default = { "root": "m-7f854edf" };
+
 // ../Affix/src/Affix.tsx
 var defaultProps2 = {
   position: { bottom: 0, right: 0 },
@@ -155,9 +158,7 @@ var Affix = factory((_props, ref) => {
   ]);
   const getStyles = useStyles({
     name: "Affix",
-    classes: {
-      root: "affix-root"
-    },
+    classes: Affix_module_default,
     props,
     className,
     style,
@@ -170,6 +171,7 @@ var Affix = factory((_props, ref) => {
   return /* @__PURE__ */ React3.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ React3.createElement(Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others)));
 });
 Affix.displayName = "@raikou/core/Affix";
+Affix.classes = Affix_module_default;
 
 // ../Paper/src/Paper.tsx
 import React4 from "react";
@@ -182,6 +184,11 @@ import {
   getShadow,
   createVarsResolver as createVarsResolver2
 } from "@raikou/core";
+
+// css-module:./Paper.module.css#css-module
+var Paper_module_default = { "root": "m-1b7284a3" };
+
+// ../Paper/src/Paper.tsx
 var defaultProps3 = {};
 var varsResolver2 = createVarsResolver2(
   (_, { radius, shadow }) => ({
@@ -219,9 +226,7 @@ var Paper = polymorphicFactory((_props, ref) => {
   const getStyles = useStyles2({
     name: "Paper",
     props,
-    classes: {
-      root: "paper-root"
-    },
+    classes: Paper_module_default,
     className,
     style,
     classNames,
@@ -241,6 +246,7 @@ var Paper = polymorphicFactory((_props, ref) => {
   );
 });
 Paper.displayName = "@raikou/core/Paper";
+Paper.classes = Paper_module_default;
 
 // ../Transition/src/transitions.ts
 import { rem as rem2 } from "@raikou/core";
@@ -523,6 +529,11 @@ import {
   useStyles as useStyles3,
   polymorphicFactory as polymorphicFactory2
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps4 = {
   __staticSelector: "UnstyledButton"
 };
@@ -549,9 +560,7 @@ var UnstyledButton = polymorphicFactory2(
     const getStyles = useStyles3({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -569,6 +578,10 @@ var UnstyledButton = polymorphicFactory2(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
+
+// css-module:./CloseButton.module.css#css-module
+var CloseButton_module_default = { "root": "m-86a44da5", "root--subtle": "m-220c80f2" };
 
 // ../CloseButton/src/CloseButton.tsx
 var defaultProps5 = {
@@ -619,9 +632,7 @@ var CloseButton = polymorphicFactory3(
       props,
       className,
       style,
-      classes: {
-        root: "closeButton-root"
-      },
+      classes: CloseButton_module_default,
       classNames,
       styles,
       unstyled,
@@ -644,6 +655,10 @@ var CloseButton = polymorphicFactory3(
   }
 );
 CloseButton.displayName = "@raikou/core/CloseButton";
+CloseButton.classes = CloseButton_module_default;
+
+// css-module:./Dialog.module.css#css-module
+var Dialog_module_default = { "root": "m-e2125a27", "closeButton": "m-5abab665" };
 
 // src/Dialog.tsx
 var defaultProps6 = {
@@ -700,10 +715,7 @@ var Dialog = factory2((_props, ref) => {
   ]);
   const getStyles = useStyles5({
     name: "Dialog",
-    classes: {
-      root: "dialog-root",
-      closeButton: "dialog-closeButton"
-    },
+    classes: Dialog_module_default,
     props,
     className,
     style,
@@ -740,6 +752,8 @@ var Dialog = factory2((_props, ref) => {
   );
 });
 Dialog.displayName = "@raikou/core/Dialog";
+Dialog.classes = Dialog_module_default;
 export {
   Dialog
 };
+//# sourceMappingURL=index.mjs.map

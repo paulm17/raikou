@@ -1,5 +1,6 @@
 .root {
-  border: rem(1px) solid light-dark(var(--raikou-color-gray-3), var(--raikou-color-dark-4));
+  border: rem(1px) solid
+    light-dark(var(--raikou-color-gray-3), var(--raikou-color-dark-4));
   padding: var(--raikou-spacing-xs) var(--raikou-spacing-sm);
   border-radius: var(--raikou-radius-md);
   font-weight: 500;

@@ -3,5 +3,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: light-dark(var(--raikou-color-white), var(--raikou-color-dark-5));
+  background-color: light-dark(
+    var(--raikou-color-white),
+    var(--raikou-color-dark-5)
+  );
 }

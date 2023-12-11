@@ -1,7 +1,9 @@
-import { RaikouProvider, DirectionProvider } from "@raikou/system";
+import { RaikouProvider, DirectionProvider, RaikouTheme } from "@raikou/system";
 import { setState, createTheme } from "@raikou/global-store";
 // import { generateColors } from "@raikou/colors-generator";
-import "./styles/uno.css";
+import "./styles/global.css";
+// import "./styles/uno.css";
+// import { ContextMenuProvider } from "@raikou/contextmenu";
 
 export default function RootLayout({
   children,
@@ -15,15 +17,15 @@ export default function RootLayout({
     // },
   });
 
-  setState(theme);
+  setState((state: RaikouTheme) => ({
+    state: { ...state, ...theme },
+  }));
 
   return (
     <html lang="en" dir="ltr">
       <body>
         <DirectionProvider>
-          <RaikouProvider theme={theme}>
-            <body>{children}</body>
-          </RaikouProvider>
+          <RaikouProvider theme={theme}>{children}</RaikouProvider>
         </DirectionProvider>
       </body>
     </html>

@@ -80,3 +80,4 @@ NumberFormatter.displayName = "@raikou/core/NumberFormatter";
 0 && (module.exports = {
   NumberFormatter
 });
+//# sourceMappingURL=index.js.map

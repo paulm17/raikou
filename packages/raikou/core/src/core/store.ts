@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import createStore from "pure-store";
 import { RaikouTheme } from "./RaikouProvider";
 
-export const useStore = create<RaikouTheme | null>(() => null);
+export const useStore = createStore<RaikouTheme | null>(null);

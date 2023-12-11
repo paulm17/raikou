@@ -4296,6 +4296,7 @@ declare namespace Combobox {
             }>;
         };
     }>) => RaikouThemeComponent;
+    var classes: any;
     var displayName: string;
     var Target: _raikou_core.RaikouComponent<{
         props: ComboboxTargetProps;
@@ -4498,4 +4499,4 @@ declare function useComboboxTargetProps({ onKeyDown, withKeyboardNavigation, wit
 
 declare function isOptionsGroup(item: ComboboxParsedItem): item is ComboboxParsedItemGroup;
 
-export { Combobox, ComboboxChevron, ComboboxChevronProps, ComboboxClearButton, ComboboxData, ComboboxDropdown, ComboboxDropdownEventSource, ComboboxDropdownProps, ComboboxDropdownTarget, ComboboxDropdownTargetProps, ComboboxEmpty, ComboboxEmptyProps, ComboboxEventsTarget, ComboboxEventsTargetProps, ComboboxFactory, ComboboxFooter, ComboboxFooterProps, ComboboxGroup, ComboboxGroupProps, ComboboxHeader, ComboboxHeaderProps, ComboboxItem, ComboboxItemGroup, ComboboxLikeProps, ComboboxLikeStylesNames, ComboboxOption, ComboboxOptionProps, ComboboxOptions, ComboboxOptionsProps, ComboboxParsedItem, ComboboxParsedItemGroup, ComboboxProps, ComboboxSearch, ComboboxSearchProps, ComboboxStore, ComboboxStylesNames, ComboboxTarget, ComboboxTargetProps, OptionsData, OptionsDropdown, OptionsDropdownProps, OptionsFilter, UseComboboxOptions$1 as UseComboboxOptions, defaultOptionsFilter, getLabelsLockup, getOptionsLockup, getParsedComboboxData, isOptionsGroup, useCombobox, useComboboxTargetProps, useVirtualizedCombobox };
+export { Combobox, ComboboxChevron, type ComboboxChevronProps, ComboboxClearButton, type ComboboxData, ComboboxDropdown, type ComboboxDropdownEventSource, type ComboboxDropdownProps, ComboboxDropdownTarget, type ComboboxDropdownTargetProps, ComboboxEmpty, type ComboboxEmptyProps, ComboboxEventsTarget, type ComboboxEventsTargetProps, type ComboboxFactory, ComboboxFooter, type ComboboxFooterProps, ComboboxGroup, type ComboboxGroupProps, ComboboxHeader, type ComboboxHeaderProps, type ComboboxItem, type ComboboxItemGroup, type ComboboxLikeProps, type ComboboxLikeStylesNames, ComboboxOption, type ComboboxOptionProps, ComboboxOptions, type ComboboxOptionsProps, type ComboboxParsedItem, type ComboboxParsedItemGroup, type ComboboxProps, ComboboxSearch, type ComboboxSearchProps, type ComboboxStore, type ComboboxStylesNames, ComboboxTarget, type ComboboxTargetProps, type OptionsData, OptionsDropdown, type OptionsDropdownProps, type OptionsFilter, type UseComboboxOptions$1 as UseComboboxOptions, defaultOptionsFilter, getLabelsLockup, getOptionsLockup, getParsedComboboxData, isOptionsGroup, useCombobox, useComboboxTargetProps, useVirtualizedCombobox };

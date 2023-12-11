@@ -63,6 +63,11 @@ module.exports = __toCommonJS(src_exports);
 // src/AspectRatio.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./AspectRatio.module.css#css-module
+var AspectRatio_module_default = { "root": "m-71ac47fc" };
+
+// src/AspectRatio.tsx
 var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)((_, { ratio }) => ({
   root: {
@@ -90,9 +95,7 @@ var AspectRatio = (0, import_core.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core.useStyles)({
     name: "AspectRatio",
-    classes: {
-      root: "aspectRatio-root"
-    },
+    classes: AspectRatio_module_default,
     props,
     className,
     style,
@@ -105,7 +108,9 @@ var AspectRatio = (0, import_core.factory)((_props, ref) => {
   return /* @__PURE__ */ import_react.default.createElement(import_core.Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others));
 });
 AspectRatio.displayName = "@raikou/core/AspectRatio";
+AspectRatio.classes = AspectRatio_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   AspectRatio
 });
+//# sourceMappingURL=index.js.map

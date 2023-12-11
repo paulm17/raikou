@@ -3666,4 +3666,4 @@ declare const PillsInput: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { PillsInput, PillsInputFactory, PillsInputField, PillsInputFieldFactory, PillsInputFieldProps, PillsInputFieldStylesNames, PillsInputProps };
+export { PillsInput, type PillsInputFactory, PillsInputField, type PillsInputFieldFactory, type PillsInputFieldProps, type PillsInputFieldStylesNames, type PillsInputProps };

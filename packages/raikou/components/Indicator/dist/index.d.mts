@@ -48,4 +48,4 @@ declare const Indicator: _raikou_core.RaikouComponent<{
     vars: IndicatorCssVariables;
 }>;
 
-export { Indicator, IndicatorCssVariables, IndicatorFactory, IndicatorPositionVariables, IndicatorProps, IndicatorStylesNames };
+export { Indicator, type IndicatorCssVariables, type IndicatorFactory, type IndicatorPositionVariables, type IndicatorProps, type IndicatorStylesNames };

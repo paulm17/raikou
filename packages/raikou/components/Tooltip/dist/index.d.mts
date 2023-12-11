@@ -165,4 +165,4 @@ declare const Tooltip: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { Tooltip, TooltipCssVariables, TooltipFactory, TooltipFloating, TooltipFloatingProps, TooltipGroup, TooltipGroupProps, TooltipProps, TooltipStylesNames, TooltipVariant };
+export { Tooltip, type TooltipCssVariables, type TooltipFactory, TooltipFloating, type TooltipFloatingProps, TooltipGroup, type TooltipGroupProps, type TooltipProps, type TooltipStylesNames, type TooltipVariant };

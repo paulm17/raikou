@@ -17,6 +17,7 @@ import {
   PolymorphicFactory,
 } from "@raikou/core";
 import { FLEX_STYLE_PROPS_DATA } from "./flex-props";
+import classes from "./Flex.module.css";
 
 export type FlexStylesNames = "root";
 
@@ -76,9 +77,7 @@ export const Flex = polymorphicFactory<FlexFactory>((_props, ref) => {
 
   const getStyles = useStyles<FlexFactory>({
     name: "Flex",
-    classes: {
-      root: "flex-root",
-    },
+    classes,
     props,
     className,
     style,
@@ -119,3 +118,4 @@ export const Flex = polymorphicFactory<FlexFactory>((_props, ref) => {
 });
 
 Flex.displayName = "@raikou/core/Flex";
+Flex.classes = classes;

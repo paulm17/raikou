@@ -63,12 +63,18 @@ module.exports = __toCommonJS(src_exports);
 // src/VisuallyHidden.tsx
 var import_react = __toESM(require("react"));
 var import_clsx = __toESM(require("clsx"));
+
+// css-module:./VisuallyHidden.module.css#css-module
+var VisuallyHidden_module_default = { "root": "m-515a97f8" };
+
+// src/VisuallyHidden.tsx
 function VisuallyHidden(_a) {
   var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ import_react.default.createElement("span", __spreadValues({ className: (0, import_clsx.default)("visuallyHidden-root", className) }, others));
+  return /* @__PURE__ */ import_react.default.createElement("span", __spreadValues({ className: (0, import_clsx.default)(VisuallyHidden_module_default.root, className) }, others));
 }
 VisuallyHidden.displayName = "@raikou/core/VisuallyHidden";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   VisuallyHidden
 });
+//# sourceMappingURL=index.js.map

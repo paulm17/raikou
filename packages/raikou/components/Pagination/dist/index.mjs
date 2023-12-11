@@ -51,6 +51,9 @@ function filterFalsyChildren(children) {
   return Children.toArray(children).filter(Boolean);
 }
 
+// css-module:./Group.module.css#css-module
+var Group_module_default = { "root": "m-4081bf90" };
+
 // ../Group/src/Group.tsx
 var defaultProps = {
   preventGrowOverflow: true,
@@ -116,7 +119,7 @@ var Group = factory((_props, ref) => {
     stylesCtx,
     className,
     style,
-    classes: { root: "group-root" },
+    classes: Group_module_default,
     classNames,
     styles,
     unstyled,
@@ -135,6 +138,7 @@ var Group = factory((_props, ref) => {
   );
 });
 Group.displayName = "@raikou/core/Group";
+Group.classes = Group_module_default;
 
 // src/PaginationRoot/PaginationRoot.tsx
 import React4 from "react";
@@ -180,6 +184,9 @@ import { useEffect, useLayoutEffect } from "react";
 var [PaginationProvider, usePaginationContext] = createSafeContext(
   "Pagination.Root component was not found in tree"
 );
+
+// css-module:../Pagination.module.css#css-module
+var Pagination_module_default = { "root": "m-4addd315", "control": "m-326d024a", "dots": "m-4ad7767d" };
 
 // src/PaginationRoot/PaginationRoot.tsx
 var defaultProps2 = {
@@ -244,11 +251,7 @@ var PaginationRoot = factory2((_props, ref) => {
   ]);
   const getStyles = useStyles2({
     name: "Pagination",
-    classes: {
-      root: "pagination-root",
-      control: "pagination-control",
-      dots: "pagination-dots"
-    },
+    classes: Pagination_module_default,
     props,
     className,
     style,
@@ -292,6 +295,7 @@ var PaginationRoot = factory2((_props, ref) => {
     /* @__PURE__ */ React4.createElement(Box2, __spreadValues(__spreadValues({ ref }, getStyles("root")), others))
   );
 });
+PaginationRoot.classes = Pagination_module_default;
 PaginationRoot.displayName = "@raikou/core/PaginationRoot";
 
 // src/PaginationControl/PaginationControl.tsx
@@ -309,6 +313,11 @@ import {
   useStyles as useStyles3,
   polymorphicFactory
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps3 = {
   __staticSelector: "UnstyledButton"
 };
@@ -335,9 +344,7 @@ var UnstyledButton = polymorphicFactory(
     const getStyles = useStyles3({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -355,6 +362,7 @@ var UnstyledButton = polymorphicFactory(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // src/PaginationControl/PaginationControl.tsx
 var defaultProps4 = {
@@ -636,3 +644,4 @@ export {
   PaginationPrevious,
   PaginationRoot
 };
+//# sourceMappingURL=index.mjs.map

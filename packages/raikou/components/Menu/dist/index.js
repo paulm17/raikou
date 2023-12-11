@@ -2789,6 +2789,9 @@ var PopoverDropdown = (0, import_core10.factory)(
 );
 PopoverDropdown.displayName = "@raikou/core/PopoverDropdown";
 
+// css-module:./Popover.module.css#css-module
+var Popover_module_default = { "dropdown": "m-38a85659", "arrow": "m-a31dc6c1" };
+
 // ../Popover/src/Popover.tsx
 var defaultProps4 = {
   position: "bottom",
@@ -2904,10 +2907,7 @@ function Popover(_props) {
   const getStyles = (0, import_core11.useStyles)({
     name: __staticSelector,
     props,
-    classes: {
-      dropdown: "popover-dropdown",
-      arrow: "popover-arrow"
-    },
+    classes: Popover_module_default,
     classNames,
     styles,
     unstyled,
@@ -3014,6 +3014,9 @@ var import_core12 = require("@raikou/core");
 // src/Menu.context.ts
 var [MenuContextProvider, useMenuContext] = createSafeContext("Menu component was not found in the tree");
 
+// css-module:../Menu.module.css#css-module
+var Menu_module_default = { "dropdown": "m-dc9b7c9f", "label": "m-9bfac126", "divider": "m-efdf90cb", "item": "m-99ac2aa1", "itemLabel": "m-5476e0d3", "itemSection": "m-8b75e504" };
+
 // src/MenuDivider/MenuDivider.tsx
 var defaultProps5 = {};
 var MenuDivider = (0, import_core12.factory)((props, ref) => {
@@ -3030,6 +3033,7 @@ var MenuDivider = (0, import_core12.factory)((props, ref) => {
     }, ctx.getStyles("divider", { className, style, styles, classNames })), others)
   );
 });
+MenuDivider.classes = Menu_module_default;
 MenuDivider.displayName = "@raikou/core/MenuDivider";
 
 // src/MenuDropdown/MenuDropdown.tsx
@@ -3098,6 +3102,7 @@ var MenuDropdown = (0, import_core13.factory)((props, ref) => {
     )
   );
 });
+MenuDropdown.classes = Menu_module_default;
 MenuDropdown.displayName = "@raikou/core/MenuDropdown";
 
 // src/MenuItem/MenuItem.tsx
@@ -3108,6 +3113,11 @@ var import_core15 = require("@raikou/core");
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react22 = __toESM(require("react"));
 var import_core14 = require("@raikou/core");
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps7 = {
   __staticSelector: "UnstyledButton"
 };
@@ -3134,9 +3144,7 @@ var UnstyledButton = (0, import_core14.polymorphicFactory)(
     const getStyles = (0, import_core14.useStyles)({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -3154,6 +3162,7 @@ var UnstyledButton = (0, import_core14.polymorphicFactory)(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // src/MenuItem/MenuItem.tsx
 var defaultProps8 = {};
@@ -3255,6 +3264,7 @@ var MenuItem = (0, import_core15.polymorphicFactory)((props, ref) => {
     )
   );
 });
+MenuItem.classes = Menu_module_default;
 MenuItem.displayName = "@raikou/core/MenuItem";
 
 // src/MenuLabel/MenuLabel.tsx
@@ -3275,6 +3285,7 @@ var MenuLabel = (0, import_core16.factory)((props, ref) => {
     }, ctx.getStyles("label", { className, style, styles, classNames })), others)
   );
 });
+MenuLabel.classes = Menu_module_default;
 MenuLabel.displayName = "@raikou/core/MenuLabel";
 
 // src/MenuTarget/MenuTarget.tsx
@@ -3317,6 +3328,9 @@ var MenuTarget = (0, import_react25.forwardRef)(
   }
 );
 MenuTarget.displayName = "@raikou/core/MenuTarget";
+
+// css-module:./Menu.module.css#css-module
+var Menu_module_default2 = { "dropdown": "m-dc9b7c9f", "label": "m-9bfac126", "divider": "m-efdf90cb", "item": "m-99ac2aa1", "itemLabel": "m-5476e0d3", "itemSection": "m-8b75e504" };
 
 // src/Menu.tsx
 var defaultProps11 = {
@@ -3367,14 +3381,7 @@ function Menu(_props) {
   ]);
   const getStyles = (0, import_core18.useStyles)({
     name: "Menu",
-    classes: {
-      dropdown: "menu-dropdown",
-      item: "menu-item",
-      itemLabel: "menu-itemLabel",
-      itemSection: "menu-itemSection",
-      label: "menu-label",
-      divider: "menu-divider"
-    },
+    classes: Menu_module_default2,
     props,
     classNames,
     styles,
@@ -3463,3 +3470,4 @@ Menu.Divider = MenuDivider;
   MenuLabel,
   MenuTarget
 });
+//# sourceMappingURL=index.js.map

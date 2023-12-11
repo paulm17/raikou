@@ -54,6 +54,9 @@ function getMarkColor({
   return `var(${parsed.variable})`;
 }
 
+// css-module:./Mark.module.css#css-module
+var Mark_module_default = { "root": "m-bcb3f3c2" };
+
 // src/Mark.tsx
 var defaultProps = {
   color: "yellow"
@@ -90,9 +93,7 @@ var Mark = factory((_props, ref) => {
     props,
     className,
     style,
-    classes: {
-      root: "mark-root"
-    },
+    classes: Mark_module_default,
     classNames,
     styles,
     unstyled,
@@ -108,7 +109,9 @@ var Mark = factory((_props, ref) => {
     }, getStyles("root")), others)
   );
 });
+Mark.classes = Mark_module_default;
 Mark.displayName = "@raikou/core/Mark";
 export {
   Mark
 };
+//# sourceMappingURL=index.mjs.map

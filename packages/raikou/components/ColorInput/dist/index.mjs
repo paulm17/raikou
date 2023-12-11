@@ -672,6 +672,11 @@ import {
   useStyles,
   createVarsResolver
 } from "@raikou/core";
+
+// css-module:./ColorSwatch.module.css#css-module
+var ColorSwatch_module_default = { "root": "m-de3d2490", "colorOverlay": "m-862f3d1b", "shadowOverlay": "m-98ae7f22", "alphaOverlay": "m-95709ac0", "childrenOverlay": "m-93e74e3" };
+
+// ../ColorSwatch/src/ColorSwatch.tsx
 var defaultProps3 = {
   withShadow: true
 };
@@ -716,13 +721,7 @@ var ColorSwatch = polymorphicFactory(
     const getStyles = useStyles({
       name: "ColorSwatch",
       props,
-      classes: {
-        root: "colorswatch-root",
-        alphaOverlay: "colorswatch-alphaOverlay",
-        shadowOverlay: "colorswatch-shadowOverlay",
-        colorOverlay: "colorswatch-colorOverlay",
-        childrenOverlay: "colorswatch-childrenOverlay"
-      },
+      classes: ColorSwatch_module_default,
       className,
       style,
       classNames,
@@ -749,6 +748,7 @@ var ColorSwatch = polymorphicFactory(
   }
 );
 ColorSwatch.displayName = "@raikou/core/ColorSwatch";
+ColorSwatch.classes = ColorSwatch_module_default;
 
 // ../ColorPicker/src/Swatches/Swatches.tsx
 var Swatches = forwardRef5(
@@ -794,6 +794,9 @@ var Swatches = forwardRef5(
   }
 );
 Swatches.displayName = "@raikou/core/Swatches";
+
+// css-module:./ColorPicker.module.css#css-module
+var ColorPicker_module_default = { "wrapper": "m-fee9c77", "preview": "m-9dddfbac", "body": "m-bffecc3e", "sliders": "m-3283bb96", "thumb": "m-40d572ba", "swatch": "m-d8ee6fd8", "swatches": "m-5711e686", "saturation": "m-202a296e", "saturationOverlay": "m-11b3db02", "slider": "m-d856d47d", "sliderOverlay": "m-8f327113" };
 
 // ../ColorPicker/src/ColorPicker.tsx
 var defaultProps4 = {
@@ -866,19 +869,7 @@ var ColorPicker = factory((_props, ref) => {
   const getStyles = useStyles2({
     name: __staticSelector,
     props,
-    classes: {
-      wrapper: "colorPicker-wrapper",
-      preview: "colorPicker-preview",
-      body: "colorPicker-body",
-      sliders: "colorPicker-sliders",
-      slider: "colorPicker-slider",
-      sliderOverlay: "colorPicker-sliderOverlay",
-      thumb: "colorPicker-thumb",
-      saturation: "colorPicker-saturation",
-      saturationOverlay: "colorPicker-saturationOverlay",
-      swatches: "colorPicker-swatches",
-      swatch: "colorPicker-swatch"
-    },
+    classes: ColorPicker_module_default,
     className,
     style,
     classNames,
@@ -1011,6 +1002,7 @@ var ColorPicker = factory((_props, ref) => {
   ));
 });
 ColorPicker.displayName = "@raikou/core/ColorPicker";
+ColorPicker.classes = ColorPicker_module_default;
 
 // ../Input/src/Input.tsx
 import React16 from "react";
@@ -1047,6 +1039,11 @@ import {
   getFontSize,
   createVarsResolver as createVarsResolver3
 } from "@raikou/core";
+
+// css-module:../Input.module.css#css-module
+var Input_module_default = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
+
+// ../Input/src/InputLabel/InputLabel.tsx
 var defaultProps5 = {
   labelElement: "label"
 };
@@ -1092,10 +1089,11 @@ var InputLabel = factory2((_props, ref) => {
   const _getStyles = useStyles3({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      label: "inputWrapper-label",
-      required: "inputWrapper-required"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    // },
     className,
     style,
     classNames,
@@ -1174,9 +1172,10 @@ var InputError = factory3((_props, ref) => {
   const _getStyles = useStyles4({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      error: "inputWrapper-error"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   error: "inputWrapper-error",
+    // },
     className,
     style,
     classNames,
@@ -1249,9 +1248,10 @@ var InputDescription = factory4(
     const _getStyles = useStyles5({
       name: ["InputWrapper", __staticSelector],
       props,
-      classes: {
-        description: "inputWrapper-description"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   description: "inputWrapper-description",
+      // },
       className,
       style,
       classNames,
@@ -1309,9 +1309,10 @@ var InputPlaceholder = factory5(
     const getStyles = useStyles6({
       name: ["InputPlaceholder", __staticSelector],
       props,
-      classes: {
-        placeholder: "input-placeholder"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   placeholder: "input-placeholder",
+      // },
       className,
       style,
       classNames,
@@ -1426,13 +1427,14 @@ var InputWrapper = factory6((_props, ref) => {
   const getStyles = useStyles7({
     name: ["InputWrapper", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      root: "inputWrapper-root",
-      label: "inputWrapper-label",
-      required: "inputWrapper-required",
-      error: "inputWrapper-error",
-      description: "inputWrapper-description"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   root: "inputWrapper-root",
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    //   error: "inputWrapper-error",
+    //   description: "inputWrapper-description",
+    // },
     className,
     style,
     classNames,
@@ -1523,6 +1525,9 @@ var InputWrapper = factory6((_props, ref) => {
   );
 });
 InputWrapper.displayName = "@raikou/core/InputWrapper";
+
+// css-module:./Input.module.css#css-module
+var Input_module_default2 = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
 
 // ../Input/src/Input.tsx
 var defaultProps10 = {
@@ -1616,11 +1621,12 @@ var Input = polymorphicFactory2((_props, ref) => {
   const getStyles = useStyles8({
     name: ["Input", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      wrapper: "input-wrapper",
-      input: "input-input",
-      section: "input-section"
-    },
+    classes: Input_module_default2,
+    // classes: {
+    //   wrapper: "input-wrapper",
+    //   input: "input-input",
+    //   section: "input-section",
+    // },
     className,
     style,
     classNames,
@@ -4414,6 +4420,9 @@ var PopoverDropdown = factory8(
 );
 PopoverDropdown.displayName = "@raikou/core/PopoverDropdown";
 
+// css-module:./Popover.module.css#css-module
+var Popover_module_default = { "dropdown": "m-38a85659", "arrow": "m-a31dc6c1" };
+
 // ../Popover/src/Popover.tsx
 var defaultProps14 = {
   position: "bottom",
@@ -4529,10 +4538,7 @@ function Popover(_props) {
   const getStyles = useStyles9({
     name: __staticSelector,
     props,
-    classes: {
-      dropdown: "popover-dropdown",
-      arrow: "popover-arrow"
-    },
+    classes: Popover_module_default,
     classNames,
     styles,
     unstyled,
@@ -4676,6 +4682,11 @@ import {
   useStyles as useStyles10,
   polymorphicFactory as polymorphicFactory3
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps15 = {
   __staticSelector: "UnstyledButton"
 };
@@ -4702,9 +4713,7 @@ var UnstyledButton = polymorphicFactory3(
     const getStyles = useStyles10({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -4722,6 +4731,7 @@ var UnstyledButton = polymorphicFactory3(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // ../Loader/src/Loader.tsx
 import React33 from "react";
@@ -4738,6 +4748,11 @@ import {
 // ../Loader/src/loaders/Bars.tsx
 import React29, { forwardRef as forwardRef9 } from "react";
 import { Box as Box15 } from "@raikou/core";
+
+// css-module:../Loader.module.css#css-module
+var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
+
+// ../Loader/src/loaders/Bars.tsx
 var Bars = forwardRef9(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
@@ -4745,13 +4760,13 @@ var Bars = forwardRef9(
       Box15,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-barsLoader", className)
+        className: clsx_default(Loader_module_default.barsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React29.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ React29.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ React29.createElement("span", { className: "loader-bar" })
+      /* @__PURE__ */ React29.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React29.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React29.createElement("span", { className: Loader_module_default.bar })
     );
   }
 );
@@ -4766,7 +4781,7 @@ var Oval = forwardRef10(
       Box16,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-ovalLoader", className)
+        className: clsx_default(Loader_module_default.ovalLoader, className)
       }, others), {
         ref
       })
@@ -4784,7 +4799,7 @@ var Progress = forwardRef11(
       Box17,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-progressLoader", className)
+        className: clsx_default(Loader_module_default.progressLoader, className)
       }, others), {
         ref
       }),
@@ -4813,16 +4828,19 @@ var Dots = forwardRef12(
       Box18,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-dotsLoader", className)
+        className: clsx_default(Loader_module_default.dotsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React32.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ React32.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ React32.createElement("span", { className: "loader-dot" })
+      /* @__PURE__ */ React32.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React32.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React32.createElement("span", { className: Loader_module_default.dot })
     );
   }
 );
+
+// css-module:./Loader.module.css#css-module
+var Loader_module_default2 = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
 
 // ../Loader/src/Loader.tsx
 var defaultLoaders = {
@@ -4873,9 +4891,7 @@ var Loader = factory9((_props, ref) => {
   const getStyles = useStyles11({
     name: "Loader",
     props,
-    classes: {
-      root: "loader-root"
-    },
+    classes: Loader_module_default2,
     className,
     style,
     classNames,
@@ -4895,6 +4911,7 @@ var Loader = factory9((_props, ref) => {
   );
 });
 Loader.displayName = "@raikou/core/Loader";
+Loader.classes = Loader_module_default2;
 
 // ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
 import React34 from "react";
@@ -4906,6 +4923,11 @@ import {
   rem as rem12,
   createVarsResolver as createVarsResolver10
 } from "@raikou/core";
+
+// css-module:../ActionIcon.module.css#css-module
+var ActionIcon_module_default = { "root": "m-8d3f4000", "loader": "m-302b9fb1", "group": "m-1a0f1b21" };
+
+// ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
 var defaultProps17 = {
   orientation: "horizontal"
 };
@@ -4941,9 +4963,7 @@ var ActionIconGroup = factory10(
     const getStyles = useStyles12({
       name: "ActionIconGroup",
       props,
-      classes: {
-        group: "actionIconGroup-root"
-      },
+      classes: ActionIcon_module_default,
       className,
       style,
       classNames,
@@ -4964,7 +4984,11 @@ var ActionIconGroup = factory10(
     );
   }
 );
+ActionIconGroup.classes = ActionIcon_module_default;
 ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
+
+// css-module:./ActionIcon.module.css#css-module
+var ActionIcon_module_default2 = { "root": "m-8d3f4000", "loader": "m-302b9fb1", "group": "m-1a0f1b21" };
 
 // ../ActionIcon/src/ActionIcon.tsx
 var defaultProps18 = {};
@@ -5033,10 +5057,7 @@ var ActionIcon = polymorphicFactory4(
       props,
       className,
       style,
-      classes: {
-        root: "actionIcon-root",
-        loader: "actionIcon-loader"
-      },
+      classes: ActionIcon_module_default2,
       classNames,
       styles,
       unstyled,
@@ -5067,6 +5088,10 @@ var ActionIcon = polymorphicFactory4(
 );
 ActionIcon.displayName = "@raikou/core/ActionIcon";
 ActionIcon.Group = ActionIconGroup;
+ActionIcon.classes = ActionIcon_module_default2;
+
+// css-module:./ColorInput.module.css#css-module
+var ColorInput_module_default = { "eyeDropperIcon": "m-b077c2bc", "colorPreview": "m-c5ccdcab" };
 
 // src/ColorInput.tsx
 var defaultProps19 = {
@@ -5150,12 +5175,7 @@ var ColorInput = factory11((_props, ref) => {
   const getStyles = useStyles14({
     name: "ColorInput",
     props,
-    classes: {
-      dropdown: "popover-dropdown",
-      eyeDropperButton: "colorInput-eyeDropperButton",
-      eyeDropperIcon: "colorInput-eyeDropperIcon",
-      colorPreview: "colorInput-colorPreview"
-    },
+    classes: ColorInput_module_default,
     classNames,
     styles,
     unstyled,
@@ -5306,6 +5326,8 @@ var ColorInput = factory11((_props, ref) => {
   );
 });
 ColorInput.displayName = "@raikou/core/ColorInput";
+ColorInput.classes = ColorInput_module_default;
 export {
   ColorInput
 };
+//# sourceMappingURL=index.mjs.map

@@ -870,6 +870,9 @@ var ScrollAreaThumb = import_react16.default.forwardRef((props, forwardedRef) =>
   return null;
 });
 
+// css-module:./ScrollArea.module.css#css-module
+var ScrollArea_module_default = { "root": "m-d57069b5", "viewport": "m-c0783ff9", "viewportInner": "m-f8f631dd", "scrollbar": "m-c44ba933", "thumb": "m-d8b5e363", "corner": "m-21657268" };
+
 // src/ScrollArea.tsx
 var defaultProps2 = {
   scrollHideDelay: 1e3,
@@ -919,14 +922,7 @@ var ScrollArea = (0, import_core4.factory)((_props, ref) => {
   const getStyles = (0, import_core4.useStyles)({
     name: "ScrollArea",
     props,
-    classes: {
-      root: "scrollArea-root",
-      viewport: "scrollArea-viewport",
-      viewportInner: "scrollArea-viewportInner",
-      scrollbar: "scrollArea-scrollbar",
-      thumb: "scrollArea-thumb",
-      corner: "scrollArea-corner"
-    },
+    classes: ScrollArea_module_default,
     className,
     style,
     classNames,
@@ -1040,6 +1036,7 @@ var ScrollAreaAutosize = (0, import_core4.factory)((props, ref) => {
     children
   )));
 });
+ScrollArea.classes = ScrollArea_module_default;
 ScrollAreaAutosize.displayName = "@raikou/core/ScrollAreaAutosize";
 ScrollArea.Autosize = ScrollAreaAutosize;
 // Annotate the CommonJS export names for ESM import in node:
@@ -1047,3 +1044,4 @@ ScrollArea.Autosize = ScrollAreaAutosize;
   ScrollArea,
   ScrollAreaAutosize
 });
+//# sourceMappingURL=index.js.map

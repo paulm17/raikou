@@ -30,3 +30,4 @@ function Hello() {
 0 && (module.exports = {
   Hello
 });
+//# sourceMappingURL=index.js.map

@@ -3669,4 +3669,4 @@ type FileInputComponent = <Multiple extends boolean = false>(props: FileInputPro
 }) => JSX.Element;
 declare const FileInput: FileInputComponent;
 
-export { FileInput, FileInputFactory, FileInputProps };
+export { FileInput, type FileInputFactory, type FileInputProps };

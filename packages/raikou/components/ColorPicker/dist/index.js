@@ -645,6 +645,11 @@ var import_core7 = require("@raikou/core");
 // ../ColorSwatch/src/ColorSwatch.tsx
 var import_react10 = __toESM(require("react"));
 var import_core6 = require("@raikou/core");
+
+// css-module:./ColorSwatch.module.css#css-module
+var ColorSwatch_module_default = { "root": "m-de3d2490", "colorOverlay": "m-862f3d1b", "shadowOverlay": "m-98ae7f22", "alphaOverlay": "m-95709ac0", "childrenOverlay": "m-93e74e3" };
+
+// ../ColorSwatch/src/ColorSwatch.tsx
 var defaultProps3 = {
   withShadow: true
 };
@@ -689,13 +694,7 @@ var ColorSwatch = (0, import_core6.polymorphicFactory)(
     const getStyles = (0, import_core6.useStyles)({
       name: "ColorSwatch",
       props,
-      classes: {
-        root: "colorswatch-root",
-        alphaOverlay: "colorswatch-alphaOverlay",
-        shadowOverlay: "colorswatch-shadowOverlay",
-        colorOverlay: "colorswatch-colorOverlay",
-        childrenOverlay: "colorswatch-childrenOverlay"
-      },
+      classes: ColorSwatch_module_default,
       className,
       style,
       classNames,
@@ -722,6 +721,7 @@ var ColorSwatch = (0, import_core6.polymorphicFactory)(
   }
 );
 ColorSwatch.displayName = "@raikou/core/ColorSwatch";
+ColorSwatch.classes = ColorSwatch_module_default;
 
 // src/Swatches/Swatches.tsx
 var Swatches = (0, import_react11.forwardRef)(
@@ -767,6 +767,9 @@ var Swatches = (0, import_react11.forwardRef)(
   }
 );
 Swatches.displayName = "@raikou/core/Swatches";
+
+// css-module:./ColorPicker.module.css#css-module
+var ColorPicker_module_default = { "wrapper": "m-fee9c77", "preview": "m-9dddfbac", "body": "m-bffecc3e", "sliders": "m-3283bb96", "thumb": "m-40d572ba", "swatch": "m-d8ee6fd8", "swatches": "m-5711e686", "saturation": "m-202a296e", "saturationOverlay": "m-11b3db02", "slider": "m-d856d47d", "sliderOverlay": "m-8f327113" };
 
 // src/ColorPicker.tsx
 var defaultProps4 = {
@@ -839,19 +842,7 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
   const getStyles = (0, import_core8.useStyles)({
     name: __staticSelector,
     props,
-    classes: {
-      wrapper: "colorPicker-wrapper",
-      preview: "colorPicker-preview",
-      body: "colorPicker-body",
-      sliders: "colorPicker-sliders",
-      slider: "colorPicker-slider",
-      sliderOverlay: "colorPicker-sliderOverlay",
-      thumb: "colorPicker-thumb",
-      saturation: "colorPicker-saturation",
-      saturationOverlay: "colorPicker-saturationOverlay",
-      swatches: "colorPicker-swatches",
-      swatch: "colorPicker-swatch"
-    },
+    classes: ColorPicker_module_default,
     className,
     style,
     classNames,
@@ -984,6 +975,7 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
   ));
 });
 ColorPicker.displayName = "@raikou/core/ColorPicker";
+ColorPicker.classes = ColorPicker_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   ColorPicker,
@@ -991,3 +983,4 @@ ColorPicker.displayName = "@raikou/core/ColorPicker";
   isColorValid,
   parseColor
 });
+//# sourceMappingURL=index.js.map

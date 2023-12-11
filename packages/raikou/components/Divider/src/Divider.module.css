@@ -14,11 +14,11 @@
   --divider-size: var(--divider-size-xs);
 
   @mixin light {
-    --_divider-color: var(--raikou-color-gray-4);
+    --_divider-color: var(--raikou-divider-color);
   }
 
   @mixin dark {
-    --_divider-color: var(--raikou-color-dark-4);
+    --_divider-color: var(--raikou-divider-color);
   }
 
   &[data-orientation="horizontal"] {

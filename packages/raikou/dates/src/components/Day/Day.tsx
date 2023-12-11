@@ -15,6 +15,7 @@ import {
 import { UnstyledButton } from "../../../../components/UnstyledButton/src";
 import { shiftTimezone } from "../../utils";
 import { useDatesContext } from "../DatesProvider";
+import classes from "./Day.module.css";
 
 export type DayStylesNames = "day";
 export type DayCssVariables = {
@@ -102,9 +103,7 @@ export const Day = factory<DayFactory>((_props, ref) => {
 
   const getStyles = useStyles<DayFactory>({
     name: __staticSelector || "Day",
-    classes: {
-      day: "dates-day",
-    },
+    classes,
     props,
     className,
     style,
@@ -148,3 +147,4 @@ export const Day = factory<DayFactory>((_props, ref) => {
 });
 
 Day.displayName = "@raikou/dates/Day";
+Day.classes = classes;

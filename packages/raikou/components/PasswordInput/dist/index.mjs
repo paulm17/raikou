@@ -97,6 +97,11 @@ import {
   getFontSize,
   createVarsResolver
 } from "@raikou/core";
+
+// css-module:../Input.module.css#css-module
+var Input_module_default = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
+
+// ../Input/src/InputLabel/InputLabel.tsx
 var defaultProps = {
   labelElement: "label"
 };
@@ -142,10 +147,11 @@ var InputLabel = factory((_props, ref) => {
   const _getStyles = useStyles({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      label: "inputWrapper-label",
-      required: "inputWrapper-required"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    // },
     className,
     style,
     classNames,
@@ -224,9 +230,10 @@ var InputError = factory2((_props, ref) => {
   const _getStyles = useStyles2({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      error: "inputWrapper-error"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   error: "inputWrapper-error",
+    // },
     className,
     style,
     classNames,
@@ -299,9 +306,10 @@ var InputDescription = factory3(
     const _getStyles = useStyles3({
       name: ["InputWrapper", __staticSelector],
       props,
-      classes: {
-        description: "inputWrapper-description"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   description: "inputWrapper-description",
+      // },
       className,
       style,
       classNames,
@@ -359,9 +367,10 @@ var InputPlaceholder = factory4(
     const getStyles = useStyles4({
       name: ["InputPlaceholder", __staticSelector],
       props,
-      classes: {
-        placeholder: "input-placeholder"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   placeholder: "input-placeholder",
+      // },
       className,
       style,
       classNames,
@@ -476,13 +485,14 @@ var InputWrapper = factory5((_props, ref) => {
   const getStyles = useStyles5({
     name: ["InputWrapper", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      root: "inputWrapper-root",
-      label: "inputWrapper-label",
-      required: "inputWrapper-required",
-      error: "inputWrapper-error",
-      description: "inputWrapper-description"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   root: "inputWrapper-root",
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    //   error: "inputWrapper-error",
+    //   description: "inputWrapper-description",
+    // },
     className,
     style,
     classNames,
@@ -573,6 +583,9 @@ var InputWrapper = factory5((_props, ref) => {
   );
 });
 InputWrapper.displayName = "@raikou/core/InputWrapper";
+
+// css-module:./Input.module.css#css-module
+var Input_module_default2 = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
 
 // ../Input/src/Input.tsx
 var defaultProps6 = {
@@ -666,11 +679,12 @@ var Input = polymorphicFactory((_props, ref) => {
   const getStyles = useStyles6({
     name: ["Input", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      wrapper: "input-wrapper",
-      input: "input-input",
-      section: "input-section"
-    },
+    classes: Input_module_default2,
+    // classes: {
+    //   wrapper: "input-wrapper",
+    //   input: "input-input",
+    //   section: "input-section",
+    // },
     className,
     style,
     classNames,
@@ -761,6 +775,11 @@ import {
   useStyles as useStyles7,
   polymorphicFactory as polymorphicFactory2
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps7 = {
   __staticSelector: "UnstyledButton"
 };
@@ -787,9 +806,7 @@ var UnstyledButton = polymorphicFactory2(
     const getStyles = useStyles7({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -807,6 +824,7 @@ var UnstyledButton = polymorphicFactory2(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // ../Loader/src/Loader.tsx
 import React14 from "react";
@@ -824,6 +842,11 @@ import {
 import React10, { forwardRef } from "react";
 import cx from "clsx";
 import { Box as Box8 } from "@raikou/core";
+
+// css-module:../Loader.module.css#css-module
+var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
+
+// ../Loader/src/loaders/Bars.tsx
 var Bars = forwardRef(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
@@ -831,13 +854,13 @@ var Bars = forwardRef(
       Box8,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx("loader-barsLoader", className)
+        className: cx(Loader_module_default.barsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React10.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ React10.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ React10.createElement("span", { className: "loader-bar" })
+      /* @__PURE__ */ React10.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React10.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React10.createElement("span", { className: Loader_module_default.bar })
     );
   }
 );
@@ -853,7 +876,7 @@ var Oval = forwardRef2(
       Box9,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx2("loader-ovalLoader", className)
+        className: cx2(Loader_module_default.ovalLoader, className)
       }, others), {
         ref
       })
@@ -872,7 +895,7 @@ var Progress = forwardRef3(
       Box10,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx3("loader-progressLoader", className)
+        className: cx3(Loader_module_default.progressLoader, className)
       }, others), {
         ref
       }),
@@ -902,16 +925,19 @@ var Dots = forwardRef4(
       Box11,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx4("loader-dotsLoader", className)
+        className: cx4(Loader_module_default.dotsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React13.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ React13.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ React13.createElement("span", { className: "loader-dot" })
+      /* @__PURE__ */ React13.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React13.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React13.createElement("span", { className: Loader_module_default.dot })
     );
   }
 );
+
+// css-module:./Loader.module.css#css-module
+var Loader_module_default2 = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
 
 // ../Loader/src/Loader.tsx
 var defaultLoaders = {
@@ -962,9 +988,7 @@ var Loader = factory6((_props, ref) => {
   const getStyles = useStyles8({
     name: "Loader",
     props,
-    classes: {
-      root: "loader-root"
-    },
+    classes: Loader_module_default2,
     className,
     style,
     classNames,
@@ -984,6 +1008,7 @@ var Loader = factory6((_props, ref) => {
   );
 });
 Loader.displayName = "@raikou/core/Loader";
+Loader.classes = Loader_module_default2;
 
 // ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
 import React15 from "react";
@@ -995,6 +1020,11 @@ import {
   rem as rem5,
   createVarsResolver as createVarsResolver7
 } from "@raikou/core";
+
+// css-module:../ActionIcon.module.css#css-module
+var ActionIcon_module_default = { "root": "m-8d3f4000", "loader": "m-302b9fb1", "group": "m-1a0f1b21" };
+
+// ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
 var defaultProps9 = {
   orientation: "horizontal"
 };
@@ -1030,9 +1060,7 @@ var ActionIconGroup = factory7(
     const getStyles = useStyles9({
       name: "ActionIconGroup",
       props,
-      classes: {
-        group: "actionIconGroup-root"
-      },
+      classes: ActionIcon_module_default,
       className,
       style,
       classNames,
@@ -1053,7 +1081,11 @@ var ActionIconGroup = factory7(
     );
   }
 );
+ActionIconGroup.classes = ActionIcon_module_default;
 ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
+
+// css-module:./ActionIcon.module.css#css-module
+var ActionIcon_module_default2 = { "root": "m-8d3f4000", "loader": "m-302b9fb1", "group": "m-1a0f1b21" };
 
 // ../ActionIcon/src/ActionIcon.tsx
 var defaultProps10 = {};
@@ -1122,10 +1154,7 @@ var ActionIcon = polymorphicFactory3(
       props,
       className,
       style,
-      classes: {
-        root: "actionIcon-root",
-        loader: "actionIcon-loader"
-      },
+      classes: ActionIcon_module_default2,
       classNames,
       styles,
       unstyled,
@@ -1156,6 +1185,7 @@ var ActionIcon = polymorphicFactory3(
 );
 ActionIcon.displayName = "@raikou/core/ActionIcon";
 ActionIcon.Group = ActionIconGroup;
+ActionIcon.classes = ActionIcon_module_default2;
 
 // src/PasswordToggleIcon.tsx
 import React17 from "react";
@@ -1179,6 +1209,9 @@ var PasswordToggleIcon = ({
     }
   )
 );
+
+// css-module:./PasswordInput.module.css#css-module
+var PasswordInput_module_default = { "root": "m-f61ca620", "input": "m-ccf8da4c", "innerInput": "m-f2d85dd2", "visibilityToggle": "m-b1072d44" };
 
 // src/PasswordInput.tsx
 var defaultProps11 = {
@@ -1278,11 +1311,7 @@ var PasswordInput = factory8((_props, ref) => {
   const toggleVisibility = () => setVisibility(!_visible);
   const getStyles = useStyles11({
     name: "PasswordInput",
-    classes: {
-      root: "passwordInput-root",
-      innerInput: "passwordInput-innerInput",
-      visibilityToggle: "passwordInput-visibilityToggle"
-    },
+    classes: PasswordInput_module_default,
     props,
     className,
     style,
@@ -1391,7 +1420,9 @@ var PasswordInput = factory8((_props, ref) => {
     )
   );
 });
+PasswordInput.classes = PasswordInput_module_default;
 PasswordInput.displayName = "@raikou/core/PasswordInput";
 export {
   PasswordInput
 };
+//# sourceMappingURL=index.mjs.map

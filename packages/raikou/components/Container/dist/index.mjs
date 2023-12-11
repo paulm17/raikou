@@ -37,6 +37,11 @@ import {
   createVarsResolver,
   getSize
 } from "@raikou/core";
+
+// css-module:./Container.module.css#css-module
+var Container_module_default = { "root": "m-7485cace" };
+
+// src/Container.tsx
 var defaultProps = {};
 var varsResolver = createVarsResolver(
   (_, { size, fluid }) => ({
@@ -66,9 +71,7 @@ var Container = factory((_props, ref) => {
   ]);
   const getStyles = useStyles({
     name: "Container",
-    classes: {
-      root: "container-root"
-    },
+    classes: Container_module_default,
     props,
     className,
     style,
@@ -81,6 +84,8 @@ var Container = factory((_props, ref) => {
   return /* @__PURE__ */ React.createElement(Box, __spreadValues(__spreadValues({ ref, mod: { fluid } }, getStyles("root")), others));
 });
 Container.displayName = "@raikou/core/Container";
+Container.classes = Container_module_default;
 export {
   Container
 };
+//# sourceMappingURL=index.mjs.map

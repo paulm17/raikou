@@ -2,14 +2,9 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "jest.autoRun": "off",
   "explorer.autoReveal": false,
   "git.enabled": false,
-  "tailwindCSS.includeLanguages": {
-    "javascript": "javascript react"
-  },
-  "tailwindCSS.classAttributes": ["className"],
-  "tailwindCSS.experimental.classRegex": [":\\s*?[\"'`]([^\"'`]*).*?"]
 }

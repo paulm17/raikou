@@ -41,6 +41,11 @@ import {
   rem,
   getRadius
 } from "@raikou/core";
+
+// css-module:./Blockquote.module.css#css-module
+var Blockquote_module_default = { "root": "m-ddec01c0", "icon": "m-dde7bd57", "cite": "m-dde51a35" };
+
+// src/Blockquote.tsx
 var defaultProps = {
   iconSize: 48
 };
@@ -94,11 +99,7 @@ var Blockquote = factory((_props, ref) => {
   ]);
   const getStyles = useStyles({
     name: "Blockquote",
-    classes: {
-      root: "blockquote-root",
-      icon: "blockquote-icon",
-      cite: "blockquote-cite"
-    },
+    classes: Blockquote_module_default,
     props,
     className,
     style,
@@ -111,6 +112,8 @@ var Blockquote = factory((_props, ref) => {
   return /* @__PURE__ */ React.createElement(Box, __spreadValues(__spreadValues({ component: "blockquote", ref }, getStyles("root")), others), icon && /* @__PURE__ */ React.createElement("span", __spreadValues({}, getStyles("icon")), icon), children, cite && /* @__PURE__ */ React.createElement("cite", __spreadValues({}, getStyles("cite")), cite));
 });
 Blockquote.displayName = "@raikou/core/Blockquote";
+Blockquote.classes = Blockquote_module_default;
 export {
   Blockquote
 };
+//# sourceMappingURL=index.mjs.map

@@ -1,0 +1,111 @@
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Group/src/Group.module.css/#css-module-data */
+.m-4081bf90 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: var(--group-wrap, wrap);
+  justify-content: var(--group-justify, flex-start);
+  align-items: var(--group-align, center);
+  gap: var(--group-gap, var(--raikou-spacing-md));
+}
+.m-4081bf90[data-grow] > * {
+  flex-grow: 1;
+  max-width: var(--group-child-width);
+}
+
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Pagination/src/Pagination.module.css/#css-module-data */
+[data-raikou-color-scheme=light] .m-4addd315 {
+  --raikou-pagination-control-border-color: #ced4da;
+  --raikou-pagination-control-bg-color: #fff;
+  --raikou-pagination-control-bg-hover: #f8f9fa;
+}
+[data-raikou-color-scheme=dark] .m-4addd315 {
+  --raikou-pagination-control-border-color: #373a40;
+  --raikou-pagination-control-bg-color: #25262b;
+  --raikou-pagination-control-bg-hover: #2c2e33;
+}
+.m-4addd315 {
+  --pagination-control-size-xs: calc(1.375rem * var(--raikou-scale));
+  --pagination-control-size-sm: calc(1.625rem * var(--raikou-scale));
+  --pagination-control-size-md: calc(2rem * var(--raikou-scale));
+  --pagination-control-size-lg: calc(2.375rem * var(--raikou-scale));
+  --pagination-control-size-xl: calc(2.75rem * var(--raikou-scale));
+  --pagination-control-size: var(--pagination-control-size-md);
+  --pagination-control-fz: var(--raikou-font-size-md);
+  --pagination-active-bg: var(--raikou-primary-color-filled);
+}
+.m-326d024a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: calc(0.0625rem * var(--raikou-scale)) solid var(--_control-border-color);
+  cursor: var(--_control-cursor, pointer);
+  color: var(--_control-color, var(--raikou-color-text));
+  height: var(--pagination-control-size);
+  min-width: var(--pagination-control-size);
+  font-size: var(--pagination-control-fz);
+  padding: var(--_control-padding, 0);
+  line-height: 1;
+  background-color: var(--_control-bg-color);
+  border-radius: var(--pagination-control-radius, var(--raikou-radius-default));
+  opacity: var(--_control-opacity, 1);
+}
+.m-326d024a[data-with-padding] {
+  --_control-padding: calc(var(--pagination-control-size) / 4);
+}
+.m-326d024a:disabled,
+.m-326d024a[data-disabled] {
+  --_control-cursor: not-allowed;
+  --_control-opacity: 0.4;
+}
+.m-326d024a[data-active] {
+  --_control-bg-color: var(--pagination-active-bg) !important;
+  --_control-border-color: var(--pagination-active-bg) !important;
+  --_control-color: var(--raikou-color-white);
+}
+[data-raikou-color-scheme=light] .m-326d024a {
+  --_control-border-color: var(--raikou-pagination-control-border-color);
+  --_control-bg-color: var(--raikou-pagination-control-bg-color);
+  --_control-bg-hover: var(--raikou-pagination-control-bg-hover);
+}
+[data-raikou-color-scheme=dark] .m-326d024a {
+  --_control-border-color: var(--raikou-pagination-control-border-color);
+  --_control-bg-color: var(--raikou-pagination-control-bg-color);
+  --_control-bg-hover: var(--raikou-pagination-control-bg-hover);
+}
+@media (hover: hover) {
+  .m-326d024a:hover:not(:disabled, [data-disabled]) {
+    --_control-bg-color: var(--_control-bg-hover);
+  }
+}
+@media (hover: none) {
+  .m-326d024a:active:not(:disabled, [data-disabled]) {
+    --_control-bg-color: var(--_control-bg-hover);
+  }
+}
+[dir=rtl] .m-326d024a > svg {
+  transform: rotate(180deg);
+}
+.m-4ad7767d {
+  height: var(--pagination-control-size);
+  min-width: var(--pagination-control-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/UnstyledButton/src/UnstyledButton.module.css/#css-module-data */
+.m-87cf2631 {
+  background-color: transparent;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  appearance: none;
+  font-size: var(--raikou-font-size-md);
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+/*# sourceMappingURL=index.css.map */

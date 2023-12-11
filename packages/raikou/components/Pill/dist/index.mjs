@@ -90,6 +90,11 @@ import {
   useStyles,
   polymorphicFactory
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps = {
   __staticSelector: "UnstyledButton"
 };
@@ -116,9 +121,7 @@ var UnstyledButton = polymorphicFactory(
     const getStyles = useStyles({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -136,6 +139,10 @@ var UnstyledButton = polymorphicFactory(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
+
+// css-module:./CloseButton.module.css#css-module
+var CloseButton_module_default = { "root": "m-86a44da5", "root--subtle": "m-220c80f2" };
 
 // ../CloseButton/src/CloseButton.tsx
 var defaultProps2 = {
@@ -186,9 +193,7 @@ var CloseButton = polymorphicFactory2(
       props,
       className,
       style,
-      classes: {
-        root: "closeButton-root"
-      },
+      classes: CloseButton_module_default,
       classNames,
       styles,
       unstyled,
@@ -211,6 +216,7 @@ var CloseButton = polymorphicFactory2(
   }
 );
 CloseButton.displayName = "@raikou/core/CloseButton";
+CloseButton.classes = CloseButton_module_default;
 
 // src/PillGroup/PillGroup.tsx
 import React6 from "react";
@@ -247,6 +253,9 @@ var [PillGroupProvider, usePillGroupContext] = createOptionalContext();
 // ../PillsInput/src/PillsInput.context.ts
 var [PillsInputProvider, usePillsInputContext] = createOptionalContext();
 
+// css-module:../Pill.module.css#css-module
+var Pill_module_default = { "root": "m-7cda1cd6", "root--default": "m-44da308b", "root--contrast": "m-e3a01f8", "label": "m-1e0e6180", "remove": "m-ae386778", "group": "m-1dcfd90b" };
+
 // src/PillGroup/PillGroup.tsx
 var defaultProps3 = {};
 var varsResolver2 = createVarsResolver2(
@@ -281,9 +290,7 @@ var PillGroup = factory((_props, ref) => {
   const _size = (pillsInputCtx == null ? void 0 : pillsInputCtx.size) || size || void 0;
   const getStyles = useStyles3({
     name: "PillGroup",
-    classes: {
-      group: "pill-group"
-    },
+    classes: Pill_module_default,
     props,
     className,
     style,
@@ -297,7 +304,11 @@ var PillGroup = factory((_props, ref) => {
   });
   return /* @__PURE__ */ React6.createElement(PillGroupProvider, { value: { size: _size, disabled } }, /* @__PURE__ */ React6.createElement(Box2, __spreadValues(__spreadValues({ ref, size: _size }, getStyles("group")), others)));
 });
+PillGroup.classes = Pill_module_default;
 PillGroup.displayName = "@raikou/core/PillGroup";
+
+// css-module:./Pill.module.css#css-module
+var Pill_module_default2 = { "root": "m-7cda1cd6", "root--default": "m-44da308b", "root--contrast": "m-e3a01f8", "label": "m-1e0e6180", "remove": "m-ae386778", "group": "m-1dcfd90b" };
 
 // src/Pill.tsx
 var defaultProps4 = {
@@ -351,11 +362,7 @@ var Pill = factory2((_props, ref) => {
   const _variant = (pillsInputCtx == null ? void 0 : pillsInputCtx.variant) === "filled" ? "contrast" : variant || "default";
   const getStyles = useStyles4({
     name: "Pill",
-    classes: {
-      root: "pill-root",
-      label: "pill-label",
-      remove: "pill-remove"
-    },
+    classes: Pill_module_default2,
     props,
     className,
     style,
@@ -407,9 +414,11 @@ var Pill = factory2((_props, ref) => {
     )
   );
 });
+Pill.classes = Pill_module_default2;
 Pill.displayName = "@raikou/core/Pill";
 Pill.Group = PillGroup;
 export {
   Pill,
   PillGroup
 };
+//# sourceMappingURL=index.mjs.map

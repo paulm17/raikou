@@ -79,13 +79,16 @@ var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
 
 // src/store.ts
-var import_zustand = require("zustand");
-var useStore = (0, import_zustand.create)(() => ({
+var import_pure_store = __toESM(require("pure-store"));
+var useStore = (0, import_pure_store.default)({
   getStyles: void 0,
   withBorder: void 0,
   zIndex: 1,
   disabled: void 0
-}));
+});
+
+// css-module:../AppShell.module.css#css-module
+var AppShell_module_default = { "root": "m-89ab340", "navbar": "m-45252eee", "aside": "m-9cdde9a", "header": "m-3b16f56b", "main": "m-8983817", "footer": "m-3840c879", "section": "m-6dcfc7c7" };
 
 // src/AppShellNavbar/AppShellNavbar.tsx
 var defaultProps = {};
@@ -128,6 +131,7 @@ var AppShellNavbar = (0, import_core.factory)((_props, ref) => {
   );
 });
 AppShellNavbar.displayName = "@raikou/core/AppShellNavbar";
+AppShellNavbar.classes = AppShell_module_default;
 
 // src/AppShellHeader/AppShellHeader.tsx
 var import_react2 = __toESM(require("react"));
@@ -173,6 +177,7 @@ var AppShellHeader = (0, import_core2.factory)((_props, ref) => {
   );
 });
 AppShellHeader.displayName = "@raikou/core/AppShellHeader";
+AppShellHeader.classes = AppShell_module_default;
 
 // src/AppShellFooter/AppShellFooter.tsx
 var import_react3 = __toESM(require("react"));
@@ -218,6 +223,7 @@ var AppShellFooter = (0, import_core3.factory)((_props, ref) => {
   );
 });
 AppShellFooter.displayName = "@raikou/core/AppShellFooter";
+AppShellFooter.classes = AppShell_module_default;
 
 // src/AppShellAside/AppShellAside.tsx
 var import_react4 = __toESM(require("react"));
@@ -262,6 +268,7 @@ var AppShellAside = (0, import_core4.factory)((_props, ref) => {
   );
 });
 AppShellAside.displayName = "@raikou/core/AppShellAside";
+AppShellAside.classes = AppShell_module_default;
 
 // src/AppShellMain/AppShellMain.tsx
 var import_react5 = __toESM(require("react"));
@@ -280,6 +287,7 @@ var AppShellMain = (0, import_core5.factory)((_props, ref) => {
   );
 });
 AppShellMain.displayName = "@raikou/core/AppShellMain";
+AppShellMain.classes = AppShell_module_default;
 
 // src/AppShellSection/AppShellSection.tsx
 var import_react6 = __toESM(require("react"));
@@ -300,6 +308,7 @@ var AppShellSection = (0, import_core6.polymorphicFactory)(
   }
 );
 AppShellSection.displayName = "@raikou/core/AppShellSection";
+AppShellSection.classes = AppShell_module_default;
 
 // src/AppShellMediaStyles/AppShellMediaStyles.tsx
 var import_react7 = __toESM(require("react"));
@@ -633,6 +642,9 @@ function AppShellMediaStyles({
   return /* @__PURE__ */ import_react7.default.createElement(import_core14.InlineStyles, { media, styles: baseStyles, selector: ":root" });
 }
 
+// css-module:./AppShell.module.css#css-module
+var AppShell_module_default2 = { "root": "m-89ab340", "navbar": "m-45252eee", "aside": "m-9cdde9a", "header": "m-3b16f56b", "main": "m-8983817", "footer": "m-3840c879", "section": "m-6dcfc7c7" };
+
 // src/AppShell.tsx
 var defaultProps7 = {
   withBorder: true,
@@ -690,15 +702,7 @@ var AppShell = (0, import_core15.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core15.useStyles)({
     name: "AppShell",
-    classes: {
-      root: "appshell-root",
-      navbar: "appshell-navbar",
-      aside: "appshell-aside",
-      main: "appshell-main",
-      header: "appshell-header",
-      footer: "appshell-footer",
-      section: "appshell-section"
-    },
+    classes: AppShell_module_default2,
     props,
     className,
     style,
@@ -708,7 +712,12 @@ var AppShell = (0, import_core15.factory)((_props, ref) => {
     vars,
     varsResolver
   });
-  useStore.setState({ getStyles, withBorder, zIndex, disabled });
+  useStore.update((state) => {
+    state.getStyles = getStyles;
+    state.withBorder = withBorder;
+    state.zIndex = zIndex;
+    state.disabled = disabled;
+  });
   return /* @__PURE__ */ import_react8.default.createElement(import_react8.default.Fragment, null, /* @__PURE__ */ import_react8.default.createElement("div", { id: "appshell-style" }, /* @__PURE__ */ import_react8.default.createElement(
     AppShellMediaStyles,
     {
@@ -734,6 +743,7 @@ AppShell.Main = AppShellMain;
 AppShell.Aside = AppShellAside;
 AppShell.Footer = AppShellFooter;
 AppShell.Section = AppShellSection;
+AppShell.classes = AppShell_module_default2;
 
 // src/AppShellFuncs/createAppShellMediaStyles.ts
 var import_core16 = require("@raikou/core");
@@ -778,3 +788,4 @@ function CreateAppShellMediaStyles({
   AppShellSection,
   CreateAppShellMediaStyles
 });
+//# sourceMappingURL=index.js.map

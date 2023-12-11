@@ -35,4 +35,4 @@ declare namespace NumberFormatter {
     var displayName: string;
 }
 
-export { NumberFormatter, NumberFormatterFactory, NumberFormatterProps };
+export { NumberFormatter, type NumberFormatterFactory, type NumberFormatterProps };

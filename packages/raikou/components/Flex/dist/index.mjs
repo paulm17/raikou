@@ -51,6 +51,11 @@ import {
   filterProps,
   polymorphicFactory
 } from "@raikou/core";
+
+// css-module:./Flex.module.css#css-module
+var Flex_module_default = { "flex-root": "m-3bac8182" };
+
+// src/Flex.tsx
 var defaultProps = {};
 var Flex = polymorphicFactory((_props, ref) => {
   const props = useProps("Flex", defaultProps, _props);
@@ -85,9 +90,7 @@ var Flex = polymorphicFactory((_props, ref) => {
   ]);
   const getStyles = useStyles({
     name: "Flex",
-    classes: {
-      root: "flex-root"
-    },
+    classes: Flex_module_default,
     props,
     className,
     style,
@@ -122,7 +125,9 @@ var Flex = polymorphicFactory((_props, ref) => {
   ));
 });
 Flex.displayName = "@raikou/core/Flex";
+Flex.classes = Flex_module_default;
 export {
   FLEX_STYLE_PROPS_DATA,
   Flex
 };
+//# sourceMappingURL=index.mjs.map

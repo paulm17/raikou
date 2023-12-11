@@ -61,4 +61,4 @@ declare const Text: (<C = "p">(props: C extends React.ElementType<any> ? TextPro
     classes: Record<string, string>;
 } & Record<string, never>;
 
-export { Text, TextCssVariables, TextFactory, TextProps, TextStylesNames, TextVariant };
+export { Text, type TextCssVariables, type TextFactory, type TextProps, type TextStylesNames, type TextVariant };

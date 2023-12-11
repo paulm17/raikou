@@ -297,6 +297,9 @@ function useModalBodyId() {
   return ctx.getBodyId();
 }
 
+// css-module:./ModalBase.module.css#css-module
+var ModalBase_module_default = { "title": "m-615af6c9", "header": "m-b5489c3c", "inner": "m-60c222c7", "content": "m-fd1ab0aa", "close": "m-606cb269", "body": "m-5df29311" };
+
 // src/ModalBaseBody.tsx
 var ModalBaseBody = forwardRef3(
   (_a, ref) => {
@@ -308,7 +311,7 @@ var ModalBaseBody = forwardRef3(
         ref
       }, others), {
         id: bodyId,
-        className: cx("modalBase-body", className)
+        className: cx(ModalBase_module_default.body, className)
       })
     );
   }
@@ -367,6 +370,11 @@ import {
   useStyles,
   polymorphicFactory
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps2 = {
   __staticSelector: "UnstyledButton"
 };
@@ -393,9 +401,7 @@ var UnstyledButton = polymorphicFactory(
     const getStyles = useStyles({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -413,6 +419,10 @@ var UnstyledButton = polymorphicFactory(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
+
+// css-module:./CloseButton.module.css#css-module
+var CloseButton_module_default = { "root": "m-86a44da5", "root--subtle": "m-220c80f2" };
 
 // ../CloseButton/src/CloseButton.tsx
 var defaultProps3 = {
@@ -463,9 +473,7 @@ var CloseButton = polymorphicFactory2(
       props,
       className,
       style,
-      classes: {
-        root: "closeButton-root"
-      },
+      classes: CloseButton_module_default,
       classNames,
       styles,
       unstyled,
@@ -488,6 +496,7 @@ var CloseButton = polymorphicFactory2(
   }
 );
 CloseButton.displayName = "@raikou/core/CloseButton";
+CloseButton.classes = CloseButton_module_default;
 
 // src/ModalBaseCloseButton.tsx
 var ModalBaseCloseButton = forwardRef5((_a, ref) => {
@@ -502,7 +511,7 @@ var ModalBaseCloseButton = forwardRef5((_a, ref) => {
         ctx.onClose();
         onClick == null ? void 0 : onClick(event);
       },
-      className: cx2("modalBase-close", className)
+      className: cx2(ModalBase_module_default.close, className)
     })
   );
 });
@@ -774,6 +783,11 @@ import {
   getShadow as getShadow2,
   createVarsResolver as createVarsResolver2
 } from "@raikou/core";
+
+// css-module:./Paper.module.css#css-module
+var Paper_module_default = { "root": "m-1b7284a3" };
+
+// ../Paper/src/Paper.tsx
 var defaultProps4 = {};
 var varsResolver2 = createVarsResolver2(
   (_, { radius, shadow }) => ({
@@ -811,9 +825,7 @@ var Paper = polymorphicFactory3((_props, ref) => {
   const getStyles = useStyles3({
     name: "Paper",
     props,
-    classes: {
-      root: "paper-root"
-    },
+    classes: Paper_module_default,
     className,
     style,
     classNames,
@@ -833,6 +845,7 @@ var Paper = polymorphicFactory3((_props, ref) => {
   );
 });
 Paper.displayName = "@raikou/core/Paper";
+Paper.classes = Paper_module_default;
 
 // src/ModalBaseContent.tsx
 var ModalBaseContent = forwardRef6(
@@ -856,7 +869,7 @@ var ModalBaseContent = forwardRef6(
       (transitionStyles) => /* @__PURE__ */ React14.createElement(
         "div",
         __spreadProps(__spreadValues({}, innerProps), {
-          className: cx3("modalBase-inner", innerProps.className)
+          className: cx3(ModalBase_module_default.inner, innerProps.className)
         }),
         /* @__PURE__ */ React14.createElement(FocusTrap, { active: ctx.opened && ctx.trapFocus }, /* @__PURE__ */ React14.createElement(
           Paper,
@@ -870,7 +883,7 @@ var ModalBaseContent = forwardRef6(
             onKeyDown: handleKeyDown,
             ref,
             style: [style, transitionStyles],
-            className: cx3("modalBase-content", className)
+            className: cx3(ModalBase_module_default.content, className)
           }),
           others.children
         ))
@@ -887,7 +900,7 @@ import { Box as Box5 } from "@raikou/core";
 var ModalBaseHeader = forwardRef7(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React15.createElement(Box5, __spreadValues({ ref, className: cx4("modalBase-header", className) }, others));
+    return /* @__PURE__ */ React15.createElement(Box5, __spreadValues({ ref, className: cx4(ModalBase_module_default.header, className) }, others));
   }
 );
 ModalBaseHeader.displayName = "@raikou/core/ModalBaseHeader";
@@ -908,6 +921,11 @@ import {
   getRadius as getRadius3,
   rem as rem3
 } from "@raikou/core";
+
+// css-module:./Overlay.module.css#css-module
+var Overlay_module_default = { "root": "m-9814e45f" };
+
+// ../Overlay/src/Overlay.tsx
 var defaultProps5 = {
   zIndex: getDefaultZIndex2("modal")
 };
@@ -959,9 +977,7 @@ var Overlay = polymorphicFactory4((_props, ref) => {
   const getStyles = useStyles4({
     name: "Overlay",
     props,
-    classes: {
-      root: "overlay-root"
-    },
+    classes: Overlay_module_default,
     className,
     style,
     classNames,
@@ -973,6 +989,7 @@ var Overlay = polymorphicFactory4((_props, ref) => {
   return /* @__PURE__ */ React16.createElement(Box6, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { mod: { center, fixed } }), others), children);
 });
 Overlay.displayName = "@raikou/core/Overlay";
+Overlay.classes = Overlay_module_default;
 
 // src/use-modal-transition.ts
 var DEFAULT_TRANSITION = {
@@ -1031,7 +1048,7 @@ var ModalBaseTitle = forwardRef9((_a, ref) => {
     __spreadProps(__spreadValues({
       component: "h2",
       ref,
-      className: cx5("modalBase-title", className)
+      className: cx5(ModalBase_module_default.title, className)
     }, others), {
       id
     })
@@ -1054,3 +1071,4 @@ export {
   ModalBaseTitle,
   NativeScrollArea
 };
+//# sourceMappingURL=index.mjs.map

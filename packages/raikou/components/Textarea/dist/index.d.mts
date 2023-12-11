@@ -3648,4 +3648,4 @@ declare const Textarea: _raikou_core.RaikouComponent<{
     stylesNames: __InputStylesNames;
 }>;
 
-export { Textarea, TextareaFactory, TextareaProps };
+export { Textarea, type TextareaFactory, type TextareaProps };

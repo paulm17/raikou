@@ -52,6 +52,11 @@ import {
   useStyles,
   polymorphicFactory
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../components/UnstyledButton/src/UnstyledButton.tsx
 var defaultProps = {
   __staticSelector: "UnstyledButton"
 };
@@ -78,9 +83,7 @@ var UnstyledButton = polymorphicFactory(
     const getStyles = useStyles({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -98,6 +101,7 @@ var UnstyledButton = polymorphicFactory(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // ../components/Accordion/src/AccordionChevron.tsx
 import React2 from "react";
@@ -249,6 +253,9 @@ function CarouselVariables({
   return /* @__PURE__ */ React6.createElement(InlineStyles, { styles: baseStyles, media, selector });
 }
 
+// css-module:./Carousel.module.css#css-module
+var Carousel_module_default = { "root": "m-17884d0f", "viewport": "m-a2dae653", "container": "m-fcd81474", "controls": "m-39bc3463", "control": "m-64f58e10", "indicators": "m-71ea3ab1", "indicator": "m-eae68602", "slide": "m-d98df724" };
+
 // src/Carousel.tsx
 var defaultProps3 = {
   controlSize: 26,
@@ -359,16 +366,7 @@ var Carousel = factory2((_props, ref) => {
   ]);
   const getStyles = useStyles2({
     name: "Carousel",
-    classes: {
-      root: "carousel-root",
-      viewport: "carousel-viewport",
-      container: "carousel-container",
-      controls: "carousel-controls",
-      control: "carousel-control",
-      indicators: "carousel-indicators",
-      indicator: "carousel-indicator",
-      slide: "carousel-slide"
-    },
+    classes: Carousel_module_default,
     props,
     className,
     style,
@@ -532,6 +530,7 @@ var Carousel = factory2((_props, ref) => {
   ));
 });
 Carousel.displayName = "@raikou/core/Carousel";
+Carousel.classes = Carousel_module_default;
 Carousel.Slide = CarouselSlide;
 
 // src/use-animation-offset-effect.ts
@@ -550,3 +549,4 @@ export {
   CarouselSlide,
   useAnimationOffsetEffect
 };
+//# sourceMappingURL=index.mjs.map

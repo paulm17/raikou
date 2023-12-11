@@ -68,10 +68,13 @@ var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
 
 // src/store.ts
-var import_zustand = require("zustand");
-var useStore = (0, import_zustand.create)(() => ({
+var import_pure_store = __toESM(require("pure-store"));
+var useStore = (0, import_pure_store.default)({
   error: false
-}));
+});
+
+// css-module:./Image.module.css#css-module
+var Image_module_default = { "root": "m-9e117634" };
 
 // src/Image.tsx
 var defaultProps = {};
@@ -110,9 +113,7 @@ var Image = (0, import_core.polymorphicFactory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core.useStyles)({
     name: "Image",
-    classes: {
-      root: "image-root"
-    },
+    classes: Image_module_default,
     props,
     className,
     style,
@@ -126,9 +127,13 @@ var Image = (0, import_core.polymorphicFactory)((_props, ref) => {
     var request = require("request").defaults({ encoding: null });
     request.get(src, function(error, response) {
       if (response === void 0) {
-        useStore.getState().error = true;
+        useStore.update((state) => {
+          state.error = true;
+        });
       } else if (response.statusCode !== 200) {
-        useStore.getState().error = true;
+        useStore.update((state) => {
+          state.error = true;
+        });
       }
     });
   }
@@ -142,8 +147,10 @@ var Image = (0, import_core.polymorphicFactory)((_props, ref) => {
     }), others)
   );
 });
+Image.classes = Image_module_default;
 Image.displayName = "@raikou/core/Image";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Image
 });
+//# sourceMappingURL=index.js.map

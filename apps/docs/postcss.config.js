@@ -1,4 +1,7 @@
 module.exports = {
-  map: { inline: false },
-  plugins: [require("postcss-preset-raikou")],
+  plugins: {
+    "postcss-import": {},
+    "postcss-preset-raikou": {},
+    "postcss-discard-duplicates": {},
+  },
 };

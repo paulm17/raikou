@@ -107,6 +107,11 @@ import {
   getFontSize,
   createVarsResolver
 } from "@raikou/core";
+
+// css-module:../Input.module.css#css-module
+var Input_module_default = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
+
+// ../Input/src/InputLabel/InputLabel.tsx
 var defaultProps = {
   labelElement: "label"
 };
@@ -152,10 +157,11 @@ var InputLabel = factory((_props, ref) => {
   const _getStyles = useStyles({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      label: "inputWrapper-label",
-      required: "inputWrapper-required"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    // },
     className,
     style,
     classNames,
@@ -234,9 +240,10 @@ var InputError = factory2((_props, ref) => {
   const _getStyles = useStyles2({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      error: "inputWrapper-error"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   error: "inputWrapper-error",
+    // },
     className,
     style,
     classNames,
@@ -309,9 +316,10 @@ var InputDescription = factory3(
     const _getStyles = useStyles3({
       name: ["InputWrapper", __staticSelector],
       props,
-      classes: {
-        description: "inputWrapper-description"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   description: "inputWrapper-description",
+      // },
       className,
       style,
       classNames,
@@ -369,9 +377,10 @@ var InputPlaceholder = factory4(
     const getStyles = useStyles4({
       name: ["InputPlaceholder", __staticSelector],
       props,
-      classes: {
-        placeholder: "input-placeholder"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   placeholder: "input-placeholder",
+      // },
       className,
       style,
       classNames,
@@ -486,13 +495,14 @@ var InputWrapper = factory5((_props, ref) => {
   const getStyles = useStyles5({
     name: ["InputWrapper", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      root: "inputWrapper-root",
-      label: "inputWrapper-label",
-      required: "inputWrapper-required",
-      error: "inputWrapper-error",
-      description: "inputWrapper-description"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   root: "inputWrapper-root",
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    //   error: "inputWrapper-error",
+    //   description: "inputWrapper-description",
+    // },
     className,
     style,
     classNames,
@@ -583,6 +593,9 @@ var InputWrapper = factory5((_props, ref) => {
   );
 });
 InputWrapper.displayName = "@raikou/core/InputWrapper";
+
+// css-module:./Input.module.css#css-module
+var Input_module_default2 = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
 
 // ../Input/src/Input.tsx
 var defaultProps6 = {
@@ -676,11 +689,12 @@ var Input = polymorphicFactory((_props, ref) => {
   const getStyles = useStyles6({
     name: ["Input", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      wrapper: "input-wrapper",
-      input: "input-input",
-      section: "input-section"
-    },
+    classes: Input_module_default2,
+    // classes: {
+    //   wrapper: "input-wrapper",
+    //   input: "input-input",
+    //   section: "input-section",
+    // },
     className,
     style,
     classNames,
@@ -752,6 +766,9 @@ Input.Description = InputDescription;
 Input.Placeholder = InputPlaceholder;
 Input.displayName = "@raikou/core/Input";
 
+// css-module:./InlineInput.module.css#css-module
+var InlineInput_module_default = { "root": "m-5f75b09e", "body": "m-5f6e695e", "labelWrapper": "m-d3ea56bb", "label": "m-8ee546b8", "description": "m-328f68c0", "error": "m-8e8a99cc" };
+
 // ../InlineInput/src/InlineInput.tsx
 var InlineInput = forwardRef(
   (_a, ref) => {
@@ -797,14 +814,7 @@ var InlineInput = forwardRef(
       props: __stylesApiProps,
       className,
       style,
-      classes: {
-        root: "inlineInput-root",
-        body: "inlineInput-body",
-        labelWrapper: "inlineInput-labelWrapper",
-        label: "inlineInput-label",
-        description: "inlineInput-description",
-        error: "inlineInput-error"
-      },
+      classes: InlineInput_module_default,
       classNames,
       styles,
       unstyled
@@ -930,6 +940,9 @@ var SwitchGroup = factory6((props, ref) => {
 });
 SwitchGroup.displayName = "@raikou/core/SwitchGroup";
 
+// css-module:./Switch.module.css#css-module
+var Switch_module_default = { "root": "m-5f93f3bb", "input": "m-926b4011", "track": "m-9307d992", "thumb": "m-93039a1d", "trackLabel": "m-8277e082" };
+
 // src/Switch.tsx
 var defaultProps8 = {
   labelPosition: "right"
@@ -1011,18 +1024,7 @@ var Switch = factory7((_props, ref) => {
   const getStyles = useStyles8({
     name: "Switch",
     props,
-    classes: {
-      root: "switch-root",
-      input: "switch-input",
-      track: "switch-track",
-      thumb: "switch-thumb",
-      trackLabel: "switch-trackLabel",
-      body: "inlineInput-body",
-      label: "inlineInput-label",
-      labelWrapper: "inlineInput-labelWrapper",
-      description: "inlineInput-description",
-      error: "inlineInput-error"
-    },
+    classes: Switch_module_default,
     className,
     style,
     classNames,
@@ -1088,9 +1090,11 @@ var Switch = factory7((_props, ref) => {
     )
   );
 });
+Switch.classes = Switch_module_default;
 Switch.displayName = "@raikou/core/Switch";
 Switch.Group = SwitchGroup;
 export {
   Switch,
   SwitchGroup
 };
+//# sourceMappingURL=index.mjs.map

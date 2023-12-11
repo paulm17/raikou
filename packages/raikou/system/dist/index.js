@@ -1039,7 +1039,7 @@ function RaikouClasses({ theme, nonce }) {
 }
 
 // src/core/RaikouProvider/RaikouProvider.tsx
-var import_global_store = __toESM(require("@raikou/global-store"));
+var import_global_store = require("@raikou/global-store");
 suppressNextjsWarning();
 function RaikouProvider({
   theme,
@@ -1071,7 +1071,9 @@ function RaikouProvider({
   if (typeof window !== "undefined") {
     window["raikou_theme"] = theme;
   } else {
-    import_global_store.default.setState(theme);
+    (0, import_global_store.setState)((state) => ({
+      state: __spreadValues(__spreadValues({}, state), theme)
+    }));
   }
   return /* @__PURE__ */ import_react3.default.createElement(
     import_next_themes2.ThemeProvider,

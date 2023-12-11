@@ -43,6 +43,11 @@ import {
   getRadius,
   rem
 } from "@raikou/core";
+
+// css-module:./Overlay.module.css#css-module
+var Overlay_module_default = { "root": "m-9814e45f" };
+
+// src/Overlay.tsx
 var defaultProps = {
   zIndex: getDefaultZIndex("modal")
 };
@@ -94,9 +99,7 @@ var Overlay = polymorphicFactory((_props, ref) => {
   const getStyles = useStyles({
     name: "Overlay",
     props,
-    classes: {
-      root: "overlay-root"
-    },
+    classes: Overlay_module_default,
     className,
     style,
     classNames,
@@ -108,6 +111,8 @@ var Overlay = polymorphicFactory((_props, ref) => {
   return /* @__PURE__ */ React.createElement(Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { mod: { center, fixed } }), others), children);
 });
 Overlay.displayName = "@raikou/core/Overlay";
+Overlay.classes = Overlay_module_default;
 export {
   Overlay
 };
+//# sourceMappingURL=index.mjs.map

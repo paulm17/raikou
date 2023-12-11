@@ -1,6 +1,4 @@
 import { definePreset } from "unocss";
-import fs from "fs/promises";
-import { cwd } from "node:process";
 import { rem } from "./core";
 
 function genMargin(type: "px" | "rem", px: RegExpMatchArray) {
@@ -102,31 +100,5 @@ export default definePreset(() => {
         },
       ],
     ],
-    preflights: [
-      {
-        layer: "raikou_1",
-        getCSS: async () => {
-          const component_css = await fs.readFile(
-            `${cwd()}/node_modules/@raikou/system/dist/global.css`,
-            "utf8",
-          );
-          return component_css;
-        },
-      },
-      // {
-      //   layer: "raikou_2",
-      //   getCSS: async () => {
-      //     const component_css = await fs.readFile(
-      //       `${cwd()}/node_modules/@raikou/system/dist/styles_2.css`,
-      //       "utf8",
-      //     );
-      //     return component_css;
-      //   },
-      // },
-    ],
-    layers: {
-      raikou_1: -1,
-      default: 1,
-    },
   };
 }) as any;

@@ -124,4 +124,4 @@ declare const ActionIcon: (<C = "button">(props: C extends React.ElementType<any
     Group: typeof ActionIconGroup;
 };
 
-export { ActionIcon, ActionIconCssVariables, ActionIconFactory, ActionIconGroup, ActionIconGroupCssVariables, ActionIconGroupFactory, ActionIconGroupProps, ActionIconGroupStylesNames, ActionIconProps, ActionIconStylesNames, ActionIconVariant };
+export { ActionIcon, type ActionIconCssVariables, type ActionIconFactory, ActionIconGroup, type ActionIconGroupCssVariables, type ActionIconGroupFactory, type ActionIconGroupProps, type ActionIconGroupStylesNames, type ActionIconProps, type ActionIconStylesNames, type ActionIconVariant };

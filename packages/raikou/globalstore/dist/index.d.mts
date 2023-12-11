@@ -1,4 +1,4 @@
-import * as zustand from 'zustand';
+import * as pure_store from 'pure-store';
 import * as types from 'types';
 import { PartialDeep } from 'type-fest';
 
@@ -163,9 +163,9 @@ type RaikouThemeColors = RaikouThemeColorsOverride extends {
 } ? Record<CustomColors, RaikouColorsTuple> : Record<DefaultRaikouColor, RaikouColorsTuple>;
 type RaikouColor = keyof RaikouThemeColors;
 
-declare const useStore: zustand.UseBoundStore<zustand.StoreApi<types.PartialObjectDeep<RaikouTheme, {}>>>;
+declare const useStore: pure_store.PureStore<types.PartialObjectDeep<RaikouTheme, {}>, types.PartialObjectDeep<RaikouTheme, {}>>;
 declare const getState: () => types.PartialObjectDeep<RaikouTheme, {}>;
-declare const setState: (partial: types.PartialObjectDeep<RaikouTheme, {}> | Partial<types.PartialObjectDeep<RaikouTheme, {}>> | ((state: types.PartialObjectDeep<RaikouTheme, {}>) => types.PartialObjectDeep<RaikouTheme, {}> | Partial<types.PartialObjectDeep<RaikouTheme, {}>>), replace?: boolean | undefined) => void;
+declare const setState: (updater: Partial<types.PartialObjectDeep<RaikouTheme, {}>> | ((e: types.PartialObjectDeep<RaikouTheme, {}>) => void)) => void;
 
 declare function createTheme(theme: RaikouThemeOverride): RaikouThemeOverride;
 

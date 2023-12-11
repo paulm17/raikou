@@ -50,13 +50,16 @@ import {
 } from "@raikou/core";
 
 // src/store.ts
-import { create } from "zustand";
-var useStore = create(() => ({
+import createStore from "pure-store";
+var useStore = createStore({
   getStyles: void 0,
   withBorder: void 0,
   zIndex: 1,
   disabled: void 0
-}));
+});
+
+// css-module:../AppShell.module.css#css-module
+var AppShell_module_default = { "root": "m-89ab340", "navbar": "m-45252eee", "aside": "m-9cdde9a", "header": "m-3b16f56b", "main": "m-8983817", "footer": "m-3840c879", "section": "m-6dcfc7c7" };
 
 // src/AppShellNavbar/AppShellNavbar.tsx
 var defaultProps = {};
@@ -99,6 +102,7 @@ var AppShellNavbar = factory((_props, ref) => {
   );
 });
 AppShellNavbar.displayName = "@raikou/core/AppShellNavbar";
+AppShellNavbar.classes = AppShell_module_default;
 
 // src/AppShellHeader/AppShellHeader.tsx
 import React2 from "react";
@@ -148,6 +152,7 @@ var AppShellHeader = factory2((_props, ref) => {
   );
 });
 AppShellHeader.displayName = "@raikou/core/AppShellHeader";
+AppShellHeader.classes = AppShell_module_default;
 
 // src/AppShellFooter/AppShellFooter.tsx
 import React3 from "react";
@@ -197,6 +202,7 @@ var AppShellFooter = factory3((_props, ref) => {
   );
 });
 AppShellFooter.displayName = "@raikou/core/AppShellFooter";
+AppShellFooter.classes = AppShell_module_default;
 
 // src/AppShellAside/AppShellAside.tsx
 import React4 from "react";
@@ -245,6 +251,7 @@ var AppShellAside = factory4((_props, ref) => {
   );
 });
 AppShellAside.displayName = "@raikou/core/AppShellAside";
+AppShellAside.classes = AppShell_module_default;
 
 // src/AppShellMain/AppShellMain.tsx
 import React5 from "react";
@@ -267,6 +274,7 @@ var AppShellMain = factory5((_props, ref) => {
   );
 });
 AppShellMain.displayName = "@raikou/core/AppShellMain";
+AppShellMain.classes = AppShell_module_default;
 
 // src/AppShellSection/AppShellSection.tsx
 import React6 from "react";
@@ -291,6 +299,7 @@ var AppShellSection = polymorphicFactory(
   }
 );
 AppShellSection.displayName = "@raikou/core/AppShellSection";
+AppShellSection.classes = AppShell_module_default;
 
 // src/AppShellMediaStyles/AppShellMediaStyles.tsx
 import React7 from "react";
@@ -624,6 +633,9 @@ function AppShellMediaStyles({
   return /* @__PURE__ */ React7.createElement(InlineStyles, { media, styles: baseStyles, selector: ":root" });
 }
 
+// css-module:./AppShell.module.css#css-module
+var AppShell_module_default2 = { "root": "m-89ab340", "navbar": "m-45252eee", "aside": "m-9cdde9a", "header": "m-3b16f56b", "main": "m-8983817", "footer": "m-3840c879", "section": "m-6dcfc7c7" };
+
 // src/AppShell.tsx
 var defaultProps7 = {
   withBorder: true,
@@ -681,15 +693,7 @@ var AppShell = factory6((_props, ref) => {
   ]);
   const getStyles = useStyles({
     name: "AppShell",
-    classes: {
-      root: "appshell-root",
-      navbar: "appshell-navbar",
-      aside: "appshell-aside",
-      main: "appshell-main",
-      header: "appshell-header",
-      footer: "appshell-footer",
-      section: "appshell-section"
-    },
+    classes: AppShell_module_default2,
     props,
     className,
     style,
@@ -699,7 +703,12 @@ var AppShell = factory6((_props, ref) => {
     vars,
     varsResolver
   });
-  useStore.setState({ getStyles, withBorder, zIndex, disabled });
+  useStore.update((state) => {
+    state.getStyles = getStyles;
+    state.withBorder = withBorder;
+    state.zIndex = zIndex;
+    state.disabled = disabled;
+  });
   return /* @__PURE__ */ React8.createElement(React8.Fragment, null, /* @__PURE__ */ React8.createElement("div", { id: "appshell-style" }, /* @__PURE__ */ React8.createElement(
     AppShellMediaStyles,
     {
@@ -725,6 +734,7 @@ AppShell.Main = AppShellMain;
 AppShell.Aside = AppShellAside;
 AppShell.Footer = AppShellFooter;
 AppShell.Section = AppShellSection;
+AppShell.classes = AppShell_module_default2;
 
 // src/AppShellFuncs/createAppShellMediaStyles.ts
 import { stylesToString, useRaikouTheme as useRaikouTheme2 } from "@raikou/core";
@@ -768,3 +778,4 @@ export {
   AppShellSection,
   CreateAppShellMediaStyles
 };
+//# sourceMappingURL=index.mjs.map

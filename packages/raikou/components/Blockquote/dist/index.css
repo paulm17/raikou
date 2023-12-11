@@ -1,0 +1,52 @@
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Blockquote/src/Blockquote.module.css/#css-module-data */
+.m-ddec01c0 {
+  --_bq-border: calc(0.1875rem * var(--raikou-scale)) solid var(--bq-bd);
+  position: relative;
+  margin: 0;
+  background-color: var(--_bq-bg);
+  border-left: var(--_bq-border-left, var(--_bq-border));
+  border-right: var(--_bq-border-right, 0);
+  border-radius: var(--bq-radius);
+  border-top-left-radius: var(--_bq-radius-left, 0);
+  border-top-right-radius: var(--_bq-radius-right, var(--bq-radius));
+  border-bottom-left-radius: var(--_bq-radius-left, 0);
+  border-bottom-right-radius: var(--_bq-radius-right, var(--bq-radius));
+  padding: var(--raikou-spacing-xl) calc(2.375rem * var(--raikou-scale));
+}
+[dir=rtl] .m-ddec01c0 {
+  --_bq-radius-left: var(--bq-radius);
+  --_bq-radius-right: 0;
+  --_bq-border-left: 0;
+  --_bq-border-right: var(--_bq-border);
+}
+[data-raikou-color-scheme=light] .m-ddec01c0 {
+  --_bq-bg: var(--bq-bg-light);
+}
+[data-raikou-color-scheme=dark] .m-ddec01c0 {
+  --_bq-bg: var(--bq-bg-dark);
+}
+.m-dde7bd57 {
+  position: absolute;
+  color: var(--bq-bd);
+  background-color: var(--raikou-color-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: calc(var(--bq-icon-size) / -2);
+  left: var(--_bq-icon-left, calc(var(--bq-icon-size) / -2));
+  right: var(--_bq-icon-right, 0);
+  width: var(--bq-icon-size);
+  height: var(--bq-icon-size);
+  border-radius: var(--bq-icon-size);
+}
+[dir=rtl] .m-dde7bd57 {
+  --_bq-icon-left: 0;
+  --_bq-icon-right: calc(var(--bq-icon-size) / -2);
+}
+.m-dde51a35 {
+  display: block;
+  margin-top: var(--raikou-spacing-md);
+  opacity: 0.6;
+  font-size: 85%;
+}
+/*# sourceMappingURL=index.css.map */

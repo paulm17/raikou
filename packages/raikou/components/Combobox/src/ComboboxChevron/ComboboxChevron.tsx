@@ -12,6 +12,7 @@ import {
   StylesApiProps,
   useStyles,
 } from "@raikou/core";
+import classes from "../Combobox.module.css";
 
 export type ComboboxChevronStylesNames = "chevron";
 export type ComboboxChevronCSSVariables = {
@@ -62,9 +63,7 @@ export const ComboboxChevron = factory<ComboboxChevronFactory>(
 
     const getStyles = useStyles<ComboboxChevronFactory>({
       name: "ComboboxChevron",
-      classes: {
-        chevron: "combobox-chevron",
-      },
+      classes,
       props,
       style,
       className,
@@ -99,4 +98,5 @@ export const ComboboxChevron = factory<ComboboxChevronFactory>(
   },
 );
 
+ComboboxChevron.classes = classes;
 ComboboxChevron.displayName = "@raikou/core/ComboboxChevron";

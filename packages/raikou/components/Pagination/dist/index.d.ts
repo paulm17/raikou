@@ -231,4 +231,4 @@ declare const Pagination: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { Pagination, PaginationControl, PaginationControlProps, PaginationCssVariables, PaginationDots, PaginationDotsProps, PaginationEdgeProps, PaginationFactory, PaginationFirst, PaginationItems, PaginationItemsProps, PaginationLast, PaginationNext, PaginationPrevious, PaginationProps, PaginationRoot, PaginationRootProps, PaginationStylesNames };
+export { Pagination, PaginationControl, type PaginationControlProps, type PaginationCssVariables, PaginationDots, type PaginationDotsProps, type PaginationEdgeProps, type PaginationFactory, PaginationFirst, PaginationItems, type PaginationItemsProps, PaginationLast, PaginationNext, PaginationPrevious, type PaginationProps, PaginationRoot, type PaginationRootProps, type PaginationStylesNames };

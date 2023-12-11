@@ -47,6 +47,9 @@ function filterFalsyChildren(children) {
   return Children.toArray(children).filter(Boolean);
 }
 
+// css-module:./Group.module.css#css-module
+var Group_module_default = { "root": "m-4081bf90" };
+
 // src/Group.tsx
 var defaultProps = {
   preventGrowOverflow: true,
@@ -112,7 +115,7 @@ var Group = factory((_props, ref) => {
     stylesCtx,
     className,
     style,
-    classes: { root: "group-root" },
+    classes: Group_module_default,
     classNames,
     styles,
     unstyled,
@@ -131,6 +134,8 @@ var Group = factory((_props, ref) => {
   );
 });
 Group.displayName = "@raikou/core/Group";
+Group.classes = Group_module_default;
 export {
   Group
 };
+//# sourceMappingURL=index.mjs.map

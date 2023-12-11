@@ -42,4 +42,4 @@ declare const Notification: _raikou_core.RaikouComponent<{
     vars: NotificationCssVariables;
 }>;
 
-export { Notification, NotificationCssVariables, NotificationFactory, NotificationProps, NotificationStylesNames };
+export { Notification, type NotificationCssVariables, type NotificationFactory, type NotificationProps, type NotificationStylesNames };

@@ -40,4 +40,4 @@ declare const Center: (<C = "div">(props: C extends React.ElementType<any> ? Cen
     classes: Record<string, string>;
 } & Record<string, never>;
 
-export { Center, CenterFactory, CenterProps, CenterStylesNames };
+export { Center, type CenterFactory, type CenterProps, type CenterStylesNames };

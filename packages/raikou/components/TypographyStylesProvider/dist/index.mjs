@@ -35,15 +35,18 @@ import {
   useProps,
   useStyles
 } from "@raikou/core";
+
+// css-module:./TypographyStylesProvider.module.css#css-module
+var TypographyStylesProvider_module_default = { "root": "m-d6493fad" };
+
+// src/TypographyStylesProvider.tsx
 var defaultProps = {};
 var TypographyStylesProvider = factory((_props, ref) => {
   const props = useProps("TypographyStylesProvider", defaultProps, _props);
   const _a = props, { classNames, className, style, styles, unstyled } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled"]);
   const getStyles = useStyles({
     name: "TypographyStylesProvider",
-    classes: {
-      root: "typographyStylesProvider-root"
-    },
+    classes: TypographyStylesProvider_module_default,
     props,
     className,
     style,
@@ -57,3 +60,4 @@ TypographyStylesProvider.displayName = "@raikou/core/TypographyStylesProvider";
 export {
   TypographyStylesProvider
 };
+//# sourceMappingURL=index.mjs.map

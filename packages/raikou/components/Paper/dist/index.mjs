@@ -41,6 +41,11 @@ import {
   getShadow,
   createVarsResolver
 } from "@raikou/core";
+
+// css-module:./Paper.module.css#css-module
+var Paper_module_default = { "root": "m-1b7284a3" };
+
+// src/Paper.tsx
 var defaultProps = {};
 var varsResolver = createVarsResolver(
   (_, { radius, shadow }) => ({
@@ -78,9 +83,7 @@ var Paper = polymorphicFactory((_props, ref) => {
   const getStyles = useStyles({
     name: "Paper",
     props,
-    classes: {
-      root: "paper-root"
-    },
+    classes: Paper_module_default,
     className,
     style,
     classNames,
@@ -100,6 +103,8 @@ var Paper = polymorphicFactory((_props, ref) => {
   );
 });
 Paper.displayName = "@raikou/core/Paper";
+Paper.classes = Paper_module_default;
 export {
   Paper
 };
+//# sourceMappingURL=index.mjs.map

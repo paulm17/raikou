@@ -92,4 +92,4 @@ declare const Avatar: (<C = "div">(props: C extends React.ElementType<any> ? Ava
     Group: typeof AvatarGroup;
 };
 
-export { Avatar, AvatarCssVariables, AvatarFactory, AvatarGroup, AvatarGroupCssVariables, AvatarGroupFactory, AvatarGroupProps, AvatarGroupStylesNames, AvatarProps, AvatarStylesNames, AvatarVariant };
+export { Avatar, type AvatarCssVariables, type AvatarFactory, AvatarGroup, type AvatarGroupCssVariables, type AvatarGroupFactory, type AvatarGroupProps, type AvatarGroupStylesNames, type AvatarProps, type AvatarStylesNames, type AvatarVariant };

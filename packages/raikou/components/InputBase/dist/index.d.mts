@@ -3654,4 +3654,4 @@ declare const InputBase: (<C = "input">(props: C extends React$1.ElementType<any
     classes: Record<string, string>;
 } & Record<string, never>;
 
-export { InputBase, InputBaseFactory, InputBaseProps };
+export { InputBase, type InputBaseFactory, type InputBaseProps };

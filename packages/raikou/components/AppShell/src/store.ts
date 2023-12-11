@@ -1,6 +1,6 @@
 import { GetStylesApi } from "@raikou/core";
 import type { AppShellFactory } from "./AppShell";
-import { create } from "zustand";
+import createStore from "pure-store";
 
 interface AppShellContext {
   getStyles: GetStylesApi<AppShellFactory> | any;
@@ -9,9 +9,9 @@ interface AppShellContext {
   disabled: boolean | undefined;
 }
 
-export const useStore = create<AppShellContext>(() => ({
+export const useStore = createStore<AppShellContext>({
   getStyles: undefined,
   withBorder: undefined,
   zIndex: 1,
   disabled: undefined,
-}));
+});

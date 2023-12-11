@@ -24,4 +24,4 @@ declare const Container: _raikou_core.RaikouComponent<{
     vars: ContainerCssVariables;
 }>;
 
-export { Container, ContainerCssVariables, ContainerFactory, ContainerProps, ContainerStylesNames };
+export { Container, type ContainerCssVariables, type ContainerFactory, type ContainerProps, type ContainerStylesNames };

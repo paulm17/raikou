@@ -1,0 +1,30 @@
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/AspectRatio/src/AspectRatio.module.css/#css-module-data */
+.m-71ac47fc {
+  position: relative;
+  max-width: 100%;
+}
+.m-71ac47fc::before {
+  content: "";
+  height: 0;
+  display: block;
+  padding-bottom: calc((1 / var(--ar-ratio, 1)) * 100%);
+}
+.m-71ac47fc::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.m-71ac47fc > *:not(style) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.m-71ac47fc > img,
+.m-71ac47fc > video {
+  object-fit: cover;
+}
+/*# sourceMappingURL=index.css.map */

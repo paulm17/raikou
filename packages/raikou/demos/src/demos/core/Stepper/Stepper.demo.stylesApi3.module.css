@@ -1,6 +1,7 @@
 .separator {
   height: rem(2px);
-  border-top: rem(2px) solid light-dark(var(--raikou-color-gray-4), var(--raikou-color-dark-3));
+  border-top: rem(2px) solid
+    light-dark(var(--raikou-color-gray-4), var(--raikou-color-dark-3));
   border-radius: var(--raikou-radius-xl);
   background-color: transparent;
 
@@ -16,7 +17,10 @@
 
 .stepIcon {
   border-color: transparent;
-  background-color: light-dark(var(--raikou-color-gray-0), var(--raikou-color-dark-4));
+  background-color: light-dark(
+    var(--raikou-color-gray-0),
+    var(--raikou-color-dark-4)
+  );
   border-width: 0;
 
   &[data-completed] {

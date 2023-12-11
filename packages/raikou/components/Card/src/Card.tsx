@@ -85,7 +85,10 @@ export const Card = polymorphicFactory<CardFactory>((_props, ref) => {
     varsResolver,
   });
 
-  useStore.setState({ getStyles });
+  useStore.update((state) => {
+    state.getStyles = getStyles;
+  });
+
   const _children = Children.toArray(children);
   const content = _children.map((child, index) => {
     if (

@@ -29,4 +29,4 @@ type FileButtonComponent = (<Multiple extends boolean = false>(props: FileButton
 };
 declare const FileButton: FileButtonComponent;
 
-export { FileButton, FileButtonProps };
+export { FileButton, type FileButtonProps };

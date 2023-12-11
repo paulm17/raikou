@@ -99,4 +99,4 @@ declare const InlineCodeHighlight: _raikou_core.RaikouComponent<{
     stylesNames: InlineCodeHighlightStylesNames;
 }>;
 
-export { CodeHighlight, CodeHighlightFactory, CodeHighlightProps, CodeHighlightStylesNames, CodeHighlightTabs, CodeHighlightTabsCode, CodeHighlightTabsCssVariables, CodeHighlightTabsFactory, CodeHighlightTabsProps, CodeHighlightTabsStylesNames, InlineCodeHighlight, InlineCodeHighlightFactory, InlineCodeHighlightProps, InlineCodeHighlightStylesNames };
+export { CodeHighlight, type CodeHighlightFactory, type CodeHighlightProps, type CodeHighlightStylesNames, CodeHighlightTabs, type CodeHighlightTabsCode, type CodeHighlightTabsCssVariables, type CodeHighlightTabsFactory, type CodeHighlightTabsProps, type CodeHighlightTabsStylesNames, InlineCodeHighlight, type InlineCodeHighlightFactory, type InlineCodeHighlightProps, type InlineCodeHighlightStylesNames };

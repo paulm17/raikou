@@ -146,4 +146,4 @@ declare const Notifications: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { NotificationData, Notifications, NotificationsCssVariables, NotificationsFactory, NotificationsProps, NotificationsState, NotificationsStore, NotificationsStylesNames, cleanNotifications, cleanNotificationsQueue, createNotificationsStore, hideNotification, notifications, notificationsStore, showNotification, updateNotification, updateNotificationsState, useNotifications };
+export { type NotificationData, Notifications, type NotificationsCssVariables, type NotificationsFactory, type NotificationsProps, type NotificationsState, type NotificationsStore, type NotificationsStylesNames, cleanNotifications, cleanNotificationsQueue, createNotificationsStore, hideNotification, notifications, notificationsStore, showNotification, updateNotification, updateNotificationsState, useNotifications };

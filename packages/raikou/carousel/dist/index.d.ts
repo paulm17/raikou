@@ -108,4 +108,4 @@ declare function useAnimationOffsetEffect(embla: EmblaCarouselType | null | unde
 
 type Embla = EmblaCarouselType;
 
-export { Carousel, CarouselCssVariables, CarouselFactory, CarouselProps, CarouselSlide, CarouselStylesNames, Embla, useAnimationOffsetEffect };
+export { Carousel, type CarouselCssVariables, type CarouselFactory, type CarouselProps, CarouselSlide, type CarouselStylesNames, type Embla, useAnimationOffsetEffect };

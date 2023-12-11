@@ -22,4 +22,4 @@ declare const Kbd: _raikou_core.RaikouComponent<{
     vars: KbdCssVariables;
 }>;
 
-export { Kbd, KbdCssVariables, KbdFactory, KbdProps, KbdStylesNames };
+export { Kbd, type KbdCssVariables, type KbdFactory, type KbdProps, type KbdStylesNames };

@@ -103,6 +103,9 @@ var [ProgressProvider, useProgressContext] = createSafeContext(
   "Progress.Root component was not found in tree"
 );
 
+// css-module:../Progress.module.css#css-module
+var Progress_module_default = { "root": "m-db6d6462", "section": "m-2242eb65", "stripes-animation": "m-81a374bd", "label": "m-91e40b74" };
+
 // src/ProgressRoot/ProgressRoot.tsx
 var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)(
@@ -118,11 +121,7 @@ var ProgressRoot = (0, import_core.factory)((_props, ref) => {
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
   const getStyles = (0, import_core.useStyles)({
     name: "Progress",
-    classes: {
-      root: "progress-root",
-      section: "progress-section",
-      label: "progress-label"
-    },
+    classes: Progress_module_default,
     props,
     className,
     style,
@@ -134,6 +133,7 @@ var ProgressRoot = (0, import_core.factory)((_props, ref) => {
   });
   return /* @__PURE__ */ import_react5.default.createElement(ProgressProvider, { value: { getStyles } }, /* @__PURE__ */ import_react5.default.createElement(import_core.Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others)));
 });
+ProgressRoot.classes = Progress_module_default;
 ProgressRoot.displayName = "@raikou/core/ProgressRoot";
 
 // src/ProgressSection/ProgressSection.tsx
@@ -269,3 +269,4 @@ Progress.Label = ProgressLabel;
   ProgressRoot,
   ProgressSection
 });
+//# sourceMappingURL=index.js.map

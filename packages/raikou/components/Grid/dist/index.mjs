@@ -60,12 +60,12 @@ import {
 } from "@raikou/core";
 
 // src/store.ts
-import { create } from "zustand";
-var useStore = create(() => ({
+import createStore from "pure-store";
+var useStore = createStore({
   getStyles: void 0,
   grow: false,
   columns: 12
-}));
+});
 
 // src/GridCol/GridColVariables.tsx
 var getColumnFlexBasis = (colSpan, columns) => {
@@ -234,6 +234,9 @@ function GridVariables({ gutter, selector }) {
   return /* @__PURE__ */ React3.createElement(InlineStyles2, { styles: baseStyles, media, selector });
 }
 
+// css-module:./Grid.module.css#css-module
+var Grid_module_default = { "root": "m-410352e9", "inner": "m-dee7bd2f", "col": "m-96bdd299" };
+
 // src/Grid.tsx
 var defaultProps2 = {
   gutter: "md",
@@ -279,11 +282,7 @@ var Grid = factory2((_props, ref) => {
   ]);
   const getStyles = useStyles({
     name: "Grid",
-    classes: {
-      root: "grid-root",
-      col: "grid-col",
-      inner: "grid-inner"
-    },
+    classes: Grid_module_default,
     props,
     className,
     style,
@@ -294,7 +293,11 @@ var Grid = factory2((_props, ref) => {
     varsResolver
   });
   const responsiveClassName = useRandomClassName2();
-  useStore.setState({ getStyles, grow, columns });
+  useStore.update((state) => {
+    state.getStyles = getStyles;
+    state.columns = columns;
+    state.grow = grow;
+  });
   return /* @__PURE__ */ React4.createElement(React4.Fragment, null, /* @__PURE__ */ React4.createElement("div", null, /* @__PURE__ */ React4.createElement(GridVariables, __spreadValues({ selector: `.${responsiveClassName}` }, props))), /* @__PURE__ */ React4.createElement(
     Box2,
     __spreadValues(__spreadValues({
@@ -305,7 +308,9 @@ var Grid = factory2((_props, ref) => {
 });
 Grid.displayName = "@raikou/core/Grid";
 Grid.Col = GridCol;
+Grid.classes = Grid_module_default;
 export {
   Grid,
   GridCol
 };
+//# sourceMappingURL=index.mjs.map

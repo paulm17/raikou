@@ -1,9 +1,18 @@
 {
   "extends": "../../../../tsconfig.json",
   "compilerOptions": {
+    "outDir": "./lib",
     "paths": {
       "@raikou/tests": ["../../tests/src"]
     }
   },
+  "exclude": [
+    "./lib",
+    "./esm",
+    "./cjs",
+    "**/*.test.tsx",
+    "**/*.test.ts",
+    "**/*.story.tsx"
+  ],
   "include": ["src", "../../../../configuration/types"]
 }

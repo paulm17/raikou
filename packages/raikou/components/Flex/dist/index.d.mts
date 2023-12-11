@@ -52,4 +52,4 @@ declare const Flex: (<C = "div">(props: C extends React.ElementType<any> ? FlexP
     classes: Record<string, string>;
 } & Record<string, never>;
 
-export { FLEX_STYLE_PROPS_DATA, Flex, FlexFactory, FlexProps, FlexStylesNames };
+export { FLEX_STYLE_PROPS_DATA, Flex, type FlexFactory, type FlexProps, type FlexStylesNames };

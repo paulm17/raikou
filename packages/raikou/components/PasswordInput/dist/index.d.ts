@@ -3662,4 +3662,4 @@ declare const PasswordInput: _raikou_core.RaikouComponent<{
     variant: InputVariant;
 }>;
 
-export { PasswordInput, PasswordInputCssVariables, PasswordInputFactory, PasswordInputProps, PasswordInputStylesNames };
+export { PasswordInput, type PasswordInputCssVariables, type PasswordInputFactory, type PasswordInputProps, type PasswordInputStylesNames };

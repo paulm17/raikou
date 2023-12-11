@@ -1,6 +1,6 @@
 import { GetStylesApi } from "@raikou/core";
 import type { GridFactory } from "./Grid";
-import { create } from "zustand";
+import createStore from "pure-store";
 
 interface GridContextValue {
   getStyles: GetStylesApi<GridFactory> | any;
@@ -8,8 +8,8 @@ interface GridContextValue {
   columns: number;
 }
 
-export const useStore = create<GridContextValue>(() => ({
+export const useStore = createStore<GridContextValue>({
   getStyles: undefined,
   grow: false,
   columns: 12,
-}));
+});

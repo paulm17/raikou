@@ -66,6 +66,11 @@ module.exports = __toCommonJS(src_exports);
 // src/Breadcrumbs.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./Breadcrumbs.module.css#css-module
+var Breadcrumbs_module_default = { "root": "m-8b3717df", "breadcrumb": "m-f678d540", "separator": "m-3b8f2208" };
+
+// src/Breadcrumbs.tsx
 var defaultProps = {
   separator: "/"
 };
@@ -101,11 +106,7 @@ var Breadcrumbs = (0, import_core.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core.useStyles)({
     name: "Breadcrumbs",
-    classes: {
-      root: "breadcrumbs-root",
-      breadcrumb: "breadcrumbs-breadcrumb",
-      separator: "breadcrumbs-separator"
-    },
+    classes: Breadcrumbs_module_default,
     props,
     className,
     style,
@@ -134,7 +135,9 @@ var Breadcrumbs = (0, import_core.factory)((_props, ref) => {
   return /* @__PURE__ */ import_react.default.createElement(import_core.Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others), items);
 });
 Breadcrumbs.displayName = "@raikou/core/Breadcrumbs";
+Breadcrumbs.classes = Breadcrumbs_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Breadcrumbs
 });
+//# sourceMappingURL=index.js.map

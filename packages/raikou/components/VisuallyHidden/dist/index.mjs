@@ -29,12 +29,18 @@ var __objRest = (source, exclude) => {
 
 // src/VisuallyHidden.tsx
 import React from "react";
-import clsx from "clsx";
+import cx from "clsx";
+
+// css-module:./VisuallyHidden.module.css#css-module
+var VisuallyHidden_module_default = { "root": "m-515a97f8" };
+
+// src/VisuallyHidden.tsx
 function VisuallyHidden(_a) {
   var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React.createElement("span", __spreadValues({ className: clsx("visuallyHidden-root", className) }, others));
+  return /* @__PURE__ */ React.createElement("span", __spreadValues({ className: cx(VisuallyHidden_module_default.root, className) }, others));
 }
 VisuallyHidden.displayName = "@raikou/core/VisuallyHidden";
 export {
   VisuallyHidden
 };
+//# sourceMappingURL=index.mjs.map

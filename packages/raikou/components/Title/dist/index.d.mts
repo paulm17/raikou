@@ -27,4 +27,4 @@ declare const Title: _raikou_core.RaikouComponent<{
     vars: TitleCssVariables;
 }>;
 
-export { Title, TitleCssVariables, TitleFactory, TitleOrder, TitleProps, TitleSize, TitleStylesNames };
+export { Title, type TitleCssVariables, type TitleFactory, type TitleOrder, type TitleProps, type TitleSize, type TitleStylesNames };

@@ -3548,6 +3548,9 @@ function useTooltip(settings) {
   };
 }
 
+// css-module:./Tooltip.module.css#css-module
+var Tooltip_module_default = { "root": "m-946fb08c", "tooltip": "m-1b3c8819", "arrow": "m-f898399f" };
+
 // ../Tooltip/src/Tooltip.tsx
 var defaultProps4 = {
   position: "top",
@@ -3667,10 +3670,7 @@ var Tooltip = factory2((_props, ref) => {
   const getStyles = useStyles2({
     name: "Tooltip",
     props,
-    classes: {
-      tooltip: "tooltip-root",
-      arrow: "tooltip-arrow"
-    },
+    classes: Tooltip_module_default,
     className,
     style,
     classNames,
@@ -3744,6 +3744,7 @@ var Tooltip = factory2((_props, ref) => {
     }, children.props))
   ));
 });
+Tooltip.classes = Tooltip_module_default;
 Tooltip.displayName = "@raikou/core/Tooltip";
 Tooltip.Floating = TooltipFloating;
 Tooltip.Group = TooltipGroup;
@@ -3807,6 +3808,9 @@ function Curve(_a) {
 }
 Curve.displayName = "@raikou/core/Curve";
 
+// css-module:./RingProgress.module.css#css-module
+var RingProgress_module_default = { "root": "m-b32e4812", "svg": "m-d43b5134", "curve": "m-b1ca1fbf", "label": "m-b23f9dc4" };
+
 // src/RingProgress.tsx
 function getClampedThickness(thickness, size2) {
   return Math.min(thickness, size2 / 4);
@@ -3854,12 +3858,7 @@ var RingProgress = factory3((_props, ref) => {
   ]);
   const getStyles = useStyles3({
     name: "RingProgress",
-    classes: {
-      root: "ringProgress-root",
-      svg: "ringProgress-svg",
-      label: "ringProgress-label",
-      curve: "ringProgress-curve"
-    },
+    classes: RingProgress_module_default,
     props,
     className,
     style,
@@ -3892,7 +3891,9 @@ var RingProgress = factory3((_props, ref) => {
   ));
   return /* @__PURE__ */ React11.createElement(Box4, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { size: size2, ref }), others), /* @__PURE__ */ React11.createElement("svg", __spreadValues({}, getStyles("svg")), curves), label && /* @__PURE__ */ React11.createElement("div", __spreadValues({}, getStyles("label")), label));
 });
+RingProgress.classes = RingProgress_module_default;
 RingProgress.displayName = "@raikou/core/RingProgress";
 export {
   RingProgress
 };
+//# sourceMappingURL=index.mjs.map

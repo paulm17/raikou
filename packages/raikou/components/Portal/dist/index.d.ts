@@ -17,4 +17,4 @@ declare namespace OptionalPortal {
     var displayName: string;
 }
 
-export { OptionalPortal, OptionalPortalProps, Portal, PortalProps };
+export { OptionalPortal, type OptionalPortalProps, Portal, type PortalProps };

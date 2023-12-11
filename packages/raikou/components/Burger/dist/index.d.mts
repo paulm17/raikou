@@ -30,4 +30,4 @@ declare const Burger: _raikou_core.RaikouComponent<{
     vars: BurgerCssVariables;
 }>;
 
-export { Burger, BurgerCssVariables, BurgerFactory, BurgerProps, BurgerStylesNames };
+export { Burger, type BurgerCssVariables, type BurgerFactory, type BurgerProps, type BurgerStylesNames };

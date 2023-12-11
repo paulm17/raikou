@@ -103,6 +103,11 @@ var import_core2 = require("@raikou/core");
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react2 = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps = {
   __staticSelector: "UnstyledButton"
 };
@@ -129,9 +134,7 @@ var UnstyledButton = (0, import_core.polymorphicFactory)(
     const getStyles = (0, import_core.useStyles)({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -149,6 +152,10 @@ var UnstyledButton = (0, import_core.polymorphicFactory)(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
+
+// css-module:./CloseButton.module.css#css-module
+var CloseButton_module_default = { "root": "m-86a44da5", "root--subtle": "m-220c80f2" };
 
 // ../CloseButton/src/CloseButton.tsx
 var defaultProps2 = {
@@ -199,9 +206,7 @@ var CloseButton = (0, import_core2.polymorphicFactory)(
       props,
       className,
       style,
-      classes: {
-        root: "closeButton-root"
-      },
+      classes: CloseButton_module_default,
       classNames,
       styles,
       unstyled,
@@ -224,6 +229,7 @@ var CloseButton = (0, import_core2.polymorphicFactory)(
   }
 );
 CloseButton.displayName = "@raikou/core/CloseButton";
+CloseButton.classes = CloseButton_module_default;
 
 // src/PillGroup/PillGroup.tsx
 var import_react8 = __toESM(require("react"));
@@ -252,6 +258,9 @@ var [PillGroupProvider, usePillGroupContext] = createOptionalContext();
 
 // ../PillsInput/src/PillsInput.context.ts
 var [PillsInputProvider, usePillsInputContext] = createOptionalContext();
+
+// css-module:../Pill.module.css#css-module
+var Pill_module_default = { "root": "m-7cda1cd6", "root--default": "m-44da308b", "root--contrast": "m-e3a01f8", "label": "m-1e0e6180", "remove": "m-ae386778", "group": "m-1dcfd90b" };
 
 // src/PillGroup/PillGroup.tsx
 var defaultProps3 = {};
@@ -287,9 +296,7 @@ var PillGroup = (0, import_core3.factory)((_props, ref) => {
   const _size = (pillsInputCtx == null ? void 0 : pillsInputCtx.size) || size || void 0;
   const getStyles = (0, import_core3.useStyles)({
     name: "PillGroup",
-    classes: {
-      group: "pill-group"
-    },
+    classes: Pill_module_default,
     props,
     className,
     style,
@@ -303,7 +310,11 @@ var PillGroup = (0, import_core3.factory)((_props, ref) => {
   });
   return /* @__PURE__ */ import_react8.default.createElement(PillGroupProvider, { value: { size: _size, disabled } }, /* @__PURE__ */ import_react8.default.createElement(import_core3.Box, __spreadValues(__spreadValues({ ref, size: _size }, getStyles("group")), others)));
 });
+PillGroup.classes = Pill_module_default;
 PillGroup.displayName = "@raikou/core/PillGroup";
+
+// css-module:./Pill.module.css#css-module
+var Pill_module_default2 = { "root": "m-7cda1cd6", "root--default": "m-44da308b", "root--contrast": "m-e3a01f8", "label": "m-1e0e6180", "remove": "m-ae386778", "group": "m-1dcfd90b" };
 
 // src/Pill.tsx
 var defaultProps4 = {
@@ -357,11 +368,7 @@ var Pill = (0, import_core4.factory)((_props, ref) => {
   const _variant = (pillsInputCtx == null ? void 0 : pillsInputCtx.variant) === "filled" ? "contrast" : variant || "default";
   const getStyles = (0, import_core4.useStyles)({
     name: "Pill",
-    classes: {
-      root: "pill-root",
-      label: "pill-label",
-      remove: "pill-remove"
-    },
+    classes: Pill_module_default2,
     props,
     className,
     style,
@@ -413,6 +420,7 @@ var Pill = (0, import_core4.factory)((_props, ref) => {
     )
   );
 });
+Pill.classes = Pill_module_default2;
 Pill.displayName = "@raikou/core/Pill";
 Pill.Group = PillGroup;
 // Annotate the CommonJS export names for ESM import in node:
@@ -420,3 +428,4 @@ Pill.Group = PillGroup;
   Pill,
   PillGroup
 });
+//# sourceMappingURL=index.js.map

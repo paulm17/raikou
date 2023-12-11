@@ -66,6 +66,11 @@ module.exports = __toCommonJS(src_exports);
 // src/Code.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./Code.module.css#css-module
+var Code_module_default = { "root": "m-b183c0a2" };
+
+// src/Code.tsx
 var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)((theme, { color }) => ({
   root: {
@@ -98,9 +103,7 @@ var Code = (0, import_core.factory)((_props, ref) => {
   const getStyles = (0, import_core.useStyles)({
     name: "Code",
     props,
-    classes: {
-      root: "code-root"
-    },
+    classes: Code_module_default,
     className,
     style,
     classNames,
@@ -122,7 +125,9 @@ var Code = (0, import_core.factory)((_props, ref) => {
   );
 });
 Code.displayName = "@raikou/core/Code";
+Code.classes = Code_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Code
 });
+//# sourceMappingURL=index.js.map

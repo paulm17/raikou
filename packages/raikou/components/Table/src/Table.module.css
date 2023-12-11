@@ -1,4 +1,4 @@
-.root {
+.table {
   @mixin light {
     --raikou-table-hover-color: #f1f3f5;
     --raikou-table-striped-color: #f8f9fa;
@@ -9,9 +9,7 @@
     --raikou-table-striped-color: #25262b;
     --raikou-table-border-color: #373a40;
   }
-}
 
-.table {
   width: 100%;
   border-collapse: collapse;
   line-height: var(--raikou-line-height);

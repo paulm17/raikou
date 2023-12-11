@@ -3687,4 +3687,4 @@ declare const NumberInput: _raikou_core.RaikouComponent<{
     variant: InputVariant;
 }>;
 
-export { NumberInput, NumberInputCssVariables, NumberInputFactory, NumberInputHandlers, NumberInputProps, NumberInputStylesNames };
+export { NumberInput, type NumberInputCssVariables, type NumberInputFactory, type NumberInputHandlers, type NumberInputProps, type NumberInputStylesNames };

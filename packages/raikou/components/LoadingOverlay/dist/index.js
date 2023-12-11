@@ -442,6 +442,11 @@ var clsx_default = clsx;
 
 // ../Loader/src/loaders/Bars.tsx
 var import_core3 = require("@raikou/core");
+
+// css-module:../Loader.module.css#css-module
+var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
+
+// ../Loader/src/loaders/Bars.tsx
 var Bars = (0, import_react57.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
@@ -449,13 +454,13 @@ var Bars = (0, import_react57.forwardRef)(
       import_core3.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-barsLoader", className)
+        className: clsx_default(Loader_module_default.barsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react57.default.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ import_react57.default.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ import_react57.default.createElement("span", { className: "loader-bar" })
+      /* @__PURE__ */ import_react57.default.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ import_react57.default.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ import_react57.default.createElement("span", { className: Loader_module_default.bar })
     );
   }
 );
@@ -470,7 +475,7 @@ var Oval = (0, import_react58.forwardRef)(
       import_core4.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-ovalLoader", className)
+        className: clsx_default(Loader_module_default.ovalLoader, className)
       }, others), {
         ref
       })
@@ -488,7 +493,7 @@ var Progress = (0, import_react59.forwardRef)(
       import_core5.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-progressLoader", className)
+        className: clsx_default(Loader_module_default.progressLoader, className)
       }, others), {
         ref
       }),
@@ -517,16 +522,19 @@ var Dots = (0, import_react60.forwardRef)(
       import_core6.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-dotsLoader", className)
+        className: clsx_default(Loader_module_default.dotsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react60.default.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ import_react60.default.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ import_react60.default.createElement("span", { className: "loader-dot" })
+      /* @__PURE__ */ import_react60.default.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ import_react60.default.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ import_react60.default.createElement("span", { className: Loader_module_default.dot })
     );
   }
 );
+
+// css-module:./Loader.module.css#css-module
+var Loader_module_default2 = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
 
 // ../Loader/src/Loader.tsx
 var defaultLoaders = {
@@ -577,9 +585,7 @@ var Loader = (0, import_core7.factory)((_props, ref) => {
   const getStyles = (0, import_core7.useStyles)({
     name: "Loader",
     props,
-    classes: {
-      root: "loader-root"
-    },
+    classes: Loader_module_default2,
     className,
     style,
     classNames,
@@ -599,10 +605,16 @@ var Loader = (0, import_core7.factory)((_props, ref) => {
   );
 });
 Loader.displayName = "@raikou/core/Loader";
+Loader.classes = Loader_module_default2;
 
 // ../Overlay/src/Overlay.tsx
 var import_react62 = __toESM(require("react"));
 var import_core8 = require("@raikou/core");
+
+// css-module:./Overlay.module.css#css-module
+var Overlay_module_default = { "root": "m-9814e45f" };
+
+// ../Overlay/src/Overlay.tsx
 var defaultProps2 = {
   zIndex: (0, import_core8.getDefaultZIndex)("modal")
 };
@@ -654,9 +666,7 @@ var Overlay = (0, import_core8.polymorphicFactory)((_props, ref) => {
   const getStyles = (0, import_core8.useStyles)({
     name: "Overlay",
     props,
-    classes: {
-      root: "overlay-root"
-    },
+    classes: Overlay_module_default,
     className,
     style,
     classNames,
@@ -668,6 +678,10 @@ var Overlay = (0, import_core8.polymorphicFactory)((_props, ref) => {
   return /* @__PURE__ */ import_react62.default.createElement(import_core8.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { mod: { center, fixed } }), others), children);
 });
 Overlay.displayName = "@raikou/core/Overlay";
+Overlay.classes = Overlay_module_default;
+
+// css-module:./LoadingOverlay.module.css#css-module
+var LoadingOverlay_module_default = { "root": "m-6e45937b", "loader": "m-e8eb006c", "overlay": "m-df587f17" };
 
 // src/LoadingOverlay.tsx
 var defaultProps3 = {
@@ -712,11 +726,7 @@ var LoadingOverlay = (0, import_core9.factory)((_props, ref) => {
   const theme = (0, import_core9.useRaikouTheme)();
   const getStyles = (0, import_core9.useStyles)({
     name: "LoadingOverlay",
-    classes: {
-      root: "loadingOverlay-root",
-      loader: "loadingOverlay-loader",
-      overlay: "loadingOverlay-overlay"
-    },
+    classes: LoadingOverlay_module_default,
     props,
     className,
     style,
@@ -751,8 +761,10 @@ var LoadingOverlay = (0, import_core9.factory)((_props, ref) => {
     )
   ));
 });
+LoadingOverlay.classes = LoadingOverlay_module_default;
 LoadingOverlay.displayName = "@raikou/core/LoadingOverlay";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   LoadingOverlay
 });
+//# sourceMappingURL=index.js.map

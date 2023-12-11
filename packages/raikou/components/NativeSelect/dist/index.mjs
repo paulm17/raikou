@@ -93,6 +93,11 @@ import {
   getFontSize,
   createVarsResolver
 } from "@raikou/core";
+
+// css-module:../Input.module.css#css-module
+var Input_module_default = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
+
+// ../Input/src/InputLabel/InputLabel.tsx
 var defaultProps = {
   labelElement: "label"
 };
@@ -138,10 +143,11 @@ var InputLabel = factory((_props, ref) => {
   const _getStyles = useStyles({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      label: "inputWrapper-label",
-      required: "inputWrapper-required"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    // },
     className,
     style,
     classNames,
@@ -220,9 +226,10 @@ var InputError = factory2((_props, ref) => {
   const _getStyles = useStyles2({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      error: "inputWrapper-error"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   error: "inputWrapper-error",
+    // },
     className,
     style,
     classNames,
@@ -295,9 +302,10 @@ var InputDescription = factory3(
     const _getStyles = useStyles3({
       name: ["InputWrapper", __staticSelector],
       props,
-      classes: {
-        description: "inputWrapper-description"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   description: "inputWrapper-description",
+      // },
       className,
       style,
       classNames,
@@ -355,9 +363,10 @@ var InputPlaceholder = factory4(
     const getStyles = useStyles4({
       name: ["InputPlaceholder", __staticSelector],
       props,
-      classes: {
-        placeholder: "input-placeholder"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   placeholder: "input-placeholder",
+      // },
       className,
       style,
       classNames,
@@ -552,13 +561,14 @@ var InputWrapper = factory5((_props, ref) => {
   const getStyles = useStyles5({
     name: ["InputWrapper", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      root: "inputWrapper-root",
-      label: "inputWrapper-label",
-      required: "inputWrapper-required",
-      error: "inputWrapper-error",
-      description: "inputWrapper-description"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   root: "inputWrapper-root",
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    //   error: "inputWrapper-error",
+    //   description: "inputWrapper-description",
+    // },
     className,
     style,
     classNames,
@@ -649,6 +659,9 @@ var InputWrapper = factory5((_props, ref) => {
   );
 });
 InputWrapper.displayName = "@raikou/core/InputWrapper";
+
+// css-module:./Input.module.css#css-module
+var Input_module_default2 = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
 
 // ../Input/src/Input.tsx
 var defaultProps6 = {
@@ -742,11 +755,12 @@ var Input = polymorphicFactory((_props, ref) => {
   const getStyles = useStyles6({
     name: ["Input", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      wrapper: "input-wrapper",
-      input: "input-input",
-      section: "input-section"
-    },
+    classes: Input_module_default2,
+    // classes: {
+    //   wrapper: "input-wrapper",
+    //   input: "input-input",
+    //   section: "input-section",
+    // },
     className,
     style,
     classNames,
@@ -962,6 +976,11 @@ import {
   createVarsResolver as createVarsResolver6,
   useStyles as useStyles7
 } from "@raikou/core";
+
+// css-module:../Combobox.module.css#css-module
+var Combobox_module_default = { "dropdown": "m-88b62a41", "options": "m-b2821a6e", "option": "m-92253aa5", "search": "m-985517d8", "empty": "m-2530cd1d", "header": "m-858f94bd", "footer": "m-82b967cb", "group": "m-254f3e4f", "groupLabel": "m-2bb2e9e5", "chevron": "m-2943220b", "optionsDropdownScrollArea": "m-71d052f9", "optionsDropdownOption": "m-390b5f4", "optionsDropdownCheckIcon": "m-8ee53fc2" };
+
+// ../Combobox/src/ComboboxChevron/ComboboxChevron.tsx
 var defaultProps8 = {
   error: null
 };
@@ -996,9 +1015,7 @@ var ComboboxChevron = factory6(
     ]);
     const getStyles = useStyles7({
       name: "ComboboxChevron",
-      classes: {
-        chevron: "combobox-chevron"
-      },
+      classes: Combobox_module_default,
       props,
       style,
       className,
@@ -1033,6 +1050,7 @@ var ComboboxChevron = factory6(
     );
   }
 );
+ComboboxChevron.classes = Combobox_module_default;
 ComboboxChevron.displayName = "@raikou/core/ComboboxChevron";
 
 // src/NativeSelectOption.tsx
@@ -1081,3 +1099,4 @@ NativeSelect.displayName = "@raikou/core/NativeSelect";
 export {
   NativeSelect
 };
+//# sourceMappingURL=index.mjs.map

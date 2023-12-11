@@ -1,7 +1,11 @@
 .tab {
   position: relative;
-  border: rem(1px) solid light-dark(var(--raikou-color-gray-2), var(--raikou-color-dark-4));
-  background-color: light-dark(var(--raikou-color-white), var(--raikou-color-dark-6));
+  border: rem(1px) solid
+    light-dark(var(--raikou-color-gray-2), var(--raikou-color-dark-4));
+  background-color: light-dark(
+    var(--raikou-color-white),
+    var(--raikou-color-dark-6)
+  );
 
   &:first-of-type {
     border-radius: rem(4px) 0 0 rem(4px);
@@ -29,7 +33,10 @@
   }
 
   @mixin hover {
-    background-color: light-dark(var(--raikou-color-gray-0), var(--raikou-color-dark-5));
+    background-color: light-dark(
+      var(--raikou-color-gray-0),
+      var(--raikou-color-dark-5)
+    );
   }
 
   &[data-active] {

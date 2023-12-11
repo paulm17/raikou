@@ -66,6 +66,11 @@ module.exports = __toCommonJS(src_exports);
 // src/Divider.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./Divider.module.css#css-module
+var Divider_module_default = { "root": "m-3eebeb36", "label": "m-9e365f20" };
+
+// src/Divider.tsx
 var defaultProps = {
   orientation: "horizontal"
 };
@@ -105,10 +110,7 @@ var Divider = (0, import_core.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core.useStyles)({
     name: "Divider",
-    classes: {
-      root: "divider-root",
-      label: "divider-label"
-    },
+    classes: Divider_module_default,
     props,
     className,
     style,
@@ -137,7 +139,9 @@ var Divider = (0, import_core.factory)((_props, ref) => {
   );
 });
 Divider.displayName = "@raikou/core/Divider";
+Divider.classes = Divider_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Divider
 });
+//# sourceMappingURL=index.js.map

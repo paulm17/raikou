@@ -73,6 +73,11 @@ var import_core10 = require("@raikou/core");
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps = {
   __staticSelector: "UnstyledButton"
 };
@@ -99,9 +104,7 @@ var UnstyledButton = (0, import_core.polymorphicFactory)(
     const getStyles = (0, import_core.useStyles)({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -119,6 +122,7 @@ var UnstyledButton = (0, import_core.polymorphicFactory)(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // ../InputBase/src/InputBase.tsx
 var import_react12 = __toESM(require("react"));
@@ -159,6 +163,11 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
 // ../Input/src/InputLabel/InputLabel.tsx
 var import_react6 = __toESM(require("react"));
 var import_core2 = require("@raikou/core");
+
+// css-module:../Input.module.css#css-module
+var Input_module_default = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
+
+// ../Input/src/InputLabel/InputLabel.tsx
 var defaultProps2 = {
   labelElement: "label"
 };
@@ -204,10 +213,11 @@ var InputLabel = (0, import_core2.factory)((_props, ref) => {
   const _getStyles = (0, import_core2.useStyles)({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      label: "inputWrapper-label",
-      required: "inputWrapper-required"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    // },
     className,
     style,
     classNames,
@@ -278,9 +288,10 @@ var InputError = (0, import_core3.factory)((_props, ref) => {
   const _getStyles = (0, import_core3.useStyles)({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      error: "inputWrapper-error"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   error: "inputWrapper-error",
+    // },
     className,
     style,
     classNames,
@@ -345,9 +356,10 @@ var InputDescription = (0, import_core4.factory)(
     const _getStyles = (0, import_core4.useStyles)({
       name: ["InputWrapper", __staticSelector],
       props,
-      classes: {
-        description: "inputWrapper-description"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   description: "inputWrapper-description",
+      // },
       className,
       style,
       classNames,
@@ -400,9 +412,10 @@ var InputPlaceholder = (0, import_core5.factory)(
     const getStyles = (0, import_core5.useStyles)({
       name: ["InputPlaceholder", __staticSelector],
       props,
-      classes: {
-        placeholder: "input-placeholder"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   placeholder: "input-placeholder",
+      // },
       className,
       style,
       classNames,
@@ -509,13 +522,14 @@ var InputWrapper = (0, import_core6.factory)((_props, ref) => {
   const getStyles = (0, import_core6.useStyles)({
     name: ["InputWrapper", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      root: "inputWrapper-root",
-      label: "inputWrapper-label",
-      required: "inputWrapper-required",
-      error: "inputWrapper-error",
-      description: "inputWrapper-description"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   root: "inputWrapper-root",
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    //   error: "inputWrapper-error",
+    //   description: "inputWrapper-description",
+    // },
     className,
     style,
     classNames,
@@ -606,6 +620,9 @@ var InputWrapper = (0, import_core6.factory)((_props, ref) => {
   );
 });
 InputWrapper.displayName = "@raikou/core/InputWrapper";
+
+// css-module:./Input.module.css#css-module
+var Input_module_default2 = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
 
 // ../Input/src/Input.tsx
 var defaultProps7 = {
@@ -699,11 +716,12 @@ var Input = (0, import_core7.polymorphicFactory)((_props, ref) => {
   const getStyles = (0, import_core7.useStyles)({
     name: ["Input", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      wrapper: "input-wrapper",
-      input: "input-input",
-      section: "input-section"
-    },
+    classes: Input_module_default2,
+    // classes: {
+    //   wrapper: "input-wrapper",
+    //   input: "input-input",
+    //   section: "input-section",
+    // },
     className,
     style,
     classNames,
@@ -911,6 +929,9 @@ function NumberInputChevron(_a) {
   );
 }
 
+// css-module:./NumberInput.module.css#css-module
+var NumberInput_module_default = { "root": "m-e2f5cd4e", "controls": "m-95e17d22", "control": "m-80b4b171" };
+
 // src/NumberInput.tsx
 function isValidNumber(value) {
   return typeof value === "number" && !Number.isNaN(value);
@@ -1016,10 +1037,7 @@ var NumberInput = (0, import_core10.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core10.useStyles)({
     name: "NumberInput",
-    classes: {
-      controls: "numberInput-controls",
-      control: "numberInput-control"
-    },
+    classes: NumberInput_module_default,
     props,
     classNames,
     styles,
@@ -1104,7 +1122,7 @@ var NumberInput = (0, import_core10.factory)((_props, ref) => {
     __spreadProps(__spreadValues({
       component: import_react_number_format.NumericFormat,
       allowNegative,
-      className: (0, import_clsx.default)("numberInput-root", className),
+      className: (0, import_clsx.default)(NumberInput_module_default.root, className),
       size
     }, others), {
       readOnly,
@@ -1144,3 +1162,4 @@ NumberInput.displayName = "@raikou/core/NumberInput";
 0 && (module.exports = {
   NumberInput
 });
+//# sourceMappingURL=index.js.map

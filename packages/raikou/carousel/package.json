@@ -2,19 +2,27 @@
   "name": "@raikou/carousel",
   "description": "Embla based carousel",
   "version": "0.0.1-beta.8",
-  "main": "index.js",
+  "license": "MIT",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "module": "./dist/index.mjs",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
     }
   },
-  "license": "MIT",
-  "sideEffects": false,
+  "files": [
+    "dist/**"
+  ],
   "scripts": {
-    "build": "tsup src/index.ts --dts --format esm,cjs --clean",
+    "build": "tsup src/index.ts --config ../../../configuration/tsup/tsup.config.ts",
     "lint": "eslint \"**/*.ts*\"",
     "clean": "rimraf dist .turbo",
     "typecheck": "tsc --noEmit",
@@ -37,7 +45,6 @@
     "tslib": "^2.6.1"
   },
   "devDependencies": {
-    "clean-package": "2.2.0",
-    "tsup": "^7.1.0"
+    "clean-package": "2.2.0"
   }
 }

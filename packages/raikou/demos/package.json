@@ -15,7 +15,7 @@
   "license": "MIT",
   "sideEffects": false,
   "scripts": {
-    "build": "tsup src/index.ts --dts --format esm,cjs --clean",
+    "pbuild": "tsup src/index.ts --dts --format esm,cjs --clean",
     "lint": "eslint \"**/*.ts*\"",
     "clean": "rimraf dist .turbo",
     "typecheck": "tsc --noEmit",
@@ -76,7 +76,6 @@
     "tslib": "^2.6.0"
   },
   "devDependencies": {
-    "clean-package": "2.2.0",
-    "tsup": "^7.1.0"
+    "clean-package": "2.2.0"
   }
 }

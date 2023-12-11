@@ -38,6 +38,11 @@ import {
   getSize,
   getRadius
 } from "@raikou/core";
+
+// css-module:./ThemeIcon.module.css#css-module
+var ThemeIcon_module_default = { "root": "m-7341320d" };
+
+// src/ThemeIcon.tsx
 var defaultProps = {};
 var varsResolver = createVarsResolver(
   (theme, { size, radius, variant, gradient, color }) => {
@@ -63,9 +68,7 @@ var ThemeIcon = factory((_props, ref) => {
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
   const getStyles = useStyles({
     name: "ThemeIcon",
-    classes: {
-      root: "themeIcon-root"
-    },
+    classes: ThemeIcon_module_default,
     props,
     className,
     style,
@@ -77,7 +80,9 @@ var ThemeIcon = factory((_props, ref) => {
   });
   return /* @__PURE__ */ React.createElement(Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others));
 });
+ThemeIcon.classes = ThemeIcon_module_default;
 ThemeIcon.displayName = "@raikou/core/ThemeIcon";
 export {
   ThemeIcon
 };
+//# sourceMappingURL=index.mjs.map

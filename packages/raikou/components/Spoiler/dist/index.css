@@ -1,0 +1,105 @@
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Text/src/Text.module.css/#css-module-data */
+.m-b6d8b162 {
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+  font-size: var(--text-fz, var(--raikou-font-size-md));
+  line-height: var( --_text-line-height, var(--text-lh, var(--raikou-line-height-md)) );
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+}
+.m-b6d8b162[data-truncate] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.m-b6d8b162[data-truncate=start] {
+  direction: rtl;
+  text-align: right;
+}
+[dir=rtl] .m-b6d8b162[data-truncate=start] {
+  direction: ltr;
+  text-align: left;
+}
+.m-b6d8b162[data-variant=gradient] {
+  background-image: var(--text-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.m-b6d8b162[data-line-clamp] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: var(--text-line-clamp);
+  -webkit-box-orient: vertical;
+}
+.m-b6d8b162[data-inherit] {
+  line-height: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+}
+.m-b6d8b162[data-inline] {
+  --_text-line-height: 1;
+}
+
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Anchor/src/Anchor.module.css/#css-module-data */
+.m-849cf0da {
+  color: var(--raikou-color-anchor);
+  text-decoration: var(--_text-decoration, none);
+  appearance: none;
+  border: none;
+  display: inline;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+@media (hover: hover) {
+  .m-849cf0da[data-underline=hover]:hover {
+    --_text-decoration: underline;
+  }
+}
+@media (hover: none) {
+  .m-849cf0da[data-underline=hover]:active {
+    --_text-decoration: underline;
+  }
+}
+.m-849cf0da[data-underline=always] {
+  --_text-decoration: underline;
+}
+
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Spoiler/src/Spoiler.module.css/#css-module-data */
+[data-raikou-color-scheme=light] .m-559cce2d {
+  --raikou-spotlight-actions-list-border: #e9ecef;
+  --raikou-spotlight-action-bg-hover: #f8f9fa;
+  --raikou-spotlight-action-bg-active: #f8f9fa;
+  --raikou-spotlight-footer-border: #e9ecef;
+}
+[data-raikou-color-scheme=dark] .m-559cce2d {
+  --raikou-spotlight-actions-list-border: #373a40;
+  --raikou-spotlight-action-bg-hover: #25262b;
+  --raikou-spotlight-action-bg-active: #25262b;
+  --raikou-spotlight-footer-border: #373a40;
+}
+.m-559cce2d {
+  position: relative;
+  margin-bottom: var(--_spoiler-margin-bottom);
+}
+.m-559cce2d[data-has-spoiler] {
+  --_spoiler-margin-bottom: calc(1.5rem * var(--raikou-scale));
+}
+.m-b912df4e {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: max-height var(--spoiler-transition-duration, 200ms) ease;
+}
+.m-b9131032 {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  height: calc(1.5rem * var(--raikou-scale));
+}
+/*# sourceMappingURL=index.css.map */

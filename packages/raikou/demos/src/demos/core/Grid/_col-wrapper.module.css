@@ -1,6 +1,9 @@
 .col {
   height: 100%;
-  background-color: light-dark(var(--raikou-color-blue-0), var(--raikou-color-dark-4));
+  background-color: light-dark(
+    var(--raikou-color-blue-0),
+    var(--raikou-color-dark-4)
+  );
   padding: var(--raikou-spacing-md);
 }
 

@@ -50,6 +50,11 @@ import {
   useStyles,
   polymorphicFactory
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps = {
   __staticSelector: "UnstyledButton"
 };
@@ -76,9 +81,7 @@ var UnstyledButton = polymorphicFactory(
     const getStyles = useStyles({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -96,6 +99,10 @@ var UnstyledButton = polymorphicFactory(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
+
+// css-module:./Burger.module.css#css-module
+var Burger_module_default = { "root": "m-fea6bf1a", "burger": "m-d4fb9cad" };
 
 // src/Burger.tsx
 var defaultProps2 = {};
@@ -136,10 +143,7 @@ var Burger = factory((_props, ref) => {
   ]);
   const getStyles = useStyles2({
     name: "Burger",
-    classes: {
-      root: "burger-root",
-      burger: "burger-burger"
-    },
+    classes: Burger_module_default,
     props,
     className,
     style,
@@ -152,6 +156,8 @@ var Burger = factory((_props, ref) => {
   return /* @__PURE__ */ React2.createElement(UnstyledButton, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref }), others), /* @__PURE__ */ React2.createElement(Box2, __spreadValues({ mod: ["reduce-motion", { opened }] }, getStyles("burger"))), children);
 });
 Burger.displayName = "@raikou/core/Burger";
+Burger.classes = Burger_module_default;
 export {
   Burger
 };
+//# sourceMappingURL=index.mjs.map

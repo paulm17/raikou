@@ -1,0 +1,18 @@
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Overlay/src/Overlay.module.css/#css-module-data */
+.m-9814e45f {
+  inset: 0;
+  position: var(--_overlay-position, absolute);
+  background: var(--overlay-bg, rgba(0, 0, 0, 0.6));
+  backdrop-filter: var(--overlay-filter);
+  border-radius: var(--overlay-radius, 0);
+  z-index: var(--overlay-z-index);
+}
+.m-9814e45f[data-fixed] {
+  --_overlay-position: fixed;
+}
+.m-9814e45f[data-center] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/*# sourceMappingURL=index.css.map */

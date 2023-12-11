@@ -130,6 +130,9 @@ function OptionalPortal(_a) {
 }
 OptionalPortal.displayName = "@raikou/core/OptionalPortal";
 
+// css-module:./Affix.module.css#css-module
+var Affix_module_default = { "root": "m-7f854edf" };
+
 // ../Affix/src/Affix.tsx
 var defaultProps2 = {
   position: { bottom: 0, right: 0 },
@@ -174,9 +177,7 @@ var Affix = (0, import_core2.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core2.useStyles)({
     name: "Affix",
-    classes: {
-      root: "affix-root"
-    },
+    classes: Affix_module_default,
     props,
     className,
     style,
@@ -189,10 +190,16 @@ var Affix = (0, import_core2.factory)((_props, ref) => {
   return /* @__PURE__ */ import_react3.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ import_react3.default.createElement(import_core2.Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others)));
 });
 Affix.displayName = "@raikou/core/Affix";
+Affix.classes = Affix_module_default;
 
 // ../Paper/src/Paper.tsx
 var import_react4 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
+
+// css-module:./Paper.module.css#css-module
+var Paper_module_default = { "root": "m-1b7284a3" };
+
+// ../Paper/src/Paper.tsx
 var defaultProps3 = {};
 var varsResolver2 = (0, import_core3.createVarsResolver)(
   (_, { radius, shadow }) => ({
@@ -230,9 +237,7 @@ var Paper = (0, import_core3.polymorphicFactory)((_props, ref) => {
   const getStyles = (0, import_core3.useStyles)({
     name: "Paper",
     props,
-    classes: {
-      root: "paper-root"
-    },
+    classes: Paper_module_default,
     className,
     style,
     classNames,
@@ -252,6 +257,7 @@ var Paper = (0, import_core3.polymorphicFactory)((_props, ref) => {
   );
 });
 Paper.displayName = "@raikou/core/Paper";
+Paper.classes = Paper_module_default;
 
 // ../Transition/src/transitions.ts
 var import_core4 = require("@raikou/core");
@@ -521,6 +527,11 @@ var import_core7 = require("@raikou/core");
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react8 = __toESM(require("react"));
 var import_core6 = require("@raikou/core");
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps4 = {
   __staticSelector: "UnstyledButton"
 };
@@ -547,9 +558,7 @@ var UnstyledButton = (0, import_core6.polymorphicFactory)(
     const getStyles = (0, import_core6.useStyles)({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -567,6 +576,10 @@ var UnstyledButton = (0, import_core6.polymorphicFactory)(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
+
+// css-module:./CloseButton.module.css#css-module
+var CloseButton_module_default = { "root": "m-86a44da5", "root--subtle": "m-220c80f2" };
 
 // ../CloseButton/src/CloseButton.tsx
 var defaultProps5 = {
@@ -617,9 +630,7 @@ var CloseButton = (0, import_core7.polymorphicFactory)(
       props,
       className,
       style,
-      classes: {
-        root: "closeButton-root"
-      },
+      classes: CloseButton_module_default,
       classNames,
       styles,
       unstyled,
@@ -642,6 +653,10 @@ var CloseButton = (0, import_core7.polymorphicFactory)(
   }
 );
 CloseButton.displayName = "@raikou/core/CloseButton";
+CloseButton.classes = CloseButton_module_default;
+
+// css-module:./Dialog.module.css#css-module
+var Dialog_module_default = { "root": "m-e2125a27", "closeButton": "m-5abab665" };
 
 // src/Dialog.tsx
 var defaultProps6 = {
@@ -698,10 +713,7 @@ var Dialog = (0, import_core8.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core8.useStyles)({
     name: "Dialog",
-    classes: {
-      root: "dialog-root",
-      closeButton: "dialog-closeButton"
-    },
+    classes: Dialog_module_default,
     props,
     className,
     style,
@@ -738,7 +750,9 @@ var Dialog = (0, import_core8.factory)((_props, ref) => {
   );
 });
 Dialog.displayName = "@raikou/core/Dialog";
+Dialog.classes = Dialog_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Dialog
 });
+//# sourceMappingURL=index.js.map

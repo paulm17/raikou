@@ -51,6 +51,11 @@ import {
   useStyles,
   polymorphicFactory
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps = {
   __staticSelector: "UnstyledButton"
 };
@@ -77,9 +82,7 @@ var UnstyledButton = polymorphicFactory(
     const getStyles = useStyles({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -97,6 +100,7 @@ var UnstyledButton = polymorphicFactory(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // ../Loader/src/Loader.tsx
 import React6 from "react";
@@ -136,6 +140,11 @@ var clsx_default = clsx;
 
 // ../Loader/src/loaders/Bars.tsx
 import { Box as Box2 } from "@raikou/core";
+
+// css-module:../Loader.module.css#css-module
+var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
+
+// ../Loader/src/loaders/Bars.tsx
 var Bars = forwardRef(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
@@ -143,13 +152,13 @@ var Bars = forwardRef(
       Box2,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-barsLoader", className)
+        className: clsx_default(Loader_module_default.barsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React2.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ React2.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ React2.createElement("span", { className: "loader-bar" })
+      /* @__PURE__ */ React2.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React2.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React2.createElement("span", { className: Loader_module_default.bar })
     );
   }
 );
@@ -164,7 +173,7 @@ var Oval = forwardRef2(
       Box3,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-ovalLoader", className)
+        className: clsx_default(Loader_module_default.ovalLoader, className)
       }, others), {
         ref
       })
@@ -182,7 +191,7 @@ var Progress = forwardRef3(
       Box4,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-progressLoader", className)
+        className: clsx_default(Loader_module_default.progressLoader, className)
       }, others), {
         ref
       }),
@@ -211,16 +220,19 @@ var Dots = forwardRef4(
       Box5,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-dotsLoader", className)
+        className: clsx_default(Loader_module_default.dotsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React5.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ React5.createElement("span", { className: "loader-dot" })
+      /* @__PURE__ */ React5.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React5.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React5.createElement("span", { className: Loader_module_default.dot })
     );
   }
 );
+
+// css-module:./Loader.module.css#css-module
+var Loader_module_default2 = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
 
 // ../Loader/src/Loader.tsx
 var defaultLoaders = {
@@ -271,9 +283,7 @@ var Loader = factory((_props, ref) => {
   const getStyles = useStyles2({
     name: "Loader",
     props,
-    classes: {
-      root: "loader-root"
-    },
+    classes: Loader_module_default2,
     className,
     style,
     classNames,
@@ -293,6 +303,7 @@ var Loader = factory((_props, ref) => {
   );
 });
 Loader.displayName = "@raikou/core/Loader";
+Loader.classes = Loader_module_default2;
 
 // src/ButtonGroup/ButtonGroup.tsx
 import React7 from "react";
@@ -361,6 +372,9 @@ var ButtonGroup = factory2((_props, ref) => {
   );
 });
 ButtonGroup.displayName = "@raikou/core/ButtonGroup";
+
+// css-module:./Button.module.css#css-module
+var Button_module_default = { "root": "m-77c9d27d", "inner": "m-80f1301b", "label": "m-811560b9", "section": "m-a74036a", "loader": "m-a25b86ee", "group": "m-80d6d844" };
 
 // src/Button.tsx
 var defaultProps4 = {
@@ -435,13 +449,7 @@ var Button = polymorphicFactory2((_props, ref) => {
   const getStyles = useStyles4({
     name: "Button",
     props,
-    classes: {
-      root: "button-root",
-      inner: "button-inner",
-      loader: "button-loader",
-      section: "button-section",
-      label: "button-label"
-    },
+    classes: Button_module_default,
     className,
     style,
     classNames,
@@ -514,7 +522,9 @@ var Button = polymorphicFactory2((_props, ref) => {
 });
 Button.displayName = "@raikou/core/Button";
 Button.Group = ButtonGroup;
+Button.classes = Button_module_default;
 export {
   Button,
   ButtonGroup
 };
+//# sourceMappingURL=index.mjs.map

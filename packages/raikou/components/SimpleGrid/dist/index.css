@@ -1,0 +1,7 @@
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/SimpleGrid/src/SimpleGrid.module.css/#css-module-data */
+.m-2415a157 {
+  display: grid;
+  grid-template-columns: repeat(var(--sg-cols), minmax(0, 1fr));
+  gap: var(--sg-spacing-y) var(--sg-spacing-x);
+}
+/*# sourceMappingURL=index.css.map */

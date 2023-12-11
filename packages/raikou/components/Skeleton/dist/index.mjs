@@ -41,6 +41,11 @@ import {
   rem,
   getRadius
 } from "@raikou/core";
+
+// css-module:./Skeleton.module.css#css-module
+var Skeleton_module_default = { "root": "m-18320242", "skeleton-fade": "m-299c329c" };
+
+// src/Skeleton.tsx
 var defaultProps = {
   visible: true,
   animate: true
@@ -85,9 +90,7 @@ var Skeleton = factory((_props, ref) => {
   ]);
   const getStyles = useStyles({
     name: "Skeleton",
-    classes: {
-      root: "skeleton-root"
-    },
+    classes: Skeleton_module_default,
     props,
     className,
     style,
@@ -106,7 +109,9 @@ var Skeleton = factory((_props, ref) => {
     }), others)
   );
 });
+Skeleton.classes = Skeleton_module_default;
 Skeleton.displayName = "@raikou/core/Skeleton";
 export {
   Skeleton
 };
+//# sourceMappingURL=index.mjs.map

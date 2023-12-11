@@ -311,4 +311,4 @@ declare namespace Menu {
     }>;
 }
 
-export { Menu, MenuDivider, MenuDividerProps, MenuDropdown, MenuDropdownProps, MenuFactory, MenuItem, MenuItemProps, MenuLabel, MenuLabelProps, MenuProps, MenuStylesNames, MenuTarget, MenuTargetProps };
+export { Menu, MenuDivider, type MenuDividerProps, MenuDropdown, type MenuDropdownProps, type MenuFactory, MenuItem, type MenuItemProps, MenuLabel, type MenuLabelProps, type MenuProps, type MenuStylesNames, MenuTarget, type MenuTargetProps };

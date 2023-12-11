@@ -31,7 +31,7 @@ describe("@raikou/core/Loader", () => {
           ...defaultLoaders,
           custom: customLoader,
         }}
-      />
+      />,
     );
     expect(container.querySelector("[data-custom-loader]")).toBeInTheDocument();
   });

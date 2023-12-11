@@ -5,10 +5,11 @@ import {
   keys,
   px,
   rem
-} from "./chunk-YUAHGI36.mjs";
+} from "./chunk-T4QKJGPD.mjs";
 import {
-  __pow
-} from "./chunk-TKBDMZFR.mjs";
+  __pow,
+  __spreadValues
+} from "./chunk-TOPM6CMB.mjs";
 
 // src/core/RaikouProvider/color-functions/get-primary-shade/get-primary-shade.ts
 function getPrimaryShade(theme, colorScheme) {
@@ -879,7 +880,7 @@ function RaikouClasses({ theme, nonce }) {
 }
 
 // src/core/RaikouProvider/RaikouProvider.tsx
-import useStore from "@raikou/global-store";
+import { setState } from "@raikou/global-store";
 suppressNextjsWarning();
 function RaikouProvider({
   theme,
@@ -911,7 +912,9 @@ function RaikouProvider({
   if (typeof window !== "undefined") {
     window["raikou_theme"] = theme;
   } else {
-    useStore.setState(theme);
+    setState((state) => ({
+      state: __spreadValues(__spreadValues({}, state), theme)
+    }));
   }
   return /* @__PURE__ */ React3.createElement(
     ThemeProvider,

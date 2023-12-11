@@ -103,6 +103,11 @@ import {
   createVarsResolver,
   useStyles
 } from "@raikou/core";
+
+// css-module:../Combobox.module.css#css-module
+var Combobox_module_default = { "dropdown": "m-88b62a41", "options": "m-b2821a6e", "option": "m-92253aa5", "search": "m-985517d8", "empty": "m-2530cd1d", "header": "m-858f94bd", "footer": "m-82b967cb", "group": "m-254f3e4f", "groupLabel": "m-2bb2e9e5", "chevron": "m-2943220b", "optionsDropdownScrollArea": "m-71d052f9", "optionsDropdownOption": "m-390b5f4", "optionsDropdownCheckIcon": "m-8ee53fc2" };
+
+// src/ComboboxChevron/ComboboxChevron.tsx
 var defaultProps = {
   error: null
 };
@@ -137,9 +142,7 @@ var ComboboxChevron = factory(
     ]);
     const getStyles = useStyles({
       name: "ComboboxChevron",
-      classes: {
-        chevron: "combobox-chevron"
-      },
+      classes: Combobox_module_default,
       props,
       style,
       className,
@@ -174,6 +177,7 @@ var ComboboxChevron = factory(
     );
   }
 );
+ComboboxChevron.classes = Combobox_module_default;
 ComboboxChevron.displayName = "@raikou/core/ComboboxChevron";
 
 // src/Combobox.tsx
@@ -2843,6 +2847,9 @@ var PopoverDropdown = factory3(
 );
 PopoverDropdown.displayName = "@raikou/core/PopoverDropdown";
 
+// css-module:./Popover.module.css#css-module
+var Popover_module_default = { "dropdown": "m-38a85659", "arrow": "m-a31dc6c1" };
+
 // ../Popover/src/Popover.tsx
 var defaultProps5 = {
   position: "bottom",
@@ -2958,10 +2965,7 @@ function Popover(_props) {
   const getStyles = useStyles2({
     name: __staticSelector,
     props,
-    classes: {
-      dropdown: "popover-dropdown",
-      arrow: "popover-arrow"
-    },
+    classes: Popover_module_default,
     classNames,
     styles,
     unstyled,
@@ -3615,6 +3619,11 @@ import {
   getFontSize,
   createVarsResolver as createVarsResolver3
 } from "@raikou/core";
+
+// css-module:../Input.module.css#css-module
+var Input_module_default = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
+
+// ../Input/src/InputLabel/InputLabel.tsx
 var defaultProps10 = {
   labelElement: "label"
 };
@@ -3660,10 +3669,11 @@ var InputLabel = factory8((_props, ref) => {
   const _getStyles = useStyles3({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      label: "inputWrapper-label",
-      required: "inputWrapper-required"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    // },
     className,
     style,
     classNames,
@@ -3742,9 +3752,10 @@ var InputError = factory9((_props, ref) => {
   const _getStyles = useStyles4({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      error: "inputWrapper-error"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   error: "inputWrapper-error",
+    // },
     className,
     style,
     classNames,
@@ -3817,9 +3828,10 @@ var InputDescription = factory10(
     const _getStyles = useStyles5({
       name: ["InputWrapper", __staticSelector],
       props,
-      classes: {
-        description: "inputWrapper-description"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   description: "inputWrapper-description",
+      // },
       className,
       style,
       classNames,
@@ -3877,9 +3889,10 @@ var InputPlaceholder = factory11(
     const getStyles = useStyles6({
       name: ["InputPlaceholder", __staticSelector],
       props,
-      classes: {
-        placeholder: "input-placeholder"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   placeholder: "input-placeholder",
+      // },
       className,
       style,
       classNames,
@@ -3994,13 +4007,14 @@ var InputWrapper = factory12((_props, ref) => {
   const getStyles = useStyles7({
     name: ["InputWrapper", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      root: "inputWrapper-root",
-      label: "inputWrapper-label",
-      required: "inputWrapper-required",
-      error: "inputWrapper-error",
-      description: "inputWrapper-description"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   root: "inputWrapper-root",
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    //   error: "inputWrapper-error",
+    //   description: "inputWrapper-description",
+    // },
     className,
     style,
     classNames,
@@ -4091,6 +4105,9 @@ var InputWrapper = factory12((_props, ref) => {
   );
 });
 InputWrapper.displayName = "@raikou/core/InputWrapper";
+
+// css-module:./Input.module.css#css-module
+var Input_module_default2 = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
 
 // ../Input/src/Input.tsx
 var defaultProps15 = {
@@ -4184,11 +4201,12 @@ var Input = polymorphicFactory((_props, ref) => {
   const getStyles = useStyles8({
     name: ["Input", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      wrapper: "input-wrapper",
-      input: "input-input",
-      section: "input-section"
-    },
+    classes: Input_module_default2,
+    // classes: {
+    //   wrapper: "input-wrapper",
+    //   input: "input-input",
+    //   section: "input-section",
+    // },
     className,
     style,
     classNames,
@@ -4545,6 +4563,11 @@ import {
   useStyles as useStyles9,
   polymorphicFactory as polymorphicFactory2
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps23 = {
   __staticSelector: "UnstyledButton"
 };
@@ -4571,9 +4594,7 @@ var UnstyledButton = polymorphicFactory2(
     const getStyles = useStyles9({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -4591,6 +4612,10 @@ var UnstyledButton = polymorphicFactory2(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
+
+// css-module:./CloseButton.module.css#css-module
+var CloseButton_module_default = { "root": "m-86a44da5", "root--subtle": "m-220c80f2" };
 
 // ../CloseButton/src/CloseButton.tsx
 var defaultProps24 = {
@@ -4641,9 +4666,7 @@ var CloseButton = polymorphicFactory3(
       props,
       className,
       style,
-      classes: {
-        root: "closeButton-root"
-      },
+      classes: CloseButton_module_default,
       classNames,
       styles,
       unstyled,
@@ -4666,6 +4689,7 @@ var CloseButton = polymorphicFactory3(
   }
 );
 CloseButton.displayName = "@raikou/core/CloseButton";
+CloseButton.classes = CloseButton_module_default;
 
 // src/ComboboxClearButton/ComboboxClearButton.tsx
 var ComboboxClearButton = forwardRef5((_a, ref) => {
@@ -4691,6 +4715,9 @@ var ComboboxClearButton = forwardRef5((_a, ref) => {
   );
 });
 ComboboxClearButton.displayName = "@mantine/core/ComboboxClearButton";
+
+// css-module:./Combobox.module.css#css-module
+var Combobox_module_default2 = { "dropdown": "m-88b62a41", "options": "m-b2821a6e", "option": "m-92253aa5", "search": "m-985517d8", "empty": "m-2530cd1d", "header": "m-858f94bd", "footer": "m-82b967cb", "group": "m-254f3e4f", "groupLabel": "m-2bb2e9e5", "chevron": "m-2943220b", "optionsDropdownScrollArea": "m-71d052f9", "optionsDropdownOption": "m-390b5f4", "optionsDropdownCheckIcon": "m-8ee53fc2" };
 
 // src/Combobox.tsx
 var defaultProps25 = {
@@ -4746,17 +4773,7 @@ function Combobox(_props) {
   const store = controlledStore || uncontrolledStore;
   const getStyles = useStyles11({
     name: __staticSelector || "Combobox",
-    classes: {
-      dropdown: "comboBox-dropdown",
-      options: "comboBox-options",
-      option: "comboBox-option",
-      search: "comboBox-search",
-      empty: "comboBox-empty",
-      header: "comboBox-header",
-      footer: "comboBox-footer",
-      group: "comboBox-group",
-      groupLabel: "comboBox-groupLabel"
-    },
+    classes: Combobox_module_default2,
     props,
     classNames,
     styles,
@@ -4790,6 +4807,7 @@ function Combobox(_props) {
 }
 var extendCombobox = (c) => c;
 Combobox.extend = extendCombobox;
+Combobox.classes = Combobox_module_default2;
 Combobox.displayName = "@raikou/core/Combobox";
 Combobox.Target = ComboboxTarget;
 Combobox.Dropdown = ComboboxDropdown;
@@ -5601,6 +5619,9 @@ var ScrollAreaThumb = React47.forwardRef((props, forwardedRef) => {
   return null;
 });
 
+// css-module:./ScrollArea.module.css#css-module
+var ScrollArea_module_default = { "root": "m-d57069b5", "viewport": "m-c0783ff9", "viewportInner": "m-f8f631dd", "scrollbar": "m-c44ba933", "thumb": "m-d8b5e363", "corner": "m-21657268" };
+
 // ../ScrollArea/src/ScrollArea.tsx
 var defaultProps27 = {
   scrollHideDelay: 1e3,
@@ -5650,14 +5671,7 @@ var ScrollArea = factory20((_props, ref) => {
   const getStyles = useStyles12({
     name: "ScrollArea",
     props,
-    classes: {
-      root: "scrollArea-root",
-      viewport: "scrollArea-viewport",
-      viewportInner: "scrollArea-viewportInner",
-      scrollbar: "scrollArea-scrollbar",
-      thumb: "scrollArea-thumb",
-      corner: "scrollArea-corner"
-    },
+    classes: ScrollArea_module_default,
     className,
     style,
     classNames,
@@ -5771,6 +5785,7 @@ var ScrollAreaAutosize = factory20((props, ref) => {
     children
   )));
 });
+ScrollArea.classes = ScrollArea_module_default;
 ScrollAreaAutosize.displayName = "@raikou/core/ScrollAreaAutosize";
 ScrollArea.Autosize = ScrollAreaAutosize;
 
@@ -6174,3 +6189,4 @@ export {
   useComboboxTargetProps,
   useVirtualizedCombobox
 };
+//# sourceMappingURL=index.mjs.map

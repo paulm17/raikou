@@ -603,7 +603,7 @@ var import_client6 = require("@raikou/client");
 var import_icons_react2 = require("@tabler/icons-react");
 
 // src/demos/core/Accordion/Accordion.demo.chevron.module.css
-var _default = {};
+var Accordion_demo_chevron_default = {};
 
 // src/demos/core/Accordion/Accordion.demo.chevron.tsx
 var code5 = `
@@ -651,8 +651,8 @@ function Demo5() {
     import_client6.Accordion,
     {
       defaultValue: "Apples",
-      classNames: { chevron: _default.chevron },
-      chevron: /* @__PURE__ */ import_react7.default.createElement(import_icons_react2.IconPlus, { className: _default.icon })
+      classNames: { chevron: Accordion_demo_chevron_default.chevron },
+      chevron: /* @__PURE__ */ import_react7.default.createElement(import_icons_react2.IconPlus, { className: Accordion_demo_chevron_default.icon })
     },
     items2
   );
@@ -836,7 +836,7 @@ var import_react10 = __toESM(require("react"));
 var import_client9 = require("@raikou/client");
 
 // src/demos/core/Accordion/Accordion.demo.customize.module.css
-var _default2 = {};
+var Accordion_demo_customize_default = {};
 
 // src/demos/core/Accordion/Accordion.demo.customize.tsx
 var code8 = `
@@ -889,7 +889,7 @@ var cssCode2 = `.root {
 `;
 function Demo8() {
   const items2 = groceries.map((item) => /* @__PURE__ */ import_react10.default.createElement(import_client9.Accordion.Item, { key: item.value, value: item.value }, /* @__PURE__ */ import_react10.default.createElement(import_client9.Accordion.Control, { icon: item.emoji }, item.value), /* @__PURE__ */ import_react10.default.createElement(import_client9.Accordion.Panel, null, item.description)));
-  return /* @__PURE__ */ import_react10.default.createElement(import_client9.Accordion, { defaultValue: "Apples", classNames: _default2, variant: "filled" }, items2);
+  return /* @__PURE__ */ import_react10.default.createElement(import_client9.Accordion, { defaultValue: "Apples", classNames: Accordion_demo_customize_default, variant: "filled" }, items2);
 }
 var customize = {
   type: "code",
@@ -1444,7 +1444,7 @@ var import_server12 = require("@raikou/server");
 var import_icons_react12 = require("@tabler/icons-react");
 
 // src/demos/core/ActionIcon/ActionIcon.demo.disabledStyles.module.css
-var _default3 = {};
+var ActionIcon_demo_disabledStyles_default = {};
 
 // src/demos/core/ActionIcon/ActionIcon.demo.disabledStyles.tsx
 var code18 = `
@@ -1474,7 +1474,7 @@ function Demo15() {
     import_server12.ActionIcon,
     {
       size: "xl",
-      className: _default3.button,
+      className: ActionIcon_demo_disabledStyles_default.button,
       disabled: true,
       "aria-label": "Disabled with styles"
     },
@@ -3178,7 +3178,7 @@ var import_react62 = __toESM(require("react"));
 var import_server36 = require("@raikou/server");
 
 // src/demos/core/Button/Button.demo.disabledStyles.module.css
-var _default4 = {};
+var Button_demo_disabledStyles_default = {};
 
 // src/demos/core/Button/Button.demo.disabledStyles.tsx
 var code60 = `
@@ -3203,7 +3203,7 @@ var cssCode4 = `
 }
 `;
 function Demo47() {
-  return /* @__PURE__ */ import_react62.default.createElement(import_server36.Button, { className: _default4.button, disabled: true }, "Disabled with styles");
+  return /* @__PURE__ */ import_react62.default.createElement(import_server36.Button, { className: Button_demo_disabledStyles_default.button, disabled: true }, "Disabled with styles");
 }
 var disabledStyles2 = {
   type: "code",
@@ -4347,7 +4347,7 @@ var import_server58 = require("@raikou/server");
 var import_client41 = require("@raikou/client");
 
 // src/demos/core/Checkbox/Checkbox.demo.card.module.css
-var _default5 = {};
+var Checkbox_demo_card_default = {};
 
 // src/demos/core/Checkbox/Checkbox.demo.card.tsx
 var cssCode5 = `.root {
@@ -4428,10 +4428,10 @@ function Demo() {
 `;
 function Demo65() {
   const [checked, setChecked] = (0, import_react86.useState)(false);
-  return /* @__PURE__ */ import_react86.default.createElement("div", { className: _default5.root }, /* @__PURE__ */ import_react86.default.createElement(
+  return /* @__PURE__ */ import_react86.default.createElement("div", { className: Checkbox_demo_card_default.root }, /* @__PURE__ */ import_react86.default.createElement(
     import_client41.Checkbox,
     {
-      classNames: { root: _default5.checkboxWrapper, input: _default5.checkbox },
+      classNames: { root: Checkbox_demo_card_default.checkboxWrapper, input: Checkbox_demo_card_default.checkbox },
       checked,
       onChange: (event) => setChecked(event.currentTarget.checked),
       tabIndex: -1,
@@ -4441,12 +4441,12 @@ function Demo65() {
   ), /* @__PURE__ */ import_react86.default.createElement(
     import_server58.UnstyledButton,
     {
-      className: _default5.control,
+      className: Checkbox_demo_card_default.control,
       "data-checked": checked || void 0,
       onClick: () => setChecked((c) => !c)
     },
-    /* @__PURE__ */ import_react86.default.createElement(import_server58.Text, { className: _default5.label }, "@raikou/core"),
-    /* @__PURE__ */ import_react86.default.createElement(import_server58.Text, { className: _default5.description }, "Core components library: inputs, buttons, overlays, etc.")
+    /* @__PURE__ */ import_react86.default.createElement(import_server58.Text, { className: Checkbox_demo_card_default.label }, "@raikou/core"),
+    /* @__PURE__ */ import_react86.default.createElement(import_server58.Text, { className: Checkbox_demo_card_default.description }, "Core components library: inputs, buttons, overlays, etc.")
   ));
 }
 var card = {
@@ -4504,7 +4504,7 @@ var import_react88 = __toESM(require("react"));
 var import_client43 = require("@raikou/client");
 
 // src/demos/core/Checkbox/Checkbox.demo.customize.module.css
-var _default6 = {};
+var Checkbox_demo_customize_default = {};
 
 // src/demos/core/Checkbox/Checkbox.demo.customize.tsx
 var cssCode6 = `
@@ -4556,7 +4556,7 @@ function Demo67() {
   return /* @__PURE__ */ import_react88.default.createElement(
     import_client43.Checkbox,
     {
-      classNames: _default6,
+      classNames: Checkbox_demo_customize_default,
       label: "Checkbox button",
       checked,
       onChange: (event) => setChecked(event.currentTarget.checked),
@@ -9550,12 +9550,12 @@ var import_react185 = __toESM(require("react"));
 var import_server112 = require("@raikou/server");
 
 // src/demos/core/Grid/_col-wrapper.module.css
-var _default7 = {};
+var col_wrapper_default = {};
 
 // src/demos/core/Grid/_col-wrapper.tsx
 function ColWrapper(_a) {
   var _b = _a, { children } = _b, others = __objRest(_b, ["children"]);
-  return /* @__PURE__ */ import_react185.default.createElement(import_server112.Grid.Col, __spreadValues({}, others), /* @__PURE__ */ import_react185.default.createElement("div", { className: _default7.col }, /* @__PURE__ */ import_react185.default.createElement("div", { className: _default7.label }, children)));
+  return /* @__PURE__ */ import_react185.default.createElement(import_server112.Grid.Col, __spreadValues({}, others), /* @__PURE__ */ import_react185.default.createElement("div", { className: col_wrapper_default.col }, /* @__PURE__ */ import_react185.default.createElement("div", { className: col_wrapper_default.label }, children)));
 }
 
 // src/demos/core/Grid/Grid.demo.usage.tsx
@@ -11030,7 +11030,7 @@ var import_react224 = __toESM(require("react"));
 var import_client143 = require("@raikou/client");
 
 // src/demos/core/Input/Input.demo.focusStyles.module.css
-var _default8 = {};
+var Input_demo_focusStyles_default = {};
 
 // src/demos/core/Input/Input.demo.focusStyles.tsx
 var code216 = `
@@ -11062,13 +11062,13 @@ var cssCode7 = `
 }
 `;
 function Demo184() {
-  return /* @__PURE__ */ import_react224.default.createElement(import_react224.default.Fragment, null, /* @__PURE__ */ import_react224.default.createElement(import_client143.Input, { placeholder: "Regular Input component", classNames: _default8 }), /* @__PURE__ */ import_react224.default.createElement(
+  return /* @__PURE__ */ import_react224.default.createElement(import_react224.default.Fragment, null, /* @__PURE__ */ import_react224.default.createElement(import_client143.Input, { placeholder: "Regular Input component", classNames: Input_demo_focusStyles_default }), /* @__PURE__ */ import_react224.default.createElement(
     import_client143.TextInput,
     {
       placeholder: "TextInput component",
       label: "TextInput component",
       mt: "md",
-      classNames: _default8
+      classNames: Input_demo_focusStyles_default
     }
   ));
 }
@@ -15454,7 +15454,7 @@ var import_react312 = __toESM(require("react"));
 var import_client224 = require("@raikou/client");
 
 // src/demos/core/Pill/_demo.module.css
-var _default9 = {};
+var demo_default = {};
 
 // src/demos/core/Pill/Pill.demo.usage.tsx
 var code302 = `
@@ -15465,7 +15465,7 @@ function Demo() {
 }
 `;
 function Wrapper47(props2) {
-  return /* @__PURE__ */ import_react312.default.createElement("div", { className: _default9.demoWrapper }, /* @__PURE__ */ import_react312.default.createElement(import_client224.Pill, __spreadValues({}, props2), "React"));
+  return /* @__PURE__ */ import_react312.default.createElement("div", { className: demo_default.demoWrapper }, /* @__PURE__ */ import_react312.default.createElement(import_client224.Pill, __spreadValues({}, props2), "React"));
 }
 var usage47 = {
   type: "configurator",
@@ -15530,7 +15530,7 @@ function Demo() {
 }
 `;
 function Demo260(props2) {
-  return /* @__PURE__ */ import_react314.default.createElement("div", { className: _default9.demoWrapper }, /* @__PURE__ */ import_react314.default.createElement(import_client226.Pill, __spreadProps(__spreadValues({}, props2), { withRemoveButton: true, style: { flex: 0 } }), "Test pill"));
+  return /* @__PURE__ */ import_react314.default.createElement("div", { className: demo_default.demoWrapper }, /* @__PURE__ */ import_react314.default.createElement(import_client226.Pill, __spreadProps(__spreadValues({}, props2), { withRemoveButton: true, style: { flex: 0 } }), "Test pill"));
 }
 var stylesApi18 = {
   type: "styles-api",
@@ -17524,7 +17524,7 @@ var import_server206 = require("@raikou/server");
 var import_client270 = require("@raikou/client");
 
 // src/demos/core/ScrollArea/ScrollArea.demo.stylesApi.module.css
-var _default10 = {};
+var ScrollArea_demo_stylesApi_default = {};
 
 // src/demos/core/ScrollArea/ScrollArea.demo.stylesApi.tsx
 var code348 = `
@@ -17570,7 +17570,7 @@ function Demo293() {
       h: 200,
       type: "always",
       offsetScrollbars: true,
-      classNames: _default10
+      classNames: ScrollArea_demo_stylesApi_default
     },
     /* @__PURE__ */ import_react359.default.createElement(import_server206.Box, { w: 600 }, /* @__PURE__ */ import_react359.default.createElement(Content, null))
   );
@@ -19192,12 +19192,12 @@ var import_clsx = __toESM(require("clsx"));
 var import_server213 = require("@raikou/server");
 
 // src/demos/core/SimpleGrid/_item.module.css
-var _default11 = {};
+var item_default = {};
 
 // src/demos/core/SimpleGrid/_demo-item.tsx
 function GridItem(_a) {
   var _b = _a, { className, children } = _b, others = __objRest(_b, ["className", "children"]);
-  return /* @__PURE__ */ import_react387.default.createElement(import_server213.Box, __spreadValues({ className: (0, import_clsx.default)(_default11.item, className) }, others), /* @__PURE__ */ import_react387.default.createElement(import_server213.Text, { className: _default11.label }, children));
+  return /* @__PURE__ */ import_react387.default.createElement(import_server213.Box, __spreadValues({ className: (0, import_clsx.default)(item_default.item, className) }, others), /* @__PURE__ */ import_react387.default.createElement(import_server213.Text, { className: item_default.label }, children));
 }
 var defaultItems = Array(5).fill(0).map((_, index) => /* @__PURE__ */ import_react387.default.createElement(GridItem, { key: index }, index + 1));
 
@@ -19445,7 +19445,7 @@ var import_client299 = require("@raikou/client");
 var import_core3 = require("@raikou/core");
 
 // src/demos/core/Slider/Slider.demo.customize.module.css
-var _default12 = {};
+var Slider_demo_customize_default = {};
 
 // src/demos/core/Slider/Slider.demo.customize.tsx
 var code381 = `
@@ -19511,7 +19511,7 @@ function Demo320() {
         { value: 80, label: "80%" }
       ],
       size: 2,
-      classNames: _default12
+      classNames: Slider_demo_customize_default
     }
   ));
 }
@@ -20670,7 +20670,7 @@ var import_react420 = __toESM(require("react"));
 var import_client320 = require("@raikou/client");
 
 // src/demos/core/Stepper/Stepper.demo.stylesApi3.module.css
-var _default13 = {};
+var Stepper_demo_stylesApi3_default = {};
 
 // src/demos/core/Stepper/Stepper.demo.stylesApi3.tsx
 var cssCode10 = `.separator {
@@ -20732,7 +20732,7 @@ function Demo() {
 `;
 function Demo339() {
   const [active2, setActive] = (0, import_react420.useState)(1);
-  return /* @__PURE__ */ import_react420.default.createElement(import_client320.Stepper, { classNames: _default13, active: active2, onStepClick: setActive }, /* @__PURE__ */ import_react420.default.createElement(import_client320.Stepper.Step, { label: "Step 1", description: "Create an account" }), /* @__PURE__ */ import_react420.default.createElement(import_client320.Stepper.Step, { label: "Step 2", description: "Verify email" }), /* @__PURE__ */ import_react420.default.createElement(import_client320.Stepper.Step, { label: "Step 3", description: "Get full access" }));
+  return /* @__PURE__ */ import_react420.default.createElement(import_client320.Stepper, { classNames: Stepper_demo_stylesApi3_default, active: active2, onStepClick: setActive }, /* @__PURE__ */ import_react420.default.createElement(import_client320.Stepper.Step, { label: "Step 1", description: "Create an account" }), /* @__PURE__ */ import_react420.default.createElement(import_client320.Stepper.Step, { label: "Step 2", description: "Verify email" }), /* @__PURE__ */ import_react420.default.createElement(import_client320.Stepper.Step, { label: "Step 3", description: "Get full access" }));
 }
 var stylesApi32 = {
   type: "code",
@@ -21973,7 +21973,7 @@ var import_system51 = require("@raikou/system");
 var import_icons_react68 = require("@tabler/icons-react");
 
 // src/demos/core/Tabs/Tabs.demo.customize.module.css
-var _default14 = {};
+var Tabs_demo_customize_default = {};
 
 // src/demos/core/Tabs/Tabs.demo.customize.tsx
 var code431 = `
@@ -22056,7 +22056,7 @@ var cssCode11 = `
 }
 `;
 function Demo357() {
-  return /* @__PURE__ */ import_react445.default.createElement(import_client340.Tabs, { variant: "unstyled", defaultValue: "settings", classNames: _default14 }, /* @__PURE__ */ import_react445.default.createElement(import_client340.Tabs.List, { grow: true }, /* @__PURE__ */ import_react445.default.createElement(
+  return /* @__PURE__ */ import_react445.default.createElement(import_client340.Tabs, { variant: "unstyled", defaultValue: "settings", classNames: Tabs_demo_customize_default }, /* @__PURE__ */ import_react445.default.createElement(import_client340.Tabs.List, { grow: true }, /* @__PURE__ */ import_react445.default.createElement(
     import_client340.Tabs.Tab,
     {
       value: "settings",
@@ -28944,7 +28944,7 @@ var import_server282 = require("@raikou/server");
 var import_notifications6 = require("@raikou/notifications");
 
 // src/demos/notifications/Notifications.demo.customize.module.css
-var _default15 = {};
+var Notifications_demo_customize_default = {};
 
 // src/demos/notifications/Notifications.demo.customize.tsx
 var code574 = `
@@ -29012,7 +29012,7 @@ function Demo484() {
       onClick: () => import_notifications6.notifications.show({
         title: "Notification with custom styles",
         message: "It is default blue",
-        classNames: _default15
+        classNames: Notifications_demo_customize_default
       })
     },
     "Default notification"
@@ -29024,7 +29024,7 @@ function Demo484() {
         color: "red",
         title: "Notification with custom styles",
         message: "It is red",
-        classNames: _default15
+        classNames: Notifications_demo_customize_default
       })
     },
     "Error notification"
@@ -29406,7 +29406,7 @@ var import_react613 = __toESM(require("react"));
 var import_carousel10 = require("@raikou/carousel");
 
 // src/demos/carousel/Carousel.demo.indicatorStyles.module.css
-var _default16 = {};
+var Carousel_demo_indicatorStyles_default = {};
 
 // src/demos/carousel/Carousel.demo.indicatorStyles.tsx
 var cssCode13 = `
@@ -29435,7 +29435,7 @@ function Demo() {
 }
 `;
 function Demo493() {
-  return /* @__PURE__ */ import_react613.default.createElement(import_carousel10.Carousel, { withIndicators: true, height: 200, classNames: _default16 }, /* @__PURE__ */ import_react613.default.createElement(Slides, { count: 5 }));
+  return /* @__PURE__ */ import_react613.default.createElement(import_carousel10.Carousel, { withIndicators: true, height: 200, classNames: Carousel_demo_indicatorStyles_default }, /* @__PURE__ */ import_react613.default.createElement(Slides, { count: 5 }));
 }
 var indicatorStyles = {
   type: "code",
@@ -29453,7 +29453,7 @@ var import_react614 = __toESM(require("react"));
 var import_carousel11 = require("@raikou/carousel");
 
 // src/demos/carousel/Carousel.demo.controlsStyles.module.css
-var _default17 = {};
+var Carousel_demo_controlsStyles_default = {};
 
 // src/demos/carousel/Carousel.demo.controlsStyles.tsx
 var cssCode14 = `
@@ -29480,7 +29480,7 @@ function Demo() {
 }
 `;
 function Demo494() {
-  return /* @__PURE__ */ import_react614.default.createElement(import_carousel11.Carousel, { height: 200, classNames: _default17 }, /* @__PURE__ */ import_react614.default.createElement(Slides, { count: 5 }));
+  return /* @__PURE__ */ import_react614.default.createElement(import_carousel11.Carousel, { height: 200, classNames: Carousel_demo_controlsStyles_default }, /* @__PURE__ */ import_react614.default.createElement(Slides, { count: 5 }));
 }
 var controlsStyles = {
   type: "code",
@@ -29498,7 +29498,7 @@ var import_react615 = __toESM(require("react"));
 var import_carousel12 = require("@raikou/carousel");
 
 // src/demos/carousel/Carousel.demo.controlsHover.module.css
-var _default18 = {};
+var Carousel_demo_controlsHover_default = {};
 
 // src/demos/carousel/Carousel.demo.controlsHover.tsx
 var cssCode15 = `.controls {
@@ -29529,7 +29529,7 @@ function Demo() {
 }
 `;
 function Demo495() {
-  return /* @__PURE__ */ import_react615.default.createElement(import_carousel12.Carousel, { height: 200, classNames: _default18 }, /* @__PURE__ */ import_react615.default.createElement(Slides, { count: 5 }));
+  return /* @__PURE__ */ import_react615.default.createElement(import_carousel12.Carousel, { height: 200, classNames: Carousel_demo_controlsHover_default }, /* @__PURE__ */ import_react615.default.createElement(Slides, { count: 5 }));
 }
 var controlsHover = {
   type: "code",
@@ -36233,7 +36233,7 @@ var loading4 = {
 var import_react714 = __toESM(require("react"));
 
 // src/demos/dropzone/Dropzone.disabled.module.css
-var _default19 = {};
+var Dropzone_disabled_default = {};
 
 // src/demos/dropzone/Dropzone.demo.disabled.tsx
 var cssCode20 = `
@@ -36256,7 +36256,7 @@ function Demo() {
 }
 `;
 function Demo589() {
-  return /* @__PURE__ */ import_react714.default.createElement(BaseDemo2, { disabled: true, className: _default19.disabled });
+  return /* @__PURE__ */ import_react714.default.createElement(BaseDemo2, { disabled: true, className: Dropzone_disabled_default.disabled });
 }
 var disabled30 = {
   type: "code",
@@ -36446,7 +36446,7 @@ var import_server366 = require("@raikou/server");
 var import_dropzone4 = require("@raikou/dropzone");
 
 // src/demos/dropzone/Dropzone.demo.stylesApi.module.css
-var _default20 = {};
+var Dropzone_demo_stylesApi_default = {};
 
 // src/demos/dropzone/Dropzone.demo.stylesApi.tsx
 var cssCode21 = `
@@ -36490,7 +36490,7 @@ function Demo593() {
       onDrop: () => {
       },
       accept: import_dropzone4.IMAGE_MIME_TYPE,
-      className: _default20.root
+      className: Dropzone_demo_stylesApi_default.root
     },
     /* @__PURE__ */ import_react718.default.createElement(import_server366.Text, { ta: "center" }, "Drop images here")
   );

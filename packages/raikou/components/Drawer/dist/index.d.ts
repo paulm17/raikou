@@ -341,4 +341,4 @@ declare const Drawer: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { Drawer, DrawerBody, DrawerBodyProps, DrawerCloseButton, DrawerCloseButtonProps, DrawerContent, DrawerContentProps, DrawerCssVariables, DrawerFactory, DrawerHeader, DrawerHeaderProps, DrawerOverlay, DrawerOverlayProps, DrawerProps, DrawerRoot, DrawerRootProps, DrawerStylesNames, DrawerTitle, DrawerTitleProps };
+export { Drawer, DrawerBody, type DrawerBodyProps, DrawerCloseButton, type DrawerCloseButtonProps, DrawerContent, type DrawerContentProps, type DrawerCssVariables, type DrawerFactory, DrawerHeader, type DrawerHeaderProps, DrawerOverlay, type DrawerOverlayProps, type DrawerProps, DrawerRoot, type DrawerRootProps, type DrawerStylesNames, DrawerTitle, type DrawerTitleProps };

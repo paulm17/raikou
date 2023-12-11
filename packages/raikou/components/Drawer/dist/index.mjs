@@ -964,6 +964,9 @@ function useModalBodyId() {
   return ctx.getBodyId();
 }
 
+// css-module:./ModalBase.module.css#css-module
+var ModalBase_module_default = { "title": "m-615af6c9", "header": "m-b5489c3c", "inner": "m-60c222c7", "content": "m-fd1ab0aa", "close": "m-606cb269", "body": "m-5df29311" };
+
 // ../ModalBase/src/ModalBaseBody.tsx
 var ModalBaseBody = forwardRef5(
   (_a, ref) => {
@@ -975,7 +978,7 @@ var ModalBaseBody = forwardRef5(
         ref
       }, others), {
         id: bodyId,
-        className: clsx_default("modalBase-body", className)
+        className: clsx_default(ModalBase_module_default.body, className)
       })
     );
   }
@@ -1033,6 +1036,11 @@ import {
   useStyles,
   polymorphicFactory
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps2 = {
   __staticSelector: "UnstyledButton"
 };
@@ -1059,9 +1067,7 @@ var UnstyledButton = polymorphicFactory(
     const getStyles2 = useStyles({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -1079,6 +1085,10 @@ var UnstyledButton = polymorphicFactory(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
+
+// css-module:./CloseButton.module.css#css-module
+var CloseButton_module_default = { "root": "m-86a44da5", "root--subtle": "m-220c80f2" };
 
 // ../CloseButton/src/CloseButton.tsx
 var defaultProps3 = {
@@ -1129,9 +1139,7 @@ var CloseButton = polymorphicFactory2(
       props,
       className,
       style,
-      classes: {
-        root: "closeButton-root"
-      },
+      classes: CloseButton_module_default,
       classNames,
       styles,
       unstyled,
@@ -1154,6 +1162,7 @@ var CloseButton = polymorphicFactory2(
   }
 );
 CloseButton.displayName = "@raikou/core/CloseButton";
+CloseButton.classes = CloseButton_module_default;
 
 // ../ModalBase/src/ModalBaseCloseButton.tsx
 var ModalBaseCloseButton = forwardRef7((_a, ref) => {
@@ -1168,7 +1177,7 @@ var ModalBaseCloseButton = forwardRef7((_a, ref) => {
         ctx.onClose();
         onClick == null ? void 0 : onClick(event);
       },
-      className: clsx_default("modalBase-close", className)
+      className: clsx_default(ModalBase_module_default.close, className)
     })
   );
 });
@@ -1439,6 +1448,11 @@ import {
   getShadow as getShadow2,
   createVarsResolver as createVarsResolver2
 } from "@raikou/core";
+
+// css-module:./Paper.module.css#css-module
+var Paper_module_default = { "root": "m-1b7284a3" };
+
+// ../Paper/src/Paper.tsx
 var defaultProps4 = {};
 var varsResolver2 = createVarsResolver2(
   (_, { radius, shadow }) => ({
@@ -1476,9 +1490,7 @@ var Paper = polymorphicFactory3((_props, ref) => {
   const getStyles2 = useStyles3({
     name: "Paper",
     props,
-    classes: {
-      root: "paper-root"
-    },
+    classes: Paper_module_default,
     className,
     style,
     classNames,
@@ -1498,6 +1510,7 @@ var Paper = polymorphicFactory3((_props, ref) => {
   );
 });
 Paper.displayName = "@raikou/core/Paper";
+Paper.classes = Paper_module_default;
 
 // ../ModalBase/src/ModalBaseContent.tsx
 var ModalBaseContent = forwardRef8(
@@ -1521,7 +1534,7 @@ var ModalBaseContent = forwardRef8(
       (transitionStyles) => /* @__PURE__ */ React20.createElement(
         "div",
         __spreadProps(__spreadValues({}, innerProps), {
-          className: clsx_default("modalBase-inner", innerProps.className)
+          className: clsx_default(ModalBase_module_default.inner, innerProps.className)
         }),
         /* @__PURE__ */ React20.createElement(FocusTrap, { active: ctx.opened && ctx.trapFocus }, /* @__PURE__ */ React20.createElement(
           Paper,
@@ -1535,7 +1548,7 @@ var ModalBaseContent = forwardRef8(
             onKeyDown: handleKeyDown,
             ref,
             style: [style, transitionStyles],
-            className: clsx_default("modalBase-content", className)
+            className: clsx_default(ModalBase_module_default.content, className)
           }),
           others.children
         ))
@@ -1551,7 +1564,7 @@ import { Box as Box5 } from "@raikou/core";
 var ModalBaseHeader = forwardRef9(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React21.createElement(Box5, __spreadValues({ ref, className: clsx_default("modalBase-header", className) }, others));
+    return /* @__PURE__ */ React21.createElement(Box5, __spreadValues({ ref, className: clsx_default(ModalBase_module_default.header, className) }, others));
   }
 );
 ModalBaseHeader.displayName = "@raikou/core/ModalBaseHeader";
@@ -1572,6 +1585,11 @@ import {
   getRadius as getRadius3,
   rem as rem3
 } from "@raikou/core";
+
+// css-module:./Overlay.module.css#css-module
+var Overlay_module_default = { "root": "m-9814e45f" };
+
+// ../Overlay/src/Overlay.tsx
 var defaultProps5 = {
   zIndex: getDefaultZIndex2("modal")
 };
@@ -1623,9 +1641,7 @@ var Overlay = polymorphicFactory4((_props, ref) => {
   const getStyles2 = useStyles4({
     name: "Overlay",
     props,
-    classes: {
-      root: "overlay-root"
-    },
+    classes: Overlay_module_default,
     className,
     style,
     classNames,
@@ -1637,6 +1653,7 @@ var Overlay = polymorphicFactory4((_props, ref) => {
   return /* @__PURE__ */ React22.createElement(Box6, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles2("root")), { mod: { center, fixed } }), others), children);
 });
 Overlay.displayName = "@raikou/core/Overlay";
+Overlay.classes = Overlay_module_default;
 
 // ../ModalBase/src/use-modal-transition.ts
 var DEFAULT_TRANSITION = {
@@ -1694,7 +1711,7 @@ var ModalBaseTitle = forwardRef11((_a, ref) => {
     __spreadProps(__spreadValues({
       component: "h2",
       ref,
-      className: clsx_default("modalBase-title", className)
+      className: clsx_default(ModalBase_module_default.title, className)
     }, others), {
       id
     })
@@ -1710,6 +1727,9 @@ function NativeScrollArea({ children }) {
 
 // src/Drawer.context.ts
 var [DrawerProvider, useDrawerContext] = createSafeContext("Drawer component was not found in tree");
+
+// css-module:./Drawer.module.css#css-module
+var Drawer_module_default = { "root": "m-f11b401e", "header": "m-5a7c2c9", "content": "m-b8a05bbd", "inner": "m-31cd769a" };
 
 // src/DrawerRoot.tsx
 var transitions2 = {
@@ -1772,16 +1792,7 @@ var DrawerRoot = factory((_props, ref) => {
   const { dir } = useDirection();
   const getStyles2 = useStyles5({
     name: "Drawer",
-    classes: {
-      root: "drawer-root",
-      title: "drawer-title",
-      content: "drawer-content",
-      overlay: "drawer-overlay",
-      body: "drawer-body",
-      header: "drawer-header",
-      inner: "drawer-inner",
-      close: "drawer-close"
-    },
+    classes: Drawer_module_default,
     props,
     className,
     style,
@@ -1802,6 +1813,7 @@ var DrawerRoot = factory((_props, ref) => {
   ));
 });
 DrawerRoot.displayName = "@raikou/core/DrawerRoot";
+DrawerRoot.classes = Drawer_module_default;
 
 // src/DrawerBody.tsx
 import React27 from "react";
@@ -1821,6 +1833,7 @@ var DrawerBody = factory2((_props, ref) => {
     }, ctx.getStyles("body", { classNames, style, styles, className })), others)
   );
 });
+DrawerBody.classes = Drawer_module_default;
 DrawerBody.displayName = "@raikou/core/DrawerBody";
 
 // src/DrawerCloseButton.tsx
@@ -1843,6 +1856,7 @@ var DrawerCloseButton = factory3(
     );
   }
 );
+DrawerCloseButton.classes = Drawer_module_default;
 DrawerCloseButton.displayName = "@raikou/core/DrawerCloseButton";
 
 // src/DrawerOverlay.tsx
@@ -1863,6 +1877,7 @@ var DrawerOverlay = factory4((_props, ref) => {
     }, ctx.getStyles("overlay", { classNames, style, styles, className })), others)
   );
 });
+DrawerOverlay.classes = Drawer_module_default;
 DrawerOverlay.displayName = "@raikou/core/DrawerOverlay";
 
 // src/DrawerContent.tsx
@@ -1891,6 +1906,7 @@ var DrawerContent = factory5((_props, ref) => {
     /* @__PURE__ */ React30.createElement(Scroll, { style: { height: "100vh" } }, children)
   );
 });
+DrawerContent.classes = Drawer_module_default;
 DrawerContent.displayName = "@raikou/core/DrawerContent";
 
 // src/DrawerTitle.tsx
@@ -1931,6 +1947,7 @@ var DrawerHeader = factory7((_props, ref) => {
     }, ctx.getStyles("header", { classNames, style, styles, className })), others)
   );
 });
+DrawerHeader.classes = Drawer_module_default;
 DrawerHeader.displayName = "@raikou/core/DrawerHeader";
 
 // src/Drawer.tsx
@@ -1965,6 +1982,7 @@ var Drawer = factory8((_props, ref) => {
   const hasHeader = !!title || withCloseButton;
   return /* @__PURE__ */ React33.createElement(DrawerRoot, __spreadValues({ ref }, others), withOverlay && /* @__PURE__ */ React33.createElement(DrawerOverlay, __spreadValues({}, overlayProps)), /* @__PURE__ */ React33.createElement(DrawerContent, null, hasHeader && /* @__PURE__ */ React33.createElement(DrawerHeader, null, title && /* @__PURE__ */ React33.createElement(DrawerTitle, null, title), withCloseButton && /* @__PURE__ */ React33.createElement(DrawerCloseButton, __spreadValues({}, closeButtonProps))), /* @__PURE__ */ React33.createElement(DrawerBody, null, children)));
 });
+Drawer.classes = Drawer_module_default;
 Drawer.displayName = "@raikou/core/Drawer";
 Drawer.Root = DrawerRoot;
 Drawer.Overlay = DrawerOverlay;
@@ -1983,3 +2001,4 @@ export {
   DrawerRoot,
   DrawerTitle
 };
+//# sourceMappingURL=index.mjs.map

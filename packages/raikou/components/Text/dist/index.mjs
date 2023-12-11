@@ -42,6 +42,11 @@ import {
   getFontSize,
   getLineHeight
 } from "@raikou/core";
+
+// css-module:./Text.module.css#css-module
+var Text_module_default = { "root": "m-b6d8b162" };
+
+// src/Text.tsx
 function getTextTruncate(truncate) {
   if (truncate === "start") {
     return "start";
@@ -104,9 +109,7 @@ var Text = polymorphicFactory((_props, ref) => {
   const getStyles = useStyles({
     name: ["Text", __staticSelector],
     props,
-    classes: {
-      root: "text-root"
-    },
+    classes: Text_module_default,
     className,
     style,
     classNames,
@@ -134,7 +137,9 @@ var Text = polymorphicFactory((_props, ref) => {
     }), others)
   );
 });
+Text.classes = Text_module_default;
 Text.displayName = "@raikou/core/Text";
 export {
   Text
 };
+//# sourceMappingURL=index.mjs.map

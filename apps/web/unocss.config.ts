@@ -1,3 +1,5 @@
+import fs from "fs/promises";
+import { cwd } from "node:process";
 import { defineConfig } from "unocss";
 import presetAttributify from "@unocss/preset-attributify";
 import presetWind from "@unocss/preset-wind";
@@ -7,5 +9,12 @@ export default defineConfig({
   content: {
     filesystem: ["app/**/*.tsx"],
   },
-  presets: [presetWind(), presetAttributify(), presetRaikou()],
+  presets: [
+    presetWind(),
+    presetAttributify({
+      prefix: "un-",
+      prefixedOnly: true,
+    }),
+    presetRaikou(),
+  ],
 }) as any;

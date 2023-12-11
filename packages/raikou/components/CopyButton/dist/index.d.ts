@@ -16,4 +16,4 @@ declare namespace CopyButton {
     var displayName: string;
 }
 
-export { CopyButton, CopyButtonProps };
+export { CopyButton, type CopyButtonProps };

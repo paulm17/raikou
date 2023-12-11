@@ -425,6 +425,11 @@ var clsx_default = clsx;
 
 // ../Loader/src/loaders/Bars.tsx
 import { Box } from "@raikou/core";
+
+// css-module:../Loader.module.css#css-module
+var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
+
+// ../Loader/src/loaders/Bars.tsx
 var Bars = forwardRef(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
@@ -432,13 +437,13 @@ var Bars = forwardRef(
       Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-barsLoader", className)
+        className: clsx_default(Loader_module_default.barsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React3.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ React3.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ React3.createElement("span", { className: "loader-bar" })
+      /* @__PURE__ */ React3.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React3.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React3.createElement("span", { className: Loader_module_default.bar })
     );
   }
 );
@@ -453,7 +458,7 @@ var Oval = forwardRef2(
       Box2,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-ovalLoader", className)
+        className: clsx_default(Loader_module_default.ovalLoader, className)
       }, others), {
         ref
       })
@@ -471,7 +476,7 @@ var Progress = forwardRef3(
       Box3,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-progressLoader", className)
+        className: clsx_default(Loader_module_default.progressLoader, className)
       }, others), {
         ref
       }),
@@ -500,16 +505,19 @@ var Dots = forwardRef4(
       Box4,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-dotsLoader", className)
+        className: clsx_default(Loader_module_default.dotsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React6.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ React6.createElement("span", { className: "loader-dot" })
+      /* @__PURE__ */ React6.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React6.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React6.createElement("span", { className: Loader_module_default.dot })
     );
   }
 );
+
+// css-module:./Loader.module.css#css-module
+var Loader_module_default2 = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
 
 // ../Loader/src/Loader.tsx
 var defaultLoaders = {
@@ -560,9 +568,7 @@ var Loader = factory((_props, ref) => {
   const getStyles = useStyles({
     name: "Loader",
     props,
-    classes: {
-      root: "loader-root"
-    },
+    classes: Loader_module_default2,
     className,
     style,
     classNames,
@@ -582,6 +588,7 @@ var Loader = factory((_props, ref) => {
   );
 });
 Loader.displayName = "@raikou/core/Loader";
+Loader.classes = Loader_module_default2;
 
 // ../Overlay/src/Overlay.tsx
 import React8 from "react";
@@ -596,6 +603,11 @@ import {
   getRadius,
   rem as rem2
 } from "@raikou/core";
+
+// css-module:./Overlay.module.css#css-module
+var Overlay_module_default = { "root": "m-9814e45f" };
+
+// ../Overlay/src/Overlay.tsx
 var defaultProps2 = {
   zIndex: getDefaultZIndex("modal")
 };
@@ -647,9 +659,7 @@ var Overlay = polymorphicFactory((_props, ref) => {
   const getStyles = useStyles2({
     name: "Overlay",
     props,
-    classes: {
-      root: "overlay-root"
-    },
+    classes: Overlay_module_default,
     className,
     style,
     classNames,
@@ -661,6 +671,10 @@ var Overlay = polymorphicFactory((_props, ref) => {
   return /* @__PURE__ */ React8.createElement(Box6, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { mod: { center, fixed } }), others), children);
 });
 Overlay.displayName = "@raikou/core/Overlay";
+Overlay.classes = Overlay_module_default;
+
+// css-module:./LoadingOverlay.module.css#css-module
+var LoadingOverlay_module_default = { "root": "m-6e45937b", "loader": "m-e8eb006c", "overlay": "m-df587f17" };
 
 // src/LoadingOverlay.tsx
 var defaultProps3 = {
@@ -705,11 +719,7 @@ var LoadingOverlay = factory2((_props, ref) => {
   const theme = useRaikouTheme2();
   const getStyles = useStyles3({
     name: "LoadingOverlay",
-    classes: {
-      root: "loadingOverlay-root",
-      loader: "loadingOverlay-loader",
-      overlay: "loadingOverlay-overlay"
-    },
+    classes: LoadingOverlay_module_default,
     props,
     className,
     style,
@@ -744,7 +754,9 @@ var LoadingOverlay = factory2((_props, ref) => {
     )
   ));
 });
+LoadingOverlay.classes = LoadingOverlay_module_default;
 LoadingOverlay.displayName = "@raikou/core/LoadingOverlay";
 export {
   LoadingOverlay
 };
+//# sourceMappingURL=index.mjs.map

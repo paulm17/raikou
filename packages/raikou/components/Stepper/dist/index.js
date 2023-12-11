@@ -76,6 +76,11 @@ var import_core10 = require("@raikou/core");
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps = {
   __staticSelector: "UnstyledButton"
 };
@@ -102,9 +107,7 @@ var UnstyledButton = (0, import_core.polymorphicFactory)(
     const getStyles = (0, import_core.useStyles)({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -122,6 +125,7 @@ var UnstyledButton = (0, import_core.polymorphicFactory)(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // ../Transition/src/transitions.ts
 var import_core2 = require("@raikou/core");
@@ -386,6 +390,11 @@ var clsx_default = clsx;
 
 // ../Loader/src/loaders/Bars.tsx
 var import_core4 = require("@raikou/core");
+
+// css-module:../Loader.module.css#css-module
+var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
+
+// ../Loader/src/loaders/Bars.tsx
 var Bars = (0, import_react4.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
@@ -393,13 +402,13 @@ var Bars = (0, import_react4.forwardRef)(
       import_core4.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-barsLoader", className)
+        className: clsx_default(Loader_module_default.barsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ import_react4.default.createElement("span", { className: "loader-bar" })
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ import_react4.default.createElement("span", { className: Loader_module_default.bar })
     );
   }
 );
@@ -414,7 +423,7 @@ var Oval = (0, import_react5.forwardRef)(
       import_core5.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-ovalLoader", className)
+        className: clsx_default(Loader_module_default.ovalLoader, className)
       }, others), {
         ref
       })
@@ -432,7 +441,7 @@ var Progress = (0, import_react6.forwardRef)(
       import_core6.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-progressLoader", className)
+        className: clsx_default(Loader_module_default.progressLoader, className)
       }, others), {
         ref
       }),
@@ -461,16 +470,19 @@ var Dots = (0, import_react7.forwardRef)(
       import_core7.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: clsx_default("loader-dotsLoader", className)
+        className: clsx_default(Loader_module_default.dotsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ import_react7.default.createElement("span", { className: "loader-dot" })
+      /* @__PURE__ */ import_react7.default.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ import_react7.default.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ import_react7.default.createElement("span", { className: Loader_module_default.dot })
     );
   }
 );
+
+// css-module:./Loader.module.css#css-module
+var Loader_module_default2 = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
 
 // ../Loader/src/Loader.tsx
 var defaultLoaders = {
@@ -521,9 +533,7 @@ var Loader = (0, import_core8.factory)((_props, ref) => {
   const getStyles = (0, import_core8.useStyles)({
     name: "Loader",
     props,
-    classes: {
-      root: "loader-root"
-    },
+    classes: Loader_module_default2,
     className,
     style,
     classNames,
@@ -543,6 +553,7 @@ var Loader = (0, import_core8.factory)((_props, ref) => {
   );
 });
 Loader.displayName = "@raikou/core/Loader";
+Loader.classes = Loader_module_default2;
 
 // ../_utils/create-safe-context/create-safe-context.tsx
 var import_react9 = __toESM(require("react"));
@@ -731,6 +742,9 @@ StepperStep.displayName = "@raikou/core/StepperStep";
 var StepperCompleted = () => null;
 StepperCompleted.displayName = "@raikou/core/StepperCompleted";
 
+// css-module:./Stepper.module.css#css-module
+var Stepper_module_default = { "root": "m-cbb4ea7e", "steps": "m-aaf89d0b", "separator": "m-2a371ac9", "content": "m-78da155d", "step": "m-cbb57068", "step--horizontal": "m-f56b1e2c", "step--vertical": "m-833edb7e", "verticalSeparator": "m-6496b3f3", "stepWrapper": "m-818e70b", "stepIcon": "m-1959ad01", "stepCompletedIcon": "m-a79331dc", "stepBody": "m-1956aa2a", "stepLabel": "m-12051f6c", "stepDescription": "m-164eea74" };
+
 // src/Stepper.tsx
 var defaultProps4 = {
   orientation: "horizontal",
@@ -800,21 +814,7 @@ var Stepper = (0, import_core11.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core11.useStyles)({
     name: "Stepper",
-    classes: {
-      root: "stepper-root",
-      steps: "stepper-steps",
-      separator: "stepper-separator",
-      content: "stepper-content",
-      step: "stepper-step",
-      stepWrapper: "stepper-stepWrapper",
-      verticalSeparator: "stepper-verticalSeparator",
-      stepIcon: "stepper-stepIcon",
-      stepCompletedIcon: "stepper-stepCompletedIcon",
-      stepBody: "stepper-stepBody",
-      stepLabel: "stepper-stepLabel",
-      stepDescription: "stepper-stepDescription",
-      stepLoader: "stepper-stepLoader"
-    },
+    classes: Stepper_module_default,
     props,
     className,
     style,
@@ -890,6 +890,7 @@ var Stepper = (0, import_core11.factory)((_props, ref) => {
     items
   ), content && /* @__PURE__ */ import_react15.default.createElement("div", __spreadValues({}, getStyles("content")), content)));
 });
+Stepper.classes = Stepper_module_default;
 Stepper.displayName = "@raikou/core/Stepper";
 Stepper.Completed = StepperCompleted;
 Stepper.Step = StepperStep;
@@ -899,3 +900,4 @@ Stepper.Step = StepperStep;
   StepperCompleted,
   StepperStep
 });
+//# sourceMappingURL=index.js.map

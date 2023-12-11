@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.ts"],"sourcesContent":["export { Box } from \"@raikou/core\";\nexport type {\n  BoxProps,\n  ElementProps,\n  BoxMod,\n  BoxComponentProps,\n  CSSProperties,\n} from \"@raikou/core\";\n"],"mappings":";AAAA,SAAS,WAAW;","names":[]}

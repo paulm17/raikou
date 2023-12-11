@@ -12,9 +12,9 @@ export const Bars: RaikouLoaderComponent = forwardRef(
       {...others}
       ref={ref}
     >
-      <span className="loader-bar" />
-      <span className="loader-bar" />
-      <span className="loader-bar" />
+      <span className={classes.bar} />
+      <span className={classes.bar} />
+      <span className={classes.bar} />
     </Box>
   ),
 );

@@ -136,4 +136,4 @@ declare const Button: (<C = "button">(props: C extends React.ElementType<any> ? 
     Group: typeof ButtonGroup;
 };
 
-export { Button, ButtonCssVariables, ButtonFactory, ButtonGroup, ButtonGroupCssVariables, ButtonGroupFactory, ButtonGroupProps, ButtonGroupStylesNames, ButtonProps, ButtonStylesNames, ButtonVariant };
+export { Button, type ButtonCssVariables, type ButtonFactory, ButtonGroup, type ButtonGroupCssVariables, type ButtonGroupFactory, type ButtonGroupProps, type ButtonGroupStylesNames, type ButtonProps, type ButtonStylesNames, type ButtonVariant };

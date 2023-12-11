@@ -21,4 +21,4 @@ declare const SimpleGrid: _raikou_core.RaikouComponent<{
     stylesNames: SimpleGridStylesNames;
 }>;
 
-export { SimpleGrid, SimpleGridFactory, SimpleGridProps, SimpleGridStylesNames };
+export { SimpleGrid, type SimpleGridFactory, type SimpleGridProps, type SimpleGridStylesNames };

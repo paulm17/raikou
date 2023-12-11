@@ -63,6 +63,11 @@ module.exports = __toCommonJS(src_exports);
 // src/BackgroundImage.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./BackgroundImage.module.css#css-module
+var BackgroundImage_module_default = { "root": "m-2ce0de02" };
+
+// src/BackgroundImage.tsx
 var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)(
   (_, { radius }) => ({
@@ -98,9 +103,7 @@ var BackgroundImage = (0, import_core.polymorphicFactory)(
     const getStyles = (0, import_core.useStyles)({
       name: "BackgroundImage",
       props,
-      classes: {
-        root: "backgroundImage-root"
-      },
+      classes: BackgroundImage_module_default,
       className,
       style,
       classNames,
@@ -119,7 +122,9 @@ var BackgroundImage = (0, import_core.polymorphicFactory)(
   }
 );
 BackgroundImage.displayName = "@raikou/core/BackgroundImage";
+BackgroundImage.classes = BackgroundImage_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   BackgroundImage
 });
+//# sourceMappingURL=index.js.map

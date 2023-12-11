@@ -10,5 +10,6 @@ export function getStaticClassNames({
   classNamesPrefix,
   selector,
 }: GetStaticClassNamesInput) {
-  return themeName.map((n) => `${classNamesPrefix}-${n}-${selector}`);
+  // return themeName.map((n) => `${classNamesPrefix}-${n}-${selector}`);
+  return themeName.map((n) => `${n.toLowerCase()}-${selector}`);
 }

@@ -1,0 +1,34 @@
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Popover/src/Popover.module.css/#css-module-data */
+[data-raikou-color-scheme=light] .m-38a85659 {
+  --raikou-popover-bg: #fff;
+  --raikou-popover-bd: #e9ecef;
+}
+[data-raikou-color-scheme=dark] .m-38a85659 {
+  --raikou-popover-bg: #25262b;
+  --raikou-popover-bd: #373a40;
+}
+.m-38a85659 {
+  position: absolute;
+  background-color: var(--_popover-bg);
+  border: calc(0.0625rem * var(--raikou-scale)) solid var(--_popover-bd);
+  padding: var(--raikou-spacing-sm) var(--raikou-spacing-md);
+  box-shadow: var(--popover-shadow, none);
+  border-radius: var(--popover-radius, var(--raikou-radius-default));
+}
+.m-38a85659:focus {
+  outline: none;
+}
+[data-raikou-color-scheme=light] .m-38a85659 {
+  --_popover-bg: var(--raikou-popover-bg);
+  --_popover-bd: var(--raikou-popover-bd);
+}
+[data-raikou-color-scheme=dark] .m-38a85659 {
+  --_popover-bg: var(--raikou-popover-bg);
+  --_popover-bd: var(--raikou-popover-bd);
+}
+.m-a31dc6c1 {
+  background-color: inherit;
+  border: calc(0.0625rem * var(--raikou-scale)) solid var(--_popover-bd);
+  z-index: 1;
+}
+/*# sourceMappingURL=index.css.map */

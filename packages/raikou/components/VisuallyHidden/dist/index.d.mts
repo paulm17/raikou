@@ -7,4 +7,4 @@ declare namespace VisuallyHidden {
     var displayName: string;
 }
 
-export { VisuallyHidden, VisuallyHiddenProps };
+export { VisuallyHidden, type VisuallyHiddenProps };

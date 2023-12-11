@@ -69,4 +69,4 @@ declare const PinInput: _raikou_core.RaikouComponent<{
     vars: PinInputCssVariables;
 }>;
 
-export { PinInput, PinInputFactory, PinInputProps, PinInputStylesNames };
+export { PinInput, type PinInputFactory, type PinInputProps, type PinInputStylesNames };

@@ -86,6 +86,9 @@ function getTitleSize(order, size) {
   };
 }
 
+// css-module:./Title.module.css#css-module
+var Title_module_default = { "root": "m-8a5d1357" };
+
 // src/Title.tsx
 var defaultProps = {
   order: 1
@@ -126,9 +129,7 @@ var Title = (0, import_core2.factory)((_props, ref) => {
   const getStyles = (0, import_core2.useStyles)({
     name: "Title",
     props,
-    classes: {
-      root: "title-root"
-    },
+    classes: Title_module_default,
     className,
     style,
     classNames,
@@ -151,8 +152,10 @@ var Title = (0, import_core2.factory)((_props, ref) => {
     }), others)
   );
 });
+Title.classes = Title_module_default;
 Title.displayName = "@raikou/core/Title";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Title
 });
+//# sourceMappingURL=index.js.map

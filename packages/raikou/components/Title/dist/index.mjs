@@ -59,6 +59,9 @@ function getTitleSize(order, size) {
   };
 }
 
+// css-module:./Title.module.css#css-module
+var Title_module_default = { "root": "m-8a5d1357" };
+
 // src/Title.tsx
 var defaultProps = {
   order: 1
@@ -99,9 +102,7 @@ var Title = factory((_props, ref) => {
   const getStyles = useStyles({
     name: "Title",
     props,
-    classes: {
-      root: "title-root"
-    },
+    classes: Title_module_default,
     className,
     style,
     classNames,
@@ -124,7 +125,9 @@ var Title = factory((_props, ref) => {
     }), others)
   );
 });
+Title.classes = Title_module_default;
 Title.displayName = "@raikou/core/Title";
 export {
   Title
 };
+//# sourceMappingURL=index.mjs.map

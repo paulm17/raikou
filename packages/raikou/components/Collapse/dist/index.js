@@ -240,3 +240,4 @@ Collapse.displayName = "@raikou/core/Collapse";
 0 && (module.exports = {
   Collapse
 });
+//# sourceMappingURL=index.js.map

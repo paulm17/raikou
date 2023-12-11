@@ -1,0 +1,18 @@
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Container/src/Container.module.css/#css-module-data */
+.m-7485cace {
+  --container-size-xs: calc(33.75rem * var(--raikou-scale));
+  --container-size-sm: calc(45rem * var(--raikou-scale));
+  --container-size-md: calc(60rem * var(--raikou-scale));
+  --container-size-lg: calc(71.25rem * var(--raikou-scale));
+  --container-size-xl: calc(82.5rem * var(--raikou-scale));
+  --container-size: var(--container-size-md);
+  padding-left: var(--raikou-spacing-md);
+  padding-right: var(--raikou-spacing-md);
+  max-width: var(--container-size);
+  margin-left: auto;
+  margin-right: auto;
+}
+.m-7485cace[data-fluid] {
+  --container-size: 100%;
+}
+/*# sourceMappingURL=index.css.map */

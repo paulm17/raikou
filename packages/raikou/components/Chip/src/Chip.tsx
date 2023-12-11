@@ -155,13 +155,6 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
   const getStyles = useStyles<ChipFactory>({
     name: "Chip",
     classes,
-    // classes: {
-    //   root: "chip-root",
-    //   input: "chip-input",
-    //   iconWrapper: "chip-iconWrapper",
-    //   checkIcon: "chip-checkIcon",
-    //   label: "chip-label",
-    // },
     props,
     className,
     style,

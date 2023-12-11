@@ -104,7 +104,11 @@ export const Grid = factory<GridFactory>((_props, ref) => {
   // encapsulate GridVariables in a div due to it nerfing
   // data-raikou-styles="system"
 
-  useStore.setState({ getStyles, grow, columns: columns! });
+  useStore.update((state) => {
+    state.getStyles = getStyles;
+    state.columns = columns!;
+    state.grow = grow;
+  });
 
   return (
     <>

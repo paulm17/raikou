@@ -75,12 +75,12 @@ var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
 
 // src/store.ts
-var import_zustand = require("zustand");
-var useStore = (0, import_zustand.create)(() => ({
+var import_pure_store = __toESM(require("pure-store"));
+var useStore = (0, import_pure_store.default)({
   getStyles: void 0,
   grow: false,
   columns: 12
-}));
+});
 
 // src/GridCol/GridColVariables.tsx
 var getColumnFlexBasis = (colSpan, columns) => {
@@ -241,6 +241,9 @@ function GridVariables({ gutter, selector }) {
   return /* @__PURE__ */ import_react3.default.createElement(import_core3.InlineStyles, { styles: baseStyles, media, selector });
 }
 
+// css-module:./Grid.module.css#css-module
+var Grid_module_default = { "root": "m-410352e9", "inner": "m-dee7bd2f", "col": "m-96bdd299" };
+
 // src/Grid.tsx
 var defaultProps2 = {
   gutter: "md",
@@ -286,11 +289,7 @@ var Grid = (0, import_core4.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core4.useStyles)({
     name: "Grid",
-    classes: {
-      root: "grid-root",
-      col: "grid-col",
-      inner: "grid-inner"
-    },
+    classes: Grid_module_default,
     props,
     className,
     style,
@@ -301,7 +300,11 @@ var Grid = (0, import_core4.factory)((_props, ref) => {
     varsResolver
   });
   const responsiveClassName = (0, import_core4.useRandomClassName)();
-  useStore.setState({ getStyles, grow, columns });
+  useStore.update((state) => {
+    state.getStyles = getStyles;
+    state.columns = columns;
+    state.grow = grow;
+  });
   return /* @__PURE__ */ import_react4.default.createElement(import_react4.default.Fragment, null, /* @__PURE__ */ import_react4.default.createElement("div", null, /* @__PURE__ */ import_react4.default.createElement(GridVariables, __spreadValues({ selector: `.${responsiveClassName}` }, props))), /* @__PURE__ */ import_react4.default.createElement(
     import_core4.Box,
     __spreadValues(__spreadValues({
@@ -312,8 +315,10 @@ var Grid = (0, import_core4.factory)((_props, ref) => {
 });
 Grid.displayName = "@raikou/core/Grid";
 Grid.Col = GridCol;
+Grid.classes = Grid_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Grid,
   GridCol
 });
+//# sourceMappingURL=index.js.map

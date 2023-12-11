@@ -37,6 +37,11 @@ import {
   createVarsResolver,
   getSize
 } from "@raikou/core";
+
+// css-module:./Kbd.module.css#css-module
+var Kbd_module_default = { "root": "m-dc6f14e2" };
+
+// src/Kbd.tsx
 var defaultProps = {};
 var varsResolver = createVarsResolver((_, { size }) => ({
   root: {
@@ -49,9 +54,7 @@ var Kbd = factory((_props, ref) => {
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
   const getStyles = useStyles({
     name: "Kbd",
-    classes: {
-      root: "kbd-root"
-    },
+    classes: Kbd_module_default,
     props,
     className,
     style,
@@ -63,7 +66,9 @@ var Kbd = factory((_props, ref) => {
   });
   return /* @__PURE__ */ React.createElement(Box, __spreadValues(__spreadValues({ component: "kbd", ref }, getStyles("root")), others));
 });
+Kbd.classes = Kbd_module_default;
 Kbd.displayName = "@raikou/core/Kbd";
 export {
   Kbd
 };
+//# sourceMappingURL=index.mjs.map

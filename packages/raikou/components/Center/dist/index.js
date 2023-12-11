@@ -63,6 +63,11 @@ module.exports = __toCommonJS(src_exports);
 // src/Center.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./Center.module.css#css-module
+var Center_module_default = { "root": "m-4451eb3a" };
+
+// src/Center.tsx
 var defaultProps = {};
 var Center = (0, import_core.polymorphicFactory)((_props, ref) => {
   const props = (0, import_core.useProps)("Center", defaultProps, _props);
@@ -86,9 +91,7 @@ var Center = (0, import_core.polymorphicFactory)((_props, ref) => {
   const getStyles = (0, import_core.useStyles)({
     name: "Center",
     props,
-    classes: {
-      root: "center-root"
-    },
+    classes: Center_module_default,
     className,
     style,
     classNames,
@@ -99,7 +102,9 @@ var Center = (0, import_core.polymorphicFactory)((_props, ref) => {
   return /* @__PURE__ */ import_react.default.createElement(import_core.Box, __spreadValues(__spreadValues({ ref, mod: { inline } }, getStyles("root")), others));
 });
 Center.displayName = "@raikou/core/Center";
+Center.classes = Center_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Center
 });
+//# sourceMappingURL=index.js.map

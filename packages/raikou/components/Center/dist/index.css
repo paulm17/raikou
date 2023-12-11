@@ -1,0 +1,10 @@
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Center/src/Center.module.css/#css-module-data */
+.m-4451eb3a {
+  display: var(--_center-display, flex);
+  align-items: center;
+  justify-content: center;
+}
+.m-4451eb3a[data-inline] {
+  --_center-display: inline-flex;
+}
+/*# sourceMappingURL=index.css.map */

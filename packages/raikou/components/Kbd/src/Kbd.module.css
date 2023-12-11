@@ -1,13 +1,13 @@
 .root {
   @mixin light {
-    --raikou-kbd-border-color: #dee2e6;
-    --raikou-kbd-color: #495057;
-    --raikou-kbd-bg: #f8f9fa;
+    --raikou-bd-border-color: #dee2e6;
+    --raikou-bd-color: #495057;
+    --raikou-bd-bg: #f8f9fa;
   }
   @mixin dark {
-    --raikou-kbd-border-color: #373a40;
-    --raikou-kbd-color: #c1c2c5;
-    --raikou-kbd-bg: #2c2e33;
+    --raikou-bd-border-color: #373a40;
+    --raikou-bd-color: #c1c2c5;
+    --raikou-bd-bg: #2c2e33;
   }
 
   --kbd-fz-xs: rem(10px);
@@ -36,14 +36,14 @@
   color: var(--_kbd-color);
 
   @mixin light {
-    --_kbd-border-color: var(--raikou-kbd-border-color);
-    --_kbd-color: var(--raikou-kbd-color);
-    --_kbd-bg: var(--raikou-kbd-bg);
+    --_kbd-border-color: var(--raikou-bd-border-color);
+    --_kbd-color: var(--raikou-bd-color);
+    --_kbd-bg: var(--raikou-bd-bg);
   }
 
   @mixin dark {
-    --_kbd-border-color: var(--raikou-kbd-border-color);
-    --_kbd-color: var(--raikou-kbd-color);
-    --_kbd-bg: var(--raikou-kbd-bg);
+    --_kbd-border-color: var(--raikou-bd-border-color);
+    --_kbd-color: var(--raikou-bd-color);
+    --_kbd-bg: var(--raikou-bd-bg);
   }
 }

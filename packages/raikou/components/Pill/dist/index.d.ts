@@ -79,4 +79,4 @@ declare const Pill: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { Pill, PillCssVariables, PillFactory, PillGroup, PillGroupCssVariables, PillGroupFactory, PillGroupProps, PillGroupStylesNames, PillProps, PillStylesNames, PillVariant };
+export { Pill, type PillCssVariables, type PillFactory, PillGroup, type PillGroupCssVariables, type PillGroupFactory, type PillGroupProps, type PillGroupStylesNames, type PillProps, type PillStylesNames, type PillVariant };

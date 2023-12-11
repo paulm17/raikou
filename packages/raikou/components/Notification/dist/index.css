@@ -1,0 +1,328 @@
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Loader/src/Loader.module.css/#css-module-data */
+.m-5ae2e3c {
+  --loader-size-xs: calc(1.125rem * var(--raikou-scale));
+  --loader-size-sm: calc(1.375rem * var(--raikou-scale));
+  --loader-size-md: calc(2.25rem * var(--raikou-scale));
+  --loader-size-lg: calc(2.75rem * var(--raikou-scale));
+  --loader-size-xl: calc(3.625rem * var(--raikou-scale));
+  --loader-size: var(--loader-size-md);
+  --loader-color: var(--raikou-primary-color-filled);
+}
+@keyframes m-5d2b3b9d {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  50%, 100% {
+    transform: scale(1);
+  }
+}
+.m-7a2bd4cd {
+  position: relative;
+  width: var(--loader-size);
+  height: var(--loader-size);
+  display: flex;
+  gap: calc(var(--loader-size) / 5);
+}
+.m-870bb79 {
+  flex: 1;
+  background: var(--loader-color);
+  animation: m-5d2b3b9d 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  border-radius: calc(0.125rem * var(--raikou-scale));
+}
+.m-870bb79:nth-of-type(1) {
+  animation-delay: -240ms;
+}
+.m-870bb79:nth-of-type(2) {
+  animation-delay: -120ms;
+}
+.m-870bb79:nth-of-type(3) {
+  animation-delay: 0;
+}
+@keyframes m-aac34a1 {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+}
+.m-4e3f22d7 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: calc(var(--loader-size) / 10);
+  position: relative;
+  width: var(--loader-size);
+  height: var(--loader-size);
+}
+.m-870c4af {
+  width: calc(var(--loader-size) / 3 - var(--loader-size) / 15);
+  height: calc(var(--loader-size) / 3 - var(--loader-size) / 15);
+  border-radius: 50%;
+  background: var(--loader-color);
+  animation: m-aac34a1 0.8s infinite linear;
+}
+.m-870c4af:nth-child(2) {
+  animation-delay: 0.4s;
+}
+@keyframes m-f8e89c4b {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.m-b34414df {
+  display: inline-block;
+  width: var(--loader-size);
+  height: var(--loader-size);
+}
+.m-b34414df::after {
+  content: "";
+  display: block;
+  width: var(--loader-size);
+  height: var(--loader-size);
+  border-radius: calc(625rem * var(--raikou-scale));
+  border-width: calc(var(--loader-size) / 8);
+  border-style: solid;
+  border-color: var(--loader-color) var(--loader-color) var(--loader-color) transparent;
+  animation: m-f8e89c4b 1.2s linear infinite;
+}
+.m-f7590d7a {
+  display: flex;
+}
+.m-f7590d7a svg {
+  width: var(--loader-size);
+  height: var(--loader-size);
+  stroke: var(--loader-color);
+}
+
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/UnstyledButton/src/UnstyledButton.module.css/#css-module-data */
+.m-87cf2631 {
+  background-color: transparent;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  appearance: none;
+  font-size: var(--raikou-font-size-md);
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/CloseButton/src/CloseButton.module.css/#css-module-data */
+[data-raikou-color-scheme=light] .m-86a44da5 {
+  --raikou-closebutton-color: #495057 ;
+}
+[data-raikou-color-scheme=dark] .m-86a44da5 {
+  --raikou-closebutton-color: #a6a7ab ;
+}
+.m-86a44da5 {
+  --cb-size-xs: calc(1.125rem * var(--raikou-scale));
+  --cb-size-sm: calc(1.375rem * var(--raikou-scale));
+  --cb-size-md: calc(1.75rem * var(--raikou-scale));
+  --cb-size-lg: calc(2.125rem * var(--raikou-scale));
+  --cb-size-xl: calc(2.75rem * var(--raikou-scale));
+  --cb-size: var(--cb-size-md);
+  --cb-icon-size: 70%;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  user-select: none;
+  width: var(--cb-size);
+  height: var(--cb-size);
+  min-width: var(--cb-size);
+  min-height: var(--cb-size);
+  border-radius: var(--cb-radius, var(--raikou-radius-default));
+  color: var(--_cb-color);
+}
+[data-raikou-color-scheme=light] .m-86a44da5 {
+  --_cb-color: var(--raikou-closebutton-color) ;
+}
+[data-raikou-color-scheme=dark] .m-86a44da5 {
+  --_cb-color: var(--raikou-closebutton-color) ;
+}
+[data-raikou-color-scheme=light] .m-220c80f2 {
+  --raikou-closebutton-bg-hover: #f8f9fa ;
+}
+[data-raikou-color-scheme=dark] .m-220c80f2 {
+  --raikou-closebutton-bg-hover: #25262b ;
+}
+.m-220c80f2 {
+  background-color: var(--_cb-bg);
+}
+@media (hover: hover) {
+  [data-raikou-color-scheme=light] .m-220c80f2:hover {
+    --_cb-bg: var(--raikou-closebutton-bg-hover) ;
+  }
+  [data-raikou-color-scheme=dark] .m-220c80f2:hover {
+    --_cb-bg: var(--raikou-closebutton-bg-hover) ;
+  }
+}
+@media (hover: none) {
+  [data-raikou-color-scheme=light] .m-220c80f2:active {
+    --_cb-bg: var(--raikou-closebutton-bg-hover) ;
+  }
+  [data-raikou-color-scheme=dark] .m-220c80f2:active {
+    --_cb-bg: var(--raikou-closebutton-bg-hover) ;
+  }
+}
+
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Notification/src/Notification.module.css/#css-module-data */
+[data-raikou-color-scheme=light] .m-a513464 {
+  --raikou-notification-border-color: #dee2e6;
+  --raikou-notification-bg: #fff;
+  --raikou-notification-title-color: #212529;
+  --raikou-notification-title-description-color: #868e96;
+  --raikou-notification-description-color: #000;
+  --raikou-notification-close-button-hover-bg: #f8f9fa;
+}
+[data-raikou-color-scheme=dark] .m-a513464 {
+  --raikou-notification-border-color: #ced4da;
+  --raikou-notification-bg: #25262b;
+  --raikou-notification-title-color: #fff;
+  --raikou-notification-title-description-color: #5c5f66;
+  --raikou-notification-description-color: #c1c2c5;
+  --raikou-notification-close-button-hover-bg: #141517;
+}
+.m-a513464 {
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: var(--_root-padding-left, calc(1.375rem * var(--raikou-scale)));
+  padding-right: var(--_root-padding-right, var(--raikou-spacing-xs));
+  padding-top: var(--raikou-spacing-xs);
+  padding-bottom: var(--raikou-spacing-xs);
+  border: var(--_border, none);
+  border-radius: var(--notification-radius, var(--raikou-radius-default));
+  box-shadow: var(--raikou-shadow-lg);
+  background-color: var(--_bg);
+}
+.m-a513464::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: calc(0.375rem * var(--raikou-scale));
+  top: var(--notification-radius, var(--raikou-radius-default));
+  bottom: var(--notification-radius, var(--raikou-radius-default));
+  left: calc(0.25rem * var(--raikou-scale));
+  border-radius: var(--notification-radius, var(--raikou-radius-default));
+  background-color: var( --notification-color, var(--raikou-primary-color-filled) );
+}
+[dir=rtl] .m-a513464::before {
+  right: calc(0.25rem * var(--raikou-scale));
+  left: auto;
+}
+.m-a513464[data-with-icon] {
+  --_root-padding-left: var(--raikou-spacing-xs);
+}
+.m-a513464[data-with-icon]::before {
+  display: none;
+}
+[dir=rtl] .m-a513464[data-with-icon] {
+  --_root-padding-right: var(--raikou-spacing-xs);
+}
+.m-a513464[data-with-border] {
+  --_border: calc(0.0625rem * var(--raikou-scale)) solid var(--_border-color);
+}
+[dir=rtl] .m-a513464 {
+  --_root-padding-right: calc(1.375rem * var(--raikou-scale));
+  --_root-padding-left: var(--raikou-spacing-xs);
+}
+[data-raikou-color-scheme=light] .m-a513464 {
+  --_border-color: var(--raikou-notification-border-color);
+  --_bg: var(--raikou-notification-bg);
+}
+[data-raikou-color-scheme=dark] .m-a513464 {
+  --_border-color: var(--raikou-notification-border-color);
+  --_bg: var(--raikou-notification-bg);
+}
+.m-a4ceffb {
+  box-sizing: border-box;
+  margin-right: var(--_icon-margin-right, var(--raikou-spacing-md));
+  margin-left: var(--_icon-margin-left, 0);
+  width: calc(1.75rem * var(--raikou-scale));
+  height: calc(1.75rem * var(--raikou-scale));
+  border-radius: calc(1.75rem * var(--raikou-scale));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var( --notification-color, var(--raikou-primary-color-filled) );
+  color: var(--raikou-color-white);
+}
+[dir=rtl] .m-a4ceffb {
+  --_icon-margin-right: 0;
+  --_icon-margin-left: var(--raikou-spacing-md);
+}
+.m-b0920b15 {
+  margin-right: var(--_icon-margin-right, var(--raikou-spacing-md));
+  margin-left: var(--_icon-margin-left, 0);
+}
+[dir=rtl] .m-b0920b15 {
+  --_icon-margin-right: 0;
+  --_icon-margin-left: var(--raikou-spacing-md);
+}
+.m-a49ed24 {
+  flex: 1;
+  overflow: hidden;
+  margin-right: var(--_body-margin-right, var(--raikou-spacing-xs));
+  margin-left: var(--_body-margin-left, 0);
+}
+[dir=rtl] .m-a49ed24 {
+  --_body-margin-right: 0;
+  --_body-margin-left: var(--raikou-spacing-xs);
+}
+.m-3feedf16 {
+  margin-bottom: calc(0.125rem * var(--raikou-scale));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--_title-color);
+  font-size: var(--raikou-font-size-sm);
+  line-height: var(--raikou-line-height-sm);
+  font-weight: 500;
+}
+[data-raikou-color-scheme=light] .m-3feedf16 {
+  --_title-color: var(--raikou-notification-title-color);
+}
+[data-raikou-color-scheme=dark] .m-3feedf16 {
+  --_title-color: var(--raikou-notification-title-color);
+}
+.m-3d733a3a {
+  color: var(--_description-color);
+  font-size: var(--raikou-font-size-sm);
+  line-height: var(--raikou-line-height-sm);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+[data-raikou-color-scheme=light] .m-3d733a3a[data-with-title] {
+  --_description-color: var(--raikou-notification-title-description-color);
+}
+[data-raikou-color-scheme=dark] .m-3d733a3a[data-with-title] {
+  --_description-color: var(--raikou-notification-title-description-color);
+}
+[data-raikou-color-scheme=light] .m-3d733a3a {
+  --_description-color: var(--raikou-notification-description-color);
+}
+[data-raikou-color-scheme=dark] .m-3d733a3a {
+  --_description-color: var(--raikou-notification-description-color);
+}
+.m-919a4d88:hover {
+  background-color: var(--_close-button-hover-bg);
+}
+[data-raikou-color-scheme=light] .m-919a4d88:hover {
+  --_close-button-hover-bg: var(--raikou-notification-close-button-hover-bg);
+}
+[data-raikou-color-scheme=dark] .m-919a4d88:hover {
+  --_close-button-hover-bg: var(--raikou-notification-close-button-hover-bg);
+}
+/*# sourceMappingURL=index.css.map */

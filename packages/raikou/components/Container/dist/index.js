@@ -63,6 +63,11 @@ module.exports = __toCommonJS(src_exports);
 // src/Container.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./Container.module.css#css-module
+var Container_module_default = { "root": "m-7485cace" };
+
+// src/Container.tsx
 var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)(
   (_, { size, fluid }) => ({
@@ -92,9 +97,7 @@ var Container = (0, import_core.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core.useStyles)({
     name: "Container",
-    classes: {
-      root: "container-root"
-    },
+    classes: Container_module_default,
     props,
     className,
     style,
@@ -107,7 +110,9 @@ var Container = (0, import_core.factory)((_props, ref) => {
   return /* @__PURE__ */ import_react.default.createElement(import_core.Box, __spreadValues(__spreadValues({ ref, mod: { fluid } }, getStyles("root")), others));
 });
 Container.displayName = "@raikou/core/Container";
+Container.classes = Container_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Container
 });
+//# sourceMappingURL=index.js.map

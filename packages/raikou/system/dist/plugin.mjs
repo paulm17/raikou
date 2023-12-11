@@ -1,9 +1,7 @@
 import {
   rem
-} from "./chunk-YUAHGI36.mjs";
-import {
-  __async
-} from "./chunk-TKBDMZFR.mjs";
+} from "./chunk-T4QKJGPD.mjs";
+import "./chunk-TOPM6CMB.mjs";
 
 // ../../../node_modules/.pnpm/@unocss+core@0.56.5/node_modules/@unocss/core/dist/index.mjs
 var LAYER_DEFAULT = "default";
@@ -21,8 +19,6 @@ function definePreset(preset) {
 }
 
 // src/plugin.ts
-import fs from "fs/promises";
-import { cwd } from "process";
 function genMargin(type, px) {
   let value = "";
   if (type === "px") {
@@ -108,32 +104,7 @@ var plugin_default = definePreset(() => {
           }
         }
       ]
-    ],
-    preflights: [
-      {
-        layer: "raikou",
-        getCSS: () => __async(void 0, null, function* () {
-          const component_css = yield fs.readFile(
-            `${cwd()}/node_modules/@raikou/system/dist/global.css`,
-            "utf8"
-          );
-          return component_css;
-        })
-      }
-      // {
-      //   layer: "raikou_2",
-      //   getCSS: async () => {
-      //     const component_css = await fs.readFile(
-      //       `${cwd()}/node_modules/@raikou/system/dist/styles_2.css`,
-      //       "utf8",
-      //     );
-      //     return component_css;
-      //   },
-      // },
-    ],
-    layers: {
-      default: -1
-    }
+    ]
   };
 });
 export {

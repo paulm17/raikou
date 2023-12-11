@@ -41,6 +41,11 @@ import {
   getSize
 } from "@raikou/core";
 import { useMergedRef } from "@raikou/hooks";
+
+// css-module:./Dial.module.css#css-module
+var Dial_module_default = { "root": "m-43c05cff", "inner": "m-33cbf5d9", "handle": "m-4346b705" };
+
+// src/Dial.tsx
 var defaultProps = {
   scale: 1
 };
@@ -81,11 +86,7 @@ var Dial = polymorphicFactory((_props, ref) => {
   const getStyles = useStyles({
     name: "Dial",
     props,
-    classes: {
-      root: "dial-root",
-      inner: "dial-inner",
-      handle: "dial-handle"
-    },
+    classes: Dial_module_default,
     className,
     style,
     classNames,
@@ -153,6 +154,8 @@ var Dial = polymorphicFactory((_props, ref) => {
   );
 });
 Dial.displayName = "@raikou/Dial";
+Dial.classes = Dial_module_default;
 export {
   Dial
 };
+//# sourceMappingURL=index.mjs.map

@@ -184,4 +184,4 @@ declare function NativeScrollArea({ children }: NativeScrollAreaProps): React.JS
 
 type ModalBaseStylesNames = 'body' | 'header' | 'title' | 'overlay' | 'root' | 'content' | 'close' | 'inner';
 
-export { ModalBase, ModalBaseBody, ModalBaseBodyProps, ModalBaseCloseButton, ModalBaseCloseButtonProps, ModalBaseContent, ModalBaseContentProps, ModalBaseHeader, ModalBaseHeaderProps, ModalBaseOverlay, ModalBaseOverlayProps, ModalBaseProps, ModalBaseStylesNames, ModalBaseTitle, ModalBaseTitleProps, NativeScrollArea };
+export { ModalBase, ModalBaseBody, type ModalBaseBodyProps, ModalBaseCloseButton, type ModalBaseCloseButtonProps, ModalBaseContent, type ModalBaseContentProps, ModalBaseHeader, type ModalBaseHeaderProps, ModalBaseOverlay, type ModalBaseOverlayProps, type ModalBaseProps, type ModalBaseStylesNames, ModalBaseTitle, type ModalBaseTitleProps, NativeScrollArea };

@@ -3562,6 +3562,9 @@ function useTooltip(settings) {
   };
 }
 
+// css-module:./Tooltip.module.css#css-module
+var Tooltip_module_default = { "root": "m-946fb08c", "tooltip": "m-1b3c8819", "arrow": "m-f898399f" };
+
 // ../components/Tooltip/src/Tooltip.tsx
 var defaultProps5 = {
   position: "top",
@@ -3681,10 +3684,7 @@ var Tooltip = factory2((_props, ref) => {
   const getStyles = useStyles2({
     name: "Tooltip",
     props,
-    classes: {
-      tooltip: "tooltip-root",
-      arrow: "tooltip-arrow"
-    },
+    classes: Tooltip_module_default,
     className,
     style,
     classNames,
@@ -3758,6 +3758,7 @@ var Tooltip = factory2((_props, ref) => {
     }, children.props))
   ));
 });
+Tooltip.classes = Tooltip_module_default;
 Tooltip.displayName = "@raikou/core/Tooltip";
 Tooltip.Floating = TooltipFloating;
 Tooltip.Group = TooltipGroup;
@@ -3770,6 +3771,11 @@ import {
   useStyles as useStyles3,
   polymorphicFactory
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../components/UnstyledButton/src/UnstyledButton.tsx
 var defaultProps6 = {
   __staticSelector: "UnstyledButton"
 };
@@ -3796,9 +3802,7 @@ var UnstyledButton = polymorphicFactory(
     const getStyles = useStyles3({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -3816,6 +3820,7 @@ var UnstyledButton = polymorphicFactory(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // ../components/ActionIcon/src/ActionIcon.tsx
 import React21 from "react";
@@ -3844,6 +3849,11 @@ import {
 import React15, { forwardRef as forwardRef4 } from "react";
 import cx2 from "clsx";
 import { Box as Box4 } from "@raikou/core";
+
+// css-module:../Loader.module.css#css-module
+var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
+
+// ../components/Loader/src/loaders/Bars.tsx
 var Bars = forwardRef4(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
@@ -3851,13 +3861,13 @@ var Bars = forwardRef4(
       Box4,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx2("loader-barsLoader", className)
+        className: cx2(Loader_module_default.barsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React15.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ React15.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ React15.createElement("span", { className: "loader-bar" })
+      /* @__PURE__ */ React15.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React15.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React15.createElement("span", { className: Loader_module_default.bar })
     );
   }
 );
@@ -3873,7 +3883,7 @@ var Oval = forwardRef5(
       Box5,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx3("loader-ovalLoader", className)
+        className: cx3(Loader_module_default.ovalLoader, className)
       }, others), {
         ref
       })
@@ -3892,7 +3902,7 @@ var Progress = forwardRef6(
       Box6,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx4("loader-progressLoader", className)
+        className: cx4(Loader_module_default.progressLoader, className)
       }, others), {
         ref
       }),
@@ -3922,16 +3932,19 @@ var Dots = forwardRef7(
       Box7,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx5("loader-dotsLoader", className)
+        className: cx5(Loader_module_default.dotsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React18.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ React18.createElement("span", { className: "loader-dot" })
+      /* @__PURE__ */ React18.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React18.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React18.createElement("span", { className: Loader_module_default.dot })
     );
   }
 );
+
+// css-module:./Loader.module.css#css-module
+var Loader_module_default2 = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
 
 // ../components/Loader/src/Loader.tsx
 var defaultLoaders = {
@@ -3982,9 +3995,7 @@ var Loader = factory3((_props, ref) => {
   const getStyles = useStyles4({
     name: "Loader",
     props,
-    classes: {
-      root: "loader-root"
-    },
+    classes: Loader_module_default2,
     className,
     style,
     classNames,
@@ -4004,6 +4015,7 @@ var Loader = factory3((_props, ref) => {
   );
 });
 Loader.displayName = "@raikou/core/Loader";
+Loader.classes = Loader_module_default2;
 
 // ../components/ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
 import React20 from "react";
@@ -4015,6 +4027,11 @@ import {
   rem as rem5,
   createVarsResolver as createVarsResolver4
 } from "@raikou/core";
+
+// css-module:../ActionIcon.module.css#css-module
+var ActionIcon_module_default = { "root": "m-8d3f4000", "loader": "m-302b9fb1", "group": "m-1a0f1b21" };
+
+// ../components/ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
 var defaultProps8 = {
   orientation: "horizontal"
 };
@@ -4050,9 +4067,7 @@ var ActionIconGroup = factory4(
     const getStyles = useStyles5({
       name: "ActionIconGroup",
       props,
-      classes: {
-        group: "actionIconGroup-root"
-      },
+      classes: ActionIcon_module_default,
       className,
       style,
       classNames,
@@ -4073,7 +4088,11 @@ var ActionIconGroup = factory4(
     );
   }
 );
+ActionIconGroup.classes = ActionIcon_module_default;
 ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
+
+// css-module:./ActionIcon.module.css#css-module
+var ActionIcon_module_default2 = { "root": "m-8d3f4000", "loader": "m-302b9fb1", "group": "m-1a0f1b21" };
 
 // ../components/ActionIcon/src/ActionIcon.tsx
 var defaultProps9 = {};
@@ -4142,10 +4161,7 @@ var ActionIcon = polymorphicFactory2(
       props,
       className,
       style,
-      classes: {
-        root: "actionIcon-root",
-        loader: "actionIcon-loader"
-      },
+      classes: ActionIcon_module_default2,
       classNames,
       styles,
       unstyled,
@@ -4176,6 +4192,7 @@ var ActionIcon = polymorphicFactory2(
 );
 ActionIcon.displayName = "@raikou/core/ActionIcon";
 ActionIcon.Group = ActionIconGroup;
+ActionIcon.classes = ActionIcon_module_default2;
 
 // ../components/ScrollArea/src/ScrollArea.tsx
 import React36, { useState as useState15 } from "react";
@@ -4994,6 +5011,9 @@ var ScrollAreaThumb = React35.forwardRef((props, forwardedRef) => {
   return null;
 });
 
+// css-module:./ScrollArea.module.css#css-module
+var ScrollArea_module_default = { "root": "m-d57069b5", "viewport": "m-c0783ff9", "viewportInner": "m-f8f631dd", "scrollbar": "m-c44ba933", "thumb": "m-d8b5e363", "corner": "m-21657268" };
+
 // ../components/ScrollArea/src/ScrollArea.tsx
 var defaultProps11 = {
   scrollHideDelay: 1e3,
@@ -5043,14 +5063,7 @@ var ScrollArea = factory5((_props, ref) => {
   const getStyles = useStyles7({
     name: "ScrollArea",
     props,
-    classes: {
-      root: "scrollArea-root",
-      viewport: "scrollArea-viewport",
-      viewportInner: "scrollArea-viewportInner",
-      scrollbar: "scrollArea-scrollbar",
-      thumb: "scrollArea-thumb",
-      corner: "scrollArea-corner"
-    },
+    classes: ScrollArea_module_default,
     className,
     style,
     classNames,
@@ -5164,10 +5177,18 @@ var ScrollAreaAutosize = factory5((props, ref) => {
     children
   )));
 });
+ScrollArea.classes = ScrollArea_module_default;
 ScrollAreaAutosize.displayName = "@raikou/core/ScrollAreaAutosize";
 ScrollArea.Autosize = ScrollAreaAutosize;
 
+// css-module:./CodeHighlight.module.css#css-module
+var CodeHighlight_module_default = { "code": "m-5caae6d3", "pre": "m-2c47c4fd", "header": "m-e58679f3", "controls": "m-be7e9c9c", "copy": "m-5caae85b", "control": "m-d498bab7", "file": "m-5cac2e62", "files": "m-38d99e51", "codeWrapper": "m-9f507240", "showCodeButton": "m-c9378bc2", "root": "m-5cb1b9c8", "fileIcon": "m-b46cddfb" };
+
+// css-module:./CodeHighlight.theme.module.css#css-module
+var CodeHighlight_theme_module_default = { "theme": "m-1f5e827e" };
+
 // src/CodeHighlightTabs.tsx
+var classes = __spreadProps(__spreadValues({}, CodeHighlight_module_default), { root: cx6(CodeHighlight_module_default.root, CodeHighlight_theme_module_default.theme) });
 var defaultProps12 = {
   withHeader: true,
   copyLabel: "Copy code",
@@ -5234,19 +5255,7 @@ var CodeHighlightTabs = factory6(
     const getStyles = useStyles8({
       name: "CodeHighlightTabs",
       props,
-      classes: {
-        code: "codeHighlight-code",
-        pre: "codeHighlight-pre",
-        header: "codeHighlight-header",
-        controls: "codeHighlight-controls",
-        control: "codeHighlight-control",
-        file: "codeHighlight-file",
-        files: "codeHighlight-files",
-        codeWrapper: "codeHighlight-codeWrapper",
-        showCodeButton: "codeHighlight-showCodeButton",
-        fileIcon: "codeHighlight-fileIcon",
-        root: cx6("codeHighlight-root", "codeHighlight-theme")
-      },
+      classes,
       className,
       style,
       classNames,
@@ -5349,6 +5358,7 @@ var CodeHighlightTabs = factory6(
   }
 );
 CodeHighlightTabs.displayName = "@raikou/core/CodeHighlightTabs";
+CodeHighlightTabs.classes = classes;
 
 // src/CodeHighlight.tsx
 import React38 from "react";
@@ -5388,6 +5398,7 @@ function useHighlight({
 }
 
 // src/CodeHighlight.tsx
+var classes2 = __spreadProps(__spreadValues({}, CodeHighlight_module_default), { root: cx7(CodeHighlight_module_default.root, CodeHighlight_theme_module_default.theme) });
 var defaultProps13 = {
   copyLabel: "Copy code",
   copiedLabel: "Copied",
@@ -5428,12 +5439,7 @@ var CodeHighlight = factory7((_props, ref) => {
   const getStyles = useStyles9({
     name: "CodeHighlight",
     props,
-    classes: {
-      code: "codeHighlight-code",
-      pre: "codeHighlight-pre",
-      copy: "codeHighlight-copy",
-      root: cx7("codeHighlight-root", "codeHighlight-theme")
-    },
+    classes: classes2,
     className,
     style,
     classNames,
@@ -5455,6 +5461,7 @@ var CodeHighlight = factory7((_props, ref) => {
     /* @__PURE__ */ React38.createElement(ActionIcon, __spreadValues({ onClick: copy, variant: "none" }, getStyles("copy")), /* @__PURE__ */ React38.createElement(CopyIcon, { copied }))
   )), /* @__PURE__ */ React38.createElement(ScrollArea, { type: "hover", dir: "ltr", offsetScrollbars: false }, /* @__PURE__ */ React38.createElement("pre", __spreadValues({}, getStyles("pre")), /* @__PURE__ */ React38.createElement("code", __spreadValues(__spreadValues({}, getStyles("code")), getCodeProps())))));
 });
+CodeHighlight.classes = classes2;
 CodeHighlight.displayName = "@raikou/core/CodeHighlight";
 
 // src/InlineCodeHighlight.tsx
@@ -5467,6 +5474,7 @@ import {
   useStyles as useStyles10
 } from "@raikou/core";
 import hljs3 from "highlight.js";
+var classes3 = __spreadProps(__spreadValues({}, CodeHighlight_module_default), { code: cx8(CodeHighlight_module_default.code, CodeHighlight_theme_module_default.theme) });
 var defaultProps14 = {
   language: "tsx"
 };
@@ -5495,9 +5503,7 @@ var InlineCodeHighlight = factory8(
     const getStyles = useStyles10({
       name: "InlineCodeHighlight",
       props,
-      classes: {
-        code: cx8("codeHighlight-code", "codeHighlight-theme")
-      },
+      classes: classes3,
       className,
       style,
       classNames,
@@ -5525,3 +5531,4 @@ export {
   CodeHighlightTabs,
   InlineCodeHighlight
 };
+//# sourceMappingURL=index.mjs.map

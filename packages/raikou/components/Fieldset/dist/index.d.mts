@@ -28,4 +28,4 @@ declare const Fieldset: _raikou_core.RaikouComponent<{
     variant: FieldsetVariant;
 }>;
 
-export { Fieldset, FieldsetFactory, FieldsetProps, FieldsetStylesNames, FieldsetVariant };
+export { Fieldset, type FieldsetFactory, type FieldsetProps, type FieldsetStylesNames, type FieldsetVariant };

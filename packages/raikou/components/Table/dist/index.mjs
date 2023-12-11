@@ -48,15 +48,15 @@ import {
 } from "@raikou/core";
 
 // src/store.ts
-import { create } from "zustand";
-var useStore = create(() => ({
+import createStore from "pure-store";
+var useStore = createStore({
   getStyles: void 0,
   striped: void 0,
   highlightOnHover: void 0,
   withColumnBorders: void 0,
   withRowBorders: void 0,
   captionSide: "top"
-}));
+});
 
 // src/Table.components.tsx
 function getDataAttributes(ctx, options) {
@@ -128,6 +128,9 @@ function TableDataRenderer({ data }) {
   return /* @__PURE__ */ React2.createElement(React2.Fragment, null, data.caption && /* @__PURE__ */ React2.createElement(TableCaption, null, data.caption), data.head && /* @__PURE__ */ React2.createElement(TableThead, null, /* @__PURE__ */ React2.createElement(TableTr, null, data.head.map((item, index) => /* @__PURE__ */ React2.createElement(TableTh, { key: index }, item)))), data.body && /* @__PURE__ */ React2.createElement(TableTbody, null, data.body.map((row, rowIndex) => /* @__PURE__ */ React2.createElement(TableTr, { key: rowIndex }, row.map((item, index) => /* @__PURE__ */ React2.createElement(TableTd, { key: index }, item))))), data.foot && /* @__PURE__ */ React2.createElement(TableTfoot, null, /* @__PURE__ */ React2.createElement(TableTr, null, data.foot.map((item, index) => /* @__PURE__ */ React2.createElement(TableTh, { key: index }, item)))));
 }
 TableDataRenderer.displayName = "@mantine/core/TableDataRenderer";
+
+// css-module:./Table.module.css#css-module
+var Table_module_default = { "table": "m-b23fa0ef", "th": "m-4e7aa4f3", "tr": "m-4e7aa4fd", "td": "m-4e7aa4ef", "tbody": "m-b2404537", "thead": "m-b242d975", "caption": "m-9e5a3ac7", "scrollContainer": "m-a100c15", "scrollContainerInner": "m-62259741" };
 
 // src/Table.tsx
 var defaultProps = {
@@ -209,16 +212,7 @@ var Table = factory2((_props, ref) => {
     props,
     className,
     style,
-    classes: {
-      table: "table-root",
-      th: "table-th",
-      tr: "table-tr",
-      td: "table-td",
-      tbody: "table-tbody",
-      caption: "table-caption",
-      tfoot: "table-tfoot",
-      thead: "table-thead"
-    },
+    classes: Table_module_default,
     classNames,
     styles,
     unstyled,
@@ -226,13 +220,13 @@ var Table = factory2((_props, ref) => {
     vars,
     varsResolver
   });
-  useStore.setState({
-    getStyles,
-    striped: striped === true ? "odd" : striped || void 0,
-    highlightOnHover,
-    withColumnBorders,
-    withRowBorders,
-    captionSide: captionSide || "bottom"
+  useStore.update((state) => {
+    state.getStyles = getStyles;
+    state.striped = striped === true ? "odd" : striped || void 0;
+    state.highlightOnHover = highlightOnHover;
+    state.withColumnBorders = withColumnBorders;
+    state.withRowBorders = withRowBorders;
+    state.captionSide = captionSide || "bottom";
   });
   return /* @__PURE__ */ React3.createElement(
     Box2,
@@ -245,6 +239,7 @@ var Table = factory2((_props, ref) => {
     children || !!data && /* @__PURE__ */ React3.createElement(TableDataRenderer, { data })
   );
 });
+Table.classes = Table_module_default;
 Table.displayName = "@raikou/core/Table";
 Table.Td = TableTd;
 Table.Th = TableTh;
@@ -264,3 +259,4 @@ export {
   TableThead,
   TableTr
 };
+//# sourceMappingURL=index.mjs.map

@@ -3655,4 +3655,4 @@ declare const NativeSelect: _raikou_core.RaikouComponent<{
     stylesNames: __InputStylesNames;
 }>;
 
-export { NativeSelect, NativeSelectFactory, NativeSelectProps };
+export { NativeSelect, type NativeSelectFactory, type NativeSelectProps };

@@ -60,4 +60,4 @@ declare const Grid: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { Grid, GridCol, GridColProps, GridCssVariables, GridFactory, GridProps, GridStylesNames };
+export { Grid, GridCol, type GridColProps, type GridCssVariables, type GridFactory, type GridProps, type GridStylesNames };

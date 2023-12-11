@@ -68,7 +68,6 @@
     "@types/react": "^18.2.23",
     "@types/d3-hierarchy": "^1.1.6",
     "d3-hierarchy": "^1.1.8",
-    "clean-package": "2.2.0",
-    "tsup": "^7.1.0"
+    "clean-package": "2.2.0"
   }
 }

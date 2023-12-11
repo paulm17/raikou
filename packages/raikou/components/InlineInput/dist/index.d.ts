@@ -1,6 +1,7 @@
 import React from 'react';
 import { BoxProps, StylesApiProps, ElementProps, RaikouSize, Factory } from '@raikou/core';
 
+declare const InlineInputClasses: any;
 type InlineInputStylesNames = "root" | "body" | "labelWrapper" | "label" | "description" | "error";
 interface InlineInputProps extends BoxProps, StylesApiProps<InlineInputFactory>, ElementProps<"div"> {
     __staticSelector: string;
@@ -19,4 +20,4 @@ type InlineInputFactory = Factory<{
 }>;
 declare const InlineInput: React.ForwardRefExoticComponent<InlineInputProps & React.RefAttributes<HTMLDivElement>>;
 
-export { InlineInput, InlineInputStylesNames };
+export { InlineInput, InlineInputClasses, type InlineInputStylesNames };

@@ -150,7 +150,12 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
     varsResolver,
   });
 
-  useStore.setState({ getStyles, withBorder, zIndex, disabled });
+  useStore.update((state) => {
+    state.getStyles = getStyles;
+    state.withBorder = withBorder;
+    state.zIndex = zIndex;
+    state.disabled = disabled;
+  });
 
   return (
     <>

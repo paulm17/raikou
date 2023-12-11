@@ -62,4 +62,4 @@ declare const ScrollAreaAutosize: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { ScrollArea, ScrollAreaAutosize, ScrollAreaAutosizeProps, ScrollAreaCssVariables, ScrollAreaFactory, ScrollAreaProps, ScrollAreaStylesNames };
+export { ScrollArea, ScrollAreaAutosize, type ScrollAreaAutosizeProps, type ScrollAreaCssVariables, type ScrollAreaFactory, type ScrollAreaProps, type ScrollAreaStylesNames };

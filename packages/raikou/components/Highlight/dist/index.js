@@ -70,6 +70,11 @@ var import_core4 = require("@raikou/core");
 // ../Text/src/Text.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./Text.module.css#css-module
+var Text_module_default = { "root": "m-b6d8b162" };
+
+// ../Text/src/Text.tsx
 function getTextTruncate(truncate) {
   if (truncate === "start") {
     return "start";
@@ -132,9 +137,7 @@ var Text = (0, import_core.polymorphicFactory)((_props, ref) => {
   const getStyles = (0, import_core.useStyles)({
     name: ["Text", __staticSelector],
     props,
-    classes: {
-      root: "text-root"
-    },
+    classes: Text_module_default,
     className,
     style,
     classNames,
@@ -162,6 +165,7 @@ var Text = (0, import_core.polymorphicFactory)((_props, ref) => {
     }), others)
   );
 });
+Text.classes = Text_module_default;
 Text.displayName = "@raikou/core/Text";
 
 // ../Mark/src/Mark.tsx
@@ -184,6 +188,9 @@ function getMarkColor({
   }
   return `var(${parsed.variable})`;
 }
+
+// css-module:./Mark.module.css#css-module
+var Mark_module_default = { "root": "m-bcb3f3c2" };
 
 // ../Mark/src/Mark.tsx
 var defaultProps2 = {
@@ -221,9 +228,7 @@ var Mark = (0, import_core3.factory)((_props, ref) => {
     props,
     className,
     style,
-    classes: {
-      root: "mark-root"
-    },
+    classes: Mark_module_default,
     classNames,
     styles,
     unstyled,
@@ -239,6 +244,7 @@ var Mark = (0, import_core3.factory)((_props, ref) => {
     }, getStyles("root")), others)
   );
 });
+Mark.classes = Mark_module_default;
 Mark.displayName = "@raikou/core/Mark";
 
 // src/highlighter/highlighter.ts
@@ -293,3 +299,4 @@ Highlight.displayName = "@raikou/core/Highlight";
 0 && (module.exports = {
   Highlight
 });
+//# sourceMappingURL=index.js.map

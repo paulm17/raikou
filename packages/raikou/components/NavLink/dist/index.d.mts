@@ -75,4 +75,4 @@ declare const NavLink: (<C = "a">(props: C extends React.ElementType<any> ? NavL
     classes: Record<string, string>;
 } & Record<string, never>;
 
-export { NavLink, NavLinkCssVariables, NavLinkFactory, NavLinkProps, NavLinkStylesNames, NavLinkVariant };
+export { NavLink, type NavLinkCssVariables, type NavLinkFactory, type NavLinkProps, type NavLinkStylesNames, type NavLinkVariant };

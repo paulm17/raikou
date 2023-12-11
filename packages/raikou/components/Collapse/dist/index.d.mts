@@ -15,4 +15,4 @@ interface CollapseProps extends BoxProps, Omit<React.ComponentPropsWithoutRef<"d
 }
 declare const Collapse: React.ForwardRefExoticComponent<CollapseProps & React.RefAttributes<HTMLDivElement>>;
 
-export { Collapse, CollapseProps };
+export { Collapse, type CollapseProps };

@@ -52,12 +52,12 @@ import {
 } from "@raikou/core";
 
 // src/store.ts
-import { create } from "zustand";
-var useStore = create(() => ({
+import createStore from "pure-store";
+var useStore = createStore({
   getStyles: void 0,
   center: void 0,
   icon: void 0
-}));
+});
 
 // src/ListItem/ListItem.tsx
 var defaultProps = {};
@@ -93,6 +93,9 @@ var ListItem = factory((_props, ref) => {
   );
 });
 ListItem.displayName = "@raikou/core/ListItem";
+
+// css-module:./List.module.css#css-module
+var List_module_default = { "root": "m-abbac491", "item": "m-abb6bec2", "itemWrapper": "m-75cd9f71", "itemIcon": "m-60f83e5b" };
 
 // src/List.tsx
 var defaultProps2 = {
@@ -140,12 +143,7 @@ var List = factory2((_props, ref) => {
   ]);
   const getStyles = useStyles({
     name: "List",
-    classes: {
-      root: "list-root",
-      item: "list-item",
-      itemWrapper: "list-itemWrapper",
-      itemIcon: "list-itemIcon"
-    },
+    classes: List_module_default,
     props,
     className,
     style,
@@ -155,7 +153,11 @@ var List = factory2((_props, ref) => {
     vars,
     varsResolver
   });
-  useStore.setState({ getStyles, center, icon });
+  useStore.update((state) => {
+    state.getStyles = getStyles;
+    state.center = center;
+    state.icon = icon;
+  });
   return /* @__PURE__ */ React2.createElement(
     Box2,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { style: { listStyleType } })), {
@@ -166,9 +168,11 @@ var List = factory2((_props, ref) => {
     children
   );
 });
+List.classes = List_module_default;
 List.displayName = "@raikou/core/List";
 List.Item = ListItem;
 export {
   List,
   ListItem
 };
+//# sourceMappingURL=index.mjs.map

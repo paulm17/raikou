@@ -192,6 +192,9 @@ function OptionalPortal(_a) {
 }
 OptionalPortal.displayName = "@raikou/core/OptionalPortal";
 
+// css-module:./Affix.module.css#css-module
+var Affix_module_default = { "root": "m-7f854edf" };
+
 // src/Affix.tsx
 var defaultProps2 = {
   position: { bottom: 0, right: 0 },
@@ -236,9 +239,7 @@ var Affix = (0, import_core2.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core2.useStyles)({
     name: "Affix",
-    classes: {
-      root: "affix-root"
-    },
+    classes: Affix_module_default,
     props,
     className,
     style,
@@ -251,7 +252,9 @@ var Affix = (0, import_core2.factory)((_props, ref) => {
   return /* @__PURE__ */ import_react57.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ import_react57.default.createElement(import_core2.Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others)));
 });
 Affix.displayName = "@raikou/core/Affix";
+Affix.classes = Affix_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Affix
 });
+//# sourceMappingURL=index.js.map

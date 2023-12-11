@@ -427,6 +427,6 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
   );
 });
 
-Carousel.classes = classes;
 Carousel.displayName = "@raikou/core/Carousel";
+Carousel.classes = classes;
 Carousel.Slide = CarouselSlide;

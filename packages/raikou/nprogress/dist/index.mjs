@@ -142,6 +142,9 @@ var [ProgressProvider, useProgressContext] = createSafeContext(
   "Progress.Root component was not found in tree"
 );
 
+// css-module:../Progress.module.css#css-module
+var Progress_module_default = { "root": "m-db6d6462", "section": "m-2242eb65", "stripes-animation": "m-81a374bd", "label": "m-91e40b74" };
+
 // ../components/Progress/src/ProgressRoot/ProgressRoot.tsx
 var defaultProps2 = {};
 var varsResolver = createVarsResolver(
@@ -157,11 +160,7 @@ var ProgressRoot = factory((_props, ref) => {
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
   const getStyles = useStyles({
     name: "Progress",
-    classes: {
-      root: "progress-root",
-      section: "progress-section",
-      label: "progress-label"
-    },
+    classes: Progress_module_default,
     props,
     className,
     style,
@@ -173,6 +172,7 @@ var ProgressRoot = factory((_props, ref) => {
   });
   return /* @__PURE__ */ React5.createElement(ProgressProvider, { value: { getStyles } }, /* @__PURE__ */ React5.createElement(Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others)));
 });
+ProgressRoot.classes = Progress_module_default;
 ProgressRoot.displayName = "@raikou/core/ProgressRoot";
 
 // ../components/Progress/src/ProgressSection/ProgressSection.tsx
@@ -454,6 +454,9 @@ var {
   cleanup: cleanupNavigationProgress
 } = nprogress;
 
+// css-module:./NavigationProgress.module.css#css-module
+var NavigationProgress_module_default = { "root": "m-8f2832ae", "section": "m-7a0fe999" };
+
 // src/NavigationProgress.tsx
 function NavigationProgress(_a) {
   var _b = _a, {
@@ -492,10 +495,7 @@ function NavigationProgress(_a) {
       value: state.progress,
       size,
       color,
-      classNames: {
-        root: "nProgress-root",
-        section: "nProgress-section"
-      },
+      classNames: NavigationProgress_module_default,
       "data-mounted": state.mounted || void 0,
       __vars: { "--nprogress-z-index": zIndex == null ? void 0 : zIndex.toString() }
     }, others)
@@ -527,3 +527,4 @@ export {
   updateNavigationProgressStateAction,
   useNprogress
 };
+//# sourceMappingURL=index.mjs.map

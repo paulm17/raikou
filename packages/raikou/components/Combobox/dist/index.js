@@ -151,6 +151,11 @@ function getLabelsLockup(options) {
 // src/ComboboxChevron/ComboboxChevron.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:../Combobox.module.css#css-module
+var Combobox_module_default = { "dropdown": "m-88b62a41", "options": "m-b2821a6e", "option": "m-92253aa5", "search": "m-985517d8", "empty": "m-2530cd1d", "header": "m-858f94bd", "footer": "m-82b967cb", "group": "m-254f3e4f", "groupLabel": "m-2bb2e9e5", "chevron": "m-2943220b", "optionsDropdownScrollArea": "m-71d052f9", "optionsDropdownOption": "m-390b5f4", "optionsDropdownCheckIcon": "m-8ee53fc2" };
+
+// src/ComboboxChevron/ComboboxChevron.tsx
 var defaultProps = {
   error: null
 };
@@ -185,9 +190,7 @@ var ComboboxChevron = (0, import_core.factory)(
     ]);
     const getStyles = (0, import_core.useStyles)({
       name: "ComboboxChevron",
-      classes: {
-        chevron: "combobox-chevron"
-      },
+      classes: Combobox_module_default,
       props,
       style,
       className,
@@ -222,6 +225,7 @@ var ComboboxChevron = (0, import_core.factory)(
     );
   }
 );
+ComboboxChevron.classes = Combobox_module_default;
 ComboboxChevron.displayName = "@raikou/core/ComboboxChevron";
 
 // src/Combobox.tsx
@@ -2870,6 +2874,9 @@ var PopoverDropdown = (0, import_core11.factory)(
 );
 PopoverDropdown.displayName = "@raikou/core/PopoverDropdown";
 
+// css-module:./Popover.module.css#css-module
+var Popover_module_default = { "dropdown": "m-38a85659", "arrow": "m-a31dc6c1" };
+
 // ../Popover/src/Popover.tsx
 var defaultProps5 = {
   position: "bottom",
@@ -2985,10 +2992,7 @@ function Popover(_props) {
   const getStyles = (0, import_core12.useStyles)({
     name: __staticSelector,
     props,
-    classes: {
-      dropdown: "popover-dropdown",
-      arrow: "popover-arrow"
-    },
+    classes: Popover_module_default,
     classNames,
     styles,
     unstyled,
@@ -3616,6 +3620,11 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
 // ../Input/src/InputLabel/InputLabel.tsx
 var import_react26 = __toESM(require("react"));
 var import_core17 = require("@raikou/core");
+
+// css-module:../Input.module.css#css-module
+var Input_module_default = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
+
+// ../Input/src/InputLabel/InputLabel.tsx
 var defaultProps10 = {
   labelElement: "label"
 };
@@ -3661,10 +3670,11 @@ var InputLabel = (0, import_core17.factory)((_props, ref) => {
   const _getStyles = (0, import_core17.useStyles)({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      label: "inputWrapper-label",
-      required: "inputWrapper-required"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    // },
     className,
     style,
     classNames,
@@ -3735,9 +3745,10 @@ var InputError = (0, import_core18.factory)((_props, ref) => {
   const _getStyles = (0, import_core18.useStyles)({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      error: "inputWrapper-error"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   error: "inputWrapper-error",
+    // },
     className,
     style,
     classNames,
@@ -3802,9 +3813,10 @@ var InputDescription = (0, import_core19.factory)(
     const _getStyles = (0, import_core19.useStyles)({
       name: ["InputWrapper", __staticSelector],
       props,
-      classes: {
-        description: "inputWrapper-description"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   description: "inputWrapper-description",
+      // },
       className,
       style,
       classNames,
@@ -3857,9 +3869,10 @@ var InputPlaceholder = (0, import_core20.factory)(
     const getStyles = (0, import_core20.useStyles)({
       name: ["InputPlaceholder", __staticSelector],
       props,
-      classes: {
-        placeholder: "input-placeholder"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   placeholder: "input-placeholder",
+      // },
       className,
       style,
       classNames,
@@ -3966,13 +3979,14 @@ var InputWrapper = (0, import_core21.factory)((_props, ref) => {
   const getStyles = (0, import_core21.useStyles)({
     name: ["InputWrapper", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      root: "inputWrapper-root",
-      label: "inputWrapper-label",
-      required: "inputWrapper-required",
-      error: "inputWrapper-error",
-      description: "inputWrapper-description"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   root: "inputWrapper-root",
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    //   error: "inputWrapper-error",
+    //   description: "inputWrapper-description",
+    // },
     className,
     style,
     classNames,
@@ -4063,6 +4077,9 @@ var InputWrapper = (0, import_core21.factory)((_props, ref) => {
   );
 });
 InputWrapper.displayName = "@raikou/core/InputWrapper";
+
+// css-module:./Input.module.css#css-module
+var Input_module_default2 = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
 
 // ../Input/src/Input.tsx
 var defaultProps15 = {
@@ -4156,11 +4173,12 @@ var Input = (0, import_core22.polymorphicFactory)((_props, ref) => {
   const getStyles = (0, import_core22.useStyles)({
     name: ["Input", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      wrapper: "input-wrapper",
-      input: "input-input",
-      section: "input-section"
-    },
+    classes: Input_module_default2,
+    // classes: {
+    //   wrapper: "input-wrapper",
+    //   input: "input-input",
+    //   section: "input-section",
+    // },
     className,
     style,
     classNames,
@@ -4488,6 +4506,11 @@ var import_core31 = require("@raikou/core");
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react40 = __toESM(require("react"));
 var import_core30 = require("@raikou/core");
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps23 = {
   __staticSelector: "UnstyledButton"
 };
@@ -4514,9 +4537,7 @@ var UnstyledButton = (0, import_core30.polymorphicFactory)(
     const getStyles = (0, import_core30.useStyles)({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -4534,6 +4555,10 @@ var UnstyledButton = (0, import_core30.polymorphicFactory)(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
+
+// css-module:./CloseButton.module.css#css-module
+var CloseButton_module_default = { "root": "m-86a44da5", "root--subtle": "m-220c80f2" };
 
 // ../CloseButton/src/CloseButton.tsx
 var defaultProps24 = {
@@ -4584,9 +4609,7 @@ var CloseButton = (0, import_core31.polymorphicFactory)(
       props,
       className,
       style,
-      classes: {
-        root: "closeButton-root"
-      },
+      classes: CloseButton_module_default,
       classNames,
       styles,
       unstyled,
@@ -4609,6 +4632,7 @@ var CloseButton = (0, import_core31.polymorphicFactory)(
   }
 );
 CloseButton.displayName = "@raikou/core/CloseButton";
+CloseButton.classes = CloseButton_module_default;
 
 // src/ComboboxClearButton/ComboboxClearButton.tsx
 var ComboboxClearButton = (0, import_react42.forwardRef)((_a, ref) => {
@@ -4634,6 +4658,9 @@ var ComboboxClearButton = (0, import_react42.forwardRef)((_a, ref) => {
   );
 });
 ComboboxClearButton.displayName = "@mantine/core/ComboboxClearButton";
+
+// css-module:./Combobox.module.css#css-module
+var Combobox_module_default2 = { "dropdown": "m-88b62a41", "options": "m-b2821a6e", "option": "m-92253aa5", "search": "m-985517d8", "empty": "m-2530cd1d", "header": "m-858f94bd", "footer": "m-82b967cb", "group": "m-254f3e4f", "groupLabel": "m-2bb2e9e5", "chevron": "m-2943220b", "optionsDropdownScrollArea": "m-71d052f9", "optionsDropdownOption": "m-390b5f4", "optionsDropdownCheckIcon": "m-8ee53fc2" };
 
 // src/Combobox.tsx
 var defaultProps25 = {
@@ -4689,17 +4716,7 @@ function Combobox(_props) {
   const store = controlledStore || uncontrolledStore;
   const getStyles = (0, import_core32.useStyles)({
     name: __staticSelector || "Combobox",
-    classes: {
-      dropdown: "comboBox-dropdown",
-      options: "comboBox-options",
-      option: "comboBox-option",
-      search: "comboBox-search",
-      empty: "comboBox-empty",
-      header: "comboBox-header",
-      footer: "comboBox-footer",
-      group: "comboBox-group",
-      groupLabel: "comboBox-groupLabel"
-    },
+    classes: Combobox_module_default2,
     props,
     classNames,
     styles,
@@ -4733,6 +4750,7 @@ function Combobox(_props) {
 }
 var extendCombobox = (c) => c;
 Combobox.extend = extendCombobox;
+Combobox.classes = Combobox_module_default2;
 Combobox.displayName = "@raikou/core/Combobox";
 Combobox.Target = ComboboxTarget;
 Combobox.Dropdown = ComboboxDropdown;
@@ -5533,6 +5551,9 @@ var ScrollAreaThumb = import_react55.default.forwardRef((props, forwardedRef) =>
   return null;
 });
 
+// css-module:./ScrollArea.module.css#css-module
+var ScrollArea_module_default = { "root": "m-d57069b5", "viewport": "m-c0783ff9", "viewportInner": "m-f8f631dd", "scrollbar": "m-c44ba933", "thumb": "m-d8b5e363", "corner": "m-21657268" };
+
 // ../ScrollArea/src/ScrollArea.tsx
 var defaultProps27 = {
   scrollHideDelay: 1e3,
@@ -5582,14 +5603,7 @@ var ScrollArea = (0, import_core36.factory)((_props, ref) => {
   const getStyles = (0, import_core36.useStyles)({
     name: "ScrollArea",
     props,
-    classes: {
-      root: "scrollArea-root",
-      viewport: "scrollArea-viewport",
-      viewportInner: "scrollArea-viewportInner",
-      scrollbar: "scrollArea-scrollbar",
-      thumb: "scrollArea-thumb",
-      corner: "scrollArea-corner"
-    },
+    classes: ScrollArea_module_default,
     className,
     style,
     classNames,
@@ -5703,6 +5717,7 @@ var ScrollAreaAutosize = (0, import_core36.factory)((props, ref) => {
     children
   )));
 });
+ScrollArea.classes = ScrollArea_module_default;
 ScrollAreaAutosize.displayName = "@raikou/core/ScrollAreaAutosize";
 ScrollArea.Autosize = ScrollAreaAutosize;
 
@@ -6107,3 +6122,4 @@ function useVirtualizedCombobox({
   useComboboxTargetProps,
   useVirtualizedCombobox
 });
+//# sourceMappingURL=index.js.map

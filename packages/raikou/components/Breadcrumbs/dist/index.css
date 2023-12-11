@@ -1,0 +1,32 @@
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Breadcrumbs/src/Breadcrumbs.module.css/#css-module-data */
+[data-raikou-color-scheme=light] .m-8b3717df {
+  --raikou-breadcrumbs-separator-color: #495057;
+}
+[data-raikou-color-scheme=dark] .m-8b3717df {
+  --raikou-breadcrumbs-separator-color: #909296;
+}
+.m-8b3717df {
+  display: flex;
+  align-items: center;
+}
+.m-f678d540 {
+  line-height: 1;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+.m-3b8f2208 {
+  margin-left: var(--bc-separator-margin, var(--raikou-spacing-xs));
+  margin-right: var(--bc-separator-margin, var(--raikou-spacing-xs));
+  color: var(--_separator-color);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+[data-raikou-color-scheme=light] .m-3b8f2208 {
+  --_separator-color: var(--raikou-breadcrumbs-separator-color);
+}
+[data-raikou-color-scheme=dark] .m-3b8f2208 {
+  --_separator-color: var(--raikou-breadcrumbs-separator-color);
+}
+/*# sourceMappingURL=index.css.map */

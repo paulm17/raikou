@@ -22,13 +22,13 @@ export default function Page() {
       <a href="/unocss">unocss</a>
       <br />
       <br />
+      <a href="/single">single</a>
+      <br />
+      <br />
       <a href="/datatable">datatable</a>
       <br />
       <br />
-      <a href="/anchor">anchor</a>
-      <br />
-      <br />
-      <a href="/chip">chip</a>
+      <a href="/contextmenu">context menu</a>
     </p>
   );
 }

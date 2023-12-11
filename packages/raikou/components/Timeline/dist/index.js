@@ -73,10 +73,10 @@ var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
 
 // src/store.ts
-var import_zustand = require("zustand");
-var useStore = (0, import_zustand.create)(() => ({
+var import_pure_store = __toESM(require("pure-store"));
+var useStore = (0, import_pure_store.default)({
   getStyles: void 0
-}));
+});
 
 // src/TimelineItem/TimelineItem.tsx
 var defaultProps = {};
@@ -140,6 +140,9 @@ var TimelineItem = (0, import_core.factory)((_props, ref) => {
 });
 TimelineItem.displayName = "@raikou/core/TimelineItem";
 
+// css-module:./Timeline.module.css#css-module
+var Timeline_module_default = { "root": "m-43657ece", "itemTitle": "m-2ebe8099", "item": "m-436178ff", "itemBullet": "m-8affcee1", "itemBody": "m-540e8f41" };
+
 // src/Timeline.tsx
 var defaultProps2 = {
   active: -1,
@@ -191,13 +194,7 @@ var Timeline = (0, import_core2.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core2.useStyles)({
     name: "Timeline",
-    classes: {
-      root: "timeline-root",
-      itemTitle: "timeline-itemTitle",
-      item: "timeline-item",
-      itemBullet: "timeline-itemBullet",
-      itemBody: "timeline-itemBody"
-    },
+    classes: Timeline_module_default,
     props,
     className,
     style,
@@ -219,9 +216,12 @@ var Timeline = (0, import_core2.factory)((_props, ref) => {
       });
     }
   );
-  useStore.setState({ getStyles });
+  useStore.update((state) => {
+    state.getStyles = getStyles;
+  });
   return /* @__PURE__ */ import_react2.default.createElement(import_core2.Box, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { mod: { align }, ref }), others), items);
 });
+Timeline.classes = Timeline_module_default;
 Timeline.displayName = "@raikou/core/Timeline";
 Timeline.Item = TimelineItem;
 // Annotate the CommonJS export names for ESM import in node:
@@ -229,3 +229,4 @@ Timeline.Item = TimelineItem;
   Timeline,
   TimelineItem
 });
+//# sourceMappingURL=index.js.map

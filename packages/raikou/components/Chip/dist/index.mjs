@@ -131,6 +131,9 @@ function ChipGroup(props) {
 }
 ChipGroup.displayName = "@raikou/core/ChipGroup";
 
+// css-module:./Chip.module.css#css-module
+var Chip_module_default = { "root": "m-f59ffda3", "label": "m-be049a53", "label--outline": "m-3904c1af", "label--filled": "m-fa109255", "label--light": "m-f7e165c3", "iconWrapper": "m-9ac86df9", "checkIcon": "m-d6d72580", "input": "m-bde07329" };
+
 // src/Chip.tsx
 var defaultProps2 = {
   type: "checkbox"
@@ -204,13 +207,7 @@ var Chip = factory((_props, ref) => {
   ]);
   const getStyles = useStyles({
     name: "Chip",
-    classes: {
-      root: "chip-root",
-      input: "chip-input",
-      iconWrapper: "chip-iconWrapper",
-      checkIcon: "chip-checkIcon",
-      label: "chip-label"
-    },
+    classes: Chip_module_default,
     props,
     className,
     style,
@@ -273,3 +270,4 @@ export {
   Chip,
   ChipGroup
 };
+//# sourceMappingURL=index.mjs.map

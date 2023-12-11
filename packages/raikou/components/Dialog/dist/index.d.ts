@@ -102,4 +102,4 @@ declare const Dialog: _raikou_core.RaikouComponent<{
     vars: DialogCssVariables;
 }>;
 
-export { Dialog, DialogCssVariables, DialogFactory, DialogProps, DialogStylesNames };
+export { Dialog, type DialogCssVariables, type DialogFactory, type DialogProps, type DialogStylesNames };

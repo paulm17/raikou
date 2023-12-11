@@ -197,13 +197,13 @@ export const Table = factory<TableFactory>((_props, ref) => {
     varsResolver,
   });
 
-  useStore.setState({
-    getStyles,
-    striped: striped === true ? "odd" : striped || undefined,
-    highlightOnHover,
-    withColumnBorders,
-    withRowBorders,
-    captionSide: captionSide || "bottom",
+  useStore.update((state) => {
+    state.getStyles = getStyles;
+    state.striped = striped === true ? "odd" : striped || undefined;
+    state.highlightOnHover = highlightOnHover;
+    state.withColumnBorders = withColumnBorders;
+    state.withRowBorders = withRowBorders;
+    state.captionSide = captionSide || "bottom";
   });
 
   return (

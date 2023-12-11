@@ -49,4 +49,4 @@ declare const Paper: (<C = "div">(props: C extends React.ElementType<any> ? Pape
     classes: Record<string, string>;
 } & Record<string, never>;
 
-export { Paper, PaperBaseProps, PaperCssVariables, PaperFactory, PaperProps, PaperStylesNames };
+export { Paper, type PaperBaseProps, type PaperCssVariables, type PaperFactory, type PaperProps, type PaperStylesNames };

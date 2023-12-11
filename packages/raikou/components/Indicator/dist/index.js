@@ -107,6 +107,9 @@ function getPositionVariables(_position = "top-end", offset = 0) {
   return variables;
 }
 
+// css-module:./Indicator.module.css#css-module
+var Indicator_module_default = { "root": "m-e5262200", "indicator": "m-760d1fb1", "processing": "m-885901b1" };
+
 // src/Indicator.tsx
 var defaultProps = {
   position: "top-end",
@@ -168,10 +171,7 @@ var Indicator = (0, import_core2.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core2.useStyles)({
     name: "Indicator",
-    classes: {
-      root: "indicator-root",
-      indicator: "indicator-indicator"
-    },
+    classes: Indicator_module_default,
     props,
     className,
     style,
@@ -193,8 +193,10 @@ var Indicator = (0, import_core2.factory)((_props, ref) => {
     label
   )), children);
 });
+Indicator.classes = Indicator_module_default;
 Indicator.displayName = "@raikou/core/Indicator";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Indicator
 });
+//# sourceMappingURL=index.js.map

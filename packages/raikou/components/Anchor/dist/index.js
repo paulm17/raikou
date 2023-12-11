@@ -71,6 +71,11 @@ var import_core2 = require("@raikou/core");
 // ../Text/src/Text.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./Text.module.css#css-module
+var Text_module_default = { "root": "m-b6d8b162" };
+
+// ../Text/src/Text.tsx
 function getTextTruncate(truncate) {
   if (truncate === "start") {
     return "start";
@@ -133,9 +138,7 @@ var Text = (0, import_core.polymorphicFactory)((_props, ref) => {
   const getStyles = (0, import_core.useStyles)({
     name: ["Text", __staticSelector],
     props,
-    classes: {
-      root: "text-root"
-    },
+    classes: Text_module_default,
     className,
     style,
     classNames,
@@ -163,7 +166,11 @@ var Text = (0, import_core.polymorphicFactory)((_props, ref) => {
     }), others)
   );
 });
+Text.classes = Text_module_default;
 Text.displayName = "@raikou/core/Text";
+
+// css-module:./Anchor.module.css#css-module
+var Anchor_module_default = { "root": "m-849cf0da" };
 
 // src/Anchor.tsx
 var defaultProps2 = {
@@ -180,7 +187,7 @@ var Anchor = (0, import_core2.polymorphicFactory)((props, ref) => {
     __spreadProps(__spreadValues({
       component: "a",
       ref,
-      className: (0, import_clsx.default)("anchor-root", className)
+      className: (0, import_clsx.default)(Anchor_module_default.root, className)
     }, others), {
       mod: { underline },
       __staticSelector: "Anchor"
@@ -188,7 +195,9 @@ var Anchor = (0, import_core2.polymorphicFactory)((props, ref) => {
   );
 });
 Anchor.displayName = "@raikou/core/Anchor";
+Anchor.classes = Anchor_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Anchor
 });
+//# sourceMappingURL=index.js.map

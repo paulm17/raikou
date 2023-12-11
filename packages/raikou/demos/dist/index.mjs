@@ -465,7 +465,7 @@ import { Accordion as Accordion5 } from "@raikou/client";
 import { IconPlus } from "@tabler/icons-react";
 
 // src/demos/core/Accordion/Accordion.demo.chevron.module.css
-var _default = {};
+var Accordion_demo_chevron_default = {};
 
 // src/demos/core/Accordion/Accordion.demo.chevron.tsx
 var code5 = `
@@ -513,8 +513,8 @@ function Demo5() {
     Accordion5,
     {
       defaultValue: "Apples",
-      classNames: { chevron: _default.chevron },
-      chevron: /* @__PURE__ */ React7.createElement(IconPlus, { className: _default.icon })
+      classNames: { chevron: Accordion_demo_chevron_default.chevron },
+      chevron: /* @__PURE__ */ React7.createElement(IconPlus, { className: Accordion_demo_chevron_default.icon })
     },
     items2
   );
@@ -698,7 +698,7 @@ import React10 from "react";
 import { Accordion as Accordion8 } from "@raikou/client";
 
 // src/demos/core/Accordion/Accordion.demo.customize.module.css
-var _default2 = {};
+var Accordion_demo_customize_default = {};
 
 // src/demos/core/Accordion/Accordion.demo.customize.tsx
 var code8 = `
@@ -751,7 +751,7 @@ var cssCode2 = `.root {
 `;
 function Demo8() {
   const items2 = groceries.map((item) => /* @__PURE__ */ React10.createElement(Accordion8.Item, { key: item.value, value: item.value }, /* @__PURE__ */ React10.createElement(Accordion8.Control, { icon: item.emoji }, item.value), /* @__PURE__ */ React10.createElement(Accordion8.Panel, null, item.description)));
-  return /* @__PURE__ */ React10.createElement(Accordion8, { defaultValue: "Apples", classNames: _default2, variant: "filled" }, items2);
+  return /* @__PURE__ */ React10.createElement(Accordion8, { defaultValue: "Apples", classNames: Accordion_demo_customize_default, variant: "filled" }, items2);
 }
 var customize = {
   type: "code",
@@ -1306,7 +1306,7 @@ import { ActionIcon as ActionIcon9 } from "@raikou/server";
 import { IconHeart as IconHeart6 } from "@tabler/icons-react";
 
 // src/demos/core/ActionIcon/ActionIcon.demo.disabledStyles.module.css
-var _default3 = {};
+var ActionIcon_demo_disabledStyles_default = {};
 
 // src/demos/core/ActionIcon/ActionIcon.demo.disabledStyles.tsx
 var code18 = `
@@ -1336,7 +1336,7 @@ function Demo15() {
     ActionIcon9,
     {
       size: "xl",
-      className: _default3.button,
+      className: ActionIcon_demo_disabledStyles_default.button,
       disabled: true,
       "aria-label": "Disabled with styles"
     },
@@ -3045,7 +3045,7 @@ import React62 from "react";
 import { Button as Button4 } from "@raikou/server";
 
 // src/demos/core/Button/Button.demo.disabledStyles.module.css
-var _default4 = {};
+var Button_demo_disabledStyles_default = {};
 
 // src/demos/core/Button/Button.demo.disabledStyles.tsx
 var code60 = `
@@ -3070,7 +3070,7 @@ var cssCode4 = `
 }
 `;
 function Demo47() {
-  return /* @__PURE__ */ React62.createElement(Button4, { className: _default4.button, disabled: true }, "Disabled with styles");
+  return /* @__PURE__ */ React62.createElement(Button4, { className: Button_demo_disabledStyles_default.button, disabled: true }, "Disabled with styles");
 }
 var disabledStyles2 = {
   type: "code",
@@ -4221,7 +4221,7 @@ import { UnstyledButton, Text as Text10 } from "@raikou/server";
 import { Checkbox as Checkbox7 } from "@raikou/client";
 
 // src/demos/core/Checkbox/Checkbox.demo.card.module.css
-var _default5 = {};
+var Checkbox_demo_card_default = {};
 
 // src/demos/core/Checkbox/Checkbox.demo.card.tsx
 var cssCode5 = `.root {
@@ -4302,10 +4302,10 @@ function Demo() {
 `;
 function Demo65() {
   const [checked, setChecked] = useState(false);
-  return /* @__PURE__ */ React86.createElement("div", { className: _default5.root }, /* @__PURE__ */ React86.createElement(
+  return /* @__PURE__ */ React86.createElement("div", { className: Checkbox_demo_card_default.root }, /* @__PURE__ */ React86.createElement(
     Checkbox7,
     {
-      classNames: { root: _default5.checkboxWrapper, input: _default5.checkbox },
+      classNames: { root: Checkbox_demo_card_default.checkboxWrapper, input: Checkbox_demo_card_default.checkbox },
       checked,
       onChange: (event) => setChecked(event.currentTarget.checked),
       tabIndex: -1,
@@ -4315,12 +4315,12 @@ function Demo65() {
   ), /* @__PURE__ */ React86.createElement(
     UnstyledButton,
     {
-      className: _default5.control,
+      className: Checkbox_demo_card_default.control,
       "data-checked": checked || void 0,
       onClick: () => setChecked((c) => !c)
     },
-    /* @__PURE__ */ React86.createElement(Text10, { className: _default5.label }, "@raikou/core"),
-    /* @__PURE__ */ React86.createElement(Text10, { className: _default5.description }, "Core components library: inputs, buttons, overlays, etc.")
+    /* @__PURE__ */ React86.createElement(Text10, { className: Checkbox_demo_card_default.label }, "@raikou/core"),
+    /* @__PURE__ */ React86.createElement(Text10, { className: Checkbox_demo_card_default.description }, "Core components library: inputs, buttons, overlays, etc.")
   ));
 }
 var card = {
@@ -4378,7 +4378,7 @@ import React88, { useState as useState2 } from "react";
 import { Checkbox as Checkbox9 } from "@raikou/client";
 
 // src/demos/core/Checkbox/Checkbox.demo.customize.module.css
-var _default6 = {};
+var Checkbox_demo_customize_default = {};
 
 // src/demos/core/Checkbox/Checkbox.demo.customize.tsx
 var cssCode6 = `
@@ -4430,7 +4430,7 @@ function Demo67() {
   return /* @__PURE__ */ React88.createElement(
     Checkbox9,
     {
-      classNames: _default6,
+      classNames: Checkbox_demo_customize_default,
       label: "Checkbox button",
       checked,
       onChange: (event) => setChecked(event.currentTarget.checked),
@@ -9454,12 +9454,12 @@ import React185 from "react";
 import { Grid } from "@raikou/server";
 
 // src/demos/core/Grid/_col-wrapper.module.css
-var _default7 = {};
+var col_wrapper_default = {};
 
 // src/demos/core/Grid/_col-wrapper.tsx
 function ColWrapper(_a) {
   var _b = _a, { children } = _b, others = __objRest(_b, ["children"]);
-  return /* @__PURE__ */ React185.createElement(Grid.Col, __spreadValues({}, others), /* @__PURE__ */ React185.createElement("div", { className: _default7.col }, /* @__PURE__ */ React185.createElement("div", { className: _default7.label }, children)));
+  return /* @__PURE__ */ React185.createElement(Grid.Col, __spreadValues({}, others), /* @__PURE__ */ React185.createElement("div", { className: col_wrapper_default.col }, /* @__PURE__ */ React185.createElement("div", { className: col_wrapper_default.label }, children)));
 }
 
 // src/demos/core/Grid/Grid.demo.usage.tsx
@@ -10934,7 +10934,7 @@ import React224 from "react";
 import { Input as Input14, TextInput as TextInput16 } from "@raikou/client";
 
 // src/demos/core/Input/Input.demo.focusStyles.module.css
-var _default8 = {};
+var Input_demo_focusStyles_default = {};
 
 // src/demos/core/Input/Input.demo.focusStyles.tsx
 var code216 = `
@@ -10966,13 +10966,13 @@ var cssCode7 = `
 }
 `;
 function Demo184() {
-  return /* @__PURE__ */ React224.createElement(React224.Fragment, null, /* @__PURE__ */ React224.createElement(Input14, { placeholder: "Regular Input component", classNames: _default8 }), /* @__PURE__ */ React224.createElement(
+  return /* @__PURE__ */ React224.createElement(React224.Fragment, null, /* @__PURE__ */ React224.createElement(Input14, { placeholder: "Regular Input component", classNames: Input_demo_focusStyles_default }), /* @__PURE__ */ React224.createElement(
     TextInput16,
     {
       placeholder: "TextInput component",
       label: "TextInput component",
       mt: "md",
-      classNames: _default8
+      classNames: Input_demo_focusStyles_default
     }
   ));
 }
@@ -15389,7 +15389,7 @@ import React312 from "react";
 import { Pill as Pill4 } from "@raikou/client";
 
 // src/demos/core/Pill/_demo.module.css
-var _default9 = {};
+var demo_default = {};
 
 // src/demos/core/Pill/Pill.demo.usage.tsx
 var code302 = `
@@ -15400,7 +15400,7 @@ function Demo() {
 }
 `;
 function Wrapper47(props2) {
-  return /* @__PURE__ */ React312.createElement("div", { className: _default9.demoWrapper }, /* @__PURE__ */ React312.createElement(Pill4, __spreadValues({}, props2), "React"));
+  return /* @__PURE__ */ React312.createElement("div", { className: demo_default.demoWrapper }, /* @__PURE__ */ React312.createElement(Pill4, __spreadValues({}, props2), "React"));
 }
 var usage47 = {
   type: "configurator",
@@ -15465,7 +15465,7 @@ function Demo() {
 }
 `;
 function Demo260(props2) {
-  return /* @__PURE__ */ React314.createElement("div", { className: _default9.demoWrapper }, /* @__PURE__ */ React314.createElement(Pill6, __spreadProps(__spreadValues({}, props2), { withRemoveButton: true, style: { flex: 0 } }), "Test pill"));
+  return /* @__PURE__ */ React314.createElement("div", { className: demo_default.demoWrapper }, /* @__PURE__ */ React314.createElement(Pill6, __spreadProps(__spreadValues({}, props2), { withRemoveButton: true, style: { flex: 0 } }), "Test pill"));
 }
 var stylesApi18 = {
   type: "styles-api",
@@ -17465,7 +17465,7 @@ import { Box as Box23 } from "@raikou/server";
 import { ScrollArea as ScrollArea9 } from "@raikou/client";
 
 // src/demos/core/ScrollArea/ScrollArea.demo.stylesApi.module.css
-var _default10 = {};
+var ScrollArea_demo_stylesApi_default = {};
 
 // src/demos/core/ScrollArea/ScrollArea.demo.stylesApi.tsx
 var code348 = `
@@ -17511,7 +17511,7 @@ function Demo293() {
       h: 200,
       type: "always",
       offsetScrollbars: true,
-      classNames: _default10
+      classNames: ScrollArea_demo_stylesApi_default
     },
     /* @__PURE__ */ React359.createElement(Box23, { w: 600 }, /* @__PURE__ */ React359.createElement(Content, null))
   );
@@ -19133,12 +19133,12 @@ import cx from "clsx";
 import { Box as Box25, Text as Text56 } from "@raikou/server";
 
 // src/demos/core/SimpleGrid/_item.module.css
-var _default11 = {};
+var item_default = {};
 
 // src/demos/core/SimpleGrid/_demo-item.tsx
 function GridItem(_a) {
   var _b = _a, { className, children } = _b, others = __objRest(_b, ["className", "children"]);
-  return /* @__PURE__ */ React387.createElement(Box25, __spreadValues({ className: cx(_default11.item, className) }, others), /* @__PURE__ */ React387.createElement(Text56, { className: _default11.label }, children));
+  return /* @__PURE__ */ React387.createElement(Box25, __spreadValues({ className: cx(item_default.item, className) }, others), /* @__PURE__ */ React387.createElement(Text56, { className: item_default.label }, children));
 }
 var defaultItems = Array(5).fill(0).map((_, index) => /* @__PURE__ */ React387.createElement(GridItem, { key: index }, index + 1));
 
@@ -19386,7 +19386,7 @@ import { Slider as Slider2 } from "@raikou/client";
 import { Box as Box26 } from "@raikou/core";
 
 // src/demos/core/Slider/Slider.demo.customize.module.css
-var _default12 = {};
+var Slider_demo_customize_default = {};
 
 // src/demos/core/Slider/Slider.demo.customize.tsx
 var code381 = `
@@ -19452,7 +19452,7 @@ function Demo320() {
         { value: 80, label: "80%" }
       ],
       size: 2,
-      classNames: _default12
+      classNames: Slider_demo_customize_default
     }
   ));
 }
@@ -20620,7 +20620,7 @@ import React420, { useState as useState50 } from "react";
 import { Stepper as Stepper10 } from "@raikou/client";
 
 // src/demos/core/Stepper/Stepper.demo.stylesApi3.module.css
-var _default13 = {};
+var Stepper_demo_stylesApi3_default = {};
 
 // src/demos/core/Stepper/Stepper.demo.stylesApi3.tsx
 var cssCode10 = `.separator {
@@ -20682,7 +20682,7 @@ function Demo() {
 `;
 function Demo339() {
   const [active2, setActive] = useState50(1);
-  return /* @__PURE__ */ React420.createElement(Stepper10, { classNames: _default13, active: active2, onStepClick: setActive }, /* @__PURE__ */ React420.createElement(Stepper10.Step, { label: "Step 1", description: "Create an account" }), /* @__PURE__ */ React420.createElement(Stepper10.Step, { label: "Step 2", description: "Verify email" }), /* @__PURE__ */ React420.createElement(Stepper10.Step, { label: "Step 3", description: "Get full access" }));
+  return /* @__PURE__ */ React420.createElement(Stepper10, { classNames: Stepper_demo_stylesApi3_default, active: active2, onStepClick: setActive }, /* @__PURE__ */ React420.createElement(Stepper10.Step, { label: "Step 1", description: "Create an account" }), /* @__PURE__ */ React420.createElement(Stepper10.Step, { label: "Step 2", description: "Verify email" }), /* @__PURE__ */ React420.createElement(Stepper10.Step, { label: "Step 3", description: "Get full access" }));
 }
 var stylesApi32 = {
   type: "code",
@@ -21931,7 +21931,7 @@ import {
 } from "@tabler/icons-react";
 
 // src/demos/core/Tabs/Tabs.demo.customize.module.css
-var _default14 = {};
+var Tabs_demo_customize_default = {};
 
 // src/demos/core/Tabs/Tabs.demo.customize.tsx
 var code431 = `
@@ -22014,7 +22014,7 @@ var cssCode11 = `
 }
 `;
 function Demo357() {
-  return /* @__PURE__ */ React445.createElement(Tabs10, { variant: "unstyled", defaultValue: "settings", classNames: _default14 }, /* @__PURE__ */ React445.createElement(Tabs10.List, { grow: true }, /* @__PURE__ */ React445.createElement(
+  return /* @__PURE__ */ React445.createElement(Tabs10, { variant: "unstyled", defaultValue: "settings", classNames: Tabs_demo_customize_default }, /* @__PURE__ */ React445.createElement(Tabs10.List, { grow: true }, /* @__PURE__ */ React445.createElement(
     Tabs10.Tab,
     {
       value: "settings",
@@ -28910,7 +28910,7 @@ import { Button as Button107, Group as Group71 } from "@raikou/server";
 import { notifications as notifications6 } from "@raikou/notifications";
 
 // src/demos/notifications/Notifications.demo.customize.module.css
-var _default15 = {};
+var Notifications_demo_customize_default = {};
 
 // src/demos/notifications/Notifications.demo.customize.tsx
 var code574 = `
@@ -28978,7 +28978,7 @@ function Demo484() {
       onClick: () => notifications6.show({
         title: "Notification with custom styles",
         message: "It is default blue",
-        classNames: _default15
+        classNames: Notifications_demo_customize_default
       })
     },
     "Default notification"
@@ -28990,7 +28990,7 @@ function Demo484() {
         color: "red",
         title: "Notification with custom styles",
         message: "It is red",
-        classNames: _default15
+        classNames: Notifications_demo_customize_default
       })
     },
     "Error notification"
@@ -29372,7 +29372,7 @@ import React613 from "react";
 import { Carousel as Carousel10 } from "@raikou/carousel";
 
 // src/demos/carousel/Carousel.demo.indicatorStyles.module.css
-var _default16 = {};
+var Carousel_demo_indicatorStyles_default = {};
 
 // src/demos/carousel/Carousel.demo.indicatorStyles.tsx
 var cssCode13 = `
@@ -29401,7 +29401,7 @@ function Demo() {
 }
 `;
 function Demo493() {
-  return /* @__PURE__ */ React613.createElement(Carousel10, { withIndicators: true, height: 200, classNames: _default16 }, /* @__PURE__ */ React613.createElement(Slides, { count: 5 }));
+  return /* @__PURE__ */ React613.createElement(Carousel10, { withIndicators: true, height: 200, classNames: Carousel_demo_indicatorStyles_default }, /* @__PURE__ */ React613.createElement(Slides, { count: 5 }));
 }
 var indicatorStyles = {
   type: "code",
@@ -29419,7 +29419,7 @@ import React614 from "react";
 import { Carousel as Carousel11 } from "@raikou/carousel";
 
 // src/demos/carousel/Carousel.demo.controlsStyles.module.css
-var _default17 = {};
+var Carousel_demo_controlsStyles_default = {};
 
 // src/demos/carousel/Carousel.demo.controlsStyles.tsx
 var cssCode14 = `
@@ -29446,7 +29446,7 @@ function Demo() {
 }
 `;
 function Demo494() {
-  return /* @__PURE__ */ React614.createElement(Carousel11, { height: 200, classNames: _default17 }, /* @__PURE__ */ React614.createElement(Slides, { count: 5 }));
+  return /* @__PURE__ */ React614.createElement(Carousel11, { height: 200, classNames: Carousel_demo_controlsStyles_default }, /* @__PURE__ */ React614.createElement(Slides, { count: 5 }));
 }
 var controlsStyles = {
   type: "code",
@@ -29464,7 +29464,7 @@ import React615 from "react";
 import { Carousel as Carousel12 } from "@raikou/carousel";
 
 // src/demos/carousel/Carousel.demo.controlsHover.module.css
-var _default18 = {};
+var Carousel_demo_controlsHover_default = {};
 
 // src/demos/carousel/Carousel.demo.controlsHover.tsx
 var cssCode15 = `.controls {
@@ -29495,7 +29495,7 @@ function Demo() {
 }
 `;
 function Demo495() {
-  return /* @__PURE__ */ React615.createElement(Carousel12, { height: 200, classNames: _default18 }, /* @__PURE__ */ React615.createElement(Slides, { count: 5 }));
+  return /* @__PURE__ */ React615.createElement(Carousel12, { height: 200, classNames: Carousel_demo_controlsHover_default }, /* @__PURE__ */ React615.createElement(Slides, { count: 5 }));
 }
 var controlsHover = {
   type: "code",
@@ -36218,7 +36218,7 @@ var loading4 = {
 import React714 from "react";
 
 // src/demos/dropzone/Dropzone.disabled.module.css
-var _default19 = {};
+var Dropzone_disabled_default = {};
 
 // src/demos/dropzone/Dropzone.demo.disabled.tsx
 var cssCode20 = `
@@ -36241,7 +36241,7 @@ function Demo() {
 }
 `;
 function Demo589() {
-  return /* @__PURE__ */ React714.createElement(BaseDemo2, { disabled: true, className: _default19.disabled });
+  return /* @__PURE__ */ React714.createElement(BaseDemo2, { disabled: true, className: Dropzone_disabled_default.disabled });
 }
 var disabled30 = {
   type: "code",
@@ -36431,7 +36431,7 @@ import { Text as Text113 } from "@raikou/server";
 import { Dropzone as Dropzone4, IMAGE_MIME_TYPE as IMAGE_MIME_TYPE3 } from "@raikou/dropzone";
 
 // src/demos/dropzone/Dropzone.demo.stylesApi.module.css
-var _default20 = {};
+var Dropzone_demo_stylesApi_default = {};
 
 // src/demos/dropzone/Dropzone.demo.stylesApi.tsx
 var cssCode21 = `
@@ -36475,7 +36475,7 @@ function Demo593() {
       onDrop: () => {
       },
       accept: IMAGE_MIME_TYPE3,
-      className: _default20.root
+      className: Dropzone_demo_stylesApi_default.root
     },
     /* @__PURE__ */ React718.createElement(Text113, { ta: "center" }, "Drop images here")
   );

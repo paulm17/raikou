@@ -350,4 +350,4 @@ declare const Modal: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { Modal, ModalBody, ModalBodyProps, ModalCloseButton, ModalCloseButtonProps, ModalContent, ModalContentProps, ModalCssVariables, ModalFactory, ModalHeader, ModalHeaderProps, ModalOverlay, ModalOverlayProps, ModalProps, ModalRoot, ModalRootProps, ModalStylesNames, ModalTitle, ModalTitleProps };
+export { Modal, ModalBody, type ModalBodyProps, ModalCloseButton, type ModalCloseButtonProps, ModalContent, type ModalContentProps, type ModalCssVariables, type ModalFactory, ModalHeader, type ModalHeaderProps, ModalOverlay, type ModalOverlayProps, type ModalProps, ModalRoot, type ModalRootProps, type ModalStylesNames, ModalTitle, type ModalTitleProps };

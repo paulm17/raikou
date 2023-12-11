@@ -125,14 +125,14 @@ const cssCode = `.root {
 
   [data-raikou-color-scheme="light"] {
     --_loading-overlay-bg: rgba(255, 255, 255, 0.35);
-    --_disabled-bg: var(--raikou-color-gray-1);
-    --_disabled-color: var(--raikou-color-gray-5);
+    --_disabled-bg: #f1f3f5;
+    --_disabled-color: #adb5bd;
   }
 
   [data-raikou-color-scheme="dark"] {
     --_loading-overlay-bg: rgba(0, 0, 0, 0.35);
-    --_disabled-bg: var(--raikou-color-dark-6);
-    --_disabled-color: var(--raikou-color-dark-3);
+    --_disabled-bg: #868e96;
+    --_disabled-color: #dee2e6;
   }
 
   &[data-loading] {

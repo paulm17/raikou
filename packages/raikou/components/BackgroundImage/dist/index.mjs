@@ -37,6 +37,11 @@ import {
   getRadius,
   createVarsResolver
 } from "@raikou/core";
+
+// css-module:./BackgroundImage.module.css#css-module
+var BackgroundImage_module_default = { "root": "m-2ce0de02" };
+
+// src/BackgroundImage.tsx
 var defaultProps = {};
 var varsResolver = createVarsResolver(
   (_, { radius }) => ({
@@ -72,9 +77,7 @@ var BackgroundImage = polymorphicFactory(
     const getStyles = useStyles({
       name: "BackgroundImage",
       props,
-      classes: {
-        root: "backgroundImage-root"
-      },
+      classes: BackgroundImage_module_default,
       className,
       style,
       classNames,
@@ -93,6 +96,8 @@ var BackgroundImage = polymorphicFactory(
   }
 );
 BackgroundImage.displayName = "@raikou/core/BackgroundImage";
+BackgroundImage.classes = BackgroundImage_module_default;
 export {
   BackgroundImage
 };
+//# sourceMappingURL=index.mjs.map

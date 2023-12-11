@@ -1,5 +1,5 @@
 import { keys } from "../../../utils";
-import type { RaikouStyleProps, StyleProp } from "../style-props.types";
+import type { StyleProp } from "../style-props.types";
 import type { SystemPropData } from "../style-props-data";
 import { resolvers } from "../resolvers";
 import { RaikouTheme } from "../../../RaikouProvider";
@@ -49,7 +49,7 @@ function getBreakpointValue(value: StyleProp<unknown>, breakpoint: string) {
 }
 
 interface ParseStylePropsOptions {
-  styleProps: RaikouStyleProps;
+  styleProps: Record<string, StyleProp<any>>;
   theme: RaikouTheme;
   data: Record<string, SystemPropData>;
 }
@@ -74,6 +74,13 @@ export function parseStyleProps({
       media: Record<string, Record<string, unknown>>;
     }>(
       (acc, styleProp) => {
+        if (
+          (styleProp as string) === "hiddenFrom" ||
+          (styleProp as string) === "visibleFrom"
+        ) {
+          return acc;
+        }
+
         const propertyData = data[styleProp];
         const properties = Array.isArray(propertyData.property)
           ? propertyData.property

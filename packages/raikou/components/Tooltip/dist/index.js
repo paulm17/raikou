@@ -845,6 +845,9 @@ function useTooltip(settings) {
   };
 }
 
+// css-module:./Tooltip.module.css#css-module
+var Tooltip_module_default = { "root": "m-946fb08c", "tooltip": "m-1b3c8819", "arrow": "m-f898399f" };
+
 // src/Tooltip.tsx
 var defaultProps4 = {
   position: "top",
@@ -964,10 +967,7 @@ var Tooltip = (0, import_core8.factory)((_props, ref) => {
   const getStyles = (0, import_core8.useStyles)({
     name: "Tooltip",
     props,
-    classes: {
-      tooltip: "tooltip-root",
-      arrow: "tooltip-arrow"
-    },
+    classes: Tooltip_module_default,
     className,
     style,
     classNames,
@@ -1041,6 +1041,7 @@ var Tooltip = (0, import_core8.factory)((_props, ref) => {
     }, children.props))
   ));
 });
+Tooltip.classes = Tooltip_module_default;
 Tooltip.displayName = "@raikou/core/Tooltip";
 Tooltip.Floating = TooltipFloating;
 Tooltip.Group = TooltipGroup;
@@ -1050,3 +1051,4 @@ Tooltip.Group = TooltipGroup;
   TooltipFloating,
   TooltipGroup
 });
+//# sourceMappingURL=index.js.map

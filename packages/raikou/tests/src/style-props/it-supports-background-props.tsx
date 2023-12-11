@@ -9,22 +9,22 @@ interface Options<Props = any> {
 
 export function itSupportsBackgroundProps<Props>(
   options: Options<Props>,
-  name = "supports bgsz, bgp, bgr and bga props"
+  name = "supports bgsz, bgp, bgr and bga props",
 ) {
   const selector = options.selector || "*:not(style)";
 
   it(name, () => {
     const { container: bgsz } = render(
-      <options.component {...options.props} bgsz={32} />
+      <options.component {...options.props} bgsz={32} />,
     );
     const { container: bgp } = render(
-      <options.component {...options.props} bgp="center" />
+      <options.component {...options.props} bgp="center" />,
     );
     const { container: bgr } = render(
-      <options.component {...options.props} bgr="repeat" />
+      <options.component {...options.props} bgr="repeat" />,
     );
     const { container: bga } = render(
-      <options.component {...options.props} bga="fixed" />
+      <options.component {...options.props} bga="fixed" />,
     );
 
     expect(bgsz.querySelector(selector)).toHaveStyle({

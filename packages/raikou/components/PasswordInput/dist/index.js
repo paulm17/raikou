@@ -104,6 +104,11 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
 // ../Input/src/InputLabel/InputLabel.tsx
 var import_react5 = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:../Input.module.css#css-module
+var Input_module_default = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
+
+// ../Input/src/InputLabel/InputLabel.tsx
 var defaultProps = {
   labelElement: "label"
 };
@@ -149,10 +154,11 @@ var InputLabel = (0, import_core.factory)((_props, ref) => {
   const _getStyles = (0, import_core.useStyles)({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      label: "inputWrapper-label",
-      required: "inputWrapper-required"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    // },
     className,
     style,
     classNames,
@@ -223,9 +229,10 @@ var InputError = (0, import_core2.factory)((_props, ref) => {
   const _getStyles = (0, import_core2.useStyles)({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      error: "inputWrapper-error"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   error: "inputWrapper-error",
+    // },
     className,
     style,
     classNames,
@@ -290,9 +297,10 @@ var InputDescription = (0, import_core3.factory)(
     const _getStyles = (0, import_core3.useStyles)({
       name: ["InputWrapper", __staticSelector],
       props,
-      classes: {
-        description: "inputWrapper-description"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   description: "inputWrapper-description",
+      // },
       className,
       style,
       classNames,
@@ -345,9 +353,10 @@ var InputPlaceholder = (0, import_core4.factory)(
     const getStyles = (0, import_core4.useStyles)({
       name: ["InputPlaceholder", __staticSelector],
       props,
-      classes: {
-        placeholder: "input-placeholder"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   placeholder: "input-placeholder",
+      // },
       className,
       style,
       classNames,
@@ -454,13 +463,14 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
   const getStyles = (0, import_core5.useStyles)({
     name: ["InputWrapper", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      root: "inputWrapper-root",
-      label: "inputWrapper-label",
-      required: "inputWrapper-required",
-      error: "inputWrapper-error",
-      description: "inputWrapper-description"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   root: "inputWrapper-root",
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    //   error: "inputWrapper-error",
+    //   description: "inputWrapper-description",
+    // },
     className,
     style,
     classNames,
@@ -551,6 +561,9 @@ var InputWrapper = (0, import_core5.factory)((_props, ref) => {
   );
 });
 InputWrapper.displayName = "@raikou/core/InputWrapper";
+
+// css-module:./Input.module.css#css-module
+var Input_module_default2 = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
 
 // ../Input/src/Input.tsx
 var defaultProps6 = {
@@ -644,11 +657,12 @@ var Input = (0, import_core6.polymorphicFactory)((_props, ref) => {
   const getStyles = (0, import_core6.useStyles)({
     name: ["Input", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      wrapper: "input-wrapper",
-      input: "input-input",
-      section: "input-section"
-    },
+    classes: Input_module_default2,
+    // classes: {
+    //   wrapper: "input-wrapper",
+    //   input: "input-input",
+    //   section: "input-section",
+    // },
     className,
     style,
     classNames,
@@ -727,6 +741,11 @@ var import_core14 = require("@raikou/core");
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react11 = __toESM(require("react"));
 var import_core7 = require("@raikou/core");
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps7 = {
   __staticSelector: "UnstyledButton"
 };
@@ -753,9 +772,7 @@ var UnstyledButton = (0, import_core7.polymorphicFactory)(
     const getStyles = (0, import_core7.useStyles)({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -773,6 +790,7 @@ var UnstyledButton = (0, import_core7.polymorphicFactory)(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // ../Loader/src/Loader.tsx
 var import_react16 = __toESM(require("react"));
@@ -782,6 +800,11 @@ var import_core12 = require("@raikou/core");
 var import_react12 = __toESM(require("react"));
 var import_clsx = __toESM(require("clsx"));
 var import_core8 = require("@raikou/core");
+
+// css-module:../Loader.module.css#css-module
+var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
+
+// ../Loader/src/loaders/Bars.tsx
 var Bars = (0, import_react12.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
@@ -789,13 +812,13 @@ var Bars = (0, import_react12.forwardRef)(
       import_core8.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx.default)("loader-barsLoader", className)
+        className: (0, import_clsx.default)(Loader_module_default.barsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react12.default.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ import_react12.default.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ import_react12.default.createElement("span", { className: "loader-bar" })
+      /* @__PURE__ */ import_react12.default.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ import_react12.default.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ import_react12.default.createElement("span", { className: Loader_module_default.bar })
     );
   }
 );
@@ -811,7 +834,7 @@ var Oval = (0, import_react13.forwardRef)(
       import_core9.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx2.default)("loader-ovalLoader", className)
+        className: (0, import_clsx2.default)(Loader_module_default.ovalLoader, className)
       }, others), {
         ref
       })
@@ -830,7 +853,7 @@ var Progress = (0, import_react14.forwardRef)(
       import_core10.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx3.default)("loader-progressLoader", className)
+        className: (0, import_clsx3.default)(Loader_module_default.progressLoader, className)
       }, others), {
         ref
       }),
@@ -860,16 +883,19 @@ var Dots = (0, import_react15.forwardRef)(
       import_core11.Box,
       __spreadProps(__spreadValues({
         component: "span",
-        className: (0, import_clsx4.default)("loader-dotsLoader", className)
+        className: (0, import_clsx4.default)(Loader_module_default.dotsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react15.default.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ import_react15.default.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ import_react15.default.createElement("span", { className: "loader-dot" })
+      /* @__PURE__ */ import_react15.default.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ import_react15.default.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ import_react15.default.createElement("span", { className: Loader_module_default.dot })
     );
   }
 );
+
+// css-module:./Loader.module.css#css-module
+var Loader_module_default2 = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
 
 // ../Loader/src/Loader.tsx
 var defaultLoaders = {
@@ -920,9 +946,7 @@ var Loader = (0, import_core12.factory)((_props, ref) => {
   const getStyles = (0, import_core12.useStyles)({
     name: "Loader",
     props,
-    classes: {
-      root: "loader-root"
-    },
+    classes: Loader_module_default2,
     className,
     style,
     classNames,
@@ -942,10 +966,16 @@ var Loader = (0, import_core12.factory)((_props, ref) => {
   );
 });
 Loader.displayName = "@raikou/core/Loader";
+Loader.classes = Loader_module_default2;
 
 // ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
 var import_react17 = __toESM(require("react"));
 var import_core13 = require("@raikou/core");
+
+// css-module:../ActionIcon.module.css#css-module
+var ActionIcon_module_default = { "root": "m-8d3f4000", "loader": "m-302b9fb1", "group": "m-1a0f1b21" };
+
+// ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
 var defaultProps9 = {
   orientation: "horizontal"
 };
@@ -981,9 +1011,7 @@ var ActionIconGroup = (0, import_core13.factory)(
     const getStyles = (0, import_core13.useStyles)({
       name: "ActionIconGroup",
       props,
-      classes: {
-        group: "actionIconGroup-root"
-      },
+      classes: ActionIcon_module_default,
       className,
       style,
       classNames,
@@ -1004,7 +1032,11 @@ var ActionIconGroup = (0, import_core13.factory)(
     );
   }
 );
+ActionIconGroup.classes = ActionIcon_module_default;
 ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
+
+// css-module:./ActionIcon.module.css#css-module
+var ActionIcon_module_default2 = { "root": "m-8d3f4000", "loader": "m-302b9fb1", "group": "m-1a0f1b21" };
 
 // ../ActionIcon/src/ActionIcon.tsx
 var defaultProps10 = {};
@@ -1073,10 +1105,7 @@ var ActionIcon = (0, import_core14.polymorphicFactory)(
       props,
       className,
       style,
-      classes: {
-        root: "actionIcon-root",
-        loader: "actionIcon-loader"
-      },
+      classes: ActionIcon_module_default2,
       classNames,
       styles,
       unstyled,
@@ -1107,6 +1136,7 @@ var ActionIcon = (0, import_core14.polymorphicFactory)(
 );
 ActionIcon.displayName = "@raikou/core/ActionIcon";
 ActionIcon.Group = ActionIconGroup;
+ActionIcon.classes = ActionIcon_module_default2;
 
 // src/PasswordToggleIcon.tsx
 var import_react19 = __toESM(require("react"));
@@ -1130,6 +1160,9 @@ var PasswordToggleIcon = ({
     }
   )
 );
+
+// css-module:./PasswordInput.module.css#css-module
+var PasswordInput_module_default = { "root": "m-f61ca620", "input": "m-ccf8da4c", "innerInput": "m-f2d85dd2", "visibilityToggle": "m-b1072d44" };
 
 // src/PasswordInput.tsx
 var defaultProps11 = {
@@ -1229,11 +1262,7 @@ var PasswordInput = (0, import_core15.factory)((_props, ref) => {
   const toggleVisibility = () => setVisibility(!_visible);
   const getStyles = (0, import_core15.useStyles)({
     name: "PasswordInput",
-    classes: {
-      root: "passwordInput-root",
-      innerInput: "passwordInput-innerInput",
-      visibilityToggle: "passwordInput-visibilityToggle"
-    },
+    classes: PasswordInput_module_default,
     props,
     className,
     style,
@@ -1342,8 +1371,10 @@ var PasswordInput = (0, import_core15.factory)((_props, ref) => {
     )
   );
 });
+PasswordInput.classes = PasswordInput_module_default;
 PasswordInput.displayName = "@raikou/core/PasswordInput";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   PasswordInput
 });
+//# sourceMappingURL=index.js.map

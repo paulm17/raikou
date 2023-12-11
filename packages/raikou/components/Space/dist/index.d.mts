@@ -12,4 +12,4 @@ declare const Space: _raikou_core.RaikouComponent<{
     ref: HTMLDivElement;
 }>;
 
-export { Space, SpaceFactory, SpaceProps };
+export { Space, type SpaceFactory, type SpaceProps };

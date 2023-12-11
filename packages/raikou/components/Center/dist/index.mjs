@@ -35,6 +35,11 @@ import {
   useProps,
   useStyles
 } from "@raikou/core";
+
+// css-module:./Center.module.css#css-module
+var Center_module_default = { "root": "m-4451eb3a" };
+
+// src/Center.tsx
 var defaultProps = {};
 var Center = polymorphicFactory((_props, ref) => {
   const props = useProps("Center", defaultProps, _props);
@@ -58,9 +63,7 @@ var Center = polymorphicFactory((_props, ref) => {
   const getStyles = useStyles({
     name: "Center",
     props,
-    classes: {
-      root: "center-root"
-    },
+    classes: Center_module_default,
     className,
     style,
     classNames,
@@ -71,6 +74,8 @@ var Center = polymorphicFactory((_props, ref) => {
   return /* @__PURE__ */ React.createElement(Box, __spreadValues(__spreadValues({ ref, mod: { inline } }, getStyles("root")), others));
 });
 Center.displayName = "@raikou/core/Center";
+Center.classes = Center_module_default;
 export {
   Center
 };
+//# sourceMappingURL=index.mjs.map

@@ -63,6 +63,11 @@ module.exports = __toCommonJS(src_exports);
 // src/Fieldset.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./Fieldset.module.css#css-module
+var Fieldset_module_default = { "root": "m-e9408a47", "root--default": "m-84c9523a", "root--filled": "m-ef274e49", "root--unstyled": "m-eda993d3", "legend": "m-90794832" };
+
+// src/Fieldset.tsx
 var defaultProps = {
   variant: "default"
 };
@@ -96,10 +101,7 @@ var Fieldset = (0, import_core.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core.useStyles)({
     name: "Fieldset",
-    classes: {
-      root: "fieldset-root",
-      legend: "fieldset-legend"
-    },
+    classes: Fieldset_module_default,
     props,
     className,
     style,
@@ -121,7 +123,9 @@ var Fieldset = (0, import_core.factory)((_props, ref) => {
   );
 });
 Fieldset.displayName = "@raikou/core/Fieldset";
+Fieldset.classes = Fieldset_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Fieldset
 });
+//# sourceMappingURL=index.js.map

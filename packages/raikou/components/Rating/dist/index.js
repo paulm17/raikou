@@ -210,6 +210,9 @@ function RatingItem(_a) {
 }
 RatingItem.displayName = "@raikou/core/RatingItem";
 
+// css-module:./Rating.module.css#css-module
+var Rating_module_default = { "root": "m-f8d312f2", "symbolGroup": "m-61734bb7", "starSymbol": "m-5662a89a", "input": "m-211007ba", "label": "m-21342ee4", "symbolBody": "m-fae05d6a" };
+
 // src/Rating.tsx
 function roundValueTo(value, to) {
   var _a;
@@ -293,14 +296,7 @@ var Rating = (0, import_core2.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core2.useStyles)({
     name: "Rating",
-    classes: {
-      root: "rating-root",
-      starSymbol: "rating-starSymbol",
-      input: "rating-input",
-      label: "rating-label",
-      symbolBody: "rating-symbolBody",
-      symbolGroup: "rating-symbolGroup"
-    },
+    classes: Rating_module_default,
     props,
     className,
     style,
@@ -451,8 +447,10 @@ var Rating = (0, import_core2.factory)((_props, ref) => {
     items
   ));
 });
+Rating.classes = Rating_module_default;
 Rating.displayName = "@raikou/core/Rating";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Rating
 });
+//# sourceMappingURL=index.js.map

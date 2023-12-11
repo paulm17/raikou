@@ -34,4 +34,4 @@ declare const ThemeIcon: _raikou_core.RaikouComponent<{
     variant: ThemeIconVariant;
 }>;
 
-export { ThemeIcon, ThemeIconCssVariables, ThemeIconFactory, ThemeIconProps, ThemeIconStylesNames, ThemeIconVariant };
+export { ThemeIcon, type ThemeIconCssVariables, type ThemeIconFactory, type ThemeIconProps, type ThemeIconStylesNames, type ThemeIconVariant };

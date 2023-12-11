@@ -122,6 +122,9 @@ var [AccordionItemProvider, useAccordionItemContext] = createSafeContext(
   "Accordion.Item component was not found in the tree"
 );
 
+// css-module:../Accordion.module.css#css-module
+var Accordion_module_default = { "root": "m-9bdbb667", "panel": "m-df78851f", "content": "m-4ba554d4", "itemTitle": "m-8fa820a0", "control": "m-4ba585b8", "control--default": "m-6939a5e9", "control--contained": "m-4271d21b", "label": "m-df3ffa0f", "chevron": "m-3f35ae96", "icon": "m-9bd771fe", "item": "m-9bd7b098", "item--default": "m-fe19b709", "item--contained": "m-1f921b3b", "item--filled": "m-2cdf939a", "item--separated": "m-9f59b069" };
+
 // src/AccordionItem/AccordionItem.tsx
 var defaultProps = {};
 var AccordionItem = factory((props, ref) => {
@@ -142,6 +145,7 @@ var AccordionItem = factory((props, ref) => {
   ));
 });
 AccordionItem.displayName = "@raikou/core/AccordionItem";
+AccordionItem.classes = Accordion_module_default;
 
 // src/AccordionPanel/AccordionPanel.tsx
 import React7 from "react";
@@ -350,6 +354,7 @@ var AccordionPanel = factory2((props, ref) => {
   );
 });
 AccordionPanel.displayName = "@raikou/core/AccordionPanel";
+AccordionPanel.classes = Accordion_module_default;
 
 // src/AccordionControl/AccordionControl.tsx
 import React9 from "react";
@@ -368,6 +373,11 @@ import {
   useStyles,
   polymorphicFactory
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps4 = {
   __staticSelector: "UnstyledButton"
 };
@@ -394,9 +404,7 @@ var UnstyledButton = polymorphicFactory(
     const getStyles = useStyles({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -414,6 +422,7 @@ var UnstyledButton = polymorphicFactory(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // src/AccordionControl/AccordionControl.tsx
 var defaultProps5 = {};
@@ -510,6 +519,10 @@ var AccordionControl = factory3(
   }
 );
 AccordionControl.displayName = "@raikou/core/AccordionControl";
+AccordionControl.classes = Accordion_module_default;
+
+// css-module:./Accordion.module.css#css-module
+var Accordion_module_default2 = { "root": "m-9bdbb667", "panel": "m-df78851f", "content": "m-4ba554d4", "itemTitle": "m-8fa820a0", "control": "m-4ba585b8", "control--default": "m-6939a5e9", "control--contained": "m-4271d21b", "label": "m-df3ffa0f", "chevron": "m-3f35ae96", "icon": "m-9bd771fe", "item": "m-9bd7b098", "item--default": "m-fe19b709", "item--contained": "m-1f921b3b", "item--filled": "m-2cdf939a", "item--separated": "m-9f59b069" };
 
 // src/Accordion.tsx
 var defaultProps6 = {
@@ -593,17 +606,7 @@ function Accordion(_props) {
   };
   const getStyles = useStyles2({
     name: "Accordion",
-    classes: {
-      root: "accordion-root",
-      content: "accordion-content",
-      item: "accordion-item",
-      panel: "accordion-panel",
-      icon: "accordion-icon",
-      chevron: "accordion-chevron",
-      label: "accordion-label",
-      itemTitle: "accordion-itemTitle",
-      control: "accordion-control"
-    },
+    classes: Accordion_module_default2,
     props,
     className,
     style,
@@ -654,3 +657,4 @@ export {
   AccordionItem,
   AccordionPanel
 };
+//# sourceMappingURL=index.mjs.map

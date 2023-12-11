@@ -142,4 +142,4 @@ declare namespace Accordion {
     var Chevron: typeof AccordionChevron;
 }
 
-export { Accordion, AccordionChevron, AccordionChevronProps, AccordionControl, AccordionControlProps, AccordionCssVariables, AccordionFactory, AccordionHeadingOrder, AccordionItem, AccordionItemProps, AccordionPanel, AccordionPanelProps, AccordionProps, AccordionStylesNames, AccordionValue, AccordionVariant };
+export { Accordion, AccordionChevron, type AccordionChevronProps, AccordionControl, type AccordionControlProps, type AccordionCssVariables, type AccordionFactory, type AccordionHeadingOrder, AccordionItem, type AccordionItemProps, AccordionPanel, type AccordionPanelProps, type AccordionProps, type AccordionStylesNames, type AccordionValue, type AccordionVariant };

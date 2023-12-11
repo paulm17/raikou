@@ -81,6 +81,11 @@ import {
   getFontSize,
   getLineHeight
 } from "@raikou/core";
+
+// css-module:./Text.module.css#css-module
+var Text_module_default = { "root": "m-b6d8b162" };
+
+// ../Text/src/Text.tsx
 function getTextTruncate(truncate) {
   if (truncate === "start") {
     return "start";
@@ -143,9 +148,7 @@ var Text = polymorphicFactory((_props, ref) => {
   const getStyles = useStyles({
     name: ["Text", __staticSelector],
     props,
-    classes: {
-      root: "text-root"
-    },
+    classes: Text_module_default,
     className,
     style,
     classNames,
@@ -173,7 +176,11 @@ var Text = polymorphicFactory((_props, ref) => {
     }), others)
   );
 });
+Text.classes = Text_module_default;
 Text.displayName = "@raikou/core/Text";
+
+// css-module:./Anchor.module.css#css-module
+var Anchor_module_default = { "root": "m-849cf0da" };
 
 // ../Anchor/src/Anchor.tsx
 var defaultProps2 = {
@@ -190,7 +197,7 @@ var Anchor = polymorphicFactory2((props, ref) => {
     __spreadProps(__spreadValues({
       component: "a",
       ref,
-      className: clsx_default("anchor-root", className)
+      className: clsx_default(Anchor_module_default.root, className)
     }, others), {
       mod: { underline },
       __staticSelector: "Anchor"
@@ -198,6 +205,10 @@ var Anchor = polymorphicFactory2((props, ref) => {
   );
 });
 Anchor.displayName = "@raikou/core/Anchor";
+Anchor.classes = Anchor_module_default;
+
+// css-module:./Spoiler.module.css#css-module
+var Spoiler_module_default = { "root": "m-559cce2d", "content": "m-b912df4e", "control": "m-b9131032" };
 
 // src/Spoiler.tsx
 var defaultProps3 = {
@@ -246,11 +257,7 @@ var Spoiler = factory((_props, ref) => {
   ]);
   const getStyles = useStyles2({
     name: "Spoiler",
-    classes: {
-      root: "spoiler-root",
-      content: "spoiler-content",
-      control: "spoiler-control"
-    },
+    classes: Spoiler_module_default,
     props,
     className,
     style,
@@ -300,7 +307,9 @@ var Spoiler = factory((_props, ref) => {
     )
   );
 });
+Spoiler.classes = Spoiler_module_default;
 Spoiler.displayName = "@raikou/core/Spoiler";
 export {
   Spoiler
 };
+//# sourceMappingURL=index.mjs.map

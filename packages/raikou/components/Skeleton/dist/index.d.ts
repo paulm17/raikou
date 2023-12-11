@@ -33,4 +33,4 @@ declare const Skeleton: _raikou_core.RaikouComponent<{
     vars: SkeletonCssVariables;
 }>;
 
-export { Skeleton, SkeletonCssVariables, SkeletonFactory, SkeletonProps, SkeletonStylesNames };
+export { Skeleton, type SkeletonCssVariables, type SkeletonFactory, type SkeletonProps, type SkeletonStylesNames };

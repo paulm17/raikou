@@ -33,4 +33,4 @@ declare const Spoiler: _raikou_core.RaikouComponent<{
     vars: SpoilerCssVariables;
 }>;
 
-export { Spoiler, SpoilerCssVariables, SpoilerFactory, SpoilerProps, SpoilerStylesNames };
+export { Spoiler, type SpoilerCssVariables, type SpoilerFactory, type SpoilerProps, type SpoilerStylesNames };

@@ -1,0 +1,24 @@
+.mantine-datatable-page-size-selector-button-icon {
+  margin: 0 rem(-4px) 0 rem(2px);
+}
+
+.mantine-datatable-page-size-selector-active {
+  --raikou-datatable-pagination-active-text-color: var(
+    light-dark(
+      --raikou-datatable-pagination-active-text-color-light,
+      --raikou-datatable-pagination-active-text-color-dark
+    ),
+    var(--raikou-color-white)
+  );
+  --raikou-datatable-pagination-active-background-color: var(
+    light-dark(
+      --raikou-datatable-pagination-active-background-color-light,
+      --raikou-datatable-pagination-active-background-color-dark
+    ),
+    var(--raikou-primary-color-filled)
+  );
+
+  opacity: 1;
+  color: var(--raikou-datatable-pagination-active-text-color);
+  background: var(--raikou-datatable-pagination-active-background-color);
+}

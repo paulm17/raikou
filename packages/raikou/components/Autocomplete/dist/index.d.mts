@@ -4255,4 +4255,4 @@ declare const Autocomplete: _raikou_core.RaikouComponent<{
     variant: InputVariant;
 }>;
 
-export { Autocomplete, AutocompleteFactory, AutocompleteProps, AutocompleteStylesNames };
+export { Autocomplete, type AutocompleteFactory, type AutocompleteProps, type AutocompleteStylesNames };

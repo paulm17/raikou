@@ -72,6 +72,11 @@ var import_core4 = require("@raikou/core");
 // ../UnstyledButton/src/UnstyledButton.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps = {
   __staticSelector: "UnstyledButton"
 };
@@ -98,9 +103,7 @@ var UnstyledButton = (0, import_core.polymorphicFactory)(
     const getStyles = (0, import_core.useStyles)({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -118,6 +121,7 @@ var UnstyledButton = (0, import_core.polymorphicFactory)(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // ../Accordion/src/AccordionChevron.tsx
 var import_react2 = __toESM(require("react"));
@@ -328,6 +332,9 @@ var Collapse = (0, import_react4.forwardRef)(
 );
 Collapse.displayName = "@raikou/core/Collapse";
 
+// css-module:./NavLink.module.css#css-module
+var NavLink_module_default = { "root": "m-f0824112", "description": "m-57492dcc", "section": "m-690090b5", "label": "m-1f6ac4c4", "body": "m-f07af9d2", "children": "m-e17b862f", "chevron": "m-1fd8a00b" };
+
 // src/NavLink.tsx
 var defaultProps3 = {};
 var varsResolver = (0, import_core4.createVarsResolver)(
@@ -397,15 +404,7 @@ var NavLink = (0, import_core4.polymorphicFactory)((_props, ref) => {
   const getStyles = (0, import_core4.useStyles)({
     name: "NavLink",
     props,
-    classes: {
-      root: "navlink-root",
-      section: "navlink-section",
-      label: "navlink-label",
-      body: "navlink-body",
-      description: "navlink-description",
-      children: "navlink-children",
-      chevron: "navlink-chevron"
-    },
+    classes: NavLink_module_default,
     className,
     style,
     classNames,
@@ -462,8 +461,10 @@ var NavLink = (0, import_core4.polymorphicFactory)((_props, ref) => {
     )
   ), /* @__PURE__ */ import_react5.default.createElement(Collapse, { in: _opened }, /* @__PURE__ */ import_react5.default.createElement("div", __spreadValues({}, getStyles("children")), children)));
 });
+NavLink.classes = NavLink_module_default;
 NavLink.displayName = "@raikou/core/NavLink";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   NavLink
 });
+//# sourceMappingURL=index.js.map

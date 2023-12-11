@@ -66,6 +66,11 @@ module.exports = __toCommonJS(src_exports);
 // src/Stack.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./Stack.module.css#css-module
+var Stack_module_default = { "root": "m-6d731127" };
+
+// src/Stack.tsx
 var defaultProps = {
   gap: "md",
   align: "stretch",
@@ -108,7 +113,7 @@ var Stack = (0, import_core.factory)((_props, ref) => {
   const getStyles = (0, import_core.useStyles)({
     name: "Stack",
     props,
-    classes: { root: "stack-root" },
+    classes: Stack_module_default,
     className,
     style,
     classNames,
@@ -120,7 +125,9 @@ var Stack = (0, import_core.factory)((_props, ref) => {
   return /* @__PURE__ */ import_react.default.createElement(import_core.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { variant }), others));
 });
 Stack.displayName = "@raikou/core/Stack";
+Stack.classes = Stack_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Stack
 });
+//# sourceMappingURL=index.js.map

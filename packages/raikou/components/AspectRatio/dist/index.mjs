@@ -36,6 +36,11 @@ import {
   useStyles,
   createVarsResolver
 } from "@raikou/core";
+
+// css-module:./AspectRatio.module.css#css-module
+var AspectRatio_module_default = { "root": "m-71ac47fc" };
+
+// src/AspectRatio.tsx
 var defaultProps = {};
 var varsResolver = createVarsResolver((_, { ratio }) => ({
   root: {
@@ -63,9 +68,7 @@ var AspectRatio = factory((_props, ref) => {
   ]);
   const getStyles = useStyles({
     name: "AspectRatio",
-    classes: {
-      root: "aspectRatio-root"
-    },
+    classes: AspectRatio_module_default,
     props,
     className,
     style,
@@ -78,6 +81,8 @@ var AspectRatio = factory((_props, ref) => {
   return /* @__PURE__ */ React.createElement(Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others));
 });
 AspectRatio.displayName = "@raikou/core/AspectRatio";
+AspectRatio.classes = AspectRatio_module_default;
 export {
   AspectRatio
 };
+//# sourceMappingURL=index.mjs.map

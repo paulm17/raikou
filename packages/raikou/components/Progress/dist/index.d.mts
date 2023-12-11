@@ -102,4 +102,4 @@ declare const Progress: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { Progress, ProgressFactory, ProgressLabel, ProgressLabelProps, ProgressProps, ProgressRoot, ProgressRootProps, ProgressSection, ProgressSectionProps, ProgressStylesNames };
+export { Progress, type ProgressFactory, ProgressLabel, type ProgressLabelProps, type ProgressProps, ProgressRoot, type ProgressRootProps, ProgressSection, type ProgressSectionProps, type ProgressStylesNames };

@@ -66,6 +66,11 @@ module.exports = __toCommonJS(src_exports);
 // src/Paper.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./Paper.module.css#css-module
+var Paper_module_default = { "root": "m-1b7284a3" };
+
+// src/Paper.tsx
 var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)(
   (_, { radius, shadow }) => ({
@@ -103,9 +108,7 @@ var Paper = (0, import_core.polymorphicFactory)((_props, ref) => {
   const getStyles = (0, import_core.useStyles)({
     name: "Paper",
     props,
-    classes: {
-      root: "paper-root"
-    },
+    classes: Paper_module_default,
     className,
     style,
     classNames,
@@ -125,7 +128,9 @@ var Paper = (0, import_core.polymorphicFactory)((_props, ref) => {
   );
 });
 Paper.displayName = "@raikou/core/Paper";
+Paper.classes = Paper_module_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Paper
 });
+//# sourceMappingURL=index.js.map

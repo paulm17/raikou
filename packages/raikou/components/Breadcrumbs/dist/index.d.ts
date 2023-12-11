@@ -27,4 +27,4 @@ declare const Breadcrumbs: _raikou_core.RaikouComponent<{
     vars: BreadcrumbsCssVariables;
 }>;
 
-export { Breadcrumbs, BreadcrumbsCssVariables, BreadcrumbsFactory, BreadcrumbsProps, BreadcrumbsStylesNames };
+export { Breadcrumbs, type BreadcrumbsCssVariables, type BreadcrumbsFactory, type BreadcrumbsProps, type BreadcrumbsStylesNames };

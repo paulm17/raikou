@@ -1,11 +1,11 @@
 import { GetStylesApi } from "@raikou/core";
 import type { TimelineFactory } from "./Timeline";
-import { create } from "zustand";
+import createStore from "pure-store";
 
 interface TimelineContext {
   getStyles: GetStylesApi<TimelineFactory> | any;
 }
 
-export const useStore = create<TimelineContext>(() => ({
+export const useStore = createStore<TimelineContext>({
   getStyles: undefined,
-}));
+});

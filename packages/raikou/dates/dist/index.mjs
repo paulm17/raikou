@@ -224,6 +224,11 @@ import {
   getFontSize,
   createVarsResolver
 } from "@raikou/core";
+
+// css-module:../Input.module.css#css-module
+var Input_module_default = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
+
+// ../components/Input/src/InputLabel/InputLabel.tsx
 var defaultProps = {
   labelElement: "label"
 };
@@ -269,10 +274,11 @@ var InputLabel = factory((_props, ref) => {
   const _getStyles = useStyles({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      label: "inputWrapper-label",
-      required: "inputWrapper-required"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    // },
     className,
     style,
     classNames,
@@ -351,9 +357,10 @@ var InputError = factory2((_props, ref) => {
   const _getStyles = useStyles2({
     name: ["InputWrapper", __staticSelector],
     props,
-    classes: {
-      error: "inputWrapper-error"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   error: "inputWrapper-error",
+    // },
     className,
     style,
     classNames,
@@ -426,9 +433,10 @@ var InputDescription = factory3(
     const _getStyles = useStyles3({
       name: ["InputWrapper", __staticSelector],
       props,
-      classes: {
-        description: "inputWrapper-description"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   description: "inputWrapper-description",
+      // },
       className,
       style,
       classNames,
@@ -486,9 +494,10 @@ var InputPlaceholder = factory4(
     const getStyles2 = useStyles4({
       name: ["InputPlaceholder", __staticSelector],
       props,
-      classes: {
-        placeholder: "input-placeholder"
-      },
+      classes: Input_module_default,
+      // classes: {
+      //   placeholder: "input-placeholder",
+      // },
       className,
       style,
       classNames,
@@ -603,13 +612,14 @@ var InputWrapper = factory5((_props, ref) => {
   const getStyles2 = useStyles5({
     name: ["InputWrapper", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      root: "inputWrapper-root",
-      label: "inputWrapper-label",
-      required: "inputWrapper-required",
-      error: "inputWrapper-error",
-      description: "inputWrapper-description"
-    },
+    classes: Input_module_default,
+    // classes: {
+    //   root: "inputWrapper-root",
+    //   label: "inputWrapper-label",
+    //   required: "inputWrapper-required",
+    //   error: "inputWrapper-error",
+    //   description: "inputWrapper-description",
+    // },
     className,
     style,
     classNames,
@@ -700,6 +710,9 @@ var InputWrapper = factory5((_props, ref) => {
   );
 });
 InputWrapper.displayName = "@raikou/core/InputWrapper";
+
+// css-module:./Input.module.css#css-module
+var Input_module_default2 = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
 
 // ../components/Input/src/Input.tsx
 var defaultProps6 = {
@@ -793,11 +806,12 @@ var Input = polymorphicFactory((_props, ref) => {
   const getStyles2 = useStyles6({
     name: ["Input", __staticSelector],
     props: __stylesApiProps || props,
-    classes: {
-      wrapper: "input-wrapper",
-      input: "input-input",
-      section: "input-section"
-    },
+    classes: Input_module_default2,
+    // classes: {
+    //   wrapper: "input-wrapper",
+    //   input: "input-input",
+    //   section: "input-section",
+    // },
     className,
     style,
     classNames,
@@ -980,6 +994,9 @@ var InputBase = polymorphicFactory2((props, ref) => {
 });
 InputBase.displayName = "@raikou/core/InputBase";
 
+// css-module:./TimeInput.module.css#css-module
+var TimeInput_module_default = { "input": "m-468e7eda" };
+
 // src/components/TimeInput/TimeInput.tsx
 var defaultProps8 = {};
 var TimeInput = factory6((_props, ref) => {
@@ -994,7 +1011,7 @@ var TimeInput = factory6((_props, ref) => {
     InputBase,
     __spreadProps(__spreadValues({
       classNames: __spreadProps(__spreadValues({}, resolvedClassNames), {
-        input: cx("dates-timeInput-input", resolvedClassNames == null ? void 0 : resolvedClassNames.input)
+        input: cx(TimeInput_module_default.input, resolvedClassNames == null ? void 0 : resolvedClassNames.input)
       }),
       styles: resolvedStyles,
       unstyled,
@@ -1006,6 +1023,7 @@ var TimeInput = factory6((_props, ref) => {
     })
   );
 });
+TimeInput.classes = InputBase.classes;
 TimeInput.displayName = "@raikou/dates/TimeInput";
 
 // src/components/Day/Day.tsx
@@ -1027,6 +1045,11 @@ import {
   useStyles as useStyles7,
   polymorphicFactory as polymorphicFactory3
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../components/UnstyledButton/src/UnstyledButton.tsx
 var defaultProps9 = {
   __staticSelector: "UnstyledButton"
 };
@@ -1053,9 +1076,7 @@ var UnstyledButton = polymorphicFactory3(
     const getStyles2 = useStyles7({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -1073,6 +1094,7 @@ var UnstyledButton = polymorphicFactory3(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // src/utils/get-formatted-date.ts
 import dayjs from "dayjs";
@@ -1337,6 +1359,9 @@ function getDefaultClampedDate({
   return today;
 }
 
+// css-module:./Day.module.css#css-module
+var Day_module_default = { "day": "m-396ce5cb" };
+
 // src/components/Day/Day.tsx
 var defaultProps10 = {};
 var varsResolver6 = createVarsResolver6((_, { size: size2 }) => ({
@@ -1387,9 +1412,7 @@ var Day = factory7((_props, ref) => {
   ]);
   const getStyles2 = useStyles8({
     name: __staticSelector || "Day",
-    classes: {
-      day: "dates-day"
-    },
+    classes: Day_module_default,
     props,
     className,
     style,
@@ -1426,6 +1449,7 @@ var Day = factory7((_props, ref) => {
   );
 });
 Day.displayName = "@raikou/dates/Day";
+Day.classes = Day_module_default;
 
 // src/components/WeekdaysRow/WeekdaysRow.tsx
 import React15 from "react";
@@ -1457,6 +1481,9 @@ function getWeekdayNames({
   }
   return labels;
 }
+
+// css-module:./WeekdaysRow.module.css#css-module
+var WeekdaysRow_module_default = { "weekday": "m-18a3eca" };
 
 // src/components/WeekdaysRow/WeekdaysRow.tsx
 var defaultProps11 = {};
@@ -1495,10 +1522,7 @@ var WeekdaysRow = factory8((_props, ref) => {
   ]);
   const getStyles2 = useStyles9({
     name: __staticSelector || "WeekdaysRow",
-    classes: {
-      weekday: "dates-weekday",
-      weekdaysRow: ""
-    },
+    classes: WeekdaysRow_module_default,
     props,
     className,
     style,
@@ -1517,6 +1541,7 @@ var WeekdaysRow = factory8((_props, ref) => {
   }).map((weekday, index3) => /* @__PURE__ */ React15.createElement(CellComponent, __spreadValues({ key: index3 }, getStyles2("weekday")), weekday));
   return /* @__PURE__ */ React15.createElement(Box8, __spreadValues(__spreadValues({ component: "tr", ref }, getStyles2("weekdaysRow")), others), weekdays);
 });
+WeekdaysRow.classes = WeekdaysRow_module_default;
 WeekdaysRow.displayName = "@raikou/dates/WeekdaysRow";
 
 // src/components/Month/get-end-of-week/get-end-of-week.ts
@@ -1618,6 +1643,9 @@ function getDateInTabOrder(dates, minDate, maxDate, getDateControlProps, exclude
   return enabledDates[0];
 }
 
+// css-module:./Month.module.css#css-module
+var Month_module_default = { "month": "m-cc9820d3", "monthCell": "m-8f457cd5" };
+
 // src/components/Month/Month.tsx
 var defaultProps12 = {
   withCellSpacing: true
@@ -1687,10 +1715,7 @@ var Month = factory9((_props, ref) => {
   ]);
   const getStyles2 = useStyles10({
     name: __staticSelector || "Month",
-    classes: {
-      month: "dates-month",
-      monthCell: "dates-monthCell"
-    },
+    classes: Month_module_default,
     props,
     className,
     style,
@@ -1799,6 +1824,7 @@ var Month = factory9((_props, ref) => {
     /* @__PURE__ */ React16.createElement("tbody", __spreadValues({}, getStyles2("monthTbody")), rows)
   );
 });
+Month.classes = Month_module_default;
 Month.displayName = "@raikou/dates/Month";
 
 // src/components/PickerControl/PickerControl.tsx
@@ -1811,6 +1837,11 @@ import {
   getFontSize as getFontSize7,
   getSize as getSize3
 } from "@raikou/core";
+
+// css-module:./PickerControl.module.css#css-module
+var PickerControl_module_default = { "pickerControl": "m-dc6a3c71" };
+
+// src/components/PickerControl/PickerControl.tsx
 var defaultProps13 = {};
 var varsResolver8 = createVarsResolver8(
   (_, { size: size2 }) => ({
@@ -1851,9 +1882,7 @@ var PickerControl = factory10((_props, ref) => {
   ]);
   const getStyles2 = useStyles11({
     name: __staticSelector || "PickerControl",
-    classes: {
-      pickerControl: "dates-pickerControl"
-    },
+    classes: PickerControl_module_default,
     props,
     className,
     style,
@@ -1879,6 +1908,7 @@ var PickerControl = factory10((_props, ref) => {
     }), others)
   );
 });
+PickerControl.classes = PickerControl_module_default;
 PickerControl.displayName = "@raikou/dates/PickerControl";
 
 // src/components/YearsList/YearsList.tsx
@@ -1947,6 +1977,9 @@ function getYearInTabOrder(years, minDate, maxDate, getYearControlProps) {
   return enabledYears[0];
 }
 
+// css-module:./YearsList.module.css#css-module
+var YearsList_module_default = { "yearsList": "m-9206547b", "yearsListCell": "m-c5a19c7d" };
+
 // src/components/YearsList/YearsList.tsx
 var defaultProps14 = {
   yearsListFormat: "YYYY",
@@ -1999,10 +2032,7 @@ var YearsList = factory11((_props, ref) => {
   ]);
   const getStyles2 = useStyles12({
     name: __staticSelector || "YearsList",
-    classes: {
-      yearsList: "dates-yearsList",
-      yearsListCell: "dates-yearsListCell"
-    },
+    classes: YearsList_module_default,
     props,
     className,
     style,
@@ -2076,6 +2106,7 @@ var YearsList = factory11((_props, ref) => {
     /* @__PURE__ */ React18.createElement("tbody", null, rows)
   );
 });
+YearsList.classes = YearsList_module_default;
 YearsList.displayName = "@raikou/dates/YearsList";
 
 // src/components/MonthsList/MonthsList.tsx
@@ -2327,6 +2358,9 @@ function AccordionChevron(_a) {
 }
 AccordionChevron.displayName = "@raikou/core/AccordionChevron";
 
+// css-module:./CalendarHeader.module.css#css-module
+var CalendarHeader_module_default = { "calendarHeader": "m-730a79ed", "calendarHeaderLevel": "m-f6645d97", "calendarHeaderControl": "m-2351eeb0", "calendarHeaderControlIcon": "m-367dc749" };
+
 // src/components/CalendarHeader/CalendarHeader.tsx
 var defaultProps16 = {
   nextDisabled: false,
@@ -2396,12 +2430,7 @@ var CalendarHeader = factory13((_props, ref) => {
   ]);
   const getStyles2 = useStyles14({
     name: __staticSelector || "CalendarHeader",
-    classes: {
-      calendarHeader: "dates-calendarHeader",
-      calendarHeaderLevel: "dates-calendarHeaderLevel",
-      calendarHeaderControl: "dates-calendarHeaderControl",
-      calendarHeaderControlIcon: "dates-calendarHeaderControlIcon"
-    },
+    classes: CalendarHeader_module_default,
     props,
     className,
     style,
@@ -2470,6 +2499,7 @@ var CalendarHeader = factory13((_props, ref) => {
     )
   ));
 });
+CalendarHeader.classes = CalendarHeader_module_default;
 CalendarHeader.displayName = "@raikou/dates/CalendarHeader";
 
 // src/components/DecadeLevel/DecadeLevel.tsx
@@ -2914,6 +2944,11 @@ import {
   useProps as useProps20,
   useStyles as useStyles15
 } from "@raikou/core";
+
+// css-module:./LevelsGroup.module.css#css-module
+var LevelsGroup_module_default = { "levelsGroup": "m-30b26e33" };
+
+// src/components/LevelsGroup/LevelsGroup.tsx
 var defaultProps20 = {};
 var LevelsGroup = factory17((_props, ref) => {
   const props = useProps20("LevelsGroup", defaultProps20, _props);
@@ -2936,9 +2971,7 @@ var LevelsGroup = factory17((_props, ref) => {
   ]);
   const getStyles2 = useStyles15({
     name: __staticSelector || "LevelsGroup",
-    classes: {
-      levelsGroup: "dates-levelsGroup"
-    },
+    classes: LevelsGroup_module_default,
     props,
     className,
     style,
@@ -2950,6 +2983,7 @@ var LevelsGroup = factory17((_props, ref) => {
   });
   return /* @__PURE__ */ React25.createElement(Box16, __spreadValues(__spreadValues({ ref }, getStyles2("levelsGroup")), others));
 });
+LevelsGroup.classes = LevelsGroup_module_default;
 LevelsGroup.displayName = "@raikou/dates/LevelsGroup";
 
 // src/components/DecadeLevelGroup/DecadeLevelGroup.tsx
@@ -6023,6 +6057,9 @@ var PopoverDropdown = factory22(
 );
 PopoverDropdown.displayName = "@raikou/core/PopoverDropdown";
 
+// css-module:./Popover.module.css#css-module
+var Popover_module_default = { "dropdown": "m-38a85659", "arrow": "m-a31dc6c1" };
+
 // ../components/Popover/src/Popover.tsx
 var defaultProps27 = {
   position: "bottom",
@@ -6138,10 +6175,7 @@ function Popover(_props) {
   const getStyles2 = useStyles16({
     name: __staticSelector,
     props,
-    classes: {
-      dropdown: "popover-dropdown",
-      arrow: "popover-arrow"
-    },
+    classes: Popover_module_default,
     classNames,
     styles,
     unstyled,
@@ -7071,6 +7105,9 @@ function useModalBodyId() {
   return ctx.getBodyId();
 }
 
+// css-module:./ModalBase.module.css#css-module
+var ModalBase_module_default = { "title": "m-615af6c9", "header": "m-b5489c3c", "inner": "m-60c222c7", "content": "m-fd1ab0aa", "close": "m-606cb269", "body": "m-5df29311" };
+
 // ../components/ModalBase/src/ModalBaseBody.tsx
 var ModalBaseBody = forwardRef7(
   (_a, ref) => {
@@ -7082,7 +7119,7 @@ var ModalBaseBody = forwardRef7(
         ref
       }, others), {
         id: bodyId,
-        className: cx3("modalBase-body", className)
+        className: cx3(ModalBase_module_default.body, className)
       })
     );
   }
@@ -7132,6 +7169,11 @@ import {
   createVarsResolver as createVarsResolver11,
   useStyles as useStyles17
 } from "@raikou/core";
+
+// css-module:./CloseButton.module.css#css-module
+var CloseButton_module_default = { "root": "m-86a44da5", "root--subtle": "m-220c80f2" };
+
+// ../components/CloseButton/src/CloseButton.tsx
 var defaultProps28 = {
   variant: "subtle",
   size: "md"
@@ -7180,9 +7222,7 @@ var CloseButton = polymorphicFactory4(
       props,
       className,
       style,
-      classes: {
-        root: "closeButton-root"
-      },
+      classes: CloseButton_module_default,
       classNames,
       styles,
       unstyled,
@@ -7205,6 +7245,7 @@ var CloseButton = polymorphicFactory4(
   }
 );
 CloseButton.displayName = "@raikou/core/CloseButton";
+CloseButton.classes = CloseButton_module_default;
 
 // ../components/ModalBase/src/ModalBaseCloseButton.tsx
 var ModalBaseCloseButton = forwardRef9((_a, ref) => {
@@ -7219,7 +7260,7 @@ var ModalBaseCloseButton = forwardRef9((_a, ref) => {
         ctx.onClose();
         onClick == null ? void 0 : onClick(event);
       },
-      className: cx4("modalBase-close", className)
+      className: cx4(ModalBase_module_default.close, className)
     })
   );
 });
@@ -7240,6 +7281,11 @@ import {
   getShadow as getShadow3,
   createVarsResolver as createVarsResolver12
 } from "@raikou/core";
+
+// css-module:./Paper.module.css#css-module
+var Paper_module_default = { "root": "m-1b7284a3" };
+
+// ../components/Paper/src/Paper.tsx
 var defaultProps29 = {};
 var varsResolver12 = createVarsResolver12(
   (_, { radius, shadow }) => ({
@@ -7277,9 +7323,7 @@ var Paper = polymorphicFactory5((_props, ref) => {
   const getStyles2 = useStyles18({
     name: "Paper",
     props,
-    classes: {
-      root: "paper-root"
-    },
+    classes: Paper_module_default,
     className,
     style,
     classNames,
@@ -7299,6 +7343,7 @@ var Paper = polymorphicFactory5((_props, ref) => {
   );
 });
 Paper.displayName = "@raikou/core/Paper";
+Paper.classes = Paper_module_default;
 
 // ../components/ModalBase/src/ModalBaseContent.tsx
 var ModalBaseContent = forwardRef10(
@@ -7322,7 +7367,7 @@ var ModalBaseContent = forwardRef10(
       (transitionStyles) => /* @__PURE__ */ React51.createElement(
         "div",
         __spreadProps(__spreadValues({}, innerProps), {
-          className: cx5("modalBase-inner", innerProps.className)
+          className: cx5(ModalBase_module_default.inner, innerProps.className)
         }),
         /* @__PURE__ */ React51.createElement(FocusTrap, { active: ctx.opened && ctx.trapFocus }, /* @__PURE__ */ React51.createElement(
           Paper,
@@ -7336,7 +7381,7 @@ var ModalBaseContent = forwardRef10(
             onKeyDown: handleKeyDown,
             ref,
             style: [style, transitionStyles],
-            className: cx5("modalBase-content", className)
+            className: cx5(ModalBase_module_default.content, className)
           }),
           others.children
         ))
@@ -7353,7 +7398,7 @@ import { Box as Box21 } from "@raikou/core";
 var ModalBaseHeader = forwardRef11(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React52.createElement(Box21, __spreadValues({ ref, className: cx6("modalBase-header", className) }, others));
+    return /* @__PURE__ */ React52.createElement(Box21, __spreadValues({ ref, className: cx6(ModalBase_module_default.header, className) }, others));
   }
 );
 ModalBaseHeader.displayName = "@raikou/core/ModalBaseHeader";
@@ -7374,6 +7419,11 @@ import {
   getRadius as getRadius5,
   rem as rem10
 } from "@raikou/core";
+
+// css-module:./Overlay.module.css#css-module
+var Overlay_module_default = { "root": "m-9814e45f" };
+
+// ../components/Overlay/src/Overlay.tsx
 var defaultProps30 = {
   zIndex: getDefaultZIndex3("modal")
 };
@@ -7425,9 +7475,7 @@ var Overlay = polymorphicFactory6((_props, ref) => {
   const getStyles2 = useStyles19({
     name: "Overlay",
     props,
-    classes: {
-      root: "overlay-root"
-    },
+    classes: Overlay_module_default,
     className,
     style,
     classNames,
@@ -7439,6 +7487,7 @@ var Overlay = polymorphicFactory6((_props, ref) => {
   return /* @__PURE__ */ React53.createElement(Box22, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles2("root")), { mod: { center, fixed } }), others), children);
 });
 Overlay.displayName = "@raikou/core/Overlay";
+Overlay.classes = Overlay_module_default;
 
 // ../components/ModalBase/src/use-modal-transition.ts
 var DEFAULT_TRANSITION = {
@@ -7497,7 +7546,7 @@ var ModalBaseTitle = forwardRef13((_a, ref) => {
     __spreadProps(__spreadValues({
       component: "h2",
       ref,
-      className: cx7("modalBase-title", className)
+      className: cx7(ModalBase_module_default.title, className)
     }, others), {
       id
     })
@@ -7515,6 +7564,9 @@ function NativeScrollArea({ children }) {
 var [ModalProvider, useModalContext] = createSafeContext(
   "Modal component was not found in tree"
 );
+
+// css-module:./Modal.module.css#css-module
+var Modal_module_default = { "root": "m-9df02822", "content": "m-54c44539", "inner": "m-1f958f16", "header": "m-d0e2b9cd" };
 
 // ../components/Modal/src/ModalRoot.tsx
 var defaultProps31 = {
@@ -7573,16 +7625,7 @@ var ModalRoot = factory23((_props, ref) => {
   ]);
   const getStyles2 = useStyles20({
     name: __staticSelector,
-    classes: {
-      root: "modal-root",
-      header: "modal-header",
-      content: "modal-content",
-      inner: "modal-inner",
-      title: "modal-title",
-      body: "modal-body",
-      overlay: "modal-overlay",
-      close: "modal-close"
-    },
+    classes: Modal_module_default,
     props,
     className,
     style,
@@ -7602,6 +7645,7 @@ var ModalRoot = factory23((_props, ref) => {
     }), others)
   ));
 });
+ModalRoot.classes = Modal_module_default;
 ModalRoot.displayName = "@raikou/core/ModalRoot";
 
 // ../components/Modal/src/ModalBody.tsx
@@ -7622,6 +7666,7 @@ var ModalBody = factory24((_props, ref) => {
     }, ctx.getStyles("body", { classNames, style, styles, className })), others)
   );
 });
+ModalBody.classes = Modal_module_default;
 ModalBody.displayName = "@raikou/core/ModalBody";
 
 // ../components/Modal/src/ModalCloseButton.tsx
@@ -7644,6 +7689,7 @@ var ModalCloseButton = factory25(
     );
   }
 );
+ModalCloseButton.classes = Modal_module_default;
 ModalCloseButton.displayName = "@raikou/core/ModalCloseButton";
 
 // ../components/Modal/src/ModalOverlay.tsx
@@ -7664,6 +7710,7 @@ var ModalOverlay = factory26((_props, ref) => {
     }, ctx.getStyles("overlay", { classNames, style, styles, className })), others)
   );
 });
+ModalOverlay.classes = Modal_module_default;
 ModalOverlay.displayName = "@raikou/core/ModalOverlay";
 
 // ../components/Modal/src/ModalContent.tsx
@@ -7693,6 +7740,7 @@ var ModalContent = factory27((_props, ref) => {
     /* @__PURE__ */ React61.createElement(Scroll, { style: { maxHeight: `calc(100vh - (${rem12(ctx.yOffset)} * 2))` } }, children)
   );
 });
+ModalContent.classes = Modal_module_default;
 ModalContent.displayName = "@raikou/core/ModalContent";
 
 // ../components/Modal/src/ModalTitle.tsx
@@ -7713,6 +7761,7 @@ var ModalTitle = factory28((_props, ref) => {
     }, ctx.getStyles("title", { classNames, style, styles, className })), others)
   );
 });
+ModalTitle.classes = Modal_module_default;
 ModalTitle.displayName = "@raikou/core/ModalTitle";
 
 // ../components/Modal/src/ModalHeader.tsx
@@ -7733,6 +7782,7 @@ var ModalHeader = factory29((_props, ref) => {
     }, ctx.getStyles("header", { classNames, style, styles, className })), others)
   );
 });
+ModalHeader.classes = Modal_module_default;
 ModalHeader.displayName = "@raikou/core/ModalHeader";
 
 // ../components/Modal/src/Modal.tsx
@@ -7778,6 +7828,9 @@ Modal.Body = ModalBody;
 Modal.Header = ModalHeader;
 Modal.Title = ModalTitle;
 Modal.CloseButton = ModalCloseButton;
+
+// css-module:./PickerInputBase.module.css#css-module
+var PickerInputBase_module_default = { "input": "m-6fa5e2aa" };
 
 // src/components/PickerInputBase/PickerInputBase.tsx
 var defaultProps39 = {};
@@ -7895,10 +7948,7 @@ var PickerInputBase = factory31(
         }, inputProps), {
           ref,
           classNames: __spreadProps(__spreadValues({}, classNames), {
-            input: cx8(
-              "dates-pickerInput-input",
-              classNames == null ? void 0 : classNames.input
-            )
+            input: cx8(PickerInputBase_module_default.input, classNames == null ? void 0 : classNames.input)
           })
         }), others),
         formattedValue || // @ts-ignore
@@ -7908,6 +7958,7 @@ var PickerInputBase = factory31(
     )), /* @__PURE__ */ React65.createElement(HiddenDatesInput, { value, name, form, type }));
   }
 );
+PickerInputBase.classes = PickerInputBase_module_default;
 PickerInputBase.displayName = "@raikou/dates/PickerInputBase";
 
 // src/components/Calendar/Calendar.tsx
@@ -9252,6 +9303,11 @@ import {
 import React71, { forwardRef as forwardRef14 } from "react";
 import cx9 from "clsx";
 import { Box as Box25 } from "@raikou/core";
+
+// css-module:../Loader.module.css#css-module
+var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
+
+// ../components/Loader/src/loaders/Bars.tsx
 var Bars = forwardRef14(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
@@ -9259,13 +9315,13 @@ var Bars = forwardRef14(
       Box25,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx9("loader-barsLoader", className)
+        className: cx9(Loader_module_default.barsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React71.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ React71.createElement("span", { className: "loader-bar" }),
-      /* @__PURE__ */ React71.createElement("span", { className: "loader-bar" })
+      /* @__PURE__ */ React71.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React71.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React71.createElement("span", { className: Loader_module_default.bar })
     );
   }
 );
@@ -9281,7 +9337,7 @@ var Oval = forwardRef15(
       Box26,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx10("loader-ovalLoader", className)
+        className: cx10(Loader_module_default.ovalLoader, className)
       }, others), {
         ref
       })
@@ -9300,7 +9356,7 @@ var Progress = forwardRef16(
       Box27,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx11("loader-progressLoader", className)
+        className: cx11(Loader_module_default.progressLoader, className)
       }, others), {
         ref
       }),
@@ -9330,16 +9386,19 @@ var Dots = forwardRef17(
       Box28,
       __spreadProps(__spreadValues({
         component: "span",
-        className: cx12("loader-dotsLoader", className)
+        className: cx12(Loader_module_default.dotsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React74.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ React74.createElement("span", { className: "loader-dot" }),
-      /* @__PURE__ */ React74.createElement("span", { className: "loader-dot" })
+      /* @__PURE__ */ React74.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React74.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React74.createElement("span", { className: Loader_module_default.dot })
     );
   }
 );
+
+// css-module:./Loader.module.css#css-module
+var Loader_module_default2 = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
 
 // ../components/Loader/src/Loader.tsx
 var defaultLoaders = {
@@ -9390,9 +9449,7 @@ var Loader = factory37((_props, ref) => {
   const getStyles2 = useStyles21({
     name: "Loader",
     props,
-    classes: {
-      root: "loader-root"
-    },
+    classes: Loader_module_default2,
     className,
     style,
     classNames,
@@ -9412,6 +9469,7 @@ var Loader = factory37((_props, ref) => {
   );
 });
 Loader.displayName = "@raikou/core/Loader";
+Loader.classes = Loader_module_default2;
 
 // ../components/ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
 import React76 from "react";
@@ -9423,6 +9481,11 @@ import {
   rem as rem13,
   createVarsResolver as createVarsResolver16
 } from "@raikou/core";
+
+// css-module:../ActionIcon.module.css#css-module
+var ActionIcon_module_default = { "root": "m-8d3f4000", "loader": "m-302b9fb1", "group": "m-1a0f1b21" };
+
+// ../components/ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
 var defaultProps46 = {
   orientation: "horizontal"
 };
@@ -9458,9 +9521,7 @@ var ActionIconGroup = factory38(
     const getStyles2 = useStyles22({
       name: "ActionIconGroup",
       props,
-      classes: {
-        group: "actionIconGroup-root"
-      },
+      classes: ActionIcon_module_default,
       className,
       style,
       classNames,
@@ -9481,7 +9542,11 @@ var ActionIconGroup = factory38(
     );
   }
 );
+ActionIconGroup.classes = ActionIcon_module_default;
 ActionIconGroup.displayName = "@raikou/core/ActionIconGroup";
+
+// css-module:./ActionIcon.module.css#css-module
+var ActionIcon_module_default2 = { "root": "m-8d3f4000", "loader": "m-302b9fb1", "group": "m-1a0f1b21" };
 
 // ../components/ActionIcon/src/ActionIcon.tsx
 var defaultProps47 = {};
@@ -9550,10 +9615,7 @@ var ActionIcon = polymorphicFactory7(
       props,
       className,
       style,
-      classes: {
-        root: "actionIcon-root",
-        loader: "actionIcon-loader"
-      },
+      classes: ActionIcon_module_default2,
       classNames,
       styles,
       unstyled,
@@ -9584,6 +9646,7 @@ var ActionIcon = polymorphicFactory7(
 );
 ActionIcon.displayName = "@raikou/core/ActionIcon";
 ActionIcon.Group = ActionIconGroup;
+ActionIcon.classes = ActionIcon_module_default2;
 
 // ../components/Checkbox/src/CheckIcon.tsx
 import React78 from "react";
@@ -9614,6 +9677,11 @@ function CheckIcon(_a) {
 
 // src/components/DateTimePicker/DateTimePicker.tsx
 import { useDisclosure as useDisclosure2, useDidUpdate as useDidUpdate5, useMergedRef as useMergedRef4 } from "@raikou/hooks";
+
+// css-module:./DateTimePicker.module.css#css-module
+var DateTimePicker_module_default = { "timeWrapper": "m-208d2562", "timeInput": "m-62ee059" };
+
+// src/components/DateTimePicker/DateTimePicker.tsx
 var defaultProps48 = {
   dropdownType: "popover"
 };
@@ -9658,10 +9726,7 @@ var DateTimePicker = factory39((_props, ref) => {
   ]);
   const getStyles2 = useStyles24({
     name: "DateTimePicker",
-    classes: {
-      timeWrapper: "dates-timeWrapper",
-      timeInput: "dates-timeInput"
-    },
+    classes: DateTimePicker_module_default,
     props,
     classNames,
     styles,
@@ -9823,6 +9888,7 @@ var DateTimePicker = factory39((_props, ref) => {
     ))
   );
 });
+DateTimePicker.classes = __spreadValues(__spreadValues(__spreadValues({}, DateTimePicker_module_default), PickerInputBase.classes), DatePicker.classes);
 DateTimePicker.displayName = "@raikou/dates/DateTimePicker";
 
 // src/components/YearPickerInput/YearPickerInput.tsx
@@ -10253,3 +10319,4 @@ export {
   pickCalendarProps,
   useDatesContext
 };
+//# sourceMappingURL=index.mjs.map

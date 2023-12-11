@@ -63,4 +63,4 @@ declare const List: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { List, ListCssVariables, ListFactory, ListItem, ListItemFactory, ListItemProps, ListItemStylesNames, ListProps, ListStylesNames };
+export { List, type ListCssVariables, type ListFactory, ListItem, type ListItemFactory, type ListItemProps, type ListItemStylesNames, type ListProps, type ListStylesNames };

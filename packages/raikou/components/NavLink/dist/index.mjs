@@ -51,6 +51,11 @@ import {
   useStyles,
   polymorphicFactory
 } from "@raikou/core";
+
+// css-module:./UnstyledButton.module.css#css-module
+var UnstyledButton_module_default = { "root": "m-87cf2631" };
+
+// ../UnstyledButton/src/UnstyledButton.tsx
 var defaultProps = {
   __staticSelector: "UnstyledButton"
 };
@@ -77,9 +82,7 @@ var UnstyledButton = polymorphicFactory(
     const getStyles = useStyles({
       name: __staticSelector,
       props,
-      classes: {
-        root: "unstyledButton-root"
-      },
+      classes: UnstyledButton_module_default,
       className,
       style,
       classNames,
@@ -97,6 +100,7 @@ var UnstyledButton = polymorphicFactory(
   }
 );
 UnstyledButton.displayName = "@raikou/core/UnstyledButton";
+UnstyledButton.classes = UnstyledButton_module_default;
 
 // ../Accordion/src/AccordionChevron.tsx
 import React2 from "react";
@@ -312,6 +316,9 @@ var Collapse = forwardRef(
 );
 Collapse.displayName = "@raikou/core/Collapse";
 
+// css-module:./NavLink.module.css#css-module
+var NavLink_module_default = { "root": "m-f0824112", "description": "m-57492dcc", "section": "m-690090b5", "label": "m-1f6ac4c4", "body": "m-f07af9d2", "children": "m-e17b862f", "chevron": "m-1fd8a00b" };
+
 // src/NavLink.tsx
 var defaultProps3 = {};
 var varsResolver = createVarsResolver(
@@ -381,15 +388,7 @@ var NavLink = polymorphicFactory2((_props, ref) => {
   const getStyles = useStyles2({
     name: "NavLink",
     props,
-    classes: {
-      root: "navlink-root",
-      section: "navlink-section",
-      label: "navlink-label",
-      body: "navlink-body",
-      description: "navlink-description",
-      children: "navlink-children",
-      chevron: "navlink-chevron"
-    },
+    classes: NavLink_module_default,
     className,
     style,
     classNames,
@@ -446,7 +445,9 @@ var NavLink = polymorphicFactory2((_props, ref) => {
     )
   ), /* @__PURE__ */ React5.createElement(Collapse, { in: _opened }, /* @__PURE__ */ React5.createElement("div", __spreadValues({}, getStyles("children")), children)));
 });
+NavLink.classes = NavLink_module_default;
 NavLink.displayName = "@raikou/core/NavLink";
 export {
   NavLink
 };
+//# sourceMappingURL=index.mjs.map

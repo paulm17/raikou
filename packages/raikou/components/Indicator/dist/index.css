@@ -1,0 +1,60 @@
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Indicator/src/Indicator.module.css/#css-module-data */
+@keyframes m-885901b1 {
+  0% {
+    opacity: 0.6;
+    box-shadow: 0 0 calc(0.03125rem * var(--raikou-scale)) 0 var(--indicator-color);
+  }
+  100% {
+    opacity: 0;
+    box-shadow: 0 0 calc(0.03125rem * var(--raikou-scale)) calc(0.275rem * var(--raikou-scale)) var(--indicator-color);
+  }
+}
+.m-e5262200 {
+  --indicator-size: calc(0.625rem * var(--raikou-scale));
+  --indicator-color: var(--raikou-primary-color-filled);
+  position: relative;
+  display: var(--_indicator-display, block);
+}
+.m-e5262200[data-inline] {
+  --_indicator-display: inline-block;
+}
+.m-760d1fb1 {
+  position: absolute;
+  top: var(--indicator-top);
+  left: var(--indicator-left);
+  right: var(--indicator-right);
+  bottom: var(--indicator-bottom);
+  transform: translate(var(--indicator-translate-x), var(--indicator-translate-y));
+  min-width: var(--indicator-size);
+  height: var(--indicator-size);
+  border-radius: var(--indicator-radius, calc(62.5rem * var(--raikou-scale)));
+  z-index: var(--indicator-z-index, 200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--raikou-font-size-xs);
+  padding-left: var(--_indicator-padding, 0);
+  padding-right: var(--_indicator-padding, 0);
+  background-color: var(--indicator-color);
+  border: var(--_indicator-border);
+  color: var(--raikou-color-white);
+  white-space: nowrap;
+}
+.m-760d1fb1::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--indicator-color);
+  border-radius: var(--indicator-radius, calc(62.5rem * var(--raikou-scale)));
+  z-index: -1;
+}
+.m-760d1fb1[data-with-label] {
+  --_indicator-padding: calc(var(--raikou-spacing-xs) / 2);
+}
+.m-760d1fb1[data-with-border] {
+  --_indicator-border: calc(0.125rem * var(--raikou-scale)) solid var(--raikou-color-body);
+}
+.m-760d1fb1[data-processing]::before {
+  animation: m-885901b1 1000ms linear infinite;
+}
+/*# sourceMappingURL=index.css.map */

@@ -41,6 +41,11 @@ import {
   isElement,
   getSpacing
 } from "@raikou/core";
+
+// css-module:./Breadcrumbs.module.css#css-module
+var Breadcrumbs_module_default = { "root": "m-8b3717df", "breadcrumb": "m-f678d540", "separator": "m-3b8f2208" };
+
+// src/Breadcrumbs.tsx
 var defaultProps = {
   separator: "/"
 };
@@ -76,11 +81,7 @@ var Breadcrumbs = factory((_props, ref) => {
   ]);
   const getStyles = useStyles({
     name: "Breadcrumbs",
-    classes: {
-      root: "breadcrumbs-root",
-      breadcrumb: "breadcrumbs-breadcrumb",
-      separator: "breadcrumbs-separator"
-    },
+    classes: Breadcrumbs_module_default,
     props,
     className,
     style,
@@ -109,6 +110,8 @@ var Breadcrumbs = factory((_props, ref) => {
   return /* @__PURE__ */ React.createElement(Box, __spreadValues(__spreadValues({ ref }, getStyles("root")), others), items);
 });
 Breadcrumbs.displayName = "@raikou/core/Breadcrumbs";
+Breadcrumbs.classes = Breadcrumbs_module_default;
 export {
   Breadcrumbs
 };
+//# sourceMappingURL=index.mjs.map

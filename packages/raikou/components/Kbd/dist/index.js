@@ -63,6 +63,11 @@ module.exports = __toCommonJS(src_exports);
 // src/Kbd.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./Kbd.module.css#css-module
+var Kbd_module_default = { "root": "m-dc6f14e2" };
+
+// src/Kbd.tsx
 var defaultProps = {};
 var varsResolver = (0, import_core.createVarsResolver)((_, { size }) => ({
   root: {
@@ -75,9 +80,7 @@ var Kbd = (0, import_core.factory)((_props, ref) => {
   const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
   const getStyles = (0, import_core.useStyles)({
     name: "Kbd",
-    classes: {
-      root: "kbd-root"
-    },
+    classes: Kbd_module_default,
     props,
     className,
     style,
@@ -89,8 +92,10 @@ var Kbd = (0, import_core.factory)((_props, ref) => {
   });
   return /* @__PURE__ */ import_react.default.createElement(import_core.Box, __spreadValues(__spreadValues({ component: "kbd", ref }, getStyles("root")), others));
 });
+Kbd.classes = Kbd_module_default;
 Kbd.displayName = "@raikou/core/Kbd";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Kbd
 });
+//# sourceMappingURL=index.js.map

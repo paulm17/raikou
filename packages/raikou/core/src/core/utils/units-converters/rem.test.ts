@@ -30,7 +30,7 @@ describe("@raikou/units-converters/rem", () => {
 
   it("does not modify scaled values", () => {
     expect(rem("calc(2rem * var(--raikou-scale))")).toBe(
-      "calc(2rem * var(--raikou-scale))"
+      "calc(2rem * var(--raikou-scale))",
     );
   });
 });

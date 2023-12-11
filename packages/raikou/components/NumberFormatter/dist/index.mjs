@@ -48,3 +48,4 @@ NumberFormatter.displayName = "@raikou/core/NumberFormatter";
 export {
   NumberFormatter
 };
+//# sourceMappingURL=index.mjs.map

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.ts"],"sourcesContent":["function Hello() {\n  console.log(\"hello - D7899-6\");\n}\n\nexport { Hello };\n"],"mappings":";AAAA,SAAS,QAAQ;AACf,UAAQ,IAAI,iBAAiB;AAC/B;","names":[]}

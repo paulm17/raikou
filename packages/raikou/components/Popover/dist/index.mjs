@@ -822,6 +822,9 @@ var PopoverDropdown = factory2(
 );
 PopoverDropdown.displayName = "@raikou/core/PopoverDropdown";
 
+// css-module:./Popover.module.css#css-module
+var Popover_module_default = { "dropdown": "m-38a85659", "arrow": "m-a31dc6c1" };
+
 // src/Popover.tsx
 var defaultProps4 = {
   position: "bottom",
@@ -937,10 +940,7 @@ function Popover(_props) {
   const getStyles = useStyles({
     name: __staticSelector,
     props,
-    classes: {
-      dropdown: "popover-dropdown",
-      arrow: "popover-arrow"
-    },
+    classes: Popover_module_default,
     classNames,
     styles,
     unstyled,
@@ -1044,3 +1044,4 @@ export {
   PopoverDropdown,
   PopoverTarget
 };
+//# sourceMappingURL=index.mjs.map

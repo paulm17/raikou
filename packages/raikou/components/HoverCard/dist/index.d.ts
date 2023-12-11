@@ -203,4 +203,4 @@ declare namespace HoverCard {
     }>;
 }
 
-export { HoverCard, HoverCardDropdown, HoverCardDropdownProps, HoverCardProps, HoverCardTarget, HoverCardTargetProps };
+export { HoverCard, HoverCardDropdown, type HoverCardDropdownProps, type HoverCardProps, HoverCardTarget, type HoverCardTargetProps };

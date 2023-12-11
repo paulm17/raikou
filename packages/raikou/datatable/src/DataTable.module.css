@@ -1,0 +1,188 @@
+.mantine-datatable {
+  --raikou-datatable-color: var(
+    light-dark(--raikou-datatable-color-light, --raikou-datatable-color-dark),
+    var(--raikou-color-text)
+  );
+  --raikou-datatable-background-color: var(
+    light-dark(
+      --raikou-datatable-background-color-light,
+      --raikou-datatable-background-color-dark
+    ),
+    var(--raikou-color-body)
+  );
+  --raikou-datatable-border-color: var(
+    light-dark(
+      --raikou-datatable-border-color-light,
+      --raikou-datatable-border-color-dark
+    ),
+    light-dark(#dee2e6, #373a40)
+  );
+  --raikou-datatable-row-border-color: var(
+    light-dark(
+      --raikou-datatable-row-border-color-light,
+      --raikou-datatable-row-border-color-dark
+    ),
+    var(--raikou-datatable-border-color)
+  );
+  --raikou-datatable-striped-color: var(
+    light-dark(
+      --raikou-datatable-striped-color-light,
+      --raikou-datatable-striped-color-dark
+    ),
+    light-dark(#f8f9fa, #25262b)
+  );
+  --raikou-datatable-highlight-on-hover-color: var(
+    light-dark(
+      --raikou-datatable-highlight-on-hover-color-light,
+      --raikou-datatable-highlight-on-hover-color-dark
+    ),
+    light-dark(#f1f3f5, #2c2e33)
+  );
+  --raikou-datatable-shadow-background-top: linear-gradient(
+      rgba(0, 0, 0, light-dark(0.05, 0.5)),
+      rgba(0, 0, 0, 0)
+    ),
+    linear-gradient(rgba(0, 0, 0, light-dark(0.05, 0.5)) 30%, rgba(0, 0, 0, 0));
+  --raikou-datatable-shadow-background-right: linear-gradient(
+      to left,
+      rgba(0, 0, 0, light-dark(0.05, 0.5)),
+      rgba(0, 0, 0, 0)
+    ),
+    linear-gradient(
+      to left,
+      rgba(0, 0, 0, light-dark(0.05, 0.5)),
+      rgba(0, 0, 0, 0) 30%
+    );
+  --raikou-datatable-shadow-background-bottom: linear-gradient(
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, light-dark(0.05, 0.5))
+    ),
+    linear-gradient(rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, light-dark(0.05, 0.5)));
+  --raikou-datatable-shadow-background-left: linear-gradient(
+      to right,
+      rgba(0, 0, 0, light-dark(0.05, 0.5)),
+      rgba(0, 0, 0, 0)
+    ),
+    linear-gradient(
+      to right,
+      rgba(0, 0, 0, light-dark(0.05, 0.5)),
+      rgba(0, 0, 0, 0) 30%
+    );
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: var(--raikou-datatable-color);
+  background: var(--raikou-datatable-background-color);
+}
+
+.mantine-datatable-with-border {
+  border: rem(1px) solid var(--raikou-datatable-border-color);
+}
+
+.mantine-datatable-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  color: inherit;
+  background: var(--raikou-datatable-background-color);
+
+  th,
+  td {
+    border-color: var(--raikou-datatable-row-border-color);
+  }
+
+  thead,
+  tbody,
+  tfoot,
+  thead tr,
+  tfoot tr,
+  th,
+  td {
+    background: inherit;
+  }
+
+  &[data-striped] tbody tr:nth-of-type(odd) {
+    background: var(--raikou-datatable-striped-color);
+  }
+
+  &[data-highlight-on-hover] tbody tr:hover {
+    background: var(--raikou-datatable-highlight-on-hover-color);
+  }
+
+  tbody tr:last-of-type {
+    border-bottom: 0;
+  }
+}
+
+.mantine-datatable-vertical-align-top td {
+  vertical-align: top;
+}
+
+.mantine-datatable-vertical-align-bottom td {
+  vertical-align: bottom;
+}
+
+.mantine-datatable-last-row-border-bottom-visible
+  tr:last-of-type:not(.mantine-datatable-empty-row)
+  td {
+  border-bottom: rem(1px) solid var(--raikou-datatable-row-border-color);
+}
+
+.mantine-datatable-pin-last-column {
+  th:not(.mantine-datatable-column-group-header-cell):last-of-type,
+  td:not(.mantine-datatable-row-expansion-cell):last-of-type {
+    position: sticky;
+    right: 0;
+    z-index: 1;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(-1 * var(--raikou-spacing-xs));
+      border-right: 1px solid var(--raikou-datatable-row-border-color);
+      width: var(--raikou-spacing-xs);
+      background: var(--raikou-datatable-shadow-background-right);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+  }
+
+  th:not(.mantine-datatable-column-group-header-cell):last-of-type,
+  tr[data-with-row-border]:not(:last-of-type)
+    td:not(.mantine-datatable-row-expansion-cell):last-of-type {
+    &::after {
+      top: rem(-1px);
+      bottom: rem(-1px);
+    }
+  }
+
+  tfoot th:last-of-type::after {
+    top: rem(-1px);
+  }
+
+  tr[data-selected] td:not(.mantine-datatable-row-expansion-cell):last-of-type {
+    background: inherit;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--raikou-primary-color-light);
+    }
+  }
+}
+
+.mantine-datatable-pin-last-column-scrolled {
+  th:not(.mantine-datatable-column-group-header-cell):last-of-type,
+  td:not(.mantine-datatable-row-expansion-cell):last-of-type {
+    &::after {
+      opacity: 1;
+    }
+  }
+}

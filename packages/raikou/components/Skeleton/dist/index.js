@@ -66,6 +66,11 @@ module.exports = __toCommonJS(src_exports);
 // src/Skeleton.tsx
 var import_react = __toESM(require("react"));
 var import_core = require("@raikou/core");
+
+// css-module:./Skeleton.module.css#css-module
+var Skeleton_module_default = { "root": "m-18320242", "skeleton-fade": "m-299c329c" };
+
+// src/Skeleton.tsx
 var defaultProps = {
   visible: true,
   animate: true
@@ -110,9 +115,7 @@ var Skeleton = (0, import_core.factory)((_props, ref) => {
   ]);
   const getStyles = (0, import_core.useStyles)({
     name: "Skeleton",
-    classes: {
-      root: "skeleton-root"
-    },
+    classes: Skeleton_module_default,
     props,
     className,
     style,
@@ -131,8 +134,10 @@ var Skeleton = (0, import_core.factory)((_props, ref) => {
     }), others)
   );
 });
+Skeleton.classes = Skeleton_module_default;
 Skeleton.displayName = "@raikou/core/Skeleton";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Skeleton
 });
+//# sourceMappingURL=index.js.map

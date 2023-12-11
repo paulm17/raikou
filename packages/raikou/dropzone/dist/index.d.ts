@@ -201,4 +201,4 @@ declare const Dropzone: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { Dropzone, DropzoneAccept, DropzoneAcceptProps, DropzoneCssVariables, DropzoneFactory, DropzoneFullScreen, DropzoneFullScreenFactory, DropzoneFullScreenProps, DropzoneFullScreenStylesNames, DropzoneIdle, DropzoneIdleProps, DropzoneProps, DropzoneReject, DropzoneRejectProps, DropzoneStylesNames, DropzoneVariant, EXE_MIME_TYPE, IMAGE_MIME_TYPE, MIME_TYPES, MS_EXCEL_MIME_TYPE, MS_POWERPOINT_MIME_TYPE, MS_WORD_MIME_TYPE, PDF_MIME_TYPE };
+export { Dropzone, DropzoneAccept, type DropzoneAcceptProps, type DropzoneCssVariables, type DropzoneFactory, DropzoneFullScreen, type DropzoneFullScreenFactory, type DropzoneFullScreenProps, type DropzoneFullScreenStylesNames, DropzoneIdle, type DropzoneIdleProps, type DropzoneProps, DropzoneReject, type DropzoneRejectProps, type DropzoneStylesNames, type DropzoneVariant, EXE_MIME_TYPE, IMAGE_MIME_TYPE, MIME_TYPES, MS_EXCEL_MIME_TYPE, MS_POWERPOINT_MIME_TYPE, MS_WORD_MIME_TYPE, PDF_MIME_TYPE };

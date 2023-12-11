@@ -546,6 +546,9 @@ function getPrecision(step) {
   return split.length > 1 ? split[1].length : 0;
 }
 
+// css-module:../Slider.module.css#css-module
+var Slider_module_default = { "root": "m-dd36362e", "label": "m-c9357328", "thumb": "m-c9a9a60a", "trackContainer": "m-a8645c2", "track": "m-c9ade57f", "bar": "m-38aeed47", "markWrapper": "m-b7b0423a", "mark": "m-dd33bc19", "markLabel": "m-68c77a5b" };
+
 // src/Slider/Slider.tsx
 var defaultProps = {
   radius: "xl",
@@ -633,17 +636,7 @@ var Slider = factory((_props, ref) => {
   const getStyles = useStyles({
     name: "Slider",
     props,
-    classes: {
-      root: "slider-root",
-      label: "slider-label",
-      thumb: "slider-thumb",
-      trackContainer: "slider-trackContainer",
-      track: "slider-track",
-      bar: "slider-bar",
-      markWrapper: "slider-markWrapper",
-      mark: "slider-mark",
-      markLabel: "slider-markLabel"
-    },
+    classes: Slider_module_default,
     classNames,
     className,
     styles,
@@ -820,6 +813,7 @@ var Slider = factory((_props, ref) => {
     )
   ));
 });
+Slider.classes = Slider_module_default;
 Slider.displayName = "@raikou/core/Slider";
 
 // src/RangeSlider/RangeSlider.tsx
@@ -1237,3 +1231,4 @@ export {
   RangeSlider,
   Slider
 };
+//# sourceMappingURL=index.mjs.map

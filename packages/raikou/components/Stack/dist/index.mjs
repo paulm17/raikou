@@ -40,6 +40,11 @@ import {
   getSpacing,
   createVarsResolver
 } from "@raikou/core";
+
+// css-module:./Stack.module.css#css-module
+var Stack_module_default = { "root": "m-6d731127" };
+
+// src/Stack.tsx
 var defaultProps = {
   gap: "md",
   align: "stretch",
@@ -82,7 +87,7 @@ var Stack = factory((_props, ref) => {
   const getStyles = useStyles({
     name: "Stack",
     props,
-    classes: { root: "stack-root" },
+    classes: Stack_module_default,
     className,
     style,
     classNames,
@@ -94,6 +99,8 @@ var Stack = factory((_props, ref) => {
   return /* @__PURE__ */ React.createElement(Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { variant }), others));
 });
 Stack.displayName = "@raikou/core/Stack";
+Stack.classes = Stack_module_default;
 export {
   Stack
 };
+//# sourceMappingURL=index.mjs.map
