@@ -29,7 +29,7 @@ function gen_rules(content: string, lc_importedModules: string[]) {
     .filter((item) => !!item);
 
   // context menu doesn't have a component, search for the import instead
-  if (content.match(/\"@raikou\/contextmenu\"/)) {
+  if (content.match(/"@raikou\/contextmenu"/)) {
     componentNames?.push('contextmenu');
   }
 
@@ -39,7 +39,7 @@ function gen_rules(content: string, lc_importedModules: string[]) {
 }
 
 function matchKeys(array1: any, array2: { [key: string]: string }) {
-  let result: any = [];
+  const result: any = [];
 
   array1.map((key: string) => {
     if (array2.hasOwnProperty(key)) {
@@ -54,7 +54,7 @@ module.exports = (options: any) => {
   return {
     postcssPlugin: 'postcss-purgecss',
 
-    async Once(root: Root, payload: any) {
+    async Once(root: Root) {
       const stylesFile = await fsPromises.readFile(options.styles, {
         encoding: 'utf8',
       });
@@ -73,13 +73,13 @@ module.exports = (options: any) => {
         lines.forEach((line) => {
           if (line.trim().length > 0) {
             const s_line = line.split('|');
-            cssModules[s_line[0].toLowerCase() as any] = s_line[1].split(',');
+            cssModules[s_line[0].toLowerCase() as string] = s_line[1].split(',');
           }
         });
       });
 
       // All the components in the library
-      let lc_componentNames = componentNames
+      const lc_componentNames = componentNames
         .replace('\n', '')
         .split(',')
         .map((item) => item.toLowerCase());
@@ -123,7 +123,7 @@ module.exports = (options: any) => {
         }
         // remove keyframes
         if (atRule.type == 'atrule' && atRule.name == 'keyframes') {
-          const matches = atRule.params.match(/m\-[a-f0-9]{7,8}/g);
+          const matches = atRule.params.match(/m-[a-f0-9]{7,8}/g);
           const selectors = new Set(matches);
           const uniqueSelectors = [...selectors];
 

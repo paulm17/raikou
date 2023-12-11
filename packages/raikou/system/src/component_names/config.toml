@@ -7,7 +7,7 @@ other_dir = [
   "@raikou/carousel",
   "@raikou/code-highlight",
   "@raikou/contextmenu",
-  "@raikou/data-table",
+  "@raikou/datatable",
   "@raikou/dates",
   "@raikou/dial",
   "@raikou/dropzone",

@@ -13,16 +13,7 @@ export default function Page() {
       <a href="/direction">Direction</a>
       <br />
       <br />
-      <a href="/testing">Testing</a>
-      <br />
-      <br />
-      <a href="/visx">Charts</a>
-      <br />
-      <br />
       <a href="/unocss">unocss</a>
-      <br />
-      <br />
-      <a href="/single">single</a>
       <br />
       <br />
       <a href="/datatable">datatable</a>
