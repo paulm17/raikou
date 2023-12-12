@@ -11,7 +11,7 @@ import {
   __spreadProps,
   __spreadValues,
   __toESM
-} from "./chunk-TOPM6CMB.mjs";
+} from "./chunk-JGIESONP.mjs";
 
 // ../../../node_modules/.pnpm/ms@2.1.2/node_modules/ms/index.js
 var require_ms = __commonJS({
@@ -303,7 +303,7 @@ var require_browser = __commonJS({
     exports.load = load;
     exports.useColors = useColors;
     exports.storage = localstorage();
-    exports.destroy = (() => {
+    exports.destroy = /* @__PURE__ */ (() => {
       let warned2 = false;
       return () => {
         if (!warned2) {
@@ -3052,7 +3052,7 @@ var require_execa = __commonJS({
   }
 });
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/icon/defaults.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/icon/defaults.mjs
 var defaultIconDimensions = Object.freeze(
   {
     left: 0,
@@ -3072,14 +3072,14 @@ var defaultExtendedIconProps = Object.freeze(__spreadProps(__spreadValues({}, de
   hidden: false
 }));
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/customisations/defaults.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/customisations/defaults.mjs
 var defaultIconSizeCustomisations = Object.freeze({
   width: null,
   height: null
 });
 var defaultIconCustomisations = Object.freeze(__spreadValues(__spreadValues({}, defaultIconSizeCustomisations), defaultIconTransformations));
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/svg/size.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/svg/size.mjs
 var unitsSplit = /(-?[0-9.]*[0-9]+[0-9.]*)/g;
 var unitsTest = /^-?[0-9.]*[0-9]+[0-9.]*$/g;
 function calculateSize(size, ratio, precision) {
@@ -3119,7 +3119,7 @@ function calculateSize(size, ratio, precision) {
   }
 }
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/svg/defs.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/svg/defs.mjs
 function splitSVGDefs(content) {
   let defs = "";
   const index = content.indexOf("<defs");
@@ -3149,7 +3149,7 @@ function wrapSVGContent(body, start, end) {
   return mergeDefsAndContent(split.defs, start + split.content + end);
 }
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/svg/build.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/svg/build.mjs
 var isUnsetKeyword = (value) => value === "unset" || value === "undefined" || value === "none";
 function iconToSVG(icon, customisations) {
   const fullIcon = __spreadValues(__spreadValues({}, defaultIconProps), icon);
@@ -3257,7 +3257,7 @@ function iconToSVG(icon, customisations) {
   };
 }
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/icon/transformations.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/icon/transformations.mjs
 function mergeIconTransformations(obj1, obj2) {
   const result = {};
   if (!obj1.hFlip !== !obj2.hFlip) {
@@ -3273,7 +3273,7 @@ function mergeIconTransformations(obj1, obj2) {
   return result;
 }
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/icon/merge.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/icon/merge.mjs
 function mergeIconData(parent, child) {
   const result = mergeIconTransformations(parent, child);
   for (const key in defaultExtendedIconProps) {
@@ -3290,7 +3290,7 @@ function mergeIconData(parent, child) {
   return result;
 }
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/icon-set/tree.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/icon-set/tree.mjs
 function getIconsTree(data, names) {
   const icons = data.icons;
   const aliases = data.aliases || /* @__PURE__ */ Object.create(null);
@@ -3313,7 +3313,7 @@ function getIconsTree(data, names) {
   return resolved;
 }
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/icon-set/get-icon.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/icon-set/get-icon.mjs
 function internalGetIconData(data, name, tree) {
   const icons = data.icons;
   const aliases = data.aliases || /* @__PURE__ */ Object.create(null);
@@ -3336,7 +3336,7 @@ function getIconData(data, name) {
   return tree ? internalGetIconData(data, name, tree) : null;
 }
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/loader/utils.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/loader/utils.mjs
 var svgWidthRegex = /\swidth\s*=\s*["'](\w+)["']/;
 var svgHeightRegex = /\sheight\s*=\s*["'](\w+)["']/;
 var svgTagRegex = /<svg\s+/;
@@ -3414,7 +3414,7 @@ function mergeIconProps(svg, collection, icon, options2, propsProvider, afterCus
   });
 }
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/loader/modern.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/loader/modern.mjs
 var import_debug = __toESM(require_src(), 1);
 var debug = (0, import_debug.default)("@iconify-loader:icon");
 function searchForIcon(iconSet, collection, ids, options2) {
@@ -3475,7 +3475,7 @@ function searchForIcon(iconSet, collection, ids, options2) {
   });
 }
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/loader/fs.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/loader/fs.mjs
 import { promises } from "fs";
 
 // ../../../node_modules/.pnpm/local-pkg@0.4.3/node_modules/local-pkg/index.mjs
@@ -3579,7 +3579,7 @@ function installPackage(_0) {
   });
 }
 
-// ../../../node_modules/.pnpm/@antfu+utils@0.7.6/node_modules/@antfu/utils/dist/index.mjs
+// ../../../node_modules/.pnpm/@antfu+utils@0.7.7/node_modules/@antfu/utils/dist/index.mjs
 function sleep(ms, callback) {
   return new Promise(
     (resolve) => setTimeout(() => __async(this, null, function* () {
@@ -3736,7 +3736,7 @@ var bgLightMagenta = kolorist(105, 49);
 var bgLightCyan = kolorist(106, 49);
 var bgLightGray = kolorist(47, 49);
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/loader/warn.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/loader/warn.mjs
 var warned = /* @__PURE__ */ new Set();
 function warnOnce(msg) {
   if (!warned.has(msg)) {
@@ -3745,7 +3745,7 @@ function warnOnce(msg) {
   }
 }
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/loader/install-pkg.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/loader/install-pkg.mjs
 var pending;
 var tasks = {};
 function tryInstallPkg(name, autoInstall) {
@@ -3775,7 +3775,7 @@ function tryInstallPkg(name, autoInstall) {
   });
 }
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/loader/fs.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/loader/fs.mjs
 var _collections = {};
 var isLegacyExists = isPackageExists("@iconify/json");
 function loadCollectionFromFS(name, autoInstall = false) {
@@ -3812,15 +3812,15 @@ function loadCollectionFromFS(name, autoInstall = false) {
   });
 }
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/loader/custom.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/loader/custom.mjs
 var import_debug2 = __toESM(require_src(), 1);
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/svg/trim.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/svg/trim.mjs
 function trimSVG(str) {
   return str.replace(/(['"])\s*\n\s*([^>\\/\s])/g, "$1 $2").replace(/(["';{}><])\s*\n\s*/g, "$1").replace(/\s*\n\s*/g, " ").replace(/\s+"/g, '"').replace(/="\s+/g, '="').trim();
 }
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/loader/custom.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/loader/custom.mjs
 var debug2 = (0, import_debug2.default)("@iconify-loader:custom");
 function getCustomIcon(custom, collection, icon, options2) {
   return __async(this, null, function* () {
@@ -3864,7 +3864,7 @@ function getCustomIcon(custom, collection, icon, options2) {
   });
 }
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/loader/loader.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/loader/loader.mjs
 var import_debug3 = __toESM(require_src(), 1);
 var loadIcon = (collection, icon, options2) => __async(void 0, null, function* () {
   var _a;
@@ -3910,7 +3910,7 @@ var loadIcon = (collection, icon, options2) => __async(void 0, null, function* (
   }
 });
 
-// ../../../node_modules/.pnpm/@iconify+utils@2.1.11/node_modules/@iconify/utils/lib/loader/node-loader.mjs
+// ../../../node_modules/.pnpm/@iconify+utils@2.1.12/node_modules/@iconify/utils/lib/loader/node-loader.mjs
 var import_debug4 = __toESM(require_src(), 1);
 var loadNodeIcon = (collection, icon, options2) => __async(void 0, null, function* () {
   let result = yield loadIcon(collection, icon, options2);

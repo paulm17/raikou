@@ -536,7 +536,7 @@ function Themer() {
                 <Accordion.Item value="tabs">
                   <Accordion.Control>Tabs</Accordion.Control>
                   <Accordion.Panel>
-                    <Tabs variant="default" defaultValue="gallery">
+                    <Tabs defaultValue="gallery">
                       <Tabs.List>
                         <Tabs.Tab value="gallery">
                           <Text size={size}>Gallery</Text>

@@ -7,18 +7,18 @@ import {
   lt,
   te,
   wn
-} from "./chunk-DDGG3GY6.mjs";
+} from "./chunk-ONGAN6RD.mjs";
 import {
   __async,
   __spreadProps,
   __spreadValues
-} from "./chunk-TOPM6CMB.mjs";
+} from "./chunk-JGIESONP.mjs";
 
 // ../../../node_modules/.pnpm/ofetch@1.3.3/node_modules/ofetch/dist/node.mjs
 import http from "http";
 import https from "https";
 
-// ../../../node_modules/.pnpm/node-fetch-native@1.4.0/node_modules/node-fetch-native/dist/index.mjs
+// ../../../node_modules/.pnpm/node-fetch-native@1.4.1/node_modules/node-fetch-native/dist/index.mjs
 var a = Object.defineProperty;
 var t = (e, r2) => a(e, "name", { value: r2, configurable: true });
 var f = Object.defineProperty;
@@ -38,10 +38,10 @@ var $ = !o && globalThis.Request || lt;
 var C = !o && globalThis.Response || te;
 var A = !o && globalThis.AbortController || Wn;
 
-// ../../../node_modules/.pnpm/destr@2.0.1/node_modules/destr/dist/index.mjs
+// ../../../node_modules/.pnpm/destr@2.0.2/node_modules/destr/dist/index.mjs
 var suspectProtoRx = /"(?:_|\\u0{2}5[Ff]){2}(?:p|\\u0{2}70)(?:r|\\u0{2}72)(?:o|\\u0{2}6[Ff])(?:t|\\u0{2}74)(?:o|\\u0{2}6[Ff])(?:_|\\u0{2}5[Ff]){2}"\s*:/;
 var suspectConstructorRx = /"(?:c|\\u0063)(?:o|\\u006[Ff])(?:n|\\u006[Ee])(?:s|\\u0073)(?:t|\\u0074)(?:r|\\u0072)(?:u|\\u0075)(?:c|\\u0063)(?:t|\\u0074)(?:o|\\u006[Ff])(?:r|\\u0072)"\s*:/;
-var JsonSigRx = /^\s*["[{]|^\s*-?\d[\d.]{0,14}\s*$/;
+var JsonSigRx = /^\s*["[{]|^\s*-?\d{1,16}(\.\d{1,17})?([Ee][+-]?\d+)?\s*$/;
 function jsonParseTransform(key, value) {
   if (key === "__proto__" || key === "constructor" && value && typeof value === "object" && "prototype" in value) {
     warnKeyDropped(key);
@@ -57,7 +57,10 @@ function destr(value, options = {}) {
     return value;
   }
   const _value = value.trim();
-  if (value[0] === '"' && value[value.length - 1] === '"') {
+  if (
+    // eslint-disable-next-line unicorn/prefer-at
+    value[0] === '"' && value.at(-1) === '"' && !value.includes("\\")
+  ) {
     return _value.slice(1, -1);
   }
   if (_value.length <= 9) {
@@ -106,7 +109,7 @@ function destr(value, options = {}) {
   }
 }
 
-// ../../../node_modules/.pnpm/ufo@1.3.1/node_modules/ufo/dist/index.mjs
+// ../../../node_modules/.pnpm/ufo@1.3.2/node_modules/ufo/dist/index.mjs
 var r = String.fromCharCode;
 var HASH_RE = /#/g;
 var AMPERSAND_RE = /&/g;
@@ -190,32 +193,49 @@ function hasProtocol(inputString, opts = {}) {
   }
   return PROTOCOL_REGEX.test(inputString) || (opts.acceptRelative ? PROTOCOL_RELATIVE_REGEX.test(inputString) : false);
 }
-var TRAILING_SLASH_RE = /\/$|\/\?/;
-function hasTrailingSlash(input = "", queryParameters = false) {
-  if (!queryParameters) {
+var TRAILING_SLASH_RE = /\/$|\/\?|\/#/;
+function hasTrailingSlash(input = "", respectQueryAndFragment) {
+  if (!respectQueryAndFragment) {
     return input.endsWith("/");
   }
   return TRAILING_SLASH_RE.test(input);
 }
-function withoutTrailingSlash(input = "", queryParameters = false) {
-  if (!queryParameters) {
+function withoutTrailingSlash(input = "", respectQueryAndFragment) {
+  if (!respectQueryAndFragment) {
     return (hasTrailingSlash(input) ? input.slice(0, -1) : input) || "/";
   }
   if (!hasTrailingSlash(input, true)) {
     return input || "/";
   }
-  const [s0, ...s2] = input.split("?");
-  return (s0.slice(0, -1) || "/") + (s2.length > 0 ? `?${s2.join("?")}` : "");
+  let path = input;
+  let fragment = "";
+  const fragmentIndex = input.indexOf("#");
+  if (fragmentIndex >= 0) {
+    path = input.slice(0, fragmentIndex);
+    fragment = input.slice(fragmentIndex);
+  }
+  const [s0, ...s2] = path.split("?");
+  return (s0.slice(0, -1) || "/") + (s2.length > 0 ? `?${s2.join("?")}` : "") + fragment;
 }
-function withTrailingSlash(input = "", queryParameters = false) {
-  if (!queryParameters) {
+function withTrailingSlash(input = "", respectQueryAndFragment) {
+  if (!respectQueryAndFragment) {
     return input.endsWith("/") ? input : input + "/";
   }
   if (hasTrailingSlash(input, true)) {
     return input || "/";
   }
-  const [s0, ...s2] = input.split("?");
-  return s0 + "/" + (s2.length > 0 ? `?${s2.join("?")}` : "");
+  let path = input;
+  let fragment = "";
+  const fragmentIndex = input.indexOf("#");
+  if (fragmentIndex >= 0) {
+    path = input.slice(0, fragmentIndex);
+    fragment = input.slice(fragmentIndex);
+    if (!path) {
+      return fragment;
+    }
+  }
+  const [s0, ...s2] = path.split("?");
+  return s0 + "/" + (s2.length > 0 ? `?${s2.join("?")}` : "") + fragment;
 }
 function withBase(input, base) {
   if (isEmptyURL(base) || hasProtocol(input)) {
@@ -254,12 +274,12 @@ function joinURL(base, ...input) {
 }
 function parseURL(input = "", defaultProto) {
   const _specialProtoMatch = input.match(
-    /^[\s\0]*(blob:|data:|javascript:|vbscript:)(.*)/
+    /^[\s\0]*(blob:|data:|javascript:|vbscript:)(.*)/i
   );
   if (_specialProtoMatch) {
     const [, _proto, _pathname = ""] = _specialProtoMatch;
     return {
-      protocol: _proto,
+      protocol: _proto.toLowerCase(),
       pathname: _pathname,
       href: _proto + _pathname,
       auth: "",
@@ -277,7 +297,7 @@ function parseURL(input = "", defaultProto) {
     path.replace(/\/(?=[A-Za-z]:)/, "")
   );
   return {
-    protocol,
+    protocol: protocol.toLowerCase(),
     auth: auth ? auth.slice(0, Math.max(0, auth.length - 1)) : "",
     host,
     pathname,

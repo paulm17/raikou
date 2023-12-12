@@ -9,9 +9,7 @@ var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
 var __knownSymbol = (name, symbol) => {
-  if (symbol = Symbol[name])
-    return symbol;
-  throw Error("Symbol." + name + " is not defined");
+  return (symbol = Symbol[name]) ? symbol : Symbol.for("Symbol." + name);
 };
 var __pow = Math.pow;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
@@ -130,7 +128,7 @@ var __asyncGenerator = (__this, __arguments, generator) => {
   };
   var method = (k) => it[k] = (x) => new Promise((yes, no) => resume(k, x, yes, no));
   var it = {};
-  return generator = generator.apply(__this, __arguments), it[Symbol.asyncIterator] = () => it, method("next"), method("throw"), method("return"), it;
+  return generator = generator.apply(__this, __arguments), it[__knownSymbol("asyncIterator")] = () => it, method("next"), method("throw"), method("return"), it;
 };
 var __yieldStar = (value) => {
   var obj = value[__knownSymbol("asyncIterator")];

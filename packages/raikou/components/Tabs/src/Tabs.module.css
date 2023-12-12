@@ -6,7 +6,7 @@
   }
   @mixin dark {
     --raikou-tabs-tab-border-color: #373a40;
-    --raikou-tabs-tab-default-hover-color: #f8f9fa;
+    --raikou-tabs-tab-default-hover-color: #25262b;
     --raikou-tabs-tab-pills-hover-color: #25262b;
   }
 
@@ -139,7 +139,7 @@
   flex-grow: var(--_panel-grow);
 }
 
-.tab {
+.tab.tab {
   position: relative;
   padding: var(--raikou-spacing-xs) var(--raikou-spacing-md);
   font-size: var(--raikou-font-size-sm);
@@ -210,7 +210,7 @@
   }
 }
 
-.tab--default {
+.tab--default.tab--default {
   border-radius: var(--_tab-radius);
   border-width: var(--_tab-border-width);
   border-style: solid;
@@ -257,7 +257,7 @@
   }
 }
 
-.tab--outline {
+.tab--outline.tab--outline {
   border: rem(1px) solid transparent;
   border-top-color: var(--_tab-border-top-color);
   border-bottom-color: var(--_tab-border-bottom-color);
@@ -308,7 +308,7 @@
 }
 
 /*************************************** pills variant ***************************************/
-.tab--pills {
+.tab--pills.tab--pills {
   border-radius: var(--tabs-radius);
   background-color: var(--_tab-bg);
   color: var(--_tab-color);
