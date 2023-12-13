@@ -3635,6 +3635,7 @@ declare const RadioGroup: _raikou_core.RaikouComponent<{
     stylesNames: RadioGroupStylesNames;
 }>;
 
+type RadioVariant = "filled" | "outline";
 type RadioStylesNames = InlineInputStylesNames | "inner" | "radio" | "icon";
 type RadioCssVariables = {
     root: "--radio-size" | "--radio-radius" | "--radio-color" | "--radio-icon-color" | "--radio-icon-size";
@@ -3668,6 +3669,7 @@ type RadioFactory = Factory<{
     ref: HTMLInputElement;
     stylesNames: RadioStylesNames;
     vars: RadioCssVariables;
+    variant: RadioVariant;
     staticComponents: {
         Group: typeof RadioGroup;
     };
@@ -3677,9 +3679,10 @@ declare const Radio: _raikou_core.RaikouComponent<{
     ref: HTMLInputElement;
     stylesNames: RadioStylesNames;
     vars: RadioCssVariables;
+    variant: RadioVariant;
     staticComponents: {
         Group: typeof RadioGroup;
     };
 }>;
 
-export { Radio, type RadioCssVariables, type RadioFactory, RadioGroup, type RadioGroupFactory, type RadioGroupProps, type RadioGroupStylesNames, RadioIcon, type RadioIconProps, type RadioProps, type RadioStylesNames };
+export { Radio, type RadioCssVariables, type RadioFactory, RadioGroup, type RadioGroupFactory, type RadioGroupProps, type RadioGroupStylesNames, RadioIcon, type RadioIconProps, type RadioProps, type RadioStylesNames, type RadioVariant };

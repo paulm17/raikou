@@ -101,7 +101,7 @@ export const MenuItem = polymorphicFactory<MenuItemFactory>((props, ref) => {
   return (
     <UnstyledButton
       {...others}
-      tabIndex={-1}
+      tabIndex={ctx.menuItemTabIndex}
       onFocus={handleFocus}
       {...ctx.getStyles("item", { className, style, styles, classNames })}
       ref={useMergedRef(itemRef, ref)}

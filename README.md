@@ -8,7 +8,7 @@
   </a>
   <h3 align="center">RAIKOU</h3>
   <p align="center">
-    Raikou is a mantine fork which replaces css modules to adopt a tailwind first-use approach.
+    Raikou is a mantine fork which replaces css modules to adopt a unocss first-use approach.
   </p>
 </div>
 
@@ -19,7 +19,7 @@
 Mantine 6 with CSS-in-JS allowed for styles to be adjacent to the component it
 was styling. However with Mantine 7 styling has switched to CSS Modules. Many in
 the industry see CSS Modules as a step backwards and I (the fork author) share
-this sentiment. Therefore forking the project to integrate tailwind was the
+this sentiment. Therefore forking the project to integrate unocss was the
 obvious choice.
 
 The project was conceived with these 4 long-term goals:
@@ -27,14 +27,9 @@ The project was conceived with these 4 long-term goals:
 1. To make as many components
    <a href="https://nextjs.org/_next/image?url=%2Fdocs%2Fdark%2Fthinking-in-server-components.png&w=3840&q=75">server
    aware</a>.
-2. To ensure proper tree-shaking for components and purging of unused css. (TBD,
-   waiting for vercel to resolve the client bundle to be tree-shakable)
+2. To ensure proper tree-shaking for components and purging of unused css.
 3. To ensure that there were no clashes between the bootstrapped CSS of the
-   component and tailwind styles provided, when using the ClassNames API. This
-   has been made possible with tailwind loading the css styles via a plugin
-   architecture. See for
-   <a href="https://tailwindcss.com/docs/plugins#css-in-js-syntax">more
-   information</a>.
+   component and unocss styles provided, when using the ClassNames API.
 4. To reduce the amount of data sent over each full request:
    - By leveraging the new server paradigm. All the layout components would be
      server based, giving an opportunity to reduce client payload when used
@@ -55,8 +50,8 @@ The project was conceived with these 4 long-term goals:
       <a href="https://v7.mantine.dev/styles/styles-performance#inline-styles">very
       slow</a>.
     - Mantine and Raikou employ different approaches to manage the theme. While
-      Mantine uses context. Raikou utilizes a global Zustand state for both
-      server and client rendering.
+      Mantine uses context. Raikou utilizes a global state for both server and
+      client rendering.
     - The code responsible for the ColorScheme has been replaced with a more
       lightweight version using
       <a href="https://github.com/pacocoursey/next-themes">Next Themes</a>.
@@ -65,53 +60,24 @@ The project was conceived with these 4 long-term goals:
       component.
     - Some components have had their javascript removed to make them server
       components primarily.
-    - All 10 colors have been removed, as tailwind comes with it's own color
+    - All 10 colors have been removed, as unocss comes with it's own color
       system. Raikou comes with a default color. Should there exist a
       requirement to add your own colors. Supply them in a theme object.
-      Additionally, Raikou has the ability to change many aspects of the theme.
-      See
-      <a href="https://github.com/paulm17/raikou/blob/main/packages/raikou/system/src/core/RaikouProvider/css-variables.plugin.ts">the
-      options available to each component</a>. Change these settings using
-      cssVariablesResolver and example is below.
+      Additionally, Raikou has the ability to change many aspects of the theme
+      including light/dark colors. Investigate the component for more details.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Why not integrate tailwind with mantine in the App?
+## Why not integrate unocss with mantine in the App?
 
-Integrating Tailwind with mantine at the app layer raises the complexity of the
-stack. Not only does the issue of css specificity come up, but other issues are
-present.
-
-<ul style="list-style: none">
-   <li>
-      <img src="./images/tailwind1.png" style="width:500px" alt="Issue 1">
-   </li>
-   <li>
-      <img src="./images/tailwind2.png" style="width:500px" alt="Issue 2">
-   </li>
-   <li>
-      <img src="./images/tailwind3.png" style="width:500px" alt="Issue 3">
-   </li>
-</ul>
+Integrating Unocss with mantine at the app layer raises the complexity of the
+stack, also other issues are present.
 
 ### CSS Modules is the wrong choice
 
 Less headaches in dealing with postcss from a developer UX point of view.
 
-<ul style="list-style: none">
-   <li>
-      <img src="./images/css.modules1.png" style="width:500px" alt="Complaint 1">
-   </li>
-   <li>
-      <img src="./images/css.modules2.png" style="width:500px" alt="Complaint 2">
-   </li>
-   <li>
-      <img src="./images/css.modules3.png" style="width:500px" alt="Complaint 3">
-   </li>
-   <li>
-      <img src="./images/css.modules4.png" style="width:500px" alt="Complaint 4">
-   </li>
-</ul>
+<img src="./images/css.modules.png" style="width:500px" alt="Complaint">
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -123,7 +89,7 @@ Less headaches in dealing with postcss from a developer UX point of view.
 
 ### Mirrored Mantine release
 
-0.0.1-beta.9 = 7.1.5
+0.0.1-beta.8 = 7.3.1
 
 <!-- GETTING STARTED -->
 
@@ -138,13 +104,13 @@ To get a local copy up and running follow these simple example steps.
 - npm
 
 ```sh
-npm install @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/global-store postcss-removecss-raikou
+npm install @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/global-store postcss-unocss-raikou
 ```
 
 - yarn
 
 ```sh
-yarn add @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/global-store postcss-removecss-raikou
+yarn add @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/global-store postcss-preset-raikou postcss-unocss-raikou
 ```
 
 2. Change the postcss.config.js to:
@@ -152,52 +118,41 @@ yarn add @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/glob
 ```js
 module.exports = {
   plugins: {
-    "tailwindcss/nesting": {},
-    tailwindcss: {},
-    autoprefixer: {},
+    "postcss-preset-raikou": {},
+    "unocss-postcss": {},
   },
 };
 ```
 
-Note: There will be complaints in the log about tailwind nesting issues. These
-are not prevalent with the next release of tailwind.
-
-3. Add a new plugin to the postcss.config.js to purge unused component library
-   styles
+3. Create unocss.config.ts:
 
 ```js
-"postcss-removecss-raikou": {
-   appPath: "./app",
-   libPath: [
-   "./node_modules/@raikou/client/dist/index.mjs",
-   "./node_modules/@raikou/server/dist/index.mjs",
-   ],
-   exts: [".tsx"],
-},
+import { defineConfig } from "unocss";
+import presetAttributify from "@unocss/preset-attributify";
+import presetWind from "@unocss/preset-wind";
+const presetRaikou = require("@raikou/system/plugin.js").default;
+
+export default defineConfig({
+  content: {
+    filesystem: ["app/**/*.tsx"],
+  },
+  presets: [
+    presetWind(),
+    presetAttributify({
+      prefix: "un-",
+      prefixedOnly: true,
+    }),
+    presetRaikou(),
+  ],
+}) as any;
 ```
 
-Change appPath to where the tsx files for your project reside.
+Change `app/**/*.tsx` to the root of the app folder.
 
-4. Change the content param in tailwind config, to pick up the component Library
+Note: the prefix for attributify has been added, in order to not clash with
+mantines own styles.
 
-```js
-content: [
-   "./node_modules/@raikou/**/*.js",
-   "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-],
-```
-
-Note: If cloning the repo. The webapp will have a more extensive content
-listing. This is due to glob breaking NextJS HMR.
-
-5. Add this preset param in the tailwind config. Without this, css styling does
-   not work.
-
-```js
-presets: [require("@raikou/system/plugin.js")],
-```
-
-6. Amend layout.tsx to resemble the following. RaikouProvider must encapsulate
+4. Amend layout.tsx to resemble the following. RaikouProvider must encapsulate
    the children. It should resemble something like the following:
 
 ```js
@@ -220,7 +175,7 @@ export default function RootLayout({
 
 Note, the default primary color is blue: #5474B4.
 
-7. If there is a requirement to modify the theme. For example changing the
+5. If there is a requirement to modify the theme. For example changing the
    primary color to orange. Update layout.tsx as follows:
 
 ```js
@@ -255,7 +210,7 @@ export default function RootLayout({
 Note: The 10 colors for the primary color will then be generated at the :root
 pseudo-class.
 
-8. The theme components api has changed from the
+6. The theme components api has changed from the
    <a href="https://v7.mantine.dev/styles/variants-sizes#sizes-with-components-css-variables">original
    documentation</a>:
 
@@ -279,7 +234,7 @@ components: {
 },
 ```
 
-9. To override css variable, create an object:
+7. To override css variable, create an object:
 
 ```js
 const resolver = {
@@ -306,20 +261,6 @@ Then update the RaikouProvider.
   {children}
 </RaikouProvider>
 ```
-
-10. Improve DX for classes API, for VSCode.
-
-In the settings.json file, under .vscode folder. Add the following:
-
-```js
-   "tailwindCSS.includeLanguages": {
-      "javascript": "javascript react"
-   },
-   "tailwindCSS.classAttributes": ["className"],
-   "tailwindCSS.experimental.classRegex": [":\\s*?[\"'`]([^\"'`]*).*?"]
-```
-
-This will enable intellisense for tailwind styles when adding a new entry.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -439,19 +380,13 @@ When omitting "use client" this results in Page.js not being requested.
 
 ## Roadmap
 
-- [x] Create a postcss script to purge unused CSS
 - [x] Enable react server components and split packages to server and client
 - [x] Tree-shaking for client build
 - [x] Replace the context provider that components use for state
 - [x] Match or significantly improve the amount of data that is sent on each
       full request
+- [x] Create a postcss script to purge unused CSS
 - [x] Replace Mantine ColorScheme code with Next-Themes
-- [ ] Upgrade tailwind to the new release supporting LightningCSS (tailwind v4?)
-- [ ] With the new tailwind release, migrate the postcss script to a
-      LightningCSS transformer. Investigate a Rust port.
-- [ ] With the new tailwind release, investigate whether it's possible to port
-      the current plugins to css files and whether components can access the
-      theme
 - [x] Create a <a href="https://daisyui.com/docs/themes/">theme switcher</a>
       similar to Daisy UI. See the
       <a href="https://github.com/paulm17/raikou/blob/main/apps/web/app/themer/page.tsx">/themer

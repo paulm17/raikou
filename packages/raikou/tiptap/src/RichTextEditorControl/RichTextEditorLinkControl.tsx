@@ -15,7 +15,7 @@ import { UnstyledButton } from "../../../components/UnstyledButton/src";
 import { Tooltip } from "../../../components/Tooltip/src";
 
 import { useInputState, useDisclosure, useWindowEvent } from "@raikou/hooks";
-import { IconExternalLink, IconLink } from "@tabler/icons-react";
+import { IconExternalLink, IconLink } from "../icons/Icons";
 import { useRichTextEditorContext } from "../RichTextEditor.context";
 import {
   RichTextEditorControlBaseProps,
@@ -23,6 +23,7 @@ import {
 } from "./RichTextEditorControl";
 
 export type RichTextEditorLinkControlStylesNames =
+  | "control"
   | "linkEditor"
   | "linkEditorDropdown"
   | "linkEditorSave"
@@ -51,7 +52,7 @@ export type RichTextEditorLinkControlFactory = Factory<{
 }>;
 
 const LinkIcon: RichTextEditorControlBaseProps["icon"] = (props) => (
-  <IconLink stroke={1.5} {...props} />
+  <IconLink {...props} />
 );
 
 const defaultProps: Partial<RichTextEditorLinkControlProps> = {};
@@ -189,7 +190,6 @@ export const RichTextEditorLinkControl =
                   >
                     <IconExternalLink
                       style={{ width: rem(14), height: rem(14) }}
-                      stroke={1.5}
                     />
                   </UnstyledButton>
                 </Tooltip>

@@ -3068,7 +3068,7 @@ Popover.displayName = "@raikou/core/Popover";
 Popover.extend = (input) => input;
 
 // ../Combobox/src/use-combobox/use-combobox.ts
-import { useEffect as useEffect7, useRef as useRef7, useCallback as useCallback4 } from "react";
+import { useCallback as useCallback4, useEffect as useEffect7, useRef as useRef7 } from "react";
 import { useUncontrolled as useUncontrolled2 } from "@raikou/hooks";
 
 // ../Combobox/src/use-combobox/get-index/get-index.ts
@@ -3119,7 +3119,7 @@ function useCombobox({
   onDropdownClose,
   onDropdownOpen,
   loop = true,
-  scrollBehavior = "auto"
+  scrollBehavior = "instant"
 } = {}) {
   const [dropdownOpened, setDropdownOpened] = useUncontrolled2({
     value: opened,
@@ -3281,6 +3281,10 @@ function useCombobox({
       0
     );
   }, []);
+  const getSelectedOptionIndex = useCallback4(
+    () => selectedOptionIndex.current,
+    []
+  );
   useEffect7(
     () => () => {
       window.clearTimeout(focusSearchTimeout.current);
@@ -3295,6 +3299,7 @@ function useCombobox({
     closeDropdown,
     toggleDropdown,
     selectedOptionIndex: selectedOptionIndex.current,
+    getSelectedOptionIndex,
     selectOption,
     selectFirstOption,
     selectActiveOption,
@@ -3358,7 +3363,8 @@ function useComboboxTargetProps({
         }
       }
       if (event.nativeEvent.code === "Enter") {
-        if (ctx.store.dropdownOpened) {
+        const selectedOptionIndex = ctx.store.getSelectedOptionIndex();
+        if (ctx.store.dropdownOpened && selectedOptionIndex !== -1) {
           event.preventDefault();
           ctx.store.clickSelectedOption();
         } else if (targetType === "button") {
@@ -5562,7 +5568,7 @@ var defaultProps26 = {
 var ScrollAreaRoot = forwardRef13(
   (_props, ref) => {
     const props = useProps27("ScrollAreaRoot", defaultProps26, _props);
-    const _a = props, { type, scrollHideDelay } = _a, others = __objRest(_a, ["type", "scrollHideDelay"]);
+    const _a = props, { type, scrollHideDelay, scrollbars } = _a, others = __objRest(_a, ["type", "scrollHideDelay", "scrollbars"]);
     const [scrollArea, setScrollArea] = useState14(null);
     const [viewport, setViewport] = useState14(null);
     const [content, setContent] = useState14(null);
@@ -5601,8 +5607,8 @@ var ScrollAreaRoot = forwardRef13(
         __spreadProps(__spreadValues({}, others), {
           ref: rootRef,
           __vars: {
-            "--sa-corner-width": `${cornerWidth}px`,
-            "--sa-corner-height": `${cornerHeight}px`
+            "--sa-corner-width": scrollbars !== "xy" ? "0px" : `${cornerWidth}px`,
+            "--sa-corner-height": scrollbars !== "xy" ? "0px" : `${cornerHeight}px`
           }
         })
       )
@@ -5723,7 +5729,8 @@ var ScrollArea_module_default = { "root": "m-d57069b5", "viewport": "m-c0783ff9"
 // ../ScrollArea/src/ScrollArea.tsx
 var defaultProps27 = {
   scrollHideDelay: 1e3,
-  type: "hover"
+  type: "hover",
+  scrollbars: "xy"
 };
 var varsResolver10 = createVarsResolver10(
   (_, { scrollbarSize }) => ({
@@ -5748,7 +5755,8 @@ var ScrollArea = factory20((_props, ref) => {
     viewportRef,
     onScrollPositionChange,
     children,
-    offsetScrollbars
+    offsetScrollbars,
+    scrollbars
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -5763,7 +5771,8 @@ var ScrollArea = factory20((_props, ref) => {
     "viewportRef",
     "onScrollPositionChange",
     "children",
-    "offsetScrollbars"
+    "offsetScrollbars",
+    "scrollbars"
   ]);
   const [scrollbarHovered, setScrollbarHovered] = useState15(false);
   const getStyles = useStyles12({
@@ -5783,13 +5792,15 @@ var ScrollArea = factory20((_props, ref) => {
     __spreadValues(__spreadValues({
       type: type === "never" ? "always" : type,
       scrollHideDelay,
-      ref
+      ref,
+      scrollbars
     }, getStyles("root")), others),
     /* @__PURE__ */ React48.createElement(
       ScrollAreaViewport,
       __spreadProps(__spreadValues(__spreadValues({}, viewportProps), getStyles("viewport")), {
         ref: viewportRef,
         "data-offset-scrollbars": offsetScrollbars || void 0,
+        "data-scrollbars": scrollbars || void 0,
         onScroll: typeof onScrollPositionChange === "function" ? ({ currentTarget }) => onScrollPositionChange({
           x: currentTarget.scrollLeft,
           y: currentTarget.scrollTop
@@ -5797,7 +5808,7 @@ var ScrollArea = factory20((_props, ref) => {
       }),
       children
     ),
-    /* @__PURE__ */ React48.createElement(
+    (scrollbars === "xy" || scrollbars === "x") && /* @__PURE__ */ React48.createElement(
       ScrollAreaScrollbar,
       __spreadProps(__spreadValues({}, getStyles("scrollbar")), {
         orientation: "horizontal",
@@ -5808,7 +5819,7 @@ var ScrollArea = factory20((_props, ref) => {
       }),
       /* @__PURE__ */ React48.createElement(ScrollAreaThumb, __spreadValues({}, getStyles("thumb")))
     ),
-    /* @__PURE__ */ React48.createElement(
+    (scrollbars === "xy" || scrollbars === "y") && /* @__PURE__ */ React48.createElement(
       ScrollAreaScrollbar,
       __spreadProps(__spreadValues({}, getStyles("scrollbar")), {
         orientation: "vertical",
@@ -5844,6 +5855,7 @@ var ScrollAreaAutosize = factory20((props, ref) => {
     unstyled,
     variant,
     viewportProps,
+    scrollbars,
     style,
     vars
   } = _a, others = __objRest(_a, [
@@ -5860,6 +5872,7 @@ var ScrollAreaAutosize = factory20((props, ref) => {
     "unstyled",
     "variant",
     "viewportProps",
+    "scrollbars",
     "style",
     "vars"
   ]);
@@ -5878,7 +5891,8 @@ var ScrollAreaAutosize = factory20((props, ref) => {
       unstyled,
       variant,
       viewportProps,
-      vars
+      vars,
+      scrollbars
     },
     children
   )));
@@ -6017,7 +6031,7 @@ function Option({
         "aria-selected": isValueChecked(value, data.value)
       },
       checkIconPosition === "left" && check,
-      data.label,
+      /* @__PURE__ */ React50.createElement("span", null, data.label),
       checkIconPosition === "right" && check
     );
   }
@@ -6511,6 +6525,7 @@ var defaultProps33 = {
   maxTags: Infinity,
   allowDuplicates: false,
   splitChars: [","],
+  hiddenInputValuesDivider: ",",
   tagsContainer: (children) => children
 };
 var TagsInput = factory25((_props, ref) => {
@@ -6579,6 +6594,7 @@ var TagsInput = factory25((_props, ref) => {
     clearable,
     clearButtonProps,
     hiddenInputProps,
+    hiddenInputValuesDivider,
     tagsContainer
   } = _a, others = __objRest(_a, [
     "classNames",
@@ -6644,6 +6660,7 @@ var TagsInput = factory25((_props, ref) => {
     "clearable",
     "clearButtonProps",
     "hiddenInputProps",
+    "hiddenInputValuesDivider",
     "tagsContainer"
   ]);
   const _id = useId6(id);
@@ -6859,7 +6876,7 @@ var TagsInput = factory25((_props, ref) => {
       type: "hidden",
       name,
       form,
-      value: _value.join(","),
+      value: _value.join(hiddenInputValuesDivider),
       disabled
     }, hiddenInputProps)
   ));

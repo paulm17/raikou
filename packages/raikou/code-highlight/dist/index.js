@@ -4823,7 +4823,7 @@ var defaultProps10 = {
 var ScrollAreaRoot = (0, import_react44.forwardRef)(
   (_props, ref) => {
     const props = (0, import_core23.useProps)("ScrollAreaRoot", defaultProps10, _props);
-    const _a = props, { type, scrollHideDelay } = _a, others = __objRest(_a, ["type", "scrollHideDelay"]);
+    const _a = props, { type, scrollHideDelay, scrollbars } = _a, others = __objRest(_a, ["type", "scrollHideDelay", "scrollbars"]);
     const [scrollArea, setScrollArea] = (0, import_react44.useState)(null);
     const [viewport, setViewport] = (0, import_react44.useState)(null);
     const [content, setContent] = (0, import_react44.useState)(null);
@@ -4862,8 +4862,8 @@ var ScrollAreaRoot = (0, import_react44.forwardRef)(
         __spreadProps(__spreadValues({}, others), {
           ref: rootRef,
           __vars: {
-            "--sa-corner-width": `${cornerWidth}px`,
-            "--sa-corner-height": `${cornerHeight}px`
+            "--sa-corner-width": scrollbars !== "xy" ? "0px" : `${cornerWidth}px`,
+            "--sa-corner-height": scrollbars !== "xy" ? "0px" : `${cornerHeight}px`
           }
         })
       )
@@ -4984,7 +4984,8 @@ var ScrollArea_module_default = { "root": "m-d57069b5", "viewport": "m-c0783ff9"
 // ../components/ScrollArea/src/ScrollArea.tsx
 var defaultProps11 = {
   scrollHideDelay: 1e3,
-  type: "hover"
+  type: "hover",
+  scrollbars: "xy"
 };
 var varsResolver6 = (0, import_core25.createVarsResolver)(
   (_, { scrollbarSize }) => ({
@@ -5009,7 +5010,8 @@ var ScrollArea = (0, import_core25.factory)((_props, ref) => {
     viewportRef,
     onScrollPositionChange,
     children,
-    offsetScrollbars
+    offsetScrollbars,
+    scrollbars
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -5024,7 +5026,8 @@ var ScrollArea = (0, import_core25.factory)((_props, ref) => {
     "viewportRef",
     "onScrollPositionChange",
     "children",
-    "offsetScrollbars"
+    "offsetScrollbars",
+    "scrollbars"
   ]);
   const [scrollbarHovered, setScrollbarHovered] = (0, import_react47.useState)(false);
   const getStyles = (0, import_core25.useStyles)({
@@ -5044,13 +5047,15 @@ var ScrollArea = (0, import_core25.factory)((_props, ref) => {
     __spreadValues(__spreadValues({
       type: type === "never" ? "always" : type,
       scrollHideDelay,
-      ref
+      ref,
+      scrollbars
     }, getStyles("root")), others),
     /* @__PURE__ */ import_react47.default.createElement(
       ScrollAreaViewport,
       __spreadProps(__spreadValues(__spreadValues({}, viewportProps), getStyles("viewport")), {
         ref: viewportRef,
         "data-offset-scrollbars": offsetScrollbars || void 0,
+        "data-scrollbars": scrollbars || void 0,
         onScroll: typeof onScrollPositionChange === "function" ? ({ currentTarget }) => onScrollPositionChange({
           x: currentTarget.scrollLeft,
           y: currentTarget.scrollTop
@@ -5058,7 +5063,7 @@ var ScrollArea = (0, import_core25.factory)((_props, ref) => {
       }),
       children
     ),
-    /* @__PURE__ */ import_react47.default.createElement(
+    (scrollbars === "xy" || scrollbars === "x") && /* @__PURE__ */ import_react47.default.createElement(
       ScrollAreaScrollbar,
       __spreadProps(__spreadValues({}, getStyles("scrollbar")), {
         orientation: "horizontal",
@@ -5069,7 +5074,7 @@ var ScrollArea = (0, import_core25.factory)((_props, ref) => {
       }),
       /* @__PURE__ */ import_react47.default.createElement(ScrollAreaThumb, __spreadValues({}, getStyles("thumb")))
     ),
-    /* @__PURE__ */ import_react47.default.createElement(
+    (scrollbars === "xy" || scrollbars === "y") && /* @__PURE__ */ import_react47.default.createElement(
       ScrollAreaScrollbar,
       __spreadProps(__spreadValues({}, getStyles("scrollbar")), {
         orientation: "vertical",
@@ -5105,6 +5110,7 @@ var ScrollAreaAutosize = (0, import_core25.factory)((props, ref) => {
     unstyled,
     variant,
     viewportProps,
+    scrollbars,
     style,
     vars
   } = _a, others = __objRest(_a, [
@@ -5121,6 +5127,7 @@ var ScrollAreaAutosize = (0, import_core25.factory)((props, ref) => {
     "unstyled",
     "variant",
     "viewportProps",
+    "scrollbars",
     "style",
     "vars"
   ]);
@@ -5139,7 +5146,8 @@ var ScrollAreaAutosize = (0, import_core25.factory)((props, ref) => {
       unstyled,
       variant,
       viewportProps,
-      vars
+      vars,
+      scrollbars
     },
     children
   )));

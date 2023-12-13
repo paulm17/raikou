@@ -1055,7 +1055,7 @@ function CheckboxIcon(_a) {
 }
 
 // css-module:./Checkbox.module.css#css-module
-var Checkbox_module_default = { "root": "m-bf2d988c", "inner": "m-26062bec", "input": "m-26063560", "icon": "m-bf295423" };
+var Checkbox_module_default = { "root": "m-bf2d988c", "inner": "m-26062bec", "input": "m-26063560", "icon": "m-bf295423", "input--outline": "m-215c4542" };
 
 // src/Checkbox.tsx
 var defaultProps8 = {
@@ -1063,14 +1063,21 @@ var defaultProps8 = {
   icon: CheckboxIcon
 };
 var varsResolver6 = (0, import_core10.createVarsResolver)(
-  (theme, { radius, color, size, iconColor }) => ({
-    root: {
-      "--checkbox-size": (0, import_core10.getSize)(size, "checkbox-size"),
-      "--checkbox-radius": radius === void 0 ? void 0 : (0, import_core10.getRadius)(radius),
-      "--checkbox-color": color ? (0, import_core10.getThemeColor)(color, theme) : void 0,
-      "--checkbox-icon-color": iconColor ? (0, import_core10.getThemeColor)(iconColor, theme) : void 0
-    }
-  })
+  (theme, { radius, color, size, iconColor, variant }) => {
+    const parsedColor = (0, import_core10.parseThemeColor)({
+      color: color || theme.primaryColor,
+      theme
+    });
+    const outlineColor = parsedColor.isThemeColor && parsedColor.shade === void 0 ? `var(--raikou-color-${parsedColor.color}-outline)` : parsedColor.color;
+    return {
+      root: {
+        "--checkbox-size": (0, import_core10.getSize)(size, "checkbox-size"),
+        "--checkbox-radius": radius === void 0 ? void 0 : (0, import_core10.getRadius)(radius),
+        "--checkbox-color": variant === "outline" ? outlineColor : (0, import_core10.getThemeColor)(color, theme),
+        "--checkbox-icon-color": iconColor ? (0, import_core10.getThemeColor)(iconColor, theme) : void 0
+      }
+    };
+  }
 );
 var Checkbox = (0, import_core10.factory)((_props, ref) => {
   const props = (0, import_core10.useProps)("Checkbox", defaultProps8, _props);
@@ -1130,17 +1137,6 @@ var Checkbox = (0, import_core10.factory)((_props, ref) => {
     name: "Checkbox",
     props,
     classes: Checkbox_module_default,
-    // classes: {
-    //   root: "checkbox-root",
-    //   inner: "checkbox-inner",
-    //   input: "checkbox-input",
-    //   icon: "checkbox-icon",
-    //   body: "inlineInput-body",
-    //   label: "inlineInput-label",
-    //   labelWrapper: "inlineInput-labelWrapper",
-    //   description: "inlineInput-description",
-    //   error: "inlineInput-error",
-    // },
     className,
     style,
     classNames,
@@ -1188,7 +1184,7 @@ var Checkbox = (0, import_core10.factory)((_props, ref) => {
           checked,
           disabled,
           mod: { error: !!error, indeterminate }
-        }, getStyles("input", { focusable: true })), rest), contextProps), {
+        }, getStyles("input", { focusable: true, variant })), rest), contextProps), {
           type: "checkbox"
         })
       ),

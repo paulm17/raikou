@@ -208,7 +208,8 @@ var ModalBase = forwardRef2(
       zIndex,
       shadow,
       padding,
-      __vars
+      __vars,
+      removeScrollProps
     } = _b, others = __objRest(_b, [
       "keepMounted",
       "opened",
@@ -226,7 +227,8 @@ var ModalBase = forwardRef2(
       "zIndex",
       "shadow",
       "padding",
-      "__vars"
+      "__vars",
+      "removeScrollProps"
     ]);
     const {
       _id,
@@ -263,19 +265,25 @@ var ModalBase = forwardRef2(
           zIndex
         }
       },
-      /* @__PURE__ */ React5.createElement(RemoveScroll, { enabled: shouldLockScroll && lockScroll }, /* @__PURE__ */ React5.createElement(
-        Box,
-        __spreadProps(__spreadValues({
-          ref
-        }, others), {
-          __vars: __spreadProps(__spreadValues({}, __vars), {
-            "--mb-z-index": (zIndex || getDefaultZIndex("modal")).toString(),
-            "--mb-shadow": getShadow(shadow),
-            "--mb-padding": getSpacing(padding)
-          })
-        }),
-        children
-      ))
+      /* @__PURE__ */ React5.createElement(
+        RemoveScroll,
+        __spreadValues({
+          enabled: shouldLockScroll && lockScroll
+        }, removeScrollProps),
+        /* @__PURE__ */ React5.createElement(
+          Box,
+          __spreadProps(__spreadValues({
+            ref
+          }, others), {
+            __vars: __spreadProps(__spreadValues({}, __vars), {
+              "--mb-z-index": (zIndex || getDefaultZIndex("modal")).toString(),
+              "--mb-shadow": getShadow(shadow),
+              "--mb-padding": getSpacing(padding)
+            })
+          }),
+          children
+        )
+      )
     ));
   }
 );

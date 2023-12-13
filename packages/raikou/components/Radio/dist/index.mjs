@@ -42,7 +42,8 @@ import {
   getSize as getSize3,
   getRadius as getRadius2,
   getThemeColor,
-  extractStyleProps as extractStyleProps2
+  extractStyleProps as extractStyleProps2,
+  parseThemeColor
 } from "@raikou/core";
 
 // ../InlineInput/src/InlineInput.tsx
@@ -954,7 +955,7 @@ var RadioGroup = factory6((props, ref) => {
 RadioGroup.displayName = "@raikou/core/RadioGroup";
 
 // css-module:./Radio.module.css#css-module
-var Radio_module_default = { "root": "m-f3f1af94", "inner": "m-89c4f5e4", "icon": "m-f3ed6b2b", "radio": "m-8a3dbb89" };
+var Radio_module_default = { "root": "m-f3f1af94", "inner": "m-89c4f5e4", "icon": "m-f3ed6b2b", "radio": "m-8a3dbb89", "radio--outline": "m-1bfe9d39" };
 
 // src/Radio.tsx
 var defaultProps8 = {
@@ -963,15 +964,22 @@ var defaultProps8 = {
   radius: "xl"
 };
 var varsResolver6 = createVarsResolver6(
-  (theme, { size, radius, color, iconColor }) => ({
-    root: {
-      "--radio-size": getSize3(size, "radio-size"),
-      "--radio-icon-size": getSize3(size, "radio-icon-size"),
-      "--radio-radius": radius === void 0 ? void 0 : getRadius2(radius),
-      "--radio-color": color ? getThemeColor(color, theme) : void 0,
-      "--radio-icon-color": iconColor ? getThemeColor(iconColor, theme) : void 0
-    }
-  })
+  (theme, { size, radius, color, iconColor, variant }) => {
+    const parsedColor = parseThemeColor({
+      color: color || theme.primaryColor,
+      theme
+    });
+    const outlineColor = parsedColor.isThemeColor && parsedColor.shade === void 0 ? `var(--raikou-color-${parsedColor.color}-outline)` : parsedColor.color;
+    return {
+      root: {
+        "--radio-size": getSize3(size, "radio-size"),
+        "--radio-icon-size": getSize3(size, "radio-icon-size"),
+        "--radio-radius": radius === void 0 ? void 0 : getRadius2(radius),
+        "--radio-color": variant === "outline" ? outlineColor : getThemeColor(color, theme),
+        "--radio-icon-color": iconColor ? getThemeColor(iconColor, theme) : void 0
+      }
+    };
+  }
 );
 var Radio = factory7((_props, ref) => {
   var _b, _c;
@@ -1060,7 +1068,7 @@ var Radio = factory7((_props, ref) => {
     }), styleProps), wrapperProps),
     /* @__PURE__ */ React13.createElement(Box8, __spreadProps(__spreadValues({}, getStyles("inner")), { mod: { "label-position": labelPosition } }), /* @__PURE__ */ React13.createElement(
       Box8,
-      __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, getStyles("radio", { focusable: true })), rest), contextProps), {
+      __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, getStyles("radio", { focusable: true, variant })), rest), contextProps), {
         component: "input",
         mod: { error: !!error },
         ref,

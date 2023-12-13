@@ -3221,7 +3221,7 @@ var MenuItem = (0, import_core15.polymorphicFactory)((props, ref) => {
   return /* @__PURE__ */ import_react23.default.createElement(
     UnstyledButton,
     __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, others), {
-      tabIndex: -1,
+      tabIndex: ctx.menuItemTabIndex,
       onFocus: handleFocus
     }), ctx.getStyles("item", { className, style, styles, classNames })), {
       ref: (0, import_hooks9.useMergedRef)(itemRef, ref),
@@ -3334,11 +3334,14 @@ var Menu_module_default2 = { "dropdown": "m-dc9b7c9f", "label": "m-9bfac126", "d
 
 // src/Menu.tsx
 var defaultProps11 = {
+  trapFocus: true,
   closeOnItemClick: true,
+  clickOutsideEvents: ["mousedown", "touchstart", "keydown"],
   loop: true,
   trigger: "click",
   openDelay: 0,
-  closeDelay: 100
+  closeDelay: 100,
+  menuItemTabIndex: -1
 };
 function Menu(_props) {
   const props = (0, import_core18.useProps)("Menu", defaultProps11, _props);
@@ -3348,6 +3351,7 @@ function Menu(_props) {
     onClose,
     opened,
     defaultOpened,
+    trapFocus,
     onChange,
     closeOnItemClick,
     loop,
@@ -3359,13 +3363,15 @@ function Menu(_props) {
     styles,
     unstyled,
     variant,
-    vars
+    vars,
+    menuItemTabIndex
   } = _a, others = __objRest(_a, [
     "children",
     "onOpen",
     "onClose",
     "opened",
     "defaultOpened",
+    "trapFocus",
     "onChange",
     "closeOnItemClick",
     "loop",
@@ -3377,7 +3383,8 @@ function Menu(_props) {
     "styles",
     "unstyled",
     "variant",
-    "vars"
+    "vars",
+    "menuItemTabIndex"
   ]);
   const getStyles = (0, import_core18.useStyles)({
     name: "Menu",
@@ -3433,7 +3440,8 @@ function Menu(_props) {
         openDropdown: trigger === "click" ? open : openDropdown,
         closeDropdownImmediately: close,
         loop,
-        trigger
+        trigger,
+        menuItemTabIndex
       }
     },
     /* @__PURE__ */ import_react26.default.createElement(
@@ -3442,7 +3450,7 @@ function Menu(_props) {
         opened: _opened,
         onChange: toggleDropdown,
         defaultOpened,
-        trapFocus: trigger === "click",
+        trapFocus: trigger === "click" && _opened,
         closeOnEscape: closeOnEscape2 && trigger === "click",
         __staticSelector: "Menu",
         classNames: resolvedClassNames,

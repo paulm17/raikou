@@ -48,7 +48,17 @@
   animation: var(--_section-animation);
 }
 .m-2242eb65[data-striped] {
-  --_section-gradient: linear-gradient( 45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent );
+  --_section-gradient:
+    linear-gradient(
+      
+      45deg,
+      rgba(255, 255, 255, 0.15) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.15) 75%,
+      transparent 75%,
+      transparent );
 }
 .m-2242eb65[data-animated] {
   --_section-animation: m-81a374bd 1s linear infinite;

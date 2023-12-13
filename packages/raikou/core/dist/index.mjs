@@ -76,7 +76,7 @@ function createConverter(units, { shouldScale = false } = {}) {
       return shouldScale ? scaleRem(val) : val;
     }
     if (typeof value === "string") {
-      if (value.startsWith("calc(") || value.startsWith("var(")) {
+      if (value.startsWith("calc(") || value.startsWith("var(") || value.startsWith("clamp(")) {
         return value;
       }
       if (value.includes(" ")) {
@@ -1560,7 +1560,7 @@ function sizeResolver(value) {
 
 // src/core/Box/style-props/resolvers/line-height-resolver/line-height-resolver.ts
 function lineHeightResolver(value, theme) {
-  if (typeof value === "string" && value in theme.fontSizes) {
+  if (typeof value === "string" && value in theme.lineHeights) {
     return `var(--raikou-line-height-${value})`;
   }
   return value;

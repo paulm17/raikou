@@ -1,9 +1,10 @@
 import React, { forwardRef } from "react";
 import { useProps, rem } from "@raikou/core";
-import { ColorSlider, __ColorSliderProps } from "../ColorSlider/ColorSlider";
+import { ColorSlider, ColorSliderProps } from "../ColorSlider/ColorSlider";
 import { round } from "../converters/parsers";
 
-export interface AlphaSliderProps extends __ColorSliderProps {
+export interface AlphaSliderProps
+  extends Omit<ColorSliderProps, "maxValue" | "overlays" | "round"> {
   color: string;
 }
 
@@ -14,7 +15,7 @@ export const AlphaSlider = forwardRef<HTMLDivElement, AlphaSliderProps>(
     const { value, onChange, onChangeEnd, color, ...others } = useProps(
       "AlphaSlider",
       defaultProps,
-      props
+      props,
     );
 
     return (
@@ -33,7 +34,7 @@ export const AlphaSlider = forwardRef<HTMLDivElement, AlphaSliderProps>(
               "linear-gradient(45deg, var(--_slider-checkers) 25%, transparent 25%), linear-gradient(-45deg, var(--_slider-checkers) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--_slider-checkers) 75%), linear-gradient(-45deg, var(--raikou-color-body) 75%, var(--_slider-checkers) 75%)",
             backgroundSize: `${rem(8)} ${rem(8)}`,
             backgroundPosition: `0 0, 0 ${rem(4)}, ${rem(4)} -${rem(4)}, -${rem(
-              4
+              4,
             )} 0`,
           },
           {
@@ -41,13 +42,13 @@ export const AlphaSlider = forwardRef<HTMLDivElement, AlphaSliderProps>(
           },
           {
             boxShadow: `rgba(0, 0, 0, .1) 0 0 0 ${rem(
-              1
+              1,
             )} inset, rgb(0, 0, 0, .15) 0 0 ${rem(4)} inset`,
           },
         ]}
       />
     );
-  }
+  },
 );
 
 AlphaSlider.displayName = "@raikou/core/AlphaSlider";

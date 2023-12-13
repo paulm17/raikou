@@ -3877,7 +3877,7 @@ function useCombobox({
   onDropdownClose,
   onDropdownOpen,
   loop = true,
-  scrollBehavior = "auto"
+  scrollBehavior = "instant"
 } = {}) {
   const [dropdownOpened, setDropdownOpened] = (0, import_hooks10.useUncontrolled)({
     value: opened,
@@ -4039,6 +4039,10 @@ function useCombobox({
       0
     );
   }, []);
+  const getSelectedOptionIndex = (0, import_react27.useCallback)(
+    () => selectedOptionIndex.current,
+    []
+  );
   (0, import_react27.useEffect)(
     () => () => {
       window.clearTimeout(focusSearchTimeout.current);
@@ -4053,6 +4057,7 @@ function useCombobox({
     closeDropdown,
     toggleDropdown,
     selectedOptionIndex: selectedOptionIndex.current,
+    getSelectedOptionIndex,
     selectOption,
     selectFirstOption,
     selectActiveOption,
@@ -4116,7 +4121,8 @@ function useComboboxTargetProps({
         }
       }
       if (event.nativeEvent.code === "Enter") {
-        if (ctx.store.dropdownOpened) {
+        const selectedOptionIndex = ctx.store.getSelectedOptionIndex();
+        if (ctx.store.dropdownOpened && selectedOptionIndex !== -1) {
           event.preventDefault();
           ctx.store.clickSelectedOption();
         } else if (targetType === "button") {
@@ -5480,7 +5486,7 @@ var defaultProps27 = {
 var ScrollAreaRoot = (0, import_react54.forwardRef)(
   (_props, ref) => {
     const props = (0, import_core36.useProps)("ScrollAreaRoot", defaultProps27, _props);
-    const _a = props, { type, scrollHideDelay } = _a, others = __objRest(_a, ["type", "scrollHideDelay"]);
+    const _a = props, { type, scrollHideDelay, scrollbars } = _a, others = __objRest(_a, ["type", "scrollHideDelay", "scrollbars"]);
     const [scrollArea, setScrollArea] = (0, import_react54.useState)(null);
     const [viewport, setViewport] = (0, import_react54.useState)(null);
     const [content, setContent] = (0, import_react54.useState)(null);
@@ -5519,8 +5525,8 @@ var ScrollAreaRoot = (0, import_react54.forwardRef)(
         __spreadProps(__spreadValues({}, others), {
           ref: rootRef,
           __vars: {
-            "--sa-corner-width": `${cornerWidth}px`,
-            "--sa-corner-height": `${cornerHeight}px`
+            "--sa-corner-width": scrollbars !== "xy" ? "0px" : `${cornerWidth}px`,
+            "--sa-corner-height": scrollbars !== "xy" ? "0px" : `${cornerHeight}px`
           }
         })
       )
@@ -5641,7 +5647,8 @@ var ScrollArea_module_default = { "root": "m-d57069b5", "viewport": "m-c0783ff9"
 // ../ScrollArea/src/ScrollArea.tsx
 var defaultProps28 = {
   scrollHideDelay: 1e3,
-  type: "hover"
+  type: "hover",
+  scrollbars: "xy"
 };
 var varsResolver10 = (0, import_core38.createVarsResolver)(
   (_, { scrollbarSize }) => ({
@@ -5666,7 +5673,8 @@ var ScrollArea = (0, import_core38.factory)((_props, ref) => {
     viewportRef,
     onScrollPositionChange,
     children,
-    offsetScrollbars
+    offsetScrollbars,
+    scrollbars
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -5681,7 +5689,8 @@ var ScrollArea = (0, import_core38.factory)((_props, ref) => {
     "viewportRef",
     "onScrollPositionChange",
     "children",
-    "offsetScrollbars"
+    "offsetScrollbars",
+    "scrollbars"
   ]);
   const [scrollbarHovered, setScrollbarHovered] = (0, import_react57.useState)(false);
   const getStyles = (0, import_core38.useStyles)({
@@ -5701,13 +5710,15 @@ var ScrollArea = (0, import_core38.factory)((_props, ref) => {
     __spreadValues(__spreadValues({
       type: type === "never" ? "always" : type,
       scrollHideDelay,
-      ref
+      ref,
+      scrollbars
     }, getStyles("root")), others),
     /* @__PURE__ */ import_react57.default.createElement(
       ScrollAreaViewport,
       __spreadProps(__spreadValues(__spreadValues({}, viewportProps), getStyles("viewport")), {
         ref: viewportRef,
         "data-offset-scrollbars": offsetScrollbars || void 0,
+        "data-scrollbars": scrollbars || void 0,
         onScroll: typeof onScrollPositionChange === "function" ? ({ currentTarget }) => onScrollPositionChange({
           x: currentTarget.scrollLeft,
           y: currentTarget.scrollTop
@@ -5715,7 +5726,7 @@ var ScrollArea = (0, import_core38.factory)((_props, ref) => {
       }),
       children
     ),
-    /* @__PURE__ */ import_react57.default.createElement(
+    (scrollbars === "xy" || scrollbars === "x") && /* @__PURE__ */ import_react57.default.createElement(
       ScrollAreaScrollbar,
       __spreadProps(__spreadValues({}, getStyles("scrollbar")), {
         orientation: "horizontal",
@@ -5726,7 +5737,7 @@ var ScrollArea = (0, import_core38.factory)((_props, ref) => {
       }),
       /* @__PURE__ */ import_react57.default.createElement(ScrollAreaThumb, __spreadValues({}, getStyles("thumb")))
     ),
-    /* @__PURE__ */ import_react57.default.createElement(
+    (scrollbars === "xy" || scrollbars === "y") && /* @__PURE__ */ import_react57.default.createElement(
       ScrollAreaScrollbar,
       __spreadProps(__spreadValues({}, getStyles("scrollbar")), {
         orientation: "vertical",
@@ -5762,6 +5773,7 @@ var ScrollAreaAutosize = (0, import_core38.factory)((props, ref) => {
     unstyled,
     variant,
     viewportProps,
+    scrollbars,
     style,
     vars
   } = _a, others = __objRest(_a, [
@@ -5778,6 +5790,7 @@ var ScrollAreaAutosize = (0, import_core38.factory)((props, ref) => {
     "unstyled",
     "variant",
     "viewportProps",
+    "scrollbars",
     "style",
     "vars"
   ]);
@@ -5796,7 +5809,8 @@ var ScrollAreaAutosize = (0, import_core38.factory)((props, ref) => {
       unstyled,
       variant,
       viewportProps,
-      vars
+      vars,
+      scrollbars
     },
     children
   )));
@@ -5935,7 +5949,7 @@ function Option({
         "aria-selected": isValueChecked(value, data.value)
       },
       checkIconPosition === "left" && check,
-      data.label,
+      /* @__PURE__ */ import_react59.default.createElement("span", null, data.label),
       checkIconPosition === "right" && check
     );
   }

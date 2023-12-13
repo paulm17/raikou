@@ -38,6 +38,9 @@
   overflow: hidden;
   padding: 4px;
 }
+.m-cf365364[data-initialization] {
+  --sc-transition-duration: 0ms !important;
+}
 .m-cf365364[data-full-width] {
   --_display: flex;
 }

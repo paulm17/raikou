@@ -243,7 +243,8 @@ var ModalBase = (0, import_react9.forwardRef)(
       zIndex,
       shadow,
       padding,
-      __vars
+      __vars,
+      removeScrollProps
     } = _b, others = __objRest(_b, [
       "keepMounted",
       "opened",
@@ -261,7 +262,8 @@ var ModalBase = (0, import_react9.forwardRef)(
       "zIndex",
       "shadow",
       "padding",
-      "__vars"
+      "__vars",
+      "removeScrollProps"
     ]);
     const {
       _id,
@@ -298,19 +300,25 @@ var ModalBase = (0, import_react9.forwardRef)(
           zIndex
         }
       },
-      /* @__PURE__ */ import_react9.default.createElement(import_react_remove_scroll.RemoveScroll, { enabled: shouldLockScroll && lockScroll }, /* @__PURE__ */ import_react9.default.createElement(
-        import_core2.Box,
-        __spreadProps(__spreadValues({
-          ref
-        }, others), {
-          __vars: __spreadProps(__spreadValues({}, __vars), {
-            "--mb-z-index": (zIndex || (0, import_core2.getDefaultZIndex)("modal")).toString(),
-            "--mb-shadow": (0, import_core2.getShadow)(shadow),
-            "--mb-padding": (0, import_core2.getSpacing)(padding)
-          })
-        }),
-        children
-      ))
+      /* @__PURE__ */ import_react9.default.createElement(
+        import_react_remove_scroll.RemoveScroll,
+        __spreadValues({
+          enabled: shouldLockScroll && lockScroll
+        }, removeScrollProps),
+        /* @__PURE__ */ import_react9.default.createElement(
+          import_core2.Box,
+          __spreadProps(__spreadValues({
+            ref
+          }, others), {
+            __vars: __spreadProps(__spreadValues({}, __vars), {
+              "--mb-z-index": (zIndex || (0, import_core2.getDefaultZIndex)("modal")).toString(),
+              "--mb-shadow": (0, import_core2.getShadow)(shadow),
+              "--mb-padding": (0, import_core2.getSpacing)(padding)
+            })
+          }),
+          children
+        )
+      )
     ));
   }
 );

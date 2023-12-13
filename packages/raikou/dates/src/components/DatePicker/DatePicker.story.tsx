@@ -1,14 +1,22 @@
-import 'dayjs/locale/ru';
-import React, { useState } from 'react';
-import { DatesRangeValue } from '../../types';
-import { DatePicker } from './DatePicker';
+import "dayjs/locale/ru";
+import React, { useState } from "react";
+import { DatesRangeValue } from "../../types";
+import { DatePicker } from "./DatePicker";
 
-export default { title: 'DatePicker' };
+export default { title: "DatePicker" };
 
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
       <DatePicker />
+    </div>
+  );
+}
+
+export function HideOutsideDates() {
+  return (
+    <div style={{ padding: 40 }}>
+      <DatePicker hideOutsideDates />
     </div>
   );
 }
@@ -49,7 +57,12 @@ export function Controlled() {
   const [value, setValue] = useState<Date | null>(null);
   return (
     <div style={{ padding: 40 }}>
-      <DatePicker value={value} onChange={setValue} numberOfColumns={3} columnsToScroll={1} />
+      <DatePicker
+        value={value}
+        onChange={setValue}
+        numberOfColumns={3}
+        columnsToScroll={1}
+      />
       {value?.toISOString()}
     </div>
   );
@@ -66,7 +79,7 @@ export function ControlledRange() {
         numberOfColumns={3}
         columnsToScroll={1}
       />
-      {value.map((date) => (date ? date.toISOString() : 'ns')).join(' – ')}
+      {value.map((date) => (date ? date.toISOString() : "ns")).join(" – ")}
     </div>
   );
 }
@@ -82,7 +95,7 @@ export function ControlledMultiple() {
         numberOfColumns={3}
         columnsToScroll={1}
       />
-      {value.map((date) => (date ? date.toISOString() : 'ns')).join(', ')}
+      {value.map((date) => (date ? date.toISOString() : "ns")).join(", ")}
     </div>
   );
 }

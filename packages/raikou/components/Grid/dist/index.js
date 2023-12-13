@@ -93,7 +93,10 @@ var getColumnFlexBasis = (colSpan, columns) => {
   return colSpan ? `${100 / (columns / colSpan)}%` : void 0;
 };
 var getColumnMaxWidth = (colSpan, columns, grow) => {
-  if (grow || colSpan === "auto" || colSpan === "content") {
+  if (grow || colSpan === "auto") {
+    return "100%";
+  }
+  if (colSpan === "content") {
     return "unset";
   }
   return getColumnFlexBasis(colSpan, columns);
@@ -102,7 +105,7 @@ var getColumnFlexGrow = (colSpan, grow) => {
   if (!colSpan) {
     return void 0;
   }
-  return colSpan === "auto" || grow ? "1" : void 0;
+  return colSpan === "auto" || grow ? "1" : "auto";
 };
 var getColumnOffset = (offset, columns) => offset === 0 ? "0" : offset ? `${100 / (columns / offset)}%` : void 0;
 function GridColVariables({
@@ -251,10 +254,11 @@ var defaultProps2 = {
   columns: 12
 };
 var varsResolver = (0, import_core4.createVarsResolver)(
-  (_, { justify, align }) => ({
+  (_, { justify, align, overflow }) => ({
     root: {
       "--grid-justify": justify,
-      "--grid-align": align
+      "--grid-align": align,
+      "--grid-overflow": overflow
     }
   })
 );

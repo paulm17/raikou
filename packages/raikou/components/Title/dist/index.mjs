@@ -66,16 +66,19 @@ var Title_module_default = { "root": "m-8a5d1357" };
 var defaultProps = {
   order: 1
 };
-var varsResolver = createVarsResolver((_, { order, size }) => {
-  const sizeVariables = getTitleSize(order, size);
-  return {
-    root: {
-      "--title-fw": sizeVariables.fontWeight,
-      "--title-lh": sizeVariables.lineHeight,
-      "--title-fz": sizeVariables.fontSize
-    }
-  };
-});
+var varsResolver = createVarsResolver(
+  (_, { order, size, lineClamp }) => {
+    const sizeVariables = getTitleSize(order, size);
+    return {
+      root: {
+        "--title-fw": sizeVariables.fontWeight,
+        "--title-lh": sizeVariables.lineHeight,
+        "--title-fz": sizeVariables.fontSize,
+        "--title-line-clamp": typeof lineClamp === "number" ? lineClamp.toString() : void 0
+      }
+    };
+  }
+);
 var Title = factory((_props, ref) => {
   const props = useProps("Title", defaultProps, _props);
   const _a = props, {
@@ -87,7 +90,8 @@ var Title = factory((_props, ref) => {
     order,
     vars,
     size,
-    variant
+    variant,
+    lineClamp
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -97,7 +101,8 @@ var Title = factory((_props, ref) => {
     "order",
     "vars",
     "size",
-    "variant"
+    "variant",
+    "lineClamp"
   ]);
   const getStyles = useStyles({
     name: "Title",
@@ -120,7 +125,7 @@ var Title = factory((_props, ref) => {
       component: `h${order}`,
       variant,
       ref,
-      mod: { order },
+      mod: { order, "data-line-clamp": typeof lineClamp === "number" },
       size
     }), others)
   );

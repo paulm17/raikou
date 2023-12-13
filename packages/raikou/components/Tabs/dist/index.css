@@ -21,8 +21,8 @@
 }
 [data-raikou-color-scheme=dark] .m-89d60db1 {
   --raikou-tabs-tab-border-color: #373a40;
-  --raikou-tabs-tab-default-hover-color: #868e96;
-  --raikou-tabs-tab-pills-hover-color: #868e96;
+  --raikou-tabs-tab-default-hover-color: #25262b;
+  --raikou-tabs-tab-pills-hover-color: #25262b;
 }
 .m-89d60db1 {
   display: var(--_tabs-display);

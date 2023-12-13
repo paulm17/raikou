@@ -1137,7 +1137,7 @@ var PinInput = (0, import_core10.factory)((props, ref) => {
   const handlePaste = (event) => {
     event.preventDefault();
     const copyValue = event.clipboardData.getData("Text");
-    const isValid = validate(copyValue);
+    const isValid = validate(copyValue.trim());
     if (isValid) {
       setValues(copyValue);
     }
@@ -1187,6 +1187,7 @@ var PinInput = (0, import_core10.factory)((props, ref) => {
         variant,
         disabled,
         ref: (node) => {
+          index === 0 && (0, import_hooks2.assignRef)(ref, node);
           inputsRef.current[index] = node;
         },
         autoComplete: oneTimeCode ? "one-time-code" : "off",

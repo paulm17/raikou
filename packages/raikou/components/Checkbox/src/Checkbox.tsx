@@ -17,6 +17,7 @@ import {
   createVarsResolver,
   Factory,
   Box,
+  parseThemeColor,
 } from "@raikou/core";
 import { InlineInput, InlineInputStylesNames } from "../../InlineInput/src";
 import { useCheckboxGroupContext } from "./CheckboxGroup.context";
@@ -24,6 +25,7 @@ import { CheckboxGroup } from "./CheckboxGroup/CheckboxGroup";
 import { CheckboxIcon } from "./CheckIcon";
 import classes from "./Checkbox.module.css";
 
+export type CheckboxVariant = "filled" | "outline";
 export type CheckboxStylesNames =
   | "icon"
   | "inner"
@@ -87,6 +89,7 @@ export type CheckboxFactory = Factory<{
   ref: HTMLInputElement;
   stylesNames: CheckboxStylesNames;
   vars: CheckboxCssVariables;
+  variant: CheckboxVariant;
   staticComponents: {
     Group: typeof CheckboxGroup;
   };
@@ -98,16 +101,29 @@ const defaultProps: Partial<CheckboxProps> = {
 };
 
 const varsResolver = createVarsResolver<CheckboxFactory>(
-  (theme, { radius, color, size, iconColor }) => ({
-    root: {
-      "--checkbox-size": getSize(size, "checkbox-size"),
-      "--checkbox-radius": radius === undefined ? undefined : getRadius(radius),
-      "--checkbox-color": color ? getThemeColor(color, theme) : undefined,
-      "--checkbox-icon-color": iconColor
-        ? getThemeColor(iconColor, theme)
-        : undefined,
-    },
-  }),
+  (theme, { radius, color, size, iconColor, variant }) => {
+    const parsedColor = parseThemeColor({
+      color: color || theme.primaryColor,
+      theme,
+    });
+    const outlineColor =
+      parsedColor.isThemeColor && parsedColor.shade === undefined
+        ? `var(--raikou-color-${parsedColor.color}-outline)`
+        : parsedColor.color;
+
+    return {
+      root: {
+        "--checkbox-size": getSize(size, "checkbox-size"),
+        "--checkbox-radius":
+          radius === undefined ? undefined : getRadius(radius),
+        "--checkbox-color":
+          variant === "outline" ? outlineColor : getThemeColor(color, theme),
+        "--checkbox-icon-color": iconColor
+          ? getThemeColor(iconColor, theme)
+          : undefined,
+      },
+    };
+  },
 );
 
 export const Checkbox = factory<CheckboxFactory>((_props, ref) => {
@@ -147,17 +163,6 @@ export const Checkbox = factory<CheckboxFactory>((_props, ref) => {
     name: "Checkbox",
     props,
     classes,
-    // classes: {
-    //   root: "checkbox-root",
-    //   inner: "checkbox-inner",
-    //   input: "checkbox-input",
-    //   icon: "checkbox-icon",
-    //   body: "inlineInput-body",
-    //   label: "inlineInput-label",
-    //   labelWrapper: "inlineInput-labelWrapper",
-    //   description: "inlineInput-description",
-    //   error: "inlineInput-error",
-    // },
     className,
     style,
     classNames,
@@ -209,7 +214,7 @@ export const Checkbox = factory<CheckboxFactory>((_props, ref) => {
           checked={checked}
           disabled={disabled}
           mod={{ error: !!error, indeterminate }}
-          {...getStyles("input", { focusable: true })}
+          {...getStyles("input", { focusable: true, variant })}
           {...rest}
           {...contextProps}
           type="checkbox"

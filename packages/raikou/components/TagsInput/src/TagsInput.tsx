@@ -79,6 +79,9 @@ export interface TagsInputProps
   /** Props passed down to the hidden input */
   hiddenInputProps?: React.ComponentPropsWithoutRef<"input">;
 
+  /** Divider used to separate values in the hidden input `value` attribute, `','` by default */
+  hiddenInputValuesDivider?: string;
+
   /** Tags container component, defaults to `React.Fragment` */
   tagsContainer?(children: React.ReactNode): React.ReactNode;
 }
@@ -93,6 +96,7 @@ const defaultProps: Partial<TagsInputProps> = {
   maxTags: Infinity,
   allowDuplicates: false,
   splitChars: [","],
+  hiddenInputValuesDivider: ",",
   tagsContainer: (children) => children,
 };
 
@@ -162,6 +166,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     clearable,
     clearButtonProps,
     hiddenInputProps,
+    hiddenInputValuesDivider,
     tagsContainer,
     ...others
   } = props;
@@ -413,7 +418,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
         type="hidden"
         name={name}
         form={form}
-        value={_value.join(",")}
+        value={_value.join(hiddenInputValuesDivider)}
         disabled={disabled}
         {...hiddenInputProps}
       />

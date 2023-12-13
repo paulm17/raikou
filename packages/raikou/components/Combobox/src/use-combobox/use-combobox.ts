@@ -1,9 +1,9 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useUncontrolled } from "@raikou/hooks";
 import {
-  getPreviousIndex,
-  getNextIndex,
   getFirstIndex,
+  getNextIndex,
+  getPreviousIndex,
 } from "./get-index/get-index";
 
 export type ComboboxDropdownEventSource = "keyboard" | "mouse" | "unknown";
@@ -23,6 +23,9 @@ export interface ComboboxStore {
 
   /** Selected option index */
   selectedOptionIndex: number;
+
+  /** Returns currently selected option index or `-1` if none of the options is selected */
+  getSelectedOptionIndex: () => number;
 
   /** Selects `Combobox.Option` by index */
   selectOption: (index: number) => void;
@@ -110,7 +113,7 @@ export function useCombobox({
   onDropdownClose,
   onDropdownOpen,
   loop = true,
-  scrollBehavior = "auto",
+  scrollBehavior = "instant",
 }: UseComboboxOptions = {}): ComboboxStore {
   const [dropdownOpened, setDropdownOpened] = useUncontrolled({
     value: opened,
@@ -302,6 +305,11 @@ export function useCombobox({
     );
   }, []);
 
+  const getSelectedOptionIndex = useCallback(
+    () => selectedOptionIndex.current,
+    [],
+  );
+
   useEffect(
     () => () => {
       window.clearTimeout(focusSearchTimeout.current);
@@ -318,6 +326,7 @@ export function useCombobox({
     toggleDropdown,
 
     selectedOptionIndex: selectedOptionIndex.current,
+    getSelectedOptionIndex,
     selectOption,
     selectFirstOption,
     selectActiveOption,

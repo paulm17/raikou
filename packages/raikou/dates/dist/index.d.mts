@@ -2,6 +2,7 @@ import React$1 from 'react';
 import * as _raikou_core from '@raikou/core';
 import { RaikouRadius, RaikouSize, BoxProps, StylesApiProps, PolymorphicFactory, ElementProps, Factory, RaikouShadow, RaikouSpacing, RaikouComponentStaticProperties, RaikouColor, RaikouGradient } from '@raikou/core';
 import { useDisclosure } from '@raikou/hooks';
+import { RemoveScroll } from 'react-remove-scroll';
 
 type DayOfWeek = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 type CalendarLevel = 'month' | 'year' | 'decade';
@@ -790,6 +791,7 @@ type PopoverFactory = Factory<{
     vars: PopoverCssVariables;
 }>;
 
+type RemoveScrollProps = Omit<React$1.ComponentProps<typeof RemoveScroll>, "children">;
 interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
     /** If set modal/drawer will not be unmounted from the DOM when it is hidden, `display: none` styles will be added instead, `false` by default */
     keepMounted?: boolean;
@@ -825,6 +827,8 @@ interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
     padding?: RaikouSpacing;
     /** Controls width of the content area, `'md'` by default */
     size?: RaikouSize | (string & {}) | number;
+    /** Props passed down to react-remove-scroll, can be used to customize scroll lock behavior */
+    removeScrollProps?: RemoveScrollProps;
 }
 
 type CloseButtonVariant = "subtle" | "transparent";

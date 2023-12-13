@@ -81,11 +81,11 @@ var import_core13 = require("@raikou/core");
 // ../ModalBase/src/ModalBase.tsx
 var import_react10 = __toESM(require("react"));
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
 var import_tslib5 = require("tslib");
 var React6 = __toESM(require("react"));
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
 var import_tslib3 = require("tslib");
 var React2 = __toESM(require("react"));
 
@@ -249,10 +249,10 @@ function exportSidecar(medium, exported) {
   return SideCar;
 }
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/medium.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/medium.js
 var effectCar = createSidecarMedium();
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/UI.js
 var nothing = function() {
   return;
 };
@@ -263,14 +263,14 @@ var RemoveScroll = React2.forwardRef(function(props, parentRef) {
     onWheelCapture: nothing,
     onTouchMoveCapture: nothing
   }), callbacks = _a[0], setCallbacks = _a[1];
-  var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? "div" : _b, rest = (0, import_tslib3.__rest)(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as"]);
+  var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? "div" : _b, gapMode = props.gapMode, rest = (0, import_tslib3.__rest)(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as", "gapMode"]);
   var SideCar2 = sideCar;
   var containerRef = useMergeRefs([ref, parentRef]);
   var containerProps = (0, import_tslib3.__assign)((0, import_tslib3.__assign)({}, rest), callbacks);
   return React2.createElement(
     React2.Fragment,
     null,
-    enabled && React2.createElement(SideCar2, { sideCar: effectCar, removeScrollBar, shards, noIsolation, inert, setCallbacks, allowPinchZoom: !!allowPinchZoom, lockRef: ref }),
+    enabled && React2.createElement(SideCar2, { sideCar: effectCar, removeScrollBar, shards, noIsolation, inert, setCallbacks, allowPinchZoom: !!allowPinchZoom, lockRef: ref, gapMode }),
     forwardProps ? React2.cloneElement(React2.Children.only(children), (0, import_tslib3.__assign)((0, import_tslib3.__assign)({}, containerProps), { ref: containerRef })) : React2.createElement(Container, (0, import_tslib3.__assign)({}, containerProps, { className, ref: containerRef }), children)
   );
 });
@@ -284,7 +284,7 @@ RemoveScroll.classNames = {
   zeroRight: zeroRightClassName
 };
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
 var import_tslib4 = require("tslib");
 var React5 = __toESM(require("react"));
 
@@ -432,7 +432,7 @@ var RemoveScrollBar = function(props) {
   return React4.createElement(Style, { styles: getStyles(gap, !noRelative, gapMode, !noImportant ? "!important" : "") });
 };
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/aggresiveCapture.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/aggresiveCapture.js
 var passiveSupported = false;
 if (typeof window !== "undefined") {
   try {
@@ -451,7 +451,7 @@ if (typeof window !== "undefined") {
 var options;
 var nonPassive = passiveSupported ? { passive: false } : false;
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/handleScroll.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/handleScroll.js
 var alwaysContainsScroll = function(node) {
   return node.tagName === "TEXTAREA";
 };
@@ -470,6 +470,7 @@ var elementCouldBeHScrolled = function(node) {
   return elementCanBeScrolled(node, "overflowX");
 };
 var locationCouldBeScrolled = function(axis, node) {
+  var ownerDocument = node.ownerDocument;
   var current = node;
   do {
     if (typeof ShadowRoot !== "undefined" && current instanceof ShadowRoot) {
@@ -483,7 +484,7 @@ var locationCouldBeScrolled = function(axis, node) {
       }
     }
     current = current.parentNode;
-  } while (current && current !== document.body);
+  } while (current && current !== ownerDocument.body);
   return false;
 };
 var getVScrollVariables = function(_a) {
@@ -543,7 +544,7 @@ var handleScroll = function(axis, endTarget, event, sourceDelta, noOverscroll) {
   return shouldCancelScroll;
 };
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
 var getTouchXY = function(event) {
   return "changedTouches" in event ? [event.changedTouches[0].clientX, event.changedTouches[0].clientY] : [0, 0];
 };
@@ -566,9 +567,7 @@ function RemoveScrollSideCar(props) {
   var touchStartRef = React5.useRef([0, 0]);
   var activeAxis = React5.useRef();
   var id = React5.useState(idCounter++)[0];
-  var Style2 = React5.useState(function() {
-    return styleSingleton();
-  })[0];
+  var Style2 = React5.useState(styleSingleton)[0];
   var lastProps = React5.useRef(props);
   React5.useEffect(function() {
     lastProps.current = props;
@@ -695,14 +694,14 @@ function RemoveScrollSideCar(props) {
     React5.Fragment,
     null,
     inert ? React5.createElement(Style2, { styles: generateStyle(id) }) : null,
-    removeScrollBar ? React5.createElement(RemoveScrollBar, { gapMode: "margin" }) : null
+    removeScrollBar ? React5.createElement(RemoveScrollBar, { gapMode: props.gapMode }) : null
   );
 }
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/sidecar.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/sidecar.js
 var sidecar_default = exportSidecar(effectCar, RemoveScrollSideCar);
 
-// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.5_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
+// ../../../../node_modules/.pnpm/react-remove-scroll@2.5.6_@types+react@18.2.23_react@18.2.0/node_modules/react-remove-scroll/dist/es2015/Combination.js
 var ReactRemoveScroll = React6.forwardRef(function(props, ref) {
   return React6.createElement(RemoveScroll, (0, import_tslib5.__assign)({}, props, { ref, sideCar: sidecar_default }));
 });
@@ -880,7 +879,8 @@ var ModalBase = (0, import_react10.forwardRef)(
       zIndex,
       shadow,
       padding,
-      __vars
+      __vars,
+      removeScrollProps
     } = _b, others = __objRest(_b, [
       "keepMounted",
       "opened",
@@ -898,7 +898,8 @@ var ModalBase = (0, import_react10.forwardRef)(
       "zIndex",
       "shadow",
       "padding",
-      "__vars"
+      "__vars",
+      "removeScrollProps"
     ]);
     const {
       _id,
@@ -935,19 +936,25 @@ var ModalBase = (0, import_react10.forwardRef)(
           zIndex
         }
       },
-      /* @__PURE__ */ import_react10.default.createElement(Combination_default, { enabled: shouldLockScroll && lockScroll }, /* @__PURE__ */ import_react10.default.createElement(
-        import_core2.Box,
-        __spreadProps(__spreadValues({
-          ref
-        }, others), {
-          __vars: __spreadProps(__spreadValues({}, __vars), {
-            "--mb-z-index": (zIndex || (0, import_core2.getDefaultZIndex)("modal")).toString(),
-            "--mb-shadow": (0, import_core2.getShadow)(shadow),
-            "--mb-padding": (0, import_core2.getSpacing)(padding)
-          })
-        }),
-        children
-      ))
+      /* @__PURE__ */ import_react10.default.createElement(
+        Combination_default,
+        __spreadValues({
+          enabled: shouldLockScroll && lockScroll
+        }, removeScrollProps),
+        /* @__PURE__ */ import_react10.default.createElement(
+          import_core2.Box,
+          __spreadProps(__spreadValues({
+            ref
+          }, others), {
+            __vars: __spreadProps(__spreadValues({}, __vars), {
+              "--mb-z-index": (zIndex || (0, import_core2.getDefaultZIndex)("modal")).toString(),
+              "--mb-shadow": (0, import_core2.getShadow)(shadow),
+              "--mb-padding": (0, import_core2.getSpacing)(padding)
+            })
+          }),
+          children
+        )
+      )
     ));
   }
 );
@@ -1728,6 +1735,22 @@ var [DrawerProvider, useDrawerContext] = createSafeContext("Drawer component was
 var Drawer_module_default = { "root": "m-f11b401e", "header": "m-5a7c2c9", "content": "m-b8a05bbd", "inner": "m-31cd769a" };
 
 // src/DrawerRoot.tsx
+function getDrawerAlign(position) {
+  switch (position) {
+    case "top":
+      return "flex-start";
+    case "bottom":
+      return "flex-end";
+    default:
+      return void 0;
+  }
+}
+function getDrawerFlex(position) {
+  if (position === "top" || position === "bottom") {
+    return "0 0 calc(100% - var(--drawer-offset, 0rem) * 2)";
+  }
+  return void 0;
+}
 var transitions2 = {
   top: "slide-down",
   bottom: "slide-up",
@@ -1752,13 +1775,14 @@ var defaultProps6 = {
   position: "left"
 };
 var varsResolver4 = (0, import_core13.createVarsResolver)(
-  (_, { position, size }) => ({
+  (_, { position, size, offset }) => ({
     root: {
       "--drawer-size": (0, import_core13.getSize)(size, "drawer-size"),
-      "--drawer-flex": position === "left" || position === "right" ? void 0 : "0 0 100%",
+      "--drawer-flex": getDrawerFlex(position),
       "--drawer-height": position === "left" || position === "right" ? void 0 : "var(--drawer-size)",
-      "--drawer-align": position === "bottom" ? "flex-end" : void 0,
-      "--drawer-justify": position === "right" ? "flex-end" : void 0
+      "--drawer-align": getDrawerAlign(position),
+      "--drawer-justify": position === "right" ? "flex-end" : void 0,
+      "--drawer-offset": (0, import_core13.rem)(offset)
     }
   })
 );
@@ -1773,7 +1797,8 @@ var DrawerRoot = (0, import_core13.factory)((_props, ref) => {
     vars,
     scrollAreaComponent,
     position,
-    transitionProps
+    transitionProps,
+    radius
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -1783,7 +1808,8 @@ var DrawerRoot = (0, import_core13.factory)((_props, ref) => {
     "vars",
     "scrollAreaComponent",
     "position",
-    "transitionProps"
+    "transitionProps",
+    "radius"
   ]);
   const { dir } = (0, import_core13.useDirection)();
   const getStyles2 = (0, import_core13.useStyles)({
@@ -1799,7 +1825,7 @@ var DrawerRoot = (0, import_core13.factory)((_props, ref) => {
     varsResolver: varsResolver4
   });
   const drawerTransition = (dir === "rtl" ? rtlTransitions : transitions2)[position];
-  return /* @__PURE__ */ import_react28.default.createElement(DrawerProvider, { value: { scrollAreaComponent, getStyles: getStyles2 } }, /* @__PURE__ */ import_react28.default.createElement(
+  return /* @__PURE__ */ import_react28.default.createElement(DrawerProvider, { value: { scrollAreaComponent, getStyles: getStyles2, radius } }, /* @__PURE__ */ import_react28.default.createElement(
     ModalBase,
     __spreadValues(__spreadProps(__spreadValues({
       ref
@@ -1873,12 +1899,28 @@ var import_core17 = require("@raikou/core");
 var defaultProps10 = {};
 var DrawerContent = (0, import_core17.factory)((_props, ref) => {
   const props = (0, import_core17.useProps)("DrawerContent", defaultProps10, _props);
-  const _a = props, { classNames, className, style, styles, vars, children } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars", "children"]);
+  const _a = props, {
+    classNames,
+    className,
+    style,
+    styles,
+    vars,
+    children,
+    radius
+  } = _a, others = __objRest(_a, [
+    "classNames",
+    "className",
+    "style",
+    "styles",
+    "vars",
+    "children",
+    "radius"
+  ]);
   const ctx = useDrawerContext();
   const Scroll = ctx.scrollAreaComponent || NativeScrollArea;
   return /* @__PURE__ */ import_react32.default.createElement(
     ModalBaseContent,
-    __spreadValues(__spreadProps(__spreadValues({}, ctx.getStyles("content", { className, style, styles, classNames })), {
+    __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, ctx.getStyles("content", { className, style, styles, classNames })), {
       innerProps: ctx.getStyles("inner", {
         className,
         style,
@@ -1886,7 +1928,9 @@ var DrawerContent = (0, import_core17.factory)((_props, ref) => {
         classNames
       }),
       ref
-    }), others),
+    }), others), {
+      radius: radius || ctx.radius || 0
+    }),
     /* @__PURE__ */ import_react32.default.createElement(Scroll, { style: { height: "100vh" } }, children)
   );
 });

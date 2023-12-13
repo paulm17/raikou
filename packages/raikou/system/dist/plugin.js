@@ -53,7 +53,7 @@ function createConverter(units, { shouldScale = false } = {}) {
       return shouldScale ? scaleRem(val) : val;
     }
     if (typeof value === "string") {
-      if (value.startsWith("calc(") || value.startsWith("var(")) {
+      if (value.startsWith("calc(") || value.startsWith("var(") || value.startsWith("clamp(")) {
         return value;
       }
       if (value.includes(" ")) {

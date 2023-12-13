@@ -262,7 +262,7 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
 
   const increment = () => {
     if (typeof _value !== "number" || Number.isNaN(_value)) {
-      setValue(min ?? clamp(startValue!, min, max));
+      setValue(clamp(startValue!, min, max));
     } else if (max !== undefined) {
       setValue(_value + step! <= max ? _value + step! : max);
     } else {

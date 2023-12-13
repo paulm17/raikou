@@ -27,7 +27,7 @@ export const Swatches = forwardRef<HTMLDivElement, SwatchesProps>(
     },
     ref,
   ) => {
-    const { getStyles } = useColorPickerContext();
+    const { getStyles } = useColorPickerContext()!;
 
     const colors = data.map((color, index) => (
       <ColorSwatch

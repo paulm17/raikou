@@ -80,6 +80,9 @@ export interface AppShellProps
 
   /** If set, Navbar, Aside, Header and Footer components be hidden */
   disabled?: boolean;
+
+  /** Determines whether Header and Footer components should include styles to offset scrollbars. Based on `react-remove-scroll`. `true` by default */
+  offsetScrollbars?: boolean;
 }
 
 export type AppShellFactory = Factory<{
@@ -99,6 +102,7 @@ export type AppShellFactory = Factory<{
 
 const defaultProps: Partial<AppShellProps> = {
   withBorder: true,
+  offsetScrollbars: true,
   padding: 0,
   transitionDuration: 200,
   transitionTimingFunction: "ease",
@@ -134,6 +138,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
     disabled,
     aside,
     footer,
+    offsetScrollbars,
     ...others
   } = props;
 
@@ -155,6 +160,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
     state.withBorder = withBorder;
     state.zIndex = zIndex;
     state.disabled = disabled;
+    state.offsetScrollbars = offsetScrollbars;
   });
 
   return (

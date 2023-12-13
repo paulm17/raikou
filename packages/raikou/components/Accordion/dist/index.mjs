@@ -150,17 +150,18 @@ AccordionItem.classes = Accordion_module_default;
 // src/AccordionPanel/AccordionPanel.tsx
 import React7 from "react";
 import {
-  factory as factory2,
+  factory as factory3,
   useProps as useProps3
 } from "@raikou/core";
 
 // ../Collapse/src/Collapse.tsx
-import React6, { forwardRef } from "react";
+import React6 from "react";
 import { useReducedMotion } from "@raikou/hooks";
 import {
   useProps as useProps2,
   Box as Box2,
   getStyleObject,
+  factory as factory2,
   useRaikouTheme
 } from "@raikou/core";
 
@@ -279,62 +280,60 @@ var defaultProps2 = {
   transitionTimingFunction: "ease",
   animateOpacity: true
 };
-var Collapse = forwardRef(
-  (props, ref) => {
-    const _a = useProps2("Collapse", defaultProps2, props), {
-      children,
-      in: opened,
-      transitionDuration,
-      transitionTimingFunction,
-      style,
-      onTransitionEnd,
-      animateOpacity
-    } = _a, others = __objRest(_a, [
-      "children",
-      "in",
-      "transitionDuration",
-      "transitionTimingFunction",
-      "style",
-      "onTransitionEnd",
-      "animateOpacity"
-    ]);
-    const theme = useRaikouTheme();
-    const shouldReduceMotion = useReducedMotion();
-    const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
-    const duration = reduceMotion ? 0 : transitionDuration;
-    const getCollapseProps = useCollapse({
-      opened,
-      transitionDuration: duration,
-      transitionTimingFunction,
-      onTransitionEnd
-    });
-    if (duration === 0) {
-      return opened ? /* @__PURE__ */ React6.createElement(Box2, __spreadValues({}, others), children) : null;
-    }
-    return /* @__PURE__ */ React6.createElement(
-      Box2,
-      __spreadValues({}, getCollapseProps(__spreadValues({
-        style: getStyleObject(style, theme),
-        ref
-      }, others))),
-      /* @__PURE__ */ React6.createElement(
-        "div",
-        {
-          style: {
-            opacity: opened || !animateOpacity ? 1 : 0,
-            transition: animateOpacity ? `opacity ${duration}ms ${transitionTimingFunction}` : "none"
-          }
-        },
-        children
-      )
-    );
+var Collapse = factory2((props, ref) => {
+  const _a = useProps2("Collapse", defaultProps2, props), {
+    children,
+    in: opened,
+    transitionDuration,
+    transitionTimingFunction,
+    style,
+    onTransitionEnd,
+    animateOpacity
+  } = _a, others = __objRest(_a, [
+    "children",
+    "in",
+    "transitionDuration",
+    "transitionTimingFunction",
+    "style",
+    "onTransitionEnd",
+    "animateOpacity"
+  ]);
+  const theme = useRaikouTheme();
+  const shouldReduceMotion = useReducedMotion();
+  const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
+  const duration = reduceMotion ? 0 : transitionDuration;
+  const getCollapseProps = useCollapse({
+    opened,
+    transitionDuration: duration,
+    transitionTimingFunction,
+    onTransitionEnd
+  });
+  if (duration === 0) {
+    return opened ? /* @__PURE__ */ React6.createElement(Box2, __spreadValues({}, others), children) : null;
   }
-);
+  return /* @__PURE__ */ React6.createElement(
+    Box2,
+    __spreadValues({}, getCollapseProps(__spreadValues({
+      style: getStyleObject(style, theme),
+      ref
+    }, others))),
+    /* @__PURE__ */ React6.createElement(
+      "div",
+      {
+        style: {
+          opacity: opened || !animateOpacity ? 1 : 0,
+          transition: animateOpacity ? `opacity ${duration}ms ${transitionTimingFunction}` : "none"
+        }
+      },
+      children
+    )
+  );
+});
 Collapse.displayName = "@raikou/core/Collapse";
 
 // src/AccordionPanel/AccordionPanel.tsx
 var defaultProps3 = {};
-var AccordionPanel = factory2((props, ref) => {
+var AccordionPanel = factory3((props, ref) => {
   var _b;
   const _a = useProps3("AccordionPanel", defaultProps3, props), { classNames, className, style, styles, vars, children } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars", "children"]);
   const { value } = useAccordionItemContext();
@@ -360,7 +359,7 @@ AccordionPanel.classes = Accordion_module_default;
 import React9 from "react";
 import {
   Box as Box4,
-  factory as factory3,
+  factory as factory4,
   useProps as useProps5,
   createScopedKeydownHandler
 } from "@raikou/core";
@@ -426,7 +425,7 @@ UnstyledButton.classes = UnstyledButton_module_default;
 
 // src/AccordionControl/AccordionControl.tsx
 var defaultProps5 = {};
-var AccordionControl = factory3(
+var AccordionControl = factory4(
   (props, ref) => {
     const _a = useProps5("AccordionControl", defaultProps5, props), {
       classNames,

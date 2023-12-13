@@ -45,6 +45,9 @@ export interface MenuProps extends __PopoverProps, StylesApiProps<MenuFactory> {
   /** Uncontrolled menu initial opened state */
   defaultOpened?: boolean;
 
+  /** Determines whether dropdown should trap focus of keyboard events */
+  trapFocus?: boolean;
+
   /** Called when menu opened state changes */
   onChange?: (opened: boolean) => void;
 
@@ -60,7 +63,7 @@ export interface MenuProps extends __PopoverProps, StylesApiProps<MenuFactory> {
   /** Determines whether arrow key presses should loop though items (first to last and last to first) */
   loop?: boolean;
 
-  /** Determines whether dropdown should be closed when Escape key is pressed, defaults to true */
+  /** Determines whether dropdown should be closed when Escape key is pressed */
   closeOnEscape?: boolean;
 
   /** Event which should open menu */
@@ -72,7 +75,7 @@ export interface MenuProps extends __PopoverProps, StylesApiProps<MenuFactory> {
   /** Close delay in ms, applicable only to trigger="hover" variant */
   closeDelay?: number;
 
-  /** Determines whether dropdown should be closed on outside clicks, default to true */
+  /** Determines whether dropdown should be closed on outside clicks */
   closeOnClickOutside?: boolean;
 
   /** Events that trigger outside clicks */
@@ -80,14 +83,20 @@ export interface MenuProps extends __PopoverProps, StylesApiProps<MenuFactory> {
 
   /** id base to create accessibility connections */
   id?: string;
+
+  /** Set the `tabindex` on all menu items. Defaults to -1 */
+  menuItemTabIndex?: -1 | 0;
 }
 
 const defaultProps: Partial<MenuProps> = {
+  trapFocus: true,
   closeOnItemClick: true,
+  clickOutsideEvents: ["mousedown", "touchstart", "keydown"],
   loop: true,
   trigger: "click",
   openDelay: 0,
   closeDelay: 100,
+  menuItemTabIndex: -1,
 };
 
 export function Menu(_props: MenuProps) {
@@ -98,6 +107,7 @@ export function Menu(_props: MenuProps) {
     onClose,
     opened,
     defaultOpened,
+    trapFocus,
     onChange,
     closeOnItemClick,
     loop,
@@ -110,6 +120,7 @@ export function Menu(_props: MenuProps) {
     unstyled,
     variant,
     vars,
+    menuItemTabIndex,
     ...others
   } = props;
 
@@ -178,6 +189,7 @@ export function Menu(_props: MenuProps) {
         closeDropdownImmediately: close,
         loop,
         trigger,
+        menuItemTabIndex,
       }}
     >
       <Popover
@@ -185,7 +197,7 @@ export function Menu(_props: MenuProps) {
         opened={_opened}
         onChange={toggleDropdown}
         defaultOpened={defaultOpened}
-        trapFocus={trigger === "click"}
+        trapFocus={trigger === "click" && _opened}
         closeOnEscape={closeOnEscape && trigger === "click"}
         __staticSelector="Menu"
         classNames={resolvedClassNames}

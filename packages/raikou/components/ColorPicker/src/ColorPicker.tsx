@@ -293,6 +293,7 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
                 <ColorSwatch
                   color={_value}
                   radius="sm"
+                  size="var(--cp-preview-size)"
                   {...getStyles("preview")}
                 />
               )}

@@ -5837,7 +5837,7 @@ function CheckboxIcon(_a) {
 }
 
 // css-module:./Checkbox.module.css#css-module
-var Checkbox_module_default = { "root": "m-bf2d988c", "inner": "m-26062bec", "input": "m-26063560", "icon": "m-bf295423" };
+var Checkbox_module_default = { "root": "m-bf2d988c", "inner": "m-26062bec", "input": "m-26063560", "icon": "m-bf295423", "input--outline": "m-215c4542" };
 
 // ../components/Checkbox/src/Checkbox.tsx
 var defaultProps20 = {
@@ -5845,14 +5845,21 @@ var defaultProps20 = {
   icon: CheckboxIcon
 };
 var varsResolver13 = (0, import_core38.createVarsResolver)(
-  (theme, { radius, color, size: size2, iconColor }) => ({
-    root: {
-      "--checkbox-size": (0, import_core38.getSize)(size2, "checkbox-size"),
-      "--checkbox-radius": radius === void 0 ? void 0 : (0, import_core38.getRadius)(radius),
-      "--checkbox-color": color ? (0, import_core38.getThemeColor)(color, theme) : void 0,
-      "--checkbox-icon-color": iconColor ? (0, import_core38.getThemeColor)(iconColor, theme) : void 0
-    }
-  })
+  (theme, { radius, color, size: size2, iconColor, variant }) => {
+    const parsedColor = (0, import_core38.parseThemeColor)({
+      color: color || theme.primaryColor,
+      theme
+    });
+    const outlineColor = parsedColor.isThemeColor && parsedColor.shade === void 0 ? `var(--raikou-color-${parsedColor.color}-outline)` : parsedColor.color;
+    return {
+      root: {
+        "--checkbox-size": (0, import_core38.getSize)(size2, "checkbox-size"),
+        "--checkbox-radius": radius === void 0 ? void 0 : (0, import_core38.getRadius)(radius),
+        "--checkbox-color": variant === "outline" ? outlineColor : (0, import_core38.getThemeColor)(color, theme),
+        "--checkbox-icon-color": iconColor ? (0, import_core38.getThemeColor)(iconColor, theme) : void 0
+      }
+    };
+  }
 );
 var Checkbox = (0, import_core38.factory)((_props, ref) => {
   const props = (0, import_core38.useProps)("Checkbox", defaultProps20, _props);
@@ -5912,17 +5919,6 @@ var Checkbox = (0, import_core38.factory)((_props, ref) => {
     name: "Checkbox",
     props,
     classes: Checkbox_module_default,
-    // classes: {
-    //   root: "checkbox-root",
-    //   inner: "checkbox-inner",
-    //   input: "checkbox-input",
-    //   icon: "checkbox-icon",
-    //   body: "inlineInput-body",
-    //   label: "inlineInput-label",
-    //   labelWrapper: "inlineInput-labelWrapper",
-    //   description: "inlineInput-description",
-    //   error: "inlineInput-error",
-    // },
     className,
     style,
     classNames,
@@ -5970,7 +5966,7 @@ var Checkbox = (0, import_core38.factory)((_props, ref) => {
           checked,
           disabled,
           mod: { error: !!error, indeterminate }
-        }, getStyles("input", { focusable: true })), rest), contextProps), {
+        }, getStyles("input", { focusable: true, variant })), rest), contextProps), {
           type: "checkbox"
         })
       ),
@@ -6924,7 +6920,7 @@ var MenuItem = (0, import_core48.polymorphicFactory)((props, ref) => {
   return /* @__PURE__ */ import_react79.default.createElement(
     UnstyledButton,
     __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, others), {
-      tabIndex: -1,
+      tabIndex: ctx.menuItemTabIndex,
       onFocus: handleFocus
     }), ctx.getStyles("item", { className, style, styles, classNames })), {
       ref: (0, import_hooks20.useMergedRef)(itemRef, ref),
@@ -7037,11 +7033,14 @@ var Menu_module_default2 = { "dropdown": "m-dc9b7c9f", "label": "m-9bfac126", "d
 
 // ../components/Menu/src/Menu.tsx
 var defaultProps32 = {
+  trapFocus: true,
   closeOnItemClick: true,
+  clickOutsideEvents: ["mousedown", "touchstart", "keydown"],
   loop: true,
   trigger: "click",
   openDelay: 0,
-  closeDelay: 100
+  closeDelay: 100,
+  menuItemTabIndex: -1
 };
 function Menu(_props) {
   const props = (0, import_core51.useProps)("Menu", defaultProps32, _props);
@@ -7051,6 +7050,7 @@ function Menu(_props) {
     onClose,
     opened,
     defaultOpened,
+    trapFocus,
     onChange,
     closeOnItemClick,
     loop,
@@ -7062,13 +7062,15 @@ function Menu(_props) {
     styles,
     unstyled,
     variant,
-    vars
+    vars,
+    menuItemTabIndex
   } = _a, others = __objRest(_a, [
     "children",
     "onOpen",
     "onClose",
     "opened",
     "defaultOpened",
+    "trapFocus",
     "onChange",
     "closeOnItemClick",
     "loop",
@@ -7080,7 +7082,8 @@ function Menu(_props) {
     "styles",
     "unstyled",
     "variant",
-    "vars"
+    "vars",
+    "menuItemTabIndex"
   ]);
   const getStyles = (0, import_core51.useStyles)({
     name: "Menu",
@@ -7136,7 +7139,8 @@ function Menu(_props) {
         openDropdown: trigger === "click" ? open : openDropdown,
         closeDropdownImmediately: close,
         loop,
-        trigger
+        trigger,
+        menuItemTabIndex
       }
     },
     /* @__PURE__ */ import_react82.default.createElement(
@@ -7145,7 +7149,7 @@ function Menu(_props) {
         opened: _opened,
         onChange: toggleDropdown,
         defaultOpened,
-        trapFocus: trigger === "click",
+        trapFocus: trigger === "click" && _opened,
         closeOnEscape: closeOnEscape2 && trigger === "click",
         __staticSelector: "Menu",
         classNames: resolvedClassNames,
@@ -7625,57 +7629,55 @@ var defaultProps33 = {
   transitionTimingFunction: "ease",
   animateOpacity: true
 };
-var Collapse = (0, import_react89.forwardRef)(
-  (props, ref) => {
-    const _a = (0, import_core55.useProps)("Collapse", defaultProps33, props), {
-      children,
-      in: opened,
-      transitionDuration,
-      transitionTimingFunction,
-      style,
-      onTransitionEnd,
-      animateOpacity
-    } = _a, others = __objRest(_a, [
-      "children",
-      "in",
-      "transitionDuration",
-      "transitionTimingFunction",
-      "style",
-      "onTransitionEnd",
-      "animateOpacity"
-    ]);
-    const theme = (0, import_core55.useRaikouTheme)();
-    const shouldReduceMotion = (0, import_hooks25.useReducedMotion)();
-    const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
-    const duration = reduceMotion ? 0 : transitionDuration;
-    const getCollapseProps = useCollapse({
-      opened,
-      transitionDuration: duration,
-      transitionTimingFunction,
-      onTransitionEnd
-    });
-    if (duration === 0) {
-      return opened ? /* @__PURE__ */ import_react89.default.createElement(import_core55.Box, __spreadValues({}, others), children) : null;
-    }
-    return /* @__PURE__ */ import_react89.default.createElement(
-      import_core55.Box,
-      __spreadValues({}, getCollapseProps(__spreadValues({
-        style: (0, import_core55.getStyleObject)(style, theme),
-        ref
-      }, others))),
-      /* @__PURE__ */ import_react89.default.createElement(
-        "div",
-        {
-          style: {
-            opacity: opened || !animateOpacity ? 1 : 0,
-            transition: animateOpacity ? `opacity ${duration}ms ${transitionTimingFunction}` : "none"
-          }
-        },
-        children
-      )
-    );
+var Collapse = (0, import_core55.factory)((props, ref) => {
+  const _a = (0, import_core55.useProps)("Collapse", defaultProps33, props), {
+    children,
+    in: opened,
+    transitionDuration,
+    transitionTimingFunction,
+    style,
+    onTransitionEnd,
+    animateOpacity
+  } = _a, others = __objRest(_a, [
+    "children",
+    "in",
+    "transitionDuration",
+    "transitionTimingFunction",
+    "style",
+    "onTransitionEnd",
+    "animateOpacity"
+  ]);
+  const theme = (0, import_core55.useRaikouTheme)();
+  const shouldReduceMotion = (0, import_hooks25.useReducedMotion)();
+  const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
+  const duration = reduceMotion ? 0 : transitionDuration;
+  const getCollapseProps = useCollapse({
+    opened,
+    transitionDuration: duration,
+    transitionTimingFunction,
+    onTransitionEnd
+  });
+  if (duration === 0) {
+    return opened ? /* @__PURE__ */ import_react89.default.createElement(import_core55.Box, __spreadValues({}, others), children) : null;
   }
-);
+  return /* @__PURE__ */ import_react89.default.createElement(
+    import_core55.Box,
+    __spreadValues({}, getCollapseProps(__spreadValues({
+      style: (0, import_core55.getStyleObject)(style, theme),
+      ref
+    }, others))),
+    /* @__PURE__ */ import_react89.default.createElement(
+      "div",
+      {
+        style: {
+          opacity: opened || !animateOpacity ? 1 : 0,
+          transition: animateOpacity ? `opacity ${duration}ms ${transitionTimingFunction}` : "none"
+        }
+      },
+      children
+    )
+  );
+});
 Collapse.displayName = "@raikou/core/Collapse";
 
 // css-module:./DataTableRowExpansion.module.css#css-module
@@ -8528,7 +8530,7 @@ var defaultProps34 = {
 var ScrollAreaRoot = (0, import_react102.forwardRef)(
   (_props, ref) => {
     const props = (0, import_core57.useProps)("ScrollAreaRoot", defaultProps34, _props);
-    const _a = props, { type, scrollHideDelay } = _a, others = __objRest(_a, ["type", "scrollHideDelay"]);
+    const _a = props, { type, scrollHideDelay, scrollbars } = _a, others = __objRest(_a, ["type", "scrollHideDelay", "scrollbars"]);
     const [scrollArea, setScrollArea] = (0, import_react102.useState)(null);
     const [viewport, setViewport] = (0, import_react102.useState)(null);
     const [content, setContent] = (0, import_react102.useState)(null);
@@ -8567,8 +8569,8 @@ var ScrollAreaRoot = (0, import_react102.forwardRef)(
         __spreadProps(__spreadValues({}, others), {
           ref: rootRef,
           __vars: {
-            "--sa-corner-width": `${cornerWidth}px`,
-            "--sa-corner-height": `${cornerHeight}px`
+            "--sa-corner-width": scrollbars !== "xy" ? "0px" : `${cornerWidth}px`,
+            "--sa-corner-height": scrollbars !== "xy" ? "0px" : `${cornerHeight}px`
           }
         })
       )
@@ -8689,7 +8691,8 @@ var ScrollArea_module_default = { "root": "m-d57069b5", "viewport": "m-c0783ff9"
 // ../components/ScrollArea/src/ScrollArea.tsx
 var defaultProps35 = {
   scrollHideDelay: 1e3,
-  type: "hover"
+  type: "hover",
+  scrollbars: "xy"
 };
 var varsResolver17 = (0, import_core59.createVarsResolver)(
   (_2, { scrollbarSize }) => ({
@@ -8714,7 +8717,8 @@ var ScrollArea = (0, import_core59.factory)((_props, ref) => {
     viewportRef,
     onScrollPositionChange,
     children,
-    offsetScrollbars
+    offsetScrollbars,
+    scrollbars
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -8729,7 +8733,8 @@ var ScrollArea = (0, import_core59.factory)((_props, ref) => {
     "viewportRef",
     "onScrollPositionChange",
     "children",
-    "offsetScrollbars"
+    "offsetScrollbars",
+    "scrollbars"
   ]);
   const [scrollbarHovered, setScrollbarHovered] = (0, import_react105.useState)(false);
   const getStyles = (0, import_core59.useStyles)({
@@ -8749,13 +8754,15 @@ var ScrollArea = (0, import_core59.factory)((_props, ref) => {
     __spreadValues(__spreadValues({
       type: type === "never" ? "always" : type,
       scrollHideDelay,
-      ref
+      ref,
+      scrollbars
     }, getStyles("root")), others),
     /* @__PURE__ */ import_react105.default.createElement(
       ScrollAreaViewport,
       __spreadProps(__spreadValues(__spreadValues({}, viewportProps), getStyles("viewport")), {
         ref: viewportRef,
         "data-offset-scrollbars": offsetScrollbars || void 0,
+        "data-scrollbars": scrollbars || void 0,
         onScroll: typeof onScrollPositionChange === "function" ? ({ currentTarget }) => onScrollPositionChange({
           x: currentTarget.scrollLeft,
           y: currentTarget.scrollTop
@@ -8763,7 +8770,7 @@ var ScrollArea = (0, import_core59.factory)((_props, ref) => {
       }),
       children
     ),
-    /* @__PURE__ */ import_react105.default.createElement(
+    (scrollbars === "xy" || scrollbars === "x") && /* @__PURE__ */ import_react105.default.createElement(
       ScrollAreaScrollbar,
       __spreadProps(__spreadValues({}, getStyles("scrollbar")), {
         orientation: "horizontal",
@@ -8774,7 +8781,7 @@ var ScrollArea = (0, import_core59.factory)((_props, ref) => {
       }),
       /* @__PURE__ */ import_react105.default.createElement(ScrollAreaThumb, __spreadValues({}, getStyles("thumb")))
     ),
-    /* @__PURE__ */ import_react105.default.createElement(
+    (scrollbars === "xy" || scrollbars === "y") && /* @__PURE__ */ import_react105.default.createElement(
       ScrollAreaScrollbar,
       __spreadProps(__spreadValues({}, getStyles("scrollbar")), {
         orientation: "vertical",
@@ -8810,6 +8817,7 @@ var ScrollAreaAutosize = (0, import_core59.factory)((props, ref) => {
     unstyled,
     variant,
     viewportProps,
+    scrollbars,
     style,
     vars
   } = _a, others = __objRest(_a, [
@@ -8826,6 +8834,7 @@ var ScrollAreaAutosize = (0, import_core59.factory)((props, ref) => {
     "unstyled",
     "variant",
     "viewportProps",
+    "scrollbars",
     "style",
     "vars"
   ]);
@@ -8844,7 +8853,8 @@ var ScrollAreaAutosize = (0, import_core59.factory)((props, ref) => {
       unstyled,
       variant,
       viewportProps,
-      vars
+      vars,
+      scrollbars
     },
     children
   )));

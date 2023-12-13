@@ -1,5 +1,6 @@
-import React from 'react';
+import * as _raikou_core from '@raikou/core';
 import { BoxProps } from '@raikou/core';
+import React from 'react';
 
 interface CollapseProps extends BoxProps, Omit<React.ComponentPropsWithoutRef<"div">, keyof BoxProps> {
     /** Opened state */
@@ -13,6 +14,9 @@ interface CollapseProps extends BoxProps, Omit<React.ComponentPropsWithoutRef<"d
     /** Determines whether opacity should be animated, `true` by default */
     animateOpacity?: boolean;
 }
-declare const Collapse: React.ForwardRefExoticComponent<CollapseProps & React.RefAttributes<HTMLDivElement>>;
+declare const Collapse: _raikou_core.RaikouComponent<{
+    props: CollapseProps;
+    ref: HTMLDivElement;
+}>;
 
 export { Collapse, type CollapseProps };

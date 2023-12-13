@@ -334,7 +334,7 @@ type PopoverFactory = Factory<{
     vars: PopoverCssVariables;
 }>;
 
-type RichTextEditorLinkControlStylesNames = "linkEditor" | "linkEditorDropdown" | "linkEditorSave" | "linkEditorInput" | "linkEditorExternalControl";
+type RichTextEditorLinkControlStylesNames = "control" | "linkEditor" | "linkEditorDropdown" | "linkEditorSave" | "linkEditorInput" | "linkEditorExternalControl";
 interface RichTextEditorLinkControlProps extends BoxProps, Omit<RichTextEditorControlBaseProps, "classNames" | "styles" | "vars">, CompoundStylesApiProps<RichTextEditorLinkControlFactory> {
     /** Props passed down to Popover component */
     popoverProps?: Partial<PopoverProps>;

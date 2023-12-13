@@ -103,9 +103,8 @@ var import_react6 = __toESM(require("react"));
 var import_hooks = require("@raikou/hooks");
 var import_core2 = require("@raikou/core");
 
-// ../ColorPicker/src/Thumb/Thumb.tsx
-var import_react5 = __toESM(require("react"));
-var import_core = require("@raikou/core");
+// css-module:../ColorPicker.module.css#css-module
+var ColorPicker_module_default = { "wrapper": "m-fee9c77", "preview": "m-9dddfbac", "body": "m-bffecc3e", "sliders": "m-3283bb96", "thumb": "m-40d572ba", "swatch": "m-d8ee6fd8", "swatches": "m-5711e686", "saturation": "m-202a296e", "saturationOverlay": "m-11b3db02", "slider": "m-d856d47d", "sliderOverlay": "m-8f327113" };
 
 // ../_utils/create-safe-context/create-safe-context.tsx
 var import_react = __toESM(require("react"));
@@ -138,127 +137,158 @@ var import_react3 = require("react");
 var import_react4 = require("react");
 
 // ../ColorPicker/src/ColorPicker.context.ts
-var [ColorPickerProvider, useColorPickerContext] = createSafeContext(
-  "ColorPicker component was not found in tree"
-);
+var [ColorPickerProvider, useColorPickerContext] = createOptionalContext(null);
 
 // ../ColorPicker/src/Thumb/Thumb.tsx
+var import_react5 = __toESM(require("react"));
+var import_core = require("@raikou/core");
 var Thumb = (0, import_react5.forwardRef)(
   (_a, ref) => {
-    var _b = _a, { className, style, size: size2, position } = _b, others = __objRest(_b, ["className", "style", "size", "position"]);
-    const { getStyles } = useColorPickerContext();
+    var _b = _a, { className, style, position } = _b, others = __objRest(_b, ["className", "style", "position"]);
     return /* @__PURE__ */ import_react5.default.createElement(
       import_core.Box,
-      __spreadValues(__spreadProps(__spreadValues({
-        ref
-      }, getStyles("thumb", { style })), {
+      __spreadValues({
+        ref,
         __vars: {
           "--_thumb-y-offset": `${position.y * 100}%`,
           "--_thumb-x-offset": `${position.x * 100}%`
         }
-      }), others)
+      }, others)
     );
   }
 );
 Thumb.displayName = "@raikou/core/ColorPickerThumb";
 
 // ../ColorPicker/src/ColorSlider/ColorSlider.tsx
-var ColorSlider = (0, import_react6.forwardRef)(
-  (props, ref) => {
-    const _a = props, {
-      className,
-      onChange,
-      onChangeEnd,
-      maxValue,
-      round: round3,
-      size: size2 = "md",
-      focusable = true,
-      value,
-      overlays,
-      thumbColor = "transparent",
-      onScrubStart,
-      onScrubEnd
-    } = _a, others = __objRest(_a, [
-      "className",
-      "onChange",
-      "onChangeEnd",
-      "maxValue",
-      "round",
-      "size",
-      "focusable",
-      "value",
-      "overlays",
-      "thumbColor",
-      "onScrubStart",
-      "onScrubEnd"
-    ]);
-    const { getStyles } = useColorPickerContext();
-    const theme = (0, import_core2.useRaikouTheme)();
-    const [position, setPosition] = (0, import_react6.useState)({ y: 0, x: value / maxValue });
-    const positionRef = (0, import_react6.useRef)(position);
-    const getChangeValue = (val) => round3 ? Math.round(val * maxValue) : val * maxValue;
-    const { ref: sliderRef } = (0, import_hooks.useMove)(
-      ({ x, y }) => {
-        positionRef.current = { x, y };
-        onChange == null ? void 0 : onChange(getChangeValue(x));
-      },
-      {
-        onScrubEnd: () => {
-          const { x } = positionRef.current;
-          onChangeEnd == null ? void 0 : onChangeEnd(getChangeValue(x));
-          onScrubEnd == null ? void 0 : onScrubEnd();
-        },
-        onScrubStart
-      }
-    );
-    (0, import_hooks.useDidUpdate)(() => {
-      setPosition({ y: 0, x: value / maxValue });
-    }, [value]);
-    const handleArrow = (event, pos) => {
-      event.preventDefault();
-      const _position = (0, import_hooks.clampUseMovePosition)(pos);
-      onChange == null ? void 0 : onChange(getChangeValue(_position.x));
-      onChangeEnd == null ? void 0 : onChangeEnd(getChangeValue(_position.x));
-    };
-    const handleKeyDown = (event) => {
-      switch (event.key) {
-        case "ArrowRight": {
-          handleArrow(event, { x: position.x + 0.05, y: position.y });
-          break;
-        }
-        case "ArrowLeft": {
-          handleArrow(event, { x: position.x - 0.05, y: position.y });
-          break;
-        }
-      }
-    };
-    const layers = overlays.map((overlay, index3) => /* @__PURE__ */ import_react6.default.createElement("div", __spreadProps(__spreadValues({}, getStyles("sliderOverlay")), { style: overlay, key: index3 })));
-    return /* @__PURE__ */ import_react6.default.createElement(
-      import_core2.Box,
-      __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, others), {
-        ref: (0, import_hooks.useMergedRef)(sliderRef, ref)
-      }), getStyles("slider")), {
-        role: "slider",
-        "aria-valuenow": value,
-        "aria-valuemax": maxValue,
-        "aria-valuemin": 0,
-        tabIndex: focusable ? 0 : -1,
-        onKeyDown: handleKeyDown,
-        "data-focus-ring": theme.focusRing
-      }),
-      layers,
-      /* @__PURE__ */ import_react6.default.createElement(
-        Thumb,
-        __spreadValues({
-          position,
-          size: size2
-        }, getStyles("thumb", {
-          style: { top: (0, import_core2.rem)(1), background: thumbColor }
-        }))
-      )
-    );
+var defaultProps = {};
+var varsResolver = (0, import_core2.createVarsResolver)(() => ({
+  root: {
+    "--test": "test"
   }
-);
+}));
+var ColorSlider = (0, import_core2.factory)((_props, ref) => {
+  var _b;
+  const props = (0, import_core2.useProps)("ColorSlider", defaultProps, _props);
+  const _a = props, {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    onChange,
+    onChangeEnd,
+    maxValue,
+    round: round3,
+    size: size2 = "md",
+    focusable = true,
+    value,
+    overlays,
+    thumbColor = "transparent",
+    onScrubStart,
+    onScrubEnd,
+    __staticSelector = "ColorPicker"
+  } = _a, others = __objRest(_a, [
+    "classNames",
+    "className",
+    "style",
+    "styles",
+    "unstyled",
+    "vars",
+    "onChange",
+    "onChangeEnd",
+    "maxValue",
+    "round",
+    "size",
+    "focusable",
+    "value",
+    "overlays",
+    "thumbColor",
+    "onScrubStart",
+    "onScrubEnd",
+    "__staticSelector"
+  ]);
+  const _getStyles = (0, import_core2.useStyles)({
+    name: __staticSelector,
+    classes: ColorPicker_module_default,
+    props,
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled,
+    vars,
+    varsResolver
+  });
+  const ctxGetStyles = (_b = useColorPickerContext()) == null ? void 0 : _b.getStyles;
+  const getStyles = ctxGetStyles || _getStyles;
+  const theme = (0, import_core2.useRaikouTheme)();
+  const [position, setPosition] = (0, import_react6.useState)({ y: 0, x: value / maxValue });
+  const positionRef = (0, import_react6.useRef)(position);
+  const getChangeValue = (val) => round3 ? Math.round(val * maxValue) : val * maxValue;
+  const { ref: sliderRef } = (0, import_hooks.useMove)(
+    ({ x, y }) => {
+      positionRef.current = { x, y };
+      onChange == null ? void 0 : onChange(getChangeValue(x));
+    },
+    {
+      onScrubEnd: () => {
+        const { x } = positionRef.current;
+        onChangeEnd == null ? void 0 : onChangeEnd(getChangeValue(x));
+        onScrubEnd == null ? void 0 : onScrubEnd();
+      },
+      onScrubStart
+    }
+  );
+  (0, import_hooks.useDidUpdate)(() => {
+    setPosition({ y: 0, x: value / maxValue });
+  }, [value]);
+  const handleArrow = (event, pos) => {
+    event.preventDefault();
+    const _position = (0, import_hooks.clampUseMovePosition)(pos);
+    onChange == null ? void 0 : onChange(getChangeValue(_position.x));
+    onChangeEnd == null ? void 0 : onChangeEnd(getChangeValue(_position.x));
+  };
+  const handleKeyDown = (event) => {
+    switch (event.key) {
+      case "ArrowRight": {
+        handleArrow(event, { x: position.x + 0.05, y: position.y });
+        break;
+      }
+      case "ArrowLeft": {
+        handleArrow(event, { x: position.x - 0.05, y: position.y });
+        break;
+      }
+    }
+  };
+  const layers = overlays.map((overlay, index3) => /* @__PURE__ */ import_react6.default.createElement("div", __spreadProps(__spreadValues({}, getStyles("sliderOverlay")), { style: overlay, key: index3 })));
+  return /* @__PURE__ */ import_react6.default.createElement(
+    import_core2.Box,
+    __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, others), {
+      ref: (0, import_hooks.useMergedRef)(sliderRef, ref)
+    }), getStyles("slider")), {
+      role: "slider",
+      "aria-valuenow": value,
+      "aria-valuemax": maxValue,
+      "aria-valuemin": 0,
+      tabIndex: focusable ? 0 : -1,
+      onKeyDown: handleKeyDown,
+      "data-focus-ring": theme.focusRing,
+      __vars: {
+        "--_cp-thumb-size": `var(--cp-thumb-size-${size2})`
+      }
+    }),
+    layers,
+    /* @__PURE__ */ import_react6.default.createElement(
+      Thumb,
+      __spreadValues({
+        position
+      }, getStyles("thumb", {
+        style: { top: (0, import_core2.rem)(1), background: thumbColor }
+      }))
+    )
+  );
+});
 ColorSlider.displayName = "@raikou/core/ColorSlider";
 
 // ../ColorPicker/src/converters/parsers.ts
@@ -391,12 +421,12 @@ function parseColor(color) {
 }
 
 // ../ColorPicker/src/AlphaSlider/AlphaSlider.tsx
-var defaultProps = {};
+var defaultProps2 = {};
 var AlphaSlider = (0, import_react7.forwardRef)(
   (props, ref) => {
     const _a = (0, import_core3.useProps)(
       "AlphaSlider",
-      defaultProps,
+      defaultProps2,
       props
     ), { value, onChange, onChangeEnd, color } = _a, others = __objRest(_a, ["value", "onChange", "onChangeEnd", "color"]);
     return /* @__PURE__ */ import_react7.default.createElement(
@@ -435,12 +465,11 @@ AlphaSlider.displayName = "@raikou/core/AlphaSlider";
 // ../ColorPicker/src/HueSlider/HueSlider.tsx
 var import_react8 = __toESM(require("react"));
 var import_core4 = require("@raikou/core");
-var defaultProps2 = {};
 var HueSlider = (0, import_react8.forwardRef)(
   (props, ref) => {
     const _a = (0, import_core4.useProps)(
       "HueSlider",
-      defaultProps2,
+      {},
       props
     ), { value, onChange, onChangeEnd, color } = _a, others = __objRest(_a, ["value", "onChange", "onChangeEnd", "color"]);
     return /* @__PURE__ */ import_react8.default.createElement(
@@ -658,8 +687,7 @@ function Saturation(_a) {
     /* @__PURE__ */ import_react9.default.createElement(
       Thumb,
       __spreadValues({
-        position,
-        size: size2
+        position
       }, getStyles("thumb", { style: { backgroundColor: color } }))
     )
   );
@@ -681,7 +709,7 @@ var ColorSwatch_module_default = { "root": "m-de3d2490", "colorOverlay": "m-862f
 var defaultProps3 = {
   withShadow: true
 };
-var varsResolver = (0, import_core6.createVarsResolver)(
+var varsResolver2 = (0, import_core6.createVarsResolver)(
   (_, { radius, size: size2 }) => ({
     root: {
       "--cs-radius": radius === void 0 ? void 0 : (0, import_core6.getRadius)(radius),
@@ -729,7 +757,7 @@ var ColorSwatch = (0, import_core6.polymorphicFactory)(
       styles,
       unstyled,
       vars,
-      varsResolver
+      varsResolver: varsResolver2
     });
     return /* @__PURE__ */ import_react10.default.createElement(
       import_core6.Box,
@@ -797,7 +825,7 @@ var Swatches = (0, import_react11.forwardRef)(
 Swatches.displayName = "@raikou/core/Swatches";
 
 // css-module:./ColorPicker.module.css#css-module
-var ColorPicker_module_default = { "wrapper": "m-fee9c77", "preview": "m-9dddfbac", "body": "m-bffecc3e", "sliders": "m-3283bb96", "thumb": "m-40d572ba", "swatch": "m-d8ee6fd8", "swatches": "m-5711e686", "saturation": "m-202a296e", "saturationOverlay": "m-11b3db02", "slider": "m-d856d47d", "sliderOverlay": "m-8f327113" };
+var ColorPicker_module_default2 = { "wrapper": "m-fee9c77", "preview": "m-9dddfbac", "body": "m-bffecc3e", "sliders": "m-3283bb96", "thumb": "m-40d572ba", "swatch": "m-d8ee6fd8", "swatches": "m-5711e686", "saturation": "m-202a296e", "saturationOverlay": "m-11b3db02", "slider": "m-d856d47d", "sliderOverlay": "m-8f327113" };
 
 // ../ColorPicker/src/ColorPicker.tsx
 var defaultProps4 = {
@@ -806,7 +834,7 @@ var defaultProps4 = {
   focusable: true,
   __staticSelector: "ColorPicker"
 };
-var varsResolver2 = (0, import_core8.createVarsResolver)(
+var varsResolver3 = (0, import_core8.createVarsResolver)(
   (_, { size: size2, swatchesPerRow }) => ({
     wrapper: {
       "--cp-preview-size": (0, import_core8.getSize)(size2, "cp-preview-size"),
@@ -870,7 +898,7 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
   const getStyles = (0, import_core8.useStyles)({
     name: __staticSelector,
     props,
-    classes: ColorPicker_module_default,
+    classes: ColorPicker_module_default2,
     className,
     style,
     classNames,
@@ -878,7 +906,7 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
     unstyled,
     rootSelector: "wrapper",
     vars,
-    varsResolver: varsResolver2
+    varsResolver: varsResolver3
   });
   const formatRef = (0, import_react12.useRef)(format);
   const valueRef = (0, import_react12.useRef)();
@@ -980,7 +1008,8 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
       ColorSwatch,
       __spreadValues({
         color: _value,
-        radius: "sm"
+        radius: "sm",
+        size: "var(--cp-preview-size)"
       }, getStyles("preview"))
     ))),
     Array.isArray(swatches) && /* @__PURE__ */ import_react12.default.createElement(
@@ -1003,7 +1032,7 @@ var ColorPicker = (0, import_core8.factory)((_props, ref) => {
   ));
 });
 ColorPicker.displayName = "@raikou/core/ColorPicker";
-ColorPicker.classes = ColorPicker_module_default;
+ColorPicker.classes = ColorPicker_module_default2;
 
 // ../Input/src/Input.tsx
 var import_react18 = __toESM(require("react"));
@@ -1030,7 +1059,7 @@ var Input_module_default = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "se
 var defaultProps5 = {
   labelElement: "label"
 };
-var varsResolver3 = (0, import_core9.createVarsResolver)((_, { size: size2 }) => ({
+var varsResolver4 = (0, import_core9.createVarsResolver)((_, { size: size2 }) => ({
   label: {
     "--input-label-size": (0, import_core9.getFontSize)(size2),
     "--input-asterisk-color": void 0
@@ -1084,7 +1113,7 @@ var InputLabel = (0, import_core9.factory)((_props, ref) => {
     unstyled,
     rootSelector: "label",
     vars,
-    varsResolver: varsResolver3
+    varsResolver: varsResolver4
   });
   const ctx = useInputWrapperContext();
   const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
@@ -1114,7 +1143,7 @@ InputLabel.displayName = "@raikou/core/InputLabel";
 var import_react14 = __toESM(require("react"));
 var import_core10 = require("@raikou/core");
 var defaultProps6 = {};
-var varsResolver4 = (0, import_core10.createVarsResolver)((_, { size: size2 }) => ({
+var varsResolver5 = (0, import_core10.createVarsResolver)((_, { size: size2 }) => ({
   error: {
     "--input-error-size": size2 === void 0 ? void 0 : `calc(${(0, import_core10.getFontSize)(size2)} - ${(0, import_core10.rem)(2)})`
   }
@@ -1158,7 +1187,7 @@ var InputError = (0, import_core10.factory)((_props, ref) => {
     unstyled,
     rootSelector: "error",
     vars,
-    varsResolver: varsResolver4
+    varsResolver: varsResolver5
   });
   const ctx = useInputWrapperContext();
   const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
@@ -1178,7 +1207,7 @@ InputError.displayName = "@raikou/core/InputError";
 var import_react15 = __toESM(require("react"));
 var import_core11 = require("@raikou/core");
 var defaultProps7 = {};
-var varsResolver5 = (0, import_core11.createVarsResolver)(
+var varsResolver6 = (0, import_core11.createVarsResolver)(
   (_, { size: size2 }) => ({
     description: {
       "--input-description-size": size2 === void 0 ? void 0 : `calc(${(0, import_core11.getFontSize)(size2)} - ${(0, import_core11.rem)(2)})`
@@ -1226,7 +1255,7 @@ var InputDescription = (0, import_core11.factory)(
       unstyled,
       rootSelector: "description",
       vars,
-      varsResolver: varsResolver5
+      varsResolver: varsResolver6
     });
     const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
     return /* @__PURE__ */ import_react15.default.createElement(
@@ -1315,7 +1344,7 @@ var defaultProps9 = {
   inputContainer: (children) => children,
   inputWrapperOrder: ["label", "description", "input", "error"]
 };
-var varsResolver6 = (0, import_core13.createVarsResolver)((_, { size: size2 }) => ({
+var varsResolver7 = (0, import_core13.createVarsResolver)((_, { size: size2 }) => ({
   label: {
     "--input-label-size": (0, import_core13.getFontSize)(size2),
     "--input-asterisk-color": void 0
@@ -1395,7 +1424,7 @@ var InputWrapper = (0, import_core13.factory)((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver6
+    varsResolver: varsResolver7
   });
   const sharedProps = {
     size: size2,
@@ -1491,7 +1520,7 @@ var defaultProps10 = {
   withAria: true,
   withErrorStyles: true
 };
-var varsResolver7 = (0, import_core14.createVarsResolver)((_, props, ctx) => ({
+var varsResolver8 = (0, import_core14.createVarsResolver)((_, props, ctx) => ({
   wrapper: {
     "--input-margin-top": ctx.offsetTop ? "calc(var(--raikou-spacing-xs) / 2)" : void 0,
     "--input-margin-bottom": ctx.offsetBottom ? "calc(var(--raikou-spacing-xs) / 2)" : void 0,
@@ -1589,7 +1618,7 @@ var Input = (0, import_core14.polymorphicFactory)((_props, ref) => {
     stylesCtx,
     rootSelector: "wrapper",
     vars,
-    varsResolver: varsResolver7
+    varsResolver: varsResolver8
   });
   const ariaAttributes = withAria ? {
     required,
@@ -4382,7 +4411,7 @@ var defaultProps14 = {
   __staticSelector: "Popover",
   width: "max-content"
 };
-var varsResolver8 = (0, import_core26.createVarsResolver)(
+var varsResolver9 = (0, import_core26.createVarsResolver)(
   (_, { radius, shadow }) => ({
     dropdown: {
       "--popover-radius": radius === void 0 ? void 0 : (0, import_core26.getRadius)(radius),
@@ -4481,7 +4510,7 @@ function Popover(_props) {
     unstyled,
     rootSelector: "dropdown",
     vars,
-    varsResolver: varsResolver8
+    varsResolver: varsResolver9
   });
   const arrowRef = (0, import_react32.useRef)(null);
   const [targetNode, setTargetNode] = (0, import_react32.useState)(null);
@@ -4770,7 +4799,7 @@ var defaultProps16 = {
   loaders: defaultLoaders,
   type: "oval"
 };
-var varsResolver9 = (0, import_core32.createVarsResolver)(
+var varsResolver10 = (0, import_core32.createVarsResolver)(
   (theme, { size: size2, color }) => ({
     root: {
       "--loader-size": (0, import_core32.getSize)(size2, "loader-size"),
@@ -4815,7 +4844,7 @@ var Loader = (0, import_core32.factory)((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver9
+    varsResolver: varsResolver10
   });
   return /* @__PURE__ */ import_react39.default.createElement(
     import_core32.Box,
@@ -4841,7 +4870,7 @@ var ActionIcon_module_default = { "root": "m-8d3f4000", "loader": "m-302b9fb1", 
 var defaultProps17 = {
   orientation: "horizontal"
 };
-var varsResolver10 = (0, import_core33.createVarsResolver)(
+var varsResolver11 = (0, import_core33.createVarsResolver)(
   (_, { borderWidth }) => ({
     group: { "--ai-border-width": (0, import_core33.rem)(borderWidth) }
   })
@@ -4880,7 +4909,7 @@ var ActionIconGroup = (0, import_core33.factory)(
       styles,
       unstyled,
       vars,
-      varsResolver: varsResolver10,
+      varsResolver: varsResolver11,
       rootSelector: "group"
     });
     return /* @__PURE__ */ import_react40.default.createElement(
@@ -4902,7 +4931,7 @@ var ActionIcon_module_default2 = { "root": "m-8d3f4000", "loader": "m-302b9fb1",
 
 // ../ActionIcon/src/ActionIcon.tsx
 var defaultProps18 = {};
-var varsResolver11 = (0, import_core34.createVarsResolver)(
+var varsResolver12 = (0, import_core34.createVarsResolver)(
   (theme, { size: size2, radius, variant, gradient, color }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
@@ -4972,7 +5001,7 @@ var ActionIcon = (0, import_core34.polymorphicFactory)(
       styles,
       unstyled,
       vars,
-      varsResolver: varsResolver11
+      varsResolver: varsResolver12
     });
     return /* @__PURE__ */ import_react41.default.createElement(
       UnstyledButton,
@@ -5013,7 +5042,7 @@ var defaultProps19 = {
   popoverProps: { transitionProps: { transition: "fade", duration: 0 } },
   withEyeDropper: true
 };
-var varsResolver12 = (0, import_core35.createVarsResolver)((_, { size: size2 }) => ({
+var varsResolver13 = (0, import_core35.createVarsResolver)((_, { size: size2 }) => ({
   eyeDropperIcon: {
     "--ci-eye-dropper-icon-size": (0, import_core35.getSize)(size2, "ci-eye-dropper-icon-size")
   },
@@ -5091,7 +5120,7 @@ var ColorInput = (0, import_core35.factory)((_props, ref) => {
     unstyled,
     rootSelector: "wrapper",
     vars: props.vars,
-    varsResolver: varsResolver12
+    varsResolver: varsResolver13
   });
   const { resolvedClassNames, resolvedStyles } = (0, import_core35.useResolvedStylesApi)({
     classNames,

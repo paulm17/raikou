@@ -35,7 +35,11 @@ const getColumnMaxWidth = (
   columns: number,
   grow: boolean | undefined,
 ) => {
-  if (grow || colSpan === "auto" || colSpan === "content") {
+  if (grow || colSpan === "auto") {
+    return "100%";
+  }
+
+  if (colSpan === "content") {
     return "unset";
   }
 
@@ -50,7 +54,7 @@ const getColumnFlexGrow = (
     return undefined;
   }
 
-  return colSpan === "auto" || grow ? "1" : undefined;
+  return colSpan === "auto" || grow ? "1" : "auto";
 };
 
 const getColumnOffset = (offset: number | undefined, columns: number) =>

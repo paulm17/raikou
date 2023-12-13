@@ -63,12 +63,12 @@ var Link = TipTapLink.extend({
 }).configure({ openOnClick: false });
 
 // src/RichTextEditor.tsx
-import React54, { useMemo as useMemo3 } from "react";
+import React55, { useMemo as useMemo3 } from "react";
 import {
   Box as Box31,
-  factory as factory23,
-  useProps as useProps36,
-  useStyles as useStyles21
+  factory as factory24,
+  useProps as useProps37,
+  useStyles as useStyles22
 } from "@raikou/core";
 
 // src/labels.ts
@@ -444,185 +444,270 @@ function createControl({
 }
 
 // src/RichTextEditorControl/controls.tsx
+import React10 from "react";
+
+// src/icons/Icons.tsx
 import React9 from "react";
-import {
-  IconBold,
-  IconItalic,
-  IconUnderline,
-  IconStrikethrough,
-  IconClearFormatting,
-  IconH1,
-  IconH2,
-  IconH3,
-  IconH4,
-  IconH5,
-  IconH6,
-  IconList,
-  IconListNumbers,
-  IconUnlink,
-  IconBlockquote,
-  IconAlignLeft,
-  IconAlignRight,
-  IconAlignCenter,
-  IconAlignJustified,
-  IconSubscript,
-  IconSuperscript,
-  IconCode,
-  IconHighlight,
-  IconLineDashed,
-  IconCircleOff
-} from "@tabler/icons-react";
+function IconBase(props) {
+  return /* @__PURE__ */ React9.createElement(
+    "svg",
+    __spreadProps(__spreadValues({}, props), {
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 24 24",
+      strokeWidth: "1.5",
+      stroke: "currentColor",
+      fill: "none",
+      strokeLinecap: "round",
+      strokeLinejoin: "round"
+    })
+  );
+}
+function IconBold(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M7 5h6a3.5 3.5 0 0 1 0 7h-6z" }), /* @__PURE__ */ React9.createElement("path", { d: "M13 12h1a3.5 3.5 0 0 1 0 7h-7v-7" }));
+}
+function IconItalic(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 5l6 0" }), /* @__PURE__ */ React9.createElement("path", { d: "M7 19l6 0" }), /* @__PURE__ */ React9.createElement("path", { d: "M14 5l-4 14" }));
+}
+function IconUnderline(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M7 5v5a5 5 0 0 0 10 0v-5" }), /* @__PURE__ */ React9.createElement("path", { d: "M5 19h14" }));
+}
+function IconStrikethrough(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M5 12l14 0" }), /* @__PURE__ */ React9.createElement("path", { d: "M16 6.5a4 2 0 0 0 -4 -1.5h-1a3.5 3.5 0 0 0 0 7h2a3.5 3.5 0 0 1 0 7h-1.5a4 2 0 0 1 -4 -1.5" }));
+}
+function IconClearFormatting(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M17 15l4 4m0 -4l-4 4" }), /* @__PURE__ */ React9.createElement("path", { d: "M7 6v-1h11v1" }), /* @__PURE__ */ React9.createElement("path", { d: "M7 19l4 0" }), /* @__PURE__ */ React9.createElement("path", { d: "M13 5l-4 14" }));
+}
+function IconH1(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M19 18v-8l-2 2" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 6v12" }), /* @__PURE__ */ React9.createElement("path", { d: "M12 6v12" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 18h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M3 18h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 12h8" }), /* @__PURE__ */ React9.createElement("path", { d: "M3 6h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 6h2" }));
+}
+function IconH2(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M17 12a2 2 0 1 1 4 0c0 .591 -.417 1.318 -.816 1.858l-3.184 4.143l4 0" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 6v12" }), /* @__PURE__ */ React9.createElement("path", { d: "M12 6v12" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 18h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M3 18h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 12h8" }), /* @__PURE__ */ React9.createElement("path", { d: "M3 6h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 6h2" }));
+}
+function IconH3(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M19 14a2 2 0 1 0 -2 -2" }), /* @__PURE__ */ React9.createElement("path", { d: "M17 16a2 2 0 1 0 2 -2" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 6v12" }), /* @__PURE__ */ React9.createElement("path", { d: "M12 6v12" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 18h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M3 18h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 12h8" }), /* @__PURE__ */ React9.createElement("path", { d: "M3 6h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 6h2" }));
+}
+function IconH4(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M20 18v-8l-4 6h5" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 6v12" }), /* @__PURE__ */ React9.createElement("path", { d: "M12 6v12" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 18h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M3 18h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 12h8" }), /* @__PURE__ */ React9.createElement("path", { d: "M3 6h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 6h2" }));
+}
+function IconH5(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M17 18h2a2 2 0 1 0 0 -4h-2v-4h4" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 6v12" }), /* @__PURE__ */ React9.createElement("path", { d: "M12 6v12" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 18h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M3 18h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 12h8" }), /* @__PURE__ */ React9.createElement("path", { d: "M3 6h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 6h2" }));
+}
+function IconH6(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M19 14a2 2 0 1 0 0 4a2 2 0 0 0 0 -4z" }), /* @__PURE__ */ React9.createElement("path", { d: "M21 12a2 2 0 1 0 -4 0v4" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 6v12" }), /* @__PURE__ */ React9.createElement("path", { d: "M12 6v12" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 18h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M3 18h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 12h8" }), /* @__PURE__ */ React9.createElement("path", { d: "M3 6h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 6h2" }));
+}
+function IconList(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M9 6l11 0" }), /* @__PURE__ */ React9.createElement("path", { d: "M9 12l11 0" }), /* @__PURE__ */ React9.createElement("path", { d: "M9 18l11 0" }), /* @__PURE__ */ React9.createElement("path", { d: "M5 6l0 .01" }), /* @__PURE__ */ React9.createElement("path", { d: "M5 12l0 .01" }), /* @__PURE__ */ React9.createElement("path", { d: "M5 18l0 .01" }));
+}
+function IconListNumbers(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 6h9" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 12h9" }), /* @__PURE__ */ React9.createElement("path", { d: "M12 18h8" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 16a2 2 0 1 1 4 0c0 .591 -.5 1 -1 1.5l-3 2.5h4" }), /* @__PURE__ */ React9.createElement("path", { d: "M6 10v-6l-2 2" }));
+}
+function IconUnlink(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M17 22v-2" }), /* @__PURE__ */ React9.createElement("path", { d: "M9 15l6 -6" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" }), /* @__PURE__ */ React9.createElement("path", { d: "M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" }), /* @__PURE__ */ React9.createElement("path", { d: "M20 17h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M2 7h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M7 2v2" }));
+}
+function IconBlockquote(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M6 15h15" }), /* @__PURE__ */ React9.createElement("path", { d: "M21 19h-15" }), /* @__PURE__ */ React9.createElement("path", { d: "M15 11h6" }), /* @__PURE__ */ React9.createElement("path", { d: "M21 7h-6" }), /* @__PURE__ */ React9.createElement("path", { d: "M9 9h1a1 1 0 1 1 -1 1v-2.5a2 2 0 0 1 2 -2" }), /* @__PURE__ */ React9.createElement("path", { d: "M3 9h1a1 1 0 1 1 -1 1v-2.5a2 2 0 0 1 2 -2" }));
+}
+function IconAlignLeft(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 6l16 0" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 12l10 0" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 18l14 0" }));
+}
+function IconAlignRight(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 6l16 0" }), /* @__PURE__ */ React9.createElement("path", { d: "M10 12l10 0" }), /* @__PURE__ */ React9.createElement("path", { d: "M6 18l14 0" }));
+}
+function IconAlignCenter(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 6l16 0" }), /* @__PURE__ */ React9.createElement("path", { d: "M8 12l8 0" }), /* @__PURE__ */ React9.createElement("path", { d: "M6 18l12 0" }));
+}
+function IconAlignJustified(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 6l16 0" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 12l16 0" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 18l12 0" }));
+}
+function IconSubscript(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M5 7l8 10m-8 0l8 -10" }), /* @__PURE__ */ React9.createElement("path", { d: "M21 20h-4l3.5 -4a1.73 1.73 0 0 0 -3.5 -2" }));
+}
+function IconSuperscript(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M5 7l8 10m-8 0l8 -10" }), /* @__PURE__ */ React9.createElement("path", { d: "M21 11h-4l3.5 -4a1.73 1.73 0 0 0 -3.5 -2" }));
+}
+function IconCode(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M7 8l-4 4l4 4" }), /* @__PURE__ */ React9.createElement("path", { d: "M17 8l4 4l-4 4" }), /* @__PURE__ */ React9.createElement("path", { d: "M14 4l-4 16" }));
+}
+function IconHighlight(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M3 19h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" }), /* @__PURE__ */ React9.createElement("path", { d: "M12.5 5.5l4 4" }), /* @__PURE__ */ React9.createElement("path", { d: "M4.5 13.5l4 4" }), /* @__PURE__ */ React9.createElement("path", { d: "M21 15v4h-8l4 -4z" }));
+}
+function IconLineDashed(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M5 12h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M17 12h2" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 12h2" }));
+}
+function IconCircleOff(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M20.042 16.045a9 9 0 0 0 -12.087 -12.087m-2.318 1.677a9 9 0 1 0 12.725 12.73" }), /* @__PURE__ */ React9.createElement("path", { d: "M3 3l18 18" }));
+}
+function IconColorPicker(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 7l6 6" }), /* @__PURE__ */ React9.createElement("path", { d: "M4 16l11.7 -11.7a1 1 0 0 1 1.4 0l2.6 2.6a1 1 0 0 1 0 1.4l-11.7 11.7h-4v-4z" }));
+}
+function IconX(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M18 6l-12 12" }), /* @__PURE__ */ React9.createElement("path", { d: "M6 6l12 12" }));
+}
+function IconPalette(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25" }), /* @__PURE__ */ React9.createElement("path", { d: "M8.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" }), /* @__PURE__ */ React9.createElement("path", { d: "M12.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" }), /* @__PURE__ */ React9.createElement("path", { d: "M16.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" }));
+}
+function IconCheck(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M5 12l5 5l10 -10" }));
+}
+function IconLink(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M9 15l6 -6" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" }), /* @__PURE__ */ React9.createElement("path", { d: "M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" }));
+}
+function IconExternalLink(props) {
+  return /* @__PURE__ */ React9.createElement(IconBase, __spreadValues({}, props), /* @__PURE__ */ React9.createElement("path", { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }), /* @__PURE__ */ React9.createElement("path", { d: "M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" }), /* @__PURE__ */ React9.createElement("path", { d: "M11 13l9 -9" }), /* @__PURE__ */ React9.createElement("path", { d: "M15 4h5v5" }));
+}
+
+// src/RichTextEditorControl/controls.tsx
 var BoldControl = createControl({
   label: "boldControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconBold, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconBold, __spreadValues({}, props)),
   isActive: { name: "bold" },
   operation: { name: "toggleBold" }
 });
 var ItalicControl = createControl({
   label: "italicControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconItalic, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconItalic, __spreadValues({}, props)),
   isActive: { name: "italic" },
   operation: { name: "toggleItalic" }
 });
 var UnderlineControl = createControl({
   label: "underlineControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconUnderline, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconUnderline, __spreadValues({}, props)),
   isActive: { name: "underline" },
   operation: { name: "toggleUnderline" }
 });
 var StrikeThroughControl = createControl({
   label: "strikeControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconStrikethrough, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconStrikethrough, __spreadValues({}, props)),
   isActive: { name: "strike" },
   operation: { name: "toggleStrike" }
 });
 var ClearFormattingControl = createControl({
   label: "clearFormattingControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconClearFormatting, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconClearFormatting, __spreadValues({}, props)),
   operation: { name: "unsetAllMarks" }
 });
 var UnlinkControl = createControl({
   label: "unlinkControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconUnlink, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconUnlink, __spreadValues({}, props)),
   operation: { name: "unsetLink" }
 });
 var BulletListControl = createControl({
   label: "bulletListControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconList, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconList, __spreadValues({}, props)),
   isActive: { name: "bulletList" },
   operation: { name: "toggleBulletList" }
 });
 var OrderedListControl = createControl({
   label: "orderedListControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconListNumbers, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconListNumbers, __spreadValues({}, props)),
   isActive: { name: "orderedList" },
   operation: { name: "toggleOrderedList" }
 });
 var H1Control = createControl({
   label: "h1ControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconH1, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconH1, __spreadValues({}, props)),
   isActive: { name: "heading", attributes: { level: 1 } },
   operation: { name: "toggleHeading", attributes: { level: 1 } }
 });
 var H2Control = createControl({
   label: "h2ControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconH2, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconH2, __spreadValues({}, props)),
   isActive: { name: "heading", attributes: { level: 2 } },
   operation: { name: "toggleHeading", attributes: { level: 2 } }
 });
 var H3Control = createControl({
   label: "h3ControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconH3, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconH3, __spreadValues({}, props)),
   isActive: { name: "heading", attributes: { level: 3 } },
   operation: { name: "toggleHeading", attributes: { level: 3 } }
 });
 var H4Control = createControl({
   label: "h4ControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconH4, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconH4, __spreadValues({}, props)),
   isActive: { name: "heading", attributes: { level: 4 } },
   operation: { name: "toggleHeading", attributes: { level: 4 } }
 });
 var H5Control = createControl({
   label: "h5ControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconH5, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconH5, __spreadValues({}, props)),
   isActive: { name: "heading", attributes: { level: 5 } },
   operation: { name: "toggleHeading", attributes: { level: 5 } }
 });
 var H6Control = createControl({
   label: "h6ControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconH6, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconH6, __spreadValues({}, props)),
   isActive: { name: "heading", attributes: { level: 6 } },
   operation: { name: "toggleHeading", attributes: { level: 6 } }
 });
 var BlockquoteControl = createControl({
   label: "blockquoteControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconBlockquote, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconBlockquote, __spreadValues({}, props)),
   isActive: { name: "blockquote" },
   operation: { name: "toggleBlockquote" }
 });
 var AlignLeftControl = createControl({
   label: "alignLeftControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconAlignLeft, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconAlignLeft, __spreadValues({}, props)),
   operation: { name: "setTextAlign", attributes: "left" }
 });
 var AlignRightControl = createControl({
   label: "alignRightControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconAlignRight, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconAlignRight, __spreadValues({}, props)),
   operation: { name: "setTextAlign", attributes: "right" }
 });
 var AlignCenterControl = createControl({
   label: "alignCenterControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconAlignCenter, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconAlignCenter, __spreadValues({}, props)),
   operation: { name: "setTextAlign", attributes: "center" }
 });
 var AlignJustifyControl = createControl({
   label: "alignJustifyControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconAlignJustified, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconAlignJustified, __spreadValues({}, props)),
   operation: { name: "setTextAlign", attributes: "justify" }
 });
 var SubscriptControl = createControl({
   label: "subscriptControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconSubscript, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconSubscript, __spreadValues({}, props)),
   isActive: { name: "subscript" },
   operation: { name: "toggleSubscript" }
 });
 var SuperscriptControl = createControl({
   label: "superscriptControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconSuperscript, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconSuperscript, __spreadValues({}, props)),
   isActive: { name: "superscript" },
   operation: { name: "toggleSuperscript" }
 });
 var CodeControl = createControl({
   label: "codeControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconCode, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconCode, __spreadValues({}, props)),
   isActive: { name: "code" },
   operation: { name: "toggleCode" }
 });
 var CodeBlockControl = createControl({
   label: "codeBlockControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconCode, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconCode, __spreadValues({}, props)),
   isActive: { name: "codeBlock" },
   operation: { name: "toggleCodeBlock" }
 });
 var HighlightControl = createControl({
   label: "highlightControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconHighlight, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconHighlight, __spreadValues({}, props)),
   isActive: { name: "highlight" },
   operation: { name: "toggleHighlight" }
 });
 var HrControl = createControl({
   label: "hrControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconLineDashed, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconLineDashed, __spreadValues({}, props)),
   operation: { name: "setHorizontalRule" }
 });
 var UnsetColorControl = createControl({
   label: "unsetColorControlLabel",
-  icon: (props) => /* @__PURE__ */ React9.createElement(IconCircleOff, __spreadProps(__spreadValues({}, props), { stroke: 1.5 })),
+  icon: (props) => /* @__PURE__ */ React10.createElement(IconCircleOff, __spreadValues({}, props)),
   operation: { name: "unsetColor" }
 });
 
 // src/RichTextEditorControl/RichTextEditorLinkControl.tsx
-import React38, { useState as useState10 } from "react";
+import React39, { useState as useState10 } from "react";
 import {
   factory as factory18,
   useProps as useProps25,
@@ -631,7 +716,7 @@ import {
 } from "@raikou/core";
 
 // ../components/Popover/src/Popover.tsx
-import React19, { useRef as useRef6, useState as useState7, useCallback as useCallback3 } from "react";
+import React20, { useRef as useRef6, useState as useState7, useCallback as useCallback3 } from "react";
 import { useId as useId2, useClickOutside } from "@raikou/hooks";
 import {
   getDefaultZIndex,
@@ -2156,7 +2241,7 @@ var computePosition2 = (reference, floating, options) => {
 };
 
 // ../../../node_modules/.pnpm/@floating-ui+react-dom@1.3.0_react-dom@18.2.0_react@18.2.0/node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.esm.js
-import * as React10 from "react";
+import * as React11 from "react";
 import { useLayoutEffect as useLayoutEffect2, useEffect as useEffect2 } from "react";
 import * as ReactDOM from "react-dom";
 var arrow2 = (options) => {
@@ -2237,7 +2322,7 @@ function deepEqual(a, b) {
   return a !== a && b !== b;
 }
 function useLatestRef(value) {
-  const ref = React10.useRef(value);
+  const ref = React11.useRef(value);
   index(() => {
     ref.current = value;
   });
@@ -2255,7 +2340,7 @@ function useFloating(options) {
     whileElementsMounted,
     open
   } = options;
-  const [data, setData] = React10.useState({
+  const [data, setData] = React11.useState({
     x: null,
     y: null,
     strategy,
@@ -2263,30 +2348,30 @@ function useFloating(options) {
     middlewareData: {},
     isPositioned: false
   });
-  const [latestMiddleware, setLatestMiddleware] = React10.useState(middleware);
+  const [latestMiddleware, setLatestMiddleware] = React11.useState(middleware);
   if (!deepEqual(latestMiddleware, middleware)) {
     setLatestMiddleware(middleware);
   }
-  const referenceRef = React10.useRef(null);
-  const floatingRef = React10.useRef(null);
-  const dataRef = React10.useRef(data);
+  const referenceRef = React11.useRef(null);
+  const floatingRef = React11.useRef(null);
+  const dataRef = React11.useRef(data);
   const whileElementsMountedRef = useLatestRef(whileElementsMounted);
   const platformRef = useLatestRef(platform2);
-  const [reference, _setReference] = React10.useState(null);
-  const [floating, _setFloating] = React10.useState(null);
-  const setReference = React10.useCallback((node) => {
+  const [reference, _setReference] = React11.useState(null);
+  const [floating, _setFloating] = React11.useState(null);
+  const setReference = React11.useCallback((node) => {
     if (referenceRef.current !== node) {
       referenceRef.current = node;
       _setReference(node);
     }
   }, []);
-  const setFloating = React10.useCallback((node) => {
+  const setFloating = React11.useCallback((node) => {
     if (floatingRef.current !== node) {
       floatingRef.current = node;
       _setFloating(node);
     }
   }, []);
-  const update = React10.useCallback(() => {
+  const update = React11.useCallback(() => {
     if (!referenceRef.current || !floatingRef.current) {
       return;
     }
@@ -2318,7 +2403,7 @@ function useFloating(options) {
       }));
     }
   }, [open]);
-  const isMountedRef = React10.useRef(false);
+  const isMountedRef = React11.useRef(false);
   index(() => {
     isMountedRef.current = true;
     return () => {
@@ -2334,17 +2419,17 @@ function useFloating(options) {
       }
     }
   }, [reference, floating, update, whileElementsMountedRef]);
-  const refs = React10.useMemo(() => ({
+  const refs = React11.useMemo(() => ({
     reference: referenceRef,
     floating: floatingRef,
     setReference,
     setFloating
   }), [setReference, setFloating]);
-  const elements = React10.useMemo(() => ({
+  const elements = React11.useMemo(() => ({
     reference,
     floating
   }), [reference, floating]);
-  return React10.useMemo(() => __spreadProps(__spreadValues({}, data), {
+  return React11.useMemo(() => __spreadProps(__spreadValues({}, data), {
     update,
     refs,
     elements,
@@ -2354,7 +2439,7 @@ function useFloating(options) {
 }
 
 // ../../../node_modules/.pnpm/@floating-ui+react@0.23.1_react-dom@18.2.0_react@18.2.0/node_modules/@floating-ui/react/dist/floating-ui.react.esm.js
-import * as React11 from "react";
+import * as React12 from "react";
 import { useLayoutEffect as useLayoutEffect3, useEffect as useEffect4, useRef as useRef3 } from "react";
 import { createPortal, flushSync as flushSync2 } from "react-dom";
 var index2 = typeof document !== "undefined" ? useLayoutEffect3 : useEffect4;
@@ -2362,20 +2447,20 @@ var serverHandoffComplete = false;
 var count = 0;
 var genId = () => "floating-ui-" + count++;
 function useFloatingId() {
-  const [id, setId] = React11.useState(() => serverHandoffComplete ? genId() : void 0);
+  const [id, setId] = React12.useState(() => serverHandoffComplete ? genId() : void 0);
   index2(() => {
     if (id == null) {
       setId(genId());
     }
   }, []);
-  React11.useEffect(() => {
+  React12.useEffect(() => {
     if (!serverHandoffComplete) {
       serverHandoffComplete = true;
     }
   }, []);
   return id;
 }
-var useReactId = React11[/* @__PURE__ */ "useId".toString()];
+var useReactId = React12[/* @__PURE__ */ "useId".toString()];
 var useId = useReactId || useFloatingId;
 function createPubSub() {
   const map = /* @__PURE__ */ new Map();
@@ -2393,13 +2478,13 @@ function createPubSub() {
     }
   };
 }
-var FloatingNodeContext = /* @__PURE__ */ React11.createContext(null);
-var FloatingTreeContext = /* @__PURE__ */ React11.createContext(null);
+var FloatingNodeContext = /* @__PURE__ */ React12.createContext(null);
+var FloatingTreeContext = /* @__PURE__ */ React12.createContext(null);
 var useFloatingParentNodeId = () => {
   var _React$useContext;
-  return ((_React$useContext = React11.useContext(FloatingNodeContext)) == null ? void 0 : _React$useContext.id) || null;
+  return ((_React$useContext = React12.useContext(FloatingNodeContext)) == null ? void 0 : _React$useContext.id) || null;
 };
-var useFloatingTree = () => React11.useContext(FloatingTreeContext);
+var useFloatingTree = () => React12.useContext(FloatingTreeContext);
 function getDocument(node) {
   return (node == null ? void 0 : node.ownerDocument) || document;
 }
@@ -2523,20 +2608,20 @@ var useHover = function(context, props) {
   const parentId = useFloatingParentNodeId();
   const handleCloseRef = useLatestRef2(handleClose);
   const delayRef = useLatestRef2(delay);
-  const pointerTypeRef = React11.useRef();
-  const timeoutRef = React11.useRef();
-  const handlerRef = React11.useRef();
-  const restTimeoutRef = React11.useRef();
-  const blockMouseMoveRef = React11.useRef(true);
-  const performedPointerEventsMutationRef = React11.useRef(false);
-  const unbindMouseMoveRef = React11.useRef(() => {
+  const pointerTypeRef = React12.useRef();
+  const timeoutRef = React12.useRef();
+  const handlerRef = React12.useRef();
+  const restTimeoutRef = React12.useRef();
+  const blockMouseMoveRef = React12.useRef(true);
+  const performedPointerEventsMutationRef = React12.useRef(false);
+  const unbindMouseMoveRef = React12.useRef(() => {
   });
-  const isHoverOpen = React11.useCallback(() => {
+  const isHoverOpen = React12.useCallback(() => {
     var _dataRef$current$open;
     const type = (_dataRef$current$open = dataRef.current.openEvent) == null ? void 0 : _dataRef$current$open.type;
     return (type == null ? void 0 : type.includes("mouse")) && type !== "mousedown";
   }, [dataRef]);
-  React11.useEffect(() => {
+  React12.useEffect(() => {
     if (!enabled) {
       return;
     }
@@ -2550,7 +2635,7 @@ var useHover = function(context, props) {
       events.off("dismiss", onDismiss);
     };
   }, [enabled, events]);
-  React11.useEffect(() => {
+  React12.useEffect(() => {
     if (!enabled || !handleCloseRef.current || !open) {
       return;
     }
@@ -2565,7 +2650,7 @@ var useHover = function(context, props) {
       html.removeEventListener("mouseleave", onLeave);
     };
   }, [floating, open, onOpenChange, enabled, handleCloseRef, dataRef, isHoverOpen]);
-  const closeWithDelay = React11.useCallback(function(runElseBranch) {
+  const closeWithDelay = React12.useCallback(function(runElseBranch) {
     if (runElseBranch === void 0) {
       runElseBranch = true;
     }
@@ -2578,11 +2663,11 @@ var useHover = function(context, props) {
       onOpenChange(false);
     }
   }, [delayRef, onOpenChange]);
-  const cleanupMouseMoveHandler = React11.useCallback(() => {
+  const cleanupMouseMoveHandler = React12.useCallback(() => {
     unbindMouseMoveRef.current();
     handlerRef.current = void 0;
   }, []);
-  const clearPointerEvents = React11.useCallback(() => {
+  const clearPointerEvents = React12.useCallback(() => {
     if (performedPointerEventsMutationRef.current) {
       const body = getDocument(refs.floating.current).body;
       body.style.pointerEvents = "";
@@ -2590,7 +2675,7 @@ var useHover = function(context, props) {
       performedPointerEventsMutationRef.current = false;
     }
   }, [refs]);
-  React11.useEffect(() => {
+  React12.useEffect(() => {
     if (!enabled) {
       return;
     }
@@ -2712,7 +2797,7 @@ var useHover = function(context, props) {
       clearPointerEvents();
     }
   }, [open, cleanupMouseMoveHandler, clearPointerEvents]);
-  React11.useEffect(() => {
+  React12.useEffect(() => {
     return () => {
       cleanupMouseMoveHandler();
       clearTimeout(timeoutRef.current);
@@ -2720,7 +2805,7 @@ var useHover = function(context, props) {
       clearPointerEvents();
     };
   }, [enabled, cleanupMouseMoveHandler, clearPointerEvents]);
-  return React11.useMemo(() => {
+  return React12.useMemo(() => {
     if (!enabled) {
       return {};
     }
@@ -2760,7 +2845,7 @@ var useHover = function(context, props) {
     };
   }, [events, enabled, restMs, open, onOpenChange, closeWithDelay]);
 };
-var FloatingDelayGroupContext = /* @__PURE__ */ React11.createContext({
+var FloatingDelayGroupContext = /* @__PURE__ */ React12.createContext({
   delay: 0,
   initialDelay: 0,
   timeoutMs: 0,
@@ -2771,22 +2856,22 @@ var FloatingDelayGroupContext = /* @__PURE__ */ React11.createContext({
   },
   isInstantPhase: false
 });
-var useDelayGroupContext = () => React11.useContext(FloatingDelayGroupContext);
+var useDelayGroupContext = () => React12.useContext(FloatingDelayGroupContext);
 var FloatingDelayGroup = (_ref) => {
   let {
     children,
     delay,
     timeoutMs = 0
   } = _ref;
-  const [state, setState] = React11.useReducer((prev, next) => __spreadValues(__spreadValues({}, prev), next), {
+  const [state, setState] = React12.useReducer((prev, next) => __spreadValues(__spreadValues({}, prev), next), {
     delay,
     timeoutMs,
     initialDelay: delay,
     currentId: null,
     isInstantPhase: false
   });
-  const initialCurrentIdRef = React11.useRef(null);
-  const setCurrentId = React11.useCallback((currentId) => {
+  const initialCurrentIdRef = React12.useRef(null);
+  const setCurrentId = React12.useCallback((currentId) => {
     setState({
       currentId
     });
@@ -2807,8 +2892,8 @@ var FloatingDelayGroup = (_ref) => {
       initialCurrentIdRef.current = null;
     }
   }, [state.currentId]);
-  return /* @__PURE__ */ React11.createElement(FloatingDelayGroupContext.Provider, {
-    value: React11.useMemo(() => __spreadProps(__spreadValues({}, state), {
+  return /* @__PURE__ */ React12.createElement(FloatingDelayGroupContext.Provider, {
+    value: React12.useMemo(() => __spreadProps(__spreadValues({}, state), {
       setState,
       setCurrentId
     }), [state, setState, setCurrentId])
@@ -2899,10 +2984,10 @@ function getTarget(event) {
   }
   return event.target;
 }
-var useInsertionEffect = React11[/* @__PURE__ */ "useInsertionEffect".toString()];
+var useInsertionEffect = React12[/* @__PURE__ */ "useInsertionEffect".toString()];
 var useSafeInsertionEffect = useInsertionEffect || ((fn) => fn());
 function useEvent(callback) {
-  const ref = React11.useRef(() => {
+  const ref = React12.useRef(() => {
     if (process.env.NODE_ENV !== "production") {
       throw new Error("Cannot call an event handler while rendering.");
     }
@@ -2910,7 +2995,7 @@ function useEvent(callback) {
   useSafeInsertionEffect(() => {
     ref.current = callback;
   });
-  return React11.useCallback(function() {
+  return React12.useCallback(function() {
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
@@ -2974,7 +3059,7 @@ var useDismiss = function(context, props) {
   const nested = useFloatingParentNodeId() != null;
   const outsidePressFn = useEvent(typeof unstable_outsidePress === "function" ? unstable_outsidePress : () => false);
   const outsidePress = typeof unstable_outsidePress === "function" ? outsidePressFn : unstable_outsidePress;
-  const insideReactTreeRef = React11.useRef(false);
+  const insideReactTreeRef = React12.useRef(false);
   const {
     escapeKeyBubbles,
     outsidePressBubbles
@@ -3065,7 +3150,7 @@ var useDismiss = function(context, props) {
     });
     onOpenChange(false);
   });
-  React11.useEffect(() => {
+  React12.useEffect(() => {
     if (!open || !enabled) {
       return;
     }
@@ -3106,10 +3191,10 @@ var useDismiss = function(context, props) {
       });
     };
   }, [dataRef, floating, domReference, reference, escapeKey, outsidePress, outsidePressEvent, open, onOpenChange, ancestorScroll, enabled, escapeKeyBubbles, outsidePressBubbles, closeOnEscapeKeyDown, closeOnPressOutside]);
-  React11.useEffect(() => {
+  React12.useEffect(() => {
     insideReactTreeRef.current = false;
   }, [outsidePress, outsidePressEvent]);
-  return React11.useMemo(() => {
+  return React12.useMemo(() => {
     if (!enabled) {
       return {};
     }
@@ -3156,10 +3241,10 @@ var useFocus = function(context, props) {
     enabled = true,
     keyboardOnly = true
   } = props;
-  const pointerTypeRef = React11.useRef("");
-  const blockFocusRef = React11.useRef(false);
-  const timeoutRef = React11.useRef();
-  React11.useEffect(() => {
+  const pointerTypeRef = React12.useRef("");
+  const blockFocusRef = React12.useRef(false);
+  const timeoutRef = React12.useRef();
+  React12.useEffect(() => {
     if (!enabled) {
       return;
     }
@@ -3175,7 +3260,7 @@ var useFocus = function(context, props) {
       win.removeEventListener("blur", onBlur);
     };
   }, [floating, domReference, open, enabled]);
-  React11.useEffect(() => {
+  React12.useEffect(() => {
     if (!enabled) {
       return;
     }
@@ -3189,12 +3274,12 @@ var useFocus = function(context, props) {
       events.off("dismiss", onDismiss);
     };
   }, [events, enabled]);
-  React11.useEffect(() => {
+  React12.useEffect(() => {
     return () => {
       clearTimeout(timeoutRef.current);
     };
   }, []);
-  return React11.useMemo(() => {
+  return React12.useMemo(() => {
     if (!enabled) {
       return {};
     }
@@ -3249,7 +3334,7 @@ var useRole = function(context, props) {
     role = "dialog"
   } = props;
   const referenceId = useId();
-  return React11.useMemo(() => {
+  return React12.useMemo(() => {
     const floatingProps = {
       id: floatingId,
       role
@@ -3292,19 +3377,19 @@ function useFloating2(options) {
   } = options;
   const position = useFloating(options);
   const tree = useFloatingTree();
-  const domReferenceRef = React11.useRef(null);
-  const dataRef = React11.useRef({});
-  const events = React11.useState(() => createPubSub())[0];
+  const domReferenceRef = React12.useRef(null);
+  const dataRef = React12.useRef({});
+  const events = React12.useState(() => createPubSub())[0];
   const floatingId = useId();
-  const [domReference, setDomReference] = React11.useState(null);
-  const setPositionReference = React11.useCallback((node) => {
+  const [domReference, setDomReference] = React12.useState(null);
+  const setPositionReference = React12.useCallback((node) => {
     const positionReference = isElement2(node) ? {
       getBoundingClientRect: () => node.getBoundingClientRect(),
       contextElement: node
     } : node;
     position.refs.setReference(positionReference);
   }, [position.refs]);
-  const setReference = React11.useCallback((node) => {
+  const setReference = React12.useCallback((node) => {
     if (isElement2(node) || node === null) {
       domReferenceRef.current = node;
       setDomReference(node);
@@ -3316,16 +3401,16 @@ function useFloating2(options) {
       position.refs.setReference(node);
     }
   }, [position.refs]);
-  const refs = React11.useMemo(() => __spreadProps(__spreadValues({}, position.refs), {
+  const refs = React12.useMemo(() => __spreadProps(__spreadValues({}, position.refs), {
     setReference,
     setPositionReference,
     domReference: domReferenceRef
   }), [position.refs, setReference, setPositionReference]);
-  const elements = React11.useMemo(() => __spreadProps(__spreadValues({}, position.elements), {
+  const elements = React12.useMemo(() => __spreadProps(__spreadValues({}, position.elements), {
     domReference
   }), [position.elements, domReference]);
   const onOpenChange = useEvent(unstable_onOpenChange);
-  const context = React11.useMemo(() => __spreadProps(__spreadValues({}, position), {
+  const context = React12.useMemo(() => __spreadProps(__spreadValues({}, position), {
     refs,
     elements,
     dataRef,
@@ -3341,7 +3426,7 @@ function useFloating2(options) {
       node.context = context;
     }
   });
-  return React11.useMemo(() => __spreadProps(__spreadValues({}, position), {
+  return React12.useMemo(() => __spreadProps(__spreadValues({}, position), {
     context,
     refs,
     elements,
@@ -3386,17 +3471,17 @@ var useInteractions = function(propsList) {
     propsList = [];
   }
   const deps = propsList;
-  const getReferenceProps = React11.useCallback(
+  const getReferenceProps = React12.useCallback(
     (userProps) => mergeProps(userProps, propsList, "reference"),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     deps
   );
-  const getFloatingProps = React11.useCallback(
+  const getFloatingProps = React12.useCallback(
     (userProps) => mergeProps(userProps, propsList, "floating"),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     deps
   );
-  const getItemProps = React11.useCallback(
+  const getItemProps = React12.useCallback(
     (userProps) => mergeProps(userProps, propsList, "item"),
     // Granularly check for `item` changes, because the `getItemProps` getter
     // should be as referentially stable as possible since it may be passed as
@@ -3405,7 +3490,7 @@ var useInteractions = function(propsList) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     propsList.map((key) => key == null ? void 0 : key.item)
   );
-  return React11.useMemo(() => ({
+  return React12.useMemo(() => ({
     getReferenceProps,
     getFloatingProps,
     getItemProps
@@ -3456,7 +3541,7 @@ function getFloatingPosition(dir, position) {
 }
 
 // ../components/Floating/src/FloatingArrow/FloatingArrow.tsx
-import React12, { forwardRef as forwardRef3 } from "react";
+import React13, { forwardRef as forwardRef3 } from "react";
 import { useDirection } from "@raikou/core";
 
 // ../components/Floating/src/FloatingArrow/get-arrow-position-styles.ts
@@ -3569,7 +3654,7 @@ var FloatingArrow = forwardRef3(
     if (!visible) {
       return null;
     }
-    return /* @__PURE__ */ React12.createElement(
+    return /* @__PURE__ */ React13.createElement(
       "div",
       __spreadProps(__spreadValues({}, others), {
         ref,
@@ -3753,7 +3838,7 @@ var PopoverTarget = factory6((props, ref) => {
 PopoverTarget.displayName = "@raikou/core/PopoverTarget";
 
 // ../components/Popover/src/PopoverDropdown/PopoverDropdown.tsx
-import React18 from "react";
+import React19 from "react";
 import { useFocusReturn, useMergedRef as useMergedRef3 } from "@raikou/hooks";
 import {
   Box as Box6,
@@ -3764,7 +3849,7 @@ import {
 } from "@raikou/core";
 
 // ../components/Portal/src/Portal.tsx
-import React14, { useRef as useRef4, useState as useState5, forwardRef as forwardRef4 } from "react";
+import React15, { useRef as useRef4, useState as useState5, forwardRef as forwardRef4 } from "react";
 import { createPortal as createPortal2 } from "react-dom";
 import { useIsomorphicEffect, assignRef } from "@raikou/hooks";
 import { useProps as useProps8 } from "@raikou/core";
@@ -3801,12 +3886,12 @@ var Portal = forwardRef4((props, ref) => {
   if (!mounted || !nodeRef.current) {
     return null;
   }
-  return createPortal2(/* @__PURE__ */ React14.createElement(React14.Fragment, null, children), nodeRef.current);
+  return createPortal2(/* @__PURE__ */ React15.createElement(React15.Fragment, null, children), nodeRef.current);
 });
 Portal.displayName = "@raikou/core/Portal";
 
 // ../components/Portal/src/OptionalPortal.tsx
-import React15 from "react";
+import React16 from "react";
 function OptionalPortal(_a) {
   var _b = _a, {
     withinPortal = true,
@@ -3816,9 +3901,9 @@ function OptionalPortal(_a) {
     "children"
   ]);
   if (withinPortal) {
-    return /* @__PURE__ */ React15.createElement(Portal, __spreadValues({}, others), children);
+    return /* @__PURE__ */ React16.createElement(Portal, __spreadValues({}, others), children);
   }
-  return /* @__PURE__ */ React15.createElement(React15.Fragment, null, children);
+  return /* @__PURE__ */ React16.createElement(React16.Fragment, null, children);
 }
 OptionalPortal.displayName = "@raikou/core/OptionalPortal";
 
@@ -3925,7 +4010,7 @@ var transitions = {
 };
 
 // ../components/Transition/src/Transition.tsx
-import React16 from "react";
+import React17 from "react";
 
 // ../components/Transition/src/get-transition-styles/get-transition-styles.ts
 var transitionStatuses = {
@@ -4042,9 +4127,9 @@ function Transition({
     onExited
   });
   if (transitionDuration === 0) {
-    return mounted ? /* @__PURE__ */ React16.createElement(React16.Fragment, null, children({})) : keepMounted ? children({ display: "none" }) : null;
+    return mounted ? /* @__PURE__ */ React17.createElement(React17.Fragment, null, children({})) : keepMounted ? children({ display: "none" }) : null;
   }
-  return transitionStatus === "exited" ? keepMounted ? children({ display: "none" }) : null : /* @__PURE__ */ React16.createElement(React16.Fragment, null, children(
+  return transitionStatus === "exited" ? keepMounted ? children({ display: "none" }) : null : /* @__PURE__ */ React17.createElement(React17.Fragment, null, children(
     getTransitionStyles({
       transition,
       duration: transitionDuration,
@@ -4122,7 +4207,7 @@ var PopoverDropdown = factory7(
     if (ctx.disabled) {
       return null;
     }
-    return /* @__PURE__ */ React18.createElement(OptionalPortal, __spreadProps(__spreadValues({}, ctx.portalProps), { withinPortal: ctx.withinPortal }), /* @__PURE__ */ React18.createElement(
+    return /* @__PURE__ */ React19.createElement(OptionalPortal, __spreadProps(__spreadValues({}, ctx.portalProps), { withinPortal: ctx.withinPortal }), /* @__PURE__ */ React19.createElement(
       Transition,
       __spreadProps(__spreadValues({
         mounted: ctx.opened
@@ -4134,7 +4219,7 @@ var PopoverDropdown = factory7(
       }),
       (transitionStyles) => {
         var _a2, _b2;
-        return /* @__PURE__ */ React18.createElement(FocusTrap, { active: ctx.trapFocus }, /* @__PURE__ */ React18.createElement(
+        return /* @__PURE__ */ React19.createElement(FocusTrap, { active: ctx.trapFocus }, /* @__PURE__ */ React19.createElement(
           Box6,
           __spreadValues(__spreadProps(__spreadValues(__spreadValues({}, accessibleProps), others), {
             variant,
@@ -4161,7 +4246,7 @@ var PopoverDropdown = factory7(
             ]
           })),
           children,
-          /* @__PURE__ */ React18.createElement(
+          /* @__PURE__ */ React19.createElement(
             FloatingArrow,
             __spreadValues({
               ref: ctx.arrowRef,
@@ -4351,7 +4436,7 @@ function Popover(_props) {
     },
     [popover.floating.floating]
   );
-  return /* @__PURE__ */ React19.createElement(
+  return /* @__PURE__ */ React20.createElement(
     PopoverContextProvider,
     {
       value: {
@@ -4405,17 +4490,17 @@ Popover.displayName = "@raikou/core/Popover";
 Popover.extend = (input) => input;
 
 // ../components/TextInput/src/TextInput.tsx
-import React27 from "react";
+import React28 from "react";
 import { factory as factory13, useProps as useProps18 } from "@raikou/core";
 
 // ../components/InputBase/src/InputBase.tsx
-import React26 from "react";
+import React27 from "react";
 import {
   polymorphicFactory as polymorphicFactory3
 } from "@raikou/core";
 
 // ../components/Input/src/Input.tsx
-import React25 from "react";
+import React26 from "react";
 import {
   Box as Box12,
   polymorphicFactory as polymorphicFactory2,
@@ -4440,7 +4525,7 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
 });
 
 // ../components/Input/src/InputLabel/InputLabel.tsx
-import React20 from "react";
+import React21 from "react";
 import {
   Box as Box7,
   factory as factory8,
@@ -4515,7 +4600,7 @@ var InputLabel = factory8((_props, ref) => {
   });
   const ctx = useInputWrapperContext();
   const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-  return /* @__PURE__ */ React20.createElement(
+  return /* @__PURE__ */ React21.createElement(
     Box7,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("label")), {
       component: labelElement,
@@ -4532,13 +4617,13 @@ var InputLabel = factory8((_props, ref) => {
       }
     }), others),
     children,
-    required && /* @__PURE__ */ React20.createElement("span", __spreadProps(__spreadValues({}, getStyles("required")), { "aria-hidden": true }), " *")
+    required && /* @__PURE__ */ React21.createElement("span", __spreadProps(__spreadValues({}, getStyles("required")), { "aria-hidden": true }), " *")
   );
 });
 InputLabel.displayName = "@raikou/core/InputLabel";
 
 // ../components/Input/src/InputError/InputError.tsx
-import React21 from "react";
+import React22 from "react";
 import {
   Box as Box8,
   factory as factory9,
@@ -4597,7 +4682,7 @@ var InputError = factory9((_props, ref) => {
   });
   const ctx = useInputWrapperContext();
   const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-  return /* @__PURE__ */ React21.createElement(
+  return /* @__PURE__ */ React22.createElement(
     Box8,
     __spreadValues(__spreadValues({
       component: "p",
@@ -4610,7 +4695,7 @@ var InputError = factory9((_props, ref) => {
 InputError.displayName = "@raikou/core/InputError";
 
 // ../components/Input/src/InputDescription/InputDescription.tsx
-import React22 from "react";
+import React23 from "react";
 import {
   Box as Box9,
   factory as factory10,
@@ -4672,7 +4757,7 @@ var InputDescription = factory10(
       varsResolver: varsResolver4
     });
     const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-    return /* @__PURE__ */ React22.createElement(
+    return /* @__PURE__ */ React23.createElement(
       Box9,
       __spreadValues(__spreadValues({
         component: "p",
@@ -4686,7 +4771,7 @@ var InputDescription = factory10(
 InputDescription.displayName = "@raikou/core/InputDescription";
 
 // ../components/Input/src/InputPlaceholder/InputPlaceholder.tsx
-import React23 from "react";
+import React24 from "react";
 import {
   Box as Box10,
   factory as factory11,
@@ -4730,7 +4815,7 @@ var InputPlaceholder = factory11(
       unstyled,
       rootSelector: "placeholder"
     });
-    return /* @__PURE__ */ React23.createElement(
+    return /* @__PURE__ */ React24.createElement(
       Box10,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("placeholder")), {
         component: "span",
@@ -4743,7 +4828,7 @@ var InputPlaceholder = factory11(
 InputPlaceholder.displayName = "@raikou/core/InputPlaceholder";
 
 // ../components/Input/src/InputWrapper/InputWrapper.tsx
-import React24 from "react";
+import React25 from "react";
 import { useId as useId3 } from "@raikou/hooks";
 import {
   Box as Box11,
@@ -4868,7 +4953,7 @@ var InputWrapper = factory12((_props, ref) => {
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
   const labelId = (labelProps == null ? void 0 : labelProps.id) || `${idBase}-label`;
-  const _label = label && /* @__PURE__ */ React24.createElement(
+  const _label = label && /* @__PURE__ */ React25.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
@@ -4879,7 +4964,7 @@ var InputWrapper = factory12((_props, ref) => {
     }, sharedProps), labelProps),
     label
   );
-  const _description = hasDescription && /* @__PURE__ */ React24.createElement(
+  const _description = hasDescription && /* @__PURE__ */ React25.createElement(
     InputDescription,
     __spreadProps(__spreadValues(__spreadValues({
       key: "description"
@@ -4889,8 +4974,8 @@ var InputWrapper = factory12((_props, ref) => {
     }),
     description
   );
-  const _input = /* @__PURE__ */ React24.createElement(React24.Fragment, { key: "input" }, inputContainer(children));
-  const _error = hasError && /* @__PURE__ */ React24.createElement(
+  const _input = /* @__PURE__ */ React25.createElement(React25.Fragment, { key: "input" }, inputContainer(children));
+  const _error = hasError && /* @__PURE__ */ React25.createElement(
     InputError,
     __spreadProps(__spreadValues(__spreadValues({}, errorProps), sharedProps), {
       size: (errorProps == null ? void 0 : errorProps.size) || sharedProps.size,
@@ -4913,7 +4998,7 @@ var InputWrapper = factory12((_props, ref) => {
         return null;
     }
   });
-  return /* @__PURE__ */ React24.createElement(
+  return /* @__PURE__ */ React25.createElement(
     InputWrapperProvider,
     {
       value: __spreadValues({
@@ -4923,7 +5008,7 @@ var InputWrapper = factory12((_props, ref) => {
         labelId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
-    /* @__PURE__ */ React24.createElement(
+    /* @__PURE__ */ React25.createElement(
       Box11,
       __spreadValues(__spreadValues({
         ref,
@@ -5054,7 +5139,7 @@ var Input = polymorphicFactory2((_props, ref) => {
     "aria-describedby": ctx == null ? void 0 : ctx.describedBy,
     id: (ctx == null ? void 0 : ctx.inputId) || id
   } : {};
-  return /* @__PURE__ */ React25.createElement(
+  return /* @__PURE__ */ React26.createElement(
     Box12,
     __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, getStyles("wrapper")), styleProps), wrapperProps), {
       mod: {
@@ -5068,7 +5153,7 @@ var Input = polymorphicFactory2((_props, ref) => {
       variant,
       size: size2
     }),
-    leftSection && /* @__PURE__ */ React25.createElement(
+    leftSection && /* @__PURE__ */ React26.createElement(
       "div",
       __spreadValues(__spreadProps(__spreadValues({}, leftSectionProps), {
         "data-position": "left"
@@ -5078,7 +5163,7 @@ var Input = polymorphicFactory2((_props, ref) => {
       })),
       leftSection
     ),
-    /* @__PURE__ */ React25.createElement(
+    /* @__PURE__ */ React26.createElement(
       Box12,
       __spreadValues(__spreadProps(__spreadValues(__spreadValues({
         component: "input"
@@ -5089,7 +5174,7 @@ var Input = polymorphicFactory2((_props, ref) => {
         variant
       }), getStyles("input"))
     ),
-    rightSection && /* @__PURE__ */ React25.createElement(
+    rightSection && /* @__PURE__ */ React26.createElement(
       "div",
       __spreadValues(__spreadProps(__spreadValues({}, rightSectionProps), {
         "data-position": "right"
@@ -5215,7 +5300,7 @@ var InputBase = polymorphicFactory3((props, ref) => {
     defaultProps17,
     props
   ), { inputProps, wrapperProps } = _a, others = __objRest(_a, ["inputProps", "wrapperProps"]);
-  return /* @__PURE__ */ React26.createElement(Input.Wrapper, __spreadValues({}, wrapperProps), /* @__PURE__ */ React26.createElement(Input, __spreadProps(__spreadValues(__spreadValues({}, inputProps), others), { ref })));
+  return /* @__PURE__ */ React27.createElement(Input.Wrapper, __spreadValues({}, wrapperProps), /* @__PURE__ */ React27.createElement(Input, __spreadProps(__spreadValues(__spreadValues({}, inputProps), others), { ref })));
 });
 InputBase.displayName = "@raikou/core/InputBase";
 
@@ -5223,7 +5308,7 @@ InputBase.displayName = "@raikou/core/InputBase";
 var defaultProps18 = {};
 var TextInput = factory13((props, ref) => {
   const _props = useProps18("TextInput", defaultProps18, props);
-  return /* @__PURE__ */ React27.createElement(
+  return /* @__PURE__ */ React28.createElement(
     InputBase,
     __spreadProps(__spreadValues({
       component: "input",
@@ -5236,7 +5321,7 @@ var TextInput = factory13((props, ref) => {
 TextInput.displayName = "@raikou/core/TextInput";
 
 // ../components/Button/src/Button.tsx
-import React34 from "react";
+import React35 from "react";
 import {
   polymorphicFactory as polymorphicFactory4,
   useProps as useProps21,
@@ -5249,7 +5334,7 @@ import {
 } from "@raikou/core";
 
 // ../components/Loader/src/Loader.tsx
-import React32 from "react";
+import React33 from "react";
 import {
   Box as Box17,
   useProps as useProps19,
@@ -5261,7 +5346,7 @@ import {
 } from "@raikou/core";
 
 // ../components/Loader/src/loaders/Bars.tsx
-import React28, { forwardRef as forwardRef5 } from "react";
+import React29, { forwardRef as forwardRef5 } from "react";
 import { Box as Box13 } from "@raikou/core";
 
 // css-module:../Loader.module.css#css-module
@@ -5271,7 +5356,7 @@ var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "
 var Bars = forwardRef5(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React28.createElement(
+    return /* @__PURE__ */ React29.createElement(
       Box13,
       __spreadProps(__spreadValues({
         component: "span",
@@ -5279,20 +5364,20 @@ var Bars = forwardRef5(
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React28.createElement("span", { className: Loader_module_default.bar }),
-      /* @__PURE__ */ React28.createElement("span", { className: Loader_module_default.bar }),
-      /* @__PURE__ */ React28.createElement("span", { className: Loader_module_default.bar })
+      /* @__PURE__ */ React29.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React29.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React29.createElement("span", { className: Loader_module_default.bar })
     );
   }
 );
 
 // ../components/Loader/src/loaders/Oval.tsx
-import React29, { forwardRef as forwardRef6 } from "react";
+import React30, { forwardRef as forwardRef6 } from "react";
 import { Box as Box14 } from "@raikou/core";
 var Oval = forwardRef6(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React29.createElement(
+    return /* @__PURE__ */ React30.createElement(
       Box14,
       __spreadProps(__spreadValues({
         component: "span",
@@ -5305,12 +5390,12 @@ var Oval = forwardRef6(
 );
 
 // ../components/Loader/src/loaders/Progress.tsx
-import React30, { forwardRef as forwardRef7 } from "react";
+import React31, { forwardRef as forwardRef7 } from "react";
 import { Box as Box15 } from "@raikou/core";
 var Progress = forwardRef7(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React30.createElement(
+    return /* @__PURE__ */ React31.createElement(
       Box15,
       __spreadProps(__spreadValues({
         component: "span",
@@ -5318,7 +5403,7 @@ var Progress = forwardRef7(
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React30.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ React30.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ React30.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ React30.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ React30.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ React30.createElement(
+      /* @__PURE__ */ React31.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ React31.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ React31.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ React31.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ React31.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ React31.createElement(
         "animateTransform",
         {
           attributeName: "transform",
@@ -5334,12 +5419,12 @@ var Progress = forwardRef7(
 );
 
 // ../components/Loader/src/loaders/Dots.tsx
-import React31, { forwardRef as forwardRef8 } from "react";
+import React32, { forwardRef as forwardRef8 } from "react";
 import { Box as Box16 } from "@raikou/core";
 var Dots = forwardRef8(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React31.createElement(
+    return /* @__PURE__ */ React32.createElement(
       Box16,
       __spreadProps(__spreadValues({
         component: "span",
@@ -5347,9 +5432,9 @@ var Dots = forwardRef8(
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React31.createElement("span", { className: Loader_module_default.dot }),
-      /* @__PURE__ */ React31.createElement("span", { className: Loader_module_default.dot }),
-      /* @__PURE__ */ React31.createElement("span", { className: Loader_module_default.dot })
+      /* @__PURE__ */ React32.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React32.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React32.createElement("span", { className: Loader_module_default.dot })
     );
   }
 );
@@ -5415,7 +5500,7 @@ var Loader = factory14((_props, ref) => {
     vars,
     varsResolver: varsResolver7
   });
-  return /* @__PURE__ */ React32.createElement(
+  return /* @__PURE__ */ React33.createElement(
     Box17,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
@@ -5429,7 +5514,7 @@ Loader.displayName = "@raikou/core/Loader";
 Loader.classes = Loader_module_default2;
 
 // ../components/Button/src/ButtonGroup/ButtonGroup.tsx
-import React33 from "react";
+import React34 from "react";
 import {
   factory as factory15,
   Box as Box18,
@@ -5484,7 +5569,7 @@ var ButtonGroup = factory15((_props, ref) => {
     varsResolver: varsResolver8,
     rootSelector: "group"
   });
-  return /* @__PURE__ */ React33.createElement(
+  return /* @__PURE__ */ React34.createElement(
     Box18,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
       ref,
@@ -5583,7 +5668,7 @@ var Button = polymorphicFactory4((_props, ref) => {
   });
   const hasLeftSection = !!leftSection;
   const hasRightSection = !!rightSection;
-  return /* @__PURE__ */ React34.createElement(
+  return /* @__PURE__ */ React35.createElement(
     UnstyledButton,
     __spreadValues(__spreadProps(__spreadValues({
       ref
@@ -5602,7 +5687,7 @@ var Button = polymorphicFactory4((_props, ref) => {
         }
       ]
     }), others),
-    /* @__PURE__ */ React34.createElement("span", __spreadValues({}, getStyles("inner")), !loading && leftSection && /* @__PURE__ */ React34.createElement(
+    /* @__PURE__ */ React35.createElement("span", __spreadValues({}, getStyles("inner")), !loading && leftSection && /* @__PURE__ */ React35.createElement(
       Box19,
       __spreadProps(__spreadValues({
         component: "span"
@@ -5610,7 +5695,7 @@ var Button = polymorphicFactory4((_props, ref) => {
         mod: { position: "left" }
       }),
       leftSection
-    ), loading && loaderPosition === "left" && /* @__PURE__ */ React34.createElement(
+    ), loading && loaderPosition === "left" && /* @__PURE__ */ React35.createElement(
       Box19,
       __spreadProps(__spreadValues({
         component: "span"
@@ -5618,7 +5703,7 @@ var Button = polymorphicFactory4((_props, ref) => {
         mod: { position: "left" }
       }),
       !loading && leftSection,
-      loading && /* @__PURE__ */ React34.createElement(
+      loading && /* @__PURE__ */ React35.createElement(
         Loader,
         __spreadValues({
           type: "progress",
@@ -5626,13 +5711,13 @@ var Button = polymorphicFactory4((_props, ref) => {
           size: "calc(var(--button-height) / 2.4)"
         }, loaderProps)
       )
-    ), loading && loaderPosition === "center" && /* @__PURE__ */ React34.createElement(Box19, __spreadValues({ component: "span" }, getStyles("loader")), /* @__PURE__ */ React34.createElement(
+    ), loading && loaderPosition === "center" && /* @__PURE__ */ React35.createElement(Box19, __spreadValues({ component: "span" }, getStyles("loader")), /* @__PURE__ */ React35.createElement(
       Loader,
       __spreadValues({
         color: "var(--button-color)",
         size: "calc(var(--button-height) / 1.8)"
       }, loaderProps)
-    )), /* @__PURE__ */ React34.createElement(Box19, __spreadValues({ component: "span", mod: { loading } }, getStyles("label")), children), rightSection && /* @__PURE__ */ React34.createElement(
+    )), /* @__PURE__ */ React35.createElement(Box19, __spreadValues({ component: "span", mod: { loading } }, getStyles("label")), children), rightSection && /* @__PURE__ */ React35.createElement(
       Box19,
       __spreadProps(__spreadValues({
         component: "span"
@@ -5648,7 +5733,7 @@ Button.Group = ButtonGroup;
 Button.classes = Button_module_default;
 
 // ../components/Tooltip/src/Tooltip.tsx
-import React37, { cloneElement as cloneElement5, useRef as useRef8 } from "react";
+import React38, { cloneElement as cloneElement5, useRef as useRef8 } from "react";
 import { useMergedRef as useMergedRef5 } from "@raikou/hooks";
 import {
   Box as Box21,
@@ -5664,7 +5749,7 @@ import {
 } from "@raikou/core";
 
 // ../components/Tooltip/src/TooltipFloating/TooltipFloating.tsx
-import React35, { cloneElement as cloneElement4 } from "react";
+import React36, { cloneElement as cloneElement4 } from "react";
 import { useMergedRef as useMergedRef4 } from "@raikou/hooks";
 import {
   Box as Box20,
@@ -5838,7 +5923,7 @@ var TooltipFloating = factory16(
       (_b2 = (_a2 = children.props).onMouseLeave) == null ? void 0 : _b2.call(_a2, event);
       setOpened(false);
     };
-    return /* @__PURE__ */ React35.createElement(React35.Fragment, null, /* @__PURE__ */ React35.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ React35.createElement(
+    return /* @__PURE__ */ React36.createElement(React36.Fragment, null, /* @__PURE__ */ React36.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ React36.createElement(
       Box20,
       __spreadProps(__spreadValues(__spreadValues({}, others), getStyles("tooltip", {
         style: __spreadProps(__spreadValues({}, getStyleObject(style, theme)), {
@@ -5862,7 +5947,7 @@ var TooltipFloating = factory16(
 TooltipFloating.displayName = "@raikou/core/TooltipFloating";
 
 // ../components/Tooltip/src/TooltipGroup/TooltipGroup.tsx
-import React36 from "react";
+import React37 from "react";
 import { useProps as useProps23 } from "@raikou/core";
 
 // ../components/Tooltip/src/TooltipGroup/TooltipGroup.context.ts
@@ -5882,7 +5967,7 @@ function TooltipGroup(props) {
     defaultProps23,
     props
   );
-  return /* @__PURE__ */ React36.createElement(TooltipGroupProvider, { value: true }, /* @__PURE__ */ React36.createElement(FloatingDelayGroup, { delay: { open: openDelay, close: closeDelay } }, children));
+  return /* @__PURE__ */ React37.createElement(TooltipGroupProvider, { value: true }, /* @__PURE__ */ React37.createElement(FloatingDelayGroup, { delay: { open: openDelay, close: closeDelay } }, children));
 }
 TooltipGroup.displayName = "@raikou/core/TooltipGroup";
 
@@ -6108,7 +6193,7 @@ var Tooltip = factory17((_props, ref) => {
     duration: 100,
     transition: "fade"
   });
-  return /* @__PURE__ */ React37.createElement(React37.Fragment, null, /* @__PURE__ */ React37.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ React37.createElement(
+  return /* @__PURE__ */ React38.createElement(React38.Fragment, null, /* @__PURE__ */ React38.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ React38.createElement(
     Transition,
     __spreadProps(__spreadValues({}, transition), {
       keepMounted,
@@ -6117,7 +6202,7 @@ var Tooltip = factory17((_props, ref) => {
     }),
     (transitionStyles) => {
       var _a2, _b;
-      return /* @__PURE__ */ React37.createElement(
+      return /* @__PURE__ */ React38.createElement(
         Box21,
         __spreadValues(__spreadProps(__spreadValues({}, others), {
           variant,
@@ -6132,7 +6217,7 @@ var Tooltip = factory17((_props, ref) => {
           })
         })),
         label,
-        /* @__PURE__ */ React37.createElement(
+        /* @__PURE__ */ React38.createElement(
           FloatingArrow,
           __spreadValues({
             ref: arrowRef,
@@ -6169,8 +6254,7 @@ Tooltip.Group = TooltipGroup;
 
 // src/RichTextEditorControl/RichTextEditorLinkControl.tsx
 import { useInputState, useDisclosure, useWindowEvent } from "@raikou/hooks";
-import { IconExternalLink, IconLink } from "@tabler/icons-react";
-var LinkIcon = (props) => /* @__PURE__ */ React38.createElement(IconLink, __spreadValues({ stroke: 1.5 }, props));
+var LinkIcon = (props) => /* @__PURE__ */ React39.createElement(IconLink, __spreadValues({}, props));
 var defaultProps25 = {};
 var RichTextEditorLinkControl = factory18((_props, ref) => {
   var _b;
@@ -6230,7 +6314,7 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
     styles,
     props
   });
-  return /* @__PURE__ */ React38.createElement(
+  return /* @__PURE__ */ React39.createElement(
     Popover,
     __spreadValues({
       trapFocus: true,
@@ -6241,7 +6325,7 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
       offset: -44,
       zIndex: 1e4
     }, popoverProps),
-    /* @__PURE__ */ React38.createElement(Popover.Target, null, /* @__PURE__ */ React38.createElement(
+    /* @__PURE__ */ React39.createElement(Popover.Target, null, /* @__PURE__ */ React39.createElement(
       RichTextEditorControlBase,
       __spreadProps(__spreadValues({
         icon: icon || LinkIcon
@@ -6257,10 +6341,10 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
         style
       })
     )),
-    /* @__PURE__ */ React38.createElement(
+    /* @__PURE__ */ React39.createElement(
       Popover.Dropdown,
       __spreadValues({}, ctx.getStyles("linkEditorDropdown", stylesApiProps)),
-      /* @__PURE__ */ React38.createElement("div", __spreadValues({}, ctx.getStyles("linkEditor", stylesApiProps)), /* @__PURE__ */ React38.createElement(
+      /* @__PURE__ */ React39.createElement("div", __spreadValues({}, ctx.getStyles("linkEditor", stylesApiProps)), /* @__PURE__ */ React39.createElement(
         TextInput,
         {
           placeholder: ctx.labels.linkEditorInputPlaceholder,
@@ -6272,7 +6356,7 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
             input: ctx.getStyles("linkEditorInput", stylesApiProps).className
           },
           onKeyDown: handleInputKeydown,
-          rightSection: /* @__PURE__ */ React38.createElement(
+          rightSection: /* @__PURE__ */ React39.createElement(
             Tooltip,
             {
               label: external ? ctx.labels.linkEditorExternalLink : ctx.labels.linkEditorInternalLink,
@@ -6282,7 +6366,7 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
               disabled: disableTooltips,
               zIndex: 1e4
             },
-            /* @__PURE__ */ React38.createElement(
+            /* @__PURE__ */ React39.createElement(
               UnstyledButton,
               __spreadValues({
                 onClick: () => setExternal((e) => !e),
@@ -6291,17 +6375,16 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
                 "linkEditorExternalControl",
                 stylesApiProps
               )),
-              /* @__PURE__ */ React38.createElement(
+              /* @__PURE__ */ React39.createElement(
                 IconExternalLink,
                 {
-                  style: { width: rem11(14), height: rem11(14) },
-                  stroke: 1.5
+                  style: { width: rem11(14), height: rem11(14) }
                 }
               )
             )
           )
         }
-      ), /* @__PURE__ */ React38.createElement(
+      ), /* @__PURE__ */ React39.createElement(
         Button,
         __spreadValues({
           variant: "default",
@@ -6315,11 +6398,11 @@ var RichTextEditorLinkControl = factory18((_props, ref) => {
 RichTextEditorLinkControl.displayName = "@raikou/tiptap/RichTextEditorLinkControl";
 
 // src/RichTextEditorControl/RichTextEditorColorPickerControl.tsx
-import React52, { forwardRef as forwardRef14, useState as useState14 } from "react";
-import { useProps as useProps34 } from "@raikou/core";
+import React53, { forwardRef as forwardRef13, useState as useState14 } from "react";
+import { useProps as useProps35, rem as rem17 } from "@raikou/core";
 
 // ../components/ColorSwatch/src/ColorSwatch.tsx
-import React39 from "react";
+import React40 from "react";
 import {
   Box as Box22,
   getRadius as getRadius6,
@@ -6387,20 +6470,20 @@ var ColorSwatch = polymorphicFactory5(
       vars,
       varsResolver: varsResolver12
     });
-    return /* @__PURE__ */ React39.createElement(
+    return /* @__PURE__ */ React40.createElement(
       Box22,
       __spreadValues(__spreadValues({
         ref,
         variant,
         size: size2
       }, getStyles("root", { focusable: true })), others),
-      /* @__PURE__ */ React39.createElement("span", __spreadValues({}, getStyles("alphaOverlay"))),
-      withShadow && /* @__PURE__ */ React39.createElement("span", __spreadValues({}, getStyles("shadowOverlay"))),
-      /* @__PURE__ */ React39.createElement(
+      /* @__PURE__ */ React40.createElement("span", __spreadValues({}, getStyles("alphaOverlay"))),
+      withShadow && /* @__PURE__ */ React40.createElement("span", __spreadValues({}, getStyles("shadowOverlay"))),
+      /* @__PURE__ */ React40.createElement(
         "span",
         __spreadValues({}, getStyles("colorOverlay", { style: { backgroundColor: color } }))
       ),
-      /* @__PURE__ */ React39.createElement("span", __spreadValues({}, getStyles("childrenOverlay")), children)
+      /* @__PURE__ */ React40.createElement("span", __spreadValues({}, getStyles("childrenOverlay")), children)
     );
   }
 );
@@ -6408,7 +6491,7 @@ ColorSwatch.displayName = "@raikou/core/ColorSwatch";
 ColorSwatch.classes = ColorSwatch_module_default;
 
 // ../components/SimpleGrid/src/SimpleGrid.tsx
-import React41 from "react";
+import React42 from "react";
 import {
   Box as Box23,
   factory as factory19,
@@ -6418,7 +6501,7 @@ import {
 } from "@raikou/core";
 
 // ../components/SimpleGrid/src/SimpleGridVariables.tsx
-import React40 from "react";
+import React41 from "react";
 import {
   getSortedBreakpoints,
   useRaikouTheme as useRaikouTheme3,
@@ -6466,7 +6549,7 @@ function SimpleGridVariables({
     query: `(min-width: ${theme.breakpoints[breakpoint.value]})`,
     styles: queries[breakpoint.value]
   }));
-  return /* @__PURE__ */ React40.createElement(InlineStyles, { styles: baseStyles, media, selector });
+  return /* @__PURE__ */ React41.createElement(InlineStyles, { styles: baseStyles, media, selector });
 }
 
 // css-module:./SimpleGrid.module.css#css-module
@@ -6512,7 +6595,7 @@ var SimpleGrid = factory19((_props, ref) => {
     vars
   });
   const responsiveClassName = useRandomClassName();
-  return /* @__PURE__ */ React41.createElement(React41.Fragment, null, /* @__PURE__ */ React41.createElement("div", null, /* @__PURE__ */ React41.createElement(SimpleGridVariables, __spreadProps(__spreadValues({}, props), { selector: `.${responsiveClassName}` }))), /* @__PURE__ */ React41.createElement(
+  return /* @__PURE__ */ React42.createElement(React42.Fragment, null, /* @__PURE__ */ React42.createElement("div", null, /* @__PURE__ */ React42.createElement(SimpleGridVariables, __spreadProps(__spreadValues({}, props), { selector: `.${responsiveClassName}` }))), /* @__PURE__ */ React42.createElement(
     Box23,
     __spreadValues(__spreadValues({
       ref
@@ -6523,24 +6606,24 @@ SimpleGrid.classes = SimpleGrid_module_default;
 SimpleGrid.displayName = "@raikou/core/SimpleGrid";
 
 // ../components/ColorPicker/src/ColorPicker.tsx
-import React48, { useRef as useRef11, useState as useState13 } from "react";
+import React49, { useRef as useRef11, useState as useState13 } from "react";
 import { useDidUpdate as useDidUpdate6, useUncontrolled as useUncontrolled2 } from "@raikou/hooks";
 import {
   Box as Box28,
-  factory as factory20,
-  useProps as useProps30,
-  useStyles as useStyles17,
+  factory as factory21,
+  useProps as useProps31,
+  useStyles as useStyles18,
   getSize as getSize4,
   getSpacing as getSpacing2,
-  createVarsResolver as createVarsResolver13
+  createVarsResolver as createVarsResolver14
 } from "@raikou/core";
 
 // ../components/ColorPicker/src/AlphaSlider/AlphaSlider.tsx
-import React44, { forwardRef as forwardRef11 } from "react";
-import { useProps as useProps28, rem as rem14 } from "@raikou/core";
+import React45, { forwardRef as forwardRef10 } from "react";
+import { useProps as useProps29, rem as rem14 } from "@raikou/core";
 
 // ../components/ColorPicker/src/ColorSlider/ColorSlider.tsx
-import React43, { useRef as useRef9, useState as useState11, forwardRef as forwardRef10 } from "react";
+import React44, { useRef as useRef9, useState as useState11 } from "react";
 import {
   clampUseMovePosition,
   useDidUpdate as useDidUpdate5,
@@ -6549,136 +6632,170 @@ import {
 } from "@raikou/hooks";
 import {
   Box as Box25,
+  factory as factory20,
+  useProps as useProps28,
+  useStyles as useStyles17,
+  createVarsResolver as createVarsResolver13,
   useRaikouTheme as useRaikouTheme4,
   rem as rem13
 } from "@raikou/core";
 
-// ../components/ColorPicker/src/Thumb/Thumb.tsx
-import React42, { forwardRef as forwardRef9 } from "react";
-import { Box as Box24 } from "@raikou/core";
+// css-module:../ColorPicker.module.css#css-module
+var ColorPicker_module_default = { "wrapper": "m-fee9c77", "preview": "m-9dddfbac", "body": "m-bffecc3e", "sliders": "m-3283bb96", "thumb": "m-40d572ba", "swatch": "m-d8ee6fd8", "swatches": "m-5711e686", "saturation": "m-202a296e", "saturationOverlay": "m-11b3db02", "slider": "m-d856d47d", "sliderOverlay": "m-8f327113" };
 
 // ../components/ColorPicker/src/ColorPicker.context.ts
-var [ColorPickerProvider, useColorPickerContext] = createSafeContext(
-  "ColorPicker component was not found in tree"
-);
+var [ColorPickerProvider, useColorPickerContext] = createOptionalContext(null);
 
 // ../components/ColorPicker/src/Thumb/Thumb.tsx
+import React43, { forwardRef as forwardRef9 } from "react";
+import { Box as Box24 } from "@raikou/core";
 var Thumb = forwardRef9(
   (_a, ref) => {
-    var _b = _a, { className, style, size: size2, position } = _b, others = __objRest(_b, ["className", "style", "size", "position"]);
-    const { getStyles } = useColorPickerContext();
-    return /* @__PURE__ */ React42.createElement(
+    var _b = _a, { className, style, position } = _b, others = __objRest(_b, ["className", "style", "position"]);
+    return /* @__PURE__ */ React43.createElement(
       Box24,
-      __spreadValues(__spreadProps(__spreadValues({
-        ref
-      }, getStyles("thumb", { style })), {
+      __spreadValues({
+        ref,
         __vars: {
           "--_thumb-y-offset": `${position.y * 100}%`,
           "--_thumb-x-offset": `${position.x * 100}%`
         }
-      }), others)
+      }, others)
     );
   }
 );
 Thumb.displayName = "@raikou/core/ColorPickerThumb";
 
 // ../components/ColorPicker/src/ColorSlider/ColorSlider.tsx
-var ColorSlider = forwardRef10(
-  (props, ref) => {
-    const _a = props, {
-      className,
-      onChange,
-      onChangeEnd,
-      maxValue,
-      round: round3,
-      size: size2 = "md",
-      focusable = true,
-      value,
-      overlays,
-      thumbColor = "transparent",
-      onScrubStart,
-      onScrubEnd
-    } = _a, others = __objRest(_a, [
-      "className",
-      "onChange",
-      "onChangeEnd",
-      "maxValue",
-      "round",
-      "size",
-      "focusable",
-      "value",
-      "overlays",
-      "thumbColor",
-      "onScrubStart",
-      "onScrubEnd"
-    ]);
-    const { getStyles } = useColorPickerContext();
-    const theme = useRaikouTheme4();
-    const [position, setPosition] = useState11({ y: 0, x: value / maxValue });
-    const positionRef = useRef9(position);
-    const getChangeValue = (val) => round3 ? Math.round(val * maxValue) : val * maxValue;
-    const { ref: sliderRef } = useMove(
-      ({ x, y }) => {
-        positionRef.current = { x, y };
-        onChange == null ? void 0 : onChange(getChangeValue(x));
-      },
-      {
-        onScrubEnd: () => {
-          const { x } = positionRef.current;
-          onChangeEnd == null ? void 0 : onChangeEnd(getChangeValue(x));
-          onScrubEnd == null ? void 0 : onScrubEnd();
-        },
-        onScrubStart
-      }
-    );
-    useDidUpdate5(() => {
-      setPosition({ y: 0, x: value / maxValue });
-    }, [value]);
-    const handleArrow = (event, pos) => {
-      event.preventDefault();
-      const _position = clampUseMovePosition(pos);
-      onChange == null ? void 0 : onChange(getChangeValue(_position.x));
-      onChangeEnd == null ? void 0 : onChangeEnd(getChangeValue(_position.x));
-    };
-    const handleKeyDown = (event) => {
-      switch (event.key) {
-        case "ArrowRight": {
-          handleArrow(event, { x: position.x + 0.05, y: position.y });
-          break;
-        }
-        case "ArrowLeft": {
-          handleArrow(event, { x: position.x - 0.05, y: position.y });
-          break;
-        }
-      }
-    };
-    const layers = overlays.map((overlay, index3) => /* @__PURE__ */ React43.createElement("div", __spreadProps(__spreadValues({}, getStyles("sliderOverlay")), { style: overlay, key: index3 })));
-    return /* @__PURE__ */ React43.createElement(
-      Box25,
-      __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, others), {
-        ref: useMergedRef6(sliderRef, ref)
-      }), getStyles("slider")), {
-        role: "slider",
-        "aria-valuenow": value,
-        "aria-valuemax": maxValue,
-        "aria-valuemin": 0,
-        tabIndex: focusable ? 0 : -1,
-        onKeyDown: handleKeyDown,
-        "data-focus-ring": theme.focusRing
-      }),
-      layers,
-      /* @__PURE__ */ React43.createElement(
-        Thumb,
-        __spreadValues({
-          position,
-          size: size2
-        }, getStyles("thumb", {
-          style: { top: rem13(1), background: thumbColor }
-        }))
-      )
-    );
+var defaultProps28 = {};
+var varsResolver13 = createVarsResolver13(() => ({
+  root: {
+    "--test": "test"
   }
-);
+}));
+var ColorSlider = factory20((_props, ref) => {
+  var _b;
+  const props = useProps28("ColorSlider", defaultProps28, _props);
+  const _a = props, {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    onChange,
+    onChangeEnd,
+    maxValue,
+    round: round3,
+    size: size2 = "md",
+    focusable = true,
+    value,
+    overlays,
+    thumbColor = "transparent",
+    onScrubStart,
+    onScrubEnd,
+    __staticSelector = "ColorPicker"
+  } = _a, others = __objRest(_a, [
+    "classNames",
+    "className",
+    "style",
+    "styles",
+    "unstyled",
+    "vars",
+    "onChange",
+    "onChangeEnd",
+    "maxValue",
+    "round",
+    "size",
+    "focusable",
+    "value",
+    "overlays",
+    "thumbColor",
+    "onScrubStart",
+    "onScrubEnd",
+    "__staticSelector"
+  ]);
+  const _getStyles = useStyles17({
+    name: __staticSelector,
+    classes: ColorPicker_module_default,
+    props,
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled,
+    vars,
+    varsResolver: varsResolver13
+  });
+  const ctxGetStyles = (_b = useColorPickerContext()) == null ? void 0 : _b.getStyles;
+  const getStyles = ctxGetStyles || _getStyles;
+  const theme = useRaikouTheme4();
+  const [position, setPosition] = useState11({ y: 0, x: value / maxValue });
+  const positionRef = useRef9(position);
+  const getChangeValue = (val) => round3 ? Math.round(val * maxValue) : val * maxValue;
+  const { ref: sliderRef } = useMove(
+    ({ x, y }) => {
+      positionRef.current = { x, y };
+      onChange == null ? void 0 : onChange(getChangeValue(x));
+    },
+    {
+      onScrubEnd: () => {
+        const { x } = positionRef.current;
+        onChangeEnd == null ? void 0 : onChangeEnd(getChangeValue(x));
+        onScrubEnd == null ? void 0 : onScrubEnd();
+      },
+      onScrubStart
+    }
+  );
+  useDidUpdate5(() => {
+    setPosition({ y: 0, x: value / maxValue });
+  }, [value]);
+  const handleArrow = (event, pos) => {
+    event.preventDefault();
+    const _position = clampUseMovePosition(pos);
+    onChange == null ? void 0 : onChange(getChangeValue(_position.x));
+    onChangeEnd == null ? void 0 : onChangeEnd(getChangeValue(_position.x));
+  };
+  const handleKeyDown = (event) => {
+    switch (event.key) {
+      case "ArrowRight": {
+        handleArrow(event, { x: position.x + 0.05, y: position.y });
+        break;
+      }
+      case "ArrowLeft": {
+        handleArrow(event, { x: position.x - 0.05, y: position.y });
+        break;
+      }
+    }
+  };
+  const layers = overlays.map((overlay, index3) => /* @__PURE__ */ React44.createElement("div", __spreadProps(__spreadValues({}, getStyles("sliderOverlay")), { style: overlay, key: index3 })));
+  return /* @__PURE__ */ React44.createElement(
+    Box25,
+    __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, others), {
+      ref: useMergedRef6(sliderRef, ref)
+    }), getStyles("slider")), {
+      role: "slider",
+      "aria-valuenow": value,
+      "aria-valuemax": maxValue,
+      "aria-valuemin": 0,
+      tabIndex: focusable ? 0 : -1,
+      onKeyDown: handleKeyDown,
+      "data-focus-ring": theme.focusRing,
+      __vars: {
+        "--_cp-thumb-size": `var(--cp-thumb-size-${size2})`
+      }
+    }),
+    layers,
+    /* @__PURE__ */ React44.createElement(
+      Thumb,
+      __spreadValues({
+        position
+      }, getStyles("thumb", {
+        style: { top: rem13(1), background: thumbColor }
+      }))
+    )
+  );
+});
 ColorSlider.displayName = "@raikou/core/ColorSlider";
 
 // ../components/ColorPicker/src/converters/parsers.ts
@@ -6811,15 +6928,15 @@ function parseColor(color) {
 }
 
 // ../components/ColorPicker/src/AlphaSlider/AlphaSlider.tsx
-var defaultProps28 = {};
-var AlphaSlider = forwardRef11(
+var defaultProps29 = {};
+var AlphaSlider = forwardRef10(
   (props, ref) => {
-    const _a = useProps28(
+    const _a = useProps29(
       "AlphaSlider",
-      defaultProps28,
+      defaultProps29,
       props
     ), { value, onChange, onChangeEnd, color } = _a, others = __objRest(_a, ["value", "onChange", "onChangeEnd", "color"]);
-    return /* @__PURE__ */ React44.createElement(
+    return /* @__PURE__ */ React45.createElement(
       ColorSlider,
       __spreadProps(__spreadValues({}, others), {
         ref,
@@ -6853,17 +6970,16 @@ var AlphaSlider = forwardRef11(
 AlphaSlider.displayName = "@raikou/core/AlphaSlider";
 
 // ../components/ColorPicker/src/HueSlider/HueSlider.tsx
-import React45, { forwardRef as forwardRef12 } from "react";
-import { useProps as useProps29, rem as rem15 } from "@raikou/core";
-var defaultProps29 = {};
-var HueSlider = forwardRef12(
+import React46, { forwardRef as forwardRef11 } from "react";
+import { useProps as useProps30, rem as rem15 } from "@raikou/core";
+var HueSlider = forwardRef11(
   (props, ref) => {
-    const _a = useProps29(
+    const _a = useProps30(
       "HueSlider",
-      defaultProps29,
+      {},
       props
     ), { value, onChange, onChangeEnd, color } = _a, others = __objRest(_a, ["value", "onChange", "onChangeEnd", "color"]);
-    return /* @__PURE__ */ React45.createElement(
+    return /* @__PURE__ */ React46.createElement(
       ColorSlider,
       __spreadProps(__spreadValues({}, others), {
         ref,
@@ -6891,7 +7007,7 @@ var HueSlider = forwardRef12(
 HueSlider.displayName = "@raikou/core/HueSlider";
 
 // ../components/ColorPicker/src/Saturation/Saturation.tsx
-import React46, { useEffect as useEffect8, useRef as useRef10, useState as useState12 } from "react";
+import React47, { useEffect as useEffect8, useRef as useRef10, useState as useState12 } from "react";
 import { clampUseMovePosition as clampUseMovePosition2, useMove as useMove2 } from "@raikou/hooks";
 import { Box as Box26 } from "@raikou/core";
 
@@ -7041,7 +7157,7 @@ function Saturation(_a) {
       }
     }
   };
-  return /* @__PURE__ */ React46.createElement(
+  return /* @__PURE__ */ React47.createElement(
     Box26,
     __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, getStyles("saturation")), {
       ref
@@ -7053,13 +7169,13 @@ function Saturation(_a) {
       tabIndex: focusable ? 0 : -1,
       onKeyDown: handleKeyDown
     }),
-    /* @__PURE__ */ React46.createElement(
+    /* @__PURE__ */ React47.createElement(
       "div",
       __spreadValues({}, getStyles("saturationOverlay", {
         style: { backgroundColor: `hsl(${value.h}, 100%, 50%)` }
       }))
     ),
-    /* @__PURE__ */ React46.createElement(
+    /* @__PURE__ */ React47.createElement(
       "div",
       __spreadValues({}, getStyles("saturationOverlay", {
         style: {
@@ -7067,7 +7183,7 @@ function Saturation(_a) {
         }
       }))
     ),
-    /* @__PURE__ */ React46.createElement(
+    /* @__PURE__ */ React47.createElement(
       "div",
       __spreadValues({}, getStyles("saturationOverlay", {
         style: {
@@ -7075,11 +7191,10 @@ function Saturation(_a) {
         }
       }))
     ),
-    /* @__PURE__ */ React46.createElement(
+    /* @__PURE__ */ React47.createElement(
       Thumb,
       __spreadValues({
-        position,
-        size: size2
+        position
       }, getStyles("thumb", { style: { backgroundColor: color } }))
     )
   );
@@ -7087,9 +7202,9 @@ function Saturation(_a) {
 Saturation.displayName = "@raikou/core/Saturation";
 
 // ../components/ColorPicker/src/Swatches/Swatches.tsx
-import React47, { forwardRef as forwardRef13 } from "react";
+import React48, { forwardRef as forwardRef12 } from "react";
 import { Box as Box27 } from "@raikou/core";
-var Swatches = forwardRef13(
+var Swatches = forwardRef12(
   (_a, ref) => {
     var _b = _a, {
       className,
@@ -7111,7 +7226,7 @@ var Swatches = forwardRef13(
       "swatchesPerRow"
     ]);
     const { getStyles } = useColorPickerContext();
-    const colors = data.map((color, index3) => /* @__PURE__ */ React47.createElement(
+    const colors = data.map((color, index3) => /* @__PURE__ */ React48.createElement(
       ColorSwatch,
       __spreadProps(__spreadValues({}, getStyles("swatch")), {
         component: "button",
@@ -7128,13 +7243,13 @@ var Swatches = forwardRef13(
         "data-swatch": true
       })
     ));
-    return /* @__PURE__ */ React47.createElement(Box27, __spreadValues(__spreadProps(__spreadValues({}, getStyles("swatches")), { ref }), others), colors);
+    return /* @__PURE__ */ React48.createElement(Box27, __spreadValues(__spreadProps(__spreadValues({}, getStyles("swatches")), { ref }), others), colors);
   }
 );
 Swatches.displayName = "@raikou/core/Swatches";
 
 // css-module:./ColorPicker.module.css#css-module
-var ColorPicker_module_default = { "wrapper": "m-fee9c77", "preview": "m-9dddfbac", "body": "m-bffecc3e", "sliders": "m-3283bb96", "thumb": "m-40d572ba", "swatch": "m-d8ee6fd8", "swatches": "m-5711e686", "saturation": "m-202a296e", "saturationOverlay": "m-11b3db02", "slider": "m-d856d47d", "sliderOverlay": "m-8f327113" };
+var ColorPicker_module_default2 = { "wrapper": "m-fee9c77", "preview": "m-9dddfbac", "body": "m-bffecc3e", "sliders": "m-3283bb96", "thumb": "m-40d572ba", "swatch": "m-d8ee6fd8", "swatches": "m-5711e686", "saturation": "m-202a296e", "saturationOverlay": "m-11b3db02", "slider": "m-d856d47d", "sliderOverlay": "m-8f327113" };
 
 // ../components/ColorPicker/src/ColorPicker.tsx
 var defaultProps30 = {
@@ -7143,7 +7258,7 @@ var defaultProps30 = {
   focusable: true,
   __staticSelector: "ColorPicker"
 };
-var varsResolver13 = createVarsResolver13(
+var varsResolver14 = createVarsResolver14(
   (_, { size: size2, swatchesPerRow }) => ({
     wrapper: {
       "--cp-preview-size": getSize4(size2, "cp-preview-size"),
@@ -7155,8 +7270,8 @@ var varsResolver13 = createVarsResolver13(
     }
   })
 );
-var ColorPicker = factory20((_props, ref) => {
-  const props = useProps30("ColorPicker", defaultProps30, _props);
+var ColorPicker = factory21((_props, ref) => {
+  const props = useProps31("ColorPicker", defaultProps30, _props);
   const _a = props, {
     classNames,
     className,
@@ -7204,10 +7319,10 @@ var ColorPicker = factory20((_props, ref) => {
     "onColorSwatchClick",
     "__staticSelector"
   ]);
-  const getStyles = useStyles17({
+  const getStyles = useStyles18({
     name: __staticSelector,
     props,
-    classes: ColorPicker_module_default,
+    classes: ColorPicker_module_default2,
     className,
     style,
     classNames,
@@ -7215,7 +7330,7 @@ var ColorPicker = factory20((_props, ref) => {
     unstyled,
     rootSelector: "wrapper",
     vars,
-    varsResolver: varsResolver13
+    varsResolver: varsResolver14
   });
   const formatRef = useRef11(format);
   const valueRef = useRef11();
@@ -7256,7 +7371,7 @@ var ColorPicker = factory20((_props, ref) => {
     formatRef.current = format;
     setValue(convertHsvaTo(format, parsed));
   }, [format]);
-  return /* @__PURE__ */ React48.createElement(ColorPickerProvider, { value: { getStyles } }, /* @__PURE__ */ React48.createElement(
+  return /* @__PURE__ */ React49.createElement(ColorPickerProvider, { value: { getStyles } }, /* @__PURE__ */ React49.createElement(
     Box28,
     __spreadValues(__spreadProps(__spreadValues({
       ref
@@ -7264,7 +7379,7 @@ var ColorPicker = factory20((_props, ref) => {
       size: size2,
       mod: { "full-width": fullWidth }
     }), others),
-    withPicker && /* @__PURE__ */ React48.createElement(React48.Fragment, null, /* @__PURE__ */ React48.createElement(
+    withPicker && /* @__PURE__ */ React49.createElement(React49.Fragment, null, /* @__PURE__ */ React49.createElement(
       Saturation,
       {
         value: parsed,
@@ -7282,7 +7397,7 @@ var ColorPicker = factory20((_props, ref) => {
         onScrubStart: startScrubbing,
         onScrubEnd: stopScrubbing
       }
-    ), /* @__PURE__ */ React48.createElement("div", __spreadValues({}, getStyles("body")), /* @__PURE__ */ React48.createElement("div", __spreadValues({}, getStyles("sliders")), /* @__PURE__ */ React48.createElement(
+    ), /* @__PURE__ */ React49.createElement("div", __spreadValues({}, getStyles("body")), /* @__PURE__ */ React49.createElement("div", __spreadValues({}, getStyles("sliders")), /* @__PURE__ */ React49.createElement(
       HueSlider,
       {
         value: parsed.h,
@@ -7296,7 +7411,7 @@ var ColorPicker = factory20((_props, ref) => {
         onScrubStart: startScrubbing,
         onScrubEnd: stopScrubbing
       }
-    ), withAlpha && /* @__PURE__ */ React48.createElement(
+    ), withAlpha && /* @__PURE__ */ React49.createElement(
       AlphaSlider,
       {
         value: parsed.a,
@@ -7313,14 +7428,15 @@ var ColorPicker = factory20((_props, ref) => {
         onScrubStart: startScrubbing,
         onScrubEnd: stopScrubbing
       }
-    )), withAlpha && /* @__PURE__ */ React48.createElement(
+    )), withAlpha && /* @__PURE__ */ React49.createElement(
       ColorSwatch,
       __spreadValues({
         color: _value,
-        radius: "sm"
+        radius: "sm",
+        size: "var(--cp-preview-size)"
       }, getStyles("preview"))
     ))),
-    Array.isArray(swatches) && /* @__PURE__ */ React48.createElement(
+    Array.isArray(swatches) && /* @__PURE__ */ React49.createElement(
       Swatches,
       {
         data: swatches,
@@ -7340,17 +7456,17 @@ var ColorPicker = factory20((_props, ref) => {
   ));
 });
 ColorPicker.displayName = "@raikou/core/ColorPicker";
-ColorPicker.classes = ColorPicker_module_default;
+ColorPicker.classes = ColorPicker_module_default2;
 
 // ../components/Group/src/Group.tsx
-import React49 from "react";
+import React50 from "react";
 import {
   Box as Box29,
-  factory as factory21,
-  useProps as useProps31,
-  useStyles as useStyles18,
+  factory as factory22,
+  useProps as useProps32,
+  useStyles as useStyles19,
   getSpacing as getSpacing3,
-  createVarsResolver as createVarsResolver14
+  createVarsResolver as createVarsResolver15
 } from "@raikou/core";
 
 // ../components/Group/src/filter-falsy-children/filter-falsy-children.ts
@@ -7370,7 +7486,7 @@ var defaultProps31 = {
   justify: "flex-start",
   wrap: "wrap"
 };
-var varsResolver14 = createVarsResolver14(
+var varsResolver15 = createVarsResolver15(
   (_, { grow, preventGrowOverflow, gap, align, justify, wrap }, { childWidth }) => ({
     root: {
       "--group-child-width": grow && preventGrowOverflow ? childWidth : void 0,
@@ -7381,8 +7497,8 @@ var varsResolver14 = createVarsResolver14(
     }
   })
 );
-var Group = factory21((_props, ref) => {
-  const props = useProps31("Group", defaultProps31, _props);
+var Group = factory22((_props, ref) => {
+  const props = useProps32("Group", defaultProps31, _props);
   const _a = props, {
     classNames,
     className,
@@ -7421,7 +7537,7 @@ var Group = factory21((_props, ref) => {
   const resolvedGap = getSpacing3(gap != null ? gap : "md");
   const childWidth = `calc(${100 / childrenCount}% - (${resolvedGap} - ${resolvedGap} / ${childrenCount}))`;
   const stylesCtx = { childWidth };
-  const getStyles = useStyles18({
+  const getStyles = useStyles19({
     name: "Group",
     props,
     stylesCtx,
@@ -7432,9 +7548,9 @@ var Group = factory21((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver14
+    varsResolver: varsResolver15
   });
-  return /* @__PURE__ */ React49.createElement(
+  return /* @__PURE__ */ React50.createElement(
     Box29,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
@@ -7449,25 +7565,25 @@ Group.displayName = "@raikou/core/Group";
 Group.classes = Group_module_default;
 
 // ../components/ActionIcon/src/ActionIcon.tsx
-import React51 from "react";
+import React52 from "react";
 import {
-  useProps as useProps33,
-  useStyles as useStyles20,
+  useProps as useProps34,
+  useStyles as useStyles21,
   getRadius as getRadius7,
   polymorphicFactory as polymorphicFactory6,
   getSize as getSize5,
-  createVarsResolver as createVarsResolver16
+  createVarsResolver as createVarsResolver17
 } from "@raikou/core";
 
 // ../components/ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
-import React50 from "react";
+import React51 from "react";
 import {
-  factory as factory22,
+  factory as factory23,
   Box as Box30,
-  useProps as useProps32,
-  useStyles as useStyles19,
+  useProps as useProps33,
+  useStyles as useStyles20,
   rem as rem16,
-  createVarsResolver as createVarsResolver15
+  createVarsResolver as createVarsResolver16
 } from "@raikou/core";
 
 // css-module:../ActionIcon.module.css#css-module
@@ -7477,15 +7593,15 @@ var ActionIcon_module_default = { "root": "m-8d3f4000", "loader": "m-302b9fb1", 
 var defaultProps32 = {
   orientation: "horizontal"
 };
-var varsResolver15 = createVarsResolver15(
+var varsResolver16 = createVarsResolver16(
   (_, { borderWidth }) => ({
     group: { "--ai-border-width": rem16(borderWidth) }
   })
 );
-var ActionIconGroup = factory22(
+var ActionIconGroup = factory23(
   (_props, ref) => {
-    const props = useProps32("ActionIconGroup", defaultProps32, _props);
-    const _a = useProps32("ActionIconGroup", defaultProps32, _props), {
+    const props = useProps33("ActionIconGroup", defaultProps32, _props);
+    const _a = useProps33("ActionIconGroup", defaultProps32, _props), {
       className,
       style,
       classNames,
@@ -7506,7 +7622,7 @@ var ActionIconGroup = factory22(
       "borderWidth",
       "variant"
     ]);
-    const getStyles = useStyles19({
+    const getStyles = useStyles20({
       name: "ActionIconGroup",
       props,
       classes: ActionIcon_module_default,
@@ -7516,10 +7632,10 @@ var ActionIconGroup = factory22(
       styles,
       unstyled,
       vars,
-      varsResolver: varsResolver15,
+      varsResolver: varsResolver16,
       rootSelector: "group"
     });
-    return /* @__PURE__ */ React50.createElement(
+    return /* @__PURE__ */ React51.createElement(
       Box30,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
         ref,
@@ -7538,7 +7654,7 @@ var ActionIcon_module_default2 = { "root": "m-8d3f4000", "loader": "m-302b9fb1",
 
 // ../components/ActionIcon/src/ActionIcon.tsx
 var defaultProps33 = {};
-var varsResolver16 = createVarsResolver16(
+var varsResolver17 = createVarsResolver17(
   (theme, { size: size2, radius, variant, gradient, color }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
@@ -7560,7 +7676,7 @@ var varsResolver16 = createVarsResolver16(
 );
 var ActionIcon = polymorphicFactory6(
   (_props, ref) => {
-    const props = useProps33("ActionIcon", defaultProps33, _props);
+    const props = useProps34("ActionIcon", defaultProps33, _props);
     const _a = props, {
       className,
       unstyled,
@@ -7598,7 +7714,7 @@ var ActionIcon = polymorphicFactory6(
       "disabled",
       "data-disabled"
     ]);
-    const getStyles = useStyles20({
+    const getStyles = useStyles21({
       name: ["ActionIcon", __staticSelector],
       props,
       className,
@@ -7608,9 +7724,9 @@ var ActionIcon = polymorphicFactory6(
       styles,
       unstyled,
       vars,
-      varsResolver: varsResolver16
+      varsResolver: varsResolver17
     });
-    return /* @__PURE__ */ React51.createElement(
+    return /* @__PURE__ */ React52.createElement(
       UnstyledButton,
       __spreadProps(__spreadValues(__spreadValues({}, getStyles("root", {
         active: !disabled && !loading && !dataDisabled
@@ -7622,7 +7738,7 @@ var ActionIcon = polymorphicFactory6(
         ref,
         mod: { loading, disabled: disabled || dataDisabled }
       }),
-      loading ? /* @__PURE__ */ React51.createElement(
+      loading ? /* @__PURE__ */ React52.createElement(
         Loader,
         __spreadValues(__spreadProps(__spreadValues({}, getStyles("loader")), {
           color: "var(--ai-color)",
@@ -7638,16 +7754,9 @@ ActionIcon.classes = ActionIcon_module_default2;
 
 // src/RichTextEditorControl/RichTextEditorColorPickerControl.tsx
 import { useDisclosure as useDisclosure2 } from "@raikou/hooks";
-import {
-  IconCircleOff as IconCircleOff2,
-  IconColorPicker,
-  IconX,
-  IconPalette,
-  IconCheck
-} from "@tabler/icons-react";
 var defaultProps34 = {};
-var RichTextEditorColorPickerControl = forwardRef14((props, ref) => {
-  const _a = useProps34(
+var RichTextEditorColorPickerControl = forwardRef13((props, ref) => {
+  const _a = useProps35(
     "RichTextEditorColorPickerControl",
     defaultProps34,
     props
@@ -7664,7 +7773,7 @@ var RichTextEditorColorPickerControl = forwardRef14((props, ref) => {
     (editor == null ? void 0 : editor.chain()).focus().unsetColor().run();
     close();
   };
-  const controls = colors.map((color, index3) => /* @__PURE__ */ React52.createElement(
+  const controls = colors.map((color, index3) => /* @__PURE__ */ React53.createElement(
     ColorSwatch,
     {
       key: index3,
@@ -7678,7 +7787,7 @@ var RichTextEditorColorPickerControl = forwardRef14((props, ref) => {
       "aria-label": labels.colorPickerColorLabel(color)
     }
   ));
-  return /* @__PURE__ */ React52.createElement(
+  return /* @__PURE__ */ React53.createElement(
     Popover,
     __spreadValues({
       opened,
@@ -7686,7 +7795,7 @@ var RichTextEditorColorPickerControl = forwardRef14((props, ref) => {
       trapFocus: true,
       onClose: close
     }, popoverProps),
-    /* @__PURE__ */ React52.createElement(Popover.Target, null, /* @__PURE__ */ React52.createElement(
+    /* @__PURE__ */ React53.createElement(Popover.Target, null, /* @__PURE__ */ React53.createElement(
       RichTextEditorControl,
       __spreadProps(__spreadValues({}, others), {
         "aria-label": labels.colorPickerControlLabel,
@@ -7694,15 +7803,15 @@ var RichTextEditorColorPickerControl = forwardRef14((props, ref) => {
         ref,
         onClick: toggle
       }),
-      /* @__PURE__ */ React52.createElement(ColorSwatch, { color: currentColor, size: 14 })
+      /* @__PURE__ */ React53.createElement(ColorSwatch, { color: currentColor, size: 14 })
     )),
-    /* @__PURE__ */ React52.createElement(Popover.Dropdown, __spreadValues({}, getStyles("linkEditorDropdown")), state === "palette" && /* @__PURE__ */ React52.createElement(SimpleGrid, { cols: 7, spacing: 2 }, controls), state === "colorPicker" && /* @__PURE__ */ React52.createElement(
+    /* @__PURE__ */ React53.createElement(Popover.Dropdown, __spreadValues({}, getStyles("linkEditorDropdown")), state === "palette" && /* @__PURE__ */ React53.createElement(SimpleGrid, { cols: 7, spacing: 2 }, controls), state === "colorPicker" && /* @__PURE__ */ React53.createElement(
       ColorPicker,
       __spreadValues({
         defaultValue: currentColor,
         onChange: (value) => handleChange(value, false)
       }, colorPickerProps)
-    ), /* @__PURE__ */ React52.createElement(Tooltip.Group, { closeDelay: 200 }, /* @__PURE__ */ React52.createElement(Group, { justify: "flex-end", gap: "xs", mt: "sm" }, state === "palette" && /* @__PURE__ */ React52.createElement(
+    ), /* @__PURE__ */ React53.createElement(Tooltip.Group, { closeDelay: 200 }, /* @__PURE__ */ React53.createElement(Group, { justify: "flex-end", gap: "xs", mt: "sm" }, state === "palette" && /* @__PURE__ */ React53.createElement(
       ActionIcon,
       {
         variant: "default",
@@ -7710,8 +7819,8 @@ var RichTextEditorColorPickerControl = forwardRef14((props, ref) => {
         title: labels.colorPickerCancel,
         "aria-label": labels.colorPickerCancel
       },
-      /* @__PURE__ */ React52.createElement(IconX, { stroke: 1.5, size: "1rem" })
-    ), /* @__PURE__ */ React52.createElement(
+      /* @__PURE__ */ React53.createElement(IconX, { style: { width: rem17(16), height: rem17(16) } })
+    ), /* @__PURE__ */ React53.createElement(
       ActionIcon,
       {
         variant: "default",
@@ -7719,8 +7828,8 @@ var RichTextEditorColorPickerControl = forwardRef14((props, ref) => {
         title: labels.colorPickerClear,
         "aria-label": labels.colorPickerClear
       },
-      /* @__PURE__ */ React52.createElement(IconCircleOff2, { stroke: 1.5, size: "1rem" })
-    ), state === "palette" ? /* @__PURE__ */ React52.createElement(
+      /* @__PURE__ */ React53.createElement(IconCircleOff, { style: { width: rem17(16), height: rem17(16) } })
+    ), state === "palette" ? /* @__PURE__ */ React53.createElement(
       ActionIcon,
       {
         variant: "default",
@@ -7728,8 +7837,8 @@ var RichTextEditorColorPickerControl = forwardRef14((props, ref) => {
         title: labels.colorPickerColorPicker,
         "aria-label": labels.colorPickerColorPicker
       },
-      /* @__PURE__ */ React52.createElement(IconColorPicker, { stroke: 1.5, size: "1rem" })
-    ) : /* @__PURE__ */ React52.createElement(
+      /* @__PURE__ */ React53.createElement(IconColorPicker, { style: { width: rem17(16), height: rem17(16) } })
+    ) : /* @__PURE__ */ React53.createElement(
       ActionIcon,
       {
         variant: "default",
@@ -7737,8 +7846,8 @@ var RichTextEditorColorPickerControl = forwardRef14((props, ref) => {
         "aria-label": labels.colorPickerPalette,
         title: labels.colorPickerPalette
       },
-      /* @__PURE__ */ React52.createElement(IconPalette, { stroke: 1.5, size: "1rem" })
-    ), state === "colorPicker" && /* @__PURE__ */ React52.createElement(
+      /* @__PURE__ */ React53.createElement(IconPalette, { style: { width: rem17(16), height: rem17(16) } })
+    ), state === "colorPicker" && /* @__PURE__ */ React53.createElement(
       ActionIcon,
       {
         variant: "default",
@@ -7746,18 +7855,18 @@ var RichTextEditorColorPickerControl = forwardRef14((props, ref) => {
         title: labels.colorPickerSave,
         "aria-label": labels.colorPickerSave
       },
-      /* @__PURE__ */ React52.createElement(IconCheck, { stroke: 1.5, size: "1rem" })
+      /* @__PURE__ */ React53.createElement(IconCheck, { style: { width: rem17(16), height: rem17(16) } })
     ))))
   );
 });
 RichTextEditorColorPickerControl.displayName = "@raikou/tiptap/ColorPickerControl";
 
 // src/RichTextEditorControl/RichTextEditorColorControl.tsx
-import React53, { forwardRef as forwardRef15 } from "react";
-import { useProps as useProps35 } from "@raikou/core";
+import React54, { forwardRef as forwardRef14 } from "react";
+import { useProps as useProps36 } from "@raikou/core";
 var defaultProps35 = {};
-var RichTextEditorColorControl = forwardRef15((props, ref) => {
-  const _a = useProps35(
+var RichTextEditorColorControl = forwardRef14((props, ref) => {
+  const _a = useProps36(
     "RichTextEditorColorControl",
     defaultProps35,
     props
@@ -7765,7 +7874,7 @@ var RichTextEditorColorControl = forwardRef15((props, ref) => {
   const { editor, labels } = useRichTextEditorContext();
   const currentColor = (editor == null ? void 0 : editor.getAttributes("textStyle").color) || null;
   const label = labels.colorControlLabel(color);
-  return /* @__PURE__ */ React53.createElement(
+  return /* @__PURE__ */ React54.createElement(
     RichTextEditorControl,
     __spreadProps(__spreadValues({}, others), {
       active: currentColor === color,
@@ -7774,7 +7883,7 @@ var RichTextEditorColorControl = forwardRef15((props, ref) => {
       onClick: () => (editor == null ? void 0 : editor.chain()).focus().setColor(color).run(),
       ref
     }),
-    /* @__PURE__ */ React53.createElement(ColorSwatch, { color, size: 14 })
+    /* @__PURE__ */ React54.createElement(ColorSwatch, { color, size: 14 })
   );
 });
 
@@ -7786,8 +7895,8 @@ var defaultProps36 = {
   withCodeHighlightStyles: true,
   withTypographyStyles: true
 };
-var RichTextEditor = factory23((_props, ref) => {
-  const props = useProps36("RichTextEditor", defaultProps36, _props);
+var RichTextEditor = factory24((_props, ref) => {
+  const props = useProps37("RichTextEditor", defaultProps36, _props);
   const _a = props, {
     classNames,
     className,
@@ -7811,7 +7920,7 @@ var RichTextEditor = factory23((_props, ref) => {
     "labels",
     "children"
   ]);
-  const getStyles = useStyles21({
+  const getStyles = useStyles22({
     name: "RichTextEditor",
     classes: RichTextEditor_module_default,
     props,
@@ -7825,7 +7934,7 @@ var RichTextEditor = factory23((_props, ref) => {
     () => __spreadValues(__spreadValues({}, DEFAULT_LABELS), labels),
     [labels]
   );
-  return /* @__PURE__ */ React54.createElement(
+  return /* @__PURE__ */ React55.createElement(
     RichTextEditorProvider,
     {
       value: {
@@ -7836,7 +7945,7 @@ var RichTextEditor = factory23((_props, ref) => {
         withTypographyStyles
       }
     },
-    /* @__PURE__ */ React54.createElement(Box31, __spreadProps(__spreadValues(__spreadValues({}, getStyles("root")), others), { ref }), children)
+    /* @__PURE__ */ React55.createElement(Box31, __spreadProps(__spreadValues(__spreadValues({}, getStyles("root")), others), { ref }), children)
   );
 });
 RichTextEditor.classes = RichTextEditor_module_default;

@@ -36,7 +36,8 @@ import {
   useId,
   useMergedRef,
   useResizeObserver,
-  useUncontrolled
+  useUncontrolled,
+  useTimeout
 } from "@raikou/hooks";
 import {
   Box,
@@ -178,6 +179,7 @@ var SegmentedControl = factory(
     const uuid = useId(name);
     const refs = useRef({});
     const rootRef = useRef(null);
+    const [initialized, setInitialized] = useState(false);
     const [observerRef, containerRect] = useResizeObserver();
     useEffect(() => {
       if (_value in refs.current && observerRef.current) {
@@ -203,6 +205,7 @@ var SegmentedControl = factory(
         }
       }
     }, [_value, containerRect, dir, observerRef]);
+    useTimeout(() => setInitialized(true), 20, { autoInvoke: true });
     const controls = _data.map((item) => /* @__PURE__ */ React.createElement(
       Box,
       __spreadProps(__spreadValues({}, getStyles("control")), {
@@ -252,7 +255,11 @@ var SegmentedControl = factory(
         variant,
         size,
         ref: mergedRef,
-        mod: { "full-width": fullWidth, orientation }
+        mod: {
+          "full-width": fullWidth,
+          orientation,
+          initialization: !initialized
+        }
       }), others), {
         role: "radiogroup"
       }),

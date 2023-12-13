@@ -257,7 +257,7 @@
   justify-content: center;
   width: var(--_section-size);
   border-radius: var(--_section-border-radius);
-  color: var(--raikou-color-placeholder);
+  color: var(--_input-section-color, var(--raikou-color-placeholder));
 }
 .m-82577fc2[data-position=right] {
   --_section-pointer-events: var(--input-right-section-pointer-events);
@@ -376,10 +376,22 @@
     calc(0.25rem * var(--raikou-scale)) calc(-0.25rem * var(--raikou-scale)),
     calc(-0.25rem * var(--raikou-scale)) 0;
   background-image:
-    linear-gradient(45deg, var(--_alpha-overlay-color) 25%, transparent 25%),
-    linear-gradient(-45deg, var(--_alpha-overlay-color) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, var(--_alpha-overlay-color) 75%),
-    linear-gradient(-45deg, var(--_alpha-overlay-bg) 75%, var(--_alpha-overlay-color) 75%);
+    linear-gradient(
+      45deg,
+      var(--_alpha-overlay-color) 25%,
+      transparent 25%),
+    linear-gradient(
+      -45deg,
+      var(--_alpha-overlay-color) 25%,
+      transparent 25%),
+    linear-gradient(
+      45deg,
+      transparent 75%,
+      var(--_alpha-overlay-color) 75%),
+    linear-gradient(
+      -45deg,
+      var(--_alpha-overlay-bg) 75%,
+      var(--_alpha-overlay-color) 75%);
 }
 .m-93e74e3 {
   position: absolute;

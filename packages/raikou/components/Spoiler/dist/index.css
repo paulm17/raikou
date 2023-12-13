@@ -102,4 +102,8 @@
   top: 100%;
   height: calc(1.5rem * var(--raikou-scale));
 }
+[dir=rtl] .m-b9131032 {
+  left: auto;
+  right: 0;
+}
 /*# sourceMappingURL=index.css.map */

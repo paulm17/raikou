@@ -1,4 +1,11 @@
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/TypographyStylesProvider/src/TypographyStylesProvider.module.css/#css-module-data */
+.m-d6493fad {
+  --raikou-tsp-table-caption: #868e96;
+  --raikou-tsp-table-th: #495057;
+  --raikou-tsp-table-thread-th: #dee2e6;
+  --raikou-tsp-table-tfoot-th: #dee2e6;
+  --raikou-tsp-table-td-border-color: #dee2e6;
+}
 [data-raikou-color-scheme=light] .m-d6493fad {
   --raikou-tsp-mark-background-color: #ffec99;
   --raikou-tsp-mark-color: inherit;
@@ -7,6 +14,9 @@
   --raikou-tsp-code-background-color: #f8f9fa;
   --raikou-tsp-code-color: #000;
   --raikou-tsp-blockquote-background-color: #f8f9fa;
+  --raikou-tsp-kdb-border-color: #dee2e6;
+  --raikou-tsp-kdb-color: #495057;
+  --raikou-tsp-kdb-bg: #f8f9fa;
 }
 [data-raikou-color-scheme=dark] .m-d6493fad {
   --raikou-tsp-mark-background-color: #fcc419;
@@ -17,6 +27,9 @@
   --raikou-tsp-code-background-color: #2c2e33;
   --raikou-tsp-code-color: #fff;
   --raikou-tsp-blockquote-background-color: #141517;
+  --raikou-tsp-kdb-border-color: #424242;
+  --raikou-tsp-kdb-color: #c9c9c9;
+  --raikou-tsp-kdb-bg: #3b3b3b;
 }
 .m-d6493fad h1,
 .m-d6493fad h2,
@@ -123,6 +136,30 @@
   color: inherit;
   border: 0;
 }
+.m-d6493fad kbd {
+  --kbd-fz: calc(0.75rem * var(--raikou-scale));
+  --kbd-padding: calc(0.1875rem * var(--raikou-scale)) calc(0.3125rem * var(--raikou-scale));
+  font-family: var(--mantine-font-family-monospace);
+  line-height: var(--mantine-line-height);
+  font-weight: 700;
+  padding: var(--kbd-padding);
+  font-size: var(--kbd-fz);
+  border-radius: var(--mantine-radius-sm);
+  border: calc(0.0625rem * var(--raikou-scale)) solid var(--_kbd-border-color);
+  border-bottom-width: calc(0.1875rem * var(--raikou-scale));
+  background-color: var(--_kbd-bg);
+  color: var(--_kbd-color);
+}
+[data-raikou-color-scheme=light] .m-d6493fad kbd {
+  --_kbd-border-color: var(--raikou-tsp-kdb-border-color);
+  --_kbd-color: var(--raikou-tsp-kdb-color);
+  --_kbd-bg: var(--raikou-tsp-kdb-bg);
+}
+[data-raikou-color-scheme=dark] .m-d6493fad kbd {
+  --_kbd-border-color: var(--raikou-tsp-kdb-border-color);
+  --_kbd-color: var(--raikou-tsp-kdb-color);
+  --_kbd-bg: var(--raikou-tsp-kdb-bg);
+}
 .m-d6493fad code {
   line-height: var(--raikou-line-height);
   padding: calc(0.0625rem * var(--raikou-scale)) calc(0.3125rem * var(--raikou-scale));
@@ -158,27 +195,27 @@
 .m-d6493fad table caption {
   margin-top: var(--raikou-spacing-xs);
   font-size: var(--raikou-font-size-sm);
-  color: var(--raikou-color-gray-6);
+  color: var(--raikou-tsp-table-caption);
 }
 .m-d6493fad table th {
   text-align: left;
   font-weight: bold;
-  color: var(--raikou-color-gray-7);
+  color: var(--raikou-tsp-table-th);
   font-size: var(--raikou-font-size-sm);
   padding: var(--raikou-spacing-xs) var(--raikou-spacing-sm);
 }
 .m-d6493fad table thead th {
   border-bottom: calc(0.0625rem * var(--raikou-scale)) solid;
-  border-color: var(--raikou-color-gray-3);
+  border-color: var(--raikou-tsp-table-thread-th);
 }
 .m-d6493fad table tfoot th {
   border-top: calc(0.0625rem * var(--raikou-scale)) solid;
-  border-color: var(--raikou-color-gray-3);
+  border-color: var(--raikou-tsp-table-tfoot-th);
 }
 .m-d6493fad table td {
   padding: var(--raikou-spacing-xs) var(--raikou-spacing-sm);
   border-bottom: calc(0.0625rem * var(--raikou-scale)) solid;
-  border-color: var(--raikou-color-gray-3);
+  border-color: var(--raikou-tsp-table-td-border-color);
   font-size: var(--raikou-font-size-sm);
 }
 .m-d6493fad table tr:last-of-type td {

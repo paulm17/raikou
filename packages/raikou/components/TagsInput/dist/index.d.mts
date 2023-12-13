@@ -4086,6 +4086,8 @@ interface ComboboxStore {
     toggleDropdown: (eventSource?: ComboboxDropdownEventSource) => void;
     /** Selected option index */
     selectedOptionIndex: number;
+    /** Returns currently selected option index or `-1` if none of the options is selected */
+    getSelectedOptionIndex: () => number;
     /** Selects `Combobox.Option` by index */
     selectOption: (index: number) => void;
     /** Selects first `Combobox.Option` with `active` prop.
@@ -4285,6 +4287,8 @@ interface TagsInputProps extends BoxProps, __BaseInputProps, ComboboxLikeProps, 
     clearButtonProps?: __CloseButtonProps & ElementProps<"button">;
     /** Props passed down to the hidden input */
     hiddenInputProps?: React$2.ComponentPropsWithoutRef<"input">;
+    /** Divider used to separate values in the hidden input `value` attribute, `','` by default */
+    hiddenInputValuesDivider?: string;
     /** Tags container component, defaults to `React.Fragment` */
     tagsContainer?(children: React$2.ReactNode): React$2.ReactNode;
 }

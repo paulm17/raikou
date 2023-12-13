@@ -34,6 +34,34 @@ export function Usage() {
   );
 }
 
+export function OutlineVariant() {
+  return (
+    <div style={{ padding: 20, display: "flex", gap: 40 }}>
+      <Radio
+        variant="outline"
+        label="React"
+        value="react"
+        name="hello"
+        defaultChecked
+      />
+      <Radio
+        variant="outline"
+        label="Angular"
+        value="nu"
+        name="hello"
+        disabled
+      />
+      <Radio
+        variant="outline"
+        label="Svelte"
+        value="sv"
+        disabled={false}
+        name="hello"
+      />
+    </div>
+  );
+}
+
 export function RadioGroup() {
   return (
     <div style={{ padding: 20 }}>

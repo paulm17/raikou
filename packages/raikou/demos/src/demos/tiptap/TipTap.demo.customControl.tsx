@@ -4,6 +4,7 @@ import { useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { RichTextEditor, useRichTextEditorContext } from "@raikou/tiptap";
 import { IconStar } from "@tabler/icons-react";
+import { rem } from "@raikou/core";
 
 const code = `
 import { useEditor } from '@tiptap/react';
@@ -19,7 +20,7 @@ function InsertStarControl() {
       aria-label="Insert star emoji"
       title="Insert star emoji"
     >
-      <IconStar stroke={1.5} size="1rem" />
+      <IconStar style={{ width: rem(16), height: rem(16) }} />
     </RichTextEditor.Control>
   );
 }
@@ -50,7 +51,7 @@ function InsertStarControl() {
       aria-label="Insert star emoji"
       title="Insert star emoji"
     >
-      <IconStar stroke={1.5} size="1rem" />
+      <IconStar style={{ width: rem(16), height: rem(16) }} />
     </RichTextEditor.Control>
   );
 }

@@ -1,6 +1,6 @@
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Grid/src/Grid.module.css/#css-module-data */
 .m-410352e9 {
-  overflow: hidden;
+  overflow: var(--grid-overflow, visible);
 }
 .m-dee7bd2f {
   width: calc(100% + var(--grid-gutter));

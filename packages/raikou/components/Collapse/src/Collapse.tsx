@@ -1,10 +1,12 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import { useReducedMotion } from "@raikou/hooks";
 import {
   BoxProps,
   useProps,
   Box,
   getStyleObject,
+  Factory,
+  factory,
   useRaikouTheme,
 } from "@raikou/core";
 import { useCollapse } from "./use-collapse";
@@ -28,64 +30,65 @@ export interface CollapseProps
   animateOpacity?: boolean;
 }
 
+export type CollapseFactory = Factory<{
+  props: CollapseProps;
+  ref: HTMLDivElement;
+}>;
+
 const defaultProps: Partial<CollapseProps> = {
   transitionDuration: 200,
   transitionTimingFunction: "ease",
   animateOpacity: true,
 };
 
-export const Collapse = forwardRef<HTMLDivElement, CollapseProps>(
-  (props, ref) => {
-    const {
-      children,
-      in: opened,
-      transitionDuration,
-      transitionTimingFunction,
-      style,
-      onTransitionEnd,
-      animateOpacity,
-      ...others
-    } = useProps("Collapse", defaultProps, props);
+export const Collapse = factory<CollapseFactory>((props, ref) => {
+  const {
+    children,
+    in: opened,
+    transitionDuration,
+    transitionTimingFunction,
+    style,
+    onTransitionEnd,
+    animateOpacity,
+    ...others
+  } = useProps("Collapse", defaultProps, props);
 
-    const theme = useRaikouTheme();
-    const shouldReduceMotion = useReducedMotion();
-    const reduceMotion = theme.respectReducedMotion
-      ? shouldReduceMotion
-      : false;
-    const duration = reduceMotion ? 0 : transitionDuration;
+  const theme = useRaikouTheme();
+  const shouldReduceMotion = useReducedMotion();
+  const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
+  const duration = reduceMotion ? 0 : transitionDuration;
 
-    const getCollapseProps = useCollapse({
-      opened,
-      transitionDuration: duration,
-      transitionTimingFunction,
-      onTransitionEnd,
-    });
+  const getCollapseProps = useCollapse({
+    opened,
+    transitionDuration: duration,
+    transitionTimingFunction,
+    onTransitionEnd,
+  });
 
-    if (duration === 0) {
-      return opened ? <Box {...others}>{children}</Box> : null;
-    }
+  if (duration === 0) {
+    return opened ? <Box {...others}>{children}</Box> : null;
+  }
 
-    return (
-      <Box
-        {...getCollapseProps({
-          style: getStyleObject(style, theme),
-          ref,
-          ...others,
-        })}
+  return (
+    <Box
+      {...getCollapseProps({
+        style: getStyleObject(style, theme),
+        ref,
+        ...others,
+      })}
+    >
+      <div
+        style={{
+          opacity: opened || !animateOpacity ? 1 : 0,
+          transition: animateOpacity
+            ? `opacity ${duration}ms ${transitionTimingFunction}`
+            : "none",
+        }}
       >
-        <div
-          style={{
-            opacity: opened || !animateOpacity ? 1 : 0,
-            transition: animateOpacity
-              ? `opacity ${duration}ms ${transitionTimingFunction}`
-              : "none",
-          }}
-        >
-          {children}
-        </div>
-      </Box>
-    );
-  },
-);
+        {children}
+      </div>
+    </Box>
+  );
+});
 
 Collapse.displayName = "@raikou/core/Collapse";

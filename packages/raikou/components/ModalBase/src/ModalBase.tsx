@@ -16,6 +16,11 @@ import { TransitionOverride } from "../../Transition/src";
 import { ModalBaseProvider } from "./ModalBase.context";
 import { useModal } from "./use-modal";
 
+type RemoveScrollProps = Omit<
+  React.ComponentProps<typeof RemoveScroll>,
+  "children"
+>;
+
 export interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
   /** If set modal/drawer will not be unmounted from the DOM when it is hidden, `display: none` styles will be added instead, `false` by default */
   keepMounted?: boolean;
@@ -67,6 +72,9 @@ export interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
 
   /** Controls width of the content area, `'md'` by default */
   size?: RaikouSize | (string & {}) | number;
+
+  /** Props passed down to react-remove-scroll, can be used to customize scroll lock behavior */
+  removeScrollProps?: RemoveScrollProps;
 }
 
 export const ModalBase = forwardRef<HTMLDivElement, ModalBaseProps>(
@@ -89,6 +97,7 @@ export const ModalBase = forwardRef<HTMLDivElement, ModalBaseProps>(
       shadow,
       padding,
       __vars,
+      removeScrollProps,
       ...others
     },
     ref,
@@ -129,7 +138,10 @@ export const ModalBase = forwardRef<HTMLDivElement, ModalBaseProps>(
             zIndex,
           }}
         >
-          <RemoveScroll enabled={shouldLockScroll && lockScroll}>
+          <RemoveScroll
+            enabled={shouldLockScroll && lockScroll}
+            {...removeScrollProps}
+          >
             <Box
               ref={ref}
               {...others}

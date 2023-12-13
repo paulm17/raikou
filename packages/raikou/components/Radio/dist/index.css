@@ -223,7 +223,7 @@
   justify-content: center;
   width: var(--_section-size);
   border-radius: var(--_section-border-radius);
-  color: var(--raikou-color-placeholder);
+  color: var(--_input-section-color, var(--raikou-color-placeholder));
 }
 .m-82577fc2[data-position=right] {
   --_section-pointer-events: var(--input-right-section-pointer-events);
@@ -450,5 +450,17 @@
 }
 .m-8a3dbb89[data-error] {
   --_radio-bd-color: var(--raikou-color-error);
+}
+.m-1bfe9d39 + .m-f3ed6b2b {
+  --_radio-icon-color: var(--radio-color);
+}
+[data-mantine-color-scheme] .m-1bfe9d39:checked:not(:disabled) {
+  --_radio-bg: transparent;
+  --_radio-bd-color: var(--radio-color);
+}
+[data-mantine-color-scheme] .m-1bfe9d39:checked:not(:disabled) + .m-f3ed6b2b {
+  --_radio-icon-color: var(--radio-color);
+  --_radio-icon-opacity: 1;
+  --_radio-icon-transform: none;
 }
 /*# sourceMappingURL=index.css.map */

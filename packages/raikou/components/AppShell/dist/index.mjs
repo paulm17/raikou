@@ -55,7 +55,8 @@ var useStore = createStore({
   getStyles: void 0,
   withBorder: void 0,
   zIndex: 1,
-  disabled: void 0
+  disabled: void 0,
+  offsetScrollbars: void 0
 });
 
 // css-module:../AppShell.module.css#css-module
@@ -111,6 +112,8 @@ import {
   factory as factory2,
   useProps as useProps2
 } from "@raikou/core";
+import { RemoveScroll } from "react-remove-scroll";
+import cx from "clsx";
 var defaultProps2 = {};
 var AppShellHeader = factory2((_props, ref) => {
   var _b;
@@ -144,7 +147,15 @@ var AppShellHeader = factory2((_props, ref) => {
       component: "header",
       ref,
       mod: { "with-border": withBorder != null ? withBorder : ctx.withBorder }
-    }, ctx.getStyles("header", { className, classNames, styles, style })), others), {
+    }, ctx.getStyles("header", {
+      className: cx(
+        { [RemoveScroll.classNames.zeroRight]: ctx.offsetScrollbars },
+        className
+      ),
+      classNames,
+      styles,
+      style
+    })), others), {
       __vars: {
         "--app-shell-header-z-index": (_b = zIndex != null ? zIndex : ctx.zIndex) == null ? void 0 : _b.toString()
       }
@@ -161,6 +172,8 @@ import {
   factory as factory3,
   useProps as useProps3
 } from "@raikou/core";
+import { RemoveScroll as RemoveScroll2 } from "react-remove-scroll";
+import cx2 from "clsx";
 var defaultProps3 = {};
 var AppShellFooter = factory3((_props, ref) => {
   var _b;
@@ -194,7 +207,15 @@ var AppShellFooter = factory3((_props, ref) => {
       component: "footer",
       ref,
       mod: { "with-border": withBorder != null ? withBorder : ctx.withBorder }
-    }, ctx.getStyles("footer", { className, classNames, styles, style })), others), {
+    }, ctx.getStyles("footer", {
+      className: cx2(
+        { [RemoveScroll2.classNames.zeroRight]: ctx.offsetScrollbars },
+        className
+      ),
+      classNames,
+      styles,
+      style
+    })), others), {
       __vars: {
         "--app-shell-footer-z-index": (_b = zIndex != null ? zIndex : ctx.zIndex) == null ? void 0 : _b.toString()
       }
@@ -639,6 +660,7 @@ var AppShell_module_default2 = { "root": "m-89ab340", "navbar": "m-45252eee", "a
 // src/AppShell.tsx
 var defaultProps7 = {
   withBorder: true,
+  offsetScrollbars: true,
   padding: 0,
   transitionDuration: 200,
   transitionTimingFunction: "ease",
@@ -671,7 +693,8 @@ var AppShell = factory6((_props, ref) => {
     layout,
     disabled,
     aside,
-    footer
+    footer,
+    offsetScrollbars
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -689,7 +712,8 @@ var AppShell = factory6((_props, ref) => {
     "layout",
     "disabled",
     "aside",
-    "footer"
+    "footer",
+    "offsetScrollbars"
   ]);
   const getStyles = useStyles({
     name: "AppShell",
@@ -708,6 +732,7 @@ var AppShell = factory6((_props, ref) => {
     state.withBorder = withBorder;
     state.zIndex = zIndex;
     state.disabled = disabled;
+    state.offsetScrollbars = offsetScrollbars;
   });
   return /* @__PURE__ */ React8.createElement(React8.Fragment, null, /* @__PURE__ */ React8.createElement("div", { id: "appshell-style" }, /* @__PURE__ */ React8.createElement(
     AppShellMediaStyles,

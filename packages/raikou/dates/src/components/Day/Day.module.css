@@ -1,11 +1,9 @@
 .day {
   @mixin light {
     --raikou-calendar-day-hover-bg: #f8f9fa;
-    --raikou-calendar-day-active-bg: #f8f9fa;
   }
   @mixin dark {
     --raikou-calendar-day-hover-bg: #2c2e33;
-    --raikou-calendar-day-active-bg: #2c2e33;
   }
 
   --day-size-xs: rem(30px);
@@ -31,11 +29,11 @@
   @mixin hover {
     &:not([data-static], [data-disabled]) {
       @mixin light {
-        --_day-bg: var(--raikou-color-gray-0);
+        --_day-bg: var(--raikou-calendar-day-hover-bg);
       }
 
       @mixin dark {
-        --_day-bg: var(--raikou-color-dark-5);
+        --_day-bg: var(--raikou-calendar-day-hover-bg);
       }
     }
   }

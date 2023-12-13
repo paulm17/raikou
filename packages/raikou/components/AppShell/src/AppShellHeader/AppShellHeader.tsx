@@ -10,6 +10,8 @@ import {
 } from "@raikou/core";
 import { useStore } from "../store";
 import classes from "../AppShell.module.css";
+import { RemoveScroll } from "react-remove-scroll";
+import cx from "clsx";
 
 export type AppShellHeaderStylesNames = "header";
 export type AppShellHeaderVariant = string;
@@ -62,7 +64,15 @@ export const AppShellHeader = factory<AppShellHeaderFactory>((_props, ref) => {
       component="header"
       ref={ref}
       mod={{ "with-border": withBorder ?? ctx.withBorder }}
-      {...ctx.getStyles("header", { className, classNames, styles, style })}
+      {...ctx.getStyles("header", {
+        className: cx(
+          { [RemoveScroll.classNames.zeroRight]: ctx.offsetScrollbars },
+          className,
+        ),
+        classNames,
+        styles,
+        style,
+      })}
       {...others}
       __vars={{
         "--app-shell-header-z-index": (zIndex ?? ctx.zIndex)?.toString(),

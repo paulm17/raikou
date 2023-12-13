@@ -1,8 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { PinInput } from "./PinInput";
+import { Button } from "../../Button/src";
 import { DEFAULT_THEME, RaikouSize } from "@raikou/core";
 
 export default { title: "PinInput" };
+
+export function InputRef() {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  return (
+    <div style={{ padding: 40 }}>
+      <PinInput ref={inputRef} />
+      <Button onClick={() => inputRef.current?.focus()}>
+        Focus first input
+      </Button>
+    </div>
+  );
+}
 
 export function Usage() {
   return (

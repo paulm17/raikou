@@ -32,7 +32,7 @@ var __objRest = (source, exclude) => {
 
 // src/PinInput.tsx
 import React11, { useRef, useState as useState2, useEffect as useEffect2 } from "react";
-import { useUncontrolled, useId as useId2 } from "@raikou/hooks";
+import { useUncontrolled, useId as useId2, assignRef } from "@raikou/hooks";
 import {
   createVarsResolver as createVarsResolver7,
   factory as factory7,
@@ -1170,7 +1170,7 @@ var PinInput = factory7((props, ref) => {
   const handlePaste = (event) => {
     event.preventDefault();
     const copyValue = event.clipboardData.getData("Text");
-    const isValid = validate(copyValue);
+    const isValid = validate(copyValue.trim());
     if (isValid) {
       setValues(copyValue);
     }
@@ -1220,6 +1220,7 @@ var PinInput = factory7((props, ref) => {
         variant,
         disabled,
         ref: (node) => {
+          index === 0 && assignRef(ref, node);
           inputsRef.current[index] = node;
         },
         autoComplete: oneTimeCode ? "one-time-code" : "off",

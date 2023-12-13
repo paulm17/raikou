@@ -228,6 +228,8 @@ interface MenuProps extends __PopoverProps, StylesApiProps<MenuFactory> {
     opened?: boolean;
     /** Uncontrolled menu initial opened state */
     defaultOpened?: boolean;
+    /** Determines whether dropdown should trap focus of keyboard events */
+    trapFocus?: boolean;
     /** Called when menu opened state changes */
     onChange?: (opened: boolean) => void;
     /** Called when Menu is opened */
@@ -238,7 +240,7 @@ interface MenuProps extends __PopoverProps, StylesApiProps<MenuFactory> {
     closeOnItemClick?: boolean;
     /** Determines whether arrow key presses should loop though items (first to last and last to first) */
     loop?: boolean;
-    /** Determines whether dropdown should be closed when Escape key is pressed, defaults to true */
+    /** Determines whether dropdown should be closed when Escape key is pressed */
     closeOnEscape?: boolean;
     /** Event which should open menu */
     trigger?: "click" | "hover";
@@ -246,12 +248,14 @@ interface MenuProps extends __PopoverProps, StylesApiProps<MenuFactory> {
     openDelay?: number;
     /** Close delay in ms, applicable only to trigger="hover" variant */
     closeDelay?: number;
-    /** Determines whether dropdown should be closed on outside clicks, default to true */
+    /** Determines whether dropdown should be closed on outside clicks */
     closeOnClickOutside?: boolean;
     /** Events that trigger outside clicks */
     clickOutsideEvents?: string[];
     /** id base to create accessibility connections */
     id?: string;
+    /** Set the `tabindex` on all menu items. Defaults to -1 */
+    menuItemTabIndex?: -1 | 0;
 }
 declare function Menu(_props: MenuProps): React$1.JSX.Element;
 declare namespace Menu {

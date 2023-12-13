@@ -4072,6 +4072,8 @@ interface ComboboxStore {
     toggleDropdown: (eventSource?: ComboboxDropdownEventSource) => void;
     /** Selected option index */
     selectedOptionIndex: number;
+    /** Returns currently selected option index or `-1` if none of the options is selected */
+    getSelectedOptionIndex: () => number;
     /** Selects `Combobox.Option` by index */
     selectOption: (index: number) => void;
     /** Selects first `Combobox.Option` with `active` prop.

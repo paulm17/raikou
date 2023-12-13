@@ -119,7 +119,7 @@ export const Day = factory<DayFactory>((_props, ref) => {
 
   return (
     <UnstyledButton<any>
-      {...getStyles("day")}
+      {...getStyles("day", { style: hidden ? { display: "none" } : undefined })}
       component={isStatic ? "div" : "button"}
       ref={ref}
       disabled={disabled}

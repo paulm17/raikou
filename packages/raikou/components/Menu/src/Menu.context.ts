@@ -15,6 +15,7 @@ interface MenuContext {
   trigger: "click" | "hover" | undefined;
   opened: boolean;
   getStyles: GetStylesApi<MenuFactory>;
+  menuItemTabIndex: -1 | 0 | undefined;
 }
 
 export const [MenuContextProvider, useMenuContext] =

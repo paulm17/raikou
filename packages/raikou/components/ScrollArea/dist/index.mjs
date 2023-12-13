@@ -692,7 +692,7 @@ var defaultProps = {
 var ScrollAreaRoot = forwardRef8(
   (_props, ref) => {
     const props = useProps("ScrollAreaRoot", defaultProps, _props);
-    const _a = props, { type, scrollHideDelay } = _a, others = __objRest(_a, ["type", "scrollHideDelay"]);
+    const _a = props, { type, scrollHideDelay, scrollbars } = _a, others = __objRest(_a, ["type", "scrollHideDelay", "scrollbars"]);
     const [scrollArea, setScrollArea] = useState7(null);
     const [viewport, setViewport] = useState7(null);
     const [content, setContent] = useState7(null);
@@ -731,8 +731,8 @@ var ScrollAreaRoot = forwardRef8(
         __spreadProps(__spreadValues({}, others), {
           ref: rootRef,
           __vars: {
-            "--sa-corner-width": `${cornerWidth}px`,
-            "--sa-corner-height": `${cornerHeight}px`
+            "--sa-corner-width": scrollbars !== "xy" ? "0px" : `${cornerWidth}px`,
+            "--sa-corner-height": scrollbars !== "xy" ? "0px" : `${cornerHeight}px`
           }
         })
       )
@@ -853,7 +853,8 @@ var ScrollArea_module_default = { "root": "m-d57069b5", "viewport": "m-c0783ff9"
 // src/ScrollArea.tsx
 var defaultProps2 = {
   scrollHideDelay: 1e3,
-  type: "hover"
+  type: "hover",
+  scrollbars: "xy"
 };
 var varsResolver = createVarsResolver(
   (_, { scrollbarSize }) => ({
@@ -878,7 +879,8 @@ var ScrollArea = factory((_props, ref) => {
     viewportRef,
     onScrollPositionChange,
     children,
-    offsetScrollbars
+    offsetScrollbars,
+    scrollbars
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -893,7 +895,8 @@ var ScrollArea = factory((_props, ref) => {
     "viewportRef",
     "onScrollPositionChange",
     "children",
-    "offsetScrollbars"
+    "offsetScrollbars",
+    "scrollbars"
   ]);
   const [scrollbarHovered, setScrollbarHovered] = useState8(false);
   const getStyles = useStyles({
@@ -913,13 +916,15 @@ var ScrollArea = factory((_props, ref) => {
     __spreadValues(__spreadValues({
       type: type === "never" ? "always" : type,
       scrollHideDelay,
-      ref
+      ref,
+      scrollbars
     }, getStyles("root")), others),
     /* @__PURE__ */ React15.createElement(
       ScrollAreaViewport,
       __spreadProps(__spreadValues(__spreadValues({}, viewportProps), getStyles("viewport")), {
         ref: viewportRef,
         "data-offset-scrollbars": offsetScrollbars || void 0,
+        "data-scrollbars": scrollbars || void 0,
         onScroll: typeof onScrollPositionChange === "function" ? ({ currentTarget }) => onScrollPositionChange({
           x: currentTarget.scrollLeft,
           y: currentTarget.scrollTop
@@ -927,7 +932,7 @@ var ScrollArea = factory((_props, ref) => {
       }),
       children
     ),
-    /* @__PURE__ */ React15.createElement(
+    (scrollbars === "xy" || scrollbars === "x") && /* @__PURE__ */ React15.createElement(
       ScrollAreaScrollbar,
       __spreadProps(__spreadValues({}, getStyles("scrollbar")), {
         orientation: "horizontal",
@@ -938,7 +943,7 @@ var ScrollArea = factory((_props, ref) => {
       }),
       /* @__PURE__ */ React15.createElement(ScrollAreaThumb, __spreadValues({}, getStyles("thumb")))
     ),
-    /* @__PURE__ */ React15.createElement(
+    (scrollbars === "xy" || scrollbars === "y") && /* @__PURE__ */ React15.createElement(
       ScrollAreaScrollbar,
       __spreadProps(__spreadValues({}, getStyles("scrollbar")), {
         orientation: "vertical",
@@ -974,6 +979,7 @@ var ScrollAreaAutosize = factory((props, ref) => {
     unstyled,
     variant,
     viewportProps,
+    scrollbars,
     style,
     vars
   } = _a, others = __objRest(_a, [
@@ -990,6 +996,7 @@ var ScrollAreaAutosize = factory((props, ref) => {
     "unstyled",
     "variant",
     "viewportProps",
+    "scrollbars",
     "style",
     "vars"
   ]);
@@ -1008,7 +1015,8 @@ var ScrollAreaAutosize = factory((props, ref) => {
       unstyled,
       variant,
       viewportProps,
-      vars
+      vars,
+      scrollbars
     },
     children
   )));

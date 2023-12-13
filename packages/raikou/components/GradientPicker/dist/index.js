@@ -11875,9 +11875,9 @@ var require_safer = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/algs.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/algs.js
 var require_algs = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/algs.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/algs.js"(exports, module2) {
     "use strict";
     var Buffer2 = require_safer().Buffer;
     var algInfo = {
@@ -11962,9 +11962,9 @@ var require_algs = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/errors.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/errors.js
 var require_errors = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/errors.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/errors.js"(exports, module2) {
     "use strict";
     var assert = require_assert();
     var util = require("util");
@@ -16679,9 +16679,9 @@ var require_nacl_fast = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/utils.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/utils.js
 var require_utils = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/utils.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/utils.js"(exports, module2) {
     "use strict";
     module2.exports = {
       bufferSplit,
@@ -17046,9 +17046,9 @@ var require_utils = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/ssh-buffer.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/ssh-buffer.js
 var require_ssh_buffer = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/ssh-buffer.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/ssh-buffer.js"(exports, module2) {
     "use strict";
     module2.exports = SSHBuffer;
     var assert = require_assert();
@@ -17182,9 +17182,9 @@ var require_ssh_buffer = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/signature.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/signature.js
 var require_signature = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/signature.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/signature.js"(exports, module2) {
     "use strict";
     module2.exports = Signature;
     var assert = require_assert();
@@ -17614,9 +17614,9 @@ var require_ecc_jsbn = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/dhe.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/dhe.js
 var require_dhe = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/dhe.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/dhe.js"(exports, module2) {
     "use strict";
     module2.exports = {
       DiffieHellman,
@@ -17968,9 +17968,9 @@ var require_dhe = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/ed-compat.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/ed-compat.js
 var require_ed_compat = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/ed-compat.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/ed-compat.js"(exports, module2) {
     "use strict";
     module2.exports = {
       Verifier,
@@ -18050,9 +18050,9 @@ var require_ed_compat = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/pkcs8.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/pkcs8.js
 var require_pkcs8 = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/pkcs8.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/pkcs8.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -18374,17 +18374,13 @@ var require_pkcs8 = __commonJS({
       der.readSequence(asn1.Ber.OctetString);
       var k2 = der.readString(asn1.Ber.OctetString, true);
       k2 = utils.zeroPadToLength(k2, 32);
-      var A2, tag;
-      while ((tag = der.peek()) !== null) {
-        if (tag === (asn1.Ber.Context | 1)) {
-          A2 = utils.readBitString(der, tag);
-        } else {
-          der.readSequence(tag);
-          der._offset += der.length;
-        }
-      }
-      if (A2 === void 0)
+      var A2;
+      if (der.peek() === asn1.Ber.BitString) {
+        A2 = utils.readBitString(der);
+        A2 = utils.zeroPadToLength(A2, 32);
+      } else {
         A2 = utils.calculateED25519Public(k2);
+      }
       var key = {
         type: "ed25519",
         parts: [
@@ -18418,11 +18414,8 @@ var require_pkcs8 = __commonJS({
     function writePkcs8(der, key) {
       der.startSequence();
       if (PrivateKey.isPrivateKey(key)) {
-        var version = 0;
-        if (key.type === "ed25519")
-          version = 1;
-        var vbuf = Buffer2.from([version]);
-        der.writeBuffer(vbuf, asn1.Ber.Integer);
+        var sillyInt = Buffer2.from([0]);
+        der.writeBuffer(sillyInt, asn1.Ber.Integer);
       }
       der.startSequence();
       switch (key.type) {
@@ -18450,9 +18443,8 @@ var require_pkcs8 = __commonJS({
         case "ed25519":
           der.writeOID("1.3.101.112");
           if (PrivateKey.isPrivateKey(key))
-            writePkcs8EdDSAPrivate(key, der);
-          else
-            writePkcs8EdDSAPublic(key, der);
+            throw new Error("Ed25519 private keys in pkcs8 format are not supported");
+          writePkcs8EdDSAPublic(key, der);
           break;
         default:
           throw new Error("Unsupported key type: " + key.type);
@@ -18568,22 +18560,12 @@ var require_pkcs8 = __commonJS({
       der.endSequence();
       utils.writeBitString(der, key.part.A.data);
     }
-    function writePkcs8EdDSAPrivate(key, der) {
-      der.endSequence();
-      der.startSequence(asn1.Ber.OctetString);
-      var k2 = utils.mpNormalize(key.part.k.data);
-      while (k2.length > 32 && k2[0] === 0)
-        k2 = k2.slice(1);
-      der.writeBuffer(k2, asn1.Ber.OctetString);
-      der.endSequence();
-      utils.writeBitString(der, key.part.A.data, asn1.Ber.Context | 1);
-    }
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/pkcs1.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/pkcs1.js
 var require_pkcs1 = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/pkcs1.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/pkcs1.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -18892,9 +18874,9 @@ var require_pkcs1 = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/rfc4253.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/rfc4253.js
 var require_rfc4253 = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/rfc4253.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/rfc4253.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read: read.bind(void 0, false, void 0),
@@ -20289,9 +20271,9 @@ var require_bcrypt_pbkdf = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/ssh-private.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/ssh-private.js
 var require_ssh_private = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/ssh-private.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/ssh-private.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -20536,9 +20518,9 @@ var require_ssh_private = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/pem.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/pem.js
 var require_pem = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/pem.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/pem.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -20797,9 +20779,9 @@ var require_pem = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/ssh.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/ssh.js
 var require_ssh = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/ssh.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/ssh.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -20875,9 +20857,9 @@ var require_ssh = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/dnssec.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/dnssec.js
 var require_dnssec = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/dnssec.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/dnssec.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -21129,9 +21111,9 @@ var require_dnssec = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/putty.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/putty.js
 var require_putty = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/putty.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/putty.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -21311,9 +21293,9 @@ var require_putty = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/auto.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/auto.js
 var require_auto = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/auto.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/auto.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -21415,9 +21397,9 @@ var require_auto = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/private-key.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/private-key.js
 var require_private_key = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/private-key.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/private-key.js"(exports, module2) {
     "use strict";
     module2.exports = PrivateKey;
     var assert = require_assert();
@@ -21620,9 +21602,9 @@ var require_private_key = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/identity.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/identity.js
 var require_identity = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/identity.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/identity.js"(exports, module2) {
     "use strict";
     module2.exports = Identity;
     var assert = require_assert();
@@ -21929,9 +21911,9 @@ var require_identity = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/openssh-cert.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/openssh-cert.js
 var require_openssh_cert = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/openssh-cert.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/openssh-cert.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -22216,9 +22198,9 @@ var require_openssh_cert = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/x509.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/x509.js
 var require_x509 = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/x509.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/x509.js"(exports, module2) {
     "use strict";
     module2.exports = {
       read,
@@ -22848,9 +22830,9 @@ var require_x509 = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/x509-pem.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/x509-pem.js
 var require_x509_pem = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/formats/x509-pem.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/formats/x509-pem.js"(exports, module2) {
     "use strict";
     var x509 = require_x509();
     module2.exports = {
@@ -22932,9 +22914,9 @@ var require_x509_pem = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/certificate.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/certificate.js
 var require_certificate = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/certificate.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/certificate.js"(exports, module2) {
     "use strict";
     module2.exports = Certificate;
     var assert = require_assert();
@@ -23290,9 +23272,9 @@ var require_certificate = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/fingerprint.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/fingerprint.js
 var require_fingerprint = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/fingerprint.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/fingerprint.js"(exports, module2) {
     "use strict";
     module2.exports = Fingerprint;
     var assert = require_assert();
@@ -23486,9 +23468,9 @@ var require_fingerprint = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/key.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/key.js
 var require_key = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/key.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/key.js"(exports, module2) {
     "use strict";
     module2.exports = Key;
     var assert = require_assert();
@@ -23726,9 +23708,9 @@ var require_key = __commonJS({
   }
 });
 
-// ../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/index.js
+// ../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/index.js
 var require_lib2 = __commonJS({
-  "../../../../node_modules/.pnpm/sshpk@1.18.0/node_modules/sshpk/lib/index.js"(exports, module2) {
+  "../../../../node_modules/.pnpm/sshpk@1.17.0/node_modules/sshpk/lib/index.js"(exports, module2) {
     "use strict";
     var Key = require_key();
     var Fingerprint = require_fingerprint();
@@ -36002,7 +35984,7 @@ var require_uri_all = __commonJS({
       }
       var URI_PROTOCOL = buildExps(false);
       var IRI_PROTOCOL = buildExps(true);
-      var slicedToArray = function() {
+      var slicedToArray = /* @__PURE__ */ function() {
         function sliceIterator(arr, i2) {
           var _arr = [];
           var _n = true;
@@ -37624,7 +37606,7 @@ var require_fast_json_stable_stringify = __commonJS({
       if (typeof opts === "function")
         opts = { cmp: opts };
       var cycles = typeof opts.cycles === "boolean" ? opts.cycles : false;
-      var cmp = opts.cmp && function(f2) {
+      var cmp = opts.cmp && /* @__PURE__ */ function(f2) {
         return function(node) {
           return function(a2, b2) {
             var aobj = { key: a2, value: node[a2] };

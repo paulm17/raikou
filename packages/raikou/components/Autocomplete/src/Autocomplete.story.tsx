@@ -33,8 +33,26 @@ export function Usage() {
         label="Test"
         placeholder="Test autocomplete"
         data={options}
-        dropdownOpened
       />
+    </div>
+  );
+}
+
+export function WithinForm() {
+  return (
+    <div style={{ padding: 40, maxWidth: 400 }}>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          console.log("submit");
+        }}
+      >
+        <Autocomplete
+          label="Test"
+          placeholder="Test autocomplete"
+          data={options}
+        />
+      </form>
     </div>
   );
 }

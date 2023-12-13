@@ -84,7 +84,8 @@ var useStore = (0, import_pure_store.default)({
   getStyles: void 0,
   withBorder: void 0,
   zIndex: 1,
-  disabled: void 0
+  disabled: void 0,
+  offsetScrollbars: void 0
 });
 
 // css-module:../AppShell.module.css#css-module
@@ -136,6 +137,8 @@ AppShellNavbar.classes = AppShell_module_default;
 // src/AppShellHeader/AppShellHeader.tsx
 var import_react2 = __toESM(require("react"));
 var import_core2 = require("@raikou/core");
+var import_react_remove_scroll = require("react-remove-scroll");
+var import_clsx = __toESM(require("clsx"));
 var defaultProps2 = {};
 var AppShellHeader = (0, import_core2.factory)((_props, ref) => {
   var _b;
@@ -169,7 +172,15 @@ var AppShellHeader = (0, import_core2.factory)((_props, ref) => {
       component: "header",
       ref,
       mod: { "with-border": withBorder != null ? withBorder : ctx.withBorder }
-    }, ctx.getStyles("header", { className, classNames, styles, style })), others), {
+    }, ctx.getStyles("header", {
+      className: (0, import_clsx.default)(
+        { [import_react_remove_scroll.RemoveScroll.classNames.zeroRight]: ctx.offsetScrollbars },
+        className
+      ),
+      classNames,
+      styles,
+      style
+    })), others), {
       __vars: {
         "--app-shell-header-z-index": (_b = zIndex != null ? zIndex : ctx.zIndex) == null ? void 0 : _b.toString()
       }
@@ -182,6 +193,8 @@ AppShellHeader.classes = AppShell_module_default;
 // src/AppShellFooter/AppShellFooter.tsx
 var import_react3 = __toESM(require("react"));
 var import_core3 = require("@raikou/core");
+var import_react_remove_scroll2 = require("react-remove-scroll");
+var import_clsx2 = __toESM(require("clsx"));
 var defaultProps3 = {};
 var AppShellFooter = (0, import_core3.factory)((_props, ref) => {
   var _b;
@@ -215,7 +228,15 @@ var AppShellFooter = (0, import_core3.factory)((_props, ref) => {
       component: "footer",
       ref,
       mod: { "with-border": withBorder != null ? withBorder : ctx.withBorder }
-    }, ctx.getStyles("footer", { className, classNames, styles, style })), others), {
+    }, ctx.getStyles("footer", {
+      className: (0, import_clsx2.default)(
+        { [import_react_remove_scroll2.RemoveScroll.classNames.zeroRight]: ctx.offsetScrollbars },
+        className
+      ),
+      classNames,
+      styles,
+      style
+    })), others), {
       __vars: {
         "--app-shell-footer-z-index": (_b = zIndex != null ? zIndex : ctx.zIndex) == null ? void 0 : _b.toString()
       }
@@ -648,6 +669,7 @@ var AppShell_module_default2 = { "root": "m-89ab340", "navbar": "m-45252eee", "a
 // src/AppShell.tsx
 var defaultProps7 = {
   withBorder: true,
+  offsetScrollbars: true,
   padding: 0,
   transitionDuration: 200,
   transitionTimingFunction: "ease",
@@ -680,7 +702,8 @@ var AppShell = (0, import_core15.factory)((_props, ref) => {
     layout,
     disabled,
     aside,
-    footer
+    footer,
+    offsetScrollbars
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -698,7 +721,8 @@ var AppShell = (0, import_core15.factory)((_props, ref) => {
     "layout",
     "disabled",
     "aside",
-    "footer"
+    "footer",
+    "offsetScrollbars"
   ]);
   const getStyles = (0, import_core15.useStyles)({
     name: "AppShell",
@@ -717,6 +741,7 @@ var AppShell = (0, import_core15.factory)((_props, ref) => {
     state.withBorder = withBorder;
     state.zIndex = zIndex;
     state.disabled = disabled;
+    state.offsetScrollbars = offsetScrollbars;
   });
   return /* @__PURE__ */ import_react8.default.createElement(import_react8.default.Fragment, null, /* @__PURE__ */ import_react8.default.createElement("div", { id: "appshell-style" }, /* @__PURE__ */ import_react8.default.createElement(
     AppShellMediaStyles,

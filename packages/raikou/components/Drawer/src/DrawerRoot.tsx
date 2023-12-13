@@ -9,6 +9,8 @@ import {
   getDefaultZIndex,
   getSize,
   useDirection,
+  RaikouRadius,
+  rem,
 } from "@raikou/core";
 import { RaikouTransition } from "../../Transition/src";
 import {
@@ -21,6 +23,25 @@ import classes from "./Drawer.module.css";
 
 type DrawerPosition = "bottom" | "left" | "right" | "top";
 
+function getDrawerAlign(position: DrawerPosition | undefined) {
+  switch (position) {
+    case "top":
+      return "flex-start";
+    case "bottom":
+      return "flex-end";
+    default:
+      return undefined;
+  }
+}
+
+function getDrawerFlex(position: DrawerPosition | undefined) {
+  if (position === "top" || position === "bottom") {
+    return "0 0 calc(100% - var(--drawer-offset, 0rem) * 2)";
+  }
+
+  return undefined;
+}
+
 export type DrawerRootStylesNames = ModalBaseStylesNames;
 export type DrawerRootCssVariables = {
   root:
@@ -28,7 +49,8 @@ export type DrawerRootCssVariables = {
     | "--drawer-flex"
     | "--drawer-height"
     | "--drawer-align"
-    | "--drawer-justify";
+    | "--drawer-justify"
+    | "--drawer-offset";
 };
 
 export interface DrawerRootProps
@@ -39,6 +61,12 @@ export interface DrawerRootProps
 
   /** Side of the screen on which drawer will be opened, `'left'` by default */
   position?: DrawerPosition;
+
+  /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `0` by default */
+  radius?: RaikouRadius;
+
+  /** Drawer container offset from the viewport end, `0` by default */
+  offset?: number | string;
 }
 
 export type DrawerRootFactory = Factory<{
@@ -76,17 +104,17 @@ const defaultProps: Partial<DrawerRootProps> = {
 };
 
 const varsResolver = createVarsResolver<DrawerRootFactory>(
-  (_, { position, size }) => ({
+  (_, { position, size, offset }) => ({
     root: {
       "--drawer-size": getSize(size, "drawer-size"),
-      "--drawer-flex":
-        position === "left" || position === "right" ? undefined : "0 0 100%",
+      "--drawer-flex": getDrawerFlex(position),
       "--drawer-height":
         position === "left" || position === "right"
           ? undefined
           : "var(--drawer-size)",
-      "--drawer-align": position === "bottom" ? "flex-end" : undefined,
+      "--drawer-align": getDrawerAlign(position),
       "--drawer-justify": position === "right" ? "flex-end" : undefined,
+      "--drawer-offset": rem(offset),
     },
   }),
 );
@@ -103,6 +131,7 @@ export const DrawerRoot = factory<DrawerRootFactory>((_props, ref) => {
     scrollAreaComponent,
     position,
     transitionProps,
+    radius,
     ...others
   } = props;
 
@@ -126,7 +155,7 @@ export const DrawerRoot = factory<DrawerRootFactory>((_props, ref) => {
   ];
 
   return (
-    <DrawerProvider value={{ scrollAreaComponent, getStyles }}>
+    <DrawerProvider value={{ scrollAreaComponent, getStyles, radius }}>
       <ModalBase
         ref={ref}
         {...getStyles("root")}

@@ -139,12 +139,13 @@ function AccordionChevron(_a) {
 AccordionChevron.displayName = "@raikou/core/AccordionChevron";
 
 // ../Collapse/src/Collapse.tsx
-import React4, { forwardRef } from "react";
+import React4 from "react";
 import { useReducedMotion } from "@raikou/hooks";
 import {
   useProps as useProps2,
   Box as Box2,
   getStyleObject,
+  factory,
   useRaikouTheme
 } from "@raikou/core";
 
@@ -263,57 +264,55 @@ var defaultProps2 = {
   transitionTimingFunction: "ease",
   animateOpacity: true
 };
-var Collapse = forwardRef(
-  (props, ref) => {
-    const _a = useProps2("Collapse", defaultProps2, props), {
-      children,
-      in: opened,
-      transitionDuration,
-      transitionTimingFunction,
-      style,
-      onTransitionEnd,
-      animateOpacity
-    } = _a, others = __objRest(_a, [
-      "children",
-      "in",
-      "transitionDuration",
-      "transitionTimingFunction",
-      "style",
-      "onTransitionEnd",
-      "animateOpacity"
-    ]);
-    const theme = useRaikouTheme();
-    const shouldReduceMotion = useReducedMotion();
-    const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
-    const duration = reduceMotion ? 0 : transitionDuration;
-    const getCollapseProps = useCollapse({
-      opened,
-      transitionDuration: duration,
-      transitionTimingFunction,
-      onTransitionEnd
-    });
-    if (duration === 0) {
-      return opened ? /* @__PURE__ */ React4.createElement(Box2, __spreadValues({}, others), children) : null;
-    }
-    return /* @__PURE__ */ React4.createElement(
-      Box2,
-      __spreadValues({}, getCollapseProps(__spreadValues({
-        style: getStyleObject(style, theme),
-        ref
-      }, others))),
-      /* @__PURE__ */ React4.createElement(
-        "div",
-        {
-          style: {
-            opacity: opened || !animateOpacity ? 1 : 0,
-            transition: animateOpacity ? `opacity ${duration}ms ${transitionTimingFunction}` : "none"
-          }
-        },
-        children
-      )
-    );
+var Collapse = factory((props, ref) => {
+  const _a = useProps2("Collapse", defaultProps2, props), {
+    children,
+    in: opened,
+    transitionDuration,
+    transitionTimingFunction,
+    style,
+    onTransitionEnd,
+    animateOpacity
+  } = _a, others = __objRest(_a, [
+    "children",
+    "in",
+    "transitionDuration",
+    "transitionTimingFunction",
+    "style",
+    "onTransitionEnd",
+    "animateOpacity"
+  ]);
+  const theme = useRaikouTheme();
+  const shouldReduceMotion = useReducedMotion();
+  const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
+  const duration = reduceMotion ? 0 : transitionDuration;
+  const getCollapseProps = useCollapse({
+    opened,
+    transitionDuration: duration,
+    transitionTimingFunction,
+    onTransitionEnd
+  });
+  if (duration === 0) {
+    return opened ? /* @__PURE__ */ React4.createElement(Box2, __spreadValues({}, others), children) : null;
   }
-);
+  return /* @__PURE__ */ React4.createElement(
+    Box2,
+    __spreadValues({}, getCollapseProps(__spreadValues({
+      style: getStyleObject(style, theme),
+      ref
+    }, others))),
+    /* @__PURE__ */ React4.createElement(
+      "div",
+      {
+        style: {
+          opacity: opened || !animateOpacity ? 1 : 0,
+          transition: animateOpacity ? `opacity ${duration}ms ${transitionTimingFunction}` : "none"
+        }
+      },
+      children
+    )
+  );
+});
 Collapse.displayName = "@raikou/core/Collapse";
 
 // css-module:./NavLink.module.css#css-module

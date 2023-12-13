@@ -223,7 +223,7 @@
   justify-content: center;
   width: var(--_section-size);
   border-radius: var(--_section-border-radius);
-  color: var(--raikou-color-placeholder);
+  color: var(--_input-section-color, var(--raikou-color-placeholder));
 }
 .m-82577fc2[data-position=right] {
   --_section-pointer-events: var(--input-right-section-pointer-events);
@@ -320,11 +320,9 @@
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/dates/src/components/Day/Day.module.css/#css-module-data */
 [data-raikou-color-scheme=light] .m-396ce5cb {
   --raikou-calendar-day-hover-bg: #f8f9fa;
-  --raikou-calendar-day-active-bg: #f8f9fa;
 }
 [data-raikou-color-scheme=dark] .m-396ce5cb {
   --raikou-calendar-day-hover-bg: #2c2e33;
-  --raikou-calendar-day-active-bg: #2c2e33;
 }
 .m-396ce5cb {
   --day-size-xs: calc(1.875rem * var(--raikou-scale));
@@ -348,18 +346,18 @@
 }
 @media (hover: hover) {
   [data-raikou-color-scheme=light] .m-396ce5cb:hover:not([data-static], [data-disabled]) {
-    --_day-bg: var(--raikou-color-gray-0);
+    --_day-bg: var(--raikou-calendar-day-hover-bg);
   }
   [data-raikou-color-scheme=dark] .m-396ce5cb:hover:not([data-static], [data-disabled]) {
-    --_day-bg: var(--raikou-color-dark-5);
+    --_day-bg: var(--raikou-calendar-day-hover-bg);
   }
 }
 @media (hover: none) {
   [data-raikou-color-scheme=light] .m-396ce5cb:active:not([data-static], [data-disabled]) {
-    --_day-bg: var(--raikou-color-gray-0);
+    --_day-bg: var(--raikou-calendar-day-hover-bg);
   }
   [data-raikou-color-scheme=dark] .m-396ce5cb:active:not([data-static], [data-disabled]) {
-    --_day-bg: var(--raikou-color-dark-5);
+    --_day-bg: var(--raikou-calendar-day-hover-bg);
   }
 }
 .m-396ce5cb[data-static] {
@@ -450,11 +448,9 @@
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/dates/src/components/PickerControl/PickerControl.module.css/#css-module-data */
 [data-raikou-color-scheme=light] .m-dc6a3c71 {
   --raikou-calendar-picker-control-hover-bg: #f8f9fa;
-  --raikou-calendar-picker-control-active-bg: #f8f9fa;
 }
 [data-raikou-color-scheme=dark] .m-dc6a3c71 {
   --raikou-calendar-picker-control-hover-bg: #2c2e33;
-  --raikou-calendar-picker-control-active-bg: #2c2e33;
 }
 .m-dc6a3c71 {
   --dpc-size-xs: calc(1.875rem * var(--raikou-scale));
@@ -478,18 +474,18 @@
 }
 @media (hover: hover) {
   [data-raikou-color-scheme=light] .m-dc6a3c71:hover:not([data-disabled]) {
-    --_control-bg: var(--raikou-color-gray-0);
+    --_control-bg: var(--raikou-calendar-picker-control-hover-bg);
   }
   [data-raikou-color-scheme=dark] .m-dc6a3c71:hover:not([data-disabled]) {
-    --_control-bg: var(--raikou-color-dark-5);
+    --_control-bg: var(--raikou-calendar-picker-control-hover-bg);
   }
 }
 @media (hover: none) {
   [data-raikou-color-scheme=light] .m-dc6a3c71:active:not([data-disabled]) {
-    --_control-bg: var(--raikou-color-gray-0);
+    --_control-bg: var(--raikou-calendar-picker-control-hover-bg);
   }
   [data-raikou-color-scheme=dark] .m-dc6a3c71:active:not([data-disabled]) {
-    --_control-bg: var(--raikou-color-dark-5);
+    --_control-bg: var(--raikou-calendar-picker-control-hover-bg);
   }
 }
 .m-dc6a3c71:disabled,
@@ -1500,6 +1496,20 @@
 }
 [data-raikou-color-scheme=dark] .m-26063560:disabled + .m-bf295423 {
   --_checkbox-icon-color: var(--raikou-checkbox-disabled-icon-color);
+}
+.m-215c4542 + .m-bf295423 {
+  --_checkbox-icon-color: var(--checkbox-color);
+}
+[data-mantine-color-scheme] .m-215c4542[data-indeterminate],
+[data-mantine-color-scheme] .m-215c4542:checked:not(:disabled) {
+  --_checkbox-bg: transparent;
+  --_checkbox-bd-color: var(--checkbox-color);
+}
+[data-mantine-color-scheme] .m-215c4542[data-indeterminate] + .m-bf295423,
+[data-mantine-color-scheme] .m-215c4542:checked:not(:disabled) + .m-bf295423 {
+  --_checkbox-icon-color: var(--checkbox-color);
+  --_checkbox-icon-opacity: 1;
+  --_checkbox-icon-transform: none;
 }
 .m-bf295423 {
   position: absolute;

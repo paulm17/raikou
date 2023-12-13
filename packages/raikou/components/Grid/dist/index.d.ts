@@ -27,7 +27,7 @@ declare const GridCol: _raikou_core.RaikouComponent<{
 
 type GridStylesNames = "root" | "col" | "inner";
 type GridCssVariables = {
-    root: "--grid-justify" | "--grid-align";
+    root: "--grid-justify" | "--grid-align" | "--grid-overflow";
 };
 interface GridProps extends BoxProps, StylesApiProps<GridFactory>, ElementProps<"div"> {
     /** Gutter between columns, key of `theme.spacing` or any valid CSS value, `'md'` by default */
@@ -40,6 +40,8 @@ interface GridProps extends BoxProps, StylesApiProps<GridFactory>, ElementProps<
     align?: React.CSSProperties["alignItems"];
     /** Number of columns in each row, `12` by default */
     columns?: number;
+    /** Sets `overflow` CSS property on the root element, `'visible'` by default */
+    overflow?: React.CSSProperties["overflow"];
 }
 type GridFactory = Factory<{
     props: GridProps;

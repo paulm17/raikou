@@ -148,13 +148,11 @@
   --raikou-dropzone-bg: #fff;
   --raikou-dropzone-border-color: #ced4da;
   --raikou-dropzone-bg-hover: #f8f9fa;
-  --raikou-dropzone-bg-active: #f8f9fa;
 }
 [data-raikou-color-scheme=dark] .m-d46a4834 {
   --raikou-dropzone-bg: #25262b;
   --raikou-dropzone-border-color: #373a40;
   --raikou-dropzone-bg-hover: #2c2e33;
-  --raikou-dropzone-bg-active: #2c2e33;
 }
 .m-d46a4834 {
   position: relative;
@@ -181,18 +179,18 @@
 }
 @media (hover: hover) {
   [data-raikou-color-scheme=light] .m-d46a4834:hover[data-activate-on-click]:not([data-loading]) {
-    --_dropzone-bg: var(--raikou-color-gray-0);
+    --_dropzone-bg: var(--raikou-dropzone-bg-hover);
   }
   [data-raikou-color-scheme=dark] .m-d46a4834:hover[data-activate-on-click]:not([data-loading]) {
-    --_dropzone-bg: var(--raikou-color-dark-5);
+    --_dropzone-bg: var(--raikou-dropzone-bg-hover);
   }
 }
 @media (hover: none) {
   [data-raikou-color-scheme=light] .m-d46a4834:active[data-activate-on-click]:not([data-loading]) {
-    --_dropzone-bg: var(--raikou-color-gray-0);
+    --_dropzone-bg: var(--raikou-dropzone-bg-hover);
   }
   [data-raikou-color-scheme=dark] .m-d46a4834:active[data-activate-on-click]:not([data-loading]) {
-    --_dropzone-bg: var(--raikou-color-dark-5);
+    --_dropzone-bg: var(--raikou-dropzone-bg-hover);
   }
 }
 .m-d46a4834[data-accept] {

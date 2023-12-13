@@ -6,4 +6,11 @@
   line-height: var(--title-lh);
   font-family: var(--raikou-font-family-headings);
 }
+.m-8a5d1357[data-line-clamp] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: var(--title-line-clamp);
+  -webkit-box-orient: vertical;
+}
 /*# sourceMappingURL=index.css.map */

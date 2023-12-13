@@ -194,6 +194,7 @@ var SegmentedControl = (0, import_core.factory)(
     const uuid = (0, import_hooks.useId)(name);
     const refs = (0, import_react.useRef)({});
     const rootRef = (0, import_react.useRef)(null);
+    const [initialized, setInitialized] = (0, import_react.useState)(false);
     const [observerRef, containerRect] = (0, import_hooks.useResizeObserver)();
     (0, import_react.useEffect)(() => {
       if (_value in refs.current && observerRef.current) {
@@ -219,6 +220,7 @@ var SegmentedControl = (0, import_core.factory)(
         }
       }
     }, [_value, containerRect, dir, observerRef]);
+    (0, import_hooks.useTimeout)(() => setInitialized(true), 20, { autoInvoke: true });
     const controls = _data.map((item) => /* @__PURE__ */ import_react.default.createElement(
       import_core.Box,
       __spreadProps(__spreadValues({}, getStyles("control")), {
@@ -268,7 +270,11 @@ var SegmentedControl = (0, import_core.factory)(
         variant,
         size,
         ref: mergedRef,
-        mod: { "full-width": fullWidth, orientation }
+        mod: {
+          "full-width": fullWidth,
+          orientation,
+          initialization: !initialized
+        }
       }), others), {
         role: "radiogroup"
       }),

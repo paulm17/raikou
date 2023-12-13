@@ -473,6 +473,8 @@ interface ScrollAreaProps extends BoxProps, StylesApiProps<ScrollAreaFactory>, E
     type?: "auto" | "always" | "scroll" | "hover" | "never";
     /** Scroll hide delay in ms, applicable only when type is set to `hover` or `scroll`, `1000` by default */
     scrollHideDelay?: number;
+    /** Axis at which scrollbars must be rendered, `'xy'` by default */
+    scrollbars?: "x" | "y" | "xy" | false;
     /** Determines whether scrollbars should be offset with padding, `false` by default */
     offsetScrollbars?: boolean | "x" | "y";
     /** Assigns viewport element (scrollable container) ref */
@@ -816,6 +818,7 @@ declare const CheckboxGroup: _raikou_core.RaikouComponent<{
     stylesNames: CheckboxGroupStylesNames;
 }>;
 
+type CheckboxVariant = "filled" | "outline";
 type CheckboxStylesNames = "icon" | "inner" | "input" | InlineInputStylesNames;
 type CheckboxCssVariables = {
     root: "--checkbox-size" | "--checkbox-radius" | "--checkbox-color" | "--checkbox-icon-color";
@@ -856,6 +859,7 @@ type CheckboxFactory = Factory<{
     ref: HTMLInputElement;
     stylesNames: CheckboxStylesNames;
     vars: CheckboxCssVariables;
+    variant: CheckboxVariant;
     staticComponents: {
         Group: typeof CheckboxGroup;
     };

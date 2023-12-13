@@ -31,7 +31,7 @@ export function Saturation({
   onScrubEnd,
   ...others
 }: SaturationProps) {
-  const { getStyles } = useColorPickerContext();
+  const { getStyles } = useColorPickerContext()!;
 
   const [position, setPosition] = useState({
     x: value.s / 100,
@@ -134,7 +134,6 @@ export function Saturation({
 
       <Thumb
         position={position}
-        size={size}
         {...getStyles("thumb", { style: { backgroundColor: color } })}
       />
     </Box>

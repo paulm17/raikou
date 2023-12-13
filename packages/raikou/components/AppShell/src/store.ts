@@ -7,6 +7,7 @@ interface AppShellContext {
   withBorder: boolean | undefined;
   zIndex: React.CSSProperties["zIndex"];
   disabled: boolean | undefined;
+  offsetScrollbars: boolean | undefined;
 }
 
 export const useStore = createStore<AppShellContext>({
@@ -14,4 +15,5 @@ export const useStore = createStore<AppShellContext>({
   withBorder: undefined,
   zIndex: 1,
   disabled: undefined,
+  offsetScrollbars: undefined,
 });

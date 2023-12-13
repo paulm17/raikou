@@ -1143,8 +1143,8 @@ body {
 .m-b183c0a2[data-block] {
   --_code-padding: var(--raikou-spacing-xs);
 }
-/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/ColorSwatch/src/ColorSwatch.module.css/#css-module-data */
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/ColorPicker/src/ColorPicker.module.css/#css-module-data */
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/ColorSwatch/src/ColorSwatch.module.css/#css-module-data */
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Input/src/Input.module.css/#css-module-data */
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Popover/src/Popover.module.css/#css-module-data */
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/UnstyledButton/src/UnstyledButton.module.css/#css-module-data */
@@ -1167,8 +1167,8 @@ body {
   --ci-preview-size-xl: calc(2.25rem * var(--raikou-scale));
   --ci-preview-size: var(--ci-preview-size-sm);
 }
-/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/ColorSwatch/src/ColorSwatch.module.css/#css-module-data */
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/ColorPicker/src/ColorPicker.module.css/#css-module-data */
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/ColorSwatch/src/ColorSwatch.module.css/#css-module-data */
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/ColorSwatch/src/ColorSwatch.module.css/#css-module-data */
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Combobox/src/Combobox.module.css/#css-module-data */
 [data-raikou-color-scheme=light] .m-88b62a41 {
@@ -1560,17 +1560,17 @@ body {
   --drawer-size-lg: calc(38.75rem * var(--raikou-scale));
   --drawer-size-xl: calc(48.75rem * var(--raikou-scale));
   --drawer-size: var(--drawer-size-md);
+  --drawer-offset: 0rem;
 }
 .m-5a7c2c9 {
   z-index: 1000;
 }
 .m-b8a05bbd {
-  --paper-radius: 0 !important;
   flex: var(--drawer-flex, 0 0 var(--drawer-size));
-  height: var(--drawer-height, 100%);
+  height: var(--drawer-height, calc(100% - var(--drawer-offset) * 2));
+  margin: var(--drawer-offset);
   max-width: 100%;
   max-height: 100%;
-  border-radius: 0;
   overflow-y: auto;
 }
 .m-31cd769a {
@@ -1640,7 +1640,7 @@ body {
 /* @import "../../components/GradientPicker/dist/index.css"; */
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Grid/src/Grid.module.css/#css-module-data */
 .m-410352e9 {
-  overflow: hidden;
+  overflow: var(--grid-overflow, visible);
 }
 .m-dee7bd2f {
   width: calc(100% + var(--grid-gutter));
@@ -2414,6 +2414,18 @@ body {
 .m-8a3dbb89[data-error] {
   --_radio-bd-color: var(--raikou-color-error);
 }
+.m-1bfe9d39 + .m-f3ed6b2b {
+  --_radio-icon-color: var(--radio-color);
+}
+[data-mantine-color-scheme] .m-1bfe9d39:checked:not(:disabled) {
+  --_radio-bg: transparent;
+  --_radio-bd-color: var(--radio-color);
+}
+[data-mantine-color-scheme] .m-1bfe9d39:checked:not(:disabled) + .m-f3ed6b2b {
+  --_radio-icon-color: var(--radio-color);
+  --_radio-icon-opacity: 1;
+  --_radio-icon-transform: none;
+}
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Rating/src/Rating.module.css/#css-module-data */
 [data-raikou-color-scheme=light] .m-f8d312f2 {
   --raikou-rating-star-color: #dee2e6;
@@ -2569,6 +2581,9 @@ body {
   border-radius: var(--sc-radius, var(--raikou-radius-default));
   overflow: hidden;
   padding: 4px;
+}
+.m-cf365364[data-initialization] {
+  --sc-transition-duration: 0ms !important;
 }
 .m-cf365364[data-full-width] {
   --_display: flex;
@@ -3065,6 +3080,10 @@ fieldset:disabled .m-38aeed47:not([data-inverted]),
   top: 100%;
   height: calc(1.5rem * var(--raikou-scale));
 }
+[dir=rtl] .m-b9131032 {
+  left: auto;
+  right: 0;
+}
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Stack/src/Stack.module.css/#css-module-data */
 .m-6d731127 {
   display: flex;
@@ -3487,8 +3506,8 @@ fieldset:disabled .m-38aeed47:not([data-inverted]),
 }
 [data-raikou-color-scheme=dark] .m-89d60db1 {
   --raikou-tabs-tab-border-color: #373a40;
-  --raikou-tabs-tab-default-hover-color: #868e96;
-  --raikou-tabs-tab-pills-hover-color: #868e96;
+  --raikou-tabs-tab-default-hover-color: #25262b;
+  --raikou-tabs-tab-pills-hover-color: #25262b;
 }
 .m-89d60db1 {
   display: var(--_tabs-display);
@@ -3998,6 +4017,13 @@ fieldset:disabled .m-38aeed47:not([data-inverted]),
   line-height: var(--title-lh);
   font-family: var(--raikou-font-family-headings);
 }
+.m-8a5d1357[data-line-clamp] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: var(--title-line-clamp);
+  -webkit-box-orient: vertical;
+}
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Tooltip/src/Tooltip.module.css/#css-module-data */
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/TypographyStylesProvider/src/TypographyStylesProvider.module.css/#css-module-data */
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/UnstyledButton/src/UnstyledButton.module.css/#css-module-data */
@@ -4329,7 +4355,11 @@ fieldset:disabled .m-38aeed47:not([data-inverted]),
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: linear-gradient(0deg, var(--_background) 16%, rgba(0, 0, 0, 0) 100%);
+  background-image:
+    linear-gradient(
+      0deg,
+      var(--_background) 16%,
+      rgba(0, 0, 0, 0) 100%);
   border-radius: calc(var(--raikou-radius-md) - calc(0.0625rem * var(--raikou-scale)));
 }
 .m-9f507240[data-expanded] {
@@ -4786,10 +4816,30 @@ fieldset:disabled .m-38aeed47:not([data-inverted]),
   --raikou-datatable-shadow-background-top: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) ), linear-gradient(rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0));
 }
 .m-df0af934 {
-  --raikou-datatable-shadow-background-right: linear-gradient( to left, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0) ), linear-gradient( to left, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0) 30% );
+  --raikou-datatable-shadow-background-right:
+    linear-gradient(
+      
+      to left,
+      rgba(0, 0, 0, 0.05),
+      rgba(0, 0, 0, 0) ),
+    linear-gradient(
+      
+      to left,
+      rgba(0, 0, 0, 0.05),
+      rgba(0, 0, 0, 0) 30% );
 }
 [data-raikou-color-scheme=dark] .m-df0af934 {
-  --raikou-datatable-shadow-background-right: linear-gradient( to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) ), linear-gradient( to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 30% );
+  --raikou-datatable-shadow-background-right:
+    linear-gradient(
+      
+      to left,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0) ),
+    linear-gradient(
+      
+      to left,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0) 30% );
 }
 .m-df0af934 {
   --raikou-datatable-shadow-background-bottom: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.05) ), linear-gradient(rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.05));
@@ -4798,10 +4848,30 @@ fieldset:disabled .m-38aeed47:not([data-inverted]),
   --raikou-datatable-shadow-background-bottom: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) ), linear-gradient(rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.5));
 }
 .m-df0af934 {
-  --raikou-datatable-shadow-background-left: linear-gradient( to right, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0) ), linear-gradient( to right, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0) 30% );
+  --raikou-datatable-shadow-background-left:
+    linear-gradient(
+      
+      to right,
+      rgba(0, 0, 0, 0.05),
+      rgba(0, 0, 0, 0) ),
+    linear-gradient(
+      
+      to right,
+      rgba(0, 0, 0, 0.05),
+      rgba(0, 0, 0, 0) 30% );
 }
 [data-raikou-color-scheme=dark] .m-df0af934 {
-  --raikou-datatable-shadow-background-left: linear-gradient( to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) ), linear-gradient( to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 30% );
+  --raikou-datatable-shadow-background-left:
+    linear-gradient(
+      
+      to right,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0) ),
+    linear-gradient(
+      
+      to right,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0) 30% );
 }
 .m-df0af934 {
   position: relative;
@@ -5427,11 +5497,9 @@ tr:last-of-type .m-faf985f7::after {
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/dates/src/components/Day/Day.module.css/#css-module-data */
 [data-raikou-color-scheme=light] .m-396ce5cb {
   --raikou-calendar-day-hover-bg: #f8f9fa;
-  --raikou-calendar-day-active-bg: #f8f9fa;
 }
 [data-raikou-color-scheme=dark] .m-396ce5cb {
   --raikou-calendar-day-hover-bg: #2c2e33;
-  --raikou-calendar-day-active-bg: #2c2e33;
 }
 .m-396ce5cb {
   --day-size-xs: calc(1.875rem * var(--raikou-scale));
@@ -5455,18 +5523,18 @@ tr:last-of-type .m-faf985f7::after {
 }
 @media (hover: hover) {
   [data-raikou-color-scheme=light] .m-396ce5cb:hover:not([data-static], [data-disabled]) {
-    --_day-bg: var(--raikou-color-gray-0);
+    --_day-bg: var(--raikou-calendar-day-hover-bg);
   }
   [data-raikou-color-scheme=dark] .m-396ce5cb:hover:not([data-static], [data-disabled]) {
-    --_day-bg: var(--raikou-color-dark-5);
+    --_day-bg: var(--raikou-calendar-day-hover-bg);
   }
 }
 @media (hover: none) {
   [data-raikou-color-scheme=light] .m-396ce5cb:active:not([data-static], [data-disabled]) {
-    --_day-bg: var(--raikou-color-gray-0);
+    --_day-bg: var(--raikou-calendar-day-hover-bg);
   }
   [data-raikou-color-scheme=dark] .m-396ce5cb:active:not([data-static], [data-disabled]) {
-    --_day-bg: var(--raikou-color-dark-5);
+    --_day-bg: var(--raikou-calendar-day-hover-bg);
   }
 }
 .m-396ce5cb[data-static] {
@@ -5554,11 +5622,9 @@ tr:last-of-type .m-faf985f7::after {
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/dates/src/components/PickerControl/PickerControl.module.css/#css-module-data */
 [data-raikou-color-scheme=light] .m-dc6a3c71 {
   --raikou-calendar-picker-control-hover-bg: #f8f9fa;
-  --raikou-calendar-picker-control-active-bg: #f8f9fa;
 }
 [data-raikou-color-scheme=dark] .m-dc6a3c71 {
   --raikou-calendar-picker-control-hover-bg: #2c2e33;
-  --raikou-calendar-picker-control-active-bg: #2c2e33;
 }
 .m-dc6a3c71 {
   --dpc-size-xs: calc(1.875rem * var(--raikou-scale));
@@ -5582,18 +5648,18 @@ tr:last-of-type .m-faf985f7::after {
 }
 @media (hover: hover) {
   [data-raikou-color-scheme=light] .m-dc6a3c71:hover:not([data-disabled]) {
-    --_control-bg: var(--raikou-color-gray-0);
+    --_control-bg: var(--raikou-calendar-picker-control-hover-bg);
   }
   [data-raikou-color-scheme=dark] .m-dc6a3c71:hover:not([data-disabled]) {
-    --_control-bg: var(--raikou-color-dark-5);
+    --_control-bg: var(--raikou-calendar-picker-control-hover-bg);
   }
 }
 @media (hover: none) {
   [data-raikou-color-scheme=light] .m-dc6a3c71:active:not([data-disabled]) {
-    --_control-bg: var(--raikou-color-gray-0);
+    --_control-bg: var(--raikou-calendar-picker-control-hover-bg);
   }
   [data-raikou-color-scheme=dark] .m-dc6a3c71:active:not([data-disabled]) {
-    --_control-bg: var(--raikou-color-dark-5);
+    --_control-bg: var(--raikou-calendar-picker-control-hover-bg);
   }
 }
 .m-dc6a3c71:disabled,
@@ -6123,6 +6189,20 @@ tr:last-of-type .m-faf985f7::after {
 [data-raikou-color-scheme=dark] .m-26063560:disabled + .m-bf295423 {
   --_checkbox-icon-color: var(--raikou-checkbox-disabled-icon-color);
 }
+.m-215c4542 + .m-bf295423 {
+  --_checkbox-icon-color: var(--checkbox-color);
+}
+[data-mantine-color-scheme] .m-215c4542[data-indeterminate],
+[data-mantine-color-scheme] .m-215c4542:checked:not(:disabled) {
+  --_checkbox-bg: transparent;
+  --_checkbox-bd-color: var(--checkbox-color);
+}
+[data-mantine-color-scheme] .m-215c4542[data-indeterminate] + .m-bf295423,
+[data-mantine-color-scheme] .m-215c4542:checked:not(:disabled) + .m-bf295423 {
+  --_checkbox-icon-color: var(--checkbox-color);
+  --_checkbox-icon-opacity: 1;
+  --_checkbox-icon-transform: none;
+}
 .m-bf295423 {
   position: absolute;
   top: 0;
@@ -6182,13 +6262,11 @@ tr:last-of-type .m-faf985f7::after {
   --raikou-dropzone-bg: #fff;
   --raikou-dropzone-border-color: #ced4da;
   --raikou-dropzone-bg-hover: #f8f9fa;
-  --raikou-dropzone-bg-active: #f8f9fa;
 }
 [data-raikou-color-scheme=dark] .m-d46a4834 {
   --raikou-dropzone-bg: #25262b;
   --raikou-dropzone-border-color: #373a40;
   --raikou-dropzone-bg-hover: #2c2e33;
-  --raikou-dropzone-bg-active: #2c2e33;
 }
 .m-d46a4834 {
   position: relative;
@@ -6215,18 +6293,18 @@ tr:last-of-type .m-faf985f7::after {
 }
 @media (hover: hover) {
   [data-raikou-color-scheme=light] .m-d46a4834:hover[data-activate-on-click]:not([data-loading]) {
-    --_dropzone-bg: var(--raikou-color-gray-0);
+    --_dropzone-bg: var(--raikou-dropzone-bg-hover);
   }
   [data-raikou-color-scheme=dark] .m-d46a4834:hover[data-activate-on-click]:not([data-loading]) {
-    --_dropzone-bg: var(--raikou-color-dark-5);
+    --_dropzone-bg: var(--raikou-dropzone-bg-hover);
   }
 }
 @media (hover: none) {
   [data-raikou-color-scheme=light] .m-d46a4834:active[data-activate-on-click]:not([data-loading]) {
-    --_dropzone-bg: var(--raikou-color-gray-0);
+    --_dropzone-bg: var(--raikou-dropzone-bg-hover);
   }
   [data-raikou-color-scheme=dark] .m-d46a4834:active[data-activate-on-click]:not([data-loading]) {
-    --_dropzone-bg: var(--raikou-color-dark-5);
+    --_dropzone-bg: var(--raikou-dropzone-bg-hover);
   }
 }
 .m-d46a4834[data-accept] {
@@ -6475,7 +6553,17 @@ tr:last-of-type .m-faf985f7::after {
   animation: var(--_section-animation);
 }
 .m-2242eb65[data-striped] {
-  --_section-gradient: linear-gradient( 45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent );
+  --_section-gradient:
+    linear-gradient(
+      
+      45deg,
+      rgba(255, 255, 255, 0.15) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.15) 75%,
+      transparent 75%,
+      transparent );
 }
 .m-2242eb65[data-animated] {
   --_section-animation: m-81a374bd 1s linear infinite;
@@ -6571,18 +6659,24 @@ tr:last-of-type .m-faf985f7::after {
 .m-c0783ff9::-webkit-scrollbar {
   display: none;
 }
-.m-c0783ff9[data-offset-scrollbars=xy],
-.m-c0783ff9[data-offset-scrollbars=y] {
+.m-c0783ff9[data-scrollbars=xy][data-offset-scrollbars=xy],
+.m-c0783ff9[data-scrollbars=xy][data-offset-scrollbars=y],
+.m-c0783ff9[data-scrollbars=y][data-offset-scrollbars=xy],
+.m-c0783ff9[data-scrollbars=y][data-offset-scrollbars=y] {
   --_viewport-padding-right: var(--scrollarea-scrollbar-size);
   --_viewport-padding-left: unset;
 }
-[dir=rtl] .m-c0783ff9[data-offset-scrollbars=xy],
-[dir=rtl] .m-c0783ff9[data-offset-scrollbars=y] {
+[dir=rtl] .m-c0783ff9[data-scrollbars=xy][data-offset-scrollbars=xy],
+[dir=rtl] .m-c0783ff9[data-scrollbars=xy][data-offset-scrollbars=y],
+[dir=rtl] .m-c0783ff9[data-scrollbars=y][data-offset-scrollbars=xy],
+[dir=rtl] .m-c0783ff9[data-scrollbars=y][data-offset-scrollbars=y] {
   --_viewport-padding-right: unset;
   --_viewport-padding-left: var(--scrollarea-scrollbar-size);
 }
-.m-c0783ff9[data-offset-scrollbars=xy],
-.m-c0783ff9[data-offset-scrollbars=x] {
+.m-c0783ff9[data-scrollbars=xy][data-offset-scrollbars=xy],
+.m-c0783ff9[data-scrollbars=xy][data-offset-scrollbars=x],
+.m-c0783ff9[data-scrollbars=x][data-offset-scrollbars=xy],
+.m-c0783ff9[data-scrollbars=x][data-offset-scrollbars=x] {
   --_viewport-padding-bottom: var(--scrollarea-scrollbar-size);
 }
 .m-f8f631dd {
@@ -7107,6 +7201,13 @@ tr:last-of-type .m-faf985f7::after {
   --_display: none;
 }
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/TypographyStylesProvider/src/TypographyStylesProvider.module.css/#css-module-data */
+.m-d6493fad {
+  --raikou-tsp-table-caption: #868e96;
+  --raikou-tsp-table-th: #495057;
+  --raikou-tsp-table-thread-th: #dee2e6;
+  --raikou-tsp-table-tfoot-th: #dee2e6;
+  --raikou-tsp-table-td-border-color: #dee2e6;
+}
 [data-raikou-color-scheme=light] .m-d6493fad {
   --raikou-tsp-mark-background-color: #ffec99;
   --raikou-tsp-mark-color: inherit;
@@ -7115,6 +7216,9 @@ tr:last-of-type .m-faf985f7::after {
   --raikou-tsp-code-background-color: #f8f9fa;
   --raikou-tsp-code-color: #000;
   --raikou-tsp-blockquote-background-color: #f8f9fa;
+  --raikou-tsp-kdb-border-color: #dee2e6;
+  --raikou-tsp-kdb-color: #495057;
+  --raikou-tsp-kdb-bg: #f8f9fa;
 }
 [data-raikou-color-scheme=dark] .m-d6493fad {
   --raikou-tsp-mark-background-color: #fcc419;
@@ -7125,6 +7229,9 @@ tr:last-of-type .m-faf985f7::after {
   --raikou-tsp-code-background-color: #2c2e33;
   --raikou-tsp-code-color: #fff;
   --raikou-tsp-blockquote-background-color: #141517;
+  --raikou-tsp-kdb-border-color: #424242;
+  --raikou-tsp-kdb-color: #c9c9c9;
+  --raikou-tsp-kdb-bg: #3b3b3b;
 }
 .m-d6493fad h1,
 .m-d6493fad h2,
@@ -7231,6 +7338,30 @@ tr:last-of-type .m-faf985f7::after {
   color: inherit;
   border: 0;
 }
+.m-d6493fad kbd {
+  --kbd-fz: calc(0.75rem * var(--raikou-scale));
+  --kbd-padding: calc(0.1875rem * var(--raikou-scale)) calc(0.3125rem * var(--raikou-scale));
+  font-family: var(--mantine-font-family-monospace);
+  line-height: var(--mantine-line-height);
+  font-weight: 700;
+  padding: var(--kbd-padding);
+  font-size: var(--kbd-fz);
+  border-radius: var(--mantine-radius-sm);
+  border: calc(0.0625rem * var(--raikou-scale)) solid var(--_kbd-border-color);
+  border-bottom-width: calc(0.1875rem * var(--raikou-scale));
+  background-color: var(--_kbd-bg);
+  color: var(--_kbd-color);
+}
+[data-raikou-color-scheme=light] .m-d6493fad kbd {
+  --_kbd-border-color: var(--raikou-tsp-kdb-border-color);
+  --_kbd-color: var(--raikou-tsp-kdb-color);
+  --_kbd-bg: var(--raikou-tsp-kdb-bg);
+}
+[data-raikou-color-scheme=dark] .m-d6493fad kbd {
+  --_kbd-border-color: var(--raikou-tsp-kdb-border-color);
+  --_kbd-color: var(--raikou-tsp-kdb-color);
+  --_kbd-bg: var(--raikou-tsp-kdb-bg);
+}
 .m-d6493fad code {
   line-height: var(--raikou-line-height);
   padding: calc(0.0625rem * var(--raikou-scale)) calc(0.3125rem * var(--raikou-scale));
@@ -7266,27 +7397,27 @@ tr:last-of-type .m-faf985f7::after {
 .m-d6493fad table caption {
   margin-top: var(--raikou-spacing-xs);
   font-size: var(--raikou-font-size-sm);
-  color: var(--raikou-color-gray-6);
+  color: var(--raikou-tsp-table-caption);
 }
 .m-d6493fad table th {
   text-align: left;
   font-weight: bold;
-  color: var(--raikou-color-gray-7);
+  color: var(--raikou-tsp-table-th);
   font-size: var(--raikou-font-size-sm);
   padding: var(--raikou-spacing-xs) var(--raikou-spacing-sm);
 }
 .m-d6493fad table thead th {
   border-bottom: calc(0.0625rem * var(--raikou-scale)) solid;
-  border-color: var(--raikou-color-gray-3);
+  border-color: var(--raikou-tsp-table-thread-th);
 }
 .m-d6493fad table tfoot th {
   border-top: calc(0.0625rem * var(--raikou-scale)) solid;
-  border-color: var(--raikou-color-gray-3);
+  border-color: var(--raikou-tsp-table-tfoot-th);
 }
 .m-d6493fad table td {
   padding: var(--raikou-spacing-xs) var(--raikou-spacing-sm);
   border-bottom: calc(0.0625rem * var(--raikou-scale)) solid;
-  border-color: var(--raikou-color-gray-3);
+  border-color: var(--raikou-tsp-table-td-border-color);
   font-size: var(--raikou-font-size-sm);
 }
 .m-d6493fad table tr:last-of-type td {
@@ -7577,7 +7708,7 @@ tr:last-of-type .m-faf985f7::after {
   justify-content: center;
   width: var(--_section-size);
   border-radius: var(--_section-border-radius);
-  color: var(--raikou-color-placeholder);
+  color: var(--_input-section-color, var(--raikou-color-placeholder));
 }
 .m-82577fc2[data-position=right] {
   --_section-pointer-events: var(--input-right-section-pointer-events);
@@ -8032,10 +8163,22 @@ tr:last-of-type .m-faf985f7::after {
     calc(0.25rem * var(--raikou-scale)) calc(-0.25rem * var(--raikou-scale)),
     calc(-0.25rem * var(--raikou-scale)) 0;
   background-image:
-    linear-gradient(45deg, var(--_alpha-overlay-color) 25%, transparent 25%),
-    linear-gradient(-45deg, var(--_alpha-overlay-color) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, var(--_alpha-overlay-color) 75%),
-    linear-gradient(-45deg, var(--_alpha-overlay-bg) 75%, var(--_alpha-overlay-color) 75%);
+    linear-gradient(
+      45deg,
+      var(--_alpha-overlay-color) 25%,
+      transparent 25%),
+    linear-gradient(
+      -45deg,
+      var(--_alpha-overlay-color) 25%,
+      transparent 25%),
+    linear-gradient(
+      45deg,
+      transparent 75%,
+      var(--_alpha-overlay-color) 75%),
+    linear-gradient(
+      -45deg,
+      var(--_alpha-overlay-bg) 75%,
+      var(--_alpha-overlay-color) 75%);
 }
 .m-93e74e3 {
   position: absolute;
@@ -8110,20 +8253,21 @@ tr:last-of-type .m-faf985f7::after {
   position: absolute;
   box-shadow: 0 0 calc(0.0625rem * var(--raikou-scale)) rgba(0, 0, 0, 0.6);
   border: calc(0.125rem * var(--raikou-scale)) solid var(--raikou-color-white);
-  width: var(--cp-thumb-size);
-  height: var(--cp-thumb-size);
-  border-radius: var(--cp-thumb-size);
+  width: var(--_cp-thumb-size);
+  height: var(--_cp-thumb-size);
+  border-radius: var(--_cp-thumb-size);
   outline: var(--_outline);
-  left: calc(var(--_thumb-x-offset) - var(--cp-thumb-size) / 2);
-  top: calc(var(--_thumb-y-offset) - var(--cp-thumb-size) / 2);
+  left: calc(var(--_thumb-x-offset) - var(--_cp-thumb-size) / 2);
+  top: calc(var(--_thumb-y-offset) - var(--_cp-thumb-size) / 2);
 }
 .m-d8ee6fd8.m-d8ee6fd8 {
-  height: 0;
+  height: unset !important;
+  width: unset !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
   margin: calc(0.125rem * var(--raikou-scale));
   cursor: pointer;
   padding-bottom: calc(var(--cp-swatch-size) - calc(0.25rem * var(--raikou-scale)));
-  min-width: 0;
-  min-height: 0;
   flex: 0 0 calc(var(--cp-swatch-size) - calc(0.25rem * var(--raikou-scale)));
 }
 .m-5711e686 {
@@ -8134,6 +8278,12 @@ tr:last-of-type .m-faf985f7::after {
   flex-wrap: wrap;
 }
 .m-202a296e {
+  --cp-thumb-size-xs: calc(0.5rem * var(--raikou-scale));
+  --cp-thumb-size-sm: calc(0.75rem * var(--raikou-scale));
+  --cp-thumb-size-md: calc(1rem * var(--raikou-scale));
+  --cp-thumb-size-lg: calc(1.25rem * var(--raikou-scale));
+  --cp-thumb-size-xl: calc(1.375rem * var(--raikou-scale));
+  --_cp-thumb-size: var(--cp-thumb-size, calc(0.75rem * var(--raikou-scale)));
   -webkit-tap-highlight-color: transparent;
   position: relative;
   height: var(--cp-saturation-height);
@@ -8152,10 +8302,16 @@ tr:last-of-type .m-faf985f7::after {
   inset: calc(var(--cp-thumb-size) * -1 / 2 - calc(0.0625rem * var(--raikou-scale)));
 }
 .m-d856d47d {
+  --cp-thumb-size-xs: calc(0.5rem * var(--raikou-scale));
+  --cp-thumb-size-sm: calc(0.75rem * var(--raikou-scale));
+  --cp-thumb-size-md: calc(1rem * var(--raikou-scale));
+  --cp-thumb-size-lg: calc(1.25rem * var(--raikou-scale));
+  --cp-thumb-size-xl: calc(1.375rem * var(--raikou-scale));
+  --_cp-thumb-size: var(--cp-thumb-size, calc(0.75rem * var(--raikou-scale)));
   position: relative;
-  height: calc(var(--cp-thumb-size) + calc(0.125rem * var(--raikou-scale)));
-  margin-left: calc(var(--cp-thumb-size) / 2);
-  margin-right: calc(var(--cp-thumb-size) / 2);
+  height: calc(var(_--cp-thumb-size) + calc(0.125rem * var(--raikou-scale)));
+  margin-left: calc(var(--_cp-thumb-size) / 2);
+  margin-right: calc(var(--_cp-thumb-size) / 2);
   outline: none;
 }
 .m-d856d47d + .m-d856d47d {
@@ -8177,8 +8333,8 @@ tr:last-of-type .m-faf985f7::after {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: calc(var(--cp-thumb-size) * -1 / 2 - calc(0.0625rem * var(--raikou-scale)));
-  right: calc(var(--cp-thumb-size) * -1 / 2 - calc(0.0625rem * var(--raikou-scale)));
+  left: calc(var(--_cp-thumb-size) * -1 / 2 - calc(0.0625rem * var(--raikou-scale)));
+  right: calc(var(--_cp-thumb-size) * -1 / 2 - calc(0.0625rem * var(--raikou-scale)));
   border-radius: 10000rem;
 }
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Group/src/Group.module.css/#css-module-data */

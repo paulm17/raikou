@@ -1063,7 +1063,7 @@ var NumberInput = (0, import_core10.factory)((_props, ref) => {
   };
   const increment = () => {
     if (typeof _value !== "number" || Number.isNaN(_value)) {
-      setValue(min != null ? min : (0, import_hooks2.clamp)(startValue, min, max));
+      setValue((0, import_hooks2.clamp)(startValue, min, max));
     } else if (max !== void 0) {
       setValue(_value + step <= max ? _value + step : max);
     } else {

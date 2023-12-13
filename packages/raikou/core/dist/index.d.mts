@@ -512,7 +512,10 @@ type ComponentClasses<Payload extends FactoryPayload> = {
     classes: Payload["stylesNames"] extends string ? Record<string, string> : never;
 };
 type RaikouComponentStaticProperties<Payload extends FactoryPayload> = ThemeExtend<Payload> & ComponentClasses<Payload> & StaticComponents<Payload["staticComponents"]>;
-type RaikouComponent<Payload extends FactoryPayload> = React.ForwardRefExoticComponent<Payload["props"] & React.RefAttributes<Payload["ref"]>> & ThemeExtend<Payload> & ComponentClasses<Payload> & StaticComponents<Payload["staticComponents"]>;
+type RaikouComponent<Payload extends FactoryPayload> = React.ForwardRefExoticComponent<Payload["props"] & React.RefAttributes<Payload["ref"]> & {
+    component?: any;
+    renderRoot?: (props: Record<string, any>) => React.ReactNode;
+}> & ThemeExtend<Payload> & ComponentClasses<Payload> & StaticComponents<Payload["staticComponents"]>;
 declare function factory<Payload extends FactoryPayload>(ui: React.ForwardRefRenderFunction<Payload["ref"], Payload["props"]>): RaikouComponent<Payload>;
 
 interface PolymorphicFactoryPayload extends FactoryPayload {

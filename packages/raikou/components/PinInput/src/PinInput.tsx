@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useUncontrolled, useId } from "@raikou/hooks";
+import { useUncontrolled, useId, assignRef } from "@raikou/hooks";
 import {
   BoxProps,
   ElementProps,
@@ -305,7 +305,7 @@ export const PinInput = factory<PinInputFactory>((props, ref) => {
   const handlePaste = (event: React.ClipboardEvent<HTMLInputElement>) => {
     event.preventDefault();
     const copyValue = event.clipboardData.getData("Text");
-    const isValid = validate(copyValue);
+    const isValid = validate(copyValue.trim());
 
     if (isValid) {
       setValues(copyValue);
@@ -362,6 +362,7 @@ export const PinInput = factory<PinInputFactory>((props, ref) => {
             variant={variant}
             disabled={disabled}
             ref={(node) => {
+              index === 0 && assignRef(ref, node);
               inputsRef.current[index] = node!;
             }}
             autoComplete={oneTimeCode ? "one-time-code" : "off"}

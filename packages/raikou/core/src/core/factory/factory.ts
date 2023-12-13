@@ -53,7 +53,11 @@ export type RaikouComponentStaticProperties<Payload extends FactoryPayload> =
 
 export type RaikouComponent<Payload extends FactoryPayload> =
   React.ForwardRefExoticComponent<
-    Payload["props"] & React.RefAttributes<Payload["ref"]>
+    Payload["props"] &
+      React.RefAttributes<Payload["ref"]> & {
+        component?: any;
+        renderRoot?: (props: Record<string, any>) => React.ReactNode;
+      }
   > &
     ThemeExtend<Payload> &
     ComponentClasses<Payload> &

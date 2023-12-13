@@ -34,7 +34,9 @@
   "dependencies": {
     "@raikou/core": "workspace:*",
     "@raikou/hooks": "workspace:*",
+    "clsx": "2.0.0",
     "pure-store": "^1.2.0",
+    "react-remove-scroll": "^2.5.6",
     "tslib": "^2.6.0"
   },
   "devDependencies": {

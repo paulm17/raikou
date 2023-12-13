@@ -3753,6 +3753,8 @@ interface AppShellProps extends BoxProps, StylesApiProps<AppShellFactory>, Eleme
     layout?: "default" | "alt";
     /** If set, Navbar, Aside, Header and Footer components be hidden */
     disabled?: boolean;
+    /** Determines whether Header and Footer components should include styles to offset scrollbars. Based on `react-remove-scroll`. `true` by default */
+    offsetScrollbars?: boolean;
 }
 type AppShellFactory = Factory<{
     props: AppShellProps;

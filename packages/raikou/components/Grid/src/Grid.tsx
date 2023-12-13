@@ -20,7 +20,7 @@ import classes from "./Grid.module.css";
 
 export type GridStylesNames = "root" | "col" | "inner";
 export type GridCssVariables = {
-  root: "--grid-justify" | "--grid-align";
+  root: "--grid-justify" | "--grid-align" | "--grid-overflow";
 };
 
 export interface GridProps
@@ -41,6 +41,9 @@ export interface GridProps
 
   /** Number of columns in each row, `12` by default */
   columns?: number;
+
+  /** Sets `overflow` CSS property on the root element, `'visible'` by default */
+  overflow?: React.CSSProperties["overflow"];
 }
 
 export type GridFactory = Factory<{
@@ -60,10 +63,11 @@ const defaultProps: Partial<GridProps> = {
 };
 
 const varsResolver = createVarsResolver<GridFactory>(
-  (_, { justify, align }) => ({
+  (_, { justify, align, overflow }) => ({
     root: {
       "--grid-justify": justify,
       "--grid-align": align,
+      "--grid-overflow": overflow,
     },
   }),
 );

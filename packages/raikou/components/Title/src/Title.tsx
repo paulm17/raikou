@@ -18,7 +18,7 @@ export type TitleSize = `h${TitleOrder}` | React.CSSProperties["fontSize"];
 
 export type TitleStylesNames = "root";
 export type TitleCssVariables = {
-  root: "--title-fw" | "--title-lh" | "--title-fz";
+  root: "--title-fw" | "--title-lh" | "--title-fz" | "--title-line-clamp";
 };
 
 export interface TitleProps
@@ -30,6 +30,9 @@ export interface TitleProps
 
   /** Changes title size, if not set, then size is controlled by `order` prop */
   size?: TitleSize;
+
+  /** Number of lines after which Text will be truncated */
+  lineClamp?: number;
 }
 
 export type TitleFactory = Factory<{
@@ -43,16 +46,20 @@ const defaultProps: Partial<TitleProps> = {
   order: 1,
 };
 
-const varsResolver = createVarsResolver<TitleFactory>((_, { order, size }) => {
-  const sizeVariables = getTitleSize(order!, size);
-  return {
-    root: {
-      "--title-fw": sizeVariables.fontWeight,
-      "--title-lh": sizeVariables.lineHeight,
-      "--title-fz": sizeVariables.fontSize,
-    },
-  };
-});
+const varsResolver = createVarsResolver<TitleFactory>(
+  (_, { order, size, lineClamp }) => {
+    const sizeVariables = getTitleSize(order!, size);
+    return {
+      root: {
+        "--title-fw": sizeVariables.fontWeight,
+        "--title-lh": sizeVariables.lineHeight,
+        "--title-fz": sizeVariables.fontSize,
+        "--title-line-clamp":
+          typeof lineClamp === "number" ? lineClamp.toString() : undefined,
+      },
+    };
+  },
+);
 
 export const Title = factory<TitleFactory>((_props, ref) => {
   const props = useProps("Title", defaultProps, _props);
@@ -66,6 +73,7 @@ export const Title = factory<TitleFactory>((_props, ref) => {
     vars,
     size,
     variant,
+    lineClamp,
     ...others
   } = props;
 
@@ -92,7 +100,7 @@ export const Title = factory<TitleFactory>((_props, ref) => {
       component={`h${order!}`}
       variant={variant}
       ref={ref}
-      mod={{ order }}
+      mod={{ order, "data-line-clamp": typeof lineClamp === "number" }}
       size={size}
       {...others}
     />

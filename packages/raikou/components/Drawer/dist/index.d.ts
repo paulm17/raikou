@@ -1,6 +1,7 @@
 import * as _raikou_core from '@raikou/core';
 import { BoxProps, ElementProps, RaikouShadow, RaikouSpacing, RaikouSize, StylesApiProps, PolymorphicFactory, RaikouRadius, Factory, CompoundStylesApiProps } from '@raikou/core';
 import React$1 from 'react';
+import { RemoveScroll } from 'react-remove-scroll';
 
 interface PortalProps extends React$1.ComponentPropsWithoutRef<"div"> {
     /** Portal children, for example, custom modal or popover */
@@ -44,6 +45,7 @@ interface TransitionProps {
 }
 type TransitionOverride = Partial<Omit<TransitionProps, "mounted">>;
 
+type RemoveScrollProps = Omit<React$1.ComponentProps<typeof RemoveScroll>, "children">;
 interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
     /** If set modal/drawer will not be unmounted from the DOM when it is hidden, `display: none` styles will be added instead, `false` by default */
     keepMounted?: boolean;
@@ -79,6 +81,8 @@ interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
     padding?: RaikouSpacing;
     /** Controls width of the content area, `'md'` by default */
     size?: RaikouSize | (string & {}) | number;
+    /** Props passed down to react-remove-scroll, can be used to customize scroll lock behavior */
+    removeScrollProps?: RemoveScrollProps;
 }
 
 interface ModalBaseBodyProps extends BoxProps, ElementProps<"div"> {
@@ -175,13 +179,17 @@ type ScrollAreaComponent = React.FC<any>;
 type DrawerPosition = "bottom" | "left" | "right" | "top";
 type DrawerRootStylesNames = ModalBaseStylesNames;
 type DrawerRootCssVariables = {
-    root: "--drawer-size" | "--drawer-flex" | "--drawer-height" | "--drawer-align" | "--drawer-justify";
+    root: "--drawer-size" | "--drawer-flex" | "--drawer-height" | "--drawer-align" | "--drawer-justify" | "--drawer-offset";
 };
 interface DrawerRootProps extends StylesApiProps<DrawerRootFactory>, ModalBaseProps {
     /** Scroll area component, native `div` element by default */
     scrollAreaComponent?: ScrollAreaComponent;
     /** Side of the screen on which drawer will be opened, `'left'` by default */
     position?: DrawerPosition;
+    /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `0` by default */
+    radius?: RaikouRadius;
+    /** Drawer container offset from the viewport end, `0` by default */
+    offset?: number | string;
 }
 type DrawerRootFactory = Factory<{
     props: DrawerRootProps;

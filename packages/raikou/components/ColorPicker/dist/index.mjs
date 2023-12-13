@@ -36,20 +36,20 @@ import React10, { useRef as useRef3, useState as useState4 } from "react";
 import { useDidUpdate as useDidUpdate2, useUncontrolled } from "@raikou/hooks";
 import {
   Box as Box6,
-  factory,
-  useProps as useProps4,
-  useStyles as useStyles2,
+  factory as factory2,
+  useProps as useProps5,
+  useStyles as useStyles3,
   getSize,
   getSpacing,
-  createVarsResolver as createVarsResolver2
+  createVarsResolver as createVarsResolver3
 } from "@raikou/core";
 
 // src/AlphaSlider/AlphaSlider.tsx
-import React5, { forwardRef as forwardRef3 } from "react";
-import { useProps, rem as rem2 } from "@raikou/core";
+import React5, { forwardRef as forwardRef2 } from "react";
+import { useProps as useProps2, rem as rem2 } from "@raikou/core";
 
 // src/ColorSlider/ColorSlider.tsx
-import React4, { useRef, useState as useState2, forwardRef as forwardRef2 } from "react";
+import React4, { useRef, useState as useState2 } from "react";
 import {
   clampUseMovePosition,
   useDidUpdate,
@@ -58,31 +58,28 @@ import {
 } from "@raikou/hooks";
 import {
   Box as Box2,
+  factory,
+  useProps,
+  useStyles,
+  createVarsResolver,
   useRaikouTheme,
   rem
 } from "@raikou/core";
 
-// src/Thumb/Thumb.tsx
-import React3, { forwardRef } from "react";
-import { Box } from "@raikou/core";
+// css-module:../ColorPicker.module.css#css-module
+var ColorPicker_module_default = { "wrapper": "m-fee9c77", "preview": "m-9dddfbac", "body": "m-bffecc3e", "sliders": "m-3283bb96", "thumb": "m-40d572ba", "swatch": "m-d8ee6fd8", "swatches": "m-5711e686", "saturation": "m-202a296e", "saturationOverlay": "m-11b3db02", "slider": "m-d856d47d", "sliderOverlay": "m-8f327113" };
 
 // ../_utils/create-safe-context/create-safe-context.tsx
 import React, { createContext, useContext } from "react";
-function createSafeContext(errorMessage) {
-  const Context = createContext(null);
-  const useSafeContext = () => {
-    const ctx = useContext(Context);
-    if (ctx === null) {
-      throw new Error(errorMessage);
-    }
-    return ctx;
-  };
-  const Provider = ({ children, value }) => /* @__PURE__ */ React.createElement(Context.Provider, { value }, children);
-  return [Provider, useSafeContext];
-}
 
 // ../_utils/create-optional-context/create-optional-context.tsx
 import React2, { createContext as createContext2, useContext as useContext2 } from "react";
+function createOptionalContext(initialValue = null) {
+  const Context = createContext2(initialValue);
+  const useOptionalContext = () => useContext2(Context);
+  const Provider = ({ children, value }) => /* @__PURE__ */ React2.createElement(Context.Provider, { value }, children);
+  return [Provider, useOptionalContext];
+}
 
 // ../_utils/use-hovered/use-hovered.ts
 import { useState } from "react";
@@ -91,127 +88,158 @@ import { useState } from "react";
 import { useEffect, useLayoutEffect } from "react";
 
 // src/ColorPicker.context.ts
-var [ColorPickerProvider, useColorPickerContext] = createSafeContext(
-  "ColorPicker component was not found in tree"
-);
+var [ColorPickerProvider, useColorPickerContext] = createOptionalContext(null);
 
 // src/Thumb/Thumb.tsx
+import React3, { forwardRef } from "react";
+import { Box } from "@raikou/core";
 var Thumb = forwardRef(
   (_a, ref) => {
-    var _b = _a, { className, style, size, position } = _b, others = __objRest(_b, ["className", "style", "size", "position"]);
-    const { getStyles } = useColorPickerContext();
+    var _b = _a, { className, style, position } = _b, others = __objRest(_b, ["className", "style", "position"]);
     return /* @__PURE__ */ React3.createElement(
       Box,
-      __spreadValues(__spreadProps(__spreadValues({
-        ref
-      }, getStyles("thumb", { style })), {
+      __spreadValues({
+        ref,
         __vars: {
           "--_thumb-y-offset": `${position.y * 100}%`,
           "--_thumb-x-offset": `${position.x * 100}%`
         }
-      }), others)
+      }, others)
     );
   }
 );
 Thumb.displayName = "@raikou/core/ColorPickerThumb";
 
 // src/ColorSlider/ColorSlider.tsx
-var ColorSlider = forwardRef2(
-  (props, ref) => {
-    const _a = props, {
-      className,
-      onChange,
-      onChangeEnd,
-      maxValue,
-      round: round2,
-      size = "md",
-      focusable = true,
-      value,
-      overlays,
-      thumbColor = "transparent",
-      onScrubStart,
-      onScrubEnd
-    } = _a, others = __objRest(_a, [
-      "className",
-      "onChange",
-      "onChangeEnd",
-      "maxValue",
-      "round",
-      "size",
-      "focusable",
-      "value",
-      "overlays",
-      "thumbColor",
-      "onScrubStart",
-      "onScrubEnd"
-    ]);
-    const { getStyles } = useColorPickerContext();
-    const theme = useRaikouTheme();
-    const [position, setPosition] = useState2({ y: 0, x: value / maxValue });
-    const positionRef = useRef(position);
-    const getChangeValue = (val) => round2 ? Math.round(val * maxValue) : val * maxValue;
-    const { ref: sliderRef } = useMove(
-      ({ x, y }) => {
-        positionRef.current = { x, y };
-        onChange == null ? void 0 : onChange(getChangeValue(x));
-      },
-      {
-        onScrubEnd: () => {
-          const { x } = positionRef.current;
-          onChangeEnd == null ? void 0 : onChangeEnd(getChangeValue(x));
-          onScrubEnd == null ? void 0 : onScrubEnd();
-        },
-        onScrubStart
-      }
-    );
-    useDidUpdate(() => {
-      setPosition({ y: 0, x: value / maxValue });
-    }, [value]);
-    const handleArrow = (event, pos) => {
-      event.preventDefault();
-      const _position = clampUseMovePosition(pos);
-      onChange == null ? void 0 : onChange(getChangeValue(_position.x));
-      onChangeEnd == null ? void 0 : onChangeEnd(getChangeValue(_position.x));
-    };
-    const handleKeyDown = (event) => {
-      switch (event.key) {
-        case "ArrowRight": {
-          handleArrow(event, { x: position.x + 0.05, y: position.y });
-          break;
-        }
-        case "ArrowLeft": {
-          handleArrow(event, { x: position.x - 0.05, y: position.y });
-          break;
-        }
-      }
-    };
-    const layers = overlays.map((overlay, index) => /* @__PURE__ */ React4.createElement("div", __spreadProps(__spreadValues({}, getStyles("sliderOverlay")), { style: overlay, key: index })));
-    return /* @__PURE__ */ React4.createElement(
-      Box2,
-      __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, others), {
-        ref: useMergedRef(sliderRef, ref)
-      }), getStyles("slider")), {
-        role: "slider",
-        "aria-valuenow": value,
-        "aria-valuemax": maxValue,
-        "aria-valuemin": 0,
-        tabIndex: focusable ? 0 : -1,
-        onKeyDown: handleKeyDown,
-        "data-focus-ring": theme.focusRing
-      }),
-      layers,
-      /* @__PURE__ */ React4.createElement(
-        Thumb,
-        __spreadValues({
-          position,
-          size
-        }, getStyles("thumb", {
-          style: { top: rem(1), background: thumbColor }
-        }))
-      )
-    );
+var defaultProps = {};
+var varsResolver = createVarsResolver(() => ({
+  root: {
+    "--test": "test"
   }
-);
+}));
+var ColorSlider = factory((_props, ref) => {
+  var _b;
+  const props = useProps("ColorSlider", defaultProps, _props);
+  const _a = props, {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    onChange,
+    onChangeEnd,
+    maxValue,
+    round: round2,
+    size = "md",
+    focusable = true,
+    value,
+    overlays,
+    thumbColor = "transparent",
+    onScrubStart,
+    onScrubEnd,
+    __staticSelector = "ColorPicker"
+  } = _a, others = __objRest(_a, [
+    "classNames",
+    "className",
+    "style",
+    "styles",
+    "unstyled",
+    "vars",
+    "onChange",
+    "onChangeEnd",
+    "maxValue",
+    "round",
+    "size",
+    "focusable",
+    "value",
+    "overlays",
+    "thumbColor",
+    "onScrubStart",
+    "onScrubEnd",
+    "__staticSelector"
+  ]);
+  const _getStyles = useStyles({
+    name: __staticSelector,
+    classes: ColorPicker_module_default,
+    props,
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled,
+    vars,
+    varsResolver
+  });
+  const ctxGetStyles = (_b = useColorPickerContext()) == null ? void 0 : _b.getStyles;
+  const getStyles = ctxGetStyles || _getStyles;
+  const theme = useRaikouTheme();
+  const [position, setPosition] = useState2({ y: 0, x: value / maxValue });
+  const positionRef = useRef(position);
+  const getChangeValue = (val) => round2 ? Math.round(val * maxValue) : val * maxValue;
+  const { ref: sliderRef } = useMove(
+    ({ x, y }) => {
+      positionRef.current = { x, y };
+      onChange == null ? void 0 : onChange(getChangeValue(x));
+    },
+    {
+      onScrubEnd: () => {
+        const { x } = positionRef.current;
+        onChangeEnd == null ? void 0 : onChangeEnd(getChangeValue(x));
+        onScrubEnd == null ? void 0 : onScrubEnd();
+      },
+      onScrubStart
+    }
+  );
+  useDidUpdate(() => {
+    setPosition({ y: 0, x: value / maxValue });
+  }, [value]);
+  const handleArrow = (event, pos) => {
+    event.preventDefault();
+    const _position = clampUseMovePosition(pos);
+    onChange == null ? void 0 : onChange(getChangeValue(_position.x));
+    onChangeEnd == null ? void 0 : onChangeEnd(getChangeValue(_position.x));
+  };
+  const handleKeyDown = (event) => {
+    switch (event.key) {
+      case "ArrowRight": {
+        handleArrow(event, { x: position.x + 0.05, y: position.y });
+        break;
+      }
+      case "ArrowLeft": {
+        handleArrow(event, { x: position.x - 0.05, y: position.y });
+        break;
+      }
+    }
+  };
+  const layers = overlays.map((overlay, index) => /* @__PURE__ */ React4.createElement("div", __spreadProps(__spreadValues({}, getStyles("sliderOverlay")), { style: overlay, key: index })));
+  return /* @__PURE__ */ React4.createElement(
+    Box2,
+    __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, others), {
+      ref: useMergedRef(sliderRef, ref)
+    }), getStyles("slider")), {
+      role: "slider",
+      "aria-valuenow": value,
+      "aria-valuemax": maxValue,
+      "aria-valuemin": 0,
+      tabIndex: focusable ? 0 : -1,
+      onKeyDown: handleKeyDown,
+      "data-focus-ring": theme.focusRing,
+      __vars: {
+        "--_cp-thumb-size": `var(--cp-thumb-size-${size})`
+      }
+    }),
+    layers,
+    /* @__PURE__ */ React4.createElement(
+      Thumb,
+      __spreadValues({
+        position
+      }, getStyles("thumb", {
+        style: { top: rem(1), background: thumbColor }
+      }))
+    )
+  );
+});
 ColorSlider.displayName = "@raikou/core/ColorSlider";
 
 // src/converters/parsers.ts
@@ -344,12 +372,12 @@ function parseColor(color) {
 }
 
 // src/AlphaSlider/AlphaSlider.tsx
-var defaultProps = {};
-var AlphaSlider = forwardRef3(
+var defaultProps2 = {};
+var AlphaSlider = forwardRef2(
   (props, ref) => {
-    const _a = useProps(
+    const _a = useProps2(
       "AlphaSlider",
-      defaultProps,
+      defaultProps2,
       props
     ), { value, onChange, onChangeEnd, color } = _a, others = __objRest(_a, ["value", "onChange", "onChangeEnd", "color"]);
     return /* @__PURE__ */ React5.createElement(
@@ -386,14 +414,13 @@ var AlphaSlider = forwardRef3(
 AlphaSlider.displayName = "@raikou/core/AlphaSlider";
 
 // src/HueSlider/HueSlider.tsx
-import React6, { forwardRef as forwardRef4 } from "react";
-import { useProps as useProps2, rem as rem3 } from "@raikou/core";
-var defaultProps2 = {};
-var HueSlider = forwardRef4(
+import React6, { forwardRef as forwardRef3 } from "react";
+import { useProps as useProps3, rem as rem3 } from "@raikou/core";
+var HueSlider = forwardRef3(
   (props, ref) => {
-    const _a = useProps2(
+    const _a = useProps3(
       "HueSlider",
-      defaultProps2,
+      {},
       props
     ), { value, onChange, onChangeEnd, color } = _a, others = __objRest(_a, ["value", "onChange", "onChangeEnd", "color"]);
     return /* @__PURE__ */ React6.createElement(
@@ -611,8 +638,7 @@ function Saturation(_a) {
     /* @__PURE__ */ React7.createElement(
       Thumb,
       __spreadValues({
-        position,
-        size
+        position
       }, getStyles("thumb", { style: { backgroundColor: color } }))
     )
   );
@@ -620,7 +646,7 @@ function Saturation(_a) {
 Saturation.displayName = "@raikou/core/Saturation";
 
 // src/Swatches/Swatches.tsx
-import React9, { forwardRef as forwardRef5 } from "react";
+import React9, { forwardRef as forwardRef4 } from "react";
 import { Box as Box5 } from "@raikou/core";
 
 // ../ColorSwatch/src/ColorSwatch.tsx
@@ -630,9 +656,9 @@ import {
   getRadius,
   polymorphicFactory,
   rem as rem4,
-  useProps as useProps3,
-  useStyles,
-  createVarsResolver
+  useProps as useProps4,
+  useStyles as useStyles2,
+  createVarsResolver as createVarsResolver2
 } from "@raikou/core";
 
 // css-module:./ColorSwatch.module.css#css-module
@@ -642,7 +668,7 @@ var ColorSwatch_module_default = { "root": "m-de3d2490", "colorOverlay": "m-862f
 var defaultProps3 = {
   withShadow: true
 };
-var varsResolver = createVarsResolver(
+var varsResolver2 = createVarsResolver2(
   (_, { radius, size }) => ({
     root: {
       "--cs-radius": radius === void 0 ? void 0 : getRadius(radius),
@@ -652,8 +678,8 @@ var varsResolver = createVarsResolver(
 );
 var ColorSwatch = polymorphicFactory(
   (_props, ref) => {
-    const props = useProps3("ColorSwatch", defaultProps3, _props);
-    const _a = useProps3("ColorSwatch", defaultProps3, props), {
+    const props = useProps4("ColorSwatch", defaultProps3, _props);
+    const _a = useProps4("ColorSwatch", defaultProps3, props), {
       classNames,
       className,
       style,
@@ -680,7 +706,7 @@ var ColorSwatch = polymorphicFactory(
       "children",
       "variant"
     ]);
-    const getStyles = useStyles({
+    const getStyles = useStyles2({
       name: "ColorSwatch",
       props,
       classes: ColorSwatch_module_default,
@@ -690,7 +716,7 @@ var ColorSwatch = polymorphicFactory(
       styles,
       unstyled,
       vars,
-      varsResolver
+      varsResolver: varsResolver2
     });
     return /* @__PURE__ */ React8.createElement(
       Box4,
@@ -713,7 +739,7 @@ ColorSwatch.displayName = "@raikou/core/ColorSwatch";
 ColorSwatch.classes = ColorSwatch_module_default;
 
 // src/Swatches/Swatches.tsx
-var Swatches = forwardRef5(
+var Swatches = forwardRef4(
   (_a, ref) => {
     var _b = _a, {
       className,
@@ -758,7 +784,7 @@ var Swatches = forwardRef5(
 Swatches.displayName = "@raikou/core/Swatches";
 
 // css-module:./ColorPicker.module.css#css-module
-var ColorPicker_module_default = { "wrapper": "m-fee9c77", "preview": "m-9dddfbac", "body": "m-bffecc3e", "sliders": "m-3283bb96", "thumb": "m-40d572ba", "swatch": "m-d8ee6fd8", "swatches": "m-5711e686", "saturation": "m-202a296e", "saturationOverlay": "m-11b3db02", "slider": "m-d856d47d", "sliderOverlay": "m-8f327113" };
+var ColorPicker_module_default2 = { "wrapper": "m-fee9c77", "preview": "m-9dddfbac", "body": "m-bffecc3e", "sliders": "m-3283bb96", "thumb": "m-40d572ba", "swatch": "m-d8ee6fd8", "swatches": "m-5711e686", "saturation": "m-202a296e", "saturationOverlay": "m-11b3db02", "slider": "m-d856d47d", "sliderOverlay": "m-8f327113" };
 
 // src/ColorPicker.tsx
 var defaultProps4 = {
@@ -767,7 +793,7 @@ var defaultProps4 = {
   focusable: true,
   __staticSelector: "ColorPicker"
 };
-var varsResolver2 = createVarsResolver2(
+var varsResolver3 = createVarsResolver3(
   (_, { size, swatchesPerRow }) => ({
     wrapper: {
       "--cp-preview-size": getSize(size, "cp-preview-size"),
@@ -779,8 +805,8 @@ var varsResolver2 = createVarsResolver2(
     }
   })
 );
-var ColorPicker = factory((_props, ref) => {
-  const props = useProps4("ColorPicker", defaultProps4, _props);
+var ColorPicker = factory2((_props, ref) => {
+  const props = useProps5("ColorPicker", defaultProps4, _props);
   const _a = props, {
     classNames,
     className,
@@ -828,10 +854,10 @@ var ColorPicker = factory((_props, ref) => {
     "onColorSwatchClick",
     "__staticSelector"
   ]);
-  const getStyles = useStyles2({
+  const getStyles = useStyles3({
     name: __staticSelector,
     props,
-    classes: ColorPicker_module_default,
+    classes: ColorPicker_module_default2,
     className,
     style,
     classNames,
@@ -839,7 +865,7 @@ var ColorPicker = factory((_props, ref) => {
     unstyled,
     rootSelector: "wrapper",
     vars,
-    varsResolver: varsResolver2
+    varsResolver: varsResolver3
   });
   const formatRef = useRef3(format);
   const valueRef = useRef3();
@@ -941,7 +967,8 @@ var ColorPicker = factory((_props, ref) => {
       ColorSwatch,
       __spreadValues({
         color: _value,
-        radius: "sm"
+        radius: "sm",
+        size: "var(--cp-preview-size)"
       }, getStyles("preview"))
     ))),
     Array.isArray(swatches) && /* @__PURE__ */ React10.createElement(
@@ -964,9 +991,11 @@ var ColorPicker = factory((_props, ref) => {
   ));
 });
 ColorPicker.displayName = "@raikou/core/ColorPicker";
-ColorPicker.classes = ColorPicker_module_default;
+ColorPicker.classes = ColorPicker_module_default2;
 export {
+  AlphaSlider,
   ColorPicker,
+  HueSlider,
   convertHsvaTo,
   isColorValid,
   parseColor

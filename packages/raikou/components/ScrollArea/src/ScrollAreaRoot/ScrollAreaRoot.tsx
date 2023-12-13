@@ -31,6 +31,9 @@ export interface ScrollAreaRootProps extends BoxProps, ElementProps<"div"> {
    * */
   type?: "auto" | "always" | "scroll" | "hover" | "never";
 
+  /** Axis at which scrollbars must be rendered, `'xy'` by default */
+  scrollbars?: "x" | "y" | "xy" | false;
+
   /** Scroll hide delay in ms, applicable only when type is set to `hover` or `scroll`, `1000` by default */
   scrollHideDelay?: number;
 }
@@ -49,7 +52,7 @@ const defaultProps: Partial<ScrollAreaRootProps> = {
 export const ScrollAreaRoot = forwardRef<HTMLDivElement, ScrollAreaRootProps>(
   (_props, ref) => {
     const props = useProps("ScrollAreaRoot", defaultProps, _props);
-    const { type, scrollHideDelay, ...others } = props;
+    const { type, scrollHideDelay, scrollbars, ...others } = props;
 
     const [scrollArea, setScrollArea] = useState<HTMLDivElement | null>(null);
     const [viewport, setViewport] = useState<HTMLDivElement | null>(null);
@@ -88,13 +91,15 @@ export const ScrollAreaRoot = forwardRef<HTMLDivElement, ScrollAreaRootProps>(
           {...others}
           ref={rootRef}
           __vars={{
-            "--sa-corner-width": `${cornerWidth}px`,
-            "--sa-corner-height": `${cornerHeight}px`,
+            "--sa-corner-width":
+              scrollbars !== "xy" ? "0px" : `${cornerWidth}px`,
+            "--sa-corner-height":
+              scrollbars !== "xy" ? "0px" : `${cornerHeight}px`,
           }}
         />
       </ScrollAreaProvider>
     );
-  }
+  },
 );
 
 ScrollAreaRoot.displayName = "@raikou/core/ScrollAreaRoot";

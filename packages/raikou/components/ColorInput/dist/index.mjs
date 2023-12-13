@@ -55,11 +55,11 @@ var __async = (__this, __arguments, generator) => {
 import React36, { useEffect as useEffect8, useState as useState11 } from "react";
 import { useDidUpdate as useDidUpdate6, useEyeDropper, useUncontrolled as useUncontrolled3 } from "@raikou/hooks";
 import {
-  factory as factory11,
+  factory as factory12,
   useResolvedStylesApi,
-  useProps as useProps20,
-  useStyles as useStyles14,
-  createVarsResolver as createVarsResolver12,
+  useProps as useProps21,
+  useStyles as useStyles15,
+  createVarsResolver as createVarsResolver13,
   getSize as getSize5
 } from "@raikou/core";
 
@@ -68,20 +68,20 @@ import React10, { useRef as useRef3, useState as useState4 } from "react";
 import { useDidUpdate as useDidUpdate2, useUncontrolled } from "@raikou/hooks";
 import {
   Box as Box6,
-  factory,
-  useProps as useProps4,
-  useStyles as useStyles2,
+  factory as factory2,
+  useProps as useProps5,
+  useStyles as useStyles3,
   getSize,
   getSpacing,
-  createVarsResolver as createVarsResolver2
+  createVarsResolver as createVarsResolver3
 } from "@raikou/core";
 
 // ../ColorPicker/src/AlphaSlider/AlphaSlider.tsx
-import React5, { forwardRef as forwardRef3 } from "react";
-import { useProps, rem as rem2 } from "@raikou/core";
+import React5, { forwardRef as forwardRef2 } from "react";
+import { useProps as useProps2, rem as rem2 } from "@raikou/core";
 
 // ../ColorPicker/src/ColorSlider/ColorSlider.tsx
-import React4, { useRef, useState as useState2, forwardRef as forwardRef2 } from "react";
+import React4, { useRef, useState as useState2 } from "react";
 import {
   clampUseMovePosition,
   useDidUpdate,
@@ -90,13 +90,16 @@ import {
 } from "@raikou/hooks";
 import {
   Box as Box2,
+  factory,
+  useProps,
+  useStyles,
+  createVarsResolver,
   useRaikouTheme,
   rem
 } from "@raikou/core";
 
-// ../ColorPicker/src/Thumb/Thumb.tsx
-import React3, { forwardRef } from "react";
-import { Box } from "@raikou/core";
+// css-module:../ColorPicker.module.css#css-module
+var ColorPicker_module_default = { "wrapper": "m-fee9c77", "preview": "m-9dddfbac", "body": "m-bffecc3e", "sliders": "m-3283bb96", "thumb": "m-40d572ba", "swatch": "m-d8ee6fd8", "swatches": "m-5711e686", "saturation": "m-202a296e", "saturationOverlay": "m-11b3db02", "slider": "m-d856d47d", "sliderOverlay": "m-8f327113" };
 
 // ../_utils/create-safe-context/create-safe-context.tsx
 import React, { createContext, useContext } from "react";
@@ -129,127 +132,158 @@ import { useState } from "react";
 import { useEffect, useLayoutEffect } from "react";
 
 // ../ColorPicker/src/ColorPicker.context.ts
-var [ColorPickerProvider, useColorPickerContext] = createSafeContext(
-  "ColorPicker component was not found in tree"
-);
+var [ColorPickerProvider, useColorPickerContext] = createOptionalContext(null);
 
 // ../ColorPicker/src/Thumb/Thumb.tsx
+import React3, { forwardRef } from "react";
+import { Box } from "@raikou/core";
 var Thumb = forwardRef(
   (_a, ref) => {
-    var _b = _a, { className, style, size: size2, position } = _b, others = __objRest(_b, ["className", "style", "size", "position"]);
-    const { getStyles } = useColorPickerContext();
+    var _b = _a, { className, style, position } = _b, others = __objRest(_b, ["className", "style", "position"]);
     return /* @__PURE__ */ React3.createElement(
       Box,
-      __spreadValues(__spreadProps(__spreadValues({
-        ref
-      }, getStyles("thumb", { style })), {
+      __spreadValues({
+        ref,
         __vars: {
           "--_thumb-y-offset": `${position.y * 100}%`,
           "--_thumb-x-offset": `${position.x * 100}%`
         }
-      }), others)
+      }, others)
     );
   }
 );
 Thumb.displayName = "@raikou/core/ColorPickerThumb";
 
 // ../ColorPicker/src/ColorSlider/ColorSlider.tsx
-var ColorSlider = forwardRef2(
-  (props, ref) => {
-    const _a = props, {
-      className,
-      onChange,
-      onChangeEnd,
-      maxValue,
-      round: round3,
-      size: size2 = "md",
-      focusable = true,
-      value,
-      overlays,
-      thumbColor = "transparent",
-      onScrubStart,
-      onScrubEnd
-    } = _a, others = __objRest(_a, [
-      "className",
-      "onChange",
-      "onChangeEnd",
-      "maxValue",
-      "round",
-      "size",
-      "focusable",
-      "value",
-      "overlays",
-      "thumbColor",
-      "onScrubStart",
-      "onScrubEnd"
-    ]);
-    const { getStyles } = useColorPickerContext();
-    const theme = useRaikouTheme();
-    const [position, setPosition] = useState2({ y: 0, x: value / maxValue });
-    const positionRef = useRef(position);
-    const getChangeValue = (val) => round3 ? Math.round(val * maxValue) : val * maxValue;
-    const { ref: sliderRef } = useMove(
-      ({ x, y }) => {
-        positionRef.current = { x, y };
-        onChange == null ? void 0 : onChange(getChangeValue(x));
-      },
-      {
-        onScrubEnd: () => {
-          const { x } = positionRef.current;
-          onChangeEnd == null ? void 0 : onChangeEnd(getChangeValue(x));
-          onScrubEnd == null ? void 0 : onScrubEnd();
-        },
-        onScrubStart
-      }
-    );
-    useDidUpdate(() => {
-      setPosition({ y: 0, x: value / maxValue });
-    }, [value]);
-    const handleArrow = (event, pos) => {
-      event.preventDefault();
-      const _position = clampUseMovePosition(pos);
-      onChange == null ? void 0 : onChange(getChangeValue(_position.x));
-      onChangeEnd == null ? void 0 : onChangeEnd(getChangeValue(_position.x));
-    };
-    const handleKeyDown = (event) => {
-      switch (event.key) {
-        case "ArrowRight": {
-          handleArrow(event, { x: position.x + 0.05, y: position.y });
-          break;
-        }
-        case "ArrowLeft": {
-          handleArrow(event, { x: position.x - 0.05, y: position.y });
-          break;
-        }
-      }
-    };
-    const layers = overlays.map((overlay, index3) => /* @__PURE__ */ React4.createElement("div", __spreadProps(__spreadValues({}, getStyles("sliderOverlay")), { style: overlay, key: index3 })));
-    return /* @__PURE__ */ React4.createElement(
-      Box2,
-      __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, others), {
-        ref: useMergedRef(sliderRef, ref)
-      }), getStyles("slider")), {
-        role: "slider",
-        "aria-valuenow": value,
-        "aria-valuemax": maxValue,
-        "aria-valuemin": 0,
-        tabIndex: focusable ? 0 : -1,
-        onKeyDown: handleKeyDown,
-        "data-focus-ring": theme.focusRing
-      }),
-      layers,
-      /* @__PURE__ */ React4.createElement(
-        Thumb,
-        __spreadValues({
-          position,
-          size: size2
-        }, getStyles("thumb", {
-          style: { top: rem(1), background: thumbColor }
-        }))
-      )
-    );
+var defaultProps = {};
+var varsResolver = createVarsResolver(() => ({
+  root: {
+    "--test": "test"
   }
-);
+}));
+var ColorSlider = factory((_props, ref) => {
+  var _b;
+  const props = useProps("ColorSlider", defaultProps, _props);
+  const _a = props, {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    onChange,
+    onChangeEnd,
+    maxValue,
+    round: round3,
+    size: size2 = "md",
+    focusable = true,
+    value,
+    overlays,
+    thumbColor = "transparent",
+    onScrubStart,
+    onScrubEnd,
+    __staticSelector = "ColorPicker"
+  } = _a, others = __objRest(_a, [
+    "classNames",
+    "className",
+    "style",
+    "styles",
+    "unstyled",
+    "vars",
+    "onChange",
+    "onChangeEnd",
+    "maxValue",
+    "round",
+    "size",
+    "focusable",
+    "value",
+    "overlays",
+    "thumbColor",
+    "onScrubStart",
+    "onScrubEnd",
+    "__staticSelector"
+  ]);
+  const _getStyles = useStyles({
+    name: __staticSelector,
+    classes: ColorPicker_module_default,
+    props,
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled,
+    vars,
+    varsResolver
+  });
+  const ctxGetStyles = (_b = useColorPickerContext()) == null ? void 0 : _b.getStyles;
+  const getStyles = ctxGetStyles || _getStyles;
+  const theme = useRaikouTheme();
+  const [position, setPosition] = useState2({ y: 0, x: value / maxValue });
+  const positionRef = useRef(position);
+  const getChangeValue = (val) => round3 ? Math.round(val * maxValue) : val * maxValue;
+  const { ref: sliderRef } = useMove(
+    ({ x, y }) => {
+      positionRef.current = { x, y };
+      onChange == null ? void 0 : onChange(getChangeValue(x));
+    },
+    {
+      onScrubEnd: () => {
+        const { x } = positionRef.current;
+        onChangeEnd == null ? void 0 : onChangeEnd(getChangeValue(x));
+        onScrubEnd == null ? void 0 : onScrubEnd();
+      },
+      onScrubStart
+    }
+  );
+  useDidUpdate(() => {
+    setPosition({ y: 0, x: value / maxValue });
+  }, [value]);
+  const handleArrow = (event, pos) => {
+    event.preventDefault();
+    const _position = clampUseMovePosition(pos);
+    onChange == null ? void 0 : onChange(getChangeValue(_position.x));
+    onChangeEnd == null ? void 0 : onChangeEnd(getChangeValue(_position.x));
+  };
+  const handleKeyDown = (event) => {
+    switch (event.key) {
+      case "ArrowRight": {
+        handleArrow(event, { x: position.x + 0.05, y: position.y });
+        break;
+      }
+      case "ArrowLeft": {
+        handleArrow(event, { x: position.x - 0.05, y: position.y });
+        break;
+      }
+    }
+  };
+  const layers = overlays.map((overlay, index3) => /* @__PURE__ */ React4.createElement("div", __spreadProps(__spreadValues({}, getStyles("sliderOverlay")), { style: overlay, key: index3 })));
+  return /* @__PURE__ */ React4.createElement(
+    Box2,
+    __spreadProps(__spreadValues(__spreadProps(__spreadValues({}, others), {
+      ref: useMergedRef(sliderRef, ref)
+    }), getStyles("slider")), {
+      role: "slider",
+      "aria-valuenow": value,
+      "aria-valuemax": maxValue,
+      "aria-valuemin": 0,
+      tabIndex: focusable ? 0 : -1,
+      onKeyDown: handleKeyDown,
+      "data-focus-ring": theme.focusRing,
+      __vars: {
+        "--_cp-thumb-size": `var(--cp-thumb-size-${size2})`
+      }
+    }),
+    layers,
+    /* @__PURE__ */ React4.createElement(
+      Thumb,
+      __spreadValues({
+        position
+      }, getStyles("thumb", {
+        style: { top: rem(1), background: thumbColor }
+      }))
+    )
+  );
+});
 ColorSlider.displayName = "@raikou/core/ColorSlider";
 
 // ../ColorPicker/src/converters/parsers.ts
@@ -382,12 +416,12 @@ function parseColor(color) {
 }
 
 // ../ColorPicker/src/AlphaSlider/AlphaSlider.tsx
-var defaultProps = {};
-var AlphaSlider = forwardRef3(
+var defaultProps2 = {};
+var AlphaSlider = forwardRef2(
   (props, ref) => {
-    const _a = useProps(
+    const _a = useProps2(
       "AlphaSlider",
-      defaultProps,
+      defaultProps2,
       props
     ), { value, onChange, onChangeEnd, color } = _a, others = __objRest(_a, ["value", "onChange", "onChangeEnd", "color"]);
     return /* @__PURE__ */ React5.createElement(
@@ -424,14 +458,13 @@ var AlphaSlider = forwardRef3(
 AlphaSlider.displayName = "@raikou/core/AlphaSlider";
 
 // ../ColorPicker/src/HueSlider/HueSlider.tsx
-import React6, { forwardRef as forwardRef4 } from "react";
-import { useProps as useProps2, rem as rem3 } from "@raikou/core";
-var defaultProps2 = {};
-var HueSlider = forwardRef4(
+import React6, { forwardRef as forwardRef3 } from "react";
+import { useProps as useProps3, rem as rem3 } from "@raikou/core";
+var HueSlider = forwardRef3(
   (props, ref) => {
-    const _a = useProps2(
+    const _a = useProps3(
       "HueSlider",
-      defaultProps2,
+      {},
       props
     ), { value, onChange, onChangeEnd, color } = _a, others = __objRest(_a, ["value", "onChange", "onChangeEnd", "color"]);
     return /* @__PURE__ */ React6.createElement(
@@ -649,8 +682,7 @@ function Saturation(_a) {
     /* @__PURE__ */ React7.createElement(
       Thumb,
       __spreadValues({
-        position,
-        size: size2
+        position
       }, getStyles("thumb", { style: { backgroundColor: color } }))
     )
   );
@@ -658,7 +690,7 @@ function Saturation(_a) {
 Saturation.displayName = "@raikou/core/Saturation";
 
 // ../ColorPicker/src/Swatches/Swatches.tsx
-import React9, { forwardRef as forwardRef5 } from "react";
+import React9, { forwardRef as forwardRef4 } from "react";
 import { Box as Box5 } from "@raikou/core";
 
 // ../ColorSwatch/src/ColorSwatch.tsx
@@ -668,9 +700,9 @@ import {
   getRadius,
   polymorphicFactory,
   rem as rem4,
-  useProps as useProps3,
-  useStyles,
-  createVarsResolver
+  useProps as useProps4,
+  useStyles as useStyles2,
+  createVarsResolver as createVarsResolver2
 } from "@raikou/core";
 
 // css-module:./ColorSwatch.module.css#css-module
@@ -680,7 +712,7 @@ var ColorSwatch_module_default = { "root": "m-de3d2490", "colorOverlay": "m-862f
 var defaultProps3 = {
   withShadow: true
 };
-var varsResolver = createVarsResolver(
+var varsResolver2 = createVarsResolver2(
   (_, { radius, size: size2 }) => ({
     root: {
       "--cs-radius": radius === void 0 ? void 0 : getRadius(radius),
@@ -690,8 +722,8 @@ var varsResolver = createVarsResolver(
 );
 var ColorSwatch = polymorphicFactory(
   (_props, ref) => {
-    const props = useProps3("ColorSwatch", defaultProps3, _props);
-    const _a = useProps3("ColorSwatch", defaultProps3, props), {
+    const props = useProps4("ColorSwatch", defaultProps3, _props);
+    const _a = useProps4("ColorSwatch", defaultProps3, props), {
       classNames,
       className,
       style,
@@ -718,7 +750,7 @@ var ColorSwatch = polymorphicFactory(
       "children",
       "variant"
     ]);
-    const getStyles = useStyles({
+    const getStyles = useStyles2({
       name: "ColorSwatch",
       props,
       classes: ColorSwatch_module_default,
@@ -728,7 +760,7 @@ var ColorSwatch = polymorphicFactory(
       styles,
       unstyled,
       vars,
-      varsResolver
+      varsResolver: varsResolver2
     });
     return /* @__PURE__ */ React8.createElement(
       Box4,
@@ -751,7 +783,7 @@ ColorSwatch.displayName = "@raikou/core/ColorSwatch";
 ColorSwatch.classes = ColorSwatch_module_default;
 
 // ../ColorPicker/src/Swatches/Swatches.tsx
-var Swatches = forwardRef5(
+var Swatches = forwardRef4(
   (_a, ref) => {
     var _b = _a, {
       className,
@@ -796,7 +828,7 @@ var Swatches = forwardRef5(
 Swatches.displayName = "@raikou/core/Swatches";
 
 // css-module:./ColorPicker.module.css#css-module
-var ColorPicker_module_default = { "wrapper": "m-fee9c77", "preview": "m-9dddfbac", "body": "m-bffecc3e", "sliders": "m-3283bb96", "thumb": "m-40d572ba", "swatch": "m-d8ee6fd8", "swatches": "m-5711e686", "saturation": "m-202a296e", "saturationOverlay": "m-11b3db02", "slider": "m-d856d47d", "sliderOverlay": "m-8f327113" };
+var ColorPicker_module_default2 = { "wrapper": "m-fee9c77", "preview": "m-9dddfbac", "body": "m-bffecc3e", "sliders": "m-3283bb96", "thumb": "m-40d572ba", "swatch": "m-d8ee6fd8", "swatches": "m-5711e686", "saturation": "m-202a296e", "saturationOverlay": "m-11b3db02", "slider": "m-d856d47d", "sliderOverlay": "m-8f327113" };
 
 // ../ColorPicker/src/ColorPicker.tsx
 var defaultProps4 = {
@@ -805,7 +837,7 @@ var defaultProps4 = {
   focusable: true,
   __staticSelector: "ColorPicker"
 };
-var varsResolver2 = createVarsResolver2(
+var varsResolver3 = createVarsResolver3(
   (_, { size: size2, swatchesPerRow }) => ({
     wrapper: {
       "--cp-preview-size": getSize(size2, "cp-preview-size"),
@@ -817,8 +849,8 @@ var varsResolver2 = createVarsResolver2(
     }
   })
 );
-var ColorPicker = factory((_props, ref) => {
-  const props = useProps4("ColorPicker", defaultProps4, _props);
+var ColorPicker = factory2((_props, ref) => {
+  const props = useProps5("ColorPicker", defaultProps4, _props);
   const _a = props, {
     classNames,
     className,
@@ -866,10 +898,10 @@ var ColorPicker = factory((_props, ref) => {
     "onColorSwatchClick",
     "__staticSelector"
   ]);
-  const getStyles = useStyles2({
+  const getStyles = useStyles3({
     name: __staticSelector,
     props,
-    classes: ColorPicker_module_default,
+    classes: ColorPicker_module_default2,
     className,
     style,
     classNames,
@@ -877,7 +909,7 @@ var ColorPicker = factory((_props, ref) => {
     unstyled,
     rootSelector: "wrapper",
     vars,
-    varsResolver: varsResolver2
+    varsResolver: varsResolver3
   });
   const formatRef = useRef3(format);
   const valueRef = useRef3();
@@ -979,7 +1011,8 @@ var ColorPicker = factory((_props, ref) => {
       ColorSwatch,
       __spreadValues({
         color: _value,
-        radius: "sm"
+        radius: "sm",
+        size: "var(--cp-preview-size)"
       }, getStyles("preview"))
     ))),
     Array.isArray(swatches) && /* @__PURE__ */ React10.createElement(
@@ -1002,21 +1035,21 @@ var ColorPicker = factory((_props, ref) => {
   ));
 });
 ColorPicker.displayName = "@raikou/core/ColorPicker";
-ColorPicker.classes = ColorPicker_module_default;
+ColorPicker.classes = ColorPicker_module_default2;
 
 // ../Input/src/Input.tsx
 import React16 from "react";
 import {
   Box as Box12,
   polymorphicFactory as polymorphicFactory2,
-  useProps as useProps10,
-  useStyles as useStyles8,
+  useProps as useProps11,
+  useStyles as useStyles9,
   extractStyleProps,
   getSize as getSize2,
   getFontSize as getFontSize5,
   getRadius as getRadius2,
   rem as rem8,
-  createVarsResolver as createVarsResolver7
+  createVarsResolver as createVarsResolver8
 } from "@raikou/core";
 
 // ../Input/src/InputWrapper.context.ts
@@ -1033,11 +1066,11 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
 import React11 from "react";
 import {
   Box as Box7,
-  factory as factory2,
-  useProps as useProps5,
-  useStyles as useStyles3,
+  factory as factory3,
+  useProps as useProps6,
+  useStyles as useStyles4,
   getFontSize,
-  createVarsResolver as createVarsResolver3
+  createVarsResolver as createVarsResolver4
 } from "@raikou/core";
 
 // css-module:../Input.module.css#css-module
@@ -1047,15 +1080,15 @@ var Input_module_default = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "se
 var defaultProps5 = {
   labelElement: "label"
 };
-var varsResolver3 = createVarsResolver3((_, { size: size2 }) => ({
+var varsResolver4 = createVarsResolver4((_, { size: size2 }) => ({
   label: {
     "--input-label-size": getFontSize(size2),
     "--input-asterisk-color": void 0
   }
 }));
-var InputLabel = factory2((_props, ref) => {
-  const props = useProps5("InputLabel", defaultProps5, _props);
-  const _a = useProps5("InputLabel", defaultProps5, props), {
+var InputLabel = factory3((_props, ref) => {
+  const props = useProps6("InputLabel", defaultProps5, _props);
+  const _a = useProps6("InputLabel", defaultProps5, props), {
     classNames,
     className,
     style,
@@ -1086,7 +1119,7 @@ var InputLabel = factory2((_props, ref) => {
     "__staticSelector",
     "variant"
   ]);
-  const _getStyles = useStyles3({
+  const _getStyles = useStyles4({
     name: ["InputWrapper", __staticSelector],
     props,
     classes: Input_module_default,
@@ -1101,7 +1134,7 @@ var InputLabel = factory2((_props, ref) => {
     unstyled,
     rootSelector: "label",
     vars,
-    varsResolver: varsResolver3
+    varsResolver: varsResolver4
   });
   const ctx = useInputWrapperContext();
   const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
@@ -1131,21 +1164,21 @@ InputLabel.displayName = "@raikou/core/InputLabel";
 import React12 from "react";
 import {
   Box as Box8,
-  factory as factory3,
-  useProps as useProps6,
-  useStyles as useStyles4,
+  factory as factory4,
+  useProps as useProps7,
+  useStyles as useStyles5,
   getFontSize as getFontSize2,
   rem as rem5,
-  createVarsResolver as createVarsResolver4
+  createVarsResolver as createVarsResolver5
 } from "@raikou/core";
 var defaultProps6 = {};
-var varsResolver4 = createVarsResolver4((_, { size: size2 }) => ({
+var varsResolver5 = createVarsResolver5((_, { size: size2 }) => ({
   error: {
     "--input-error-size": size2 === void 0 ? void 0 : `calc(${getFontSize2(size2)} - ${rem5(2)})`
   }
 }));
-var InputError = factory3((_props, ref) => {
-  const props = useProps6("InputError", defaultProps6, _props);
+var InputError = factory4((_props, ref) => {
+  const props = useProps7("InputError", defaultProps6, _props);
   const _a = props, {
     classNames,
     className,
@@ -1169,7 +1202,7 @@ var InputError = factory3((_props, ref) => {
     "__inheritStyles",
     "variant"
   ]);
-  const _getStyles = useStyles4({
+  const _getStyles = useStyles5({
     name: ["InputWrapper", __staticSelector],
     props,
     classes: Input_module_default,
@@ -1183,7 +1216,7 @@ var InputError = factory3((_props, ref) => {
     unstyled,
     rootSelector: "error",
     vars,
-    varsResolver: varsResolver4
+    varsResolver: varsResolver5
   });
   const ctx = useInputWrapperContext();
   const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
@@ -1203,25 +1236,25 @@ InputError.displayName = "@raikou/core/InputError";
 import React13 from "react";
 import {
   Box as Box9,
-  factory as factory4,
-  useProps as useProps7,
-  useStyles as useStyles5,
+  factory as factory5,
+  useProps as useProps8,
+  useStyles as useStyles6,
   getFontSize as getFontSize3,
   rem as rem6,
-  createVarsResolver as createVarsResolver5
+  createVarsResolver as createVarsResolver6
 } from "@raikou/core";
 var defaultProps7 = {};
-var varsResolver5 = createVarsResolver5(
+var varsResolver6 = createVarsResolver6(
   (_, { size: size2 }) => ({
     description: {
       "--input-description-size": size2 === void 0 ? void 0 : `calc(${getFontSize3(size2)} - ${rem6(2)})`
     }
   })
 );
-var InputDescription = factory4(
+var InputDescription = factory5(
   (_props, ref) => {
-    const props = useProps7("InputDescription", defaultProps7, _props);
-    const _a = useProps7("InputDescription", defaultProps7, props), {
+    const props = useProps8("InputDescription", defaultProps7, _props);
+    const _a = useProps8("InputDescription", defaultProps7, props), {
       classNames,
       className,
       style,
@@ -1245,7 +1278,7 @@ var InputDescription = factory4(
       "variant"
     ]);
     const ctx = useInputWrapperContext();
-    const _getStyles = useStyles5({
+    const _getStyles = useStyles6({
       name: ["InputWrapper", __staticSelector],
       props,
       classes: Input_module_default,
@@ -1259,7 +1292,7 @@ var InputDescription = factory4(
       unstyled,
       rootSelector: "description",
       vars,
-      varsResolver: varsResolver5
+      varsResolver: varsResolver6
     });
     const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
     return /* @__PURE__ */ React13.createElement(
@@ -1279,15 +1312,15 @@ InputDescription.displayName = "@raikou/core/InputDescription";
 import React14 from "react";
 import {
   Box as Box10,
-  factory as factory5,
-  useProps as useProps8,
-  useStyles as useStyles6
+  factory as factory6,
+  useProps as useProps9,
+  useStyles as useStyles7
 } from "@raikou/core";
 var defaultProps8 = {};
-var InputPlaceholder = factory5(
+var InputPlaceholder = factory6(
   (_props, ref) => {
-    const props = useProps8("InputPlaceholder", defaultProps8, _props);
-    const _a = useProps8("InputPlaceholder", defaultProps8, props), {
+    const props = useProps9("InputPlaceholder", defaultProps8, _props);
+    const _a = useProps9("InputPlaceholder", defaultProps8, props), {
       classNames,
       className,
       style,
@@ -1306,7 +1339,7 @@ var InputPlaceholder = factory5(
       "__staticSelector",
       "variant"
     ]);
-    const getStyles = useStyles6({
+    const getStyles = useStyles7({
       name: ["InputPlaceholder", __staticSelector],
       props,
       classes: Input_module_default,
@@ -1337,10 +1370,10 @@ import React15 from "react";
 import { useId } from "@raikou/hooks";
 import {
   Box as Box11,
-  factory as factory6,
-  useProps as useProps9,
-  useStyles as useStyles7,
-  createVarsResolver as createVarsResolver6,
+  factory as factory7,
+  useProps as useProps10,
+  useStyles as useStyles8,
+  createVarsResolver as createVarsResolver7,
   getFontSize as getFontSize4,
   rem as rem7
 } from "@raikou/core";
@@ -1361,7 +1394,7 @@ var defaultProps9 = {
   inputContainer: (children) => children,
   inputWrapperOrder: ["label", "description", "input", "error"]
 };
-var varsResolver6 = createVarsResolver6((_, { size: size2 }) => ({
+var varsResolver7 = createVarsResolver7((_, { size: size2 }) => ({
   label: {
     "--input-label-size": getFontSize4(size2),
     "--input-asterisk-color": void 0
@@ -1373,8 +1406,8 @@ var varsResolver6 = createVarsResolver6((_, { size: size2 }) => ({
     "--input-description-size": size2 === void 0 ? void 0 : `calc(${getFontSize4(size2)} - ${rem7(2)})`
   }
 }));
-var InputWrapper = factory6((_props, ref) => {
-  const props = useProps9("InputWrapper", defaultProps9, _props);
+var InputWrapper = factory7((_props, ref) => {
+  const props = useProps10("InputWrapper", defaultProps9, _props);
   const _a = props, {
     classNames,
     className,
@@ -1424,7 +1457,7 @@ var InputWrapper = factory6((_props, ref) => {
     "required",
     "__stylesApiProps"
   ]);
-  const getStyles = useStyles7({
+  const getStyles = useStyles8({
     name: ["InputWrapper", __staticSelector],
     props: __stylesApiProps || props,
     classes: Input_module_default,
@@ -1441,7 +1474,7 @@ var InputWrapper = factory6((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver6
+    varsResolver: varsResolver7
   });
   const sharedProps = {
     size: size2,
@@ -1537,7 +1570,7 @@ var defaultProps10 = {
   withAria: true,
   withErrorStyles: true
 };
-var varsResolver7 = createVarsResolver7((_, props, ctx) => ({
+var varsResolver8 = createVarsResolver8((_, props, ctx) => ({
   wrapper: {
     "--input-margin-top": ctx.offsetTop ? "calc(var(--raikou-spacing-xs) / 2)" : void 0,
     "--input-margin-bottom": ctx.offsetBottom ? "calc(var(--raikou-spacing-xs) / 2)" : void 0,
@@ -1552,7 +1585,7 @@ var varsResolver7 = createVarsResolver7((_, props, ctx) => ({
   }
 }));
 var Input = polymorphicFactory2((_props, ref) => {
-  const props = useProps10("Input", defaultProps10, _props);
+  const props = useProps11("Input", defaultProps10, _props);
   const _a = props, {
     classNames,
     className,
@@ -1618,7 +1651,7 @@ var Input = polymorphicFactory2((_props, ref) => {
     offsetBottom: ctx == null ? void 0 : ctx.offsetBottom,
     offsetTop: ctx == null ? void 0 : ctx.offsetTop
   };
-  const getStyles = useStyles8({
+  const getStyles = useStyles9({
     name: ["Input", __staticSelector],
     props: __stylesApiProps || props,
     classes: Input_module_default2,
@@ -1635,7 +1668,7 @@ var Input = polymorphicFactory2((_props, ref) => {
     stylesCtx,
     rootSelector: "wrapper",
     vars,
-    varsResolver: varsResolver7
+    varsResolver: varsResolver8
   });
   const ariaAttributes = withAria ? {
     required,
@@ -1701,10 +1734,10 @@ Input.displayName = "@raikou/core/Input";
 // ../Input/src/use-input-props.ts
 import {
   extractStyleProps as extractStyleProps2,
-  useProps as useProps11
+  useProps as useProps12
 } from "@raikou/core";
 function useInputProps(component, defaultProps20, _props) {
-  const props = useProps11(component, defaultProps20, _props);
+  const props = useProps12(component, defaultProps20, _props);
   const _a = props, {
     label,
     description,
@@ -1799,10 +1832,10 @@ import React26, { useRef as useRef9, useState as useState10, useCallback as useC
 import { useId as useId3, useClickOutside } from "@raikou/hooks";
 import {
   getDefaultZIndex,
-  useProps as useProps15,
+  useProps as useProps16,
   useDirection as useDirection2,
-  useStyles as useStyles9,
-  createVarsResolver as createVarsResolver8,
+  useStyles as useStyles10,
+  createVarsResolver as createVarsResolver9,
   getRadius as getRadius3,
   getShadow
 } from "@raikou/core";
@@ -3699,7 +3732,7 @@ function getFloatingPosition(dir, position) {
 }
 
 // ../Floating/src/FloatingArrow/FloatingArrow.tsx
-import React19, { forwardRef as forwardRef7 } from "react";
+import React19, { forwardRef as forwardRef6 } from "react";
 import { useDirection } from "@raikou/core";
 
 // ../Floating/src/FloatingArrow/get-arrow-position-styles.ts
@@ -3785,7 +3818,7 @@ function getArrowPositionStyles({
 }
 
 // ../Floating/src/FloatingArrow/FloatingArrow.tsx
-var FloatingArrow = forwardRef7(
+var FloatingArrow = forwardRef6(
   (_a, ref) => {
     var _b = _a, {
       position,
@@ -3959,13 +3992,13 @@ var clsx_default = clsx;
 
 // ../Popover/src/PopoverTarget/PopoverTarget.tsx
 import { useMergedRef as useMergedRef2 } from "@raikou/hooks";
-import { isElement as isElement3, useProps as useProps12, factory as factory7 } from "@raikou/core";
+import { isElement as isElement3, useProps as useProps13, factory as factory8 } from "@raikou/core";
 var defaultProps11 = {
   refProp: "ref",
   popupType: "dialog"
 };
-var PopoverTarget = factory7((props, ref) => {
-  const _a = useProps12(
+var PopoverTarget = factory8((props, ref) => {
+  const _a = useProps13(
     "PopoverTarget",
     defaultProps11,
     props
@@ -4000,17 +4033,17 @@ import React25 from "react";
 import { useFocusReturn, useMergedRef as useMergedRef4 } from "@raikou/hooks";
 import {
   Box as Box13,
-  factory as factory8,
-  useProps as useProps14,
+  factory as factory9,
+  useProps as useProps15,
   rem as rem11,
   closeOnEscape
 } from "@raikou/core";
 
 // ../Portal/src/Portal.tsx
-import React21, { useRef as useRef7, useState as useState8, forwardRef as forwardRef8 } from "react";
+import React21, { useRef as useRef7, useState as useState8, forwardRef as forwardRef7 } from "react";
 import { createPortal as createPortal2 } from "react-dom";
 import { useIsomorphicEffect, assignRef } from "@raikou/hooks";
-import { useProps as useProps13 } from "@raikou/core";
+import { useProps as useProps14 } from "@raikou/core";
 function createPortalNode(props) {
   const node = document.createElement("div");
   node.setAttribute("data-portal", "true");
@@ -4020,8 +4053,8 @@ function createPortalNode(props) {
   return node;
 }
 var defaultProps12 = {};
-var Portal = forwardRef8((props, ref) => {
-  const _a = useProps13(
+var Portal = forwardRef7((props, ref) => {
+  const _a = useProps14(
     "Portal",
     defaultProps12,
     props
@@ -4318,10 +4351,10 @@ FocusTrap.displayName = "@raikou/core/FocusTrap";
 
 // ../Popover/src/PopoverDropdown/PopoverDropdown.tsx
 var defaultProps13 = {};
-var PopoverDropdown = factory8(
+var PopoverDropdown = factory9(
   (_props, ref) => {
     var _b, _c, _d, _e, _f;
-    const props = useProps14("PopoverDropdown", defaultProps13, _props);
+    const props = useProps15("PopoverDropdown", defaultProps13, _props);
     const _a = props, {
       className,
       style,
@@ -4445,7 +4478,7 @@ var defaultProps14 = {
   __staticSelector: "Popover",
   width: "max-content"
 };
-var varsResolver8 = createVarsResolver8(
+var varsResolver9 = createVarsResolver9(
   (_, { radius, shadow }) => ({
     dropdown: {
       "--popover-radius": radius === void 0 ? void 0 : getRadius3(radius),
@@ -4455,7 +4488,7 @@ var varsResolver8 = createVarsResolver8(
 );
 function Popover(_props) {
   var _b, _c, _d, _e, _f, _g;
-  const props = useProps15("Popover", defaultProps14, _props);
+  const props = useProps16("Popover", defaultProps14, _props);
   const _a = props, {
     children,
     position,
@@ -4535,7 +4568,7 @@ function Popover(_props) {
     "keepMounted",
     "vars"
   ]);
-  const getStyles = useStyles9({
+  const getStyles = useStyles10({
     name: __staticSelector,
     props,
     classes: Popover_module_default,
@@ -4544,7 +4577,7 @@ function Popover(_props) {
     unstyled,
     rootSelector: "dropdown",
     vars,
-    varsResolver: varsResolver8
+    varsResolver: varsResolver9
   });
   const arrowRef = useRef9(null);
   const [targetNode, setTargetNode] = useState10(null);
@@ -4666,20 +4699,20 @@ function EyeDropperIcon(_a) {
 // ../ActionIcon/src/ActionIcon.tsx
 import React35 from "react";
 import {
-  useProps as useProps19,
-  useStyles as useStyles13,
+  useProps as useProps20,
+  useStyles as useStyles14,
   getRadius as getRadius4,
   polymorphicFactory as polymorphicFactory4,
   getSize as getSize4,
-  createVarsResolver as createVarsResolver11
+  createVarsResolver as createVarsResolver12
 } from "@raikou/core";
 
 // ../UnstyledButton/src/UnstyledButton.tsx
 import React28 from "react";
 import {
   Box as Box14,
-  useProps as useProps16,
-  useStyles as useStyles10,
+  useProps as useProps17,
+  useStyles as useStyles11,
   polymorphicFactory as polymorphicFactory3
 } from "@raikou/core";
 
@@ -4692,7 +4725,7 @@ var defaultProps15 = {
 };
 var UnstyledButton = polymorphicFactory3(
   (_props, ref) => {
-    const props = useProps16("UnstyledButton", defaultProps15, _props);
+    const props = useProps17("UnstyledButton", defaultProps15, _props);
     const _a = props, {
       className,
       component = "button",
@@ -4710,7 +4743,7 @@ var UnstyledButton = polymorphicFactory3(
       "styles",
       "style"
     ]);
-    const getStyles = useStyles10({
+    const getStyles = useStyles11({
       name: __staticSelector,
       props,
       classes: UnstyledButton_module_default,
@@ -4737,23 +4770,23 @@ UnstyledButton.classes = UnstyledButton_module_default;
 import React33 from "react";
 import {
   Box as Box19,
-  useProps as useProps17,
+  useProps as useProps18,
   getThemeColor,
-  useStyles as useStyles11,
-  factory as factory9,
+  useStyles as useStyles12,
+  factory as factory10,
   getSize as getSize3,
-  createVarsResolver as createVarsResolver9
+  createVarsResolver as createVarsResolver10
 } from "@raikou/core";
 
 // ../Loader/src/loaders/Bars.tsx
-import React29, { forwardRef as forwardRef9 } from "react";
+import React29, { forwardRef as forwardRef8 } from "react";
 import { Box as Box15 } from "@raikou/core";
 
 // css-module:../Loader.module.css#css-module
 var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
 
 // ../Loader/src/loaders/Bars.tsx
-var Bars = forwardRef9(
+var Bars = forwardRef8(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ React29.createElement(
@@ -4772,9 +4805,9 @@ var Bars = forwardRef9(
 );
 
 // ../Loader/src/loaders/Oval.tsx
-import React30, { forwardRef as forwardRef10 } from "react";
+import React30, { forwardRef as forwardRef9 } from "react";
 import { Box as Box16 } from "@raikou/core";
-var Oval = forwardRef10(
+var Oval = forwardRef9(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ React30.createElement(
@@ -4790,9 +4823,9 @@ var Oval = forwardRef10(
 );
 
 // ../Loader/src/loaders/Progress.tsx
-import React31, { forwardRef as forwardRef11 } from "react";
+import React31, { forwardRef as forwardRef10 } from "react";
 import { Box as Box17 } from "@raikou/core";
-var Progress = forwardRef11(
+var Progress = forwardRef10(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ React31.createElement(
@@ -4819,9 +4852,9 @@ var Progress = forwardRef11(
 );
 
 // ../Loader/src/loaders/Dots.tsx
-import React32, { forwardRef as forwardRef12 } from "react";
+import React32, { forwardRef as forwardRef11 } from "react";
 import { Box as Box18 } from "@raikou/core";
-var Dots = forwardRef12(
+var Dots = forwardRef11(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
     return /* @__PURE__ */ React32.createElement(
@@ -4853,7 +4886,7 @@ var defaultProps16 = {
   loaders: defaultLoaders,
   type: "oval"
 };
-var varsResolver9 = createVarsResolver9(
+var varsResolver10 = createVarsResolver10(
   (theme, { size: size2, color }) => ({
     root: {
       "--loader-size": getSize3(size2, "loader-size"),
@@ -4861,8 +4894,8 @@ var varsResolver9 = createVarsResolver9(
     }
   })
 );
-var Loader = factory9((_props, ref) => {
-  const props = useProps17("Loader", defaultProps16, _props);
+var Loader = factory10((_props, ref) => {
+  const props = useProps18("Loader", defaultProps16, _props);
   const _a = props, {
     size: size2,
     color,
@@ -4888,7 +4921,7 @@ var Loader = factory9((_props, ref) => {
     "loaders",
     "variant"
   ]);
-  const getStyles = useStyles11({
+  const getStyles = useStyles12({
     name: "Loader",
     props,
     classes: Loader_module_default2,
@@ -4898,7 +4931,7 @@ var Loader = factory9((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver: varsResolver9
+    varsResolver: varsResolver10
   });
   return /* @__PURE__ */ React33.createElement(
     Box19,
@@ -4916,12 +4949,12 @@ Loader.classes = Loader_module_default2;
 // ../ActionIcon/src/ActionIconGroup/ActionIconGroup.tsx
 import React34 from "react";
 import {
-  factory as factory10,
+  factory as factory11,
   Box as Box20,
-  useProps as useProps18,
-  useStyles as useStyles12,
+  useProps as useProps19,
+  useStyles as useStyles13,
   rem as rem12,
-  createVarsResolver as createVarsResolver10
+  createVarsResolver as createVarsResolver11
 } from "@raikou/core";
 
 // css-module:../ActionIcon.module.css#css-module
@@ -4931,15 +4964,15 @@ var ActionIcon_module_default = { "root": "m-8d3f4000", "loader": "m-302b9fb1", 
 var defaultProps17 = {
   orientation: "horizontal"
 };
-var varsResolver10 = createVarsResolver10(
+var varsResolver11 = createVarsResolver11(
   (_, { borderWidth }) => ({
     group: { "--ai-border-width": rem12(borderWidth) }
   })
 );
-var ActionIconGroup = factory10(
+var ActionIconGroup = factory11(
   (_props, ref) => {
-    const props = useProps18("ActionIconGroup", defaultProps17, _props);
-    const _a = useProps18("ActionIconGroup", defaultProps17, _props), {
+    const props = useProps19("ActionIconGroup", defaultProps17, _props);
+    const _a = useProps19("ActionIconGroup", defaultProps17, _props), {
       className,
       style,
       classNames,
@@ -4960,7 +4993,7 @@ var ActionIconGroup = factory10(
       "borderWidth",
       "variant"
     ]);
-    const getStyles = useStyles12({
+    const getStyles = useStyles13({
       name: "ActionIconGroup",
       props,
       classes: ActionIcon_module_default,
@@ -4970,7 +5003,7 @@ var ActionIconGroup = factory10(
       styles,
       unstyled,
       vars,
-      varsResolver: varsResolver10,
+      varsResolver: varsResolver11,
       rootSelector: "group"
     });
     return /* @__PURE__ */ React34.createElement(
@@ -4992,7 +5025,7 @@ var ActionIcon_module_default2 = { "root": "m-8d3f4000", "loader": "m-302b9fb1",
 
 // ../ActionIcon/src/ActionIcon.tsx
 var defaultProps18 = {};
-var varsResolver11 = createVarsResolver11(
+var varsResolver12 = createVarsResolver12(
   (theme, { size: size2, radius, variant, gradient, color }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
@@ -5014,7 +5047,7 @@ var varsResolver11 = createVarsResolver11(
 );
 var ActionIcon = polymorphicFactory4(
   (_props, ref) => {
-    const props = useProps19("ActionIcon", defaultProps18, _props);
+    const props = useProps20("ActionIcon", defaultProps18, _props);
     const _a = props, {
       className,
       unstyled,
@@ -5052,7 +5085,7 @@ var ActionIcon = polymorphicFactory4(
       "disabled",
       "data-disabled"
     ]);
-    const getStyles = useStyles13({
+    const getStyles = useStyles14({
       name: ["ActionIcon", __staticSelector],
       props,
       className,
@@ -5062,7 +5095,7 @@ var ActionIcon = polymorphicFactory4(
       styles,
       unstyled,
       vars,
-      varsResolver: varsResolver11
+      varsResolver: varsResolver12
     });
     return /* @__PURE__ */ React35.createElement(
       UnstyledButton,
@@ -5103,7 +5136,7 @@ var defaultProps19 = {
   popoverProps: { transitionProps: { transition: "fade", duration: 0 } },
   withEyeDropper: true
 };
-var varsResolver12 = createVarsResolver12((_, { size: size2 }) => ({
+var varsResolver13 = createVarsResolver13((_, { size: size2 }) => ({
   eyeDropperIcon: {
     "--ci-eye-dropper-icon-size": getSize5(size2, "ci-eye-dropper-icon-size")
   },
@@ -5111,8 +5144,8 @@ var varsResolver12 = createVarsResolver12((_, { size: size2 }) => ({
     "--ci-preview-size": getSize5(size2, "ci-preview-size")
   }
 }));
-var ColorInput = factory11((_props, ref) => {
-  const props = useProps20("ColorInput", defaultProps19, _props);
+var ColorInput = factory12((_props, ref) => {
+  const props = useProps21("ColorInput", defaultProps19, _props);
   const _a = useInputProps("ColorInput", defaultProps19, _props), {
     classNames,
     styles,
@@ -5172,7 +5205,7 @@ var ColorInput = factory11((_props, ref) => {
     "rightSection",
     "swatchesPerRow"
   ]);
-  const getStyles = useStyles14({
+  const getStyles = useStyles15({
     name: "ColorInput",
     props,
     classes: ColorInput_module_default,
@@ -5181,7 +5214,7 @@ var ColorInput = factory11((_props, ref) => {
     unstyled,
     rootSelector: "wrapper",
     vars: props.vars,
-    varsResolver: varsResolver12
+    varsResolver: varsResolver13
   });
   const { resolvedClassNames, resolvedStyles } = useResolvedStylesApi({
     classNames,

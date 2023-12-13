@@ -1,15 +1,16 @@
 import React, { forwardRef } from "react";
 import { useProps, rem } from "@raikou/core";
-import { ColorSlider, __ColorSliderProps } from "../ColorSlider/ColorSlider";
+import { ColorSlider, ColorSliderProps } from "../ColorSlider/ColorSlider";
 
-const defaultProps: Partial<__ColorSliderProps> = {};
+export interface HueSliderProps
+  extends Omit<ColorSliderProps, "maxValue" | "overlays" | "round"> {}
 
-export const HueSlider = forwardRef<HTMLDivElement, __ColorSliderProps>(
+export const HueSlider = forwardRef<HTMLDivElement, HueSliderProps>(
   (props, ref) => {
     const { value, onChange, onChangeEnd, color, ...others } = useProps(
       "HueSlider",
-      defaultProps,
-      props
+      {},
+      props,
     );
 
     return (
@@ -30,13 +31,13 @@ export const HueSlider = forwardRef<HTMLDivElement, __ColorSliderProps>(
           },
           {
             boxShadow: `rgba(0, 0, 0, .1) 0 0 0 ${rem(
-              1
+              1,
             )} inset, rgb(0, 0, 0, .15) 0 0 ${rem(4)} inset`,
           },
         ]}
       />
     );
-  }
+  },
 );
 
 HueSlider.displayName = "@raikou/core/HueSlider";

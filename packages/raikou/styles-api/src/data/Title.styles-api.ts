@@ -22,5 +22,10 @@ export const TitleStylesApi: StylesApiData<TitleFactory> = {
       selector: "root",
       value: "Value of the `order` prop",
     },
+    {
+      modifier: "data-line-clamp",
+      selector: "root",
+      condition: "`lineClamp` prop is a number",
+    },
   ],
 };

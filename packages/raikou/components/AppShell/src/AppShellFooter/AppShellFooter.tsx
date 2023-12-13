@@ -10,6 +10,8 @@ import {
 } from "@raikou/core";
 import { useStore } from "../store";
 import classes from "../AppShell.module.css";
+import { RemoveScroll } from "react-remove-scroll";
+import cx from "clsx";
 
 export type AppShellFooterStylesNames = "footer";
 export type AppShellFooterVariant = string;
@@ -62,7 +64,15 @@ export const AppShellFooter = factory<AppShellFooterFactory>((_props, ref) => {
       component="footer"
       ref={ref}
       mod={{ "with-border": withBorder ?? ctx.withBorder }}
-      {...ctx.getStyles("footer", { className, classNames, styles, style })}
+      {...ctx.getStyles("footer", {
+        className: cx(
+          { [RemoveScroll.classNames.zeroRight]: ctx.offsetScrollbars },
+          className,
+        ),
+        classNames,
+        styles,
+        style,
+      })}
       {...others}
       __vars={{
         "--app-shell-footer-z-index": (zIndex ?? ctx.zIndex)?.toString(),
