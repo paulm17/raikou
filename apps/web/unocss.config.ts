@@ -12,8 +12,8 @@ export default defineConfig({
   presets: [
     presetWind(),
     presetAttributify({
-      prefix: "un-",
-      prefixedOnly: true,
+      // prefix: "un-",
+      // prefixedOnly: false,
     }),
     presetRaikou(),
   ],

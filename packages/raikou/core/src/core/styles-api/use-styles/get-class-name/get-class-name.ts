@@ -12,12 +12,12 @@ import { getOptionsClassNames } from "./get-options-class-names/get-options-clas
 
 type __ClassNames =
   | undefined
-  | Partial<Record<string, string>>
+  | Partial<Record<string, any>>
   | ((
       theme: RaikouTheme,
       props: Record<string, any>,
       ctx: Record<string, any> | undefined,
-    ) => Partial<Record<string, string>>);
+    ) => Partial<Record<string, any>>);
 
 export type _ClassNames = __ClassNames | __ClassNames[];
 

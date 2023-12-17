@@ -33,6 +33,7 @@
     "@unocss/preset-wind": "^0.58.0",
     "postcss-unocss-raikou": "workspace:*",
     "postcss-purgecss-raikou": "workspace:*",
+    "@unocss/webpack": "workspace:*",
     "typescript": "5.1.6",
     "unocss": "^0.58.0"
   }

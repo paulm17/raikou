@@ -1,6 +1,7 @@
 import * as React$1 from 'react';
 import React__default, { CSSProperties as CSSProperties$1 } from 'react';
 import { PartialDeep } from 'type-fest';
+import { AttributifyAttributes } from '@unocss/preset-attributify';
 
 declare function keys<T extends object, K extends keyof T>(object: T): K[];
 
@@ -563,8 +564,8 @@ interface GetStylesApiOptions {
 }
 type StylesApiRecord<Payload extends FactoryPayload, DataType> = Payload["compound"] extends true ? Payload["stylesNames"] extends string ? StylesRecord<Payload["stylesNames"], DataType> : never : Payload["stylesNames"] extends string ? StylesRecord<Payload["stylesNames"], DataType> | ((theme: RaikouTheme, props: Payload["props"], ctx: Payload["ctx"]) => StylesRecord<Payload["stylesNames"], DataType>) : never;
 type Styles<Payload extends FactoryPayload> = StylesApiRecord<Payload, CSSProperties$1>;
-type ClassNames<Payload extends FactoryPayload> = StylesApiRecord<Payload, string>;
-type ClassNamesArray<Payload extends FactoryPayload> = (StylesApiRecord<Payload, string> | undefined)[];
+type ClassNames<Payload extends FactoryPayload> = StylesApiRecord<Payload, AttributifyAttributes>;
+type ClassNamesArray<Payload extends FactoryPayload> = (StylesApiRecord<Payload, AttributifyAttributes> | undefined)[];
 type StylesRecord<StylesNames extends string, Payload> = Partial<Record<StylesNames, Payload>>;
 interface StylesApiProps<Payload extends FactoryPayload> {
     unstyled?: boolean;
@@ -576,7 +577,7 @@ interface StylesApiProps<Payload extends FactoryPayload> {
 interface CompoundStylesApiProps<Payload extends FactoryPayload> extends Omit<StylesApiProps<Payload>, "unstyled"> {
 }
 
-type __ClassNames = undefined | Partial<Record<string, string>> | ((theme: RaikouTheme, props: Record<string, any>, ctx: Record<string, any> | undefined) => Partial<Record<string, string>>);
+type __ClassNames = undefined | Partial<Record<string, any>> | ((theme: RaikouTheme, props: Record<string, any>, ctx: Record<string, any> | undefined) => Partial<Record<string, any>>);
 type _ClassNames = __ClassNames | __ClassNames[];
 
 interface ResolveClassNamesInput {

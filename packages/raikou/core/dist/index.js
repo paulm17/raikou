@@ -467,6 +467,13 @@ function mergeClassNames(objects) {
   const merged = {};
   objects.forEach((obj) => {
     Object.entries(obj).forEach(([key, value]) => {
+      if (typeof value === "object") {
+        let newValue = "";
+        Object.entries(value).forEach(([subKey, subValue]) => {
+          newValue += `${subKey}-${subValue} `;
+        });
+        value = newValue.trim();
+      }
       if (merged[key]) {
         merged[key] = (0, import_clsx.default)(merged[key], value);
       } else {

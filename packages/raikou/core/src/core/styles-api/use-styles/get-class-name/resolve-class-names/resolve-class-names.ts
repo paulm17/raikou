@@ -1,4 +1,5 @@
 import cx from "clsx";
+// import type { AttributifyAttributes } from '@unocss/preset-attributify';
 import { RaikouTheme } from "../../../../RaikouProvider";
 import type { _ClassNames } from "../get-class-name";
 
@@ -16,6 +17,13 @@ function mergeClassNames(objects: Partial<Record<string, string>>[]) {
 
   objects.forEach((obj) => {
     Object.entries(obj).forEach(([key, value]) => {
+      if (typeof value === "object") {
+        let newValue = "";
+        Object.entries(value).forEach(([subKey, subValue]) => {
+          newValue += `${subKey}-${subValue} `;
+        });
+        value = newValue.trim();
+      }
       if (merged[key]) {
         merged[key] = cx(merged[key], value);
       } else {
@@ -34,6 +42,7 @@ export function resolveClassNames({
   stylesCtx,
 }: ResolveClassNamesInput) {
   const arrayClassNames = Array.isArray(classNames) ? classNames : [classNames];
+
   const resolvedClassNames = arrayClassNames.map((item) =>
     typeof item === "function"
       ? item(theme, props, stylesCtx)

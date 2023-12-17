@@ -440,7 +440,8 @@ Project Link:
 
 ## Acknowledgments
 
-Vitaly and the Mantine community.
+- [Vitaly and the Mantine community.](https://mantine.dev/)<br>
+- [Ionut-Cristian Florescu for Mantine DataTable and Mantine ContextMenu.](https://github.com/icflorescu)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

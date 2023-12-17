@@ -3,6 +3,7 @@ import type { RaikouTheme } from "../RaikouProvider";
 import type { RaikouStyleProp } from "../Box";
 import type { FactoryPayload } from "../factory";
 import { PartialVarsResolver } from "./create-vars-resolver/create-vars-resolver";
+import type { AttributifyAttributes } from "@unocss/preset-attributify";
 
 export interface GetStylesApiOptions {
   className?: string;
@@ -38,10 +39,10 @@ export type Styles<Payload extends FactoryPayload> = StylesApiRecord<
 >;
 export type ClassNames<Payload extends FactoryPayload> = StylesApiRecord<
   Payload,
-  string
+  AttributifyAttributes
 >;
 export type ClassNamesArray<Payload extends FactoryPayload> = (
-  | StylesApiRecord<Payload, string>
+  | StylesApiRecord<Payload, AttributifyAttributes>
   | undefined
 )[];
 

@@ -12,6 +12,89 @@ import { loadConfig } from '@unocss/config';
 import { hasThemeFn } from '@unocss/rule-utils';
 import type { UnoPostcssPluginOptions } from './types';
 
+function matchClassesObject(content: string) {
+  const regex = new RegExp(`(?<=\{\{).*?(?=\}\})`, 's');
+  const elementRE = /<[^>\s]*\s((?:'.*?'|".*?"|`.*?`|\{.*?\}|[^>]*?)*)/g;
+
+  const str = Array.from(content.matchAll(elementRE)).flatMap((match) => match[1].match(regex));
+
+  if (str !== null && str[0] !== null) {
+    let data = str[0].replace(/\s/g, '');
+    data = data.replace(/,}/g, '}');
+    data = data.slice(0, -1);
+
+    data.match(/\w+:{/g)?.forEach((item) => {
+      item = item.replace(':{', '');
+
+      data = data.replace(item, function (match) {
+        return `"${match}"`;
+      });
+    });
+
+    data.match(/\w+:/g)?.forEach((item) => {
+      data = data.replace(item, function (match) {
+        return `"${match.replace(':', '')}":`;
+      });
+    });
+
+    const jsonStr = JSON.parse(`{ ${data} }`);
+
+    const transformedObject = Object.entries(jsonStr).reduce((acc, [key, value]) => {
+      let newValue;
+      if (typeof value === 'string') {
+        newValue = value;
+      } else if (typeof value === 'object') {
+        const arr = [] as string[];
+
+        Object.keys(value).forEach((_, index) => {
+          arr.push(`${Object.keys(value)[index]}-${Object.values(value)[index]}`);
+        });
+
+        newValue = arr.join(' ');
+      }
+      acc[key] = newValue;
+      return acc;
+    }, {});
+
+    let result = JSON.stringify(transformedObject);
+
+    result = result.replace(/"\w+":/g, function (match) {
+      return `${match}`.replace(/"/g, '');
+    });
+
+    result = result.replace('{', '');
+    result = result.replace('}', '');
+
+    return result;
+  }
+
+  return null;
+}
+
+function flattenClasses(content: string) {
+  const regex = /<\w+\b[^<>\r]*(?:(?<==)>[^<>\r]*)*classNames=[^<>]*(?:(?<==)>[^<>\r]*)*>/g;
+  const matches = content.match(regex);
+
+  if (matches) {
+    matches.map((item) => {
+      // generate new classes string
+      const result = matchClassesObject(item);
+
+      if (result) {
+        // match classes string of item
+        const regex2 = new RegExp(`(?<=\{\{).*?(?=\}\})`, 's');
+        const match = item.match(regex2);
+
+        if (match) {
+          content = content.replace(match[0], result);
+        }
+      }
+    });
+  }
+
+  return content;
+}
+
 module.exports = (options: UnoPostcssPluginOptions = {}) => {
   const { cwd = process.cwd(), configOrPath } = options;
 
@@ -123,9 +206,11 @@ module.exports = (options: UnoPostcssPluginOptions = {}) => {
 
           const content = await readFile(file, 'utf8');
 
+          const flattenedContent = flattenClasses(content);
+
           pagesContent.add(content);
 
-          const { matched } = await uno.generate(content, {
+          const { matched } = await uno.generate(flattenedContent, {
             id: file,
           });
 
