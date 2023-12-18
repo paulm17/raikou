@@ -3829,4 +3829,176 @@ interface DirectionProviderProps {
 }
 declare function DirectionProvider({ children, initialDirection, detectDirection, }: DirectionProviderProps): React$2.JSX.Element;
 
-export { type CSSVariablesResolver, type ConvertCSSVariablesInput, DEFAULT_THEME, type DefaultRaikouColor, type Direction, DirectionContext, type DirectionContextValue, DirectionProvider, type DirectionProviderProps, type HeadingStyle, type RGBA, type RaikouBreakpoint, type RaikouBreakpointsValues, type RaikouColor, type RaikouColorScheme, type RaikouColorShade, type RaikouColorsTuple, type RaikouFontSize, type RaikouFontSizesValues, type RaikouGradient, type RaikouLineHeight, type RaikouLineHeightValues, type RaikouPrimaryShade, RaikouProvider, type RaikouRadius, type RaikouRadiusValues, type RaikouShadow, type RaikouShadowsValues, type RaikouSize, type RaikouSpacing, type RaikouSpacingValues, type RaikouStylesRecord, type RaikouTheme, type RaikouThemeColors, type RaikouThemeColorsOverride, type RaikouThemeComponent, type RaikouThemeComponents, type RaikouThemeOther, type RaikouThemeOverride, type VariantColorResolverResult, type VariantColorsResolver, type VariantColorsResolverInput, convertCssVariables, createCSSVariables, darken, deepMerge, defaultCssVariablesResolver, defaultVariantColorsResolver, em, getGradient, getPrimaryShade, getThemeColor, isLightColor, keys, lighten, mergeRaikouTheme, parseThemeColor, px, rem, rgba, toRgba, useColorScheme, useDirection, validateRaikouTheme };
+declare const MantineColors: {
+    gray: {
+        50: string;
+        100: string;
+        200: string;
+        300: string;
+        400: string;
+        500: string;
+        600: string;
+        700: string;
+        800: string;
+        900: string;
+        950: string;
+    };
+    red: {
+        50: string;
+        100: string;
+        200: string;
+        300: string;
+        400: string;
+        500: string;
+        600: string;
+        700: string;
+        800: string;
+        900: string;
+        950: string;
+    };
+    pink: {
+        50: string;
+        100: string;
+        200: string;
+        300: string;
+        400: string;
+        500: string;
+        600: string;
+        700: string;
+        800: string;
+        900: string;
+        950: string;
+    };
+    grape: {
+        50: string;
+        100: string;
+        200: string;
+        300: string;
+        400: string;
+        500: string;
+        600: string;
+        700: string;
+        800: string;
+        900: string;
+        950: string;
+    };
+    violet: {
+        50: string;
+        100: string;
+        200: string;
+        300: string;
+        400: string;
+        500: string;
+        600: string;
+        700: string;
+        800: string;
+        900: string;
+        950: string;
+    };
+    indigo: {
+        50: string;
+        100: string;
+        200: string;
+        300: string;
+        400: string;
+        500: string;
+        600: string;
+        700: string;
+        800: string;
+        900: string;
+        950: string;
+    };
+    blue: {
+        50: string;
+        100: string;
+        200: string;
+        300: string;
+        400: string;
+        500: string;
+        600: string;
+        700: string;
+        800: string;
+        900: string;
+        950: string;
+    };
+    cyan: {
+        50: string;
+        100: string;
+        200: string;
+        300: string;
+        400: string;
+        500: string;
+        600: string;
+        700: string;
+        800: string;
+        900: string;
+        950: string;
+    };
+    teal: {
+        50: string;
+        100: string;
+        200: string;
+        300: string;
+        400: string;
+        500: string;
+        600: string;
+        700: string;
+        800: string;
+        900: string;
+        950: string;
+    };
+    green: {
+        50: string;
+        100: string;
+        200: string;
+        300: string;
+        400: string;
+        500: string;
+        600: string;
+        700: string;
+        800: string;
+        900: string;
+        950: string;
+    };
+    lime: {
+        50: string;
+        100: string;
+        200: string;
+        300: string;
+        400: string;
+        500: string;
+        600: string;
+        700: string;
+        800: string;
+        900: string;
+        950: string;
+    };
+    yellow: {
+        50: string;
+        100: string;
+        200: string;
+        300: string;
+        400: string;
+        500: string;
+        600: string;
+        700: string;
+        800: string;
+        900: string;
+        950: string;
+    };
+    orange: {
+        50: string;
+        100: string;
+        200: string;
+        300: string;
+        400: string;
+        500: string;
+        600: string;
+        700: string;
+        800: string;
+        900: string;
+        950: string;
+    };
+};
+
+export { type CSSVariablesResolver, type ConvertCSSVariablesInput, DEFAULT_THEME, type DefaultRaikouColor, type Direction, DirectionContext, type DirectionContextValue, DirectionProvider, type DirectionProviderProps, type HeadingStyle, MantineColors, type RGBA, type RaikouBreakpoint, type RaikouBreakpointsValues, type RaikouColor, type RaikouColorScheme, type RaikouColorShade, type RaikouColorsTuple, type RaikouFontSize, type RaikouFontSizesValues, type RaikouGradient, type RaikouLineHeight, type RaikouLineHeightValues, type RaikouPrimaryShade, RaikouProvider, type RaikouRadius, type RaikouRadiusValues, type RaikouShadow, type RaikouShadowsValues, type RaikouSize, type RaikouSpacing, type RaikouSpacingValues, type RaikouStylesRecord, type RaikouTheme, type RaikouThemeColors, type RaikouThemeColorsOverride, type RaikouThemeComponent, type RaikouThemeComponents, type RaikouThemeOther, type RaikouThemeOverride, type VariantColorResolverResult, type VariantColorsResolver, type VariantColorsResolverInput, convertCssVariables, createCSSVariables, darken, deepMerge, defaultCssVariablesResolver, defaultVariantColorsResolver, em, getGradient, getPrimaryShade, getThemeColor, isLightColor, keys, lighten, mergeRaikouTheme, parseThemeColor, px, rem, rgba, toRgba, useColorScheme, useDirection, validateRaikouTheme };

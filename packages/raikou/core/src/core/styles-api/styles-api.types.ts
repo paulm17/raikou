@@ -39,10 +39,10 @@ export type Styles<Payload extends FactoryPayload> = StylesApiRecord<
 >;
 export type ClassNames<Payload extends FactoryPayload> = StylesApiRecord<
   Payload,
-  AttributifyAttributes
+  string | AttributifyAttributes
 >;
 export type ClassNamesArray<Payload extends FactoryPayload> = (
-  | StylesApiRecord<Payload, AttributifyAttributes>
+  | StylesApiRecord<Payload, string | AttributifyAttributes>
   | undefined
 )[];
 

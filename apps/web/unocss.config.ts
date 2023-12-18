@@ -1,9 +1,8 @@
-import fs from "fs/promises";
-import { cwd } from "node:process";
 import { defineConfig } from "unocss";
 import presetAttributify from "@unocss/preset-attributify";
 import presetWind from "@unocss/preset-wind";
 const presetRaikou = require("@raikou/system/plugin.js").default;
+import { MantineColors } from "@raikou/system";
 
 export default defineConfig({
   content: {
@@ -12,9 +11,11 @@ export default defineConfig({
   presets: [
     presetWind(),
     presetAttributify({
-      // prefix: "un-",
-      // prefixedOnly: false,
+      prefix: "un-",
     }),
     presetRaikou(),
   ],
+  theme: {
+    colors: MantineColors,
+  },
 }) as any;

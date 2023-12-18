@@ -564,8 +564,8 @@ interface GetStylesApiOptions {
 }
 type StylesApiRecord<Payload extends FactoryPayload, DataType> = Payload["compound"] extends true ? Payload["stylesNames"] extends string ? StylesRecord<Payload["stylesNames"], DataType> : never : Payload["stylesNames"] extends string ? StylesRecord<Payload["stylesNames"], DataType> | ((theme: RaikouTheme, props: Payload["props"], ctx: Payload["ctx"]) => StylesRecord<Payload["stylesNames"], DataType>) : never;
 type Styles<Payload extends FactoryPayload> = StylesApiRecord<Payload, CSSProperties$1>;
-type ClassNames<Payload extends FactoryPayload> = StylesApiRecord<Payload, AttributifyAttributes>;
-type ClassNamesArray<Payload extends FactoryPayload> = (StylesApiRecord<Payload, AttributifyAttributes> | undefined)[];
+type ClassNames<Payload extends FactoryPayload> = StylesApiRecord<Payload, string | AttributifyAttributes>;
+type ClassNamesArray<Payload extends FactoryPayload> = (StylesApiRecord<Payload, string | AttributifyAttributes> | undefined)[];
 type StylesRecord<StylesNames extends string, Payload> = Partial<Record<StylesNames, Payload>>;
 interface StylesApiProps<Payload extends FactoryPayload> {
     unstyled?: boolean;

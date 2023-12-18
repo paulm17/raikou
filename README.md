@@ -10,6 +10,9 @@
   <p align="center">
     Raikou is a mantine fork which replaces css modules to adopt a unocss first-use approach.
   </p>
+  <p align="center">
+    <i>Push the envelope, watch it bend.</i>
+  </p>
 </div>
 
 <!-- ABOUT THE PROJECT -->
@@ -104,13 +107,13 @@ To get a local copy up and running follow these simple example steps.
 - npm
 
 ```sh
-npm install @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/global-store postcss-unocss-raikou
+npm install @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/global-store postcss-unocss-raikou postcss-purgecss-raikou postcss-import
 ```
 
 - yarn
 
 ```sh
-yarn add @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/global-store postcss-preset-raikou postcss-unocss-raikou
+yarn add @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/global-store postcss-preset-raikou postcss-unocss-raikou postcss-purgecss-raikou postcss-import
 ```
 
 2. Change the postcss.config.js to:
@@ -118,11 +121,19 @@ yarn add @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/glob
 ```js
 module.exports = {
   plugins: {
+    "postcss-import": {},
     "postcss-preset-raikou": {},
-    "unocss-postcss": {},
+    "postcss-unocss-raikou": {},
+    "postcss-purgecss-raikou": {
+      componentNames: "./node_modules/@raikou/system/dist/component_names.txt",
+      cssModules: "./node_modules/@raikou/system/dist/css_modules.txt",
+      styles: "./node_modules/@raikou/system/dist/styles.css",
+    },
   },
 };
 ```
+
+Note: `postcss-import`` is needed otherwise @layer doesn't work with NextJS.
 
 3. Create unocss.config.ts:
 
@@ -140,7 +151,6 @@ export default defineConfig({
     presetWind(),
     presetAttributify({
       prefix: "un-",
-      prefixedOnly: true,
     }),
     presetRaikou(),
   ],
@@ -260,6 +270,57 @@ Then update the RaikouProvider.
 >
   {children}
 </RaikouProvider>
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+8. The classNames API has been updated to support attributify.
+
+A key can either be a string if the styles are terse, or broken up into
+attributes.
+
+```js
+<Badge
+  classNames={{
+    root: "bg-red-500",
+    label: {
+      bg: "blue-500",
+      text: "gray-300",
+      m: "[20px]",
+      p: "[80px]",
+    },
+  }}
+>
+  This is a badge
+</Badge>
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+9. Any mantine css variable that requires a color can be overriden by an unocss
+   color. Must be enclosed in var brackets.
+
+Note: this dynamically adds the --violet-800 css variable and color equivilent
+to the css.
+
+```js
+<Chip checked variant="filled" style={{ "--chip-bg": "var(--violet-800)" }}>
+  Programming
+</Chip>
+```
+
+10. Mantine Colors can override the supplied unocss colors. Extend the config as
+    below:
+
+```js
+import { MantineColors } from "@raikou/system";
+
+export default defineConfig({
+  ...
+  theme: {
+    colors: MantineColors,
+  },
+}) as any;
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

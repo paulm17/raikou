@@ -10,6 +10,8 @@ import fsPromises from 'fs/promises';
 import { createGenerator } from '@unocss/core';
 import { loadConfig } from '@unocss/config';
 import { hasThemeFn } from '@unocss/rule-utils';
+import { parseColor, theme as unocssTheme } from '@unocss/preset-mini';
+
 import type { UnoPostcssPluginOptions } from './types';
 
 function matchClassesObject(content: string) {
@@ -95,6 +97,55 @@ function flattenClasses(content: string) {
   return content;
 }
 
+function generateColorCSSVariables(content: string, theme: any) {
+  const styleTagContent = content.match(/style={{.*}}/s);
+
+  const tempVariables = {} as Record<string, string>;
+
+  if (styleTagContent) {
+    const arr = styleTagContent[0].match(/(--[a-z-0-9]+|var\(([a-z-0-9]+)\))/g);
+
+    if (arr) {
+      for (let i = 0; i < arr.length; i += 1) {
+        if (arr[i].match(/^--(.*)$/)) {
+          const value = arr[i + 1];
+
+          const newValue = value.replace('var(', '').replace(')', '').replace('--', '');
+
+          if (newValue.match(/[a-z-0-9]+-\d+-\d+/)) {
+            const index = newValue.lastIndexOf('-');
+            const first = newValue.substring(0, index);
+            const last = newValue.substring(index).replace('-', '/');
+
+            tempVariables[`--${newValue}`] = `${first}${last}`;
+          } else {
+            tempVariables[`--${newValue}`] = newValue;
+          }
+        }
+      }
+    }
+  }
+
+  if (tempVariables) {
+    const cssVariables = {} as Record<string, string>;
+
+    for (const key in tempVariables) {
+      const value = tempVariables[key];
+      const color = parseColor(value, theme);
+
+      if (color?.alpha) {
+        cssVariables[key] = `rgba(${color?.cssColor?.components.toString()},${color?.alpha})`;
+      } else {
+        cssVariables[key] = `rgb(${color?.cssColor?.components.toString()})`;
+      }
+    }
+
+    return cssVariables;
+  }
+
+  return null;
+}
+
 module.exports = (options: UnoPostcssPluginOptions = {}) => {
   const { cwd = process.cwd(), configOrPath } = options;
 
@@ -111,6 +162,7 @@ module.exports = (options: UnoPostcssPluginOptions = {}) => {
   const targetCache = new Set<string>();
   const pagesContent = new Set<string>();
   const config = loadConfig(cwd, configOrPath);
+  let cssColorVariables = {} as Record<string, string>;
 
   let uno: UnoGenerator;
   let promises: Promise<void>[] = [];
@@ -208,6 +260,16 @@ module.exports = (options: UnoPostcssPluginOptions = {}) => {
 
           const flattenedContent = flattenClasses(content);
 
+          const cssVariablesPerContent = generateColorCSSVariables(content, uno.config.theme);
+
+          if (cssVariablesPerContent !== null) {
+            Object.keys(cssVariablesPerContent).forEach((key) => {
+              if (!cssColorVariables[key]) {
+                cssColorVariables[key] = cssVariablesPerContent[key];
+              }
+            });
+          }
+
           pagesContent.add(content);
 
           const { matched } = await uno.generate(flattenedContent, {
@@ -267,6 +329,32 @@ module.exports = (options: UnoPostcssPluginOptions = {}) => {
           rule.replaceWith(css);
         }
       });
+
+      // Colors
+      root.walkAtRules('colors', (rule) => {
+        if (!rule.params) {
+          const source = rule.source;
+          const arr = [] as string[];
+
+          Object.keys(cssColorVariables).forEach((key) =>
+            arr.push(`${key}: ${cssColorVariables[key]};`)
+          );
+
+          const cssVariableMark = `/* ----- Default CSS variables ----- */
+
+          :root {
+            ${arr.join('\n')}
+          }`;
+
+          const css = postcss.parse(cssVariableMark);
+          css.walkDecls((declaration) => {
+            declaration.source = source;
+          });
+          rule.replaceWith(css);
+        }
+      });
+
+      cssColorVariables = {};
     },
   };
 };

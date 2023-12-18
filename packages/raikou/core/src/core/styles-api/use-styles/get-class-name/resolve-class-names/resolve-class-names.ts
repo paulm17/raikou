@@ -1,5 +1,4 @@
 import cx from "clsx";
-// import type { AttributifyAttributes } from '@unocss/preset-attributify';
 import { RaikouTheme } from "../../../../RaikouProvider";
 import type { _ClassNames } from "../get-class-name";
 

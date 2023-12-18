@@ -1,35 +1,18 @@
-import { Badge } from "@raikou/server";
+"use client";
+import { Badge, Group } from "@raikou/server";
+import { Chip } from "@raikou/client";
 
 export default function Page() {
   return (
-    <>
-      <Badge
-        classNames={{
-          root: {
-            bg: "red-500",
-          },
-          label: {
-            m: "[10px]",
-          },
-          section: {
-            p: "[20px]",
-          },
-        }}
+    <Group>
+      <Badge className="bg-violet-800">badge</Badge>
+      <Chip
+        variant="filled"
+        checked
+        style={{ "--chip-bg": "var(--violet-950)" }}
       >
-        hello
-      </Badge>
-      <Badge
-        classNames={{
-          root: "bg-orange-500",
-          label: {
-            m: "[20px]",
-            p: "[80px]",
-            text: "purple-500",
-          },
-        }}
-      >
-        hello2
-      </Badge>
-    </>
+        chip
+      </Chip>
+    </Group>
   );
 }
