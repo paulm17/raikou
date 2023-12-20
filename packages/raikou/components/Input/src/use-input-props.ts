@@ -91,5 +91,5 @@ export function useInputProps<T extends BaseProps, U extends Partial<T>>(
       error,
       variant,
     },
-  };
+  } as any;
 }

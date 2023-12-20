@@ -40,7 +40,7 @@
   "dependencies": {
     "@raikou/hooks": "workspace:*",
     "@raikou/global-store": "workspace:*",
-    "clsx": "^1.1.1",
+    "clsx": "2.0.0",
     "pure-store": "^1.2.0",
     "type-fest": "^4.0.0",
     "tslib": "^2.6.0"

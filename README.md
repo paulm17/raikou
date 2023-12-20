@@ -38,8 +38,7 @@ The project was conceived with these 4 long-term goals:
      server based, giving an opportunity to reduce client payload when used
      correctly. Therefore all layout components are server based and leaf
      components being a mixture of both server and client.
-   - (in future) Using a css purging strategy. Loading CSS for only the
-     components in use.
+   - Using a css purging strategy. Loading CSS for only the components in use.
 
 ## Project Caveats
 
@@ -65,7 +64,7 @@ The project was conceived with these 4 long-term goals:
     - Some components have had their javascript removed to make them server
       components primarily.
     - Mantine's color system:
-      - 10 shades has been replaced with UnoCSS own colors and 11 shades
+      - 10 shades has been replaced with UnoCSS own colors and 11 shades.
       - The UnoCSS colors can be overriden with the original Mantine color set.
       - The light/dark and other aspects of a component can be overriden. Refer
         to the component css modules file with what css variables have been
@@ -106,7 +105,7 @@ Less headaches in dealing with postcss from a developer UX point of view.
 
 To get a local copy up and running follow these simple example steps.
 
-### Installation to a NextJS 13 application
+### Installation to a NextJS 14 application
 
 1. Install the required packages. Same as Mantine.
 
@@ -187,25 +186,29 @@ mantines own styles.
 
 ```js
 import { RaikouProvider } from '@raikou/system';
+import { createTheme } from "@raikou/global-store";
+import config from "../unocss.config";
 
 export default function RootLayout({
    children,
 }: {
    children: React.ReactNode
 }) {
-   return (
-      <html lang="en">
-         <body className={inter.className}>
-            <RaikouProvider>{children}</RaikouProvider>
-         </body>
-      </html>
-   )
+  const theme = createTheme(config);
+
+  return (
+    <html lang="en">
+        <body className={inter.className}>
+          <RaikouProvider theme={theme}>{children}</RaikouProvider>
+        </body>
+    </html>
+  )
 }
 ```
 
-5. Raikou has remove the theme configuration from runtime. The theme is now part
-   of UnoCss own theme. Simply add new "mantine" theme params to the
-   defineConfig object.
+5. Raikou has removed the theme overrides from runtime. The theme is now part of
+   UnoCss own configuration file. Simply add new "mantine" theme params to the
+   defineConfig object under the param raikouTheme.
 
 ```js
 export default defineConfig({
@@ -221,7 +224,8 @@ Note:
 RaikouTheme now includes two new string array params to control which colors are
 created in the global stylesheet. `IncludeColors` allows for only these colors
 to be created. `excludeColors` allows for all the colors except these to be
-created.
+created. Ignore these two params if all colors are to be present in the
+stylesheet.
 
 Raikou supports the original mantine colors in 10 shades but unocss colors as
 well. All Raikou colors have 11 values.
@@ -243,7 +247,7 @@ export default defineConfig({
 Colors can also be overridden on a singular basis:
 
 ```js
-import { MantineColors } from "@raikou/system";
+import { generateColors } from "@raikou/colors-generator";
 
 export default defineConfig({
   ...
@@ -430,7 +434,7 @@ the page.
 
 ## Server Components - Mantine vs Raikou
 
-Using the default NextJS 13 install. Here is an example of just 1 component:
+Using the default NextJS 14 install. Here is an example of just 1 component:
 Badge (with Mantine + Raikou using "use client" + full css payload).
 
 Stats are taken using this method. Open up a tab with dev tools network. Run
@@ -474,23 +478,7 @@ When omitting "use client" this results in Page.js not being requested.
 
 <!-- CONTRIBUTING -->
 
-## Contributing
-
-Contributions are what make the open source community such an amazing place to
-learn, inspire, and create. Any contributions you make are **greatly
-appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and
-create a pull request. You can also simply open an issue with the tag
-"enhancement".
-
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+At this time, no contributions are sought. Thank you.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -507,9 +495,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 
 Paul M - no social - no email
-
-Project Link:
-[https://github.com/paulm17/raikou](https://github.com/paulm17/raikou)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

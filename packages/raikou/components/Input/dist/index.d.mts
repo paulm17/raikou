@@ -1,7 +1,6 @@
 import * as _raikou_core from '@raikou/core';
 import { BoxProps, StylesApiProps, ElementProps, RaikouSize, Factory, RaikouRadius, PolymorphicFactory, GetStylesApi } from '@raikou/core';
-import * as React from 'react';
-import React__default from 'react';
+import React from 'react';
 
 type InputLabelStylesNames = "label" | "required";
 type InputLabelCssVariables = {
@@ -97,11 +96,11 @@ type InputWrapperCssVariables = InputLabelCssVariables & InputErrorCssVariables 
 type InputWrapperStylesNames = "root" | InputLabelStylesNames | InputDescriptionStylesNames | InputErrorStylesNames;
 interface __InputWrapperProps {
     /** Contents of `Input.Label` component, if not set, label is not rendered. */
-    label?: React__default.ReactNode;
+    label?: React.ReactNode;
     /** Contents of `Input.Description` component, if not set, description is not rendered. */
-    description?: React__default.ReactNode;
+    description?: React.ReactNode;
     /** Contents of `Input.Error` component, if not set, error is not rendered. */
-    error?: React__default.ReactNode;
+    error?: React.ReactNode;
     /** Adds required attribute to the input and a red asterisk on the right side of label, `false` by default */
     required?: boolean;
     /** Determines whether required asterisk should be rendered, overrides required prop, does not add required attribute to the input, `false` by default */
@@ -113,7 +112,7 @@ interface __InputWrapperProps {
     /** Props passed down to the `InputError` component */
     errorProps?: Record<string, any>;
     /** Input container component, defaults to `React.Fragment` */
-    inputContainer?: (children: React__default.ReactNode) => React__default.ReactNode;
+    inputContainer?: (children: React.ReactNode) => React.ReactNode;
     /** Controls order of the elements, `['label', 'description', 'input', 'error']` by default */
     inputWrapperOrder?: ("label" | "input" | "description" | "error")[];
 }
@@ -155,21 +154,21 @@ interface InputStylesCtx {
 }
 interface __InputProps {
     /** Content section rendered on the left side of the input */
-    leftSection?: React__default.ReactNode;
+    leftSection?: React.ReactNode;
     /** Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height */
-    leftSectionWidth?: React__default.CSSProperties["width"];
+    leftSectionWidth?: React.CSSProperties["width"];
     /** Props added to the `leftSection` element */
-    leftSectionProps?: React__default.ComponentPropsWithoutRef<"div">;
+    leftSectionProps?: React.ComponentPropsWithoutRef<"div">;
     /** Sets `pointer-events` styles on the `leftSection` element, `'none'` by default */
-    leftSectionPointerEvents?: React__default.CSSProperties["pointerEvents"];
+    leftSectionPointerEvents?: React.CSSProperties["pointerEvents"];
     /** Content section rendered on the right side of the input */
-    rightSection?: React__default.ReactNode;
+    rightSection?: React.ReactNode;
     /** Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height */
-    rightSectionWidth?: React__default.CSSProperties["width"];
+    rightSectionWidth?: React.CSSProperties["width"];
     /** Props added to the `rightSection` element */
-    rightSectionProps?: React__default.ComponentPropsWithoutRef<"div">;
+    rightSectionProps?: React.ComponentPropsWithoutRef<"div">;
     /** Sets `pointer-events` styles on the `rightSection` element, `'none'` by default */
-    rightSectionPointerEvents?: React__default.CSSProperties["pointerEvents"];
+    rightSectionPointerEvents?: React.CSSProperties["pointerEvents"];
     /** Props added to the root element of the `Input` component */
     wrapperProps?: Record<string, any>;
     /** Sets `required` attribute on the `input` element */
@@ -190,7 +189,7 @@ interface InputProps extends BoxProps, __InputProps, StylesApiProps<InputFactory
     /** Props passed to Styles API context, replaces `Input.Wrapper` props */
     __stylesApiProps?: Record<string, any>;
     /** Determines whether the input should have error styles and `aria-invalid` attribute */
-    error?: React__default.ReactNode;
+    error?: React.ReactNode;
     /** Determines whether the input can have multiple lines, for example when `component="textarea"`, `false` by default */
     multiline?: boolean;
     /** Input element id */
@@ -214,21 +213,21 @@ type InputFactory = PolymorphicFactory<{
         Wrapper: typeof InputWrapper;
     };
 }>;
-declare const Input: (<C = "input">(props: C extends React__default.ElementType<any> ? InputProps & {
+declare const Input: (<C = "input">(props: C extends React.ElementType<any> ? InputProps & {
     component?: C | undefined;
-} & Omit<JSX.LibraryManagedAttributes<C, React__default.PropsWithoutRef<React__default.ComponentProps<C>>>, "component" | keyof InputProps> & {
-    ref?: (C extends infer T ? T extends C ? T extends React__default.ElementType<any> ? React__default.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+} & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, "component" | keyof InputProps> & {
+    ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
     renderRoot?(props: any): any;
 } : InputProps & {
-    component: React__default.ElementType<any>;
+    component: React.ElementType<any>;
     renderRoot?(props: any): any;
-}) => React__default.ReactElement<any, string | React__default.JSXElementConstructor<any>>) & Omit<React__default.FunctionComponent<(InputProps & {
+}) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(InputProps & {
     component?: any;
 } & Omit<Omit<any, "ref">, "component" | keyof InputProps> & {
     ref?: any;
     renderRoot?(props: any): any;
 }) | (InputProps & {
-    component: React__default.ElementType<any>;
+    component: React.ElementType<any>;
     renderRoot?(props: any): any;
 })>, never> & _raikou_core.ThemeExtend<{
     props: InputProps;
@@ -263,44 +262,7 @@ interface BaseProps extends __BaseInputProps, BoxProps, StylesApiProps<{
     __stylesApiProps?: Record<string, any>;
     id?: string;
 }
-declare function useInputProps<T extends BaseProps, U extends Partial<T>>(component: string, defaultProps: U, _props: T): Omit<T & { [Key in Extract<keyof T, never>]-?: {}[Key] | NonNullable<T[Key]>; }, "label" | "style" | "error" | "required" | "className" | "id" | "__staticSelector" | "size" | "unstyled" | "variant" | "classNames" | "styles" | "vars" | "description" | "__stylesApiProps" | "withAsterisk" | "labelProps" | "descriptionProps" | "errorProps" | "inputContainer" | "inputWrapperOrder" | "wrapperProps"> & {
-    classNames: Partial<Record<string, string>> | ((theme: _raikou_core.RaikouTheme, props: any, ctx: unknown) => Partial<Record<string, string>>) | undefined;
-    styles: Partial<Record<string, React.CSSProperties>> | ((theme: _raikou_core.RaikouTheme, props: any, ctx: unknown) => Partial<Record<string, React.CSSProperties>>) | undefined;
-    unstyled: boolean | undefined;
-    wrapperProps: {
-        label: React.ReactNode;
-        description: React.ReactNode;
-        error: React.ReactNode;
-        required: boolean | undefined;
-        classNames: Partial<Record<string, string>> | ((theme: _raikou_core.RaikouTheme, props: any, ctx: unknown) => Partial<Record<string, string>>) | undefined;
-        className: string | undefined;
-        __staticSelector: string | undefined;
-        __stylesApiProps: Record<string, any>;
-        errorProps: Record<string, any> | undefined;
-        labelProps: Record<string, any> | undefined;
-        descriptionProps: Record<string, any> | undefined;
-        unstyled: boolean | undefined;
-        styles: Partial<Record<string, React.CSSProperties>> | ((theme: _raikou_core.RaikouTheme, props: any, ctx: unknown) => Partial<Record<string, React.CSSProperties>>) | undefined;
-        size: _raikou_core.RaikouSize | (string & {}) | undefined;
-        style: _raikou_core.RaikouStyleProp;
-        inputContainer: ((children: React.ReactNode) => React.ReactNode) | undefined;
-        inputWrapperOrder: ("input" | "label" | "error" | "description")[] | undefined;
-        withAsterisk: boolean | undefined;
-        variant: string | undefined;
-        id: string | undefined;
-    } & BoxProps;
-    inputProps: {
-        required: boolean | undefined;
-        classNames: Partial<Record<string, string>> | ((theme: _raikou_core.RaikouTheme, props: any, ctx: unknown) => Partial<Record<string, string>>) | undefined;
-        styles: Partial<Record<string, React.CSSProperties>> | ((theme: _raikou_core.RaikouTheme, props: any, ctx: unknown) => Partial<Record<string, React.CSSProperties>>) | undefined;
-        unstyled: boolean | undefined;
-        size: _raikou_core.RaikouSize | (string & {}) | undefined;
-        __staticSelector: string | undefined;
-        __stylesApiProps: Record<string, any>;
-        error: React.ReactNode;
-        variant: string | undefined;
-    };
-};
+declare function useInputProps<T extends BaseProps, U extends Partial<T>>(component: string, defaultProps: U, _props: T): any;
 
 interface InputWrapperContextValue {
     offsetTop: boolean;
