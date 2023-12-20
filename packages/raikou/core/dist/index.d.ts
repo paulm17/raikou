@@ -456,7 +456,7 @@ interface RaikouPrimaryShade {
     light: RaikouColorShade;
     dark: RaikouColorShade;
 }
-type DefaultRaikouColor = "blue" | (string & {});
+type DefaultRaikouColor = "rose" | "pink" | "fuchsia" | "purple" | "violet" | "indigo" | "blue" | "sky" | "cyan" | "teal" | "emerald" | "green" | "lime" | "yellow" | "amber" | "orange" | "red" | "gray" | "slate" | "zinc" | "neutral" | "stone" | "light" | "dark" | (string & {});
 interface RaikouThemeColorsOverride {
 }
 type RaikouThemeColors = RaikouThemeColorsOverride extends {

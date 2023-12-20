@@ -1,5 +1,5 @@
 import { definePreset } from "unocss";
-import { rem } from "./core";
+import { rem } from "../../core/src";
 
 function genMargin(type: "px" | "rem", px: RegExpMatchArray) {
   let value = "";

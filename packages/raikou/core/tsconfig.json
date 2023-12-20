@@ -13,7 +13,8 @@
     "allowSyntheticDefaultImports": true,
     "downlevelIteration": true,
     "paths": {
-      "@raikou/hooks": ["../hooks/src"]
+      "@raikou/hooks": ["../hooks/src"],
+      "@raikou/theme": ["../theme/src"]
     }
   },
   "exclude": ["node_modules"]

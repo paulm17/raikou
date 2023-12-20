@@ -10,8 +10,8 @@ import fsPromises from 'fs/promises';
 import { createGenerator } from '@unocss/core';
 import { loadConfig } from '@unocss/config';
 import { hasThemeFn } from '@unocss/rule-utils';
-import { parseColor, theme as unocssTheme } from '@unocss/preset-mini';
-
+import { parseColor } from '@unocss/preset-mini';
+import { createTheme, GenerateRaikouCSSVariables } from '@raikou/theme';
 import type { UnoPostcssPluginOptions } from './types';
 
 function matchClassesObject(content: string) {
@@ -260,12 +260,12 @@ module.exports = (options: UnoPostcssPluginOptions = {}) => {
 
           const flattenedContent = flattenClasses(content);
 
-          const cssVariablesPerContent = generateColorCSSVariables(content, uno.config.theme);
+          const cssColorsVariablesPerContent = generateColorCSSVariables(content, uno.config.theme);
 
-          if (cssVariablesPerContent !== null) {
-            Object.keys(cssVariablesPerContent).forEach((key) => {
+          if (cssColorsVariablesPerContent !== null) {
+            Object.keys(cssColorsVariablesPerContent).forEach((key) => {
               if (!cssColorVariables[key]) {
-                cssColorVariables[key] = cssVariablesPerContent[key];
+                cssColorVariables[key] = cssColorsVariablesPerContent[key];
               }
             });
           }
@@ -330,7 +330,14 @@ module.exports = (options: UnoPostcssPluginOptions = {}) => {
         }
       });
 
-      // Colors
+      // CSS Color Variables
+      const raikouTheme = createTheme(uno.config);
+      const { cssVariables: raikouCSSVariables, classes: raikouClasses } =
+        GenerateRaikouCSSVariables({
+          theme: raikouTheme,
+        });
+
+      // Add new css color variables
       root.walkAtRules('colors', (rule) => {
         if (!rule.params) {
           const source = rule.source;
@@ -340,11 +347,17 @@ module.exports = (options: UnoPostcssPluginOptions = {}) => {
             arr.push(`${key}: ${cssColorVariables[key]};`)
           );
 
-          const cssVariableMark = `/* ----- Default CSS variables ----- */
+          const cssColorVariablesString = arr.length ? `:root { ${arr.join('\n')} }` : '';
 
-          :root {
-            ${arr.join('\n')}
-          }`;
+          const cssVariableMark = `
+            /* ----- Default CSS Color variables ----- */
+            ${raikouCSSVariables}\n
+
+            /* ----- CSS Breakpoints ----- */
+            ${raikouClasses}\n
+
+            ${cssColorVariablesString} \n                  
+          `;
 
           const css = postcss.parse(cssVariableMark);
           css.walkDecls((declaration) => {

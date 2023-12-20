@@ -189,7 +189,32 @@ export interface RaikouPrimaryShade {
   dark: RaikouColorShade;
 }
 
-export type DefaultRaikouColor = "blue" | (string & {});
+export type DefaultRaikouColor =
+  | "rose"
+  | "pink"
+  | "fuchsia"
+  | "purple"
+  | "violet"
+  | "indigo"
+  | "blue"
+  | "sky"
+  | "cyan"
+  | "teal"
+  | "emerald"
+  | "green"
+  | "lime"
+  | "yellow"
+  | "amber"
+  | "orange"
+  | "red"
+  | "gray"
+  | "slate"
+  | "zinc"
+  | "neutral"
+  | "stone"
+  | "light"
+  | "dark"
+  | (string & {});
 
 export interface RaikouThemeColorsOverride {}
 

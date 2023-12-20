@@ -1,7 +1,4 @@
-import {
-  rem
-} from "./chunk-2HL4YZC4.mjs";
-import "./chunk-JGIESONP.mjs";
+import "./chunk-YU2EYAL5.mjs";
 
 // ../../../node_modules/.pnpm/@unocss+core@0.56.5/node_modules/@unocss/core/dist/index.mjs
 var LAYER_DEFAULT = "default";
@@ -18,14 +15,50 @@ function definePreset(preset) {
   return preset;
 }
 
+// ../core/src/core/utils/units-converters/rem.ts
+function scaleRem(remValue) {
+  return `calc(${remValue} * var(--raikou-scale))`;
+}
+function createConverter(units, { shouldScale = false } = {}) {
+  function converter(value) {
+    if (value === 0 || value === "0") {
+      return "0";
+    }
+    if (typeof value === "number") {
+      const val = `${value / 16}${units}`;
+      return shouldScale ? scaleRem(val) : val;
+    }
+    if (typeof value === "string") {
+      if (value.startsWith("calc(") || value.startsWith("var(") || value.startsWith("clamp(")) {
+        return value;
+      }
+      if (value.includes(" ")) {
+        return value.split(" ").map((val) => converter(val)).join(" ");
+      }
+      if (value.includes(units)) {
+        return shouldScale ? scaleRem(value) : value;
+      }
+      const replaced = value.replace("px", "");
+      if (!Number.isNaN(Number(replaced))) {
+        const val = `${Number(replaced) / 16}${units}`;
+        return shouldScale ? scaleRem(val) : val;
+      }
+    }
+    return value;
+  }
+  return converter;
+}
+var rem = createConverter("rem", { shouldScale: true });
+var em = createConverter("em");
+
 // src/plugin.ts
-function genMargin(type, px) {
+function genMargin(type, px2) {
   let value = "";
   if (type === "px") {
-    value = px[2].replace("[", "").replace("]", "");
+    value = px2[2].replace("[", "").replace("]", "");
   } else if (type === "rem") {
     const baseFontSize = 16;
-    value = `${parseInt(px[2]) * baseFontSize}px`;
+    value = `${parseInt(px2[2]) * baseFontSize}px`;
   }
   const margins = {
     m: "margin",
@@ -34,7 +67,7 @@ function genMargin(type, px) {
     mt: "margin-top",
     mb: "margin-bottom"
   };
-  const name = px[1];
+  const name = px2[1];
   if (Object.keys(margins).includes(name)) {
     return { [margins[name]]: rem(value) };
   } else if (name === "mx") {
@@ -43,13 +76,13 @@ function genMargin(type, px) {
     return { "margin-top": rem(value), "margin-bottom": rem(value) };
   }
 }
-function genPadding(type, px) {
+function genPadding(type, px2) {
   let value = "";
   if (type === "px") {
-    value = px[2].replace("[", "").replace("]", "");
+    value = px2[2].replace("[", "").replace("]", "");
   } else if (type === "rem") {
     const baseFontSize = 16;
-    value = `${parseInt(px[2]) * baseFontSize}px`;
+    value = `${parseInt(px2[2]) * baseFontSize}px`;
   }
   const paddings = {
     p: "padding",
@@ -58,7 +91,7 @@ function genPadding(type, px) {
     pt: "padding-top",
     pb: "padding-bottom"
   };
-  const name = px[1];
+  const name = px2[1];
   if (Object.keys(paddings).includes(name)) {
     return { [paddings[name]]: rem(value) };
   } else if (name === "mx") {
@@ -76,9 +109,9 @@ var plugin_default = definePreset(() => {
         /^(m|ml|mr|mt|mb|mx|my)?-(.+)$/,
         ([name]) => {
           if (name.match(/(\[|\])/)) {
-            const px = name.match(/(m|ml|mr|mt|mb|mx|my)?-(.+)/);
-            if (px && px.length === 3) {
-              return genMargin("px", px);
+            const px2 = name.match(/(m|ml|mr|mt|mb|mx|my)?-(.+)/);
+            if (px2 && px2.length === 3) {
+              return genMargin("px", px2);
             }
           } else if (name.match(/\d+/)) {
             const res = name.match(/(m|ml|mr|mt|mb|mx|my)?-(.+)/);
@@ -92,9 +125,9 @@ var plugin_default = definePreset(() => {
         /^(p|pl|pr|pt|pb|px|py)?-(.+)$/,
         ([name]) => {
           if (name.match(/(\[|\])/)) {
-            const px = name.match(/(p|pl|pr|pt|pb|px|py)?-(.+)/);
-            if (px && px.length === 3) {
-              return genPadding("px", px);
+            const px2 = name.match(/(p|pl|pr|pt|pb|px|py)?-(.+)/);
+            if (px2 && px2.length === 3) {
+              return genPadding("px", px2);
             }
           } else if (name.match(/\d+/)) {
             const res = name.match(/(p|pl|pr|pt|pb|px|py)?-(.+)/);

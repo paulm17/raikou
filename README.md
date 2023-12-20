@@ -133,7 +133,16 @@ module.exports = {
 };
 ```
 
-Note: `postcss-import`` is needed otherwise @layer doesn't work with NextJS.
+Note:
+
+- `postcss-import` is needed otherwise @layer doesn't work with NextJS.
+- `postcss-preset-raikou` is needed in case any external css modules are used in
+  the application and raikou functionality will be executed for css modules.
+- `postcss-unocss-raikou` is needed as this deploys unocss for raikou.
+- `postcss-purgecss-raikou` is needed as this purges unused css and completed
+  the process.
+
+Pro-tip: Leave the app build process to minify the final css.
 
 3. Create unocss.config.ts:
 

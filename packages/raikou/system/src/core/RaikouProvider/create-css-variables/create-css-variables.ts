@@ -1,15 +1,7 @@
-import {
-  convertCssNestedVariables,
-  convertCssVariables,
-} from "../convert-css-variables/convert-css-variables";
-import { DEFAULT_THEME } from "../default-theme";
-import { mergeRaikouTheme } from "../merge-raikou-theme";
-import { getMergedVariables } from "../RaikouCssVariables/get-merged-variables";
-import { removeDefaultVariables } from "../RaikouCssVariables/remove-default-variables";
-import { RaikouTheme } from "../theme.types";
+import { convertCssNestedVariables } from "../convert-css-variables/convert-css-variables";
 
 interface RaikouCreateCssVariablesProps {
-  theme: RaikouTheme;
+  theme: any;
   cssVariablesResolver?: any;
   cssVariablesSelector?: string;
 }
@@ -26,14 +18,7 @@ function createCSSVariables({
   cssVariablesResolver: generator,
   cssVariablesSelector = ":root",
 }: RaikouCreateCssVariablesProps) {
-  let mergedTheme = mergeRaikouTheme(DEFAULT_THEME, theme);
-  const mergedVariables = getMergedVariables({ theme: mergedTheme });
-
   const shouldCleanVariables = cssVariablesSelector === ":root";
-  const cleanedVariables = shouldCleanVariables
-    ? removeDefaultVariables(mergedVariables)
-    : mergedVariables;
-  const css = convertCssVariables(cleanedVariables, cssVariablesSelector);
 
   // cssVariablesResolver
   let css2 = "";
@@ -49,7 +34,7 @@ function createCSSVariables({
 
   var newElem = document.createElement("style");
   newElem.setAttribute("data-raikou-styles", "system");
-  newElem.innerHTML = `${css}${css2}${
+  newElem.innerHTML = `${css2}${
     shouldCleanVariables ? "" : getColorSchemeCssVariables(cssVariablesSelector)
   }`;
   document.body.prepend(newElem);

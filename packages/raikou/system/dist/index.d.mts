@@ -1,22 +1,187 @@
 /// <reference path="global.d.ts" />
+import React$1 from 'react';
 import { PartialDeep } from 'type-fest';
 import * as CSS from 'csstype';
 import * as PropTypes from 'prop-types';
 import { Interaction } from 'scheduler/tracing';
-import React$2 from 'react';
 
-declare function deepMerge<T extends object>(target: T, source: any): T;
+type RaikouColorScheme = "light" | "dark" | "auto";
 
-declare function keys<T extends object, K extends keyof T>(object: T): K[];
+declare function useColorScheme(): {
+    colorScheme: string;
+    allThemes: string[];
+    setColorScheme: (theme: string) => void;
+};
 
-declare function px(value: unknown): string | number;
-
-declare const rem: (value: unknown) => string;
-declare const em: (value: unknown) => string;
-
-declare function getPrimaryShade(theme: RaikouTheme, colorScheme: RaikouColorScheme): RaikouColorShade;
+interface RaikouCreateCssVariablesProps {
+    theme: any;
+    cssVariablesResolver?: any;
+    cssVariablesSelector?: string;
+}
+declare function createCSSVariables({ theme, cssVariablesResolver: generator, cssVariablesSelector, }: RaikouCreateCssVariablesProps): null;
 
 type CssVariable = `--${string}`;
+
+interface VariantColorsResolverInput {
+    color: RaikouColor | undefined;
+    theme: RaikouTheme;
+    variant: string;
+    gradient?: RaikouGradient;
+}
+interface VariantColorResolverResult {
+    background: string;
+    hover: string;
+    color: string;
+    border: string;
+}
+type VariantColorsResolver = (input: VariantColorsResolverInput) => VariantColorResolverResult;
+
+interface RaikouTheme {
+    /** Controls focus ring styles. Supports the following options:
+     *  - `auto` – focus ring is displayed only when the user navigates with keyboard (default value)
+     *  - `always` – focus ring is displayed when the user navigates with keyboard and mouse
+     *  - `never` – focus ring is always hidden (not recommended)
+     */
+    focusRing: "auto" | "always" | "never";
+    /** rem units scale, change if you customize font-size of `<html />` element
+     *  default value is `1` (for `100%`/`16px` font-size on `<html />`)
+     */
+    scale: number;
+    /** Determines whether `font-smoothing` property should be set on the body, `true` by default */
+    fontSmoothing: boolean;
+    /** White color */
+    white: string;
+    /** Black color */
+    black: string;
+    /** Object of colors, key is color name, value is an array of at least 10 strings (colors) */
+    colors: RaikouThemeColors;
+    /** Index of theme.colors[color].
+     *  Primary shade is used in all components to determine which color from theme.colors[color] should be used.
+     *  Can be either a number (0–9) or an object to specify different color shades for light and dark color schemes.
+     *  Default value `{ light: 6, dark: 8 }`
+     *
+     *  For example,
+     *  { primaryShade: 6 } // shade 6 is used both for dark and light color schemes
+     *  { primaryShade: { light: 6, dark: 7 } } // different shades for dark and light color schemes
+     * */
+    primaryShade: RaikouColorShade | RaikouPrimaryShade;
+    /** Key of `theme.colors`, hex/rgb/hsl values are not supported.
+     *  Determines which color will be used in all components by default.
+     *  Default value – `blue`.
+     * */
+    primaryColor: string;
+    /** Function to resolve colors based on variant.
+     *  Can be used to deeply customize how colors are applied to `Button`, `ActionIcon`, `ThemeIcon`
+     *  and other components that use colors from theme.
+     * */
+    variantColorResolver: VariantColorsResolver;
+    /** font-family used in all components, system fonts by default */
+    fontFamily: string;
+    /** Monospace font-family, used in code and other similar components, system fonts by default  */
+    fontFamilyMonospace: string;
+    /** Controls various styles of h1-h6 elements, used in TypographyStylesProvider and Title components */
+    headings: {
+        fontFamily: string;
+        fontWeight: string;
+        sizes: {
+            h1: HeadingStyle;
+            h2: HeadingStyle;
+            h3: HeadingStyle;
+            h4: HeadingStyle;
+            h5: HeadingStyle;
+            h6: HeadingStyle;
+        };
+    };
+    /** Object of values that are used to set `border-radius` in all components that support it */
+    radius: RaikouRadiusValues;
+    /** Key of `theme.radius` or any valid CSS value. Default `border-radius` used by most components */
+    defaultRadius: RaikouRadius;
+    /** Object of values that are used to set various CSS properties that control spacing between elements */
+    spacing: RaikouSpacingValues;
+    /** Object of values that are used to control `font-size` property in all components */
+    fontSizes: RaikouFontSizesValues;
+    /** Object of values that are used to control `line-height` property in `Text` component */
+    lineHeights: RaikouLineHeightValues;
+    /** Object of values that are used to control breakpoints in all components,
+     *  values are expected to be defined in em
+     * */
+    breakpoints: RaikouBreakpointsValues;
+    /** Object of values that are used to add `box-shadow` styles to components that support `shadow` prop */
+    shadows: RaikouShadowsValues;
+    /** Determines whether user OS settings to reduce motion should be respected, `false` by default */
+    respectReducedMotion: boolean;
+    /** Determines which cursor type will be used for interactive elements
+     * - `default` – cursor that is used by native HTML elements, for example, `input[type="checkbox"]` has `cursor: default` styles
+     * - `pointer` – sets `cursor: pointer` on interactive elements that do not have these styles by default
+     */
+    cursorType: "default" | "pointer";
+    /** Default gradient configuration for components that support `variant="gradient"` */
+    defaultGradient: RaikouGradient;
+    /** Class added to the elements that have active styles, for example, `Button` and `ActionIcon` */
+    activeClassName: string;
+    /** Class added to the elements that have focus styles, for example, `Button` or `ActionIcon`.
+     *  Overrides `theme.focusRing` property.
+     */
+    focusClassName: string;
+    /** Allows adding `classNames`, `styles` and `defaultProps` to any component */
+    components: RaikouThemeComponents;
+    /** Any other properties that you want to access with the theme objects */
+    other: RaikouThemeOther;
+}
+type RaikouThemeOverride = PartialDeep<RaikouTheme>;
+interface RaikouThemeComponent {
+    classNames?: any;
+    styles?: any;
+    vars?: any;
+    defaultProps?: any;
+}
+type RaikouThemeComponents = Record<string, RaikouThemeComponent>;
+interface HeadingStyle {
+    fontSize: string;
+    fontWeight?: string;
+    lineHeight: string;
+}
+type RaikouSize = "xs" | "sm" | "md" | "lg" | "xl";
+type RaikouBreakpointsValues = Record<RaikouSize | (string & {}), string>;
+type RaikouFontSizesValues = Record<RaikouSize | (string & {}), string>;
+type RaikouRadiusValues = Record<RaikouSize | (string & {}), string>;
+type RaikouSpacingValues = Record<RaikouSize | (string & {}), string>;
+type RaikouShadowsValues = Record<RaikouSize | (string & {}), string>;
+type RaikouLineHeightValues = Record<RaikouSize | (string & {}), string>;
+type RaikouRadius = keyof RaikouRadiusValues | (string & {}) | number;
+interface RaikouThemeOther {
+    [key: string]: any;
+}
+interface RaikouGradient {
+    from: string;
+    to: string;
+    deg?: string;
+}
+type RaikouColorsTuple = readonly [
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    ...string[]
+];
+type RaikouColorShade = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+interface RaikouPrimaryShade {
+    light: RaikouColorShade;
+    dark: RaikouColorShade;
+}
+type DefaultRaikouColor = "blue" | (string & {});
+interface RaikouThemeColorsOverride {
+}
+type RaikouThemeColors = RaikouThemeColorsOverride extends {
+    colors: Record<infer CustomColors, RaikouColorsTuple>;
+} ? Record<CustomColors, RaikouColorsTuple> : Record<DefaultRaikouColor, RaikouColorsTuple>;
+type RaikouColor = keyof RaikouThemeColors;
 
 // Type definitions for React 18.2
 // Project: https://react.dev/
@@ -73,7 +238,7 @@ type Destructor = () => void | { [UNDEFINED_VOID_ONLY]: never };
 type VoidOrUndefinedOnly = void | { [UNDEFINED_VOID_ONLY]: never };
 
 
-declare namespace React$1 {
+declare namespace React {
     //
     // React Elements
     // ----------------------------------------------------------------------
@@ -3329,10 +3494,10 @@ declare global {
         // .propTypes assignability so we might as well drop it entirely here to
         //  reduce the work of the type-checker.
         // TODO: Check impact of making React.ElementType<P = any> = React.JSXElementConstructor<P>
-        type ElementType = string | React$1.JSXElementConstructor<any>;
-        interface Element extends React$1.ReactElement<any, any> {}
-        interface ElementClass extends React$1.Component<any> {
-            render(): React$1.ReactNode;
+        type ElementType = string | React.JSXElementConstructor<any>;
+        interface Element extends React.ReactElement<any, any> {}
+        interface ElementClass extends React.Component<any> {
+            render(): React.ReactNode;
         }
         interface ElementAttributesProperty {
             props: {};
@@ -3344,197 +3509,197 @@ declare global {
         // We can't recurse forever because `type` can't be self-referential;
         // let's assume it's reasonable to do a single React.lazy() around a single React.memo() / vice-versa
         type LibraryManagedAttributes<C, P> = C extends
-            React$1.MemoExoticComponent<infer T> | React$1.LazyExoticComponent<infer T>
-            ? T extends React$1.MemoExoticComponent<infer U> | React$1.LazyExoticComponent<infer U>
+            React.MemoExoticComponent<infer T> | React.LazyExoticComponent<infer T>
+            ? T extends React.MemoExoticComponent<infer U> | React.LazyExoticComponent<infer U>
                 ? ReactManagedAttributes<U, P>
             : ReactManagedAttributes<T, P>
             : ReactManagedAttributes<C, P>;
 
-        interface IntrinsicAttributes extends React$1.Attributes {}
-        interface IntrinsicClassAttributes<T> extends React$1.ClassAttributes<T> {}
+        interface IntrinsicAttributes extends React.Attributes {}
+        interface IntrinsicClassAttributes<T> extends React.ClassAttributes<T> {}
 
         interface IntrinsicElements {
             // HTML
-            a: React$1.DetailedHTMLProps<React$1.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>;
-            abbr: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            address: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            area: React$1.DetailedHTMLProps<React$1.AreaHTMLAttributes<HTMLAreaElement>, HTMLAreaElement>;
-            article: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            aside: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            audio: React$1.DetailedHTMLProps<React$1.AudioHTMLAttributes<HTMLAudioElement>, HTMLAudioElement>;
-            b: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            base: React$1.DetailedHTMLProps<React$1.BaseHTMLAttributes<HTMLBaseElement>, HTMLBaseElement>;
-            bdi: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            bdo: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            big: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            blockquote: React$1.DetailedHTMLProps<React$1.BlockquoteHTMLAttributes<HTMLQuoteElement>, HTMLQuoteElement>;
-            body: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLBodyElement>, HTMLBodyElement>;
-            br: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLBRElement>, HTMLBRElement>;
-            button: React$1.DetailedHTMLProps<React$1.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
-            canvas: React$1.DetailedHTMLProps<React$1.CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement>;
-            caption: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            center: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            cite: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            code: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            col: React$1.DetailedHTMLProps<React$1.ColHTMLAttributes<HTMLTableColElement>, HTMLTableColElement>;
-            colgroup: React$1.DetailedHTMLProps<React$1.ColgroupHTMLAttributes<HTMLTableColElement>, HTMLTableColElement>;
-            data: React$1.DetailedHTMLProps<React$1.DataHTMLAttributes<HTMLDataElement>, HTMLDataElement>;
-            datalist: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLDataListElement>, HTMLDataListElement>;
-            dd: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            del: React$1.DetailedHTMLProps<React$1.DelHTMLAttributes<HTMLModElement>, HTMLModElement>;
-            details: React$1.DetailedHTMLProps<React$1.DetailsHTMLAttributes<HTMLDetailsElement>, HTMLDetailsElement>;
-            dfn: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            dialog: React$1.DetailedHTMLProps<React$1.DialogHTMLAttributes<HTMLDialogElement>, HTMLDialogElement>;
-            div: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
-            dl: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLDListElement>, HTMLDListElement>;
-            dt: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            em: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            embed: React$1.DetailedHTMLProps<React$1.EmbedHTMLAttributes<HTMLEmbedElement>, HTMLEmbedElement>;
-            fieldset: React$1.DetailedHTMLProps<React$1.FieldsetHTMLAttributes<HTMLFieldSetElement>, HTMLFieldSetElement>;
-            figcaption: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            figure: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            footer: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            form: React$1.DetailedHTMLProps<React$1.FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>;
-            h1: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-            h2: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-            h3: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-            h4: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-            h5: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-            h6: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-            head: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLHeadElement>, HTMLHeadElement>;
-            header: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            hgroup: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            hr: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLHRElement>, HTMLHRElement>;
-            html: React$1.DetailedHTMLProps<React$1.HtmlHTMLAttributes<HTMLHtmlElement>, HTMLHtmlElement>;
-            i: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            iframe: React$1.DetailedHTMLProps<React$1.IframeHTMLAttributes<HTMLIFrameElement>, HTMLIFrameElement>;
-            img: React$1.DetailedHTMLProps<React$1.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>;
-            input: React$1.DetailedHTMLProps<React$1.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
-            ins: React$1.DetailedHTMLProps<React$1.InsHTMLAttributes<HTMLModElement>, HTMLModElement>;
-            kbd: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            keygen: React$1.DetailedHTMLProps<React$1.KeygenHTMLAttributes<HTMLElement>, HTMLElement>;
-            label: React$1.DetailedHTMLProps<React$1.LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>;
-            legend: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLLegendElement>, HTMLLegendElement>;
-            li: React$1.DetailedHTMLProps<React$1.LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>;
-            link: React$1.DetailedHTMLProps<React$1.LinkHTMLAttributes<HTMLLinkElement>, HTMLLinkElement>;
-            main: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            map: React$1.DetailedHTMLProps<React$1.MapHTMLAttributes<HTMLMapElement>, HTMLMapElement>;
-            mark: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            menu: React$1.DetailedHTMLProps<React$1.MenuHTMLAttributes<HTMLElement>, HTMLElement>;
-            menuitem: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            meta: React$1.DetailedHTMLProps<React$1.MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>;
-            meter: React$1.DetailedHTMLProps<React$1.MeterHTMLAttributes<HTMLMeterElement>, HTMLMeterElement>;
-            nav: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            noindex: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            noscript: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            object: React$1.DetailedHTMLProps<React$1.ObjectHTMLAttributes<HTMLObjectElement>, HTMLObjectElement>;
-            ol: React$1.DetailedHTMLProps<React$1.OlHTMLAttributes<HTMLOListElement>, HTMLOListElement>;
-            optgroup: React$1.DetailedHTMLProps<React$1.OptgroupHTMLAttributes<HTMLOptGroupElement>, HTMLOptGroupElement>;
-            option: React$1.DetailedHTMLProps<React$1.OptionHTMLAttributes<HTMLOptionElement>, HTMLOptionElement>;
-            output: React$1.DetailedHTMLProps<React$1.OutputHTMLAttributes<HTMLOutputElement>, HTMLOutputElement>;
-            p: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>;
-            param: React$1.DetailedHTMLProps<React$1.ParamHTMLAttributes<HTMLParamElement>, HTMLParamElement>;
-            picture: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            pre: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLPreElement>, HTMLPreElement>;
-            progress: React$1.DetailedHTMLProps<React$1.ProgressHTMLAttributes<HTMLProgressElement>, HTMLProgressElement>;
-            q: React$1.DetailedHTMLProps<React$1.QuoteHTMLAttributes<HTMLQuoteElement>, HTMLQuoteElement>;
-            rp: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            rt: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            ruby: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            s: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            samp: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            search: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            slot: React$1.DetailedHTMLProps<React$1.SlotHTMLAttributes<HTMLSlotElement>, HTMLSlotElement>;
-            script: React$1.DetailedHTMLProps<React$1.ScriptHTMLAttributes<HTMLScriptElement>, HTMLScriptElement>;
-            section: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            select: React$1.DetailedHTMLProps<React$1.SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>;
-            small: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            source: React$1.DetailedHTMLProps<React$1.SourceHTMLAttributes<HTMLSourceElement>, HTMLSourceElement>;
-            span: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>;
-            strong: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            style: React$1.DetailedHTMLProps<React$1.StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement>;
-            sub: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            summary: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            sup: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            table: React$1.DetailedHTMLProps<React$1.TableHTMLAttributes<HTMLTableElement>, HTMLTableElement>;
-            template: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLTemplateElement>, HTMLTemplateElement>;
-            tbody: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>;
-            td: React$1.DetailedHTMLProps<React$1.TdHTMLAttributes<HTMLTableDataCellElement>, HTMLTableDataCellElement>;
-            textarea: React$1.DetailedHTMLProps<React$1.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>;
-            tfoot: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>;
-            th: React$1.DetailedHTMLProps<React$1.ThHTMLAttributes<HTMLTableHeaderCellElement>, HTMLTableHeaderCellElement>;
-            thead: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>;
-            time: React$1.DetailedHTMLProps<React$1.TimeHTMLAttributes<HTMLTimeElement>, HTMLTimeElement>;
-            title: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLTitleElement>, HTMLTitleElement>;
-            tr: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLTableRowElement>, HTMLTableRowElement>;
-            track: React$1.DetailedHTMLProps<React$1.TrackHTMLAttributes<HTMLTrackElement>, HTMLTrackElement>;
-            u: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            ul: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLUListElement>, HTMLUListElement>;
-            "var": React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            video: React$1.DetailedHTMLProps<React$1.VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement>;
-            wbr: React$1.DetailedHTMLProps<React$1.HTMLAttributes<HTMLElement>, HTMLElement>;
-            webview: React$1.DetailedHTMLProps<React$1.WebViewHTMLAttributes<HTMLWebViewElement>, HTMLWebViewElement>;
+            a: React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>;
+            abbr: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            address: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            area: React.DetailedHTMLProps<React.AreaHTMLAttributes<HTMLAreaElement>, HTMLAreaElement>;
+            article: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            aside: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            audio: React.DetailedHTMLProps<React.AudioHTMLAttributes<HTMLAudioElement>, HTMLAudioElement>;
+            b: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            base: React.DetailedHTMLProps<React.BaseHTMLAttributes<HTMLBaseElement>, HTMLBaseElement>;
+            bdi: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            bdo: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            big: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            blockquote: React.DetailedHTMLProps<React.BlockquoteHTMLAttributes<HTMLQuoteElement>, HTMLQuoteElement>;
+            body: React.DetailedHTMLProps<React.HTMLAttributes<HTMLBodyElement>, HTMLBodyElement>;
+            br: React.DetailedHTMLProps<React.HTMLAttributes<HTMLBRElement>, HTMLBRElement>;
+            button: React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
+            canvas: React.DetailedHTMLProps<React.CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement>;
+            caption: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            center: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            cite: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            code: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            col: React.DetailedHTMLProps<React.ColHTMLAttributes<HTMLTableColElement>, HTMLTableColElement>;
+            colgroup: React.DetailedHTMLProps<React.ColgroupHTMLAttributes<HTMLTableColElement>, HTMLTableColElement>;
+            data: React.DetailedHTMLProps<React.DataHTMLAttributes<HTMLDataElement>, HTMLDataElement>;
+            datalist: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDataListElement>, HTMLDataListElement>;
+            dd: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            del: React.DetailedHTMLProps<React.DelHTMLAttributes<HTMLModElement>, HTMLModElement>;
+            details: React.DetailedHTMLProps<React.DetailsHTMLAttributes<HTMLDetailsElement>, HTMLDetailsElement>;
+            dfn: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            dialog: React.DetailedHTMLProps<React.DialogHTMLAttributes<HTMLDialogElement>, HTMLDialogElement>;
+            div: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+            dl: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDListElement>, HTMLDListElement>;
+            dt: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            em: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            embed: React.DetailedHTMLProps<React.EmbedHTMLAttributes<HTMLEmbedElement>, HTMLEmbedElement>;
+            fieldset: React.DetailedHTMLProps<React.FieldsetHTMLAttributes<HTMLFieldSetElement>, HTMLFieldSetElement>;
+            figcaption: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            figure: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            footer: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            form: React.DetailedHTMLProps<React.FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>;
+            h1: React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
+            h2: React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
+            h3: React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
+            h4: React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
+            h5: React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
+            h6: React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
+            head: React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadElement>, HTMLHeadElement>;
+            header: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            hgroup: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            hr: React.DetailedHTMLProps<React.HTMLAttributes<HTMLHRElement>, HTMLHRElement>;
+            html: React.DetailedHTMLProps<React.HtmlHTMLAttributes<HTMLHtmlElement>, HTMLHtmlElement>;
+            i: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            iframe: React.DetailedHTMLProps<React.IframeHTMLAttributes<HTMLIFrameElement>, HTMLIFrameElement>;
+            img: React.DetailedHTMLProps<React.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>;
+            input: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+            ins: React.DetailedHTMLProps<React.InsHTMLAttributes<HTMLModElement>, HTMLModElement>;
+            kbd: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            keygen: React.DetailedHTMLProps<React.KeygenHTMLAttributes<HTMLElement>, HTMLElement>;
+            label: React.DetailedHTMLProps<React.LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>;
+            legend: React.DetailedHTMLProps<React.HTMLAttributes<HTMLLegendElement>, HTMLLegendElement>;
+            li: React.DetailedHTMLProps<React.LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>;
+            link: React.DetailedHTMLProps<React.LinkHTMLAttributes<HTMLLinkElement>, HTMLLinkElement>;
+            main: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            map: React.DetailedHTMLProps<React.MapHTMLAttributes<HTMLMapElement>, HTMLMapElement>;
+            mark: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            menu: React.DetailedHTMLProps<React.MenuHTMLAttributes<HTMLElement>, HTMLElement>;
+            menuitem: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            meta: React.DetailedHTMLProps<React.MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>;
+            meter: React.DetailedHTMLProps<React.MeterHTMLAttributes<HTMLMeterElement>, HTMLMeterElement>;
+            nav: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            noindex: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            noscript: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            object: React.DetailedHTMLProps<React.ObjectHTMLAttributes<HTMLObjectElement>, HTMLObjectElement>;
+            ol: React.DetailedHTMLProps<React.OlHTMLAttributes<HTMLOListElement>, HTMLOListElement>;
+            optgroup: React.DetailedHTMLProps<React.OptgroupHTMLAttributes<HTMLOptGroupElement>, HTMLOptGroupElement>;
+            option: React.DetailedHTMLProps<React.OptionHTMLAttributes<HTMLOptionElement>, HTMLOptionElement>;
+            output: React.DetailedHTMLProps<React.OutputHTMLAttributes<HTMLOutputElement>, HTMLOutputElement>;
+            p: React.DetailedHTMLProps<React.HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>;
+            param: React.DetailedHTMLProps<React.ParamHTMLAttributes<HTMLParamElement>, HTMLParamElement>;
+            picture: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            pre: React.DetailedHTMLProps<React.HTMLAttributes<HTMLPreElement>, HTMLPreElement>;
+            progress: React.DetailedHTMLProps<React.ProgressHTMLAttributes<HTMLProgressElement>, HTMLProgressElement>;
+            q: React.DetailedHTMLProps<React.QuoteHTMLAttributes<HTMLQuoteElement>, HTMLQuoteElement>;
+            rp: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            rt: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            ruby: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            s: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            samp: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            search: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            slot: React.DetailedHTMLProps<React.SlotHTMLAttributes<HTMLSlotElement>, HTMLSlotElement>;
+            script: React.DetailedHTMLProps<React.ScriptHTMLAttributes<HTMLScriptElement>, HTMLScriptElement>;
+            section: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            select: React.DetailedHTMLProps<React.SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>;
+            small: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            source: React.DetailedHTMLProps<React.SourceHTMLAttributes<HTMLSourceElement>, HTMLSourceElement>;
+            span: React.DetailedHTMLProps<React.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>;
+            strong: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            style: React.DetailedHTMLProps<React.StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement>;
+            sub: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            summary: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            sup: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            table: React.DetailedHTMLProps<React.TableHTMLAttributes<HTMLTableElement>, HTMLTableElement>;
+            template: React.DetailedHTMLProps<React.HTMLAttributes<HTMLTemplateElement>, HTMLTemplateElement>;
+            tbody: React.DetailedHTMLProps<React.HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>;
+            td: React.DetailedHTMLProps<React.TdHTMLAttributes<HTMLTableDataCellElement>, HTMLTableDataCellElement>;
+            textarea: React.DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>;
+            tfoot: React.DetailedHTMLProps<React.HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>;
+            th: React.DetailedHTMLProps<React.ThHTMLAttributes<HTMLTableHeaderCellElement>, HTMLTableHeaderCellElement>;
+            thead: React.DetailedHTMLProps<React.HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>;
+            time: React.DetailedHTMLProps<React.TimeHTMLAttributes<HTMLTimeElement>, HTMLTimeElement>;
+            title: React.DetailedHTMLProps<React.HTMLAttributes<HTMLTitleElement>, HTMLTitleElement>;
+            tr: React.DetailedHTMLProps<React.HTMLAttributes<HTMLTableRowElement>, HTMLTableRowElement>;
+            track: React.DetailedHTMLProps<React.TrackHTMLAttributes<HTMLTrackElement>, HTMLTrackElement>;
+            u: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            ul: React.DetailedHTMLProps<React.HTMLAttributes<HTMLUListElement>, HTMLUListElement>;
+            "var": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            video: React.DetailedHTMLProps<React.VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement>;
+            wbr: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+            webview: React.DetailedHTMLProps<React.WebViewHTMLAttributes<HTMLWebViewElement>, HTMLWebViewElement>;
 
             // SVG
-            svg: React$1.SVGProps<SVGSVGElement>;
+            svg: React.SVGProps<SVGSVGElement>;
 
-            animate: React$1.SVGProps<SVGElement>; // TODO: It is SVGAnimateElement but is not in TypeScript's lib.dom.d.ts for now.
-            animateMotion: React$1.SVGProps<SVGElement>;
-            animateTransform: React$1.SVGProps<SVGElement>; // TODO: It is SVGAnimateTransformElement but is not in TypeScript's lib.dom.d.ts for now.
-            circle: React$1.SVGProps<SVGCircleElement>;
-            clipPath: React$1.SVGProps<SVGClipPathElement>;
-            defs: React$1.SVGProps<SVGDefsElement>;
-            desc: React$1.SVGProps<SVGDescElement>;
-            ellipse: React$1.SVGProps<SVGEllipseElement>;
-            feBlend: React$1.SVGProps<SVGFEBlendElement>;
-            feColorMatrix: React$1.SVGProps<SVGFEColorMatrixElement>;
-            feComponentTransfer: React$1.SVGProps<SVGFEComponentTransferElement>;
-            feComposite: React$1.SVGProps<SVGFECompositeElement>;
-            feConvolveMatrix: React$1.SVGProps<SVGFEConvolveMatrixElement>;
-            feDiffuseLighting: React$1.SVGProps<SVGFEDiffuseLightingElement>;
-            feDisplacementMap: React$1.SVGProps<SVGFEDisplacementMapElement>;
-            feDistantLight: React$1.SVGProps<SVGFEDistantLightElement>;
-            feDropShadow: React$1.SVGProps<SVGFEDropShadowElement>;
-            feFlood: React$1.SVGProps<SVGFEFloodElement>;
-            feFuncA: React$1.SVGProps<SVGFEFuncAElement>;
-            feFuncB: React$1.SVGProps<SVGFEFuncBElement>;
-            feFuncG: React$1.SVGProps<SVGFEFuncGElement>;
-            feFuncR: React$1.SVGProps<SVGFEFuncRElement>;
-            feGaussianBlur: React$1.SVGProps<SVGFEGaussianBlurElement>;
-            feImage: React$1.SVGProps<SVGFEImageElement>;
-            feMerge: React$1.SVGProps<SVGFEMergeElement>;
-            feMergeNode: React$1.SVGProps<SVGFEMergeNodeElement>;
-            feMorphology: React$1.SVGProps<SVGFEMorphologyElement>;
-            feOffset: React$1.SVGProps<SVGFEOffsetElement>;
-            fePointLight: React$1.SVGProps<SVGFEPointLightElement>;
-            feSpecularLighting: React$1.SVGProps<SVGFESpecularLightingElement>;
-            feSpotLight: React$1.SVGProps<SVGFESpotLightElement>;
-            feTile: React$1.SVGProps<SVGFETileElement>;
-            feTurbulence: React$1.SVGProps<SVGFETurbulenceElement>;
-            filter: React$1.SVGProps<SVGFilterElement>;
-            foreignObject: React$1.SVGProps<SVGForeignObjectElement>;
-            g: React$1.SVGProps<SVGGElement>;
-            image: React$1.SVGProps<SVGImageElement>;
-            line: React$1.SVGLineElementAttributes<SVGLineElement>;
-            linearGradient: React$1.SVGProps<SVGLinearGradientElement>;
-            marker: React$1.SVGProps<SVGMarkerElement>;
-            mask: React$1.SVGProps<SVGMaskElement>;
-            metadata: React$1.SVGProps<SVGMetadataElement>;
-            mpath: React$1.SVGProps<SVGElement>;
-            path: React$1.SVGProps<SVGPathElement>;
-            pattern: React$1.SVGProps<SVGPatternElement>;
-            polygon: React$1.SVGProps<SVGPolygonElement>;
-            polyline: React$1.SVGProps<SVGPolylineElement>;
-            radialGradient: React$1.SVGProps<SVGRadialGradientElement>;
-            rect: React$1.SVGProps<SVGRectElement>;
-            stop: React$1.SVGProps<SVGStopElement>;
-            switch: React$1.SVGProps<SVGSwitchElement>;
-            symbol: React$1.SVGProps<SVGSymbolElement>;
-            text: React$1.SVGTextElementAttributes<SVGTextElement>;
-            textPath: React$1.SVGProps<SVGTextPathElement>;
-            tspan: React$1.SVGProps<SVGTSpanElement>;
-            use: React$1.SVGProps<SVGUseElement>;
-            view: React$1.SVGProps<SVGViewElement>;
+            animate: React.SVGProps<SVGElement>; // TODO: It is SVGAnimateElement but is not in TypeScript's lib.dom.d.ts for now.
+            animateMotion: React.SVGProps<SVGElement>;
+            animateTransform: React.SVGProps<SVGElement>; // TODO: It is SVGAnimateTransformElement but is not in TypeScript's lib.dom.d.ts for now.
+            circle: React.SVGProps<SVGCircleElement>;
+            clipPath: React.SVGProps<SVGClipPathElement>;
+            defs: React.SVGProps<SVGDefsElement>;
+            desc: React.SVGProps<SVGDescElement>;
+            ellipse: React.SVGProps<SVGEllipseElement>;
+            feBlend: React.SVGProps<SVGFEBlendElement>;
+            feColorMatrix: React.SVGProps<SVGFEColorMatrixElement>;
+            feComponentTransfer: React.SVGProps<SVGFEComponentTransferElement>;
+            feComposite: React.SVGProps<SVGFECompositeElement>;
+            feConvolveMatrix: React.SVGProps<SVGFEConvolveMatrixElement>;
+            feDiffuseLighting: React.SVGProps<SVGFEDiffuseLightingElement>;
+            feDisplacementMap: React.SVGProps<SVGFEDisplacementMapElement>;
+            feDistantLight: React.SVGProps<SVGFEDistantLightElement>;
+            feDropShadow: React.SVGProps<SVGFEDropShadowElement>;
+            feFlood: React.SVGProps<SVGFEFloodElement>;
+            feFuncA: React.SVGProps<SVGFEFuncAElement>;
+            feFuncB: React.SVGProps<SVGFEFuncBElement>;
+            feFuncG: React.SVGProps<SVGFEFuncGElement>;
+            feFuncR: React.SVGProps<SVGFEFuncRElement>;
+            feGaussianBlur: React.SVGProps<SVGFEGaussianBlurElement>;
+            feImage: React.SVGProps<SVGFEImageElement>;
+            feMerge: React.SVGProps<SVGFEMergeElement>;
+            feMergeNode: React.SVGProps<SVGFEMergeNodeElement>;
+            feMorphology: React.SVGProps<SVGFEMorphologyElement>;
+            feOffset: React.SVGProps<SVGFEOffsetElement>;
+            fePointLight: React.SVGProps<SVGFEPointLightElement>;
+            feSpecularLighting: React.SVGProps<SVGFESpecularLightingElement>;
+            feSpotLight: React.SVGProps<SVGFESpotLightElement>;
+            feTile: React.SVGProps<SVGFETileElement>;
+            feTurbulence: React.SVGProps<SVGFETurbulenceElement>;
+            filter: React.SVGProps<SVGFilterElement>;
+            foreignObject: React.SVGProps<SVGForeignObjectElement>;
+            g: React.SVGProps<SVGGElement>;
+            image: React.SVGProps<SVGImageElement>;
+            line: React.SVGLineElementAttributes<SVGLineElement>;
+            linearGradient: React.SVGProps<SVGLinearGradientElement>;
+            marker: React.SVGProps<SVGMarkerElement>;
+            mask: React.SVGProps<SVGMaskElement>;
+            metadata: React.SVGProps<SVGMetadataElement>;
+            mpath: React.SVGProps<SVGElement>;
+            path: React.SVGProps<SVGPathElement>;
+            pattern: React.SVGProps<SVGPatternElement>;
+            polygon: React.SVGProps<SVGPolygonElement>;
+            polyline: React.SVGProps<SVGPolylineElement>;
+            radialGradient: React.SVGProps<SVGRadialGradientElement>;
+            rect: React.SVGProps<SVGRectElement>;
+            stop: React.SVGProps<SVGStopElement>;
+            switch: React.SVGProps<SVGSwitchElement>;
+            symbol: React.SVGProps<SVGSymbolElement>;
+            text: React.SVGTextElementAttributes<SVGTextElement>;
+            textPath: React.SVGProps<SVGTextPathElement>;
+            tspan: React.SVGProps<SVGTSpanElement>;
+            use: React.SVGProps<SVGUseElement>;
+            view: React.SVGProps<SVGViewElement>;
         }
     }
 }
@@ -3555,226 +3720,17 @@ interface GlobalJSXIntrinsicClassAttributes<T> extends JSX.IntrinsicClassAttribu
 
 interface GlobalJSXIntrinsicElements extends JSX.IntrinsicElements {}
 
-interface ParseThemeColorOptions {
-    color: unknown;
-    theme: RaikouTheme;
-    colorScheme?: RaikouColorScheme;
+interface RaikouProviderProps {
+    /** Theme override object */
+    theme?: RaikouThemeOverride;
+    /** Default color scheme value used when `colorSchemeManager` cannot retrieve value from external storage, `auto` by default */
+    defaultColorScheme?: RaikouColorScheme;
+    /** Store theme in local storage */
+    themeStorageKey?: string;
+    /** Your application */
+    children?: React$1.ReactNode;
 }
-interface ParseThemeColorResult {
-    color: string;
-    value: string;
-    shade: RaikouColorShade | undefined;
-    variable: CssVariable | undefined;
-    isThemeColor: boolean;
-}
-declare function parseThemeColor({ color, theme, colorScheme, }: ParseThemeColorOptions): ParseThemeColorResult;
-
-declare function getThemeColor(color: string | undefined | null, theme: RaikouTheme): string;
-
-interface VariantColorsResolverInput {
-    color: RaikouColor | undefined;
-    theme: RaikouTheme;
-    variant: string;
-    gradient?: RaikouGradient;
-}
-interface VariantColorResolverResult {
-    background: string;
-    hover: string;
-    color: string;
-    border: string;
-}
-type VariantColorsResolver = (input: VariantColorsResolverInput) => VariantColorResolverResult;
-declare const defaultVariantColorsResolver: VariantColorsResolver;
-
-declare function getGradient(gradient: RaikouGradient | undefined, theme: RaikouTheme): string;
-
-interface RGBA {
-    r: number;
-    g: number;
-    b: number;
-    a: number;
-}
-declare function toRgba(color: string): RGBA;
-
-declare function rgba(color: string, alpha: number): string;
-
-declare function darken(color: string, alpha: number): string;
-
-declare function lighten(color: string, alpha: number): string;
-
-declare function isLightColor(color: string, luminanceThreshold?: number): boolean;
-
-interface RaikouTheme {
-    /** Controls focus ring styles. Supports the following options:
-     *  - `auto` – focus ring is displayed only when the user navigates with keyboard (default value)
-     *  - `always` – focus ring is displayed when the user navigates with keyboard and mouse
-     *  - `never` – focus ring is always hidden (not recommended)
-     */
-    focusRing: "auto" | "always" | "never";
-    /** rem units scale, change if you customize font-size of `<html />` element
-     *  default value is `1` (for `100%`/`16px` font-size on `<html />`)
-     */
-    scale: number;
-    /** Determines whether `font-smoothing` property should be set on the body, `true` by default */
-    fontSmoothing: boolean;
-    /** White color */
-    white: string;
-    /** Black color */
-    black: string;
-    /** Object of colors, key is color name, value is an array of at least 10 strings (colors) */
-    colors: RaikouThemeColors;
-    /** Index of theme.colors[color].
-     *  Primary shade is used in all components to determine which color from theme.colors[color] should be used.
-     *  Can be either a number (0–9) or an object to specify different color shades for light and dark color schemes.
-     *  Default value `{ light: 6, dark: 8 }`
-     *
-     *  For example,
-     *  { primaryShade: 6 } // shade 6 is used both for dark and light color schemes
-     *  { primaryShade: { light: 6, dark: 7 } } // different shades for dark and light color schemes
-     * */
-    primaryShade: RaikouColorShade | RaikouPrimaryShade;
-    /** Key of `theme.colors`, hex/rgb/hsl values are not supported.
-     *  Determines which color will be used in all components by default.
-     *  Default value – `blue`.
-     * */
-    primaryColor: string;
-    /** Function to resolve colors based on variant.
-     *  Can be used to deeply customize how colors are applied to `Button`, `ActionIcon`, `ThemeIcon`
-     *  and other components that use colors from theme.
-     * */
-    variantColorResolver: VariantColorsResolver;
-    /** font-family used in all components, system fonts by default */
-    fontFamily: string;
-    /** Monospace font-family, used in code and other similar components, system fonts by default  */
-    fontFamilyMonospace: string;
-    /** Controls various styles of h1-h6 elements, used in TypographyStylesProvider and Title components */
-    headings: {
-        fontFamily: string;
-        fontWeight: string;
-        sizes: {
-            h1: HeadingStyle;
-            h2: HeadingStyle;
-            h3: HeadingStyle;
-            h4: HeadingStyle;
-            h5: HeadingStyle;
-            h6: HeadingStyle;
-        };
-    };
-    /** Object of values that are used to set `border-radius` in all components that support it */
-    radius: RaikouRadiusValues;
-    /** Key of `theme.radius` or any valid CSS value. Default `border-radius` used by most components */
-    defaultRadius: RaikouRadius;
-    /** Object of values that are used to set various CSS properties that control spacing between elements */
-    spacing: RaikouSpacingValues;
-    /** Object of values that are used to control `font-size` property in all components */
-    fontSizes: RaikouFontSizesValues;
-    /** Object of values that are used to control `line-height` property in `Text` component */
-    lineHeights: RaikouLineHeightValues;
-    /** Object of values that are used to control breakpoints in all components,
-     *  values are expected to be defined in em
-     * */
-    breakpoints: RaikouBreakpointsValues;
-    /** Object of values that are used to add `box-shadow` styles to components that support `shadow` prop */
-    shadows: RaikouShadowsValues;
-    /** Determines whether user OS settings to reduce motion should be respected, `false` by default */
-    respectReducedMotion: boolean;
-    /** Determines which cursor type will be used for interactive elements
-     * - `default` – cursor that is used by native HTML elements, for example, `input[type="checkbox"]` has `cursor: default` styles
-     * - `pointer` – sets `cursor: pointer` on interactive elements that do not have these styles by default
-     */
-    cursorType: "default" | "pointer";
-    /** Default gradient configuration for components that support `variant="gradient"` */
-    defaultGradient: RaikouGradient;
-    /** Class added to the elements that have active styles, for example, `Button` and `ActionIcon` */
-    activeClassName: string;
-    /** Class added to the elements that have focus styles, for example, `Button` or `ActionIcon`.
-     *  Overrides `theme.focusRing` property.
-     */
-    focusClassName: string;
-    /** Allows adding `classNames`, `styles` and `defaultProps` to any component */
-    components: RaikouThemeComponents;
-    /** Any other properties that you want to access with the theme objects */
-    other: RaikouThemeOther;
-}
-type RaikouColorScheme = "light" | "dark" | "auto";
-type RaikouThemeOverride = PartialDeep<RaikouTheme>;
-type RaikouStylesRecord = Record<string, React.CSSProperties>;
-interface RaikouThemeComponent {
-    classNames?: any;
-    styles?: any;
-    vars?: any;
-    defaultProps?: any;
-}
-type RaikouThemeComponents = Record<string, RaikouThemeComponent>;
-interface HeadingStyle {
-    fontSize: string;
-    fontWeight?: string;
-    lineHeight: string;
-}
-type RaikouSize = "xs" | "sm" | "md" | "lg" | "xl";
-type RaikouBreakpointsValues = Record<RaikouSize | (string & {}), string>;
-type RaikouFontSizesValues = Record<RaikouSize | (string & {}), string>;
-type RaikouRadiusValues = Record<RaikouSize | (string & {}), string>;
-type RaikouSpacingValues = Record<RaikouSize | (string & {}), string>;
-type RaikouShadowsValues = Record<RaikouSize | (string & {}), string>;
-type RaikouLineHeightValues = Record<RaikouSize | (string & {}), string>;
-type RaikouBreakpoint = keyof RaikouBreakpointsValues;
-type RaikouFontSize = keyof RaikouFontSizesValues;
-type RaikouRadius = keyof RaikouRadiusValues | (string & {}) | number;
-type RaikouSpacing = keyof RaikouSpacingValues | (string & {}) | number;
-type RaikouShadow = keyof RaikouShadowsValues | (string & {});
-type RaikouLineHeight = keyof RaikouLineHeightValues;
-interface RaikouThemeOther {
-    [key: string]: any;
-}
-interface RaikouGradient {
-    from: string;
-    to: string;
-    deg?: string;
-}
-type RaikouColorsTuple = readonly [
-    string,
-    string,
-    string,
-    string,
-    string,
-    string,
-    string,
-    string,
-    string,
-    string,
-    ...string[]
-];
-type RaikouColorShade = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-interface RaikouPrimaryShade {
-    light: RaikouColorShade;
-    dark: RaikouColorShade;
-}
-type DefaultRaikouColor = "blue" | (string & {});
-interface RaikouThemeColorsOverride {
-}
-type RaikouThemeColors = RaikouThemeColorsOverride extends {
-    colors: Record<infer CustomColors, RaikouColorsTuple>;
-} ? Record<CustomColors, RaikouColorsTuple> : Record<DefaultRaikouColor, RaikouColorsTuple>;
-type RaikouColor = keyof RaikouThemeColors;
-
-declare function useColorScheme(): {
-    colorScheme: string;
-    allThemes: string[];
-    setColorScheme: (theme: string) => void;
-};
-
-declare const DEFAULT_THEME: RaikouTheme;
-
-declare function validateRaikouTheme(theme: RaikouTheme): asserts theme is RaikouTheme;
-declare function mergeRaikouTheme(currentTheme: RaikouTheme, themeOverride?: RaikouThemeOverride): RaikouTheme;
-
-interface RaikouCreateCssVariablesProps {
-    theme: RaikouTheme;
-    cssVariablesResolver?: any;
-    cssVariablesSelector?: string;
-}
-declare function createCSSVariables({ theme, cssVariablesResolver: generator, cssVariablesSelector, }: RaikouCreateCssVariablesProps): null;
+declare function RaikouProvider({ theme, defaultColorScheme, themeStorageKey, children, }: RaikouProviderProps): React$1.JSX.Element;
 
 type CSSVariables = Record<CssVariable, string>;
 
@@ -3786,48 +3742,6 @@ interface ConvertCSSVariablesInput {
     /** CSS variables available only in light color scheme */
     light: CSSVariables;
 }
-declare function convertCssVariables(input: ConvertCSSVariablesInput, selector: string): string;
-
-type CSSVariablesResolver = (theme: RaikouTheme) => ConvertCSSVariablesInput;
-declare const defaultCssVariablesResolver: CSSVariablesResolver;
-
-interface RaikouProviderProps {
-    /** Theme override object */
-    theme?: RaikouThemeOverride;
-    /** Default color scheme value used when `colorSchemeManager` cannot retrieve value from external storage, `auto` by default */
-    defaultColorScheme?: RaikouColorScheme;
-    /** CSS selector to which CSS variables should be added, `:root` by default */
-    cssVariablesSelector?: string;
-    /** Determines whether theme CSS variables should be added to given `cssVariablesSelector`, `true` by default */
-    withCssVariables?: boolean;
-    /** Function to generate nonce attribute added to all generated `<style />` tags */
-    getStyleNonce?(): string;
-    /** Function to generate CSS variables based on theme object */
-    cssVariablesResolver?: CSSVariablesResolver;
-    /** Store theme in local storage */
-    themeStorageKey?: string;
-    /** Your application */
-    children?: React$2.ReactNode;
-}
-declare function RaikouProvider({ theme, defaultColorScheme, cssVariablesSelector, withCssVariables, getStyleNonce, cssVariablesResolver, themeStorageKey, children, }: RaikouProviderProps): React$2.JSX.Element;
-
-type Direction = "ltr" | "rtl";
-interface DirectionContextValue {
-    dir: Direction;
-    toggleDirection(): void;
-    setDirection(dir: Direction): void;
-}
-declare const DirectionContext: React$2.Context<DirectionContextValue>;
-declare function useDirection(): DirectionContextValue;
-interface DirectionProviderProps {
-    /** Your application */
-    children: React$2.ReactNode;
-    /** Direction set as a default value, `ltr` by default */
-    initialDirection?: Direction;
-    /** Determines whether direction should be updated on mount based on `dir` attribute set on root element (usually html element), `true` by default  */
-    detectDirection?: boolean;
-}
-declare function DirectionProvider({ children, initialDirection, detectDirection, }: DirectionProviderProps): React$2.JSX.Element;
 
 declare const MantineColors: {
     gray: {
@@ -4001,4 +3915,22 @@ declare const MantineColors: {
     };
 };
 
-export { type CSSVariablesResolver, type ConvertCSSVariablesInput, DEFAULT_THEME, type DefaultRaikouColor, type Direction, DirectionContext, type DirectionContextValue, DirectionProvider, type DirectionProviderProps, type HeadingStyle, MantineColors, type RGBA, type RaikouBreakpoint, type RaikouBreakpointsValues, type RaikouColor, type RaikouColorScheme, type RaikouColorShade, type RaikouColorsTuple, type RaikouFontSize, type RaikouFontSizesValues, type RaikouGradient, type RaikouLineHeight, type RaikouLineHeightValues, type RaikouPrimaryShade, RaikouProvider, type RaikouRadius, type RaikouRadiusValues, type RaikouShadow, type RaikouShadowsValues, type RaikouSize, type RaikouSpacing, type RaikouSpacingValues, type RaikouStylesRecord, type RaikouTheme, type RaikouThemeColors, type RaikouThemeColorsOverride, type RaikouThemeComponent, type RaikouThemeComponents, type RaikouThemeOther, type RaikouThemeOverride, type VariantColorResolverResult, type VariantColorsResolver, type VariantColorsResolverInput, convertCssVariables, createCSSVariables, darken, deepMerge, defaultCssVariablesResolver, defaultVariantColorsResolver, em, getGradient, getPrimaryShade, getThemeColor, isLightColor, keys, lighten, mergeRaikouTheme, parseThemeColor, px, rem, rgba, toRgba, useColorScheme, useDirection, validateRaikouTheme };
+type Direction = "ltr" | "rtl";
+interface DirectionContextValue {
+    dir: Direction;
+    toggleDirection(): void;
+    setDirection(dir: Direction): void;
+}
+declare const DirectionContext: React$1.Context<DirectionContextValue>;
+declare function useDirection(): DirectionContextValue;
+interface DirectionProviderProps {
+    /** Your application */
+    children: React$1.ReactNode;
+    /** Direction set as a default value, `ltr` by default */
+    initialDirection?: Direction;
+    /** Determines whether direction should be updated on mount based on `dir` attribute set on root element (usually html element), `true` by default  */
+    detectDirection?: boolean;
+}
+declare function DirectionProvider({ children, initialDirection, detectDirection, }: DirectionProviderProps): React$1.JSX.Element;
+
+export { type ConvertCSSVariablesInput, type Direction, DirectionContext, type DirectionContextValue, DirectionProvider, type DirectionProviderProps, MantineColors, type RaikouColorScheme, RaikouProvider, createCSSVariables, useColorScheme, useDirection };

@@ -39,7 +39,7 @@ function definePreset(preset) {
   return preset;
 }
 
-// src/core/utils/units-converters/rem.ts
+// ../core/src/core/utils/units-converters/rem.ts
 function scaleRem(remValue) {
   return `calc(${remValue} * var(--raikou-scale))`;
 }

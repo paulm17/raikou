@@ -1,32 +1,20 @@
-import { RaikouProvider, DirectionProvider, RaikouTheme } from "@raikou/system";
-import { setState, createTheme } from "@raikou/global-store";
-// import { generateColors } from "@raikou/colors-generator";
+import { RaikouProvider } from "@raikou/system";
+import { createTheme } from "@raikou/global-store";
 import "./styles/global.css";
-// import "./styles/uno.css";
 // import { ContextMenuProvider } from "@raikou/contextmenu";
+import config from "../unocss.config";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const theme = createTheme({
-    primaryColor: "blue",
-    // colors: {
-    //   theme: generateColors("#5474B4"),
-    // },
-  });
-
-  setState((state: RaikouTheme) => ({
-    state: { ...state, ...theme },
-  }));
+  const theme = createTheme(config);
 
   return (
     <html lang="en" dir="ltr">
       <body>
-        <DirectionProvider>
-          <RaikouProvider theme={theme}>{children}</RaikouProvider>
-        </DirectionProvider>
+        <RaikouProvider theme={theme}>{children}</RaikouProvider>
       </body>
     </html>
   );

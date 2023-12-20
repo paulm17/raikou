@@ -166,7 +166,6 @@ type RaikouColor = keyof RaikouThemeColors;
 declare const useStore: pure_store.PureStore<types.PartialObjectDeep<RaikouTheme, {}>, types.PartialObjectDeep<RaikouTheme, {}>>;
 declare const getState: () => types.PartialObjectDeep<RaikouTheme, {}>;
 declare const setState: (updater: Partial<types.PartialObjectDeep<RaikouTheme, {}>> | ((e: types.PartialObjectDeep<RaikouTheme, {}>) => void)) => void;
+declare function createTheme(config: any): RaikouThemeOverride;
 
-declare function createTheme(theme: RaikouThemeOverride): RaikouThemeOverride;
-
-export { createTheme, useStore as default, getState, setState };
+export { type RaikouTheme, type RaikouThemeOverride, createTheme, useStore as default, getState, setState, useStore };

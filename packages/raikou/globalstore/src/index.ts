@@ -1,11 +1,6 @@
-import createStore from "pure-store";
-import { RaikouThemeOverride } from "../../core";
+import { useStore } from "./createTheme";
 
-const useStore = createStore<RaikouThemeOverride>({});
+export * from "./createTheme";
+export type { RaikouTheme, RaikouThemeOverride } from "@raikou/theme";
 
-export const { getState, update: setState } = useStore;
 export default useStore;
-
-export function createTheme(theme: RaikouThemeOverride): RaikouThemeOverride {
-  return theme;
-}
