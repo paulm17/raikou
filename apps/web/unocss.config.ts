@@ -3,10 +3,10 @@ import presetAttributify from "@unocss/preset-attributify";
 import presetWind from "@unocss/preset-wind";
 const presetRaikou = require("@raikou/system/plugin.js").default;
 import { generateColors } from "@raikou/colors-generator";
-import { RaikouTheme, RaikouThemeOverride } from "@raikou/global-store";
+import { RaikouTheme } from "@raikou/global-store";
 
-export interface RaikouConfig<T> extends UserConfig {
-  raikouTheme?: RaikouTheme & T;
+export interface RaikouConfig extends UserConfig {
+  raikouTheme?: RaikouTheme;
 }
 
 export default defineConfig({
@@ -17,7 +17,6 @@ export default defineConfig({
     presetWind(),
     presetAttributify({
       prefix: "un-",
-      prefixedOnly: true,
     }),
     presetRaikou(),
   ],
@@ -27,9 +26,9 @@ export default defineConfig({
   //   },
   // },
   raikouTheme: {
-    primaryColor: "sky",
+    primaryColor: "blue",
     scale: 1,
-    // includeColors: ["blue"],
-    // excludeColors: [],
+    includeColors: ["blue"],
+    excludeColors: [],
   },
-} as RaikouConfig<RaikouThemeOverride>);
+} as RaikouConfig);

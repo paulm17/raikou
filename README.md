@@ -53,8 +53,9 @@ The project was conceived with these 4 long-term goals:
       <a href="https://v7.mantine.dev/styles/styles-performance#inline-styles">very
       slow</a>.
     - Mantine and Raikou employ different approaches to manage the theme. While
-      Mantine uses context. Raikou utilizes a global state for both server and
-      client rendering.
+      Mantine uses context and can be a runtime process for overrides. Raikou
+      utilizes a global state for both server and client rendering and overrides
+      are done via the unocss configuration.
     - The code responsible for the ColorScheme has been replaced with a more
       lightweight version using
       <a href="https://github.com/pacocoursey/next-themes">Next Themes</a>.
@@ -63,11 +64,16 @@ The project was conceived with these 4 long-term goals:
       component.
     - Some components have had their javascript removed to make them server
       components primarily.
-    - All 10 colors have been removed, as unocss comes with it's own color
-      system. Raikou comes with a default color. Should there exist a
-      requirement to add your own colors. Supply them in a theme object.
-      Additionally, Raikou has the ability to change many aspects of the theme
-      including light/dark colors. Investigate the component for more details.
+    - Mantine's color system:
+      - 10 shades has been replaced with UnoCSS own colors and 11 shades
+      - The UnoCSS colors can be overriden with the original Mantine color set.
+      - The light/dark and other aspects of a component can be overriden. Refer
+        to the component css modules file with what css variables have been
+        exposed.
+      - As part of the postcss process. Raikou will load the complete "mantine"
+        styles and purge any unused styling. For example, if only the <Badge />
+        component is being used. Only the <Badge /> styling will be present in
+        the stylesheet.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -151,6 +157,11 @@ import { defineConfig } from "unocss";
 import presetAttributify from "@unocss/preset-attributify";
 import presetWind from "@unocss/preset-wind";
 const presetRaikou = require("@raikou/system/plugin.js").default;
+import { RaikouTheme } from "@raikou/global-store";
+
+export interface RaikouConfig extends UserConfig {
+  raikouTheme?: RaikouTheme;
+}
 
 export default defineConfig({
   content: {
@@ -163,7 +174,7 @@ export default defineConfig({
     }),
     presetRaikou(),
   ],
-}) as any;
+} as RaikouConfig);
 ```
 
 Change `app/**/*.tsx` to the root of the app folder.
@@ -192,44 +203,59 @@ export default function RootLayout({
 }
 ```
 
-Note, the default primary color is blue: #5474B4.
-
-5. If there is a requirement to modify the theme. For example changing the
-   primary color to orange. Update layout.tsx as follows:
+5. Raikou has remove the theme configuration from runtime. The theme is now part
+   of UnoCss own theme. Simply add new "mantine" theme params to the
+   defineConfig object.
 
 ```js
-import { RaikouProvider } from '@raikou/system';
-import { createTheme, setState } from '@raikou/global-store';
-import { generateColors } from "@raikou/colors-generator";
-
-export default function RootLayout({
-   children,
-}: {
-   children: React.ReactNode
-}) {
-   const theme = createTheme({
-      primaryColor: "orange",
-      colors: {
-         orange: generateColors("#FF8000"),
-      },
-   });
-
-   setState(theme);
-
-   return (
-      <html lang="en">
-         <body className={inter.className}>
-            <RaikouProvider theme={theme}>{children}</RaikouProvider>
-         </body>
-      </html>
-   )
-}
+export default defineConfig({
+  ...
+  raikouTheme: {
+    primaryColor: "sky",
+  },
+} as RaikouConfig);
 ```
 
-Note: The 10 colors for the primary color will then be generated at the :root
-pseudo-class.
+Note:
 
-6. The theme components api has changed from the
+RaikouTheme now includes two new string array params to control which colors are
+created in the global stylesheet. `IncludeColors` allows for only these colors
+to be created. `excludeColors` allows for all the colors except these to be
+created.
+
+Raikou supports the original mantine colors in 10 shades but unocss colors as
+well. All Raikou colors have 11 values.
+
+7. Mantine Colors can override the supplied unocss colors. Extend the config as
+   below:
+
+```js
+import { MantineColors } from "@raikou/system";
+
+export default defineConfig({
+  ...
+  theme: {
+    colors: MantineColors,
+  },
+}) as any;
+```
+
+Colors can also be overridden on a singular basis:
+
+```js
+import { MantineColors } from "@raikou/system";
+
+export default defineConfig({
+  ...
+  theme: {
+    colors: {
+      blue: generateColors("#5474B4"),
+    },
+  },
+}) as any;
+```
+
+8. The theme components api has changed from the
    <a href="https://v7.mantine.dev/styles/variants-sizes#sizes-with-components-css-variables">original
    documentation</a>:
 
@@ -253,37 +279,32 @@ components: {
 },
 ```
 
-7. To override css variable, create an object:
+9. To override css variables, create a resolver object in the Raikou theme:
 
 ```js
-const resolver = {
-  light: {
-    ".button-root": {
-      "--raikou-button-disabled-bg": "#E17900",
-    },
+export default defineConfig({
+  ...
+  raikouTheme: {
+    ...
+    resolver: {
+      light: {
+        ".button-root": {
+          "--raikou-button-disabled-bg": "#E17900",
+        },
+      },
+      dark: {
+        ".button-root": {
+          "--raikou-button-disabled-bg": "#FC8C0C",
+        },
+      },
+    }
   },
-  dark: {
-    ".button-root": {
-      "--raikou-button-disabled-bg": "#FC8C0C",
-    },
-  },
-};
-```
-
-Then update the RaikouProvider.
-
-```js
-<RaikouProvider
-  theme={theme}
-  cssVariablesResolver={`return ${JSON.stringify(resolver)}`}
->
-  {children}
-</RaikouProvider>
+} as RaikouConfig);
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-8. The classNames API has been updated to support attributify.
+10. The classNames API has been updated to support attributify.
 
 A key can either be a string if the styles are terse, or broken up into
 attributes.
@@ -306,8 +327,8 @@ attributes.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-9. Any mantine css variable that requires a color can be overriden by an unocss
-   color. Must be enclosed in var brackets.
+11. Any mantine css variable that requires a color can be overriden by an unocss
+    color. Must be enclosed in var brackets.
 
 Note: this dynamically adds the --violet-800 css variable and color equivilent
 to the css.
@@ -316,20 +337,6 @@ to the css.
 <Chip checked variant="filled" style={{ "--chip-bg": "var(--violet-800)" }}>
   Programming
 </Chip>
-```
-
-10. Mantine Colors can override the supplied unocss colors. Extend the config as
-    below:
-
-```js
-import { MantineColors } from "@raikou/system";
-
-export default defineConfig({
-  ...
-  theme: {
-    colors: MantineColors,
-  },
-}) as any;
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
