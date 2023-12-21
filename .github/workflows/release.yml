@@ -24,8 +24,8 @@ jobs:
       - name: Install
         uses: ./.github/composite-actions/install
 
-      - name: Build
-        run: pnpm build
+      - name: Build excluding system package
+        run: pnpm build --filter=!@raikou/system
 
       - name: Create release Pull Request or publish to NPM
         id: changesets

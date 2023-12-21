@@ -16,10 +16,6 @@ runs:
         registry-url: "https://registry.npmjs.org"
         cache: "pnpm"
 
-    - name: Install postcss
-      shell: bash
-      run: pnpm install -w postcss
-
     - name: Install dependencies
       shell: bash
       run: pnpm install --no-frozen-lockfile
