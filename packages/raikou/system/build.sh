@@ -1,0 +1,2 @@
+./src/support/component_names/component-names -config /Users/paul/development/src/github/raikou/packages/raikou/system/src/support/component_names/config.toml -o /Users/paul/development/src/github/raikou/packages/raikou/system/src/support/component_names.txt
+./src/support/css_modules/css-modules -config /Users/paul/development/src/github/raikou/packages/raikou/system/src/support/css_modules/config.toml -d /Users/paul/development/src/github/raikou/packages/raikou -o /Users/paul/development/src/github/raikou/packages/raikou/system/src/support/css_modules.txt
