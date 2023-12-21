@@ -34,7 +34,7 @@
     "typescript": "^5.1.3"
   },
   "scripts": {
-    "build": "tsup src/index.ts --dts --format esm,cjs --clean --external react",
+    "build": "tsup src/index.ts --dts --format esm,cjs --clean",
     "lint": "eslint src --cache",
     "format": "prettier src",
     "format:check": "prettier --check src",
