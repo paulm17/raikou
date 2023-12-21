@@ -42,6 +42,11 @@
     "@types/node": "^20.3.3",
     "@types/react": "^18.2.23",
     "@types/react-dom": "^18.2.8",
+    "postcss": "^8.4.31",
+    "postcss-import": "^15.1.0",
+    "postcss-modules": "^6.0.0",
+    "postcss-discard-duplicates": "^6.0.0",
+    "postcss-preset-raikou": "workspace:*",
     "typescript": "^5.1.6",
     "unocss": "^0.56.5"
   },
