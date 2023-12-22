@@ -6,3 +6,5 @@ export * from "./RaikouCssVariables";
 export * from "./createTheme";
 export { validateRaikouTheme, mergeRaikouTheme } from "./merge-raikou-theme";
 export * from "./colors";
+export * from "./color-functions";
+export { px, rem, em } from "./utils";

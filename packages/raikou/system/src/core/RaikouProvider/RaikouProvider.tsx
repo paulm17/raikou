@@ -2,7 +2,8 @@ import React from "react";
 import { ThemeProvider } from "next-themes";
 import { suppressNextjsWarning } from "./suppress-nextjs-warning";
 import type { RaikouColorScheme } from "./theme.types";
-import { RaikouThemeOverride } from "../../../../core/src";
+import { RaikouThemeOverride } from "../../../../theme/src";
+import { setState } from "@raikou/global-store";
 
 export interface RaikouProviderProps {
   /** Theme override object */
@@ -29,6 +30,8 @@ export function RaikouProvider({
   // set client state
   if (typeof window !== "undefined") {
     (window as any)["raikou_theme"] = theme;
+  } else {
+    setState(theme as any);
   }
 
   return (

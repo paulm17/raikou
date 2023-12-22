@@ -100,6 +100,7 @@ function suppressNextjsWarning() {
 }
 
 // src/core/RaikouProvider/RaikouProvider.tsx
+import { setState } from "@raikou/global-store";
 suppressNextjsWarning();
 function RaikouProvider({
   theme,
@@ -109,6 +110,8 @@ function RaikouProvider({
 }) {
   if (typeof window !== "undefined") {
     window["raikou_theme"] = theme;
+  } else {
+    setState(theme);
   }
   return /* @__PURE__ */ React.createElement(
     ThemeProvider,

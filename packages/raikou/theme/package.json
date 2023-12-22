@@ -31,6 +31,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
+    "dot-path-value": "^0.0.10",
     "type-fest": "^4.0.0",
     "tslib": "^2.6.0"
   },

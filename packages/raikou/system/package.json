@@ -28,11 +28,12 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "peerDependencies": {
-    "postcss": ">=8.0.0",
+    "@raikou/global-store": ">=0.0.1-alpha.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "dependencies": {
+    "@raikou/global-store": "workspace:*",
     "fast-glob": "^3.3.2",
     "next-themes": "^0.2.1",
     "type-fest": "^4.0.0",

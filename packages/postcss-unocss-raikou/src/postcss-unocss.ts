@@ -11,7 +11,7 @@ import { createGenerator } from '@unocss/core';
 import { loadConfig } from '@unocss/config';
 import { hasThemeFn } from '@unocss/rule-utils';
 import { parseColor } from '@unocss/preset-mini';
-import { createTheme, GenerateRaikouCSSVariables } from '@raikou/theme';
+import { createTheme, GenerateRaikouCSSVariables, colorNames } from '@raikou/theme';
 import type { UnoPostcssPluginOptions } from './types';
 
 function matchClassesObject(content: string) {
@@ -103,16 +103,24 @@ function generateColorCSSVariables(content: string, theme: any) {
   const tempVariables = {} as Record<string, string>;
 
   if (styleTagContent) {
-    const arr = styleTagContent[0].match(/(--[a-z-0-9]+|var\(([a-z-0-9]+)\))/g);
+    const arr = styleTagContent[0].match(
+      /((backgroundColor|color)|--[a-z-0-9]+|var\(([a-z-0-9]+)\))/g
+    );
+    const colorNamesStr = colorNames.join('|');
 
     if (arr) {
       for (let i = 0; i < arr.length; i += 1) {
-        if (arr[i].match(/^--(.*)$/)) {
+        if (arr[i].match(/^--(.*)$/) || arr[i].match(/^(backgroundColor|color)/)) {
           const value = arr[i + 1];
 
-          const newValue = value.replace('var(', '').replace(')', '').replace('--', '');
+          if (!value) {
+            continue;
+          }
 
-          if (newValue.match(/[a-z-0-9]+-\d+-\d+/)) {
+          const newValue = value.replace('var(', '').replace(')', '').replace('--', '');
+          const regexPattern = new RegExp(`^(${colorNamesStr})-\\d+-\\d+`, 'i');
+
+          if (newValue.match(regexPattern)) {
             const index = newValue.lastIndexOf('-');
             const first = newValue.substring(0, index);
             const last = newValue.substring(index).replace('-', '/');
@@ -257,9 +265,7 @@ module.exports = (options: UnoPostcssPluginOptions = {}) => {
           else fileMap.set(file, mtimeMs);
 
           const content = await readFile(file, 'utf8');
-
           const flattenedContent = flattenClasses(content);
-
           const cssColorsVariablesPerContent = generateColorCSSVariables(content, uno.config.theme);
 
           if (cssColorsVariablesPerContent !== null) {
@@ -335,6 +341,7 @@ module.exports = (options: UnoPostcssPluginOptions = {}) => {
       const { cssVariables: raikouCSSVariables, classes: raikouClasses } =
         GenerateRaikouCSSVariables({
           theme: raikouTheme,
+          cssVariablesResolver: raikouTheme.cssVariablesResolver,
         });
 
       // Add new css color variables
@@ -356,7 +363,7 @@ module.exports = (options: UnoPostcssPluginOptions = {}) => {
             /* ----- CSS Breakpoints ----- */
             ${raikouClasses}\n
 
-            ${cssColorVariablesString} \n                  
+            ${cssColorVariablesString} \n
           `;
 
           const css = postcss.parse(cssVariableMark);

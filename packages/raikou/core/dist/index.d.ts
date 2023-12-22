@@ -399,6 +399,8 @@ interface RaikouTheme {
     focusClassName: string;
     /** Allows adding `classNames`, `styles` and `defaultProps` to any component */
     components: RaikouThemeComponents;
+    /** Allows overriding CSS variables */
+    cssVariablesResolver?: any;
     /** Any other properties that you want to access with the theme objects */
     other: RaikouThemeOther;
 }

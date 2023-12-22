@@ -987,7 +987,7 @@ function mergeRaikouTheme(currentTheme, themeOverride) {
 }
 
 // src/core/RaikouProvider/useRaikouTheme/useRaikouTheme.ts
-import useStore from "@raikou/global-store";
+import { getState } from "@raikou/global-store";
 function useRaikouTheme() {
   if (typeof window !== "undefined") {
     const windowTheme = window["raikou_theme"];
@@ -995,7 +995,7 @@ function useRaikouTheme() {
     theme.variantColorResolver = defaultVariantColorsResolver;
     return theme;
   } else {
-    const createTheme = useStore.getState();
+    const createTheme = getState();
     const theme = mergeRaikouTheme(DEFAULT_THEME, createTheme);
     theme.variantColorResolver = defaultVariantColorsResolver;
     return theme;
@@ -1234,9 +1234,13 @@ function resolveVars({
         "props",
         "stylesCtx",
         "rem",
+        "px",
+        "em",
+        "lighten",
+        "darken",
         (_b = (_a2 = theme.components) == null ? void 0 : _a2[name]) == null ? void 0 : _b.vars
       );
-      return vars2 == null ? void 0 : vars2(theme, props, stylesCtx, rem);
+      return vars2 == null ? void 0 : vars2(theme, props, stylesCtx, rem, px, em, lighten, darken);
     }),
     vars == null ? void 0 : vars(theme, props, stylesCtx)
   ])) == null ? void 0 : _a[selector];

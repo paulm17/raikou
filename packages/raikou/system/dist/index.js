@@ -140,6 +140,7 @@ function suppressNextjsWarning() {
 }
 
 // src/core/RaikouProvider/RaikouProvider.tsx
+var import_global_store = require("@raikou/global-store");
 suppressNextjsWarning();
 function RaikouProvider({
   theme,
@@ -149,6 +150,8 @@ function RaikouProvider({
 }) {
   if (typeof window !== "undefined") {
     window["raikou_theme"] = theme;
+  } else {
+    (0, import_global_store.setState)(theme);
   }
   return /* @__PURE__ */ import_react.default.createElement(
     import_next_themes2.ThemeProvider,

@@ -4,7 +4,7 @@ import { PartialDeep } from 'type-fest';
 
 interface VariantColorsResolverInput {
     color: RaikouColor | undefined;
-    theme: RaikouTheme$1;
+    theme: RaikouTheme;
     variant: string;
     gradient?: RaikouGradient;
 }
@@ -16,7 +16,7 @@ interface VariantColorResolverResult {
 }
 type VariantColorsResolver = (input: VariantColorsResolverInput) => VariantColorResolverResult;
 
-interface RaikouTheme$1 {
+interface RaikouTheme {
     /** Controls focus ring styles. Supports the following options:
      *  - `auto` – focus ring is displayed only when the user navigates with keyboard (default value)
      *  - `always` – focus ring is displayed when the user navigates with keyboard and mouse
@@ -105,10 +105,12 @@ interface RaikouTheme$1 {
     focusClassName: string;
     /** Allows adding `classNames`, `styles` and `defaultProps` to any component */
     components: RaikouThemeComponents;
+    /** Allows overriding CSS variables */
+    cssVariablesResolver?: any;
     /** Any other properties that you want to access with the theme objects */
     other: RaikouThemeOther;
 }
-type RaikouThemeOverride = PartialDeep<RaikouTheme$1>;
+type RaikouThemeOverride = PartialDeep<RaikouTheme>;
 interface RaikouThemeComponent {
     classNames?: any;
     styles?: any;
@@ -163,18 +165,9 @@ type RaikouThemeColors = RaikouThemeColorsOverride extends {
 } ? Record<CustomColors, RaikouColorsTuple> : Record<DefaultRaikouColor, RaikouColorsTuple>;
 type RaikouColor = keyof RaikouThemeColors;
 
-declare const colorNames: ("light" | "dark" | "blue" | "rose" | "pink" | "fuchsia" | "purple" | "violet" | "indigo" | "sky" | "cyan" | "teal" | "emerald" | "green" | "lime" | "yellow" | "amber" | "orange" | "red" | "gray" | "slate" | "zinc" | "neutral" | "stone")[];
-
-declare const useStore: pure_store.PureStore<types.PartialObjectDeep<RaikouTheme$1, {}>, types.PartialObjectDeep<RaikouTheme$1, {}>>;
-declare const getState: () => types.PartialObjectDeep<RaikouTheme$1, {}>;
-declare const setState: (updater: Partial<types.PartialObjectDeep<RaikouTheme$1, {}>> | ((e: types.PartialObjectDeep<RaikouTheme$1, {}>) => void)) => void;
+declare const useStore: pure_store.PureStore<types.PartialObjectDeep<RaikouTheme, {}>, types.PartialObjectDeep<RaikouTheme, {}>>;
 declare function createTheme(config: any): RaikouThemeOverride;
+declare const getState: () => types.PartialObjectDeep<RaikouTheme, {}>;
+declare const setState: (updater: Partial<types.PartialObjectDeep<RaikouTheme, {}>> | ((e: types.PartialObjectDeep<RaikouTheme, {}>) => void)) => void;
 
-interface RaikouTheme extends RaikouThemeOverride {
-    primaryColor?: Colors;
-    includeColors?: Colors[];
-    excludeColors?: Colors[];
-}
-type Colors = (typeof colorNames)[number];
-
-export { type RaikouTheme, type RaikouThemeOverride, createTheme, useStore as default, getState, setState, useStore };
+export { createTheme, getState, setState, useStore };

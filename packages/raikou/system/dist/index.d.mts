@@ -20,8 +20,6 @@ interface RaikouCreateCssVariablesProps {
 }
 declare function createCSSVariables({ theme, cssVariablesResolver: generator, cssVariablesSelector, }: RaikouCreateCssVariablesProps): null;
 
-type CssVariable = `--${string}`;
-
 interface VariantColorsResolverInput {
     color: RaikouColor | undefined;
     theme: RaikouTheme;
@@ -125,6 +123,8 @@ interface RaikouTheme {
     focusClassName: string;
     /** Allows adding `classNames`, `styles` and `defaultProps` to any component */
     components: RaikouThemeComponents;
+    /** Allows overriding CSS variables */
+    cssVariablesResolver?: any;
     /** Any other properties that you want to access with the theme objects */
     other: RaikouThemeOther;
 }
@@ -175,13 +175,27 @@ interface RaikouPrimaryShade {
     light: RaikouColorShade;
     dark: RaikouColorShade;
 }
-type DefaultRaikouColor = "rose" | "pink" | "fuchsia" | "purple" | "violet" | "indigo" | "blue" | "sky" | "cyan" | "teal" | "emerald" | "green" | "lime" | "yellow" | "amber" | "orange" | "red" | "gray" | "slate" | "zinc" | "neutral" | "stone" | "light" | "dark" | (string & {});
+type DefaultRaikouColor = "blue" | (string & {});
 interface RaikouThemeColorsOverride {
 }
 type RaikouThemeColors = RaikouThemeColorsOverride extends {
     colors: Record<infer CustomColors, RaikouColorsTuple>;
 } ? Record<CustomColors, RaikouColorsTuple> : Record<DefaultRaikouColor, RaikouColorsTuple>;
 type RaikouColor = keyof RaikouThemeColors;
+
+interface RaikouProviderProps {
+    /** Theme override object */
+    theme?: RaikouThemeOverride;
+    /** Default color scheme value used when `colorSchemeManager` cannot retrieve value from external storage, `auto` by default */
+    defaultColorScheme?: RaikouColorScheme;
+    /** Store theme in local storage */
+    themeStorageKey?: string;
+    /** Your application */
+    children?: React$1.ReactNode;
+}
+declare function RaikouProvider({ theme, defaultColorScheme, themeStorageKey, children, }: RaikouProviderProps): React$1.JSX.Element;
+
+type CssVariable = `--${string}`;
 
 // Type definitions for React 18.2
 // Project: https://react.dev/
@@ -3719,18 +3733,6 @@ interface GlobalJSXIntrinsicAttributes extends JSX.IntrinsicAttributes {}
 interface GlobalJSXIntrinsicClassAttributes<T> extends JSX.IntrinsicClassAttributes<T> {}
 
 interface GlobalJSXIntrinsicElements extends JSX.IntrinsicElements {}
-
-interface RaikouProviderProps {
-    /** Theme override object */
-    theme?: RaikouThemeOverride;
-    /** Default color scheme value used when `colorSchemeManager` cannot retrieve value from external storage, `auto` by default */
-    defaultColorScheme?: RaikouColorScheme;
-    /** Store theme in local storage */
-    themeStorageKey?: string;
-    /** Your application */
-    children?: React$1.ReactNode;
-}
-declare function RaikouProvider({ theme, defaultColorScheme, themeStorageKey, children, }: RaikouProviderProps): React$1.JSX.Element;
 
 type CSSVariables = Record<CssVariable, string>;
 

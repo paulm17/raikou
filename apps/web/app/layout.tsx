@@ -1,5 +1,5 @@
 import { RaikouProvider } from "@raikou/system";
-import { createTheme } from "@raikou/global-store";
+import { createTheme, setState } from "@raikou/global-store";
 import "./styles/global.css";
 // import { ContextMenuProvider } from "@raikou/contextmenu";
 import config from "../unocss.config";
@@ -10,6 +10,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const theme = createTheme(config);
+
+  // set server state
+  setState({
+    theme: theme,
+  });
 
   return (
     <html lang="en" dir="ltr">

@@ -117,6 +117,9 @@ export interface RaikouTheme {
   /** Allows adding `classNames`, `styles` and `defaultProps` to any component */
   components: RaikouThemeComponents;
 
+  /** Allows overriding CSS variables */
+  cssVariablesResolver?: any;
+
   /** Any other properties that you want to access with the theme objects */
   other: RaikouThemeOther;
 }
@@ -202,3 +205,13 @@ export type RaikouThemeColors = RaikouThemeColorsOverride extends {
   : Record<DefaultRaikouColor, RaikouColorsTuple>;
 
 export type RaikouColor = keyof RaikouThemeColors;
+
+import { colorNames } from "./colors";
+
+export interface UnoCSSRaikouTheme extends PartialDeep<RaikouTheme> {
+  primaryColor?: Colors;
+  includeColors?: Colors[];
+  excludeColors?: Colors[];
+}
+
+type Colors = (typeof colorNames)[number];

@@ -1,7 +1,10 @@
-import { useStore } from "./createTheme";
+import { RaikouThemeOverride } from "@raikou/theme";
+import createStore from "pure-store";
 
-export * from "./createTheme";
-export type { RaikouThemeOverride } from "@raikou/theme";
-export type { RaikouTheme } from "./types";
+export const useStore = createStore<RaikouThemeOverride>({});
 
-export default useStore;
+export function createTheme(config: any): RaikouThemeOverride {
+  return config.raikouTheme as RaikouThemeOverride;
+}
+
+export const { getState, update: setState } = useStore;

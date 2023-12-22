@@ -1,8 +1,9 @@
 import { CSSProperties } from "react";
 import { CssVariable } from "../../../../Box";
-import { RaikouTheme } from "../../../../RaikouProvider";
 import { mergeVars } from "./merge-vars";
-import { rem } from "../../../../utils/units-converters";
+import { RaikouTheme } from "../../../../RaikouProvider";
+import { lighten, darken } from "../../../../RaikouProvider/color-functions";
+import { rem, px, em } from "../../../../utils/units-converters";
 
 type ResolvedVars = Partial<Record<string, Record<CssVariable, string>>>;
 
@@ -39,10 +40,14 @@ export function resolveVars({
         "props",
         "stylesCtx",
         "rem",
+        "px",
+        "em",
+        "lighten",
+        "darken",
         theme.components?.[name]?.vars,
       );
 
-      return vars2?.(theme, props, stylesCtx, rem);
+      return vars2?.(theme, props, stylesCtx, rem, px, em, lighten, darken);
     }),
     vars?.(theme, props, stylesCtx),
   ])?.[selector] as CSSProperties;
