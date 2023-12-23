@@ -1,5 +1,5 @@
 "use client";
-import { Badge, Button } from "@raikou/server";
+import { Badge } from "@raikou/server";
 
 export default function Page() {
   return (
@@ -14,9 +14,6 @@ export default function Page() {
       >
         badge
       </Badge>
-      <Button variant="filled" size="xxd">
-        New Button
-      </Button>
     </>
   );
 }

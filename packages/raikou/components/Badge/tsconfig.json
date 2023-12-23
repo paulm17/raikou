@@ -2,6 +2,7 @@
   "extends": "../../../../tsconfig.json",
   "compilerOptions": {
     "paths": {
+      "@raikou/core": ["../../core/src"],
       "@raikou/tests": ["../../tests/src"]
     }
   },

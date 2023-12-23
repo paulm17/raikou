@@ -1,8 +1,3 @@
-// src/index.ts
-function Hello() {
-  console.log("hello - D7899-6");
-}
-export {
-  Hello
-};
-//# sourceMappingURL=index.mjs.map
+
+function Hello(){console.log("hello - A0001-11");}
+export{Hello};

@@ -17,9 +17,10 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "build": "tsup src/index.ts --config ../../../../configuration/tsup/tsup.config.ts",
+    "build": "tsup src/index.ts --config ../../../../configuration/tsup/tsup.config.ts && pnpm minify",
     "lint": "eslint \"**/*.ts*\"",
     "clean": "rimraf dist .turbo",
+    "minify": "jsmin -o dist/index.js dist/index.js && jsmin -o dist/index.mjs dist/index.mjs",
     "typecheck": "tsc --noEmit",
     "build:fast": "tsup src",
     "prepack": "clean-package",

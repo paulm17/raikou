@@ -22,9 +22,10 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "build": "tsup src/index.ts src/plugin.ts --dts --format esm,cjs --clean",
+    "build": "tsup src/index.ts src/plugin.ts --dts --format esm,cjs --clean && pnpm minify",
     "lint": "eslint \"**/*.ts*\"",
     "clean": "rimraf dist .turbo",
+    "minify": "jsmin -o dist/index.js dist/index.js && jsmin -o dist/index.mjs dist/index.mjs",
     "typecheck": "tsc --noEmit",
     "build:fast": "tsup src",
     "prepack": "clean-package",
