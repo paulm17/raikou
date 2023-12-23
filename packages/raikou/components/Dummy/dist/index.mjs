@@ -1,3 +1,1 @@
-
-function Hello(){console.log("hello - A0001-11");}
-export{Hello};
+function Hello(){console.log("hello - A0001-11")}export{Hello};

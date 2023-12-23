@@ -78,11 +78,20 @@ fn get_component_cssmodules(
 
     for cap in re.captures_iter(&file_contents) {
       let new_match = cap[0].to_string();
-      let match_split: Vec<&str> = new_match.split(" = ").collect();
+      let re = Regex::new(r"_module_default\s*=\s*").unwrap();
+      let match_split: Vec<&str> = re.split(&new_match).collect();
       let value = match_split[1].to_string();
 
+      // fix effects of minification
+      let re = Regex::new(r"(\w+:)").unwrap();
+      let new_value = re
+        .replace_all(value.as_str(), |cap: &regex::Captures| {
+          format!("\"{}\":", cap[1].to_string().replace(":", ""))
+        })
+        .to_string();
+
       let v: serde_json::Value = serde_json
-        ::from_str(value.as_str())
+        ::from_str(new_value.as_str())
         .ok()
         .unwrap();
 

@@ -156,10 +156,10 @@ import { defineConfig } from "unocss";
 import presetAttributify from "@unocss/preset-attributify";
 import presetWind from "@unocss/preset-wind";
 const presetRaikou = require("@raikou/system/plugin.js").default;
-import { RaikouTheme } from "@raikou/global-store";
+import { UnoCSSRaikouTheme } from "@raikou/theme";
 
 export interface RaikouConfig extends UserConfig {
-  raikouTheme?: RaikouTheme;
+  raikouTheme?: UnoCSSRaikouTheme;
 }
 
 export default defineConfig({
@@ -186,7 +186,8 @@ mantines own styles.
 
 ```js
 import { RaikouProvider } from '@raikou/system';
-import { createTheme } from "@raikou/global-store";
+import { createTheme, setState } from "@raikou/global-store";
+import "./styles/global.css";
 import config from "../unocss.config";
 
 export default function RootLayout({
@@ -196,11 +197,16 @@ export default function RootLayout({
 }) {
   const theme = createTheme(config);
 
+  // set server state
+  setState({
+    theme: theme,
+  });
+
   return (
     <html lang="en">
-        <body className={inter.className}>
-          <RaikouProvider theme={theme}>{children}</RaikouProvider>
-        </body>
+      <body className={inter.className}>
+        <RaikouProvider theme={theme}>{children}</RaikouProvider>
+      </body>
     </html>
   )
 }
@@ -234,7 +240,7 @@ well. All Raikou colors have 11 values.
    below:
 
 ```js
-import { MantineColors } from "@raikou/system";
+import { MantineColors } from "@raikou/theme";
 
 export default defineConfig({
   ...
@@ -264,44 +270,65 @@ export default defineConfig({
    documentation</a>:
 
 ```js
-components: {
-   Button: {
-      vars: `
-      if (props.size === "xxl") {
-         return {
-            root: {
-            "--button-height": rem(60),
-            "--button-padding-x": rem(30),
-            "--button-fz": rem(30),
-            },
-         };
-      }
-
-      return { root: {} };
-      `,
-   },
-},
-```
-
-9. To override css variables, create a resolver object in the Raikou theme:
-
-```js
 export default defineConfig({
   ...
   raikouTheme: {
     ...
-    resolver: {
+    components: {
+      Button: {
+          vars: `
+          if (props.size === "xxl") {
+            return {
+                root: {
+                "--button-height": rem(60),
+                "--button-padding-x": rem(30),
+                "--button-fz": rem(30),
+                },
+            };
+          }
+
+          return { root: {} };
+          `,
+      },
+    },
+  },
+} as RaikouConfig);
+```
+
+9. To override css variables, create a `cssVariablesResolver` object in the
+   Raikou theme and encapsulate it with JSON.stringify:
+
+Note: when referencing the theme use dot notation as in the example.
+
+```js
+import { rem } from "@raikou/theme";
+
+export default defineConfig({
+  ...
+  raikouTheme: {
+    ...
+    other: {
+      deepOrangeLight: "#E17900",
+      deepOrangeDark: "#FC8C0C",
+    },
+    cssVariablesResolver: JSON.stringify({
+      variables: {
+        "--raikou-hero-height": rem(20),
+        "--raikou-hero-width": rem(20),
+      },
       light: {
+        "--raikou-color-deep-orange": "theme.other.deepOrangeLight",
         ".button-root": {
           "--raikou-button-disabled-bg": "#E17900",
         },
       },
       dark: {
+        "--raikou-color-deep-orange": "theme.other.deepOrangeDark",
         ".button-root": {
           "--raikou-button-disabled-bg": "#FC8C0C",
         },
       },
-    }
+    }),
   },
 } as RaikouConfig);
 ```
@@ -331,14 +358,20 @@ attributes.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-11. Any mantine css variable that requires a color can be overriden by an unocss
-    color. Must be enclosed in var brackets.
+11. Any mantine css variable that requires any color can be overriden by a
+    unocss color. The only stipulation is that the unocss color must be enclosed
+    in var brackets. Finally, a css variable like --badge-bg or background or
+    color can only be used.
 
-Note: this dynamically adds the --violet-800 css variable and color equivilent
-to the css.
+Note: this dynamically adds the color equivilent to the css for both css
+variables violet-800 and red-300.
 
 ```js
-<Chip checked variant="filled" style={{ "--chip-bg": "var(--violet-800)" }}>
+<Chip
+  checked
+  variant="filled"
+  style={{ "--chip-bg": "var(--violet-800)", color: "var(--red-300)" }}
+>
   Programming
 </Chip>
 ```
