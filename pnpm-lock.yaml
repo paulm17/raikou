@@ -318,7 +318,89 @@ importers:
         specifier: ^17.7.2
         version: 17.7.2
 
-  apps/web:
+  apps/webbuild:
+    dependencies:
+      '@raikou/carousel':
+        specifier: workspace:*
+        version: link:../../packages/raikou/carousel
+      '@raikou/client':
+        specifier: workspace:*
+        version: link:../../packages/raikou/client
+      '@raikou/colors-generator':
+        specifier: workspace:*
+        version: link:../../packages/raikou/colors-generator
+      '@raikou/contextmenu':
+        specifier: workspace:*
+        version: link:../../packages/raikou/contextmenu
+      '@raikou/data-table':
+        specifier: workspace:*
+        version: link:../../packages/raikou/datatable
+      '@raikou/dropzone':
+        specifier: workspace:*
+        version: link:../../packages/raikou/dropzone
+      '@raikou/global-store':
+        specifier: workspace:*
+        version: link:../../packages/raikou/globalstore
+      '@raikou/hooks':
+        specifier: workspace:*
+        version: link:../../packages/raikou/hooks
+      '@raikou/server':
+        specifier: workspace:*
+        version: link:../../packages/raikou/server
+      '@raikou/system':
+        specifier: workspace:*
+        version: link:../../packages/raikou/system
+      '@raikou/theme':
+        specifier: workspace:*
+        version: link:../../packages/raikou/theme
+      '@tabler/icons-react':
+        specifier: ^2.25.0
+        version: 2.30.0(react@18.2.0)
+      '@visx/mock-data':
+        specifier: ^3.3.0
+        version: 3.3.0
+      next:
+        specifier: ^14.0.4
+        version: 14.0.4(@babel/core@7.23.6)(react-dom@18.2.0)(react@18.2.0)(sass@1.69.5)
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      zustand:
+        specifier: ^4.4.0
+        version: 4.4.1(@types/react@18.2.23)(react@18.2.0)
+    devDependencies:
+      '@types/node':
+        specifier: 20.5.1
+        version: 20.5.1
+      '@types/react':
+        specifier: ^18.2.23
+        version: 18.2.23
+      '@types/react-dom':
+        specifier: ^18.2.8
+        version: 18.2.8
+      '@unocss/preset-attributify':
+        specifier: ^0.58.0
+        version: 0.58.0
+      '@unocss/preset-wind':
+        specifier: ^0.58.0
+        version: 0.58.0
+      postcss-purgecss-raikou:
+        specifier: workspace:*
+        version: link:../../packages/postcss-purgecss-raikou
+      postcss-unocss-raikou:
+        specifier: workspace:*
+        version: link:../../packages/postcss-unocss-raikou
+      typescript:
+        specifier: 5.1.6
+        version: 5.1.6
+      unocss:
+        specifier: ^0.58.0
+        version: 0.58.0(postcss@8.4.32)(vite@4.4.9)
+
+  apps/webdev:
     dependencies:
       '@raikou/carousel':
         specifier: workspace:*
@@ -13502,8 +13584,8 @@ packages:
     resolution: {integrity: sha512-zSuuuAlTMT4mzLj2nPnUm6fsE6270vdOfnpbJ+RmruU75UhLFvL0N2NgI7xpeS7NaB6hGqmd5pVpGTDYvi4Q3w==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
-      '@babel/template': 7.22.5
-      '@babel/types': 7.22.10
+      '@babel/template': 7.22.15
+      '@babel/types': 7.23.6
       '@types/babel__core': 7.20.1
       '@types/babel__traverse': 7.20.1
     dev: true
@@ -17465,7 +17547,7 @@ packages:
     resolution: {integrity: sha512-pzqtp31nLv/XFOzXGuvhCb8qhjmTVo5vjVk19XE4CRlSWz0KoeJ3bw9XsA7nOp9YBf4qHjwBxkDzKcME/J29Yg==}
     engines: {node: '>=8'}
     dependencies:
-      '@babel/core': 7.22.10
+      '@babel/core': 7.23.6
       '@babel/parser': 7.22.10
       '@istanbuljs/schema': 0.1.3
       istanbul-lib-coverage: 3.2.0
