@@ -24,7 +24,7 @@
   "scripts": {
     "build": "tsup src/index.ts src/plugin.ts --dts --format esm,cjs --clean && pnpm run minify && pnpm run build:css && pnpm run build:support_files",
     "build:css": "postcss src/styles.css --dir dist",
-    "build:support_files": "if [[ \"$GITHUB_ACTIONS\" == \"true\" ]]; then pnpm run build:github:support_files; else pnpm run build:local:support_files; fi",
+    "build:support_files": "if [[ \"$GITHUB_RUN_ID\" != \"\" ]]; then pnpm run build:github:support_files; else pnpm run build:local:support_files; fi",
     "build:github:support_files": "if [[ \"$OSTYPE\" == \"darwin\"* ]]; then pnpm run build:global:mac_component_names && pnpm run build:global:mac_css_modules; elif [[ \"$OSTYPE\" == \"linux\"* ]]; then pnpm run build:global:linux_component_names && pnpm run build:global:linux_css_modules; fi",
     "build:github:linux_component_names": "/home/runner/work/raikou/raikou/packages/raikou/system/src/support/component_names/linux_component-names --config /packages/raikou/system/src/support/component_names/config.toml --output /packages/raikou/system/dist/component_names.txt",
     "build:github:linux_css_modules": "/home/runner/work/raikou/raikou/packages/raikou/system/src/support/css_modules/linux_css-modules --config /packages/raikou/system/src/support/css_modules/config.toml --output /packages/raikou/system/dist/css_modules.txt",
