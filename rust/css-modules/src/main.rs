@@ -2,7 +2,9 @@ use regex::Regex;
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::Write;
+use std::path::PathBuf;
 use std::{ fs, env };
+use clap::Parser;
 use toml;
 use serde::{ Serialize, Deserialize };
 use walkdir::WalkDir;
@@ -18,10 +20,20 @@ struct Files {
   other_dir: Vec<String>,
 }
 
+#[derive(Parser)]
+struct Args {
+  #[arg(long)]
+  config: Option<String>,
+
+  #[arg(long)]
+  output: Option<PathBuf>,
+}
+
 fn main() {
-  let args: Vec<String> = env::args().collect();
-  let (config, file, dir) = parse_args(args);
-  let toml_str = fs::read_to_string(config.unwrap()).unwrap();
+  let (dir, config, file) = parse_args();
+  let toml_str = fs
+    ::read_to_string(format!("{}{}", dir.clone().unwrap(), config.unwrap()))
+    .unwrap();
 
   let config: Config = toml::from_str(&toml_str).unwrap();
 
@@ -54,8 +66,7 @@ fn get_component_cssmodules(
   path: String
 ) -> HashMap<String, Vec<String>> {
   let mut modules: HashMap<String, Vec<String>> = HashMap::new();
-
-  let component_path = format!("{}/{}", dir, path);
+  let component_path = format!("{}/packages/raikou/{}", dir, path);
 
   let paths: Vec<String> = WalkDir::new(component_path)
     .into_iter()
@@ -116,7 +127,11 @@ fn get_other_component_cssmodules(
   let mut modules: HashMap<String, Vec<String>> = HashMap::new();
 
   for path in paths {
-    let component_file = format!("{}/{}/dist/index.mjs", dir, path);
+    let component_file = format!(
+      "{}/packages/raikou/{}/dist/index.mjs",
+      dir,
+      path
+    );
 
     let file_contents = fs
       ::read_to_string(component_file.clone())
@@ -171,71 +186,117 @@ fn print_csv(data: &HashMap<String, Vec<String>>) -> String {
   csv_string
 }
 
-fn parse_args(
-  args: Vec<String>
-) -> (Option<String>, Option<File>, Option<String>) {
-  let mut config: Option<String> = None;
-  let mut file: Option<File> = None;
-  let mut dir: Option<String> = None;
+// fn parse_args(
+//   args: Vec<String>
+// ) -> (Option<String>, Option<String>, Option<File>) {
+//   let mut config: Option<String> = None;
+//   let mut file: Option<File> = None;
 
-  for arg in &args {
-    if arg == "-config" {
-      if
-        let Some(next_arg) = args.get(
-          args
-            .iter()
-            .position(|x| x == arg)
-            .unwrap() + 1
-        )
-      {
-        let args = next_arg.clone();
-        config = Some(args);
-      }
-    }
+//   let current_dir = get_current_dir();
 
-    if arg == "-o" {
-      let file_path =
-        &args
-          [
+//   if current_dir.is_none() {
+//     eprintln!("raikou directory was not found in path. Exiting...");
+//     std::process::exit(1);
+//   }
 
-              args
-                .iter()
-                .position(|r| r == arg)
-                .unwrap() + 1
+//   for arg in &args {
+//     if arg == "-o" {
+//       let file_path =
+//         &args
+//           [
 
-          ];
-      file = File::create(file_path).ok();
-    }
+//               args
+//                 .iter()
+//                 .position(|r| r == arg)
+//                 .unwrap() + 1
 
-    if arg == "-d" {
-      if
-        let Some(next_arg) = args.get(
-          args
-            .iter()
-            .position(|x| x == arg)
-            .unwrap() + 1
-        )
-      {
-        let args = next_arg.clone();
-        dir = Some(args);
-      }
-    }
+//           ];
+//       file = File::create(
+//         format!("{}{}", current_dir.clone().unwrap(), file_path)
+//       ).ok();
+//     }
+
+//     if arg == "-config" {
+//       if
+//         let Some(next_arg) = args.get(
+//           args
+//             .iter()
+//             .position(|x| x == arg)
+//             .unwrap() + 1
+//         )
+//       {
+//         let args = next_arg.clone();
+//         config = Some(format!("{}{}", current_dir.clone().unwrap(), args));
+//       }
+//     }
+//   }
+
+//   if config.is_none() {
+//     eprintln!("param -config was not provided. Exiting...");
+//     std::process::exit(1);
+//   }
+
+//   if file.is_none() {
+//     eprintln!("param -o was not provided. Exiting...");
+//     std::process::exit(1);
+//   }
+
+//   (current_dir, config, file)
+// }
+
+fn parse_args() -> (Option<String>, Option<String>, Option<File>) {
+  let args: Args = Args::parse();
+
+  let current_dir = get_current_dir();
+
+  if current_dir.is_none() {
+    eprintln!("raikou directory was not found in path. Exiting...");
+    std::process::exit(1);
   }
 
-  if config.is_none() {
+  if args.config.is_none() {
     eprintln!("param -config was not provided. Exiting...");
     std::process::exit(1);
   }
 
-  if file.is_none() {
+  if args.output.is_none() {
     eprintln!("param -o was not provided. Exiting...");
     std::process::exit(1);
   }
 
-  if dir.is_none() {
-    eprintln!("param -d was not provided. Exiting...");
-    std::process::exit(1);
-  }
+  let file = match
+    File::create(
+      format!(
+        "{}{}",
+        current_dir.clone().unwrap(),
+        &args.output.unwrap().display()
+      )
+    )
+  {
+    Ok(file) => Some(file),
+    Err(_) => {
+      eprintln!("Failed to create file. Exiting...");
+      std::process::exit(1);
+    }
+  };
 
-  (config, file, dir)
+  (current_dir, args.config, file)
+}
+
+fn get_current_dir() -> Option<String> {
+  let current_dir = env::current_dir().unwrap();
+  let path = current_dir.display().to_string();
+  let components: Vec<&str> = path.split('/').collect();
+
+  match components.iter().position(|&r| r == "raikou") {
+    Some(raikou_index) => {
+      let path_up_to_raikou: Vec<&str> = components
+        .into_iter()
+        .take(raikou_index + 1)
+        .collect();
+      let path_up_to_raikou = path_up_to_raikou.join("/");
+      Some(path_up_to_raikou)
+    }
+    None => None,
+  }
 }

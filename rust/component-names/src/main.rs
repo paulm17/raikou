@@ -2,7 +2,9 @@ use regex::Regex;
 use std::collections::HashSet;
 use std::fs::File;
 use std::io::Write;
+use std::path::PathBuf;
 use std::{ fs, env };
+use clap::Parser;
 use toml;
 use serde::{ Serialize, Deserialize };
 
@@ -17,16 +19,26 @@ struct Components {
   other_dir: Vec<String>,
 }
 
+#[derive(Parser)]
+struct Args {
+  #[arg(long)]
+  config: Option<String>,
+
+  #[arg(long)]
+  output: Option<PathBuf>,
+}
+
 fn main() {
-  let args: Vec<String> = env::args().collect();
-  let (config, file) = parse_args(args);
-  let toml_str = fs::read_to_string(config.unwrap()).unwrap();
+  let (dir, config, file) = parse_args();
+  let toml_str = fs
+    ::read_to_string(format!("{}{}", dir.clone().unwrap(), config.unwrap()))
+    .unwrap();
 
   let config: Config = toml::from_str(&toml_str).unwrap();
 
   let mut all_components = Vec::new();
 
-  for x in get_imported_modules(config.components.core_dir) {
+  for x in get_imported_modules(dir.unwrap(), config.components.core_dir) {
     all_components.push(x.to_string());
   }
 
@@ -80,11 +92,14 @@ fn get_component_name(new_match: String) -> Vec<String> {
   capitalized_words
 }
 
-fn get_imported_modules(lib_path: Vec<String>) -> Vec<String> {
+fn get_imported_modules(dir: String, lib_path: Vec<String>) -> Vec<String> {
   let mut imports: HashSet<String> = HashSet::new();
 
   for path in lib_path {
-    let file_contents = fs::read_to_string(path).expect("Unable to read file");
+    let full_path = format!("{}{}", dir, path);
+    let file_contents = fs
+      ::read_to_string(full_path)
+      .expect("Unable to read file");
     let re = Regex::new(r#"export \* from "([^"]+)";"#).unwrap();
 
     for cap in re.captures_iter(&file_contents) {
@@ -100,82 +115,59 @@ fn get_imported_modules(lib_path: Vec<String>) -> Vec<String> {
   imports.into_iter().collect()
 }
 
-// fn parse_args(args: Vec<String>) -> Option<String> {
-//   let mut config: Option<String> = None;
+fn parse_args() -> (Option<String>, Option<String>, Option<File>) {
+  let args: Args = Args::parse();
 
-//   for arg in &args {
-//     if arg == "-o" || arg == "--out-file" {
-//           let file_path = &args[args.iter().position(|r| r == arg).unwrap() + 1];
-//           return File::create(file_path).ok();
-//       }
+  let current_dir = get_current_dir();
 
-//     if arg == "-config" {
-//       if
-//         let Some(next_arg) = args.get(
-//           args
-//             .iter()
-//             .position(|x| x == arg)
-//             .unwrap() + 1
-//         )
-//       {
-//         let args = next_arg.clone();
-
-//         config = Some(args);
-//       }
-//     }
-//   }
-
-//   if config.is_none() {
-//     eprintln!("param -config was not provided.  Exiting...");
-//     std::process::exit(1);
-//   }
-
-//   config
-// }
-
-fn parse_args(args: Vec<String>) -> (Option<String>, Option<File>) {
-  let mut config: Option<String> = None;
-  let mut file: Option<File> = None;
-
-  for arg in &args {
-    if arg == "-o" {
-      let file_path =
-        &args
-          [
-
-              args
-                .iter()
-                .position(|r| r == arg)
-                .unwrap() + 1
-
-          ];
-      file = File::create(file_path).ok();
-    }
-
-    if arg == "-config" {
-      if
-        let Some(next_arg) = args.get(
-          args
-            .iter()
-            .position(|x| x == arg)
-            .unwrap() + 1
-        )
-      {
-        let args = next_arg.clone();
-        config = Some(args);
-      }
-    }
+  if current_dir.is_none() {
+    eprintln!("raikou directory was not found in path. Exiting...");
+    std::process::exit(1);
   }
 
-  if config.is_none() {
+  if args.config.is_none() {
     eprintln!("param -config was not provided. Exiting...");
     std::process::exit(1);
   }
 
-  if file.is_none() {
-    eprintln!("param -config was not provided. Exiting...");
+  if args.output.is_none() {
+    eprintln!("param -o was not provided. Exiting...");
     std::process::exit(1);
   }
 
-  (config, file)
+  let file = match
+    File::create(
+      format!(
+        "{}{}",
+        current_dir.clone().unwrap(),
+        &args.output.unwrap().display()
+      )
+    )
+  {
+    Ok(file) => Some(file),
+    Err(_) => {
+      eprintln!("Failed to create file. Exiting...");
+      std::process::exit(1);
+    }
+  };
+
+  (current_dir, args.config, file)
+}
+
+fn get_current_dir() -> Option<String> {
+  let current_dir = env::current_dir().unwrap();
+  let path = current_dir.display().to_string();
+  let components: Vec<&str> = path.split('/').collect();
+
+  match components.iter().position(|&r| r == "raikou") {
+    Some(raikou_index) => {
+      let path_up_to_raikou: Vec<&str> = components
+        .into_iter()
+        .take(raikou_index + 1)
+        .collect();
+      let path_up_to_raikou = path_up_to_raikou.join("/");
+      Some(path_up_to_raikou)
+    }
+    None => None,
+  }
 }

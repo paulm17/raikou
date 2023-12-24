@@ -1,7 +1,7 @@
 [components]
 core_dir = [
-  "/Users/paul/development/src/github/raikou/packages/raikou/server/dist/index.mjs",
-  "/Users/paul/development/src/github/raikou/packages/raikou/client/dist/index.mjs"
+  "/packages/raikou/server/dist/index.mjs",
+  "/packages/raikou/client/dist/index.mjs"
 ]
 other_dir = [
   "@raikou/carousel",
