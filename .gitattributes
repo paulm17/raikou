@@ -1,0 +1,2 @@
+*_component-names filter=lfs diff=lfs merge=lfs -text
+*_css-modules filter=lfs diff=lfs merge=lfs -text
