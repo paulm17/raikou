@@ -1,5 +1,6 @@
 import fs from "fs-extra";
 import path from "node:path";
+import { returnHome } from "./common";
 
 const coreDir = [
   "/packages/raikou/server/dist/index.mjs",
@@ -98,16 +99,4 @@ function getComponentName(newMatch: string) {
   });
 
   return capitalizedWords;
-}
-
-function returnHome(path: string) {
-  let directories = path.split("/");
-  let resultPath = "";
-
-  directories.some((dir, i) => {
-    resultPath = directories.slice(0, i + 1).join("/");
-    return dir === "raikou";
-  });
-
-  return resultPath;
 }

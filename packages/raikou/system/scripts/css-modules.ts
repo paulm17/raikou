@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+import { returnHome } from "./common";
 
 const componentsDir = "components";
 
@@ -157,16 +158,4 @@ function getComponentName(dir: string) {
   const index = components.indexOf("dist");
 
   return components[index - 1];
-}
-
-function returnHome(path: string) {
-  let directories = path.split("/");
-  let resultPath = "";
-
-  directories.some((dir, i) => {
-    resultPath = directories.slice(0, i + 1).join("/");
-    return dir === "raikou";
-  });
-
-  return resultPath;
 }
