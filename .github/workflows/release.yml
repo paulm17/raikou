@@ -21,20 +21,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Git LFS
-        run: sudo apt-get install git-lfs
-
-      - name: Pull LFS files
-        run: git lfs pull
-
       - name: Install
         uses: ./.github/composite-actions/install
 
       - name: Build filter System
-        run: pnpm build --filter=\\!@raikou/system
+        run: pnpm build:exclude:system
 
       - name: Build System
-        run: pnpm build --filter=@raikou/system
+        run: pnpm build:system
 
       - name: Create release Pull Request or publish to NPM
         id: changesets
