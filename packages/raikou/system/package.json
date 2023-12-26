@@ -22,7 +22,7 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "build": "tsup src/index.ts src/plugin.ts --dts --format esm,cjs --clean && pnpm run minify && pnpm run build:css && pnpm run build:support_files",
+    "build": "tsup src/index.ts src/plugin.ts --dts --format esm,cjs --clean && pnpm run minify && pnpm run build:css && echo $GITHUB_EVENT_NAME && echo '|' && echo $GITHUB_WORKFLOW && echo '|' && echo $GITHUB_WORKSPACE",
     "build:css": "postcss src/styles.css --dir dist",
     "build:support_files": "esno scripts/generate-support-files",
     "lint": "eslint \"**/*.ts*\"",

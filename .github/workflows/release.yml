@@ -24,11 +24,8 @@ jobs:
       - name: Install
         uses: ./.github/composite-actions/install
 
-      - name: Build filter System
-        run: pnpm build:exclude:system
-
-      - name: Build System
-        run: pnpm build:system
+      - name: Build
+        run: pnpm build
 
       - name: Create release Pull Request or publish to NPM
         id: changesets
