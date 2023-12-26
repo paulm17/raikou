@@ -3,6 +3,7 @@
   "scripts": {
     "prepare": "husky install",
     "build": "turbo run build --filter=!@raikou/system && turbo run build --filter=@raikou/system",
+    "build:github": "./buildAll.sh",
     "build:fast": "turbo run build:fast --filter=!./examples/* --filter=!*props-docs",
     "build:prop-docs": "pnpm typedocs && pnpm --filter=*props-docs build",
     "build:support_files": "esno packages/raikou/system/scripts/generate-support-files",

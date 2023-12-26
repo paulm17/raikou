@@ -22,8 +22,9 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "build": "tsup src/index.ts src/plugin.ts --dts --format esm,cjs --clean && pnpm run minify && pnpm run build:css",
+    "build": "tsup src/index.ts src/plugin.ts --dts --format esm,cjs --clean && pnpm run minify && pnpm run build:css && pnpm run build:support_files",
     "build:css": "postcss src/styles.css --dir dist",
+    "build:support_files": "esno scripts/generate-support-files",
     "lint": "eslint \"**/*.ts*\"",
     "minify": "jsmin -o dist/index.js dist/index.js && jsmin -o dist/index.mjs dist/index.mjs"
   },
