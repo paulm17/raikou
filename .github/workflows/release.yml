@@ -27,6 +27,9 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Support files
+        run: pnpm build:support_files
+
       - name: Create release Pull Request or publish to NPM
         id: changesets
         uses: changesets/action@v1
