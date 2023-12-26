@@ -41,6 +41,7 @@ pnpm --filter="@raikou/title" run build
 pnpm --filter="@raikou/theme-icon" run build
 pnpm --filter="@raikou/unstyled-button" run build
 pnpm --filter="@raikou/visually-hidden" run build
+pnpm --filter="@raikou/server" run build
 
 # build client
 pnpm --filter="@raikou/accordion" run build
@@ -104,6 +105,7 @@ pnpm --filter="@raikou/text-input" run build
 pnpm --filter="@raikou/tooltip" run build
 pnpm --filter="@raikou/transition" run build
 pnpm --filter="@raikou/typography-styles-provider" run build
+pnpm --filter="@raikou/client" run build
 
 # build other
 pnpm --filter="carousel" run build
