@@ -1,6 +1,7 @@
 import { defineConfig, UserConfig } from "unocss";
 import presetAttributify from "@unocss/preset-attributify";
 import presetWind from "@unocss/preset-wind";
+import transformerVariantGroup from "@unocss/transformer-variant-group";
 const presetRaikou = require("@raikou/system/plugin.js").default;
 import { generateColors } from "@raikou/colors-generator";
 import { rem, UnoCSSRaikouTheme } from "@raikou/theme";
@@ -20,6 +21,7 @@ export default defineConfig({
     }),
     presetRaikou(),
   ],
+  transformers: [transformerVariantGroup()],
   // theme: {
   //   colors: {
   //     blue: generateColors("#5474B4"),

@@ -1,1 +1,13 @@
-var __defProp=Object.defineProperty,__getOwnPropSymbols=Object.getOwnPropertySymbols,__hasOwnProp=Object.prototype.hasOwnProperty,__propIsEnum=Object.prototype.propertyIsEnumerable,__defNormalProp=(r,e,o)=>e in r?__defProp(r,e,{enumerable:!0,configurable:!0,writable:!0,value:o}):r[e]=o,__spreadValues=(r,e)=>{for(var o in e=e||{})__hasOwnProp.call(e,o)&&__defNormalProp(r,o,e[o]);if(__getOwnPropSymbols)for(var o of __getOwnPropSymbols(e))__propIsEnum.call(e,o)&&__defNormalProp(r,o,e[o]);return r},__objRest=(r,e)=>{var o={};for(t in r)__hasOwnProp.call(r,t)&&e.indexOf(t)<0&&(o[t]=r[t]);if(null!=r&&__getOwnPropSymbols)for(var t of __getOwnPropSymbols(r))e.indexOf(t)<0&&__propIsEnum.call(r,t)&&(o[t]=r[t]);return o};import React from"react";import{NumericFormat}from"react-number-format";import{useProps}from"@raikou/core";var defaultProps={};function NumberFormatter(r){var r=useProps("NumberFormatter",defaultProps,r),e=r["value"],r=__objRest(r,["value","defaultValue"]);return void 0===e?null:React.createElement(NumericFormat,__spreadValues({displayType:"text",value:e},r))}var extendNumberFormatter=r=>r;NumberFormatter.extend=extendNumberFormatter,NumberFormatter.displayName="@raikou/core/NumberFormatter";export{NumberFormatter};
+var __defProp=Object.defineProperty;var __getOwnPropSymbols=Object.getOwnPropertySymbols;var __hasOwnProp=Object.prototype.hasOwnProperty;var __propIsEnum=Object.prototype.propertyIsEnumerable;var __defNormalProp=(obj,key,value)=>key in obj?__defProp(obj,key,{enumerable:true,configurable:true,writable:true,value}):obj[key]=value;var __spreadValues=(a,b)=>{for(var prop in b||(b={}))
+if(__hasOwnProp.call(b,prop))
+__defNormalProp(a,prop,b[prop]);if(__getOwnPropSymbols)
+for(var prop of __getOwnPropSymbols(b)){if(__propIsEnum.call(b,prop))
+__defNormalProp(a,prop,b[prop]);}
+return a;};var __objRest=(source,exclude)=>{var target={};for(var prop in source)
+if(__hasOwnProp.call(source,prop)&&exclude.indexOf(prop)<0)
+target[prop]=source[prop];if(source!=null&&__getOwnPropSymbols)
+for(var prop of __getOwnPropSymbols(source)){if(exclude.indexOf(prop)<0&&__propIsEnum.call(source,prop))
+target[prop]=source[prop];}
+return target;};import React from"react";import{NumericFormat}from"react-number-format";import{useProps}from"@raikou/core";var defaultProps={};function NumberFormatter(_props){const props=useProps("NumberFormatter",defaultProps,_props);const _a=props,{value,defaultValue}=_a,others=__objRest(_a,["value","defaultValue"]);if(value===void 0){return null;}
+return React.createElement(NumericFormat,__spreadValues({displayType:"text",value},others));}
+var extendNumberFormatter=(c)=>c;NumberFormatter.extend=extendNumberFormatter;NumberFormatter.displayName="@raikou/core/NumberFormatter";export{NumberFormatter};

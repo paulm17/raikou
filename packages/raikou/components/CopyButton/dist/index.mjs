@@ -1,1 +1,12 @@
-var __defProp=Object.defineProperty,__getOwnPropSymbols=Object.getOwnPropertySymbols,__hasOwnProp=Object.prototype.hasOwnProperty,__propIsEnum=Object.prototype.propertyIsEnumerable,__defNormalProp=(o,r,e)=>r in o?__defProp(o,r,{enumerable:!0,configurable:!0,writable:!0,value:e}):o[r]=e,__spreadValues=(o,r)=>{for(var e in r=r||{})__hasOwnProp.call(r,e)&&__defNormalProp(o,e,r[e]);if(__getOwnPropSymbols)for(var e of __getOwnPropSymbols(r))__propIsEnum.call(r,e)&&__defNormalProp(o,e,r[e]);return o},__objRest=(o,r)=>{var e={};for(t in o)__hasOwnProp.call(o,t)&&r.indexOf(t)<0&&(e[t]=o[t]);if(null!=o&&__getOwnPropSymbols)for(var t of __getOwnPropSymbols(o))r.indexOf(t)<0&&__propIsEnum.call(o,t)&&(e[t]=o[t]);return e};import React from"react";import{useClipboard}from"@raikou/hooks";import{useProps}from"@raikou/core";var defaultProps={timeout:1e3};function CopyButton(o){const r=useProps("CopyButton",defaultProps,o),{children:e,timeout:t,value:p}=r,a=__objRest(r,["children","timeout","value"]),_=useClipboard({timeout:t});return React.createElement(React.Fragment,null,e(__spreadValues({copy:()=>_.copy(p),copied:_.copied},a)))}CopyButton.displayName="@raikou/core/CopyButton";export{CopyButton};
+var __defProp=Object.defineProperty;var __getOwnPropSymbols=Object.getOwnPropertySymbols;var __hasOwnProp=Object.prototype.hasOwnProperty;var __propIsEnum=Object.prototype.propertyIsEnumerable;var __defNormalProp=(obj,key,value)=>key in obj?__defProp(obj,key,{enumerable:true,configurable:true,writable:true,value}):obj[key]=value;var __spreadValues=(a,b)=>{for(var prop in b||(b={}))
+if(__hasOwnProp.call(b,prop))
+__defNormalProp(a,prop,b[prop]);if(__getOwnPropSymbols)
+for(var prop of __getOwnPropSymbols(b)){if(__propIsEnum.call(b,prop))
+__defNormalProp(a,prop,b[prop]);}
+return a;};var __objRest=(source,exclude)=>{var target={};for(var prop in source)
+if(__hasOwnProp.call(source,prop)&&exclude.indexOf(prop)<0)
+target[prop]=source[prop];if(source!=null&&__getOwnPropSymbols)
+for(var prop of __getOwnPropSymbols(source)){if(exclude.indexOf(prop)<0&&__propIsEnum.call(source,prop))
+target[prop]=source[prop];}
+return target;};import React from"react";import{useClipboard}from"@raikou/hooks";import{useProps}from"@raikou/core";var defaultProps={timeout:1e3};function CopyButton(props){const _a=useProps("CopyButton",defaultProps,props),{children,timeout,value}=_a,others=__objRest(_a,["children","timeout","value"]);const clipboard=useClipboard({timeout});const copy=()=>clipboard.copy(value);return React.createElement(React.Fragment,null,children(__spreadValues({copy,copied:clipboard.copied},others)));}
+CopyButton.displayName="@raikou/core/CopyButton";export{CopyButton};

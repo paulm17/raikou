@@ -14,6 +14,9 @@ export default function Page() {
       >
         badge
       </Badge>
+      <div className="hover:(bg-gray-400 font-medium) font-(light mono)">
+        hello
+      </div>
     </>
   );
 }

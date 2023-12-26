@@ -5,6 +5,7 @@ import { BoxProps, ElementProps, RaikouShadow, RaikouSpacing, RaikouSize, Styles
 import * as CSS from 'csstype';
 import * as PropTypes from 'prop-types';
 import { Interaction } from 'scheduler/tracing';
+import { RemoveScroll } from 'react-remove-scroll';
 
 interface PortalProps extends React$2.ComponentPropsWithoutRef<"div"> {
     /** Portal children, for example, custom modal or popover */
@@ -48,6 +49,7 @@ interface TransitionProps {
 }
 type TransitionOverride = Partial<Omit<TransitionProps, "mounted">>;
 
+type RemoveScrollProps = Omit<React$2.ComponentProps<typeof RemoveScroll>, "children">;
 interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
     /** If set modal/drawer will not be unmounted from the DOM when it is hidden, `display: none` styles will be added instead, `false` by default */
     keepMounted?: boolean;
@@ -83,6 +85,8 @@ interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
     padding?: RaikouSpacing;
     /** Controls width of the content area, `'md'` by default */
     size?: RaikouSize | (string & {}) | number;
+    /** Props passed down to react-remove-scroll, can be used to customize scroll lock behavior */
+    removeScrollProps?: RemoveScrollProps;
 }
 
 // Type definitions for React 18.2
@@ -3969,4 +3973,4 @@ declare const modals: {
     }) => void;
 };
 
-export { ContextModalProps, ModalsProvider, ModalsProviderProps, RaikouModal, RaikouModals, RaikouModalsOverride, closeAllModals, closeModal, modals, openConfirmModal, openContextModal, openModal, useModals };
+export { type ContextModalProps, ModalsProvider, type ModalsProviderProps, type RaikouModal, type RaikouModals, type RaikouModalsOverride, closeAllModals, closeModal, modals, openConfirmModal, openContextModal, openModal, useModals };

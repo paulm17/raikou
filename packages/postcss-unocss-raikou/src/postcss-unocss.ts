@@ -2,7 +2,7 @@ import { readFile, stat } from 'node:fs/promises';
 import { normalize } from 'node:path';
 import process from 'node:process';
 import os from 'node:os';
-import type { UnoGenerator } from '@unocss/core';
+import type { UnoGenerator, UserConfig } from '@unocss/core';
 import fg from 'fast-glob';
 import type { Root } from 'postcss';
 import postcss from 'postcss';
@@ -13,6 +13,8 @@ import { hasThemeFn } from '@unocss/rule-utils';
 import { parseColor } from '@unocss/preset-mini';
 import { createTheme, GenerateRaikouCSSVariables, colorNames } from '@raikou/theme';
 import type { UnoPostcssPluginOptions } from './types';
+import { applyTransformers } from './transformer/transformers';
+import { createContext } from './integration/context';
 
 function matchClassesObject(content: string) {
   const regex = new RegExp(`(?<=\{\{).*?(?=\}\})`, 's');
@@ -276,11 +278,24 @@ module.exports = (options: UnoPostcssPluginOptions = {}) => {
             });
           }
 
-          pagesContent.add(content);
+          // const cfg = await config;
+
+          // const ctx = createContext<UserConfig>(cfg.config as any, {
+          //   envMode: process.env.NODE_ENV === 'development' ? 'dev' : 'build',
+          //   ...{},
+          // });
+
+          // // transformer
+          // const transformResult = await applyTransformers(ctx, flattenedContent, file, 'pre');
+          // const newContent = transformResult ? transformResult.code : flattenedContent;
+
+          // pagesContent.add(newContent);
 
           const { matched } = await uno.generate(flattenedContent, {
             id: file,
           });
+
+          // console.log(file, matched);
 
           fileClassMap.set(file, matched);
         })

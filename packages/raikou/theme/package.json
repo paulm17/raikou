@@ -24,7 +24,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "tsup src/index.ts --dts --format esm,cjs --clean && pnpm minify",
-    "minify": "uglifyjs --compress --mangle --output dist/index.js -- dist/index.js && uglifyjs --compress --mangle --output dist/index.mjs -- dist/index.mjs",
+    "minify": "jsmin -o dist/index.js dist/index.js && jsmin -o dist/index.mjs dist/index.mjs",
     "lint": "eslint \"**/*.ts*\""
   },
   "peerDependencies": {

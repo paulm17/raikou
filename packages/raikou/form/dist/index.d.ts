@@ -162,4 +162,4 @@ declare function yupResolver(schema: any): (values: Record<string, any>) => Form
 
 declare function joiResolver(schema: any, options?: any): (values: Record<string, any>) => FormErrors;
 
-export { FORM_INDEX, Form, FormErrors, TransformedValues, UseFormInput, UseFormReturnType, createFormContext, hasLength, isEmail, isInRange, isNotEmpty, joiResolver, matches, matchesField, superstructResolver, useForm, yupResolver, zodResolver };
+export { FORM_INDEX, Form, type FormErrors, type TransformedValues, type UseFormInput, type UseFormReturnType, createFormContext, hasLength, isEmail, isInRange, isNotEmpty, joiResolver, matches, matchesField, superstructResolver, useForm, yupResolver, zodResolver };
