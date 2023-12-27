@@ -1,7 +1,5 @@
 export function returnHome(path: string) {
-  console.log("hello path", path);
-
-  if (path === "/home/runner/work/raikou/raikou") {
+  if (path === "/home/runner/work/raikou/raikou/packages/raikou/system") {
     return "/home/runner/work/raikou/raikou";
   }
 
