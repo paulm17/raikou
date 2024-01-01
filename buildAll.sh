@@ -108,19 +108,20 @@ pnpm --filter="@raikou/typography-styles-provider" run build
 pnpm --filter="@raikou/client" run build
 
 # build other
-pnpm --filter="carousel" run build
-pnpm --filter="code-highlight" run build
-pnpm --filter="color-scheme" run build
-pnpm --filter="contextmenu" run build
-pnpm --filter="datatable" run build
-pnpm --filter="dates" run build
-pnpm --filter="direction" run build
-pnpm --filter="dropzone" run build
-pnpm --filter="modals" run build
-pnpm --filter="notifications" run build
-pnpm --filter="nprogress" run build
-pnpm --filter="spotlight" run build
-pnpm --filter="tiptap" run build
+pnpm --filter="@raikou/carousel" run build
+pnpm --filter="@raikou/code-highlight" run build
+pnpm --filter="@raikou/color-scheme" run build
+pnpm --filter="@raikou/contextmenu" run build
+pnpm --filter="@raikou/datatable" run build
+pnpm --filter="@raikou/dates" run build
+pnpm --filter="@raikou/direction" run build
+pnpm --filter="@raikou/dropzone" run build
+pnpm --filter="@raikou/modals" run build
+pnpm --filter="@raikou/notifications" run build
+pnpm --filter="@raikou/nprogress" run build
+pnpm --filter="@raikou/spotlight" run build
+pnpm --filter="@raikou/theme" run build
+pnpm --filter="@raikou/tiptap" run build
 
 # build system
 pnpm --filter="@raikou/system" run build
