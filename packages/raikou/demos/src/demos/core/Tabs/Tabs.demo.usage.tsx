@@ -6,7 +6,7 @@ import {
 } from "@tabler/icons-react";
 import { RaikouDemo } from "@raikou/ds";
 import { Tabs, TabsProps } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 
 function Wrapper(props: TabsProps) {
   const panelProps =

@@ -3,7 +3,7 @@ import { IconExternalLink } from "@tabler/icons-react";
 import { RaikouDemo } from "@raikou/ds";
 import { Button } from "@raikou/server";
 import { Menu } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 
 const code = `
 import { Menu, Button, rem } from '@raikou/core';

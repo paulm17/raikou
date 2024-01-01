@@ -1,7 +1,7 @@
 import React from "react";
 import { RaikouDemo } from "@raikou/ds";
 import { Button } from "@raikou/server";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 
 const code = `
 import { Button, rem } from '@raikou/core';

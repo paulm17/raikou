@@ -1,7 +1,7 @@
 import React from "react";
 import { RaikouDemo } from "@raikou/ds";
 import { Badge, Group } from "@raikou/server";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { IconAt } from "@tabler/icons-react";
 
 const code = `

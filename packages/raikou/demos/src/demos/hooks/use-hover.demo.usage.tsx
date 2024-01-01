@@ -2,7 +2,7 @@ import React from "react";
 import { useHover } from "@raikou/hooks";
 import { RaikouDemo } from "@raikou/ds";
 import { Text } from "@raikou/server";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 
 const code = `
 import { useHover } from '@raikou/hooks';

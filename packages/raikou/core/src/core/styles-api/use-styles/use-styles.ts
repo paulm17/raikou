@@ -76,7 +76,6 @@ export function useStyles<Payload extends FactoryPayload>({
       props,
       stylesCtx,
     }),
-
     style: getStyle({
       theme,
       themeName,

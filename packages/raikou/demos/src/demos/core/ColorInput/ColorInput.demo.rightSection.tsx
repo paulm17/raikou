@@ -3,7 +3,7 @@ import { IconRefresh } from "@tabler/icons-react";
 import { RaikouDemo } from "@raikou/ds";
 import { ColorInput } from "@raikou/client";
 import { ActionIcon } from "@raikou/server";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 
 const code = `
 import { useState } from 'react';

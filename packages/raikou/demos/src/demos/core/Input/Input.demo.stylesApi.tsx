@@ -1,7 +1,7 @@
 import React from "react";
 import { RaikouDemo } from "@raikou/ds";
 import { Input } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { InputStylesApi } from "@raikou/styles-api";
 import { IconAt, IconChevronDown } from "@tabler/icons-react";
 

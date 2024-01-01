@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { RaikouDemo } from "@raikou/ds";
 import { Group, Text, Code } from "@raikou/server";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { useMove } from "@raikou/hooks";
 
 const code = `

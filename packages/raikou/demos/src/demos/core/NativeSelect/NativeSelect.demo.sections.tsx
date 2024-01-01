@@ -1,7 +1,7 @@
 import React from "react";
 import { RaikouDemo } from "@raikou/ds";
 import { NativeSelect } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { IconChevronDown, IconHash } from "@tabler/icons-react";
 
 const code = `

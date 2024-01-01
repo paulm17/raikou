@@ -1,1 +1,1 @@
-{"version":3,"sources":["../src/index.ts"],"sourcesContent":["function Hello() {\n  console.log(\"hello - A0003-01\");\n}\n\nexport { Hello };\n"],"mappings":";AAAA,SAAS,QAAQ;AACf,UAAQ,IAAI,kBAAkB;AAChC;","names":[]}
+{"version":3,"sources":["../src/index.ts"],"sourcesContent":["function Hello() {\n  console.log(\"hello - A0015-03\");\n}\n\nexport { Hello };\n"],"mappings":";AAAA,SAAS,QAAQ;AACf,UAAQ,IAAI,kBAAkB;AAChC;","names":[]}

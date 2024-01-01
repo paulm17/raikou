@@ -3,7 +3,7 @@ import { IconCheck } from "@tabler/icons-react";
 import { RaikouDemo } from "@raikou/ds";
 import { ActionIcon, Group, Text, Center } from "@raikou/server";
 import { RingProgress } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 
 const code = `
 import { ActionIcon, RingProgress, Text, Center } from '@raikou/core';

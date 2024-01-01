@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { RaikouDemo } from "@raikou/ds";
 import { Stepper, StepperProps } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 
 const code = `
 import { useState } from 'react';

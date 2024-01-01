@@ -2,7 +2,7 @@ import React from "react";
 import { RaikouDemo } from "@raikou/ds";
 import { IconAt } from "@tabler/icons-react";
 import { TagsInput } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { TagsInputStylesApi } from "@raikou/styles-api";
 
 const code = `

@@ -75,7 +75,7 @@
   }
 }
 
-.control {
+.control.control {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -130,7 +130,7 @@
   }
 }
 
-.indicator {
+.indicator.indicator {
   pointer-events: all;
   width: var(--_indicator-width);
   height: var(--_indicator-height);

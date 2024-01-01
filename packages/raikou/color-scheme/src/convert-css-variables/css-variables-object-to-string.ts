@@ -1,4 +1,4 @@
-import type { CssVariable } from "@raikou/core";
+type CssVariable = `--${string}`;
 
 export type CSSVariables = Record<CssVariable, string>;
 export type NestedCSSVariables = Record<string, CSSVariables>;

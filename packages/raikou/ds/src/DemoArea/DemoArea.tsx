@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@raikou/server";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 
 export interface DemoAreaProps {
   children?: React.ReactNode;

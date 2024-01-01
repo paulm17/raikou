@@ -34,6 +34,7 @@
     "@raikou/client": ">=0.0.1-alpha.1",
     "@raikou/hooks": ">=0.0.1-alpha.1",
     "@raikou/system": ">=0.0.1-alpha.1",
+    "@raikou/theme": ">=0.0.1-alpha.1",
     "@raikou/code-highlight": ">=0.0.1-alpha.1",
     "@tabler/icons-react": "^2.29.0",
     "react": "^18.2.0",
@@ -44,7 +45,7 @@
     "@raikou/server": "workspace:*",
     "@raikou/hooks": "workspace:*",
     "@raikou/system": "workspace:*",
-    "@storybook/react": "^7.4.6",
+    "@raikou/theme": "workspace:*","@storybook/react": "^7.4.6",
     "clsx": "2.0.0",
     "tslib": "^2.6.0"
   },

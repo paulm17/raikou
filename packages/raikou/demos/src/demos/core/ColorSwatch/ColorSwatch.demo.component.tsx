@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { RaikouDemo } from "@raikou/ds";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { CheckIcon } from "@raikou/client";
 import { ColorSwatch } from "@raikou/server";
 

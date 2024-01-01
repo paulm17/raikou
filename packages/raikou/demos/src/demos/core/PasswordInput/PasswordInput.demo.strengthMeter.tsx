@@ -3,7 +3,7 @@ import { IconX, IconCheck } from "@tabler/icons-react";
 import { RaikouDemo } from "@raikou/ds";
 import { Text, Box } from "@raikou/server";
 import { PasswordInput, Progress, Popover } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 
 const code = `
 import { useState } from 'react';

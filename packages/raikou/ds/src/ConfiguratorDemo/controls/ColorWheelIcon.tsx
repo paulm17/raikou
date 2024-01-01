@@ -1,5 +1,5 @@
 import React from "react";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 
 export function ColorWheelIcon() {
   return (

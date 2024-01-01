@@ -75,7 +75,7 @@
   top: calc(var(--_thumb-y-offset) - var(--_cp-thumb-size) / 2);
 }
 
-.swatch.swatch {
+.swatch {
   height: unset !important;
   width: unset !important;
   min-width: 0 !important;
@@ -141,7 +141,7 @@
   --_cp-thumb-size: var(--cp-thumb-size, rem(12px));
 
   position: relative;
-  height: calc(var(_--cp-thumb-size) + rem(2px));
+  height: calc(var(--_cp-thumb-size) + rem(2px));
   margin-left: calc(var(--_cp-thumb-size) / 2);
   margin-right: calc(var(--_cp-thumb-size) / 2);
   outline: none;

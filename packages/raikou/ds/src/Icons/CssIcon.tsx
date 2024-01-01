@@ -1,4 +1,4 @@
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import React from "react";
 
 interface CssIconProps extends React.ComponentPropsWithoutRef<"svg"> {

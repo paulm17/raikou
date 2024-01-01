@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { RaikouDemo } from "@raikou/ds";
 import { IconClock } from "@tabler/icons-react";
 import { ActionIcon } from "@raikou/server";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { TimeInput } from "@raikou/dates";
 
 const code = `

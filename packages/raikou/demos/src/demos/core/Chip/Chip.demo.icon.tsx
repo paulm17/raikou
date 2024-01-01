@@ -1,7 +1,7 @@
 import React from "react";
 import { RaikouDemo } from "@raikou/ds";
 import { Chip } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { IconX } from "@tabler/icons-react";
 
 const code = `

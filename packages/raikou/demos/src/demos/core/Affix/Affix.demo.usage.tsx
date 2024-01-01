@@ -4,7 +4,7 @@ import { useWindowScroll } from "@raikou/hooks";
 import { RaikouDemo } from "@raikou/ds";
 import { Button, Text } from "@raikou/server";
 import { Transition, Affix } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 
 const code = `
 import { IconArrowUp } from '@tabler/icons-react';

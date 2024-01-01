@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Text } from "@raikou/server";
 import { Portal } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { useHeadroom } from "@raikou/hooks";
 import { RaikouDemo } from "@raikou/ds";
 

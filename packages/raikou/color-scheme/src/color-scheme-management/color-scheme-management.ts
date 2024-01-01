@@ -1,3 +1,4 @@
+"use client";
 import { useTheme as UseTheme } from "next-themes";
 
 export function useColorScheme() {

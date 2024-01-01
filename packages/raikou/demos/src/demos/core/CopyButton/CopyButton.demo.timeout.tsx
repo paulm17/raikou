@@ -2,7 +2,7 @@ import React from "react";
 import { RaikouDemo } from "@raikou/ds";
 import { CopyButton, Tooltip } from "@raikou/client";
 import { ActionIcon } from "@raikou/server";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { IconCopy, IconCheck } from "@tabler/icons-react";
 
 const code = `

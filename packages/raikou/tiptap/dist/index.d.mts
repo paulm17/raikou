@@ -358,7 +358,7 @@ declare const RichTextEditorLinkControl: _raikou_core.RaikouComponent<{
 
 type ColorFormat = 'hex' | 'hexa' | 'rgba' | 'rgb' | 'hsl' | 'hsla';
 
-type ColorPickerStylesNames = "wrapper" | "preview" | "body" | "sliders" | "slider" | "sliderOverlay" | "thumb" | "saturation" | "thumb" | "saturationOverlay" | "thumb" | "swatches" | "swatch";
+type ColorPickerStylesNames = "wrapper" | "preview" | "body" | "sliders" | "slider" | "sliderOverlay" | "thumb" | "saturation" | "saturationOverlay" | "swatches" | "swatch";
 type ColorPickerCssVariables = {
     wrapper: "--cp-preview-size" | "--cp-width" | "--cp-body-spacing" | "--cp-swatch-size" | "--cp-thumb-size" | "--cp-saturation-height";
 };

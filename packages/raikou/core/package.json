@@ -34,13 +34,11 @@
   "clean-package": "../../../clean-package.config.json",
   "peerDependencies": {
     "@raikou/hooks": ">=0.0.1-alpha.1",
-    "@raikou/global-store": ">=0.0.1-alpha.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "dependencies": {
     "@raikou/hooks": "workspace:*",
-    "@raikou/global-store": "workspace:*",
     "clsx": "2.0.0",
     "pure-store": "^1.2.0",
     "type-fest": "^4.0.0",

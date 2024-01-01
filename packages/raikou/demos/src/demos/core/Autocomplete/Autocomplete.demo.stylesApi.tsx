@@ -2,7 +2,7 @@ import React from "react";
 import { RaikouDemo } from "@raikou/ds";
 import { IconAt } from "@tabler/icons-react";
 import { Autocomplete } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { AutocompleteStylesApi } from "@raikou/styles-api";
 
 const code = `

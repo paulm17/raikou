@@ -1,10 +1,7 @@
 {
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
-    "paths": {
-      "@raikou/theme": ["../theme/src"],
-      "types": ["../theme/node_modules/type-fest/source/partial-deep"]
-    }
+    "paths": {}
   },
   "include": ["src", "index.ts", "../../../configuration/types"]
 }

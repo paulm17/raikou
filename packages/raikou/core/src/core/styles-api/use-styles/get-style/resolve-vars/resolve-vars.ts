@@ -46,7 +46,6 @@ export function resolveVars({
         "darken",
         theme.components?.[name]?.vars,
       );
-
       return vars2?.(theme, props, stylesCtx, rem, px, em, lighten, darken);
     }),
     vars?.(theme, props, stylesCtx),

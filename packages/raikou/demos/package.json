@@ -37,6 +37,7 @@
     "@raikou/modals": ">=0.0.1-alpha.1",
     "@raikou/server": ">=0.0.1-alpha.1",
     "@raikou/system": ">=0.0.1-alpha.1",
+    "@raikou/theme": ">=0.0.1-alpha.1",
     "@raikou/tiptap": ">=0.0.1-alpha.1",
     "@raikou/styles-api": ">=0.0.1-alpha.1",
     "@raikou/ds": ">=0.0.1-alpha.1",

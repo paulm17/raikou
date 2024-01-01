@@ -33,9 +33,7 @@ export type ColorPickerStylesNames =
   | "sliderOverlay"
   | "thumb"
   | "saturation"
-  | "thumb"
   | "saturationOverlay"
-  | "thumb"
   | "swatches"
   | "swatch";
 
@@ -116,6 +114,7 @@ const defaultProps: Partial<ColorPickerProps> = {
   swatchesPerRow: 7,
   withPicker: true,
   focusable: true,
+  size: "md",
   __staticSelector: "ColorPicker",
 };
 

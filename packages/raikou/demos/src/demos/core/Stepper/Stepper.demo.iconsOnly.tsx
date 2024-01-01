@@ -6,7 +6,7 @@ import {
 } from "@tabler/icons-react";
 import { RaikouDemo } from "@raikou/ds";
 import { Stepper } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 
 const code = `
 import { useState } from 'react';

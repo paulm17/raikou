@@ -22,21 +22,18 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "build": "tsup src/index.ts src/plugin.ts --dts --format esm,cjs --clean && pnpm run minify && pnpm run build:css && pnpm run build:support_files",
+    "build": "tsup src/index.ts src/plugin.ts --dts --format esm,cjs --clean && pnpm minify && pnpm run build:css && pnpm run build:support_files",
     "build:css": "postcss src/styles.css --dir dist",
     "build:support_files": "esno scripts/generate-support-files",
     "lint": "eslint \"**/*.ts*\"",
     "minify": "jsmin -o dist/index.js dist/index.js && jsmin -o dist/index.mjs dist/index.mjs"
   },
   "peerDependencies": {
-    "@raikou/global-store": ">=0.0.1-alpha.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@raikou/global-store": "workspace:*",
     "fast-glob": "^3.3.2",
-    "next-themes": "^0.2.1",
     "type-fest": "^4.0.0",
     "tslib": "^2.6.0"
   },
@@ -46,7 +43,7 @@
     "@types/react-dom": "^18.2.8",
     "postcss-cli": "^11.0.0",
     "typescript": "^5.1.6",
-    "unocss": "^0.56.5"
+    "unocss": "^0.58.2"
   },
   "publishConfig": {
     "access": "public"

@@ -1,7 +1,7 @@
 import React from "react";
 import { RaikouDemo } from "@raikou/ds";
 import { JsonInput } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { IconAt } from "@tabler/icons-react";
 import { JsonInputStylesApi } from "@raikou/styles-api";
 

@@ -283,7 +283,7 @@
   --_controls-direction: row;
   --_controls-padding: 0 var(--carousel-controls-offset);
 }
-.m-64f58e10 {
+.m-64f58e10.m-64f58e10 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -298,19 +298,19 @@
   border: calc(0.0625rem * var(--raikou-scale)) solid var(--raikou-carousel-border);
   transition: opacity 100ms ease;
 }
-[data-raikou-color-scheme=light] .m-64f58e10 {
+[data-raikou-color-scheme=light] .m-64f58e10.m-64f58e10 {
   --_control-opacity: var(--raikou-carousel-control-opacity);
 }
-[data-raikou-color-scheme=dark] .m-64f58e10 {
+[data-raikou-color-scheme=dark] .m-64f58e10.m-64f58e10 {
   --_control-opacity: var(--raikou-carousel-control-opacity);
 }
 @media (hover: hover) {
-  .m-64f58e10:hover {
+  .m-64f58e10.m-64f58e10:hover {
     --_control-opacity: 1;
   }
 }
 @media (hover: none) {
-  .m-64f58e10:active {
+  .m-64f58e10.m-64f58e10:active {
     --_control-opacity: 1;
   }
 }
@@ -338,7 +338,7 @@
   --_indicators-right: 0;
   --_indicators-direction: row;
 }
-.m-eae68602 {
+.m-eae68602.m-eae68602 {
   pointer-events: all;
   width: var(--_indicator-width);
   height: var(--_indicator-height);
@@ -348,23 +348,23 @@
   background-color: var(--raikou-color-white);
 }
 @media (hover: hover) {
-  .m-eae68602:hover {
+  .m-eae68602.m-eae68602:hover {
     --_indicator-opacity: 1;
   }
 }
 @media (hover: none) {
-  .m-eae68602:active {
+  .m-eae68602.m-eae68602:active {
     --_indicator-opacity: 1;
   }
 }
-.m-eae68602[data-active] {
+.m-eae68602.m-eae68602[data-active] {
   --_indicator-opacity: 1;
 }
-.m-17884d0f[data-orientation=vertical] .m-eae68602 {
+.m-17884d0f[data-orientation=vertical] .m-eae68602.m-eae68602 {
   --_indicator-width: calc(0.3125rem * var(--raikou-scale));
   --_indicator-height: calc(1.5625rem * var(--raikou-scale));
 }
-.m-17884d0f[data-orientation=horizontal] .m-eae68602 {
+.m-17884d0f[data-orientation=horizontal] .m-eae68602.m-eae68602 {
   --_indicator-width: calc(1.5625rem * var(--raikou-scale));
   --_indicator-height: calc(0.3125rem * var(--raikou-scale));
 }

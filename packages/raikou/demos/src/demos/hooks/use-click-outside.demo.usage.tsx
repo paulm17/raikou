@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Paper, Button, Group } from "@raikou/server";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { RaikouDemo } from "@raikou/ds";
 import { useClickOutside } from "@raikou/hooks";
 

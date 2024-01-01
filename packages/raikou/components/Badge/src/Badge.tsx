@@ -159,5 +159,5 @@ export const Badge = polymorphicFactory<BadgeFactory>((_props, ref) => {
   );
 });
 
-Badge.displayName = "@raikou/Badge";
+Badge.displayName = "@raikou/core/Badge";
 Badge.classes = classes;

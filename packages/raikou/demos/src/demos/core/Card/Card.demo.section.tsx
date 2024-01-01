@@ -8,7 +8,7 @@ import {
   SimpleGrid,
 } from "@raikou/server";
 import { Menu } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { IconDots, IconEye, IconFileZip, IconTrash } from "@tabler/icons-react";
 import { RaikouDemo } from "@raikou/ds";
 

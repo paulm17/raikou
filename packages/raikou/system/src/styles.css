@@ -1,5 +1,5 @@
 /* Core */
-@import "./core/RaikouProvider/global.css";
+@import "./core/global.css";
 @import "../../components/Badge/dist/index.css";
 @import "../../components/Accordion/dist/index.css";
 @import "../../components/ActionIcon/dist/index.css";

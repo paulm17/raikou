@@ -1,5 +1,5 @@
 import React from "react";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 
 interface GithubIconProps extends React.ComponentPropsWithoutRef<"svg"> {
   size?: number | string;

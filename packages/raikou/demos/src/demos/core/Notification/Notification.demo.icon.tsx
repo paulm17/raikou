@@ -2,7 +2,7 @@ import React from "react";
 import { RaikouDemo } from "@raikou/ds";
 import { IconX, IconCheck } from "@tabler/icons-react";
 import { Notification } from "@raikou/server";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 
 const code = `
 import { IconX, IconCheck } from '@tabler/icons-react';

@@ -3,7 +3,7 @@ import {
 } from "./chunk-PPXV74HS.mjs";
 
 // src/ConfiguratorDemo/controls/ConfiguratorColor.control.plugin.ts
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 var require_ConfiguratorColor_control_plugin = __commonJS({
   "src/ConfiguratorDemo/controls/ConfiguratorColor.control.plugin.ts"(exports, module) {
     "use strict";

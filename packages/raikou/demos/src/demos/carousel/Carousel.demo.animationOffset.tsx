@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "@raikou/server";
 import { Modal } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { RaikouDemo } from "@raikou/ds";
 import { Carousel, Embla, useAnimationOffsetEffect } from "@raikou/carousel";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Slider, RangeSlider } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { RaikouDemo } from "@raikou/ds";
 import { IconHeart, IconHeartBroken } from "@tabler/icons-react";
 

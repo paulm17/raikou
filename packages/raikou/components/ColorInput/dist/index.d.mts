@@ -8,7 +8,7 @@ import { Interaction } from 'scheduler/tracing';
 
 type ColorFormat = 'hex' | 'hexa' | 'rgba' | 'rgb' | 'hsl' | 'hsla';
 
-type ColorPickerStylesNames = "wrapper" | "preview" | "body" | "sliders" | "slider" | "sliderOverlay" | "thumb" | "saturation" | "thumb" | "saturationOverlay" | "thumb" | "swatches" | "swatch";
+type ColorPickerStylesNames = "wrapper" | "preview" | "body" | "sliders" | "slider" | "sliderOverlay" | "thumb" | "saturation" | "saturationOverlay" | "swatches" | "swatch";
 interface __ColorPickerProps {
     /** Controlled component value */
     value?: string;

@@ -1,7 +1,7 @@
 import React from "react";
 import { RaikouDemo } from "@raikou/ds";
 import { ActionIcon } from "@raikou/server";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { IconPhoto, IconSettings, IconHeart } from "@tabler/icons-react";
 
 const code = `

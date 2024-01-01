@@ -2,7 +2,7 @@ import React from "react";
 import { IconCircleCheck, IconCircleDashed } from "@tabler/icons-react";
 import { RaikouDemo } from "@raikou/ds";
 import { ThemeIcon, List } from "@raikou/server";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 
 const code = `
 import { List, ThemeIcon, rem } from '@raikou/core';

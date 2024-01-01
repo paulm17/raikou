@@ -1,7 +1,7 @@
 import React from "react";
 import { IconCheck } from "@tabler/icons-react";
 import { Button } from "@raikou/server";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { RaikouDemo } from "@raikou/ds";
 import { notifications } from "@raikou/notifications";
 

@@ -9,7 +9,7 @@ import {
 } from "@tabler/icons-react";
 import { Text, Button } from "@raikou/server";
 import { Menu } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 
 export function DemoMenuItems({ widthRightSection = true, withTarget = true }) {
   const iconProps = { style: { width: rem(14), height: rem(14) } };

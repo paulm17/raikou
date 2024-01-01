@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, GridProps } from "@raikou/server";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { RaikouDemo } from "@raikou/ds";
 import { ColWrapper as Col } from "./_col-wrapper";
 

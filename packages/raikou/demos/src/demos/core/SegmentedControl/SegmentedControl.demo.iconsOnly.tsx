@@ -3,7 +3,7 @@ import { IconEye, IconCode, IconExternalLink } from "@tabler/icons-react";
 import { RaikouDemo } from "@raikou/ds";
 import { VisuallyHidden } from "@raikou/server";
 import { SegmentedControl } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 
 const code = `
 import { SegmentedControl, VisuallyHidden, rem } from '@raikou/core';

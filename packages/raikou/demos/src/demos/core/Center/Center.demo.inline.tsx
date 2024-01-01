@@ -2,7 +2,7 @@ import React from "react";
 import { IconArrowLeft } from "@tabler/icons-react";
 import { RaikouDemo } from "@raikou/ds";
 import { Center, Anchor, Box } from "@raikou/server";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 
 const code = `
 import { Center, Anchor, Box, rem } from '@raikou/core';

@@ -1,5 +1,5 @@
-
-function keys(object){return Object.keys(object);}
+var __require=((x)=>typeof require!=="undefined"?require:typeof Proxy!=="undefined"?new Proxy(x,{get:(a,b)=>(typeof require!=="undefined"?require:a)[b]}):x)(function(x){if(typeof require!=="undefined")
+return require.apply(this,arguments);throw Error('Dynamic require of "'+x+'" is not supported');});function keys(object){return Object.keys(object);}
 function isObject(item){return item&&typeof item==="object"&&!Array.isArray(item);}
 function deepMerge(target,source){const result={...target};const _source=source;if(isObject(target)&&isObject(source)){Object.keys(source).forEach((key)=>{if(isObject(_source[key])){if(!(key in target)){result[key]=_source[key];}else{result[key]=deepMerge(result[key],_source[key]);}}else{result[key]=_source[key];}});}
 return result;}
@@ -134,7 +134,8 @@ if(typeof theme.primaryShade==="number"&&!isValidPrimaryShade(theme.primaryShade
 function mergeRaikouTheme(currentTheme,themeOverride){var _a;if(!themeOverride){validateRaikouTheme(currentTheme);return currentTheme;}
 const result=deepMerge(currentTheme,themeOverride);if(themeOverride.fontFamily&&!((_a=themeOverride.headings)==null?void 0:_a.fontFamily)){result.headings.fontFamily=themeOverride.fontFamily;}
 validateRaikouTheme(result);return result;}
-import{getState}from"@raikou/global-store";function useRaikouTheme(){if(typeof window!=="undefined"){const windowTheme=window["raikou_theme"];const theme=mergeRaikouTheme(DEFAULT_THEME,windowTheme);theme.variantColorResolver=defaultVariantColorsResolver;return theme;}else{const createTheme=getState();const theme=mergeRaikouTheme(DEFAULT_THEME,createTheme);theme.variantColorResolver=defaultVariantColorsResolver;return theme;}}
+var loadConfig=()=>{let config;const appPath=__require("path").resolve("./");try{config=__require(`${appPath}/raikou_theme.ts`);}catch(error){if(error.code!=="MODULE_NOT_FOUND"){throw new Error("raikou_theme.ts file found.");}}
+return config;};function useRaikouTheme(){if(typeof window!=="undefined"){const windowTheme=window["raikou_theme"];const theme=mergeRaikouTheme(DEFAULT_THEME,windowTheme);theme.variantColorResolver=defaultVariantColorsResolver;return theme;}else{const config=loadConfig();const theme=mergeRaikouTheme(DEFAULT_THEME,config);theme.variantColorResolver=defaultVariantColorsResolver;return theme;}}
 function useProps(component,defaultProps,props){var _a;const theme=useRaikouTheme();const contextPropsPayload=(_a=theme.components[component])==null?void 0:_a.defaultProps;const contextProps=typeof contextPropsPayload==="function"?contextPropsPayload(theme):contextPropsPayload;return{...defaultProps,...contextProps,...filterProps(props)};}
 function useResolvedStylesApi({classNames,styles,props,stylesCtx}){const theme=useRaikouTheme();return{resolvedClassNames:resolveClassNames({theme,classNames,props,stylesCtx:stylesCtx||void 0}),resolvedStyles:resolveStyles({theme,styles,props,stylesCtx:stylesCtx||void 0})};}
 import cx2 from"clsx";var FOCUS_CLASS_NAMES={always:"raikou-focus-always",auto:"raikou-focus-auto",never:"raikou-focus-never"};function getGlobalClassNames({theme,options,unstyled}){return cx2((options==null?void 0:options.focusable)&&!unstyled&&(theme.focusClassName||FOCUS_CLASS_NAMES[theme.focusRing]),(options==null?void 0:options.active)&&!unstyled&&theme.activeClassName);}

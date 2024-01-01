@@ -1,7 +1,7 @@
 import React from "react";
 import { RaikouDemo } from "@raikou/ds";
 import { Textarea } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import { IconAt } from "@tabler/icons-react";
 import { TextareaStylesApi } from "@raikou/styles-api";
 

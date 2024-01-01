@@ -2,7 +2,7 @@ import React from "react";
 import { RaikouDemo } from "@raikou/ds";
 import { Button } from "@raikou/server";
 import { Menu } from "@raikou/client";
-import { rem } from "@raikou/system";
+import { rem } from "@raikou/theme";
 import {
   IconSettings,
   IconSearch,
