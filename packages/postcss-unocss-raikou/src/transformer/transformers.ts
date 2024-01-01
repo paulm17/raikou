@@ -18,8 +18,6 @@ export async function applyTransformers(
     (i) => (i.enforce || 'default') === enforce
   );
 
-  console.log('length', transformers.length);
-
   if (!transformers.length) return;
 
   const skipMap = new Map<string, string>();
@@ -33,6 +31,7 @@ export async function applyTransformers(
     } else if (!ctx.filter(code, id)) {
       continue;
     }
+
     await t.transform(s, id, ctx);
     if (s.hasChanged()) {
       code = restoreSkipCode(s.toString(), skipMap);

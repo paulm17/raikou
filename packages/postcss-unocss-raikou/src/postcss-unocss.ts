@@ -27,6 +27,11 @@ function matchClassesObject(content: string) {
     data = data.replace(/,}/g, '}');
     data = data.slice(0, -1);
 
+    // skip in case of ternary operator
+    if (data.match(/\?/)) {
+      return null;
+    }
+
     data.match(/\w+:{/g)?.forEach((item) => {
       item = item.replace(':{', '');
 
@@ -35,41 +40,45 @@ function matchClassesObject(content: string) {
       });
     });
 
-    data.match(/\w+:/g)?.forEach((item) => {
+    data.match(/\w+:"/g)?.forEach((item) => {
       data = data.replace(item, function (match) {
-        return `"${match.replace(':', '')}":`;
+        return `"${match.replace(':', '')}:"`;
       });
     });
 
-    const jsonStr = JSON.parse(`{ ${data} }`);
+    try {
+      const jsonStr = JSON.parse(`{ ${data} }`);
 
-    const transformedObject = Object.entries(jsonStr).reduce((acc, [key, value]) => {
-      let newValue;
-      if (typeof value === 'string') {
-        newValue = value;
-      } else if (typeof value === 'object') {
-        const arr = [] as string[];
+      const transformedObject = Object.entries(jsonStr).reduce((acc, [key, value]) => {
+        let newValue;
+        if (typeof value === 'string') {
+          newValue = value;
+        } else if (typeof value === 'object') {
+          const arr = [] as string[];
 
-        Object.keys(value).forEach((_, index) => {
-          arr.push(`${Object.keys(value)[index]}-${Object.values(value)[index]}`);
-        });
+          Object.keys(value).forEach((_, index) => {
+            arr.push(`${Object.keys(value)[index]}-${Object.values(value)[index]}`);
+          });
 
-        newValue = arr.join(' ');
-      }
-      acc[key] = newValue;
-      return acc;
-    }, {});
+          newValue = arr.join(' ');
+        }
+        acc[key] = newValue;
+        return acc;
+      }, {});
 
-    let result = JSON.stringify(transformedObject);
+      let result = JSON.stringify(transformedObject);
 
-    result = result.replace(/"\w+":/g, function (match) {
-      return `${match}`.replace(/"/g, '');
-    });
+      result = result.replace(/"\w+":/g, function (match) {
+        return `${match}`.replace(/"/g, '');
+      });
 
-    result = result.replace('{', '');
-    result = result.replace('}', '');
+      result = result.replace('{', '');
+      result = result.replace('}', '');
 
-    return result;
+      return result;
+    } catch {
+      return null;
+    }
   }
 
   return null;
@@ -115,11 +124,11 @@ function generateColorCSSVariables(content: string, theme: any) {
         if (arr[i].match(/^--(.*)$/) || arr[i].match(/^(backgroundColor|color)/)) {
           const value = arr[i + 1];
 
-          if (!value) {
+          if (!value || !value.startsWith('var(--color') || value.startsWith('var(--raikou')) {
             continue;
           }
 
-          const newValue = value.replace('var(', '').replace(')', '').replace('--', '');
+          const newValue = value.replace('var(', '').replace(')', '').replace('--color-', '');
           const regexPattern = new RegExp(`^(${colorNamesStr})-\\d+-\\d+`, 'i');
 
           if (newValue.match(regexPattern)) {
@@ -127,9 +136,9 @@ function generateColorCSSVariables(content: string, theme: any) {
             const first = newValue.substring(0, index);
             const last = newValue.substring(index).replace('-', '/');
 
-            tempVariables[`--${newValue}`] = `${first}${last}`;
+            tempVariables[`--color-${newValue}`] = `${first}${last}`;
           } else {
-            tempVariables[`--${newValue}`] = newValue;
+            tempVariables[`--color-${newValue}`] = newValue;
           }
         }
       }
@@ -278,24 +287,22 @@ module.exports = (options: UnoPostcssPluginOptions = {}) => {
             });
           }
 
-          // const cfg = await config;
+          const cfg = await config;
 
-          // const ctx = createContext<UserConfig>(cfg.config as any, {
-          //   envMode: process.env.NODE_ENV === 'development' ? 'dev' : 'build',
-          //   ...{},
-          // });
-
-          // // transformer
-          // const transformResult = await applyTransformers(ctx, flattenedContent, file, 'pre');
-          // const newContent = transformResult ? transformResult.code : flattenedContent;
-
-          // pagesContent.add(newContent);
-
-          const { matched } = await uno.generate(flattenedContent, {
-            id: file,
+          const ctx = createContext<UserConfig>(cfg.config as any, {
+            envMode: process.env.NODE_ENV === 'development' ? 'dev' : 'build',
+            ...{},
           });
 
-          // console.log(file, matched);
+          // transformer
+          const transformResult = await applyTransformers(ctx, flattenedContent, file, 'pre');
+          const newContent = transformResult ? transformResult.code : flattenedContent;
+
+          pagesContent.add(newContent);
+
+          const { matched } = await uno.generate(newContent, {
+            id: file,
+          });
 
           fileClassMap.set(file, matched);
         })
