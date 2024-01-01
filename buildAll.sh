@@ -110,9 +110,11 @@ pnpm --filter="@raikou/client" run build
 # build other
 pnpm --filter="carousel" run build
 pnpm --filter="code-highlight" run build
+pnpm --filter="color-scheme" run build
 pnpm --filter="contextmenu" run build
 pnpm --filter="datatable" run build
 pnpm --filter="dates" run build
+pnpm --filter="direction" run build
 pnpm --filter="dropzone" run build
 pnpm --filter="modals" run build
 pnpm --filter="notifications" run build
@@ -122,3 +124,11 @@ pnpm --filter="tiptap" run build
 
 # build system
 pnpm --filter="@raikou/system" run build
+
+# build webpack
+pnpm --filter="@raikou/webpack" run build
+
+# build postcss
+pnpm --filter="@raikou/postcss-preset-raikou" run build
+pnpm --filter="@raikou/postcss-purgecss-raikou" run build
+pnpm --filter="@raikou/postcss-unocss-raikou" run build
