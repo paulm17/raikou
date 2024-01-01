@@ -16,7 +16,7 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "build": "tsup src/index.ts --config ../../../../configuration/tsup/tsup.config.ts && pnpm minify",
+    "build": "tsup src/index.ts --config ../../../../configuration/tsup/tsup.config.ts",
     "tsbuild": "tsup src/index.ts --dts --format esm,cjs --clean",
     "lint": "eslint \"**/*.ts*\"",
     "clean": "rimraf dist .turbo",

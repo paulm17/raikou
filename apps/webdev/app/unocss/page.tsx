@@ -1,10 +1,7 @@
-"use client";
 import { Badge } from "@raikou/server";
-// import { Client } from "../unocss2/page";
+import { Client } from "./client";
 
 export default function Page() {
-  const mode = "dark";
-
   return (
     <>
       <Badge
@@ -17,8 +14,8 @@ export default function Page() {
       >
         badge
       </Badge>
-      {/* <Client /> */}
-      {/* <Badge
+      <Client />
+      <Badge
         classNames={{
           label: "text-green-500",
         }}
@@ -33,10 +30,7 @@ export default function Page() {
         size="md"
       >
         badge
-      </Badge>*/}
-      {/* <Button variant="filled" size="xxd">
-        New Button
-      </Button> */}
+      </Badge>
       <div className="hover:(bg-blue-400 font-medium) font-(light mono)">
         hello
       </div>

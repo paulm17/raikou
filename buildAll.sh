@@ -123,7 +123,8 @@ pnpm --filter="@raikou/spotlight" run build
 pnpm --filter="@raikou/theme" run build
 pnpm --filter="@raikou/tiptap" run build
 
-# build system
+# build core && system
+pnpm --filter="@raikou/core" run build
 pnpm --filter="@raikou/system" run build
 
 # build webpack
