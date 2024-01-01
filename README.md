@@ -112,13 +112,13 @@ To get a local copy up and running follow these simple example steps.
 - npm
 
 ```sh
-npm install @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/global-store postcss-unocss-raikou postcss-purgecss-raikou postcss-import
+npm install @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/global-store @raikou/webpack postcss-unocss-raikou postcss-purgecss-raikou postcss-import
 ```
 
 - yarn
 
 ```sh
-yarn add @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/global-store postcss-preset-raikou postcss-unocss-raikou postcss-purgecss-raikou postcss-import
+yarn add @raikou/client @raikou/hooks @raikou/server @raikou/system @raikou/global-store @raikou/webpack postcss-preset-raikou postcss-unocss-raikou postcss-purgecss-raikou postcss-import
 ```
 
 2. Change the postcss.config.js to:
@@ -149,12 +149,39 @@ Note:
 
 Pro-tip: Leave the app build process to minify the final css.
 
-3. Create unocss.config.ts:
+3. Extend next.config.ts for the variant group transformer:
+
+```js
+const UnoCSS = require("@raikou/webpack").default;
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+
+  webpack(config, context) {
+    config.plugins.push(new UnoCSS());
+
+    if (context.buildId !== "development") {
+      // * disable filesystem cache for build
+      // * https://github.com/unocss/unocss/issues/419
+      // * https://webpack.js.org/configuration/cache/
+      config.cache = false;
+    }
+
+    return config;
+  },
+};
+
+module.exports = nextConfig;
+```
+
+4. Create unocss.config.ts:
 
 ```js
 import { defineConfig } from "unocss";
 import presetAttributify from "@unocss/preset-attributify";
 import presetWind from "@unocss/preset-wind";
+import transformerVariantGroup from "@unocss/transformer-variant-group";
 const presetRaikou = require("@raikou/system/plugin.js").default;
 import { UnoCSSRaikouTheme } from "@raikou/theme";
 
@@ -167,27 +194,48 @@ export default defineConfig({
     filesystem: ["app/**/*.tsx"],
   },
   presets: [
-    presetWind(),
+    presetWind({
+      dark: "media",
+    }),
     presetAttributify({
       prefix: "un-",
     }),
     presetRaikou(),
   ],
+  transformers: [transformerVariantGroup()],
 } as RaikouConfig);
 ```
 
 Change `app/**/*.tsx` to the root of the app folder.
 
-Note: the prefix for attributify has been added, in order to not clash with
-mantines own styles.
+Note: ensure presetWind has the dark attribute set to media. Otherwise unocss
+styles will not activate for dark theme when setting `dark:bg-blue-500`.
 
-4. Amend layout.tsx to resemble the following. RaikouProvider must encapsulate
+Note: the prefix for attributify has been added, in order to not clash with
+mantines own styles and only works for the root level and not classNames.
+
+5. Create global.css with the following:
+
+```css
+@layer raikou, default;
+
+@layer default {
+  @colors;
+  @unocss;
+}
+
+@layer raikou {
+  @raikou;
+}
+```
+
+6. Amend layout.tsx to resemble the following. RaikouProvider must encapsulate
    the children. It should resemble something like the following:
 
 ```js
 import { RaikouProvider } from '@raikou/system';
 import { createTheme, setState } from "@raikou/global-store";
-import "./styles/global.css";
+import "./global.css";
 import config from "../unocss.config";
 
 export default function RootLayout({
@@ -212,7 +260,7 @@ export default function RootLayout({
 }
 ```
 
-5. Raikou has removed the theme overrides from runtime. The theme is now part of
+7. Raikou has removed the theme overrides from runtime. The theme is now part of
    UnoCss own configuration file. Simply add new "mantine" theme params to the
    defineConfig object under the param raikouTheme.
 
@@ -236,7 +284,7 @@ stylesheet.
 Raikou supports the original mantine colors in 10 shades but unocss colors as
 well. All Raikou colors have 11 values.
 
-7. Mantine Colors can override the supplied unocss colors. Extend the config as
+8. Mantine Colors can override the supplied unocss colors. Extend the config as
    below:
 
 ```js
@@ -265,7 +313,7 @@ export default defineConfig({
 }) as any;
 ```
 
-8. The theme components api has changed from the
+9. The theme components api has changed from the
    <a href="https://v7.mantine.dev/styles/variants-sizes#sizes-with-components-css-variables">original
    documentation</a>:
 
@@ -295,8 +343,8 @@ export default defineConfig({
 } as RaikouConfig);
 ```
 
-9. To override css variables, create a `cssVariablesResolver` object in the
-   Raikou theme and encapsulate it with JSON.stringify:
+10. To override css variables, create a `cssVariablesResolver` object in the
+    Raikou theme and encapsulate it with JSON.stringify:
 
 Note: when referencing the theme use dot notation as in the example.
 
@@ -335,7 +383,7 @@ export default defineConfig({
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-10. The classNames API has been updated to support attributify.
+11. The classNames API has been updated to support attributify.
 
 A key can either be a string if the styles are terse, or broken up into
 attributes.
@@ -358,19 +406,22 @@ attributes.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-11. Any mantine css variable that requires any color can be overriden by a
+12. Any mantine css variable that requires any color can be overriden by a
     unocss color. The only stipulation is that the unocss color must be enclosed
     in var brackets. Finally, a css variable like --badge-bg or background or
     color can only be used.
 
 Note: this dynamically adds the color equivilent to the css for both css
-variables violet-800 and red-300.
+variables color-violet-800 and color-red-300.
 
 ```js
 <Chip
   checked
   variant="filled"
-  style={{ "--chip-bg": "var(--violet-800)", color: "var(--red-300)" }}
+  style={{
+    "--chip-bg": "var(--color-violet-800)",
+    color: "var(--color-red-300)",
+  }}
 >
   Programming
 </Chip>

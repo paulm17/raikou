@@ -2,7 +2,6 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "build": "pnpm build:postcss && turbo run build --filter=...{./packages/raikou/*} && turbo run build --filter=@raikou/webpack",
     "build:postcss": "turbo run build --filter=postcss-preset-raikou --filter=postcss-purgecss-raikou --filter=postcss-unocss-raikou",
     "build:github": "./buildAll.sh",
     "build:fast": "turbo run build:fast --filter=!./examples/* --filter=!*props-docs",

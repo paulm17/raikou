@@ -1,5 +1,5 @@
 function Hello() {
-  console.log("hello - A0018-06");
+  console.log("hello - A0018-07");
 }
 
 export { Hello };

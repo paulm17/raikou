@@ -129,6 +129,6 @@ pnpm --filter="@raikou/system" run build
 pnpm --filter="@raikou/webpack" run build
 
 # build postcss
-pnpm --filter="@raikou/postcss-preset-raikou" run build
-pnpm --filter="@raikou/postcss-purgecss-raikou" run build
-pnpm --filter="@raikou/postcss-unocss-raikou" run build
+pnpm --filter="postcss-preset-raikou" run build
+pnpm --filter="postcss-purgecss-raikou" run build
+pnpm --filter="postcss-unocss-raikou" run build

@@ -1,0 +1,10 @@
+@layer raikou, default;
+
+@layer default {
+  @colors;
+  @unocss;
+}
+
+@layer raikou {
+  @raikou;
+}
