@@ -54,7 +54,7 @@ function getComponentCSSModules(dir: string, packagePath: string) {
   for (const _path of paths) {
     let fileContents = fs.readFileSync(_path, "utf8");
 
-    const regex = /\w+_module_default\s*=\s*{[^}]*}/g;
+    const regex = /\w+_module_default={[^}]*}/g;
     let match;
 
     let data = [] as string[];
@@ -63,7 +63,20 @@ function getComponentCSSModules(dir: string, packagePath: string) {
       let newMatch = match[0];
       const splitRegex = /_module_default\s*=\s*/;
       const matchSplit = newMatch.split(splitRegex);
-      const value = matchSplit[1];
+      let value = matchSplit[1];
+
+      // fix effects of minification
+      const matches = value.match(/\w+:/g);
+
+      if (matches) {
+        for (const match of matches) {
+          value = value.replace(match, function (item) {
+            const name = item.replace(":", "");
+
+            return `"${name}":`;
+          });
+        }
+      }
 
       try {
         let parsed = JSON.parse(value);
@@ -101,7 +114,20 @@ function getOtherCSSModules(dir: string, packagePath: string[]) {
       let newMatch = match[0];
       const splitRegex = /_module_default\s*=\s*/;
       const matchSplit = newMatch.split(splitRegex);
-      const value = matchSplit[1];
+      let value = matchSplit[1];
+
+      // fix effects of minification
+      const matches = value.match(/\w+:/g);
+
+      if (matches) {
+        for (const match of matches) {
+          value = value.replace(match, function (item) {
+            const name = item.replace(":", "");
+
+            return `"${name}":`;
+          });
+        }
+      }
 
       try {
         let parsed = JSON.parse(value);

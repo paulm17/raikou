@@ -6,6 +6,7 @@ import { TextInput } from "../../../../components/TextInput/src";
 import { Button } from "../../../../components/Button/src";
 import { Group } from "../../../../components/Group/src";
 import { DateInput } from "./DateInput";
+import { DatePickerInput } from "../DatePickerInput";
 import { DatesProvider } from "../DatesProvider";
 
 dayjs.extend(customParseFormat);
@@ -16,6 +17,23 @@ export function Usage() {
   return (
     <div style={{ padding: 40, maxWidth: 400 }}>
       <DateInput placeholder="Enter date" defaultDate={new Date(2022, 3, 11)} />
+    </div>
+  );
+}
+
+export function CloseButton() {
+  return (
+    <div style={{ padding: 40, maxWidth: 400 }}>
+      <DateInput
+        placeholder="Enter date"
+        defaultValue={new Date(2022, 3, 11)}
+        clearable
+      />
+      <DatePickerInput
+        placeholder="Enter date"
+        defaultValue={new Date(2022, 3, 11)}
+        clearable
+      />
     </div>
   );
 }

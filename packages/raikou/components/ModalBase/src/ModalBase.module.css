@@ -20,6 +20,7 @@
   top: 0;
   background-color: var(--raikou-color-body);
   z-index: 1000;
+  min-height: rem(60px);
 
   @mixin rtl {
     --_pr: var(--mb-padding, var(--raikou-spacing-md));

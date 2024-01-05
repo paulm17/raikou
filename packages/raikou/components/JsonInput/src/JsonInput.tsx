@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useUncontrolled } from "@raikou/hooks";
 import { factory, useProps, Factory } from "@raikou/core";
 import { Textarea, TextareaProps } from "../../Textarea/src";
+import { InputBase } from "../../InputBase/src";
 import { __InputStylesNames } from "../../Input/src";
 import { validateJson } from "./validate-json/validate-json";
 
@@ -86,7 +87,7 @@ export const JsonInput = factory<JsonInputFactory>((props, ref) => {
   return (
     <Textarea
       value={_value}
-      onChange={(event) => setValue(event.currentTarget.value)}
+      onChange={(event: any) => setValue(event.currentTarget.value)}
       onFocus={handleFocus}
       onBlur={handleBlur}
       ref={ref}
@@ -100,4 +101,5 @@ export const JsonInput = factory<JsonInputFactory>((props, ref) => {
   );
 });
 
+JsonInput.classes = InputBase.classes;
 JsonInput.displayName = "@raikou/core/JsonInput";

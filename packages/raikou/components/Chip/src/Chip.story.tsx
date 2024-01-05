@@ -9,7 +9,7 @@ export function WithTooltip() {
   return (
     <div style={{ padding: 40 }}>
       <Tooltip label="Tooltip" refProp="rootRef" position="bottom-start">
-        <Chip variant="filled" defaultChecked>
+        <Chip defaultChecked color="red">
           With tooltip
         </Chip>
       </Tooltip>

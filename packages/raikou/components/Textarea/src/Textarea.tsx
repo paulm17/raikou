@@ -1,12 +1,24 @@
 import React from "react";
 import TextareaAutosize from "react-textarea-autosize";
-import { factory, ElementProps, useProps, Factory } from "@raikou/core";
-import { InputBase, InputBaseProps } from "../../InputBase/src";
-import { __InputStylesNames } from "../../Input/src";
+import {
+  factory,
+  ElementProps,
+  useProps,
+  Factory,
+  BoxProps,
+  StylesApiProps,
+  getEnv,
+} from "@raikou/core";
+import { __BaseInputProps, __InputStylesNames } from "../../Input/src";
+import { InputBase } from "../../InputBase/src";
 
 export interface TextareaProps
-  extends InputBaseProps,
+  extends BoxProps,
+    __BaseInputProps,
+    StylesApiProps<TextareaFactory>,
     ElementProps<"textarea", "size"> {
+  __staticSelector?: string;
+
   /** Determines whether the textarea height should grow with its content, `false` by default */
   autosize?: boolean;
 
@@ -32,11 +44,12 @@ export const Textarea = factory<TextareaFactory>((props, ref) => {
     props,
   );
 
-  const autosizeProps = autosize ? { maxRows, minRows } : {};
+  const shouldAutosize = autosize && getEnv() !== "test";
+  const autosizeProps = shouldAutosize ? { maxRows, minRows } : {};
 
   return (
     <InputBase<any>
-      component={autosize ? TextareaAutosize : "textarea"}
+      component={shouldAutosize ? TextareaAutosize : "textarea"}
       ref={ref}
       {...others}
       __staticSelector={__staticSelector || "Textarea"}

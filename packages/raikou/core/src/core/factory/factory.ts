@@ -59,9 +59,7 @@ export type RaikouComponent<Payload extends FactoryPayload> =
         renderRoot?: (props: Record<string, any>) => React.ReactNode;
       }
   > &
-    ThemeExtend<Payload> &
-    ComponentClasses<Payload> &
-    StaticComponents<Payload["staticComponents"]>;
+    RaikouComponentStaticProperties<Payload>;
 
 export function identity<T>(value: T): T {
   return value;

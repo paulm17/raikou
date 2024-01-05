@@ -1,6 +1,6 @@
 /// <reference path="global.d.ts" />
 import * as _raikou_core from '@raikou/core';
-import { RaikouRadius, RaikouSize, BoxProps, StylesApiProps, PolymorphicFactory, ElementProps, Factory } from '@raikou/core';
+import { RaikouRadius, RaikouSize, BoxProps, StylesApiProps, ElementProps, Factory } from '@raikou/core';
 import React$1 from 'react';
 import * as CSS from 'csstype';
 import * as PropTypes from 'prop-types';
@@ -36,11 +36,12 @@ interface __InputWrapperProps {
     inputWrapperOrder?: ("label" | "input" | "description" | "error")[];
 }
 
-interface __BaseInputProps extends __InputWrapperProps, __InputProps {
+interface __BaseInputProps extends __InputWrapperProps, Omit<__InputProps, "wrapperProps"> {
+    /** Props passed down to the root element */
+    wrapperProps?: Record<string, any>;
 }
 type __InputStylesNames = InputStylesNames | InputWrapperStylesNames;
 type InputStylesNames = "input" | "wrapper" | "section";
-type InputVariant = "default" | "filled" | "unstyled";
 interface __InputProps {
     /** Content section rendered on the left side of the input */
     leftSection?: React$1.ReactNode;
@@ -3611,25 +3612,8 @@ interface GlobalJSXIntrinsicClassAttributes<T> extends JSX.IntrinsicClassAttribu
 
 interface GlobalJSXIntrinsicElements extends JSX.IntrinsicElements {}
 
-interface InputBaseProps extends BoxProps, __BaseInputProps, StylesApiProps<InputBaseFactory> {
+interface TextareaProps extends BoxProps, __BaseInputProps, StylesApiProps<TextareaFactory>, ElementProps<"textarea", "size"> {
     __staticSelector?: string;
-    __stylesApiProps?: Record<string, any>;
-    /** Props passed down to the root element (`Input.Wrapper` component) */
-    wrapperProps?: Record<string, any>;
-    /** Determines whether the input can have multiple lines, for example when `component="textarea"`, `false` by default */
-    multiline?: boolean;
-    /** Determines whether `aria-` and other accessibility attributes should be added to the input, `true` by default */
-    withAria?: boolean;
-}
-type InputBaseFactory = PolymorphicFactory<{
-    props: InputBaseProps;
-    defaultRef: HTMLInputElement;
-    defaultComponent: "input";
-    stylesNames: __InputStylesNames;
-    variant: InputVariant;
-}>;
-
-interface TextareaProps extends InputBaseProps, ElementProps<"textarea", "size"> {
     /** Determines whether the textarea height should grow with its content, `false` by default */
     autosize?: boolean;
     /** Maximum rows for autosize textarea to grow, ignored if `autosize` prop is not set */

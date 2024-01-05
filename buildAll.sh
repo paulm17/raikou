@@ -116,6 +116,7 @@ pnpm --filter="@raikou/datatable" run build
 pnpm --filter="@raikou/dates" run build
 pnpm --filter="@raikou/direction" run build
 pnpm --filter="@raikou/dropzone" run build
+pnpm --filter="@raikou/form" run build
 pnpm --filter="@raikou/modals" run build
 pnpm --filter="@raikou/notifications" run build
 pnpm --filter="@raikou/nprogress" run build

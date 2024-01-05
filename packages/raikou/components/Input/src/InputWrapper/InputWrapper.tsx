@@ -158,13 +158,6 @@ export const InputWrapper = factory<InputWrapperFactory>((_props, ref) => {
     name: ["InputWrapper", __staticSelector],
     props: __stylesApiProps || props,
     classes,
-    // classes: {
-    //   root: "inputWrapper-root",
-    //   label: "inputWrapper-label",
-    //   required: "inputWrapper-required",
-    //   error: "inputWrapper-error",
-    //   description: "inputWrapper-description",
-    // },
     className,
     style,
     classNames,
@@ -268,6 +261,7 @@ export const InputWrapper = factory<InputWrapperFactory>((_props, ref) => {
         ref={ref}
         variant={variant}
         size={size}
+        mod={{ error: !!error }}
         {...getStyles("root")}
         {...others}
       >

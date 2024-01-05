@@ -190,6 +190,9 @@ importers:
       rimraf:
         specifier: 3.0.2
         version: 3.0.2
+      terser:
+        specifier: ^5.26.0
+        version: 5.26.0
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
@@ -313,7 +316,7 @@ importers:
         version: 0.56.5(postcss@8.4.32)(vite@4.4.9)
       vite:
         specifier: ^4.4.9
-        version: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)
+        version: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)(terser@5.26.0)
       vite-tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0(typescript@5.1.6)(vite@4.4.9)
@@ -8830,7 +8833,7 @@ packages:
       magic-string: 0.27.0
       react-docgen-typescript: 2.2.2(typescript@5.1.6)
       typescript: 5.1.6
-      vite: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)
+      vite: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)(terser@5.26.0)
     dev: true
 
   /@jridgewell/gen-mapping@0.3.3:
@@ -10422,7 +10425,7 @@ packages:
       magic-string: 0.30.5
       rollup: 3.29.4
       typescript: 5.1.6
-      vite: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)
+      vite: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)(terser@5.26.0)
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -11234,7 +11237,7 @@ packages:
       react: 18.2.0
       react-docgen: 7.0.1
       react-dom: 18.2.0(react@18.2.0)
-      vite: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)
+      vite: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)(terser@5.26.0)
     transitivePeerDependencies:
       - '@preact/preset-vite'
       - encoding
@@ -12889,7 +12892,7 @@ packages:
       '@unocss/core': 0.56.5
       '@unocss/reset': 0.56.5
       '@unocss/vite': 0.56.5(vite@4.4.9)
-      vite: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)
+      vite: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)(terser@5.26.0)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -12905,7 +12908,7 @@ packages:
       '@unocss/core': 0.58.0
       '@unocss/reset': 0.58.0
       '@unocss/vite': 0.58.0(vite@4.4.9)
-      vite: 4.4.9(@types/node@20.5.1)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)
+      vite: 4.4.9(@types/node@20.5.1)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)(terser@5.26.0)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -12921,7 +12924,7 @@ packages:
       '@unocss/core': 0.58.2
       '@unocss/reset': 0.58.2
       '@unocss/vite': 0.58.2(vite@4.4.9)
-      vite: 4.4.9(@types/node@20.3.3)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)
+      vite: 4.4.9(@types/node@20.3.3)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)(terser@5.26.0)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -13483,7 +13486,7 @@ packages:
       chokidar: 3.5.3
       fast-glob: 3.3.2
       magic-string: 0.30.5
-      vite: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)
+      vite: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)(terser@5.26.0)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -13503,7 +13506,7 @@ packages:
       chokidar: 3.5.3
       fast-glob: 3.3.2
       magic-string: 0.30.5
-      vite: 4.4.9(@types/node@20.5.1)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)
+      vite: 4.4.9(@types/node@20.5.1)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)(terser@5.26.0)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -13523,7 +13526,7 @@ packages:
       chokidar: 3.5.3
       fast-glob: 3.3.2
       magic-string: 0.30.5
-      vite: 4.4.9(@types/node@20.3.3)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)
+      vite: 4.4.9(@types/node@20.3.3)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)(terser@5.26.0)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -13546,7 +13549,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.22.5(@babel/core@7.22.10)
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)
+      vite: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)(terser@5.26.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -13561,7 +13564,7 @@ packages:
       '@babel/plugin-transform-react-jsx-self': 7.22.5(@babel/core@7.22.10)
       '@babel/plugin-transform-react-jsx-source': 7.22.5(@babel/core@7.22.10)
       react-refresh: 0.14.0
-      vite: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)
+      vite: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)(terser@5.26.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -13777,11 +13780,6 @@ packages:
     resolution: {integrity: sha512-nc0Axzp/0FILLEVsm4fNwLCwMttvhEI263QtVPQcbpfZZ3ts0hLsZGOpE6czNlid7CJ9MlyH8reXkpsf3YUY4w==}
     engines: {node: '>=0.4.0'}
     hasBin: true
-
-  /acorn@8.8.2:
-    resolution: {integrity: sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw==}
-    engines: {node: '>=0.4.0'}
-    dev: true
 
   /acorn@8.9.0:
     resolution: {integrity: sha512-jaVNAFBHNLXspO543WnNNPZFRtavh3skAkITqD0/2aeMkKZTN+254PyhwxFYrk3vQ1xfY+2wbesJMs/JC8/PwQ==}
@@ -17619,7 +17617,7 @@ packages:
       he: 1.2.0
       param-case: 3.0.4
       relateurl: 0.2.7
-      terser: 5.19.2
+      terser: 5.26.0
     dev: true
 
   /html-tags@3.3.1:
@@ -23267,7 +23265,7 @@ packages:
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.1
-      terser: 5.19.2
+      terser: 5.26.0
       webpack: 5.89.0(@swc/core@1.3.100)(esbuild@0.18.11)
     dev: true
 
@@ -23292,12 +23290,12 @@ packages:
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.1
-      terser: 5.19.2
+      terser: 5.26.0
       webpack: 5.89.0(esbuild@0.19.10)
     dev: true
 
-  /terser@5.19.2:
-    resolution: {integrity: sha512-qC5+dmecKJA4cpYxRa5aVkKehYsQKc+AHeKl0Oe62aYjBL8ZA33tTljktDHJSaxxMnbI5ZYw+o/S2DxxLu8OfA==}
+  /terser@5.26.0:
+    resolution: {integrity: sha512-dytTGoE2oHgbNV9nTzgBEPaqAWvcJNl66VZ0BkJqlvp71IjO8CxdBx/ykCNb47cLnCmCvRZ6ZR0tLkqvZCdVBQ==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -23585,7 +23583,7 @@ packages:
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
       '@types/node': 18.16.20
-      acorn: 8.8.2
+      acorn: 8.11.2
       acorn-walk: 8.2.0
       arg: 4.1.3
       create-require: 1.1.1
@@ -24103,7 +24101,7 @@ packages:
       '@unocss/transformer-directives': 0.56.5
       '@unocss/transformer-variant-group': 0.56.5
       '@unocss/vite': 0.56.5(vite@4.4.9)
-      vite: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)
+      vite: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)(terser@5.26.0)
     transitivePeerDependencies:
       - postcss
       - rollup
@@ -24142,7 +24140,7 @@ packages:
       '@unocss/transformer-directives': 0.58.0
       '@unocss/transformer-variant-group': 0.58.0
       '@unocss/vite': 0.58.0(vite@4.4.9)
-      vite: 4.4.9(@types/node@20.5.1)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)
+      vite: 4.4.9(@types/node@20.5.1)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)(terser@5.26.0)
     transitivePeerDependencies:
       - postcss
       - rollup
@@ -24181,7 +24179,7 @@ packages:
       '@unocss/transformer-directives': 0.58.2
       '@unocss/transformer-variant-group': 0.58.2
       '@unocss/vite': 0.58.2(vite@4.4.9)
-      vite: 4.4.9(@types/node@20.3.3)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)
+      vite: 4.4.9(@types/node@20.3.3)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)(terser@5.26.0)
     transitivePeerDependencies:
       - postcss
       - rollup
@@ -24460,13 +24458,13 @@ packages:
       debug: 4.3.4(supports-color@8.1.1)
       globrex: 0.1.2
       tsconfck: 2.1.2(typescript@5.1.6)
-      vite: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)
+      vite: 4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)(terser@5.26.0)
     transitivePeerDependencies:
       - supports-color
       - typescript
     dev: true
 
-  /vite@4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0):
+  /vite@4.4.9(@types/node@18.16.20)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)(terser@5.26.0):
     resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -24501,11 +24499,12 @@ packages:
       rollup: 3.29.4
       sass: 1.69.5
       stylus: 0.62.0
+      terser: 5.26.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
 
-  /vite@4.4.9(@types/node@20.3.3)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0):
+  /vite@4.4.9(@types/node@20.3.3)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)(terser@5.26.0):
     resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -24540,11 +24539,12 @@ packages:
       rollup: 3.29.4
       sass: 1.69.5
       stylus: 0.62.0
+      terser: 5.26.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
 
-  /vite@4.4.9(@types/node@20.5.1)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0):
+  /vite@4.4.9(@types/node@20.5.1)(less@4.1.3)(sass@1.69.5)(stylus@0.62.0)(terser@5.26.0):
     resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -24579,6 +24579,7 @@ packages:
       rollup: 3.29.4
       sass: 1.69.5
       stylus: 0.62.0
+      terser: 5.26.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: true

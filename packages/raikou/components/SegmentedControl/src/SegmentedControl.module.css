@@ -141,7 +141,7 @@
     }
   }
 
-  &:not([data-disabled]):not([data-active]) {
+  &:not([data-disabled], [data-active], [data-read-only]) {
     @mixin hover {
       @mixin light {
         --_color: var(--raikou-segmentedcontrol-hover-color);

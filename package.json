@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
+    "build": "turbo run build --filter=!@raikou/system --filter=!@raikou/webpack",
     "build:postcss": "turbo run build --filter=postcss-preset-raikou --filter=postcss-purgecss-raikou --filter=postcss-unocss-raikou",
     "build:github": "./buildAll.sh",
     "build:fast": "turbo run build:fast --filter=!./examples/* --filter=!*props-docs",
@@ -107,6 +108,7 @@
     "postcss-preset-raikou": "workspace:*",
     "prettier": "^3.0.0",
     "rimraf": "3.0.2",
+    "terser": "^5.26.0",
     "tslib": "^2.6.2",
     "tsup": "^8.0.1",
     "tsx": "^3.8.1",

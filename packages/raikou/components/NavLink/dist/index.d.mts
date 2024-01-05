@@ -39,6 +39,8 @@ interface NavLinkProps extends BoxProps, StylesApiProps<NavLinkFactory> {
     disabled?: boolean;
     /** Called when the link is clicked */
     onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
+    /** Link `onkeydown` event */
+    onKeyDown?: (event: React.KeyboardEvent<HTMLAnchorElement>) => void;
 }
 type NavLinkFactory = PolymorphicFactory<{
     props: NavLinkProps;

@@ -115,5 +115,6 @@ export const Loader = factory<LoaderFactory>((_props, ref) => {
   );
 });
 
+Loader.defaultLoaders = defaultLoaders;
 Loader.displayName = "@raikou/core/Loader";
 Loader.classes = classes;

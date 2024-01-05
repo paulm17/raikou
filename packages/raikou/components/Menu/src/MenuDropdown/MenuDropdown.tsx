@@ -8,6 +8,7 @@ import {
   Factory,
   createEventHandler,
 } from "@raikou/core";
+import { useMergedRef } from "@raikou/hooks";
 import { Popover } from "../../../Popover/src";
 import { useMenuContext } from "../Menu.context";
 import classes from "../Menu.module.css";
@@ -72,19 +73,14 @@ export const MenuDropdown = factory<MenuDropdownFactory>((props, ref) => {
       onMouseLeave={handleMouseLeave}
       role="menu"
       aria-orientation="vertical"
-      ref={ref}
+      ref={useMergedRef(ref, wrapperRef)}
       {...ctx.getStyles("dropdown", { className, style, styles, classNames })}
+      tabIndex={-1}
+      data-menu-dropdown
+      onKeyDown={handleKeyDown}
     >
-      <div
-        tabIndex={-1}
-        data-menu-dropdown
-        data-autofocus
-        onKeyDown={handleKeyDown}
-        ref={wrapperRef}
-        style={{ outline: 0 }}
-      >
-        {children}
-      </div>
+      <div tabIndex={-1} data-autofocus />
+      {children}
     </Popover.Dropdown>
   );
 });

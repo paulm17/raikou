@@ -135,7 +135,7 @@ export function WithButtonTarget() {
 
   const options = data
     .filter((option) =>
-      option.label.toLowerCase().includes(search.toLowerCase().trim())
+      option.label.toLowerCase().includes(search.toLowerCase().trim()),
     )
     .map((option) => (
       <Combobox.Option key={option.value} value={option.value}>
@@ -164,6 +164,7 @@ export function WithButtonTarget() {
           <Combobox.Search
             placeholder="Search options"
             value={search}
+            rightSection={<Combobox.Chevron size="xs" />}
             onChange={(event) => {
               setSearch(event.currentTarget.value);
             }}

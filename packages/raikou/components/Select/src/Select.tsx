@@ -153,7 +153,8 @@ export const Select = factory<SelectFactory>((_props, ref) => {
     onChange,
   });
 
-  const selectedOption = _value ? optionsLockup[_value] : undefined;
+  const selectedOption =
+    typeof _value === "string" ? optionsLockup[_value] : undefined;
   const [search, setSearch] = useUncontrolled({
     value: searchValue,
     defaultValue: defaultSearchValue,
@@ -245,7 +246,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
               )
             }
             rightSectionPointerEvents={
-              rightSectionPointerEvents || clearButton ? "all" : "none"
+              rightSectionPointerEvents || (clearButton ? "all" : "none")
             }
             {...others}
             size={size}

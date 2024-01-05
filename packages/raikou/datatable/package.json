@@ -1,7 +1,7 @@
 {
   "name": "@raikou/data-table",
   "description": "Calendars, date and time pickers based on Raikou components",
-  "version": "0.0.1-beta.8",
+  "version": "0.0.1-beta.9",
   "main": "index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -14,9 +14,10 @@
   "license": "MIT",
   "sideEffects": false,
   "scripts": {
-    "build": "tsup src/index.ts --config ../../../configuration/tsup/tsup.config.ts",
+    "build": "tsup src/index.ts --config ../../../configuration/tsup/tsup.config.ts && pnpm minify",
     "lint": "eslint \"**/*.ts*\"",
-    "minify": "jsmin -o dist/index.js dist/index.js && jsmin -o dist/index.mjs dist/index.mjs",
+    "js_minify": "jsmin -o dist/index.js dist/index.js && jsmin -o dist/index.mjs dist/index.mjs",
+    "minify": "terser dist/index.js -o dist/index.js -c && terser dist/index.mjs -o dist/index.mjs -c",
     "clean": "rimraf dist .turbo",
     "typecheck": "tsc --noEmit",
     "build:fast": "tsup src",

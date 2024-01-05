@@ -106,7 +106,7 @@ const varsResolver = createVarsResolver<ChipFactory>(
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
-      variant: variant!,
+      variant: variant || "filled",
     });
 
     return {
@@ -179,7 +179,10 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
   const contextProps = ctx
     ? {
         checked: ctx.isChipSelected(value as string),
-        onChange: ctx.onChange,
+        onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
+          ctx.onChange(event);
+          onChange?.(event.currentTarget.checked);
+        },
         type: ctx.multiple ? "checkbox" : "radio",
       }
     : {};

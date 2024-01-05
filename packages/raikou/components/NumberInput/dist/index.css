@@ -294,9 +294,11 @@
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/NumberInput/src/NumberInput.module.css/#css-module-data */
 [data-raikou-color-scheme=light] .m-e2f5cd4e {
   --raikou-numberinput-control-hover-bg: #f8f9fa;
+  --raikou-numberinput-control-disabled: #ced4da;
 }
 [data-raikou-color-scheme=dark] .m-e2f5cd4e {
   --raikou-numberinput-control-hover-bg: #373a40;
+  --raikou-numberinput-control-disabled: #696969;
 }
 .m-e2f5cd4e {
   --ni-right-section-width-xs: calc(1.0625rem * var(--raikou-scale));
@@ -336,14 +338,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--raikou-color-text);
+  color: var(--_ni-control-color, var(--raikou-color-text));
   background-color: var(--_control-bg, transparent);
-  pointer-events: var(--_control-pointer-events, auto);
   opacity: var(--_control-opacity, 1);
+  cursor: var(--_control-cursor, pointer);
 }
 .m-80b4b171:disabled {
-  --_control-pointer-events: none;
-  --_control-opacity: 0.4;
+  --_control-bg: transparent !important;
+  --_control-cursor: not-allowed;
+}
+[data-raikou-color-scheme=light] .m-80b4b171:disabled {
+  --_ni-control-color: var(--raikou-numberinput-control-disabled);
+}
+[data-raikou-color-scheme=dark] .m-80b4b171:disabled {
+  --_ni-control-color: var(--raikou-numberinput-control-disabled);
+}
+.m-e2f5cd4e[data-error] .m-80b4b171 {
+  --_ni-control-color: var(--mantine-color-error);
 }
 [dir=rtl] .m-80b4b171 {
   --_control-bdl: none;

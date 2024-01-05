@@ -7,7 +7,12 @@ export interface ModalBaseHeaderProps extends BoxProps, ElementProps<"div"> {}
 
 export const ModalBaseHeader = forwardRef<HTMLDivElement, ModalBaseHeaderProps>(
   ({ className, ...others }, ref) => (
-    <Box ref={ref} className={cx(classes.header, className)} {...others} />
+    <Box
+      component="header"
+      ref={ref}
+      className={cx(classes.header, className)}
+      {...others}
+    />
   ),
 );
 

@@ -900,6 +900,7 @@
   top: 0;
   background-color: var(--raikou-color-body);
   z-index: 1000;
+  min-height: calc(3.75rem * var(--raikou-scale));
 }
 [dir=rtl] .m-b5489c3c {
   --_pr: var(--mb-padding, var(--raikou-spacing-md));
@@ -1376,16 +1377,17 @@
   display: flex;
 }
 .m-d3ea56bb {
+  --_label-cursor: var(--raikou-cursor-type);
   -webkit-tap-highlight-color: transparent;
   display: inline-flex;
   flex-direction: column;
   font-size: var(--label-fz, var(--raikou-font-size-sm));
   line-height: var(--label-lh);
-  cursor: var(--raikou-cursor-type);
+  cursor: var(--_label-cursor);
   order: var(--_label-order);
 }
 .m-8ee546b8 {
-  cursor: var(--raikou-cursor-type);
+  cursor: var(--_label-cursor);
   color: var(--_label-color, inherit);
   padding-left: var(--_offset-left);
   padding-right: var(--_offset-right);

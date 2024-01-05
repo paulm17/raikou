@@ -119,7 +119,9 @@ interface __InputWrapperProps {
     inputWrapperOrder?: ("label" | "input" | "description" | "error")[];
 }
 
-interface __BaseInputProps extends __InputWrapperProps, __InputProps {
+interface __BaseInputProps extends __InputWrapperProps, Omit<__InputProps, "wrapperProps"> {
+    /** Props passed down to the root element */
+    wrapperProps?: Record<string, any>;
 }
 type __InputStylesNames = InputStylesNames | InputWrapperStylesNames;
 type InputStylesNames = "input" | "wrapper" | "section";

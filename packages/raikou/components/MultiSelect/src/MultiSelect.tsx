@@ -225,6 +225,11 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
   const handleInputKeydown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     onKeyDown?.(event);
 
+    if (event.key === " " && !searchable) {
+      event.preventDefault();
+      combobox.toggleDropdown();
+    }
+
     if (
       event.key === "Backspace" &&
       _searchValue.length === 0 &&
@@ -323,7 +328,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
             }
             rightSectionWidth={rightSectionWidth}
             rightSectionPointerEvents={
-              rightSectionPointerEvents || clearButton ? "all" : "none"
+              rightSectionPointerEvents || (clearButton ? "all" : "none")
             }
             rightSectionProps={rightSectionProps}
             leftSection={leftSection}

@@ -167,6 +167,7 @@
   height: var(--button-height, var(--button-height-sm));
   padding-left: var( --_button-padding-left, var(--button-padding-x, var(--button-padding-x-sm)) );
   padding-right: var( --_button-padding-right, var(--button-padding-x, var(--button-padding-x-sm)) );
+  vertical-align: middle;
 }
 .m-77c9d27d[data-block] {
   --_button-display: block;
@@ -269,7 +270,7 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, calc(-50% + calc(0.0625rem * var(--raikou-scale))));
 }
 .m-80d6d844 {
   display: flex;

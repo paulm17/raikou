@@ -114,18 +114,18 @@ fieldset:disabled .m-1738fcb2,
   --_color: var( --sc-label-color, var(--raikou-segmentedcontrol-active-color) );
 }
 @media (hover: hover) {
-  [data-raikou-color-scheme=light] .m-1738fcb2:not([data-disabled]):not([data-active]):hover {
+  [data-raikou-color-scheme=light] .m-1738fcb2:not([data-disabled], [data-active], [data-read-only]):hover {
     --_color: var(--raikou-segmentedcontrol-hover-color);
   }
-  [data-raikou-color-scheme=dark] .m-1738fcb2:not([data-disabled]):not([data-active]):hover {
+  [data-raikou-color-scheme=dark] .m-1738fcb2:not([data-disabled], [data-active], [data-read-only]):hover {
     --_color: var(--raikou-segmentedcontrol-hover-color);
   }
 }
 @media (hover: none) {
-  [data-raikou-color-scheme=light] .m-1738fcb2:not([data-disabled]):not([data-active]):active {
+  [data-raikou-color-scheme=light] .m-1738fcb2:not([data-disabled], [data-active], [data-read-only]):active {
     --_color: var(--raikou-segmentedcontrol-hover-color);
   }
-  [data-raikou-color-scheme=dark] .m-1738fcb2:not([data-disabled]):not([data-active]):active {
+  [data-raikou-color-scheme=dark] .m-1738fcb2:not([data-disabled], [data-active], [data-read-only]):active {
     --_color: var(--raikou-segmentedcontrol-hover-color);
   }
 }

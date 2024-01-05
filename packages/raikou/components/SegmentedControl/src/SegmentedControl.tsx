@@ -25,6 +25,7 @@ import {
   createVarsResolver,
   Factory,
   useRaikouTheme,
+  getEnv,
 } from "@raikou/core";
 import { getRootPadding } from "./get-root-padding";
 import classes from "./SegmentedControl.module.css";
@@ -233,7 +234,16 @@ export const SegmentedControl = factory<SegmentedControlFactory>(
       }
     }, [_value, containerRect, dir, observerRef]);
 
-    useTimeout(() => setInitialized(true), 20, { autoInvoke: true });
+    useTimeout(
+      () => {
+        // Prevents warning about state update without act
+        if (getEnv() !== "test") {
+          setInitialized(true);
+        }
+      },
+      20,
+      { autoInvoke: true },
+    );
 
     const controls = _data.map((item) => (
       <Box
@@ -259,6 +269,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>(
           mod={{
             active: _value === item.value && !(disabled || item.disabled),
             disabled: disabled || item.disabled,
+            "read-only": readOnly,
           }}
           htmlFor={`${uuid}-${item.value}`}
           ref={(node) => {
