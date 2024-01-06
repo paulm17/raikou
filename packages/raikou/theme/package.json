@@ -1,6 +1,5 @@
 {
   "name": "@raikou/theme",
-  "private": true,
   "version": "0.0.1-beta.9",
   "main": "index.js",
   "types": "./dist/index.d.ts",
