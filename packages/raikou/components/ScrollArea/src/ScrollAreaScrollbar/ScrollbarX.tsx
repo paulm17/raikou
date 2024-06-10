@@ -62,3 +62,5 @@ export const ScrollAreaScrollbarX = forwardRef<
     />
   );
 });
+
+ScrollAreaScrollbarX.displayName = "@raikou/core/ScrollAreaScrollbarX";

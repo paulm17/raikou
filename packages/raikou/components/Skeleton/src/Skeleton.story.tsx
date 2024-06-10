@@ -1,7 +1,7 @@
-import React from 'react';
-import { Skeleton } from './Skeleton';
+import React from "react";
+import { Skeleton } from "./Skeleton";
 
-export default { title: 'Skeleton' };
+export default { title: "Skeleton" };
 
 export function Usage() {
   return (

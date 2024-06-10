@@ -1,11 +1,12 @@
 import React$1 from 'react';
 import * as _raikou_core from '@raikou/core';
-import { RaikouRadius, RaikouSize, BoxProps, StylesApiProps, PolymorphicFactory, ElementProps, Factory, RaikouShadow, RaikouSpacing, RaikouComponentStaticProperties, RaikouColor, RaikouGradient } from '@raikou/core';
-import { useDisclosure } from '@raikou/hooks';
+import { RaikouRadius, RaikouSize, BoxProps, StylesApiProps, ElementProps, Factory, RaikouShadow, RaikouSpacing, PolymorphicFactory, RaikouComponentStaticProperties, RaikouColor, RaikouGradient } from '@raikou/core';
 import { RemoveScroll } from 'react-remove-scroll';
+import { ShiftOptions, FlipOptions, InlineOptions, SizeOptions } from '@floating-ui/react';
+import { useDisclosure } from '@raikou/hooks';
 
 type DayOfWeek = 0 | 1 | 2 | 3 | 4 | 5 | 6;
-type CalendarLevel = 'month' | 'year' | 'decade';
+type CalendarLevel = "month" | "year" | "decade";
 interface ControlKeydownPayload {
     cellIndex: number;
     rowIndex: number;
@@ -31,8 +32,8 @@ interface ControlsGroupSettings {
 
 type DateValue = Date | null;
 type DatesRangeValue = [DateValue, DateValue];
-type DatePickerType = 'default' | 'multiple' | 'range';
-type DatePickerValue<Type extends DatePickerType = 'default'> = Type extends 'range' ? DatesRangeValue : Type extends 'multiple' ? Date[] : DateValue;
+type DatePickerType = "default" | "multiple" | "range";
+type DatePickerValue<Type extends DatePickerType = "default"> = Type extends "range" ? DatesRangeValue : Type extends "multiple" ? Date[] : DateValue;
 
 interface PickerBaseProps<Type extends DatePickerType = "default"> {
     /** Picker type: range, multiple or default */
@@ -55,12 +56,13 @@ interface DatesProviderValue {
     firstDayOfWeek: DayOfWeek;
     weekendDays: DayOfWeek[];
     labelSeparator: string;
+    consistentWeeks: boolean;
 }
 type DatesProviderSettings = Partial<DatesProviderValue>;
 declare const DATES_PROVIDER_DEFAULT_SETTINGS: DatesProviderValue;
 interface DatesProviderProps {
     settings: DatesProviderSettings;
-    children: React$1.ReactNode;
+    children?: React$1.ReactNode;
 }
 declare function DatesProvider({ settings, children }: DatesProviderProps): React$1.JSX.Element;
 
@@ -75,6 +77,7 @@ declare function useDatesContext(): {
     firstDayOfWeek: DayOfWeek;
     weekendDays: DayOfWeek[];
     labelSeparator: string;
+    consistentWeeks: boolean;
 };
 
 type HiddenDatesInputValue = DatesRangeValue | DateValue | DateValue[];
@@ -157,29 +160,17 @@ interface __InputProps {
     pointer?: boolean;
     /** Determines whether the input should have red border and text color when `error` prop is set, `true` by default */
     withErrorStyles?: boolean;
+    /** `size` prop added to the input element */
+    inputSize?: string;
 }
 
-interface InputBaseProps extends BoxProps, __BaseInputProps, StylesApiProps<InputBaseFactory> {
-    __staticSelector?: string;
-    __stylesApiProps?: Record<string, any>;
-    /** Props passed down to the root element (`Input.Wrapper` component) */
-    wrapperProps?: Record<string, any>;
-    /** Determines whether the input can have multiple lines, for example when `component="textarea"`, `false` by default */
-    multiline?: boolean;
-    /** Determines whether `aria-` and other accessibility attributes should be added to the input, `true` by default */
-    withAria?: boolean;
-}
-type InputBaseFactory = PolymorphicFactory<{
-    props: InputBaseProps;
-    defaultRef: HTMLInputElement;
-    defaultComponent: "input";
-    stylesNames: __InputStylesNames;
-    variant: InputVariant;
-}>;
-
-interface TimeInputProps extends InputBaseProps, ElementProps<"input", "size"> {
+interface TimeInputProps extends BoxProps, __BaseInputProps, StylesApiProps<TimeInputFactory>, ElementProps<"input", "size"> {
     /** Determines whether seconds input should be rendered */
     withSeconds?: boolean;
+    /** Minimum possible string time, if withSeconds is true, time should be in format HH:mm:ss, otherwise HH:mm */
+    minTime?: string;
+    /** Maximum possible string time, if withSeconds is true, time should be in format HH:mm:ss, otherwise HH:mm */
+    maxTime?: string;
 }
 type TimeInputFactory = Factory<{
     props: TimeInputProps;
@@ -268,7 +259,12 @@ declare function getEndOfWeek(date: Date, firstDayOfWeek?: DayOfWeek): Date;
 
 declare function getStartOfWeek(date: Date, firstDayOfWeek?: DayOfWeek): Date;
 
-declare function getMonthDays(month: Date, firstDayOfWeek?: DayOfWeek, timezone?: string | undefined): Date[][];
+interface GetMonthDaysInput {
+    month: Date;
+    firstDayOfWeek: DayOfWeek | undefined;
+    consistentWeeks: boolean | undefined;
+}
+declare function getMonthDays({ month, firstDayOfWeek, consistentWeeks, }: GetMonthDaysInput): Date[][];
 
 declare function isSameMonth(date: Date, comparison: Date): boolean;
 
@@ -451,9 +447,9 @@ interface CalendarHeaderSettings {
     onPrevious?: () => void;
     /** Called when level button is clicked */
     onLevelClick?: () => void;
-    /** Determines whether next control should be disabled, defaults to true */
+    /** Determines whether next control should be disabled, defaults to false */
     nextDisabled?: boolean;
-    /** Determines whether previous control should be disabled, defaults to true */
+    /** Determines whether previous control should be disabled, defaults to false */
     previousDisabled?: boolean;
     /** Determines whether next level button should be enabled, defaults to true */
     hasNextLevel?: boolean;
@@ -654,6 +650,13 @@ declare const MonthLevelGroup: _raikou_core.RaikouComponent<{
     stylesNames: MonthLevelGroupStylesNames;
 }>;
 
+interface PortalProps extends React$1.ComponentPropsWithoutRef<"div"> {
+    /** Portal children, for example, custom modal or popover */
+    children: React$1.ReactNode;
+    /** Element inside which portal should be created, by default a new div element is created and appended to the `document.body` */
+    target?: HTMLElement | string;
+}
+
 interface RaikouTransitionStyles {
     common?: React$1.CSSProperties;
     in: React$1.CSSProperties;
@@ -688,110 +691,6 @@ interface TransitionProps {
     onEntered?: () => void;
 }
 type TransitionOverride = Partial<Omit<TransitionProps, "mounted">>;
-
-type FloatingPlacement = 'end' | 'start';
-type FloatingSide = 'top' | 'right' | 'bottom' | 'left';
-type FloatingPosition = FloatingSide | `${FloatingSide}-${FloatingPlacement}`;
-type ArrowPosition = 'center' | 'side';
-interface FloatingAxesOffsets {
-    mainAxis?: number;
-    crossAxis?: number;
-    alignmentAxis?: number | null;
-}
-
-interface PortalProps extends React$1.ComponentPropsWithoutRef<"div"> {
-    /** Portal children, for example, custom modal or popover */
-    children: React$1.ReactNode;
-    /** Element inside which portal should be created, by default a new div element is created and appended to the `document.body` */
-    target?: HTMLElement | string;
-}
-
-type PopoverWidth = "target" | React.CSSProperties["width"];
-interface PopoverMiddlewares {
-    shift: boolean;
-    flip: boolean;
-    inline?: boolean;
-    size?: boolean;
-}
-
-type PopoverStylesNames = "dropdown" | "arrow";
-type PopoverCssVariables = {
-    dropdown: "--popover-radius" | "--popover-shadow";
-};
-interface __PopoverProps {
-    /** Dropdown position relative to the target element, `'bottom'` by default */
-    position?: FloatingPosition;
-    /** Offset of the dropdown element, `8` by default */
-    offset?: number | FloatingAxesOffsets;
-    /** Called when dropdown position changes */
-    onPositionChange?: (position: FloatingPosition) => void;
-    /** `useEffect` dependencies to force update dropdown position, `[]` by default */
-    positionDependencies?: any[];
-    /** Called when dropdown closes */
-    onClose?: () => void;
-    /** Called when dropdown opens */
-    onOpen?: () => void;
-    /** If set dropdown will not be unmounted from the DOM when it is hidden, `display: none` styles will be added instead, `false` by default */
-    keepMounted?: boolean;
-    /** Props passed down to the `Transition` component that used to animate dropdown presence, use to configure duration and animation type, `{ duration: 150, transition: 'fade' }` by default */
-    transitionProps?: TransitionOverride;
-    /** Dropdown width, or `'target'` to make dropdown width the same as target element, `'max-content'` by default */
-    width?: PopoverWidth;
-    /** Floating ui middlewares to configure position handling, `{ flip: true, shift: true, inline: false }` by default */
-    middlewares?: PopoverMiddlewares;
-    /** Determines whether component should have an arrow, `false` by default */
-    withArrow?: boolean;
-    /** Arrow size in px, `7` by default */
-    arrowSize?: number;
-    /** Arrow offset in px, `5` by default */
-    arrowOffset?: number;
-    /** Arrow `border-radius` in px, `0` by default */
-    arrowRadius?: number;
-    /** Arrow position */
-    arrowPosition?: ArrowPosition;
-    /** Determines whether dropdown should be rendered within the `Portal`, `true` by default */
-    withinPortal?: boolean;
-    /** Props to pass down to the `Portal` when `withinPortal` is true */
-    portalProps?: Omit<PortalProps, "children">;
-    /** Dropdown `z-index`, `300` by default */
-    zIndex?: React$1.CSSProperties["zIndex"];
-    /** Key of `theme.radius` or any valid CSS value to set border-radius, `theme.defaultRadius` by default */
-    radius?: RaikouRadius;
-    /** Key of `theme.shadows` or any other valid CSS `box-shadow` value */
-    shadow?: RaikouShadow;
-    /** If set, popover dropdown will not be rendered */
-    disabled?: boolean;
-    /** Determines whether focus should be automatically returned to control when dropdown closes, `false` by default */
-    returnFocus?: boolean;
-}
-interface PopoverProps extends __PopoverProps, StylesApiProps<PopoverFactory> {
-    __staticSelector?: string;
-    /** `Popover.Target` and `Popover.Dropdown` components */
-    children?: React$1.ReactNode;
-    /** Initial opened state for uncontrolled component */
-    defaultOpened?: boolean;
-    /** Controlled dropdown opened state */
-    opened?: boolean;
-    /** Called with current state when dropdown opens or closes */
-    onChange?: (opened: boolean) => void;
-    /** Determines whether dropdown should be closed on outside clicks, `true` by default */
-    closeOnClickOutside?: boolean;
-    /** Events that trigger outside clicks */
-    clickOutsideEvents?: string[];
-    /** Determines whether focus should be trapped within dropdown, `false` by default */
-    trapFocus?: boolean;
-    /** Determines whether dropdown should be closed when `Escape` key is pressed, `true` by default */
-    closeOnEscape?: boolean;
-    /** id base to create accessibility connections */
-    id?: string;
-    /** Determines whether dropdown and target elements should have accessible roles, `true` by default */
-    withRoles?: boolean;
-}
-type PopoverFactory = Factory<{
-    props: PopoverProps;
-    stylesNames: PopoverStylesNames;
-    vars: PopoverCssVariables;
-}>;
 
 type RemoveScrollProps = Omit<React$1.ComponentProps<typeof RemoveScroll>, "children">;
 interface ModalBaseProps extends BoxProps, ElementProps<"div", "title"> {
@@ -850,6 +749,8 @@ interface __CloseButtonProps {
     iconSize?: number | string;
     /** Content rendered inside the button, for example `VisuallyHidden` with label for screen readers */
     children?: React$1.ReactNode;
+    /** Replaces default close icon. If set, `iconSize` prop is ignored. */
+    icon?: React$1.ReactNode;
 }
 interface CloseButtonProps extends __CloseButtonProps, BoxProps, StylesApiProps<CloseButtonFactory> {
 }
@@ -949,6 +850,115 @@ interface ModalProps extends ModalRootProps {
     closeButtonProps?: ModalBaseCloseButtonProps;
 }
 
+type FloatingPlacement = "end" | "start";
+type FloatingSide = "top" | "right" | "bottom" | "left";
+type FloatingPosition = FloatingSide | `${FloatingSide}-${FloatingPlacement}`;
+type ArrowPosition = "center" | "side";
+type FloatingStrategy = "absolute" | "fixed";
+interface FloatingAxesOffsets {
+    mainAxis?: number;
+    crossAxis?: number;
+    alignmentAxis?: number | null;
+}
+
+type PopoverWidth = "target" | React.CSSProperties["width"] | null;
+interface PopoverMiddlewares {
+    shift?: boolean | ShiftOptions;
+    flip?: boolean | FlipOptions;
+    inline?: boolean | InlineOptions;
+    size?: boolean | SizeOptions;
+}
+
+type PopoverStylesNames = "dropdown" | "arrow";
+type PopoverCssVariables = {
+    dropdown: "--popover-radius" | "--popover-shadow";
+};
+interface __PopoverProps {
+    /** Dropdown position relative to the target element, `'bottom'` by default */
+    position?: FloatingPosition;
+    /** Offset of the dropdown element, `8` by default */
+    offset?: number | FloatingAxesOffsets;
+    /** Called when dropdown position changes */
+    onPositionChange?: (position: FloatingPosition) => void;
+    /** `useEffect` dependencies to force update dropdown position, `[]` by default */
+    positionDependencies?: any[];
+    /** Called when dropdown closes */
+    onClose?: () => void;
+    /** Called when dropdown opens */
+    onOpen?: () => void;
+    /** If set dropdown will not be unmounted from the DOM when it is hidden, `display: none` styles will be added instead, `false` by default */
+    keepMounted?: boolean;
+    /** Props passed down to the `Transition` component that used to animate dropdown presence, use to configure duration and animation type, `{ duration: 150, transition: 'fade' }` by default */
+    transitionProps?: TransitionOverride;
+    /** Dropdown width, or `'target'` to make dropdown width the same as target element, `'max-content'` by default */
+    width?: PopoverWidth;
+    /** Floating ui middlewares to configure position handling, `{ flip: true, shift: true, inline: false }` by default */
+    middlewares?: PopoverMiddlewares;
+    /** Determines whether component should have an arrow, `false` by default */
+    withArrow?: boolean;
+    /** Arrow size in px, `7` by default */
+    arrowSize?: number;
+    /** Arrow offset in px, `5` by default */
+    arrowOffset?: number;
+    /** Arrow `border-radius` in px, `0` by default */
+    arrowRadius?: number;
+    /** Arrow position */
+    arrowPosition?: ArrowPosition;
+    /** Determines whether dropdown should be rendered within the `Portal`, `true` by default */
+    withinPortal?: boolean;
+    /** Props to pass down to the `Portal` when `withinPortal` is true */
+    portalProps?: Omit<PortalProps, "children">;
+    /** Dropdown `z-index`, `300` by default */
+    zIndex?: React$1.CSSProperties["zIndex"];
+    /** Key of `theme.radius` or any valid CSS value to set border-radius, `theme.defaultRadius` by default */
+    radius?: RaikouRadius;
+    /** Key of `theme.shadows` or any other valid CSS `box-shadow` value */
+    shadow?: RaikouShadow;
+    /** If set, popover dropdown will not be rendered */
+    disabled?: boolean;
+    /** Determines whether focus should be automatically returned to control when dropdown closes, `false` by default */
+    returnFocus?: boolean;
+    /** Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy), `'absolute'` by default */
+    floatingStrategy?: FloatingStrategy;
+}
+interface PopoverProps extends __PopoverProps, StylesApiProps<PopoverFactory> {
+    __staticSelector?: string;
+    /** `Popover.Target` and `Popover.Dropdown` components */
+    children?: React$1.ReactNode;
+    /** Initial opened state for uncontrolled component */
+    defaultOpened?: boolean;
+    /** Controlled dropdown opened state */
+    opened?: boolean;
+    /** Called with current state when dropdown opens or closes */
+    onChange?: (opened: boolean) => void;
+    /** Determines whether dropdown should be closed on outside clicks, `true` by default */
+    closeOnClickOutside?: boolean;
+    /** Events that trigger outside clicks */
+    clickOutsideEvents?: string[];
+    /** Determines whether focus should be trapped within dropdown, `false` by default */
+    trapFocus?: boolean;
+    /** Determines whether dropdown should be closed when `Escape` key is pressed, `true` by default */
+    closeOnEscape?: boolean;
+    /** id base to create accessibility connections */
+    id?: string;
+    /** Determines whether dropdown and target elements should have accessible roles, `true` by default */
+    withRoles?: boolean;
+}
+type PopoverFactory = Factory<{
+    props: PopoverProps;
+    stylesNames: PopoverStylesNames;
+    vars: PopoverCssVariables;
+}>;
+
+interface DateFormatterInput {
+    type: DatePickerType;
+    date: DatePickerValue<DatePickerType>;
+    locale: string;
+    format: string;
+    labelSeparator: string;
+}
+type DateFormatter = (input: DateFormatterInput) => string;
+
 type PickerInputBaseStylesNames = __InputStylesNames;
 interface DateInputSharedProps extends Omit<__BaseInputProps, "size">, ElementProps<"button", "defaultValue" | "value" | "onChange" | "type"> {
     /** Determines whether dropdown should be closed when date is selected, not applicable when type="multiple", true by default */
@@ -969,6 +979,10 @@ interface DateInputSharedProps extends Omit<__BaseInputProps, "size">, ElementPr
     sortDates?: boolean;
     /** Separator between range value */
     labelSeparator?: string;
+    /** Input placeholder */
+    placeholder?: string;
+    /** A function to format selected dates values into a string. By default, date is formatted based on the input type. */
+    valueFormatter?: DateFormatter;
 }
 interface PickerInputBaseProps extends BoxProps, DateInputSharedProps, Omit<StylesApiProps<PickerInputBaseFactory>, "classNames" | "styles"> {
     classNames?: Partial<Record<string, string>>;
@@ -1267,6 +1281,8 @@ interface LoaderProps extends BoxProps, StylesApiProps<LoaderFactory>, Omit<Reac
     type?: RaikouLoader;
     /** Object of loaders components, can be customized via default props or inline. Default value contains `bars`, `oval` and `dots` */
     loaders?: RaikouLoadersRecord;
+    /** Overrides default loader with given content */
+    children?: React$1.ReactNode;
 }
 type LoaderFactory = Factory<{
     props: LoaderProps;
@@ -1305,9 +1321,9 @@ declare const ActionIconGroup: _raikou_core.RaikouComponent<{
 }>;
 
 type ActionIconVariant = "filled" | "light" | "outline" | "transparent" | "white" | "subtle" | "default" | "gradient";
-type ActionIconStylesNames = "root" | "loader";
+type ActionIconStylesNames = "root" | "loader" | "icon";
 type ActionIconCssVariables = {
-    root: "--ai-radius" | "--ai-size" | "--ai-bg" | "--ai-hover" | "--ai-color" | "--ai-bd";
+    root: "--ai-radius" | "--ai-size" | "--ai-bg" | "--ai-hover" | "--ai-hover-color" | "--ai-color" | "--ai-bd";
 };
 interface ActionIconProps extends BoxProps, StylesApiProps<ActionIconFactory> {
     "data-disabled"?: boolean;
@@ -1328,6 +1344,8 @@ interface ActionIconProps extends BoxProps, StylesApiProps<ActionIconFactory> {
     disabled?: boolean;
     /** Icon displayed inside the button */
     children?: React$1.ReactNode;
+    /** Determines whether button text color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+    autoContrast?: boolean;
 }
 type ActionIconFactory = PolymorphicFactory<{
     props: ActionIconProps;
@@ -1373,7 +1391,7 @@ declare const DateTimePicker: _raikou_core.RaikouComponent<{
     variant: InputVariant;
 }>;
 
-type YearPickerInputStylesNames = __InputStylesNames | YearPickerStylesNames;
+type YearPickerInputStylesNames = __InputStylesNames | "placeholder" | YearPickerStylesNames;
 interface YearPickerInputProps<Type extends DatePickerType = "default"> extends BoxProps, DateInputSharedProps, YearPickerBaseProps<Type>, StylesApiProps<YearPickerInputFactory> {
     /** Dayjs format to display input value, "YYYY" by default  */
     valueFormat?: string;
@@ -1391,7 +1409,7 @@ type YearPickerInputComponent = (<Type extends DatePickerType = "default">(props
 } & RaikouComponentStaticProperties<YearPickerInputFactory>;
 declare const YearPickerInput: YearPickerInputComponent;
 
-type MonthPickerInputStylesNames = __InputStylesNames | MonthPickerStylesNames;
+type MonthPickerInputStylesNames = __InputStylesNames | "placeholder" | MonthPickerStylesNames;
 interface MonthPickerInputProps<Type extends DatePickerType = "default"> extends BoxProps, DateInputSharedProps, MonthPickerBaseProps<Type>, StylesApiProps<MonthPickerInputFactory> {
     /** Dayjs format to display input value, "MMMM YYYY" by default  */
     valueFormat?: string;
@@ -1409,7 +1427,7 @@ type MonthPickerInputComponent = (<Type extends DatePickerType = "default">(prop
 } & RaikouComponentStaticProperties<MonthPickerInputFactory>;
 declare const MonthPickerInput: MonthPickerInputComponent;
 
-type DatePickerInputStylesNames = __InputStylesNames | CalendarStylesNames;
+type DatePickerInputStylesNames = __InputStylesNames | "placeholder" | CalendarStylesNames;
 interface DatePickerInputProps<Type extends DatePickerType = "default"> extends BoxProps, DateInputSharedProps, DatePickerBaseProps<Type>, StylesApiProps<DatePickerInputFactory> {
     /** Dayjs format to display input value, "MMMM D, YYYY" by default  */
     valueFormat?: string;

@@ -1,33 +1,33 @@
-import dayjs from "dayjs";
 import React from "react";
+import dayjs from "dayjs";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
-  factory,
   ElementProps,
-  useProps,
   Factory,
+  factory,
+  StylesApiProps,
+  useProps,
   useResolvedStylesApi,
 } from "@raikou/core";
 import { useUncontrolled } from "@raikou/hooks";
-import {
-  MonthLevelGroup,
-  MonthLevelGroupStylesNames,
-} from "../MonthLevelGroup";
-import { YearLevelGroup, YearLevelGroupStylesNames } from "../YearLevelGroup";
+import { useUncontrolledDates } from "../../hooks";
+import { CalendarLevel } from "../../types";
+import { shiftTimezone } from "../../utils";
+import { useDatesContext } from "../DatesProvider";
+import { DecadeLevelSettings } from "../DecadeLevel";
 import {
   DecadeLevelGroup,
   DecadeLevelGroupStylesNames,
 } from "../DecadeLevelGroup";
-import { CalendarLevel } from "../../types";
-import { clampLevel } from "./clamp-level/clamp-level";
 import { MonthLevelSettings } from "../MonthLevel";
+import {
+  MonthLevelGroup,
+  MonthLevelGroupStylesNames,
+} from "../MonthLevelGroup";
 import { YearLevelSettings } from "../YearLevel";
-import { DecadeLevelSettings } from "../DecadeLevel";
-import { useDatesContext } from "../DatesProvider";
-import { shiftTimezone } from "../../utils";
-import { useUncontrolledDates } from "../../hooks";
+import { YearLevelGroup, YearLevelGroupStylesNames } from "../YearLevelGroup";
+import { clampLevel } from "./clamp-level/clamp-level";
 
 export type CalendarStylesNames =
   | MonthLevelGroupStylesNames
@@ -425,4 +425,9 @@ export const Calendar = factory<CalendarFactory>((_props, ref) => {
   );
 });
 
+Calendar.classes = {
+  ...DecadeLevelGroup.classes,
+  ...YearLevelGroup.classes,
+  ...MonthLevelGroup.classes,
+};
 Calendar.displayName = "@raikou/dates/Calendar";

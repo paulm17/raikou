@@ -1,20 +1,20 @@
-import dayjs from "dayjs";
 import React from "react";
+import dayjs from "dayjs";
 import {
   BoxProps,
-  StylesApiProps,
-  factory,
+  createVarsResolver,
   ElementProps,
+  factory,
+  Factory,
+  getSize,
+  RaikouSize,
+  StylesApiProps,
   useProps,
   useStyles,
-  createVarsResolver,
-  Factory,
-  RaikouSize,
-  getSize,
 } from "@raikou/core";
-import { UnstyledButton } from "../../../../components/UnstyledButton/src";
 import { shiftTimezone } from "../../utils";
 import { useDatesContext } from "../DatesProvider";
+import { UnstyledButton } from "../../../../components/UnstyledButton/src";
 import classes from "./Day.module.css";
 
 export type DayStylesNames = "day";
@@ -146,5 +146,5 @@ export const Day = factory<DayFactory>((_props, ref) => {
   );
 });
 
-Day.displayName = "@raikou/dates/Day";
 Day.classes = classes;
+Day.displayName = "@raikou/dates/Day";

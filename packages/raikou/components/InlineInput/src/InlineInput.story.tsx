@@ -1,18 +1,18 @@
-import React from 'react';
-import { InlineInput, InlineInputProps } from './InlineInput';
+import React from "react";
+import { InlineInput, InlineInputProps } from "./InlineInput";
 
-export default { title: 'InlineInput' };
+export default { title: "InlineInput" };
 
 const defaultProps: InlineInputProps = {
-  __staticSelector: 'InlineInput',
+  __staticSelector: "InlineInput",
   __stylesApiProps: {},
-  label: 'Label',
-  description: 'Description',
-  error: 'Error',
-  id: 'id',
+  label: "Label",
+  description: "Description",
+  error: "Error",
+  id: "id",
   disabled: false,
-  size: 'sm',
-  labelPosition: 'left',
+  size: "sm",
+  labelPosition: "left",
   children: <input type="checkbox" style={{ order: 2 }} />,
 };
 

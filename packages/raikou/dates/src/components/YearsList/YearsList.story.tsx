@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import dayjs from 'dayjs';
-import { YearsList } from './YearsList';
+import React, { useState } from "react";
+import dayjs from "dayjs";
+import { YearsList } from "./YearsList";
 
-export default { title: 'YearsList' };
+export default { title: "YearsList" };
 
 export function Usage() {
   return (
@@ -23,7 +23,10 @@ export function Unstyled() {
 export function MinDate() {
   return (
     <div style={{ padding: 40, width: 320 }}>
-      <YearsList decade={new Date(2022, 3, 11)} minDate={new Date(2024, 4, 11)} />
+      <YearsList
+        decade={new Date(2022, 3, 11)}
+        minDate={new Date(2024, 4, 11)}
+      />
     </div>
   );
 }
@@ -39,7 +42,10 @@ export function MaxDate() {
 export function WithRange() {
   return (
     <div style={{ padding: 40, width: 320 }}>
-      <YearsList decade={new Date(2022, 1, 1)} getYearControlProps={() => ({ inRange: true })} />
+      <YearsList
+        decade={new Date(2022, 1, 1)}
+        getYearControlProps={() => ({ inRange: true })}
+      />
       <YearsList
         decade={new Date(2022, 1, 1)}
         getYearControlProps={() => ({ firstInRange: true, selected: true })}
@@ -60,7 +66,7 @@ export function WithSelection() {
       <YearsList
         decade={new Date()}
         getYearControlProps={(month) => ({
-          selected: dayjs(month).isSame(selected, 'month'),
+          selected: dayjs(month).isSame(selected, "month"),
           onClick: () => setSelected(month),
         })}
       />
@@ -69,7 +75,7 @@ export function WithSelection() {
 }
 
 export function Sizes() {
-  const sizes = (['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
+  const sizes = (["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
     <YearsList
       decade={new Date()}
       size={size}

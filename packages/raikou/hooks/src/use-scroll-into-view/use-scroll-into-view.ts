@@ -1,4 +1,4 @@
-import { useCallback, useRef, useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useReducedMotion } from '../use-reduced-motion/use-reduced-motion';
 import { useWindowEvent } from '../use-window-event/use-window-event';
 import { easeInOutQuad } from './utils/ease-in-out-quad';
@@ -34,9 +34,19 @@ interface ScrollIntoViewParams {
   isList?: boolean;
 }
 
+interface ScrollIntoViewReturnType<
+  Target extends HTMLElement,
+  Parent extends HTMLElement | null = null,
+> {
+  scrollableRef: React.MutableRefObject<Parent>;
+  targetRef: React.MutableRefObject<Target>;
+  scrollIntoView: (params?: ScrollIntoViewAnimation) => void;
+  cancel: () => void;
+}
+
 export function useScrollIntoView<
   Target extends HTMLElement,
-  Parent extends HTMLElement | null = null
+  Parent extends HTMLElement | null = null,
 >({
   duration = 1250,
   axis = 'y',
@@ -142,5 +152,5 @@ export function useScrollIntoView<
     targetRef,
     scrollIntoView,
     cancel,
-  };
+  } as ScrollIntoViewReturnType<Target, Parent>;
 }

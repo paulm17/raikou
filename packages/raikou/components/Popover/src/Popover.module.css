@@ -1,9 +1,9 @@
 .dropdown {
-  @mixin light {
+  @mixin where-light {
     --raikou-popover-bg: #fff;
     --raikou-popover-bd: #e9ecef;
   }
-  @mixin dark {
+  @mixin where-dark {
     --raikou-popover-bg: #25262b;
     --raikou-popover-bd: #373a40;
   }
@@ -19,12 +19,12 @@
     outline: none;
   }
 
-  @mixin light {
+  @mixin where-light {
     --_popover-bg: var(--raikou-popover-bg);
     --_popover-bd: var(--raikou-popover-bd);
   }
 
-  @mixin dark {
+  @mixin where-dark {
     --_popover-bg: var(--raikou-popover-bg);
     --_popover-bd: var(--raikou-popover-bd);
   }

@@ -99,6 +99,7 @@ export const Overlay = polymorphicFactory<OverlayFactory>((_props, ref) => {
     blur,
     color,
     backgroundOpacity,
+    mod,
     ...others
   } = props;
 
@@ -116,7 +117,12 @@ export const Overlay = polymorphicFactory<OverlayFactory>((_props, ref) => {
   });
 
   return (
-    <Box ref={ref} {...getStyles("root")} mod={{ center, fixed }} {...others}>
+    <Box
+      ref={ref}
+      {...getStyles("root")}
+      mod={[{ center, fixed }, mod]}
+      {...others}
+    >
       {children}
     </Box>
   );

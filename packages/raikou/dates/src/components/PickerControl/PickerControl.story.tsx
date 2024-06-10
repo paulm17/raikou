@@ -1,7 +1,7 @@
-import React from 'react';
-import { PickerControl } from './PickerControl';
+import React from "react";
+import { PickerControl } from "./PickerControl";
 
-export default { title: 'PickerControl' };
+export default { title: "PickerControl" };
 
 export function Usage() {
   return (
@@ -23,7 +23,7 @@ export function Unstyled() {
 
 export function Range() {
   return (
-    <div style={{ padding: 40, display: 'flex' }}>
+    <div style={{ padding: 40, display: "flex" }}>
       <PickerControl firstInRange inRange selected>
         March
       </PickerControl>
@@ -37,7 +37,7 @@ export function Range() {
 }
 
 export function Sizes() {
-  const sizes = (['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
+  const sizes = (["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
     <PickerControl selected size={size} key={size} mt="md">
       {size}
     </PickerControl>

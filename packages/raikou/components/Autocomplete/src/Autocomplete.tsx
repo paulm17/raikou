@@ -17,13 +17,17 @@ import {
 } from "../../Input/src";
 import {
   Combobox,
+  ComboboxLikeProps,
+  ComboboxLikeRenderOptionInput,
+  ComboboxLikeStylesNames,
+  ComboboxStringData,
+  ComboboxStringItem,
+  getOptionsLockup,
+  getParsedComboboxData,
   OptionsDropdown,
   useCombobox,
-  getParsedComboboxData,
-  getOptionsLockup,
-  ComboboxLikeProps,
-  ComboboxLikeStylesNames,
 } from "../../Combobox/src";
+import { ScrollAreaProps } from "../../ScrollArea/src";
 
 export type AutocompleteStylesNames =
   | __InputStylesNames
@@ -32,9 +36,12 @@ export type AutocompleteStylesNames =
 export interface AutocompleteProps
   extends BoxProps,
     __BaseInputProps,
-    ComboboxLikeProps,
+    Omit<ComboboxLikeProps, "data">,
     StylesApiProps<AutocompleteFactory>,
     ElementProps<"input", "onChange" | "size"> {
+  /** Data displayed in the dropdown */
+  data?: ComboboxStringData;
+
   /** Controlled component value */
   value?: string;
 
@@ -43,6 +50,14 @@ export interface AutocompleteProps
 
   /** Called when value changes */
   onChange?: (value: string) => void;
+
+  /** A function to render content of the option, replaces the default content of the option */
+  renderOption?: (
+    input: ComboboxLikeRenderOptionInput<ComboboxStringItem>,
+  ) => React.ReactNode;
+
+  /** Props passed down to the underlying `ScrollArea` component in the dropdown */
+  scrollAreaProps?: ScrollAreaProps;
 }
 
 export type AutocompleteFactory = Factory<{
@@ -83,6 +98,9 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
     maxDropdownHeight,
     size,
     id,
+    renderOption,
+    autoComplete,
+    scrollAreaProps,
     ...others
   } = props;
 
@@ -179,6 +197,9 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
         withScrollArea={withScrollArea}
         maxDropdownHeight={maxDropdownHeight}
         labelId={`${_id}-label`}
+        aria-label={others.label ? undefined : others["aria-label"]}
+        renderOption={renderOption}
+        scrollAreaProps={scrollAreaProps}
       />
     </Combobox>
   );

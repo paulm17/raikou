@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   TableTd,
   TableTr,
@@ -7,8 +7,8 @@ import {
   TableTfoot,
   TableThead,
   TableCaption,
-} from './Table.components';
-import type { TableData } from './Table';
+} from "./Table.components";
+import type { TableData } from "./Table";
 
 export interface TableDataRendererProps {
   data: TableData;
@@ -54,4 +54,4 @@ export function TableDataRenderer({ data }: TableDataRendererProps) {
   );
 }
 
-TableDataRenderer.displayName = '@mantine/core/TableDataRenderer';
+TableDataRenderer.displayName = "@raikou/core/TableDataRenderer";

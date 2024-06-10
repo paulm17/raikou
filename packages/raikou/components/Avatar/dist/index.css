@@ -1,35 +1,38 @@
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Avatar/src/Avatar.module.css/#css-module-data */
+.m-11def92b {
+  --ag-spacing: var(--raikou-spacing-sm);
+  --ag-offset: calc(var(--ag-spacing) * -1);
+  display: flex;
+  padding-inline-start: var(--ag-spacing);
+}
 .m-f85678b6 {
-  --avatar-size-xs: calc(1rem * var(--raikou-scale));
-  --avatar-size-sm: calc(1.625rem * var(--raikou-scale));
-  --avatar-size-md: calc(2.375rem * var(--raikou-scale));
-  --avatar-size-lg: calc(3.5rem * var(--raikou-scale));
-  --avatar-size-xl: calc(5.25rem * var(--raikou-scale));
-  --_avatar-size: var(--avatar-size, var(--avatar-size-md));
+  --avatar-size-xs: 16px;
+  --avatar-size-sm: 26px;
+  --avatar-size-md: 38px;
+  --avatar-size-lg: 56px;
+  --avatar-size-xl: 84px;
+  --avatar-size: var(--avatar-size-md);
+  --avatar-radius: 1000px;
+  --avatar-bg: var(--raikou-color-gray-light);
+  --avatar-bd: 1px solid transparent;
+  --avatar-color: var(--raikou-color-gray-light-color);
+  --avatar-placeholder-fz: calc(var(--avatar-size) / 2.5);
   -webkit-tap-highlight-color: transparent;
   position: relative;
   display: block;
   user-select: none;
   overflow: hidden;
-  border-radius: var(--avatar-radius, calc(62.5rem * var(--raikou-scale)));
+  border-radius: var(--avatar-radius);
   text-decoration: none;
-  border: var(--_avatar-border, none);
-  background-color: var(--_avatar-bg);
   padding: 0;
-  width: var(--_avatar-size);
-  height: var(--_avatar-size);
-  min-width: var(--_avatar-size);
-  margin-left: var(--_avatar-ml, unset);
-  margin-right: var(--_avatar-mr, unset);
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  min-width: var(--avatar-size);
 }
-.m-f85678b6[data-within-group] {
-  --_avatar-ml: calc(var(--ag-spacing, var(--raikou-spacing-sm)) * -1);
-  --_avatar-border: calc(0.125rem * var(--raikou-scale)) solid var(--raikou-color-body);
-  --_avatar-bg: var(--raikou-color-body);
-}
-[dir=rtl] .m-f85678b6[data-within-group] {
-  --_avatar-mr: calc(var(--ag-spacing, var(--raikou-spacing-sm)) * -1);
-  --_avatar-ml: unset;
+.m-f85678b6:where([data-within-group]) {
+  margin-inline-start: var(--ag-offset);
+  border: 2px solid var(--raikou-color-body);
+  background: var(--raikou-color-body);
 }
 .m-11f8ac07 {
   object-fit: cover;
@@ -46,21 +49,13 @@
   height: 100%;
   user-select: none;
   border-radius: var(--avatar-radius);
-  font-size: calc(var(--_avatar-size) / 2.5);
-  background: var(--avatar-bg, var(--raikou-color-gray-light));
-  border: var(--avatar-bd, calc(0.0625rem * var(--raikou-scale)) solid transparent);
-  color: var(--avatar-color, var(--raikou-color-gray-light-color));
+  font-size: var(--avatar-placeholder-fz);
+  background: var(--avatar-bg);
+  border: var(--avatar-bd);
+  color: var(--avatar-color);
 }
 .m-104cd71f > [data-avatar-placeholder-icon] {
   width: 70%;
   height: 70%;
-}
-.m-11def92b {
-  display: flex;
-  padding-left: var(--ag-spacing, var(--raikou-spacing-sm));
-}
-[dir=rtl] .m-11def92b {
-  padding-left: 0;
-  padding-right: var(--ag-spacing, var(--raikou-spacing-sm));
 }
 /*# sourceMappingURL=index.css.map */

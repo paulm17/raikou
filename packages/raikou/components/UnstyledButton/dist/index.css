@@ -12,4 +12,7 @@
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
+:where([dir=rtl]) .m-87cf2631 {
+  text-align: right;
+}
 /*# sourceMappingURL=index.css.map */

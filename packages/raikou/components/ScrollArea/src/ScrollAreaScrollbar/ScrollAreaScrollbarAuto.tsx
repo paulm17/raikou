@@ -1,5 +1,5 @@
 import React, { forwardRef, useState } from "react";
-import { useDebounceCallback } from "@raikou/hooks";
+import { useDebouncedCallback } from "@raikou/hooks";
 import { useScrollAreaContext } from "../ScrollArea.context";
 import {
   ScrollAreaScrollbarVisibleProps,
@@ -20,7 +20,8 @@ export const ScrollAreaScrollbarAuto = forwardRef<
   const { forceMount, ...scrollbarProps } = props;
   const [visible, setVisible] = useState(false);
   const isHorizontal = props.orientation === "horizontal";
-  const handleResize = useDebounceCallback(() => {
+
+  const handleResize = useDebouncedCallback(() => {
     if (context.viewport) {
       const isOverflowX =
         context.viewport.offsetWidth < context.viewport.scrollWidth;
@@ -45,3 +46,5 @@ export const ScrollAreaScrollbarAuto = forwardRef<
 
   return null;
 });
+
+ScrollAreaScrollbarAuto.displayName = "@raikou/core/ScrollAreaScrollbarAuto";

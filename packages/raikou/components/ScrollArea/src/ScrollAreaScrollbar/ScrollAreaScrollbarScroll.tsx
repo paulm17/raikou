@@ -1,5 +1,5 @@
 import React, { forwardRef, useEffect, useState } from "react";
-import { useDebounceCallback } from "@raikou/hooks";
+import { useDebouncedCallback } from "@raikou/hooks";
 import { useScrollAreaContext } from "../ScrollArea.context";
 import {
   ScrollAreaScrollbarVisible,
@@ -22,13 +22,13 @@ export const ScrollAreaScrollbarScroll = forwardRef<
   const [state, setState] = useState<
     "hidden" | "idle" | "interacting" | "scrolling"
   >("hidden");
-  const debounceScrollEnd = useDebounceCallback(() => setState("idle"), 100);
+  const debounceScrollEnd = useDebouncedCallback(() => setState("idle"), 100);
 
   useEffect(() => {
     if (state === "idle") {
       const hideTimer = window.setTimeout(
         () => setState("hidden"),
-        context.scrollHideDelay
+        context.scrollHideDelay,
       );
       return () => window.clearTimeout(hideTimer);
     }
@@ -65,10 +65,10 @@ export const ScrollAreaScrollbarScroll = forwardRef<
         {...scrollbarProps}
         ref={red}
         onPointerEnter={composeEventHandlers(props.onPointerEnter, () =>
-          setState("interacting")
+          setState("interacting"),
         )}
         onPointerLeave={composeEventHandlers(props.onPointerLeave, () =>
-          setState("idle")
+          setState("idle"),
         )}
       />
     );
@@ -76,3 +76,6 @@ export const ScrollAreaScrollbarScroll = forwardRef<
 
   return null;
 });
+
+ScrollAreaScrollbarScroll.displayName =
+  "@raikou/core/ScrollAreaScrollbarScroll";

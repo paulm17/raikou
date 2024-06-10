@@ -31,4 +31,4 @@ export const ComboboxClearButton = forwardRef<
   />
 ));
 
-ComboboxClearButton.displayName = "@mantine/core/ComboboxClearButton";
+ComboboxClearButton.displayName = "@raikou/core/ComboboxClearButton";

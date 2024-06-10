@@ -5,7 +5,6 @@ var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
-var __pow = Math.pow;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __spreadValues = (a2, b2) => {
   for (var prop in b2 || (b2 = {}))
@@ -9901,8 +9900,8 @@ var require_memstore = __commonJS({
       domains.forEach(function(domain) {
         var paths = Object.keys(idx[domain]);
         paths.forEach(function(path) {
-          var keys = Object.keys(idx[domain][path]);
-          keys.forEach(function(key) {
+          var keys3 = Object.keys(idx[domain][path]);
+          keys3.forEach(function(key) {
             if (key !== null) {
               cookies.push(idx[domain][path][key]);
             }
@@ -10983,18 +10982,18 @@ var require_stringify = __commonJS({
       return JSON.stringify(obj, serializer(replacer, cycleReplacer), spaces);
     }
     function serializer(replacer, cycleReplacer) {
-      var stack = [], keys = [];
+      var stack = [], keys3 = [];
       if (cycleReplacer == null)
         cycleReplacer = function(key, value) {
           if (stack[0] === value)
             return "[Circular ~]";
-          return "[Circular ~." + keys.slice(0, stack.indexOf(value)).join(".") + "]";
+          return "[Circular ~." + keys3.slice(0, stack.indexOf(value)).join(".") + "]";
         };
       return function(key, value) {
         if (stack.length > 0) {
           var thisPos = stack.indexOf(this);
           ~thisPos ? stack.splice(thisPos + 1) : stack.push(this);
-          ~thisPos ? keys.splice(thisPos, Infinity, key) : keys.push(key);
+          ~thisPos ? keys3.splice(thisPos, Infinity, key) : keys3.push(key);
           if (~stack.indexOf(value))
             value = cycleReplacer.call(this, key, value);
         } else
@@ -11125,7 +11124,7 @@ var require_aws_sign2 = __commonJS({
     "use strict";
     var crypto = __require("crypto");
     var parse = __require("url").parse;
-    var keys = [
+    var keys3 = [
       "acl",
       "location",
       "logging",
@@ -11192,7 +11191,7 @@ var require_aws_sign2 = __commonJS({
     function canonicalizeResource(resource) {
       var url = parse(resource, true), path = url.pathname, buf = [];
       Object.keys(url.query).forEach(function(key) {
-        if (!~keys.indexOf(key))
+        if (!~keys3.indexOf(key))
           return;
         var val = "" == url.query[key] ? "" : "=" + encodeURIComponent(url.query[key]);
         buf.push(key + val);
@@ -11685,7 +11684,7 @@ var require_assert = __commonJS({
       }
     };
     function _setExports(ndebug) {
-      var keys = Object.keys(types);
+      var keys3 = Object.keys(types);
       var out;
       if (process.env.NODE_NDEBUG) {
         out = noop;
@@ -11696,7 +11695,7 @@ var require_assert = __commonJS({
           }
         };
       }
-      keys.forEach(function(k2) {
+      keys3.forEach(function(k2) {
         if (ndebug) {
           out[k2] = noop;
           return;
@@ -11708,7 +11707,7 @@ var require_assert = __commonJS({
           }
         };
       });
-      keys.forEach(function(k2) {
+      keys3.forEach(function(k2) {
         var name = "optional" + _capitalize(k2);
         if (ndebug) {
           out[name] = noop;
@@ -11724,7 +11723,7 @@ var require_assert = __commonJS({
           }
         };
       });
-      keys.forEach(function(k2) {
+      keys3.forEach(function(k2) {
         var name = "arrayOf" + _capitalize(k2);
         if (ndebug) {
           out[name] = noop;
@@ -11744,7 +11743,7 @@ var require_assert = __commonJS({
           }
         };
       });
-      keys.forEach(function(k2) {
+      keys3.forEach(function(k2) {
         var name = "optionalArrayOf" + _capitalize(k2);
         if (ndebug) {
           out[name] = noop;
@@ -12261,8 +12260,8 @@ var require_writer = __commonJS({
       assert.equal(typeof from, "object");
       assert.ok(to);
       assert.equal(typeof to, "object");
-      var keys = Object.getOwnPropertyNames(from);
-      keys.forEach(function(key) {
+      var keys3 = Object.getOwnPropertyNames(from);
+      keys3.forEach(function(key) {
         if (to[key])
           return;
         var value = Object.getOwnPropertyDescriptor(from, key);
@@ -24523,15 +24522,15 @@ var require_verror = __commonJS({
 var require_validate = __commonJS({
   "../../../../node_modules/.pnpm/json-schema@0.4.0/node_modules/json-schema/lib/validate.js"(exports, module) {
     "use strict";
-    (function(root, factory23) {
+    (function(root, factory22) {
       if (typeof define === "function" && define.amd) {
         define([], function() {
-          return factory23();
+          return factory22();
         });
       } else if (typeof module === "object" && module.exports) {
-        module.exports = factory23();
+        module.exports = factory22();
       } else {
-        root.jsonSchema = factory23();
+        root.jsonSchema = factory22();
       }
     })(exports, function() {
       var exports2 = validate;
@@ -34277,10 +34276,10 @@ var require_caseless = __commonJS({
       }
     };
     Caseless.prototype.has = function(name) {
-      var keys = Object.keys(this.dict), name = name.toLowerCase();
-      for (var i2 = 0; i2 < keys.length; i2++) {
-        if (keys[i2].toLowerCase() === name)
-          return keys[i2];
+      var keys3 = Object.keys(this.dict), name = name.toLowerCase();
+      for (var i2 = 0; i2 < keys3.length; i2++) {
+        if (keys3[i2].toLowerCase() === name)
+          return keys3[i2];
       }
       return false;
     };
@@ -35470,9 +35469,9 @@ var require_utils3 = __commonJS({
       for (var i2 = 0; i2 < queue.length; ++i2) {
         var item = queue[i2];
         var obj = item.obj[item.prop];
-        var keys = Object.keys(obj);
-        for (var j2 = 0; j2 < keys.length; ++j2) {
-          var key = keys[j2];
+        var keys3 = Object.keys(obj);
+        for (var j2 = 0; j2 < keys3.length; ++j2) {
+          var key = keys3[j2];
           var val = obj[key];
           if (typeof val === "object" && val !== null && refs.indexOf(val) === -1) {
             queue.push({ obj, prop: key });
@@ -35588,8 +35587,8 @@ var require_stringify2 = __commonJS({
       if (isArray(filter)) {
         objKeys = filter;
       } else {
-        var keys = Object.keys(obj);
-        objKeys = sort ? keys.sort(sort) : keys;
+        var keys3 = Object.keys(obj);
+        objKeys = sort ? keys3.sort(sort) : keys3;
       }
       for (var i2 = 0; i2 < objKeys.length; ++i2) {
         var key = objKeys[i2];
@@ -35660,7 +35659,7 @@ var require_stringify2 = __commonJS({
         filter = options.filter;
         objKeys = filter;
       }
-      var keys = [];
+      var keys3 = [];
       if (typeof obj !== "object" || obj === null) {
         return "";
       }
@@ -35684,7 +35683,7 @@ var require_stringify2 = __commonJS({
         if (skipNulls && obj[key] === null) {
           continue;
         }
-        pushToArray(keys, stringify(
+        pushToArray(keys3, stringify(
           obj[key],
           key,
           generateArrayPrefix,
@@ -35699,7 +35698,7 @@ var require_stringify2 = __commonJS({
           encodeValuesOnly
         ));
       }
-      var joined = keys.join(delimiter);
+      var joined = keys3.join(delimiter);
       var prefix = options.addQueryPrefix === true ? "?" : "";
       return joined.length > 0 ? prefix + joined : "";
     };
@@ -35781,14 +35780,14 @@ var require_parse = __commonJS({
       var child = /(\[[^[\]]*])/g;
       var segment = brackets.exec(key);
       var parent = segment ? key.slice(0, segment.index) : key;
-      var keys = [];
+      var keys3 = [];
       if (parent) {
         if (!options.plainObjects && has.call(Object.prototype, parent)) {
           if (!options.allowPrototypes) {
             return;
           }
         }
-        keys.push(parent);
+        keys3.push(parent);
       }
       var i2 = 0;
       while ((segment = child.exec(key)) !== null && i2 < options.depth) {
@@ -35798,12 +35797,12 @@ var require_parse = __commonJS({
             return;
           }
         }
-        keys.push(segment[1]);
+        keys3.push(segment[1]);
       }
       if (segment) {
-        keys.push("[" + key.slice(segment.index) + "]");
+        keys3.push("[" + key.slice(segment.index) + "]");
       }
-      return parseObject(keys, val, options);
+      return parseObject(keys3, val, options);
     };
     module.exports = function(str, opts) {
       var options = opts ? utils.assign({}, opts) : {};
@@ -35826,9 +35825,9 @@ var require_parse = __commonJS({
       }
       var tempObj = typeof str === "string" ? parseValues(str, options) : str;
       var obj = options.plainObjects ? /* @__PURE__ */ Object.create(null) : {};
-      var keys = Object.keys(tempObj);
-      for (var i2 = 0; i2 < keys.length; ++i2) {
-        var key = keys[i2];
+      var keys3 = Object.keys(tempObj);
+      for (var i2 = 0; i2 < keys3.length; ++i2) {
+        var key = keys3[i2];
         var newObj = parseKeys(key, tempObj[key], options);
         obj = utils.merge(obj, newObj, options);
       }
@@ -35904,8 +35903,8 @@ var require_querystring = __commonJS({
 var require_uri_all = __commonJS({
   "../../../../node_modules/.pnpm/uri-js@4.4.1/node_modules/uri-js/dist/es5/uri.all.js"(exports, module) {
     "use strict";
-    (function(global, factory23) {
-      typeof exports === "object" && typeof module !== "undefined" ? factory23(exports) : typeof define === "function" && define.amd ? define(["exports"], factory23) : factory23(global.URI = global.URI || {});
+    (function(global, factory22) {
+      typeof exports === "object" && typeof module !== "undefined" ? factory22(exports) : typeof define === "function" && define.amd ? define(["exports"], factory22) : factory22(global.URI = global.URI || {});
     })(exports, function(exports2) {
       "use strict";
       function merge() {
@@ -36947,7 +36946,7 @@ var require_fast_deep_equal = __commonJS({
       if (a2 && b2 && typeof a2 == "object" && typeof b2 == "object") {
         if (a2.constructor !== b2.constructor)
           return false;
-        var length, i2, keys;
+        var length, i2, keys3;
         if (Array.isArray(a2)) {
           length = a2.length;
           if (length != b2.length)
@@ -36963,15 +36962,15 @@ var require_fast_deep_equal = __commonJS({
           return a2.valueOf() === b2.valueOf();
         if (a2.toString !== Object.prototype.toString)
           return a2.toString() === b2.toString();
-        keys = Object.keys(a2);
-        length = keys.length;
+        keys3 = Object.keys(a2);
+        length = keys3.length;
         if (length !== Object.keys(b2).length)
           return false;
         for (i2 = length; i2-- !== 0; )
-          if (!Object.prototype.hasOwnProperty.call(b2, keys[i2]))
+          if (!Object.prototype.hasOwnProperty.call(b2, keys3[i2]))
             return false;
         for (i2 = length; i2-- !== 0; ) {
-          var key = keys[i2];
+          var key = keys3[i2];
           if (!equal(a2[key], b2[key]))
             return false;
         }
@@ -37626,10 +37625,10 @@ var require_fast_json_stable_stringify = __commonJS({
           throw new TypeError("Converting circular structure to JSON");
         }
         var seenIndex = seen.push(node) - 1;
-        var keys = Object.keys(node).sort(cmp && cmp(node));
+        var keys3 = Object.keys(node).sort(cmp && cmp(node));
         out = "";
-        for (i2 = 0; i2 < keys.length; i2++) {
-          var key = keys[i2];
+        for (i2 = 0; i2 < keys3.length; i2++) {
+          var key = keys3[i2];
           var value = stringify(node[key]);
           if (!value)
             continue;
@@ -44324,9 +44323,9 @@ var require_tunnel_agent = __commonJS({
       for (var i2 = 1, len = arguments.length; i2 < len; ++i2) {
         var overrides = arguments[i2];
         if (typeof overrides === "object") {
-          var keys = Object.keys(overrides);
-          for (var j2 = 0, keyLen = keys.length; j2 < keyLen; ++j2) {
-            var k2 = keys[j2];
+          var keys3 = Object.keys(overrides);
+          for (var j2 = 0, keyLen = keys3.length; j2 < keyLen; ++j2) {
+            var k2 = keys3[j2];
             if (overrides[k2] !== void 0) {
               target[k2] = overrides[k2];
             }
@@ -45893,11 +45892,11 @@ var require_request3 = __commonJS({
 });
 
 // src/GradientPicker.tsx
-import React45, { useEffect as useEffect10, useState as useState13 } from "react";
+import React46, { useEffect as useEffect9, useState as useState11 } from "react";
 import {
-  Box as Box28,
-  useProps as useProps33,
-  useStyles as useStyles19
+  Box as Box29,
+  useProps as useProps32,
+  useStyles as useStyles24
 } from "@raikou/core";
 
 // ../_utils/create-safe-context/create-safe-context.tsx
@@ -47197,32 +47196,33 @@ var genRandomId = (length = 8) => {
 
 // src/GradientPicker.tsx
 import { colord as colord5 } from "colord";
-import { useClickOutside as useClickOutside2, useDidUpdate as useDidUpdate6, useToggle } from "@raikou/hooks";
+import { useClickOutside as useClickOutside2, useDidUpdate as useDidUpdate5, useToggle } from "@raikou/hooks";
 import isEqual from "lodash.isequal";
 
 // src/components/compact/index.tsx
-import React44, { useEffect as useEffect9, useState as useState12 } from "react";
+import React45, { useEffect as useEffect8, useState as useState10 } from "react";
 import {
-  factory as factory22,
-  useProps as useProps32,
-  Box as Box27
+  factory as factory21,
+  useProps as useProps31,
+  Box as Box28,
+  useStyles as useStyles23
 } from "@raikou/core";
 
 // ../Popover/src/Popover.tsx
-import React12, { useRef as useRef6, useState as useState7, useCallback as useCallback3 } from "react";
+import React13, { useRef as useRef6, useState as useState7, useCallback as useCallback3 } from "react";
 import { useId as useId2, useClickOutside } from "@raikou/hooks";
 import {
   getDefaultZIndex,
-  useProps as useProps4,
+  useProps as useProps5,
   useDirection as useDirection2,
-  useStyles,
+  useStyles as useStyles2,
   createVarsResolver,
   getRadius,
   getShadow
 } from "@raikou/core";
 
 // ../Floating/src/use-floating-auto-update.ts
-import { useState as useState4, useEffect as useEffect5 } from "react";
+import { useEffect as useEffect5, useState as useState4 } from "react";
 
 // ../../../../node_modules/.pnpm/@floating-ui+core@1.3.1/node_modules/@floating-ui/core/dist/floating-ui.core.mjs
 function getAlignment(placement) {
@@ -48733,7 +48733,7 @@ var computePosition2 = (reference, floating, options) => {
   }));
 };
 
-// ../../../../node_modules/.pnpm/@floating-ui+react-dom@1.3.0_react-dom@18.2.0_react@18.2.0/node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.esm.js
+// ../../../../node_modules/.pnpm/@floating-ui+react-dom@1.3.0_react-dom@18.2.0_react@18.2.0__react@18.2.0/node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.esm.js
 import * as React3 from "react";
 import { useLayoutEffect as useLayoutEffect2, useEffect as useEffect2 } from "react";
 import * as ReactDOM from "react-dom";
@@ -48778,7 +48778,7 @@ function deepEqual(a2, b2) {
   if (typeof a2 === "function" && a2.toString() === b2.toString()) {
     return true;
   }
-  let length, i2, keys;
+  let length, i2, keys3;
   if (a2 && b2 && typeof a2 == "object") {
     if (Array.isArray(a2)) {
       length = a2.length;
@@ -48791,18 +48791,18 @@ function deepEqual(a2, b2) {
       }
       return true;
     }
-    keys = Object.keys(a2);
-    length = keys.length;
+    keys3 = Object.keys(a2);
+    length = keys3.length;
     if (length !== Object.keys(b2).length) {
       return false;
     }
     for (i2 = length; i2-- !== 0; ) {
-      if (!Object.prototype.hasOwnProperty.call(b2, keys[i2])) {
+      if (!Object.prototype.hasOwnProperty.call(b2, keys3[i2])) {
         return false;
       }
     }
     for (i2 = length; i2-- !== 0; ) {
-      const key = keys[i2];
+      const key = keys3[i2];
       if (key === "_owner" && a2.$$typeof) {
         continue;
       }
@@ -48931,7 +48931,7 @@ function useFloating(options) {
   }), [data, update, refs, elements, setReference, setFloating]);
 }
 
-// ../../../../node_modules/.pnpm/@floating-ui+react@0.23.1_react-dom@18.2.0_react@18.2.0/node_modules/@floating-ui/react/dist/floating-ui.react.esm.js
+// ../../../../node_modules/.pnpm/@floating-ui+react@0.23.1_react-dom@18.2.0_react@18.2.0__react@18.2.0/node_modules/@floating-ui/react/dist/floating-ui.react.esm.js
 import * as React4 from "react";
 import { useLayoutEffect as useLayoutEffect3, useEffect as useEffect4, useRef as useRef3 } from "react";
 import { createPortal, flushSync as flushSync2 } from "react-dom";
@@ -50169,29 +50169,50 @@ FloatingArrow.displayName = "@raikou/core/FloatingArrow";
 
 // ../Popover/src/use-popover.ts
 import { useDidUpdate as useDidUpdate2, useUncontrolled } from "@raikou/hooks";
+function getDefaultMiddlewares(middlewares) {
+  if (middlewares === void 0) {
+    return { shift: true, flip: true };
+  }
+  const result = __spreadValues({}, middlewares);
+  if (middlewares.shift === void 0) {
+    result.shift = true;
+  }
+  if (middlewares.flip === void 0) {
+    result.flip = true;
+  }
+  return result;
+}
 function getPopoverMiddlewares(options, getFloating) {
-  var _a, _b, _c, _d;
+  const middlewaresOptions = getDefaultMiddlewares(options.middlewares);
   const middlewares = [offset(options.offset)];
-  if ((_a = options.middlewares) == null ? void 0 : _a.shift) {
-    middlewares.push(shift({ limiter: limitShift() }));
+  if (middlewaresOptions.shift) {
+    middlewares.push(
+      shift(
+        typeof middlewaresOptions.shift === "boolean" ? { limiter: limitShift(), padding: 5 } : __spreadValues({ limiter: limitShift(), padding: 5 }, middlewaresOptions.shift)
+      )
+    );
   }
-  if ((_b = options.middlewares) == null ? void 0 : _b.flip) {
-    middlewares.push(flip());
+  if (middlewaresOptions.flip) {
+    middlewares.push(
+      typeof middlewaresOptions.flip === "boolean" ? flip() : flip(middlewaresOptions.flip)
+    );
   }
-  if ((_c = options.middlewares) == null ? void 0 : _c.inline) {
-    middlewares.push(inline());
+  if (middlewaresOptions.inline) {
+    middlewares.push(
+      typeof middlewaresOptions.inline === "boolean" ? inline() : inline(middlewaresOptions.inline)
+    );
   }
   middlewares.push(
     arrow2({ element: options.arrowRef, padding: options.arrowOffset })
   );
-  if (((_d = options.middlewares) == null ? void 0 : _d.size) || options.width === "target") {
+  if (middlewaresOptions.size || options.width === "target") {
     middlewares.push(
-      size({
+      size(__spreadProps(__spreadValues({}, typeof middlewaresOptions.size === "boolean" ? {} : middlewaresOptions.size), {
         apply({ rects, availableWidth, availableHeight }) {
-          var _a2, _b2, _c2;
+          var _a, _b;
           const floating = getFloating();
-          const styles = (_b2 = (_a2 = floating.refs.floating.current) == null ? void 0 : _a2.style) != null ? _b2 : {};
-          if ((_c2 = options.middlewares) == null ? void 0 : _c2.size) {
+          const styles = (_b = (_a = floating.refs.floating.current) == null ? void 0 : _a.style) != null ? _b : {};
+          if (middlewaresOptions.size) {
             Object.assign(styles, {
               maxWidth: `${availableWidth}px`,
               maxHeight: `${availableHeight}px`
@@ -50203,7 +50224,7 @@ function getPopoverMiddlewares(options, getFloating) {
             });
           }
         }
-      })
+      }))
     );
   }
   return middlewares;
@@ -50233,6 +50254,7 @@ function usePopover(options) {
     }
   };
   const floating = useFloating2({
+    strategy: options.strategy,
     placement: options.position,
     middleware: getPopoverMiddlewares(options, () => floating)
   });
@@ -50309,12 +50331,12 @@ var PopoverTarget = factory((props, ref) => {
 PopoverTarget.displayName = "@raikou/core/PopoverTarget";
 
 // ../Popover/src/PopoverDropdown/PopoverDropdown.tsx
-import React11 from "react";
+import React12 from "react";
 import { useFocusReturn, useMergedRef as useMergedRef3 } from "@raikou/hooks";
 import {
-  Box,
-  factory as factory2,
-  useProps as useProps3,
+  Box as Box2,
+  factory as factory3,
+  useProps as useProps4,
   rem as rem3,
   closeOnEscape
 } from "@raikou/core";
@@ -50327,7 +50349,7 @@ import { useProps as useProps2 } from "@raikou/core";
 function createPortalNode(props) {
   const node = document.createElement("div");
   node.setAttribute("data-portal", "true");
-  typeof props.className === "string" && node.classList.add(...props.className.split(" "));
+  typeof props.className === "string" && node.classList.add(...props.className.split(" ").filter(Boolean));
   typeof props.style === "object" && Object.assign(node.style, props.style);
   typeof props.id === "string" && node.setAttribute("id", props.id);
   return node;
@@ -50517,6 +50539,7 @@ function getTransitionStyles({
 
 // ../Transition/src/use-transition.ts
 import { useState as useState6, useEffect as useEffect6, useRef as useRef5 } from "react";
+import ReactDOM2 from "react-dom";
 import { useReducedMotion, useDidUpdate as useDidUpdate3 } from "@raikou/hooks";
 import { useRaikouTheme } from "@raikou/core";
 function useTransition({
@@ -50539,10 +50562,10 @@ function useTransition({
     mounted ? "entered" : "exited"
   );
   const timeoutRef = useRef5(-1);
+  const rafRef = useRef5(-1);
   const handleStateChange = (shouldMount) => {
     const preHandler = shouldMount ? onEnter : onExit;
     const handler = shouldMount ? onEntered : onExited;
-    setStatus(shouldMount ? "pre-entering" : "pre-exiting");
     window.clearTimeout(timeoutRef.current);
     const newTransitionDuration = reduceMotion ? 0 : shouldMount ? duration : exitDuration;
     setTransitionDuration(newTransitionDuration);
@@ -50551,21 +50574,31 @@ function useTransition({
       typeof handler === "function" && handler();
       setStatus(shouldMount ? "entered" : "exited");
     } else {
-      const preStateTimeout = window.setTimeout(() => {
-        typeof preHandler === "function" && preHandler();
-        setStatus(shouldMount ? "entering" : "exiting");
-      }, 10);
-      timeoutRef.current = window.setTimeout(() => {
-        window.clearTimeout(preStateTimeout);
-        typeof handler === "function" && handler();
-        setStatus(shouldMount ? "entered" : "exited");
-      }, newTransitionDuration);
+      rafRef.current = requestAnimationFrame(() => {
+        ReactDOM2.flushSync(() => {
+          setStatus(shouldMount ? "pre-entering" : "pre-exiting");
+        });
+        rafRef.current = requestAnimationFrame(() => {
+          typeof preHandler === "function" && preHandler();
+          setStatus(shouldMount ? "entering" : "exiting");
+          timeoutRef.current = window.setTimeout(() => {
+            typeof handler === "function" && handler();
+            setStatus(shouldMount ? "entered" : "exited");
+          }, newTransitionDuration);
+        });
+      });
     }
   };
   useDidUpdate3(() => {
     handleStateChange(mounted);
   }, [mounted]);
-  useEffect6(() => () => window.clearTimeout(timeoutRef.current), []);
+  useEffect6(
+    () => () => {
+      window.clearTimeout(timeoutRef.current);
+      cancelAnimationFrame(rafRef.current);
+    },
+    []
+  );
   return {
     transitionDuration,
     transitionStatus,
@@ -50621,9 +50654,42 @@ function getTransitionProps(transitionProps, componentTransition) {
 }
 
 // ../FocusTrap/src/FocusTrap.tsx
-import { cloneElement as cloneElement3 } from "react";
+import React11, { cloneElement as cloneElement3 } from "react";
 import { useFocusTrap, useMergedRef as useMergedRef2 } from "@raikou/hooks";
 import { isElement as isElement4 } from "@raikou/core";
+
+// ../VisuallyHidden/src/VisuallyHidden.tsx
+import React10 from "react";
+import {
+  Box,
+  factory as factory2,
+  useProps as useProps3,
+  useStyles
+} from "@raikou/core";
+
+// css-module:./VisuallyHidden.module.css#css-module
+var VisuallyHidden_module_default = { "root": "m-515a97f8" };
+
+// ../VisuallyHidden/src/VisuallyHidden.tsx
+var defaultProps3 = {};
+var VisuallyHidden = factory2((_props, ref) => {
+  const props = useProps3("VisuallyHidden", defaultProps3, _props);
+  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const getStyles = useStyles({
+    name: "VisuallyHidden",
+    classes: VisuallyHidden_module_default,
+    props,
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled
+  });
+  return /* @__PURE__ */ React10.createElement(Box, __spreadValues(__spreadValues({ component: "span", ref }, getStyles("root")), others));
+});
+VisuallyHidden.displayName = "@raikou/core/VisuallyHidden";
+
+// ../FocusTrap/src/FocusTrap.tsx
 function FocusTrap({
   children,
   active = true,
@@ -50636,14 +50702,19 @@ function FocusTrap({
   }
   return cloneElement3(children, { [refProp]: ref });
 }
+function FocusTrapInitialFocus(props) {
+  return /* @__PURE__ */ React11.createElement(VisuallyHidden, __spreadValues({ tabIndex: -1, "data-autofocus": true }, props));
+}
 FocusTrap.displayName = "@raikou/core/FocusTrap";
+FocusTrapInitialFocus.displayName = "@raikou/core/FocusTrapInitialFocus";
+FocusTrap.InitialFocus = FocusTrapInitialFocus;
 
 // ../Popover/src/PopoverDropdown/PopoverDropdown.tsx
-var defaultProps3 = {};
-var PopoverDropdown = factory2(
+var defaultProps4 = {};
+var PopoverDropdown = factory3(
   (_props, ref) => {
     var _b, _c, _d, _e, _f;
-    const props = useProps3("PopoverDropdown", defaultProps3, _props);
+    const props = useProps4("PopoverDropdown", defaultProps4, _props);
     const _a = props, {
       className,
       style,
@@ -50678,7 +50749,7 @@ var PopoverDropdown = factory2(
     if (ctx.disabled) {
       return null;
     }
-    return /* @__PURE__ */ React11.createElement(OptionalPortal, __spreadProps(__spreadValues({}, ctx.portalProps), { withinPortal: ctx.withinPortal }), /* @__PURE__ */ React11.createElement(
+    return /* @__PURE__ */ React12.createElement(OptionalPortal, __spreadProps(__spreadValues({}, ctx.portalProps), { withinPortal: ctx.withinPortal }), /* @__PURE__ */ React12.createElement(
       Transition,
       __spreadProps(__spreadValues({
         mounted: ctx.opened
@@ -50690,8 +50761,8 @@ var PopoverDropdown = factory2(
       }),
       (transitionStyles) => {
         var _a2, _b2;
-        return /* @__PURE__ */ React11.createElement(FocusTrap, { active: ctx.trapFocus }, /* @__PURE__ */ React11.createElement(
-          Box,
+        return /* @__PURE__ */ React12.createElement(FocusTrap, { active: ctx.trapFocus }, /* @__PURE__ */ React12.createElement(
+          Box2,
           __spreadValues(__spreadProps(__spreadValues(__spreadValues({}, accessibleProps), others), {
             variant,
             ref: mergedRef,
@@ -50717,7 +50788,7 @@ var PopoverDropdown = factory2(
             ]
           })),
           children,
-          /* @__PURE__ */ React11.createElement(
+          /* @__PURE__ */ React12.createElement(
             FloatingArrow,
             __spreadValues({
               ref: ctx.arrowRef,
@@ -50746,7 +50817,7 @@ PopoverDropdown.displayName = "@raikou/core/PopoverDropdown";
 var Popover_module_default = { "dropdown": "m-38a85659", "arrow": "m-a31dc6c1" };
 
 // ../Popover/src/Popover.tsx
-var defaultProps4 = {
+var defaultProps5 = {
   position: "bottom",
   offset: 8,
   positionDependencies: [],
@@ -50777,7 +50848,7 @@ var varsResolver = createVarsResolver(
 );
 function Popover(_props) {
   var _b, _c, _d, _e, _f, _g;
-  const props = useProps4("Popover", defaultProps4, _props);
+  const props = useProps5("Popover", defaultProps5, _props);
   const _a = props, {
     children,
     position,
@@ -50816,7 +50887,8 @@ function Popover(_props) {
     returnFocus,
     variant,
     keepMounted,
-    vars
+    vars,
+    floatingStrategy
   } = _a, others = __objRest(_a, [
     "children",
     "position",
@@ -50855,9 +50927,10 @@ function Popover(_props) {
     "returnFocus",
     "variant",
     "keepMounted",
-    "vars"
+    "vars",
+    "floatingStrategy"
   ]);
-  const getStyles = useStyles({
+  const getStyles = useStyles2({
     name: __staticSelector,
     props,
     classes: Popover_module_default,
@@ -50886,7 +50959,8 @@ function Popover(_props) {
     defaultOpened,
     onChange,
     onOpen,
-    onClose
+    onClose,
+    strategy: floatingStrategy
   });
   useClickOutside(
     () => closeOnClickOutside && popover.onClose(),
@@ -50907,7 +50981,7 @@ function Popover(_props) {
     },
     [popover.floating.floating]
   );
-  return /* @__PURE__ */ React12.createElement(
+  return /* @__PURE__ */ React13.createElement(
     PopoverContextProvider,
     {
       value: {
@@ -50965,30 +51039,33 @@ import { colord as colord4 } from "colord";
 import { useElementSize } from "@raikou/hooks";
 
 // src/components/picker/index.tsx
-import React23 from "react";
+import React24 from "react";
 import {
-  factory as factory10,
-  useProps as useProps15,
-  Box as Box10
+  factory as factory11,
+  useProps as useProps16,
+  Box as Box11
 } from "@raikou/core";
 
 // ../TextInput/src/TextInput.tsx
-import React20 from "react";
-import { factory as factory8, useProps as useProps12 } from "@raikou/core";
+import React21 from "react";
+import {
+  factory as factory9,
+  useProps as useProps13
+} from "@raikou/core";
 
 // ../InputBase/src/InputBase.tsx
-import React19 from "react";
+import React20 from "react";
 import {
   polymorphicFactory as polymorphicFactory2
 } from "@raikou/core";
 
 // ../Input/src/Input.tsx
-import React18 from "react";
+import React19 from "react";
 import {
-  Box as Box7,
+  Box as Box8,
   polymorphicFactory,
-  useProps as useProps10,
-  useStyles as useStyles7,
+  useProps as useProps11,
+  useStyles as useStyles8,
   extractStyleProps,
   getSize,
   getFontSize as getFontSize5,
@@ -51008,12 +51085,12 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
 });
 
 // ../Input/src/InputLabel/InputLabel.tsx
-import React13 from "react";
+import React14 from "react";
 import {
-  Box as Box2,
-  factory as factory3,
-  useProps as useProps5,
-  useStyles as useStyles2,
+  Box as Box3,
+  factory as factory4,
+  useProps as useProps6,
+  useStyles as useStyles3,
   getFontSize,
   createVarsResolver as createVarsResolver2
 } from "@raikou/core";
@@ -51022,7 +51099,7 @@ import {
 var Input_module_default = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
 
 // ../Input/src/InputLabel/InputLabel.tsx
-var defaultProps5 = {
+var defaultProps6 = {
   labelElement: "label"
 };
 var varsResolver2 = createVarsResolver2((_2, { size: size2 }) => ({
@@ -51031,9 +51108,9 @@ var varsResolver2 = createVarsResolver2((_2, { size: size2 }) => ({
     "--input-asterisk-color": void 0
   }
 }));
-var InputLabel = factory3((_props, ref) => {
-  const props = useProps5("InputLabel", defaultProps5, _props);
-  const _a = useProps5("InputLabel", defaultProps5, props), {
+var InputLabel = factory4((_props, ref) => {
+  const props = useProps6("InputLabel", defaultProps6, _props);
+  const _a = useProps6("InputLabel", defaultProps6, props), {
     classNames,
     className,
     style,
@@ -51047,7 +51124,8 @@ var InputLabel = factory3((_props, ref) => {
     onMouseDown,
     children,
     __staticSelector,
-    variant
+    variant,
+    mod
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -51062,16 +51140,13 @@ var InputLabel = factory3((_props, ref) => {
     "onMouseDown",
     "children",
     "__staticSelector",
-    "variant"
+    "variant",
+    "mod"
   ]);
-  const _getStyles = useStyles2({
+  const _getStyles = useStyles3({
     name: ["InputWrapper", __staticSelector],
     props,
     classes: Input_module_default,
-    // classes: {
-    //   label: "inputWrapper-label",
-    //   required: "inputWrapper-required",
-    // },
     className,
     style,
     classNames,
@@ -51083,15 +51158,15 @@ var InputLabel = factory3((_props, ref) => {
   });
   const ctx = useInputWrapperContext();
   const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-  return /* @__PURE__ */ React13.createElement(
-    Box2,
+  return /* @__PURE__ */ React14.createElement(
+    Box3,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("label")), {
       component: labelElement,
       variant,
       size: size2,
       ref,
       htmlFor: labelElement === "label" ? htmlFor : void 0,
-      mod: { required },
+      mod: [{ required }, mod],
       onMouseDown: (event) => {
         onMouseDown == null ? void 0 : onMouseDown(event);
         if (!event.defaultPrevented && event.detail > 1) {
@@ -51100,30 +51175,30 @@ var InputLabel = factory3((_props, ref) => {
       }
     }), others),
     children,
-    required && /* @__PURE__ */ React13.createElement("span", __spreadProps(__spreadValues({}, getStyles("required")), { "aria-hidden": true }), " *")
+    required && /* @__PURE__ */ React14.createElement("span", __spreadProps(__spreadValues({}, getStyles("required")), { "aria-hidden": true }), " *")
   );
 });
 InputLabel.displayName = "@raikou/core/InputLabel";
 
 // ../Input/src/InputError/InputError.tsx
-import React14 from "react";
+import React15 from "react";
 import {
-  Box as Box3,
-  factory as factory4,
-  useProps as useProps6,
-  useStyles as useStyles3,
+  Box as Box4,
+  factory as factory5,
+  useProps as useProps7,
+  useStyles as useStyles4,
   getFontSize as getFontSize2,
   rem as rem4,
   createVarsResolver as createVarsResolver3
 } from "@raikou/core";
-var defaultProps6 = {};
+var defaultProps7 = {};
 var varsResolver3 = createVarsResolver3((_2, { size: size2 }) => ({
   error: {
     "--input-error-size": size2 === void 0 ? void 0 : `calc(${getFontSize2(size2)} - ${rem4(2)})`
   }
 }));
-var InputError = factory4((_props, ref) => {
-  const props = useProps6("InputError", defaultProps6, _props);
+var InputError = factory5((_props, ref) => {
+  const props = useProps7("InputError", defaultProps7, _props);
   const _a = props, {
     classNames,
     className,
@@ -51147,13 +51222,10 @@ var InputError = factory4((_props, ref) => {
     "__inheritStyles",
     "variant"
   ]);
-  const _getStyles = useStyles3({
+  const _getStyles = useStyles4({
     name: ["InputWrapper", __staticSelector],
     props,
     classes: Input_module_default,
-    // classes: {
-    //   error: "inputWrapper-error",
-    // },
     className,
     style,
     classNames,
@@ -51165,8 +51237,8 @@ var InputError = factory4((_props, ref) => {
   });
   const ctx = useInputWrapperContext();
   const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-  return /* @__PURE__ */ React14.createElement(
-    Box3,
+  return /* @__PURE__ */ React15.createElement(
+    Box4,
     __spreadValues(__spreadValues({
       component: "p",
       ref,
@@ -51178,17 +51250,17 @@ var InputError = factory4((_props, ref) => {
 InputError.displayName = "@raikou/core/InputError";
 
 // ../Input/src/InputDescription/InputDescription.tsx
-import React15 from "react";
+import React16 from "react";
 import {
-  Box as Box4,
-  factory as factory5,
-  useProps as useProps7,
-  useStyles as useStyles4,
+  Box as Box5,
+  factory as factory6,
+  useProps as useProps8,
+  useStyles as useStyles5,
   getFontSize as getFontSize3,
   rem as rem5,
   createVarsResolver as createVarsResolver4
 } from "@raikou/core";
-var defaultProps7 = {};
+var defaultProps8 = {};
 var varsResolver4 = createVarsResolver4(
   (_2, { size: size2 }) => ({
     description: {
@@ -51196,10 +51268,10 @@ var varsResolver4 = createVarsResolver4(
     }
   })
 );
-var InputDescription = factory5(
+var InputDescription = factory6(
   (_props, ref) => {
-    const props = useProps7("InputDescription", defaultProps7, _props);
-    const _a = useProps7("InputDescription", defaultProps7, props), {
+    const props = useProps8("InputDescription", defaultProps8, _props);
+    const _a = useProps8("InputDescription", defaultProps8, props), {
       classNames,
       className,
       style,
@@ -51223,13 +51295,10 @@ var InputDescription = factory5(
       "variant"
     ]);
     const ctx = useInputWrapperContext();
-    const _getStyles = useStyles4({
+    const _getStyles = useStyles5({
       name: ["InputWrapper", __staticSelector],
       props,
       classes: Input_module_default,
-      // classes: {
-      //   description: "inputWrapper-description",
-      // },
       className,
       style,
       classNames,
@@ -51240,8 +51309,8 @@ var InputDescription = factory5(
       varsResolver: varsResolver4
     });
     const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-    return /* @__PURE__ */ React15.createElement(
-      Box4,
+    return /* @__PURE__ */ React16.createElement(
+      Box5,
       __spreadValues(__spreadValues({
         component: "p",
         ref,
@@ -51254,18 +51323,18 @@ var InputDescription = factory5(
 InputDescription.displayName = "@raikou/core/InputDescription";
 
 // ../Input/src/InputPlaceholder/InputPlaceholder.tsx
-import React16 from "react";
+import React17 from "react";
 import {
-  Box as Box5,
-  factory as factory6,
-  useProps as useProps8,
-  useStyles as useStyles5
+  Box as Box6,
+  factory as factory7,
+  useProps as useProps9,
+  useStyles as useStyles6
 } from "@raikou/core";
-var defaultProps8 = {};
-var InputPlaceholder = factory6(
+var defaultProps9 = {};
+var InputPlaceholder = factory7(
   (_props, ref) => {
-    const props = useProps8("InputPlaceholder", defaultProps8, _props);
-    const _a = useProps8("InputPlaceholder", defaultProps8, props), {
+    const props = useProps9("InputPlaceholder", defaultProps9, _props);
+    const _a = useProps9("InputPlaceholder", defaultProps9, props), {
       classNames,
       className,
       style,
@@ -51273,7 +51342,9 @@ var InputPlaceholder = factory6(
       unstyled,
       vars,
       __staticSelector,
-      variant
+      variant,
+      error,
+      mod
     } = _a, others = __objRest(_a, [
       "classNames",
       "className",
@@ -51282,15 +51353,14 @@ var InputPlaceholder = factory6(
       "unstyled",
       "vars",
       "__staticSelector",
-      "variant"
+      "variant",
+      "error",
+      "mod"
     ]);
-    const getStyles = useStyles5({
+    const getStyles = useStyles6({
       name: ["InputPlaceholder", __staticSelector],
       props,
       classes: Input_module_default,
-      // classes: {
-      //   placeholder: "input-placeholder",
-      // },
       className,
       style,
       classNames,
@@ -51298,9 +51368,10 @@ var InputPlaceholder = factory6(
       unstyled,
       rootSelector: "placeholder"
     });
-    return /* @__PURE__ */ React16.createElement(
-      Box5,
+    return /* @__PURE__ */ React17.createElement(
+      Box6,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("placeholder")), {
+        mod: [{ error: !!error }, mod],
         component: "span",
         variant,
         ref
@@ -51311,13 +51382,13 @@ var InputPlaceholder = factory6(
 InputPlaceholder.displayName = "@raikou/core/InputPlaceholder";
 
 // ../Input/src/InputWrapper/InputWrapper.tsx
-import React17 from "react";
+import React18 from "react";
 import { useId as useId3 } from "@raikou/hooks";
 import {
-  Box as Box6,
-  factory as factory7,
-  useProps as useProps9,
-  useStyles as useStyles6,
+  Box as Box7,
+  factory as factory8,
+  useProps as useProps10,
+  useStyles as useStyles7,
   createVarsResolver as createVarsResolver5,
   getFontSize as getFontSize4,
   rem as rem6
@@ -51334,7 +51405,7 @@ function getInputOffsets(inputWrapperOrder, { hasDescription, hasError }) {
 }
 
 // ../Input/src/InputWrapper/InputWrapper.tsx
-var defaultProps9 = {
+var defaultProps10 = {
   labelElement: "label",
   inputContainer: (children) => children,
   inputWrapperOrder: ["label", "description", "input", "error"]
@@ -51351,8 +51422,8 @@ var varsResolver5 = createVarsResolver5((_2, { size: size2 }) => ({
     "--input-description-size": size2 === void 0 ? void 0 : `calc(${getFontSize4(size2)} - ${rem6(2)})`
   }
 }));
-var InputWrapper = factory7((_props, ref) => {
-  const props = useProps9("InputWrapper", defaultProps9, _props);
+var InputWrapper = factory8((_props, ref) => {
+  const props = useProps10("InputWrapper", defaultProps10, _props);
   const _a = props, {
     classNames,
     className,
@@ -51376,7 +51447,8 @@ var InputWrapper = factory7((_props, ref) => {
     withAsterisk,
     id,
     required,
-    __stylesApiProps
+    __stylesApiProps,
+    mod
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -51400,19 +51472,13 @@ var InputWrapper = factory7((_props, ref) => {
     "withAsterisk",
     "id",
     "required",
-    "__stylesApiProps"
+    "__stylesApiProps",
+    "mod"
   ]);
-  const getStyles = useStyles6({
+  const getStyles = useStyles7({
     name: ["InputWrapper", __staticSelector],
     props: __stylesApiProps || props,
     classes: Input_module_default,
-    // classes: {
-    //   root: "inputWrapper-root",
-    //   label: "inputWrapper-label",
-    //   required: "inputWrapper-required",
-    //   error: "inputWrapper-error",
-    //   description: "inputWrapper-description",
-    // },
     className,
     style,
     classNames,
@@ -51436,7 +51502,7 @@ var InputWrapper = factory7((_props, ref) => {
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
   const labelId = (labelProps == null ? void 0 : labelProps.id) || `${idBase}-label`;
-  const _label = label && /* @__PURE__ */ React17.createElement(
+  const _label = label && /* @__PURE__ */ React18.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
@@ -51447,7 +51513,7 @@ var InputWrapper = factory7((_props, ref) => {
     }, sharedProps), labelProps),
     label
   );
-  const _description = hasDescription && /* @__PURE__ */ React17.createElement(
+  const _description = hasDescription && /* @__PURE__ */ React18.createElement(
     InputDescription,
     __spreadProps(__spreadValues(__spreadValues({
       key: "description"
@@ -51457,8 +51523,8 @@ var InputWrapper = factory7((_props, ref) => {
     }),
     description
   );
-  const _input = /* @__PURE__ */ React17.createElement(React17.Fragment, { key: "input" }, inputContainer(children));
-  const _error = hasError && /* @__PURE__ */ React17.createElement(
+  const _input = /* @__PURE__ */ React18.createElement(React18.Fragment, { key: "input" }, inputContainer(children));
+  const _error = hasError && /* @__PURE__ */ React18.createElement(
     InputError,
     __spreadProps(__spreadValues(__spreadValues({}, errorProps), sharedProps), {
       size: (errorProps == null ? void 0 : errorProps.size) || sharedProps.size,
@@ -51481,7 +51547,7 @@ var InputWrapper = factory7((_props, ref) => {
         return null;
     }
   });
-  return /* @__PURE__ */ React17.createElement(
+  return /* @__PURE__ */ React18.createElement(
     InputWrapperProvider,
     {
       value: __spreadValues({
@@ -51491,12 +51557,13 @@ var InputWrapper = factory7((_props, ref) => {
         labelId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
-    /* @__PURE__ */ React17.createElement(
-      Box6,
+    /* @__PURE__ */ React18.createElement(
+      Box7,
       __spreadValues(__spreadValues({
         ref,
         variant,
-        size: size2
+        size: size2,
+        mod: [{ error: !!error }, mod]
       }, getStyles("root")), others),
       content
     )
@@ -51508,7 +51575,7 @@ InputWrapper.displayName = "@raikou/core/InputWrapper";
 var Input_module_default2 = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
 
 // ../Input/src/Input.tsx
-var defaultProps10 = {
+var defaultProps11 = {
   variant: "default",
   leftSectionPointerEvents: "none",
   rightSectionPointerEvents: "none",
@@ -51530,7 +51597,7 @@ var varsResolver6 = createVarsResolver6((_2, props, ctx) => ({
   }
 }));
 var Input = polymorphicFactory((_props, ref) => {
-  const props = useProps10("Input", defaultProps10, _props);
+  const props = useProps11("Input", defaultProps11, _props);
   const _a = props, {
     classNames,
     className,
@@ -51559,7 +51626,8 @@ var Input = polymorphicFactory((_props, ref) => {
     radius,
     id,
     withAria,
-    withErrorStyles
+    withErrorStyles,
+    mod
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -51588,7 +51656,8 @@ var Input = polymorphicFactory((_props, ref) => {
     "radius",
     "id",
     "withAria",
-    "withErrorStyles"
+    "withErrorStyles",
+    "mod"
   ]);
   const { styleProps, rest } = extractStyleProps(others);
   const ctx = useInputWrapperContext();
@@ -51596,15 +51665,10 @@ var Input = polymorphicFactory((_props, ref) => {
     offsetBottom: ctx == null ? void 0 : ctx.offsetBottom,
     offsetTop: ctx == null ? void 0 : ctx.offsetTop
   };
-  const getStyles = useStyles7({
+  const getStyles = useStyles8({
     name: ["Input", __staticSelector],
     props: __stylesApiProps || props,
     classes: Input_module_default2,
-    // classes: {
-    //   wrapper: "input-wrapper",
-    //   input: "input-input",
-    //   section: "input-section",
-    // },
     className,
     style,
     classNames,
@@ -51622,21 +51686,24 @@ var Input = polymorphicFactory((_props, ref) => {
     "aria-describedby": ctx == null ? void 0 : ctx.describedBy,
     id: (ctx == null ? void 0 : ctx.inputId) || id
   } : {};
-  return /* @__PURE__ */ React18.createElement(
-    Box7,
+  return /* @__PURE__ */ React19.createElement(
+    Box8,
     __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, getStyles("wrapper")), styleProps), wrapperProps), {
-      mod: {
-        error: !!error && withErrorStyles,
-        pointer,
-        disabled,
-        multiline,
-        "data-with-right-section": !!rightSection,
-        "data-with-left-section": !!leftSection
-      },
+      mod: [
+        {
+          error: !!error && withErrorStyles,
+          pointer,
+          disabled,
+          multiline,
+          "data-with-right-section": !!rightSection,
+          "data-with-left-section": !!leftSection
+        },
+        mod
+      ],
       variant,
       size: size2
     }),
-    leftSection && /* @__PURE__ */ React18.createElement(
+    leftSection && /* @__PURE__ */ React19.createElement(
       "div",
       __spreadValues(__spreadProps(__spreadValues({}, leftSectionProps), {
         "data-position": "left"
@@ -51646,8 +51713,8 @@ var Input = polymorphicFactory((_props, ref) => {
       })),
       leftSection
     ),
-    /* @__PURE__ */ React18.createElement(
-      Box7,
+    /* @__PURE__ */ React19.createElement(
+      Box8,
       __spreadValues(__spreadProps(__spreadValues(__spreadValues({
         component: "input"
       }, rest), ariaAttributes), {
@@ -51657,7 +51724,7 @@ var Input = polymorphicFactory((_props, ref) => {
         variant
       }), getStyles("input"))
     ),
-    rightSection && /* @__PURE__ */ React18.createElement(
+    rightSection && /* @__PURE__ */ React19.createElement(
       "div",
       __spreadValues(__spreadProps(__spreadValues({}, rightSectionProps), {
         "data-position": "right"
@@ -51669,6 +51736,7 @@ var Input = polymorphicFactory((_props, ref) => {
     )
   );
 });
+Input.classes = Input_module_default2;
 Input.Wrapper = InputWrapper;
 Input.Label = InputLabel;
 Input.Error = InputError;
@@ -51679,10 +51747,10 @@ Input.displayName = "@raikou/core/Input";
 // ../Input/src/use-input-props.ts
 import {
   extractStyleProps as extractStyleProps2,
-  useProps as useProps11
+  useProps as useProps12
 } from "@raikou/core";
-function useInputProps(component, defaultProps34, _props) {
-  const props = useProps11(component, defaultProps34, _props);
+function useInputProps(component, defaultProps33, _props) {
+  const props = useProps12(component, defaultProps33, _props);
   const _a = props, {
     label,
     description,
@@ -51773,25 +51841,25 @@ function useInputProps(component, defaultProps34, _props) {
 }
 
 // ../InputBase/src/InputBase.tsx
-var defaultProps11 = {
+var defaultProps12 = {
   __staticSelector: "InputBase",
   withAria: true
 };
 var InputBase = polymorphicFactory2((props, ref) => {
   const _a = useInputProps(
     "InputBase",
-    defaultProps11,
+    defaultProps12,
     props
   ), { inputProps, wrapperProps } = _a, others = __objRest(_a, ["inputProps", "wrapperProps"]);
-  return /* @__PURE__ */ React19.createElement(Input.Wrapper, __spreadValues({}, wrapperProps), /* @__PURE__ */ React19.createElement(Input, __spreadProps(__spreadValues(__spreadValues({}, inputProps), others), { ref })));
+  return /* @__PURE__ */ React20.createElement(Input.Wrapper, __spreadValues({}, wrapperProps), /* @__PURE__ */ React20.createElement(Input, __spreadProps(__spreadValues(__spreadValues({}, inputProps), others), { ref })));
 });
 InputBase.displayName = "@raikou/core/InputBase";
 
 // ../TextInput/src/TextInput.tsx
-var defaultProps12 = {};
-var TextInput = factory8((props, ref) => {
-  const _props = useProps12("TextInput", defaultProps12, props);
-  return /* @__PURE__ */ React20.createElement(
+var defaultProps13 = {};
+var TextInput = factory9((props, ref) => {
+  const _props = useProps13("TextInput", defaultProps13, props);
+  return /* @__PURE__ */ React21.createElement(
     InputBase,
     __spreadProps(__spreadValues({
       component: "input",
@@ -51804,12 +51872,12 @@ var TextInput = factory8((props, ref) => {
 TextInput.displayName = "@raikou/core/TextInput";
 
 // ../Stack/src/Stack.tsx
-import React21 from "react";
+import React22 from "react";
 import {
-  Box as Box8,
-  factory as factory9,
-  useProps as useProps13,
-  useStyles as useStyles8,
+  Box as Box9,
+  factory as factory10,
+  useProps as useProps14,
+  useStyles as useStyles9,
   getSpacing,
   createVarsResolver as createVarsResolver7
 } from "@raikou/core";
@@ -51818,7 +51886,7 @@ import {
 var Stack_module_default = { "root": "m-6d731127" };
 
 // ../Stack/src/Stack.tsx
-var defaultProps13 = {
+var defaultProps14 = {
   gap: "md",
   align: "stretch",
   justify: "flex-start"
@@ -51832,8 +51900,8 @@ var varsResolver7 = createVarsResolver7(
     }
   })
 );
-var Stack = factory9((_props, ref) => {
-  const props = useProps13("Stack", defaultProps13, _props);
+var Stack = factory10((_props, ref) => {
+  const props = useProps14("Stack", defaultProps14, _props);
   const _a = props, {
     classNames,
     className,
@@ -51857,7 +51925,7 @@ var Stack = factory9((_props, ref) => {
     "gap",
     "variant"
   ]);
-  const getStyles = useStyles8({
+  const getStyles = useStyles9({
     name: "Stack",
     props,
     classes: Stack_module_default,
@@ -51869,20 +51937,20 @@ var Stack = factory9((_props, ref) => {
     vars,
     varsResolver: varsResolver7
   });
-  return /* @__PURE__ */ React21.createElement(Box8, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { variant }), others));
+  return /* @__PURE__ */ React22.createElement(Box9, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { variant }), others));
 });
 Stack.displayName = "@raikou/core/Stack";
 Stack.classes = Stack_module_default;
 
 // ../ColorSwatch/src/ColorSwatch.tsx
-import React22 from "react";
+import React23 from "react";
 import {
-  Box as Box9,
+  Box as Box10,
   getRadius as getRadius3,
   polymorphicFactory as polymorphicFactory3,
   rem as rem8,
-  useProps as useProps14,
-  useStyles as useStyles9,
+  useProps as useProps15,
+  useStyles as useStyles10,
   createVarsResolver as createVarsResolver8
 } from "@raikou/core";
 
@@ -51890,7 +51958,7 @@ import {
 var ColorSwatch_module_default = { "root": "m-de3d2490", "colorOverlay": "m-862f3d1b", "shadowOverlay": "m-98ae7f22", "alphaOverlay": "m-95709ac0", "childrenOverlay": "m-93e74e3" };
 
 // ../ColorSwatch/src/ColorSwatch.tsx
-var defaultProps14 = {
+var defaultProps15 = {
   withShadow: true
 };
 var varsResolver8 = createVarsResolver8(
@@ -51903,8 +51971,8 @@ var varsResolver8 = createVarsResolver8(
 );
 var ColorSwatch = polymorphicFactory3(
   (_props, ref) => {
-    const props = useProps14("ColorSwatch", defaultProps14, _props);
-    const _a = useProps14("ColorSwatch", defaultProps14, props), {
+    const props = useProps15("ColorSwatch", defaultProps15, _props);
+    const _a = useProps15("ColorSwatch", defaultProps15, props), {
       classNames,
       className,
       style,
@@ -51931,7 +51999,7 @@ var ColorSwatch = polymorphicFactory3(
       "children",
       "variant"
     ]);
-    const getStyles = useStyles9({
+    const getStyles = useStyles10({
       name: "ColorSwatch",
       props,
       classes: ColorSwatch_module_default,
@@ -51943,20 +52011,20 @@ var ColorSwatch = polymorphicFactory3(
       vars,
       varsResolver: varsResolver8
     });
-    return /* @__PURE__ */ React22.createElement(
-      Box9,
+    return /* @__PURE__ */ React23.createElement(
+      Box10,
       __spreadValues(__spreadValues({
         ref,
         variant,
         size: size2
       }, getStyles("root", { focusable: true })), others),
-      /* @__PURE__ */ React22.createElement("span", __spreadValues({}, getStyles("alphaOverlay"))),
-      withShadow && /* @__PURE__ */ React22.createElement("span", __spreadValues({}, getStyles("shadowOverlay"))),
-      /* @__PURE__ */ React22.createElement(
+      /* @__PURE__ */ React23.createElement("span", __spreadValues({}, getStyles("alphaOverlay"))),
+      withShadow && /* @__PURE__ */ React23.createElement("span", __spreadValues({}, getStyles("shadowOverlay"))),
+      /* @__PURE__ */ React23.createElement(
         "span",
         __spreadValues({}, getStyles("colorOverlay", { style: { backgroundColor: color } }))
       ),
-      /* @__PURE__ */ React22.createElement("span", __spreadValues({}, getStyles("childrenOverlay")), children)
+      /* @__PURE__ */ React23.createElement("span", __spreadValues({}, getStyles("childrenOverlay")), children)
     );
   }
 );
@@ -51966,14 +52034,14 @@ ColorSwatch.classes = ColorSwatch_module_default;
 // src/components/picker/index.tsx
 import cx2 from "clsx";
 import { colord } from "colord";
-var defaultProps15 = {
+var defaultProps16 = {
   disabled: false,
   swatchSize: 24,
   control: "input"
 };
-var GradientPickerPicker = factory10(
+var GradientPickerPicker = factory11(
   (props, ref) => {
-    const _a = useProps15("GradientPickerPicker", defaultProps15, props), {
+    const _a = useProps16("GradientPickerPicker", defaultProps16, props), {
       classNames,
       className,
       style,
@@ -51993,7 +52061,7 @@ var GradientPickerPicker = factory10(
       "control"
     ]);
     const ctx = useGradientPickerContext();
-    return /* @__PURE__ */ React23.createElement(React23.Fragment, null, control === "input" && /* @__PURE__ */ React23.createElement(Box10, { ref }, /* @__PURE__ */ React23.createElement(
+    return /* @__PURE__ */ React24.createElement(React24.Fragment, null, control === "input" && /* @__PURE__ */ React24.createElement(Box11, { ref }, /* @__PURE__ */ React24.createElement(
       TextInput,
       __spreadValues({
         ref: ctx.setControl,
@@ -52015,7 +52083,7 @@ var GradientPickerPicker = factory10(
           }
         },
         onClick: () => ctx.toggleOpen(),
-        leftSection: /* @__PURE__ */ React23.createElement(
+        leftSection: /* @__PURE__ */ React24.createElement(
           ColorSwatch,
           {
             component: "button",
@@ -52025,39 +52093,39 @@ var GradientPickerPicker = factory10(
           }
         )
       }, others)
-    )), control === "dropdown" && /* @__PURE__ */ React23.createElement(
+    )), control === "dropdown" && /* @__PURE__ */ React24.createElement(
       Stack,
       {
         className: cx2("dropdown", "rgba(156,163,175)", className)
       },
-      /* @__PURE__ */ React23.createElement(React23.Fragment, null)
+      /* @__PURE__ */ React24.createElement(React24.Fragment, null)
     ));
   }
 );
 GradientPickerPicker.displayName = "@raikou/core/GradientPickerPicker";
 
 // src/components/compact/index.tsx
-import cx10 from "clsx";
+import cx9 from "clsx";
 
 // ../Button/src/Button.tsx
-import React31 from "react";
+import React32 from "react";
 import {
   polymorphicFactory as polymorphicFactory5,
-  useProps as useProps19,
-  useStyles as useStyles13,
+  useProps as useProps20,
+  useStyles as useStyles14,
   createVarsResolver as createVarsResolver11,
-  Box as Box18,
+  Box as Box19,
   getRadius as getRadius4,
   getSize as getSize3,
   getFontSize as getFontSize6
 } from "@raikou/core";
 
 // ../UnstyledButton/src/UnstyledButton.tsx
-import React24 from "react";
+import React25 from "react";
 import {
-  Box as Box11,
-  useProps as useProps16,
-  useStyles as useStyles10,
+  Box as Box12,
+  useProps as useProps17,
+  useStyles as useStyles11,
   polymorphicFactory as polymorphicFactory4
 } from "@raikou/core";
 
@@ -52065,12 +52133,12 @@ import {
 var UnstyledButton_module_default = { "root": "m-87cf2631" };
 
 // ../UnstyledButton/src/UnstyledButton.tsx
-var defaultProps16 = {
+var defaultProps17 = {
   __staticSelector: "UnstyledButton"
 };
 var UnstyledButton = polymorphicFactory4(
   (_props, ref) => {
-    const props = useProps16("UnstyledButton", defaultProps16, _props);
+    const props = useProps17("UnstyledButton", defaultProps17, _props);
     const _a = props, {
       className,
       component = "button",
@@ -52088,7 +52156,7 @@ var UnstyledButton = polymorphicFactory4(
       "styles",
       "style"
     ]);
-    const getStyles = useStyles10({
+    const getStyles = useStyles11({
       name: __staticSelector,
       props,
       classes: UnstyledButton_module_default,
@@ -52098,8 +52166,8 @@ var UnstyledButton = polymorphicFactory4(
       styles,
       unstyled
     });
-    return /* @__PURE__ */ React24.createElement(
-      Box11,
+    return /* @__PURE__ */ React25.createElement(
+      Box12,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { focusable: true })), {
         component,
         ref,
@@ -52112,21 +52180,21 @@ UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 UnstyledButton.classes = UnstyledButton_module_default;
 
 // ../Loader/src/Loader.tsx
-import React29 from "react";
+import React30 from "react";
 import {
-  Box as Box16,
-  useProps as useProps17,
+  Box as Box17,
+  useProps as useProps18,
   getThemeColor,
-  useStyles as useStyles11,
-  factory as factory11,
+  useStyles as useStyles12,
+  factory as factory12,
   getSize as getSize2,
   createVarsResolver as createVarsResolver9
 } from "@raikou/core";
 
 // ../Loader/src/loaders/Bars.tsx
-import React25, { forwardRef as forwardRef4 } from "react";
+import React26, { forwardRef as forwardRef4 } from "react";
 import cx3 from "clsx";
-import { Box as Box12 } from "@raikou/core";
+import { Box as Box13 } from "@raikou/core";
 
 // css-module:../Loader.module.css#css-module
 var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
@@ -52135,30 +52203,30 @@ var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "
 var Bars = forwardRef4(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React25.createElement(
-      Box12,
+    return /* @__PURE__ */ React26.createElement(
+      Box13,
       __spreadProps(__spreadValues({
         component: "span",
         className: cx3(Loader_module_default.barsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React25.createElement("span", { className: Loader_module_default.bar }),
-      /* @__PURE__ */ React25.createElement("span", { className: Loader_module_default.bar }),
-      /* @__PURE__ */ React25.createElement("span", { className: Loader_module_default.bar })
+      /* @__PURE__ */ React26.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React26.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ React26.createElement("span", { className: Loader_module_default.bar })
     );
   }
 );
 
 // ../Loader/src/loaders/Oval.tsx
-import React26, { forwardRef as forwardRef5 } from "react";
+import React27, { forwardRef as forwardRef5 } from "react";
 import cx4 from "clsx";
-import { Box as Box13 } from "@raikou/core";
+import { Box as Box14 } from "@raikou/core";
 var Oval = forwardRef5(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React26.createElement(
-      Box13,
+    return /* @__PURE__ */ React27.createElement(
+      Box14,
       __spreadProps(__spreadValues({
         component: "span",
         className: cx4(Loader_module_default.ovalLoader, className)
@@ -52170,21 +52238,21 @@ var Oval = forwardRef5(
 );
 
 // ../Loader/src/loaders/Progress.tsx
-import React27, { forwardRef as forwardRef6 } from "react";
+import React28, { forwardRef as forwardRef6 } from "react";
 import cx5 from "clsx";
-import { Box as Box14 } from "@raikou/core";
+import { Box as Box15 } from "@raikou/core";
 var Progress = forwardRef6(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React27.createElement(
-      Box14,
+    return /* @__PURE__ */ React28.createElement(
+      Box15,
       __spreadProps(__spreadValues({
         component: "span",
         className: cx5(Loader_module_default.progressLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React27.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ React27.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ React27.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ React27.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ React27.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ React27.createElement(
+      /* @__PURE__ */ React28.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ React28.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ React28.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ React28.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ React28.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ React28.createElement(
         "animateTransform",
         {
           attributeName: "transform",
@@ -52200,23 +52268,23 @@ var Progress = forwardRef6(
 );
 
 // ../Loader/src/loaders/Dots.tsx
-import React28, { forwardRef as forwardRef7 } from "react";
+import React29, { forwardRef as forwardRef7 } from "react";
 import cx6 from "clsx";
-import { Box as Box15 } from "@raikou/core";
+import { Box as Box16 } from "@raikou/core";
 var Dots = forwardRef7(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ React28.createElement(
-      Box15,
+    return /* @__PURE__ */ React29.createElement(
+      Box16,
       __spreadProps(__spreadValues({
         component: "span",
         className: cx6(Loader_module_default.dotsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ React28.createElement("span", { className: Loader_module_default.dot }),
-      /* @__PURE__ */ React28.createElement("span", { className: Loader_module_default.dot }),
-      /* @__PURE__ */ React28.createElement("span", { className: Loader_module_default.dot })
+      /* @__PURE__ */ React29.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React29.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ React29.createElement("span", { className: Loader_module_default.dot })
     );
   }
 );
@@ -52231,7 +52299,7 @@ var defaultLoaders = {
   dots: Dots,
   progress: Progress
 };
-var defaultProps17 = {
+var defaultProps18 = {
   loaders: defaultLoaders,
   type: "oval"
 };
@@ -52243,8 +52311,8 @@ var varsResolver9 = createVarsResolver9(
     }
   })
 );
-var Loader = factory11((_props, ref) => {
-  const props = useProps17("Loader", defaultProps17, _props);
+var Loader = factory12((_props, ref) => {
+  const props = useProps18("Loader", defaultProps18, _props);
   const _a = props, {
     size: size2,
     color,
@@ -52256,7 +52324,8 @@ var Loader = factory11((_props, ref) => {
     styles,
     unstyled,
     loaders,
-    variant
+    variant,
+    children
   } = _a, others = __objRest(_a, [
     "size",
     "color",
@@ -52268,9 +52337,10 @@ var Loader = factory11((_props, ref) => {
     "styles",
     "unstyled",
     "loaders",
-    "variant"
+    "variant",
+    "children"
   ]);
-  const getStyles = useStyles11({
+  const getStyles = useStyles12({
     name: "Loader",
     props,
     classes: Loader_module_default2,
@@ -52282,8 +52352,11 @@ var Loader = factory11((_props, ref) => {
     vars,
     varsResolver: varsResolver9
   });
-  return /* @__PURE__ */ React29.createElement(
-    Box16,
+  if (children) {
+    return /* @__PURE__ */ React30.createElement(Box17, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref }), others), children);
+  }
+  return /* @__PURE__ */ React30.createElement(
+    Box17,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -52292,20 +52365,21 @@ var Loader = factory11((_props, ref) => {
     }), others)
   );
 });
+Loader.defaultLoaders = defaultLoaders;
 Loader.displayName = "@raikou/core/Loader";
 Loader.classes = Loader_module_default2;
 
 // ../Button/src/ButtonGroup/ButtonGroup.tsx
-import React30 from "react";
+import React31 from "react";
 import {
-  factory as factory12,
-  Box as Box17,
-  useProps as useProps18,
-  useStyles as useStyles12,
+  factory as factory13,
+  Box as Box18,
+  useProps as useProps19,
+  useStyles as useStyles13,
   rem as rem9,
   createVarsResolver as createVarsResolver10
 } from "@raikou/core";
-var defaultProps18 = {
+var defaultProps19 = {
   orientation: "horizontal"
 };
 var varsResolver10 = createVarsResolver10(
@@ -52313,9 +52387,9 @@ var varsResolver10 = createVarsResolver10(
     group: { "--button-border-width": rem9(borderWidth) }
   })
 );
-var ButtonGroup = factory12((_props, ref) => {
-  const props = useProps18("ButtonGroup", defaultProps18, _props);
-  const _a = useProps18("ButtonGroup", defaultProps18, _props), {
+var ButtonGroup = factory13((_props, ref) => {
+  const props = useProps19("ButtonGroup", defaultProps19, _props);
+  const _a = useProps19("ButtonGroup", defaultProps19, _props), {
     className,
     style,
     classNames,
@@ -52324,7 +52398,8 @@ var ButtonGroup = factory12((_props, ref) => {
     orientation,
     vars,
     borderWidth,
-    variant
+    variant,
+    mod
   } = _a, others = __objRest(_a, [
     "className",
     "style",
@@ -52334,9 +52409,10 @@ var ButtonGroup = factory12((_props, ref) => {
     "orientation",
     "vars",
     "borderWidth",
-    "variant"
+    "variant",
+    "mod"
   ]);
-  const getStyles = useStyles12({
+  const getStyles = useStyles13({
     name: "ButtonGroup",
     props,
     classes: {
@@ -52351,12 +52427,12 @@ var ButtonGroup = factory12((_props, ref) => {
     varsResolver: varsResolver10,
     rootSelector: "group"
   });
-  return /* @__PURE__ */ React30.createElement(
-    Box17,
+  return /* @__PURE__ */ React31.createElement(
+    Box18,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
       ref,
       variant,
-      mod: { "data-orientation": orientation },
+      mod: [{ "data-orientation": orientation }, mod],
       role: "group"
     }), others)
   );
@@ -52367,16 +52443,17 @@ ButtonGroup.displayName = "@raikou/core/ButtonGroup";
 var Button_module_default = { "root": "m-77c9d27d", "inner": "m-80f1301b", "label": "m-811560b9", "section": "m-a74036a", "loader": "m-a25b86ee", "group": "m-80d6d844" };
 
 // ../Button/src/Button.tsx
-var defaultProps19 = {
+var defaultProps20 = {
   loaderPosition: "left"
 };
 var varsResolver11 = createVarsResolver11(
-  (theme, { radius, color, gradient, variant, size: size2, justify }) => {
+  (theme, { radius, color, gradient, variant, size: size2, justify, autoContrast }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       gradient,
-      variant: variant || "filled"
+      variant: variant || "filled",
+      autoContrast
     });
     return {
       root: {
@@ -52388,13 +52465,14 @@ var varsResolver11 = createVarsResolver11(
         "--button-bg": color || variant ? colors.background : void 0,
         "--button-hover": color || variant ? colors.hover : void 0,
         "--button-color": color || variant ? colors.color : void 0,
-        "--button-bd": color || variant ? colors.border : void 0
+        "--button-bd": color || variant ? colors.border : void 0,
+        "--button-hover-color": color || variant ? colors.hoverColor : void 0
       }
     };
   }
 );
 var Button = polymorphicFactory5((_props, ref) => {
-  const props = useProps19("Button", defaultProps19, _props);
+  const props = useProps20("Button", defaultProps20, _props);
   const _a = props, {
     style,
     vars,
@@ -52414,7 +52492,9 @@ var Button = polymorphicFactory5((_props, ref) => {
     classNames,
     styles,
     unstyled,
-    "data-disabled": dataDisabled
+    "data-disabled": dataDisabled,
+    autoContrast,
+    mod
   } = _a, others = __objRest(_a, [
     "style",
     "vars",
@@ -52434,9 +52514,11 @@ var Button = polymorphicFactory5((_props, ref) => {
     "classNames",
     "styles",
     "unstyled",
-    "data-disabled"
+    "data-disabled",
+    "autoContrast",
+    "mod"
   ]);
-  const getStyles = useStyles13({
+  const getStyles = useStyles14({
     name: "Button",
     props,
     classes: Button_module_default,
@@ -52450,7 +52532,7 @@ var Button = polymorphicFactory5((_props, ref) => {
   });
   const hasLeftSection = !!leftSection;
   const hasRightSection = !!rightSection;
-  return /* @__PURE__ */ React31.createElement(
+  return /* @__PURE__ */ React32.createElement(
     UnstyledButton,
     __spreadValues(__spreadProps(__spreadValues({
       ref
@@ -52466,26 +52548,27 @@ var Button = polymorphicFactory5((_props, ref) => {
           block: fullWidth,
           "with-left-section": hasLeftSection,
           "with-right-section": hasRightSection
-        }
+        },
+        mod
       ]
     }), others),
-    /* @__PURE__ */ React31.createElement("span", __spreadValues({}, getStyles("inner")), !loading && leftSection && /* @__PURE__ */ React31.createElement(
-      Box18,
+    /* @__PURE__ */ React32.createElement("span", __spreadValues({}, getStyles("inner")), !loading && leftSection && /* @__PURE__ */ React32.createElement(
+      Box19,
       __spreadProps(__spreadValues({
         component: "span"
       }, getStyles("section")), {
         mod: { position: "left" }
       }),
       leftSection
-    ), loading && loaderPosition === "left" && /* @__PURE__ */ React31.createElement(
-      Box18,
+    ), loading && loaderPosition === "left" && /* @__PURE__ */ React32.createElement(
+      Box19,
       __spreadProps(__spreadValues({
         component: "span"
       }, getStyles("section")), {
         mod: { position: "left" }
       }),
       !loading && leftSection,
-      loading && /* @__PURE__ */ React31.createElement(
+      loading && /* @__PURE__ */ React32.createElement(
         Loader,
         __spreadValues({
           type: "progress",
@@ -52493,14 +52576,14 @@ var Button = polymorphicFactory5((_props, ref) => {
           size: "calc(var(--button-height) / 2.4)"
         }, loaderProps)
       )
-    ), loading && loaderPosition === "center" && /* @__PURE__ */ React31.createElement(Box18, __spreadValues({ component: "span" }, getStyles("loader")), /* @__PURE__ */ React31.createElement(
+    ), loading && loaderPosition === "center" && /* @__PURE__ */ React32.createElement(Box19, __spreadValues({ component: "span" }, getStyles("loader")), /* @__PURE__ */ React32.createElement(
       Loader,
       __spreadValues({
         color: "var(--button-color)",
         size: "calc(var(--button-height) / 1.8)"
       }, loaderProps)
-    )), /* @__PURE__ */ React31.createElement(Box18, __spreadValues({ component: "span", mod: { loading } }, getStyles("label")), children), rightSection && /* @__PURE__ */ React31.createElement(
-      Box18,
+    )), /* @__PURE__ */ React32.createElement(Box19, __spreadValues({ component: "span", mod: { loading } }, getStyles("label")), children), rightSection && /* @__PURE__ */ React32.createElement(
+      Box19,
       __spreadProps(__spreadValues({
         component: "span"
       }, getStyles("section")), {
@@ -52515,12 +52598,12 @@ Button.Group = ButtonGroup;
 Button.classes = Button_module_default;
 
 // ../Image/src/Image.tsx
-import React32 from "react";
+import React33 from "react";
 import {
-  Box as Box19,
+  Box as Box20,
   polymorphicFactory as polymorphicFactory6,
-  useProps as useProps20,
-  useStyles as useStyles14,
+  useProps as useProps21,
+  useStyles as useStyles15,
   createVarsResolver as createVarsResolver12,
   getRadius as getRadius5
 } from "@raikou/core";
@@ -52964,7 +53047,7 @@ var useStore = pure_store_default({
 var Image_module_default = { "root": "m-9e117634" };
 
 // ../Image/src/Image.tsx
-var defaultProps20 = {};
+var defaultProps21 = {};
 var varsResolver12 = createVarsResolver12((_2, { radius, fit }) => ({
   root: {
     "--image-radius": radius === void 0 ? void 0 : getRadius5(radius),
@@ -52972,7 +53055,7 @@ var varsResolver12 = createVarsResolver12((_2, { radius, fit }) => ({
   }
 }));
 var Image = polymorphicFactory6((_props, ref) => {
-  const props = useProps20("Image", defaultProps20, _props);
+  const props = useProps21("Image", defaultProps21, _props);
   const _a = props, {
     classNames,
     className,
@@ -52984,7 +53067,8 @@ var Image = polymorphicFactory6((_props, ref) => {
     src,
     radius,
     fit,
-    fallbackSrc
+    fallbackSrc,
+    mod
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -52996,9 +53080,10 @@ var Image = polymorphicFactory6((_props, ref) => {
     "src",
     "radius",
     "fit",
-    "fallbackSrc"
+    "fallbackSrc",
+    "mod"
   ]);
-  const getStyles = useStyles14({
+  const getStyles = useStyles15({
     name: "Image",
     classes: Image_module_default,
     props,
@@ -53024,13 +53109,14 @@ var Image = polymorphicFactory6((_props, ref) => {
       }
     });
   }
-  return /* @__PURE__ */ React32.createElement(
-    Box19,
+  return /* @__PURE__ */ React33.createElement(
+    Box20,
     __spreadValues(__spreadProps(__spreadValues({
       component: "img",
       ref
     }, getStyles("root")), {
-      src: useStore.getState().error ? fallbackSrc : src
+      src: useStore.getState().error ? fallbackSrc : src,
+      mod
     }), others)
   );
 });
@@ -53038,12 +53124,12 @@ Image.classes = Image_module_default;
 Image.displayName = "@raikou/core/Image";
 
 // ../Group/src/Group.tsx
-import React33 from "react";
+import React34 from "react";
 import {
-  Box as Box20,
-  factory as factory13,
-  useProps as useProps21,
-  useStyles as useStyles15,
+  Box as Box21,
+  factory as factory14,
+  useProps as useProps22,
+  useStyles as useStyles16,
   getSpacing as getSpacing2,
   createVarsResolver as createVarsResolver13
 } from "@raikou/core";
@@ -53058,7 +53144,7 @@ function filterFalsyChildren(children) {
 var Group_module_default = { "root": "m-4081bf90" };
 
 // ../Group/src/Group.tsx
-var defaultProps21 = {
+var defaultProps22 = {
   preventGrowOverflow: true,
   gap: "md",
   align: "center",
@@ -53076,8 +53162,8 @@ var varsResolver13 = createVarsResolver13(
     }
   })
 );
-var Group = factory13((_props, ref) => {
-  const props = useProps21("Group", defaultProps21, _props);
+var Group = factory14((_props, ref) => {
+  const props = useProps22("Group", defaultProps22, _props);
   const _a = props, {
     classNames,
     className,
@@ -53093,7 +53179,8 @@ var Group = factory13((_props, ref) => {
     preventGrowOverflow,
     vars,
     variant,
-    __size
+    __size,
+    mod
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -53109,14 +53196,15 @@ var Group = factory13((_props, ref) => {
     "preventGrowOverflow",
     "vars",
     "variant",
-    "__size"
+    "__size",
+    "mod"
   ]);
   const filteredChildren = filterFalsyChildren(children);
   const childrenCount = filteredChildren.length;
   const resolvedGap = getSpacing2(gap != null ? gap : "md");
   const childWidth = `calc(${100 / childrenCount}% - (${resolvedGap} - ${resolvedGap} / ${childrenCount}))`;
   const stylesCtx = { childWidth };
-  const getStyles = useStyles15({
+  const getStyles = useStyles16({
     name: "Group",
     props,
     stylesCtx,
@@ -53129,12 +53217,12 @@ var Group = factory13((_props, ref) => {
     vars,
     varsResolver: varsResolver13
   });
-  return /* @__PURE__ */ React33.createElement(
-    Box20,
+  return /* @__PURE__ */ React34.createElement(
+    Box21,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       variant,
-      mod: { grow },
+      mod: [{ grow }, mod],
       size: __size
     }), others),
     filteredChildren
@@ -53144,16 +53232,17 @@ Group.displayName = "@raikou/core/Group";
 Group.classes = Group_module_default;
 
 // ../Text/src/Text.tsx
-import React34 from "react";
+import React35 from "react";
 import {
-  Box as Box21,
+  Box as Box22,
   polymorphicFactory as polymorphicFactory7,
-  useStyles as useStyles16,
-  useProps as useProps22,
+  useStyles as useStyles17,
+  useProps as useProps23,
   getGradient,
   createVarsResolver as createVarsResolver14,
   getFontSize as getFontSize7,
-  getLineHeight
+  getLineHeight,
+  getThemeColor as getThemeColor2
 } from "@raikou/core";
 
 // css-module:./Text.module.css#css-module
@@ -53169,21 +53258,22 @@ function getTextTruncate(truncate) {
   }
   return void 0;
 }
-var defaultProps22 = {
+var defaultProps23 = {
   inherit: false
 };
 var varsResolver14 = createVarsResolver14(
-  (theme, { variant, lineClamp, gradient, size: size2 }) => ({
+  (theme, { variant, lineClamp, gradient, size: size2, color }) => ({
     root: {
       "--text-fz": getFontSize7(size2),
       "--text-lh": getLineHeight(size2),
       "--text-gradient": variant === "gradient" ? getGradient(gradient, theme) : void 0,
-      "--text-line-clamp": typeof lineClamp === "number" ? lineClamp.toString() : void 0
+      "--text-line-clamp": typeof lineClamp === "number" ? lineClamp.toString() : void 0,
+      "--text-color": color ? getThemeColor2(color, theme) : void 0
     }
   })
 );
 var Text = polymorphicFactory7((_props, ref) => {
-  const props = useProps22("Text", defaultProps22, _props);
+  const props = useProps23("Text", defaultProps23, _props);
   const _a = props, {
     lineClamp,
     truncate,
@@ -53219,7 +53309,7 @@ var Text = polymorphicFactory7((_props, ref) => {
     "mod",
     "size"
   ]);
-  const getStyles = useStyles16({
+  const getStyles = useStyles17({
     name: ["Text", __staticSelector],
     props,
     classes: Text_module_default,
@@ -53231,8 +53321,8 @@ var Text = polymorphicFactory7((_props, ref) => {
     vars,
     varsResolver: varsResolver14
   });
-  return /* @__PURE__ */ React34.createElement(
-    Box21,
+  return /* @__PURE__ */ React35.createElement(
+    Box22,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { focusable: true })), {
       ref,
       component: span ? "span" : "p",
@@ -53254,36 +53344,36 @@ Text.classes = Text_module_default;
 Text.displayName = "@raikou/core/Text";
 
 // ../Tooltip/src/Tooltip.tsx
-import React37, { cloneElement as cloneElement5, useRef as useRef8 } from "react";
+import React38, { cloneElement as cloneElement5, useRef as useRef8 } from "react";
 import { useMergedRef as useMergedRef5 } from "@raikou/hooks";
 import cx7 from "clsx";
 import {
-  Box as Box23,
-  factory as factory15,
+  Box as Box24,
+  factory as factory16,
   getDefaultZIndex as getDefaultZIndex3,
   isElement as isElement6,
-  useProps as useProps25,
+  useProps as useProps26,
   useDirection as useDirection3,
-  useStyles as useStyles18,
-  getThemeColor as getThemeColor3,
+  useStyles as useStyles19,
+  getThemeColor as getThemeColor4,
   getRadius as getRadius7,
   createVarsResolver as createVarsResolver16
 } from "@raikou/core";
 
 // ../Tooltip/src/TooltipFloating/TooltipFloating.tsx
-import React35, { cloneElement as cloneElement4 } from "react";
+import React36, { cloneElement as cloneElement4 } from "react";
 import { useMergedRef as useMergedRef4 } from "@raikou/hooks";
 import {
-  Box as Box22,
-  factory as factory14,
+  Box as Box23,
+  factory as factory15,
   getDefaultZIndex as getDefaultZIndex2,
   isElement as isElement5,
-  useProps as useProps23,
-  useStyles as useStyles17,
+  useProps as useProps24,
+  useStyles as useStyles18,
   getStyleObject,
   createVarsResolver as createVarsResolver15,
   getRadius as getRadius6,
-  getThemeColor as getThemeColor2,
+  getThemeColor as getThemeColor3,
   useRaikouTheme as useRaikouTheme2
 } from "@raikou/core";
 
@@ -53346,8 +53436,11 @@ function useFloatingTooltip({
   return { handleMouseMove, x: x2, y: y2, opened, setOpened, boundaryRef, floating };
 }
 
+// css-module:../Tooltip.module.css#css-module
+var Tooltip_module_default = { "root": "m-946fb08c", "tooltip": "m-1b3c8819", "arrow": "m-f898399f" };
+
 // ../Tooltip/src/TooltipFloating/TooltipFloating.tsx
-var defaultProps23 = {
+var defaultProps24 = {
   refProp: "ref",
   withinPortal: true,
   offset: 10,
@@ -53358,14 +53451,15 @@ var varsResolver15 = createVarsResolver15(
   (theme, { radius, color }) => ({
     tooltip: {
       "--tooltip-radius": radius === void 0 ? void 0 : getRadius6(radius),
-      "--tooltip-bg": color ? getThemeColor2(color, theme) : void 0
+      "--tooltip-bg": color ? getThemeColor3(color, theme) : void 0,
+      "--tooltip-color": color ? "var(--raikou-color-white)" : void 0
     }
   })
 );
-var TooltipFloating = factory14(
+var TooltipFloating = factory15(
   (_props, ref) => {
     var _b, _c;
-    const props = useProps23("TooltipFloating", defaultProps23, _props);
+    const props = useProps24("TooltipFloating", defaultProps24, _props);
     const _a = props, {
       children,
       refProp,
@@ -53408,13 +53502,10 @@ var TooltipFloating = factory14(
       "portalProps"
     ]);
     const theme = useRaikouTheme2();
-    const getStyles = useStyles17({
+    const getStyles = useStyles18({
       name: "TooltipFloating",
       props,
-      classes: {
-        tooltip: "tooltip-root",
-        arrow: "tooltip-arrow"
-      },
+      classes: Tooltip_module_default,
       className,
       style,
       classNames,
@@ -53445,8 +53536,8 @@ var TooltipFloating = factory14(
       (_b2 = (_a2 = children.props).onMouseLeave) == null ? void 0 : _b2.call(_a2, event);
       setOpened(false);
     };
-    return /* @__PURE__ */ React35.createElement(React35.Fragment, null, /* @__PURE__ */ React35.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ React35.createElement(
-      Box22,
+    return /* @__PURE__ */ React36.createElement(React36.Fragment, null, /* @__PURE__ */ React36.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ React36.createElement(
+      Box23,
       __spreadProps(__spreadValues(__spreadValues({}, others), getStyles("tooltip", {
         style: __spreadProps(__spreadValues({}, getStyleObject(style, theme)), {
           zIndex,
@@ -53456,7 +53547,8 @@ var TooltipFloating = factory14(
         })
       })), {
         variant,
-        ref: floating
+        ref: floating,
+        mod: { multiline }
       }),
       label
     )), cloneElement4(children, __spreadProps(__spreadValues({}, children.props), {
@@ -53469,8 +53561,8 @@ var TooltipFloating = factory14(
 TooltipFloating.displayName = "@raikou/core/TooltipFloating";
 
 // ../Tooltip/src/TooltipGroup/TooltipGroup.tsx
-import React36 from "react";
-import { useProps as useProps24 } from "@raikou/core";
+import React37 from "react";
+import { useProps as useProps25 } from "@raikou/core";
 
 // ../Tooltip/src/TooltipGroup/TooltipGroup.context.ts
 import { createContext as createContext4, useContext as useContext4 } from "react";
@@ -53479,17 +53571,17 @@ var TooltipGroupProvider = TooltipGroupContext.Provider;
 var useTooltipGroupContext = () => useContext4(TooltipGroupContext);
 
 // ../Tooltip/src/TooltipGroup/TooltipGroup.tsx
-var defaultProps24 = {
+var defaultProps25 = {
   openDelay: 0,
   closeDelay: 0
 };
 function TooltipGroup(props) {
-  const { openDelay, closeDelay, children } = useProps24(
+  const { openDelay, closeDelay, children } = useProps25(
     "TooltipGroup",
-    defaultProps24,
+    defaultProps25,
     props
   );
-  return /* @__PURE__ */ React36.createElement(TooltipGroupProvider, { value: true }, /* @__PURE__ */ React36.createElement(FloatingDelayGroup, { delay: { open: openDelay, close: closeDelay } }, children));
+  return /* @__PURE__ */ React37.createElement(TooltipGroupProvider, { value: true }, /* @__PURE__ */ React37.createElement(FloatingDelayGroup, { delay: { open: openDelay, close: closeDelay } }, children));
 }
 TooltipGroup.displayName = "@raikou/core/TooltipGroup";
 
@@ -53516,14 +53608,13 @@ function useTooltip(settings) {
   const {
     x: x2,
     y: y2,
-    reference,
-    floating,
     context,
     refs,
     update,
     placement,
     middlewareData: { arrow: { x: arrowX, y: arrowY } = {} }
   } = useFloating2({
+    strategy: settings.strategy,
     placement: settings.position,
     open: opened,
     onOpenChange: onChange,
@@ -53541,10 +53632,10 @@ function useTooltip(settings) {
       delay: withinGroup ? groupDelay : { open: settings.openDelay, close: settings.closeDelay },
       mouseOnly: !((_b = settings.events) == null ? void 0 : _b.touch)
     }),
-    useFocus(context, { enabled: (_c = settings.events) == null ? void 0 : _c.focus, keyboardOnly: true }),
+    useFocus(context, { enabled: (_c = settings.events) == null ? void 0 : _c.focus, visibleOnly: true }),
     useRole(context, { role: "tooltip" }),
     // cannot be used with controlled tooltip, page jumps
-    useDismiss(context, { enabled: typeof settings.opened === void 0 }),
+    useDismiss(context, { enabled: typeof settings.opened === "undefined" }),
     useDelayGroup(context, { id: uid })
   ]);
   useFloatingAutoUpdate({
@@ -53563,8 +53654,8 @@ function useTooltip(settings) {
     y: y2,
     arrowX,
     arrowY,
-    reference,
-    floating,
+    reference: refs.setReference,
+    floating: refs.setFloating,
     getFloatingProps,
     getReferenceProps,
     isGroupPhase,
@@ -53574,10 +53665,10 @@ function useTooltip(settings) {
 }
 
 // css-module:./Tooltip.module.css#css-module
-var Tooltip_module_default = { "root": "m-946fb08c", "tooltip": "m-1b3c8819", "arrow": "m-f898399f" };
+var Tooltip_module_default2 = { "root": "m-946fb08c", "tooltip": "m-1b3c8819", "arrow": "m-f898399f" };
 
 // ../Tooltip/src/Tooltip.tsx
-var defaultProps25 = {
+var defaultProps26 = {
   position: "top",
   refProp: "ref",
   withinPortal: true,
@@ -53596,13 +53687,14 @@ var varsResolver16 = createVarsResolver16(
   (theme, { radius, color }) => ({
     tooltip: {
       "--tooltip-radius": radius === void 0 ? void 0 : getRadius7(radius),
-      "--tooltip-bg": color ? getThemeColor3(color, theme) : void 0
+      "--tooltip-bg": color ? getThemeColor4(color, theme) : void 0,
+      "--tooltip-color": color ? "var(--raikou-color-white)" : void 0
     }
   })
 );
-var Tooltip = factory15((_props, ref) => {
-  const props = useProps25("Tooltip", defaultProps25, _props);
-  const _a = useProps25("Tooltip", defaultProps25, props), {
+var Tooltip = factory16((_props, ref) => {
+  const props = useProps26("Tooltip", defaultProps26, _props);
+  const _a = useProps26("Tooltip", defaultProps26, props), {
     children,
     position,
     refProp,
@@ -53638,7 +53730,9 @@ var Tooltip = factory15((_props, ref) => {
     variant,
     keepMounted,
     vars,
-    portalProps
+    portalProps,
+    mod,
+    floatingStrategy
   } = _a, others = __objRest(_a, [
     "children",
     "position",
@@ -53675,7 +53769,9 @@ var Tooltip = factory15((_props, ref) => {
     "variant",
     "keepMounted",
     "vars",
-    "portalProps"
+    "portalProps",
+    "mod",
+    "floatingStrategy"
   ]);
   const { dir } = useDirection3();
   const arrowRef = useRef8(null);
@@ -53690,12 +53786,13 @@ var Tooltip = factory15((_props, ref) => {
     arrowOffset,
     offset: typeof offset2 === "number" ? offset2 + (withArrow ? arrowSize / 2 : 0) : offset2,
     positionDependencies: [...positionDependencies, children],
-    inline: inline2
+    inline: inline2,
+    strategy: floatingStrategy
   });
-  const getStyles = useStyles18({
+  const getStyles = useStyles19({
     name: "Tooltip",
     props,
-    classes: Tooltip_module_default,
+    classes: Tooltip_module_default2,
     className,
     style,
     classNames,
@@ -53715,7 +53812,7 @@ var Tooltip = factory15((_props, ref) => {
     duration: 100,
     transition: "fade"
   });
-  return /* @__PURE__ */ React37.createElement(React37.Fragment, null, /* @__PURE__ */ React37.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ React37.createElement(
+  return /* @__PURE__ */ React38.createElement(React38.Fragment, null, /* @__PURE__ */ React38.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ React38.createElement(
     Transition,
     __spreadProps(__spreadValues({}, transition), {
       keepMounted,
@@ -53724,11 +53821,11 @@ var Tooltip = factory15((_props, ref) => {
     }),
     (transitionStyles) => {
       var _a2, _b;
-      return /* @__PURE__ */ React37.createElement(
-        Box23,
+      return /* @__PURE__ */ React38.createElement(
+        Box24,
         __spreadValues(__spreadProps(__spreadValues({}, others), {
           variant,
-          mod: { multiline }
+          mod: [{ multiline }, mod]
         }), tooltip.getFloatingProps({
           ref: tooltip.floating,
           className: getStyles("tooltip").className,
@@ -53739,7 +53836,7 @@ var Tooltip = factory15((_props, ref) => {
           })
         })),
         label,
-        /* @__PURE__ */ React37.createElement(
+        /* @__PURE__ */ React38.createElement(
           FloatingArrow,
           __spreadValues({
             ref: arrowRef,
@@ -53769,456 +53866,495 @@ var Tooltip = factory15((_props, ref) => {
     }, children.props))
   ));
 });
-Tooltip.classes = Tooltip_module_default;
+Tooltip.classes = Tooltip_module_default2;
 Tooltip.displayName = "@raikou/core/Tooltip";
 Tooltip.Floating = TooltipFloating;
 Tooltip.Group = TooltipGroup;
 
-// src/components/eyeDropper/index.tsx
-import React38 from "react";
-import {
-  factory as factory16,
-  useProps as useProps26
-} from "@raikou/core";
-import { useEyeDropper } from "@raikou/hooks";
-import { colord as colord2 } from "colord";
-var defaultProps26 = {
-  size: "md"
-};
-var GradientPickerEyeDropper = factory16((props, ref) => {
-  const _a = useProps26("GradientPickerEyeDropper", defaultProps26, props), { classNames, className, style, styles, vars, onChange } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars", "onChange"]);
-  const { supported, open } = useEyeDropper();
-  const pickColor = () => __async(void 0, null, function* () {
-    try {
-      const { sRGBHex: color } = yield open();
-      const _color = colord2(color).toHsv();
-      onChange(_color);
-    } catch (e) {
-      console.log(e);
-    }
-  });
-  return /* @__PURE__ */ React38.createElement(React38.Fragment, null, supported && /* @__PURE__ */ React38.createElement(Button, __spreadValues({ onClick: pickColor }, others), /* @__PURE__ */ React38.createElement(Text, { className: "w-[20px] text-center" }, /* @__PURE__ */ React38.createElement(Image, { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNMzQxLjYgMjkuMkwyNDAuMSAxMzAuOGwtOS40LTkuNGMtMTIuNS0xMi41LTMyLjgtMTIuNS00NS4zIDBzLTEyLjUgMzIuOCAwIDQ1LjNsMTYwIDE2MGMxMi41IDEyLjUgMzIuOCAxMi41IDQ1LjMgMHMxMi41LTMyLjggMC00NS4zbC05LjQtOS40TDQ4Mi44IDE3MC40YzM5LTM5IDM5LTEwMi4yIDAtMTQxLjFzLTEwMi4yLTM5LTE0MS4xIDB6TTU1LjQgMzIzLjNjLTE1IDE1LTIzLjQgMzUuNC0yMy40IDU2LjZ2NDIuNEw1LjQgNDYyLjJjLTguNSAxMi43LTYuOCAyOS42IDQgNDAuNHMyNy43IDEyLjUgNDAuNCA0TDg5LjcgNDgwaDQyLjRjMjEuMiAwIDQxLjYtOC40IDU2LjYtMjMuNEwzMDkuNCAzMzUuOWwtNDUuMy00NS4zTDE0My40IDQxMS4zYy0zIDMtNy4xIDQuNy0xMS4zIDQuN0g5NlYzNzkuOWMwLTQuMiAxLjctOC4zIDQuNy0xMS4zTDIyMS40IDI0Ny45bC00NS4zLTQ1LjNMNTUuNCAzMjMuM3oiLz48L3N2Zz4=" }))));
-});
-GradientPickerEyeDropper.displayName = "@raikou/core/GradientPickerEyeDropper";
-
-// src/components/saturation/index.tsx
-import React40, { useEffect as useEffect8, useRef as useRef9, useState as useState10 } from "react";
-import {
-  factory as factory18,
-  useProps as useProps28,
-  Box as Box25
-} from "@raikou/core";
-
-// src/components/thumb/index.tsx
+// src/components/swatches/index.tsx
 import React39 from "react";
 import {
-  factory as factory17,
+  Box as Box25,
   useProps as useProps27,
-  Box as Box24
+  useStyles as useStyles20,
+  factory as factory17
 } from "@raikou/core";
-import cx8 from "clsx";
 
-// src/components/thumb/style.ts
-var THUMB_SIZES = {
-  xs: 8,
-  sm: 12,
-  md: 16,
-  lg: 20,
-  xl: 22
-};
+// css-module:./swatches.module.css#css-module
+var swatches_module_default = { "swatches": "m-d11a0a6d", "swatch": "m-caac617f" };
 
-// src/components/thumb/index.tsx
-var defaultProps27 = {};
-var GradientPickerThumb = factory17(
-  (props, ref) => {
-    const _a = useProps27("GradientPickerThumb", defaultProps27, props), {
-      classNames,
-      className,
-      style,
-      styles,
-      vars,
-      position,
-      size: size2
-    } = _a, others = __objRest(_a, [
-      "classNames",
-      "className",
-      "style",
-      "styles",
-      "vars",
-      "position",
-      "size"
-    ]);
-    return /* @__PURE__ */ React39.createElement(
-      Box24,
-      __spreadValues({
-        className: cx8("gradientPicker-thumb", className),
-        style: __spreadValues({
-          left: `calc(${position.x * 100}% - ${THUMB_SIZES[size2] / 2}px)`,
-          top: `calc(${position.y * 100}% - ${THUMB_SIZES[size2] / 2}px)`
-        }, style)
-      }, others)
-    );
-  }
-);
-GradientPickerThumb.displayName = "@raikou/core/GradientPickerThumb";
-
-// src/components/saturation/index.tsx
-import { colord as colord3 } from "colord";
-import { clampUseMovePosition, useMove } from "@raikou/hooks";
-var defaultProps28 = {
+// src/components/swatches/index.tsx
+import { colord as colord2 } from "colord";
+var defaultProps27 = {
+  swatchesPerRow: 12,
   focusable: true
 };
-var GradientPickerSaturation = factory18((props, ref) => {
-  const _a = useProps28("GradientPickerSaturation", defaultProps28, props), {
+var GradientPickerColorSwatches = factory17((_props, ref) => {
+  const props = useProps27("GradientPickerColorSwatches", defaultProps27, _props);
+  const _a = props, {
     classNames,
     className,
     style,
     styles,
+    unstyled,
     vars,
-    value,
-    size: size2,
-    saturationLabel,
+    data,
+    swatchesPerRow,
     focusable,
-    onChange,
+    setValue,
     onChangeEnd
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
     "style",
     "styles",
+    "unstyled",
     "vars",
-    "value",
-    "size",
-    "saturationLabel",
+    "data",
+    "swatchesPerRow",
     "focusable",
-    "onChange",
+    "setValue",
     "onChangeEnd"
   ]);
-  const [position, setPosition] = useState10({
-    x: value.s / 100,
-    y: 1 - value.v / 100
+  const getStyles = useStyles20({
+    name: "Swatches",
+    classes: swatches_module_default,
+    props,
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled,
+    vars
   });
-  const positionRef = useRef9(position);
-  const { ref: moveRef } = useMove(
-    ({ x: x2, y: y2 }) => {
-      positionRef.current = { x: x2, y: y2 };
-      onChange({
-        h: value.h,
-        s: Math.round(x2 * 100),
-        v: Math.round((1 - y2) * 100),
-        a: value.a
-      });
-    },
-    {
-      onScrubEnd: () => {
-        const { x: x2, y: y2 } = positionRef.current;
-        onChangeEnd({
-          h: value.h,
-          s: Math.round(x2 * 100),
-          v: Math.round((1 - y2) * 100),
-          a: value.a
-        });
-      }
-    }
-  );
-  useEffect8(() => {
-    setPosition({ x: value.s / 100, y: 1 - value.v / 100 });
-  }, [value.s, value.v]);
-  const handleArrow = (event, pos) => {
-    event.preventDefault();
-    const _position = clampUseMovePosition(pos);
-    const _color = {
-      h: value.h,
-      s: Math.round(_position.x * 100),
-      v: Math.round((1 - _position.y) * 100),
-      a: value.a
-    };
-    onChange(_color);
-    onChangeEnd(_color);
-  };
-  const handleKeyDown = (event) => {
-    switch (event.key) {
-      case "ArrowUp": {
-        handleArrow(event, { y: position.y - 0.05, x: position.x });
-        break;
-      }
-      case "ArrowDown": {
-        handleArrow(event, { y: position.y + 0.05, x: position.x });
-        break;
-      }
-      case "ArrowRight": {
-        handleArrow(event, { x: position.x + 0.05, y: position.y });
-        break;
-      }
-      case "ArrowLeft": {
-        handleArrow(event, { x: position.x - 0.05, y: position.y });
-        break;
-      }
-    }
-  };
-  return /* @__PURE__ */ React40.createElement(
-    Box25,
-    __spreadValues({
-      className: "gradientPicker-saturation",
-      ref: moveRef,
-      role: "slider",
-      "aria-label": saturationLabel,
-      "aria-valuenow": position.x,
-      "aria-valuetext": colord3(value).toRgbString(),
+  const colors = data.map((color, index3) => /* @__PURE__ */ React39.createElement(
+    ColorSwatch,
+    __spreadProps(__spreadValues({}, getStyles("swatch")), {
+      component: "button",
+      type: "button",
+      color,
+      key: index3,
+      radius: "sm",
+      onClick: () => {
+        const _color = colord2(color).toHsv();
+        setValue(_color);
+        onChangeEnd == null ? void 0 : onChangeEnd(_color);
+      },
+      "aria-label": color,
       tabIndex: focusable ? 0 : -1,
-      onKeyDown: handleKeyDown,
-      style: { height: "194px" }
-    }, others),
-    /* @__PURE__ */ React40.createElement(
-      "div",
-      {
-        className: "gradientPicker-saturationOverlay",
-        style: { backgroundColor: `hsl(${value.h}, 100%, 50%)` }
-      }
-    ),
-    /* @__PURE__ */ React40.createElement(
-      "div",
-      {
-        className: "gradientPicker-saturationOverlay",
-        style: {
-          backgroundImage: "linear-gradient(90deg, #fff, transparent)"
-        }
-      }
-    ),
-    /* @__PURE__ */ React40.createElement(
-      "div",
-      {
-        className: "gradientPicker-saturationOverlay",
-        style: {
-          backgroundImage: "linear-gradient(0deg, #000, transparent)"
-        }
-      }
-    ),
-    /* @__PURE__ */ React40.createElement(
-      GradientPickerThumb,
-      {
-        position,
-        style: { backgroundColor: colord3(value).toRgbString() },
-        size: size2
-      }
-    )
-  );
+      style: { cursor: "pointer" }
+    })
+  ));
+  return /* @__PURE__ */ React39.createElement(Box25, __spreadValues(__spreadProps(__spreadValues({}, getStyles("swatches")), { ref }), others), colors);
 });
-GradientPickerSaturation.displayName = "@raikou/core/GradientPickerSaturation";
+GradientPickerColorSwatches.displayName = "@raikou/core/GradientPickerColorSwatches";
 
-// src/components/hueSlider.tsx
-import React42 from "react";
+// src/components/inputs/index.tsx
+import React44 from "react";
 import {
   factory as factory20,
-  useProps as useProps30
+  useProps as useProps30,
+  useStyles as useStyles22
 } from "@raikou/core";
 
-// src/components/colorSlider/index.tsx
-import React41, { useRef as useRef10, useState as useState11 } from "react";
-import {
-  factory as factory19,
-  useProps as useProps29,
-  Box as Box26
-} from "@raikou/core";
-import {
-  clampUseMovePosition as clampUseMovePosition2,
-  useDidUpdate as useDidUpdate5,
-  useMergedRef as useMergedRef6,
-  useMove as useMove2
-} from "@raikou/hooks";
-import cx9 from "clsx";
-var defaultProps29 = {
-  size: "md",
-  focusable: true
-};
-var GradientPickerColorSlider = factory19((props, ref) => {
-  const _a = useProps29("GradientPickerColorSlider", defaultProps29, props), {
-    classNames,
-    className,
-    style,
-    styles,
-    vars,
-    value,
-    onChange,
-    onChangeEnd,
-    maxValue,
-    round: round3,
-    size: size2,
-    focusable,
-    overlays
-  } = _a, others = __objRest(_a, [
-    "classNames",
-    "className",
-    "style",
-    "styles",
-    "vars",
-    "value",
-    "onChange",
-    "onChangeEnd",
-    "maxValue",
-    "round",
-    "size",
-    "focusable",
-    "overlays"
-  ]);
-  const [position, setPosition] = useState11({ y: 0, x: value / maxValue });
-  const positionRef = useRef10(position);
-  const getChangeValue = (val) => round3 ? Math.round(val * maxValue) : val * maxValue;
-  const { ref: sliderRef } = useMove2(
-    ({ x: x2, y: y2 }) => {
-      positionRef.current = { x: x2, y: y2 };
-      onChange(getChangeValue(x2));
-    },
-    {
-      onScrubEnd: () => {
-        const { x: x2 } = positionRef.current;
-        onChangeEnd(getChangeValue(x2));
-      }
-    }
-  );
-  useDidUpdate5(() => {
-    setPosition({ y: 0, x: value / maxValue });
-  }, [value]);
-  const handleArrow = (event, pos) => {
-    event.preventDefault();
-    const _position = clampUseMovePosition2(pos);
-    onChange(getChangeValue(_position.x));
-    onChangeEnd(getChangeValue(_position.x));
-  };
-  const handleKeyDown = (event) => {
-    switch (event.key) {
-      case "ArrowRight": {
-        handleArrow(event, { x: position.x + 0.05, y: position.y });
-        break;
-      }
-      case "ArrowLeft": {
-        handleArrow(event, { x: position.x - 0.05, y: position.y });
-        break;
-      }
-    }
-  };
-  const layers = overlays ? overlays.map((overlay, index3) => /* @__PURE__ */ React41.createElement("div", { className: "sliderOverlay", style: overlay, key: index3 })) : null;
-  return /* @__PURE__ */ React41.createElement(
-    Box26,
-    __spreadProps(__spreadValues({}, others), {
-      ref: useMergedRef6(sliderRef, ref),
-      className: cx9("slider", className),
-      role: "slider",
-      "aria-valuenow": value,
-      "aria-valuemax": maxValue,
-      "aria-valuemin": 0,
-      tabIndex: focusable ? 0 : -1,
-      onKeyDown: handleKeyDown
-    }),
-    layers,
-    /* @__PURE__ */ React41.createElement(
-      GradientPickerThumb,
-      {
-        classNames,
-        styles,
-        position,
-        className: "sliderThumb",
-        size: size2
-      }
-    )
-  );
-});
-GradientPickerColorSlider.displayName = "@raikou/core/GradientPickerColorSlider";
-
-// src/components/hueSlider.tsx
-var defaultProps30 = {};
-var GradientPickerHueSlider = factory20(
-  (props, ref) => {
-    const _a = useProps30("GradientPickerHueSlider", defaultProps30, props), {
-      classNames,
-      className,
-      style,
-      styles,
-      vars,
-      value,
-      onChange,
-      onChangeEnd
-    } = _a, others = __objRest(_a, [
-      "classNames",
-      "className",
-      "style",
-      "styles",
-      "vars",
-      "value",
-      "onChange",
-      "onChangeEnd"
-    ]);
-    return /* @__PURE__ */ React42.createElement(
-      GradientPickerColorSlider,
-      __spreadValues({
-        ref,
-        value,
-        onChange,
-        onChangeEnd,
-        maxValue: 360,
-        round: true
-      }, others)
-    );
-  }
-);
-GradientPickerHueSlider.displayName = "@raikou/core/GradientPickerHueSlider";
-
-// src/components/alphaSlider.tsx
+// ../Grid/src/Grid.tsx
 import React43 from "react";
 import {
-  factory as factory21,
-  useProps as useProps31
+  Box as Box27,
+  factory as factory19,
+  useProps as useProps29,
+  useStyles as useStyles21,
+  createVarsResolver as createVarsResolver18,
+  useRandomClassName as useRandomClassName2
 } from "@raikou/core";
 
-// src/utils/index.ts
-function round2(number, digits = 0, base = __pow(10, digits)) {
-  return Math.round(base * number) / base;
+// ../Grid/src/GridCol/GridCol.tsx
+import React41 from "react";
+import cx8 from "clsx";
+import {
+  Box as Box26,
+  factory as factory18,
+  useProps as useProps28,
+  useRandomClassName
+} from "@raikou/core";
+
+// ../Grid/src/GridCol/GridColVariables.tsx
+import React40 from "react";
+import {
+  getSortedBreakpoints,
+  useRaikouTheme as useRaikouTheme3,
+  keys,
+  filterProps,
+  InlineStyles,
+  getBaseValue
+} from "@raikou/core";
+
+// ../Grid/src/store.ts
+var useStore2 = pure_store_default({
+  getStyles: void 0,
+  grow: false,
+  columns: 12
+});
+
+// ../Grid/src/GridCol/GridColVariables.tsx
+var getColumnFlexBasis = (colSpan, columns) => {
+  if (colSpan === "content") {
+    return "auto";
+  }
+  if (colSpan === "auto") {
+    return "0rem";
+  }
+  return colSpan ? `${100 / (columns / colSpan)}%` : void 0;
+};
+var getColumnMaxWidth = (colSpan, columns, grow) => {
+  if (grow || colSpan === "auto") {
+    return "100%";
+  }
+  if (colSpan === "content") {
+    return "unset";
+  }
+  return getColumnFlexBasis(colSpan, columns);
+};
+var getColumnFlexGrow = (colSpan, grow) => {
+  if (!colSpan) {
+    return void 0;
+  }
+  return colSpan === "auto" || grow ? "1" : "auto";
+};
+var getColumnOffset = (offset2, columns) => offset2 === 0 ? "0" : offset2 ? `${100 / (columns / offset2)}%` : void 0;
+function GridColVariables({
+  span,
+  order,
+  offset: offset2,
+  selector
+}) {
+  var _a;
+  const theme = useRaikouTheme3();
+  const ctx = useStore2.getState();
+  const baseValue = getBaseValue(span);
+  const baseSpan = baseValue === void 0 ? 12 : getBaseValue(span);
+  const baseStyles = filterProps({
+    "--col-order": (_a = getBaseValue(order)) == null ? void 0 : _a.toString(),
+    "--col-flex-grow": getColumnFlexGrow(baseSpan, ctx.grow),
+    "--col-flex-basis": getColumnFlexBasis(baseSpan, ctx.columns),
+    "--col-width": baseSpan === "content" ? "auto" : void 0,
+    "--col-max-width": getColumnMaxWidth(baseSpan, ctx.columns, ctx.grow),
+    "--col-offset": getColumnOffset(getBaseValue(offset2), ctx.columns)
+  });
+  const queries = keys(theme.breakpoints).reduce((acc, breakpoint) => {
+    var _a2;
+    if (!acc[breakpoint]) {
+      acc[breakpoint] = {};
+    }
+    if (typeof order === "object" && order[breakpoint] !== void 0) {
+      acc[breakpoint]["--col-order"] = (_a2 = order[breakpoint]) == null ? void 0 : _a2.toString();
+    }
+    if (typeof span === "object" && span[breakpoint] !== void 0) {
+      acc[breakpoint]["--col-flex-grow"] = getColumnFlexGrow(
+        span[breakpoint],
+        ctx.grow
+      );
+      acc[breakpoint]["--col-flex-basis"] = getColumnFlexBasis(
+        span[breakpoint],
+        ctx.columns
+      );
+      acc[breakpoint]["--col-width"] = span[breakpoint] === "content" ? "auto" : void 0;
+      acc[breakpoint]["--col-max-width"] = getColumnMaxWidth(
+        span[breakpoint],
+        ctx.columns,
+        ctx.grow
+      );
+    }
+    if (typeof offset2 === "object" && offset2[breakpoint] !== void 0) {
+      acc[breakpoint]["--col-offset"] = getColumnOffset(
+        offset2[breakpoint],
+        ctx.columns
+      );
+    }
+    return acc;
+  }, {});
+  const sortedBreakpoints = getSortedBreakpoints(keys(queries), theme).filter(
+    (breakpoint) => keys(queries[breakpoint.value]).length > 0
+  );
+  const media = sortedBreakpoints.map((breakpoint) => ({
+    query: `(min-width: ${theme.breakpoints[breakpoint.value]})`,
+    styles: queries[breakpoint.value]
+  }));
+  return /* @__PURE__ */ React40.createElement(InlineStyles, { styles: baseStyles, media, selector });
 }
 
-// src/components/alphaSlider.tsx
-var defaultProps31 = {};
-var GradientPickerAlphaSlider = factory21((props, ref) => {
-  const _a = useProps31("GradientPickerAlphaSlider", defaultProps31, props), {
+// ../Grid/src/GridCol/GridCol.tsx
+var defaultProps28 = {
+  span: 12
+};
+var GridCol = factory18((_props, ref) => {
+  const props = useProps28("GridCol", defaultProps28, _props);
+  const _a = props, {
     classNames,
     className,
     style,
     styles,
     vars,
-    color,
-    value,
-    onChange,
-    onChangeEnd
+    span,
+    order,
+    offset: offset2
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
     "style",
     "styles",
     "vars",
-    "color",
-    "value",
-    "onChange",
-    "onChangeEnd"
+    "span",
+    "order",
+    "offset"
   ]);
-  return /* @__PURE__ */ React43.createElement(
-    GradientPickerColorSlider,
-    __spreadValues({
-      ref,
-      value,
-      onChange: (val) => onChange(round2(val, 2)),
-      onChangeEnd: (val) => onChangeEnd(round2(val, 2)),
-      maxValue: 1,
-      round: false
-    }, others)
-  );
+  const responsiveClassName = useRandomClassName();
+  return /* @__PURE__ */ React41.createElement(React41.Fragment, null, /* @__PURE__ */ React41.createElement(
+    GridColVariables,
+    {
+      selector: `.${responsiveClassName}`,
+      span,
+      order,
+      offset: offset2
+    }
+  ), /* @__PURE__ */ React41.createElement(
+    Box26,
+    __spreadValues(__spreadValues({
+      ref
+    }, useStore2.getState().getStyles("col", {
+      className: cx8(className, responsiveClassName),
+      style,
+      classNames,
+      styles
+    })), others)
+  ));
 });
-GradientPickerAlphaSlider.displayName = "@raikou/core/GradientPickerAlphaSlider";
+GridCol.displayName = "@raikou/core/GridCol";
+
+// ../Grid/src/GridVariables.tsx
+import React42 from "react";
+import {
+  getSortedBreakpoints as getSortedBreakpoints2,
+  useRaikouTheme as useRaikouTheme4,
+  keys as keys2,
+  getSpacing as getSpacing3,
+  filterProps as filterProps2,
+  InlineStyles as InlineStyles2,
+  getBaseValue as getBaseValue2
+} from "@raikou/core";
+function GridVariables({ gutter, selector }) {
+  const theme = useRaikouTheme4();
+  const baseStyles = filterProps2({
+    "--grid-gutter": getSpacing3(getBaseValue2(gutter))
+  });
+  const queries = keys2(theme.breakpoints).reduce((acc, breakpoint) => {
+    if (!acc[breakpoint]) {
+      acc[breakpoint] = {};
+    }
+    if (typeof gutter === "object" && gutter[breakpoint] !== void 0) {
+      acc[breakpoint]["--grid-gutter"] = getSpacing3(gutter[breakpoint]);
+    }
+    return acc;
+  }, {});
+  const sortedBreakpoints = getSortedBreakpoints2(keys2(queries), theme).filter(
+    (breakpoint) => keys2(queries[breakpoint.value]).length > 0
+  );
+  const media = sortedBreakpoints.map((breakpoint) => ({
+    query: `(min-width: ${theme.breakpoints[breakpoint.value]})`,
+    styles: queries[breakpoint.value]
+  }));
+  return /* @__PURE__ */ React42.createElement(InlineStyles2, { styles: baseStyles, media, selector });
+}
+
+// css-module:./Grid.module.css#css-module
+var Grid_module_default = { "root": "m-410352e9", "inner": "m-dee7bd2f", "col": "m-96bdd299" };
+
+// ../Grid/src/Grid.tsx
+var defaultProps29 = {
+  gutter: "md",
+  grow: false,
+  columns: 12
+};
+var varsResolver17 = createVarsResolver18(
+  (_2, { justify, align, overflow }) => ({
+    root: {
+      "--grid-justify": justify,
+      "--grid-align": align,
+      "--grid-overflow": overflow
+    }
+  })
+);
+var Grid = factory19((_props, ref) => {
+  const props = useProps29("Grid", defaultProps29, _props);
+  const _a = props, {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    grow,
+    gutter,
+    columns,
+    align,
+    justify,
+    children
+  } = _a, others = __objRest(_a, [
+    "classNames",
+    "className",
+    "style",
+    "styles",
+    "unstyled",
+    "vars",
+    "grow",
+    "gutter",
+    "columns",
+    "align",
+    "justify",
+    "children"
+  ]);
+  const getStyles = useStyles21({
+    name: "Grid",
+    classes: Grid_module_default,
+    props,
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled,
+    vars,
+    varsResolver: varsResolver17
+  });
+  const responsiveClassName = useRandomClassName2();
+  useStore2.update((state) => {
+    state.getStyles = getStyles;
+    state.columns = columns;
+    state.grow = grow;
+  });
+  return /* @__PURE__ */ React43.createElement(React43.Fragment, null, /* @__PURE__ */ React43.createElement("div", null, /* @__PURE__ */ React43.createElement(GridVariables, __spreadValues({ selector: `.${responsiveClassName}` }, props))), /* @__PURE__ */ React43.createElement(
+    Box27,
+    __spreadValues(__spreadValues({
+      ref
+    }, getStyles("root", { className: responsiveClassName })), others),
+    /* @__PURE__ */ React43.createElement("div", __spreadValues({}, getStyles("inner")), children)
+  ));
+});
+Grid.displayName = "@raikou/core/Grid";
+Grid.Col = GridCol;
+Grid.classes = Grid_module_default;
+
+// src/components/inputs/index.tsx
+import { colord as colord3 } from "colord";
+
+// css-module:../../GradientPicker.module.css#css-module
+var GradientPicker_module_default = { "root": "m-d013dd51", "textInput": "m-e714678e", "swatches": "m-b4b08ed9" };
+
+// src/components/inputs/index.tsx
+var defaultProps30 = {
+  format: "rgba"
+};
+var GradientPickerInputs = factory20(
+  (props, ref) => {
+    const _a = useProps30("GradientPickerInputs", defaultProps30, props), { classNames, className, style, styles, vars, format } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars", "format"]);
+    const getStyles = useStyles22({
+      name: "Swatches",
+      classes: GradientPicker_module_default,
+      props,
+      className,
+      style,
+      classNames,
+      styles,
+      vars
+    });
+    const ctx = useGradientPickerContext();
+    const retrieveValue = (index3) => {
+      if (format === "rgba") {
+        const value = colord3(ctx.color).toRgb();
+        const key = Object.keys(value)[index3];
+        return value[key];
+      } else if (format === "hsla") {
+        const value = colord3(ctx.color).toHsl();
+        const key = Object.keys(value)[index3];
+        return value[key];
+      } else if (format === "hsva") {
+        const value = ctx.color[index3];
+        const key = Object.keys(value)[index3];
+        return value[key];
+      } else if (format === "cmyk") {
+      }
+      return "";
+    };
+    const retrieveLabel = (index3) => {
+      if (format === "rgba") {
+        return "RGBA".split("")[index3];
+      } else if (format === "hsla") {
+        return "HSLA".split("")[index3];
+      } else if (format === "hsva") {
+        return "HSVA".split("")[index3];
+      } else if (format === "cmyk") {
+        return "CMYK".split("")[index3];
+      }
+      return "";
+    };
+    return /* @__PURE__ */ React44.createElement(Grid, __spreadProps(__spreadValues({}, others), { ref }), /* @__PURE__ */ React44.createElement(Grid.Col, { span: "content" }, /* @__PURE__ */ React44.createElement(
+      TextInput,
+      __spreadProps(__spreadValues({}, getStyles("textInput")), {
+        size: "xs",
+        value: colord3(ctx.color).toHex().toString().replace("#", ""),
+        onChange: () => {
+        },
+        label: "Hex"
+      })
+    )), /* @__PURE__ */ React44.createElement(Grid.Col, { span: "auto" }, /* @__PURE__ */ React44.createElement(Group, { gap: 8, grow: true }, /* @__PURE__ */ React44.createElement(
+      TextInput,
+      __spreadProps(__spreadValues({}, getStyles("textInput")), {
+        size: "xs",
+        readOnly: true,
+        value: retrieveValue(0),
+        onChange: () => {
+        },
+        label: retrieveLabel(0)
+      })
+    ), /* @__PURE__ */ React44.createElement(
+      TextInput,
+      __spreadProps(__spreadValues({}, getStyles("textInput")), {
+        size: "xs",
+        readOnly: true,
+        value: retrieveValue(1),
+        onChange: () => {
+        },
+        label: retrieveLabel(1)
+      })
+    ), /* @__PURE__ */ React44.createElement(
+      TextInput,
+      __spreadProps(__spreadValues({}, getStyles("textInput")), {
+        size: "xs",
+        readOnly: true,
+        value: retrieveValue(2),
+        onChange: () => {
+        },
+        label: retrieveLabel(2)
+      })
+    ), /* @__PURE__ */ React44.createElement(
+      TextInput,
+      __spreadProps(__spreadValues({}, getStyles("textInput")), {
+        size: "xs",
+        readOnly: true,
+        value: retrieveValue(3),
+        onChange: () => {
+        },
+        label: retrieveLabel(3)
+      })
+    ))));
+  }
+);
+GradientPickerInputs.displayName = "@raikou/core/GradientPickerInputs";
 
 // src/components/compact/index.tsx
-var defaultProps32 = {};
-var GradientPickerCompact = factory22(
+var defaultProps31 = {};
+var GradientPickerCompact = factory21(
   (props, ref) => {
-    var _b, _c;
-    const _a = useProps32("GradientPickerCompact", defaultProps32, props), {
+    const _a = useProps31("GradientPickerCompact", defaultProps31, props), {
       classNames,
       className,
       style,
@@ -54277,7 +54413,17 @@ var GradientPickerCompact = factory22(
       "onClose",
       "shadow"
     ]);
-    const [colorCtrl, toggleColorCtrl] = useState12("none");
+    const getStyles = useStyles23({
+      name: "Swatches",
+      classes: GradientPicker_module_default,
+      props,
+      className,
+      style,
+      classNames,
+      styles,
+      vars
+    });
+    const [colorCtrl, toggleColorCtrl] = useState10("none");
     const ctx = useGradientPickerContext();
     const { ref: pickerRef, width: elementWidth } = useElementSize();
     const handleChange = (color) => {
@@ -54304,7 +54450,6 @@ var GradientPickerCompact = factory22(
         }
       }
     };
-    console.log(elementWidth);
     const onColorCtrlChange = (value) => {
       if (value === colorCtrl) {
         toggleColorCtrl("none");
@@ -54316,15 +54461,14 @@ var GradientPickerCompact = factory22(
         toggleColorCtrl(value);
       }
     };
-    useEffect9(() => {
+    useEffect8(() => {
       if (ctx.isOpen) {
         onOpen && onOpen();
       } else {
         onClose && onClose();
       }
     }, [ctx.isOpen]);
-    console.log(width);
-    return /* @__PURE__ */ React44.createElement(
+    return /* @__PURE__ */ React45.createElement(
       Popover,
       {
         __staticSelector: "Compact",
@@ -54335,44 +54479,26 @@ var GradientPickerCompact = factory22(
         withinPortal,
         transitionProps,
         opened: ctx.isOpen,
-        shadow
+        shadow,
+        width
       },
-      /* @__PURE__ */ React44.createElement(Popover.Target, null, /* @__PURE__ */ React44.createElement(
+      /* @__PURE__ */ React45.createElement(Popover.Target, null, /* @__PURE__ */ React45.createElement(
         GradientPickerPicker,
         {
           ref: pickerRef,
           disabled,
           control: picker,
           swatchSize,
-          className: cx10("pickerInput", className)
+          className: cx9("pickerInput", className)
         }
       )),
-      /* @__PURE__ */ React44.createElement(Popover.Dropdown, null, /* @__PURE__ */ React44.createElement(
+      /* @__PURE__ */ React45.createElement(Popover.Dropdown, { p: 6 }, /* @__PURE__ */ React45.createElement(
         Stack,
         __spreadValues({
           gap: 0,
-          ref: ctx.setDropdown,
-          className: "gradientPicker-wrapper"
+          ref: ctx.setDropdown
         }, others),
-        /* @__PURE__ */ React44.createElement(
-          GradientPickerSaturation,
-          {
-            value: ctx.color,
-            onChange: (color) => handleChange(color),
-            onChangeEnd: (color) => handleChange(color),
-            size: size2,
-            focusable,
-            saturationLabel
-          }
-        ),
-        /* @__PURE__ */ React44.createElement(Group, { gap: 10, mb: 8 }, /* @__PURE__ */ React44.createElement(Button.Group, null, /* @__PURE__ */ React44.createElement(
-          GradientPickerEyeDropper,
-          {
-            className: "px-[8px]",
-            size: "md",
-            onChange: (color) => handleChange(color)
-          }
-        ), /* @__PURE__ */ React44.createElement(
+        /* @__PURE__ */ React45.createElement(Group, { gap: 10, mb: 8 }, /* @__PURE__ */ React45.createElement(Button.Group, null, /* @__PURE__ */ React45.createElement(
           Button,
           {
             variant: "default",
@@ -54385,16 +54511,16 @@ var GradientPickerCompact = factory22(
               borderRadius: colorCtrl === "colorMode" ? 8 : 0
             }
           },
-          /* @__PURE__ */ React44.createElement(
+          /* @__PURE__ */ React45.createElement(
             Tooltip,
             {
               label: "Color Model",
               offset: 10,
               opened: colorCtrl === "colorMode" ? false : void 0
             },
-            /* @__PURE__ */ React44.createElement(Text, { className: "w-[20px] text-center" }, /* @__PURE__ */ React44.createElement(Image, { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNOTYgMGMxNy43IDAgMzIgMTQuMyAzMiAzMlY4Ni43YzI4LjMgMTIuMyA0OCA0MC41IDQ4IDczLjNzLTE5LjcgNjEtNDggNzMuM1Y0ODBjMCAxNy43LTE0LjMgMzItMzIgMzJzLTMyLTE0LjMtMzItMzJWMjMzLjNDMzUuNyAyMjEgMTYgMTkyLjggMTYgMTYwczE5LjctNjEgNDgtNzMuM1YzMkM2NCAxNC4zIDc4LjMgMCA5NiAwem0wIDE5MmEzMiAzMiAwIDEgMCAwLTY0IDMyIDMyIDAgMSAwIDAgNjR6TTI1NiAzODRhMzIgMzIgMCAxIDAgMC02NCAzMiAzMiAwIDEgMCAwIDY0em04MC0zMmMwIDMyLjgtMTkuNyA2MS00OCA3My4zVjQ4MGMwIDE3LjctMTQuMyAzMi0zMiAzMnMtMzItMTQuMy0zMi0zMlY0MjUuM2MtMjguMy0xMi4zLTQ4LTQwLjUtNDgtNzMuM3MxOS43LTYxIDQ4LTczLjNWMzJjMC0xNy43IDE0LjMtMzIgMzItMzJzMzIgMTQuMyAzMiAzMlYyNzguN2MyOC4zIDEyLjMgNDggNDAuNSA0OCA3My4zek00NDggMTkyYTMyIDMyIDAgMSAwIC02NCAwIDMyIDMyIDAgMSAwIDY0IDB6bTAgNzMuM1Y0ODBjMCAxNy43LTE0LjMgMzItMzIgMzJzLTMyLTE0LjMtMzItMzJWMjY1LjNjLTI4LjMtMTIuMy00OC00MC41LTQ4LTczLjNzMTkuNy02MSA0OC03My4zVjMyYzAtMTcuNyAxNC4zLTMyIDMyLTMyczMyIDE0LjMgMzIgMzJ2ODYuN2MyOC4zIDEyLjMgNDggNDAuNSA0OCA3My4zcy0xOS43IDYxLTQ4IDczLjN6Ii8+PC9zdmc+" }))
+            /* @__PURE__ */ React45.createElement(Text, { className: "w-[20px] text-center" }, /* @__PURE__ */ React45.createElement(Image, { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNOTYgMGMxNy43IDAgMzIgMTQuMyAzMiAzMlY4Ni43YzI4LjMgMTIuMyA0OCA0MC41IDQ4IDczLjNzLTE5LjcgNjEtNDggNzMuM1Y0ODBjMCAxNy43LTE0LjMgMzItMzIgMzJzLTMyLTE0LjMtMzItMzJWMjMzLjNDMzUuNyAyMjEgMTYgMTkyLjggMTYgMTYwczE5LjctNjEgNDgtNzMuM1YzMkM2NCAxNC4zIDc4LjMgMCA5NiAwem0wIDE5MmEzMiAzMiAwIDEgMCAwLTY0IDMyIDMyIDAgMSAwIDAgNjR6TTI1NiAzODRhMzIgMzIgMCAxIDAgMC02NCAzMiAzMiAwIDEgMCAwIDY0em04MC0zMmMwIDMyLjgtMTkuNyA2MS00OCA3My4zVjQ4MGMwIDE3LjctMTQuMyAzMi0zMiAzMnMtMzItMTQuMy0zMi0zMlY0MjUuM2MtMjguMy0xMi4zLTQ4LTQwLjUtNDgtNzMuM3MxOS43LTYxIDQ4LTczLjNWMzJjMC0xNy43IDE0LjMtMzIgMzItMzJzMzIgMTQuMyAzMiAzMlYyNzguN2MyOC4zIDEyLjMgNDggNDAuNSA0OCA3My4zek00NDggMTkyYTMyIDMyIDAgMSAwIC02NCAwIDMyIDMyIDAgMSAwIDY0IDB6bTAgNzMuM1Y0ODBjMCAxNy43LTE0LjMgMzItMzIgMzJzLTMyLTE0LjMtMzItMzJWMjY1LjNjLTI4LjMtMTIuMy00OC00MC41LTQ4LTczLjNzMTkuNy02MSA0OC03My4zVjMyYzAtMTcuNyAxNC4zLTMyIDMyLTMyczMyIDE0LjMgMzIgMzJ2ODYuN2MyOC4zIDEyLjMgNDggNDAuNSA0OCA3My4zcy0xOS43IDYxLTQ4IDczLjN6Ii8+PC9zdmc+" }))
           )
-        ), /* @__PURE__ */ React44.createElement(
+        ), /* @__PURE__ */ React45.createElement(
           Button,
           {
             variant: "default",
@@ -54407,66 +54533,41 @@ var GradientPickerCompact = factory22(
               borderRadius: colorCtrl === "colorGuide" ? 8 : 0
             }
           },
-          /* @__PURE__ */ React44.createElement(
+          /* @__PURE__ */ React45.createElement(
             Tooltip,
             {
               label: "Color Guide",
               offset: 10,
               opened: colorCtrl === "colorGuide" ? false : void 0
             },
-            /* @__PURE__ */ React44.createElement(Text, { className: "w-[20px] text-center" }, /* @__PURE__ */ React44.createElement(Image, { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNNTEyIDI1NmMwIC45IDAgMS44IDAgMi43Yy0uNCAzNi41LTMzLjYgNjEuMy03MC4xIDYxLjNIMzQ0Yy0yNi41IDAtNDggMjEuNS00OCA0OGMwIDMuNCAuNCA2LjcgMSA5LjljMi4xIDEwLjIgNi41IDIwIDEwLjggMjkuOWM2LjEgMTMuOCAxMi4xIDI3LjUgMTIuMSA0MmMwIDMxLjgtMjEuNiA2MC43LTUzLjQgNjJjLTMuNSAuMS03IC4yLTEwLjYgLjJDMTE0LjYgNTEyIDAgMzk3LjQgMCAyNTZTMTE0LjYgMCAyNTYgMFM1MTIgMTE0LjYgNTEyIDI1NnpNMTI4IDI4OGEzMiAzMiAwIDEgMCAtNjQgMCAzMiAzMiAwIDEgMCA2NCAwem0wLTk2YTMyIDMyIDAgMSAwIDAtNjQgMzIgMzIgMCAxIDAgMCA2NHpNMjg4IDk2YTMyIDMyIDAgMSAwIC02NCAwIDMyIDMyIDAgMSAwIDY0IDB6bTk2IDk2YTMyIDMyIDAgMSAwIDAtNjQgMzIgMzIgMCAxIDAgMCA2NHoiLz48L3N2Zz4=" }))
+            /* @__PURE__ */ React45.createElement(Text, { className: "w-[20px] text-center" }, /* @__PURE__ */ React45.createElement(Image, { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNNTEyIDI1NmMwIC45IDAgMS44IDAgMi43Yy0uNCAzNi41LTMzLjYgNjEuMy03MC4xIDYxLjNIMzQ0Yy0yNi41IDAtNDggMjEuNS00OCA0OGMwIDMuNCAuNCA2LjcgMSA5LjljMi4xIDEwLjIgNi41IDIwIDEwLjggMjkuOWM2LjEgMTMuOCAxMi4xIDI3LjUgMTIuMSA0MmMwIDMxLjgtMjEuNiA2MC43LTUzLjQgNjJjLTMuNSAuMS03IC4yLTEwLjYgLjJDMTE0LjYgNTEyIDAgMzk3LjQgMCAyNTZTMTE0LjYgMCAyNTYgMFM1MTIgMTE0LjYgNTEyIDI1NnpNMTI4IDI4OGEzMiAzMiAwIDEgMCAtNjQgMCAzMiAzMiAwIDEgMCA2NCAwem0wLTk2YTMyIDMyIDAgMSAwIDAtNjQgMzIgMzIgMCAxIDAgMCA2NHpNMjg4IDk2YTMyIDMyIDAgMSAwIC02NCAwIDMyIDMyIDAgMSAwIDY0IDB6bTk2IDk2YTMyIDMyIDAgMSAwIDAtNjQgMzIgMzIgMCAxIDAgMCA2NHoiLz48L3N2Zz4=" }))
           )
-        )), /* @__PURE__ */ React44.createElement(Box27, { className: "calc(100%_-_102px)" }, /* @__PURE__ */ React44.createElement(
-          GradientPickerHueSlider,
+        )), /* @__PURE__ */ React45.createElement(Box28, { className: "calc(100%_-_102px)" })),
+        /* @__PURE__ */ React45.createElement(
+          GradientPickerInputs,
           {
-            value: (_b = ctx.color) == null ? void 0 : _b.h,
-            onChange: (h2) => handleChange({
-              h: h2,
-              // @ts-ignore
-              s: ctx.color.s,
-              // @ts-ignore
-              v: ctx.color.v,
-              // @ts-ignore
-              a: ctx.color.a
-            }),
-            onChangeEnd: (h2) => handleChange({
-              h: h2,
-              // @ts-ignore
-              s: ctx.color.s,
-              // @ts-ignore
-              v: ctx.color.v,
-              // @ts-ignore
-              a: ctx.color.a
-            }),
-            size: size2,
-            "aria-label": hueLabel
+            format,
+            className: cx9("format", className)
           }
-        ), /* @__PURE__ */ React44.createElement(
-          GradientPickerAlphaSlider,
+        ),
+        /* @__PURE__ */ React45.createElement(Grid, null, /* @__PURE__ */ React45.createElement(Grid.Col, { span: 3 }, /* @__PURE__ */ React45.createElement(
+          ColorSwatch,
           {
-            value: (_c = ctx.color) == null ? void 0 : _c.a,
-            onChange: (a2) => handleChange({
-              // @ts-ignore
-              h: ctx.color.h,
-              // @ts-ignore
-              s: ctx.color.s,
-              // @ts-ignore
-              v: ctx.color.v,
-              a: a2
-            }),
-            onChangeEnd: (a2) => handleChange({
-              // @ts-ignore
-              h: ctx.color.h,
-              // @ts-ignore
-              s: ctx.color.s,
-              // @ts-ignore
-              v: ctx.color.v,
-              a: a2
-            }),
-            size: size2,
-            color: colord4(ctx.color).toHex().toString(),
-            style: { marginTop: 6 },
-            "aria-label": alphaLabel
+            color: colord4(ctx.color).toRgbString(),
+            radius: "sm",
+            style: {
+              "--cs-size": "100%"
+            }
+          }
+        )), /* @__PURE__ */ React45.createElement(Grid.Col, { span: "auto" }, Array.isArray(swatches) && /* @__PURE__ */ React45.createElement(
+          GradientPickerColorSwatches,
+          {
+            data: swatches,
+            swatchesPerRow,
+            focusable,
+            setValue: (color) => {
+              handleChange(color);
+            }
           }
         )))
       ))
@@ -54476,11 +54577,11 @@ var GradientPickerCompact = factory22(
 GradientPickerCompact.displayName = "@raikou/core/GradientPickerCompact";
 
 // src/GradientPicker.tsx
-var defaultProps33 = {};
+var defaultProps32 = {};
 function GradientPicker(_props) {
-  const props = useProps33(
+  const props = useProps32(
     "GradientPicker",
-    defaultProps33,
+    defaultProps32,
     _props
   );
   const _a = props, {
@@ -54504,7 +54605,7 @@ function GradientPicker(_props) {
     "value",
     "onChange"
   ]);
-  const getStyles = useStyles19({
+  const getStyles = useStyles24({
     name: "GradientPicker",
     classes: {
       root: "gradientPicker-root"
@@ -54518,13 +54619,13 @@ function GradientPicker(_props) {
     vars
     // varsResolver,
   });
-  const [update, setUpdate] = useState13(true);
-  const [activeStopIndex, setActiveStopIndex] = useState13("");
+  const [update, setUpdate] = useState11(true);
+  const [activeStopIndex, setActiveStopIndex] = useState11("");
   const [isOpen, toggleOpen] = useToggle([false, true]);
-  const [control, setControl] = useState13(null);
-  const [dropdown, setDropdown] = useState13(null);
-  const [color, setColor] = useState13(void 0);
-  const [gradient, setGradient] = useState13(void 0);
+  const [control, setControl] = useState11(null);
+  const [dropdown, setDropdown] = useState11(null);
+  const [color, setColor] = useState11(void 0);
+  const [gradient, setGradient] = useState11(void 0);
   useClickOutside2(() => toggleOpen(false), null, [control, dropdown]);
   const compareGradient = (value2, gradient2) => {
     if (gradient2 === void 0) {
@@ -54534,7 +54635,7 @@ function GradientPicker(_props) {
     const gradientStr = cssGradient([gradient2], "single_gradient");
     return valueStr === gradientStr;
   };
-  useEffect10(() => {
+  useEffect9(() => {
     if (update) {
       const hasGradient = isGradient(value);
       if (!hasGradient) {
@@ -54606,7 +54707,7 @@ function GradientPicker(_props) {
       }
     }
   }, [value]);
-  useDidUpdate6(() => {
+  useDidUpdate5(() => {
     if (color !== void 0) {
       setUpdate(false);
       if (gradient === void 0) {
@@ -54619,13 +54720,13 @@ function GradientPicker(_props) {
       }, 10);
     }
   }, [color, gradient]);
-  useDidUpdate6(() => {
+  useDidUpdate5(() => {
     const obj = gradient == null ? void 0 : gradient.colors.find((item) => item.id === activeStopIndex);
     if (obj) {
       setColor(colord5(obj.color).toHsv());
     }
   }, [activeStopIndex]);
-  return /* @__PURE__ */ React45.createElement(
+  return /* @__PURE__ */ React46.createElement(
     GradientPickerProvider,
     {
       value: {
@@ -54645,14 +54746,14 @@ function GradientPicker(_props) {
         getStyles
       }
     },
-    /* @__PURE__ */ React45.createElement(Box28, __spreadValues(__spreadValues({}, getStyles("root")), others), children)
+    /* @__PURE__ */ React46.createElement(Box29, __spreadValues(__spreadValues({}, getStyles("root")), others), children)
   );
 }
 var extendGradientPicker = (c2) => c2;
 GradientPicker.extend = extendGradientPicker;
 GradientPicker.displayName = "@raikou/core/GradientPicker";
 GradientPicker.Compact = GradientPickerCompact;
-GradientPicker.Picker = GradientPickerPicker;
+GradientPicker.Swatches = GradientPickerColorSwatches;
 export {
   GradientPicker
 };

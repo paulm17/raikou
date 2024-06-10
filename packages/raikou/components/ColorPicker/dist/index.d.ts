@@ -1,5 +1,5 @@
 import * as _raikou_core from '@raikou/core';
-import { RaikouSize, BoxProps, StylesApiProps, ElementProps, Factory } from '@raikou/core';
+import { RaikouSize, BoxProps, StylesApiProps, ElementProps, Factory, CompoundStylesApiProps } from '@raikou/core';
 import React from 'react';
 
 type ColorFormat = 'hex' | 'hexa' | 'rgba' | 'rgb' | 'hsl' | 'hsla';
@@ -12,7 +12,7 @@ interface HsvaColor {
 
 type ColorPickerStylesNames = "wrapper" | "preview" | "body" | "sliders" | "slider" | "sliderOverlay" | "thumb" | "saturation" | "saturationOverlay" | "swatches" | "swatch";
 type ColorPickerCssVariables = {
-    wrapper: "--cp-preview-size" | "--cp-width" | "--cp-body-spacing" | "--cp-swatch-size" | "--cp-thumb-size" | "--cp-saturation-height";
+    wrapper: "--cp-preview-size" | "--cp-width" | "--cp-body-spacing";
 };
 interface __ColorPickerProps {
     /** Controlled component value */
@@ -63,10 +63,6 @@ declare const ColorPicker: _raikou_core.RaikouComponent<{
 }>;
 
 type ColorSliderStylesNames = "slider" | "sliderOverlay" | "thumb";
-type ColorSliderVariant = string;
-type ColorSliderCssVariables = {
-    root: "--test";
-};
 interface __ColorSliderProps extends ElementProps<"div", "onChange"> {
     value: number;
     onChange?: (value: number) => void;
@@ -87,8 +83,6 @@ type ColorSliderFactory = Factory<{
     props: ColorSliderProps;
     ref: HTMLDivElement;
     stylesNames: ColorSliderStylesNames;
-    vars: ColorSliderCssVariables;
-    variant: ColorSliderVariant;
 }>;
 
 interface AlphaSliderProps extends Omit<ColorSliderProps, "maxValue" | "overlays" | "round"> {
@@ -100,9 +94,33 @@ interface HueSliderProps extends Omit<ColorSliderProps, "maxValue" | "overlays" 
 }
 declare const HueSlider: React.ForwardRefExoticComponent<HueSliderProps & React.RefAttributes<HTMLDivElement>>;
 
+type SaturationStylesNames = "saturation" | "saturationOverlay" | "thumb";
+interface SaturationProps extends BoxProps, CompoundStylesApiProps<SaturationFactory>, ElementProps<"div", "onChange"> {
+    value: HsvaColor;
+    onChange: (color: Partial<HsvaColor>) => void;
+    onChangeEnd: (color: Partial<HsvaColor>) => void;
+    onScrubStart?: () => void;
+    onScrubEnd?: () => void;
+    saturationLabel?: string;
+    size: RaikouSize | (string & {});
+    focusable?: boolean;
+}
+type SaturationFactory = Factory<{
+    props: SaturationProps;
+    ref: HTMLDivElement;
+    stylesNames: SaturationStylesNames;
+    compound: true;
+}>;
+declare const Saturation: _raikou_core.RaikouComponent<{
+    props: SaturationProps;
+    ref: HTMLDivElement;
+    stylesNames: SaturationStylesNames;
+    compound: true;
+}>;
+
 declare function convertHsvaTo(format: ColorFormat, color: HsvaColor): string;
 
 declare function isColorValid(color: string): boolean;
 declare function parseColor(color: string): HsvaColor;
 
-export { AlphaSlider, ColorPicker, type ColorPickerCssVariables, type ColorPickerFactory, type ColorPickerProps, type ColorPickerStylesNames, HueSlider, type __ColorPickerProps, convertHsvaTo, isColorValid, parseColor };
+export { AlphaSlider, ColorPicker, type ColorPickerCssVariables, type ColorPickerFactory, type ColorPickerProps, type ColorPickerStylesNames, type HsvaColor, HueSlider, Saturation, type __ColorPickerProps, convertHsvaTo, isColorValid, parseColor };

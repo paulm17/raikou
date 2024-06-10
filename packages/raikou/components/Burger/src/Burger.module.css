@@ -1,16 +1,16 @@
 .root {
-  @mixin light {
+  @mixin where-light {
     --raikou-burger-color: #000;
   }
-  @mixin dark {
+  @mixin where-dark {
     --raikou-burger-color: #fff;
   }
 
-  --burger-size-xs: rem(12px);
-  --burger-size-sm: rem(18px);
-  --burger-size-md: rem(24px);
-  --burger-size-lg: rem(34px);
-  --burger-size-xl: rem(42px);
+  --burger-size-xs: 12px;
+  --burger-size-sm: 18px;
+  --burger-size-md: 24px;
+  --burger-size-lg: 34px;
+  --burger-size-xl: 42px;
 
   --burger-size: var(--burger-size-md);
 
@@ -19,14 +19,12 @@
   padding: calc(var(--raikou-spacing-xs) / 2);
   cursor: pointer;
 
-  --_burger-color: var(--burger-color, var(--__burger-color));
-
-  @mixin light {
-    --__burger-color: var(--raikou-burger-color);
+  @mixin where-light {
+    --burger-color: var(--raikou-burger-color);
   }
 
-  @mixin dark {
-    --__burger-color: var(--raikou-burger-color);
+  @mixin where-dark {
+    --burger-color: var(--raikou-burger-color);
   }
 }
 
@@ -40,8 +38,8 @@
     display: block;
     width: var(--burger-size);
     height: calc(var(--burger-size) / 12);
-    background-color: var(--_burger-color);
-    outline: rem(1px) solid transparent;
+    background-color: var(--burger-color);
+    outline: 1px solid transparent;
     transition-property: background-color, transform;
     transition-duration: var(--burger-transition-duration, 300ms);
     transition-timing-function: var(--burger-transition-timing-function, ease);
@@ -51,7 +49,7 @@
   &::after {
     position: absolute;
     content: "";
-    left: 0;
+    inset-inline-start: 0;
   }
 
   &::before {

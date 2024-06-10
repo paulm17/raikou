@@ -51,6 +51,7 @@ export const AppShellFooter = factory<AppShellFooterFactory>((_props, ref) => {
     vars,
     withBorder,
     zIndex,
+    mod,
     ...others
   } = props;
   const ctx = useStore.getState();
@@ -63,7 +64,7 @@ export const AppShellFooter = factory<AppShellFooterFactory>((_props, ref) => {
     <Box
       component="footer"
       ref={ref}
-      mod={{ "with-border": withBorder ?? ctx.withBorder }}
+      mod={[{ "with-border": withBorder ?? ctx.withBorder }, mod]}
       {...ctx.getStyles("footer", {
         className: cx(
           { [RemoveScroll.classNames.zeroRight]: ctx.offsetScrollbars },

@@ -115,6 +115,8 @@ interface TabsProps extends BoxProps, StylesApiProps<TabsFactory>, ElementProps<
     inverted?: boolean;
     /** If set to `false`, `Tabs.Panel` content will be unmounted when the associated tab is not active, `true` by default */
     keepMounted?: boolean;
+    /** Determines whether active item text color should depend on `background-color` of the indicator. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. Only applicable when `variant="pills"` */
+    autoContrast?: boolean;
 }
 type TabsFactory = Factory<{
     props: TabsProps;

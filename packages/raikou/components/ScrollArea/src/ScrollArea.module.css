@@ -1,24 +1,19 @@
 .root {
-  @mixin light {
-    --raikou-scrollarea-scrollbar-hover-bg: #f8f9fa;
-    --raikou-scrollarea-thumb-hover-bg: rgba(0, 0, 0, 0.5);
-    --raikou-scrollarea-scrollbar-active-bg: #f8f9fa;
-    --raikou-scrollarea-thumb-active-bg: rgba(0, 0, 0, 0.5);
-    --raikou-scrollarea-thumb-bg: rgba(0, 0, 0, 0.4);
-    --raikou-scrollarea-corner-bg: #f8f9fa;
+  @mixin where-light {
+    --raikou-scrollarea-scrollbar-hover-background-color: #f8f9fa;
+    --raikou-scrollarea-thumb-hover-background-color: rgba(0, 0, 0, 0.5);
+    --raikou-scrollarea-corner-background-color: #f8f9fa;
   }
-  @mixin dark {
-    --raikou-scrollarea-scrollbar-hover-bg: #141517;
-    --raikou-scrollarea-thumb-hover-bg: rgba(255, 255, 255, 0.5);
-    --raikou-scrollarea-scrollbar-active-bg: #f8f9fa;
-    --raikou-scrollarea-thumb-active-bg: rgba(0, 0, 0, 0.5);
-    --raikou-scrollarea-thumb-bg: rgba(255, 255, 255, 0.4);
-    --raikou-scrollarea-corner-bg: #141517;
+  @mixin where-dark {
+    --raikou-scrollarea-scrollbar-hover-background-color: #141517;
+    --raikou-scrollarea-thumb-hover-background-color: rgba(255, 255, 255, 0.5);
+    --raikou-scrollarea-corner-background-color: #141517;
   }
+
+  --scrollarea-scrollbar-size: 12px;
 
   position: relative;
   overflow: hidden;
-  --scrollarea-scrollbar-size: rem(12px);
 }
 
 .viewport {
@@ -27,33 +22,21 @@
   -webkit-overflow-scrolling: touch;
   width: 100%;
   height: 100%;
-  padding-right: var(--_viewport-padding-right, 0rem);
-  padding-left: var(--_viewport-padding-left, 0rem);
-  padding-bottom: var(--_viewport-padding-bottom, 0rem);
 
   &::-webkit-scrollbar {
     display: none;
   }
 
-  &[data-scrollbars="xy"],
-  &[data-scrollbars="y"] {
-    &[data-offset-scrollbars="xy"],
-    &[data-offset-scrollbars="y"] {
-      --_viewport-padding-right: var(--scrollarea-scrollbar-size);
-      --_viewport-padding-left: unset;
-
-      @mixin rtl {
-        --_viewport-padding-right: unset;
-        --_viewport-padding-left: var(--scrollarea-scrollbar-size);
-      }
+  &:where([data-scrollbars="xy"], [data-scrollbars="y"]) {
+    &:where([data-offset-scrollbars="xy"], [data-offset-scrollbars="y"]) {
+      padding-inline-end: var(--scrollarea-scrollbar-size);
+      padding-inline-start: unset;
     }
   }
 
-  &[data-scrollbars="xy"],
-  &[data-scrollbars="x"] {
-    &[data-offset-scrollbars="xy"],
-    &[data-offset-scrollbars="x"] {
-      --_viewport-padding-bottom: var(--scrollarea-scrollbar-size);
+  &:where([data-scrollbars="xy"], [data-scrollbars="x"]) {
+    &:where([data-offset-scrollbars="xy"], [data-offset-scrollbars="x"]) {
+      padding-bottom: var(--scrollarea-scrollbar-size);
     }
   }
 }
@@ -72,58 +55,49 @@
     opacity 150ms ease;
 
   padding: calc(var(--scrollarea-scrollbar-size) / 5);
-  display: var(--_scrollbar-display, flex);
-  background-color: var(--_scrollbar-bg, transparent);
-  width: var(--_scrollbar-width);
-  height: var(--_scrollbar-height);
-  flex-direction: var(--_scrollbar-direction, row);
-
-  & > .thumb {
-    background-color: var(--_thumb-bg);
-  }
+  display: flex;
+  background-color: transparent;
+  flex-direction: row;
 
   @mixin hover {
-    @mixin light {
-      --_scrollbar-bg: var(--raikou-scrollarea-scrollbar-hover-bg);
-      --_thumb-bg: rgba(0, 0, 0, 0.5);
+    @mixin where-light {
+      background-color: var(
+        --raikou-scrollarea-scrollbar-hover-background-color
+      );
+
+      & > .thumb {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
     }
 
-    @mixin dark {
-      --_scrollbar-bg: var(--raikou-scrollarea-scrollbar-hover-bg);
-      --_thumb-bg: rgba(255, 255, 255, 0.5);
+    @mixin where-dark {
+      background-color: var(
+        --raikou-scrollarea-scrollbar-hover-background-color
+      );
+
+      & > .thumb {
+        background-color: rgba(255, 255, 255, 0.5);
+      }
     }
   }
 
-  &[data-hidden],
-  &[data-state="hidden"] {
-    --_scrollbar-display: none;
+  &:where([data-hidden], [data-state="hidden"]) {
+    display: none;
   }
 
-  &[data-orientation="vertical"] {
-    --_scrollbar-width: var(--scrollarea-scrollbar-size);
-
+  &:where([data-orientation="vertical"]) {
+    width: var(--scrollarea-scrollbar-size);
     top: 0;
     bottom: var(--sa-corner-width);
-    right: 0;
-
-    @mixin rtl {
-      right: unset;
-      left: 0;
-    }
+    inset-inline-end: 0;
   }
 
-  &[data-orientation="horizontal"] {
-    --_scrollbar-height: var(--scrollarea-scrollbar-size);
-    --_scrollbar-direction: column;
-
+  &:where([data-orientation="horizontal"]) {
+    height: var(--scrollarea-scrollbar-size);
+    flex-direction: column;
     bottom: 0;
-    left: 0;
-    right: var(--sa-corner-height);
-
-    @mixin rtl {
-      right: 0;
-      left: var(--sa-corner-height);
-    }
+    inset-inline-start: 0;
+    inset-inline-end: var(--sa-corner-width);
   }
 }
 
@@ -133,7 +107,6 @@
   position: relative;
   transition: background-color 150ms ease;
   overflow: hidden;
-  background-color: var(--_thumb-bg);
 
   &::before {
     content: '""';
@@ -143,47 +116,40 @@
     transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
-    min-width: rem(44px);
-    min-height: rem(44px);
+    min-width: 44px;
+    min-height: 44px;
   }
 
-  @mixin light {
-    --_thumb-bg: var(--raikou-scrollarea-thumb-bg);
+  @mixin where-light {
+    background-color: rgba(--raikou-scrollarea-thumb-hover-background-color);
   }
 
-  @mixin dark {
-    --_thumb-bg: var(--raikou-scrollarea-thumb-bg);
+  @mixin where-dark {
+    background-color: rgba(--raikou-scrollarea-thumb-hover-background-color);
   }
 }
 
 .corner {
   position: absolute;
-  opacity: var(--_corner-opacity, 0);
+  opacity: 0;
   transition: opacity 150ms ease;
-  background-color: var(--_corner-bg);
-  display: var(--_corner-display, block);
-  right: 0;
+  display: block;
+  inset-inline-end: 0;
   bottom: 0;
 
-  @mixin rtl {
-    right: unset;
-    left: 0;
-    bottom: 0;
+  @mixin where-light {
+    background-color: var(--raikou-scrollarea-corner-background-color);
   }
 
-  @mixin light {
-    --_corner-bg: var(--raikou-scrollarea-corner-bg);
+  @mixin where-dark {
+    background-color: var(--raikou-scrollarea-corner-background-color);
   }
 
-  @mixin dark {
-    --_corner-bg: var(--raikou-scrollarea-corner-bg);
+  &:where([data-hovered]) {
+    opacity: 1;
   }
 
-  &[data-hovered] {
-    --_corner-opacity: 1;
-  }
-
-  &[data-hidden] {
-    --_corner-display: none;
+  &:where([data-hidden]) {
+    display: none;
   }
 }

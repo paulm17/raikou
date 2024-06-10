@@ -13,6 +13,33 @@ export function Usage() {
   return (
     <div style={{ padding: 40 }}>
       <Avatar>AN</Avatar>
+      <Avatar src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-7.png">
+        AN
+      </Avatar>
+    </div>
+  );
+}
+
+export function AutoContrast() {
+  const buttons = Array(10)
+    .fill(0)
+    .map((_, index) => (
+      <Avatar key={index} variant="filled" color={`red.${index}`} autoContrast>
+        $$
+      </Avatar>
+    ));
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        gap: 10,
+        padding: 40,
+      }}
+    >
+      {buttons}
     </div>
   );
 }
@@ -120,6 +147,20 @@ export function Gradient() {
             </Avatar>
           </Center>
         </Box>
+      </Group>
+    </div>
+  );
+}
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Group>
+        <Avatar
+          unstyled
+          src="https://avatars.githubusercontent.com/u/10353856?s=460&u=88394dfd67727327c1f7670a1764dc38a8a24831&v=4"
+        />
+        <Avatar unstyled>MX</Avatar>
       </Group>
     </div>
   );

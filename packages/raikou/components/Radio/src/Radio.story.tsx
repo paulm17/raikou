@@ -34,6 +34,20 @@ export function Usage() {
   );
 }
 
+export function AutoContrast() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Radio
+        label="Auto contrast icon color"
+        value="hello"
+        defaultChecked
+        color="lime.4"
+        autoContrast
+      />
+    </div>
+  );
+}
+
 export function OutlineVariant() {
   return (
     <div style={{ padding: 20, display: "flex", gap: 40 }}>
@@ -62,10 +76,18 @@ export function OutlineVariant() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 20 }}>
+      <Radio label="React" value="react" name="hello" unstyled />
+    </div>
+  );
+}
+
 export function RadioGroup() {
   return (
     <div style={{ padding: 20 }}>
-      <Radio.Group defaultValue="ng">
+      <Radio.Group defaultValue="ng" readOnly>
         <Radio label="React" value="react" />
         <Radio label="Angular" value="ng" />
         <Radio label="Svelte" value="sv" />

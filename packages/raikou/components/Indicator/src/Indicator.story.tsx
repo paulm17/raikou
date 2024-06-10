@@ -11,15 +11,15 @@ const positions = ["top", "middle", "bottom"] as const;
 const placements = ["start", "center", "end"] as const;
 
 export const Positions = () => {
-  const items = positions.map((position, i) => {
-    const _items = placements.map((placement, ii) => (
-      <Indicator key={ii} position={`${position}-${placement}`}>
+  const items = positions.map((position) => {
+    const _items = placements.map((placement) => (
+      <Indicator key={placement} position={`${position}-${placement}`}>
         <Avatar radius={0} />
       </Indicator>
     ));
 
     return (
-      <Group mt="md" key={i}>
+      <Group key={position} mt="md">
         {_items}
       </Group>
     );
@@ -32,6 +32,24 @@ export const Inline = () => (
   <Box p={40}>
     <Indicator inline withBorder>
       <Avatar radius={0} />
+    </Indicator>
+  </Box>
+);
+
+export const AutoContrast = () => (
+  <Box p={40}>
+    <Indicator
+      inline
+      autoContrast
+      withBorder
+      color="lime.4"
+      label="New"
+      size={20}
+    >
+      <Avatar
+        radius="xl"
+        src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-8.png"
+      />
     </Indicator>
   </Box>
 );
@@ -49,7 +67,7 @@ export const WithRadius = () => (
       <Avatar
         radius={50000}
         size="xl"
-        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80"
+        src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-8.png"
       />
     </Indicator>
   </Box>
@@ -71,7 +89,7 @@ export const Processing = () => (
         <Indicator inline processing size={12}>
           <Avatar
             size="lg"
-            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80"
+            src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-8.png"
           />
         </Indicator>
       </Box>
@@ -81,7 +99,7 @@ export const Processing = () => (
         <Indicator inline processing disabled size={12}>
           <Avatar
             size="lg"
-            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80"
+            src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-8.png"
           />
         </Indicator>
       </Box>

@@ -1,10 +1,10 @@
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Loader/src/Loader.module.css/#css-module-data */
 .m-5ae2e3c {
-  --loader-size-xs: calc(1.125rem * var(--raikou-scale));
-  --loader-size-sm: calc(1.375rem * var(--raikou-scale));
-  --loader-size-md: calc(2.25rem * var(--raikou-scale));
-  --loader-size-lg: calc(2.75rem * var(--raikou-scale));
-  --loader-size-xl: calc(3.625rem * var(--raikou-scale));
+  --loader-size-xs: 18px;
+  --loader-size-sm: 22px;
+  --loader-size-md: 36px;
+  --loader-size-lg: 44px;
+  --loader-size-xl: 58px;
   --loader-size: var(--loader-size-md);
   --loader-color: var(--raikou-primary-color-filled);
 }
@@ -28,7 +28,7 @@
   flex: 1;
   background: var(--loader-color);
   animation: m-5d2b3b9d 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
-  border-radius: calc(0.125rem * var(--raikou-scale));
+  border-radius: 2px;
 }
 .m-870bb79:nth-of-type(1) {
   animation-delay: -240ms;
@@ -86,7 +86,7 @@
   display: block;
   width: var(--loader-size);
   height: var(--loader-size);
-  border-radius: calc(625rem * var(--raikou-scale));
+  border-radius: 10000px;
   border-width: calc(var(--loader-size) / 8);
   border-style: solid;
   border-color: var(--loader-color) var(--loader-color) var(--loader-color) transparent;
@@ -104,16 +104,17 @@
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Overlay/src/Overlay.module.css/#css-module-data */
 .m-9814e45f {
   inset: 0;
-  position: var(--_overlay-position, absolute);
+  position: absolute;
   background: var(--overlay-bg, rgba(0, 0, 0, 0.6));
   backdrop-filter: var(--overlay-filter);
+  -webkit-backdrop-filter: var(--overlay-filter);
   border-radius: var(--overlay-radius, 0);
   z-index: var(--overlay-z-index);
 }
-.m-9814e45f[data-fixed] {
-  --_overlay-position: fixed;
+.m-9814e45f:where([data-fixed]) {
+  position: fixed;
 }
-.m-9814e45f[data-center] {
+.m-9814e45f:where([data-center]) {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -135,11 +136,5 @@
 }
 .m-df587f17 {
   z-index: var(--lo-z-index);
-}
-[data-raikou-color-scheme=light] .m-df587f17[data-dark] {
-  display: none;
-}
-[data-raikou-color-scheme=dark] .m-df587f17[data-light] {
-  display: none;
 }
 /*# sourceMappingURL=index.css.map */

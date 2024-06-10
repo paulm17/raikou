@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React from "react";
+import React, { useState } from "react";
 import { TextInput } from "../../TextInput/src";
 import { Button } from "../../Button/src";
 import { ScrollArea } from "../../ScrollArea/src";
@@ -27,9 +27,9 @@ const scrollableContent = Array(20)
   .map((_, index) => <p key={index}>{lorem}</p>);
 
 function StoryBase({ children }: { children: React.ReactNode }) {
-  const [opened, setOpened] = React.useState(true);
+  const [opened, setOpened] = useState(true);
   const store = useCombobox({ opened, onOpenedChange: setOpened });
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = useState("");
 
   return (
     <div style={{ padding: 40 }}>
@@ -115,7 +115,7 @@ export function AllItemsDisabled() {
 }
 
 export function WithButtonTarget() {
-  const [search, setSearch] = React.useState("");
+  const [search, setSearch] = useState("");
 
   const store = useCombobox({
     onDropdownOpen: () => store.focusSearchInput(),
@@ -186,7 +186,7 @@ export function WithButtonTarget() {
 
 export function WithScrollArea() {
   const store = useCombobox({ defaultOpened: true });
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = useState("");
 
   return (
     <div style={{ padding: 40 }}>
@@ -225,8 +225,8 @@ const fruitsData = [
 
 export function WithActive() {
   const store = useCombobox();
-  const [active, setActive] = React.useState<string | null>(null);
-  const [value, setValue] = React.useState("");
+  const [active, setActive] = useState<string | null>(null);
+  const [value, setValue] = useState("");
 
   const options = fruitsData.map((fruit) => (
     <Combobox.Option

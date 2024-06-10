@@ -1,5 +1,5 @@
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, BoxMod, RaikouSize, RaikouGradient, PolymorphicFactory, RaikouColor, RaikouTheme } from '@raikou/core';
+import { BoxProps, StylesApiProps, RaikouSize, RaikouGradient, RaikouColor, PolymorphicFactory, RaikouTheme } from '@raikou/core';
 import React from 'react';
 
 type TextTruncate = "end" | "start" | boolean;
@@ -10,12 +10,11 @@ type TextCssVariables = {
 };
 interface TextProps extends BoxProps, StylesApiProps<TextFactory> {
     __staticSelector?: string;
-    mod?: BoxMod;
     /** Controls `font-size` and `line-height`, `'md'` by default */
     size?: RaikouSize | (string & {});
     /** Number of lines after which Text will be truncated */
     lineClamp?: number;
-    /** Side on which Text must be truncated, if `true`, text in truncated from the start */
+    /** Side on which Text must be truncated, if `true`, text is truncated from the start */
     truncate?: TextTruncate;
     /** Sets `line-height` to 1 for centering, `false` by default */
     inline?: boolean;
@@ -25,6 +24,8 @@ interface TextProps extends BoxProps, StylesApiProps<TextFactory> {
     gradient?: RaikouGradient;
     /** Shorthand for `component="span"`, `false` by default, default root element is `p` */
     span?: boolean;
+    /** @deprecated Use `c` prop instead */
+    color?: RaikouColor;
 }
 type TextFactory = PolymorphicFactory<{
     props: TextProps;

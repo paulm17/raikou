@@ -5,6 +5,7 @@ import { RaikouSize as RaikouSize$1, RaikouRadius, BoxProps, CompoundStylesApiPr
 import * as CSS from 'csstype';
 import * as PropTypes from 'prop-types';
 import { Interaction } from 'scheduler/tracing';
+import { ShiftOptions, FlipOptions, InlineOptions, SizeOptions } from '@floating-ui/react';
 
 interface __CloseButtonProps {
     "data-disabled"?: boolean;
@@ -18,6 +19,8 @@ interface __CloseButtonProps {
     iconSize?: number | string;
     /** Content rendered inside the button, for example `VisuallyHidden` with label for screen readers */
     children?: React$2.ReactNode;
+    /** Replaces default close icon. If set, `iconSize` prop is ignored. */
+    icon?: React$2.ReactNode;
 }
 
 type ElementProps<ElementType extends React$2.ElementType, PropsToOmit extends string = never> = Omit<React$2.ComponentPropsWithoutRef<ElementType>, "style" | PropsToOmit>;
@@ -75,6 +78,8 @@ interface ComboboxEventsTargetProps {
      * `input` by default.
      * */
     targetType?: "button" | "input";
+    /** Input autocomplete attribute */
+    autoComplete?: string;
 }
 declare const ComboboxEventsTarget: _raikou_core.RaikouComponent<{
     props: ComboboxEventsTargetProps;
@@ -224,21 +229,20 @@ declare const InputDescription: _raikou_core.RaikouComponent<{
 }>;
 
 type InputPlaceholderStylesNames = "placeholder";
-type InputPlaceholderVariant = string;
 interface InputPlaceholderProps extends BoxProps, StylesApiProps<InputPlaceholderFactory>, ElementProps$1<"span"> {
     __staticSelector?: string;
+    /** If set, the placeholder will have error styles, `false` by default */
+    error?: React$2.ReactNode;
 }
 type InputPlaceholderFactory = Factory<{
     props: InputPlaceholderProps;
     ref: HTMLSpanElement;
     stylesNames: InputPlaceholderStylesNames;
-    variant: InputPlaceholderVariant;
 }>;
 declare const InputPlaceholder: _raikou_core.RaikouComponent<{
     props: InputPlaceholderProps;
     ref: HTMLSpanElement;
     stylesNames: InputPlaceholderStylesNames;
-    variant: InputPlaceholderVariant;
 }>;
 
 type InputWrapperCssVariables = InputLabelCssVariables & InputErrorCssVariables & InputDescriptionCssVariables;
@@ -329,6 +333,8 @@ interface __InputProps {
     pointer?: boolean;
     /** Determines whether the input should have red border and text color when `error` prop is set, `true` by default */
     withErrorStyles?: boolean;
+    /** `size` prop added to the input element */
+    inputSize?: string;
 }
 interface InputProps extends BoxProps, __InputProps, StylesApiProps<InputFactory> {
     __staticSelector?: string;
@@ -3972,10 +3978,11 @@ interface TransitionProps {
 }
 type TransitionOverride = Partial<Omit<TransitionProps, "mounted">>;
 
-type FloatingPlacement = 'end' | 'start';
-type FloatingSide = 'top' | 'right' | 'bottom' | 'left';
+type FloatingPlacement = "end" | "start";
+type FloatingSide = "top" | "right" | "bottom" | "left";
 type FloatingPosition = FloatingSide | `${FloatingSide}-${FloatingPlacement}`;
-type ArrowPosition = 'center' | 'side';
+type ArrowPosition = "center" | "side";
+type FloatingStrategy = "absolute" | "fixed";
 interface FloatingAxesOffsets {
     mainAxis?: number;
     crossAxis?: number;
@@ -3989,12 +3996,12 @@ interface PortalProps extends React$2.ComponentPropsWithoutRef<"div"> {
     target?: HTMLElement | string;
 }
 
-type PopoverWidth = "target" | React.CSSProperties["width"];
+type PopoverWidth = "target" | React.CSSProperties["width"] | null;
 interface PopoverMiddlewares {
-    shift: boolean;
-    flip: boolean;
-    inline?: boolean;
-    size?: boolean;
+    shift?: boolean | ShiftOptions;
+    flip?: boolean | FlipOptions;
+    inline?: boolean | InlineOptions;
+    size?: boolean | SizeOptions;
 }
 
 type PopoverStylesNames = "dropdown" | "arrow";
@@ -4043,6 +4050,8 @@ interface __PopoverProps {
     disabled?: boolean;
     /** Determines whether focus should be automatically returned to control when dropdown closes, `false` by default */
     returnFocus?: boolean;
+    /** Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy), `'absolute'` by default */
+    floatingStrategy?: FloatingStrategy;
 }
 
 type ComboboxDropdownStylesNames = "dropdown";
@@ -4073,6 +4082,8 @@ interface ComboboxTargetProps {
      * `input` by default.
      * */
     targetType?: "button" | "input";
+    /** Input autocomplete attribute */
+    autoComplete?: string;
 }
 declare const ComboboxTarget: _raikou_core.RaikouComponent<{
     props: ComboboxTargetProps;
@@ -4122,7 +4133,9 @@ interface ComboboxStore {
      *  The function is required to be used with searchable components to update selected option index
      *  when options list changes based on search query.
      */
-    updateSelectedOptionIndex: (target?: "active" | "selected") => void;
+    updateSelectedOptionIndex: (target?: "active" | "selected", options?: {
+        scrollIntoView?: boolean;
+    }) => void;
     /** List id, used for `aria-*` attributes */
     listId: string | null;
     /** Sets list id */
@@ -4153,6 +4166,17 @@ interface UseComboboxOptions$1 {
     scrollBehavior?: ScrollBehavior;
 }
 declare function useCombobox({ defaultOpened, opened, onOpenedChange, onDropdownClose, onDropdownOpen, loop, scrollBehavior, }?: UseComboboxOptions$1): ComboboxStore;
+
+interface ComboboxHiddenInputProps extends Omit<React$2.ComponentPropsWithoutRef<"input">, "value"> {
+    /** Input value */
+    value: string | string[] | null;
+    /** Divider character that is used to transform array values to string, `','` by default */
+    valuesDivider?: string;
+}
+declare function ComboboxHiddenInput({ value, valuesDivider, ...others }: ComboboxHiddenInputProps): React$2.JSX.Element;
+declare namespace ComboboxHiddenInput {
+    var displayName: string;
+}
 
 type ComboboxOptionStylesNames = "option";
 interface ComboboxOptionProps extends BoxProps, CompoundStylesApiProps<ComboboxOptionFactory>, ElementProps$1<"div"> {
@@ -4218,6 +4242,8 @@ type ComboboxFactory = Factory<{
         EventsTarget: typeof ComboboxEventsTarget;
         DropdownTarget: typeof ComboboxDropdownTarget;
         Group: typeof ComboboxGroup;
+        ClearButton: typeof ComboboxClearButton;
+        HiddenInput: typeof ComboboxHiddenInput;
     };
 }>;
 declare function Combobox(_props: ComboboxProps): React$2.JSX.Element;
@@ -4296,6 +4322,8 @@ declare namespace Combobox {
                 stylesNames: ComboboxGroupStylesNames;
                 compound: true;
             }>;
+            ClearButton: React$2.ForwardRefExoticComponent<ComboboxClearButtonProps & React$2.RefAttributes<HTMLButtonElement>>;
+            HiddenInput: typeof ComboboxHiddenInput;
         };
     }>) => RaikouThemeComponent;
     var classes: any;
@@ -4369,7 +4397,59 @@ declare namespace Combobox {
         compound: true;
     }>;
     var ClearButton: React$2.ForwardRefExoticComponent<ComboboxClearButtonProps & React$2.RefAttributes<HTMLButtonElement>>;
+    var HiddenInput: typeof ComboboxHiddenInput;
 }
+
+type ScrollAreaStylesNames = "root" | "viewport" | "viewportInner" | "scrollbar" | "thumb" | "corner";
+type ScrollAreaCssVariables = {
+    root: "--scrollarea-scrollbar-size";
+};
+interface ScrollAreaProps extends BoxProps, StylesApiProps<ScrollAreaFactory>, ElementProps$1<"div"> {
+    /** Scrollbar size, any valid CSS value for width/height, numbers are converted to rem, default value is 0.75rem */
+    scrollbarSize?: number | string;
+    /**
+     * Defines scrollbars behavior, `hover` by default
+     * - `hover` – scrollbars are visible when mouse is over the scroll area
+     * - `scroll` – scrollbars are visible when the scroll area is scrolled
+     * - `always` – scrollbars are always visible
+     * - `never` – scrollbars are always hidden
+     * - `auto` – similar to `overflow: auto` – scrollbars are always visible when the content is overflowing
+     * */
+    type?: "auto" | "always" | "scroll" | "hover" | "never";
+    /** Scroll hide delay in ms, applicable only when type is set to `hover` or `scroll`, `1000` by default */
+    scrollHideDelay?: number;
+    /** Axis at which scrollbars must be rendered, `'xy'` by default */
+    scrollbars?: "x" | "y" | "xy" | false;
+    /** Determines whether scrollbars should be offset with padding, `false` by default */
+    offsetScrollbars?: boolean | "x" | "y";
+    /** Assigns viewport element (scrollable container) ref */
+    viewportRef?: React$2.ForwardedRef<HTMLDivElement>;
+    /** Props passed down to the viewport element */
+    viewportProps?: React$2.ComponentPropsWithRef<"div">;
+    /** Called with current position (`x` and `y` coordinates) when viewport is scrolled */
+    onScrollPositionChange?: (position: {
+        x: number;
+        y: number;
+    }) => void;
+}
+type ScrollAreaFactory = Factory<{
+    props: ScrollAreaProps;
+    ref: HTMLDivElement;
+    stylesNames: ScrollAreaStylesNames;
+    vars: ScrollAreaCssVariables;
+    staticComponents: {
+        Autosize: typeof ScrollAreaAutosize;
+    };
+}>;
+declare const ScrollAreaAutosize: _raikou_core.RaikouComponent<{
+    props: ScrollAreaProps;
+    ref: HTMLDivElement;
+    stylesNames: ScrollAreaStylesNames;
+    vars: ScrollAreaCssVariables;
+    staticComponents: {
+        Autosize: typeof ScrollAreaAutosize;
+    };
+}>;
 
 interface FilterOptionsInput {
     options: ComboboxParsedItem[];
@@ -4398,24 +4478,30 @@ interface OptionsDropdownProps {
     value?: string | string[] | null;
     checkIconPosition?: "left" | "right";
     nothingFoundMessage?: React$2.ReactNode;
-    labelId: string;
+    labelId: string | undefined;
+    "aria-label": string | undefined;
+    renderOption?: (input: ComboboxLikeRenderOptionInput<any>) => React$2.ReactNode;
+    scrollAreaProps: ScrollAreaProps | undefined;
 }
-declare function OptionsDropdown({ data, hidden, hiddenWhenEmpty, filter, search, limit, maxDropdownHeight, withScrollArea, filterOptions, withCheckIcon, value, checkIconPosition, nothingFoundMessage, labelId, }: OptionsDropdownProps): React$2.JSX.Element;
+declare function OptionsDropdown({ data, hidden, hiddenWhenEmpty, filter, search, limit, maxDropdownHeight, withScrollArea, filterOptions, withCheckIcon, value, checkIconPosition, nothingFoundMessage, labelId, renderOption, scrollAreaProps, "aria-label": ariaLabel, }: OptionsDropdownProps): React$2.JSX.Element;
 
-interface ComboboxItem {
+interface ComboboxStringItem {
     value: string;
-    label: string;
     disabled?: boolean;
 }
-interface ComboboxItemGroup {
+interface ComboboxItem extends ComboboxStringItem {
+    label: string;
+}
+interface ComboboxItemGroup<T = ComboboxItem | string> {
     group: string;
-    items: (ComboboxItem | string)[];
+    items: T[];
 }
 interface ComboboxParsedItemGroup {
     group: string;
     items: ComboboxItem[];
 }
-type ComboboxData = (string | ComboboxItem | ComboboxItemGroup)[];
+type ComboboxStringData = Array<string | ComboboxStringItem | ComboboxItemGroup<string | ComboboxStringItem>> | ReadonlyArray<string | ComboboxStringItem | ComboboxItemGroup<string | ComboboxStringItem>>;
+type ComboboxData = Array<string | ComboboxItem | ComboboxItemGroup> | ReadonlyArray<string | ComboboxItem | ComboboxItemGroup>;
 type ComboboxParsedItem = ComboboxItem | ComboboxParsedItemGroup;
 type ComboboxLikeStylesNames = Exclude<ComboboxStylesNames, "header" | "footer" | "search">;
 interface ComboboxLikeProps {
@@ -4444,8 +4530,12 @@ interface ComboboxLikeProps {
     /** `max-height` of the dropdown, only applicable when `withScrollArea` prop is `true`, `250` by default */
     maxDropdownHeight?: number | string;
 }
+interface ComboboxLikeRenderOptionInput<T> {
+    option: T;
+    checked?: boolean;
+}
 
-declare function getParsedComboboxData(data: ComboboxData | undefined): ComboboxParsedItem[];
+declare function getParsedComboboxData(data: ComboboxData | ComboboxStringData | undefined): ComboboxParsedItem[];
 
 declare function getOptionsLockup(options: ComboboxParsedItem[]): Record<string, ComboboxItem>;
 declare function getLabelsLockup(options: ComboboxParsedItem[]): Record<string, string>;
@@ -4480,15 +4570,17 @@ interface UseComboboxTargetPropsInput {
     withKeyboardNavigation: boolean | undefined;
     withExpandedAttribute: boolean | undefined;
     onKeyDown: React.KeyboardEventHandler<HTMLInputElement> | undefined;
+    autoComplete: string | undefined;
 }
-declare function useComboboxTargetProps({ onKeyDown, withKeyboardNavigation, withAriaAttributes, withExpandedAttribute, targetType, }: UseComboboxTargetPropsInput): {
+declare function useComboboxTargetProps({ onKeyDown, withKeyboardNavigation, withAriaAttributes, withExpandedAttribute, targetType, autoComplete, }: UseComboboxTargetPropsInput): {
     onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
     "aria-haspopup": string;
     "aria-expanded": true | undefined;
     "aria-controls": string | null;
     "aria-activedescendant": string | undefined;
-    autoComplete: string;
-    "data-expanded": boolean | undefined;
+    autoComplete: string | undefined;
+    "data-expanded": true | undefined;
+    "data-mantine-stop-propagation": true | undefined;
 } | {
     onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
     "aria-haspopup"?: undefined;
@@ -4497,8 +4589,9 @@ declare function useComboboxTargetProps({ onKeyDown, withKeyboardNavigation, wit
     "aria-activedescendant"?: undefined;
     autoComplete?: undefined;
     "data-expanded"?: undefined;
+    "data-mantine-stop-propagation"?: undefined;
 };
 
 declare function isOptionsGroup(item: ComboboxParsedItem): item is ComboboxParsedItemGroup;
 
-export { Combobox, ComboboxChevron, type ComboboxChevronProps, ComboboxClearButton, type ComboboxData, ComboboxDropdown, type ComboboxDropdownEventSource, type ComboboxDropdownProps, ComboboxDropdownTarget, type ComboboxDropdownTargetProps, ComboboxEmpty, type ComboboxEmptyProps, ComboboxEventsTarget, type ComboboxEventsTargetProps, type ComboboxFactory, ComboboxFooter, type ComboboxFooterProps, ComboboxGroup, type ComboboxGroupProps, ComboboxHeader, type ComboboxHeaderProps, type ComboboxItem, type ComboboxItemGroup, type ComboboxLikeProps, type ComboboxLikeStylesNames, ComboboxOption, type ComboboxOptionProps, ComboboxOptions, type ComboboxOptionsProps, type ComboboxParsedItem, type ComboboxParsedItemGroup, type ComboboxProps, ComboboxSearch, type ComboboxSearchProps, type ComboboxStore, type ComboboxStylesNames, ComboboxTarget, type ComboboxTargetProps, type OptionsData, OptionsDropdown, type OptionsDropdownProps, type OptionsFilter, type UseComboboxOptions$1 as UseComboboxOptions, defaultOptionsFilter, getLabelsLockup, getOptionsLockup, getParsedComboboxData, isOptionsGroup, useCombobox, useComboboxTargetProps, useVirtualizedCombobox };
+export { Combobox, ComboboxChevron, type ComboboxChevronProps, ComboboxClearButton, type ComboboxClearButtonProps, type ComboboxData, ComboboxDropdown, type ComboboxDropdownEventSource, type ComboboxDropdownProps, ComboboxDropdownTarget, type ComboboxDropdownTargetProps, ComboboxEmpty, type ComboboxEmptyProps, ComboboxEventsTarget, type ComboboxEventsTargetProps, type ComboboxFactory, ComboboxFooter, type ComboboxFooterProps, ComboboxGroup, type ComboboxGroupProps, ComboboxHeader, type ComboboxHeaderProps, ComboboxHiddenInput, type ComboboxHiddenInputProps, type ComboboxItem, type ComboboxItemGroup, type ComboboxLikeProps, type ComboboxLikeRenderOptionInput, type ComboboxLikeStylesNames, ComboboxOption, type ComboboxOptionProps, ComboboxOptions, type ComboboxOptionsProps, type ComboboxParsedItem, type ComboboxParsedItemGroup, type ComboboxProps, ComboboxSearch, type ComboboxSearchProps, type ComboboxStore, type ComboboxStringData, type ComboboxStringItem, type ComboboxStylesNames, ComboboxTarget, type ComboboxTargetProps, type OptionsData, OptionsDropdown, type OptionsDropdownProps, type OptionsFilter, type UseComboboxOptions$1 as UseComboboxOptions, defaultOptionsFilter, getLabelsLockup, getOptionsLockup, getParsedComboboxData, isOptionsGroup, useCombobox, useComboboxTargetProps, useVirtualizedCombobox };

@@ -1,32 +1,31 @@
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Tooltip/src/Tooltip.module.css/#css-module-data */
-[data-raikou-color-scheme=light] .m-946fb08c {
-  --raikou-tooltip-bg: #212529;
+:where([data-raikou-color-scheme=light]) .m-1b3c8819 {
+  --raikou-tooltip-background-color: #212529;
   --raikou-tooltip-color: #fff;
 }
-[data-raikou-color-scheme=dark] .m-946fb08c {
-  --raikou-tooltip-bg: #e9ecef;
+:where([data-raikou-color-scheme=dark]) .m-1b3c8819 {
+  --raikou-tooltip-background-color: #e9ecef;
   --raikou-tooltip-color: #000;
 }
 .m-1b3c8819 {
+  --tooltip-radius: var(--raikou-radius-default);
   position: absolute;
   padding: calc(var(--raikou-spacing-xs) / 2) var(--raikou-spacing-xs);
   pointer-events: none;
   font-size: var(--raikou-font-size-sm);
-  white-space: var(--_tooltip-white-space, nowrap);
-  background-color: var(--_tooltip-bg);
-  color: var(--_tooltip-color);
-  border-radius: var(--tooltip-radius, var(--raikou-radius-default));
+  white-space: nowrap;
+  border-radius: var(--tooltip-radius);
 }
-[data-raikou-color-scheme=light] .m-1b3c8819 {
-  --_tooltip-bg: var(--tooltip-bg, var(--raikou-tooltip-bg));
-  --_tooltip-color: var(--raikou-tooltip-color);
+:where([data-raikou-color-scheme=light]) .m-1b3c8819 {
+  background-color: var(--tooltip-bg, var(--raikou-tooltip-background-color));
+  color: var(--tooltip-color, var(--raikou-tooltip-color));
 }
-[data-raikou-color-scheme=dark] .m-1b3c8819 {
-  --_tooltip-bg: var(--tooltip-bg, var(--raikou-tooltip-bg));
-  --_tooltip-color: var(--raikou-tooltip-color);
+:where([data-raikou-color-scheme=dark]) .m-1b3c8819 {
+  background-color: var(--tooltip-bg, var(--raikou-tooltip-background-color));
+  color: var(--tooltip-color, var(--raikou-tooltip-color));
 }
-.m-1b3c8819[data-multiline] {
-  --_tooltip-white-space: normal;
+.m-1b3c8819:where([data-multiline]) {
+  white-space: normal;
 }
 .m-f898399f {
   background-color: inherit;

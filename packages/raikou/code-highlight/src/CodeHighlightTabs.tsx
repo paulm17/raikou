@@ -149,6 +149,7 @@ export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>(
       expandCodeLabel,
       collapseCodeLabel,
       withExpandButton,
+      mod,
       ...others
     } = props;
 
@@ -206,7 +207,7 @@ export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>(
     return (
       <Box
         {...getStyles("root")}
-        mod={{ collapsed: !_expanded }}
+        mod={[{ collapsed: !_expanded }, mod]}
         ref={ref}
         {...others}
         dir="ltr"

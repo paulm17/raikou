@@ -1,13 +1,15 @@
-import dayjs from "dayjs";
-import "dayjs/locale/ru";
 import React, { useState } from "react";
+import dayjs from "dayjs";
+
+import "dayjs/locale/ru";
+
 import customParseFormat from "dayjs/plugin/customParseFormat";
-import { TextInput } from "../../../../components/TextInput/src";
 import { Button } from "../../../../components/Button/src";
 import { Group } from "../../../../components/Group/src";
-import { DateInput } from "./DateInput";
+import { TextInput } from "../../../../components/TextInput/src";
 import { DatePickerInput } from "../DatePickerInput";
 import { DatesProvider } from "../DatesProvider";
+import { DateInput } from "./DateInput";
 
 dayjs.extend(customParseFormat);
 
@@ -43,6 +45,18 @@ export function ControlledValue() {
   return (
     <div style={{ padding: 40, maxWidth: 400 }}>
       <DateInput placeholder="Enter date" value={value} onChange={setValue} />
+    </div>
+  );
+}
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40, maxWidth: 400 }}>
+      <DateInput
+        placeholder="Enter date"
+        defaultDate={new Date(2022, 3, 11)}
+        unstyled
+      />
     </div>
   );
 }

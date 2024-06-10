@@ -1,27 +1,25 @@
-import { useState, useEffect } from "react";
-import { useWindowEvent } from "../use-window-event/use-window-event";
+import { useEffect, useState } from 'react';
+import { useWindowEvent } from '../use-window-event/use-window-event';
 
 interface UseHashOptions {
   getInitialValueInEffect?: boolean;
 }
 
-export function useHash({
-  getInitialValueInEffect = false,
-}: UseHashOptions = {}) {
+export function useHash({ getInitialValueInEffect = true }: UseHashOptions = {}) {
   const [hash, setHashValue] = useState<string>(
-    getInitialValueInEffect ? window.location.hash || "" : "",
+    getInitialValueInEffect ? '' : window.location.hash || ''
   );
 
   const setHash = (value: string) => {
-    const valueWithHash = value.startsWith("#") ? value : `#${value}`;
+    const valueWithHash = value.startsWith('#') ? value : `#${value}`;
     window.location.hash = valueWithHash;
     setHashValue(valueWithHash);
   };
 
-  useWindowEvent("hashchange", () => {
+  useWindowEvent('hashchange', () => {
     const newHash = window.location.hash;
     if (hash !== newHash) {
-      setHashValue(hash);
+      setHashValue(newHash);
     }
   });
 

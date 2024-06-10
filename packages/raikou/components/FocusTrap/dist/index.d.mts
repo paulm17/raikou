@@ -11,6 +11,11 @@ interface FocusTrapProps {
 declare function FocusTrap({ children, active, refProp, }: FocusTrapProps): React.ReactElement;
 declare namespace FocusTrap {
     var displayName: string;
+    var InitialFocus: typeof FocusTrapInitialFocus;
+}
+declare function FocusTrapInitialFocus(props: React.ComponentPropsWithoutRef<"span">): React.JSX.Element;
+declare namespace FocusTrapInitialFocus {
+    var displayName: string;
 }
 
 export { FocusTrap, type FocusTrapProps };

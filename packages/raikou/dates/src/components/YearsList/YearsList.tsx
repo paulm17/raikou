@@ -1,21 +1,21 @@
-import dayjs from "dayjs";
 import React from "react";
+import dayjs from "dayjs";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
-  factory,
   ElementProps,
-  useProps,
-  useStyles,
+  factory,
   Factory,
   RaikouSize,
+  StylesApiProps,
+  useProps,
+  useStyles,
 } from "@raikou/core";
 import { ControlsGroupSettings } from "../../types";
-import { PickerControl, PickerControlProps } from "../PickerControl";
-import { getYearsData } from "./get-years-data/get-years-data";
-import { getYearInTabOrder } from "./get-year-in-tab-order/get-year-in-tab-order";
 import { useDatesContext } from "../DatesProvider";
+import { PickerControl, PickerControlProps } from "../PickerControl";
+import { getYearInTabOrder } from "./get-year-in-tab-order/get-year-in-tab-order";
+import { getYearsData } from "./get-years-data/get-years-data";
 import { isYearDisabled } from "./is-year-disabled/is-year-disabled";
 import classes from "./YearsList.module.css";
 
@@ -74,6 +74,7 @@ export const YearsList = factory<YearsListFactory>((_props, ref) => {
     className,
     style,
     styles,
+    unstyled,
     vars,
     decade,
     yearsListFormat,
@@ -101,6 +102,7 @@ export const YearsList = factory<YearsListFactory>((_props, ref) => {
     style,
     classNames,
     styles,
+    unstyled,
     vars,
     rootSelector: "yearsList",
   });
@@ -129,6 +131,7 @@ export const YearsList = factory<YearsListFactory>((_props, ref) => {
           <PickerControl
             {...getStyles("yearsListControl")}
             size={size}
+            unstyled={unstyled}
             data-raikou-stop-propagation={__stopPropagation || undefined}
             disabled={isYearDisabled(year, minDate, maxDate)}
             ref={(node) => __getControlRef?.(rowIndex, cellIndex, node!)}
@@ -147,7 +150,6 @@ export const YearsList = factory<YearsListFactory>((_props, ref) => {
             }}
             onMouseDown={(event) => {
               controlProps?.onMouseDown?.(event);
-              // eslint-disable-next-line
               __preventFocus && event.preventDefault();
             }}
             tabIndex={__preventFocus || !isYearInTabOrder ? -1 : 0}

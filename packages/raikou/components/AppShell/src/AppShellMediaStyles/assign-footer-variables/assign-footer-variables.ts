@@ -1,13 +1,12 @@
-/* eslint-disable no-param-reassign */
 import { keys, rem } from "@raikou/core";
+import type { AppShellProps } from "../../AppShell";
+import { getBaseSize } from "../get-base-size/get-base-size";
 import type {
   CSSVariables,
   MediaQueryVariables,
 } from "../get-variables/get-variables";
-import type { AppShellProps } from "../../AppShell";
-import { isResponsiveSize } from "../is-responsive-size/is-responsive-size";
 import { isPrimitiveSize } from "../is-primitive-size/is-primitive-size";
-import { getBaseSize } from "../get-base-size/get-base-size";
+import { isResponsiveSize } from "../is-responsive-size/is-responsive-size";
 
 interface AssignFooterVariablesInput {
   baseStyles: CSSVariables;
@@ -45,12 +44,12 @@ export function assignFooterVariables({
       if (key !== "base") {
         minMediaStyles[key] = minMediaStyles[key] || {};
         minMediaStyles[key]["--app-shell-footer-height"] = rem(
-          footerHeight[key]
+          footerHeight[key],
         );
 
         if (shouldOffset) {
           minMediaStyles[key]["--app-shell-footer-offset"] = rem(
-            footerHeight[key]
+            footerHeight[key],
           );
         }
       }

@@ -1,5 +1,8 @@
-import "dayjs/locale/ru";
 import React, { useState } from "react";
+import "dayjs/locale/ru";
+
+import { Button } from "../../../../components/Button/src";
+import { Stack } from "../../../../components/Stack/src";
 import { DatesRangeValue } from "../../types";
 import { DatePicker } from "./DatePicker";
 
@@ -17,6 +20,38 @@ export function HideOutsideDates() {
   return (
     <div style={{ padding: 40 }}>
       <DatePicker hideOutsideDates />
+    </div>
+  );
+}
+
+export function RangeCancelled() {
+  const [value, setValue] = useState<[Date | null, Date | null]>([null, null]);
+
+  const handleChange = (val: [Date | null, Date | null]) => {
+    setValue(val);
+  };
+
+  const clearRange = () => {
+    setValue([null, null]);
+  };
+
+  return (
+    <Stack>
+      <DatePicker
+        type="range"
+        value={value}
+        onChange={handleChange}
+        allowSingleDateInRange
+      />
+      <Button onClick={clearRange}>CLEAR</Button>
+    </Stack>
+  );
+}
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <DatePicker unstyled />
     </div>
   );
 }

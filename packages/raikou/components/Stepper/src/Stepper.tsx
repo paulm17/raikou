@@ -19,6 +19,8 @@ import {
   getSpacing,
   getRadius,
   getFontSize,
+  getAutoContrastValue,
+  getContrastColor,
 } from "@raikou/core";
 import { StepperStep } from "./StepperStep/StepperStep";
 import { StepperCompleted } from "./StepperCompleted/StepperCompleted";
@@ -101,6 +103,9 @@ export interface StepperProps
 
   /** Determines whether steps should wrap to the next line if no space is available, `true` by default */
   wrap?: boolean;
+
+  /** Determines whether icon color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+  autoContrast?: boolean;
 }
 
 export type StepperFactory = Factory<{
@@ -122,9 +127,12 @@ const defaultProps: Partial<StepperProps> = {
 };
 
 const varsResolver = createVarsResolver<StepperFactory>(
-  (theme, { color, iconSize, size, contentPadding, radius }) => ({
+  (theme, { color, iconSize, size, contentPadding, radius, autoContrast }) => ({
     root: {
       "--stepper-color": color ? getThemeColor(color, theme) : undefined,
+      "--stepper-icon-color": getAutoContrastValue(autoContrast, theme)
+        ? getContrastColor({ color, theme, autoContrast })
+        : undefined,
       "--stepper-icon-size":
         iconSize === undefined
           ? getSize(size, "stepper-icon-size")

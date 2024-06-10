@@ -2,7 +2,7 @@ import * as _raikou_core from '@raikou/core';
 import { BoxProps, StylesApiProps, ElementProps, RaikouColor, RaikouSize, RaikouRadius, Factory } from '@raikou/core';
 import React from 'react';
 
-type SegmentedControlStylesNames = "root" | "input" | "label" | "control" | "indicator";
+type SegmentedControlStylesNames = "root" | "input" | "label" | "control" | "indicator" | "innerLabel";
 type SegmentedControlCssVariables = {
     root: "--sc-radius" | "--sc-color" | "--sc-font-size" | "--sc-padding" | "--sc-shadow" | "--sc-transition-duration" | "--sc-transition-timing-function";
 };
@@ -40,6 +40,10 @@ interface SegmentedControlProps extends BoxProps, StylesApiProps<SegmentedContro
     orientation?: "vertical" | "horizontal";
     /** Determines whether the value can be changed */
     readOnly?: boolean;
+    /** Determines whether text color should depend on `background-color` of the indicator. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+    autoContrast?: boolean;
+    /** Determines whether there should be borders between items, `true` by default */
+    withItemsBorders?: boolean;
 }
 type SegmentedControlFactory = Factory<{
     props: SegmentedControlProps;

@@ -1,5 +1,5 @@
-import { renderHook, act } from "@testing-library/react";
-import { useInterval } from "./use-interval";
+import { act, renderHook } from '@testing-library/react';
+import { useInterval } from './use-interval';
 
 const defaultTimeout = 2000;
 
@@ -10,16 +10,14 @@ const setupTimer = (timeout: number = defaultTimeout) => ({
   advanceTimerToNextTick: () => jest.advanceTimersByTime(timeout),
 });
 
-const setupHook = (
-  cb: (...args: any[]) => void = callback,
-  timeout: number = defaultTimeout
-) => renderHook(() => useInterval(cb, timeout));
+const setupHook = (cb: (...args: any[]) => void = callback, timeout: number = defaultTimeout) =>
+  renderHook(() => useInterval(cb, timeout));
 
-describe("@raikou/hooks/use-interval", () => {
+describe('@mantine/hooks/use-interval', () => {
   beforeAll(() => {
     jest.useFakeTimers();
-    jest.spyOn(global, "setInterval");
-    jest.spyOn(global, "clearInterval");
+    jest.spyOn(global, 'setInterval');
+    jest.spyOn(global, 'clearInterval');
   });
 
   afterEach(() => {
@@ -31,17 +29,17 @@ describe("@raikou/hooks/use-interval", () => {
     jest.useRealTimers();
   });
 
-  it("initialize", () => {
+  it('initialize', () => {
     const { result } = setupHook();
     const { start, stop, toggle, active } = result.current;
 
-    expect(typeof active).toBe("boolean");
-    expect(typeof start).toBe("function");
-    expect(typeof stop).toBe("function");
-    expect(typeof toggle).toBe("function");
+    expect(typeof active).toBe('boolean');
+    expect(typeof start).toBe('function');
+    expect(typeof stop).toBe('function');
+    expect(typeof toggle).toBe('function');
   });
 
-  it("callback should NOT fire before calling start function", () => {
+  it('callback should NOT fire before calling start function', () => {
     const { advanceTimerToNextTick } = setupTimer();
     setupHook();
     advanceTimerToNextTick();
@@ -50,7 +48,7 @@ describe("@raikou/hooks/use-interval", () => {
     expect(clearInterval).not.toHaveBeenCalled();
   });
 
-  it("should run after timeout exceeded", () => {
+  it('should run after timeout exceeded', () => {
     const { advanceTimerToNextTick } = setupTimer();
     const { result } = setupHook();
 
@@ -62,10 +60,7 @@ describe("@raikou/hooks/use-interval", () => {
       result.current.start();
     });
 
-    expect(setInterval).toHaveBeenCalledWith(
-      expect.any(Function),
-      defaultTimeout
-    );
+    expect(setInterval).toHaveBeenCalledWith(expect.any(Function), defaultTimeout);
 
     expect(result.current.active).toBe(true);
 
@@ -79,7 +74,7 @@ describe("@raikou/hooks/use-interval", () => {
     expect(callback).toHaveBeenCalledTimes(3);
   });
 
-  it("should stop after stop fn call", () => {
+  it('should stop after stop fn call', () => {
     const { advanceTimerToNextTick } = setupTimer();
 
     const { result } = setupHook();
@@ -91,10 +86,7 @@ describe("@raikou/hooks/use-interval", () => {
     act(() => {
       result.current.start();
     });
-    expect(setInterval).toHaveBeenCalledWith(
-      expect.any(Function),
-      defaultTimeout
-    );
+    expect(setInterval).toHaveBeenCalledWith(expect.any(Function), defaultTimeout);
 
     advanceTimerToNextTick();
     expect(callback).toHaveBeenCalledTimes(1);
@@ -112,7 +104,7 @@ describe("@raikou/hooks/use-interval", () => {
     expect(callback).toHaveBeenCalledTimes(1);
   });
 
-  it("should toggle between active states", () => {
+  it('should toggle between active states', () => {
     const { advanceTimerToNextTick } = setupTimer();
 
     const { result } = setupHook();
@@ -123,10 +115,7 @@ describe("@raikou/hooks/use-interval", () => {
     act(() => {
       result.current.toggle();
     });
-    expect(setInterval).toHaveBeenCalledWith(
-      expect.any(Function),
-      defaultTimeout
-    );
+    expect(setInterval).toHaveBeenCalledWith(expect.any(Function), defaultTimeout);
 
     advanceTimerToNextTick();
     expect(callback).toHaveBeenCalledTimes(1);
@@ -150,10 +139,7 @@ describe("@raikou/hooks/use-interval", () => {
       result.current.toggle();
     });
 
-    expect(setInterval).toHaveBeenCalledWith(
-      expect.any(Function),
-      defaultTimeout
-    );
+    expect(setInterval).toHaveBeenCalledWith(expect.any(Function), defaultTimeout);
 
     advanceTimerToNextTick();
     expect(callback).toHaveBeenCalledTimes(2);

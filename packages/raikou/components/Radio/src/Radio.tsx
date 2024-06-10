@@ -13,6 +13,8 @@ import {
   getSize,
   getRadius,
   getThemeColor,
+  getAutoContrastValue,
+  getContrastColor,
   RaikouColor,
   RaikouSize,
   RaikouRadius,
@@ -20,9 +22,11 @@ import {
   parseThemeColor,
 } from "@raikou/core";
 import { InlineInput, InlineInputStylesNames } from "../../InlineInput/src";
+import { RadioCard } from "./RadioCard/RadioCard";
 import { RadioIcon, RadioIconProps } from "./RadioIcon";
 import { RadioGroup } from "./RadioGroup/RadioGroup";
 import { useRadioGroupContext } from "./RadioGroup.context";
+import { RadioIndicator } from "./RadioIndicator/RadioIndicator";
 import classes from "./Radio.module.css";
 
 export type RadioVariant = "filled" | "outline";
@@ -76,6 +80,9 @@ export interface RadioProps
 
   /** Key of `theme.colors` or any valid CSS color to set icon color, `theme.white` by default */
   iconColor?: RaikouColor;
+
+  /** Determines whether icon color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+  autoContrast?: boolean;
 }
 
 export type RadioFactory = Factory<{
@@ -86,17 +93,17 @@ export type RadioFactory = Factory<{
   variant: RadioVariant;
   staticComponents: {
     Group: typeof RadioGroup;
+    Card: typeof RadioCard;
+    Indicator: typeof RadioIndicator;
   };
 }>;
 
 const defaultProps: Partial<RadioProps> = {
-  size: "sm",
   labelPosition: "right",
-  radius: "xl",
 };
 
 const varsResolver = createVarsResolver<RadioFactory>(
-  (theme, { size, radius, color, iconColor, variant }) => {
+  (theme, { size, radius, color, iconColor, variant, autoContrast }) => {
     const parsedColor = parseThemeColor({
       color: color || theme.primaryColor,
       theme,
@@ -109,13 +116,15 @@ const varsResolver = createVarsResolver<RadioFactory>(
     return {
       root: {
         "--radio-size": getSize(size, "radio-size"),
-        "--radio-icon-size": getSize(size, "radio-icon-size"),
         "--radio-radius": radius === undefined ? undefined : getRadius(radius),
         "--radio-color":
           variant === "outline" ? outlineColor : getThemeColor(color, theme),
         "--radio-icon-color": iconColor
           ? getThemeColor(iconColor, theme)
+          : getAutoContrastValue(autoContrast, theme)
+          ? getContrastColor({ color, theme, autoContrast })
           : undefined,
+        "--radio-icon-size": getSize(size, "radio-icon-size"),
       },
     };
   },
@@ -145,6 +154,7 @@ export const Radio = factory<RadioFactory>((_props, ref) => {
     rootRef,
     iconColor,
     onChange,
+    mod,
     ...others
   } = props;
 
@@ -188,11 +198,8 @@ export const Radio = factory<RadioFactory>((_props, ref) => {
       id={uuid}
       size={componentSize}
       labelPosition={labelPosition}
-      // @ts-ignore
       label={label}
-      // @ts-ignore
       description={description}
-      // @ts-ignore
       error={error}
       disabled={disabled}
       classNames={classNames}
@@ -201,6 +208,7 @@ export const Radio = factory<RadioFactory>((_props, ref) => {
       data-checked={contextProps.checked || undefined}
       variant={variant}
       ref={rootRef}
+      mod={mod}
       {...styleProps}
       {...wrapperProps}
     >
@@ -223,6 +231,7 @@ export const Radio = factory<RadioFactory>((_props, ref) => {
   );
 });
 
-Radio.classes = classes;
 Radio.displayName = "@raikou/core/Radio";
 Radio.Group = RadioGroup;
+Radio.Card = RadioCard;
+Radio.Indicator = RadioIndicator;

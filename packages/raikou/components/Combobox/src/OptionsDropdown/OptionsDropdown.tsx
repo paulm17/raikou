@@ -1,8 +1,12 @@
 import React from "react";
-import { ScrollArea } from "../../../ScrollArea/src";
+import { ScrollArea, ScrollAreaProps } from "../../../ScrollArea/src";
 import { CheckIcon } from "../../../Checkbox/src";
 import { Combobox } from "../Combobox";
-import { ComboboxItem, ComboboxParsedItem } from "../Combobox.types";
+import {
+  ComboboxItem,
+  ComboboxLikeRenderOptionInput,
+  ComboboxParsedItem,
+} from "../Combobox.types";
 import {
   defaultOptionsFilter,
   FilterOptionsInput,
@@ -10,6 +14,7 @@ import {
 import { isEmptyComboboxData } from "./is-empty-combobox-data";
 import { isOptionsGroup } from "./is-options-group";
 import { validateOptions } from "./validate-options";
+import classes from "../Combobox.module.css";
 
 export type OptionsFilter = (input: FilterOptionsInput) => ComboboxParsedItem[];
 
@@ -25,6 +30,7 @@ interface OptionProps {
   withCheckIcon?: boolean;
   value?: string | string[] | null;
   checkIconPosition?: "left" | "right";
+  renderOption?: (input: ComboboxLikeRenderOptionInput<any>) => React.ReactNode;
 }
 
 function isValueChecked(
@@ -41,16 +47,17 @@ function Option({
   withCheckIcon,
   value,
   checkIconPosition,
+  renderOption,
 }: OptionProps) {
   if (!isOptionsGroup(data)) {
     const check = withCheckIcon && isValueChecked(value, data.value) && (
-      <CheckIcon className="comboBox-optionsDropdownCheckIcon" />
+      <CheckIcon className={classes.optionsDropdownCheckIcon} />
     );
     return (
       <Combobox.Option
         value={data.value}
         disabled={data.disabled}
-        className="comboBox-optionsDropdownOption"
+        className={classes.optionsDropdownOption}
         data-reverse={checkIconPosition === "right" || undefined}
         data-checked={isValueChecked(value, data.value) || undefined}
         aria-selected={isValueChecked(value, data.value)}
@@ -69,6 +76,7 @@ function Option({
       key={item.value}
       withCheckIcon={withCheckIcon}
       checkIconPosition={checkIconPosition}
+      renderOption={renderOption}
     />
   ));
   return <Combobox.Group label={data.group}>{options}</Combobox.Group>;
@@ -88,7 +96,10 @@ export interface OptionsDropdownProps {
   value?: string | string[] | null;
   checkIconPosition?: "left" | "right";
   nothingFoundMessage?: React.ReactNode;
-  labelId: string;
+  labelId: string | undefined;
+  "aria-label": string | undefined;
+  renderOption?: (input: ComboboxLikeRenderOptionInput<any>) => React.ReactNode;
+  scrollAreaProps: ScrollAreaProps | undefined;
 }
 
 export function OptionsDropdown({
@@ -106,6 +117,9 @@ export function OptionsDropdown({
   checkIconPosition,
   nothingFoundMessage,
   labelId,
+  renderOption,
+  scrollAreaProps,
+  "aria-label": ariaLabel,
 }: OptionsDropdownProps) {
   validateOptions(data);
 
@@ -126,12 +140,13 @@ export function OptionsDropdown({
       withCheckIcon={withCheckIcon}
       value={value}
       checkIconPosition={checkIconPosition}
+      renderOption={renderOption}
     />
   ));
 
   return (
     <Combobox.Dropdown hidden={hidden || (hiddenWhenEmpty && isEmpty)}>
-      <Combobox.Options labelledBy={labelId}>
+      <Combobox.Options labelledBy={labelId} aria-label={ariaLabel}>
         {withScrollArea ? (
           <ScrollArea.Autosize
             mah={maxDropdownHeight ?? 220}
@@ -139,6 +154,7 @@ export function OptionsDropdown({
             scrollbarSize="var(--_combobox-padding)"
             offsetScrollbars="y"
             className="comboBox-optionsDropdownScrollArea"
+            {...scrollAreaProps}
           >
             {options}
           </ScrollArea.Autosize>

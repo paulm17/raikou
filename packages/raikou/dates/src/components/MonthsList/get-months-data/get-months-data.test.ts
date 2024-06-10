@@ -1,7 +1,7 @@
-import { getMonthsData } from "./get-months-data";
+import { getMonthsData } from './get-months-data';
 
-describe("@raikou/dates/get-months-data", () => {
-  it("returns correct months data based on year input", () => {
+describe('@mantine/dates/get-months-data', () => {
+  it('returns correct months data based on year input', () => {
     expect(getMonthsData(new Date(2022, 5, 11))).toStrictEqual([
       [new Date(2022, 0, 1), new Date(2022, 1, 1), new Date(2022, 2, 1)],
       [new Date(2022, 3, 1), new Date(2022, 4, 1), new Date(2022, 5, 1)],

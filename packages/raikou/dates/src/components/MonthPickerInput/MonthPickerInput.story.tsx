@@ -1,8 +1,8 @@
-import dayjs from 'dayjs';
-import React from 'react';
-import { MonthPickerInput } from './MonthPickerInput';
+import React from "react";
+import dayjs from "dayjs";
+import { MonthPickerInput } from "./MonthPickerInput";
 
-export default { title: 'MonthPickerInput' };
+export default { title: "MonthPickerInput" };
 
 export function Usage() {
   return (
@@ -20,7 +20,11 @@ export function Usage() {
 export function Disabled() {
   return (
     <div style={{ padding: 40, maxWidth: 400 }}>
-      <MonthPickerInput label="Month picker input" placeholder="Pick month" disabled />
+      <MonthPickerInput
+        label="Month picker input"
+        placeholder="Pick month"
+        disabled
+      />
     </div>
   );
 }
@@ -28,7 +32,11 @@ export function Disabled() {
 export function DropdownModal() {
   return (
     <div style={{ padding: 40, maxWidth: 400 }}>
-      <MonthPickerInput label="Month picker input" placeholder="Pick month" dropdownType="modal" />
+      <MonthPickerInput
+        label="Month picker input"
+        placeholder="Pick month"
+        dropdownType="modal"
+      />
     </div>
   );
 }
@@ -37,7 +45,11 @@ export function Range() {
   return (
     <div style={{ padding: 40 }}>
       <MonthPickerInput type="range" label="Month picker input" />
-      <MonthPickerInput type="range" label="Custom labelSeparator" labelSeparator="~" />
+      <MonthPickerInput
+        type="range"
+        label="Custom labelSeparator"
+        labelSeparator="~"
+      />
     </div>
   );
 }
@@ -68,7 +80,9 @@ export function SelectedDisabledMonth() {
       <MonthPickerInput
         label="Month picker input"
         defaultValue={new Date()}
-        getMonthControlProps={(date) => ({ disabled: dayjs(date).isSame(new Date(), 'month') })}
+        getMonthControlProps={(date) => ({
+          disabled: dayjs(date).isSame(new Date(), "month"),
+        })}
       />
     </div>
   );
@@ -93,8 +107,14 @@ export function Clearable() {
 }
 
 export function Sizes() {
-  const sizes = (['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
-    <MonthPickerInput size={size} key={size} placeholder={size} label={size} mt="xl" />
+  const sizes = (["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
+    <MonthPickerInput
+      size={size}
+      key={size}
+      placeholder={size}
+      label={size}
+      mt="xl"
+    />
   ));
   return <div style={{ padding: 40 }}>{sizes}</div>;
 }

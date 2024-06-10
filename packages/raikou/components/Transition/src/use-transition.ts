@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import ReactDOM from "react-dom";
 import { useReducedMotion, useDidUpdate } from "@raikou/hooks";
 import { useRaikouTheme } from "@raikou/core";
 
@@ -41,12 +42,12 @@ export function useTransition({
     mounted ? "entered" : "exited",
   );
   const timeoutRef = useRef<number>(-1);
+  const rafRef = useRef(-1);
 
   const handleStateChange = (shouldMount: boolean) => {
     const preHandler = shouldMount ? onEnter : onExit;
     const handler = shouldMount ? onEntered : onExited;
 
-    setStatus(shouldMount ? "pre-entering" : "pre-exiting");
     window.clearTimeout(timeoutRef.current);
 
     const newTransitionDuration = reduceMotion
@@ -61,16 +62,22 @@ export function useTransition({
       typeof handler === "function" && handler();
       setStatus(shouldMount ? "entered" : "exited");
     } else {
-      const preStateTimeout = window.setTimeout(() => {
-        typeof preHandler === "function" && preHandler();
-        setStatus(shouldMount ? "entering" : "exiting");
-      }, 10);
+      // Make sure new status won't be set within the same frame as this would disrupt animation #3126
+      rafRef.current = requestAnimationFrame(() => {
+        ReactDOM.flushSync(() => {
+          setStatus(shouldMount ? "pre-entering" : "pre-exiting");
+        });
 
-      timeoutRef.current = window.setTimeout(() => {
-        window.clearTimeout(preStateTimeout);
-        typeof handler === "function" && handler();
-        setStatus(shouldMount ? "entered" : "exited");
-      }, newTransitionDuration);
+        rafRef.current = requestAnimationFrame(() => {
+          typeof preHandler === "function" && preHandler();
+          setStatus(shouldMount ? "entering" : "exiting");
+
+          timeoutRef.current = window.setTimeout(() => {
+            typeof handler === "function" && handler();
+            setStatus(shouldMount ? "entered" : "exited");
+          }, newTransitionDuration);
+        });
+      });
     }
   };
 
@@ -78,7 +85,13 @@ export function useTransition({
     handleStateChange(mounted);
   }, [mounted]);
 
-  useEffect(() => () => window.clearTimeout(timeoutRef.current), []);
+  useEffect(
+    () => () => {
+      window.clearTimeout(timeoutRef.current);
+      cancelAnimationFrame(rafRef.current);
+    },
+    [],
+  );
 
   return {
     transitionDuration,

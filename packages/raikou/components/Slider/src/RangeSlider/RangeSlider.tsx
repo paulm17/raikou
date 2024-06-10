@@ -32,6 +32,7 @@ import { getChangeValue } from "../utils/get-change-value/get-change-value";
 import { getPrecision } from "../utils/get-precision/get-precision";
 import { getFloatingValue } from "../utils/get-floating-value/get-gloating-value";
 import { getClientPosition } from "../utils/get-client-position/get-client-position";
+import classes from "../Slider.module.css";
 
 export type RangeSliderValue = [number, number];
 
@@ -195,17 +196,7 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
   const getStyles = useStyles<RangeSliderFactory>({
     name: "Slider",
     props,
-    classes: {
-      root: "slider-root",
-      label: "slider-label",
-      thumb: "slider-thumb",
-      trackContainer: "slider-trackContainer",
-      track: "slider-track",
-      bar: "slider-bar",
-      markWrapper: "slider-markWrapper",
-      mark: "slider-mark",
-      markLabel: "slider-markLabel",
-    },
+    classes,
     classNames,
     className,
     styles,

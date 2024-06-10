@@ -1,7 +1,7 @@
-import React from 'react';
-import { Day } from './Day';
+import React from "react";
+import { Day } from "./Day";
 
-export default { title: 'Day' };
+export default { title: "Day" };
 
 export function Usage() {
   return (
@@ -48,7 +48,7 @@ export function Range() {
 }
 
 export function Sizes() {
-  const sizes = (['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
+  const sizes = (["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
     <Day date={new Date()} selected size={size} key={size} />
   ));
   return <div style={{ padding: 40 }}>{sizes}</div>;

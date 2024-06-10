@@ -19,6 +19,7 @@ import {
   FloatingArrow,
   FloatingAxesOffsets,
   FloatingPosition,
+  FloatingStrategy,
   getFloatingPosition,
 } from "../../Floating/src";
 import {
@@ -82,6 +83,9 @@ export interface TooltipProps extends TooltipBaseProps {
 
   /** If set, the tooltip will not be unmounted from the DOM when it is hidden, `display: none` styles will be applied instead */
   keepMounted?: boolean;
+
+  /** Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy), `'absolute'` by default */
+  floatingStrategy?: FloatingStrategy;
 }
 
 export type TooltipFactory = Factory<{
@@ -116,6 +120,7 @@ const varsResolver = createVarsResolver<TooltipFactory>(
     tooltip: {
       "--tooltip-radius": radius === undefined ? undefined : getRadius(radius),
       "--tooltip-bg": color ? getThemeColor(color, theme) : undefined,
+      "--tooltip-color": color ? "var(--raikou-color-white)" : undefined,
     },
   }),
 );
@@ -159,6 +164,8 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
     keepMounted,
     vars,
     portalProps,
+    mod,
+    floatingStrategy,
     ...others
   } = useProps("Tooltip", defaultProps, props);
 
@@ -179,6 +186,7 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
         : offset!,
     positionDependencies: [...positionDependencies!, children],
     inline,
+    strategy: floatingStrategy,
   });
 
   const getStyles = useStyles<TooltipFactory>({
@@ -220,7 +228,7 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
             <Box
               {...others}
               variant={variant}
-              mod={{ multiline }}
+              mod={[{ multiline }, mod]}
               {...tooltip.getFloatingProps({
                 ref: tooltip.floating,
                 className: getStyles("tooltip").className,

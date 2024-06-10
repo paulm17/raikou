@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { SetStateAction, useCallback, useEffect, useRef, useState } from 'react';
 
 export function useDebouncedState<T = any>(
   defaultValue: T,
   wait: number,
-  options = { leading: false },
+  options = { leading: false }
 ) {
   const [value, setValue] = useState(defaultValue);
   const timeoutRef = useRef<number | null>(null);
@@ -13,7 +13,7 @@ export function useDebouncedState<T = any>(
   useEffect(() => clearTimeout, []);
 
   const debouncedSetValue = useCallback(
-    (newValue: T) => {
+    (newValue: SetStateAction<T>) => {
       clearTimeout();
       if (leadingRef.current && options.leading) {
         setValue(newValue);
@@ -25,7 +25,7 @@ export function useDebouncedState<T = any>(
       }
       leadingRef.current = false;
     },
-    [options.leading],
+    [options.leading]
   );
 
   return [value, debouncedSetValue] as const;

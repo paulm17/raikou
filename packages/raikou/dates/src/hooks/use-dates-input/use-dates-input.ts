@@ -1,8 +1,8 @@
 import { useDisclosure } from "@raikou/hooks";
-import { DatePickerType, DatePickerValue } from "../../types";
 import { useDatesContext } from "../../components/DatesProvider";
+import { DatePickerType, DatePickerValue } from "../../types";
+import { DateFormatter, getFormattedDate } from "../../utils";
 import { useUncontrolledDates } from "../use-uncontrolled-dates/use-uncontrolled-dates";
-import { getFormattedDate } from "../../utils";
 
 interface UseDatesInput<Type extends DatePickerType = "default"> {
   type: Type;
@@ -14,6 +14,7 @@ interface UseDatesInput<Type extends DatePickerType = "default"> {
   closeOnChange: boolean | undefined;
   sortDates: boolean | undefined;
   labelSeparator: string | undefined;
+  valueFormatter: DateFormatter | undefined;
 }
 
 export function useDatesInput<Type extends DatePickerType = "default">({
@@ -26,6 +27,7 @@ export function useDatesInput<Type extends DatePickerType = "default">({
   closeOnChange,
   sortDates,
   labelSeparator,
+  valueFormatter,
 }: UseDatesInput<Type>) {
   const ctx = useDatesContext();
 
@@ -44,6 +46,7 @@ export function useDatesInput<Type extends DatePickerType = "default">({
     locale: ctx.getLocale(locale),
     format: format!,
     labelSeparator: ctx.getLabelSeparator(labelSeparator),
+    formatter: valueFormatter,
   });
 
   const setValue = (val: any) => {

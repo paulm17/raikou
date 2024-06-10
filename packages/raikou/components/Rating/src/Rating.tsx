@@ -294,7 +294,6 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
             return (
               <RatingItem
                 key={`${integerValue}-${symbolValue}`}
-                size={size!}
                 getSymbolLabel={getSymbolLabel}
                 emptyIcon={emptySymbol}
                 fullIcon={fullSymbol}
@@ -332,6 +331,7 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
         onTouchEnd={handleTouchEnd}
         variant={variant}
         size={size}
+        id={_id}
         {...others}
       >
         {items}
@@ -340,5 +340,4 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
   );
 });
 
-Rating.classes = classes;
 Rating.displayName = "@raikou/core/Rating";

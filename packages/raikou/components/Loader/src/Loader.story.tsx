@@ -14,6 +14,31 @@ export function Usage() {
   );
 }
 
+// export function LoaderOnProvider() {
+//   const theme = createTheme({
+//     components: {
+//       Loader: Loader.extend({
+//         defaultProps: {
+//           type: "ring",
+//           loaders: {
+//             ring: RingLoader,
+//             ...Loader.defaultLoaders,
+//           },
+//         },
+//       }),
+//     },
+//   });
+//   return (
+//     <MantineProvider theme={theme}>
+//       <div style={{ padding: 40 }}>
+//         <Loader />
+//         <Loader type="bars" mt="xl" />
+//         <Loader type="dots" mt="xl" />
+//       </div>
+//     </MantineProvider>
+//   );
+// }
+
 export function Colors() {
   return (
     <div style={{ padding: 40 }}>
@@ -108,8 +133,10 @@ const RingLoader: RaikouLoaderComponent = forwardRef(
         </circle>
       </g>
     </svg>
-  )
+  ),
 );
+
+RingLoader.displayName = "@raikou/core/RingLoader";
 
 export function CustomComponent() {
   return (

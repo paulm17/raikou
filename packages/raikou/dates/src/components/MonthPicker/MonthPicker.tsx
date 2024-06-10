@@ -1,23 +1,23 @@
 import React from "react";
 import {
   BoxProps,
-  StylesApiProps,
-  factory,
   ElementProps,
-  useProps,
+  factory,
   Factory,
-  useResolvedStylesApi,
   RaikouComponentStaticProperties,
+  StylesApiProps,
+  useProps,
+  useResolvedStylesApi,
 } from "@raikou/core";
 import { useDatesState } from "../../hooks";
-import { DecadeLevelBaseSettings } from "../DecadeLevel";
-import { YearLevelBaseSettings } from "../YearLevel";
-import { PickerBaseProps, DatePickerType, CalendarLevel } from "../../types";
-import { Calendar, CalendarBaseProps } from "../Calendar";
-import { DecadeLevelGroupStylesNames } from "../DecadeLevelGroup";
-import { YearLevelGroupStylesNames } from "../YearLevelGroup";
+import { CalendarLevel, DatePickerType, PickerBaseProps } from "../../types";
 import { shiftTimezone } from "../../utils";
+import { Calendar, CalendarBaseProps } from "../Calendar";
 import { useDatesContext } from "../DatesProvider";
+import { DecadeLevelBaseSettings } from "../DecadeLevel";
+import { DecadeLevelGroupStylesNames } from "../DecadeLevelGroup";
+import { YearLevelBaseSettings } from "../YearLevel";
+import { YearLevelGroupStylesNames } from "../YearLevelGroup";
 
 export type MonthPickerStylesNames =
   | DecadeLevelGroupStylesNames
@@ -74,7 +74,6 @@ export const MonthPicker: MonthPickerComponent = factory<MonthPickerFactory>(
     const {
       classNames,
       styles,
-      unstyled,
       vars,
       type,
       defaultValue,
@@ -115,7 +114,6 @@ export const MonthPicker: MonthPickerComponent = factory<MonthPickerFactory>(
         styles,
         props,
       });
-
     const ctx = useDatesContext();
 
     return (
@@ -149,4 +147,5 @@ export const MonthPicker: MonthPickerComponent = factory<MonthPickerFactory>(
   },
 ) as any;
 
+MonthPicker.classes = Calendar.classes;
 MonthPicker.displayName = "@raikou/dates/MonthPicker";

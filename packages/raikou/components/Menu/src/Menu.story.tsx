@@ -3,6 +3,7 @@ import { IconTable, IconSearch } from "@tabler/icons-react";
 import { useDisclosure } from "@raikou/hooks";
 import { Menu } from "./Menu";
 import { Button } from "../../Button/src";
+import { Input } from "../../Input/src";
 import { Tooltip } from "../../Tooltip/src";
 import { Text } from "../../Text/src";
 
@@ -10,7 +11,64 @@ export default { title: "Menu" };
 
 export function DisabledFirstItem() {
   return (
-    <Menu>
+    <Menu trigger="hover">
+      <Menu.Target>
+        <Button>Toggle menu</Button>
+      </Menu.Target>
+
+      <Menu.Dropdown>
+        <Menu.Item disabled>Disabled</Menu.Item>
+        <Menu.Item>Item 2</Menu.Item>
+        <Menu.Item>Item 3</Menu.Item>
+      </Menu.Dropdown>
+    </Menu>
+  );
+}
+export function FormTab() {
+  return (
+    <div>
+      <form>
+        <input />
+        <input />
+      </form>
+
+      <Menu keepMounted>
+        <Menu.Target>
+          <Button>Hey</Button>
+        </Menu.Target>
+        <Menu.Dropdown>
+          <Menu.Item>Item 2</Menu.Item>
+          <Menu.Item>Item 3</Menu.Item>
+        </Menu.Dropdown>
+      </Menu>
+
+      <form>
+        <input />
+        <input />
+      </form>
+    </div>
+  );
+}
+
+export function Unstyled() {
+  return (
+    <Menu unstyled>
+      <Menu.Target>
+        <Button>Toggle menu</Button>
+      </Menu.Target>
+
+      <Menu.Dropdown>
+        <Menu.Item disabled>Disabled</Menu.Item>
+        <Menu.Item>Item 2</Menu.Item>
+        <Menu.Item>Item 3</Menu.Item>
+      </Menu.Dropdown>
+    </Menu>
+  );
+}
+
+export function KeepMounted() {
+  return (
+    <Menu keepMounted>
       <Menu.Target>
         <Button>Toggle menu</Button>
       </Menu.Target>
@@ -45,7 +103,7 @@ export function Usage() {
           <Menu.Item
             leftSection={<IconSearch size={14} />}
             rightSection={
-              <Text size="xs" color="dimmed">
+              <Text size="xs" c="dimmed">
                 ⌘K
               </Text>
             }
@@ -56,7 +114,7 @@ export function Usage() {
           <Menu.Divider />
 
           <Menu.Label>Label 2</Menu.Label>
-          <Menu.Item color="red-400" leftSection={<IconTable size={14} />}>
+          <Menu.Item color="red" leftSection={<IconTable size={14} />}>
             Red color
           </Menu.Item>
           <Menu.Item leftSection={<IconTable size={14} />}>
@@ -65,48 +123,6 @@ export function Usage() {
         </Menu.Dropdown>
       </Menu>
     </div>
-  );
-}
-
-export function FormTab() {
-  return (
-    <div>
-      <form>
-        <input />
-        <input />
-      </form>
-
-      <Menu keepMounted>
-        <Menu.Target>
-          <Button>Hey</Button>
-        </Menu.Target>
-        <Menu.Dropdown>
-          <Menu.Item>Item 2</Menu.Item>
-          <Menu.Item>Item 3</Menu.Item>
-        </Menu.Dropdown>
-      </Menu>
-
-      <form>
-        <input />
-        <input />
-      </form>
-    </div>
-  );
-}
-
-export function KeepMounted() {
-  return (
-    <Menu keepMounted>
-      <Menu.Target>
-        <Button>Toggle menu</Button>
-      </Menu.Target>
-
-      <Menu.Dropdown>
-        <Menu.Item disabled>Disabled</Menu.Item>
-        <Menu.Item>Item 2</Menu.Item>
-        <Menu.Item>Item 3</Menu.Item>
-      </Menu.Dropdown>
-    </Menu>
   );
 }
 
@@ -179,17 +195,22 @@ export function WithUseDisclosure() {
 
 export function WithKeepMounted() {
   return (
-    <div style={{ padding: 40 }}>
-      <Menu id="new-notification-menu" keepMounted position="bottom-end">
+    <div className="App">
+      <Menu keepMounted>
+        {/* Menu without keepMounted will let you 'TAB' through form-fields */}
+        {/* <Menu> */}
         <Menu.Target>
-          <Button>Open Menu</Button>
+          <Button>Hey</Button>
         </Menu.Target>
         <Menu.Dropdown>
-          <Menu.Item>Menu Item 1</Menu.Item>
-          <Menu.Item>Menu Item 2</Menu.Item>
-          <Menu.Item>Menu Item 3</Menu.Item>
+          <Menu.Item>Baby</Menu.Item>
+          <Menu.Item>Girl</Menu.Item>
         </Menu.Dropdown>
       </Menu>
+      <form>
+        <Input />
+        <Input />
+      </form>
     </div>
   );
 }

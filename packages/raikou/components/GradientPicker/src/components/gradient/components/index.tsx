@@ -1,5 +1,0 @@
-export { Dial } from "./dial"
-export { Repeat } from "./repeat"
-export { Reverse } from "./reverse"
-export { Rotate } from "./rotate"
-export { Slider } from "./slider"

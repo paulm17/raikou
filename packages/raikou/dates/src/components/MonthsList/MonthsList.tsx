@@ -1,22 +1,23 @@
 import React from "react";
+import dayjs from "dayjs";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
-  factory,
   ElementProps,
-  useProps,
-  useStyles,
+  factory,
   Factory,
   RaikouSize,
+  StylesApiProps,
+  useProps,
+  useStyles,
 } from "@raikou/core";
-import dayjs from "dayjs";
 import { ControlsGroupSettings } from "../../types";
-import { PickerControl, PickerControlProps } from "../PickerControl";
 import { useDatesContext } from "../DatesProvider";
-import { getMonthsData } from "./get-months-data/get-months-data";
+import { PickerControl, PickerControlProps } from "../PickerControl";
 import { getMonthInTabOrder } from "./get-month-in-tab-order/get-month-in-tab-order";
+import { getMonthsData } from "./get-months-data/get-months-data";
 import { isMonthDisabled } from "./is-month-disabled/is-month-disabled";
+import classes from "./MonthsList.module.css";
 
 export type MonthsListStylesNames =
   | "monthsList"
@@ -95,10 +96,7 @@ export const MonthsList = factory<MonthsListFactory>((_props, ref) => {
 
   const getStyles = useStyles<MonthsListFactory>({
     name: __staticSelector || "MonthsList",
-    classes: {
-      monthsList: "dates-monthsList",
-      monthsListCell: "dates-monthsListCell",
-    },
+    classes,
     props,
     className,
     style,
@@ -185,4 +183,5 @@ export const MonthsList = factory<MonthsListFactory>((_props, ref) => {
   );
 });
 
+MonthsList.classes = classes;
 MonthsList.displayName = "@raikou/dates/MonthsList";

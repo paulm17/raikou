@@ -36,6 +36,14 @@ export function Sizes() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Switch label="Unstyled" unstyled />
+    </div>
+  );
+}
+
 export function WithLabels() {
   return (
     <Group m={4}>

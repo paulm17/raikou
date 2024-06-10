@@ -1,15 +1,69 @@
-import { useRef } from "react";
-import { useWindowScroll } from "../use-window-scroll/use-window-scroll";
-import { useIsomorphicEffect } from "../use-isomorphic-effect/use-isomorphic-effect";
+import { useEffect, useRef, useState } from 'react';
+import { useIsomorphicEffect } from '../use-isomorphic-effect/use-isomorphic-effect';
+import { useWindowScroll } from '../use-window-scroll/use-window-scroll';
 
 export const isFixed = (current: number, fixedAt: number) => current <= fixedAt;
-export const isPinned = (current: number, previous: number) =>
-  current <= previous;
-export const isReleased = (
+export const isPinned = (current: number, previous: number) => current <= previous;
+export const isReleased = (current: number, previous: number, fixedAt: number) =>
+  !isPinned(current, previous) && !isFixed(current, fixedAt);
+
+export const isPinnedOrReleased = (
   current: number,
-  previous: number,
   fixedAt: number,
-) => !isPinned(current, previous) && !isFixed(current, fixedAt);
+  isCurrentlyPinnedRef: React.MutableRefObject<boolean>,
+  isScrollingUp: boolean,
+  onPin?: () => void,
+  onRelease?: () => void
+) => {
+  const isInFixedPosition = isFixed(current, fixedAt);
+  if (isInFixedPosition && !isCurrentlyPinnedRef.current) {
+    isCurrentlyPinnedRef.current = true;
+    onPin?.();
+  } else if (!isInFixedPosition && isScrollingUp && !isCurrentlyPinnedRef.current) {
+    isCurrentlyPinnedRef.current = true;
+    onPin?.();
+  } else if (!isInFixedPosition && isCurrentlyPinnedRef.current) {
+    isCurrentlyPinnedRef.current = false;
+    onRelease?.();
+  }
+};
+
+export const useScrollDirection = () => {
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [isScrollingUp, setIsScrollingUp] = useState(false);
+  const [isResizing, setIsResizing] = useState(false);
+
+  useEffect(() => {
+    let resizeTimer: NodeJS.Timeout | undefined;
+
+    const onResize = () => {
+      setIsResizing(true);
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        setIsResizing(false);
+      }, 300); // Reset the resizing flag after a timeout
+    };
+
+    const onScroll = () => {
+      if (isResizing) {
+        return; // Skip scroll events if resizing is in progress
+      }
+      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      setIsScrollingUp(currentScrollTop < lastScrollTop);
+      setLastScrollTop(currentScrollTop);
+    };
+
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('resize', onResize);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    };
+  }, [lastScrollTop, isResizing]);
+
+  return isScrollingUp;
+};
 
 interface UseHeadroomInput {
   /** Number in px at which element should be fixed */
@@ -25,20 +79,21 @@ interface UseHeadroomInput {
   onRelease?: () => void;
 }
 
-export function useHeadroom({
-  fixedAt = 0,
-  onPin,
-  onFix,
-  onRelease,
-}: UseHeadroomInput = {}) {
-  const scrollRef = useRef(0);
+export function useHeadroom({ fixedAt = 0, onPin, onFix, onRelease }: UseHeadroomInput = {}) {
+  const isCurrentlyPinnedRef = useRef(false);
+  const isScrollingUp = useScrollDirection();
   const [{ y: scrollPosition }] = useWindowScroll();
 
   useIsomorphicEffect(() => {
-    if (isPinned(scrollPosition, scrollRef.current)) {
-      onPin?.();
-    }
-  }, [scrollPosition, onPin]);
+    isPinnedOrReleased(
+      scrollPosition,
+      fixedAt,
+      isCurrentlyPinnedRef,
+      isScrollingUp,
+      onPin,
+      onRelease
+    );
+  }, [scrollPosition]);
 
   useIsomorphicEffect(() => {
     if (isFixed(scrollPosition, fixedAt)) {
@@ -46,21 +101,7 @@ export function useHeadroom({
     }
   }, [scrollPosition, fixedAt, onFix]);
 
-  useIsomorphicEffect(() => {
-    if (isReleased(scrollPosition, scrollRef.current, fixedAt)) {
-      onRelease?.();
-    }
-  }, [scrollPosition, onRelease]);
-
-  useIsomorphicEffect(() => {
-    scrollRef.current = window.scrollY;
-  }, [scrollPosition]);
-
-  if (isPinned(scrollPosition, scrollRef.current)) {
-    return true;
-  }
-
-  if (isFixed(scrollPosition, fixedAt)) {
+  if (isFixed(scrollPosition, fixedAt) || isScrollingUp) {
     return true;
   }
 

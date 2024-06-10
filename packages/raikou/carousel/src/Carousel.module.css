@@ -1,9 +1,9 @@
 .root {
-  @mixin light {
+  @mixin where-light {
     --raikou-carousel-border: #dee2e6;
     --raikou-carousel-control-opacity: 0.85;
   }
-  @mixin dark {
+  @mixin where-dark {
     --raikou-carousel-border: #373a40;
     --raikou-carousel-control-opacity: 0.65;
   }
@@ -90,11 +90,11 @@
   border: rem(1px) solid var(--raikou-carousel-border);
   transition: opacity 100ms ease;
 
-  @mixin light {
+  @mixin where-light {
     --_control-opacity: var(--raikou-carousel-control-opacity);
   }
 
-  @mixin dark {
+  @mixin where-dark {
     --_control-opacity: var(--raikou-carousel-control-opacity);
   }
 

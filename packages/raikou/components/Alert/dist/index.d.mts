@@ -22,6 +22,8 @@ interface AlertProps extends BoxProps, StylesApiProps<AlertFactory>, ElementProp
     onClose?: () => void;
     /** Close button `aria-label` */
     closeButtonLabel?: string;
+    /** Determines whether text color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+    autoContrast?: boolean;
 }
 type AlertFactory = Factory<{
     props: AlertProps;

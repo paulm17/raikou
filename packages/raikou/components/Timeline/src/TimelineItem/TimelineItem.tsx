@@ -82,19 +82,19 @@ export const TimelineItem = factory<TimelineItemFactory>((_props, ref) => {
     lineVariant,
     children,
     title,
+    mod,
     ...others
   } = props;
 
+  const ctx = useStore.getState();
   const theme = useRaikouTheme();
 
   const stylesApiProps = { classNames, styles };
 
   return (
     <Box
-      {...useStore
-        .getState()
-        .getStyles("item", { ...stylesApiProps, className, style })}
-      mod={{ "line-active": __lineActive, active: __active }}
+      {...ctx.getStyles("item", { ...stylesApiProps, className, style })}
+      mod={[{ "line-active": __lineActive, active: __active }, mod]}
       ref={ref}
       __vars={{
         "--tli-radius": radius ? getRadius(radius) : undefined,
@@ -104,19 +104,19 @@ export const TimelineItem = factory<TimelineItemFactory>((_props, ref) => {
       {...others}
     >
       <Box
-        {...useStore.getState().getStyles("itemBullet", stylesApiProps)}
+        {...ctx.getStyles("itemBullet", stylesApiProps)}
         mod={{ "with-child": !!bullet, align: __align, active: __active }}
       >
         {bullet as any}
       </Box>
 
-      <div {...useStore.getState().getStyles("itemBody", stylesApiProps)}>
+      <div {...ctx.getStyles("itemBody", stylesApiProps)}>
         {title && (
-          <div {...useStore.getState().getStyles("itemTitle", stylesApiProps)}>
+          <div {...ctx.getStyles("itemTitle", stylesApiProps)}>
             {title as any}
           </div>
         )}
-        <div {...useStore.getState().getStyles("itemContent", stylesApiProps)}>
+        <div {...ctx.getStyles("itemContent", stylesApiProps)}>
           {children as any}
         </div>
       </div>

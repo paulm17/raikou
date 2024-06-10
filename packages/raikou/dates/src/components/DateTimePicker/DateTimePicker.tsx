@@ -2,37 +2,37 @@ import dayjs from "dayjs";
 import React, { useRef, useState } from "react";
 import {
   BoxProps,
-  StylesApiProps,
   factory,
-  useProps,
-  useStyles,
   Factory,
+  StylesApiProps,
+  useProps,
   useResolvedStylesApi,
+  useStyles,
 } from "@raikou/core";
-import { InputVariant } from "../../../../components/Input/src";
 import {
   ActionIcon,
   ActionIconProps,
 } from "../../../../components/ActionIcon/src";
+import { InputVariant } from "../../../../components/Input/src";
 import { CheckIcon } from "../../../../components/Checkbox/src";
-import { useDisclosure, useDidUpdate, useMergedRef } from "@raikou/hooks";
+import { useDidUpdate, useDisclosure, useMergedRef } from "@raikou/hooks";
+import { useUncontrolledDates } from "../../hooks";
+import { DateValue } from "../../types";
 import { assignTime, shiftTimezone } from "../../utils";
-import { TimeInput, TimeInputProps } from "../TimeInput";
 import {
-  pickCalendarProps,
   CalendarBaseProps,
   CalendarSettings,
   CalendarStylesNames,
+  pickCalendarProps,
 } from "../Calendar";
 import { DatePicker } from "../DatePicker";
+import { useDatesContext } from "../DatesProvider";
 import {
-  PickerInputBase,
   DateInputSharedProps,
+  PickerInputBase,
   PickerInputBaseStylesNames,
 } from "../PickerInputBase";
-import { DateValue } from "../../types";
-import { useDatesContext } from "../DatesProvider";
-import { useUncontrolledDates } from "../../hooks";
+import { TimeInput, TimeInputProps } from "../TimeInput";
 import classes from "./DateTimePicker.module.css";
 
 export type DateTimePickerStylesNames =
@@ -107,6 +107,8 @@ export const DateTimePicker = factory<DateTimePickerFactory>((_props, ref) => {
     variant,
     dropdownType,
     vars,
+    minDate,
+    maxDate,
     ...rest
   } = props;
 
@@ -211,6 +213,9 @@ export const DateTimePicker = factory<DateTimePickerFactory>((_props, ref) => {
     }
   }, [dropdownOpened]);
 
+  const minTime = minDate ? dayjs(minDate).format("HH:mm:ss") : null;
+  const maxTime = maxDate ? dayjs(maxDate).format("HH:mm:ss") : null;
+
   const __stopPropagation = dropdownType === "popover";
 
   return (
@@ -234,6 +239,8 @@ export const DateTimePicker = factory<DateTimePickerFactory>((_props, ref) => {
     >
       <DatePicker
         {...calendarProps}
+        maxDate={maxDate}
+        minDate={minDate}
         size={size}
         variant={variant}
         type="default"
@@ -262,6 +269,24 @@ export const DateTimePicker = factory<DateTimePickerFactory>((_props, ref) => {
             withSeconds={withSeconds}
             ref={timeInputRefMerged}
             unstyled={unstyled}
+            minTime={
+              _value &&
+              minDate &&
+              _value.toDateString() === minDate.toDateString()
+                ? minTime != null
+                  ? minTime
+                  : undefined
+                : undefined
+            }
+            maxTime={
+              _value &&
+              maxDate &&
+              _value.toDateString() === maxDate.toDateString()
+                ? maxTime != null
+                  ? maxTime
+                  : undefined
+                : undefined
+            }
             {...timeInputProps}
             {...getStyles("timeInput", {
               className: timeInputProps?.className,
@@ -282,7 +307,6 @@ export const DateTimePicker = factory<DateTimePickerFactory>((_props, ref) => {
             })}
             unstyled={unstyled}
             data-raikou-stop-propagation={__stopPropagation || undefined}
-            // children prop is required to allow overriding icon with submitButtonProps
             // eslint-disable-next-line react/no-children-prop
             children={<CheckIcon size="30%" />}
             {...submitButtonProps}

@@ -1,7 +1,14 @@
 import React from "react";
-import { factory, ElementProps, useProps, Factory } from "@raikou/core";
-import { InputBase, InputBaseProps } from "../../InputBase/src";
-import { __InputStylesNames } from "../../Input/src";
+import {
+  BoxProps,
+  ElementProps,
+  factory,
+  Factory,
+  StylesApiProps,
+  useProps,
+} from "@raikou/core";
+import { InputBase } from "../../InputBase/src";
+import { __BaseInputProps, __InputStylesNames } from "../../Input/src";
 import {
   ComboboxData,
   getParsedComboboxData,
@@ -10,7 +17,9 @@ import {
 import { NativeSelectOption } from "./NativeSelectOption";
 
 export interface NativeSelectProps
-  extends InputBaseProps,
+  extends BoxProps,
+    Omit<__BaseInputProps, "pointer">,
+    StylesApiProps<NativeSelectFactory>,
     ElementProps<"select", "size"> {
   /** Data used to render options, can be replaced with `children` */
   data?: ComboboxData;
@@ -23,7 +32,6 @@ export type NativeSelectFactory = Factory<{
 }>;
 
 const defaultProps: Partial<NativeSelectProps> = {
-  size: "sm",
   rightSectionPointerEvents: "none",
 };
 

@@ -1,39 +1,39 @@
 .root {
-  @mixin light {
+  @mixin where-light {
     --raikou-divider-color: #ced4da;
   }
-  @mixin dark {
+  @mixin where-dark {
     --raikou-divider-color: #373a40;
   }
 
-  --divider-size-xs: rem(1px);
-  --divider-size-sm: rem(2px);
-  --divider-size-md: rem(3px);
-  --divider-size-lg: rem(4px);
-  --divider-size-xl: rem(5px);
+  --divider-size-xs: 1px;
+  --divider-size-sm: 2px;
+  --divider-size-md: 3px;
+  --divider-size-lg: 4px;
+  --divider-size-xl: 5px;
   --divider-size: var(--divider-size-xs);
 
-  @mixin light {
-    --_divider-color: var(--raikou-divider-color);
+  @mixin where-light {
+    --divider-color: var(--raikou-divider-color);
   }
 
-  @mixin dark {
-    --_divider-color: var(--raikou-divider-color);
+  @mixin where-dark {
+    --divider-color: var(--raikou-divider-color);
   }
 
-  &[data-orientation="horizontal"] {
+  &:where([data-orientation="horizontal"]) {
     border-top: var(--divider-size) var(--divider-border-style, solid)
-      var(--divider-color, var(--_divider-color));
+      var(--divider-color);
   }
 
-  &[data-orientation="vertical"] {
-    border-left: var(--divider-size) var(--divider-border-style, solid)
-      var(--divider-color, var(--_divider-color));
+  &:where([data-orientation="vertical"]) {
+    border-inline-start: var(--divider-size) var(--divider-border-style, solid)
+      var(--divider-color);
     height: auto;
     align-self: stretch;
   }
 
-  &[data-with-label] {
+  &:where([data-with-label]) {
     border: 0;
   }
 }
@@ -42,46 +42,32 @@
   display: flex;
   align-items: center;
   font-size: var(--raikou-font-size-xs);
-  color: var(--divider-color, var(--raikou-color-dimmed));
+  color: var(--raikou-color-dimmed);
   white-space: nowrap;
 
-  &[data-position="left"] {
-    &::before {
-      display: none;
-    }
+  &:where([data-position="left"])::before {
+    display: none;
   }
 
-  &[data-position="right"] {
-    &::after {
-      display: none;
-    }
+  &:where([data-position="right"])::after {
+    display: none;
   }
 
   &::before {
     content: "";
     flex: 1;
-    height: rem(1px);
+    height: 1px;
     border-top: var(--divider-size) var(--divider-border-style, solid)
-      var(--divider-color, var(--_divider-color));
-    margin-right: var(--raikou-spacing-xs);
-
-    @mixin rtl {
-      margin-right: 0;
-      margin-left: var(--raikou-spacing-xs);
-    }
+      var(--divider-color);
+    margin-inline-end: var(--raikou-spacing-xs);
   }
 
   &::after {
     content: "";
     flex: 1;
-    height: rem(1px);
+    height: 1px;
     border-top: var(--divider-size) var(--divider-border-style, solid)
-      var(--divider-color, var(--_divider-color));
-    margin-left: var(--raikou-spacing-xs);
-
-    @mixin rtl {
-      margin-left: 0;
-      margin-right: var(--raikou-spacing-xs);
-    }
+      var(--divider-color);
+    margin-inline-start: var(--raikou-spacing-xs);
   }
 }

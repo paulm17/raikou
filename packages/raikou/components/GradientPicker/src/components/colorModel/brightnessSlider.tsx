@@ -1,8 +1,12 @@
 import React, { forwardRef } from "react";
 import { TinyColor } from "@ctrl/tinycolor";
-import { GradientPickerColorSlider, SliderBaseProps } from "../colorSlider";
+import {
+  ColorSlider,
+  ColorSliderProps,
+} from "../../../../ColorPicker/src/ColorSlider/ColorSlider";
 
-export interface BrightnessSliderProps extends SliderBaseProps {
+export interface BrightnessSliderProps
+  extends Omit<ColorSliderProps, "maxValue" | "overlays" | "round"> {
   hsl: Number[];
 }
 
@@ -30,7 +34,7 @@ export const BrightnessSlider = forwardRef<
     };
 
     return (
-      <GradientPickerColorSlider
+      <ColorSlider
         {...others}
         ref={ref}
         value={value}

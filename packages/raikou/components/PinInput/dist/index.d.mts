@@ -55,6 +55,8 @@ interface PinInputProps extends BoxProps, StylesApiProps<PinInputFactory>, Eleme
     ariaLabel?: string;
     /** Props passed down to the hidden input */
     hiddenInputProps?: React.ComponentPropsWithoutRef<"input">;
+    /** Assigns ref of the root element */
+    rootRef?: React.ForwardedRef<HTMLDivElement>;
 }
 type PinInputFactory = Factory<{
     props: PinInputProps;

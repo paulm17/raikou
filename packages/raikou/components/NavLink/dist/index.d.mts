@@ -41,6 +41,8 @@ interface NavLinkProps extends BoxProps, StylesApiProps<NavLinkFactory> {
     onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
     /** Link `onkeydown` event */
     onKeyDown?: (event: React.KeyboardEvent<HTMLAnchorElement>) => void;
+    /** Determines whether button text color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+    autoContrast?: boolean;
 }
 type NavLinkFactory = PolymorphicFactory<{
     props: NavLinkProps;

@@ -2,13 +2,13 @@ import React from "react";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
-  factory,
   ElementProps,
-  useProps,
-  useStyles,
+  factory,
   Factory,
   RaikouSize,
+  StylesApiProps,
+  useProps,
+  useStyles,
 } from "@raikou/core";
 import classes from "./LevelsGroup.module.css";
 

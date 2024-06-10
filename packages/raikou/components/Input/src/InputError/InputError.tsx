@@ -68,9 +68,6 @@ export const InputError = factory<InputErrorFactory>((_props, ref) => {
     name: ["InputWrapper", __staticSelector],
     props,
     classes,
-    // classes: {
-    //   error: "inputWrapper-error",
-    // },
     className,
     style,
     classNames,

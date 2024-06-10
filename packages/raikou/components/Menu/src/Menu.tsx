@@ -121,6 +121,7 @@ export function Menu(_props: MenuProps) {
     variant,
     vars,
     menuItemTabIndex,
+    keepMounted,
     ...others
   } = props;
 
@@ -204,6 +205,7 @@ export function Menu(_props: MenuProps) {
         styles={resolvedStyles}
         unstyled={unstyled}
         variant={variant}
+        keepMounted={keepMounted}
       >
         {children as any}
       </Popover>

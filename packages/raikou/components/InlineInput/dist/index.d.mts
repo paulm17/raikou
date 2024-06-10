@@ -13,6 +13,8 @@ interface InlineInputProps extends BoxProps, StylesApiProps<InlineInputFactory>,
     error: React.ReactNode;
     size: RaikouSize | (string & {}) | undefined;
     labelPosition?: "left" | "right";
+    bodyElement?: any;
+    labelElement?: any;
 }
 type InlineInputFactory = Factory<{
     props: any;

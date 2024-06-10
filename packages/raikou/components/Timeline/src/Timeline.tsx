@@ -14,6 +14,8 @@ import {
   rem,
   getRadius,
   getThemeColor,
+  getAutoContrastValue,
+  getContrastColor,
 } from "@raikou/core";
 import {
   TimelineItem,
@@ -55,6 +57,9 @@ export interface TimelineProps
 
   /** Determines whether the active items direction should be reversed without reversing items order, `false` by default */
   reverseActive?: boolean;
+
+  /** Determines whether icon color should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+  autoContrast?: boolean;
 }
 
 export type TimelineFactory = Factory<{
@@ -74,12 +79,15 @@ const defaultProps: Partial<TimelineProps> = {
 };
 
 const varsResolver = createVarsResolver<TimelineFactory>(
-  (theme, { bulletSize, lineWidth, radius, color }) => ({
+  (theme, { bulletSize, lineWidth, radius, color, autoContrast }) => ({
     root: {
       "--tl-bullet-size": rem(bulletSize),
       "--tl-line-width": rem(lineWidth),
       "--tl-radius": radius === undefined ? undefined : getRadius(radius),
       "--tl-color": color ? getThemeColor(color, theme) : undefined,
+      "--tl-icon-color": getAutoContrastValue(autoContrast, theme)
+        ? getContrastColor({ color, theme, autoContrast })
+        : undefined,
     },
   }),
 );
@@ -101,6 +109,8 @@ export const Timeline = factory<TimelineFactory>((_props, ref) => {
     align,
     lineWidth,
     reverseActive,
+    mod,
+    autoContrast,
     ...others
   } = props;
 
@@ -140,7 +150,7 @@ export const Timeline = factory<TimelineFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} mod={{ align }} ref={ref} {...others}>
+    <Box {...getStyles("root")} mod={[{ align }, mod]} ref={ref} {...others}>
       {items as any}
     </Box>
   );

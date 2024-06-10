@@ -1,23 +1,23 @@
-import { renderHook, act } from "@testing-library/react";
-import { useListState } from "./use-list-state";
+import { act, renderHook } from '@testing-library/react';
+import { useListState } from './use-list-state';
 
 const TEST_STATE = [
-  { name: "John", age: 23, skills: ["JavaScript", "Dart"] },
-  { name: "Amy", age: 21, skills: ["TypeScript"] },
-  { name: "Bill", age: 36, skills: ["Python", "Django"] },
+  { name: 'John', age: 23, skills: ['JavaScript', 'Dart'] },
+  { name: 'Amy', age: 21, skills: ['TypeScript'] },
+  { name: 'Bill', age: 36, skills: ['Python', 'Django'] },
 ];
 
-const TEST_ITEM_1 = { name: "Emily", age: 18, skills: ["Lua", "Haskell"] };
-const TEST_ITEM_2 = { name: "Bob", age: 44, skills: ["Angular", "TypeScript"] };
+const TEST_ITEM_1 = { name: 'Emily', age: 18, skills: ['Lua', 'Haskell'] };
+const TEST_ITEM_2 = { name: 'Bob', age: 44, skills: ['Angular', 'TypeScript'] };
 
-describe("@raikou/hooks/use-list-state", () => {
-  it("returns initial state of no modifications were applied", () => {
+describe('@mantine/hooks/use-list-state', () => {
+  it('returns initial state of no modifications were applied', () => {
     const hook = renderHook(() => useListState(TEST_STATE));
     const [state] = hook.result.current;
     expect(state).toStrictEqual(TEST_STATE);
   });
 
-  it("sets state with given value or callback", () => {
+  it('sets state with given value or callback', () => {
     const withValue = renderHook(() => useListState(TEST_STATE));
     const withCallback = renderHook(() => useListState(TEST_STATE));
 
@@ -26,25 +26,17 @@ describe("@raikou/hooks/use-list-state", () => {
       const [, withCallbackHandlers] = withCallback.result.current;
 
       withValueHandlers.setState([TEST_ITEM_1]);
-      withCallbackHandlers.setState((current) => [
-        TEST_ITEM_1,
-        ...current,
-        TEST_ITEM_2,
-      ]);
+      withCallbackHandlers.setState((current) => [TEST_ITEM_1, ...current, TEST_ITEM_2]);
     });
 
     const [withValueState] = withValue.result.current;
     const [withCallbackState] = withCallback.result.current;
 
     expect(withValueState).toStrictEqual([TEST_ITEM_1]);
-    expect(withCallbackState).toStrictEqual([
-      TEST_ITEM_1,
-      ...TEST_STATE,
-      TEST_ITEM_2,
-    ]);
+    expect(withCallbackState).toStrictEqual([TEST_ITEM_1, ...TEST_STATE, TEST_ITEM_2]);
   });
 
-  it("adds item to the end of the list with handlers.append", () => {
+  it('adds item to the end of the list with handlers.append', () => {
     const single = renderHook(() => useListState(TEST_STATE));
     const multiple = renderHook(() => useListState(TEST_STATE));
 
@@ -60,14 +52,10 @@ describe("@raikou/hooks/use-list-state", () => {
     const [multipleState] = multiple.result.current;
 
     expect(singleState).toStrictEqual([...TEST_STATE, TEST_ITEM_1]);
-    expect(multipleState).toStrictEqual([
-      ...TEST_STATE,
-      TEST_ITEM_1,
-      TEST_ITEM_2,
-    ]);
+    expect(multipleState).toStrictEqual([...TEST_STATE, TEST_ITEM_1, TEST_ITEM_2]);
   });
 
-  it("adds item to the start of the list with handlers.prepend", () => {
+  it('adds item to the start of the list with handlers.prepend', () => {
     const single = renderHook(() => useListState(TEST_STATE));
     const multiple = renderHook(() => useListState(TEST_STATE));
 
@@ -83,14 +71,10 @@ describe("@raikou/hooks/use-list-state", () => {
     const [multipleState] = multiple.result.current;
 
     expect(singleState).toStrictEqual([TEST_ITEM_1, ...TEST_STATE]);
-    expect(multipleState).toStrictEqual([
-      TEST_ITEM_1,
-      TEST_ITEM_2,
-      ...TEST_STATE,
-    ]);
+    expect(multipleState).toStrictEqual([TEST_ITEM_1, TEST_ITEM_2, ...TEST_STATE]);
   });
 
-  it("inserts item at given position with handlers.insert", () => {
+  it('inserts item at given position with handlers.insert', () => {
     const start = renderHook(() => useListState(TEST_STATE));
     const middle = renderHook(() => useListState(TEST_STATE));
     const end = renderHook(() => useListState(TEST_STATE));
@@ -114,12 +98,7 @@ describe("@raikou/hooks/use-list-state", () => {
     const [multipleState] = multiple.result.current;
 
     expect(startState).toStrictEqual([TEST_ITEM_1, ...TEST_STATE]);
-    expect(middleState).toStrictEqual([
-      TEST_STATE[0],
-      TEST_ITEM_1,
-      TEST_STATE[1],
-      TEST_STATE[2],
-    ]);
+    expect(middleState).toStrictEqual([TEST_STATE[0], TEST_ITEM_1, TEST_STATE[1], TEST_STATE[2]]);
     expect(endState).toStrictEqual([...TEST_STATE, TEST_ITEM_1]);
     expect(multipleState).toStrictEqual([
       TEST_STATE[0],
@@ -130,7 +109,7 @@ describe("@raikou/hooks/use-list-state", () => {
     ]);
   });
 
-  it("removes items with given indices with handlers.remove", () => {
+  it('removes items with given indices with handlers.remove', () => {
     const single = renderHook(() => useListState(TEST_STATE));
     const multiple = renderHook(() => useListState(TEST_STATE));
 
@@ -149,7 +128,7 @@ describe("@raikou/hooks/use-list-state", () => {
     expect(multipleState).toStrictEqual([TEST_STATE[2]]);
   });
 
-  it("applies given function to all items with handlers.apply", () => {
+  it('applies given function to all items with handlers.apply', () => {
     const hook = renderHook(() => useListState(TEST_STATE));
 
     act(() => {
@@ -165,7 +144,7 @@ describe("@raikou/hooks/use-list-state", () => {
     ]);
   });
 
-  it("applies given function to respective item with handlers.applyWhere", () => {
+  it('applies given function to respective item with handlers.applyWhere', () => {
     const hook = renderHook(() => useListState(TEST_STATE));
 
     act(() => {
@@ -184,7 +163,7 @@ describe("@raikou/hooks/use-list-state", () => {
     ]);
   });
 
-  it("reorders item at given position with handlers.reorder", () => {
+  it('reorders item at given position with handlers.reorder', () => {
     const hook = renderHook(() => useListState(TEST_STATE));
 
     act(() => {
@@ -196,7 +175,19 @@ describe("@raikou/hooks/use-list-state", () => {
     expect(state).toStrictEqual([TEST_STATE[1], TEST_STATE[2], TEST_STATE[0]]);
   });
 
-  it("sets item at given position with handlers.setItem", () => {
+  it('swap items positions with handlers.swap', () => {
+    const hook = renderHook(() => useListState(TEST_STATE));
+
+    act(() => {
+      const [, handlers] = hook.result.current;
+      handlers.swap({ from: 0, to: 2 });
+    });
+
+    const [state] = hook.result.current;
+    expect(state).toStrictEqual([TEST_STATE[2], TEST_STATE[1], TEST_STATE[0]]);
+  });
+
+  it('sets item at given position with handlers.setItem', () => {
     const hook = renderHook(() => useListState(TEST_STATE));
 
     act(() => {
@@ -208,59 +199,55 @@ describe("@raikou/hooks/use-list-state", () => {
     expect(state).toStrictEqual([TEST_STATE[0], TEST_ITEM_1, TEST_STATE[2]]);
   });
 
-  it("sets given item property at given position with handlers.setItemProp", () => {
+  it('sets given item property at given position with handlers.setItemProp', () => {
     const hook = renderHook(() => useListState(TEST_STATE));
 
     act(() => {
       const [, handlers] = hook.result.current;
-      handlers.setItemProp(1, "age", 90);
+      handlers.setItemProp(1, 'age', 90);
     });
 
     const [state] = hook.result.current;
-    expect(state).toStrictEqual([
-      TEST_STATE[0],
-      { ...TEST_STATE[1], age: 90 },
-      TEST_STATE[2],
-    ]);
+    expect(state).toStrictEqual([TEST_STATE[0], { ...TEST_STATE[1], age: 90 }, TEST_STATE[2]]);
   });
 
-  it("works with primitive values", () => {
-    const hook = renderHook(() => useListState(["test-1", "test-2"]));
+  it('works with primitive values', () => {
+    const hook = renderHook(() => useListState(['test-1', 'test-2']));
 
     act(() => {
       const [, handlers] = hook.result.current;
-      handlers.setItem(1, "test-3");
+      handlers.setItem(1, 'test-3');
     });
 
     const [state] = hook.result.current;
-    expect(state).toStrictEqual(["test-1", "test-3"]);
+    expect(state).toStrictEqual(['test-1', 'test-3']);
   });
 
-  it("removes last item with pop handler", () => {
-    const hook = renderHook(() => useListState(["test-1", "test-2", "test-3"]));
+  it('removes last item with pop handler', () => {
+    const hook = renderHook(() => useListState(['test-1', 'test-2', 'test-3']));
     act(() => {
       const [, handlers] = hook.result.current;
       handlers.pop();
     });
 
     const [state] = hook.result.current;
-    expect(state).toStrictEqual(["test-1", "test-2"]);
+    expect(state).toStrictEqual(['test-1', 'test-2']);
   });
 
-  it("removes first item with shift handler", () => {
-    const hook = renderHook(() => useListState(["test-1", "test-2", "test-3"]));
+  it('removes first item with shift handler', () => {
+    const hook = renderHook(() => useListState(['test-1', 'test-2', 'test-3']));
     act(() => {
       const [, handlers] = hook.result.current;
       handlers.shift();
     });
 
     const [state] = hook.result.current;
-    expect(state).toStrictEqual(["test-2", "test-3"]);
+    expect(state).toStrictEqual(['test-2', 'test-3']);
   });
 
-  it("filter items with handlers.filter", () => {
+  it('filter items with handlers.filter', () => {
     const hook = renderHook(() => useListState(TEST_STATE));
-    const filterFn = (item: any) => item.name !== "Bill";
+    const filterFn = (item: any) => item.name !== 'Bill';
 
     act(() => {
       const [, handlers] = hook.result.current;

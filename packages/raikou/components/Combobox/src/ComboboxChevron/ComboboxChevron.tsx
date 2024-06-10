@@ -58,6 +58,7 @@ export const ComboboxChevron = factory<ComboboxChevronFactory>(
       styles,
       unstyled,
       vars,
+      mod,
       ...others
     } = props;
 
@@ -84,7 +85,7 @@ export const ComboboxChevron = factory<ComboboxChevronFactory>(
         viewBox="0 0 15 15"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        mod={["combobox-chevron", { error }]}
+        mod={["combobox-chevron", { error }, mod]}
         ref={ref}
       >
         <path

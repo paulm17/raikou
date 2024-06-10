@@ -16,6 +16,8 @@ export interface RaikouStyleProps {
   mx?: StyleProp<RaikouSpacing>;
   mt?: StyleProp<RaikouSpacing>;
   mb?: StyleProp<RaikouSpacing>;
+  ms?: StyleProp<RaikouSpacing>;
+  me?: StyleProp<RaikouSpacing>;
   ml?: StyleProp<RaikouSpacing>;
   mr?: StyleProp<RaikouSpacing>;
 
@@ -24,19 +26,26 @@ export interface RaikouStyleProps {
   px?: StyleProp<RaikouSpacing>;
   pt?: StyleProp<RaikouSpacing>;
   pb?: StyleProp<RaikouSpacing>;
+  ps?: StyleProp<RaikouSpacing>;
+  pe?: StyleProp<RaikouSpacing>;
   pl?: StyleProp<RaikouSpacing>;
   pr?: StyleProp<RaikouSpacing>;
 
+  bd?: StyleProp<React.CSSProperties["border"]>;
   bg?: StyleProp<RaikouColor>;
   c?: StyleProp<RaikouColor>;
   opacity?: StyleProp<React.CSSProperties["opacity"]>;
 
-  ff?: StyleProp<React.CSSProperties["fontFamily"]>;
-  fz?: StyleProp<RaikouFontSize | number | (string & {})>;
+  ff?: StyleProp<"monospace" | "text" | "heading" | (string & {})>;
+  fz?: StyleProp<
+    RaikouFontSize | `h${1 | 2 | 3 | 4 | 5 | 6}` | number | (string & {})
+  >;
   fw?: StyleProp<React.CSSProperties["fontWeight"]>;
   lts?: StyleProp<React.CSSProperties["letterSpacing"]>;
   ta?: StyleProp<React.CSSProperties["textAlign"]>;
-  lh?: StyleProp<RaikouLineHeight | number | (string & {})>;
+  lh?: StyleProp<
+    RaikouLineHeight | `h${1 | 2 | 3 | 4 | 5 | 6}` | number | (string & {})
+  >;
   fs?: StyleProp<React.CSSProperties["fontStyle"]>;
   tt?: StyleProp<React.CSSProperties["textTransform"]>;
   td?: StyleProp<React.CSSProperties["textDecoration"]>;
@@ -61,4 +70,5 @@ export interface RaikouStyleProps {
   inset?: StyleProp<React.CSSProperties["inset"]>;
 
   display?: StyleProp<React.CSSProperties["display"]>;
+  flex?: StyleProp<React.CSSProperties["flex"]>;
 }

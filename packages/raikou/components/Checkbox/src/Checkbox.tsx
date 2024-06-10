@@ -1,27 +1,31 @@
 import React from "react";
 import { useId } from "@raikou/hooks";
 import {
+  Box,
   BoxProps,
-  StylesApiProps,
-  factory,
+  createVarsResolver,
   ElementProps,
-  useProps,
-  useStyles,
-  RaikouColor,
-  RaikouSize,
-  RaikouRadius,
   extractStyleProps,
+  factory,
+  Factory,
+  getAutoContrastValue,
+  getContrastColor,
   getRadius,
   getSize,
   getThemeColor,
-  createVarsResolver,
-  Factory,
-  Box,
+  RaikouColor,
+  RaikouRadius,
+  RaikouSize,
   parseThemeColor,
+  StylesApiProps,
+  useProps,
+  useStyles,
 } from "@raikou/core";
 import { InlineInput, InlineInputStylesNames } from "../../InlineInput/src";
 import { useCheckboxGroupContext } from "./CheckboxGroup.context";
+import { CheckboxCard } from "./CheckboxCard/CheckboxCard";
 import { CheckboxGroup } from "./CheckboxGroup/CheckboxGroup";
+import { CheckboxIndicator } from "./CheckboxIndicator/CheckboxIndicator";
 import { CheckboxIcon } from "./CheckIcon";
 import classes from "./Checkbox.module.css";
 
@@ -82,6 +86,9 @@ export interface CheckboxProps
 
   /** Key of `theme.colors` or any valid CSS color to set icon color, `theme.white` by default */
   iconColor?: RaikouColor;
+
+  /** Determines whether icon color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+  autoContrast?: boolean;
 }
 
 export type CheckboxFactory = Factory<{
@@ -92,6 +99,8 @@ export type CheckboxFactory = Factory<{
   variant: CheckboxVariant;
   staticComponents: {
     Group: typeof CheckboxGroup;
+    Indicator: typeof CheckboxIndicator;
+    Card: typeof CheckboxCard;
   };
 }>;
 
@@ -101,7 +110,7 @@ const defaultProps: Partial<CheckboxProps> = {
 };
 
 const varsResolver = createVarsResolver<CheckboxFactory>(
-  (theme, { radius, color, size, iconColor, variant }) => {
+  (theme, { radius, color, size, iconColor, variant, autoContrast }) => {
     const parsedColor = parseThemeColor({
       color: color || theme.primaryColor,
       theme,
@@ -120,6 +129,8 @@ const varsResolver = createVarsResolver<CheckboxFactory>(
           variant === "outline" ? outlineColor : getThemeColor(color, theme),
         "--checkbox-icon-color": iconColor
           ? getThemeColor(iconColor, theme)
+          : getAutoContrastValue(autoContrast, theme)
+          ? getContrastColor({ color, theme, autoContrast })
           : undefined,
       },
     };
@@ -153,6 +164,8 @@ export const Checkbox = factory<CheckboxFactory>((_props, ref) => {
     rootRef,
     iconColor,
     onChange,
+    autoContrast,
+    mod,
     ...others
   } = props;
 
@@ -233,3 +246,5 @@ export const Checkbox = factory<CheckboxFactory>((_props, ref) => {
 
 Checkbox.displayName = "@raikou/core/Checkbox";
 Checkbox.Group = CheckboxGroup;
+Checkbox.Indicator = CheckboxIndicator;
+Checkbox.Card = CheckboxCard;

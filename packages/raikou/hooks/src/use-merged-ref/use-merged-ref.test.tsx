@@ -1,18 +1,14 @@
-import React, { useRef, createRef } from "react";
-import { render } from "@testing-library/react";
-import { useMergedRef } from "./use-merged-ref";
+import { createRef, useRef } from 'react';
+import { render } from '@testing-library/react';
+import { useMergedRef } from './use-merged-ref';
 
-function TestComponent({
-  refs,
-}: {
-  refs: React.ForwardedRef<HTMLButtonElement>[];
-}) {
+function TestComponent({ refs }: { refs: React.ForwardedRef<HTMLButtonElement>[] }) {
   const ref = useRef<HTMLButtonElement>(null);
   return <button ref={useMergedRef(...refs, ref)} type="button" />;
 }
 
-describe("@raikou/hook/use-merged-ref", () => {
-  it("assigns refs to all given arguments", () => {
+describe('@mantine/hook/use-merged-ref', () => {
+  it('assigns refs to all given arguments', () => {
     const objectRef = createRef<HTMLButtonElement | null>();
     let fnRefValue: HTMLButtonElement | null = null;
     const fnRef = (node: HTMLButtonElement | null) => {

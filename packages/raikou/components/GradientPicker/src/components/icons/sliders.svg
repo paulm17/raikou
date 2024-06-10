@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg">
+<circle style="fill:none;stroke-miterlimit:10;stroke-width:1.8px;" cx="3.41" cy="12" r="1.8"/>
+<circle style="fill:none;stroke-miterlimit:10;stroke-width:1.8px;" cx="12" cy="18.68" r="1.8"/>
+<circle style="fill:none;stroke-miterlimit:10;stroke-width:1.8px;" cx="20.59" cy="5.32" r="1.8"/>
+<line style="fill:none;stroke-miterlimit:10;stroke-width:1.8px;" x1="20.59" y1="23.45" x2="20.59" y2="7.23"/>
+<line style="fill:none;stroke-miterlimit:10;stroke-width:1.8px;" x1="20.59" y1="3.41" x2="20.59" y2="0.55"/>
+<line style="fill:none;stroke-miterlimit:10;stroke-width:1.8px;" x1="12" y1="23.45" x2="12" y2="20.59"/>
+<line style="fill:none;stroke-miterlimit:10;stroke-width:1.8px;" x1="12" y1="16.77" x2="12" y2="0.55"/>
+<line style="fill:none;stroke-miterlimit:10;stroke-width:1.8px;" x1="3.41" y1="23.45" x2="3.41" y2="13.91"/>
+<line style="fill:none;stroke-miterlimit:10;stroke-width:1.8px;" x1="3.41" y1="10.09" x2="3.41" y2="0.55"/>
+</svg>

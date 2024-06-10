@@ -106,21 +106,20 @@ declare const InputDescription: _raikou_core.RaikouComponent<{
 }>;
 
 type InputPlaceholderStylesNames = "placeholder";
-type InputPlaceholderVariant = string;
 interface InputPlaceholderProps extends BoxProps, StylesApiProps<InputPlaceholderFactory>, ElementProps<"span"> {
     __staticSelector?: string;
+    /** If set, the placeholder will have error styles, `false` by default */
+    error?: React$2.ReactNode;
 }
 type InputPlaceholderFactory = Factory<{
     props: InputPlaceholderProps;
     ref: HTMLSpanElement;
     stylesNames: InputPlaceholderStylesNames;
-    variant: InputPlaceholderVariant;
 }>;
 declare const InputPlaceholder: _raikou_core.RaikouComponent<{
     props: InputPlaceholderProps;
     ref: HTMLSpanElement;
     stylesNames: InputPlaceholderStylesNames;
-    variant: InputPlaceholderVariant;
 }>;
 
 type InputWrapperCssVariables = InputLabelCssVariables & InputErrorCssVariables & InputDescriptionCssVariables;
@@ -211,6 +210,8 @@ interface __InputProps {
     pointer?: boolean;
     /** Determines whether the input should have red border and text color when `error` prop is set, `true` by default */
     withErrorStyles?: boolean;
+    /** `size` prop added to the input element */
+    inputSize?: string;
 }
 interface InputProps extends BoxProps, __InputProps, StylesApiProps<InputFactory> {
     __staticSelector?: string;
@@ -3998,6 +3999,8 @@ interface __CloseButtonProps {
     iconSize?: number | string;
     /** Content rendered inside the button, for example `VisuallyHidden` with label for screen readers */
     children?: React$2.ReactNode;
+    /** Replaces default close icon. If set, `iconSize` prop is ignored. */
+    icon?: React$2.ReactNode;
 }
 interface CloseButtonProps extends __CloseButtonProps, BoxProps, StylesApiProps<CloseButtonFactory> {
 }

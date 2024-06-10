@@ -1,10 +1,10 @@
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Loader/src/Loader.module.css/#css-module-data */
 .m-5ae2e3c {
-  --loader-size-xs: calc(1.125rem * var(--raikou-scale));
-  --loader-size-sm: calc(1.375rem * var(--raikou-scale));
-  --loader-size-md: calc(2.25rem * var(--raikou-scale));
-  --loader-size-lg: calc(2.75rem * var(--raikou-scale));
-  --loader-size-xl: calc(3.625rem * var(--raikou-scale));
+  --loader-size-xs: 18px;
+  --loader-size-sm: 22px;
+  --loader-size-md: 36px;
+  --loader-size-lg: 44px;
+  --loader-size-xl: 58px;
   --loader-size: var(--loader-size-md);
   --loader-color: var(--raikou-primary-color-filled);
 }
@@ -28,7 +28,7 @@
   flex: 1;
   background: var(--loader-color);
   animation: m-5d2b3b9d 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
-  border-radius: calc(0.125rem * var(--raikou-scale));
+  border-radius: 2px;
 }
 .m-870bb79:nth-of-type(1) {
   animation-delay: -240ms;
@@ -86,7 +86,7 @@
   display: block;
   width: var(--loader-size);
   height: var(--loader-size);
-  border-radius: calc(625rem * var(--raikou-scale));
+  border-radius: 10000px;
   border-width: calc(var(--loader-size) / 8);
   border-style: solid;
   border-color: var(--loader-color) var(--loader-color) var(--loader-color) transparent;
@@ -104,16 +104,17 @@
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Overlay/src/Overlay.module.css/#css-module-data */
 .m-9814e45f {
   inset: 0;
-  position: var(--_overlay-position, absolute);
+  position: absolute;
   background: var(--overlay-bg, rgba(0, 0, 0, 0.6));
   backdrop-filter: var(--overlay-filter);
+  -webkit-backdrop-filter: var(--overlay-filter);
   border-radius: var(--overlay-radius, 0);
   z-index: var(--overlay-z-index);
 }
-.m-9814e45f[data-fixed] {
-  --_overlay-position: fixed;
+.m-9814e45f:where([data-fixed]) {
+  position: fixed;
 }
-.m-9814e45f[data-center] {
+.m-9814e45f:where([data-center]) {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,79 +137,72 @@
 .m-df587f17 {
   z-index: var(--lo-z-index);
 }
-[data-raikou-color-scheme=light] .m-df587f17[data-dark] {
-  display: none;
-}
-[data-raikou-color-scheme=dark] .m-df587f17[data-light] {
-  display: none;
-}
 
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/dropzone/src/Dropzone.module.css/#css-module-data */
-[data-raikou-color-scheme=light] .m-d46a4834 {
-  --raikou-dropzone-bg: #fff;
+:where([data-raikou-color-scheme=light]) .m-d46a4834 {
+  --raikou-dropzone-background-color: #fff;
   --raikou-dropzone-border-color: #ced4da;
-  --raikou-dropzone-bg-hover: #f8f9fa;
+  --raikou-dropzone-background-color-hover: #f8f9fa;
 }
-[data-raikou-color-scheme=dark] .m-d46a4834 {
-  --raikou-dropzone-bg: #25262b;
+:where([data-raikou-color-scheme=dark]) .m-d46a4834 {
+  --raikou-dropzone-background-color: #25262b;
   --raikou-dropzone-border-color: #373a40;
-  --raikou-dropzone-bg-hover: #2c2e33;
+  --raikou-dropzone-background-color-hover: #2c2e33;
 }
 .m-d46a4834 {
   position: relative;
-  background-color: var(--_dropzone-bg);
-  border: calc(0.0625rem * var(--raikou-scale)) dashed var(--_dropzone-border-color);
-  color: var(--_dropzone-color, var(--raikou-color-text));
+  border: 1px dashed;
+  color: var(--raikou-color-text);
   padding: var(--raikou-spacing-md);
   border-radius: var(--dropzone-radius);
-  cursor: var(--_dropzone-cursor, pointer);
+  cursor: pointer;
   user-select: none;
   transition: background-color 100ms ease, border-color 100ms ease;
 }
-.m-d46a4834[data-loading],
-.m-d46a4834:not([data-activate-on-click]) {
-  --_dropzone-cursor: default;
+.m-d46a4834:where([data-loading]),
+.m-d46a4834:where(:not([data-activate-on-click])) {
+  cursor: default;
 }
-[data-raikou-color-scheme=light] .m-d46a4834 {
-  --_dropzone-bg: var(--raikou-dropzone-bg);
-  --_dropzone-border-color: var(--raikou-dropzone-border-color);
+:where([data-raikou-color-scheme=light]) .m-d46a4834 {
+  background-color: var(--raikou-dropzone-background-color);
+  border-color: var(--raikou-dropzone-border-color);
 }
-[data-raikou-color-scheme=dark] .m-d46a4834 {
-  --_dropzone-bg: var(--raikou-dropzone-bg);
-  --_dropzone-border-color: var(--raikou-dropzone-border-color);
+:where([data-raikou-color-scheme=dark]) .m-d46a4834 {
+  background-color: var(--raikou-dropzone-background-color);
+  border-color: var(--raikou-dropzone-border-color);
 }
 @media (hover: hover) {
-  [data-raikou-color-scheme=light] .m-d46a4834:hover[data-activate-on-click]:not([data-loading]) {
-    --_dropzone-bg: var(--raikou-dropzone-bg-hover);
+  :where([data-raikou-color-scheme=light]) .m-d46a4834:hover:where([data-activate-on-click]:not([data-loading])) {
+    background-color: var(--raikou-dropzone-background-color-hover);
   }
-  [data-raikou-color-scheme=dark] .m-d46a4834:hover[data-activate-on-click]:not([data-loading]) {
-    --_dropzone-bg: var(--raikou-dropzone-bg-hover);
+  :where([data-raikou-color-scheme=dark]) .m-d46a4834:hover:where([data-activate-on-click]:not([data-loading])) {
+    background-color: var(--raikou-dropzone-background-color-hover);
   }
 }
 @media (hover: none) {
-  [data-raikou-color-scheme=light] .m-d46a4834:active[data-activate-on-click]:not([data-loading]) {
-    --_dropzone-bg: var(--raikou-dropzone-bg-hover);
+  :where([data-raikou-color-scheme=light]) .m-d46a4834:active:where([data-activate-on-click]:not([data-loading])) {
+    background-color: var(--raikou-dropzone-background-color-hover);
   }
-  [data-raikou-color-scheme=dark] .m-d46a4834:active[data-activate-on-click]:not([data-loading]) {
-    --_dropzone-bg: var(--raikou-dropzone-bg-hover);
+  :where([data-raikou-color-scheme=dark]) .m-d46a4834:active:where([data-activate-on-click]:not([data-loading])) {
+    background-color: var(--raikou-dropzone-background-color-hover);
   }
 }
-.m-d46a4834[data-accept] {
-  --_dropzone-bg: var(--dropzone-accept-bg);
-  --_dropzone-border-color: var(--dropzone-accept-bg);
-  --_dropzone-color: var(--dropzone-accept-color);
+.m-d46a4834:where([data-accept]) {
+  background-color: var(--dropzone-accept-bg);
+  border-color: var(--dropzone-accept-bg);
+  color: var(--dropzone-accept-color);
 }
-.m-d46a4834[data-reject] {
-  --_dropzone-bg: var(--dropzone-reject-bg);
-  --_dropzone-border-color: var(--dropzone-reject-bg);
-  --_dropzone-color: var(--dropzone-reject-color);
+.m-d46a4834:where([data-reject]) {
+  background-color: var(--dropzone-reject-bg);
+  border-color: var(--dropzone-reject-bg);
+  color: var(--dropzone-reject-color);
 }
 .m-b85f7144 {
-  pointer-events: var(--_dropzone-inner-pointer-events, none);
+  pointer-events: none;
   user-select: none;
 }
-.m-b85f7144[data-enable-pointer-events] {
-  --_dropzone-inner-pointer-events: all;
+.m-b85f7144:where([data-enable-pointer-events]) {
+  pointer-events: all;
 }
 .m-96f6e9ad {
   position: fixed;

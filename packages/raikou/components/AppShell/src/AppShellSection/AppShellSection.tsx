@@ -32,14 +32,14 @@ const defaultProps: Partial<AppShellSectionProps> = {};
 export const AppShellSection = polymorphicFactory<AppShellSectionFactory>(
   (_props, ref) => {
     const props = useProps("AppShellSection", defaultProps, _props);
-    const { classNames, className, style, styles, vars, grow, ...others } =
+    const { classNames, className, style, styles, vars, grow, mod, ...others } =
       props;
     const ctx = useStore.getState();
 
     return (
       <Box
         ref={ref}
-        mod={{ grow }}
+        mod={[{ grow }, mod]}
         {...ctx.getStyles("section", { className, style, classNames, styles })}
         {...others}
       />

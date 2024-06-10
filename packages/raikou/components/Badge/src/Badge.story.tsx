@@ -6,8 +6,63 @@ export default { title: "Badge" };
 
 export function Usage() {
   return (
+    <div
+      style={{
+        padding: 40,
+        display: "flex",
+        gap: "1rem",
+        background: "rgba(0, 0, 0, 0.05)",
+        flexWrap: "wrap",
+      }}
+    >
+      <Badge>Filled</Badge>
+      <Badge variant="light">Light</Badge>
+      <Badge variant="outline">Outline</Badge>
+      <Badge variant="dot">Dot</Badge>
+      <Badge variant="transparent">Transparent</Badge>
+      <Badge variant="white">White</Badge>
+      <Badge variant="gradient">Gradient</Badge>
+      <Badge variant="default">Default</Badge>
+
+      <Badge leftSection="L">Left section</Badge>
+      <Badge rightSection="R">Right section</Badge>
+      <Badge leftSection="L" rightSection="R">
+        Both sections
+      </Badge>
+    </div>
+  );
+}
+
+export function Round() {
+  return (
     <div style={{ padding: 40 }}>
-      <Badge>Badge</Badge>
+      <Badge circle size="md">
+        12
+      </Badge>
+    </div>
+  );
+}
+
+export function AutoContrast() {
+  const buttons = Array(10)
+    .fill(0)
+    .map((_, index) => (
+      <Badge key={index} color={`blue.${index}`} autoContrast>
+        Badge
+      </Badge>
+    ));
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        gap: 10,
+        padding: 40,
+      }}
+    >
+      {buttons}
     </div>
   );
 }

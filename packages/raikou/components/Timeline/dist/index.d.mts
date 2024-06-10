@@ -57,6 +57,8 @@ interface TimelineProps extends BoxProps, StylesApiProps<TimelineFactory>, Eleme
     lineWidth?: number | string;
     /** Determines whether the active items direction should be reversed without reversing items order, `false` by default */
     reverseActive?: boolean;
+    /** Determines whether icon color should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+    autoContrast?: boolean;
 }
 type TimelineFactory = Factory<{
     props: TimelineProps;

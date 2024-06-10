@@ -1,8 +1,8 @@
-import dayjs from 'dayjs';
-import React, { useState } from 'react';
-import { MonthsList } from './MonthsList';
+import React, { useState } from "react";
+import dayjs from "dayjs";
+import { MonthsList } from "./MonthsList";
 
-export default { title: 'MonthsList' };
+export default { title: "MonthsList" };
 
 export function Usage() {
   return (
@@ -44,7 +44,7 @@ export function WithSelection() {
       <MonthsList
         year={new Date()}
         getMonthControlProps={(month) => ({
-          selected: dayjs(month).isSame(selected, 'month'),
+          selected: dayjs(month).isSame(selected, "month"),
           onClick: () => setSelected(month),
         })}
       />
@@ -55,7 +55,10 @@ export function WithSelection() {
 export function WithRange() {
   return (
     <div style={{ padding: 40, width: 320 }}>
-      <MonthsList year={new Date(2022, 1, 1)} getMonthControlProps={() => ({ inRange: true })} />
+      <MonthsList
+        year={new Date(2022, 1, 1)}
+        getMonthControlProps={() => ({ inRange: true })}
+      />
       <MonthsList
         year={new Date(2022, 1, 1)}
         getMonthControlProps={() => ({ firstInRange: true, selected: true })}
@@ -69,7 +72,7 @@ export function WithRange() {
 }
 
 export function Sizes() {
-  const sizes = (['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
+  const sizes = (["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
     <MonthsList
       year={new Date()}
       size={size}

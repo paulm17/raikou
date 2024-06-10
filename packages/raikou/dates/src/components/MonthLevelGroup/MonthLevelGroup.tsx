@@ -1,20 +1,20 @@
-import dayjs from "dayjs";
 import React, { useRef } from "react";
+import dayjs from "dayjs";
 import {
   BoxProps,
-  StylesApiProps,
-  factory,
   ElementProps,
-  useProps,
+  factory,
   Factory,
+  StylesApiProps,
+  useProps,
 } from "@raikou/core";
+import { handleControlKeyDown } from "../../utils";
+import { LevelsGroup, LevelsGroupStylesNames } from "../LevelsGroup";
 import {
   MonthLevel,
   MonthLevelSettings,
   MonthLevelStylesNames,
 } from "../MonthLevel";
-import { LevelsGroup, LevelsGroupStylesNames } from "../LevelsGroup";
-import { handleControlKeyDown } from "../../utils";
 
 export type MonthLevelGroupStylesNames =
   | MonthLevelStylesNames
@@ -196,4 +196,5 @@ export const MonthLevelGroup = factory<MonthLevelGroupFactory>(
   },
 );
 
+MonthLevelGroup.classes = { ...LevelsGroup.classes, ...MonthLevel.classes };
 MonthLevelGroup.displayName = "@raikou/dates/MonthLevelGroup";

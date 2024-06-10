@@ -1,26 +1,23 @@
 .root {
-  @mixin light {
+  @mixin where-light {
     --raikou-alert-message-color: #000;
   }
-  @mixin dark {
+  @mixin where-dark {
     --raikou-alert-message-color: #fff;
   }
 
+  --alert-radius: var(--raikou-radius-default);
+  --alert-bg: var(--raikou-primary-color-light);
+  --alert-bd: 1px solid transparent;
+  --alert-color: var(--raikou-primary-color-light-color);
+
   padding: var(--raikou-spacing-md) var(--raikou-spacing-md);
-  border-radius: var(--alert-radius, var(--raikou-radius-default));
+  border-radius: var(--alert-radius);
   position: relative;
   overflow: hidden;
-  background-color: var(--alert-bg, var(--raikou-primary-color-light));
-  border: var(--alert-bd, rem(1px) solid transparent);
-  color: var(--alert-color, var(--raikou-primary-color-light-color));
-}
-
-.root--filled {
-  --_message-color: var(--alert-color, var(--raikou-primary-color-light-color));
-}
-
-.root--white {
-  --_message-color: var(--raikou-color-black);
+  background-color: var(--alert-bg);
+  border: var(--alert-bd);
+  color: var(--alert-color);
 }
 
 .wrapper {
@@ -29,6 +26,9 @@
 
 .body {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--raikou-spacing-xs);
 }
 
 .title {
@@ -38,13 +38,8 @@
   font-size: var(--raikou-font-size-sm);
   font-weight: 700;
 
-  &[data-with-close-button] {
-    padding-right: var(--raikou-spacing-md);
-
-    @mixin rtl {
-      padding-left: var(--raikou-spacing-md);
-      padding-right: 0;
-    }
+  &:where([data-with-close-button]) {
+    padding-inline-end: var(--raikou-spacing-md);
   }
 }
 
@@ -56,39 +51,39 @@
 
 .icon {
   line-height: 1;
-  width: rem(20px);
-  height: rem(20px);
+  width: 20px;
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-right: var(--raikou-spacing-md);
-  margin-top: rem(1px);
-
-  @mixin rtl {
-    margin-right: 0;
-    margin-left: var(--raikou-spacing-md);
-  }
+  margin-inline-end: var(--raikou-spacing-md);
+  margin-top: 1px;
 }
 
 .message {
   text-overflow: ellipsis;
   overflow: hidden;
   font-size: var(--raikou-font-size-sm);
-  color: var(--_message-color, var(--__message-color));
-  margin-top: var(--raikou-spacing-xs);
 
-  @mixin light {
-    --__message-color: var(--raikou-alert-message-color);
+  @mixin where-light {
+    color: var(--raikou-alert-message-color);
   }
 
-  @mixin dark {
-    --__message-color: var(--raikou-alert-message-color);
+  @mixin where-dark {
+    color: var(--raikou-alert-message-color);
+  }
+
+  &:where([data-variant="filled"]) {
+    color: var(--alert-color);
+  }
+
+  &:where([data-variant="white"]) {
+    color: var(--raikou-color-black);
   }
 }
 
 .closeButton {
-  width: rem(20px);
-  height: rem(20px);
-  margin-top: calc(var(--raikou-spacing-sm) * -0.5);
-  color: var(--alert-color, var(--raikou-primary-color-light-color));
+  width: 20px;
+  height: 20px;
+  color: var(--alert-color);
 }

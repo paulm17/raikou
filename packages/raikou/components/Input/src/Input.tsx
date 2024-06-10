@@ -103,6 +103,9 @@ export interface __InputProps {
 
   /** Determines whether the input should have red border and text color when `error` prop is set, `true` by default */
   withErrorStyles?: boolean;
+
+  /** `size` prop added to the input element */
+  inputSize?: string;
 }
 
 export interface InputProps
@@ -211,6 +214,8 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
     id,
     withAria,
     withErrorStyles,
+    mod,
+    inputSize,
     ...others
   } = props;
 
@@ -251,14 +256,17 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
       {...getStyles("wrapper")}
       {...styleProps}
       {...wrapperProps}
-      mod={{
-        error: !!error && withErrorStyles,
-        pointer,
-        disabled,
-        multiline,
-        "data-with-right-section": !!rightSection,
-        "data-with-left-section": !!leftSection,
-      }}
+      mod={[
+        {
+          error: !!error && withErrorStyles,
+          pointer,
+          disabled,
+          multiline,
+          "data-with-right-section": !!rightSection,
+          "data-with-left-section": !!leftSection,
+        },
+        mod,
+      ]}
       variant={variant}
       size={size}
     >
@@ -283,6 +291,7 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
         required={required}
         mod={{ disabled, error: !!error && withErrorStyles }}
         variant={variant}
+        __size={inputSize}
         {...getStyles("input")}
       />
 

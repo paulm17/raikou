@@ -83,6 +83,7 @@ export const Skeleton = factory<SkeletonFactory>((_props, ref) => {
     visible,
     radius,
     animate,
+    mod,
     ...others
   } = props;
 
@@ -103,7 +104,7 @@ export const Skeleton = factory<SkeletonFactory>((_props, ref) => {
     <Box
       ref={ref}
       {...getStyles("root")}
-      mod={{ visible, animate }}
+      mod={[{ visible, animate }, mod]}
       {...others}
     />
   );

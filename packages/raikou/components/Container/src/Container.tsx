@@ -57,6 +57,7 @@ export const Container = factory<ContainerFactory>((_props, ref) => {
     unstyled,
     vars,
     fluid,
+    mod,
     ...others
   } = props;
 
@@ -73,7 +74,9 @@ export const Container = factory<ContainerFactory>((_props, ref) => {
     varsResolver,
   });
 
-  return <Box ref={ref} mod={{ fluid }} {...getStyles("root")} {...others} />;
+  return (
+    <Box ref={ref} mod={[{ fluid }, mod]} {...getStyles("root")} {...others} />
+  );
 });
 
 Container.displayName = "@raikou/core/Container";

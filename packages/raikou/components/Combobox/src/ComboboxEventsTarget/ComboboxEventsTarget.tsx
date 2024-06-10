@@ -25,6 +25,9 @@ export interface ComboboxEventsTargetProps {
    * `input` by default.
    * */
   targetType?: "button" | "input";
+
+  /** Input autocomplete attribute */
+  autoComplete?: string;
 }
 
 const defaultProps: Partial<ComboboxEventsTargetProps> = {
@@ -32,6 +35,8 @@ const defaultProps: Partial<ComboboxEventsTargetProps> = {
   targetType: "input",
   withKeyboardNavigation: true,
   withAriaAttributes: true,
+  withExpandedAttribute: false,
+  autoComplete: "off",
 };
 
 export type ComboboxEventsTargetFactory = Factory<{
@@ -49,6 +54,7 @@ export const ComboboxEventsTarget = factory<ComboboxEventsTargetFactory>(
       withAriaAttributes,
       withExpandedAttribute,
       targetType,
+      autoComplete,
       ...others
     } = useProps("ComboboxEventsTarget", defaultProps, props);
 
@@ -65,6 +71,7 @@ export const ComboboxEventsTarget = factory<ComboboxEventsTargetFactory>(
       withKeyboardNavigation,
       withExpandedAttribute,
       onKeyDown: children.props.onKeyDown,
+      autoComplete,
     });
 
     return cloneElement(children, {

@@ -1,22 +1,8 @@
 .root {
-  @mixin light {
-    --raikou-spotlight-actions-list-border: #e9ecef;
-    --raikou-spotlight-action-bg-hover: #f8f9fa;
-    --raikou-spotlight-action-bg-active: #f8f9fa;
-    --raikou-spotlight-footer-border: #e9ecef;
-  }
-  @mixin dark {
-    --raikou-spotlight-actions-list-border: #373a40;
-    --raikou-spotlight-action-bg-hover: #25262b;
-    --raikou-spotlight-action-bg-active: #25262b;
-    --raikou-spotlight-footer-border: #373a40;
-  }
-
   position: relative;
-  margin-bottom: var(--_spoiler-margin-bottom);
 
-  &[data-has-spoiler] {
-    --_spoiler-margin-bottom: rem(24px);
+  &:where([data-has-spoiler]) {
+    margin-bottom: 24px;
   }
 }
 
@@ -29,12 +15,7 @@
 
 .control {
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   top: 100%;
-  height: rem(24px);
-
-  @mixin rtl {
-    left: auto;
-    right: 0;
-  }
+  height: 24px;
 }

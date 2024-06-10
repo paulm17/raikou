@@ -16,6 +16,26 @@ export function Usage() {
         label="Number input"
         placeholder="Number input"
         onChange={setValue}
+        onValueChange={console.log}
+      />
+      {typeof value === "number"
+        ? `${value} number`
+        : `${value === "" ? "empty" : value} string`}
+      <Button onClick={() => setValue(245.32)}>Set value to float</Button>
+    </div>
+  );
+}
+
+export function AllowLeadingZeros() {
+  const [value, setValue] = useState<number | string>("");
+  return (
+    <div style={{ padding: 40 }}>
+      <NumberInput
+        value={value}
+        label="Number input"
+        placeholder="Number input"
+        onChange={setValue}
+        allowLeadingZeros
       />
       {typeof value === "number"
         ? `${value} number`
@@ -91,6 +111,25 @@ export function RightSectionSizes() {
         size="xl"
         styles={{ section: { background: "transparent" } }}
       />
+    </div>
+  );
+}
+
+export function Unstyled() {
+  const [value, setValue] = useState<number | string>(345);
+  return (
+    <div style={{ padding: 40 }}>
+      <NumberInput
+        value={value}
+        label="Number input"
+        placeholder="Number input"
+        onChange={setValue}
+        unstyled
+      />
+      {typeof value === "number"
+        ? `${value} number`
+        : `${value === "" ? "empty" : value} string`}
+      <Button onClick={() => setValue(245.32)}>Set value to float</Button>
     </div>
   );
 }
@@ -244,7 +283,7 @@ export function FormValidateOnBlur() {
 }
 
 export function ExternalOnChange() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
   return (
     <div>
       <NumberInput

@@ -1,17 +1,12 @@
-import React from "react";
-import {
-  tests,
-  inputDefaultProps,
-  inputStylesApiSelectors,
-} from "@raikou/tests";
-import { __InputStylesNames } from "@raikou/core";
-import { TimeInput, TimeInputProps } from "./TimeInput";
+import { __InputStylesNames } from '@mantine/core';
+import { inputDefaultProps, inputStylesApiSelectors, tests } from '@mantine-tests/core';
+import { TimeInput, TimeInputProps } from './TimeInput';
 
 const defaultProps: TimeInputProps = {
   ...inputDefaultProps,
 };
 
-describe("@raikou/dates/TimeInput", () => {
+describe('@mantine/dates/TimeInput', () => {
   tests.axe([
     <TimeInput aria-label="test-label" />,
     <TimeInput label="test-label" />,
@@ -23,19 +18,21 @@ describe("@raikou/dates/TimeInput", () => {
   tests.itSupportsSystemProps<TimeInputProps, __InputStylesNames>({
     component: TimeInput,
     props: defaultProps,
+    mod: true,
     styleProps: true,
     extend: true,
     size: true,
     variant: true,
     classes: true,
+    id: true,
     refType: HTMLInputElement,
-    displayName: "@raikou/dates/TimeInput",
+    displayName: '@mantine/dates/TimeInput',
     stylesApiSelectors: [...inputStylesApiSelectors],
   });
 
   tests.itSupportsInputProps<TimeInputProps>({
     component: TimeInput,
     props: defaultProps,
-    selector: "input",
+    selector: 'input',
   });
 });

@@ -9,14 +9,14 @@ export interface InlineStylesProps
   extends InlineStylesInput,
     Omit<React.ComponentPropsWithoutRef<"style">, keyof InlineStylesInput> {}
 
-export function InlineStyles({ selector, styles, media }: InlineStylesInput) {
+export function InlineStyles(props: InlineStylesInput) {
   // const nonce = undefined //useRaikouStyleNonce();
   return (
     <style
       data-raikou-styles="inline"
       // nonce={nonce?.()}
       dangerouslySetInnerHTML={{
-        __html: stylesToString({ selector, styles, media }),
+        __html: stylesToString(props),
       }}
     />
   );

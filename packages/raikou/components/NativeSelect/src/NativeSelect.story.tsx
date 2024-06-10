@@ -12,12 +12,12 @@ export function WithinDisabledFieldset() {
       <NativeSelect
         data={["React"]}
         size="lg"
-        placeholder="Disabled input within fieldset"
+        label="Disabled input within fieldset"
       />
       <NativeSelect
         data={["React"]}
         size="lg"
-        placeholder="Disabled input"
+        label="Disabled input"
         disabled
         mt="md"
       />
@@ -29,6 +29,14 @@ export function Usage() {
   return (
     <div style={{ padding: 40 }}>
       <NativeSelect data={["React", "Angular", "Vue"]} />
+    </div>
+  );
+}
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <NativeSelect data={["React", "Angular", "Vue"]} unstyled />
     </div>
   );
 }

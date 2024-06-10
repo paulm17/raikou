@@ -1,21 +1,21 @@
-import dayjs from "dayjs";
 import React from "react";
+import dayjs from "dayjs";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
-  factory,
   ElementProps,
-  useProps,
+  factory,
   Factory,
+  StylesApiProps,
+  useProps,
 } from "@raikou/core";
-import { Month, MonthSettings, MonthStylesNames } from "../Month";
 import {
   CalendarHeader,
   CalendarHeaderSettings,
   CalendarHeaderStylesNames,
 } from "../CalendarHeader";
 import { useDatesContext } from "../DatesProvider";
+import { Month, MonthSettings, MonthStylesNames } from "../Month";
 
 export type MonthLevelStylesNames =
   | MonthStylesNames
@@ -190,4 +190,5 @@ export const MonthLevel = factory<MonthLevelFactory>((_props, ref) => {
   );
 });
 
+MonthLevel.classes = { ...Month.classes, ...CalendarHeader.classes };
 MonthLevel.displayName = "@raikou/dates/MonthLevel";

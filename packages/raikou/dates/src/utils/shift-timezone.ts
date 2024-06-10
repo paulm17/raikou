@@ -1,13 +1,13 @@
-import dayjs from "dayjs";
-import { getTimezoneOffset } from "./get-timezone-offset";
-import { DatesRangeValue, DateValue } from "../types";
+import dayjs from 'dayjs';
+import { DatesRangeValue, DateValue } from '../types';
+import { getTimezoneOffset } from './get-timezone-offset';
 
-type TimeShiftDirection = "add" | "remove";
+type TimeShiftDirection = 'add' | 'remove';
 
 const updateTimezone = (
   date: DateValue | undefined,
   timezone?: string,
-  direction?: TimeShiftDirection,
+  direction?: TimeShiftDirection
 ): DateValue => {
   if (!date) {
     return null;
@@ -16,19 +16,17 @@ const updateTimezone = (
     return date;
   }
   let offset = getTimezoneOffset(date, timezone);
-  if (direction === "remove") {
+  if (direction === 'remove') {
     offset *= -1;
   }
-  return dayjs(date).add(offset, "minutes").toDate();
+  return dayjs(date).add(offset, 'minutes').toDate();
 };
 
-export function shiftTimezone<
-  T extends DateValue | Date[] | DatesRangeValue | undefined,
->(
+export function shiftTimezone<T extends DateValue | Date[] | DatesRangeValue | undefined>(
   direction: TimeShiftDirection,
   date: T,
   timezone?: string,
-  disabled?: boolean,
+  disabled?: boolean
 ): T {
   if (disabled || !date) {
     return date;

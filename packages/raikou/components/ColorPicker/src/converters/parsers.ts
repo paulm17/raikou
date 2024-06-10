@@ -1,4 +1,9 @@
-import { HsvaColor, RgbaColor, ColorFormat, HslaColor } from '../ColorPicker.types';
+import {
+  ColorFormat,
+  HslaColor,
+  HsvaColor,
+  RgbaColor,
+} from "../ColorPicker.types";
 
 export function round(number: number, digits = 0, base = 10 ** digits) {
   return Math.round(base * number) / base;
@@ -21,7 +26,7 @@ const angleUnits: Record<string, number> = {
   rad: 360 / (Math.PI * 2),
 };
 
-export function parseHue(value: string, unit = 'deg') {
+export function parseHue(value: string, unit = "deg") {
   return Number(value) * (angleUnits[unit] || 1);
 }
 
@@ -64,7 +69,7 @@ function rgbaToHsva({ r, g, b, a }: RgbaColor): HsvaColor {
 }
 
 export function parseHex(color: string): HsvaColor {
-  const hex = color[0] === '#' ? color.slice(1) : color;
+  const hex = color[0] === "#" ? color.slice(1) : color;
 
   if (hex.length === 3) {
     return rgbaToHsva({
@@ -84,7 +89,7 @@ export function parseHex(color: string): HsvaColor {
 }
 
 export function parseHexa(color: string): HsvaColor {
-  const hex = color[0] === '#' ? color.slice(1) : color;
+  const hex = color[0] === "#" ? color.slice(1) : color;
 
   const roundA = (a: string) => round(parseInt(a, 16) / 255, 3);
   if (hex.length === 4) {
@@ -138,7 +143,6 @@ const CONVERTERS: Record<ColorFormat, (color: string) => HsvaColor> = {
 };
 
 export function isColorValid(color: string) {
-  // eslint-disable-next-line no-restricted-syntax
   for (const [, regexp] of Object.entries(VALIDATION_REGEXP)) {
     if (regexp.test(color)) {
       return true;
@@ -149,17 +153,16 @@ export function isColorValid(color: string) {
 }
 
 export function parseColor(color: string): HsvaColor {
-  if (typeof color !== 'string') {
+  if (typeof color !== "string") {
     return { h: 0, s: 0, v: 0, a: 1 };
   }
 
-  if (color === 'transparent') {
+  if (color === "transparent") {
     return { h: 0, s: 0, v: 0, a: 0 };
   }
 
   const trimmed = color.trim();
 
-  // eslint-disable-next-line no-restricted-syntax
   for (const [rule, regexp] of Object.entries(VALIDATION_REGEXP)) {
     if (regexp.test(trimmed)) {
       return CONVERTERS[rule as keyof typeof CONVERTERS](trimmed);

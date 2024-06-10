@@ -10,6 +10,7 @@ export interface VariantColorsResolverInput {
   theme: RaikouTheme;
   variant: string;
   gradient?: RaikouGradient;
+  autoContrast?: boolean;
 }
 
 export interface VariantColorResolverResult {
@@ -17,6 +18,7 @@ export interface VariantColorResolverResult {
   hover: string;
   color: string;
   border: string;
+  hoverColor?: string;
 }
 
 export type VariantColorsResolver = (
@@ -28,16 +30,26 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
   theme,
   variant,
   gradient,
+  autoContrast,
 }) => {
   const parsed = parseThemeColor({ color: color || theme.primaryColor, theme });
 
+  const _autoContrast =
+    typeof autoContrast === "boolean" ? autoContrast : theme.autoContrast;
+
   if (variant === "filled") {
+    const textColor = _autoContrast
+      ? parsed.isLight
+        ? "var(--raikou-color-black)"
+        : "var(--raikou-color-white)"
+      : "var(--raikou-color-white)";
+
     if (parsed.isThemeColor) {
       if (parsed.shade === undefined) {
         return {
           background: `var(--raikou-color-${color}-filled)`,
           hover: `var(--raikou-color-${color}-filled-hover)`,
-          color: "var(--raikou-color-white)",
+          color: textColor,
           border: `${rem(1)} solid transparent`,
         };
       }
@@ -47,7 +59,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
         hover: `var(--raikou-color-${parsed.color}-${
           parsed.shade === 9 ? 8 : parsed.shade + 1
         })`,
-        color: "var(--raikou-color-white)",
+        color: textColor,
         border: `${rem(1)} solid transparent`,
       };
     }
@@ -55,7 +67,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
     return {
       background: color!,
       hover: darken(color!, 0.1),
-      color: "var(--raikou-color-white)",
+      color: textColor,
       border: `${rem(1)} solid transparent`,
     };
   }

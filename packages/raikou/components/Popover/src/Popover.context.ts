@@ -15,8 +15,8 @@ import type { PopoverFactory } from "./Popover";
 interface PopoverContext {
   x: number;
   y: number;
-  arrowX: number;
-  arrowY: number;
+  arrowX: number | undefined;
+  arrowY: number | undefined;
   arrowRef: React.RefObject<HTMLDivElement>;
   opened: boolean;
   transitionProps?: TransitionOverride;
@@ -33,7 +33,7 @@ interface PopoverContext {
   withinPortal: boolean | undefined;
   portalProps?: Omit<PortalProps, "children">;
   closeOnEscape: boolean | undefined;
-  zIndex: React.CSSProperties["zIndex"];
+  zIndex: string | number | undefined;
   radius?: RaikouRadius | undefined;
   shadow?: RaikouShadow | undefined;
   onClose?: () => void;

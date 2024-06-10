@@ -1,10 +1,10 @@
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/ThemeIcon/src/ThemeIcon.module.css/#css-module-data */
 .m-7341320d {
-  --ti-size-xs: calc(1.125rem * var(--raikou-scale));
-  --ti-size-sm: calc(1.375rem * var(--raikou-scale));
-  --ti-size-md: calc(1.75rem * var(--raikou-scale));
-  --ti-size-lg: calc(2.125rem * var(--raikou-scale));
-  --ti-size-xl: calc(2.75rem * var(--raikou-scale));
+  --ti-size-xs: 18px;
+  --ti-size-sm: 22px;
+  --ti-size-md: 28px;
+  --ti-size-lg: 34px;
+  --ti-size-xl: 44px;
   --ti-size: var(--ti-size-md);
   line-height: 1;
   display: inline-flex;
@@ -19,6 +19,6 @@
   border-radius: var(--ti-radius, var(--raikou-radius-default));
   background: var(--ti-bg, var(--raikou-primary-color-filled));
   color: var(--ti-color, var(--raikou-color-white));
-  border: var(--ti-bd, calc(0.0625rem * var(--raikou-scale)) solid transparent);
+  border: var(--ti-bd, 1px solid transparent);
 }
 /*# sourceMappingURL=index.css.map */

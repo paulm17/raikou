@@ -42,6 +42,7 @@ export const CardSection = polymorphicFactory<CardSectionFactory>(
       vars,
       withBorder,
       inheritPadding,
+      mod,
       ...others
     } = props;
     const ctx = useStore.getState();
@@ -49,7 +50,10 @@ export const CardSection = polymorphicFactory<CardSectionFactory>(
     return (
       <Box
         ref={ref}
-        mod={{ "with-border": withBorder, "inherit-padding": inheritPadding }}
+        mod={[
+          { "with-border": withBorder, "inherit-padding": inheritPadding },
+          mod,
+        ]}
         {...ctx.getStyles("section", { className, style, styles, classNames })}
         {...others}
       />

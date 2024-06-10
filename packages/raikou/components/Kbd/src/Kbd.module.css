@@ -1,27 +1,27 @@
 .root {
-  @mixin light {
-    --raikou-bd-border-color: #dee2e6;
-    --raikou-bd-color: #495057;
-    --raikou-bd-bg: #f8f9fa;
+  @mixin where-light {
+    --raikou-border-color: #dee2e6;
+    --raikou-color: #495057;
+    --raikou-background-color: #f8f9fa;
   }
-  @mixin dark {
-    --raikou-bd-border-color: #373a40;
-    --raikou-bd-color: #c1c2c5;
-    --raikou-bd-bg: #2c2e33;
+  @mixin where-dark {
+    --raikou-border-color: #373a40;
+    --raikou-color: #c1c2c5;
+    --raikou-background-color: #2c2e33;
   }
 
-  --kbd-fz-xs: rem(10px);
-  --kbd-fz-sm: rem(12px);
-  --kbd-fz-md: rem(14px);
-  --kbd-fz-lg: rem(16px);
-  --kbd-fz-xl: rem(20px);
+  --kbd-fz-xs: 10px;
+  --kbd-fz-sm: 12px;
+  --kbd-fz-md: 14px;
+  --kbd-fz-lg: 16px;
+  --kbd-fz-xl: 20px;
   --kbd-fz: var(--kbd-fz-sm);
 
-  --kbd-padding-xs: rem(2px) rem(4px);
-  --kbd-padding-sm: rem(3px) rem(5px);
-  --kbd-padding-md: rem(4px) rem(7px);
-  --kbd-padding-lg: rem(5px) rem(9px);
-  --kbd-padding-xl: rem(8px) rem(14px);
+  --kbd-padding-xs: 2px 4px;
+  --kbd-padding-sm: 3px 5px;
+  --kbd-padding-md: 4px 7px;
+  --kbd-padding-lg: 5px 9px;
+  --kbd-padding-xl: 8px 14px;
   --kbd-padding: var(--kbd-padding-sm);
 
   font-family: var(--raikou-font-family-monospace);
@@ -30,20 +30,19 @@
   padding: var(--kbd-padding);
   font-size: var(--kbd-fz);
   border-radius: var(--raikou-radius-sm);
-  border: rem(1px) solid var(--_kbd-border-color);
-  border-bottom-width: rem(3px);
-  background-color: var(--_kbd-bg);
-  color: var(--_kbd-color);
+  border: 1px solid;
+  border-bottom-width: 3px;
+  unicode-bidi: embed;
 
-  @mixin light {
-    --_kbd-border-color: var(--raikou-bd-border-color);
-    --_kbd-color: var(--raikou-bd-color);
-    --_kbd-bg: var(--raikou-bd-bg);
+  @mixin where-light {
+    border-color: var(--raikou-border-color);
+    color: var(--raikou-color);
+    background-color: var(--raikou-background-color);
   }
 
-  @mixin dark {
-    --_kbd-border-color: var(--raikou-bd-border-color);
-    --_kbd-color: var(--raikou-bd-color);
-    --_kbd-bg: var(--raikou-bd-bg);
+  @mixin where-dark {
+    border-color: var(--raikou-border-color);
+    color: var(--raikou-color);
+    background-color: var(--raikou-background-color);
   }
 }

@@ -72,21 +72,18 @@ export const Collapse = factory<CollapseFactory>((props, ref) => {
   return (
     <Box
       {...getCollapseProps({
-        style: getStyleObject(style, theme),
-        ref,
-        ...others,
-      })}
-    >
-      <div
-        style={{
+        style: {
           opacity: opened || !animateOpacity ? 1 : 0,
           transition: animateOpacity
             ? `opacity ${duration}ms ${transitionTimingFunction}`
             : "none",
-        }}
-      >
-        {children}
-      </div>
+          ...getStyleObject(style, theme),
+        },
+        ref,
+        ...others,
+      })}
+    >
+      {children}
     </Box>
   );
 });

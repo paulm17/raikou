@@ -1,30 +1,34 @@
 .root {
-  @mixin light {
+  @mixin where-light {
     --raikou-spotlight-actions-list-border: #e9ecef;
-    --raikou-spotlight-action-bg-hover: #f8f9fa;
-    --raikou-spotlight-footer-border: #e9ecef;
+    --raikou-spotlight-action-background-color-hover: #f8f9fa;
+    --raikou-spotlight-footer-border-color: #e9ecef;
   }
-  @mixin dark {
+  @mixin where-dark {
     --raikou-spotlight-actions-list-border: #373a40;
-    --raikou-spotlight-action-bg-hover: #25262b;
-    --raikou-spotlight-footer-border: #373a40;
+    --raikou-spotlight-action-background-color-hover: #25262b;
+    --raikou-spotlight-footer-border-color: #373a40;
   }
 
   &[data-scrollable] {
     --_spotlight-content-height: 100%;
   }
+
+  &[data-scrollable] {
+    --spotlight-content-height: 100%;
+  }
 }
 
 .content {
   overflow: hidden;
-  height: var(--_spotlight-content-height, auto);
+  height: var(--spotlight-content-height, auto);
   max-height: var(--spotlight-max-height);
 }
 
 .body {
   display: flex;
   flex-direction: column;
-  height: var(--_spotlight-content-height, auto);
+  height: var(--spotlight-content-height, auto);
 }
 
 .search {
@@ -34,29 +38,20 @@
 
 .actionsList {
   /* Used in child ScrollArea */
-  --spotlight-actions-list-padding: rem(4px);
+  --spotlight-actions-list-padding: 4px;
 
-  border-top: rem(1px) solid var(--_actions-list-border);
+  border-top: 1px solid;
   flex: 1;
   padding: var(--spotlight-actions-list-padding);
-  max-height: calc(100% - rem(3.125rem));
-  margin-right: var(
-    --_actions-list-mr,
-    calc(var(--spotlight-actions-list-padding) * -1)
-  );
-  margin-left: var(--_actions-list-ml, 0);
+  max-height: calc(100% - 3.125rem);
+  margin-inline-end: calc(var(--spotlight-actions-list-padding) * -1);
 
-  @mixin rtl {
-    --_actions-list-mr: 0;
-    --_actions-list-ml: calc(var(--spotlight-actions-list-padding) * -1);
+  @mixin where-light {
+    border-color: var(--raikou-spotlight-actions-list-border);
   }
 
-  @mixin light {
-    --_actions-list-border: var(--raikou-spotlight-actions-list-border);
-  }
-
-  @mixin dark {
-    --_actions-list-border: var(--raikou-spotlight-actions-list-border);
+  @mixin where-dark {
+    border-color: var(--raikou-spotlight-actions-list-border);
   }
 }
 
@@ -64,33 +59,36 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: rem(7px) var(--raikou-spacing-md);
+  padding: 7px var(--raikou-spacing-md);
   border-radius: var(--raikou-radius-default);
-  background-color: var(--_action-bg, transparent);
-  color: var(--_action-color, inherit);
-  text-align: var(--_action-text-align, left);
+  background-color: transparent;
+  color: inherit;
+  text-align: left;
 
-  @mixin rtl {
-    --_action-text-align: right;
+  @mixin where-rtl {
+    text-align: right;
   }
 
-  &:not([data-selected]) {
+  &:where(:not([data-selected])) {
     @mixin hover {
-      @mixin light {
-        --_action-bg: var(--raikou-spotlight-action-bg-hover);
+      @mixin where-light {
+        background-color: var(--raikou-spotlight-action-background-color-hover);
       }
 
-      @mixin dark {
-        --_action-bg: var(--raikou-spotlight-action-bg-hover);
+      @mixin where-dark {
+        background-color: var(--raikou-spotlight-action-background-color-hover);
       }
     }
   }
 
-  &[data-selected] {
-    --_action-bg: var(--raikou-primary-color-filled);
-    --_action-color: var(--raikou-color-white);
-    --_action-description-color: var(--raikou-color-white);
-    --_action-description-opacity: 0.7;
+  &:where([data-selected]) {
+    background-color: var(--raikou-primary-color-filled);
+    color: var(--raikou-primary-color-contrast, var(--raikou-color-white));
+    --action-description-color: var(
+      --raikou-primary-color-contrast,
+      var(--raikou-color-white)
+    );
+    --action-description-opacity: 0.7;
   }
 }
 
@@ -99,25 +97,20 @@
 }
 
 .actionSection {
-  margin-left: var(--_action-section-ml);
-  margin-right: var(--_action-section-mr);
-  opacity: var(--_action-section-opacity, 1);
-  color: var(--_action-section-color, inherit);
+  opacity: 1;
+  color: inherit;
 
-  &[data-dimmed] {
-    --_action-section-opacity: var(--_action-description-opacity, 1);
-    --_action-section-color: var(
-      --_action-description-color,
-      var(--raikou-color-dimmed)
-    );
+  &:where([data-dimmed]) {
+    opacity: var(--action-description-opacity, 1);
+    color: var(--action-description-color, var(--raikou-color-dimmed));
   }
 
-  &[data-position="left"] {
-    --_action-section-mr: var(--raikou-spacing-md);
+  &:where([data-position="left"]) {
+    margin-inline-end: var(--raikou-spacing-md);
   }
 
-  &[data-position="right"] {
-    --_action-section-ml: var(--raikou-spacing-md);
+  &:where([data-position="right"]) {
+    margin-inline-start: var(--raikou-spacing-md);
   }
 
   & > svg {
@@ -132,8 +125,8 @@
 .actionDescription {
   display: block;
   font-size: var(--raikou-font-size-xs);
-  opacity: var(--_action-description-opacity, 1);
-  color: var(--_action-description-color, var(--raikou-color-dimmed));
+  opacity: var(--action-description-opacity, 1);
+  color: var(--action-description-color, var(--raikou-color-dimmed));
 }
 
 .empty {
@@ -144,19 +137,19 @@
 
 .footer {
   padding: var(--raikou-spacing-xs) calc(var(--raikou-spacing-md) + rem(4px));
-  border-top: rem(1px) solid var(--_footer-border);
+  border-top: 1px solid;
 
-  @mixin light {
-    --_footer-border: var(--raikou-spotlight-footer-border);
+  @mixin where-light {
+    border-color: var(--raikou-spotlight-footer-border-color);
   }
 
-  @mixin dark {
-    --_footer-border: var(--raikou-spotlight-footer-border);
+  @mixin where-dark {
+    border-color: var(--raikou-spotlight-footer-border-color);
   }
 }
 
 .actionsGroup {
-  display: var(--_display, flex);
+  display: flex;
   flex-direction: column;
   margin-top: var(--raikou-spacing-md);
 
@@ -166,16 +159,10 @@
     font-size: var(--raikou-font-size-xs);
     font-weight: 700;
     color: var(--raikou-color-dimmed);
-    padding-left: var(--_actions-group-pl, var(--raikou-spacing-md));
-    padding-right: var(--_actions-group-pr, 0);
-  }
-
-  @mixin rtl {
-    --_actions-group-pl: 0;
-    --_actions-group-pr: var(--raikou-spacing-md);
+    padding-inline-start: var(--raikou-spacing-md);
   }
 
   &:empty {
-    --_display: none;
+    display: none;
   }
 }

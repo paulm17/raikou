@@ -127,6 +127,7 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
     allowStepSelect,
     iconPosition,
     orientation,
+    mod,
     ...others
   } = useProps("StepperStep", defaultProps, props);
 
@@ -153,10 +154,13 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
         variant: ctx.orientation,
         ...stylesApi,
       })}
-      mod={{
-        "icon-position": iconPosition || ctx.iconPosition,
-        "allow-click": allowStepClick,
-      }}
+      mod={[
+        {
+          "icon-position": iconPosition || ctx.iconPosition,
+          "allow-click": allowStepClick,
+        },
+        mod,
+      ]}
       ref={ref}
       {...dataAttributes}
       {...others}
@@ -180,7 +184,6 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
                     ...stylesApi,
                   })}
                 >
-                  {/* @ts-ignore */}
                   {loading ? (
                     <Loader
                       color="var(--raikou-color-white)"
@@ -196,7 +199,6 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
               )}
             </Transition>
 
-            {/* @ts-ignore */}
             {state !== "stepCompleted" ? (
               loading ? (
                 <Loader
@@ -226,13 +228,11 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
         >
           {label && (
             <span {...ctx.getStyles("stepLabel", stylesApi)}>
-              {/* @ts-ignore */}
               {getStepFragment(label, step)}
             </span>
           )}
           {description && (
             <span {...ctx.getStyles("stepDescription", stylesApi)}>
-              {/* @ts-ignore */}
               {getStepFragment(description, step)}
             </span>
           )}

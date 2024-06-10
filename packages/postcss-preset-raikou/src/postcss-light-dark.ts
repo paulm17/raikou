@@ -1,6 +1,6 @@
-import { atRule as postcssAtRule, Root } from 'postcss';
+import { atRule as postcssAtRule, Root } from "postcss";
 
-const FUNCTION = 'light-dark(';
+const FUNCTION = "light-dark(";
 
 function splitStringAtCharacter(character: string, search: string) {
   let characterIndex = 0;
@@ -10,10 +10,10 @@ function splitStringAtCharacter(character: string, search: string) {
     characterIndex < search.length &&
     (search[characterIndex] !== character || openedParentheses)
   ) {
-    if (search[characterIndex] === '(') {
+    if (search[characterIndex] === "(") {
       openedParentheses += 1;
     }
-    if (search[characterIndex] === ')') {
+    if (search[characterIndex] === ")") {
       openedParentheses -= 1;
     }
     characterIndex += 1;
@@ -34,8 +34,8 @@ function getLightDarkValue(value: string): GetLightDarkValueReturnType {
     return { light: value, dark: value };
   }
 
-  const [macro, suffix] = splitStringAtCharacter(')', search.join(FUNCTION));
-  const [light, dark] = splitStringAtCharacter(',', macro);
+  const [macro, suffix] = splitStringAtCharacter(")", search.join(FUNCTION));
+  const [light, dark] = splitStringAtCharacter(",", macro);
 
   const parsedSuffix = getLightDarkValue(suffix);
   return {
@@ -46,7 +46,7 @@ function getLightDarkValue(value: string): GetLightDarkValueReturnType {
 
 module.exports = () => {
   return {
-    postcssPlugin: 'postcss-light-dark',
+    postcssPlugin: "postcss-light-dark",
 
     Once(root: Root) {
       root.walkDecls((decl) => {
@@ -54,7 +54,7 @@ module.exports = () => {
         const regex = /\blight-dark\b/;
         if (regex.test(value)) {
           const { light: lightVal, dark: darkVal } = getLightDarkValue(value);
-          const darkMixin = postcssAtRule({ name: 'mixin', params: 'dark' });
+          const darkMixin = postcssAtRule({ name: "mixin", params: "dark" });
           darkMixin.append(decl.clone({ value: darkVal }));
           decl.parent?.insertAfter(decl, darkMixin);
           decl.parent?.insertAfter(decl, decl.clone({ value: lightVal }));

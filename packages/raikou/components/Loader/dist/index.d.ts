@@ -21,6 +21,8 @@ interface LoaderProps extends BoxProps, StylesApiProps<LoaderFactory>, Omit<Reac
     type?: RaikouLoader;
     /** Object of loaders components, can be customized via default props or inline. Default value contains `bars`, `oval` and `dots` */
     loaders?: RaikouLoadersRecord;
+    /** Overrides default loader with given content */
+    children?: React.ReactNode;
 }
 type LoaderFactory = Factory<{
     props: LoaderProps;

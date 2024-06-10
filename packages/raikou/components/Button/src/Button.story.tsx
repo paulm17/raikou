@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, ButtonProps } from "./Button";
 import { DEFAULT_THEME, rem } from "@raikou/core";
 
@@ -6,9 +6,33 @@ export default { title: "Button" };
 
 export function RenderRoot() {
   return (
-    <Button renderRoot={(props) => <a {...props} href="#" />} className="test">
+    <Button renderRoot={(props) => <a {...props} href="#" />}>
       Some content
     </Button>
+  );
+}
+
+export function AutoContrast() {
+  const buttons = Array(10)
+    .fill(0)
+    .map((_, index) => (
+      <Button key={index} color={`red.${index}`} autoContrast>
+        Button
+      </Button>
+    ));
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        gap: 10,
+        padding: 40,
+      }}
+    >
+      {buttons}
+    </div>
   );
 }
 
@@ -264,7 +288,7 @@ export function Loading() {
 }
 
 export function ToggleLoading() {
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = useState(false);
   return (
     <div style={{ padding: 40, display: "flex", gap: 20 }}>
       <Button loading={loading} size="lg">

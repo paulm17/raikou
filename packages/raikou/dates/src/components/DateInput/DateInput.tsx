@@ -1,39 +1,39 @@
 import React, { useEffect, useState } from "react";
+import dayjs from "dayjs";
 import {
   BoxProps,
-  StylesApiProps,
-  factory,
   ElementProps,
+  factory,
   Factory,
   RaikouSize,
+  StylesApiProps,
 } from "@raikou/core";
 import {
-  useInputProps,
-  InputVariant,
   __BaseInputProps,
   __InputStylesNames,
   Input,
+  InputVariant,
+  useInputProps,
 } from "../../../../components/Input/src";
-import { PopoverProps, Popover } from "../../../../components/Popover/src";
 import { CloseButton } from "../../../../components/CloseButton/src";
+import { Popover, PopoverProps } from "../../../../components/Popover/src";
 import { useDidUpdate } from "@raikou/hooks";
 import { useUncontrolledDates } from "../../hooks";
-import dayjs from "dayjs";
+import { CalendarLevel, DateValue } from "../../types";
+import { assignTime } from "../../utils";
 import {
   Calendar,
   CalendarBaseProps,
   CalendarStylesNames,
   pickCalendarProps,
 } from "../Calendar";
-import { DecadeLevelSettings } from "../DecadeLevel";
-import { YearLevelSettings } from "../YearLevel";
-import { MonthLevelSettings } from "../MonthLevel";
-import { HiddenDatesInput } from "../HiddenDatesInput";
-import { assignTime } from "../../utils";
-import { DateValue, CalendarLevel } from "../../types";
 import { useDatesContext } from "../DatesProvider";
-import { isDateValid } from "./is-date-valid/is-date-valid";
+import { DecadeLevelSettings } from "../DecadeLevel";
+import { HiddenDatesInput } from "../HiddenDatesInput";
+import { MonthLevelSettings } from "../MonthLevel";
+import { YearLevelSettings } from "../YearLevel";
 import { dateStringParser } from "./date-string-parser/date-string-parser";
+import { isDateValid } from "./is-date-valid/is-date-valid";
 
 export type DateInputStylesNames = __InputStylesNames | CalendarStylesNames;
 
@@ -236,7 +236,6 @@ export const DateInput = factory<DateInputFactory>((_props, ref) => {
   const _rightSection =
     rightSection ||
     (clearable && _value && !readOnly ? (
-      // @ts-ignore
       <CloseButton
         variant="transparent"
         onMouseDown={(event) => event.preventDefault()}
@@ -267,6 +266,7 @@ export const DateInput = factory<DateInputFactory>((_props, ref) => {
           position="bottom-start"
           disabled={readOnly}
           withRoles={false}
+          unstyled={unstyled}
           {...popoverProps}
         >
           <Popover.Target>
@@ -315,4 +315,5 @@ export const DateInput = factory<DateInputFactory>((_props, ref) => {
   );
 });
 
+DateInput.classes = { ...Input.classes, ...Calendar.classes };
 DateInput.displayName = "@raikou/dates/DateInput";

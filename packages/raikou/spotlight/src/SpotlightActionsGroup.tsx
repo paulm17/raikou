@@ -51,7 +51,6 @@ export const SpotlightActionsGroup = factory<SpotlightActionsGroupFactory>(
         {...others}
         __vars={{ "--spotlight-label": `'${label}'` }}
       >
-        {/* @ts-ignore */}
         {children}
       </Box>
     );

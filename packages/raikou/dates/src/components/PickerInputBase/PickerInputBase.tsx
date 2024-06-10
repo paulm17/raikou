@@ -2,25 +2,27 @@ import React from "react";
 import cx from "clsx";
 import {
   BoxProps,
-  StylesApiProps,
-  factory,
   ElementProps,
+  factory,
   Factory,
   RaikouSize,
+  StylesApiProps,
 } from "@raikou/core";
-import { useDisclosure } from "@raikou/hooks";
-import { HiddenDatesInput, HiddenDatesInputValue } from "../HiddenDatesInput";
-import { DatePickerType } from "../../types";
+import { CloseButton } from "../../../../components/CloseButton/src";
 import {
   __BaseInputProps,
-  InputVariant,
   __InputStylesNames,
-  useInputProps,
   Input,
+  InputVariant,
+  useInputProps,
 } from "../../../../components/Input/src";
-import { PopoverProps, Popover } from "../../../../components/Popover/src";
-import { ModalProps, Modal } from "../../../../components/Modal/src";
-import { CloseButton } from "../../../../components/CloseButton/src";
+
+import { Modal, ModalProps } from "../../../../components/Modal/src";
+import { Popover, PopoverProps } from "../../../../components/Popover/src";
+import { useDisclosure } from "@raikou/hooks";
+import { DatePickerType } from "../../types";
+import { DateFormatter } from "../../utils";
+import { HiddenDatesInput, HiddenDatesInputValue } from "../HiddenDatesInput";
 import classes from "./PickerInputBase.module.css";
 
 export type PickerInputBaseStylesNames = __InputStylesNames;
@@ -54,6 +56,12 @@ export interface DateInputSharedProps
 
   /** Separator between range value */
   labelSeparator?: string;
+
+  /** Input placeholder */
+  placeholder?: string;
+
+  /** A function to format selected dates values into a string. By default, date is formatted based on the input type. */
+  valueFormatter?: DateFormatter;
 }
 
 export interface PickerInputBaseProps
@@ -117,7 +125,6 @@ export const PickerInputBase = factory<PickerInputBaseFactory>(
     const _rightSection =
       rightSection ||
       (clearable && shouldClear && !readOnly && !disabled ? (
-        // @ts-ignore
         <CloseButton
           variant="transparent"
           onClick={onClear}
@@ -149,7 +156,7 @@ export const PickerInputBase = factory<PickerInputBaseFactory>(
             unstyled={unstyled}
             {...modalProps}
           >
-            {children as any}
+            {children}
           </Modal>
         )}
 
@@ -157,12 +164,17 @@ export const PickerInputBase = factory<PickerInputBaseFactory>(
           <Popover
             position="bottom-start"
             opened={dropdownOpened}
-            onClose={handleClose}
-            disabled={dropdownType === "modal" || readOnly}
             trapFocus
             returnFocus
             unstyled={unstyled}
             {...popoverProps}
+            disabled={
+              popoverProps?.disabled || dropdownType === "modal" || readOnly
+            }
+            onClose={() => {
+              popoverProps?.onClose?.();
+              handleClose();
+            }}
           >
             <Popover.Target>
               <Input
@@ -187,8 +199,12 @@ export const PickerInputBase = factory<PickerInputBaseFactory>(
                 {...others}
               >
                 {formattedValue || (
-                  // @ts-ignore
-                  <Input.Placeholder error={inputProps.error}>
+                  <Input.Placeholder
+                    error={inputProps.error}
+                    unstyled={unstyled}
+                    className={(classNames as any)?.placeholder}
+                    style={(styles as any)?.placeholder}
+                  >
                     {placeholder}
                   </Input.Placeholder>
                 )}

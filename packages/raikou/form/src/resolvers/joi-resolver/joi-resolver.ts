@@ -1,4 +1,4 @@
-import type { FormErrors } from "../../types";
+import type { FormErrors } from '../../types';
 
 interface JoiError {
   path: (string | number)[];
@@ -13,10 +13,7 @@ interface JoiResults {
 }
 
 interface JoiSchema {
-  validate: (
-    values: Record<string, any>,
-    options: { abortEarly: boolean },
-  ) => JoiResults;
+  validate: (values: Record<string, any>, options: { abortEarly: boolean }) => JoiResults;
 }
 
 export function joiResolver(schema: any, options?: any) {
@@ -30,7 +27,7 @@ export function joiResolver(schema: any, options?: any) {
 
     const results: Record<string, any> = {};
     parsed.error.details.forEach((error) => {
-      results[error.path.join(".")] = error.message;
+      results[error.path.join('.')] = error.message;
     });
 
     return results;

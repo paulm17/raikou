@@ -192,7 +192,6 @@ export const ColorInput = factory<ColorInputFactory>((_props, ref) => {
           .catch(() => {})
       }
     >
-      {/* @ts-ignore */}
       {eyeDropperIcon || <EyeDropperIcon {...getStyles("eyeDropperIcon")} />}
     </ActionIcon>
   );

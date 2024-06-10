@@ -33,7 +33,7 @@ export function updateSpotlightStateAction(
 }
 
 export function openSpotlightAction(store: SpotlightStore) {
-  updateSpotlightStateAction(() => ({ opened: true }), store);
+  updateSpotlightStateAction(() => ({ opened: true, selected: -1 }), store);
 }
 
 export function closeSpotlightAction(store: SpotlightStore) {
@@ -45,11 +45,11 @@ export function toggleSpotlightAction(store: SpotlightStore) {
 }
 
 export function setSelectedAction(index: number, store: SpotlightStore) {
-  store.updateState((state) => ({ ...state, selected: index }));
+  store.updateState((state: any) => ({ ...state, selected: index }));
 }
 
 export function setListId(id: string, store: SpotlightStore) {
-  store.updateState((state) => ({ ...state, listId: id }));
+  store.updateState((state: any) => ({ ...state, listId: id }));
 }
 
 export function selectAction(index: number, store: SpotlightStore): number {
@@ -115,7 +115,7 @@ export function clearSpotlightState(
   { clearQuery }: { clearQuery: boolean | undefined },
   store: SpotlightStore,
 ) {
-  store.updateState((state) => ({
+  store.updateState((state: any) => ({
     ...state,
     selected: -1,
     query: clearQuery ? "" : state.query,

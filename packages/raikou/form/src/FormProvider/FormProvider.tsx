@@ -1,6 +1,6 @@
-import React, { createContext, useContext } from 'react';
-import { useForm } from '../use-form';
-import { UseFormReturnType, UseForm, _TransformValues } from '../types';
+import React, { createContext, useContext } from "react";
+import { _TransformValues, UseForm, UseFormReturnType } from "../types";
+import { useForm } from "../use-form";
 
 export interface FormProviderProps<Form> {
   form: Form;
@@ -22,7 +22,9 @@ export function createFormContext<
   function useFormContext() {
     const ctx = useContext(FormContext);
     if (!ctx) {
-      throw new Error('useFormContext was called outside of FormProvider context');
+      throw new Error(
+        "useFormContext was called outside of FormProvider context",
+      );
     }
 
     return ctx;

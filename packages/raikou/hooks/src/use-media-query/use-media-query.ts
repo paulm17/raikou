@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export interface UseMediaQueryOptions {
   getInitialValueInEffect: boolean;
@@ -40,7 +40,7 @@ export function useMediaQuery(
   }
 ) {
   const [matches, setMatches] = useState(
-    getInitialValueInEffect ? initialValue : getInitialValue(query, initialValue)
+    getInitialValueInEffect ? initialValue : getInitialValue(query)
   );
   const queryRef = useRef<MediaQueryList>();
 

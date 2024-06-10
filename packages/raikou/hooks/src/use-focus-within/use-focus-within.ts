@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useEffect, useRef, useState } from 'react';
 
 export interface UseFocusWithinOptions {
   onFocus?: (event: FocusEvent) => void;
@@ -6,10 +6,7 @@ export interface UseFocusWithinOptions {
 }
 
 function containsRelatedTarget(event: FocusEvent) {
-  if (
-    event.currentTarget instanceof HTMLElement &&
-    event.relatedTarget instanceof HTMLElement
-  ) {
+  if (event.currentTarget instanceof HTMLElement && event.relatedTarget instanceof HTMLElement) {
     return event.currentTarget.contains(event.relatedTarget);
   }
 
@@ -19,10 +16,7 @@ function containsRelatedTarget(event: FocusEvent) {
 export function useFocusWithin<T extends HTMLElement = any>({
   onBlur,
   onFocus,
-}: UseFocusWithinOptions = {}): {
-  ref: React.MutableRefObject<T>;
-  focused: boolean;
-} {
+}: UseFocusWithinOptions = {}): { ref: React.MutableRefObject<T>; focused: boolean } {
   const ref = useRef<T>();
   const [focused, _setFocused] = useState(false);
   const focusedRef = useRef(false);
@@ -47,12 +41,12 @@ export function useFocusWithin<T extends HTMLElement = any>({
 
   useEffect(() => {
     if (ref.current) {
-      ref.current.addEventListener("focusin", handleFocusIn);
-      ref.current.addEventListener("focusout", handleFocusOut);
+      ref.current.addEventListener('focusin', handleFocusIn);
+      ref.current.addEventListener('focusout', handleFocusOut);
 
       return () => {
-        ref.current?.removeEventListener("focusin", handleFocusIn);
-        ref.current?.removeEventListener("focusout", handleFocusOut);
+        ref.current?.removeEventListener('focusin', handleFocusIn);
+        ref.current?.removeEventListener('focusout', handleFocusOut);
       };
     }
 

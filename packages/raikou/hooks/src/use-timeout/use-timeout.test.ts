@@ -1,6 +1,5 @@
-import { renderHook } from "@testing-library/react";
-import { act } from "react-dom/test-utils";
-import { useTimeout } from "./use-timeout";
+import { act, renderHook } from '@testing-library/react';
+import { useTimeout } from './use-timeout';
 
 const defaultTimeout = 2000;
 
@@ -11,11 +10,11 @@ const setupTimer = (timeout: number = defaultTimeout) => ({
   advanceTimerToNextTick: () => jest.advanceTimersByTime(timeout),
 });
 
-describe("@raikou/hooks/use-timeout", () => {
+describe('@mantine/hooks/use-timeout', () => {
   beforeAll(() => {
     jest.useFakeTimers();
-    jest.spyOn(global, "setTimeout");
-    jest.spyOn(global, "clearTimeout");
+    jest.spyOn(global, 'setTimeout');
+    jest.spyOn(global, 'clearTimeout');
   });
 
   afterEach(() => {
@@ -27,17 +26,15 @@ describe("@raikou/hooks/use-timeout", () => {
     jest.useRealTimers();
   });
 
-  it("initialize", () => {
-    const hook = renderHook(() =>
-      useTimeout(callback, defaultTimeout, { autoInvoke: false })
-    );
+  it('initialize', () => {
+    const hook = renderHook(() => useTimeout(callback, defaultTimeout, { autoInvoke: false }));
     const { start, clear } = hook.result.current;
 
-    expect(typeof start).toBe("function");
-    expect(typeof clear).toBe("function");
+    expect(typeof start).toBe('function');
+    expect(typeof clear).toBe('function');
   });
 
-  it("callback should NOT fire before calling start function, if autoInvoke is false", () => {
+  it('callback should NOT fire before calling start function, if autoInvoke is false', () => {
     const { timeout, advanceTimerToNextTick } = setupTimer();
     renderHook(() => useTimeout(callback, timeout, { autoInvoke: false }));
 
@@ -48,11 +45,9 @@ describe("@raikou/hooks/use-timeout", () => {
     expect(clearTimeout).not.toHaveBeenCalled();
   });
 
-  it("callback should fire after calling start function, if autoInvoke is false", () => {
+  it('callback should fire after calling start function, if autoInvoke is false', () => {
     const { timeout, advanceTimerToNextTick } = setupTimer();
-    const hook = renderHook(() =>
-      useTimeout(callback, timeout, { autoInvoke: false })
-    );
+    const hook = renderHook(() => useTimeout(callback, timeout, { autoInvoke: false }));
 
     act(() => {
       hook.result.current.start();
@@ -64,7 +59,7 @@ describe("@raikou/hooks/use-timeout", () => {
     expect(setTimeout).toHaveBeenCalled();
   });
 
-  it("callback should fire without calling start when autoInvoke is true", () => {
+  it('callback should fire without calling start when autoInvoke is true', () => {
     const { timeout, advanceTimerToNextTick } = setupTimer();
     renderHook(() => useTimeout(callback, timeout, { autoInvoke: true }));
 
@@ -74,11 +69,23 @@ describe("@raikou/hooks/use-timeout", () => {
     expect(setTimeout).toHaveBeenCalled();
   });
 
-  it("timeout is cleared on calling clear", () => {
+  it('callback should be called when rerender is triggered before timeout', () => {
+    const { timeout, advanceTimerToNextTick } = setupTimer();
+    const { rerender, result } = renderHook(() => useTimeout(callback, timeout));
+
+    result.current.start();
+
+    rerender();
+
+    advanceTimerToNextTick();
+
+    expect(callback).toHaveBeenCalled();
+    expect(setTimeout).toHaveBeenCalled();
+  });
+
+  it('timeout is cleared on calling clear', () => {
     const { timeout, advanceTimerToNextTick } = setupTimer(10);
-    const hook = renderHook(() =>
-      useTimeout(callback, timeout, { autoInvoke: false })
-    );
+    const hook = renderHook(() => useTimeout(callback, timeout, { autoInvoke: false }));
 
     act(() => {
       hook.result.current.start();
@@ -95,11 +102,11 @@ describe("@raikou/hooks/use-timeout", () => {
     expect(clearTimeout).toHaveBeenCalled();
   });
 
-  it("start function passes parameters to callback", () => {
+  it('start function passes parameters to callback', () => {
     const { timeout, advanceTimerToNextTick } = setupTimer(10);
     const hook = renderHook(() => useTimeout(callback, timeout));
 
-    const MOCK_CALLBACK_VALUE = "MOCK_CALLBACK_VALUE";
+    const MOCK_CALLBACK_VALUE = 'MOCK_CALLBACK_VALUE';
     act(() => {
       hook.result.current.start(MOCK_CALLBACK_VALUE);
     });

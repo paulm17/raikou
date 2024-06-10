@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { useFloating, shift, getOverflowAncestors } from '@floating-ui/react';
-import { FloatingPosition } from '../../Floating';
+import { useState, useEffect, useCallback, useRef } from "react";
+import { useFloating, shift, getOverflowAncestors } from "@floating-ui/react";
+import { FloatingPosition } from "../../../Floating/src";
 
 interface UseFloatingTooltip {
   offset: number;
@@ -19,20 +19,20 @@ export function useFloatingTooltip<T extends HTMLElement = any>({
       shift({
         crossAxis: true,
         padding: 5,
-        rootBoundary: 'document',
+        rootBoundary: "document",
       }),
     ],
   });
 
-  const horizontalOffset = placement.includes('right')
+  const horizontalOffset = placement.includes("right")
     ? offset
-    : position.includes('left')
+    : position.includes("left")
     ? offset * -1
     : 0;
 
-  const verticalOffset = placement.includes('bottom')
+  const verticalOffset = placement.includes("bottom")
     ? offset
-    : position.includes('top')
+    : position.includes("top")
     ? offset * -1
     : 0;
 
@@ -53,23 +53,23 @@ export function useFloatingTooltip<T extends HTMLElement = any>({
         },
       });
     },
-    [reference]
+    [reference],
   );
 
   useEffect(() => {
     if (refs.floating.current) {
       const boundary = boundaryRef.current!;
-      boundary.addEventListener('mousemove', handleMouseMove);
+      boundary.addEventListener("mousemove", handleMouseMove);
 
       const parents = getOverflowAncestors(refs.floating.current);
       parents.forEach((parent) => {
-        parent.addEventListener('scroll', update);
+        parent.addEventListener("scroll", update);
       });
 
       return () => {
-        boundary.removeEventListener('mousemove', handleMouseMove);
+        boundary.removeEventListener("mousemove", handleMouseMove);
         parents.forEach((parent) => {
-          parent.removeEventListener('scroll', update);
+          parent.removeEventListener("scroll", update);
         });
       };
     }

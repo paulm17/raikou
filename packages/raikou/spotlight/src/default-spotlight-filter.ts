@@ -1,30 +1,33 @@
 import type {
-  SpotlightFilterFunction,
   SpotlightActionData,
   SpotlightActionGroupData,
   SpotlightActions,
-} from './Spotlight';
+  SpotlightFilterFunction,
+} from "./Spotlight";
 
 function getKeywords(keywords: string | string[] | undefined) {
   if (Array.isArray(keywords)) {
     return keywords
       .map((keyword) => keyword.trim())
-      .join(',')
+      .join(",")
       .toLowerCase()
       .trim();
   }
 
-  if (typeof keywords === 'string') {
+  if (typeof keywords === "string") {
     return keywords.toLowerCase().trim();
   }
 
-  return '';
+  return "";
 }
 
 function getFlatActions(data: SpotlightActions[]) {
   return data.reduce<SpotlightActionData[]>((acc, item) => {
-    if ('actions' in item) {
-      return [...acc, ...item.actions.map((action) => ({ ...action, group: item.group }))];
+    if ("actions" in item) {
+      return [
+        ...acc,
+        ...item.actions.map((action) => ({ ...action, group: item.group })),
+      ];
     }
 
     return [...acc, item];
@@ -32,13 +35,19 @@ function getFlatActions(data: SpotlightActions[]) {
 }
 
 function flatActionsToGroups(data: SpotlightActionData[]) {
-  const groups: Record<string, { pushed: boolean; data: SpotlightActionGroupData }> = {};
+  const groups: Record<
+    string,
+    { pushed: boolean; data: SpotlightActionGroupData }
+  > = {};
   const result: SpotlightActions[] = [];
 
   data.forEach((action) => {
     if (action.group) {
       if (!groups[action.group]) {
-        groups[action.group] = { pushed: false, data: { group: action.group, actions: [] } };
+        groups[action.group] = {
+          pushed: false,
+          data: { group: action.group, actions: [] },
+        };
       }
 
       groups[action.group].data.actions.push(action);
@@ -55,7 +64,10 @@ function flatActionsToGroups(data: SpotlightActionData[]) {
   return result;
 }
 
-export const defaultSpotlightFilter: SpotlightFilterFunction = (_query, data) => {
+export const defaultSpotlightFilter: SpotlightFilterFunction = (
+  _query,
+  data,
+) => {
   const query = _query.trim().toLowerCase();
   const priorityMatrix: SpotlightActionData[][] = [[], []];
   const flatActions = getFlatActions(data);

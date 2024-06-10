@@ -10,11 +10,11 @@
 }
 
 .root {
-  @mixin light {
-    --raikou-skeleton-bg: #5c5f66;
+  @mixin where-light {
+    --raikou-skeleton-background-color: #5c5f66;
   }
-  @mixin dark {
-    --raikou-skeleton-bg: #373a40;
+  @mixin where-dark {
+    --raikou-skeleton-background-color: #373a40;
   }
 
   height: var(--skeleton-height, auto);
@@ -24,11 +24,11 @@
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
 
-  &[data-animate]::after {
+  &:where([data-animate])::after {
     animation: skeleton-fade 1500ms linear infinite;
   }
 
-  &[data-visible] {
+  &:where([data-visible]) {
     overflow: hidden;
 
     &::before {
@@ -45,12 +45,12 @@
       inset: 0;
       z-index: 11;
 
-      @mixin light {
-        background-color: var(--raikou-skeleton-bg);
+      @mixin where-light {
+        background-color: var(--raikou-skeleton-background-color);
       }
 
-      @mixin dark {
-        background-color: var(--raikou-skeleton-bg);
+      @mixin where-dark {
+        background-color: var(--raikou-skeleton-background-color);
       }
     }
   }

@@ -1,8 +1,25 @@
 import React, { useState } from "react";
 import { SegmentedControl } from "./SegmentedControl";
+import { useDisclosure } from "@raikou/hooks";
+import { Button } from "../../Button/src";
+import { Modal } from "../../Modal/src";
 // import { RaikouThemeProvider } from '../../core';
 
 export default { title: "SegmentedControl" };
+
+export function WithinModal() {
+  const [opened, { open, close }] = useDisclosure(false);
+
+  return (
+    <>
+      <Modal opened={opened} onClose={close} title="Within Modal">
+        <SegmentedControl data={["React", "Angular", "Vue", "Svelte"]} />
+      </Modal>
+
+      <Button onClick={open}>Open modal</Button>
+    </>
+  );
+}
 
 export function WithinDisabledFieldset() {
   return (
@@ -28,6 +45,37 @@ export function Usage() {
   return (
     <div style={{ padding: 40 }}>
       <SegmentedControl data={["React", "Angular", "Vue", "Svelte"]} p={10} />
+    </div>
+  );
+}
+
+export function WithoutItemsBorders() {
+  return (
+    <div style={{ padding: 40 }}>
+      <SegmentedControl
+        data={["React", "Angular", "Vue", "Svelte"]}
+        withItemsBorders={false}
+      />
+    </div>
+  );
+}
+
+export function AutoContrast() {
+  return (
+    <div style={{ padding: 40 }}>
+      <SegmentedControl
+        data={["React", "Angular", "Vue", "Svelte"]}
+        color="blue.9"
+        autoContrast
+      />
+    </div>
+  );
+}
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 0 }}>
+      <SegmentedControl data={["React", "Angular", "Vue", "Svelte"]} unstyled />
     </div>
   );
 }
@@ -73,6 +121,16 @@ export function Disabled() {
   );
 }
 
+// export function FocusRingAlways() {
+//   return (
+//     <div style={{ padding: 40 }}>
+//       <MantineThemeProvider theme={{ focusRing: 'always' }} inherit>
+//         <SegmentedControl data={['React', 'Angular', 'Svelte', 'Vue']} />
+//       </MantineThemeProvider>
+//     </div>
+//   );
+// }
+
 export function SelectedItemRemoved() {
   const [value, setValue] = useState("");
   const [breakingThings, setBreakingThings] = useState(false);
@@ -93,12 +151,23 @@ export function SelectedItemRemoved() {
   );
 }
 
-// export function FocusRingAlways() {
-//   return (
-//     <div style={{ padding: 40 }}>
-//       <RaikouThemeProvider theme={{ focusRing: 'always' }} inherit>
-//         <SegmentedControl data={['React', 'Angular', 'Svelte', 'Vue']} />
-//       </RaikouThemeProvider>
-//     </div>
-//   );
-// }
+export function Unselect() {
+  const [value, setValue] = useState("");
+
+  const dataList = ["1", "2", "3"];
+
+  return (
+    <div style={{ padding: 40 }}>
+      <SegmentedControl
+        value={value}
+        onChange={setValue}
+        data={dataList}
+        mr={10}
+      />
+
+      <button type="button" onClick={() => setValue("")}>
+        Unselect
+      </button>
+    </div>
+  );
+}

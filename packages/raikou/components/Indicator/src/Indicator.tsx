@@ -5,6 +5,8 @@ import {
   StylesApiProps,
   factory,
   ElementProps,
+  getAutoContrastValue,
+  getContrastColor,
   useProps,
   useStyles,
   createVarsResolver,
@@ -31,6 +33,7 @@ export type IndicatorStylesNames = "root" | "indicator";
 export type IndicatorCssVariables = {
   root:
     | "--indicator-color"
+    | "--indicator-text-color"
     | "--indicator-size"
     | "--indicator-radius"
     | "--indicator-z-index"
@@ -73,6 +76,9 @@ export interface IndicatorProps
 
   /** Indicator z-index, `200` by default */
   zIndex?: React.CSSProperties["zIndex"];
+
+  /** Determines whether text color should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+  autoContrast?: boolean;
 }
 
 export type IndicatorFactory = Factory<{
@@ -89,13 +95,15 @@ const defaultProps: Partial<IndicatorProps> = {
   withBorder: false,
   disabled: false,
   processing: false,
-  size: 10,
 };
 
 const varsResolver = createVarsResolver<IndicatorFactory>(
-  (theme, { color, position, offset, size, radius, zIndex }) => ({
+  (theme, { color, position, offset, size, radius, zIndex, autoContrast }) => ({
     root: {
       "--indicator-color": color ? getThemeColor(color, theme) : undefined,
+      "--indicator-text-color": getAutoContrastValue(autoContrast, theme)
+        ? getContrastColor({ color, theme, autoContrast })
+        : undefined,
       "--indicator-size": rem(size),
       "--indicator-radius":
         radius === undefined ? undefined : getRadius(radius),
@@ -125,6 +133,8 @@ export const Indicator = factory<IndicatorFactory>((_props, ref) => {
     disabled,
     processing,
     zIndex,
+    autoContrast,
+    mod,
     ...others
   } = props;
 
@@ -142,7 +152,7 @@ export const Indicator = factory<IndicatorFactory>((_props, ref) => {
   });
 
   return (
-    <Box ref={ref} {...getStyles("root")} mod={{ inline }} {...others}>
+    <Box ref={ref} {...getStyles("root")} mod={[{ inline }, mod]} {...others}>
       {!disabled && (
         <>
           <Box

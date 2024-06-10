@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BoxProps,
   CompoundStylesApiProps,
@@ -39,9 +39,11 @@ export const SpotlightSearch = factory<SpotlightSearchFactory>((props, ref) => {
     useProps("SpotlightSearch", defaultProps, props);
   const ctx = useSpotlightContext();
   const inputStyles = ctx.getStyles("search");
+  const [isComposing, setIsComposing] = useState(false); // IME
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     onKeyDown?.(event);
+    if (isComposing) return;
 
     if (event.nativeEvent.code === "ArrowDown") {
       event.preventDefault();
@@ -71,6 +73,8 @@ export const SpotlightSearch = factory<SpotlightSearchFactory>((props, ref) => {
         onChange?.(event);
       }}
       onKeyDown={handleKeyDown}
+      onCompositionStart={() => setIsComposing(true)}
+      onCompositionEnd={() => setIsComposing(false)}
     />
   );
 });

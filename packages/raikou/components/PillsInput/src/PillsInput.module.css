@@ -1,7 +1,7 @@
 .field {
   background-color: transparent;
   appearance: none;
-  min-width: rem(100px);
+  min-width: 100px;
   flex: 1;
   border: 0;
   font-size: inherit;
@@ -10,14 +10,13 @@
   padding: 0;
 
   &::placeholder {
-    color: var(--_input-placeholder-color);
+    color: var(--input-placeholder-color);
     opacity: 1;
   }
 
-  &[data-type="hidden"],
-  &[data-type="auto"] {
-    height: rem(1px);
-    width: rem(1px);
+  &:where([data-type="hidden"], [data-type="auto"]) {
+    height: 1px;
+    width: 1px;
     top: 0;
     left: 0;
     pointer-events: none;
@@ -29,19 +28,18 @@
     outline: none;
   }
 
-  &[data-type="auto"]:focus {
+  &:where([data-type="auto"]:focus) {
     height: 1.6em;
     visibility: visible;
     opacity: 1;
     position: static;
   }
 
-  &[data-pointer]:not([data-disabled], :disabled) {
+  &:where([data-pointer]:not([data-disabled], :disabled)) {
     cursor: pointer;
   }
 
-  &[data-disabled],
-  &:disabled {
+  &:where([data-disabled], :disabled) {
     cursor: not-allowed;
   }
 }

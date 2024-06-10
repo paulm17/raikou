@@ -1,32 +1,30 @@
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Code/src/Code.module.css/#css-module-data */
-[data-raikou-color-scheme=light] .m-b183c0a2 {
-  --raikou-code-bg: #f1f3f5;
+:where([data-raikou-color-scheme=light]) .m-b183c0a2 {
+  --raikou-code-background-color: #f1f3f5;
   --raikou-code-color: #000;
 }
-[data-raikou-color-scheme=dark] .m-b183c0a2 {
-  --raikou-code-bg: #2c2e33;
+:where([data-raikou-color-scheme=dark]) .m-b183c0a2 {
+  --raikou-code-background-color: #2c2e33;
   --raikou-code-color: #fff;
 }
 .m-b183c0a2 {
   font-family: var(--raikou-font-family-monospace);
   line-height: var(--raikou-line-height);
-  padding: var(--_code-padding, calc(0.125rem * var(--raikou-scale)) calc(var(--raikou-spacing-xs) / 2));
+  padding: 2px calc(var(--raikou-spacing-xs) / 2);
   border-radius: var(--raikou-radius-sm);
   font-size: var(--raikou-font-size-xs);
-  background-color: var(--_code-bg);
-  color: var(--_code-color);
   margin: 0;
   overflow: auto;
 }
-[data-raikou-color-scheme=light] .m-b183c0a2 {
-  --_code-bg: var(--code-bg, var(--raikou-code-bg));
-  --_code-color: var(--raikou-code-color);
+:where([data-raikou-color-scheme=light]) .m-b183c0a2 {
+  background-color: var(--code-bg, var(--raikou-code-background-color));
+  color: var(--raikou-code-color);
 }
-[data-raikou-color-scheme=dark] .m-b183c0a2 {
-  --_code-bg: var(--code-bg, var(--raikou-code-bg));
-  --_code-color: var(--raikou-code-color);
+:where([data-raikou-color-scheme=dark]) .m-b183c0a2 {
+  background-color: var(--code-bg, var(--raikou-code-background-color));
+  color: var(--raikou-code-color);
 }
 .m-b183c0a2[data-block] {
-  --_code-padding: var(--raikou-spacing-xs);
+  padding: var(--raikou-spacing-xs);
 }
 /*# sourceMappingURL=index.css.map */

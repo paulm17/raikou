@@ -25,6 +25,8 @@ interface __CloseButtonProps {
     iconSize?: number | string;
     /** Content rendered inside the button, for example `VisuallyHidden` with label for screen readers */
     children?: React.ReactNode;
+    /** Replaces default close icon. If set, `iconSize` prop is ignored. */
+    icon?: React.ReactNode;
 }
 interface CloseButtonProps extends __CloseButtonProps, BoxProps, StylesApiProps<CloseButtonFactory> {
 }

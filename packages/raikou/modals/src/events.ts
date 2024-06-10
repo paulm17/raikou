@@ -21,7 +21,7 @@ type ModalsEvents = {
 };
 
 export const [useModalsEvents, createEvent] =
-  createUseExternalEvents<ModalsEvents>("raikou-modals");
+  createUseExternalEvents<ModalsEvents>("mantine-modals");
 
 export const openModal = createEvent("openModal");
 export const closeModal = createEvent("closeModal");
@@ -40,7 +40,13 @@ export const openContextModal: ModalsEvents["openContextModal"] = <
   },
 ) => createEvent("openContextModal")(payload);
 
-export const modals = {
+export const modals: {
+  open: ModalsEvents["openModal"];
+  close: ModalsEvents["closeModal"];
+  closeAll: ModalsEvents["closeAllModals"];
+  openConfirmModal: ModalsEvents["openConfirmModal"];
+  openContextModal: ModalsEvents["openContextModal"];
+} = {
   open: openModal,
   close: closeModal,
   closeAll: closeAllModals,

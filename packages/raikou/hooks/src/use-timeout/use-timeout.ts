@@ -1,9 +1,9 @@
-import { useRef, useEffect, useCallback } from "react";
+import { useCallback, useEffect, useRef } from 'react';
 
 export function useTimeout(
   callback: (...callbackParams: any[]) => void,
   delay: number,
-  options: { autoInvoke: boolean } = { autoInvoke: false },
+  options: { autoInvoke: boolean } = { autoInvoke: false }
 ) {
   const timeoutRef = useRef<number | null>(null);
 
@@ -16,7 +16,7 @@ export function useTimeout(
         }, delay);
       }
     },
-    [delay],
+    [delay]
   );
 
   const clear = useCallback(() => {

@@ -17,6 +17,8 @@ import {
   getRadius,
   getSize,
   getFontSize,
+  getAutoContrastValue,
+  getContrastColor,
   getThemeColor,
 } from "@raikou/core";
 import { PaginationProvider } from "../Pagination.context";
@@ -79,6 +81,9 @@ export interface PaginationRootProps
 
   /** Additional props passed down to controls */
   getItemProps?: (page: number) => Record<string, any>;
+
+  /** Determines whether active item text color should depend on `background-color` of the indicator. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+  autoContrast?: boolean;
 }
 
 export type PaginationRootFactory = Factory<{
@@ -91,17 +96,19 @@ export type PaginationRootFactory = Factory<{
 const defaultProps: Partial<PaginationRootProps> = {
   siblings: 1,
   boundaries: 1,
-  size: "md",
 };
 
 const varsResolver = createVarsResolver<PaginationRootFactory>(
-  (theme, { size, radius, color }) => ({
+  (theme, { size, radius, color, autoContrast }) => ({
     root: {
       "--pagination-control-radius":
         radius === undefined ? undefined : getRadius(radius),
       "--pagination-control-size": getSize(size, "pagination-control-size"),
       "--pagination-control-fz": getFontSize(size),
       "--pagination-active-bg": color ? getThemeColor(color, theme) : undefined,
+      "--pagination-active-color": getAutoContrastValue(autoContrast, theme)
+        ? getContrastColor({ color, theme, autoContrast })
+        : undefined,
     },
   }),
 );

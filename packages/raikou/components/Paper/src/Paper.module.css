@@ -1,32 +1,29 @@
-.root.root {
-  @mixin light {
+.root {
+  @mixin where-light {
     --raikou-paper-border-color: #dee2e6;
   }
-  @mixin dark {
+  @mixin where-dark {
     --raikou-paper-border-color: #373a40;
   }
+
+  --paper-radius: var(--raikou-radius-default);
 
   outline: 0;
   -webkit-tap-highlight-color: transparent;
   display: block;
   touch-action: manipulation;
   text-decoration: none;
-  border-radius: var(--paper-radius, var(--raikou-radius-default));
-  box-shadow: var(--paper-shadow, none);
+  border-radius: var(--paper-radius);
+  box-shadow: var(--paper-shadow);
   background-color: var(--raikou-color-body);
-  border: var(--_paper-border, none);
 
-  &[data-with-border] {
-    @mixin light {
-      --_paper-border: rem(1px) solid var(--raikou-paper-border-color);
+  &:where([data-with-border]) {
+    @mixin where-light {
+      border: rem(1px) solid var(--raikou-paper-border-color);
     }
 
-    @mixin dark {
-      --_paper-border: rem(1px) solid var(--raikou-paper-border-color);
+    @mixin where-dark {
+      border: rem(1px) solid var(--raikou-paper-border-color);
     }
-  }
-
-  &:not([data-with-border]) {
-    --_paper-border: none !important;
   }
 }

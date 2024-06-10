@@ -1,16 +1,31 @@
 import React from "react";
 import { Alert } from "./Alert";
+import { IconPhoto } from "@tabler/icons-react";
 
 export default { title: "Alert" };
 
 export function Variants() {
   return (
-    <div style={{ maxWidth: 500, margin: "auto", padding: 40 }}>
-      <Alert title="Bummer!" color="red" variant="light" withCloseButton>
+    <div
+      style={{
+        maxWidth: 500,
+        margin: "auto",
+        padding: 40,
+        background: "rgba(0, 0, 0, 0.1)",
+      }}
+    >
+      <Alert
+        icon={<IconPhoto stroke={1.5} />}
+        title="Bummer!"
+        color="red"
+        variant="light"
+        withCloseButton
+      >
         Something terrible happened! You made a mistake and there is no going
         back, your data was lost forever!
       </Alert>
       <Alert
+        icon={<IconPhoto stroke={1.5} />}
         withCloseButton
         title="Bummer!"
         color="red"
@@ -21,6 +36,7 @@ export function Variants() {
         back, your data was lost forever!
       </Alert>
       <Alert
+        icon={<IconPhoto stroke={1.5} />}
         withCloseButton
         title="Bummer!"
         color="red"
@@ -32,6 +48,7 @@ export function Variants() {
       </Alert>
 
       <Alert
+        icon={<IconPhoto stroke={1.5} />}
         withCloseButton
         title="Bummer!"
         color="red"
@@ -43,6 +60,19 @@ export function Variants() {
       </Alert>
 
       <Alert
+        icon={<IconPhoto stroke={1.5} />}
+        withCloseButton
+        title="Bummer!"
+        color="red"
+        variant="white"
+        mt="xl"
+      >
+        Something terrible happened! You made a mistake and there is no going
+        back, your data was lost forever!
+      </Alert>
+
+      <Alert
+        icon={<IconPhoto stroke={1.5} />}
         withCloseButton
         title="Bummer!"
         color="red"
@@ -52,6 +82,39 @@ export function Variants() {
         Something terrible happened! You made a mistake and there is no going
         back, your data was lost forever!
       </Alert>
+    </div>
+  );
+}
+
+export function AutoContrast() {
+  const buttons = Array(10)
+    .fill(0)
+    .map((_, index) => (
+      <Alert
+        withCloseButton
+        title="Bummer!"
+        color={`yellow.${index}`}
+        variant="filled"
+        mt="xl"
+        autoContrast
+        key={index}
+      >
+        Something terrible happened! You made a mistake and there is no going
+        back, your data was lost forever!
+      </Alert>
+    ));
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        gap: 10,
+        padding: 40,
+      }}
+    >
+      {buttons}
     </div>
   );
 }
@@ -86,3 +149,26 @@ export function WithoutDescription() {
     </div>
   );
 }
+
+// export function CSSVariables() {
+//   return (
+//     <MantineThemeProvider
+//       theme={{
+//         components: {
+//           Alert: Alert.extend({
+//             defaultProps: {
+//               // color: 'red',
+//             },
+//           }),
+//         },
+//       }}
+//     >
+//       <div style={{ maxWidth: 500, margin: 'auto', padding: 40 }}>
+//         <Alert title="Bummer!" withCloseButton>
+//           Something terrible happened! You made a mistake and there is no going back, your data was
+//           lost forever!
+//         </Alert>
+//       </div>
+//     </MantineThemeProvider>
+//   );
+// }

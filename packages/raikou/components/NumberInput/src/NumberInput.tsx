@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import cx from "clsx";
 import {
   NumericFormat,
   OnValueChange,
   NumberFormatValues,
 } from "react-number-format";
-import { assignRef, clamp, useUncontrolled } from "@raikou/hooks";
+import { assignRef, clamp, useMergedRef, useUncontrolled } from "@raikou/hooks";
 import {
   BoxProps,
   StylesApiProps,
@@ -28,43 +28,24 @@ import {
 import { NumberInputChevron } from "./NumberInputChevron";
 import classes from "./NumberInput.module.css";
 
+// re for negative -0, -0., -0.0, -0.00, -0.000 ... strings
+// and for positive 0., 0.0, 0.00, 0.000 ... strings
+const leadingDecimalZeroPattern = /^(0\.0*|-0(\.0*)?)$/;
+
+// re for 01, 006, 00.02, -0010, -000.293 ... and negative counterparts
+const leadingZerosPattern = /^-?0\d+(\.\d+)?\.?$/;
+
 export interface NumberInputHandlers {
   increment: () => void;
   decrement: () => void;
 }
 
-function isValidNumber(value: number | undefined): value is number {
-  return typeof value === "number" && !Number.isNaN(value);
-}
-
-interface GetDecrementedValueInput {
-  value: number;
-  min: number | undefined;
-  step: number | undefined;
-  allowNegative: boolean | undefined;
-}
-
-function getDecrementedValue({
-  value,
-  min,
-  step = 1,
-  allowNegative,
-}: GetDecrementedValueInput) {
-  const nextValue = value - step;
-
-  if (min !== undefined && nextValue < min) {
-    return min;
-  }
-
-  if (!allowNegative && nextValue < 0 && min === undefined) {
-    return value;
-  }
-
-  if (min !== undefined && min >= 0 && nextValue <= min) {
-    return nextValue;
-  }
-
-  return nextValue;
+function isValidNumber(value: number | string | undefined): value is number {
+  return (
+    (typeof value === "number"
+      ? value < Number.MAX_SAFE_INTEGER
+      : !Number.isNaN(Number(value))) && !Number.isNaN(value)
+  );
 }
 
 function isInRange(
@@ -107,7 +88,7 @@ export interface NumberInputProps
   /** Called when value changes with `react-number-format` payload */
   onValueChange?: OnValueChange;
 
-  /** Determines whether leading zeros are allowed. If not set, leading zeros are removed when the input is blurred. `false` by default */
+  /** Determines whether leading zeros are allowed. If set to `false`, leading zeros are removed when the input value becomes a valid number. `true` by default */
   allowLeadingZeros?: boolean;
 
   /** Determines whether negative values are allowed, `true` by default */
@@ -169,6 +150,18 @@ export interface NumberInputProps
 
   /** Value set to the input when increment/decrement buttons are clicked or up/down arrows pressed if the input is empty, `0` by default */
   startValue?: number;
+
+  /** Delay before stepping the value. Can be a number of milliseconds or a function that receives the current step count and returns the delay in milliseconds. */
+  stepHoldInterval?: number | ((stepCount: number) => number);
+
+  /** Initial delay in milliseconds before stepping the value. */
+  stepHoldDelay?: number;
+
+  /** Determines whether up/down keyboard events should be handled to increment/decrement value, `true` by default */
+  withKeyboardEvents?: boolean;
+
+  /** Determines whether leading zeros (e.g. `00100` -> `100`) should be removed on blur, `true` by default */
+  trimLeadingZeroesOnBlur?: boolean;
 }
 
 export type NumberInputFactory = Factory<{
@@ -184,6 +177,9 @@ const defaultProps: Partial<NumberInputProps> = {
   clampBehavior: "blur",
   allowDecimal: true,
   allowNegative: true,
+  withKeyboardEvents: true,
+  allowLeadingZeros: true,
+  trimLeadingZeroesOnBlur: true,
   startValue: 0,
 };
 
@@ -216,6 +212,7 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
     allowDecimal,
     decimalScale,
     onKeyDown,
+    onKeyDownCapture,
     handlersRef,
     startValue,
     disabled,
@@ -224,6 +221,11 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
     readOnly,
     size,
     rightSectionWidth,
+    stepHoldInterval,
+    stepHoldDelay,
+    allowLeadingZeros,
+    withKeyboardEvents,
+    trimLeadingZeroesOnBlur,
     ...others
   } = props;
 
@@ -251,56 +253,192 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
     onChange,
   });
 
+  const shouldUseStepInterval =
+    stepHoldDelay !== undefined && stepHoldInterval !== undefined;
+  const inputRef = useRef<HTMLInputElement>(null);
+  const onStepTimeoutRef = useRef<number | null>(null);
+  const stepCountRef = useRef<number>(0);
+
   const handleValueChange: OnValueChange = (payload, event) => {
-    setValue(
-      isValidNumber(payload.floatValue) &&
-        payload.value !== "-0" &&
-        payload.value !== "-0."
-        ? payload.floatValue
-        : payload.value,
-    );
+    if (event.source === "event") {
+      setValue(
+        isValidNumber(payload.floatValue) &&
+          !leadingDecimalZeroPattern.test(payload.value) &&
+          !(allowLeadingZeros ? leadingZerosPattern.test(payload.value) : false)
+          ? payload.floatValue
+          : payload.value,
+      );
+    }
     onValueChange?.(payload, event);
   };
 
-  const increment = () => {
-    if (typeof _value !== "number" || Number.isNaN(_value)) {
-      setValue(clamp(startValue!, min, max));
-    } else if (max !== undefined) {
-      setValue(_value + step! <= max ? _value + step! : max);
-    } else {
-      setValue(_value + step!);
+  const getDecimalPlaces = (inputValue: number | string): number => {
+    const match = String(inputValue).match(/(?:\.(\d+))?(?:[eE]([+-]?\d+))?$/);
+    if (!match) {
+      return 0;
+    }
+    return Math.max(
+      0,
+      (match[1] ? match[1].length : 0) - (match[2] ? +match[2] : 0),
+    );
+  };
+
+  const adjustCursor = (position?: number) => {
+    if (inputRef.current && typeof position !== "undefined") {
+      inputRef.current.setSelectionRange(position, position);
     }
   };
 
-  const decrement = () => {
+  const incrementRef = useRef<() => void>();
+  incrementRef.current = () => {
+    let val: number;
+    const currentValuePrecision = getDecimalPlaces(_value);
+    const stepPrecision = getDecimalPlaces(step!);
+    const maxPrecision = Math.max(currentValuePrecision, stepPrecision);
+    const factor = 10 ** maxPrecision;
+
     if (typeof _value !== "number" || Number.isNaN(_value)) {
-      setValue(max ?? clamp(startValue!, min, max));
+      val = clamp(startValue!, min, max);
+    } else if (max !== undefined) {
+      const incrementedValue =
+        (Math.round(_value * factor) + Math.round(step! * factor)) / factor;
+      val = incrementedValue <= max ? incrementedValue : max;
     } else {
-      setValue(
-        getDecrementedValue({ value: _value, min, step, allowNegative }),
-      );
+      val = (Math.round(_value * factor) + Math.round(step! * factor)) / factor;
     }
+
+    const formattedValue = val.toFixed(maxPrecision);
+    setValue(parseFloat(formattedValue));
+    onValueChange?.(
+      {
+        floatValue: parseFloat(formattedValue),
+        formattedValue,
+        value: formattedValue,
+      },
+      { source: "increment" as any },
+    );
+    setTimeout(() => adjustCursor(inputRef.current?.value.length), 0);
+  };
+
+  const decrementRef = useRef<() => void>();
+  decrementRef.current = () => {
+    let val: number;
+    const minValue =
+      min !== undefined ? min : !allowNegative ? 0 : Number.MIN_SAFE_INTEGER;
+    const currentValuePrecision = getDecimalPlaces(_value);
+    const stepPrecision = getDecimalPlaces(step!);
+    const maxPrecision = Math.max(currentValuePrecision, stepPrecision);
+    const factor = 10 ** maxPrecision;
+
+    if (typeof _value !== "number" || Number.isNaN(_value)) {
+      val = clamp(startValue!, minValue, max);
+    } else {
+      const decrementedValue =
+        (Math.round(_value * factor) - Math.round(step! * factor)) / factor;
+      val =
+        minValue !== undefined && decrementedValue < minValue
+          ? minValue
+          : decrementedValue;
+    }
+
+    const formattedValue = val.toFixed(maxPrecision);
+    setValue(parseFloat(formattedValue));
+    onValueChange?.(
+      {
+        floatValue: parseFloat(formattedValue),
+        formattedValue,
+        value: formattedValue,
+      },
+      { source: "decrement" as any },
+    );
+    setTimeout(() => adjustCursor(inputRef.current?.value.length), 0);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     onKeyDown?.(event);
 
-    if (readOnly) {
+    if (readOnly || !withKeyboardEvents) {
       return;
     }
 
     if (event.key === "ArrowUp") {
       event.preventDefault();
-      increment();
+      incrementRef.current!();
     }
 
     if (event.key === "ArrowDown") {
       event.preventDefault();
-      decrement();
+      decrementRef.current!();
     }
   };
 
-  assignRef(handlersRef, { increment, decrement });
+  const handleKeyDownCapture = (
+    event: React.KeyboardEvent<HTMLInputElement>,
+  ) => {
+    onKeyDownCapture?.(event);
+    if (event.key === "Backspace") {
+      const input = inputRef.current!;
+      if (
+        input.selectionStart === 0 &&
+        input.selectionStart === input.selectionEnd
+      ) {
+        event.preventDefault();
+        window.setTimeout(() => adjustCursor(0), 0);
+      }
+    }
+  };
+
+  assignRef(handlersRef, {
+    increment: incrementRef.current,
+    decrement: decrementRef.current,
+  });
+
+  const onStepHandleChange = (isIncrement: boolean) => {
+    if (isIncrement) {
+      incrementRef.current!();
+    } else {
+      decrementRef.current!();
+    }
+    stepCountRef.current += 1;
+  };
+
+  const onStepLoop = (isIncrement: boolean) => {
+    onStepHandleChange(isIncrement);
+
+    if (shouldUseStepInterval) {
+      const interval =
+        typeof stepHoldInterval === "number"
+          ? stepHoldInterval
+          : stepHoldInterval(stepCountRef.current);
+      onStepTimeoutRef.current = window.setTimeout(
+        () => onStepLoop(isIncrement),
+        interval,
+      );
+    }
+  };
+
+  const onStep = (
+    event: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+    isIncrement: boolean,
+  ) => {
+    event.preventDefault();
+    inputRef.current?.focus();
+    onStepHandleChange(isIncrement);
+    if (shouldUseStepInterval) {
+      onStepTimeoutRef.current = window.setTimeout(
+        () => onStepLoop(isIncrement),
+        stepHoldDelay,
+      );
+    }
+  };
+
+  const onStepDone = () => {
+    if (onStepTimeoutRef.current) {
+      window.clearTimeout(onStepTimeoutRef.current);
+    }
+    onStepTimeoutRef.current = null;
+    stepCountRef.current = 0;
+  };
 
   const controls = (
     <div {...getStyles("controls")}>
@@ -314,7 +452,11 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
         }
         mod={{ direction: "up" }}
         onMouseDown={(event) => event.preventDefault()}
-        onPointerDown={increment}
+        onPointerDown={(event) => {
+          onStep(event, true);
+        }}
+        onPointerUp={onStepDone}
+        onPointerLeave={onStepDone}
       >
         <NumberInputChevron direction="up" />
       </UnstyledButton>
@@ -328,7 +470,11 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
         }
         mod={{ direction: "down" }}
         onMouseDown={(event) => event.preventDefault()}
-        onPointerDown={decrement}
+        onPointerDown={(event) => {
+          onStep(event, false);
+        }}
+        onPointerUp={onStepDone}
+        onPointerLeave={onStepDone}
       >
         <NumberInputChevron direction="down" />
       </UnstyledButton>
@@ -345,7 +491,7 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
       readOnly={readOnly}
       disabled={disabled}
       value={_value}
-      getInputRef={ref}
+      getInputRef={useMergedRef(ref, inputRef)}
       onValueChange={handleValueChange}
       rightSection={
         hideControls || readOnly ? rightSection : rightSection || controls
@@ -356,16 +502,26 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
       __staticSelector="NumberInput"
       decimalScale={allowDecimal ? decimalScale : 0}
       onKeyDown={handleKeyDown}
+      onKeyDownCapture={handleKeyDownCapture}
       rightSectionPointerEvents={
-        rightSectionPointerEvents ?? disabled ? "none" : undefined
+        rightSectionPointerEvents ?? (disabled ? "none" : undefined)
       }
       rightSectionWidth={
         rightSectionWidth ?? `var(--ni-right-section-width-${size || "sm"})`
       }
+      allowLeadingZeros={allowLeadingZeros}
       onBlur={(event) => {
         onBlur?.(event);
         if (clampBehavior === "blur" && typeof _value === "number") {
-          setValue(clamp(_value, min, max));
+          const clampedValue = clamp(_value, min, max);
+          if (clampedValue !== _value) {
+            setValue(clamp(_value, min, max));
+          }
+        }
+        if (trimLeadingZeroesOnBlur && typeof _value === "string") {
+          const replaced = _value.replace(/^0+/, "");
+          const parsedValue = parseFloat(replaced);
+          setValue(Number.isNaN(parsedValue) ? replaced : parsedValue);
         }
       }}
       isAllowed={(val) => {

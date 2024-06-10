@@ -1,36 +1,34 @@
-.root {
-  @mixin light {
-    --raikou-tooltip-bg: #212529;
+.tooltip {
+  @mixin where-light {
+    --raikou-tooltip-background-color: #212529;
     --raikou-tooltip-color: #fff;
   }
-  @mixin dark {
-    --raikou-tooltip-bg: #e9ecef;
+  @mixin where-dark {
+    --raikou-tooltip-background-color: #e9ecef;
     --raikou-tooltip-color: #000;
   }
-}
 
-.tooltip {
+  --tooltip-radius: var(--raikou-radius-default);
+
   position: absolute;
   padding: calc(var(--raikou-spacing-xs) / 2) var(--raikou-spacing-xs);
   pointer-events: none;
   font-size: var(--raikou-font-size-sm);
-  white-space: var(--_tooltip-white-space, nowrap);
-  background-color: var(--_tooltip-bg);
-  color: var(--_tooltip-color);
-  border-radius: var(--tooltip-radius, var(--raikou-radius-default));
+  white-space: nowrap;
+  border-radius: var(--tooltip-radius);
 
-  @mixin light {
-    --_tooltip-bg: var(--tooltip-bg, var(--raikou-tooltip-bg));
-    --_tooltip-color: var(--raikou-tooltip-color);
+  @mixin where-light {
+    background-color: var(--tooltip-bg, var(--raikou-tooltip-background-color));
+    color: var(--tooltip-color, var(--raikou-tooltip-color));
   }
 
-  @mixin dark {
-    --_tooltip-bg: var(--tooltip-bg, var(--raikou-tooltip-bg));
-    --_tooltip-color: var(--raikou-tooltip-color);
+  @mixin where-dark {
+    background-color: var(--tooltip-bg, var(--raikou-tooltip-background-color));
+    color: var(--tooltip-color, var(--raikou-tooltip-color));
   }
 
-  &[data-multiline] {
-    --_tooltip-white-space: normal;
+  &:where([data-multiline]) {
+    white-space: normal;
   }
 }
 

@@ -51,6 +51,9 @@ export interface ThemeIconProps
 
   /** Icon displayed inside the component */
   children?: React.ReactNode;
+
+  /** Determines whether button text color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+  autoContrast?: boolean;
 }
 
 export type ThemeIconFactory = Factory<{
@@ -64,12 +67,13 @@ export type ThemeIconFactory = Factory<{
 const defaultProps: Partial<ThemeIconProps> = {};
 
 const varsResolver = createVarsResolver<ThemeIconFactory>(
-  (theme, { size, radius, variant, gradient, color }) => {
+  (theme, { size, radius, variant, gradient, color, autoContrast }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       gradient,
       variant: variant || "filled",
+      autoContrast,
     });
 
     return {
@@ -86,8 +90,16 @@ const varsResolver = createVarsResolver<ThemeIconFactory>(
 
 export const ThemeIcon = factory<ThemeIconFactory>((_props, ref) => {
   const props = useProps("ThemeIcon", defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, ...others } =
-    props;
+  const {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    autoContrast,
+    ...others
+  } = props;
 
   const getStyles = useStyles<ThemeIconFactory>({
     name: "ThemeIcon",

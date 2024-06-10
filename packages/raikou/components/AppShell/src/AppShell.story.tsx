@@ -6,6 +6,11 @@ import { AppShell } from "./AppShell";
 
 export default { title: "AppShell" };
 
+const lorem =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis eget nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis eget nunc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis eget nunc";
+
+const longContent = Array(30).fill(lorem).join("\n\n");
+
 export function Usage() {
   const [navbarOpened, { toggle: toggleNavbar }] = useDisclosure(true);
   const [navbarMobileOpened, { toggle: toggleNavbarMobile }] =
@@ -30,7 +35,7 @@ export function Usage() {
         collapsed: { desktop: !asideOpened, mobile: !asideMobileOpened },
       }}
       header={{
-        height: 50,
+        height: 60,
         collapsed: !headerOpened,
       }}
       footer={{
@@ -55,7 +60,7 @@ export function Usage() {
           <Button onClick={toggleAside}>Toggle aside</Button>
           <Button onClick={toggleAsideMobile}>Toggle aside mobile</Button>
         </Group>
-        <p>Other content</p>
+        <p>{longContent}</p>
       </AppShell.Main>
 
       <AppShell.Aside>Aside</AppShell.Aside>
@@ -73,8 +78,8 @@ export function AltLayout() {
     <AppShell
       padding="md"
       layout="alt"
-      navbar={{
-        width: { base: 200, md: 300 },
+      aside={{
+        width: { base: 140 },
         breakpoint: "sm",
         collapsed: { desktop: !opened, mobile: !mobileOpened },
       }}
@@ -87,11 +92,12 @@ export function AltLayout() {
         collapsed: !headerOpened,
       }}
     >
-      <AppShell.Navbar>
-        <Button>Focusable element 1</Button>
-        <Button>Focusable element 2</Button>
-      </AppShell.Navbar>
-      <AppShell.Header>Header</AppShell.Header>
+      <AppShell.Aside>Aside</AppShell.Aside>
+      <AppShell.Header>
+        <Group justify="flex-end">
+          <Button>Button hidden by the aside</Button>
+        </Group>
+      </AppShell.Header>
       <AppShell.Main>
         <Group>
           <Button onClick={toggleHeader}>Toggle header</Button>
@@ -151,6 +157,66 @@ export function Disabled() {
       <AppShell.Main>
         <Button onClick={toggle}>Toggle disabled</Button>
       </AppShell.Main>
+    </AppShell>
+  );
+}
+
+export function Unstyled() {
+  const [navbarOpened, { toggle: toggleNavbar }] = useDisclosure(true);
+  const [navbarMobileOpened, { toggle: toggleNavbarMobile }] =
+    useDisclosure(false);
+  const [asideOpened, { toggle: toggleAside }] = useDisclosure(true);
+  const [asideMobileOpened, { toggle: toggleAsideMobile }] =
+    useDisclosure(false);
+  const [headerOpened, { toggle: toggleHeader }] = useDisclosure(true);
+  const [footerOpened, { toggle: toggleFooter }] = useDisclosure(true);
+
+  return (
+    <AppShell
+      padding="md"
+      unstyled
+      navbar={{
+        width: { base: 200, md: 300 },
+        breakpoint: "sm",
+        collapsed: { desktop: !navbarOpened, mobile: !navbarMobileOpened },
+      }}
+      aside={{
+        width: { base: 200, md: 300 },
+        breakpoint: "sm",
+        collapsed: { desktop: !asideOpened, mobile: !asideMobileOpened },
+      }}
+      header={{
+        height: 50,
+        collapsed: !headerOpened,
+      }}
+      footer={{
+        height: 50,
+        collapsed: !footerOpened,
+      }}
+    >
+      <AppShell.Navbar>
+        <AppShell.Section>First section</AppShell.Section>
+        <AppShell.Section>Second section</AppShell.Section>
+        <AppShell.Section grow>Grow section</AppShell.Section>
+        <AppShell.Section>Last section</AppShell.Section>
+      </AppShell.Navbar>
+      <AppShell.Header>Header</AppShell.Header>
+      <AppShell.Main>
+        <Group>
+          <Button onClick={toggleHeader}>Toggle header</Button>
+          <Button onClick={toggleFooter}>Toggle footer</Button>
+          <Button onClick={toggleNavbar}>Toggle navbar</Button>
+          <Button onClick={toggleNavbarMobile}>Toggle navbar mobile</Button>
+
+          <Button onClick={toggleAside}>Toggle aside</Button>
+          <Button onClick={toggleAsideMobile}>Toggle aside mobile</Button>
+        </Group>
+        <p>Other content</p>
+      </AppShell.Main>
+
+      <AppShell.Aside>Aside</AppShell.Aside>
+
+      <AppShell.Footer>Footer</AppShell.Footer>
     </AppShell>
   );
 }

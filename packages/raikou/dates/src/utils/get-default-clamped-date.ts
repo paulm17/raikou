@@ -1,5 +1,5 @@
-import dayjs from "dayjs";
-import { shiftTimezone } from "./shift-timezone";
+import dayjs from 'dayjs';
+import { shiftTimezone } from './shift-timezone';
 
 interface GetDefaultClampedDate {
   minDate: Date | undefined;
@@ -7,12 +7,8 @@ interface GetDefaultClampedDate {
   timezone?: string;
 }
 
-export function getDefaultClampedDate({
-  minDate,
-  maxDate,
-  timezone,
-}: GetDefaultClampedDate) {
-  const today = shiftTimezone("add", new Date(), timezone);
+export function getDefaultClampedDate({ minDate, maxDate, timezone }: GetDefaultClampedDate) {
+  const today = shiftTimezone('add', new Date(), timezone);
 
   if (!minDate && !maxDate) {
     return today;

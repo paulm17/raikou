@@ -40,7 +40,7 @@ export function Usage() {
           padding: 40,
           display: "flex",
           gap: 20,
-          background: "#f8f9fa",
+          background: "var(--mantine-color-gray-0)",
         }}
       >
         <Pill withRemoveButton variant="contrast" size="xs">

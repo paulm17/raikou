@@ -63,6 +63,9 @@ export interface AvatarProps extends BoxProps, StylesApiProps<AvatarFactory> {
 
   /** Avatar placeholder, displayed when `src={null}` or when the image cannot be loaded */
   children?: React.ReactNode;
+
+  /** Determines whether text color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+  autoContrast?: boolean;
 }
 
 export type AvatarFactory = PolymorphicFactory<{
@@ -80,12 +83,13 @@ export type AvatarFactory = PolymorphicFactory<{
 const defaultProps: Partial<AvatarProps> = {};
 
 const varsResolver = createVarsResolver<AvatarFactory>(
-  (theme, { size, radius, variant, gradient, color }) => {
+  (theme, { size, radius, variant, gradient, color, autoContrast }) => {
     const colors = theme.variantColorResolver({
       color: color || "gray",
       theme,
       gradient,
       variant: variant || "light",
+      autoContrast,
     });
 
     return {
@@ -116,6 +120,8 @@ export const Avatar = polymorphicFactory<AvatarFactory>((_props, ref) => {
     gradient,
     imageProps,
     children,
+    autoContrast,
+    mod,
     ...others
   } = props;
   const ctx = useAvatarGroupContext();
@@ -139,7 +145,7 @@ export const Avatar = polymorphicFactory<AvatarFactory>((_props, ref) => {
   return (
     <Box
       {...getStyles("root")}
-      mod={{ "within-group": ctx.withinGroup }}
+      mod={[{ "within-group": ctx.withinGroup }, mod]}
       ref={ref}
       {...others}
     >
@@ -165,4 +171,3 @@ export const Avatar = polymorphicFactory<AvatarFactory>((_props, ref) => {
 
 Avatar.displayName = "@raikou/core/Avatar";
 Avatar.Group = AvatarGroup;
-Avatar.classes = classes;

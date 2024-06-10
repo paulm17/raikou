@@ -1,5 +1,5 @@
 import React, { forwardRef, useRef, useEffect } from "react";
-import { useDebounceCallback, useMergedRef } from "@raikou/hooks";
+import { useDebouncedCallback, useMergedRef } from "@raikou/hooks";
 import { useScrollbarContext } from "../ScrollAreaScrollbar/Scrollbar.context";
 import { useScrollAreaContext } from "../ScrollArea.context";
 import { addUnlinkedScrollListener, composeEventHandlers } from "../utils";
@@ -13,10 +13,10 @@ export const Thumb = forwardRef<HTMLDivElement, ThumbProps>(
     const scrollbarContext = useScrollbarContext();
     const { onThumbPositionChange } = scrollbarContext;
     const composedRef = useMergedRef(forwardedRef, (node) =>
-      scrollbarContext.onThumbChange(node)
+      scrollbarContext.onThumbChange(node),
     );
     const removeUnlinkedScrollListenerRef = useRef<() => void>();
-    const debounceScrollEnd = useDebounceCallback(() => {
+    const debounceScrollEnd = useDebouncedCallback(() => {
       if (removeUnlinkedScrollListenerRef.current) {
         removeUnlinkedScrollListenerRef.current();
         removeUnlinkedScrollListenerRef.current = undefined;
@@ -31,7 +31,7 @@ export const Thumb = forwardRef<HTMLDivElement, ThumbProps>(
           if (!removeUnlinkedScrollListenerRef.current) {
             const listener = addUnlinkedScrollListener(
               viewport,
-              onThumbPositionChange
+              onThumbPositionChange,
             );
             removeUnlinkedScrollListenerRef.current = listener;
             onThumbPositionChange();
@@ -63,15 +63,15 @@ export const Thumb = forwardRef<HTMLDivElement, ThumbProps>(
             const x = event.clientX - thumbRect.left;
             const y = event.clientY - thumbRect.top;
             scrollbarContext.onThumbPointerDown({ x, y });
-          }
+          },
         )}
         onPointerUp={composeEventHandlers(
           props.onPointerUp,
-          scrollbarContext.onThumbPointerUp
+          scrollbarContext.onThumbPointerUp,
         )}
       />
     );
-  }
+  },
 );
 
 interface ScrollAreaThumbProps extends ThumbProps {

@@ -1,9 +1,22 @@
+/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/VisuallyHidden/src/VisuallyHidden.module.css/#css-module-data */
+.m-515a97f8 {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+}
+
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Popover/src/Popover.module.css/#css-module-data */
-[data-raikou-color-scheme=light] .m-38a85659 {
+:where([data-raikou-color-scheme=light]) .m-38a85659 {
   --raikou-popover-bg: #fff;
   --raikou-popover-bd: #e9ecef;
 }
-[data-raikou-color-scheme=dark] .m-38a85659 {
+:where([data-raikou-color-scheme=dark]) .m-38a85659 {
   --raikou-popover-bg: #25262b;
   --raikou-popover-bd: #373a40;
 }
@@ -18,11 +31,11 @@
 .m-38a85659:focus {
   outline: none;
 }
-[data-raikou-color-scheme=light] .m-38a85659 {
+:where([data-raikou-color-scheme=light]) .m-38a85659 {
   --_popover-bg: var(--raikou-popover-bg);
   --_popover-bd: var(--raikou-popover-bd);
 }
-[data-raikou-color-scheme=dark] .m-38a85659 {
+:where([data-raikou-color-scheme=dark]) .m-38a85659 {
   --_popover-bg: var(--raikou-popover-bg);
   --_popover-bd: var(--raikou-popover-bd);
 }
@@ -33,16 +46,16 @@
 }
 
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Menu/src/Menu.module.css/#css-module-data */
-[data-raikou-color-scheme=light] .m-dc9b7c9f {
+:where([data-raikou-color-scheme=light]) .m-dc9b7c9f {
   --raikou-menu-divider-color: #e9ecef;
   --raikou-menu-divider-item-hover-bg: #f1f3f5;
 }
-[data-raikou-color-scheme=dark] .m-dc9b7c9f {
+:where([data-raikou-color-scheme=dark]) .m-dc9b7c9f {
   --raikou-menu-divider-color: #373a40;
   --raikou-menu-divider-item-hover-bg: #2c2e33;
 }
 .m-dc9b7c9f {
-  padding: calc(0.25rem * var(--raikou-scale));
+  padding: 4px;
 }
 .m-9bfac126 {
   color: var(--raikou-color-dimmed);
@@ -52,17 +65,17 @@
   cursor: default;
 }
 .m-efdf90cb {
-  margin-top: calc(0.25rem * var(--raikou-scale));
-  margin-bottom: calc(0.25rem * var(--raikou-scale));
-  border-top: calc(0.0625rem * var(--raikou-scale)) solid var(--_divider-color);
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border-top: 1px solid;
 }
-[data-raikou-color-scheme=light] .m-efdf90cb {
-  --_divider-color: var(--raikou-menu-divider-color);
+:where([data-raikou-color-scheme=light]) .m-efdf90cb {
+  border-color: var(--raikou-menu-divider-color);
 }
-[data-raikou-color-scheme=dark] .m-efdf90cb {
-  --_divider-color: var(--raikou-menu-divider-color);
+:where([data-raikou-color-scheme=dark]) .m-efdf90cb {
+  border-color: var(--raikou-menu-divider-color);
 }
-.m-99ac2aa1.m-99ac2aa1 {
+.m-99ac2aa1 {
   font-size: var(--raikou-font-size-sm);
   width: 100%;
   padding: calc(var(--raikou-spacing-xs) / 1.5) var(--raikou-spacing-sm);
@@ -71,53 +84,31 @@
   display: flex;
   align-items: center;
   user-select: none;
-  background-color: var(--_item-bg, transparent);
-  opacity: var(--_item-opacity, 1);
-  pointer-events: var(--_item-pointer-events, auto);
 }
-.m-99ac2aa1.m-99ac2aa1[data-disabled],
-.m-99ac2aa1.m-99ac2aa1:disabled {
-  --menu-item-color: var(--raikou-color-dimmed) !important;
-  --_item-opacity: 0.6;
-  --_item-pointer-events: none;
+.m-99ac2aa1:where([data-disabled], :disabled) {
+  color: var(--raikou-color-dimmed);
+  opacity: 0.6;
+  pointer-events: none;
 }
-.m-99ac2aa1.m-99ac2aa1[data-hovered] {
-  --_item-bg: var(--menu-item-hover, var(--_item-bg-hover));
+:where([data-raikou-color-scheme=light]) .m-99ac2aa1:where([data-hovered]) {
+  background-color: var( --menu-item-hover, var(--raikou-menu-divider-item-hover-bg) );
 }
-[data-raikou-color-scheme=light] .m-99ac2aa1.m-99ac2aa1[data-hovered] {
-  --_item-bg-hover: var(--raikou-menu-divider-item-hover-bg);
-}
-[data-raikou-color-scheme=dark] .m-99ac2aa1.m-99ac2aa1[data-hovered] {
-  --_item-bg-hover: var(--raikou-menu-divider-item-hover-bg);
+:where([data-raikou-color-scheme=dark]) .m-99ac2aa1:where([data-hovered]) {
+  background-color: var( --menu-item-hover, var(--raikou-menu-divider-item-hover-bg) );
 }
 .m-5476e0d3 {
-  flex: 1 1;
-}
-[dir=rtl] .m-5476e0d3 {
-  text-align: right;
+  flex: 1;
 }
 .m-8b75e504 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: var(--_section-ml);
-  margin-right: var(--_section-mr);
 }
-.m-8b75e504[data-position=left] {
-  --_section-ml: 0;
-  --_section-mr: var(--raikou-spacing-xs);
+.m-8b75e504:where([data-position=left]) {
+  margin-inline-end: var(--raikou-spacing-xs);
 }
-[dir=rtl] .m-8b75e504[data-position=left] {
-  --_section-ml: var(--raikou-spacing-xs);
-  --_section-mr: 0;
-}
-.m-8b75e504[data-position=right] {
-  --_section-ml: var(--raikou-spacing-xs);
-  --_section-mr: 0;
-}
-[dir=rtl] .m-8b75e504[data-position=right] {
-  --_section-ml: 0;
-  --_section-mr: var(--raikou-spacing-xs);
+.m-8b75e504:where([data-position=right]) {
+  margin-inline-start: var(--raikou-spacing-xs);
 }
 
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/UnstyledButton/src/UnstyledButton.module.css/#css-module-data */
@@ -133,5 +124,8 @@
   color: inherit;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
+}
+:where([dir=rtl]) .m-87cf2631 {
+  text-align: right;
 }
 /*# sourceMappingURL=index.css.map */

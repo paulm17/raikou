@@ -8,12 +8,13 @@ import {
   useStyles,
   useProps,
   getGradient,
-  BoxMod,
   createVarsResolver,
   PolymorphicFactory,
   RaikouSize,
   getFontSize,
   getLineHeight,
+  RaikouColor,
+  getThemeColor,
 } from "@raikou/core";
 import classes from "./Text.module.css";
 
@@ -39,7 +40,6 @@ export type TextCssVariables = {
 
 export interface TextProps extends BoxProps, StylesApiProps<TextFactory> {
   __staticSelector?: string;
-  mod?: BoxMod;
 
   /** Controls `font-size` and `line-height`, `'md'` by default */
   size?: RaikouSize | (string & {});
@@ -47,7 +47,7 @@ export interface TextProps extends BoxProps, StylesApiProps<TextFactory> {
   /** Number of lines after which Text will be truncated */
   lineClamp?: number;
 
-  /** Side on which Text must be truncated, if `true`, text in truncated from the start */
+  /** Side on which Text must be truncated, if `true`, text is truncated from the start */
   truncate?: TextTruncate;
 
   /** Sets `line-height` to 1 for centering, `false` by default */
@@ -61,6 +61,9 @@ export interface TextProps extends BoxProps, StylesApiProps<TextFactory> {
 
   /** Shorthand for `component="span"`, `false` by default, default root element is `p` */
   span?: boolean;
+
+  /** @deprecated Use `c` prop instead */
+  color?: RaikouColor;
 }
 
 export type TextFactory = PolymorphicFactory<{
@@ -77,7 +80,7 @@ const defaultProps: Partial<TextProps> = {
 };
 
 const varsResolver = createVarsResolver<TextFactory>(
-  (theme, { variant, lineClamp, gradient, size }) => ({
+  (theme, { variant, lineClamp, gradient, size, color }) => ({
     root: {
       "--text-fz": getFontSize(size),
       "--text-lh": getLineHeight(size),
@@ -85,6 +88,7 @@ const varsResolver = createVarsResolver<TextFactory>(
         variant === "gradient" ? getGradient(gradient, theme) : undefined,
       "--text-line-clamp":
         typeof lineClamp === "number" ? lineClamp.toString() : undefined,
+      "--text-color": color ? getThemeColor(color, theme) : undefined,
     },
   }),
 );

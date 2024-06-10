@@ -10,13 +10,36 @@ export function Usage() {
   return (
     <div style={{ padding: 40 }}>
       <MultiSelect
+        placeholder="MultiSelect something"
+        required
+        label="Some label"
+        defaultValue={["1", "2"]}
         data={[
           { value: "1", label: "React" },
           { value: "2", label: "Angular" },
           { value: "3", label: "Svelte" },
         ]}
-        placeholder="MultiSelect something"
       />
+    </div>
+  );
+}
+
+export function Disabled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <MultiSelect
+        disabled
+        label="disabled"
+        defaultValue={["React", "Angular"]}
+        placeholder="Enter tags"
+      />
+      <fieldset disabled>
+        <MultiSelect
+          label="disabled fieldset"
+          defaultValue={["React", "Angular"]}
+          placeholder="Enter tags"
+        />
+      </fieldset>
     </div>
   );
 }
@@ -101,6 +124,15 @@ export function Clearable() {
       />
 
       <MultiSelect
+        placeholder="Searchable"
+        data={["React", "Angular", "Svelte"]}
+        defaultValue={["React"]}
+        clearable
+        searchable
+        mt="md"
+      />
+
+      <MultiSelect
         placeholder="Disabled"
         data={["React", "Angular", "Svelte"]}
         defaultValue={["React"]}
@@ -116,6 +148,22 @@ export function Clearable() {
         clearable
         readOnly
         mt="md"
+      />
+    </div>
+  );
+}
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <MultiSelect
+        placeholder="MultiSelect something"
+        unstyled
+        data={[
+          { value: "1", label: "React" },
+          { value: "2", label: "Angular" },
+          { value: "3", label: "Svelte" },
+        ]}
       />
     </div>
   );

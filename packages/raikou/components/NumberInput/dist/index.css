@@ -12,9 +12,12 @@
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
+:where([dir=rtl]) .m-87cf2631 {
+  text-align: right;
+}
 
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Input/src/Input.module.css/#css-module-data */
-[data-raikou-color-scheme=light] .m-6c018570 {
+:where([data-raikou-color-scheme=light]) .m-6c018570 {
   --raikou-input-disabled-bg: #f1f3f5;
   --raikou-input-disabled-color: #868e96;
   --raikou-input-default-bd: #ced4da;
@@ -22,7 +25,7 @@
   --raikou-input-filled-bd: transparent;
   --raikou-input-filled-bg: #fff;
 }
-[data-raikou-color-scheme=dark] .m-6c018570 {
+:where([data-raikou-color-scheme=dark]) .m-6c018570 {
   --raikou-input-disabled-bg: #25262b;
   --raikou-input-disabled-color: #909296;
   --raikou-input-default-bd: #373a40;
@@ -34,171 +37,153 @@
   position: relative;
   margin-top: var(--input-margin-top, 0rem);
   margin-bottom: var(--input-margin-bottom, 0rem);
-  --input-height-xs: calc(1.875rem * var(--raikou-scale));
-  --input-height-sm: calc(2.25rem * var(--raikou-scale));
-  --input-height-md: calc(2.625rem * var(--raikou-scale));
-  --input-height-lg: calc(3.125rem * var(--raikou-scale));
-  --input-height-xl: calc(3.75rem * var(--raikou-scale));
-  --input-padding-y-xs: calc(0.3125rem * var(--raikou-scale));
-  --input-padding-y-sm: calc(0.375rem * var(--raikou-scale));
-  --input-padding-y-md: calc(0.5rem * var(--raikou-scale));
-  --input-padding-y-lg: calc(0.625rem * var(--raikou-scale));
-  --input-padding-y-xl: calc(0.8125rem * var(--raikou-scale));
-  --_input-height: var(--input-height, var(--input-height-sm));
-  --_input-radius: var(--input-radius, var(--raikou-radius-default));
-  --_input-cursor: text;
-  --_input-text-align: left;
-  --_input-line-height: calc(var(--_input-height) - calc(0.125rem * var(--raikou-scale)));
-  --_input-padding: calc(var(--_input-height) / 3);
-  --_input-padding-left: var(--_input-padding);
-  --_input-padding-right: var(--_input-padding);
-  --_input-placeholder-color: var(--raikou-color-placeholder);
-  --_input-color: var(--raikou-color-text);
-  --_input-left-section-size: var( --input-left-section-width, calc(var(--_input-height) - calc(0.125rem * var(--raikou-scale))) );
-  --_input-right-section-size: var( --input-right-section-width, calc(var(--_input-height) - calc(0.125rem * var(--raikou-scale))) );
-  --_input-size: var(--_input-height);
-  --_section-y: calc(0.0625rem * var(--raikou-scale));
-  --_left-section-left: calc(0.0625rem * var(--raikou-scale));
-  --_left-section-right: unset;
-  --_left-section-border-radius: var(--_input-radius) 0 0 var(--_input-radius);
-  --_right-section-left: unset;
-  --_right-section-right: calc(0.0625rem * var(--raikou-scale));
-  --_right-section-border-radius: 0 var(--_input-radius) var(--_input-radius) 0;
+  --input-height-xs: 30px;
+  --input-height-sm: 36px;
+  --input-height-md: 42px;
+  --input-height-lg: 50px;
+  --input-height-xl: 60px;
+  --input-padding-y-xs: 5px;
+  --input-padding-y-sm: 6px;
+  --input-padding-y-md: 8px;
+  --input-padding-y-lg: 10px;
+  --input-padding-y-xl: 13px;
+  --input-height: var(--input-height-sm);
+  --input-radius: var(--raikou-radius-default);
+  --input-cursor: text;
+  --input-text-align: left;
+  --input-line-height: calc(var(--input-height) - calc(0.125rem * var(--raikou-scale)));
+  --input-padding: calc(var(--input-height) / 3);
+  --input-padding-inline-start: var(--input-padding);
+  --input-padding-inline-end: var(--input-padding);
+  --input-placeholder-color: var(--raikou-color-placeholder);
+  --input-color: var(--raikou-color-text);
+  --input-left-section-size: var( --input-left-section-width, calc(var(--input-height) - calc(0.125rem * var(--raikou-scale))) );
+  --input-right-section-size: var( --input-right-section-width, calc(var(--input-height) - calc(0.125rem * var(--raikou-scale))) );
+  --input-size: var(--input-height);
+  --section-y: 1px;
+  --left-section-start: 1px;
+  --left-section-border-radius: var(--input-radius) 0 0 var(--input-radius);
+  --right-section-end: 1px;
+  --right-section-border-radius: 0 var(--input-radius) var(--input-radius) 0;
 }
 .m-6c018570[data-variant=unstyled] {
   --input-padding: 0;
   --input-padding-y: 0;
-  --_input-padding-left: 0;
-  --_input-padding-right: 0;
+  --input-padding-inline-start: 0;
+  --input-padding-inline-end: 0;
 }
 .m-6c018570[data-pointer] {
-  --_input-cursor: pointer;
+  --input-cursor: pointer;
 }
 .m-6c018570[data-multiline] {
-  --input-padding-y-xs: calc(0.28125rem * var(--raikou-scale));
-  --input-padding-y-sm: calc(0.34375rem * var(--raikou-scale));
-  --input-padding-y-md: calc(0.4375rem * var(--raikou-scale));
-  --input-padding-y-lg: calc(0.59375rem * var(--raikou-scale));
-  --input-padding-y-xl: calc(0.8125rem * var(--raikou-scale));
-  --_input-size: auto;
-  --_input-line-height: var(--raikou-line-height);
+  --input-padding-y-xs: 4.5px;
+  --input-padding-y-sm: 5.5px;
+  --input-padding-y-md: 7px;
+  --input-padding-y-lg: 9.5px;
+  --input-padding-y-xl: 13px;
+  --input-size: auto;
+  --input-line-height: var(--raikou-line-height);
   --input-padding-y: var(--input-padding-y-sm);
 }
 .m-6c018570[data-with-left-section] {
-  --_input-padding-left: var(--_input-left-section-size);
-}
-[dir=rtl] .m-6c018570[data-with-left-section] {
-  --_input-padding-right: var(--_input-left-section-size);
-}
-[dir=rtl] .m-6c018570[data-with-left-section]:not([data-with-right-section]) {
-  --_input-padding-left: var(--_input-padding);
+  --input-padding-inline-start: var(--input-left-section-size);
 }
 .m-6c018570[data-with-right-section] {
-  --_input-padding-right: var(--_input-right-section-size);
+  --input-padding-inline-end: var(--input-right-section-size);
 }
-[dir=rtl] .m-6c018570[data-with-right-section] {
-  --_input-padding-left: var(--_input-right-section-size);
+:where([data-raikou-color-scheme=light]) .m-6c018570 {
+  --input-disabled-bg: var(--raikou-input-disabled-bg);
+  --input-disabled-color: var(--raikou-input-disabled-color);
 }
-[dir=rtl] .m-6c018570[data-with-right-section]:not([data-with-left-section]) {
-  --_input-padding-right: var(--_input-padding);
+:where([data-raikou-color-scheme=light]) .m-6c018570[data-variant=default] {
+  --input-bd: var(--raikou-input-default-bd);
+  --input-bg: var(--raikou-input-default-bg);
+  --input-bd-focus: var(--raikou-primary-color-filled);
 }
-[data-raikou-color-scheme=light] .m-6c018570 {
-  --_input-disabled-bg: var(--raikou-input-disabled-bg);
-  --_input-disabled-color: var(--raikou-input-disabled-color);
+:where([data-raikou-color-scheme=light]) .m-6c018570[data-variant=filled] {
+  --input-bd: --raikou-input-filled-bd;
+  --input-bg: var(--raikou-input-filled-bg);
+  --input-bd-focus: var(--raikou-primary-color-filled);
 }
-[data-raikou-color-scheme=light] .m-6c018570[data-variant=default] {
-  --_input-bd: var(--raikou-input-default-bd);
-  --_input-bg: var(--raikou-input-default-bg);
-  --_input-bd-focus: var(--raikou-primary-color-filled);
+:where([data-raikou-color-scheme=light]) .m-6c018570[data-variant=unstyled] {
+  --input-bd: transparent;
+  --input-bg: transparent;
+  --input-bd-focus: transparent;
 }
-[data-raikou-color-scheme=light] .m-6c018570[data-variant=filled] {
-  --_input-bd: var(--raikou-input-filled-bd);
-  --_input-bg: var(--raikou-input-filled-bg);
-  --_input-bd-focus: var(--raikou-primary-color-filled);
+:where([data-raikou-color-scheme=dark]) .m-6c018570 {
+  --input-disabled-bg: var(--raikou-input-disabled-bg);
+  --input-disabled-color: var(--raikou-input-disabled-color);
 }
-[data-raikou-color-scheme=light] .m-6c018570[data-variant=unstyled] {
-  --_input-bd: transparent;
-  --_input-bg: transparent;
-  --_input-bd-focus: transparent;
+:where([data-raikou-color-scheme=dark]) .m-6c018570[data-variant=default] {
+  --input-bd: var(--raikou-input-default-bd);
+  --input-bg: var(--raikou-input-default-bg);
+  --input-bd-focus: var(--raikou-primary-color-filled);
 }
-[data-raikou-color-scheme=dark] .m-6c018570 {
-  --_input-disabled-bg: var(--raikou-input-disabled-bg);
-  --_input-disabled-color: var(--raikou-input-disabled-color);
+:where([data-raikou-color-scheme=dark]) .m-6c018570[data-variant=filled] {
+  --input-bd: --raikou-input-filled-bd;
+  --input-bg: var(--raikou-input-filled-bg);
+  --input-bd-focus: var(--raikou-primary-color-filled);
 }
-[data-raikou-color-scheme=dark] .m-6c018570[data-variant=default] {
-  --_input-bd: var(--raikou-input-default-bd);
-  --_input-bg: var(--raikou-input-default-bg);
-  --_input-bd-focus: var(--raikou-primary-color-filled);
-}
-[data-raikou-color-scheme=dark] .m-6c018570[data-variant=filled] {
-  --_input-bd: var(--raikou-input-filled-bd);
-  --_input-bg: var(--raikou-input-filled-bg);
-  --_input-bd-focus: var(--raikou-primary-color-filled);
-}
-[data-raikou-color-scheme=dark] .m-6c018570[data-variant=unstyled] {
-  --_input-bd: transparent;
-  --_input-bg: transparent;
-  --_input-bd-focus: transparent;
+:where([data-raikou-color-scheme=dark]) .m-6c018570[data-variant=unstyled] {
+  --input-bd: transparent;
+  --input-bg: transparent;
+  --input-bd-focus: transparent;
 }
 [data-raikou-color-scheme] .m-6c018570[data-error]:not([data-variant=unstyled]) {
-  --_input-bd: var(--raikou-color-error);
+  --input-bd: var(--raikou-color-error);
 }
 [data-raikou-color-scheme] .m-6c018570[data-error] {
-  --_input-color: var(--raikou-color-error);
-  --_input-placeholder-color: var(--raikou-color-error);
-  --_input-section-color: var(--raikou-color-error);
+  --input-color: var(--raikou-color-error);
+  --input-placeholder-color: var(--raikou-color-error);
+  --input-section-color: var(--raikou-color-error);
 }
-[dir=rtl] .m-6c018570 {
-  --_input-text-align: right;
-  --_left-section-left: unset;
-  --_left-section-right: calc(0.0625rem * var(--raikou-scale));
-  --_left-section-border-radius: 0 var(--_input-radius) var(--_input-radius) 0;
-  --_right-section-left: calc(0.0625rem * var(--raikou-scale));
-  --_right-section-right: unset;
-  --_right-section-border-radius: var(--_input-radius) 0 0 var(--_input-radius);
+:where([dir=rtl]) .m-6c018570 {
+  --input-text-align: right;
+  --left-section-border-radius: 0 var(--input-radius) var(--input-radius) 0;
+  --right-section-border-radius: var(--input-radius) 0 0 var(--input-radius);
 }
 .m-8fb7ebe7 {
   -webkit-tap-highlight-color: transparent;
   appearance: none;
-  resize: none;
+  resize: var(--input-resize, none);
   display: block;
   width: 100%;
   transition: border-color 100ms ease;
-  text-align: var(--_input-text-align);
-  color: var(--_input-color);
-  border: calc(0.0625rem * var(--raikou-scale)) solid var(--_input-bd);
-  background-color: var(--_input-bg);
-  font-family: var(--_input-font-family, var(--raikou-font-family));
-  height: var(--_input-size);
-  min-height: var(--_input-height);
-  line-height: var(--_input-line-height);
-  font-size: var(--_input-fz, var(--input-fz, var(--raikou-font-size-sm)));
-  border-radius: var(--_input-radius);
-  padding-left: var(--_input-padding-left);
-  padding-right: var(--_input-padding-right);
+  text-align: var(--input-text-align);
+  color: var(--input-color);
+  border: calc(0.0625rem * var(--raikou-scale)) solid var(--input-bd);
+  background-color: var(--input-bg);
+  font-family: var(--input-font-family, var(--raikou-font-family));
+  height: var(--input-size);
+  min-height: var(--input-height);
+  line-height: var(--input-line-height);
+  font-size: var(--input-fz, var(--input-fz, var(--raikou-font-size-sm)));
+  border-radius: var(--input-radius);
+  padding-inline-start: var(--input-padding-inline-start);
+  padding-inline-end: var(--input-padding-inline-end);
   padding-top: var(--input-padding-y, 0rem);
   padding-bottom: var(--input-padding-y, 0rem);
-  cursor: var(--_input-cursor);
-  overflow: var(--_input-overflow);
+  cursor: var(--input-cursor);
+  overflow: var(--input-overflow);
 }
 .m-8fb7ebe7[data-no-overflow] {
-  --_input-overflow: hidden;
+  --input-overflow: hidden;
 }
 .m-8fb7ebe7[data-monospace] {
-  --_input-font-family: var(--raikou-font-family-monospace);
-  --_input-fz: calc(var(--input-fz, var(--raikou-font-size-sm)) - calc(0.125rem * var(--raikou-scale)));
+  --input-font-family: var(--raikou-font-family-monospace);
+  --input-fz: calc(var(--input-fz, var(--raikou-font-size-sm)) - calc(0.125rem * var(--raikou-scale)));
 }
 .m-8fb7ebe7:focus,
 .m-8fb7ebe7:focus-within {
   outline: none;
-  --_input-bd: var(--_input-bd-focus);
+  --input-bd: var(--input-bd-focus);
 }
 [data-error] .m-8fb7ebe7:focus,
 [data-error] .m-8fb7ebe7:focus-within {
-  --_input-bd: var(--raikou-color-error);
+  --input-bd: var(--raikou-color-error);
 }
 .m-8fb7ebe7::placeholder {
-  color: var(--_input-placeholder-color);
+  color: var(--input-placeholder-color);
   opacity: 1;
 }
 .m-8fb7ebe7::-webkit-inner-spin-button,
@@ -216,49 +201,47 @@
 .m-8fb7ebe7[data-disabled] {
   cursor: not-allowed;
   opacity: 0.6;
-  background-color: var(--_input-disabled-bg);
-  color: var(--_input-disabled-color);
+  background-color: var(--input-disabled-bg);
+  color: var(--input-disabled-color);
 }
 .m-8fb7ebe7:has(input:disabled) {
   cursor: not-allowed;
   opacity: 0.6;
-  background-color: var(--_input-disabled-bg);
-  color: var(--_input-disabled-color);
+  background-color: var(--input-disabled-bg);
+  color: var(--input-disabled-color);
 }
 .m-82577fc2 {
-  pointer-events: var(--_section-pointer-events);
+  pointer-events: var(--section-pointer-events);
   position: absolute;
   z-index: 1;
-  left: var(--_section-left);
-  right: var(--_section-right);
-  bottom: var(--_section-y);
-  top: var(--_section-y);
+  inset-inline-start: var(--section-start);
+  inset-inline-end: var(--section-end);
+  bottom: var(--section-y);
+  top: var(--section-y);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--_section-size);
-  border-radius: var(--_section-border-radius);
-  color: var(--_input-section-color, var(--raikou-color-placeholder));
+  width: var(--section-size);
+  border-radius: var(--section-border-radius);
+  color: var(--input-section-color, var(--raikou-color-dimmed));
 }
 .m-82577fc2[data-position=right] {
-  --_section-pointer-events: var(--input-right-section-pointer-events);
-  --_section-left: var(--_right-section-left);
-  --_section-right: var(--_right-section-right);
-  --_section-size: var(--_input-right-section-size);
-  --_section-border-radius: var(--_right-section-border-radius);
+  --section-pointer-events: var(--input-right-section-pointer-events);
+  --section-end: var(--right-section-end);
+  --section-size: var(--input-right-section-size);
+  --section-border-radius: var(--right-section-border-radius);
 }
 .m-82577fc2[data-position=left] {
-  --_section-pointer-events: var(--input-left-section-pointer-events);
-  --_section-left: var(--_left-section-left);
-  --_section-right: var(--_left-section-right);
-  --_section-size: var(--_input-left-section-size);
-  --_section-border-radius: var(--_left-section-border-radius);
+  --section-pointer-events: var(--input-left-section-pointer-events);
+  --section-start: var(--left-section-start);
+  --section-size: var(--input-left-section-size);
+  --section-border-radius: var(--left-section-border-radius);
 }
 .m-88bacfd0 {
-  color: var(--_input-placeholder-color, var(--raikou-color-placeholder));
+  color: var(--input-placeholder-color, var(--raikou-color-placeholder));
 }
 [data-error] .m-88bacfd0 {
-  --_input-placeholder-color: var( --_input-color, var(--raikou-color-placeholder) );
+  --input-placeholder-color: var( --input-color, var(--raikou-color-placeholder) );
 }
 .m-46b77525 {
   line-height: var(--raikou-line-height);
@@ -272,7 +255,7 @@
   font-size: var(--input-label-size, var(--raikou-font-size-sm));
 }
 .m-78a94662 {
-  color: var(--input-asterisk-color, var(--raikou-color-red-filled));
+  color: var(--input-asterisk-color, var(--raikou-color-error));
 }
 .m-8f816625,
 .m-fe47ce59 {
@@ -292,102 +275,87 @@
 }
 
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/NumberInput/src/NumberInput.module.css/#css-module-data */
-[data-raikou-color-scheme=light] .m-e2f5cd4e {
-  --raikou-numberinput-control-hover-bg: #f8f9fa;
+:where([data-raikou-color-scheme=light]) .m-e2f5cd4e {
+  --raikou-numberinput-control-hover-background-color: #f8f9fa;
   --raikou-numberinput-control-disabled: #ced4da;
 }
-[data-raikou-color-scheme=dark] .m-e2f5cd4e {
-  --raikou-numberinput-control-hover-bg: #373a40;
+:where([data-raikou-color-scheme=dark]) .m-e2f5cd4e {
+  --raikou-numberinput-control-hover-background-color: #373a40;
   --raikou-numberinput-control-disabled: #696969;
 }
 .m-e2f5cd4e {
-  --ni-right-section-width-xs: calc(1.0625rem * var(--raikou-scale));
-  --ni-right-section-width-sm: calc(1.5rem * var(--raikou-scale));
-  --ni-right-section-width-md: calc(1.6875rem * var(--raikou-scale));
-  --ni-right-section-width-lg: calc(1.9375rem * var(--raikou-scale));
-  --ni-right-section-width-xl: calc(2.125rem * var(--raikou-scale));
+  --ni-right-section-width-xs: 17px;
+  --ni-right-section-width-sm: 24px;
+  --ni-right-section-width-md: 27px;
+  --ni-right-section-width-lg: 31px;
+  --ni-right-section-width-xl: 34px;
 }
 .m-95e17d22 {
-  --ni-chevron-size-xs: calc(0.625rem * var(--raikou-scale));
-  --ni-chevron-size-sm: calc(0.875rem * var(--raikou-scale));
-  --ni-chevron-size-md: calc(1rem * var(--raikou-scale));
-  --ni-chevron-size-lg: calc(1.125rem * var(--raikou-scale));
-  --ni-chevron-size-xl: calc(1.25rem * var(--raikou-scale));
+  --ni-chevron-size-xs: 10px;
+  --ni-chevron-size-sm: 14px;
+  --ni-chevron-size-md: 16px;
+  --ni-chevron-size-lg: 18px;
+  --ni-chevron-size-xl: 20px;
   --ni-chevron-size: var(--ni-chevron-size-sm);
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: calc(var(--_input-height) - calc(0.125rem * var(--raikou-scale)));
+  height: calc(var(--input-height) - calc(0.125rem * var(--raikou-scale)));
   max-width: calc(var(--ni-chevron-size) * 1.7);
-  margin-left: var(--_controls-ml, auto);
-  margin-right: var(--_controls-mr, 0);
-}
-[dir=rtl] .m-95e17d22 {
-  --_controls-ml: 0;
-  --_controls-mr: auto;
+  margin-inline-start: auto;
 }
 .m-80b4b171 {
-  --_control-bd: calc(0.0625rem * var(--raikou-scale)) solid var(--_input-bd);
-  --_control-radius: calc(var(--_input-radius) - calc(0.0625rem * var(--raikou-scale)));
+  --control-border: 1px solid var(--input-bd);
+  --control-radius: calc(var(--input-radius) - calc(0.0625rem * var(--raikou-scale)));
   flex: 0 0 50%;
   width: 100%;
   padding: 0;
-  height: calc(var(--_input-height) / 2 - calc(0.0625rem * var(--raikou-scale)));
-  border-left: var(--_control-bdl, var(--_control-bd));
-  border-right: var(--_control-bdr, none);
+  height: calc(var(--input-height) / 2 - calc(0.0625rem * var(--raikou-scale)));
+  border-inline-start: var(--control-border);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--_ni-control-color, var(--raikou-color-text));
-  background-color: var(--_control-bg, transparent);
-  opacity: var(--_control-opacity, 1);
-  cursor: var(--_control-cursor, pointer);
+  color: var(--raikou-color-text);
+  background-color: transparent;
+  cursor: pointer;
 }
-.m-80b4b171:disabled {
-  --_control-bg: transparent !important;
-  --_control-cursor: not-allowed;
+.m-80b4b171:where(:disabled) {
+  background-color: transparent;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
-[data-raikou-color-scheme=light] .m-80b4b171:disabled {
-  --_ni-control-color: var(--raikou-numberinput-control-disabled);
+:where([data-raikou-color-scheme=light]) .m-80b4b171:where(:disabled) {
+  color: var(--raikou-numberinput-control-hover-background-color);
 }
-[data-raikou-color-scheme=dark] .m-80b4b171:disabled {
-  --_ni-control-color: var(--raikou-numberinput-control-disabled);
+:where([data-raikou-color-scheme=dark]) .m-80b4b171:where(:disabled) {
+  color: var(--raikou-numberinput-control-hover-background-color);
 }
-.m-e2f5cd4e[data-error] .m-80b4b171 {
-  --_ni-control-color: var(--mantine-color-error);
-}
-[dir=rtl] .m-80b4b171 {
-  --_control-bdl: none;
-  --_control-bdr: var(--_control-bd);
+.m-e2f5cd4e[data-error] :where(.m-80b4b171) {
+  color: var(--raikou-color-error);
 }
 @media (hover: hover) {
-  [data-raikou-color-scheme=light] .m-80b4b171:hover {
-    --_control-bg: var(--raikou-numberinput-control-hover-bg);
+  :where([data-raikou-color-scheme=light]) .m-80b4b171:hover {
+    background-color: var(--raikou-numberinput-control-disabled);
   }
-  [data-raikou-color-scheme=dark] .m-80b4b171:hover {
-    --_control-bg: var(--raikou-numberinput-control-hover-bg);
+  :where([data-raikou-color-scheme=dark]) .m-80b4b171:hover {
+    background-color: var(--raikou-numberinput-control-disabled);
   }
 }
 @media (hover: none) {
-  [data-raikou-color-scheme=light] .m-80b4b171:active {
-    --_control-bg: var(--raikou-numberinput-control-hover-bg);
+  :where([data-raikou-color-scheme=light]) .m-80b4b171:active {
+    background-color: var(--raikou-numberinput-control-disabled);
   }
-  [data-raikou-color-scheme=dark] .m-80b4b171:active {
-    --_control-bg: var(--raikou-numberinput-control-hover-bg);
+  :where([data-raikou-color-scheme=dark]) .m-80b4b171:active {
+    background-color: var(--raikou-numberinput-control-disabled);
   }
 }
-.m-80b4b171:first-of-type {
-  border-bottom: calc(0.03125rem * var(--raikou-scale)) solid var(--_input-bd);
-  border-radius: 0 var(--_control-radius) 0 0;
-}
-[dir=rtl] .m-80b4b171:first-of-type {
-  border-radius: var(--_control-radius) 0 0 0;
+.m-80b4b171:where(:first-of-type) {
+  border-radius: 0;
+  border-start-end-radius: var(--control-radius);
 }
 .m-80b4b171:last-of-type {
-  border-top: calc(0.03125rem * var(--raikou-scale)) solid var(--_input-bd);
-  border-radius: 0 0 var(--_control-radius) 0;
-}
-[dir=rtl] .m-80b4b171:last-of-type {
-  border-radius: 0 0 0 var(--_control-radius);
+  border-top: 1 solid var(--input-bd);
+  border-radius: 0;
+  border-end-end-radius: var(--control-radius);
 }
 /*# sourceMappingURL=index.css.map */

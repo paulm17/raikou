@@ -1,80 +1,80 @@
-import { getHotkeyMatcher, parseHotkey } from "./parse-hotkey";
+import { getHotkeyMatcher, parseHotkey } from './parse-hotkey';
 
-describe("@raikou/hooks/use-hot-key/parse-hotkey", () => {
-  it("should parse hotkey correctly", () => {
-    expect(parseHotkey("meta+S")).toMatchObject({
+describe('@mantine/hooks/use-hot-key/parse-hotkey', () => {
+  it('should parse hotkey correctly', () => {
+    expect(parseHotkey('meta+S')).toMatchObject({
       alt: false,
       ctrl: false,
       meta: true,
       mod: false,
       shift: false,
-      key: "s",
+      key: 's',
     });
 
-    expect(parseHotkey("alt+shift+L")).toMatchObject({
+    expect(parseHotkey('alt+shift+L')).toMatchObject({
       alt: true,
       ctrl: false,
       meta: false,
       mod: false,
       shift: true,
-      key: "l",
+      key: 'l',
     });
 
-    expect(parseHotkey("mod+K")).toMatchObject({
+    expect(parseHotkey('mod+K')).toMatchObject({
       alt: false,
       ctrl: false,
       meta: false,
       mod: true,
       shift: false,
-      key: "k",
+      key: 'k',
     });
 
-    expect(parseHotkey("ctrl+shift+alt+K")).toMatchObject({
+    expect(parseHotkey('ctrl+shift+alt+K')).toMatchObject({
       alt: true,
       ctrl: true,
       meta: false,
       mod: false,
       shift: true,
-      key: "k",
+      key: 'k',
     });
 
-    expect(parseHotkey("mod+S+A")).toMatchObject({
+    expect(parseHotkey('mod+S+A')).toMatchObject({
       alt: false,
       ctrl: false,
       meta: false,
       mod: true,
       shift: false,
-      key: "s",
+      key: 's',
     });
   });
 
-  it("should detect exact hotkey", () => {
+  it('should detect exact hotkey', () => {
     expect(
-      getHotkeyMatcher("ctrl+alt+I")(
-        new KeyboardEvent("keydown", {
+      getHotkeyMatcher('ctrl+alt+I')(
+        new KeyboardEvent('keydown', {
           ctrlKey: true,
           altKey: true,
-          key: "I",
+          key: 'I',
         })
       )
     ).toBe(true);
 
     expect(
-      getHotkeyMatcher("mod+E")(
-        new KeyboardEvent("keydown", {
+      getHotkeyMatcher('mod+E')(
+        new KeyboardEvent('keydown', {
           ctrlKey: true,
-          key: "E",
+          key: 'E',
         })
       )
     ).toBe(true);
 
     expect(
-      getHotkeyMatcher("shift+alt+O")(
-        new KeyboardEvent("keydown", {
+      getHotkeyMatcher('shift+alt+O')(
+        new KeyboardEvent('keydown', {
           ctrlKey: true,
           altKey: true,
           shiftKey: true,
-          key: "O",
+          key: 'O',
         })
       )
     ).toBe(false);

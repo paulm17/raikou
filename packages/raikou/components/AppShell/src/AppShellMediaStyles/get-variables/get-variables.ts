@@ -1,4 +1,4 @@
-import { RaikouTheme, em, keys, getSortedBreakpoints } from "@raikou/core";
+import { em, getSortedBreakpoints, keys, RaikouTheme } from "@raikou/core";
 import type { AppShellProps } from "../../AppShell";
 import { assignAsideVariables } from "../assign-aside-variables/assign-aside-variables";
 import { assignFooterVariables } from "../assign-footer-variables/assign-footer-variables";
@@ -6,8 +6,11 @@ import { assignHeaderVariables } from "../assign-header-variables/assign-header-
 import { assignNavbarVariables } from "../assign-navbar-variables/assign-navbar-variables";
 import { assignPaddingVariables } from "../assign-padding-variables/assign-padding-variables";
 
-export type CSSVariables = Record<`--${string}`, string>;
-export type MediaQueryVariables = Record<string, Record<`--${string}`, string>>;
+export type CSSVariables = Record<`--${string}`, string | undefined>;
+export type MediaQueryVariables = Record<
+  string,
+  Record<`--${string}`, string | undefined>
+>;
 
 interface GetVariablesInput {
   navbar: AppShellProps["navbar"] | undefined;
@@ -54,14 +57,14 @@ export function getVariables({
     (breakpoint) => ({
       query: `(min-width: ${em(breakpoint.px)})`,
       styles: minMediaStyles[breakpoint.value],
-    })
+    }),
   );
 
   const maxMedia = getSortedBreakpoints(keys(maxMediaStyles), theme).map(
     (breakpoint) => ({
       query: `(max-width: ${em(breakpoint.px)})`,
       styles: maxMediaStyles[breakpoint.value],
-    })
+    }),
   );
 
   const media = [...minMedia, ...maxMedia];

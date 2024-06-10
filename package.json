@@ -125,6 +125,6 @@
   "engines": {
     "node": ">=16.x"
   },
-  "packageManager": "pnpm@7.15.0",
+  "packageManager": "pnpm@9.1.0",
   "name": "raikou"
 }

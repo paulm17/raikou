@@ -108,6 +108,10 @@ interface TableProps extends BoxProps, StylesApiProps<TableFactory>, ElementProp
     highlightOnHoverColor?: RaikouColor;
     /** Data that should be used to generate table, ignored if `children` prop is set */
     data?: TableData;
+    /** Determines whether `Table.Thead` should be sticky, `false` by default */
+    stickyHeader?: boolean;
+    /** Offset from top at which `Table.Thead` should become sticky, `0` by default */
+    stickyHeaderOffset?: number | string;
 }
 type TableFactory = Factory<{
     props: TableProps;

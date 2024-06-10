@@ -33,7 +33,7 @@ const defaultProps: Partial<AnchorProps> = {
 };
 
 export const Anchor = polymorphicFactory<AnchorFactory>((props, ref) => {
-  const { underline, className, ...others } = useProps(
+  const { underline, className, mod, ...others } = useProps(
     "Anchor",
     defaultProps,
     props,
@@ -44,7 +44,7 @@ export const Anchor = polymorphicFactory<AnchorFactory>((props, ref) => {
       ref={ref}
       className={cx(classes.root, className)}
       {...others}
-      mod={{ underline }}
+      mod={[{ underline }, mod]}
       __staticSelector="Anchor"
     />
   );

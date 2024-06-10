@@ -1,12 +1,5 @@
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/TypographyStylesProvider/src/TypographyStylesProvider.module.css/#css-module-data */
-.m-d6493fad {
-  --raikou-tsp-table-caption: #868e96;
-  --raikou-tsp-table-th: #495057;
-  --raikou-tsp-table-thread-th: #dee2e6;
-  --raikou-tsp-table-tfoot-th: #dee2e6;
-  --raikou-tsp-table-td-border-color: #dee2e6;
-}
-[data-raikou-color-scheme=light] .m-d6493fad {
+:where([data-raikou-color-scheme=light]) .m-d6493fad {
   --raikou-tsp-mark-background-color: #ffec99;
   --raikou-tsp-mark-color: inherit;
   --raikou-tsp-hr-border-color: #dee2e6;
@@ -16,9 +9,9 @@
   --raikou-tsp-blockquote-background-color: #f8f9fa;
   --raikou-tsp-kdb-border-color: #dee2e6;
   --raikou-tsp-kdb-color: #495057;
-  --raikou-tsp-kdb-bg: #f8f9fa;
+  --raikou-tsp-kdb-background-color: #f8f9fa;
 }
-[data-raikou-color-scheme=dark] .m-d6493fad {
+:where([data-raikou-color-scheme=dark]) .m-d6493fad {
   --raikou-tsp-mark-background-color: #fcc419;
   --raikou-tsp-mark-color: #000;
   --raikou-tsp-hr-border-color: #5c5f66;
@@ -29,90 +22,97 @@
   --raikou-tsp-blockquote-background-color: #141517;
   --raikou-tsp-kdb-border-color: #424242;
   --raikou-tsp-kdb-color: #c9c9c9;
-  --raikou-tsp-kdb-bg: #3b3b3b;
+  --raikou-tsp-kdb-background-color: #3b3b3b;
 }
-.m-d6493fad h1,
-.m-d6493fad h2,
-.m-d6493fad h3,
-.m-d6493fad h4,
-.m-d6493fad h5,
-.m-d6493fad h6 {
-  margin-top: calc(1.55 * var(--raikou-spacing-xl));
+.m-d6493fad :first-child {
+  margin-top: 0;
+}
+.m-d6493fad :last-child {
+  margin-bottom: 0;
+}
+.m-d6493fad :where(h1, h2, h3, h4, h5, h6) {
   margin-bottom: var(--raikou-spacing-xs);
+  text-wrap: var(--raikou-heading-text-wrap);
 }
-.m-d6493fad h1 {
+.m-d6493fad :where(h1) {
+  margin-top: calc(1.5 * var(--raikou-spacing-xl));
   font-size: var(--raikou-h1-font-size);
   line-height: var(--raikou-h1-line-height);
   font-weight: var(--raikou-h1-font-weight);
 }
-.m-d6493fad h2 {
+.m-d6493fad :where(h2) {
+  margin-top: var(--raikou-spacing-xl);
   font-size: var(--raikou-h2-font-size);
   line-height: var(--raikou-h2-line-height);
   font-weight: var(--raikou-h2-font-weight);
 }
-.m-d6493fad h3 {
+.m-d6493fad :where(h3) {
+  margin-top: calc(0.8 * var(--raikou-spacing-xl));
   font-size: var(--raikou-h3-font-size);
   line-height: var(--raikou-h3-line-height);
   font-weight: var(--raikou-h3-font-weight);
 }
-.m-d6493fad h4 {
+.m-d6493fad :where(h4) {
+  margin-top: calc(0.8 * var(--raikou-spacing-xl));
   font-size: var(--raikou-h4-font-size);
   line-height: var(--raikou-h4-line-height);
   font-weight: var(--raikou-h4-font-weight);
 }
-.m-d6493fad h5 {
+.m-d6493fad :where(h5) {
+  margin-top: calc(0.5 * var(--raikou-spacing-xl));
   font-size: var(--raikou-h5-font-size);
   line-height: var(--raikou-h5-line-height);
   font-weight: var(--raikou-h5-font-weight);
 }
-.m-d6493fad h6 {
+.m-d6493fad :where(h6) {
+  margin-top: calc(0.5 * var(--raikou-spacing-xl));
   font-size: var(--raikou-h6-font-size);
   line-height: var(--raikou-h6-line-height);
   font-weight: var(--raikou-h6-font-weight);
 }
-.m-d6493fad img {
+.m-d6493fad :where(img) {
   max-width: 100%;
   margin-bottom: var(--raikou-spacing-xs);
 }
-.m-d6493fad p {
+.m-d6493fad :where(p) {
   margin-top: 0;
   margin-bottom: var(--raikou-spacing-lg);
 }
-[data-raikou-color-scheme=light] .m-d6493fad mark {
+:where([data-raikou-color-scheme=light]) .m-d6493fad :where(mark) {
   background-color: var(--raikou-tsp-mark-background-color);
   color: var(--raikou-tsp-mark-color);
 }
-[data-raikou-color-scheme=dark] .m-d6493fad mark {
+:where([data-raikou-color-scheme=dark]) .m-d6493fad :where(mark) {
   background-color: var(--raikou-tsp-mark-background-color);
   color: var(--raikou-tsp-mark-color);
 }
-.m-d6493fad a {
+.m-d6493fad :where(a) {
   color: var(--raikou-color-anchor);
   text-decoration: none;
 }
 @media (hover: hover) {
-  .m-d6493fad a:hover {
+  .m-d6493fad :where(a):hover {
     text-decoration: underline;
   }
 }
 @media (hover: none) {
-  .m-d6493fad a:active {
+  .m-d6493fad :where(a):active {
     text-decoration: underline;
   }
 }
-.m-d6493fad hr {
+.m-d6493fad :where(hr) {
   margin-top: var(--raikou-spacing-md);
   margin-bottom: var(--raikou-spacing-md);
   border: 0;
-  border-top: calc(0.0625rem * var(--raikou-scale)) solid;
+  border-top: 1px solid;
 }
-[data-raikou-color-scheme=light] .m-d6493fad hr {
+:where([data-raikou-color-scheme=light]) .m-d6493fad :where(hr) {
   border-color: var(--raikou-tsp-hr-border-color);
 }
-[data-raikou-color-scheme=dark] .m-d6493fad hr {
+:where([data-raikou-color-scheme=dark]) .m-d6493fad :where(hr) {
   border-color: var(--raikou-tsp-hr-border-color);
 }
-.m-d6493fad pre {
+.m-d6493fad :where(pre) {
   padding: var(--raikou-spacing-xs);
   line-height: var(--raikou-line-height);
   margin: 0;
@@ -123,115 +123,109 @@
   font-size: var(--raikou-font-size-xs);
   border-radius: var(--raikou-radius-sm);
 }
-[data-raikou-color-scheme=light] .m-d6493fad pre {
+:where([data-raikou-color-scheme=light]) .m-d6493fad :where(pre) {
   background-color: var(--raikou-tsp-pre-border-color);
 }
-[data-raikou-color-scheme=dark] .m-d6493fad pre {
+:where([data-raikou-color-scheme=dark]) .m-d6493fad :where(pre) {
   background-color: var(--raikou-tsp-pre-border-color);
 }
-.m-d6493fad pre code {
+.m-d6493fad :where(pre) :where(code) {
   background-color: transparent;
   padding: 0;
   border-radius: 0;
   color: inherit;
   border: 0;
 }
-.m-d6493fad kbd {
-  --kbd-fz: calc(0.75rem * var(--raikou-scale));
-  --kbd-padding: calc(0.1875rem * var(--raikou-scale)) calc(0.3125rem * var(--raikou-scale));
-  font-family: var(--mantine-font-family-monospace);
-  line-height: var(--mantine-line-height);
+.m-d6493fad :where(kbd) {
+  --kbd-fz: 12px;
+  --kbd-padding: 3px 5px;
+  font-family: var(--raikou-font-family-monospace);
+  line-height: var(--raikou-line-height);
   font-weight: 700;
   padding: var(--kbd-padding);
   font-size: var(--kbd-fz);
-  border-radius: var(--mantine-radius-sm);
-  border: calc(0.0625rem * var(--raikou-scale)) solid var(--_kbd-border-color);
-  border-bottom-width: calc(0.1875rem * var(--raikou-scale));
-  background-color: var(--_kbd-bg);
-  color: var(--_kbd-color);
+  border-radius: var(--raikou-radius-sm);
+  border: 1px solid;
+  border-bottom-width: 3px;
 }
-[data-raikou-color-scheme=light] .m-d6493fad kbd {
-  --_kbd-border-color: var(--raikou-tsp-kdb-border-color);
-  --_kbd-color: var(--raikou-tsp-kdb-color);
-  --_kbd-bg: var(--raikou-tsp-kdb-bg);
+:where([data-raikou-color-scheme=light]) .m-d6493fad :where(kbd) {
+  border-color: var(--raikou-tsp-kdb-border-color);
+  color: var(--raikou-tsp-kdb-color);
+  background-color: var(--raikou-tsp-kdb-background-color);
 }
-[data-raikou-color-scheme=dark] .m-d6493fad kbd {
-  --_kbd-border-color: var(--raikou-tsp-kdb-border-color);
-  --_kbd-color: var(--raikou-tsp-kdb-color);
-  --_kbd-bg: var(--raikou-tsp-kdb-bg);
+:where([data-raikou-color-scheme=dark]) .m-d6493fad :where(kbd) {
+  border-color: var(--raikou-tsp-kdb-border-color);
+  color: var(--raikou-tsp-kdb-color);
+  background-color: var(--raikou-tsp-kdb-background-color);
 }
-.m-d6493fad code {
+.m-d6493fad :where(code) {
   line-height: var(--raikou-line-height);
-  padding: calc(0.0625rem * var(--raikou-scale)) calc(0.3125rem * var(--raikou-scale));
+  padding: 1px 5px;
   border-radius: var(--raikou-radius-sm);
   font-family: var(--raikou-font-family-monospace);
   font-size: var(--raikou-font-size-xs);
 }
-[data-raikou-color-scheme=light] .m-d6493fad code {
+:where([data-raikou-color-scheme=light]) .m-d6493fad :where(code) {
   background-color: var(--raikou-tsp-code-background-color);
   color: var(--raikou-tsp-code-color);
 }
-[data-raikou-color-scheme=dark] .m-d6493fad code {
+:where([data-raikou-color-scheme=dark]) .m-d6493fad :where(code) {
   background-color: var(--raikou-tsp-code-background-color);
   color: var(--raikou-tsp-code-color);
 }
-.m-d6493fad ul,
-.m-d6493fad,
-.m-d6493fad ol {
+.m-d6493fad :where(ul, ol):not([data-type=taskList]) {
   margin-bottom: var(--raikou-spacing-md);
-  padding-left: calc(2.375rem * var(--raikou-scale));
+  padding-inline-start: 38px;
 }
-.m-d6493fad ul li,
-.m-d6493fad li,
-.m-d6493fad ol li {
+.m-d6493fad :where(ul, ol):not([data-type=taskList]) :where(li) {
   margin-bottom: var(--raikou-spacing-xs);
 }
-.m-d6493fad table {
+.m-d6493fad :where(table) {
   width: 100%;
   border-collapse: collapse;
   caption-side: bottom;
   margin-bottom: var(--raikou-spacing-md);
 }
-.m-d6493fad table caption {
+.m-d6493fad :where(table) :where(caption) {
   margin-top: var(--raikou-spacing-xs);
   font-size: var(--raikou-font-size-sm);
-  color: var(--raikou-tsp-table-caption);
+  color: var(--raikou-color-gray-6);
 }
-.m-d6493fad table th {
+.m-d6493fad :where(table) :where(th) {
   text-align: left;
   font-weight: bold;
-  color: var(--raikou-tsp-table-th);
+  color: var(--raikou-color-gray-7);
   font-size: var(--raikou-font-size-sm);
   padding: var(--raikou-spacing-xs) var(--raikou-spacing-sm);
 }
-.m-d6493fad table thead th {
-  border-bottom: calc(0.0625rem * var(--raikou-scale)) solid;
-  border-color: var(--raikou-tsp-table-thread-th);
+.m-d6493fad :where(table) :where(thead th) {
+  border-bottom: 1px solid;
+  border-color: var(--raikou-color-gray-3);
 }
-.m-d6493fad table tfoot th {
-  border-top: calc(0.0625rem * var(--raikou-scale)) solid;
-  border-color: var(--raikou-tsp-table-tfoot-th);
+.m-d6493fad :where(table) :where(tfoot th) {
+  border-top: 1px solid;
+  border-color: var(--raikou-color-gray-3);
 }
-.m-d6493fad table td {
+.m-d6493fad :where(table) :where(td) {
   padding: var(--raikou-spacing-xs) var(--raikou-spacing-sm);
-  border-bottom: calc(0.0625rem * var(--raikou-scale)) solid;
-  border-color: var(--raikou-tsp-table-td-border-color);
+  border-bottom: 1px solid;
+  border-color: var(--raikou-color-gray-3);
   font-size: var(--raikou-font-size-sm);
 }
-.m-d6493fad table tr:last-of-type td {
+.m-d6493fad :where(table) :where(tr:last-of-type td) {
   border-bottom: 0;
 }
-.m-d6493fad blockquote {
+.m-d6493fad :where(blockquote) {
   font-size: var(--raikou-font-size-lg);
   line-height: var(--raikou-line-height);
   margin: var(--raikou-spacing-md) 0;
   border-radius: var(--raikou-radius-sm);
   padding: var(--raikou-spacing-md) var(--raikou-spacing-lg);
 }
-[data-raikou-color-scheme=light] .m-d6493fad blockquote {
+:where([data-raikou-color-scheme=light]) .m-d6493fad :where(blockquote) {
   background-color: var(--raikou-tsp-blockquote-background-color);
 }
-[data-raikou-color-scheme=dark] .m-d6493fad blockquote {
+:where([data-raikou-color-scheme=dark]) .m-d6493fad :where(blockquote) {
   background-color: var(--raikou-tsp-blockquote-background-color);
 }
 /*# sourceMappingURL=index.css.map */

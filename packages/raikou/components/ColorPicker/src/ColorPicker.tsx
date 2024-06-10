@@ -39,13 +39,10 @@ export type ColorPickerStylesNames =
 
 export type ColorPickerVariant = string;
 export type ColorPickerCssVariables = {
-  wrapper:
-    | "--cp-preview-size"
-    | "--cp-width"
-    | "--cp-body-spacing"
-    | "--cp-swatch-size"
-    | "--cp-thumb-size"
-    | "--cp-saturation-height";
+  wrapper: "--cp-preview-size" | "--cp-width" | "--cp-body-spacing";
+  // | "--cp-swatch-size"
+  // | "--cp-thumb-size"
+  // | "--cp-saturation-height"
 };
 
 export interface __ColorPickerProps {
@@ -118,18 +115,16 @@ const defaultProps: Partial<ColorPickerProps> = {
   __staticSelector: "ColorPicker",
 };
 
-const varsResolver = createVarsResolver<ColorPickerFactory>(
-  (_, { size, swatchesPerRow }) => ({
-    wrapper: {
-      "--cp-preview-size": getSize(size, "cp-preview-size"),
-      "--cp-width": getSize(size, "cp-width"),
-      "--cp-body-spacing": getSpacing(size),
-      "--cp-swatch-size": `${100 / swatchesPerRow!}%`,
-      "--cp-thumb-size": getSize(size, "cp-thumb-size"),
-      "--cp-saturation-height": getSize(size, "cp-saturation-height"),
-    },
-  }),
-);
+const varsResolver = createVarsResolver<ColorPickerFactory>((_, { size }) => ({
+  wrapper: {
+    "--cp-preview-size": getSize(size, "cp-preview-size"),
+    "--cp-width": getSize(size, "cp-width"),
+    "--cp-body-spacing": getSpacing(size),
+    // "--cp-swatch-size": `${100 / swatchesPerRow!}%`,
+    // "--cp-thumb-size": getSize(size, "cp-thumb-size"),
+    // "--cp-saturation-height": getSize(size, "cp-saturation-height"),
+  },
+}));
 
 export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
   const props = useProps("ColorPicker", defaultProps, _props);
@@ -156,6 +151,7 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
     fullWidth,
     onColorSwatchClick,
     __staticSelector,
+    mod,
     ...others
   } = props;
 
@@ -227,7 +223,7 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
         ref={ref}
         {...getStyles("wrapper")}
         size={size}
-        mod={{ "full-width": fullWidth }}
+        mod={[{ "full-width": fullWidth }, mod]}
         {...others}
       >
         {withPicker && (
@@ -301,20 +297,25 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
         )}
 
         {Array.isArray(swatches) && (
-          <Swatches
-            data={swatches}
-            swatchesPerRow={swatchesPerRow}
-            focusable={focusable}
-            setValue={setValue}
-            onChangeEnd={(color) => {
-              const convertedColor = convertHsvaTo(format!, parseColor(color));
-              onColorSwatchClick?.(convertedColor);
-              onChangeEnd?.(convertedColor);
-              if (!controlled) {
-                setParsed(parseColor(color));
-              }
-            }}
-          />
+          <Box className="mt-[5px]">
+            <Swatches
+              data={swatches}
+              swatchesPerRow={swatchesPerRow}
+              focusable={focusable}
+              setValue={setValue}
+              onChangeEnd={(color) => {
+                const convertedColor = convertHsvaTo(
+                  format!,
+                  parseColor(color),
+                );
+                onColorSwatchClick?.(convertedColor);
+                onChangeEnd?.(convertedColor);
+                if (!controlled) {
+                  setParsed(parseColor(color));
+                }
+              }}
+            />
+          </Box>
         )}
       </Box>
     </ColorPickerProvider>

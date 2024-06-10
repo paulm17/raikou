@@ -21,11 +21,13 @@ export const ScrollAreaScrollbarY = forwardRef<
   const composeRefs = useMergedRef(
     forwardedRef,
     ref,
-    context.onScrollbarYChange
+    context.onScrollbarYChange,
   );
 
   useEffect(() => {
-    if (ref.current) setComputedStyle(getComputedStyle(ref.current));
+    if (ref.current) {
+      setComputedStyle(window.getComputedStyle(ref.current));
+    }
   }, [ref]);
 
   return (
@@ -67,3 +69,5 @@ export const ScrollAreaScrollbarY = forwardRef<
     />
   );
 });
+
+ScrollAreaScrollbarY.displayName = "@raikou/core/ScrollAreaScrollbarY";

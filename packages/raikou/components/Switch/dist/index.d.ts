@@ -3616,6 +3616,8 @@ interface SwitchGroupProps extends Omit<InputWrapperProps, "onChange"> {
     wrapperProps?: Record<string, any>;
     /** Controls size of the `Input.Wrapper`, `'sm'` by default */
     size?: RaikouSize | (string & {});
+    /** If set, value cannot be changed */
+    readOnly?: boolean;
 }
 type SwitchGroupFactory = Factory<{
     props: SwitchGroupProps;

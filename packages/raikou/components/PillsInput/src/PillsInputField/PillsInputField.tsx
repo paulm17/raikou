@@ -51,6 +51,7 @@ export const PillsInputField = factory<PillsInputFieldFactory>(
       disabled,
       id,
       pointer,
+      mod,
       ...others
     } = props;
     const ctx = usePillsInputContext();
@@ -76,7 +77,7 @@ export const PillsInputField = factory<PillsInputFieldFactory>(
         ref={useMergedRef(ref, ctx?.fieldRef)}
         data-type={type}
         disabled={_disabled}
-        mod={{ disabled: _disabled, pointer }}
+        mod={[{ disabled: _disabled, pointer }, mod]}
         {...getStyles("field")}
         {...others}
         id={inputWrapperCtx?.inputId || id}

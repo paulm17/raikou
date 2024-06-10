@@ -4,35 +4,34 @@
     background-position: 0 0;
   }
   100% {
-    background-position: calc(2.5rem * var(--raikou-scale)) 0;
+    background-position: 40px 0;
   }
 }
-[data-raikou-color-scheme=light] .m-db6d6462 {
+:where([data-raikou-color-scheme=light]) .m-db6d6462 {
   --raikou-progress-track-bg: #e9ecef;
 }
-[data-raikou-color-scheme=dark] .m-db6d6462 {
+:where([data-raikou-color-scheme=dark]) .m-db6d6462 {
   --raikou-progress-track-bg: #373a40;
 }
 .m-db6d6462 {
   --progress-radius: var(--raikou-radius-default);
-  --progress-size-xs: calc(0.1875rem * var(--raikou-scale));
-  --progress-size-sm: calc(0.3125rem * var(--raikou-scale));
-  --progress-size-md: calc(0.5rem * var(--raikou-scale));
-  --progress-size-lg: calc(0.75rem * var(--raikou-scale));
-  --progress-size-xl: calc(1rem * var(--raikou-scale));
   --progress-size: var(--progress-size-md);
+  --progress-size-xs: 3px;
+  --progress-size-sm: 5px;
+  --progress-size-md: 8px;
+  --progress-size-lg: 12px;
+  --progress-size-xl: 16px;
   position: relative;
   height: var(--progress-size);
   border-radius: var(--progress-radius);
   overflow: hidden;
-  background-color: var(--_track-bg);
   display: flex;
 }
-[data-raikou-color-scheme=light] .m-db6d6462 {
-  --_track-bg: var(--raikou-progress-track-bg);
+:where([data-raikou-color-scheme=light]) .m-db6d6462 {
+  background-color: var(--raikou-progress-track-bg);
 }
-[data-raikou-color-scheme=dark] .m-db6d6462 {
-  --_track-bg: var(--raikou-progress-track-bg);
+:where([data-raikou-color-scheme=dark]) .m-db6d6462 {
+  background-color: var(--raikou-progress-track-bg);
 }
 .m-2242eb65 {
   background-color: var(--progress-section-color);
@@ -42,15 +41,12 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-radius: var(--_section-radius);
-  background-size: calc(1.25rem * var(--raikou-scale)) calc(1.25rem * var(--raikou-scale));
-  background-image: var(--_section-gradient);
-  animation: var(--_section-animation);
+  background-size: 20px 20px;
+  transition: width var(--progress-transition-duration, 100ms) ease;
 }
-.m-2242eb65[data-striped] {
-  --_section-gradient:
+.m-2242eb65:where([data-striped]) {
+  background-image:
     linear-gradient(
-      
       45deg,
       rgba(255, 255, 255, 0.15) 25%,
       transparent 25%,
@@ -58,25 +54,23 @@
       rgba(255, 255, 255, 0.15) 50%,
       rgba(255, 255, 255, 0.15) 75%,
       transparent 75%,
-      transparent );
+      transparent);
 }
-.m-2242eb65[data-animated] {
-  --_section-animation: m-81a374bd 1s linear infinite;
+.m-2242eb65:where([data-animated]) {
+  animation: m-81a374bd 1s linear infinite;
 }
-.m-2242eb65:last-of-type {
-  --_section-radius: 0 var(--progress-radius) var(--progress-radius) 0;
+.m-2242eb65:where(:last-of-type) {
+  border-radius: 0;
+  border-start-end-radius: var(--progress-radius);
+  border-end-end-radius: var(--progress-radius);
 }
-[dir=rtl] .m-2242eb65:last-of-type {
-  --_section-radius: var(--progress-radius) 0 0 var(--progress-radius);
-}
-.m-2242eb65:first-of-type {
-  --_section-radius: var(--progress-radius) 0 0 var(--progress-radius);
-}
-[dir=rtl] .m-2242eb65:first-of-type {
-  --_section-radius: 0 var(--progress-radius) var(--progress-radius) 0;
+.m-2242eb65:where(:first-of-type) {
+  border-radius: 0;
+  border-start-start-radius: var(--progress-radius);
+  border-end-start-radius: var(--progress-radius);
 }
 .m-91e40b74 {
-  color: var(--raikou-color-white);
+  color: var(--progress-label-color, var(--raikou-color-white));
   font-weight: bold;
   user-select: none;
   overflow: hidden;
@@ -84,7 +78,6 @@
   text-overflow: ellipsis;
   font-size: min(calc(var(--progress-size) * 0.65), calc(1.125rem * var(--raikou-scale)));
   line-height: 1;
-  padding-left: calc(0.25rem * var(--raikou-scale));
-  padding-right: calc(0.25rem * var(--raikou-scale));
+  padding-inline: 4px;
 }
 /*# sourceMappingURL=index.css.map */

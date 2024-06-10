@@ -4,14 +4,6 @@ import { DEFAULT_THEME, rem } from "@raikou/core";
 
 export default { title: "ActionIcon" };
 
-export function SingleButton() {
-  return (
-    <div style={{ padding: 40 }}>
-      <ActionIcon loading>$$</ActionIcon>
-    </div>
-  );
-}
-
 function Colors({ index, ...others }: ActionIconProps & { index?: number }) {
   const colors = Object.keys(DEFAULT_THEME.colors).map((color) => (
     <ActionIcon
@@ -25,6 +17,50 @@ function Colors({ index, ...others }: ActionIconProps & { index?: number }) {
   ));
   return <div style={{ display: "flex", gap: 20, padding: 40 }}>{colors}</div>;
 }
+
+export function AutoContrast() {
+  const buttons = Array(10)
+    .fill(0)
+    .map((_, index) => (
+      <ActionIcon key={index} color={`red.${index}`} autoContrast>
+        $$
+      </ActionIcon>
+    ));
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        gap: 10,
+        padding: 40,
+      }}
+    >
+      {buttons}
+    </div>
+  );
+}
+
+// export function SingleButton() {
+//   return (
+//     <div style={{ padding: 40 }}>
+//       <RaikouThemeProvider
+//         theme={{
+//           components: {
+//             ActionIcon: ActionIcon.extend({
+//               defaultProps: {
+//                 // color: 'red',
+//               },
+//             }),
+//           },
+//         }}
+//       >
+//         <ActionIcon loading>$$</ActionIcon>
+//       </RaikouThemeProvider>
+//     </div>
+//   );
+// }
 
 export function WithinDisabledFieldset() {
   return (
@@ -242,6 +278,21 @@ export function ActionIconGroup() {
         </ActionIcon>
         <ActionIcon size="lg" variant="default">
           3
+        </ActionIcon>
+      </ActionIcon.Group>
+    </div>
+  );
+}
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <ActionIcon.Group unstyled>
+        <ActionIcon unstyled size="lg" variant="default">
+          $$
+        </ActionIcon>
+        <ActionIcon unstyled size="lg" variant="default">
+          $$
         </ActionIcon>
       </ActionIcon.Group>
     </div>

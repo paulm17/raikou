@@ -7,7 +7,7 @@ export default { title: "CodeHighlight" };
 
 const tsxCode = `
 import { forwardRef } from 'react';
-import { Group, Avatar, Text, Select } from '@raikou/core';
+import { Group, Avatar, Text, Select } from '@mantine/core';
 
 // Data for select
 // You can use any data structure you want
@@ -89,9 +89,9 @@ const cssCode = `.root {
   --ai-size-lg: rem(34px);
   --ai-size-xl: rem(44px);
 
-  --_bg: var(--ai-bg);
-  --_color: var(--ai-color);
-  --_cursor: pointer;
+  --bg: var(--ai-bg);
+  --color: var(--ai-color);
+  --cursor: pointer;
 
   line-height: 1;
   display: inline-flex;
@@ -105,53 +105,46 @@ const cssCode = `.root {
   min-width: var(--ai-size);
   min-height: var(--ai-size);
   border-radius: var(--ai-radius);
-  background: var(--_bg);
-  color: var(--_color);
+  background: var(--bg);
+  color: var(--color);
   border: var(--ai-bd);
-  cursor: var(--_cursor);
+  cursor: var(--cursor);
 
-  @media (hover: hover) {
-    "&:hover": {
-      &:not([data-loading]):not(:disabled):not([data-disabled]) {
-        --_bg: var(--ai-hover);
-      }
-    },
-    "&:active": {
-      &:not([data-loading]):not(:disabled):not([data-disabled]) {
-        --_bg: var(--ai-hover);
-      }
-    },    
+  @mixin hover {
+    &:not([data-loading]):not(:disabled):not([data-disabled]) {
+      --bg: var(--ai-hover);
+    }
   }
 
-  [data-raikou-color-scheme="light"] {
-    --_loading-overlay-bg: rgba(255, 255, 255, 0.35);
-    --_disabled-bg: #f1f3f5;
-    --_disabled-color: #adb5bd;
+  @mixin light {
+    --loading-overlay-bg: rgba(255, 255, 255, 0.35);
+    --disabled-bg: var(--mantine-color-gray-1);
+    --disabled-color: var(--mantine-color-gray-5);
   }
 
-  [data-raikou-color-scheme="dark"] {
-    --_loading-overlay-bg: rgba(0, 0, 0, 0.35);
-    --_disabled-bg: #868e96;
-    --_disabled-color: #dee2e6;
+  @mixin dark {
+    --loading-overlay-bg: rgba(0, 0, 0, 0.35);
+    --disabled-bg: var(--mantine-color-dark-6);
+    --disabled-color: var(--mantine-color-dark-3);
   }
 
   &[data-loading] {
-    --_cursor: not-allowed;
+    --cursor: not-allowed;
 
     &::before {
       content: '';
       position: absolute;
       inset: rem(-1px);
       border-radius: var(--ai-radius);
-      background-color: var(--_loading-overlay_bg);
+      background-color: var(--loading-overlay_bg);
     }
   }
 
   &:disabled:not([data-loading]),
   &[data-disabled]:not([data-loading]) {
-    --_cursor: not-allowed;
-    --_bg: var(--_disabled-bg);
-    --_color: var(--_disabled-color);
+    --cursor: not-allowed;
+    --bg: var(--disabled-bg);
+    --color: var(--disabled-color);
   }
 }
 
@@ -209,6 +202,14 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <CodeHighlight code={tsxCode} highlightOnClient unstyled />
+    </div>
+  );
+}
+
 export function Tabs() {
   return (
     <div style={{ padding: 40 }}>
@@ -222,13 +223,46 @@ export function Tabs() {
           },
           {
             code: cssCode,
-            language: "css",
+            language: "scss",
             icon: <CSSIcon />,
             fileName: "Component.module.css",
           },
           {
             code: cssCode,
-            language: "css",
+            language: "scss",
+            icon: <CSSIcon />,
+            fileName: "Long-file-name-that-will-break-to-another-line.css",
+          },
+        ]}
+        defaultExpanded={false}
+      >
+        {tsxCode}
+      </CodeHighlightTabs>
+    </div>
+  );
+}
+
+export function TabsUnstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <CodeHighlightTabs
+        unstyled
+        code={[
+          {
+            code: tsxCode,
+            language: "tsx",
+            icon: <TsIcon />,
+            fileName: "Component.tsx",
+          },
+          {
+            code: cssCode,
+            language: "scss",
+            icon: <CSSIcon />,
+            fileName: "Component.module.css",
+          },
+          {
+            code: cssCode,
+            language: "scss",
             icon: <CSSIcon />,
             fileName: "Long-file-name-that-will-break-to-another-line.css",
           },
@@ -246,7 +280,10 @@ export function Inline() {
     <div style={{ padding: 40 }}>
       <p>
         Hello there! this is{" "}
-        <InlineCodeHighlight code="import React from 'react';" language="tsx" />{" "}
+        <InlineCodeHighlight
+          code={'<InlineCodeHighlight code="" language="tsx" />'}
+          language="tsx"
+        />{" "}
         some code Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Aliquid reiciendis, facilis repudiandae vero mollitia non dolorum
         cupiditate assumenda odio unde quaerat beatae explicabo veritatis nam

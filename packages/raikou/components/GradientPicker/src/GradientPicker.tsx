@@ -1,48 +1,163 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Box,
   BoxProps,
   StylesApiProps,
   ElementProps,
   useProps,
-  useStyles,
+  // useStyles,
   // createVarsResolver,
   Factory,
+  useStyles,
   ExtendComponent,
   RaikouThemeComponent,
+  RaikouSize,
+  RaikouShadow,
+  // ExtendComponent,
+  // RaikouThemeComponent,
 } from "@raikou/core";
-import { GradientObj } from "./GradientPicker.types";
+import isEqual from "lodash.isequal";
 import { GradientPickerProvider } from "./GradientPicker.context";
 import {
   cssGradient,
   getGradientObject,
   isGradient,
-  // @ts-ignore
-} from "./components/gradient/utils";
-import { HsvaColor, colord } from "colord";
-import { useClickOutside, useDidUpdate, useToggle } from "@raikou/hooks";
-import isEqual from "lodash.isequal";
-import { GradientPickerCompact } from "./components/compact";
-import { GradientPickerPicker } from "./components/picker";
+  sortByPosition,
+} from "./components/utils";
+// import { HsvaColor, colord } from "colord";
+import {
+  useClickOutside,
+  useDidUpdate,
+  useElementSize,
+  useToggle,
+} from "@raikou/hooks";
+import {
+  ColorPickerType,
+  GradientObj,
+  GradientType,
+} from "./GradientPicker.types";
+import { FloatingPosition } from "../../Floating/src";
+import { TransitionProps } from "../../Transition/src";
+import { Popover } from "../../Popover/src";
+import { Stack } from "../../Stack/src";
+import { Group } from "../../Group/src";
+import { Picker } from "./components/Picker";
+import {
+  AlphaSlider,
+  HsvaColor,
+  HueSlider,
+  Saturation,
+  convertHsvaTo,
+  parseColor,
+} from "../../ColorPicker/src";
+import { Controls } from "./components/Controls";
+import { Inputs } from "./components/Inputs";
+import { Grid } from "../../Grid/src";
+import { Swatches } from "../../ColorPicker/src/Swatches/Swatches";
+import { ColorSwatch } from "../../ColorSwatch/src";
+import { ColorModel } from "./components/colorModel";
+import { ColorGuide } from "./components/ColorGuide";
+import {
+  GradientPointer,
+  GradientMode,
+  GradientControls,
+  GradientControlLinear,
+  GradientControlRadial,
+  GradientControlConic,
+  // GradientControls,
+  // GradientControlLinear,
+  // GradientControlRadial,
+  // GradientControlConic,
+} from "./components/gradient";
+import { ColorFormat } from "../../ColorPicker/src/ColorPicker.types";
+import { GradientSlider } from "./components/gradient/gradientSlider";
 
 export type GradientPickerStylesNames = "root";
-
-// export type GradientPickerCssVariables = {
-//   root:
-//     | "--accordion-transition-duration"
-//     | "--accordion-chevron-size"
-//     | "--accordion-radius";
-// };
 
 export interface GradientPickerProps
   extends BoxProps,
     StylesApiProps<GradientPickerFactory>,
     ElementProps<"div", "value" | "defaultValue" | "onChange"> {
+  /** Type of gradient picker **/
+  type: ColorPickerType;
+
   /** Value for controlled component */
   value: string;
 
   /** Called when value changes */
   onChange(value: string): void;
+
+  /** Picker Type **/
+  picker: "input" | "dropdown";
+
+  /* Swatch Size */
+  swatchSize: number;
+
+  /** Color format */
+  format?: ColorFormat;
+
+  /** Predefined component size */
+  size?: RaikouSize;
+
+  /** Component disabled or not */
+  disabled?: boolean;
+
+  /** Predefined dropper size */
+  dropperSize?: RaikouSize | number;
+
+  /** Dropdown element z-index */
+  dropdownZIndex?: number;
+
+  /** Dropdown position */
+  dropdownPosition?: FloatingPosition;
+
+  /** Props passed down to the Transition component that used to animate 
+   dropdown presence use to configure duration and animation type, 
+   { duration: 150, transition: 'fade' } by default 
+  */
+  transitionProps?: Partial<Omit<TransitionProps, "mounted">>;
+
+  /** Should interactive elements be focusable */
+  focusable?: boolean;
+
+  /** Saturation container aria-label */
+  saturationLabel?: string;
+
+  /** Hue slider aria-label */
+  hueLabel?: string;
+
+  /** Alpha slider aria-label */
+  alphaLabel?: string;
+
+  /** Saturation slide aria-label */
+  saturationSliderLabel?: string;
+
+  /** Lightness slide aria-label */
+  lightnessSliderLabel?: string;
+
+  /** Brightness slide aria-label */
+  brightnessSliderLabel?: string;
+
+  /** Whether to render the dropdown in a Portal */
+  withinPortal?: boolean;
+
+  /** Size of the Dropdown */
+  width?: number;
+
+  /** Dropdown box-shadow, key of theme.shadows */
+  shadow?: RaikouShadow;
+
+  /** Predefined colors */
+  swatches?: string[];
+
+  /** Number of swatches displayed in one row */
+  swatchesPerRow?: number;
+
+  /** Open Event - run when popup opens */
+  onOpen?: () => void;
+
+  /** Close Event - run when popup closes */
+  onClose?: () => void;
 }
 
 export type GradientPickerFactory = Factory<{
@@ -52,22 +167,10 @@ export type GradientPickerFactory = Factory<{
   // vars: GradientPickerCssVariables;
 }>;
 
-const defaultProps: Partial<GradientPickerProps> = {};
-
-// const varsResolver = createVarsResolver<GradientPickerFactory>(
-//   (_, { transitionDuration, chevronSize, radius }) => ({
-//     root: {
-//       // "--accordion-transition-duration":
-//       //   transitionDuration === undefined
-//       //     ? undefined
-//       //     : `${transitionDuration}ms`,
-//       // "--accordion-chevron-size":
-//       //   chevronSize === undefined ? undefined : rem(chevronSize),
-//       // "--accordion-radius":
-//       //   radius === undefined ? undefined : getRadius(radius),
-//     },
-//   }),
-// );
+const defaultProps: Partial<GradientPickerProps> = {
+  type: "gradient",
+  format: "rgba",
+};
 
 export function GradientPicker(_props: GradientPickerProps) {
   const props = useProps(
@@ -83,8 +186,32 @@ export function GradientPicker(_props: GradientPickerProps) {
     unstyled,
     vars,
     children,
+    type,
     value,
     onChange,
+    picker,
+    disabled,
+    dropdownZIndex,
+    dropdownPosition,
+    size,
+    dropperSize,
+    format,
+    focusable,
+    saturationLabel,
+    hueLabel,
+    alphaLabel,
+    saturationSliderLabel,
+    lightnessSliderLabel,
+    brightnessSliderLabel,
+    transitionProps,
+    withinPortal,
+    width,
+    swatches,
+    swatchesPerRow,
+    swatchSize,
+    onOpen,
+    onClose,
+    shadow,
     ...others
   } = props;
 
@@ -104,172 +231,250 @@ export function GradientPicker(_props: GradientPickerProps) {
   });
 
   const [update, setUpdate] = useState(true);
-  const [activeStopIndex, setActiveStopIndex] = useState("");
+  const [formatValue, setFormatValue] = useState<ColorFormat>(format!);
+  const [colorModelOpened, toggleColorModel] = useToggle([false, true]);
+  const [colorGuideOpened, toggleColorGuide] = useToggle([false, true]);
   const [isOpen, toggleOpen] = useToggle([false, true]);
   const [control, setControl] = useState<HTMLElement | null>(null);
   const [dropdown, setDropdown] = useState<HTMLElement | null>(null);
-  const [color, setColor] = useState<HsvaColor | undefined>(undefined);
-  const [gradient, setGradient] = useState<GradientObj | undefined>(undefined);
+  const [color, setColor] = useState<HsvaColor>(parseColor(value));
+  const { ref: pickerRef, width: elementWidth } = useElementSize();
 
   useClickOutside(() => toggleOpen(false), null, [control, dropdown]);
 
-  const compareGradient = (value: any, gradient: any) => {
-    if (gradient === undefined) {
-      return false;
+  // Gradient
+  const [activeStopIndex, setActiveStopIndex] = useState(-1);
+  const [movingStopIndex, setMovingStopIndex] = useState(-1);
+  const [isLinearActive, setLinearActive] = useState(false);
+  const [gradient, setGradient] = useState<GradientObj | undefined>(undefined);
+  const gradientTypes = ["linear", "radial"] as GradientType[];
+
+  const valueRef = useRef<string>();
+  const formatRef = useRef(format);
+  const scrubTimeoutRef = useRef<number>(-1);
+  const isScrubbingRef = useRef(false);
+
+  // Check if conic-gradient is supported
+  if (typeof window !== "undefined") {
+    if (CSS.supports("background-image", "conic-gradient(#fff, #fff)")) {
+      gradientTypes.push("conic");
     }
+  }
 
-    const valueStr = cssGradient([value], "single_gradient");
-    const gradientStr = cssGradient([gradient], "single_gradient");
-
-    return valueStr === gradientStr;
+  const startScrubbing = () => {
+    window.clearTimeout(scrubTimeoutRef.current);
+    isScrubbingRef.current = true;
   };
 
-  useEffect(() => {
-    if (update) {
-      const hasGradient = isGradient(value);
+  const stopScrubbing = () => {
+    window.clearTimeout(scrubTimeoutRef.current);
+    scrubTimeoutRef.current = window.setTimeout(() => {
+      isScrubbingRef.current = false;
+    }, 200);
+  };
 
-      if (!hasGradient) {
-        if (color !== colord(value).toHsv()) {
-          const color = colord(value).toHsv();
-          setColor(color);
-        }
-      } else {
-        const gradientObject: GradientObj = getGradientObject(value);
+  const handleChange = (color: HsvaColor) => {
+    setColor((current) => {
+      const next = { ...current, ...color };
+      valueRef.current = convertHsvaTo(formatRef.current!, next);
+      return next;
+    });
 
-        if (gradient === undefined) {
-          setGradient(gradientObject as GradientObj);
+    if (gradient !== undefined) {
+      const obj = gradient?.colors[activeStopIndex];
 
-          if (gradientObject.colors.length > 0) {
-            const _color = gradientObject.colors[0]!.color;
+      if (obj) {
+        const rgbArray = [] as number[];
+        const rgbaArray = [] as number[];
+        const hex = convertHsvaTo("hex", color);
+        const rgba = convertHsvaTo("rgb", color);
 
-            setColor(colord(_color).toHsv());
-            setActiveStopIndex(gradientObject.colors[0]!.id);
-          }
-        } else {
-          const newGradient = { ...gradient };
-          let update = false;
+        rgba.match(/[\d+]+/g)!.forEach((item) => {
+          rgbArray.push(parseInt(item));
+        });
 
-          if (!compareGradient(gradientObject, gradient)) {
-            // Update gradient
-            // angle
-            if (gradientObject.angle !== gradient?.angle) {
-              newGradient.angle = gradientObject.angle;
+        rgba.match(/[\d+]+/g)!.forEach((item) => {
+          rgbaArray.push(parseInt(item));
+        });
 
-              update = true;
-            }
-            // colors
-            if (!isEqual(gradientObject.colors, gradient?.colors)) {
-              gradientObject.colors.map((item, index) => {
-                // Color changed
-                if (item.color !== gradient.colors[index]!.color) {
-                  newGradient.colors[index]!.color = item.color;
-
-                  update = true;
-                }
-
-                // Position changed
-                if (item.position !== gradient.colors[index]!.position) {
-                  newGradient.colors[index]!.position = item.position;
-
-                  update = true;
-                }
-              });
-            }
-            // extent
-            if (gradientObject.extent !== gradient?.extent) {
-              newGradient.extent = gradientObject.extent;
-
-              update = true;
-            }
-            // hints
-            if (!isEqual(gradientObject.hints, gradient?.hints)) {
-              newGradient.hints = gradientObject.hints;
-
-              update = true;
-            }
-            // positions
-            if (!isEqual(gradientObject.positions, gradient?.positions)) {
-              newGradient.positions = gradientObject.positions;
-
-              update = true;
-            }
-            // repeating
-            if (gradientObject.repeating !== gradient?.repeating) {
-              newGradient.repeating = gradientObject.repeating;
-
-              update = true;
-            }
-            // shape
-            // sizes
-            if (!isEqual(gradientObject.sizes, gradient?.sizes)) {
-              newGradient.sizes = gradientObject.sizes;
-
-              update = true;
-            }
-            // type
-            if (gradientObject.type !== gradient?.type) {
-              newGradient.type = gradientObject.type;
-
-              update = true;
-            }
-
-            if (update) {
-              const _color = newGradient.colors[0]!.color;
-              setColor(colord(_color).toHsv());
-
-              setGradient(newGradient as GradientObj);
-              setActiveStopIndex(newGradient.colors[0]!.id);
-            }
-          }
-        }
+        obj.color = hex;
+        obj.hex = hex;
+        obj.rgb = rgbaArray.splice(0, 3);
+        obj.value = rgbaArray;
       }
     }
-  }, [value]);
+  };
 
-  useDidUpdate(() => {
-    if (color !== undefined) {
-      setUpdate(false);
-      if (gradient === undefined) {
-        onChange(colord(color).toRgbString());
-      } else {
-        onChange(cssGradient([gradient], "single_gradient"));
-      }
-
-      window.setTimeout(() => {
-        setUpdate(true);
-      }, 10);
-    }
-  }, [color, gradient]);
-
-  useDidUpdate(() => {
-    const obj = gradient?.colors.find((item) => item.id === activeStopIndex);
-
-    if (obj) {
-      setColor(colord(obj.color).toHsv());
-    }
-  }, [activeStopIndex]);
+  // console.log(gradient?.colors);
 
   return (
     <GradientPickerProvider
       value={{
+        type,
         color,
         gradient,
         isOpen,
+        isLinearActive,
         activeStopIndex,
+        movingStopIndex,
         control,
         dropdown,
+        formatValue,
+        gradientTypes,
         setColor,
         setGradient,
         onChange,
         toggleOpen,
         setControl,
         setDropdown,
+        setLinearActive,
         setActiveStopIndex,
+        setMovingStopIndex,
+        setFormatValue,
         getStyles,
       }}
     >
       <Box {...getStyles("root")} {...others}>
-        {children}
+        <Popover
+          __staticSelector="Base"
+          disabled={disabled}
+          position={dropdownPosition}
+          offset={5}
+          zIndex={dropdownZIndex}
+          withinPortal={withinPortal}
+          transitionProps={transitionProps}
+          opened={isOpen}
+          shadow={shadow}
+        >
+          <Popover.Target>
+            <Picker
+              ref={pickerRef}
+              disabled={disabled}
+              control={picker!}
+              swatchSize={swatchSize}
+            />
+          </Popover.Target>
+          <Popover.Dropdown p={6}>
+            <Stack
+              gap={8}
+              ref={setDropdown}
+              style={{ width: width != undefined ? width : elementWidth }}
+              {...others}
+            >
+              <Group gap={0} justify="space-between" grow>
+                <Box
+                  className={gradient === undefined ? "w-full" : ""}
+                  mr={gradient !== undefined ? 4 : 0}
+                >
+                  <Saturation
+                    value={color as HsvaColor}
+                    onChange={({ s, v }) =>
+                      handleChange({ ...color, s: s!, v: v! })
+                    }
+                    onChangeEnd={({ s, v }) =>
+                      handleChange({ ...color, s: s!, v: v! })
+                    }
+                    color={convertHsvaTo("hex", color)}
+                    size={size as RaikouSize}
+                    focusable={focusable}
+                    saturationLabel={saturationLabel}
+                    onScrubStart={startScrubbing}
+                    onScrubEnd={stopScrubbing}
+                  />
+                </Box>
+                {gradient !== undefined && (
+                  <Box ml={4}>
+                    <GradientPointer>
+                      <GradientMode />
+                    </GradientPointer>
+                  </Box>
+                )}
+              </Group>
+              <Controls
+                colorModelOpened={colorModelOpened}
+                colorGuideOpened={colorGuideOpened}
+                toggleColorModel={toggleColorModel}
+                toggleColorGuide={toggleColorGuide}
+              />
+              {gradient !== undefined && (
+                <Stack gap={4} className="p-[4px] bg-[#1f1f1f]">
+                  <GradientControls />
+                  {gradient.type === "linear" && <GradientControlLinear />}
+                  {gradient.type === "radial" && <GradientControlRadial />}
+                  {gradient.type === "conic" && <GradientControlConic />}
+                </Stack>
+              )}
+              {colorModelOpened && (
+                <Box mb={8}>
+                  <ColorModel
+                    value={color as HsvaColor}
+                    onChange={(color) => handleChange(color)}
+                    saturationSliderLabel={saturationSliderLabel}
+                    lightnessSliderLabel={lightnessSliderLabel}
+                    brightnessSliderLabel={brightnessSliderLabel}
+                    focusable={focusable}
+                  />
+                </Box>
+              )}
+              {colorGuideOpened && (
+                <Box mb={8}>
+                  <ColorGuide
+                    value={color as HsvaColor}
+                    onChange={(color) => handleChange(color)}
+                  />
+                </Box>
+              )}
+              {gradient !== undefined && (
+                <GradientSlider
+                  size={size}
+                  onScrubStart={startScrubbing}
+                  onScrubEnd={stopScrubbing}
+                />
+              )}
+              <HueSlider
+                value={color?.h!}
+                onChange={(h) => handleChange({ ...color, h })}
+                onChangeEnd={(h) => handleChange({ ...color, h })}
+                size={size}
+                aria-label={hueLabel}
+                onScrubStart={startScrubbing}
+                onScrubEnd={stopScrubbing}
+              />
+              <AlphaSlider
+                value={color?.a!}
+                onChange={(a) => handleChange({ ...color, a })}
+                onChangeEnd={(a) => handleChange({ ...color, a })}
+                size={size}
+                color={convertHsvaTo("hex", color)}
+                style={{ marginTop: 6 }}
+                aria-label={alphaLabel}
+                onScrubStart={startScrubbing}
+                onScrubEnd={stopScrubbing}
+              />
+              <Inputs format={format!} />
+              <Grid>
+                <Grid.Col span={3}>
+                  <ColorSwatch
+                    color={convertHsvaTo("hex", color)}
+                    radius="sm"
+                    className="w-full! h-full!"
+                  />
+                </Grid.Col>
+                <Grid.Col span="auto">
+                  <Swatches
+                    data={swatches!}
+                    swatchesPerRow={swatchesPerRow}
+                    focusable={focusable}
+                    setValue={(color) => {
+                      handleChange(parseColor(color));
+                    }}
+                    style={{ marginTop: 0 }}
+                  />
+                </Grid.Col>
+              </Grid>
+            </Stack>
+          </Popover.Dropdown>
+        </Popover>
       </Box>
     </GradientPickerProvider>
   );
@@ -280,12 +485,3 @@ const extendGradientPicker = (
 ): RaikouThemeComponent => c;
 
 GradientPicker.extend = extendGradientPicker;
-GradientPicker.displayName = "@raikou/core/GradientPicker";
-// GradientPicker.AlphaSlider = GradientPickerAlphaSlider;
-GradientPicker.Compact = GradientPickerCompact;
-// GradientPicker.EyeDropper = GradientPickerEyeDropper;
-// GradientPicker.Gradient = GradientPickerGradient;
-// GradientPicker.HueSlider = GradientPickerHueSlider;
-GradientPicker.Picker = GradientPickerPicker;
-// GradientPicker.Saturation = GradientPickerSaturation;
-// GradientPicker.Swatches = GradientPickerSwatches;

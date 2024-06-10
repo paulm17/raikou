@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { IconPackage } from '@tabler/icons-react';
-import { Tabs, TabsProps } from './Tabs';
+import React, { useState } from "react";
+import { IconPackage } from "@tabler/icons-react";
+import { Tabs, TabsProps } from "./Tabs";
 
 export default {
-  title: 'Tabs',
+  title: "Tabs",
 };
 
 const base = (
@@ -58,7 +58,9 @@ const verticalBase = (
   </>
 );
 
-const Wrapper = (props: TabsProps) => <Tabs maw={500} mx="auto" mt={40} {...props} />;
+const Wrapper = (props: TabsProps) => (
+  <Tabs maw={500} mx="auto" mt={40} {...props} />
+);
 
 export function DefaultVariant() {
   return (
@@ -73,7 +75,12 @@ export function DefaultVariant() {
         {base}
       </Wrapper>
 
-      <Wrapper color="orange" defaultValue="react" orientation="vertical" placement="right">
+      <Wrapper
+        color="orange"
+        defaultValue="react"
+        orientation="vertical"
+        placement="right"
+      >
         {base}
       </Wrapper>
     </div>
@@ -95,7 +102,12 @@ export function OutlineVariant() {
         {base}
       </Wrapper>
 
-      <Wrapper variant="outline" defaultValue="react" orientation="vertical" placement="right">
+      <Wrapper
+        variant="outline"
+        defaultValue="react"
+        orientation="vertical"
+        placement="right"
+      >
         {base}
       </Wrapper>
     </div>
@@ -105,7 +117,7 @@ export function OutlineVariant() {
 export function PillsVariant() {
   return (
     <div>
-      <Wrapper variant="pills" color="green.9" defaultValue="react">
+      <Wrapper variant="pills" color="lime.4" defaultValue="react" autoContrast>
         {base}
       </Wrapper>
 
@@ -113,7 +125,12 @@ export function PillsVariant() {
         {base}
       </Wrapper>
 
-      <Wrapper variant="pills" color="green.9" defaultValue="react" orientation="vertical">
+      <Wrapper
+        variant="pills"
+        color="green.9"
+        defaultValue="react"
+        orientation="vertical"
+      >
         {base}
       </Wrapper>
 
@@ -142,7 +159,9 @@ export const NoKeyboardActivation = () => (
   </Wrapper>
 );
 
-export const NoDefaultValue = () => <Wrapper defaultValue={null}>{base}</Wrapper>;
+export const NoDefaultValue = () => (
+  <Wrapper defaultValue={null}>{base}</Wrapper>
+);
 
 export const AllowDeactivation = () => (
   <Wrapper defaultValue="react" allowTabDeactivation>
@@ -151,7 +170,7 @@ export const AllowDeactivation = () => (
 );
 
 export const Controlled = () => {
-  const [tab, setTab] = useState<string | null>('react');
+  const [tab, setTab] = useState<string | null>("react");
   return (
     <Wrapper value={tab} onChange={setTab} allowTabDeactivation>
       {base}
@@ -218,7 +237,13 @@ export const VerticalVariants = () => (
       {verticalBase}
     </Wrapper>
 
-    <Wrapper defaultValue="react" orientation="vertical" variant="pills" mt={10} radius="md">
+    <Wrapper
+      defaultValue="react"
+      orientation="vertical"
+      variant="pills"
+      mt={10}
+      radius="md"
+    >
       {verticalBase}
     </Wrapper>
   </div>
@@ -299,8 +324,16 @@ export const DynamicTabs = () => {
   const list = Array(count)
     .fill(0)
     .map((_, index) => index.toString());
-  const tabs = list.map((item) => <Tabs.Tab value={item}>Tab {item}</Tabs.Tab>);
-  const panels = list.map((item) => <Tabs.Panel value={item}>Panel {item}</Tabs.Panel>);
+  const tabs = list.map((item) => (
+    <Tabs.Tab key={item} value={item}>
+      Tab {item}
+    </Tabs.Tab>
+  ));
+  const panels = list.map((item) => (
+    <Tabs.Panel key={item} value={item}>
+      Panel {item}
+    </Tabs.Panel>
+  ));
 
   return (
     <Tabs>

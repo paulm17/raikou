@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState, useEffect } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 function getFullscreenElement(): HTMLElement | null {
   const _document = window.document as any;
@@ -46,7 +46,7 @@ function addEvents(
   {
     onFullScreen,
     onError,
-  }: { onFullScreen: (event: Event) => void; onError: (event: Event) => void }
+  }: { onFullScreen: (event: Event) => void; onError: (event: Event) => void },
 ) {
   prefixes.forEach((prefix) => {
     element.addEventListener(`${prefix}fullscreenchange`, onFullScreen);
@@ -70,7 +70,7 @@ export function useFullscreen<T extends HTMLElement = any>() {
     (event: Event) => {
       setFullscreen(event.target === getFullscreenElement());
     },
-    [setFullscreen]
+    [setFullscreen],
   );
 
   const handleFullscreenError = useCallback(
@@ -78,10 +78,10 @@ export function useFullscreen<T extends HTMLElement = any>() {
       setFullscreen(false);
       // eslint-disable-next-line no-console
       console.error(
-        `[@raikou/hooks] use-fullscreen: Error attempting full-screen mode method: ${event} (${event.target})`
+        `[@raikou/hooks] use-fullscreen: Error attempting full-screen mode method: ${event} (${event.target})`,
       );
     },
-    [setFullscreen]
+    [setFullscreen],
   );
 
   const toggle = useCallback(async () => {

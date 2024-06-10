@@ -19,6 +19,8 @@ interface LoaderProps extends BoxProps, StylesApiProps<LoaderFactory>, Omit<Reac
     type?: RaikouLoader;
     /** Object of loaders components, can be customized via default props or inline. Default value contains `bars`, `oval` and `dots` */
     loaders?: RaikouLoadersRecord;
+    /** Overrides default loader with given content */
+    children?: React.ReactNode;
 }
 type LoaderFactory = Factory<{
     props: LoaderProps;
@@ -92,6 +94,8 @@ interface ButtonProps extends BoxProps, StylesApiProps<ButtonFactory> {
     loaderProps?: LoaderProps;
     /** Loader position relative to button label */
     loaderPosition?: "left" | "right" | "center";
+    /** Determines whether button text color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+    autoContrast?: boolean;
 }
 type ButtonFactory = PolymorphicFactory<{
     props: ButtonProps;

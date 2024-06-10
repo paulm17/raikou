@@ -1,18 +1,11 @@
 import React from "react";
-import {
-  RaikouSize,
-  BoxProps,
-  ElementProps,
-  Box,
-  useDirection,
-} from "@raikou/core";
+import { BoxProps, ElementProps, Box, useDirection } from "@raikou/core";
 import { StarSymbol } from "../StarSymbol/StarSymbol";
 import { useRatingContext } from "../Rating.context";
 
 export interface RatingItemProps
   extends BoxProps,
     ElementProps<"input", "value" | "size"> {
-  size: RaikouSize;
   getSymbolLabel: ((value: number) => string) | undefined;
   emptyIcon?: React.ReactNode | ((value: number) => React.ReactNode);
   fullIcon?: React.ReactNode | ((value: number) => React.ReactNode);
@@ -26,7 +19,6 @@ export interface RatingItemProps
 }
 
 export function RatingItem({
-  size,
   getSymbolLabel,
   emptyIcon,
   fullIcon,

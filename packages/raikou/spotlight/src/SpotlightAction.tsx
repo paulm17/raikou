@@ -139,7 +139,6 @@ export const SpotlightAction = factory<SpotlightActionFactory>(
                 mod={{ position: "left", dimmed: dimmedSections }}
                 {...ctx.getStyles("actionSection", stylesApi)}
               >
-                {/* @ts-ignore */}
                 {leftSection}
               </Box>
             )}
@@ -157,7 +156,6 @@ export const SpotlightAction = factory<SpotlightActionFactory>(
                 mod={{ position: "right", dimmed: dimmedSections }}
                 {...ctx.getStyles("actionSection", stylesApi)}
               >
-                {/* @ts-ignore */}
                 {rightSection}
               </Box>
             )}

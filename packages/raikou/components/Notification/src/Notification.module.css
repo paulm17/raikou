@@ -1,183 +1,152 @@
 .root {
-  @mixin light {
+  @mixin where-light {
     --raikou-notification-border-color: #dee2e6;
-    --raikou-notification-bg: #fff;
+    --raikou-notification-background-color: #fff;
     --raikou-notification-title-color: #212529;
     --raikou-notification-title-description-color: #868e96;
     --raikou-notification-description-color: #000;
-    --raikou-notification-close-button-hover-bg: #f8f9fa;
+    --raikou-notification-close-button-hover-background-color: #f8f9fa;
   }
-  @mixin dark {
+  @mixin where-dark {
     --raikou-notification-border-color: #ced4da;
-    --raikou-notification-bg: #25262b;
+    --raikou-notification-background-color: #25262b;
     --raikou-notification-title-color: #fff;
     --raikou-notification-title-description-color: #5c5f66;
     --raikou-notification-description-color: #c1c2c5;
-    --raikou-notification-close-button-hover-bg: #141517;
+    --raikou-notification-close-button-hover-background-color: #141517;
   }
+
+  --notification-radius: var(--raikou-radius-default);
+  --notification-color: var(--raikou-primary-color-filled);
 
   overflow: hidden;
   box-sizing: border-box;
   position: relative;
   display: flex;
   align-items: center;
-  padding-left: var(--_root-padding-left, rem(22px));
-  padding-right: var(--_root-padding-right, var(--raikou-spacing-xs));
+  padding-inline-start: 22px;
+  padding-inline-end: var(--raikou-spacing-xs);
   padding-top: var(--raikou-spacing-xs);
   padding-bottom: var(--raikou-spacing-xs);
-  border: var(--_border, none);
-  border-radius: var(--notification-radius, var(--raikou-radius-default));
+  border-radius: var(--notification-radius);
   box-shadow: var(--raikou-shadow-lg);
-  background-color: var(--_bg);
 
   &::before {
     content: "";
     display: block;
     position: absolute;
-    width: rem(6px);
-    top: var(--notification-radius, var(--raikou-radius-default));
-    bottom: var(--notification-radius, var(--raikou-radius-default));
-    left: rem(4px);
-    border-radius: var(--notification-radius, var(--raikou-radius-default));
-    background-color: var(
-      --notification-color,
-      var(--raikou-primary-color-filled)
-    );
-
-    @mixin rtl {
-      right: rem(4px);
-      left: auto;
-    }
+    width: 6px;
+    top: var(--notification-radius);
+    bottom: var(--notification-radius);
+    inset-inline-start: 4px;
+    border-radius: var(--notification-radius);
+    background-color: var(--notification-color);
   }
 
-  &[data-with-icon] {
-    --_root-padding-left: var(--raikou-spacing-xs);
+  @mixin where-light {
+    background-color: var(--raikou-notification-background-color);
+  }
+
+  @mixin where-dark {
+    background-color: var(--raikou-notification-background-color);
+  }
+
+  &:where([data-with-icon]) {
+    padding-inline-start: var(--raikou-spacing-xs);
 
     &::before {
       display: none;
     }
+  }
 
-    @mixin rtl {
-      --_root-padding-right: var(--raikou-spacing-xs);
+  &:where([data-with-border]) {
+    @mixin where-light {
+      border: 1px solid var(--raikou-notification-border-color);
     }
-  }
 
-  &[data-with-border] {
-    --_border: rem(1px) solid var(--_border-color);
-  }
-
-  @mixin rtl {
-    --_root-padding-right: rem(22px);
-    --_root-padding-left: var(--raikou-spacing-xs);
-  }
-
-  @mixin light {
-    --_border-color: var(--raikou-notification-border-color);
-    --_bg: var(--raikou-notification-bg);
-  }
-
-  @mixin dark {
-    --_border-color: var(--raikou-notification-border-color);
-    --_bg: var(--raikou-notification-bg);
+    @mixin where-dark {
+      border: 1px solid var(--raikou-notification-border-color);
+    }
   }
 }
 
 .icon {
   box-sizing: border-box;
-  margin-right: var(--_icon-margin-right, var(--raikou-spacing-md));
-  margin-left: var(--_icon-margin-left, 0);
-  width: rem(28px);
-  height: rem(28px);
-  border-radius: rem(28px);
+  margin-inline-end: var(--raikou-spacing-md);
+  width: 28px;
+  height: 28px;
+  border-radius: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(
-    --notification-color,
-    var(--raikou-primary-color-filled)
-  );
+  background-color: var(--notification-color);
   color: var(--raikou-color-white);
-
-  @mixin rtl {
-    --_icon-margin-right: 0;
-    --_icon-margin-left: var(--raikou-spacing-md);
-  }
 }
 
 .loader {
-  margin-right: var(--_icon-margin-right, var(--raikou-spacing-md));
-  margin-left: var(--_icon-margin-left, 0);
-
-  @mixin rtl {
-    --_icon-margin-right: 0;
-    --_icon-margin-left: var(--raikou-spacing-md);
-  }
+  margin-inline-end: var(--raikou-spacing-md);
 }
 
 .body {
   flex: 1;
   overflow: hidden;
-  margin-right: var(--_body-margin-right, var(--raikou-spacing-xs));
-  margin-left: var(--_body-margin-left, 0);
-
-  @mixin rtl {
-    --_body-margin-right: 0;
-    --_body-margin-left: var(--raikou-spacing-xs);
-  }
+  margin-inline-end: var(--raikou-spacing-xs);
 }
 
 .title {
-  margin-bottom: rem(2px);
+  margin-bottom: 2px;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: var(--_title-color);
   font-size: var(--raikou-font-size-sm);
   line-height: var(--raikou-line-height-sm);
   font-weight: 500;
 
-  @mixin light {
-    --_title-color: var(--raikou-notification-title-color);
+  @mixin where-light {
+    color: var(--raikou-notification-title-color);
   }
 
-  @mixin dark {
-    --_title-color: var(--raikou-notification-title-color);
+  @mixin where-dark {
+    color: var(--raikou-notification-title-color);
   }
 }
 
 .description {
-  color: var(--_description-color);
   font-size: var(--raikou-font-size-sm);
   line-height: var(--raikou-line-height-sm);
   overflow: hidden;
   text-overflow: ellipsis;
 
-  &[data-with-title] {
-    @mixin light {
-      --_description-color: var(--raikou-notification-title-description-color);
-    }
-
-    @mixin dark {
-      --_description-color: var(--raikou-notification-title-description-color);
-    }
+  @mixin where-light {
+    color: var(--raikou-notification-description-color);
   }
 
-  @mixin light {
-    --_description-color: var(--raikou-notification-description-color);
+  @mixin where-dark {
+    color: var(--raikou-notification-description-color);
   }
 
-  @mixin dark {
-    --_description-color: var(--raikou-notification-description-color);
+  &:where([data-with-title]) {
+    @mixin where-light {
+      color: var(--raikou-notification-title-description-color);
+    }
+
+    @mixin where-dark {
+      color: var(--raikou-notification-title-description-color);
+    }
   }
 }
 
-.closeButton:hover {
-  background-color: var(--_close-button-hover-bg);
+.closeButton {
+  @mixin hover {
+    @mixin where-light {
+      background-color: var(
+        --raikou-notification-close-button-hover-background-color
+      );
+    }
 
-  @mixin light {
-    --_close-button-hover-bg: var(--raikou-notification-close-button-hover-bg);
-  }
-
-  @mixin dark {
-    --_close-button-hover-bg: var(--raikou-notification-close-button-hover-bg);
+    @mixin where-dark {
+      background-color: var(
+        --raikou-notification-close-button-hover-background-color
+      );
+    }
   }
 }

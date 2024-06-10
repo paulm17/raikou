@@ -2,10 +2,10 @@
   "name": "@raikou/gradient-picker",
   "private": true,
   "description": "Extension of color picker to support gradients",
-  "version": "0.0.1-beta.9",
+  "version": "0.0.1-beta.10",
   "license": "MIT",
   "scripts": {
-    "pbuild": "tsup src/index.ts --config ../../../../configuration/tsup/tsup.config.ts",
+    "build": "tsup src/index.ts --config ../../../../configuration/tsup/tsup.config.ts",
     "lint": "eslint \"**/*.ts*\"",
     "clean": "rimraf dist .turbo",
     "js_minify": "jsmin -o dist/index.js dist/index.js && jsmin -o dist/index.mjs dist/index.mjs",

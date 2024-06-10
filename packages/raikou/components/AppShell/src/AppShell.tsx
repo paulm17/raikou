@@ -139,6 +139,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
     aside,
     footer,
     offsetScrollbars,
+    mod,
     ...others
   } = props;
 
@@ -177,7 +178,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
       <Box
         ref={ref}
         {...getStyles("root")}
-        mod={{ layout, disabled }}
+        mod={[{ layout, disabled }, mod]}
         {...others}
       />
     </>

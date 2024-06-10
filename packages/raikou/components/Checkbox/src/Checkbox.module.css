@@ -1,5 +1,5 @@
 .root {
-  @mixin light {
+  @mixin where-light {
     --raikou-checkbox-bg: #fff;
     --raikou-checkbox-bd-color: #ced4da;
     --raikou-checkbox-disabled-bg: #e9ecef;
@@ -7,7 +7,7 @@
     --raikou-checkbox-disabled-icon-color: #adb5bd;
     --raikou-checkbox-icon-color: #fff;
   }
-  @mixin dark {
+  @mixin where-dark {
     --raikou-checkbox-bg: #25262b;
     --raikou-checkbox-bd-color: #373a40;
     --raikou-checkbox-disabled-bg: #25262b;
@@ -54,12 +54,12 @@
   cursor: var(--_checkbox-cursor, var(--raikou-cursor-type));
   -webkit-tap-highlight-color: transparent;
 
-  @mixin light {
+  @mixin where-light {
     --_checkbox-bg: var(--raikou-checkbox-bg);
     --_checkbox-bd-color: var(--raikou-checkbox-bd-color);
   }
 
-  @mixin dark {
+  @mixin where-dark {
     --_checkbox-bg: var(--raikou-checkbox-bg);
     --_checkbox-bd-color: var(--raikou-checkbox-bd-color);
   }
@@ -84,22 +84,22 @@
   &:disabled {
     --_checkbox-cursor: not-allowed;
 
-    @mixin light {
+    @mixin where-light {
       --_checkbox-bg: var(--raikou-checkbox-disabled-bg);
       --_checkbox-bd-color: var(--raikou-checkbox-disabled-bd-color);
     }
 
-    @mixin dark {
+    @mixin where-dark {
       --_checkbox-bg: var(--raikou-checkbox-disabled-bg);
       --_checkbox-bd-color: var(--raikou-checkbox-disabled-bd-color);
     }
 
     & + .icon {
-      @mixin light {
+      @mixin where-light {
         --_checkbox-icon-color: var(--raikou-checkbox-disabled-icon-color);
       }
 
-      @mixin dark {
+      @mixin where-dark {
         --_checkbox-icon-color: var(--raikou-checkbox-disabled-icon-color);
       }
     }

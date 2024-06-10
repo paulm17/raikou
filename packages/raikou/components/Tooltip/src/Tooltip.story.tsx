@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Tooltip } from './Tooltip';
+import React, { useState } from "react";
+import { Tooltip } from "./Tooltip";
 
-export default { title: 'Tooltip' };
+export default { title: "Tooltip" };
 
 export function Usage() {
   return (
@@ -14,6 +14,24 @@ export function Usage() {
         opened
         color="cyan"
         radius="md"
+      >
+        <button type="button">target</button>
+      </Tooltip>
+    </div>
+  );
+}
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Tooltip
+        position="right"
+        label="Tooltip label"
+        withArrow
+        transitionProps={{ duration: 0 }}
+        color="cyan"
+        radius="md"
+        unstyled
       >
         <button type="button">target</button>
       </Tooltip>
@@ -35,6 +53,35 @@ export function Multiline() {
       >
         <button type="button">target</button>
       </Tooltip>
+    </div>
+  );
+}
+
+export function MultilineWithJsx() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Tooltip.Floating
+        position="right"
+        label={
+          <>
+            We will attempt to spend the budget according to your allocation for
+            each ad group. <b>Flexible</b> allocation might cause deviation from
+            your specification, but secure delivery of the overall budget for
+            the campaign.
+            <br />
+            <br />
+            Allocation is disabled if
+            <b> Budget Pacing</b> is turned off for the campaign.
+          </>
+        }
+        w={300}
+        // withArrow
+        // transitionProps={{ duration: 0 }}
+        radius="md"
+        multiline
+      >
+        <button type="button">target</button>
+      </Tooltip.Floating>
     </div>
   );
 }
@@ -93,7 +140,11 @@ export const Unmount = () => {
       <Tooltip opened label="Tooltip">
         <button
           type="button"
-          style={{ width: 200, height: 200, display: mounted ? 'block' : 'none' }}
+          style={{
+            width: 200,
+            height: 200,
+            display: mounted ? "block" : "none",
+          }}
         >
           target
         </button>
@@ -127,8 +178,8 @@ export const TooltipAndArrowWithBorder = () => (
       transitionProps={{ duration: 0 }}
       arrowSize={10}
       styles={{
-        tooltip: { border: '4px solid green' },
-        arrow: { border: '4px solid green' },
+        tooltip: { border: "4px solid green" },
+        arrow: { border: "4px solid green" },
       }}
     >
       <button type="button">target</button>
@@ -149,13 +200,13 @@ export const WithArrowRadius = () => (
 export function Inline() {
   return (
     <div style={{ padding: 40, maxWidth: 400 }}>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae ipsam in quos aperiam magni
-      quas neque{' '}
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae ipsam in
+      quos aperiam magni quas neque{" "}
       <Tooltip label="Inline tooltip" inline>
-        <span style={{ background: 'pink' }}>aliquid laboriosam dolorum</span>
+        <span style={{ background: "pink" }}>aliquid laboriosam dolorum</span>
       </Tooltip>
-      , eum voluptate, perferendis placeat repudiandae nesciunt explicabo quibusdam deserunt, animi
-      dicta.
+      , eum voluptate, perferendis placeat repudiandae nesciunt explicabo
+      quibusdam deserunt, animi dicta.
     </div>
   );
 }

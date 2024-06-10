@@ -1,10 +1,9 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { useEventListener } from "./use-event-listener";
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { useEventListener } from './use-event-listener';
 
 function Test({ spy }: { spy: () => void }) {
-  const ref = useEventListener("click", () => spy());
+  const ref = useEventListener('click', () => spy());
   return (
     <button ref={ref} type="button">
       Test button
@@ -12,11 +11,11 @@ function Test({ spy }: { spy: () => void }) {
   );
 }
 
-describe("@raikou/hooks/use-event-listener", () => {
-  it("calls given function when event is fired", async () => {
+describe('@mantine/hooks/use-event-listener', () => {
+  it('calls given function when event is fired', async () => {
     const spy = jest.fn();
     render(<Test spy={spy} />);
-    await userEvent.click(screen.getByRole("button"));
+    await userEvent.click(screen.getByRole('button'));
     expect(spy).toHaveBeenCalledTimes(1);
   });
 });

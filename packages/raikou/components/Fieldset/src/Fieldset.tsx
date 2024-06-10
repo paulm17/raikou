@@ -94,4 +94,3 @@ export const Fieldset = factory<FieldsetFactory>((_props, ref) => {
 });
 
 Fieldset.displayName = "@raikou/core/Fieldset";
-Fieldset.classes = classes;

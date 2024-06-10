@@ -75,6 +75,8 @@ interface __InputProps {
     pointer?: boolean;
     /** Determines whether the input should have red border and text color when `error` prop is set, `true` by default */
     withErrorStyles?: boolean;
+    /** `size` prop added to the input element */
+    inputSize?: string;
 }
 
 // Type definitions for React 18.2
@@ -3631,7 +3633,7 @@ interface NumberInputProps extends BoxProps, __BaseInputProps, StylesApiProps<Nu
     onChange?: (value: number | string) => void;
     /** Called when value changes with `react-number-format` payload */
     onValueChange?: OnValueChange;
-    /** Determines whether leading zeros are allowed. If not set, leading zeros are removed when the input is blurred. `false` by default */
+    /** Determines whether leading zeros are allowed. If set to `false`, leading zeros are removed when the input value becomes a valid number. `true` by default */
     allowLeadingZeros?: boolean;
     /** Determines whether negative values are allowed, `true` by default */
     allowNegative?: boolean;
@@ -3673,6 +3675,14 @@ interface NumberInputProps extends BoxProps, __BaseInputProps, StylesApiProps<Nu
     handlersRef?: React$1.ForwardedRef<NumberInputHandlers | undefined>;
     /** Value set to the input when increment/decrement buttons are clicked or up/down arrows pressed if the input is empty, `0` by default */
     startValue?: number;
+    /** Delay before stepping the value. Can be a number of milliseconds or a function that receives the current step count and returns the delay in milliseconds. */
+    stepHoldInterval?: number | ((stepCount: number) => number);
+    /** Initial delay in milliseconds before stepping the value. */
+    stepHoldDelay?: number;
+    /** Determines whether up/down keyboard events should be handled to increment/decrement value, `true` by default */
+    withKeyboardEvents?: boolean;
+    /** Determines whether leading zeros (e.g. `00100` -> `100`) should be removed on blur, `true` by default */
+    trimLeadingZeroesOnBlur?: boolean;
 }
 type NumberInputFactory = Factory<{
     props: NumberInputProps;

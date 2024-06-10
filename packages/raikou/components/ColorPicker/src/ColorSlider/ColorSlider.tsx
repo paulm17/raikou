@@ -14,21 +14,15 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  createVarsResolver,
   Factory,
   RaikouSize,
   useRaikouTheme,
   rem,
 } from "@raikou/core";
 import classes from "../ColorPicker.module.css";
-import { useColorPickerContext } from "../ColorPicker.context";
 import { Thumb } from "../Thumb/Thumb";
 
 export type ColorSliderStylesNames = "slider" | "sliderOverlay" | "thumb";
-export type ColorSliderVariant = string;
-export type ColorSliderCssVariables = {
-  root: "--test";
-};
 
 export interface __ColorSliderProps extends ElementProps<"div", "onChange"> {
   value: number;
@@ -56,17 +50,9 @@ export type ColorSliderFactory = Factory<{
   props: ColorSliderProps;
   ref: HTMLDivElement;
   stylesNames: ColorSliderStylesNames;
-  vars: ColorSliderCssVariables;
-  variant: ColorSliderVariant;
 }>;
 
 const defaultProps: Partial<ColorSliderProps> = {};
-
-const varsResolver = createVarsResolver<ColorSliderFactory>(() => ({
-  root: {
-    "--test": "test",
-  },
-}));
 
 export const ColorSlider = factory<ColorSliderFactory>((_props, ref) => {
   const props = useProps("ColorSlider", defaultProps, _props);
@@ -92,7 +78,7 @@ export const ColorSlider = factory<ColorSliderFactory>((_props, ref) => {
     ...others
   } = props;
 
-  const _getStyles = useStyles<ColorSliderFactory>({
+  const getStyles = useStyles<ColorSliderFactory>({
     name: __staticSelector,
     classes,
     props,
@@ -102,11 +88,7 @@ export const ColorSlider = factory<ColorSliderFactory>((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver,
   });
-
-  const ctxGetStyles = useColorPickerContext()?.getStyles;
-  const getStyles = ctxGetStyles || _getStyles;
 
   const theme = useRaikouTheme();
   const [position, setPosition] = useState({ y: 0, x: value / maxValue });

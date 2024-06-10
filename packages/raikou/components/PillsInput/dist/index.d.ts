@@ -1,6 +1,6 @@
 /// <reference path="global.d.ts" />
 import * as _raikou_core from '@raikou/core';
-import { RaikouRadius, RaikouSize, BoxProps, StylesApiProps, PolymorphicFactory, ElementProps, Factory } from '@raikou/core';
+import { RaikouRadius, RaikouSize, BoxProps, StylesApiProps, ElementProps, Factory } from '@raikou/core';
 import React$1 from 'react';
 import * as CSS from 'csstype';
 import * as PropTypes from 'prop-types';
@@ -42,7 +42,6 @@ interface __BaseInputProps extends __InputWrapperProps, Omit<__InputProps, "wrap
 }
 type __InputStylesNames = InputStylesNames | InputWrapperStylesNames;
 type InputStylesNames = "input" | "wrapper" | "section";
-type InputVariant = "default" | "filled" | "unstyled";
 interface __InputProps {
     /** Content section rendered on the left side of the input */
     leftSection?: React$1.ReactNode;
@@ -74,6 +73,8 @@ interface __InputProps {
     pointer?: boolean;
     /** Determines whether the input should have red border and text color when `error` prop is set, `true` by default */
     withErrorStyles?: boolean;
+    /** `size` prop added to the input element */
+    inputSize?: string;
 }
 
 // Type definitions for React 18.2
@@ -3613,24 +3614,6 @@ interface GlobalJSXIntrinsicClassAttributes<T> extends JSX.IntrinsicClassAttribu
 
 interface GlobalJSXIntrinsicElements extends JSX.IntrinsicElements {}
 
-interface InputBaseProps extends BoxProps, __BaseInputProps, StylesApiProps<InputBaseFactory> {
-    __staticSelector?: string;
-    __stylesApiProps?: Record<string, any>;
-    /** Props passed down to the root element (`Input.Wrapper` component) */
-    wrapperProps?: Record<string, any>;
-    /** Determines whether the input can have multiple lines, for example when `component="textarea"`, `false` by default */
-    multiline?: boolean;
-    /** Determines whether `aria-` and other accessibility attributes should be added to the input, `true` by default */
-    withAria?: boolean;
-}
-type InputBaseFactory = PolymorphicFactory<{
-    props: InputBaseProps;
-    defaultRef: HTMLInputElement;
-    defaultComponent: "input";
-    stylesNames: __InputStylesNames;
-    variant: InputVariant;
-}>;
-
 type PillsInputFieldStylesNames = "field";
 interface PillsInputFieldProps extends BoxProps, StylesApiProps<PillsInputFieldFactory>, ElementProps<"input", "type"> {
     /** Controls input styles when focused. If `auto` the input is hidden when not focused. If `visible` the input will always remain visible. `'visible'` by default  */
@@ -3649,7 +3632,10 @@ declare const PillsInputField: _raikou_core.RaikouComponent<{
     stylesNames: PillsInputFieldStylesNames;
 }>;
 
-interface PillsInputProps extends InputBaseProps, ElementProps<"div", "size"> {
+interface PillsInputProps extends BoxProps, __BaseInputProps, StylesApiProps<PillsInputFactory>, ElementProps<"div", "size"> {
+    __stylesApiProps?: Record<string, any>;
+    __staticSelector?: string;
+    multiline?: boolean;
 }
 type PillsInputFactory = Factory<{
     props: PillsInputProps;

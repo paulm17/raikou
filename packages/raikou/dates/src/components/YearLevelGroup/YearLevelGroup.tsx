@@ -1,20 +1,20 @@
-import dayjs from "dayjs";
 import React, { useRef } from "react";
+import dayjs from "dayjs";
 import {
   BoxProps,
-  StylesApiProps,
-  factory,
   ElementProps,
-  useProps,
+  factory,
   Factory,
+  StylesApiProps,
+  useProps,
 } from "@raikou/core";
+import { handleControlKeyDown } from "../../utils";
+import { LevelsGroup, LevelsGroupStylesNames } from "../LevelsGroup";
 import {
   YearLevel,
   YearLevelSettings,
   YearLevelStylesNames,
 } from "../YearLevel";
-import { LevelsGroup, LevelsGroupStylesNames } from "../LevelsGroup";
-import { handleControlKeyDown } from "../../utils";
 
 export type YearLevelGroupStylesNames =
   | YearLevelStylesNames
@@ -82,6 +82,7 @@ export const YearLevelGroup = factory<YearLevelGroupFactory>((_props, ref) => {
     // Other settings
     classNames,
     styles,
+    unstyled,
     __staticSelector,
     __stopPropagation,
     numberOfColumns,
@@ -153,6 +154,7 @@ export const YearLevelGroup = factory<YearLevelGroupFactory>((_props, ref) => {
           getMonthControlProps={getMonthControlProps}
           classNames={classNames}
           styles={styles}
+          unstyled={unstyled}
           __staticSelector={__staticSelector || "YearLevelGroup"}
           withCellSpacing={withCellSpacing}
         />
@@ -166,6 +168,7 @@ export const YearLevelGroup = factory<YearLevelGroupFactory>((_props, ref) => {
       __staticSelector={__staticSelector || "YearLevelGroup"}
       ref={ref}
       size={size}
+      unstyled={unstyled}
       {...others}
     >
       {years}
@@ -173,4 +176,5 @@ export const YearLevelGroup = factory<YearLevelGroupFactory>((_props, ref) => {
   );
 });
 
+YearLevelGroup.classes = { ...YearLevel.classes, ...LevelsGroup.classes };
 YearLevelGroup.displayName = "@raikou/dates/YearLevelGroup";

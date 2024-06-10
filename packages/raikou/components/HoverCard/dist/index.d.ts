@@ -1,6 +1,7 @@
 import * as _raikou_core from '@raikou/core';
 import { BoxProps, CompoundStylesApiProps, ElementProps, Factory, StylesApiProps, RaikouRadius, RaikouShadow } from '@raikou/core';
 import React$1 from 'react';
+import { ShiftOptions, FlipOptions, InlineOptions, SizeOptions } from '@floating-ui/react';
 
 interface PopoverDropdownProps extends BoxProps, CompoundStylesApiProps<PopoverDropdownFactory>, ElementProps<"div"> {
 }
@@ -55,10 +56,11 @@ interface TransitionProps {
 }
 type TransitionOverride = Partial<Omit<TransitionProps, "mounted">>;
 
-type FloatingPlacement = 'end' | 'start';
-type FloatingSide = 'top' | 'right' | 'bottom' | 'left';
+type FloatingPlacement = "end" | "start";
+type FloatingSide = "top" | "right" | "bottom" | "left";
 type FloatingPosition = FloatingSide | `${FloatingSide}-${FloatingPlacement}`;
-type ArrowPosition = 'center' | 'side';
+type ArrowPosition = "center" | "side";
+type FloatingStrategy = "absolute" | "fixed";
 interface FloatingAxesOffsets {
     mainAxis?: number;
     crossAxis?: number;
@@ -72,12 +74,12 @@ interface PortalProps extends React$1.ComponentPropsWithoutRef<"div"> {
     target?: HTMLElement | string;
 }
 
-type PopoverWidth = "target" | React.CSSProperties["width"];
+type PopoverWidth = "target" | React.CSSProperties["width"] | null;
 interface PopoverMiddlewares {
-    shift: boolean;
-    flip: boolean;
-    inline?: boolean;
-    size?: boolean;
+    shift?: boolean | ShiftOptions;
+    flip?: boolean | FlipOptions;
+    inline?: boolean | InlineOptions;
+    size?: boolean | SizeOptions;
 }
 
 type PopoverStylesNames = "dropdown" | "arrow";
@@ -129,6 +131,8 @@ interface __PopoverProps {
     disabled?: boolean;
     /** Determines whether focus should be automatically returned to control when dropdown closes, `false` by default */
     returnFocus?: boolean;
+    /** Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy), `'absolute'` by default */
+    floatingStrategy?: FloatingStrategy;
 }
 interface PopoverProps extends __PopoverProps, StylesApiProps<PopoverFactory> {
     __staticSelector?: string;

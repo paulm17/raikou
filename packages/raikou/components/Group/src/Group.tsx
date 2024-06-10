@@ -105,6 +105,7 @@ export const Group = factory<GroupFactory>((_props, ref) => {
     vars,
     variant,
     __size,
+    mod,
     ...others
   } = props;
 
@@ -137,7 +138,7 @@ export const Group = factory<GroupFactory>((_props, ref) => {
       {...getStyles("root")}
       ref={ref}
       variant={variant}
-      mod={{ grow }}
+      mod={[{ grow }, mod]}
       size={__size}
       {...others}
     >

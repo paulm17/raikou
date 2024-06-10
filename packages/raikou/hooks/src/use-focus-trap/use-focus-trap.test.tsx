@@ -1,13 +1,7 @@
-import {
-  fireEvent,
-  render,
-  RenderOptions,
-  RenderResult,
-  screen,
-} from "@testing-library/react";
-import React, { ReactElement, useState } from "react";
-import { patchConsoleError } from "@raikou/tests";
-import { useFocusTrap } from "./use-focus-trap";
+/* eslint-disable no-console */
+import { ReactElement, useState } from 'react';
+import { fireEvent, render, RenderOptions, RenderResult, screen } from '@testing-library/react';
+import { useFocusTrap } from './use-focus-trap';
 
 function InnerComponent({ testId }: { testId: string }) {
   const ref = useFocusTrap();
@@ -40,70 +34,49 @@ function WrapperComponent({ shouldMount = true }) {
 }
 
 function quietRender(ui: ReactElement, options: RenderOptions): RenderResult {
-  patchConsoleError();
+  const originalConsoleError = console.error;
+  console.error = jest.fn();
   const rendered = render(ui, options);
-  patchConsoleError.release();
+  console.error = originalConsoleError;
   return rendered;
 }
 
-describe("@raikou/hooks/use-focus-trap", () => {
-  it("correctly assigns aria-hidden to non-encompassing root nodes", () => {
+describe('@mantine/hooks/use-focus-trap', () => {
+  it('correctly assigns aria-hidden to non-encompassing root nodes', () => {
     quietRender(<WrapperComponent />, { container: document.body });
 
-    expect(screen.getByTestId("root-1")).toHaveAttribute("aria-hidden", "true");
-    expect(screen.getByTestId("root-2")).toHaveAttribute("aria-hidden", "true");
-    expect(screen.getByTestId("root-script")).not.toHaveAttribute(
-      "aria-hidden"
-    );
-    expect(screen.getByTestId("container-1")).not.toHaveAttribute(
-      "aria-hidden"
-    );
+    expect(screen.getByTestId('root-1')).toHaveAttribute('aria-hidden', 'true');
+    expect(screen.getByTestId('root-2')).toHaveAttribute('aria-hidden', 'true');
+    expect(screen.getByTestId('root-script')).not.toHaveAttribute('aria-hidden');
+    expect(screen.getByTestId('container-1')).not.toHaveAttribute('aria-hidden');
   });
-  it("correctly restores aria attributes on unmount", () => {
-    const { rerender } = quietRender(<WrapperComponent />, {
-      container: document.body,
-    });
+  it('correctly restores aria attributes on unmount', () => {
+    const { rerender } = quietRender(<WrapperComponent />, { container: document.body });
     rerender(<WrapperComponent shouldMount={false} />);
 
-    expect(screen.getByTestId("root-1")).not.toHaveAttribute("aria-hidden");
-    expect(screen.getByTestId("root-2")).not.toHaveAttribute(
-      "aria-hidden",
-      "true"
-    );
-    expect(screen.getByTestId("root-script")).not.toHaveAttribute(
-      "aria-hidden"
-    );
-    expect(screen.queryByTestId("container-1")).toBeFalsy();
+    expect(screen.getByTestId('root-1')).not.toHaveAttribute('aria-hidden');
+    expect(screen.getByTestId('root-2')).not.toHaveAttribute('aria-hidden', 'true');
+    expect(screen.getByTestId('root-script')).not.toHaveAttribute('aria-hidden');
+    expect(screen.queryByTestId('container-1')).toBeFalsy();
   });
-  it("correctly abandons restoration of aria-hidden if another handler has instantiated before cleanup", () => {
-    const { rerender } = quietRender(<WrapperComponent />, {
-      container: document.body,
-    });
-    expect(screen.getByTestId("root-1")).toHaveAttribute("aria-hidden", "true");
-    expect(screen.getByTestId("root-2")).toHaveAttribute("aria-hidden", "true");
-    expect(screen.getByTestId("container-1")).not.toHaveAttribute(
-      "aria-hidden"
-    );
+  it('correctly abandons restoration of aria-hidden if another handler has instantiated before cleanup', () => {
+    const { rerender } = quietRender(<WrapperComponent />, { container: document.body });
+    expect(screen.getByTestId('root-1')).toHaveAttribute('aria-hidden', 'true');
+    expect(screen.getByTestId('root-2')).toHaveAttribute('aria-hidden', 'true');
+    expect(screen.getByTestId('container-1')).not.toHaveAttribute('aria-hidden');
 
-    fireEvent.click(screen.getByText("Toggle"));
-    expect(screen.queryByTestId("container-1")).toBeFalsy();
-    expect(screen.getByTestId("container-2")).not.toHaveAttribute(
-      "aria-hidden"
-    );
+    fireEvent.click(screen.getByText('Toggle'));
+    expect(screen.queryByTestId('container-1')).toBeFalsy();
+    expect(screen.getByTestId('container-2')).not.toHaveAttribute('aria-hidden');
 
-    expect(screen.getByTestId("root-1")).toHaveAttribute("aria-hidden", "true");
-    expect(screen.getByTestId("root-2")).toHaveAttribute("aria-hidden", "true");
+    expect(screen.getByTestId('root-1')).toHaveAttribute('aria-hidden', 'true');
+    expect(screen.getByTestId('root-2')).toHaveAttribute('aria-hidden', 'true');
 
     rerender(<WrapperComponent shouldMount={false} />);
-    expect(screen.getByTestId("root-1")).not.toHaveAttribute("aria-hidden");
-    expect(screen.getByTestId("root-2")).not.toHaveAttribute(
-      "aria-hidden",
-      "true"
-    );
-    expect(screen.getByTestId("root-script")).not.toHaveAttribute(
-      "aria-hidden"
-    );
-    expect(screen.queryByTestId("container-1")).toBeFalsy();
-    expect(screen.queryByTestId("container-2")).toBeFalsy();
+    expect(screen.getByTestId('root-1')).not.toHaveAttribute('aria-hidden');
+    expect(screen.getByTestId('root-2')).not.toHaveAttribute('aria-hidden', 'true');
+    expect(screen.getByTestId('root-script')).not.toHaveAttribute('aria-hidden');
+    expect(screen.queryByTestId('container-1')).toBeFalsy();
+    expect(screen.queryByTestId('container-2')).toBeFalsy();
   });
 });

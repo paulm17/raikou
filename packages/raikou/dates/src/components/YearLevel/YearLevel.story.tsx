@@ -1,8 +1,8 @@
-import dayjs from 'dayjs';
-import React, { useState } from 'react';
-import { YearLevel } from './YearLevel';
+import React, { useState } from "react";
+import dayjs from "dayjs";
+import { YearLevel } from "./YearLevel";
 
-export default { title: 'YearLevel' };
+export default { title: "YearLevel" };
 
 export function Usage() {
   return (
@@ -36,7 +36,7 @@ export function WithSelection() {
       <YearLevel
         year={new Date()}
         getMonthControlProps={(month) => ({
-          selected: dayjs(month).isSame(selected, 'month'),
+          selected: dayjs(month).isSame(selected, "month"),
           onClick: () => setSelected(month),
         })}
       />
@@ -45,7 +45,7 @@ export function WithSelection() {
 }
 
 export function Sizes() {
-  const sizes = (['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
+  const sizes = (["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
     <YearLevel year={new Date()} size={size} key={size} mt="xl" />
   ));
   return <div style={{ padding: 40 }}>{sizes}</div>;

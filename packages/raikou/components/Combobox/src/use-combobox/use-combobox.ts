@@ -62,7 +62,10 @@ export interface ComboboxStore {
    *  The function is required to be used with searchable components to update selected option index
    *  when options list changes based on search query.
    */
-  updateSelectedOptionIndex: (target?: "active" | "selected") => void;
+  updateSelectedOptionIndex: (
+    target?: "active" | "selected",
+    options?: { scrollIntoView?: boolean },
+  ) => void;
 
   /** List id, used for `aria-*` attributes */
   listId: string | null;

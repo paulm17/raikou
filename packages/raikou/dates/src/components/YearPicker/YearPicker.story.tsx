@@ -1,31 +1,16 @@
 import React, { useState } from "react";
-// import { RaikouThemeProvider } from "@raikou/core";
 import { DatesRangeValue } from "../../types";
 import { YearPicker } from "./YearPicker";
 
 export default { title: "YearPicker" };
 
-// export function Usage() {
-//   return (
-//     <div style={{ padding: 40 }}>
-//       <RaikouThemeProvider
-//         theme={{
-//           components: {
-//             YearPicker: YearPicker.extend({
-//               styles: () => ({
-//                 calendarHeader: {
-//                   background: "transparent",
-//                 },
-//               }),
-//             }),
-//           },
-//         }}
-//       >
-//         <YearPicker />
-//       </RaikouThemeProvider>
-//     </div>
-//   );
-// }
+export function Usage() {
+  return (
+    <div style={{ padding: 40 }}>
+      <YearPicker />
+    </div>
+  );
+}
 
 export function Multiple() {
   return (

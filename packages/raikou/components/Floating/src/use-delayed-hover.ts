@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 interface UseDelayedHoverInput {
   open: () => void;
@@ -24,7 +24,7 @@ export function useDelayedHover({
   const openDropdown = () => {
     clearTimeouts();
 
-    if (openDelay === 0) {
+    if (openDelay === 0 || openDelay === undefined) {
       open();
     } else {
       openTimeout.current = window.setTimeout(open, openDelay);
@@ -34,7 +34,7 @@ export function useDelayedHover({
   const closeDropdown = () => {
     clearTimeouts();
 
-    if (closeDelay === 0) {
+    if (closeDelay === 0 || closeDelay === undefined) {
       close();
     } else {
       closeTimeout.current = window.setTimeout(close, closeDelay);

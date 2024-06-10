@@ -1,0 +1,22 @@
+import { colorsTuple, RaikouTheme } from "../../../../RaikouProvider";
+import { rem } from "../../../../utils";
+import { colorResolver } from "../color-resolver/color-resolver";
+
+export function borderResolver(value: unknown, theme: RaikouTheme) {
+  if (typeof value === "number") {
+    return rem(value);
+  }
+
+  if (typeof value === "string") {
+    const [size, style, ...colorTuple] = value
+      .split(" ")
+      .filter((val) => val.trim() !== "");
+    let result = `${rem(size)}`;
+    style && (result += ` ${style}`);
+    colorsTuple.length > 0 &&
+      (result += ` ${colorResolver(colorTuple.join(" "), theme)}`);
+    return result.trim();
+  }
+
+  return value;
+}

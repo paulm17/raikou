@@ -45,6 +45,7 @@ export const TabsList = factory<TabsListFactory>((_props, ref) => {
     classNames,
     styles,
     style,
+    mod,
     ...others
   } = props;
 
@@ -64,12 +65,15 @@ export const TabsList = factory<TabsListFactory>((_props, ref) => {
       ref={ref}
       role="tablist"
       variant={ctx.variant}
-      mod={{
-        grow,
-        orientation: ctx.orientation,
-        placement: ctx.orientation === "vertical" && ctx.placement,
-        inverted: ctx.inverted,
-      }}
+      mod={[
+        {
+          grow,
+          orientation: ctx.orientation,
+          placement: ctx.orientation === "vertical" && ctx.placement,
+          inverted: ctx.inverted,
+        },
+        mod,
+      ]}
       aria-orientation={ctx.orientation}
       __vars={{ "--tabs-justify": justify }}
     >

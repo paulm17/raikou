@@ -1,10 +1,19 @@
 import React from "react";
-import { factory, ElementProps, useProps, Factory } from "@raikou/core";
-import { InputBase, InputBaseProps } from "../../InputBase/src";
-import { __InputStylesNames } from "../../Input/src";
+import {
+  BoxProps,
+  ElementProps,
+  factory,
+  Factory,
+  StylesApiProps,
+  useProps,
+} from "@raikou/core";
+import { InputBase } from "../../InputBase/src";
+import { __BaseInputProps, __InputStylesNames } from "../../Input/src";
 
 export interface TextInputProps
-  extends InputBaseProps,
+  extends BoxProps,
+    __BaseInputProps,
+    StylesApiProps<TextInputFactory>,
     ElementProps<"input", "size"> {}
 
 export type TextInputFactory = Factory<{

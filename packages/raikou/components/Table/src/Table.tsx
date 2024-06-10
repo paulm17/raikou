@@ -13,6 +13,7 @@ import {
   getThemeColor,
   createVarsResolver,
   Factory,
+  rem,
 } from "@raikou/core";
 import {
   TableCaption,
@@ -97,6 +98,12 @@ export interface TableProps
 
   /** Data that should be used to generate table, ignored if `children` prop is set */
   data?: TableData;
+
+  /** Determines whether `Table.Thead` should be sticky, `false` by default */
+  stickyHeader?: boolean;
+
+  /** Offset from top at which `Table.Thead` should become sticky, `0` by default */
+  stickyHeaderOffset?: number | string;
 }
 
 export type TableFactory = Factory<{
@@ -134,6 +141,8 @@ const varsResolver = createVarsResolver<TableFactory>(
       highlightOnHoverColor,
       striped,
       highlightOnHover,
+      stickyHeaderOffset,
+      stickyHeader,
     },
   ) => ({
     table: {
@@ -152,6 +161,9 @@ const varsResolver = createVarsResolver<TableFactory>(
         highlightOnHover && highlightOnHoverColor
           ? getThemeColor(highlightOnHoverColor, theme)
           : undefined,
+      "--table-sticky-header-offset": stickyHeader
+        ? rem(stickyHeaderOffset)
+        : undefined,
     },
   }),
 );
@@ -180,6 +192,9 @@ export const Table = factory<TableFactory>((_props, ref) => {
     variant,
     data,
     children,
+    stickyHeader,
+    stickyHeaderOffset,
+    mod,
     ...others
   } = props;
 
@@ -199,6 +214,7 @@ export const Table = factory<TableFactory>((_props, ref) => {
 
   useStore.update((state) => {
     state.getStyles = getStyles;
+    state.stickyHeader = stickyHeader;
     state.striped = striped === true ? "odd" : striped || undefined;
     state.highlightOnHover = highlightOnHover;
     state.withColumnBorders = withColumnBorders;
@@ -211,7 +227,7 @@ export const Table = factory<TableFactory>((_props, ref) => {
       component="table"
       variant={variant}
       ref={ref}
-      mod={{ "data-with-table-border": withTableBorder }}
+      mod={[{ "data-with-table-border": withTableBorder }, mod]}
       {...getStyles("table")}
       {...others}
     >

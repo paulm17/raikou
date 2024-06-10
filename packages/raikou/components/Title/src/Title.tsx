@@ -33,6 +33,9 @@ export interface TitleProps
 
   /** Number of lines after which Text will be truncated */
   lineClamp?: number;
+
+  /** Controls `text-wrap` property, `'wrap'` by default */
+  textWrap?: "wrap" | "nowrap" | "balance" | "pretty" | "stable";
 }
 
 export type TitleFactory = Factory<{
@@ -47,7 +50,7 @@ const defaultProps: Partial<TitleProps> = {
 };
 
 const varsResolver = createVarsResolver<TitleFactory>(
-  (_, { order, size, lineClamp }) => {
+  (_, { order, size, lineClamp, textWrap }) => {
     const sizeVariables = getTitleSize(order!, size);
     return {
       root: {
@@ -56,6 +59,7 @@ const varsResolver = createVarsResolver<TitleFactory>(
         "--title-fz": sizeVariables.fontSize,
         "--title-line-clamp":
           typeof lineClamp === "number" ? lineClamp.toString() : undefined,
+        "--title-text-wrap": textWrap,
       },
     };
   },
@@ -74,6 +78,8 @@ export const Title = factory<TitleFactory>((_props, ref) => {
     size,
     variant,
     lineClamp,
+    textWrap,
+    mod,
     ...others
   } = props;
 
@@ -100,7 +106,7 @@ export const Title = factory<TitleFactory>((_props, ref) => {
       component={`h${order!}`}
       variant={variant}
       ref={ref}
-      mod={{ order, "data-line-clamp": typeof lineClamp === "number" }}
+      mod={[{ order, "data-line-clamp": typeof lineClamp === "number" }, mod]}
       size={size}
       {...others}
     />

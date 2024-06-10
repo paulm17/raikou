@@ -1,30 +1,35 @@
 import React from "react";
-import { useEditor, FloatingMenu, BubbleMenu } from "@tiptap/react";
-import { AppShell } from "../../components/AppShell/src";
-import Highlight from "@tiptap/extension-highlight";
-import { Color } from "@tiptap/extension-color";
-import TextStyle from "@tiptap/extension-text-style";
+import { IconColorPicker } from "@tabler/icons-react";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
-import StarterKit from "@tiptap/starter-kit";
-import Underline from "@tiptap/extension-underline";
-import TextAlign from "@tiptap/extension-text-align";
-import Superscript from "@tiptap/extension-superscript";
-import SubScript from "@tiptap/extension-subscript";
+import { Color } from "@tiptap/extension-color";
+import Highlight from "@tiptap/extension-highlight";
 import Placeholder from "@tiptap/extension-placeholder";
-import { lowlight } from "lowlight";
+import SubScript from "@tiptap/extension-subscript";
+import Superscript from "@tiptap/extension-superscript";
+import TaskItem from "@tiptap/extension-task-item";
+import TipTapTaskList from "@tiptap/extension-task-list";
+import TextAlign from "@tiptap/extension-text-align";
+import TextStyle from "@tiptap/extension-text-style";
+import Underline from "@tiptap/extension-underline";
+import { BubbleMenu, FloatingMenu, useEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
 import css from "highlight.js/lib/languages/css";
 import js from "highlight.js/lib/languages/javascript";
 import ts from "highlight.js/lib/languages/typescript";
 import html from "highlight.js/lib/languages/xml";
-import { IconColorPicker } from "@tabler/icons-react";
+import { createLowlight } from "lowlight";
+import { AppShell } from "../../components/AppShell/src";
 import { Link } from "./extensions/Link";
+import { getTaskListExtension } from "./extensions/TaskList";
 import { RichTextEditor, RichTextEditorProps } from "./RichTextEditor";
 import { RichTextEditorToolbarProps } from "./RichTextEditorToolbar/RichTextEditorToolbar";
 
-lowlight.registerLanguage("html", html);
-lowlight.registerLanguage("css", css);
-lowlight.registerLanguage("js", js);
-lowlight.registerLanguage("ts", ts);
+const lowlight = createLowlight();
+
+lowlight.register("html", html);
+lowlight.register("css", css);
+lowlight.register("js", js);
+lowlight.register("ts", ts);
 
 export default { title: "TipTap" };
 
@@ -60,7 +65,7 @@ function BasicEditor({
 
   return (
     <div style={{ padding: 40 }}>
-      <RichTextEditor editor={editor} unstyled {...editorProps}>
+      <RichTextEditor editor={editor} {...editorProps}>
         <RichTextEditor.Toolbar {...toolbarProps}>
           <RichTextEditor.ControlsGroup>
             <RichTextEditor.Blockquote />
@@ -108,6 +113,11 @@ function BasicEditor({
           <RichTextEditor.ControlsGroup>
             <RichTextEditor.Link />
             <RichTextEditor.Unlink />
+          </RichTextEditor.ControlsGroup>
+
+          <RichTextEditor.ControlsGroup>
+            <RichTextEditor.Undo />
+            <RichTextEditor.Redo />
           </RichTextEditor.ControlsGroup>
 
           <RichTextEditor.ControlsGroup>
@@ -329,6 +339,48 @@ export function ControlStylesApi() {
           <RichTextEditor.ControlsGroup>
             <RichTextEditor.Bold />
             <RichTextEditor.Link icon={() => <div>$</div>} />
+          </RichTextEditor.ControlsGroup>
+        </RichTextEditor.Toolbar>
+
+        <RichTextEditor.Content />
+      </RichTextEditor>
+    </div>
+  );
+}
+
+export function Tasks() {
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Link,
+      // @ts-ignore
+      getTaskListExtension(TipTapTaskList),
+      // @ts-ignore
+      TaskItem.configure({
+        nested: true,
+        HTMLAttributes: {
+          class: "test-item",
+        },
+      }),
+    ],
+    content: `
+        <p>Some text</p>
+        <ul data-type="taskList">
+          <li data-type="taskItem" data-checked="true">A list item</li>
+          <li data-type="taskItem" data-checked="false">And another one</li>
+        </ul>
+        <p>And a paragraph</p>
+      `,
+  });
+
+  return (
+    <div style={{ padding: 40 }}>
+      <RichTextEditor editor={editor}>
+        <RichTextEditor.Toolbar>
+          <RichTextEditor.ControlsGroup>
+            <RichTextEditor.TaskList />
+            <RichTextEditor.TaskListLift />
+            <RichTextEditor.TaskListSink />
           </RichTextEditor.ControlsGroup>
         </RichTextEditor.Toolbar>
 

@@ -1,8 +1,8 @@
 .root {
-  @mixin light {
+  @mixin where-light {
     --raikou-ringprogress-curve-root-color: #e9ecef;
   }
-  @mixin dark {
+  @mixin where-dark {
     --raikou-ringprogress-curve-root-color: #373a40;
   }
 
@@ -22,14 +22,14 @@
 }
 
 .curve {
-  stroke: var(--curve-color, var(--_curve-root-color));
+  stroke: var(--curve-color, var(--rp-curve-root-color));
 
-  @mixin light {
-    --_curve-root-color: var(--raikou-ringprogress-curve-root-color);
+  @mixin where-light {
+    --rp-curve-root-color: var(--raikou-ringprogress-curve-root-color);
   }
 
-  @mixin dark {
-    --_curve-root-color: var(--raikou-ringprogress-curve-root-color);
+  @mixin where-dark {
+    --rp-curve-root-color: var(--raikou-ringprogress-curve-root-color);
   }
 }
 
@@ -37,6 +37,5 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: var(--rp-label-offset);
-  left: var(--rp-label-offset);
+  inset-inline: var(--rp-label-offset);
 }

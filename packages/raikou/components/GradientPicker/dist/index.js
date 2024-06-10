@@ -9,7 +9,6 @@ var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
-var __pow = Math.pow;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __spreadValues = (a2, b2) => {
   for (var prop in b2 || (b2 = {}))
@@ -9919,8 +9918,8 @@ var require_memstore = __commonJS({
       domains.forEach(function(domain) {
         var paths = Object.keys(idx[domain]);
         paths.forEach(function(path) {
-          var keys = Object.keys(idx[domain][path]);
-          keys.forEach(function(key) {
+          var keys3 = Object.keys(idx[domain][path]);
+          keys3.forEach(function(key) {
             if (key !== null) {
               cookies.push(idx[domain][path][key]);
             }
@@ -11001,18 +11000,18 @@ var require_stringify = __commonJS({
       return JSON.stringify(obj, serializer(replacer, cycleReplacer), spaces);
     }
     function serializer(replacer, cycleReplacer) {
-      var stack = [], keys = [];
+      var stack = [], keys3 = [];
       if (cycleReplacer == null)
         cycleReplacer = function(key, value) {
           if (stack[0] === value)
             return "[Circular ~]";
-          return "[Circular ~." + keys.slice(0, stack.indexOf(value)).join(".") + "]";
+          return "[Circular ~." + keys3.slice(0, stack.indexOf(value)).join(".") + "]";
         };
       return function(key, value) {
         if (stack.length > 0) {
           var thisPos = stack.indexOf(this);
           ~thisPos ? stack.splice(thisPos + 1) : stack.push(this);
-          ~thisPos ? keys.splice(thisPos, Infinity, key) : keys.push(key);
+          ~thisPos ? keys3.splice(thisPos, Infinity, key) : keys3.push(key);
           if (~stack.indexOf(value))
             value = cycleReplacer.call(this, key, value);
         } else
@@ -11143,7 +11142,7 @@ var require_aws_sign2 = __commonJS({
     "use strict";
     var crypto = require("crypto");
     var parse = require("url").parse;
-    var keys = [
+    var keys3 = [
       "acl",
       "location",
       "logging",
@@ -11210,7 +11209,7 @@ var require_aws_sign2 = __commonJS({
     function canonicalizeResource(resource) {
       var url = parse(resource, true), path = url.pathname, buf = [];
       Object.keys(url.query).forEach(function(key) {
-        if (!~keys.indexOf(key))
+        if (!~keys3.indexOf(key))
           return;
         var val = "" == url.query[key] ? "" : "=" + encodeURIComponent(url.query[key]);
         buf.push(key + val);
@@ -11703,7 +11702,7 @@ var require_assert = __commonJS({
       }
     };
     function _setExports(ndebug) {
-      var keys = Object.keys(types);
+      var keys3 = Object.keys(types);
       var out;
       if (process.env.NODE_NDEBUG) {
         out = noop;
@@ -11714,7 +11713,7 @@ var require_assert = __commonJS({
           }
         };
       }
-      keys.forEach(function(k2) {
+      keys3.forEach(function(k2) {
         if (ndebug) {
           out[k2] = noop;
           return;
@@ -11726,7 +11725,7 @@ var require_assert = __commonJS({
           }
         };
       });
-      keys.forEach(function(k2) {
+      keys3.forEach(function(k2) {
         var name = "optional" + _capitalize(k2);
         if (ndebug) {
           out[name] = noop;
@@ -11742,7 +11741,7 @@ var require_assert = __commonJS({
           }
         };
       });
-      keys.forEach(function(k2) {
+      keys3.forEach(function(k2) {
         var name = "arrayOf" + _capitalize(k2);
         if (ndebug) {
           out[name] = noop;
@@ -11762,7 +11761,7 @@ var require_assert = __commonJS({
           }
         };
       });
-      keys.forEach(function(k2) {
+      keys3.forEach(function(k2) {
         var name = "optionalArrayOf" + _capitalize(k2);
         if (ndebug) {
           out[name] = noop;
@@ -12279,8 +12278,8 @@ var require_writer = __commonJS({
       assert.equal(typeof from, "object");
       assert.ok(to);
       assert.equal(typeof to, "object");
-      var keys = Object.getOwnPropertyNames(from);
-      keys.forEach(function(key) {
+      var keys3 = Object.getOwnPropertyNames(from);
+      keys3.forEach(function(key) {
         if (to[key])
           return;
         var value = Object.getOwnPropertyDescriptor(from, key);
@@ -24541,15 +24540,15 @@ var require_verror = __commonJS({
 var require_validate = __commonJS({
   "../../../../node_modules/.pnpm/json-schema@0.4.0/node_modules/json-schema/lib/validate.js"(exports, module2) {
     "use strict";
-    (function(root, factory23) {
+    (function(root, factory22) {
       if (typeof define === "function" && define.amd) {
         define([], function() {
-          return factory23();
+          return factory22();
         });
       } else if (typeof module2 === "object" && module2.exports) {
-        module2.exports = factory23();
+        module2.exports = factory22();
       } else {
-        root.jsonSchema = factory23();
+        root.jsonSchema = factory22();
       }
     })(exports, function() {
       var exports2 = validate;
@@ -34295,10 +34294,10 @@ var require_caseless = __commonJS({
       }
     };
     Caseless.prototype.has = function(name) {
-      var keys = Object.keys(this.dict), name = name.toLowerCase();
-      for (var i2 = 0; i2 < keys.length; i2++) {
-        if (keys[i2].toLowerCase() === name)
-          return keys[i2];
+      var keys3 = Object.keys(this.dict), name = name.toLowerCase();
+      for (var i2 = 0; i2 < keys3.length; i2++) {
+        if (keys3[i2].toLowerCase() === name)
+          return keys3[i2];
       }
       return false;
     };
@@ -35488,9 +35487,9 @@ var require_utils3 = __commonJS({
       for (var i2 = 0; i2 < queue.length; ++i2) {
         var item = queue[i2];
         var obj = item.obj[item.prop];
-        var keys = Object.keys(obj);
-        for (var j2 = 0; j2 < keys.length; ++j2) {
-          var key = keys[j2];
+        var keys3 = Object.keys(obj);
+        for (var j2 = 0; j2 < keys3.length; ++j2) {
+          var key = keys3[j2];
           var val = obj[key];
           if (typeof val === "object" && val !== null && refs.indexOf(val) === -1) {
             queue.push({ obj, prop: key });
@@ -35606,8 +35605,8 @@ var require_stringify2 = __commonJS({
       if (isArray(filter)) {
         objKeys = filter;
       } else {
-        var keys = Object.keys(obj);
-        objKeys = sort ? keys.sort(sort) : keys;
+        var keys3 = Object.keys(obj);
+        objKeys = sort ? keys3.sort(sort) : keys3;
       }
       for (var i2 = 0; i2 < objKeys.length; ++i2) {
         var key = objKeys[i2];
@@ -35678,7 +35677,7 @@ var require_stringify2 = __commonJS({
         filter = options.filter;
         objKeys = filter;
       }
-      var keys = [];
+      var keys3 = [];
       if (typeof obj !== "object" || obj === null) {
         return "";
       }
@@ -35702,7 +35701,7 @@ var require_stringify2 = __commonJS({
         if (skipNulls && obj[key] === null) {
           continue;
         }
-        pushToArray(keys, stringify(
+        pushToArray(keys3, stringify(
           obj[key],
           key,
           generateArrayPrefix,
@@ -35717,7 +35716,7 @@ var require_stringify2 = __commonJS({
           encodeValuesOnly
         ));
       }
-      var joined = keys.join(delimiter);
+      var joined = keys3.join(delimiter);
       var prefix = options.addQueryPrefix === true ? "?" : "";
       return joined.length > 0 ? prefix + joined : "";
     };
@@ -35799,14 +35798,14 @@ var require_parse = __commonJS({
       var child = /(\[[^[\]]*])/g;
       var segment = brackets.exec(key);
       var parent = segment ? key.slice(0, segment.index) : key;
-      var keys = [];
+      var keys3 = [];
       if (parent) {
         if (!options.plainObjects && has.call(Object.prototype, parent)) {
           if (!options.allowPrototypes) {
             return;
           }
         }
-        keys.push(parent);
+        keys3.push(parent);
       }
       var i2 = 0;
       while ((segment = child.exec(key)) !== null && i2 < options.depth) {
@@ -35816,12 +35815,12 @@ var require_parse = __commonJS({
             return;
           }
         }
-        keys.push(segment[1]);
+        keys3.push(segment[1]);
       }
       if (segment) {
-        keys.push("[" + key.slice(segment.index) + "]");
+        keys3.push("[" + key.slice(segment.index) + "]");
       }
-      return parseObject(keys, val, options);
+      return parseObject(keys3, val, options);
     };
     module2.exports = function(str, opts) {
       var options = opts ? utils.assign({}, opts) : {};
@@ -35844,9 +35843,9 @@ var require_parse = __commonJS({
       }
       var tempObj = typeof str === "string" ? parseValues(str, options) : str;
       var obj = options.plainObjects ? /* @__PURE__ */ Object.create(null) : {};
-      var keys = Object.keys(tempObj);
-      for (var i2 = 0; i2 < keys.length; ++i2) {
-        var key = keys[i2];
+      var keys3 = Object.keys(tempObj);
+      for (var i2 = 0; i2 < keys3.length; ++i2) {
+        var key = keys3[i2];
         var newObj = parseKeys(key, tempObj[key], options);
         obj = utils.merge(obj, newObj, options);
       }
@@ -35922,8 +35921,8 @@ var require_querystring = __commonJS({
 var require_uri_all = __commonJS({
   "../../../../node_modules/.pnpm/uri-js@4.4.1/node_modules/uri-js/dist/es5/uri.all.js"(exports, module2) {
     "use strict";
-    (function(global, factory23) {
-      typeof exports === "object" && typeof module2 !== "undefined" ? factory23(exports) : typeof define === "function" && define.amd ? define(["exports"], factory23) : factory23(global.URI = global.URI || {});
+    (function(global, factory22) {
+      typeof exports === "object" && typeof module2 !== "undefined" ? factory22(exports) : typeof define === "function" && define.amd ? define(["exports"], factory22) : factory22(global.URI = global.URI || {});
     })(exports, function(exports2) {
       "use strict";
       function merge() {
@@ -36965,7 +36964,7 @@ var require_fast_deep_equal = __commonJS({
       if (a2 && b2 && typeof a2 == "object" && typeof b2 == "object") {
         if (a2.constructor !== b2.constructor)
           return false;
-        var length, i2, keys;
+        var length, i2, keys3;
         if (Array.isArray(a2)) {
           length = a2.length;
           if (length != b2.length)
@@ -36981,15 +36980,15 @@ var require_fast_deep_equal = __commonJS({
           return a2.valueOf() === b2.valueOf();
         if (a2.toString !== Object.prototype.toString)
           return a2.toString() === b2.toString();
-        keys = Object.keys(a2);
-        length = keys.length;
+        keys3 = Object.keys(a2);
+        length = keys3.length;
         if (length !== Object.keys(b2).length)
           return false;
         for (i2 = length; i2-- !== 0; )
-          if (!Object.prototype.hasOwnProperty.call(b2, keys[i2]))
+          if (!Object.prototype.hasOwnProperty.call(b2, keys3[i2]))
             return false;
         for (i2 = length; i2-- !== 0; ) {
-          var key = keys[i2];
+          var key = keys3[i2];
           if (!equal(a2[key], b2[key]))
             return false;
         }
@@ -37644,10 +37643,10 @@ var require_fast_json_stable_stringify = __commonJS({
           throw new TypeError("Converting circular structure to JSON");
         }
         var seenIndex = seen.push(node) - 1;
-        var keys = Object.keys(node).sort(cmp && cmp(node));
+        var keys3 = Object.keys(node).sort(cmp && cmp(node));
         out = "";
-        for (i2 = 0; i2 < keys.length; i2++) {
-          var key = keys[i2];
+        for (i2 = 0; i2 < keys3.length; i2++) {
+          var key = keys3[i2];
           var value = stringify(node[key]);
           if (!value)
             continue;
@@ -44342,9 +44341,9 @@ var require_tunnel_agent = __commonJS({
       for (var i2 = 1, len = arguments.length; i2 < len; ++i2) {
         var overrides = arguments[i2];
         if (typeof overrides === "object") {
-          var keys = Object.keys(overrides);
-          for (var j2 = 0, keyLen = keys.length; j2 < keyLen; ++j2) {
-            var k2 = keys[j2];
+          var keys3 = Object.keys(overrides);
+          for (var j2 = 0, keyLen = keys3.length; j2 < keyLen; ++j2) {
+            var k2 = keys3[j2];
             if (overrides[k2] !== void 0) {
               target[k2] = overrides[k2];
             }
@@ -45918,8 +45917,8 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 
 // src/GradientPicker.tsx
-var import_react58 = __toESM(require("react"));
-var import_core45 = require("@raikou/core");
+var import_react59 = __toESM(require("react"));
+var import_core46 = require("@raikou/core");
 
 // ../_utils/create-safe-context/create-safe-context.tsx
 var import_react = __toESM(require("react"));
@@ -47218,17 +47217,17 @@ var genRandomId = (length = 8) => {
 
 // src/GradientPicker.tsx
 var import_colord5 = require("colord");
-var import_hooks17 = require("@raikou/hooks");
+var import_hooks14 = require("@raikou/hooks");
 var import_lodash = __toESM(require("lodash.isequal"));
 
 // src/components/compact/index.tsx
-var import_react57 = __toESM(require("react"));
-var import_core44 = require("@raikou/core");
+var import_react58 = __toESM(require("react"));
+var import_core45 = require("@raikou/core");
 
 // ../Popover/src/Popover.tsx
-var import_react18 = __toESM(require("react"));
+var import_react19 = __toESM(require("react"));
 var import_hooks8 = require("@raikou/hooks");
-var import_core11 = require("@raikou/core");
+var import_core12 = require("@raikou/core");
 
 // ../Floating/src/use-floating-auto-update.ts
 var import_react7 = require("react");
@@ -48742,7 +48741,7 @@ var computePosition2 = (reference, floating, options) => {
   }));
 };
 
-// ../../../../node_modules/.pnpm/@floating-ui+react-dom@1.3.0_react-dom@18.2.0_react@18.2.0/node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.esm.js
+// ../../../../node_modules/.pnpm/@floating-ui+react-dom@1.3.0_react-dom@18.2.0_react@18.2.0__react@18.2.0/node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.esm.js
 var React3 = __toESM(require("react"));
 var import_react5 = require("react");
 var ReactDOM = __toESM(require("react-dom"));
@@ -48787,7 +48786,7 @@ function deepEqual(a2, b2) {
   if (typeof a2 === "function" && a2.toString() === b2.toString()) {
     return true;
   }
-  let length, i2, keys;
+  let length, i2, keys3;
   if (a2 && b2 && typeof a2 == "object") {
     if (Array.isArray(a2)) {
       length = a2.length;
@@ -48800,18 +48799,18 @@ function deepEqual(a2, b2) {
       }
       return true;
     }
-    keys = Object.keys(a2);
-    length = keys.length;
+    keys3 = Object.keys(a2);
+    length = keys3.length;
     if (length !== Object.keys(b2).length) {
       return false;
     }
     for (i2 = length; i2-- !== 0; ) {
-      if (!Object.prototype.hasOwnProperty.call(b2, keys[i2])) {
+      if (!Object.prototype.hasOwnProperty.call(b2, keys3[i2])) {
         return false;
       }
     }
     for (i2 = length; i2-- !== 0; ) {
-      const key = keys[i2];
+      const key = keys3[i2];
       if (key === "_owner" && a2.$$typeof) {
         continue;
       }
@@ -48940,7 +48939,7 @@ function useFloating(options) {
   }), [data, update, refs, elements, setReference, setFloating]);
 }
 
-// ../../../../node_modules/.pnpm/@floating-ui+react@0.23.1_react-dom@18.2.0_react@18.2.0/node_modules/@floating-ui/react/dist/floating-ui.react.esm.js
+// ../../../../node_modules/.pnpm/@floating-ui+react@0.23.1_react-dom@18.2.0_react@18.2.0__react@18.2.0/node_modules/@floating-ui/react/dist/floating-ui.react.esm.js
 var React4 = __toESM(require("react"));
 var import_react6 = require("react");
 var import_react_dom3 = require("react-dom");
@@ -50178,29 +50177,50 @@ FloatingArrow.displayName = "@raikou/core/FloatingArrow";
 
 // ../Popover/src/use-popover.ts
 var import_hooks2 = require("@raikou/hooks");
+function getDefaultMiddlewares(middlewares) {
+  if (middlewares === void 0) {
+    return { shift: true, flip: true };
+  }
+  const result = __spreadValues({}, middlewares);
+  if (middlewares.shift === void 0) {
+    result.shift = true;
+  }
+  if (middlewares.flip === void 0) {
+    result.flip = true;
+  }
+  return result;
+}
 function getPopoverMiddlewares(options, getFloating) {
-  var _a, _b, _c, _d;
+  const middlewaresOptions = getDefaultMiddlewares(options.middlewares);
   const middlewares = [offset(options.offset)];
-  if ((_a = options.middlewares) == null ? void 0 : _a.shift) {
-    middlewares.push(shift({ limiter: limitShift() }));
+  if (middlewaresOptions.shift) {
+    middlewares.push(
+      shift(
+        typeof middlewaresOptions.shift === "boolean" ? { limiter: limitShift(), padding: 5 } : __spreadValues({ limiter: limitShift(), padding: 5 }, middlewaresOptions.shift)
+      )
+    );
   }
-  if ((_b = options.middlewares) == null ? void 0 : _b.flip) {
-    middlewares.push(flip());
+  if (middlewaresOptions.flip) {
+    middlewares.push(
+      typeof middlewaresOptions.flip === "boolean" ? flip() : flip(middlewaresOptions.flip)
+    );
   }
-  if ((_c = options.middlewares) == null ? void 0 : _c.inline) {
-    middlewares.push(inline());
+  if (middlewaresOptions.inline) {
+    middlewares.push(
+      typeof middlewaresOptions.inline === "boolean" ? inline() : inline(middlewaresOptions.inline)
+    );
   }
   middlewares.push(
     arrow2({ element: options.arrowRef, padding: options.arrowOffset })
   );
-  if (((_d = options.middlewares) == null ? void 0 : _d.size) || options.width === "target") {
+  if (middlewaresOptions.size || options.width === "target") {
     middlewares.push(
-      size({
+      size(__spreadProps(__spreadValues({}, typeof middlewaresOptions.size === "boolean" ? {} : middlewaresOptions.size), {
         apply({ rects, availableWidth, availableHeight }) {
-          var _a2, _b2, _c2;
+          var _a, _b;
           const floating = getFloating();
-          const styles = (_b2 = (_a2 = floating.refs.floating.current) == null ? void 0 : _a2.style) != null ? _b2 : {};
-          if ((_c2 = options.middlewares) == null ? void 0 : _c2.size) {
+          const styles = (_b = (_a = floating.refs.floating.current) == null ? void 0 : _a.style) != null ? _b : {};
+          if (middlewaresOptions.size) {
             Object.assign(styles, {
               maxWidth: `${availableWidth}px`,
               maxHeight: `${availableHeight}px`
@@ -50212,7 +50232,7 @@ function getPopoverMiddlewares(options, getFloating) {
             });
           }
         }
-      })
+      }))
     );
   }
   return middlewares;
@@ -50242,6 +50262,7 @@ function usePopover(options) {
     }
   };
   const floating = useFloating2({
+    strategy: options.strategy,
     placement: options.position,
     middleware: getPopoverMiddlewares(options, () => floating)
   });
@@ -50318,9 +50339,9 @@ var PopoverTarget = (0, import_core5.factory)((props, ref) => {
 PopoverTarget.displayName = "@raikou/core/PopoverTarget";
 
 // ../Popover/src/PopoverDropdown/PopoverDropdown.tsx
-var import_react17 = __toESM(require("react"));
+var import_react18 = __toESM(require("react"));
 var import_hooks7 = require("@raikou/hooks");
-var import_core10 = require("@raikou/core");
+var import_core11 = require("@raikou/core");
 
 // ../Portal/src/Portal.tsx
 var import_react12 = __toESM(require("react"));
@@ -50330,7 +50351,7 @@ var import_core6 = require("@raikou/core");
 function createPortalNode(props) {
   const node = document.createElement("div");
   node.setAttribute("data-portal", "true");
-  typeof props.className === "string" && node.classList.add(...props.className.split(" "));
+  typeof props.className === "string" && node.classList.add(...props.className.split(" ").filter(Boolean));
   typeof props.style === "object" && Object.assign(node.style, props.style);
   typeof props.id === "string" && node.setAttribute("id", props.id);
   return node;
@@ -50520,6 +50541,7 @@ function getTransitionStyles({
 
 // ../Transition/src/use-transition.ts
 var import_react14 = require("react");
+var import_react_dom5 = __toESM(require("react-dom"));
 var import_hooks5 = require("@raikou/hooks");
 var import_core8 = require("@raikou/core");
 function useTransition({
@@ -50542,10 +50564,10 @@ function useTransition({
     mounted ? "entered" : "exited"
   );
   const timeoutRef = (0, import_react14.useRef)(-1);
+  const rafRef = (0, import_react14.useRef)(-1);
   const handleStateChange = (shouldMount) => {
     const preHandler = shouldMount ? onEnter : onExit;
     const handler = shouldMount ? onEntered : onExited;
-    setStatus(shouldMount ? "pre-entering" : "pre-exiting");
     window.clearTimeout(timeoutRef.current);
     const newTransitionDuration = reduceMotion ? 0 : shouldMount ? duration : exitDuration;
     setTransitionDuration(newTransitionDuration);
@@ -50554,21 +50576,31 @@ function useTransition({
       typeof handler === "function" && handler();
       setStatus(shouldMount ? "entered" : "exited");
     } else {
-      const preStateTimeout = window.setTimeout(() => {
-        typeof preHandler === "function" && preHandler();
-        setStatus(shouldMount ? "entering" : "exiting");
-      }, 10);
-      timeoutRef.current = window.setTimeout(() => {
-        window.clearTimeout(preStateTimeout);
-        typeof handler === "function" && handler();
-        setStatus(shouldMount ? "entered" : "exited");
-      }, newTransitionDuration);
+      rafRef.current = requestAnimationFrame(() => {
+        import_react_dom5.default.flushSync(() => {
+          setStatus(shouldMount ? "pre-entering" : "pre-exiting");
+        });
+        rafRef.current = requestAnimationFrame(() => {
+          typeof preHandler === "function" && preHandler();
+          setStatus(shouldMount ? "entering" : "exiting");
+          timeoutRef.current = window.setTimeout(() => {
+            typeof handler === "function" && handler();
+            setStatus(shouldMount ? "entered" : "exited");
+          }, newTransitionDuration);
+        });
+      });
     }
   };
   (0, import_hooks5.useDidUpdate)(() => {
     handleStateChange(mounted);
   }, [mounted]);
-  (0, import_react14.useEffect)(() => () => window.clearTimeout(timeoutRef.current), []);
+  (0, import_react14.useEffect)(
+    () => () => {
+      window.clearTimeout(timeoutRef.current);
+      cancelAnimationFrame(rafRef.current);
+    },
+    []
+  );
   return {
     transitionDuration,
     transitionStatus,
@@ -50624,9 +50656,37 @@ function getTransitionProps(transitionProps, componentTransition) {
 }
 
 // ../FocusTrap/src/FocusTrap.tsx
-var import_react16 = require("react");
+var import_react17 = __toESM(require("react"));
 var import_hooks6 = require("@raikou/hooks");
+var import_core10 = require("@raikou/core");
+
+// ../VisuallyHidden/src/VisuallyHidden.tsx
+var import_react16 = __toESM(require("react"));
 var import_core9 = require("@raikou/core");
+
+// css-module:./VisuallyHidden.module.css#css-module
+var VisuallyHidden_module_default = { "root": "m-515a97f8" };
+
+// ../VisuallyHidden/src/VisuallyHidden.tsx
+var defaultProps3 = {};
+var VisuallyHidden = (0, import_core9.factory)((_props, ref) => {
+  const props = (0, import_core9.useProps)("VisuallyHidden", defaultProps3, _props);
+  const _a = props, { classNames, className, style, styles, unstyled, vars } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "unstyled", "vars"]);
+  const getStyles = (0, import_core9.useStyles)({
+    name: "VisuallyHidden",
+    classes: VisuallyHidden_module_default,
+    props,
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled
+  });
+  return /* @__PURE__ */ import_react16.default.createElement(import_core9.Box, __spreadValues(__spreadValues({ component: "span", ref }, getStyles("root")), others));
+});
+VisuallyHidden.displayName = "@raikou/core/VisuallyHidden";
+
+// ../FocusTrap/src/FocusTrap.tsx
 function FocusTrap({
   children,
   active = true,
@@ -50634,19 +50694,24 @@ function FocusTrap({
 }) {
   const focusTrapRef = (0, import_hooks6.useFocusTrap)(active);
   const ref = (0, import_hooks6.useMergedRef)(focusTrapRef, children == null ? void 0 : children.ref);
-  if (!(0, import_core9.isElement)(children)) {
+  if (!(0, import_core10.isElement)(children)) {
     return children;
   }
-  return (0, import_react16.cloneElement)(children, { [refProp]: ref });
+  return (0, import_react17.cloneElement)(children, { [refProp]: ref });
+}
+function FocusTrapInitialFocus(props) {
+  return /* @__PURE__ */ import_react17.default.createElement(VisuallyHidden, __spreadValues({ tabIndex: -1, "data-autofocus": true }, props));
 }
 FocusTrap.displayName = "@raikou/core/FocusTrap";
+FocusTrapInitialFocus.displayName = "@raikou/core/FocusTrapInitialFocus";
+FocusTrap.InitialFocus = FocusTrapInitialFocus;
 
 // ../Popover/src/PopoverDropdown/PopoverDropdown.tsx
-var defaultProps3 = {};
-var PopoverDropdown = (0, import_core10.factory)(
+var defaultProps4 = {};
+var PopoverDropdown = (0, import_core11.factory)(
   (_props, ref) => {
     var _b, _c, _d, _e, _f;
-    const props = (0, import_core10.useProps)("PopoverDropdown", defaultProps3, _props);
+    const props = (0, import_core11.useProps)("PopoverDropdown", defaultProps4, _props);
     const _a = props, {
       className,
       style,
@@ -50681,7 +50746,7 @@ var PopoverDropdown = (0, import_core10.factory)(
     if (ctx.disabled) {
       return null;
     }
-    return /* @__PURE__ */ import_react17.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, ctx.portalProps), { withinPortal: ctx.withinPortal }), /* @__PURE__ */ import_react17.default.createElement(
+    return /* @__PURE__ */ import_react18.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, ctx.portalProps), { withinPortal: ctx.withinPortal }), /* @__PURE__ */ import_react18.default.createElement(
       Transition,
       __spreadProps(__spreadValues({
         mounted: ctx.opened
@@ -50693,12 +50758,12 @@ var PopoverDropdown = (0, import_core10.factory)(
       }),
       (transitionStyles) => {
         var _a2, _b2;
-        return /* @__PURE__ */ import_react17.default.createElement(FocusTrap, { active: ctx.trapFocus }, /* @__PURE__ */ import_react17.default.createElement(
-          import_core10.Box,
+        return /* @__PURE__ */ import_react18.default.createElement(FocusTrap, { active: ctx.trapFocus }, /* @__PURE__ */ import_react18.default.createElement(
+          import_core11.Box,
           __spreadValues(__spreadProps(__spreadValues(__spreadValues({}, accessibleProps), others), {
             variant,
             ref: mergedRef,
-            onKeyDownCapture: (0, import_core10.closeOnEscape)(ctx.onClose, {
+            onKeyDownCapture: (0, import_core11.closeOnEscape)(ctx.onClose, {
               active: ctx.closeOnEscape,
               onTrigger: returnFocus,
               onKeyDown: onKeyDownCapture
@@ -50714,13 +50779,13 @@ var PopoverDropdown = (0, import_core10.factory)(
                 zIndex: ctx.zIndex,
                 top: (_a2 = ctx.y) != null ? _a2 : 0,
                 left: (_b2 = ctx.x) != null ? _b2 : 0,
-                width: ctx.width === "target" ? void 0 : (0, import_core10.rem)(ctx.width)
+                width: ctx.width === "target" ? void 0 : (0, import_core11.rem)(ctx.width)
               }),
               style
             ]
           })),
           children,
-          /* @__PURE__ */ import_react17.default.createElement(
+          /* @__PURE__ */ import_react18.default.createElement(
             FloatingArrow,
             __spreadValues({
               ref: ctx.arrowRef,
@@ -50749,7 +50814,7 @@ PopoverDropdown.displayName = "@raikou/core/PopoverDropdown";
 var Popover_module_default = { "dropdown": "m-38a85659", "arrow": "m-a31dc6c1" };
 
 // ../Popover/src/Popover.tsx
-var defaultProps4 = {
+var defaultProps5 = {
   position: "bottom",
   offset: 8,
   positionDependencies: [],
@@ -50766,21 +50831,21 @@ var defaultProps4 = {
   withRoles: true,
   returnFocus: false,
   clickOutsideEvents: ["mousedown", "touchstart"],
-  zIndex: (0, import_core11.getDefaultZIndex)("popover"),
+  zIndex: (0, import_core12.getDefaultZIndex)("popover"),
   __staticSelector: "Popover",
   width: "max-content"
 };
-var varsResolver = (0, import_core11.createVarsResolver)(
+var varsResolver = (0, import_core12.createVarsResolver)(
   (_2, { radius, shadow }) => ({
     dropdown: {
-      "--popover-radius": radius === void 0 ? void 0 : (0, import_core11.getRadius)(radius),
-      "--popover-shadow": (0, import_core11.getShadow)(shadow)
+      "--popover-radius": radius === void 0 ? void 0 : (0, import_core12.getRadius)(radius),
+      "--popover-shadow": (0, import_core12.getShadow)(shadow)
     }
   })
 );
 function Popover(_props) {
   var _b, _c, _d, _e, _f, _g;
-  const props = (0, import_core11.useProps)("Popover", defaultProps4, _props);
+  const props = (0, import_core12.useProps)("Popover", defaultProps5, _props);
   const _a = props, {
     children,
     position,
@@ -50819,7 +50884,8 @@ function Popover(_props) {
     returnFocus,
     variant,
     keepMounted,
-    vars
+    vars,
+    floatingStrategy
   } = _a, others = __objRest(_a, [
     "children",
     "position",
@@ -50858,9 +50924,10 @@ function Popover(_props) {
     "returnFocus",
     "variant",
     "keepMounted",
-    "vars"
+    "vars",
+    "floatingStrategy"
   ]);
-  const getStyles = (0, import_core11.useStyles)({
+  const getStyles = (0, import_core12.useStyles)({
     name: __staticSelector,
     props,
     classes: Popover_module_default,
@@ -50871,10 +50938,10 @@ function Popover(_props) {
     vars,
     varsResolver
   });
-  const arrowRef = (0, import_react18.useRef)(null);
-  const [targetNode, setTargetNode] = (0, import_react18.useState)(null);
-  const [dropdownNode, setDropdownNode] = (0, import_react18.useState)(null);
-  const { dir } = (0, import_core11.useDirection)();
+  const arrowRef = (0, import_react19.useRef)(null);
+  const [targetNode, setTargetNode] = (0, import_react19.useState)(null);
+  const [dropdownNode, setDropdownNode] = (0, import_react19.useState)(null);
+  const { dir } = (0, import_core12.useDirection)();
   const uid = (0, import_hooks8.useId)(id);
   const popover = usePopover({
     middlewares,
@@ -50889,28 +50956,29 @@ function Popover(_props) {
     defaultOpened,
     onChange,
     onOpen,
-    onClose
+    onClose,
+    strategy: floatingStrategy
   });
   (0, import_hooks8.useClickOutside)(
     () => closeOnClickOutside && popover.onClose(),
     clickOutsideEvents,
     [targetNode, dropdownNode]
   );
-  const reference = (0, import_react18.useCallback)(
+  const reference = (0, import_react19.useCallback)(
     (node) => {
       setTargetNode(node);
       popover.floating.reference(node);
     },
     [popover.floating.reference]
   );
-  const floating = (0, import_react18.useCallback)(
+  const floating = (0, import_react19.useCallback)(
     (node) => {
       setDropdownNode(node);
       popover.floating.floating(node);
     },
     [popover.floating.floating]
   );
-  return /* @__PURE__ */ import_react18.default.createElement(
+  return /* @__PURE__ */ import_react19.default.createElement(
     PopoverContextProvider,
     {
       value: {
@@ -50965,23 +51033,23 @@ Popover.extend = (input) => input;
 
 // src/components/compact/index.tsx
 var import_colord4 = require("colord");
-var import_hooks16 = require("@raikou/hooks");
+var import_hooks13 = require("@raikou/hooks");
 
 // src/components/picker/index.tsx
-var import_react29 = __toESM(require("react"));
-var import_core23 = require("@raikou/core");
+var import_react30 = __toESM(require("react"));
+var import_core24 = require("@raikou/core");
 
 // ../TextInput/src/TextInput.tsx
+var import_react27 = __toESM(require("react"));
+var import_core21 = require("@raikou/core");
+
+// ../InputBase/src/InputBase.tsx
 var import_react26 = __toESM(require("react"));
 var import_core20 = require("@raikou/core");
 
-// ../InputBase/src/InputBase.tsx
-var import_react25 = __toESM(require("react"));
-var import_core19 = require("@raikou/core");
-
 // ../Input/src/Input.tsx
-var import_react24 = __toESM(require("react"));
-var import_core17 = require("@raikou/core");
+var import_react25 = __toESM(require("react"));
+var import_core18 = require("@raikou/core");
 
 // ../Input/src/InputWrapper.context.ts
 var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
@@ -50994,25 +51062,25 @@ var [InputWrapperProvider, useInputWrapperContext] = createOptionalContext({
 });
 
 // ../Input/src/InputLabel/InputLabel.tsx
-var import_react19 = __toESM(require("react"));
-var import_core12 = require("@raikou/core");
+var import_react20 = __toESM(require("react"));
+var import_core13 = require("@raikou/core");
 
 // css-module:../Input.module.css#css-module
 var Input_module_default = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
 
 // ../Input/src/InputLabel/InputLabel.tsx
-var defaultProps5 = {
+var defaultProps6 = {
   labelElement: "label"
 };
-var varsResolver2 = (0, import_core12.createVarsResolver)((_2, { size: size2 }) => ({
+var varsResolver2 = (0, import_core13.createVarsResolver)((_2, { size: size2 }) => ({
   label: {
-    "--input-label-size": (0, import_core12.getFontSize)(size2),
+    "--input-label-size": (0, import_core13.getFontSize)(size2),
     "--input-asterisk-color": void 0
   }
 }));
-var InputLabel = (0, import_core12.factory)((_props, ref) => {
-  const props = (0, import_core12.useProps)("InputLabel", defaultProps5, _props);
-  const _a = (0, import_core12.useProps)("InputLabel", defaultProps5, props), {
+var InputLabel = (0, import_core13.factory)((_props, ref) => {
+  const props = (0, import_core13.useProps)("InputLabel", defaultProps6, _props);
+  const _a = (0, import_core13.useProps)("InputLabel", defaultProps6, props), {
     classNames,
     className,
     style,
@@ -51026,7 +51094,8 @@ var InputLabel = (0, import_core12.factory)((_props, ref) => {
     onMouseDown,
     children,
     __staticSelector,
-    variant
+    variant,
+    mod
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -51041,16 +51110,13 @@ var InputLabel = (0, import_core12.factory)((_props, ref) => {
     "onMouseDown",
     "children",
     "__staticSelector",
-    "variant"
+    "variant",
+    "mod"
   ]);
-  const _getStyles = (0, import_core12.useStyles)({
+  const _getStyles = (0, import_core13.useStyles)({
     name: ["InputWrapper", __staticSelector],
     props,
     classes: Input_module_default,
-    // classes: {
-    //   label: "inputWrapper-label",
-    //   required: "inputWrapper-required",
-    // },
     className,
     style,
     classNames,
@@ -51062,15 +51128,15 @@ var InputLabel = (0, import_core12.factory)((_props, ref) => {
   });
   const ctx = useInputWrapperContext();
   const getStyles = (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-  return /* @__PURE__ */ import_react19.default.createElement(
-    import_core12.Box,
+  return /* @__PURE__ */ import_react20.default.createElement(
+    import_core13.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("label")), {
       component: labelElement,
       variant,
       size: size2,
       ref,
       htmlFor: labelElement === "label" ? htmlFor : void 0,
-      mod: { required },
+      mod: [{ required }, mod],
       onMouseDown: (event) => {
         onMouseDown == null ? void 0 : onMouseDown(event);
         if (!event.defaultPrevented && event.detail > 1) {
@@ -51079,22 +51145,22 @@ var InputLabel = (0, import_core12.factory)((_props, ref) => {
       }
     }), others),
     children,
-    required && /* @__PURE__ */ import_react19.default.createElement("span", __spreadProps(__spreadValues({}, getStyles("required")), { "aria-hidden": true }), " *")
+    required && /* @__PURE__ */ import_react20.default.createElement("span", __spreadProps(__spreadValues({}, getStyles("required")), { "aria-hidden": true }), " *")
   );
 });
 InputLabel.displayName = "@raikou/core/InputLabel";
 
 // ../Input/src/InputError/InputError.tsx
-var import_react20 = __toESM(require("react"));
-var import_core13 = require("@raikou/core");
-var defaultProps6 = {};
-var varsResolver3 = (0, import_core13.createVarsResolver)((_2, { size: size2 }) => ({
+var import_react21 = __toESM(require("react"));
+var import_core14 = require("@raikou/core");
+var defaultProps7 = {};
+var varsResolver3 = (0, import_core14.createVarsResolver)((_2, { size: size2 }) => ({
   error: {
-    "--input-error-size": size2 === void 0 ? void 0 : `calc(${(0, import_core13.getFontSize)(size2)} - ${(0, import_core13.rem)(2)})`
+    "--input-error-size": size2 === void 0 ? void 0 : `calc(${(0, import_core14.getFontSize)(size2)} - ${(0, import_core14.rem)(2)})`
   }
 }));
-var InputError = (0, import_core13.factory)((_props, ref) => {
-  const props = (0, import_core13.useProps)("InputError", defaultProps6, _props);
+var InputError = (0, import_core14.factory)((_props, ref) => {
+  const props = (0, import_core14.useProps)("InputError", defaultProps7, _props);
   const _a = props, {
     classNames,
     className,
@@ -51118,13 +51184,10 @@ var InputError = (0, import_core13.factory)((_props, ref) => {
     "__inheritStyles",
     "variant"
   ]);
-  const _getStyles = (0, import_core13.useStyles)({
+  const _getStyles = (0, import_core14.useStyles)({
     name: ["InputWrapper", __staticSelector],
     props,
     classes: Input_module_default,
-    // classes: {
-    //   error: "inputWrapper-error",
-    // },
     className,
     style,
     classNames,
@@ -51136,8 +51199,8 @@ var InputError = (0, import_core13.factory)((_props, ref) => {
   });
   const ctx = useInputWrapperContext();
   const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-  return /* @__PURE__ */ import_react20.default.createElement(
-    import_core13.Box,
+  return /* @__PURE__ */ import_react21.default.createElement(
+    import_core14.Box,
     __spreadValues(__spreadValues({
       component: "p",
       ref,
@@ -51149,20 +51212,20 @@ var InputError = (0, import_core13.factory)((_props, ref) => {
 InputError.displayName = "@raikou/core/InputError";
 
 // ../Input/src/InputDescription/InputDescription.tsx
-var import_react21 = __toESM(require("react"));
-var import_core14 = require("@raikou/core");
-var defaultProps7 = {};
-var varsResolver4 = (0, import_core14.createVarsResolver)(
+var import_react22 = __toESM(require("react"));
+var import_core15 = require("@raikou/core");
+var defaultProps8 = {};
+var varsResolver4 = (0, import_core15.createVarsResolver)(
   (_2, { size: size2 }) => ({
     description: {
-      "--input-description-size": size2 === void 0 ? void 0 : `calc(${(0, import_core14.getFontSize)(size2)} - ${(0, import_core14.rem)(2)})`
+      "--input-description-size": size2 === void 0 ? void 0 : `calc(${(0, import_core15.getFontSize)(size2)} - ${(0, import_core15.rem)(2)})`
     }
   })
 );
-var InputDescription = (0, import_core14.factory)(
+var InputDescription = (0, import_core15.factory)(
   (_props, ref) => {
-    const props = (0, import_core14.useProps)("InputDescription", defaultProps7, _props);
-    const _a = (0, import_core14.useProps)("InputDescription", defaultProps7, props), {
+    const props = (0, import_core15.useProps)("InputDescription", defaultProps8, _props);
+    const _a = (0, import_core15.useProps)("InputDescription", defaultProps8, props), {
       classNames,
       className,
       style,
@@ -51186,13 +51249,10 @@ var InputDescription = (0, import_core14.factory)(
       "variant"
     ]);
     const ctx = useInputWrapperContext();
-    const _getStyles = (0, import_core14.useStyles)({
+    const _getStyles = (0, import_core15.useStyles)({
       name: ["InputWrapper", __staticSelector],
       props,
       classes: Input_module_default,
-      // classes: {
-      //   description: "inputWrapper-description",
-      // },
       className,
       style,
       classNames,
@@ -51203,8 +51263,8 @@ var InputDescription = (0, import_core14.factory)(
       varsResolver: varsResolver4
     });
     const getStyles = __inheritStyles && (ctx == null ? void 0 : ctx.getStyles) || _getStyles;
-    return /* @__PURE__ */ import_react21.default.createElement(
-      import_core14.Box,
+    return /* @__PURE__ */ import_react22.default.createElement(
+      import_core15.Box,
       __spreadValues(__spreadValues({
         component: "p",
         ref,
@@ -51217,13 +51277,13 @@ var InputDescription = (0, import_core14.factory)(
 InputDescription.displayName = "@raikou/core/InputDescription";
 
 // ../Input/src/InputPlaceholder/InputPlaceholder.tsx
-var import_react22 = __toESM(require("react"));
-var import_core15 = require("@raikou/core");
-var defaultProps8 = {};
-var InputPlaceholder = (0, import_core15.factory)(
+var import_react23 = __toESM(require("react"));
+var import_core16 = require("@raikou/core");
+var defaultProps9 = {};
+var InputPlaceholder = (0, import_core16.factory)(
   (_props, ref) => {
-    const props = (0, import_core15.useProps)("InputPlaceholder", defaultProps8, _props);
-    const _a = (0, import_core15.useProps)("InputPlaceholder", defaultProps8, props), {
+    const props = (0, import_core16.useProps)("InputPlaceholder", defaultProps9, _props);
+    const _a = (0, import_core16.useProps)("InputPlaceholder", defaultProps9, props), {
       classNames,
       className,
       style,
@@ -51231,7 +51291,9 @@ var InputPlaceholder = (0, import_core15.factory)(
       unstyled,
       vars,
       __staticSelector,
-      variant
+      variant,
+      error,
+      mod
     } = _a, others = __objRest(_a, [
       "classNames",
       "className",
@@ -51240,15 +51302,14 @@ var InputPlaceholder = (0, import_core15.factory)(
       "unstyled",
       "vars",
       "__staticSelector",
-      "variant"
+      "variant",
+      "error",
+      "mod"
     ]);
-    const getStyles = (0, import_core15.useStyles)({
+    const getStyles = (0, import_core16.useStyles)({
       name: ["InputPlaceholder", __staticSelector],
       props,
       classes: Input_module_default,
-      // classes: {
-      //   placeholder: "input-placeholder",
-      // },
       className,
       style,
       classNames,
@@ -51256,9 +51317,10 @@ var InputPlaceholder = (0, import_core15.factory)(
       unstyled,
       rootSelector: "placeholder"
     });
-    return /* @__PURE__ */ import_react22.default.createElement(
-      import_core15.Box,
+    return /* @__PURE__ */ import_react23.default.createElement(
+      import_core16.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("placeholder")), {
+        mod: [{ error: !!error }, mod],
         component: "span",
         variant,
         ref
@@ -51269,9 +51331,9 @@ var InputPlaceholder = (0, import_core15.factory)(
 InputPlaceholder.displayName = "@raikou/core/InputPlaceholder";
 
 // ../Input/src/InputWrapper/InputWrapper.tsx
-var import_react23 = __toESM(require("react"));
+var import_react24 = __toESM(require("react"));
 var import_hooks9 = require("@raikou/hooks");
-var import_core16 = require("@raikou/core");
+var import_core17 = require("@raikou/core");
 
 // ../Input/src/InputWrapper/get-input-offsets/get-input-offsets.ts
 function getInputOffsets(inputWrapperOrder, { hasDescription, hasError }) {
@@ -51284,25 +51346,25 @@ function getInputOffsets(inputWrapperOrder, { hasDescription, hasError }) {
 }
 
 // ../Input/src/InputWrapper/InputWrapper.tsx
-var defaultProps9 = {
+var defaultProps10 = {
   labelElement: "label",
   inputContainer: (children) => children,
   inputWrapperOrder: ["label", "description", "input", "error"]
 };
-var varsResolver5 = (0, import_core16.createVarsResolver)((_2, { size: size2 }) => ({
+var varsResolver5 = (0, import_core17.createVarsResolver)((_2, { size: size2 }) => ({
   label: {
-    "--input-label-size": (0, import_core16.getFontSize)(size2),
+    "--input-label-size": (0, import_core17.getFontSize)(size2),
     "--input-asterisk-color": void 0
   },
   error: {
-    "--input-error-size": size2 === void 0 ? void 0 : `calc(${(0, import_core16.getFontSize)(size2)} - ${(0, import_core16.rem)(2)})`
+    "--input-error-size": size2 === void 0 ? void 0 : `calc(${(0, import_core17.getFontSize)(size2)} - ${(0, import_core17.rem)(2)})`
   },
   description: {
-    "--input-description-size": size2 === void 0 ? void 0 : `calc(${(0, import_core16.getFontSize)(size2)} - ${(0, import_core16.rem)(2)})`
+    "--input-description-size": size2 === void 0 ? void 0 : `calc(${(0, import_core17.getFontSize)(size2)} - ${(0, import_core17.rem)(2)})`
   }
 }));
-var InputWrapper = (0, import_core16.factory)((_props, ref) => {
-  const props = (0, import_core16.useProps)("InputWrapper", defaultProps9, _props);
+var InputWrapper = (0, import_core17.factory)((_props, ref) => {
+  const props = (0, import_core17.useProps)("InputWrapper", defaultProps10, _props);
   const _a = props, {
     classNames,
     className,
@@ -51326,7 +51388,8 @@ var InputWrapper = (0, import_core16.factory)((_props, ref) => {
     withAsterisk,
     id,
     required,
-    __stylesApiProps
+    __stylesApiProps,
+    mod
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -51350,19 +51413,13 @@ var InputWrapper = (0, import_core16.factory)((_props, ref) => {
     "withAsterisk",
     "id",
     "required",
-    "__stylesApiProps"
+    "__stylesApiProps",
+    "mod"
   ]);
-  const getStyles = (0, import_core16.useStyles)({
+  const getStyles = (0, import_core17.useStyles)({
     name: ["InputWrapper", __staticSelector],
     props: __stylesApiProps || props,
     classes: Input_module_default,
-    // classes: {
-    //   root: "inputWrapper-root",
-    //   label: "inputWrapper-label",
-    //   required: "inputWrapper-required",
-    //   error: "inputWrapper-error",
-    //   description: "inputWrapper-description",
-    // },
     className,
     style,
     classNames,
@@ -51386,7 +51443,7 @@ var InputWrapper = (0, import_core16.factory)((_props, ref) => {
   const _describedBy = `${hasError ? errorId : ""} ${hasDescription ? descriptionId : ""}`;
   const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : void 0;
   const labelId = (labelProps == null ? void 0 : labelProps.id) || `${idBase}-label`;
-  const _label = label && /* @__PURE__ */ import_react23.default.createElement(
+  const _label = label && /* @__PURE__ */ import_react24.default.createElement(
     InputLabel,
     __spreadValues(__spreadValues({
       key: "label",
@@ -51397,7 +51454,7 @@ var InputWrapper = (0, import_core16.factory)((_props, ref) => {
     }, sharedProps), labelProps),
     label
   );
-  const _description = hasDescription && /* @__PURE__ */ import_react23.default.createElement(
+  const _description = hasDescription && /* @__PURE__ */ import_react24.default.createElement(
     InputDescription,
     __spreadProps(__spreadValues(__spreadValues({
       key: "description"
@@ -51407,8 +51464,8 @@ var InputWrapper = (0, import_core16.factory)((_props, ref) => {
     }),
     description
   );
-  const _input = /* @__PURE__ */ import_react23.default.createElement(import_react23.default.Fragment, { key: "input" }, inputContainer(children));
-  const _error = hasError && /* @__PURE__ */ import_react23.default.createElement(
+  const _input = /* @__PURE__ */ import_react24.default.createElement(import_react24.default.Fragment, { key: "input" }, inputContainer(children));
+  const _error = hasError && /* @__PURE__ */ import_react24.default.createElement(
     InputError,
     __spreadProps(__spreadValues(__spreadValues({}, errorProps), sharedProps), {
       size: (errorProps == null ? void 0 : errorProps.size) || sharedProps.size,
@@ -51431,7 +51488,7 @@ var InputWrapper = (0, import_core16.factory)((_props, ref) => {
         return null;
     }
   });
-  return /* @__PURE__ */ import_react23.default.createElement(
+  return /* @__PURE__ */ import_react24.default.createElement(
     InputWrapperProvider,
     {
       value: __spreadValues({
@@ -51441,12 +51498,13 @@ var InputWrapper = (0, import_core16.factory)((_props, ref) => {
         labelId
       }, getInputOffsets(inputWrapperOrder, { hasDescription, hasError }))
     },
-    /* @__PURE__ */ import_react23.default.createElement(
-      import_core16.Box,
+    /* @__PURE__ */ import_react24.default.createElement(
+      import_core17.Box,
       __spreadValues(__spreadValues({
         ref,
         variant,
-        size: size2
+        size: size2,
+        mod: [{ error: !!error }, mod]
       }, getStyles("root")), others),
       content
     )
@@ -51458,29 +51516,29 @@ InputWrapper.displayName = "@raikou/core/InputWrapper";
 var Input_module_default2 = { "wrapper": "m-6c018570", "input": "m-8fb7ebe7", "section": "m-82577fc2", "placeholder": "m-88bacfd0", "root": "m-46b77525", "label": "m-8fdc1311", "required": "m-78a94662", "error": "m-8f816625", "description": "m-fe47ce59" };
 
 // ../Input/src/Input.tsx
-var defaultProps10 = {
+var defaultProps11 = {
   variant: "default",
   leftSectionPointerEvents: "none",
   rightSectionPointerEvents: "none",
   withAria: true,
   withErrorStyles: true
 };
-var varsResolver6 = (0, import_core17.createVarsResolver)((_2, props, ctx) => ({
+var varsResolver6 = (0, import_core18.createVarsResolver)((_2, props, ctx) => ({
   wrapper: {
     "--input-margin-top": ctx.offsetTop ? "calc(var(--raikou-spacing-xs) / 2)" : void 0,
     "--input-margin-bottom": ctx.offsetBottom ? "calc(var(--raikou-spacing-xs) / 2)" : void 0,
-    "--input-height": (0, import_core17.getSize)(props.size, "input-height"),
-    "--input-fz": (0, import_core17.getFontSize)(props.size),
-    "--input-radius": props.radius === void 0 ? void 0 : (0, import_core17.getRadius)(props.radius),
-    "--input-left-section-width": props.leftSectionWidth !== void 0 ? (0, import_core17.rem)(props.leftSectionWidth) : void 0,
-    "--input-right-section-width": props.rightSectionWidth !== void 0 ? (0, import_core17.rem)(props.rightSectionWidth) : void 0,
-    "--input-padding-y": props.multiline ? (0, import_core17.getSize)(props.size, "input-padding-y") : void 0,
+    "--input-height": (0, import_core18.getSize)(props.size, "input-height"),
+    "--input-fz": (0, import_core18.getFontSize)(props.size),
+    "--input-radius": props.radius === void 0 ? void 0 : (0, import_core18.getRadius)(props.radius),
+    "--input-left-section-width": props.leftSectionWidth !== void 0 ? (0, import_core18.rem)(props.leftSectionWidth) : void 0,
+    "--input-right-section-width": props.rightSectionWidth !== void 0 ? (0, import_core18.rem)(props.rightSectionWidth) : void 0,
+    "--input-padding-y": props.multiline ? (0, import_core18.getSize)(props.size, "input-padding-y") : void 0,
     "--input-left-section-pointer-events": props.leftSectionPointerEvents,
     "--input-right-section-pointer-events": props.rightSectionPointerEvents
   }
 }));
-var Input = (0, import_core17.polymorphicFactory)((_props, ref) => {
-  const props = (0, import_core17.useProps)("Input", defaultProps10, _props);
+var Input = (0, import_core18.polymorphicFactory)((_props, ref) => {
+  const props = (0, import_core18.useProps)("Input", defaultProps11, _props);
   const _a = props, {
     classNames,
     className,
@@ -51509,7 +51567,8 @@ var Input = (0, import_core17.polymorphicFactory)((_props, ref) => {
     radius,
     id,
     withAria,
-    withErrorStyles
+    withErrorStyles,
+    mod
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -51538,23 +51597,19 @@ var Input = (0, import_core17.polymorphicFactory)((_props, ref) => {
     "radius",
     "id",
     "withAria",
-    "withErrorStyles"
+    "withErrorStyles",
+    "mod"
   ]);
-  const { styleProps, rest } = (0, import_core17.extractStyleProps)(others);
+  const { styleProps, rest } = (0, import_core18.extractStyleProps)(others);
   const ctx = useInputWrapperContext();
   const stylesCtx = {
     offsetBottom: ctx == null ? void 0 : ctx.offsetBottom,
     offsetTop: ctx == null ? void 0 : ctx.offsetTop
   };
-  const getStyles = (0, import_core17.useStyles)({
+  const getStyles = (0, import_core18.useStyles)({
     name: ["Input", __staticSelector],
     props: __stylesApiProps || props,
     classes: Input_module_default2,
-    // classes: {
-    //   wrapper: "input-wrapper",
-    //   input: "input-input",
-    //   section: "input-section",
-    // },
     className,
     style,
     classNames,
@@ -51572,21 +51627,24 @@ var Input = (0, import_core17.polymorphicFactory)((_props, ref) => {
     "aria-describedby": ctx == null ? void 0 : ctx.describedBy,
     id: (ctx == null ? void 0 : ctx.inputId) || id
   } : {};
-  return /* @__PURE__ */ import_react24.default.createElement(
-    import_core17.Box,
+  return /* @__PURE__ */ import_react25.default.createElement(
+    import_core18.Box,
     __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, getStyles("wrapper")), styleProps), wrapperProps), {
-      mod: {
-        error: !!error && withErrorStyles,
-        pointer,
-        disabled,
-        multiline,
-        "data-with-right-section": !!rightSection,
-        "data-with-left-section": !!leftSection
-      },
+      mod: [
+        {
+          error: !!error && withErrorStyles,
+          pointer,
+          disabled,
+          multiline,
+          "data-with-right-section": !!rightSection,
+          "data-with-left-section": !!leftSection
+        },
+        mod
+      ],
       variant,
       size: size2
     }),
-    leftSection && /* @__PURE__ */ import_react24.default.createElement(
+    leftSection && /* @__PURE__ */ import_react25.default.createElement(
       "div",
       __spreadValues(__spreadProps(__spreadValues({}, leftSectionProps), {
         "data-position": "left"
@@ -51596,8 +51654,8 @@ var Input = (0, import_core17.polymorphicFactory)((_props, ref) => {
       })),
       leftSection
     ),
-    /* @__PURE__ */ import_react24.default.createElement(
-      import_core17.Box,
+    /* @__PURE__ */ import_react25.default.createElement(
+      import_core18.Box,
       __spreadValues(__spreadProps(__spreadValues(__spreadValues({
         component: "input"
       }, rest), ariaAttributes), {
@@ -51607,7 +51665,7 @@ var Input = (0, import_core17.polymorphicFactory)((_props, ref) => {
         variant
       }), getStyles("input"))
     ),
-    rightSection && /* @__PURE__ */ import_react24.default.createElement(
+    rightSection && /* @__PURE__ */ import_react25.default.createElement(
       "div",
       __spreadValues(__spreadProps(__spreadValues({}, rightSectionProps), {
         "data-position": "right"
@@ -51619,6 +51677,7 @@ var Input = (0, import_core17.polymorphicFactory)((_props, ref) => {
     )
   );
 });
+Input.classes = Input_module_default2;
 Input.Wrapper = InputWrapper;
 Input.Label = InputLabel;
 Input.Error = InputError;
@@ -51627,9 +51686,9 @@ Input.Placeholder = InputPlaceholder;
 Input.displayName = "@raikou/core/Input";
 
 // ../Input/src/use-input-props.ts
-var import_core18 = require("@raikou/core");
-function useInputProps(component, defaultProps34, _props) {
-  const props = (0, import_core18.useProps)(component, defaultProps34, _props);
+var import_core19 = require("@raikou/core");
+function useInputProps(component, defaultProps33, _props) {
+  const props = (0, import_core19.useProps)(component, defaultProps33, _props);
   const _a = props, {
     label,
     description,
@@ -51677,7 +51736,7 @@ function useInputProps(component, defaultProps34, _props) {
     "variant",
     "vars"
   ]);
-  const { styleProps, rest } = (0, import_core18.extractStyleProps)(others);
+  const { styleProps, rest } = (0, import_core19.extractStyleProps)(others);
   const wrapperProps = __spreadValues({
     label,
     description,
@@ -51720,25 +51779,25 @@ function useInputProps(component, defaultProps34, _props) {
 }
 
 // ../InputBase/src/InputBase.tsx
-var defaultProps11 = {
+var defaultProps12 = {
   __staticSelector: "InputBase",
   withAria: true
 };
-var InputBase = (0, import_core19.polymorphicFactory)((props, ref) => {
+var InputBase = (0, import_core20.polymorphicFactory)((props, ref) => {
   const _a = useInputProps(
     "InputBase",
-    defaultProps11,
+    defaultProps12,
     props
   ), { inputProps, wrapperProps } = _a, others = __objRest(_a, ["inputProps", "wrapperProps"]);
-  return /* @__PURE__ */ import_react25.default.createElement(Input.Wrapper, __spreadValues({}, wrapperProps), /* @__PURE__ */ import_react25.default.createElement(Input, __spreadProps(__spreadValues(__spreadValues({}, inputProps), others), { ref })));
+  return /* @__PURE__ */ import_react26.default.createElement(Input.Wrapper, __spreadValues({}, wrapperProps), /* @__PURE__ */ import_react26.default.createElement(Input, __spreadProps(__spreadValues(__spreadValues({}, inputProps), others), { ref })));
 });
 InputBase.displayName = "@raikou/core/InputBase";
 
 // ../TextInput/src/TextInput.tsx
-var defaultProps12 = {};
-var TextInput = (0, import_core20.factory)((props, ref) => {
-  const _props = (0, import_core20.useProps)("TextInput", defaultProps12, props);
-  return /* @__PURE__ */ import_react26.default.createElement(
+var defaultProps13 = {};
+var TextInput = (0, import_core21.factory)((props, ref) => {
+  const _props = (0, import_core21.useProps)("TextInput", defaultProps13, props);
+  return /* @__PURE__ */ import_react27.default.createElement(
     InputBase,
     __spreadProps(__spreadValues({
       component: "input",
@@ -51751,29 +51810,29 @@ var TextInput = (0, import_core20.factory)((props, ref) => {
 TextInput.displayName = "@raikou/core/TextInput";
 
 // ../Stack/src/Stack.tsx
-var import_react27 = __toESM(require("react"));
-var import_core21 = require("@raikou/core");
+var import_react28 = __toESM(require("react"));
+var import_core22 = require("@raikou/core");
 
 // css-module:./Stack.module.css#css-module
 var Stack_module_default = { "root": "m-6d731127" };
 
 // ../Stack/src/Stack.tsx
-var defaultProps13 = {
+var defaultProps14 = {
   gap: "md",
   align: "stretch",
   justify: "flex-start"
 };
-var varsResolver7 = (0, import_core21.createVarsResolver)(
+var varsResolver7 = (0, import_core22.createVarsResolver)(
   (_2, { gap, align, justify }) => ({
     root: {
-      "--stack-gap": (0, import_core21.getSpacing)(gap),
+      "--stack-gap": (0, import_core22.getSpacing)(gap),
       "--stack-align": align,
       "--stack-justify": justify
     }
   })
 );
-var Stack = (0, import_core21.factory)((_props, ref) => {
-  const props = (0, import_core21.useProps)("Stack", defaultProps13, _props);
+var Stack = (0, import_core22.factory)((_props, ref) => {
+  const props = (0, import_core22.useProps)("Stack", defaultProps14, _props);
   const _a = props, {
     classNames,
     className,
@@ -51797,7 +51856,7 @@ var Stack = (0, import_core21.factory)((_props, ref) => {
     "gap",
     "variant"
   ]);
-  const getStyles = (0, import_core21.useStyles)({
+  const getStyles = (0, import_core22.useStyles)({
     name: "Stack",
     props,
     classes: Stack_module_default,
@@ -51809,34 +51868,34 @@ var Stack = (0, import_core21.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver7
   });
-  return /* @__PURE__ */ import_react27.default.createElement(import_core21.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { variant }), others));
+  return /* @__PURE__ */ import_react28.default.createElement(import_core22.Box, __spreadValues(__spreadProps(__spreadValues({ ref }, getStyles("root")), { variant }), others));
 });
 Stack.displayName = "@raikou/core/Stack";
 Stack.classes = Stack_module_default;
 
 // ../ColorSwatch/src/ColorSwatch.tsx
-var import_react28 = __toESM(require("react"));
-var import_core22 = require("@raikou/core");
+var import_react29 = __toESM(require("react"));
+var import_core23 = require("@raikou/core");
 
 // css-module:./ColorSwatch.module.css#css-module
 var ColorSwatch_module_default = { "root": "m-de3d2490", "colorOverlay": "m-862f3d1b", "shadowOverlay": "m-98ae7f22", "alphaOverlay": "m-95709ac0", "childrenOverlay": "m-93e74e3" };
 
 // ../ColorSwatch/src/ColorSwatch.tsx
-var defaultProps14 = {
+var defaultProps15 = {
   withShadow: true
 };
-var varsResolver8 = (0, import_core22.createVarsResolver)(
+var varsResolver8 = (0, import_core23.createVarsResolver)(
   (_2, { radius, size: size2 }) => ({
     root: {
-      "--cs-radius": radius === void 0 ? void 0 : (0, import_core22.getRadius)(radius),
-      "--cs-size": (0, import_core22.rem)(size2)
+      "--cs-radius": radius === void 0 ? void 0 : (0, import_core23.getRadius)(radius),
+      "--cs-size": (0, import_core23.rem)(size2)
     }
   })
 );
-var ColorSwatch = (0, import_core22.polymorphicFactory)(
+var ColorSwatch = (0, import_core23.polymorphicFactory)(
   (_props, ref) => {
-    const props = (0, import_core22.useProps)("ColorSwatch", defaultProps14, _props);
-    const _a = (0, import_core22.useProps)("ColorSwatch", defaultProps14, props), {
+    const props = (0, import_core23.useProps)("ColorSwatch", defaultProps15, _props);
+    const _a = (0, import_core23.useProps)("ColorSwatch", defaultProps15, props), {
       classNames,
       className,
       style,
@@ -51863,7 +51922,7 @@ var ColorSwatch = (0, import_core22.polymorphicFactory)(
       "children",
       "variant"
     ]);
-    const getStyles = (0, import_core22.useStyles)({
+    const getStyles = (0, import_core23.useStyles)({
       name: "ColorSwatch",
       props,
       classes: ColorSwatch_module_default,
@@ -51875,20 +51934,20 @@ var ColorSwatch = (0, import_core22.polymorphicFactory)(
       vars,
       varsResolver: varsResolver8
     });
-    return /* @__PURE__ */ import_react28.default.createElement(
-      import_core22.Box,
+    return /* @__PURE__ */ import_react29.default.createElement(
+      import_core23.Box,
       __spreadValues(__spreadValues({
         ref,
         variant,
         size: size2
       }, getStyles("root", { focusable: true })), others),
-      /* @__PURE__ */ import_react28.default.createElement("span", __spreadValues({}, getStyles("alphaOverlay"))),
-      withShadow && /* @__PURE__ */ import_react28.default.createElement("span", __spreadValues({}, getStyles("shadowOverlay"))),
-      /* @__PURE__ */ import_react28.default.createElement(
+      /* @__PURE__ */ import_react29.default.createElement("span", __spreadValues({}, getStyles("alphaOverlay"))),
+      withShadow && /* @__PURE__ */ import_react29.default.createElement("span", __spreadValues({}, getStyles("shadowOverlay"))),
+      /* @__PURE__ */ import_react29.default.createElement(
         "span",
         __spreadValues({}, getStyles("colorOverlay", { style: { backgroundColor: color } }))
       ),
-      /* @__PURE__ */ import_react28.default.createElement("span", __spreadValues({}, getStyles("childrenOverlay")), children)
+      /* @__PURE__ */ import_react29.default.createElement("span", __spreadValues({}, getStyles("childrenOverlay")), children)
     );
   }
 );
@@ -51898,14 +51957,14 @@ ColorSwatch.classes = ColorSwatch_module_default;
 // src/components/picker/index.tsx
 var import_clsx2 = __toESM(require("clsx"));
 var import_colord = require("colord");
-var defaultProps15 = {
+var defaultProps16 = {
   disabled: false,
   swatchSize: 24,
   control: "input"
 };
-var GradientPickerPicker = (0, import_core23.factory)(
+var GradientPickerPicker = (0, import_core24.factory)(
   (props, ref) => {
-    const _a = (0, import_core23.useProps)("GradientPickerPicker", defaultProps15, props), {
+    const _a = (0, import_core24.useProps)("GradientPickerPicker", defaultProps16, props), {
       classNames,
       className,
       style,
@@ -51925,7 +51984,7 @@ var GradientPickerPicker = (0, import_core23.factory)(
       "control"
     ]);
     const ctx = useGradientPickerContext();
-    return /* @__PURE__ */ import_react29.default.createElement(import_react29.default.Fragment, null, control === "input" && /* @__PURE__ */ import_react29.default.createElement(import_core23.Box, { ref }, /* @__PURE__ */ import_react29.default.createElement(
+    return /* @__PURE__ */ import_react30.default.createElement(import_react30.default.Fragment, null, control === "input" && /* @__PURE__ */ import_react30.default.createElement(import_core24.Box, { ref }, /* @__PURE__ */ import_react30.default.createElement(
       TextInput,
       __spreadValues({
         ref: ctx.setControl,
@@ -51947,7 +52006,7 @@ var GradientPickerPicker = (0, import_core23.factory)(
           }
         },
         onClick: () => ctx.toggleOpen(),
-        leftSection: /* @__PURE__ */ import_react29.default.createElement(
+        leftSection: /* @__PURE__ */ import_react30.default.createElement(
           ColorSwatch,
           {
             component: "button",
@@ -51957,38 +52016,38 @@ var GradientPickerPicker = (0, import_core23.factory)(
           }
         )
       }, others)
-    )), control === "dropdown" && /* @__PURE__ */ import_react29.default.createElement(
+    )), control === "dropdown" && /* @__PURE__ */ import_react30.default.createElement(
       Stack,
       {
         className: (0, import_clsx2.default)("dropdown", "rgba(156,163,175)", className)
       },
-      /* @__PURE__ */ import_react29.default.createElement(import_react29.default.Fragment, null)
+      /* @__PURE__ */ import_react30.default.createElement(import_react30.default.Fragment, null)
     ));
   }
 );
 GradientPickerPicker.displayName = "@raikou/core/GradientPickerPicker";
 
 // src/components/compact/index.tsx
-var import_clsx10 = __toESM(require("clsx"));
+var import_clsx9 = __toESM(require("clsx"));
 
 // ../Button/src/Button.tsx
-var import_react37 = __toESM(require("react"));
-var import_core31 = require("@raikou/core");
+var import_react38 = __toESM(require("react"));
+var import_core32 = require("@raikou/core");
 
 // ../UnstyledButton/src/UnstyledButton.tsx
-var import_react30 = __toESM(require("react"));
-var import_core24 = require("@raikou/core");
+var import_react31 = __toESM(require("react"));
+var import_core25 = require("@raikou/core");
 
 // css-module:./UnstyledButton.module.css#css-module
 var UnstyledButton_module_default = { "root": "m-87cf2631" };
 
 // ../UnstyledButton/src/UnstyledButton.tsx
-var defaultProps16 = {
+var defaultProps17 = {
   __staticSelector: "UnstyledButton"
 };
-var UnstyledButton = (0, import_core24.polymorphicFactory)(
+var UnstyledButton = (0, import_core25.polymorphicFactory)(
   (_props, ref) => {
-    const props = (0, import_core24.useProps)("UnstyledButton", defaultProps16, _props);
+    const props = (0, import_core25.useProps)("UnstyledButton", defaultProps17, _props);
     const _a = props, {
       className,
       component = "button",
@@ -52006,7 +52065,7 @@ var UnstyledButton = (0, import_core24.polymorphicFactory)(
       "styles",
       "style"
     ]);
-    const getStyles = (0, import_core24.useStyles)({
+    const getStyles = (0, import_core25.useStyles)({
       name: __staticSelector,
       props,
       classes: UnstyledButton_module_default,
@@ -52016,8 +52075,8 @@ var UnstyledButton = (0, import_core24.polymorphicFactory)(
       styles,
       unstyled
     });
-    return /* @__PURE__ */ import_react30.default.createElement(
-      import_core24.Box,
+    return /* @__PURE__ */ import_react31.default.createElement(
+      import_core25.Box,
       __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { focusable: true })), {
         component,
         ref,
@@ -52030,45 +52089,45 @@ UnstyledButton.displayName = "@raikou/core/UnstyledButton";
 UnstyledButton.classes = UnstyledButton_module_default;
 
 // ../Loader/src/Loader.tsx
-var import_react35 = __toESM(require("react"));
-var import_core29 = require("@raikou/core");
+var import_react36 = __toESM(require("react"));
+var import_core30 = require("@raikou/core");
 
 // ../Loader/src/loaders/Bars.tsx
-var import_react31 = __toESM(require("react"));
+var import_react32 = __toESM(require("react"));
 var import_clsx3 = __toESM(require("clsx"));
-var import_core25 = require("@raikou/core");
+var import_core26 = require("@raikou/core");
 
 // css-module:../Loader.module.css#css-module
 var Loader_module_default = { "root": "m-5ae2e3c", "barsLoader": "m-7a2bd4cd", "bar": "m-870bb79", "bars-loader-animation": "m-5d2b3b9d", "dotsLoader": "m-4e3f22d7", "dot": "m-870c4af", "loader-dots-animation": "m-aac34a1", "ovalLoader": "m-b34414df", "oval-loader-animation": "m-f8e89c4b", "progressLoader": "m-f7590d7a" };
 
 // ../Loader/src/loaders/Bars.tsx
-var Bars = (0, import_react31.forwardRef)(
+var Bars = (0, import_react32.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react31.default.createElement(
-      import_core25.Box,
+    return /* @__PURE__ */ import_react32.default.createElement(
+      import_core26.Box,
       __spreadProps(__spreadValues({
         component: "span",
         className: (0, import_clsx3.default)(Loader_module_default.barsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react31.default.createElement("span", { className: Loader_module_default.bar }),
-      /* @__PURE__ */ import_react31.default.createElement("span", { className: Loader_module_default.bar }),
-      /* @__PURE__ */ import_react31.default.createElement("span", { className: Loader_module_default.bar })
+      /* @__PURE__ */ import_react32.default.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ import_react32.default.createElement("span", { className: Loader_module_default.bar }),
+      /* @__PURE__ */ import_react32.default.createElement("span", { className: Loader_module_default.bar })
     );
   }
 );
 
 // ../Loader/src/loaders/Oval.tsx
-var import_react32 = __toESM(require("react"));
+var import_react33 = __toESM(require("react"));
 var import_clsx4 = __toESM(require("clsx"));
-var import_core26 = require("@raikou/core");
-var Oval = (0, import_react32.forwardRef)(
+var import_core27 = require("@raikou/core");
+var Oval = (0, import_react33.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react32.default.createElement(
-      import_core26.Box,
+    return /* @__PURE__ */ import_react33.default.createElement(
+      import_core27.Box,
       __spreadProps(__spreadValues({
         component: "span",
         className: (0, import_clsx4.default)(Loader_module_default.ovalLoader, className)
@@ -52080,21 +52139,21 @@ var Oval = (0, import_react32.forwardRef)(
 );
 
 // ../Loader/src/loaders/Progress.tsx
-var import_react33 = __toESM(require("react"));
+var import_react34 = __toESM(require("react"));
 var import_clsx5 = __toESM(require("clsx"));
-var import_core27 = require("@raikou/core");
-var Progress = (0, import_react33.forwardRef)(
+var import_core28 = require("@raikou/core");
+var Progress = (0, import_react34.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react33.default.createElement(
-      import_core27.Box,
+    return /* @__PURE__ */ import_react34.default.createElement(
+      import_core28.Box,
       __spreadProps(__spreadValues({
         component: "span",
         className: (0, import_clsx5.default)(Loader_module_default.progressLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react33.default.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ import_react33.default.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ import_react33.default.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ import_react33.default.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ import_react33.default.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ import_react33.default.createElement(
+      /* @__PURE__ */ import_react34.default.createElement("svg", { viewBox: "0 0 38 38", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ import_react34.default.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ import_react34.default.createElement("g", { transform: "translate(2.5 2.5)", strokeWidth: "5" }, /* @__PURE__ */ import_react34.default.createElement("circle", { strokeOpacity: ".5", cx: "16", cy: "16", r: "16" }), /* @__PURE__ */ import_react34.default.createElement("path", { d: "M32 16c0-9.94-8.06-16-16-16" }, /* @__PURE__ */ import_react34.default.createElement(
         "animateTransform",
         {
           attributeName: "transform",
@@ -52110,23 +52169,23 @@ var Progress = (0, import_react33.forwardRef)(
 );
 
 // ../Loader/src/loaders/Dots.tsx
-var import_react34 = __toESM(require("react"));
+var import_react35 = __toESM(require("react"));
 var import_clsx6 = __toESM(require("clsx"));
-var import_core28 = require("@raikou/core");
-var Dots = (0, import_react34.forwardRef)(
+var import_core29 = require("@raikou/core");
+var Dots = (0, import_react35.forwardRef)(
   (_a, ref) => {
     var _b = _a, { className } = _b, others = __objRest(_b, ["className"]);
-    return /* @__PURE__ */ import_react34.default.createElement(
-      import_core28.Box,
+    return /* @__PURE__ */ import_react35.default.createElement(
+      import_core29.Box,
       __spreadProps(__spreadValues({
         component: "span",
         className: (0, import_clsx6.default)(Loader_module_default.dotsLoader, className)
       }, others), {
         ref
       }),
-      /* @__PURE__ */ import_react34.default.createElement("span", { className: Loader_module_default.dot }),
-      /* @__PURE__ */ import_react34.default.createElement("span", { className: Loader_module_default.dot }),
-      /* @__PURE__ */ import_react34.default.createElement("span", { className: Loader_module_default.dot })
+      /* @__PURE__ */ import_react35.default.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ import_react35.default.createElement("span", { className: Loader_module_default.dot }),
+      /* @__PURE__ */ import_react35.default.createElement("span", { className: Loader_module_default.dot })
     );
   }
 );
@@ -52141,20 +52200,20 @@ var defaultLoaders = {
   dots: Dots,
   progress: Progress
 };
-var defaultProps17 = {
+var defaultProps18 = {
   loaders: defaultLoaders,
   type: "oval"
 };
-var varsResolver9 = (0, import_core29.createVarsResolver)(
+var varsResolver9 = (0, import_core30.createVarsResolver)(
   (theme, { size: size2, color }) => ({
     root: {
-      "--loader-size": (0, import_core29.getSize)(size2, "loader-size"),
-      "--loader-color": color ? (0, import_core29.getThemeColor)(color, theme) : void 0
+      "--loader-size": (0, import_core30.getSize)(size2, "loader-size"),
+      "--loader-color": color ? (0, import_core30.getThemeColor)(color, theme) : void 0
     }
   })
 );
-var Loader = (0, import_core29.factory)((_props, ref) => {
-  const props = (0, import_core29.useProps)("Loader", defaultProps17, _props);
+var Loader = (0, import_core30.factory)((_props, ref) => {
+  const props = (0, import_core30.useProps)("Loader", defaultProps18, _props);
   const _a = props, {
     size: size2,
     color,
@@ -52166,7 +52225,8 @@ var Loader = (0, import_core29.factory)((_props, ref) => {
     styles,
     unstyled,
     loaders,
-    variant
+    variant,
+    children
   } = _a, others = __objRest(_a, [
     "size",
     "color",
@@ -52178,9 +52238,10 @@ var Loader = (0, import_core29.factory)((_props, ref) => {
     "styles",
     "unstyled",
     "loaders",
-    "variant"
+    "variant",
+    "children"
   ]);
-  const getStyles = (0, import_core29.useStyles)({
+  const getStyles = (0, import_core30.useStyles)({
     name: "Loader",
     props,
     classes: Loader_module_default2,
@@ -52192,8 +52253,11 @@ var Loader = (0, import_core29.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver9
   });
-  return /* @__PURE__ */ import_react35.default.createElement(
-    import_core29.Box,
+  if (children) {
+    return /* @__PURE__ */ import_react36.default.createElement(import_core30.Box, __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), { ref }), others), children);
+  }
+  return /* @__PURE__ */ import_react36.default.createElement(
+    import_core30.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       component: loaders[type],
@@ -52202,23 +52266,24 @@ var Loader = (0, import_core29.factory)((_props, ref) => {
     }), others)
   );
 });
+Loader.defaultLoaders = defaultLoaders;
 Loader.displayName = "@raikou/core/Loader";
 Loader.classes = Loader_module_default2;
 
 // ../Button/src/ButtonGroup/ButtonGroup.tsx
-var import_react36 = __toESM(require("react"));
-var import_core30 = require("@raikou/core");
-var defaultProps18 = {
+var import_react37 = __toESM(require("react"));
+var import_core31 = require("@raikou/core");
+var defaultProps19 = {
   orientation: "horizontal"
 };
-var varsResolver10 = (0, import_core30.createVarsResolver)(
+var varsResolver10 = (0, import_core31.createVarsResolver)(
   (_2, { borderWidth }) => ({
-    group: { "--button-border-width": (0, import_core30.rem)(borderWidth) }
+    group: { "--button-border-width": (0, import_core31.rem)(borderWidth) }
   })
 );
-var ButtonGroup = (0, import_core30.factory)((_props, ref) => {
-  const props = (0, import_core30.useProps)("ButtonGroup", defaultProps18, _props);
-  const _a = (0, import_core30.useProps)("ButtonGroup", defaultProps18, _props), {
+var ButtonGroup = (0, import_core31.factory)((_props, ref) => {
+  const props = (0, import_core31.useProps)("ButtonGroup", defaultProps19, _props);
+  const _a = (0, import_core31.useProps)("ButtonGroup", defaultProps19, _props), {
     className,
     style,
     classNames,
@@ -52227,7 +52292,8 @@ var ButtonGroup = (0, import_core30.factory)((_props, ref) => {
     orientation,
     vars,
     borderWidth,
-    variant
+    variant,
+    mod
   } = _a, others = __objRest(_a, [
     "className",
     "style",
@@ -52237,9 +52303,10 @@ var ButtonGroup = (0, import_core30.factory)((_props, ref) => {
     "orientation",
     "vars",
     "borderWidth",
-    "variant"
+    "variant",
+    "mod"
   ]);
-  const getStyles = (0, import_core30.useStyles)({
+  const getStyles = (0, import_core31.useStyles)({
     name: "ButtonGroup",
     props,
     classes: {
@@ -52254,12 +52321,12 @@ var ButtonGroup = (0, import_core30.factory)((_props, ref) => {
     varsResolver: varsResolver10,
     rootSelector: "group"
   });
-  return /* @__PURE__ */ import_react36.default.createElement(
-    import_core30.Box,
+  return /* @__PURE__ */ import_react37.default.createElement(
+    import_core31.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("group")), {
       ref,
       variant,
-      mod: { "data-orientation": orientation },
+      mod: [{ "data-orientation": orientation }, mod],
       role: "group"
     }), others)
   );
@@ -52270,34 +52337,36 @@ ButtonGroup.displayName = "@raikou/core/ButtonGroup";
 var Button_module_default = { "root": "m-77c9d27d", "inner": "m-80f1301b", "label": "m-811560b9", "section": "m-a74036a", "loader": "m-a25b86ee", "group": "m-80d6d844" };
 
 // ../Button/src/Button.tsx
-var defaultProps19 = {
+var defaultProps20 = {
   loaderPosition: "left"
 };
-var varsResolver11 = (0, import_core31.createVarsResolver)(
-  (theme, { radius, color, gradient, variant, size: size2, justify }) => {
+var varsResolver11 = (0, import_core32.createVarsResolver)(
+  (theme, { radius, color, gradient, variant, size: size2, justify, autoContrast }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       gradient,
-      variant: variant || "filled"
+      variant: variant || "filled",
+      autoContrast
     });
     return {
       root: {
         "--button-justify": justify,
-        "--button-height": (0, import_core31.getSize)(size2, "button-height"),
-        "--button-padding-x": (0, import_core31.getSize)(size2, "button-padding-x"),
-        "--button-fz": (size2 == null ? void 0 : size2.includes("compact")) ? (0, import_core31.getFontSize)(size2.replace("compact-", "")) : (0, import_core31.getFontSize)(size2),
-        "--button-radius": radius ? (0, import_core31.getRadius)(radius) : void 0,
+        "--button-height": (0, import_core32.getSize)(size2, "button-height"),
+        "--button-padding-x": (0, import_core32.getSize)(size2, "button-padding-x"),
+        "--button-fz": (size2 == null ? void 0 : size2.includes("compact")) ? (0, import_core32.getFontSize)(size2.replace("compact-", "")) : (0, import_core32.getFontSize)(size2),
+        "--button-radius": radius ? (0, import_core32.getRadius)(radius) : void 0,
         "--button-bg": color || variant ? colors.background : void 0,
         "--button-hover": color || variant ? colors.hover : void 0,
         "--button-color": color || variant ? colors.color : void 0,
-        "--button-bd": color || variant ? colors.border : void 0
+        "--button-bd": color || variant ? colors.border : void 0,
+        "--button-hover-color": color || variant ? colors.hoverColor : void 0
       }
     };
   }
 );
-var Button = (0, import_core31.polymorphicFactory)((_props, ref) => {
-  const props = (0, import_core31.useProps)("Button", defaultProps19, _props);
+var Button = (0, import_core32.polymorphicFactory)((_props, ref) => {
+  const props = (0, import_core32.useProps)("Button", defaultProps20, _props);
   const _a = props, {
     style,
     vars,
@@ -52317,7 +52386,9 @@ var Button = (0, import_core31.polymorphicFactory)((_props, ref) => {
     classNames,
     styles,
     unstyled,
-    "data-disabled": dataDisabled
+    "data-disabled": dataDisabled,
+    autoContrast,
+    mod
   } = _a, others = __objRest(_a, [
     "style",
     "vars",
@@ -52337,9 +52408,11 @@ var Button = (0, import_core31.polymorphicFactory)((_props, ref) => {
     "classNames",
     "styles",
     "unstyled",
-    "data-disabled"
+    "data-disabled",
+    "autoContrast",
+    "mod"
   ]);
-  const getStyles = (0, import_core31.useStyles)({
+  const getStyles = (0, import_core32.useStyles)({
     name: "Button",
     props,
     classes: Button_module_default,
@@ -52353,7 +52426,7 @@ var Button = (0, import_core31.polymorphicFactory)((_props, ref) => {
   });
   const hasLeftSection = !!leftSection;
   const hasRightSection = !!rightSection;
-  return /* @__PURE__ */ import_react37.default.createElement(
+  return /* @__PURE__ */ import_react38.default.createElement(
     UnstyledButton,
     __spreadValues(__spreadProps(__spreadValues({
       ref
@@ -52369,26 +52442,27 @@ var Button = (0, import_core31.polymorphicFactory)((_props, ref) => {
           block: fullWidth,
           "with-left-section": hasLeftSection,
           "with-right-section": hasRightSection
-        }
+        },
+        mod
       ]
     }), others),
-    /* @__PURE__ */ import_react37.default.createElement("span", __spreadValues({}, getStyles("inner")), !loading && leftSection && /* @__PURE__ */ import_react37.default.createElement(
-      import_core31.Box,
+    /* @__PURE__ */ import_react38.default.createElement("span", __spreadValues({}, getStyles("inner")), !loading && leftSection && /* @__PURE__ */ import_react38.default.createElement(
+      import_core32.Box,
       __spreadProps(__spreadValues({
         component: "span"
       }, getStyles("section")), {
         mod: { position: "left" }
       }),
       leftSection
-    ), loading && loaderPosition === "left" && /* @__PURE__ */ import_react37.default.createElement(
-      import_core31.Box,
+    ), loading && loaderPosition === "left" && /* @__PURE__ */ import_react38.default.createElement(
+      import_core32.Box,
       __spreadProps(__spreadValues({
         component: "span"
       }, getStyles("section")), {
         mod: { position: "left" }
       }),
       !loading && leftSection,
-      loading && /* @__PURE__ */ import_react37.default.createElement(
+      loading && /* @__PURE__ */ import_react38.default.createElement(
         Loader,
         __spreadValues({
           type: "progress",
@@ -52396,14 +52470,14 @@ var Button = (0, import_core31.polymorphicFactory)((_props, ref) => {
           size: "calc(var(--button-height) / 2.4)"
         }, loaderProps)
       )
-    ), loading && loaderPosition === "center" && /* @__PURE__ */ import_react37.default.createElement(import_core31.Box, __spreadValues({ component: "span" }, getStyles("loader")), /* @__PURE__ */ import_react37.default.createElement(
+    ), loading && loaderPosition === "center" && /* @__PURE__ */ import_react38.default.createElement(import_core32.Box, __spreadValues({ component: "span" }, getStyles("loader")), /* @__PURE__ */ import_react38.default.createElement(
       Loader,
       __spreadValues({
         color: "var(--button-color)",
         size: "calc(var(--button-height) / 1.8)"
       }, loaderProps)
-    )), /* @__PURE__ */ import_react37.default.createElement(import_core31.Box, __spreadValues({ component: "span", mod: { loading } }, getStyles("label")), children), rightSection && /* @__PURE__ */ import_react37.default.createElement(
-      import_core31.Box,
+    )), /* @__PURE__ */ import_react38.default.createElement(import_core32.Box, __spreadValues({ component: "span", mod: { loading } }, getStyles("label")), children), rightSection && /* @__PURE__ */ import_react38.default.createElement(
+      import_core32.Box,
       __spreadProps(__spreadValues({
         component: "span"
       }, getStyles("section")), {
@@ -52418,8 +52492,8 @@ Button.Group = ButtonGroup;
 Button.classes = Button_module_default;
 
 // ../Image/src/Image.tsx
-var import_react38 = __toESM(require("react"));
-var import_core32 = require("@raikou/core");
+var import_react39 = __toESM(require("react"));
+var import_core33 = require("@raikou/core");
 
 // ../../../../node_modules/.pnpm/immer@7.0.15/node_modules/immer/dist/immer.esm.js
 function n(n2) {
@@ -52860,15 +52934,15 @@ var useStore = pure_store_default({
 var Image_module_default = { "root": "m-9e117634" };
 
 // ../Image/src/Image.tsx
-var defaultProps20 = {};
-var varsResolver12 = (0, import_core32.createVarsResolver)((_2, { radius, fit }) => ({
+var defaultProps21 = {};
+var varsResolver12 = (0, import_core33.createVarsResolver)((_2, { radius, fit }) => ({
   root: {
-    "--image-radius": radius === void 0 ? void 0 : (0, import_core32.getRadius)(radius),
+    "--image-radius": radius === void 0 ? void 0 : (0, import_core33.getRadius)(radius),
     "--image-object-fit": fit
   }
 }));
-var Image = (0, import_core32.polymorphicFactory)((_props, ref) => {
-  const props = (0, import_core32.useProps)("Image", defaultProps20, _props);
+var Image = (0, import_core33.polymorphicFactory)((_props, ref) => {
+  const props = (0, import_core33.useProps)("Image", defaultProps21, _props);
   const _a = props, {
     classNames,
     className,
@@ -52880,7 +52954,8 @@ var Image = (0, import_core32.polymorphicFactory)((_props, ref) => {
     src,
     radius,
     fit,
-    fallbackSrc
+    fallbackSrc,
+    mod
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -52892,9 +52967,10 @@ var Image = (0, import_core32.polymorphicFactory)((_props, ref) => {
     "src",
     "radius",
     "fit",
-    "fallbackSrc"
+    "fallbackSrc",
+    "mod"
   ]);
-  const getStyles = (0, import_core32.useStyles)({
+  const getStyles = (0, import_core33.useStyles)({
     name: "Image",
     classes: Image_module_default,
     props,
@@ -52920,13 +52996,14 @@ var Image = (0, import_core32.polymorphicFactory)((_props, ref) => {
       }
     });
   }
-  return /* @__PURE__ */ import_react38.default.createElement(
-    import_core32.Box,
+  return /* @__PURE__ */ import_react39.default.createElement(
+    import_core33.Box,
     __spreadValues(__spreadProps(__spreadValues({
       component: "img",
       ref
     }, getStyles("root")), {
-      src: useStore.getState().error ? fallbackSrc : src
+      src: useStore.getState().error ? fallbackSrc : src,
+      mod
     }), others)
   );
 });
@@ -52934,39 +53011,39 @@ Image.classes = Image_module_default;
 Image.displayName = "@raikou/core/Image";
 
 // ../Group/src/Group.tsx
-var import_react40 = __toESM(require("react"));
-var import_core33 = require("@raikou/core");
+var import_react41 = __toESM(require("react"));
+var import_core34 = require("@raikou/core");
 
 // ../Group/src/filter-falsy-children/filter-falsy-children.ts
-var import_react39 = require("react");
+var import_react40 = require("react");
 function filterFalsyChildren(children) {
-  return import_react39.Children.toArray(children).filter(Boolean);
+  return import_react40.Children.toArray(children).filter(Boolean);
 }
 
 // css-module:./Group.module.css#css-module
 var Group_module_default = { "root": "m-4081bf90" };
 
 // ../Group/src/Group.tsx
-var defaultProps21 = {
+var defaultProps22 = {
   preventGrowOverflow: true,
   gap: "md",
   align: "center",
   justify: "flex-start",
   wrap: "wrap"
 };
-var varsResolver13 = (0, import_core33.createVarsResolver)(
+var varsResolver13 = (0, import_core34.createVarsResolver)(
   (_2, { grow, preventGrowOverflow, gap, align, justify, wrap }, { childWidth }) => ({
     root: {
       "--group-child-width": grow && preventGrowOverflow ? childWidth : void 0,
-      "--group-gap": (0, import_core33.getSpacing)(gap),
+      "--group-gap": (0, import_core34.getSpacing)(gap),
       "--group-align": align,
       "--group-justify": justify,
       "--group-wrap": wrap
     }
   })
 );
-var Group = (0, import_core33.factory)((_props, ref) => {
-  const props = (0, import_core33.useProps)("Group", defaultProps21, _props);
+var Group = (0, import_core34.factory)((_props, ref) => {
+  const props = (0, import_core34.useProps)("Group", defaultProps22, _props);
   const _a = props, {
     classNames,
     className,
@@ -52982,7 +53059,8 @@ var Group = (0, import_core33.factory)((_props, ref) => {
     preventGrowOverflow,
     vars,
     variant,
-    __size
+    __size,
+    mod
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
@@ -52998,14 +53076,15 @@ var Group = (0, import_core33.factory)((_props, ref) => {
     "preventGrowOverflow",
     "vars",
     "variant",
-    "__size"
+    "__size",
+    "mod"
   ]);
   const filteredChildren = filterFalsyChildren(children);
   const childrenCount = filteredChildren.length;
-  const resolvedGap = (0, import_core33.getSpacing)(gap != null ? gap : "md");
+  const resolvedGap = (0, import_core34.getSpacing)(gap != null ? gap : "md");
   const childWidth = `calc(${100 / childrenCount}% - (${resolvedGap} - ${resolvedGap} / ${childrenCount}))`;
   const stylesCtx = { childWidth };
-  const getStyles = (0, import_core33.useStyles)({
+  const getStyles = (0, import_core34.useStyles)({
     name: "Group",
     props,
     stylesCtx,
@@ -53018,12 +53097,12 @@ var Group = (0, import_core33.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver13
   });
-  return /* @__PURE__ */ import_react40.default.createElement(
-    import_core33.Box,
+  return /* @__PURE__ */ import_react41.default.createElement(
+    import_core34.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root")), {
       ref,
       variant,
-      mod: { grow },
+      mod: [{ grow }, mod],
       size: __size
     }), others),
     filteredChildren
@@ -53033,8 +53112,8 @@ Group.displayName = "@raikou/core/Group";
 Group.classes = Group_module_default;
 
 // ../Text/src/Text.tsx
-var import_react41 = __toESM(require("react"));
-var import_core34 = require("@raikou/core");
+var import_react42 = __toESM(require("react"));
+var import_core35 = require("@raikou/core");
 
 // css-module:./Text.module.css#css-module
 var Text_module_default = { "root": "m-b6d8b162" };
@@ -53049,21 +53128,22 @@ function getTextTruncate(truncate) {
   }
   return void 0;
 }
-var defaultProps22 = {
+var defaultProps23 = {
   inherit: false
 };
-var varsResolver14 = (0, import_core34.createVarsResolver)(
-  (theme, { variant, lineClamp, gradient, size: size2 }) => ({
+var varsResolver14 = (0, import_core35.createVarsResolver)(
+  (theme, { variant, lineClamp, gradient, size: size2, color }) => ({
     root: {
-      "--text-fz": (0, import_core34.getFontSize)(size2),
-      "--text-lh": (0, import_core34.getLineHeight)(size2),
-      "--text-gradient": variant === "gradient" ? (0, import_core34.getGradient)(gradient, theme) : void 0,
-      "--text-line-clamp": typeof lineClamp === "number" ? lineClamp.toString() : void 0
+      "--text-fz": (0, import_core35.getFontSize)(size2),
+      "--text-lh": (0, import_core35.getLineHeight)(size2),
+      "--text-gradient": variant === "gradient" ? (0, import_core35.getGradient)(gradient, theme) : void 0,
+      "--text-line-clamp": typeof lineClamp === "number" ? lineClamp.toString() : void 0,
+      "--text-color": color ? (0, import_core35.getThemeColor)(color, theme) : void 0
     }
   })
 );
-var Text = (0, import_core34.polymorphicFactory)((_props, ref) => {
-  const props = (0, import_core34.useProps)("Text", defaultProps22, _props);
+var Text = (0, import_core35.polymorphicFactory)((_props, ref) => {
+  const props = (0, import_core35.useProps)("Text", defaultProps23, _props);
   const _a = props, {
     lineClamp,
     truncate,
@@ -53099,7 +53179,7 @@ var Text = (0, import_core34.polymorphicFactory)((_props, ref) => {
     "mod",
     "size"
   ]);
-  const getStyles = (0, import_core34.useStyles)({
+  const getStyles = (0, import_core35.useStyles)({
     name: ["Text", __staticSelector],
     props,
     classes: Text_module_default,
@@ -53111,8 +53191,8 @@ var Text = (0, import_core34.polymorphicFactory)((_props, ref) => {
     vars,
     varsResolver: varsResolver14
   });
-  return /* @__PURE__ */ import_react41.default.createElement(
-    import_core34.Box,
+  return /* @__PURE__ */ import_react42.default.createElement(
+    import_core35.Box,
     __spreadValues(__spreadProps(__spreadValues({}, getStyles("root", { focusable: true })), {
       ref,
       component: span ? "span" : "p",
@@ -53134,24 +53214,24 @@ Text.classes = Text_module_default;
 Text.displayName = "@raikou/core/Text";
 
 // ../Tooltip/src/Tooltip.tsx
-var import_react50 = __toESM(require("react"));
+var import_react51 = __toESM(require("react"));
 var import_hooks12 = require("@raikou/hooks");
 var import_clsx7 = __toESM(require("clsx"));
-var import_core37 = require("@raikou/core");
+var import_core38 = require("@raikou/core");
 
 // ../Tooltip/src/TooltipFloating/TooltipFloating.tsx
-var import_react44 = __toESM(require("react"));
+var import_react45 = __toESM(require("react"));
 var import_hooks10 = require("@raikou/hooks");
-var import_core35 = require("@raikou/core");
+var import_core36 = require("@raikou/core");
 
 // ../Tooltip/src/TooltipFloating/use-floating-tooltip.ts
-var import_react42 = require("react");
+var import_react43 = require("react");
 function useFloatingTooltip({
   offset: offset2,
   position
 }) {
-  const [opened, setOpened] = (0, import_react42.useState)(false);
-  const boundaryRef = (0, import_react42.useRef)();
+  const [opened, setOpened] = (0, import_react43.useState)(false);
+  const boundaryRef = (0, import_react43.useRef)();
   const { x: x2, y: y2, reference, floating, refs, update, placement } = useFloating2({
     placement: position,
     middleware: [
@@ -53164,7 +53244,7 @@ function useFloatingTooltip({
   });
   const horizontalOffset = placement.includes("right") ? offset2 : position.includes("left") ? offset2 * -1 : 0;
   const verticalOffset = placement.includes("bottom") ? offset2 : position.includes("top") ? offset2 * -1 : 0;
-  const handleMouseMove = (0, import_react42.useCallback)(
+  const handleMouseMove = (0, import_react43.useCallback)(
     ({ clientX, clientY }) => {
       reference({
         getBoundingClientRect() {
@@ -53183,7 +53263,7 @@ function useFloatingTooltip({
     },
     [reference]
   );
-  (0, import_react42.useEffect)(() => {
+  (0, import_react43.useEffect)(() => {
     if (refs.floating.current) {
       const boundary = boundaryRef.current;
       boundary.addEventListener("mousemove", handleMouseMove);
@@ -53203,26 +53283,30 @@ function useFloatingTooltip({
   return { handleMouseMove, x: x2, y: y2, opened, setOpened, boundaryRef, floating };
 }
 
+// css-module:../Tooltip.module.css#css-module
+var Tooltip_module_default = { "root": "m-946fb08c", "tooltip": "m-1b3c8819", "arrow": "m-f898399f" };
+
 // ../Tooltip/src/TooltipFloating/TooltipFloating.tsx
-var defaultProps23 = {
+var defaultProps24 = {
   refProp: "ref",
   withinPortal: true,
   offset: 10,
   position: "right",
-  zIndex: (0, import_core35.getDefaultZIndex)("popover")
+  zIndex: (0, import_core36.getDefaultZIndex)("popover")
 };
-var varsResolver15 = (0, import_core35.createVarsResolver)(
+var varsResolver15 = (0, import_core36.createVarsResolver)(
   (theme, { radius, color }) => ({
     tooltip: {
-      "--tooltip-radius": radius === void 0 ? void 0 : (0, import_core35.getRadius)(radius),
-      "--tooltip-bg": color ? (0, import_core35.getThemeColor)(color, theme) : void 0
+      "--tooltip-radius": radius === void 0 ? void 0 : (0, import_core36.getRadius)(radius),
+      "--tooltip-bg": color ? (0, import_core36.getThemeColor)(color, theme) : void 0,
+      "--tooltip-color": color ? "var(--raikou-color-white)" : void 0
     }
   })
 );
-var TooltipFloating = (0, import_core35.factory)(
+var TooltipFloating = (0, import_core36.factory)(
   (_props, ref) => {
     var _b, _c;
-    const props = (0, import_core35.useProps)("TooltipFloating", defaultProps23, _props);
+    const props = (0, import_core36.useProps)("TooltipFloating", defaultProps24, _props);
     const _a = props, {
       children,
       refProp,
@@ -53264,14 +53348,11 @@ var TooltipFloating = (0, import_core35.factory)(
       "vars",
       "portalProps"
     ]);
-    const theme = (0, import_core35.useRaikouTheme)();
-    const getStyles = (0, import_core35.useStyles)({
+    const theme = (0, import_core36.useRaikouTheme)();
+    const getStyles = (0, import_core36.useStyles)({
       name: "TooltipFloating",
       props,
-      classes: {
-        tooltip: "tooltip-root",
-        arrow: "tooltip-arrow"
-      },
+      classes: Tooltip_module_default,
       className,
       style,
       classNames,
@@ -53285,7 +53366,7 @@ var TooltipFloating = (0, import_core35.factory)(
       offset: offset2,
       position
     });
-    if (!(0, import_core35.isElement)(children)) {
+    if (!(0, import_core36.isElement)(children)) {
       throw new Error(
         "[@raikou/core] Tooltip.Floating component children should be an element or a component that accepts ref, fragments, strings, numbers and other primitive values are not supported"
       );
@@ -53302,10 +53383,10 @@ var TooltipFloating = (0, import_core35.factory)(
       (_b2 = (_a2 = children.props).onMouseLeave) == null ? void 0 : _b2.call(_a2, event);
       setOpened(false);
     };
-    return /* @__PURE__ */ import_react44.default.createElement(import_react44.default.Fragment, null, /* @__PURE__ */ import_react44.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ import_react44.default.createElement(
-      import_core35.Box,
+    return /* @__PURE__ */ import_react45.default.createElement(import_react45.default.Fragment, null, /* @__PURE__ */ import_react45.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ import_react45.default.createElement(
+      import_core36.Box,
       __spreadProps(__spreadValues(__spreadValues({}, others), getStyles("tooltip", {
-        style: __spreadProps(__spreadValues({}, (0, import_core35.getStyleObject)(style, theme)), {
+        style: __spreadProps(__spreadValues({}, (0, import_core36.getStyleObject)(style, theme)), {
           zIndex,
           display: !disabled && opened ? "block" : "none",
           top: (_b = y2 && Math.round(y2)) != null ? _b : "",
@@ -53313,10 +53394,11 @@ var TooltipFloating = (0, import_core35.factory)(
         })
       })), {
         variant,
-        ref: floating
+        ref: floating,
+        mod: { multiline }
       }),
       label
-    )), (0, import_react44.cloneElement)(children, __spreadProps(__spreadValues({}, children.props), {
+    )), (0, import_react45.cloneElement)(children, __spreadProps(__spreadValues({}, children.props), {
       [refProp]: targetRef,
       onMouseEnter,
       onMouseLeave
@@ -53326,42 +53408,42 @@ var TooltipFloating = (0, import_core35.factory)(
 TooltipFloating.displayName = "@raikou/core/TooltipFloating";
 
 // ../Tooltip/src/TooltipGroup/TooltipGroup.tsx
-var import_react46 = __toESM(require("react"));
-var import_core36 = require("@raikou/core");
+var import_react47 = __toESM(require("react"));
+var import_core37 = require("@raikou/core");
 
 // ../Tooltip/src/TooltipGroup/TooltipGroup.context.ts
-var import_react45 = require("react");
-var TooltipGroupContext = (0, import_react45.createContext)(false);
+var import_react46 = require("react");
+var TooltipGroupContext = (0, import_react46.createContext)(false);
 var TooltipGroupProvider = TooltipGroupContext.Provider;
-var useTooltipGroupContext = () => (0, import_react45.useContext)(TooltipGroupContext);
+var useTooltipGroupContext = () => (0, import_react46.useContext)(TooltipGroupContext);
 
 // ../Tooltip/src/TooltipGroup/TooltipGroup.tsx
-var defaultProps24 = {
+var defaultProps25 = {
   openDelay: 0,
   closeDelay: 0
 };
 function TooltipGroup(props) {
-  const { openDelay, closeDelay, children } = (0, import_core36.useProps)(
+  const { openDelay, closeDelay, children } = (0, import_core37.useProps)(
     "TooltipGroup",
-    defaultProps24,
+    defaultProps25,
     props
   );
-  return /* @__PURE__ */ import_react46.default.createElement(TooltipGroupProvider, { value: true }, /* @__PURE__ */ import_react46.default.createElement(FloatingDelayGroup, { delay: { open: openDelay, close: closeDelay } }, children));
+  return /* @__PURE__ */ import_react47.default.createElement(TooltipGroupProvider, { value: true }, /* @__PURE__ */ import_react47.default.createElement(FloatingDelayGroup, { delay: { open: openDelay, close: closeDelay } }, children));
 }
 TooltipGroup.displayName = "@raikou/core/TooltipGroup";
 
 // ../Tooltip/src/use-tooltip.ts
-var import_react48 = require("react");
+var import_react49 = require("react");
 var import_hooks11 = require("@raikou/hooks");
 function useTooltip(settings) {
   var _a, _b, _c;
-  const [uncontrolledOpened, setUncontrolledOpened] = (0, import_react48.useState)(false);
+  const [uncontrolledOpened, setUncontrolledOpened] = (0, import_react49.useState)(false);
   const controlled = typeof settings.opened === "boolean";
   const opened = controlled ? settings.opened : uncontrolledOpened;
   const withinGroup = useTooltipGroupContext();
   const uid = (0, import_hooks11.useId)();
   const { delay: groupDelay, currentId, setCurrentId } = useDelayGroupContext();
-  const onChange = (0, import_react48.useCallback)(
+  const onChange = (0, import_react49.useCallback)(
     (_opened) => {
       setUncontrolledOpened(_opened);
       if (_opened) {
@@ -53373,14 +53455,13 @@ function useTooltip(settings) {
   const {
     x: x2,
     y: y2,
-    reference,
-    floating,
     context,
     refs,
     update,
     placement,
     middlewareData: { arrow: { x: arrowX, y: arrowY } = {} }
   } = useFloating2({
+    strategy: settings.strategy,
     placement: settings.position,
     open: opened,
     onOpenChange: onChange,
@@ -53398,10 +53479,10 @@ function useTooltip(settings) {
       delay: withinGroup ? groupDelay : { open: settings.openDelay, close: settings.closeDelay },
       mouseOnly: !((_b = settings.events) == null ? void 0 : _b.touch)
     }),
-    useFocus(context, { enabled: (_c = settings.events) == null ? void 0 : _c.focus, keyboardOnly: true }),
+    useFocus(context, { enabled: (_c = settings.events) == null ? void 0 : _c.focus, visibleOnly: true }),
     useRole(context, { role: "tooltip" }),
     // cannot be used with controlled tooltip, page jumps
-    useDismiss(context, { enabled: typeof settings.opened === void 0 }),
+    useDismiss(context, { enabled: typeof settings.opened === "undefined" }),
     useDelayGroup(context, { id: uid })
   ]);
   useFloatingAutoUpdate({
@@ -53420,8 +53501,8 @@ function useTooltip(settings) {
     y: y2,
     arrowX,
     arrowY,
-    reference,
-    floating,
+    reference: refs.setReference,
+    floating: refs.setFloating,
     getFloatingProps,
     getReferenceProps,
     isGroupPhase,
@@ -53431,10 +53512,10 @@ function useTooltip(settings) {
 }
 
 // css-module:./Tooltip.module.css#css-module
-var Tooltip_module_default = { "root": "m-946fb08c", "tooltip": "m-1b3c8819", "arrow": "m-f898399f" };
+var Tooltip_module_default2 = { "root": "m-946fb08c", "tooltip": "m-1b3c8819", "arrow": "m-f898399f" };
 
 // ../Tooltip/src/Tooltip.tsx
-var defaultProps25 = {
+var defaultProps26 = {
   position: "top",
   refProp: "ref",
   withinPortal: true,
@@ -53446,20 +53527,21 @@ var defaultProps25 = {
   offset: 5,
   transitionProps: { duration: 100, transition: "fade" },
   events: { hover: true, focus: false, touch: false },
-  zIndex: (0, import_core37.getDefaultZIndex)("popover"),
+  zIndex: (0, import_core38.getDefaultZIndex)("popover"),
   positionDependencies: []
 };
-var varsResolver16 = (0, import_core37.createVarsResolver)(
+var varsResolver16 = (0, import_core38.createVarsResolver)(
   (theme, { radius, color }) => ({
     tooltip: {
-      "--tooltip-radius": radius === void 0 ? void 0 : (0, import_core37.getRadius)(radius),
-      "--tooltip-bg": color ? (0, import_core37.getThemeColor)(color, theme) : void 0
+      "--tooltip-radius": radius === void 0 ? void 0 : (0, import_core38.getRadius)(radius),
+      "--tooltip-bg": color ? (0, import_core38.getThemeColor)(color, theme) : void 0,
+      "--tooltip-color": color ? "var(--raikou-color-white)" : void 0
     }
   })
 );
-var Tooltip = (0, import_core37.factory)((_props, ref) => {
-  const props = (0, import_core37.useProps)("Tooltip", defaultProps25, _props);
-  const _a = (0, import_core37.useProps)("Tooltip", defaultProps25, props), {
+var Tooltip = (0, import_core38.factory)((_props, ref) => {
+  const props = (0, import_core38.useProps)("Tooltip", defaultProps26, _props);
+  const _a = (0, import_core38.useProps)("Tooltip", defaultProps26, props), {
     children,
     position,
     refProp,
@@ -53495,7 +53577,9 @@ var Tooltip = (0, import_core37.factory)((_props, ref) => {
     variant,
     keepMounted,
     vars,
-    portalProps
+    portalProps,
+    mod,
+    floatingStrategy
   } = _a, others = __objRest(_a, [
     "children",
     "position",
@@ -53532,10 +53616,12 @@ var Tooltip = (0, import_core37.factory)((_props, ref) => {
     "variant",
     "keepMounted",
     "vars",
-    "portalProps"
+    "portalProps",
+    "mod",
+    "floatingStrategy"
   ]);
-  const { dir } = (0, import_core37.useDirection)();
-  const arrowRef = (0, import_react50.useRef)(null);
+  const { dir } = (0, import_core38.useDirection)();
+  const arrowRef = (0, import_react51.useRef)(null);
   const tooltip = useTooltip({
     position: getFloatingPosition(dir, position),
     closeDelay,
@@ -53547,12 +53633,13 @@ var Tooltip = (0, import_core37.factory)((_props, ref) => {
     arrowOffset,
     offset: typeof offset2 === "number" ? offset2 + (withArrow ? arrowSize / 2 : 0) : offset2,
     positionDependencies: [...positionDependencies, children],
-    inline: inline2
+    inline: inline2,
+    strategy: floatingStrategy
   });
-  const getStyles = (0, import_core37.useStyles)({
+  const getStyles = (0, import_core38.useStyles)({
     name: "Tooltip",
     props,
-    classes: Tooltip_module_default,
+    classes: Tooltip_module_default2,
     className,
     style,
     classNames,
@@ -53562,7 +53649,7 @@ var Tooltip = (0, import_core37.factory)((_props, ref) => {
     vars,
     varsResolver: varsResolver16
   });
-  if (!(0, import_core37.isElement)(children)) {
+  if (!(0, import_core38.isElement)(children)) {
     throw new Error(
       "[@raikou/core] Tooltip component children should be an element or a component that accepts ref, fragments, strings, numbers and other primitive values are not supported"
     );
@@ -53572,7 +53659,7 @@ var Tooltip = (0, import_core37.factory)((_props, ref) => {
     duration: 100,
     transition: "fade"
   });
-  return /* @__PURE__ */ import_react50.default.createElement(import_react50.default.Fragment, null, /* @__PURE__ */ import_react50.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ import_react50.default.createElement(
+  return /* @__PURE__ */ import_react51.default.createElement(import_react51.default.Fragment, null, /* @__PURE__ */ import_react51.default.createElement(OptionalPortal, __spreadProps(__spreadValues({}, portalProps), { withinPortal }), /* @__PURE__ */ import_react51.default.createElement(
     Transition,
     __spreadProps(__spreadValues({}, transition), {
       keepMounted,
@@ -53581,11 +53668,11 @@ var Tooltip = (0, import_core37.factory)((_props, ref) => {
     }),
     (transitionStyles) => {
       var _a2, _b;
-      return /* @__PURE__ */ import_react50.default.createElement(
-        import_core37.Box,
+      return /* @__PURE__ */ import_react51.default.createElement(
+        import_core38.Box,
         __spreadValues(__spreadProps(__spreadValues({}, others), {
           variant,
-          mod: { multiline }
+          mod: [{ multiline }, mod]
         }), tooltip.getFloatingProps({
           ref: tooltip.floating,
           className: getStyles("tooltip").className,
@@ -53596,7 +53683,7 @@ var Tooltip = (0, import_core37.factory)((_props, ref) => {
           })
         })),
         label,
-        /* @__PURE__ */ import_react50.default.createElement(
+        /* @__PURE__ */ import_react51.default.createElement(
           FloatingArrow,
           __spreadValues({
             ref: arrowRef,
@@ -53612,7 +53699,7 @@ var Tooltip = (0, import_core37.factory)((_props, ref) => {
         )
       );
     }
-  )), (0, import_react50.cloneElement)(
+  )), (0, import_react51.cloneElement)(
     children,
     tooltip.getReferenceProps(__spreadValues({
       onClick,
@@ -53626,430 +53713,459 @@ var Tooltip = (0, import_core37.factory)((_props, ref) => {
     }, children.props))
   ));
 });
-Tooltip.classes = Tooltip_module_default;
+Tooltip.classes = Tooltip_module_default2;
 Tooltip.displayName = "@raikou/core/Tooltip";
 Tooltip.Floating = TooltipFloating;
 Tooltip.Group = TooltipGroup;
 
-// src/components/eyeDropper/index.tsx
-var import_react51 = __toESM(require("react"));
-var import_core38 = require("@raikou/core");
-var import_hooks13 = require("@raikou/hooks");
-var import_colord2 = require("colord");
-var defaultProps26 = {
-  size: "md"
-};
-var GradientPickerEyeDropper = (0, import_core38.factory)((props, ref) => {
-  const _a = (0, import_core38.useProps)("GradientPickerEyeDropper", defaultProps26, props), { classNames, className, style, styles, vars, onChange } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars", "onChange"]);
-  const { supported, open } = (0, import_hooks13.useEyeDropper)();
-  const pickColor = () => __async(void 0, null, function* () {
-    try {
-      const { sRGBHex: color } = yield open();
-      const _color = (0, import_colord2.colord)(color).toHsv();
-      onChange(_color);
-    } catch (e) {
-      console.log(e);
-    }
-  });
-  return /* @__PURE__ */ import_react51.default.createElement(import_react51.default.Fragment, null, supported && /* @__PURE__ */ import_react51.default.createElement(Button, __spreadValues({ onClick: pickColor }, others), /* @__PURE__ */ import_react51.default.createElement(Text, { className: "w-[20px] text-center" }, /* @__PURE__ */ import_react51.default.createElement(Image, { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNMzQxLjYgMjkuMkwyNDAuMSAxMzAuOGwtOS40LTkuNGMtMTIuNS0xMi41LTMyLjgtMTIuNS00NS4zIDBzLTEyLjUgMzIuOCAwIDQ1LjNsMTYwIDE2MGMxMi41IDEyLjUgMzIuOCAxMi41IDQ1LjMgMHMxMi41LTMyLjggMC00NS4zbC05LjQtOS40TDQ4Mi44IDE3MC40YzM5LTM5IDM5LTEwMi4yIDAtMTQxLjFzLTEwMi4yLTM5LTE0MS4xIDB6TTU1LjQgMzIzLjNjLTE1IDE1LTIzLjQgMzUuNC0yMy40IDU2LjZ2NDIuNEw1LjQgNDYyLjJjLTguNSAxMi43LTYuOCAyOS42IDQgNDAuNHMyNy43IDEyLjUgNDAuNCA0TDg5LjcgNDgwaDQyLjRjMjEuMiAwIDQxLjYtOC40IDU2LjYtMjMuNEwzMDkuNCAzMzUuOWwtNDUuMy00NS4zTDE0My40IDQxMS4zYy0zIDMtNy4xIDQuNy0xMS4zIDQuN0g5NlYzNzkuOWMwLTQuMiAxLjctOC4zIDQuNy0xMS4zTDIyMS40IDI0Ny45bC00NS4zLTQ1LjNMNTUuNCAzMjMuM3oiLz48L3N2Zz4=" }))));
-});
-GradientPickerEyeDropper.displayName = "@raikou/core/GradientPickerEyeDropper";
-
-// src/components/saturation/index.tsx
-var import_react53 = __toESM(require("react"));
-var import_core40 = require("@raikou/core");
-
-// src/components/thumb/index.tsx
+// src/components/swatches/index.tsx
 var import_react52 = __toESM(require("react"));
 var import_core39 = require("@raikou/core");
-var import_clsx8 = __toESM(require("clsx"));
 
-// src/components/thumb/style.ts
-var THUMB_SIZES = {
-  xs: 8,
-  sm: 12,
-  md: 16,
-  lg: 20,
-  xl: 22
-};
+// css-module:./swatches.module.css#css-module
+var swatches_module_default = { "swatches": "m-d11a0a6d", "swatch": "m-caac617f" };
 
-// src/components/thumb/index.tsx
-var defaultProps27 = {};
-var GradientPickerThumb = (0, import_core39.factory)(
-  (props, ref) => {
-    const _a = (0, import_core39.useProps)("GradientPickerThumb", defaultProps27, props), {
-      classNames,
-      className,
-      style,
-      styles,
-      vars,
-      position,
-      size: size2
-    } = _a, others = __objRest(_a, [
-      "classNames",
-      "className",
-      "style",
-      "styles",
-      "vars",
-      "position",
-      "size"
-    ]);
-    return /* @__PURE__ */ import_react52.default.createElement(
-      import_core39.Box,
-      __spreadValues({
-        className: (0, import_clsx8.default)("gradientPicker-thumb", className),
-        style: __spreadValues({
-          left: `calc(${position.x * 100}% - ${THUMB_SIZES[size2] / 2}px)`,
-          top: `calc(${position.y * 100}% - ${THUMB_SIZES[size2] / 2}px)`
-        }, style)
-      }, others)
-    );
-  }
-);
-GradientPickerThumb.displayName = "@raikou/core/GradientPickerThumb";
-
-// src/components/saturation/index.tsx
-var import_colord3 = require("colord");
-var import_hooks14 = require("@raikou/hooks");
-var defaultProps28 = {
+// src/components/swatches/index.tsx
+var import_colord2 = require("colord");
+var defaultProps27 = {
+  swatchesPerRow: 12,
   focusable: true
 };
-var GradientPickerSaturation = (0, import_core40.factory)((props, ref) => {
-  const _a = (0, import_core40.useProps)("GradientPickerSaturation", defaultProps28, props), {
+var GradientPickerColorSwatches = (0, import_core39.factory)((_props, ref) => {
+  const props = (0, import_core39.useProps)("GradientPickerColorSwatches", defaultProps27, _props);
+  const _a = props, {
     classNames,
     className,
     style,
     styles,
+    unstyled,
     vars,
-    value,
-    size: size2,
-    saturationLabel,
+    data,
+    swatchesPerRow,
     focusable,
-    onChange,
+    setValue,
     onChangeEnd
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
     "style",
     "styles",
+    "unstyled",
     "vars",
-    "value",
-    "size",
-    "saturationLabel",
+    "data",
+    "swatchesPerRow",
     "focusable",
-    "onChange",
+    "setValue",
     "onChangeEnd"
   ]);
-  const [position, setPosition] = (0, import_react53.useState)({
-    x: value.s / 100,
-    y: 1 - value.v / 100
-  });
-  const positionRef = (0, import_react53.useRef)(position);
-  const { ref: moveRef } = (0, import_hooks14.useMove)(
-    ({ x: x2, y: y2 }) => {
-      positionRef.current = { x: x2, y: y2 };
-      onChange({
-        h: value.h,
-        s: Math.round(x2 * 100),
-        v: Math.round((1 - y2) * 100),
-        a: value.a
-      });
-    },
-    {
-      onScrubEnd: () => {
-        const { x: x2, y: y2 } = positionRef.current;
-        onChangeEnd({
-          h: value.h,
-          s: Math.round(x2 * 100),
-          v: Math.round((1 - y2) * 100),
-          a: value.a
-        });
-      }
-    }
-  );
-  (0, import_react53.useEffect)(() => {
-    setPosition({ x: value.s / 100, y: 1 - value.v / 100 });
-  }, [value.s, value.v]);
-  const handleArrow = (event, pos) => {
-    event.preventDefault();
-    const _position = (0, import_hooks14.clampUseMovePosition)(pos);
-    const _color = {
-      h: value.h,
-      s: Math.round(_position.x * 100),
-      v: Math.round((1 - _position.y) * 100),
-      a: value.a
-    };
-    onChange(_color);
-    onChangeEnd(_color);
-  };
-  const handleKeyDown = (event) => {
-    switch (event.key) {
-      case "ArrowUp": {
-        handleArrow(event, { y: position.y - 0.05, x: position.x });
-        break;
-      }
-      case "ArrowDown": {
-        handleArrow(event, { y: position.y + 0.05, x: position.x });
-        break;
-      }
-      case "ArrowRight": {
-        handleArrow(event, { x: position.x + 0.05, y: position.y });
-        break;
-      }
-      case "ArrowLeft": {
-        handleArrow(event, { x: position.x - 0.05, y: position.y });
-        break;
-      }
-    }
-  };
-  return /* @__PURE__ */ import_react53.default.createElement(
-    import_core40.Box,
-    __spreadValues({
-      className: "gradientPicker-saturation",
-      ref: moveRef,
-      role: "slider",
-      "aria-label": saturationLabel,
-      "aria-valuenow": position.x,
-      "aria-valuetext": (0, import_colord3.colord)(value).toRgbString(),
-      tabIndex: focusable ? 0 : -1,
-      onKeyDown: handleKeyDown,
-      style: { height: "194px" }
-    }, others),
-    /* @__PURE__ */ import_react53.default.createElement(
-      "div",
-      {
-        className: "gradientPicker-saturationOverlay",
-        style: { backgroundColor: `hsl(${value.h}, 100%, 50%)` }
-      }
-    ),
-    /* @__PURE__ */ import_react53.default.createElement(
-      "div",
-      {
-        className: "gradientPicker-saturationOverlay",
-        style: {
-          backgroundImage: "linear-gradient(90deg, #fff, transparent)"
-        }
-      }
-    ),
-    /* @__PURE__ */ import_react53.default.createElement(
-      "div",
-      {
-        className: "gradientPicker-saturationOverlay",
-        style: {
-          backgroundImage: "linear-gradient(0deg, #000, transparent)"
-        }
-      }
-    ),
-    /* @__PURE__ */ import_react53.default.createElement(
-      GradientPickerThumb,
-      {
-        position,
-        style: { backgroundColor: (0, import_colord3.colord)(value).toRgbString() },
-        size: size2
-      }
-    )
-  );
-});
-GradientPickerSaturation.displayName = "@raikou/core/GradientPickerSaturation";
-
-// src/components/hueSlider.tsx
-var import_react55 = __toESM(require("react"));
-var import_core42 = require("@raikou/core");
-
-// src/components/colorSlider/index.tsx
-var import_react54 = __toESM(require("react"));
-var import_core41 = require("@raikou/core");
-var import_hooks15 = require("@raikou/hooks");
-var import_clsx9 = __toESM(require("clsx"));
-var defaultProps29 = {
-  size: "md",
-  focusable: true
-};
-var GradientPickerColorSlider = (0, import_core41.factory)((props, ref) => {
-  const _a = (0, import_core41.useProps)("GradientPickerColorSlider", defaultProps29, props), {
-    classNames,
+  const getStyles = (0, import_core39.useStyles)({
+    name: "Swatches",
+    classes: swatches_module_default,
+    props,
     className,
     style,
+    classNames,
     styles,
-    vars,
-    value,
-    onChange,
-    onChangeEnd,
-    maxValue,
-    round: round3,
-    size: size2,
-    focusable,
-    overlays
-  } = _a, others = __objRest(_a, [
-    "classNames",
-    "className",
-    "style",
-    "styles",
-    "vars",
-    "value",
-    "onChange",
-    "onChangeEnd",
-    "maxValue",
-    "round",
-    "size",
-    "focusable",
-    "overlays"
-  ]);
-  const [position, setPosition] = (0, import_react54.useState)({ y: 0, x: value / maxValue });
-  const positionRef = (0, import_react54.useRef)(position);
-  const getChangeValue = (val) => round3 ? Math.round(val * maxValue) : val * maxValue;
-  const { ref: sliderRef } = (0, import_hooks15.useMove)(
-    ({ x: x2, y: y2 }) => {
-      positionRef.current = { x: x2, y: y2 };
-      onChange(getChangeValue(x2));
-    },
-    {
-      onScrubEnd: () => {
-        const { x: x2 } = positionRef.current;
-        onChangeEnd(getChangeValue(x2));
-      }
-    }
-  );
-  (0, import_hooks15.useDidUpdate)(() => {
-    setPosition({ y: 0, x: value / maxValue });
-  }, [value]);
-  const handleArrow = (event, pos) => {
-    event.preventDefault();
-    const _position = (0, import_hooks15.clampUseMovePosition)(pos);
-    onChange(getChangeValue(_position.x));
-    onChangeEnd(getChangeValue(_position.x));
-  };
-  const handleKeyDown = (event) => {
-    switch (event.key) {
-      case "ArrowRight": {
-        handleArrow(event, { x: position.x + 0.05, y: position.y });
-        break;
-      }
-      case "ArrowLeft": {
-        handleArrow(event, { x: position.x - 0.05, y: position.y });
-        break;
-      }
-    }
-  };
-  const layers = overlays ? overlays.map((overlay, index3) => /* @__PURE__ */ import_react54.default.createElement("div", { className: "sliderOverlay", style: overlay, key: index3 })) : null;
-  return /* @__PURE__ */ import_react54.default.createElement(
-    import_core41.Box,
-    __spreadProps(__spreadValues({}, others), {
-      ref: (0, import_hooks15.useMergedRef)(sliderRef, ref),
-      className: (0, import_clsx9.default)("slider", className),
-      role: "slider",
-      "aria-valuenow": value,
-      "aria-valuemax": maxValue,
-      "aria-valuemin": 0,
+    unstyled,
+    vars
+  });
+  const colors = data.map((color, index3) => /* @__PURE__ */ import_react52.default.createElement(
+    ColorSwatch,
+    __spreadProps(__spreadValues({}, getStyles("swatch")), {
+      component: "button",
+      type: "button",
+      color,
+      key: index3,
+      radius: "sm",
+      onClick: () => {
+        const _color = (0, import_colord2.colord)(color).toHsv();
+        setValue(_color);
+        onChangeEnd == null ? void 0 : onChangeEnd(_color);
+      },
+      "aria-label": color,
       tabIndex: focusable ? 0 : -1,
-      onKeyDown: handleKeyDown
-    }),
-    layers,
-    /* @__PURE__ */ import_react54.default.createElement(
-      GradientPickerThumb,
-      {
-        classNames,
-        styles,
-        position,
-        className: "sliderThumb",
-        size: size2
-      }
-    )
-  );
+      style: { cursor: "pointer" }
+    })
+  ));
+  return /* @__PURE__ */ import_react52.default.createElement(import_core39.Box, __spreadValues(__spreadProps(__spreadValues({}, getStyles("swatches")), { ref }), others), colors);
 });
-GradientPickerColorSlider.displayName = "@raikou/core/GradientPickerColorSlider";
+GradientPickerColorSwatches.displayName = "@raikou/core/GradientPickerColorSwatches";
 
-// src/components/hueSlider.tsx
-var defaultProps30 = {};
-var GradientPickerHueSlider = (0, import_core42.factory)(
-  (props, ref) => {
-    const _a = (0, import_core42.useProps)("GradientPickerHueSlider", defaultProps30, props), {
-      classNames,
-      className,
-      style,
-      styles,
-      vars,
-      value,
-      onChange,
-      onChangeEnd
-    } = _a, others = __objRest(_a, [
-      "classNames",
-      "className",
-      "style",
-      "styles",
-      "vars",
-      "value",
-      "onChange",
-      "onChangeEnd"
-    ]);
-    return /* @__PURE__ */ import_react55.default.createElement(
-      GradientPickerColorSlider,
-      __spreadValues({
-        ref,
-        value,
-        onChange,
-        onChangeEnd,
-        maxValue: 360,
-        round: true
-      }, others)
-    );
-  }
-);
-GradientPickerHueSlider.displayName = "@raikou/core/GradientPickerHueSlider";
+// src/components/inputs/index.tsx
+var import_react57 = __toESM(require("react"));
+var import_core44 = require("@raikou/core");
 
-// src/components/alphaSlider.tsx
+// ../Grid/src/Grid.tsx
 var import_react56 = __toESM(require("react"));
 var import_core43 = require("@raikou/core");
 
-// src/utils/index.ts
-function round2(number, digits = 0, base = __pow(10, digits)) {
-  return Math.round(base * number) / base;
+// ../Grid/src/GridCol/GridCol.tsx
+var import_react54 = __toESM(require("react"));
+var import_clsx8 = __toESM(require("clsx"));
+var import_core41 = require("@raikou/core");
+
+// ../Grid/src/GridCol/GridColVariables.tsx
+var import_react53 = __toESM(require("react"));
+var import_core40 = require("@raikou/core");
+
+// ../Grid/src/store.ts
+var useStore2 = pure_store_default({
+  getStyles: void 0,
+  grow: false,
+  columns: 12
+});
+
+// ../Grid/src/GridCol/GridColVariables.tsx
+var getColumnFlexBasis = (colSpan, columns) => {
+  if (colSpan === "content") {
+    return "auto";
+  }
+  if (colSpan === "auto") {
+    return "0rem";
+  }
+  return colSpan ? `${100 / (columns / colSpan)}%` : void 0;
+};
+var getColumnMaxWidth = (colSpan, columns, grow) => {
+  if (grow || colSpan === "auto") {
+    return "100%";
+  }
+  if (colSpan === "content") {
+    return "unset";
+  }
+  return getColumnFlexBasis(colSpan, columns);
+};
+var getColumnFlexGrow = (colSpan, grow) => {
+  if (!colSpan) {
+    return void 0;
+  }
+  return colSpan === "auto" || grow ? "1" : "auto";
+};
+var getColumnOffset = (offset2, columns) => offset2 === 0 ? "0" : offset2 ? `${100 / (columns / offset2)}%` : void 0;
+function GridColVariables({
+  span,
+  order,
+  offset: offset2,
+  selector
+}) {
+  var _a;
+  const theme = (0, import_core40.useRaikouTheme)();
+  const ctx = useStore2.getState();
+  const baseValue = (0, import_core40.getBaseValue)(span);
+  const baseSpan = baseValue === void 0 ? 12 : (0, import_core40.getBaseValue)(span);
+  const baseStyles = (0, import_core40.filterProps)({
+    "--col-order": (_a = (0, import_core40.getBaseValue)(order)) == null ? void 0 : _a.toString(),
+    "--col-flex-grow": getColumnFlexGrow(baseSpan, ctx.grow),
+    "--col-flex-basis": getColumnFlexBasis(baseSpan, ctx.columns),
+    "--col-width": baseSpan === "content" ? "auto" : void 0,
+    "--col-max-width": getColumnMaxWidth(baseSpan, ctx.columns, ctx.grow),
+    "--col-offset": getColumnOffset((0, import_core40.getBaseValue)(offset2), ctx.columns)
+  });
+  const queries = (0, import_core40.keys)(theme.breakpoints).reduce((acc, breakpoint) => {
+    var _a2;
+    if (!acc[breakpoint]) {
+      acc[breakpoint] = {};
+    }
+    if (typeof order === "object" && order[breakpoint] !== void 0) {
+      acc[breakpoint]["--col-order"] = (_a2 = order[breakpoint]) == null ? void 0 : _a2.toString();
+    }
+    if (typeof span === "object" && span[breakpoint] !== void 0) {
+      acc[breakpoint]["--col-flex-grow"] = getColumnFlexGrow(
+        span[breakpoint],
+        ctx.grow
+      );
+      acc[breakpoint]["--col-flex-basis"] = getColumnFlexBasis(
+        span[breakpoint],
+        ctx.columns
+      );
+      acc[breakpoint]["--col-width"] = span[breakpoint] === "content" ? "auto" : void 0;
+      acc[breakpoint]["--col-max-width"] = getColumnMaxWidth(
+        span[breakpoint],
+        ctx.columns,
+        ctx.grow
+      );
+    }
+    if (typeof offset2 === "object" && offset2[breakpoint] !== void 0) {
+      acc[breakpoint]["--col-offset"] = getColumnOffset(
+        offset2[breakpoint],
+        ctx.columns
+      );
+    }
+    return acc;
+  }, {});
+  const sortedBreakpoints = (0, import_core40.getSortedBreakpoints)((0, import_core40.keys)(queries), theme).filter(
+    (breakpoint) => (0, import_core40.keys)(queries[breakpoint.value]).length > 0
+  );
+  const media = sortedBreakpoints.map((breakpoint) => ({
+    query: `(min-width: ${theme.breakpoints[breakpoint.value]})`,
+    styles: queries[breakpoint.value]
+  }));
+  return /* @__PURE__ */ import_react53.default.createElement(import_core40.InlineStyles, { styles: baseStyles, media, selector });
 }
 
-// src/components/alphaSlider.tsx
-var defaultProps31 = {};
-var GradientPickerAlphaSlider = (0, import_core43.factory)((props, ref) => {
-  const _a = (0, import_core43.useProps)("GradientPickerAlphaSlider", defaultProps31, props), {
+// ../Grid/src/GridCol/GridCol.tsx
+var defaultProps28 = {
+  span: 12
+};
+var GridCol = (0, import_core41.factory)((_props, ref) => {
+  const props = (0, import_core41.useProps)("GridCol", defaultProps28, _props);
+  const _a = props, {
     classNames,
     className,
     style,
     styles,
     vars,
-    color,
-    value,
-    onChange,
-    onChangeEnd
+    span,
+    order,
+    offset: offset2
   } = _a, others = __objRest(_a, [
     "classNames",
     "className",
     "style",
     "styles",
     "vars",
-    "color",
-    "value",
-    "onChange",
-    "onChangeEnd"
+    "span",
+    "order",
+    "offset"
   ]);
-  return /* @__PURE__ */ import_react56.default.createElement(
-    GradientPickerColorSlider,
-    __spreadValues({
-      ref,
-      value,
-      onChange: (val) => onChange(round2(val, 2)),
-      onChangeEnd: (val) => onChangeEnd(round2(val, 2)),
-      maxValue: 1,
-      round: false
-    }, others)
-  );
+  const responsiveClassName = (0, import_core41.useRandomClassName)();
+  return /* @__PURE__ */ import_react54.default.createElement(import_react54.default.Fragment, null, /* @__PURE__ */ import_react54.default.createElement(
+    GridColVariables,
+    {
+      selector: `.${responsiveClassName}`,
+      span,
+      order,
+      offset: offset2
+    }
+  ), /* @__PURE__ */ import_react54.default.createElement(
+    import_core41.Box,
+    __spreadValues(__spreadValues({
+      ref
+    }, useStore2.getState().getStyles("col", {
+      className: (0, import_clsx8.default)(className, responsiveClassName),
+      style,
+      classNames,
+      styles
+    })), others)
+  ));
 });
-GradientPickerAlphaSlider.displayName = "@raikou/core/GradientPickerAlphaSlider";
+GridCol.displayName = "@raikou/core/GridCol";
+
+// ../Grid/src/GridVariables.tsx
+var import_react55 = __toESM(require("react"));
+var import_core42 = require("@raikou/core");
+function GridVariables({ gutter, selector }) {
+  const theme = (0, import_core42.useRaikouTheme)();
+  const baseStyles = (0, import_core42.filterProps)({
+    "--grid-gutter": (0, import_core42.getSpacing)((0, import_core42.getBaseValue)(gutter))
+  });
+  const queries = (0, import_core42.keys)(theme.breakpoints).reduce((acc, breakpoint) => {
+    if (!acc[breakpoint]) {
+      acc[breakpoint] = {};
+    }
+    if (typeof gutter === "object" && gutter[breakpoint] !== void 0) {
+      acc[breakpoint]["--grid-gutter"] = (0, import_core42.getSpacing)(gutter[breakpoint]);
+    }
+    return acc;
+  }, {});
+  const sortedBreakpoints = (0, import_core42.getSortedBreakpoints)((0, import_core42.keys)(queries), theme).filter(
+    (breakpoint) => (0, import_core42.keys)(queries[breakpoint.value]).length > 0
+  );
+  const media = sortedBreakpoints.map((breakpoint) => ({
+    query: `(min-width: ${theme.breakpoints[breakpoint.value]})`,
+    styles: queries[breakpoint.value]
+  }));
+  return /* @__PURE__ */ import_react55.default.createElement(import_core42.InlineStyles, { styles: baseStyles, media, selector });
+}
+
+// css-module:./Grid.module.css#css-module
+var Grid_module_default = { "root": "m-410352e9", "inner": "m-dee7bd2f", "col": "m-96bdd299" };
+
+// ../Grid/src/Grid.tsx
+var defaultProps29 = {
+  gutter: "md",
+  grow: false,
+  columns: 12
+};
+var varsResolver17 = (0, import_core43.createVarsResolver)(
+  (_2, { justify, align, overflow }) => ({
+    root: {
+      "--grid-justify": justify,
+      "--grid-align": align,
+      "--grid-overflow": overflow
+    }
+  })
+);
+var Grid = (0, import_core43.factory)((_props, ref) => {
+  const props = (0, import_core43.useProps)("Grid", defaultProps29, _props);
+  const _a = props, {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    grow,
+    gutter,
+    columns,
+    align,
+    justify,
+    children
+  } = _a, others = __objRest(_a, [
+    "classNames",
+    "className",
+    "style",
+    "styles",
+    "unstyled",
+    "vars",
+    "grow",
+    "gutter",
+    "columns",
+    "align",
+    "justify",
+    "children"
+  ]);
+  const getStyles = (0, import_core43.useStyles)({
+    name: "Grid",
+    classes: Grid_module_default,
+    props,
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled,
+    vars,
+    varsResolver: varsResolver17
+  });
+  const responsiveClassName = (0, import_core43.useRandomClassName)();
+  useStore2.update((state) => {
+    state.getStyles = getStyles;
+    state.columns = columns;
+    state.grow = grow;
+  });
+  return /* @__PURE__ */ import_react56.default.createElement(import_react56.default.Fragment, null, /* @__PURE__ */ import_react56.default.createElement("div", null, /* @__PURE__ */ import_react56.default.createElement(GridVariables, __spreadValues({ selector: `.${responsiveClassName}` }, props))), /* @__PURE__ */ import_react56.default.createElement(
+    import_core43.Box,
+    __spreadValues(__spreadValues({
+      ref
+    }, getStyles("root", { className: responsiveClassName })), others),
+    /* @__PURE__ */ import_react56.default.createElement("div", __spreadValues({}, getStyles("inner")), children)
+  ));
+});
+Grid.displayName = "@raikou/core/Grid";
+Grid.Col = GridCol;
+Grid.classes = Grid_module_default;
+
+// src/components/inputs/index.tsx
+var import_colord3 = require("colord");
+
+// css-module:../../GradientPicker.module.css#css-module
+var GradientPicker_module_default = { "root": "m-d013dd51", "textInput": "m-e714678e", "swatches": "m-b4b08ed9" };
+
+// src/components/inputs/index.tsx
+var defaultProps30 = {
+  format: "rgba"
+};
+var GradientPickerInputs = (0, import_core44.factory)(
+  (props, ref) => {
+    const _a = (0, import_core44.useProps)("GradientPickerInputs", defaultProps30, props), { classNames, className, style, styles, vars, format } = _a, others = __objRest(_a, ["classNames", "className", "style", "styles", "vars", "format"]);
+    const getStyles = (0, import_core44.useStyles)({
+      name: "Swatches",
+      classes: GradientPicker_module_default,
+      props,
+      className,
+      style,
+      classNames,
+      styles,
+      vars
+    });
+    const ctx = useGradientPickerContext();
+    const retrieveValue = (index3) => {
+      if (format === "rgba") {
+        const value = (0, import_colord3.colord)(ctx.color).toRgb();
+        const key = Object.keys(value)[index3];
+        return value[key];
+      } else if (format === "hsla") {
+        const value = (0, import_colord3.colord)(ctx.color).toHsl();
+        const key = Object.keys(value)[index3];
+        return value[key];
+      } else if (format === "hsva") {
+        const value = ctx.color[index3];
+        const key = Object.keys(value)[index3];
+        return value[key];
+      } else if (format === "cmyk") {
+      }
+      return "";
+    };
+    const retrieveLabel = (index3) => {
+      if (format === "rgba") {
+        return "RGBA".split("")[index3];
+      } else if (format === "hsla") {
+        return "HSLA".split("")[index3];
+      } else if (format === "hsva") {
+        return "HSVA".split("")[index3];
+      } else if (format === "cmyk") {
+        return "CMYK".split("")[index3];
+      }
+      return "";
+    };
+    return /* @__PURE__ */ import_react57.default.createElement(Grid, __spreadProps(__spreadValues({}, others), { ref }), /* @__PURE__ */ import_react57.default.createElement(Grid.Col, { span: "content" }, /* @__PURE__ */ import_react57.default.createElement(
+      TextInput,
+      __spreadProps(__spreadValues({}, getStyles("textInput")), {
+        size: "xs",
+        value: (0, import_colord3.colord)(ctx.color).toHex().toString().replace("#", ""),
+        onChange: () => {
+        },
+        label: "Hex"
+      })
+    )), /* @__PURE__ */ import_react57.default.createElement(Grid.Col, { span: "auto" }, /* @__PURE__ */ import_react57.default.createElement(Group, { gap: 8, grow: true }, /* @__PURE__ */ import_react57.default.createElement(
+      TextInput,
+      __spreadProps(__spreadValues({}, getStyles("textInput")), {
+        size: "xs",
+        readOnly: true,
+        value: retrieveValue(0),
+        onChange: () => {
+        },
+        label: retrieveLabel(0)
+      })
+    ), /* @__PURE__ */ import_react57.default.createElement(
+      TextInput,
+      __spreadProps(__spreadValues({}, getStyles("textInput")), {
+        size: "xs",
+        readOnly: true,
+        value: retrieveValue(1),
+        onChange: () => {
+        },
+        label: retrieveLabel(1)
+      })
+    ), /* @__PURE__ */ import_react57.default.createElement(
+      TextInput,
+      __spreadProps(__spreadValues({}, getStyles("textInput")), {
+        size: "xs",
+        readOnly: true,
+        value: retrieveValue(2),
+        onChange: () => {
+        },
+        label: retrieveLabel(2)
+      })
+    ), /* @__PURE__ */ import_react57.default.createElement(
+      TextInput,
+      __spreadProps(__spreadValues({}, getStyles("textInput")), {
+        size: "xs",
+        readOnly: true,
+        value: retrieveValue(3),
+        onChange: () => {
+        },
+        label: retrieveLabel(3)
+      })
+    ))));
+  }
+);
+GradientPickerInputs.displayName = "@raikou/core/GradientPickerInputs";
 
 // src/components/compact/index.tsx
-var defaultProps32 = {};
-var GradientPickerCompact = (0, import_core44.factory)(
+var defaultProps31 = {};
+var GradientPickerCompact = (0, import_core45.factory)(
   (props, ref) => {
-    var _b, _c;
-    const _a = (0, import_core44.useProps)("GradientPickerCompact", defaultProps32, props), {
+    const _a = (0, import_core45.useProps)("GradientPickerCompact", defaultProps31, props), {
       classNames,
       className,
       style,
@@ -54108,9 +54224,19 @@ var GradientPickerCompact = (0, import_core44.factory)(
       "onClose",
       "shadow"
     ]);
-    const [colorCtrl, toggleColorCtrl] = (0, import_react57.useState)("none");
+    const getStyles = (0, import_core45.useStyles)({
+      name: "Swatches",
+      classes: GradientPicker_module_default,
+      props,
+      className,
+      style,
+      classNames,
+      styles,
+      vars
+    });
+    const [colorCtrl, toggleColorCtrl] = (0, import_react58.useState)("none");
     const ctx = useGradientPickerContext();
-    const { ref: pickerRef, width: elementWidth } = (0, import_hooks16.useElementSize)();
+    const { ref: pickerRef, width: elementWidth } = (0, import_hooks13.useElementSize)();
     const handleChange = (color) => {
       var _a2;
       ctx.setColor(color);
@@ -54135,7 +54261,6 @@ var GradientPickerCompact = (0, import_core44.factory)(
         }
       }
     };
-    console.log(elementWidth);
     const onColorCtrlChange = (value) => {
       if (value === colorCtrl) {
         toggleColorCtrl("none");
@@ -54147,15 +54272,14 @@ var GradientPickerCompact = (0, import_core44.factory)(
         toggleColorCtrl(value);
       }
     };
-    (0, import_react57.useEffect)(() => {
+    (0, import_react58.useEffect)(() => {
       if (ctx.isOpen) {
         onOpen && onOpen();
       } else {
         onClose && onClose();
       }
     }, [ctx.isOpen]);
-    console.log(width);
-    return /* @__PURE__ */ import_react57.default.createElement(
+    return /* @__PURE__ */ import_react58.default.createElement(
       Popover,
       {
         __staticSelector: "Compact",
@@ -54166,44 +54290,26 @@ var GradientPickerCompact = (0, import_core44.factory)(
         withinPortal,
         transitionProps,
         opened: ctx.isOpen,
-        shadow
+        shadow,
+        width
       },
-      /* @__PURE__ */ import_react57.default.createElement(Popover.Target, null, /* @__PURE__ */ import_react57.default.createElement(
+      /* @__PURE__ */ import_react58.default.createElement(Popover.Target, null, /* @__PURE__ */ import_react58.default.createElement(
         GradientPickerPicker,
         {
           ref: pickerRef,
           disabled,
           control: picker,
           swatchSize,
-          className: (0, import_clsx10.default)("pickerInput", className)
+          className: (0, import_clsx9.default)("pickerInput", className)
         }
       )),
-      /* @__PURE__ */ import_react57.default.createElement(Popover.Dropdown, null, /* @__PURE__ */ import_react57.default.createElement(
+      /* @__PURE__ */ import_react58.default.createElement(Popover.Dropdown, { p: 6 }, /* @__PURE__ */ import_react58.default.createElement(
         Stack,
         __spreadValues({
           gap: 0,
-          ref: ctx.setDropdown,
-          className: "gradientPicker-wrapper"
+          ref: ctx.setDropdown
         }, others),
-        /* @__PURE__ */ import_react57.default.createElement(
-          GradientPickerSaturation,
-          {
-            value: ctx.color,
-            onChange: (color) => handleChange(color),
-            onChangeEnd: (color) => handleChange(color),
-            size: size2,
-            focusable,
-            saturationLabel
-          }
-        ),
-        /* @__PURE__ */ import_react57.default.createElement(Group, { gap: 10, mb: 8 }, /* @__PURE__ */ import_react57.default.createElement(Button.Group, null, /* @__PURE__ */ import_react57.default.createElement(
-          GradientPickerEyeDropper,
-          {
-            className: "px-[8px]",
-            size: "md",
-            onChange: (color) => handleChange(color)
-          }
-        ), /* @__PURE__ */ import_react57.default.createElement(
+        /* @__PURE__ */ import_react58.default.createElement(Group, { gap: 10, mb: 8 }, /* @__PURE__ */ import_react58.default.createElement(Button.Group, null, /* @__PURE__ */ import_react58.default.createElement(
           Button,
           {
             variant: "default",
@@ -54216,16 +54322,16 @@ var GradientPickerCompact = (0, import_core44.factory)(
               borderRadius: colorCtrl === "colorMode" ? 8 : 0
             }
           },
-          /* @__PURE__ */ import_react57.default.createElement(
+          /* @__PURE__ */ import_react58.default.createElement(
             Tooltip,
             {
               label: "Color Model",
               offset: 10,
               opened: colorCtrl === "colorMode" ? false : void 0
             },
-            /* @__PURE__ */ import_react57.default.createElement(Text, { className: "w-[20px] text-center" }, /* @__PURE__ */ import_react57.default.createElement(Image, { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNOTYgMGMxNy43IDAgMzIgMTQuMyAzMiAzMlY4Ni43YzI4LjMgMTIuMyA0OCA0MC41IDQ4IDczLjNzLTE5LjcgNjEtNDggNzMuM1Y0ODBjMCAxNy43LTE0LjMgMzItMzIgMzJzLTMyLTE0LjMtMzItMzJWMjMzLjNDMzUuNyAyMjEgMTYgMTkyLjggMTYgMTYwczE5LjctNjEgNDgtNzMuM1YzMkM2NCAxNC4zIDc4LjMgMCA5NiAwem0wIDE5MmEzMiAzMiAwIDEgMCAwLTY0IDMyIDMyIDAgMSAwIDAgNjR6TTI1NiAzODRhMzIgMzIgMCAxIDAgMC02NCAzMiAzMiAwIDEgMCAwIDY0em04MC0zMmMwIDMyLjgtMTkuNyA2MS00OCA3My4zVjQ4MGMwIDE3LjctMTQuMyAzMi0zMiAzMnMtMzItMTQuMy0zMi0zMlY0MjUuM2MtMjguMy0xMi4zLTQ4LTQwLjUtNDgtNzMuM3MxOS43LTYxIDQ4LTczLjNWMzJjMC0xNy43IDE0LjMtMzIgMzItMzJzMzIgMTQuMyAzMiAzMlYyNzguN2MyOC4zIDEyLjMgNDggNDAuNSA0OCA3My4zek00NDggMTkyYTMyIDMyIDAgMSAwIC02NCAwIDMyIDMyIDAgMSAwIDY0IDB6bTAgNzMuM1Y0ODBjMCAxNy43LTE0LjMgMzItMzIgMzJzLTMyLTE0LjMtMzItMzJWMjY1LjNjLTI4LjMtMTIuMy00OC00MC41LTQ4LTczLjNzMTkuNy02MSA0OC03My4zVjMyYzAtMTcuNyAxNC4zLTMyIDMyLTMyczMyIDE0LjMgMzIgMzJ2ODYuN2MyOC4zIDEyLjMgNDggNDAuNSA0OCA3My4zcy0xOS43IDYxLTQ4IDczLjN6Ii8+PC9zdmc+" }))
+            /* @__PURE__ */ import_react58.default.createElement(Text, { className: "w-[20px] text-center" }, /* @__PURE__ */ import_react58.default.createElement(Image, { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNOTYgMGMxNy43IDAgMzIgMTQuMyAzMiAzMlY4Ni43YzI4LjMgMTIuMyA0OCA0MC41IDQ4IDczLjNzLTE5LjcgNjEtNDggNzMuM1Y0ODBjMCAxNy43LTE0LjMgMzItMzIgMzJzLTMyLTE0LjMtMzItMzJWMjMzLjNDMzUuNyAyMjEgMTYgMTkyLjggMTYgMTYwczE5LjctNjEgNDgtNzMuM1YzMkM2NCAxNC4zIDc4LjMgMCA5NiAwem0wIDE5MmEzMiAzMiAwIDEgMCAwLTY0IDMyIDMyIDAgMSAwIDAgNjR6TTI1NiAzODRhMzIgMzIgMCAxIDAgMC02NCAzMiAzMiAwIDEgMCAwIDY0em04MC0zMmMwIDMyLjgtMTkuNyA2MS00OCA3My4zVjQ4MGMwIDE3LjctMTQuMyAzMi0zMiAzMnMtMzItMTQuMy0zMi0zMlY0MjUuM2MtMjguMy0xMi4zLTQ4LTQwLjUtNDgtNzMuM3MxOS43LTYxIDQ4LTczLjNWMzJjMC0xNy43IDE0LjMtMzIgMzItMzJzMzIgMTQuMyAzMiAzMlYyNzguN2MyOC4zIDEyLjMgNDggNDAuNSA0OCA3My4zek00NDggMTkyYTMyIDMyIDAgMSAwIC02NCAwIDMyIDMyIDAgMSAwIDY0IDB6bTAgNzMuM1Y0ODBjMCAxNy43LTE0LjMgMzItMzIgMzJzLTMyLTE0LjMtMzItMzJWMjY1LjNjLTI4LjMtMTIuMy00OC00MC41LTQ4LTczLjNzMTkuNy02MSA0OC03My4zVjMyYzAtMTcuNyAxNC4zLTMyIDMyLTMyczMyIDE0LjMgMzIgMzJ2ODYuN2MyOC4zIDEyLjMgNDggNDAuNSA0OCA3My4zcy0xOS43IDYxLTQ4IDczLjN6Ii8+PC9zdmc+" }))
           )
-        ), /* @__PURE__ */ import_react57.default.createElement(
+        ), /* @__PURE__ */ import_react58.default.createElement(
           Button,
           {
             variant: "default",
@@ -54238,66 +54344,41 @@ var GradientPickerCompact = (0, import_core44.factory)(
               borderRadius: colorCtrl === "colorGuide" ? 8 : 0
             }
           },
-          /* @__PURE__ */ import_react57.default.createElement(
+          /* @__PURE__ */ import_react58.default.createElement(
             Tooltip,
             {
               label: "Color Guide",
               offset: 10,
               opened: colorCtrl === "colorGuide" ? false : void 0
             },
-            /* @__PURE__ */ import_react57.default.createElement(Text, { className: "w-[20px] text-center" }, /* @__PURE__ */ import_react57.default.createElement(Image, { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNNTEyIDI1NmMwIC45IDAgMS44IDAgMi43Yy0uNCAzNi41LTMzLjYgNjEuMy03MC4xIDYxLjNIMzQ0Yy0yNi41IDAtNDggMjEuNS00OCA0OGMwIDMuNCAuNCA2LjcgMSA5LjljMi4xIDEwLjIgNi41IDIwIDEwLjggMjkuOWM2LjEgMTMuOCAxMi4xIDI3LjUgMTIuMSA0MmMwIDMxLjgtMjEuNiA2MC43LTUzLjQgNjJjLTMuNSAuMS03IC4yLTEwLjYgLjJDMTE0LjYgNTEyIDAgMzk3LjQgMCAyNTZTMTE0LjYgMCAyNTYgMFM1MTIgMTE0LjYgNTEyIDI1NnpNMTI4IDI4OGEzMiAzMiAwIDEgMCAtNjQgMCAzMiAzMiAwIDEgMCA2NCAwem0wLTk2YTMyIDMyIDAgMSAwIDAtNjQgMzIgMzIgMCAxIDAgMCA2NHpNMjg4IDk2YTMyIDMyIDAgMSAwIC02NCAwIDMyIDMyIDAgMSAwIDY0IDB6bTk2IDk2YTMyIDMyIDAgMSAwIDAtNjQgMzIgMzIgMCAxIDAgMCA2NHoiLz48L3N2Zz4=" }))
+            /* @__PURE__ */ import_react58.default.createElement(Text, { className: "w-[20px] text-center" }, /* @__PURE__ */ import_react58.default.createElement(Image, { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNNTEyIDI1NmMwIC45IDAgMS44IDAgMi43Yy0uNCAzNi41LTMzLjYgNjEuMy03MC4xIDYxLjNIMzQ0Yy0yNi41IDAtNDggMjEuNS00OCA0OGMwIDMuNCAuNCA2LjcgMSA5LjljMi4xIDEwLjIgNi41IDIwIDEwLjggMjkuOWM2LjEgMTMuOCAxMi4xIDI3LjUgMTIuMSA0MmMwIDMxLjgtMjEuNiA2MC43LTUzLjQgNjJjLTMuNSAuMS03IC4yLTEwLjYgLjJDMTE0LjYgNTEyIDAgMzk3LjQgMCAyNTZTMTE0LjYgMCAyNTYgMFM1MTIgMTE0LjYgNTEyIDI1NnpNMTI4IDI4OGEzMiAzMiAwIDEgMCAtNjQgMCAzMiAzMiAwIDEgMCA2NCAwem0wLTk2YTMyIDMyIDAgMSAwIDAtNjQgMzIgMzIgMCAxIDAgMCA2NHpNMjg4IDk2YTMyIDMyIDAgMSAwIC02NCAwIDMyIDMyIDAgMSAwIDY0IDB6bTk2IDk2YTMyIDMyIDAgMSAwIDAtNjQgMzIgMzIgMCAxIDAgMCA2NHoiLz48L3N2Zz4=" }))
           )
-        )), /* @__PURE__ */ import_react57.default.createElement(import_core44.Box, { className: "calc(100%_-_102px)" }, /* @__PURE__ */ import_react57.default.createElement(
-          GradientPickerHueSlider,
+        )), /* @__PURE__ */ import_react58.default.createElement(import_core45.Box, { className: "calc(100%_-_102px)" })),
+        /* @__PURE__ */ import_react58.default.createElement(
+          GradientPickerInputs,
           {
-            value: (_b = ctx.color) == null ? void 0 : _b.h,
-            onChange: (h2) => handleChange({
-              h: h2,
-              // @ts-ignore
-              s: ctx.color.s,
-              // @ts-ignore
-              v: ctx.color.v,
-              // @ts-ignore
-              a: ctx.color.a
-            }),
-            onChangeEnd: (h2) => handleChange({
-              h: h2,
-              // @ts-ignore
-              s: ctx.color.s,
-              // @ts-ignore
-              v: ctx.color.v,
-              // @ts-ignore
-              a: ctx.color.a
-            }),
-            size: size2,
-            "aria-label": hueLabel
+            format,
+            className: (0, import_clsx9.default)("format", className)
           }
-        ), /* @__PURE__ */ import_react57.default.createElement(
-          GradientPickerAlphaSlider,
+        ),
+        /* @__PURE__ */ import_react58.default.createElement(Grid, null, /* @__PURE__ */ import_react58.default.createElement(Grid.Col, { span: 3 }, /* @__PURE__ */ import_react58.default.createElement(
+          ColorSwatch,
           {
-            value: (_c = ctx.color) == null ? void 0 : _c.a,
-            onChange: (a2) => handleChange({
-              // @ts-ignore
-              h: ctx.color.h,
-              // @ts-ignore
-              s: ctx.color.s,
-              // @ts-ignore
-              v: ctx.color.v,
-              a: a2
-            }),
-            onChangeEnd: (a2) => handleChange({
-              // @ts-ignore
-              h: ctx.color.h,
-              // @ts-ignore
-              s: ctx.color.s,
-              // @ts-ignore
-              v: ctx.color.v,
-              a: a2
-            }),
-            size: size2,
-            color: (0, import_colord4.colord)(ctx.color).toHex().toString(),
-            style: { marginTop: 6 },
-            "aria-label": alphaLabel
+            color: (0, import_colord4.colord)(ctx.color).toRgbString(),
+            radius: "sm",
+            style: {
+              "--cs-size": "100%"
+            }
+          }
+        )), /* @__PURE__ */ import_react58.default.createElement(Grid.Col, { span: "auto" }, Array.isArray(swatches) && /* @__PURE__ */ import_react58.default.createElement(
+          GradientPickerColorSwatches,
+          {
+            data: swatches,
+            swatchesPerRow,
+            focusable,
+            setValue: (color) => {
+              handleChange(color);
+            }
           }
         )))
       ))
@@ -54307,11 +54388,11 @@ var GradientPickerCompact = (0, import_core44.factory)(
 GradientPickerCompact.displayName = "@raikou/core/GradientPickerCompact";
 
 // src/GradientPicker.tsx
-var defaultProps33 = {};
+var defaultProps32 = {};
 function GradientPicker(_props) {
-  const props = (0, import_core45.useProps)(
+  const props = (0, import_core46.useProps)(
     "GradientPicker",
-    defaultProps33,
+    defaultProps32,
     _props
   );
   const _a = props, {
@@ -54335,7 +54416,7 @@ function GradientPicker(_props) {
     "value",
     "onChange"
   ]);
-  const getStyles = (0, import_core45.useStyles)({
+  const getStyles = (0, import_core46.useStyles)({
     name: "GradientPicker",
     classes: {
       root: "gradientPicker-root"
@@ -54349,14 +54430,14 @@ function GradientPicker(_props) {
     vars
     // varsResolver,
   });
-  const [update, setUpdate] = (0, import_react58.useState)(true);
-  const [activeStopIndex, setActiveStopIndex] = (0, import_react58.useState)("");
-  const [isOpen, toggleOpen] = (0, import_hooks17.useToggle)([false, true]);
-  const [control, setControl] = (0, import_react58.useState)(null);
-  const [dropdown, setDropdown] = (0, import_react58.useState)(null);
-  const [color, setColor] = (0, import_react58.useState)(void 0);
-  const [gradient, setGradient] = (0, import_react58.useState)(void 0);
-  (0, import_hooks17.useClickOutside)(() => toggleOpen(false), null, [control, dropdown]);
+  const [update, setUpdate] = (0, import_react59.useState)(true);
+  const [activeStopIndex, setActiveStopIndex] = (0, import_react59.useState)("");
+  const [isOpen, toggleOpen] = (0, import_hooks14.useToggle)([false, true]);
+  const [control, setControl] = (0, import_react59.useState)(null);
+  const [dropdown, setDropdown] = (0, import_react59.useState)(null);
+  const [color, setColor] = (0, import_react59.useState)(void 0);
+  const [gradient, setGradient] = (0, import_react59.useState)(void 0);
+  (0, import_hooks14.useClickOutside)(() => toggleOpen(false), null, [control, dropdown]);
   const compareGradient = (value2, gradient2) => {
     if (gradient2 === void 0) {
       return false;
@@ -54365,7 +54446,7 @@ function GradientPicker(_props) {
     const gradientStr = cssGradient([gradient2], "single_gradient");
     return valueStr === gradientStr;
   };
-  (0, import_react58.useEffect)(() => {
+  (0, import_react59.useEffect)(() => {
     if (update) {
       const hasGradient = isGradient(value);
       if (!hasGradient) {
@@ -54437,7 +54518,7 @@ function GradientPicker(_props) {
       }
     }
   }, [value]);
-  (0, import_hooks17.useDidUpdate)(() => {
+  (0, import_hooks14.useDidUpdate)(() => {
     if (color !== void 0) {
       setUpdate(false);
       if (gradient === void 0) {
@@ -54450,13 +54531,13 @@ function GradientPicker(_props) {
       }, 10);
     }
   }, [color, gradient]);
-  (0, import_hooks17.useDidUpdate)(() => {
+  (0, import_hooks14.useDidUpdate)(() => {
     const obj = gradient == null ? void 0 : gradient.colors.find((item) => item.id === activeStopIndex);
     if (obj) {
       setColor((0, import_colord5.colord)(obj.color).toHsv());
     }
   }, [activeStopIndex]);
-  return /* @__PURE__ */ import_react58.default.createElement(
+  return /* @__PURE__ */ import_react59.default.createElement(
     GradientPickerProvider,
     {
       value: {
@@ -54476,14 +54557,14 @@ function GradientPicker(_props) {
         getStyles
       }
     },
-    /* @__PURE__ */ import_react58.default.createElement(import_core45.Box, __spreadValues(__spreadValues({}, getStyles("root")), others), children)
+    /* @__PURE__ */ import_react59.default.createElement(import_core46.Box, __spreadValues(__spreadValues({}, getStyles("root")), others), children)
   );
 }
 var extendGradientPicker = (c2) => c2;
 GradientPicker.extend = extendGradientPicker;
 GradientPicker.displayName = "@raikou/core/GradientPicker";
 GradientPicker.Compact = GradientPickerCompact;
-GradientPicker.Picker = GradientPickerPicker;
+GradientPicker.Swatches = GradientPickerColorSwatches;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   GradientPicker

@@ -15,6 +15,8 @@ interface TitleProps extends BoxProps, StylesApiProps<TitleFactory>, ElementProp
     size?: TitleSize;
     /** Number of lines after which Text will be truncated */
     lineClamp?: number;
+    /** Controls `text-wrap` property, `'wrap'` by default */
+    textWrap?: "wrap" | "nowrap" | "balance" | "pretty" | "stable";
 }
 type TitleFactory = Factory<{
     props: TitleProps;

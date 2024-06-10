@@ -1,23 +1,32 @@
 import {
   ComboboxData,
-  ComboboxParsedItem,
   ComboboxItem,
   ComboboxItemGroup,
+  ComboboxParsedItem,
   ComboboxParsedItemGroup,
-} from '../Combobox.types';
+  ComboboxStringData,
+  ComboboxStringItem,
+} from "../Combobox.types";
 
 function parseItem(
-  item: string | ComboboxItem | ComboboxItemGroup
+  item: string | ComboboxItem | ComboboxStringItem | ComboboxItemGroup,
 ): ComboboxItem | ComboboxParsedItemGroup {
-  if (typeof item === 'string') {
+  if (typeof item === "string") {
     return { value: item, label: item };
   }
 
-  if (typeof item === 'number') {
-    return { value: (item as number).toString(), label: (item as number).toString() };
+  if ("value" in item && !("label" in item)) {
+    return { value: item.value, label: item.value, disabled: item.disabled };
   }
 
-  if ('group' in item) {
+  if (typeof item === "number") {
+    return {
+      value: (item as number).toString(),
+      label: (item as number).toString(),
+    };
+  }
+
+  if ("group" in item) {
     return {
       group: item.group,
       items: item.items.map((i) => parseItem(i) as ComboboxItem),
@@ -27,10 +36,12 @@ function parseItem(
   return item;
 }
 
-export function getParsedComboboxData(data: ComboboxData | undefined): ComboboxParsedItem[] {
+export function getParsedComboboxData(
+  data: ComboboxData | ComboboxStringData | undefined,
+): ComboboxParsedItem[] {
   if (!data) {
     return [];
   }
 
-  return data.map(parseItem);
+  return data.map((item) => parseItem(item as ComboboxItem));
 }

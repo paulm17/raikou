@@ -7,7 +7,7 @@ export default { title: "Grid" };
 export function Usage() {
   return (
     <div style={{ padding: 0 }}>
-      <Grid bg="red-300">
+      <Grid bg="pink.3">
         <Grid.Col span={{ sm: 6, md: 3 }}>
           <Button fullWidth>First</Button>
         </Grid.Col>
@@ -19,6 +19,18 @@ export function Usage() {
         </Grid.Col>
         <Grid.Col span={{ sm: 6, md: 3 }}>
           <Button fullWidth>Forth</Button>
+        </Grid.Col>
+      </Grid>
+    </div>
+  );
+}
+
+export function ContentAuto() {
+  return (
+    <div style={{ padding: 0 }}>
+      <Grid bg="pink.3">
+        <Grid.Col span={{ base: "auto", sm: "content" }}>
+          <Button fullWidth>First</Button>
         </Grid.Col>
       </Grid>
     </div>
@@ -49,18 +61,6 @@ export function NestedAutoGrids() {
           </Grid>
         </Grid.Col>
         <Grid.Col span={6}>Not nested</Grid.Col>
-      </Grid>
-    </div>
-  );
-}
-
-export function ContentAuto() {
-  return (
-    <div style={{ padding: 0 }}>
-      <Grid bg="pink.3">
-        <Grid.Col span={{ base: "auto", sm: "content" }}>
-          <Button fullWidth>First</Button>
-        </Grid.Col>
       </Grid>
     </div>
   );
@@ -101,11 +101,11 @@ export function Order() {
 //     <MantineThemeProvider
 //       theme={{
 //         breakpoints: {
-//           xs: '400px',
-//           sm: '600px',
-//           md: '800px',
-//           lg: '1000px',
-//           xl: '1200px',
+//           xs: "400px",
+//           sm: "600px",
+//           md: "800px",
+//           lg: "1000px",
+//           xl: "1200px",
 //         },
 //       }}
 //     >

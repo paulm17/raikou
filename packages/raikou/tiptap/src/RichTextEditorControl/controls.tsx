@@ -1,32 +1,37 @@
 import React from "react";
-import { createControl } from "./RichTextEditorControl";
 import {
+  IconAlignCenter,
+  IconAlignJustified,
+  IconAlignLeft,
+  IconAlignRight,
+  IconArrowBackUp,
+  IconArrowForwardUp,
+  IconBlockquote,
   IconBold,
-  IconItalic,
-  IconUnderline,
-  IconStrikethrough,
+  IconCircleOff,
   IconClearFormatting,
+  IconCode,
   IconH1,
   IconH2,
   IconH3,
   IconH4,
   IconH5,
   IconH6,
+  IconHighlight,
+  IconIndentDecrease,
+  IconIndentIncrease,
+  IconItalic,
+  IconLineDashed,
   IconList,
+  IconListCheck,
   IconListNumbers,
-  IconUnlink,
-  IconBlockquote,
-  IconAlignLeft,
-  IconAlignRight,
-  IconAlignCenter,
-  IconAlignJustified,
+  IconStrikethrough,
   IconSubscript,
   IconSuperscript,
-  IconCode,
-  IconHighlight,
-  IconLineDashed,
-  IconCircleOff,
+  IconUnderline,
+  IconUnlink,
 } from "../icons/Icons";
+import { createControl } from "./RichTextEditorControl";
 
 export const BoldControl = createControl({
   label: "boldControlLabel",
@@ -200,4 +205,39 @@ export const UnsetColorControl = createControl({
   label: "unsetColorControlLabel",
   icon: (props) => <IconCircleOff {...props} />,
   operation: { name: "unsetColor" },
+});
+
+export const UndoControl = createControl({
+  label: "undoControlLabel",
+  icon: (props) => <IconArrowBackUp {...props} />,
+  isDisabled: (editor) => !editor?.can().undo(),
+  operation: { name: "undo" },
+});
+
+export const RedoControl = createControl({
+  label: "redoControlLabel",
+  icon: (props) => <IconArrowForwardUp {...props} />,
+  isDisabled: (editor) => !editor?.can().redo(),
+  operation: { name: "redo" },
+});
+
+export const TaskListControl = createControl({
+  label: "tasksControlLabel",
+  icon: (props) => <IconListCheck {...props} />,
+  isActive: { name: "taskList" },
+  operation: { name: "toggleTaskList" },
+});
+
+export const TaskListSinkControl = createControl({
+  label: "tasksSinkLabel",
+  icon: (props) => <IconIndentIncrease {...props} />,
+  operation: { name: "sinkListItem", attributes: "taskItem" },
+  isDisabled: (editor) => !editor?.can().sinkListItem("taskItem"),
+});
+
+export const TaskListLiftControl = createControl({
+  label: "tasksLiftLabel",
+  icon: (props) => <IconIndentDecrease {...props} />,
+  operation: { name: "liftListItem", attributes: "taskItem" },
+  isDisabled: (editor) => !editor?.can().liftListItem("taskItem"),
 });

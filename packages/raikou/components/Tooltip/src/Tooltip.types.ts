@@ -10,9 +10,8 @@ import { PortalProps } from "../../Portal/src";
 import type { TooltipFactory } from "./Tooltip";
 
 export type TooltipStylesNames = "tooltip" | "arrow";
-export type TooltipVariant = string;
 export type TooltipCssVariables = {
-  tooltip: "--tooltip-radius" | "--tooltip-bg";
+  tooltip: "--tooltip-radius" | "--tooltip-bg" | "--tooltip-color";
 };
 
 export interface TooltipBaseProps
@@ -44,7 +43,7 @@ export interface TooltipBaseProps
   multiline?: boolean;
 
   /** Tooltip z-index, `300` by default */
-  zIndex?: React.CSSProperties["zIndex"];
+  zIndex?: string | number;
 
   /** If set, tooltip element will not be rendered */
   disabled?: boolean;

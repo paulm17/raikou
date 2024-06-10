@@ -6,13 +6,11 @@
   --container-size-lg: calc(71.25rem * var(--raikou-scale));
   --container-size-xl: calc(82.5rem * var(--raikou-scale));
   --container-size: var(--container-size-md);
-  padding-left: var(--raikou-spacing-md);
-  padding-right: var(--raikou-spacing-md);
   max-width: var(--container-size);
-  margin-left: auto;
-  margin-right: auto;
+  padding-inline: var(--raikou-spacing-md);
+  margin-inline: auto;
 }
-.m-7485cace[data-fluid] {
-  --container-size: 100%;
+.m-7485cace:where([data-fluid]) {
+  max-width: 100%;
 }
 /*# sourceMappingURL=index.css.map */

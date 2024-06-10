@@ -1,15 +1,18 @@
 import type { ComboboxProps, ComboboxStylesNames } from "./Combobox";
 import type { OptionsFilter } from "./OptionsDropdown/OptionsDropdown";
 
-export interface ComboboxItem {
+export interface ComboboxStringItem {
   value: string;
-  label: string;
   disabled?: boolean;
 }
 
-export interface ComboboxItemGroup {
+export interface ComboboxItem extends ComboboxStringItem {
+  label: string;
+}
+
+export interface ComboboxItemGroup<T = ComboboxItem | string> {
   group: string;
-  items: (ComboboxItem | string)[];
+  items: T[];
 }
 
 export interface ComboboxParsedItemGroup {
@@ -17,7 +20,21 @@ export interface ComboboxParsedItemGroup {
   items: ComboboxItem[];
 }
 
-export type ComboboxData = (string | ComboboxItem | ComboboxItemGroup)[];
+export type ComboboxStringData =
+  | Array<
+      | string
+      | ComboboxStringItem
+      | ComboboxItemGroup<string | ComboboxStringItem>
+    >
+  | ReadonlyArray<
+      | string
+      | ComboboxStringItem
+      | ComboboxItemGroup<string | ComboboxStringItem>
+    >;
+
+export type ComboboxData =
+  | Array<string | ComboboxItem | ComboboxItemGroup>
+  | ReadonlyArray<string | ComboboxItem | ComboboxItemGroup>;
 export type ComboboxParsedItem = ComboboxItem | ComboboxParsedItemGroup;
 
 export type ComboboxLikeStylesNames = Exclude<
@@ -61,4 +78,9 @@ export interface ComboboxLikeProps {
 
   /** `max-height` of the dropdown, only applicable when `withScrollArea` prop is `true`, `250` by default */
   maxDropdownHeight?: number | string;
+}
+
+export interface ComboboxLikeRenderOptionInput<T> {
+  option: T;
+  checked?: boolean;
 }

@@ -39,3 +39,5 @@ export const RichTextEditorColorControl = forwardRef<
     </RichTextEditorControl>
   );
 });
+
+RichTextEditorColorControl.displayName = "RichTextEditorColorControl";

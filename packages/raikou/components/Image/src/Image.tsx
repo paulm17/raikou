@@ -67,6 +67,7 @@ export const Image = polymorphicFactory<ImageFactory>((_props, ref) => {
     radius,
     fit,
     fallbackSrc,
+    mod,
     ...others
   } = props;
 
@@ -105,6 +106,7 @@ export const Image = polymorphicFactory<ImageFactory>((_props, ref) => {
       ref={ref}
       {...getStyles("root")}
       src={useStore.getState().error ? fallbackSrc : src}
+      mod={mod}
       {...others}
     />
   );

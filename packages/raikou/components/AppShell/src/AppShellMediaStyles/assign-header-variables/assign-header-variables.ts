@@ -1,13 +1,12 @@
-/* eslint-disable no-param-reassign */
 import { keys, rem } from "@raikou/core";
+import type { AppShellProps } from "../../AppShell";
+import { getBaseSize } from "../get-base-size/get-base-size";
 import type {
   CSSVariables,
   MediaQueryVariables,
 } from "../get-variables/get-variables";
-import type { AppShellProps } from "../../AppShell";
-import { isResponsiveSize } from "../is-responsive-size/is-responsive-size";
 import { isPrimitiveSize } from "../is-primitive-size/is-primitive-size";
-import { getBaseSize } from "../get-base-size/get-base-size";
+import { isResponsiveSize } from "../is-responsive-size/is-responsive-size";
 
 interface AssignHeaderVariablesInput {
   baseStyles: CSSVariables;
@@ -46,12 +45,12 @@ export function assignHeaderVariables({
       if (key !== "base") {
         minMediaStyles[key] = minMediaStyles[key] || {};
         minMediaStyles[key]["--app-shell-header-height"] = rem(
-          headerHeight[key]
+          headerHeight[key],
         );
 
         if (shouldOffset) {
           minMediaStyles[key]["--app-shell-header-offset"] = rem(
-            headerHeight[key]
+            headerHeight[key],
           );
         }
       }

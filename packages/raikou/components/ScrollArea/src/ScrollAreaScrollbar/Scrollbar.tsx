@@ -2,7 +2,7 @@ import React, { useEffect, forwardRef } from "react";
 import {
   useMergedRef,
   useCallbackRef,
-  useDebounceCallback,
+  useDebouncedCallback,
 } from "@raikou/hooks";
 import { useResizeObserver } from "../use-resize-observer";
 import { useScrollAreaContext } from "../ScrollArea.context";
@@ -53,7 +53,7 @@ export const Scrollbar = forwardRef<HTMLDivElement, ScrollbarProps>(
     const maxScrollPos = sizes.content - sizes.viewport;
     const handleWheelScroll = useCallbackRef(onWheelScroll);
     const handleThumbPositionChange = useCallbackRef(onThumbPositionChange);
-    const handleResize = useDebounceCallback(onResize, 10);
+    const handleResize = useDebouncedCallback(onResize, 10);
 
     const handleDragScroll = (event: React.PointerEvent<HTMLElement>) => {
       if (rectRef.current) {

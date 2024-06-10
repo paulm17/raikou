@@ -58,6 +58,7 @@ export const Code = factory<CodeFactory>((_props, ref) => {
     color,
     block,
     variant,
+    mod,
     ...others
   } = props;
 
@@ -79,7 +80,7 @@ export const Code = factory<CodeFactory>((_props, ref) => {
       component={block ? "pre" : "code"}
       variant={variant}
       ref={ref}
-      mod={{ block }}
+      mod={[{ block }, mod]}
       {...getStyles("root")}
       {...others}
       dir="ltr"

@@ -1,8 +1,9 @@
-import 'dayjs/locale/ru';
-import React from 'react';
-import { WeekdaysRow, WeekdaysRowProps } from './WeekdaysRow';
+import React from "react";
+import "dayjs/locale/ru";
 
-export default { title: 'WeekdaysRow' };
+import { WeekdaysRow, WeekdaysRowProps } from "./WeekdaysRow";
+
+export default { title: "WeekdaysRow" };
 
 function Wrapper(props: WeekdaysRowProps) {
   return (
@@ -41,7 +42,7 @@ export function DayOfWeek() {
 }
 
 export function Sizes() {
-  const sizes = (['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
+  const sizes = (["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
     <Wrapper size={size} key={size} />
   ));
   return <div style={{ padding: 40 }}>{sizes}</div>;

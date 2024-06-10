@@ -19,7 +19,6 @@ export function AppShellMediaStyles({
   padding,
 }: AppShellMediaStylesProps) {
   const theme = useRaikouTheme();
-  // const ctx = useRaikouContext();
   const { media, baseStyles } = getVariables({
     navbar,
     header,
@@ -28,6 +27,5 @@ export function AppShellMediaStyles({
     padding,
     theme,
   });
-
   return <InlineStyles media={media} styles={baseStyles} selector=":root" />;
 }

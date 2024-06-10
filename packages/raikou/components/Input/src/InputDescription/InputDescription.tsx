@@ -74,9 +74,6 @@ export const InputDescription = factory<InputDescriptionFactory>(
       name: ["InputWrapper", __staticSelector],
       props,
       classes,
-      // classes: {
-      //   description: "inputWrapper-description",
-      // },
       className,
       style,
       classNames,

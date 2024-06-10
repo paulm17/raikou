@@ -19,6 +19,8 @@ interface LoaderProps extends BoxProps, StylesApiProps<LoaderFactory>, Omit<Reac
     type?: RaikouLoader;
     /** Object of loaders components, can be customized via default props or inline. Default value contains `bars`, `oval` and `dots` */
     loaders?: RaikouLoadersRecord;
+    /** Overrides default loader with given content */
+    children?: React.ReactNode;
 }
 type LoaderFactory = Factory<{
     props: LoaderProps;
@@ -57,9 +59,9 @@ declare const ActionIconGroup: _raikou_core.RaikouComponent<{
 }>;
 
 type ActionIconVariant = "filled" | "light" | "outline" | "transparent" | "white" | "subtle" | "default" | "gradient";
-type ActionIconStylesNames = "root" | "loader";
+type ActionIconStylesNames = "root" | "loader" | "icon";
 type ActionIconCssVariables = {
-    root: "--ai-radius" | "--ai-size" | "--ai-bg" | "--ai-hover" | "--ai-color" | "--ai-bd";
+    root: "--ai-radius" | "--ai-size" | "--ai-bg" | "--ai-hover" | "--ai-hover-color" | "--ai-color" | "--ai-bd";
 };
 interface ActionIconProps extends BoxProps, StylesApiProps<ActionIconFactory> {
     "data-disabled"?: boolean;
@@ -80,6 +82,8 @@ interface ActionIconProps extends BoxProps, StylesApiProps<ActionIconFactory> {
     disabled?: boolean;
     /** Icon displayed inside the button */
     children?: React.ReactNode;
+    /** Determines whether button text color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+    autoContrast?: boolean;
 }
 type ActionIconFactory = PolymorphicFactory<{
     props: ActionIconProps;

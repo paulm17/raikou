@@ -73,6 +73,8 @@ interface __InputProps {
     pointer?: boolean;
     /** Determines whether the input should have red border and text color when `error` prop is set, `true` by default */
     withErrorStyles?: boolean;
+    /** `size` prop added to the input element */
+    inputSize?: string;
 }
 
 // Type definitions for React 18.2
@@ -3620,6 +3622,8 @@ interface TextareaProps extends BoxProps, __BaseInputProps, StylesApiProps<Texta
     maxRows?: number;
     /** Minimum rows of autosize textarea, ignored if `autosize` prop is not set */
     minRows?: number;
+    /** Controls `resize` CSS property, `'none'` by default */
+    resize?: React$1.CSSProperties["resize"];
 }
 type TextareaFactory = Factory<{
     props: TextareaProps;

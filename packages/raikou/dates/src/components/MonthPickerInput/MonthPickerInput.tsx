@@ -1,31 +1,32 @@
 import React from "react";
 import {
   BoxProps,
-  StylesApiProps,
   factory,
-  useProps,
-  useResolvedStylesApi,
   Factory,
   RaikouComponentStaticProperties,
+  StylesApiProps,
+  useProps,
+  useResolvedStylesApi,
 } from "@raikou/core";
-import {
-  InputVariant,
-  __InputStylesNames,
-} from "../../../../components/Input/src";
-import { pickCalendarProps } from "../Calendar";
 import { useDatesInput } from "../../hooks";
+import { DatePickerType } from "../../types";
+import { getDefaultClampedDate, shiftTimezone } from "../../utils";
+import { pickCalendarProps } from "../Calendar";
+import { useDatesContext } from "../DatesProvider";
 import {
   MonthPicker,
   MonthPickerBaseProps,
   MonthPickerStylesNames,
 } from "../MonthPicker";
-import { DatePickerType } from "../../types";
-import { getDefaultClampedDate, shiftTimezone } from "../../utils";
-import { PickerInputBase, DateInputSharedProps } from "../PickerInputBase";
-import { useDatesContext } from "../DatesProvider";
+import { DateInputSharedProps, PickerInputBase } from "../PickerInputBase";
+import {
+  __InputStylesNames,
+  InputVariant,
+} from "../../../../components/Input/src";
 
 export type MonthPickerInputStylesNames =
   | __InputStylesNames
+  | "placeholder"
   | MonthPickerStylesNames;
 
 export interface MonthPickerInputProps<Type extends DatePickerType = "default">
@@ -82,6 +83,7 @@ export const MonthPickerInput: MonthPickerInputComponent =
       minDate,
       maxDate,
       vars,
+      valueFormatter,
       ...rest
     } = props;
 
@@ -112,6 +114,7 @@ export const MonthPickerInput: MonthPickerInputComponent =
       labelSeparator,
       closeOnChange,
       sortDates,
+      valueFormatter,
     });
 
     const ctx = useDatesContext();
@@ -162,4 +165,8 @@ export const MonthPickerInput: MonthPickerInputComponent =
     );
   }) as any;
 
+MonthPickerInput.classes = {
+  ...PickerInputBase.classes,
+  ...MonthPicker.classes,
+};
 MonthPickerInput.displayName = "@raikou/dates/MonthPickerInput";

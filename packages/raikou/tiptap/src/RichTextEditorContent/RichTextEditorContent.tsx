@@ -45,7 +45,6 @@ export const RichTextEditorContent = factory<RichTextEditorContentFactory>(
           ref={ref}
         >
           <Box
-            // @ts-ignore
             component={EditorContent}
             editor={ctx.editor}
             {...ctx.getStyles("content", { classNames, styles })}
@@ -57,7 +56,6 @@ export const RichTextEditorContent = factory<RichTextEditorContentFactory>(
 
     return (
       <Box
-        // @ts-ignore
         component={EditorContent}
         editor={ctx.editor}
         {...ctx.getStyles("content", { classNames, styles, className, style })}

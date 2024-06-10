@@ -2,12 +2,15 @@ import React from "react";
 import { useDisclosure } from "@raikou/hooks";
 import { Button } from "../../Button/src";
 import { ScrollArea } from "../../ScrollArea/src";
+import { Select } from "../../Select/src";
+import { Tabs } from "../../Tabs/src";
 import { Modal } from "./Modal";
 
 export default { title: "Modal" };
 
 const lorem =
   "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum tenetur, atque animi ducimus tempora iste distinctio harum nostrum eos tempore voluptatem, voluptas dolorem eveniet fugiat pariatur! Repellendus minus nulla non?";
+
 function generateContent(count: number) {
   return Array(count)
     .fill(0)
@@ -39,6 +42,18 @@ export function Usage() {
   );
 }
 
+export function WithSelect() {
+  const [opened, { open, close }] = useDisclosure(true);
+  return (
+    <div style={{ padding: 40 }}>
+      <Button onClick={open}>Open modal</Button>
+      <Modal opened={opened} onClose={close} title="Just a Modal">
+        <Select data={["React", "Angular"]} searchable />
+      </Modal>
+    </div>
+  );
+}
+
 export function ConsistentHeaderHeight() {
   const [opened, { open, close }] = useDisclosure(true);
   const [withCloseButton, handlers] = useDisclosure(true);
@@ -56,6 +71,58 @@ export function ConsistentHeaderHeight() {
         zIndex={73812}
       >
         <Button onClick={handlers.toggle}>Toggle close button</Button>
+      </Modal>
+    </div>
+  );
+}
+
+export function WithTabs() {
+  const [opened, { open, close }] = useDisclosure(true);
+  return (
+    <div style={{ padding: 40 }}>
+      <Button onClick={open}>Open modal</Button>
+      <Modal
+        opened={opened}
+        onClose={close}
+        title="Just a Modal"
+        zIndex={73812}
+      >
+        <Tabs defaultValue="comment">
+          <Tabs.List>
+            <Tabs.Tab value="comment">Comment</Tabs.Tab>
+            <Tabs.Tab value="task">Task</Tabs.Tab>
+          </Tabs.List>
+
+          <Tabs.Panel value="comment">
+            <input />
+          </Tabs.Panel>
+
+          <Tabs.Panel value="task">
+            <input />
+          </Tabs.Panel>
+        </Tabs>
+      </Modal>
+    </div>
+  );
+}
+
+export function Unstyled() {
+  const [opened, { open, close }] = useDisclosure(true);
+  return (
+    <div style={{ padding: 40 }}>
+      <Button onClick={open}>Open modal</Button>
+      {content}
+      <Button onClick={open}>Open modal</Button>
+      <Modal
+        opened={opened}
+        onClose={close}
+        title="Just a Modal"
+        size="md"
+        zIndex={73812}
+        radius="md"
+        unstyled
+      >
+        <input data-autofocus />
       </Modal>
     </div>
   );
@@ -106,6 +173,43 @@ export function WithScroll() {
   return (
     <div style={{ padding: 40 }}>
       <Modal opened onClose={() => {}} title="Just a Modal" size="md">
+        {content}
+      </Modal>
+    </div>
+  );
+}
+
+export function FullscreenWithScroll() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Modal
+        opened
+        onClose={() => {}}
+        title="Just a Modal"
+        size="md"
+        fullScreen
+      >
+        {content}
+        {content}
+        {content}
+      </Modal>
+    </div>
+  );
+}
+
+export function FullscreenWithScrollArea() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Modal
+        opened
+        onClose={() => {}}
+        title="Just a Modal"
+        size="md"
+        fullScreen
+        scrollAreaComponent={ScrollArea.Autosize}
+      >
+        {content}
+        {content}
         {content}
       </Modal>
     </div>

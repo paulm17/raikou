@@ -19,13 +19,17 @@ function lowerFirst(value) {
 
 // src/utils/random-id/random-id.ts
 function randomId() {
-  return `raikou-${Math.random().toString(36).slice(2, 11)}`;
+  return `mantine-${Math.random().toString(36).slice(2, 11)}`;
 }
 
 // src/utils/range/range.ts
 function range(start, end) {
-  const length = end - start + 1;
-  return Array.from({ length }, (_, index) => index + start);
+  const length = Math.abs(end - start) + 1;
+  const reversed = start > end;
+  if (!reversed) {
+    return Array.from({ length }, (_, index) => index + start);
+  }
+  return Array.from({ length }, (_, index) => start - index);
 }
 
 // src/utils/shallow-equal/shallow-equal.ts
@@ -59,7 +63,7 @@ function upperFirst(value) {
 }
 
 // src/use-callback-ref/use-callback-ref.ts
-import { useRef, useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 function useCallbackRef(callback) {
   const callbackRef = useRef(callback);
   useEffect(() => {
@@ -72,15 +76,18 @@ function useCallbackRef(callback) {
 }
 
 // src/use-debounced-callback/use-debounced-callback.ts
-import { useRef as useRef2, useEffect as useEffect2, useCallback } from "react";
-function useDebounceCallback(callback, delay) {
+import { useCallback, useEffect as useEffect2, useRef as useRef2 } from "react";
+function useDebouncedCallback(callback, delay) {
   const handleCallback = useCallbackRef(callback);
   const debounceTimerRef = useRef2(0);
   useEffect2(() => () => window.clearTimeout(debounceTimerRef.current), []);
-  return useCallback(() => {
-    window.clearTimeout(debounceTimerRef.current);
-    debounceTimerRef.current = window.setTimeout(handleCallback, delay);
-  }, [handleCallback, delay]);
+  return useCallback(
+    (...args) => {
+      window.clearTimeout(debounceTimerRef.current);
+      debounceTimerRef.current = window.setTimeout(() => handleCallback(...args), delay);
+    },
+    [handleCallback, delay]
+  );
 }
 
 // src/use-click-outside/use-click-outside.ts
@@ -134,7 +141,7 @@ function useClipboard({ timeout = 2e3 } = {}) {
 }
 
 // src/use-media-query/use-media-query.ts
-import { useState as useState2, useEffect as useEffect4, useRef as useRef4 } from "react";
+import { useEffect as useEffect4, useRef as useRef4, useState as useState2 } from "react";
 function attachMediaListener(query, callback) {
   try {
     query.addEventListener("change", callback);
@@ -157,7 +164,7 @@ function useMediaQuery(query, initialValue, { getInitialValueInEffect } = {
   getInitialValueInEffect: true
 }) {
   const [matches, setMatches] = useState2(
-    getInitialValueInEffect ? initialValue : getInitialValue(query, initialValue)
+    getInitialValueInEffect ? initialValue : getInitialValue(query)
   );
   const queryRef = useRef4();
   useEffect4(() => {
@@ -193,16 +200,16 @@ function useCounter(initialValue = 0, options) {
 }
 
 // src/use-debounced-state/use-debounced-state.ts
-import { useEffect as useEffect5, useRef as useRef5, useState as useState4, useCallback as useCallback2 } from "react";
+import { useCallback as useCallback2, useEffect as useEffect5, useRef as useRef5, useState as useState4 } from "react";
 function useDebouncedState(defaultValue, wait, options = { leading: false }) {
   const [value, setValue] = useState4(defaultValue);
   const timeoutRef = useRef5(null);
   const leadingRef = useRef5(true);
-  const clearTimeout = () => window.clearTimeout(timeoutRef.current);
-  useEffect5(() => clearTimeout, []);
+  const clearTimeout2 = () => window.clearTimeout(timeoutRef.current);
+  useEffect5(() => clearTimeout2, []);
   const debouncedSetValue = useCallback2(
     (newValue) => {
-      clearTimeout();
+      clearTimeout2();
       if (leadingRef.current && options.leading) {
         setValue(newValue);
       } else {
@@ -219,7 +226,7 @@ function useDebouncedState(defaultValue, wait, options = { leading: false }) {
 }
 
 // src/use-debounced-value/use-debounced-value.ts
-import { useEffect as useEffect6, useState as useState5, useRef as useRef6 } from "react";
+import { useEffect as useEffect6, useRef as useRef6, useState as useState5 } from "react";
 function useDebouncedValue(value, wait, options = { leading: false }) {
   const [_value, setValue] = useState5(value);
   const mountedRef = useRef6(false);
@@ -327,6 +334,46 @@ function useFocusReturn({ opened, shouldReturnFocus = true }) {
 // src/use-focus-trap/use-focus-trap.ts
 import { useCallback as useCallback3, useEffect as useEffect10, useRef as useRef9 } from "react";
 
+// src/use-focus-trap/create-aria-hider.ts
+function createAriaHider(containerNode, selector = "body > :not(script)") {
+  const id = randomId();
+  const rootNodes = Array.from(
+    document.querySelectorAll(selector)
+  ).map((node) => {
+    var _a;
+    if (((_a = node == null ? void 0 : node.shadowRoot) == null ? void 0 : _a.contains(containerNode)) || node.contains(containerNode)) {
+      return void 0;
+    }
+    const ariaHidden = node.getAttribute("aria-hidden");
+    const prevAriaHidden = node.getAttribute("data-hidden");
+    const prevFocusId = node.getAttribute("data-focus-id");
+    node.setAttribute("data-focus-id", id);
+    if (ariaHidden === null || ariaHidden === "false") {
+      node.setAttribute("aria-hidden", "true");
+    } else if (!prevAriaHidden && !prevFocusId) {
+      node.setAttribute("data-hidden", ariaHidden);
+    }
+    return {
+      node,
+      ariaHidden: prevAriaHidden || null
+    };
+  });
+  return () => {
+    rootNodes.forEach((item) => {
+      if (!item || id !== item.node.getAttribute("data-focus-id")) {
+        return;
+      }
+      if (item.ariaHidden === null) {
+        item.node.removeAttribute("aria-hidden");
+      } else {
+        item.node.setAttribute("aria-hidden", item.ariaHidden);
+      }
+      item.node.removeAttribute("data-focus-id");
+      item.node.removeAttribute("data-hidden");
+    });
+  };
+}
+
 // src/use-focus-trap/tabbable.ts
 var TABBABLE_NODES = /input|select|textarea|button|object/;
 var FOCUS_SELECTOR = "a, input, select, textarea, button, object, [tabindex]";
@@ -364,7 +411,7 @@ function focusable(element) {
   const nodeName = element.nodeName.toLowerCase();
   const isTabIndexNotNaN = !Number.isNaN(getElementTabIndex(element));
   const res = (
-    // @ts-ignore
+    // @ts-expect-error function accepts any html element but if it is a button, it should not be disabled to trigger the condition
     TABBABLE_NODES.test(nodeName) && !element.disabled || (element instanceof HTMLAnchorElement ? element.href || isTabIndexNotNaN : isTabIndexNotNaN)
   );
   return res && visible(element);
@@ -404,46 +451,6 @@ function scopeTab(node, event) {
   if (target) {
     target.focus();
   }
-}
-
-// src/use-focus-trap/create-aria-hider.ts
-function createAriaHider(containerNode, selector = "body > :not(script)") {
-  const id = randomId();
-  const rootNodes = Array.from(
-    document.querySelectorAll(selector)
-  ).map((node) => {
-    var _a;
-    if (((_a = node == null ? void 0 : node.shadowRoot) == null ? void 0 : _a.contains(containerNode)) || node.contains(containerNode)) {
-      return void 0;
-    }
-    const ariaHidden = node.getAttribute("aria-hidden");
-    const prevAriaHidden = node.getAttribute("data-hidden");
-    const prevFocusId = node.getAttribute("data-focus-id");
-    node.setAttribute("data-focus-id", id);
-    if (ariaHidden === null || ariaHidden === "false") {
-      node.setAttribute("aria-hidden", "true");
-    } else if (!prevAriaHidden && !prevFocusId) {
-      node.setAttribute("data-hidden", ariaHidden);
-    }
-    return {
-      node,
-      ariaHidden: prevAriaHidden || null
-    };
-  });
-  return () => {
-    rootNodes.forEach((item) => {
-      if (!item || id !== item.node.getAttribute("data-focus-id")) {
-        return;
-      }
-      if (item.ariaHidden === null) {
-        item.node.removeAttribute("aria-hidden");
-      } else {
-        item.node.setAttribute("aria-hidden", item.ariaHidden);
-      }
-      item.node.removeAttribute("data-focus-id");
-      item.node.removeAttribute("data-hidden");
-    });
-  };
 }
 
 // src/use-focus-trap/use-focus-trap.ts
@@ -540,7 +547,7 @@ import React from "react";
 var __useId = React["useId".toString()] || (() => void 0);
 function useReactId() {
   const id = __useId();
-  return id ? `raikou-${id.replace(/:/g, "")}` : "";
+  return id ? `mantine-${id.replace(/:/g, "")}` : "";
 }
 
 // src/use-id/use-id.ts
@@ -560,7 +567,7 @@ function useId(staticId) {
 }
 
 // src/use-idle/use-idle.ts
-import { useState as useState8, useEffect as useEffect11, useRef as useRef10 } from "react";
+import { useEffect as useEffect11, useRef as useRef10, useState as useState8 } from "react";
 var DEFAULT_EVENTS2 = [
   "keypress",
   "mousemove",
@@ -652,6 +659,14 @@ function useListState(initialValue = []) {
     cloned.splice(to, 0, item);
     return cloned;
   });
+  const swap = ({ from, to }) => setState((current) => {
+    const cloned = [...current];
+    const fromItem = cloned[from];
+    const toItem = cloned[to];
+    cloned.splice(to, 1, fromItem);
+    cloned.splice(from, 1, toItem);
+    return cloned;
+  });
   const setItem = (index, item) => setState((current) => {
     const cloned = [...current];
     cloned[index] = item;
@@ -681,6 +696,7 @@ function useListState(initialValue = []) {
       applyWhere,
       remove,
       reorder,
+      swap,
       setItem,
       setItemProp,
       filter
@@ -689,7 +705,7 @@ function useListState(initialValue = []) {
 }
 
 // src/use-local-storage/create-storage.ts
-import { useState as useState11, useCallback as useCallback4, useEffect as useEffect14 } from "react";
+import { useCallback as useCallback4, useEffect as useEffect14, useState as useState11 } from "react";
 
 // src/use-window-event/use-window-event.ts
 import { useEffect as useEffect13 } from "react";
@@ -701,13 +717,11 @@ function useWindowEvent(type, listener, options) {
 }
 
 // src/use-local-storage/create-storage.ts
-function serializeJSON(value, hookName) {
+function serializeJSON(value, hookName = "use-local-storage") {
   try {
     return JSON.stringify(value);
   } catch (error) {
-    throw new Error(
-      `@mantine/hooks ${hookName}: Failed to serialize the value`
-    );
+    throw new Error(`@raikou/hooks ${hookName}: Failed to serialize the value`);
   }
 }
 function deserializeJSON(value) {
@@ -760,7 +774,13 @@ function createStorage(type, hookName) {
   }) {
     const readStorageValue = useCallback4(
       (skipStorage) => {
-        if (typeof window === "undefined" || !(type in window) || window[type] === null || skipStorage) {
+        let storageBlockedOrSkipped;
+        try {
+          storageBlockedOrSkipped = typeof window === "undefined" || !(type in window) || window[type] === null || !!skipStorage;
+        } catch (_e) {
+          storageBlockedOrSkipped = true;
+        }
+        if (storageBlockedOrSkipped) {
           return defaultValue;
         }
         const storageValue = getItem(key);
@@ -816,9 +836,8 @@ function createStorage(type, hookName) {
       }
     }, [defaultValue, value, setStorageValue]);
     useEffect14(() => {
-      if (getInitialValueInEffect) {
-        setValue(readStorageValue());
-      }
+      const val = readStorageValue();
+      val !== void 0 && setStorageValue(val);
     }, []);
     return [
       value === void 0 ? defaultValue : value,
@@ -827,16 +846,38 @@ function createStorage(type, hookName) {
     ];
   };
 }
+function readValue(type) {
+  const { getItem } = createStorageHandler(type);
+  return function read({
+    key,
+    defaultValue,
+    deserialize = deserializeJSON
+  }) {
+    let storageBlockedOrSkipped;
+    try {
+      storageBlockedOrSkipped = typeof window === "undefined" || !(type in window) || window[type] === null;
+    } catch (_e) {
+      storageBlockedOrSkipped = true;
+    }
+    if (storageBlockedOrSkipped) {
+      return defaultValue;
+    }
+    const storageValue = getItem(key);
+    return storageValue !== null ? deserialize(storageValue) : defaultValue;
+  };
+}
 
 // src/use-local-storage/use-local-storage.ts
 function useLocalStorage(props) {
   return createStorage("localStorage", "use-local-storage")(props);
 }
+var readLocalStorageValue = readValue("localStorage");
 
 // src/use-session-storage/use-session-storage.ts
 function useSessionStorage(props) {
   return createStorage("sessionStorage", "use-session-storage")(props);
 }
+var readSessionStorageValue = readValue("sessionStorage");
 
 // src/use-merged-ref/use-merged-ref.ts
 import { useCallback as useCallback5 } from "react";
@@ -893,13 +934,15 @@ function useMouse(options = { resetOnExit: false }) {
 }
 
 // src/use-move/use-move.ts
-import { useEffect as useEffect16, useState as useState13, useRef as useRef13 } from "react";
-var clampUseMovePosition = (position) => ({
-  x: clamp(position.x, 0, 1),
-  y: clamp(position.y, 0, 1)
-});
+import { useEffect as useEffect16, useRef as useRef13, useState as useState13 } from "react";
+function clampUseMovePosition(position) {
+  return {
+    x: clamp(position.x, 0, 1),
+    y: clamp(position.y, 0, 1)
+  };
+}
 function useMove(onChange, handlers, dir = "ltr") {
-  const ref = useRef13();
+  const ref = useRef13(null);
   const mounted = useRef13(false);
   const isSliding = useRef13(false);
   const frame = useRef13(0);
@@ -972,15 +1015,10 @@ function useMove(onChange, handlers, dir = "ltr") {
       if (event.cancelable) {
         event.preventDefault();
       }
-      onScrub({
-        x: event.changedTouches[0].clientX,
-        y: event.changedTouches[0].clientY
-      });
+      onScrub({ x: event.changedTouches[0].clientX, y: event.changedTouches[0].clientY });
     };
     (_a = ref.current) == null ? void 0 : _a.addEventListener("mousedown", onMouseDown);
-    (_b = ref.current) == null ? void 0 : _b.addEventListener("touchstart", onTouchStart, {
-      passive: false
-    });
+    (_b = ref.current) == null ? void 0 : _b.addEventListener("touchstart", onTouchStart, { passive: false });
     return () => {
       if (ref.current) {
         ref.current.removeEventListener("mousedown", onMouseDown);
@@ -1006,9 +1044,9 @@ function useUncontrolled({
   const [uncontrolledValue, setUncontrolledValue] = useState14(
     defaultValue !== void 0 ? defaultValue : finalValue
   );
-  const handleUncontrolledChange = (val) => {
+  const handleUncontrolledChange = (val, ...payload) => {
     setUncontrolledValue(val);
-    onChange == null ? void 0 : onChange(val);
+    onChange == null ? void 0 : onChange(val, ...payload);
   };
   if (value !== void 0) {
     return [value, onChange, true];
@@ -1017,6 +1055,10 @@ function useUncontrolled({
 }
 
 // src/use-pagination/use-pagination.ts
+function range2(start, end) {
+  const length = end - start + 1;
+  return Array.from({ length }, (_, index) => index + start);
+}
 var DOTS = "dots";
 function usePagination({
   total,
@@ -1049,7 +1091,7 @@ function usePagination({
   const paginationRange = useMemo2(() => {
     const totalPageNumbers = siblings * 2 + 3 + boundaries * 2;
     if (totalPageNumbers >= _total) {
-      return range(1, _total);
+      return range2(1, _total);
     }
     const leftSiblingIndex = Math.max(activePage - siblings, boundaries);
     const rightSiblingIndex = Math.min(activePage + siblings, _total - boundaries);
@@ -1057,18 +1099,18 @@ function usePagination({
     const shouldShowRightDots = rightSiblingIndex < _total - (boundaries + 1);
     if (!shouldShowLeftDots && shouldShowRightDots) {
       const leftItemCount = siblings * 2 + boundaries + 2;
-      return [...range(1, leftItemCount), DOTS, ...range(_total - (boundaries - 1), _total)];
+      return [...range2(1, leftItemCount), DOTS, ...range2(_total - (boundaries - 1), _total)];
     }
     if (shouldShowLeftDots && !shouldShowRightDots) {
       const rightItemCount = boundaries + 1 + 2 * siblings;
-      return [...range(1, boundaries), DOTS, ...range(_total - rightItemCount, _total)];
+      return [...range2(1, boundaries), DOTS, ...range2(_total - rightItemCount, _total)];
     }
     return [
-      ...range(1, boundaries),
+      ...range2(1, boundaries),
       DOTS,
-      ...range(leftSiblingIndex, rightSiblingIndex),
+      ...range2(leftSiblingIndex, rightSiblingIndex),
       DOTS,
-      ...range(_total - boundaries + 1, _total)
+      ...range2(_total - boundaries + 1, _total)
     ];
   }, [_total, siblings, activePage]);
   return {
@@ -1128,7 +1170,7 @@ function useReducedMotion(initialValue, options) {
 }
 
 // src/use-scroll-into-view/use-scroll-into-view.ts
-import { useCallback as useCallback6, useRef as useRef14, useEffect as useEffect18 } from "react";
+import { useCallback as useCallback6, useEffect as useEffect18, useRef as useRef14 } from "react";
 
 // src/use-scroll-into-view/utils/ease-in-out-quad.ts
 var easeInOutQuad = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
@@ -1315,7 +1357,7 @@ var defaultState = {
   bottom: 0,
   right: 0
 };
-function useResizeObserver() {
+function useResizeObserver(options) {
   const frameID = useRef15(0);
   const ref = useRef15(null);
   const [rect, setRect] = useState16(defaultState);
@@ -1335,7 +1377,7 @@ function useResizeObserver() {
   );
   useEffect19(() => {
     if (ref.current) {
-      observer == null ? void 0 : observer.observe(ref.current);
+      observer == null ? void 0 : observer.observe(ref.current, options);
     }
     return () => {
       observer == null ? void 0 : observer.disconnect();
@@ -1346,8 +1388,8 @@ function useResizeObserver() {
   }, [ref.current]);
   return [ref, rect];
 }
-function useElementSize() {
-  const [ref, { width, height }] = useResizeObserver();
+function useElementSize(options) {
+  const [ref, { width, height }] = useResizeObserver(options);
   return { ref, width, height };
 }
 
@@ -1395,7 +1437,7 @@ function useToggle(options = [false, true]) {
 }
 
 // src/use-viewport-size/use-viewport-size.ts
-import { useCallback as useCallback7, useState as useState17, useEffect as useEffect21 } from "react";
+import { useCallback as useCallback7, useEffect as useEffect21, useState as useState17 } from "react";
 var eventListerOptions = {
   passive: true
 };
@@ -1414,7 +1456,7 @@ function useViewportSize() {
 }
 
 // src/use-window-scroll/use-window-scroll.ts
-import { useState as useState18, useEffect as useEffect22 } from "react";
+import { useEffect as useEffect22, useState as useState18 } from "react";
 function getScrollPosition() {
   return typeof window !== "undefined" ? { x: window.pageXOffset, y: window.pageYOffset } : { x: 0, y: 0 };
 }
@@ -1466,12 +1508,10 @@ function useIntersection(options) {
 }
 
 // src/use-hash/use-hash.ts
-import { useState as useState20, useEffect as useEffect23 } from "react";
-function useHash({
-  getInitialValueInEffect = false
-} = {}) {
+import { useEffect as useEffect23, useState as useState20 } from "react";
+function useHash({ getInitialValueInEffect = true } = {}) {
   const [hash, setHashValue] = useState20(
-    getInitialValueInEffect ? window.location.hash || "" : ""
+    getInitialValueInEffect ? "" : window.location.hash || ""
   );
   const setHash = (value) => {
     const valueWithHash = value.startsWith("#") ? value : `#${value}`;
@@ -1481,7 +1521,7 @@ function useHash({
   useWindowEvent("hashchange", () => {
     const newHash = window.location.hash;
     if (hash !== newHash) {
-      setHashValue(hash);
+      setHashValue(newHash);
     }
   });
   useEffect23(() => {
@@ -1583,7 +1623,7 @@ function useHotkeys(hotkeys, tagsToIgnore = ["INPUT", "TEXTAREA", "SELECT"], tri
 }
 
 // src/use-fullscreen/use-fullscreen.ts
-import { useCallback as useCallback9, useRef as useRef18, useState as useState21, useEffect as useEffect25 } from "react";
+import { useCallback as useCallback9, useEffect as useEffect25, useRef as useRef18, useState as useState21 } from "react";
 function getFullscreenElement() {
   const _document = window.document;
   const fullscreenElement = _document.fullscreenElement || _document.webkitFullscreenElement || _document.mozFullScreenElement || _document.msFullscreenElement;
@@ -1687,7 +1727,7 @@ function useLogger(componentName, props) {
 }
 
 // src/use-hover/use-hover.ts
-import { useState as useState22, useEffect as useEffect27, useRef as useRef19, useCallback as useCallback10 } from "react";
+import { useCallback as useCallback10, useEffect as useEffect27, useRef as useRef19, useState as useState22 } from "react";
 function useHover() {
   const [hovered, setHovered] = useState22(false);
   const ref = useRef19(null);
@@ -1768,7 +1808,7 @@ function useOs(options = { getValueInEffect: true }) {
 }
 
 // src/use-set-state/use-set-state.ts
-import { useState as useState25, useCallback as useCallback11 } from "react";
+import { useCallback as useCallback11, useState as useState25 } from "react";
 function useSetState(initialState) {
   const [state, _setState] = useState25(initialState);
   const setState = useCallback11(
@@ -1807,7 +1847,7 @@ function useInputState(initialState) {
 }
 
 // src/use-event-listener/use-event-listener.ts
-import { useRef as useRef20, useEffect as useEffect28 } from "react";
+import { useEffect as useEffect28, useRef as useRef20 } from "react";
 function useEventListener(type, listener, options) {
   const ref = useRef20();
   useEffect28(() => {
@@ -1824,7 +1864,7 @@ function useEventListener(type, listener, options) {
 }
 
 // src/use-disclosure/use-disclosure.ts
-import { useState as useState27, useCallback as useCallback12 } from "react";
+import { useCallback as useCallback12, useState as useState27 } from "react";
 function useDisclosure(initialState = false, callbacks) {
   const { onOpen, onClose } = callbacks || {};
   const [opened, setOpened] = useState27(initialState);
@@ -1853,7 +1893,7 @@ function useDisclosure(initialState = false, callbacks) {
 }
 
 // src/use-focus-within/use-focus-within.ts
-import { useRef as useRef21, useState as useState28, useEffect as useEffect29 } from "react";
+import { useEffect as useEffect29, useRef as useRef21, useState as useState28 } from "react";
 function containsRelatedTarget(event) {
   if (event.currentTarget instanceof HTMLElement && event.relatedTarget instanceof HTMLElement) {
     return event.currentTarget.contains(event.relatedTarget);
@@ -1899,7 +1939,7 @@ function useFocusWithin({
 }
 
 // src/use-network/use-network.ts
-import { useState as useState29, useEffect as useEffect30, useCallback as useCallback13 } from "react";
+import { useCallback as useCallback13, useEffect as useEffect30, useState as useState29 } from "react";
 function getConnection() {
   if (typeof navigator === "undefined") {
     return {};
@@ -1935,13 +1975,16 @@ function useNetwork() {
       _navigator.connection.addEventListener("change", handleConnectionChange);
       return () => _navigator.connection.removeEventListener("change", handleConnectionChange);
     }
+    if (typeof _navigator.onLine === "boolean") {
+      setStatus((current) => ({ ...current, online: _navigator.onLine }));
+    }
     return void 0;
   }, []);
   return status;
 }
 
 // src/use-timeout/use-timeout.ts
-import { useRef as useRef22, useEffect as useEffect31, useCallback as useCallback14 } from "react";
+import { useCallback as useCallback14, useEffect as useEffect31, useRef as useRef22 } from "react";
 function useTimeout(callback, delay, options = { autoInvoke: false }) {
   const timeoutRef = useRef22(null);
   const start = useCallback14(
@@ -1971,7 +2014,7 @@ function useTimeout(callback, delay, options = { autoInvoke: false }) {
 }
 
 // src/use-text-selection/use-text-selection.ts
-import { useState as useState30, useEffect as useEffect32 } from "react";
+import { useEffect as useEffect32, useState as useState30 } from "react";
 function useTextSelection() {
   const forceUpdate = useForceUpdate();
   const [selection, setSelection] = useState30(null);
@@ -2022,7 +2065,6 @@ function useFavicon(url) {
     const splittedUrl = url.split(".");
     link.current.setAttribute(
       "type",
-      // @ts-ignore
       MIME_TYPES[splittedUrl[splittedUrl.length - 1].toLowerCase()]
     );
     link.current.setAttribute("href", url);
@@ -2030,49 +2072,80 @@ function useFavicon(url) {
 }
 
 // src/use-headroom/use-headroom.ts
-import { useRef as useRef25 } from "react";
+import { useEffect as useEffect34, useRef as useRef25, useState as useState31 } from "react";
 var isFixed = (current, fixedAt) => current <= fixedAt;
-var isPinned = (current, previous) => current <= previous;
-var isReleased = (current, previous, fixedAt) => !isPinned(current, previous) && !isFixed(current, fixedAt);
-function useHeadroom({
-  fixedAt = 0,
-  onPin,
-  onFix,
-  onRelease
-} = {}) {
-  const scrollRef = useRef25(0);
+var isPinnedOrReleased = (current, fixedAt, isCurrentlyPinnedRef, isScrollingUp, onPin, onRelease) => {
+  const isInFixedPosition = isFixed(current, fixedAt);
+  if (isInFixedPosition && !isCurrentlyPinnedRef.current) {
+    isCurrentlyPinnedRef.current = true;
+    onPin == null ? void 0 : onPin();
+  } else if (!isInFixedPosition && isScrollingUp && !isCurrentlyPinnedRef.current) {
+    isCurrentlyPinnedRef.current = true;
+    onPin == null ? void 0 : onPin();
+  } else if (!isInFixedPosition && isCurrentlyPinnedRef.current) {
+    isCurrentlyPinnedRef.current = false;
+    onRelease == null ? void 0 : onRelease();
+  }
+};
+var useScrollDirection = () => {
+  const [lastScrollTop, setLastScrollTop] = useState31(0);
+  const [isScrollingUp, setIsScrollingUp] = useState31(false);
+  const [isResizing, setIsResizing] = useState31(false);
+  useEffect34(() => {
+    let resizeTimer;
+    const onResize = () => {
+      setIsResizing(true);
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        setIsResizing(false);
+      }, 300);
+    };
+    const onScroll = () => {
+      if (isResizing) {
+        return;
+      }
+      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      setIsScrollingUp(currentScrollTop < lastScrollTop);
+      setLastScrollTop(currentScrollTop);
+    };
+    window.addEventListener("scroll", onScroll);
+    window.addEventListener("resize", onResize);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [lastScrollTop, isResizing]);
+  return isScrollingUp;
+};
+function useHeadroom({ fixedAt = 0, onPin, onFix, onRelease } = {}) {
+  const isCurrentlyPinnedRef = useRef25(false);
+  const isScrollingUp = useScrollDirection();
   const [{ y: scrollPosition }] = useWindowScroll();
   useIsomorphicEffect(() => {
-    if (isPinned(scrollPosition, scrollRef.current)) {
-      onPin == null ? void 0 : onPin();
-    }
-  }, [scrollPosition, onPin]);
+    isPinnedOrReleased(
+      scrollPosition,
+      fixedAt,
+      isCurrentlyPinnedRef,
+      isScrollingUp,
+      onPin,
+      onRelease
+    );
+  }, [scrollPosition]);
   useIsomorphicEffect(() => {
     if (isFixed(scrollPosition, fixedAt)) {
       onFix == null ? void 0 : onFix();
     }
   }, [scrollPosition, fixedAt, onFix]);
-  useIsomorphicEffect(() => {
-    if (isReleased(scrollPosition, scrollRef.current, fixedAt)) {
-      onRelease == null ? void 0 : onRelease();
-    }
-  }, [scrollPosition, onRelease]);
-  useIsomorphicEffect(() => {
-    scrollRef.current = window.scrollY;
-  }, [scrollPosition]);
-  if (isPinned(scrollPosition, scrollRef.current)) {
-    return true;
-  }
-  if (isFixed(scrollPosition, fixedAt)) {
+  if (isFixed(scrollPosition, fixedAt) || isScrollingUp) {
     return true;
   }
   return false;
 }
 
 // src/use-eye-dropper/use-eye-dropper.ts
-import { useCallback as useCallback15, useState as useState31 } from "react";
+import { useCallback as useCallback15, useState as useState32 } from "react";
 function useEyeDropper() {
-  const [supported, setSupported] = useState31(false);
+  const [supported, setSupported] = useState32(false);
   useIsomorphicEffect(() => {
     setSupported(typeof window !== "undefined" && "EyeDropper" in window);
   }, []);
@@ -2088,6 +2161,282 @@ function useEyeDropper() {
   );
   return { supported, open };
 }
+
+// src/use-in-viewport/use-in-viewport.ts
+import { useEffect as useEffect35, useMemo as useMemo4, useRef as useRef26, useState as useState33 } from "react";
+function useInViewport() {
+  const ref = useRef26(null);
+  const [inViewport, setInViewport] = useState33(false);
+  const observer = useMemo4(() => {
+    if (typeof IntersectionObserver === "undefined") {
+      return null;
+    }
+    return new IntersectionObserver(([entry]) => setInViewport(entry.isIntersecting));
+  }, [ref]);
+  useEffect35(() => {
+    if (ref.current && observer) {
+      observer.observe(ref.current);
+      return () => observer.disconnect();
+    }
+    return () => null;
+  }, []);
+  return { ref, inViewport };
+}
+
+// src/use-mutation-observer/use-mutation-observer.ts
+import { useEffect as useEffect36, useRef as useRef27 } from "react";
+function useMutationObserver(callback, options, target) {
+  const observer = useRef27();
+  const ref = useRef27(null);
+  useEffect36(() => {
+    const targetElement = typeof target === "function" ? target() : target;
+    if (targetElement || ref.current) {
+      observer.current = new MutationObserver(callback);
+      observer.current.observe(targetElement || ref.current, options);
+    }
+    return () => {
+      var _a;
+      (_a = observer.current) == null ? void 0 : _a.disconnect();
+    };
+  }, [callback, options]);
+  return ref;
+}
+
+// src/use-mounted/use-mounted.ts
+import { useEffect as useEffect37, useState as useState34 } from "react";
+function useMounted() {
+  const [mounted, setMounted] = useState34(false);
+  useEffect37(() => setMounted(true), []);
+  return mounted;
+}
+
+// src/use-state-history/use-state-history.ts
+import { useCallback as useCallback16, useMemo as useMemo5, useState as useState35 } from "react";
+function useStateHistory(initialValue) {
+  const [state, setState] = useState35({
+    history: [initialValue],
+    current: 0
+  });
+  const set = useCallback16(
+    (val) => setState((currentState) => {
+      const nextState = [...currentState.history.slice(0, currentState.current + 1), val];
+      return {
+        history: nextState,
+        current: nextState.length - 1
+      };
+    }),
+    []
+  );
+  const back = useCallback16(
+    (steps = 1) => setState((currentState) => ({
+      history: currentState.history,
+      current: Math.max(0, currentState.current - steps)
+    })),
+    []
+  );
+  const forward = useCallback16(
+    (steps = 1) => setState((currentState) => ({
+      history: currentState.history,
+      current: Math.min(currentState.history.length - 1, currentState.current + steps)
+    })),
+    []
+  );
+  const handlers = useMemo5(() => ({ set, forward, back }), []);
+  return [state.history[state.current], handlers, state];
+}
+
+// src/use-map/use-map.ts
+import { useRef as useRef28 } from "react";
+function useMap(initialState) {
+  const mapRef = useRef28(new Map(initialState));
+  const forceUpdate = useForceUpdate();
+  mapRef.current.set = (...args) => {
+    Map.prototype.set.apply(mapRef.current, args);
+    forceUpdate();
+    return mapRef.current;
+  };
+  mapRef.current.clear = (...args) => {
+    Map.prototype.clear.apply(mapRef.current, args);
+    forceUpdate();
+  };
+  mapRef.current.delete = (...args) => {
+    const res = Map.prototype.delete.apply(mapRef.current, args);
+    forceUpdate();
+    return res;
+  };
+  return mapRef.current;
+}
+
+// src/use-set/use-set.ts
+import { useRef as useRef29 } from "react";
+function useSet(values) {
+  const setRef = useRef29(new Set(values));
+  const forceUpdate = useForceUpdate();
+  setRef.current.add = (...args) => {
+    const res = Set.prototype.add.apply(setRef.current, args);
+    forceUpdate();
+    return res;
+  };
+  setRef.current.clear = (...args) => {
+    Set.prototype.clear.apply(setRef.current, args);
+    forceUpdate();
+  };
+  setRef.current.delete = (...args) => {
+    const res = Set.prototype.delete.apply(setRef.current, args);
+    forceUpdate();
+    return res;
+  };
+  return setRef.current;
+}
+
+// src/use-throttled-callback/use-throttled-callback.ts
+import { useCallback as useCallback17, useEffect as useEffect38, useRef as useRef30 } from "react";
+function useThrottledCallbackWithClearTimeout(callback, wait) {
+  const handleCallback = useCallbackRef(callback);
+  const latestInArgsRef = useRef30();
+  const latestOutArgsRef = useRef30();
+  const active = useRef30(true);
+  const waitRef = useRef30(wait);
+  const timeoutRef = useRef30(-1);
+  const clearTimeout2 = () => window.clearTimeout(timeoutRef.current);
+  const callThrottledCallback = useCallback17(
+    (...args) => {
+      handleCallback(...args);
+      latestInArgsRef.current = args;
+      latestOutArgsRef.current = args;
+      active.current = false;
+    },
+    [handleCallback]
+  );
+  const timerCallback = useCallback17(() => {
+    if (latestInArgsRef.current && latestInArgsRef.current !== latestOutArgsRef.current) {
+      callThrottledCallback(...latestInArgsRef.current);
+      timeoutRef.current = window.setTimeout(timerCallback, waitRef.current);
+    } else {
+      active.current = true;
+    }
+  }, [callThrottledCallback]);
+  const throttled = useCallback17(
+    (...args) => {
+      if (active.current) {
+        callThrottledCallback(...args);
+        timeoutRef.current = window.setTimeout(timerCallback, waitRef.current);
+      } else {
+        latestInArgsRef.current = args;
+      }
+    },
+    [callThrottledCallback, timerCallback]
+  );
+  useEffect38(() => {
+    waitRef.current = wait;
+  }, [wait]);
+  return [throttled, clearTimeout2];
+}
+function useThrottledCallback(callback, wait) {
+  return useThrottledCallbackWithClearTimeout(callback, wait)[0];
+}
+
+// src/use-throttled-state/use-throttled-state.ts
+import { useEffect as useEffect39, useState as useState36 } from "react";
+function useThrottledState(defaultValue, wait) {
+  const [value, setValue] = useState36(defaultValue);
+  const [setThrottledValue, clearTimeout2] = useThrottledCallbackWithClearTimeout(setValue, wait);
+  useEffect39(() => clearTimeout2, []);
+  return [value, setThrottledValue];
+}
+
+// src/use-throttled-value/use-throttled-value.ts
+import { useEffect as useEffect40, useRef as useRef31, useState as useState37 } from "react";
+function useThrottledValue(value, wait) {
+  const [throttledValue, setThrottledValue] = useState37(value);
+  const valueRef = useRef31(value);
+  const [throttledSetValue, clearTimeout2] = useThrottledCallbackWithClearTimeout(setThrottledValue, wait);
+  useEffect40(() => {
+    if (value !== valueRef.current) {
+      valueRef.current = value;
+      throttledSetValue(value);
+    }
+  }, [throttledSetValue, value]);
+  useEffect40(() => clearTimeout2, []);
+  return throttledValue;
+}
+
+// src/use-is-first-render/use-is-first-render.ts
+import { useRef as useRef32 } from "react";
+function useIsFirstRender() {
+  const renderRef = useRef32(true);
+  if (renderRef.current === true) {
+    renderRef.current = false;
+    return true;
+  }
+  return renderRef.current;
+}
+
+// src/use-orientation/use-orientation.ts
+import { useState as useState38 } from "react";
+function useOrientation() {
+  const [orientation, setOrientation] = useState38({ angle: 0, type: "landscape-primary" });
+  const handleOrientationChange = (event) => {
+    const target = event.currentTarget;
+    setOrientation({ angle: (target == null ? void 0 : target.angle) || 0, type: (target == null ? void 0 : target.type) || "landscape-primary" });
+  };
+  useIsomorphicEffect(() => {
+    var _a;
+    (_a = window.screen.orientation) == null ? void 0 : _a.addEventListener("change", handleOrientationChange);
+    return () => {
+      var _a2;
+      return (_a2 = window.screen.orientation) == null ? void 0 : _a2.removeEventListener("change", handleOrientationChange);
+    };
+  }, []);
+  return orientation;
+}
+
+// src/use-fetch/use-fetch.ts
+import { useCallback as useCallback18, useEffect as useEffect41, useRef as useRef33, useState as useState39 } from "react";
+function useFetch(url, { autoInvoke = true, ...options } = {}) {
+  const [data, setData] = useState39(null);
+  const [loading, setLoading] = useState39(false);
+  const [error, setError] = useState39(null);
+  const controller = useRef33(null);
+  const refetch = useCallback18(() => {
+    if (!url) {
+      return;
+    }
+    if (controller.current) {
+      controller.current.abort();
+    }
+    controller.current = new AbortController();
+    setLoading(true);
+    return fetch(url, { signal: controller.current.signal, ...options }).then((res) => res.json()).then((res) => {
+      setData(res);
+      setLoading(false);
+      return res;
+    }).catch((err) => {
+      setLoading(false);
+      if (err.name !== "AbortError") {
+        setError(err);
+      }
+      return err;
+    });
+  }, [url]);
+  const abort = useCallback18(() => {
+    var _a;
+    if (controller.current) {
+      (_a = controller.current) == null ? void 0 : _a.abort("");
+    }
+  }, []);
+  useEffect41(() => {
+    if (autoInvoke) {
+      refetch();
+    }
+    return () => {
+      if (controller.current) {
+        controller.current.abort("");
+      }
+    };
+  }, [refetch, autoInvoke]);
+  return { data, loading, error, refetch, abort };
+}
 export {
   assignRef,
   clamp,
@@ -2097,6 +2446,8 @@ export {
   mergeRefs,
   randomId,
   range,
+  readLocalStorageValue,
+  readSessionStorageValue,
   shallowEqual,
   upperFirst,
   useCallbackRef,
@@ -2104,7 +2455,7 @@ export {
   useClipboard,
   useColorScheme,
   useCounter,
-  useDebounceCallback,
+  useDebouncedCallback,
   useDebouncedState,
   useDebouncedValue,
   useDidUpdate,
@@ -2115,6 +2466,7 @@ export {
   useEventListener,
   useEyeDropper,
   useFavicon,
+  useFetch,
   useFocusReturn,
   useFocusTrap,
   useFocusWithin,
@@ -2126,18 +2478,24 @@ export {
   useHover,
   useId,
   useIdle,
+  useInViewport,
   useInputState,
   useIntersection,
   useInterval,
+  useIsFirstRender,
   useIsomorphicEffect,
   useListState,
   useLocalStorage,
   useLogger,
+  useMap,
   useMediaQuery,
   useMergedRef,
+  useMounted,
   useMouse,
   useMove,
+  useMutationObserver,
   useNetwork,
+  useOrientation,
   useOs,
   usePageLeave,
   usePagination,
@@ -2147,9 +2505,14 @@ export {
   useResizeObserver,
   useScrollIntoView,
   useSessionStorage,
+  useSet,
   useSetState,
   useShallowEffect,
+  useStateHistory,
   useTextSelection,
+  useThrottledCallback,
+  useThrottledState,
+  useThrottledValue,
   useTimeout,
   useToggle,
   useUncontrolled,

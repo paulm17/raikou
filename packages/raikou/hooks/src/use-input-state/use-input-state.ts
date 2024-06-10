@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export function getInputOnChange<T>(
   setValue: (value: null | undefined | T | ((current: T) => T)) => void
@@ -26,6 +26,6 @@ export function useInputState<T>(initialState: T) {
   const [value, setValue] = useState<T>(initialState);
   return [value, getInputOnChange<T>(setValue as any)] as [
     T,
-    (value: null | undefined | T | React.ChangeEvent<any>) => void
+    (value: null | undefined | T | React.ChangeEvent<any>) => void,
   ];
 }

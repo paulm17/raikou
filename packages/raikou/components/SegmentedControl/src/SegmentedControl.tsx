@@ -1,43 +1,40 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import {
   useId,
   useMergedRef,
-  useResizeObserver,
+  useMounted,
   useUncontrolled,
-  useTimeout,
 } from "@raikou/hooks";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
-  factory,
+  createVarsResolver,
   ElementProps,
+  Factory,
+  factory,
+  getContrastColor,
+  getFontSize,
+  getRadius,
+  getSize,
+  getThemeColor,
+  RaikouColor,
+  RaikouRadius,
+  RaikouSize,
+  StylesApiProps,
+  useRaikouTheme,
   useProps,
   useStyles,
-  RaikouColor,
-  RaikouSize,
-  RaikouRadius,
-  getRadius,
-  getThemeColor,
-  getSize,
-  getFontSize,
-  useDirection,
-  createVarsResolver,
-  Factory,
-  useRaikouTheme,
-  getEnv,
 } from "@raikou/core";
-import { getRootPadding } from "./get-root-padding";
+import { FloatingIndicator } from "../../FloatingIndicator/src";
 import classes from "./SegmentedControl.module.css";
-
-const WRAPPER_PADDING = 4;
 
 export type SegmentedControlStylesNames =
   | "root"
   | "input"
   | "label"
   | "control"
-  | "indicator";
+  | "indicator"
+  | "innerLabel";
 export type SegmentedControlCssVariables = {
   root:
     | "--sc-radius"
@@ -100,6 +97,12 @@ export interface SegmentedControlProps
 
   /** Determines whether the value can be changed */
   readOnly?: boolean;
+
+  /** Determines whether text color should depend on `background-color` of the indicator. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+  autoContrast?: boolean;
+
+  /** Determines whether there should be borders between items, `true` by default */
+  withItemsBorders?: boolean;
 }
 
 export type SegmentedControlFactory = Factory<{
@@ -109,7 +112,9 @@ export type SegmentedControlFactory = Factory<{
   vars: SegmentedControlCssVariables;
 }>;
 
-const defaultProps: Partial<SegmentedControlProps> = {};
+const defaultProps: Partial<SegmentedControlProps> = {
+  withItemsBorders: true,
+};
 
 const varsResolver = createVarsResolver<SegmentedControlFactory>(
   (
@@ -156,6 +161,9 @@ export const SegmentedControl = factory<SegmentedControlFactory>(
       transitionDuration,
       transitionTimingFunction,
       variant,
+      autoContrast,
+      withItemsBorders,
+      mod,
       ...others
     } = props;
 
@@ -172,12 +180,19 @@ export const SegmentedControl = factory<SegmentedControlFactory>(
       varsResolver,
     });
 
-    const { dir } = useDirection();
     const theme = useRaikouTheme();
 
     const _data = data.map((item) =>
       typeof item === "string" ? { label: item, value: item } : item,
     );
+
+    const initialized = useMounted();
+    const [parent, setParent] = useState<HTMLElement | null>(null);
+    const [refs, setRefs] = useState<Record<string, HTMLElement | null>>({});
+    const setElementRef = (element: HTMLElement | null, val: string) => {
+      refs[val] = element;
+      setRefs(refs);
+    };
 
     const [_value, handleValueChange] = useUncontrolled({
       value,
@@ -190,60 +205,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>(
       onChange,
     });
 
-    const [activePosition, setActivePosition] = useState({
-      width: 0,
-      height: 0,
-      translate: [0, 0],
-    });
     const uuid = useId(name);
-    const refs = useRef<Record<string, HTMLLabelElement>>({});
-    const rootRef = useRef<HTMLDivElement>(null);
-    const [initialized, setInitialized] = useState(false);
-    const [observerRef, containerRect] = useResizeObserver();
-
-    useEffect(() => {
-      if (_value in refs.current && observerRef.current) {
-        const element = refs.current[_value];
-        if (element) {
-          const rootPadding = getRootPadding(rootRef.current!, WRAPPER_PADDING);
-          const elementRect = element.getBoundingClientRect();
-          const scaledValue = element.offsetWidth / elementRect.width;
-          const width = element.clientWidth * scaledValue || 0;
-          const height = element.clientHeight * scaledValue || 0;
-
-          const offsetRight =
-            containerRect.width -
-            element.parentElement!.offsetLeft +
-            (dir === "rtl" ? rootPadding.left : rootPadding.right) -
-            width;
-          const offsetLeft =
-            element.parentElement!.offsetLeft -
-            (dir === "rtl" ? rootPadding.right : rootPadding.left);
-
-          setActivePosition({
-            width,
-            height,
-            translate: [
-              dir === "rtl" ? offsetRight * -1 : offsetLeft,
-              element.parentElement!.offsetTop - rootPadding.top,
-            ],
-          });
-        } else {
-          setActivePosition({ width: 0, height: 0, translate: [0, 0] });
-        }
-      }
-    }, [_value, containerRect, dir, observerRef]);
-
-    useTimeout(
-      () => {
-        // Prevents warning about state update without act
-        if (getEnv() !== "test") {
-          setInitialized(true);
-        }
-      },
-      20,
-      { autoInvoke: true },
-    );
 
     const controls = _data.map((item) => (
       <Box
@@ -261,6 +223,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>(
           checked={_value === item.value}
           onChange={() => !readOnly && handleValueChange(item.value)}
           data-focus-ring={theme.focusRing}
+          key={`${item.value}-input`}
         />
 
         <Box
@@ -272,20 +235,21 @@ export const SegmentedControl = factory<SegmentedControlFactory>(
             "read-only": readOnly,
           }}
           htmlFor={`${uuid}-${item.value}`}
-          ref={(node) => {
-            refs.current[item.value] = node!;
-          }}
+          ref={(node) => setElementRef(node, item.value)}
           __vars={{
             "--sc-label-color":
-              color !== undefined ? "var(--raikou-color-white)" : undefined,
+              color !== undefined
+                ? getContrastColor({ color, theme, autoContrast })
+                : undefined,
           }}
+          key={`${item.value}-label`}
         >
-          {item.label}
+          <span {...getStyles("innerLabel")}>{item.label}</span>
         </Box>
       </Box>
     ));
 
-    const mergedRef = useMergedRef(observerRef, rootRef, ref);
+    const mergedRef = useMergedRef(ref, (node) => setParent(node));
 
     if (data.length === 0) {
       return null;
@@ -297,23 +261,25 @@ export const SegmentedControl = factory<SegmentedControlFactory>(
         variant={variant}
         size={size}
         ref={mergedRef}
-        mod={{
-          "full-width": fullWidth,
-          orientation,
-          initialization: !initialized,
-        }}
+        mod={[
+          {
+            "full-width": fullWidth,
+            orientation,
+            initialized,
+            "with-items-borders": withItemsBorders,
+          },
+          mod,
+        ]}
         {...others}
         role="radiogroup"
       >
         {typeof _value === "string" && (
-          <Box
+          <FloatingIndicator
+            target={refs[_value]}
+            parent={parent}
             component="span"
+            transitionDuration="var(--sc-transition-duration)"
             {...getStyles("indicator")}
-            __vars={{
-              "--sc-indicator-width": `${activePosition.width}px`,
-              "--sc-indicator-height": `${activePosition.height}px`,
-              "--sc-indicator-transform": `translate(${activePosition.translate[0]}px, ${activePosition.translate[1]}px)`,
-            }}
           />
         )}
 

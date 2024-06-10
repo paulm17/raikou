@@ -11,10 +11,11 @@ declare function useDelayedHover({ open, close, openDelay, closeDelay, }: UseDel
     closeDropdown: () => void;
 };
 
-type FloatingPlacement = 'end' | 'start';
-type FloatingSide = 'top' | 'right' | 'bottom' | 'left';
+type FloatingPlacement = "end" | "start";
+type FloatingSide = "top" | "right" | "bottom" | "left";
 type FloatingPosition = FloatingSide | `${FloatingSide}-${FloatingPlacement}`;
-type ArrowPosition = 'center' | 'side';
+type ArrowPosition = "center" | "side";
+type FloatingStrategy = "absolute" | "fixed";
 interface FloatingAxesOffsets {
     mainAxis?: number;
     crossAxis?: number;
@@ -35,7 +36,7 @@ interface Payload {
 }
 declare function useFloatingAutoUpdate({ opened, floating, position, positionDependencies, }: Payload): void;
 
-declare function getFloatingPosition(dir: 'rtl' | 'ltr', position: FloatingPosition): FloatingPosition;
+declare function getFloatingPosition(dir: "rtl" | "ltr", position: FloatingPosition): FloatingPosition;
 
 interface FloatingArrowProps extends React$1.ComponentPropsWithoutRef<"div"> {
     position: FloatingPosition;
@@ -43,10 +44,10 @@ interface FloatingArrowProps extends React$1.ComponentPropsWithoutRef<"div"> {
     arrowOffset: number;
     arrowRadius: number;
     arrowPosition: ArrowPosition;
-    arrowX: number;
-    arrowY: number;
+    arrowX: number | undefined;
+    arrowY: number | undefined;
     visible: boolean | undefined;
 }
 declare const FloatingArrow: React$1.ForwardRefExoticComponent<FloatingArrowProps & React$1.RefAttributes<HTMLDivElement>>;
 
-export { type ArrowPosition, FloatingArrow, type FloatingAxesOffsets, type FloatingPlacement, type FloatingPosition, type FloatingSide, getFloatingPosition, useDelayedHover, useFloatingAutoUpdate };
+export { type ArrowPosition, FloatingArrow, type FloatingAxesOffsets, type FloatingPlacement, type FloatingPosition, type FloatingSide, type FloatingStrategy, getFloatingPosition, useDelayedHover, useFloatingAutoUpdate };

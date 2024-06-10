@@ -36,6 +36,8 @@ export interface InlineInputProps
   error: React.ReactNode;
   size: RaikouSize | (string & {}) | undefined;
   labelPosition?: "left" | "right";
+  bodyElement?: any;
+  labelElement?: any;
 }
 
 export type InlineInputFactory = Factory<{
@@ -60,9 +62,12 @@ export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
       error,
       size,
       labelPosition = "left",
+      bodyElement = "div",
+      labelElement = "label",
       variant,
       style,
       vars,
+      mod,
       ...others
     },
     ref,
@@ -86,12 +91,16 @@ export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
           "--label-fz": getFontSize(size),
           "--label-lh": getSize(size, "label-lh"),
         }}
-        mod={{ "label-position": labelPosition }}
+        mod={[{ "label-position": labelPosition }, mod]}
         variant={variant}
         size={size}
         {...others}
       >
-        <div {...getStyles("body")}>
+        <Box
+          component={bodyElement}
+          htmlFor={bodyElement === "label" ? id : undefined}
+          {...getStyles("body")}
+        >
           {children}
 
           <div
@@ -99,13 +108,14 @@ export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
             data-disabled={disabled || undefined}
           >
             {label && (
-              <label
+              <Box
+                component={labelElement}
+                htmlFor={labelElement === "label" ? id : undefined}
                 {...getStyles("label")}
                 data-disabled={disabled || undefined}
-                htmlFor={id}
               >
                 {label}
-              </label>
+              </Box>
             )}
 
             {description && (
@@ -118,7 +128,7 @@ export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
               </Input.Description>
             )}
 
-            {error && error !== "boolean" && (
+            {error && typeof error !== "boolean" && (
               <Input.Error
                 size={size}
                 __inheritStyles={false}
@@ -128,7 +138,7 @@ export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
               </Input.Error>
             )}
           </div>
-        </div>
+        </Box>
       </Box>
     );
   },

@@ -15,3 +15,13 @@ export function colorResolver(color: unknown, theme: RaikouTheme) {
     ? `var(${parsedColor.variable})`
     : parsedColor.color;
 }
+
+export function textColorResolver(color: unknown, theme: RaikouTheme) {
+  const parsedColor = parseThemeColor({ color, theme });
+
+  if (parsedColor.isThemeColor && parsedColor.shade === undefined) {
+    return `var(--raikou-color-${parsedColor.color}-text)`;
+  }
+
+  return colorResolver(color, theme);
+}

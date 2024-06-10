@@ -48,6 +48,7 @@ export const RichTextEditorControl = factory<RichTextEditorControlFactory>(
       interactive,
       active,
       onMouseDown,
+      disabled,
       ...others
     } = props;
     const ctx = useRichTextEditorContext();
@@ -56,9 +57,11 @@ export const RichTextEditorControl = factory<RichTextEditorControlFactory>(
       <UnstyledButton
         {...others}
         {...ctx.getStyles("control", { className, style, classNames, styles })}
+        disabled={disabled}
         data-rich-text-editor-control
         tabIndex={interactive ? 0 : -1}
         data-interactive={interactive || undefined}
+        data-disabled={disabled || undefined}
         data-active={active || undefined}
         aria-pressed={(active && interactive) || undefined}
         aria-hidden={!interactive || undefined}
@@ -95,6 +98,7 @@ export interface CreateControlProps {
   label: keyof RichTextEditorLabels;
   icon: React.FC<{ style: React.CSSProperties }>;
   isActive?: { name: string; attributes?: Record<string, any> | string };
+  isDisabled?: (editor: any) => boolean;
   operation: { name: string; attributes?: Record<string, any> | string };
 }
 
@@ -103,6 +107,7 @@ export function createControl({
   isActive,
   operation,
   icon,
+  isDisabled,
 }: CreateControlProps) {
   // eslint-disable-next-line
   return forwardRef<HTMLButtonElement, RichTextEditorControlBaseProps>(
@@ -128,6 +133,7 @@ export function createControl({
               .run()
           }
           icon={props.icon || icon}
+          disabled={isDisabled?.(editor) || false}
         />
       );
     },

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Divider } from './Divider';
+import React from "react";
+import { Divider } from "./Divider";
 
-export default { title: 'Divider' };
+export default { title: "Divider" };
 
 export function Usage() {
   return (

@@ -8,7 +8,6 @@ export type ModalSettings = Partial<Omit<ModalProps, "opened">> & {
 
 export type ConfirmLabels = Record<"confirm" | "cancel", ReactNode>;
 
-// @ts-ignore
 export interface OpenConfirmModal extends ModalSettings, ConfirmModalProps {}
 export interface OpenContextModal<CustomProps extends Record<string, any> = {}>
   extends ModalSettings {
@@ -57,4 +56,4 @@ export type RaikouModals = RaikouModalsOverwritten["modals"];
 export type RaikouModal = keyof RaikouModals;
 
 export const ModalsContext = createContext<ModalsContextProps>(null as any);
-ModalsContext.displayName = "@raikou/modals/ModalsContext";
+ModalsContext.displayName = "@Raikou/modals/ModalsContext";

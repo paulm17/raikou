@@ -1,12 +1,39 @@
 /// <reference path="global.d.ts" />
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, RaikouSize, Factory, RaikouColor, RaikouRadius } from '@raikou/core';
+import { BoxProps, StylesApiProps, ElementProps, RaikouRadius, Factory, RaikouSize, RaikouColor } from '@raikou/core';
 import React$1 from 'react';
 import * as CSS from 'csstype';
 import * as PropTypes from 'prop-types';
 import { Interaction } from 'scheduler/tracing';
 
 type InlineInputStylesNames = "root" | "body" | "labelWrapper" | "label" | "description" | "error";
+
+type CheckboxCardStylesNames = "card";
+type CheckboxCardCssVariables = {
+    card: "--card-radius";
+};
+interface CheckboxCardProps extends BoxProps, StylesApiProps<CheckboxCardFactory>, ElementProps<"button", "onChange"> {
+    /** Checked state */
+    checked?: boolean;
+    /** Determines whether the card should have border, `true` by default */
+    withBorder?: boolean;
+    /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `theme.defaultRadius` by default */
+    radius?: RaikouRadius;
+    /** Value of the checkbox, used with `Checkbox.Group` */
+    value?: string;
+}
+type CheckboxCardFactory = Factory<{
+    props: CheckboxCardProps;
+    ref: HTMLButtonElement;
+    stylesNames: CheckboxCardStylesNames;
+    vars: CheckboxCardCssVariables;
+}>;
+declare const CheckboxCard: _raikou_core.RaikouComponent<{
+    props: CheckboxCardProps;
+    ref: HTMLButtonElement;
+    stylesNames: CheckboxCardStylesNames;
+    vars: CheckboxCardCssVariables;
+}>;
 
 type InputLabelStylesNames = "label" | "required";
 type InputLabelCssVariables = {
@@ -3616,6 +3643,8 @@ interface CheckboxGroupProps extends Omit<InputWrapperProps, "onChange"> {
     wrapperProps?: Record<string, any>;
     /** Controls size of the `Input.Wrapper`, `'sm'` by default */
     size?: RaikouSize | (string & {});
+    /** If set, value cannot be changed */
+    readOnly?: boolean;
 }
 type CheckboxGroupFactory = Factory<{
     props: CheckboxGroupProps;
@@ -3626,6 +3655,49 @@ declare const CheckboxGroup: _raikou_core.RaikouComponent<{
     props: CheckboxGroupProps;
     ref: HTMLDivElement;
     stylesNames: CheckboxGroupStylesNames;
+}>;
+
+type CheckboxIndicatorStylesNames = "indicator" | "icon";
+type CheckboxIndicatorVariant = "filled" | "outline";
+type CheckboxIndicatorCssVariables = {
+    indicator: "--checkbox-size" | "--checkbox-radius" | "--checkbox-color" | "--checkbox-icon-color";
+};
+interface CheckboxIndicatorProps extends BoxProps, StylesApiProps<CheckboxIndicatorFactory>, ElementProps<"div"> {
+    /** Key of `theme.colors` or any valid CSS color to set input background color in checked state, `theme.primaryColor` by default */
+    color?: RaikouColor;
+    /** Controls size of the component, `'sm'` by default */
+    size?: RaikouSize | (string & {});
+    /** Key of `theme.radius` or any valid CSS value to set `border-radius,` `theme.defaultRadius` by default */
+    radius?: RaikouRadius;
+    /** Key of `theme.colors` or any valid CSS color to set icon color, by default value depends on `theme.autoContrast` */
+    iconColor?: RaikouColor;
+    /** Determines whether icon color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+    autoContrast?: boolean;
+    /** Indeterminate state of the checkbox. If set, `checked` prop is ignored. */
+    indeterminate?: boolean;
+    /** Icon displayed when checkbox is in checked or indeterminate state */
+    icon?: React$1.FC<{
+        indeterminate: boolean | undefined;
+        className: string;
+    }>;
+    /** Determines whether the component should have checked styles */
+    checked?: boolean;
+    /** Determines whether the component should have disabled styles */
+    disabled?: boolean;
+}
+type CheckboxIndicatorFactory = Factory<{
+    props: CheckboxIndicatorProps;
+    ref: HTMLDivElement;
+    stylesNames: CheckboxIndicatorStylesNames;
+    vars: CheckboxIndicatorCssVariables;
+    variant: CheckboxIndicatorVariant;
+}>;
+declare const CheckboxIndicator: _raikou_core.RaikouComponent<{
+    props: CheckboxIndicatorProps;
+    ref: HTMLDivElement;
+    stylesNames: CheckboxIndicatorStylesNames;
+    vars: CheckboxIndicatorCssVariables;
+    variant: CheckboxIndicatorVariant;
 }>;
 
 type CheckboxVariant = "filled" | "outline";
@@ -3663,6 +3735,8 @@ interface CheckboxProps extends BoxProps, StylesApiProps<CheckboxFactory>, Eleme
     rootRef?: React$1.ForwardedRef<HTMLDivElement>;
     /** Key of `theme.colors` or any valid CSS color to set icon color, `theme.white` by default */
     iconColor?: RaikouColor;
+    /** Determines whether icon color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+    autoContrast?: boolean;
 }
 type CheckboxFactory = Factory<{
     props: CheckboxProps;
@@ -3672,6 +3746,8 @@ type CheckboxFactory = Factory<{
     variant: CheckboxVariant;
     staticComponents: {
         Group: typeof CheckboxGroup;
+        Indicator: typeof CheckboxIndicator;
+        Card: typeof CheckboxCard;
     };
 }>;
 declare const Checkbox: _raikou_core.RaikouComponent<{
@@ -3682,6 +3758,8 @@ declare const Checkbox: _raikou_core.RaikouComponent<{
     variant: CheckboxVariant;
     staticComponents: {
         Group: typeof CheckboxGroup;
+        Indicator: typeof CheckboxIndicator;
+        Card: typeof CheckboxCard;
     };
 }>;
 

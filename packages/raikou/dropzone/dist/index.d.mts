@@ -29,6 +29,8 @@ interface LoaderProps extends BoxProps, StylesApiProps<LoaderFactory>, Omit<Reac
     type?: RaikouLoader;
     /** Object of loaders components, can be customized via default props or inline. Default value contains `bars`, `oval` and `dots` */
     loaders?: RaikouLoadersRecord;
+    /** Overrides default loader with given content */
+    children?: React__default.ReactNode;
 }
 type LoaderFactory = Factory<{
     props: LoaderProps;
@@ -164,6 +166,7 @@ declare const MIME_TYPES: {
     readonly svg: "image/svg+xml";
     readonly webp: "image/webp";
     readonly avif: "image/avif";
+    readonly heic: "image/heic";
     readonly mp4: "video/mp4";
     readonly zip: "application/zip";
     readonly csv: "text/csv";
@@ -176,7 +179,7 @@ declare const MIME_TYPES: {
     readonly pptx: "application/vnd.openxmlformats-officedocument.presentationml.presentation";
     readonly exe: "application/vnd.microsoft.portable-executable";
 };
-declare const IMAGE_MIME_TYPE: ("image/png" | "image/gif" | "image/jpeg" | "image/svg+xml" | "image/webp" | "image/avif")[];
+declare const IMAGE_MIME_TYPE: ("image/png" | "image/gif" | "image/jpeg" | "image/svg+xml" | "image/webp" | "image/avif" | "image/heic")[];
 declare const PDF_MIME_TYPE: "application/pdf"[];
 declare const MS_WORD_MIME_TYPE: ("application/msword" | "application/vnd.openxmlformats-officedocument.wordprocessingml.document")[];
 declare const MS_EXCEL_MIME_TYPE: ("application/vnd.ms-excel" | "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")[];

@@ -2,15 +2,15 @@ import React from "react";
 import { Container } from "./Container";
 import { rem } from "@raikou/core";
 
-const CONTAINER_SIZES: Record<string, string> = {
-  xxs: rem(200),
-  xs: rem(300),
-  sm: rem(400),
-  md: rem(500),
-  lg: rem(600),
-  xl: rem(700),
-  xxl: rem(800),
-};
+// const CONTAINER_SIZES: Record<string, string> = {
+//   xxs: rem(200),
+//   xs: rem(300),
+//   sm: rem(400),
+//   md: rem(500),
+//   lg: rem(600),
+//   xl: rem(700),
+//   xxl: rem(800),
+// };
 
 // const theme = createTheme({
 //   components: {
@@ -30,7 +30,7 @@ export default { title: "Container" };
 export function Usage() {
   return (
     // <RaikouThemeProvider theme={theme}>
-    <Container size={rem(200)} h={50} bg="blue-400">
+    <Container size={rem(200)} h={50} bg="blue">
       Container
     </Container>
     // </RaikouThemeProvider>
@@ -39,8 +39,8 @@ export function Usage() {
 
 export function NonFluidWithinFluid() {
   return (
-    <Container fluid h={50} bg="blue-400">
-      <Container h={50} bg="red-400">
+    <Container fluid h={50} bg="blue">
+      <Container h={50} bg="red">
         Child container
       </Container>
     </Container>

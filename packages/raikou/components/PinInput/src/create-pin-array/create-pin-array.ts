@@ -3,12 +3,12 @@ export function createPinArray(length: number, value: string): string[] {
     return [];
   }
 
-  const values = new Array<string>(length).fill('');
+  const values = new Array<string>(length).fill("");
 
   if (value) {
-    const splitted = value.trim().split('');
+    const splitted = value.trim().split("");
     for (let i = 0; i < Math.min(length, splitted.length); i += 1) {
-      values[i] = splitted[i];
+      values[i] = splitted[i] === " " ? "" : splitted[i];
     }
   }
 

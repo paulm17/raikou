@@ -1,4 +1,4 @@
-import { ModalState } from './context';
+import { ModalState } from "./context";
 
 interface ModalsState {
   modals: ModalState[];
@@ -11,23 +11,23 @@ interface ModalsState {
 }
 
 interface OpenAction {
-  type: 'OPEN';
+  type: "OPEN";
   modal: ModalState;
 }
 
 interface CloseAction {
-  type: 'CLOSE';
+  type: "CLOSE";
   modalId: string;
   canceled?: boolean;
 }
 
 interface CloseAllAction {
-  type: 'CLOSE_ALL';
+  type: "CLOSE_ALL";
   canceled?: boolean;
 }
 
 function handleCloseModal(modal: ModalState, canceled?: boolean) {
-  if (canceled && modal.type === 'confirm') {
+  if (canceled && modal.type === "confirm") {
     modal.props.onCancel?.();
   }
 
@@ -36,16 +36,16 @@ function handleCloseModal(modal: ModalState, canceled?: boolean) {
 
 export function modalsReducer(
   state: ModalsState,
-  action: OpenAction | CloseAction | CloseAllAction
+  action: OpenAction | CloseAction | CloseAllAction,
 ): ModalsState {
   switch (action.type) {
-    case 'OPEN': {
+    case "OPEN": {
       return {
         current: action.modal,
         modals: [...state.modals, action.modal],
       };
     }
-    case 'CLOSE': {
+    case "CLOSE": {
       const modal = state.modals.find((m) => m.id === action.modalId);
       if (!modal) {
         return state;
@@ -53,14 +53,16 @@ export function modalsReducer(
 
       handleCloseModal(modal, action.canceled);
 
-      const remainingModals = state.modals.filter((m) => m.id !== action.modalId);
+      const remainingModals = state.modals.filter(
+        (m) => m.id !== action.modalId,
+      );
 
       return {
         current: remainingModals[remainingModals.length - 1] || state.current,
         modals: remainingModals,
       };
     }
-    case 'CLOSE_ALL': {
+    case "CLOSE_ALL": {
       if (!state.modals.length) {
         return state;
       }

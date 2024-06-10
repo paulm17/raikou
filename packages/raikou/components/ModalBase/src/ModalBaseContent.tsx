@@ -37,18 +37,18 @@ export const ModalBaseContent = forwardRef<
   ) => {
     const ctx = useModalBaseContext();
 
-    const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-      const shouldTrigger =
-        (event.target as HTMLElement)?.getAttribute(
-          "data-raikou-stop-propagation",
-        ) !== "true";
-      // eslint-disable-next-line
-      shouldTrigger &&
-        event.key === "Escape" &&
-        ctx.closeOnEscape &&
-        ctx.onClose();
-      onKeyDown?.(event);
-    };
+    // const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    //   const shouldTrigger =
+    //     (event.target as HTMLElement)?.getAttribute(
+    //       "data-raikou-stop-propagation",
+    //     ) !== "true";
+    //   // eslint-disable-next-line
+    //   shouldTrigger &&
+    //     event.key === "Escape" &&
+    //     ctx.closeOnEscape &&
+    //     ctx.onClose();
+    //   onKeyDown?.(event);
+    // };
 
     return (
       <Transition
@@ -73,7 +73,7 @@ export const ModalBaseContent = forwardRef<
                 aria-labelledby={
                   ctx.titleMounted ? ctx.getTitleId() : undefined
                 }
-                onKeyDown={handleKeyDown}
+                // onKeyDown={handleKeyDown}
                 ref={ref}
                 style={[style, transitionStyles]}
                 className={cx(classes.content, className)}

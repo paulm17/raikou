@@ -1,5 +1,5 @@
-import { HsvaColor, RgbaColor, ColorFormat } from '../ColorPicker.types';
-import { round } from './parsers';
+import { ColorFormat, HsvaColor, RgbaColor } from "../ColorPicker.types";
+import { round } from "./parsers";
 
 export function hsvaToRgbaObject({ h, s, v, a }: HsvaColor): RgbaColor {
   const _h = (h / 360) * 6;
@@ -35,7 +35,11 @@ export function hsvaToHsl({ h, s, v, a }: HsvaColor, includeAlpha: boolean) {
 
   const result = {
     h: Math.round(h),
-    s: Math.round(hh > 0 && hh < 200 ? ((s * v) / 100 / (hh <= 100 ? hh : 200 - hh)) * 100 : 0),
+    s: Math.round(
+      hh > 0 && hh < 200
+        ? ((s * v) / 100 / (hh <= 100 ? hh : 200 - hh)) * 100
+        : 0,
+    ),
     l: Math.round(hh / 2),
   };
 
@@ -73,7 +77,7 @@ const CONVERTERS: Record<ColorFormat, (color: HsvaColor) => string> = {
 
 export function convertHsvaTo(format: ColorFormat, color: HsvaColor) {
   if (!color) {
-    return '#000000';
+    return "#000000";
   }
 
   if (!(format in CONVERTERS)) {

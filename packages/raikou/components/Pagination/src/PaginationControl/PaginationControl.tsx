@@ -46,6 +46,7 @@ export const PaginationControl = factory<PaginationControlFactory>(
       active,
       disabled,
       withPadding,
+      mod,
       ...others
     } = props;
 
@@ -56,7 +57,10 @@ export const PaginationControl = factory<PaginationControlFactory>(
       <UnstyledButton
         ref={ref}
         disabled={_disabled}
-        mod={{ active, disabled: _disabled, "with-padding": withPadding }}
+        mod={[
+          { active, disabled: _disabled, "with-padding": withPadding },
+          mod,
+        ]}
         {...ctx.getStyles("control", {
           className,
           style,

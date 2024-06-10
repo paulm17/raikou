@@ -1,4 +1,4 @@
-import type { FormErrors } from "../../types";
+import type { FormErrors } from '../../types';
 
 interface YupError {
   path: string;
@@ -10,10 +10,7 @@ interface YupValidationResult {
 }
 
 interface YupSchema {
-  validateSync: (
-    values: Record<string, any>,
-    options: { abortEarly: boolean },
-  ) => void;
+  validateSync: (values: Record<string, any>, options: { abortEarly: boolean }) => void;
 }
 
 export function yupResolver(schema: any) {
@@ -28,8 +25,7 @@ export function yupResolver(schema: any) {
       const results: Record<string, any> = {};
 
       yupError.inner.forEach((error) => {
-        results[error.path.replaceAll("[", ".").replaceAll("]", "")] =
-          error.message;
+        results[error.path.replaceAll('[', '.').replaceAll(']', '')] = error.message;
       });
 
       return results;

@@ -1,26 +1,19 @@
-import React from "react";
-import { render } from "@raikou/tests";
-import { HiddenDatesInput } from "./HiddenDatesInput";
+import { render } from '@mantine-tests/core';
+import { HiddenDatesInput } from './HiddenDatesInput';
 
-describe("@raikou/dates/HiddenDatesInput", () => {
-  it("sets name and form on the input", () => {
+describe('@mantine/dates/HiddenDatesInput', () => {
+  it('sets name and form on the input', () => {
     const { container } = render(
       <HiddenDatesInput
         name="test-name"
         form="test-form"
         type="default"
         value={new Date(2022, 3, 11)}
-      />,
+      />
     );
 
-    expect(container.querySelector("input")).toHaveAttribute(
-      "name",
-      "test-name",
-    );
-    expect(container.querySelector("input")).toHaveAttribute(
-      "form",
-      "test-form",
-    );
+    expect(container.querySelector('input')).toHaveAttribute('name', 'test-name');
+    expect(container.querySelector('input')).toHaveAttribute('form', 'test-form');
   });
 
   it('formats date correctly for type="default"', () => {
@@ -30,21 +23,12 @@ describe("@raikou/dates/HiddenDatesInput", () => {
         form="test-form"
         type="default"
         value={new Date(2022, 3, 11)}
-      />,
+      />
     );
 
-    expect(container.querySelector("input")).toHaveValue(
-      new Date(2022, 3, 11).toISOString(),
-    );
-    rerender(
-      <HiddenDatesInput
-        name="test-name"
-        form="test-form"
-        type="default"
-        value={null}
-      />,
-    );
-    expect(container.querySelector("input")).toHaveValue("");
+    expect(container.querySelector('input')).toHaveValue(new Date(2022, 3, 11).toISOString());
+    rerender(<HiddenDatesInput name="test-name" form="test-form" type="default" value={null} />);
+    expect(container.querySelector('input')).toHaveValue('');
   });
 
   it('formats date correctly for type="multiple"', () => {
@@ -54,25 +38,14 @@ describe("@raikou/dates/HiddenDatesInput", () => {
         form="test-form"
         type="multiple"
         value={[new Date(2022, 3, 11), new Date(2022, 4, 11)]}
-      />,
+      />
     );
 
-    expect(container.querySelector("input")).toHaveValue(
-      `${new Date(2022, 3, 11).toISOString()}, ${new Date(
-        2022,
-        4,
-        11,
-      ).toISOString()}`,
+    expect(container.querySelector('input')).toHaveValue(
+      `${new Date(2022, 3, 11).toISOString()}, ${new Date(2022, 4, 11).toISOString()}`
     );
-    rerender(
-      <HiddenDatesInput
-        name="test-name"
-        form="test-form"
-        type="multiple"
-        value={[]}
-      />,
-    );
-    expect(container.querySelector("input")).toHaveValue("");
+    rerender(<HiddenDatesInput name="test-name" form="test-form" type="multiple" value={[]} />);
+    expect(container.querySelector('input')).toHaveValue('');
   });
 
   it('formats date correctly for type="range"', () => {
@@ -82,15 +55,11 @@ describe("@raikou/dates/HiddenDatesInput", () => {
         form="test-form"
         type="range"
         value={[new Date(2022, 3, 11), new Date(2022, 4, 11)]}
-      />,
+      />
     );
 
-    expect(container.querySelector("input")).toHaveValue(
-      `${new Date(2022, 3, 11).toISOString()} – ${new Date(
-        2022,
-        4,
-        11,
-      ).toISOString()}`,
+    expect(container.querySelector('input')).toHaveValue(
+      `${new Date(2022, 3, 11).toISOString()} – ${new Date(2022, 4, 11).toISOString()}`
     );
     rerender(
       <HiddenDatesInput
@@ -98,20 +67,15 @@ describe("@raikou/dates/HiddenDatesInput", () => {
         form="test-form"
         type="range"
         value={[new Date(2022, 3, 11), null]}
-      />,
+      />
     );
-    expect(container.querySelector("input")).toHaveValue(
-      `${new Date(2022, 3, 11).toISOString()} –`,
+    expect(container.querySelector('input')).toHaveValue(
+      `${new Date(2022, 3, 11).toISOString()} –`
     );
 
     rerender(
-      <HiddenDatesInput
-        name="test-name"
-        form="test-form"
-        type="range"
-        value={[null, null]}
-      />,
+      <HiddenDatesInput name="test-name" form="test-form" type="range" value={[null, null]} />
     );
-    expect(container.querySelector("input")).toHaveValue("");
+    expect(container.querySelector('input')).toHaveValue('');
   });
 });

@@ -1,5 +1,5 @@
 import * as react from 'react';
-import react__default, { EffectCallback, DependencyList, useEffect, Ref } from 'react';
+import { SetStateAction, EffectCallback, DependencyList, useEffect, Ref, RefObject } from 'react';
 
 declare function clamp(value: number, min: number | undefined, max: number | undefined): number;
 
@@ -15,7 +15,7 @@ declare function upperFirst(value: string): string;
 
 declare function useCallbackRef<T extends (...args: any[]) => any>(callback: T | undefined): T;
 
-declare function useDebounceCallback(callback: () => void, delay: number): () => void;
+declare function useDebouncedCallback<T extends (...args: any[]) => any>(callback: T, delay: number): (...args: Parameters<T>) => void;
 
 declare function useClickOutside<T extends HTMLElement = any>(handler: () => void, events?: string[] | null, nodes?: (HTMLElement | null)[]): react.MutableRefObject<T | undefined>;
 
@@ -47,7 +47,7 @@ declare function useCounter(initialValue?: number, options?: Partial<{
 
 declare function useDebouncedState<T = any>(defaultValue: T, wait: number, options?: {
     leading: boolean;
-}): readonly [T, (newValue: T) => void];
+}): readonly [T, (newValue: SetStateAction<T>) => void];
 
 declare function useDebouncedValue<T = any>(value: T, wait: number, options?: {
     leading: boolean;
@@ -87,7 +87,7 @@ declare function useInterval(fn: () => void, interval: number): {
 declare const useIsomorphicEffect: typeof useEffect;
 
 interface UseListStateHandlers<T> {
-    setState: react__default.Dispatch<react__default.SetStateAction<T[]>>;
+    setState: React.Dispatch<React.SetStateAction<T[]>>;
     append: (...items: T[]) => void;
     prepend: (...items: T[]) => void;
     insert: (index: number, ...items: T[]) => void;
@@ -97,6 +97,10 @@ interface UseListStateHandlers<T> {
     applyWhere: (condition: (item: T, index: number) => boolean, fn: (item: T, index?: number) => T) => void;
     remove: (...indices: number[]) => void;
     reorder: ({ from, to }: {
+        from: number;
+        to: number;
+    }) => void;
+    swap: ({ from, to }: {
         from: number;
         to: number;
     }) => void;
@@ -121,8 +125,10 @@ interface StorageProperties<T> {
 }
 
 declare function useLocalStorage<T = string>(props: StorageProperties<T>): [T, (val: T | ((prevState: T) => T)) => void, () => void];
+declare const readLocalStorageValue: <T>({ key, defaultValue, deserialize, }: StorageProperties<T>) => T;
 
 declare function useSessionStorage<T = string>(props: StorageProperties<T>): [T, (val: T | ((prevState: T) => T)) => void, () => void];
+declare const readSessionStorageValue: <T>({ key, defaultValue, deserialize, }: StorageProperties<T>) => T;
 
 type PossibleRef<T> = Ref<T> | undefined;
 declare function assignRef<T>(ref: PossibleRef<T>, value: T): void;
@@ -141,7 +147,7 @@ interface UseMovePosition {
     x: number;
     y: number;
 }
-declare const clampUseMovePosition: (position: UseMovePosition) => {
+declare function clampUseMovePosition(position: UseMovePosition): {
     x: number;
     y: number;
 };
@@ -149,8 +155,8 @@ interface useMoveHandlers {
     onScrubStart?: () => void;
     onScrubEnd?: () => void;
 }
-declare function useMove<T extends HTMLElement = HTMLDivElement>(onChange: (value: UseMovePosition) => void, handlers?: useMoveHandlers, dir?: "ltr" | "rtl"): {
-    ref: react.MutableRefObject<T | undefined>;
+declare function useMove<T extends HTMLElement = HTMLDivElement>(onChange: (value: UseMovePosition) => void, handlers?: useMoveHandlers, dir?: 'ltr' | 'rtl'): {
+    ref: react.RefObject<T>;
     active: boolean;
 };
 
@@ -213,16 +219,17 @@ interface ScrollIntoViewParams {
     /** prevents content jumping in scrolling lists with multiple targets */
     isList?: boolean;
 }
-declare function useScrollIntoView<Target extends HTMLElement, Parent extends HTMLElement | null = null>({ duration, axis, onScrollFinish, easing, offset, cancelable, isList, }?: ScrollIntoViewParams): {
-    scrollableRef: react.RefObject<Parent>;
-    targetRef: react.RefObject<Target>;
-    scrollIntoView: ({ alignment }?: ScrollIntoViewAnimation) => void;
+interface ScrollIntoViewReturnType<Target extends HTMLElement, Parent extends HTMLElement | null = null> {
+    scrollableRef: React.MutableRefObject<Parent>;
+    targetRef: React.MutableRefObject<Target>;
+    scrollIntoView: (params?: ScrollIntoViewAnimation) => void;
     cancel: () => void;
-};
+}
+declare function useScrollIntoView<Target extends HTMLElement, Parent extends HTMLElement | null = null>({ duration, axis, onScrollFinish, easing, offset, cancelable, isList, }?: ScrollIntoViewParams): ScrollIntoViewReturnType<Target, Parent>;
 
 type ObserverRect = Omit<DOMRectReadOnly, 'toJSON'>;
-declare function useResizeObserver<T extends HTMLElement = any>(): readonly [react.RefObject<T>, ObserverRect];
-declare function useElementSize<T extends HTMLElement = any>(): {
+declare function useResizeObserver<T extends HTMLElement = any>(options?: ResizeObserverOptions): readonly [react.RefObject<T>, ObserverRect];
+declare function useElementSize<T extends HTMLElement = any>(options?: ResizeObserverOptions): {
     ref: react.RefObject<T>;
     width: number;
     height: number;
@@ -240,9 +247,9 @@ interface UseUncontrolledInput<T> {
     /** Final value for uncontrolled state when value and defaultValue are not provided */
     finalValue?: T;
     /** Controlled state onChange handler */
-    onChange?: (value: T) => void;
+    onChange?: (value: T, ...payload: any[]) => void;
 }
-declare function useUncontrolled<T>({ value, defaultValue, finalValue, onChange, }: UseUncontrolledInput<T>): [T, (value: T) => void, boolean];
+declare function useUncontrolled<T>({ value, defaultValue, finalValue, onChange, }: UseUncontrolledInput<T>): [T, (value: T, ...payload: any[]) => void, boolean];
 
 declare function useViewportSize(): {
     width: number;
@@ -266,16 +273,12 @@ declare function useIntersection<T extends HTMLElement = any>(options?: Construc
 interface UseHashOptions {
     getInitialValueInEffect?: boolean;
 }
-declare function useHash({ getInitialValueInEffect, }?: UseHashOptions): readonly [string, (value: string) => void];
+declare function useHash({ getInitialValueInEffect }?: UseHashOptions): readonly [string, (value: string) => void];
 
 interface HotkeyItemOptions {
     preventDefault?: boolean;
 }
-type HotkeyItem$1 = [
-    string,
-    (event: React.KeyboardEvent<HTMLElement> | KeyboardEvent) => void,
-    HotkeyItemOptions?
-];
+type HotkeyItem$1 = [string, (event: any) => void, HotkeyItemOptions?];
 declare function getHotkeyHandler(hotkeys: HotkeyItem$1[]): (event: React.KeyboardEvent<HTMLElement> | KeyboardEvent) => void;
 
 type HotkeyItem = [string, (event: KeyboardEvent) => void, HotkeyItemOptions?];
@@ -308,7 +311,7 @@ declare function useOs(options?: UseOsOptions): OS;
 
 declare function useSetState<T extends Record<string, any>>(initialState: T): readonly [T, (statePartial: Partial<T> | ((currentState: T) => Partial<T>)) => void];
 
-declare function useInputState<T>(initialState: T): [T, (value: null | undefined | T | react__default.ChangeEvent<any>) => void];
+declare function useInputState<T>(initialState: T): [T, (value: null | undefined | T | React.ChangeEvent<any>) => void];
 
 declare function useEventListener<K extends keyof HTMLElementEventMap, T extends HTMLElement = any>(type: K, listener: (this: HTMLDivElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): react.MutableRefObject<T | undefined>;
 
@@ -365,7 +368,7 @@ interface UseHeadroomInput {
     /** Called when element is unpinned */
     onRelease?: () => void;
 }
-declare function useHeadroom({ fixedAt, onPin, onFix, onRelease, }?: UseHeadroomInput): boolean;
+declare function useHeadroom({ fixedAt, onPin, onFix, onRelease }?: UseHeadroomInput): boolean;
 
 interface EyeDropperOpenOptions {
     signal?: AbortSignal;
@@ -378,4 +381,52 @@ declare function useEyeDropper(): {
     open: (options?: EyeDropperOpenOptions) => Promise<EyeDropperOpenReturnType | undefined>;
 };
 
-export { type EyeDropperOpenReturnType, type HotkeyItem, type OS, type UseListStateHandlers, type UseMediaQueryOptions, type UseMovePosition, assignRef, clamp, clampUseMovePosition, getHotkeyHandler, lowerFirst, mergeRefs, randomId, range, shallowEqual, upperFirst, useCallbackRef, useClickOutside, useClipboard, useColorScheme, useCounter, useDebounceCallback, useDebouncedState, useDebouncedValue, useDidUpdate, useDisclosure, useDocumentTitle, useDocumentVisibility, useElementSize, useEventListener, useEyeDropper, useFavicon, useFocusReturn, useFocusTrap, useFocusWithin, useForceUpdate, useFullscreen, useHash, useHeadroom, useHotkeys, useHover, useId, useIdle, useInputState, useIntersection, useInterval, useIsomorphicEffect, useListState, useLocalStorage, useLogger, useMediaQuery, useMergedRef, useMouse, useMove, useNetwork, useOs, usePageLeave, usePagination, usePrevious, useQueue, useReducedMotion, useResizeObserver, useScrollIntoView, useSessionStorage, useSetState, useShallowEffect, useTextSelection, useTimeout, useToggle, useUncontrolled, useValidatedState, useViewportSize, useWindowEvent, useWindowScroll };
+declare function useInViewport<T extends HTMLElement = any>(): {
+    ref: react.RefObject<T>;
+    inViewport: boolean;
+};
+
+declare function useMutationObserver<Element extends HTMLElement>(callback: MutationCallback, options: MutationObserverInit, target?: HTMLElement | (() => HTMLElement) | null): RefObject<Element>;
+
+declare function useMounted(): boolean;
+
+interface UseStateHistoryHandlers<T> {
+    set: (value: T) => void;
+    back: (steps?: number) => void;
+    forward: (steps?: number) => void;
+}
+interface StateHistory<T> {
+    history: T[];
+    current: number;
+}
+declare function useStateHistory<T>(initialValue: T): [T, UseStateHistoryHandlers<T>, StateHistory<T>];
+
+declare function useMap<T, V>(initialState?: [T, V][]): Map<T, V>;
+
+declare function useSet<T>(values?: T[]): Set<T>;
+
+declare function useThrottledCallback<T extends (...args: any[]) => any>(callback: T, wait: number): (...args: Parameters<T>) => void;
+
+declare function useThrottledState<T = any>(defaultValue: T, wait: number): readonly [T, (value: react.SetStateAction<T>) => void];
+
+declare function useThrottledValue<T>(value: T, wait: number): T;
+
+declare function useIsFirstRender(): boolean;
+
+declare function useOrientation(): {
+    angle: number;
+    type: string;
+};
+
+interface UseFetchOptions extends RequestInit {
+    autoInvoke?: boolean;
+}
+declare function useFetch<T>(url: string, { autoInvoke, ...options }?: UseFetchOptions): {
+    data: T | null;
+    loading: boolean;
+    error: Error | null;
+    refetch: () => Promise<any> | undefined;
+    abort: () => void;
+};
+
+export { type EyeDropperOpenReturnType, type HotkeyItem, type HotkeyItemOptions, type OS, type StateHistory, type UseFetchOptions, type UseListStateHandlers, type UseMediaQueryOptions, type UseMovePosition, type UseStateHistoryHandlers, assignRef, clamp, clampUseMovePosition, getHotkeyHandler, lowerFirst, mergeRefs, randomId, range, readLocalStorageValue, readSessionStorageValue, shallowEqual, upperFirst, useCallbackRef, useClickOutside, useClipboard, useColorScheme, useCounter, useDebouncedCallback, useDebouncedState, useDebouncedValue, useDidUpdate, useDisclosure, useDocumentTitle, useDocumentVisibility, useElementSize, useEventListener, useEyeDropper, useFavicon, useFetch, useFocusReturn, useFocusTrap, useFocusWithin, useForceUpdate, useFullscreen, useHash, useHeadroom, useHotkeys, useHover, useId, useIdle, useInViewport, useInputState, useIntersection, useInterval, useIsFirstRender, useIsomorphicEffect, useListState, useLocalStorage, useLogger, useMap, useMediaQuery, useMergedRef, useMounted, useMouse, useMove, useMutationObserver, useNetwork, useOrientation, useOs, usePageLeave, usePagination, usePrevious, useQueue, useReducedMotion, useResizeObserver, useScrollIntoView, useSessionStorage, useSet, useSetState, useShallowEffect, useStateHistory, useTextSelection, useThrottledCallback, useThrottledState, useThrottledValue, useTimeout, useToggle, useUncontrolled, useValidatedState, useViewportSize, useWindowEvent, useWindowScroll };

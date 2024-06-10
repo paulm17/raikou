@@ -1,10 +1,10 @@
-import React from 'react';
-import { Overlay } from './Overlay';
+import React from "react";
+import { Overlay } from "./Overlay";
 
-export default { title: 'Overlay' };
+export default { title: "Overlay" };
 
 const lorem =
-  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus ratione expedita voluptatibus aperiam cum, consectetur, tenetur consequuntur error qui eum eligendi, ea illum! Sit, sint totam dicta rem deleniti perspiciatis!';
+  "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus ratione expedita voluptatibus aperiam cum, consectetur, tenetur consequuntur error qui eum eligendi, ea illum! Sit, sint totam dicta rem deleniti perspiciatis!";
 const content = Array(20)
   .fill(0)
   .map((_, index) => <p key={index}>{lorem}</p>);

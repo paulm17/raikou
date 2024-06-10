@@ -1,12 +1,31 @@
-import React from 'react';
-import { Calendar } from './Calendar';
+import React from "react";
+import { DatesProvider } from "../DatesProvider";
+import { Calendar } from "./Calendar";
 
-export default { title: 'Calendar' };
+export default { title: "Calendar" };
 
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
       <Calendar />
+    </div>
+  );
+}
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Calendar unstyled />
+    </div>
+  );
+}
+
+export function ConsistentWeeks() {
+  return (
+    <div style={{ padding: 40 }}>
+      <DatesProvider settings={{ consistentWeeks: true }}>
+        <Calendar />
+      </DatesProvider>
     </div>
   );
 }
@@ -59,7 +78,7 @@ export function InitialLevelDecade() {
 }
 
 export function Sizes() {
-  const sizes = (['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
+  const sizes = (["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
     <Calendar size={size} key={size} mt="xl" />
   ));
   return <div style={{ padding: 40 }}>{sizes}</div>;

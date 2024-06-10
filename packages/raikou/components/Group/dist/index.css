@@ -7,7 +7,7 @@
   align-items: var(--group-align, center);
   gap: var(--group-gap, var(--raikou-spacing-md));
 }
-.m-4081bf90[data-grow] > * {
+.m-4081bf90:where([data-grow]) > * {
   flex-grow: 1;
   max-width: var(--group-child-width);
 }

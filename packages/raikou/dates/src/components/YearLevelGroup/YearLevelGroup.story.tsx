@@ -1,7 +1,7 @@
-import React from 'react';
-import { YearLevelGroup } from './YearLevelGroup';
+import React from "react";
+import { YearLevelGroup } from "./YearLevelGroup";
 
-export default { title: 'YearLevelGroup' };
+export default { title: "YearLevelGroup" };
 
 export function Usage() {
   return (
@@ -10,16 +10,26 @@ export function Usage() {
       <YearLevelGroup year={new Date(2022, 3, 11)} mb={50} mt="xs" />
 
       <div>2 columns</div>
-      <YearLevelGroup numberOfColumns={2} year={new Date(2022, 3, 11)} mb={50} mt="xs" />
+      <YearLevelGroup
+        numberOfColumns={2}
+        year={new Date(2022, 3, 11)}
+        mb={50}
+        mt="xs"
+      />
 
       <div>3 columns</div>
-      <YearLevelGroup numberOfColumns={3} year={new Date(2022, 3, 11)} mb={50} mt="xs" />
+      <YearLevelGroup
+        numberOfColumns={3}
+        year={new Date(2022, 3, 11)}
+        mb={50}
+        mt="xs"
+      />
     </div>
   );
 }
 
 export function Sizes() {
-  const sizes = (['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
+  const sizes = (["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
     <YearLevelGroup
       numberOfColumns={3}
       size={size}

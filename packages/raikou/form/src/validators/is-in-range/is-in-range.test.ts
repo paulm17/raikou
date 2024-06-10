@@ -1,9 +1,9 @@
-import { isInRange } from "./is-in-range";
+import { isInRange } from './is-in-range';
 
-const TEST_ERROR = "is-in-range-error";
+const TEST_ERROR = 'is-in-range-error';
 
-describe("@raikou/form/isInRange", () => {
-  it("detects valid value", () => {
+describe('@mantine/form/isInRange', () => {
+  it('detects valid value', () => {
     const minValidator = isInRange({ min: 2 }, TEST_ERROR);
     expect(minValidator(2)).toBe(null);
     expect(minValidator(3)).toBe(null);
@@ -16,11 +16,11 @@ describe("@raikou/form/isInRange", () => {
     expect(clampValidator(4)).toBe(null);
   });
 
-  it("detects invalid value", () => {
+  it('detects invalid value', () => {
     const minValidator = isInRange({ min: 2 }, TEST_ERROR);
     expect(minValidator(0)).toBe(TEST_ERROR);
     expect(minValidator(1)).toBe(TEST_ERROR);
-    expect(minValidator("2")).toBe(TEST_ERROR);
+    expect(minValidator('2')).toBe(TEST_ERROR);
     expect(minValidator(null)).toBe(TEST_ERROR);
     expect(minValidator([])).toBe(TEST_ERROR);
 

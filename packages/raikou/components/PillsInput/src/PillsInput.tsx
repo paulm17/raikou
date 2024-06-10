@@ -1,13 +1,26 @@
 import React, { useRef } from "react";
-import { factory, ElementProps, useProps, Factory } from "@raikou/core";
-import { __InputStylesNames } from "../../Input/src";
-import { InputBase, InputBaseProps } from "../../InputBase/src";
+import {
+  BoxProps,
+  ElementProps,
+  factory,
+  Factory,
+  StylesApiProps,
+  useProps,
+} from "@raikou/core";
+import { __BaseInputProps, __InputStylesNames } from "../../Input/src";
+import { InputBase } from "../../InputBase/src";
 import { PillsInputProvider } from "./PillsInput.context";
 import { PillsInputField } from "./PillsInputField/PillsInputField";
 
 export interface PillsInputProps
-  extends InputBaseProps,
-    ElementProps<"div", "size"> {}
+  extends BoxProps,
+    __BaseInputProps,
+    StylesApiProps<PillsInputFactory>,
+    ElementProps<"div", "size"> {
+  __stylesApiProps?: Record<string, any>;
+  __staticSelector?: string;
+  multiline?: boolean;
+}
 
 export type PillsInputFactory = Factory<{
   props: PillsInputProps;

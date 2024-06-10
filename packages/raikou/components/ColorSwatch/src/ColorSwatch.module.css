@@ -1,11 +1,11 @@
 .root {
-  @mixin light {
+  @mixin where-light {
     --raikou-colorswatch-alpha-overlay-color: #dee2e6;
-    --raikou-colorswatch-alpha-overlay-bg: #fff;
+    --raikou-colorswatch-alpha-overlay-background-color: #fff;
   }
-  @mixin dark {
+  @mixin where-dark {
     --raikou-colorswatch-alpha-overlay-color: #373a40;
-    --raikou-colorswatch-alpha-overlay-bg: #1a1b1e;
+    --raikou-colorswatch-alpha-overlay-background-color: #1a1b1e;
   }
 
   --cs-size: rem(28px);
@@ -25,14 +25,18 @@
   color: inherit;
   text-decoration: none;
 
-  @mixin light {
-    --_alpha-overlay-color: var(--raikou-colorswatch-alpha-overlay-color);
-    --_alpha-overlay-bg: var(--raikou-colorswatch-alpha-overlay-bg);
+  @mixin where-light {
+    --alpha-overlay-color: var(--raikou-colorswatch-alpha-overlay-color);
+    --alpha-overlay-bg: var(
+      --raikou-colorswatch-alpha-overlay-background-color
+    );
   }
 
-  @mixin dark {
-    --_alpha-overlay-color: var(--raikou-colorswatch-alpha-overlay-color);
-    --_alpha-overlay-bg: var(--raikou-colorswatch-alpha-overlay-bg);
+  @mixin where-dark {
+    --alpha-overlay-color: var(--raikou-colorswatch-alpha-overlay-color);
+    --alpha-overlay-bg: var(
+      --raikou-colorswatch-alpha-overlay-background-color
+    );
   }
 }
 
@@ -56,23 +60,23 @@
   position: absolute;
   inset: 0;
   border-radius: var(--cs-radius);
-  background-size: rem(8px) rem(8px);
+  background-size: 8px 8px;
   background-position:
     0 0,
-    0 rem(4px),
-    rem(4px) rem(-4px),
-    rem(-4px) 0;
+    0 4px,
+    4px -4px,
+    -4px 0;
   background-image: linear-gradient(
       45deg,
-      var(--_alpha-overlay-color) 25%,
+      var(--alpha-overlay-color) 25%,
       transparent 25%
     ),
-    linear-gradient(-45deg, var(--_alpha-overlay-color) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, var(--_alpha-overlay-color) 75%),
+    linear-gradient(-45deg, var(--alpha-overlay-color) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--alpha-overlay-color) 75%),
     linear-gradient(
       -45deg,
-      var(--_alpha-overlay-bg) 75%,
-      var(--_alpha-overlay-color) 75%
+      var(--alpha-overlay-bg) 75%,
+      var(--alpha-overlay-color) 75%
     );
 }
 

@@ -33,6 +33,7 @@ __reExport(src_exports, require("@raikou/copy-button"), module.exports);
 __reExport(src_exports, require("@raikou/dialog"), module.exports);
 __reExport(src_exports, require("@raikou/drawer"), module.exports);
 __reExport(src_exports, require("@raikou/floating"), module.exports);
+__reExport(src_exports, require("@raikou/floating-indicator"), module.exports);
 __reExport(src_exports, require("@raikou/filebutton"), module.exports);
 __reExport(src_exports, require("@raikou/fileinput"), module.exports);
 __reExport(src_exports, require("@raikou/focus-trap"), module.exports);
@@ -78,6 +79,7 @@ __reExport(src_exports, require("@raikou/textarea"), module.exports);
 __reExport(src_exports, require("@raikou/text-input"), module.exports);
 __reExport(src_exports, require("@raikou/tooltip"), module.exports);
 __reExport(src_exports, require("@raikou/transition"), module.exports);
+__reExport(src_exports, require("@raikou/tree"), module.exports);
 __reExport(src_exports, require("@raikou/typography-styles-provider"), module.exports);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
@@ -96,6 +98,7 @@ __reExport(src_exports, require("@raikou/typography-styles-provider"), module.ex
   ...require("@raikou/dialog"),
   ...require("@raikou/drawer"),
   ...require("@raikou/floating"),
+  ...require("@raikou/floating-indicator"),
   ...require("@raikou/filebutton"),
   ...require("@raikou/fileinput"),
   ...require("@raikou/focus-trap"),
@@ -141,5 +144,6 @@ __reExport(src_exports, require("@raikou/typography-styles-provider"), module.ex
   ...require("@raikou/text-input"),
   ...require("@raikou/tooltip"),
   ...require("@raikou/transition"),
+  ...require("@raikou/tree"),
   ...require("@raikou/typography-styles-provider")
 });

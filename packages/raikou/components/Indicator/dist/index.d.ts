@@ -9,7 +9,7 @@ type IndicatorPosition = `${Position}-${Placement}`;
 type IndicatorPositionVariables = "--indicator-top" | "--indicator-bottom" | "--indicator-left" | "--indicator-right" | "--indicator-translate-x" | "--indicator-translate-y";
 type IndicatorStylesNames = "root" | "indicator";
 type IndicatorCssVariables = {
-    root: "--indicator-color" | "--indicator-size" | "--indicator-radius" | "--indicator-z-index" | IndicatorPositionVariables;
+    root: "--indicator-color" | "--indicator-text-color" | "--indicator-size" | "--indicator-radius" | "--indicator-z-index" | IndicatorPositionVariables;
 };
 interface IndicatorProps extends BoxProps, StylesApiProps<IndicatorFactory>, ElementProps<"div"> {
     /** Indicator position relative to the target element, `'top-end'` by default */
@@ -34,6 +34,8 @@ interface IndicatorProps extends BoxProps, StylesApiProps<IndicatorFactory>, Ele
     processing?: boolean;
     /** Indicator z-index, `200` by default */
     zIndex?: React.CSSProperties["zIndex"];
+    /** Determines whether text color should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+    autoContrast?: boolean;
 }
 type IndicatorFactory = Factory<{
     props: IndicatorProps;

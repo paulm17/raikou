@@ -44,6 +44,7 @@ export const RichTextEditorToolbar = factory<RichTextEditorToolbarFactory>(
       vars,
       sticky,
       stickyOffset,
+      mod,
       ...others
     } = props;
     const ctx = useRichTextEditorContext();
@@ -51,7 +52,7 @@ export const RichTextEditorToolbar = factory<RichTextEditorToolbarFactory>(
     return (
       <Box
         ref={ref}
-        mod={{ sticky }}
+        mod={[{ sticky }, mod]}
         {...ctx.getStyles("toolbar", { className, style, styles, classNames })}
         {...others}
         __vars={{ "--rte-sticky-offset": rem(stickyOffset) }}

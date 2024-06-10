@@ -1,28 +1,25 @@
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Paper/src/Paper.module.css/#css-module-data */
-[data-raikou-color-scheme=light] .m-1b7284a3.m-1b7284a3 {
-  --raikou-paper-border-color: #dee2e6;
+:where([data-raikou-color-scheme=light]) .m-1b7284a3 {
+  --raikou-paper-border-color: #dee2e6 ;
 }
-[data-raikou-color-scheme=dark] .m-1b7284a3.m-1b7284a3 {
-  --raikou-paper-border-color: #373a40;
+:where([data-raikou-color-scheme=dark]) .m-1b7284a3 {
+  --raikou-paper-border-color: #373a40 ;
 }
-.m-1b7284a3.m-1b7284a3 {
+.m-1b7284a3 {
+  --paper-radius: var(--raikou-radius-default);
   outline: 0;
   -webkit-tap-highlight-color: transparent;
   display: block;
   touch-action: manipulation;
   text-decoration: none;
-  border-radius: var(--paper-radius, var(--raikou-radius-default));
-  box-shadow: var(--paper-shadow, none);
+  border-radius: var(--paper-radius);
+  box-shadow: var(--paper-shadow);
   background-color: var(--raikou-color-body);
-  border: var(--_paper-border, none);
 }
-[data-raikou-color-scheme=light] .m-1b7284a3.m-1b7284a3[data-with-border] {
-  --_paper-border: calc(0.0625rem * var(--raikou-scale)) solid var(--raikou-paper-border-color);
+:where([data-raikou-color-scheme=light]) .m-1b7284a3:where([data-with-border]) {
+  border: calc(0.0625rem * var(--raikou-scale)) solid var(--raikou-paper-border-color);
 }
-[data-raikou-color-scheme=dark] .m-1b7284a3.m-1b7284a3[data-with-border] {
-  --_paper-border: calc(0.0625rem * var(--raikou-scale)) solid var(--raikou-paper-border-color);
-}
-.m-1b7284a3.m-1b7284a3:not([data-with-border]) {
-  --_paper-border: none !important;
+:where([data-raikou-color-scheme=dark]) .m-1b7284a3:where([data-with-border]) {
+  border: calc(0.0625rem * var(--raikou-scale)) solid var(--raikou-paper-border-color);
 }
 /*# sourceMappingURL=index.css.map */

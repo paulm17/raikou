@@ -1,18 +1,21 @@
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, CompoundStylesApiProps, Factory, RaikouSize, RaikouShadow, StylesApiProps, ElementProps, RaikouThemeComponent } from '@raikou/core';
+import { BoxProps, StylesApiProps, ElementProps, Factory, CompoundStylesApiProps, RaikouSize, RaikouShadow, RaikouThemeComponent } from '@raikou/core';
+import { HsvaColor } from 'colord';
 import React from 'react';
 
-type GradientPickerPickerStylesNames = "pickerInput" | "dropdown";
-interface GradientPickerPickerProps extends BoxProps, CompoundStylesApiProps<GradientPickerPickerFactory> {
-    disabled?: boolean;
-    swatchSize?: number;
-    control: "input" | "dropdown";
+type GradientPickerColorSwatchesStylesNames = "root" | "swatch" | "swatches";
+interface GradientPickerColorSwatchesProps extends BoxProps, StylesApiProps<GradientPickerColorSwatchesFactory>, ElementProps<"div"> {
+    data: string[];
+    swatchesPerRow?: number;
+    focusable?: boolean;
+    onChangeEnd?: (color: HsvaColor) => void;
+    setValue(value: HsvaColor): void;
 }
-type GradientPickerPickerFactory = Factory<{
-    props: GradientPickerPickerProps;
+type GradientPickerColorSwatchesFactory = Factory<{
+    props: GradientPickerColorSwatchesProps;
     ref: HTMLDivElement;
-    stylesNames: GradientPickerPickerStylesNames;
-    compound: true;
+    defaultComponent: "div";
+    stylesNames: GradientPickerColorSwatchesStylesNames;
 }>;
 
 interface RaikouTransitionStyles {
@@ -49,13 +52,13 @@ interface TransitionProps {
     onEntered?: () => void;
 }
 
-type FloatingPlacement = 'end' | 'start';
-type FloatingSide = 'top' | 'right' | 'bottom' | 'left';
+type FloatingPlacement = "end" | "start";
+type FloatingSide = "top" | "right" | "bottom" | "left";
 type FloatingPosition = FloatingSide | `${FloatingSide}-${FloatingPlacement}`;
 
 type ColorFormat = "hex" | "rgba" | "hsva" | "hsla" | "cmyk";
 
-type GradientPickerCompactStylesNames = "content";
+type GradientPickerCompactStylesNames = "content" | "dropdown";
 interface GradientPickerCompactProps extends BoxProps, CompoundStylesApiProps<GradientPickerCompactFactory> {
     picker: "input" | "dropdown";
     swatchSize: number;
@@ -135,14 +138,14 @@ declare namespace GradientPicker {
     var Compact: _raikou_core.RaikouComponent<{
         props: GradientPickerCompactProps;
         ref: HTMLDivElement;
-        stylesNames: "content";
+        stylesNames: GradientPickerCompactStylesNames;
         compound: true;
     }>;
-    var Picker: _raikou_core.RaikouComponent<{
-        props: GradientPickerPickerProps;
+    var Swatches: _raikou_core.RaikouComponent<{
+        props: GradientPickerColorSwatchesProps;
         ref: HTMLDivElement;
-        stylesNames: GradientPickerPickerStylesNames;
-        compound: true;
+        defaultComponent: "div";
+        stylesNames: GradientPickerColorSwatchesStylesNames;
     }>;
 }
 

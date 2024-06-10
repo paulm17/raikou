@@ -2,9 +2,9 @@ function splitTags(splitChars: string[] | undefined, value: string) {
   if (!splitChars) return [value];
 
   return value
-    .split(new RegExp(`[${splitChars.join('')}]`))
+    .split(new RegExp(`[${splitChars.join("")}]`))
     .map((tag) => tag.trim())
-    .filter((tag) => tag !== '');
+    .filter((tag) => tag !== "");
 }
 
 interface GetSplittedTagsInput {

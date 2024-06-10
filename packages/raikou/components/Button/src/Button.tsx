@@ -91,6 +91,9 @@ export interface ButtonProps extends BoxProps, StylesApiProps<ButtonFactory> {
 
   /** Loader position relative to button label */
   loaderPosition?: "left" | "right" | "center";
+
+  /** Determines whether button text color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+  autoContrast?: boolean;
 }
 
 export type ButtonFactory = PolymorphicFactory<{
@@ -110,12 +113,16 @@ const defaultProps: Partial<ButtonProps> = {
 };
 
 const varsResolver = createVarsResolver<ButtonFactory>(
-  (theme, { radius, color, gradient, variant, size, justify }) => {
+  (
+    theme,
+    { radius, color, gradient, variant, size, justify, autoContrast },
+  ) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       gradient,
       variant: variant || "filled",
+      autoContrast,
     });
 
     return {
@@ -131,6 +138,8 @@ const varsResolver = createVarsResolver<ButtonFactory>(
         "--button-hover": color || variant ? colors.hover : undefined,
         "--button-color": color || variant ? colors.color : undefined,
         "--button-bd": color || variant ? colors.border : undefined,
+        "--button-hover-color":
+          color || variant ? colors.hoverColor : undefined,
       },
     };
   },
@@ -158,6 +167,8 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, ref) => {
     styles,
     unstyled,
     "data-disabled": dataDisabled,
+    autoContrast,
+    mod,
     ...others
   } = props;
 
@@ -193,6 +204,7 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, ref) => {
           "with-left-section": hasLeftSection,
           "with-right-section": hasRightSection,
         },
+        mod,
       ]}
       {...others}
     >

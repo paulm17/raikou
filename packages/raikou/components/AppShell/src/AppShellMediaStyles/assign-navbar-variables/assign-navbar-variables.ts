@@ -1,13 +1,12 @@
-/* eslint-disable no-param-reassign */
-import { RaikouTheme, keys, rem, getBreakpointValue } from "@raikou/core";
+import { getBreakpointValue, keys, RaikouTheme, rem } from "@raikou/core";
+import type { AppShellProps } from "../../AppShell";
+import { getBaseSize } from "../get-base-size/get-base-size";
 import type {
   CSSVariables,
   MediaQueryVariables,
 } from "../get-variables/get-variables";
-import type { AppShellProps } from "../../AppShell";
-import { isResponsiveSize } from "../is-responsive-size/is-responsive-size";
 import { isPrimitiveSize } from "../is-primitive-size/is-primitive-size";
-import { getBaseSize } from "../get-base-size/get-base-size";
+import { isResponsiveSize } from "../is-responsive-size/is-responsive-size";
 
 interface AssignNavbarVariablesInput {
   baseStyles: CSSVariables;

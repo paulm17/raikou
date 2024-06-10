@@ -3581,6 +3581,8 @@ type BadgeCssVariables = {
 interface BadgeProps extends BoxProps, StylesApiProps<BadgeFactory> {
     /** Controls `font-size`, `height` and horizontal `padding`, `'md'` by default */
     size?: RaikouSize | (string & {});
+    /** If set, badge `min-width` becomes equal to its `height` and horizontal padding is removed */
+    circle?: boolean;
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `'xl'` by default */
     radius?: RaikouRadius;
     /** Key of `theme.colors` or any valid CSS color, `theme.primaryColor` by default */
@@ -3595,6 +3597,8 @@ interface BadgeProps extends BoxProps, StylesApiProps<BadgeFactory> {
     fullWidth?: boolean;
     /** Main badge content */
     children?: React$1.ReactNode;
+    /** Determines whether text color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+    autoContrast?: boolean;
 }
 type BadgeFactory = PolymorphicFactory<{
     props: BadgeProps;

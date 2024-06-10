@@ -1,3 +1,8 @@
+# build core, system, hooks
+pnpm --filter="@raikou/core" run build
+pnpm --filter="@raikou/system" run build
+pnpm --filter="@raikou/hooks" run build
+
 # build server
 pnpm --filter="@raikou/action-icon" run build
 pnpm --filter="@raikou/alert" run build
@@ -104,6 +109,7 @@ pnpm --filter="@raikou/textarea" run build
 pnpm --filter="@raikou/text-input" run build
 pnpm --filter="@raikou/tooltip" run build
 pnpm --filter="@raikou/transition" run build
+pnpm --filter="@raikou/tree" run build
 pnpm --filter="@raikou/typography-styles-provider" run build
 pnpm --filter="@raikou/client" run build
 
@@ -123,13 +129,6 @@ pnpm --filter="@raikou/nprogress" run build
 pnpm --filter="@raikou/spotlight" run build
 pnpm --filter="@raikou/theme" run build
 pnpm --filter="@raikou/tiptap" run build
-
-# build core && system
-pnpm --filter="@raikou/core" run build
-pnpm --filter="@raikou/system" run build
-
-# build webpack
-pnpm --filter="@raikou/webpack" run build
 
 # build postcss
 pnpm --filter="postcss-preset-raikou" run build

@@ -1,16 +1,34 @@
 import React, { useState } from "react";
+import dayjs from "dayjs";
 import { Button } from "../../../../components/Button/src";
 import { Group } from "../../../../components/Group/src";
-import dayjs from "dayjs";
-import { DatePickerInput } from "./DatePickerInput";
 import { DatesProvider } from "../DatesProvider";
+import { DatePickerInput } from "./DatePickerInput";
 
 export default { title: "DatePickerInput" };
 
 export function Usage() {
   return (
     <div style={{ padding: 40, maxWidth: 400 }}>
-      <DatePickerInput label="Date picker input" />
+      <DatePickerInput
+        placeholder="Date picker input"
+        // eslint-disable-next-line no-console
+        popoverProps={{ onClose: () => console.log("close") }}
+      />
+    </div>
+  );
+}
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40, maxWidth: 400 }}>
+      <DatePickerInput
+        label="Date picker input"
+        placeholder="Pick date"
+        numberOfColumns={3}
+        allowDeselect
+        unstyled
+      />
     </div>
   );
 }

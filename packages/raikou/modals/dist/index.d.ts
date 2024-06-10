@@ -3643,6 +3643,8 @@ interface __CloseButtonProps {
     iconSize?: number | string;
     /** Content rendered inside the button, for example `VisuallyHidden` with label for screen readers */
     children?: React$2.ReactNode;
+    /** Replaces default close icon. If set, `iconSize` prop is ignored. */
+    icon?: React$2.ReactNode;
 }
 interface CloseButtonProps extends __CloseButtonProps, BoxProps, StylesApiProps<CloseButtonFactory> {
 }
@@ -3759,6 +3761,8 @@ interface LoaderProps extends BoxProps, StylesApiProps<LoaderFactory>, Omit<Reac
     type?: RaikouLoader;
     /** Object of loaders components, can be customized via default props or inline. Default value contains `bars`, `oval` and `dots` */
     loaders?: RaikouLoadersRecord;
+    /** Overrides default loader with given content */
+    children?: React$2.ReactNode;
 }
 type LoaderFactory = Factory<{
     props: LoaderProps;
@@ -3832,6 +3836,8 @@ interface ButtonProps extends BoxProps, StylesApiProps<ButtonFactory> {
     loaderProps?: LoaderProps;
     /** Loader position relative to button label */
     loaderPosition?: "left" | "right" | "center";
+    /** Determines whether button text color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+    autoContrast?: boolean;
 }
 type ButtonFactory = PolymorphicFactory<{
     props: ButtonProps;
@@ -3964,13 +3970,11 @@ declare const closeAllModals: (payload_0?: undefined) => void;
 declare const openConfirmModal: (payload_0: OpenConfirmModal) => void;
 declare const openContextModal: ModalsEvents["openContextModal"];
 declare const modals: {
-    open: (payload_0: ModalSettings) => void;
-    close: (payload_0: string) => void;
-    closeAll: (payload_0?: undefined) => void;
-    openConfirmModal: (payload_0: OpenConfirmModal) => void;
-    openContextModal: <TKey extends string>(payload: OpenContextModal<any> & {
-        modal: TKey;
-    }) => void;
+    open: ModalsEvents["openModal"];
+    close: ModalsEvents["closeModal"];
+    closeAll: ModalsEvents["closeAllModals"];
+    openConfirmModal: ModalsEvents["openConfirmModal"];
+    openContextModal: ModalsEvents["openContextModal"];
 };
 
 export { type ContextModalProps, ModalsProvider, type ModalsProviderProps, type RaikouModal, type RaikouModals, type RaikouModalsOverride, closeAllModals, closeModal, modals, openConfirmModal, openContextModal, openModal, useModals };

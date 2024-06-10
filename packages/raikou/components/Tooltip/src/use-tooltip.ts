@@ -1,24 +1,25 @@
 import { useState, useCallback } from "react";
 import {
-  useFloating,
-  flip,
   arrow,
+  flip,
+  inline,
   offset,
   shift,
-  useInteractions,
-  useHover,
-  useFocus,
-  useRole,
-  useDismiss,
-  useDelayGroupContext,
   useDelayGroup,
-  inline,
+  useDelayGroupContext,
+  useDismiss,
+  useFloating,
+  useFocus,
+  useHover,
+  useInteractions,
+  useRole,
 } from "@floating-ui/react";
 import { useId, useDidUpdate } from "@raikou/hooks";
 import { useTooltipGroupContext } from "./TooltipGroup/TooltipGroup.context";
 import {
   FloatingAxesOffsets,
   FloatingPosition,
+  FloatingStrategy,
   useFloatingAutoUpdate,
 } from "../../Floating/src";
 
@@ -34,6 +35,7 @@ interface UseTooltip {
   events?: { hover: boolean; focus: boolean; touch: boolean };
   positionDependencies: any[];
   inline?: boolean;
+  strategy?: FloatingStrategy;
 }
 
 export function useTooltip(settings: UseTooltip) {
@@ -59,14 +61,13 @@ export function useTooltip(settings: UseTooltip) {
   const {
     x,
     y,
-    reference,
-    floating,
     context,
     refs,
     update,
     placement,
     middlewareData: { arrow: { x: arrowX, y: arrowY } = {} },
   } = useFloating({
+    strategy: settings.strategy,
     placement: settings.position,
     open: opened,
     onOpenChange: onChange,
@@ -87,10 +88,10 @@ export function useTooltip(settings: UseTooltip) {
         : { open: settings.openDelay, close: settings.closeDelay },
       mouseOnly: !settings.events?.touch,
     }),
-    useFocus(context, { enabled: settings.events?.focus, keyboardOnly: true }),
+    useFocus(context, { enabled: settings.events?.focus, visibleOnly: true }),
     useRole(context, { role: "tooltip" }),
     // cannot be used with controlled tooltip, page jumps
-    useDismiss(context, { enabled: typeof settings.opened === undefined }),
+    useDismiss(context, { enabled: typeof settings.opened === "undefined" }),
     useDelayGroup(context, { id: uid }),
   ]);
 
@@ -112,8 +113,8 @@ export function useTooltip(settings: UseTooltip) {
     y,
     arrowX,
     arrowY,
-    reference,
-    floating,
+    reference: refs.setReference,
+    floating: refs.setFloating,
     getFloatingProps,
     getReferenceProps,
     isGroupPhase,

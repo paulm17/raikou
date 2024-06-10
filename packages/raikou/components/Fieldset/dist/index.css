@@ -1,15 +1,15 @@
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Fieldset/src/Fieldset.module.css/#css-module-data */
-[data-raikou-color-scheme=light] .m-e9408a47 {
-  --raikou-fieldset-default-bd: #dee2e6;
-  --raikou-fieldset-default-bg: #fff;
-  --raikou-fieldset-filled-bd: #dee2e6;
-  --raikou-fieldset-filled-bg: #f8f9fa;
+:where([data-raikou-color-scheme=light]) .m-e9408a47 {
+  --raikou-fieldset-default-border-color: #dee2e6;
+  --raikou-fieldset-default-background-color: #fff;
+  --raikou-fieldset-filled-border-color: #dee2e6;
+  --raikou-fieldset-filled-background-color: #f8f9fa;
 }
-[data-raikou-color-scheme=dark] .m-e9408a47 {
-  --raikou-fieldset-default-bd: #373a40;
-  --raikou-fieldset-default-bg: #1a1b1e;
-  --raikou-fieldset-filled-bd: #373a40;
-  --raikou-fieldset-filled-bg: #25262b;
+:where([data-raikou-color-scheme=dark]) .m-e9408a47 {
+  --raikou-fieldset-default-background-color: #373a40;
+  --raikou-fieldset-default-border-color: #1a1b1e;
+  --raikou-fieldset-filled-border-color: #373a40;
+  --raikou-fieldset-filled-background-color: #25262b;
 }
 .m-e9408a47 {
   padding: var(--raikou-spacing-lg);
@@ -18,28 +18,26 @@
   min-inline-size: auto;
 }
 .m-84c9523a {
-  background-color: var(--_bg);
-  border: calc(0.0625rem * var(--raikou-scale)) solid var(--_bd);
+  border: 1px solid;
 }
-[data-raikou-color-scheme=light] .m-84c9523a {
-  --_bd: var(--raikou-fieldset-default-bd);
-  --_bg: var(--raikou-fieldset-default-bg);
+:where([data-raikou-color-scheme=light]) .m-84c9523a {
+  border-color: var(--raikou-fieldset-default-border-color);
+  background-color: var(--raikou-fieldset-default-background-color);
 }
-[data-raikou-color-scheme=dark] .m-84c9523a {
-  --_bd: var(--raikou-fieldset-default-bd);
-  --_bg: var(--raikou-fieldset-default-bg);
+:where([data-raikou-color-scheme=dark]) .m-84c9523a {
+  border-color: var(--raikou-fieldset-default-border-color);
+  background-color: var(--raikou-fieldset-default-background-color);
 }
 .m-ef274e49 {
-  background-color: var(--_bg);
-  border: calc(0.0625rem * var(--raikou-scale)) solid var(--_bd);
+  border: 1px solid;
 }
-[data-raikou-color-scheme=light] .m-ef274e49 {
-  --_bd: var(--raikou-fieldset-filled-bd);
-  --_bg: var(--raikou-fieldset-filled-bg);
+:where([data-raikou-color-scheme=light]) .m-ef274e49 {
+  border-color: var(--raikou-fieldset-filled-border-color);
+  background-color: var(--raikou-fieldset-filled-background-color);
 }
-[data-raikou-color-scheme=dark] .m-ef274e49 {
-  --_bd: var(--raikou-fieldset-filled-bd);
-  --_bg: var(--raikou-fieldset-filled-bg);
+:where([data-raikou-color-scheme=dark]) .m-ef274e49 {
+  border-color: var(--raikou-fieldset-filled-border-color);
+  background-color: var(--raikou-fieldset-filled-background-color);
 }
 .m-eda993d3 {
   padding: 0;
@@ -49,7 +47,7 @@
 .m-90794832 {
   font-size: var(--raikou-font-size-sm);
 }
-.m-eda993d3 .m-90794832 {
+.m-74ca27fe {
   padding: 0;
   margin-bottom: var(--raikou-spacing-sm);
 }

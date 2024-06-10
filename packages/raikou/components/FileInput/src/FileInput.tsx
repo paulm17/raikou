@@ -170,7 +170,7 @@ const _FileInput = factory<FileInputFactory>((_props, ref) => {
   );
 });
 
-_FileInput.displayName = "@mantine/core/FileInput";
+_FileInput.displayName = "@raikou/core/FileInput";
 
 type FileInputComponent = <Multiple extends boolean = false>(
   props: FileInputProps<Multiple> & {

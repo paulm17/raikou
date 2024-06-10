@@ -61,6 +61,7 @@ export const AccordionControl = factory<AccordionControlFactory>(
       onKeyDown,
       children,
       disabled,
+      mod,
       ...others
     } = useProps("AccordionControl", defaultProps, props);
 
@@ -87,9 +88,10 @@ export const AccordionControl = factory<AccordionControlFactory>(
             "chevron-position": ctx.chevronPosition,
             disabled,
           },
+          mod,
         ]}
         ref={ref}
-        onClick={(event) => {
+        onClick={(event: any) => {
           onClick?.(event);
           ctx.onChange(value);
         }}

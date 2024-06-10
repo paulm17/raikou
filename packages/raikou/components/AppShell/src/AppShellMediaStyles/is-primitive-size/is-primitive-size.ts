@@ -1,6 +1,6 @@
 import type {
-  AppShellSize,
   AppShellResponsiveSize,
+  AppShellSize,
 } from "../../AppShell.types";
 
 export function isPrimitiveSize(

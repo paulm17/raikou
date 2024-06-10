@@ -28,6 +28,9 @@ export interface BoxProps extends RaikouStyleProps {
   /** CSS variables defined on root component element */
   __vars?: CssVarsProp;
 
+  /** `size` property passed down the HTML element */
+  __size?: string;
+
   /** Breakpoint above which the component is hidden with `display: none` */
   hiddenFrom?: RaikouBreakpoint;
 
@@ -39,6 +42,9 @@ export interface BoxProps extends RaikouStyleProps {
 
   /** Determines whether component should be hidden in dark color scheme with `display: none` */
   darkHidden?: boolean;
+
+  /** Element modifiers transformed into `data-` attributes, for example, `{ 'data-size': 'xl' }`, falsy values are removed */
+  mod?: BoxMod;
 }
 
 export type ElementProps<
@@ -75,6 +81,7 @@ const _Box = forwardRef<
       lightHidden,
       darkHidden,
       renderRoot,
+      __size,
       ...others
     },
     ref,
@@ -106,6 +113,7 @@ const _Box = forwardRef<
       }),
       "data-variant": variant,
       "data-size": isNumberLike(size) ? undefined : size || undefined,
+      size: __size,
       ...getBoxMod(mod),
       ...rest,
     };

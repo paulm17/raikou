@@ -9,31 +9,28 @@
 }
 
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Paper/src/Paper.module.css/#css-module-data */
-[data-raikou-color-scheme=light] .m-1b7284a3.m-1b7284a3 {
-  --raikou-paper-border-color: #dee2e6;
+:where([data-raikou-color-scheme=light]) .m-1b7284a3 {
+  --raikou-paper-border-color: #dee2e6 ;
 }
-[data-raikou-color-scheme=dark] .m-1b7284a3.m-1b7284a3 {
-  --raikou-paper-border-color: #373a40;
+:where([data-raikou-color-scheme=dark]) .m-1b7284a3 {
+  --raikou-paper-border-color: #373a40 ;
 }
-.m-1b7284a3.m-1b7284a3 {
+.m-1b7284a3 {
+  --paper-radius: var(--raikou-radius-default);
   outline: 0;
   -webkit-tap-highlight-color: transparent;
   display: block;
   touch-action: manipulation;
   text-decoration: none;
-  border-radius: var(--paper-radius, var(--raikou-radius-default));
-  box-shadow: var(--paper-shadow, none);
+  border-radius: var(--paper-radius);
+  box-shadow: var(--paper-shadow);
   background-color: var(--raikou-color-body);
-  border: var(--_paper-border, none);
 }
-[data-raikou-color-scheme=light] .m-1b7284a3.m-1b7284a3[data-with-border] {
-  --_paper-border: calc(0.0625rem * var(--raikou-scale)) solid var(--raikou-paper-border-color);
+:where([data-raikou-color-scheme=light]) .m-1b7284a3:where([data-with-border]) {
+  border: calc(0.0625rem * var(--raikou-scale)) solid var(--raikou-paper-border-color);
 }
-[data-raikou-color-scheme=dark] .m-1b7284a3.m-1b7284a3[data-with-border] {
-  --_paper-border: calc(0.0625rem * var(--raikou-scale)) solid var(--raikou-paper-border-color);
-}
-.m-1b7284a3.m-1b7284a3:not([data-with-border]) {
-  --_paper-border: none !important;
+:where([data-raikou-color-scheme=dark]) .m-1b7284a3:where([data-with-border]) {
+  border: calc(0.0625rem * var(--raikou-scale)) solid var(--raikou-paper-border-color);
 }
 
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/UnstyledButton/src/UnstyledButton.module.css/#css-module-data */
@@ -50,22 +47,26 @@
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
+:where([dir=rtl]) .m-87cf2631 {
+  text-align: right;
+}
 
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/CloseButton/src/CloseButton.module.css/#css-module-data */
-[data-raikou-color-scheme=light] .m-86a44da5 {
-  --raikou-closebutton-color: #495057 ;
+:where([data-raikou-color-scheme=light]) .m-86a44da5 {
+  --raikou-closebutton-color: #495057;
 }
-[data-raikou-color-scheme=dark] .m-86a44da5 {
-  --raikou-closebutton-color: #a6a7ab ;
+:where([data-raikou-color-scheme=dark]) .m-86a44da5 {
+  --raikou-closebutton-color: #a6a7ab;
 }
 .m-86a44da5 {
-  --cb-size-xs: calc(1.125rem * var(--raikou-scale));
-  --cb-size-sm: calc(1.375rem * var(--raikou-scale));
-  --cb-size-md: calc(1.75rem * var(--raikou-scale));
-  --cb-size-lg: calc(2.125rem * var(--raikou-scale));
-  --cb-size-xl: calc(2.75rem * var(--raikou-scale));
+  --cb-size-xs: 18px;
+  --cb-size-sm: 22px;
+  --cb-size-md: 28px;
+  --cb-size-lg: 34px;
+  --cb-size-xl: 44px;
   --cb-size: var(--cb-size-md);
   --cb-icon-size: 70%;
+  --cb-radius: var(--raikou-radius-default);
   line-height: 1;
   display: inline-flex;
   align-items: center;
@@ -76,62 +77,52 @@
   height: var(--cb-size);
   min-width: var(--cb-size);
   min-height: var(--cb-size);
-  border-radius: var(--cb-radius, var(--raikou-radius-default));
-  color: var(--_cb-color);
+  border-radius: var(--cb-radius);
 }
-[data-raikou-color-scheme=light] .m-86a44da5 {
-  --_cb-color: var(--raikou-closebutton-color) ;
+:where([data-raikou-color-scheme=light]) .m-86a44da5 {
+  color: var(--raikou-closebutton-color);
 }
-[data-raikou-color-scheme=dark] .m-86a44da5 {
-  --_cb-color: var(--raikou-closebutton-color) ;
+:where([data-raikou-color-scheme=dark]) .m-86a44da5 {
+  color: var(--raikou-closebutton-color);
 }
-[data-raikou-color-scheme=light] .m-220c80f2 {
-  --raikou-closebutton-bg-hover: #f8f9fa ;
-}
-[data-raikou-color-scheme=dark] .m-220c80f2 {
-  --raikou-closebutton-bg-hover: #25262b ;
-}
-.m-220c80f2 {
-  background-color: var(--_cb-bg);
+.m-86a44da5[data-disabled],
+.m-86a44da5:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 @media (hover: hover) {
-  [data-raikou-color-scheme=light] .m-220c80f2:hover {
-    --_cb-bg: var(--raikou-closebutton-bg-hover) ;
+  :where([data-raikou-color-scheme=light]) .m-220c80f2:where(:not([data-disabled], :disabled)):hover {
+    background-color: var(--raikou-color-gray-0);
   }
-  [data-raikou-color-scheme=dark] .m-220c80f2:hover {
-    --_cb-bg: var(--raikou-closebutton-bg-hover) ;
+  :where([data-raikou-color-scheme=dark]) .m-220c80f2:where(:not([data-disabled], :disabled)):hover {
+    background-color: var(--raikou-color-dark-6);
   }
 }
 @media (hover: none) {
-  [data-raikou-color-scheme=light] .m-220c80f2:active {
-    --_cb-bg: var(--raikou-closebutton-bg-hover) ;
+  :where([data-raikou-color-scheme=light]) .m-220c80f2:where(:not([data-disabled], :disabled)):active {
+    background-color: var(--raikou-color-gray-0);
   }
-  [data-raikou-color-scheme=dark] .m-220c80f2:active {
-    --_cb-bg: var(--raikou-closebutton-bg-hover) ;
+  :where([data-raikou-color-scheme=dark]) .m-220c80f2:where(:not([data-disabled], :disabled)):active {
+    background-color: var(--raikou-color-dark-6);
   }
 }
 
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Dialog/src/Dialog.module.css/#css-module-data */
 .m-e2125a27 {
-  --dialog-size-xs: calc(10rem * var(--raikou-scale));
-  --dialog-size-sm: calc(12.5rem * var(--raikou-scale));
-  --dialog-size-md: calc(21.25rem * var(--raikou-scale));
-  --dialog-size-lg: calc(25rem * var(--raikou-scale));
-  --dialog-size-xl: calc(31.25rem * var(--raikou-scale));
+  --dialog-size-xs: 160px;
+  --dialog-size-sm: 200px;
+  --dialog-size-md: 340px;
+  --dialog-size-lg: 400px;
+  --dialog-size-xl: 500px;
   --dialog-size: var(--dialog-size-md);
   position: relative;
   width: var(--dialog-size);
   max-width: calc(100vw - var(--raikou-spacing-xl) * 2);
-  min-height: calc(3.125rem * var(--raikou-scale));
+  min-height: 50px;
 }
 .m-5abab665 {
   position: absolute;
   top: calc(var(--raikou-spacing-md) / 2);
-  right: var(--_close-button-right, calc(var(--raikou-spacing-md) / 2));
-  left: var(--_close-button-left, auto);
-}
-[dir=rtl] .m-5abab665 {
-  --_close-button-right: auto;
-  --_close-button-left: calc(var(--raikou-spacing-md) / 2);
+  inset-inline-end: calc(var(--raikou-spacing-md) / 2);
 }
 /*# sourceMappingURL=index.css.map */

@@ -1,38 +1,28 @@
 .root {
-  @mixin light {
+  @mixin where-light {
     --raikou-inlineinput-disabled-label-color: #adb5bd;
   }
-  @mixin dark {
+  @mixin where-dark {
     --raikou-inlineinput-disabled-label-color: #5c5f66;
   }
 
-  --label-lh-xs: rem(16px);
-  --label-lh-sm: rem(20px);
-  --label-lh-md: rem(24px);
-  --label-lh-lg: rem(30px);
-  --label-lh-xl: rem(36px);
+  --label-lh-xs: 16px;
+  --label-lh-sm: 20px;
+  --label-lh-md: 24px;
+  --label-lh-lg: 30px;
+  --label-lh-xl: 36px;
   --label-lh: var(--label-lh-sm);
 
   &[data-label-position="left"] {
-    --_label-order: 1;
-    --_offset-right: var(--raikou-spacing-sm);
-    --_offset-left: 0;
-
-    @mixin rtl {
-      --_offset-right: 0;
-      --_offset-left: var(--raikou-spacing-sm);
-    }
+    --label-order: 1;
+    --label-offset-end: var(--raikou-spacing-sm);
+    --label-offset-start: 0;
   }
 
   &[data-label-position="right"] {
-    --_label-order: 2;
-    --_offset-right: 0;
-    --_offset-left: var(--raikou-spacing-sm);
-
-    @mixin rtl {
-      --_offset-right: var(--raikou-spacing-sm);
-      --_offset-left: 0;
-    }
+    --label-order: 2;
+    --label-offset-end: 0;
+    --label-offset-start: var(--raikou-spacing-sm);
   }
 }
 
@@ -41,43 +31,48 @@
 }
 
 .labelWrapper {
-  --_label-cursor: var(--raikou-cursor-type);
+  --label-cursor: var(--raikou-cursor-type);
 
   -webkit-tap-highlight-color: transparent;
   display: inline-flex;
   flex-direction: column;
   font-size: var(--label-fz, var(--raikou-font-size-sm));
   line-height: var(--label-lh);
-  cursor: var(--_label-cursor);
-  order: var(--_label-order);
-}
-
-.label {
-  cursor: var(--_label-cursor);
-  color: var(--_label-color, inherit);
-  padding-left: var(--_offset-left);
-  padding-right: var(--_offset-right);
+  cursor: var(--label-cursor);
+  order: var(--label-order);
 
   fieldset:disabled &,
   &[data-disabled] {
-    @mixin light {
-      --_label-color: var(--raikou-inlineinput-disabled-label-color);
+    --label-cursor: not-allowed;
+  }
+}
+
+.label {
+  cursor: var(--label-cursor);
+  color: inherit;
+  padding-inline-start: var(--label-offset-start);
+  padding-inline-end: var(--label-offset-end);
+
+  fieldset:disabled &,
+  &:where([data-disabled]) {
+    @mixin where-light {
+      color: var(--raikou-inlineinput-disabled-label-color);
     }
 
-    @mixin dark {
-      --_label-color: var(--raikou-inlineinput-disabled-label-color);
+    @mixin where-dark {
+      color: var(--raikou-inlineinput-disabled-label-color);
     }
   }
 }
 
 .description {
   margin-top: calc(var(--raikou-spacing-xs) / 2);
-  padding-left: var(--_offset-left);
-  padding-right: var(--_offset-right);
+  padding-inline-start: var(--label-offset-start);
+  padding-inline-end: var(--label-offset-end);
 }
 
 .error {
   margin-top: calc(var(--raikou-spacing-xs) / 2);
-  padding-left: var(--_offset-left);
-  padding-right: var(--_offset-right);
+  padding-inline-start: var(--label-offset-start);
+  padding-inline-end: var(--label-offset-end);
 }

@@ -1,27 +1,27 @@
 import React from "react";
 import {
   BoxProps,
-  StylesApiProps,
-  factory,
   ElementProps,
-  useProps,
+  factory,
   Factory,
   RaikouComponentStaticProperties,
+  StylesApiProps,
+  useProps,
   useResolvedStylesApi,
 } from "@raikou/core";
 import { useDatesState } from "../../hooks";
-import { PickerBaseProps, DatePickerType, CalendarLevel } from "../../types";
+import { CalendarLevel, DatePickerType, PickerBaseProps } from "../../types";
+import { shiftTimezone } from "../../utils";
 import {
   Calendar,
   CalendarBaseProps,
   CalendarSettings,
   CalendarStylesNames,
 } from "../Calendar";
-import { DecadeLevelBaseSettings } from "../DecadeLevel";
-import { YearLevelBaseSettings } from "../YearLevel";
-import { MonthLevelBaseSettings } from "../MonthLevel";
-import { shiftTimezone } from "../../utils";
 import { useDatesContext } from "../DatesProvider";
+import { DecadeLevelBaseSettings } from "../DecadeLevel";
+import { MonthLevelBaseSettings } from "../MonthLevel";
+import { YearLevelBaseSettings } from "../YearLevel";
 
 export type DatePickerStylesNames = CalendarStylesNames;
 
@@ -116,7 +116,6 @@ export const DatePicker: DatePickerComponent = factory<DatePickerFactory>(
         styles,
         props,
       });
-
     const ctx = useDatesContext();
 
     return (
@@ -154,4 +153,5 @@ export const DatePicker: DatePickerComponent = factory<DatePickerFactory>(
   },
 ) as any;
 
+DatePicker.classes = Calendar.classes;
 DatePicker.displayName = "@raikou/dates/DatePicker";

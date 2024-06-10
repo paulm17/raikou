@@ -1,6 +1,6 @@
 {
   "name": "postcss-purgecss-raikou",
-  "version": "0.0.1-beta.9",
+  "version": "0.0.1-beta.10",
   "description": "PostCSS plugin for purging used css for Raikou applications",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

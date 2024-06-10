@@ -5,6 +5,7 @@ import React$2 from 'react';
 import * as CSS from 'csstype';
 import * as PropTypes from 'prop-types';
 import { Interaction } from 'scheduler/tracing';
+import { ShiftOptions, FlipOptions, InlineOptions, SizeOptions } from '@floating-ui/react';
 
 type ColorFormat = 'hex' | 'hexa' | 'rgba' | 'rgb' | 'hsl' | 'hsla';
 
@@ -98,6 +99,8 @@ interface __InputProps {
     pointer?: boolean;
     /** Determines whether the input should have red border and text color when `error` prop is set, `true` by default */
     withErrorStyles?: boolean;
+    /** `size` prop added to the input element */
+    inputSize?: string;
 }
 
 // Type definitions for React 18.2
@@ -3672,10 +3675,11 @@ interface TransitionProps {
 }
 type TransitionOverride = Partial<Omit<TransitionProps, "mounted">>;
 
-type FloatingPlacement = 'end' | 'start';
-type FloatingSide = 'top' | 'right' | 'bottom' | 'left';
+type FloatingPlacement = "end" | "start";
+type FloatingSide = "top" | "right" | "bottom" | "left";
 type FloatingPosition = FloatingSide | `${FloatingSide}-${FloatingPlacement}`;
-type ArrowPosition = 'center' | 'side';
+type ArrowPosition = "center" | "side";
+type FloatingStrategy = "absolute" | "fixed";
 interface FloatingAxesOffsets {
     mainAxis?: number;
     crossAxis?: number;
@@ -3689,12 +3693,12 @@ interface PortalProps extends React$2.ComponentPropsWithoutRef<"div"> {
     target?: HTMLElement | string;
 }
 
-type PopoverWidth = "target" | React.CSSProperties["width"];
+type PopoverWidth = "target" | React.CSSProperties["width"] | null;
 interface PopoverMiddlewares {
-    shift: boolean;
-    flip: boolean;
-    inline?: boolean;
-    size?: boolean;
+    shift?: boolean | ShiftOptions;
+    flip?: boolean | FlipOptions;
+    inline?: boolean | InlineOptions;
+    size?: boolean | SizeOptions;
 }
 
 type PopoverStylesNames = "dropdown" | "arrow";
@@ -3746,6 +3750,8 @@ interface __PopoverProps {
     disabled?: boolean;
     /** Determines whether focus should be automatically returned to control when dropdown closes, `false` by default */
     returnFocus?: boolean;
+    /** Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy), `'absolute'` by default */
+    floatingStrategy?: FloatingStrategy;
 }
 interface PopoverProps extends __PopoverProps, StylesApiProps<PopoverFactory> {
     __staticSelector?: string;

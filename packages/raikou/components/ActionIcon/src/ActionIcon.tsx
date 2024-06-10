@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Box,
   BoxProps,
   useProps,
   StylesApiProps,
@@ -16,6 +17,7 @@ import {
 } from "@raikou/core";
 import { UnstyledButton } from "../../UnstyledButton/src";
 import { LoaderProps, Loader } from "../../Loader/src";
+import { Transition } from "../../Transition/src";
 import { ActionIconGroup } from "./ActionIconGroup/ActionIconGroup";
 import classes from "./ActionIcon.module.css";
 
@@ -29,13 +31,14 @@ export type ActionIconVariant =
   | "default"
   | "gradient";
 
-export type ActionIconStylesNames = "root" | "loader";
+export type ActionIconStylesNames = "root" | "loader" | "icon";
 export type ActionIconCssVariables = {
   root:
     | "--ai-radius"
     | "--ai-size"
     | "--ai-bg"
     | "--ai-hover"
+    | "--ai-hover-color"
     | "--ai-color"
     | "--ai-bd";
 };
@@ -69,6 +72,9 @@ export interface ActionIconProps
 
   /** Icon displayed inside the button */
   children?: React.ReactNode;
+
+  /** Determines whether button text color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+  autoContrast?: boolean;
 }
 
 export type ActionIconFactory = PolymorphicFactory<{
@@ -86,12 +92,13 @@ export type ActionIconFactory = PolymorphicFactory<{
 const defaultProps: Partial<ActionIconProps> = {};
 
 const varsResolver = createVarsResolver<ActionIconFactory>(
-  (theme, { size, radius, variant, gradient, color }) => {
+  (theme, { size, radius, variant, gradient, color, autoContrast }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       gradient,
       variant: variant || "filled",
+      autoContrast,
     });
 
     return {
@@ -100,6 +107,7 @@ const varsResolver = createVarsResolver<ActionIconFactory>(
         "--ai-radius": radius === undefined ? undefined : getRadius(radius),
         "--ai-bg": color || variant ? colors.background : undefined,
         "--ai-hover": color || variant ? colors.hover : undefined,
+        "--ai-hover-color": color || variant ? colors.hoverColor : undefined,
         "--ai-color": color || variant ? colors.color : undefined,
         "--ai-bd": color || variant ? colors.border : undefined,
       },
@@ -128,6 +136,8 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>(
       children,
       disabled,
       "data-disabled": dataDisabled,
+      autoContrast,
+      mod,
       ...others
     } = props;
 
@@ -155,18 +165,27 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>(
         size={size}
         disabled={disabled || loading}
         ref={ref}
-        mod={{ loading, disabled: disabled || dataDisabled }}
+        mod={[{ loading, disabled: disabled || dataDisabled }, mod]}
       >
-        {loading ? (
-          <Loader
-            {...getStyles("loader")}
-            color="var(--ai-color)"
-            size="calc(var(--ai-size) * 0.55)"
-            {...loaderProps}
-          />
-        ) : (
-          children
-        )}
+        <Transition mounted={!!loading} transition="slide-down" duration={150}>
+          {(transitionStyles) => (
+            <Box
+              component="span"
+              {...getStyles("loader", { style: transitionStyles })}
+              aria-hidden
+            >
+              <Loader
+                color="var(--ai-color)"
+                size="calc(var(--ai-size) * 0.55)"
+                {...loaderProps}
+              />
+            </Box>
+          )}
+        </Transition>
+
+        <Box component="span" mod={{ loading }} {...getStyles("icon")}>
+          {children}
+        </Box>
       </UnstyledButton>
     );
   },

@@ -13,16 +13,19 @@ import {
 } from "@raikou/core";
 import {
   Combobox,
+  ComboboxItem,
+  ComboboxLikeProps,
+  ComboboxLikeRenderOptionInput,
+  ComboboxLikeStylesNames,
+  getOptionsLockup,
+  getParsedComboboxData,
   OptionsDropdown,
   useCombobox,
-  getParsedComboboxData,
-  getOptionsLockup,
-  ComboboxLikeProps,
-  ComboboxLikeStylesNames,
 } from "../../Combobox/src";
 import { __BaseInputProps, __InputStylesNames } from "../../Input/src";
 import { PillsInput } from "../../PillsInput/src";
 import { Pill } from "../../Pill/src";
+import { ScrollAreaProps } from "../../ScrollArea/src";
 import { __CloseButtonProps } from "../../CloseButton/src";
 import { filterPickedValues } from "./filter-picked-values";
 
@@ -47,6 +50,12 @@ export interface MultiSelectProps
 
   /** Called whe value changes */
   onChange?: (value: string[]) => void;
+
+  /** Called with `value` of the removed item */
+  onRemove?: (value: string) => void;
+
+  /** Called when the clear button is clicked */
+  onClear?: () => void;
 
   /** Controlled search value */
   searchValue?: string;
@@ -86,6 +95,14 @@ export interface MultiSelectProps
 
   /** Divider used to separate values in the hidden input `value` attribute, `','` by default */
   hiddenInputValuesDivider?: string;
+
+  /** A function to render content of the option, replaces the default content of the option */
+  renderOption?: (
+    item: ComboboxLikeRenderOptionInput<ComboboxItem>,
+  ) => React.ReactNode;
+
+  /** Props passed down to the underlying `ScrollArea` component in the dropdown */
+  scrollAreaProps?: ScrollAreaProps;
 }
 
 export type MultiSelectFactory = Factory<{
@@ -168,8 +185,14 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
     clearable,
     clearButtonProps,
     hiddenInputProps,
-    hiddenInputValuesDivider,
     placeholder,
+    hiddenInputValuesDivider,
+    required,
+    mod,
+    renderOption,
+    onRemove,
+    onClear,
+    scrollAreaProps,
     ...others
   } = props;
 
@@ -189,7 +212,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
 
   const {
     styleProps,
-    rest: { type, ...rest },
+    rest: { type, autoComplete, ...rest },
   } = extractStyleProps(others);
 
   const [_value, setValue] = useUncontrolled({
@@ -235,6 +258,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
       _searchValue.length === 0 &&
       _value.length > 0
     ) {
+      onRemove?.(_value[_value.length - 1]);
       setValue(_value.slice(0, _value.length - 1));
     }
   };
@@ -243,7 +267,11 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
     <Pill
       key={`${item}-${index}`}
       withRemoveButton={!readOnly}
-      onRemove={() => setValue(_value.filter((i) => item !== i))}
+      onRemove={() => {
+        setValue(_value.filter((i) => item !== i));
+        onRemove?.(item);
+      }}
+      disabled={disabled}
       {...getStyles("pill")}
     >
       {optionsLockup[item].label}
@@ -289,20 +317,13 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
 
           if (_value.includes(optionsLockup[val].value)) {
             setValue(_value.filter((v) => v !== optionsLockup[val].value));
+            onRemove?.(optionsLockup[val].value);
           } else if (_value.length < maxValues!) {
             setValue([..._value, optionsLockup[val].value]);
           }
         }}
         {...comboboxProps}
       >
-        <input
-          type="hidden"
-          name={name}
-          value={_value.join(hiddenInputValuesDivider)}
-          form={form}
-          disabled={disabled}
-          {...hiddenInputProps}
-        />
         <Combobox.DropdownTarget>
           <PillsInput
             {...styleProps}
@@ -326,10 +347,10 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
                 />
               )
             }
-            rightSectionWidth={rightSectionWidth}
             rightSectionPointerEvents={
               rightSectionPointerEvents || (clearButton ? "all" : "none")
             }
+            rightSectionWidth={rightSectionWidth}
             rightSectionProps={rightSectionProps}
             leftSection={leftSection}
             leftSectionWidth={leftSectionWidth}
@@ -347,16 +368,28 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
             error={error}
             multiline
             withErrorStyles={withErrorStyles}
-            __stylesApiProps={{ ...props, multiline: true }}
+            __stylesApiProps={{
+              ...props,
+              rightSectionPointerEvents:
+                rightSectionPointerEvents || (clearButton ? "all" : "none"),
+              multiline: true,
+            }}
             pointer={!searchable}
             onClick={() =>
               searchable ? combobox.openDropdown() : combobox.toggleDropdown()
             }
+            data-expanded={combobox.dropdownOpened || undefined}
             id={_id}
+            required={required}
+            mod={mod}
           >
-            <Pill.Group disabled={disabled} {...getStyles("pillsList")}>
+            <Pill.Group
+              disabled={disabled}
+              unstyled={unstyled}
+              {...getStyles("pillsList")}
+            >
               {values}
-              <Combobox.EventsTarget>
+              <Combobox.EventsTarget autoComplete={autoComplete}>
                 <PillsInput.Field
                   {...rest}
                   ref={ref}
@@ -367,24 +400,19 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
                   unstyled={unstyled}
                   onFocus={(event) => {
                     onFocus?.(event);
-                    // eslint-disable-next-line
                     searchable && combobox.openDropdown();
-                    // eslint-disable-next-line
-                    selectFirstOptionOnChange && combobox.selectFirstOption();
                   }}
                   onBlur={(event) => {
                     onBlur?.(event);
                     combobox.closeDropdown();
-                    // eslint-disable-next-line
-                    searchable && combobox.closeDropdown();
                     setSearchValue("");
                   }}
                   onKeyDown={handleInputKeydown}
                   value={_searchValue}
                   onChange={(event) => {
                     setSearchValue(event.currentTarget.value);
-                    // eslint-disable-next-line
                     searchable && combobox.openDropdown();
+                    selectFirstOptionOnChange && combobox.selectFirstOption();
                   }}
                   disabled={disabled}
                   readOnly={readOnly || !searchable}
@@ -415,9 +443,20 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
           checkIconPosition={checkIconPosition}
           withCheckIcon={withCheckIcon}
           nothingFoundMessage={nothingFoundMessage}
-          labelId={`${_id}-label`}
+          labelId={label ? `${_id}-label` : undefined}
+          aria-label={label ? undefined : others["aria-label"]}
+          renderOption={renderOption}
+          scrollAreaProps={scrollAreaProps}
         />
       </Combobox>
+      <Combobox.HiddenInput
+        name={name}
+        valuesDivider={hiddenInputValuesDivider}
+        value={_value as any}
+        form={form}
+        disabled={disabled}
+        {...hiddenInputProps}
+      />
     </>
   );
 });

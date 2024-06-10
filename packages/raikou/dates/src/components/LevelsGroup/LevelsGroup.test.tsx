@@ -1,16 +1,13 @@
-import { tests } from "@raikou/tests";
-import {
-  LevelsGroup,
-  LevelsGroupProps,
-  LevelsGroupStylesNames,
-} from "./LevelsGroup";
+import { tests } from '@mantine-tests/core';
+import { LevelsGroup, LevelsGroupProps, LevelsGroupStylesNames } from './LevelsGroup';
 
 const defaultProps: LevelsGroupProps = {};
 
-describe("@raikou/dates/LevelsGroup", () => {
+describe('@mantine/dates/LevelsGroup', () => {
   tests.itSupportsSystemProps<LevelsGroupProps, LevelsGroupStylesNames>({
     component: LevelsGroup,
     props: defaultProps,
+    mod: true,
     styleProps: true,
     children: true,
     extend: true,
@@ -18,7 +15,7 @@ describe("@raikou/dates/LevelsGroup", () => {
     size: true,
     classes: true,
     refType: HTMLDivElement,
-    displayName: "@raikou/dates/LevelsGroup",
-    stylesApiSelectors: ["levelsGroup"],
+    displayName: '@mantine/dates/LevelsGroup',
+    stylesApiSelectors: ['levelsGroup'],
   });
 });

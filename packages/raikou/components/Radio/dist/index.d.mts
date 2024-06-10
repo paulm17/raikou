@@ -1,12 +1,41 @@
 /// <reference path="global.d.ts" />
 import * as _raikou_core from '@raikou/core';
-import { BoxProps, StylesApiProps, ElementProps, RaikouSize, Factory, RaikouColor, RaikouRadius } from '@raikou/core';
+import { BoxProps, StylesApiProps, ElementProps, RaikouRadius, Factory, RaikouSize, RaikouColor } from '@raikou/core';
 import React$1 from 'react';
 import * as CSS from 'csstype';
 import * as PropTypes from 'prop-types';
 import { Interaction } from 'scheduler/tracing';
 
 type InlineInputStylesNames = "root" | "body" | "labelWrapper" | "label" | "description" | "error";
+
+type RadioCardStylesNames = "card";
+type RadioCardCssVariables = {
+    card: "--card-radius";
+};
+interface RadioCardProps extends BoxProps, StylesApiProps<RadioCardFactory>, ElementProps<"button", "onChange"> {
+    /** Checked state */
+    checked?: boolean;
+    /** Determines whether the card should have border, `true` by default */
+    withBorder?: boolean;
+    /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `theme.defaultRadius` by default */
+    radius?: RaikouRadius;
+    /** Value of the checkbox, used with `Radio.Group` */
+    value?: string;
+    /** Value used to associate all related radio cards, required for accessibility if used outside of `Radio.Group` */
+    name?: string;
+}
+type RadioCardFactory = Factory<{
+    props: RadioCardProps;
+    ref: HTMLButtonElement;
+    stylesNames: RadioCardStylesNames;
+    vars: RadioCardCssVariables;
+}>;
+declare const RadioCard: _raikou_core.RaikouComponent<{
+    props: RadioCardProps;
+    ref: HTMLButtonElement;
+    stylesNames: RadioCardStylesNames;
+    vars: RadioCardCssVariables;
+}>;
 
 interface RadioIconProps extends React$1.ComponentPropsWithoutRef<"svg"> {
     size?: string | number;
@@ -3612,9 +3641,9 @@ interface RadioGroupProps extends Omit<InputWrapperProps, "onChange"> {
     /** `Radio` components */
     children: React$1.ReactNode;
     /** Controlled component value */
-    value?: string;
+    value?: string | null;
     /** Default value for uncontrolled component */
-    defaultValue?: string;
+    defaultValue?: string | null;
     /** Called when value changes */
     onChange?: (value: string) => void;
     /** Props passed down to the `Input.Wrapper` */
@@ -3623,6 +3652,8 @@ interface RadioGroupProps extends Omit<InputWrapperProps, "onChange"> {
     size?: RaikouSize;
     /** Name attribute of child radio inputs */
     name?: string;
+    /** If set, value cannot be changed */
+    readOnly?: boolean;
 }
 type RadioGroupFactory = Factory<{
     props: RadioGroupProps;
@@ -3633,6 +3664,44 @@ declare const RadioGroup: _raikou_core.RaikouComponent<{
     props: RadioGroupProps;
     ref: HTMLDivElement;
     stylesNames: RadioGroupStylesNames;
+}>;
+
+type RadioIndicatorStylesNames = "indicator" | "icon";
+type RadioIndicatorVariant = "filled" | "outline";
+type RadioIndicatorCssVariables = {
+    indicator: "--radio-size" | "--radio-radius" | "--radio-color" | "--radio-icon-color" | "--radio-icon-size";
+};
+interface RadioIndicatorProps extends BoxProps, StylesApiProps<RadioIndicatorFactory>, ElementProps<"div"> {
+    /** Key of `theme.colors` or any valid CSS color to set input background color in checked state, `theme.primaryColor` by default */
+    color?: RaikouColor;
+    /** Controls size of the component, `'sm'` by default */
+    size?: RaikouSize | (string & {});
+    /** Key of `theme.radius` or any valid CSS value to set `border-radius,` `theme.defaultRadius` by default */
+    radius?: RaikouRadius;
+    /** Key of `theme.colors` or any valid CSS color to set icon color, by default value depends on `theme.autoContrast` */
+    iconColor?: RaikouColor;
+    /** Determines whether icon color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+    autoContrast?: boolean;
+    /** A component that replaces default check icon */
+    icon?: React$1.FC<RadioIconProps>;
+    /** Determines whether the component should have checked styles */
+    checked?: boolean;
+    /** Determines whether the component should have disabled styles */
+    disabled?: boolean;
+}
+type RadioIndicatorFactory = Factory<{
+    props: RadioIndicatorProps;
+    ref: HTMLDivElement;
+    stylesNames: RadioIndicatorStylesNames;
+    vars: RadioIndicatorCssVariables;
+    variant: RadioIndicatorVariant;
+}>;
+declare const RadioIndicator: _raikou_core.RaikouComponent<{
+    props: RadioIndicatorProps;
+    ref: HTMLDivElement;
+    stylesNames: RadioIndicatorStylesNames;
+    vars: RadioIndicatorCssVariables;
+    variant: RadioIndicatorVariant;
 }>;
 
 type RadioVariant = "filled" | "outline";
@@ -3663,6 +3732,8 @@ interface RadioProps extends BoxProps, StylesApiProps<RadioFactory>, ElementProp
     rootRef?: React$1.ForwardedRef<HTMLDivElement>;
     /** Key of `theme.colors` or any valid CSS color to set icon color, `theme.white` by default */
     iconColor?: RaikouColor;
+    /** Determines whether icon color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+    autoContrast?: boolean;
 }
 type RadioFactory = Factory<{
     props: RadioProps;
@@ -3672,6 +3743,8 @@ type RadioFactory = Factory<{
     variant: RadioVariant;
     staticComponents: {
         Group: typeof RadioGroup;
+        Card: typeof RadioCard;
+        Indicator: typeof RadioIndicator;
     };
 }>;
 declare const Radio: _raikou_core.RaikouComponent<{
@@ -3682,6 +3755,8 @@ declare const Radio: _raikou_core.RaikouComponent<{
     variant: RadioVariant;
     staticComponents: {
         Group: typeof RadioGroup;
+        Card: typeof RadioCard;
+        Indicator: typeof RadioIndicator;
     };
 }>;
 

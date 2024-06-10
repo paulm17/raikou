@@ -27,8 +27,10 @@ export const Corner = React.forwardRef<HTMLDivElement, ScrollAreaCornerProps>(
     return hasSize ? (
       <div {...others} ref={ref} style={{ ...style, width, height }} />
     ) : null;
-  }
+  },
 );
+
+Corner.displayName = "@raikou/core/Corner";
 
 export const ScrollAreaCorner = React.forwardRef<
   HTMLDivElement,
@@ -39,3 +41,5 @@ export const ScrollAreaCorner = React.forwardRef<
   const hasCorner = ctx.type !== "scroll" && hasBothScrollbarsVisible;
   return hasCorner ? <Corner {...props} ref={ref} /> : null;
 });
+
+ScrollAreaCorner.displayName = "@raikou/core/ScrollAreaCorner";

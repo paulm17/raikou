@@ -1,24 +1,24 @@
 @keyframes processing {
   0% {
     opacity: 0.6;
-    box-shadow: 0 0 rem(0.5px) 0 var(--indicator-color);
+    transform: scale(0);
   }
 
   100% {
     opacity: 0;
-    box-shadow: 0 0 rem(0.5px) rem(4.4px) var(--indicator-color);
+    transform: scale(2.8);
   }
 }
 
 .root {
-  --indicator-size: rem(10px);
+  --indicator-size: 10px;
   --indicator-color: var(--raikou-primary-color-filled);
 
   position: relative;
-  display: var(--_indicator-display, block);
+  display: block;
 
-  &[data-inline] {
-    --_indicator-display: inline-block;
+  &:where([data-inline]) {
+    display: inline-block;
   }
 }
 
@@ -34,17 +34,14 @@
   );
   min-width: var(--indicator-size);
   height: var(--indicator-size);
-  border-radius: var(--indicator-radius, rem(1000px));
+  border-radius: var(--indicator-radius, 1000rem);
   z-index: var(--indicator-z-index, 200);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: var(--raikou-font-size-xs);
-  padding-left: var(--_indicator-padding, 0);
-  padding-right: var(--_indicator-padding, 0);
   background-color: var(--indicator-color);
-  border: var(--_indicator-border);
-  color: var(--raikou-color-white);
+  color: var(--indicator-text-color, var(--raikou-color-white));
   white-space: nowrap;
 
   &::before {
@@ -52,16 +49,16 @@
     position: absolute;
     inset: 0;
     background-color: var(--indicator-color);
-    border-radius: var(--indicator-radius, rem(1000px));
+    border-radius: var(--indicator-radius, 1000rem);
     z-index: -1;
   }
 
-  &[data-with-label] {
-    --_indicator-padding: calc(var(--raikou-spacing-xs) / 2);
+  &:where([data-with-label]) {
+    padding-inline: calc(var(--raikou-spacing-xs) / 2);
   }
 
-  &[data-with-border] {
-    --_indicator-border: rem(2px) solid var(--raikou-color-body);
+  &:where([data-with-border]) {
+    border: 2px solid var(--raikou-color-body);
   }
 
   &[data-processing] {

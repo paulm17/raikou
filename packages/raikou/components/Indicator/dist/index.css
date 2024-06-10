@@ -2,21 +2,21 @@
 @keyframes m-885901b1 {
   0% {
     opacity: 0.6;
-    box-shadow: 0 0 calc(0.03125rem * var(--raikou-scale)) 0 var(--indicator-color);
+    transform: scale(0);
   }
   100% {
     opacity: 0;
-    box-shadow: 0 0 calc(0.03125rem * var(--raikou-scale)) calc(0.275rem * var(--raikou-scale)) var(--indicator-color);
+    transform: scale(2.8);
   }
 }
 .m-e5262200 {
-  --indicator-size: calc(0.625rem * var(--raikou-scale));
+  --indicator-size: 10px;
   --indicator-color: var(--raikou-primary-color-filled);
   position: relative;
-  display: var(--_indicator-display, block);
+  display: block;
 }
-.m-e5262200[data-inline] {
-  --_indicator-display: inline-block;
+.m-e5262200:where([data-inline]) {
+  display: inline-block;
 }
 .m-760d1fb1 {
   position: absolute;
@@ -27,17 +27,14 @@
   transform: translate(var(--indicator-translate-x), var(--indicator-translate-y));
   min-width: var(--indicator-size);
   height: var(--indicator-size);
-  border-radius: var(--indicator-radius, calc(62.5rem * var(--raikou-scale)));
+  border-radius: var(--indicator-radius, 1000rem);
   z-index: var(--indicator-z-index, 200);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: var(--raikou-font-size-xs);
-  padding-left: var(--_indicator-padding, 0);
-  padding-right: var(--_indicator-padding, 0);
   background-color: var(--indicator-color);
-  border: var(--_indicator-border);
-  color: var(--raikou-color-white);
+  color: var(--indicator-text-color, var(--raikou-color-white));
   white-space: nowrap;
 }
 .m-760d1fb1::before {
@@ -45,14 +42,14 @@
   position: absolute;
   inset: 0;
   background-color: var(--indicator-color);
-  border-radius: var(--indicator-radius, calc(62.5rem * var(--raikou-scale)));
+  border-radius: var(--indicator-radius, 1000rem);
   z-index: -1;
 }
-.m-760d1fb1[data-with-label] {
-  --_indicator-padding: calc(var(--raikou-spacing-xs) / 2);
+.m-760d1fb1:where([data-with-label]) {
+  padding-inline: calc(var(--raikou-spacing-xs) / 2);
 }
-.m-760d1fb1[data-with-border] {
-  --_indicator-border: calc(0.125rem * var(--raikou-scale)) solid var(--raikou-color-body);
+.m-760d1fb1:where([data-with-border]) {
+  border: 2px solid var(--raikou-color-body);
 }
 .m-760d1fb1[data-processing]::before {
   animation: m-885901b1 1000ms linear infinite;

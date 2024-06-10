@@ -1,14 +1,14 @@
-import React from "react";
+import { __InputStylesNames } from '@mantine/core';
 import {
-  tests,
   inputDefaultProps,
   inputStylesApiSelectors,
   render,
-} from "@raikou/tests";
-import { __InputStylesNames } from "../../../../components/Input/src";
-import { clickInput, datesTests, expectValue } from "@raikou/dates-tests";
-import { YearPickerInput, YearPickerInputProps } from "./YearPickerInput";
-import { DatesProvider } from "../DatesProvider";
+  tests,
+  userEvent,
+} from '@mantine-tests/core';
+import { clickInput, datesTests, expectValue } from '@mantine-tests/dates';
+import { DatesProvider } from '../DatesProvider';
+import { YearPickerInput, YearPickerInputProps } from './YearPickerInput';
 
 const defaultProps = {
   popoverProps: { withinPortal: false, transitionProps: { duration: 0 } },
@@ -20,7 +20,7 @@ const defaultPropsWithInputProps = {
   ...(inputDefaultProps as any),
 };
 
-describe("@raikou/dates/YearPickerInput", () => {
+describe('@mantine/dates/YearPickerInput', () => {
   tests.axe([
     <YearPickerInput aria-label="test-label" />,
     <YearPickerInput aria-label="test-label" error />,
@@ -36,21 +36,19 @@ describe("@raikou/dates/YearPickerInput", () => {
     size: true,
     variant: true,
     classes: true,
+    id: true,
     refType: HTMLButtonElement,
-    displayName: "@raikou/dates/YearPickerInput",
+    displayName: '@mantine/dates/YearPickerInput',
     stylesApiSelectors: [...inputStylesApiSelectors],
   });
 
   tests.itSupportsInputProps<YearPickerInputProps>({
     component: YearPickerInput,
     props: defaultPropsWithInputProps,
-    selector: "button",
+    selector: 'button',
   });
 
-  datesTests.itSupportsDateInputProps({
-    component: YearPickerInput,
-    props: defaultProps,
-  });
+  datesTests.itSupportsDateInputProps({ component: YearPickerInput, props: defaultProps });
   datesTests.itSupportsClearableProps({
     component: YearPickerInput,
     props: { ...defaultProps, defaultValue: new Date() },
@@ -60,23 +58,15 @@ describe("@raikou/dates/YearPickerInput", () => {
     props: {
       ...defaultProps,
       defaultValue: new Date(),
-      popoverProps: {
-        opened: true,
-        withinPortal: false,
-        transitionProps: { duration: 0 },
-      },
+      popoverProps: { opened: true, withinPortal: false, transitionProps: { duration: 0 } },
     },
   });
 
-  it("supports valueFormat prop", () => {
+  it('supports valueFormat prop', () => {
     const { container, rerender } = render(
-      <YearPickerInput
-        {...defaultProps}
-        valueFormat="YY"
-        value={new Date(2022, 3, 11)}
-      />,
+      <YearPickerInput {...defaultProps} valueFormat="YY" value={new Date(2022, 3, 11)} />
     );
-    expectValue(container, "22");
+    expectValue(container, '22');
 
     rerender(
       <YearPickerInput
@@ -84,9 +74,9 @@ describe("@raikou/dates/YearPickerInput", () => {
         type="multiple"
         valueFormat="YY"
         value={[new Date(2022, 3, 11), new Date(2024, 3, 11)]}
-      />,
+      />
     );
-    expectValue(container, "22, 24");
+    expectValue(container, '22, 24');
 
     rerender(
       <YearPickerInput
@@ -94,72 +84,64 @@ describe("@raikou/dates/YearPickerInput", () => {
         type="range"
         valueFormat="YY"
         value={[new Date(2022, 3, 11), new Date(2024, 3, 11)]}
-      />,
+      />
     );
-    expectValue(container, "22 – 24");
+    expectValue(container, '22 – 24');
   });
 
-  it("has correct default __staticSelector", () => {
+  it('has correct default __staticSelector', () => {
     const { container } = render(
       <YearPickerInput
         {...defaultProps}
-        popoverProps={{
-          opened: true,
-          withinPortal: false,
-          transitionProps: { duration: 0 },
-        }}
-      />,
+        popoverProps={{ opened: true, withinPortal: false, transitionProps: { duration: 0 } }}
+      />
     );
-    expect(container.querySelector("[data-dates-input]")).toHaveClass(
-      "raikou-YearPickerInput-input",
+    expect(container.querySelector('[data-dates-input]')).toHaveClass(
+      'mantine-YearPickerInput-input'
     );
 
-    expect(container.querySelector("table button")).toHaveClass(
-      "raikou-YearPickerInput-yearsListControl",
+    expect(container.querySelector('table button')).toHaveClass(
+      'mantine-YearPickerInput-yearsListControl'
     );
   });
 
   it('can be controlled (type="default") with timezone (UTC)', async () => {
     const spy = jest.fn();
     const { container } = render(
-      <DatesProvider settings={{ timezone: "UTC" }}>
+      <DatesProvider settings={{ timezone: 'UTC' }}>
         <YearPickerInput
           {...defaultProps}
           date={new Date(2022, 3, 11)}
           value={new Date(2023, 3, 11)}
           onChange={spy}
         />
-      </DatesProvider>,
+      </DatesProvider>
     );
 
     await clickInput(container);
-    expect(container.querySelector("[data-selected]")!.textContent).toBe(
-      "2023",
-    );
+    expect(container.querySelector('[data-selected]')!.textContent).toBe('2023');
 
-    await userEvent.click(container.querySelector("table button")!);
+    await userEvent.click(container.querySelector('table button')!);
     expect(spy).toHaveBeenCalledWith(new Date(2019, 11, 31, 19));
   });
 
   it('can be controlled (type="default") with timezone (America/Los_Angeles)', async () => {
     const spy = jest.fn();
     const { container } = render(
-      <DatesProvider settings={{ timezone: "America/Los_Angeles" }}>
+      <DatesProvider settings={{ timezone: 'America/Los_Angeles' }}>
         <YearPickerInput
           {...defaultProps}
           date={new Date(2022, 3, 11)}
           value={new Date(2023, 3, 11)}
           onChange={spy}
         />
-      </DatesProvider>,
+      </DatesProvider>
     );
 
     await clickInput(container);
-    expect(container.querySelector("[data-selected]")!.textContent).toBe(
-      "2023",
-    );
+    expect(container.querySelector('[data-selected]')!.textContent).toBe('2023');
 
-    await userEvent.click(container.querySelector("table button")!);
+    await userEvent.click(container.querySelector('table button')!);
     expect(spy).toHaveBeenCalledWith(new Date(2020, 0, 1, 3));
   });
 });

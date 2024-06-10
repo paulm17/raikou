@@ -137,5 +137,4 @@ export const RingProgress = factory<RingProgressFactory>((_props, ref) => {
   );
 });
 
-RingProgress.classes = classes;
 RingProgress.displayName = "@raikou/core/RingProgress";

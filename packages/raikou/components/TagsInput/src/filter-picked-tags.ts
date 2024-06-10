@@ -14,7 +14,7 @@ export function filterPickedTags({ data, value }: FilterPickedTagsInput) {
         group: item.group,
         items: item.items.filter(
           (option) =>
-            normalizedValue.indexOf(option.label.toLowerCase().trim()) === -1
+            normalizedValue.indexOf(option.label.toLowerCase().trim()) === -1,
         ),
       });
     } else if (

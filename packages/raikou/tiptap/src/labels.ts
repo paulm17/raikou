@@ -83,6 +83,12 @@ export interface RichTextEditorLabels {
   /** RichTextEditor.Highlight control aria-label */
   highlightControlLabel: string;
 
+  /** RichTextEditor.Undo control aria-label */
+  undoControlLabel: string;
+
+  /** RichTextEditor.Redo control aria-label */
+  redoControlLabel: string;
+
   /** A function go get RichTextEditor.Color control aria-label based on color that control applies */
   colorControlLabel: (color: string) => string;
 
@@ -118,6 +124,15 @@ export interface RichTextEditorLabels {
 
   /** aria-label for color palette colors */
   colorPickerColorLabel: (color: string) => string;
+
+  /** aria-label for task list control */
+  tasksControlLabel: string;
+
+  /** aria-label for task list sink task */
+  tasksSinkLabel: string;
+
+  /** aria-label for task list lift task */
+  tasksLiftLabel: string;
 }
 
 export const DEFAULT_LABELS: RichTextEditorLabels = {
@@ -151,6 +166,13 @@ export const DEFAULT_LABELS: RichTextEditorLabels = {
   superscriptControlLabel: "Superscript",
   unsetColorControlLabel: "Unset color",
   hrControlLabel: "Horizontal line",
+  undoControlLabel: "Undo",
+  redoControlLabel: "Redo",
+
+  // Task list
+  tasksControlLabel: "Task list",
+  tasksSinkLabel: "Decrease task level",
+  tasksLiftLabel: "Increase task level",
 
   // Link editor
   linkEditorInputLabel: "Enter URL",

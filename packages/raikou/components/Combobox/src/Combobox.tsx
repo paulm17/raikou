@@ -15,22 +15,23 @@ import {
 import { __PopoverProps, Popover } from "../../Popover/src";
 import { useCombobox, ComboboxStore } from "./use-combobox/use-combobox";
 import { ComboboxProvider } from "./Combobox.context";
-import { ComboboxTarget } from "./ComboboxTarget/ComboboxTarget";
+import { ComboboxChevron } from "./ComboboxChevron/ComboboxChevron";
+import { ComboboxClearButton } from "./ComboboxClearButton/ComboboxClearButton";
 import { ComboboxDropdown } from "./ComboboxDropdown/ComboboxDropdown";
-import { ComboboxOptions } from "./ComboboxOptions/ComboboxOptions";
+import { ComboboxDropdownTarget } from "./ComboboxDropdownTarget/ComboboxDropdownTarget";
+import { ComboboxEmpty } from "./ComboboxEmpty/ComboboxEmpty";
+import { ComboboxEventsTarget } from "./ComboboxEventsTarget/ComboboxEventsTarget";
+import { ComboboxFooter } from "./ComboboxFooter/ComboboxFooter";
+import { ComboboxGroup } from "./ComboboxGroup/ComboboxGroup";
+import { ComboboxHeader } from "./ComboboxHeader/ComboboxHeader";
+import { ComboboxHiddenInput } from "./ComboboxHiddenInput/ComboboxHiddenInput";
 import {
   ComboboxOption,
   ComboboxOptionProps,
 } from "./ComboboxOption/ComboboxOption";
+import { ComboboxOptions } from "./ComboboxOptions/ComboboxOptions";
 import { ComboboxSearch } from "./ComboboxSearch/ComboboxSearch";
-import { ComboboxEmpty } from "./ComboboxEmpty/ComboboxEmpty";
-import { ComboboxChevron } from "./ComboboxChevron/ComboboxChevron";
-import { ComboboxFooter } from "./ComboboxFooter/ComboboxFooter";
-import { ComboboxHeader } from "./ComboboxHeader/ComboboxHeader";
-import { ComboboxEventsTarget } from "./ComboboxEventsTarget/ComboboxEventsTarget";
-import { ComboboxDropdownTarget } from "./ComboboxDropdownTarget/ComboboxDropdownTarget";
-import { ComboboxGroup } from "./ComboboxGroup/ComboboxGroup";
-import { ComboboxClearButton } from "./ComboboxClearButton/ComboboxClearButton";
+import { ComboboxTarget } from "./ComboboxTarget/ComboboxTarget";
 import classes from "./Combobox.module.css";
 
 export type ComboboxStylesNames =
@@ -97,6 +98,8 @@ export type ComboboxFactory = Factory<{
     EventsTarget: typeof ComboboxEventsTarget;
     DropdownTarget: typeof ComboboxDropdownTarget;
     Group: typeof ComboboxGroup;
+    ClearButton: typeof ComboboxClearButton;
+    HiddenInput: typeof ComboboxHiddenInput;
   };
 }>;
 
@@ -134,6 +137,7 @@ export function Combobox(_props: ComboboxProps) {
     store: controlledStore,
     vars,
     onOptionSubmit,
+    onClose,
     size,
     dropdownPadding,
     resetSelectionOnOptionHover,
@@ -156,6 +160,11 @@ export function Combobox(_props: ComboboxProps) {
     varsResolver,
   });
 
+  const onDropdownClose = () => {
+    onClose?.();
+    store.closeDropdown();
+  };
+
   return (
     <ComboboxProvider
       value={{
@@ -170,7 +179,7 @@ export function Combobox(_props: ComboboxProps) {
       <Popover
         opened={store.dropdownOpened}
         {...others}
-        onClose={store.closeDropdown}
+        onClose={onDropdownClose}
         withRoles={false}
       >
         {children}
@@ -198,3 +207,4 @@ Combobox.EventsTarget = ComboboxEventsTarget;
 Combobox.DropdownTarget = ComboboxDropdownTarget;
 Combobox.Group = ComboboxGroup;
 Combobox.ClearButton = ComboboxClearButton;
+Combobox.HiddenInput = ComboboxHiddenInput;

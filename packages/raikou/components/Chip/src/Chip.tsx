@@ -84,6 +84,9 @@ export interface ChipProps
 
   /** Assigns ref of the root element, can be used with `Tooltip` and other similar components */
   rootRef?: React.ForwardedRef<HTMLDivElement>;
+
+  /** Determines whether button text color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+  autoContrast?: boolean;
 }
 
 export type ChipFactory = Factory<{
@@ -102,11 +105,12 @@ const defaultProps: Partial<ChipProps> = {
 };
 
 const varsResolver = createVarsResolver<ChipFactory>(
-  (theme, { size, radius, variant, color }) => {
+  (theme, { size, radius, variant, color, autoContrast }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       variant: variant || "filled",
+      autoContrast,
     });
 
     return {
@@ -149,6 +153,8 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
     variant,
     icon,
     rootRef,
+    autoContrast,
+    mod,
     ...others
   } = props;
 
@@ -194,6 +200,7 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
       size={size}
       variant={variant}
       ref={rootRef}
+      mod={mod}
       {...getStyles("root")}
       {...styleProps}
       {...wrapperProps}

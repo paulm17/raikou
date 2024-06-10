@@ -1,15 +1,14 @@
-import React from "react";
+import { __InputStylesNames } from '@mantine/core';
 import {
-  tests,
   inputDefaultProps,
   inputStylesApiSelectors,
   render,
+  tests,
   userEvent,
-} from "@raikou/tests";
-import { __InputStylesNames } from "../../../../components/Input/src";
-import { clickInput, datesTests, expectValue } from "@raikou/dates-tests";
-import { MonthPickerInput, MonthPickerInputProps } from "./MonthPickerInput";
-import { DatesProvider } from "../DatesProvider";
+} from '@mantine-tests/core';
+import { clickInput, datesTests, expectValue } from '@mantine-tests/dates';
+import { DatesProvider } from '../DatesProvider';
+import { MonthPickerInput, MonthPickerInputProps } from './MonthPickerInput';
 
 const defaultProps = {
   popoverProps: { withinPortal: false, transitionProps: { duration: 0 } },
@@ -21,7 +20,7 @@ const defaultPropsWithInputProps = {
   ...(inputDefaultProps as any),
 };
 
-describe("@raikou/dates/MonthPickerInput", () => {
+describe('@mantine/dates/MonthPickerInput', () => {
   tests.axe([
     <MonthPickerInput aria-label="test-label" />,
     <MonthPickerInput aria-label="test-label" error />,
@@ -37,21 +36,19 @@ describe("@raikou/dates/MonthPickerInput", () => {
     size: true,
     variant: true,
     classes: true,
+    id: true,
     refType: HTMLButtonElement,
-    displayName: "@raikou/dates/MonthPickerInput",
+    displayName: '@mantine/dates/MonthPickerInput',
     stylesApiSelectors: [...inputStylesApiSelectors],
   });
 
   tests.itSupportsInputProps<MonthPickerInputProps>({
     component: MonthPickerInput,
     props: defaultPropsWithInputProps,
-    selector: "button",
+    selector: 'button',
   });
 
-  datesTests.itSupportsDateInputProps({
-    component: MonthPickerInput,
-    props: defaultProps,
-  });
+  datesTests.itSupportsDateInputProps({ component: MonthPickerInput, props: defaultProps });
   datesTests.itSupportsClearableProps({
     component: MonthPickerInput,
     props: { ...defaultProps, defaultValue: new Date() },
@@ -60,13 +57,9 @@ describe("@raikou/dates/MonthPickerInput", () => {
     component: MonthPickerInput,
     props: {
       ...defaultProps,
-      defaultLevel: "decade",
+      defaultLevel: 'decade',
       defaultValue: new Date(2022, 3, 11),
-      popoverProps: {
-        opened: true,
-        withinPortal: false,
-        transitionProps: { duration: 0 },
-      },
+      popoverProps: { opened: true, withinPortal: false, transitionProps: { duration: 0 } },
     },
   });
 
@@ -75,23 +68,15 @@ describe("@raikou/dates/MonthPickerInput", () => {
     props: {
       ...defaultProps,
       defaultValue: new Date(2022, 3, 11),
-      popoverProps: {
-        opened: true,
-        withinPortal: false,
-        transitionProps: { duration: 0 },
-      },
+      popoverProps: { opened: true, withinPortal: false, transitionProps: { duration: 0 } },
     },
   });
 
-  it("supports valueFormat prop", () => {
+  it('supports valueFormat prop', () => {
     const { container, rerender } = render(
-      <MonthPickerInput
-        {...defaultProps}
-        valueFormat="MMMM"
-        value={new Date(2022, 3, 11)}
-      />,
+      <MonthPickerInput {...defaultProps} valueFormat="MMMM" value={new Date(2022, 3, 11)} />
     );
-    expectValue(container, "April");
+    expectValue(container, 'April');
 
     rerender(
       <MonthPickerInput
@@ -99,9 +84,9 @@ describe("@raikou/dates/MonthPickerInput", () => {
         type="multiple"
         valueFormat="MMMM"
         value={[new Date(2022, 3, 11), new Date(2022, 4, 11)]}
-      />,
+      />
     );
-    expectValue(container, "April, May");
+    expectValue(container, 'April, May');
 
     rerender(
       <MonthPickerInput
@@ -109,48 +94,44 @@ describe("@raikou/dates/MonthPickerInput", () => {
         type="range"
         valueFormat="MMMM"
         value={[new Date(2022, 3, 11), new Date(2022, 4, 11)]}
-      />,
+      />
     );
-    expectValue(container, "April – May");
+    expectValue(container, 'April – May');
   });
 
-  it("has correct default __staticSelector", () => {
+  it('has correct default __staticSelector', () => {
     const { container } = render(
       <MonthPickerInput
         {...defaultProps}
-        popoverProps={{
-          opened: true,
-          withinPortal: false,
-          transitionProps: { duration: 0 },
-        }}
-      />,
+        popoverProps={{ opened: true, withinPortal: false, transitionProps: { duration: 0 } }}
+      />
     );
-    expect(container.querySelector("[data-dates-input]")).toHaveClass(
-      "raikou-MonthPickerInput-input",
+    expect(container.querySelector('[data-dates-input]')).toHaveClass(
+      'mantine-MonthPickerInput-input'
     );
 
-    expect(container.querySelector("table button")).toHaveClass(
-      "raikou-MonthPickerInput-monthsListControl",
+    expect(container.querySelector('table button')).toHaveClass(
+      'mantine-MonthPickerInput-monthsListControl'
     );
   });
 
   it('can be controlled (type="default") with timezone', async () => {
     const spy = jest.fn();
     const { container } = render(
-      <DatesProvider settings={{ timezone: "UTC" }}>
+      <DatesProvider settings={{ timezone: 'UTC' }}>
         <MonthPickerInput
           {...defaultProps}
           date={new Date(2022, 0, 31, 23)}
           value={new Date(2022, 0, 31, 23)}
           onChange={spy}
         />
-      </DatesProvider>,
+      </DatesProvider>
     );
 
     await clickInput(container);
-    expect(container.querySelector("[data-selected]")!.textContent).toBe("Feb");
+    expect(container.querySelector('[data-selected]')!.textContent).toBe('Feb');
 
-    await userEvent.click(container.querySelector("table button")!);
+    await userEvent.click(container.querySelector('table button')!);
     expect(spy).toHaveBeenCalledWith(new Date(2021, 11, 31, 19));
   });
 });

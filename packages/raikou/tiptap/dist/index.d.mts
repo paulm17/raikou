@@ -4,6 +4,7 @@ import * as _raikou_core from '@raikou/core';
 import { BoxProps, CompoundStylesApiProps, ElementProps, Factory, StylesApiProps, RaikouRadius, RaikouShadow, RaikouSize, GetStylesApi } from '@raikou/core';
 import React$1 from 'react';
 import { Editor } from '@tiptap/react';
+import { ShiftOptions, FlipOptions, InlineOptions, SizeOptions } from '@floating-ui/react';
 
 declare const Link: _tiptap_core.Mark<_tiptap_extension_link.LinkOptions, any>;
 
@@ -64,6 +65,10 @@ interface RichTextEditorLabels {
     unsetColorControlLabel: string;
     /** RichTextEditor.Highlight control aria-label */
     highlightControlLabel: string;
+    /** RichTextEditor.Undo control aria-label */
+    undoControlLabel: string;
+    /** RichTextEditor.Redo control aria-label */
+    redoControlLabel: string;
     /** A function go get RichTextEditor.Color control aria-label based on color that control applies */
     colorControlLabel: (color: string) => string;
     /** aria-label for link editor url input */
@@ -88,6 +93,12 @@ interface RichTextEditorLabels {
     colorPickerSave: string;
     /** aria-label for color palette colors */
     colorPickerColorLabel: (color: string) => string;
+    /** aria-label for task list control */
+    tasksControlLabel: string;
+    /** aria-label for task list sink task */
+    tasksSinkLabel: string;
+    /** aria-label for task list lift task */
+    tasksLiftLabel: string;
 }
 declare const DEFAULT_LABELS: RichTextEditorLabels;
 
@@ -194,6 +205,11 @@ declare const CodeBlockControl: React$1.ForwardRefExoticComponent<RichTextEditor
 declare const HighlightControl: React$1.ForwardRefExoticComponent<RichTextEditorControlBaseProps & React$1.RefAttributes<HTMLButtonElement>>;
 declare const HrControl: React$1.ForwardRefExoticComponent<RichTextEditorControlBaseProps & React$1.RefAttributes<HTMLButtonElement>>;
 declare const UnsetColorControl: React$1.ForwardRefExoticComponent<RichTextEditorControlBaseProps & React$1.RefAttributes<HTMLButtonElement>>;
+declare const UndoControl: React$1.ForwardRefExoticComponent<RichTextEditorControlBaseProps & React$1.RefAttributes<HTMLButtonElement>>;
+declare const RedoControl: React$1.ForwardRefExoticComponent<RichTextEditorControlBaseProps & React$1.RefAttributes<HTMLButtonElement>>;
+declare const TaskListControl: React$1.ForwardRefExoticComponent<RichTextEditorControlBaseProps & React$1.RefAttributes<HTMLButtonElement>>;
+declare const TaskListSinkControl: React$1.ForwardRefExoticComponent<RichTextEditorControlBaseProps & React$1.RefAttributes<HTMLButtonElement>>;
+declare const TaskListLiftControl: React$1.ForwardRefExoticComponent<RichTextEditorControlBaseProps & React$1.RefAttributes<HTMLButtonElement>>;
 
 interface RaikouTransitionStyles {
     common?: React$1.CSSProperties;
@@ -230,10 +246,11 @@ interface TransitionProps {
 }
 type TransitionOverride = Partial<Omit<TransitionProps, "mounted">>;
 
-type FloatingPlacement = 'end' | 'start';
-type FloatingSide = 'top' | 'right' | 'bottom' | 'left';
+type FloatingPlacement = "end" | "start";
+type FloatingSide = "top" | "right" | "bottom" | "left";
 type FloatingPosition = FloatingSide | `${FloatingSide}-${FloatingPlacement}`;
-type ArrowPosition = 'center' | 'side';
+type ArrowPosition = "center" | "side";
+type FloatingStrategy = "absolute" | "fixed";
 interface FloatingAxesOffsets {
     mainAxis?: number;
     crossAxis?: number;
@@ -247,12 +264,12 @@ interface PortalProps extends React$1.ComponentPropsWithoutRef<"div"> {
     target?: HTMLElement | string;
 }
 
-type PopoverWidth = "target" | React.CSSProperties["width"];
+type PopoverWidth = "target" | React.CSSProperties["width"] | null;
 interface PopoverMiddlewares {
-    shift: boolean;
-    flip: boolean;
-    inline?: boolean;
-    size?: boolean;
+    shift?: boolean | ShiftOptions;
+    flip?: boolean | FlipOptions;
+    inline?: boolean | InlineOptions;
+    size?: boolean | SizeOptions;
 }
 
 type PopoverStylesNames = "dropdown" | "arrow";
@@ -304,6 +321,8 @@ interface __PopoverProps {
     disabled?: boolean;
     /** Determines whether focus should be automatically returned to control when dropdown closes, `false` by default */
     returnFocus?: boolean;
+    /** Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy), `'absolute'` by default */
+    floatingStrategy?: FloatingStrategy;
 }
 interface PopoverProps extends __PopoverProps, StylesApiProps<PopoverFactory> {
     __staticSelector?: string;
@@ -360,7 +379,7 @@ type ColorFormat = 'hex' | 'hexa' | 'rgba' | 'rgb' | 'hsl' | 'hsla';
 
 type ColorPickerStylesNames = "wrapper" | "preview" | "body" | "sliders" | "slider" | "sliderOverlay" | "thumb" | "saturation" | "saturationOverlay" | "swatches" | "swatch";
 type ColorPickerCssVariables = {
-    wrapper: "--cp-preview-size" | "--cp-width" | "--cp-body-spacing" | "--cp-swatch-size" | "--cp-thumb-size" | "--cp-saturation-height";
+    wrapper: "--cp-preview-size" | "--cp-width" | "--cp-body-spacing";
 };
 interface __ColorPickerProps {
     /** Controlled component value */
@@ -471,6 +490,11 @@ type RichTextEditorFactory = Factory<{
         Highlight: typeof HighlightControl;
         Hr: typeof HrControl;
         UnsetColor: typeof UnsetColorControl;
+        Undo: typeof UndoControl;
+        Redo: typeof RedoControl;
+        TaskList: typeof TaskListControl;
+        TaskListSink: typeof TaskListSinkControl;
+        TaskListLift: typeof TaskListLiftControl;
     };
 }>;
 declare const RichTextEditor: _raikou_core.RaikouComponent<{
@@ -511,6 +535,11 @@ declare const RichTextEditor: _raikou_core.RaikouComponent<{
         Highlight: typeof HighlightControl;
         Hr: typeof HrControl;
         UnsetColor: typeof UnsetColorControl;
+        Undo: typeof UndoControl;
+        Redo: typeof RedoControl;
+        TaskList: typeof TaskListControl;
+        TaskListSink: typeof TaskListSinkControl;
+        TaskListLift: typeof TaskListLiftControl;
     };
 }>;
 
@@ -523,4 +552,4 @@ interface RichTextEditorContext {
 }
 declare const useRichTextEditorContext: () => RichTextEditorContext;
 
-export { AlignCenterControl, AlignJustifyControl, AlignLeftControl, AlignRightControl, BlockquoteControl, BoldControl, BulletListControl, ClearFormattingControl, CodeBlockControl, CodeControl, DEFAULT_LABELS, H1Control, H2Control, H3Control, H4Control, H5Control, H6Control, HighlightControl, HrControl, ItalicControl, Link, OrderedListControl, RichTextEditor, RichTextEditorColorControl, type RichTextEditorColorControlProps, RichTextEditorColorPickerControl, RichTextEditorContent, type RichTextEditorContentProps, RichTextEditorControl, type RichTextEditorControlProps, RichTextEditorControlsGroup, type RichTextEditorControlsGroupProps, type RichTextEditorFactory, type RichTextEditorLabels, RichTextEditorLinkControl, type RichTextEditorLinkControlProps, type RichTextEditorProps, type RichTextEditorStylesNames, type RichTextEditorToolbarProps, StrikeThroughControl, SubscriptControl, SuperscriptControl, UnderlineControl, UnlinkControl, UnsetColorControl, useRichTextEditorContext };
+export { AlignCenterControl, AlignJustifyControl, AlignLeftControl, AlignRightControl, BlockquoteControl, BoldControl, BulletListControl, ClearFormattingControl, CodeBlockControl, CodeControl, DEFAULT_LABELS, H1Control, H2Control, H3Control, H4Control, H5Control, H6Control, HighlightControl, HrControl, ItalicControl, Link, OrderedListControl, RedoControl, RichTextEditor, RichTextEditorColorControl, type RichTextEditorColorControlProps, RichTextEditorColorPickerControl, RichTextEditorContent, type RichTextEditorContentProps, RichTextEditorControl, type RichTextEditorControlProps, RichTextEditorControlsGroup, type RichTextEditorControlsGroupProps, type RichTextEditorFactory, type RichTextEditorLabels, RichTextEditorLinkControl, type RichTextEditorLinkControlProps, type RichTextEditorProps, type RichTextEditorStylesNames, type RichTextEditorToolbarProps, StrikeThroughControl, SubscriptControl, SuperscriptControl, TaskListControl, TaskListLiftControl, TaskListSinkControl, UnderlineControl, UndoControl, UnlinkControl, UnsetColorControl, useRichTextEditorContext };

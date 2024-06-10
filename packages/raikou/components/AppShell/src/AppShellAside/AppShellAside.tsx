@@ -43,6 +43,7 @@ export const AppShellAside = factory<AppShellAsideFactory>((_props, ref) => {
     vars,
     withBorder,
     zIndex,
+    mod,
     ...others
   } = props;
   const ctx = useStore.getState();
@@ -55,7 +56,7 @@ export const AppShellAside = factory<AppShellAsideFactory>((_props, ref) => {
     <Box
       component="aside"
       ref={ref}
-      mod={{ "with-border": withBorder ?? ctx.withBorder }}
+      mod={[{ "with-border": withBorder ?? ctx.withBorder }, mod]}
       {...ctx.getStyles("aside", { className, classNames, styles, style })}
       {...others}
       __vars={{

@@ -49,6 +49,8 @@ interface ChipProps extends BoxProps, StylesApiProps<ChipFactory>, ElementProps<
     icon?: React.ReactNode;
     /** Assigns ref of the root element, can be used with `Tooltip` and other similar components */
     rootRef?: React.ForwardedRef<HTMLDivElement>;
+    /** Determines whether button text color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+    autoContrast?: boolean;
 }
 type ChipFactory = Factory<{
     props: ChipProps;

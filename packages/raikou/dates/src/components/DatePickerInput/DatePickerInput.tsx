@@ -1,27 +1,28 @@
 import React from "react";
 import {
   BoxProps,
-  StylesApiProps,
   factory,
-  useProps,
-  useResolvedStylesApi,
   Factory,
   RaikouComponentStaticProperties,
+  StylesApiProps,
+  useProps,
+  useResolvedStylesApi,
 } from "@raikou/core";
-import {
-  InputVariant,
-  __InputStylesNames,
-} from "../../../../components/Input/src";
-import { CalendarStylesNames, pickCalendarProps } from "../Calendar";
 import { useDatesInput } from "../../hooks";
-import { DatePicker, DatePickerBaseProps } from "../DatePicker";
 import { DatePickerType } from "../../types";
 import { getDefaultClampedDate, shiftTimezone } from "../../utils";
-import { PickerInputBase, DateInputSharedProps } from "../PickerInputBase";
+import { CalendarStylesNames, pickCalendarProps } from "../Calendar";
+import { DatePicker, DatePickerBaseProps } from "../DatePicker";
 import { useDatesContext } from "../DatesProvider";
+import { DateInputSharedProps, PickerInputBase } from "../PickerInputBase";
+import {
+  __InputStylesNames,
+  InputVariant,
+} from "../../../../components/Input/src";
 
 export type DatePickerInputStylesNames =
   | __InputStylesNames
+  | "placeholder"
   | CalendarStylesNames;
 
 export interface DatePickerInputProps<Type extends DatePickerType = "default">
@@ -79,6 +80,7 @@ export const DatePickerInput: DatePickerInputComponent =
       maxDate,
       vars,
       defaultDate,
+      valueFormatter,
       ...rest
     } = props;
 
@@ -109,12 +111,12 @@ export const DatePickerInput: DatePickerInputComponent =
       labelSeparator,
       closeOnChange,
       sortDates,
+      valueFormatter,
     });
 
     const _defaultDate = Array.isArray(_value)
       ? _value[0] || defaultDate
       : _value || defaultDate;
-
     const ctx = useDatesContext();
 
     return (
@@ -166,4 +168,5 @@ export const DatePickerInput: DatePickerInputComponent =
     );
   }) as any;
 
+DatePickerInput.classes = { ...PickerInputBase.classes, ...DatePicker.classes };
 DatePickerInput.displayName = "@raikou/dates/DatePickerInput";

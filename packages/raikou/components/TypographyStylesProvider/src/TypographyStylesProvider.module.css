@@ -1,11 +1,5 @@
 .root {
-  --raikou-tsp-table-caption: #868e96;
-  --raikou-tsp-table-th: #495057;
-  --raikou-tsp-table-thread-th: #dee2e6;
-  --raikou-tsp-table-tfoot-th: #dee2e6;
-  --raikou-tsp-table-td-border-color: #dee2e6;
-
-  @mixin light {
+  @mixin where-light {
     --raikou-tsp-mark-background-color: #ffec99;
     --raikou-tsp-mark-color: inherit;
     --raikou-tsp-hr-border-color: #dee2e6;
@@ -15,9 +9,9 @@
     --raikou-tsp-blockquote-background-color: #f8f9fa;
     --raikou-tsp-kdb-border-color: #dee2e6;
     --raikou-tsp-kdb-color: #495057;
-    --raikou-tsp-kdb-bg: #f8f9fa;
+    --raikou-tsp-kdb-background-color: #f8f9fa;
   }
-  @mixin dark {
+  @mixin where-dark {
     --raikou-tsp-mark-background-color: #fcc419;
     --raikou-tsp-mark-color: #000;
     --raikou-tsp-hr-border-color: #5c5f66;
@@ -28,78 +22,87 @@
     --raikou-tsp-blockquote-background-color: #141517;
     --raikou-tsp-kdb-border-color: #424242;
     --raikou-tsp-kdb-color: #c9c9c9;
-    --raikou-tsp-kdb-bg: #3b3b3b;
+    --raikou-tsp-kdb-background-color: #3b3b3b;
   }
 
-  & h1,
-  & h2,
-  & h3,
-  & h4,
-  & h5,
-  & h6 {
-    margin-top: calc(1.55 * var(--raikou-spacing-xl));
+  & :first-child {
+    margin-top: 0;
+  }
+
+  & :last-child {
+    margin-bottom: 0;
+  }
+
+  & :where(h1, h2, h3, h4, h5, h6) {
     margin-bottom: var(--raikou-spacing-xs);
+    text-wrap: var(--raikou-heading-text-wrap);
   }
 
-  & h1 {
+  & :where(h1) {
+    margin-top: calc(1.5 * var(--raikou-spacing-xl));
     font-size: var(--raikou-h1-font-size);
     line-height: var(--raikou-h1-line-height);
     font-weight: var(--raikou-h1-font-weight);
   }
 
-  & h2 {
+  & :where(h2) {
+    margin-top: var(--raikou-spacing-xl);
     font-size: var(--raikou-h2-font-size);
     line-height: var(--raikou-h2-line-height);
     font-weight: var(--raikou-h2-font-weight);
   }
 
-  & h3 {
+  & :where(h3) {
+    margin-top: calc(0.8 * var(--raikou-spacing-xl));
     font-size: var(--raikou-h3-font-size);
     line-height: var(--raikou-h3-line-height);
     font-weight: var(--raikou-h3-font-weight);
   }
 
-  & h4 {
+  & :where(h4) {
+    margin-top: calc(0.8 * var(--raikou-spacing-xl));
     font-size: var(--raikou-h4-font-size);
     line-height: var(--raikou-h4-line-height);
     font-weight: var(--raikou-h4-font-weight);
   }
 
-  & h5 {
+  & :where(h5) {
+    margin-top: calc(0.5 * var(--raikou-spacing-xl));
     font-size: var(--raikou-h5-font-size);
     line-height: var(--raikou-h5-line-height);
     font-weight: var(--raikou-h5-font-weight);
   }
 
-  & h6 {
+  & :where(h6) {
+    margin-top: calc(0.5 * var(--raikou-spacing-xl));
     font-size: var(--raikou-h6-font-size);
     line-height: var(--raikou-h6-line-height);
     font-weight: var(--raikou-h6-font-weight);
   }
 
-  & img {
+  & :where(img) {
     max-width: 100%;
     margin-bottom: var(--raikou-spacing-xs);
   }
 
-  & p {
+  & :where(p) {
     margin-top: 0;
     margin-bottom: var(--raikou-spacing-lg);
   }
 
-  & mark {
-    @mixin light {
+  & :where(mark) {
+    @mixin where-light {
       background-color: var(--raikou-tsp-mark-background-color);
       color: var(--raikou-tsp-mark-color);
     }
 
-    @mixin dark {
+    @mixin where-dark {
       background-color: var(--raikou-tsp-mark-background-color);
       color: var(--raikou-tsp-mark-color);
     }
   }
 
-  & a {
+  & :where(a) {
     color: var(--raikou-color-anchor);
     text-decoration: none;
 
@@ -108,22 +111,22 @@
     }
   }
 
-  & hr {
+  & :where(hr) {
     margin-top: var(--raikou-spacing-md);
     margin-bottom: var(--raikou-spacing-md);
     border: 0;
-    border-top: rem(1px) solid;
+    border-top: 1px solid;
 
-    @mixin light {
+    @mixin where-light {
       border-color: var(--raikou-tsp-hr-border-color);
     }
 
-    @mixin dark {
+    @mixin where-dark {
       border-color: var(--raikou-tsp-hr-border-color);
     }
   }
 
-  & pre {
+  & :where(pre) {
     padding: var(--raikou-spacing-xs);
     line-height: var(--raikou-line-height);
     margin: 0;
@@ -134,15 +137,15 @@
     font-size: var(--raikou-font-size-xs);
     border-radius: var(--raikou-radius-sm);
 
-    @mixin light {
+    @mixin where-light {
       background-color: var(--raikou-tsp-pre-border-color);
     }
 
-    @mixin dark {
+    @mixin where-dark {
       background-color: var(--raikou-tsp-pre-border-color);
     }
 
-    & code {
+    & :where(code) {
       background-color: transparent;
       padding: 0;
       border-radius: 0;
@@ -151,117 +154,113 @@
     }
   }
 
-  & kbd {
-    --kbd-fz: rem(12px);
-    --kbd-padding: rem(3px) rem(5px);
+  & :where(kbd) {
+    --kbd-fz: 12px;
+    --kbd-padding: 3px 5px;
 
-    font-family: var(--mantine-font-family-monospace);
-    line-height: var(--mantine-line-height);
+    font-family: var(--raikou-font-family-monospace);
+    line-height: var(--raikou-line-height);
     font-weight: 700;
     padding: var(--kbd-padding);
     font-size: var(--kbd-fz);
-    border-radius: var(--mantine-radius-sm);
-    border: rem(1px) solid var(--_kbd-border-color);
-    border-bottom-width: rem(3px);
-    background-color: var(--_kbd-bg);
-    color: var(--_kbd-color);
+    border-radius: var(--raikou-radius-sm);
+    border: 1px solid;
+    border-bottom-width: 3px;
 
-    @mixin light {
-      --_kbd-border-color: var(--raikou-tsp-kdb-border-color);
-      --_kbd-color: var(--raikou-tsp-kdb-color);
-      --_kbd-bg: var(--raikou-tsp-kdb-bg);
+    @mixin where-light {
+      border-color: var(--raikou-tsp-kdb-border-color);
+      color: var(--raikou-tsp-kdb-color);
+      background-color: var(--raikou-tsp-kdb-background-color);
     }
 
-    @mixin dark {
-      --_kbd-border-color: var(--raikou-tsp-kdb-border-color);
-      --_kbd-color: var(--raikou-tsp-kdb-color);
-      --_kbd-bg: var(--raikou-tsp-kdb-bg);
+    @mixin where-dark {
+      border-color: var(--raikou-tsp-kdb-border-color);
+      color: var(--raikou-tsp-kdb-color);
+      background-color: var(--raikou-tsp-kdb-background-color);
     }
   }
 
-  & code {
+  & :where(code) {
     line-height: var(--raikou-line-height);
-    padding: rem(1px) rem(5px);
+    padding: 1px 5px;
     border-radius: var(--raikou-radius-sm);
     font-family: var(--raikou-font-family-monospace);
     font-size: var(--raikou-font-size-xs);
 
-    @mixin light {
+    @mixin where-light {
       background-color: var(--raikou-tsp-code-background-color);
       color: var(--raikou-tsp-code-color);
     }
 
-    @mixin dark {
+    @mixin where-dark {
       background-color: var(--raikou-tsp-code-background-color);
       color: var(--raikou-tsp-code-color);
     }
   }
 
-  & ul,
-  &,
-  ol {
+  & :where(ul, ol):not([data-type="taskList"]) {
     margin-bottom: var(--raikou-spacing-md);
-    padding-left: rem(38px);
+    padding-inline-start: 38px;
 
-    & li {
+    & :where(li) {
       margin-bottom: var(--raikou-spacing-xs);
     }
   }
 
-  & table {
+  & :where(table) {
     width: 100%;
     border-collapse: collapse;
     caption-side: bottom;
     margin-bottom: var(--raikou-spacing-md);
 
-    & caption {
+    & :where(caption) {
       margin-top: var(--raikou-spacing-xs);
       font-size: var(--raikou-font-size-sm);
-      color: var(--raikou-tsp-table-caption);
+      color: var(--raikou-color-gray-6);
     }
 
-    & th {
+    & :where(th) {
       text-align: left;
       font-weight: bold;
-      color: var(--raikou-tsp-table-th);
+      color: var(--raikou-color-gray-7);
       font-size: var(--raikou-font-size-sm);
       padding: var(--raikou-spacing-xs) var(--raikou-spacing-sm);
     }
 
-    & thead th {
-      border-bottom: rem(1px) solid;
-      border-color: var(--raikou-tsp-table-thread-th);
+    & :where(thead th) {
+      border-bottom: 1px solid;
+      border-color: var(--raikou-color-gray-3);
     }
 
-    & tfoot th {
-      border-top: rem(1px) solid;
-      border-color: var(--raikou-tsp-table-tfoot-th);
+    & :where(tfoot th) {
+      border-top: 1px solid;
+      border-color: var(--raikou-color-gray-3);
     }
 
-    & td {
+    & :where(td) {
       padding: var(--raikou-spacing-xs) var(--raikou-spacing-sm);
-      border-bottom: rem(1px) solid;
-      border-color: var(--raikou-tsp-table-td-border-color);
+      border-bottom: 1px solid;
+      border-color: var(--raikou-color-gray-3);
       font-size: var(--raikou-font-size-sm);
     }
 
-    & tr:last-of-type td {
+    & :where(tr:last-of-type td) {
       border-bottom: 0;
     }
   }
 
-  & blockquote {
+  & :where(blockquote) {
     font-size: var(--raikou-font-size-lg);
     line-height: var(--raikou-line-height);
     margin: var(--raikou-spacing-md) 0;
     border-radius: var(--raikou-radius-sm);
     padding: var(--raikou-spacing-md) var(--raikou-spacing-lg);
 
-    @mixin light {
+    @mixin where-light {
       background-color: var(--raikou-tsp-blockquote-background-color);
     }
 
-    @mixin dark {
+    @mixin where-dark {
       background-color: var(--raikou-tsp-blockquote-background-color);
     }
   }

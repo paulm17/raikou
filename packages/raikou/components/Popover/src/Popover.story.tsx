@@ -9,12 +9,12 @@ export default { title: "Popover" };
 
 // export function Uncontrolled() {
 //   return (
-//     <RaikouThemeProvider
+//     <MantineThemeProvider
 //       theme={{
 //         components: {
 //           PopoverDropdown: Popover.Dropdown.extend({
 //             defaultProps: {
-//               "data-test": "red",
+//               'data-test': 'red',
 //             },
 //           }),
 //         },
@@ -26,32 +26,23 @@ export default { title: "Popover" };
 //             <button type="button">Toggle popover</button>
 //           </Popover.Target>
 
-//           <Popover.Dropdown
-//             data-test="orange"
-//             styles={(_, props: Record<string, any>) => ({
-//               dropdown: { background: props["data-test"] },
-//             })}
-//           >
-//             Dropdown
-//           </Popover.Dropdown>
+//           <Popover.Dropdown>Dropdown</Popover.Dropdown>
 //         </Popover>
 //       </div>
-//     </RaikouThemeProvider>
+//     </MantineThemeProvider>
 //   );
 // }
 
-export function withFloatingAutoUpdate() {
+export function AtTheEdge() {
   return (
-    <div style={{ padding: 40, height: 400, overflow: "scroll" }}>
-      <div style={{ height: 150 }} />
-      <Popover>
+    <div style={{ display: "flex", justifyContent: "flex-end" }}>
+      <Popover position="bottom-end" middlewares={{ shift: { padding: 20 } }}>
         <Popover.Target>
           <button type="button">Toggle popover</button>
         </Popover.Target>
 
         <Popover.Dropdown>Dropdown</Popover.Dropdown>
       </Popover>
-      <div style={{ height: 300 }} />
     </div>
   );
 }
@@ -98,35 +89,6 @@ export function WithArrowRadius() {
   );
 }
 
-export function KeepMounted() {
-  const [opened, setState] = useState(false);
-
-  return (
-    <div
-      style={{
-        padding: 100,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <Popover opened={opened} onChange={setState} keepMounted>
-        <Popover.Target>
-          <button type="button" onClick={() => setState((c) => !c)}>
-            Toggle popover
-          </button>
-        </Popover.Target>
-
-        <Popover.Dropdown>
-          <button type="button" onClick={() => setState(false)}>
-            Close
-          </button>
-        </Popover.Dropdown>
-      </Popover>
-    </div>
-  );
-}
-
 export function Controlled() {
   const [opened, setState] = useState(false);
 
@@ -149,6 +111,35 @@ export function Controlled() {
         radius="md"
         returnFocus
       >
+        <Popover.Target>
+          <button type="button" onClick={() => setState((c) => !c)}>
+            Toggle popover
+          </button>
+        </Popover.Target>
+
+        <Popover.Dropdown>
+          <button type="button" onClick={() => setState(false)}>
+            Close
+          </button>
+        </Popover.Dropdown>
+      </Popover>
+    </div>
+  );
+}
+
+export function KeepMounted() {
+  const [opened, setState] = useState(false);
+
+  return (
+    <div
+      style={{
+        padding: 100,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Popover opened={opened} onChange={setState} keepMounted>
         <Popover.Target>
           <button type="button" onClick={() => setState((c) => !c)}>
             Toggle popover

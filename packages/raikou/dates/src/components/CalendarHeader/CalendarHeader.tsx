@@ -2,19 +2,20 @@ import React from "react";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
-  factory,
+  createVarsResolver,
   ElementProps,
+  factory,
+  Factory,
+  getFontSize,
+  getSize,
+  RaikouSize,
+  StylesApiProps,
   useProps,
   useStyles,
-  createVarsResolver,
-  Factory,
-  RaikouSize,
-  getSize,
-  getFontSize,
 } from "@raikou/core";
-import { UnstyledButton } from "../../../../components/UnstyledButton/src";
 import { AccordionChevron } from "../../../../components/Accordion/src";
+import { UnstyledButton } from "../../../../components/UnstyledButton/src";
+
 import classes from "./CalendarHeader.module.css";
 
 export type CalendarHeaderStylesNames =
@@ -53,10 +54,10 @@ export interface CalendarHeaderSettings {
   /** Called when level button is clicked */
   onLevelClick?: () => void;
 
-  /** Determines whether next control should be disabled, defaults to true */
+  /** Determines whether next control should be disabled, defaults to false */
   nextDisabled?: boolean;
 
-  /** Determines whether previous control should be disabled, defaults to true */
+  /** Determines whether previous control should be disabled, defaults to false */
   previousDisabled?: boolean;
 
   /** Determines whether next level button should be enabled, defaults to true */
@@ -169,7 +170,7 @@ export const CalendarHeader = factory<CalendarHeaderFactory>((_props, ref) => {
           onMouseDown={preventFocus}
           disabled={previousDisabled}
           data-disabled={previousDisabled || undefined}
-          tabIndex={__preventFocus ? -1 : 0}
+          tabIndex={__preventFocus || previousDisabled ? -1 : 0}
           data-raikou-stop-propagation={__stopPropagation || undefined}
         >
           {previousIcon || (
@@ -207,7 +208,7 @@ export const CalendarHeader = factory<CalendarHeaderFactory>((_props, ref) => {
           onMouseDown={preventFocus}
           disabled={nextDisabled}
           data-disabled={nextDisabled || undefined}
-          tabIndex={__preventFocus ? -1 : 0}
+          tabIndex={__preventFocus || nextDisabled ? -1 : 0}
           data-raikou-stop-propagation={__stopPropagation || undefined}
         >
           {nextIcon || (

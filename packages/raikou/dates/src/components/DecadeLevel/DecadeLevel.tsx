@@ -1,25 +1,25 @@
 import React from "react";
+import dayjs from "dayjs";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
-  factory,
   ElementProps,
-  useProps,
+  factory,
   Factory,
+  StylesApiProps,
+  useProps,
 } from "@raikou/core";
-import dayjs from "dayjs";
-import {
-  YearsList,
-  YearsListSettings,
-  YearsListStylesNames,
-} from "../YearsList";
 import {
   CalendarHeader,
   CalendarHeaderSettings,
   CalendarHeaderStylesNames,
 } from "../CalendarHeader";
 import { useDatesContext } from "../DatesProvider";
+import {
+  YearsList,
+  YearsListSettings,
+  YearsListStylesNames,
+} from "../YearsList";
 import { getDecadeRange } from "./get-decade-range/get-decade-range";
 
 export type DecadeLevelStylesNames =
@@ -182,4 +182,5 @@ export const DecadeLevel = factory<DecadeLevelFactory>((_props, ref) => {
   );
 });
 
+DecadeLevel.classes = { ...YearsList.classes, ...CalendarHeader.classes };
 DecadeLevel.displayName = "@raikou/dates/DecadeLevel";

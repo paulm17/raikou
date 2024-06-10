@@ -27,18 +27,15 @@ export type CarouselSlideFactory = Factory<{
 const defaultProps: Partial<CarouselSlideProps> = {};
 
 export const CarouselSlide = factory<CarouselSlideFactory>((props, ref) => {
-  const { classNames, className, style, styles, vars, ...others } = useProps(
-    "CarouselSlide",
-    defaultProps,
-    props,
-  );
+  const { classNames, className, style, styles, vars, mod, ...others } =
+    useProps("CarouselSlide", defaultProps, props);
 
   const ctx = useCarouselContext();
 
   return (
     <Box
       ref={ref}
-      mod={{ orientation: ctx.orientation }}
+      mod={[{ orientation: ctx.orientation }, mod]}
       {...ctx.getStyles("slide", { className, style, classNames, styles })}
       {...others}
     />

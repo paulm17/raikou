@@ -1,68 +1,60 @@
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Divider/src/Divider.module.css/#css-module-data */
-[data-raikou-color-scheme=light] .m-3eebeb36 {
+:where([data-raikou-color-scheme=light]) .m-3eebeb36 {
   --raikou-divider-color: #ced4da;
 }
-[data-raikou-color-scheme=dark] .m-3eebeb36 {
+:where([data-raikou-color-scheme=dark]) .m-3eebeb36 {
   --raikou-divider-color: #373a40;
 }
 .m-3eebeb36 {
-  --divider-size-xs: calc(0.0625rem * var(--raikou-scale));
-  --divider-size-sm: calc(0.125rem * var(--raikou-scale));
-  --divider-size-md: calc(0.1875rem * var(--raikou-scale));
-  --divider-size-lg: calc(0.25rem * var(--raikou-scale));
-  --divider-size-xl: calc(0.3125rem * var(--raikou-scale));
+  --divider-size-xs: 1px;
+  --divider-size-sm: 2px;
+  --divider-size-md: 3px;
+  --divider-size-lg: 4px;
+  --divider-size-xl: 5px;
   --divider-size: var(--divider-size-xs);
 }
-[data-raikou-color-scheme=light] .m-3eebeb36 {
-  --_divider-color: var(--raikou-divider-color);
+:where([data-raikou-color-scheme=light]) .m-3eebeb36 {
+  --divider-color: var(--raikou-divider-color);
 }
-[data-raikou-color-scheme=dark] .m-3eebeb36 {
-  --_divider-color: var(--raikou-divider-color);
+:where([data-raikou-color-scheme=dark]) .m-3eebeb36 {
+  --divider-color: var(--raikou-divider-color);
 }
-.m-3eebeb36[data-orientation=horizontal] {
-  border-top: var(--divider-size) var(--divider-border-style, solid) var(--divider-color, var(--_divider-color));
+.m-3eebeb36:where([data-orientation=horizontal]) {
+  border-top: var(--divider-size) var(--divider-border-style, solid) var(--divider-color);
 }
-.m-3eebeb36[data-orientation=vertical] {
-  border-left: var(--divider-size) var(--divider-border-style, solid) var(--divider-color, var(--_divider-color));
+.m-3eebeb36:where([data-orientation=vertical]) {
+  border-inline-start: var(--divider-size) var(--divider-border-style, solid) var(--divider-color);
   height: auto;
   align-self: stretch;
 }
-.m-3eebeb36[data-with-label] {
+.m-3eebeb36:where([data-with-label]) {
   border: 0;
 }
 .m-9e365f20 {
   display: flex;
   align-items: center;
   font-size: var(--raikou-font-size-xs);
-  color: var(--divider-color, var(--raikou-color-dimmed));
+  color: var(--raikou-color-dimmed);
   white-space: nowrap;
 }
-.m-9e365f20[data-position=left]::before {
+.m-9e365f20:where([data-position=left])::before {
   display: none;
 }
-.m-9e365f20[data-position=right]::after {
+.m-9e365f20:where([data-position=right])::after {
   display: none;
 }
 .m-9e365f20::before {
   content: "";
   flex: 1;
-  height: calc(0.0625rem * var(--raikou-scale));
-  border-top: var(--divider-size) var(--divider-border-style, solid) var(--divider-color, var(--_divider-color));
-  margin-right: var(--raikou-spacing-xs);
-}
-[dir=rtl] .m-9e365f20::before {
-  margin-right: 0;
-  margin-left: var(--raikou-spacing-xs);
+  height: 1px;
+  border-top: var(--divider-size) var(--divider-border-style, solid) var(--divider-color);
+  margin-inline-end: var(--raikou-spacing-xs);
 }
 .m-9e365f20::after {
   content: "";
   flex: 1;
-  height: calc(0.0625rem * var(--raikou-scale));
-  border-top: var(--divider-size) var(--divider-border-style, solid) var(--divider-color, var(--_divider-color));
-  margin-left: var(--raikou-spacing-xs);
-}
-[dir=rtl] .m-9e365f20::after {
-  margin-left: 0;
-  margin-right: var(--raikou-spacing-xs);
+  height: 1px;
+  border-top: var(--divider-size) var(--divider-border-style, solid) var(--divider-color);
+  margin-inline-start: var(--raikou-spacing-xs);
 }
 /*# sourceMappingURL=index.css.map */

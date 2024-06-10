@@ -4,39 +4,39 @@
   }
 
   100% {
-    background-position: rem(40px) 0;
+    background-position: 40px 0;
   }
 }
 
 .root {
-  [data-raikou-color-scheme="light"] & {
+  @mixin where-light {
     --raikou-progress-track-bg: #e9ecef;
   }
-  [data-raikou-color-scheme="dark"] & {
+  @mixin where-dark {
     --raikou-progress-track-bg: #373a40;
   }
 
   --progress-radius: var(--raikou-radius-default);
-  --progress-size-xs: rem(3px);
-  --progress-size-sm: rem(5px);
-  --progress-size-md: rem(8px);
-  --progress-size-lg: rem(12px);
-  --progress-size-xl: rem(16px);
   --progress-size: var(--progress-size-md);
+
+  --progress-size-xs: 3px;
+  --progress-size-sm: 5px;
+  --progress-size-md: 8px;
+  --progress-size-lg: 12px;
+  --progress-size-xl: 16px;
 
   position: relative;
   height: var(--progress-size);
   border-radius: var(--progress-radius);
   overflow: hidden;
-  background-color: var(--_track-bg);
   display: flex;
 
-  @mixin light {
-    --_track-bg: var(--raikou-progress-track-bg);
+  @mixin where-light {
+    background-color: var(--raikou-progress-track-bg);
   }
 
-  @mixin dark {
-    --_track-bg: var(--raikou-progress-track-bg);
+  @mixin where-dark {
+    background-color: var(--raikou-progress-track-bg);
   }
 }
 
@@ -48,13 +48,11 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-radius: var(--_section-radius);
-  background-size: rem(20px) rem(20px);
-  background-image: var(--_section-gradient);
-  animation: var(--_section-animation);
+  background-size: 20px 20px;
+  transition: width var(--progress-transition-duration, 100ms) ease;
 
-  &[data-striped] {
-    --_section-gradient: linear-gradient(
+  &:where([data-striped]) {
+    background-image: linear-gradient(
       45deg,
       rgba(255, 255, 255, 0.15) 25%,
       transparent 25%,
@@ -66,29 +64,25 @@
     );
   }
 
-  &[data-animated] {
-    --_section-animation: stripes-animation 1s linear infinite;
+  &:where([data-animated]) {
+    animation: stripes-animation 1s linear infinite;
   }
 
-  &:last-of-type {
-    --_section-radius: 0 var(--progress-radius) var(--progress-radius) 0;
-
-    @mixin rtl {
-      --_section-radius: var(--progress-radius) 0 0 var(--progress-radius);
-    }
+  &:where(:last-of-type) {
+    border-radius: 0;
+    border-start-end-radius: var(--progress-radius);
+    border-end-end-radius: var(--progress-radius);
   }
 
-  &:first-of-type {
-    --_section-radius: var(--progress-radius) 0 0 var(--progress-radius);
-
-    @mixin rtl {
-      --_section-radius: 0 var(--progress-radius) var(--progress-radius) 0;
-    }
+  &:where(:first-of-type) {
+    border-radius: 0;
+    border-start-start-radius: var(--progress-radius);
+    border-end-start-radius: var(--progress-radius);
   }
 }
 
 .label {
-  color: var(--raikou-color-white);
+  color: var(--progress-label-color, var(--raikou-color-white));
   font-weight: bold;
   user-select: none;
   overflow: hidden;
@@ -96,6 +90,5 @@
   text-overflow: ellipsis;
   font-size: min(calc(var(--progress-size) * 0.65), rem(18px));
   line-height: 1;
-  padding-left: rem(4px);
-  padding-right: rem(4px);
+  padding-inline: 4px;
 }

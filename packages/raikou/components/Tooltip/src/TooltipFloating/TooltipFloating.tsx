@@ -21,6 +21,7 @@ import {
   TooltipStylesNames,
 } from "../Tooltip.types";
 import { useFloatingTooltip } from "./use-floating-tooltip";
+import classes from "../Tooltip.module.css";
 
 export interface TooltipFloatingProps extends TooltipBaseProps {
   /** Offset from mouse in px, `10` by default */
@@ -47,6 +48,7 @@ const varsResolver = createVarsResolver<TooltipFloatingFactory>(
     tooltip: {
       "--tooltip-radius": radius === undefined ? undefined : getRadius(radius),
       "--tooltip-bg": color ? getThemeColor(color, theme) : undefined,
+      "--tooltip-color": color ? "var(--raikou-color-white)" : undefined,
     },
   }),
 );
@@ -81,10 +83,7 @@ export const TooltipFloating = factory<TooltipFloatingFactory>(
     const getStyles = useStyles<TooltipFloatingFactory>({
       name: "TooltipFloating",
       props,
-      classes: {
-        tooltip: "tooltip-root",
-        arrow: "tooltip-arrow",
-      },
+      classes,
       className,
       style,
       classNames,
@@ -136,6 +135,7 @@ export const TooltipFloating = factory<TooltipFloatingFactory>(
             })}
             variant={variant}
             ref={floating}
+            mod={{ multiline }}
           >
             {label}
           </Box>

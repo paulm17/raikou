@@ -9,8 +9,8 @@ interface FloatingArrowProps extends React.ComponentPropsWithoutRef<"div"> {
   arrowOffset: number;
   arrowRadius: number;
   arrowPosition: ArrowPosition;
-  arrowX: number;
-  arrowY: number;
+  arrowX: number | undefined;
+  arrowY: number | undefined;
   visible: boolean | undefined;
 }
 
@@ -28,7 +28,7 @@ export const FloatingArrow = forwardRef<HTMLDivElement, FloatingArrowProps>(
       style,
       ...others
     },
-    ref
+    ref,
   ) => {
     const { dir } = useDirection();
     if (!visible) {
@@ -54,7 +54,7 @@ export const FloatingArrow = forwardRef<HTMLDivElement, FloatingArrowProps>(
         }}
       />
     );
-  }
+  },
 );
 
 FloatingArrow.displayName = "@raikou/core/FloatingArrow";

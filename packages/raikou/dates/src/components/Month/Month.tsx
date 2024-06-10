@@ -1,26 +1,26 @@
-import dayjs from "dayjs";
 import React from "react";
+import dayjs from "dayjs";
 import {
   Box,
   BoxProps,
-  StylesApiProps,
-  factory,
   ElementProps,
-  useProps,
-  useStyles,
+  factory,
   Factory,
   RaikouSize,
+  StylesApiProps,
+  useProps,
   useResolvedStylesApi,
+  useStyles,
 } from "@raikou/core";
 import { ControlKeydownPayload, DayOfWeek } from "../../types";
-import { Day, DayProps, DayStylesNames } from "../Day";
-import { getMonthDays } from "./get-month-days/get-month-days";
 import { useDatesContext } from "../DatesProvider";
-import { getDateInTabOrder } from "./get-date-in-tab-order/get-date-in-tab-order";
-import { isSameMonth } from "./is-same-month/is-same-month";
-import { isBeforeMaxDate } from "./is-before-max-date/is-before-max-date";
-import { isAfterMinDate } from "./is-after-min-date/is-after-min-date";
+import { Day, DayProps, DayStylesNames } from "../Day";
 import { WeekdaysRow } from "../WeekdaysRow";
+import { getDateInTabOrder } from "./get-date-in-tab-order/get-date-in-tab-order";
+import { getMonthDays } from "./get-month-days/get-month-days";
+import { isAfterMinDate } from "./is-after-min-date/is-after-min-date";
+import { isBeforeMaxDate } from "./is-before-max-date/is-before-max-date";
+import { isSameMonth } from "./is-same-month/is-same-month";
 import classes from "./Month.module.css";
 
 export type MonthStylesNames =
@@ -184,7 +184,11 @@ export const Month = factory<MonthFactory>((_props, ref) => {
   });
 
   const ctx = useDatesContext();
-  const dates = getMonthDays(month, ctx.getFirstDayOfWeek(firstDayOfWeek));
+  const dates = getMonthDays({
+    month,
+    firstDayOfWeek: ctx.getFirstDayOfWeek(firstDayOfWeek),
+    consistentWeeks: ctx.consistentWeeks,
+  });
 
   const dateInTabOrder = getDateInTabOrder(
     dates,
@@ -253,6 +257,7 @@ export const Month = factory<MonthFactory>((_props, ref) => {
             }}
             onClick={(event) => {
               dayProps?.onClick?.(event);
+
               __onDayClick?.(event, date);
             }}
             onMouseDown={(event) => {

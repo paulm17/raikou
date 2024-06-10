@@ -1,36 +1,34 @@
 import React, { useState } from "react";
 import { TagsInput, TagsInputScroller } from "./TagsInput";
 import { Box } from "../../Box/src";
-// import { RaikouThemeProvider } from '../../core';
 import { Button } from "../../Button/src";
-// import { ScrollArea as MantineScrollArea } from "../../ScrollArea/src";
 
 export default { title: "TagsInput" };
 
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      {/* <RaikouThemeProvider
-        theme={{
-          components: {
-            TagsInput: TagsInput.extend({
-              styles: (_, props) => ({
-                root: { outline: `2px solid ${(props as any)['data-test']}` },
-                pill: { border: '1px solid red' },
-              }),
-            }),
-          },
-        }}
-      > */}
+      <TagsInput defaultValue={["React", "Angular"]} placeholder="Enter tags" />
+    </div>
+  );
+}
+
+export function Disabled() {
+  return (
+    <div style={{ padding: 40 }}>
       <TagsInput
+        disabled
+        label="disabled"
         defaultValue={["React", "Angular"]}
         placeholder="Enter tags"
-        variant="filled"
-        leftSection="$$"
-        rightSection="kg"
-        data-test="orange"
       />
-      {/* </RaikouThemeProvider> */}
+      <fieldset disabled>
+        <TagsInput
+          label="disabled fieldset"
+          defaultValue={["React", "Angular"]}
+          placeholder="Enter tags"
+        />
+      </fieldset>
     </div>
   );
 }
@@ -61,6 +59,18 @@ export function Clearable() {
         clearable
         readOnly
         mt="md"
+      />
+    </div>
+  );
+}
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <TagsInput
+        defaultValue={["React", "Angular"]}
+        placeholder="Enter tags"
+        unstyled
       />
     </div>
   );

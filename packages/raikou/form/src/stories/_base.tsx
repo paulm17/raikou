@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { Button, Group, Code } from "@raikou/server";
-import { rem } from "@raikou/core";
+import { useState } from "react";
+import { Box, Button, Code, Group, rem } from "@raikou/core";
 
 export function FormBase({ children, form }: any) {
   const [values, setValues] = useState({});
@@ -27,6 +26,11 @@ export function FormBase({ children, form }: any) {
       <div>Submitted values:</div>
       <Code block mt={5}>
         {JSON.stringify(values, null, 2)}
+      </Code>
+
+      <Box mt="md">Form values:</Box>
+      <Code block mt={5}>
+        {JSON.stringify(form.values, null, 2)}
       </Code>
     </form>
   );

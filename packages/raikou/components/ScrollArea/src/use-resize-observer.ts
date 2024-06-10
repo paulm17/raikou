@@ -1,8 +1,8 @@
-import { useIsomorphicEffect, useCallbackRef } from "@raikou/hooks";
+import { useCallbackRef, useIsomorphicEffect } from "@raikou/hooks";
 
 export function useResizeObserver(
   element: HTMLElement | null,
-  onResize: () => void
+  onResize: () => void,
 ) {
   const handleResize = useCallbackRef(onResize);
 

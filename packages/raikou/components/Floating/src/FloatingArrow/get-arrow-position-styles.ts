@@ -1,16 +1,16 @@
 import { rem } from "@raikou/core";
 import type {
+  ArrowPosition,
+  FloatingPlacement,
   FloatingPosition,
   FloatingSide,
-  FloatingPlacement,
-  ArrowPosition,
-} from "../../types";
+} from "../types";
 
 function horizontalSide(
   placement: FloatingPlacement | "center",
-  arrowY: number,
+  arrowY: number | undefined,
   arrowOffset: number,
-  arrowPosition: ArrowPosition
+  arrowPosition: ArrowPosition,
 ) {
   if (placement === "center" || arrowPosition === "center") {
     return { top: arrowY };
@@ -29,10 +29,10 @@ function horizontalSide(
 
 function verticalSide(
   placement: FloatingPlacement | "center",
-  arrowX: number,
+  arrowX: number | undefined,
   arrowOffset: number,
   arrowPosition: ArrowPosition,
-  dir: "rtl" | "ltr"
+  dir: "rtl" | "ltr",
 ) {
   if (placement === "center" || arrowPosition === "center") {
     return { left: arrowX };
@@ -80,13 +80,13 @@ export function getArrowPositionStyles({
   arrowOffset: number;
   arrowRadius: number;
   arrowPosition: ArrowPosition;
-  arrowX: number;
-  arrowY: number;
+  arrowX: number | undefined;
+  arrowY: number | undefined;
   dir: "rtl" | "ltr";
 }) {
   const [side, placement = "center"] = position.split("-") as [
     FloatingSide,
-    FloatingPlacement
+    FloatingPlacement,
   ];
   const baseStyles = {
     width: rem(arrowSize),

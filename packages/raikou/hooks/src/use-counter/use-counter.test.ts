@@ -1,13 +1,13 @@
-import { renderHook, act } from "@testing-library/react";
-import { useCounter } from "./use-counter";
+import { act, renderHook } from '@testing-library/react';
+import { useCounter } from './use-counter';
 
-describe("@raikou/hooks/use-counter", () => {
-  it("correctly returns initial state", () => {
+describe('@mantine/hooks/use-counter', () => {
+  it('correctly returns initial state', () => {
     const hook = renderHook(() => useCounter(20, { min: 0, max: 100 }));
     expect(hook.result.current[0]).toBe(20);
   });
 
-  it("correctly performs operations without initialValue or options", () => {
+  it('correctly performs operations without initialValue or options', () => {
     const hook = renderHook(() => useCounter());
     expect(hook.result.current[0]).toBe(0);
 
@@ -24,7 +24,7 @@ describe("@raikou/hooks/use-counter", () => {
     expect(hook.result.current[0]).toBe(0);
   });
 
-  it("correctly performs operations with initialValue and options", () => {
+  it('correctly performs operations with initialValue and options', () => {
     const hook = renderHook(() => useCounter(11, { min: -10, max: 10 }));
     expect(hook.result.current[0]).toBe(10);
 

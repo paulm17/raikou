@@ -1,7 +1,11 @@
 import React, { forwardRef } from "react";
-import { GradientPickerColorSlider, SliderBaseProps } from "../colorSlider";
+import {
+  ColorSlider,
+  ColorSliderProps,
+} from "../../../../ColorPicker/src/ColorSlider/ColorSlider";
 
-export interface SaturationSliderProps extends SliderBaseProps {
+export interface SaturationSliderProps
+  extends Omit<ColorSliderProps, "maxValue" | "overlays" | "round"> {
   hsl: Number[];
 }
 
@@ -24,7 +28,7 @@ export const SaturationSlider = forwardRef<
     };
 
     return (
-      <GradientPickerColorSlider
+      <ColorSlider
         {...others}
         ref={ref}
         value={value}

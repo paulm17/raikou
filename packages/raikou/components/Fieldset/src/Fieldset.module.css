@@ -1,15 +1,15 @@
 .root {
-  @mixin light {
-    --raikou-fieldset-default-bd: #dee2e6;
-    --raikou-fieldset-default-bg: #fff;
-    --raikou-fieldset-filled-bd: #dee2e6;
-    --raikou-fieldset-filled-bg: #f8f9fa;
+  @mixin where-light {
+    --raikou-fieldset-default-border-color: #dee2e6;
+    --raikou-fieldset-default-background-color: #fff;
+    --raikou-fieldset-filled-border-color: #dee2e6;
+    --raikou-fieldset-filled-background-color: #f8f9fa;
   }
-  @mixin dark {
-    --raikou-fieldset-default-bd: #373a40;
-    --raikou-fieldset-default-bg: #1a1b1e;
-    --raikou-fieldset-filled-bd: #373a40;
-    --raikou-fieldset-filled-bg: #25262b;
+  @mixin where-dark {
+    --raikou-fieldset-default-background-color: #373a40;
+    --raikou-fieldset-default-border-color: #1a1b1e;
+    --raikou-fieldset-filled-border-color: #373a40;
+    --raikou-fieldset-filled-background-color: #25262b;
   }
 
   padding: var(--raikou-spacing-lg);
@@ -19,32 +19,30 @@
 }
 
 .root--default {
-  background-color: var(--_bg);
-  border: rem(1px) solid var(--_bd);
+  border: 1px solid;
 
-  @mixin light {
-    --_bd: var(--raikou-fieldset-default-bd);
-    --_bg: var(--raikou-fieldset-default-bg);
+  @mixin where-light {
+    border-color: var(--raikou-fieldset-default-border-color);
+    background-color: var(--raikou-fieldset-default-background-color);
   }
 
-  @mixin dark {
-    --_bd: var(--raikou-fieldset-default-bd);
-    --_bg: var(--raikou-fieldset-default-bg);
+  @mixin where-dark {
+    border-color: var(--raikou-fieldset-default-border-color);
+    background-color: var(--raikou-fieldset-default-background-color);
   }
 }
 
 .root--filled {
-  background-color: var(--_bg);
-  border: rem(1px) solid var(--_bd);
+  border: 1px solid;
 
-  @mixin light {
-    --_bd: var(--raikou-fieldset-filled-bd);
-    --_bg: var(--raikou-fieldset-filled-bg);
+  @mixin where-light {
+    border-color: var(--raikou-fieldset-filled-border-color);
+    background-color: var(--raikou-fieldset-filled-background-color);
   }
 
-  @mixin dark {
-    --_bd: var(--raikou-fieldset-filled-bd);
-    --_bg: var(--raikou-fieldset-filled-bg);
+  @mixin where-dark {
+    border-color: var(--raikou-fieldset-filled-border-color);
+    background-color: var(--raikou-fieldset-filled-background-color);
   }
 }
 
@@ -58,7 +56,7 @@
   font-size: var(--raikou-font-size-sm);
 }
 
-.root--unstyled .legend {
+.legend--unstyled {
   padding: 0;
   margin-bottom: var(--raikou-spacing-sm);
 }

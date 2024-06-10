@@ -71,6 +71,7 @@ export const InputLabel = factory<InputLabelFactory>((_props, ref) => {
     children,
     __staticSelector,
     variant,
+    mod,
     ...others
   } = useProps("InputLabel", defaultProps, props);
 
@@ -78,10 +79,6 @@ export const InputLabel = factory<InputLabelFactory>((_props, ref) => {
     name: ["InputWrapper", __staticSelector],
     props,
     classes,
-    // classes: {
-    //   label: "inputWrapper-label",
-    //   required: "inputWrapper-required",
-    // },
     className,
     style,
     classNames,
@@ -103,7 +100,7 @@ export const InputLabel = factory<InputLabelFactory>((_props, ref) => {
       size={size}
       ref={ref}
       htmlFor={labelElement === "label" ? htmlFor : undefined}
-      mod={{ required }}
+      mod={[{ required }, mod]}
       onMouseDown={(event) => {
         onMouseDown?.(event as any);
         if (!event.defaultPrevented && event.detail > 1) {

@@ -1,18 +1,18 @@
-import dayjs from "dayjs";
-import { useState } from "react";
-import { DatePickerType, PickerBaseProps } from "../../types";
-import { useUncontrolledDates } from "../use-uncontrolled-dates/use-uncontrolled-dates";
-import { isInRange } from "./is-in-range/is-in-range";
+import dayjs from 'dayjs';
+import { useEffect, useState } from 'react';
+import { DatePickerType, PickerBaseProps } from '../../types';
+import { useUncontrolledDates } from '../use-uncontrolled-dates/use-uncontrolled-dates';
+import { isInRange } from './is-in-range/is-in-range';
 
-interface UseDatesRangeInput<Type extends DatePickerType = "default">
+interface UseDatesRangeInput<Type extends DatePickerType = 'default'>
   extends PickerBaseProps<Type> {
-  level: "year" | "month" | "day";
+  level: 'year' | 'month' | 'day';
   type: Type;
   onMouseLeave?: (event: React.MouseEvent<HTMLDivElement>) => void;
   applyTimezone?: boolean;
 }
 
-export function useDatesState<Type extends DatePickerType = "default">({
+export function useDatesState<Type extends DatePickerType = 'default'>({
   type,
   level,
   value,
@@ -32,12 +32,12 @@ export function useDatesState<Type extends DatePickerType = "default">({
   });
 
   const [pickedDate, setPickedDate] = useState<Date | null>(
-    type === "range" ? (_value[0] && !_value[1] ? _value[0] : null) : null,
+    type === 'range' ? (_value[0] && !_value[1] ? _value[0] : null) : null
   );
   const [hoveredDate, setHoveredDate] = useState<Date | null>(null);
 
   const onDateChange = (date: Date) => {
-    if (type === "range") {
+    if (type === 'range') {
       if (pickedDate instanceof Date && !_value[1]) {
         if (dayjs(date).isSame(pickedDate, level) && !allowSingleDateInRange) {
           setPickedDate(null);
@@ -72,15 +72,9 @@ export function useDatesState<Type extends DatePickerType = "default">({
       return;
     }
 
-    if (type === "multiple") {
-      if (
-        _value.some((selected: Date) => dayjs(selected).isSame(date, level))
-      ) {
-        setValue(
-          _value.filter(
-            (selected: Date) => !dayjs(selected).isSame(date, level),
-          ),
-        );
+    if (type === 'multiple') {
+      if (_value.some((selected: Date) => dayjs(selected).isSame(date, level))) {
+        setValue(_value.filter((selected: Date) => !dayjs(selected).isSame(date, level)));
       } else {
         setValue([..._value, date]);
       }
@@ -108,7 +102,7 @@ export function useDatesState<Type extends DatePickerType = "default">({
   };
 
   const onRootMouseLeave =
-    type === "range"
+    type === 'range'
       ? (event: React.MouseEvent<HTMLDivElement>) => {
           onMouseLeave?.(event);
           setHoveredDate(null);
@@ -136,44 +130,42 @@ export function useDatesState<Type extends DatePickerType = "default">({
       return false;
     }
 
-    return (
-      dayjs(hoveredDate).isBefore(_value[0]) &&
-      dayjs(date).isSame(_value[0], level)
-    );
+    return dayjs(hoveredDate).isBefore(_value[0]) && dayjs(date).isSame(_value[0], level);
   };
 
   const getControlProps = (date: Date) => {
-    if (type === "range") {
+    if (type === 'range') {
       return {
         selected: _value.some(
-          (selection: Date) =>
-            selection && dayjs(selection).isSame(date, level),
+          (selection: Date) => selection && dayjs(selection).isSame(date, level)
         ),
         inRange: isDateInRange(date),
         firstInRange: isFirstInRange(date),
         lastInRange: isLastInRange(date),
-        "data-autofocus":
-          (!!_value[0] && dayjs(_value[0]).isSame(date, level)) || undefined,
+        'data-autofocus': (!!_value[0] && dayjs(_value[0]).isSame(date, level)) || undefined,
       };
     }
 
-    if (type === "multiple") {
+    if (type === 'multiple') {
       return {
         selected: _value.some(
-          (selection: Date) =>
-            selection && dayjs(selection).isSame(date, level),
+          (selection: Date) => selection && dayjs(selection).isSame(date, level)
         ),
-        "data-autofocus":
-          (!!_value[0] && dayjs(_value[0]).isSame(date, level)) || undefined,
+        'data-autofocus': (!!_value[0] && dayjs(_value[0]).isSame(date, level)) || undefined,
       };
     }
 
     const selected = dayjs(_value).isSame(date, level);
-    return { selected, "data-autofocus": selected || undefined };
+    return { selected, 'data-autofocus': selected || undefined };
   };
 
-  const onHoveredDateChange =
-    type === "range" && pickedDate ? setHoveredDate : () => {};
+  const onHoveredDateChange = type === 'range' && pickedDate ? setHoveredDate : () => {};
+
+  useEffect(() => {
+    if (type === 'range' && !_value[0] && !_value[1]) {
+      setPickedDate(null);
+    }
+  }, [value]);
 
   return {
     onDateChange,

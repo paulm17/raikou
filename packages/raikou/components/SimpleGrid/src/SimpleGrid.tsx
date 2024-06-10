@@ -12,10 +12,13 @@ import {
   StyleProp,
   RaikouSpacing,
 } from "@raikou/core";
-import { SimpleGridVariables } from "./SimpleGridVariables";
+import {
+  SimpleGridContainerVariables,
+  SimpleGridMediaVariables,
+} from "./SimpleGridVariables";
 import classes from "./SimpleGrid.module.css";
 
-export type SimpleGridStylesNames = "root";
+export type SimpleGridStylesNames = "root" | "container";
 
 export interface SimpleGridProps
   extends BoxProps,
@@ -29,6 +32,9 @@ export interface SimpleGridProps
 
   /** Spacing between rows, `'md'` by default */
   verticalSpacing?: StyleProp<RaikouSpacing>;
+
+  /** Determines typeof of queries that are used for responsive styles, `'media'` by default */
+  type?: "media" | "container";
 }
 
 export type SimpleGridFactory = Factory<{
@@ -40,6 +46,7 @@ export type SimpleGridFactory = Factory<{
 const defaultProps: Partial<SimpleGridProps> = {
   cols: 1,
   spacing: "md",
+  type: "media",
 };
 
 export const SimpleGrid = factory<SimpleGridFactory>((_props, ref) => {
@@ -54,6 +61,7 @@ export const SimpleGrid = factory<SimpleGridFactory>((_props, ref) => {
     cols,
     verticalSpacing,
     spacing,
+    type,
     ...others
   } = props;
 
@@ -71,13 +79,36 @@ export const SimpleGrid = factory<SimpleGridFactory>((_props, ref) => {
 
   const responsiveClassName = useRandomClassName();
 
+  if (type === "container") {
+    return (
+      <>
+        <div>
+          <SimpleGridContainerVariables
+            {...props}
+            selector={`.${responsiveClassName}`}
+          />
+        </div>
+        <div {...getStyles("container")}>
+          <Box
+            ref={ref}
+            {...getStyles("root", { className: responsiveClassName })}
+            {...others}
+          />
+        </div>
+      </>
+    );
+  }
+
   // encapsulate GridVariables in a div due to it nerfing
   // data-raikou-styles="system"
 
   return (
     <>
       <div>
-        <SimpleGridVariables {...props} selector={`.${responsiveClassName}`} />
+        <SimpleGridMediaVariables
+          {...props}
+          selector={`.${responsiveClassName}`}
+        />
       </div>
       <Box
         ref={ref}

@@ -1,15 +1,16 @@
 /// <reference path="global.d.ts" />
 import * as _raikou_core from '@raikou/core';
-import { RaikouSize, RaikouRadius, BoxProps, StylesApiProps, ElementProps, Factory, PolymorphicFactory, CompoundStylesApiProps, RaikouShadow } from '@raikou/core';
+import { RaikouSize as RaikouSize$1, RaikouRadius, BoxProps, StylesApiProps, ElementProps as ElementProps$1, Factory, PolymorphicFactory, CompoundStylesApiProps, RaikouShadow } from '@raikou/core';
 import React$2 from 'react';
 import * as CSS from 'csstype';
 import * as PropTypes from 'prop-types';
 import { Interaction } from 'scheduler/tracing';
+import { ShiftOptions, FlipOptions, InlineOptions, SizeOptions } from '@floating-ui/react';
 
 interface __CloseButtonProps {
     "data-disabled"?: boolean;
     /** Controls width and height of the button. Numbers are converted to rem. `'md'` by default. */
-    size?: RaikouSize | (string & {}) | number;
+    size?: RaikouSize$1 | (string & {}) | number;
     /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. `theme.defaultRadius` by default. */
     radius?: RaikouRadius;
     /** Sets `disabled` and `data-disabled` attributes on the button element */
@@ -18,18 +19,20 @@ interface __CloseButtonProps {
     iconSize?: number | string;
     /** Content rendered inside the button, for example `VisuallyHidden` with label for screen readers */
     children?: React$2.ReactNode;
+    /** Replaces default close icon. If set, `iconSize` prop is ignored. */
+    icon?: React$2.ReactNode;
 }
 
 type InputLabelStylesNames = "label" | "required";
 type InputLabelCssVariables = {
     label: "--input-asterisk-color" | "--input-label-size";
 };
-interface InputLabelProps extends BoxProps, StylesApiProps<InputLabelFactory>, ElementProps<"label"> {
+interface InputLabelProps extends BoxProps, StylesApiProps<InputLabelFactory>, ElementProps$1<"label"> {
     __staticSelector?: string;
     /** Determines whether required asterisk should be displayed  */
     required?: boolean;
     /** Controls label `font-size`, `'sm'` by default */
-    size?: RaikouSize | (string & {});
+    size?: RaikouSize$1 | (string & {});
     /** Root element of the label, `'label'` by default */
     labelElement?: "label" | "div";
 }
@@ -50,11 +53,11 @@ type InputErrorStylesNames = "error";
 type InputErrorCssVariables = {
     error: "--input-error-size";
 };
-interface InputErrorProps extends BoxProps, StylesApiProps<InputErrorFactory>, ElementProps<"div"> {
+interface InputErrorProps extends BoxProps, StylesApiProps<InputErrorFactory>, ElementProps$1<"div"> {
     __staticSelector?: string;
     __inheritStyles?: boolean;
     /** Controls error `font-size`, `'sm'` by default */
-    size?: RaikouSize | (string & {});
+    size?: RaikouSize$1 | (string & {});
 }
 type InputErrorFactory = Factory<{
     props: InputErrorProps;
@@ -73,11 +76,11 @@ type InputDescriptionStylesNames = "description";
 type InputDescriptionCssVariables = {
     description: "--input-description-size";
 };
-interface InputDescriptionProps extends BoxProps, StylesApiProps<InputDescriptionFactory>, ElementProps<"div"> {
+interface InputDescriptionProps extends BoxProps, StylesApiProps<InputDescriptionFactory>, ElementProps$1<"div"> {
     __staticSelector?: string;
     __inheritStyles?: boolean;
     /** Controls description `font-size`, `'sm'` by default */
-    size?: RaikouSize | (string & {});
+    size?: RaikouSize$1 | (string & {});
 }
 type InputDescriptionFactory = Factory<{
     props: InputDescriptionProps;
@@ -93,21 +96,20 @@ declare const InputDescription: _raikou_core.RaikouComponent<{
 }>;
 
 type InputPlaceholderStylesNames = "placeholder";
-type InputPlaceholderVariant = string;
-interface InputPlaceholderProps extends BoxProps, StylesApiProps<InputPlaceholderFactory>, ElementProps<"span"> {
+interface InputPlaceholderProps extends BoxProps, StylesApiProps<InputPlaceholderFactory>, ElementProps$1<"span"> {
     __staticSelector?: string;
+    /** If set, the placeholder will have error styles, `false` by default */
+    error?: React$2.ReactNode;
 }
 type InputPlaceholderFactory = Factory<{
     props: InputPlaceholderProps;
     ref: HTMLSpanElement;
     stylesNames: InputPlaceholderStylesNames;
-    variant: InputPlaceholderVariant;
 }>;
 declare const InputPlaceholder: _raikou_core.RaikouComponent<{
     props: InputPlaceholderProps;
     ref: HTMLSpanElement;
     stylesNames: InputPlaceholderStylesNames;
-    variant: InputPlaceholderVariant;
 }>;
 
 type InputWrapperCssVariables = InputLabelCssVariables & InputErrorCssVariables & InputDescriptionCssVariables;
@@ -134,14 +136,14 @@ interface __InputWrapperProps {
     /** Controls order of the elements, `['label', 'description', 'input', 'error']` by default */
     inputWrapperOrder?: ("label" | "input" | "description" | "error")[];
 }
-interface InputWrapperProps extends __InputWrapperProps, BoxProps, StylesApiProps<InputWrapperFactory>, ElementProps<"div"> {
+interface InputWrapperProps extends __InputWrapperProps, BoxProps, StylesApiProps<InputWrapperFactory>, ElementProps$1<"div"> {
     __staticSelector?: string;
     /** Props passed to Styles API context, replaces Input.Wrapper props */
     __stylesApiProps?: Record<string, any>;
     /** Static id used as base to generate `aria-` attributes, by default generates random id */
     id?: string;
     /** Controls size of `Input.Label`, `Input.Description` and `Input.Error` components */
-    size?: RaikouSize | (string & {});
+    size?: RaikouSize$1 | (string & {});
     /** `Input.Label` root element, `'label'` by default */
     labelElement?: "label" | "div";
 }
@@ -198,11 +200,13 @@ interface __InputProps {
     /** Sets `disabled` attribute on the `input` element */
     disabled?: boolean;
     /** Controls input `height` and horizontal `padding`, `'sm'` by default */
-    size?: RaikouSize | (string & {});
+    size?: RaikouSize$1 | (string & {});
     /** Determines whether the input should have `cursor: pointer` style, `false` by default */
     pointer?: boolean;
     /** Determines whether the input should have red border and text color when `error` prop is set, `true` by default */
     withErrorStyles?: boolean;
+    /** `size` prop added to the input element */
+    inputSize?: string;
 }
 interface InputProps extends BoxProps, __InputProps, StylesApiProps<InputFactory> {
     __staticSelector?: string;
@@ -3771,8 +3775,17 @@ interface GlobalJSXIntrinsicClassAttributes<T> extends JSX.IntrinsicClassAttribu
 
 interface GlobalJSXIntrinsicElements extends JSX.IntrinsicElements {}
 
+type ElementProps<ElementType extends React$2.ElementType, PropsToOmit extends string = never> = Omit<React$2.ComponentPropsWithoutRef<ElementType>, "style" | PropsToOmit>;
+type RaikouSize = "xs" | "sm" | "md" | "lg" | "xl";
+
+interface ComboboxClearButtonProps extends __CloseButtonProps, ElementProps<"button"> {
+    size?: RaikouSize | (string & {}) | number;
+    onClear: () => void;
+}
+declare const ComboboxClearButton: React$2.ForwardRefExoticComponent<ComboboxClearButtonProps & React$2.RefAttributes<HTMLButtonElement>>;
+
 type ComboboxGroupStylesNames = "group" | "groupLabel";
-interface ComboboxGroupProps extends BoxProps, CompoundStylesApiProps<ComboboxGroupFactory>, ElementProps<"div"> {
+interface ComboboxGroupProps extends BoxProps, CompoundStylesApiProps<ComboboxGroupFactory>, ElementProps$1<"div"> {
     /** Group label */
     label?: React$2.ReactNode;
 }
@@ -3817,6 +3830,8 @@ interface ComboboxEventsTargetProps {
      * `input` by default.
      * */
     targetType?: "button" | "input";
+    /** Input autocomplete attribute */
+    autoComplete?: string;
 }
 declare const ComboboxEventsTarget: _raikou_core.RaikouComponent<{
     props: ComboboxEventsTargetProps;
@@ -3825,7 +3840,7 @@ declare const ComboboxEventsTarget: _raikou_core.RaikouComponent<{
 }>;
 
 type ComboboxHeaderStylesNames = "header";
-interface ComboboxHeaderProps extends BoxProps, CompoundStylesApiProps<ComboboxHeaderFactory>, ElementProps<"div"> {
+interface ComboboxHeaderProps extends BoxProps, CompoundStylesApiProps<ComboboxHeaderFactory>, ElementProps$1<"div"> {
 }
 type ComboboxHeaderFactory = Factory<{
     props: ComboboxHeaderProps;
@@ -3841,7 +3856,7 @@ declare const ComboboxHeader: _raikou_core.RaikouComponent<{
 }>;
 
 type ComboboxFooterStylesNames = "footer";
-interface ComboboxFooterProps extends BoxProps, CompoundStylesApiProps<ComboboxFooterFactory>, ElementProps<"div"> {
+interface ComboboxFooterProps extends BoxProps, CompoundStylesApiProps<ComboboxFooterFactory>, ElementProps$1<"div"> {
 }
 type ComboboxFooterFactory = Factory<{
     props: ComboboxFooterProps;
@@ -3860,8 +3875,8 @@ type ComboboxChevronStylesNames = "chevron";
 type ComboboxChevronCSSVariables = {
     chevron: "--combobox-chevron-size";
 };
-interface ComboboxChevronProps extends BoxProps, StylesApiProps<ComboboxChevronFactory>, ElementProps<"svg", "opacity" | "display"> {
-    size?: RaikouSize | (string & {});
+interface ComboboxChevronProps extends BoxProps, StylesApiProps<ComboboxChevronFactory>, ElementProps$1<"svg", "opacity" | "display"> {
+    size?: RaikouSize$1 | (string & {});
     error?: React$2.ReactNode;
 }
 type ComboboxChevronFactory = Factory<{
@@ -3878,7 +3893,7 @@ declare const ComboboxChevron: _raikou_core.RaikouComponent<{
 }>;
 
 type ComboboxEmptyStylesNames = "empty";
-interface ComboboxEmptyProps extends BoxProps, CompoundStylesApiProps<ComboboxEmptyFactory>, ElementProps<"div"> {
+interface ComboboxEmptyProps extends BoxProps, CompoundStylesApiProps<ComboboxEmptyFactory>, ElementProps$1<"div"> {
 }
 type ComboboxEmptyFactory = Factory<{
     props: ComboboxEmptyProps;
@@ -3894,7 +3909,7 @@ declare const ComboboxEmpty: _raikou_core.RaikouComponent<{
 }>;
 
 type ComboboxSearchStylesNames = InputStylesNames;
-interface ComboboxSearchProps extends InputProps, ElementProps<"input", "size"> {
+interface ComboboxSearchProps extends InputProps, ElementProps$1<"input", "size"> {
     /** Determines whether the search input should have `aria-` attribute, `true` by default */
     withAriaAttributes?: boolean;
     /** Determines whether the search input should handle keyboard navigation, `true` by default */
@@ -3907,7 +3922,7 @@ declare const ComboboxSearch: _raikou_core.RaikouComponent<{
 }>;
 
 type ComboboxOptionsStylesNames = "options";
-interface ComboboxOptionsProps extends BoxProps, CompoundStylesApiProps<ComboboxOptionsFactory>, ElementProps<"div"> {
+interface ComboboxOptionsProps extends BoxProps, CompoundStylesApiProps<ComboboxOptionsFactory>, ElementProps$1<"div"> {
     /** Id of the element that should label the options list */
     labelledBy?: string;
 }
@@ -3924,7 +3939,7 @@ declare const ComboboxOptions: _raikou_core.RaikouComponent<{
     compound: true;
 }>;
 
-interface PopoverDropdownProps extends BoxProps, CompoundStylesApiProps<PopoverDropdownFactory>, ElementProps<"div"> {
+interface PopoverDropdownProps extends BoxProps, CompoundStylesApiProps<PopoverDropdownFactory>, ElementProps$1<"div"> {
 }
 type PopoverDropdownFactory = Factory<{
     props: PopoverDropdownProps;
@@ -3968,10 +3983,11 @@ interface TransitionProps {
 }
 type TransitionOverride = Partial<Omit<TransitionProps, "mounted">>;
 
-type FloatingPlacement = 'end' | 'start';
-type FloatingSide = 'top' | 'right' | 'bottom' | 'left';
+type FloatingPlacement = "end" | "start";
+type FloatingSide = "top" | "right" | "bottom" | "left";
 type FloatingPosition = FloatingSide | `${FloatingSide}-${FloatingPlacement}`;
-type ArrowPosition = 'center' | 'side';
+type ArrowPosition = "center" | "side";
+type FloatingStrategy = "absolute" | "fixed";
 interface FloatingAxesOffsets {
     mainAxis?: number;
     crossAxis?: number;
@@ -3985,12 +4001,12 @@ interface PortalProps extends React$2.ComponentPropsWithoutRef<"div"> {
     target?: HTMLElement | string;
 }
 
-type PopoverWidth = "target" | React.CSSProperties["width"];
+type PopoverWidth = "target" | React.CSSProperties["width"] | null;
 interface PopoverMiddlewares {
-    shift: boolean;
-    flip: boolean;
-    inline?: boolean;
-    size?: boolean;
+    shift?: boolean | ShiftOptions;
+    flip?: boolean | FlipOptions;
+    inline?: boolean | InlineOptions;
+    size?: boolean | SizeOptions;
 }
 
 type PopoverStylesNames = "dropdown" | "arrow";
@@ -4039,6 +4055,8 @@ interface __PopoverProps {
     disabled?: boolean;
     /** Determines whether focus should be automatically returned to control when dropdown closes, `false` by default */
     returnFocus?: boolean;
+    /** Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy), `'absolute'` by default */
+    floatingStrategy?: FloatingStrategy;
 }
 
 type ComboboxDropdownStylesNames = "dropdown";
@@ -4069,6 +4087,8 @@ interface ComboboxTargetProps {
      * `input` by default.
      * */
     targetType?: "button" | "input";
+    /** Input autocomplete attribute */
+    autoComplete?: string;
 }
 declare const ComboboxTarget: _raikou_core.RaikouComponent<{
     props: ComboboxTargetProps;
@@ -4118,7 +4138,9 @@ interface ComboboxStore {
      *  The function is required to be used with searchable components to update selected option index
      *  when options list changes based on search query.
      */
-    updateSelectedOptionIndex: (target?: "active" | "selected") => void;
+    updateSelectedOptionIndex: (target?: "active" | "selected", options?: {
+        scrollIntoView?: boolean;
+    }) => void;
     /** List id, used for `aria-*` attributes */
     listId: string | null;
     /** Sets list id */
@@ -4133,8 +4155,19 @@ interface ComboboxStore {
     focusTarget: () => void;
 }
 
+interface ComboboxHiddenInputProps extends Omit<React$2.ComponentPropsWithoutRef<"input">, "value"> {
+    /** Input value */
+    value: string | string[] | null;
+    /** Divider character that is used to transform array values to string, `','` by default */
+    valuesDivider?: string;
+}
+declare function ComboboxHiddenInput({ value, valuesDivider, ...others }: ComboboxHiddenInputProps): React$2.JSX.Element;
+declare namespace ComboboxHiddenInput {
+    var displayName: string;
+}
+
 type ComboboxOptionStylesNames = "option";
-interface ComboboxOptionProps extends BoxProps, CompoundStylesApiProps<ComboboxOptionFactory>, ElementProps<"div"> {
+interface ComboboxOptionProps extends BoxProps, CompoundStylesApiProps<ComboboxOptionFactory>, ElementProps$1<"div"> {
     /** Option value */
     value: string;
     /** Determines whether the option is selected */
@@ -4171,7 +4204,7 @@ interface ComboboxProps extends __PopoverProps, StylesApiProps<ComboboxFactory> 
     /** Called when item is selected with `Enter` key or by clicking it */
     onOptionSubmit?: (value: string, optionProps: ComboboxOptionProps) => void;
     /** Controls items `font-size` and `padding`, `'sm'` by default */
-    size?: RaikouSize | (string & {});
+    size?: RaikouSize$1 | (string & {});
     /** Controls `padding` of the dropdown, `4` by default */
     dropdownPadding?: React$2.CSSProperties["padding"];
     /** Determines whether selection should be reset when option is hovered, `false` by default */
@@ -4197,6 +4230,59 @@ type ComboboxFactory = Factory<{
         EventsTarget: typeof ComboboxEventsTarget;
         DropdownTarget: typeof ComboboxDropdownTarget;
         Group: typeof ComboboxGroup;
+        ClearButton: typeof ComboboxClearButton;
+        HiddenInput: typeof ComboboxHiddenInput;
+    };
+}>;
+
+type ScrollAreaStylesNames = "root" | "viewport" | "viewportInner" | "scrollbar" | "thumb" | "corner";
+type ScrollAreaCssVariables = {
+    root: "--scrollarea-scrollbar-size";
+};
+interface ScrollAreaProps extends BoxProps, StylesApiProps<ScrollAreaFactory>, ElementProps$1<"div"> {
+    /** Scrollbar size, any valid CSS value for width/height, numbers are converted to rem, default value is 0.75rem */
+    scrollbarSize?: number | string;
+    /**
+     * Defines scrollbars behavior, `hover` by default
+     * - `hover` – scrollbars are visible when mouse is over the scroll area
+     * - `scroll` – scrollbars are visible when the scroll area is scrolled
+     * - `always` – scrollbars are always visible
+     * - `never` – scrollbars are always hidden
+     * - `auto` – similar to `overflow: auto` – scrollbars are always visible when the content is overflowing
+     * */
+    type?: "auto" | "always" | "scroll" | "hover" | "never";
+    /** Scroll hide delay in ms, applicable only when type is set to `hover` or `scroll`, `1000` by default */
+    scrollHideDelay?: number;
+    /** Axis at which scrollbars must be rendered, `'xy'` by default */
+    scrollbars?: "x" | "y" | "xy" | false;
+    /** Determines whether scrollbars should be offset with padding, `false` by default */
+    offsetScrollbars?: boolean | "x" | "y";
+    /** Assigns viewport element (scrollable container) ref */
+    viewportRef?: React$2.ForwardedRef<HTMLDivElement>;
+    /** Props passed down to the viewport element */
+    viewportProps?: React$2.ComponentPropsWithRef<"div">;
+    /** Called with current position (`x` and `y` coordinates) when viewport is scrolled */
+    onScrollPositionChange?: (position: {
+        x: number;
+        y: number;
+    }) => void;
+}
+type ScrollAreaFactory = Factory<{
+    props: ScrollAreaProps;
+    ref: HTMLDivElement;
+    stylesNames: ScrollAreaStylesNames;
+    vars: ScrollAreaCssVariables;
+    staticComponents: {
+        Autosize: typeof ScrollAreaAutosize;
+    };
+}>;
+declare const ScrollAreaAutosize: _raikou_core.RaikouComponent<{
+    props: ScrollAreaProps;
+    ref: HTMLDivElement;
+    stylesNames: ScrollAreaStylesNames;
+    vars: ScrollAreaCssVariables;
+    staticComponents: {
+        Autosize: typeof ScrollAreaAutosize;
     };
 }>;
 
@@ -4208,20 +4294,22 @@ interface FilterOptionsInput {
 
 type OptionsFilter = (input: FilterOptionsInput) => ComboboxParsedItem[];
 
-interface ComboboxItem {
+interface ComboboxStringItem {
     value: string;
-    label: string;
     disabled?: boolean;
 }
-interface ComboboxItemGroup {
+interface ComboboxItem extends ComboboxStringItem {
+    label: string;
+}
+interface ComboboxItemGroup<T = ComboboxItem | string> {
     group: string;
-    items: (ComboboxItem | string)[];
+    items: T[];
 }
 interface ComboboxParsedItemGroup {
     group: string;
     items: ComboboxItem[];
 }
-type ComboboxData = (string | ComboboxItem | ComboboxItemGroup)[];
+type ComboboxData = Array<string | ComboboxItem | ComboboxItemGroup> | ReadonlyArray<string | ComboboxItem | ComboboxItemGroup>;
 type ComboboxParsedItem = ComboboxItem | ComboboxParsedItemGroup;
 type ComboboxLikeStylesNames = Exclude<ComboboxStylesNames, "header" | "footer" | "search">;
 interface ComboboxLikeProps {
@@ -4250,15 +4338,21 @@ interface ComboboxLikeProps {
     /** `max-height` of the dropdown, only applicable when `withScrollArea` prop is `true`, `250` by default */
     maxDropdownHeight?: number | string;
 }
+interface ComboboxLikeRenderOptionInput<T> {
+    option: T;
+    checked?: boolean;
+}
 
 type SelectStylesNames = __InputStylesNames | ComboboxLikeStylesNames;
-interface SelectProps extends BoxProps, __BaseInputProps, ComboboxLikeProps, StylesApiProps<SelectFactory>, ElementProps<"input", "onChange" | "size" | "value" | "defaultValue"> {
+interface SelectProps extends BoxProps, __BaseInputProps, ComboboxLikeProps, StylesApiProps<SelectFactory>, ElementProps$1<"input", "onChange" | "size" | "value" | "defaultValue"> {
     /** Controlled component value */
     value?: string | null;
     /** Uncontrolled component default value */
     defaultValue?: string | null;
     /** Called when value changes */
     onChange?: (value: string | null) => void;
+    /** Called when the clear button is clicked */
+    onClear?: () => void;
     /** Determines whether the select should be searchable, `false` by default */
     searchable?: boolean;
     /** Determines whether check icon should be displayed near the selected option label, `true` by default */
@@ -4278,9 +4372,13 @@ interface SelectProps extends BoxProps, __BaseInputProps, ComboboxLikeProps, Sty
     /** Determines whether the clear button should be displayed in the right section when the component has value, `false` by default */
     clearable?: boolean;
     /** Props passed down to the clear button */
-    clearButtonProps?: __CloseButtonProps & ElementProps<"button">;
+    clearButtonProps?: __CloseButtonProps & ElementProps$1<"button">;
     /** Props passed down to the hidden input */
     hiddenInputProps?: React$2.ComponentPropsWithoutRef<"input">;
+    /** A function to render content of the option, replaces the default content of the option */
+    renderOption?: (item: ComboboxLikeRenderOptionInput<ComboboxItem>) => React$2.ReactNode;
+    /** Props passed down to the underlying `ScrollArea` component in the dropdown */
+    scrollAreaProps?: ScrollAreaProps;
 }
 type SelectFactory = Factory<{
     props: SelectProps;

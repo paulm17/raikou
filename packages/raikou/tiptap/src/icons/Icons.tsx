@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-interface IconProps extends React.ComponentPropsWithoutRef<'svg'> {}
+interface IconProps extends React.ComponentPropsWithoutRef<"svg"> {}
 
 export function IconBase(props: IconProps) {
   return (
@@ -391,6 +391,64 @@ export function IconExternalLink(props: IconProps) {
       <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
       <path d="M11 13l9 -9" />
       <path d="M15 4h5v5" />
+    </IconBase>
+  );
+}
+
+export function IconArrowBackUp(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M9 14l-4 -4l4 -4" />
+      <path d="M5 10h11a4 4 0 1 1 0 8h-1" />
+    </IconBase>
+  );
+}
+
+export function IconArrowForwardUp(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M15 14l4 -4l-4 -4" />
+      <path d="M19 10h-11a4 4 0 1 0 0 8h1" />
+    </IconBase>
+  );
+}
+
+export function IconListCheck(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M3.5 5.5l1.5 1.5l2.5 -2.5" />
+      <path d="M3.5 11.5l1.5 1.5l2.5 -2.5" />
+      <path d="M3.5 17.5l1.5 1.5l2.5 -2.5" />
+      <path d="M11 6l9 0" />
+      <path d="M11 12l9 0" />
+      <path d="M11 18l9 0" />
+    </IconBase>
+  );
+}
+
+export function IconIndentIncrease(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M20 6l-11 0" />
+      <path d="M20 12l-7 0" />
+      <path d="M20 18l-11 0" />
+      <path d="M4 8l4 4l-4 4" />
+    </IconBase>
+  );
+}
+
+export function IconIndentDecrease(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M20 6l-7 0" />
+      <path d="M20 12l-9 0" />
+      <path d="M20 18l-7 0" />
+      <path d="M8 8l-4 4l4 4" />
     </IconBase>
   );
 }

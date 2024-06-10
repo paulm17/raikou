@@ -7,6 +7,7 @@ export interface DatesProviderValue {
   firstDayOfWeek: DayOfWeek;
   weekendDays: DayOfWeek[];
   labelSeparator: string;
+  consistentWeeks: boolean;
 }
 
 export type DatesProviderSettings = Partial<DatesProviderValue>;
@@ -17,6 +18,7 @@ export const DATES_PROVIDER_DEFAULT_SETTINGS: DatesProviderValue = {
   firstDayOfWeek: 1,
   weekendDays: [0, 6],
   labelSeparator: "–",
+  consistentWeeks: false,
 };
 
 export const DatesProviderContext = createContext(
@@ -25,7 +27,7 @@ export const DatesProviderContext = createContext(
 
 export interface DatesProviderProps {
   settings: DatesProviderSettings;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export function DatesProvider({ settings, children }: DatesProviderProps) {

@@ -45,6 +45,9 @@ export interface BadgeProps extends BoxProps, StylesApiProps<BadgeFactory> {
   /** Controls `font-size`, `height` and horizontal `padding`, `'md'` by default */
   size?: RaikouSize | (string & {});
 
+  /** If set, badge `min-width` becomes equal to its `height` and horizontal padding is removed */
+  circle?: boolean;
+
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `'xl'` by default */
   radius?: RaikouRadius;
 
@@ -65,6 +68,9 @@ export interface BadgeProps extends BoxProps, StylesApiProps<BadgeFactory> {
 
   /** Main badge content */
   children?: React.ReactNode;
+
+  /** Determines whether text color with filled variant should depend on `background-color`. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. */
+  autoContrast?: boolean;
 }
 
 export type BadgeFactory = PolymorphicFactory<{
@@ -79,12 +85,13 @@ export type BadgeFactory = PolymorphicFactory<{
 const defaultProps: Partial<BadgeProps> = {};
 
 const varsResolver = createVarsResolver<BadgeFactory>(
-  (theme, { radius, color, gradient, variant, size }) => {
+  (theme, { radius, color, gradient, variant, size, autoContrast }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
       gradient,
       variant: variant || "filled",
+      autoContrast,
     });
 
     return {
@@ -120,6 +127,9 @@ export const Badge = polymorphicFactory<BadgeFactory>((_props, ref) => {
     children,
     variant,
     fullWidth,
+    autoContrast,
+    circle,
+    mod,
     ...others
   } = props;
 
@@ -139,7 +149,7 @@ export const Badge = polymorphicFactory<BadgeFactory>((_props, ref) => {
   return (
     <Box
       variant={variant}
-      mod={{ block: fullWidth }}
+      mod={[{ block: fullWidth, circle }, mod]}
       {...getStyles("root", { variant })}
       ref={ref}
       {...others}

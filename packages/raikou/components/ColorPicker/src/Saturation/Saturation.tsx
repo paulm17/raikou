@@ -1,12 +1,32 @@
 import React, { useEffect, useRef, useState } from "react";
-import { UseMovePosition, clampUseMovePosition, useMove } from "@raikou/hooks";
-import { Box, ElementProps, RaikouSize } from "@raikou/core";
+import { clampUseMovePosition, useMove, UseMovePosition } from "@raikou/hooks";
+import {
+  Box,
+  BoxProps,
+  CompoundStylesApiProps,
+  ElementProps,
+  Factory,
+  RaikouSize,
+  createVarsResolver,
+  factory,
+  getSize,
+  useProps,
+  useStyles,
+} from "@raikou/core";
+import classes from "../ColorPicker.module.css";
 import { HsvaColor } from "../ColorPicker.types";
 import { convertHsvaTo } from "../converters";
 import { Thumb } from "../Thumb/Thumb";
-import { useColorPickerContext } from "../ColorPicker.context";
 
-export interface SaturationProps extends ElementProps<"div", "onChange"> {
+export type SaturationStylesNames =
+  | "saturation"
+  | "saturationOverlay"
+  | "thumb";
+
+export interface SaturationProps
+  extends BoxProps,
+    CompoundStylesApiProps<SaturationFactory>,
+    ElementProps<"div", "onChange"> {
   value: HsvaColor;
   onChange: (color: Partial<HsvaColor>) => void;
   onChangeEnd: (color: Partial<HsvaColor>) => void;
@@ -14,24 +34,57 @@ export interface SaturationProps extends ElementProps<"div", "onChange"> {
   onScrubEnd?: () => void;
   saturationLabel?: string;
   size: RaikouSize | (string & {});
-  color: string;
   focusable?: boolean;
 }
 
-export function Saturation({
-  className,
-  onChange,
-  onChangeEnd,
-  value,
-  saturationLabel,
-  focusable = true,
-  size,
-  color,
-  onScrubStart,
-  onScrubEnd,
-  ...others
-}: SaturationProps) {
-  const { getStyles } = useColorPickerContext()!;
+export type SaturationFactory = Factory<{
+  props: SaturationProps;
+  ref: HTMLDivElement;
+  stylesNames: SaturationStylesNames;
+  compound: true;
+}>;
+
+const defaultProps: Partial<SaturationProps> = {
+  focusable: true,
+};
+
+const varsResolver = createVarsResolver<SaturationFactory>((_, { size }) => ({
+  saturation: {
+    "--cp-thumb-size": getSize(size, "cp-thumb-size"),
+    "--cp-saturation-height": getSize(size, "cp-saturation-height"),
+  },
+}));
+
+export const Saturation = factory<SaturationFactory>((props, ref) => {
+  const {
+    className,
+    onChange,
+    onChangeEnd,
+    value,
+    saturationLabel,
+    focusable = true,
+    size,
+    color,
+    style,
+    classNames,
+    styles,
+    onScrubStart,
+    onScrubEnd,
+    vars,
+    ...others
+  } = useProps("Saturation", defaultProps, props);
+
+  const getStyles = useStyles<SaturationFactory>({
+    name: "ColorPicker",
+    classes,
+    props,
+    className,
+    style,
+    classNames,
+    styles,
+    vars,
+    varsResolver,
+  });
 
   const [position, setPosition] = useState({
     x: value.s / 100,
@@ -39,7 +92,7 @@ export function Saturation({
   });
   const positionRef = useRef(position);
 
-  const { ref } = useMove(
+  const { ref: moveRef } = useMove(
     ({ x, y }) => {
       positionRef.current = { x, y };
       onChange({ s: Math.round(x * 100), v: Math.round((1 - y) * 100) });
@@ -101,7 +154,7 @@ export function Saturation({
   return (
     <Box
       {...getStyles("saturation")}
-      ref={ref as any}
+      ref={moveRef as any}
       {...others}
       role="slider"
       aria-label={saturationLabel}
@@ -115,7 +168,6 @@ export function Saturation({
           style: { backgroundColor: `hsl(${value.h}, 100%, 50%)` },
         })}
       />
-
       <div
         {...getStyles("saturationOverlay", {
           style: {
@@ -123,7 +175,6 @@ export function Saturation({
           },
         })}
       />
-
       <div
         {...getStyles("saturationOverlay", {
           style: {
@@ -131,13 +182,12 @@ export function Saturation({
           },
         })}
       />
-
       <Thumb
         position={position}
         {...getStyles("thumb", { style: { backgroundColor: color } })}
       />
     </Box>
   );
-}
+});
 
 Saturation.displayName = "@raikou/core/Saturation";

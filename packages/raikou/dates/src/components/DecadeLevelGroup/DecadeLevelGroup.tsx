@@ -2,19 +2,19 @@ import dayjs from "dayjs";
 import React, { useRef } from "react";
 import {
   BoxProps,
-  StylesApiProps,
-  factory,
   ElementProps,
-  useProps,
+  factory,
   Factory,
+  StylesApiProps,
+  useProps,
 } from "@raikou/core";
+import { handleControlKeyDown } from "../../utils";
 import {
   DecadeLevel,
   DecadeLevelSettings,
   DecadeLevelStylesNames,
 } from "../DecadeLevel";
 import { LevelsGroup, LevelsGroupStylesNames } from "../LevelsGroup";
-import { handleControlKeyDown } from "../../utils";
 
 export type DecadeLevelGroupStylesNames =
   | LevelsGroupStylesNames
@@ -81,6 +81,7 @@ export const DecadeLevelGroup = factory<DecadeLevelGroupFactory>(
       // Other settings
       classNames,
       styles,
+      unstyled,
       __staticSelector,
       __stopPropagation,
       numberOfColumns,
@@ -153,6 +154,7 @@ export const DecadeLevelGroup = factory<DecadeLevelGroupFactory>(
             __staticSelector={__staticSelector || "DecadeLevelGroup"}
             classNames={classNames}
             styles={styles}
+            unstyled={unstyled}
             withCellSpacing={withCellSpacing}
           />
         );
@@ -165,6 +167,7 @@ export const DecadeLevelGroup = factory<DecadeLevelGroupFactory>(
         __staticSelector={__staticSelector || "DecadeLevelGroup"}
         ref={ref}
         size={size}
+        unstyled={unstyled}
         {...others}
       >
         {decades}
@@ -173,4 +176,5 @@ export const DecadeLevelGroup = factory<DecadeLevelGroupFactory>(
   },
 );
 
+DecadeLevelGroup.classes = { ...LevelsGroup.classes, ...DecadeLevel.classes };
 DecadeLevelGroup.displayName = "@raikou/dates/DecadeLevelGroup";

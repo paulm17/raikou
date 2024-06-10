@@ -124,7 +124,6 @@ export const Spoiler = factory<SpoilerFactory>((_props, ref) => {
           aria-controls={regionId}
           {...getStyles("control")}
         >
-          {/* @ts-ignore */}
           {spoilerMoreContent}
         </Anchor>
       )}

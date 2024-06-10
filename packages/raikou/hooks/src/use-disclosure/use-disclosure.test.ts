@@ -1,8 +1,8 @@
-import { act, renderHook } from "@testing-library/react";
-import { useDisclosure } from "./use-disclosure";
+import { act, renderHook } from '@testing-library/react';
+import { useDisclosure } from './use-disclosure';
 
-describe("@raikou/hooks/use-disclosure", () => {
-  it("handles close correctly", () => {
+describe('@mantine/hooks/use-disclosure', () => {
+  it('handles close correctly', () => {
     const hook = renderHook(() => useDisclosure(true));
     expect(hook.result.current[0]).toBe(true);
 
@@ -10,7 +10,7 @@ describe("@raikou/hooks/use-disclosure", () => {
     expect(hook.result.current[0]).toBe(false);
   });
 
-  it("handles open correctly", () => {
+  it('handles open correctly', () => {
     const hook = renderHook(() => useDisclosure(false));
     expect(hook.result.current[0]).toBe(false);
 
@@ -18,7 +18,7 @@ describe("@raikou/hooks/use-disclosure", () => {
     expect(hook.result.current[0]).toBe(true);
   });
 
-  it("handles toggle correctly", () => {
+  it('handles toggle correctly', () => {
     const hook = renderHook(() => useDisclosure(false));
     expect(hook.result.current[0]).toBe(false);
 
@@ -29,7 +29,7 @@ describe("@raikou/hooks/use-disclosure", () => {
     expect(hook.result.current[0]).toBe(false);
   });
 
-  it("calls onClose when close is called", () => {
+  it('calls onClose when close is called', () => {
     const spy = jest.fn();
     const hook = renderHook(() => useDisclosure(true, { onClose: spy }));
     expect(spy).toHaveBeenCalledTimes(0);
@@ -41,7 +41,7 @@ describe("@raikou/hooks/use-disclosure", () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  it("calls onOpen when open is called", () => {
+  it('calls onOpen when open is called', () => {
     const spy = jest.fn();
     const hook = renderHook(() => useDisclosure(false, { onOpen: spy }));
     expect(spy).toHaveBeenCalledTimes(0);
@@ -53,7 +53,7 @@ describe("@raikou/hooks/use-disclosure", () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  it("calls onOpen and onClose correctly when toggle is called", () => {
+  it('calls onOpen and onClose correctly when toggle is called', () => {
     const onClose = jest.fn();
     const onOpen = jest.fn();
     const hook = renderHook(() => useDisclosure(false, { onOpen, onClose }));

@@ -1,12 +1,11 @@
 /* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Mark/src/Mark.module.css/#css-module-data */
 .m-bcb3f3c2 {
-  background-color: var(--_mark-bg);
   color: var(--raikou-color-black);
 }
-[data-raikou-color-scheme=light] .m-bcb3f3c2 {
-  --_mark-bg: var(--mark-bg-light);
+:where([data-raikou-color-scheme=light]) .m-bcb3f3c2 {
+  background-color: var(--mark-bg-light);
 }
-[data-raikou-color-scheme=dark] .m-bcb3f3c2 {
-  --_mark-bg: var(--mark-bg-dark);
+:where([data-raikou-color-scheme=dark]) .m-bcb3f3c2 {
+  background-color: var(--mark-bg-dark);
 }
 /*# sourceMappingURL=index.css.map */

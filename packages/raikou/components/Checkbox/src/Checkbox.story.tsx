@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import { RaikouThemeProvider } from "@raikou/core";
 import { Checkbox } from "./Checkbox";
 import { Stack } from "../../Stack/src";
@@ -19,9 +19,50 @@ export function WithinDisabledFieldset() {
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <Checkbox label="Default" defaultChecked />
+      <Checkbox label="Default" value="hello" />
       <Checkbox label="Disabled" checked disabled mt="xl" />
       <Checkbox label="Indeterminate" indeterminate mt="xl" />
+    </div>
+  );
+}
+
+export function BooleanError() {
+  const [error, setError] = useState(false);
+  return (
+    <div style={{ padding: 40 }}>
+      <Checkbox
+        label="Boolean error"
+        value="hello"
+        error={error}
+        onChange={(event) => setError(event.currentTarget.checked)}
+      />
+      <Checkbox
+        label="Boolean error"
+        value="hello"
+        error={error}
+        onChange={(event) => setError(event.currentTarget.checked)}
+      />
+      <Checkbox
+        label="Boolean error"
+        value="hello"
+        error={error}
+        onChange={(event) => setError(event.currentTarget.checked)}
+      />
+      <p>Under checkboxes</p>
+    </div>
+  );
+}
+
+export function AutoContrast() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Checkbox
+        label="Auto contrast icon color"
+        value="hello"
+        defaultChecked
+        color="lime.4"
+        // autoContrast
+      />
     </div>
   );
 }
@@ -67,9 +108,9 @@ export function CheckboxGroup() {
 
 // export function CursorPointer() {
 //   return (
-//     <RaikouThemeProvider theme={{ cursorType: "pointer" }}>
+//     <MantineThemeProvider theme={{ cursorType: "pointer" }}>
 //       <Checkbox label="Hello" value="1" />
-//     </RaikouThemeProvider>
+//     </MantineThemeProvider>
 //   );
 // }
 
@@ -144,13 +185,17 @@ export function WithError() {
 }
 
 export function Sizes() {
-  return ["xs", "sm", "md", "lg", "xl"].map((size, index) => (
+  return ["xs", "sm", "md", "lg", "xl"].map((size) => (
     <Checkbox
-      key={index}
+      key={size}
       size={size}
       defaultChecked
       label={`Size ${size}`}
       mt="md"
     />
   ));
+}
+
+export function Unstyled() {
+  return <Checkbox label="Unstyled checkbox" unstyled />;
 }

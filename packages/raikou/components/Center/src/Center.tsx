@@ -39,6 +39,7 @@ export const Center = polymorphicFactory<CenterFactory>((_props, ref) => {
     unstyled,
     vars,
     inline,
+    mod,
     ...others
   } = props;
 
@@ -54,7 +55,9 @@ export const Center = polymorphicFactory<CenterFactory>((_props, ref) => {
     vars,
   });
 
-  return <Box ref={ref} mod={{ inline }} {...getStyles("root")} {...others} />;
+  return (
+    <Box ref={ref} mod={[{ inline }, mod]} {...getStyles("root")} {...others} />
+  );
 });
 
 Center.displayName = "@raikou/core/Center";

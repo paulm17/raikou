@@ -2,10 +2,11 @@ import * as _raikou_core from '@raikou/core';
 import { BoxProps, StylesApiProps, ElementProps, RaikouRadius, RaikouColor, Factory } from '@raikou/core';
 import React$1 from 'react';
 
-type FloatingPlacement = 'end' | 'start';
-type FloatingSide = 'top' | 'right' | 'bottom' | 'left';
+type FloatingPlacement = "end" | "start";
+type FloatingSide = "top" | "right" | "bottom" | "left";
 type FloatingPosition = FloatingSide | `${FloatingSide}-${FloatingPlacement}`;
-type ArrowPosition = 'center' | 'side';
+type ArrowPosition = "center" | "side";
+type FloatingStrategy = "absolute" | "fixed";
 interface FloatingAxesOffsets {
     mainAxis?: number;
     crossAxis?: number;
@@ -55,9 +56,8 @@ interface PortalProps extends React$1.ComponentPropsWithoutRef<"div"> {
 }
 
 type TooltipStylesNames = "tooltip" | "arrow";
-type TooltipVariant = string;
 type TooltipCssVariables = {
-    tooltip: "--tooltip-radius" | "--tooltip-bg";
+    tooltip: "--tooltip-radius" | "--tooltip-bg" | "--tooltip-color";
 };
 interface TooltipBaseProps extends BoxProps, StylesApiProps<TooltipFactory>, ElementProps<"div"> {
     /** Target element, must support `ref` prop and `...others` */
@@ -77,7 +77,7 @@ interface TooltipBaseProps extends BoxProps, StylesApiProps<TooltipFactory>, Ele
     /** Determines whether content should be wrapped on to the next line, `false` by default */
     multiline?: boolean;
     /** Tooltip z-index, `300` by default */
-    zIndex?: React.CSSProperties["zIndex"];
+    zIndex?: string | number;
     /** If set, tooltip element will not be rendered */
     disabled?: boolean;
     /** Props to pass down to the portal when withinPortal is true */
@@ -143,6 +143,8 @@ interface TooltipProps extends TooltipBaseProps {
     inline?: boolean;
     /** If set, the tooltip will not be unmounted from the DOM when it is hidden, `display: none` styles will be applied instead */
     keepMounted?: boolean;
+    /** Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy), `'absolute'` by default */
+    floatingStrategy?: FloatingStrategy;
 }
 type TooltipFactory = Factory<{
     props: TooltipProps;
@@ -165,4 +167,4 @@ declare const Tooltip: _raikou_core.RaikouComponent<{
     };
 }>;
 
-export { Tooltip, type TooltipCssVariables, type TooltipFactory, TooltipFloating, type TooltipFloatingProps, TooltipGroup, type TooltipGroupProps, type TooltipProps, type TooltipStylesNames, type TooltipVariant };
+export { Tooltip, type TooltipCssVariables, type TooltipFactory, TooltipFloating, type TooltipFloatingProps, TooltipGroup, type TooltipGroupProps, type TooltipProps, type TooltipStylesNames };

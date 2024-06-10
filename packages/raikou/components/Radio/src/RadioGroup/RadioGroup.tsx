@@ -17,10 +17,10 @@ export interface RadioGroupProps extends Omit<InputWrapperProps, "onChange"> {
   children: React.ReactNode;
 
   /** Controlled component value */
-  value?: string;
+  value?: string | null;
 
   /** Default value for uncontrolled component */
-  defaultValue?: string;
+  defaultValue?: string | null;
 
   /** Called when value changes */
   onChange?: (value: string) => void;
@@ -33,6 +33,9 @@ export interface RadioGroupProps extends Omit<InputWrapperProps, "onChange"> {
 
   /** Name attribute of child radio inputs */
   name?: string;
+
+  /** If set, value cannot be changed */
+  readOnly?: boolean;
 }
 
 export type RadioGroupFactory = Factory<{
@@ -52,20 +55,22 @@ export const RadioGroup = factory<RadioGroupFactory>((props, ref) => {
     wrapperProps,
     children,
     name,
+    readOnly,
     ...others
   } = useProps("RadioGroup", defaultProps, props);
 
   const _name = useId(name);
 
   const [_value, setValue] = useUncontrolled({
-    value,
-    defaultValue,
+    value: value as string,
+    defaultValue: defaultValue as string,
     finalValue: "",
     onChange,
   });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setValue(event.currentTarget.value);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement> | string) =>
+    !readOnly &&
+    setValue(typeof event === "string" ? event : event.currentTarget.value);
 
   return (
     <RadioGroupProvider

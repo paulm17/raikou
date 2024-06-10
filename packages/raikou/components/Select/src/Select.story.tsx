@@ -11,6 +11,48 @@ export function Usage() {
         data={["React", "Angular", "Svelte"]}
         placeholder="Select something"
         defaultValue="First"
+        name="usage-select"
+      />
+    </div>
+  );
+}
+
+export function WithAreaLabel() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Select
+        data={["React", "Angular", "Svelte"]}
+        aria-label="Library"
+        placeholder="Select something"
+        dropdownOpened
+      />
+    </div>
+  );
+}
+
+export function FixedValue() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Select
+        data={["React", "Angular", "Svelte"]}
+        placeholder="Select something"
+        value="React"
+      />
+    </div>
+  );
+}
+
+export function ScrollToSelected() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Select
+        data={["React", "Angular", "Svelte"].flatMap((value) =>
+          Array(10)
+            .fill(0)
+            .map((_, index) => `${value} ${index}`),
+        )}
+        placeholder="Select something"
+        defaultValue="First"
       />
     </div>
   );
@@ -26,6 +68,35 @@ export function EmptyOptionValue() {
         ]}
         defaultValue=""
         placeholder="Select value"
+      />
+    </div>
+  );
+}
+
+export function LongOptions() {
+  return (
+    <div style={{ padding: 40, maxWidth: 300 }}>
+      <Select
+        data={[
+          "Option that is so long that is collapses to the next line",
+          "React",
+        ]}
+        placeholder="Select something"
+        defaultValue="First"
+      />
+    </div>
+  );
+}
+
+export function SelectedValueNotInDataArray() {
+  return (
+    <div style={{ padding: 40, maxWidth: 300 }}>
+      <Select
+        data={["Angular", "React"]}
+        value="test"
+        placeholder="Select something"
+        defaultValue="First"
+        onChange={() => {}}
       />
     </div>
   );
@@ -77,6 +148,40 @@ export function Clearable() {
         clearable
         readOnly
         mt="md"
+      />
+    </div>
+  );
+}
+
+export function DataChangesOverTime() {
+  const [data, setData] = useState<any[]>([]);
+  return (
+    <div style={{ padding: 40 }}>
+      <Select
+        value="1"
+        data={data}
+        placeholder="Select something"
+        defaultValue="First"
+        searchable
+      />
+      <Button
+        onClick={() =>
+          setData([{ value: "1", label: Math.random().toString() }])
+        }
+      >
+        Set Data
+      </Button>
+    </div>
+  );
+}
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Select
+        data={["React", "Angular", "Svelte"]}
+        placeholder="Select something"
+        unstyled
       />
     </div>
   );

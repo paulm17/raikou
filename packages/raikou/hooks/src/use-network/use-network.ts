@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useWindowEvent } from '../use-window-event/use-window-event';
 
 interface NetworkStatus {
@@ -52,6 +52,11 @@ export function useNetwork() {
       setStatus({ online: _navigator.onLine, ...getConnection() });
       _navigator.connection.addEventListener('change', handleConnectionChange);
       return () => _navigator.connection.removeEventListener('change', handleConnectionChange);
+    }
+
+    if (typeof _navigator.onLine === 'boolean') {
+      // Required for Firefox and other browsers that don't support navigator.connection
+      setStatus((current) => ({ ...current, online: _navigator.onLine }));
     }
 
     return undefined;

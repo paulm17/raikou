@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { useState, useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useWindowEvent } from "../use-window-event/use-window-event";
 
 export type StorageType = "localStorage" | "sessionStorage";
@@ -21,13 +21,11 @@ export interface StorageProperties<T> {
   deserialize?: (value: string | undefined) => T;
 }
 
-function serializeJSON<T>(value: T, hookName: string) {
+function serializeJSON<T>(value: T, hookName: string = "use-local-storage") {
   try {
     return JSON.stringify(value);
   } catch (error) {
-    throw new Error(
-      `@mantine/hooks ${hookName}: Failed to serialize the value`,
-    );
+    throw new Error(`@raikou/hooks ${hookName}: Failed to serialize the value`);
   }
 }
 
@@ -90,12 +88,19 @@ export function createStorage<T>(type: StorageType, hookName: string) {
   }: StorageProperties<T>) {
     const readStorageValue = useCallback(
       (skipStorage?: boolean): T => {
-        if (
-          typeof window === "undefined" ||
-          !(type in window) ||
-          window[type] === null ||
-          skipStorage
-        ) {
+        let storageBlockedOrSkipped;
+
+        try {
+          storageBlockedOrSkipped =
+            typeof window === "undefined" ||
+            !(type in window) ||
+            window[type] === null ||
+            !!skipStorage;
+        } catch (_e) {
+          storageBlockedOrSkipped = true;
+        }
+
+        if (storageBlockedOrSkipped) {
           return defaultValue as T;
         }
 
@@ -161,9 +166,8 @@ export function createStorage<T>(type: StorageType, hookName: string) {
     }, [defaultValue, value, setStorageValue]);
 
     useEffect(() => {
-      if (getInitialValueInEffect) {
-        setValue(readStorageValue());
-      }
+      const val = readStorageValue();
+      val !== undefined && setStorageValue(val);
     }, []);
 
     return [
@@ -171,5 +175,35 @@ export function createStorage<T>(type: StorageType, hookName: string) {
       setStorageValue,
       removeStorageValue,
     ] as [T, (val: T | ((prevState: T) => T)) => void, () => void];
+  };
+}
+
+export function readValue(type: StorageType) {
+  const { getItem } = createStorageHandler(type);
+
+  return function read<T>({
+    key,
+    defaultValue,
+    deserialize = deserializeJSON,
+  }: StorageProperties<T>) {
+    let storageBlockedOrSkipped;
+
+    try {
+      storageBlockedOrSkipped =
+        typeof window === "undefined" ||
+        !(type in window) ||
+        window[type] === null;
+    } catch (_e) {
+      storageBlockedOrSkipped = true;
+    }
+
+    if (storageBlockedOrSkipped) {
+      return defaultValue as T;
+    }
+
+    const storageValue = getItem(key);
+    return storageValue !== null
+      ? deserialize(storageValue)
+      : (defaultValue as T);
   };
 }

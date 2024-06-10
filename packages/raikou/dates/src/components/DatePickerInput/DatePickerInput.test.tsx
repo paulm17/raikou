@@ -1,18 +1,7 @@
-import React from "react";
-import {
-  tests,
-  inputDefaultProps,
-  inputStylesApiSelectors,
-  render,
-} from "@raikou/tests";
-import { __InputStylesNames } from "../../../../components/Input/src";
-import {
-  clickControl,
-  clickInput,
-  datesTests,
-  expectValue,
-} from "@raikou/dates-tests";
-import { DatePickerInput, DatePickerInputProps } from "./DatePickerInput";
+import { __InputStylesNames } from '@mantine/core';
+import { inputDefaultProps, inputStylesApiSelectors, render, tests } from '@mantine-tests/core';
+import { clickControl, clickInput, datesTests, expectValue } from '@mantine-tests/dates';
+import { DatePickerInput, DatePickerInputProps } from './DatePickerInput';
 
 const defaultProps = {
   popoverProps: { withinPortal: false, transitionProps: { duration: 0 } },
@@ -24,7 +13,7 @@ const defaultPropsWithInputProps = {
   ...(inputDefaultProps as any),
 };
 
-describe("@raikou/dates/DatePickerInput", () => {
+describe('@mantine/dates/DatePickerInput', () => {
   tests.axe([
     <DatePickerInput aria-label="test-label" />,
     <DatePickerInput aria-label="test-label" error />,
@@ -40,21 +29,19 @@ describe("@raikou/dates/DatePickerInput", () => {
     size: true,
     variant: true,
     classes: true,
+    id: true,
     refType: HTMLButtonElement,
-    displayName: "@raikou/dates/DatePickerInput",
+    displayName: '@mantine/dates/DatePickerInput',
     stylesApiSelectors: [...inputStylesApiSelectors],
   });
 
   tests.itSupportsInputProps<DatePickerInputProps>({
     component: DatePickerInput,
     props: defaultPropsWithInputProps,
-    selector: "button",
+    selector: 'button',
   });
 
-  datesTests.itSupportsDateInputProps({
-    component: DatePickerInput,
-    props: defaultProps,
-  });
+  datesTests.itSupportsDateInputProps({ component: DatePickerInput, props: defaultProps });
   datesTests.itSupportsClearableProps({
     component: DatePickerInput,
     props: { ...defaultProps, defaultValue: new Date() },
@@ -63,13 +50,9 @@ describe("@raikou/dates/DatePickerInput", () => {
     component: DatePickerInput,
     props: {
       ...defaultProps,
-      defaultLevel: "decade",
+      defaultLevel: 'decade',
       defaultValue: new Date(2022, 3, 11),
-      popoverProps: {
-        opened: true,
-        withinPortal: false,
-        transitionProps: { duration: 0 },
-      },
+      popoverProps: { opened: true, withinPortal: false, transitionProps: { duration: 0 } },
     },
   });
 
@@ -77,25 +60,17 @@ describe("@raikou/dates/DatePickerInput", () => {
     component: DatePickerInput,
     props: {
       ...defaultProps,
-      defaultLevel: "year",
+      defaultLevel: 'year',
       defaultValue: new Date(2022, 3, 11),
-      popoverProps: {
-        opened: true,
-        withinPortal: false,
-        transitionProps: { duration: 0 },
-      },
+      popoverProps: { opened: true, withinPortal: false, transitionProps: { duration: 0 } },
     },
   });
 
-  it("supports valueFormat prop", () => {
+  it('supports valueFormat prop', () => {
     const { container, rerender } = render(
-      <DatePickerInput
-        {...defaultProps}
-        valueFormat="MMMM"
-        value={new Date(2022, 3, 11)}
-      />,
+      <DatePickerInput {...defaultProps} valueFormat="MMMM" value={new Date(2022, 3, 11)} />
     );
-    expectValue(container, "April");
+    expectValue(container, 'April');
 
     rerender(
       <DatePickerInput
@@ -103,9 +78,9 @@ describe("@raikou/dates/DatePickerInput", () => {
         type="multiple"
         valueFormat="MMMM"
         value={[new Date(2022, 3, 11), new Date(2022, 4, 11)]}
-      />,
+      />
     );
-    expectValue(container, "April, May");
+    expectValue(container, 'April, May');
 
     rerender(
       <DatePickerInput
@@ -113,61 +88,33 @@ describe("@raikou/dates/DatePickerInput", () => {
         type="range"
         valueFormat="MMMM"
         value={[new Date(2022, 3, 11), new Date(2022, 4, 11)]}
-      />,
+      />
     );
-    expectValue(container, "April – May");
+    expectValue(container, 'April – May');
   });
 
-  it("has correct default __staticSelector", () => {
+  it('has correct default __staticSelector', () => {
     const { container } = render(
       <DatePickerInput
         {...defaultProps}
-        popoverProps={{
-          opened: true,
-          withinPortal: false,
-          transitionProps: { duration: 0 },
-        }}
-      />,
+        popoverProps={{ opened: true, withinPortal: false, transitionProps: { duration: 0 } }}
+      />
     );
-    expect(container.querySelector("[data-dates-input]")).toHaveClass(
-      "raikou-DatePickerInput-input",
+    expect(container.querySelector('[data-dates-input]')).toHaveClass(
+      'mantine-DatePickerInput-input'
     );
 
-    expect(container.querySelector("table button")).toHaveClass(
-      "raikou-DatePickerInput-day",
-    );
+    expect(container.querySelector('table button')).toHaveClass('mantine-DatePickerInput-day');
   });
 
-  it("supports controlled state (dropdown click)", async () => {
+  it('supports controlled state (dropdown click)', async () => {
     const spy = jest.fn();
     const { container } = render(
-      <DatePickerInput
-        {...defaultProps}
-        value={new Date(2022, 3, 11)}
-        onChange={spy}
-      />,
+      <DatePickerInput {...defaultProps} value={new Date(2022, 3, 11)} onChange={spy} />
     );
     await clickInput(container);
     await clickControl(container, 4);
-    expectValue(container, "April 11, 2022");
+    expectValue(container, 'April 11, 2022');
     expect(spy).toHaveBeenCalledWith(new Date(2022, 3, 1));
-  });
-
-  it("supports controlled state (dropdown click) with timezone", async () => {
-    const spy = jest.fn();
-    const { container } = render(
-      <DatesProvider settings={{ timezone: "UTC" }}>
-        <DatePickerInput
-          {...defaultProps}
-          date={new Date(2022, 0, 31, 23)}
-          value={new Date(2022, 0, 31, 23)}
-          onChange={spy}
-        />
-      </DatesProvider>,
-    );
-    await clickInput(container);
-    await clickControl(container, 4);
-    expectValue(container, "February 1, 2022");
-    expect(spy).toHaveBeenCalledWith(new Date(2022, 1, 3, 19));
   });
 });

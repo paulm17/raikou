@@ -44,6 +44,7 @@ export function WithinForm() {
       <form
         onSubmit={(event) => {
           event.preventDefault();
+          // eslint-disable-next-line no-console
           console.log("submit");
         }}
       >
@@ -53,6 +54,20 @@ export function WithinForm() {
           data={options}
         />
       </form>
+    </div>
+  );
+}
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40, maxWidth: 400 }}>
+      <Autocomplete
+        label="Test"
+        placeholder="Test autocomplete"
+        data={options}
+        dropdownOpened
+        unstyled
+      />
     </div>
   );
 }

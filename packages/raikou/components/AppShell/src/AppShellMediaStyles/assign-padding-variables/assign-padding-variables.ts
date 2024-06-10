@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { keys } from "@raikou/core";
 import type { AppShellProps } from "../../AppShell";
 import { getBaseSize } from "../get-base-size/get-base-size";
@@ -34,7 +33,7 @@ export function assignPaddingVariables({
       if (key !== "base") {
         minMediaStyles[key] = minMediaStyles[key] || {};
         minMediaStyles[key]["--app-shell-padding"] = getPaddingValue(
-          padding![key]
+          padding![key],
         );
       }
     });

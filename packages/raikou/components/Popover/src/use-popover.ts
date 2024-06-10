@@ -1,19 +1,20 @@
 import { useDidUpdate, useUncontrolled } from "@raikou/hooks";
 import {
-  useFloating,
-  shift,
-  flip,
   arrow,
-  offset,
-  size,
-  Middleware,
+  flip,
   inline,
   limitShift,
+  Middleware,
+  offset,
+  shift,
+  size,
+  useFloating,
   UseFloatingReturn,
 } from "@floating-ui/react";
 import {
   FloatingAxesOffsets,
   FloatingPosition,
+  FloatingStrategy,
   useFloatingAutoUpdate,
 } from "../../Floating/src";
 import { PopoverWidth, PopoverMiddlewares } from "./Popover.types";
@@ -34,36 +35,90 @@ interface UsePopoverOptions {
   arrowOffset: number;
 }
 
+interface UsePopoverOptions {
+  offset: number | FloatingAxesOffsets;
+  position: FloatingPosition;
+  positionDependencies: any[] | undefined;
+  onPositionChange?: (position: FloatingPosition) => void;
+  opened: boolean | undefined;
+  defaultOpened: boolean | undefined;
+  onChange?: (opened: boolean) => void;
+  onClose?: () => void;
+  onOpen?: () => void;
+  width: PopoverWidth;
+  middlewares: PopoverMiddlewares | undefined;
+  arrowRef: React.RefObject<HTMLDivElement>;
+  arrowOffset: number;
+  strategy?: FloatingStrategy;
+}
+
+function getDefaultMiddlewares(
+  middlewares: PopoverMiddlewares | undefined,
+): PopoverMiddlewares {
+  if (middlewares === undefined) {
+    return { shift: true, flip: true };
+  }
+
+  const result = { ...middlewares };
+  if (middlewares.shift === undefined) {
+    result.shift = true;
+  }
+
+  if (middlewares.flip === undefined) {
+    result.flip = true;
+  }
+
+  return result;
+}
+
 function getPopoverMiddlewares(
   options: UsePopoverOptions,
   getFloating: () => UseFloatingReturn<Element>,
 ) {
+  const middlewaresOptions = getDefaultMiddlewares(options.middlewares);
   const middlewares: Middleware[] = [offset(options.offset)];
 
-  if (options.middlewares?.shift) {
-    middlewares.push(shift({ limiter: limitShift() }));
+  if (middlewaresOptions.shift) {
+    middlewares.push(
+      shift(
+        typeof middlewaresOptions.shift === "boolean"
+          ? { limiter: limitShift(), padding: 5 }
+          : { limiter: limitShift(), padding: 5, ...middlewaresOptions.shift },
+      ),
+    );
   }
 
-  if (options.middlewares?.flip) {
-    middlewares.push(flip());
+  if (middlewaresOptions.flip) {
+    middlewares.push(
+      typeof middlewaresOptions.flip === "boolean"
+        ? flip()
+        : flip(middlewaresOptions.flip),
+    );
   }
 
-  if (options.middlewares?.inline) {
-    middlewares.push(inline());
+  if (middlewaresOptions.inline) {
+    middlewares.push(
+      typeof middlewaresOptions.inline === "boolean"
+        ? inline()
+        : inline(middlewaresOptions.inline),
+    );
   }
 
   middlewares.push(
     arrow({ element: options.arrowRef, padding: options.arrowOffset }),
   );
 
-  if (options.middlewares?.size || options.width === "target") {
+  if (middlewaresOptions.size || options.width === "target") {
     middlewares.push(
       size({
+        ...(typeof middlewaresOptions.size === "boolean"
+          ? {}
+          : middlewaresOptions.size),
         apply({ rects, availableWidth, availableHeight }) {
           const floating = getFloating();
           const styles = floating.refs.floating.current?.style ?? {};
 
-          if (options.middlewares?.size) {
+          if (middlewaresOptions.size) {
             Object.assign(styles, {
               maxWidth: `${availableWidth}px`,
               maxHeight: `${availableHeight}px`,
@@ -109,6 +164,7 @@ export function usePopover(options: UsePopoverOptions) {
   };
 
   const floating: UseFloatingReturn<Element> = useFloating({
+    strategy: options.strategy,
     placement: options.position,
     middleware: getPopoverMiddlewares(options, () => floating),
   });

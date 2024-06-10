@@ -1,31 +1,32 @@
-import React, { useState } from 'react';
-import { IconPictureInPicture } from '@tabler/icons-react';
-import { Accordion } from './Accordion';
+import React, { useState } from "react";
+import { IconPictureInPicture } from "@tabler/icons-react";
+import { Accordion } from "./Accordion";
 
-export default { title: 'Accordion' };
+export default { title: "Accordion" };
 
 const _items = (
   <>
     <Accordion.Item value="customize">
       <Accordion.Control>Customization</Accordion.Control>
       <Accordion.Panel>
-        Colors, fonts, shadows and many other parts are customizable to fit your design needs
+        Colors, fonts, shadows and many other parts are customizable to fit your
+        design needs
       </Accordion.Panel>
     </Accordion.Item>
 
     <Accordion.Item value="flex">
       <Accordion.Control>Flexibility</Accordion.Control>
       <Accordion.Panel>
-        Configure components appearance and behavior with vast amount of settings or overwrite any
-        part of component styles
+        Configure components appearance and behavior with vast amount of
+        settings or overwrite any part of component styles
       </Accordion.Panel>
     </Accordion.Item>
 
     <Accordion.Item value="focus">
       <Accordion.Control>No annoying focus ring</Accordion.Control>
       <Accordion.Panel>
-        With new :focus-visible pseudo-class focus ring appears only when user navigates with
-        keyboard
+        With new :focus-visible pseudo-class focus ring appears only when user
+        navigates with keyboard
       </Accordion.Panel>
     </Accordion.Item>
   </>
@@ -107,7 +108,12 @@ export const ChevronPositions = () => (
 );
 
 export const Multiple = () => (
-  <Accordion multiple defaultValue={['flex']} style={{ maxWidth: 400 }} mx="auto">
+  <Accordion
+    multiple
+    defaultValue={["flex"]}
+    style={{ maxWidth: 400 }}
+    mx="auto"
+  >
     {_items}
   </Accordion>
 );
@@ -115,7 +121,12 @@ export const Multiple = () => (
 export const ControlledSingle = () => {
   const [value, setValue] = useState<string | null>(null);
   return (
-    <Accordion value={value} onChange={setValue} style={{ maxWidth: 400 }} mx="auto">
+    <Accordion
+      value={value}
+      onChange={setValue}
+      style={{ maxWidth: 400 }}
+      mx="auto"
+    >
       {_items}
     </Accordion>
   );
@@ -124,7 +135,13 @@ export const ControlledSingle = () => {
 export const ControlledMultiple = () => {
   const [value, setValue] = useState<string[]>([]);
   return (
-    <Accordion multiple value={value} onChange={setValue} style={{ maxWidth: 400 }} mx="auto">
+    <Accordion
+      multiple
+      value={value}
+      onChange={setValue}
+      style={{ maxWidth: 400 }}
+      mx="auto"
+    >
       {_items}
     </Accordion>
   );
@@ -141,23 +158,24 @@ export const Disabled = () => (
     <Accordion.Item value="customize">
       <Accordion.Control>Customization</Accordion.Control>
       <Accordion.Panel>
-        Colors, fonts, shadows and many other parts are customizable to fit your design needs
+        Colors, fonts, shadows and many other parts are customizable to fit your
+        design needs
       </Accordion.Panel>
     </Accordion.Item>
 
     <Accordion.Item value="flex">
       <Accordion.Control disabled>Flexibility</Accordion.Control>
       <Accordion.Panel>
-        Configure components appearance and behavior with vast amount of settings or overwrite any
-        part of component styles
+        Configure components appearance and behavior with vast amount of
+        settings or overwrite any part of component styles
       </Accordion.Panel>
     </Accordion.Item>
 
     <Accordion.Item value="focus">
       <Accordion.Control>No annoying focus ring</Accordion.Control>
       <Accordion.Panel>
-        With new :focus-visible pseudo-class focus ring appears only when user navigates with
-        keyboard
+        With new :focus-visible pseudo-class focus ring appears only when user
+        navigates with keyboard
       </Accordion.Panel>
     </Accordion.Item>
   </Accordion>
@@ -191,13 +209,17 @@ export const WithIcon = () => (
   <>
     <Accordion style={{ maxWidth: 400 }} mx="auto">
       <Accordion.Item value="flex">
-        <Accordion.Control icon={<IconPictureInPicture size={18} />}>Flexibility</Accordion.Control>
+        <Accordion.Control icon={<IconPictureInPicture size={18} />}>
+          Flexibility
+        </Accordion.Control>
       </Accordion.Item>
     </Accordion>
 
     <Accordion style={{ maxWidth: 400 }} mx="auto" chevronPosition="left">
       <Accordion.Item value="flex">
-        <Accordion.Control icon={<IconPictureInPicture size={18} />}>Flexibility</Accordion.Control>
+        <Accordion.Control icon={<IconPictureInPicture size={18} />}>
+          Flexibility
+        </Accordion.Control>
       </Accordion.Item>
     </Accordion>
   </>

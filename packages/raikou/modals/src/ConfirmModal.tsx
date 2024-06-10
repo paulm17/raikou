@@ -51,12 +51,10 @@ export function ConfirmModal({
 
       <Group justify="flex-end" {...groupProps}>
         <Button variant="default" {...cancelProps} onClick={handleCancel}>
-          {/* @ts-ignore */}
           {cancelProps?.children || cancelLabel}
         </Button>
 
         <Button {...confirmProps} onClick={handleConfirm}>
-          {/* @ts-ignore */}
           {confirmProps?.children || confirmLabel}
         </Button>
       </Group>

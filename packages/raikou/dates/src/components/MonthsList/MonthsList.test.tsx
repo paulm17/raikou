@@ -1,33 +1,24 @@
-import React from "react";
-import { render, tests, screen } from "@raikou/tests";
-import { datesTests } from "@raikou/dates-tests";
-import {
-  MonthsList,
-  MonthsListProps,
-  MonthsListStylesNames,
-} from "./MonthsList";
+import { render, screen, tests } from '@mantine-tests/core';
+import { datesTests } from '@mantine-tests/dates';
+import { MonthsList, MonthsListProps, MonthsListStylesNames } from './MonthsList';
 
 const defaultProps: MonthsListProps = {
   year: new Date(2022, 3, 11),
 };
 
-describe("@raikou/dates/MonthsList", () => {
+describe('@mantine/dates/MonthsList', () => {
   tests.itSupportsSystemProps<MonthsListProps, MonthsListStylesNames>({
     component: MonthsList,
     props: defaultProps,
+    mod: true,
     styleProps: true,
     extend: true,
     variant: true,
     size: true,
     classes: true,
     refType: HTMLTableElement,
-    displayName: "@raikou/dates/MonthsList",
-    stylesApiSelectors: [
-      "monthsList",
-      "monthsListCell",
-      "monthsListControl",
-      "monthsListRow",
-    ],
+    displayName: '@mantine/dates/MonthsList',
+    stylesApiSelectors: ['monthsList', 'monthsListCell', 'monthsListControl', 'monthsListRow'],
   });
 
   datesTests.itSupportsGetControlRef({
@@ -35,38 +26,20 @@ describe("@raikou/dates/MonthsList", () => {
     props: defaultProps,
     numberOfControls: 12,
   });
-  datesTests.itSupportsMonthsListProps({
-    component: MonthsList,
-    props: defaultProps,
-  });
-  datesTests.itSupportsOnControlKeydown({
-    component: MonthsList,
-    props: defaultProps,
-  });
-  datesTests.itSupportsOnControlClick({
-    component: MonthsList,
-    props: defaultProps,
-  });
-  datesTests.itSupportsOnControlMouseEnter({
-    component: MonthsList,
-    props: defaultProps,
-  });
+  datesTests.itSupportsMonthsListProps({ component: MonthsList, props: defaultProps });
+  datesTests.itSupportsOnControlKeydown({ component: MonthsList, props: defaultProps });
+  datesTests.itSupportsOnControlClick({ component: MonthsList, props: defaultProps });
+  datesTests.itSupportsOnControlMouseEnter({ component: MonthsList, props: defaultProps });
 
-  it("has correct default __staticSelector", () => {
+  it('has correct default __staticSelector', () => {
     render(<MonthsList {...defaultProps} />);
-    expect(screen.getByRole("table")).toHaveClass(
-      "raikou-MonthsList-monthsList",
-    );
-    expect(screen.getAllByRole("button")[0]).toHaveClass(
-      "raikou-MonthsList-monthsListControl",
-    );
+    expect(screen.getByRole('table')).toHaveClass('mantine-MonthsList-monthsList');
+    expect(screen.getAllByRole('button')[0]).toHaveClass('mantine-MonthsList-monthsListControl');
   });
 
-  it("supports custom __staticSelector", () => {
+  it('supports custom __staticSelector', () => {
     render(<MonthsList {...defaultProps} __staticSelector="Calendar" />);
-    expect(screen.getByRole("table")).toHaveClass("raikou-Calendar-monthsList");
-    expect(screen.getAllByRole("button")[0]).toHaveClass(
-      "raikou-Calendar-monthsListControl",
-    );
+    expect(screen.getByRole('table')).toHaveClass('mantine-Calendar-monthsList');
+    expect(screen.getAllByRole('button')[0]).toHaveClass('mantine-Calendar-monthsListControl');
   });
 });

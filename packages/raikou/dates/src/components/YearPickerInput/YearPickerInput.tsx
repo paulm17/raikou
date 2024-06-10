@@ -1,31 +1,32 @@
 import React from "react";
 import {
   BoxProps,
-  StylesApiProps,
   factory,
-  useProps,
-  useResolvedStylesApi,
   Factory,
   RaikouComponentStaticProperties,
+  StylesApiProps,
+  useProps,
+  useResolvedStylesApi,
 } from "@raikou/core";
-import {
-  InputVariant,
-  __InputStylesNames,
-} from "../../../../components/Input/src";
-import { pickCalendarProps } from "../Calendar";
 import { useDatesInput } from "../../hooks";
+import { DatePickerType } from "../../types";
+import { getDefaultClampedDate, shiftTimezone } from "../../utils";
+import { pickCalendarProps } from "../Calendar";
+import { useDatesContext } from "../DatesProvider";
+import { DateInputSharedProps, PickerInputBase } from "../PickerInputBase";
 import {
   YearPicker,
   YearPickerBaseProps,
   YearPickerStylesNames,
 } from "../YearPicker";
-import { DatePickerType } from "../../types";
-import { getDefaultClampedDate, shiftTimezone } from "../../utils";
-import { PickerInputBase, DateInputSharedProps } from "../PickerInputBase";
-import { useDatesContext } from "../DatesProvider";
+import {
+  __InputStylesNames,
+  InputVariant,
+} from "../../../../components/Input/src";
 
 export type YearPickerInputStylesNames =
   | __InputStylesNames
+  | "placeholder"
   | YearPickerStylesNames;
 
 export interface YearPickerInputProps<Type extends DatePickerType = "default">
@@ -82,6 +83,7 @@ export const YearPickerInput: YearPickerInputComponent =
       minDate,
       maxDate,
       vars,
+      valueFormatter,
       ...rest
     } = props;
 
@@ -93,7 +95,6 @@ export const YearPickerInput: YearPickerInputComponent =
       });
 
     const { calendarProps, others } = pickCalendarProps(rest);
-
     const ctx = useDatesContext();
 
     const {
@@ -114,6 +115,7 @@ export const YearPickerInput: YearPickerInputComponent =
       labelSeparator,
       closeOnChange,
       sortDates,
+      valueFormatter,
     });
 
     return (
@@ -172,4 +174,5 @@ export const YearPickerInput: YearPickerInputComponent =
     );
   }) as any;
 
+YearPickerInput.classes = { ...PickerInputBase.classes, ...YearPicker.classes };
 YearPickerInput.displayName = "@raikou/dates/YearPickerInput";

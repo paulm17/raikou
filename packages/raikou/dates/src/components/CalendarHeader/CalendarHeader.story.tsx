@@ -1,7 +1,7 @@
-import React from 'react';
-import { CalendarHeader } from './CalendarHeader';
+import React from "react";
+import { CalendarHeader } from "./CalendarHeader";
 
-export default { title: 'CalendarHeader' };
+export default { title: "CalendarHeader" };
 
 export function Usage() {
   return (
@@ -14,7 +14,12 @@ export function Usage() {
 export function DisabledControls() {
   return (
     <div style={{ padding: 40, width: 300 }}>
-      <CalendarHeader label="March 2022" nextDisabled previousDisabled hasNextLevel={false} />
+      <CalendarHeader
+        label="March 2022"
+        nextDisabled
+        previousDisabled
+        hasNextLevel={false}
+      />
     </div>
   );
 }
@@ -46,13 +51,17 @@ export function WithoutPrevious() {
 export function WithoutNextAndPrevious() {
   return (
     <div style={{ padding: 40, width: 300 }}>
-      <CalendarHeader label="March 2022" withPrevious={false} withNext={false} />
+      <CalendarHeader
+        label="March 2022"
+        withPrevious={false}
+        withNext={false}
+      />
     </div>
   );
 }
 
 export function Sizes() {
-  const sizes = (['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
+  const sizes = (["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
     <CalendarHeader label="January" size={size} key={size} mt="xl" />
   ));
 

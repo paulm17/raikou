@@ -1,16 +1,19 @@
-import type { SetRequired } from 'type-fest';
-import type { TransitionOverride } from '../Transition';
+import type { SetRequired } from "type-fest";
+import type { TransitionOverride } from "../Transition";
 
-type MinimalTransitionOverride = SetRequired<TransitionOverride, 'duration' | 'transition'>;
+type MinimalTransitionOverride = SetRequired<
+  TransitionOverride,
+  "duration" | "transition"
+>;
 
 const defaultTransition: MinimalTransitionOverride = {
   duration: 100,
-  transition: 'fade',
+  transition: "fade",
 };
 
 export function getTransitionProps(
   transitionProps: TransitionOverride | undefined,
-  componentTransition: TransitionOverride | undefined
+  componentTransition: TransitionOverride | undefined,
 ): MinimalTransitionOverride {
   return { ...defaultTransition, ...componentTransition, ...transitionProps };
 }

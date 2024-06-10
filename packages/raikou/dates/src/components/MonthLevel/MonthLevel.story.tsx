@@ -1,27 +1,37 @@
-import 'dayjs/locale/ru';
-import dayjs from 'dayjs';
-import React, { useState } from 'react';
-import { MonthLevel, MonthLevelProps } from './MonthLevel';
+import React, { useState } from "react";
+import "dayjs/locale/ru";
 
-export default { title: 'MonthLevel' };
+import dayjs from "dayjs";
+import { MonthLevel, MonthLevelProps } from "./MonthLevel";
+
+export default { title: "MonthLevel" };
 
 function Wrapper(props: Partial<MonthLevelProps>) {
   const [month, setMonth] = useState(new Date(2022, 3, 11));
 
   const onNextMonth = () =>
-    setMonth((current) => dayjs(current.toISOString()).subtract(-1, 'month').toDate());
+    setMonth((current) =>
+      dayjs(current.toISOString()).subtract(-1, "month").toDate(),
+    );
   const onPrevMonth = () =>
-    setMonth((current) => dayjs(current.toISOString()).subtract(1, 'month').toDate());
+    setMonth((current) =>
+      dayjs(current.toISOString()).subtract(1, "month").toDate(),
+    );
 
   return (
     <div style={{ padding: 40 }}>
-      <MonthLevel month={month} onNext={onNextMonth} onPrevious={onPrevMonth} {...props} />
+      <MonthLevel
+        month={month}
+        onNext={onNextMonth}
+        onPrevious={onPrevMonth}
+        {...props}
+      />
     </div>
   );
 }
 
 export function Usage() {
-  return <Wrapper classNames={{ weekday: 'test-tetstasfaf' }} />;
+  return <Wrapper classNames={{ weekday: "test-tetstasfaf" }} />;
 }
 
 export function Locale() {
@@ -29,7 +39,11 @@ export function Locale() {
 }
 
 export function RenderMonthLabel() {
-  return <Wrapper monthLabelFormat={(date) => `${date.getMonth()}/${date.getFullYear()}`} />;
+  return (
+    <Wrapper
+      monthLabelFormat={(date) => `${date.getMonth()}/${date.getFullYear()}`}
+    />
+  );
 }
 
 export function Unstyled() {
@@ -45,7 +59,7 @@ export function MaxDate() {
 }
 
 export function Sizes() {
-  const sizes = (['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
+  const sizes = (["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
     <Wrapper size={size} key={size} />
   ));
   return <>{sizes}</>;

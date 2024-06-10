@@ -20,8 +20,6 @@ export type SliderCssVariables = {
     | "--slider-radius";
 };
 
-export type SliderVariant = string;
-
 interface SliderContextValue {
   getStyles: GetStylesApi<{
     stylesNames: SliderStylesNames;

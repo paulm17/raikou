@@ -1,7 +1,7 @@
-import { getFloatingValue } from "./get-gloating-value";
+import { getFloatingValue } from './get-gloating-value';
 
-describe("@raikou/core/Slider/get-floating-value", () => {
-  it("returns floating value with given precision", () => {
+describe('@mantine/core/Slider/get-floating-value', () => {
+  it('returns floating value with given precision', () => {
     expect(getFloatingValue(0.123456, 2)).toBe(0.12);
     expect(getFloatingValue(0.123456, 4)).toBe(0.1235);
     expect(getFloatingValue(0.123456, 6)).toBe(0.123456);

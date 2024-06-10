@@ -1,6 +1,7 @@
 import React, { cloneElement } from "react";
 import { useFocusTrap, useMergedRef } from "@raikou/hooks";
 import { isElement } from "@raikou/core";
+import { VisuallyHidden } from "../../VisuallyHidden/src";
 
 export interface FocusTrapProps {
   /** Element at which focus should be trapped, should support ref prop */
@@ -28,4 +29,12 @@ export function FocusTrap({
   return cloneElement(children, { [refProp]: ref });
 }
 
+export function FocusTrapInitialFocus(
+  props: React.ComponentPropsWithoutRef<"span">,
+) {
+  return <VisuallyHidden tabIndex={-1} data-autofocus {...props} />;
+}
+
 FocusTrap.displayName = "@raikou/core/FocusTrap";
+FocusTrapInitialFocus.displayName = "@raikou/core/FocusTrapInitialFocus";
+FocusTrap.InitialFocus = FocusTrapInitialFocus;

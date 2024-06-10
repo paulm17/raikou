@@ -1,8 +1,7 @@
-import { TextInput } from "@raikou/client";
-import React from "react";
-import { createFormContext } from "../index";
+import { TextInput } from '@mantine/core';
+import { createFormContext } from '../index';
 
-export default { title: "Form" };
+export default { title: 'Form' };
 
 interface FormValues {
   a: number;
@@ -13,14 +12,14 @@ const [FormProvider, useFormContext, useForm] = createFormContext<FormValues>();
 
 function CustomField() {
   const form = useFormContext();
-  return <TextInput {...form.getInputProps("b")} />;
+  return <TextInput {...form.getInputProps('b')} />;
 }
 
 export function Context() {
   const form = useForm({
     initialValues: {
       a: 0,
-      b: "",
+      b: '',
     },
   });
 

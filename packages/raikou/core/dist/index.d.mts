@@ -92,6 +92,8 @@ interface RaikouStyleProps {
     mx?: StyleProp<RaikouSpacing>;
     mt?: StyleProp<RaikouSpacing>;
     mb?: StyleProp<RaikouSpacing>;
+    ms?: StyleProp<RaikouSpacing>;
+    me?: StyleProp<RaikouSpacing>;
     ml?: StyleProp<RaikouSpacing>;
     mr?: StyleProp<RaikouSpacing>;
     p?: StyleProp<RaikouSpacing>;
@@ -99,17 +101,20 @@ interface RaikouStyleProps {
     px?: StyleProp<RaikouSpacing>;
     pt?: StyleProp<RaikouSpacing>;
     pb?: StyleProp<RaikouSpacing>;
+    ps?: StyleProp<RaikouSpacing>;
+    pe?: StyleProp<RaikouSpacing>;
     pl?: StyleProp<RaikouSpacing>;
     pr?: StyleProp<RaikouSpacing>;
+    bd?: StyleProp<React.CSSProperties["border"]>;
     bg?: StyleProp<RaikouColor>;
     c?: StyleProp<RaikouColor>;
     opacity?: StyleProp<React.CSSProperties["opacity"]>;
-    ff?: StyleProp<React.CSSProperties["fontFamily"]>;
-    fz?: StyleProp<RaikouFontSize | number | (string & {})>;
+    ff?: StyleProp<"monospace" | "text" | "heading" | (string & {})>;
+    fz?: StyleProp<RaikouFontSize | `h${1 | 2 | 3 | 4 | 5 | 6}` | number | (string & {})>;
     fw?: StyleProp<React.CSSProperties["fontWeight"]>;
     lts?: StyleProp<React.CSSProperties["letterSpacing"]>;
     ta?: StyleProp<React.CSSProperties["textAlign"]>;
-    lh?: StyleProp<RaikouLineHeight | number | (string & {})>;
+    lh?: StyleProp<RaikouLineHeight | `h${1 | 2 | 3 | 4 | 5 | 6}` | number | (string & {})>;
     fs?: StyleProp<React.CSSProperties["fontStyle"]>;
     tt?: StyleProp<React.CSSProperties["textTransform"]>;
     td?: StyleProp<React.CSSProperties["textDecoration"]>;
@@ -130,6 +135,7 @@ interface RaikouStyleProps {
     right?: StyleProp<React.CSSProperties["right"]>;
     inset?: StyleProp<React.CSSProperties["inset"]>;
     display?: StyleProp<React.CSSProperties["display"]>;
+    flex?: StyleProp<React.CSSProperties["flex"]>;
 }
 
 declare function extractStyleProps<T extends Record<string, any>>(others: RaikouStyleProps & T): {
@@ -137,25 +143,33 @@ declare function extractStyleProps<T extends Record<string, any>>(others: Raikou
     rest: T;
 };
 
+declare function borderResolver(value: unknown, theme: RaikouTheme): unknown;
+
 declare function colorResolver(color: unknown, theme: RaikouTheme): string;
+declare function textColorResolver(color: unknown, theme: RaikouTheme): string;
+
+declare function fontFamilyResolver(fontFamily: unknown): unknown;
 
 declare function fontSizeResolver(value: unknown, theme: RaikouTheme): unknown;
 
-declare function spacingResolver(value: unknown, theme: RaikouTheme): unknown;
-
 declare function identityResolver(value: unknown): unknown;
-
-declare function sizeResolver(value: unknown): unknown;
 
 declare function lineHeightResolver(value: unknown, theme: RaikouTheme): unknown;
 
+declare function sizeResolver(value: unknown): unknown;
+
+declare function spacingResolver(value: unknown, theme: RaikouTheme): unknown;
+
 declare const resolvers: {
     color: typeof colorResolver;
+    textColor: typeof textColorResolver;
     fontSize: typeof fontSizeResolver;
     spacing: typeof spacingResolver;
     identity: typeof identityResolver;
     size: typeof sizeResolver;
     lineHeight: typeof lineHeightResolver;
+    fontFamily: typeof fontFamilyResolver;
+    border: typeof borderResolver;
 };
 type StylePropType = keyof typeof resolvers;
 
@@ -173,12 +187,13 @@ interface InlineStylesInput {
     selector: string;
     styles?: React.CSSProperties;
     media?: InlineStylesMediaQuery[];
+    container?: InlineStylesMediaQuery[];
 }
-declare function stylesToString({ selector, styles, media }: InlineStylesInput): string;
+declare function stylesToString({ selector, styles, media, container, }: InlineStylesInput): string;
 
 interface InlineStylesProps extends InlineStylesInput, Omit<React__default.ComponentPropsWithoutRef<"style">, keyof InlineStylesInput> {
 }
-declare function InlineStyles({ selector, styles, media }: InlineStylesInput): React__default.JSX.Element;
+declare function InlineStyles(props: InlineStylesInput): React__default.JSX.Element;
 
 interface SortMediaQueriesResult extends Omit<ParseStylePropsResult, 'media'> {
     media: InlineStylesMediaQuery[];
@@ -233,6 +248,8 @@ interface BoxProps extends RaikouStyleProps {
     style?: RaikouStyleProp;
     /** CSS variables defined on root component element */
     __vars?: CssVarsProp;
+    /** `size` property passed down the HTML element */
+    __size?: string;
     /** Breakpoint above which the component is hidden with `display: none` */
     hiddenFrom?: RaikouBreakpoint;
     /** Breakpoint below which the component is hidden with `display: none` */
@@ -241,6 +258,8 @@ interface BoxProps extends RaikouStyleProps {
     lightHidden?: boolean;
     /** Determines whether component should be hidden in dark color scheme with `display: none` */
     darkHidden?: boolean;
+    /** Element modifiers transformed into `data-` attributes, for example, `{ 'data-size': 'xl' }`, falsy values are removed */
+    mod?: BoxMod;
 }
 type ElementProps<ElementType extends React__default.ElementType, PropsToOmit extends string = never> = Omit<React__default.ComponentPropsWithoutRef<ElementType>, "style" | PropsToOmit>;
 interface BoxComponentProps extends BoxProps {
@@ -272,6 +291,7 @@ interface ParseThemeColorResult {
     shade: RaikouColorShade | undefined;
     variable: CssVariable | undefined;
     isThemeColor: boolean;
+    isLight: boolean;
 }
 declare function parseThemeColor({ color, theme, colorScheme, }: ParseThemeColorOptions): ParseThemeColorResult;
 
@@ -282,12 +302,14 @@ interface VariantColorsResolverInput {
     theme: RaikouTheme;
     variant: string;
     gradient?: RaikouGradient;
+    autoContrast?: boolean;
 }
 interface VariantColorResolverResult {
     background: string;
     hover: string;
     color: string;
     border: string;
+    hoverColor?: string;
 }
 type VariantColorsResolver = (input: VariantColorsResolverInput) => VariantColorResolverResult;
 declare const defaultVariantColorsResolver: VariantColorsResolver;
@@ -308,7 +330,20 @@ declare function darken(color: string, alpha: number): string;
 
 declare function lighten(color: string, alpha: number): string;
 
+declare function luminance(color: string): number;
 declare function isLightColor(color: string, luminanceThreshold?: number): boolean;
+
+interface GetContrastColorInput {
+    color: string | null | undefined;
+    theme: RaikouTheme;
+    autoContrast?: boolean | undefined | null;
+}
+declare function getContrastColor({ color, theme, autoContrast, }: GetContrastColorInput): "var(--raikou-color-black)" | "var(--raikou-color-white)";
+declare function getPrimaryContrastColor(theme: RaikouTheme, colorScheme: "light" | "dark"): "var(--raikou-color-black)" | "var(--raikou-color-white)";
+
+declare function getAutoContrastValue(autoContrast: boolean | undefined, theme: RaikouTheme): boolean;
+
+declare function colorsTuple(input: string | string[]): RaikouColorsTuple;
 
 interface RaikouTheme {
     /** Controls focus ring styles. Supports the following options:
@@ -349,6 +384,16 @@ interface RaikouTheme {
      *  and other components that use colors from theme.
      * */
     variantColorResolver: VariantColorsResolver;
+    /** Determines whether text color must be changed based on the given `color` prop in filled variant
+     *  For example, if you pass `color="blue.1"` to Button component, text color will be changed to `var(--raikou-color-black)`
+     *  Default value – `false`
+     * */
+    autoContrast: boolean;
+    /** Determines which luminance value is used to determine if text color should be light or dark.
+     *  Used only if `theme.autoContrast` is set to `true`.
+     *  Default value is `0.3`
+     * */
+    luminanceThreshold: number;
     /** font-family used in all components, system fonts by default */
     fontFamily: string;
     /** Monospace font-family, used in code and other similar components, system fonts by default  */
@@ -646,4 +691,4 @@ declare function useDirection(): {
     setDirection: () => void;
 };
 
-export { Box, type BoxComponentProps, type BoxMod, type BoxProps, type CSSProperties, type ClassNames, type ClassNamesArray, type CompoundStylesApiProps, type CssVariable, type CssVariables, type CssVars, type CssVarsProp, DEFAULT_THEME, type DefaultRaikouColor, type Direction, type ElementProps, type ExtendComponent, type ExtendsRootComponent, FOCUS_CLASS_NAMES, type Factory, type FactoryPayload, type GetStylesApi, type GetStylesApiOptions, type HeadingStyle, InlineStyles, type InlineStylesInput, type InlineStylesMediaQuery, type InlineStylesProps, type PartialTransformVars, type PartialVarsResolver, type PolymorphicFactory, type RGBA, type RaikouBreakpoint, type RaikouBreakpointsValues, type RaikouColor, type RaikouColorScheme, type RaikouColorShade, type RaikouColorsTuple, type RaikouComponent, type RaikouComponentStaticProperties, type RaikouFontSize, type RaikouFontSizesValues, type RaikouGradient, type RaikouLineHeight, type RaikouLineHeightValues, type RaikouPrimaryShade, type RaikouRadius, type RaikouRadiusValues, type RaikouShadow, type RaikouShadowsValues, type RaikouSize, type RaikouSpacing, type RaikouSpacingValues, type RaikouStyleProp, type RaikouStyleProps, type RaikouStylesRecord, type RaikouTheme, type RaikouThemeColors, type RaikouThemeColorsOverride, type RaikouThemeComponent, type RaikouThemeComponents, type RaikouThemeOther, type RaikouThemeOverride, STYlE_PROPS_DATA, type StyleProp, type Styles, type StylesApiProps, type StylesApiRecord, type StylesRecord, type SystemPropData, type ThemeExtend, type TransformVars, type UseStylesInput, type VariantColorResolverResult, type VariantColorsResolver, type VariantColorsResolverInput, type VarsResolver, camelToKebabCase, closeOnEscape, createEventHandler, createPolymorphicComponent, createScopedKeydownHandler, createVarsResolver, darken, deepMerge, defaultVariantColorsResolver, em, extractStyleProps, factory, filterProps, findElementAncestor, getBaseValue, getBreakpointValue, getDefaultZIndex, getEnv, getFontSize, getGradient, getLineHeight, getPrimaryShade, getRadius, getSafeId, getShadow, getSize, getSortedBreakpoints, getSpacing, getStyleObject, getThemeColor, isElement, isLightColor, isNumberLike, keys, lighten, mergeRaikouTheme, noop, parseStyleProps, parseThemeColor, polymorphicFactory, px, rem, resolveClassNames, resolveStyles, rgba, stylesToString, toRgba, useDirection, useProps, useRaikouTheme, useRandomClassName, useResolvedStylesApi, useStyles, validateRaikouTheme };
+export { Box, type BoxComponentProps, type BoxMod, type BoxProps, type CSSProperties, type ClassNames, type ClassNamesArray, type CompoundStylesApiProps, type CssVariable, type CssVariables, type CssVars, type CssVarsProp, DEFAULT_THEME, type DefaultRaikouColor, type Direction, type ElementProps, type ExtendComponent, type ExtendsRootComponent, FOCUS_CLASS_NAMES, type Factory, type FactoryPayload, type GetStylesApi, type GetStylesApiOptions, type HeadingStyle, InlineStyles, type InlineStylesInput, type InlineStylesMediaQuery, type InlineStylesProps, type PartialTransformVars, type PartialVarsResolver, type PolymorphicFactory, type RGBA, type RaikouBreakpoint, type RaikouBreakpointsValues, type RaikouColor, type RaikouColorScheme, type RaikouColorShade, type RaikouColorsTuple, type RaikouComponent, type RaikouComponentStaticProperties, type RaikouFontSize, type RaikouFontSizesValues, type RaikouGradient, type RaikouLineHeight, type RaikouLineHeightValues, type RaikouPrimaryShade, type RaikouRadius, type RaikouRadiusValues, type RaikouShadow, type RaikouShadowsValues, type RaikouSize, type RaikouSpacing, type RaikouSpacingValues, type RaikouStyleProp, type RaikouStyleProps, type RaikouStylesRecord, type RaikouTheme, type RaikouThemeColors, type RaikouThemeColorsOverride, type RaikouThemeComponent, type RaikouThemeComponents, type RaikouThemeOther, type RaikouThemeOverride, STYlE_PROPS_DATA, type StyleProp, type Styles, type StylesApiProps, type StylesApiRecord, type StylesRecord, type SystemPropData, type ThemeExtend, type TransformVars, type UseStylesInput, type VariantColorResolverResult, type VariantColorsResolver, type VariantColorsResolverInput, type VarsResolver, camelToKebabCase, closeOnEscape, colorsTuple, createEventHandler, createPolymorphicComponent, createScopedKeydownHandler, createVarsResolver, darken, deepMerge, defaultVariantColorsResolver, em, extractStyleProps, factory, filterProps, findElementAncestor, getAutoContrastValue, getBaseValue, getBreakpointValue, getContrastColor, getDefaultZIndex, getEnv, getFontSize, getGradient, getLineHeight, getPrimaryContrastColor, getPrimaryShade, getRadius, getSafeId, getShadow, getSize, getSortedBreakpoints, getSpacing, getStyleObject, getThemeColor, isElement, isLightColor, isNumberLike, keys, lighten, luminance, mergeRaikouTheme, noop, parseStyleProps, parseThemeColor, polymorphicFactory, px, rem, resolveClassNames, resolveStyles, rgba, stylesToString, toRgba, useDirection, useProps, useRaikouTheme, useRandomClassName, useResolvedStylesApi, useStyles, validateRaikouTheme };

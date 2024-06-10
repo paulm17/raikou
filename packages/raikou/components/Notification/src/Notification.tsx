@@ -108,6 +108,7 @@ export const Notification = factory<NotificationFactory>((_props, ref) => {
     unstyled,
     variant,
     vars,
+    mod,
     ...others
   } = props;
 
@@ -127,10 +128,10 @@ export const Notification = factory<NotificationFactory>((_props, ref) => {
   return (
     <Box
       {...getStyles("root")}
-      mod={{
-        "data-with-icon": !!icon || loading,
-        "data-with-border": withBorder,
-      }}
+      mod={[
+        { "data-with-icon": !!icon || loading, "data-with-border": withBorder },
+        mod,
+      ]}
       ref={ref}
       variant={variant}
       {...others}
@@ -140,6 +141,8 @@ export const Notification = factory<NotificationFactory>((_props, ref) => {
       {loading && <Loader size={28} color={color} {...getStyles("loader")} />}
 
       <div {...getStyles("body")}>
+        {title && <div {...getStyles("title")}>{title}</div>}
+
         <Box {...getStyles("description")} mod={{ "data-with-title": !!title }}>
           {children}
         </Box>

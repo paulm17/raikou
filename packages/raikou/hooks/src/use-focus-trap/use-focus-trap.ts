@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useRef } from "react";
-import { FOCUS_SELECTOR, focusable, tabbable } from "./tabbable";
-import { scopeTab } from "./scope-tab";
 import { createAriaHider } from "./create-aria-hider";
+import { scopeTab } from "./scope-tab";
+import { FOCUS_SELECTOR, focusable, tabbable } from "./tabbable";
 
 export function useFocusTrap(
-  active = true
+  active = true,
 ): (instance: HTMLElement | null) => void {
   const ref = useRef<HTMLElement | null>();
   const restoreAria = useRef<Function | null>(null);
@@ -15,7 +15,7 @@ export function useFocusTrap(
 
     if (!focusElement) {
       const children = Array.from<HTMLElement>(
-        node.querySelectorAll(FOCUS_SELECTOR)
+        node.querySelectorAll(FOCUS_SELECTOR),
       );
       focusElement =
         children.find(tabbable) || children.find(focusable) || null;
@@ -28,7 +28,7 @@ export function useFocusTrap(
       // eslint-disable-next-line no-console
       console.warn(
         "[@raikou/hooks/use-focus-trap] Failed to find focusable element within provided node",
-        node
+        node,
       );
     }
   };
@@ -61,7 +61,7 @@ export function useFocusTrap(
             // eslint-disable-next-line no-console
             console.warn(
               "[@raikou/hooks/use-focus-trap] Ref node is not part of the dom",
-              node
+              node,
             );
           }
         });
@@ -71,7 +71,7 @@ export function useFocusTrap(
         ref.current = null;
       }
     },
-    [active]
+    [active],
   );
 
   useEffect(() => {

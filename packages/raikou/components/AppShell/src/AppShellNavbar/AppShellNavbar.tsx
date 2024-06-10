@@ -43,6 +43,7 @@ export const AppShellNavbar = factory<AppShellNavbarFactory>((_props, ref) => {
     vars,
     withBorder,
     zIndex,
+    mod,
     ...others
   } = props;
   const ctx = useStore.getState();
@@ -55,7 +56,7 @@ export const AppShellNavbar = factory<AppShellNavbarFactory>((_props, ref) => {
     <Box
       component="nav"
       ref={ref}
-      mod={{ "with-border": withBorder ?? ctx.withBorder }}
+      mod={[{ "with-border": withBorder ?? ctx.withBorder }, mod]}
       {...ctx.getStyles("navbar", { className, classNames, styles, style })}
       {...others}
       __vars={{
