@@ -64,6 +64,7 @@ pnpm --filter="@raikou/copy-button" run build
 pnpm --filter="@raikou/dialog" run build
 pnpm --filter="@raikou/drawer" run build
 pnpm --filter="@raikou/floating" run build
+pnpm --filter="@raikou/floating-indicator" run build
 pnpm --filter="@raikou/filebutton" run build
 pnpm --filter="@raikou/fileinput" run build
 pnpm --filter="@raikou/focus-trap" run build

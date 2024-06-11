@@ -1,6 +1,6 @@
 {
   "name": "@raikou/input-group-fieldset",
-  "version": "0.0.1-beta.11",
+  "version": "0.0.1-beta.12",
   "main": "index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",

@@ -1,6 +1,6 @@
 {
   "name": "postcss-unocss-raikou",
-  "version": "0.0.1-beta.11",
+  "version": "0.0.1-beta.12",
   "description": "PostCSS plugin for Unocss and Raikou integration",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
