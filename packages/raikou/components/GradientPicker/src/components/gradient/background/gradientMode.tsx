@@ -1,4 +1,5 @@
-import React, { Box } from "@raikou/core";
+import React from "react";
+import { Box } from "@raikou/core";
 import { useGradientPickerContext } from "../../../GradientPicker.context";
 import { GradientObj, GradientType } from "../../../GradientPicker.types";
 

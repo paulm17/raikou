@@ -2,7 +2,7 @@
   "name": "@raikou/gradient-picker",
   "private": true,
   "description": "Extension of color picker to support gradients",
-  "version": "0.0.1-beta.10",
+  "version": "0.0.1-beta.11",
   "license": "MIT",
   "scripts": {
     "build": "tsup src/index.ts --config ../../../../configuration/tsup/tsup.config.ts",

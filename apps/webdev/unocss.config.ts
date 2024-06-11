@@ -23,12 +23,12 @@ export default defineConfig({
     }),
     presetRaikou(),
   ],
-  transformers: [transformerVariantGroup()],
-  // theme: {
-  //   colors: {
-  //     blue: generateColors("#5474B4"),
-  //   },
-  // },
+  // transformers: [transformerVariantGroup()],
+  theme: {
+    colors: {
+      blue: generateColors("#5474B4"),
+    },
+  },
   raikouTheme: {
     primaryColor: "blue",
     scale: 1,
@@ -56,37 +56,37 @@ export default defineConfig({
     //     },
     //   },
     // }),
-    components: {
-      Badge: {
-        vars: `
-          if (props.size === "xxf") {
-             return {
-                root: {
-                "--badge-height": rem(90),
-                "--badge-padding-x": rem(150),
-                "--badge-fz": rem(50),
-                },
-             };
-          }
+    // components: {
+    //   Badge: {
+    //     vars: `
+    //       if (props.size === "xxf") {
+    //          return {
+    //             root: {
+    //             "--badge-height": rem(90),
+    //             "--badge-padding-x": rem(150),
+    //             "--badge-fz": rem(50),
+    //             },
+    //          };
+    //       }
 
-          return { root: {} };
-          `,
-      },
-      Button: {
-        vars: `
-          if (props.size === "xxd") {
-             return {
-                root: {
-                "--button-height": rem(70),
-                "--button-padding-x": rem(50),
-                "--button-fz": rem(30),
-                },
-             };
-          }
+    //       return { root: {} };
+    //       `,
+    //   },
+    //   Button: {
+    //     vars: `
+    //       if (props.size === "xxd") {
+    //          return {
+    //             root: {
+    //             "--button-height": rem(70),
+    //             "--button-padding-x": rem(50),
+    //             "--button-fz": rem(30),
+    //             },
+    //          };
+    //       }
 
-          return { root: {} };
-          `,
-      },
-    },
+    //       return { root: {} };
+    //       `,
+    //   },
+    // },
   },
 } as RaikouConfig) as RaikouConfig;

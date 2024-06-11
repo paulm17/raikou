@@ -1,6 +1,6 @@
 {
   "name": "@raikou/appshell",
-  "version": "0.0.1-beta.10",
+  "version": "0.0.1-beta.11",
   "main": "index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",

@@ -96,13 +96,13 @@ type ActionIconFactory = PolymorphicFactory<{
         Group: typeof ActionIconGroup;
     };
 }>;
-declare const ActionIcon: (<C = "button">(props: C extends React.ElementType<any> ? ActionIconProps & {
+declare const ActionIcon: (<C = "button">(props: C extends React.ElementType<any, keyof React.JSX.IntrinsicElements> ? ActionIconProps & {
     component?: C | undefined;
 } & Omit<JSX.LibraryManagedAttributes<C, React.PropsWithoutRef<React.ComponentProps<C>>>, "component" | keyof ActionIconProps> & {
-    ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
+    ref?: (C extends infer T ? T extends C ? T extends React.ElementType<any, keyof React.JSX.IntrinsicElements> ? React.ComponentPropsWithRef<T>["ref"] : never : never : never) | undefined;
     renderRoot?(props: any): any;
 } : ActionIconProps & {
-    component: React.ElementType<any>;
+    component: React.ElementType<any, keyof React.JSX.IntrinsicElements>;
     renderRoot?(props: any): any;
 }) => React.ReactElement<any, string | React.JSXElementConstructor<any>>) & Omit<React.FunctionComponent<(ActionIconProps & {
     component?: any;
@@ -110,7 +110,7 @@ declare const ActionIcon: (<C = "button">(props: C extends React.ElementType<any
     ref?: any;
     renderRoot?(props: any): any;
 }) | (ActionIconProps & {
-    component: React.ElementType<any>;
+    component: React.ElementType<any, keyof React.JSX.IntrinsicElements>;
     renderRoot?(props: any): any;
 })>, never> & _raikou_core.ThemeExtend<{
     props: ActionIconProps;

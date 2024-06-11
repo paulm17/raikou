@@ -1,5 +1,6 @@
 import React from "react";
 import { ActionIcon, ActionIconProps } from "./ActionIcon";
+import { Button } from "../../Button/src";
 import { DEFAULT_THEME, rem } from "@raikou/core";
 
 export default { title: "ActionIcon" };
@@ -38,6 +39,24 @@ export function AutoContrast() {
       }}
     >
       {buttons}
+    </div>
+  );
+}
+
+export function SingleButton() {
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  return (
+    <div style={{ padding: 40 }}>
+      <ActionIcon loading={isLoading}>$$</ActionIcon>
+      <div style={{ display: "block", paddingTop: "5px" }}></div>
+      <Button
+        variant="filled"
+        color={isLoading ? "gray" : "blue"}
+        onClick={() => setIsLoading(!isLoading)}
+      >
+        Set Loading
+      </Button>
     </div>
   );
 }

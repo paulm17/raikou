@@ -1,6 +1,6 @@
 {
   "name": "@raikou/webpack",
-  "version": "0.0.1-beta.10",
+  "version": "0.0.1-beta.11",
   "description": "The Webpack plugin for UnoCSS and Raikou",
   "license": "MIT",
   "repository": {
