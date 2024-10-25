@@ -1,0 +1,92 @@
+/* ----- CSS reset ----- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+/* ----- Global styles ----- */
+body {
+  margin: 0;
+  font-family: var(--raikou-font-family);
+  font-size: var(--raikou-font-size-md);
+  line-height: var(--raikou-line-height);
+  background-color: var(--raikou-color-body);
+  color: var(--raikou-color-text);
+
+  -webkit-font-smoothing: var(--raikou-webkit-font-smoothing);
+  -moz-osx-font-smoothing: var(--raikou-moz-font-smoothing);
+
+  @media screen and (max-device-width: em(500px)) {
+    -webkit-text-size-adjust: 100%;
+  }
+}
+
+[data-respect-reduced-motion] {
+  @media (prefers-reduced-motion: reduce) {
+    [data-reduce-motion] {
+      transition: none;
+      animation: none;
+    }
+  }
+}
+
+.raikou-light-hidden {
+  [data-raikou-color-scheme="light"] {
+    display: none;
+  }
+}
+
+.raikou-dark-hidden {
+  [data-raikou-color-scheme="dark"] {
+    display: none;
+  }
+}
+
+.raikou-focus-auto {
+  &:focus-visible {
+    outline: 2px solid var(--raikou-primary-color-filled);
+    outline-offset: 2px;
+  }
+}
+
+.raikou-focus-always {
+  &:focus {
+    outline: 2px solid var(--raikou-primary-color-filled);
+    outline-offset: 2px;
+  }
+}
+
+.raikou-focus-never {
+  &:focus {
+    outline: none;
+  }
+}
+
+.raikou-active {
+  &:active {
+    transform: translateY(rem(1px));
+  }
+
+  fieldset:disabled &:active {
+    transform: none;
+  }
+}
+
+.raikou-rotate-rtl {
+  [dir="rtl"] {
+    transform: rotate(180deg);
+  }
+}

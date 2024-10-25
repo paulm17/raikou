@@ -1,1 +1,0 @@
-const raikouTheme = {"primaryColor":"blue","scale":1,"includeColors":["blue","cyan","orange","yellow","fuchsia","emerald"],"excludeColors":[],"other":{"deepOrangeLight":"#E17900","deepOrangeDark":"#FC8C0C"}};module.exports = raikouTheme;

@@ -1,6 +1,0 @@
-.root {
-  position: fixed;
-  border: 1px solid light-dark(#dee2e6, #373a40);
-  overflow: hidden;
-  transition: all 0.2s;
-}

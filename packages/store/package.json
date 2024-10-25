@@ -1,0 +1,31 @@
+{
+  "name": "@raikou/store",
+  "version": "0.0.1-beta.8",
+  "main": "index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format esm,cjs --clean",
+    "lint": "eslint \"**/*.ts*\"",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "build:fast": "tsup src",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "clean-package": "../../../clean-package.config.json",
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "clean-package": "2.2.0"
+  }
+}

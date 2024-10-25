@@ -1,0 +1,60 @@
+{
+  "name": "@raikou/core",
+  "version": "0.0.1-beta.8",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./styles.css": "./dist/index.css"
+  },
+  "files": [
+    "build/**"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint \"**/*.ts*\"",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "build:fast": "tsup src",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "clean-package": "../../../clean-package.config.json",
+  "peerDependencies": {
+    "@raikou/hooks": "workspace:*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "dependencies": {
+    "@floating-ui/react": "^0.26.9",
+    "@raikou/hooks": "workspace:*",
+    "@stylefusion/react": "^0.0.24-1",
+    "clsx": "^2.1.1",
+    "react-number-format": "^5.3.1",
+    "react-remove-scroll": "^2.5.7",
+    "react-textarea-autosize": "8.5.3",
+    "type-fest": "^4.26.1",
+    "tslib": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "@types/node": "^22.7.5",
+    "clean-package": "2.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

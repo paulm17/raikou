@@ -1,8 +1,0 @@
-.mantine-datatable-header-cell-filter-action-icon {
-  border: 0;
-  color: light-dark(#adb5bd, #5c5f66);
-
-  &[data-active] {
-    color: var(--raikou-color-text);
-  }
-}

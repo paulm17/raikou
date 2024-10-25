@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "esnext",
+    "lib": ["DOM", "ESNext"],
+    "declaration": true,
+    "sourceMap": true,
+    "moduleResolution": "Node",
+    "skipLibCheck": true,
+    "strict": true,
+    "isolatedModules": true,
+    "importHelpers": true,
+    "noFallthroughCasesInSwitch": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true
+  },
+  "include": ["packages", "scripts", "./configuration/types"],
+  "exclude": ["**/node_modules", "**/template*", "*.story.tsx"]
+}

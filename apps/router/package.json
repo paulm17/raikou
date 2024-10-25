@@ -1,0 +1,33 @@
+{
+  "name": "tanstack-router",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "dev": "vite --port=3001",
+    "build": "vite build",
+    "serve": "vite preview",
+    "start": "vite"
+  },
+  "devDependencies": {
+    "@babel/core": "7.25.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@tanstack/router-plugin": "^1.76.0",
+    "@vitejs/plugin-react": "^4.3.2",
+    "vite": "^5.4.8"
+  },
+  "dependencies": {
+    "@raikou/charts": "workspace:*",
+    "@raikou/emotion": "workspace:*",
+    "@raikou/core": "workspace:*",
+    "@raikou/system": "workspace:*",
+    "@stylefusion/react": "^0.0.24-1",
+    "@stylefusion/vite-plugin": "^0.0.24-1",
+    "@tanstack/react-router": "^1.76.1",
+    "@tanstack/router-devtools": "^1.76.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

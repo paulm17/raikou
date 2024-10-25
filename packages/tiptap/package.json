@@ -1,0 +1,58 @@
+{
+  "name": "@raikou/tiptap",
+  "description": "Rich text editor based on tiptap",
+  "version": "0.0.1-beta.8",
+  "main": "index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format esm,cjs --clean",
+    "lint": "eslint \"**/*.ts*\"",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "build:fast": "tsup src",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "clean-package": "../../../clean-package.config.json",
+  "peerDependencies": {
+    "@raikou/core": ">=0.0.1-alpha.1",
+    "@raikou/hooks": ">=0.0.1-alpha.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@stylefusion/react": "^0.0.24-1",
+    "@raikou/core": "workspace:*",
+    "@raikou/hooks": "workspace:*",
+    "@tiptap/extension-color": "^2.8.0",
+    "@tiptap/extension-code-block-lowlight": "^2.8.0",
+    "@tiptap/extension-highlight": "^2.8.0",
+    "@tiptap/extension-link": "^2.8.0",
+    "@tiptap/extension-placeholder": "^2.8.0",
+    "@tiptap/starter-kit": "^2.8.0",
+    "@tiptap/extension-subscript": "^2.8.0",
+    "@tiptap/extension-superscript": "^2.8.0",
+    "@tiptap/extension-task-item": "^2.8.0",
+    "@tiptap/extension-task-list": "^2.8.0",
+    "@tiptap/extension-text-align": "^2.8.0",
+    "@tiptap/extension-text-style": "^2.8.0",
+    "@tiptap/extension-underline": "^2.8.0",
+    "@tiptap/react": "^2.8.0",
+    "@tabler/icons-react": "^2.30.0",
+    "highlight.js": "^11.10.0",
+    "lowlight": "^3.1.0",
+    "tslib": "^2.6.1"
+  },
+  "devDependencies": {
+    "clean-package": "2.2.0"
+  }
+}

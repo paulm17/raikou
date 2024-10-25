@@ -1,0 +1,43 @@
+{
+  "name": "@raikou/system",
+  "version": "0.0.1-beta.8",
+  "main": "index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./styles.css": "./dist/index.css"
+  },
+  "files": [
+    "dist/**"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format esm,cjs --clean --loader=.css=local-css",
+    "lint": "eslint \"**/*.ts*\""
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "dependencies": {
+    "@stylefusion/react": "^0.0.24-1",
+    "next-themes": "^0.3.0",
+    "type-fest": "^4.26.1",
+    "tslib": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "@types/node": "^22.7.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

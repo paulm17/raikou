@@ -1,0 +1,37 @@
+import { patchConsoleWarn, tests } from '@raikou-tests/core';
+import { BarChart, BarChartProps, BarChartStylesNames } from './BarChart';
+
+const defaultProps: BarChartProps = {
+  data: [
+    { date: 'Mar 22', test: 110 },
+    { date: 'Mar 23', test: 60 },
+  ],
+  series: [{ name: 'test', color: 'blue' }],
+  dataKey: 'date',
+  style: { width: 200, height: 200 },
+};
+
+describe('@raikou/charts/BarChart', () => {
+  beforeAll(() => {
+    patchConsoleWarn();
+  });
+
+  afterAll(() => {
+    patchConsoleWarn.release();
+  });
+
+  tests.itSupportsSystemProps<BarChartProps, BarChartStylesNames>({
+    component: BarChart,
+    props: defaultProps,
+    mod: true,
+    styleProps: true,
+    extend: true,
+    withProps: true,
+    variant: true,
+    size: true,
+    classes: true,
+    refType: HTMLDivElement,
+    displayName: '@raikou/charts/BarChart',
+    stylesApiSelectors: ['root'],
+  });
+});

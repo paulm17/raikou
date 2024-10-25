@@ -1,9 +1,0 @@
-/* css-module:/Users/paul/development/src/github/raikou/packages/raikou/components/Stack/src/Stack.module.css/#css-module-data */
-.m-6d731127 {
-  display: flex;
-  flex-direction: column;
-  align-items: var(--stack-align, stretch);
-  justify-content: var(--stack-justify, flex-start);
-  gap: var(--stack-gap, var(--raikou-spacing-md));
-}
-/*# sourceMappingURL=index.css.map */

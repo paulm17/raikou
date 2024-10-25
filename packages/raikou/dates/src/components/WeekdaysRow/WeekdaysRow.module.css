@@ -1,7 +1,0 @@
-.weekday {
-  color: var(--raikou-color-dimmed);
-  font-weight: normal;
-  font-size: var(--wr-fz, var(--raikou-font-size-sm));
-  text-transform: capitalize;
-  padding-bottom: calc(var(--wr-spacing, var(--raikou-spacing-sm)) / 2);
-}
