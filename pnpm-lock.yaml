@@ -208,12 +208,15 @@ importers:
       '@raikou/emotion':
         specifier: workspace:*
         version: link:../../packages/emotion
+      '@raikou/loaders':
+        specifier: workspace:*
+        version: link:../../packages/loaders
       '@raikou/system':
         specifier: workspace:*
         version: link:../../packages/system
       '@stylefusion/react':
-        specifier: ^0.0.24-1
-        version: 0.0.24-1(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
+        specifier: ^0.0.24-4
+        version: 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
       '@stylefusion/vite-plugin':
         specifier: ^0.0.24-1
         version: 0.0.24-1(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(less@4.2.0)(lightningcss@1.27.0)(sass@1.80.4)(stylus@0.64.0)(terser@5.36.0))
@@ -313,8 +316,8 @@ importers:
         specifier: workspace:*
         version: link:../hooks
       '@stylefusion/react':
-        specifier: ^0.0.24-1
-        version: 0.0.24-1(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
+        specifier: ^0.0.24-4
+        version: 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
       embla-carousel:
         specifier: ^7.1.0
         version: 7.1.0
@@ -343,8 +346,8 @@ importers:
         specifier: workspace:*
         version: link:../hooks
       '@stylefusion/react':
-        specifier: ^0.0.24-1
-        version: 0.0.24-1(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
+        specifier: ^0.0.24-4
+        version: 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -380,8 +383,8 @@ importers:
         specifier: workspace:*
         version: link:../hooks
       '@stylefusion/react':
-        specifier: ^0.0.24-1
-        version: 0.0.24-1(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
+        specifier: ^0.0.24-4
+        version: 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -424,8 +427,8 @@ importers:
         specifier: workspace:*
         version: link:../hooks
       '@stylefusion/react':
-        specifier: ^0.0.24-1
-        version: 0.0.24-1(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
+        specifier: ^0.0.24-4
+        version: 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -473,8 +476,8 @@ importers:
         specifier: workspace:*
         version: link:../hooks
       '@stylefusion/react':
-        specifier: ^0.0.24-1
-        version: 0.0.24-1(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
+        specifier: ^0.0.24-4
+        version: 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -504,8 +507,8 @@ importers:
         specifier: workspace:*
         version: link:../hooks
       '@stylefusion/react':
-        specifier: ^0.0.24-1
-        version: 0.0.24-1(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
+        specifier: ^0.0.24-4
+        version: 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -583,6 +586,27 @@ importers:
         specifier: ^18.2.0
         version: 18.3.1
 
+  packages/loaders:
+    dependencies:
+      '@raikou/core':
+        specifier: workspace:*
+        version: link:../core
+      '@raikou/hooks':
+        specifier: workspace:*
+        version: link:../hooks
+      '@stylefusion/react':
+        specifier: ^0.0.24-4
+        version: 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
+      react:
+        specifier: ^18.2.0
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.3.1(react@18.3.1)
+      tslib:
+        specifier: ^2.6.1
+        version: 2.8.0
+
   packages/modals:
     dependencies:
       '@raikou/core':
@@ -632,8 +656,8 @@ importers:
         specifier: workspace:*
         version: link:../store
       '@stylefusion/react':
-        specifier: ^0.0.24-1
-        version: 0.0.24-1(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
+        specifier: ^0.0.24-4
+        version: 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -675,8 +699,8 @@ importers:
         specifier: workspace:*
         version: link:../store
       '@stylefusion/react':
-        specifier: ^0.0.24-1
-        version: 0.0.24-1(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
+        specifier: ^0.0.24-4
+        version: 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -703,8 +727,8 @@ importers:
         specifier: workspace:*
         version: link:../store
       '@stylefusion/react':
-        specifier: ^0.0.24-1
-        version: 0.0.24-1(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
+        specifier: ^0.0.24-4
+        version: 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -740,9 +764,12 @@ importers:
 
   packages/system:
     dependencies:
+      '@raikou/emotion':
+        specifier: workspace:*
+        version: link:../emotion
       '@stylefusion/react':
-        specifier: ^0.0.24-1
-        version: 0.0.24-1(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
+        specifier: ^0.0.24-4
+        version: 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
       next-themes:
         specifier: ^0.3.0
         version: 0.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -778,8 +805,8 @@ importers:
         specifier: workspace:*
         version: link:../hooks
       '@stylefusion/react':
-        specifier: ^0.0.24-1
-        version: 0.0.24-1(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
+        specifier: ^0.0.24-4
+        version: 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
       '@tabler/icons-react':
         specifier: ^2.30.0
         version: 2.47.0(react@18.3.1)
@@ -2596,8 +2623,8 @@ packages:
   '@sinonjs/fake-timers@10.3.0':
     resolution: {integrity: sha512-V4BG07kuYSUkTCSBHG8G8TNhM+F19jXFWnQtzj+we8DrkpSBCee9Z3Ms8yiGer/dlmhe35/Xdgyo3/0rQKg7YA==}
 
-  '@stylefusion/react@0.0.24-1':
-    resolution: {integrity: sha512-3aLvxPrpn2gCaHT3zrVSSPuqQUn8wEXHmU0xLJA71dvW44MYMEiJmVLPpJzuUFCTJLLNKO+khUaD12YRrrPUpg==}
+  '@stylefusion/react@0.0.24-4':
+    resolution: {integrity: sha512-k3lmVT/J5Qtkywl/JRoz2OsRCNNxB0qes02JbC48h1mVh0A9JTvvuluoiujcl3KcEELC8rKZQeEG6XjWMbUY6Q==}
     peerDependencies:
       react: ^18.2.0
 
@@ -10175,7 +10202,7 @@ snapshots:
     dependencies:
       '@sinonjs/commons': 3.0.1
 
-  '@stylefusion/react@0.0.24-1(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)':
+  '@stylefusion/react@0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)':
     dependencies:
       '@babel/core': 7.25.2
       '@babel/helper-module-imports': 7.25.9
@@ -10209,7 +10236,7 @@ snapshots:
       '@babel/core': 7.25.2
       '@babel/preset-typescript': 7.25.9(@babel/core@7.25.2)
       '@emotion/css': 11.13.4
-      '@stylefusion/react': 0.0.24-1(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
+      '@stylefusion/react': 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
       '@wyw-in-js/shared': 0.5.4
       '@wyw-in-js/transform': 0.5.4(typescript@5.6.3)
       babel-plugin-define-var: 0.1.0
@@ -10225,7 +10252,7 @@ snapshots:
       '@babel/core': 7.25.2
       '@babel/preset-typescript': 7.25.9(@babel/core@7.25.2)
       '@emotion/css': 11.13.4
-      '@stylefusion/react': 0.0.24-1(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
+      '@stylefusion/react': 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
       '@wyw-in-js/shared': 0.5.4
       '@wyw-in-js/transform': 0.5.4(typescript@5.6.3)
       babel-plugin-define-var: 0.1.0

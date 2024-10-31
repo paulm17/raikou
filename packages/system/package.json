@@ -27,7 +27,8 @@
     "react-dom": "^18.3.1"
   },
   "dependencies": {
-    "@stylefusion/react": "^0.0.24-1",
+    "@raikou/emotion": "workspace:*",
+    "@stylefusion/react": "^0.0.24-4",
     "next-themes": "^0.3.0",
     "type-fest": "^4.26.1",
     "tslib": "^2.7.0"

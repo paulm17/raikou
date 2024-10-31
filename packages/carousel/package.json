@@ -29,7 +29,7 @@
   "dependencies": {
     "@raikou/core": "workspace:*",
     "@raikou/hooks": "workspace:*",
-    "@stylefusion/react": "^0.0.24-1",
+    "@stylefusion/react": "^0.0.24-4",
     "embla-carousel": "^7.1.0",
     "embla-carousel-autoplay": "^7.1.0",
     "embla-carousel-react": "^7.1.0",

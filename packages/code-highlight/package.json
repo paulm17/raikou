@@ -29,7 +29,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@stylefusion/react": "^0.0.24-1",
+    "@stylefusion/react": "^0.0.24-4",
     "@raikou/core": "workspace:*",
     "@raikou/hooks": "workspace:*",
     "clsx": "^2.1.1",

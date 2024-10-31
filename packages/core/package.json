@@ -40,7 +40,7 @@
   "dependencies": {
     "@floating-ui/react": "^0.26.9",
     "@raikou/hooks": "workspace:*",
-    "@stylefusion/react": "^0.0.24-1",
+    "@stylefusion/react": "^0.0.24-4",
     "clsx": "^2.1.1",
     "react-number-format": "^5.3.1",
     "react-remove-scroll": "^2.5.7",

@@ -43,9 +43,15 @@ The project was conceived with these 4 long-term goals:
     - Mantine and Raikou employ different approaches to manage the theme. While
       Mantine uses context and can be a runtime process for overrides. Raikou
       utilizes the pigment-css theme.
-    - The code responsible for the ColorScheme has been replaced with a more
-      lightweight version using
-      <a href="https://github.com/pacocoursey/next-themes">Next Themes</a>.
+
+    - <a href="https://github.com/pacocoursey/next-themes">Next Themes</a> is
+      used in favour of the native mantine implementation.
+
+    - Raikou uses
+      <a href="https://github.com/paulm17/stylefusion">Stylefusion</a> which is
+      a fork of <a href="https://github.com/mui/pigment-css">pigment-css</a>.
+      Stylefusion negates the need for postcss and includes all the same
+      functionality of postcss-mantine-preset.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -56,7 +62,7 @@ the stack, also other issues of specificity are present.
 
 ### CSS Modules is the wrong choice
 
-Less headaches in dealing with postcss from a developer UX point of view.
+Less headaches not dealing with postcss from a developer UX point of view.
 
 <img src="./images/css.modules.png" style="width:500px" alt="Complaint">
 
@@ -192,6 +198,39 @@ pnpm run storybook
 <!-- ROADMAP -->
 
 ## Roadmap
+
+### Raikou Components
+
+- [x] Extend loader component to support more loaders from
+      [react-spinners-kit](https://dmitrymorozoff.github.io/react-spinners-kit/),
+      [react-spinners](https://github.com/davidhu2000/react-spinners).
+- [ ] Include the original button spinner for mantine 6.
+- [ ] Extend Button to support the button spinner from mantine 6.
+- [ ] Copy the button loader from
+      [nextui](https://nextui.org/docs/components/button#loading).
+- [ ] Add ripple effect to the action icon and button components from
+      [nextui](https://github.com/nextui-org/nextui/tree/canary/packages/components/ripple).
+- [ ] Add hero patterns from [heropatterns](https://heropatterns.com/) and
+      [magicpattern](https://www.magicpattern.design/tools/css-backgrounds).
+
+### Framer Motion
+
+- [ ] Add [aceternity](https://ui.aceternity.com/)
+- [ ] Add [magicui](https://magicui.design/)
+- [ ] Add [motion-primitives](https://github.com/ibelick/motion-primitives)
+- [ ] Add [animata](https://github.com/codse/animata)
+
+### New Components
+
+- [ ] Add [mantine-flip](https://gfazioli.github.io/mantine-flip/)
+- [ ] Add [mantine-datatable](https://github.com/icflorescu/mantine-datatable)
+- [ ] Add
+      [mantine-contextmenu](https://github.com/icflorescu/mantine-contextmenu)
+- [ ] Add
+      [react-photo-gallery](https://github.com/neptunian/react-photo-gallery)
+- [ ] Add [canvas-confetti](https://github.com/catdad/canvas-confetti)
+
+### Storybook
 
 - [ ] Pigment-css team fixed Storybook 8 issues.
 

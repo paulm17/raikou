@@ -20,10 +20,11 @@
   },
   "dependencies": {
     "@raikou/charts": "workspace:*",
+    "@raikou/loaders": "workspace:*",
     "@raikou/emotion": "workspace:*",
     "@raikou/core": "workspace:*",
     "@raikou/system": "workspace:*",
-    "@stylefusion/react": "^0.0.24-1",
+    "@stylefusion/react": "^0.0.24-4",
     "@stylefusion/vite-plugin": "^0.0.24-1",
     "@tanstack/react-router": "^1.76.1",
     "@tanstack/router-devtools": "^1.76.1",
