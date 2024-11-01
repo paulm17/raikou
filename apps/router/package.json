@@ -23,6 +23,7 @@
     "@raikou/loaders": "workspace:*",
     "@raikou/emotion": "workspace:*",
     "@raikou/core": "workspace:*",
+    "@raikou/hero-patterns": "workspace:*",
     "@raikou/system": "workspace:*",
     "@stylefusion/react": "^0.0.24-4",
     "@stylefusion/vite-plugin": "^0.0.24-1",

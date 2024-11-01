@@ -204,14 +204,13 @@ pnpm run storybook
 - [x] Extend loader component to support more loaders from
       [react-spinners-kit](https://dmitrymorozoff.github.io/react-spinners-kit/),
       [react-spinners](https://github.com/davidhu2000/react-spinners).
-- [ ] Include the original button spinner for mantine 6.
-- [ ] Extend Button to support the button spinner from mantine 6.
-- [ ] Copy the button loader from
+- [x] Include the original button spinner for mantine 6.
+- [x] Extend Button to support the button spinner from mantine 6.
+- [x] Copy the button loader from
       [nextui](https://nextui.org/docs/components/button#loading).
-- [ ] Add ripple effect to the action icon and button components from
+- [x] Add ripple effect to the action icon and button components from
       [nextui](https://github.com/nextui-org/nextui/tree/canary/packages/components/ripple).
-- [ ] Add hero patterns from [heropatterns](https://heropatterns.com/) and
-      [magicpattern](https://www.magicpattern.design/tools/css-backgrounds).
+- [x] Add hero patterns from [heropatterns](https://heropatterns.com/).
 
 ### Framer Motion
 
@@ -264,6 +263,7 @@ Paul M - no social - no email
 
 - [Vitaly and the Mantine community.](https://mantine.dev/)<br>
 - [Ionut-Cristian Florescu for Mantine DataTable and Mantine ContextMenu.](https://github.com/icflorescu)
+- [Junior Garcia for Ripple Effect - NextUI](https://github.com/nextui-org/nextui/tree/canary/packages/components/ripple)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

@@ -61,21 +61,22 @@ export const ButtonRootStyle = css(({ theme }: any) => ({
     paddingInlineEnd: "calc(var(--button-padding-x) / 1.5)",
   },
 
-  "&:_where(:disabled:not([data-loading]), [data-disabled]:not([data-loading]))": {
-    cursor: "not-allowed",
-    border: "1px solid transparent",
-    transform: "none",
+  "&:_where(:disabled:not([data-loading]), [data-disabled]:not([data-loading]))":
+    {
+      cursor: "not-allowed",
+      border: "1px solid transparent",
+      transform: "none",
 
-    ...theme.applyStyles('light', {
-      color: theme.colors.gray[5],
-      background: theme.colors.gray[1],
-    }),
+      ...theme.applyStyles("light", {
+        color: theme.colors.gray[5],
+        background: theme.colors.gray[1],
+      }),
 
-    ...theme.applyStyles('dark', {
-      color: theme.colors.gray[3],
-      background: theme.colors.gray[6],
-    }),
-  },
+      ...theme.applyStyles("dark", {
+        color: theme.colors.gray[3],
+        background: theme.colors.gray[6],
+      }),
+    },
 
   "&:before": {
     content: "''",
@@ -88,11 +89,11 @@ export const ButtonRootStyle = css(({ theme }: any) => ({
     filter: "blur(12px)",
     transition: "transform 150ms ease, opacity 100ms ease",
 
-    ...theme.applyStyles('light', {
+    ...theme.applyStyles("light", {
       background: "rgba(255, 255, 255, 0.15)",
     }),
 
-    ...theme.applyStyles('dark', {
+    ...theme.applyStyles("dark", {
       background: "rgba(0, 0, 0, 0.15)",
     }),
   },
@@ -106,18 +107,19 @@ export const ButtonRootStyle = css(({ theme }: any) => ({
       opacity: 1,
     },
 
-    [`& .${ButtonInnerStyle}`]: {
+    [`&:_where([data-loader-position=center]) .${ButtonInnerStyle}`]: {
       opacity: 0,
       transform: "translateY(100%)",
-    }
+    },
   },
 
   ...theme.applyMixin("hover", {
     "&:hover:_where(:not([data-loading], :disabled, [data-disabled]))": {
-      background: "var(--button-hover, var(--raikou-primary-color-filled-hover))",
+      background:
+        "var(--button-hover, var(--raikou-primary-color-filled-hover))",
       color: "var(--button-hover-color, var(--button-color))",
-    }
-  })
+    },
+  }),
 }));
 
 export const ButtonInnerStyle = css({
@@ -145,13 +147,17 @@ export const ButtonLabelStyle = css({
 export const ButtonSectionStyle = css({
   display: "flex",
   alignItems: "center",
-  
+
   "&:_where([data-position='left'])": {
     marginInlineEnd: "var(--raikou-spacing-xs)",
   },
 
   "&:_where([data-position='right'])": {
     marginInlineStart: "var(--raikou-spacing-xs)",
+  },
+
+  ":_where(.progress-loader)": {
+    display: "flex",
   },
 });
 
@@ -169,7 +175,7 @@ export const ButtonGroupStyle = css({
     "&:focus": {
       position: "relative",
       zIndex: 1,
-    }
+    },
   },
 
   "&[data-orientation='horizontal']": {
@@ -215,7 +221,7 @@ export const ButtonGroupStyle = css({
         borderRadius: 0,
         borderBottomWidth: "calc(var(--ai-border-width) / 2)",
         borderTopWidth: "calc(var(--ai-border-width) / 2)",
-      }
-    }
-  }
+      },
+    },
+  },
 });

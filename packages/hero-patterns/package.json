@@ -1,0 +1,30 @@
+{
+  "name": "@raikou/hero-patterns",
+  "description": "A collection of hero patterns",
+  "version": "0.0.1-beta.8",
+  "main": "index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format esm,cjs --clean",
+    "lint": "eslint \"**/*.ts*\"",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "build:fast": "tsup src",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "peerDependencies": {},
+  "dependencies": {
+    "@stylefusion/react": "^0.0.24-4",
+    "tslib": "^2.6.1"
+  }
+}
