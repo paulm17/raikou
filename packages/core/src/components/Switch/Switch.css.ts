@@ -53,7 +53,7 @@ export const SwitchInputStyle = css({
   whiteSpace: "nowrap",
 });
 
-export const SwitchTrackStyle = css(({ theme }: any) => ({
+export const SwitchTrackStyle = css(({ theme }) => ({
   webkitTapHighlightColor: "transparent",
   cursor: "var(--switch-cursor, var(--raikou-cursor-type))",
   overflow: "hidden",
@@ -79,7 +79,7 @@ export const SwitchTrackStyle = css(({ theme }: any) => ({
   "&:_where([data-without-labels])": {
     width: "var(--switch-width)",
   },
-  
+
   [`.${SwitchInputStyle}:focus-visible + &`]: {
     outline: "2px solid var(--raikou-primary-color-filled)",
     outlineOffset: "2px",
@@ -91,11 +91,12 @@ export const SwitchTrackStyle = css(({ theme }: any) => ({
     "--switch-text-color": "var(--raikou-color-white)",
   },
 
-  [`.${SwitchInputStyle}:disabled + &, .${SwitchInputStyle}[data-disabled] + &`]: {
-    "--switch-bg": "var(--switch-disabled-color)",
-    "--switch-bd": "var(--switch-disabled-color)",
-    "--switch-cursor": "not-allowed",
-  },
+  [`.${SwitchInputStyle}:disabled + &, .${SwitchInputStyle}[data-disabled] + &`]:
+    {
+      "--switch-bg": "var(--switch-disabled-color)",
+      "--switch-bd": "var(--switch-disabled-color)",
+      "--switch-cursor": "not-allowed",
+    },
 
   ...theme.applyStyles("light", {
     "--switch-bg": theme.colors.gray[2],
@@ -117,10 +118,10 @@ export const SwitchTrackStyle = css(({ theme }: any) => ({
 
   "&[data-label-position='left']": {
     "--switch-order": 2,
-  }
+  },
 }));
 
-export const SwitchThumbStyle = css(({ theme }: any) => ({
+export const SwitchThumbStyle = css(({ theme }) => ({
   position: "absolute",
   zIndex: 1,
   borderRadius: "var(--switch-radius)",
@@ -129,7 +130,8 @@ export const SwitchThumbStyle = css(({ theme }: any) => ({
   height: "var(--switch-thumb-size)",
   width: "var(--switch-thumb-size)",
   border: "1px solid var(--switch-thumb-bd)",
-  insetInlineStart: "var(--switch-thumb-start, var(--switch-track-label-padding))",
+  insetInlineStart:
+    "var(--switch-thumb-start, var(--switch-track-label-padding))",
   transition: "inset-inline-start 150ms ease",
 
   "& > *": {
@@ -137,14 +139,16 @@ export const SwitchThumbStyle = css(({ theme }: any) => ({
   },
 
   [`.${SwitchInputStyle}:checked + * > &`]: {
-    "--switch-thumb-start": "calc(100% - var(--switch-thumb-size) - var(--switch-track-label-padding))",
+    "--switch-thumb-start":
+      "calc(100% - var(--switch-thumb-size) - var(--switch-track-label-padding))",
     "--switch-thumb-bd": "var(--raikou-color-white)",
   },
 
-  [`.${SwitchInputStyle}:disabled + * > &, .${SwitchInputStyle}[data-disabled] + * > &`]: {
-    "--switch-thumb-bd": "var(--switch-thumb-bg-disabled)",
-    "--switch-thumb-bg": "var(--switch-thumb-bg-disabled)",
-  },
+  [`.${SwitchInputStyle}:disabled + * > &, .${SwitchInputStyle}[data-disabled] + * > &`]:
+    {
+      "--switch-thumb-bd": "var(--switch-thumb-bg-disabled)",
+      "--switch-thumb-bg": "var(--switch-thumb-bg-disabled)",
+    },
 
   ...theme.applyStyles("light", {
     "--switch-thumb-bd": theme.colors.gray[3],
@@ -163,11 +167,13 @@ export const SwitchTrackLabelStyle = css({
   placeContent: "center",
   minWidth: "calc(var(--switch-width) - var(--switch-thumb-size))",
   paddingInline: "var(--switch-track-label-padding)",
-  marginInlineStart: "calc(var(--switch-thumb-size) + var(--switch-track-label-padding))",
+  marginInlineStart:
+    "calc(var(--switch-thumb-size) + var(--switch-track-label-padding))",
   transition: "margin 150ms ease",
 
   [`.${SwitchInputStyle}:checked + * > &`]: {
-    marginInlineEnd: "calc(var(--switch-thumb-size) + var(--switch-track-label-padding))",
+    marginInlineEnd:
+      "calc(var(--switch-thumb-size) + var(--switch-track-label-padding))",
     marginInlineStart: 0,
   },
 });

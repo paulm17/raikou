@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const SegmentedControlRootStyle = css(({ theme }: any) => ({
+export const SegmentedControlRootStyle = css(({ theme }) => ({
   "--sc-padding-xs": "3px 6px",
   "--sc-padding-sm": "5px 10px",
   "--sc-padding-md": "7px 14px",
@@ -43,7 +43,7 @@ export const SegmentedControlRootStyle = css(({ theme }: any) => ({
   }),
 }));
 
-export const SegmentedControlIndicatorStyle = css(({ theme }: any) => ({
+export const SegmentedControlIndicatorStyle = css(({ theme }) => ({
   position: "absolute",
   display: "block",
   zIndex: 1,
@@ -60,7 +60,7 @@ export const SegmentedControlIndicatorStyle = css(({ theme }: any) => ({
   }),
 }));
 
-export const SegmentedControlLabelStyle = css(({ theme }: any) => ({
+export const SegmentedControlLabelStyle = css(({ theme }) => ({
   WebkitTapHighlightColor: "transparent",
   fontWeight: "500",
   display: "block",
@@ -72,7 +72,8 @@ export const SegmentedControlLabelStyle = css(({ theme }: any) => ({
   borderRadius: "var(--sc-radius, var(--raikou-radius-default))",
   fontSize: "var(--sc-font-size)",
   padding: "var(--sc-padding)",
-  transition: "color var(--sc-transition-duration) var(--sc-transition-timing-function)",
+  transition:
+    "color var(--sc-transition-duration) var(--sc-transition-timing-function)",
   cursor: "pointer",
 
   /* outline is controlled by .input */
@@ -143,7 +144,7 @@ export const SegmentedControlLabelStyle = css(({ theme }: any) => ({
         ...theme.applyStyles("dark", {
           color: theme.colors.white,
         }),
-      }
+      },
     }),
   },
 
@@ -157,7 +158,7 @@ export const SegmentedControlLabelStyle = css(({ theme }: any) => ({
         ...theme.applyStyles("dark", {
           color: `${theme.colors.dark[3]} !important`,
         }),
-      }
+      },
     }),
   },
 }));
@@ -173,7 +174,8 @@ export const SegmentedControlInputStyle = css({
   "&[data-focus-ring='auto']": {
     "&:focus:focus-visible": {
       [`& + .${SegmentedControlLabelStyle}`]: {
-        "--segmented-control-outline": "2px solid var(--raikou-primary-color-filled)",
+        "--segmented-control-outline":
+          "2px solid var(--raikou-primary-color-filled)",
       },
     },
   },
@@ -181,17 +183,19 @@ export const SegmentedControlInputStyle = css({
   "&[data-focus-ring='always']": {
     "&:focus": {
       [`& + .${SegmentedControlLabelStyle}`]: {
-        "--segmented-control-outline": "2px solid var(--raikou-primary-color-filled)",
+        "--segmented-control-outline":
+          "2px solid var(--raikou-primary-color-filled)",
       },
     },
   },
 });
 
-export const SegmentedControlControlStyle = css(({ theme }: any) => ({
+export const SegmentedControlControlStyle = css(({ theme }) => ({
   position: "relative",
   flex: 1,
   zIndex: 2,
-  transition: "border-color var(--sc-transition-duration) var(--sc-transition-timing-function)",
+  transition:
+    "border-color var(--sc-transition-duration) var(--sc-transition-timing-function)",
 
   [`.${SegmentedControlRootStyle}[data-with-items-borders] &`]: {
     ":_where(&):before": {
@@ -202,8 +206,9 @@ export const SegmentedControlControlStyle = css(({ theme }: any) => ({
       insetInlineStart: 0,
       backgroundColor: "var(--separator-color)",
       width: "1px",
-      transition: "background-color var(--sc-transition-duration) var(--sc-transition-timing-function)",
-    }
+      transition:
+        "background-color var(--sc-transition-duration) var(--sc-transition-timing-function)",
+    },
   },
 
   [`.${SegmentedControlRootStyle}[data-orientation='vertical'] &`]: {

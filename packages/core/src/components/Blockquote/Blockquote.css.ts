@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const BlockquoteRootStyle = css(({ theme }: any) => ({
+export const BlockquoteRootStyle = css(({ theme }) => ({
   "--blockquote-border": "3px solid var(--bq-bd)",
 
   position: "relative",
@@ -10,16 +10,16 @@ export const BlockquoteRootStyle = css(({ theme }: any) => ({
   borderEndEndRadius: "var(--bq-radius)",
   padding: "var(--raikou-spacing-xl) rem(38px)",
 
-  ...theme.applyStyles('light', {
+  ...theme.applyStyles("light", {
     backgroundColor: "var(--bq-bg-light)",
   }),
 
-  ...theme.applyStyles('dark', {
+  ...theme.applyStyles("dark", {
     backgroundColor: "var(--bq-bg-dark)",
   }),
 }));
 
-export const BlockquoteIconStyle = css(({ theme }: any) => ({
+export const BlockquoteIconStyle = css({
   "--blockquote-icon-offset": "calc(var(--bq-icon-size) / -2)",
 
   position: "absolute",
@@ -33,7 +33,7 @@ export const BlockquoteIconStyle = css(({ theme }: any) => ({
   width: "var(--bq-icon-size)",
   height: "var(--bq-icon-size)",
   borderRadius: "var(--bq-icon-size)",
-}));
+});
 
 export const BlockquoteCiteStyle = css({
   display: "block",

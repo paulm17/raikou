@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const DropzoneRootStyle = css(({ theme }: any) => ({
+export const DropzoneRootStyle = css(({ theme }) => ({
   position: "relative",
   border: "1px dashed",
   color: "var(--raikou-color-text)",

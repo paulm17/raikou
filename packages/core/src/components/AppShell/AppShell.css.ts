@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const AppShellRootStyle = css(({ theme }: any) => ({
+export const AppShellRootStyle = css(({ theme }) => ({
   "&[data-resizing]": {
     "--app-shell-transition-duration": "0ms !important",
   },
@@ -22,14 +22,15 @@ export const AppShellRootStyle = css(({ theme }: any) => ({
 const navBarAsideHeaderMainFooter = {
   transitionDuration: "var(--app-shell-transition-duration)",
   transitionTimingFunction: "var(--app-shell-transition-timing-function)",
-}
+};
 
 const NavBarAside = {
   position: "fixed",
   display: "flex",
   flexDirection: "column",
   top: "var(--app-shell-header-offset, 0rem)",
-  height: "calc(100dvh - var(--app-shell-header-offset, 0rem) - var(--app-shell-footer-offset, 0rem))",
+  height:
+    "calc(100dvh - var(--app-shell-header-offset, 0rem) - var(--app-shell-footer-offset, 0rem))",
   backgroundColor: "var(--raikou-color-body)",
   transitionProperty: "transform, top, height",
 
@@ -37,9 +38,9 @@ const NavBarAside = {
     top: 0,
     height: "100dvh",
   },
-}
+};
 
-export const AppShellNavbarStyle = css(({ theme }: any) => ({
+export const AppShellNavbarStyle = css(({ theme }) => ({
   insetInlineStart: 0,
   width: "var(--app-shell-navbar-width)",
   transform: "var(--app-shell-navbar-transform)",
@@ -54,10 +55,10 @@ export const AppShellNavbarStyle = css(({ theme }: any) => ({
   },
 
   ...navBarAsideHeaderMainFooter,
-  ...NavBarAside
+  ...NavBarAside,
 }));
 
-export const AppShellAsideStyle = css(({ theme }: any) => ({
+export const AppShellAsideStyle = css(({ theme }) => ({
   insetInlineEnd: 0,
   width: "var(--app-shell-aside-width)",
   transform: "var(--app-shell-aside-transform)",
@@ -72,18 +73,22 @@ export const AppShellAsideStyle = css(({ theme }: any) => ({
   },
 
   ...navBarAsideHeaderMainFooter,
-  ...NavBarAside
+  ...NavBarAside,
 }));
 
 export const AppShellMainStyle = css({
-  paddingInlineStart: "calc(var(--app-shell-navbar-offset, 0rem) + var(--app-shell-padding))",
-  paddingInlineEnd: "calc(var(--app-shell-aside-offset, 0rem) + var(--app-shell-padding))",
-  paddingTop: "calc(var(--app-shell-header-offset, 0rem) + var(--app-shell-padding))",
-  paddingBottom: "calc(var(--app-shell-footer-offset, 0rem) + var(--app-shell-padding))",
+  paddingInlineStart:
+    "calc(var(--app-shell-navbar-offset, 0rem) + var(--app-shell-padding))",
+  paddingInlineEnd:
+    "calc(var(--app-shell-aside-offset, 0rem) + var(--app-shell-padding))",
+  paddingTop:
+    "calc(var(--app-shell-header-offset, 0rem) + var(--app-shell-padding))",
+  paddingBottom:
+    "calc(var(--app-shell-footer-offset, 0rem) + var(--app-shell-padding))",
   minHeight: "100dvh",
   transitionProperty: "padding",
 
-  ...navBarAsideHeaderMainFooter
+  ...navBarAsideHeaderMainFooter,
 });
 
 const headerFooter = {
@@ -96,7 +101,7 @@ const headerFooter = {
     insetInlineStart: "var(--app-shell-navbar-offset, 0rem)",
     insetInlineEnd: "var(--app-shell-aside-offset, 0rem)",
   },
-}
+};
 
 export const AppShellHeaderStyle = css({
   top: 0,
@@ -109,7 +114,7 @@ export const AppShellHeaderStyle = css({
   },
 
   ...headerFooter,
-  ...navBarAsideHeaderMainFooter
+  ...navBarAsideHeaderMainFooter,
 });
 
 export const AppShellFooterStyle = css({
@@ -124,7 +129,7 @@ export const AppShellFooterStyle = css({
   },
 
   ...headerFooter,
-  ...navBarAsideHeaderMainFooter
+  ...navBarAsideHeaderMainFooter,
 });
 
 export const AppShellSectionStyle = css({

@@ -47,6 +47,7 @@
     "_prettier:write": "prettier --write \"**/*.{ts,tsx}\""
   },
   "dependencies": {
+    "@stylefusion/react": "^0.0.24-4",
     "@tabler/icons-react": "^2.30.0"
   },
   "devDependencies": {

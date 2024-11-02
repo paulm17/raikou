@@ -1,6 +1,6 @@
-import { css } from '@stylefusion/react';
+import { css } from "@stylefusion/react";
 
-export const PickerControlStyle = css(({ theme }: any) => ({
+export const PickerControlStyle = css(({ theme }) => ({
   "--dpc-size-xs": "30px",
   "--dpc-size-sm": "36px",
   "--dpc-size-md": "42px",
@@ -43,7 +43,7 @@ export const PickerControlStyle = css(({ theme }: any) => ({
 
     ...theme.applyMixin("hover", {
       backgroundColor: "var(--raikou-primary-color-filled-hover)",
-    })
+    }),
   },
 
   "&:_where([data-in-range])": {
@@ -71,4 +71,3 @@ export const PickerControlStyle = css(({ theme }: any) => ({
     borderRadius: "var(--raikou-radius-default)",
   },
 }));
-

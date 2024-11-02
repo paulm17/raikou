@@ -41,7 +41,7 @@ export const RadioIconStyle = css({
   left: "calc(50% - var(--radio-icon-size) / 2)",
 });
 
-export const RadioRadioStyle = css(({ theme }: any) => ({
+export const RadioRadioStyle = css(({ theme }) => ({
   border: "1px solid",
   position: "relative",
   appearance: "none",
@@ -58,12 +58,12 @@ export const RadioRadioStyle = css(({ theme }: any) => ({
   cursor: "var(--raikou-cursor-type)",
   WebkitTapHighlightColor: "transparent",
 
-  ...theme.applyStyles('light', {
+  ...theme.applyStyles("light", {
     backgroundColor: theme.colors.white,
     borderColor: theme.colors.gray[4],
   }),
 
-  ...theme.applyStyles('dark', {
+  ...theme.applyStyles("dark", {
     backgroundColor: theme.colors.dark[6],
     borderColor: theme.colors.dark[4],
   }),
@@ -81,7 +81,7 @@ export const RadioRadioStyle = css(({ theme }: any) => ({
   "&:disabled": {
     cursor: "not-allowed",
 
-    ...theme.applyStyles('light', {
+    ...theme.applyStyles("light", {
       backgroundColor: theme.colors.gray[1],
       borderColor: theme.colors.gray[2],
 
@@ -90,7 +90,7 @@ export const RadioRadioStyle = css(({ theme }: any) => ({
       },
     }),
 
-    ...theme.applyStyles('dark', {
+    ...theme.applyStyles("dark", {
       backgroundColor: theme.colors.dark[5],
       borderColor: theme.colors.dark[4],
 

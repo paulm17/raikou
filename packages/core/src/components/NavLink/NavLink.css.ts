@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const NavLinkRootStyle = css(({ theme }: any) => ({
+export const NavLinkRootStyle = css(({ theme }) => ({
   "--nl-bg": "var(--raikou-primary-color-light)",
   "--nl-hover": "var(--raikou-primary-color-light-hover)",
   "--nl-color": "var(--raikou-primary-color-light-color)",
@@ -11,18 +11,18 @@ export const NavLinkRootStyle = css(({ theme }: any) => ({
   padding: "8px var(--raikou-spacing-sm)",
   userSelect: "none",
 
-  ...theme.applyMixin('hover', {
+  ...theme.applyMixin("hover", {
     "&:hover": {
-      ...theme.applyStyles('light', {
+      ...theme.applyStyles("light", {
         backgroundColor: theme.colors.gray[0],
       }),
-      ...theme.applyStyles('dark', {
+      ...theme.applyStyles("dark", {
         backgroundColor: theme.colors.dark[6],
       }),
-    }
+    },
   }),
 
-  '&:_where([data-disabled])': {
+  "&:_where([data-disabled])": {
     opacity: 0.4,
     pointerEvents: "none",
   },
@@ -31,10 +31,10 @@ export const NavLinkRootStyle = css(({ theme }: any) => ({
     backgroundColor: "var(--nl-bg)",
     color: "var(--nl-color)",
 
-    ...theme.applyMixin('hover', {
+    ...theme.applyMixin("hover", {
       "&:hover": {
         backgroundColor: "var(--nl-hover)",
-      }
+      },
     }),
 
     ".description": {
@@ -62,7 +62,7 @@ export const NavLinkSectionStyle = css({
     marginInlineStart: "var(--raikou-spacing-sm)",
   },
 
-  '&:_where([data-rotate])': {
+  "&:_where([data-rotate])": {
     transform: "rotate(90deg)",
   },
 });
@@ -76,7 +76,7 @@ export const NavLinkBodyStyle = css({
   overflow: "hidden",
   textOverflow: "ellipsis",
 
-  '&:_where([data-no-wrap])': {
+  "&:_where([data-no-wrap])": {
     whiteSpace: "nowrap",
   },
 });
@@ -89,7 +89,7 @@ export const NavLinkDescriptionStyle = css({
   overflow: "hidden",
   textOverflow: "ellipsis",
 
-  '&:_where([data-no-wrap])': {
+  "&:_where([data-no-wrap])": {
     whiteSpace: "nowrap",
   },
 });

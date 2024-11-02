@@ -1,0 +1,46 @@
+{
+  "name": "@raikou/datatable",
+  "description": "The lightweight, dependency-free, dark-theme aware table component for your Mantine UI data-rich applications, featuring asynchronous data loading support, pagination, intuitive Gmail-style additive batch rows selection, column sorting, custom cell data rendering, row expansion, nesting, context menus, and much more",
+  "version": "0.0.1-beta.8",
+  "main": "index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format esm,cjs --clean",
+    "lint": "eslint \"**/*.ts*\"",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "build:fast": "tsup src",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "clean-package": "../../../clean-package.config.json",
+  "peerDependencies": {
+    "@raikou/core": ">=0.0.1-alpha.1",
+    "@raikou/hooks": ">=0.0.1-alpha.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@hello-pangea/dnd": "^17.0.0",
+    "@raikou/core": "workspace:*",
+    "@raikou/hooks": "workspace:*",
+    "@stylefusion/react": "^0.0.24-4",
+    "clsx": "^2.1.1",
+    "dayjs": "^1.11.13",
+    "lodash": "^4.17.21",
+    "tslib": "2.6.1"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.7",
+    "clean-package": "2.2.0"
+  }
+}

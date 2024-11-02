@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const InputWrapperStyle = css(({ theme }: any) => ({
+export const InputWrapperStyle = css(({ theme }) => ({
   position: "relative",
   marginTop: "var(--input-margin-top, 0rem)",
   marginBottom: "var(--input-margin-bottom, 0rem)",
@@ -28,9 +28,11 @@ export const InputWrapperStyle = css(({ theme }: any) => ({
   "--input-padding-inline-end": "var(--input-padding)",
   "--input-placeholder-color": "var(--raikou-color-placeholder)",
   "--input-color": "var(--raikou-color-text)",
-  
-  "--input-left-section-size": "var(--input-left-section-width, calc(var(--input-height) - rem(2px)))",
-  "--input-right-section-size": "var(--input-right-section-width, calc(var(--input-height) - rem(2px)))",
+
+  "--input-left-section-size":
+    "var(--input-left-section-width, calc(var(--input-height) - rem(2px)))",
+  "--input-right-section-size":
+    "var(--input-right-section-width, calc(var(--input-height) - rem(2px)))",
 
   "--input-size": "var(--input-height)",
 
@@ -39,7 +41,8 @@ export const InputWrapperStyle = css(({ theme }: any) => ({
   "--left-section-border-radius": "var(--input-radius) 0 0 var(--input-radius)",
 
   "--right-section-end": "1px",
-  "--right-section-border-radius": "0 var(--input-radius) var(--input-radius) 0",
+  "--right-section-border-radius":
+    "0 var(--input-radius) var(--input-radius) 0",
 
   "&[data-pointer]": {
     "--input-cursor": "pointer",
@@ -65,7 +68,7 @@ export const InputWrapperStyle = css(({ theme }: any) => ({
     "--input-padding-inline-end": "var(--input-right-section-size)",
   },
 
-  ...theme.applyStyles('light', {
+  ...theme.applyStyles("light", {
     "--input-disabled-bg": theme.colors.gray[1],
     "--input-disabled-color": theme.colors.gray[6],
 
@@ -82,7 +85,7 @@ export const InputWrapperStyle = css(({ theme }: any) => ({
     },
   }),
 
-  ...theme.applyStyles('dark', {
+  ...theme.applyStyles("dark", {
     "--input-disabled-bg": theme.colors.dark[6],
     "--input-disabled-color": theme.colors.dark[2],
 
@@ -107,12 +110,14 @@ export const InputWrapperStyle = css(({ theme }: any) => ({
       "--input-placeholder-color": "var(--raikou-color-error)",
       "--input-section-color": "var(--raikou-color-error)",
     },
-    
+
     ...theme.applyMixin("where-rtl", {
       "--input-text-align": "right",
-      "--left-section-border-radius": "0 var(--input-radius) var(--input-radius) 0",
-      "--right-section-border-radius": "var(--input-radius) 0 0 var(--input-radius)",
-    })
+      "--left-section-border-radius":
+        "0 var(--input-radius) var(--input-radius) 0",
+      "--right-section-border-radius":
+        "var(--input-radius) 0 0 var(--input-radius)",
+    }),
   }),
 }));
 
@@ -149,7 +154,8 @@ export const InputInputStyle = css({
   /* Used as data attribute in JsonInput component, does not have associated prop on the Input component */
   "&[data-monospace]": {
     "--input-font-family": "var(--raikou-font-family-monospace)",
-    "--input-fz": "calc(var(--input-fz, var(--raikou-font-size-sm)) - rem(2px))",
+    "--input-fz":
+      "calc(var(--input-fz, var(--raikou-font-size-sm)) - rem(2px))",
   },
 
   "&:focus, &:focus-within": {
@@ -160,15 +166,16 @@ export const InputInputStyle = css({
       "--input-bd": "var(--raikou-color-error)",
     },
   },
-  
+
   "&::placeholder": {
     color: "var(--input-placeholder-color)",
     opacity: 1,
   },
-  
-  "&::-webkit-inner-spin-button, &::-webkit-outer-spin-button, &::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration": {
-    appearance: "none",
-  },
+
+  "&::-webkit-inner-spin-button, &::-webkit-outer-spin-button, &::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration":
+    {
+      appearance: "none",
+    },
 
   "&[type='number']": {
     mozAppearance: "textfield",
@@ -225,7 +232,8 @@ export const InputPlaceholderStyle = css({
   color: "var(--input-placeholder-color, var(--raikou-color-placeholder))",
 
   "&[data-error]": {
-    "--input-placeholder-color": "var(--input-color, var(--raikou-color-placeholder))",
+    "--input-placeholder-color":
+      "var(--input-color, var(--raikou-color-placeholder))",
   },
 });
 
@@ -253,16 +261,18 @@ const ErrorDescription = {
   display: "block",
   margin: 0,
   padding: 0,
-}
+};
 
 export const InputErrorStyle = css({
   color: "var(--raikou-color-error)",
-  fontSize: "var(--input-error-size, calc(var(--raikou-font-size-sm) - rem(2px)))",
-  ...ErrorDescription
+  fontSize:
+    "var(--input-error-size, calc(var(--raikou-font-size-sm) - rem(2px)))",
+  ...ErrorDescription,
 });
 
 export const InputDescriptionStyle = css({
   color: "var(--raikou-color-dimmed)",
-  fontSize: "var(--input-description-size, calc(var(--raikou-font-size-sm) - rem(2px)))",
-  ...ErrorDescription
+  fontSize:
+    "var(--input-description-size, calc(var(--raikou-font-size-sm) - rem(2px)))",
+  ...ErrorDescription,
 });

@@ -1,20 +1,19 @@
-import { css } from '@stylefusion/react';
+import { css } from "@stylefusion/react";
 
 export const CalendarHeaderStyle = css({
-  '--dch-control-size-xs': '30px',
-  '--dch-control-size-sm': '36px',
-  '--dch-control-size-md': '42px',
-  '--dch-control-size-lg': '48px',
-  '--dch-control-size-xl': '54px',
-  '--dch-control-size': 'var(--dch-control-size-sm)',
+  "--dch-control-size-xs": "30px",
+  "--dch-control-size-sm": "36px",
+  "--dch-control-size-md": "42px",
+  "--dch-control-size-lg": "48px",
+  "--dch-control-size-xl": "54px",
+  "--dch-control-size": "var(--dch-control-size-sm)",
 
   display: "flex",
   maxWidth: "calc(var(--dch-control-size) * 7 + rem(7px))",
   marginBottom: "var(--raikou-spacing-xs)",
 });
 
-
-export const CalendarHeaderLevelStyle = css(({ theme }: any) => ({
+export const CalendarHeaderLevelStyle = css(({ theme }) => ({
   height: "var(--dch-control-size)",
   borderRadius: "var(--raikou-radius-default)",
   display: "flex",
@@ -25,7 +24,7 @@ export const CalendarHeaderLevelStyle = css(({ theme }: any) => ({
   cursor: "pointer",
 
   ...theme.applyMixin("hover", {
-    '&:_where(:not([data-disabled], :disabled)):hover': {
+    "&:_where(:not([data-disabled], :disabled)):hover": {
       ...theme.applyMixin("light", {
         backgroundColor: theme.vars.colors.gray[0],
       }),
@@ -35,7 +34,7 @@ export const CalendarHeaderLevelStyle = css(({ theme }: any) => ({
     },
   }),
 
-  '&:_where(:disabled, [data-disabled])': {
+  "&:_where(:disabled, [data-disabled])": {
     opacity: 0.2,
     cursor: "not-allowed",
   },
@@ -46,7 +45,7 @@ export const CalendarHeaderLevelStyle = css(({ theme }: any) => ({
   textTransform: "capitalize",
 }));
 
-export const CalendarHeaderControlStyle = css(({ theme }: any) => ({
+export const CalendarHeaderControlStyle = css(({ theme }) => ({
   height: "var(--dch-control-size)",
   borderRadius: "var(--raikou-radius-default)",
   display: "flex",
@@ -57,7 +56,7 @@ export const CalendarHeaderControlStyle = css(({ theme }: any) => ({
   cursor: "pointer",
 
   ...theme.applyMixin("hover", {
-    '&:_where(:not([data-disabled], :disabled)):hover': {
+    "&:_where(:not([data-disabled], :disabled)):hover": {
       ...theme.applyMixin("light", {
         backgroundColor: theme.vars.colors.gray[0],
       }),
@@ -67,7 +66,7 @@ export const CalendarHeaderControlStyle = css(({ theme }: any) => ({
     },
   }),
 
-  '&:_where(:disabled, [data-disabled])': {
+  "&:_where(:disabled, [data-disabled])": {
     opacity: 0.2,
     cursor: "not-allowed",
   },
@@ -75,7 +74,7 @@ export const CalendarHeaderControlStyle = css(({ theme }: any) => ({
   width: "var(--dch-control-size)",
 }));
 
-export const CalendarHeaderControlIconStyle = css(({ theme }: any) => ({
+export const CalendarHeaderControlIconStyle = css(({ theme }) => ({
   width: "60%",
   height: "60%",
 

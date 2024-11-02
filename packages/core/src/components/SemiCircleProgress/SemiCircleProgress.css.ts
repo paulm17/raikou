@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const SemiCircleProgressRootStyle = css(({ theme }: any) => ({
+export const SemiCircleProgressRootStyle = css(({ theme }) => ({
   "--scp-filled-segment-color": "var(--raikou-primary-color-filled)",
   "--scp-transition-duration": "0ms",
   "--scp-thickness": "10px",

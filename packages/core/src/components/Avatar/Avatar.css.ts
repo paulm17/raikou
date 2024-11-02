@@ -7,7 +7,7 @@ export const AvatarGroupStyle = css({
 
   display: "flex",
   paddingInlineStart: "var(--ag-spacing)",
-})
+});
 
 /* Avatar root element */
 export const AvatarRootStyle = css({
@@ -41,14 +41,14 @@ export const AvatarRootStyle = css({
     border: "2px solid var(--raikou-color-body)",
     background: "var(--raikou-color-body)",
   },
-})
+});
 
 export const AvatarImageStyle = css({
   objectFit: "cover",
   width: "100%",
   height: "100%",
   display: "block",
-})
+});
 
 export const AvatarPlaceholderStyle = css({
   fontWeight: 700,

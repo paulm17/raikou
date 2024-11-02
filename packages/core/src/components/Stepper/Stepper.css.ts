@@ -40,20 +40,19 @@ export const StepperStepsStyle = css({
   "&:_where([data-orientation='horizontal'])": {
     flexDirection: "row",
   },
-  
 });
 
-export const StepperSeparatorStyle = css(({ theme }: any) => ({
+export const StepperSeparatorStyle = css(({ theme }) => ({
   "--separator-offset": "calc(var(--stepper-icon-size) / 2 - rem(1px))",
 
   transition: "background-color 150ms ease",
   flex: "1",
 
-  ...theme.applyStyles('light', {
+  ...theme.applyStyles("light", {
     backgroundColor: theme.colors.gray[2],
   }),
 
-  ...theme.applyStyles('dark', {
+  ...theme.applyStyles("dark", {
     backgroundColor: theme.colors.dark[2],
   }),
 
@@ -87,7 +86,7 @@ export const StepperContentStyle = css({
 
 export const StepperStepStyle = css({
   "--step-color": "var(--stepper-color)",
-  
+
   display: "flex",
   cursor: "default",
 
@@ -109,16 +108,17 @@ export const StepperStepStyle = css({
 
   "[data-variant='vertical']": {
     "--separator-spacing": "calc(var(--raikou-spacing-xs) / 2)",
-    
+
     justifyContent: "flex-start",
-    minHeight: "calc(var(--stepper-icon-size) + var(--raikou-spacing-xl) + var(--separator-spacing))",
+    minHeight:
+      "calc(var(--stepper-icon-size) + var(--raikou-spacing-xl) + var(--separator-spacing))",
     marginTop: "var(--separator-spacing)",
     overflow: "hidden",
 
     "&:_where(:first-of-type)": {
       marginTop: "0",
     },
-    
+
     "&:_where(:last-of-type) .verticalSeparator": {
       display: "none",
     },
@@ -129,18 +129,18 @@ export const StepperStepWrapperStyle = css({
   position: "relative",
 });
 
-export const StepperVerticalSeparatorStyle = css(({ theme }: any) => ({
+export const StepperVerticalSeparatorStyle = css(({ theme }) => ({
   top: "calc(var(--stepper-icon-size) + var(--separator-spacing))",
   insetInlineStart: "calc(var(--stepper-icon-size) / 2)",
   height: "100vh",
   position: "absolute",
   borderInlineStart: "2px solid",
 
-  ...theme.applyStyles('light', {
+  ...theme.applyStyles("light", {
     borderColor: theme.colors.gray[1],
   }),
 
-  ...theme.applyStyles('dark', {
+  ...theme.applyStyles("dark", {
     borderColor: theme.colors.dark[5],
   }),
 
@@ -149,7 +149,7 @@ export const StepperVerticalSeparatorStyle = css(({ theme }: any) => ({
   },
 }));
 
-export const StepperStepIconStyle = css(({ theme }: any) => ({
+export const StepperStepIconStyle = css(({ theme }) => ({
   height: "var(--stepper-icon-size)",
   width: "var(--stepper-icon-size)",
   minHeight: "var(--stepper-icon-size)",
@@ -164,13 +164,13 @@ export const StepperStepIconStyle = css(({ theme }: any) => ({
   transition: "background-color 150ms ease, border-color 150ms ease",
   border: "2px solid",
 
-  ...theme.applyStyles('light', {
+  ...theme.applyStyles("light", {
     backgroundColor: theme.colors.gray[1],
     borderColor: theme.colors.gray[1],
     color: theme.colors.gray[7],
   }),
 
-  ...theme.applyStyles('dark', {
+  ...theme.applyStyles("dark", {
     backgroundColor: theme.colors.dark[5],
     borderColor: theme.colors.dark[5],
     color: theme.colors.dark[1],
@@ -196,7 +196,7 @@ export const StepperStepCompletedIconStyle = css({
   color: "var(--stepper-icon-color, var(--raikou-color-white))",
 });
 
-export const StepperStepBodyStyle = css(({ theme }: any) => ({
+export const StepperStepBodyStyle = css(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
 
@@ -210,7 +210,7 @@ export const StepperStepBodyStyle = css(({ theme }: any) => ({
 
     ...theme.applyMixin("where-rtl", {
       textAlign: "left",
-    })
+    }),
   },
 }));
 

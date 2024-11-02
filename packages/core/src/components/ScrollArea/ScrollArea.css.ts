@@ -4,7 +4,7 @@ export const ScrollAreaRootStyle = css({
   "--scrolarea-scrollbar-size": "12px",
 
   position: "relative",
-  overflow: "hidden"
+  overflow: "hidden",
 });
 
 export const ScrollAreaViewportStyle = css({
@@ -28,21 +28,20 @@ export const ScrollAreaViewportStyle = css({
   "&:_where([data-scrollbars='xy'], [data-scrollbars='x'])": {
     "&:_where([data-offset-scrollbars='xy'], [data-offset-scrollbars='x'])": {
       paddingBottom: "var(--scrollarea-scrollbar-size)",
-    }
-  }
+    },
+  },
 });
 
 export const ScrollAreaViewportInnerStyle = css({
   minWidth: "100%",
-  display: "table"
+  display: "table",
 });
 
-export const ScrollAreaScrollBarStyle = css(({ theme }: any) => ({
+export const ScrollAreaScrollBarStyle = css(({ theme }) => ({
   userSelect: "none",
   touchAction: "none",
   boxSizing: "border-box",
-  transition:
-    "background-color 150ms ease, opacity 150ms ease",
+  transition: "background-color 150ms ease, opacity 150ms ease",
   padding: "calc(var(--scrollarea-scrollbar-size) / 5)",
   display: "flex",
   backgroundColor: "transparent",
@@ -50,7 +49,7 @@ export const ScrollAreaScrollBarStyle = css(({ theme }: any) => ({
 
   ...theme.applyMixin("hover", {
     "&:hover": {
-      ...theme.applyStyles('light', {
+      ...theme.applyStyles("light", {
         backgroundColor: theme.colors.gray[0],
 
         "& > .thumb": {
@@ -58,14 +57,14 @@ export const ScrollAreaScrollBarStyle = css(({ theme }: any) => ({
         },
       }),
 
-      ...theme.applyStyles('dark', {
+      ...theme.applyStyles("dark", {
         backgroundColor: theme.colors.dark[8],
 
         "& > .thumb": {
           backgroundColor: "rgba(255, 255, 255, 0.5)",
-        }
+        },
       }),
-    }
+    },
   }),
 
   "&:_where([data-hidden], [data-state='hidden'])": {
@@ -88,7 +87,7 @@ export const ScrollAreaScrollBarStyle = css(({ theme }: any) => ({
   },
 }));
 
-export const ScrollAreaThumbStyle = css(({ theme }: any) => ({
+export const ScrollAreaThumbStyle = css(({ theme }) => ({
   flex: 1,
   borderRadius: "var(--scrollarea-scrollbar-size)",
   position: "relative",
@@ -106,16 +105,16 @@ export const ScrollAreaThumbStyle = css(({ theme }: any) => ({
     minWidth: "44px",
     minHeight: "44px",
   },
-  ...theme.applyStyles('light', {
+  ...theme.applyStyles("light", {
     backgroundColor: "rgba(0, 0, 0, 0.4)",
   }),
 
-  ...theme.applyStyles('dark', {
+  ...theme.applyStyles("dark", {
     backgroundColor: "rgba(255, 255, 255, 0.4)",
   }),
 }));
 
-export const ScrollAreaCornerStyle = css(({ theme }: any) => ({
+export const ScrollAreaCornerStyle = css(({ theme }) => ({
   position: "absolute",
   opacity: 0,
   transition: "opacity 150ms ease",
@@ -123,11 +122,11 @@ export const ScrollAreaCornerStyle = css(({ theme }: any) => ({
   insetInlineEnd: 0,
   bottom: 0,
 
-  ...theme.applyStyles('light', {
+  ...theme.applyStyles("light", {
     backgroundColor: theme.colors.gray[0],
   }),
 
-  ...theme.applyStyles('dark', {
+  ...theme.applyStyles("dark", {
     backgroundColor: theme.colors.dark[8],
   }),
 

@@ -1,21 +1,11 @@
-import { ActionIcon, Button, Loader } from "@raikou/core";
+import { Badge } from "@raikou/core";
 import { createFileRoute } from "@tanstack/react-router";
+import { ContextMenu } from "../components/contextmenu";
 
 export const Route = createFileRoute("/")({
   component: HomeComponent,
 });
 
 function HomeComponent() {
-  return (
-    <>
-      <Button
-        loading={true}
-        loaderPosition="left"
-        loaderProps={{ type: "trail" }}
-        onClick={() => console.log("click")}
-      >
-        hello
-      </Button>
-    </>
-  );
+  return <ContextMenu />;
 }

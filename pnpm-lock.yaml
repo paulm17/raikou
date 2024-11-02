@@ -12,6 +12,9 @@ importers:
 
   .:
     dependencies:
+      '@stylefusion/react':
+        specifier: ^0.0.24-4
+        version: 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
       '@tabler/icons-react':
         specifier: ^2.30.0
         version: 2.47.0(react@18.3.1)
@@ -202,9 +205,15 @@ importers:
       '@raikou/charts':
         specifier: workspace:*
         version: link:../../packages/charts
+      '@raikou/contextmenu':
+        specifier: workspace:*
+        version: link:../../packages/contextmenu
       '@raikou/core':
         specifier: workspace:*
         version: link:../../packages/core
+      '@raikou/datatable':
+        specifier: workspace:*
+        version: link:../../packages/datatable
       '@raikou/emotion':
         specifier: workspace:*
         version: link:../../packages/emotion
@@ -217,9 +226,6 @@ importers:
       '@raikou/system':
         specifier: workspace:*
         version: link:../../packages/system
-      '@stylefusion/react':
-        specifier: ^0.0.24-4
-        version: 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
       '@stylefusion/vite-plugin':
         specifier: ^0.0.24-1
         version: 0.0.24-1(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(less@4.2.0)(lightningcss@1.27.0)(sass@1.80.4)(stylus@0.64.0)(terser@5.36.0))
@@ -421,6 +427,34 @@ importers:
         specifier: 2.2.0
         version: 2.2.0
 
+  packages/contextmenu:
+    dependencies:
+      '@raikou/core':
+        specifier: workspace:*
+        version: link:../core
+      '@raikou/hooks':
+        specifier: workspace:*
+        version: link:../hooks
+      '@stylefusion/react':
+        specifier: ^0.0.24-4
+        version: 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
+      react:
+        specifier: ^18.2.0
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.3.1(react@18.3.1)
+      tslib:
+        specifier: 2.6.1
+        version: 2.6.1
+    devDependencies:
+      '@types/lodash':
+        specifier: ^4.17.7
+        version: 4.17.13
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+
   packages/core:
     dependencies:
       '@floating-ui/react':
@@ -466,6 +500,46 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.1
         version: 18.3.1
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+
+  packages/datatable:
+    dependencies:
+      '@hello-pangea/dnd':
+        specifier: ^17.0.0
+        version: 17.0.0(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@raikou/core':
+        specifier: workspace:*
+        version: link:../core
+      '@raikou/hooks':
+        specifier: workspace:*
+        version: link:../hooks
+      '@stylefusion/react':
+        specifier: ^0.0.24-4
+        version: 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
+      dayjs:
+        specifier: ^1.11.13
+        version: 1.11.13
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
+      react:
+        specifier: ^18.2.0
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.3.1(react@18.3.1)
+      tslib:
+        specifier: 2.6.1
+        version: 2.6.1
+    devDependencies:
+      '@types/lodash':
+        specifier: ^4.17.7
+        version: 4.17.13
       clean-package:
         specifier: 2.2.0
         version: 2.2.0
@@ -2089,6 +2163,12 @@ packages:
   '@floating-ui/utils@0.2.8':
     resolution: {integrity: sha512-kym7SodPp8/wloecOpcmSnWJsK7M0E5Wg8UcFA+uO4B9s5d0ywXOEro/8HM9x0rW+TljRzul/14UYz3TleT3ig==}
 
+  '@hello-pangea/dnd@17.0.0':
+    resolution: {integrity: sha512-LDDPOix/5N0j5QZxubiW9T0M0+1PR0rTDWeZF5pu1Tz91UQnuVK4qQ/EjY83Qm2QeX0eM8qDXANfDh3VVqtR4Q==}
+    peerDependencies:
+      react: ^18.2.0
+      react-dom: ^18.2.0
+
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
     engines: {node: '>=10.10.0'}
@@ -3097,6 +3177,9 @@ packages:
   '@types/linkify-it@5.0.0':
     resolution: {integrity: sha512-sVDA58zAw4eWAffKOaQH5/5j3XeayukzDk+ewSsnv3p4yJEZHCCzMDiZM8e0OUrRvmpGZ85jf4yDHkHsgBNr9Q==}
 
+  '@types/lodash@4.17.13':
+    resolution: {integrity: sha512-lfx+dftrEZcdBPczf9d0Qv0x+j/rfNCMuC6OcfXmO8gkfeNAY88PgKUbvG56whcN23gc27yenwF6oJZXGFpYxg==}
+
   '@types/markdown-it@14.1.2':
     resolution: {integrity: sha512-promo4eFwuiW+TfGxhi+0x3czqTYJkG8qB17ZUJiVF10Xm7NLVRSLUsfRTU/6h1e24VvRnXCx+hG7li58lkzog==}
 
@@ -3174,6 +3257,9 @@ packages:
 
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
+
+  '@types/use-sync-external-store@0.0.3':
+    resolution: {integrity: sha512-EwmlvuaxPNej9+T4v5AuBPJa2x2UOJVdjCtDHgcDqitUeOtjnJKJ+apYjVcAoBEMjKW1VVFGZLUb5+qqa09XFA==}
 
   '@types/use-sync-external-store@0.0.6':
     resolution: {integrity: sha512-zFDAD+tlpf2r4asuHEj0XH6pY6i0g5NeAHPn+15wk3BV6JA69eERFXC1gyGThDkVa1zCyKr5jox1+2LbV/AMLg==}
@@ -4005,6 +4091,9 @@ packages:
     peerDependenciesMeta:
       uWebSockets.js:
         optional: true
+
+  css-box-model@1.2.1:
+    resolution: {integrity: sha512-a7Vr4Q/kd/aw96bnJG332W9V9LkJO69JRcaCYDUqjp6/z0w6VcZjgAcTbgFxEPfBgdnAwlh3iwu+hLopa+flJw==}
 
   css-declaration-sorter@7.2.0:
     resolution: {integrity: sha512-h70rUM+3PNFuaBDTLe8wF/cdWu+dOZmb7pJt8Z2sedYbAcQVQV/tEchueg3GWxwqS0cxtbxmaHEdkNACqcvsow==}
@@ -6173,6 +6262,9 @@ packages:
   mdurl@2.0.0:
     resolution: {integrity: sha512-Lf+9+2r+Tdp5wXDXC4PcIBjTDtq4UKjCPMQhKIuzpJNW0b96kVqSwW0bT7FhRSfmAiFYgP+SCRvdrDozfh0U5w==}
 
+  memoize-one@6.0.0:
+    resolution: {integrity: sha512-rkpe71W0N0c0Xz6QD0eJETuWAJGnJ9afsl1srmwPrI+yBCkge5EycXXbYRyvL29zZVUWQCY7InPRCv3GDXuZNw==}
+
   meow@6.1.1:
     resolution: {integrity: sha512-3YffViIt2QWgTy6Pale5QpopX/IvU3LPL03jOTqp6pGj3VjesdO/U8CuHMKpnQr4shCNCM5fd5XFFvIIl6JBHg==}
     engines: {node: '>=8'}
@@ -7044,6 +7136,9 @@ packages:
   radix3@1.1.2:
     resolution: {integrity: sha512-b484I/7b8rDEdSDKckSSBA8knMpcdsXudlE/LNL639wFoHKwLbEkQFZHWEYwDC0wa0FKUcCY+GAF73Z7wxNVFA==}
 
+  raf-schd@4.0.3:
+    resolution: {integrity: sha512-tQkJl2GRWh83ui2DiPTJz9wEiMN20syf+5oKfB03yYP7ioZcJwsIK8FjrtLwH1m7C7e+Tt2yYBlrOpdT+dyeIQ==}
+
   randombytes@2.1.0:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
 
@@ -7086,6 +7181,18 @@ packages:
 
   react-property@2.0.2:
     resolution: {integrity: sha512-+PbtI3VuDV0l6CleQMsx2gtK0JZbZKbpdu5ynr+lbsuvtmgbNcS3VM0tuY2QjFNOcWxvXeHjDpy42RO+4U2rug==}
+
+  react-redux@9.1.2:
+    resolution: {integrity: sha512-0OA4dhM1W48l3uzmv6B7TXPCGmokUU4p1M44DGN2/D9a1FjVPukVjER1PcPX97jIg6aUeLq1XJo1IpfbgULn0w==}
+    peerDependencies:
+      '@types/react': ^18.2.25
+      react: ^18.2.0
+      redux: ^5.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      redux:
+        optional: true
 
   react-refresh@0.14.2:
     resolution: {integrity: sha512-jCvmsr+1IUSMUyzOkRcvnVbX3ZYC6g9TDrDbFuFmRDq7PD4yaGbLKNQL6k2jnArV8hjYxh7hVhAZB6s9HDGpZA==}
@@ -7206,6 +7313,9 @@ packages:
   redis-parser@3.0.0:
     resolution: {integrity: sha512-DJnGAeenTdpMEH6uAJRK/uiyEIH9WVsUmoLwzudwGJUwZPp80PDBWPHXSAGNPwNvIXAbe7MSUB1zQFugFml66A==}
     engines: {node: '>=4'}
+
+  redux@5.0.1:
+    resolution: {integrity: sha512-M9/ELqF6fy8FwmkpnF0S3YKOqMyoWJ4+CS5Efg2ct3oY9daQvd/Pc71FpGZsVsbl3Cpb+IIcjBDUnnyBdQbq4w==}
 
   reflect.getprototypeof@1.0.6:
     resolution: {integrity: sha512-fmfw4XgoDke3kdI6h4xcUz1dG8uaiv5q9gcEwLS4Pnth2kxT+GZ7YehS1JTMGBQmtV7Y4GFGbs2re2NqhdozUg==}
@@ -8208,6 +8318,11 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
+
+  use-memo-one@1.1.3:
+    resolution: {integrity: sha512-g66/K7ZQGYrI6dy8GLpVcMsBp4s17xNkYJVSMvTEevGy3nDxHOfE6z8BVE22+5G5x7t3+bhzrlTDB7ObrEE0cQ==}
+    peerDependencies:
+      react: ^18.2.0
 
   use-sidecar@1.1.2:
     resolution: {integrity: sha512-epTbsLuzZ7lPClpz2TyryBfztm7m+28DlEv2ZCQ3MDr5ssiwyOwGH/e5F9CkfWjJ1t4clvI58yF822/GUkjjhw==}
@@ -9597,6 +9712,20 @@ snapshots:
 
   '@floating-ui/utils@0.2.8': {}
 
+  '@hello-pangea/dnd@17.0.0(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@babel/runtime': 7.25.9
+      css-box-model: 1.2.1
+      memoize-one: 6.0.0
+      raf-schd: 4.0.3
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      react-redux: 9.1.2(@types/react@18.3.12)(react@18.3.1)(redux@5.0.1)
+      redux: 5.0.1
+      use-memo-one: 1.1.3(react@18.3.1)
+    transitivePeerDependencies:
+      - '@types/react'
+
   '@humanwhocodes/config-array@0.11.14':
     dependencies:
       '@humanwhocodes/object-schema': 2.0.3
@@ -10906,6 +11035,8 @@ snapshots:
 
   '@types/linkify-it@5.0.0': {}
 
+  '@types/lodash@4.17.13': {}
+
   '@types/markdown-it@14.1.2':
     dependencies:
       '@types/linkify-it': 5.0.0
@@ -10981,6 +11112,8 @@ snapshots:
   '@types/tough-cookie@4.0.5': {}
 
   '@types/unist@3.0.3': {}
+
+  '@types/use-sync-external-store@0.0.3': {}
 
   '@types/use-sync-external-store@0.0.6': {}
 
@@ -12010,6 +12143,10 @@ snapshots:
       which: 2.0.2
 
   crossws@0.2.4: {}
+
+  css-box-model@1.2.1:
+    dependencies:
+      tiny-invariant: 1.3.3
 
   css-declaration-sorter@7.2.0(postcss@8.4.47):
     dependencies:
@@ -14685,6 +14822,8 @@ snapshots:
 
   mdurl@2.0.0: {}
 
+  memoize-one@6.0.0: {}
+
   meow@6.1.1:
     dependencies:
       '@types/minimist': 1.2.5
@@ -15660,6 +15799,8 @@ snapshots:
 
   radix3@1.1.2: {}
 
+  raf-schd@4.0.3: {}
+
   randombytes@2.1.0:
     dependencies:
       safe-buffer: 5.2.1
@@ -15701,6 +15842,15 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
 
   react-property@2.0.2: {}
+
+  react-redux@9.1.2(@types/react@18.3.12)(react@18.3.1)(redux@5.0.1):
+    dependencies:
+      '@types/use-sync-external-store': 0.0.3
+      react: 18.3.1
+      use-sync-external-store: 1.2.2(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.12
+      redux: 5.0.1
 
   react-refresh@0.14.2: {}
 
@@ -15856,6 +16006,8 @@ snapshots:
   redis-parser@3.0.0:
     dependencies:
       redis-errors: 1.2.0
+
+  redux@5.0.1: {}
 
   reflect.getprototypeof@1.0.6:
     dependencies:
@@ -16934,6 +17086,10 @@ snapshots:
       use-isomorphic-layout-effect: 1.1.2(@types/react@18.3.12)(react@18.3.1)
     optionalDependencies:
       '@types/react': 18.3.12
+
+  use-memo-one@1.1.3(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   use-sidecar@1.1.2(@types/react@18.3.12)(react@18.3.1):
     dependencies:

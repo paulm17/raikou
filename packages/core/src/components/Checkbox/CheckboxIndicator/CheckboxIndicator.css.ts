@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const CheckboxIndicatorIndicatorStyle = css(({ theme }: any) => ({
+export const CheckboxIndicatorIndicatorStyle = css(({ theme }) => ({
   "--checkbox-size-xs": "16px",
   "--checkbox-size-sm": "20px",
   "--checkbox-size-md": "24px",
@@ -10,7 +10,7 @@ export const CheckboxIndicatorIndicatorStyle = css(({ theme }: any) => ({
   "--checkbox-size": "var(--checkbox-size-sm)",
   "--checkbox-color": "var(--raikou-primary-color-filled)",
   "--checkbox-icon-color": "var(--raikou-color-white)",
-  
+
   position: "relative",
   border: "1px solid transparent",
   width: "var(--checkbox-size)",
@@ -69,16 +69,17 @@ export const CheckboxIndicatorIndicatorStyle = css(({ theme }: any) => ({
   },
 
   "&[data-variant=outline]": {
-    "&[data-indeterminate]:not([data-disabled]), &[data-checked]:not([data-disabled])": {
-      backgroundColor: "transparent",
-      borderColor: "var(--checkbox-color)",
+    "&[data-indeterminate]:not([data-disabled]), &[data-checked]:not([data-disabled])":
+      {
+        backgroundColor: "transparent",
+        borderColor: "var(--checkbox-color)",
 
-      [`& > .${CheckboxIndicatorIconStyle}`]: {
-        color: "var(--checkbox-color)",
-        opacity: 1,
-        transform: "none",
+        [`& > .${CheckboxIndicatorIconStyle}`]: {
+          color: "var(--checkbox-color)",
+          opacity: 1,
+          transform: "none",
+        },
       },
-    },
   },
 }));
 

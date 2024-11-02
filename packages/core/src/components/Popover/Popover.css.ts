@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const PopoverDropdownStyle = css(({ theme }: any) => ({
+export const PopoverDropdownStyle = css(({ theme }) => ({
   position: "absolute",
   border: "1px solid var(--popover-border-color)",
   padding: "var(--raikou-spacing-sm) var(--raikou-spacing-md)",
@@ -15,12 +15,12 @@ export const PopoverDropdownStyle = css(({ theme }: any) => ({
     outline: "none",
   },
 
-  ...theme.applyStyles('light', {
+  ...theme.applyStyles("light", {
     "--popover-border-color": theme.colors.gray[2],
     backgroundColor: theme.colors.white,
   }),
 
-  ...theme.applyStyles('dark', {
+  ...theme.applyStyles("dark", {
     "--popover-border-color": theme.colors.dark[4],
     backgroundColor: theme.colors.dark[6],
   }),

@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const ButtonRootStyle = css(({ theme }: any) => ({
+export const ButtonRootStyle = css(({ theme }) => ({
   "--button-height-xs": "30px",
   "--button-height-sm": "36px",
   "--button-height-md": "42px",

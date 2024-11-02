@@ -16,7 +16,7 @@ export const RingProgressSvgStyle = css({
   transform: "rotate(-90deg)",
 });
 
-export const RingProgressCurveStyle = css(({ theme }: any) => ({
+export const RingProgressCurveStyle = css(({ theme }) => ({
   stroke: "var(--curve-color, var(--rp-curve-root-color))",
 
   ...theme.applyStyles("light", {

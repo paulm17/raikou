@@ -24,7 +24,7 @@ export const NumberInputControlsStyle = css({
   marginInlineStart: "auto",
 });
 
-export const NumberInputControlStyle = css(({ theme }: any) => ({
+export const NumberInputControlStyle = css(({ theme }) => ({
   "--control-border": "1px solid var(--input-bd)",
   "--control-radius": "calc(var(--input-radius) - rem(1px))",
 
@@ -67,7 +67,7 @@ export const NumberInputControlStyle = css(({ theme }: any) => ({
       ...theme.applyStyles("dark", {
         backgroundColor: theme.colors.dark[4],
       }),
-    }
+    },
   }),
 
   "&:_where(:first-of-type)": {

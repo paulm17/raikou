@@ -19,7 +19,6 @@ export const AlertWrapperStyle = css({
   display: "flex",
 });
 
-
 export const AlertBodyStyle = css({
   flex: 1,
   display: "flex",
@@ -56,7 +55,7 @@ export const AlertIconStyle = css({
   marginTop: "1px",
 });
 
-export const AlertMessageStyle = css(({ theme }: any) => ({
+export const AlertMessageStyle = css(({ theme }) => ({
   textOverflow: "ellipsis",
   overflow: "hidden",
   fontSize: "var(--raikou-font-size-sm)",

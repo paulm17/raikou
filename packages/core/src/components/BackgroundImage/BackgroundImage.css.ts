@@ -8,4 +8,4 @@ export const BackgroundImageRootStyle = css({
   border: 0,
   textDecoration: "none",
   borderRadius: "var(--bi-radius, 0)",
-})
+});

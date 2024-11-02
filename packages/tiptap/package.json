@@ -30,9 +30,9 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@stylefusion/react": "^0.0.24-4",
     "@raikou/core": "workspace:*",
     "@raikou/hooks": "workspace:*",
+    "@stylefusion/react": "^0.0.24-4",
     "@tiptap/extension-color": "^2.8.0",
     "@tiptap/extension-code-block-lowlight": "^2.8.0",
     "@tiptap/extension-highlight": "^2.8.0",

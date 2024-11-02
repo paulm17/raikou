@@ -27,9 +27,9 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
+    "@stylefusion/react": "^0.0.24-4",
     "@raikou/core": "workspace:*",
     "@raikou/hooks": "workspace:*",
-    "@stylefusion/react": "^0.0.24-4",
     "tslib": "^2.6.1"
   }
 }

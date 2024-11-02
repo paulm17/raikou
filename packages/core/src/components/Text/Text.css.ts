@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const TextRootStyle = css(({ theme }: any) => ({
+export const TextRootStyle = css(({ theme }) => ({
   webkitTapHighlightColor: "transparent",
   textDecoration: "none",
   fontSize: "var(--text-fz, var(--raikou-font-size-md))",
@@ -23,7 +23,7 @@ export const TextRootStyle = css(({ theme }: any) => ({
     ...theme.applyMixin("where-rtl", {
       direction: "ltr",
       textAlign: "left",
-    })
+    }),
   },
 
   "&:_where([data-variant='gradient'])": {
@@ -49,5 +49,5 @@ export const TextRootStyle = css(({ theme }: any) => ({
 
   "&:_where([data-inline])": {
     lineHeight: 1,
-  }
+  },
 }));

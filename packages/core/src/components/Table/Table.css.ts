@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const TableRootStyle = css(({ theme }: any) => ({
+export const TableRootStyle = css(({ theme }) => ({
   width: "100%",
   borderCollapse: "collapse",
   lineHeight: "var(--raikou-line-height)",
@@ -27,24 +27,25 @@ export const TableRootStyle = css(({ theme }: any) => ({
 }));
 
 const tdth = {
-  padding: "var(--table-vertical-spacing) var(--table-horizontal-spacing, var(--raikou-spacing-xs))",
+  padding:
+    "var(--table-vertical-spacing) var(--table-horizontal-spacing, var(--raikou-spacing-xs))",
 
   "&:_where([data-with-column-border]:not(:last-child))": {
     borderInlineEnd: "rem(1px) solid var(--table-border-color)",
   },
-}
+};
 
-export const TableThStyle = css(({ theme }: any) => ({
+export const TableThStyle = css(({ theme }) => ({
   textAlign: "left",
 
   ...theme.applyMixin("where-rtl", {
     textAlign: "right",
   }),
 
-  ...tdth
+  ...tdth,
 }));
 
-export const TableTrStyle = css(({ theme }: any) => ({
+export const TableTrStyle = css(({ theme }) => ({
   borderBottom: "none",
   backgroundColor: "transparent",
 
@@ -70,16 +71,17 @@ export const TableTbodyStyle = css({
     "&:_where([data-striped='odd']:nth-of-type(odd))": {
       backgroundColor: "var(--table-striped-color)",
     },
-    
+
     "&:_where([data-striped='even']:nth-of-type(even))": {
       backgroundColor: "var(--table-striped-color)",
     },
 
     "&[data-hover]": {
-      "--tr-hover-bg": "var(--table-highlight-on-hover-color, var(--table-hover-color))",
+      "--tr-hover-bg":
+        "var(--table-highlight-on-hover-color, var(--table-hover-color))",
     },
-  }
-})
+  },
+});
 
 export const TableTheadStyle = css({
   top: "var(--table-sticky-header-offset, 0)",
@@ -89,7 +91,7 @@ export const TableTheadStyle = css({
     position: "sticky",
     backgroundColor: "var(--raikou-color-body)",
   },
-})
+});
 
 export const TableCaptionStyle = css({
   color: "var(--raikou-color-dimmed)",
@@ -101,12 +103,12 @@ export const TableCaptionStyle = css({
   "&:_where([data-side='bottom'])": {
     marginTop: "var(--raikou-spacing-xs)",
   },
-})
+});
 
 export const TableScrollContainerStyle = css({
   overflowX: "var(--table-overflow)",
-})
+});
 
 export const TableScrollContainerInnerStyle = css({
   minWidth: "var(--table-min-width)",
-})
+});

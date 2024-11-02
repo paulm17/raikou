@@ -16,9 +16,9 @@ export const AccordionContentStyle = css({
 export const AccordionItemTitleStyle = css({
   margin: 0,
   padding: 0,
-})
+});
 
-export const AccordionControlStyle = css(({ theme }: any) => ({
+export const AccordionControlStyle = css(({ theme }) => ({
   width: "100%",
   display: "flex",
   alignItems: "center",
@@ -33,11 +33,11 @@ export const AccordionControlStyle = css(({ theme }: any) => ({
     paddingInlineStart: 0,
   },
 
-  ...theme.applyStyles('light', {
+  ...theme.applyStyles("light", {
     color: theme.colors.black,
   }),
 
-  ...theme.applyStyles('dark', {
+  ...theme.applyStyles("dark", {
     color: theme.colors.dark[0],
   }),
 
@@ -46,18 +46,19 @@ export const AccordionControlStyle = css(({ theme }: any) => ({
     cursor: "not-allowed",
   },
 
-  [`& .${AccordionRootStyle} [data-variant="default"], & .${AccordionRootStyle} [data-variant="contained"]`]: {
-    "&:_where(:disabled, [data-disabled])": {
-      ...theme.applyMixin('hover', {
-        "&:hover": {  
-          color: theme.colors.gray[0],
-        }
-      }),
-      ...theme.applyMixin('dark', {
-        color: theme.colors.dark[6],
-      })
-    },    
-  }
+  [`& .${AccordionRootStyle} [data-variant="default"], & .${AccordionRootStyle} [data-variant="contained"]`]:
+    {
+      "&:_where(:disabled, [data-disabled])": {
+        ...theme.applyMixin("hover", {
+          "&:hover": {
+            color: theme.colors.gray[0],
+          },
+        }),
+        ...theme.applyStyles("dark", {
+          color: theme.colors.dark[6],
+        }),
+      },
+    },
 }));
 
 export const AccordionLabelStyle = css({
@@ -68,7 +69,7 @@ export const AccordionLabelStyle = css({
   textOverflow: "ellipsis",
   paddingTop: "var(--raikou-spacing-sm)",
   paddingBottom: "var(--raikou-spacing-sm)",
-})
+});
 
 export const AccordionChevronStyle = css({
   display: "flex",
@@ -101,13 +102,13 @@ export const AccordionIconStyle = css({
   },
 });
 
-export const AccordionItemStyle = css(({ theme }: any) => ({
-  ...theme.applyStyles('light', {
+export const AccordionItemStyle = css(({ theme }) => ({
+  ...theme.applyStyles("light", {
     "--item-border-color": theme.colors.gray[3],
     "--item-filled-color": theme.colors.gray[0],
   }),
 
-  ...theme.applyStyles('dark', {
+  ...theme.applyStyles("dark", {
     "--item-border-color": theme.colors.dark[4],
     "--item-filled-color": theme.colors.dark[6],
   }),
@@ -133,7 +134,7 @@ export const AccordionItemStyle = css(({ theme }: any) => ({
         borderStartEndRadius: "var(--accordion-radius)",
       },
     },
-    
+
     "&:last-of-type": {
       borderEndStartRadius: "var(--accordion-radius)",
       borderEndEndRadius: "var(--accordion-radius)",
@@ -148,31 +149,31 @@ export const AccordionItemStyle = css(({ theme }: any) => ({
       borderTop: "0",
     },
   },
-  
+
   [`.${AccordionRootStyle}[data-variant="filled"] &`]: {
     borderRadius: "var(--accordion-radius)",
 
     "&:_where([data-active])": {
-      backgroundColor: "var(--item-filled-color)"
+      backgroundColor: "var(--item-filled-color)",
     },
   },
-  
+
   [`.${AccordionRootStyle}[data-variant="separated"] &`]: {
     backgroundColor: "var(--item-filled-color)",
     borderRadius: "var(--accordion-radius)",
     border: "1px solid transparent",
-    transition: "background-color 150ms ease",   
-    marginTop: "var(--raikou-spacing-md)", 
+    transition: "background-color 150ms ease",
+    marginTop: "var(--raikou-spacing-md)",
 
     "&:_where([data-active])": {
       borderColor: "var(--item-border-color)",
 
-      ...theme.applyStyles('light', {
-        backgroundColor:  theme.colors.white,
+      ...theme.applyStyles("light", {
+        backgroundColor: theme.colors.white,
       }),
 
-      ...theme.applyStyles('dark', {
-        backgroundColor:  theme.colors.dark[7],
+      ...theme.applyStyles("dark", {
+        backgroundColor: theme.colors.dark[7],
       }),
     },
   },

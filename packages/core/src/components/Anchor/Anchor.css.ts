@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const AnchorRootStyle = css(({ theme }: any) => ({
+export const AnchorRootStyle = css(({ theme }) => ({
   color: "var(--raikou-color-anchor)",
   textDecoration: "none",
   appearance: "none",
@@ -15,7 +15,7 @@ export const AnchorRootStyle = css(({ theme }: any) => ({
   ...theme.applyMixin("hover", {
     "&:hover:_where([data-underline='hover'])": {
       textDecoration: "underline",
-    }
+    },
   }),
 
   "&:_where([data-underline='always'])": {
@@ -27,7 +27,7 @@ export const AnchorRootStyle = css(({ theme }: any) => ({
       textDecoration: "none",
     },
   },
-  
+
   "&:_where([data-line-clamp])": {
     display: "-webkit-box",
   },

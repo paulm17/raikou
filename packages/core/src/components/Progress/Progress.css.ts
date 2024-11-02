@@ -9,7 +9,7 @@ const stripesAnimation = keyframes({
   },
 });
 
-export const ProgressRootStyle = css(({ theme }: any) => ({
+export const ProgressRootStyle = css(({ theme }) => ({
   "--progress-radius": "var(--raikou-radius-default)",
   "--progress-size": "var(--progress-size-md)",
 
@@ -25,11 +25,11 @@ export const ProgressRootStyle = css(({ theme }: any) => ({
   overflow: "hidden",
   display: "flex",
 
-  ...theme.applyStyles('light', {
+  ...theme.applyStyles("light", {
     backgroundColor: theme.colors.gray[2],
   }),
 
-  ...theme.applyStyles('dark', {
+  ...theme.applyStyles("dark", {
     backgroundColor: theme.colors.dark[4],
   }),
 }));
@@ -46,13 +46,14 @@ export const ProgressSectionStyle = css({
   transition: "width var(--progress-transition-duration, 100ms) ease",
 
   "&:_where([data-striped])": {
-    backgroundImage: "linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)",
+    backgroundImage:
+      "linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)",
   },
 
   "&:_where([data-animated])": {
     animation: `${stripesAnimation} 1s linear infinite`,
   },
-  
+
   "&:_where(:last-of-type)": {
     borderRadius: 0,
     borderStartEndRadius: "var(--progress-radius)",
@@ -63,7 +64,7 @@ export const ProgressSectionStyle = css({
     borderRadius: 0,
     borderStartStartRadius: "var(--progress-radius)",
     borderEndStartRadius: "var(--progress-radius)",
-  }
+  },
 });
 
 export const ProgressLabelStyle = css({

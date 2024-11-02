@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const VisuallyHiddenRootStyle = css(({ theme }: any) => ({
+export const VisuallyHiddenRootStyle = css({
   border: "0",
   clip: "rect(0 0 0 0)",
   height: "1px",
@@ -10,4 +10,4 @@ export const VisuallyHiddenRootStyle = css(({ theme }: any) => ({
   padding: 0,
   position: "absolute",
   whiteSpace: "nowrap",
-}))
+});

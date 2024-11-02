@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const DayStyle = css(({ theme }: any) => ({
+export const DayStyle = css(({ theme }) => ({
   "--day-size-xs": "30px",
   "--day-size-sm": "36px",
   "--day-size-md": "42px",
@@ -22,14 +22,15 @@ export const DayStyle = css(({ theme }: any) => ({
   opacity: 1,
 
   ...theme.applyMixin("hover", {
-    "&:_where(:not([data-static], [data-disabled], [data-selected], [data-in-range])):hover": {
-      ...theme.applyMixin("light", {
-        backgroundColor: theme.vars.colors.gray[0],
-      }),
-      ...theme.applyMixin("dark", {
-        backgroundColor: theme.vars.colors.dark[5],
-      }),
-    },
+    "&:_where(:not([data-static], [data-disabled], [data-selected], [data-in-range])):hover":
+      {
+        ...theme.applyMixin("light", {
+          backgroundColor: theme.vars.colors.gray[0],
+        }),
+        ...theme.applyMixin("dark", {
+          backgroundColor: theme.vars.colors.dark[5],
+        }),
+      },
   }),
 
   "&:_where([data-static])": {
@@ -56,14 +57,15 @@ export const DayStyle = css(({ theme }: any) => ({
     display: "none",
   },
 
-  "&:_where([data-today][data-highlight-today]:not([data-selected], [data-in-range]))": {
-    ...theme.applyMixin("light", {
-      border: `1px solid ${theme.vars.colors.gray[4]}`,
-    }),
-    ...theme.applyMixin("dark", {
-      border: `1px solid ${theme.vars.colors.dark[4]}`,
-    }),
-  },
+  "&:_where([data-today][data-highlight-today]:not([data-selected], [data-in-range]))":
+    {
+      ...theme.applyMixin("light", {
+        border: `1px solid ${theme.vars.colors.gray[4]}`,
+      }),
+      ...theme.applyMixin("dark", {
+        border: `1px solid ${theme.vars.colors.dark[4]}`,
+      }),
+    },
 
   "&:_where([data-in-range])": {
     backgroundColor: "var(--raikou-primary-color-light-hover)",

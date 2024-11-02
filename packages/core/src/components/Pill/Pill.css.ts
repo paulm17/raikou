@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const PillRootStyle = css(({ theme }: any) => ({
+export const PillRootStyle = css(({ theme }) => ({
   "--pill-fz-xs": "10px",
   "--pill-fz-sm": "12px",
   "--pill-fz-md": "14px",
@@ -27,7 +27,7 @@ export const PillRootStyle = css(({ theme }: any) => ({
   whiteSpace: "nowrap",
   userSelect: "none",
   WebkitUserSelect: "none",
-  maxWidth: "100%",  
+  maxWidth: "100%",
 
   ...theme.applyStyles("dark", {
     backgroundColor: theme.colors.dark[7],

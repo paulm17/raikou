@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const SliderRootStyle = css(({ theme }: any) => ({
+export const SliderRootStyle = css(({ theme }) => ({
   "--slider-size-xs": "4px",
   "--slider-size-sm": "6px",
   "--slider-size-md": "8px",
@@ -32,7 +32,7 @@ export const SliderRootStyle = css(({ theme }: any) => ({
   }),
 }));
 
-export const SliderLabelStyle = css(({ theme }: any) => ({
+export const SliderLabelStyle = css(({ theme }) => ({
   position: "absolute",
   top: "-36px",
   fontSize: "var(--raikou-font-size-xs)",
@@ -53,7 +53,7 @@ export const SliderLabelStyle = css(({ theme }: any) => ({
   }),
 }));
 
-export const SliderThumbStyle = css(({ theme }: any) => ({
+export const SliderThumbStyle = css(({ theme }) => ({
   position: "absolute",
   display: "flex",
   height: "var(--slider-thumb-size)",
@@ -119,9 +119,10 @@ export const SliderTrackStyle = css({
     backgroundColor: "var(--slider-color)",
   },
 
-  "fieldset:disabled &:_where([data-disabled]), &:_where([data-disabled][data-inverted])": {
-    "--track-bg": "var(--slider-track-disabled-bg)",
-  },
+  "fieldset:disabled &:_where([data-disabled]), &:_where([data-disabled][data-inverted])":
+    {
+      "--track-bg": "var(--slider-track-disabled-bg)",
+    },
 
   "&:before": {
     content: "''",
@@ -135,7 +136,7 @@ export const SliderTrackStyle = css({
   },
 });
 
-export const SliderTrackBarStyle = css(({ theme }: any) => ({
+export const SliderTrackBarStyle = css(({ theme }) => ({
   position: "absolute",
   zIndex: 1,
   top: 0,
@@ -149,15 +150,16 @@ export const SliderTrackBarStyle = css(({ theme }: any) => ({
     backgroundColor: "var(--slider-track-bg)",
   },
 
-  "fieldset:disabled &:_where(:not([data-inverted])), &:_where([data-disabled]:not([data-inverted]))": {
-    ...theme.applyStyles("light", {
-      backgroundColor: theme.colors.gray[4],
-    }),
+  "fieldset:disabled &:_where(:not([data-inverted])), &:_where([data-disabled]:not([data-inverted]))":
+    {
+      ...theme.applyStyles("light", {
+        backgroundColor: theme.colors.gray[4],
+      }),
 
-    ...theme.applyStyles("dark", {
-      backgroundColor: theme.colors.dark[3],
-    }),
-  },
+      ...theme.applyStyles("dark", {
+        backgroundColor: theme.colors.dark[3],
+      }),
+    },
 }));
 
 export const SliderMarkWrapperStyle = css({
@@ -169,7 +171,7 @@ export const SliderMarkWrapperStyle = css({
   pointerEvents: "none",
 });
 
-export const SliderMarkStyle = css(({ theme }: any) => ({
+export const SliderMarkStyle = css(({ theme }) => ({
   border: "2px solid",
   height: "var(--slider-size)",
   width: "var(--slider-size)",
@@ -200,8 +202,9 @@ export const SliderMarkStyle = css(({ theme }: any) => ({
   },
 }));
 
-export const SliderMarkLabelStyle = css(({ theme }: any) => ({
-  transform: "translate(calc(-50% + var(--slider-size) / 2), calc(var(--raikou-spacing-xs) / 2))",
+export const SliderMarkLabelStyle = css(({ theme }) => ({
+  transform:
+    "translate(calc(-50% + var(--slider-size) / 2), calc(var(--raikou-spacing-xs) / 2))",
   fontSize: "var(--raikou-font-size-sm)",
   whiteSpace: "nowrap",
   cursor: "pointer",

@@ -25,19 +25,19 @@ export const RatingSymbolGroupStyle = css({
   },
 });
 
-export const RatingStarSymbolStyle = css(({ theme }: any) => ({
+export const RatingStarSymbolStyle = css(({ theme }) => ({
   width: "var(--rating-size)",
   height: "var(--rating-size)",
   display: "block",
 
   ...theme.applyStyles("light", {
-    fill: theme.vars.colors.gray[3],
-    stroke: theme.vars.colors.gray[3],
+    fill: theme.colors.gray[3],
+    stroke: theme.colors.gray[3],
   }),
 
   ...theme.applyStyles("dark", {
-    fill: theme.vars.colors.dark[3],
-    stroke: theme.vars.colors.dark[3],
+    fill: theme.colors.dark[3],
+    stroke: theme.colors.dark[3],
   }),
 
   "&:_where([data-filled])": {

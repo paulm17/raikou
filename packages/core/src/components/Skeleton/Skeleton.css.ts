@@ -9,7 +9,7 @@ const skeletonFade = keyframes({
   },
 });
 
-export const SkeletonRootStyle = css(({ theme }: any) => ({
+export const SkeletonRootStyle = css(({ theme }) => ({
   height: "var(--skeleton-height, auto)",
   width: "var(--skeleton-width, 100%)",
   borderRadius: "var(--skeleton-radius, var(--raikou-radius-default))",

@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const actionIconRootStyle = css(({ theme }: any) => ({
+export const actionIconRootStyle = css(({ theme }) => ({
   "--ai-size-xs": "18px",
   "--ai-size-sm": "22px",
   "--ai-size-md": "28px",
@@ -36,9 +36,10 @@ export const actionIconRootStyle = css(({ theme }: any) => ({
 
   ...theme.applyMixin("hover", {
     "&:hover:_where(:not([data-loading], :disabled, [data-disabled]))": {
-      backgroundColor: "var(--ai-hover, var(--raikou-primary-color-filled-hover))",
+      backgroundColor:
+        "var(--ai-hover, var(--raikou-primary-color-filled-hover))",
       color: "var(--ai-hover-color, var(--ai-color))",
-    }
+    },
   }),
 
   "&[data-loading]": {
@@ -47,30 +48,31 @@ export const actionIconRootStyle = css(({ theme }: any) => ({
     [`& .${actionIconIconStyle}`]: {
       opacity: 0,
       transform: "translateY(100%)",
-    }
+    },
   },
 
-  "&:_where(:disabled:not([data-loading]), [data-disabled]:not([data-loading]))": {
-    cursor: "not-allowed",
-    border: "1px solid transparent",
+  "&:_where(:disabled:not([data-loading]), [data-disabled]:not([data-loading]))":
+    {
+      cursor: "not-allowed",
+      border: "1px solid transparent",
 
-    ...theme.applyStyles('light', {
-      backgroundColor: theme.colors.gray[1],
-      color: theme.colors.gray[5],
-    }),
+      ...theme.applyStyles("light", {
+        backgroundColor: theme.colors.gray[1],
+        color: theme.colors.gray[5],
+      }),
 
-    ...theme.applyStyles('dark', {
-      backgroundColor: theme.colors.dark[6],
-      color: theme.colors.dark[3],
-    }),
+      ...theme.applyStyles("dark", {
+        backgroundColor: theme.colors.dark[6],
+        color: theme.colors.dark[3],
+      }),
 
-    "&:active": {
-      transform: "none",
-    }
-  }
+      "&:active": {
+        transform: "none",
+      },
+    },
 }));
 
-export const actionIconLoaderStyle = css(({ theme }: any) => ({
+export const actionIconLoaderStyle = css(({ theme }) => ({
   inset: "-1px",
   position: "absolute",
   borderRadius: "var(--ai-radius, var(--raikou-radius-default))",
@@ -78,11 +80,11 @@ export const actionIconLoaderStyle = css(({ theme }: any) => ({
   alignItems: "center",
   justifyContent: "center",
 
-  ...theme.applyStyles('light', {
+  ...theme.applyStyles("light", {
     backgroundColor: "rgba(255, 255, 255, 0.15)",
   }),
 
-  ...theme.applyStyles('dark', {
+  ...theme.applyStyles("dark", {
     backgroundColor: "rgba(0, 0, 0, 0.15)",
   }),
 }));
@@ -104,7 +106,7 @@ export const actionIconGroupStyle = css({
     "&:focus": {
       position: "relative",
       zIndex: 1,
-    }
+    },
   },
 
   "&[data-orientation='horizontal']": {
@@ -150,7 +152,7 @@ export const actionIconGroupStyle = css({
         borderRadius: 0,
         borderBottomWidth: "calc(var(--ai-border-width) / 2)",
         borderTopWidth: "calc(var(--ai-border-width) / 2)",
-      }
-    }
-  }
+      },
+    },
+  },
 });

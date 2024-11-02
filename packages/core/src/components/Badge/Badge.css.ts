@@ -1,7 +1,7 @@
 import { css } from "@stylefusion/react";
 import { rem } from "../../core";
 
-export const BadgeRootStyle = css(({ theme }: any) => ({
+export const BadgeRootStyle = css(({ theme }) => ({
   "--badge-height-xs": "16px",
   "--badge-height-sm": "18px",
   "--badge-height-md": "20px",
@@ -59,9 +59,10 @@ export const BadgeRootStyle = css(({ theme }: any) => ({
     gridTemplateColumns: "1fr auto",
   },
 
-  "&:_where([data-with-left-section][data-with-right-section], [data-variant='dot'][data-with-right-section])": {
-    gridTemplateColumns: "auto 1fr auto",
-  },
+  "&:_where([data-with-left-section][data-with-right-section], [data-variant='dot'][data-with-right-section])":
+    {
+      gridTemplateColumns: "auto 1fr auto",
+    },
 
   "&:_where([data-block])": {
     display: "flex",
@@ -77,13 +78,13 @@ export const BadgeRootStyle = css(({ theme }: any) => ({
   "&:_where([data-variant='dot'])": {
     "--badge-dot-size": "calc(var(--badge-height) / 3.4)",
 
-    ...theme.applyStyles('light', {
+    ...theme.applyStyles("light", {
       backgroundColor: theme.colors.white,
       borderColor: theme.colors.gray[4],
       color: theme.colors.black,
     }),
 
-    ...theme.applyStyles('dark', {
+    ...theme.applyStyles("dark", {
       backgroundColor: theme.colors.dark[5],
       borderColor: theme.colors.dark[5],
       color: theme.colors.white,

@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const UnstyledButtonRootStyle = css(({ theme }: any) => ({
+export const UnstyledButtonRootStyle = css(({ theme }) => ({
   backgroundColor: "transparent",
   cursor: "pointer",
   border: 0,
@@ -15,5 +15,5 @@ export const UnstyledButtonRootStyle = css(({ theme }: any) => ({
 
   ...theme.applyMixin("where-rtl", {
     textAlign: "right",
-  })
+  }),
 }));

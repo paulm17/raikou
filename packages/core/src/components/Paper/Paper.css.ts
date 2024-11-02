@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const PaperRootStyle = css(({ theme }: any) => ({
+export const PaperRootStyle = css(({ theme }) => ({
   "--paper-radius": "var(--raikou-radius-default)",
 
   outline: 0,
@@ -13,12 +13,11 @@ export const PaperRootStyle = css(({ theme }: any) => ({
   backgroundColor: "var(--raikou-color-body)",
 
   "&:_where([data-with-border])": {
-    ...theme.applyStyles('light', {
+    ...theme.applyStyles("light", {
       border: `rem(1px) solid ${theme.colors.gray[3]}`,
     }),
-    ...theme.applyStyles('dark', {
+    ...theme.applyStyles("dark", {
       border: `rem(1px) solid ${theme.colors.dark[4]}`,
     }),
   },
-}))
-
+}));

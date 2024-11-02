@@ -12,21 +12,21 @@ export const MenuLabelStyle = css({
   cursor: "default",
 });
 
-export const MenuDividerStyle = css(({ theme }: any) => ({
+export const MenuDividerStyle = css(({ theme }) => ({
   marginTop: "4px",
   marginBottom: "4px",
   borderTop: "1px solid",
 
-  ...theme.applyStyles('light', {
+  ...theme.applyStyles("light", {
     borderColor: theme.colors.gray[2],
   }),
-  
-  ...theme.applyStyles('dark', {
+
+  ...theme.applyStyles("dark", {
     borderColor: theme.colors.dark[4],
   }),
 }));
 
-export const MenuItemStyle = css(({ theme }: any) => ({
+export const MenuItemStyle = css(({ theme }) => ({
   fontSize: "var(--raikou-font-size-sm)",
   width: "100%",
   padding: "calc(var(--raikou-spacing-xs) / 1.5) var(--raikou-spacing-sm)",
@@ -43,10 +43,10 @@ export const MenuItemStyle = css(({ theme }: any) => ({
   },
 
   "&:_where([data-hovered])": {
-    ...theme.applyStyles('light', {
+    ...theme.applyStyles("light", {
       backgroundColor: `var(--menu-item-hover, ${theme.colors.gray[1]})`,
     }),
-    ...theme.applyStyles('dark', {
+    ...theme.applyStyles("dark", {
       backgroundColor: `var(--menu-item-hover, ${theme.colors.dark[4]})`,
     }),
   },

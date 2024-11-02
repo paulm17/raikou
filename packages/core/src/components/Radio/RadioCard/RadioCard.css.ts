@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const RadioCardStyle = css(({ theme }: any) => ({
+export const RadioCardStyle = css(({ theme }) => ({
   "--card-radius": "var(--raikou-radius-default)",
 
   display: "block",

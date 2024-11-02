@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const KbdRootStyle = css(({ theme }: any) => ({
+export const KbdRootStyle = css(({ theme }) => ({
   "--kbd-fz-xs": "10px",
   "--kbd-fz-sm": "12px",
   "--kbd-fz-md": "14px",
@@ -25,13 +25,13 @@ export const KbdRootStyle = css(({ theme }: any) => ({
   borderBottomWidth: "3px",
   unicodeBidi: "embed",
 
-  ...theme.applyStyles('light', {
+  ...theme.applyStyles("light", {
     borderColor: theme.colors.gray[3],
     color: theme.colors.gray[7],
     backgroundColor: theme.colors.gray[0],
   }),
-  
-  ...theme.applyStyles('dark', {
+
+  ...theme.applyStyles("dark", {
     borderColor: theme.colors.dark[4],
     color: theme.colors.dark[0],
     backgroundColor: theme.colors.dark[6],

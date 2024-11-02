@@ -11,7 +11,7 @@ export const PaginationRootStyle = css({
   "--pagination-active-bg": "var(--raikou-primary-color-filled)",
 });
 
-export const PaginationControlStyle = css(({ theme }: any) => ({
+export const PaginationControlStyle = css(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -22,7 +22,8 @@ export const PaginationControlStyle = css(({ theme }: any) => ({
   minWidth: "var(--pagination-control-size)",
   fontSize: "var(--pagination-control-fz)",
   lineHeight: "1",
-  borderRadius: "var(--pagination-control-radius, var(--raikou-radius-default))",
+  borderRadius:
+    "var(--pagination-control-radius, var(--raikou-radius-default))",
 
   "&:_where([data-with-padding])": {
     padding: "calc(var(--pagination-control-size) / 4)",
@@ -37,7 +38,7 @@ export const PaginationControlStyle = css(({ theme }: any) => ({
     borderColor: theme.colors.gray[4],
     backgroundColor: theme.colors.white,
 
-    ...theme.applyStyles("hover", {
+    ...theme.applyMixin("hover", {
       "&:_where(:not(:disabled, [data-disabled]))": {
         backgroundColor: theme.colors.gray[0],
       },
@@ -48,7 +49,7 @@ export const PaginationControlStyle = css(({ theme }: any) => ({
     borderColor: theme.colors.dark[4],
     backgroundColor: theme.colors.dark[6],
 
-    ...theme.applyStyles("hover", {
+    ...theme.applyMixin("hover", {
       "&:_where(:not(:disabled, [data-disabled]))": {
         backgroundColor: theme.colors.dark[5],
       },
@@ -64,7 +65,7 @@ export const PaginationControlStyle = css(({ theme }: any) => ({
       "&:hover": {
         backgroundColor: "var(--pagination-active-bg)",
       },
-    })
+    }),
   },
 }));
 

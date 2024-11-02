@@ -29,7 +29,7 @@ export const CodeHighlightControlsStyle = css({
   marginInlineEnd: "7px",
 });
 
-export const CodeHighlightCopyStyle = css(({ theme }: any) => ({
+export const CodeHighlightCopyStyle = css(({ theme }) => ({
   backgroundColor: "transparent",
   opacity: 0.8,
   margin: 0,
@@ -50,7 +50,7 @@ export const CodeHighlightCopyStyle = css(({ theme }: any) => ({
   }),
 }));
 
-export const CodeHighlightControlStyle = css(({ theme }: any) => ({
+export const CodeHighlightControlStyle = css(({ theme }) => ({
   backgroundColor: "transparent",
   opacity: 0.8,
   margin: 0,
@@ -67,7 +67,7 @@ export const CodeHighlightControlStyle = css(({ theme }: any) => ({
   }),
 }));
 
-export const CodeHighlightFileStyle = css(({ theme }: any) => ({
+export const CodeHighlightFileStyle = css(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -117,7 +117,7 @@ export const CodeHighlightFileStyle = css(({ theme }: any) => ({
     borderColor: theme.colors.gray[2],
   }),
 
-  ...theme.applyMixin("where-dark", { 
+  ...theme.applyMixin("where-dark", {
     color: theme.colors.dark[0],
     borderColor: theme.colors.dark[4],
   }),
@@ -138,7 +138,8 @@ export const CodeHighlightCodeWrapperStyle = css({
     position: "absolute",
     inset: 0,
     pointerEvents: "none",
-    backgroundImage: "linear-gradient(0deg, var(--code-background) 16%, rgba(0, 0, 0, 0) 100%)",
+    backgroundImage:
+      "linear-gradient(0deg, var(--code-background) 16%, rgba(0, 0, 0, 0) 100%)",
     borderRadius: "calc(var(--raikou-radius-md) - 1px)",
   },
 

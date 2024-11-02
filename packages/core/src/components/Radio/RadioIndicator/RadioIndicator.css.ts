@@ -1,12 +1,12 @@
 import { css } from "@stylefusion/react";
 
-export const RadioIndicatorStyle = css(({ theme }: any) => ({
+export const RadioIndicatorStyle = css(({ theme }) => ({
   "--radio-size-xs": "16px",
   "--radio-size-sm": "20px",
   "--radio-size-md": "24px",
   "--radio-size-lg": "30px",
   "--radio-size-xl": "36px",
-  
+
   "--radio-icon-size-xs": "6px",
   "--radio-icon-size-sm": "8px",
   "--radio-icon-size-md": "10px",
@@ -77,16 +77,17 @@ export const RadioIndicatorStyle = css(({ theme }: any) => ({
     },
   },
   "[data-variant='outline']": {
-    "&[data-indeterminate]:not([data-disabled]), &[data-checked]:not([data-disabled])": {
-    backgroundColor: "transparent",
-    borderColor: "var(--radio-color)",
+    "&[data-indeterminate]:not([data-disabled]), &[data-checked]:not([data-disabled])":
+      {
+        backgroundColor: "transparent",
+        borderColor: "var(--radio-color)",
 
-      [`& > .${RadioIndicatorIconStyle}`]: {
-        color: "var(--radio-color)",
-        opacity: 1,
-        transform: "none",
+        [`& > .${RadioIndicatorIconStyle}`]: {
+          color: "var(--radio-color)",
+          opacity: 1,
+          transform: "none",
+        },
       },
-    },
   },
 }));
 

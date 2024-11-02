@@ -1,6 +1,6 @@
 import { css } from "@stylefusion/react";
 
-export const CardRootStyle = css(({ theme }: any) => ({
+export const CardRootStyle = css(({ theme }) => ({
   "--card-padding": "var(--raikou-spacing-md)",
 
   position: "relative",
@@ -10,15 +10,15 @@ export const CardRootStyle = css(({ theme }: any) => ({
   padding: "var(--card-padding)",
   color: "var(--raikou-color-text)",
 
-  ...theme.applyStyles('light', {
+  ...theme.applyStyles("light", {
     backgroundColor: theme.colors.white,
   }),
-  ...theme.applyStyles('dark', {
+  ...theme.applyStyles("dark", {
     backgroundColor: theme.colors.dark[6],
   }),
-}))
+}));
 
-export const CardSectionStyle = css(({ theme }: any) => ({
+export const CardSectionStyle = css(({ theme }) => ({
   display: "block",
   marginInline: "calc(var(--card-padding) * -1)",
 
@@ -41,15 +41,15 @@ export const CardSectionStyle = css(({ theme }: any) => ({
     borderBottom: "1px solid",
   },
 
-  ...theme.applyStyles('light', {
+  ...theme.applyStyles("light", {
     borderColor: theme.colors.gray[3],
   }),
 
-  ...theme.applyStyles('dark', {
+  ...theme.applyStyles("dark", {
     borderColor: theme.colors.dark[4],
   }),
 
   "& + &": {
     borderTop: "none !important",
   },
-}))
+}));

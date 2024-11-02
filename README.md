@@ -222,8 +222,8 @@ pnpm run storybook
 ### New Components
 
 - [ ] Add [mantine-flip](https://gfazioli.github.io/mantine-flip/)
-- [ ] Add [mantine-datatable](https://github.com/icflorescu/mantine-datatable)
-- [ ] Add
+- [x] Add [mantine-datatable](https://github.com/icflorescu/mantine-datatable)
+- [x] Add
       [mantine-contextmenu](https://github.com/icflorescu/mantine-contextmenu)
 - [ ] Add
       [react-photo-gallery](https://github.com/neptunian/react-photo-gallery)
