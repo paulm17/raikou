@@ -868,9 +868,6 @@ importers:
 
   packages/system:
     dependencies:
-      '@raikou/emotion':
-        specifier: workspace:*
-        version: link:../emotion
       '@stylefusion/react':
         specifier: ^0.0.24-4
         version: 0.0.24-4(@types/react@18.3.12)(react@18.3.1)(typescript@5.6.3)
