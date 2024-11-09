@@ -1,0 +1,46 @@
+{
+  "name": "@raikou/system",
+  "license": "MIT",
+  "version": "0.0.1-beta.8",
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.mjs",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/index.d.mts",
+        "default": "./esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./cjs/index.cjs"
+      }
+    },
+    "./styles.css": "./styles.css"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint \"**/*.ts*\"",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "build:fast": "tsup src",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "peerDependencies": {
+    "@raikou/hooks": "workspace:*",
+    "react": "^18.2.0"
+  },
+  "dependencies": {
+    "next-themes": "^0.3.0"
+  },
+  "devDependencies": {
+    "@raikou/hooks": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

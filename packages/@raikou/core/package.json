@@ -1,0 +1,50 @@
+{
+  "name": "@raikou/core",
+  "description": "React components library focused on usability, accessibility and developer experience",
+  "license": "MIT",
+  "version": "0.0.1-beta.8",
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.mjs",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/index.d.mts",
+        "default": "./esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./cjs/index.cjs"
+      }
+    }
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint \"**/*.ts*\"",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "build:fast": "tsup src",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@floating-ui/react": "^0.26.9",
+    "clsx": "^2.1.1",
+    "react-number-format": "^5.3.1",
+    "react-remove-scroll": "^2.5.7",
+    "react-textarea-autosize": "8.5.3"
+  },
+  "devDependencies": {
+    "@raikou/hooks": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

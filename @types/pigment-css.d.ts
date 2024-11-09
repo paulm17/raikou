@@ -1,6 +1,6 @@
 // any file that is included in your tsconfig.json
 import type { ExtendTheme } from "@stylefusion/react/theme";
-import type { RaikouThemeColors } from "../packages/core";
+import type { RaikouThemeColors } from "../packages/@raikou/core";
 
 declare module "@stylefusion/react/theme" {
   interface ThemeTokens {

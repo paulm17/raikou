@@ -7,6 +7,6 @@ export const Route = createFileRoute("/")({
 
 function HomeComponent() {
   return (
-    <Badge>hello</Badge>
+    <Badge variant="filled">hello</Badge>
   );
 }

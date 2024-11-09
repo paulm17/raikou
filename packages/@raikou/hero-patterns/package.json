@@ -1,0 +1,29 @@
+{
+  "name": "@raikou/hero-patterns",
+  "description": "A collection of hero patterns",
+  "version": "0.0.1-beta.8",
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.mjs",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/index.d.mts",
+        "default": "./esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./cjs/index.cjs"
+      }
+    }
+  },
+  "dependencies": {
+    "@raikou/core": "workspace:*",
+    "@stylefusion/react": "^0.0.25"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

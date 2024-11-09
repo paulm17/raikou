@@ -1,8 +1,11 @@
-blank_issues_enabled: false
+blank_issues_enabled: true
 contact_links:
-  - name: Ask a question
-    url: https://github.com/paulm17/charizardxx/discussions
-    about: Ask questions and discuss topics with other community members
-  - name: Chat with other community members
-    url: https://discord.gg/12345
-    about: The official Chakra UI Discord community
+  - name: Feature request
+    url: https://github.com/mantinedev/mantine/discussions/new
+    about: Request new feature
+  - name: Ask a question, give feedback, share your project
+    url: https://github.com/mantinedev/mantine/discussions
+    about: Connect with other community members with GitHub discussions
+  - name: Get help on Discord
+    url: https://discord.gg/wbH82zuWMN
+    about: Get help from maintainers on Discord

@@ -1,0 +1,35 @@
+{
+  "name": "@raikou/dates",
+  "version": "0.0.1-beta.8",
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.mjs",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/index.d.mts",
+        "default": "./esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./cjs/index.cjs"
+      }
+    }
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@raikou/core": "workspace:*",
+    "@raikou/hooks": "workspace:*",
+    "@stylefusion/react": "^0.0.25",
+    "clsx": "^2.1.1",
+    "dayjs": "^1.11.13"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

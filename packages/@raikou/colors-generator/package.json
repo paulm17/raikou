@@ -1,0 +1,33 @@
+{
+  "name": "@raikou/colors-generator",
+  "version": "0.0.1-beta.8",
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.mjs",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/index.d.mts",
+        "default": "./esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./cjs/index.cjs"
+      }
+    }
+  },
+  "peerDependencies": {
+    "chroma-js": "^2.4.2"
+  },
+  "dependencies": {
+    "chroma-js": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/chroma-js": "^2.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

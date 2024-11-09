@@ -24,4 +24,14 @@ export default defineConfig({
     TanStackRouterVite({}),
     react(),
   ],
+  optimizeDeps: {
+    include: ['prop-types', 'react-is'],
+    exclude: ['dayjs']
+  },
+  resolve: {
+    alias: {
+      'prop-types': 'prop-types/prop-types.js',
+      'react-is': 'react-is/cjs/react-is.development.js',
+    },
+  },
 });

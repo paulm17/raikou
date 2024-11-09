@@ -88,19 +88,14 @@ To get a local copy up and running follow these simple example steps.
 
 1. Install the required packages.
 
-- npm
-
-```sh
-npm install @raikou/core @raikou/emotion @raikou/system
-npm -D install @stylefusion/vite-plugin
-```
-
 - yarn
 
 ```sh
 yarn add @raikou/core @raikou/emotion @raikou/system
 yarn add -D @stylefusion/vite-plugin
 ```
+
+Note: Raikou uses yarn workspaces as there are various issues with pnpm.
 
 2. Change the vite.config.js to:
 
@@ -178,19 +173,19 @@ git clone https://github.com/paulm17/raikou
 2. Install all the package prerequisites
 
 ```sh
-pnpm i
+yarn
 ```
 
 3. To run the vite website
 
 ```sh
-pnpm run dev
+yarn run dev
 ```
 
 4. To run storybook
 
 ```sh
-pnpm run storybook
+yarn run storybook
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -227,7 +222,11 @@ pnpm run storybook
 
 ### Storybook
 
-- [ ] Pigment-css team fixed Storybook 8 issues.
+- [x] Implement Storybook 8 with Vite and Stylefusion.
+
+### Testing
+
+- [ ] Ensure Mantine tests pass with Raikou.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

@@ -12,25 +12,21 @@
   },
   "devDependencies": {
     "@babel/core": "7.25.2",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@tanstack/router-plugin": "^1.76.0",
+    "@tanstack/router-plugin": "^1.79.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
     "@vitejs/plugin-react": "^4.3.2",
     "vite": "^5.4.8"
   },
   "dependencies": {
-    "@raikou/charts": "workspace:*",
-    "@raikou/contextmenu": "workspace:*",
-    "@raikou/datatable": "workspace:*",
-    "@raikou/loaders": "workspace:*",
-    "@raikou/emotion": "workspace:*",
     "@raikou/core": "workspace:*",
-    "@raikou/hero-patterns": "workspace:*",
+    "@raikou/emotion": "workspace:*",
+    "@raikou/hooks": "workspace:*",
     "@raikou/system": "workspace:*",
-    "@stylefusion/vite-plugin": "^0.0.24-1",
-    "@tanstack/react-router": "^1.76.1",
-    "@tanstack/router-devtools": "^1.76.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "@stylefusion/vite-plugin": "^0.0.25",
+    "@tanstack/react-router": "^1.79.0",
+    "@tanstack/router-devtools": "^1.79.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

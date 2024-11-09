@@ -1,44 +1,49 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-node_modules
-.pnp
-.pnp.js
-
-# testing
-coverage
-
-# next.js
-.next/
-out/
-build
-dist
-
-# misc
+# os
 .DS_Store
-*.pem
 
-# debug
+## yarn
+.yarn-integrity
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# editor
+.idea/
+.vscode/
+.nova/
+.gitpod.yml
+
+# node
+node_modules/
+
+# Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 
-# local env files
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# env
+.env.test
+.env*.local
 
-# build process
-build/
-dist/
+# build
+lib/
+cjs/
+esm/
 
-# turbo
-.turbo
+# typescript
+*.tsbuildinfo
 
-# vercel
-.vercel
-
-# rust
-target/
+# project
+next-env.d.ts
+.eslintcache
+storybook-static
+.next
+packages/*/*/styles.css
+packages/@mantine/core/styles
+.stylelintcache
+____test.*
