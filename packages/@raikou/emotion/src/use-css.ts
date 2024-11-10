@@ -3,7 +3,7 @@ import type { EmotionCache } from '@emotion/cache';
 import { RegisteredCache, serializeStyles } from '@emotion/serialize';
 import { getRegisteredStyles, insertStyles } from '@emotion/utils';
 import clsx from 'clsx';
-import { useEmotionCache } from './MantineEmotionProvider';
+import { useEmotionCache } from './RaikouEmotionProvider';
 import type { CSS } from './types';
 import { useGuaranteedMemo } from './use-guaranteed-memo';
 

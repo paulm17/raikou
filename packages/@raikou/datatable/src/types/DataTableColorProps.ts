@@ -1,4 +1,4 @@
-import { RaikouColor } from "@raikou/core";
+import { RaikouColor } from '@raikou/core';
 
 export type DataTableColorProps<T> = {
   /**
@@ -41,9 +41,7 @@ export type DataTableColorProps<T> = {
    * Can be a `RaikouColor` (key of `theme.colors` or any valid CSS color string),
    * or an object with `light` and `dark` keys and `RaikouColor` values.
    */
-  highlightOnHoverColor?:
-    | RaikouColor
-    | { light: RaikouColor; dark: RaikouColor };
+  highlightOnHoverColor?: RaikouColor | { light: RaikouColor; dark: RaikouColor };
 
   /**
    * Data table row text color.
@@ -53,7 +51,7 @@ export type DataTableColorProps<T> = {
    */
   rowColor?: (
     record: T,
-    index: number,
+    index: number
   ) => RaikouColor | undefined | { light: RaikouColor; dark: RaikouColor };
 
   /**
@@ -64,6 +62,6 @@ export type DataTableColorProps<T> = {
    */
   rowBackgroundColor?: (
     record: T,
-    index: number,
+    index: number
   ) => RaikouColor | undefined | { light: RaikouColor; dark: RaikouColor };
 };

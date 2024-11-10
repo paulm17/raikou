@@ -5,9 +5,6 @@ export type RaikouLoaderComponent = React.ForwardRefExoticComponent<
 >;
 
 export type RaikouLoadersRecord = Partial<
-  Record<
-    "bars" | "dots" | "oval" | "progress" | "trail" | (string & {}),
-    RaikouLoaderComponent
-  >
+  Record<'bars' | 'dots' | 'oval' | 'progress' | 'trail' | (string & {}), RaikouLoaderComponent>
 >;
 export type RaikouLoader = keyof RaikouLoadersRecord;

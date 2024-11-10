@@ -7,40 +7,33 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
+} from '@raikou/core';
 import {
-  LoaderRiseRootStyle,
   LoaderRise1Style,
   LoaderRise2Style,
   LoaderRise3Style,
   LoaderRise4Style,
   LoaderRise5Style,
   LoaderRise6Style,
-} from "./Rise.css";
+  LoaderRiseRootStyle,
+} from './Rise.css';
 
-export type RiseStylesNames = "root";
+export type RiseStylesNames = 'root';
 export type RiseCssVariables = {
-  root:
-    | "--rise-color"
-    | "--rise-size"
-    | "--rise-margin"
-    | "--rise-speed-multiplier";
+  root: '--rise-color' | '--rise-size' | '--rise-margin' | '--rise-speed-multiplier';
 };
 
-export interface RiseProps
-  extends BoxProps,
-    StylesApiProps<RiseFactory>,
-    ElementProps<"span"> {
+export interface RiseProps extends BoxProps, StylesApiProps<RiseFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
   /** Skeleton `width`, numbers are converted to rem */
-  margin?: React.CSSProperties["margin"];
+  margin?: React.CSSProperties['margin'];
 
   /** Speed multiplier, default value is `1` */
   speedMultiplier?: number;
@@ -63,7 +56,7 @@ const defaultProps: Partial<RiseProps> = {
 };
 
 const getNewSize = (size: RaikouSize | (string & {}) | number | undefined) => {
-  if (typeof size === "string") {
+  if (typeof size === 'string') {
     const sizes: Record<RaikouSize, number> = {
       xs: 8,
       sm: 9,
@@ -86,16 +79,16 @@ const varsResolver = createVarsResolver<RiseFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--rise-color": color ? getThemeColor(color, theme) : undefined,
-      "--rise-size": getSize(size, "rise-size") ?? undefined,
-      "--rise-margin": getSize(size, "rise-margin") ?? undefined,
-      "--rise-speed-multiplier": `${speedMultiplier}`,
+      '--rise-color': color ? getThemeColor(color, theme) : undefined,
+      '--rise-size': getSize(size, 'rise-size') ?? undefined,
+      '--rise-margin': getSize(size, 'rise-margin') ?? undefined,
+      '--rise-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Rise = factory<RiseFactory>((_props, ref) => {
-  const props = useProps("Rise", defaultProps, _props);
+  const props = useProps('Rise', defaultProps, _props);
   const {
     color,
     vars,
@@ -113,7 +106,7 @@ export const Rise = factory<RiseFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<RiseFactory>({
-    name: "Rise",
+    name: 'Rise',
     props,
     classes: {
       root: LoaderRiseRootStyle,
@@ -150,7 +143,7 @@ export const Rise = factory<RiseFactory>((_props, ref) => {
   `;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <div dangerouslySetInnerHTML={{ __html: rawHTML }} />
       <span className={LoaderRise1Style} />
       <span className={LoaderRise2Style} />
@@ -162,4 +155,4 @@ export const Rise = factory<RiseFactory>((_props, ref) => {
   );
 });
 
-Rise.displayName = "@raikou/core/Rise";
+Rise.displayName = '@raikou/core/Rise';

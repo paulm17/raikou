@@ -16,7 +16,14 @@ import { ScrollAreaRoot } from './ScrollAreaRoot/ScrollAreaRoot';
 import { ScrollAreaScrollbar } from './ScrollAreaScrollbar/ScrollAreaScrollbar';
 import { ScrollAreaThumb } from './ScrollAreaThumb/ScrollAreaThumb';
 import { ScrollAreaViewport } from './ScrollAreaViewport/ScrollAreaViewport';
-import { ScrollAreaCornerStyle, ScrollAreaRootStyle, ScrollAreaScrollBarStyle, ScrollAreaThumbStyle, ScrollAreaViewportInnerStyle, ScrollAreaViewportStyle } from './ScrollArea.css';
+import {
+  ScrollAreaCornerStyle,
+  ScrollAreaRootStyle,
+  ScrollAreaScrollBarStyle,
+  ScrollAreaThumbStyle,
+  ScrollAreaViewportInnerStyle,
+  ScrollAreaViewportStyle,
+} from './ScrollArea.css';
 
 export type ScrollAreaStylesNames = 'root' | 'viewport' | 'scrollbar' | 'thumb' | 'corner';
 export type ScrollAreaCssVariables = {

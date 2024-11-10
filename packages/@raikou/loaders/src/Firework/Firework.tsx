@@ -7,23 +7,23 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderFireworkRootStyle } from "./Firework.css";
+} from '@raikou/core';
+import { LoaderFireworkRootStyle } from './Firework.css';
 
-export type FireworkStylesNames = "root";
+export type FireworkStylesNames = 'root';
 export type FireworkCssVariables = {
-  root: "--firework-color" | "--firework-size";
+  root: '--firework-color' | '--firework-size';
 };
 
 export interface FireworkProps
   extends BoxProps,
     StylesApiProps<FireworkFactory>,
-    ElementProps<"span"> {
+    ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -46,14 +46,14 @@ const varsResolver = createVarsResolver<FireworkFactory>(
   // @ts-ignore
   (theme, { color, size }) => ({
     root: {
-      "--firework-color": color ? getThemeColor(color, theme) : undefined,
-      "--firework-size": getSize(size, "firework-size") ?? undefined,
+      '--firework-color': color ? getThemeColor(color, theme) : undefined,
+      '--firework-size': getSize(size, 'firework-size') ?? undefined,
     },
-  }),
+  })
 );
 
 export const Firework = factory<FireworkFactory>((_props, ref) => {
-  const props = useProps("Firework", defaultProps, _props);
+  const props = useProps('Firework', defaultProps, _props);
   const {
     color,
     vars,
@@ -69,7 +69,7 @@ export const Firework = factory<FireworkFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<FireworkFactory>({
-    name: "Firework",
+    name: 'Firework',
     props,
     classes: {
       root: LoaderFireworkRootStyle,
@@ -83,7 +83,7 @@ export const Firework = factory<FireworkFactory>((_props, ref) => {
     varsResolver,
   });
 
-  return <Box {...getStyles("root")} ref={ref} {...others} />;
+  return <Box {...getStyles('root')} ref={ref} {...others} />;
 });
 
-Firework.displayName = "@raikou/core/Firework";
+Firework.displayName = '@raikou/core/Firework';

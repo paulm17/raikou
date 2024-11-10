@@ -1,4 +1,4 @@
-import { css } from "@stylefusion/react";
+import { css } from '@stylefusion/react';
 
 export const ThemeIconRootStyle = css({
   '--ti-size-xs': '18px',

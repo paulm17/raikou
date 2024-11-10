@@ -1,38 +1,38 @@
-import { css, keyframes } from "@stylefusion/react";
+import { css, keyframes } from '@stylefusion/react';
 
 const bounceAnimation = keyframes({
-  "0%": {
-    transform: "scale(0)",
+  '0%': {
+    transform: 'scale(0)',
   },
-  "50%": {
-    transform: "scale(1.0)",
+  '50%': {
+    transform: 'scale(1.0)',
   },
-  "100%": {
-    transform: "scale(0)",
+  '100%': {
+    transform: 'scale(0)',
   },
 });
 
 export const LoaderBounceLoaderStyle = css({
-  "--bounce-size-xs": "30px",
-  "--bounce-size-sm": "37px",
-  "--bounce-size-md": "60px",
-  "--bounce-size-lg": "73px",
-  "--bounce-size-xl": "97px",
-  "--bounce-size": "var(--bounce-size-md)",
-  "--bounce-color": "var(--raikou-primary-color-filled)",
-  position: "relative",
-  display: "inherit",
-  width: "var(--bounce-size)",
-  height: "var(--bounce-size)",
+  '--bounce-size-xs': '30px',
+  '--bounce-size-sm': '37px',
+  '--bounce-size-md': '60px',
+  '--bounce-size-lg': '73px',
+  '--bounce-size-xl': '97px',
+  '--bounce-size': 'var(--bounce-size-md)',
+  '--bounce-color': 'var(--raikou-primary-color-filled)',
+  position: 'relative',
+  display: 'inherit',
+  width: 'var(--bounce-size)',
+  height: 'var(--bounce-size)',
 });
 
 const LoaderBounceStyle = {
-  position: "absolute",
-  height: "var(--bounce-size)",
-  width: "var(--bounce-size)",
-  overflow: "hidden",
-  backgroundColor: "var(--bounce-color)",
-  borderRadius: "100%",
+  position: 'absolute',
+  height: 'var(--bounce-size)',
+  width: 'var(--bounce-size)',
+  overflow: 'hidden',
+  backgroundColor: 'var(--bounce-color)',
+  borderRadius: '100%',
   opacity: 0.6,
   top: 0,
   left: 0,

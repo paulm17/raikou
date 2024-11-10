@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment } from 'react';
 import {
   Box,
   BoxProps,
@@ -8,23 +8,23 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderFlapperBallStyle, LoaderFlapperRootStyle } from "./Flapper.css";
+} from '@raikou/core';
+import { LoaderFlapperBallStyle, LoaderFlapperRootStyle } from './Flapper.css';
 
-export type FlapperStylesNames = "root";
+export type FlapperStylesNames = 'root';
 export type FlapperCssVariables = {
-  root: "--flapper-color" | "--flapper-size" | "--flapper-speed-multiplier";
+  root: '--flapper-color' | '--flapper-size' | '--flapper-speed-multiplier';
 };
 
 export interface FlapperProps
   extends BoxProps,
     StylesApiProps<FlapperFactory>,
-    ElementProps<"span"> {
+    ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -48,7 +48,7 @@ const defaultProps: Partial<FlapperProps> = {
 };
 
 const getNewSize = (size: RaikouSize | (string & {}) | number | undefined) => {
-  if (typeof size === "string") {
+  if (typeof size === 'string') {
     const sizes: Record<RaikouSize, number> = {
       xs: 15,
       sm: 28,
@@ -71,15 +71,15 @@ const varsResolver = createVarsResolver<FlapperFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--flapper-color": color ? getThemeColor(color, theme) : undefined,
-      "--flapper-size": getSize(size, "flapper-size") ?? undefined,
-      "--flapper-speed-multiplier": `${speedMultiplier}`,
+      '--flapper-color': color ? getThemeColor(color, theme) : undefined,
+      '--flapper-size': getSize(size, 'flapper-size') ?? undefined,
+      '--flapper-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Flapper = factory<FlapperFactory>((_props, ref) => {
-  const props = useProps("Flapper", defaultProps, _props);
+  const props = useProps('Flapper', defaultProps, _props);
   const {
     color,
     vars,
@@ -96,7 +96,7 @@ export const Flapper = factory<FlapperFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<FlapperFactory>({
-    name: "Flapper",
+    name: 'Flapper',
     props,
     classes: {
       root: LoaderFlapperRootStyle,
@@ -113,7 +113,7 @@ export const Flapper = factory<FlapperFactory>((_props, ref) => {
   const newSize = getNewSize(size) as number;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       {[...Array(Math.round(7))].map((_, i) => {
         const countBalls = 7;
         const ballSize = newSize / 1.5;
@@ -152,4 +152,4 @@ export const Flapper = factory<FlapperFactory>((_props, ref) => {
   );
 });
 
-Flapper.displayName = "@raikou/core/Flapper";
+Flapper.displayName = '@raikou/core/Flapper';

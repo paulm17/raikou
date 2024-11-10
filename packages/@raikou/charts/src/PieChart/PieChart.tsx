@@ -19,8 +19,8 @@ import {
   RaikouColor,
   rem,
   StylesApiProps,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
   useResolvedStylesApi,
   useStyles,
 } from '@raikou/core';

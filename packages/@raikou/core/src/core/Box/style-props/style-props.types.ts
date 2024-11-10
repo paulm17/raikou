@@ -1,14 +1,12 @@
 import type {
   RaikouBreakpoint,
-  RaikouSpacing,
+  RaikouColor,
   RaikouFontSize,
   RaikouLineHeight,
-  RaikouColor,
-} from "../../RaikouProvider";
+  RaikouSpacing,
+} from '../../RaikouProvider';
 
-export type StyleProp<Value> =
-  | Value
-  | Partial<Record<RaikouBreakpoint | (string & {}), Value>>;
+export type StyleProp<Value> = Value | Partial<Record<RaikouBreakpoint | (string & {}), Value>>;
 
 export interface RaikouStyleProps {
   /** Margin, theme key: theme.spacing */

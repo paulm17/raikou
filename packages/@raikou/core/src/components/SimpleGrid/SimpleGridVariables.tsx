@@ -5,8 +5,8 @@ import {
   getSpacing,
   InlineStyles,
   keys,
-  RaikouBreakpoint,
   px,
+  RaikouBreakpoint,
   useRaikouTheme,
 } from '../../core';
 import type { SimpleGridProps } from './SimpleGrid';

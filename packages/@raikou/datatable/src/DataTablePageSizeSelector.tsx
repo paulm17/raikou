@@ -1,37 +1,31 @@
+import clsx from 'clsx';
 import {
   Button,
   Group,
-  RaikouColor,
   Menu,
   MenuDropdown,
   MenuItem,
   MenuTarget,
-  Text,
+  RaikouColor,
   rem,
+  Text,
   type RaikouSize,
-} from "@raikou/core";
-import clsx from "clsx";
-import { getPaginationCssVariables } from "./cssVariables";
-import { IconSelector } from "./icons/IconSelector";
+} from '@raikou/core';
+import { getPaginationCssVariables } from './cssVariables';
+import { IconSelector } from './icons/IconSelector';
 import {
   dataTablePageSizeSelectorActiveStyle,
   dataTablePageSizeSelectorButtonIconStyle,
   dataTablePageSizeSelectorMenuArrowStyle,
-} from "./DataTablePageSizeSelector.css";
+} from './DataTablePageSizeSelector.css';
 
 type DataTablePageSizeSelectorComponentProps = {
   size: RaikouSize;
   label: string;
   values: number[];
   value: number;
-  activeTextColor:
-    | RaikouColor
-    | { dark: RaikouColor; light: RaikouColor }
-    | undefined;
-  activeBackgroundColor:
-    | RaikouColor
-    | { dark: RaikouColor; light: RaikouColor }
-    | undefined;
+  activeTextColor: RaikouColor | { dark: RaikouColor; light: RaikouColor } | undefined;
+  activeBackgroundColor: RaikouColor | { dark: RaikouColor; light: RaikouColor } | undefined;
   onChange: (value: number) => void;
 };
 
@@ -73,7 +67,7 @@ export function DataTablePageSizeSelector({
             }}
             rightSection={<IconSelector />}
             style={[
-              { fontWeight: "normal" },
+              { fontWeight: 'normal' },
               (theme) => ({
                 height: HEIGHT[size],
                 paddingLeft: theme.spacing[size],
@@ -100,8 +94,7 @@ export function DataTablePageSizeSelector({
                         getPaginationCssVariables({
                           theme,
                           paginationActiveTextColor: activeTextColor,
-                          paginationActiveBackgroundColor:
-                            activeBackgroundColor,
+                          paginationActiveBackgroundColor: activeBackgroundColor,
                         })
                     : undefined,
                 ]}

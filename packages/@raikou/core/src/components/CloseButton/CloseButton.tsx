@@ -3,18 +3,18 @@ import {
   createVarsResolver,
   getRadius,
   getSize,
-  RaikouRadius,
-  RaikouSize,
   polymorphicFactory,
   PolymorphicFactory,
+  RaikouRadius,
+  RaikouSize,
   rem,
   StylesApiProps,
   useProps,
   useStyles,
 } from '../../core';
 import { UnstyledButton } from '../UnstyledButton';
-import { CloseButtonRootStyle } from './CloseButton.css';
 import { CloseIcon } from './CloseIcon';
+import { CloseButtonRootStyle } from './CloseButton.css';
 
 export type CloseButtonVariant = 'subtle' | 'transparent';
 export type CloseButtonStylesNames = 'root';
@@ -96,7 +96,7 @@ export const CloseButton = polymorphicFactory<CloseButtonFactory>((_props, ref) 
     className,
     style,
     classes: {
-      root: CloseButtonRootStyle
+      root: CloseButtonRootStyle,
     },
     classNames,
     styles,

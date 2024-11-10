@@ -46,7 +46,7 @@ export const AspectRatio = factory<AspectRatioFactory>((_props, ref) => {
   const getStyles = useStyles<AspectRatioFactory>({
     name: 'AspectRatio',
     classes: {
-      root: aspectRatioRootStyle
+      root: aspectRatioRootStyle,
     },
     props,
     className,

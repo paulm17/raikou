@@ -1,13 +1,13 @@
-import { TableTr } from "@raikou/core";
-import { useMergedRef } from "@raikou/hooks";
-import { type ElementRef, forwardRef, useEffect, useRef } from "react";
-import type { DataTableDraggableRowProps } from "./types";
+import { forwardRef, useEffect, useRef, type ElementRef } from 'react';
+import { TableTr } from '@raikou/core';
+import { useMergedRef } from '@raikou/hooks';
+import type { DataTableDraggableRowProps } from './types';
 
-const DataTableDraggableRow = forwardRef<
-  HTMLTableRowElement,
-  DataTableDraggableRowProps
->(function ({ children, isDragging, ...props }, passedRef) {
-  const ref = useRef<ElementRef<"tr">>(null);
+const DataTableDraggableRow = forwardRef<HTMLTableRowElement, DataTableDraggableRowProps>(function (
+  { children, isDragging, ...props },
+  passedRef
+) {
+  const ref = useRef<ElementRef<'tr'>>(null);
   const mergedRef = useMergedRef(ref, passedRef);
 
   useEffect(() => {
@@ -26,10 +26,10 @@ const DataTableDraggableRow = forwardRef<
 
       const cell = ref.current.children[index] as HTMLTableCellElement;
 
-      cell.style.height = headerCellDimensions.height + "px";
-      cell.style.width = headerCellDimensions.width + "px";
-      cell.style.minWidth = headerCellDimensions.width + "px";
-      cell.style.maxWidth = headerCellDimensions.width + "px";
+      cell.style.height = headerCellDimensions.height + 'px';
+      cell.style.width = headerCellDimensions.width + 'px';
+      cell.style.minWidth = headerCellDimensions.width + 'px';
+      cell.style.maxWidth = headerCellDimensions.width + 'px';
     }
   }, [isDragging, children]);
 
@@ -40,6 +40,6 @@ const DataTableDraggableRow = forwardRef<
   );
 });
 
-DataTableDraggableRow.displayName = "DataTableDraggableRow";
+DataTableDraggableRow.displayName = 'DataTableDraggableRow';
 
 export { DataTableDraggableRow };

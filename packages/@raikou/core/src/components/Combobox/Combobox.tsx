@@ -13,7 +13,6 @@ import {
 } from '../../core';
 import { __PopoverProps, Popover } from '../Popover';
 import { ComboboxProvider } from './Combobox.context';
-import { ComboboxDropdownEmptyStyle, ComboboxDropdownFooterStyle, ComboboxDropdownGroupLabelStyle, ComboboxDropdownGroupStyle, ComboboxDropdownHeaderStyle, ComboboxDropdownOptionsStyle, ComboboxDropdownOptionStyle, ComboboxDropdownSearchStyle, ComboboxDropdownStyle } from './Combobox.css';
 import { ComboboxChevron } from './ComboboxChevron/ComboboxChevron';
 import { ComboboxClearButton } from './ComboboxClearButton/ComboboxClearButton';
 import { ComboboxDropdown } from './ComboboxDropdown/ComboboxDropdown';
@@ -29,6 +28,17 @@ import { ComboboxOptions } from './ComboboxOptions/ComboboxOptions';
 import { ComboboxSearch } from './ComboboxSearch/ComboboxSearch';
 import { ComboboxTarget } from './ComboboxTarget/ComboboxTarget';
 import { ComboboxStore, useCombobox } from './use-combobox/use-combobox';
+import {
+  ComboboxDropdownEmptyStyle,
+  ComboboxDropdownFooterStyle,
+  ComboboxDropdownGroupLabelStyle,
+  ComboboxDropdownGroupStyle,
+  ComboboxDropdownHeaderStyle,
+  ComboboxDropdownOptionsStyle,
+  ComboboxDropdownOptionStyle,
+  ComboboxDropdownSearchStyle,
+  ComboboxDropdownStyle,
+} from './Combobox.css';
 
 export type ComboboxStylesNames =
   | 'options'
@@ -177,7 +187,7 @@ export function Combobox(_props: ComboboxProps) {
       <Popover
         opened={store.dropdownOpened}
         {...others}
-        onClose={onDropdownClose}
+        onChange={(_opened) => !_opened && onDropdownClose()}
         withRoles={false}
         unstyled={unstyled}
       >

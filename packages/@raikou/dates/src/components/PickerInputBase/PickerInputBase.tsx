@@ -9,11 +9,11 @@ import {
   Factory,
   Input,
   InputVariant,
-  RaikouSize,
   Modal,
   ModalProps,
   Popover,
   PopoverProps,
+  RaikouSize,
   StylesApiProps,
   useInputProps,
 } from '@raikou/core';
@@ -165,9 +165,11 @@ export const PickerInputBase = factory<PickerInputBaseFactory>((_props, ref) => 
           unstyled={unstyled}
           {...popoverProps}
           disabled={popoverProps?.disabled || dropdownType === 'modal' || readOnly}
-          onClose={() => {
-            popoverProps?.onClose?.();
-            handleClose();
+          onChange={(_opened) => {
+            if (!_opened) {
+              popoverProps?.onClose?.();
+              handleClose();
+            }
           }}
         >
           <Popover.Target>
@@ -185,7 +187,10 @@ export const PickerInputBase = factory<PickerInputBaseFactory>((_props, ref) => 
               rightSection={_rightSection}
               {...inputProps}
               ref={ref}
-              classNames={{ ...classNames, input: cx(PickerInputBaseStyle, (classNames as any)?.input) }}
+              classNames={{
+                ...classNames,
+                input: cx(PickerInputBaseStyle, (classNames as any)?.input),
+              }}
               {...others}
             >
               {formattedValue || (

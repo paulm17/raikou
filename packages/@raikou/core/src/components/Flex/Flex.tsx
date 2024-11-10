@@ -4,14 +4,14 @@ import {
   ElementProps,
   filterProps,
   InlineStyles,
-  RaikouSize,
   parseStyleProps,
   polymorphicFactory,
   PolymorphicFactory,
+  RaikouSize,
   StyleProp,
   StylesApiProps,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
   useRandomClassName,
   useStyles,
 } from '../../core';
@@ -86,7 +86,7 @@ export const Flex = polymorphicFactory<FlexFactory>((_props, ref) => {
   });
 
   const theme = useRaikouTheme();
-  const responsiveClassName = useRandomClassName();  
+  const responsiveClassName = useRandomClassName();
   const parsedStyleProps = parseStyleProps({
     // @ts-ignore
     styleProps: { gap, rowGap, columnGap, align, justify, wrap, direction },

@@ -5,10 +5,10 @@ export function suppressNextjsWarning() {
   console.error = (...args) => {
     if (
       args.length > 1 &&
-      typeof args[0] === "string" &&
-      args[0].toLowerCase().includes("extra attributes from the server") &&
-      typeof args[1] === "string" &&
-      args[1].toLowerCase().includes("data-raikou-color-scheme")
+      typeof args[0] === 'string' &&
+      args[0].toLowerCase().includes('extra attributes from the server') &&
+      typeof args[1] === 'string' &&
+      args[1].toLowerCase().includes('data-raikou-color-scheme')
     ) {
       // Suppress the warning
     } else {

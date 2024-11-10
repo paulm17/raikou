@@ -12,10 +12,10 @@ import {
   getRadius,
   getSize,
   getThemeColor,
+  parseThemeColor,
   RaikouColor,
   RaikouRadius,
   RaikouSize,
-  parseThemeColor,
   StylesApiProps,
   useProps,
   useStyles,
@@ -26,7 +26,12 @@ import { useCheckboxGroupContext } from './CheckboxGroup.context';
 import { CheckboxGroup } from './CheckboxGroup/CheckboxGroup';
 import { CheckboxIndicator } from './CheckboxIndicator/CheckboxIndicator';
 import { CheckboxIcon } from './CheckIcon';
-import { CheckboxIconStyle, CheckboxInnerStyle, CheckboxInputStyle, CheckboxRootStyle } from './Checkbox.css';
+import {
+  CheckboxIconStyle,
+  CheckboxInnerStyle,
+  CheckboxInputStyle,
+  CheckboxRootStyle,
+} from './Checkbox.css';
 
 export type CheckboxVariant = 'filled' | 'outline';
 export type CheckboxStylesNames = 'icon' | 'inner' | 'input' | InlineInputStylesNames;

@@ -1,8 +1,3 @@
-export { Ring } from "./Ring";
+export { Ring } from './Ring';
 
-export type {
-  RingProps,
-  RingStylesNames,
-  RingCssVariables,
-  RingFactory,
-} from "./Ring";
+export type { RingProps, RingStylesNames, RingCssVariables, RingFactory } from './Ring';

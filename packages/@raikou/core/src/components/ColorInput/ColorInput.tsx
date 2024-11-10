@@ -25,7 +25,11 @@ import { ColorSwatch } from '../ColorSwatch';
 import { __BaseInputProps, __InputStylesNames, Input, InputVariant, useInputProps } from '../Input';
 import { Popover, PopoverProps } from '../Popover';
 import { EyeDropperIcon } from './EyeDropperIcon';
-import { ColorInputDropdownStyle, ColorInputEyeDropperIconStyle, ColorInputPreviewStyle } from './ColorInput.css';
+import {
+  ColorInputDropdownStyle,
+  ColorInputEyeDropperIconStyle,
+  ColorInputPreviewStyle,
+} from './ColorInput.css';
 
 export type ColorInputStylesNames =
   | 'dropdown'

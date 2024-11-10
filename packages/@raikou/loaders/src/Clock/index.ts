@@ -1,8 +1,3 @@
-export { Clock } from "./Clock";
+export { Clock } from './Clock';
 
-export type {
-  ClockProps,
-  ClockStylesNames,
-  ClockCssVariables,
-  ClockFactory,
-} from "./Clock.tsx";
+export type { ClockProps, ClockStylesNames, ClockCssVariables, ClockFactory } from './Clock.tsx';

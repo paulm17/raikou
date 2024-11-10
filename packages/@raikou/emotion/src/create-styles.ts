@@ -1,5 +1,5 @@
 import { CSSObject } from '@emotion/serialize';
-import { em, RaikouBreakpoint, RaikouTheme, px, useRaikouTheme } from '@raikou/core';
+import { em, px, RaikouBreakpoint, RaikouTheme, useRaikouTheme } from '@raikou/core';
 // prettier-ignore
 import { useCss } from './use-css';
 

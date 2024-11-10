@@ -22,7 +22,17 @@ import { AccordionChevron } from './AccordionChevron';
 import { AccordionControl } from './AccordionControl/AccordionControl';
 import { AccordionItem } from './AccordionItem/AccordionItem';
 import { AccordionPanel } from './AccordionPanel/AccordionPanel';
-import { AccordionChevronStyle, AccordionContentStyle, AccordionControlStyle, AccordionIconStyle, AccordionItemStyle, AccordionItemTitleStyle, AccordionLabelStyle, AccordionPanelStyle, AccordionRootStyle } from './Accordion.css';
+import {
+  AccordionChevronStyle,
+  AccordionContentStyle,
+  AccordionControlStyle,
+  AccordionIconStyle,
+  AccordionItemStyle,
+  AccordionItemTitleStyle,
+  AccordionLabelStyle,
+  AccordionPanelStyle,
+  AccordionRootStyle,
+} from './Accordion.css';
 
 export type AccordionStylesNames =
   | 'root'
@@ -161,15 +171,15 @@ export function Accordion<Multiple extends boolean = false>(_props: AccordionPro
   const getStyles = useStyles<AccordionFactory>({
     name: 'Accordion',
     classes: {
-      'root': AccordionRootStyle,
-      'content': AccordionContentStyle,
-      'item': AccordionItemStyle,
-      'panel': AccordionPanelStyle,
-      'icon': AccordionIconStyle,
-      'chevron': AccordionChevronStyle,
-      'label': AccordionLabelStyle,
-      'itemTitle': AccordionItemTitleStyle,
-      'control': AccordionControlStyle,
+      root: AccordionRootStyle,
+      content: AccordionContentStyle,
+      item: AccordionItemStyle,
+      panel: AccordionPanelStyle,
+      icon: AccordionIconStyle,
+      chevron: AccordionChevronStyle,
+      label: AccordionLabelStyle,
+      itemTitle: AccordionItemTitleStyle,
+      control: AccordionControlStyle,
     },
     props: props as AccordionProps,
     className,

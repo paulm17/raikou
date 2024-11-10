@@ -1,13 +1,8 @@
-import {
-  Checkbox,
-  RaikouStyleProp,
-  TableTd,
-  type CheckboxProps,
-} from "@raikou/core";
-import clsx from "clsx";
-import type { DataTableSelectionTrigger } from "./types";
-import { POINTER_CURSOR } from "./utilityClasses";
-import { dataTableRowSelectorCellStyle } from "./DataTableRowSelectorCell.css";
+import clsx from 'clsx';
+import { Checkbox, RaikouStyleProp, TableTd, type CheckboxProps } from '@raikou/core';
+import type { DataTableSelectionTrigger } from './types';
+import { POINTER_CURSOR } from './utilityClasses';
+import { dataTableRowSelectorCellStyle } from './DataTableRowSelectorCell.css';
 
 type DataTableRowSelectorCellProps<T> = {
   className: string | undefined;
@@ -43,7 +38,7 @@ export function DataTableRowSelectorCell<T>({
 
   const handleClick: React.MouseEventHandler = (e) => {
     e.stopPropagation();
-    if (trigger === "cell" && enabled) {
+    if (trigger === 'cell' && enabled) {
       onChange?.(e);
     }
   };
@@ -52,8 +47,8 @@ export function DataTableRowSelectorCell<T>({
     <TableTd
       className={clsx(
         dataTableRowSelectorCellStyle,
-        { [POINTER_CURSOR]: trigger === "cell" && enabled },
-        className,
+        { [POINTER_CURSOR]: trigger === 'cell' && enabled },
+        className
       )}
       style={style}
       data-shadow-visible={withRightShadow || undefined}

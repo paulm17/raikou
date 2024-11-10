@@ -1,3 +1,3 @@
-# Contributing to Mantine
+# Contributing to Raikou
 
-[View contributing guidelines on mantine.dev website](https://mantine.dev/contribute/)
+Just don't.

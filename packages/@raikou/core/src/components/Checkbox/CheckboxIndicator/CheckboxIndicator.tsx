@@ -10,17 +10,20 @@ import {
   getRadius,
   getSize,
   getThemeColor,
+  parseThemeColor,
   RaikouColor,
   RaikouRadius,
   RaikouSize,
-  parseThemeColor,
   StylesApiProps,
   useProps,
   useStyles,
 } from '../../../core';
 import { useCheckboxCardContext } from '../CheckboxCard/CheckboxCard.context';
 import { CheckboxIcon } from '../CheckIcon';
-import { CheckboxIndicatorIconStyle, CheckboxIndicatorIndicatorStyle } from './CheckboxIndicator.css';
+import {
+  CheckboxIndicatorIconStyle,
+  CheckboxIndicatorIndicatorStyle,
+} from './CheckboxIndicator.css';
 
 export type CheckboxIndicatorStylesNames = 'indicator' | 'icon';
 export type CheckboxIndicatorVariant = 'filled' | 'outline';

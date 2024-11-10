@@ -24,9 +24,17 @@ import {
   TableTr,
 } from './Table.components';
 import { TableProvider } from './Table.context';
-import { TableCaptionStyle, TableRootStyle, TableTbodyStyle, TableTdStyle, TableTheadStyle, TableThStyle, TableTrStyle } from './Table.css';
 import { TableDataRenderer } from './TableDataRenderer';
 import { TableScrollContainer } from './TableScrollContainer';
+import {
+  TableCaptionStyle,
+  TableRootStyle,
+  TableTbodyStyle,
+  TableTdStyle,
+  TableTheadStyle,
+  TableThStyle,
+  TableTrStyle,
+} from './Table.css';
 
 export type TableStylesNames =
   | 'table'

@@ -15,7 +15,12 @@ import {
 } from '@raikou/core';
 import { CopyIcon } from './CopyIcon';
 import { useHighlight } from './use-highlight';
-import { CodeHighlightCodeStyle, CodeHighlightCopyStyle, CodeHighlightPreStyle, CodeHighlightRootStyle } from './CodeHighlight.css';
+import {
+  CodeHighlightCodeStyle,
+  CodeHighlightCopyStyle,
+  CodeHighlightPreStyle,
+  CodeHighlightRootStyle,
+} from './CodeHighlight.css';
 import { CodeHighlightThemeStyle } from './CodeHighlight.theme.css';
 
 export type CodeHighlightStylesNames = 'root' | 'code' | 'pre' | 'copy';

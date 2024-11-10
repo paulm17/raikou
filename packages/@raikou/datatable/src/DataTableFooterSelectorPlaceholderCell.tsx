@@ -1,5 +1,5 @@
-import { TableTh } from "@raikou/core";
-import { dataTableFooterSelectorPlaceholderCellStyle } from "./DataTableFooterSelectorPlaceholderCell.css";
+import { TableTh } from '@raikou/core';
+import { dataTableFooterSelectorPlaceholderCellStyle } from './DataTableFooterSelectorPlaceholderCell.css';
 
 type DataTableFooterSelectorPlaceholderCellProps = {
   shadowVisible: boolean;

@@ -1,8 +1,3 @@
-export { Moon } from "./Moon";
+export { Moon } from './Moon';
 
-export type {
-  MoonProps,
-  MoonStylesNames,
-  MoonCssVariables,
-  MoonFactory,
-} from "./Moon";
+export type { MoonProps, MoonStylesNames, MoonCssVariables, MoonFactory } from './Moon';

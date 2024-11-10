@@ -12,7 +12,6 @@ import {
   useStyles,
 } from '../../core';
 import { AppShellProvider } from './AppShell.context';
-import { AppShellAsideStyle, AppShellFooterStyle, AppShellHeaderStyle, AppShellMainStyle, AppShellNavbarStyle, AppShellRootStyle, AppShellSectionStyle } from './AppShell.css';
 import {
   AppShellAsideConfiguration,
   AppShellFooterConfiguration,
@@ -28,6 +27,15 @@ import { AppShellMediaStyles } from './AppShellMediaStyles/AppShellMediaStyles';
 import { AppShellNavbar } from './AppShellNavbar/AppShellNavbar';
 import { AppShellSection } from './AppShellSection/AppShellSection';
 import { useResizing } from './use-resizing/use-resizing';
+import {
+  AppShellAsideStyle,
+  AppShellFooterStyle,
+  AppShellHeaderStyle,
+  AppShellMainStyle,
+  AppShellNavbarStyle,
+  AppShellRootStyle,
+  AppShellSectionStyle,
+} from './AppShell.css';
 
 export type AppShellStylesNames =
   | 'root'

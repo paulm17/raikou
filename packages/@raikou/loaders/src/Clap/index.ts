@@ -1,8 +1,3 @@
-export { Clap } from "./Clap";
+export { Clap } from './Clap';
 
-export type {
-  ClapProps,
-  ClapStylesNames,
-  ClapCssVariables,
-  ClapFactory,
-} from "./Clap";
+export type { ClapProps, ClapStylesNames, ClapCssVariables, ClapFactory } from './Clap';

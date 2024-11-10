@@ -1,18 +1,11 @@
-import { Box, UnstyledButton, parseThemeColor, rgba } from "@raikou/core";
-import { useMediaQuery, useTimeout } from "@raikou/hooks";
-import clsx from "clsx";
-import { useContext, useRef, useState, type MouseEventHandler } from "react";
-import { ContextMenu } from "./ContextMenu";
-import { ContextMenuSettingsCtx } from "./ContextMenuProvider";
-import type {
-  ContextMenuContent,
-  ContextMenuItemOptions,
-  WithRequiredProperty,
-} from "./types";
-import {
-  contextMenuItemButtonStyle,
-  contextMenuItemButtonTitleStyle,
-} from "./ContextMenuItem.css";
+import { useContext, useRef, useState, type MouseEventHandler } from 'react';
+import clsx from 'clsx';
+import { Box, parseThemeColor, rgba, UnstyledButton } from '@raikou/core';
+import { useMediaQuery, useTimeout } from '@raikou/hooks';
+import { ContextMenu } from './ContextMenu';
+import { ContextMenuSettingsCtx } from './ContextMenuProvider';
+import type { ContextMenuContent, ContextMenuItemOptions, WithRequiredProperty } from './types';
+import { contextMenuItemButtonStyle, contextMenuItemButtonTitleStyle } from './ContextMenuItem.css';
 
 export function ContextMenuItem({
   className,
@@ -25,7 +18,7 @@ export function ContextMenuItem({
   onClick,
   onHide,
   items,
-}: WithRequiredProperty<Omit<ContextMenuItemOptions, "key">, "title"> & {
+}: WithRequiredProperty<Omit<ContextMenuItemOptions, 'key'>, 'title'> & {
   onHide: () => void;
 }) {
   const ref = useRef<HTMLButtonElement>(null);
@@ -38,20 +31,14 @@ export function ContextMenuItem({
     y: number;
   } | null>(null);
 
-  const { start: startShowingSubmenu, clear: stopShowingSubmenu } = useTimeout(
-    () => {
-      const { top: y, right: x } = ref.current!.getBoundingClientRect();
-      setSubmenuPosition({ x, y });
-    },
-    submenuDelay,
-  );
+  const { start: startShowingSubmenu, clear: stopShowingSubmenu } = useTimeout(() => {
+    const { top: y, right: x } = ref.current!.getBoundingClientRect();
+    setSubmenuPosition({ x, y });
+  }, submenuDelay);
 
-  const { start: startHidingSubmenu, clear: stopHidingSubmenu } = useTimeout(
-    () => {
-      setSubmenuPosition(null);
-    },
-    submenuDelay,
-  );
+  const { start: startHidingSubmenu, clear: stopHidingSubmenu } = useTimeout(() => {
+    setSubmenuPosition(null);
+  }, submenuDelay);
 
   const showSubmenu = () => {
     stopHidingSubmenu();
@@ -66,18 +53,17 @@ export function ContextMenuItem({
   const hasSubmenu = items && !disabled;
   const showSubmenuOnHover = hasSubmenu && hoverAvailable;
 
-  const handleClick: MouseEventHandler<HTMLButtonElement> | undefined =
-    hasSubmenu
+  const handleClick: MouseEventHandler<HTMLButtonElement> | undefined = hasSubmenu
+    ? (e) => {
+        e.stopPropagation();
+        showSubmenu();
+      }
+    : onClick
       ? (e) => {
-          e.stopPropagation();
-          showSubmenu();
+          onHide();
+          onClick!(e);
         }
-      : onClick
-        ? (e) => {
-            onHide();
-            onClick!(e);
-          }
-        : undefined;
+      : undefined;
 
   return (
     <div
@@ -89,29 +75,23 @@ export function ContextMenuItem({
         style={[
           (theme) => {
             const { colors } = theme;
-            const parsedColor = color
-              ? parseThemeColor({ color, theme }).value
-              : undefined;
+            const parsedColor = color ? parseThemeColor({ color, theme }).value : undefined;
             return {
-              "--raikou-contextmenu-item-button-color": parsedColor
+              '--raikou-contextmenu-item-button-color': parsedColor
                 ? parsedColor
-                : "var(--raikou-color-text)",
-              "--raikou-contextmenu-item-button-hover-bg-color-light":
-                parsedColor
-                  ? rgba(parsedColor, 0.08)
-                  : rgba(colors.gray[4], 0.25),
-              "--raikou-contextmenu-item-button-hover-bg-color-dark":
-                parsedColor
-                  ? rgba(parsedColor, 0.15)
-                  : rgba(colors.dark[3], 0.25),
-              "--raikou-contextmenu-item-button-pressed-bg-color-light":
-                parsedColor
-                  ? rgba(parsedColor, 0.2)
-                  : rgba(colors.gray[4], 0.5),
-              "--raikou-contextmenu-item-button-pressed-bg-color-dark":
-                parsedColor
-                  ? rgba(parsedColor, 0.3)
-                  : rgba(colors.dark[3], 0.5),
+                : 'var(--raikou-color-text)',
+              '--raikou-contextmenu-item-button-hover-bg-color-light': parsedColor
+                ? rgba(parsedColor, 0.08)
+                : rgba(colors.gray[4], 0.25),
+              '--raikou-contextmenu-item-button-hover-bg-color-dark': parsedColor
+                ? rgba(parsedColor, 0.15)
+                : rgba(colors.dark[3], 0.25),
+              '--raikou-contextmenu-item-button-pressed-bg-color-light': parsedColor
+                ? rgba(parsedColor, 0.2)
+                : rgba(colors.gray[4], 0.5),
+              '--raikou-contextmenu-item-button-pressed-bg-color-dark': parsedColor
+                ? rgba(parsedColor, 0.3)
+                : rgba(colors.dark[3], 0.5),
             };
           },
           style,
@@ -139,11 +119,7 @@ export function ContextMenuItem({
         )}
       </UnstyledButton>
       {submenuPosition && (
-        <ContextMenu
-          content={items as ContextMenuContent}
-          onHide={onHide}
-          {...submenuPosition}
-        />
+        <ContextMenu content={items as ContextMenuContent} onHide={onHide} {...submenuPosition} />
       )}
     </div>
   );

@@ -14,7 +14,16 @@ import {
   useStyles,
 } from '../../core';
 import { CloseButton } from '../CloseButton';
-import { AlertBodyStyle, AlertCloseButtonStyle, AlertIconStyle, AlertLabelStyle, AlertMessageStyle, AlertRootStyle, AlertTitleStyle, AlertWrapperStyle } from './Alert.css';
+import {
+  AlertBodyStyle,
+  AlertCloseButtonStyle,
+  AlertIconStyle,
+  AlertLabelStyle,
+  AlertMessageStyle,
+  AlertRootStyle,
+  AlertTitleStyle,
+  AlertWrapperStyle,
+} from './Alert.css';
 
 export type AlertStylesNames =
   | 'root'

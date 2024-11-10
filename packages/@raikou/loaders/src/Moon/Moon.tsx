@@ -7,27 +7,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import {
-  LoaderMoonRootStyle,
-  LoaderMoonBallStyle,
-  LoaderMoonCircleStyle,
-} from "./Moon.css";
+} from '@raikou/core';
+import { LoaderMoonBallStyle, LoaderMoonCircleStyle, LoaderMoonRootStyle } from './Moon.css';
 
-export type MoonStylesNames = "root";
+export type MoonStylesNames = 'root';
 export type MoonCssVariables = {
-  root: "--moon-color" | "--moon-size" | "--moon-speed-multiplier";
+  root: '--moon-color' | '--moon-size' | '--moon-speed-multiplier';
 };
 
-export interface MoonProps
-  extends BoxProps,
-    StylesApiProps<MoonFactory>,
-    ElementProps<"span"> {
+export interface MoonProps extends BoxProps, StylesApiProps<MoonFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -54,15 +47,15 @@ const varsResolver = createVarsResolver<MoonFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--moon-color": color ? getThemeColor(color, theme) : undefined,
-      "--moon-size": getSize(size, "moon-size") ?? undefined,
-      "--moon-speed-multiplier": `${speedMultiplier}`,
+      '--moon-color': color ? getThemeColor(color, theme) : undefined,
+      '--moon-size': getSize(size, 'moon-size') ?? undefined,
+      '--moon-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Moon = factory<MoonFactory>((_props, ref) => {
-  const props = useProps("Moon", defaultProps, _props);
+  const props = useProps('Moon', defaultProps, _props);
   const {
     color,
     vars,
@@ -79,7 +72,7 @@ export const Moon = factory<MoonFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<MoonFactory>({
-    name: "Moon",
+    name: 'Moon',
     props,
     classes: {
       root: LoaderMoonRootStyle,
@@ -94,11 +87,11 @@ export const Moon = factory<MoonFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <span className={LoaderMoonBallStyle} />
       <span className={LoaderMoonCircleStyle} />
     </Box>
   );
 });
 
-Moon.displayName = "@raikou/core/Moon";
+Moon.displayName = '@raikou/core/Moon';

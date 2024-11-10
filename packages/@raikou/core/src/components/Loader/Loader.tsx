@@ -11,24 +11,24 @@ import {
   StylesApiProps,
   useProps,
   useStyles,
-} from "../../core";
-import { LoaderRootStyle } from "./Loader.css";
-import type { RaikouLoader, RaikouLoadersRecord } from "./Loader.types";
-import { Bars } from "./loaders/Bars";
-import { Dots } from "./loaders/Dots";
-import { Oval } from "./loaders/Oval";
-import { Progress } from "./loaders/Progress";
-import { Trail } from "./loaders/Trail";
+} from '../../core';
+import type { RaikouLoader, RaikouLoadersRecord } from './Loader.types';
+import { Bars } from './loaders/Bars';
+import { Dots } from './loaders/Dots';
+import { Oval } from './loaders/Oval';
+import { Progress } from './loaders/Progress';
+import { Trail } from './loaders/Trail';
+import { LoaderRootStyle } from './Loader.css';
 
-export type LoaderStylesNames = "root";
+export type LoaderStylesNames = 'root';
 export type LoaderCssVariables = {
-  root: "--loader-size" | "--loader-color";
+  root: '--loader-size' | '--loader-color';
 };
 
 export interface LoaderProps
   extends BoxProps,
     StylesApiProps<LoaderFactory>,
-    Omit<React.ComponentPropsWithoutRef<"svg">, keyof BoxProps> {
+    Omit<React.ComponentPropsWithoutRef<'svg'>, keyof BoxProps> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -65,20 +65,18 @@ export const defaultLoaders: RaikouLoadersRecord = {
 
 const defaultProps: Partial<LoaderProps> = {
   loaders: defaultLoaders,
-  type: "oval",
+  type: 'oval',
 };
 
-const varsResolver = createVarsResolver<LoaderFactory>(
-  (theme, { size, color }) => ({
-    root: {
-      "--loader-size": getSize(size, "loader-size"),
-      "--loader-color": color ? getThemeColor(color, theme) : undefined,
-    },
-  }),
-);
+const varsResolver = createVarsResolver<LoaderFactory>((theme, { size, color }) => ({
+  root: {
+    '--loader-size': getSize(size, 'loader-size'),
+    '--loader-color': color ? getThemeColor(color, theme) : undefined,
+  },
+}));
 
 export const Loader = factory<LoaderFactory>((_props, ref) => {
-  const props = useProps("Loader", defaultProps, _props);
+  const props = useProps('Loader', defaultProps, _props);
   const {
     size,
     color,
@@ -96,7 +94,7 @@ export const Loader = factory<LoaderFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<LoaderFactory>({
-    name: "Loader",
+    name: 'Loader',
     props,
     classes: {
       root: LoaderRootStyle,
@@ -112,7 +110,7 @@ export const Loader = factory<LoaderFactory>((_props, ref) => {
 
   if (children) {
     return (
-      <Box {...getStyles("root")} ref={ref as any} {...(others as any)}>
+      <Box {...getStyles('root')} ref={ref as any} {...(others as any)}>
         {children}
       </Box>
     );
@@ -120,7 +118,7 @@ export const Loader = factory<LoaderFactory>((_props, ref) => {
 
   return (
     <Box
-      {...getStyles("root")}
+      {...getStyles('root')}
       ref={ref}
       component={(loaders as any)[type!]}
       variant={variant}
@@ -131,4 +129,4 @@ export const Loader = factory<LoaderFactory>((_props, ref) => {
 });
 
 Loader.defaultLoaders = defaultLoaders;
-Loader.displayName = "@raikou/core/Loader";
+Loader.displayName = '@raikou/core/Loader';

@@ -7,23 +7,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderSquareRootStyle } from "./Square.css";
+} from '@raikou/core';
+import { LoaderSquareRootStyle } from './Square.css';
 
-export type SquareStylesNames = "root";
+export type SquareStylesNames = 'root';
 export type SquareCssVariables = {
-  root: "--square-color" | "--square-size" | "--square-speed-multiplier";
+  root: '--square-color' | '--square-size' | '--square-speed-multiplier';
 };
 
-export interface SquareProps
-  extends BoxProps,
-    StylesApiProps<SquareFactory>,
-    ElementProps<"span"> {
+export interface SquareProps extends BoxProps, StylesApiProps<SquareFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -50,15 +47,15 @@ const varsResolver = createVarsResolver<SquareFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--square-color": color ? getThemeColor(color, theme) : undefined,
-      "--square-size": getSize(size, "square-size") ?? undefined,
-      "--square-speed-multiplier": `${speedMultiplier}`,
+      '--square-color': color ? getThemeColor(color, theme) : undefined,
+      '--square-size': getSize(size, 'square-size') ?? undefined,
+      '--square-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Square = factory<SquareFactory>((_props, ref) => {
-  const props = useProps("Square", defaultProps, _props);
+  const props = useProps('Square', defaultProps, _props);
   const {
     color,
     vars,
@@ -75,7 +72,7 @@ export const Square = factory<SquareFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<SquareFactory>({
-    name: "Square",
+    name: 'Square',
     props,
     classes: {
       root: LoaderSquareRootStyle,
@@ -89,7 +86,7 @@ export const Square = factory<SquareFactory>((_props, ref) => {
     varsResolver,
   });
 
-  return <Box {...getStyles("root")} ref={ref} {...others} />;
+  return <Box {...getStyles('root')} ref={ref} {...others} />;
 });
 
-Square.displayName = "@raikou/core/Square";
+Square.displayName = '@raikou/core/Square';

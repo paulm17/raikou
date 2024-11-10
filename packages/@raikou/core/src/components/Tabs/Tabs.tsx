@@ -21,7 +21,13 @@ import { TabsProvider } from './Tabs.context';
 import { TabsList, TabsListStylesNames } from './TabsList/TabsList';
 import { TabsPanel, TabsPanelStylesNames } from './TabsPanel/TabsPanel';
 import { TabsTab, TabsTabStylesNames } from './TabsTab/TabsTab';
-import { TabsListStyle, TabsPanelStyle, TabsRootStyle, TabsTabSectionStyle, TabsTabStyle } from './Tabs.css';
+import {
+  TabsListStyle,
+  TabsPanelStyle,
+  TabsRootStyle,
+  TabsTabSectionStyle,
+  TabsTabStyle,
+} from './Tabs.css';
 
 export type TabsStylesNames =
   | 'root'
@@ -168,7 +174,7 @@ export const Tabs = factory<TabsFactory>((_props, ref) => {
       list: TabsListStyle,
       panel: TabsPanelStyle,
       tab: TabsTabStyle,
-      tabSection: TabsTabSectionStyle
+      tabSection: TabsTabSectionStyle,
     },
     className,
     style,

@@ -1,4 +1,4 @@
-import type { RaikouSize } from "@raikou/core";
+import type { RaikouSize } from '@raikou/core';
 
 export type DataTableOuterBorderProps =
   | {

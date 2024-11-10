@@ -1,8 +1,3 @@
-export { Rise } from "./Rise";
+export { Rise } from './Rise';
 
-export type {
-  RiseProps,
-  RiseStylesNames,
-  RiseCssVariables,
-  RiseFactory,
-} from "./Rise";
+export type { RiseProps, RiseStylesNames, RiseCssVariables, RiseFactory } from './Rise';

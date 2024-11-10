@@ -1,4 +1,4 @@
-import { RaikouColor, RaikouTheme, parseThemeColor } from '../../core';
+import { parseThemeColor, RaikouColor, RaikouTheme } from '../../core';
 
 interface GetMarkColorInput {
   color: RaikouColor | string | undefined;

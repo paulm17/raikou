@@ -7,27 +7,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import {
-  LoaderRing1Style,
-  LoaderRing2Style,
-  LoaderRingLoaderStyle,
-} from "./Ring.css";
+} from '@raikou/core';
+import { LoaderRing1Style, LoaderRing2Style, LoaderRingLoaderStyle } from './Ring.css';
 
-export type RingStylesNames = "root";
+export type RingStylesNames = 'root';
 export type RingCssVariables = {
-  root: "--ring-color" | "--ring-size" | "--ring-speed-multiplier";
+  root: '--ring-color' | '--ring-size' | '--ring-speed-multiplier';
 };
 
-export interface RingProps
-  extends BoxProps,
-    StylesApiProps<RingFactory>,
-    ElementProps<"span"> {
+export interface RingProps extends BoxProps, StylesApiProps<RingFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -54,15 +47,15 @@ const varsResolver = createVarsResolver<RingFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--ring-color": color ? getThemeColor(color, theme) : undefined,
-      "--ring-size": getSize(size, "ring-size") ?? undefined,
-      "--ring-speed-multiplier": `${speedMultiplier}`,
+      '--ring-color': color ? getThemeColor(color, theme) : undefined,
+      '--ring-size': getSize(size, 'ring-size') ?? undefined,
+      '--ring-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Ring = factory<RingFactory>((_props, ref) => {
-  const props = useProps("Ring", defaultProps, _props);
+  const props = useProps('Ring', defaultProps, _props);
   const {
     color,
     vars,
@@ -79,7 +72,7 @@ export const Ring = factory<RingFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<RingFactory>({
-    name: "Ring",
+    name: 'Ring',
     props,
     classes: {
       root: LoaderRingLoaderStyle,
@@ -94,11 +87,11 @@ export const Ring = factory<RingFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <span className={LoaderRing1Style} />
       <span className={LoaderRing2Style} />
     </Box>
   );
 });
 
-Ring.displayName = "@raikou/core/Ring";
+Ring.displayName = '@raikou/core/Ring';

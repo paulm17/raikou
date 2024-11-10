@@ -1,11 +1,11 @@
-import { deepMerge } from "../../utils";
-import type { RaikouTheme, RaikouThemeOverride } from "../theme.types";
+import { deepMerge } from '../../utils';
+import type { RaikouTheme, RaikouThemeOverride } from '../theme.types';
 
 export const INVALID_PRIMARY_COLOR_ERROR =
-  "[@raikou/core] RaikouProvider: Invalid theme.primaryColor, it accepts only key of theme.colors, learn more – https://mantine.dev/theming/colors/#primary-color";
+  '[@raikou/core] RaikouProvider: Invalid theme.primaryColor, it accepts only key of theme.colors, learn more – https://mantine.dev/theming/colors/#primary-color';
 
 export const INVALID_PRIMARY_SHADE_ERROR =
-  "[@raikou/core] RaikouProvider: Invalid theme.primaryShade, it accepts only 0-9 integers or an object { light: 0-9, dark: 0-9 }";
+  '[@raikou/core] RaikouProvider: Invalid theme.primaryShade, it accepts only 0-9 integers or an object { light: 0-9, dark: 0-9 }';
 
 function isValidPrimaryShade(shade: number) {
   if (shade < 0 || shade > 9) {
@@ -15,14 +15,12 @@ function isValidPrimaryShade(shade: number) {
   return parseInt(shade.toString(), 10) === shade;
 }
 
-export function validateRaikouTheme(
-  theme: RaikouTheme,
-): asserts theme is RaikouTheme {
+export function validateRaikouTheme(theme: RaikouTheme): asserts theme is RaikouTheme {
   if (!(theme.primaryColor in theme.colors)) {
     throw new Error(INVALID_PRIMARY_COLOR_ERROR);
   }
 
-  if (typeof theme.primaryShade === "object") {
+  if (typeof theme.primaryShade === 'object') {
     if (
       !isValidPrimaryShade(theme.primaryShade.dark) ||
       !isValidPrimaryShade(theme.primaryShade.light)
@@ -31,18 +29,12 @@ export function validateRaikouTheme(
     }
   }
 
-  if (
-    typeof theme.primaryShade === "number" &&
-    !isValidPrimaryShade(theme.primaryShade)
-  ) {
+  if (typeof theme.primaryShade === 'number' && !isValidPrimaryShade(theme.primaryShade)) {
     throw new Error(INVALID_PRIMARY_SHADE_ERROR);
   }
 }
 
-export function mergeRaikouTheme(
-  currentTheme: RaikouTheme,
-  themeOverride?: RaikouThemeOverride,
-) {
+export function mergeRaikouTheme(currentTheme: RaikouTheme, themeOverride?: RaikouThemeOverride) {
   if (!themeOverride) {
     validateRaikouTheme(currentTheme);
     return currentTheme;

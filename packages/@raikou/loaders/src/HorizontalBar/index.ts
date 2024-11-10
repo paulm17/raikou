@@ -1,8 +1,8 @@
-export { HorizontalBar } from "./HorizontalBar";
+export { HorizontalBar } from './HorizontalBar';
 
 export type {
   HorizontalBarProps,
   HorizontalBarStylesNames,
   HorizontalBarCssVariables,
   HorizontalBarFactory,
-} from "./HorizontalBar";
+} from './HorizontalBar';

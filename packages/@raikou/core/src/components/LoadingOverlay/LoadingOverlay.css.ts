@@ -1,20 +1,20 @@
-import { css } from "@stylefusion/react";
+import { css } from '@stylefusion/react';
 
 export const LoadingOverlayRootStyle = css({
-  position: "absolute",
+  position: 'absolute',
   inset: 0,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  overflow: "hidden",
-  zIndex: "var(--lo-z-index)",
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  overflow: 'hidden',
+  zIndex: 'var(--lo-z-index)',
 });
 
 export const LoadingOverlayLoaderStyle = css({
-  position: "relative",
-  zIndex: "calc(var(--lo-z-index) + 1)",
+  position: 'relative',
+  zIndex: 'calc(var(--lo-z-index) + 1)',
 });
 
 export const LoadingOverlayOverlayStyle = css({
-  zIndex: "var(--lo-z-index)",
+  zIndex: 'var(--lo-z-index)',
 });

@@ -15,13 +15,17 @@ import {
   RaikouSize,
   rem,
   StylesApiProps,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
   useStyles,
 } from '../../../core';
 import { useColorPickerContext } from '../ColorPicker.context';
 import { Thumb } from '../Thumb/Thumb';
-import { ColorPickerSliderOverlayStyle, ColorPickerSlidersStyle, ColorPickerThumbStyle } from '../ColorPicker.css';
+import {
+  ColorPickerSliderOverlayStyle,
+  ColorPickerSliderStyle,
+  ColorPickerThumbStyle,
+} from '../ColorPicker.css';
 
 export type ColorSliderStylesNames = 'slider' | 'sliderOverlay' | 'thumb';
 
@@ -82,7 +86,7 @@ export const ColorSlider = factory<ColorSliderFactory>((_props, ref) => {
   const _getStyles = useStyles<ColorSliderFactory>({
     name: __staticSelector,
     classes: {
-      slider: ColorPickerSlidersStyle,
+      slider: ColorPickerSliderStyle,
       sliderOverlay: ColorPickerSliderOverlayStyle,
       thumb: ColorPickerThumbStyle,
     },

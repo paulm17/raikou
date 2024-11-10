@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import { useRef, useState } from 'react';
-import { useForm } from '@raikou/form';
+// import { useForm } from '@raikou/form';
 import { Button } from '../Button';
 import { Group } from '../Group';
-import { TextInput } from '../TextInput';
+// import { TextInput } from '../TextInput';
 import { NumberInput, NumberInputHandlers } from './NumberInput';
 
 export default { title: 'NumberInput' };
@@ -228,31 +228,31 @@ export function Disabled() {
   );
 }
 
-export function FormValidateOnBlur() {
-  const form = useForm({
-    validateInputOnBlur: true,
-    validate: {
-      age: (value) => (value < 18 ? 'Error' : null),
-      name: (value) => (value.length < 2 ? 'Error' : null),
-    },
-    initialValues: {
-      name: '',
-      age: 2,
-    },
-  });
+// export function FormValidateOnBlur() {
+//   const form = useForm({
+//     validateInputOnBlur: true,
+//     validate: {
+//       age: (value) => (value < 18 ? 'Error' : null),
+//       name: (value) => (value.length < 2 ? 'Error' : null),
+//     },
+//     initialValues: {
+//       name: '',
+//       age: 2,
+//     },
+//   });
 
-  return (
-    <div style={{ padding: 40, maxWidth: 340 }}>
-      <form onSubmit={form.onSubmit((values) => console.log(values))}>
-        <NumberInput label="Age" {...form.getInputProps('age')} />
-        <TextInput label="Name" {...form.getInputProps('name')} />
-        <Group justify="flex-end" mt="xl">
-          <Button type="submit">Submit</Button>
-        </Group>
-      </form>
-    </div>
-  );
-}
+//   return (
+//     <div style={{ padding: 40, maxWidth: 340 }}>
+//       <form onSubmit={form.onSubmit((values) => console.log(values))}>
+//         <NumberInput label="Age" {...form.getInputProps('age')} />
+//         <TextInput label="Name" {...form.getInputProps('name')} />
+//         <Group justify="flex-end" mt="xl">
+//           <Button type="submit">Submit</Button>
+//         </Group>
+//       </form>
+//     </div>
+//   );
+// }
 
 export function ExternalOnChange() {
   const [value, setValue] = useState(0);

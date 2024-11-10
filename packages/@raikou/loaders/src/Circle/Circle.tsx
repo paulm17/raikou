@@ -7,12 +7,12 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
+} from '@raikou/core';
 import {
   LoaderCircle1Style,
   LoaderCircle2Style,
@@ -20,17 +20,14 @@ import {
   LoaderCircle4Style,
   LoaderCircle5Style,
   LoaderCircleRootStyle,
-} from "./Circle.css";
+} from './Circle.css';
 
-export type CircleStylesNames = "root";
+export type CircleStylesNames = 'root';
 export type CircleCssVariables = {
-  root: "--circle-color" | "--circle-size" | "--circle-speed-multiplier";
+  root: '--circle-color' | '--circle-size' | '--circle-speed-multiplier';
 };
 
-export interface CircleProps
-  extends BoxProps,
-    StylesApiProps<CircleFactory>,
-    ElementProps<"span"> {
+export interface CircleProps extends BoxProps, StylesApiProps<CircleFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -57,15 +54,15 @@ const varsResolver = createVarsResolver<CircleFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--circle-color": color ? getThemeColor(color, theme) : undefined,
-      "--circle-size": getSize(size, "circle-size") ?? undefined,
-      "--circle-speed-multiplier": `${speedMultiplier}`,
+      '--circle-color': color ? getThemeColor(color, theme) : undefined,
+      '--circle-size': getSize(size, 'circle-size') ?? undefined,
+      '--circle-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Circle = factory<CircleFactory>((_props, ref) => {
-  const props = useProps("Circle", defaultProps, _props);
+  const props = useProps('Circle', defaultProps, _props);
   const {
     color,
     vars,
@@ -82,7 +79,7 @@ export const Circle = factory<CircleFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<CircleFactory>({
-    name: "Circle",
+    name: 'Circle',
     props,
     classes: {
       root: LoaderCircleRootStyle,
@@ -97,7 +94,7 @@ export const Circle = factory<CircleFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <span className={LoaderCircle1Style} />
       <span className={LoaderCircle2Style} />
       <span className={LoaderCircle3Style} />
@@ -107,4 +104,4 @@ export const Circle = factory<CircleFactory>((_props, ref) => {
   );
 });
 
-Circle.displayName = "@raikou/core/Circle";
+Circle.displayName = '@raikou/core/Circle';

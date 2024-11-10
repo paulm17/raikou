@@ -28,7 +28,17 @@ import { getClientPosition } from '../utils/get-client-position/get-client-posit
 import { getFloatingValue } from '../utils/get-floating-value/get-gloating-value';
 import { getPosition } from '../utils/get-position/get-position';
 import { getPrecision } from '../utils/get-precision/get-precision';
-import { SliderLabelStyle, SliderMarkLabelStyle, SliderMarkStyle, SliderMarkWrapperStyle, SliderRootStyle, SliderThumbStyle, SliderTrackBarStyle, SliderTrackContainerStyle, SliderTrackStyle } from '../Slider.css';
+import {
+  SliderLabelStyle,
+  SliderMarkLabelStyle,
+  SliderMarkStyle,
+  SliderMarkWrapperStyle,
+  SliderRootStyle,
+  SliderThumbStyle,
+  SliderTrackBarStyle,
+  SliderTrackContainerStyle,
+  SliderTrackStyle,
+} from '../Slider.css';
 
 export type RangeSliderValue = [number, number];
 

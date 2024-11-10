@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useState } from 'react';
 import { Box } from '../../core';
 import { Group } from '../Group';
@@ -125,6 +126,8 @@ export function Controlled() {
         trapFocus
         radius="md"
         returnFocus
+        onClose={() => console.log('closed')}
+        onOpen={() => console.log('opened')}
       >
         <Popover.Target>
           <button type="button" onClick={() => setState((c) => !c)}>

@@ -1,14 +1,16 @@
-import { ThemeProvider } from "next-themes";
-import { suppressNextjsWarning } from "./suppress-nextjs-warning";
-import { defaultCssVariablesResolver } from "./RaikouCssVariables";
+import { ThemeProvider } from 'next-themes';
 // import type { RaikouColorScheme, RaikouThemeOverride } from "./theme.types";
-import { DEFAULT_THEME } from "./default-theme";
-import "./global.css";
-import { useRespectReduceMotion } from "./use-respect-reduce-motion";
-import { DEFAULT_COLORS } from "./default-colors";
-import { useTheme } from "@stylefusion/react";
-import { RaikouTheme } from "./theme.types";
-import { mergeRaikouTheme } from "./merge-raikou-theme";
+import { DEFAULT_THEME } from './default-theme';
+import { defaultCssVariablesResolver } from './RaikouCssVariables';
+import { suppressNextjsWarning } from './suppress-nextjs-warning';
+
+import './global.css';
+
+import { useTheme } from '@stylefusion/react';
+import { DEFAULT_COLORS } from './default-colors';
+import { mergeRaikouTheme } from './merge-raikou-theme';
+import { RaikouTheme } from './theme.types';
+import { useRespectReduceMotion } from './use-respect-reduce-motion';
 
 export interface RaikouStylesTransform {
   sx?: () => (sx: any) => string;
@@ -33,7 +35,7 @@ suppressNextjsWarning();
 
 export function RaikouProvider({
   children,
-  themeStorageKey = "raikou-color-scheme",
+  themeStorageKey = 'raikou-color-scheme',
   stylesTransform,
   getRootElement = () => document.documentElement,
 }: RaikouProviderProps) {
@@ -51,7 +53,7 @@ export function RaikouProvider({
   return (
     <ThemeProvider
       storageKey={themeStorageKey}
-      themes={["light", "dark"]}
+      themes={['light', 'dark']}
       attribute={`data-${themeStorageKey}`}
       enableColorScheme
       enableSystem
@@ -66,16 +68,16 @@ export function getPigmentCSSTheme(theme?: RaikouTheme) {
   const defaultTheme = mergeRaikouTheme(DEFAULT_THEME, theme);
 
   const input = {
-    zIndexApp: "100",
-    zIndexModal: "200",
-    zIndexPopover: "300",
-    zIndexOverlay: "400",
-    zIndexMax: "400",
-    webkitFontSmoothing: "antialiased",
-    colorScheme: "light dark",
-    mozFontSmoothing: "grayscale",
+    zIndexApp: '100',
+    zIndexModal: '200',
+    zIndexPopover: '300',
+    zIndexOverlay: '400',
+    zIndexMax: '400',
+    webkitFontSmoothing: 'antialiased',
+    colorScheme: 'light dark',
+    mozFontSmoothing: 'grayscale',
     lineHeight: 1.55,
-    radiusDefault: "calc(0.25rem * var(--raikou-scale))",
+    radiusDefault: 'calc(0.25rem * var(--raikou-scale))',
   };
 
   for (const [key, value] of Object.entries(input)) {
@@ -91,8 +93,8 @@ export function getPigmentCSSTheme(theme?: RaikouTheme) {
   const cssTheme = {
     ...output,
     colors: {
-      black: "#000",
-      white: "#fff",
+      black: '#000',
+      white: '#fff',
       ...createIndexedColors(),
     },
     colorSchemes: {
@@ -110,10 +112,10 @@ export function getPigmentCSSTheme(theme?: RaikouTheme) {
 
 function convertKeyToDelimitedWord(key: string) {
   return key
-    .replace(/([A-Z])/g, "-$1")
-    .replace(/^-/, "")
+    .replace(/([A-Z])/g, '-$1')
+    .replace(/^-/, '')
     .replace(/([A-Z]{2,})/g, (match) => {
-      if (["XS", "SM", "MD", "LG", "XL"].includes(match)) {
+      if (['XS', 'SM', 'MD', 'LG', 'XL'].includes(match)) {
         return match.toLowerCase();
       }
       return match;
@@ -125,9 +127,7 @@ function createIndexedColors() {
   return Object.fromEntries(
     Object.entries(DEFAULT_COLORS).map(([color, shades]) => [
       color,
-      Object.fromEntries(
-        shades.map((shade, index) => [index.toString(), shade]),
-      ),
-    ]),
+      Object.fromEntries(shades.map((shade, index) => [index.toString(), shade])),
+    ])
   );
 }

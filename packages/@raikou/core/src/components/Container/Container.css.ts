@@ -1,4 +1,4 @@
-import { css } from "@stylefusion/react";
+import { css } from '@stylefusion/react';
 
 export const ContainerRootStyle = css({
   '--container-size-xs': '540px',
@@ -15,4 +15,4 @@ export const ContainerRootStyle = css({
   '&:_where([data-fluid])': {
     maxWidth: '100%',
   },
-})
+});

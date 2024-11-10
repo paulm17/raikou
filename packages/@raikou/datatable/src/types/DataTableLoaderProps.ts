@@ -1,4 +1,4 @@
-import type { RaikouColor, RaikouLoader, RaikouSize } from "@raikou/core";
+import type { RaikouColor, RaikouLoader, RaikouSize } from '@raikou/core';
 
 export type DataTableLoaderProps = {
   /**

@@ -23,8 +23,8 @@ import {
   getThemeColor,
   RaikouColor,
   StylesApiProps,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
   useResolvedStylesApi,
   useStyles,
 } from '@raikou/core';
@@ -33,7 +33,14 @@ import { ChartLegend, ChartLegendStylesNames } from '../ChartLegend';
 import { ChartTooltip, ChartTooltipStylesNames } from '../ChartTooltip';
 import { PointLabel } from '../PointLabel/PointLabel';
 import type { BaseChartStylesNames, ChartSeries, GridChartBaseProps } from '../types';
-import { GridChartAxisLabelStyle, GridChartAxisStyle, GridChartContainerStyle, GridChartGridStyle, GridChartRootStyle, GridChartTooltipStyle } from '../grid-chart.css';
+import {
+  GridChartAxisLabelStyle,
+  GridChartAxisStyle,
+  GridChartContainerStyle,
+  GridChartGridStyle,
+  GridChartRootStyle,
+  GridChartTooltipStyle,
+} from '../grid-chart.css';
 
 export type LineChartType = 'default' | 'gradient';
 
@@ -323,7 +330,7 @@ export const LineChart = factory<LineChartFactory>((_props, ref) => {
     tickLine: withYTickLine ? { stroke: 'currentColor' } : false,
     allowDecimals: true,
     unit,
-    tickFormatter: valueFormatter,
+    tickFormatter: orientation === 'vertical' ? undefined : valueFormatter,
     ...getStyles('axis'),
   };
 
@@ -380,6 +387,7 @@ export const LineChart = factory<LineChartFactory>((_props, ref) => {
             interval="preserveStartEnd"
             tickLine={withXTickLine ? { stroke: 'currentColor' } : false}
             minTickGap={5}
+            tickFormatter={orientation === 'vertical' ? valueFormatter : undefined}
             {...getStyles('axis')}
             {...xAxisProps}
           >

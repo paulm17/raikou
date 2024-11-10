@@ -62,7 +62,7 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((_props, ref) => 
     name: 'ActionIconGroup',
     props,
     classes: {
-      group: actionIconGroupStyle
+      group: actionIconGroupStyle,
     },
     className,
     style,

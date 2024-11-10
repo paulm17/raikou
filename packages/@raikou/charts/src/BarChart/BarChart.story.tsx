@@ -108,14 +108,15 @@ export function Vertical() {
         data={data}
         dataKey="month"
         type="stacked"
-        fillOpacity={0.6}
+        // fillOpacity={0.6}
         orientation="vertical"
         series={[
           { name: 'Smartphones', color: 'indigo.6' },
           { name: 'Laptops', color: 'blue.6' },
-          { name: 'Tablets', color: 'teal.6' },
+          // { name: 'Tablets', color: 'teal.6' },
         ]}
         withLegend
+        withBarValueLabel
       />
     </div>
   );
@@ -153,5 +154,25 @@ export function ReferenceLines() {
         withLegend
       />
     </div>
+  );
+}
+
+export function VerticalOrientationValueFormatter() {
+  return (
+    <BarChart
+      h={300}
+      p="xl"
+      data={data}
+      dataKey="month"
+      type="stacked"
+      orientation="vertical"
+      valueFormatter={(value) => `${value * 2}%`}
+      yAxisProps={{ width: 80 }}
+      series={[
+        { name: 'Smartphones', color: 'violet.6' },
+        { name: 'Laptops', color: 'blue.6' },
+        { name: 'Tablets', color: 'teal.6' },
+      ]}
+    />
   );
 }

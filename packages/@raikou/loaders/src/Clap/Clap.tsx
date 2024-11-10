@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment } from 'react';
 import {
   Box,
   BoxProps,
@@ -8,23 +8,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderClapRootStyle, LoaderClapBallStyle } from "./Clap.css";
+} from '@raikou/core';
+import { LoaderClapBallStyle, LoaderClapRootStyle } from './Clap.css';
 
-export type ClapStylesNames = "root";
+export type ClapStylesNames = 'root';
 export type ClapCssVariables = {
-  root: "--clap-color" | "--clap-size" | "--clap-speed-multiplier";
+  root: '--clap-color' | '--clap-size' | '--clap-speed-multiplier';
 };
 
-export interface ClapProps
-  extends BoxProps,
-    StylesApiProps<ClapFactory>,
-    ElementProps<"span"> {
+export interface ClapProps extends BoxProps, StylesApiProps<ClapFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -48,7 +45,7 @@ const defaultProps: Partial<ClapProps> = {
 };
 
 const getNewSize = (size: RaikouSize | (string & {}) | number | undefined) => {
-  if (typeof size === "string") {
+  if (typeof size === 'string') {
     const sizes: Record<RaikouSize, number> = {
       xs: 15,
       sm: 18,
@@ -71,15 +68,15 @@ const varsResolver = createVarsResolver<ClapFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--clap-color": color ? getThemeColor(color, theme) : undefined,
-      "--clap-size": getSize(size, "clap-size") ?? undefined,
-      "--clap-speed-multiplier": `${speedMultiplier}`,
+      '--clap-color': color ? getThemeColor(color, theme) : undefined,
+      '--clap-size': getSize(size, 'clap-size') ?? undefined,
+      '--clap-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Clap = factory<ClapFactory>((_props, ref) => {
-  const props = useProps("Clap", defaultProps, _props);
+  const props = useProps('Clap', defaultProps, _props);
   const {
     color,
     vars,
@@ -96,7 +93,7 @@ export const Clap = factory<ClapFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<ClapFactory>({
-    name: "Clap",
+    name: 'Clap',
     props,
     classes: {
       root: LoaderClapRootStyle,
@@ -113,7 +110,7 @@ export const Clap = factory<ClapFactory>((_props, ref) => {
   const newSize = getNewSize(size) as number;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       {[...Array(7)].map((_, i) => {
         const countBalls = 7;
         const ballSize = newSize / 5;
@@ -156,4 +153,4 @@ export const Clap = factory<ClapFactory>((_props, ref) => {
   );
 });
 
-Clap.displayName = "@raikou/core/Clap";
+Clap.displayName = '@raikou/core/Clap';

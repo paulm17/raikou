@@ -10,9 +10,9 @@ import {
   Factory,
   Input,
   InputVariant,
-  RaikouSize,
   Popover,
   PopoverProps,
+  RaikouSize,
   StylesApiProps,
   useInputProps,
 } from '@raikou/core';

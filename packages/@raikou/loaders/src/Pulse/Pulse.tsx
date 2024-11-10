@@ -7,23 +7,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderPulseRootStyle, LoaderPulseCubeStyle } from "./Pulse.css";
+} from '@raikou/core';
+import { LoaderPulseCubeStyle, LoaderPulseRootStyle } from './Pulse.css';
 
-export type PulseStylesNames = "root";
+export type PulseStylesNames = 'root';
 export type PulseCssVariables = {
-  root: "--pulse-color" | "--pulse-size";
+  root: '--pulse-color' | '--pulse-size';
 };
 
-export interface PulseProps
-  extends BoxProps,
-    StylesApiProps<PulseFactory>,
-    ElementProps<"span"> {
+export interface PulseProps extends BoxProps, StylesApiProps<PulseFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -46,7 +43,7 @@ const defaultProps: Partial<PulseProps> = {
 };
 
 const getNewSize = (size: RaikouSize | (string & {}) | number | undefined) => {
-  if (typeof size === "string") {
+  if (typeof size === 'string') {
     const sizes: Record<RaikouSize, number> = {
       xs: 18,
       sm: 22,
@@ -69,14 +66,14 @@ const varsResolver = createVarsResolver<PulseFactory>(
   // @ts-ignore
   (theme, { color, size }) => ({
     root: {
-      "--pulse-color": color ? getThemeColor(color, theme) : undefined,
-      "--pulse-size": getSize(size, "pulse-size") ?? undefined,
+      '--pulse-color': color ? getThemeColor(color, theme) : undefined,
+      '--pulse-size': getSize(size, 'pulse-size') ?? undefined,
     },
-  }),
+  })
 );
 
 export const Pulse = factory<PulseFactory>((_props, ref) => {
-  const props = useProps("Pulse", defaultProps, _props);
+  const props = useProps('Pulse', defaultProps, _props);
   const {
     color,
     vars,
@@ -92,7 +89,7 @@ export const Pulse = factory<PulseFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<PulseFactory>({
-    name: "Pulse",
+    name: 'Pulse',
     props,
     classes: {
       root: LoaderPulseRootStyle,
@@ -109,7 +106,7 @@ export const Pulse = factory<PulseFactory>((_props, ref) => {
   const newSize = getNewSize(size) as number;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       {/* @ts-ignore */}
       {[...Array(3)].map((_, i) => {
         return (
@@ -128,4 +125,4 @@ export const Pulse = factory<PulseFactory>((_props, ref) => {
   );
 });
 
-Pulse.displayName = "@raikou/core/Pulse";
+Pulse.displayName = '@raikou/core/Pulse';

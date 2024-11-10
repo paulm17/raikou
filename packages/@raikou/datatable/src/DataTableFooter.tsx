@@ -1,10 +1,10 @@
-import { TableTfoot, TableTr, rem, type RaikouStyleProp } from "@raikou/core";
-import clsx from "clsx";
-import { forwardRef } from "react";
-import { DataTableFooterCell } from "./DataTableFooterCell";
-import { DataTableFooterSelectorPlaceholderCell } from "./DataTableFooterSelectorPlaceholderCell";
-import type { DataTableColumn, DataTableDefaultColumnProps } from "./types";
-import { dataTableFooterStyle } from "./DataTableFooter.css";
+import { forwardRef } from 'react';
+import clsx from 'clsx';
+import { rem, TableTfoot, TableTr, type RaikouStyleProp } from '@raikou/core';
+import { DataTableFooterCell } from './DataTableFooterCell';
+import { DataTableFooterSelectorPlaceholderCell } from './DataTableFooterSelectorPlaceholderCell';
+import type { DataTableColumn, DataTableDefaultColumnProps } from './types';
+import { dataTableFooterStyle } from './DataTableFooter.css';
 
 type DataTableFooterProps<T> = {
   className: string | undefined;
@@ -26,7 +26,7 @@ export const DataTableFooter = forwardRef(function DataTableFooter<T>(
     selectorCellShadowVisible,
     scrollDiff,
   }: DataTableFooterProps<T>,
-  ref: React.ForwardedRef<HTMLTableSectionElement>,
+  ref: React.ForwardedRef<HTMLTableSectionElement>
 ) {
   const relative = scrollDiff < 0;
   return (
@@ -35,7 +35,7 @@ export const DataTableFooter = forwardRef(function DataTableFooter<T>(
       className={clsx(dataTableFooterStyle, className)}
       style={[
         {
-          position: relative ? "relative" : "sticky",
+          position: relative ? 'relative' : 'sticky',
           bottom: rem(relative ? scrollDiff : 0),
         },
         style,
@@ -43,9 +43,7 @@ export const DataTableFooter = forwardRef(function DataTableFooter<T>(
     >
       <TableTr>
         {selectionVisible && (
-          <DataTableFooterSelectorPlaceholderCell
-            shadowVisible={selectorCellShadowVisible}
-          />
+          <DataTableFooterSelectorPlaceholderCell shadowVisible={selectorCellShadowVisible} />
         )}
         {columns.map(({ hidden, ...columnProps }) => {
           if (hidden) return null;
@@ -82,5 +80,5 @@ export const DataTableFooter = forwardRef(function DataTableFooter<T>(
 }) as <T>(
   props: DataTableFooterProps<T> & {
     ref: React.ForwardedRef<HTMLTableSectionElement>;
-  },
+  }
 ) => JSX.Element;

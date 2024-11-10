@@ -14,7 +14,12 @@ import {
 import { ModalBase, ModalBaseProps, ModalBaseStylesNames } from '../ModalBase';
 import { RaikouTransition } from '../Transition';
 import { DrawerProvider, ScrollAreaComponent } from './Drawer.context';
-import { DrawerContentStyle, DrawerHeaderStyle, DrawerInnerStyle, DrawerRootStyle } from './Drawer.css';
+import {
+  DrawerContentStyle,
+  DrawerHeaderStyle,
+  DrawerInnerStyle,
+  DrawerRootStyle,
+} from './Drawer.css';
 
 type DrawerPosition = 'bottom' | 'left' | 'right' | 'top';
 

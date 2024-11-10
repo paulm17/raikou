@@ -1,19 +1,19 @@
-import { keys } from "../../../utils";
-import type { RaikouStyleProps, StyleProp } from "../style-props.types";
-import type { SystemPropData } from "../style-props-data";
-import { resolvers } from "../resolvers";
-import { RaikouTheme } from "../../../RaikouProvider";
-import type { SortMediaQueriesResult } from "./sort-media-queries";
-import { sortMediaQueries } from "./sort-media-queries";
+import { RaikouTheme } from '../../../RaikouProvider';
+import { keys } from '../../../utils';
+import { resolvers } from '../resolvers';
+import type { SystemPropData } from '../style-props-data';
+import type { RaikouStyleProps, StyleProp } from '../style-props.types';
+import type { SortMediaQueriesResult } from './sort-media-queries';
+import { sortMediaQueries } from './sort-media-queries';
 
 function hasResponsiveStyles(styleProp: StyleProp<unknown>) {
-  if (typeof styleProp !== "object" || styleProp === null) {
+  if (typeof styleProp !== 'object' || styleProp === null) {
     return false;
   }
 
   const breakpoints = Object.keys(styleProp);
 
-  if (breakpoints.length === 1 && breakpoints[0] === "base") {
+  if (breakpoints.length === 1 && breakpoints[0] === 'base') {
     return false;
   }
 
@@ -21,8 +21,8 @@ function hasResponsiveStyles(styleProp: StyleProp<unknown>) {
 }
 
 function getBaseValue(value: StyleProp<unknown>) {
-  if (typeof value === "object" && value !== null) {
-    if ("base" in value) {
+  if (typeof value === 'object' && value !== null) {
+    if ('base' in value) {
       return value.base;
     }
 
@@ -33,15 +33,15 @@ function getBaseValue(value: StyleProp<unknown>) {
 }
 
 function getBreakpointKeys(value: StyleProp<unknown>) {
-  if (typeof value === "object" && value !== null) {
-    return keys(value).filter((key) => key !== "base");
+  if (typeof value === 'object' && value !== null) {
+    return keys(value).filter((key) => key !== 'base');
   }
 
   return [];
 }
 
 function getBreakpointValue(value: StyleProp<unknown>, breakpoint: string) {
-  if (typeof value === "object" && value !== null && breakpoint in value) {
+  if (typeof value === 'object' && value !== null && breakpoint in value) {
     return value[breakpoint as keyof typeof value];
   }
 

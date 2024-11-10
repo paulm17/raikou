@@ -1,3 +1,5 @@
+import { useRef, useState } from 'react';
+import clsx from 'clsx';
 import {
   ActionIcon,
   Box,
@@ -7,26 +9,24 @@ import {
   TableTh,
   type RaikouStyleProp,
   type RaikouTheme,
-} from "@raikou/core";
-import clsx from "clsx";
-import { useRef, useState } from "react";
-import { useDataTableColumnsContext } from "./DataTableColumns.context";
-import { DataTableHeaderCellFilter } from "./DataTableHeaderCellFilter";
-import { DataTableResizableHeaderHandle } from "./DataTableResizableHeaderHandle";
-import { useMediaQueryStringOrFunction } from "./hooks";
-import { IconArrowUp } from "./icons/IconArrowUp";
-import { IconArrowsVertical } from "./icons/IconArrowsVertical";
-import { IconGripVertical } from "./icons/IconGripVertical";
-import { IconX } from "./icons/IconX";
-import type { DataTableColumn, DataTableSortProps } from "./types";
+} from '@raikou/core';
+import { useDataTableColumnsContext } from './DataTableColumns.context';
+import { DataTableHeaderCellFilter } from './DataTableHeaderCellFilter';
+import { DataTableResizableHeaderHandle } from './DataTableResizableHeaderHandle';
+import { useMediaQueryStringOrFunction } from './hooks';
+import { IconArrowsVertical } from './icons/IconArrowsVertical';
+import { IconArrowUp } from './icons/IconArrowUp';
+import { IconGripVertical } from './icons/IconGripVertical';
+import { IconX } from './icons/IconX';
+import type { DataTableColumn, DataTableSortProps } from './types';
 import {
   ELLIPSIS,
   NOWRAP,
   TEXT_ALIGN_CENTER,
   TEXT_ALIGN_LEFT,
   TEXT_ALIGN_RIGHT,
-} from "./utilityClasses";
-import { humanize } from "./utils";
+} from './utilityClasses';
+import { humanize } from './utils';
 import {
   dataTableHeaderCellDraggableActionIconStyle,
   dataTableHeaderCellDraggableStyle,
@@ -40,28 +40,28 @@ import {
   dataTableHeaderCellSortableUnsortedIconStyle,
   dataTableHeaderCellToggleableIconStyle,
   dataTableHeaderCellToggleableStyle,
-} from "./DataTableHeaderCell.css";
+} from './DataTableHeaderCell.css';
 
 type DataTableHeaderCellProps<T> = {
   className: string | undefined;
   style: RaikouStyleProp | undefined;
   visibleMediaQuery: string | ((theme: RaikouTheme) => string) | undefined;
   title: React.ReactNode | undefined;
-  sortStatus: DataTableSortProps<T>["sortStatus"];
-  sortIcons: DataTableSortProps<T>["sortIcons"];
-  onSortStatusChange: DataTableSortProps<T>["onSortStatusChange"];
+  sortStatus: DataTableSortProps<T>['sortStatus'];
+  sortIcons: DataTableSortProps<T>['sortIcons'];
+  onSortStatusChange: DataTableSortProps<T>['onSortStatusChange'];
 } & Pick<
   DataTableColumn<T>,
-  | "accessor"
-  | "sortable"
-  | "draggable"
-  | "toggleable"
-  | "resizable"
-  | "textAlign"
-  | "width"
-  | "filter"
-  | "filtering"
-  | "sortKey"
+  | 'accessor'
+  | 'sortable'
+  | 'draggable'
+  | 'toggleable'
+  | 'resizable'
+  | 'textAlign'
+  | 'width'
+  | 'filter'
+  | 'filtering'
+  | 'sortKey'
 >;
 
 export function DataTableHeaderCell<T>({
@@ -90,7 +90,7 @@ export function DataTableHeaderCell<T>({
 
   if (!useMediaQueryStringOrFunction(visibleMediaQuery)) return null;
   const text = title ?? humanize(accessor as string);
-  const tooltip = typeof text === "string" ? text : undefined;
+  const tooltip = typeof text === 'string' ? text : undefined;
 
   const sortAction =
     sortable && onSortStatusChange
@@ -102,10 +102,10 @@ export function DataTableHeaderCell<T>({
             columnAccessor: accessor,
             direction:
               sortStatus?.columnAccessor === accessor
-                ? sortStatus.direction === "asc"
-                  ? "desc"
-                  : "asc"
-                : (sortStatus?.direction ?? "asc"),
+                ? sortStatus.direction === 'asc'
+                  ? 'desc'
+                  : 'asc'
+                : (sortStatus?.direction ?? 'asc'),
           });
         }
       : undefined;
@@ -145,7 +145,7 @@ export function DataTableHeaderCell<T>({
           return { ...c, toggled: false };
         }
         return c;
-      }),
+      })
     );
   };
 
@@ -157,21 +157,19 @@ export function DataTableHeaderCell<T>({
           [dataTableHeaderCellToggleableStyle]: toggleable,
           [dataTableHeaderCellResizableStyle]: resizable,
         },
-        className,
+        className
       )}
       style={[
         {
           width,
-          ...(!resizable
-            ? { minWidth: width, maxWidth: width }
-            : { minWidth: "1px" }),
+          ...(!resizable ? { minWidth: width, maxWidth: width } : { minWidth: '1px' }),
         },
         style,
       ]}
-      role={sortable ? "button" : undefined}
+      role={sortable ? 'button' : undefined}
       tabIndex={sortable ? 0 : undefined}
       onClick={sortAction}
-      onKeyDown={(e) => e.key === "Enter" && sortAction?.()}
+      onKeyDown={(e) => e.key === 'Enter' && sortAction?.()}
       ref={columnRef}
     >
       <Group
@@ -211,12 +209,12 @@ export function DataTableHeaderCell<T>({
             className={clsx(
               dataTableHeaderCellSortableTextStyle,
               {
-                [TEXT_ALIGN_LEFT]: textAlign === "left",
-                [TEXT_ALIGN_CENTER]: textAlign === "center",
-                [TEXT_ALIGN_RIGHT]: textAlign === "right",
+                [TEXT_ALIGN_LEFT]: textAlign === 'left',
+                [TEXT_ALIGN_CENTER]: textAlign === 'center',
+                [TEXT_ALIGN_RIGHT]: textAlign === 'right',
               },
               NOWRAP,
-              ELLIPSIS,
+              ELLIPSIS
             )}
             title={tooltip}
           >
@@ -239,11 +237,10 @@ export function DataTableHeaderCell<T>({
             {sortStatus?.columnAccessor === accessor ? (
               <Center
                 className={clsx(dataTableHeaderCellSortableIconStyle, {
-                  [dataTableHeaderCellSortableIconReversedStyle]:
-                    sortStatus.direction === "desc",
+                  [dataTableHeaderCellSortableIconReversedStyle]: sortStatus.direction === 'desc',
                 })}
                 role="img"
-                aria-label={`Sorted ${sortStatus.direction === "desc" ? "descending" : "ascending"}`}
+                aria-label={`Sorted ${sortStatus.direction === 'desc' ? 'descending' : 'ascending'}`}
               >
                 {sortIcons?.sorted || <IconArrowUp />}
               </Center>
@@ -259,16 +256,11 @@ export function DataTableHeaderCell<T>({
           </>
         ) : null}
         {filter ? (
-          <DataTableHeaderCellFilter isActive={!!filtering}>
-            {filter}
-          </DataTableHeaderCellFilter>
+          <DataTableHeaderCellFilter isActive={!!filtering}>{filter}</DataTableHeaderCellFilter>
         ) : null}
       </Group>
       {resizable ? (
-        <DataTableResizableHeaderHandle
-          accessor={accessor as string}
-          columnRef={columnRef}
-        />
+        <DataTableResizableHeaderHandle accessor={accessor as string} columnRef={columnRef} />
       ) : null}
     </TableTh>
   );

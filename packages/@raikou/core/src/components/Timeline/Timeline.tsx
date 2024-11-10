@@ -19,7 +19,13 @@ import {
 } from '../../core';
 import { TimelineProvider } from './Timeline.context';
 import { TimelineItem, TimelineItemStylesNames } from './TimelineItem/TimelineItem';
-import { TimelineItemBodyStyle, TimelineItemBulletStyle, TimelineItemStyle, TimelineItemTitleStyle, TimelineRootStyle } from './Timeline.css';
+import {
+  TimelineItemBodyStyle,
+  TimelineItemBulletStyle,
+  TimelineItemStyle,
+  TimelineItemTitleStyle,
+  TimelineRootStyle,
+} from './Timeline.css';
 
 export type TimelineStylesNames = 'root' | TimelineItemStylesNames;
 export type TimelineCssVariables = {

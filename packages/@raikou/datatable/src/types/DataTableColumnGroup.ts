@@ -1,6 +1,6 @@
-import type { RaikouStyleProp } from "@raikou/core";
-import type { DataTableColumn } from "./DataTableColumn";
-import type { DataTableColumnTextAlign } from "./DataTableColumnTextAlign";
+import type { RaikouStyleProp } from '@raikou/core';
+import type { DataTableColumn } from './DataTableColumn';
+import type { DataTableColumnTextAlign } from './DataTableColumnTextAlign';
 
 export type DataTableColumnGroup<T = Record<string, unknown>> = {
   /**

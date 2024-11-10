@@ -20,7 +20,13 @@ import {
 import { CheckIcon } from '../Checkbox';
 import { useChipGroupContext } from './ChipGroup.context';
 import { ChipGroup } from './ChipGroup/ChipGroup';
-import { ChipCheckIconStyles, ChipIconWrapperStyles, ChipInputStyles, ChipLabelStyles, ChipRootStyles } from './Chip.css';
+import {
+  ChipCheckIconStyles,
+  ChipIconWrapperStyles,
+  ChipInputStyles,
+  ChipLabelStyles,
+  ChipRootStyles,
+} from './Chip.css';
 
 export type ChipStylesNames = 'root' | 'input' | 'iconWrapper' | 'checkIcon' | 'label';
 export type ChipVariant = 'outline' | 'filled' | 'light';
@@ -96,6 +102,7 @@ export type ChipFactory = Factory<{
 
 const defaultProps: Partial<ChipProps> = {
   type: 'checkbox',
+  variant: 'filled', // present otherwise is undefined
 };
 
 const varsResolver = createVarsResolver<ChipFactory>(

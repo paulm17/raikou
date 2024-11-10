@@ -1,15 +1,15 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import { pigment, extendTheme } from "@stylefusion/vite-plugin";
-import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
-import { getPigmentCSSTheme } from "@raikou/system";
+import { extendTheme, pigment } from '@stylefusion/vite-plugin';
+import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
+import { getPigmentCSSTheme } from '@raikou/system';
 
 const { cssTheme, rawTheme } = getPigmentCSSTheme();
 
 const theme = extendTheme({
-  cssVarPrefix: "raikou",
+  cssVarPrefix: 'raikou',
   getSelector: (colorScheme) =>
-    colorScheme ? `[data-raikou-color-scheme='${colorScheme}']` : ":root",
+    colorScheme ? `[data-raikou-color-scheme='${colorScheme}']` : ':root',
   ...cssTheme,
 });
 
@@ -26,7 +26,6 @@ export default defineConfig({
   ],
   optimizeDeps: {
     include: ['prop-types', 'react-is'],
-    exclude: ['dayjs']
   },
   resolve: {
     alias: {

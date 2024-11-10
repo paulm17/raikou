@@ -7,27 +7,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import {
-  LoaderClockRootStyle,
-  LoaderClockHourStyle,
-  LoaderClockMinuteStyle,
-} from "./Clock.css";
+} from '@raikou/core';
+import { LoaderClockHourStyle, LoaderClockMinuteStyle, LoaderClockRootStyle } from './Clock.css';
 
-export type ClockStylesNames = "root";
+export type ClockStylesNames = 'root';
 export type ClockCssVariables = {
-  root: "--clock-color" | "--clock-size" | "--clock-speed-multiplier";
+  root: '--clock-color' | '--clock-size' | '--clock-speed-multiplier';
 };
 
-export interface ClockProps
-  extends BoxProps,
-    StylesApiProps<ClockFactory>,
-    ElementProps<"span"> {
+export interface ClockProps extends BoxProps, StylesApiProps<ClockFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -54,15 +47,15 @@ const varsResolver = createVarsResolver<ClockFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--clock-color": color ? getThemeColor(color, theme) : undefined,
-      "--clock-size": getSize(size, "clock-size") ?? undefined,
-      "--clock-speed-multiplier": `${speedMultiplier}`,
+      '--clock-color': color ? getThemeColor(color, theme) : undefined,
+      '--clock-size': getSize(size, 'clock-size') ?? undefined,
+      '--clock-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Clock = factory<ClockFactory>((_props, ref) => {
-  const props = useProps("Clock", defaultProps, _props);
+  const props = useProps('Clock', defaultProps, _props);
   const {
     color,
     vars,
@@ -79,7 +72,7 @@ export const Clock = factory<ClockFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<ClockFactory>({
-    name: "Clock",
+    name: 'Clock',
     props,
     classes: {
       root: LoaderClockRootStyle,
@@ -94,11 +87,11 @@ export const Clock = factory<ClockFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <span className={LoaderClockHourStyle} />
       <span className={LoaderClockMinuteStyle} />
     </Box>
   );
 });
 
-Clock.displayName = "@raikou/core/Clock";
+Clock.displayName = '@raikou/core/Clock';

@@ -1,7 +1,7 @@
-import { TableTd, type RaikouStyleProp } from "@raikou/core";
-import clsx from "clsx";
-import { useMediaQueryStringOrFunction } from "./hooks";
-import type { DataTableColumn } from "./types";
+import clsx from 'clsx';
+import { TableTd, type RaikouStyleProp } from '@raikou/core';
+import { useMediaQueryStringOrFunction } from './hooks';
+import type { DataTableColumn } from './types';
 import {
   CONTEXT_MENU_CURSOR,
   ELLIPSIS,
@@ -10,8 +10,8 @@ import {
   TEXT_ALIGN_CENTER,
   TEXT_ALIGN_LEFT,
   TEXT_ALIGN_RIGHT,
-} from "./utilityClasses";
-import { getValueAtPath } from "./utils";
+} from './utilityClasses';
+import { getValueAtPath } from './utils';
 
 type DataTableRowCellProps<T> = {
   className: string | undefined;
@@ -22,7 +22,7 @@ type DataTableRowCellProps<T> = {
     | ((
         record: T,
         index: number,
-        accessor: keyof T | (string & NonNullable<unknown>),
+        accessor: keyof T | (string & NonNullable<unknown>)
       ) => React.ReactNode)
     | undefined;
   onClick: React.MouseEventHandler<HTMLTableCellElement> | undefined;
@@ -30,14 +30,14 @@ type DataTableRowCellProps<T> = {
   onContextMenu: React.MouseEventHandler<HTMLTableCellElement> | undefined;
 } & Pick<
   DataTableColumn<T>,
-  | "accessor"
-  | "visibleMediaQuery"
-  | "textAlign"
-  | "width"
-  | "noWrap"
-  | "ellipsis"
-  | "render"
-  | "customCellAttributes"
+  | 'accessor'
+  | 'visibleMediaQuery'
+  | 'textAlign'
+  | 'width'
+  | 'noWrap'
+  | 'ellipsis'
+  | 'render'
+  | 'customCellAttributes'
 >;
 
 export function DataTableRowCell<T>({
@@ -67,11 +67,11 @@ export function DataTableRowCell<T>({
           [ELLIPSIS]: ellipsis,
           [POINTER_CURSOR]: onClick || onDoubleClick,
           [CONTEXT_MENU_CURSOR]: onContextMenu,
-          [TEXT_ALIGN_LEFT]: textAlign === "left",
-          [TEXT_ALIGN_CENTER]: textAlign === "center",
-          [TEXT_ALIGN_RIGHT]: textAlign === "right",
+          [TEXT_ALIGN_LEFT]: textAlign === 'left',
+          [TEXT_ALIGN_CENTER]: textAlign === 'center',
+          [TEXT_ALIGN_RIGHT]: textAlign === 'right',
         },
-        className,
+        className
       )}
       style={[
         {

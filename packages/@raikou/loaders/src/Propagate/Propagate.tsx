@@ -7,34 +7,31 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
+} from '@raikou/core';
 import {
-  LoaderPropagateLoaderStyle,
   LoaderPropagate1Style,
   LoaderPropagate2Style,
   LoaderPropagate3Style,
   LoaderPropagate4Style,
   LoaderPropagate5Style,
   LoaderPropagate6Style,
-} from "./Propagate.css";
+  LoaderPropagateLoaderStyle,
+} from './Propagate.css';
 
-export type PropagateStylesNames = "root";
+export type PropagateStylesNames = 'root';
 export type PropagateCssVariables = {
-  root:
-    | "--propagate-color"
-    | "--propagate-size"
-    | "--propagate-speed-multiplier";
+  root: '--propagate-color' | '--propagate-size' | '--propagate-speed-multiplier';
 };
 
 export interface PropagateProps
   extends BoxProps,
     StylesApiProps<PropagateFactory>,
-    ElementProps<"span"> {
+    ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -61,15 +58,15 @@ const varsResolver = createVarsResolver<PropagateFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--propagate-color": color ? getThemeColor(color, theme) : undefined,
-      "--propagate-size": getSize(size, "propagate-size") ?? undefined,
-      "--propagate-speed-multiplier": `${speedMultiplier}`,
+      '--propagate-color': color ? getThemeColor(color, theme) : undefined,
+      '--propagate-size': getSize(size, 'propagate-size') ?? undefined,
+      '--propagate-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Propagate = factory<PropagateFactory>((_props, ref) => {
-  const props = useProps("Propagate", defaultProps, _props);
+  const props = useProps('Propagate', defaultProps, _props);
   const {
     color,
     vars,
@@ -86,7 +83,7 @@ export const Propagate = factory<PropagateFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<PropagateFactory>({
-    name: "Propagate",
+    name: 'Propagate',
     props,
     classes: {
       root: LoaderPropagateLoaderStyle,
@@ -142,7 +139,7 @@ export const Propagate = factory<PropagateFactory>((_props, ref) => {
   `;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <div dangerouslySetInnerHTML={{ __html: rawHTML }} />
       <span className={LoaderPropagate1Style} />
       <span className={LoaderPropagate2Style} />
@@ -154,4 +151,4 @@ export const Propagate = factory<PropagateFactory>((_props, ref) => {
   );
 });
 
-Propagate.displayName = "@raikou/core/Propagate";
+Propagate.displayName = '@raikou/core/Propagate';

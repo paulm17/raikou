@@ -22,7 +22,19 @@ import { convertHsvaTo, isColorValid, parseColor } from './converters';
 import { HueSlider } from './HueSlider/HueSlider';
 import { Saturation } from './Saturation/Saturation';
 import { Swatches } from './Swatches/Swatches';
-import { ColorPickerBodyStyle, ColorPickerPreviewStyle, ColorPickerRootStyle, ColorPickerSaturationOverlayStyle, ColorPickerSaturationStyle, ColorPickerSliderOverlayStyle, ColorPickerSlidersStyle, ColorPickerSliderStyle, ColorPickerSwatchesStyle, ColorPickerSwatchStyle, ColorPickerThumbStyle } from './ColorPicker.css';
+import {
+  ColorPickerBodyStyle,
+  ColorPickerPreviewStyle,
+  ColorPickerRootStyle,
+  ColorPickerSaturationOverlayStyle,
+  ColorPickerSaturationStyle,
+  ColorPickerSliderOverlayStyle,
+  ColorPickerSlidersStyle,
+  ColorPickerSliderStyle,
+  ColorPickerSwatchesStyle,
+  ColorPickerSwatchStyle,
+  ColorPickerThumbStyle,
+} from './ColorPicker.css';
 
 export type ColorPickerStylesNames =
   | 'wrapper'

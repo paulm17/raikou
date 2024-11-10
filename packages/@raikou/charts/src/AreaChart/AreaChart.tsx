@@ -1,4 +1,4 @@
-import { Fragment, useId, useState } from "react";
+import { Fragment, useId, useState } from 'react';
 import {
   Area,
   AreaProps,
@@ -12,7 +12,7 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-} from "recharts";
+} from 'recharts';
 import {
   Box,
   BoxProps,
@@ -23,22 +23,18 @@ import {
   getThemeColor,
   RaikouColor,
   StylesApiProps,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
   useResolvedStylesApi,
   useStyles,
-} from "@raikou/core";
-import { ChartLegend, ChartLegendStylesNames } from "../ChartLegend";
-import { ChartTooltip, ChartTooltipStylesNames } from "../ChartTooltip";
-import { PointLabel } from "../PointLabel/PointLabel";
-import type {
-  BaseChartStylesNames,
-  ChartSeries,
-  GridChartBaseProps,
-} from "../types";
-import { AreaGradient } from "./AreaGradient";
-import { AreaSplit } from "./AreaSplit";
-import { getDefaultSplitOffset } from "./get-split-offset";
+} from '@raikou/core';
+import { ChartLegend, ChartLegendStylesNames } from '../ChartLegend';
+import { ChartTooltip, ChartTooltipStylesNames } from '../ChartTooltip';
+import { PointLabel } from '../PointLabel/PointLabel';
+import type { BaseChartStylesNames, ChartSeries, GridChartBaseProps } from '../types';
+import { AreaGradient } from './AreaGradient';
+import { AreaSplit } from './AreaSplit';
+import { getDefaultSplitOffset } from './get-split-offset';
 import {
   GridChartAxisLabelStyle,
   GridChartAxisStyle,
@@ -46,7 +42,7 @@ import {
   GridChartGridStyle,
   GridChartRootStyle,
   GridChartTooltipStyle,
-} from "../grid-chart.css";
+} from '../grid-chart.css';
 
 function valueToPercent(value: number) {
   return `${(value * 100).toFixed(0)}%`;
@@ -57,32 +53,32 @@ export interface AreaChartSeries extends ChartSeries {
   color: RaikouColor;
 }
 
-export type AreaChartType = "default" | "stacked" | "percent" | "split";
+export type AreaChartType = 'default' | 'stacked' | 'percent' | 'split';
 
 export type AreaChartCurveType =
-  | "bump"
-  | "linear"
-  | "natural"
-  | "monotone"
-  | "step"
-  | "stepBefore"
-  | "stepAfter";
+  | 'bump'
+  | 'linear'
+  | 'natural'
+  | 'monotone'
+  | 'step'
+  | 'stepBefore'
+  | 'stepAfter';
 
 export type AreaChartStylesNames =
-  | "area"
+  | 'area'
   | BaseChartStylesNames
   | ChartLegendStylesNames
   | ChartTooltipStylesNames;
 
 export type AreaChartCSSVariables = {
-  root: "--chart-text-color" | "--chart-grid-color";
+  root: '--chart-text-color' | '--chart-grid-color';
 };
 
 export interface AreaChartProps
   extends BoxProps,
     GridChartBaseProps,
     StylesApiProps<AreaChartFactory>,
-    ElementProps<"div"> {
+    ElementProps<'div'> {
   /** An array of objects with `name` and `color` keys. Determines which data should be consumed from the `data` array. */
   series: AreaChartSeries[];
 
@@ -99,10 +95,10 @@ export interface AreaChartProps
   withDots?: boolean;
 
   /** Props passed down to all dots. Ignored if `withDots={false}` is set. */
-  dotProps?: Omit<DotProps, "ref">;
+  dotProps?: Omit<DotProps, 'ref'>;
 
   /** Props passed down to all active dots. Ignored if `withDots={false}` is set. */
-  activeDotProps?: Omit<DotProps, "ref">;
+  activeDotProps?: Omit<DotProps, 'ref'>;
 
   /** Stroke width for the chart areas, `2` by default */
   strokeWidth?: number;
@@ -127,8 +123,8 @@ export interface AreaChartProps
 
   /** Props passed down to recharts `Area` component */
   areaProps?:
-    | ((series: AreaChartSeries) => Partial<Omit<AreaProps, "ref">>)
-    | Partial<Omit<AreaProps, "ref">>;
+    | ((series: AreaChartSeries) => Partial<Omit<AreaProps, 'ref'>>)
+    | Partial<Omit<AreaProps, 'ref'>>;
 
   /** Determines whether each point should have associated label, `false` by default */
   withPointLabels?: boolean;
@@ -150,30 +146,24 @@ const defaultProps: Partial<AreaChartProps> = {
   strokeWidth: 2,
   tooltipAnimationDuration: 0,
   fillOpacity: 0.2,
-  tickLine: "y",
-  strokeDasharray: "5 5",
-  curveType: "monotone",
-  gridAxis: "x",
-  type: "default",
-  splitColors: ["green.7", "red.7"],
-  orientation: "horizontal",
+  tickLine: 'y',
+  strokeDasharray: '5 5',
+  curveType: 'monotone',
+  gridAxis: 'x',
+  type: 'default',
+  splitColors: ['green.7', 'red.7'],
+  orientation: 'horizontal',
 };
 
-const varsResolver = createVarsResolver<AreaChartFactory>(
-  (theme, { textColor, gridColor }) => ({
-    root: {
-      "--chart-text-color": textColor
-        ? getThemeColor(textColor, theme)
-        : undefined,
-      "--chart-grid-color": gridColor
-        ? getThemeColor(gridColor, theme)
-        : undefined,
-    },
-  }),
-);
+const varsResolver = createVarsResolver<AreaChartFactory>((theme, { textColor, gridColor }) => ({
+  root: {
+    '--chart-text-color': textColor ? getThemeColor(textColor, theme) : undefined,
+    '--chart-grid-color': gridColor ? getThemeColor(gridColor, theme) : undefined,
+  },
+}));
 
 export const AreaChart = factory<AreaChartFactory>((_props, ref) => {
-  const props = useProps("AreaChart", defaultProps, _props);
+  const props = useProps('AreaChart', defaultProps, _props);
   const {
     classNames,
     className,
@@ -229,14 +219,11 @@ export const AreaChart = factory<AreaChartFactory>((_props, ref) => {
   const theme = useRaikouTheme();
   const baseId = useId();
   const splitId = `${baseId}-split`;
-  const withXTickLine =
-    gridAxis !== "none" && (tickLine === "x" || tickLine === "xy");
-  const withYTickLine =
-    gridAxis !== "none" && (tickLine === "y" || tickLine === "xy");
+  const withXTickLine = gridAxis !== 'none' && (tickLine === 'x' || tickLine === 'xy');
+  const withYTickLine = gridAxis !== 'none' && (tickLine === 'y' || tickLine === 'xy');
   const isAnimationActive = (tooltipAnimationDuration || 0) > 0;
-  const _withGradient =
-    typeof withGradient === "boolean" ? withGradient : type === "default";
-  const stacked = type === "stacked" || type === "percent";
+  const _withGradient = typeof withGradient === 'boolean' ? withGradient : type === 'default';
+  const stacked = type === 'stacked' || type === 'percent';
   const [highlightedArea, setHighlightedArea] = useState<string | null>(null);
   const shouldHighlight = highlightedArea !== null;
   const handleMouseLeave = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -244,15 +231,14 @@ export const AreaChart = factory<AreaChartFactory>((_props, ref) => {
     onMouseLeave?.(event);
   };
 
-  const { resolvedClassNames, resolvedStyles } =
-    useResolvedStylesApi<AreaChartFactory>({
-      classNames,
-      styles,
-      props,
-    });
+  const { resolvedClassNames, resolvedStyles } = useResolvedStylesApi<AreaChartFactory>({
+    classNames,
+    styles,
+    props,
+  });
 
   const getStyles = useStyles<AreaChartFactory>({
-    name: "AreaChart",
+    name: 'AreaChart',
     classes: {
       root: GridChartRootStyle,
       container: GridChartContainerStyle,
@@ -276,7 +262,7 @@ export const AreaChart = factory<AreaChartFactory>((_props, ref) => {
     const dimmed = shouldHighlight && highlightedArea !== item.name;
     return (
       <Area
-        {...getStyles("area")}
+        {...getStyles('area')}
         activeDot={{
           fill: theme.white,
           stroke: color,
@@ -300,15 +286,15 @@ export const AreaChart = factory<AreaChartFactory>((_props, ref) => {
         stroke="none"
         isAnimationActive={false}
         connectNulls={connectNulls}
-        stackId={stacked ? "stack-dots" : undefined}
-        yAxisId={item.yAxisId || "left"}
-        {...(typeof areaProps === "function" ? areaProps(item) : areaProps)}
+        stackId={stacked ? 'stack-dots' : undefined}
+        yAxisId={item.yAxisId || 'left'}
+        {...(typeof areaProps === 'function' ? areaProps(item) : areaProps)}
       />
     );
   });
 
   const areas = series.map((item) => {
-    const id = `${baseId}-${item.color.replace(/[^a-zA-Z0-9]/g, "")}`;
+    const id = `${baseId}-${item.color.replace(/[^a-zA-Z0-9]/g, '')}`;
     const color = getThemeColor(item.color, theme);
     const dimmed = shouldHighlight && highlightedArea !== item.name;
 
@@ -323,24 +309,24 @@ export const AreaChart = factory<AreaChartFactory>((_props, ref) => {
           />
         </defs>
         <Area
-          {...getStyles("area")}
+          {...getStyles('area')}
           activeDot={false}
           dot={false}
           name={item.name}
           type={curveType}
           dataKey={item.name}
-          fill={type === "split" ? `url(#${splitId})` : `url(#${id})`}
+          fill={type === 'split' ? `url(#${splitId})` : `url(#${id})`}
           strokeWidth={strokeWidth}
           stroke={color}
           isAnimationActive={false}
           connectNulls={connectNulls}
-          stackId={stacked ? "stack" : undefined}
+          stackId={stacked ? 'stack' : undefined}
           fillOpacity={dimmed ? 0 : 1}
           strokeOpacity={dimmed ? 0.5 : 1}
           strokeDasharray={item.strokeDasharray}
-          yAxisId={item.yAxisId || "left"}
+          yAxisId={item.yAxisId || 'left'}
           label={withPointLabels ? <PointLabel /> : undefined}
-          {...(typeof areaProps === "function" ? areaProps(item) : areaProps)}
+          {...(typeof areaProps === 'function' ? areaProps(item) : areaProps)}
         />
       </Fragment>
     );
@@ -351,45 +337,47 @@ export const AreaChart = factory<AreaChartFactory>((_props, ref) => {
     return (
       <ReferenceLine
         key={index}
-        stroke={line.color ? color : "var(--chart-grid-color)"}
+        stroke={line.color ? color : 'var(--chart-grid-color)'}
         strokeWidth={1}
-        yAxisId={line.yAxisId || "left"}
+        yAxisId={line.yAxisId || 'left'}
         {...line}
         label={{
           value: line.label,
-          fill: line.color ? color : "currentColor",
+          fill: line.color ? color : 'currentColor',
           fontSize: 12,
-          position: line.labelPosition ?? "insideBottomLeft",
+          position: line.labelPosition ?? 'insideBottomLeft',
         }}
-        {...getStyles("referenceLine")}
+        {...getStyles('referenceLine')}
       />
     );
   });
 
+  const tickFormatter = type === 'percent' ? valueToPercent : valueFormatter;
+
   const sharedYAxisProps = {
     axisLine: false,
-    ...(orientation === "vertical"
-      ? { dataKey, type: "category" as const }
-      : { type: "number" as const }),
-    tickLine: withYTickLine ? { stroke: "currentColor" } : false,
+    ...(orientation === 'vertical'
+      ? { dataKey, type: 'category' as const }
+      : { type: 'number' as const }),
+    tickLine: withYTickLine ? { stroke: 'currentColor' } : false,
     allowDecimals: true,
     unit,
-    tickFormatter: type === "percent" ? valueToPercent : valueFormatter,
-    ...getStyles("axis"),
+    tickFormatter: orientation === 'vertical' ? undefined : tickFormatter,
+    ...getStyles('axis'),
   };
 
   return (
     <Box
       ref={ref}
-      {...getStyles("root")}
+      {...getStyles('root')}
       onMouseLeave={handleMouseLeave}
-      dir={dir || "ltr"}
+      dir={dir || 'ltr'}
       {...others}
     >
-      <ResponsiveContainer {...getStyles("container")}>
+      <ResponsiveContainer {...getStyles('container')}>
         <ReChartsAreaChart
           data={data}
-          stackOffset={type === "percent" ? "expand" : undefined}
+          stackOffset={type === 'percent' ? 'expand' : undefined}
           layout={orientation}
           margin={{
             bottom: xAxisLabel ? 30 : undefined,
@@ -406,7 +394,7 @@ export const AreaChart = factory<AreaChartFactory>((_props, ref) => {
                 <ChartLegend
                   payload={payload.payload}
                   onHighlight={setHighlightedArea}
-                  legendPosition={legendProps?.verticalAlign || "top"}
+                  legendPosition={legendProps?.verticalAlign || 'top'}
                   classNames={resolvedClassNames}
                   styles={resolvedStyles}
                   series={series}
@@ -418,34 +406,30 @@ export const AreaChart = factory<AreaChartFactory>((_props, ref) => {
 
           <CartesianGrid
             strokeDasharray={strokeDasharray}
-            vertical={gridAxis === "y" || gridAxis === "xy"}
-            horizontal={gridAxis === "x" || gridAxis === "xy"}
-            {...getStyles("grid")}
+            vertical={gridAxis === 'y' || gridAxis === 'xy'}
+            horizontal={gridAxis === 'x' || gridAxis === 'xy'}
+            {...getStyles('grid')}
             {...gridProps}
           />
 
           <XAxis
             hide={!withXAxis}
-            {...(orientation === "vertical" ? { type: "number" } : { dataKey })}
+            {...(orientation === 'vertical' ? { type: 'number' } : { dataKey })}
             tick={{
-              transform: "translate(0, 10)",
+              transform: 'translate(0, 10)',
               fontSize: 12,
-              fill: "currentColor",
+              fill: 'currentColor',
             }}
             stroke=""
             interval="preserveStartEnd"
-            tickLine={withXTickLine ? { stroke: "currentColor" } : false}
+            tickLine={withXTickLine ? { stroke: 'currentColor' } : false}
             minTickGap={5}
-            {...getStyles("axis")}
+            tickFormatter={orientation === 'vertical' ? tickFormatter : undefined}
+            {...getStyles('axis')}
             {...xAxisProps}
           >
             {xAxisLabel && (
-              <Label
-                position="insideBottom"
-                offset={-20}
-                fontSize={12}
-                {...getStyles("axisLabel")}
-              >
+              <Label position="insideBottom" offset={-20} fontSize={12} {...getStyles('axisLabel')}>
                 {xAxisLabel}
               </Label>
             )}
@@ -456,9 +440,9 @@ export const AreaChart = factory<AreaChartFactory>((_props, ref) => {
             yAxisId="left"
             orientation="left"
             tick={{
-              transform: "translate(-10, 0)",
+              transform: 'translate(-10, 0)',
               fontSize: 12,
-              fill: "currentColor",
+              fill: 'currentColor',
             }}
             hide={!withYAxis}
             {...sharedYAxisProps}
@@ -471,7 +455,7 @@ export const AreaChart = factory<AreaChartFactory>((_props, ref) => {
                 textAnchor="middle"
                 fontSize={12}
                 offset={-5}
-                {...getStyles("axisLabel")}
+                {...getStyles('axisLabel')}
               >
                 {yAxisLabel}
               </Label>
@@ -483,9 +467,9 @@ export const AreaChart = factory<AreaChartFactory>((_props, ref) => {
             yAxisId="right"
             orientation="right"
             tick={{
-              transform: "translate(10, 0)",
+              transform: 'translate(10, 0)',
               fontSize: 12,
-              fill: "currentColor",
+              fill: 'currentColor',
             }}
             hide={!withRightYAxis}
             {...sharedYAxisProps}
@@ -498,7 +482,7 @@ export const AreaChart = factory<AreaChartFactory>((_props, ref) => {
                 textAnchor="middle"
                 fontSize={12}
                 offset={-5}
-                {...getStyles("axisLabel")}
+                {...getStyles('axisLabel')}
               >
                 {rightYAxisLabel}
               </Label>
@@ -510,9 +494,9 @@ export const AreaChart = factory<AreaChartFactory>((_props, ref) => {
             <Tooltip
               animationDuration={tooltipAnimationDuration}
               isAnimationActive={isAnimationActive}
-              position={orientation === "vertical" ? {} : { y: 0 }}
+              position={orientation === 'vertical' ? {} : { y: 0 }}
               cursor={{
-                stroke: "var(--chart-grid-color)",
+                stroke: 'var(--chart-grid-color)',
                 strokeWidth: 1,
                 strokeDasharray,
               }}
@@ -531,14 +515,12 @@ export const AreaChart = factory<AreaChartFactory>((_props, ref) => {
             />
           )}
 
-          {type === "split" && (
+          {type === 'split' && (
             <defs>
               <AreaSplit
                 colors={splitColors!}
                 id={splitId}
-                offset={
-                  splitOffset ?? getDefaultSplitOffset({ data: data!, series })
-                }
+                offset={splitOffset ?? getDefaultSplitOffset({ data: data!, series })}
                 fillOpacity={fillOpacity}
               />
             </defs>
@@ -553,4 +535,4 @@ export const AreaChart = factory<AreaChartFactory>((_props, ref) => {
   );
 });
 
-AreaChart.displayName = "@raikou/charts/AreaChart";
+AreaChart.displayName = '@raikou/charts/AreaChart';

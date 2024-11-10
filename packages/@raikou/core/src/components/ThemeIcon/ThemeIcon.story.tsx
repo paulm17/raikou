@@ -1,13 +1,13 @@
-import { useRaikouTheme } from "../../core";
-import { ThemeIcon, ThemeIconProps } from "./ThemeIcon";
+import { useRaikouTheme } from '../../core';
+import { ThemeIcon, ThemeIconProps } from './ThemeIcon';
 
-export default { title: "ThemeIcon" };
+export default { title: 'ThemeIcon' };
 
 function Colors({ index, ...others }: ThemeIconProps & { index?: number }) {
   const theme = useRaikouTheme();
   const colors = Object.keys(theme.colors).map((color) => (
     <ThemeIcon
-      color={`${color}${typeof index === "number" ? `.${index}` : ""}`}
+      color={`${color}${typeof index === 'number' ? `.${index}` : ''}`}
       key={color}
       {...others}
       size="lg"
@@ -15,7 +15,7 @@ function Colors({ index, ...others }: ThemeIconProps & { index?: number }) {
       $$
     </ThemeIcon>
   ));
-  return <div style={{ display: "flex", gap: 20, padding: 40 }}>{colors}</div>;
+  return <div style={{ display: 'flex', gap: 20, padding: 40 }}>{colors}</div>;
 }
 
 export function SingleElement() {
@@ -51,7 +51,7 @@ export function Usage() {
       <Colors variant="transparent" />
       Transparent variant index:
       <Colors variant="transparent" index={4} />
-      <div style={{ backgroundColor: "rgba(0,0,0,.5)" }}>
+      <div style={{ backgroundColor: 'rgba(0,0,0,.5)' }}>
         White variant:
         <Colors variant="white" />
         White variant index:
@@ -95,7 +95,7 @@ export function CssColor() {
         </ThemeIcon>
       </div>
       White variant
-      <div style={{ backgroundColor: "rgba(0,0,0,.5)" }}>
+      <div style={{ backgroundColor: 'rgba(0,0,0,.5)' }}>
         <ThemeIcon size="xl" radius="xl" color="#ff00ff" variant="white">
           $$
         </ThemeIcon>
@@ -106,22 +106,14 @@ export function CssColor() {
 
 export function GradientVariant() {
   return (
-    <div style={{ padding: 40, display: "flex", gap: 40 }}>
+    <div style={{ padding: 40, display: 'flex', gap: 40 }}>
       <ThemeIcon size="lg" variant="gradient">
         $$
       </ThemeIcon>
-      <ThemeIcon
-        size="lg"
-        variant="gradient"
-        gradient={{ from: "red", to: "cyan" }}
-      >
+      <ThemeIcon size="lg" variant="gradient" gradient={{ from: 'red', to: 'cyan' }}>
         $$
       </ThemeIcon>
-      <ThemeIcon
-        size="lg"
-        variant="gradient"
-        gradient={{ from: "#FF00FF", to: "#00FF00" }}
-      >
+      <ThemeIcon size="lg" variant="gradient" gradient={{ from: '#FF00FF', to: '#00FF00' }}>
         $$
       </ThemeIcon>
     </div>

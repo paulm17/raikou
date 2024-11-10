@@ -1,6 +1,6 @@
 {
   "name": "@raikou/carousel",
-  "version": "0.0.1-beta.8",
+  "version": "0.0.1-beta.13",
   "license": "MIT",
   "sideEffects": false,
   "main": "./cjs/index.cjs",

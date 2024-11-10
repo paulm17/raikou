@@ -1,4 +1,4 @@
-import { RichTextEditorTaskListStyle } from "../RichTextEditor.css";
+import { RichTextEditorTaskListStyle } from '../RichTextEditor.css';
 
 export const getTaskListExtension = <T>(TipTapTaskList: T): T =>
   (TipTapTaskList as any)

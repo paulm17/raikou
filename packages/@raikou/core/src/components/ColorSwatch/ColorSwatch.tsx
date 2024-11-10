@@ -3,15 +3,21 @@ import {
   BoxProps,
   createVarsResolver,
   getRadius,
-  RaikouRadius,
   polymorphicFactory,
   PolymorphicFactory,
+  RaikouRadius,
   rem,
   StylesApiProps,
   useProps,
   useStyles,
 } from '../../core';
-import { ColorSwatchAlphaOverlayStyle, ColorSwatchChildrenOverlayStyle, ColorSwatchColorOverlayStyle, ColorSwatchRootStyle, ColorSwatchShadowOverlayStyle } from './ColorSwatch.css';
+import {
+  ColorSwatchAlphaOverlayStyle,
+  ColorSwatchChildrenOverlayStyle,
+  ColorSwatchColorOverlayStyle,
+  ColorSwatchRootStyle,
+  ColorSwatchShadowOverlayStyle,
+} from './ColorSwatch.css';
 
 export type ColorSwatchStylesNames =
   | 'root'

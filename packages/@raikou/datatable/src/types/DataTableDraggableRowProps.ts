@@ -1,4 +1,4 @@
-import type { TableTrProps } from "@raikou/core";
+import type { TableTrProps } from '@raikou/core';
 
 export type DataTableDraggableRowProps = {
   /**

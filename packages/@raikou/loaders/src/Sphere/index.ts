@@ -1,8 +1,3 @@
-export { Sphere } from "./Sphere";
+export { Sphere } from './Sphere';
 
-export type {
-  SphereProps,
-  SphereStylesNames,
-  SphereCssVariables,
-  SphereFactory,
-} from "./Sphere";
+export type { SphereProps, SphereStylesNames, SphereCssVariables, SphereFactory } from './Sphere';

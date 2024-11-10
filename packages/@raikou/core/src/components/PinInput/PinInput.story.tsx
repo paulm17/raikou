@@ -1,16 +1,16 @@
-import { useCallback, useRef, useState } from "react";
-import { useRaikouTheme, RaikouSize } from "../../core";
-import { Button } from "../Button";
-import { PinInput } from "./PinInput";
+import { useCallback, useRef, useState } from 'react';
+import { RaikouSize, useRaikouTheme } from '../../core';
+import { Button } from '../Button';
+import { PinInput } from './PinInput';
 
-export default { title: "PinInput" };
+export default { title: 'PinInput' };
 
 export function Usage() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   return (
     <div style={{ padding: 40 }}>
       <PinInput id="test-id" value={value} onChange={setValue} />
-      <Button onClick={() => setValue("")}>Reset</Button>
+      <Button onClick={() => setValue('')}>Reset</Button>
     </div>
   );
 }
@@ -21,8 +21,8 @@ const sleep = (ms: number) =>
   });
 
 export function AsyncReset() {
-  const [value, setValue] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [value, setValue] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const login = useCallback(async (code: string) => {
@@ -45,10 +45,10 @@ export function AsyncReset() {
 
       await login(newValue)
         .then(() => {
-          setErrorMessage("");
+          setErrorMessage('');
         })
         .catch((error) => {
-          setValue("");
+          setValue('');
           if (error instanceof Error) {
             setErrorMessage(error.message);
           }
@@ -56,7 +56,7 @@ export function AsyncReset() {
 
       setIsLoading(false);
     },
-    [login],
+    [login]
   );
 
   return (
@@ -74,9 +74,7 @@ export function InputRef() {
   return (
     <div style={{ padding: 40 }}>
       <PinInput ref={inputRef} />
-      <Button onClick={() => inputRef.current?.focus()}>
-        Focus first input
-      </Button>
+      <Button onClick={() => inputRef.current?.focus()}>Focus first input</Button>
     </div>
   );
 }
@@ -90,7 +88,7 @@ export function Unstyled() {
 }
 
 export function OnComplete() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   return (
     <div style={{ padding: 40 }}>
       <PinInput length={5} onComplete={setValue} />
@@ -100,12 +98,12 @@ export function OnComplete() {
 }
 
 export function ResetControlled() {
-  const [value, setValue] = useState("1234");
+  const [value, setValue] = useState('1234');
 
   return (
     <div style={{ padding: 40 }}>
       <PinInput value={value} onChange={setValue} />
-      <Button onClick={() => setValue("")}>Reset</Button>
+      <Button onClick={() => setValue('')}>Reset</Button>
     </div>
   );
 }
@@ -127,7 +125,7 @@ export function Autofocus() {
 }
 
 export function Controlled() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   return (
     <div style={{ padding: 40 }}>
       <PinInput value={value} onChange={setValue} />
@@ -137,7 +135,7 @@ export function Controlled() {
 }
 
 export function Mask() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   return (
     <div style={{ padding: 40 }}>
       <PinInput value={value} onChange={setValue} mask />

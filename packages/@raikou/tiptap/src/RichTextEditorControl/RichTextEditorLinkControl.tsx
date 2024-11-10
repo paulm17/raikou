@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   BoxProps,
   Button,
@@ -13,26 +13,23 @@ import {
   UnstyledButton,
   useProps,
   useResolvedStylesApi,
-} from "@raikou/core";
-import { useDisclosure, useInputState, useWindowEvent } from "@raikou/hooks";
-import { IconExternalLink, IconLink } from "../icons/Icons";
-import { useRichTextEditorContext } from "../RichTextEditor.context";
-import {
-  RichTextEditorControlBase,
-  RichTextEditorControlBaseProps,
-} from "./RichTextEditorControl";
+} from '@raikou/core';
+import { useDisclosure, useInputState, useWindowEvent } from '@raikou/hooks';
+import { IconExternalLink, IconLink } from '../icons/Icons';
+import { useRichTextEditorContext } from '../RichTextEditor.context';
+import { RichTextEditorControlBase, RichTextEditorControlBaseProps } from './RichTextEditorControl';
 
 export type RichTextEditorLinkControlStylesNames =
-  | "control"
-  | "linkEditor"
-  | "linkEditorDropdown"
-  | "linkEditorSave"
-  | "linkEditorInput"
-  | "linkEditorExternalControl";
+  | 'control'
+  | 'linkEditor'
+  | 'linkEditorDropdown'
+  | 'linkEditorSave'
+  | 'linkEditorInput'
+  | 'linkEditorExternalControl';
 
 export interface RichTextEditorLinkControlProps
   extends BoxProps,
-    Omit<RichTextEditorControlBaseProps, "classNames" | "styles" | "vars">,
+    Omit<RichTextEditorControlBaseProps, 'classNames' | 'styles' | 'vars'>,
     CompoundStylesApiProps<RichTextEditorLinkControlFactory> {
   /** Props passed down to Popover component */
   popoverProps?: Partial<PopoverProps>;
@@ -51,15 +48,13 @@ export type RichTextEditorLinkControlFactory = Factory<{
   compound: true;
 }>;
 
-const LinkIcon: RichTextEditorControlBaseProps["icon"] = (props) => (
-  <IconLink {...props} />
-);
+const LinkIcon: RichTextEditorControlBaseProps['icon'] = (props) => <IconLink {...props} />;
 
 const defaultProps: Partial<RichTextEditorLinkControlProps> = {};
 
-export const RichTextEditorLinkControl =
-  factory<RichTextEditorLinkControlFactory>((_props, ref) => {
-    const props = useProps("RichTextEditorLinkControl", defaultProps, _props);
+export const RichTextEditorLinkControl = factory<RichTextEditorLinkControlFactory>(
+  (_props, ref) => {
+    const props = useProps('RichTextEditorLinkControl', defaultProps, _props);
     const {
       classNames,
       className,
@@ -77,47 +72,43 @@ export const RichTextEditorLinkControl =
 
     const stylesApiProps = { classNames, styles };
 
-    const [url, setUrl] = useInputState("");
+    const [url, setUrl] = useInputState('');
     const [external, setExternal] = useState(initialExternal);
     const [opened, { open, close }] = useDisclosure(false);
 
     const handleOpen = () => {
       open();
-      const linkData = ctx.editor?.getAttributes("link");
-      setUrl(linkData?.href || "");
-      setExternal(
-        linkData?.href ? linkData?.target === "_blank" : initialExternal,
-      );
+      const linkData = ctx.editor?.getAttributes('link');
+      setUrl(linkData?.href || '');
+      setExternal(linkData?.href ? linkData?.target === '_blank' : initialExternal);
     };
 
     const handleClose = () => {
       close();
-      setUrl("");
+      setUrl('');
       setExternal(initialExternal);
     };
 
     const setLink = () => {
       handleClose();
-      url === ""
-        ? ctx.editor?.chain().focus().extendMarkRange("link").unsetLink().run()
+      url === ''
+        ? ctx.editor?.chain().focus().extendMarkRange('link').unsetLink().run()
         : ctx.editor
             ?.chain()
             .focus()
-            .extendMarkRange("link")
-            .setLink({ href: url, target: external ? "_blank" : null })
+            .extendMarkRange('link')
+            .setLink({ href: url, target: external ? '_blank' : null })
             .run();
     };
 
-    const handleInputKeydown = (
-      event: React.KeyboardEvent<HTMLInputElement>,
-    ) => {
-      if (event.key === "Enter") {
+    const handleInputKeydown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === 'Enter') {
         event.preventDefault();
         setLink();
       }
     };
 
-    useWindowEvent("edit-link", handleOpen, false);
+    useWindowEvent('edit-link', handleOpen, false);
 
     const { resolvedClassNames, resolvedStyles } =
       useResolvedStylesApi<RichTextEditorLinkControlFactory>({
@@ -132,7 +123,7 @@ export const RichTextEditorLinkControl =
         shadow="md"
         withinPortal
         opened={opened}
-        onClose={handleClose}
+        onChange={(_opened) => !_opened && handleClose()}
         offset={-44}
         zIndex={10000}
         {...popoverProps}
@@ -144,7 +135,7 @@ export const RichTextEditorLinkControl =
             aria-label={ctx.labels.linkControlLabel}
             title={ctx.labels.linkControlLabel}
             onClick={handleOpen}
-            active={ctx.editor?.isActive("link")}
+            active={ctx.editor?.isActive('link')}
             ref={ref}
             classNames={resolvedClassNames}
             styles={resolvedStyles}
@@ -153,10 +144,8 @@ export const RichTextEditorLinkControl =
           />
         </Popover.Target>
 
-        <Popover.Dropdown
-          {...ctx.getStyles("linkEditorDropdown", stylesApiProps)}
-        >
-          <div {...ctx.getStyles("linkEditor", stylesApiProps)}>
+        <Popover.Dropdown {...ctx.getStyles('linkEditorDropdown', stylesApiProps)}>
+          <div {...ctx.getStyles('linkEditor', stylesApiProps)}>
             <TextInput
               placeholder={ctx.labels.linkEditorInputPlaceholder}
               aria-label={ctx.labels.linkEditorInputLabel}
@@ -164,16 +153,13 @@ export const RichTextEditorLinkControl =
               value={url}
               onChange={setUrl}
               classNames={{
-                input: ctx.getStyles("linkEditorInput", stylesApiProps)
-                  .className,
+                input: ctx.getStyles('linkEditorInput', stylesApiProps).className,
               }}
               onKeyDown={handleInputKeydown}
               rightSection={
                 <Tooltip
                   label={
-                    external
-                      ? ctx.labels.linkEditorExternalLink
-                      : ctx.labels.linkEditorInternalLink
+                    external ? ctx.labels.linkEditorExternalLink : ctx.labels.linkEditorInternalLink
                   }
                   events={{ hover: true, focus: true, touch: true }}
                   withinPortal
@@ -184,14 +170,9 @@ export const RichTextEditorLinkControl =
                   <UnstyledButton
                     onClick={() => setExternal((e) => !e)}
                     data-active={external || undefined}
-                    {...ctx.getStyles(
-                      "linkEditorExternalControl",
-                      stylesApiProps,
-                    )}
+                    {...ctx.getStyles('linkEditorExternalControl', stylesApiProps)}
                   >
-                    <IconExternalLink
-                      style={{ width: rem(14), height: rem(14) }}
-                    />
+                    <IconExternalLink style={{ width: rem(14), height: rem(14) }} />
                   </UnstyledButton>
                 </Tooltip>
               }
@@ -200,7 +181,7 @@ export const RichTextEditorLinkControl =
             <Button
               variant="default"
               onClick={setLink}
-              {...ctx.getStyles("linkEditorSave", stylesApiProps)}
+              {...ctx.getStyles('linkEditorSave', stylesApiProps)}
             >
               {ctx.labels.linkEditorSave}
             </Button>
@@ -208,7 +189,7 @@ export const RichTextEditorLinkControl =
         </Popover.Dropdown>
       </Popover>
     );
-  });
+  }
+);
 
-RichTextEditorLinkControl.displayName =
-  "@Raikou/tiptap/RichTextEditorLinkControl";
+RichTextEditorLinkControl.displayName = '@Raikou/tiptap/RichTextEditorLinkControl';

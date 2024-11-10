@@ -1,8 +1,3 @@
-export { Push } from "./Push";
+export { Push } from './Push';
 
-export type {
-  PushProps,
-  PushStylesNames,
-  PushCssVariables,
-  PushFactory,
-} from "./Push";
+export type { PushProps, PushStylesNames, PushCssVariables, PushFactory } from './Push';

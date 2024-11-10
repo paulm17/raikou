@@ -6,11 +6,11 @@ import {
   getGradient,
   getLineHeight,
   getThemeColor,
+  polymorphicFactory,
+  PolymorphicFactory,
   RaikouColor,
   RaikouGradient,
   RaikouSize,
-  polymorphicFactory,
-  PolymorphicFactory,
   StylesApiProps,
   useProps,
   useStyles,
@@ -116,7 +116,7 @@ export const Text = polymorphicFactory<TextFactory>((_props, ref) => {
     name: ['Text', __staticSelector],
     props,
     classes: {
-      root: TextRootStyle
+      root: TextRootStyle,
     },
     className,
     style,

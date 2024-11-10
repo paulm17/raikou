@@ -35,9 +35,7 @@ describe('@raikou/core/Avatar', () => {
     expect(container.querySelector('.raikou-Avatar-root')).toHaveAttribute('data-within-group');
 
     rerender(<Avatar />);
-    expect(container.querySelector('.raikou-Avatar-root')).not.toHaveAttribute(
-      'data-within-group'
-    );
+    expect(container.querySelector('.raikou-Avatar-root')).not.toHaveAttribute('data-within-group');
   });
 
   it('renders placeholder if src was not set', () => {

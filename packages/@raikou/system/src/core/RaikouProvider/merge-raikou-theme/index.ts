@@ -1,1 +1,1 @@
-export { mergeRaikouTheme, validateRaikouTheme } from "./merge-raikou-theme";
+export { mergeRaikouTheme, validateRaikouTheme } from './merge-raikou-theme';

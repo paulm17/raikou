@@ -20,8 +20,8 @@ import { getMonthDays } from './get-month-days/get-month-days';
 import { isAfterMinDate } from './is-after-min-date/is-after-min-date';
 import { isBeforeMaxDate } from './is-before-max-date/is-before-max-date';
 import { isSameMonth } from './is-same-month/is-same-month';
-import { MonthStyle } from './Month.css';
 import { MonthsListCellStyle } from '../MonthsList/MonthsList.css';
+import { MonthStyle } from './Month.css';
 
 export type MonthStylesNames =
   | 'month'

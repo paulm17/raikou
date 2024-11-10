@@ -11,5 +11,4 @@ export const PieChartRootStyle = css({
   },
 });
 
-export const PieChartLabelStyle = css({
-});
+export const PieChartLabelStyle = css({});

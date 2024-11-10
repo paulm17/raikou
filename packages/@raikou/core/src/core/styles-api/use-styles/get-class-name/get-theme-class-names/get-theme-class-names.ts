@@ -1,5 +1,5 @@
-import { RaikouTheme } from "../../../../RaikouProvider";
-import { resolveClassNames } from "../resolve-class-names/resolve-class-names";
+import { RaikouTheme } from '../../../../RaikouProvider';
+import { resolveClassNames } from '../resolve-class-names/resolve-class-names';
 
 interface GetThemeClassNamesOptions {
   theme: RaikouTheme;
@@ -24,6 +24,6 @@ export function getThemeClassNames({
         classNames: [],
         props,
         stylesCtx,
-      })?.[selector],
+      })?.[selector]
   );
 }

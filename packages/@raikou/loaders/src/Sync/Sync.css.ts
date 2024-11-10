@@ -1,29 +1,29 @@
-import { css, keyframes } from "@stylefusion/react";
+import { css, keyframes } from '@stylefusion/react';
 
 const syncLoaderAnimation = keyframes({
-  "33%": { transform: "translateY(10px)" },
-  "66%": { transform: "translateY(-10px)" },
-  "100%": { transform: "translateY(0)" },
+  '33%': { transform: 'translateY(10px)' },
+  '66%': { transform: 'translateY(-10px)' },
+  '100%': { transform: 'translateY(0)' },
 });
 
 export const LoaderSyncLoaderStyle = css({
-  "--sync-size-xs": "8px",
-  "--sync-size-sm": "9px",
-  "--sync-size-md": "15px",
-  "--sync-size-lg": "18px",
-  "--sync-size-xl": "24px",
-  "--sync-size": "var(--sync-size-md)",
-  "--sync-color": "var(--raikou-primary-color-filled)",
-  display: "inherit",
+  '--sync-size-xs': '8px',
+  '--sync-size-sm': '9px',
+  '--sync-size-md': '15px',
+  '--sync-size-lg': '18px',
+  '--sync-size-xl': '24px',
+  '--sync-size': 'var(--sync-size-md)',
+  '--sync-color': 'var(--raikou-primary-color-filled)',
+  display: 'inherit',
 });
 
 const LoaderSyncStyle = {
-  backgroundColor: "var(--sync-color)",
-  width: "var(--sync-size)",
-  height: "var(--sync-size)",
-  margin: "var(--sync-margin)",
-  borderRadius: "100%",
-  display: "inline-block",
+  backgroundColor: 'var(--sync-color)',
+  width: 'var(--sync-size)',
+  height: 'var(--sync-size)',
+  margin: 'var(--sync-margin)',
+  borderRadius: '100%',
+  display: 'inline-block',
 };
 
 export const LoaderSync1Style = css({

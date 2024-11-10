@@ -9,15 +9,29 @@ import {
   resolveClassNames,
   resolveStyles,
   StylesApiProps,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
   useStyles,
 } from '@raikou/core';
 import { useDidUpdate, useHotkeys } from '@raikou/hooks';
 import { getHotkeys } from './get-hotkeys';
 import { SpotlightProvider } from './Spotlight.context';
 import { spotlightActions, SpotlightStore, spotlightStore, useSpotlight } from './spotlight.store';
-import { SpotlightActionBodyStyle, SpotlightActionDescriptionStyle, SpotlightActionLabelStyle, SpotlightActionSectionStyle, SpotlightActionsGroupStyle, SpotlightActionsListStyle, SpotlightActionStyle, SpotlightBodyStyle, SpotlightContentStyle, SpotlightEmptyStyle, SpotlightFooterStyle, SpotlightRootStyle, SpotlightSearchStyle } from './Spotlight.css';
+import {
+  SpotlightActionBodyStyle,
+  SpotlightActionDescriptionStyle,
+  SpotlightActionLabelStyle,
+  SpotlightActionSectionStyle,
+  SpotlightActionsGroupStyle,
+  SpotlightActionsListStyle,
+  SpotlightActionStyle,
+  SpotlightBodyStyle,
+  SpotlightContentStyle,
+  SpotlightEmptyStyle,
+  SpotlightFooterStyle,
+  SpotlightRootStyle,
+  SpotlightSearchStyle,
+} from './Spotlight.css';
 
 export type SpotlightRootStylesNames =
   | ModalStylesNames

@@ -34,16 +34,12 @@ describe('@raikou/core/CardSection', () => {
     expect(container.querySelector('.raikou-Card-section')).toHaveAttribute('data-with-border');
 
     rerender(<TestContainer withBorder={false} />);
-    expect(container.querySelector('.raikou-Card-section')).not.toHaveAttribute(
-      'data-with-border'
-    );
+    expect(container.querySelector('.raikou-Card-section')).not.toHaveAttribute('data-with-border');
   });
 
   it('sets data-inherit-padding based on inheritPadding prop', () => {
     const { container, rerender } = render(<TestContainer inheritPadding />);
-    expect(container.querySelector('.raikou-Card-section')).toHaveAttribute(
-      'data-inherit-padding'
-    );
+    expect(container.querySelector('.raikou-Card-section')).toHaveAttribute('data-inherit-padding');
 
     rerender(<TestContainer inheritPadding={false} />);
     expect(container.querySelector('.raikou-Card-section')).not.toHaveAttribute(

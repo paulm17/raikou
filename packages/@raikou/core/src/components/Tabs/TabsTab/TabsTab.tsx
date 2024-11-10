@@ -7,8 +7,8 @@ import {
   getThemeColor,
   RaikouColor,
   useDirection,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
 } from '../../../core';
 import { UnstyledButton, UnstyledButtonProps } from '../../UnstyledButton';
 import { useTabsContext } from '../Tabs.context';
@@ -61,6 +61,7 @@ export const TabsTab = factory<TabsTabFactory>((_props, ref) => {
     styles,
     vars,
     mod,
+    tabIndex,
     ...others
   } = props;
 
@@ -96,7 +97,7 @@ export const TabsTab = factory<TabsTabFactory>((_props, ref) => {
       role="tab"
       id={ctx.getTabId(value)}
       aria-selected={active}
-      tabIndex={active || ctx.value === null ? 0 : -1}
+      tabIndex={tabIndex || active || ctx.value === null ? 0 : -1}
       aria-controls={ctx.getPanelId(value)}
       onClick={activateTab}
       __vars={{ '--tabs-color': color ? getThemeColor(color, theme) : undefined }}

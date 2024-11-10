@@ -18,7 +18,14 @@ import { MenuDropdown } from './MenuDropdown/MenuDropdown';
 import { MenuItem } from './MenuItem/MenuItem';
 import { MenuLabel } from './MenuLabel/MenuLabel';
 import { MenuTarget } from './MenuTarget/MenuTarget';
-import { MenuDividerStyle, MenuDropdownStyle, MenuItemLabelStyle, MenuItemSectionStyle, MenuItemStyle, MenuLabelStyle } from './Menu.css';
+import {
+  MenuDividerStyle,
+  MenuDropdownStyle,
+  MenuItemLabelStyle,
+  MenuItemSectionStyle,
+  MenuItemStyle,
+  MenuLabelStyle,
+} from './Menu.css';
 
 export type MenuStylesNames =
   | 'item'

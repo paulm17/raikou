@@ -1,19 +1,19 @@
-name: Report an issue with @mantine/* or @mantinex/* scoped package
+name: Report an issue with @raikou/* or @raikoux/* scoped package
 description: Use this template to report issues with the library. To ask questions or to suggest new features, use GitHub discussions instead
 body:
   - type: checkboxes
     id: dependencies
     attributes:
       label: Dependencies check up
-      description: Before submitting an issue please make sure that you use latest version of all @mantine/* packages.
+      description: Before submitting an issue please make sure that you use latest version of all @raikou/* packages.
       options:
-        - label: I have verified that I use latest version of all @mantine/* packages
+        - label: I have verified that I use latest version of all @raikou/* packages
           required: true
   - type: input
     id: version
     attributes:
       placeholder: 0.0.0
-      label: What version of @mantine/* packages do you have in package.json?
+      label: What version of @raikou/* packages do you have in package.json?
     validations:
       required: true
   - type: dropdown
@@ -21,28 +21,28 @@ body:
     attributes:
       label: What package has an issue?
       options:
-        - '@mantine/core'
-        - '@mantine/hooks'
-        - '@mantine/dates'
-        - '@mantine/charts'
-        - '@mantine/form'
-        - '@mantine/notifications'
-        - '@mantine/tiptap'
-        - '@mantine/code-highlight'
-        - '@mantine/modals'
-        - '@mantine/dropzone'
-        - '@mantine/spotlight'
-        - '@mantine/nprogress'
-        - '@mantine/carousel'
-        - '@mantine/colors-generator'
-        - '@mantine/store'
-        - '@mantine/vanilla-extract'
-        - '@mantinex/mantine-logo'
-        - '@mantinex/demo'
-        - '@mantinex/dev-icons'
-        - '@mantinex/mantine-header'
-        - '@mantinex/mantine-meta'
-        - '@mantinex/shiki'
+        - '@raikou/core'
+        - '@raikou/hooks'
+        - '@raikou/dates'
+        - '@raikou/charts'
+        - '@raikou/form'
+        - '@raikou/notifications'
+        - '@raikou/tiptap'
+        - '@raikou/code-highlight'
+        - '@raikou/modals'
+        - '@raikou/dropzone'
+        - '@raikou/spotlight'
+        - '@raikou/nprogress'
+        - '@raikou/carousel'
+        - '@raikou/colors-generator'
+        - '@raikou/store'
+        - '@raikou/vanilla-extract'
+        - '@raikoux/raikou-logo'
+        - '@raikoux/demo'
+        - '@raikoux/dev-icons'
+        - '@raikoux/raikou-header'
+        - '@raikoux/raikou-meta'
+        - '@raikoux/shiki'
     validations:
       required: true
 
@@ -82,7 +82,7 @@ body:
     id: link
     attributes:
       label: If possible, include a link to a codesandbox with a minimal reproduction
-      description: Codesandbox template – https://codesandbox.io/p/sandbox/mantine-react-template-q4dd5d. Note that issues that cannot be reproduced by maintainers will be closed.
+      description: Codesandbox template – https://codesandbox.io/p/sandbox/raikou-react-template-q4dd5d. Note that issues that cannot be reproduced by maintainers will be closed.
   - type: textarea
     id: possibleFix
     attributes:
@@ -91,6 +91,6 @@ body:
     id: self-service
     attributes:
       label: Self-service
-      description: You are welcome to contribute to the library, if you are willing to implement a fix for this issue, please check the box below. You can find contribution guide here – https://mantine.dev/contribute/
+      description: You are welcome to contribute to the library, if you are willing to implement a fix for this issue, please check the box below. You can find contribution guide here – https://raikou.dev/contribute/
       options:
         - label: I would be willing to implement a fix for this issue

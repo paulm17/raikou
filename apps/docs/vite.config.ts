@@ -1,14 +1,15 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { pigment, extendTheme } from "@stylefusion/vite-plugin";
-import { getPigmentCSSTheme } from "@raikou/system";
+import { extendTheme, pigment } from '@stylefusion/vite-plugin';
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
+// import commonjs from 'vite-plugin-commonjs';
+import { getPigmentCSSTheme } from '@raikou/system';
 
 const { cssTheme, rawTheme } = getPigmentCSSTheme();
 
 const theme = extendTheme({
-  cssVarPrefix: "raikou",
+  cssVarPrefix: 'raikou',
   getSelector: (colorScheme) =>
-    colorScheme ? `[data-raikou-color-scheme='${colorScheme}']` : ":root",
+    colorScheme ? `[data-raikou-color-scheme='${colorScheme}']` : ':root',
   ...cssTheme,
 });
 
@@ -20,10 +21,22 @@ export default defineConfig({
       theme,
       rawTheme,
     }),
-    react()
+    react(),
+    // commonjs(),
   ],
   optimizeDeps: {
     include: ['prop-types', 'react-is'],
+    // exclude: [
+    //   'dayjs',
+    //   'embla-carousel-autoplay',
+    //   'embla-carousel-react',
+    //   'next-themes',
+    //   '@emotion/react',
+    //   '@emotion/serialize',
+    //   '@emotion/utils',
+    //   'html-react-parser',
+    // ],
+    // noDiscovery: true,
   },
   resolve: {
     alias: {
@@ -31,4 +44,4 @@ export default defineConfig({
       'react-is': 'react-is/cjs/react-is.development.js',
     },
   },
-})
+});

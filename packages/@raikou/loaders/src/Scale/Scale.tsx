@@ -7,36 +7,33 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
   RaikouRadius,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
+} from '@raikou/core';
 import {
-  LoaderScaleRootStyle,
   LoaderScale1Style,
   LoaderScale2Style,
   LoaderScale3Style,
   LoaderScale4Style,
   LoaderScale5Style,
-} from "./Scale.css";
+  LoaderScaleRootStyle,
+} from './Scale.css';
 
-export type ScaleStylesNames = "root";
+export type ScaleStylesNames = 'root';
 export type ScaleCssVariables = {
   root:
-    | "--scale-color"
-    | "--scale-size"
-    | "--scale-radius"
-    | "--scale-margin"
-    | "--scale-speed-multiplier";
+    | '--scale-color'
+    | '--scale-size'
+    | '--scale-radius'
+    | '--scale-margin'
+    | '--scale-speed-multiplier';
 };
 
-export interface ScaleProps
-  extends BoxProps,
-    StylesApiProps<ScaleFactory>,
-    ElementProps<"span"> {
+export interface ScaleProps extends BoxProps, StylesApiProps<ScaleFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -44,7 +41,7 @@ export interface ScaleProps
   radius?: RaikouRadius;
 
   /** Margin between the loader and the indicator, numbers are converted to rem */
-  margin?: React.CSSProperties["margin"];
+  margin?: React.CSSProperties['margin'];
 
   /** Speed multiplier, default value is `1` */
   speedMultiplier?: number;
@@ -71,17 +68,17 @@ const varsResolver = createVarsResolver<ScaleFactory>(
   // @ts-ignore
   (theme, { color, size, margin, speedMultiplier }) => ({
     root: {
-      "--scale-color": color ? getThemeColor(color, theme) : undefined,
-      "--scale-size": getSize(size, "scale-size") ?? undefined,
-      "--scale-radius": getSize(margin, "scale-radius") ?? undefined,
-      "--scale-margin": getSize(margin, "scale-margin") ?? undefined,
-      "--scale-speed-multiplier": `${speedMultiplier}`,
+      '--scale-color': color ? getThemeColor(color, theme) : undefined,
+      '--scale-size': getSize(size, 'scale-size') ?? undefined,
+      '--scale-radius': getSize(margin, 'scale-radius') ?? undefined,
+      '--scale-margin': getSize(margin, 'scale-margin') ?? undefined,
+      '--scale-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Scale = factory<ScaleFactory>((_props, ref) => {
-  const props = useProps("Scale", defaultProps, _props);
+  const props = useProps('Scale', defaultProps, _props);
   const {
     color,
     vars,
@@ -98,7 +95,7 @@ export const Scale = factory<ScaleFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<ScaleFactory>({
-    name: "Scale",
+    name: 'Scale',
     props,
     classes: {
       root: LoaderScaleRootStyle,
@@ -113,7 +110,7 @@ export const Scale = factory<ScaleFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <span className={LoaderScale1Style} />
       <span className={LoaderScale2Style} />
       <span className={LoaderScale3Style} />
@@ -123,4 +120,4 @@ export const Scale = factory<ScaleFactory>((_props, ref) => {
   );
 });
 
-Scale.displayName = "@raikou/core/Scale";
+Scale.displayName = '@raikou/core/Scale';

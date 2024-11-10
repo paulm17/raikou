@@ -94,8 +94,6 @@ describe('@raikou/dates/DecadeLevelGroup', () => {
     const { container } = render(
       <DecadeLevelGroup {...defaultProps} __staticSelector="Calendar" />
     );
-    expect(container.querySelector('table button')).toHaveClass(
-      'raikou-Calendar-yearsListControl'
-    );
+    expect(container.querySelector('table button')).toHaveClass('raikou-Calendar-yearsListControl');
   });
 });

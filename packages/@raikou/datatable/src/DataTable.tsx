@@ -1,27 +1,27 @@
-import { Box, Table, type RaikouSize } from "@raikou/core";
-import { useDebouncedCallback, useMergedRef } from "@raikou/hooks";
-import clsx from "clsx";
-import { useCallback, useMemo, useState } from "react";
-import { DataTableColumnsProvider } from "./DataTableDragToggleProvider";
-import { DataTableEmptyRow } from "./DataTableEmptyRow";
-import { DataTableEmptyState } from "./DataTableEmptyState";
-import { DataTableFooter } from "./DataTableFooter";
-import { DataTableHeader } from "./DataTableHeader";
-import { DataTableLoader } from "./DataTableLoader";
-import { DataTablePagination } from "./DataTablePagination";
-import { DataTableRow } from "./DataTableRow";
-import { DataTableScrollArea } from "./DataTableScrollArea";
-import { getTableCssVariables } from "./cssVariables";
+import { useCallback, useMemo, useState } from 'react';
+import clsx from 'clsx';
+import { Box, Table, type RaikouSize } from '@raikou/core';
+import { useDebouncedCallback, useMergedRef } from '@raikou/hooks';
+import { getTableCssVariables } from './cssVariables';
+import { DataTableColumnsProvider } from './DataTableDragToggleProvider';
+import { DataTableEmptyRow } from './DataTableEmptyRow';
+import { DataTableEmptyState } from './DataTableEmptyState';
+import { DataTableFooter } from './DataTableFooter';
+import { DataTableHeader } from './DataTableHeader';
+import { DataTableLoader } from './DataTableLoader';
+import { DataTablePagination } from './DataTablePagination';
+import { DataTableRow } from './DataTableRow';
+import { DataTableScrollArea } from './DataTableScrollArea';
 import {
   useDataTableColumns,
   useElementOuterSize,
   useIsomorphicLayoutEffect,
   useLastSelectionChangeIndex,
   useRowExpansion,
-} from "./hooks";
-import type { DataTableProps } from "./types";
-import { TEXT_SELECTION_DISABLED } from "./utilityClasses";
-import { differenceBy, getRecordId, uniqBy } from "./utils";
+} from './hooks';
+import type { DataTableProps } from './types';
+import { TEXT_SELECTION_DISABLED } from './utilityClasses';
+import { differenceBy, getRecordId, uniqBy } from './utils';
 import {
   dataTableLastRowBorderBottomVisibleStyle,
   dataTablePinFirstColumnScrolledStyle,
@@ -34,17 +34,17 @@ import {
   dataTableVerticalAlignBottomStyle,
   dataTableVerticalAlignTopStyle,
   dataTableWithBorderStyle,
-} from "./DataTable.css";
+} from './DataTable.css';
 
 export function DataTable<T>({
   withTableBorder,
   borderRadius,
   textSelectionDisabled,
-  height = "100%",
+  height = '100%',
   minHeight,
   maxHeight,
   shadow,
-  verticalAlign = "center",
+  verticalAlign = 'center',
   fetching,
   columns,
   storeColumnsKey,
@@ -53,18 +53,18 @@ export function DataTable<T>({
   pinLastColumn,
   defaultColumnProps,
   defaultColumnRender,
-  idAccessor = "id",
+  idAccessor = 'id',
   records,
-  selectionTrigger = "checkbox",
+  selectionTrigger = 'checkbox',
   selectedRecords,
   onSelectedRecordsChange,
   selectionColumnClassName,
   selectionColumnStyle,
   isRecordSelectable,
   selectionCheckboxProps,
-  allRecordsSelectionCheckboxProps = { "aria-label": "Select all records" },
+  allRecordsSelectionCheckboxProps = { 'aria-label': 'Select all records' },
   getRecordSelectionCheckboxProps = (_, index) => ({
-    "aria-label": `Select record ${index + 1}`,
+    'aria-label': `Select record ${index + 1}`,
   }),
   sortStatus,
   sortIcons,
@@ -76,20 +76,19 @@ export function DataTable<T>({
   recordsPerPage,
   onRecordsPerPageChange,
   recordsPerPageOptions,
-  recordsPerPageLabel = "Records per page",
+  recordsPerPageLabel = 'Records per page',
   paginationWithEdges,
   paginationWithControls,
   paginationActiveTextColor,
   paginationActiveBackgroundColor,
-  paginationSize = "sm",
-  paginationText = ({ from, to, totalRecords }) =>
-    `${from} - ${to} / ${totalRecords}`,
-  paginationWrapBreakpoint = "sm",
+  paginationSize = 'sm',
+  paginationText = ({ from, to, totalRecords }) => `${from} - ${to} / ${totalRecords}`,
+  paginationWrapBreakpoint = 'sm',
   getPaginationControlProps = (control) => {
-    if (control === "previous") {
-      return { "aria-label": "Previous page" };
-    } else if (control === "next") {
-      return { "aria-label": "Next page" };
+    if (control === 'previous') {
+      return { 'aria-label': 'Previous page' };
+    } else if (control === 'next') {
+      return { 'aria-label': 'Next page' };
     }
     return {};
   },
@@ -98,9 +97,9 @@ export function DataTable<T>({
   loaderSize,
   loaderType,
   loaderColor,
-  loadingText = "...",
+  loadingText = '...',
   emptyState,
-  noRecordsText = "No records",
+  noRecordsText = 'No records',
   noRecordsIcon,
   highlightOnHover,
   striped,
@@ -162,25 +161,19 @@ export function DataTable<T>({
     columns: effectiveColumns,
   });
 
-  const { ref: headerRef, height: headerHeight } =
-    useElementOuterSize<HTMLTableSectionElement>();
+  const { ref: headerRef, height: headerHeight } = useElementOuterSize<HTMLTableSectionElement>();
   const {
     ref: localTableRef,
     width: tableWidth,
     height: tableHeight,
   } = useElementOuterSize<HTMLTableElement>();
-  const { ref: footerRef, height: footerHeight } =
-    useElementOuterSize<HTMLTableSectionElement>();
-  const { ref: paginationRef, height: paginationHeight } =
-    useElementOuterSize<HTMLDivElement>();
+  const { ref: footerRef, height: footerHeight } = useElementOuterSize<HTMLTableSectionElement>();
+  const { ref: paginationRef, height: paginationHeight } = useElementOuterSize<HTMLDivElement>();
   const { ref: selectionColumnHeaderRef, width: selectionColumnWidth } =
     useElementOuterSize<HTMLTableCellElement>();
 
   const mergedTableRef = useMergedRef(localTableRef, tableRef);
-  const mergedViewportRef = useMergedRef(
-    localScrollViewportRef,
-    scrollViewportRef,
-  );
+  const mergedViewportRef = useMergedRef(localScrollViewportRef, scrollViewportRef);
 
   const [scrolledToTop, setScrolledToTop] = useState(true);
   const [scrolledToBottom, setScrolledToBottom] = useState(true);
@@ -202,14 +195,11 @@ export function DataTable<T>({
       setScrolledToBottom(true);
     } else {
       const newScrolledToTop = scrollTop === 0;
-      const newScrolledToBottom =
-        tableHeight - scrollTop - scrollViewportHeight < 1;
+      const newScrolledToBottom = tableHeight - scrollTop - scrollViewportHeight < 1;
       setScrolledToTop(newScrolledToTop);
       setScrolledToBottom(newScrolledToBottom);
-      if (newScrolledToTop && newScrolledToTop !== scrolledToTop)
-        onScrollToTop?.();
-      if (newScrolledToBottom && newScrolledToBottom !== scrolledToBottom)
-        onScrollToBottom?.();
+      if (newScrolledToTop && newScrolledToTop !== scrolledToTop) onScrollToTop?.();
+      if (newScrolledToBottom && newScrolledToBottom !== scrolledToBottom) onScrollToBottom?.();
     }
 
     if (fetching || tableWidth === scrollViewportWidth) {
@@ -217,14 +207,11 @@ export function DataTable<T>({
       setScrolledToRight(true);
     } else {
       const newScrolledToLeft = scrollLeft === 0;
-      const newScrolledToRight =
-        tableWidth - scrollLeft - scrollViewportWidth < 1;
+      const newScrolledToRight = tableWidth - scrollLeft - scrollViewportWidth < 1;
       setScrolledToLeft(newScrolledToLeft);
       setScrolledToRight(newScrolledToRight);
-      if (newScrolledToLeft && newScrolledToLeft !== scrolledToLeft)
-        onScrollToLeft?.();
-      if (newScrolledToRight && newScrolledToRight !== scrolledToRight)
-        onScrollToRight?.();
+      if (newScrolledToLeft && newScrolledToLeft !== scrolledToLeft) onScrollToLeft?.();
+      if (newScrolledToRight && newScrolledToRight !== scrolledToRight) onScrollToRight?.();
     }
   }, [
     fetching,
@@ -252,7 +239,7 @@ export function DataTable<T>({
       onScroll?.(e);
       debouncedProcessScrolling();
     },
-    [debouncedProcessScrolling, onScroll],
+    [debouncedProcessScrolling, onScroll]
   );
 
   const handlePageChange = useCallback(
@@ -260,26 +247,18 @@ export function DataTable<T>({
       localScrollViewportRef.current?.scrollTo({ top: 0, left: 0 });
       onPageChange!(page);
     },
-    [onPageChange, localScrollViewportRef],
+    [onPageChange, localScrollViewportRef]
   );
 
   const recordsLength = records?.length;
   const recordIds = records?.map((record) => getRecordId(record, idAccessor));
   const selectionColumnVisible = !!selectedRecords;
-  const selectedRecordIds = selectedRecords?.map((record) =>
-    getRecordId(record, idAccessor),
-  );
+  const selectedRecordIds = selectedRecords?.map((record) => getRecordId(record, idAccessor));
   const hasRecordsAndSelectedRecords =
-    recordIds !== undefined &&
-    selectedRecordIds !== undefined &&
-    selectedRecordIds.length > 0;
+    recordIds !== undefined && selectedRecordIds !== undefined && selectedRecordIds.length > 0;
 
-  const selectableRecords = isRecordSelectable
-    ? records?.filter(isRecordSelectable)
-    : records;
-  const selectableRecordIds = selectableRecords?.map((record) =>
-    getRecordId(record, idAccessor),
-  );
+  const selectableRecords = isRecordSelectable ? records?.filter(isRecordSelectable) : records;
+  const selectableRecordIds = selectableRecords?.map((record) => getRecordId(record, idAccessor));
 
   const allSelectableRecordsSelected =
     hasRecordsAndSelectedRecords &&
@@ -293,12 +272,11 @@ export function DataTable<T>({
       onSelectedRecordsChange(
         allSelectableRecordsSelected
           ? selectedRecords.filter(
-              (record) =>
-                !selectableRecordIds!.includes(getRecordId(record, idAccessor)),
+              (record) => !selectableRecordIds!.includes(getRecordId(record, idAccessor))
             )
           : uniqBy([...selectedRecords, ...selectableRecords!], (record) =>
-              getRecordId(record, idAccessor),
-            ),
+              getRecordId(record, idAccessor)
+            )
       );
     }
   }, [
@@ -312,8 +290,7 @@ export function DataTable<T>({
 
   const { lastSelectionChangeIndex, setLastSelectionChangeIndex } =
     useLastSelectionChangeIndex(recordIds);
-  const selectorCellShadowVisible =
-    selectionColumnVisible && !scrolledToLeft && !pinFirstColumn;
+  const selectorCellShadowVisible = selectionColumnVisible && !scrolledToLeft && !pinFirstColumn;
 
   const marginProperties = { m, my, mx, mt, mb, ml, mr };
 
@@ -322,7 +299,7 @@ export function DataTable<T>({
       if (tableWrapper) return tableWrapper({ children });
       return children;
     },
-    [tableWrapper],
+    [tableWrapper]
   );
 
   return (
@@ -333,7 +310,7 @@ export function DataTable<T>({
           dataTableRootStyle,
           { [dataTableWithBorderStyle]: withTableBorder },
           className,
-          classNames?.root,
+          classNames?.root
         )}
         style={[
           (theme) => ({
@@ -346,8 +323,7 @@ export function DataTable<T>({
               stripedColor,
               highlightOnHoverColor,
             }),
-            borderRadius:
-              theme.radius[borderRadius as RaikouSize] || borderRadius,
+            borderRadius: theme.radius[borderRadius as RaikouSize] || borderRadius,
             boxShadow: theme.shadows[shadow as RaikouSize] || shadow,
             height,
             minHeight,
@@ -356,7 +332,7 @@ export function DataTable<T>({
           style,
           styles?.root,
           {
-            position: "relative",
+            position: 'relative',
           },
         ]}
       >
@@ -381,26 +357,21 @@ export function DataTable<T>({
                 dataTableTableStyle,
                 {
                   [TEXT_SELECTION_DISABLED]: textSelectionDisabled,
-                  [dataTableVerticalAlignTopStyle]: verticalAlign === "top",
-                  [dataTableVerticalAlignBottomStyle]:
-                    verticalAlign === "bottom",
+                  [dataTableVerticalAlignTopStyle]: verticalAlign === 'top',
+                  [dataTableVerticalAlignBottomStyle]: verticalAlign === 'bottom',
                   [dataTableLastRowBorderBottomVisibleStyle]:
-                    otherProps.withRowBorders &&
-                    tableHeight < scrollViewportHeight,
+                    otherProps.withRowBorders && tableHeight < scrollViewportHeight,
                   [dataTablePinLastColumnStyle]: pinLastColumn,
-                  [dataTablePinLastColumnScrolledStyle]:
-                    !scrolledToRight && pinLastColumn,
-                  [dataTableSelectionColumnVisibleStyle]:
-                    selectionColumnVisible,
+                  [dataTablePinLastColumnScrolledStyle]: !scrolledToRight && pinLastColumn,
+                  [dataTableSelectionColumnVisibleStyle]: selectionColumnVisible,
                   [dataTablePinFirstColumnStyle]: pinFirstColumn,
-                  [dataTablePinFirstColumnScrolledStyle]:
-                    !scrolledToLeft && pinFirstColumn,
+                  [dataTablePinFirstColumnScrolledStyle]: !scrolledToLeft && pinFirstColumn,
                 },
-                classNames?.table,
+                classNames?.table
               )}
               style={{
                 ...styles?.table,
-                "--raikou-datatable-selection-column-width": `${selectionColumnWidth}px`,
+                '--raikou-datatable-selection-column-width': `${selectionColumnWidth}px`,
               }}
               data-striped={(recordsLength && striped) || undefined}
               data-highlight-on-hover={highlightOnHover || undefined}
@@ -422,9 +393,7 @@ export function DataTable<T>({
                     selectionTrigger={selectionTrigger}
                     selectionVisible={selectionColumnVisible}
                     selectionChecked={allSelectableRecordsSelected}
-                    selectionIndeterminate={
-                      someRecordsSelected && !allSelectableRecordsSelected
-                    }
+                    selectionIndeterminate={someRecordsSelected && !allSelectableRecordsSelected}
                     onSelectionChange={handleHeaderSelectionChange}
                     selectionCheckboxProps={{
                       ...selectionCheckboxProps,
@@ -440,56 +409,42 @@ export function DataTable<T>({
                 {recordsLength ? (
                   records.map((record, index) => {
                     const recordId = getRecordId(record, idAccessor);
-                    const isSelected =
-                      selectedRecordIds?.includes(recordId) || false;
+                    const isSelected = selectedRecordIds?.includes(recordId) || false;
 
-                    let handleSelectionChange:
-                      | React.MouseEventHandler
-                      | undefined;
+                    let handleSelectionChange: React.MouseEventHandler | undefined;
 
                     if (onSelectedRecordsChange && selectedRecords) {
                       handleSelectionChange = (e) => {
-                        if (
-                          e.nativeEvent.shiftKey &&
-                          lastSelectionChangeIndex !== null
-                        ) {
+                        if (e.nativeEvent.shiftKey && lastSelectionChangeIndex !== null) {
                           const targetRecords = records.filter(
                             index > lastSelectionChangeIndex
                               ? (rec, idx) =>
                                   idx >= lastSelectionChangeIndex &&
                                   idx <= index &&
-                                  (isRecordSelectable
-                                    ? isRecordSelectable(rec, idx)
-                                    : true)
+                                  (isRecordSelectable ? isRecordSelectable(rec, idx) : true)
                               : (rec, idx) =>
                                   idx >= index &&
                                   idx <= lastSelectionChangeIndex &&
-                                  (isRecordSelectable
-                                    ? isRecordSelectable(rec, idx)
-                                    : true),
+                                  (isRecordSelectable ? isRecordSelectable(rec, idx) : true)
                           );
                           onSelectedRecordsChange(
                             isSelected
-                              ? differenceBy(
-                                  selectedRecords,
-                                  targetRecords,
-                                  (r) => getRecordId(r, idAccessor),
+                              ? differenceBy(selectedRecords, targetRecords, (r) =>
+                                  getRecordId(r, idAccessor)
                                 )
-                              : uniqBy(
-                                  [...selectedRecords, ...targetRecords],
-                                  (r) => getRecordId(r, idAccessor),
-                                ),
+                              : uniqBy([...selectedRecords, ...targetRecords], (r) =>
+                                  getRecordId(r, idAccessor)
+                                )
                           );
                         } else {
                           onSelectedRecordsChange(
                             isSelected
                               ? selectedRecords.filter(
-                                  (rec) =>
-                                    getRecordId(rec, idAccessor) !== recordId,
+                                  (rec) => getRecordId(rec, idAccessor) !== recordId
                                 )
                               : uniqBy([...selectedRecords, record], (rec) =>
-                                  getRecordId(rec, idAccessor),
-                                ),
+                                  getRecordId(rec, idAccessor)
+                                )
                           );
                         }
                         setLastSelectionChangeIndex(index);
@@ -510,9 +465,7 @@ export function DataTable<T>({
                         onSelectionChange={handleSelectionChange}
                         isRecordSelectable={isRecordSelectable}
                         selectionCheckboxProps={selectionCheckboxProps}
-                        getSelectionCheckboxProps={
-                          getRecordSelectionCheckboxProps
-                        }
+                        getSelectionCheckboxProps={getRecordSelectionCheckboxProps}
                         onClick={onRowClick}
                         onDoubleClick={onRowDoubleClick}
                         onCellClick={onCellClick}

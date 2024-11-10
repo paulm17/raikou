@@ -6,16 +6,15 @@ import {
   getFontSize,
   getRadius,
   getSize,
-  RaikouRadius,
-  RaikouSize,
   polymorphicFactory,
   PolymorphicFactory,
+  RaikouRadius,
+  RaikouSize,
   rem,
   StylesApiProps,
   useProps,
   useStyles,
 } from '../../core';
-import { InputDescriptionStyle, InputErrorStyle, InputInputStyle, InputLabelStyle, InputRequiredStyle, InputRootStyle, InputSectionStyle, InputWrapperStyle } from './Input.css';
 import { InputDescription } from './InputDescription/InputDescription';
 import { InputError } from './InputError/InputError';
 import { InputLabel } from './InputLabel/InputLabel';
@@ -26,6 +25,16 @@ import {
   InputWrapper,
   InputWrapperStylesNames,
 } from './InputWrapper/InputWrapper';
+import {
+  InputDescriptionStyle,
+  InputErrorStyle,
+  InputInputStyle,
+  InputLabelStyle,
+  InputRequiredStyle,
+  InputRootStyle,
+  InputSectionStyle,
+  InputWrapperStyle,
+} from './Input.css';
 
 export interface __BaseInputProps extends __InputWrapperProps, Omit<__InputProps, 'wrapperProps'> {
   /** Props passed down to the root element */

@@ -1,15 +1,11 @@
-import { useState } from "react";
-import { useRaikouTheme, rem } from "../../core";
-import { Button, ButtonProps } from "./Button";
+import { useState } from 'react';
+import { rem, useRaikouTheme } from '../../core';
+import { Button, ButtonProps } from './Button';
 
-export default { title: "Button" };
+export default { title: 'Button' };
 
 export function RenderRoot() {
-  return (
-    <Button renderRoot={(props) => <a {...props} href="#" />}>
-      Some content
-    </Button>
-  );
+  return <Button renderRoot={(props) => <a {...props} href="#" />}>Some content</Button>;
 }
 
 export function AutoContrast() {
@@ -24,9 +20,9 @@ export function AutoContrast() {
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start",
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
         gap: 10,
         padding: 40,
       }}
@@ -76,14 +72,14 @@ function Colors({ index, ...others }: ButtonProps & { index?: number }) {
   const theme = useRaikouTheme();
   const colors = Object.keys(theme.colors).map((color) => (
     <Button
-      color={`${color}${typeof index === "number" ? `.${index}` : ""}`}
+      color={`${color}${typeof index === 'number' ? `.${index}` : ''}`}
       key={color}
       {...others}
     >
       Button
     </Button>
   ));
-  return <div style={{ display: "flex", gap: 20, padding: 40 }}>{colors}</div>;
+  return <div style={{ display: 'flex', gap: 20, padding: 40 }}>{colors}</div>;
 }
 
 export function Usage() {
@@ -111,7 +107,7 @@ export function Usage() {
       <Colors variant="transparent" />
       Transparent variant index:
       <Colors variant="transparent" index={4} />
-      <div style={{ backgroundColor: "rgba(0,0,0,.5)" }}>
+      <div style={{ backgroundColor: 'rgba(0,0,0,.5)' }}>
         White variant:
         <Colors variant="white" />
         White variant index:
@@ -124,12 +120,7 @@ export function Usage() {
 export function FullWidth() {
   return (
     <div style={{ padding: 40 }}>
-      <Button
-        fullWidth
-        leftSection="L"
-        rightSection="R"
-        justify="space-between"
-      >
+      <Button fullWidth leftSection="L" rightSection="R" justify="space-between">
         Button
       </Button>
     </div>
@@ -192,7 +183,7 @@ export function CssColor() {
         </Button>
       </div>
       White variant
-      <div style={{ backgroundColor: "rgba(0,0,0,.5)" }}>
+      <div style={{ backgroundColor: 'rgba(0,0,0,.5)' }}>
         <Button size="xl" radius="xl" color="#ff00ff" variant="white">
           $$
         </Button>
@@ -203,22 +194,14 @@ export function CssColor() {
 
 export function GradientVariant() {
   return (
-    <div style={{ padding: 40, display: "flex", gap: 40 }}>
+    <div style={{ padding: 40, display: 'flex', gap: 40 }}>
       <Button size="lg" variant="gradient">
         $$
       </Button>
-      <Button
-        size="lg"
-        variant="gradient"
-        gradient={{ from: "red", to: "cyan" }}
-      >
+      <Button size="lg" variant="gradient" gradient={{ from: 'red', to: 'cyan' }}>
         $$
       </Button>
-      <Button
-        size="lg"
-        variant="gradient"
-        gradient={{ from: "#FF00FF", to: "#00FF00" }}
-      >
+      <Button size="lg" variant="gradient" gradient={{ from: '#FF00FF', to: '#00FF00' }}>
         $$
       </Button>
     </div>
@@ -248,13 +231,13 @@ export function Variables() {
     <div style={{ padding: 40 }}>
       <Button
         size="xl"
-        __vars={{ "--aasdsad": "asdasd" }}
+        __vars={{ '--aasdsad': 'asdasd' }}
         vars={(_theme, props) => {
           const result = { root: {} as any };
-          if (props.size === "xl") {
-            result.root["--ai-size"] = rem("12rem");
-            result.root["--ai-bg"] = "pink";
-            result.root["--ai-hover"] = "orange";
+          if (props.size === 'xl') {
+            result.root['--ai-size'] = rem('12rem');
+            result.root['--ai-bg'] = 'pink';
+            result.root['--ai-hover'] = 'orange';
           }
 
           return result;
@@ -268,7 +251,7 @@ export function Variables() {
 
 export function Loading() {
   return (
-    <div style={{ padding: 40, display: "flex", gap: 20 }}>
+    <div style={{ padding: 40, display: 'flex', gap: 20 }}>
       <Button loading size="xs">
         Button xs
       </Button>
@@ -291,7 +274,7 @@ export function Loading() {
 export function ToggleLoading() {
   const [loading, setLoading] = useState(false);
   return (
-    <div style={{ padding: 40, display: "flex", gap: 20 }}>
+    <div style={{ padding: 40, display: 'flex', gap: 20 }}>
       <Button loading={loading} size="lg">
         Save to database
       </Button>
@@ -305,7 +288,7 @@ export function ToggleLoading() {
 
 export function Disabled() {
   return (
-    <div style={{ padding: 40, display: "flex", gap: 20 }}>
+    <div style={{ padding: 40, display: 'flex', gap: 20 }}>
       <Button disabled size="lg">
         $$
       </Button>
@@ -315,7 +298,7 @@ export function Disabled() {
 
 export function Sections() {
   return (
-    <div style={{ padding: 40, display: "flex", gap: 20 }}>
+    <div style={{ padding: 40, display: 'flex', gap: 20 }}>
       <Button leftSection="L">With Left</Button>
       <Button rightSection="R">With Right</Button>
       <Button leftSection="L" rightSection="R">
@@ -327,7 +310,7 @@ export function Sections() {
 
 export function ButtonGroup() {
   return (
-    <div style={{ padding: 40, display: "flex", gap: 20 }}>
+    <div style={{ padding: 40, display: 'flex', gap: 20 }}>
       <Button size="lg" variant="default">
         S
       </Button>
@@ -338,12 +321,7 @@ export function ButtonGroup() {
       </Button.Group>
 
       <Button.Group borderWidth={1}>
-        <Button
-          size="lg"
-          variant="default"
-          component="a"
-          href="https://raikou.dev"
-        >
+        <Button size="lg" variant="default" component="a" href="https://raikou.dev">
           2
         </Button>
         <Button size="lg" variant="default">

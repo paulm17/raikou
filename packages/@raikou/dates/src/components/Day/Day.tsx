@@ -104,7 +104,7 @@ export const Day = factory<DayFactory>((_props, ref) => {
   const getStyles = useStyles<DayFactory>({
     name: __staticSelector || 'Day',
     classes: {
-      day: DayStyle
+      day: DayStyle,
     },
     props,
     className,

@@ -7,31 +7,28 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
+} from '@raikou/core';
 import {
   LoaderClimbingBoxContainerStyle,
   LoaderClimbingBoxHillStyle,
   LoaderClimbingBoxStyle,
   LoaderClimbingBoxWrapperStyle,
-} from "./ClimbingBox.css";
+} from './ClimbingBox.css';
 
-export type ClimbingBoxStylesNames = "root";
+export type ClimbingBoxStylesNames = 'root';
 export type ClimbingBoxCssVariables = {
-  root:
-    | "--climbing-box-color"
-    | "--climbing-box-size"
-    | "--climbing-box-speed-multiplier";
+  root: '--climbing-box-color' | '--climbing-box-size' | '--climbing-box-speed-multiplier';
 };
 
 export interface ClimbingBoxProps
   extends BoxProps,
     StylesApiProps<ClimbingBoxFactory>,
-    ElementProps<"span"> {
+    ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -58,15 +55,15 @@ const varsResolver = createVarsResolver<ClimbingBoxFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--climbing-box-color": color ? getThemeColor(color, theme) : undefined,
-      "--climbing-box-size": getSize(size, "climbing-box-size") ?? undefined,
-      "--climbing-box-speed-multiplier": `${speedMultiplier}`,
+      '--climbing-box-color': color ? getThemeColor(color, theme) : undefined,
+      '--climbing-box-size': getSize(size, 'climbing-box-size') ?? undefined,
+      '--climbing-box-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const ClimbingBox = factory<ClimbingBoxFactory>((_props, ref) => {
-  const props = useProps("ClimbingBox", defaultProps, _props);
+  const props = useProps('ClimbingBox', defaultProps, _props);
   const {
     color,
     vars,
@@ -83,7 +80,7 @@ export const ClimbingBox = factory<ClimbingBoxFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<ClimbingBoxFactory>({
-    name: "ClimbingBox",
+    name: 'ClimbingBox',
     props,
     classes: {
       root: LoaderClimbingBoxContainerStyle,
@@ -98,7 +95,7 @@ export const ClimbingBox = factory<ClimbingBoxFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <span className={LoaderClimbingBoxWrapperStyle}>
         <span className={LoaderClimbingBoxStyle} />
         <span className={LoaderClimbingBoxHillStyle} />
@@ -107,4 +104,4 @@ export const ClimbingBox = factory<ClimbingBoxFactory>((_props, ref) => {
   );
 });
 
-ClimbingBox.displayName = "@raikou/core/ClimbingBox";
+ClimbingBox.displayName = '@raikou/core/ClimbingBox';

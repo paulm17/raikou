@@ -1,5 +1,5 @@
 import React from 'react';
-import { tests, render, screen } from '@raikou/tests';
+import { render, screen, tests } from '@raikou/tests';
 import { Box, BoxProps } from './Box';
 
 const defaultProps: BoxProps = {};

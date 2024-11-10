@@ -1,6 +1,6 @@
-import { css } from "@stylefusion/react";
+import { css } from '@stylefusion/react';
 
-export const TypographyStylesProviderRootStyle = css(({theme}: any) => ({
+export const TypographyStylesProviderRootStyle = css(({ theme }: any) => ({
   '& :first-child': {
     marginTop: 0,
   },
@@ -153,7 +153,7 @@ export const TypographyStylesProviderRootStyle = css(({theme}: any) => ({
       color: theme.colors.white,
     }),
   },
-  
+
   '& :_where(ul, ol):not([data-type="taskList"])': {
     marginBottom: 'var(--raikou-spacing-md)',
     paddingInlineStart: '38px',

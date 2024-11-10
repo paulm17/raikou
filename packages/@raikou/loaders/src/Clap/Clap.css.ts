@@ -1,36 +1,36 @@
-import { css, keyframes } from "@stylefusion/react";
+import { css, keyframes } from '@stylefusion/react';
 
 const rotateAnimation = keyframes({
-  "50%": { transform: "rotate(180deg) scale(1.125)" },
-  "100%": { transform: "rotate(360deg)" },
+  '50%': { transform: 'rotate(180deg) scale(1.125)' },
+  '100%': { transform: 'rotate(360deg)' },
 });
 
 export const LoaderClapRootStyle = css({
-  "--clap-size-xs": "15px",
-  "--clap-size-sm": "18px",
-  "--clap-size-md": "30px",
-  "--clap-size-lg": "36px",
-  "--clap-size-xl": "48px",
-  "--clap-size": "var(--clap-size-md)",
-  "--clap-color": "var(--raikou-primary-color-filled)",
-  "--clap-back-color": "darken(var(--clap-color), 0.5)",
-  position: "relative",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  width: "var(--clap-size)",
-  height: "var(--clap-size)",
+  '--clap-size-xs': '15px',
+  '--clap-size-sm': '18px',
+  '--clap-size-md': '30px',
+  '--clap-size-lg': '36px',
+  '--clap-size-xl': '48px',
+  '--clap-size': 'var(--clap-size-md)',
+  '--clap-color': 'var(--raikou-primary-color-filled)',
+  '--clap-back-color': 'darken(var(--clap-color), 0.5)',
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: 'var(--clap-size)',
+  height: 'var(--clap-size)',
   animation: `${rotateAnimation} 1.5s linear infinite`,
 });
 
 export const LoaderClapBallStyle = css({
-  position: "absolute",
-  top: "calc(var(--clap-size) / 2)",
-  left: "calc(var(--clap-size) / 2)",
-  width: "calc(var(--clap-size) / 5)",
-  height: "calc(var(--clap-size) / 5)",
-  backgroundColor: "var(--clap-color)",
-  borderRadius: "50%",
+  position: 'absolute',
+  top: 'calc(var(--clap-size) / 2)',
+  left: 'calc(var(--clap-size) / 2)',
+  width: 'calc(var(--clap-size) / 5)',
+  height: 'calc(var(--clap-size) / 5)',
+  backgroundColor: 'var(--clap-color)',
+  borderRadius: '50%',
 });
 
 // export const LoaderClapBall1Style = css({

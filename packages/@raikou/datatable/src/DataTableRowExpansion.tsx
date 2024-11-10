@@ -1,10 +1,10 @@
-import { Collapse, TableTd, TableTr } from "@raikou/core";
+import { Collapse, TableTd, TableTr } from '@raikou/core';
+import { useRowExpansionStatus } from './hooks';
+import type { DataTableRowExpansionCollapseProps } from './types';
 import {
   dataTableRowExpansionCellContentStyle,
   dataTableRowExpansionCellStyle,
-} from "./DataTableRowExpansion.css";
-import { useRowExpansionStatus } from "./hooks";
-import type { DataTableRowExpansionCollapseProps } from "./types";
+} from './DataTableRowExpansion.css';
 
 type DataTableRowExpansionProps = {
   open: boolean;
@@ -19,10 +19,7 @@ export function DataTableRowExpansion({
   content,
   collapseProps,
 }: DataTableRowExpansionProps) {
-  const { expanded, visible } = useRowExpansionStatus(
-    open,
-    collapseProps?.transitionDuration,
-  );
+  const { expanded, visible } = useRowExpansionStatus(open, collapseProps?.transitionDuration);
 
   return visible ? (
     <>
@@ -31,9 +28,7 @@ export function DataTableRowExpansion({
       <TableTr>
         <TableTd className={dataTableRowExpansionCellStyle} colSpan={colSpan}>
           <Collapse in={expanded} {...collapseProps}>
-            <div className={dataTableRowExpansionCellContentStyle}>
-              {content()}
-            </div>
+            <div className={dataTableRowExpansionCellContentStyle}>{content()}</div>
           </Collapse>
         </TableTd>
       </TableTr>

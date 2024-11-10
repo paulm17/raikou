@@ -1,13 +1,13 @@
-import { useRaikouTheme, rem } from "../../core";
-import { ActionIcon, ActionIconProps } from "./ActionIcon";
+import { rem, useRaikouTheme } from '../../core';
+import { ActionIcon, ActionIconProps } from './ActionIcon';
 
-export default { title: "ActionIcon" };
+export default { title: 'ActionIcon' };
 
 function Colors({ index, ...others }: ActionIconProps & { index?: number }) {
   const theme = useRaikouTheme();
   const colors = Object.keys(theme.colors).map((color) => (
     <ActionIcon
-      color={`${color}${typeof index === "number" ? `.${index}` : ""}`}
+      color={`${color}${typeof index === 'number' ? `.${index}` : ''}`}
       key={color}
       {...others}
       size="lg"
@@ -15,7 +15,7 @@ function Colors({ index, ...others }: ActionIconProps & { index?: number }) {
       $$
     </ActionIcon>
   ));
-  return <div style={{ display: "flex", gap: 20, padding: 40 }}>{colors}</div>;
+  return <div style={{ display: 'flex', gap: 20, padding: 40 }}>{colors}</div>;
 }
 
 export function AutoContrast() {
@@ -30,9 +30,9 @@ export function AutoContrast() {
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start",
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
         gap: 10,
         padding: 40,
       }}
@@ -98,7 +98,7 @@ export function Usage() {
       <Colors variant="transparent" />
       Transparent variant index:
       <Colors variant="transparent" index={4} />
-      <div style={{ backgroundColor: "rgba(0,0,0,.5)" }}>
+      <div style={{ backgroundColor: 'rgba(0,0,0,.5)' }}>
         White variant:
         <Colors variant="white" />
         White variant index:
@@ -142,7 +142,7 @@ export function CssColor() {
         </ActionIcon>
       </div>
       White variant
-      <div style={{ backgroundColor: "rgba(0,0,0,.5)" }}>
+      <div style={{ backgroundColor: 'rgba(0,0,0,.5)' }}>
         <ActionIcon size="xl" radius="xl" color="#ff00ff" variant="white">
           $$
         </ActionIcon>
@@ -153,22 +153,14 @@ export function CssColor() {
 
 export function GradientVariant() {
   return (
-    <div style={{ padding: 40, display: "flex", gap: 40 }}>
+    <div style={{ padding: 40, display: 'flex', gap: 40 }}>
       <ActionIcon size="lg" variant="gradient">
         $$
       </ActionIcon>
-      <ActionIcon
-        size="lg"
-        variant="gradient"
-        gradient={{ from: "red", to: "cyan" }}
-      >
+      <ActionIcon size="lg" variant="gradient" gradient={{ from: 'red', to: 'cyan' }}>
         $$
       </ActionIcon>
-      <ActionIcon
-        size="lg"
-        variant="gradient"
-        gradient={{ from: "#FF00FF", to: "#00FF00" }}
-      >
+      <ActionIcon size="lg" variant="gradient" gradient={{ from: '#FF00FF', to: '#00FF00' }}>
         $$
       </ActionIcon>
     </div>
@@ -190,13 +182,13 @@ export function Variables() {
     <div style={{ padding: 40 }}>
       <ActionIcon
         size="xl"
-        __vars={{ "--aasdsad": "asdasd" }}
+        __vars={{ '--aasdsad': 'asdasd' }}
         vars={(_theme, props) => {
           const result = { root: {} as any };
-          if (props.size === "xl") {
-            result.root["--ai-size"] = rem("12rem");
-            result.root["--ai-bg"] = "pink";
-            result.root["--ai-hover"] = "orange";
+          if (props.size === 'xl') {
+            result.root['--ai-size'] = rem('12rem');
+            result.root['--ai-bg'] = 'pink';
+            result.root['--ai-hover'] = 'orange';
           }
 
           return result;
@@ -210,7 +202,7 @@ export function Variables() {
 
 export function Loading() {
   return (
-    <div style={{ padding: 40, display: "flex", gap: 20 }}>
+    <div style={{ padding: 40, display: 'flex', gap: 20 }}>
       <ActionIcon loading size="lg">
         $$
       </ActionIcon>
@@ -226,7 +218,7 @@ export function Loading() {
 
 export function Disabled() {
   return (
-    <div style={{ padding: 40, display: "flex", gap: 20 }}>
+    <div style={{ padding: 40, display: 'flex', gap: 20 }}>
       <ActionIcon disabled size="lg">
         $$
       </ActionIcon>
@@ -236,7 +228,7 @@ export function Disabled() {
 
 export function ActionIconGroup() {
   return (
-    <div style={{ padding: 40, display: "flex", gap: 20 }}>
+    <div style={{ padding: 40, display: 'flex', gap: 20 }}>
       <ActionIcon size="lg" variant="default">
         S
       </ActionIcon>
@@ -250,12 +242,7 @@ export function ActionIconGroup() {
         <ActionIcon size="lg" variant="default">
           1
         </ActionIcon>
-        <ActionIcon
-          size="lg"
-          variant="default"
-          component="a"
-          href="https://raikou.dev"
-        >
+        <ActionIcon size="lg" variant="default" component="a" href="https://raikou.dev">
           2
         </ActionIcon>
         <ActionIcon size="lg" variant="default">

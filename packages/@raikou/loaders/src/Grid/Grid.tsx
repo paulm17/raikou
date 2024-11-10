@@ -7,14 +7,13 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
+} from '@raikou/core';
 import {
-  LoaderGridLoaderStyle,
   LoaderGrid1Style,
   LoaderGrid2Style,
   LoaderGrid3Style,
@@ -24,35 +23,33 @@ import {
   LoaderGrid7Style,
   LoaderGrid8Style,
   LoaderGrid9Style,
-} from "./Grid.css";
+  LoaderGridLoaderStyle,
+} from './Grid.css';
 
-export type GridStylesNames = "root";
+export type GridStylesNames = 'root';
 export type GridCssVariables = {
   root:
-    | "--grid-color"
-    | "--grid-size"
-    | "--grid-margin"
-    | "--grid-speed-multiplier"
-    | "--grid-rand-1"
-    | "--grid-rand-2"
-    | "--grid-rand-3"
-    | "--grid-rand-4"
-    | "--grid-rand-5"
-    | "--grid-rand-6"
-    | "--grid-rand-7"
-    | "--grid-rand-8"
-    | "--grid-rand-9";
+    | '--grid-color'
+    | '--grid-size'
+    | '--grid-margin'
+    | '--grid-speed-multiplier'
+    | '--grid-rand-1'
+    | '--grid-rand-2'
+    | '--grid-rand-3'
+    | '--grid-rand-4'
+    | '--grid-rand-5'
+    | '--grid-rand-6'
+    | '--grid-rand-7'
+    | '--grid-rand-8'
+    | '--grid-rand-9';
 };
 
-export interface GridProps
-  extends BoxProps,
-    StylesApiProps<GridFactory>,
-    ElementProps<"span"> {
+export interface GridProps extends BoxProps, StylesApiProps<GridFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
   /** Margin between the loader and the indicator, numbers are converted to rem */
-  margin?: React.CSSProperties["margin"];
+  margin?: React.CSSProperties['margin'];
 
   /** Speed multiplier, default value is `1` */
   speedMultiplier?: number;
@@ -80,25 +77,25 @@ const varsResolver = createVarsResolver<GridFactory>(
   // @ts-ignore
   (theme, { color, size, margin, speedMultiplier }) => ({
     root: {
-      "--grid-color": color ? getThemeColor(color, theme) : undefined,
-      "--grid-size": getSize(size, "grid-size") ?? undefined,
-      "--grid-margin": getSize(margin, "grid-margin") ?? undefined,
-      "--grid-speed-multiplier": `${speedMultiplier}`,
-      "--grid-rand-1": random(100).toString(),
-      "--grid-rand-2": random(100).toString(),
-      "--grid-rand-3": random(100).toString(),
-      "--grid-rand-4": random(100).toString(),
-      "--grid-rand-5": random(100).toString(),
-      "--grid-rand-6": random(100).toString(),
-      "--grid-rand-7": random(100).toString(),
-      "--grid-rand-8": random(100).toString(),
-      "--grid-rand-9": random(100).toString(),
+      '--grid-color': color ? getThemeColor(color, theme) : undefined,
+      '--grid-size': getSize(size, 'grid-size') ?? undefined,
+      '--grid-margin': getSize(margin, 'grid-margin') ?? undefined,
+      '--grid-speed-multiplier': `${speedMultiplier}`,
+      '--grid-rand-1': random(100).toString(),
+      '--grid-rand-2': random(100).toString(),
+      '--grid-rand-3': random(100).toString(),
+      '--grid-rand-4': random(100).toString(),
+      '--grid-rand-5': random(100).toString(),
+      '--grid-rand-6': random(100).toString(),
+      '--grid-rand-7': random(100).toString(),
+      '--grid-rand-8': random(100).toString(),
+      '--grid-rand-9': random(100).toString(),
     },
-  }),
+  })
 );
 
 export const Grid = factory<GridFactory>((_props, ref) => {
-  const props = useProps("Grid", defaultProps, _props);
+  const props = useProps('Grid', defaultProps, _props);
   const {
     color,
     vars,
@@ -115,7 +112,7 @@ export const Grid = factory<GridFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<GridFactory>({
-    name: "Grid",
+    name: 'Grid',
     props,
     classes: {
       root: LoaderGridLoaderStyle,
@@ -130,7 +127,7 @@ export const Grid = factory<GridFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <span className={LoaderGrid1Style} />
       <span className={LoaderGrid2Style} />
       <span className={LoaderGrid3Style} />
@@ -144,4 +141,4 @@ export const Grid = factory<GridFactory>((_props, ref) => {
   );
 });
 
-Grid.displayName = "@raikou/core/Grid";
+Grid.displayName = '@raikou/core/Grid';

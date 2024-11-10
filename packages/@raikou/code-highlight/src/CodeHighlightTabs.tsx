@@ -21,7 +21,19 @@ import { useUncontrolled } from '@raikou/hooks';
 import { CopyIcon } from './CopyIcon';
 import { ExpandIcon } from './ExpandIcon';
 import { FileIcon } from './FileIcon';
-import { CodeHighlightCodeStyle, CodeHighlightCodeWrapperStyle, CodeHighlightControlsStyle, CodeHighlightControlStyle, CodeHighlightFileIconStyle, CodeHighlightFilesStyle, CodeHighlightFileStyle, CodeHighlightHeaderStyle, CodeHighlightPreStyle, CodeHighlightRootStyle, CodeHighlightShowCodeButtonStyle } from './CodeHighlight.css';
+import {
+  CodeHighlightCodeStyle,
+  CodeHighlightCodeWrapperStyle,
+  CodeHighlightControlsStyle,
+  CodeHighlightControlStyle,
+  CodeHighlightFileIconStyle,
+  CodeHighlightFilesStyle,
+  CodeHighlightFileStyle,
+  CodeHighlightHeaderStyle,
+  CodeHighlightPreStyle,
+  CodeHighlightRootStyle,
+  CodeHighlightShowCodeButtonStyle,
+} from './CodeHighlight.css';
 import { CodeHighlightThemeStyle } from './CodeHighlight.theme.css';
 
 export type CodeHighlightTabsStylesNames =

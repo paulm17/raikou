@@ -7,27 +7,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import {
-  LoaderHash1Style,
-  LoaderHash2Style,
-  LoaderHashLoaderStyle,
-} from "./Hash.css";
+} from '@raikou/core';
+import { LoaderHash1Style, LoaderHash2Style, LoaderHashLoaderStyle } from './Hash.css';
 
-export type HashStylesNames = "root";
+export type HashStylesNames = 'root';
 export type HashCssVariables = {
-  root: "--hash-color" | "--hash-size" | "--hash-speed-multiplier";
+  root: '--hash-color' | '--hash-size' | '--hash-speed-multiplier';
 };
 
-export interface HashProps
-  extends BoxProps,
-    StylesApiProps<HashFactory>,
-    ElementProps<"span"> {
+export interface HashProps extends BoxProps, StylesApiProps<HashFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -51,7 +44,7 @@ const defaultProps: Partial<HashProps> = {
 };
 
 const getNewSize = (size: RaikouSize | (string & {}) | number | undefined) => {
-  if (typeof size === "string") {
+  if (typeof size === 'string') {
     const sizes: Record<RaikouSize, number> = {
       xs: 25,
       sm: 30,
@@ -74,15 +67,15 @@ const varsResolver = createVarsResolver<HashFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--hash-color": color ? getThemeColor(color, theme) : undefined,
-      "--hash-size": getSize(size, "bounce-size") ?? undefined,
-      "--hash-speed-multiplier": `${speedMultiplier}`,
+      '--hash-color': color ? getThemeColor(color, theme) : undefined,
+      '--hash-size': getSize(size, 'bounce-size') ?? undefined,
+      '--hash-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Hash = factory<HashFactory>((_props, ref) => {
-  const props = useProps("Hash", defaultProps, _props);
+  const props = useProps('Hash', defaultProps, _props);
   const {
     color,
     vars,
@@ -99,7 +92,7 @@ export const Hash = factory<HashFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<HashFactory>({
-    name: "Hash",
+    name: 'Hash',
     props,
     classes: {
       root: LoaderHashLoaderStyle,
@@ -139,7 +132,7 @@ export const Hash = factory<HashFactory>((_props, ref) => {
   `;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <div dangerouslySetInnerHTML={{ __html: rawHTML }} />
       <span
         className={LoaderHash1Style}
@@ -153,4 +146,4 @@ export const Hash = factory<HashFactory>((_props, ref) => {
   );
 });
 
-Hash.displayName = "@raikou/core/Hash";
+Hash.displayName = '@raikou/core/Hash';

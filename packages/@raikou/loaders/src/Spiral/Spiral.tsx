@@ -7,12 +7,12 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
+} from '@raikou/core';
 import {
   LoaderSpiralCubeSide1Style,
   LoaderSpiralCubeSide2Style,
@@ -21,17 +21,14 @@ import {
   LoaderSpiralCubeStyle,
   LoaderSpiralCubeWrapperStyle,
   LoaderSpiralRootStyle,
-} from "./Spiral.css";
+} from './Spiral.css';
 
-export type SpiralStylesNames = "root";
+export type SpiralStylesNames = 'root';
 export type SpiralCssVariables = {
-  root: "--spiral-color" | "--spiral-size";
+  root: '--spiral-color' | '--spiral-size';
 };
 
-export interface SpiralProps
-  extends BoxProps,
-    StylesApiProps<SpiralFactory>,
-    ElementProps<"span"> {
+export interface SpiralProps extends BoxProps, StylesApiProps<SpiralFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -54,7 +51,7 @@ const defaultProps: Partial<SpiralProps> = {
 };
 
 const getNewSize = (size: RaikouSize | (string & {}) | number | undefined) => {
-  if (typeof size === "string") {
+  if (typeof size === 'string') {
     const sizes: Record<RaikouSize, number> = {
       xs: 18,
       sm: 22,
@@ -77,14 +74,14 @@ const varsResolver = createVarsResolver<SpiralFactory>(
   // @ts-ignore
   (theme, { color, size }) => ({
     root: {
-      "--spiral-color": color ? getThemeColor(color, theme) : undefined,
-      "--spiral-size": getSize(size, "spiral-size") ?? undefined,
+      '--spiral-color': color ? getThemeColor(color, theme) : undefined,
+      '--spiral-size': getSize(size, 'spiral-size') ?? undefined,
     },
-  }),
+  })
 );
 
 export const Spiral = factory<SpiralFactory>((_props, ref) => {
-  const props = useProps("Spiral", defaultProps, _props);
+  const props = useProps('Spiral', defaultProps, _props);
   const {
     color,
     vars,
@@ -100,7 +97,7 @@ export const Spiral = factory<SpiralFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<SpiralFactory>({
-    name: "Spiral",
+    name: 'Spiral',
     props,
     classes: {
       root: LoaderSpiralRootStyle,
@@ -117,7 +114,7 @@ export const Spiral = factory<SpiralFactory>((_props, ref) => {
   const newSize = getNewSize(size) as number;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       {[...Array(4)].map((_, i) => {
         return (
           <span
@@ -146,4 +143,4 @@ export const Spiral = factory<SpiralFactory>((_props, ref) => {
   );
 });
 
-Spiral.displayName = "@raikou/core/Spiral";
+Spiral.displayName = '@raikou/core/Spiral';

@@ -1,36 +1,29 @@
-import {
-  Box,
-  Pagination,
-  Text,
-  rem,
-  type RaikouSpacing,
-  type RaikouStyleProp,
-} from "@raikou/core";
-import clsx from "clsx";
-import { forwardRef, type ForwardedRef } from "react";
-import { DataTablePageSizeSelector } from "./DataTablePageSizeSelector";
-import { getPaginationCssVariables } from "./cssVariables";
-import { useMediaQueryStringOrFunction } from "./hooks";
-import type { DataTablePaginationProps } from "./types";
-import type { WithOptionalProperty, WithRequiredProperty } from "./types/utils";
+import { forwardRef, type ForwardedRef } from 'react';
+import clsx from 'clsx';
+import { Box, Pagination, rem, Text, type RaikouSpacing, type RaikouStyleProp } from '@raikou/core';
+import { getPaginationCssVariables } from './cssVariables';
+import { DataTablePageSizeSelector } from './DataTablePageSizeSelector';
+import { useMediaQueryStringOrFunction } from './hooks';
+import type { DataTablePaginationProps } from './types';
+import type { WithOptionalProperty, WithRequiredProperty } from './types/utils';
 import {
   dataTablePaginationPagesControlStyle,
   dataTablePaginationPagesFetchingStyle,
   dataTablePaginationPagesStyle,
   dataTablePaginationStyle,
   dataTablePaginationTextStyle,
-} from "./DataTablePagination.css";
+} from './DataTablePagination.css';
 
 type DataTablePaginationComponentProps = WithOptionalProperty<
   WithRequiredProperty<
     DataTablePaginationProps,
-    | "loadingText"
-    | "paginationSize"
-    | "recordsPerPageLabel"
-    | "paginationWrapBreakpoint"
-    | "getPaginationControlProps"
+    | 'loadingText'
+    | 'paginationSize'
+    | 'recordsPerPageLabel'
+    | 'paginationWrapBreakpoint'
+    | 'getPaginationControlProps'
   >,
-  "onRecordsPerPageChange" | "recordsPerPageOptions"
+  'onRecordsPerPageChange' | 'recordsPerPageOptions'
 > & {
   className: string | undefined;
   style: RaikouStyleProp | undefined;
@@ -65,7 +58,7 @@ export const DataTablePagination = forwardRef(function DataTablePagination(
     paginationWrapBreakpoint,
     getPaginationControlProps,
   }: DataTablePaginationComponentProps,
-  ref: ForwardedRef<HTMLDivElement>,
+  ref: ForwardedRef<HTMLDivElement>
 ) {
   let paginationTextValue: React.ReactNode;
   if (totalRecords) {
@@ -79,28 +72,21 @@ export const DataTablePagination = forwardRef(function DataTablePagination(
   const isAbovePaginationWrapBreakpoint = useMediaQueryStringOrFunction(
     ({ breakpoints }) =>
       `(min-width: ${
-        typeof paginationWrapBreakpoint === "number"
+        typeof paginationWrapBreakpoint === 'number'
           ? `${rem(paginationWrapBreakpoint)}rem`
           : breakpoints[paginationWrapBreakpoint] || paginationWrapBreakpoint
-      })`,
+      })`
   );
 
   return (
     <Box
       ref={ref}
-      px={horizontalSpacing ?? "xs"}
+      px={horizontalSpacing ?? 'xs'}
       py="xs"
       className={clsx(dataTablePaginationStyle, className)}
-      style={[
-        { flexDirection: isAbovePaginationWrapBreakpoint ? "row" : "column" },
-        style,
-      ]}
+      style={[{ flexDirection: isAbovePaginationWrapBreakpoint ? 'row' : 'column' }, style]}
     >
-      <Text
-        component="div"
-        className={dataTablePaginationTextStyle}
-        size={paginationSize}
-      >
+      <Text component="div" className={dataTablePaginationTextStyle} size={paginationSize}>
         {paginationTextValue}
       </Text>
       {recordsPerPageOptions && (
@@ -144,5 +130,5 @@ export const DataTablePagination = forwardRef(function DataTablePagination(
 }) as (
   props: DataTablePaginationComponentProps & {
     ref: ForwardedRef<HTMLDivElement>;
-  },
+  }
 ) => JSX.Element;

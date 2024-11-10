@@ -1,34 +1,34 @@
-import { css } from "@stylefusion/react";
+import { css } from '@stylefusion/react';
 
 export const NOWRAP = css({
-  whiteSpace: "nowrap",
+  whiteSpace: 'nowrap',
 });
 
 export const ELLIPSIS = css({
-  overflow: "hidden",
-  textOverflow: "ellipsis",
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
 });
 
 export const POINTER_CURSOR = css({
-  cursor: "pointer",
+  cursor: 'pointer',
 });
 
 export const CONTEXT_MENU_CURSOR = css({
-  cursor: "context-menu",
+  cursor: 'context-menu',
 });
 
 export const TEXT_SELECTION_DISABLED = css({
-  userSelect: "none",
+  userSelect: 'none',
 });
 
 export const TEXT_ALIGN_LEFT = css({
-  textAlign: "left",
+  textAlign: 'left',
 });
 
 export const TEXT_ALIGN_CENTER = css({
-  textAlign: "center",
+  textAlign: 'center',
 });
 
 export const TEXT_ALIGN_RIGHT = css({
-  textAlign: "right",
+  textAlign: 'right',
 });

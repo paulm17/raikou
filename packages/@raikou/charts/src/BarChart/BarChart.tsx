@@ -23,15 +23,23 @@ import {
   getThemeColor,
   RaikouColor,
   StylesApiProps,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
   useResolvedStylesApi,
   useStyles,
 } from '@raikou/core';
 import { ChartLegend, ChartLegendStylesNames } from '../ChartLegend';
 import { ChartTooltip, ChartTooltipStylesNames } from '../ChartTooltip';
 import type { BaseChartStylesNames, ChartSeries, GridChartBaseProps } from '../types';
-import { GridChartAxisLabelStyle, GridChartAxisStyle, GridChartContainerStyle, GridChartGridStyle, GridChartRootStyle, GridChartTooltipStyle } from '../grid-chart.css';
+import { BarLabel } from './BarLabel';
+import {
+  GridChartAxisLabelStyle,
+  GridChartAxisStyle,
+  GridChartContainerStyle,
+  GridChartGridStyle,
+  GridChartRootStyle,
+  GridChartTooltipStyle,
+} from '../grid-chart.css';
 
 function valueToPercent(value: number) {
   return `${(value * 100).toFixed(0)}%`;
@@ -50,7 +58,11 @@ export type BarChartStylesNames =
   | ChartTooltipStylesNames;
 
 export type BarChartCssVariables = {
-  root: '--chart-text-color' | '--chart-grid-color' | '--chart-cursor-fill';
+  root:
+    | '--chart-text-color'
+    | '--chart-grid-color'
+    | '--chart-cursor-fill'
+    | '--chart-bar-label-color';
 };
 
 export interface BarChartProps
@@ -92,6 +104,9 @@ export interface BarChartProps
 
   /** Maximum bar width in px */
   maxBarWidth?: number;
+
+  /** Controls color of the bar label, by default the value is determined by the chart orientation */
+  barLabelColor?: RaikouColor;
 }
 
 export type BarChartFactory = Factory<{
@@ -114,34 +129,15 @@ const defaultProps: Partial<BarChartProps> = {
 };
 
 const varsResolver = createVarsResolver<BarChartFactory>(
-  (theme, { textColor, gridColor, cursorFill }) => ({
+  (theme, { textColor, gridColor, cursorFill, barLabelColor }) => ({
     root: {
       '--chart-text-color': textColor ? getThemeColor(textColor, theme) : undefined,
       '--chart-grid-color': gridColor ? getThemeColor(gridColor, theme) : undefined,
       '--chart-cursor-fill': cursorFill ? getThemeColor(cursorFill, theme) : undefined,
+      '--chart-bar-label-color': barLabelColor ? getThemeColor(barLabelColor, theme) : undefined,
     },
   })
 );
-
-export function BarLabel({
-  value,
-  valueFormatter,
-  textBreakAll,
-  parentViewBox,
-  ...others
-}: Record<string, any>) {
-  return (
-    <text
-      {...others}
-      dy={-10}
-      fontSize={12}
-      fill="var(--chart-text-color, var(--raikou-color-dimmed))"
-      textAnchor="center"
-    >
-      {typeof valueFormatter === 'function' ? valueFormatter(value) : value}
-    </text>
-  );
-}
 
 function calculateCumulativeTotal(waterfallData: Record<string, any>[], dataKey: string) {
   let start: number = 0;
@@ -210,6 +206,7 @@ export const BarChart = factory<BarChartFactory>((_props, ref) => {
     rightYAxisProps,
     minBarSize,
     maxBarWidth,
+    mod,
     ...others
   } = props;
 
@@ -267,7 +264,11 @@ export const BarChart = factory<BarChartFactory>((_props, ref) => {
         fillOpacity={dimmed ? 0.1 : fillOpacity}
         strokeOpacity={dimmed ? 0.2 : 0}
         stackId={stacked ? 'stack' : item.stackId || undefined}
-        label={withBarValueLabel ? <BarLabel valueFormatter={valueFormatter} /> : undefined}
+        label={
+          withBarValueLabel ? (
+            <BarLabel valueFormatter={valueFormatter} orientation={orientation} />
+          ) : undefined
+        }
         yAxisId={item.yAxisId || 'left'}
         minPointSize={minBarSize}
         {...(typeof barProps === 'function' ? barProps(item) : barProps)}
@@ -302,6 +303,8 @@ export const BarChart = factory<BarChartFactory>((_props, ref) => {
     );
   });
 
+  const tickFormatter = type === 'percent' ? valueToPercent : valueFormatter;
+
   const sharedYAxisProps = {
     axisLine: false,
     ...(orientation === 'vertical'
@@ -310,7 +313,7 @@ export const BarChart = factory<BarChartFactory>((_props, ref) => {
     tickLine: withYTickLine ? { stroke: 'currentColor' } : false,
     allowDecimals: true,
     unit,
-    tickFormatter: type === 'percent' ? valueToPercent : valueFormatter,
+    tickFormatter: orientation === 'vertical' ? undefined : tickFormatter,
     ...getStyles('axis'),
   };
 
@@ -320,6 +323,7 @@ export const BarChart = factory<BarChartFactory>((_props, ref) => {
       {...getStyles('root')}
       onMouseLeave={handleMouseLeave}
       dir={dir || 'ltr'}
+      mod={[{ orientation }, mod]}
       {...others}
     >
       <ResponsiveContainer {...getStyles('container')}>
@@ -361,6 +365,7 @@ export const BarChart = factory<BarChartFactory>((_props, ref) => {
             interval="preserveStartEnd"
             tickLine={withXTickLine ? { stroke: 'currentColor' } : false}
             minTickGap={5}
+            tickFormatter={orientation === 'vertical' ? tickFormatter : undefined}
             {...getStyles('axis')}
             {...xAxisProps}
           >

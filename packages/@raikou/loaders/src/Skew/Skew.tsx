@@ -7,23 +7,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderSkewRootStyle } from "./Skew.css";
+} from '@raikou/core';
+import { LoaderSkewRootStyle } from './Skew.css';
 
-export type SkewStylesNames = "root";
+export type SkewStylesNames = 'root';
 export type SkewCssVariables = {
-  root: "--skew-color" | "--skew-size" | "--skew-speed-multiplier";
+  root: '--skew-color' | '--skew-size' | '--skew-speed-multiplier';
 };
 
-export interface SkewProps
-  extends BoxProps,
-    StylesApiProps<SkewFactory>,
-    ElementProps<"span"> {
+export interface SkewProps extends BoxProps, StylesApiProps<SkewFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -50,15 +47,15 @@ const varsResolver = createVarsResolver<SkewFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--skew-color": color ? getThemeColor(color, theme) : undefined,
-      "--skew-size": getSize(size, "skew-size") ?? undefined,
-      "--skew-speed-multiplier": `${speedMultiplier}`,
+      '--skew-color': color ? getThemeColor(color, theme) : undefined,
+      '--skew-size': getSize(size, 'skew-size') ?? undefined,
+      '--skew-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Skew = factory<SkewFactory>((_props, ref) => {
-  const props = useProps("Skew", defaultProps, _props);
+  const props = useProps('Skew', defaultProps, _props);
   const {
     color,
     vars,
@@ -75,7 +72,7 @@ export const Skew = factory<SkewFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<SkewFactory>({
-    name: "Skew",
+    name: 'Skew',
     props,
     classes: {
       root: LoaderSkewRootStyle,
@@ -89,7 +86,7 @@ export const Skew = factory<SkewFactory>((_props, ref) => {
     varsResolver,
   });
 
-  return <Box {...getStyles("root")} ref={ref} {...others} />;
+  return <Box {...getStyles('root')} ref={ref} {...others} />;
 });
 
-Skew.displayName = "@raikou/core/Skew";
+Skew.displayName = '@raikou/core/Skew';

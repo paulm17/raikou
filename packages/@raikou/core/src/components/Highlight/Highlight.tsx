@@ -1,8 +1,8 @@
 import {
-  RaikouColor,
-  RaikouTheme,
   polymorphicFactory,
   PolymorphicFactory,
+  RaikouColor,
+  RaikouTheme,
   useProps,
 } from '../../core';
 import { Mark } from '../Mark';

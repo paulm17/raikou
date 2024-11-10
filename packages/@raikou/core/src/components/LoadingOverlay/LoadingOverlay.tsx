@@ -7,14 +7,18 @@ import {
   Factory,
   getDefaultZIndex,
   StylesApiProps,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
   useStyles,
 } from '../../core';
 import { Loader, LoaderProps } from '../Loader';
 import { Overlay, OverlayProps } from '../Overlay';
 import { Transition, TransitionOverride } from '../Transition';
-import { LoadingOverlayLoaderStyle, LoadingOverlayOverlayStyle, LoadingOverlayRootStyle } from './LoadingOverlay.css';
+import {
+  LoadingOverlayLoaderStyle,
+  LoadingOverlayOverlayStyle,
+  LoadingOverlayRootStyle,
+} from './LoadingOverlay.css';
 
 export type LoadingOverlayStylesNames = 'root' | 'loader' | 'overlay';
 export type LoadingOverlayCssVariables = {

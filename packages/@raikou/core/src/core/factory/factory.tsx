@@ -1,8 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { forwardRef } from "react";
-import type { RaikouThemeComponent } from "../RaikouProvider";
-import type { ClassNames, PartialVarsResolver, Styles } from "../styles-api";
+import { forwardRef } from 'react';
+import type { RaikouThemeComponent } from '../RaikouProvider';
+import type { ClassNames, PartialVarsResolver, Styles } from '../styles-api';
 
 export type DataAttributes = Record<`data-${string}`, any>;
 
@@ -19,20 +19,19 @@ export interface FactoryPayload {
 }
 
 export interface ExtendCompoundComponent<Payload extends FactoryPayload> {
-  defaultProps?: Partial<Payload["props"]> & DataAttributes;
+  defaultProps?: Partial<Payload['props']> & DataAttributes;
 }
 
 export interface ExtendsRootComponent<Payload extends FactoryPayload> {
-  defaultProps?: Partial<Payload["props"]> & DataAttributes;
+  defaultProps?: Partial<Payload['props']> & DataAttributes;
   classNames?: ClassNames<Payload>;
   styles?: Styles<Payload>;
   vars?: PartialVarsResolver<Payload>;
 }
 
-export type ExtendComponent<Payload extends FactoryPayload> =
-  Payload["compound"] extends true
-    ? ExtendCompoundComponent<Payload>
-    : ExtendsRootComponent<Payload>;
+export type ExtendComponent<Payload extends FactoryPayload> = Payload['compound'] extends true
+  ? ExtendCompoundComponent<Payload>
+  : ExtendsRootComponent<Payload>;
 
 export type StaticComponents<Input> =
   Input extends Record<string, any> ? Input : Record<string, never>;
@@ -42,44 +41,38 @@ export interface ThemeExtend<Payload extends FactoryPayload> {
 }
 
 export type ComponentClasses<Payload extends FactoryPayload> = {
-  classes: Payload["stylesNames"] extends string
-    ? Record<string, string>
-    : never;
+  classes: Payload['stylesNames'] extends string ? Record<string, string> : never;
 };
 
-export type RaikouComponentStaticProperties<Payload extends FactoryPayload> =
-  ThemeExtend<Payload> &
-    ComponentClasses<Payload> &
-    StaticComponents<Payload["staticComponents"]> &
-    FactoryComponentWithProps<Payload>;
+export type RaikouComponentStaticProperties<Payload extends FactoryPayload> = ThemeExtend<Payload> &
+  ComponentClasses<Payload> &
+  StaticComponents<Payload['staticComponents']> &
+  FactoryComponentWithProps<Payload>;
 
 export type FactoryComponentWithProps<Payload extends FactoryPayload> = {
-  withProps: (props: Payload["props"]) => React.ForwardRefExoticComponent<
-    Payload["props"] &
-      React.RefAttributes<Payload["ref"]> & {
+  withProps: (props: Payload['props']) => React.ForwardRefExoticComponent<
+    Payload['props'] &
+      React.RefAttributes<Payload['ref']> & {
         component?: any;
         renderRoot?: (props: Record<string, any>) => React.ReactNode;
       }
   >;
 };
 
-export type RaikouComponent<Payload extends FactoryPayload> =
-  React.ForwardRefExoticComponent<
-    Payload["props"] &
-      React.RefAttributes<Payload["ref"]> & {
-        component?: any;
-        renderRoot?: (props: Record<string, any>) => React.ReactNode;
-      }
-  > &
-    RaikouComponentStaticProperties<Payload>;
+export type RaikouComponent<Payload extends FactoryPayload> = React.ForwardRefExoticComponent<
+  Payload['props'] &
+    React.RefAttributes<Payload['ref']> & {
+      component?: any;
+      renderRoot?: (props: Record<string, any>) => React.ReactNode;
+    }
+> &
+  RaikouComponentStaticProperties<Payload>;
 
 export function identity<T>(value: T): T {
   return value;
 }
 
-export function getWithProps<T, Props>(
-  Component: T,
-): (props: Partial<Props>) => T {
+export function getWithProps<T, Props>(Component: T): (props: Partial<Props>) => T {
   const _Component = Component as any;
   return (fixedProps: any) => {
     const Extended = forwardRef((props, ref) => (
@@ -92,7 +85,7 @@ export function getWithProps<T, Props>(
 }
 
 export function factory<Payload extends FactoryPayload>(
-  ui: React.ForwardRefRenderFunction<Payload["ref"], Payload["props"]>,
+  ui: React.ForwardRefRenderFunction<Payload['ref'], Payload['props']>
 ) {
   const Component = forwardRef(ui) as any;
 

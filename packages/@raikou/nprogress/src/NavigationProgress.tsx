@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import {
   ElementProps,
   getDefaultZIndex,
-  RaikouColor,
   OptionalPortal,
   PortalProps,
   Progress,
+  RaikouColor,
 } from '@raikou/core';
 import {
   NprogressStore,
@@ -13,7 +13,10 @@ import {
   resetNavigationProgressAction,
   useNprogress,
 } from './nprogress.store';
-import { NavigationProgressRootStyle, NavigationProgressSectionStyle } from './NavigationProgress.css';
+import {
+  NavigationProgressRootStyle,
+  NavigationProgressSectionStyle,
+} from './NavigationProgress.css';
 
 export interface NavigationProgressProps extends ElementProps<'div'> {
   /** Component store, controls state */

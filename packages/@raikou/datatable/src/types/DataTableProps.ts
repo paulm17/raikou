@@ -5,21 +5,21 @@ import type {
   StylesRecord,
   TableProps,
   TableTrProps,
-} from "@raikou/core";
-import type { DataTableCellClickHandler } from "./DataTableCellClickHandler";
-import { DataTableColorProps } from "./DataTableColorProps";
-import type { DataTableColumnProps } from "./DataTableColumnProps";
-import type { DataTableDefaultColumnProps } from "./DataTableDefaultColumnProps";
-import type { DataTableEmptyStateProps } from "./DataTableEmptyStateProps";
-import type { DataTableLoaderProps } from "./DataTableLoaderProps";
-import type { DataTableOuterBorderProps } from "./DataTableOuterBorderProps";
-import type { DataTablePaginationProps } from "./DataTablePaginationProps";
-import type { DataTableRowClickHandler } from "./DataTableRowClickHandler";
-import type { DataTableRowExpansionProps } from "./DataTableRowExpansionProps";
-import type { DataTableScrollProps } from "./DataTableScrollProps";
-import type { DataTableSelectionProps } from "./DataTableSelectionProps";
-import type { DataTableSortProps } from "./DataTableSortProps";
-import type { DataTableVerticalAlign } from "./DataTableVerticalAlign";
+} from '@raikou/core';
+import type { DataTableCellClickHandler } from './DataTableCellClickHandler';
+import { DataTableColorProps } from './DataTableColorProps';
+import type { DataTableColumnProps } from './DataTableColumnProps';
+import type { DataTableDefaultColumnProps } from './DataTableDefaultColumnProps';
+import type { DataTableEmptyStateProps } from './DataTableEmptyStateProps';
+import type { DataTableLoaderProps } from './DataTableLoaderProps';
+import type { DataTableOuterBorderProps } from './DataTableOuterBorderProps';
+import type { DataTablePaginationProps } from './DataTablePaginationProps';
+import type { DataTableRowClickHandler } from './DataTableRowClickHandler';
+import type { DataTableRowExpansionProps } from './DataTableRowExpansionProps';
+import type { DataTableScrollProps } from './DataTableScrollProps';
+import type { DataTableSelectionProps } from './DataTableSelectionProps';
+import type { DataTableSortProps } from './DataTableSortProps';
+import type { DataTableVerticalAlign } from './DataTableVerticalAlign';
 
 export type DataTableProps<T = Record<string, unknown>> = {
   /**
@@ -38,19 +38,14 @@ export type DataTableProps<T = Record<string, unknown>> = {
    * An object with `root`, `table`, `header`, `footer` and `pagination` keys and class names
    * as values.
    */
-  classNames?: Partial<
-    Record<"root" | "table" | "header" | "footer" | "pagination", string>
-  >;
+  classNames?: Partial<Record<'root' | 'table' | 'header' | 'footer' | 'pagination', string>>;
 
   /**
    * Data table elements styles.
    * An object with `root`, `table`, `header`, `footer` and `pagination` keys and
    * either style objects, or functions that accept current theme and return style objects, as values.
    */
-  styles?: StylesRecord<
-    "root" | "table" | "header" | "footer" | "pagination",
-    RaikouStyleProp
-  >;
+  styles?: StylesRecord<'root' | 'table' | 'header' | 'footer' | 'pagination', RaikouStyleProp>;
 
   /**
    * Table height.
@@ -118,7 +113,7 @@ export type DataTableProps<T = Record<string, unknown>> = {
   defaultColumnRender?: (
     record: T,
     index: number,
-    accessor: keyof T | (string & NonNullable<unknown>),
+    accessor: keyof T | (string & NonNullable<unknown>)
   ) => React.ReactNode;
 
   /**
@@ -129,9 +124,7 @@ export type DataTableProps<T = Record<string, unknown>> = {
    * (i.e. `department.name` or `department.company.name`).
    * @default `id`
    */
-  idAccessor?:
-    | (keyof T | (string & NonNullable<unknown>))
-    | ((record: T) => React.Key);
+  idAccessor?: (keyof T | (string & NonNullable<unknown>)) | ((record: T) => React.Key);
 
   /**
    * Visible records.
@@ -228,11 +221,7 @@ export type DataTableProps<T = Record<string, unknown>> = {
    *
    * examplle: This function can be used with rowFactory if using drag and drop to pass context
    */
-  tableWrapper?: ({
-    children,
-  }: {
-    children: React.ReactNode;
-  }) => React.ReactNode;
+  tableWrapper?: ({ children }: { children: React.ReactNode }) => React.ReactNode;
 
   /**
    * Optional function returning an object of custom attributes to be applied to each row in the table.
@@ -250,17 +239,12 @@ export type DataTableProps<T = Record<string, unknown>> = {
   /**
    * Additional props passed to the underlying `ScrollArea` element.
    */
-  scrollAreaProps?: Omit<
-    ScrollAreaProps,
-    "classNames" | "styles" | "onScrollPositionChange"
-  >;
+  scrollAreaProps?: Omit<ScrollAreaProps, 'classNames' | 'styles' | 'onScrollPositionChange'>;
 
   /**
    * Ref pointing to the table element.
    */
-  tableRef?:
-    | ((instance: HTMLTableElement | null) => void)
-    | React.RefObject<HTMLTableElement>;
+  tableRef?: ((instance: HTMLTableElement | null) => void) | React.RefObject<HTMLTableElement>;
 
   /**
    * Ref pointing to the table body element.
@@ -270,26 +254,26 @@ export type DataTableProps<T = Record<string, unknown>> = {
     | React.RefObject<HTMLTableSectionElement>;
 } & Omit<
   TableProps,
-  | "onScroll"
-  | "className"
-  | "classNames"
-  | "style"
-  | "styles"
-  | "p"
-  | "px"
-  | "py"
-  | "pt"
-  | "pb"
-  | "layout"
-  | "captionSide"
-  | "c"
-  | "color"
-  | "borderColor"
-  | "stripedColor"
-  | "highlightOnHoverColor"
-  | "stickyHeader"
-  | "stickyHeaderOffset"
-  | "onDragEnd"
+  | 'onScroll'
+  | 'className'
+  | 'classNames'
+  | 'style'
+  | 'styles'
+  | 'p'
+  | 'px'
+  | 'py'
+  | 'pt'
+  | 'pb'
+  | 'layout'
+  | 'captionSide'
+  | 'c'
+  | 'color'
+  | 'borderColor'
+  | 'stripedColor'
+  | 'highlightOnHoverColor'
+  | 'stickyHeader'
+  | 'stickyHeaderOffset'
+  | 'onDragEnd'
 > &
   DataTableColorProps<T> &
   DataTableColumnProps<T> &

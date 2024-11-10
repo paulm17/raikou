@@ -21,7 +21,11 @@ import {
   useStyles,
 } from '../../../core';
 import { PaginationProvider } from '../Pagination.context';
-import { PaginationControlStyle, PaginationDotsStyle, PaginationRootStyle } from '../Pagination.css';
+import {
+  PaginationControlStyle,
+  PaginationDotsStyle,
+  PaginationRootStyle,
+} from '../Pagination.css';
 
 export type PaginationRootStylesNames = 'root' | 'control' | 'dots';
 export type PaginationRootCssVariables = {

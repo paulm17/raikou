@@ -9,7 +9,7 @@ interface UseTransformedStylesInput {
 export function useStylesTransform({ props, stylesCtx, themeName }: UseTransformedStylesInput) {
   const theme = useRaikouTheme();
   // @ts-ignore
-  const stylesTransform = (window as any)["raikou_styles_transform"].styles();
+  const stylesTransform = (window as any)['raikou_styles_transform'].styles();
 
   const getTransformedStyles = (styles: any[]) => {
     if (!stylesTransform) {

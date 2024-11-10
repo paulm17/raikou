@@ -15,7 +15,15 @@ import {
 } from '../../core';
 import { CloseButton } from '../CloseButton';
 import { Loader } from '../Loader';
-import { NotificationBodyStyle, NotificationCloseButtonStyle, NotificationDescriptionStyle, NotificationIconStyle, NotificationLoaderStyle, NotificationRootStyle, NotificationTitleStyle } from './Notification.css';
+import {
+  NotificationBodyStyle,
+  NotificationCloseButtonStyle,
+  NotificationDescriptionStyle,
+  NotificationIconStyle,
+  NotificationLoaderStyle,
+  NotificationRootStyle,
+  NotificationTitleStyle,
+} from './Notification.css';
 
 export type NotificationStylesNames =
   | 'root'

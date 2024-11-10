@@ -9,8 +9,8 @@ import {
   getContrastColor,
   getThemeColor,
   RaikouColor,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
 } from '../../../core';
 import { useProgressContext } from '../Progress.context';
 

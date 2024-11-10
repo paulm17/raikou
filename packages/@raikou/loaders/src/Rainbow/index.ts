@@ -1,8 +1,8 @@
-export { Rainbow } from "./Rainbow";
+export { Rainbow } from './Rainbow';
 
 export type {
   RainbowProps,
   RainbowStylesNames,
   RainbowCssVariables,
   RainbowFactory,
-} from "./Rainbow";
+} from './Rainbow';

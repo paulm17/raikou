@@ -7,20 +7,20 @@ import {
   Factory,
   rem,
   useProps,
-} from "@raikou/core";
-import { useRichTextEditorContext } from "../RichTextEditor.context";
+} from '@raikou/core';
+import { useRichTextEditorContext } from '../RichTextEditor.context';
 
-export type RichTextEditorToolbarStylesNames = "toolbar";
+export type RichTextEditorToolbarStylesNames = 'toolbar';
 
 export interface RichTextEditorToolbarProps
   extends BoxProps,
     CompoundStylesApiProps<RichTextEditorToolbarFactory>,
-    ElementProps<"div"> {
+    ElementProps<'div'> {
   /** Determines whether `position: sticky` styles should be added to the toolbar, `false` by default */
   sticky?: boolean;
 
   /** Sets top style to offset elements with fixed position, `0` by default */
-  stickyOffset?: React.CSSProperties["top"];
+  stickyOffset?: React.CSSProperties['top'];
 }
 
 export type RichTextEditorToolbarFactory = Factory<{
@@ -32,32 +32,21 @@ export type RichTextEditorToolbarFactory = Factory<{
 
 const defaultProps: Partial<RichTextEditorToolbarProps> = {};
 
-export const RichTextEditorToolbar = factory<RichTextEditorToolbarFactory>(
-  (_props, ref) => {
-    const props = useProps("RichTextEditorToolbar", defaultProps, _props);
-    const {
-      classNames,
-      className,
-      style,
-      styles,
-      vars,
-      sticky,
-      stickyOffset,
-      mod,
-      ...others
-    } = props;
-    const ctx = useRichTextEditorContext();
+export const RichTextEditorToolbar = factory<RichTextEditorToolbarFactory>((_props, ref) => {
+  const props = useProps('RichTextEditorToolbar', defaultProps, _props);
+  const { classNames, className, style, styles, vars, sticky, stickyOffset, mod, ...others } =
+    props;
+  const ctx = useRichTextEditorContext();
 
-    return (
-      <Box
-        ref={ref}
-        mod={[{ sticky }, mod]}
-        {...ctx.getStyles("toolbar", { className, style, styles, classNames })}
-        {...others}
-        __vars={{ "--rte-sticky-offset": rem(stickyOffset) }}
-      />
-    );
-  },
-);
+  return (
+    <Box
+      ref={ref}
+      mod={[{ sticky }, mod]}
+      {...ctx.getStyles('toolbar', { className, style, styles, classNames })}
+      {...others}
+      __vars={{ '--rte-sticky-offset': rem(stickyOffset) }}
+    />
+  );
+});
 
-RichTextEditorToolbar.displayName = "@Raikou/tiptap/RichTextEditorToolbar";
+RichTextEditorToolbar.displayName = '@Raikou/tiptap/RichTextEditorToolbar';

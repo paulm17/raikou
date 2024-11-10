@@ -1,9 +1,6 @@
-import { Center, Text, type RaikouSpacing, type StyleProp } from "@raikou/core";
-import {
-  dataTableEmptyStateIconStyle,
-  dataTableEmptyStateStyle,
-} from "./DataTableEmptyState.css";
-import { IconDatabaseOff } from "./icons/IconDatabaseOff";
+import { Center, Text, type RaikouSpacing, type StyleProp } from '@raikou/core';
+import { IconDatabaseOff } from './icons/IconDatabaseOff';
+import { dataTableEmptyStateIconStyle, dataTableEmptyStateStyle } from './DataTableEmptyState.css';
 
 type DataTableEmptyStateProps = React.PropsWithChildren<{
   icon: React.ReactNode | undefined;
@@ -22,12 +19,7 @@ export function DataTableEmptyState({
   children,
 }: DataTableEmptyStateProps) {
   return (
-    <Center
-      pt={pt}
-      pb={pb}
-      className={dataTableEmptyStateStyle}
-      data-active={active || undefined}
-    >
+    <Center pt={pt} pb={pb} className={dataTableEmptyStateStyle} data-active={active || undefined}>
       {children || (
         <>
           {icon || (

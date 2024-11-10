@@ -1,8 +1,3 @@
-export { Fade } from "./Fade";
+export { Fade } from './Fade';
 
-export type {
-  FadeProps,
-  FadeStylesNames,
-  FadeCssVariables,
-  FadeFactory,
-} from "./Fade";
+export type { FadeProps, FadeStylesNames, FadeCssVariables, FadeFactory } from './Fade';

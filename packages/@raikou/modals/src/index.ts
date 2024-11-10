@@ -10,9 +10,4 @@ export {
 } from './events';
 
 export type { ModalsProviderProps } from './ModalsProvider';
-export type {
-  ContextModalProps,
-  RaikouModalsOverride,
-  RaikouModals,
-  RaikouModal,
-} from './context';
+export type { ContextModalProps, RaikouModalsOverride, RaikouModals, RaikouModal } from './context';

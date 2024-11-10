@@ -1,3 +1,5 @@
+import { forwardRef, useState } from 'react';
+import clsx from 'clsx';
 import {
   Checkbox,
   Group,
@@ -9,31 +11,29 @@ import {
   TableTr,
   type CheckboxProps,
   type RaikouStyleProp,
-} from "@raikou/core";
-import clsx from "clsx";
-import { forwardRef, useState } from "react";
-import { DataTableColumnGroupHeaderCell } from "./DataTableColumnGroupHeaderCell";
-import { useDataTableColumnsContext } from "./DataTableColumns.context";
-import { DataTableHeaderCell } from "./DataTableHeaderCell";
-import { DataTableHeaderSelectorCell } from "./DataTableHeaderSelectorCell";
-import { DataTableColumnToggle } from "./hooks";
+} from '@raikou/core';
+import { DataTableColumnGroupHeaderCell } from './DataTableColumnGroupHeaderCell';
+import { useDataTableColumnsContext } from './DataTableColumns.context';
+import { DataTableHeaderCell } from './DataTableHeaderCell';
+import { DataTableHeaderSelectorCell } from './DataTableHeaderSelectorCell';
+import { DataTableColumnToggle } from './hooks';
 import type {
   DataTableColumn,
   DataTableColumnGroup,
   DataTableSelectionTrigger,
   DataTableSortProps,
-} from "./types";
-import { humanize } from "./utils";
+} from './types';
+import { humanize } from './utils';
 
 type DataTableHeaderProps<T> = {
   selectionColumnHeaderRef: React.ForwardedRef<HTMLTableCellElement>;
   className: string | undefined;
   style?: RaikouStyleProp;
-  sortStatus: DataTableSortProps<T>["sortStatus"];
-  sortIcons: DataTableSortProps<T>["sortIcons"];
-  onSortStatusChange: DataTableSortProps<T>["onSortStatusChange"];
+  sortStatus: DataTableSortProps<T>['sortStatus'];
+  sortIcons: DataTableSortProps<T>['sortIcons'];
+  onSortStatusChange: DataTableSortProps<T>['onSortStatusChange'];
   columns: DataTableColumn<T>[];
-  defaultColumnProps: Omit<DataTableColumn<T>, "accessor"> | undefined;
+  defaultColumnProps: Omit<DataTableColumn<T>, 'accessor'> | undefined;
   groups: readonly DataTableColumnGroup<T>[] | undefined;
   selectionTrigger: DataTableSelectionTrigger;
   selectionVisible: boolean;
@@ -68,7 +68,7 @@ export const DataTableHeader = forwardRef(function DataTableHeader<T>(
     selectionColumnStyle,
     // draggableRows,
   }: DataTableHeaderProps<T>,
-  ref: React.ForwardedRef<HTMLTableSectionElement>,
+  ref: React.ForwardedRef<HTMLTableSectionElement>
 ) {
   const allRecordsSelectorCell = selectionVisible ? (
     <DataTableHeaderSelectorCell
@@ -86,31 +86,25 @@ export const DataTableHeader = forwardRef(function DataTableHeader<T>(
   ) : null;
 
   const { columnsToggle, setColumnsToggle } = useDataTableColumnsContext();
-  const [columnsPopoverOpened, setColumnsPopoverOpened] =
-    useState<boolean>(false);
+  const [columnsPopoverOpened, setColumnsPopoverOpened] = useState<boolean>(false);
   const someColumnsToggleable = columns.some((column) => column.toggleable);
 
   const columnToggleCheckboxLabels = someColumnsToggleable
     ? Object.fromEntries(
-        columns.map(({ accessor, title }) => [
-          accessor,
-          title ?? humanize(String(accessor)),
-        ]),
+        columns.map(({ accessor, title }) => [accessor, title ?? humanize(String(accessor))])
       )
     : undefined;
 
   const content = (
     <TableThead
-      className={clsx("raikou-datatable-header", className)}
+      className={clsx('raikou-datatable-header', className)}
       style={style}
       ref={ref}
       onContextMenu={
         someColumnsToggleable
           ? (e) => {
               e.preventDefault();
-              setColumnsPopoverOpened(
-                (columnsPopoverOpened) => !columnsPopoverOpened,
-              );
+              setColumnsPopoverOpened((columnsPopoverOpened) => !columnsPopoverOpened);
             }
           : undefined
       }
@@ -194,8 +188,7 @@ export const DataTableHeader = forwardRef(function DataTableHeader<T>(
                 <Group key={column.accessor}>
                   <Checkbox
                     classNames={{
-                      label:
-                        "raikou-datatable-header-column-toggle-checkbox-label",
+                      label: 'raikou-datatable-header-column-toggle-checkbox-label',
                     }}
                     size="xs"
                     label={columnToggleCheckboxLabels![column.accessor]}
@@ -207,7 +200,7 @@ export const DataTableHeader = forwardRef(function DataTableHeader<T>(
                             return { ...c, toggled: e.currentTarget.checked };
                           }
                           return c;
-                        }),
+                        })
                       );
                     }}
                   />
@@ -223,5 +216,5 @@ export const DataTableHeader = forwardRef(function DataTableHeader<T>(
 }) as <T>(
   props: DataTableHeaderProps<T> & {
     ref: React.ForwardedRef<HTMLTableSectionElement>;
-  },
+  }
 ) => JSX.Element;

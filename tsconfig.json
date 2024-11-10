@@ -2,26 +2,22 @@
   "include": [
     "./scripts",
     "./@types",
-    "./packages/@mantine-tests/*/src",
+    "./packages/@raikou-tests/*/src",
     "./packages/@docs/*/src",
-    "./packages/@mantine/*/src",
-    "./packages/@mantinex/*/src",
+    "./packages/@raikou/*/src",
     "./apps/*"
   ],
   "exclude": [
     "node_modules",
-    "./packages/@mantine-tests/*/esm/**/*",
-    "./packages/@mantine-tests/*/cjs/**/*",
-    "./packages/@mantine-tests/*/lib/**/*",
+    "./packages/@raikou-tests/*/esm/**/*",
+    "./packages/@raikou-tests/*/cjs/**/*",
+    "./packages/@raikou-tests/*/lib/**/*",
     "./packages/@docs/*/esm/**/*",
     "./packages/@docs/*/cjs/**/*",
     "./packages/@docs/*/lib/**/*",
-    "./packages/@mantine/*/lib/**/*",
-    "./packages/@mantine/*/esm/**/*",
-    "./packages/@mantine/*/cjs/**/*",
-    "./packages/@mantinex/*/esm/**/*",
-    "./packages/@mantinex/*/cjs/**/*",
-    "./packages/@mantinex/*/lib/**/*"
+    "./packages/@raikou/*/lib/**/*",
+    "./packages/@raikou/*/esm/**/*",
+    "./packages/@raikou/*/cjs/**/*",
   ],
   "compilerOptions": {
     "types": ["node", "jest", "@testing-library/jest-dom"],
@@ -38,9 +34,8 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@mantine/*": ["./packages/@mantine/*/src"],
-      "@mantinex/*": ["./packages/@mantinex/*/src"],
-      "@mantine-tests/*": ["./packages/@mantine-tests/*/src"],
+      "@raikou/*": ["./packages/@raikou/*/src"],
+      "@raikou-tests/*": ["./packages/@raikou-tests/*/src"],
       "@docs/*": ["./packages/@docs/*/src"]
     }
   }

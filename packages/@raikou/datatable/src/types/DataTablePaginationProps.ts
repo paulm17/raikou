@@ -1,5 +1,5 @@
-import type { RaikouColor, RaikouSize } from "@raikou/core";
-import type { DataTablePageSizeSelectorProps } from "./DataTablePageSizeSelectorProps";
+import type { RaikouColor, RaikouSize } from '@raikou/core';
+import type { DataTablePageSizeSelectorProps } from './DataTablePageSizeSelectorProps';
 
 export type DataTablePaginationProps = (
   | {
@@ -62,9 +62,7 @@ export type DataTablePaginationProps = (
        * or an object with `light` and `dark` keys and `RaikouColor` values.
        * Defaults to white.
        */
-      paginationActiveTextColor?:
-        | RaikouColor
-        | { light: RaikouColor; dark: RaikouColor };
+      paginationActiveTextColor?: RaikouColor | { light: RaikouColor; dark: RaikouColor };
 
       /**
        * Color applied to active page button background.
@@ -72,9 +70,7 @@ export type DataTablePaginationProps = (
        * or an object with `light` and `dark` keys and `RaikouColor` values.
        * Defaults to primary theme color.
        */
-      paginationActiveBackgroundColor?:
-        | RaikouColor
-        | { light: RaikouColor; dark: RaikouColor };
+      paginationActiveBackgroundColor?: RaikouColor | { light: RaikouColor; dark: RaikouColor };
 
       /**
        * Text to show while records are loading.
@@ -97,17 +93,14 @@ export type DataTablePaginationProps = (
        * above it the content will be displayed on a single line.
        * @default `sm`
        */
-      paginationWrapBreakpoint?:
-        | RaikouSize
-        | (string & NonNullable<unknown>)
-        | number;
+      paginationWrapBreakpoint?: RaikouSize | (string & NonNullable<unknown>) | number;
 
       /**
        * Function that returns props object for pagination control.
        * Useful for improving accessibility.
        */
       getPaginationControlProps?: (
-        control: "first" | "last" | "previous" | "next",
+        control: 'first' | 'last' | 'previous' | 'next'
       ) => Record<string, unknown>;
     }
 ) &

@@ -7,23 +7,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderCombRootStyle, LoaderCombBarStyle } from "./Comb.css";
+} from '@raikou/core';
+import { LoaderCombBarStyle, LoaderCombRootStyle } from './Comb.css';
 
-export type CombStylesNames = "root";
+export type CombStylesNames = 'root';
 export type CombCssVariables = {
-  root: "--comb-color" | "--comb-size";
+  root: '--comb-color' | '--comb-size';
 };
 
-export interface CombProps
-  extends BoxProps,
-    StylesApiProps<CombFactory>,
-    ElementProps<"span"> {
+export interface CombProps extends BoxProps, StylesApiProps<CombFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -43,7 +40,7 @@ const defaultProps: Partial<CombProps> = {
 };
 
 const getNewSize = (size: RaikouSize | (string & {}) | number | undefined) => {
-  if (typeof size === "string") {
+  if (typeof size === 'string') {
     const sizes: Record<RaikouSize, number> = {
       xs: 50,
       sm: 61,
@@ -66,14 +63,14 @@ const varsResolver = createVarsResolver<CombFactory>(
   // @ts-ignore
   (theme, { color, size }) => ({
     root: {
-      "--comb-color": color ? getThemeColor(color, theme) : undefined,
-      "--comb-size": getSize(size, "comb-size") ?? undefined,
+      '--comb-color': color ? getThemeColor(color, theme) : undefined,
+      '--comb-size': getSize(size, 'comb-size') ?? undefined,
     },
-  }),
+  })
 );
 
 export const Comb = factory<CombFactory>((_props, ref) => {
-  const props = useProps("Comb", defaultProps, _props);
+  const props = useProps('Comb', defaultProps, _props);
   const {
     color,
     vars,
@@ -89,7 +86,7 @@ export const Comb = factory<CombFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<CombFactory>({
-    name: "Comb",
+    name: 'Comb',
     props,
     classes: {
       root: LoaderCombRootStyle,
@@ -106,7 +103,7 @@ export const Comb = factory<CombFactory>((_props, ref) => {
   const newSize = getNewSize(size) as number;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       {/* @ts-ignore */}
       {[...Array(Math.floor(newSize / 9))].map((_, i) => {
         return (
@@ -124,4 +121,4 @@ export const Comb = factory<CombFactory>((_props, ref) => {
   );
 });
 
-Comb.displayName = "@raikou/core/Comb";
+Comb.displayName = '@raikou/core/Comb';

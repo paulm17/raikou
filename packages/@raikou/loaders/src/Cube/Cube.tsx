@@ -7,37 +7,30 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
+} from '@raikou/core';
 import {
-  LoaderCubeRootStyle,
-  LoaderCubeWrapperStyle,
   LoaderCubeCubeStyle,
-  LoaderCubeSide6Style,
-  LoaderCubeSide5Style,
-  LoaderCubeSide4Style,
-  LoaderCubeSide3Style,
-  LoaderCubeSide2Style,
+  LoaderCubeRootStyle,
   LoaderCubeSide1Style,
-} from "./Cube.css";
+  LoaderCubeSide2Style,
+  LoaderCubeSide3Style,
+  LoaderCubeSide4Style,
+  LoaderCubeSide5Style,
+  LoaderCubeSide6Style,
+  LoaderCubeWrapperStyle,
+} from './Cube.css';
 
-export type CubeStylesNames = "root";
+export type CubeStylesNames = 'root';
 export type CubeCssVariables = {
-  root:
-    | "--cube-color"
-    | "--cube-back-color"
-    | "--cube-size"
-    | "--cube-speed-multiplier";
+  root: '--cube-color' | '--cube-back-color' | '--cube-size' | '--cube-speed-multiplier';
 };
 
-export interface CubeProps
-  extends BoxProps,
-    StylesApiProps<CubeFactory>,
-    ElementProps<"span"> {
+export interface CubeProps extends BoxProps, StylesApiProps<CubeFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -64,16 +57,16 @@ const varsResolver = createVarsResolver<CubeFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--cube-color": color ? getThemeColor(color, theme) : undefined,
-      "--cube-back-color": color ? getThemeColor(color, theme) : undefined,
-      "--cube-size": getSize(size, "cube-size") ?? undefined,
-      "--cube-speed-multiplier": `${speedMultiplier}`,
+      '--cube-color': color ? getThemeColor(color, theme) : undefined,
+      '--cube-back-color': color ? getThemeColor(color, theme) : undefined,
+      '--cube-size': getSize(size, 'cube-size') ?? undefined,
+      '--cube-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Cube = factory<CubeFactory>((_props, ref) => {
-  const props = useProps("Cube", defaultProps, _props);
+  const props = useProps('Cube', defaultProps, _props);
   const {
     color,
     vars,
@@ -90,7 +83,7 @@ export const Cube = factory<CubeFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<CubeFactory>({
-    name: "Cube",
+    name: 'Cube',
     props,
     classes: {
       root: LoaderCubeRootStyle,
@@ -105,7 +98,7 @@ export const Cube = factory<CubeFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <span className={LoaderCubeWrapperStyle} />
       <span className={LoaderCubeCubeStyle}>
         <span className={LoaderCubeSide1Style} />
@@ -119,4 +112,4 @@ export const Cube = factory<CubeFactory>((_props, ref) => {
   );
 });
 
-Cube.displayName = "@raikou/core/Cube";
+Cube.displayName = '@raikou/core/Cube';

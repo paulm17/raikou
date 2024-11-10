@@ -4,7 +4,7 @@ import type {
   RaikouShadow,
   RaikouStyleProp,
   StylesRecord,
-} from "@raikou/core";
+} from '@raikou/core';
 
 /**
  * Utility type that makes a property required
@@ -16,8 +16,7 @@ export type WithRequiredProperty<Type, Key extends keyof Type> = Type & {
 /**
  * Utility type that makes a property optional
  */
-export type WithOptionalProperty<T, K extends keyof T> = Omit<T, K> &
-  Partial<Pick<T, K>>;
+export type WithOptionalProperty<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
 /**
  * Context menu options
@@ -42,14 +41,14 @@ export type ContextMenuOptions = {
   /**
    * Context menu elements class names.
    */
-  classNames?: Partial<Record<"root" | "item" | "divider", string>>;
+  classNames?: Partial<Record<'root' | 'item' | 'divider', string>>;
 
   /**
    * Context menu styles.
    * Can be an object with `root`, `item` and `divider` keys and style objects as values,
    * or a function that accepts the current theme and returns a similarly structured object.
    */
-  styles?: StylesRecord<"root" | "item" | "divider", RaikouStyleProp>;
+  styles?: StylesRecord<'root' | 'item' | 'divider', RaikouStyleProp>;
 };
 
 /**
@@ -169,9 +168,7 @@ export type ContextMenuItemOptions = {
  * Context menu content.
  * Either an array of context menu items, or a function that accepts a close callback and returns context menu content.
  */
-export type ContextMenuContent =
-  | ContextMenuItemOptions[]
-  | ((close: () => void) => JSX.Element);
+export type ContextMenuContent = ContextMenuItemOptions[] | ((close: () => void) => JSX.Element);
 
 /**
  * Show context menu function
@@ -186,7 +183,7 @@ export type ShowContextMenuFunction = (
   /**
    * Context menu options (overrides provider props).
    */
-  options?: ContextMenuOptions,
+  options?: ContextMenuOptions
 ) => React.MouseEventHandler & React.TouchEventHandler;
 
 /**

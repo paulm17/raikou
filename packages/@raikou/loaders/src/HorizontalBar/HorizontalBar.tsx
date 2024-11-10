@@ -11,32 +11,32 @@ import {
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
+} from '@raikou/core';
 import {
-  LoaderHorizontalBarRootStyle,
   LoaderHorizontalBar1Style,
   LoaderHorizontalBar2Style,
-} from "./HorizontalBar.css";
+  LoaderHorizontalBarRootStyle,
+} from './HorizontalBar.css';
 
-export type HorizontalBarStylesNames = "root";
+export type HorizontalBarStylesNames = 'root';
 export type HorizontalBarCssVariables = {
   root:
-    | "--horizontal-bar-color"
-    | "--horizontal-bar-width"
-    | "--horizontal-bar-height"
-    | "--horizontal-bar-indicator-color"
-    | "--horizontal-bar-speed-multiplier";
+    | '--horizontal-bar-color'
+    | '--horizontal-bar-width'
+    | '--horizontal-bar-height'
+    | '--horizontal-bar-indicator-color'
+    | '--horizontal-bar-speed-multiplier';
 };
 
 export interface HorizontalBarProps
   extends BoxProps,
     StylesApiProps<HorizontalBarFactory>,
-    ElementProps<"span"> {
+    ElementProps<'span'> {
   /** Skeleton `height`, numbers are converted to rem */
-  height?: React.CSSProperties["height"];
+  height?: React.CSSProperties['height'];
 
   /** Skeleton `width`, numbers are converted to rem */
-  width?: React.CSSProperties["width"];
+  width?: React.CSSProperties['width'];
 
   /** Key of `theme.colors` or any valid CSS color, default value is `theme.primaryColor`  */
   indicatorColor?: RaikouColor;
@@ -65,19 +65,17 @@ const varsResolver = createVarsResolver<HorizontalBarFactory>(
   // @ts-ignore
   (theme, { color, indicatorColor, width, height, speedMultiplier }) => ({
     root: {
-      "--horizontal-bar-color": color ? getThemeColor(color, theme) : undefined,
-      "--horizontal-bar-width":
-        getSize(width, "horizontal-bar-width") ?? undefined,
-      "--horizontal-bar-height":
-        getSize(height, "horizontal-bar-height") ?? undefined,
-      "--horizontal-bar-indicator-color": indicatorColor ?? undefined,
-      "--horizontal-bar-speed-multiplier": `${speedMultiplier}`,
+      '--horizontal-bar-color': color ? getThemeColor(color, theme) : undefined,
+      '--horizontal-bar-width': getSize(width, 'horizontal-bar-width') ?? undefined,
+      '--horizontal-bar-height': getSize(height, 'horizontal-bar-height') ?? undefined,
+      '--horizontal-bar-indicator-color': indicatorColor ?? undefined,
+      '--horizontal-bar-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const HorizontalBar = factory<HorizontalBarFactory>((_props, ref) => {
-  const props = useProps("HorizontalBar", defaultProps, _props);
+  const props = useProps('HorizontalBar', defaultProps, _props);
   const {
     color,
     vars,
@@ -96,7 +94,7 @@ export const HorizontalBar = factory<HorizontalBarFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<HorizontalBarFactory>({
-    name: "HorizontalBar",
+    name: 'HorizontalBar',
     props,
     classes: {
       root: LoaderHorizontalBarRootStyle,
@@ -111,11 +109,11 @@ export const HorizontalBar = factory<HorizontalBarFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <span className={LoaderHorizontalBar1Style} />
       <span className={LoaderHorizontalBar2Style} />
     </Box>
   );
 });
 
-HorizontalBar.displayName = "@raikou/core/HorizontalBar";
+HorizontalBar.displayName = '@raikou/core/HorizontalBar';

@@ -4,9 +4,9 @@ import {
   BoxProps,
   createVarsResolver,
   getRadius,
-  RaikouRadius,
   polymorphicFactory,
   PolymorphicFactory,
+  RaikouRadius,
   StylesApiProps,
   useProps,
   useStyles,
@@ -77,7 +77,7 @@ export const Image = polymorphicFactory<ImageFactory>((_props, ref) => {
   const getStyles = useStyles<ImageFactory>({
     name: 'Image',
     classes: {
-      root: ImageRootStyle
+      root: ImageRootStyle,
     },
     props,
     className,

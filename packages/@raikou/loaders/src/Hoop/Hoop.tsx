@@ -7,23 +7,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderHoopRootStyle, LoaderHoopBallStyle } from "./Hoop.css";
+} from '@raikou/core';
+import { LoaderHoopBallStyle, LoaderHoopRootStyle } from './Hoop.css';
 
-export type HoopStylesNames = "root";
+export type HoopStylesNames = 'root';
 export type HoopCssVariables = {
-  root: "--hoop-color" | "--hoop-size";
+  root: '--hoop-color' | '--hoop-size';
 };
 
-export interface HoopProps
-  extends BoxProps,
-    StylesApiProps<HoopFactory>,
-    ElementProps<"span"> {
+export interface HoopProps extends BoxProps, StylesApiProps<HoopFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -46,7 +43,7 @@ const defaultProps: Partial<HoopProps> = {
 };
 
 const getNewSize = (size: RaikouSize | (string & {}) | number | undefined) => {
-  if (typeof size === "string") {
+  if (typeof size === 'string') {
     const sizes: Record<RaikouSize, number> = {
       xs: 22,
       sm: 27,
@@ -69,14 +66,14 @@ const varsResolver = createVarsResolver<HoopFactory>(
   // @ts-ignore
   (theme, { color, size }) => ({
     root: {
-      "--hoop-color": color ? getThemeColor(color, theme) : undefined,
-      "--hoop-size": getSize(size, "hoop-size") ?? undefined,
+      '--hoop-color': color ? getThemeColor(color, theme) : undefined,
+      '--hoop-size': getSize(size, 'hoop-size') ?? undefined,
     },
-  }),
+  })
 );
 
 export const Hoop = factory<HoopFactory>((_props, ref) => {
-  const props = useProps("Hoop", defaultProps, _props);
+  const props = useProps('Hoop', defaultProps, _props);
   const {
     color,
     vars,
@@ -92,7 +89,7 @@ export const Hoop = factory<HoopFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<HoopFactory>({
-    name: "Hoop",
+    name: 'Hoop',
     props,
     classes: {
       root: LoaderHoopRootStyle,
@@ -129,7 +126,7 @@ export const Hoop = factory<HoopFactory>((_props, ref) => {
   `;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <div dangerouslySetInnerHTML={{ __html: rawHTML }} />
       {[...Array(6)].map((_, i) => {
         return (
@@ -138,8 +135,7 @@ export const Hoop = factory<HoopFactory>((_props, ref) => {
             className={LoaderHoopBallStyle}
             style={{
               opacity: 1 - i * 0.2,
-              animation:
-                "hoop-loader 3s cubic-bezier(0.67, 0.08, 0.46, 1.5) infinite",
+              animation: 'hoop-loader 3s cubic-bezier(0.67, 0.08, 0.46, 1.5) infinite',
               animationDelay: `${i * 200}ms`,
             }}
           />
@@ -149,4 +145,4 @@ export const Hoop = factory<HoopFactory>((_props, ref) => {
   );
 });
 
-Hoop.displayName = "@raikou/core/Hoop";
+Hoop.displayName = '@raikou/core/Hoop';

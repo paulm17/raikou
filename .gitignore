@@ -44,6 +44,6 @@ next-env.d.ts
 storybook-static
 .next
 packages/*/*/styles.css
-packages/@mantine/core/styles
+packages/@raikou/core/styles
 .stylelintcache
 ____test.*

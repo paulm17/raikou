@@ -18,7 +18,14 @@ import {
 } from '../../core';
 import { RatingProvider } from './Rating.context';
 import { RatingItem } from './RatingItem/RatingItem';
-import { RatingInputStyle, RatingLabelStyle, RatingRootStyle, RatingStarSymbolStyle, RatingSymbolBodyStyle, RatingSymbolGroupStyle } from './Rating.css';
+import {
+  RatingInputStyle,
+  RatingLabelStyle,
+  RatingRootStyle,
+  RatingStarSymbolStyle,
+  RatingSymbolBodyStyle,
+  RatingSymbolGroupStyle,
+} from './Rating.css';
 
 function roundValueTo(value: number, to: number) {
   const rounded = Math.round(value / to) * to;

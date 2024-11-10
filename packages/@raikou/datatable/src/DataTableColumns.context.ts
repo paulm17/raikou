@@ -1,6 +1,6 @@
-import { createSafeContext } from "@raikou/core";
-import { Dispatch, SetStateAction } from "react";
-import { DataTableColumnToggle } from "./hooks";
+import { Dispatch, SetStateAction } from 'react';
+import { createSafeContext } from '@raikou/core';
+import { DataTableColumnToggle } from './hooks';
 
 interface DataTableColumnsContext {
   // accessor of the column which is currently dragged
@@ -27,5 +27,5 @@ interface DataTableColumnsContext {
 
 export const [DataTableColumnsContextProvider, useDataTableColumnsContext] =
   createSafeContext<DataTableColumnsContext>(
-    "useDataTableColumnsContext must be used within DataTableColumnProvider",
+    'useDataTableColumnsContext must be used within DataTableColumnProvider'
   );

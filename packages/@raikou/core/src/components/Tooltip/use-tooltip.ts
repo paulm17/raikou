@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState } from 'react';
 import {
   arrow,
   flip,
@@ -13,15 +13,15 @@ import {
   useHover,
   useInteractions,
   useRole,
-} from "@floating-ui/react";
-import { useDidUpdate, useId } from "@raikou/hooks";
+} from '@floating-ui/react';
+import { useDidUpdate, useId } from '@raikou/hooks';
 import {
   FloatingAxesOffsets,
   FloatingPosition,
   FloatingStrategy,
   useFloatingAutoUpdate,
-} from "../Floating";
-import { useTooltipGroupContext } from "./TooltipGroup/TooltipGroup.context";
+} from '../Floating';
+import { useTooltipGroupContext } from './TooltipGroup/TooltipGroup.context';
 
 interface UseTooltip {
   position: FloatingPosition;
@@ -40,10 +40,8 @@ interface UseTooltip {
 }
 
 export function useTooltip(settings: UseTooltip): any {
-  const [uncontrolledOpened, setUncontrolledOpened] = useState(
-    settings.defaultOpened,
-  );
-  const controlled = typeof settings.opened === "boolean";
+  const [uncontrolledOpened, setUncontrolledOpened] = useState(settings.defaultOpened);
+  const controlled = typeof settings.opened === 'boolean';
   const opened = controlled ? settings.opened : uncontrolledOpened;
   const withinGroup = useTooltipGroupContext();
   const uid = useId();
@@ -58,7 +56,7 @@ export function useTooltip(settings: UseTooltip): any {
         setCurrentId(uid);
       }
     },
-    [setCurrentId, uid],
+    [setCurrentId, uid]
   );
 
   const {
@@ -83,20 +81,18 @@ export function useTooltip(settings: UseTooltip): any {
     ],
   });
 
+  useDelayGroup(context, { id: uid });
+
   const { getReferenceProps, getFloatingProps } = useInteractions([
     useHover(context, {
       enabled: settings.events?.hover,
-      delay: withinGroup
-        ? groupDelay
-        : { open: settings.openDelay, close: settings.closeDelay },
+      delay: withinGroup ? groupDelay : { open: settings.openDelay, close: settings.closeDelay },
       mouseOnly: !settings.events?.touch,
     }),
     useFocus(context, { enabled: settings.events?.focus, visibleOnly: true }),
-    useRole(context, { role: "tooltip" }),
+    useRole(context, { role: 'tooltip' }),
     // Cannot be used with controlled tooltip, page jumps
-    useDismiss(context, { enabled: typeof settings.opened === "undefined" }),
-    // @ts-ignore
-    useDelayGroup(context, { id: uid }),
+    useDismiss(context, { enabled: typeof settings.opened === 'undefined' }),
   ]);
 
   useFloatingAutoUpdate({

@@ -7,13 +7,22 @@ import {
   Factory,
   getThemeColor,
   StylesApiProps,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
   useStyles,
 } from '@raikou/core';
 import { ChartSeries } from '../types';
 import { getSeriesLabels } from '../utils';
-import { ChartTooltipBodyStyle, ChartTooltipItemBodyStyle, ChartTooltipItemColorStyle, ChartTooltipItemDataStyle, ChartTooltipItemNameStyle, ChartTooltipItemStyle, ChartTooltipLabelStyle, ChartTooltipStyle } from './ChartTooltip.css';
+import {
+  ChartTooltipBodyStyle,
+  ChartTooltipItemBodyStyle,
+  ChartTooltipItemColorStyle,
+  ChartTooltipItemDataStyle,
+  ChartTooltipItemNameStyle,
+  ChartTooltipItemStyle,
+  ChartTooltipLabelStyle,
+  ChartTooltipStyle,
+} from './ChartTooltip.css';
 
 function updateChartTooltipPayload(payload: Record<string, any>[]): Record<string, any>[] {
   return payload.map((item) => {

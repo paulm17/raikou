@@ -7,29 +7,26 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
+} from '@raikou/core';
 import {
   LoaderGuardCubeSide1Style,
   LoaderGuardCubeSide2Style,
   LoaderGuardCubeStyle,
   LoaderGuardCubeWrapperStyle,
   LoaderGuardRootStyle,
-} from "./Guard.css";
+} from './Guard.css';
 
-export type GuardStylesNames = "root";
+export type GuardStylesNames = 'root';
 export type GuardCssVariables = {
-  root: "--guard-color" | "--guard-size";
+  root: '--guard-color' | '--guard-size';
 };
 
-export interface GuardProps
-  extends BoxProps,
-    StylesApiProps<GuardFactory>,
-    ElementProps<"span"> {
+export interface GuardProps extends BoxProps, StylesApiProps<GuardFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -52,7 +49,7 @@ const defaultProps: Partial<GuardProps> = {
 };
 
 const getNewSize = (size: RaikouSize | (string & {}) | number | undefined) => {
-  if (typeof size === "string") {
+  if (typeof size === 'string') {
     const sizes: Record<RaikouSize, number> = {
       xs: 18,
       sm: 22,
@@ -75,14 +72,14 @@ const varsResolver = createVarsResolver<GuardFactory>(
   // @ts-ignore
   (theme, { color, size }) => ({
     root: {
-      "--guard-color": color ? getThemeColor(color, theme) : undefined,
-      "--guard-size": getSize(size, "guard-size") ?? undefined,
+      '--guard-color': color ? getThemeColor(color, theme) : undefined,
+      '--guard-size': getSize(size, 'guard-size') ?? undefined,
     },
-  }),
+  })
 );
 
 export const Guard = factory<GuardFactory>((_props, ref) => {
-  const props = useProps("Guard", defaultProps, _props);
+  const props = useProps('Guard', defaultProps, _props);
   const {
     color,
     vars,
@@ -98,7 +95,7 @@ export const Guard = factory<GuardFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<GuardFactory>({
-    name: "Guard",
+    name: 'Guard',
     props,
     classes: {
       root: LoaderGuardRootStyle,
@@ -116,14 +113,14 @@ export const Guard = factory<GuardFactory>((_props, ref) => {
     return acc.concat(
       Array.from({ length: 3 }).map((_, j) => {
         return { i, j };
-      }),
+      })
     );
   }, []) as { i: number; j: number }[];
 
   const newSize = getNewSize(size) as number;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       {cubes.map((cube, i) => {
         return (
           <span
@@ -136,10 +133,7 @@ export const Guard = factory<GuardFactory>((_props, ref) => {
               left: cube.j * (newSize / 4 + newSize / 8),
             }}
           >
-            <span
-              className={LoaderGuardCubeStyle}
-              style={{ animationDelay: `${i * 0.125}s` }}
-            >
+            <span className={LoaderGuardCubeStyle} style={{ animationDelay: `${i * 0.125}s` }}>
               <span className={LoaderGuardCubeSide1Style} />
               <span className={LoaderGuardCubeSide2Style} />
             </span>
@@ -150,4 +144,4 @@ export const Guard = factory<GuardFactory>((_props, ref) => {
   );
 });
 
-Guard.displayName = "@raikou/core/Guard";
+Guard.displayName = '@raikou/core/Guard';

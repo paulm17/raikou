@@ -1,13 +1,13 @@
-import { Paper, px, useDirection } from "@raikou/core";
-import { useResizeObserver } from "@raikou/hooks";
-import clsx from "clsx";
-import { useContext } from "react";
-import { ContextMenuDivider } from "./ContextMenuDivider";
-import { ContextMenuItem } from "./ContextMenuItem";
-import { ContextMenuSettingsCtx } from "./ContextMenuProvider";
-import type { ContextMenuContent, ContextMenuOptions } from "./types";
-import { humanize } from "./utils";
-import { contextMenuStyle } from "./ContextMenu.css";
+import { useContext } from 'react';
+import clsx from 'clsx';
+import { Paper, px, useDirection } from '@raikou/core';
+import { useResizeObserver } from '@raikou/hooks';
+import { ContextMenuDivider } from './ContextMenuDivider';
+import { ContextMenuItem } from './ContextMenuItem';
+import { ContextMenuSettingsCtx } from './ContextMenuProvider';
+import type { ContextMenuContent, ContextMenuOptions } from './types';
+import { humanize } from './utils';
+import { contextMenuStyle } from './ContextMenu.css';
 
 export type ContextMenuInstanceOptions = {
   x: number;
@@ -40,7 +40,7 @@ export function ContextMenu({
 
   let windowWidth = 0;
   let windowHeight = 0;
-  if (typeof window !== "undefined")
+  if (typeof window !== 'undefined')
     ({ innerWidth: windowWidth, innerHeight: windowHeight } = window);
 
   const { dir } = useDirection();
@@ -56,18 +56,13 @@ export function ContextMenu({
           const mdSpacing = px(md) as number;
           return {
             zIndex,
-            top:
-              y + height + mdSpacing > windowHeight
-                ? windowHeight - height - mdSpacing
-                : y,
+            top: y + height + mdSpacing > windowHeight ? windowHeight - height - mdSpacing : y,
             left:
-              dir === "ltr"
+              dir === 'ltr'
                 ? x + width + mdSpacing > windowWidth
                   ? windowWidth - width - mdSpacing
                   : x
-                : windowWidth -
-                  mdSpacing -
-                  (x - width - mdSpacing < 0 ? width + mdSpacing : x),
+                : windowWidth - mdSpacing - (x - width - mdSpacing < 0 ? width + mdSpacing : x),
           };
         },
         style,
@@ -76,16 +71,7 @@ export function ContextMenu({
     >
       {Array.isArray(content)
         ? content.map(
-            ({
-              key,
-              hidden,
-              className,
-              style,
-              onClick,
-              items,
-              title,
-              ...otherOptions
-            }) =>
+            ({ key, hidden, className, style, onClick, items, title, ...otherOptions }) =>
               hidden ? null : onClick || items ? (
                 <ContextMenuItem
                   key={key}
@@ -103,7 +89,7 @@ export function ContextMenu({
                   className={clsx(classNames?.divider, className)}
                   style={[styles?.divider, style]}
                 />
-              ),
+              )
           )
         : content(onHide)}
     </Paper>

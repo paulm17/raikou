@@ -1,0 +1,42 @@
+{
+  "name": "@raikou-tests/core",
+  "version": "1.1.0",
+  "description": "Core tests package for Raikou",
+  "homepage": "https://github.com/paulm17/raikou.git",
+  "license": "MIT",
+  "author": "Paul Moss",
+  "keywords": [
+    "jest",
+    "raikou",
+    "tests"
+  ],
+  "sideEffects": false,
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.mjs",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/index.d.mts",
+        "default": "./esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./cjs/index.cjs"
+      }
+    }
+  },
+  "repository": {
+    "url": "https://github.com/paulm17/raikou.git",
+    "type": "git",
+    "directory": "packages/@raikou-tests/core"
+  },
+  "peerDependencies": {
+    "react": "^18.x || ^19.x",
+    "react-dom": "^18.x || ^19.x"
+  },
+  "devDependencies": {
+    "@raikou/core": "workspace:*",
+    "@raikou/hooks": "workspace:*"
+  }
+}

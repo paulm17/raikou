@@ -25,7 +25,20 @@ import {
 import { StepperProvider } from './Stepper.context';
 import { StepperCompleted } from './StepperCompleted/StepperCompleted';
 import { StepperStep } from './StepperStep/StepperStep';
-import { StepperContentStyle, StepperRootStyle, StepperSeparatorStyle, StepperStepBodyStyle, StepperStepCompletedIconStyle, StepperStepDescriptionStyle, StepperStepIconStyle, StepperStepLabelStyle, StepperStepsStyle, StepperStepStyle, StepperStepWrapperStyle, StepperVerticalSeparatorStyle } from './Stepper.css';
+import {
+  StepperContentStyle,
+  StepperRootStyle,
+  StepperSeparatorStyle,
+  StepperStepBodyStyle,
+  StepperStepCompletedIconStyle,
+  StepperStepDescriptionStyle,
+  StepperStepIconStyle,
+  StepperStepLabelStyle,
+  StepperStepsStyle,
+  StepperStepStyle,
+  StepperStepWrapperStyle,
+  StepperVerticalSeparatorStyle,
+} from './Stepper.css';
 
 export type StepFragmentComponent = React.FC<{ step: number }>;
 

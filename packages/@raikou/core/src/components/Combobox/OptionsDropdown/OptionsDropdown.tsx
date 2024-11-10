@@ -7,7 +7,10 @@ import { defaultOptionsFilter, FilterOptionsInput } from './default-options-filt
 import { isEmptyComboboxData } from './is-empty-combobox-data';
 import { isOptionsGroup } from './is-options-group';
 import { validateOptions } from './validate-options';
-import { ComboboxDropdownOptionsDropdownCheckIconStyle, ComboboxOptionsDropdownOptionStyle } from '../Combobox.css';
+import {
+  ComboboxDropdownOptionsDropdownCheckIconStyle,
+  ComboboxOptionsDropdownOptionStyle,
+} from '../Combobox.css';
 
 export type OptionsFilter = (input: FilterOptionsInput) => ComboboxParsedItem[];
 

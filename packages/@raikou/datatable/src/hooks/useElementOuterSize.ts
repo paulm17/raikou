@@ -1,4 +1,4 @@
-import { useResizeObserver } from "@raikou/hooks";
+import { useResizeObserver } from '@raikou/hooks';
 
 export function useElementOuterSize<T extends HTMLElement>() {
   const [ref] = useResizeObserver<T>();

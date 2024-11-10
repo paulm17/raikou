@@ -7,30 +7,27 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
+} from '@raikou/core';
 import {
-  LoaderBarsRootStyle,
   LoaderBars1Style,
   LoaderBars2Style,
   LoaderBars3Style,
   LoaderBars4Style,
   LoaderBars5Style,
-} from "./Bars.css";
+  LoaderBarsRootStyle,
+} from './Bars.css';
 
-export type BarsStylesNames = "root";
+export type BarsStylesNames = 'root';
 export type BarsCssVariables = {
-  root: "--bars-color" | "--bars-size" | "--bars-speed-multiplier";
+  root: '--bars-color' | '--bars-size' | '--bars-speed-multiplier';
 };
 
-export interface BarsProps
-  extends BoxProps,
-    StylesApiProps<BarsFactory>,
-    ElementProps<"span"> {
+export interface BarsProps extends BoxProps, StylesApiProps<BarsFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -57,15 +54,15 @@ const varsResolver = createVarsResolver<BarsFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--bars-color": color ? getThemeColor(color, theme) : undefined,
-      "--bars-size": getSize(size, "bars-size") ?? undefined,
-      "--bars-speed-multiplier": `${speedMultiplier}`,
+      '--bars-color': color ? getThemeColor(color, theme) : undefined,
+      '--bars-size': getSize(size, 'bars-size') ?? undefined,
+      '--bars-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Bars = factory<BarsFactory>((_props, ref) => {
-  const props = useProps("Bars", defaultProps, _props);
+  const props = useProps('Bars', defaultProps, _props);
   const {
     color,
     vars,
@@ -82,7 +79,7 @@ export const Bars = factory<BarsFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<BarsFactory>({
-    name: "Bars",
+    name: 'Bars',
     props,
     classes: {
       root: LoaderBarsRootStyle,
@@ -97,7 +94,7 @@ export const Bars = factory<BarsFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <span className={LoaderBars1Style} />
       <span className={LoaderBars2Style} />
       <span className={LoaderBars3Style} />
@@ -107,4 +104,4 @@ export const Bars = factory<BarsFactory>((_props, ref) => {
   );
 });
 
-Bars.displayName = "@raikou/core/Bars";
+Bars.displayName = '@raikou/core/Bars';

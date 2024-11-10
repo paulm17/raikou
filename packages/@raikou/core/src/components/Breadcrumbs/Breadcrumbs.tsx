@@ -13,7 +13,11 @@ import {
   useProps,
   useStyles,
 } from '../../core';
-import { BreadcrumbsBreadcrumbStyle, BreadcrumbsRootStyle, BreadcrumbsSeparatorStyle } from './Breadcrumbs.css';
+import {
+  BreadcrumbsBreadcrumbStyle,
+  BreadcrumbsRootStyle,
+  BreadcrumbsSeparatorStyle,
+} from './Breadcrumbs.css';
 
 export type BreadcrumbsStylesNames = 'root' | 'separator' | 'breadcrumb';
 export type BreadcrumbsCssVariables = {

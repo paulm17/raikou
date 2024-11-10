@@ -1,5 +1,5 @@
-import type { RaikouStyleProp, RaikouTheme } from "@raikou/core";
-import type { DataTableColumnTextAlign } from "./DataTableColumnTextAlign";
+import type { RaikouStyleProp, RaikouTheme } from '@raikou/core';
+import type { DataTableColumnTextAlign } from './DataTableColumnTextAlign';
 
 export type DataTableColumn<T = Record<string, unknown>> = {
   /**
@@ -81,9 +81,7 @@ export type DataTableColumn<T = Record<string, unknown>> = {
    * Note: this property only takes care of rendering the node which provides the filtering options.
    * It is assumed that the actual filtering is performed somewhere in user code.
    */
-  filter?:
-    | React.ReactNode
-    | ((params: { close: () => void }) => React.ReactNode);
+  filter?: React.ReactNode | ((params: { close: () => void }) => React.ReactNode);
 
   /**
    * If true, filter icon will be styled differently to indicate the filter is in effect.

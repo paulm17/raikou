@@ -13,7 +13,12 @@ import {
   useProps,
   useStyles,
 } from '../../core';
-import { SemiCircleProgressFilledSegmentStyle, SemiCircleProgressLabelStyle, SemiCircleProgressRootStyle, SemiCircleProgressSvgStyle } from './SemiCircleProgress.css';
+import {
+  SemiCircleProgressFilledSegmentStyle,
+  SemiCircleProgressLabelStyle,
+  SemiCircleProgressRootStyle,
+  SemiCircleProgressSvgStyle,
+} from './SemiCircleProgress.css';
 
 export type SemiCircleProgressStylesNames =
   | 'root'

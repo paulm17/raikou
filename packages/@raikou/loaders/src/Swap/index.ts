@@ -1,8 +1,3 @@
-export { Swap } from "./Swap";
+export { Swap } from './Swap';
 
-export type {
-  SwapProps,
-  SwapStylesNames,
-  SwapCssVariables,
-  SwapFactory,
-} from "./Swap";
+export type { SwapProps, SwapStylesNames, SwapCssVariables, SwapFactory } from './Swap';

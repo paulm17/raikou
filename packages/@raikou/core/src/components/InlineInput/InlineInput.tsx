@@ -11,7 +11,14 @@ import {
   useStyles,
 } from '../../core';
 import { Input } from '../Input';
-import { InlineInputBodyStyle, InlineInputDescriptionStyle, InlineInputErrorStyle, InlineInputLabelStyle, InlineInputLabelWrapperStyle, InlineInputRootStyle } from './InlineInput.css';
+import {
+  InlineInputBodyStyle,
+  InlineInputDescriptionStyle,
+  InlineInputErrorStyle,
+  InlineInputLabelStyle,
+  InlineInputLabelWrapperStyle,
+  InlineInputRootStyle,
+} from './InlineInput.css';
 
 export type InlineInputStylesNames =
   | 'root'

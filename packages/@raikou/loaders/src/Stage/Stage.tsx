@@ -1,3 +1,4 @@
+import { Fragment } from 'react/jsx-runtime';
 import {
   Box,
   BoxProps,
@@ -7,24 +8,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderStageRootStyle, LoaderStageBallStyle } from "./Stage.css";
-import { Fragment } from "react/jsx-runtime";
+} from '@raikou/core';
+import { LoaderStageBallStyle, LoaderStageRootStyle } from './Stage.css';
 
-export type StageStylesNames = "root";
+export type StageStylesNames = 'root';
 export type StageCssVariables = {
-  root: "--stage-color" | "--stage-size";
+  root: '--stage-color' | '--stage-size';
 };
 
-export interface StageProps
-  extends BoxProps,
-    StylesApiProps<StageFactory>,
-    ElementProps<"span"> {
+export interface StageProps extends BoxProps, StylesApiProps<StageFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -47,7 +44,7 @@ const defaultProps: Partial<StageProps> = {
 };
 
 const getNewSize = (size: RaikouSize | (string & {}) | number | undefined) => {
-  if (typeof size === "string") {
+  if (typeof size === 'string') {
     const sizes: Record<RaikouSize, number> = {
       xs: 20,
       sm: 24,
@@ -70,14 +67,14 @@ const varsResolver = createVarsResolver<StageFactory>(
   // @ts-ignore
   (theme, { color, size }) => ({
     root: {
-      "--stage-color": color ? getThemeColor(color, theme) : undefined,
-      "--stage-size": getSize(size, "stage-size") ?? undefined,
+      '--stage-color': color ? getThemeColor(color, theme) : undefined,
+      '--stage-size': getSize(size, 'stage-size') ?? undefined,
     },
-  }),
+  })
 );
 
 export const Stage = factory<StageFactory>((_props, ref) => {
-  const props = useProps("Stage", defaultProps, _props);
+  const props = useProps('Stage', defaultProps, _props);
   const {
     color,
     vars,
@@ -93,7 +90,7 @@ export const Stage = factory<StageFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<StageFactory>({
-    name: "Stage",
+    name: 'Stage',
     props,
     classes: {
       root: LoaderStageRootStyle,
@@ -110,7 +107,7 @@ export const Stage = factory<StageFactory>((_props, ref) => {
   const newSize = getNewSize(size) as number;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       {[...Array(3)].map((_, i) => {
         const x = i * (newSize / 2.5);
         const y = newSize / 2 - newSize / 10;
@@ -160,4 +157,4 @@ export const Stage = factory<StageFactory>((_props, ref) => {
   );
 });
 
-Stage.displayName = "@raikou/core/Stage";
+Stage.displayName = '@raikou/core/Stage';

@@ -1,6 +1,6 @@
-import type { CollapseProps } from "@raikou/core";
+import type { CollapseProps } from '@raikou/core';
 
 export type DataTableRowExpansionCollapseProps = Pick<
   CollapseProps,
-  "animateOpacity" | "transitionDuration" | "transitionTimingFunction"
+  'animateOpacity' | 'transitionDuration' | 'transitionTimingFunction'
 >;

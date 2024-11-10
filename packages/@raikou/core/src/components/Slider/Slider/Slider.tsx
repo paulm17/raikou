@@ -27,7 +27,17 @@ import { getChangeValue } from '../utils/get-change-value/get-change-value';
 import { getFloatingValue } from '../utils/get-floating-value/get-gloating-value';
 import { getPosition } from '../utils/get-position/get-position';
 import { getPrecision } from '../utils/get-precision/get-precision';
-import { SliderLabelStyle, SliderMarkLabelStyle, SliderMarkStyle, SliderMarkWrapperStyle, SliderRootStyle, SliderThumbStyle, SliderTrackBarStyle, SliderTrackContainerStyle, SliderTrackStyle } from '../Slider.css';
+import {
+  SliderLabelStyle,
+  SliderMarkLabelStyle,
+  SliderMarkStyle,
+  SliderMarkWrapperStyle,
+  SliderRootStyle,
+  SliderThumbStyle,
+  SliderTrackBarStyle,
+  SliderTrackContainerStyle,
+  SliderTrackStyle,
+} from '../Slider.css';
 
 export interface SliderProps
   extends BoxProps,

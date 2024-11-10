@@ -4,10 +4,10 @@ import {
   BoxProps,
   createVarsResolver,
   getSpacing,
-  RaikouColor,
-  RaikouSize,
   polymorphicFactory,
   PolymorphicFactory,
+  RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
@@ -15,7 +15,15 @@ import {
 import { AccordionChevron } from '../Accordion';
 import { Collapse } from '../Collapse';
 import { UnstyledButton } from '../UnstyledButton';
-import { NavLinkBodyStyle, NavLinkChevronStyle, NavLinkChildrenStyle, NavLinkDescriptionStyle, NavLinkLabelStyle, NavLinkRootStyle, NavLinkSectionStyle } from './NavLink.css';
+import {
+  NavLinkBodyStyle,
+  NavLinkChevronStyle,
+  NavLinkChildrenStyle,
+  NavLinkDescriptionStyle,
+  NavLinkLabelStyle,
+  NavLinkRootStyle,
+  NavLinkSectionStyle,
+} from './NavLink.css';
 
 export type NavLinkStylesNames =
   | 'root'

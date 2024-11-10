@@ -7,28 +7,25 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
+} from '@raikou/core';
 import {
   LoaderPongBallStyle,
   LoaderPongPlayerLeftStyle,
   LoaderPongPlayerRightStyle,
   LoaderPongRootStyle,
-} from "./Pong.css";
+} from './Pong.css';
 
-export type PongStylesNames = "root";
+export type PongStylesNames = 'root';
 export type PongCssVariables = {
-  root: "--pong-color" | "--pong-size" | "--pong-speed-multiplier";
+  root: '--pong-color' | '--pong-size' | '--pong-speed-multiplier';
 };
 
-export interface PongProps
-  extends BoxProps,
-    StylesApiProps<PongFactory>,
-    ElementProps<"span"> {
+export interface PongProps extends BoxProps, StylesApiProps<PongFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -55,15 +52,15 @@ const varsResolver = createVarsResolver<PongFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--pong-color": color ? getThemeColor(color, theme) : undefined,
-      "--pong-size": getSize(size, "pong-size") ?? undefined,
-      "--pong-speed-multiplier": `${speedMultiplier}`,
+      '--pong-color': color ? getThemeColor(color, theme) : undefined,
+      '--pong-size': getSize(size, 'pong-size') ?? undefined,
+      '--pong-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Pong = factory<PongFactory>((_props, ref) => {
-  const props = useProps("Pong", defaultProps, _props);
+  const props = useProps('Pong', defaultProps, _props);
   const {
     color,
     vars,
@@ -80,7 +77,7 @@ export const Pong = factory<PongFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<PongFactory>({
-    name: "Pong",
+    name: 'Pong',
     props,
     classes: {
       root: LoaderPongRootStyle,
@@ -95,7 +92,7 @@ export const Pong = factory<PongFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <span className={LoaderPongPlayerLeftStyle} />
       <span className={LoaderPongBallStyle} />
       <span className={LoaderPongPlayerRightStyle} />
@@ -103,4 +100,4 @@ export const Pong = factory<PongFactory>((_props, ref) => {
   );
 });
 
-Pong.displayName = "@raikou/core/Pong";
+Pong.displayName = '@raikou/core/Pong';

@@ -1,7 +1,7 @@
 {
   "name": "@raikou/system",
   "license": "MIT",
-  "version": "0.0.1-beta.8",
+  "version": "0.0.1-beta.13",
   "main": "./cjs/index.cjs",
   "module": "./esm/index.mjs",
   "types": "./lib/index.d.ts",
@@ -35,7 +35,7 @@
     "react": "^18.2.0"
   },
   "dependencies": {
-    "next-themes": "^0.3.0"
+    "next-themes": "^0.4.3"
   },
   "devDependencies": {
     "@raikou/hooks": "workspace:*"

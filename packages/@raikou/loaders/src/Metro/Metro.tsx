@@ -1,4 +1,4 @@
-import { Fragment } from "react/jsx-runtime";
+import { Fragment } from 'react/jsx-runtime';
 import {
   Box,
   BoxProps,
@@ -8,23 +8,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderMetroRootStyle, LoaderMetroBallStyle } from "./Metro.css";
+} from '@raikou/core';
+import { LoaderMetroBallStyle, LoaderMetroRootStyle } from './Metro.css';
 
-export type MetroStylesNames = "root";
+export type MetroStylesNames = 'root';
 export type MetroCssVariables = {
-  root: "--metro-color" | "--metro-size";
+  root: '--metro-color' | '--metro-size';
 };
 
-export interface MetroProps
-  extends BoxProps,
-    StylesApiProps<MetroFactory>,
-    ElementProps<"span"> {
+export interface MetroProps extends BoxProps, StylesApiProps<MetroFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -47,7 +44,7 @@ const defaultProps: Partial<MetroProps> = {
 };
 
 const getNewSize = (size: RaikouSize | (string & {}) | number | undefined) => {
-  if (typeof size === "string") {
+  if (typeof size === 'string') {
     const sizes: Record<RaikouSize, number> = {
       xs: 20,
       sm: 24,
@@ -70,14 +67,14 @@ const varsResolver = createVarsResolver<MetroFactory>(
   // @ts-ignore
   (theme, { color, size }) => ({
     root: {
-      "--metro-color": color ? getThemeColor(color, theme) : undefined,
-      "--metro-size": getSize(size, "metro-size") ?? undefined,
+      '--metro-color': color ? getThemeColor(color, theme) : undefined,
+      '--metro-size': getSize(size, 'metro-size') ?? undefined,
     },
-  }),
+  })
 );
 
 export const Metro = factory<MetroFactory>((_props, ref) => {
-  const props = useProps("Metro", defaultProps, _props);
+  const props = useProps('Metro', defaultProps, _props);
   const {
     color,
     vars,
@@ -93,7 +90,7 @@ export const Metro = factory<MetroFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<MetroFactory>({
-    name: "Metro",
+    name: 'Metro',
     props,
     classes: {
       root: LoaderMetroRootStyle,
@@ -110,7 +107,7 @@ export const Metro = factory<MetroFactory>((_props, ref) => {
   const newSize = getNewSize(size) as number;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       {[...Array(9)].map((_, i) => {
         const index = i + 1;
         const countBalls = 9;
@@ -157,4 +154,4 @@ export const Metro = factory<MetroFactory>((_props, ref) => {
   );
 });
 
-Metro.displayName = "@raikou/core/Metro";
+Metro.displayName = '@raikou/core/Metro';

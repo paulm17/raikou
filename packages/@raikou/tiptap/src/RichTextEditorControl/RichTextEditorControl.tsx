@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef } from 'react';
 import {
   BoxProps,
   CompoundStylesApiProps,
@@ -8,16 +8,16 @@ import {
   rem,
   UnstyledButton,
   useProps,
-} from "@raikou/core";
-import { RichTextEditorLabels } from "../labels";
-import { useRichTextEditorContext } from "../RichTextEditor.context";
+} from '@raikou/core';
+import { RichTextEditorLabels } from '../labels';
+import { useRichTextEditorContext } from '../RichTextEditor.context';
 
-export type RichTextEditorControlStylesNames = "control";
+export type RichTextEditorControlStylesNames = 'control';
 
 export interface RichTextEditorControlProps
   extends BoxProps,
     CompoundStylesApiProps<RichTextEditorControlFactory>,
-    ElementProps<"button"> {
+    ElementProps<'button'> {
   /** Determines whether the control should have active state, false by default */
   active?: boolean;
 
@@ -36,50 +36,47 @@ const defaultProps: Partial<RichTextEditorControlProps> = {
   interactive: true,
 };
 
-export const RichTextEditorControl = factory<RichTextEditorControlFactory>(
-  (_props, ref) => {
-    const props = useProps("RichTextEditorControl", defaultProps, _props);
-    const {
-      classNames,
-      className,
-      style,
-      styles,
-      vars,
-      interactive,
-      active,
-      onMouseDown,
-      disabled,
-      ...others
-    } = props;
-    const ctx = useRichTextEditorContext();
+export const RichTextEditorControl = factory<RichTextEditorControlFactory>((_props, ref) => {
+  const props = useProps('RichTextEditorControl', defaultProps, _props);
+  const {
+    classNames,
+    className,
+    style,
+    styles,
+    vars,
+    interactive,
+    active,
+    onMouseDown,
+    disabled,
+    ...others
+  } = props;
+  const ctx = useRichTextEditorContext();
 
-    return (
-      <UnstyledButton
-        {...others}
-        {...ctx.getStyles("control", { className, style, classNames, styles })}
-        disabled={disabled}
-        data-rich-text-editor-control
-        tabIndex={interactive ? 0 : -1}
-        data-interactive={interactive || undefined}
-        data-disabled={disabled || undefined}
-        data-active={active || undefined}
-        aria-pressed={(active && interactive) || undefined}
-        aria-hidden={!interactive || undefined}
-        ref={ref}
-        unstyled={ctx.unstyled}
-        onMouseDown={(event) => {
-          event.preventDefault();
-          onMouseDown?.(event);
-        }}
-      />
-    );
-  },
-);
+  return (
+    <UnstyledButton
+      {...others}
+      {...ctx.getStyles('control', { className, style, classNames, styles })}
+      disabled={disabled}
+      data-rich-text-editor-control
+      tabIndex={interactive ? 0 : -1}
+      data-interactive={interactive || undefined}
+      data-disabled={disabled || undefined}
+      data-active={active || undefined}
+      aria-pressed={(active && interactive) || undefined}
+      aria-hidden={!interactive || undefined}
+      ref={ref}
+      unstyled={ctx.unstyled}
+      onMouseDown={(event) => {
+        event.preventDefault();
+        onMouseDown?.(event);
+      }}
+    />
+  );
+});
 
-RichTextEditorControl.displayName = "@Raikou/tiptap/RichTextEditorControl";
+RichTextEditorControl.displayName = '@Raikou/tiptap/RichTextEditorControl';
 
-export interface RichTextEditorControlBaseProps
-  extends RichTextEditorControlProps {
+export interface RichTextEditorControlBaseProps extends RichTextEditorControlProps {
   icon?: React.FC<{ style: React.CSSProperties }>;
 }
 
@@ -92,8 +89,7 @@ export const RichTextEditorControlBase = forwardRef<
   </RichTextEditorControl>
 ));
 
-RichTextEditorControlBase.displayName =
-  "@Raikou/tiptap/RichTextEditorControlBase";
+RichTextEditorControlBase.displayName = '@Raikou/tiptap/RichTextEditorControlBase';
 
 export interface CreateControlProps {
   label: keyof RichTextEditorLabels;
@@ -110,34 +106,22 @@ export function createControl({
   icon,
   isDisabled,
 }: CreateControlProps) {
-  const Control = forwardRef<HTMLButtonElement, RichTextEditorControlBaseProps>(
-    (props, ref) => {
-      const { editor, labels } = useRichTextEditorContext();
-      const _label = labels[label] as string;
-      return (
-        <RichTextEditorControlBase
-          {...props}
-          aria-label={_label}
-          title={_label}
-          active={
-            isActive?.name
-              ? editor?.isActive(isActive.name, isActive.attributes)
-              : false
-          }
-          ref={ref}
-          onClick={() =>
-            (editor as any)
-              ?.chain()
-              .focus()
-              [operation.name](operation.attributes)
-              .run()
-          }
-          icon={props.icon || icon}
-          disabled={isDisabled?.(editor) || false}
-        />
-      );
-    },
-  );
+  const Control = forwardRef<HTMLButtonElement, RichTextEditorControlBaseProps>((props, ref) => {
+    const { editor, labels } = useRichTextEditorContext();
+    const _label = labels[label] as string;
+    return (
+      <RichTextEditorControlBase
+        {...props}
+        aria-label={_label}
+        title={_label}
+        active={isActive?.name ? editor?.isActive(isActive.name, isActive.attributes) : false}
+        ref={ref}
+        onClick={() => (editor as any)?.chain().focus()[operation.name](operation.attributes).run()}
+        icon={props.icon || icon}
+        disabled={isDisabled?.(editor) || false}
+      />
+    );
+  });
 
   Control.displayName = `@Raikou/tiptap/${label}`;
 

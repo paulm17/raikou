@@ -1,15 +1,6 @@
-import {
-  Center,
-  Loader,
-  type RaikouColor,
-  type RaikouLoader,
-  type RaikouSize,
-} from "@raikou/core";
-import clsx from "clsx";
-import {
-  dataTableLoaderFetchingStyle,
-  dataTableLoaderStyle,
-} from "./DataTableLoader.css";
+import clsx from 'clsx';
+import { Center, Loader, type RaikouColor, type RaikouLoader, type RaikouSize } from '@raikou/core';
+import { dataTableLoaderFetchingStyle, dataTableLoaderStyle } from './DataTableLoader.css';
 
 type DataTableLoaderProps = {
   pt: number;
@@ -41,14 +32,11 @@ export function DataTableLoader({
       })}
       style={[
         {
-          backdropFilter: backgroundBlur
-            ? `blur(${backgroundBlur}px)`
-            : undefined,
+          backdropFilter: backgroundBlur ? `blur(${backgroundBlur}px)` : undefined,
         },
       ]}
     >
-      {fetching &&
-        (customContent || <Loader size={size} type={type} color={color} />)}
+      {fetching && (customContent || <Loader size={size} type={type} color={color} />)}
     </Center>
   );
 }

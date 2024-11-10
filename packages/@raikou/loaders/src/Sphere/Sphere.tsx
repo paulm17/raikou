@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment } from 'react';
 import {
   Box,
   BoxProps,
@@ -8,23 +8,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderSphereBallStyle, LoaderSphereRootStyle } from "./Sphere.css";
+} from '@raikou/core';
+import { LoaderSphereBallStyle, LoaderSphereRootStyle } from './Sphere.css';
 
-export type SphereStylesNames = "root";
+export type SphereStylesNames = 'root';
 export type SphereCssVariables = {
-  root: "--sphere-color" | "--sphere-size" | "--sphere-speed-multiplier";
+  root: '--sphere-color' | '--sphere-size' | '--sphere-speed-multiplier';
 };
 
-export interface SphereProps
-  extends BoxProps,
-    StylesApiProps<SphereFactory>,
-    ElementProps<"span"> {
+export interface SphereProps extends BoxProps, StylesApiProps<SphereFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -48,7 +45,7 @@ const defaultProps: Partial<SphereProps> = {
 };
 
 const getNewSize = (size: RaikouSize | (string & {}) | number | undefined) => {
-  if (typeof size === "string") {
+  if (typeof size === 'string') {
     const sizes: Record<RaikouSize, number> = {
       xs: 20,
       sm: 24,
@@ -71,15 +68,15 @@ const varsResolver = createVarsResolver<SphereFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--sphere-color": color ? getThemeColor(color, theme) : undefined,
-      "--sphere-size": getSize(size, "sphere-size") ?? undefined,
-      "--sphere-speed-multiplier": `${speedMultiplier}`,
+      '--sphere-color': color ? getThemeColor(color, theme) : undefined,
+      '--sphere-size': getSize(size, 'sphere-size') ?? undefined,
+      '--sphere-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Sphere = factory<SphereFactory>((_props, ref) => {
-  const props = useProps("Sphere", defaultProps, _props);
+  const props = useProps('Sphere', defaultProps, _props);
   const {
     color,
     vars,
@@ -96,7 +93,7 @@ export const Sphere = factory<SphereFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<SphereFactory>({
-    name: "Sphere",
+    name: 'Sphere',
     props,
     classes: {
       root: LoaderSphereRootStyle,
@@ -113,7 +110,7 @@ export const Sphere = factory<SphereFactory>((_props, ref) => {
   const newSize = getNewSize(size) as number;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       {[...Array(Math.round(7))].map((_, i) => {
         const countBalls = 7;
         const ballSize = newSize / 5;
@@ -160,4 +157,4 @@ export const Sphere = factory<SphereFactory>((_props, ref) => {
   );
 });
 
-Sphere.displayName = "@raikou/core/Sphere";
+Sphere.displayName = '@raikou/core/Sphere';

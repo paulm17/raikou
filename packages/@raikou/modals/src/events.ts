@@ -1,10 +1,10 @@
 import { createUseExternalEvents } from '@raikou/core';
 import {
-  RaikouModal,
-  RaikouModals,
   ModalSettings,
   OpenConfirmModal,
   OpenContextModal,
+  RaikouModal,
+  RaikouModals,
 } from './context';
 
 type ModalsEvents = {

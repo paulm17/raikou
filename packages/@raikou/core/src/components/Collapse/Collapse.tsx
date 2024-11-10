@@ -5,8 +5,8 @@ import {
   Factory,
   factory,
   getStyleObject,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
 } from '../../core';
 import { useCollapse } from './use-collapse';
 

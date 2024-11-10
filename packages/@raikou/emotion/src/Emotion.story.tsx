@@ -4,15 +4,18 @@ import { CacheProvider } from '@emotion/react';
 import {
   Box,
   Button,
-  ButtonProps,
-  RaikouProvider,
-  RaikouTheme,
+  // ButtonProps,
+  // RaikouTheme,
   SegmentedControl,
 } from '@raikou/core';
-import { createStyles, EmotionHelpers } from './create-styles';
+import { RaikouProvider } from '@raikou/system';
+import {
+  createStyles,
+  // EmotionHelpers
+} from './create-styles';
 import { emotionTransform } from './emotion-transform';
 import { Global } from './Global';
-import { RaikouEmotionProvider, useEmotionCache } from './MantineEmotionProvider';
+import { RaikouEmotionProvider, useEmotionCache } from './RaikouEmotionProvider';
 
 export default { title: 'Emotion' };
 
@@ -119,26 +122,26 @@ export function EmotionStylesTransform() {
     <CacheProvider value={testCache}>
       <RaikouProvider
         stylesTransform={emotionTransform}
-        theme={{
-          components: {
-            Button: {
-              styles: (theme: RaikouTheme, props: ButtonProps, u: EmotionHelpers) => ({
-                label: {
-                  backgroundColor: theme.colors[props.color || 'cyan'][5],
+        // theme={{
+        //   components: {
+        //     Button: {
+        //       styles: (theme: RaikouTheme, props: ButtonProps, u: EmotionHelpers) => ({
+        //         label: {
+        //           backgroundColor: theme.colors[props.color || 'cyan'][5],
 
-                  [u.dark]: {
-                    padding: 20,
-                  },
+        //           [u.dark]: {
+        //             padding: 20,
+        //           },
 
-                  '&:hover': {
-                    color: theme.colors[props.color || 'cyan'][9],
-                    backgroundColor: theme.colors[props.color || 'cyan'][8],
-                  },
-                },
-              }),
-            },
-          },
-        }}
+        //           '&:hover': {
+        //             color: theme.colors[props.color || 'cyan'][9],
+        //             backgroundColor: theme.colors[props.color || 'cyan'][8],
+        //           },
+        //         },
+        //       }),
+        //     },
+        //   },
+        // }}
       >
         <RaikouEmotionProvider>
           <Button

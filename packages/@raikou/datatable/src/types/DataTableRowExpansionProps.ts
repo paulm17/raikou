@@ -1,4 +1,4 @@
-import type { DataTableRowExpansionCollapseProps } from "./DataTableRowExpansionCollapseProps";
+import type { DataTableRowExpansionCollapseProps } from './DataTableRowExpansionCollapseProps';
 
 export type DataTableRowExpansionProps<T = Record<string, unknown>> = {
   /**
@@ -12,7 +12,7 @@ export type DataTableRowExpansionProps<T = Record<string, unknown>> = {
    * Defines when rows should expand.
    * @default `click`
    */
-  trigger?: "click" | "always" | "never";
+  trigger?: 'click' | 'always' | 'never';
 
   /**
    * If true, multiple rows can be expanded at the same time.
@@ -57,9 +57,5 @@ export type DataTableRowExpansionProps<T = Record<string, unknown>> = {
    * and a `collapse()` callback that can be used to collapse the expanded row.
    * Must return a React node.
    */
-  content: (params: {
-    record: T;
-    index: number;
-    collapse: () => void;
-  }) => React.ReactNode;
+  content: (params: { record: T; index: number; collapse: () => void }) => React.ReactNode;
 };

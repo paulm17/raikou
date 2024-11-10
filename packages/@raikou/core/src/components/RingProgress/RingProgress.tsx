@@ -13,7 +13,12 @@ import {
 } from '../../core';
 import { Curve } from './Curve/Curve';
 import { getCurves } from './get-curves/get-curves';
-import { RingProgressCurveStyle, RingProgressLabelStyle, RingProgressRootStyle, RingProgressSvgStyle } from './RingProgress.css';
+import {
+  RingProgressCurveStyle,
+  RingProgressLabelStyle,
+  RingProgressRootStyle,
+  RingProgressSvgStyle,
+} from './RingProgress.css';
 
 function getClampedThickness(thickness: number, size: number) {
   return Math.min(thickness || 12, (size || 120) / 4);

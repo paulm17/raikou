@@ -1,11 +1,9 @@
-import { forwardRef } from "react";
-import { BoxProps, ColorSwatch, ElementProps, useProps } from "@raikou/core";
-import { useRichTextEditorContext } from "../RichTextEditor.context";
-import { RichTextEditorControl } from "./RichTextEditorControl";
+import { forwardRef } from 'react';
+import { BoxProps, ColorSwatch, ElementProps, useProps } from '@raikou/core';
+import { useRichTextEditorContext } from '../RichTextEditor.context';
+import { RichTextEditorControl } from './RichTextEditorControl';
 
-export interface RichTextEditorColorControlProps
-  extends BoxProps,
-    ElementProps<"button"> {
+export interface RichTextEditorColorControlProps extends BoxProps, ElementProps<'button'> {
   /** Color that will be set as text color, for example #ef457e */
   color: string;
 }
@@ -16,13 +14,9 @@ export const RichTextEditorColorControl = forwardRef<
   HTMLButtonElement,
   RichTextEditorColorControlProps
 >((props, ref) => {
-  const { color, ...others } = useProps(
-    "RichTextEditorColorControl",
-    defaultProps,
-    props,
-  );
+  const { color, ...others } = useProps('RichTextEditorColorControl', defaultProps, props);
   const { editor, labels } = useRichTextEditorContext();
-  const currentColor = editor?.getAttributes("textStyle").color || null;
+  const currentColor = editor?.getAttributes('textStyle').color || null;
   const label = labels.colorControlLabel(color);
 
   return (
@@ -39,5 +33,4 @@ export const RichTextEditorColorControl = forwardRef<
   );
 });
 
-RichTextEditorColorControl.displayName =
-  "@Raikou/tiptap/RichTextEditorColorControl";
+RichTextEditorColorControl.displayName = '@Raikou/tiptap/RichTextEditorColorControl';

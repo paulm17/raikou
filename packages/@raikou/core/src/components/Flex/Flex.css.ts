@@ -1,5 +1,5 @@
-import { css } from "@stylefusion/react";
+import { css } from '@stylefusion/react';
 
 export const FlexRootStyle = css({
-  display: "flex",
+  display: 'flex',
 });

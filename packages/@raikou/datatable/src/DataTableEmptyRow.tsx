@@ -1,4 +1,4 @@
-import { dataTableEmptyRowStyle } from "./DataTableEmptyRow.css";
+import { dataTableEmptyRowStyle } from './DataTableEmptyRow.css';
 
 export function DataTableEmptyRow() {
   return (

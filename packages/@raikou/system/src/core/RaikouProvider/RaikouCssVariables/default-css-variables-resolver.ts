@@ -1,52 +1,44 @@
-import { keys, rem } from "../../utils";
-import { getPrimaryContrastColor, getPrimaryShade } from "../color-functions";
-import { ConvertCSSVariablesInput } from "../convert-css-variables";
-import { RaikouTheme } from "../theme.types";
+import { keys, rem } from '../../utils';
+import { getPrimaryContrastColor, getPrimaryShade } from '../color-functions';
+import { ConvertCSSVariablesInput } from '../convert-css-variables';
+import { RaikouTheme } from '../theme.types';
 import { getCSSColorVariables } from './get-css-color-variables';
 import { isVirtualColor } from './virtual-color/virtual-color';
 
-export type CSSVariablesResolver = (
-  theme: RaikouTheme,
-) => ConvertCSSVariablesInput;
+export type CSSVariablesResolver = (theme: RaikouTheme) => ConvertCSSVariablesInput;
 
 function assignSizeVariables(
   variables: Record<string, string>,
   sizes: Record<string, string>,
-  name: string,
+  name: string
 ) {
-  keys(sizes).forEach((size) =>
-    Object.assign(variables, { [`${name}-${size}`]: sizes[size] }),
-  );
+  keys(sizes).forEach((size) => Object.assign(variables, { [`${name}-${size}`]: sizes[size] }));
 }
 
 export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
-  const darkPrimaryShade = getPrimaryShade(theme, "dark");
-  const lightPrimaryShade = getPrimaryShade(theme, "light");
+  const darkPrimaryShade = getPrimaryShade(theme, 'dark');
+  const lightPrimaryShade = getPrimaryShade(theme, 'light');
   const defaultRadius =
     theme.defaultRadius in theme.radius
-      ? theme.radius[theme.defaultRadius as "xs"]
+      ? theme.radius[theme.defaultRadius as 'xs']
       : rem(theme.defaultRadius);
 
   const result: ConvertCSSVariablesInput = {
     variables: {
-      "scale": theme.scale.toString(),
-      "cursor-type": theme.cursorType,
-      "color-scheme": "light dark",
-      "webkit-font-smoothing": theme.fontSmoothing
-        ? "antialiased"
-        : "unset",
-      "moz-font-smoothing": theme.fontSmoothing
-        ? "grayscale"
-        : "unset",
-      "color-white": theme.white,
-      "color-black": theme.black,
-      "line-height": theme.lineHeights.md,
-      "font-family": theme.fontFamily,
-      "font-family-monospace": theme.fontFamilyMonospace,
-      "font-family-headings": theme.headings.fontFamily,
-      "heading-font-weight": theme.headings.fontWeight,
+      scale: theme.scale.toString(),
+      'cursor-type': theme.cursorType,
+      'color-scheme': 'light dark',
+      'webkit-font-smoothing': theme.fontSmoothing ? 'antialiased' : 'unset',
+      'moz-font-smoothing': theme.fontSmoothing ? 'grayscale' : 'unset',
+      'color-white': theme.white,
+      'color-black': theme.black,
+      'line-height': theme.lineHeights.md,
+      'font-family': theme.fontFamily,
+      'font-family-monospace': theme.fontFamilyMonospace,
+      'font-family-headings': theme.headings.fontFamily,
+      'heading-font-weight': theme.headings.fontWeight,
       'heading-text-wrap': theme.headings.textWrap,
-      "radius-default": defaultRadius,
+      'radius-default': defaultRadius,
 
       // Primary colors
       'primary-color-filled': `var(--raikou-color-${theme.primaryColor}-filled)`,
@@ -54,12 +46,12 @@ export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
       'primary-color-light': `var(--raikou-color-${theme.primaryColor}-light)`,
       'primary-color-light-hover': `var(--raikou-color-${theme.primaryColor}-light-hover)`,
       'primary-color-light-color': `var(--raikou-color-${theme.primaryColor}-light-color)`,
-    
+
       // Gradient
-      "gradient-from": theme.colors[theme.primaryColor][1],
-      "gradient-to": theme.colors[theme.primaryColor][8],
+      'gradient-from': theme.colors[theme.primaryColor][1],
+      'gradient-to': theme.colors[theme.primaryColor][8],
       // @ts-ignore
-      "gradient-deg": theme.defaultGradient.deg,
+      'gradient-deg': theme.defaultGradient.deg,
     },
     light: {
       'color-contrast': getPrimaryContrastColor(theme, 'light'),
@@ -91,16 +83,15 @@ export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
     },
   };
 
-  assignSizeVariables(result.variables, theme.breakpoints, "breakpoint");
-  assignSizeVariables(result.variables, theme.spacing, "spacing");
-  assignSizeVariables(result.variables, theme.fontSizes, "font-size");
-  assignSizeVariables(result.variables, theme.lineHeights, "line-height");
-  assignSizeVariables(result.variables, theme.shadows, "shadow");
-  assignSizeVariables(result.variables, theme.radius, "radius");
+  assignSizeVariables(result.variables, theme.breakpoints, 'breakpoint');
+  assignSizeVariables(result.variables, theme.spacing, 'spacing');
+  assignSizeVariables(result.variables, theme.fontSizes, 'font-size');
+  assignSizeVariables(result.variables, theme.lineHeights, 'line-height');
+  assignSizeVariables(result.variables, theme.shadows, 'shadow');
+  assignSizeVariables(result.variables, theme.radius, 'radius');
 
   theme.colors[theme.primaryColor].forEach((_, index) => {
-    result.variables[`color-${index}`] =
-      `var(raikou-color-${theme.primaryColor}-${index})`;
+    result.variables[`color-${index}`] = `var(raikou-color-${theme.primaryColor}-${index})`;
   });
 
   keys(theme.colors).forEach((color) => {

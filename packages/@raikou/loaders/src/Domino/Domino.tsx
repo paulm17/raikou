@@ -7,23 +7,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderDominoRootStyle, LoaderDominoBarStyle } from "./Domino.css";
+} from '@raikou/core';
+import { LoaderDominoBarStyle, LoaderDominoRootStyle } from './Domino.css';
 
-export type DominoStylesNames = "root";
+export type DominoStylesNames = 'root';
 export type DominoCssVariables = {
-  root: "--domino-color" | "--domino-size";
+  root: '--domino-color' | '--domino-size';
 };
 
-export interface DominoProps
-  extends BoxProps,
-    StylesApiProps<DominoFactory>,
-    ElementProps<"span"> {
+export interface DominoProps extends BoxProps, StylesApiProps<DominoFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -43,7 +40,7 @@ const defaultProps: Partial<DominoProps> = {
 };
 
 const getNewSize = (size: RaikouSize | (string & {}) | number | undefined) => {
-  if (typeof size === "string") {
+  if (typeof size === 'string') {
     const sizes: Record<RaikouSize, number> = {
       xs: 50,
       sm: 61,
@@ -66,14 +63,14 @@ const varsResolver = createVarsResolver<DominoFactory>(
   // @ts-ignore
   (theme, { color, size }) => ({
     root: {
-      "--domino-color": color ? getThemeColor(color, theme) : undefined,
-      "--domino-size": getSize(size, "domino-size") ?? undefined,
+      '--domino-color': color ? getThemeColor(color, theme) : undefined,
+      '--domino-size': getSize(size, 'domino-size') ?? undefined,
     },
-  }),
+  })
 );
 
 export const Domino = factory<DominoFactory>((_props, ref) => {
-  const props = useProps("Domino", defaultProps, _props);
+  const props = useProps('Domino', defaultProps, _props);
   const {
     color,
     vars,
@@ -89,7 +86,7 @@ export const Domino = factory<DominoFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<DominoFactory>({
-    name: "Domino",
+    name: 'Domino',
     props,
     classes: {
       root: LoaderDominoRootStyle,
@@ -155,7 +152,7 @@ export const Domino = factory<DominoFactory>((_props, ref) => {
   `;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <div dangerouslySetInnerHTML={{ __html: rawHTML }} />
 
       {[...Array(Math.floor(newSize / countBars))].map((_, i) => {
@@ -177,4 +174,4 @@ export const Domino = factory<DominoFactory>((_props, ref) => {
   );
 });
 
-Domino.displayName = "@raikou/core/Domino";
+Domino.displayName = '@raikou/core/Domino';

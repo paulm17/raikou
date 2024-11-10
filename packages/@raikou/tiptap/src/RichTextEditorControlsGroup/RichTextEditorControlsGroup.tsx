@@ -6,14 +6,14 @@ import {
   factory,
   Factory,
   useProps,
-} from "@raikou/core";
-import { useRichTextEditorContext } from "../RichTextEditor.context";
+} from '@raikou/core';
+import { useRichTextEditorContext } from '../RichTextEditor.context';
 
-export type RichTextEditorControlsGroupStylesNames = "controlsGroup";
+export type RichTextEditorControlsGroupStylesNames = 'controlsGroup';
 export interface RichTextEditorControlsGroupProps
   extends BoxProps,
     CompoundStylesApiProps<RichTextEditorControlsGroupFactory>,
-    ElementProps<"div"> {}
+    ElementProps<'div'> {}
 
 export type RichTextEditorControlsGroupFactory = Factory<{
   props: RichTextEditorControlsGroupProps;
@@ -24,15 +24,15 @@ export type RichTextEditorControlsGroupFactory = Factory<{
 
 const defaultProps: Partial<RichTextEditorControlsGroupProps> = {};
 
-export const RichTextEditorControlsGroup =
-  factory<RichTextEditorControlsGroupFactory>((_props, ref) => {
-    const props = useProps("RichTextEditorControlsGroup", defaultProps, _props);
+export const RichTextEditorControlsGroup = factory<RichTextEditorControlsGroupFactory>(
+  (_props, ref) => {
+    const props = useProps('RichTextEditorControlsGroup', defaultProps, _props);
     const { classNames, className, style, styles, vars, ...others } = props;
     const ctx = useRichTextEditorContext();
     return (
       <Box
         ref={ref}
-        {...ctx.getStyles("controlsGroup", {
+        {...ctx.getStyles('controlsGroup', {
           className,
           style,
           styles,
@@ -41,7 +41,7 @@ export const RichTextEditorControlsGroup =
         {...others}
       />
     );
-  });
+  }
+);
 
-RichTextEditorControlsGroup.displayName =
-  "@Raikou/tiptap/RichTextEditorControlsGroup";
+RichTextEditorControlsGroup.displayName = '@Raikou/tiptap/RichTextEditorControlsGroup';

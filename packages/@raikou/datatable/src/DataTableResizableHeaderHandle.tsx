@@ -1,15 +1,13 @@
-import { rem } from "@raikou/core";
-import { useRef, useState, type MutableRefObject } from "react";
-import { useDataTableColumnsContext } from "./DataTableColumns.context";
+import { useRef, useState, type MutableRefObject } from 'react';
+import { rem } from '@raikou/core';
+import { useDataTableColumnsContext } from './DataTableColumns.context';
 
 type DataTableResizableHeaderHandleProps = {
   accessor: string;
   columnRef: MutableRefObject<HTMLTableCellElement | null>;
 };
 
-export const DataTableResizableHeaderHandle = (
-  props: DataTableResizableHeaderHandleProps,
-) => {
+export const DataTableResizableHeaderHandle = (props: DataTableResizableHeaderHandleProps) => {
   const { accessor, columnRef } = props;
 
   const dragRef = useRef<HTMLTableCellElement>(null);
@@ -22,17 +20,16 @@ export const DataTableResizableHeaderHandle = (
     event.preventDefault();
     event.stopPropagation();
 
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseup", handleMouseUp);
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
 
-    document.body.style.cursor = "col-resize";
+    document.body.style.cursor = 'col-resize';
   };
 
   const handleMouseMove = (event: MouseEvent) => {
     if (!columnRef.current) return;
 
-    const delta =
-      event.clientX - columnRef.current.getBoundingClientRect().right;
+    const delta = event.clientX - columnRef.current.getBoundingClientRect().right;
 
     const width = columnRef.current.getBoundingClientRect().width + delta;
 
@@ -50,10 +47,10 @@ export const DataTableResizableHeaderHandle = (
   const handleMouseUp = () => {
     if (!columnRef.current) return;
 
-    document.removeEventListener("mousemove", handleMouseMove);
-    document.removeEventListener("mouseup", handleMouseUp);
+    document.removeEventListener('mousemove', handleMouseMove);
+    document.removeEventListener('mouseup', handleMouseUp);
 
-    document.body.style.cursor = "initial";
+    document.body.style.cursor = 'initial';
 
     setColumnWidth(accessor, columnRef.current.style.width as string);
 
@@ -66,11 +63,11 @@ export const DataTableResizableHeaderHandle = (
   const handleDoubleClick = () => {
     if (!columnRef.current) return;
 
-    columnRef.current.style.maxWidth = "initial";
-    columnRef.current.style.minWidth = "initial";
-    columnRef.current.style.width = "initial";
+    columnRef.current.style.maxWidth = 'initial';
+    columnRef.current.style.minWidth = 'initial';
+    columnRef.current.style.width = 'initial';
 
-    setColumnWidth(accessor, "initial");
+    setColumnWidth(accessor, 'initial');
   };
 
   return (

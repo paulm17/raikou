@@ -36,7 +36,7 @@ const config = {
   versionGroups: [
     {
       packages: ['docs'],
-      dependencies: ['@mantine/store'],
+      dependencies: ['@raikou/store'],
       isIgnored: true,
     },
   ],

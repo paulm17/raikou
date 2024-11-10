@@ -7,27 +7,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import {
-  LoaderFlagLineStyle,
-  LoaderFlagPlaneStyle,
-  LoaderFlagRootStyle,
-} from "./Flag.css";
+} from '@raikou/core';
+import { LoaderFlagLineStyle, LoaderFlagPlaneStyle, LoaderFlagRootStyle } from './Flag.css';
 
-export type FlagStylesNames = "root";
+export type FlagStylesNames = 'root';
 export type FlagCssVariables = {
-  root: "--flag-color" | "--flag-size" | "--flag-speed-multiplier";
+  root: '--flag-color' | '--flag-size' | '--flag-speed-multiplier';
 };
 
-export interface FlagProps
-  extends BoxProps,
-    StylesApiProps<FlagFactory>,
-    ElementProps<"span"> {
+export interface FlagProps extends BoxProps, StylesApiProps<FlagFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -54,15 +47,15 @@ const varsResolver = createVarsResolver<FlagFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--flag-color": color ? getThemeColor(color, theme) : undefined,
-      "--flag-size": getSize(size, "flag-size") ?? undefined,
-      "--flag-speed-multiplier": `${speedMultiplier}`,
+      '--flag-color': color ? getThemeColor(color, theme) : undefined,
+      '--flag-size': getSize(size, 'flag-size') ?? undefined,
+      '--flag-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Flag = factory<FlagFactory>((_props, ref) => {
-  const props = useProps("Flag", defaultProps, _props);
+  const props = useProps('Flag', defaultProps, _props);
   const {
     color,
     vars,
@@ -79,7 +72,7 @@ export const Flag = factory<FlagFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<FlagFactory>({
-    name: "Flag",
+    name: 'Flag',
     props,
     classes: {
       root: LoaderFlagRootStyle,
@@ -96,7 +89,7 @@ export const Flag = factory<FlagFactory>((_props, ref) => {
   let keyValue = 0;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       {[...Array(4)].map((_, i) => {
         return (
           <span
@@ -123,4 +116,4 @@ export const Flag = factory<FlagFactory>((_props, ref) => {
   );
 });
 
-Flag.displayName = "@raikou/core/Flag";
+Flag.displayName = '@raikou/core/Flag';

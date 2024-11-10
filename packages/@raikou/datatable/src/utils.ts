@@ -32,7 +32,10 @@ export function uniqBy<T>(arr: T[], iteratee: (value: T) => unknown) {
 export function getValueAtPath<T>(obj: T, path: keyof T | (string & NonNullable<unknown>)) {
   if (!path) return undefined;
   const pathArray = (path as string).match(/([^[.\]])+/g) as string[];
-  return pathArray.reduce((prevObj: unknown, key) => prevObj && (prevObj as Record<string, unknown>)[key], obj);
+  return pathArray.reduce(
+    (prevObj: unknown, key) => prevObj && (prevObj as Record<string, unknown>)[key],
+    obj
+  );
 }
 
 /**

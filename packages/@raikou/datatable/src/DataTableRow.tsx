@@ -1,16 +1,16 @@
+import clsx from 'clsx';
 import {
   RaikouTheme,
   TableTr,
   type CheckboxProps,
   type RaikouColor,
   type RaikouStyleProp,
-} from "@raikou/core";
-import clsx from "clsx";
-import { DataTableRowCell } from "./DataTableRowCell";
-import { DataTableRowExpansion } from "./DataTableRowExpansion";
-import { DataTableRowSelectorCell } from "./DataTableRowSelectorCell";
-import { getRowCssVariables } from "./cssVariables";
-import { useRowExpansion } from "./hooks";
+} from '@raikou/core';
+import { getRowCssVariables } from './cssVariables';
+import { DataTableRowCell } from './DataTableRowCell';
+import { DataTableRowExpansion } from './DataTableRowExpansion';
+import { DataTableRowSelectorCell } from './DataTableRowSelectorCell';
+import { useRowExpansion } from './hooks';
 import type {
   DataTableCellClickHandler,
   DataTableColumn,
@@ -18,9 +18,9 @@ import type {
   DataTableProps,
   DataTableRowClickHandler,
   DataTableSelectionTrigger,
-} from "./types";
-import { CONTEXT_MENU_CURSOR, POINTER_CURSOR } from "./utilityClasses";
-import { dataTableRowStyle } from "./DataTableRow.css";
+} from './types';
+import { CONTEXT_MENU_CURSOR, POINTER_CURSOR } from './utilityClasses';
+import { dataTableRowStyle } from './DataTableRow.css';
 
 type DataTableRowProps<T> = {
   record: T;
@@ -31,7 +31,7 @@ type DataTableRowProps<T> = {
     | ((
         record: T,
         index: number,
-        accessor: keyof T | (string & NonNullable<unknown>),
+        accessor: keyof T | (string & NonNullable<unknown>)
       ) => React.ReactNode)
     | undefined;
   selectionTrigger: DataTableSelectionTrigger;
@@ -52,13 +52,13 @@ type DataTableRowProps<T> = {
   color:
     | ((
         record: T,
-        index: number,
+        index: number
       ) => RaikouColor | undefined | { light: RaikouColor; dark: RaikouColor })
     | undefined;
   backgroundColor:
     | ((
         record: T,
-        index: number,
+        index: number
       ) => RaikouColor | undefined | { light: RaikouColor; dark: RaikouColor })
     | undefined;
   className?: string | ((record: T, index: number) => string | undefined);
@@ -67,7 +67,7 @@ type DataTableRowProps<T> = {
   selectionColumnClassName: string | undefined;
   selectionColumnStyle: RaikouStyleProp | undefined;
   idAccessor: string;
-} & Pick<DataTableProps<T>, "rowFactory">;
+} & Pick<DataTableProps<T>, 'rowFactory'>;
 
 export function DataTableRow<T>({
   record,
@@ -111,8 +111,7 @@ export function DataTableRow<T>({
           withRightShadow={selectorCellShadowVisible}
           checked={selectionChecked}
           disabled={
-            !onSelectionChange ||
-            (isRecordSelectable ? !isRecordSelectable(record, index) : false)
+            !onSelectionChange || (isRecordSelectable ? !isRecordSelectable(record, index) : false)
           }
           onChange={onSelectionChange}
           checkboxProps={selectionCheckboxProps}
@@ -140,9 +139,7 @@ export function DataTableRow<T>({
           <DataTableRowCell<T>
             key={accessor as React.Key}
             className={
-              typeof cellsClassName === "function"
-                ? cellsClassName(record, index)
-                : cellsClassName
+              typeof cellsClassName === 'function' ? cellsClassName(record, index) : cellsClassName
             }
             style={cellsStyle?.(record, index)}
             visibleMediaQuery={visibleMediaQuery}
@@ -200,10 +197,7 @@ export function DataTableRow<T>({
 
   const expandedElement = expansion && (
     <DataTableRowExpansion
-      colSpan={
-        columns.filter(({ hidden }) => !hidden).length +
-        (selectionVisible ? 1 : 0)
-      }
+      colSpan={columns.filter(({ hidden }) => !hidden).length + (selectionVisible ? 1 : 0)}
       open={expansion.isRowExpanded(record)}
       content={expansion.content({ record, index })}
       collapseProps={expansion.collapseProps}
@@ -246,18 +240,18 @@ export function DataTableRow<T>({
 type GetRowPropsArgs<T> = Readonly<
   Pick<
     DataTableRowProps<T>,
-    | "record"
-    | "index"
-    | "selectionChecked"
-    | "onClick"
-    | "onDoubleClick"
-    | "onContextMenu"
-    | "expansion"
-    | "customAttributes"
-    | "color"
-    | "backgroundColor"
-    | "className"
-    | "style"
+    | 'record'
+    | 'index'
+    | 'selectionChecked'
+    | 'onClick'
+    | 'onDoubleClick'
+    | 'onContextMenu'
+    | 'expansion'
+    | 'customAttributes'
+    | 'color'
+    | 'backgroundColor'
+    | 'className'
+    | 'style'
   >
 >;
 
@@ -282,24 +276,17 @@ export function getRowProps<T>({
         [POINTER_CURSOR]:
           onClick ||
           onDoubleClick ||
-          (expansion?.isExpandable({ record, index }) &&
-            expansion?.expandOnClick),
+          (expansion?.isExpandable({ record, index }) && expansion?.expandOnClick),
       },
       { [CONTEXT_MENU_CURSOR]: onContextMenu },
-      typeof className === "function" ? className(record, index) : className,
+      typeof className === 'function' ? className(record, index) : className
     ),
 
-    ["data-selected"]: selectionChecked || undefined,
+    ['data-selected']: selectionChecked || undefined,
 
     onClick: (e: React.MouseEvent<HTMLTableRowElement, MouseEvent>) => {
       if (expansion) {
-        const {
-          isExpandable,
-          isRowExpanded,
-          expandOnClick,
-          expandRow,
-          collapseRow,
-        } = expansion;
+        const { isExpandable, isRowExpanded, expandOnClick, expandRow, collapseRow } = expansion;
         if (isExpandable({ record, index }) && expandOnClick) {
           if (isRowExpanded(record)) {
             collapseRow(record);

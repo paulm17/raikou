@@ -1,11 +1,6 @@
-import {
-  useState,
-  type Dispatch,
-  type PropsWithChildren,
-  type SetStateAction,
-} from "react";
-import { DataTableColumnsContextProvider } from "./DataTableColumns.context";
-import { DataTableColumnToggle } from "./hooks";
+import { useState, type Dispatch, type PropsWithChildren, type SetStateAction } from 'react';
+import { DataTableColumnsContextProvider } from './DataTableColumns.context';
+import { DataTableColumnToggle } from './hooks';
 
 type DataTableColumnsProviderProps = PropsWithChildren<{
   columnsOrder: string[];
@@ -20,9 +15,7 @@ type DataTableColumnsProviderProps = PropsWithChildren<{
   resetColumnsWidth: () => void;
 }>;
 
-export const DataTableColumnsProvider = (
-  props: DataTableColumnsProviderProps,
-) => {
+export const DataTableColumnsProvider = (props: DataTableColumnsProviderProps) => {
   const {
     children,
     columnsOrder,
@@ -37,8 +30,8 @@ export const DataTableColumnsProvider = (
     resetColumnsWidth,
   } = props;
 
-  const [sourceColumn, setSourceColumn] = useState("");
-  const [targetColumn, setTargetColumn] = useState("");
+  const [sourceColumn, setSourceColumn] = useState('');
+  const [targetColumn, setTargetColumn] = useState('');
 
   const swapColumns = () => {
     if (!columnsOrder || !setColumnsOrder || !sourceColumn || !targetColumn) {

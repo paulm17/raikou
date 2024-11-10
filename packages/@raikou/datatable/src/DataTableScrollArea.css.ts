@@ -1,11 +1,11 @@
-import { css } from "@stylefusion/react";
+import { css } from '@stylefusion/react';
 
 export const dataTableScrollAreaStyle = css({
-  flex: "1 1 100%",
+  flex: '1 1 100%',
 });
 
 export const dataTableScrollAreaCornerStyle = css({
-  background: "transparent",
+  background: 'transparent',
 });
 
 export const dataTableScrollAreaThumbStyle = css({
@@ -14,26 +14,26 @@ export const dataTableScrollAreaThumbStyle = css({
 
 export const dataTableScrollAreaScrollbarStyle = css({
   "&[data-state='visible']": {
-    background: "transparent",
+    background: 'transparent',
   },
-  "div::before": {
-    pointerEvents: "none",
+  'div::before': {
+    pointerEvents: 'none',
   },
 });
 
 export const dataTableScrollAreaShadowStyle = css({
-  position: "absolute",
-  pointerEvents: "none",
+  position: 'absolute',
+  pointerEvents: 'none',
   opacity: 0,
-  transition: "opacity 0.2s",
+  transition: 'opacity 0.2s',
 });
 
 export const dataTableScrollAreaTopShadowStyle = css({
   zIndex: 2,
   left: 0,
   right: 0,
-  height: "calc(var(--raikou-spacing-xs) / 2)",
-  background: "var(--raikou-datatable-shadow-background-top)",
+  height: 'calc(var(--raikou-spacing-xs) / 2)',
+  background: 'var(--raikou-datatable-shadow-background-top)',
 });
 
 export const dataTableScrollAreaLeftShadowStyle = css({
@@ -41,8 +41,8 @@ export const dataTableScrollAreaLeftShadowStyle = css({
   top: 0,
   left: 0,
   bottom: 0,
-  width: "var(--raikou-spacing-xs)",
-  background: "var(--raikou-datatable-shadow-background-left)",
+  width: 'var(--raikou-spacing-xs)',
+  background: 'var(--raikou-datatable-shadow-background-left)',
 });
 
 export const dataTableScrollAreaRightShadowStyle = css({
@@ -50,8 +50,8 @@ export const dataTableScrollAreaRightShadowStyle = css({
   top: 0,
   bottom: 0,
   right: 0,
-  width: "var(--raikou-spacing-xs)",
-  background: "var(--raikou-datatable-shadow-background-right)",
+  width: 'var(--raikou-spacing-xs)',
+  background: 'var(--raikou-datatable-shadow-background-right)',
 });
 
 // /* For horizontal scrolling and expanded rows */
@@ -63,8 +63,8 @@ export const dataTableScrollAreaBottomShadowStyle = css({
   zIndex: 2,
   left: 0,
   right: 0,
-  height: "calc(var(--raikou-spacing-xs) / 2)",
-  background: "var(--raikou-datatable-shadow-background-bottom)",
+  height: 'calc(var(--raikou-spacing-xs) / 2)',
+  background: 'var(--raikou-datatable-shadow-background-bottom)',
 });
 
 export const dataTableScrollAreaShadowVisibleStyle = css({

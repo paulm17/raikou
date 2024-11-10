@@ -7,23 +7,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderClipRootStyle } from "./Clip.css";
+} from '@raikou/core';
+import { LoaderClipRootStyle } from './Clip.css';
 
-export type ClipStylesNames = "root";
+export type ClipStylesNames = 'root';
 export type ClipCssVariables = {
-  root: "--clip-color" | "--clip-size" | "--clip-speed-multiplier";
+  root: '--clip-color' | '--clip-size' | '--clip-speed-multiplier';
 };
 
-export interface ClipProps
-  extends BoxProps,
-    StylesApiProps<ClipFactory>,
-    ElementProps<"span"> {
+export interface ClipProps extends BoxProps, StylesApiProps<ClipFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -50,15 +47,15 @@ const varsResolver = createVarsResolver<ClipFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--clip-color": color ? getThemeColor(color, theme) : undefined,
-      "--clip-size": getSize(size, "clip-size") ?? undefined,
-      "--clip-speed-multiplier": `${speedMultiplier}`,
+      '--clip-color': color ? getThemeColor(color, theme) : undefined,
+      '--clip-size': getSize(size, 'clip-size') ?? undefined,
+      '--clip-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Clip = factory<ClipFactory>((_props, ref) => {
-  const props = useProps("Clip", defaultProps, _props);
+  const props = useProps('Clip', defaultProps, _props);
   const {
     color,
     vars,
@@ -75,7 +72,7 @@ export const Clip = factory<ClipFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<ClipFactory>({
-    name: "Clip",
+    name: 'Clip',
     props,
     classes: {
       root: LoaderClipRootStyle,
@@ -89,7 +86,7 @@ export const Clip = factory<ClipFactory>((_props, ref) => {
     varsResolver,
   });
 
-  return <Box {...getStyles("root")} ref={ref} {...others} />;
+  return <Box {...getStyles('root')} ref={ref} {...others} />;
 });
 
-Clip.displayName = "@raikou/core/Clip";
+Clip.displayName = '@raikou/core/Clip';

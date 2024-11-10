@@ -11,7 +11,12 @@ import {
 } from '@raikou/core';
 import { ChartSeries } from '../types';
 import { getSeriesLabels } from '../utils';
-import { ChartLegendItemColorStyle, ChartLegendItemNameStyle, ChartLegendItemStyle, ChartLegendStyle } from './ChartLegend.css';
+import {
+  ChartLegendItemColorStyle,
+  ChartLegendItemNameStyle,
+  ChartLegendItemStyle,
+  ChartLegendStyle,
+} from './ChartLegend.css';
 
 function updateChartLegendPayload(payload: Record<string, any>[]): Record<string, any>[] {
   return payload.map((item) => {

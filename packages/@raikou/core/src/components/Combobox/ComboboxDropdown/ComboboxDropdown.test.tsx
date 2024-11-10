@@ -43,8 +43,6 @@ describe('@raikou/core/ComboboxDropdown', () => {
     expect(container.querySelector('.raikou-Combobox-dropdown')).toHaveAttribute('data-hidden');
 
     rerender(<TestContainer hidden={false}>test</TestContainer>);
-    expect(container.querySelector('.raikou-Combobox-dropdown')).not.toHaveAttribute(
-      'data-hidden'
-    );
+    expect(container.querySelector('.raikou-Combobox-dropdown')).not.toHaveAttribute('data-hidden');
   });
 });

@@ -1,5 +1,5 @@
-import { Box, ScrollArea, rem, type ScrollAreaProps } from "@raikou/core";
-import clsx from "clsx";
+import clsx from 'clsx';
+import { Box, rem, ScrollArea, type ScrollAreaProps } from '@raikou/core';
 import {
   dataTableScrollAreaBottomShadowStyle,
   dataTableScrollAreaCornerStyle,
@@ -12,7 +12,7 @@ import {
   dataTableScrollAreaStyle,
   dataTableScrollAreaThumbStyle,
   dataTableScrollAreaTopShadowStyle,
-} from "./DataTableScrollArea.css";
+} from './DataTableScrollArea.css';
 
 type DataTableScrollAreaProps = React.PropsWithChildren<{
   topShadowVisible: boolean;
@@ -23,10 +23,10 @@ type DataTableScrollAreaProps = React.PropsWithChildren<{
   bottomShadowVisible: boolean;
   headerHeight: number;
   footerHeight: number;
-  onScrollPositionChange: ScrollAreaProps["onScrollPositionChange"];
+  onScrollPositionChange: ScrollAreaProps['onScrollPositionChange'];
   viewportRef: React.Ref<HTMLDivElement>;
   scrollAreaProps:
-    | Omit<ScrollAreaProps, "classNames" | "styles" | "onScrollPositionChange">
+    | Omit<ScrollAreaProps, 'classNames' | 'styles' | 'onScrollPositionChange'>
     | undefined;
 }>;
 
@@ -58,43 +58,27 @@ export function DataTableScrollArea({
     >
       {children}
       <Box
-        className={clsx(
-          dataTableScrollAreaShadowStyle,
-          dataTableScrollAreaTopShadowStyle,
-          {
-            [dataTableScrollAreaShadowStyle]: topShadowVisible,
-          },
-        )}
+        className={clsx(dataTableScrollAreaShadowStyle, dataTableScrollAreaTopShadowStyle, {
+          [dataTableScrollAreaShadowStyle]: topShadowVisible,
+        })}
         style={{ top: headerHeight ? rem(headerHeight) : 0 }}
       />
       <div
-        className={clsx(
-          dataTableScrollAreaShadowStyle,
-          dataTableScrollAreaLeftShadowStyle,
-          {
-            [dataTableScrollAreaShadowStyle]: leftShadowVisible,
-            [dataTableScrollAreaShadowBehindStyle]: leftShadowBehind,
-          },
-        )}
+        className={clsx(dataTableScrollAreaShadowStyle, dataTableScrollAreaLeftShadowStyle, {
+          [dataTableScrollAreaShadowStyle]: leftShadowVisible,
+          [dataTableScrollAreaShadowBehindStyle]: leftShadowBehind,
+        })}
       />
       <div
-        className={clsx(
-          dataTableScrollAreaShadowStyle,
-          dataTableScrollAreaRightShadowStyle,
-          {
-            [dataTableScrollAreaShadowStyle]: rightShadowVisible,
-            [dataTableScrollAreaShadowBehindStyle]: rightShadowBehind,
-          },
-        )}
+        className={clsx(dataTableScrollAreaShadowStyle, dataTableScrollAreaRightShadowStyle, {
+          [dataTableScrollAreaShadowStyle]: rightShadowVisible,
+          [dataTableScrollAreaShadowBehindStyle]: rightShadowBehind,
+        })}
       />
       <Box
-        className={clsx(
-          dataTableScrollAreaShadowStyle,
-          dataTableScrollAreaBottomShadowStyle,
-          {
-            [dataTableScrollAreaShadowVisibleStyle]: bottomShadowVisible,
-          },
-        )}
+        className={clsx(dataTableScrollAreaShadowStyle, dataTableScrollAreaBottomShadowStyle, {
+          [dataTableScrollAreaShadowVisibleStyle]: bottomShadowVisible,
+        })}
         style={{ bottom: footerHeight ? rem(footerHeight + 1) : 0 }}
       />
     </ScrollArea>

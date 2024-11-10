@@ -7,23 +7,23 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderRainbowRootStyle, LoaderRainbowLineStyle } from "./Rainbow.css";
+} from '@raikou/core';
+import { LoaderRainbowLineStyle, LoaderRainbowRootStyle } from './Rainbow.css';
 
-export type RainbowStylesNames = "root";
+export type RainbowStylesNames = 'root';
 export type RainbowCssVariables = {
-  root: "--rainbow-color" | "--rainbow-size" | "--rainbow-speed-multiplier";
+  root: '--rainbow-color' | '--rainbow-size' | '--rainbow-speed-multiplier';
 };
 
 export interface RainbowProps
   extends BoxProps,
     StylesApiProps<RainbowFactory>,
-    ElementProps<"span"> {
+    ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -50,15 +50,15 @@ const varsResolver = createVarsResolver<RainbowFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--rainbow-color": color ? getThemeColor(color, theme) : undefined,
-      "--rainbow-size": getSize(size, "rainbow-size") ?? undefined,
-      "--rainbow-speed-multiplier": `${speedMultiplier}`,
+      '--rainbow-color': color ? getThemeColor(color, theme) : undefined,
+      '--rainbow-size': getSize(size, 'rainbow-size') ?? undefined,
+      '--rainbow-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Rainbow = factory<RainbowFactory>((_props, ref) => {
-  const props = useProps("Rainbow", defaultProps, _props);
+  const props = useProps('Rainbow', defaultProps, _props);
   const {
     color,
     vars,
@@ -75,7 +75,7 @@ export const Rainbow = factory<RainbowFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<RainbowFactory>({
-    name: "Rainbow",
+    name: 'Rainbow',
     props,
     classes: {
       root: LoaderRainbowRootStyle,
@@ -90,10 +90,10 @@ export const Rainbow = factory<RainbowFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <span className={LoaderRainbowLineStyle} />
     </Box>
   );
 });
 
-Rainbow.displayName = "@raikou/core/Rainbow";
+Rainbow.displayName = '@raikou/core/Rainbow';

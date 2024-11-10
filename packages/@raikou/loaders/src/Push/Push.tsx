@@ -7,23 +7,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderPushRootStyle, LoaderPushBarStyle } from "./Push.css";
+} from '@raikou/core';
+import { LoaderPushBarStyle, LoaderPushRootStyle } from './Push.css';
 
-export type PushStylesNames = "root";
+export type PushStylesNames = 'root';
 export type PushCssVariables = {
-  root: "--push-color" | "--push-size";
+  root: '--push-color' | '--push-size';
 };
 
-export interface PushProps
-  extends BoxProps,
-    StylesApiProps<PushFactory>,
-    ElementProps<"span"> {
+export interface PushProps extends BoxProps, StylesApiProps<PushFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -46,14 +43,14 @@ const varsResolver = createVarsResolver<PushFactory>(
   // @ts-ignore
   (theme, { color, size }) => ({
     root: {
-      "--push-color": color ? getThemeColor(color, theme) : undefined,
-      "--push-size": getSize(size, "push-size") ?? undefined,
+      '--push-color': color ? getThemeColor(color, theme) : undefined,
+      '--push-size': getSize(size, 'push-size') ?? undefined,
     },
-  }),
+  })
 );
 
 export const Push = factory<PushFactory>((_props, ref) => {
-  const props = useProps("Push", defaultProps, _props);
+  const props = useProps('Push', defaultProps, _props);
   const {
     color,
     vars,
@@ -69,7 +66,7 @@ export const Push = factory<PushFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<PushFactory>({
-    name: "Push",
+    name: 'Push',
     props,
     classes: {
       root: LoaderPushRootStyle,
@@ -84,7 +81,7 @@ export const Push = factory<PushFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       {[...Array(10)].map((_, i) => {
         return (
           <span
@@ -101,4 +98,4 @@ export const Push = factory<PushFactory>((_props, ref) => {
   );
 });
 
-Push.displayName = "@raikou/core/Push";
+Push.displayName = '@raikou/core/Push';

@@ -1,19 +1,15 @@
-# Raikou carousel
+# Raikou hero patterns
 
-[![npm](https://img.shields.io/npm/dm/@raikou/carousel)](https://www.npmjs.com/package/@raikou/carousel)
-
-Embla based carousel
-
-[View documentation](https://raikou.dev/)
+Hero Patterns
 
 ## Installation
 
 ```bash
 # With yarn
-yarn add @raikou/core @raikou/hooks @raikou/carousel
+yarn add @raikou/hero-patterns
 
 # With npm
-npm install @raikou/core @raikou/hooks @raikou/carousel
+npm install @raikou/hero-patterns
 ```
 
 ## License

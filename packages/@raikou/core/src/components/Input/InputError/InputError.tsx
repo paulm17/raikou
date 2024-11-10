@@ -12,8 +12,8 @@ import {
   useProps,
   useStyles,
 } from '../../../core';
-import { InputErrorStyle } from '../Input.css';
 import { useInputWrapperContext } from '../InputWrapper.context';
+import { InputErrorStyle } from '../Input.css';
 
 export type InputErrorStylesNames = 'error';
 export type InputErrorCssVariables = {

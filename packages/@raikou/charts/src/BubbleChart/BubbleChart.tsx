@@ -25,8 +25,8 @@ import {
   RaikouColor,
   StylesApiProps,
   Text,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
   useStyles,
 } from '@raikou/core';
 import { GridChartAxisStyle, GridChartRootStyle, GridChartTooltipStyle } from '../grid-chart.css';

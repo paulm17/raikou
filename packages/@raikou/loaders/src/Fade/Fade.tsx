@@ -7,15 +7,14 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
-  RaikouRadius,
   RaikouColor,
+  RaikouRadius,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
+} from '@raikou/core';
 import {
-  LoaderFadeRootStyle,
   LoaderFade1Style,
   LoaderFade2Style,
   LoaderFade3Style,
@@ -24,22 +23,20 @@ import {
   LoaderFade6Style,
   LoaderFade7Style,
   LoaderFade8Style,
-} from "./Fade.css";
+  LoaderFadeRootStyle,
+} from './Fade.css';
 
-export type FadeStylesNames = "root";
+export type FadeStylesNames = 'root';
 export type FadeCssVariables = {
   root:
-    | "--fade-color"
-    | "--fade-size"
-    | "--fade-radius"
-    | "--fade-margin"
-    | "--fade-speed-multiplier";
+    | '--fade-color'
+    | '--fade-size'
+    | '--fade-radius'
+    | '--fade-margin'
+    | '--fade-speed-multiplier';
 };
 
-export interface FadeProps
-  extends BoxProps,
-    StylesApiProps<FadeFactory>,
-    ElementProps<"span"> {
+export interface FadeProps extends BoxProps, StylesApiProps<FadeFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -47,7 +44,7 @@ export interface FadeProps
   radius?: RaikouRadius;
 
   /** Margin between the loader and the indicator, numbers are converted to rem */
-  margin?: React.CSSProperties["margin"];
+  margin?: React.CSSProperties['margin'];
 
   /** Key of `theme.colors` or any valid CSS color, default value is `theme.primaryColor`  */
   indicatorColor?: RaikouColor;
@@ -71,24 +68,24 @@ const defaultProps: Partial<FadeProps> = {
   radius: 2,
   margin: 2,
   speedMultiplier: 1,
-  indicatorColor: "purple",
+  indicatorColor: 'purple',
 };
 
 const varsResolver = createVarsResolver<FadeFactory>(
   // @ts-ignore
   (theme, { color, radius, margin, size, speedMultiplier }) => ({
     root: {
-      "--fade-color": color ? getThemeColor(color, theme) : undefined,
-      "--fade-size": getSize(size, "fade-size") ?? undefined,
-      "--fade-radius": getSize(radius, "fade-radius") ?? undefined,
-      "--fade-margin": getSize(margin, "fade-margin") ?? undefined,
-      "--fade-speed-multiplier": `${speedMultiplier}`,
+      '--fade-color': color ? getThemeColor(color, theme) : undefined,
+      '--fade-size': getSize(size, 'fade-size') ?? undefined,
+      '--fade-radius': getSize(radius, 'fade-radius') ?? undefined,
+      '--fade-margin': getSize(margin, 'fade-margin') ?? undefined,
+      '--fade-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Fade = factory<FadeFactory>((_props, ref) => {
-  const props = useProps("Fade", defaultProps, _props);
+  const props = useProps('Fade', defaultProps, _props);
   const {
     color,
     vars,
@@ -106,7 +103,7 @@ export const Fade = factory<FadeFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<FadeFactory>({
-    name: "Fade",
+    name: 'Fade',
     props,
     classes: {
       root: LoaderFadeRootStyle,
@@ -121,7 +118,7 @@ export const Fade = factory<FadeFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <span className={LoaderFade1Style} />
       <span className={LoaderFade2Style} />
       <span className={LoaderFade3Style} />
@@ -134,4 +131,4 @@ export const Fade = factory<FadeFactory>((_props, ref) => {
   );
 });
 
-Fade.displayName = "@raikou/core/Fade";
+Fade.displayName = '@raikou/core/Fade';

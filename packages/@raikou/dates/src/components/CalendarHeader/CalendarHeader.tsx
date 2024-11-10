@@ -14,7 +14,12 @@ import {
   useProps,
   useStyles,
 } from '@raikou/core';
-import { CalendarHeaderControlIconStyle, CalendarHeaderControlStyle, CalendarHeaderLevelStyle, CalendarHeaderStyle } from './CalendarHeader.css';
+import {
+  CalendarHeaderControlIconStyle,
+  CalendarHeaderControlStyle,
+  CalendarHeaderLevelStyle,
+  CalendarHeaderStyle,
+} from './CalendarHeader.css';
 
 export type CalendarHeaderStylesNames =
   | 'calendarHeader'

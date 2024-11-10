@@ -1,12 +1,10 @@
-import { Badge } from "@raikou/core";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from '@tanstack/react-router';
+import { Badge } from '@raikou/core';
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute('/')({
   component: HomeComponent,
 });
 
 function HomeComponent() {
-  return (
-    <Badge variant="filled">hello</Badge>
-  );
+  return <Badge variant="filled">hello</Badge>;
 }

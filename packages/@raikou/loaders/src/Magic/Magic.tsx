@@ -7,23 +7,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderMagicRootStyle, LoaderMagicBallStyle } from "./Magic.css";
+} from '@raikou/core';
+import { LoaderMagicBallStyle, LoaderMagicRootStyle } from './Magic.css';
 
-export type MagicStylesNames = "root";
+export type MagicStylesNames = 'root';
 export type MagicCssVariables = {
-  root: "--magic-color" | "--magic-size";
+  root: '--magic-color' | '--magic-size';
 };
 
-export interface MagicProps
-  extends BoxProps,
-    StylesApiProps<MagicFactory>,
-    ElementProps<"span"> {
+export interface MagicProps extends BoxProps, StylesApiProps<MagicFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -46,7 +43,7 @@ const defaultProps: Partial<MagicProps> = {
 };
 
 const getNewSize = (size: RaikouSize | (string & {}) | number | undefined) => {
-  if (typeof size === "string") {
+  if (typeof size === 'string') {
     const sizes: Record<RaikouSize, number> = {
       xs: 35,
       sm: 42,
@@ -69,14 +66,14 @@ const varsResolver = createVarsResolver<MagicFactory>(
   // @ts-ignore
   (theme, { color, size }) => ({
     root: {
-      "--magic-color": color ? getThemeColor(color, theme) : undefined,
-      "--magic-size": getSize(size, "magic-size") ?? undefined,
+      '--magic-color': color ? getThemeColor(color, theme) : undefined,
+      '--magic-size': getSize(size, 'magic-size') ?? undefined,
     },
-  }),
+  })
 );
 
 export const Magic = factory<MagicFactory>((_props, ref) => {
-  const props = useProps("Magic", defaultProps, _props);
+  const props = useProps('Magic', defaultProps, _props);
   const {
     color,
     vars,
@@ -92,7 +89,7 @@ export const Magic = factory<MagicFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<MagicFactory>({
-    name: "Magic",
+    name: 'Magic',
     props,
     classes: {
       root: LoaderMagicRootStyle,
@@ -109,7 +106,7 @@ export const Magic = factory<MagicFactory>((_props, ref) => {
   const newSize = getNewSize(size) as number;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       {/* @ts-ignore */}
       {[...Array(Math.round(newSize / 12))].map((_, i) => {
         return (
@@ -128,4 +125,4 @@ export const Magic = factory<MagicFactory>((_props, ref) => {
   );
 });
 
-Magic.displayName = "@raikou/core/Magic";
+Magic.displayName = '@raikou/core/Magic';

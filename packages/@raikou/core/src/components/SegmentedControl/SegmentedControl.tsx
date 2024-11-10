@@ -16,12 +16,19 @@ import {
   RaikouRadius,
   RaikouSize,
   StylesApiProps,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
   useStyles,
 } from '../../core';
 import { FloatingIndicator } from '../FloatingIndicator';
-import { SegmentedControlControlStyle, SegmentedControlIndicatorStyle, SegmentedControlInnerLabelStyle, SegmentedControlInputStyle, SegmentedControlLabelStyle, SegmentedControlRootStyle } from './SegmentedControl.css';
+import {
+  SegmentedControlControlStyle,
+  SegmentedControlIndicatorStyle,
+  SegmentedControlInnerLabelStyle,
+  SegmentedControlInputStyle,
+  SegmentedControlLabelStyle,
+  SegmentedControlRootStyle,
+} from './SegmentedControl.css';
 
 export type SegmentedControlStylesNames =
   | 'root'
@@ -194,7 +201,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>((_props, ref) =
     value,
     defaultValue,
     finalValue: Array.isArray(data)
-      ? _data.find((item) => !item.disabled)?.value ?? (data[0] as any)?.value ?? null
+      ? (_data.find((item) => !item.disabled)?.value ?? (data[0] as any)?.value ?? null)
       : null,
     onChange,
   });

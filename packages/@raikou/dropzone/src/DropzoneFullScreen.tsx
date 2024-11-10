@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import cx from 'clsx';
 import {
   Box,
   BoxProps,
@@ -16,7 +17,6 @@ import {
 import { useDisclosure } from '@raikou/hooks';
 import { Dropzone, DropzoneProps, DropzoneStylesNames, DropzoneVariant } from './Dropzone';
 import { DropzoneFullScreenStyle, DropzoneRootStyle } from './Dropzone.css';
-import cx from 'clsx';
 
 export type DropzoneFullScreenStylesNames = DropzoneStylesNames | 'fullScreen';
 

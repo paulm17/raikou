@@ -1,17 +1,12 @@
-import {
-  ActionIcon,
-  Popover,
-  PopoverDropdown,
-  PopoverTarget,
-} from "@raikou/core";
-import { useDisclosure } from "@raikou/hooks";
-import { dataTableHeaderCellFilterActionIconStyle } from "./DataTableHeaderCellFilter.css";
-import { IconFilter } from "./icons/IconFilter";
-import { IconFilterFilled } from "./icons/IconFilterFilled";
-import type { DataTableColumn } from "./types";
+import { ActionIcon, Popover, PopoverDropdown, PopoverTarget } from '@raikou/core';
+import { useDisclosure } from '@raikou/hooks';
+import { IconFilter } from './icons/IconFilter';
+import { IconFilterFilled } from './icons/IconFilterFilled';
+import type { DataTableColumn } from './types';
+import { dataTableHeaderCellFilterActionIconStyle } from './DataTableHeaderCellFilter.css';
 
 type DataTableHeaderCellFilterProps<T> = {
-  children: DataTableColumn<T>["filter"];
+  children: DataTableColumn<T>['filter'];
   isActive: boolean;
 };
 
@@ -23,14 +18,7 @@ export function DataTableHeaderCellFilter<T>({
   const Icon = isActive ? IconFilterFilled : IconFilter;
 
   return (
-    <Popover
-      withArrow
-      withinPortal
-      shadow="md"
-      opened={isOpen}
-      onClose={close}
-      trapFocus
-    >
+    <Popover withArrow withinPortal shadow="md" opened={isOpen} onClose={close} trapFocus>
       <PopoverTarget>
         <ActionIcon
           className={dataTableHeaderCellFilterActionIconStyle}
@@ -46,7 +34,7 @@ export function DataTableHeaderCellFilter<T>({
         </ActionIcon>
       </PopoverTarget>
       <PopoverDropdown onClick={(e) => e.stopPropagation()}>
-        {typeof children === "function" ? children({ close }) : children}
+        {typeof children === 'function' ? children({ close }) : children}
       </PopoverDropdown>
     </Popover>
   );

@@ -1,15 +1,11 @@
-import { contextMenuOverlayStyle } from "./ContextMenuOverlay.css";
+import { contextMenuOverlayStyle } from './ContextMenuOverlay.css';
 
 export type ContextMenuOverlayProps = React.PropsWithChildren<{
   zIndex: number | undefined;
   onHide: () => void;
 }>;
 
-export function ContextMenuOverlay({
-  zIndex,
-  children,
-  onHide,
-}: ContextMenuOverlayProps) {
+export function ContextMenuOverlay({ zIndex, children, onHide }: ContextMenuOverlayProps) {
   const handleHide = (e: React.MouseEvent) => {
     e.preventDefault();
     onHide();

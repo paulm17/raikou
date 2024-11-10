@@ -23,15 +23,22 @@ import {
   getThemeColor,
   RaikouColor,
   StylesApiProps,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
   useResolvedStylesApi,
   useStyles,
 } from '@raikou/core';
 import { ChartLegend, ChartLegendStylesNames } from '../ChartLegend';
 import { ChartTooltip, ChartTooltipStylesNames } from '../ChartTooltip';
 import { BaseChartStylesNames, GridChartBaseProps } from '../types';
-import { GridChartAxisLabelStyle, GridChartAxisStyle, GridChartContainerStyle, GridChartGridStyle, GridChartRootStyle, GridChartTooltipStyle } from '../grid-chart.css';
+import {
+  GridChartAxisLabelStyle,
+  GridChartAxisStyle,
+  GridChartContainerStyle,
+  GridChartGridStyle,
+  GridChartRootStyle,
+  GridChartTooltipStyle,
+} from '../grid-chart.css';
 
 export interface ScatterChartSeries {
   color: RaikouColor;

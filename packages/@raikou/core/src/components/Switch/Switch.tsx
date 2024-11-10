@@ -20,7 +20,13 @@ import {
 import { InlineInput, InlineInputStylesNames } from '../InlineInput';
 import { useSwitchGroupContext } from './SwitchGroup.context';
 import { SwitchGroup } from './SwitchGroup/SwitchGroup';
-import { SwitchInputStyle, SwitchRootStyle, SwitchThumbStyle, SwitchTrackLabelStyle, SwitchTrackStyle } from './Switch.css';
+import {
+  SwitchInputStyle,
+  SwitchRootStyle,
+  SwitchThumbStyle,
+  SwitchTrackLabelStyle,
+  SwitchTrackStyle,
+} from './Switch.css';
 
 export type SwitchStylesNames =
   | 'root'

@@ -1,10 +1,6 @@
 # Raikou carousel
 
-[![npm](https://img.shields.io/npm/dm/@raikou/carousel)](https://www.npmjs.com/package/@raikou/carousel)
-
 Embla based carousel
-
-[View documentation](https://raikou.dev/)
 
 ## Installation
 

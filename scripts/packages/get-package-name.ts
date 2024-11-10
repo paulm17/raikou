@@ -1,8 +1,8 @@
-const DOCS_PACKAGES = ["demos", "styles-api"];
-const TESTS_PACKAGES = ["tests-core", "tests-dates"];
+const DOCS_PACKAGES = ['demos', 'styles-api'];
+const TESTS_PACKAGES = ['tests-core', 'tests-dates'];
 
 export function getPackageName(input: string) {
-  if (input.startsWith("@")) {
+  if (input.startsWith('@')) {
     return input;
   }
 
@@ -11,12 +11,8 @@ export function getPackageName(input: string) {
   }
 
   if (TESTS_PACKAGES.includes(input)) {
-    return `@raikou-tests/${input.replace("tests-", "")}`;
+    return `@raikou-tests/${input.replace('tests-', '')}`;
   }
-
-  // if (input.startsWith('x-')) {
-  //   return `@mantinex/${input.replace('x-', '')}`;
-  // }
 
   return `@raikou/${input}`;
 }

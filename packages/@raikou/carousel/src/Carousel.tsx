@@ -1,4 +1,5 @@
 import { Children, useCallback, useEffect, useState } from 'react';
+import { EmblaCarouselType, EmblaPluginType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
 import {
   AccordionChevron,
@@ -24,8 +25,16 @@ import { CarouselProvider } from './Carousel.context';
 import { CarouselSlide } from './CarouselSlide/CarouselSlide';
 import { CarouselVariables } from './CarouselVariables/CarouselVariables';
 import { getChevronRotation } from './get-chevron-rotation';
-import { CarouselContainerStyle, CarouselControlsStyle, CarouselControlStyle, CarouselIndicatorsStyle, CarouselIndicatorStyle, CarouselRootStyle, CarouselSlideStyle, CarouselViewportStyle } from './Carousel.css';
-import { EmblaCarouselType, EmblaPluginType } from 'embla-carousel';
+import {
+  CarouselContainerStyle,
+  CarouselControlsStyle,
+  CarouselControlStyle,
+  CarouselIndicatorsStyle,
+  CarouselIndicatorStyle,
+  CarouselRootStyle,
+  CarouselSlideStyle,
+  CarouselViewportStyle,
+} from './Carousel.css';
 
 export type CarouselStylesNames =
   | 'slide'

@@ -12,8 +12,8 @@ import {
   useProps,
   useStyles,
 } from '../../../core';
-import { InputDescriptionStyle } from '../Input.css';
 import { useInputWrapperContext } from '../InputWrapper.context';
+import { InputDescriptionStyle } from '../Input.css';
 
 export type InputDescriptionStylesNames = 'description';
 export type InputDescriptionCssVariables = {

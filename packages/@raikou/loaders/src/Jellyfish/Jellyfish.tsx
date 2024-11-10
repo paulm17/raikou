@@ -7,26 +7,23 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import {
-  LoaderJellyfishRootStyle,
-  LoaderJellyfishRingStyle,
-} from "./Jellyfish.css";
+} from '@raikou/core';
+import { LoaderJellyfishRingStyle, LoaderJellyfishRootStyle } from './Jellyfish.css';
 
-export type JellyfishStylesNames = "root";
+export type JellyfishStylesNames = 'root';
 export type JellyfishCssVariables = {
-  root: "--jellyfish-color" | "--jellyfish-size";
+  root: '--jellyfish-color' | '--jellyfish-size';
 };
 
 export interface JellyfishProps
   extends BoxProps,
     StylesApiProps<JellyfishFactory>,
-    ElementProps<"span"> {
+    ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -52,14 +49,14 @@ const varsResolver = createVarsResolver<JellyfishFactory>(
   // @ts-ignore
   (theme, { color, size }) => ({
     root: {
-      "--jellyfish-color": color ? getThemeColor(color, theme) : undefined,
-      "--jellyfish-size": getSize(size, "jellyfish-size") ?? undefined,
+      '--jellyfish-color': color ? getThemeColor(color, theme) : undefined,
+      '--jellyfish-size': getSize(size, 'jellyfish-size') ?? undefined,
     },
-  }),
+  })
 );
 
 export const Jellyfish = factory<JellyfishFactory>((_props, ref) => {
-  const props = useProps("Jellyfish", defaultProps, _props);
+  const props = useProps('Jellyfish', defaultProps, _props);
   const {
     color,
     vars,
@@ -75,7 +72,7 @@ export const Jellyfish = factory<JellyfishFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<JellyfishFactory>({
-    name: "Jellyfish",
+    name: 'Jellyfish',
     props,
     classes: {
       root: LoaderJellyfishRootStyle,
@@ -90,7 +87,7 @@ export const Jellyfish = factory<JellyfishFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       {[...Array(6)].map((_, i) => {
         return (
           <span
@@ -108,4 +105,4 @@ export const Jellyfish = factory<JellyfishFactory>((_props, ref) => {
   );
 });
 
-Jellyfish.displayName = "@raikou/core/Jellyfish";
+Jellyfish.displayName = '@raikou/core/Jellyfish';

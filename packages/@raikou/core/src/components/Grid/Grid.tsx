@@ -13,9 +13,9 @@ import {
   useStyles,
 } from '../../core';
 import { GridBreakpoints, GridProvider } from './Grid.context';
-import { GridColStyle, GridContainerStyle, GridInnerStyle, GridRootStyle } from './Grid.css';
 import { GridCol } from './GridCol/GridCol';
 import { GridVariables } from './GridVariables';
+import { GridColStyle, GridContainerStyle, GridInnerStyle, GridRootStyle } from './Grid.css';
 
 export type GridStylesNames = 'root' | 'col' | 'inner' | 'container';
 export type GridCssVariables = {

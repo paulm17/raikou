@@ -1,8 +1,8 @@
-export { Flapper } from "./Flapper";
+export { Flapper } from './Flapper';
 
 export type {
   FlapperProps,
   FlapperStylesNames,
   FlapperCssVariables,
   FlapperFactory,
-} from "./Flapper";
+} from './Flapper';

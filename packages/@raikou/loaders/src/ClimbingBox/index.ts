@@ -1,8 +1,8 @@
-export { ClimbingBox } from "./ClimbingBox";
+export { ClimbingBox } from './ClimbingBox';
 
 export type {
   ClimbingBoxProps,
   ClimbingBoxStylesNames,
   ClimbingBoxCssVariables,
   ClimbingBoxFactory,
-} from "./ClimbingBox";
+} from './ClimbingBox';

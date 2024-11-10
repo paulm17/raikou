@@ -23,8 +23,8 @@ import {
   getThemeColor,
   RaikouColor,
   StylesApiProps,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
   useResolvedStylesApi,
   useStyles,
 } from '@raikou/core';
@@ -36,6 +36,7 @@ export interface RadarChartSeries {
   color: RaikouColor;
   strokeColor?: RaikouColor;
   opacity?: number;
+  label?: string;
 }
 
 export type RadarChartStylesNames = 'root' | 'container';

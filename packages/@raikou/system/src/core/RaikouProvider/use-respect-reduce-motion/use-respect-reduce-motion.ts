@@ -1,4 +1,4 @@
-import { useIsomorphicEffect } from "@raikou/hooks";
+import { useIsomorphicEffect } from '@raikou/hooks';
 
 interface UseRespectReduceMotionOptions {
   respectReducedMotion: boolean;
@@ -11,7 +11,7 @@ export function useRespectReduceMotion({
 }: UseRespectReduceMotionOptions) {
   useIsomorphicEffect(() => {
     if (respectReducedMotion) {
-      getRootElement()?.setAttribute("data-respect-reduced-motion", "true");
+      getRootElement()?.setAttribute('data-respect-reduced-motion', 'true');
     }
   }, [respectReducedMotion]);
 }

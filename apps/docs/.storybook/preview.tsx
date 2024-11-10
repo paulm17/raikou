@@ -1,11 +1,18 @@
 import React from 'react';
 import type { Preview } from '@storybook/react';
-import { RaikouProvider, useDirection } from "@raikou/system";
-import { emotionTransform, RaikouEmotionProvider } from "@raikou/emotion";
-import "@raikou/system/styles.css";
-import "@stylefusion/react/styles.css";
+import { emotionTransform, RaikouEmotionProvider } from '@raikou/emotion';
+import { RaikouProvider, useDirection } from '@raikou/system';
+
+import '@raikou/system/styles.css';
+import '@stylefusion/react/styles.css';
+
+import {
+  IconMoonFilled,
+  IconSunFilled,
+  IconTextDirectionLtr,
+  IconTextDirectionRtl,
+} from '@tabler/icons-react';
 import { useTheme } from 'next-themes';
-import { IconMoonFilled, IconSunFilled, IconTextDirectionLtr, IconTextDirectionRtl } from '@tabler/icons-react';
 import { ActionIcon } from '@raikou/core';
 
 function ColorSchemeWrapper({ children }: { children: React.ReactNode }) {
@@ -19,7 +26,7 @@ function ColorSchemeWrapper({ children }: { children: React.ReactNode }) {
         pos="fixed"
         bottom={20}
         right={20}
-        onClick={theme === "light" ? () => setTheme("dark") : () => setTheme("light")}
+        onClick={theme === 'light' ? () => setTheme('dark') : () => setTheme('light')}
         style={{ zIndex: 1000 }}
         aria-label="Toggle theme color direction"
       >
@@ -58,9 +65,7 @@ const preview: Preview = {
     (renderStory) => <ColorSchemeWrapper>{renderStory()}</ColorSchemeWrapper>,
     (renderStory) => (
       <RaikouProvider stylesTransform={emotionTransform}>
-        <RaikouEmotionProvider>
-          {renderStory()}
-        </RaikouEmotionProvider>
+        <RaikouEmotionProvider>{renderStory()}</RaikouEmotionProvider>
       </RaikouProvider>
     ),
   ],

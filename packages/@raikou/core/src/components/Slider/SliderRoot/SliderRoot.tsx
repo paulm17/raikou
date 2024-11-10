@@ -1,12 +1,5 @@
 import { forwardRef } from 'react';
-import {
-  Box,
-  BoxProps,
-  ElementProps,
-  RaikouColor,
-  RaikouRadius,
-  RaikouSize,
-} from '../../../core';
+import { Box, BoxProps, ElementProps, RaikouColor, RaikouRadius, RaikouSize } from '../../../core';
 import { useSliderContext } from '../Slider.context';
 
 export interface SliderRootProps extends BoxProps, ElementProps<'div'> {

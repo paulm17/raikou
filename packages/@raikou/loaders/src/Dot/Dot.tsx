@@ -7,27 +7,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import {
-  LoaderDot1Style,
-  LoaderDot2Style,
-  LoaderDotLoaderStyle,
-} from "./Dot.css";
+} from '@raikou/core';
+import { LoaderDot1Style, LoaderDot2Style, LoaderDotLoaderStyle } from './Dot.css';
 
-export type DotStylesNames = "root";
+export type DotStylesNames = 'root';
 export type DotCssVariables = {
-  root: "--dot-color" | "--dot-size" | "--dot-speed-multiplier";
+  root: '--dot-color' | '--dot-size' | '--dot-speed-multiplier';
 };
 
-export interface DotProps
-  extends BoxProps,
-    StylesApiProps<DotFactory>,
-    ElementProps<"span"> {
+export interface DotProps extends BoxProps, StylesApiProps<DotFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -54,15 +47,15 @@ const varsResolver = createVarsResolver<DotFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--dot-color": color ? getThemeColor(color, theme) : undefined,
-      "--dot-size": getSize(size, "dot-size") ?? undefined,
-      "--dot-speed-multiplier": `${speedMultiplier}`,
+      '--dot-color': color ? getThemeColor(color, theme) : undefined,
+      '--dot-size': getSize(size, 'dot-size') ?? undefined,
+      '--dot-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Dot = factory<DotFactory>((_props, ref) => {
-  const props = useProps("Dot", defaultProps, _props);
+  const props = useProps('Dot', defaultProps, _props);
   const {
     color,
     vars,
@@ -79,7 +72,7 @@ export const Dot = factory<DotFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<DotFactory>({
-    name: "Dot",
+    name: 'Dot',
     props,
     classes: {
       root: LoaderDotLoaderStyle,
@@ -94,11 +87,11 @@ export const Dot = factory<DotFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <span className={LoaderDot1Style} />
       <span className={LoaderDot2Style} />
     </Box>
   );
 });
 
-Dot.displayName = "@raikou/core/Dot";
+Dot.displayName = '@raikou/core/Dot';

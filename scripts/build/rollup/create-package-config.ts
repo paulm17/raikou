@@ -27,7 +27,7 @@ export function createPackageConfig(packagePath: string): RollupOptions {
     replace({ preventAssignment: true }),
     postcss({
       extract: true,
-    })
+    }),
   ];
 
   return {

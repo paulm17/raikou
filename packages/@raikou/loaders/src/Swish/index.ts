@@ -1,8 +1,3 @@
-export { Swish } from "./Swish";
+export { Swish } from './Swish';
 
-export type {
-  SwishProps,
-  SwishStylesNames,
-  SwishCssVariables,
-  SwishFactory,
-} from "./Swish";
+export type { SwishProps, SwishStylesNames, SwishCssVariables, SwishFactory } from './Swish';

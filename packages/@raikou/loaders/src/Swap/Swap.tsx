@@ -1,3 +1,4 @@
+import { Fragment } from 'react/jsx-runtime';
 import {
   Box,
   BoxProps,
@@ -7,24 +8,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderSwapRootStyle, LoaderSwapBallStyle } from "./Swap.css";
-import { Fragment } from "react/jsx-runtime";
+} from '@raikou/core';
+import { LoaderSwapBallStyle, LoaderSwapRootStyle } from './Swap.css';
 
-export type SwapStylesNames = "root";
+export type SwapStylesNames = 'root';
 export type SwapCssVariables = {
-  root: "--swap-color" | "--swap-size";
+  root: '--swap-color' | '--swap-size';
 };
 
-export interface SwapProps
-  extends BoxProps,
-    StylesApiProps<SwapFactory>,
-    ElementProps<"span"> {
+export interface SwapProps extends BoxProps, StylesApiProps<SwapFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -47,7 +44,7 @@ const defaultProps: Partial<SwapProps> = {
 };
 
 const getNewSize = (size: RaikouSize | (string & {}) | number | undefined) => {
-  if (typeof size === "string") {
+  if (typeof size === 'string') {
     const sizes: Record<RaikouSize, number> = {
       xs: 20,
       sm: 24,
@@ -70,14 +67,14 @@ const varsResolver = createVarsResolver<SwapFactory>(
   // @ts-ignore
   (theme, { color, size }) => ({
     root: {
-      "--swap-color": color ? getThemeColor(color, theme) : undefined,
-      "--swap-size": getSize(size, "swap-size") ?? undefined,
+      '--swap-color': color ? getThemeColor(color, theme) : undefined,
+      '--swap-size': getSize(size, 'swap-size') ?? undefined,
     },
-  }),
+  })
 );
 
 export const Swap = factory<SwapFactory>((_props, ref) => {
-  const props = useProps("Swap", defaultProps, _props);
+  const props = useProps('Swap', defaultProps, _props);
   const {
     color,
     vars,
@@ -93,7 +90,7 @@ export const Swap = factory<SwapFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<SwapFactory>({
-    name: "Swap",
+    name: 'Swap',
     props,
     classes: {
       root: LoaderSwapRootStyle,
@@ -110,7 +107,7 @@ export const Swap = factory<SwapFactory>((_props, ref) => {
   const newSize = getNewSize(size) as number;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       {[...Array(3)].map((_, i) => {
         const x = i * (newSize / 4 + newSize / 8);
         const y = newSize / 2 - newSize / 8;
@@ -160,4 +157,4 @@ export const Swap = factory<SwapFactory>((_props, ref) => {
   );
 });
 
-Swap.displayName = "@raikou/core/Swap";
+Swap.displayName = '@raikou/core/Swap';

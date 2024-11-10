@@ -62,14 +62,8 @@ export function getCSSColorVariables({
     [`color-${name}-filled-hover`]: `var(--raikou-color-${name}-${
       primaryShade === 9 ? 8 : primaryShade + 1
     })`,
-    [`color-${name}-light`]: alpha(
-      theme.colors[color][Math.max(0, primaryShade - 2)],
-      0.15
-    ),
-    [`color-${name}-light-hover`]: alpha(
-      theme.colors[color][Math.max(0, primaryShade - 2)],
-      0.2
-    ),
+    [`color-${name}-light`]: alpha(theme.colors[color][Math.max(0, primaryShade - 2)], 0.15),
+    [`color-${name}-light-hover`]: alpha(theme.colors[color][Math.max(0, primaryShade - 2)], 0.2),
     [`color-${name}-light-color`]: `var(--raikou-color-${name}-${Math.max(primaryShade - 5, 0)})`,
     [`color-${name}-outline`]: `var(--raikou-color-${name}-${Math.max(primaryShade - 4, 0)})`,
     [`color-${name}-outline-hover`]: alpha(

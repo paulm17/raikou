@@ -1,16 +1,14 @@
-import { forwardRef } from "react";
-import { render, tests } from "@raikou-tests/core";
-import { defaultLoaders, Loader, LoaderProps, LoaderStylesNames } from "./Comb";
-import { RaikouLoaderComponent } from "./Loader.types";
+import { forwardRef } from 'react';
+import { render, tests } from '@raikou-tests/core';
+import { defaultLoaders, Loader, LoaderProps, LoaderStylesNames } from './Comb';
+import { RaikouLoaderComponent } from './Loader.types';
 
-const customLoader: RaikouLoaderComponent = forwardRef(() => (
-  <div data-custom-loader />
-));
-customLoader.displayName = "CustomLoader";
+const customLoader: RaikouLoaderComponent = forwardRef(() => <div data-custom-loader />);
+customLoader.displayName = 'CustomLoader';
 
 const defaultProps: LoaderProps = {};
 
-describe("@raikou/core/Loader", () => {
+describe('@raikou/core/Loader', () => {
   tests.itSupportsSystemProps<LoaderProps, LoaderStylesNames>({
     component: Loader,
     props: defaultProps,
@@ -24,11 +22,11 @@ describe("@raikou/core/Loader", () => {
     classes: true,
     id: true,
     refType: HTMLSpanElement,
-    displayName: "@raikou/core/Loader",
-    stylesApiSelectors: ["root"],
+    displayName: '@raikou/core/Loader',
+    stylesApiSelectors: ['root'],
   });
 
-  it("supports custom loaders", () => {
+  it('supports custom loaders', () => {
     const { container } = render(
       <Loader
         type="custom"
@@ -36,35 +34,35 @@ describe("@raikou/core/Loader", () => {
           ...defaultLoaders,
           custom: customLoader,
         }}
-      />,
+      />
     );
-    expect(container.querySelector("[data-custom-loader]")).toBeInTheDocument();
+    expect(container.querySelector('[data-custom-loader]')).toBeInTheDocument();
   });
 
-  it("supports custom loaders on RaikouProvider", () => {
+  it('supports custom loaders on RaikouProvider', () => {
     const { container } = render(<Loader />, {
       components: {
         Loader: Loader.extend({
           defaultProps: {
-            type: "custom",
+            type: 'custom',
             loaders: { ...defaultLoaders, custom: customLoader },
           },
         }),
       },
     });
 
-    expect(container.querySelector("[data-custom-loader]")).toBeInTheDocument();
+    expect(container.querySelector('[data-custom-loader]')).toBeInTheDocument();
   });
 
-  it("sets data-size attribute", () => {
+  it('sets data-size attribute', () => {
     const { container, rerender } = render(<Loader size="xl" />);
     expect(container.querySelector('[data-size="xl"]')).toBeInTheDocument();
 
     rerender(<Loader size={100} />);
-    expect(container.querySelector("[data-size]")).not.toBeInTheDocument();
+    expect(container.querySelector('[data-size]')).not.toBeInTheDocument();
   });
 
-  it("exposes defaultLoaders as static property", () => {
+  it('exposes defaultLoaders as static property', () => {
     expect(Loader.defaultLoaders).toStrictEqual(defaultLoaders);
   });
 });

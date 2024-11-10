@@ -26,17 +26,24 @@ import {
   Factory,
   getThemeColor,
   StylesApiProps,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
   useResolvedStylesApi,
   useStyles,
 } from '@raikou/core';
-import { BarLabel } from '../BarChart/BarChart';
+import { BarLabel } from '../BarChart/BarLabel';
 import { ChartLegend, ChartLegendStylesNames } from '../ChartLegend';
 import { ChartTooltip, ChartTooltipStylesNames } from '../ChartTooltip';
 import { PointLabel } from '../PointLabel/PointLabel';
 import type { BaseChartStylesNames, ChartSeries, GridChartBaseProps } from '../types';
-import { GridChartAxisLabelStyle, GridChartAxisStyle, GridChartContainerStyle, GridChartGridStyle, GridChartRootStyle, GridChartTooltipStyle } from '../grid-chart.css';
+import {
+  GridChartAxisLabelStyle,
+  GridChartAxisStyle,
+  GridChartContainerStyle,
+  GridChartGridStyle,
+  GridChartRootStyle,
+  GridChartTooltipStyle,
+} from '../grid-chart.css';
 
 export type CompositeChartCurveType =
   | 'bump'
@@ -293,6 +300,7 @@ export const CompositeChart = factory<CompositeChartFactory>((_props, ref) => {
       return (
         <Area
           {...getStyles('area')}
+          key={item.name}
           name={item.name}
           type={curveType}
           dataKey={item.name}

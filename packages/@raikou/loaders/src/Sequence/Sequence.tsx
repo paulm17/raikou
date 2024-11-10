@@ -7,28 +7,28 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
+} from '@raikou/core';
 import {
   LoaderSequenceCubeSideStyle,
   LoaderSequenceCubeStyle,
   LoaderSequenceCubeWrapperStyle,
   LoaderSequenceRootStyle,
-} from "./Sequence.css";
+} from './Sequence.css';
 
-export type SequenceStylesNames = "root";
+export type SequenceStylesNames = 'root';
 export type SequenceCssVariables = {
-  root: "--sequence-color" | "--sequence-size";
+  root: '--sequence-color' | '--sequence-size';
 };
 
 export interface SequenceProps
   extends BoxProps,
     StylesApiProps<SequenceFactory>,
-    ElementProps<"span"> {
+    ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -51,7 +51,7 @@ const defaultProps: Partial<SequenceProps> = {
 };
 
 const getNewSize = (size: RaikouSize | (string & {}) | number | undefined) => {
-  if (typeof size === "string") {
+  if (typeof size === 'string') {
     const sizes: Record<RaikouSize, number> = {
       xs: 20,
       sm: 24,
@@ -74,14 +74,14 @@ const varsResolver = createVarsResolver<SequenceFactory>(
   // @ts-ignore
   (theme, { color, size }) => ({
     root: {
-      "--sequence-color": color ? getThemeColor(color, theme) : undefined,
-      "--sequence-size": getSize(size, "sequence-size") ?? undefined,
+      '--sequence-color': color ? getThemeColor(color, theme) : undefined,
+      '--sequence-size': getSize(size, 'sequence-size') ?? undefined,
     },
-  }),
+  })
 );
 
 export const Sequence = factory<SequenceFactory>((_props, ref) => {
-  const props = useProps("Sequence", defaultProps, _props);
+  const props = useProps('Sequence', defaultProps, _props);
   const {
     color,
     vars,
@@ -97,7 +97,7 @@ export const Sequence = factory<SequenceFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<SequenceFactory>({
-    name: "Sequence",
+    name: 'Sequence',
     props,
     classes: {
       root: LoaderSequenceRootStyle,
@@ -114,7 +114,7 @@ export const Sequence = factory<SequenceFactory>((_props, ref) => {
   const newSize = getNewSize(size) as number;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       {[...Array(5)].map((_, i) => {
         return (
           <span
@@ -144,4 +144,4 @@ export const Sequence = factory<SequenceFactory>((_props, ref) => {
   );
 });
 
-Sequence.displayName = "@raikou/core/Sequence";
+Sequence.displayName = '@raikou/core/Sequence';

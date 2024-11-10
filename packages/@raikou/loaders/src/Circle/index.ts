@@ -1,8 +1,3 @@
-export { Circle } from "./Circle";
+export { Circle } from './Circle';
 
-export type {
-  CircleProps,
-  CircleStylesNames,
-  CircleCssVariables,
-  CircleFactory,
-} from "./Circle";
+export type { CircleProps, CircleStylesNames, CircleCssVariables, CircleFactory } from './Circle';

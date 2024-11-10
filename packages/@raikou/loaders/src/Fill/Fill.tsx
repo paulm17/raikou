@@ -7,23 +7,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderFillPlaneStyle, LoaderFillRootStyle } from "./Fill.css";
+} from '@raikou/core';
+import { LoaderFillPlaneStyle, LoaderFillRootStyle } from './Fill.css';
 
-export type FillStylesNames = "root";
+export type FillStylesNames = 'root';
 export type FillCssVariables = {
-  root: "--fill-color" | "--fill-size";
+  root: '--fill-color' | '--fill-size';
 };
 
-export interface FillProps
-  extends BoxProps,
-    StylesApiProps<FillFactory>,
-    ElementProps<"span"> {
+export interface FillProps extends BoxProps, StylesApiProps<FillFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -46,14 +43,14 @@ const varsResolver = createVarsResolver<FillFactory>(
   // @ts-ignore
   (theme, { color, size }) => ({
     root: {
-      "--fill-color": color ? getThemeColor(color, theme) : undefined,
-      "--fill-size": getSize(size, "fill-size") ?? undefined,
+      '--fill-color': color ? getThemeColor(color, theme) : undefined,
+      '--fill-size': getSize(size, 'fill-size') ?? undefined,
     },
-  }),
+  })
 );
 
 export const Fill = factory<FillFactory>((_props, ref) => {
-  const props = useProps("Fill", defaultProps, _props);
+  const props = useProps('Fill', defaultProps, _props);
   const {
     color,
     vars,
@@ -69,7 +66,7 @@ export const Fill = factory<FillFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<FillFactory>({
-    name: "Fill",
+    name: 'Fill',
     props,
     classes: {
       root: LoaderFillRootStyle,
@@ -84,10 +81,10 @@ export const Fill = factory<FillFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <span className={LoaderFillPlaneStyle} />
     </Box>
   );
 });
 
-Fill.displayName = "@raikou/core/Fill";
+Fill.displayName = '@raikou/core/Fill';

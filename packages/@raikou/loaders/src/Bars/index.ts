@@ -1,8 +1,3 @@
-export { Bars } from "./Bars";
+export { Bars } from './Bars';
 
-export type {
-  BarsProps,
-  BarsStylesNames,
-  BarsCssVariables,
-  BarsFactory,
-} from "./Bars";
+export type { BarsProps, BarsStylesNames, BarsCssVariables, BarsFactory } from './Bars';

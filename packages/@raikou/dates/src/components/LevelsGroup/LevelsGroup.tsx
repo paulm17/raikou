@@ -37,7 +37,7 @@ export const LevelsGroup = factory<LevelsGroupFactory>((_props, ref) => {
   const getStyles = useStyles<LevelsGroupFactory>({
     name: __staticSelector || 'LevelsGroup',
     classes: {
-      levelsGroup: LevelsGroupStyle
+      levelsGroup: LevelsGroupStyle,
     },
     props,
     className,

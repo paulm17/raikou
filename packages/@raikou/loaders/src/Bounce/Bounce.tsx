@@ -7,27 +7,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import {
-  LoaderBounce1Style,
-  LoaderBounce2Style,
-  LoaderBounceLoaderStyle,
-} from "./Bounce.css";
+} from '@raikou/core';
+import { LoaderBounce1Style, LoaderBounce2Style, LoaderBounceLoaderStyle } from './Bounce.css';
 
-export type BounceStylesNames = "root";
+export type BounceStylesNames = 'root';
 export type BounceCssVariables = {
-  root: "--bounce-color" | "--bounce-size" | "--bounce-speed-multiplier";
+  root: '--bounce-color' | '--bounce-size' | '--bounce-speed-multiplier';
 };
 
-export interface BounceProps
-  extends BoxProps,
-    StylesApiProps<BounceFactory>,
-    ElementProps<"span"> {
+export interface BounceProps extends BoxProps, StylesApiProps<BounceFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -54,15 +47,15 @@ const varsResolver = createVarsResolver<BounceFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--bounce-color": color ? getThemeColor(color, theme) : undefined,
-      "--bounce-size": getSize(size, "bounce-size") ?? undefined,
-      "--bounce-speed-multiplier": `${speedMultiplier}`,
+      '--bounce-color': color ? getThemeColor(color, theme) : undefined,
+      '--bounce-size': getSize(size, 'bounce-size') ?? undefined,
+      '--bounce-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Bounce = factory<BounceFactory>((_props, ref) => {
-  const props = useProps("Bounce", defaultProps, _props);
+  const props = useProps('Bounce', defaultProps, _props);
   const {
     color,
     vars,
@@ -79,7 +72,7 @@ export const Bounce = factory<BounceFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<BounceFactory>({
-    name: "Bounce",
+    name: 'Bounce',
     props,
     classes: {
       root: LoaderBounceLoaderStyle,
@@ -94,11 +87,11 @@ export const Bounce = factory<BounceFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <span className={LoaderBounce1Style} />
       <span className={LoaderBounce2Style} />
     </Box>
   );
 });
 
-Bounce.displayName = "@raikou/core/Bounce";
+Bounce.displayName = '@raikou/core/Bounce';

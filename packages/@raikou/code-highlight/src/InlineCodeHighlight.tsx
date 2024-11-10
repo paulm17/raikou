@@ -44,7 +44,7 @@ export const InlineCodeHighlight = factory<InlineCodeHighlightFactory>((_props, 
     name: 'InlineCodeHighlight',
     props,
     classes: {
-      code: cx(CodeHighlightCodeStyle, CodeHighlightThemeStyle)
+      code: cx(CodeHighlightCodeStyle, CodeHighlightThemeStyle),
     },
     className,
     style,

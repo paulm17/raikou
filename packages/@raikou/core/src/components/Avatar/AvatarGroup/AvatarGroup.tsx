@@ -11,8 +11,8 @@ import {
   useProps,
   useStyles,
 } from '../../../core';
-import { AvatarGroupStyle } from '../Avatar.css';
 import { AvatarGroupProvider } from './AvatarGroup.context';
+import { AvatarGroupStyle } from '../Avatar.css';
 
 export type AvatarGroupStylesNames = 'group';
 export type AvatarGroupCssVariables = {

@@ -86,7 +86,7 @@ export const Affix = factory<AffixFactory>((_props, ref) => {
   const getStyles = useStyles<AffixFactory>({
     name: 'Affix',
     classes: {
-      root: AffixRootStyle
+      root: AffixRootStyle,
     },
     props,
     className,

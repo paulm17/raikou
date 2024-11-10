@@ -1,29 +1,29 @@
-import { css, keyframes } from "@stylefusion/react";
+import { css, keyframes } from '@stylefusion/react';
 
 const scaleLoaderAnimation = keyframes({
-  "0%": { transform: "scaley(1.0)" },
-  "50%": { transform: "scaley(0.4)" },
-  "100%": { transform: "scaley(1.0)" },
+  '0%': { transform: 'scaley(1.0)' },
+  '50%': { transform: 'scaley(0.4)' },
+  '100%': { transform: 'scaley(1.0)' },
 });
 
 export const LoaderScaleRootStyle = css({
-  "--scale-size-xs": "8px",
-  "--scale-size-sm": "9px",
-  "--scale-size-md": "15px",
-  "--scale-size-lg": "18px",
-  "--scale-size-xl": "24px",
-  "--scale-size": "var(--scale-size-md)",
-  "--scale-color": "var(--raikou-primary-color-filled)",
-  display: "inherit",
+  '--scale-size-xs': '8px',
+  '--scale-size-sm': '9px',
+  '--scale-size-md': '15px',
+  '--scale-size-lg': '18px',
+  '--scale-size-xl': '24px',
+  '--scale-size': 'var(--scale-size-md)',
+  '--scale-color': 'var(--raikou-primary-color-filled)',
+  display: 'inherit',
 });
 
 const LoaderScaleStyle = {
-  backgroundColor: "var(--scale-color)",
-  width: "calc(var(--scale-size) / 8.75)",
-  height: "var(--scale-size)",
-  margin: "var(--scale-margin)",
-  borderRadius: "var(--scale-radius)",
-  display: "inline-block",
+  backgroundColor: 'var(--scale-color)',
+  width: 'calc(var(--scale-size) / 8.75)',
+  height: 'var(--scale-size)',
+  margin: 'var(--scale-margin)',
+  borderRadius: 'var(--scale-radius)',
+  display: 'inline-block',
 };
 
 export const LoaderScale1Style = css({

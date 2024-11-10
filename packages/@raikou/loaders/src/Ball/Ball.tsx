@@ -7,23 +7,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderBallStyle, LoaderBallRootStyle } from "./Ball.css";
+} from '@raikou/core';
+import { LoaderBallRootStyle, LoaderBallStyle } from './Ball.css';
 
-export type BallStylesNames = "root";
+export type BallStylesNames = 'root';
 export type BallCssVariables = {
-  root: "--ball-color" | "--ball-size" | "--ball-speed-multiplier";
+  root: '--ball-color' | '--ball-size' | '--ball-speed-multiplier';
 };
 
-export interface BallProps
-  extends BoxProps,
-    StylesApiProps<BallFactory>,
-    ElementProps<"span"> {
+export interface BallProps extends BoxProps, StylesApiProps<BallFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -50,15 +47,15 @@ const varsResolver = createVarsResolver<BallFactory>(
   // @ts-ignore
   (theme, { color, size, speedMultiplier }) => ({
     root: {
-      "--ball-color": color ? getThemeColor(color, theme) : undefined,
-      "--ball-size": getSize(size, "ball-size") ?? undefined,
-      "--ball-speed-multiplier": `${speedMultiplier}`,
+      '--ball-color': color ? getThemeColor(color, theme) : undefined,
+      '--ball-size': getSize(size, 'ball-size') ?? undefined,
+      '--ball-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Ball = factory<BallFactory>((_props, ref) => {
-  const props = useProps("Ball", defaultProps, _props);
+  const props = useProps('Ball', defaultProps, _props);
   const {
     color,
     vars,
@@ -75,7 +72,7 @@ export const Ball = factory<BallFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<BallFactory>({
-    name: "Ball",
+    name: 'Ball',
     props,
     classes: {
       root: LoaderBallRootStyle,
@@ -90,10 +87,10 @@ export const Ball = factory<BallFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <span className={LoaderBallStyle} />
     </Box>
   );
 });
 
-Ball.displayName = "@raikou/core/Ball";
+Ball.displayName = '@raikou/core/Ball';

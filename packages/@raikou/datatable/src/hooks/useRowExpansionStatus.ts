@@ -1,10 +1,7 @@
-import { useTimeout } from "@raikou/hooks";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
+import { useTimeout } from '@raikou/hooks';
 
-export function useRowExpansionStatus(
-  open: boolean,
-  transitionDuration?: number,
-) {
+export function useRowExpansionStatus(open: boolean, transitionDuration?: number) {
   const [expanded, setExpanded] = useState(open);
   const [visible, setVisible] = useState(open);
 

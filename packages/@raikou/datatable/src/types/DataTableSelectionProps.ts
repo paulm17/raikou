@@ -1,5 +1,5 @@
-import type { CheckboxProps, RaikouStyleProp } from "@raikou/core";
-import type { DataTableSelectionTrigger } from "./DataTableSelectionTrigger";
+import type { CheckboxProps, RaikouStyleProp } from '@raikou/core';
+import type { DataTableSelectionTrigger } from './DataTableSelectionTrigger';
 
 export type DataTableSelectionProps<T = Record<string, unknown>> =
   | {
@@ -57,10 +57,7 @@ export type DataTableSelectionProps<T = Record<string, unknown>> =
        * A function used to determine additional props of the row selection checkboxes.
        * Accepts the current record and its index as arguments and returns an object.
        */
-      getRecordSelectionCheckboxProps?: (
-        record: T,
-        index: number,
-      ) => CheckboxProps;
+      getRecordSelectionCheckboxProps?: (record: T, index: number) => CheckboxProps;
 
       /**
        * Additional props for the header checkbox that toggles selection of all records.

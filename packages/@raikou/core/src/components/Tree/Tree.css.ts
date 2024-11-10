@@ -1,10 +1,10 @@
-import { css } from "@stylefusion/react";
+import { css } from '@stylefusion/react';
 
 export const TreeRootStyle = css({
-  "--level-offset": "var(--raikou-spacing-lg)",
+  '--level-offset': 'var(--raikou-spacing-lg)',
   margin: 0,
   padding: 0,
-  userSelect: "none",
+  userSelect: 'none',
 });
 
 export const TreeSubtreeStyle = css({
@@ -13,29 +13,29 @@ export const TreeSubtreeStyle = css({
 });
 
 export const TreeLabelStyle = css(({ theme }) => ({
-  paddingInlineStart: "var(--label-offset)",
+  paddingInlineStart: 'var(--label-offset)',
 
-  "&:_where([data-selected])": {
-    ...theme.applyStyles("light", {
+  '&:_where([data-selected])': {
+    ...theme.applyStyles('light', {
       backgroundColor: theme.colors.gray[1],
     }),
-    ...theme.applyStyles("dark", {
+    ...theme.applyStyles('dark', {
       backgroundColor: theme.colors.gray[5],
     }),
   },
 }));
 
 export const TreeNodeStyle = css({
-  cursor: "pointer",
-  listStyle: "none",
+  cursor: 'pointer',
+  listStyle: 'none',
   margin: 0,
   padding: 0,
   outline: 0,
 
-  "&:focus-visible": {
+  '&:focus-visible': {
     [`.${TreeLabelStyle}`]: {
-      outline: "2px solid var(--raikou-primary-color-filled)",
-      outlineOffset: "2px",
+      outline: '2px solid var(--raikou-primary-color-filled)',
+      outlineOffset: '2px',
     },
   },
 });

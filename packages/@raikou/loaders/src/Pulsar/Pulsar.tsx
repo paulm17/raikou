@@ -7,23 +7,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderPulsarRootStyle, LoaderPulsarBallStyle } from "./Pulsar.css";
+} from '@raikou/core';
+import { LoaderPulsarBallStyle, LoaderPulsarRootStyle } from './Pulsar.css';
 
-export type PulsarStylesNames = "root";
+export type PulsarStylesNames = 'root';
 export type PulsarCssVariables = {
-  root: "--pulsar-color" | "--pulsar-size";
+  root: '--pulsar-color' | '--pulsar-size';
 };
 
-export interface PulsarProps
-  extends BoxProps,
-    StylesApiProps<PulsarFactory>,
-    ElementProps<"span"> {
+export interface PulsarProps extends BoxProps, StylesApiProps<PulsarFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -46,7 +43,7 @@ const defaultProps: Partial<PulsarProps> = {
 };
 
 const getNewSize = (size: RaikouSize | (string & {}) | number | undefined) => {
-  if (typeof size === "string") {
+  if (typeof size === 'string') {
     const sizes: Record<RaikouSize, number> = {
       xs: 35,
       sm: 42,
@@ -69,14 +66,14 @@ const varsResolver = createVarsResolver<PulsarFactory>(
   // @ts-ignore
   (theme, { color, size }) => ({
     root: {
-      "--pulsar-color": color ? getThemeColor(color, theme) : undefined,
-      "--pulsar-size": getSize(size, "pulsar-size") ?? undefined,
+      '--pulsar-color': color ? getThemeColor(color, theme) : undefined,
+      '--pulsar-size': getSize(size, 'pulsar-size') ?? undefined,
     },
-  }),
+  })
 );
 
 export const Pulsar = factory<PulsarFactory>((_props, ref) => {
-  const props = useProps("Pulsar", defaultProps, _props);
+  const props = useProps('Pulsar', defaultProps, _props);
   const {
     color,
     vars,
@@ -92,7 +89,7 @@ export const Pulsar = factory<PulsarFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<PulsarFactory>({
-    name: "Pulsar",
+    name: 'Pulsar',
     props,
     classes: {
       root: LoaderPulsarRootStyle,
@@ -109,7 +106,7 @@ export const Pulsar = factory<PulsarFactory>((_props, ref) => {
   const newSize = getNewSize(size) as number;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       {/* @ts-ignore */}
       {[...Array(Math.round(newSize / 5))].map((_, i) => {
         return (
@@ -126,4 +123,4 @@ export const Pulsar = factory<PulsarFactory>((_props, ref) => {
   );
 });
 
-Pulsar.displayName = "@raikou/core/Pulsar";
+Pulsar.displayName = '@raikou/core/Pulsar';

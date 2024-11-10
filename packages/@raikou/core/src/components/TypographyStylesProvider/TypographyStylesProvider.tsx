@@ -32,7 +32,7 @@ export const TypographyStylesProvider = factory<TypographyStylesProviderFactory>
   const getStyles = useStyles<TypographyStylesProviderFactory>({
     name: 'TypographyStylesProvider',
     classes: {
-      root: TypographyStylesProviderRootStyle
+      root: TypographyStylesProviderRootStyle,
     },
     props,
     className,

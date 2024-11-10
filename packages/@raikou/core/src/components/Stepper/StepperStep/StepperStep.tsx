@@ -6,8 +6,8 @@ import {
   Factory,
   getThemeColor,
   RaikouColor,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
 } from '../../../core';
 import { CheckIcon } from '../../Checkbox';
 import { Loader } from '../../Loader';

@@ -1,4 +1,4 @@
-import { css, keyframes } from "@stylefusion/react";
+import { css, keyframes } from '@stylefusion/react';
 
 const ovalLoaderAnimation = keyframes({
   '0%': {

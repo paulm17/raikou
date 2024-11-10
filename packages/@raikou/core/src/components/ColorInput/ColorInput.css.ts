@@ -1,4 +1,4 @@
-import { css } from "@stylefusion/react";
+import { css } from '@stylefusion/react';
 
 export const ColorInputEyeDropperIconStyle = css({
   '--ci-eye-dropper-icon-size-xs': '14px',

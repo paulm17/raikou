@@ -7,23 +7,23 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderWhisperBallStyle, LoaderWhisperRootStyle } from "./Whisper.css";
+} from '@raikou/core';
+import { LoaderWhisperBallStyle, LoaderWhisperRootStyle } from './Whisper.css';
 
-export type WhisperStylesNames = "root";
+export type WhisperStylesNames = 'root';
 export type WhisperCssVariables = {
-  root: "--whisper-color" | "--whisper-size";
+  root: '--whisper-color' | '--whisper-size';
 };
 
 export interface WhisperProps
   extends BoxProps,
     StylesApiProps<WhisperFactory>,
-    ElementProps<"span"> {
+    ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -49,14 +49,14 @@ const varsResolver = createVarsResolver<WhisperFactory>(
   // @ts-ignore
   (theme, { color, size }) => ({
     root: {
-      "--whisper-color": color ? getThemeColor(color, theme) : undefined,
-      "--whisper-size": getSize(size, "whisper-size") ?? undefined,
+      '--whisper-color': color ? getThemeColor(color, theme) : undefined,
+      '--whisper-size': getSize(size, 'whisper-size') ?? undefined,
     },
-  }),
+  })
 );
 
 export const Whisper = factory<WhisperFactory>((_props, ref) => {
-  const props = useProps("Whisper", defaultProps, _props);
+  const props = useProps('Whisper', defaultProps, _props);
   const {
     color,
     vars,
@@ -72,7 +72,7 @@ export const Whisper = factory<WhisperFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<WhisperFactory>({
-    name: "Whisper",
+    name: 'Whisper',
     props,
     classes: {
       root: LoaderWhisperRootStyle,
@@ -90,7 +90,7 @@ export const Whisper = factory<WhisperFactory>((_props, ref) => {
     return acc.concat(
       Array.from({ length: 3 }).map((_, j) => {
         return { i, j };
-      }),
+      })
     );
   }, []) as { i: number; j: number }[];
 
@@ -104,7 +104,7 @@ export const Whisper = factory<WhisperFactory>((_props, ref) => {
   `;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <div dangerouslySetInnerHTML={{ __html: rawHTML }} />
       {balls.map((_, i) => {
         return <span key={i} className={LoaderWhisperBallStyle} />;
@@ -113,4 +113,4 @@ export const Whisper = factory<WhisperFactory>((_props, ref) => {
   );
 });
 
-Whisper.displayName = "@raikou/core/Whisper";
+Whisper.displayName = '@raikou/core/Whisper';

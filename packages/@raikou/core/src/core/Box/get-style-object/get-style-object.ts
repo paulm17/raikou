@@ -1,18 +1,18 @@
-import type { RaikouTheme } from "../../RaikouProvider";
-import type { RaikouStyleProp } from "../Box.types";
+import type { RaikouTheme } from '../../RaikouProvider';
+import type { RaikouStyleProp } from '../Box.types';
 
 export function getStyleObject(
   style: RaikouStyleProp | undefined,
-  theme: RaikouTheme,
+  theme: RaikouTheme
 ): React.CSSProperties {
   if (Array.isArray(style)) {
     return [...style].reduce<Record<string, any>>(
       (acc, item) => ({ ...acc, ...getStyleObject(item, theme) }),
-      {},
+      {}
     );
   }
 
-  if (typeof style === "function") {
+  if (typeof style === 'function') {
     return style(theme);
   }
 

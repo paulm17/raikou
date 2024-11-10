@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useState } from "react";
-import { useIsomorphicEffect } from "./use-isomorphic-effect";
+import React, { createContext, useContext, useState } from 'react';
+import { useIsomorphicEffect } from './use-isomorphic-effect';
 
-export type Direction = "ltr" | "rtl";
+export type Direction = 'ltr' | 'rtl';
 
 export interface DirectionContextValue {
   dir: Direction;
@@ -10,7 +10,7 @@ export interface DirectionContextValue {
 }
 
 export const DirectionContext = createContext<DirectionContextValue>({
-  dir: "ltr",
+  dir: 'ltr',
   toggleDirection: () => {},
   setDirection: () => {},
 });
@@ -32,22 +32,22 @@ export interface DirectionProviderProps {
 
 export function DirectionProvider({
   children,
-  initialDirection = "ltr",
+  initialDirection = 'ltr',
   detectDirection = true,
 }: DirectionProviderProps) {
   const [dir, setDir] = useState<Direction>(initialDirection);
 
   const setDirection = (direction: Direction) => {
     setDir(direction);
-    document.documentElement.setAttribute("dir", direction);
+    document.documentElement.setAttribute('dir', direction);
   };
 
-  const toggleDirection = () => setDirection(dir === "ltr" ? "rtl" : "ltr");
+  const toggleDirection = () => setDirection(dir === 'ltr' ? 'rtl' : 'ltr');
 
   useIsomorphicEffect(() => {
     if (detectDirection) {
-      const direction = document.documentElement.getAttribute("dir");
-      if (direction === "rtl" || direction === "ltr") {
+      const direction = document.documentElement.getAttribute('dir');
+      if (direction === 'rtl' || direction === 'ltr') {
         setDirection(direction);
       }
     }

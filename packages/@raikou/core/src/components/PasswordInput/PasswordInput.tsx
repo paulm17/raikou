@@ -15,9 +15,13 @@ import {
 } from '../../core';
 import { ActionIcon } from '../ActionIcon';
 import { __BaseInputProps, __InputStylesNames, Input, InputVariant } from '../Input';
-import { InputBase } from '../InputBase';
 import { PasswordToggleIcon } from './PasswordToggleIcon';
-import { PasswordInputInnerInputStyle, PasswordInputInputStyle, PasswordInputRootStyle, PasswordInputVisibilityToggleStyle } from './PasswordInput.css';
+import {
+  PasswordInputInnerInputStyle,
+  PasswordInputInputStyle,
+  PasswordInputRootStyle,
+  PasswordInputVisibilityToggleStyle,
+} from './PasswordInput.css';
 
 export type PasswordInputStylesNames =
   | 'root'
@@ -160,6 +164,11 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
       variant="subtle"
       color="gray"
       unstyled={unstyled}
+      onTouchEnd={(event) => {
+        event.preventDefault();
+        visibilityToggleButtonProps?.onTouchEnd?.(event);
+        toggleVisibility();
+      }}
       onMouseDown={(event) => {
         event.preventDefault();
         visibilityToggleButtonProps?.onMouseDown?.(event);
@@ -206,7 +215,10 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
         error={error}
         leftSection={leftSection}
         size={size}
-        classNames={{ ...resolvedClassNames, input: cx(PasswordInputInputStyle, resolvedClassNames.input) }}
+        classNames={{
+          ...resolvedClassNames,
+          input: cx(PasswordInputInputStyle, resolvedClassNames.input),
+        }}
         styles={resolvedStyles}
         radius={radius}
         disabled={disabled}

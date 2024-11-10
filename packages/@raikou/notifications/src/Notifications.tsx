@@ -16,8 +16,8 @@ import {
   PortalProps,
   rem,
   StylesApiProps,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
   useStyles,
 } from '@raikou/core';
 import { useDidUpdate, useForceUpdate, useReducedMotion } from '@raikou/hooks';

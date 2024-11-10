@@ -10,7 +10,10 @@ import type {
   WithRequiredProperty,
 } from './types';
 
-const DEFAULT_SETTINGS: WithRequiredProperty<ContextMenuSettings, 'shadow' | 'borderRadius' | 'submenuDelay'> = {
+const DEFAULT_SETTINGS: WithRequiredProperty<
+  ContextMenuSettings,
+  'shadow' | 'borderRadius' | 'submenuDelay'
+> = {
   shadow: 'sm',
   borderRadius: 'xs',
   submenuDelay: 500,
@@ -32,7 +35,11 @@ export const ContextMenuCtx = createContext<{
    * Boolean indicating whether the context menu is currently visible.
    */
   isContextMenuVisible: boolean;
-}>({ showContextMenu: () => () => undefined, hideContextMenu: () => undefined, isContextMenuVisible: false });
+}>({
+  showContextMenu: () => () => undefined,
+  hideContextMenu: () => undefined,
+  isContextMenuVisible: false,
+});
 
 /**
  * Provider that allows to show a context menu anywhere in your application.
@@ -52,28 +59,33 @@ export function ContextMenuProvider({
     setData(null);
   };
 
-  const showContextMenu: ShowContextMenuFunction = (content, options) => (e: React.MouseEvent | React.TouchEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const showContextMenu: ShowContextMenuFunction =
+    (content, options) => (e: React.MouseEvent | React.TouchEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
 
-    const { x, y } =
-      'touches' in e ? { x: e.touches.item(0).clientX, y: e.touches.item(0).clientY } : { x: e.clientX, y: e.clientY };
+      const { x, y } =
+        'touches' in e
+          ? { x: e.touches.item(0).clientX, y: e.touches.item(0).clientY }
+          : { x: e.clientX, y: e.clientY };
 
-    setData({
-      x,
-      y,
-      content,
-      zIndex: options?.zIndex || zIndex,
-      className: options?.className,
-      style: options?.style,
-      classNames: options?.classNames,
-      styles: options?.styles,
-    });
-  };
+      setData({
+        x,
+        y,
+        content,
+        zIndex: options?.zIndex || zIndex,
+        className: options?.className,
+        style: options?.style,
+        classNames: options?.classNames,
+        styles: options?.styles,
+      });
+    };
 
   return (
     <ContextMenuSettingsCtx.Provider value={{ shadow, borderRadius, submenuDelay }}>
-      <ContextMenuCtx.Provider value={{ showContextMenu, hideContextMenu, isContextMenuVisible: !!data }}>
+      <ContextMenuCtx.Provider
+        value={{ showContextMenu, hideContextMenu, isContextMenuVisible: !!data }}
+      >
         {children}
         {data && <ContextMenuPortal onHide={hideContextMenu} {...data} />}
       </ContextMenuCtx.Provider>

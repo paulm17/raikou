@@ -1,8 +1,8 @@
-export { Whisper } from "./Whisper";
+export { Whisper } from './Whisper';
 
 export type {
   WhisperProps,
   WhisperStylesNames,
   WhisperCssVariables,
   WhisperFactory,
-} from "./Whisper";
+} from './Whisper';

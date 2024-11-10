@@ -11,12 +11,12 @@
     "start": "vite"
   },
   "devDependencies": {
-    "@babel/core": "7.25.2",
+    "@babel/core": "^7.26.0",
     "@tanstack/router-plugin": "^1.79.0",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
-    "@vitejs/plugin-react": "^4.3.2",
-    "vite": "^5.4.8"
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "vite": "^5.4.10"
   },
   "dependencies": {
     "@raikou/core": "workspace:*",
@@ -26,7 +26,7 @@
     "@stylefusion/vite-plugin": "^0.0.25",
     "@tanstack/react-router": "^1.79.0",
     "@tanstack/router-devtools": "^1.79.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }

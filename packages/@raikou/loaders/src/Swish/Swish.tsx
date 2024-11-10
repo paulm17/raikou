@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment } from 'react';
 import {
   Box,
   BoxProps,
@@ -8,23 +8,20 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
-import { LoaderSwishBallStyle, LoaderSwishRootStyle } from "./Swish.css";
+} from '@raikou/core';
+import { LoaderSwishBallStyle, LoaderSwishRootStyle } from './Swish.css';
 
-export type SwishStylesNames = "root";
+export type SwishStylesNames = 'root';
 export type SwishCssVariables = {
-  root: "--swish-color" | "--swish-size";
+  root: '--swish-color' | '--swish-size';
 };
 
-export interface SwishProps
-  extends BoxProps,
-    StylesApiProps<SwishFactory>,
-    ElementProps<"span"> {
+export interface SwishProps extends BoxProps, StylesApiProps<SwishFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
@@ -47,7 +44,7 @@ const defaultProps: Partial<SwishProps> = {
 };
 
 const getNewSize = (size: RaikouSize | (string & {}) | number | undefined) => {
-  if (typeof size === "string") {
+  if (typeof size === 'string') {
     const sizes: Record<RaikouSize, number> = {
       xs: 20,
       sm: 24,
@@ -70,14 +67,14 @@ const varsResolver = createVarsResolver<SwishFactory>(
   // @ts-ignore
   (theme, { color, size }) => ({
     root: {
-      "--swish-color": color ? getThemeColor(color, theme) : undefined,
-      "--swish-size": getSize(size, "swish-size") ?? undefined,
+      '--swish-color': color ? getThemeColor(color, theme) : undefined,
+      '--swish-size': getSize(size, 'swish-size') ?? undefined,
     },
-  }),
+  })
 );
 
 export const Swish = factory<SwishFactory>((_props, ref) => {
-  const props = useProps("Swish", defaultProps, _props);
+  const props = useProps('Swish', defaultProps, _props);
   const {
     color,
     vars,
@@ -93,7 +90,7 @@ export const Swish = factory<SwishFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<SwishFactory>({
-    name: "Swish",
+    name: 'Swish',
     props,
     classes: {
       root: LoaderSwishRootStyle,
@@ -114,7 +111,7 @@ export const Swish = factory<SwishFactory>((_props, ref) => {
   let keyValue = 0;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       {colsI.map((_, i) => (
         <Fragment key={i}>
           {colsJ.map((_, j) => {
@@ -136,4 +133,4 @@ export const Swish = factory<SwishFactory>((_props, ref) => {
   );
 });
 
-Swish.displayName = "@raikou/core/Swish";
+Swish.displayName = '@raikou/core/Swish';

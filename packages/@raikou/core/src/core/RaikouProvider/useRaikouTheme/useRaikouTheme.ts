@@ -1,6 +1,6 @@
-import { defaultVariantColorsResolver } from "../color-functions";
-import { useTheme } from "@stylefusion/react";
-import { RaikouTheme } from "../theme.types";
+import { useTheme } from '@stylefusion/react';
+import { defaultVariantColorsResolver } from '../color-functions';
+import { RaikouTheme } from '../theme.types';
 
 export function useRaikouTheme() {
   const pigmentTheme = useTheme();

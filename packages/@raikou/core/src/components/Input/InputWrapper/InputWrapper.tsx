@@ -31,7 +31,13 @@ import {
 } from '../InputLabel/InputLabel';
 import { InputWrapperProvider } from '../InputWrapper.context';
 import { getInputOffsets } from './get-input-offsets/get-input-offsets';
-import { InputDescriptionStyle, InputErrorStyle, InputLabelStyle, InputRequiredStyle, InputRootStyle } from '../Input.css';
+import {
+  InputDescriptionStyle,
+  InputErrorStyle,
+  InputLabelStyle,
+  InputRequiredStyle,
+  InputRootStyle,
+} from '../Input.css';
 
 export type InputWrapperCssVariables = InputLabelCssVariables &
   InputErrorCssVariables &

@@ -1,19 +1,15 @@
-# Raikou carousel
+# Raikou ripple
 
-[![npm](https://img.shields.io/npm/dm/@raikou/carousel)](https://www.npmjs.com/package/@raikou/carousel)
-
-Embla based carousel
-
-[View documentation](https://raikou.dev/)
+This is a component that creates a ripple effect on the screen.
 
 ## Installation
 
 ```bash
 # With yarn
-yarn add @raikou/core @raikou/hooks @raikou/carousel
+yarn add @raikou/ripple
 
 # With npm
-npm install @raikou/core @raikou/hooks @raikou/carousel
+npm install @raikou/ripple
 ```
 
 ## License

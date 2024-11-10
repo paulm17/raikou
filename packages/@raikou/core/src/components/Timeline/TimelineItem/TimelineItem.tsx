@@ -9,8 +9,8 @@ import {
   getThemeColor,
   RaikouColor,
   RaikouRadius,
-  useRaikouTheme,
   useProps,
+  useRaikouTheme,
 } from '../../../core';
 import { useTimelineContext } from '../Timeline.context';
 

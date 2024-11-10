@@ -7,40 +7,33 @@ import {
   Factory,
   getSize,
   getThemeColor,
-  RaikouSize,
   RaikouColor,
+  RaikouSize,
   StylesApiProps,
   useProps,
   useStyles,
-} from "@raikou/core";
+} from '@raikou/core';
 import {
-  LoaderPacmanRootStyle,
-  LoaderPacmanPacStyle,
-  LoaderPacmanManStyle,
   LoaderPacmanBall2Style,
   LoaderPacmanBall3Style,
   LoaderPacmanBall4Style,
   LoaderPacmanBall5Style,
-} from "./Pacman.css";
+  LoaderPacmanManStyle,
+  LoaderPacmanPacStyle,
+  LoaderPacmanRootStyle,
+} from './Pacman.css';
 
-export type PacmanStylesNames = "root";
+export type PacmanStylesNames = 'root';
 export type PacmanCssVariables = {
-  root:
-    | "--pacman-color"
-    | "--pacman-size"
-    | "--pacman-margin"
-    | "--pacman-speed-multiplier";
+  root: '--pacman-color' | '--pacman-size' | '--pacman-margin' | '--pacman-speed-multiplier';
 };
 
-export interface PacmanProps
-  extends BoxProps,
-    StylesApiProps<PacmanFactory>,
-    ElementProps<"span"> {
+export interface PacmanProps extends BoxProps, StylesApiProps<PacmanFactory>, ElementProps<'span'> {
   /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: RaikouSize | (string & {}) | number;
 
   /** Margin between the loader and the indicator, numbers are converted to rem */
-  margin?: React.CSSProperties["margin"];
+  margin?: React.CSSProperties['margin'];
 
   /** Speed multiplier, default value is `1` */
   speedMultiplier?: number;
@@ -63,7 +56,7 @@ const defaultProps: Partial<PacmanProps> = {
 };
 
 const getNewSize = (size: RaikouSize | (string & {}) | number | undefined) => {
-  if (typeof size === "string") {
+  if (typeof size === 'string') {
     const sizes: Record<RaikouSize, number> = {
       xs: 12,
       sm: 15,
@@ -86,16 +79,16 @@ const varsResolver = createVarsResolver<PacmanFactory>(
   // @ts-ignore
   (theme, { color, size, margin, speedMultiplier }) => ({
     root: {
-      "--pacman-color": color ? getThemeColor(color, theme) : undefined,
-      "--pacman-size": getSize(size, "pacman-size") ?? undefined,
-      "--pacman-margin": getSize(margin, "pacman-margin") ?? undefined,
-      "--pacman-speed-multiplier": `${speedMultiplier}`,
+      '--pacman-color': color ? getThemeColor(color, theme) : undefined,
+      '--pacman-size': getSize(size, 'pacman-size') ?? undefined,
+      '--pacman-margin': getSize(margin, 'pacman-margin') ?? undefined,
+      '--pacman-speed-multiplier': `${speedMultiplier}`,
     },
-  }),
+  })
 );
 
 export const Pacman = factory<PacmanFactory>((_props, ref) => {
-  const props = useProps("Pacman", defaultProps, _props);
+  const props = useProps('Pacman', defaultProps, _props);
   const {
     color,
     vars,
@@ -113,7 +106,7 @@ export const Pacman = factory<PacmanFactory>((_props, ref) => {
   } = props;
 
   const getStyles = useStyles<PacmanFactory>({
-    name: "Pacman",
+    name: 'Pacman',
     props,
     classes: {
       root: LoaderPacmanRootStyle,
@@ -141,7 +134,7 @@ export const Pacman = factory<PacmanFactory>((_props, ref) => {
   `;
 
   return (
-    <Box {...getStyles("root")} ref={ref} {...others}>
+    <Box {...getStyles('root')} ref={ref} {...others}>
       <div dangerouslySetInnerHTML={{ __html: rawHTML }} />
       <span className={LoaderPacmanPacStyle} />
       <span className={LoaderPacmanManStyle} />
@@ -153,4 +146,4 @@ export const Pacman = factory<PacmanFactory>((_props, ref) => {
   );
 });
 
-Pacman.displayName = "@raikou/core/Pacman";
+Pacman.displayName = '@raikou/core/Pacman';

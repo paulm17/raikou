@@ -1,19 +1,19 @@
-import React, { forwardRef } from "react";
-import cx from "clsx";
-import { useRaikouTheme, RaikouBreakpoint } from "../RaikouProvider";
-import { InlineStyles } from "../InlineStyles";
-import { createPolymorphicComponent } from "../factory";
-import type { RaikouStyleProp, CssVarsProp } from "./Box.types";
-import { getBoxStyle } from "./get-box-style/get-box-style";
-import { useRandomClassName } from "./use-random-classname/use-random-classname";
+import React, { forwardRef } from 'react';
+import cx from 'clsx';
+import { createPolymorphicComponent } from '../factory';
+import { InlineStyles } from '../InlineStyles';
+import { RaikouBreakpoint, useRaikouTheme } from '../RaikouProvider';
+import { isNumberLike } from '../utils';
+import type { CssVarsProp, RaikouStyleProp } from './Box.types';
+import { getBoxMod } from './get-box-mod/get-box-mod';
+import { getBoxStyle } from './get-box-style/get-box-style';
 import {
-  RaikouStyleProps,
   extractStyleProps,
   parseStyleProps,
+  RaikouStyleProps,
   STYlE_PROPS_DATA,
-} from "./style-props";
-import { getBoxMod } from "./get-box-mod/get-box-mod";
-import { isNumberLike } from "../utils";
+} from './style-props';
+import { useRandomClassName } from './use-random-classname/use-random-classname';
 
 export type Mod = Record<string, any> | string;
 export type BoxMod = Mod | Mod[] | BoxMod[];
@@ -50,7 +50,7 @@ export interface BoxProps extends RaikouStyleProps {
 export type ElementProps<
   ElementType extends React.ElementType,
   PropsToOmit extends string = never,
-> = Omit<React.ComponentPropsWithoutRef<ElementType>, "style" | PropsToOmit>;
+> = Omit<React.ComponentPropsWithoutRef<ElementType>, 'style' | PropsToOmit>;
 
 export interface BoxComponentProps extends BoxProps {
   /** Variant passed from parent component, sets `data-variant` */
@@ -81,10 +81,10 @@ const _Box = forwardRef<
       __size,
       ...others
     },
-    ref,
+    ref
   ) => {
     const theme = useRaikouTheme();
-    const Element = component || "div";
+    const Element = component || 'div';
 
     const { styleProps, rest } = extractStyleProps(others);
     const responsiveClassName = useRandomClassName();
@@ -104,13 +104,13 @@ const _Box = forwardRef<
       }),
       className: cx(className, {
         [responsiveClassName]: parsedStyleProps.hasResponsiveStyles,
-        "raikou-light-hidden": lightHidden,
-        "raikou-dark-hidden": darkHidden,
+        'raikou-light-hidden': lightHidden,
+        'raikou-dark-hidden': darkHidden,
         [`raikou-hidden-from-${hiddenFrom}`]: hiddenFrom,
         [`raikou-visible-from-${visibleFrom}`]: visibleFrom,
       }),
-      "data-variant": variant,
-      "data-size": isNumberLike(size) ? undefined : size || undefined,
+      'data-variant': variant,
+      'data-size': isNumberLike(size) ? undefined : size || undefined,
       size: __size,
       ...getBoxMod(mod),
       ...rest,
@@ -125,16 +125,12 @@ const _Box = forwardRef<
             media={parsedStyleProps.media}
           />
         )}
-        {typeof renderRoot === "function" ? (
-          renderRoot(props)
-        ) : (
-          <Element {...props} />
-        )}
+        {typeof renderRoot === 'function' ? renderRoot(props) : <Element {...props} />}
       </>
     );
-  },
+  }
 );
 
-_Box.displayName = "@raikou/core/Box";
+_Box.displayName = '@raikou/core/Box';
 
-export const Box = createPolymorphicComponent<"div", BoxComponentProps>(_Box);
+export const Box = createPolymorphicComponent<'div', BoxComponentProps>(_Box);
