@@ -1,7 +1,7 @@
 {
   "name": "@raikou/system",
   "license": "MIT",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "./cjs/index.cjs",
   "module": "./esm/index.mjs",
   "types": "./lib/index.d.ts",
@@ -22,7 +22,7 @@
     "*.css"
   ],
   "peerDependencies": {
-    "@raikou/hooks": "0.0.4",
+    "@raikou/hooks": "0.0.5",
     "react": "^18.2.0"
   },
   "dependencies": {
