@@ -1,6 +1,6 @@
 {
   "name": "@raikou/notifications",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "license": "MIT",
   "sideEffects": false,
   "main": "./cjs/index.cjs",
@@ -23,7 +23,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@raikou/store": "0.0.6",
+    "@raikou/store": "0.0.7",
     "@stylefusion/react": "^0.0.25",
     "react-transition-group": "4.4.5"
   },
