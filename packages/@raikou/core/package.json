@@ -2,7 +2,7 @@
   "name": "@raikou/core",
   "description": "React components library focused on usability, accessibility and developer experience",
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "./cjs/index.cjs",
   "module": "./esm/index.mjs",
   "types": "./lib/index.d.ts",
@@ -21,15 +21,6 @@
   "sideEffects": [
     "*.css"
   ],
-  "scripts": {
-    "build": "tsup",
-    "lint": "eslint \"**/*.ts*\"",
-    "clean": "rimraf dist .turbo",
-    "typecheck": "tsc --noEmit",
-    "build:fast": "tsup src",
-    "prepack": "clean-package",
-    "postpack": "clean-package restore"
-  },
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

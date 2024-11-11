@@ -1,6 +1,6 @@
 {
   "name": "@raikou/contextmenu",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Craft your applications for productivity and meet your users’ expectations by enhancing your Raikou-based UIs with a desktop-grade, lightweight yet fully-featured, dark-theme aware context-menu component",
   "license": "MIT",
   "sideEffects": false,
