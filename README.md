@@ -76,7 +76,7 @@ Less headaches not dealing with postcss from a developer UX point of view.
 
 ### Mirrored Mantine release
 
-Latest release = 7.13.2
+Latest release = 7.13.5
 
 <!-- GETTING STARTED -->
 
@@ -100,18 +100,18 @@ Note: Raikou uses yarn workspaces as there are various issues with pnpm.
 2. Change the vite.config.js to:
 
 ```js
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import { pigment, extendTheme } from "@stylefusion/vite-plugin";
-import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
-import { getPigmentCSSTheme } from "@raikou/system";
+import { extendTheme, pigment } from '@stylefusion/vite-plugin';
+import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
+import { getPigmentCSSTheme } from '@raikou/system';
 
 const { cssTheme, rawTheme } = getPigmentCSSTheme();
 
 const theme = extendTheme({
-  cssVarPrefix: "raikou",
+  cssVarPrefix: 'raikou',
   getSelector: (colorScheme) =>
-    colorScheme ? `[data-raikou-color-scheme='${colorScheme}']` : ":root",
+    colorScheme ? `[data-raikou-color-scheme='${colorScheme}']` : ':root',
   ...cssTheme,
 });
 
@@ -135,12 +135,13 @@ css payload.
 3. Add the Providers and stylesheets for the application:
 
 ```js
-import { Outlet, createRootRoute } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/router-devtools";
-import { RaikouProvider } from "@raikou/system";
-import { emotionTransform, RaikouEmotionProvider } from "@raikou/emotion";
-import "@raikou/system/styles.css";
-import "@stylefusion/react/styles.css";
+import { createRootRoute, Outlet } from '@tanstack/react-router';
+import { TanStackRouterDevtools } from '@tanstack/router-devtools';
+import { emotionTransform, RaikouEmotionProvider } from '@raikou/emotion';
+import { RaikouProvider } from '@raikou/system';
+
+import '@raikou/system/styles.css';
+import '@stylefusion/react/styles.css';
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -262,8 +263,7 @@ Paul M - no social - no email
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-[React.js]:
-  https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
