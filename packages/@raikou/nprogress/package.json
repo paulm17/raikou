@@ -1,7 +1,7 @@
 {
   "name": "@raikou/nprogress",
   "description": "Navigation progress bar",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "sideEffects": false,
   "main": "./cjs/index.cjs",
@@ -24,7 +24,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@raikou/store": "0.0.5",
+    "@raikou/store": "0.0.6",
     "@stylefusion/react": "^0.0.25"
   },
   "devDependencies": {
