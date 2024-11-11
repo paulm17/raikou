@@ -35,7 +35,8 @@
   },
   "devDependencies": {
     "@raikou-tests/core": "workspace:*",
-    "@raikou/hooks": "workspace:*"
+    "@raikou/hooks": "workspace:*",
+    "@raikou/ripple": "workspace:*"
   },
   "publishConfig": {
     "access": "public"
