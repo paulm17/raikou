@@ -1,4 +1,4 @@
-import { DEFAULT_THEME, RaikouTheme } from '@raikou/core';
+import { RaikouTheme, useRaikouTheme } from '@raikou/core';
 import { render } from '../render';
 
 interface Options<Props = any> {
@@ -27,7 +27,7 @@ export function itSupportsStyle<Props>(options: Options<Props>, name = 'supports
     );
 
     expect(container.querySelector(options.selector || '*:not(style)')).toHaveStyle({
-      color: DEFAULT_THEME.colors.pink[4],
+      color: useRaikouTheme().colors.pink[4],
     });
   });
 
@@ -57,8 +57,8 @@ export function itSupportsStyle<Props>(options: Options<Props>, name = 'supports
     );
 
     expect(container.querySelector(options.selector || '*:not(style)')).toHaveStyle({
-      color: DEFAULT_THEME.colors.pink[4],
-      background: DEFAULT_THEME.colors.orange[9],
+      color: useRaikouTheme().colors.pink[4],
+      background: useRaikouTheme().colors.orange[9],
     });
   });
 }

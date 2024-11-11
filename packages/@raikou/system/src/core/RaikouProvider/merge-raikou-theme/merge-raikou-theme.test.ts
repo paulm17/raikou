@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from '../default-theme';
+import { DEFAULT_THEME } from '@raikou/system';
 import {
   INVALID_PRIMARY_COLOR_ERROR,
   INVALID_PRIMARY_SHADE_ERROR,

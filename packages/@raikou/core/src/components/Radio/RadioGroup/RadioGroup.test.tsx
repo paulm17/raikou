@@ -45,7 +45,7 @@ describe('@raikou/core/RadioGroup', () => {
   });
 
   it('supports controlled state', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<RadioGroup {...defaultProps} value="test-value-2" onChange={spy} />);
     expect(screen.getAllByRole('radio')[1]).toBeChecked();
     await userEvent.click(screen.getAllByRole('radio')[0]);

@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from '../../../../RaikouProvider';
+import { DEFAULT_THEME } from '@raikou/system';
 import { FOCUS_CLASS_NAMES, getGlobalClassNames } from './get-global-class-names';
 
 describe('@raikou/core/get-global-class-names', () => {

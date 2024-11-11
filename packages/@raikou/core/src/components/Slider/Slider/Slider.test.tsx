@@ -52,7 +52,7 @@ describe('@raikou/core/Slider', () => {
   });
 
   it('can be controlled with right/left arrows', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<Slider value={50} step={10} onChange={spy} />);
     await pressArrow('right');
     expect(spy).toHaveBeenLastCalledWith(60);
@@ -131,8 +131,8 @@ describe('@raikou/core/Slider', () => {
   });
 
   it('will call onChange before onChangeEvent', async () => {
-    const changeSpy = jest.fn();
-    const endSpy = jest.fn();
+    const changeSpy = vi.fn();
+    const endSpy = vi.fn();
     render(
       <Slider
         value={50}

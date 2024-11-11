@@ -1,9 +1,10 @@
 import { act, renderHook } from '@testing-library/react';
+import { vi } from 'vitest';
 import { useIdle } from './use-idle';
 
 describe('@raikou/hooks/use-idle', () => {
   beforeEach(() => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
   });
 
   it('Correct initial return value', () => {
@@ -12,7 +13,7 @@ describe('@raikou/hooks/use-idle', () => {
   });
 
   it('Starts the timer immediately instead of waiting for the first event to happen', () => {
-    const spy = jest.spyOn(window, 'setTimeout');
+    const spy = vi.spyOn(window, 'setTimeout');
     expect(spy).not.toHaveBeenCalled();
 
     const hook = renderHook(() =>

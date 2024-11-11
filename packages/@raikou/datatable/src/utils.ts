@@ -30,7 +30,9 @@ export function uniqBy<T>(arr: T[], iteratee: (value: T) => unknown) {
  * Utility function that returns the value at a given path in an object
  */
 export function getValueAtPath<T>(obj: T, path: keyof T | (string & NonNullable<unknown>)) {
-  if (!path) return undefined;
+  if (!path) {
+    return undefined;
+  }
   const pathArray = (path as string).match(/([^[.\]])+/g) as string[];
   return pathArray.reduce(
     (prevObj: unknown, key) => prevObj && (prevObj as Record<string, unknown>)[key],
@@ -75,7 +77,9 @@ export function swapRecords<T>(dropResult: DropResult, records: T[]): T[] {
 
   const destination = dropResult.destination;
 
-  if (!destination) return draft;
+  if (!destination) {
+    return draft;
+  }
 
   const sourceEl = draft[dropResult.source.index];
   const destEl = draft[destination.index];

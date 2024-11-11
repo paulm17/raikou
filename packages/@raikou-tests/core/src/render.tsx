@@ -1,17 +1,16 @@
 import { act, RenderResult, render as testingLibraryRender } from '@testing-library/react';
-import { RaikouProvider, RaikouProviderProps, RaikouThemeOverride } from '@raikou/core';
+import { emotionTransform, RaikouEmotionProvider } from '@raikou/emotion';
+import { RaikouProvider, RaikouProviderProps } from '@raikou/system';
 
-export function render(
-  ui: React.ReactNode,
-  themeOverride?: RaikouThemeOverride,
-  providerProps?: Omit<RaikouProviderProps, 'theme'>
-) {
+export function render(ui: React.ReactNode, providerProps?: Omit<RaikouProviderProps, 'theme'>) {
   return testingLibraryRender(<>{ui}</>, {
-    wrapper: ({ children }: { children: React.ReactNode }) => (
-      <RaikouProvider theme={themeOverride} {...providerProps}>
-        {children}
-      </RaikouProvider>
-    ),
+    wrapper: ({ children }: { children: React.ReactNode }) => {
+      return (
+        <RaikouProvider stylesTransform={emotionTransform} {...providerProps}>
+          <RaikouEmotionProvider>{children}</RaikouEmotionProvider>
+        </RaikouProvider>
+      );
+    },
   });
 }
 

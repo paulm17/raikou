@@ -1,9 +1,10 @@
 import { renderHook } from '@testing-library/react';
+import { vi } from 'vitest';
 import { useLogger } from './use-logger';
 
 describe('@raikou/hooks/use-logger', () => {
   it('logs mount and unmount events', () => {
-    const log = jest.spyOn(console, 'log').mockImplementation(() => {});
+    const log = vi.spyOn(console, 'log').mockImplementation(() => {});
     const data = { foo: 'bar' };
     const hook = renderHook(() => useLogger('Test', [data]));
     expect(log).toHaveBeenCalledWith('Test mounted', data);
@@ -14,7 +15,7 @@ describe('@raikou/hooks/use-logger', () => {
   });
 
   it('logs mount, unmount and update events', () => {
-    const log = jest.spyOn(console, 'log').mockImplementation(() => {});
+    const log = vi.spyOn(console, 'log').mockImplementation(() => {});
     let data = { foo: 'bar' };
     const hook = renderHook(() => useLogger('Test', [data]));
     expect(log).toHaveBeenCalledWith('Test mounted', data);
@@ -28,7 +29,7 @@ describe('@raikou/hooks/use-logger', () => {
   });
 
   it('logs mount, unmount and rerenders without update events', () => {
-    const log = jest.spyOn(console, 'log').mockImplementation(() => {});
+    const log = vi.spyOn(console, 'log').mockImplementation(() => {});
     const data = { foo: 'bar' };
     const hook = renderHook(() => useLogger('Test', [data]));
     expect(log).toHaveBeenCalledWith('Test mounted', data);

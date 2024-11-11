@@ -25,7 +25,6 @@ import {
   useCombobox,
 } from '../Combobox';
 import { __BaseInputProps, __InputStylesNames } from '../Input';
-import { InputBase } from '../InputBase';
 import { Pill } from '../Pill';
 import { PillsInput } from '../PillsInput';
 import { ScrollAreaProps } from '../ScrollArea';

@@ -58,7 +58,9 @@ export function DataTableRowCell<T>({
   defaultRender,
   customCellAttributes,
 }: DataTableRowCellProps<T>) {
-  if (!useMediaQueryStringOrFunction(visibleMediaQuery)) return null;
+  if (!useMediaQueryStringOrFunction(visibleMediaQuery)) {
+    return null;
+  }
   return (
     <TableTd
       className={clsx(

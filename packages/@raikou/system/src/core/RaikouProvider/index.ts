@@ -5,4 +5,4 @@ export { DEFAULT_THEME } from './default-theme';
 export { getPigmentCSSTheme, RaikouProvider } from './RaikouProvider';
 export { defaultCssVariablesResolver } from './RaikouCssVariables/default-css-variables-resolver';
 export type { CSSVariablesResolver } from './RaikouCssVariables/default-css-variables-resolver';
-export type { RaikouStylesTransform } from './RaikouProvider';
+export type { RaikouProviderProps, RaikouStylesTransform } from './RaikouProvider';

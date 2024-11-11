@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from '../../default-theme';
+import { DEFAULT_THEME } from '@raikou/system';
 import { getContrastColor } from './get-contrast-color';
 
 describe('@raikou/core/get-contrast-color', () => {

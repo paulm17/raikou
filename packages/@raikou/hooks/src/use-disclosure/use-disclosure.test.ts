@@ -1,4 +1,5 @@
 import { act, renderHook } from '@testing-library/react';
+import { vi } from 'vitest';
 import { useDisclosure } from './use-disclosure';
 
 describe('@raikou/hooks/use-disclosure', () => {
@@ -30,7 +31,7 @@ describe('@raikou/hooks/use-disclosure', () => {
   });
 
   it('calls onClose when close is called', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const hook = renderHook(() => useDisclosure(true, { onClose: spy }));
     expect(spy).toHaveBeenCalledTimes(0);
 
@@ -42,7 +43,7 @@ describe('@raikou/hooks/use-disclosure', () => {
   });
 
   it('calls onOpen when open is called', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const hook = renderHook(() => useDisclosure(false, { onOpen: spy }));
     expect(spy).toHaveBeenCalledTimes(0);
 
@@ -54,8 +55,8 @@ describe('@raikou/hooks/use-disclosure', () => {
   });
 
   it('calls onOpen and onClose correctly when toggle is called', () => {
-    const onClose = jest.fn();
-    const onOpen = jest.fn();
+    const onClose = vi.fn();
+    const onOpen = vi.fn();
     const hook = renderHook(() => useDisclosure(false, { onOpen, onClose }));
     expect(onOpen).toHaveBeenCalledTimes(0);
     expect(onClose).toHaveBeenCalledTimes(0);

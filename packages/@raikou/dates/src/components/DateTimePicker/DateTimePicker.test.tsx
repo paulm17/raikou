@@ -149,7 +149,7 @@ describe('@raikou/dates/DateTimePicker', () => {
   });
 
   it('closes when a submit button onClick handler is provided', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DateTimePicker
         {...defaultProps}
@@ -200,7 +200,7 @@ describe('@raikou/dates/DateTimePicker', () => {
   });
 
   it('supports controlled state', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const { container } = render(
       <DateTimePicker {...defaultProps} value={new Date(2022, 3, 11)} onChange={spy} />
@@ -213,7 +213,7 @@ describe('@raikou/dates/DateTimePicker', () => {
   });
 
   it('supports controlled state with timezone', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const { container } = render(
       <DatesProvider settings={{ timezone: 'UTC' }}>
@@ -307,7 +307,7 @@ describe('@raikou/dates/DateTimePicker', () => {
   });
 
   it('calls onChange with null when controlled input is cleared', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DateTimePicker {...defaultProps} value={new Date(2022, 3, 11)} clearable onChange={spy} />
     );

@@ -55,8 +55,8 @@ describe('@raikou/core/Popover', () => {
   });
 
   it('calls onOpen and onClose functions when dropdown state changes', async () => {
-    const onOpen = jest.fn();
-    const onClose = jest.fn();
+    const onOpen = vi.fn();
+    const onClose = vi.fn();
     render(<TestContainer onOpen={onOpen} onClose={onClose} />);
 
     await userEvent.click(screen.getByRole('button'));
@@ -69,7 +69,7 @@ describe('@raikou/core/Popover', () => {
   });
 
   it('supports controlled mode', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<TestContainer opened onChange={spy} />);
 
     await userEvent.click(screen.getByRole('button'));
@@ -85,28 +85,28 @@ describe('@raikou/core/Popover', () => {
   });
 
   it('correctly handles closeOnClickOutside={false}', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<TestContainer defaultOpened closeOnClickOutside={false} onClose={spy} />);
     await userEvent.click(document.body);
     expect(spy).not.toHaveBeenCalled();
   });
 
   it('correctly handles closeOnClickOutside={true}', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<TestContainer defaultOpened closeOnClickOutside onClose={spy} />);
     await userEvent.click(document.body);
     expect(spy).toHaveBeenCalled();
   });
 
   it('correctly handles closeOnEscape={false}', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<TestContainer defaultOpened closeOnEscape={false} onClose={spy} />);
     await userEvent.type(screen.getByRole('dialog'), '{Escape}');
     expect(spy).not.toHaveBeenCalled();
   });
 
   it('correctly handles closeOnEscape={true}', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<TestContainer defaultOpened closeOnEscape onClose={spy} />);
     await userEvent.type(screen.getByRole('dialog'), '{Escape}');
     expect(spy).toHaveBeenCalled();

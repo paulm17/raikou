@@ -33,6 +33,9 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
+    "@raikou-tests/core": "workspace:*",
+    "@raikou/core": "workspace:*",
+    "@raikou/hooks": "workspace:*",
     "@types/lodash": "^4.17.13"
   },
   "publishConfig": {

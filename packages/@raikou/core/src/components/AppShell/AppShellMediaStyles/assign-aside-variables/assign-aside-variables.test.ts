@@ -1,4 +1,5 @@
-import { DEFAULT_THEME, px, rem } from '../../../../core';
+import { DEFAULT_THEME } from '@raikou/system';
+import { px, rem } from '../../../../core';
 import { AppShellProps } from '../../AppShell';
 import { assignAsideVariables } from './assign-aside-variables';
 

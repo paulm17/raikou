@@ -73,7 +73,7 @@ describe('@raikou/core/Select', () => {
   });
 
   it('supports controlled state', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<Select {...defaultProps} value="test-1" onChange={spy} />);
     expect(screen.getByRole('textbox')).toHaveValue('test-1');
     await userEvent.click(screen.getByRole('textbox'));
@@ -132,7 +132,7 @@ describe('@raikou/core/Select', () => {
   });
 
   it('calls onSearchChange when search value changes', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<Select {...defaultProps} searchable onSearchChange={spy} />);
     await userEvent.click(screen.getByRole('textbox'));
     await userEvent.type(screen.getByRole('textbox'), 'test-1');

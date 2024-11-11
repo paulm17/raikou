@@ -2,6 +2,7 @@
 import { ReactElement, useState } from 'react';
 import { render, RenderOptions, RenderResult, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 import { useFocusTrap } from './use-focus-trap';
 
 function InnerComponent({ testId }: { testId: string }) {
@@ -36,7 +37,7 @@ function WrapperComponent({ shouldMount = true }) {
 
 function quietRender(ui: ReactElement, options: RenderOptions): RenderResult {
   const originalConsoleError = console.error;
-  console.error = jest.fn();
+  console.error = vi.fn();
   const rendered = render(ui, options);
   console.error = originalConsoleError;
   return rendered;

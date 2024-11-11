@@ -33,6 +33,7 @@ type DataTablePaginationComponentProps = WithOptionalProperty<
   noRecordsText: string;
 };
 
+// eslint-disable-next-line
 export const DataTablePagination = forwardRef(function DataTablePagination(
   {
     className,

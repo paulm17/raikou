@@ -16,7 +16,6 @@ function assignSizeVariables(
 }
 
 export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
-  const darkPrimaryShade = getPrimaryShade(theme, 'dark');
   const lightPrimaryShade = getPrimaryShade(theme, 'light');
   const defaultRadius =
     theme.defaultRadius in theme.radius

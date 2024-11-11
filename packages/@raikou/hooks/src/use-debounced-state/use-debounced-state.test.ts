@@ -1,21 +1,22 @@
 import { act, renderHook } from '@testing-library/react';
+import { vi } from 'vitest';
 import { useDebouncedState } from './use-debounced-state';
 
 describe('use-debounced-state', () => {
   afterAll(() => {
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
   });
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   let timeoutCallback: () => void;
-  const setTimeout = jest.spyOn(window, 'setTimeout').mockImplementation(((cb: () => void) => {
+  const setTimeout = vi.spyOn(window, 'setTimeout').mockImplementation(((cb: () => void) => {
     timeoutCallback = cb;
     return 1;
   }) as any);
-  const clearTimeout = jest.spyOn(window, 'clearTimeout').mockReturnValue();
+  const clearTimeout = vi.spyOn(window, 'clearTimeout').mockReturnValue();
 
   it('should run without errors', () => {
     expect(clearTimeout).toHaveBeenCalledTimes(0);

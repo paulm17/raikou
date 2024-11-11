@@ -40,8 +40,9 @@ export function ContextMenu({
 
   let windowWidth = 0;
   let windowHeight = 0;
-  if (typeof window !== 'undefined')
+  if (typeof window !== 'undefined') {
     ({ innerWidth: windowWidth, innerHeight: windowHeight } = window);
+  }
 
   const { dir } = useDirection();
 

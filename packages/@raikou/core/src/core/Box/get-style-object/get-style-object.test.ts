@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from '../../RaikouProvider';
+import { DEFAULT_THEME } from '@raikou/system';
 import { getStyleObject } from './get-style-object';
 
 describe('@raikou/core/Box/get-style-object', () => {

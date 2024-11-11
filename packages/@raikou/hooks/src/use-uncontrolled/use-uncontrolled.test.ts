@@ -1,4 +1,5 @@
 import { act, renderHook } from '@testing-library/react';
+import { vi } from 'vitest';
 import { useUncontrolled } from './use-uncontrolled';
 
 describe('use-uncontrolled', () => {
@@ -31,7 +32,7 @@ describe('use-uncontrolled', () => {
   });
 
   it('calls onChange with uncontrolled state', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const view = renderHook(() =>
       useUncontrolled({ defaultValue: 'default-value', onChange: spy })
     );
@@ -40,7 +41,7 @@ describe('use-uncontrolled', () => {
   });
 
   it('supports controlled state', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const view = renderHook(() => useUncontrolled({ value: 'controlled-value', onChange: spy }));
 
     act(() => view.result.current[1]('change-value'));

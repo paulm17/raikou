@@ -36,7 +36,9 @@
     "react-dom": "^18.x || ^19.x"
   },
   "devDependencies": {
+    "@raikou-tests/core": "workspace:*",
     "@raikou/core": "workspace:*",
-    "@raikou/hooks": "workspace:*"
+    "@raikou/hooks": "workspace:*",
+    "@raikou/system": "workspace:*"
   }
 }

@@ -23,12 +23,15 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@raikou/core": "workspace:*",
-    "@raikou/hooks": "workspace:*",
     "@stylefusion/react": "^0.0.25",
     "embla-carousel": "^7.1.0",
     "embla-carousel-autoplay": "^7.1.0",
     "embla-carousel-react": "^7.1.0"
+  },
+  "devDependencies": {
+    "@raikou-tests/core": "workspace:*",
+    "@raikou/core": "workspace:*",
+    "@raikou/hooks": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

@@ -29,7 +29,7 @@ describe('@raikou/core/Dialog', () => {
   });
 
   it('calls onClose when the close button is clicked', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<Dialog opened withCloseButton onClose={spy} />);
     await userEvent.click(screen.getByRole('button'));
     expect(spy).toHaveBeenCalledTimes(1);

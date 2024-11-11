@@ -2,9 +2,9 @@
   "name": "{{package}}",
   "version": "1.0.0",
   "description": "{{description}}",
-  "homepage": "https://mantine.dev/",
+  "homepage": "https://github.com/paulm17/raikou",
   "license": "MIT",
-  "author": "Vitaly Rtishchev <rtivital@gmail.com>",
+  "author": "Paul Moss",
   "keywords": [
     "react",
     "ui"
@@ -30,19 +30,19 @@
     "./styles.layer.css": "./styles.layer.css"
   },
   "repository": {
-    "url": "https://github.com/mantinedev/mantine.git",
+    "url": "https://github.com/paulm17/raikou.git",
     "type": "git",
     "directory": "packages/{{package}}"
   },
   "peerDependencies": {
-    "@mantine/core": ">=7.0.0",
-    "@mantine/hooks": ">=7.0.0",
+    "@raikou/core": "workspace:*",
+    "@raikou/hooks": "workspace:*",
     "react": "^18.x || ^19.x",
     "react-dom": "^18.x || ^19.x"
   },
   "devDependencies": {
-    "@mantine-tests/core": "workspace:*",
-    "@mantine/core": "workspace:*",
-    "@mantine/hooks": "workspace:*"
+    "@raikou-tests/core": "workspace:*",
+    "@raikou/core": "workspace:*",
+    "@raikou/hooks": "workspace:*"
   }
 }

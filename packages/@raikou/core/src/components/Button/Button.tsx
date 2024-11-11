@@ -197,8 +197,10 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, ref) => {
 
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
-      if (!enableRipple || disabled) return;
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      if (!enableRipple || disabled) {
+        return;
+      }
+
       onRippleClickHandler(e);
     },
     [enableRipple, disabled, onRippleClickHandler]

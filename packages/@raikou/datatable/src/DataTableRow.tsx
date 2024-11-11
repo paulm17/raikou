@@ -120,7 +120,9 @@ export function DataTableRow<T>({
       )}
 
       {columns.map(({ hidden, hiddenContent, ...columnProps }, columnIndex) => {
-        if (hidden || hiddenContent) return null;
+        if (hidden || hiddenContent) {
+          return null;
+        }
 
         const {
           accessor,

@@ -1,4 +1,4 @@
-import { DEFAULT_THEME, RaikouTheme } from '../../../../RaikouProvider';
+import { DEFAULT_THEME, RaikouTheme } from '@raikou/system';
 import { resolveVars } from './resolve-vars';
 
 const themeWithVars: RaikouTheme = {

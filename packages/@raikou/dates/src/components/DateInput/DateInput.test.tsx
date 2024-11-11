@@ -162,7 +162,7 @@ describe('@raikou/dates/DateInput', () => {
   });
 
   it('supports controlled state (dropdown click)', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DateInput
         {...defaultProps}
@@ -178,7 +178,7 @@ describe('@raikou/dates/DateInput', () => {
   });
 
   it('supports controlled state (dropdown click) with timezone', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DatesProvider settings={{ timezone: 'UTC' }}>
         <DateInput
@@ -204,7 +204,7 @@ describe('@raikou/dates/DateInput', () => {
   });
 
   it('supports controlled state (free input)', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DateInput {...defaultProps} value={new Date(2022, 3, 11)} onChange={spy} />
     );
@@ -217,7 +217,7 @@ describe('@raikou/dates/DateInput', () => {
   });
 
   it('supports controlled state (free input) with timezone', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DatesProvider settings={{ timezone: 'UTC' }}>
         <DateInput {...defaultProps} value={new Date(2022, 3, 11)} onChange={spy} />
@@ -247,7 +247,7 @@ describe('@raikou/dates/DateInput', () => {
   });
 
   it('clears input when clear button is clicked (controlled)', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DateInput
         {...defaultProps}
@@ -276,7 +276,7 @@ describe('@raikou/dates/DateInput', () => {
   });
 
   it('allows to clear input value when clearable is set (controlled)', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DateInput {...defaultProps} clearable value={new Date(2022, 3, 11)} onChange={spy} />
     );
@@ -300,7 +300,7 @@ describe('@raikou/dates/DateInput', () => {
   });
 
   it('does not allow to clear input value when clearable is not set (controlled)', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DateInput {...defaultProps} clearable={false} value={new Date(2022, 3, 11)} onChange={spy} />
     );
@@ -324,7 +324,7 @@ describe('@raikou/dates/DateInput', () => {
   });
 
   it('allows to clear input value by clicking the selected date when clearable and allowDeselect are set (controlled)', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DateInput
         {...defaultProps}
@@ -359,7 +359,7 @@ describe('@raikou/dates/DateInput', () => {
   });
 
   it('does not allow to clear input value by clicking the selected date when allowDeselect is not set (controlled)', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DateInput
         {...defaultProps}
@@ -378,7 +378,7 @@ describe('@raikou/dates/DateInput', () => {
   });
 
   it('calls onClick when input is clicked', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(<DateInput {...defaultProps} onClick={spy} />);
     await userEvent.click(getInput(container));
     expect(spy).toHaveBeenCalled();

@@ -2,8 +2,8 @@ import React from 'react';
 import { patchConsoleWarn, render, tests } from '@raikou-tests/core';
 import { LineChart, LineChartProps, LineChartStylesNames } from './LineChart';
 
-jest.mock('recharts', () => {
-  const OriginalModule = jest.requireActual('recharts');
+vi.mock('recharts', () => {
+  const OriginalModule = vi.requireActual('recharts');
   return {
     ...OriginalModule,
     ResponsiveContainer: ({ children }: { children: React.ReactNode }) => (

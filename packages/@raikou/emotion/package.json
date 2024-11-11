@@ -32,6 +32,9 @@
     "clsx": "^2.1.1",
     "html-react-parser": "^5.1.18"
   },
+  "devDependencies": {
+    "@raikou-tests/core": "workspace:*"
+  },
   "publishConfig": {
     "access": "public"
   }

@@ -107,7 +107,7 @@ describe('@raikou/dates/YearPickerInput', () => {
   });
 
   it('can be controlled (type="default") with timezone (UTC)', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DatesProvider settings={{ timezone: 'UTC' }}>
         <YearPickerInput
@@ -127,7 +127,7 @@ describe('@raikou/dates/YearPickerInput', () => {
   });
 
   it('can be controlled (type="default") with timezone (America/Los_Angeles)', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DatesProvider settings={{ timezone: 'America/Los_Angeles' }}>
         <YearPickerInput

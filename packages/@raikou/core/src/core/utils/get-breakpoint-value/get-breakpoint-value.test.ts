@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from '../../RaikouProvider';
+import { DEFAULT_THEME } from '@raikou/system';
 import { px } from '../units-converters';
 import { getBreakpointValue } from './get-breakpoint-value';
 

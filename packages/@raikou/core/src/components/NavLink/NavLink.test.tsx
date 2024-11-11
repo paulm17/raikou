@@ -28,7 +28,7 @@ describe('@raikou/core/NavLink', () => {
   });
 
   it('supports onClick handler (with children)', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(
       <NavLink {...defaultProps} onClick={spy}>
         <NavLink {...defaultProps} />

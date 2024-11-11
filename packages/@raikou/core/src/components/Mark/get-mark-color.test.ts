@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from '../../core';
+import { DEFAULT_THEME } from '@raikou/system';
 import { getMarkColor } from './get-mark-color';
 
 describe('@raikou/core/Mark/get-mark-color', () => {

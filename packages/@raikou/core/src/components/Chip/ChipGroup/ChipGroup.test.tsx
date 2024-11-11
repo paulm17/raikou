@@ -60,7 +60,7 @@ describe('@raikou/core/ChipGroup', () => {
   });
 
   it('supports controlled state when multiple prop is false', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<ChipGroup {...defaultProps} value="test-1" onChange={spy} />);
     await clickChip(1, 'radio');
     expect(spy).toHaveBeenLastCalledWith('test-2');
@@ -69,7 +69,7 @@ describe('@raikou/core/ChipGroup', () => {
   });
 
   it('supports controlled state when multiple prop is true', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<ChipGroup {...defaultProps} multiple onChange={spy} value={['test-2']} />);
     userEvent.click(screen.getAllByRole('checkbox')[1]);
     await clickChip(1, 'checkbox');

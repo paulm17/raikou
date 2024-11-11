@@ -45,7 +45,7 @@ describe('@raikou/core/SwitchGroup', () => {
   });
 
   it('supports controlled state', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<SwitchGroup {...defaultProps} value={['test-value-2']} onChange={spy} />);
     expect(screen.getAllByRole('switch')[1]).toBeChecked();
     await userEvent.click(screen.getAllByRole('switch')[0]);

@@ -60,7 +60,7 @@ describe('@raikou/core/NumberInput', () => {
 
   it('exposes increment/decrement handlers with handlersRef prop', () => {
     const ref = createRef<NumberInputHandlers>();
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<NumberInput {...defaultProps} step={2} onChange={spy} handlersRef={ref} />);
 
     expect(typeof ref.current?.decrement).toBe('function');
@@ -75,7 +75,7 @@ describe('@raikou/core/NumberInput', () => {
   });
 
   it('returns empty string when input is empty', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<NumberInput max={10} min={0} step={6} onChange={spy} />);
     await enterText('5');
     expect(spy).toHaveBeenLastCalledWith(5);
@@ -85,7 +85,7 @@ describe('@raikou/core/NumberInput', () => {
   });
 
   it('triggers onChange for uncontrolled values for every meaningful input change', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<NumberInput onChange={spy} />);
 
     focusInput();
@@ -103,7 +103,7 @@ describe('@raikou/core/NumberInput', () => {
   });
 
   it('triggers onChange for controlled values for every meaningful input change', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<NumberInput value={6} onChange={spy} />);
 
     focusInput();
@@ -121,7 +121,7 @@ describe('@raikou/core/NumberInput', () => {
   });
 
   it('sets state to min if input is empty and is incremented', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(<NumberInput max={1000} min={0} step={6} onChange={spy} />);
     await clickIncrement(container);
     expectValue('0');
@@ -129,7 +129,7 @@ describe('@raikou/core/NumberInput', () => {
   });
 
   it('steps value with controls immediately call onChange', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<NumberInput step={10} onChange={spy} defaultValue={0} />);
     await enterText('{arrowup}');
     expect(spy).toHaveBeenCalledTimes(1);
@@ -139,7 +139,7 @@ describe('@raikou/core/NumberInput', () => {
   });
 
   it('checks whether the data entered is larger than Number.MAX_SAFE_INT', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<NumberInput value={9007199254740991} onChange={spy} />);
 
     focusInput();
@@ -165,7 +165,7 @@ describe('@raikou/core/NumberInput', () => {
   });
 
   it('allows leading zeros if allowLeadingZeros prop is set', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<NumberInput onChange={spy} allowLeadingZeros />);
 
     focusInput();
@@ -182,7 +182,7 @@ describe('@raikou/core/NumberInput', () => {
   });
 
   it('does not allow negative numbers if the allowNegative prop is false', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(<NumberInput onChange={spy} value={0} allowNegative={false} />);
 
     await clickDecrement(container);

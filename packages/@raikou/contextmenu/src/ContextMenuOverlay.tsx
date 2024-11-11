@@ -11,6 +11,7 @@ export function ContextMenuOverlay({ zIndex, children, onHide }: ContextMenuOver
     onHide();
   };
   return (
+    // eslint-disable-next-line
     <div
       className={contextMenuOverlayStyle}
       style={{ zIndex }}

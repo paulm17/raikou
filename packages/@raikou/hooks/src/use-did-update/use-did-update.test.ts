@@ -1,13 +1,14 @@
 import { renderHook } from '@testing-library/react';
+import { vi } from 'vitest';
 import { useDidUpdate } from './use-did-update';
 
 describe('@raikou/hooks/use-did-update', () => {
   afterAll(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('calls `fn` on `dependencies` change', () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     let dependency = '';
     const { rerender } = renderHook(() => useDidUpdate(fn, [dependency]));
     expect(fn).not.toHaveBeenCalled();

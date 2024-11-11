@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from '../../../RaikouProvider';
+import { DEFAULT_THEME } from '@raikou/system';
 import { sortMediaQueries } from './sort-media-queries';
 
 describe('@raikou/core/Box/sort-media-queries', () => {

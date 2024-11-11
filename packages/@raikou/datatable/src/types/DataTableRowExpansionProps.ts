@@ -45,7 +45,6 @@ export type DataTableRowExpansionProps<T = Record<string, unknown>> = {
      * Callback fired when expanded records change.
      * Receives an array containing the newly expanded record IDs.
      */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onRecordIdsChange?:
       | React.Dispatch<React.SetStateAction<any[]>>
       | ((recordIds: unknown[]) => void);

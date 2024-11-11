@@ -54,7 +54,7 @@ describe('@raikou/core/Stepper', () => {
   });
 
   it('calls onStepClick with clicked step index', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<Stepper {...defaultProps} onStepClick={spy} />);
     await userEvent.click(screen.getAllByRole('button')[2]);
     expect(spy).toHaveBeenCalledWith(2);
@@ -77,7 +77,7 @@ describe('@raikou/core/Stepper', () => {
   });
 
   it('allows bidirectional selection between steps by default', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<Stepper {...defaultProps} onStepClick={spy} />);
 
     const stepButtons = screen.getAllByRole('button');
@@ -94,7 +94,7 @@ describe('@raikou/core/Stepper', () => {
   });
 
   it('only allows selecting previous steps if the allowNextStepsSelect prop is set to false and no truthy allowStepSelectprop is present on any steps', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<Stepper {...defaultProps} onStepClick={spy} allowNextStepsSelect={false} />);
 
     const stepButtons = screen.getAllByRole('button');
@@ -110,7 +110,7 @@ describe('@raikou/core/Stepper', () => {
   });
 
   it('allows any steps to be selected if a Step has the allowStepSelect prop set to true even if a falsy allowNextStepsSelect prop is present on the Stepper', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(
       <Stepper onStepClick={spy} allowNextStepsSelect={false} active={0}>
         <Stepper.Step label="0" key="0" description="0">

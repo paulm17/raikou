@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from '../../../../RaikouProvider';
+import { DEFAULT_THEME } from '@raikou/system';
 import { rem } from '../../../../utils';
 import { borderResolver } from './border-resolver';
 

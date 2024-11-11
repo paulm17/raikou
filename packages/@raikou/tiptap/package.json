@@ -28,6 +28,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@raikou-tests/core": "workspace:*",
     "@raikou/core": "workspace:*",
     "@raikou/hooks": "workspace:*",
     "@stylefusion/react": "^0.0.25"

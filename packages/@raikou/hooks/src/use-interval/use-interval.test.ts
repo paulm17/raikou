@@ -1,13 +1,14 @@
 import { act, renderHook } from '@testing-library/react';
+import { vi } from 'vitest';
 import { useInterval } from './use-interval';
 
 const defaultTimeout = 2000;
 
-const callback = jest.fn();
+const callback = vi.fn();
 
 const setupTimer = (timeout: number = defaultTimeout) => ({
   timeout,
-  advanceTimerToNextTick: () => jest.advanceTimersByTime(timeout),
+  advanceTimerToNextTick: () => vi.advanceTimersByTime(timeout),
 });
 
 const setupHook = (cb: (...args: any[]) => void = callback, timeout: number = defaultTimeout) =>
@@ -15,18 +16,18 @@ const setupHook = (cb: (...args: any[]) => void = callback, timeout: number = de
 
 describe('@raikou/hooks/use-interval', () => {
   beforeAll(() => {
-    jest.useFakeTimers();
-    jest.spyOn(global, 'setInterval');
-    jest.spyOn(global, 'clearInterval');
+    vi.useFakeTimers();
+    vi.spyOn(global, 'setInterval');
+    vi.spyOn(global, 'clearInterval');
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
-    jest.clearAllTimers();
+    vi.clearAllMocks();
+    vi.clearAllTimers();
   });
 
   afterAll(() => {
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   it('initialize', () => {

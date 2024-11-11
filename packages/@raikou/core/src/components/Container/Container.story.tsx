@@ -1,15 +1,15 @@
-import { rem } from '../../core';
+// import { rem } from '../../core';
 import { Container } from './Container';
 
-const CONTAINER_SIZES: Record<string, string> = {
-  xxs: rem(200),
-  xs: rem(300),
-  sm: rem(400),
-  md: rem(500),
-  lg: rem(600),
-  xl: rem(700),
-  xxl: rem(800),
-};
+// const CONTAINER_SIZES: Record<string, string> = {
+//   xxs: rem(200),
+//   xs: rem(300),
+//   sm: rem(400),
+//   md: rem(500),
+//   lg: rem(600),
+//   xl: rem(700),
+//   xxl: rem(800),
+// };
 
 // const theme = createTheme({
 //   components: {

@@ -81,14 +81,14 @@ export function getClassName({
   transformedStyles,
 }: GetClassNameOptions) {
   return cx(
-    getGlobalClassNames({ theme, options, unstyled: unstyled }),
+    getGlobalClassNames({ theme, options, unstyled }),
     getThemeClassNames({ theme, themeName, selector, props, stylesCtx }),
     getVariantClassName({ options, classes, selector, unstyled }),
     getResolvedClassNames({ selector, stylesCtx, theme, classNames, props }),
     getResolvedClassNames({ selector, stylesCtx, theme, classNames: transformedStyles, props }),
     getOptionsClassNames({ selector, stylesCtx, options, props, theme }),
     getRootClassName({ rootSelector, selector, className }),
-    getSelectorClassName({ selector, classes, unstyled: unstyled }),
+    getSelectorClassName({ selector, classes, unstyled }),
     getStaticClassNames({ themeName, classNamesPrefix, selector }),
     options?.className
   );

@@ -16,7 +16,7 @@ type DataTableHeaderSelectorCellProps = {
   onChange: (() => void) | undefined;
   rowSpan: number | undefined;
 };
-
+// eslint-disable-next-line
 export const DataTableHeaderSelectorCell = forwardRef(function DataTableHeaderSelectorCell(
   {
     className,

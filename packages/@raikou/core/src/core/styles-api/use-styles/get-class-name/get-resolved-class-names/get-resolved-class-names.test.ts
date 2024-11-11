@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from '../../../../RaikouProvider';
+import { DEFAULT_THEME } from '@raikou/system';
 import { getResolvedClassNames } from './get-resolved-class-names';
 
 const testObjectClassNames = {

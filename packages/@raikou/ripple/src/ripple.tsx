@@ -1,6 +1,5 @@
 import type { FC } from 'react';
-import type { HTMLMotionProps } from 'framer-motion';
-import { AnimatePresence, domAnimation, LazyMotion, m } from 'framer-motion';
+import { AnimatePresence, domAnimation, HTMLMotionProps, LazyMotion, m } from 'framer-motion';
 import { HTMLNextUIProps } from './types';
 import type { RippleType } from './use-ripple';
 import { clamp } from './utils';

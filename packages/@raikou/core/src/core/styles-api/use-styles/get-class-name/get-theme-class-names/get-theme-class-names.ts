@@ -17,7 +17,7 @@ export function getThemeClassNames({
   stylesCtx,
 }: GetThemeClassNamesOptions) {
   return themeName.map(
-    (n) =>
+    () =>
       resolveClassNames({
         theme,
         // classNames: theme.components[n]?.classNames,

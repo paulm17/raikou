@@ -20,8 +20,11 @@
     }
   },
   "dependencies": {
-    "@raikou/core": "workspace:*",
     "@stylefusion/react": "^0.0.25"
+  },
+  "devDependencies": {
+    "@raikou-tests/core": "workspace:*",
+    "@raikou/core": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

@@ -88,14 +88,18 @@ export function DataTableHeaderCell<T>({
   const [dragOver, setDragOver] = useState<boolean>(false);
   const columnRef = useRef<HTMLTableCellElement | null>(null);
 
-  if (!useMediaQueryStringOrFunction(visibleMediaQuery)) return null;
+  if (!useMediaQueryStringOrFunction(visibleMediaQuery)) {
+    return null;
+  }
   const text = title ?? humanize(accessor as string);
   const tooltip = typeof text === 'string' ? text : undefined;
 
   const sortAction =
     sortable && onSortStatusChange
       ? (e?: React.BaseSyntheticEvent) => {
-          if (e?.defaultPrevented) return;
+          if (e?.defaultPrevented) {
+            return;
+          }
 
           onSortStatusChange({
             sortKey,

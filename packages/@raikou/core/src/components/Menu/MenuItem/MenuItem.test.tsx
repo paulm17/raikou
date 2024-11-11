@@ -31,8 +31,8 @@ describe('@raikou/core/MenuItem', () => {
   });
 
   it('allows to add onMouseEnter and onMouseLeave events', async () => {
-    const onMouseEnter = jest.fn();
-    const onMouseLeave = jest.fn();
+    const onMouseEnter = vi.fn();
+    const onMouseLeave = vi.fn();
     render(<TestContainer onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} />);
 
     await userEvent.hover(screen.getByRole('menuitem'));
@@ -44,7 +44,7 @@ describe('@raikou/core/MenuItem', () => {
   });
 
   it('allows to add onClick event', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<TestContainer onClick={spy} />);
     expect(spy).not.toHaveBeenCalled();
 

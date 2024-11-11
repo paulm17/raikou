@@ -1,4 +1,4 @@
-// // Components which styles are reused in other components
+// Components which styles are reused in other components
 export * from './Collapse';
 export * from './ScrollArea';
 export * from './UnstyledButton';
@@ -16,7 +16,7 @@ export * from './InputBase';
 export * from './Flex';
 export * from './FloatingIndicator';
 
-// // Regular components
+// Regular components
 export * from './Accordion';
 export * from './Affix';
 export * from './Alert';
@@ -90,7 +90,7 @@ export * from './Stack';
 export * from './Stepper';
 export * from './Switch';
 export * from './Table';
-// export * from "./Tabs";
+export * from './Tabs';
 export * from './TagsInput';
 export * from './Text';
 export * from './Textarea';

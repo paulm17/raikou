@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from '../../../../RaikouProvider';
+import { DEFAULT_THEME } from '@raikou/system';
 import { lineHeightResolver } from './line-height-resolver';
 
 describe('@raikou/core/Box/line-height-resolver', () => {

@@ -41,8 +41,8 @@ describe('@raikou/carousel/Carousel', () => {
   });
 
   it('calls onNextSlide and onPreviousSlide when next/previous buttons are clicked', async () => {
-    const onNextSlide = jest.fn();
-    const onPreviousSlide = jest.fn();
+    const onNextSlide = vi.fn();
+    const onPreviousSlide = vi.fn();
 
     render(
       <Carousel

@@ -62,7 +62,7 @@ describe('@raikou/dates/DatePicker', () => {
   });
 
   it('can be controlled (type="default")', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DatePicker
         {...defaultProps}
@@ -95,7 +95,7 @@ describe('@raikou/dates/DatePicker', () => {
   });
 
   it('can be controlled (type="multiple")', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DatePicker
         {...defaultProps}
@@ -126,7 +126,7 @@ describe('@raikou/dates/DatePicker', () => {
   });
 
   it('can be controlled (type="range")', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DatePicker {...defaultProps} type="range" value={[null, null]} onChange={spy} />
     );
@@ -135,7 +135,7 @@ describe('@raikou/dates/DatePicker', () => {
   });
 
   it('supports onClick handler from getDayProps', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DatePicker {...defaultProps} getDayProps={() => ({ onClick: spy })} />
     );
@@ -144,7 +144,7 @@ describe('@raikou/dates/DatePicker', () => {
   });
 
   it('handles allowSingleDateInRange={true} correctly', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DatePicker {...defaultProps} type="range" allowSingleDateInRange onChange={spy} />
     );
@@ -155,7 +155,7 @@ describe('@raikou/dates/DatePicker', () => {
   });
 
   it('handles allowSingleDateInRange={false} correctly', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DatePicker {...defaultProps} type="range" allowSingleDateInRange={false} onChange={spy} />
     );

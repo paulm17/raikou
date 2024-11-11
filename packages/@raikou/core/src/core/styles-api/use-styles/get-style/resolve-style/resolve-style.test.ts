@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from '../../../../RaikouProvider';
+import { DEFAULT_THEME } from '@raikou/system';
 import { resolveStyle } from './resolve-style';
 
 describe('@raikou/core/resolve-style', () => {

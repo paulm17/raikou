@@ -70,7 +70,7 @@ describe('@raikou/dates/YearPicker', () => {
   });
 
   it('can be controlled (type="default")', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <YearPicker
         {...defaultProps}
@@ -87,7 +87,7 @@ describe('@raikou/dates/YearPicker', () => {
   });
 
   it('can be controlled (type="default") with timezone (UTC)', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DatesProvider settings={{ timezone: 'UTC' }}>
         <YearPicker
@@ -106,7 +106,7 @@ describe('@raikou/dates/YearPicker', () => {
   });
 
   it('can be controlled (type="default") with timezone (America/Los_Angeles)', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DatesProvider settings={{ timezone: 'America/Los_Angeles' }}>
         <YearPicker
@@ -177,7 +177,7 @@ describe('@raikou/dates/YearPicker', () => {
   });
 
   it('can be controlled (type="multiple")', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <YearPicker
         {...defaultProps}
@@ -193,7 +193,7 @@ describe('@raikou/dates/YearPicker', () => {
   });
 
   it('can be controlled (type="multiple") with timezone (UTC)', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DatesProvider settings={{ timezone: 'UTC' }}>
         <YearPicker
@@ -211,7 +211,7 @@ describe('@raikou/dates/YearPicker', () => {
   });
 
   it('can be controlled (type="multiple") with timezone (America/Los_Angeles)', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DatesProvider settings={{ timezone: 'America/Los_Angeles' }}>
         <YearPicker
@@ -244,7 +244,7 @@ describe('@raikou/dates/YearPicker', () => {
   });
 
   it('can be controlled (type="range")', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <YearPicker {...defaultProps} type="range" value={[null, null]} onChange={spy} />
     );
@@ -253,7 +253,7 @@ describe('@raikou/dates/YearPicker', () => {
   });
 
   it('supports onClick handler from getYearControlProps', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <YearPicker {...defaultProps} getYearControlProps={() => ({ onClick: spy })} />
     );
@@ -262,7 +262,7 @@ describe('@raikou/dates/YearPicker', () => {
   });
 
   it('handles allowSingleDateInRange={true} correctly', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <YearPicker {...defaultProps} type="range" allowSingleDateInRange onChange={spy} />
     );
@@ -273,7 +273,7 @@ describe('@raikou/dates/YearPicker', () => {
   });
 
   it('handles allowSingleDateInRange={false} correctly', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <YearPicker {...defaultProps} type="range" allowSingleDateInRange={false} onChange={spy} />
     );

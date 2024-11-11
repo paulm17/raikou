@@ -1,4 +1,4 @@
-import { DEFAULT_THEME, RaikouTheme } from '../../../RaikouProvider';
+import { DEFAULT_THEME, RaikouTheme } from '@raikou/system';
 import { getStyle, GetStyleInput } from './get-style';
 
 const THEME_WITH_STYLES: RaikouTheme = {

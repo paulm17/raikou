@@ -31,7 +31,7 @@ describe('@raikou/core/PinInput', () => {
   });
 
   it('onChange is called after typing', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(<PinInput type="number" length={6} onChange={spy} />);
 
     fireEvent.input(container.querySelectorAll('.raikou-PinInput-input')[1], {
@@ -44,7 +44,7 @@ describe('@raikou/core/PinInput', () => {
   });
 
   it('onComplete is called on last input', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(<PinInput {...defaultProps} onComplete={spy} />);
 
     expect(container.querySelectorAll('.raikou-PinInput-input')).toHaveLength(4);
@@ -98,7 +98,7 @@ describe('@raikou/core/PinInput', () => {
   });
 
   it('inputs will be filled when the value is bigger than 2 chars(ex: Gboard paste action from keypad)', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(<PinInput {...defaultProps} onComplete={spy} length={6} />);
 
     const element = container.querySelectorAll('.raikou-PinInput-input')[0];

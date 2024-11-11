@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@raikou/tests';
+import { render } from '@raikou-tests/core';
 import { InlineStyles } from './InlineStyles';
 
 describe('@raikou/core/InlineStyles', () => {

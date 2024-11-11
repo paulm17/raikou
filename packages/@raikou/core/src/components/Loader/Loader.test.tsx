@@ -41,14 +41,14 @@ describe('@raikou/core/Loader', () => {
 
   it('supports custom loaders on RaikouProvider', () => {
     const { container } = render(<Loader />, {
-      components: {
-        Loader: Loader.extend({
-          defaultProps: {
-            type: 'custom',
-            loaders: { ...defaultLoaders, custom: customLoader },
-          },
-        }),
-      },
+      // components: {
+      //   Loader: Loader.extend({
+      //     defaultProps: {
+      //       type: 'custom',
+      //       loaders: { ...defaultLoaders, custom: customLoader },
+      //     },
+      //   }),
+      // },
     });
 
     expect(container.querySelector('[data-custom-loader]')).toBeInTheDocument();

@@ -27,7 +27,9 @@ export function DataTableFooterCell<T>({
   textAlign,
   width,
 }: DataTableFooterCellProps<T>) {
-  if (!useMediaQueryStringOrFunction(visibleMediaQuery)) return null;
+  if (!useMediaQueryStringOrFunction(visibleMediaQuery)) {
+    return null;
+  }
   return (
     <TableTh
       className={clsx(

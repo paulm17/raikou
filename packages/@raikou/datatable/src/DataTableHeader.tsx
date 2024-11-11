@@ -46,6 +46,7 @@ type DataTableHeaderProps<T> = {
   selectionColumnStyle: RaikouStyleProp;
 };
 
+// eslint-disable-next-line
 export const DataTableHeader = forwardRef(function DataTableHeader<T>(
   {
     selectionColumnHeaderRef,
@@ -122,7 +123,9 @@ export const DataTableHeader = forwardRef(function DataTableHeader<T>(
         {!groups && allRecordsSelectorCell}
 
         {columns.map(({ hidden, ...columnProps }, index) => {
-          if (hidden) return null;
+          if (hidden) {
+            return null;
+          }
 
           const {
             accessor,

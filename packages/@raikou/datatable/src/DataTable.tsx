@@ -198,8 +198,12 @@ export function DataTable<T>({
       const newScrolledToBottom = tableHeight - scrollTop - scrollViewportHeight < 1;
       setScrolledToTop(newScrolledToTop);
       setScrolledToBottom(newScrolledToBottom);
-      if (newScrolledToTop && newScrolledToTop !== scrolledToTop) onScrollToTop?.();
-      if (newScrolledToBottom && newScrolledToBottom !== scrolledToBottom) onScrollToBottom?.();
+      if (newScrolledToTop && newScrolledToTop !== scrolledToTop) {
+        onScrollToTop?.();
+      }
+      if (newScrolledToBottom && newScrolledToBottom !== scrolledToBottom) {
+        onScrollToBottom?.();
+      }
     }
 
     if (fetching || tableWidth === scrollViewportWidth) {
@@ -210,8 +214,12 @@ export function DataTable<T>({
       const newScrolledToRight = tableWidth - scrollLeft - scrollViewportWidth < 1;
       setScrolledToLeft(newScrolledToLeft);
       setScrolledToRight(newScrolledToRight);
-      if (newScrolledToLeft && newScrolledToLeft !== scrolledToLeft) onScrollToLeft?.();
-      if (newScrolledToRight && newScrolledToRight !== scrolledToRight) onScrollToRight?.();
+      if (newScrolledToLeft && newScrolledToLeft !== scrolledToLeft) {
+        onScrollToLeft?.();
+      }
+      if (newScrolledToRight && newScrolledToRight !== scrolledToRight) {
+        onScrollToRight?.();
+      }
     }
   }, [
     fetching,
@@ -296,7 +304,9 @@ export function DataTable<T>({
 
   const TableWrapper = useCallback(
     ({ children }: { children: React.ReactNode }) => {
-      if (tableWrapper) return tableWrapper({ children });
+      if (tableWrapper) {
+        return tableWrapper({ children });
+      }
       return children;
     },
     [tableWrapper]

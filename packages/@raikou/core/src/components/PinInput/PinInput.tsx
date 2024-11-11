@@ -17,7 +17,6 @@ import {
 } from '../../core';
 import { Group } from '../Group';
 import { Input, InputProps } from '../Input';
-import { InputBase } from '../InputBase';
 import { createPinArray } from './create-pin-array/create-pin-array';
 import { PinInputInputStyle, PinInputRootStyle } from './PinInput.css';
 

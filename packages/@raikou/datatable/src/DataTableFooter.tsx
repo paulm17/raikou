@@ -16,6 +16,7 @@ type DataTableFooterProps<T> = {
   scrollDiff: number;
 };
 
+// eslint-disable-next-line
 export const DataTableFooter = forwardRef(function DataTableFooter<T>(
   {
     className,
@@ -46,7 +47,9 @@ export const DataTableFooter = forwardRef(function DataTableFooter<T>(
           <DataTableFooterSelectorPlaceholderCell shadowVisible={selectorCellShadowVisible} />
         )}
         {columns.map(({ hidden, ...columnProps }) => {
-          if (hidden) return null;
+          if (hidden) {
+            return null;
+          }
 
           const {
             accessor,

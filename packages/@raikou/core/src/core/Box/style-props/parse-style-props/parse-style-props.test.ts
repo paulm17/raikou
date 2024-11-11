@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from '../../../RaikouProvider';
+import { DEFAULT_THEME } from '@raikou/system';
 import { STYlE_PROPS_DATA } from '../style-props-data';
 import { parseStyleProps } from './parse-style-props';
 

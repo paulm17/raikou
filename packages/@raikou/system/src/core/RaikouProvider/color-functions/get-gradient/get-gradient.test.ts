@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from '../../default-theme';
+import { DEFAULT_THEME } from '@raikou/system';
 import { getGradient } from './get-gradient';
 
 describe('@raikou/core/get-gradient', () => {

@@ -1,5 +1,5 @@
+import { DirectionProvider } from '@raikou/system';
 import { render, screen, tests, userEvent } from '@raikou-tests/core';
-import { DirectionProvider } from '../../core';
 import { Tabs, TabsProps, TabsStylesNames } from './Tabs';
 import { TabsList } from './TabsList/TabsList';
 import { TabsPanel } from './TabsPanel/TabsPanel';
@@ -63,7 +63,7 @@ describe('@raikou/core/Tabs', () => {
   });
 
   it('supports controlled state', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<Tabs {...defaultProps} value="tab-1" onChange={spy} />);
     expectActiveTab('tab-1');
 
@@ -75,7 +75,7 @@ describe('@raikou/core/Tabs', () => {
   });
 
   it('supports uncontrolled state', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<Tabs {...defaultProps} defaultValue="tab-1" onChange={spy} />);
     expectActiveTab('tab-1');
 

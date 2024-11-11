@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
 import { forwardRef } from 'react';
 import type { RaikouThemeComponent } from '../RaikouProvider';
 import type { ClassNames, PartialVarsResolver, Styles } from '../styles-api';

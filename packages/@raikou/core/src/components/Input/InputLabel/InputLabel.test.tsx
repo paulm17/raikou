@@ -57,7 +57,7 @@ describe('@raikou/core/InputLabel', () => {
   });
 
   it('passes onMouseDown event to root element', async () => {
-    const onMouseDown = jest.fn();
+    const onMouseDown = vi.fn();
     render(<InputLabel onMouseDown={onMouseDown}>Label</InputLabel>);
     await userEvent.click(screen.getByText('Label'));
     expect(onMouseDown).toHaveBeenCalled();

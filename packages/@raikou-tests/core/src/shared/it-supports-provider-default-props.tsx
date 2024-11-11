@@ -12,11 +12,11 @@ export function itSupportsProviderDefaultProps<Props>(
 ) {
   it(name, () => {
     const { container } = render(<options.component {...(options.props as any)} />, {
-      components: {
-        [options.providerName]: {
-          defaultProps: { 'data-provider-prop': 'test-provider-prop' },
-        },
-      },
+      // components: {
+      //   [options.providerName]: {
+      //     defaultProps: { 'data-provider-prop': 'test-provider-prop' },
+      //   },
+      // },
     });
 
     const element = container.querySelector('[data-provider-prop]');

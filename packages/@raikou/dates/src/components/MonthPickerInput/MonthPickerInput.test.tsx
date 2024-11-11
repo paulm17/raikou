@@ -117,7 +117,7 @@ describe('@raikou/dates/MonthPickerInput', () => {
   });
 
   it('can be controlled (type="default") with timezone', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <DatesProvider settings={{ timezone: 'UTC' }}>
         <MonthPickerInput

@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from '../../default-theme';
+import { DEFAULT_THEME } from '@raikou/system';
 import { getThemeColor } from './get-theme-color';
 
 describe('@raikou/core/get-theme-color', () => {

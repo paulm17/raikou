@@ -40,8 +40,8 @@ describe('@raikou/core/Menu', () => {
   tests.itRendersChildren({ component: Menu, props: {} });
 
   it('calls onOpen and onClose functions when dropdown state changes', async () => {
-    const onOpen = jest.fn();
-    const onClose = jest.fn();
+    const onOpen = vi.fn();
+    const onClose = vi.fn();
     render(<TestContainer onOpen={onOpen} onClose={onClose} />);
 
     await userEvent.click(getControl());
@@ -54,7 +54,7 @@ describe('@raikou/core/Menu', () => {
   });
 
   it('supports controlled state', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<TestContainer opened onChange={spy} />);
     await userEvent.click(getControl());
 
@@ -172,9 +172,9 @@ describe('@raikou/core/Menu', () => {
     expect(Menu.displayName).toEqual('@raikou/core/Menu');
   });
   it('correctly calls callbacks when opening and closing the uncontrolled menu via target click', async () => {
-    const onOpen = jest.fn();
-    const onClose = jest.fn();
-    const onChange = jest.fn();
+    const onOpen = vi.fn();
+    const onClose = vi.fn();
+    const onChange = vi.fn();
 
     render(<TestContainer onChange={onChange} onOpen={onOpen} onClose={onClose} />);
     expectClosed();
@@ -200,9 +200,9 @@ describe('@raikou/core/Menu', () => {
   });
 
   it('correctly calls callbacks when opening and closing the controlled menu only via prop', () => {
-    const onOpen = jest.fn();
-    const onClose = jest.fn();
-    const onChange = jest.fn();
+    const onOpen = vi.fn();
+    const onClose = vi.fn();
+    const onChange = vi.fn();
 
     render(<TestContainer onChange={onChange} onOpen={onOpen} onClose={onClose} opened={false} />);
     expectClosed();
@@ -227,9 +227,9 @@ describe('@raikou/core/Menu', () => {
   });
 
   it('correctly calls callbacks when opening and closing the controlled menu via target click', async () => {
-    const onOpen = jest.fn();
-    const onClose = jest.fn();
-    const onChange = jest.fn();
+    const onOpen = vi.fn();
+    const onClose = vi.fn();
+    const onChange = vi.fn();
 
     render(<TestContainer onChange={onChange} onOpen={onOpen} onClose={onClose} opened={false} />);
 

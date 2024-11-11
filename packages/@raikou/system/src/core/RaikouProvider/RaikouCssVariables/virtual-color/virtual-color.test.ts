@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from '../../default-theme';
+import { DEFAULT_THEME } from '@raikou/system';
 import { isVirtualColor, virtualColor } from './virtual-color';
 
 describe('@raikou/core/virtual-color', () => {

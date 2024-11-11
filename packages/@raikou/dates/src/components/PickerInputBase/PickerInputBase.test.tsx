@@ -22,8 +22,8 @@ describe('@raikou/dates/PickerInputBase', () => {
   datesTests.itSupportsClearableProps({ component: PickerInputBase, props: defaultProps });
 
   it('opens/toggles dropdown with click events', async () => {
-    const toggle = jest.fn();
-    const close = jest.fn();
+    const toggle = vi.fn();
+    const close = vi.fn();
     const { rerender } = render(
       <PickerInputBase {...defaultProps} dropdownHandlers={{ toggle, close, open: noop }} />
     );
@@ -68,7 +68,7 @@ describe('@raikou/dates/PickerInputBase', () => {
   });
 
   it('supports onClick handler', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(<PickerInputBase {...defaultProps} onClick={spy} />);
     await userEvent.click(screen.getByText('test-value'));
     expect(spy).toHaveBeenCalled();
@@ -127,7 +127,7 @@ describe('@raikou/dates/PickerInputBase', () => {
   });
 
   it('calls onClear when clear button is clicked', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     render(
       <PickerInputBase

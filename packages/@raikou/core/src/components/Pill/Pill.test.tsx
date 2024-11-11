@@ -42,14 +42,14 @@ describe('@raikou/core/Pill', () => {
   });
 
   it('supports onClick in removeButtonProps', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(<Pill removeButtonProps={{ onClick: spy }} withRemoveButton />);
     await userEvent.click(container.querySelector('.raikou-Pill-remove')!);
     expect(spy).toHaveBeenCalled();
   });
 
   it('supports onMouseDown in removeButtonProps', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { container } = render(
       <Pill removeButtonProps={{ onMouseDown: spy }} withRemoveButton />
     );

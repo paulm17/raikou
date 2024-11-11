@@ -36,7 +36,7 @@ function useHeroPattern(
   const pattern: PatternValue = patterns[patternName];
 
   let colorHex = theme.colors[colorName][shade];
-  colorHex = colorHex.replace(/\#/g, '%23');
+  colorHex = colorHex.replace(/#/g, '%23');
 
   const backgroundImage = pattern
     .replace('{{color}}', colorHex)

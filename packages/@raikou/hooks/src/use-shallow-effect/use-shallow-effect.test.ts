@@ -1,19 +1,20 @@
 import { renderHook } from '@testing-library/react';
+import { vi } from 'vitest';
 import { useShallowEffect } from './use-shallow-effect';
 
 describe('@raikou/hooks/use-shallow-effect', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('is called on initial render', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     renderHook(() => useShallowEffect(spy, []));
     expect(spy).toHaveBeenCalled();
   });
 
   it('is called without dependencies', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const hook = renderHook(() => useShallowEffect(spy));
     expect(spy).toHaveBeenCalled();
 
@@ -23,7 +24,7 @@ describe('@raikou/hooks/use-shallow-effect', () => {
   });
 
   it('is called with an empty dependency array', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const hook = renderHook(() => useShallowEffect(spy, []));
     expect(spy).toHaveBeenCalled();
     hook.rerender();
@@ -32,7 +33,7 @@ describe('@raikou/hooks/use-shallow-effect', () => {
   });
 
   it('is called with a non-empty dependency array on rerenders', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const hook = renderHook(({ cb, deps }) => useShallowEffect(cb, deps), {
       initialProps: { cb: spy, deps: [{ a: 1 }] },
     });
@@ -43,7 +44,7 @@ describe('@raikou/hooks/use-shallow-effect', () => {
   });
 
   it('is called with the same object on rerenders', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const hook = renderHook(({ cb, deps }) => useShallowEffect(cb, deps), {
       initialProps: { cb: spy, deps: [{ a: 1 }] },
     });

@@ -27,7 +27,9 @@ export const DataTableResizableHeaderHandle = (props: DataTableResizableHeaderHa
   };
 
   const handleMouseMove = (event: MouseEvent) => {
-    if (!columnRef.current) return;
+    if (!columnRef.current) {
+      return;
+    }
 
     const delta = event.clientX - columnRef.current.getBoundingClientRect().right;
 
@@ -45,7 +47,9 @@ export const DataTableResizableHeaderHandle = (props: DataTableResizableHeaderHa
   };
 
   const handleMouseUp = () => {
-    if (!columnRef.current) return;
+    if (!columnRef.current) {
+      return;
+    }
 
     document.removeEventListener('mousemove', handleMouseMove);
     document.removeEventListener('mouseup', handleMouseUp);
@@ -61,7 +65,9 @@ export const DataTableResizableHeaderHandle = (props: DataTableResizableHeaderHa
    * Reset the column width to the default value
    */
   const handleDoubleClick = () => {
-    if (!columnRef.current) return;
+    if (!columnRef.current) {
+      return;
+    }
 
     columnRef.current.style.maxWidth = 'initial';
     columnRef.current.style.minWidth = 'initial';
@@ -71,6 +77,7 @@ export const DataTableResizableHeaderHandle = (props: DataTableResizableHeaderHa
   };
 
   return (
+    // eslint-disable-next-line
     <div
       ref={dragRef}
       // we have to stop propagation so that the column doesn't

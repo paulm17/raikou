@@ -3,6 +3,7 @@ import { TableTr } from '@raikou/core';
 import { useMergedRef } from '@raikou/hooks';
 import type { DataTableDraggableRowProps } from './types';
 
+// eslint-disable-next-line
 const DataTableDraggableRow = forwardRef<HTMLTableRowElement, DataTableDraggableRowProps>(function (
   { children, isDragging, ...props },
   passedRef
@@ -12,8 +13,12 @@ const DataTableDraggableRow = forwardRef<HTMLTableRowElement, DataTableDraggable
 
   useEffect(() => {
     // a simple fix to keep column width as in table
-    if (!ref.current) return;
-    if (!isDragging) return;
+    if (!ref.current) {
+      return;
+    }
+    if (!isDragging) {
+      return;
+    }
 
     const tbody = ref.current.parentElement!;
     const table = tbody.parentElement!;
@@ -26,10 +31,10 @@ const DataTableDraggableRow = forwardRef<HTMLTableRowElement, DataTableDraggable
 
       const cell = ref.current.children[index] as HTMLTableCellElement;
 
-      cell.style.height = headerCellDimensions.height + 'px';
-      cell.style.width = headerCellDimensions.width + 'px';
-      cell.style.minWidth = headerCellDimensions.width + 'px';
-      cell.style.maxWidth = headerCellDimensions.width + 'px';
+      cell.style.height = `${headerCellDimensions.height}px`;
+      cell.style.width = `${headerCellDimensions.width}px`;
+      cell.style.minWidth = `${headerCellDimensions.width}px`;
+      cell.style.maxWidth = `${headerCellDimensions.width}px`;
     }
   }, [isDragging, children]);
 

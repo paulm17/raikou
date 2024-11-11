@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from '../../default-theme';
+import { DEFAULT_THEME } from '@raikou/system';
 import { parseThemeColor } from './parse-theme-color';
 
 describe('@raikou/core/parse-theme-color', () => {

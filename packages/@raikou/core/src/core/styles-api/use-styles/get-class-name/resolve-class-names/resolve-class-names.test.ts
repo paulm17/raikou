@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from '../../../../RaikouProvider';
+import { DEFAULT_THEME } from '@raikou/system';
 import { resolveClassNames } from './resolve-class-names';
 
 describe('@raikou/core/resolve-class-names', () => {

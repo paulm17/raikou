@@ -1,4 +1,4 @@
-import { DEFAULT_THEME, RaikouTheme } from '@raikou/core';
+import { RaikouTheme, useRaikouTheme } from '@raikou/core';
 import { render } from '../render';
 
 const randomNumber = (min = 10, max = 100) => Math.floor(Math.random() * (max - min + 1) + min);
@@ -51,7 +51,7 @@ export function itSupportsStylesApi<
       options.selectors.forEach((selector) => {
         expect(
           container.querySelector(
-            `.${classNames(DEFAULT_THEME, { 'data-test': '__test' })[selector]}`
+            `.${classNames(useRaikouTheme(), { 'data-test': '__test' })[selector]}`
           )
         ).toBeInTheDocument();
       });
@@ -102,7 +102,7 @@ export function itSupportsStylesApi<
 
       options.selectors.forEach((selector) => {
         expect(container.querySelector(`.${classNames[selector]}`)).toHaveStyle({
-          ...styles(DEFAULT_THEME, { 'data-test': 'orange' })[selector],
+          ...styles(useRaikouTheme(), { 'data-test': 'orange' })[selector],
         });
       });
     });
@@ -127,11 +127,11 @@ export function itSupportsStylesApi<
       const { container } = render(
         <options.component {...options.props} classNames={classNames} />,
         {
-          components: {
-            [options.providerName]: {
-              classNames,
-            },
-          },
+          // components: {
+          // [options.providerName]: {
+          //   classNames
+          // },
+          // },
         }
       );
 
@@ -145,17 +145,17 @@ export function itSupportsStylesApi<
       const { container } = render(
         <options.component {...options.props} data-test="__test" classNames={classNames} />,
         {
-          components: {
-            [options.providerName]: {
-              classNames: classNames as any,
-            },
-          },
+          // components: {
+          // [options.providerName]: {
+          //   classNames: classNames as any,
+          // },
+          // },
         }
       );
       options.selectors.forEach((selector) => {
         expect(
           container.querySelector(
-            `.${classNames(DEFAULT_THEME, { 'data-test': '__test' })[selector]}`
+            `.${classNames(useRaikouTheme(), { 'data-test': '__test' })[selector]}`
           )
         ).toBeInTheDocument();
       });
@@ -172,12 +172,12 @@ export function itSupportsStylesApi<
       );
 
       const { container } = render(<options.component {...options.props} />, {
-        components: {
-          [options.providerName]: {
-            styles,
-            classNames,
-          },
-        },
+        // components: {
+        // [options.providerName]: {
+        //   styles,
+        //   classNames,
+        // },
+        // },
       });
 
       options.selectors.forEach((selector) => {
@@ -199,18 +199,18 @@ export function itSupportsStylesApi<
         }, {});
 
       const { container } = render(<options.component {...options.props} data-test="orange" />, {
-        components: {
-          [options.providerName]: {
-            styles: styles as any,
-            classNames: classNames as any,
-          },
-        },
+        // components: {
+        // [options.providerName]: {
+        //   styles: styles as any,
+        //   classNames: classNames as any,
+        // },
+        // },
       });
 
       options.selectors.forEach((selector) => {
         try {
           expect(container.querySelector(`.${classNames[selector]}`)).toHaveStyle({
-            ...styles(DEFAULT_THEME, { 'data-test': 'orange' })[selector],
+            ...styles(useRaikouTheme(), { 'data-test': 'orange' })[selector],
           });
         } catch (e) {
           throw new Error(`Missing selector: .test-${options.providerName}-${selector}`);
@@ -221,8 +221,8 @@ export function itSupportsStylesApi<
     it(`${name}: static classNames (RaikouProvider)`, () => {
       const { container } = render(
         <options.component {...options.props} />,
-        {},
-        { classNamesPrefix: 'test' }
+        {}
+        // { classNamesPrefix: 'test' }
       );
 
       options.selectors.forEach((selector) => {
