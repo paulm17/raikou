@@ -1,7 +1,7 @@
 {
   "name": "@raikou/loaders",
   "description": "A collection of loaders",
-  "version": "0.0.1-beta.13",
+  "version": "0.0.1",
   "license": "MIT",
   "sideEffects": false,
   "main": "./cjs/index.cjs",
@@ -24,8 +24,8 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@raikou/core": "workspace:*",
-    "@raikou/hooks": "workspace:*",
+    "@raikou/core": "0.0.1",
+    "@raikou/hooks": "0.0.1",
     "@stylefusion/react": "^0.0.25"
   },
   "publishConfig": {

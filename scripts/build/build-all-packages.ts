@@ -10,7 +10,8 @@ import { getPackagesBuildOrder } from './get-packages-build-order';
 const logger = createLogger('build-all-packages');
 
 export async function buildAllPackages() {
-  const packages = await getPackagesBuildOrder();
+  let packages = await getPackagesBuildOrder();
+  packages = sortPackages(packages);
 
   const startTime = Date.now();
   logger.log('Building all packages...');
@@ -28,4 +29,42 @@ export async function buildAllPackages() {
   logger.success(`All packages have been built in ${chalk.green(getBuildTime(startTime))}`);
 
   return packages;
+}
+
+// Priority packages in desired order
+const priorityPackages = [
+  '@raikou/hooks',
+  '@raikou/ripple',
+  '@raikou/core',
+  '@raikou/system',
+  '@raikou/emotion',
+];
+
+function sortPackages(packages: any) {
+  return [...packages].sort((a, b) => {
+    const aName = a.packageJson.name;
+    const bName = b.packageJson.name;
+
+    // Get indices in priority array (-1 if not found)
+    const aIndex = priorityPackages.indexOf(aName);
+    const bIndex = priorityPackages.indexOf(bName);
+
+    // If both packages are in priority list, sort by their order
+    if (aIndex !== -1 && bIndex !== -1) {
+      return aIndex - bIndex;
+    }
+
+    // If only a is in priority list, it comes first
+    if (aIndex !== -1) {
+      return -1;
+    }
+
+    // If only b is in priority list, it comes first
+    if (bIndex !== -1) {
+      return 1;
+    }
+
+    // If neither is in priority list, maintain original order
+    return 0;
+  });
 }
