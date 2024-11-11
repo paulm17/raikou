@@ -1,6 +1,6 @@
 {
   "name": "raikou-a91763c0e2",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Raikou Components Monorepo",
   "packageManager": "yarn@4.5.0",
   "license": "MIT",
