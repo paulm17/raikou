@@ -1,6 +1,6 @@
 {
   "name": "@raikou/spotlight",
-  "version": "0.2.0",
+  "version": "0.0.1",
   "license": "MIT",
   "sideEffects": false,
   "main": "./cjs/index.cjs",
@@ -23,7 +23,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@raikou/store": "0.2.0",
+    "@raikou/store": "0.0.1",
     "@stylefusion/react": "^0.0.25"
   },
   "devDependencies": {
