@@ -31,7 +31,10 @@ export const ChartTooltipBodyStyle = css({
   },
 });
 
-export const ChartTooltipItemColorStyle = css({});
+export const ChartTooltipItemColorStyle = css({
+  width: '12px',
+  height: '12px',
+});
 
 export const ChartTooltipItemStyle = css({
   fontSize: 'var(--raikou-font-size-sm)',

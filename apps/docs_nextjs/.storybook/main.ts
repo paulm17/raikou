@@ -1,5 +1,5 @@
 import { dirname, join } from 'path';
-import type { StorybookConfig } from '@storybook/react-vite';
+import type { StorybookConfig } from '@storybook/nextjs';
 
 /**
  * This function is used to resolve the absolute path of a package.
@@ -10,9 +10,9 @@ function getAbsolutePath(value: string) {
 }
 const config: StorybookConfig = {
   stories: [
-    '../../../packages/@raikou/@(carousel|contextmenu|datatable|dropzone|notifications|nprogress|spotlight|tiptap)/src/*.story.tsx',
-    '../../../packages/@raikou/charts/src/**/*.story.tsx',
-    '../../../packages/@raikou/dates/src/components/**/*.story.tsx',
+    // '../../../packages/@raikou/@(carousel|contextmenu|datatable|dropzone|notifications|nprogress|spotlight|tiptap)/src/*.story.tsx',
+    // '../../../packages/@raikou/charts/src/**/*.story.tsx',
+    // '../../../packages/@raikou/dates/src/components/**/*.story.tsx',
     '../../../packages/@raikou/core/src/components/**/*.story.tsx',
   ],
   addons: [
@@ -22,7 +22,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-interactions'),
   ],
   framework: {
-    name: getAbsolutePath('@storybook/react-vite'),
+    name: '@storybook/nextjs',
     options: {},
   },
 };

@@ -1,5 +1,5 @@
 {
-  "name": "docs",
+  "name": "docs_vite",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -16,7 +16,6 @@
     "@raikou/emotion": "workspace:*",
     "@raikou/hooks": "workspace:*",
     "@raikou/system": "workspace:*",
-    "@stylefusion/vite-plugin": "^0.0.25",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -30,6 +29,7 @@
     "@storybook/react": "^8.4.2",
     "@storybook/react-vite": "^8.4.2",
     "@storybook/test": "^8.4.2",
+    "@stylefusion/vite-plugin": "^0.0.26",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",

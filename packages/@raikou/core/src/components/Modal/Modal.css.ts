@@ -57,4 +57,9 @@ export const ModalContentStyle = css({
   '&[data-full-screen]': {
     borderRadius: 0,
   },
+
+  '&[data-hidden]': {
+    opacity: '0 !important',
+    pointerEvents: 'none',
+  },
 });

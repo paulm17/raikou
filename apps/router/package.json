@@ -23,7 +23,7 @@
     "@raikou/emotion": "workspace:*",
     "@raikou/hooks": "workspace:*",
     "@raikou/system": "workspace:*",
-    "@stylefusion/vite-plugin": "^0.0.25",
+    "@stylefusion/vite-plugin": "^0.0.26",
     "@tanstack/react-router": "^1.79.0",
     "@tanstack/router-devtools": "^1.79.0",
     "react": "^18.3.1",
