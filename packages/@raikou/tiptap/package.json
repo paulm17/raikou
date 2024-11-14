@@ -1,7 +1,7 @@
 {
   "name": "@raikou/tiptap",
   "description": "Rich text editor based on tiptap",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "license": "MIT",
   "sideEffects": false,
   "main": "./cjs/index.cjs",
@@ -20,8 +20,8 @@
     }
   },
   "peerDependencies": {
-    "@raikou/core": "0.0.7",
-    "@raikou/hooks": "0.0.7",
+    "@raikou/core": "0.0.8",
+    "@raikou/hooks": "0.0.8",
     "@tiptap/extension-link": ">=2.1.12",
     "@tiptap/react": ">=2.1.12",
     "react": "^18.2.0",
