@@ -23,7 +23,6 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@stylefusion/react": "^0.0.26",
     "recharts": "^2.13.3"
   },
   "devDependencies": {

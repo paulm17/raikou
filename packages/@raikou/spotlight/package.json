@@ -23,8 +23,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@raikou/store": "0.0.8",
-    "@stylefusion/react": "^0.0.26"
+    "@raikou/store": "0.0.8"
   },
   "devDependencies": {
     "@raikou-tests/core": "workspace:*",

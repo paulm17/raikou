@@ -24,7 +24,6 @@
   },
   "dependencies": {
     "@raikou/store": "0.0.8",
-    "@stylefusion/react": "^0.0.26",
     "react-transition-group": "4.4.5"
   },
   "devDependencies": {

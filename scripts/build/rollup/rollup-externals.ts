@@ -12,6 +12,8 @@ export const ROLLUP_EXTERNALS = [
   'highlight.js/lib/languages/typescript',
   'react-is',
   'react/jsx-runtime',
+  'next-themes',
+  '@stylefusion/react',
 
   ...getPackagesList().map((pkg) => pkg.packageJson.name!),
   ...Object.keys({

@@ -30,8 +30,7 @@
   "devDependencies": {
     "@raikou-tests/core": "workspace:*",
     "@raikou/core": "workspace:*",
-    "@raikou/hooks": "workspace:*",
-    "@stylefusion/react": "^0.0.26"
+    "@raikou/hooks": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

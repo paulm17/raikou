@@ -27,7 +27,6 @@
     "@hello-pangea/dnd": "^17.0.0",
     "@raikou/core": "0.0.8",
     "@raikou/hooks": "0.0.8",
-    "@stylefusion/react": "^0.0.26",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
     "lodash": "^4.17.21"

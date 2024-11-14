@@ -19,9 +19,6 @@
       }
     }
   },
-  "dependencies": {
-    "@stylefusion/react": "^0.0.26"
-  },
   "devDependencies": {
     "@raikou-tests/core": "workspace:*",
     "@raikou/core": "workspace:*"

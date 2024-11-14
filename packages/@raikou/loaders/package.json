@@ -25,8 +25,7 @@
   },
   "dependencies": {
     "@raikou/core": "0.0.8",
-    "@raikou/hooks": "0.0.8",
-    "@stylefusion/react": "^0.0.26"
+    "@raikou/hooks": "0.0.8"
   },
   "publishConfig": {
     "access": "public"
