@@ -1,3 +1,4 @@
+import { emotionTransform } from '@raikou/emotion';
 import { useRaikouTheme } from '../../RaikouProvider';
 
 interface UseTransformedStylesInput {
@@ -7,19 +8,9 @@ interface UseTransformedStylesInput {
 }
 
 export function useStylesTransform({ props, stylesCtx, themeName }: UseTransformedStylesInput) {
-  const isBrowser = () => typeof window !== 'undefined';
   const theme = useRaikouTheme();
-  // @ts-ignore
-  const stylesTransform = isBrowser()
-    ? (window as any).raikou_styles_transform.styles()
-    : undefined;
-
-  if (stylesTransform === undefined) {
-    return {
-      getTransformedStyles: () => [],
-      withStylesTransform: false,
-    };
-  }
+  const stylesTransform =
+    emotionTransform.styles !== undefined ? emotionTransform.styles() : undefined;
 
   const getTransformedStyles = (styles: any[]) => {
     if (!stylesTransform) {

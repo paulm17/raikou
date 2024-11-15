@@ -1,5 +1,4 @@
 import { useRaikouTheme } from '@raikou/core';
-import { RaikouStylesTransform } from '@raikou/system';
 import { getHelpers } from './create-styles';
 // prettier-ignore
 import { useCss } from './use-css';
@@ -32,6 +31,11 @@ function stylesTransform() {
       return { ...acc, [key]: css(parsedValue) };
     }, {});
   };
+}
+
+interface RaikouStylesTransform {
+  sx?: () => (sx: any) => string;
+  styles?: () => (styles: any, payload: any) => Record<string, string>;
 }
 
 export const emotionTransform: RaikouStylesTransform = {

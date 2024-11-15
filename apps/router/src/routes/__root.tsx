@@ -1,6 +1,6 @@
 import { createRootRoute, Outlet } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
-import { emotionTransform, RaikouEmotionProvider } from '@raikou/emotion';
+import { RaikouEmotionProvider } from '@raikou/emotion';
 import { RaikouProvider } from '@raikou/system';
 
 import '@raikou/system/styles.css';
@@ -13,7 +13,7 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <>
-      <RaikouProvider stylesTransform={emotionTransform}>
+      <RaikouProvider>
         <RaikouEmotionProvider>
           <Outlet />
         </RaikouEmotionProvider>

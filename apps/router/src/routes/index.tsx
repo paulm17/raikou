@@ -6,5 +6,16 @@ export const Route = createFileRoute('/')({
 });
 
 function HomeComponent() {
-  return <Badge variant="filled">hello</Badge>;
+  return (
+    <Badge
+      variant="filled"
+      styles={(theme, __, ___) => ({
+        root: {
+          background: theme.colors.green[4],
+        },
+      })}
+    >
+      hello
+    </Badge>
+  );
 }

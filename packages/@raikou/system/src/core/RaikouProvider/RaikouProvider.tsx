@@ -12,11 +12,6 @@ import { mergeRaikouTheme } from './merge-raikou-theme';
 import { RaikouTheme } from './theme.types';
 import { useRespectReduceMotion } from './use-respect-reduce-motion';
 
-export interface RaikouStylesTransform {
-  sx?: () => (sx: any) => string;
-  styles?: () => (styles: any, payload: any) => Record<string, string>;
-}
-
 export interface RaikouProviderProps {
   /** Function to resolve root element to set `data-raikou-color-scheme` attribute, must return undefined on server, `() => document.documentElement` by default */
   getRootElement?: () => HTMLElement | undefined;
@@ -26,9 +21,6 @@ export interface RaikouProviderProps {
 
   /** Your application */
   children?: React.ReactNode;
-
-  /** An object to transform `styles` and `sx` props into css classes, can be used with CSS-in-JS libraries */
-  stylesTransform?: RaikouStylesTransform;
 }
 
 suppressNextjsWarning();
@@ -36,17 +28,10 @@ suppressNextjsWarning();
 export function RaikouProvider({
   children,
   themeStorageKey = 'raikou-color-scheme',
-  stylesTransform,
   getRootElement = () => document.documentElement,
 }: RaikouProviderProps) {
-  const isBrowser = () => typeof window !== 'undefined';
   const { theme: pigmentTheme } = useTheme();
   const theme = pigmentTheme.rawTheme as RaikouTheme;
-
-  // @ts-ignore
-  if (isBrowser()) {
-    (window as any).raikou_styles_transform = stylesTransform;
-  }
 
   useRespectReduceMotion({
     respectReducedMotion: theme?.respectReducedMotion || false,
