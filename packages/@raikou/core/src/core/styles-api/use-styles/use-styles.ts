@@ -6,8 +6,7 @@ import { PartialVarsResolver, VarsResolver } from '../create-vars-resolver/creat
 import { ClassNames, ClassNamesArray, GetStylesApiOptions, Styles } from '../styles-api.types';
 import { getClassName } from './get-class-name/get-class-name';
 import { getStyle } from './get-style/get-style';
-
-// import { useStylesTransform } from './use-transformed-styles';
+import { useStylesTransform } from './use-transformed-styles';
 
 export interface UseStylesInput<Payload extends FactoryPayload> {
   name: string | (string | undefined)[];
@@ -42,7 +41,7 @@ export function useStyles<Payload extends FactoryPayload>({
   rootSelector = 'root' as NonNullable<Payload['stylesNames']>,
   unstyled,
   classNames,
-  // styles,
+  styles,
   vars,
   varsResolver,
 }: UseStylesInput<Payload>): GetStylesApi<Payload> {
@@ -50,11 +49,11 @@ export function useStyles<Payload extends FactoryPayload>({
   const classNamesPrefix = 'raikou';
   const themeName = (Array.isArray(name) ? name : [name]).filter((n) => n) as string[];
 
-  // const { withStylesTransform, getTransformedStyles } = useStylesTransform({
-  //   props,
-  //   stylesCtx,
-  //   themeName,
-  // });
+  const { withStylesTransform, getTransformedStyles } = useStylesTransform({
+    props,
+    stylesCtx,
+    themeName,
+  });
 
   return (selector, options) => ({
     className: getClassName({
@@ -70,7 +69,7 @@ export function useStyles<Payload extends FactoryPayload>({
       rootSelector,
       props,
       stylesCtx,
-      // transformedStyles: getTransformedStyles([options?.styles, styles]),
+      transformedStyles: getTransformedStyles([options?.styles, styles]),
     }),
 
     style: getStyle({
@@ -85,7 +84,7 @@ export function useStyles<Payload extends FactoryPayload>({
       style,
       vars,
       varsResolver,
-      // withStylesTransform,
+      withStylesTransform,
     }),
   });
 }
