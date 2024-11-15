@@ -1,6 +1,6 @@
 {
   "name": "@raikou/modals",
-  "version": "0.0.15",
+  "version": "0.0.14",
   "license": "MIT",
   "sideEffects": false,
   "main": "./cjs/index.cjs",
@@ -23,8 +23,8 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@raikou/core": "0.0.15",
-    "@raikou/hooks": "0.0.15"
+    "@raikou/core": "0.0.14",
+    "@raikou/hooks": "0.0.14"
   },
   "publishConfig": {
     "access": "public"
