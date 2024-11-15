@@ -7,9 +7,19 @@ interface UseTransformedStylesInput {
 }
 
 export function useStylesTransform({ props, stylesCtx, themeName }: UseTransformedStylesInput) {
+  const isBrowser = () => typeof window !== 'undefined';
   const theme = useRaikouTheme();
   // @ts-ignore
-  const stylesTransform = (window as any).raikou_styles_transform.styles();
+  const stylesTransform = isBrowser()
+    ? (window as any).raikou_styles_transform.styles()
+    : undefined;
+
+  if (stylesTransform === undefined) {
+    return {
+      getTransformedStyles: () => [],
+      withStylesTransform: false,
+    };
+  }
 
   const getTransformedStyles = (styles: any[]) => {
     if (!stylesTransform) {

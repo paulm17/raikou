@@ -39,11 +39,14 @@ export function RaikouProvider({
   stylesTransform,
   getRootElement = () => document.documentElement,
 }: RaikouProviderProps) {
+  const isBrowser = () => typeof window !== 'undefined';
   const { theme: pigmentTheme } = useTheme();
   const theme = pigmentTheme.rawTheme as RaikouTheme;
 
   // @ts-ignore
-  (window as any).raikou_styles_transform = stylesTransform;
+  if (isBrowser()) {
+    (window as any).raikou_styles_transform = stylesTransform;
+  }
 
   useRespectReduceMotion({
     respectReducedMotion: theme?.respectReducedMotion || false,
