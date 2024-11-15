@@ -1,6 +1,6 @@
 {
   "name": "@raikou/charts",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "license": "MIT",
   "sideEffects": false,
   "main": "./cjs/index.cjs",
