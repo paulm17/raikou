@@ -12,6 +12,9 @@ const logger = createLogger('build-all-packages');
 export async function buildAllPackages() {
   let packages = await getPackagesBuildOrder();
   packages = sortPackages(packages);
+  packages = packages.filter(
+    (item) => !['@raikou-tests/core', '@raikou-tests/dates'].includes(item.packageJson.name!)
+  );
 
   const startTime = Date.now();
   logger.log('Building all packages...');
@@ -35,9 +38,9 @@ export async function buildAllPackages() {
 const priorityPackages = [
   '@raikou/hooks',
   '@raikou/ripple',
+  '@raikou/emotion',
   '@raikou/core',
   '@raikou/system',
-  '@raikou/emotion',
 ];
 
 function sortPackages(packages: any) {
