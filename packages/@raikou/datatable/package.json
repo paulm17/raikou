@@ -1,6 +1,6 @@
 {
   "name": "@raikou/datatable",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "The lightweight, dependency-free, dark-theme aware table component for your Raikou UI data-rich applications, featuring asynchronous data loading support, pagination, intuitive Gmail-style additive batch rows selection, column sorting, custom cell data rendering, row expansion, nesting, context menus, and much more",
   "license": "MIT",
   "sideEffects": false,
@@ -25,8 +25,8 @@
   },
   "dependencies": {
     "@hello-pangea/dnd": "^17.0.0",
-    "@raikou/core": "0.0.15",
-    "@raikou/hooks": "0.0.15",
+    "@raikou/core": "0.0.16",
+    "@raikou/hooks": "0.0.16",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
     "lodash": "^4.17.21"

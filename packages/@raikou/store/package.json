@@ -1,6 +1,6 @@
 {
   "name": "@raikou/store",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "license": "MIT",
   "sideEffects": false,
   "main": "./cjs/index.cjs",
