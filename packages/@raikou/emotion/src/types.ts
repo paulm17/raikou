@@ -1,5 +1,5 @@
 // import * as CSSType from 'csstype';
-import type { RaikouTheme } from '@raikou/core';
+import type { Theme as RaikouTheme } from '@stylefusion/react';
 import type { EmotionHelpers } from './create-styles';
 
 export type EmotionSx = CSSObject | ((theme: RaikouTheme, u: EmotionHelpers) => CSSObject);

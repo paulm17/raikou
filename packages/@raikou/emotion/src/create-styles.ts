@@ -1,5 +1,11 @@
 import { CSSObject } from '@emotion/serialize';
-import { em, px, RaikouBreakpoint, RaikouTheme, useRaikouTheme } from '@raikou/core';
+import {
+  em,
+  px,
+  Breakpoint as RaikouBreakpoint,
+  Theme as RaikouTheme,
+  useTheme,
+} from '@stylefusion/react';
 // prettier-ignore
 import { useCss } from './use-css';
 
@@ -37,7 +43,8 @@ export function createStyles<
   const getCssObject = typeof input === 'function' ? input : () => input;
 
   return function useStyles(params: Params) {
-    const theme = useRaikouTheme();
+    const pigmentTheme = useTheme();
+    const theme = pigmentTheme.theme as RaikouTheme;
     const helpers = getHelpers(theme);
     const cssObject: Record<string, any> = getCssObject(theme, params, helpers);
     const { css, cx } = useCss();

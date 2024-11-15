@@ -1,10 +1,11 @@
-import { useRaikouTheme } from '@raikou/core';
+import { Theme as RaikouTheme, useTheme } from '@stylefusion/react';
 import { getHelpers } from './create-styles';
 // prettier-ignore
 import { useCss } from './use-css';
 
 function sxTransform() {
-  const theme = useRaikouTheme();
+  const pigmentTheme = useTheme();
+  const theme = pigmentTheme.theme as RaikouTheme;
   const { css } = useCss();
 
   return (sx: any) => {
@@ -14,7 +15,8 @@ function sxTransform() {
 }
 
 function stylesTransform() {
-  const theme = useRaikouTheme();
+  const pigmentTheme = useTheme();
+  const theme = pigmentTheme.theme as RaikouTheme;
   const { css } = useCss();
 
   return (styles: any, payload: any) => {
