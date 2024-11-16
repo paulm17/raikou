@@ -1,4 +1,5 @@
 import { ThemeProvider } from 'next-themes';
+import { RaikouEmotionProvider } from '@raikou/emotion';
 // import type { RaikouColorScheme, RaikouThemeOverride } from "./theme.types";
 import { DEFAULT_THEME } from './default-theme';
 import { defaultCssVariablesResolver } from './RaikouCssVariables';
@@ -46,7 +47,7 @@ export function RaikouProvider({
       enableColorScheme
       enableSystem
     >
-      {children}
+      <RaikouEmotionProvider>{children}</RaikouEmotionProvider>
     </ThemeProvider>
   );
 }

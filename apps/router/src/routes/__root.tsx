@@ -1,6 +1,5 @@
 import { createRootRoute, Outlet } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
-import { RaikouEmotionProvider } from '@raikou/emotion';
 import { RaikouProvider } from '@raikou/system';
 
 import '@raikou/system/styles.css';
@@ -14,9 +13,7 @@ function RootComponent() {
   return (
     <>
       <RaikouProvider>
-        <RaikouEmotionProvider>
-          <Outlet />
-        </RaikouEmotionProvider>
+        <Outlet />
       </RaikouProvider>
       <TanStackRouterDevtools position="bottom-right" />
     </>
