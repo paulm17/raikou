@@ -22,6 +22,7 @@
     "*.css"
   ],
   "peerDependencies": {
+    "@raikou/emotion": "0.0.18",
     "@raikou/ripple": "0.0.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
@@ -36,6 +37,7 @@
   },
   "devDependencies": {
     "@raikou-tests/core": "workspace:*",
+    "@raikou/emotion": "workspace:*",
     "@raikou/hooks": "workspace:*",
     "@raikou/ripple": "workspace:*"
   },
