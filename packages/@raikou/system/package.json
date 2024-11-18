@@ -1,7 +1,7 @@
 {
   "name": "@raikou/system",
   "license": "MIT",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "main": "./cjs/index.cjs",
   "module": "./esm/index.mjs",
   "types": "./lib/index.d.ts",
@@ -22,11 +22,10 @@
     "*.css"
   ],
   "peerDependencies": {
-    "@raikou/emotion": "0.0.19",
-    "@raikou/hooks": "0.0.19",
+    "@raikou/emotion": "0.0.20",
+    "@raikou/hooks": "0.0.20",
     "react": "^18.2.0"
   },
-  "dependencies": {},
   "devDependencies": {
     "@raikou/emotion": "workspace:*",
     "@raikou/hooks": "workspace:*"

@@ -4388,7 +4388,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@raikou/core@npm:0.0.19, @raikou/core@workspace:*, @raikou/core@workspace:packages/@raikou/core":
+"@raikou/core@npm:0.0.20, @raikou/core@workspace:*, @raikou/core@workspace:packages/@raikou/core":
   version: 0.0.0-use.local
   resolution: "@raikou/core@workspace:packages/@raikou/core"
   dependencies:
@@ -4403,8 +4403,8 @@ __metadata:
     react-textarea-autosize: "npm:^8.5.4"
     type-fest: "npm:^4.26.1"
   peerDependencies:
-    "@raikou/emotion": 0.0.19
-    "@raikou/ripple": 0.0.19
+    "@raikou/emotion": 0.0.20
+    "@raikou/ripple": 0.0.20
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
@@ -4486,7 +4486,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@raikou/hooks@npm:0.0.19, @raikou/hooks@workspace:*, @raikou/hooks@workspace:packages/@raikou/hooks":
+"@raikou/hooks@npm:0.0.20, @raikou/hooks@workspace:*, @raikou/hooks@workspace:packages/@raikou/hooks":
   version: 0.0.0-use.local
   resolution: "@raikou/hooks@workspace:packages/@raikou/hooks"
   peerDependencies:
@@ -4498,8 +4498,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@raikou/loaders@workspace:packages/@raikou/loaders"
   dependencies:
-    "@raikou/core": "npm:0.0.19"
-    "@raikou/hooks": "npm:0.0.19"
+    "@raikou/core": "npm:0.0.20"
+    "@raikou/hooks": "npm:0.0.20"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -4510,8 +4510,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@raikou/modals@workspace:packages/@raikou/modals"
   dependencies:
-    "@raikou/core": "npm:0.0.19"
-    "@raikou/hooks": "npm:0.0.19"
+    "@raikou/core": "npm:0.0.20"
+    "@raikou/hooks": "npm:0.0.20"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -4525,7 +4525,7 @@ __metadata:
     "@raikou-tests/core": "workspace:*"
     "@raikou/core": "workspace:*"
     "@raikou/hooks": "workspace:*"
-    "@raikou/store": "npm:0.0.19"
+    "@raikou/store": "npm:0.0.20"
     react-transition-group: "npm:4.4.5"
   peerDependencies:
     react: ^18.2.0
@@ -4540,7 +4540,7 @@ __metadata:
     "@raikou-tests/core": "workspace:*"
     "@raikou/core": "workspace:*"
     "@raikou/hooks": "workspace:*"
-    "@raikou/store": "npm:0.0.19"
+    "@raikou/store": "npm:0.0.20"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -4566,14 +4566,14 @@ __metadata:
     "@raikou-tests/core": "workspace:*"
     "@raikou/core": "workspace:*"
     "@raikou/hooks": "workspace:*"
-    "@raikou/store": "npm:0.0.19"
+    "@raikou/store": "npm:0.0.20"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@raikou/store@npm:0.0.19, @raikou/store@workspace:packages/@raikou/store":
+"@raikou/store@npm:0.0.20, @raikou/store@workspace:packages/@raikou/store":
   version: 0.0.0-use.local
   resolution: "@raikou/store@workspace:packages/@raikou/store"
   peerDependencies:
@@ -4587,10 +4587,9 @@ __metadata:
   dependencies:
     "@raikou/emotion": "workspace:*"
     "@raikou/hooks": "workspace:*"
-    next-themes: "npm:^0.4.3"
   peerDependencies:
-    "@raikou/emotion": 0.0.19
-    "@raikou/hooks": 0.0.19
+    "@raikou/emotion": 0.0.20
+    "@raikou/hooks": 0.0.20
     react: ^18.2.0
   languageName: unknown
   linkType: soft
@@ -4603,8 +4602,8 @@ __metadata:
     "@raikou/core": "workspace:*"
     "@raikou/hooks": "workspace:*"
   peerDependencies:
-    "@raikou/core": 0.0.19
-    "@raikou/hooks": 0.0.19
+    "@raikou/core": 0.0.20
+    "@raikou/hooks": 0.0.20
     "@tiptap/extension-link": ">=2.1.12"
     "@tiptap/react": ">=2.1.12"
     react: ^18.2.0
@@ -18279,16 +18278,6 @@ __metadata:
   dependencies:
     type-fest: "npm:^2.5.1"
   checksum: 10c0/9faec009b8b403efbc407f45306d07de5cc58e09df5b00bdd55b01384cd18b0fd29a97aef6915428ba3b5abb0a5c132c3507468c0c3c101e8d737c1337386786
-  languageName: node
-  linkType: hard
-
-"next-themes@npm:^0.4.3":
-  version: 0.4.3
-  resolution: "next-themes@npm:0.4.3"
-  peerDependencies:
-    react: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
-    react-dom: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
-  checksum: 10c0/81dbe9efed2b10169e4ecd2ff59f3dedc091518c92a79354b863ccdcc444a061125de975af5c0c123ce9a1ebd7b20b05a1fdbfcf2aaeeb337fec03fe38fd8cb0
   languageName: node
   linkType: hard
 
