@@ -1,5 +1,6 @@
 import path from 'node:path';
 import alias, { Alias } from '@rollup/plugin-alias';
+import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import { RollupOptions } from 'rollup';
@@ -28,6 +29,7 @@ export function createPackageConfig(packagePath: string): RollupOptions {
     postcss({
       extract: true,
     }),
+    commonjs(),
   ];
 
   return {
