@@ -1,6 +1,6 @@
 {
   "name": "@raikou/emotion",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "license": "MIT",
   "sideEffects": false,
   "main": "./cjs/index.cjs",
