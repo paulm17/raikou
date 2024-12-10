@@ -1,7 +1,22 @@
 {
   "name": "@raikou/modals",
-  "version": "0.0.20",
+  "version": "0.0.21",
+  "description": "Modals manager based on Raikou components",
+  "homepage": "https://raikou.dev/x/modals/",
   "license": "MIT",
+  "author": "Vitaly Rtishchev <rtivital@gmail.com>",
+  "keywords": [
+    "components",
+    "confirm",
+    "frontend",
+    "library",
+    "modal",
+    "next",
+    "nextjs",
+    "react",
+    "ui",
+    "ui-kit"
+  ],
   "sideEffects": false,
   "main": "./cjs/index.cjs",
   "module": "./esm/index.mjs",
@@ -18,15 +33,19 @@
       }
     }
   },
+  "repository": {
+    "url": "https://github.com/raikoudev/raikou.git",
+    "type": "git",
+    "directory": "packages/@raikou/modals"
+  },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@raikou/core": "0.0.21",
+    "@raikou/hooks": "0.0.21",
+    "react": "^18.x || ^19.x",
+    "react-dom": "^18.x || ^19.x"
   },
-  "dependencies": {
-    "@raikou/core": "0.0.20",
-    "@raikou/hooks": "0.0.20"
-  },
-  "publishConfig": {
-    "access": "public"
+  "devDependencies": {
+    "@raikou/core": "workspace:*",
+    "@raikou/hooks": "workspace:*"
   }
 }

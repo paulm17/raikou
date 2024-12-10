@@ -1,6 +1,10 @@
 # Raikou modals manager
 
+[![npm](https://img.shields.io/npm/dm/@raikou/modals)](https://www.npmjs.com/package/@raikou/modals)
+
 Manage modals state
+
+[View documentation](https://raikou.dev/)
 
 ## Installation
 

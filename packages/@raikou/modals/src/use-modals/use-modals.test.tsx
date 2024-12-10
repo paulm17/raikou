@@ -1,6 +1,6 @@
 import { PropsWithChildren, useEffect } from 'react';
 import { render, renderHook, screen } from '@testing-library/react';
-import { RaikouProvider } from '@raikou/system';
+import { RaikouProvider } from '@raikou/core';
 import { ContextModalProps } from '../context';
 import { ModalsProvider } from '../ModalsProvider';
 import { useModals } from './use-modals';
