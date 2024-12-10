@@ -15,6 +15,7 @@ import {
   OptionalPortal,
   PortalProps,
   rem,
+  RemoveScroll,
   StylesApiProps,
   useProps,
   useRaikouTheme,
@@ -225,11 +226,19 @@ export const Notifications = factory<NotificationsFactory>((_props, ref) => {
         <TransitionGroup>{groupedComponents['top-left']}</TransitionGroup>
       </Box>
 
-      <Box {...getStyles('root')} data-position="top-right" {...others}>
+      <Box
+        {...getStyles('root', { className: RemoveScroll.classNames.fullWidth })}
+        data-position="top-right"
+        {...others}
+      >
         <TransitionGroup>{groupedComponents['top-right']}</TransitionGroup>
       </Box>
 
-      <Box {...getStyles('root')} data-position="bottom-right" {...others}>
+      <Box
+        {...getStyles('root', { className: RemoveScroll.classNames.fullWidth })}
+        data-position="bottom-right"
+        {...others}
+      >
         <TransitionGroup>{groupedComponents['bottom-right']}</TransitionGroup>
       </Box>
 
