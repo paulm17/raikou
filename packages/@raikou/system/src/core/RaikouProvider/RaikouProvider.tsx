@@ -1,4 +1,4 @@
-// import { ThemeProvider } from 'next-themes';
+import { ThemeProvider } from 'next-themes';
 import { RaikouEmotionProvider } from '@raikou/emotion';
 // import type { RaikouColorScheme, RaikouThemeOverride } from "./theme.types";
 import { DEFAULT_THEME } from './default-theme';
@@ -28,7 +28,7 @@ suppressNextjsWarning();
 
 export function RaikouProvider({
   children,
-  // themeStorageKey = 'raikou-color-scheme',
+  themeStorageKey = 'raikou-color-scheme',
   getRootElement = () => document.documentElement,
 }: RaikouProviderProps) {
   const { theme: pigmentTheme } = useTheme();
@@ -40,15 +40,15 @@ export function RaikouProvider({
   });
 
   return (
-    // <ThemeProvider
-    //   storageKey={themeStorageKey}
-    //   themes={['light', 'dark']}
-    //   attribute={`data-${themeStorageKey}`}
-    //   enableColorScheme
-    //   enableSystem
-    // >
-    <RaikouEmotionProvider>{children}</RaikouEmotionProvider>
-    // </ThemeProvider>
+    <ThemeProvider
+      storageKey={themeStorageKey}
+      themes={['light', 'dark']}
+      attribute={`data-${themeStorageKey}`}
+      enableColorScheme
+      enableSystem
+    >
+      <RaikouEmotionProvider>{children}</RaikouEmotionProvider>
+    </ThemeProvider>
   );
 }
 
