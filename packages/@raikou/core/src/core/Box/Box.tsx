@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import cx from 'clsx';
+import { EmotionSx, emotionTransform } from '@raikou/emotion';
 import { createPolymorphicComponent } from '../factory';
 import { InlineStyles } from '../InlineStyles';
 import { RaikouBreakpoint, useRaikouTheme } from '../RaikouProvider';
@@ -45,6 +46,9 @@ export interface BoxProps extends RaikouStyleProps {
 
   /** Element modifiers transformed into `data-` attributes, for example, `{ 'data-size': 'xl' }`, falsy values are removed */
   mod?: BoxMod;
+
+  /** Emotion styles for stx, styles prop */
+  stx?: EmotionSx;
 }
 
 export type ElementProps<
@@ -87,6 +91,8 @@ const _Box = forwardRef<
     const Element = component || 'div';
 
     const { styleProps, rest } = extractStyleProps(others);
+    const stylesTransform = emotionTransform.stx !== undefined ? emotionTransform.stx() : undefined;
+    const transformedSx = stylesTransform?.(styleProps.stx);
     const responsiveClassName = useRandomClassName();
     const parsedStyleProps = parseStyleProps({
       styleProps,
@@ -102,7 +108,7 @@ const _Box = forwardRef<
         vars: __vars,
         styleProps: parsedStyleProps.inlineStyles,
       }),
-      className: cx(className, {
+      className: cx(className, transformedSx, {
         [responsiveClassName]: parsedStyleProps.hasResponsiveStyles,
         'raikou-light-hidden': lightHidden,
         'raikou-dark-hidden': darkHidden,

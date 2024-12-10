@@ -3,7 +3,7 @@ import type { RaikouStyleProps } from '../style-props.types';
 
 export function extractStyleProps<T extends Record<string, any>>(
   others: RaikouStyleProps & T
-): { styleProps: RaikouStyleProps & { sx?: any }; rest: T } {
+): { styleProps: RaikouStyleProps & { stx?: any }; rest: T } {
   const {
     m,
     mx,
@@ -58,7 +58,7 @@ export function extractStyleProps<T extends Record<string, any>>(
     visibleFrom,
     lightHidden,
     darkHidden,
-    sx,
+    stx,
     ...rest
   } = others;
 
@@ -116,7 +116,7 @@ export function extractStyleProps<T extends Record<string, any>>(
     visibleFrom,
     lightHidden,
     darkHidden,
-    sx,
+    stx,
   });
 
   return { styleProps, rest: rest as unknown as T };

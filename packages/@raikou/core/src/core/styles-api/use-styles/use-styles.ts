@@ -80,7 +80,7 @@ export function useStyles<Payload extends FactoryPayload>({
       props,
       stylesCtx,
       rootSelector,
-      styles: {},
+      styles,
       style,
       vars,
       varsResolver,

@@ -76,7 +76,7 @@ export function parseStyleProps({
         if (
           (styleProp as string) === 'hiddenFrom' ||
           (styleProp as string) === 'visibleFrom' ||
-          (styleProp as string) === 'sx'
+          (styleProp as string) === 'stx'
         ) {
           return acc;
         }

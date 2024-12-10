@@ -28,7 +28,7 @@ export type StylesApiRecord<
         | ((
             theme: RaikouTheme,
             props: Payload['props'],
-            ctx: Payload['ctx']
+            ctx: Payload['ctx'] | any
           ) => StylesRecord<Payload['stylesNames'], DataType>)
     : never;
 
