@@ -1,8 +1,8 @@
 {
   "name": "raikou-a91763c0e2",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "Raikou Components Monorepo",
-  "packageManager": "yarn@4.5.0",
+  "packageManager": "yarn@4.5.3",
   "license": "MIT",
   "private": true,
   "author": "Paul Moss (fork)",
@@ -52,7 +52,7 @@
     "@emotion/serialize": "^1.3.2",
     "@emotion/server": "^11.11.0",
     "@emotion/utils": "^1.4.1",
-    "@floating-ui/react": "^0.26.27",
+    "@floating-ui/react": "^0.26.28",
     "@stylefusion/react": "^0.0.27",
     "@tabler/icons-react": "^3.3.0",
     "@tiptap/core": "^2.9.1",
@@ -73,7 +73,7 @@
     "@tiptap/pm": "^2.9.1",
     "@tiptap/react": "^2.9.1",
     "@tiptap/starter-kit": "^2.9.1",
-    "chroma-js": ">=2.4.4",
+    "chroma-js": "^3.1.2",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
     "embla-carousel": "^7.1.0",
@@ -85,14 +85,14 @@
     "klona": "^2.0.6",
     "lowlight": "^3.1.0",
     "react": "^18.3.1",
-    "react-dropzone-esm": "^15.0.1",
+    "react-dropzone-esm": "^15.2.0",
     "react-imask": "^7.6.1",
     "react-number-format": "^5.4.2",
     "react-remove-scroll": "^2.6.0",
-    "react-textarea-autosize": "^8.5.4",
+    "react-textarea-autosize": "^8.5.5",
     "react-transition-group": "4.4.5",
     "recharts": "^2.13.3",
-    "type-fest": "^4.26.1"
+    "type-fest": "^4.27.0"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
@@ -168,7 +168,8 @@
     "vite-tsconfig-paths": "^5.1.2",
     "vitest": "^2.1.4",
     "wrangler": "^3.86.0",
-    "yargs": "^17.7.2"
+    "yargs": "^17.7.2",
+    "zx": "^8.2.2"
   },
   "resolutions": {
     "prosemirror-model": "1.18.1",
