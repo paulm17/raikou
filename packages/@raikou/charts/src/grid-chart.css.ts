@@ -24,10 +24,6 @@ export const GridChartRootStyle = css(({ theme }) => ({
     fontFamily: 'var(--raikou-font-family)',
     color: 'var(--chart-text-color, var(--raikou-color-dimmed))',
   },
-
-  "& :_where([data-orientation='vertical'])": {
-    '--chart-bar-label-color': 'var(--raikou-color-white)',
-  },
 }));
 
 export const GridChartContainerStyle = css({
