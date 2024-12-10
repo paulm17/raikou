@@ -48,7 +48,7 @@ const defaultProps: Partial<MonthPickerInputProps> = {
 
 type MonthPickerInputComponent = (<Type extends DatePickerType = 'default'>(
   props: MonthPickerInputProps<Type> & { ref?: React.ForwardedRef<HTMLButtonElement> }
-) => JSX.Element) & {
+) => React.JSX.Element) & {
   displayName?: string;
 } & RaikouComponentStaticProperties<MonthPickerInputFactory>;
 
@@ -136,9 +136,10 @@ export const MonthPickerInput: MonthPickerInputComponent = factory<MonthPickerIn
           type={type}
           value={_value}
           defaultDate={
-            Array.isArray(_value)
+            calendarProps.defaultDate ||
+            (Array.isArray(_value)
               ? _value[0] || getDefaultClampedDate({ maxDate, minDate })
-              : _value || getDefaultClampedDate({ maxDate, minDate })
+              : _value || getDefaultClampedDate({ maxDate, minDate }))
           }
           onChange={setValue}
           locale={locale}

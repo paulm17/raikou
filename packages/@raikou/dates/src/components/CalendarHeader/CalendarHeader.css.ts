@@ -9,7 +9,7 @@ export const CalendarHeaderStyle = css({
   '--dch-control-size': 'var(--dch-control-size-sm)',
 
   display: 'flex',
-  maxWidth: 'calc(var(--dch-control-size) * 7 + rem(7px))',
+  maxWidth: 'calc(var(--dch-control-size) * 8 + rem(7px))',
   marginBottom: 'var(--raikou-spacing-xs)',
 });
 

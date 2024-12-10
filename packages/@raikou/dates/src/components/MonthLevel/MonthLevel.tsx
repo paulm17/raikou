@@ -77,6 +77,7 @@ export const MonthLevel = factory<MonthLevelFactory>((_props, ref) => {
     __onDayMouseEnter,
     withCellSpacing,
     highlightToday,
+    withWeekNumbers,
 
     // CalendarHeader settings
     __preventFocus,
@@ -181,11 +182,11 @@ export const MonthLevel = factory<MonthLevelFactory>((_props, ref) => {
         static={isStatic}
         withCellSpacing={withCellSpacing}
         highlightToday={highlightToday}
+        withWeekNumbers={withWeekNumbers}
         {...stylesApiProps}
       />
     </Box>
   );
 });
 
-MonthLevel.classes = { ...Month.classes, ...CalendarHeader.classes };
 MonthLevel.displayName = '@raikou/dates/MonthLevel';

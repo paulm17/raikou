@@ -45,7 +45,7 @@ const defaultProps: Partial<YearPickerInputProps> = {
 
 type YearPickerInputComponent = (<Type extends DatePickerType = 'default'>(
   props: YearPickerInputProps<Type> & { ref?: React.ForwardedRef<HTMLButtonElement> }
-) => JSX.Element) & {
+) => React.JSX.Element) & {
   displayName?: string;
 } & RaikouComponentStaticProperties<YearPickerInputFactory>;
 
@@ -131,10 +131,11 @@ export const YearPickerInput: YearPickerInputComponent = factory<YearPickerInput
           type={type}
           value={_value}
           defaultDate={
-            Array.isArray(_value)
+            calendarProps.defaultDate ||
+            (Array.isArray(_value)
               ? _value[0] ||
                 getDefaultClampedDate({ maxDate, minDate, timezone: ctx.getTimezone() })
-              : _value || getDefaultClampedDate({ maxDate, minDate, timezone: ctx.getTimezone() })
+              : _value || getDefaultClampedDate({ maxDate, minDate, timezone: ctx.getTimezone() }))
           }
           onChange={setValue}
           locale={locale}
