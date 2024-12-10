@@ -5,7 +5,8 @@
     "./packages/@raikou-tests/*/src",
     "./packages/@docs/*/src",
     "./packages/@raikou/*/src",
-    "./apps/*"
+    "./apps/*",
+    "apps/router/emotion.d.ts"
   ],
   "exclude": [
     "node_modules",
@@ -17,7 +18,7 @@
     "./packages/@docs/*/lib/**/*",
     "./packages/@raikou/*/lib/**/*",
     "./packages/@raikou/*/esm/**/*",
-    "./packages/@raikou/*/cjs/**/*",
+    "./packages/@raikou/*/cjs/**/*"
   ],
   "compilerOptions": {
     "types": ["node", "jest", "@testing-library/jest-dom"],
