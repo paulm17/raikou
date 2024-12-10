@@ -93,34 +93,34 @@ export const RichTextEditorContentStyle = css(({ theme }) => ({
     },
 
     [`
-      & .hljs-variable, 
-      & .hljs-template-variable, 
-      & .hljs-attribute, 
-      & .hljs-tag, 
-      & .hljs-regexp, 
-      & .hljs-link, 
-      & .hljs-name, 
-      & .hljs-selector-id, 
+      & .hljs-variable,
+      & .hljs-template-variable,
+      & .hljs-attribute,
+      & .hljs-tag,
+      & .hljs-regexp,
+      & .hljs-link,
+      & .hljs-name,
+      & .hljs-selector-id,
       & .hljs-selector-class
     `]: {
       color: 'var(--code-color-var)',
     },
 
     [`
-      & .hljs-number, 
-      & .hljs-meta, 
-      & .hljs-built_in, 
-      & .hljs-builtin-name, 
-      & .hljs-literal, 
-      & .hljs-type, 
+      & .hljs-number,
+      & .hljs-meta,
+      & .hljs-built_in,
+      & .hljs-builtin-name,
+      & .hljs-literal,
+      & .hljs-type,
       & .hljs-params
     `]: {
       color: 'var(--code-color-number)',
     },
 
     [`
-      & .hljs-string, 
-      & .hljs-symbol, 
+      & .hljs-string,
+      & .hljs-symbol,
       & .hljs-bullet
     `]: {
       color: 'var(--code-color-var)',
@@ -183,7 +183,7 @@ export const RichTextEditorControlStyle = css(({ theme }) => ({
       }),
     },
 
-    '&:_where([data-interactive])': {
+    '&:_where([data-interactive]):not([data-disabled])': {
       cursor: 'pointer',
 
       ...theme.applyMixin('hover', {
@@ -216,19 +216,19 @@ export const RichTextEditorControlsGroupStyle = css({
   display: 'flex',
   backgroundColor: 'var(--raikou-color-body)',
 
-  '& [data-rich-text-editor-control]': {
+  '&:_where([data-rich-text-editor-control])': {
     borderRadius: 0,
 
-    '&:not(:last-of-type)': {
+    '&:_where(:not(:last-of-type))': {
       borderInlineEndWidth: 0,
     },
 
-    '&:last-of-type': {
+    '&:_where(:last-of-type)': {
       borderStartEndRadius: 'var(--raikou-radius-default)',
       borderEndEndRadius: 'var(--raikou-radius-default)',
     },
 
-    '&:first-of-type': {
+    '&:_where(&:first-of-type)': {
       borderStartStartRadius: 'var(--raikou-radius-default)',
       borderEndStartRadius: 'var(--raikou-radius-default)',
     },
