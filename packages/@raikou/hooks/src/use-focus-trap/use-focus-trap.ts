@@ -1,11 +1,9 @@
 import { useCallback, useEffect, useRef } from 'react';
-import { createAriaHider } from './create-aria-hider';
 import { scopeTab } from './scope-tab';
 import { FOCUS_SELECTOR, focusable, tabbable } from './tabbable';
 
 export function useFocusTrap(active = true): (instance: HTMLElement | null) => void {
   const ref = useRef<HTMLElement | null>();
-  const restoreAria = useRef<(() => void) | null>(null);
 
   const focusNode = (node: HTMLElement) => {
     let focusElement: HTMLElement | null = node.querySelector('[data-autofocus]');
@@ -23,7 +21,7 @@ export function useFocusTrap(active = true): (instance: HTMLElement | null) => v
     } else if (process.env.NODE_ENV === 'development') {
       // eslint-disable-next-line no-console
       console.warn(
-        '[@raikou/hooks/use-focus-trap] Failed to find focusable element within provided node',
+        '[@mantine/hooks/use-focus-trap] Failed to find focusable element within provided node',
         node
       );
     }
@@ -36,14 +34,9 @@ export function useFocusTrap(active = true): (instance: HTMLElement | null) => v
       }
 
       if (node === null) {
-        if (restoreAria.current) {
-          restoreAria.current();
-          restoreAria.current = null;
-        }
         return;
       }
 
-      restoreAria.current = createAriaHider(node);
       if (ref.current === node) {
         return;
       }
@@ -55,7 +48,7 @@ export function useFocusTrap(active = true): (instance: HTMLElement | null) => v
             focusNode(node);
           } else if (process.env.NODE_ENV === 'development') {
             // eslint-disable-next-line no-console
-            console.warn('[@raikou/hooks/use-focus-trap] Ref node is not part of the dom', node);
+            console.warn('[@mantine/hooks/use-focus-trap] Ref node is not part of the dom', node);
           }
         });
 
@@ -81,13 +74,7 @@ export function useFocusTrap(active = true): (instance: HTMLElement | null) => v
     };
 
     document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-
-      if (restoreAria.current) {
-        restoreAria.current();
-      }
-    };
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, [active]);
 
   return setRef;
