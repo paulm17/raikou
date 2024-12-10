@@ -1,5 +1,5 @@
-// import * as CSSType from 'csstype';
-import type { Theme as RaikouTheme } from '@stylefusion/react';
+import * as CSSType from 'csstype';
+import type { RaikouTheme } from '@raikou/core';
 import type { EmotionHelpers } from './create-styles';
 
 export type EmotionSx = CSSObject | ((theme: RaikouTheme, u: EmotionHelpers) => CSSObject);
@@ -16,6 +16,7 @@ export interface CSS {
   (...args: CSSInterpolation[]): string;
 }
 
+// @ts-ignore
 export interface CSSObject
   extends CSSPropertiesWithMultiValues,
     CSSPseudos,
@@ -26,16 +27,12 @@ export type CSSTssSpecials = {
   ref?: string;
 };
 
-// export type CSSProperties = CSSType.PropertiesFallback<number | string>;
-export type CSSProperties = {
-  [K in any]: any;
-};
+export type CSSProperties = CSSType.PropertiesFallback<number | string>;
 export type CSSPropertiesWithMultiValues = {
   [K in keyof CSSProperties]: CSSProperties[K] | Array<Extract<CSSProperties[K], string>>;
 };
 
-// export type CSSPseudos = { [K in CSSType.Pseudos]?: CSSObject };
-export type CSSPseudos = { [K in any]?: CSSObject };
+export type CSSPseudos = { [K in CSSType.Pseudos]?: CSSObject };
 
 export interface ArrayCSSInterpolation extends Array<CSSInterpolation> {}
 

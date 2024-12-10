@@ -8,8 +8,8 @@ function sxTransform() {
   const theme = pigmentTheme.theme as RaikouTheme;
   const { css } = useCss();
 
-  return (sx: any) => {
-    const parsedSx = typeof sx === 'function' ? sx(theme, getHelpers(theme)) : sx;
+  return (stx: any) => {
+    const parsedSx = typeof stx === 'function' ? stx(theme, getHelpers(theme)) : stx;
     return !parsedSx ? '' : css(parsedSx);
   };
 }
@@ -36,11 +36,11 @@ function stylesTransform() {
 }
 
 interface RaikouStylesTransform {
-  sx?: () => (sx: any) => string;
+  stx?: () => (stx: any) => string;
   styles?: () => (styles: any, payload: any) => Record<string, string>;
 }
 
 export const emotionTransform: RaikouStylesTransform = {
-  sx: sxTransform,
+  stx: sxTransform,
   styles: stylesTransform,
 };
