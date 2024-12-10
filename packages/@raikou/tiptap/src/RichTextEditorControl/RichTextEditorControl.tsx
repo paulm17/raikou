@@ -5,7 +5,6 @@ import {
   ElementProps,
   factory,
   Factory,
-  rem,
   UnstyledButton,
   useProps,
 } from '@raikou/core';
@@ -83,11 +82,15 @@ export interface RichTextEditorControlBaseProps extends RichTextEditorControlPro
 export const RichTextEditorControlBase = forwardRef<
   HTMLButtonElement,
   RichTextEditorControlBaseProps
->(({ className, icon: Icon, ...others }: any, ref) => (
-  <RichTextEditorControl ref={ref} {...others}>
-    <Icon style={{ width: rem(16), height: rem(16) }} />
-  </RichTextEditorControl>
-));
+>(({ className, icon: Icon, ...others }: any, ref) => {
+  const ctx = useRichTextEditorContext();
+  return (
+    <RichTextEditorControl ref={ref} {...others}>
+      {/* @ts-ignore */}
+      <Icon {...ctx.getStyles('controlIcon')} />
+    </RichTextEditorControl>
+  );
+});
 
 RichTextEditorControlBase.displayName = '@Raikou/tiptap/RichTextEditorControlBase';
 
@@ -107,7 +110,7 @@ export function createControl({
   isDisabled,
 }: CreateControlProps) {
   const Control = forwardRef<HTMLButtonElement, RichTextEditorControlBaseProps>((props, ref) => {
-    const { editor, labels } = useRichTextEditorContext();
+    const { editor, labels, variant } = useRichTextEditorContext();
     const _label = labels[label] as string;
     return (
       <RichTextEditorControlBase
@@ -119,6 +122,7 @@ export function createControl({
         onClick={() => (editor as any)?.chain().focus()[operation.name](operation.attributes).run()}
         icon={props.icon || icon}
         disabled={isDisabled?.(editor) || false}
+        variant={variant || 'default'}
       />
     );
   });

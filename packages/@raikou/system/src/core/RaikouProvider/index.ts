@@ -6,3 +6,4 @@ export { getPigmentCSSTheme, RaikouProvider } from './RaikouProvider';
 export { defaultCssVariablesResolver } from './RaikouCssVariables/default-css-variables-resolver';
 export type { CSSVariablesResolver } from './RaikouCssVariables/default-css-variables-resolver';
 export type { RaikouProviderProps } from './RaikouProvider';
+export { raikouHtmlProps } from './raikou-html-props';

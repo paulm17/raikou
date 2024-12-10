@@ -14,6 +14,7 @@ export const ROLLUP_EXCLUDE_USE_CLIENT = [
   'core/RaikouProvider/default-theme',
   'core/RaikouProvider/merge-raikou-theme/merge-raikou-theme',
   'core/RaikouProvider/RaikouCssVariables/virtual-color/virtual-color',
+  'system/RaikouProvider/raikou-html-props',
   'theme-to-vars',
 ].reduce<string[]>((acc, name) => {
   acc.push(`${name}.js`, `${name}.mjs`, `${name}.cjs`);

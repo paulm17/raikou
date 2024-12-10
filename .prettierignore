@@ -1,6 +1,1 @@
 *.d.ts
-packages/*/*/styles.css
-packages/*/*/styles.layer.css
-packages/*/*/styles/*.css
-docs/.next
-docs/out

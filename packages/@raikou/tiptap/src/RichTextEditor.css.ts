@@ -19,6 +19,7 @@ export const RichTextEditorTypographyStylesProviderStyle = css({
 
   '& li > p': {
     margin: 0,
+    display: 'inline-block',
   },
 
   '& ul li, & ol li': {
@@ -150,23 +151,41 @@ export const RichTextEditorLinkEditorDropdownStyle = css({
 
 export const RichTextEditorControlStyle = css(({ theme }) => ({
   '&&': {
-    minWidth: '26px',
-    height: '26px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    border: '1px solid',
     borderRadius: 'var(--raikou-radius-default)',
     cursor: 'default',
+
+    "&:_where([data-variant='default'])": {
+      border: '1px solid',
+      minWidth: '26px',
+      height: '26px',
+    },
+
+    "&:_where([data-variant='subtle'])": {
+      '--control-icon-size': '20px',
+      minWidth: '32px',
+      height: '32px',
+    },
 
     ...theme.applyStyles('light', {
       backgroundColor: theme.colors.white,
       borderColor: theme.colors.gray[4],
+      color: theme.colors.gray[4],
     }),
 
     ...theme.applyStyles('dark', {
-      backgroundColor: theme.colors.dark[6],
       borderColor: theme.colors.dark[4],
+      color: theme.colors.dark[1],
+
+      "&:_where([data-variant='default'])": {
+        backgroundColor: theme.colors.dark[6],
+      },
+
+      "&:_where([data-variant='subtle'])": {
+        backgroundColor: theme.colors.dark[7],
+      },
     }),
 
     '&:_where([data-disabled])': {
@@ -187,6 +206,8 @@ export const RichTextEditorControlStyle = css(({ theme }) => ({
       cursor: 'pointer',
 
       ...theme.applyMixin('hover', {
+        color: 'var(--mantine-color-bright)',
+
         '&:hover': {
           ...theme.applyStyles('light', {
             backgroundColor: theme.colors.gray[0],
@@ -212,11 +233,16 @@ export const RichTextEditorControlStyle = css(({ theme }) => ({
   },
 }));
 
+export const RichTextEditorControlIconStyle = css({
+  width: 'var(--control-icon-size, 16px)',
+  height: 'var(--control-icon-size, 16px)',
+});
+
 export const RichTextEditorControlsGroupStyle = css({
   display: 'flex',
   backgroundColor: 'var(--raikou-color-body)',
 
-  '&:_where([data-rich-text-editor-control])': {
+  "&:_where([data-variant='default'])": {
     borderRadius: 0,
 
     '&:_where(:not(:last-of-type))': {
@@ -287,13 +313,21 @@ export const RichTextEditorToolbarStyle = css(({ theme }) => ({
   alignItems: 'center',
   flexWrap: 'wrap',
   gap: 'var(--raikou-spacing-sm)',
-  top: 'var(--rte-sticky-offset, 0)',
+  top: 'var(--rte-sticky-offset, 0px)',
   backgroundColor: 'var(--raikou-color-body)',
   zIndex: 1,
   borderStartEndRadius: 'var(--raikou-radius-default)',
   borderStartStartRadius: 'var(--raikou-radius-default)',
   borderBottom: '1px solid',
-  padding: 'var(--raikou-spacing-xs) var(--raikou-spacing-md)',
+
+  "&:_where([data-variant='default'])": {
+    padding: 'var(--raikou-spacing-xs) var(--raikou-spacing-md)',
+  },
+
+  "&:_where([data-variant='subtle'])": {
+    padding: '4px',
+    rowGap: 0,
+  },
 
   ...theme.applyStyles('light', {
     borderColor: theme.colors.gray[4],

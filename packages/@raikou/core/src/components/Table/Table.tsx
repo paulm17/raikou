@@ -36,6 +36,8 @@ import {
   TableTrStyle,
 } from './Table.css';
 
+export type TableVariant = 'default' | 'vertical';
+
 export type TableStylesNames =
   | 'table'
   | 'thead'
@@ -110,6 +112,9 @@ export interface TableProps extends BoxProps, StylesApiProps<TableFactory>, Elem
 
   /** Offset from top at which `Table.Thead` should become sticky, `0` by default */
   stickyHeaderOffset?: number | string;
+
+  /** Determines whether `font-variant-numeric: tabular-nums` style should be set, `false` by default */
+  tabularNums?: boolean;
 }
 
 export type TableFactory = Factory<{
@@ -196,6 +201,7 @@ export const Table = factory<TableFactory>((_props, ref) => {
     stickyHeader,
     stickyHeaderOffset,
     mod,
+    tabularNums,
     ...others
   } = props;
 
@@ -237,7 +243,7 @@ export const Table = factory<TableFactory>((_props, ref) => {
         component="table"
         variant={variant}
         ref={ref}
-        mod={[{ 'data-with-table-border': withTableBorder }, mod]}
+        mod={[{ 'data-with-table-border': withTableBorder, 'data-tabular-nums': tabularNums }, mod]}
         {...getStyles('table')}
         {...others}
       >

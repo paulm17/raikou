@@ -23,6 +23,7 @@ import { Loader, LoaderProps } from '../Loader';
 import { RaikouTransition, Transition } from '../Transition';
 import { UnstyledButton } from '../UnstyledButton';
 import { ButtonGroup } from './ButtonGroup/ButtonGroup';
+import { ButtonGroupSection } from './ButtonGroupSection/ButtonGroupSection';
 import {
   ButtonInnerStyle,
   ButtonLabelStyle,
@@ -120,6 +121,7 @@ export type ButtonFactory = PolymorphicFactory<{
   variant: ButtonVariant;
   staticComponents: {
     Group: typeof ButtonGroup;
+    GroupSection: typeof ButtonGroupSection;
   };
 }>;
 
@@ -322,3 +324,4 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, ref) => {
 
 Button.displayName = '@raikou/core/Button';
 Button.Group = ButtonGroup;
+Button.GroupSection = ButtonGroupSection;

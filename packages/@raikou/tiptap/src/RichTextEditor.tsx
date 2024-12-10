@@ -31,6 +31,8 @@ import {
   RichTextEditorTypographyStylesProviderStyle,
 } from './RichTextEditor.css';
 
+export type RichTextEditorVariant = 'default' | 'subtle';
+
 export type RichTextEditorStylesNames =
   | 'linkEditorSave'
   | 'linkEditorDropdown'
@@ -68,6 +70,7 @@ export type RichTextEditorFactory = Factory<{
   props: RichTextEditorProps;
   ref: HTMLDivElement;
   stylesNames: RichTextEditorStylesNames;
+  variant: RichTextEditorVariant;
   staticComponents: {
     Content: typeof RichTextEditorContent;
     Control: typeof RichTextEditorControl;
@@ -113,6 +116,7 @@ export type RichTextEditorFactory = Factory<{
 const defaultProps: Partial<RichTextEditorProps> = {
   withCodeHighlightStyles: true,
   withTypographyStyles: true,
+  variant: 'default',
 };
 
 export const RichTextEditor = factory<RichTextEditorFactory>((_props, ref) => {
@@ -129,6 +133,7 @@ export const RichTextEditor = factory<RichTextEditorFactory>((_props, ref) => {
     withTypographyStyles,
     labels,
     children,
+    variant,
     ...others
   } = props;
 
@@ -167,6 +172,7 @@ export const RichTextEditor = factory<RichTextEditorFactory>((_props, ref) => {
         withCodeHighlightStyles,
         withTypographyStyles,
         unstyled,
+        variant,
       }}
     >
       <Box {...getStyles('root')} {...others} ref={ref}>

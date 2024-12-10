@@ -96,6 +96,45 @@ export const ActionIconIconStyle = css({
   height: '100%',
 });
 
+export const ActionIconGroupSectionStyle = css({
+  "--section-height-xs": "18px",
+  "--section-height-sm": "22px",
+  "--section-height-md": "28px",
+  "--section-height-lg": "34px",
+  "--section-height-xl": "44px",
+
+  "--section-height-input-xs": "30px",
+  "--section-height-input-sm": "36px",
+  "--section-height-input-md": "42px",
+  "--section-height-input-lg": "50px",
+  "--section-height-input-xl": "60px",
+
+  "--section-padding-x-xs": "6px",
+  "--section-padding-x-sm": "8px",
+  "--section-padding-x-md": "10px",
+  "--section-padding-x-lg": "12px",
+  "--section-padding-x-xl": "16px",
+
+  "--section-height": "var(--section-height-sm)",
+  "--section-padding-x": "var(--section-padding-x-sm)",
+  "--section-color": "var(--raikou-color-white)",
+
+  fontWeight: 600,
+  width: 'auto',
+  borderRadius: 'var(--section-radius, var(--raikou-radius-default))',
+  fontSize: 'var(--section-fz, var(--raikou-font-size-sm))',
+  background: 'var(--section-bg, var(--raikou-primary-color-filled))',
+  border: 'var(--section-bd, rem(1px) solid transparent)',
+  color: 'var(--section-color, var(--raikou-color-white))',
+  height: 'var(--section-height, var(--section-height-sm))',
+  paddingInline: 'var(--section-padding-x, var(--section-padding-x-sm))',
+  verticalAlign: 'middle',
+  lineHeight: 1,
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+});
+
 export const ActionIconGroupStyle = css({
   '--ai-border-width': '1px',
   display: 'flex',
@@ -110,7 +149,7 @@ export const ActionIconGroupStyle = css({
   "&[data-orientation='horizontal']": {
     flexDirection: 'row',
 
-    [`& .${ActionIconRootStyle}`]: {
+    [`& .${ActionIconRootStyle}, & .${ActionIconGroupSectionStyle}`]: {
       '&:not(:only-child):first-child': {
         borderEndEndRadius: 0,
         borderStartEndRadius: 0,
@@ -133,7 +172,7 @@ export const ActionIconGroupStyle = css({
   "&[data-orientation='vertical']": {
     flexDirection: 'column',
 
-    [`& .${ActionIconRootStyle}`]: {
+    [`& .${ActionIconRootStyle}, & .${ActionIconGroupSectionStyle}`]: {
       '&:not(:only-child):first-child': {
         borderEndStartRadius: 0,
         borderEndEndRadius: 0,

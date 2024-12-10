@@ -3,6 +3,7 @@ import { css } from '@stylefusion/react';
 export const TableRootStyle = css(({ theme }) => ({
   width: '100%',
   borderCollapse: 'collapse',
+  borderSpacing: 0,
   lineHeight: 'var(--raikou-line-height)',
   fontSize: 'var(--raikou-font-size-sm)',
   tableLayout: 'var(--table-layout, auto)',
@@ -23,6 +24,18 @@ export const TableRootStyle = css(({ theme }) => ({
 
   '&:_where([data-with-table-border])': {
     border: 'rem(1px) solid var(--table-border-color)',
+  },
+
+  "&:_where([data-variant='vertical']) :_where(.th)": {
+    fontWeight: 500,
+
+    ...theme.applyStyles('light', {
+      backgroundColor: theme.colors.gray[0],
+    }),
+
+    ...theme.applyStyles('dark', {
+      backgroundColor: theme.colors.dark[6],
+    }),
   },
 }));
 

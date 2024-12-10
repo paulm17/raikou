@@ -165,6 +165,51 @@ export const ButtonLoaderStyle = css({
   top: '50%',
 });
 
+export const ButtonGroupSectionStyle = css({
+  "--section-height-xs": "30px",
+  "--section-height-sm": "36px",
+  "--section-height-md": "42px",
+  "--section-height-lg": "50px",
+  "--section-height-xl": "60px",
+
+  "--section-height-input-xs": "22px",
+  "--section-height-input-sm": "26px",
+  "--section-height-input-md": "30px",
+  "--section-height-input-lg": "34px",
+  "--section-height-input-xl": "40px",
+
+  "--section-padding-x-xs": "14px",
+  "--section-padding-x-sm": "18px",
+  "--section-padding-x-md": "22px",
+  "--section-padding-x-lg": "26px",
+  "--section-padding-x-xl": "32px",
+
+  "--section-padding-compact-x-xs": "7px",
+  "--section-padding-compact-x-sm": "8px",
+  "--section-padding-compact-x-md": "10px",
+  "--section-padding-compact-x-lg": "12px",
+  "--section-padding-compact-x-xl": "14px",
+
+  "--section-height": "var(--section-height-sm)",
+  "--section-padding-x": "var(--section-padding-x-sm)",
+  "--section-color": "var(--raikou-color-white)",
+
+  fontWeight: 600,
+  width: 'auto',
+  borderRadius: 'var(--section-radius, var(--raikou-radius-default))',
+  fontSize: 'var(--section-fz, var(--raikou-font-size-sm))',
+  background: 'var(--section-bg, var(--raikou-primary-color-filled))',
+  border: 'var(--section-bd, rem(1px) solid transparent)',
+  color: 'var(--section-color, var(--raikou-color-white))',
+  height: 'var(--section-height, var(--section-height-sm))',
+  paddingInline: 'var(--section-padding-x, var(--section-padding-x-sm))',
+  verticalAlign: 'middle',
+  lineHeight: 1,
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+});
+
 export const ButtonGroupStyle = css({
   '--button-border-width': '1px',
   display: 'flex',
@@ -179,7 +224,7 @@ export const ButtonGroupStyle = css({
   "&[data-orientation='horizontal']": {
     flexDirection: 'row',
 
-    [`& .${ButtonRootStyle}`]: {
+    [`& .${ButtonRootStyle}, & .${ButtonGroupSectionStyle}`]: {
       '&:not(:only-child):first-child': {
         borderEndEndRadius: 0,
         borderStartEndRadius: 0,
@@ -202,7 +247,7 @@ export const ButtonGroupStyle = css({
   "&[data-orientation='vertical']": {
     flexDirection: 'column',
 
-    [`& .${ButtonRootStyle}`]: {
+    [`& .${ButtonRootStyle}, & .${ButtonGroupSectionStyle}`]: {
       '&:not(:only-child):first-child': {
         borderEndStartRadius: 0,
         borderEndEndRadius: 0,
