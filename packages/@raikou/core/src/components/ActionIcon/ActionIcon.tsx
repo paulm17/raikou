@@ -60,7 +60,7 @@ export interface ActionIconProps
   loaderProps?: LoaderProps;
 
   /** Controls width and height of the button. Numbers are converted to rem. `'md'` by default. */
-  size?: RaikouSize | (string & {}) | number;
+  size?: RaikouSize | `input-${RaikouSize}` | (string & {}) | number;
 
   /** Key of `theme.colors` or any valid CSS color. Default value is `theme.primaryColor`.  */
   color?: RaikouColor;

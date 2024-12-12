@@ -148,8 +148,8 @@ export function ModalsProvider({ children, modalProps, labels, modals }: ModalsP
   );
 
   const updateContextModal = useCallback(
-    (payload: { modalId: string } & Partial<OpenContextModal<any>>) => {
-      dispatch({ type: 'UPDATE', modalId: payload.modalId, newProps: payload });
+    ({ modalId, ...newProps }: { modalId: string } & Partial<OpenContextModal<any>>) => {
+      dispatch({ type: 'UPDATE', modalId, newProps });
     },
     [dispatch]
   );
@@ -167,6 +167,7 @@ export function ModalsProvider({ children, modalProps, labels, modals }: ModalsP
 
   const ctx: ModalsContextProps = {
     modals: state.modals,
+    modalProps: modalProps || {},
     openModal,
     openConfirmModal,
     openContextModal,

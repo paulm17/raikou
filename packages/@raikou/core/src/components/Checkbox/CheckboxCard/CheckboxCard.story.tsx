@@ -18,7 +18,7 @@ export function Usage() {
 }
 
 export function WithinGroup() {
-  const [value, setValue] = useState<string[]>([]);
+  const [value, setValue] = useState<string[]>(['1']);
 
   return (
     <div style={{ padding: 40 }}>

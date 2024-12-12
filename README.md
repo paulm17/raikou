@@ -76,7 +76,7 @@ Less headaches not dealing with postcss from a developer UX point of view.
 
 ### Mirrored Mantine release
 
-Latest release = 7.15.0
+Latest release = 7.15.1
 
 <!-- GETTING STARTED -->
 

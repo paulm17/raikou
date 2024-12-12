@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { createOptionalContext, getDefaultZIndex } from '../../core';
 
-interface ModalStackContext {
+interface DrawerStackContext {
   stack: string[];
   addModal: (id: string, zIndex: number | string) => void;
   removeModal: (id: string) => void;
@@ -10,20 +10,20 @@ interface ModalStackContext {
   maxZIndex: string | number;
 }
 
-const [ModalStackProvider, useModalStackContext] = createOptionalContext<ModalStackContext>();
+const [DrawerStackProvider, useDrawerStackContext] = createOptionalContext<DrawerStackContext>();
 
-export { useModalStackContext };
+export { useDrawerStackContext };
 
-export interface ModalStackProps {
+export interface DrawerStackProps {
   children: React.ReactNode;
 }
 
-export function ModalStack({ children }: ModalStackProps) {
+export function DrawerStack({ children }: DrawerStackProps) {
   const [stack, setStack] = useState<string[]>([]);
   const [maxZIndex, setMaxZIndex] = useState<number | string>(getDefaultZIndex('modal'));
 
   return (
-    <ModalStackProvider
+    <DrawerStackProvider
       value={{
         stack,
         addModal: (id, zIndex) => {
@@ -41,8 +41,8 @@ export function ModalStack({ children }: ModalStackProps) {
       }}
     >
       {children}
-    </ModalStackProvider>
+    </DrawerStackProvider>
   );
 }
 
-ModalStack.displayName = '@raikou/core/ModalStack';
+DrawerStack.displayName = '@mantine/core/DrawerStack';

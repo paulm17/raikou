@@ -156,8 +156,8 @@ export const TypographyStylesProviderRootStyle = css(({ theme }: any) => ({
 
   '& :_where(ul, ol):not([data-type="taskList"])': {
     marginBottom: 'var(--raikou-spacing-md)',
-    paddingInlineStart: 'var(--mantine-spacing-lg)',
-    listStylePosition: 'inside',
+    paddingInlineStart: 'var(--mantine-spacing-xl)',
+    listStylePosition: 'outside',
   },
 
   '& :_where(table)': {

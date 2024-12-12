@@ -202,7 +202,7 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
       classNames={classNames}
       styles={styles}
       unstyled={unstyled}
-      data-checked={contextProps.checked || undefined}
+      data-checked={contextProps.checked || checked || undefined}
       variant={variant}
       ref={rootRef}
       mod={mod}
@@ -213,6 +213,7 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
         {...rest}
         disabled={disabled}
         checked={_checked}
+        data-checked={contextProps.checked || checked || undefined}
         onChange={(event) => {
           ctx ? contextProps.onChange?.(event) : onChange?.(event);
           handleChange(event.currentTarget.checked);

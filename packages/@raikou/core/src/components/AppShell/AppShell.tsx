@@ -87,7 +87,7 @@ export interface AppShellProps
   /** If set, Navbar, Aside, Header and Footer components be hidden */
   disabled?: boolean;
 
-  /** Determines whether Header and Footer components should include styles to offset scrollbars. Based on `react-remove-scroll`. `true` by default */
+  /** Determines whether Header and Footer components should include styles to offset scrollbars. Based on `react-remove-scroll`. `true` by default for `layout="default"`, `false` for `layout="alt"` */
   offsetScrollbars?: boolean;
 }
 
@@ -144,7 +144,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
     disabled,
     aside,
     footer,
-    offsetScrollbars,
+    offsetScrollbars = layout !== 'alt',
     mod,
     ...others
   } = props;

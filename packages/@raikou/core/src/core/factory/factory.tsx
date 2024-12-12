@@ -48,7 +48,7 @@ export type RaikouComponentStaticProperties<Payload extends FactoryPayload> = Th
   FactoryComponentWithProps<Payload>;
 
 export type FactoryComponentWithProps<Payload extends FactoryPayload> = {
-  withProps: (props: Payload['props']) => React.ForwardRefExoticComponent<
+  withProps: (props: Partial<Payload['props']>) => React.ForwardRefExoticComponent<
     Payload['props'] &
       React.RefAttributes<Payload['ref']> & {
         component?: any;

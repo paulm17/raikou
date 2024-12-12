@@ -60,7 +60,6 @@ export const SliderThumbStyle = css(({ theme }) => ({
   width: 'var(--slider-thumb-size)',
   border: '4px solid',
   transform: 'translate(-50%, -50%)',
-  color: 'var(--slider-color)',
   top: '50%',
   cursor: 'pointer',
   borderRadius: 'var(--slider-radius)',
@@ -88,11 +87,13 @@ export const SliderThumbStyle = css(({ theme }) => ({
   },
 
   ...theme.applyStyles('light', {
+    color: 'var(--slider-color)',
     borderColor: 'var(--slider-color)',
     backgroundColor: 'var(--raikou-color-white)',
   }),
 
   ...theme.applyStyles('dark', {
+    color: 'var(--raikou-color-white)',
     borderColor: 'var(--raikou-color-white)',
     backgroundColor: 'var(--slider-color)',
   }),

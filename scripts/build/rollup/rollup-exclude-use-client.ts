@@ -10,10 +10,11 @@ export const ROLLUP_EXCLUDE_USE_CLIENT = [
   'core/RaikouProvider/color-functions/lighten/lighten',
   'core/RaikouProvider/color-functions/rgba/rgba',
   'core/RaikouProvider/color-functions/to-rgba/to-rgba',
+  'core/RaikouProvider/color-functions/colors-tuple/colors-tuple',
   'core/RaikouProvider/default-colors',
   'core/RaikouProvider/default-theme',
-  'core/RaikouProvider/merge-raikou-theme/merge-raikou-theme',
-  'core/RaikouProvider/RaikouCssVariables/virtual-color/virtual-color',
+  'system/RaikouProvider/merge-raikou-theme/merge-raikou-theme',
+  'system/RaikouProvider/RaikouCssVariables/virtual-color/virtual-color',
   'system/RaikouProvider/raikou-html-props',
   'theme-to-vars',
 ].reduce<string[]>((acc, name) => {

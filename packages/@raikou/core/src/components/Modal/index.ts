@@ -6,6 +6,8 @@ export { ModalContent } from './ModalContent';
 export { ModalHeader } from './ModalHeader';
 export { ModalOverlay } from './ModalOverlay';
 export { ModalTitle } from './ModalTitle';
+export { ModalStack, useModalStackContext } from './ModalStack';
+export { useModalsStack, useDrawersStack } from './use-modals-stack';
 
 export type { ModalCssVariables, ModalFactory, ModalProps, ModalStylesNames } from './Modal';
 export type { ModalRootProps } from './ModalRoot';
@@ -15,3 +17,4 @@ export type { ModalContentProps } from './ModalContent';
 export type { ModalHeaderProps } from './ModalHeader';
 export type { ModalOverlayProps } from './ModalOverlay';
 export type { ModalTitleProps } from './ModalTitle';
+export type { ModalStackProps } from './ModalStack';

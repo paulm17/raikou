@@ -126,6 +126,9 @@ export interface RangeSliderProps
 
   /** Props passed down to the hidden input */
   hiddenInputProps?: React.ComponentPropsWithoutRef<'input'>;
+
+  /** Props passed down to thumb element based on the thumb index */
+  thumbProps?: (index: 0 | 1) => React.ComponentPropsWithoutRef<'div'>;
 }
 
 export type RangeSliderFactory = Factory<{
@@ -194,6 +197,7 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
     style,
     vars,
     hiddenInputProps,
+    thumbProps,
     ...others
   } = props;
 
@@ -490,6 +494,7 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
             showLabelOnHover={showLabelOnHover}
             isHovered={hovered}
             disabled={disabled}
+            {...thumbProps?.(0)}
           >
             {hasArrayThumbChildren ? thumbChildren[0] : thumbChildren}
           </Thumb>
@@ -513,6 +518,7 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
             showLabelOnHover={showLabelOnHover}
             isHovered={hovered}
             disabled={disabled}
+            {...thumbProps?.(0)}
           >
             {hasArrayThumbChildren ? thumbChildren[1] : thumbChildren}
           </Thumb>

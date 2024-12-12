@@ -124,6 +124,9 @@ export interface SliderProps
 
   /** Determines whether the selection should be only allowed from the given marks array, `false` by default */
   restrictToMarks?: boolean;
+
+  /** Props passed down to thumb element */
+  thumbProps?: React.ComponentPropsWithoutRef<'div'>;
 }
 
 export type SliderFactory = Factory<{
@@ -191,6 +194,7 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
     vars,
     hiddenInputProps,
     restrictToMarks,
+    thumbProps,
     ...others
   } = props;
 
@@ -435,6 +439,7 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
             showLabelOnHover={showLabelOnHover}
             isHovered={hovered}
             disabled={disabled}
+            {...thumbProps}
           >
             {thumbChildren}
           </Thumb>

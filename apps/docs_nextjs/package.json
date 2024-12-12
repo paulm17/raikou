@@ -27,7 +27,7 @@
     "@storybook/nextjs": "^8.4.2",
     "@storybook/react": "^8.4.2",
     "@storybook/test": "^8.4.2",
-    "@stylefusion/nextjs-plugin": "^0.0.27",
+    "@stylefusion/nextjs-plugin": "^0.0.28",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
