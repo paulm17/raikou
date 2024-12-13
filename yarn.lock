@@ -3793,7 +3793,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@raikou/core@npm:0.0.23, @raikou/core@workspace:*, @raikou/core@workspace:packages/@raikou/core":
+"@raikou/core@npm:0.0.24, @raikou/core@workspace:*, @raikou/core@workspace:packages/@raikou/core":
   version: 0.0.0-use.local
   resolution: "@raikou/core@workspace:packages/@raikou/core"
   dependencies:
@@ -3808,8 +3808,8 @@ __metadata:
     react-textarea-autosize: "npm:^8.5.4"
     type-fest: "npm:^4.26.1"
   peerDependencies:
-    "@raikou/emotion": 0.0.23
-    "@raikou/ripple": 0.0.23
+    "@raikou/emotion": 0.0.24
+    "@raikou/ripple": 0.0.24
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
@@ -3892,7 +3892,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@raikou/hooks@npm:0.0.23, @raikou/hooks@workspace:*, @raikou/hooks@workspace:packages/@raikou/hooks":
+"@raikou/hooks@npm:0.0.24, @raikou/hooks@workspace:*, @raikou/hooks@workspace:packages/@raikou/hooks":
   version: 0.0.0-use.local
   resolution: "@raikou/hooks@workspace:packages/@raikou/hooks"
   peerDependencies:
@@ -3904,8 +3904,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@raikou/loaders@workspace:packages/@raikou/loaders"
   dependencies:
-    "@raikou/core": "npm:0.0.23"
-    "@raikou/hooks": "npm:0.0.23"
+    "@raikou/core": "npm:0.0.24"
+    "@raikou/hooks": "npm:0.0.24"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -3919,8 +3919,8 @@ __metadata:
     "@raikou/core": "workspace:*"
     "@raikou/hooks": "workspace:*"
   peerDependencies:
-    "@raikou/core": 0.0.23
-    "@raikou/hooks": 0.0.23
+    "@raikou/core": 0.0.24
+    "@raikou/hooks": 0.0.24
     react: ^18.x || ^19.x
     react-dom: ^18.x || ^19.x
   languageName: unknown
@@ -3933,7 +3933,7 @@ __metadata:
     "@raikou-tests/core": "workspace:*"
     "@raikou/core": "workspace:*"
     "@raikou/hooks": "workspace:*"
-    "@raikou/store": "npm:0.0.23"
+    "@raikou/store": "npm:0.0.24"
     react-transition-group: "npm:4.4.5"
   peerDependencies:
     react: ^18.2.0
@@ -3948,7 +3948,7 @@ __metadata:
     "@raikou-tests/core": "workspace:*"
     "@raikou/core": "workspace:*"
     "@raikou/hooks": "workspace:*"
-    "@raikou/store": "npm:0.0.23"
+    "@raikou/store": "npm:0.0.24"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -3974,14 +3974,14 @@ __metadata:
     "@raikou-tests/core": "workspace:*"
     "@raikou/core": "workspace:*"
     "@raikou/hooks": "workspace:*"
-    "@raikou/store": "npm:0.0.23"
+    "@raikou/store": "npm:0.0.24"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@raikou/store@npm:0.0.23, @raikou/store@workspace:packages/@raikou/store":
+"@raikou/store@npm:0.0.24, @raikou/store@workspace:packages/@raikou/store":
   version: 0.0.0-use.local
   resolution: "@raikou/store@workspace:packages/@raikou/store"
   peerDependencies:
@@ -3997,8 +3997,8 @@ __metadata:
     "@raikou/hooks": "workspace:*"
     next-themes: "npm:^0.4.3"
   peerDependencies:
-    "@raikou/emotion": 0.0.23
-    "@raikou/hooks": 0.0.23
+    "@raikou/emotion": 0.0.24
+    "@raikou/hooks": 0.0.24
     react: ^18.2.0
   languageName: unknown
   linkType: soft
@@ -4011,8 +4011,8 @@ __metadata:
     "@raikou/core": "workspace:*"
     "@raikou/hooks": "workspace:*"
   peerDependencies:
-    "@raikou/core": 0.0.23
-    "@raikou/hooks": 0.0.23
+    "@raikou/core": 0.0.24
+    "@raikou/hooks": 0.0.24
     "@tiptap/extension-link": ">=2.1.12"
     "@tiptap/react": ">=2.1.12"
     react: ^18.2.0
