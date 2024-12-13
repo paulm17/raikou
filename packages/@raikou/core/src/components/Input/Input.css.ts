@@ -128,6 +128,8 @@ export const InputInputStyle = css({
 
   textAlign: 'var(--input-text-align)',
   color: 'var(--input-color)',
+  border: 'rem(1px) solid var(--input-bd)',
+  backgroundColor: 'var(--input-bg)',
   fontFamily: 'var(--input-font-family, var(--raikou-font-family))',
   height: 'var(--input-size)',
   minHeight: 'var(--input-height)',
@@ -188,11 +190,6 @@ export const InputInputStyle = css({
     opacity: 0.6,
     backgroundColor: 'var(--input-disabled-bg)',
     color: 'var(--input-disabled-color)',
-  },
-
-  '& + &': {
-    border: 'rem(1px) solid var(--input-bd)',
-    backgroundColor: 'var(--input-bg)',
   },
 });
 
