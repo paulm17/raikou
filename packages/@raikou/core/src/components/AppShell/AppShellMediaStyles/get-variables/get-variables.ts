@@ -3,7 +3,7 @@ import type { AppShellProps } from '../../AppShell';
 import { assignAsideVariables } from '../assign-aside-variables/assign-aside-variables';
 import { assignFooterVariables } from '../assign-footer-variables/assign-footer-variables';
 import { assignHeaderVariables } from '../assign-header-variables/assign-header-variables';
-import { assignIconListVariables } from '../assign-iconList-variables/assign-iconList-variables';
+import { assignIconListVariables } from '../assign-iconlist-variables/assign-iconlist-variables';
 import { assignNavbarVariables } from '../assign-navbar-variables/assign-navbar-variables';
 import { assignPaddingVariables } from '../assign-padding-variables/assign-padding-variables';
 
