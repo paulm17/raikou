@@ -16,12 +16,14 @@ import {
   AppShellAsideConfiguration,
   AppShellFooterConfiguration,
   AppShellHeaderConfiguration,
+  AppShellIconListConfiguration,
   AppShellNavbarConfiguration,
   AppShellResponsiveSize,
 } from './AppShell.types';
 import { AppShellAside } from './AppShellAside/AppShellAside';
 import { AppShellFooter } from './AppShellFooter/AppShellFooter';
 import { AppShellHeader } from './AppShellHeader/AppShellHeader';
+import { AppShellIconList } from './AppShellIconList/AppShellIconList';
 import { AppShellMain } from './AppShellMain/AppShellMain';
 import { AppShellMediaStyles } from './AppShellMediaStyles/AppShellMediaStyles';
 import { AppShellNavbar } from './AppShellNavbar/AppShellNavbar';
@@ -31,6 +33,7 @@ import {
   AppShellAsideStyle,
   AppShellFooterStyle,
   AppShellHeaderStyle,
+  AppShellIconListStyle,
   AppShellMainStyle,
   AppShellNavbarStyle,
   AppShellRootStyle,
@@ -39,6 +42,7 @@ import {
 
 export type AppShellStylesNames =
   | 'root'
+  | 'iconList'
   | 'navbar'
   | 'main'
   | 'header'
@@ -59,6 +63,8 @@ export interface AppShellProps
 
   /** Controls padding of the main section, `0` by default. !important!: use `padding` prop instead of `p`. */
   padding?: RaikouSpacing | AppShellResponsiveSize;
+
+  iconList?: AppShellIconListConfiguration;
 
   /** AppShell.Navbar configuration, controls width, breakpoints and collapsed state. Required if you use AppShell.Navbar component. */
   navbar?: AppShellNavbarConfiguration;
@@ -103,6 +109,7 @@ export type AppShellFactory = Factory<{
     Aside: typeof AppShellAside;
     Footer: typeof AppShellFooter;
     Section: typeof AppShellSection;
+    IconList: typeof AppShellIconList;
   };
 }>;
 
@@ -144,6 +151,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
     disabled,
     aside,
     footer,
+    iconList,
     offsetScrollbars = layout !== 'alt',
     mod,
     ...others
@@ -159,6 +167,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
       footer: AppShellFooterStyle,
       aside: AppShellAsideStyle,
       section: AppShellSectionStyle,
+      iconList: AppShellIconListStyle,
     },
     props,
     className,
@@ -179,6 +188,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
         header={header}
         aside={aside}
         footer={footer}
+        iconList={iconList}
         padding={padding}
       />
       <Box
@@ -198,3 +208,4 @@ AppShell.Main = AppShellMain;
 AppShell.Aside = AppShellAside;
 AppShell.Footer = AppShellFooter;
 AppShell.Section = AppShellSection;
+AppShell.IconList = AppShellIconList;

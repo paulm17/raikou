@@ -3,6 +3,7 @@ import type { AppShellProps } from '../../AppShell';
 import { assignAsideVariables } from '../assign-aside-variables/assign-aside-variables';
 import { assignFooterVariables } from '../assign-footer-variables/assign-footer-variables';
 import { assignHeaderVariables } from '../assign-header-variables/assign-header-variables';
+import { assignIconListVariables } from '../assign-iconList-variables/assign-iconList-variables';
 import { assignNavbarVariables } from '../assign-navbar-variables/assign-navbar-variables';
 import { assignPaddingVariables } from '../assign-padding-variables/assign-padding-variables';
 
@@ -14,11 +15,20 @@ interface GetVariablesInput {
   header: AppShellProps['header'] | undefined;
   footer: AppShellProps['footer'] | undefined;
   aside: AppShellProps['aside'] | undefined;
+  iconList: AppShellProps['iconList'] | undefined;
   padding: AppShellProps['padding'] | undefined;
   theme: RaikouTheme;
 }
 
-export function getVariables({ navbar, header, footer, aside, padding, theme }: GetVariablesInput) {
+export function getVariables({
+  navbar,
+  header,
+  footer,
+  aside,
+  iconList,
+  padding,
+  theme,
+}: GetVariablesInput) {
   const minMediaStyles: MediaQueryVariables = {};
   const maxMediaStyles: MediaQueryVariables = {};
   const baseStyles: CSSVariables = {};
@@ -41,6 +51,7 @@ export function getVariables({ navbar, header, footer, aside, padding, theme }: 
 
   assignHeaderVariables({ baseStyles, minMediaStyles, header });
   assignFooterVariables({ baseStyles, minMediaStyles, footer });
+  assignIconListVariables({ baseStyles, minMediaStyles, maxMediaStyles, iconList, theme });
   assignPaddingVariables({ baseStyles, minMediaStyles, padding });
 
   const minMedia = getSortedBreakpoints(keys(minMediaStyles), theme.breakpoints).map(

@@ -57,6 +57,7 @@ export function assignNavbarVariables({
     minMediaStyles[breakpointValue]['--app-shell-navbar-transform'] = collapsedNavbarTransform;
     minMediaStyles[breakpointValue]['--app-shell-navbar-transform-rtl'] =
       collapsedNavbarTransformRtl;
+
     minMediaStyles[breakpointValue]['--app-shell-navbar-offset'] = '0px !important';
   }
 

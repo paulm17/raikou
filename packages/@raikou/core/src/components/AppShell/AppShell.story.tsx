@@ -1,6 +1,10 @@
+import * as TablerIcons from '@tabler/icons-react';
 import { useDisclosure } from '@raikou/hooks';
+import { ActionIcon } from '../ActionIcon';
 import { Button } from '../Button';
 import { Group } from '../Group';
+import { ScrollArea } from '../ScrollArea';
+import { Stack } from '../Stack';
 import { AppShell } from './AppShell';
 
 export default { title: 'AppShell' };
@@ -63,6 +67,135 @@ export function Usage() {
       <AppShell.Aside>Aside</AppShell.Aside>
 
       <AppShell.Footer>Footer</AppShell.Footer>
+    </AppShell>
+  );
+}
+
+function Icon({ children }: { children: React.ReactNode }) {
+  return (
+    <ActionIcon
+      variant="transparent"
+      color="black"
+      size="xl"
+      styles={{
+        root: {
+          background: '#C9C9C9',
+        },
+        icon: {
+          '&:hover': {
+            background: '#fff',
+          },
+        },
+      }}
+    >
+      {children}
+    </ActionIcon>
+  );
+}
+
+// Type guard to check if the animal is in our map
+const isValidAnimal = (animal: string): animal is AnimalName => {
+  return Object.keys(animalIconMap).includes(animal);
+};
+
+// Define the type for our animal icon map
+type AnimalIconMap = {
+  [key in AnimalName]?: React.ForwardRefExoticComponent<any>;
+};
+
+// Define a union type of allowed animal names
+type AnimalName = 'bat' | 'cat' | 'dog' | 'deer' | 'fish' | 'pig' | 'spider';
+
+// Mapping of animal names to Tabler icon names
+const animalIconMap: AnimalIconMap = {
+  bat: TablerIcons.IconBat,
+  cat: TablerIcons.IconCat,
+  dog: TablerIcons.IconDog,
+  deer: TablerIcons.IconDeer,
+  fish: TablerIcons.IconFish,
+  pig: TablerIcons.IconPig,
+  spider: TablerIcons.IconSpider,
+};
+
+interface animalIconList {
+  animals: string[];
+}
+
+function AnimalIconList({ animals }: animalIconList) {
+  return (
+    <Stack align="center" mt={10}>
+      {animals.map((animal, index) => {
+        // Use type guard to safely get the icon
+        if (isValidAnimal(animal)) {
+          const IconComponent = animalIconMap[animal];
+
+          return IconComponent ? (
+            <Icon key={index}>
+              <IconComponent stroke={1.5} size={48} />
+            </Icon>
+          ) : null;
+        }
+
+        return (
+          <div key={`${animal}-${index}`} className="flex flex-col items-center text-gray-500">
+            <span>No icon for {animal}</span>
+          </div>
+        );
+      })}
+    </Stack>
+  );
+}
+
+export function IconList() {
+  const [navbarOpened, { toggle: toggleNavbar }] = useDisclosure(true);
+  const [navbarMobileOpened, { toggle: toggleNavbarMobile }] = useDisclosure(false);
+  const [iconListOpened, { toggle: toggleIconList }] = useDisclosure(true);
+  const [iconListMobileOpened, { toggle: toggleIconListMobile }] = useDisclosure(false);
+  const [headerOpened, { toggle: toggleHeader }] = useDisclosure(true);
+  const animals = ['bat', 'cat', 'dog', 'deer', 'fish', 'pig', 'spider'];
+
+  return (
+    <AppShell
+      padding="md"
+      iconList={{
+        width: { base: 50, md: 100 },
+        breakpoint: 'sm',
+        collapsed: { desktop: !iconListOpened, mobile: !iconListMobileOpened },
+      }}
+      navbar={{
+        width: { base: 100, md: 200 },
+        breakpoint: 'sm',
+        collapsed: { desktop: !navbarOpened, mobile: !navbarMobileOpened },
+      }}
+      header={{
+        height: 60,
+        collapsed: !headerOpened,
+      }}
+    >
+      <AppShell.IconList>
+        <AppShell.Section component={ScrollArea}>
+          <AnimalIconList animals={animals} />
+          <AnimalIconList animals={animals} />
+          <AnimalIconList animals={animals} />
+        </AppShell.Section>
+      </AppShell.IconList>
+      <AppShell.Navbar>
+        <AppShell.Section>First section</AppShell.Section>
+        <AppShell.Section>Second section</AppShell.Section>
+        <AppShell.Section grow>Grow section</AppShell.Section>
+        <AppShell.Section>Last section</AppShell.Section>
+      </AppShell.Navbar>
+      <AppShell.Header>Header</AppShell.Header>
+      <AppShell.Main>
+        <Group>
+          <Button onClick={toggleHeader}>Toggle header</Button>
+          <Button onClick={toggleNavbar}>Toggle navbar</Button>
+          <Button onClick={toggleIconList}>Toggle iconList</Button>
+          <Button onClick={toggleNavbarMobile}>Toggle navbar mobile</Button>
+          <Button onClick={toggleIconListMobile}>Toggle iconList mobile</Button>
+        </Group>
+        <p>{longContent}</p>
+      </AppShell.Main>
     </AppShell>
   );
 }

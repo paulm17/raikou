@@ -12,6 +12,12 @@ export interface AppShellResponsiveSize {
   [key: string]: AppShellSize | undefined;
 }
 
+export interface AppShellIconListConfiguration {
+  width: AppShellSize | AppShellResponsiveSize;
+  breakpoint: RaikouBreakpoint | (string & {}) | number;
+  collapsed?: { desktop?: boolean; mobile?: boolean };
+}
+
 export interface AppShellNavbarConfiguration {
   width: AppShellSize | AppShellResponsiveSize;
   breakpoint: RaikouBreakpoint | (string & {}) | number;

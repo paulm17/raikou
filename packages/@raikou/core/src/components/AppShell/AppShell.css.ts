@@ -24,7 +24,7 @@ const navBarAsideHeaderMainFooter = {
   transitionTimingFunction: 'var(--app-shell-transition-timing-function)',
 };
 
-const NavBarAside = {
+const navBarAside = {
   position: 'fixed',
   display: 'flex',
   flexDirection: 'column',
@@ -40,8 +40,27 @@ const NavBarAside = {
   },
 };
 
-export const AppShellNavbarStyle = css(({ theme }) => ({
+export const AppShellIconListStyle = css(({ theme }) => ({
   insetInlineStart: 0,
+  width: 'var(--app-shell-iconlist-width)',
+  transform: 'var(--app-shell-iconlist-transform)',
+  zIndex: 'var(--app-shell-iconlist-z-index)',
+  opacity: 'var(--app-shell-iconlist-opacity, 1)',
+
+  ...theme.applyMixin('where-rtl', {
+    transform: 'var(--app-shell-iconlist-transform-hover)',
+  }),
+
+  '&:_where([data-with-border])': {
+    borderInlineStart: '1px solid var(--app-shell-border-color)',
+  },
+
+  ...navBarAsideHeaderMainFooter,
+  ...navBarAside,
+}));
+
+export const AppShellNavbarStyle = css(({ theme }) => ({
+  insetInlineStart: 'var(--app-shell-iconlist-width, 0rem)',
   width: 'var(--app-shell-navbar-width)',
   transform: 'var(--app-shell-navbar-transform)',
   zIndex: 'var(--app-shell-navbar-z-index)',
@@ -55,7 +74,7 @@ export const AppShellNavbarStyle = css(({ theme }) => ({
   },
 
   ...navBarAsideHeaderMainFooter,
-  ...NavBarAside,
+  ...navBarAside,
 }));
 
 export const AppShellAsideStyle = css(({ theme }) => ({
@@ -73,11 +92,12 @@ export const AppShellAsideStyle = css(({ theme }) => ({
   },
 
   ...navBarAsideHeaderMainFooter,
-  ...NavBarAside,
+  ...navBarAside,
 }));
 
 export const AppShellMainStyle = css({
-  paddingInlineStart: 'calc(var(--app-shell-navbar-offset, 0rem) + var(--app-shell-padding))',
+  paddingInlineStart:
+    'calc(var(--app-shell-navbar-offset, 0rem) + var(--app-shell-iconlist-offset, 0rem) + var(--app-shell-padding))',
   paddingInlineEnd: 'calc(var(--app-shell-aside-offset, 0rem) + var(--app-shell-padding))',
   paddingTop: 'calc(var(--app-shell-header-offset, 0rem) + var(--app-shell-padding))',
   paddingBottom: 'calc(var(--app-shell-footer-offset, 0rem) + var(--app-shell-padding))',
