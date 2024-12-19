@@ -1,6 +1,6 @@
 {
   "name": "@raikou/modals",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "Modals manager based on Raikou components",
   "homepage": "https://raikou.dev/x/modals/",
   "license": "MIT",
@@ -39,8 +39,8 @@
     "directory": "packages/@raikou/modals"
   },
   "peerDependencies": {
-    "@raikou/core": "0.0.25",
-    "@raikou/hooks": "0.0.25",
+    "@raikou/core": "0.0.26",
+    "@raikou/hooks": "0.0.26",
     "react": "^18.x || ^19.x",
     "react-dom": "^18.x || ^19.x"
   },
