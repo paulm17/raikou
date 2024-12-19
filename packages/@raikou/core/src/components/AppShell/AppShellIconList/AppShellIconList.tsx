@@ -58,7 +58,7 @@ export const AppShellIconList = factory<AppShellIconListFactory>((_props, ref) =
       {...ctx.getStyles('iconList', { className, classNames, styles, style })}
       {...others}
       __vars={{
-        '--app-shell-iconlist-z-index': `calc(${zIndex ?? ctx.zIndex} + 1)`,
+        '--app-shell-iconlist-z-index': `calc(${zIndex ?? ctx.zIndex} + 2)`,
       }}
     />
   );

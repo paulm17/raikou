@@ -64,12 +64,13 @@ const preview: Preview = {
     (renderStory) => <DirectionWrapper>{renderStory()}</DirectionWrapper>,
     (renderStory) => <ColorSchemeWrapper>{renderStory()}</ColorSchemeWrapper>,
     (renderStory) => (
-      <RaikouProvider stylesTransform={emotionTransform}>
+      <RaikouProvider>
         <RaikouEmotionProvider>{renderStory()}</RaikouEmotionProvider>
       </RaikouProvider>
     ),
   ],
   parameters: {
+    layout: 'fullscreen',
     controls: {
       matchers: {
         color: /(background|color)$/i,

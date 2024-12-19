@@ -34,8 +34,8 @@ const navBarAside = {
   backgroundColor: 'var(--raikou-color-body)',
   transitionProperty: 'transform, top, height',
 
-  ":_where([data-layout='alt']) &": {
-    top: 0,
+  ':_where([data-layout="alt"]) &': {
+    top: '0rem',
     height: '100dvh',
   },
 };
@@ -52,7 +52,7 @@ export const AppShellIconListStyle = css(({ theme }) => ({
   }),
 
   '&:_where([data-with-border])': {
-    borderInlineStart: '1px solid var(--app-shell-border-color)',
+    borderInlineEnd: '1px solid var(--app-shell-border-color)',
   },
 
   ...navBarAsideHeaderMainFooter,
@@ -60,7 +60,7 @@ export const AppShellIconListStyle = css(({ theme }) => ({
 }));
 
 export const AppShellNavbarStyle = css(({ theme }) => ({
-  insetInlineStart: 'var(--app-shell-iconlist-width, 0rem)',
+  insetInlineStart: 'var(--app-shell-iconlist-offset, 0rem)',
   width: 'var(--app-shell-navbar-width)',
   transform: 'var(--app-shell-navbar-transform)',
   zIndex: 'var(--app-shell-navbar-z-index)',
@@ -84,7 +84,7 @@ export const AppShellAsideStyle = css(({ theme }) => ({
   zIndex: 'var(--app-shell-aside-z-index)',
 
   ...theme.applyMixin('where-rtl', {
-    transform: 'var(--app-shell-aside-transform-hover)',
+    transform: 'var(--app-shell-aside-transform-rtl)',
   }),
 
   '&:_where([data-with-border])': {
@@ -113,8 +113,9 @@ const headerFooter = {
   transitionProperty: 'transform, left, right',
   backgroundColor: 'var(--raikou-color-body)',
 
-  "&:_where([data-layout='alt'])": {
-    insetInlineStart: 'var(--app-shell-navbar-offset, 0rem)',
+  ":_where([data-layout='alt']) &": {
+    insetInlineStart:
+      'calc(var(--app-shell-iconlist-offset, 0rem) + var(--app-shell-navbar-offset, 0rem))',
     insetInlineEnd: 'var(--app-shell-aside-offset, 0rem)',
   },
 };

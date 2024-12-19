@@ -21,7 +21,7 @@ export function assignNavbarVariables({
   theme,
 }: AssignNavbarVariablesInput) {
   const navbarWidth = navbar?.width;
-  const collapsedNavbarTransform = 'translateX(calc(var(--app-shell-navbar-width) * -1))';
+  const collapsedNavbarTransform = 'translateX(calc(var(--app-shell-navbar-width) * -2))';
   const collapsedNavbarTransformRtl = 'translateX(var(--app-shell-navbar-width))';
 
   if (navbar?.breakpoint && !navbar?.collapsed?.mobile) {

@@ -152,10 +152,14 @@ export function IconList() {
   const [iconListOpened, { toggle: toggleIconList }] = useDisclosure(true);
   const [iconListMobileOpened, { toggle: toggleIconListMobile }] = useDisclosure(false);
   const [headerOpened, { toggle: toggleHeader }] = useDisclosure(true);
+  const [asideOpened, { toggle: toggleAside }] = useDisclosure(true);
+  const [asideMobileOpened, { toggle: toggleAsideMobile }] = useDisclosure(false);
+  const [footerOpened, { toggle: toggleFooter }] = useDisclosure(true);
   const animals = ['bat', 'cat', 'dog', 'deer', 'fish', 'pig', 'spider'];
 
   return (
     <AppShell
+      layout="alt"
       padding="md"
       iconList={{
         width: { base: 50, md: 100 },
@@ -170,6 +174,15 @@ export function IconList() {
       header={{
         height: 60,
         collapsed: !headerOpened,
+      }}
+      aside={{
+        width: { base: 200, md: 300 },
+        breakpoint: 'sm',
+        collapsed: { desktop: !asideOpened, mobile: !asideMobileOpened },
+      }}
+      footer={{
+        height: 50,
+        collapsed: !footerOpened,
       }}
     >
       <AppShell.IconList>
@@ -189,13 +202,18 @@ export function IconList() {
       <AppShell.Main>
         <Group>
           <Button onClick={toggleHeader}>Toggle header</Button>
+          <Button onClick={toggleFooter}>Toggle footer</Button>
           <Button onClick={toggleNavbar}>Toggle navbar</Button>
+          <Button onClick={toggleAside}>Toggle aside</Button>
           <Button onClick={toggleIconList}>Toggle iconList</Button>
           <Button onClick={toggleNavbarMobile}>Toggle navbar mobile</Button>
           <Button onClick={toggleIconListMobile}>Toggle iconList mobile</Button>
+          <Button onClick={toggleAsideMobile}>Toggle aside mobile</Button>
         </Group>
         <p>{longContent}</p>
       </AppShell.Main>
+      <AppShell.Aside>Aside</AppShell.Aside>
+      <AppShell.Footer>Footer</AppShell.Footer>
     </AppShell>
   );
 }
