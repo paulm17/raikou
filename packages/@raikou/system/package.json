@@ -1,7 +1,7 @@
 {
   "name": "@raikou/system",
   "license": "MIT",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "main": "./cjs/index.cjs",
   "module": "./esm/index.mjs",
   "types": "./lib/index.d.ts",
@@ -22,8 +22,8 @@
     "*.css"
   ],
   "peerDependencies": {
-    "@raikou/emotion": "0.0.26",
-    "@raikou/hooks": "0.0.26",
+    "@raikou/emotion": "0.0.27",
+    "@raikou/hooks": "0.0.27",
     "react": "^18.2.0"
   },
   "dependencies": {
