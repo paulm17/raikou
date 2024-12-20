@@ -24,6 +24,15 @@ export function assignNavbarVariables({
   const collapsedNavbarTransform = 'translateX(calc(var(--app-shell-navbar-width) * -2))';
   const collapsedNavbarTransformRtl = 'translateX(var(--app-shell-navbar-width))';
 
+  if (navbar?.layout === 'alt') {
+    baseStyles['--app-shell-navbar-offset-y'] = '0px !important';
+    baseStyles['--app-shell-navbar-height'] = '100dvh !important';
+  } else {
+    baseStyles['--app-shell-navbar-offset-y'] = 'var(--app-shell-header-offset-y, 0rem) !important';
+    baseStyles['--app-shell-navbar-height'] =
+      'calc(100dvh - var(--app-shell-header-offset-y, 0rem) - var(--app-shell-footer-offset, 0rem)) !important';
+  }
+
   if (navbar?.breakpoint && !navbar?.collapsed?.mobile) {
     maxMediaStyles[navbar?.breakpoint] = maxMediaStyles[navbar?.breakpoint] || {};
     maxMediaStyles[navbar?.breakpoint]['--app-shell-navbar-width'] = '100%';

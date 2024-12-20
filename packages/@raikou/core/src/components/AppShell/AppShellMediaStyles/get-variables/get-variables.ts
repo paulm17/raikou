@@ -49,7 +49,7 @@ export function getVariables({
     theme,
   });
 
-  assignHeaderVariables({ baseStyles, minMediaStyles, header });
+  assignHeaderVariables({ baseStyles, minMediaStyles, header, iconList, navbar });
   assignFooterVariables({ baseStyles, minMediaStyles, footer });
   assignIconListVariables({ baseStyles, minMediaStyles, maxMediaStyles, iconList, theme });
   assignPaddingVariables({ baseStyles, minMediaStyles, padding });

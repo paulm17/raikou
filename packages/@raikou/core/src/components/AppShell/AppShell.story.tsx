@@ -2,6 +2,7 @@ import * as TablerIcons from '@tabler/icons-react';
 import { useDisclosure } from '@raikou/hooks';
 import { ActionIcon } from '../ActionIcon';
 import { Button } from '../Button';
+import { Divider } from '../Divider';
 import { Group } from '../Group';
 import { ScrollArea } from '../ScrollArea';
 import { Stack } from '../Stack';
@@ -149,24 +150,47 @@ function AnimalIconList({ animals }: animalIconList) {
 export function IconList() {
   const [navbarOpened, { toggle: toggleNavbar }] = useDisclosure(true);
   const [navbarMobileOpened, { toggle: toggleNavbarMobile }] = useDisclosure(false);
+  const [headerOpened, { toggle: toggleHeader }] = useDisclosure(true);
   const [iconListOpened, { toggle: toggleIconList }] = useDisclosure(true);
   const [iconListMobileOpened, { toggle: toggleIconListMobile }] = useDisclosure(false);
-  const [headerOpened, { toggle: toggleHeader }] = useDisclosure(true);
   const [asideOpened, { toggle: toggleAside }] = useDisclosure(true);
   const [asideMobileOpened, { toggle: toggleAsideMobile }] = useDisclosure(false);
   const [footerOpened, { toggle: toggleFooter }] = useDisclosure(true);
+  const [iconListAlt, { toggle: toggleIconListAlt }] = useDisclosure(false);
+  const [navbarAlt, { toggle: toggleNavbarAlt }] = useDisclosure(false);
+  const [asideAlt, { toggle: toggleAsideAlt }] = useDisclosure(false);
+
   const animals = ['bat', 'cat', 'dog', 'deer', 'fish', 'pig', 'spider'];
+
+  const toggleIconListAltBtn = () => {
+    if (navbarAlt) {
+      toggleIconListAlt();
+      toggleNavbarAlt();
+    } else if (iconListAlt || !iconListAlt) {
+      toggleIconListAlt();
+    }
+  };
+
+  const toggleNavbarAltBtn = () => {
+    if (!iconListAlt && !navbarAlt) {
+      toggleIconListAlt();
+      toggleNavbarAlt();
+    } else if (iconListAlt || navbarAlt) {
+      toggleNavbarAlt();
+    }
+  };
 
   return (
     <AppShell
-      layout="alt"
       padding="md"
       iconList={{
+        layout: iconListAlt ? 'alt' : undefined,
         width: { base: 50, md: 100 },
         breakpoint: 'sm',
         collapsed: { desktop: !iconListOpened, mobile: !iconListMobileOpened },
       }}
       navbar={{
+        layout: navbarAlt ? 'alt' : undefined,
         width: { base: 100, md: 200 },
         breakpoint: 'sm',
         collapsed: { desktop: !navbarOpened, mobile: !navbarMobileOpened },
@@ -176,6 +200,7 @@ export function IconList() {
         collapsed: !headerOpened,
       }}
       aside={{
+        layout: asideAlt ? 'alt' : undefined,
         width: { base: 200, md: 300 },
         breakpoint: 'sm',
         collapsed: { desktop: !asideOpened, mobile: !asideMobileOpened },
@@ -200,16 +225,53 @@ export function IconList() {
       </AppShell.Navbar>
       <AppShell.Header>Header</AppShell.Header>
       <AppShell.Main>
-        <Group>
-          <Button onClick={toggleHeader}>Toggle header</Button>
-          <Button onClick={toggleFooter}>Toggle footer</Button>
-          <Button onClick={toggleNavbar}>Toggle navbar</Button>
-          <Button onClick={toggleAside}>Toggle aside</Button>
-          <Button onClick={toggleIconList}>Toggle iconList</Button>
-          <Button onClick={toggleNavbarMobile}>Toggle navbar mobile</Button>
-          <Button onClick={toggleIconListMobile}>Toggle iconList mobile</Button>
-          <Button onClick={toggleAsideMobile}>Toggle aside mobile</Button>
-        </Group>
+        <Stack>
+          <Group>
+            <Button onClick={toggleHeader} color={headerOpened ? 'blue.8' : 'gray.6'}>
+              Toggle header
+            </Button>
+            <Button onClick={toggleFooter} color={footerOpened ? 'blue.8' : 'gray.6'}>
+              Toggle footer
+            </Button>
+            <Button onClick={toggleIconList} color={iconListOpened ? 'blue.8' : 'gray.6'}>
+              Toggle iconList
+            </Button>
+            <Button onClick={toggleNavbar} color={navbarOpened ? 'blue.8' : 'gray.6'}>
+              Toggle navbar
+            </Button>
+            <Button onClick={toggleAside} color={asideOpened ? 'blue.8' : 'gray.6'}>
+              Toggle aside
+            </Button>
+          </Group>
+          <Divider />
+          <Group>
+            <Button onClick={toggleIconListAltBtn} color={iconListAlt ? 'green.8' : 'gray.6'}>
+              Toggle iconList alt
+            </Button>
+            <Button onClick={toggleNavbarAltBtn} color={navbarAlt ? 'green.8' : 'gray.6'}>
+              Toggle navbar alt
+            </Button>
+            <Button onClick={toggleAsideAlt} color={asideAlt ? 'green.8' : 'gray.6'}>
+              Toggle aside alt
+            </Button>
+          </Group>
+          <Divider />
+          <Group>
+            <Button
+              onClick={toggleIconListMobile}
+              color={iconListMobileOpened ? 'red.6' : 'gray.6'}
+            >
+              Toggle iconlist mobile
+            </Button>
+            <Button onClick={toggleNavbarMobile} color={navbarMobileOpened ? 'red.6' : 'gray.6'}>
+              Toggle navbar mobile
+            </Button>
+            <Button onClick={toggleAsideMobile} color={asideMobileOpened ? 'red.6' : 'gray.6'}>
+              Toggle aside mobile
+            </Button>
+          </Group>
+        </Stack>
+
         <p>{longContent}</p>
       </AppShell.Main>
       <AppShell.Aside>Aside</AppShell.Aside>
@@ -225,8 +287,8 @@ export function AltLayout() {
   return (
     <AppShell
       padding="md"
-      layout="alt"
       aside={{
+        layout: 'alt',
         width: { base: 140 },
         breakpoint: 'sm',
         collapsed: { desktop: !opened, mobile: !mobileOpened },
@@ -249,8 +311,8 @@ export function AltLayout() {
       <AppShell.Main>
         <Group>
           <Button onClick={toggleHeader}>Toggle header</Button>
-          <Button onClick={toggle}>Toggle navbar</Button>
-          <Button onClick={toggleMobile}>Toggle navbar mobile</Button>
+          <Button onClick={toggle}>Toggle aside</Button>
+          <Button onClick={toggleMobile}>Toggle aside mobile</Button>
         </Group>
         <p>Other content</p>
       </AppShell.Main>

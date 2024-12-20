@@ -24,6 +24,16 @@ export function assignIconListVariables({
   const collapsedIconListTransform = 'translateX(calc(var(--app-shell-iconlist-width) * -1))';
   const collapsedIconListTransformRtl = 'translateX(var(--app-shell-iconlist-width))';
 
+  if (iconList?.layout === 'alt') {
+    baseStyles['--app-shell-iconlist-offset-y'] = '0px !important';
+    baseStyles['--app-shell-iconlist-height'] = '100dvh !important';
+  } else {
+    baseStyles['--app-shell-iconlist-offset-y'] =
+      'var(--app-shell-header-offset-y, 0rem) !important';
+    baseStyles['--app-shell-iconlist-height'] =
+      'calc(100dvh - var(--app-shell-header-offset-y, 0rem) - var(--app-shell-footer-offset, 0rem)) !important';
+  }
+
   if (iconList?.breakpoint && !iconList?.collapsed?.mobile) {
     maxMediaStyles[iconList?.breakpoint] = maxMediaStyles[iconList?.breakpoint] || {};
     maxMediaStyles[iconList?.breakpoint]['--app-shell-iconlist-width'] = '100%';

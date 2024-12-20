@@ -6,8 +6,8 @@ export const AppShellRootStyle = css(({ theme }) => ({
   },
 
   '&[data-disabled]': {
-    '--app-shell-header-offset': '0rem !important',
-    '--app-shell-navbar-offset': '0rem !important',
+    '--app-shell-header-offset-y': '0rem !important',
+    '--app-shell-navbar-offset-y': '0rem !important',
   },
 
   ...theme.applyStyles('light', {
@@ -28,16 +28,8 @@ const navBarAside = {
   position: 'fixed',
   display: 'flex',
   flexDirection: 'column',
-  top: 'var(--app-shell-header-offset, 0rem)',
-  height:
-    'calc(100dvh - var(--app-shell-header-offset, 0rem) - var(--app-shell-footer-offset, 0rem))',
   backgroundColor: 'var(--raikou-color-body)',
   transitionProperty: 'transform, top, height',
-
-  ':_where([data-layout="alt"]) &': {
-    top: '0rem',
-    height: '100dvh',
-  },
 };
 
 export const AppShellIconListStyle = css(({ theme }) => ({
@@ -54,6 +46,9 @@ export const AppShellIconListStyle = css(({ theme }) => ({
   '&:_where([data-with-border])': {
     borderInlineEnd: '1px solid var(--app-shell-border-color)',
   },
+
+  top: 'var(--app-shell-iconlist-offset-y)',
+  height: 'var(--app-shell-iconlist-height)',
 
   ...navBarAsideHeaderMainFooter,
   ...navBarAside,
@@ -73,6 +68,9 @@ export const AppShellNavbarStyle = css(({ theme }) => ({
     borderInlineEnd: '1px solid var(--app-shell-border-color)',
   },
 
+  top: 'var(--app-shell-navbar-offset-y)',
+  height: 'var(--app-shell-navbar-height)',
+
   ...navBarAsideHeaderMainFooter,
   ...navBarAside,
 }));
@@ -91,6 +89,9 @@ export const AppShellAsideStyle = css(({ theme }) => ({
     borderInlineStart: '1px solid var(--app-shell-border-color)',
   },
 
+  top: 'var(--app-shell-aside-offset-y)',
+  height: 'var(--app-shell-aside-height)',
+
   ...navBarAsideHeaderMainFooter,
   ...navBarAside,
 }));
@@ -99,7 +100,7 @@ export const AppShellMainStyle = css({
   paddingInlineStart:
     'calc(var(--app-shell-navbar-offset, 0rem) + var(--app-shell-iconlist-offset, 0rem) + var(--app-shell-padding))',
   paddingInlineEnd: 'calc(var(--app-shell-aside-offset, 0rem) + var(--app-shell-padding))',
-  paddingTop: 'calc(var(--app-shell-header-offset, 0rem) + var(--app-shell-padding))',
+  paddingTop: 'calc(var(--app-shell-header-offset-y, 0rem) + var(--app-shell-padding))',
   paddingBottom: 'calc(var(--app-shell-footer-offset, 0rem) + var(--app-shell-padding))',
   minHeight: '100dvh',
   transitionProperty: 'padding',
@@ -109,15 +110,10 @@ export const AppShellMainStyle = css({
 
 const headerFooter = {
   position: 'fixed',
-  insetInline: 0,
+  insetInlineStart: 'var(--app-shell-header-start-x, 0rem)',
+  insetInlineEnd: 'var(--app-shell-aside-end-x, 0rem)',
   transitionProperty: 'transform, left, right',
   backgroundColor: 'var(--raikou-color-body)',
-
-  ":_where([data-layout='alt']) &": {
-    insetInlineStart:
-      'calc(var(--app-shell-iconlist-offset, 0rem) + var(--app-shell-navbar-offset, 0rem))',
-    insetInlineEnd: 'var(--app-shell-aside-offset, 0rem)',
-  },
 };
 
 export const AppShellHeaderStyle = css({

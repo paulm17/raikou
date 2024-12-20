@@ -87,9 +87,6 @@ export interface AppShellProps
   /** `z-index` of all associated elements, `200` by default */
   zIndex?: string | number;
 
-  /** Determines how Navbar/Aside are arranged relative to Header/Footer, `default` by default */
-  layout?: 'default' | 'alt';
-
   /** If set, Navbar, Aside, Header and Footer components be hidden */
   disabled?: boolean;
 
@@ -131,8 +128,17 @@ const varsResolver = createVarsResolver<AppShellFactory>(
   })
 );
 
+const offsetScrollbarsFunc = (iconList?: AppShellIconListConfiguration) => {
+  if (iconList?.layout) {
+    return true;
+  }
+
+  return false;
+};
+
 export const AppShell = factory<AppShellFactory>((_props, ref) => {
   const props = useProps('AppShell', defaultProps, _props);
+
   const {
     classNames,
     className,
@@ -147,12 +153,11 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
     transitionTimingFunction,
     header,
     zIndex,
-    layout,
     disabled,
     aside,
     footer,
     iconList,
-    offsetScrollbars = layout !== 'alt',
+    offsetScrollbars = offsetScrollbarsFunc(iconList),
     mod,
     ...others
   } = props;
@@ -191,12 +196,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
         iconList={iconList}
         padding={padding}
       />
-      <Box
-        ref={ref}
-        {...getStyles('root')}
-        mod={[{ resizing, layout, disabled }, mod]}
-        {...others}
-      />
+      <Box ref={ref} {...getStyles('root')} mod={[{ resizing, disabled }, mod]} {...others} />
     </AppShellProvider>
   );
 });

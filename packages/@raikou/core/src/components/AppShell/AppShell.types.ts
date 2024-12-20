@@ -16,18 +16,21 @@ export interface AppShellIconListConfiguration {
   width: AppShellSize | AppShellResponsiveSize;
   breakpoint: RaikouBreakpoint | (string & {}) | number;
   collapsed?: { desktop?: boolean; mobile?: boolean };
+  layout?: 'alt';
 }
 
 export interface AppShellNavbarConfiguration {
   width: AppShellSize | AppShellResponsiveSize;
   breakpoint: RaikouBreakpoint | (string & {}) | number;
   collapsed?: { desktop?: boolean; mobile?: boolean };
+  layout?: 'alt';
 }
 
 export interface AppShellAsideConfiguration {
   width: AppShellSize | AppShellResponsiveSize;
   breakpoint: RaikouBreakpoint | (string & {}) | number;
   collapsed?: { desktop?: boolean; mobile?: boolean };
+  layout?: 'alt';
 }
 
 export interface AppShellHeaderConfiguration {
@@ -41,3 +44,5 @@ export interface AppShellFooterConfiguration {
   collapsed?: boolean;
   offset?: boolean;
 }
+
+export type AppShellLayout = 'iconList' | 'navbar' | 'aside';

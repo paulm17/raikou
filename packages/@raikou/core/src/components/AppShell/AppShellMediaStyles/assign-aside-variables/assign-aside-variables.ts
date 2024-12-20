@@ -24,6 +24,15 @@ export function assignAsideVariables({
   const collapsedAsideTransform = 'translateX(var(--app-shell-aside-width))';
   const collapsedAsideTransformRtl = 'translateX(calc(var(--app-shell-aside-width) * -1))';
 
+  if (aside?.layout === 'alt') {
+    baseStyles['--app-shell-aside-offset-y'] = '0px !important';
+    baseStyles['--app-shell-aside-height'] = '100dvh !important';
+  } else {
+    baseStyles['--app-shell-aside-offset-y'] = 'var(--app-shell-header-offset-y, 0rem) !important';
+    baseStyles['--app-shell-aside-height'] =
+      'calc(100dvh - var(--app-shell-header-offset-y, 0rem) - var(--app-shell-footer-offset, 0rem)) !important';
+  }
+
   if (aside?.breakpoint && !aside?.collapsed?.mobile) {
     maxMediaStyles[aside?.breakpoint] = maxMediaStyles[aside?.breakpoint] || {};
     maxMediaStyles[aside?.breakpoint]['--app-shell-aside-width'] = '100%';

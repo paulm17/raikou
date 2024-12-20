@@ -54,7 +54,12 @@ export const AppShellIconList = factory<AppShellIconListFactory>((_props, ref) =
     <Box
       component="div"
       ref={ref}
-      mod={[{ 'with-border': withBorder ?? ctx.withBorder }, mod]}
+      mod={[
+        {
+          'with-border': withBorder ?? ctx.withBorder,
+        },
+        mod,
+      ]}
       {...ctx.getStyles('iconList', { className, classNames, styles, style })}
       {...others}
       __vars={{
