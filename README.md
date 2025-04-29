@@ -122,12 +122,15 @@ export default defineConfig({
       atomic: false,
       theme,
       rawTheme,
+      transformLibraries: ['@raikou/core', '@raikou/system', '@raikou/emotion'],
     }),
     TanStackRouterVite({}),
     react(),
   ],
 });
 ```
+
+Note: when adding Raikou components such as `@raikou/dates`. They must be added to the transformLibraries array. Otherwise there will be an issue transpiling stylefusion.
 
 Pro-tip: When atomic is set to true, the build process will atomicify the final
 css payload.
